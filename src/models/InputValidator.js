@@ -1,30 +1,22 @@
-import {
-  EMPTY_INPUT,
-  DUPLICATION_INPUT,
-  NOT_NUMBER,
-  NOT_CAR_NAME,
-  OUT_OF_RANGE,
-  NUMBER_REGEX,
-  CAR_NAME_REGEX,
-} from "../constants/Constants.js";
+import { ERROR_MESSAGES, CAR_NAME_REGEX, NUMBER_REGEX } from "../constants/Constants.js";
 
 const isEmpty = (input) => {
   if (input.length === 0) {
-    throw new Error(EMPTY_INPUT);
+    throw new Error(ERROR_MESSAGES.EMPTY_INPUT);
   }
 };
 
 const isDuplicateName = (input) => {
   const setInput = new Set(input);
   if (setInput.size !== input.length) {
-    throw new Error(DUPLICATION_INPUT);
+    throw new Error(ERROR_MESSAGES.DUPLICATION_INPUT);
   }
 };
 
 const isValidCarName = (input) => {
   input.forEach((car) => {
     if (!CAR_NAME_REGEX.test(car)) {
-      throw new Error(NOT_CAR_NAME);
+      throw new Error(ERROR_MESSAGES.NOT_CAR_NAME);
     }
   });
 };
@@ -32,14 +24,14 @@ const isValidCarName = (input) => {
 const isValidLength = (input) => {
   input.forEach((car) => {
     if (car.length > 5) {
-      throw new Error(OUT_OF_RANGE);
+      throw new Error(ERROR_MESSAGES.OUT_OF_RANGE);
     }
   });
 };
 
 const isValidNumber = (input) => {
   if (!NUMBER_REGEX.test(input)) {
-    throw new Error(NOT_NUMBER);
+    throw new Error(ERROR_MESSAGES.NOT_NUMBER);
   }
 };
 

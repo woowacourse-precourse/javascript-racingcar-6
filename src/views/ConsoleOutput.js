@@ -1,5 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
-import { GAME_START, GAME_ATTEMPTS, GAME_RESULT } from "../constants/Constants.js";
+import { GAME_MESSAGES } from "../constants/Constants.js";
 
 const ConsoleOutput = {
   printEmptyLine: () => {
@@ -7,19 +7,19 @@ const ConsoleOutput = {
   },
 
   printStartMessage: () => {
-    Console.print(GAME_START);
+    Console.print(GAME_MESSAGES.START);
   },
 
   printGetAttempts: () => {
-    Console.print(GAME_ATTEMPTS);
+    Console.print(GAME_MESSAGES.ATTEMPTS);
   },
 
   printResultMessage: () => {
-    Console.print(GAME_RESULT);
+    Console.print(GAME_MESSAGES.RESULT);
   },
 
   printResult: () => {
-    Console.print(GAME_RESULT);
+    Console.print(GAME_MESSAGES.RESULT);
   },
 
   printGameResult: (carPositions) => {
