@@ -30,7 +30,7 @@ const ConsoleOutput = {
   },
 
   printGameWinner: (winnerNames) => {
-    Console.print(`최종 우승자: ${winnerNames}`);
+    Console.print(`최종 우승자 : ${winnerNames}`);
   },
 };
 

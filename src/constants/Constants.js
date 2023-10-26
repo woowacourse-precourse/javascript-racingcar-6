@@ -1,6 +1,6 @@
 export const NUMBER_REGEX = /^\d+$/;
 export const CAR_NAME_REGEX = /^[a-zA-Z]+(,[a-zA-Z]+)*$/;
-export const MIN_NUMBER = 1;
+export const MIN_NUMBER = 0;
 export const MAX_NUMBER = 9;
 
 export const GAME_START = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";

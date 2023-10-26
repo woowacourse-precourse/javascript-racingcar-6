@@ -16,12 +16,9 @@ const playGame = async ({ cars, attempts }) => {
   GameCalculator(cars, attempts);
 };
 
-const finishGame = async () => {};
-
 const RaceGame = async () => {
   const gameData = await startGame();
-  await playGame(gameData);
-  finishGame();
+  playGame(gameData);
 };
 
 export default RaceGame;
