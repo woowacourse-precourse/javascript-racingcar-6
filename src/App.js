@@ -6,7 +6,7 @@ class App {
 		if (carNameInput.trim().endsWith(',')) {
 			throw new Error('\x1b[31m[ERROR] 쉼표로 끝나면 안됩니다.\x1b[37m');
 		}
-		const carNames = carNameInput.split(',').map(carNameInput => carNameInput.trim());
+		const carNames = carNameInput.split(',').map((carNameInput) => carNameInput.trim());
 
 		const cars = carNames.map(carName => ({
 			name: carName,
@@ -14,13 +14,13 @@ class App {
 			maxDash: 0,
 		}));
 
-		for (const carName of carNames) {
+		carNames.forEach((carName) => {
 			if (carName.length >= 6) {
 				throw new Error('\x1b[31m[ERROR] 5글자 이하의 이름만 입력 가능합니다.\x1b[37m');
 			}
-		}
+		});
 		const raceTry = parseInt(await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n'));
-		if (isNaN(raceTry) === true) {
+		if (isNaN(raceTry)) {
 			throw new Error('\x1b[31m[ERROR] 숫자만 입력 가능합니다.\x1b[37m');
 		}
 		if (raceTry <= 0) {
@@ -36,7 +36,7 @@ class App {
 				if (raceCarNumber >= 4) {
 					cars[i].messages.push('-');
 				}
-				const dashCount = cars[i].messages.filter(message => message === '-').length;
+				const dashCount = cars[i].messages.filter((message) => message === '-').length;
 				if (dashCount > cars[i].maxDash) {
 					cars[i].maxDash = dashCount;
 				}
@@ -49,7 +49,6 @@ class App {
 		const winner = cars.filter(car => car.maxDash === maxDashCount);
 		const winnerName = winner.map(winner => winner.name);
 		Console.print(`최종 우승자 : ${winnerName.join(', ')}`);
-
 	}
 }
 
