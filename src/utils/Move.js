@@ -1,4 +1,4 @@
-import { Random } from "@woowacourse/mission-utils";
+import { Console, Random } from "@woowacourse/mission-utils";
 
 class Move {
   async getRandomNumber(min, max) {
@@ -12,7 +12,7 @@ class Move {
   async moveCurrent(obj) {
     for (const key in obj) {
       let dashes = "-".repeat(obj[key]);
-      console.log(key + " : " + dashes);
+      Console.print(key + " : " + dashes);
     }
     console.log("");
   }

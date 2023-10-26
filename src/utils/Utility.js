@@ -1,11 +1,11 @@
 import Move from "./Move.js";
-import Validator from "./Validator.js";
 import Winner from "./Winner.js";
+import CarName from "./CarName.js";
 
 class Utility {
   constructor() {
     this.move = new Move();
-    this.validator = new Validator();
+    this.carName = new CarName();
     this.winner = new Winner();
   }
   getRandomNumber(min, max) {
@@ -18,8 +18,8 @@ class Utility {
     return this.move.moveCurrent(obj);
   }
 
-  validation(num) {
-    return this.validator.validation(num);
+  createToRightObj(names) {
+    return this.carName.createToRightObj(names);
   }
   whosWinner(obj) {
     return this.winner.whosWinner(obj);
