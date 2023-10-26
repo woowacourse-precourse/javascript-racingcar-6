@@ -32,8 +32,23 @@ class App {
 
     const memberData = await getMemberData();
     const tryData = await getTryNumber();
+    const MEMBER_COUNT = memberData.length;
     const progress = memberData.map((member) => new MemberProgress(member));
     let i = 0;
+
+    MissionUtils.Console.print("\n실행 결과");
+
+    while (i < tryData) {
+      for (let j = 0; j < MEMBER_COUNT; j++) {
+        progress[j].updateProgress();
+        MissionUtils.Console.print(
+          progress[j].name + " : " + progress[j].currentProgress,
+        );
+      }
+
+      MissionUtils.Console.print("");
+      i++;
+    }
   }
 }
 
