@@ -10,6 +10,16 @@ const Validation = {
       throw new Error(MESSAGE.INVALID_CAR_NAME);
     }
   },
+  /**
+   * 자동차 이름의 중복 여부 검사
+   * @param {string[]} names 자동차 이름들
+   */
+  validateDuplicateName: (names) => {
+    const set = new Set(names);
+    if (set.size !== names.length) {
+      throw new Error(MESSAGE.DUPLICATE_CAR_NAME);
+    }
+  },
 }
 
 export default Validation;
