@@ -13,6 +13,10 @@ class Validator {
     }
     return false;
   }
+
+  static checkIsNumber(userInput) {
+    return !Number.isNaN(userInput);
+  }
 }
 
 export default Validator;
