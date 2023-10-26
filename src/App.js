@@ -3,6 +3,7 @@ import { checkErrorInputName, checkErrorPlayNumber } from './validation.js';
 import { Console } from '@woowacourse/mission-utils';
 import { INFO_MESSAGE } from './message.js';
 import checkRandomNumber from './randomNumber.js';
+import printWinner from './printWinner.js';
 
 class App {
   constructor() {
@@ -23,6 +24,7 @@ class App {
       }
       Console.print(' ');
     }
+    printWinner(this.carName);
   }
   async getCarName() {
     const inputNameArr = (await Console.readLineAsync(INFO_MESSAGE.GET_CAR_NAME)).split(',').map((name) => name.trim());
