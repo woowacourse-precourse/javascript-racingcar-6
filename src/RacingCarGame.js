@@ -35,6 +35,9 @@ class RacingCarGame {
     if (!Validator.checkIsNumber(attempt)) {
       throw new Error(ERROR.isNotANumber);
     }
+    if (Validator.checkIsNotMove(attempt)) {
+      throw new Error(ERROR.notMoving);
+    }
   }
 }
 

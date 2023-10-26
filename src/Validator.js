@@ -17,6 +17,10 @@ class Validator {
   static checkIsNumber(userInput) {
     return !Number.isNaN(userInput);
   }
+
+  static checkIsNotMove(userInput) {
+    return userInput === Constant.notMove;
+  }
 }
 
 export default Validator;
