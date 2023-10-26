@@ -2,6 +2,7 @@ const CONSTANTS = {
     vehicleNameList : [],
     gamePlayTimes : 0,
     vehicleNameObject : {},
+    moveProcedure : {},
 }
 
 const MOVE_RANGE = {

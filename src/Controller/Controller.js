@@ -31,12 +31,16 @@ class Controller {
     makeVehicleObject() {
         CONSTANTS.vehicleNameList.forEach((vehicleName) => {
             CONSTANTS.vehicleNameObject[vehicleName] = 0
+            CONSTANTS.moveProcedure[vehicleName] = '';
         });
     }
 
-    getMoveNumber() {
+    getMoveNumber(vehicleName) {
         const moveNumber = Random.pickNumberInRange(MOVE_RANGE.FROM, MOVE_RANGE.TO);
-        if (this.VALIDATE.moveNumberValidate(moveNumber)) return moveNumber;
+        if (this.VALIDATE.moveNumberValidate(moveNumber)) {
+            CONSTANTS.moveProcedure[vehicleName] += '-';
+            return moveNumber;
+        }
         return 0;
     }
 

@@ -1,4 +1,5 @@
 import Controller from '../controller/Controller';
+import OutputView from '../views/OutputView';
 import { Console } from '@woowacourse/mission-utils';
 import { OUTPUT_MSG } from '../models/OutputMsg';
 import { CONSTANTS } from '../models/Constants';
@@ -6,6 +7,7 @@ import { CONSTANTS } from '../models/Constants';
 
 class GameStart {
     constructor() {
+        this.OUT_VIEW = new OutputView();
         this.CONTROL = new Controller();
     }
     
@@ -27,12 +29,11 @@ class GameStart {
         this.CONTROL.makeVehicleObject();
         for (let idx = 0; idx < CONSTANTS.gamePlayTimes; idx++) {
             CONSTANTS.vehicleNameList.forEach((vehicleName) => {
-                CONSTANTS.vehicleNameObject[vehicleName] = this.CONTROL.getMoveNumber();
+                CONSTANTS.vehicleNameObject[vehicleName] = this.CONTROL.getMoveNumber(vehicleName);
             })
+            this.OUT_VIEW.printMoveProcedure();
         }
-        console.log(CONSTANTS.vehicleNameObject);
     }
-
 }
 
 export default GameStart;
