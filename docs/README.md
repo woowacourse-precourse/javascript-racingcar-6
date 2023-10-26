@@ -21,6 +21,8 @@
 # 기능 목록
 ### oneGameStart
 - 하나의 게임을 실행한다
+- 입력 : car_positions(number[])
+- 출력 : car_positions(number[])
 - 각 자동차 별로 moveForwardByRandom를 이용하여 전진 시킨다 
 - printRacing을 통해 결과를 출력한다
 
@@ -30,4 +32,8 @@
 
 ### printRacing
 - 각 자동차 별 배열을 통해 출력 포맷에 맞춰 출력한다
-- 출력 : result(string)
+- 입력 : car_names(string[]), car_positions(number[])
+
+### printWinner
+- 각 자동차의 위치에 따른 순위를 출력한다
+- 입력 : car_names(string[]), car_positions(number[])
