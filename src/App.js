@@ -30,7 +30,10 @@ class App {
   }
 
   printCurrentRace(racers, length) {
-
+    racers.forEach((racer,idx)=>{
+      const lenPrint = "_".repeat(length[idx]);
+      Console.print(racer+" : "+lenPrint);
+    })
   }
 
   EndRace(racers, length) {
