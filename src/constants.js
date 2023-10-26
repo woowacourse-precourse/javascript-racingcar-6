@@ -7,3 +7,5 @@ export const NUMBER_RANGE = {
   MIN: 0,
   MAX: 9,
 };
+
+export const RANDOM_THRESHOLD = 4;
