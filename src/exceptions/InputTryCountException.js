@@ -1,4 +1,4 @@
-import { errorTryCountMessage } from "../global/message";
+import { errorTryCountMessage } from "../global/message.js";
 
 class InputTryCountException {
   constructor(tryCount) {
