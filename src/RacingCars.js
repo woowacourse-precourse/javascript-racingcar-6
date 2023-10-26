@@ -11,8 +11,18 @@ class RacingCars {
     const movingLogs = this.#cars.map((car) => car.moveForward());
     return movingLogs.join('\n');
   }
+
+  getWinners() {
+    const maxCar = this.#findMaxNumOfMoves();
+    return this.#findSameScoreCars(maxCar);
+  }
+
   #findMaxNumOfMoves() {
     return this.#cars.reduce((max, car) => (car.compareToMax(max) > 0 ? car : max));
+  }
+
+  #findSameScoreCars(maxCar) {
+    return this.#cars.filter((car) => car.compareIsSame(maxCar)).map((car) => car.getCarName());
   }
 }
 
