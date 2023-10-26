@@ -14,6 +14,10 @@ class App {
     // Console.print(INPUT);
     const CAR_NAMES = INPUT.split(',');
 
+    if (CAR_NAMES.length < 2 || CAR_NAMES.some(carName => carName.length > 5)) {
+      throw new Error('[ERROR]');
+    }
+
     this.carNames = CAR_NAMES;
   }
 }
