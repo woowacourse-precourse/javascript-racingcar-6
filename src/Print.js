@@ -1,5 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
-import { ASK_CARS, ERROR } from "./constant/message.js";
+import { ASK_CARS, ASK_TRY_COUNT, ERROR } from "./constant/message.js";
 import { separator } from "./constant/rule.js";
 import Validate from "./Validate.js";
 
@@ -22,6 +22,12 @@ class Print {
     }
 
     return cars;
+  }
+
+  static async getTryCount() {
+    const count = await Console.readLineAsync(ASK_TRY_COUNT);
+
+    return count;
   }
 }
 
