@@ -1,7 +1,7 @@
 # 기능 목록
 
 - [ ] 자동차를 생성한다. - new Car()
-- [ ] 0에서 9 사이의 임의의 숫자를 생성한다. - Random.#createRandomNumber()
+- [ ] 0에서 9 사이의 임의의 숫자를 생성한다. - Random.createRandomNumber()
 - [ ] 임의의 숫자가 4 이상일 경우 자동차가 전진한다. - car.#moveForward()
 - [ ] 레이스 종료 후 최종 우승자를 결정한다. - Referee.#judge()
 
