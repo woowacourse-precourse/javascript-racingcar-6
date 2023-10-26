@@ -58,10 +58,37 @@ class App {
     return result;
   }
 
+  
+
+  async printWinner(CAR_ARRAY, RESULT){
+    let maxLength = 0;
+    let winner = [];
+    for(let i = 0; i < RESULT.length; i++){
+      const CURRENTLENGTH = RESULT[i].length;
+      if(CURRENTLENGTH > maxLength){
+        maxLength = CURRENTLENGTH;
+        winner = [CAR_ARRAY[i]];
+      }
+      else if(CURRENTLENGTH == maxLength){
+        winner.push(CAR_ARRAY[i]);
+      }
+    }
+    
+    let winnerName = '';
+    for(let j = 0; j < winner.length; j++){
+      winnerName = winnerName + winner[j] + ', ';
+    }
+
+    winnerName = winnerName.slice(0, -2);
+    MissionUtils.Console.print(`최종 우승자 : ${winnerName}`);
+
+  }
+
   async play() {
     const CAR_ARRAY = await this.getCarName();
     const TRY_NUM = await this.getTryNum();
     const RESULT = await this.printResult(CAR_ARRAY, TRY_NUM);
+    await this.printWinner(CAR_ARRAY, RESULT);
   }
 }
 
