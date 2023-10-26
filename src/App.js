@@ -1,5 +1,6 @@
 import { Random, Console } from '@woowacourse/mission-utils';
 
+// 경주 자동차 클래스
 
 class App {
   async play() {
@@ -14,6 +15,10 @@ class App {
       throw error;
     }
   }
+
+  // 경기 시작
+
+  // 우승자
 }
 
 export default App;
