@@ -22,6 +22,12 @@ class App {
       array[i] = new Car(array[i]);
     }
   }
+
+  async inputTryTimes() {
+    const times = await Console.readLineAsync(Message.askGameRounds);
+    if(isNaN(times)) throw new Error(Message.askTryTimes);
+    return times;
+  }
 }
 
 class Car {
@@ -40,13 +46,14 @@ class Car {
 
 const Message = Object.freeze({
   askCarName : '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
-  askHowManyRound : '시도할 횟수는 몇 회인가요?\n',
+  askTryTimes : '시도할 횟수는 몇 회인가요?\n',
 
   error : {
     blank : '[ERROR] 아무것도 입력되지 않았습니다.',
     overFiveCharacters : '[ERROR] 자동차 이름은 5글자 이하로 설정하세요.',
     zeroCharacter : '[ERROR] 자동차 이름을 1글자 이상 5글자 이하로 설정하세요.',
     moreThanTwoCars : '[ERROR] 2개 이상의 자동차 이름을 입력하세요.',
+    notNumber : '[ERROR] 시도 횟수를 입력하세요.'
 
 
   }
