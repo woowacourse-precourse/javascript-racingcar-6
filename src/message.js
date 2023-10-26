@@ -5,6 +5,8 @@ const INFO_MESSAGE = Object.freeze({
   WINNER: (winner) => `최종 우승자 : ${winner.join(', ')}`,
 });
 
-const ERROR_MESSAGE = Object.freeze({});
+const ERROR_MESSAGE = Object.freeze({
+  LENGTH: '[ERROR] 이름은 5자 이하로 작성해야 합니다.',
+});
 
 export { INFO_MESSAGE, ERROR_MESSAGE };
