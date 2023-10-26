@@ -6,7 +6,7 @@ import {
 } from "./rule.js";
 
 export const ASK_CARS = `경주할 자동차 이름을 입력하세요.(이름은 ${separator.name}(${separator.symbol}) 기준으로 구분)\n`;
-export const ASK_TRY_COUNT = "시도할 횟수는 몇 회인가요?";
+export const ASK_TRY_COUNT = "시도할 횟수는 몇 회인가요?\n";
 
 export const ERROR = {
   CARS_START_AND_END_WITH_COMMA: `[ERROR] 자동차를 입력할 때 양 끝에 ${separator.name}(${separator.symbol})를 입력하면 안됩니다.`,
