@@ -1,16 +1,8 @@
-import { Console } from "@woowacourse/mission-utils";
+import inputCarNames from "./inputCarNames";
 
 class App {
   async play() {
-    const carInput = await Console.readLineAsync(
-      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
-    );
-    let carList = [];
-    if (typeof carInput === "string") {
-      carList = carInput.split(",");
-    } else {
-      throw new Error("[ERROR] : 문자만 입력해 주세요.");
-    }
+    const carList = inputCarNames();
 
     carList.forEach((car) => {
       if (car.length > 5) {
