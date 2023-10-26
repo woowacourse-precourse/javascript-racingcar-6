@@ -11,6 +11,10 @@ class App {
     MissionUtils.Console.print('\n실행 결과');
 
     this.playGame(players, playRounds);
+
+    const winner = this.getWinner(players);
+
+    MissionUtils.Console.print(`최종 우승자 : ${winner}`);
   }
 
   async getCarNames() {
@@ -91,6 +95,21 @@ class App {
       MissionUtils.Console.print(text);
     }
     MissionUtils.Console.print('');
+  }
+
+  getWinner(players) {
+    const highestScore = players.reduce((max, cur, i) => {
+      if (cur.moves > max) return cur.moves;
+      return max;
+    }, 0);
+
+    let winners = [];
+
+    for (let i = 0; i < players.length; i++) {
+      if (players[i].moves === highestScore) winners.push(players[i].name);
+    }
+
+    return winners.join(', ');
   }
 }
 
