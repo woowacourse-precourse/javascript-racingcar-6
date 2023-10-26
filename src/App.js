@@ -13,6 +13,7 @@ class App {
     const attemptCount = await this.inputAttemptCount();
     Console.print("");
     Console.print("실행 결과");
+    this.isValidAttemptCount(attemptCount);
   }
   async inputCarName() {
     const carNames = await Console.readLineAsync("");
@@ -21,6 +22,11 @@ class App {
   async inputAttemptCount() {
     const countValue = await Console.readLineAsync("");
     return countValue;
+  }
+  isValidAttemptCount(count) {
+    if (isNaN(count)) {
+      throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
+    }
   }
 }
 const convertStrToArr = (nameList) => {
