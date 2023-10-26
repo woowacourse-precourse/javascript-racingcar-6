@@ -9,8 +9,8 @@ class App {
 }
 
 class Car {
-  constructor() {
-    this.carName = [];
+  constructor(name) {
+    this.name = name;
     this.progress = '';
   }
 
