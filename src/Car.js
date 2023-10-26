@@ -16,9 +16,7 @@ class Car {
     this.#distance = 0;
   }
 
-  /**
-   * @returns {string} 이름
-   */
+  /** @returns {string} 이름 */
   getName() {
     return this.#name;
   }
@@ -28,6 +26,11 @@ class Car {
     if (Random.pickNumberInRange(...CAR.FORWARD_RANGE) >= CAR.FORWARD_CONDITION) {
       this.#distance += 1;
     }
+  }
+
+  /** @returns {number} 이동 거리 */
+  getDistance() {
+    return this.#distance;
   }
 }
 
