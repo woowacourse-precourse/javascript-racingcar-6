@@ -38,11 +38,9 @@ const isValidLength = (input) => {
 };
 
 const isValidNumber = (input) => {
-  input.forEach((car) => {
-    if (!NUMBER_REGEX.test(car)) {
-      throw new Error(NOT_NUMBER);
-    }
-  });
+  if (!NUMBER_REGEX.test(input)) {
+    throw new Error(NOT_NUMBER);
+  }
 };
 
 const InputValidator = (input) => {

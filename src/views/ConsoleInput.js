@@ -6,12 +6,14 @@ const ConsoleInput = {
     let input = await Console.readLineAsync("");
     const arrInput = input.split(",");
     InputValidator(arrInput);
+    return arrInput;
   },
 
   getNumberOfAttempts: async () => {
     let input = await Console.readLineAsync("");
     const numInput = parseInt(input);
-    InputValidator(input);
+    InputValidator(numInput);
+    return numInput;
   },
 };
 
