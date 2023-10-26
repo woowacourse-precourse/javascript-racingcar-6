@@ -3,6 +3,7 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 class App {
   constructor() {
     this.countRepeat = 0;
+    this.raceResultArray = [];
   }
 
   getUserCarNamesArray(userCarNames) {
@@ -26,6 +27,9 @@ class App {
     this.checkUserCarNames(userCarNamesArray);
     const repeatNumber = await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
     this.checkRepeatNumber(repeatNumber);
+    userCarNamesArray.forEach((element) => {
+      this.makeCarObject(element);
+    });
   }
 }
 
