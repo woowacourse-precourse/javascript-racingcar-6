@@ -17,7 +17,8 @@ describe("사용자 입력 테스트", () => {
     ["pobi,woni,joo,java", ["pobi", "woni", "joo", "java"]],
     ["pobi,woni", ["pobi", "woni"]],
     ["java,woo,wa,han,tech", ["java", "woo", "wa", "han", "tech"]],
-  ])("자동차 이름 입력", async (input, expectedOutput) => {
+    ["joo", ["joo"]],
+  ])("유효한 자동차 이름 입력 - %s", async (input, expectedOutput) => {
     mockQuestions([input]);
 
     const inputHandler = new InputHandler();
@@ -39,7 +40,7 @@ describe("사용자 입력 테스트", () => {
     ["pobi,pobi,pobi", ERROR.DUPLICATE_CAR_NAME],
     ["woni,woni,woni", ERROR.DUPLICATE_CAR_NAME],
     ["woni,woni,wond,java", ERROR.DUPLICATE_CAR_NAME],
-  ])("자동차 이름 입력 예외 처리", (input, expectedError) => {
+  ])("자동차 이름 입력 예외 처리 - %s", (input, expectedError) => {
     mockQuestions([input]);
 
     const inputHandler = new InputHandler();
@@ -47,5 +48,8 @@ describe("사용자 입력 테스트", () => {
     expect(async () => {
       await inputHandler.getCarNameArray();
     }).rejects.toThrow(expectedError);
+    expect(MissionUtils.Console.readLineAsync).toHaveBeenCalledWith(
+      MESSAGE.ENTER_CAR_NAMES
+    );
   });
 });
