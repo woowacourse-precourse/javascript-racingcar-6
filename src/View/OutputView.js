@@ -1,7 +1,7 @@
 import { Console } from "@woowacourse/mission-utils";
 
-function printMessage(message){
-  Console.print(message);
+function printRacingCar(racingCarList){
+  Console.print(racingCarList);
 }
 
-export default printMessage
+export default printRacingCar
