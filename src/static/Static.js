@@ -16,7 +16,8 @@ const StaticString = Object.freeze({
   CAN_MOVE_CONDITION: 4,
   RANDOM_MIN_NUMBER: 0,
   RANDOM_MAX_NUMBER: 9,
+  POSSIBLE_TIMES_NUMBER: /\d/g,
   MOVE: "-",
 });
 
-export default { GuideMessage, ErrorMessage, StaticString };
+export { GuideMessage, ErrorMessage, StaticString };
