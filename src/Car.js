@@ -11,15 +11,21 @@ class Car {
     this.#numOfMoves = 0;
   }
 
-  #makeRandomNumber() {
-    return Random.pickNumberInRange(Constant.minRandomNum, Constant.maxRandomNum);
-  }
-
-  #moveForward() {
+  moveForward() {
     const randomNumber = this.#makeRandomNumber();
     if (randomNumber >= Constant.movable) {
       this.#numOfMoves += 1;
     }
+    return this.#makeMovingResultString();
+  }
+
+  #makeRandomNumber() {
+    return Random.pickNumberInRange(Constant.minRandomNum, Constant.maxRandomNum);
+  }
+
+  #makeMovingResultString() {
+    const movingLog = '-'.repeat(this.#numOfMoves);
+    return `${this.#name} : ${movingLog}`;
   }
 }
 
