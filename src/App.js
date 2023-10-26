@@ -1,38 +1,12 @@
-import { Console, Random } from "@woowacourse/mission-utils";
+import { Console } from "@woowacourse/mission-utils";
 import {
   errorCarMessage,
   errorTryCountMessage,
   systemMessage,
 } from "./global/message.js";
-import { distanceNumber, driveNumber, tryNumber } from "./global/number.js";
+import RacingGame from "./game/RacingGame.js";
 
 class App {
-  racing(cars, tryCount) {
-    let accumulate = Array(cars.length).fill("");
-    for (let i = 0; i < tryCount; i++) {
-      for (let j = 0; j < cars.length; j++) {
-        let distance = Random.pickNumberInRange(
-          distanceNumber.MIN_DISTANCE_LENGTH,
-          distanceNumber.MAX_DISTANCE_LENGTH
-        );
-        if (distance >= driveNumber.MIN_DRIVE_LENGTH) {
-          accumulate[j] += "-";
-        }
-        Console.print(`${cars[j]} : ${accumulate[j]}`);
-      }
-      Console.print("");
-    }
-    const maxDistance =
-      accumulate.length > 0
-        ? Math.max(...accumulate.map((str) => str.length))
-        : 0;
-    let winner = [];
-    for (let i = 0; i < cars.length; i++) {
-      if (accumulate[i].length === maxDistance) winner.push(cars[i]);
-    }
-    return winner;
-  }
-
   checkCarsNameIsEmptyException(cars) {
     if (cars === "") throw new Error(errorCarMessage.INVALID_CAR_NAME_EMPTY);
   }
@@ -93,7 +67,8 @@ class App {
       Console.print("");
 
       // 레이싱게임 진행
-      let winner = this.racing(cars, tryCount);
+      console.log(cars, tryCount);
+      let winner = new RacingGame(cars, tryCount).racing();
       // 최종 우승자 출력하기
       Console.print(`최종 우승자 : ${winner.join(", ")}`);
     } catch (error) {
