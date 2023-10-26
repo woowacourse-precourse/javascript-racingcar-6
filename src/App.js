@@ -31,23 +31,24 @@ class App {
 }
 
 class Car {
-  constructor(name){
+  constructor(name) {
     this.name = name;
     this.randomNumber;
-    this.pickRandomNumber = function(){
-    this.randomNumber = Random.pickNumberInRange(0, 9);
-    }
     this.moveNumber;
-    this.addMoveNumber = function(){
+  }
+
+  pickRandomNumber() {
+    this.randomNumber = Random.pickNumberInRange(0, 9);
+  }
+
+  addMoveNumber() {
     if(this.randomNumber >= 4) this.moveNumber++;
-    }
   }
 }
 
 const Message = Object.freeze({
   askCarName : '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
   askTryTimes : '시도할 횟수는 몇 회인가요?\n',
-
   error : {
     blank : '[ERROR] 아무것도 입력되지 않았습니다.',
     overFiveCharacters : '[ERROR] 자동차 이름은 5글자 이하로 설정하세요.',
