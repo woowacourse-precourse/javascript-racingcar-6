@@ -2,6 +2,7 @@ import { checkErrorInputName, checkErrorPlayNumber } from './validation.js';
 
 import { Console } from '@woowacourse/mission-utils';
 import { INFO_MESSAGE } from './message.js';
+import checkRandomNumber from './randomNumber.js';
 
 class App {
   constructor() {
@@ -11,6 +12,17 @@ class App {
   async play() {
     await this.getCarName();
     await this.getPlayNumber();
+    Console.print(INFO_MESSAGE.RESULT);
+    while (this.playNumber--) {
+      for (const [name, moveLog] of this.carName) {
+        let flag = await checkRandomNumber();
+        if (flag) {
+          this.carName.set(name, moveLog + '-');
+        }
+        Console.print(`${name} : ${this.carName.get(name)}`);
+      }
+      Console.print(' ');
+    }
   }
   async getCarName() {
     const inputNameArr = (await Console.readLineAsync(INFO_MESSAGE.GET_CAR_NAME)).split(',').map((name) => name.trim());
