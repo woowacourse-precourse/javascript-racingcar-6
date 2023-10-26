@@ -50,4 +50,18 @@ describe("[CUSTOM] 입력받은 자동차들에 대한 예외 처리", () => {
       await expect(playPromise).rejects.toThrow("[ERROR]");
     }
   );
+  test.each([[["skdf  ,fdjsk,owi l"]], [["sp         ace"]]])(
+    "공백에 대한 예외",
+    async (inputs) => {
+      // given
+      mockQuestions(inputs);
+
+      // when
+      const app = new App();
+      const playPromise = app.play();
+
+      // then
+      await expect(playPromise).rejects.toThrow("[ERROR]");
+    }
+  );
 });
