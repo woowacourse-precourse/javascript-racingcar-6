@@ -28,10 +28,40 @@ class App {
     return TRY
   }
 
+  async printResult(CAR_ARRAY, TRY_NUM){
+    MissionUtils.Console.print("\n실행 결과");
+    
+    let result = [];
+    const CAR_NUM = CAR_ARRAY.length;
+    for(let k = 0; k < CAR_NUM; k++){
+      result.push('');
+    }
+
+    for(let i = 0; i < TRY_NUM; i++){
+      result = await this.executeRandom(CAR_NUM, result);
+
+      for(let j = 0; j < CAR_NUM; j++){
+        MissionUtils.Console.print(`${CAR_ARRAY[j]} : ${result[j]}`);
+      }
+      MissionUtils.Console.print("");
+    }
+
+    return result;
+  }
+
+  async executeRandom(CAR_NUM, result){
+    for(let i = 0; i < CAR_NUM; i++){
+      if(MissionUtils.Random.pickNumberInRange(0, 9) >= 4){
+        result[i] = result[i] + '-'
+      }
+    }
+    return result;
+  }
+
   async play() {
     const CAR_ARRAY = await this.getCarName();
     const TRY_NUM = await this.getTryNum();
-    console.log(TRY_NUM);
+    const RESULT = await this.printResult(CAR_ARRAY, TRY_NUM);
   }
 }
 
