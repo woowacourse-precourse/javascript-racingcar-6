@@ -1,6 +1,6 @@
 ## ✅ 잊지 않을 것, 구현 방식
 
-- 상수는 SNAKE_CASE, 그 외 camel_case
+- 최상위 수준의 상수는 SNAKE_CASE, 내부는 소문자 camel_case
 - 템플릿 문자열 사용
 
 ```
@@ -76,7 +76,7 @@ function sayHi(name) {
 
 - startGame(): 게임 시작 함수
 - getCarsName(): 경주할 자동차 이름 입력
-- getTryNumber(): 게임 시도 횟수 입력
+- getTryTimes(): 게임 시도 횟수 입력
 - printExecutionResult(): 게임 실행 결과 출력
 - printFinalWinner(): 최종 우승자 출력
 - endGame(): 게임 종료 함수
