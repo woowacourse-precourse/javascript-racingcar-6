@@ -19,7 +19,7 @@
 |  |
 
 # 기능 목록
-### oneGameStart()
+### oneGameStart
 - 하나의 게임을 실행한다
 - 각 자동차 별로 moveForwardByRandom를 이용하여 전진 시킨다 
 - printRacing을 통해 결과를 출력한다
