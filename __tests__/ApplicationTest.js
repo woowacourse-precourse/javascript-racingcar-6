@@ -1,5 +1,6 @@
 import App from "../src/App.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
+import Car from '../src/Car.js';
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -58,5 +59,19 @@ describe("자동차 경주 게임", () => {
 
     // then
     await expect(app.play()).rejects.toThrow("[ERROR]");
+  });
+
+  test("Car.goForward() 테스트", () => {
+    const randoms = [0, 4, 9, 3, 5];
+    const results = [0, 1, 2, 2, 3];
+    mockRandoms([...randoms]);
+
+    const car = new Car('test');
+
+    results.forEach(result => {
+      car.goForward();
+      expect(car.getDistance()).toBe(result);
+    });
+
   });
 });
