@@ -18,11 +18,11 @@ class App {
       // 입력받은 경주할 자동차들에 대한 예외처리
       cars = new InputCarsException(cars).check();
 
-      // 시도 할 횟수 입력
+      // 시도횟수 입력
       Console.print(systemMessage.TRY_COUNT);
       let tryCount = await Console.readLineAsync("");
 
-      // 입력받은 시도 할 횟수에 대한 예외처리
+      // 입력받은 시도횟수에 대한 예외처리
       tryCount = new InputTryCountException(tryCount).check();
       Console.print("");
 

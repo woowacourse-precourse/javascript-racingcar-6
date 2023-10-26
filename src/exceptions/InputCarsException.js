@@ -6,24 +6,23 @@ class InputCarsException {
   }
 
   checkCarsNameIsEmptyException(cars) {
-    if (this.cars === "")
-      throw new Error(errorCarMessage.INVALID_CAR_NAME_EMPTY);
+    if (cars === "") throw new Error(errorCarMessage.INVALID_CAR_NAME_EMPTY);
   }
 
   checkCarsNameException(cars) {
-    for (let i = 0; i < this.cars.length; i++) {
-      if (this.cars[i].length > 5)
+    for (let i = 0; i < cars.length; i++) {
+      if (cars[i].length > 5)
         throw new Error(errorCarMessage.INVALID_CAR_NAME_LENGTH);
     }
   }
 
   checkCarsDuplicateException(cars) {
     let checkDuplicate = [];
-    for (let i = 0; i < this.cars.length; i++) {
-      if (checkDuplicate.includes(this.cars[i])) {
+    for (let i = 0; i < cars.length; i++) {
+      if (checkDuplicate.includes(cars[i])) {
         throw new Error(errorCarMessage.INVALID_CAR_NAME_DUPLICATE);
       }
-      checkDuplicate.push(this.cars[i]);
+      checkDuplicate.push(cars[i]);
     }
   }
 
