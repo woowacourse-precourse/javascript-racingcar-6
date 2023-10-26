@@ -37,7 +37,7 @@ class App {
 				if (dashCount > cars[i].maxDash) {
 					cars[i].maxDash = dashCount;
 				}
-				Console.print(`${cars[i].name} : ${cars[i].messages.join('')}   ${raceCarNumber}`);
+				Console.print(`${cars[i].name} : ${cars[i].messages.join('')}`);
 			}
 			Console.print('');
 			newRaceTry--;
