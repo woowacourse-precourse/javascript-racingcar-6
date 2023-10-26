@@ -9,5 +9,12 @@ class Move {
     if (number >= 4) return true;
     return false;
   }
+  async moveCurrent(obj) {
+    for (const key in obj) {
+      let dashes = "-".repeat(obj[key]);
+      console.log(key + " : " + dashes);
+    }
+    console.log("");
+  }
 }
 export default Move;

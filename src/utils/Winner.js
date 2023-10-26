@@ -9,7 +9,7 @@ class Winner {
     for (const key in obj) {
       if (obj[key] === maxValue) winners.push(key);
     }
-    return winners;
+    return winners.map((winner) => winner).join(", ");
   }
 }
 export default Winner;

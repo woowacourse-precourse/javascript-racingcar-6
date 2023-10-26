@@ -14,6 +14,10 @@ class Utility {
   isAbleToMove(number) {
     return this.move.isAbleToMove(number);
   }
+  moveCurrent(obj) {
+    return this.move.moveCurrent(obj);
+  }
+
   validation(num) {
     return this.validator.validation(num);
   }
