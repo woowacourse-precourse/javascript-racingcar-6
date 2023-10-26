@@ -67,7 +67,8 @@ class App {
 
     Console.print('실행 결과');
 
-    while ((this.moveChanceCount -= 1)) {
+    while (this.moveChanceCount > 0) {
+      this.moveChanceCount -= 1;
       this.move(this.carNamesAndDistanceMap);
     }
 
