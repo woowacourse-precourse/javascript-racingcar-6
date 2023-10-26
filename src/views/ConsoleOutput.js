@@ -28,6 +28,10 @@ const ConsoleOutput = {
       Console.print(`${car} : ${position}`);
     }
   },
+
+  printGameWinner: (winnerNames) => {
+    Console.print(`최종 우승자: ${winnerNames}`);
+  },
 };
 
 export default ConsoleOutput;

@@ -22,7 +22,7 @@ const arrayToObject = (arr) => {
   return obj;
 };
 
-const GameCalculator = (cars, attemps) => {
+const gameResult = (cars, attemps) => {
   let carPositions = arrayToObject(cars);
 
   for (let cnt = 0; cnt < attemps; cnt++) {
@@ -32,6 +32,26 @@ const GameCalculator = (cars, attemps) => {
     ConsoleOutput.printGameResult(carPositions);
     ConsoleOutput.printEmptyLine();
   }
+
+  return carPositions;
+};
+
+const gameWinner = (carPositions) => {
+  let maxPosition = Math.max(...Object.values(carPositions));
+  let winners = [];
+
+  for (const car in carPositions) {
+    if (carPositions[car] === maxPosition) {
+      winners.push(car);
+    }
+  }
+
+  ConsoleOutput.printGameWinner(winners);
+};
+
+const GameCalculator = (cars, attempts) => {
+  let carPositions = gameResult(cars, attempts);
+  gameWinner(carPositions);
 };
 
 export default GameCalculator;
