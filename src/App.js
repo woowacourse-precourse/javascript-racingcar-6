@@ -23,6 +23,16 @@ class App {
       cars.forEach((car) => Console.print(car.displayRaceResults()));
       Console.print("\n");
     }
+
+    this.displayWinners(cars);
+  }
+
+  displayWinners(cars) {
+    const maxPosition = Math.max(...cars.map((car) => car.position));
+    const winners = cars
+      .filter((car) => car.position === maxPosition)
+      .map((car) => car.name);
+    Console.print(`최종 우승자 : ${winners.join(", ")}`);
   }
 }
 
