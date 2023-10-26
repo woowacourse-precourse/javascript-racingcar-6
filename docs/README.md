@@ -86,9 +86,9 @@ jun : ----
 
 ### Parameters
 
-| Name    | Type     | Description        |
-| ------- | -------- | ------------------ |
-| winners | string[] | 우승한 자동차 이름 |
+| Name   | Type               | Description        |
+| ------ | ------------------ | ------------------ |
+| result | { [car] : string } | 각 자동차의 결과들 |
 
 ### Returns
 
