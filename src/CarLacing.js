@@ -1,7 +1,8 @@
 import { Console } from "@woowacourse/mission-utils";
+import Car from "./Car.js";
 
 class RacingCar {
-    #cars
+    #carList
 
     async start() {
       await this.getCarsNames();
@@ -9,10 +10,10 @@ class RacingCar {
 
     async getCarsNames() {
       const input = await Console.readLineAsync('이름은 쉼표(,) 기준으로 구분\n');
-      this.#cars = input.split(',').reduce((acc, car) => {
-        acc[car] = 0;
-        return acc;
-      },{});
+      this.#carList = input.split(',').forEach((car) => {
+        this.#carList.push(new Car(car, 0));
+      })
+      console.log(this.#carList);
     }
 }
 
