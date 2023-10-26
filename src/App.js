@@ -2,31 +2,38 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 
 class App {
   async play() {
-    const inp = await MissionUtils.Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n')
-    const car_names = inp.split(',').map(e=>e.trim())
-    let car_positions = new Array(car_names.length).fill(0)
-    const game_cnt = Number(await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?\n'))
+    try{
+      const inp = await MissionUtils.Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n')
+      const car_names = inp.split(',').map(e=>e.trim())
+      validateCarNames(car_names)
+      const game_cnt = Number(await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?\n'))
+      ValidateGameCnt(game_cnt)
+      let car_positions = new Array(car_names.length).fill(0)
 
-    MissionUtils.Console.print("\n실행 결과")
-    for(let i=0; i<game_cnt; i++){
-      car_positions = oneGameStart(car_positions)
-      printRacing(car_names, car_positions)
+      MissionUtils.Console.print("\n실행 결과")
+      for(let i=0; i<game_cnt; i++){
+        car_positions = oneGameStart(car_positions)
+        printRacing(car_names, car_positions)
+      }
+      printWinner(car_names, car_positions)
+    }catch(e){
+      throw new Error(e.message)
     }
-    printWinner(car_names, car_positions)
+
   }
 }
 
 const oneGameStart = (car_positions) => {
   const new_car_positions = [...car_positions]
   for(let i in new_car_positions){
-    if(moveForwardByRandom()){
+    if(isMoveForwardByRandom()){
       new_car_positions[i] ++
     }
   }
   return new_car_positions
 }
 
-const moveForwardByRandom = () => {
+const isMoveForwardByRandom = () => {
   const random = MissionUtils.Random.pickNumberInRange(1,9)
   if(random >= 4) return true
   return false
@@ -58,21 +65,14 @@ const printWinner = (car_names, car_positions) => {
   MissionUtils.Console.print('최종 우승자 : ' + winners.join(', '))
 }
 
-/* 
+const ValidateGameCnt = (game_cnt) => {
+  if(Number.isNaN(game_cnt)) throw new Error("[ERROR] 입력이 숫자 형식이 아닙니다")
+}
 
-# 기능 목록
-### oneGameStart
-- 하나의 게임을 실행한다
-- 각 자동차 별로 moveForwardByRandom를 이용하여 전진 시킨다 
-- printRacing을 통해 결과를 출력한다
+const validateCarNames = (car_names) => {
+  for(let car_name of car_names){
+    if(car_name.length>5) throw new Error("[ERROR] 자동차 이름은 5자 이하만 가능합니다")
+  }
+}
 
-### moveForwardByRandom
-- 0 ~ 9사이 무작위 값을 통하여 무작위 값이 4이상인지 판별한다
-- 출력 : moveForward(boolean)
-
-### printRacing
-- 각 자동차 별 배열을 통해 출력 포맷에 맞춰 출력한다
-- 출력 : result(string)
-
-*/
 export default App;
