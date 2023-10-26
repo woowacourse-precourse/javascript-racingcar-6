@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import { MESSAGE } from './Constant.js';
+import { ERROR, MESSAGE } from './Constant.js';
 import Validator from './Validator.js';
 
 class RacingCarGame {
@@ -18,7 +18,10 @@ class RacingCarGame {
 
   #validateCarNameInput(carNameList) {
     if (!Validator.checkHasDuplicate(carNameList)) {
-      throw new Error();
+      throw new Error(ERROR.hasDuplicate);
+    }
+    if (Validator.checkIsExceedMaxNum(carNameList)) {
+      throw new Error(ERROR.exceedMaxNum);
     }
   }
 }
