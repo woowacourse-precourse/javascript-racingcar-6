@@ -27,7 +27,12 @@ class GameCalculator {
     // this.gameInformationArr =
     //   GAME_INFORMATION_ORGANIZER.createGameInformationArr();
 
-    const RACE_MANAGER = new RaceManager(this.arrForRace);
+    const RACE_MANAGER = new RaceManager(
+      this.userInputCarsArr,
+      this.arrForRace
+    );
+
+    RACE_MANAGER.runRace();
   }
 }
 
