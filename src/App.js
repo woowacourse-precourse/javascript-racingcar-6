@@ -21,6 +21,7 @@ class App {
     for(let i = 0; i < array.length; i++) {
       array[i] = new Car(array[i]);
     }
+    return array;
   }
 
   async inputTryTimes() {
@@ -28,6 +29,14 @@ class App {
     if(isNaN(times)) throw new Error(Message.askTryTimes);
     return times;
   }
+
+  getCarsRandomNumber(array) {
+    for(let i = 0; i < array.length; i++) {
+      array[i].randomNumber = Random.pickNumberInRange(0, 9);
+    }
+    return array;
+  }
+
 }
 
 class Car {
@@ -37,9 +46,7 @@ class Car {
     this.moveNumber;
   }
 
-  pickRandomNumber() {
-    this.randomNumber = Random.pickNumberInRange(0, 9);
-  }
+  
 
   addMoveNumber() {
     if(this.randomNumber >= 4) this.moveNumber++;
@@ -63,4 +70,4 @@ const Message = Object.freeze({
 const app = new App();
 app.inputCarNames();
 
-export default App;
+export default App
