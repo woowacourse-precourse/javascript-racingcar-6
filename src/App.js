@@ -7,6 +7,7 @@ function App(initialState = {}) {
     console.log(this.state);
     const raceCount = await inputRaceCount();
     raceStart(this.state, raceCount);
+    console.log(this.state);
   };
 
   this.state = initialState;
@@ -34,7 +35,7 @@ function App(initialState = {}) {
 
   const raceStart = (raceCarNameArr, raceCount) => {
     Console.print("실행결과");
-    let count = 0;
+    let count = 1;
     while (count <= raceCount) {
       raceCarGoOrStop();
       Console.print("\n");
@@ -46,7 +47,10 @@ function App(initialState = {}) {
     this.state.forEach((car) => {
       const { carName, goCount } = car;
       checkGoCount(carName, goCount);
+    });
 
+    this.state.forEach((car) => {
+      const { carName, goCount } = car;
       Console.print(`${carName} : ${goCount} `);
     });
   };
