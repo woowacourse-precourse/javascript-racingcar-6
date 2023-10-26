@@ -5,3 +5,5 @@ class Random {
     return RandomNumber.pickNumberInRange(0, 9);
   }
 }
+
+export default Random;
