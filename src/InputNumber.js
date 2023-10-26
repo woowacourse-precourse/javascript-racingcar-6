@@ -7,7 +7,7 @@ async function InputNumber() {
   if (n <= 0) {
     throw new Error('[ERROR]: 잘못된 입력입니다.');
   }
-  if (Number.isInteger(n)) {
+  if (!Number.isInteger(n)) {
     throw new Error('[ERROR]: 잘못된 입력입니다.');
   }
   return n;
