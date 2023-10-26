@@ -1,5 +1,8 @@
+import { MissionUtils } from '@woowacourse/mission-utils';
 import InputView from './InputView.js';
+import OutputView from './OutputView.js';
 import RacingCar from './RacingCar.js';
+import { GAME_MESSAGES } from './constants.js';
 
 class RacingGame {
   constructor() {
@@ -19,9 +22,14 @@ class RacingGame {
   }
 
   play() {
+    MissionUtils.Console.print('');
+    MissionUtils.Console.print(GAME_MESSAGES.EXECUTION_RESULT);
     for (let i = 0; i < this.tryCount; i++) {
       this.cars.forEach((car) => car.move());
+      OutputView.printRoundResults(this.cars);
     }
+
+    OutputView.printFinalResult(this.cars);
   }
 }
 
