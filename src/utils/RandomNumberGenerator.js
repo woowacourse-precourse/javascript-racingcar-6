@@ -1,13 +1,13 @@
 import { Random } from "@woowacourse/mission-utils";
-import { StaticString } from "../static/Static.js";
+import { StaticNumber } from "../static/Static.js";
 
 const RandomNumberGenerator = {
   generate(size) {
     const numbers = [];
     while (numbers.length < size) {
       const number = Random.pickNumberInRange(
-        StaticString.RANDOM_MIN_NUMBER,
-        StaticString.RANDOM_MAX_NUMBER
+        StaticNumber.RANDOM_MIN_NUMBER,
+        StaticNumber.RANDOM_MAX_NUMBER
       );
       numbers.push(number);
     }
