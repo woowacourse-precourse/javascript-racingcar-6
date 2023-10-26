@@ -12,6 +12,17 @@ class App {
           throw new Error();
         }
       }
+      this.userTryCount();
+    } catch (e) {
+      throw new Error("[ERROR] 잘못된 문자 형식입니다.");
+    }
+  }
+
+  async userTryCount() {
+    try {
+      const tryCount = await MissionUtils.Console.readLineAsync(
+        `${"시도할 횟수는 몇 회인가요?"}\n`,
+      );
     } catch (e) {
       throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
     }
