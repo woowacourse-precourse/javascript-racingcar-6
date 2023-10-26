@@ -13,6 +13,16 @@ const InputView = {
       throw error;
     }
   },
+  async inputgetTryCount() {
+    try {
+      const userInput = await MissionUtils.Console.readLineAsync(
+        GAME_MESSAGES.GET_TRIES
+      );
+      return userInput;
+    } catch (error) {
+      throw error;
+    }
+  },
 };
 
 export default InputView;
