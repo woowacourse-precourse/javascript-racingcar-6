@@ -41,6 +41,13 @@ class App {
     if(randomNumber >= 4) element.result.concat('-');
   }
 
+  printCarRaceResult(raceResultArray) {
+    raceResultArray.forEach((e) => {
+      Console.print(`${e.name} : ${e.result}\n`);
+    });
+    Console.print('\n');
+  }
+
   async play() {
     const userCarNames = await MissionUtils.Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)');
     const userCarNamesArray = this.getUserCarNamesArray(userCarNames);
@@ -50,6 +57,7 @@ class App {
     userCarNamesArray.forEach((element) => { this.makeCarObject(element); });
     while(this.countRepeat < repeatNumber) {
       this.raceResultArray = this.makeCarGoForwardOrStop(this.raceResultArray);
+      this.printCarRaceResult(this.raceResultArray);
       this.countRepeat++;
     }
 
