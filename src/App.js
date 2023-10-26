@@ -6,6 +6,9 @@ class App {
     const carNames = await Console.readLineAsync(INPUT_MESSAGE.CAR_NAME);
     const carNameArray = carNames.split(',');
     App.#validateNameLength(carNameArray);
+
+    const tryCount = await Console.readLineAsync(INPUT_MESSAGE.TRY_COUNT);
+    App.#validateTryCount(tryCount);
   }
 
   static #validateNameLength(carNameArray) {
@@ -14,6 +17,12 @@ class App {
         throw new Error(ERROR_MESSAGE.NAME_LENGTH);
       }
     });
+  }
+
+  static #validateTryCount(count) {
+    if (CONDITION.TRY_COUNT(Number(count))) {
+      throw new Error(ERROR_MESSAGE.TRY_COUNT);
+    }
   }
 }
 
