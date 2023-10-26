@@ -13,8 +13,8 @@ class Print {
       throw new Error(ERROR.CAR_NAME_LENGTH);
     }
 
-    if (!!Validate.minCarsLength(cars)) {
-      throw new Error();
+    if (!Validate.minCarsLength(cars)) {
+      throw new Error(ERROR.CARS_LENGTH);
     }
 
     return cars;
