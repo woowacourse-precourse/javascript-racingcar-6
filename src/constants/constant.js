@@ -17,5 +17,6 @@ export const ERROR_MESSAGE = {
   NOT_NUMBER : "숫자를 입력해주세요.",
   EMPTY_NAME: "차 이름을 입력해주세요.",
   MORE5_NAME: "차 이름은 5글자 이하이어야 합니다.",
-  TRIM_EMPTY_NAME: "이름 앞뒤에 공백이 포함되어 있습니다"
+  TRIM_EMPTY_NAME: "이름 앞뒤에 공백이 포함되어 있습니다.",
+  OVERLAP_NAME: "중복되는 차 이름이 존재합니다."
 }
