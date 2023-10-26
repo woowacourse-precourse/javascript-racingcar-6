@@ -5,3 +5,4 @@ package.json
 .gitignore
 package-lock.json
 .husky
+__tests__
