@@ -27,6 +27,11 @@ class App {
     const INPUT = await Console.readLineAsync();
     const NUM_MOVES = parent(INPUT);
 
+    //예외처리
+    if (isNaN(NUM_MOVES) || NUM_MOVES <= 0) {
+      throw new Error('[ERROR]');
+    }
+
     return NUM_MOVES;
   }
 }
