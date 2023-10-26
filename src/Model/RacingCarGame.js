@@ -1,5 +1,7 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import { randomMinNumber, randomMaxNumber, moveLimitNumber } from "../Util/Constants.js";
+import { convertObjectListFreeze, convertListFreeze } from "../Util/ObjectFreeze.js";
+
 
 function generateRandomNumber() {
   return MissionUtils.Random.pickNumberInRange(randomMinNumber, randomMaxNumber);
@@ -11,28 +13,33 @@ function decideMoveOrStop() {
 }
 
 function getTurnOverResult(racingCarList) {
-  return racingCarList.map((carObject, idx) => {
-    const carName = Object.keys(carObject)[0];
-    if (decideMoveOrStop()) return { [carName] : carObject[carName] + 1 }
-    return { [carName] : carObject[carName] }
+  const newRacingCarList = racingCarList.map((carObject) => {
+    if(decideMoveOrStop()) return getCarNewObject(carObject.carName, carObject.moveCount + 1);
+    return carObject;
   })
+  return convertObjectListFreeze(newRacingCarList);
+}
+
+function getCarNewObject(carName, moveCount) {
+  return {
+    carName : carName,
+    moveCount : moveCount
+  }
 }
 
 function getMaxMoveCount(racingCarList) {
   return racingCarList.reduce((maxMoveCount, carObject) => {
-    const carName = Object.keys(carObject)[0];
-    const carMoveCount = carObject[carName];
-    return Math.max(maxMoveCount, carMoveCount);
+    return Math.max(maxMoveCount, carObject.moveCount);
   }, 0);
 }
 
 function getRacingCarWinner(racingCarList){
   const maxMoveCount = getMaxMoveCount(racingCarList);
-  return racingCarList.filter((carObject) => {
-    const carName = Object.keys(carObject)[0];
-    const carMoveCount = carObject[carName];
-    if (maxMoveCount === carMoveCount) return carName;
-  }).map((carObject) => Object.keys(carObject)[0]);
+  const winnerRacingCarList = racingCarList
+  .filter((carObject) => carObject.moveCount === maxMoveCount)
+  .map((carObject) => carObject.carName);
+
+  return convertListFreeze(winnerRacingCarList);
 }
 
 export { getTurnOverResult, getRacingCarWinner };
