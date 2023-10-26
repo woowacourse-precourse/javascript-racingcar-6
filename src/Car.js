@@ -5,6 +5,14 @@ class Car {
         this.name = name;
         this.moves = 0;
     }
+
+    printMoves() {
+        let totalMoves = '';
+        for (let i = 0; i < this.moves; i++) {
+            totalMoves += '-';
+        }
+        return totalMoves;
+    }
 }
 
 export default Car;

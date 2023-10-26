@@ -7,6 +7,9 @@ class App {
     const playRounds = await this.getNumberOfRounds();
 
     const players = this.createPlayers(carNames);
+
+    MissionUtils.Console.print('\n실행 결과');
+
     this.playGame(players, playRounds);
   }
 
@@ -36,6 +39,7 @@ class App {
   validateRoundCount(input) {
     if (!Number(input)) throw new Error('[ERROR] 숫자가 아닙니다.');
     if (!Number.isInteger(Number(input))) throw new Error('[ERROR] 정수가 아닙니다.');
+    return Number(input);
   }
 
   checkNameFormat(string) {
@@ -56,7 +60,10 @@ class App {
   }
 
   playGame(players, rounds) {
-    this.getPlayerMoves(players);
+    for (let i = 0; i < rounds; i++) {
+      this.getPlayerMoves(players);
+      this.printRoundResults(players);
+    }
   }
 
   getRandomNumber() {
@@ -71,11 +78,19 @@ class App {
   getPlayerMoves(players) {
     for (let i = 0; i < players.length; i++) {
       const randomNumber = this.getRandomNumber();
-      console.log(randomNumber);
       const canMove = this.canMove(randomNumber);
 
       if (canMove) players[i].moves += 1;
     }
+  }
+
+  printRoundResults(players) {
+    for (let i = 0; i < players.length; i++) {
+      const playerProgress = players[i].printMoves();
+      const text = `${players[i].name} : ${playerProgress}`;
+      MissionUtils.Console.print(text);
+    }
+    MissionUtils.Console.print('');
   }
 }
 
