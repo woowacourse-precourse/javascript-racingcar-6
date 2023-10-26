@@ -6,7 +6,8 @@ class App {
     const times = await Console.readAsyncLine("시도할 횟수는 몇 회인가요?\n");
     if(isNaN(times))  throw new Error("[Error] 시도 횟수는 숫자 형식만 가능합니다.")
 
-
+    const finalLen = this.doRace(racers, times);
+    this.EndRace(racers, finalLen);
   }
 
   async getRacer() {
@@ -40,7 +41,8 @@ class App {
   }
 
   EndRace(racers, length) {
-
+    const maxLen = length.reduce((acc,curr)=>Math.max(acc,curr), -1);
+    Console.print("최종 우승자 : "+racers.filter((el,idx)=>length[idx]===maxLen).join(", "));
   }
 }
 
