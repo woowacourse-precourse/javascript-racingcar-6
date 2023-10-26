@@ -1,5 +1,13 @@
+import GameStart from './Views/GameStart';
+
 class App {
-  async play() {}
+  constructor() {
+    this.GAME = new GameStart();
+  }
+
+  async play() {
+    await this.GAME.startGame();
+  }
 }
 
 export default App;

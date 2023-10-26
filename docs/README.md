@@ -4,7 +4,7 @@
 
 ### :white_check_mark: 구현 로직 순서
 
-- [ ] ##### 경주할 자동차 이름 입력 받기.
+- [x] ##### 경주할 자동차 이름 입력 받기.
 
   - [ ] ##### 입력값(이름) 유효성 검사 진행.
 
@@ -20,7 +20,17 @@
 
 
 
+#### 커밋 컨벤션
 
+```
+feat (feature)
+fix (bug fix)
+docs (documentation)
+style (formatting, missing semi colons, …)
+refactor
+test (when adding missing tests)
+chore (maintain)
+```
 
 
 
