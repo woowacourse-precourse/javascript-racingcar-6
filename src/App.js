@@ -87,6 +87,11 @@ class App {
     return carRaceWinnerArray;
   }
 
+  printCarRaceWinner(carRaceWinnerNameArray) {
+    const winnerNameString = carRaceWinnerNameArray.join(', ');
+    MissionUtils.Console.print(`최종 우승자 : ${winnerNameString}`);
+  }
+
   async play() {
     const userCarNames = await MissionUtils.Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)');
     const userCarNamesArray = this.getUserCarNamesArray(userCarNames);
@@ -100,7 +105,7 @@ class App {
       this.countRepeat++;
     }
     const carRaceWinnerNameArray = this.checkCarRaceWinner(this.raceResultArray);
-    this.printCarRaceWinner(carRaceWinnerArray);   
+    this.printCarRaceWinner(carRaceWinnerNameArray);
   }
 }
 
