@@ -58,31 +58,45 @@ class App {
     return forwardNumberArray;
   }
 
-  findCarRaceWinnerIndex(raceResultArray, forwardNumberArray) {
-    const winnerIndexArray = [];
-    const forwardMaxNumber = Math.max(...forwardNumberArray);
+  pushWinnerIndexToArray(element, index, winnerIndexMaxNumber, winnerIndex) {
+    if(winnerIndexMaxNumber === element.result.length){
+      winnerIndex.push(index);
+    }
+    return winnerIndex;
+  }
+
+  makeCarRaceWinnerIndexArray(raceResultArray, winnerIndexMaxNumber) {
+    let winnerIndex = [];
     raceResultArray.forEach((element, index) => {
-      if(forwardMaxNumber === element.result.length) {
-        winnerIndexArray.push(index);
-      }
+      winnerIndex = this.pushWinnerIndexToArray(element, index, winnerIndexMaxNumber, winnerIndex);
     });
-    return winnerIndexArray;
+    return winnerIndex;
+  }
+
+  findCarRaceWinnerIndexMax(forwardNumberArray) {
+    return Math.max(...forwardNumberArray);
+  }
+
+  pushWinnerNameToArray(element, index, winnerIndexArray, winnerNameArray) {
+    if(winnerIndexArray.includes(index)) {
+      winnerNameArray.push(element.name);
+    }
+    return winnerNameArray;
   }
 
   makeCarRaceWinnerArray(raceResultArray, winnerIndexArray) {
-    const carRaceWinnerNameArray = [];
+    let winnerNameArray = [];
     raceResultArray.forEach((element, index) => {
-      if(winnerIndexArray.includes(index)) {
-        carRaceWinnerNameArray.push(element.name);
-      }
+      winnerNameArray = this.pushWinnerNameToArray(element, index, winnerIndexArray, winnerNameArray);
     });
-    return carRaceWinnerNameArray;
+    return winnerNameArray;
   }
 
   checkCarRaceWinner(raceResultArray) {
     /* 한 자동차당 전진한 수를 구하는 함수 */
     const forwardNumberArray = this.findNumberThatWentForward(raceResultArray);
-    const winnerIndexArray = this.findCarRaceWinnerIndex(raceResultArray, forwardNumberArray);
+    const winnerIndexMaxNumber = this.findCarRaceWinnerIndexMax(forwardNumberArray);
+    const winnerIndexArray = this.makeCarRaceWinnerIndexArray(raceResultArray, winnerIndexMaxNumber);
     const carRaceWinnerArray = this.makeCarRaceWinnerArray(raceResultArray, winnerIndexArray);
     return carRaceWinnerArray;
   }
