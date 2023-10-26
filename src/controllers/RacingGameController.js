@@ -1,8 +1,4 @@
 import RacingCar from '../models/RacingCar.js';
-import {
-  validateCarName,
-  validateRoundsNumber,
-} from '../utils/validateUtils.js';
 import { inputView } from '../views/inputView.js';
 import { outputView } from '../views/outputView.js';
 
@@ -23,16 +19,12 @@ class RacingGameController {
     outputView.printWinners(winners);
   }
 
-  #handleCarNamesInput(input) {
-    const names = input.split(',');
-    names.forEach((item) => validateCarName(item));
+  #handleCarNamesInput(names) {
     const cars = names.map((item) => new RacingCar(item));
     this.#racingGame.setCars(cars);
   }
 
-  #handleRoundsNumberInput(input) {
-    const roundsNumber = parseInt(input);
-    validateRoundsNumber(roundsNumber);
+  #handleRoundsNumberInput(roundsNumber) {
     for (let i = 0; i < roundsNumber; i += 1) {
       const roundResult = this.#racingGame.moveAllCars();
       outputView.printResult(roundResult);
