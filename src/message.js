@@ -7,9 +7,8 @@ const GAME_MSG = Object.freeze({
 });
 
 const ERROR_MSG = Object.freeze({
-  CAR_NAME_OVER: "[ERROR] 자동차 이름은 5자 이하로 입력해주세요.",
+  CAR_NAME_OVER_LENGTH: "[ERROR] 자동차 이름은 5자 이하로 입력해주세요.",
   CAR_NAME_SPLIT_COMMA: "[ERROR] 자동차 이름은 쉼표로 구분해주세요.",
-  CAR_NAME_STRING: "[ERROR] 자동차 이름은 문자만 입력해주세요",
   TRY_TIMES_MORE_THAN_ZERO: "[ERROR] 시도 횟수는 1이상으로 입력해주세요.",
   TRY_TIMES_NUMBER: "[ERROR] 입력값은 숫자로 입력해주세요.",
 });
