@@ -1,5 +1,6 @@
 import {
   EMPTY_INPUT,
+  DUPLICATION_INPUT,
   NOT_NUMBER,
   NOT_CAR_NAME,
   OUT_OF_RANGE,
@@ -10,6 +11,13 @@ import {
 const isEmpty = (input) => {
   if (input.length === 0) {
     throw new Error(EMPTY_INPUT);
+  }
+};
+
+const isDuplicateName = (input) => {
+  const setInput = new Set(input);
+  if (setInput.size !== input.length) {
+    throw new Error(DUPLICATION_INPUT);
   }
 };
 
@@ -38,9 +46,16 @@ const isValidNumber = (input) => {
 };
 
 const InputValidator = (input) => {
-  isEmpty(input);
-  isValidCarName(input);
-  isValidLength(input);
+  if (typeof input === "number") {
+    isEmpty(input);
+    isValidNumber(input);
+  }
+  if (Array.isArray(input)) {
+    isEmpty(input);
+    isDuplicateName(input);
+    isValidCarName(input);
+    isValidLength(input);
+  }
 };
 
 export default InputValidator;

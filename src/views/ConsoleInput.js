@@ -7,6 +7,12 @@ const ConsoleInput = {
     const arrInput = input.split(",");
     InputValidator(arrInput);
   },
+
+  getNumberOfAttempts: async () => {
+    let input = await Console.readLineAsync("");
+    const numInput = parseInt(input);
+    InputValidator(input);
+  },
 };
 
 export default ConsoleInput;

@@ -4,7 +4,9 @@ import ConsoleInput from "../views/ConsoleInput.js";
 class RaceGame {
   async startGame() {
     ConsoleOutput.printStartMessage();
-    ConsoleInput.getCarNames();
+    await ConsoleInput.getCarNames();
+    ConsoleOutput.printGetAttempts();
+    await ConsoleInput.getNumberOfAttempts();
   }
 }
 
