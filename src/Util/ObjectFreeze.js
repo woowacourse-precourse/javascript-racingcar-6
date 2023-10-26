@@ -4,5 +4,5 @@ export function convertObjectListFreeze(objectList) {
 }
 
 export function convertListFreeze(list) {
-  return Object.freeze(list.map((carName) => Object.freeze(carName)));
+  return Object.freeze(list);
 }
