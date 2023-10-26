@@ -8,6 +8,7 @@ class App {
 		const cars = carNames.map(carName => ({
 			name: carName,
 			messages: [],
+			maxDash: 0,
 		  }));
 
 		for (const carName of carNames) {
@@ -32,13 +33,20 @@ class App {
 				if (raceCarNumber >= 4) {
 					cars[i].messages.push('-');
 				}
+				const dashCount = cars[i].messages.filter(message => message === '-').length;
+				if (dashCount > cars[i].maxDash) {
+					cars[i].maxDash = dashCount;
+				}
 				Console.print(`${cars[i].name} : ${cars[i].messages.join('')}   ${raceCarNumber}`);
 			}
 			Console.print('');
 			newRaceTry--;
 		}
+		const maxDashCount = Math.max(...cars.map(car => car.maxDash));
+		const winner = cars.filter(car => car.maxDash === maxDashCount);
+		const winnerName = winner.map(winner => winner.name);
+		Console.print(`최종 우승자 : ${winnerName.join(', ')}`);
 
-		Console.print("최종 우승자");
 	}
 }
 
