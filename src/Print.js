@@ -10,7 +10,11 @@ class Print {
     const cars = enteredCars.split(separator.symbol);
 
     if (!Validate.eachCarNameLength(cars)) {
-      throw new Error(ERROR.CAR_LENGTH);
+      throw new Error(ERROR.CAR_NAME_LENGTH);
+    }
+
+    if (!!Validate.minCarsLength(cars)) {
+      throw new Error();
     }
 
     return cars;
