@@ -1,19 +1,21 @@
 class Car {
-  constructor(carNames, tryCount) {
+  constructor() {
     this.cars = [];
-    this.tryCount = tryCount;
-
-    this.initCars(carNames);
+    this.tryCount = 0;
   }
 
-  initCars(carNames) {
+  initCars(carNames, tryCount) {
     carNames.forEach((name) => {
       this.cars.push({
         name,
         position: 0,
       });
     });
+
+    this.tryCount = tryCount;
   }
 }
 
-export default Car;
+const carInstance = new Car();
+
+export default carInstance;
