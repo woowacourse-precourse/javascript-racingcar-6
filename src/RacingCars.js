@@ -11,6 +11,9 @@ class RacingCars {
     const movingLogs = this.#cars.map((car) => car.moveForward());
     return movingLogs.join('\n');
   }
+  #findMaxNumOfMoves() {
+    return this.#cars.reduce((max, car) => (car.compareToMax(max) > 0 ? car : max));
+  }
 }
 
 export default RacingCars;
