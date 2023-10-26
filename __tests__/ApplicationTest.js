@@ -38,6 +38,13 @@ describe('자동차 경주 게임', () => {
     await expect(app.play()).rejects.toThrow('[ERROR]');
   });
 
+  test('이름이 1글자 이상인지 확인하는 테스트', async () => {
+    const inputs = ['1,,', '1'];
+    mockQuestions(inputs);
+    const app = new App();
+    await expect(app.play()).rejects.toThrow('[ERROR]');
+  });
+
   test('전진-정지', async () => {
     // given
     const MOVING_FORWARD = 4;
