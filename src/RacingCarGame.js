@@ -9,9 +9,19 @@ class RacingCarGame {
   async startGame() {
     const carNameList = await this.#getCarNamesInput();
     const numOfAttempts = await this.#getNumOfAttempts();
+
     this.#racingCars = new RacingCars(carNameList);
-    const movingLog = this.#racingCars.getRacingCarsMovingLog();
-    Console.print(movingLog);
+    this.#repeatMovement(numOfAttempts);
+    Console.print(this.#makeFinalWinnerString());
+  }
+
+  #repeatMovement(numOfAttempts) {
+    Console.print(`\n${MESSAGE.executeResult}`);
+
+    for (let i = 0; i < numOfAttempts; i += 1) {
+      const movingLog = this.#racingCars.getRacingCarsMovingLog();
+      Console.print(`${movingLog}\n`);
+    }
   }
 
   async #getCarNamesInput() {
