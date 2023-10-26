@@ -1,5 +1,6 @@
 const CONSTANTS = {
-    vehicleName : '',
+    vehicleNameList : [],
+    gamePlayTimes : 0,
 }
 
 module.exports = { CONSTANTS }
