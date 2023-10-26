@@ -22,7 +22,7 @@ class App {
       throw new Error("[ERROR] 이름이 잘못된 형식입니다.");
     }
 
-    MissionUtils.Console.print(`${carName.join(',')}`);
+    // MissionUtils.Console.print(`${carName.join(',')}`);
     return carName; 
   }
 
@@ -34,26 +34,28 @@ class App {
       throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
     };
 
-    MissionUtils.Console.print(`${numberUserInput}`);
+    // MissionUtils.Console.print(`${numberUserInput}`);
     return numberUserInput; 
   }
 
   playGame(carNames, numberTimes) {
     const result = [];
+    let recordSave = Array(carNames.length).fill(0);
 
     for (let i = 0; i < numberTimes; i++) {
-      const saveResult = [];
-      
-      for (const carName of carNames) {
+      const saveResult = carNames.map((carName, index) => {
         const randomValue = MissionUtils.Random.pickNumberInRange(0, 9);
         const action = randomValue >= 4 ? '-' : '';
-        saveResult.push({ carName, action });
-      }
+        if (action === '-') {
+          recordSave[index]++;
+        }
+        return { carName, action: '-'.repeat(recordSave[index]) };
+      });
       result.push(saveResult);
-    }
-
+    }    
     return result;
   }
+
 
   endGame(result) {
     for (const saveResult of result) {
