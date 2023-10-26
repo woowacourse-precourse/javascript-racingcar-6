@@ -1,4 +1,4 @@
-import { ERROR_MESSAGE } from "../constants/constant";
+import { ERROR_MESSAGE } from "../constants/constant.js";
 
 export function validCars(carsArray) {
   carsArray.forEach((car) => {
