@@ -26,9 +26,18 @@ class InputCarsException {
     }
   }
 
+  checkCarsNameIsSpacedException(cars) {
+    if (cars.includes(" "))
+      throw new Error(errorCarMessage.INVALID_CAR_NAME_DUPLICATE);
+  }
+
   check() {
     this.checkCarsNameIsEmptyException(this.cars);
     this.cars = this.cars.split(",");
+    for (let i = 0; i < this.cars.length; i++) {
+      this.cars[i] = this.cars[i].trim();
+      this.checkCarsNameIsSpacedException(this.cars[i]);
+    }
     this.checkCarsNameException(this.cars);
     this.checkCarsDuplicateException(this.cars);
     return this.cars;
