@@ -52,6 +52,15 @@ class App {
     this.printDistance(carNamesAndDistanceMap);
   }
 
+  getWinners() {
+    const maxDistance = Math.max(...this.carNamesAndDistanceMap.values());
+    const winnersEntries = Array.from(this.carNamesAndDistanceMap).filter(
+      (carNameAndDistance) => carNameAndDistance[1] === maxDistance
+    );
+
+    return winnersEntries.map((winnerEntry) => winnerEntry[0]);
+  }
+
   async play() {
     await this.setCarNames();
     await this.setMoveChanceCount();
@@ -61,6 +70,10 @@ class App {
     while ((this.moveChanceCount -= 1)) {
       this.move(this.carNamesAndDistanceMap);
     }
+
+    const winners = this.getWinners().join(', ');
+
+    Console.print(`최종 우승자 : ${winners}`);
   }
 }
 
