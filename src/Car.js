@@ -1,8 +1,14 @@
 class Car {
+  #name;
   #forwardCount;
 
-  constructor() {
+  constructor(name = 'no name') {
+    this.#name = name;
     this.#forwardCount = 0;
+  }
+
+  getName() {
+    return this.#name;
   }
 
   getForwardCount() {
