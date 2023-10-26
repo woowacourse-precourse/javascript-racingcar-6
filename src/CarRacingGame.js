@@ -13,10 +13,11 @@ export default class CarRacingGame {
 
   carNamesToCarNameArray(carNames = ''){
     return carNames.split(',').map((carName)=>{
-      if(carName.trim().length > 5){
+      const trimCarName = carName.trim();
+      if(trimCarName.length > 5){
         throw new Error('[ERROR] 자동차 이름이 5문자 초과입니다.');
       }
-      return carName.trim();
+      return trimCarName;
     })
   }
 
