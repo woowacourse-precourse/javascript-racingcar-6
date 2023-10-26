@@ -5,8 +5,10 @@ import { getCarName, getTryNum } from './Car.js';
 async function gameStart() {
   const carList = await getCarName();
   let tryNum = await getTryNum();
+  Console.print(PRINT_MESSAGES.PROGRESS_RESULT);
   while (tryNum) {
     carList.map((el) => progressOrStop(el));
+    Console.print('')
     tryNum--;
   }
   Console.print(PRINT_MESSAGES.WINNER_LIST(checkWinner(carList)));
