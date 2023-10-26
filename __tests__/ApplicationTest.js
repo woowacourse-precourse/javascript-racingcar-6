@@ -87,4 +87,12 @@ describe("자동차 경주 게임", () => {
       expect(() => Validation.validateCarName(input)).toThrow("[ERROR]");
     });
   });
+
+  test("Validation.validateDuplicateName() 테스트", () => {
+    const passInput = ['a', 'b', 'c'];
+    const failInput = ['a', 'a', 'b'];
+
+    expect(() => Validation.validateDuplicateName(passInput)).not.toThrow();
+    expect(() => Validation.validateDuplicateName(failInput)).toThrow("[ERROR]");
+  });
 });
