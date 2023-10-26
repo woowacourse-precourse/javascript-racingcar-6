@@ -1,6 +1,8 @@
 import { ERROR_MESSAGE } from './message.js';
 
 const checkErrorInputName = (inputArr) => {
+  const uniqueArr = new Set(inputArr);
+  if (uniqueArr.size !== inputArr.length) throw new Error(ERROR_MESSAGE.DUPLICATE);
   for (const name of inputArr) {
     if (name.length > 5) throw new Error(ERROR_MESSAGE.LENGTH);
   }
