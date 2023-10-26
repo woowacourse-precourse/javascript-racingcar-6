@@ -21,7 +21,7 @@ export function isCheckInputValue(arr) {
 
 export function isCheckInputCount(arr) {
     for(const value of arr) {
-        if(value.length > 6) {
+        if(value.length > 5) {
             throw new Error('[ERROR] 5자 이하만 가능합니다.');
         }
     }
