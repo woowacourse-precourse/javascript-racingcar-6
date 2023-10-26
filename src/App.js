@@ -11,6 +11,9 @@ class App {
   }
 
   checkRightCarName(carList) {
+    const set = new Set(carList);
+    if (set.size !== carList.length)
+      throw new Error("[ERROR] 중복된 이름의 자동차가 있습니다.");
     if (!carList.length)
       throw new Error("[ERROR] 자동차가 입력되지 않았습니다.");
     const ret = carList.every((car) => /^.{1,5}$/.test(car));
@@ -51,6 +54,25 @@ class App {
     MissionUtils.Console.print("");
   }
 
+  getWinner(carMap) {
+    let winnerList = [];
+    let moveDistance = -1;
+    carMap.forEach((cnt, car) => {
+      if (moveDistance < cnt) {
+        winnerList = [car];
+        moveDistance = cnt;
+      } else if (moveDistance === cnt) {
+        winnerList.push(car);
+      }
+    });
+    return winnerList;
+  }
+
+  printWinner(winnerList) {
+    const winnerStr = winnerList.join(",");
+    MissionUtils.Console.print(`최종우승자 : ${winnerStr}`);
+  }
+
   async play() {
     const carStrList = await this.getInput(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
@@ -66,6 +88,9 @@ class App {
       this.playOneRound(carMap);
       this.printCarState(carMap);
     }
+
+    const winnerList = this.getWinner(carMap);
+    this.printWinner(winnerList);
   }
 }
 
