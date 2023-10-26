@@ -11,3 +11,6 @@ export const MIN_TRY_COUNT = 1;
 
 export const MIN_NUM = 0;
 export const MAX_NUM = 9;
+export const CAN_GO_NUM = 4;
+
+export const GO_SYMBOL = "-";
