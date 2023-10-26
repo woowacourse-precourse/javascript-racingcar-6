@@ -1,5 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
-import { GET_INPUT_MESSAGE } from '../utils/constans';
+import { GET_INPUT_MESSAGE } from '../utils/constants.js';
+import GameCalculator from './GameCalculator.js';
 
 class RacingGame {
   constructor() {
@@ -16,9 +17,16 @@ class RacingGame {
     this.userInputTryCount = await console.readLineAsync(
       GET_INPUT_MESSAGE.tryCount
     );
+
+    this.showGameResult();
   }
 
-  showGameResult() {}
+  showGameResult() {
+    const GAME_CALCULATOR = new GameCalculator(
+      this.userInputCars,
+      this.userInputTryCount
+    );
+  }
 }
 
 export default RacingGame;
