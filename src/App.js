@@ -1,9 +1,10 @@
 import inputCarName from './data/inputCarName.js';
+import inputCount from './data/inputCount.js';
 
 class App {
   async play() {
-    const name = await inputCarName();
-    console.log(name);
+    const carArr = await inputCarName();
+    const count = await inputCount();
   }
 }
 
