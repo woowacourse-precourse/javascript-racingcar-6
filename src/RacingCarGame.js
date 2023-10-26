@@ -56,6 +56,11 @@ class RacingCarGame {
       throw new Error(ERROR.notMoving);
     }
   }
+
+  #makeFinalWinnerString() {
+    const finalWinners = this.#racingCars.getWinners();
+    return `${MESSAGE.finalWinner} ${finalWinners.join(', ')}`;
+  }
 }
 
 export default RacingCarGame;
