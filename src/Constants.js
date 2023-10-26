@@ -3,6 +3,9 @@ export const MESSAGE = {
   INPUT_TRY_COUNT: '시도할 횟수는 몇 회인가요?\n',
   GAME_RESULT: '실행 결과',
   FINAL_WINNER: '최종 우승자',
+  INVALID_CAR_NAME: '[ERROR] 1~5 자의 자동차 이름을 입력해 주세요.',
+  INVALID_TRY_COUNT: '[ERROR] 자연수를 입력해 주세요.',
+  DUPLICATE_CAR_NAME: '[ERROR] 중복된 자동차 이름이 존재합니다.',
 }
 
 export default { MESSAGE }
