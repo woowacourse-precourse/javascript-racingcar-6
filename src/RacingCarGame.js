@@ -11,8 +11,15 @@ class RacingCarGame {
   async #getCarNamesInput() {
     const carNames = await Console.readLineAsync(MESSAGE.enterCarNames);
     const splitCarNames = carNames.split(',');
+    this.#validateCarNameInput(splitCarNames);
 
     return splitCarNames;
+  }
+
+  #validateCarNameInput(carNameList) {
+    if (!Validator.checkHasDuplicate(carNameList)) {
+      throw new Error();
+    }
   }
 }
 
