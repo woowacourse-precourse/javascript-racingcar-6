@@ -1,13 +1,14 @@
-// import { Console } from '@woowacourse/mission-utils';
+import { Console } from '@woowacourse/mission-utils';
 import RandomNumberGenerator from './RandomNumberGenerator.js';
 import RaceManager from './RaceManager.js';
+import GameInformationOrganizer from './GameInformationOrganizer.js';
 
 class GameCalculator {
   constructor(userInputCars, userInputTryCount) {
     this.userInputCarsArr = userInputCars.split(',');
     this.userInputTryCount = userInputTryCount;
     this.arrForRace = null;
-    this.baseNumberForCalculate = 4;
+    this.gameInformationObj = null;
   }
 
   calculate() {
@@ -15,8 +16,17 @@ class GameCalculator {
       this.userInputTryCount,
       this.userInputCarsArr.length
     );
+
     this.arrForRace = RANDOM_NUMBER_GENERATOR.generateRandomNumber();
-    // Console.print(this.arrForRace);
+    const GAME_INFORMATION_ORGANIZER = new GameInformationOrganizer(
+      this.userInputCarsArr,
+      this.arrForRace
+    );
+
+    this.gameInformationObj =
+      GAME_INFORMATION_ORGANIZER.createGameInformationObj();
+
+    const RACE_MANAGER = new RaceManager(this.gameInformationObj);
   }
 }
 

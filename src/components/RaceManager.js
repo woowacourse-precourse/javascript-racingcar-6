@@ -1,10 +1,14 @@
 class RaceManager {
-  constructor() {}
+  constructor(gameResultObj) {
+    this.gameResultObj = gameResultObj;
+    this.baseNumberForCalculate = 3;
+    this.resultMessage = '';
+  }
 
   runRace() {}
 
-  moveCar() {
-    return this.userInputCarsArr.length > 3 ? '-' : '';
+  moveCar(randomNumberForMove) {
+    return randomNumberForMove > this.baseNumberForCalculate ? '-' : '';
   }
 }
 
