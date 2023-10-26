@@ -1,6 +1,7 @@
 import App from "../src/App.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 import Car from '../src/Car.js';
+import Validation from '../src/Validation.js';
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -72,6 +73,18 @@ describe("자동차 경주 게임", () => {
       car.goForward();
       expect(car.getDistance()).toBe(result);
     });
+  });
 
+  test("Validation.validateCarName() 테스트", () => {
+    const passInputs = ['a', 'aaa', 'aaaaa'];
+    const failInputs = ['', 'aaaaaa'];
+
+    passInputs.forEach(input => {
+      expect(() => Validation.validateCarName(input)).not.toThrow();
+    });
+
+    failInputs.forEach(input => {
+      expect(() => Validation.validateCarName(input)).toThrow("[ERROR]");
+    });
   });
 });
