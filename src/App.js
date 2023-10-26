@@ -7,7 +7,8 @@ function App(initialState = {}) {
     console.log(this.state);
     const raceCount = await inputRaceCount();
     raceStart(this.state, raceCount);
-    console.log(this.state);
+    const winnerArr = raceWinner();
+    winnerPrint(winnerArr);
   };
 
   this.state = initialState;
@@ -66,6 +67,21 @@ function App(initialState = {}) {
     return this.state.map((item) =>
       item.carName === carName ? { ...item, goCount: goCount } : item
     );
+  };
+  const raceWinner = () => {
+    let maxCount = 0;
+    for (let i = 0; i < this.state.length; i++) {
+      maxCount = Math.max(this.state[i].goCount.length, maxCount);
+    }
+    const winnerObj = this.state.filter((winner) => {
+      return winner.goCount.length === maxCount;
+    });
+    return winnerObj.map((winner) => {
+      return winner.carName;
+    });
+  };
+  const winnerPrint = (winnerArr) => {
+    Console.print(`최종 우승자 : ${winnerArr.join(", ")}`);
   };
 }
 
