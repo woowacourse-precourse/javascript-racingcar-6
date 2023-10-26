@@ -1,6 +1,12 @@
+import GamePlay from "./index.js";
+
 class App {
+  constructor() {
+    this.Game = new GamePlay();
+  }
+
   async play() {
-    console.log("hi");
+    this.Game.getCarNames();
   }
 }
 
