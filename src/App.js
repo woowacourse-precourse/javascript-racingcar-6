@@ -29,6 +29,14 @@ class App {
     this.raceResultArray.push(carObject);
   }
 
+  makeCarGoForwardOrStop(raceResultArray) {
+    raceResultArray.forEach((element) => {
+      const randomNumber = MissionUtils.Random.pickNumberInRange(0,9);
+      element = this.changeCarObjectByRandomNumber(element, randomNumber);
+    });
+    return raceResultArray;
+  }
+
   changeCarObjectByRandomNumber(element, randomNumber) {
     if(randomNumber >= 4) element.result.concat('-');
   }
@@ -40,10 +48,11 @@ class App {
     const repeatNumber = await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
     this.checkRepeatNumber(repeatNumber);
     userCarNamesArray.forEach((element) => { this.makeCarObject(element); });
-    this.raceResultArray.forEach((element) => {
-      const randomNumber = MissionUtils.Random.pickNumberInRange(0,9);
-      element = this.changeCarObjectByRandomNumber(element, randomNumber);
-    });
+    while(this.countRepeat < repeatNumber) {
+      this.raceResultArray = this.makeCarGoForwardOrStop(this.raceResultArray);
+      this.countRepeat++;
+    }
+
   }
 }
 
