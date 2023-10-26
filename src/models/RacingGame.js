@@ -1,17 +1,18 @@
-import RacingCar from './RacingCar';
-
 class RacingGame {
   #cars;
   #winners;
 
-  constructor(names) {
-    this.#cars = names.map((item) => new RacingCar(item));
+  constructor() {
     this.#winners = [];
+  }
+
+  setCars(cars) {
+    this.#cars = cars;
   }
 
   moveAllCars() {
     this.#cars.forEach((car) => car.move());
-    return this.#cars.map((car) => car.getMoveResult()).join(`\n`);
+    return this.#cars.map((car) => car.getMoveResult()).join(`\n`) + '\n';
   }
 
   setWinners() {
