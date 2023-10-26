@@ -1,11 +1,15 @@
 import { Console } from '@woowacourse/mission-utils';
 import { ERROR, MESSAGE } from './Constant.js';
 import Validator from './Validator.js';
+import RacingCars from './RacingCars.js';
 
 class RacingCarGame {
+  #racingCars;
+
   async startGame() {
     const carNameList = await this.#getCarNamesInput();
     const numOfAttempts = await this.#getNumOfAttempts();
+    this.#racingCars = new RacingCars(carNameList);
   }
 
   async #getCarNamesInput() {
