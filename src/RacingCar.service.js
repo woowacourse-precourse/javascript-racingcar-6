@@ -28,7 +28,14 @@ export default class RacingCarService {
     });
   }
 
-  validateRacingCarTryQueryInput(tries) {}
+  validateRacingCarTryQueryInput(tries) {
+    if (Number.isNaN(+tries)) {
+      throw new Error('[ERROR] 숫자를 입력하세요.');
+    }
+    if (+tries < 1) {
+      throw new Error('[ERROR] 1 이상의 숫자를 입력하세요.');
+    }
+  }
 
   play() {}
 
