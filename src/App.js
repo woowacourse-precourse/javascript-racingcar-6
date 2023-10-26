@@ -56,6 +56,29 @@ class App {
     this.racingCars.forEach((car) => car.carMoveEvaluation());
     Console.print("");
   }
+
+  printWinner() {
+    const maxDistance = this.getMaxDistance();
+    const winnersName = this.getWinnersName(maxDistance);
+    Console.print("최종 우승자 : " + winnersName);
+  }
+
+  getWinnersName(maxDistance) {
+    const winners = [];
+    for (const { name, distance } of this.racingCars) {
+      if (distance === maxDistance) winners.push(name);
+    }
+    return winners.join(", ");
+  }
+
+  getMaxDistance() {
+    let maxDistance = 0;
+    for (let i = 0; i < this.racingCars.length; i++) {
+      const currentDistance = this.racingCars[i].distance;
+      if (currentDistance > maxDistance) maxDistance = currentDistance;
+    }
+    return maxDistance;
+  }
 }
 
 export default App;
