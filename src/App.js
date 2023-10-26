@@ -9,10 +9,18 @@ class App {
     );
     const carNameList = await this.inputCarName();
     convertStrToArr(carNameList);
+    Console.print("시도할 횟수는 몇 회인가요?");
+    const attemptCount = await this.inputAttemptCount();
+    Console.print("");
+    Console.print("실행 결과");
   }
   async inputCarName() {
     const carNames = await Console.readLineAsync("");
     return carNames;
+  }
+  async inputAttemptCount() {
+    const countValue = await Console.readLineAsync("");
+    return countValue;
   }
 }
 const convertStrToArr = (nameList) => {
