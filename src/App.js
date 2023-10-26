@@ -6,8 +6,11 @@ class App {
   }
 
   async play() {
-    this.Game.getCarNames();
+    await this.Game.getCarNames();
   }
 }
 
 export default App;
+
+const app = new App();
+app.play();
