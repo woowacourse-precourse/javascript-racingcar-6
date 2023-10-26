@@ -22,7 +22,7 @@ class GameStart {
         Console.print(OUTPUT_MSG.INPUT_PLAY_TIME);
         await this.CONTROL.inputPlayTimes();
         Console.print(CONSTANTS.gamePlayTimes);
-        await this.#moveVehicle();
+        this.#moveVehicle();
     }
 
     #moveVehicle() {
@@ -31,6 +31,12 @@ class GameStart {
             this.CONTROL.setVehicleObjectNumber();
             this.OUT_VIEW.printMoveProcedure();
         }
+        this.#printResult();
+    }
+
+    #printResult() {
+        this.CONTROL.findChampions();
+        console.log(CONSTANTS.champion);
     }
 }
 

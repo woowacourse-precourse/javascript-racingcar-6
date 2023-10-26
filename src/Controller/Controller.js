@@ -48,6 +48,14 @@ class Controller {
         return 0;
     }
 
+    findChampions() {
+        const procedureLength = Object.values(CONSTANTS.moveProcedure).map((move) => move.length);
+        const maxValue = Math.max(...procedureLength);
+        Object.entries(CONSTANTS.moveProcedure).forEach((vehicle) => {
+            if (vehicle[1].length === maxValue) CONSTANTS.champion.push(vehicle[0]);
+        })
+    }
+
 }
 
 export default Controller;

@@ -3,6 +3,7 @@ const CONSTANTS = {
     gamePlayTimes : 0,
     vehicleNameObject : {},
     moveProcedure : {},
+    champion : [],
 }
 
 const MOVE_RANGE = {
