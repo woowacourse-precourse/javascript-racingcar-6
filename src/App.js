@@ -65,14 +65,14 @@ class App {
 
     let maxDistance = 0;
     const winners = [];
-    for (const saveResult of result) {
-      for (const { action, carName } of saveResult) {
-        if (action.length > maxDistance) {
-          maxDistance = action.length;
-          winners.splice(0, winners.length, carName);
-        } else if (action.length === maxDistance) {
-          winners.push(carName);
-        }
+    const lastRound = result[result.length - 1];
+    for (const { action, carName } of lastRound) {
+      if (action.length > maxDistance) {
+        maxDistance = action.length;
+        winners.length = 0;
+        winners.push(carName);
+      } else if (action.length === maxDistance) {
+        winners.push(carName);
       }
     }
     MissionUtils.Console.print(`최종 우승자: ${winners.join(', ')}`); 
