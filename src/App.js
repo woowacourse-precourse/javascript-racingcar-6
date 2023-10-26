@@ -1,5 +1,16 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
+class MemberProgress {
+  constructor(memberName) {
+    this.name = memberName;
+    this.currentProgress = "";
+  }
+
+  updateProgress() {
+    const isMemberStop = MissionUtils.Random.pickNumberInRange(0, 9) < 4;
+    if (!isMemberStop) this.currentProgress += "-";
+  }
+}
 class App {
   async play() {
     const getMemberData = async () => {
@@ -21,6 +32,8 @@ class App {
 
     const memberData = await getMemberData();
     const tryData = await getTryNumber();
+    const progress = memberData.map((member) => new MemberProgress(member));
+    let i = 0;
   }
 }
 
