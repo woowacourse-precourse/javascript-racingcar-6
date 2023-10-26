@@ -1,5 +1,7 @@
 import { Console } from "@woowacourse/mission-utils";
 
+import Car from "../Model/Car.js";
+
 class InputController {
   constructor() {
     this.carNames = [];
@@ -9,6 +11,9 @@ class InputController {
   async init() {
     this.carNames = await InputController.getCarNames();
     this.tryCount = await InputController.getTryCount();
+
+    // 2. 입력된 이름과 시도 횟수를 바탕으로 자동차를 생성한다
+    return InputController.createCar(this.carNames, this.tryCount);
   }
 
   static async getCarNames() {
@@ -47,6 +52,10 @@ class InputController {
     const isOverOne = Number(tryCount) >= 1;
 
     return isNumber && isOverOne;
+  }
+
+  static createCar(carNames, tryCount) {
+    return new Car(carNames, tryCount);
   }
 }
 
