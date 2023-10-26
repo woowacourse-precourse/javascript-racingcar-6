@@ -12,7 +12,15 @@ describe('심판 테스트', () => {
     car2.race(9);
     car3.race(1);
 
+    car1.race(1);
+    car2.race(9);
+    car3.race(7);
+
+    car1.race(3);
+    car2.race(2);
+    car3.race(5);
+
     const winners = Referee.judge([car1, car2, car3]);
-    expect(winners).toContain(car1, car2);
+    expect(winners).toContain(car2, car3);
   });
 });

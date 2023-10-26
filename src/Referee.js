@@ -1,15 +1,11 @@
 class Referee {
   static judge(cars) {
-    let maxCount = 0;
+    const maxCount = cars.reduce(
+      (max, car) => (car.getForwardCount() > max ? car.getForwardCount() : max),
+      0
+    );
 
-    return cars.reduce((winners, car) => {
-      if (car.getForwardCount() >= maxCount) {
-        maxCount = car.getForwardCount();
-        return [...winners, car];
-      }
-
-      return winners;
-    }, []);
+    return cars.filter((car) => car.getForwardCount() === maxCount);
   }
 }
 
