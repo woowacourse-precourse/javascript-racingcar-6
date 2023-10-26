@@ -2,16 +2,17 @@ import { Console, Random } from '@woowacourse/mission-utils';
 
 export default class CarRacingGame {
   #carNameArray;
-  constructor(carNameArray = []) {
-    this.#carNameArray = [...carNameArray];
-  }
 
   async gameStart() {
     const carNames = await this.getCarNames().catch(()=>{
       throw new Error('[ERROR]')
     });
 
-    this.#carNameArray = carNames.split(',').map((carName)=>{
+    this.#carNameArray = this.carNamesToCarNameArray(carNames);
+  }
+
+  carNamesToCarNameArray(carNames = ''){
+    return carNames.split(',').map((carName)=>{
       if(carName.trim().length > 5){
         throw new Error('[ERROR] 자동차 이름이 5문자 초과입니다.');
       }
