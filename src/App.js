@@ -16,6 +16,8 @@ class App {
         "시도할 횟수는 몇 회인가요? \n"
       );
       this.validateTrialCount(roundsInputs);
+      const rounds = Number(roundsInputs);
+
       const cars = carNames.map((name) => new Car(name));
 
       Console.print("실행 결과");
@@ -31,7 +33,7 @@ class App {
       this.displayWinners(cars);
     } catch (error) {
       Console.print(error.message);
-      return;
+      throw error;
     }
   }
 
