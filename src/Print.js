@@ -21,6 +21,10 @@ class Print {
       throw new Error(ERROR.CAR_NAME_HAS_BLANK);
     }
 
+    if (Validate.anyDuplicateCarName(cars)) {
+      throw new Error(ERROR.CARS_NAME_DUPLICATED);
+    }
+
     return cars;
   }
 

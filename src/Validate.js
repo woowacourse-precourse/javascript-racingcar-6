@@ -19,6 +19,16 @@ class Validate {
     return cars.some((car) => BLINK_REGEX.test(car));
   }
 
+  static anyDuplicateCarName(cars) {
+    const set = new Set(...cars);
+
+    if (set.size !== cars.length) {
+      return true;
+    }
+
+    return false;
+  }
+
   static isNumber(value) {
     return ONLY_NUMBER_REGEX.test(value);
   }
