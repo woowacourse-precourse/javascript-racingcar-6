@@ -2,11 +2,19 @@ import { Random, Console } from "@woowacourse/mission-utils";
 
 class App {
   async play() {
+    this.carParticipants();
     // this.numberOfTries();
   }
 
   async carParticipants() {
     //자동자 이름은 5자 이하, 쉼표로 구분
+    // const carsArray = []
+    const inputCarNames = await Console.readLineAsync(
+      "시도할 횟수는 몇 회인가요?"
+    );
+    // carNamesArray.push(inputCarNames)
+    const carNamesArray = inputCarNames.split(",");
+    Console.print(carNamesArray);
   }
 
   async numberOfTries() {
