@@ -32,14 +32,13 @@ class App {
 				if (raceCarNumber >= 4) {
 					cars[i].messages.push('-');
 				}
-				if (raceCarNumber < 4) {
-					cars[i].messages.push(' ');
-				}
-				Console.print(`${cars[i].name} : ${cars[i].messages.join('')} ${raceCarNumber}`);
+				Console.print(`${cars[i].name} : ${cars[i].messages.join('')}   ${raceCarNumber}`);
 			}
 			Console.print('');
 			newRaceTry--;
 		}
+
+		Console.print("최종 우승자");
 	}
 }
 
