@@ -31,6 +31,13 @@ describe('자동차 경주 게임', () => {
     await expect(app.play()).rejects.toThrow('[ERROR]');
   });
 
+  test('중복된 이름 테스트', async () => {
+    const inputs = ['1234,123,1234', '1'];
+    mockQuestions(inputs);
+    const app = new App();
+    await expect(app.play()).rejects.toThrow('[ERROR]');
+  });
+
   test('전진-정지', async () => {
     // given
     const MOVING_FORWARD = 4;
