@@ -2,7 +2,7 @@ import { Console } from "@woowacourse/mission-utils";
 import Car from "./Car.js";
 
 class RacingCar {
-    #carList
+    #carList = [];
 
     async start() {
       await this.getCarsNames();
