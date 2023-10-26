@@ -42,6 +42,7 @@ App.js(컨트롤러) <- RacingCar.service.js(서비스)
 ## validateRacingCarTryQueryInput
 
 - 이동할 횟수가 숫자인지 확인합니다.
+- 이동할 횟수가 1 이상인지 확인합니다.
 
 ### Parameters
 
