@@ -27,6 +27,18 @@ class Car {
     const movingLog = '-'.repeat(this.#numOfMoves);
     return `${this.#name} : ${movingLog}`;
   }
+
+  compareToMax(anotherCar) {
+    return this.#numOfMoves - anotherCar.#numOfMoves;
+  }
+
+  compareIsSame(anotherCar) {
+    return this.#numOfMoves === anotherCar.#numOfMoves;
+  }
+
+  getCarName() {
+    return this.#name;
+  }
 }
 
 export default Car;
