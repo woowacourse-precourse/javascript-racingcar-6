@@ -9,12 +9,19 @@ class App {
       throw "[ERROR] 입력을 받는 중 실패하였습니다.";
     }
   }
+
   checkRightCarName(carList) {
     if (!carList.length)
       throw new Error("[ERROR] 자동차가 입력되지 않았습니다.");
     const ret = carList.every((car) => /^.{1,5}$/.test(car));
     if (!ret)
       throw new Error("[ERROR] 자동차 이름은 1~5자리로 이루어져야 합니다.");
+    return true;
+  }
+
+  checkRightRoundNum(num) {
+    const ret = /^[0-9]+$/.test(num);
+    if (!ret) throw new Error("[ERROR] 올바른 숫자 형식이 아닙니다.");
     return true;
   }
 
@@ -33,6 +40,9 @@ class App {
     const carList = carStrList.split(",");
     this.checkRightCarName(carList);
     const carMap = this.makeCarMap(carList);
+
+    const roundNum = await this.getInput("시도할 횟수는 몇 회인가요?");
+    this.checkRightRoundNum(roundNum);
   }
 }
 
