@@ -58,11 +58,11 @@ class App {
     return forwardNumberArray;
   }
 
-  findCarRaceWinner(forwardNumberArray) {
+  findCarRaceWinner(raceResultArray, forwardNumberArray) {
     const winnerIndexArray = [];
     const forwardMaxNumber = Math.max(forwardNumberArray);
-    forwardNumberArray.forEach((element, index) => {
-      if(forwardMaxNumber === element.result.max) {
+    raceResultArray.forEach((element, index) => {
+      if(forwardMaxNumber === element.result.length) {
         winnerIndexArray.push(index);
       }
     });
@@ -82,7 +82,7 @@ class App {
   checkCarRaceWinner(raceResultArray) {
     /* 한 자동차당 전진한 수를 구하는 함수 */
     const forwardNumberArray = this.findNumberThatWentForward(raceResultArray);
-    const winnerIndexArray = this.findCarRaceWinner(forwardNumberArray);
+    const winnerIndexArray = this.findCarRaceWinner(raceResultArray, forwardNumberArray);
     const carRaceWinnerArray = this.makeCarRaceArray(raceResultArray, winnerIndexArray);
     return carRaceWinnerArray;
   }
