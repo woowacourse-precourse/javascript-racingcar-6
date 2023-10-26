@@ -27,7 +27,8 @@ class RacingCarGame {
 
   async #getNumOfAttempts() {
     const attempt = await Console.readLineAsync(MESSAGE.enterNumbersOfAttempts);
-    this.#validateAttemptsInput(attempt);
+    const numberAttempt = Number(attempt);
+    this.#validateAttemptsInput(numberAttempt);
   }
 
   #validateAttemptsInput(attempt) {
