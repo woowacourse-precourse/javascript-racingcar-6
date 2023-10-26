@@ -5,6 +5,7 @@ class RacingCarGame {
   async startGame() {
     const carNames = await Console.readLineAsync(MESSAGE.enterCarNames);
     const carNameList = carNames.split(',');
+    const numOfAttempts = await Console.readLineAsync(MESSAGE.enterNumbersOfAttempts);
   }
 }
 
