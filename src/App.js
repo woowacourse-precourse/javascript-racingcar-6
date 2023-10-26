@@ -10,7 +10,13 @@ class App {
 			if (carName.length >= 6) {
 				throw new Error('\x1b[31m[ERROR] 5글자 이하의 이름만 입력 가능합니다.\x1b[37m');
 			}
-			console.log(`${carName} :`);
+		}
+		const raceTry = parseInt(await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n'));
+		if (isNaN(raceTry) === true) {
+			throw new Error('\x1b[31m[ERROR] 숫자만 입력 가능합니다.\x1b[37m');
+		}
+		if (raceTry <= 0) {
+			throw new Error('\x1b[31m[ERROR] 1이상의 숫자만 입력 가능합니다.\x1b[37m');
 		}
 	}
 }
