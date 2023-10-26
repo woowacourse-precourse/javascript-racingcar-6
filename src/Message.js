@@ -15,7 +15,7 @@ const Message = {
   },
 
   printResult(result) {
-    const comments = result.map(({ name, step }) => MESSAGE.tellResult({ name, step })).join('');
+    const comments = result.map(({ name, steps }) => MESSAGE.tellResult({ name, steps })).join('');
     return MissionUtils.Console.print(comments);
   },
 
