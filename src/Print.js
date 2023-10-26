@@ -27,6 +27,10 @@ class Print {
   static async getTryCount() {
     const count = await Console.readLineAsync(ASK_TRY_COUNT);
 
+    if (!Validate.isNumber(count)) {
+      throw new Error(ERROR.COUNT_IS_NOT_NUMBER);
+    }
+
     return count;
   }
 }

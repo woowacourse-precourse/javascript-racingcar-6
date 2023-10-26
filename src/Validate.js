@@ -1,4 +1,9 @@
-import { BLINK_REGEX, MIN_CAR_NUMBER, NAME_LENGTH } from "./constant/rule.js";
+import {
+  BLINK_REGEX,
+  MIN_CAR_NUMBER,
+  NAME_LENGTH,
+  ONLY_NUMBER_REGEX,
+} from "./constant/rule.js";
 
 class Validate {
   static eachCarNameLength(cars) {
@@ -11,6 +16,10 @@ class Validate {
 
   static eachCarNameHasBlank(cars) {
     return cars.some((car) => BLINK_REGEX.test(car));
+  }
+
+  static isNumber(value) {
+    return ONLY_NUMBER_REGEX.test(value);
   }
 }
 
