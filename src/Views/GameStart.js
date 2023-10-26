@@ -28,9 +28,7 @@ class GameStart {
     #moveVehicle() {
         this.CONTROL.makeVehicleObject();
         for (let idx = 0; idx < CONSTANTS.gamePlayTimes; idx++) {
-            CONSTANTS.vehicleNameList.forEach((vehicleName) => {
-                CONSTANTS.vehicleNameObject[vehicleName] = this.CONTROL.getMoveNumber(vehicleName);
-            })
+            this.CONTROL.setVehicleObjectNumber();
             this.OUT_VIEW.printMoveProcedure();
         }
     }

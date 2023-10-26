@@ -35,7 +35,11 @@ class Controller {
         });
     }
 
-    getMoveNumber(vehicleName) {
+    setVehicleObjectNumber() {
+        CONSTANTS.vehicleNameList.forEach((vehicleName) => CONSTANTS.vehicleNameObject[vehicleName] = this.#getMoveNumber(vehicleName));
+    }
+
+    #getMoveNumber(vehicleName) {
         const moveNumber = Random.pickNumberInRange(MOVE_RANGE.FROM, MOVE_RANGE.TO);
         if (this.VALIDATE.moveNumberValidate(moveNumber)) {
             CONSTANTS.moveProcedure[vehicleName] += '-';
