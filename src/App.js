@@ -30,14 +30,51 @@ class App {
    */
   gameStart(joinCars, repeatNumber) {
     for (let i = 0; i < repeatNumber; i++) {
-      joinCars.forEach((car) => {
-        if (this.getRandomBoolean()) {
-          car.result += '-';
-        }
-        console.log(`${car.name} : ${car.result}`);
-      });
-      console.log(''); // 빈 줄 추가
+      this.printEachProgress(joinCars);
     }
+
+    this.printResult(this.joinCars);
+  }
+
+  /**
+   * 
+   * @param {{name:string,result:string}[]} joinCars 
+   */
+  printResult(joinCars) {
+    const winnerList = this.getWinner(joinCars);
+    Console.print(`최종 우승자 : ${winnerList.join(', ')}`);
+  }
+
+  /**
+   *
+   * @param {{name:string,result : string}[]} joinCars
+   * @returns {string[]} 우승자 배열
+   */
+  getWinner(joinCars) {
+    const maxLength = joinCars.reduce((maxValue, { result }) => {
+      return maxValue > result.length ? maxValue : result.length;
+    }, 0);
+    const winnerList = joinCars.filter(({ result }) => {
+      return result.length === maxLength;
+    });
+
+    return winnerList.map((winner) => winner.name);
+  }
+
+  /**
+   *
+   * @param {{name:string,result:string}[]} joinCars
+   */
+  printEachProgress(joinCars) {
+    joinCars.forEach((car) => {
+      if (this.getRandomBoolean()) {
+        car.result += '-';
+      }
+
+      Console.print(`${car.name} : ${car.result}`);
+    });
+
+    Console.print(''); // 빈 줄 추가
   }
 
   /**
