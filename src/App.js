@@ -7,6 +7,7 @@ class App {
     const playRounds = await this.getNumberOfRounds();
 
     const players = this.createPlayers(carNames);
+    this.playGame(players, playRounds);
   }
 
   async getCarNames() {
@@ -52,6 +53,29 @@ class App {
       players.push(newPlayer);
     }
     return players;
+  }
+
+  playGame(players, rounds) {
+    this.getPlayerMoves(players);
+  }
+
+  getRandomNumber() {
+    return MissionUtils.Random.pickNumberInRange(0, 9);
+  }
+
+  canMove(number) {
+    if (number < 4) return false;
+    return true;
+  }
+
+  getPlayerMoves(players) {
+    for (let i = 0; i < players.length; i++) {
+      const randomNumber = this.getRandomNumber();
+      console.log(randomNumber);
+      const canMove = this.canMove(randomNumber);
+
+      if (canMove) players[i].moves += 1;
+    }
   }
 }
 
