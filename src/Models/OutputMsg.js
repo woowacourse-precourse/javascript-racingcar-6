@@ -4,7 +4,8 @@ const OUTPUT_MSG = {
 }
 
 const ERROR_MSG = {
-    USER_NAME_ERROR : '[ERROR] 사용자 이름은 5자 이하만 가능합니다.'
+    USER_NAME_ERROR : '[ERROR] 사용자 이름은 5자 이하만 가능합니다.',
+    PLAY_TIME_ERROR : '[ERROR] 잘못된 시도 횟수를 입력하셨습니다.'
 }
 
 module.exports = { OUTPUT_MSG , ERROR_MSG }

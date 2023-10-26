@@ -20,7 +20,9 @@ class Controller {
 
     async inputPlayTimes() {
         try {
-            CONSTANTS.gamePlayTimes = await Console.readLineAsync(OUTPUT_MSG.INPUT_PLAY_TIME);
+            const PLAY_TIME = await Console.readLineAsync(OUTPUT_MSG.INPUT_PLAY_TIME);
+            CONSTANTS.gamePlayTimes = Number(PLAY_TIME);
+            this.VALIDATE.playTimeValidate(CONSTANTS.gamePlayTimes);
         } catch (error) {
             throw error;
         }

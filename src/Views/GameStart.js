@@ -19,6 +19,7 @@ class GameStart {
     async #getPlayTimes() {
         Console.print(OUTPUT_MSG.INPUT_PLAY_TIME);
         await this.CONTROL.inputPlayTimes();
+        Console.print(CONSTANTS.gamePlayTimes);
     }
 
 }
