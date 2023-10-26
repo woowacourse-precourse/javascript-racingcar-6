@@ -29,6 +29,10 @@ class App {
     this.raceResultArray.push(carObject);
   }
 
+  changeCarObjectByRandomNumber(element, randomNumber) {
+    if(randomNumber >= 4) element.result.concat('-');
+  }
+
   async play() {
     const userCarNames = await MissionUtils.Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)');
     const userCarNamesArray = this.getUserCarNamesArray(userCarNames);
@@ -38,6 +42,7 @@ class App {
     userCarNamesArray.forEach((element) => { this.makeCarObject(element); });
     this.raceResultArray.forEach((element) => {
       const randomNumber = MissionUtils.Random.pickNumberInRange(0,9);
+      element = this.changeCarObjectByRandomNumber(element, randomNumber);
     });
   }
 }
