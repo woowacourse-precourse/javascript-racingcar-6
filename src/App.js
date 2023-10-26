@@ -2,7 +2,7 @@ import { startGame } from "./racingCar";
 
 class App {
   async play() {
-    startGame;
+    startGame();
   }
 }
 
