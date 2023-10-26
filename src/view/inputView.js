@@ -6,6 +6,11 @@ const inputView = {
     const input = await Console.readLineAsync(MESSAGE.car_name_input);
     return input;
   },
+
+  async readFinalTrackNum() {
+    const input = await Console.readLineAsync(MESSAGE.final_track_input);
+    return input;
+  },
 };
 
 export default inputView;
