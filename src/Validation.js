@@ -1,6 +1,5 @@
 import { ERROR_MESSAGES } from './Message.js';
 
-
 export const checkCarNameInput = (carName) =>{
   checkCarNameEmpty(carName);
   checkCarNameSpace(carName);
@@ -28,6 +27,6 @@ const checkCarNameType = (carName) => {
     throw new Error(ERROR_MESSAGES.ERROR_NAME_TYPE);
 };
 
-const checkTryNumType = (tryNum) => {
+export const checkTryNumType = (tryNum) => {
   if(tryNum.match(/\D/g)) throw new Error(ERROR_MESSAGES.ERROR_TRY_NUM_TYPE);
 }

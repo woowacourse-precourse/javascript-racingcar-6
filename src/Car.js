@@ -1,9 +1,11 @@
 import { Console } from '@woowacourse/mission-utils';
 import { INPUT_MESSAGES } from './Message.js';
+import { checkCarNameInput, checkTryNumType } from './Validation.js';
 
 export async function getCarName() {
   try {
     const carName = await Console.readLineAsync(INPUT_MESSAGES.INPUT_CAR_NAME);
+    checkCarNameInput(carName);
     return carName.split(',').map(el => el = new Car(el));
   } catch (error) {
     throw error;
@@ -13,6 +15,7 @@ export async function getCarName() {
 export async function getTryNum() {
   try {
     const tryNum = await Console.readLineAsync(INPUT_MESSAGES.INPUT_TRY_NUM);
+    checkTryNumType(tryNum);
     return tryNum;
   } catch (error) {
     throw error;
@@ -25,11 +28,3 @@ class Car {
         this.progress = '';
     }
 }
-
-
-
-/* const input = "pobi,woni";
-const num = '1';
-
-console.log(input.split(',').map(el => el = new Car(el))[0].progress += '-');
-console.log(input); */

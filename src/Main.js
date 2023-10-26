@@ -1,8 +1,8 @@
 import { Console, Random } from '@woowacourse/mission-utils';
-import { INPUT_MESSAGES, PRINT_MESSAGES } from './Message.js';
+import { PRINT_MESSAGES } from './Message.js';
 import { getCarName, getTryNum } from './Car.js';
 
-async function gameStart() {
+export default async function gameStart() {
   const carList = await getCarName();
   let tryNum = await getTryNum();
   Console.print(PRINT_MESSAGES.PROGRESS_RESULT);
@@ -28,5 +28,3 @@ const checkWinner = (carList) => {
     .map((el) => el.name)
     .join(',');
 };
-
-gameStart();
