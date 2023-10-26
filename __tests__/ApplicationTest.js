@@ -46,10 +46,7 @@ describe("자동차 경주 게임", () => {
     });
   });
 
-  test.each([
-    [["pobi,javaji"]],
-    [["pobi,eastjun"]]
-  ])("이름에 대한 예외 처리", async (inputs) => {
+  test.each([[["pobi,javaji"]], [["pobi,eastjun"]]])("이름에 대한 예외 처리", async (inputs) => {
     // given
     mockQuestions(inputs);
 
@@ -58,5 +55,23 @@ describe("자동차 경주 게임", () => {
 
     // then
     await expect(app.play()).rejects.toThrow("[ERROR]");
+  });
+});
+
+describe("기능 단위 테스트", () => {
+  test("기능 1. 경주 참여 자동차 이름 받기", async () => {
+    // given
+    const inputs = ["pobi, woni, jun "];
+    const outputs = ["pobi", "woni", "jun"];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+    await app.readUserRaceCarName();
+
+    // then
+    expect(logSpy).toHaveBeenCalledWith(outputs);
   });
 });
