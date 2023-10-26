@@ -5,35 +5,38 @@ class App {
   async play() {
     try {
       const names = await this.getCarNames();
-      const cars = names.split(",").map((name) => {
-        return new Car(name);
-      });
+      const pureNames = this.isValidName(names);
+      const cars = this.createCars(pureNames);
+
       const times = await this.getPlayTimes();
-      this.printPlayTimes(cars, times);
+      const pureTimes = this.isValidNumber(times);
+
+      this.printPlayTimes(cars, pureTimes);
       this.getWinner(cars);
     } catch (error) {
-      MissionUtils.Console.print(error.message);
+      throw error;
     }
   }
 
   async getCarNames() {
     try {
-      const names = MissionUtils.Console.readLineAsync(
+      const names = await MissionUtils.Console.readLineAsync(
         "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
       );
       return names;
     } catch (error) {
-      MissionUtils.Console.print(error.message);
+      throw error;
     }
   }
 
   async getPlayTimes() {
     try {
-      const times =
-        MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+      const times = await MissionUtils.Console.readLineAsync(
+        "시도할 횟수는 몇 회인가요?\n"
+      );
       return times;
     } catch (error) {
-      MissionUtils.Console.print(error.message);
+      throw error;
     }
   }
 
@@ -67,6 +70,39 @@ class App {
       .join(", ");
 
     MissionUtils.Console.print(`최종 우승자 : ${winner}`);
+  }
+
+  createCars(names) {
+    const cars = [];
+    for (const name of names) {
+      cars.push(new Car(name));
+    }
+    return cars;
+  }
+
+  isValidName(names) {
+    try {
+      const newNames = names.split(",").map((name) => {
+        if (name.length > 5) {
+          throw new Error("[ERROR] 자동차 이름은 5자 이하만 가능합니다.");
+        } else {
+          return name;
+        }
+      });
+      return newNames;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  isValidNumber(times) {
+    try {
+      if (!/^\d+$/.test(times))
+        throw new Error("[ERROR] 잘못된 값을 입력하였습니다.");
+      return parseInt(times, 10);
+    } catch (error) {
+      throw error;
+    }
   }
 }
 
