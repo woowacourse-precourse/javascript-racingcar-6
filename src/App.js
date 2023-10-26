@@ -5,10 +5,11 @@ class App {
   async play() {
     Console.print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
     this.carNames = await this.getCarNamesInput();
-    this.racingCars = [];
     this.carNamesValidation();
+    this.racingCars = [];
     this.buildRacingCar();
     this.repeatCount = await this.getRepeatCountInput();
+    this.repeatCountValidation();
   }
 
   async getCarNamesInput() {
@@ -36,6 +37,11 @@ class App {
   async getRepeatCountInput() {
     Console.print("시도할 횟수는 몇 회인가요?");
     return await Console.readLineAsync("");
+  }
+
+  repeatCountValidation() {
+    const numberValidate = [...this.repeatCount].every((digit) => !isNaN(+digit));
+    if (!numberValidate) throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
   }
 }
 
