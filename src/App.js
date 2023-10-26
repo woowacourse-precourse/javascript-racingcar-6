@@ -38,14 +38,29 @@ class App {
   }
 
   changeCarObjectByRandomNumber(element, randomNumber) {
-    if(randomNumber >= 4) element.result.concat('-');
+    if(randomNumber >= 4) {
+      element.result = element.result.concat('-');
+    }
   }
 
   printCarRaceResult(raceResultArray) {
     raceResultArray.forEach((e) => {
-      Console.print(`${e.name} : ${e.result}\n`);
+      MissionUtils.Console.print(`${e.name} : ${e.result}\n`);
     });
-    Console.print('\n');
+    MissionUtils.Console.print('\n');
+  }
+
+  findNumberThatWentForward(raceResultArray) {
+    const forwardNumberArray = [];
+    raceResultArray.forEach((element) => {
+      forwardNumberArray.push(element.result.length);
+    });
+    return forwardNumberArray;
+  }
+
+  checkCarRaceWinner(raceResultArray) {
+    /* 한 자동차당 전진한 수를 구하는 함수 */
+    const fowardNumberArray = this.findNumberThatWentForward(raceResultArray);
   }
 
   async play() {
@@ -60,7 +75,7 @@ class App {
       this.printCarRaceResult(this.raceResultArray);
       this.countRepeat++;
     }
-
+    this.checkCarRaceWinner(this.raceResultArray);
   }
 }
 
