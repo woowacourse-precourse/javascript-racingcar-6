@@ -1,11 +1,12 @@
 import { Console } from "@woowacourse/mission-utils";
+import { MESSAGE } from "./Constant";
 
 const Output = {
   racingResult() {
-    Console.print();
+    Console.print(MESSAGE.turn);
   },
   winner(nameList) {
-    Console.print('최종 우승자 : ', nameList.map((name) => name).join(', '));
+    Console.print(MESSAGE.end + nameList.map((name) => name).join(', '));
   },
 }
 
