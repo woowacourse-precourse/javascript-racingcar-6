@@ -15,6 +15,9 @@ class App {
 		}));
 
 		carNames.forEach((carName) => {
+			if (carNames < 2) {
+				throw new Error('\x1b[31m[ERROR] 2명 이상의 이름을 입력해야합니다.\x1b[37m');
+			}
 			if (carName.length >= 6) {
 				throw new Error('\x1b[31m[ERROR] 5글자 이하의 이름만 입력 가능합니다.\x1b[37m');
 			}
