@@ -13,7 +13,8 @@ class App {
 
   async getNumberOfRounds() {
     const input = await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
-    return input;
+    const rounds = this.validateRoundCount(input);
+    return rounds;
   }
 
   validateCarNames(input) {
@@ -25,6 +26,11 @@ class App {
     carNames.forEach(this.checkNameLength);
 
     return carNames;
+  }
+
+  validateRoundCount(input) {
+    if (!Number(input)) throw new Error('[ERROR] 숫자가 아닙니다.');
+    if (!Number.isInteger(Number(input))) throw new Error('[ERROR] 정수가 아닙니다.');
   }
 
   checkNameFormat(string) {
