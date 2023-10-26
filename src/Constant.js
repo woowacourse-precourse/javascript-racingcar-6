@@ -1,5 +1,6 @@
 export const Constant = {
   maxNameLength: 5,
+  movable: 4,
   notMove: 0,
 
   minRandomNum: 0,

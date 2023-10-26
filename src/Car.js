@@ -14,6 +14,13 @@ class Car {
   #makeRandomNumber() {
     return Random.pickNumberInRange(Constant.minRandomNum, Constant.maxRandomNum);
   }
+
+  #moveForward() {
+    const randomNumber = this.#makeRandomNumber();
+    if (randomNumber >= Constant.movable) {
+      this.#numOfMoves += 1;
+    }
+  }
 }
 
 export default Car;
