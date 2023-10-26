@@ -20,7 +20,7 @@ class App {
 
       const cars = carNames.map((name) => new Car(name));
 
-      Console.print("실행 결과");
+      Console.print("\n실행 결과");
       for (let i = 0; i < rounds; i++) {
         cars.forEach((car) => {
           const randomNumber = Random.pickNumberInRange(0, 9);
