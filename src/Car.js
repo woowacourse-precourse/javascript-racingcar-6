@@ -7,8 +7,8 @@ class Car {
 
     decideCarAction() {
         let condition = MissionUtils.Random.pickNumberInRange(0, 9);
-        if(condition >= 4) return true;
-        else return false;
+        if(condition >= 4) return true; // 전진
+        else return false; // 멈춤
     }
 }
 
