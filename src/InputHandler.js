@@ -1,10 +1,33 @@
 import { Console } from "@woowacourse/mission-utils";
 import MESSAGE from "./constant/MESSAGE.js";
+import ERROR from "./constant/ERROR.js";
 
 class InputHandler {
-  static async getCarNameArray() {
+  isValidCarName(name) {
+    return /^[A-Za-z]{1,5}$/.test(name);
+  }
+
+  hasDuplicate(array) {
+    return new Set(array).size !== array.length;
+  }
+
+  async getCarNameArray() {
     const inputStr = await Console.readLineAsync(MESSAGE.ENTER_CAR_NAMES);
-    return inputStr.split(",");
+    if (inputStr.trim() === "") {
+      throw new Error(ERROR.EMPTY_INPUT);
+    }
+
+    const array = inputStr.split(",");
+
+    if (array.every(this.isValidCarName) === false) {
+      throw new Error(ERROR.INVALID_CAR_NAMES);
+    }
+
+    if (this.hasDuplicate(array)) {
+      throw new Error(ERROR.DUPLICATE_CAR_NAME);
+    }
+
+    return array;
   }
 }
 
