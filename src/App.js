@@ -69,10 +69,22 @@ class App {
     return winnerIndexArray;
   }
 
+  makeCarRaceArray(raceResultArray, winnerIndexArray) {
+    const carRaceWinnerArray = [];
+    raceResultArray.forEach((element, index) => {
+      if(winnerIndexArray.includes(index)) {
+        carRaceWinnerArray.push(element);
+      }
+    });
+    return carRaceWinnerArray;
+  }
+
   checkCarRaceWinner(raceResultArray) {
     /* 한 자동차당 전진한 수를 구하는 함수 */
     const forwardNumberArray = this.findNumberThatWentForward(raceResultArray);
     const winnerIndexArray = this.findCarRaceWinner(forwardNumberArray);
+    const carRaceWinnerArray = this.makeCarRaceArray(raceResultArray, winnerIndexArray);
+    return carRaceWinnerArray;
   }
 
   async play() {
@@ -87,7 +99,7 @@ class App {
       this.printCarRaceResult(this.raceResultArray);
       this.countRepeat++;
     }
-    this.checkCarRaceWinner(this.raceResultArray);
+    const carRaceWinnerArray = this.checkCarRaceWinner(this.raceResultArray);    
   }
 }
 
