@@ -36,6 +36,9 @@ class App {
     const repeatNumber = await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
     this.checkRepeatNumber(repeatNumber);
     userCarNamesArray.forEach((element) => { this.makeCarObject(element); });
+    this.raceResultArray.forEach((element) => {
+      const randomNumber = MissionUtils.Random.pickNumberInRange(0,9);
+    });
   }
 }
 
