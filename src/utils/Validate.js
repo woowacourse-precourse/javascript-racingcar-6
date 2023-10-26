@@ -9,6 +9,10 @@ class Validate {
         if (!Number.isSafeInteger(playTime)) throw new Error(ERROR_MSG.PLAY_TIME_ERROR);
     }
 
+    moveNumberValidate(moveNumber) {
+        return (moveNumber >= 4) ? true : false;
+    }
+
 }
 
 export default Validate;

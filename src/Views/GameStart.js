@@ -20,6 +20,17 @@ class GameStart {
         Console.print(OUTPUT_MSG.INPUT_PLAY_TIME);
         await this.CONTROL.inputPlayTimes();
         Console.print(CONSTANTS.gamePlayTimes);
+        await this.#moveVehicle();
+    }
+
+    #moveVehicle() {
+        this.CONTROL.makeVehicleObject();
+        for (let idx = 0; idx < CONSTANTS.gamePlayTimes; idx++) {
+            CONSTANTS.vehicleNameList.forEach((vehicleName) => {
+                CONSTANTS.vehicleNameObject[vehicleName] = this.CONTROL.getMoveNumber();
+            })
+        }
+        console.log(CONSTANTS.vehicleNameObject);
     }
 
 }

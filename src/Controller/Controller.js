@@ -1,7 +1,7 @@
 import Validate from '../utils/Validate';
-import { Console } from '@woowacourse/mission-utils';
+import { Console,Random } from '@woowacourse/mission-utils';
 import { OUTPUT_MSG } from '../models/OutputMsg';
-import { CONSTANTS } from '../models/Constants';
+import { CONSTANTS,MOVE_RANGE } from '../models/Constants';
 
 class Controller {
     constructor() {
@@ -26,6 +26,18 @@ class Controller {
         } catch (error) {
             throw error;
         }
+    }
+
+    makeVehicleObject() {
+        CONSTANTS.vehicleNameList.forEach((vehicleName) => {
+            CONSTANTS.vehicleNameObject[vehicleName] = 0
+        });
+    }
+
+    getMoveNumber() {
+        const moveNumber = Random.pickNumberInRange(MOVE_RANGE.FROM, MOVE_RANGE.TO);
+        if (this.VALIDATE.moveNumberValidate(moveNumber)) return moveNumber;
+        return 0;
     }
 
 }
