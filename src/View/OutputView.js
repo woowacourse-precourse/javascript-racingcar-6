@@ -13,4 +13,8 @@ function printMessage(message){
   Console.print(message);
 }
 
-export { printRacingCar, printMessage }
+function printWinnerRacingCarName(winnerCarName){
+  Console.print(GAME_MESSAGE.OUTPUT_WINNERCARNAME(winnerCarName));
+}
+
+export { printRacingCar, printMessage, printWinnerRacingCarName }

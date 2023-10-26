@@ -18,4 +18,21 @@ function getTurnOverResult(racingCarList) {
   })
 }
 
-export default getTurnOverResult;
+function getMaxMoveCount(racingCarList) {
+  return racingCarList.reduce((maxMoveCount, carObject) => {
+    const carName = Object.keys(carObject)[0];
+    const carMoveCount = carObject[carName];
+    return Math.max(maxMoveCount, carMoveCount);
+  }, 0);
+}
+
+function getRacingCarWinner(racingCarList){
+  const maxMoveCount = getMaxMoveCount(racingCarList);
+  return racingCarList.filter((carObject) => {
+    const carName = Object.keys(carObject)[0];
+    const carMoveCount = carObject[carName];
+    if (maxMoveCount === carMoveCount) return carName;
+  }).map((carObject) => Object.keys(carObject)[0]);
+}
+
+export { getTurnOverResult, getRacingCarWinner };
