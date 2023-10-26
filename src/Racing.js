@@ -6,7 +6,7 @@ function Racing(car, n) {
   for(let i=0; i<car.length; i++){
     forward[i] = '';
   }
-  Console.print('실행 결과');
+  Console.print('\n실행 결과');
 
   for (let i=0; i<n; i++) {
     for (let j=0; j<car.length; j++) {
