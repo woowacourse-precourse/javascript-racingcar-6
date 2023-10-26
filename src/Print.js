@@ -7,6 +7,10 @@ class Print {
   static async getCars() {
     const enteredCars = await Console.readLineAsync(ASK_CARS);
 
+    if (Validate.eachSideContainComma(enteredCars)) {
+      throw new Error(ERROR.CARS_START_AND_END_WITH_COMMA);
+    }
+
     const cars = enteredCars.split(separator.symbol).map((car) => car.trim());
 
     if (!Validate.eachCarNameLength(cars)) {

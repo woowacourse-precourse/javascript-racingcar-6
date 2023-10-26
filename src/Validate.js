@@ -4,9 +4,21 @@ import {
   MIN_TRY_COUNT,
   NAME_LENGTH,
   ONLY_NUMBER_REGEX,
+  separator,
 } from "./constant/rule.js";
 
 class Validate {
+  static eachSideContainComma(cars) {
+    if (
+      cars[0] === separator.symbol ||
+      cars[cars.length - 1] === separator.symbol
+    ) {
+      return true;
+    }
+
+    return false;
+  }
+
   static eachCarNameLength(cars) {
     return cars.every((car) => car.length <= NAME_LENGTH);
   }
