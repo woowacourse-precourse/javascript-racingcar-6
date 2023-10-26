@@ -33,6 +33,24 @@ class App {
     return carMap;
   }
 
+  playOneRound(carMap) {
+    carMap.forEach((cnt, car) => {
+      if (this.isCarGo()) carMap.set(car, cnt + 1);
+    });
+  }
+
+  isCarGo() {
+    const randomNum = MissionUtils.Random.pickNumberInRange(0, 9);
+    return randomNum >= 4 ? true : false;
+  }
+
+  printCarState(carMap) {
+    carMap.forEach((cnt, car) => {
+      MissionUtils.Console.print(`${car} : ${"-".repeat(cnt)}`);
+    });
+    MissionUtils.Console.print("");
+  }
+
   async play() {
     const carStrList = await this.getInput(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
@@ -43,6 +61,11 @@ class App {
 
     const roundNum = await this.getInput("시도할 횟수는 몇 회인가요?");
     this.checkRightRoundNum(roundNum);
+
+    for (let i = 0; i < +roundNum; i++) {
+      this.playOneRound(carMap);
+      this.printCarState(carMap);
+    }
   }
 }
 
