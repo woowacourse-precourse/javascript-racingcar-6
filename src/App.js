@@ -39,47 +39,43 @@ class App {
   }
 
   playGame(carNames, numberTimes) {
-    const result = [];
-    let recordSave = Array(carNames.length).fill(0);
+    const result = []; 
+    let recordSave = Array(carNames.length).fill(0); 
 
-    for (let i = 0; i < numberTimes; i++) {
-      const saveResult = carNames.map((carName, index) => {
-        const randomValue = MissionUtils.Random.pickNumberInRange(0, 9);
-        const action = randomValue >= 4 ? '-' : '';
-        if (action === '-') {
-          recordSave[index]++;
+    for (let i = 0; i < numberTimes; i++) { 
+      const saveResult = carNames.map((carName, index) => { 
+        const randomValue = MissionUtils.Random.pickNumberInRange(0, 9); 
+        const action = randomValue >= 4 ? '-' : ''; 
+        if (action === '-') { 
+          recordSave[index]++; 
         }
-        return { carName, action: '-'.repeat(recordSave[index]) };
+        return { carName, action:'-'.repeat(recordSave[index]) }; 
       });
-      result.push(saveResult);
-    }    
-    return result;
+      result.push(saveResult); 
+    }
+    return result; 
   }
-
 
   endGame(result) {
     for (const saveResult of result) {
-      for (const { carName, action } of saveResult) {
-        MissionUtils.Console.print(`${carName} : ${action}`);
+      for (const { carName, action } of saveResult) { 
+        MissionUtils.Console.print(`${carName} : ${action}`);  
       }
     }
 
-    const resultCount = {};
+    let maxDistance = 0;
+    const winners = [];
     for (const saveResult of result) {
-      for (const { carName, action } of saveResult) {
-        if (action === '-') {
-          if (!resultCount[carName]) {
-            resultCount[carName] = 1;
-          } else {
-            resultCount[carName]++;
-          }
+      for (const { action, carName } of saveResult) {
+        if (action.length > maxDistance) {
+          maxDistance = action.length;
+          winners.splice(0, winners.length, carName);
+        } else if (action.length === maxDistance) {
+          winners.push(carName);
         }
       }
     }
-
-    const maxScore = Math.max(...Object.values(resultCount));
-    const winners = Object.keys(resultCount).filter(carName => resultCount[carName] === maxScore);
-    MissionUtils.Console.print(`최종 우승자: ${winners.join(',')}`);
+    MissionUtils.Console.print(`최종 우승자: ${winners.join(', ')}`); 
   }
 }
 
