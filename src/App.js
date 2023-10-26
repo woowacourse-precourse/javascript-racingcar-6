@@ -1,4 +1,5 @@
 import { Random, Console } from "@woowacourse/mission-utils";
+import Car from "./Car.js";
 
 class App {
   async play() {
@@ -8,8 +9,11 @@ class App {
     const roundsInputs = await Console.readLineAsync(
       "시도할 횟수는 몇 회인가요? \n"
     );
+
     const carNames = carNamesInput.split(",");
-    const round = Number(roundsInputs);
+    const rounds = Number(roundsInputs);
+
+    const cars = carNames.map((name) => new Car(name));
   }
 }
 
