@@ -10,6 +10,7 @@ class App {
       });
       const times = await this.getPlayTimes();
       this.printPlayTimes(cars, times);
+      this.getWinner(cars);
     } catch (error) {
       MissionUtils.Console.print(error.message);
     }
@@ -38,17 +39,34 @@ class App {
 
   printPlayTimes(cars, times) {
     MissionUtils.Console.print("\n실행결과");
-    while(times > 0) {
-      for(const car of cars) {
+    while (times > 0) {
+      for (const car of cars) {
         car.move();
       }
 
-      for(const car of cars) {
+      for (const car of cars) {
         car.getPosition();
       }
-      MissionUtils.Console.print("\n");
+      MissionUtils.Console.print("");
       times -= 1;
     }
+  }
+
+  getWinner(cars) {
+    let playResult = [];
+
+    for (const car of cars) {
+      playResult.push(car.position.length);
+    }
+    let winner = cars
+      .filter((car) => {
+        if (car.position.length === Math.max(...playResult))
+          return car.getName();
+      })
+      .map((car) => car.name)
+      .join(", ");
+
+    MissionUtils.Console.print(`최종 우승자 : ${winner}`);
   }
 }
 
