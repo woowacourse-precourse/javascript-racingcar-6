@@ -11,7 +11,7 @@ class App {
     this.joinCars = await this.getJoinCarsArray();
     this.repeatNumber = await this.getRepeatNumber();
 
-    if (Validate.isNotValidNumber(this.repeatNumber)) {
+    if (!Validate.isPositiveInteger(this.repeatNumber)) {
       throw new Error('[ERROR]');
     }
   }
