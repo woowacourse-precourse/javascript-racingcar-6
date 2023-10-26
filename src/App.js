@@ -1,9 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
-import {
-  errorCarMessage,
-  errorTryCountMessage,
-  systemMessage,
-} from "./global/message.js";
+import { systemMessage } from "./global/message.js";
 import RacingGame from "./game/RacingGame.js";
 import InputCarsException from "./exceptions/InputCarsException.js";
 import InputTryCountException from "./exceptions/inputTryCountException.js";
