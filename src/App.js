@@ -1,5 +1,9 @@
+import { startGame } from "./racingCar";
+
 class App {
-  async play() {}
+  async play() {
+    startGame;
+  }
 }
 
 export default App;
