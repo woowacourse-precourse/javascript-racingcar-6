@@ -3,12 +3,12 @@ import MESSAGE from '../Constant/MESSAGE.js';
 
 const inputView = {
   async readCarName() {
-    const input = await Console.readLineAsync(MESSAGE.car_name_input);
+    const input = await Console.readLineAsync(MESSAGE.carNameInput);
     return input;
   },
 
   async readFinalTrackNum() {
-    const input = await Console.readLineAsync(MESSAGE.final_track_input);
+    const input = await Console.readLineAsync(MESSAGE.finalTrackInput);
     return input;
   },
 };
