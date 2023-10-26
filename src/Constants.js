@@ -6,6 +6,8 @@ export const MESSAGE = {
   INVALID_CAR_NAME: '[ERROR] 1~5 자의 자동차 이름을 입력해 주세요.',
   INVALID_TRY_COUNT: '[ERROR] 자연수를 입력해 주세요.',
   DUPLICATE_CAR_NAME: '[ERROR] 중복된 자동차 이름이 존재합니다.',
+  CAR_NAME_MIN_LENGTH: 1,
+  CAR_NAME_MAX_LENGTH: 5,
 }
 
 export default { MESSAGE }
