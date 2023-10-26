@@ -6,4 +6,9 @@ const checkErrorInputName = (inputArr) => {
   }
 };
 
-export default checkErrorInputName;
+const checkErrorPlayNumber = (inputNum) => {
+  if (isNaN(inputNum)) throw new Error(ERROR_MESSAGE.TYPE);
+  if (inputNum < 1) throw new Error(ERROR_MESSAGE.SCOPE);
+};
+
+export { checkErrorInputName, checkErrorPlayNumber };

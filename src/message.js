@@ -7,6 +7,8 @@ const INFO_MESSAGE = Object.freeze({
 
 const ERROR_MESSAGE = Object.freeze({
   LENGTH: '[ERROR] 이름은 5자 이하로 작성해야 합니다.',
+  TYPE: '[ERROR] 숫자를 입력해야 합니다.',
+  SCOPE: '[ERROR] 1 이상의 정수를 입력해야 합니다.',
 });
 
 export { INFO_MESSAGE, ERROR_MESSAGE };
