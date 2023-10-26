@@ -3,18 +3,33 @@ import { Random, Console } from "@woowacourse/mission-utils";
 class App {
   async play() {
     this.carParticipants();
-    // this.numberOfTries();
   }
 
   async carParticipants() {
-    //자동자 이름은 5자 이하, 쉼표로 구분
+    //! 자동자 이름은 5자 이하, 쉼표로 구분
     // const carsArray = []
+    // carNamesArray.push(inputCarNames)
+    // for (const name of carNamesArray) {
+    //   if (name.length <= 4) {
+    //     return Console.print(`${name} : `);
+    //   } else {
+    //     throw new Error("[ERROR]");
+    //   }
+    // }
     const inputCarNames = await Console.readLineAsync(
       "시도할 횟수는 몇 회인가요?"
     );
-    // carNamesArray.push(inputCarNames)
     const carNamesArray = inputCarNames.split(",");
-    Console.print(carNamesArray);
+
+    carNamesArray.map((el) => {
+      const result = Random.pickNumberInRange(0, 9);
+
+      if (el.length <= 4) {
+        return Console.print(`${el} : ${result}`);
+      } else {
+        throw new Error("[ERROR]");
+      }
+    });
   }
 
   async numberOfTries() {
