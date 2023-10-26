@@ -7,8 +7,9 @@ const GuideMessage = Object.freeze({
 
 const ErrorMessage = Object.freeze({
   NAME_LENGTH_ERROR: "[ERROR] 자동차의 이름은 5자를 넘어갈 수 없습니다.",
-  TIMES_LENGTH_ERROR: "[ERROR] 시도할 횟수는 숫자 한 개만 입력할 수 있습니다.",
+  NAME_DUPLICATE_ERROR: "[ERROR] 자동차의 이름은 중복될 수 없습니다.",
   TIMES_NUMBER_ERROR: "[ERROR] 시도할 횟수는 숫자만 입력 가능합니다.",
+  TIMES_ZERO_ERROR: "[ERROR] 시도할 횟수는 0이 될 수 없습니다.",
 });
 
 const StaticString = Object.freeze({
@@ -17,6 +18,7 @@ const StaticString = Object.freeze({
   RANDOM_MIN_NUMBER: 0,
   RANDOM_MAX_NUMBER: 9,
   POSSIBLE_TIMES_NUMBER: /\d/g,
+  ZERO: "0",
   MOVE: "-",
 });
 
