@@ -1,8 +1,8 @@
-import { MissionUtils } from '@woowacourse/mission-utils';
+import { Console } from '@woowacourse/mission-utils';
 
 export default class User {
   async getUserInputCarsNameArray(query) {
-    let input = await MissionUtils.Console.readLineAsync(query);
+    let input = await Console.readLineAsync(query);
     input = input.replace(/ /g, '');
     const cars = await input.split(',');
     // console.log(cars);
