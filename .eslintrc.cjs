@@ -22,5 +22,8 @@ module.exports = {
   rules: {
     semi: [2, "always"],
     "max-depth": ["error", 2],
+    "import/prefer-default-export": "off",
+    "import/extensions": ["off"],
+    "class-methods-use-this": "off",
   },
 };
