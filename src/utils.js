@@ -19,4 +19,22 @@ function isValidCarNames(carNamesString) {
   return true;
 }
 
-export { isValidCarNames };
+function isValidMoveChanceCount(moveChanceCountString) {
+  const moveChanceCountNumber = Number(moveChanceCountString);
+
+  if (isNaN(moveChanceCountNumber)) {
+    throw new Error('[ERROR] 시도 횟수는 유효한 숫자로 설정되어야 합니다.');
+  }
+
+  if (Number.isInteger(moveChanceCountNumber) === false) {
+    throw new Error('[ERROR] 시도 횟수는 정수로 설정되어야 합니다.');
+  }
+
+  if (moveChanceCountNumber < 0) {
+    throw new Error('[ERROR] 시도 횟수는 0 이상의 정수로 설정되어야 합니다.');
+  }
+
+  return true;
+}
+
+export { isValidCarNames, isValidMoveChanceCount };
