@@ -1,7 +1,13 @@
+import CarRacingGame from "./CarRacingGame";
 class App {
   async play() {
     const CarRacing = new CarRacingGame();
-    CarRacing.gameStart();
+    
+    await CarRacing.gameStart().catch((error)=>{
+      throw error;
+    })
+      
+    
   }
 }
 

@@ -21,4 +21,13 @@ describe('자동차 경주 게임', () => {
     const carNames = await game.getCarNames();
     expect(carNames).toEqual('pobi,woni');
   });
+
+  test('문자 길이 5이상', async () => {
+    const inputs = ['pobi,wonisfdd'];
+    mockQuestions(inputs);
+
+    // given
+    const app = new App();
+    await expect(app.play()).rejects.toThrow("[ERROR]");
+  });
 });

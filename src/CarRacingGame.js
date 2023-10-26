@@ -7,10 +7,16 @@ export default class CarRacingGame {
   }
 
   async gameStart() {
-    const carNames = await this.getCarNames();
-    // .catch(()=>{
-    //   throw new Error('[ERROR')
-    // });
+    const carNames = await this.getCarNames().catch(()=>{
+      throw new Error('[ERROR]')
+    });
+
+    this.#carNameArray = carNames.split(',').map((carName)=>{
+      if(carName.trim().length > 5){
+        throw new Error('[ERROR] 자동차 이름이 5문자 초과입니다.');
+      }
+      return carName.trim();
+    })
   }
 
   async getCarNames() {
