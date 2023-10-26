@@ -21,6 +21,24 @@ class App {
       throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
     }
   }
+
+  async playGame() {
+    const carNames = this.carNameInput();
+    const userNumber = await this.numberUserInput();
+    const numberTimes = parseInt(userNumber);
+
+    for (let i = 0; i < numberTimes; i++) {
+      const randomValue = MissionUtils.Random.pickNumberInRange(0, 9);
+
+      for (const carName of carNames) {
+        const action = randomValue >= 4 ? '-' : '';
+        MissionUtils.Console.print(`${carName} : ${action}`);
+      }
+    }
+
+    // 최종 우승자 판별 및 출력 (구현 예정)
+  }
+
 }
 
 export default App;
