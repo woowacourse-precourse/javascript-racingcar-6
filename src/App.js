@@ -58,9 +58,9 @@ class App {
     return forwardNumberArray;
   }
 
-  findCarRaceWinner(raceResultArray, forwardNumberArray) {
+  findCarRaceWinnerIndex(raceResultArray, forwardNumberArray) {
     const winnerIndexArray = [];
-    const forwardMaxNumber = Math.max(forwardNumberArray);
+    const forwardMaxNumber = Math.max(...forwardNumberArray);
     raceResultArray.forEach((element, index) => {
       if(forwardMaxNumber === element.result.length) {
         winnerIndexArray.push(index);
@@ -69,11 +69,11 @@ class App {
     return winnerIndexArray;
   }
 
-  makeCarRaceArray(raceResultArray, winnerIndexArray) {
-    const carRaceWinnerArray = [];
+  makeCarRaceWinnerArray(raceResultArray, winnerIndexArray) {
+    const carRaceWinnerNameArray = [];
     raceResultArray.forEach((element, index) => {
       if(winnerIndexArray.includes(index)) {
-        carRaceWinnerArray.push(element.name);
+        carRaceWinnerNameArray.push(element.name);
       }
     });
     return carRaceWinnerNameArray;
@@ -82,8 +82,8 @@ class App {
   checkCarRaceWinner(raceResultArray) {
     /* 한 자동차당 전진한 수를 구하는 함수 */
     const forwardNumberArray = this.findNumberThatWentForward(raceResultArray);
-    const winnerIndexArray = this.findCarRaceWinner(raceResultArray, forwardNumberArray);
-    const carRaceWinnerArray = this.makeCarRaceArray(raceResultArray, winnerIndexArray);
+    const winnerIndexArray = this.findCarRaceWinnerIndex(raceResultArray, forwardNumberArray);
+    const carRaceWinnerArray = this.makeCarRaceWinnerArray(raceResultArray, winnerIndexArray);
     return carRaceWinnerArray;
   }
 
