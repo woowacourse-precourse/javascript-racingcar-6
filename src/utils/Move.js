@@ -1,8 +1,8 @@
 import { Random } from "@woowacourse/mission-utils";
 
 class Move {
-  async getRandomNumber() {
-    let RandomNumber = await Random.pickNumberInRange(0, 9);
+  async getRandomNumber(min, max) {
+    let RandomNumber = await Random.pickNumberInRange(min, max);
     return RandomNumber;
   }
   async isAbleToMove(number) {
