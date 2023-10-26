@@ -87,6 +87,8 @@
 ### GameViewModel (View Model)
 
 - View와 Model 사이의 비즈니스 로직을 처리한다.
+- Model에서 전달 받은 데이터를 반환한다.
+- 랜덤값에 따라 자동차를 이동시킬지 결정한다.
 
 ### 게임 진행
 
