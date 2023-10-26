@@ -17,8 +17,8 @@ export default class RacingCarService {
 
   validateRacingCarNameQueryInput(cars) {
     cars.forEach((car) => {
-      if (car.length >= 5) {
-        throw new Error('[ERROR] 이름은 5자 이하여야 합니다.');
+      if (car.length >= 5 || car.length === 0) {
+        throw new Error('[ERROR] 이름은 1글자 이상 5글자 이하여야 합니다.');
       }
     });
     cars.forEach((car, index) => {
