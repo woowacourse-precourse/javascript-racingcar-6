@@ -1,6 +1,7 @@
 class RaceManager {
-  constructor(gameResultObj) {
-    this.gameResultObj = gameResultObj;
+  constructor(arrForRace) {
+    // this.gameInformationArr = gameInformationArr;
+    this.arrForRace = arrForRace;
     this.baseNumberForCalculate = 3;
     this.resultMessage = '';
   }
