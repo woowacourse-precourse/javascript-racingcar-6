@@ -23,7 +23,7 @@ describe('자동차 경주 게임', () => {
   });
 
   test('문자 길이 5이상', async () => {
-    const inputs = ['pobi,wonisfdd'];
+    const inputs = ['pobi,woni,,'];
     mockQuestions(inputs);
 
     // given
