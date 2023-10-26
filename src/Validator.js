@@ -1,4 +1,4 @@
-import { Constant } from './Constant.js';
+import { CONSTANT } from './Constant.js';
 
 class Validator {
   static checkHasDuplicate(userInput) {
@@ -7,7 +7,7 @@ class Validator {
 
   static checkIsExceedMaxNum(userInput) {
     for (let i = 0; i < userInput.length; i++) {
-      if (userInput[i].length > Constant.maxNameLength) {
+      if (userInput[i].length > CONSTANT.maxNameLength) {
         return true;
       }
     }
@@ -19,7 +19,7 @@ class Validator {
   }
 
   static checkIsNotMove(userInput) {
-    return userInput === Constant.notMove;
+    return userInput === CONSTANT.notMove;
   }
 }
 

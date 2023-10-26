@@ -1,5 +1,5 @@
 import { Random } from '@woowacourse/mission-utils';
-import { Constant } from './Constant.js';
+import { CONSTANT } from './Constant.js';
 
 class Car {
   #name;
@@ -13,14 +13,14 @@ class Car {
 
   moveForward() {
     const randomNumber = this.#makeRandomNumber();
-    if (randomNumber >= Constant.movable) {
+    if (randomNumber >= CONSTANT.movable) {
       this.#numOfMoves += 1;
     }
     return this.#makeMovingResultString();
   }
 
   #makeRandomNumber() {
-    return Random.pickNumberInRange(Constant.minRandomNum, Constant.maxRandomNum);
+    return Random.pickNumberInRange(CONSTANT.minRandomNum, CONSTANT.maxRandomNum);
   }
 
   #makeMovingResultString() {

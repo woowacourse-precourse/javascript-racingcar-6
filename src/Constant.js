@@ -1,4 +1,4 @@
-export const Constant = {
+export const CONSTANT = {
   maxNameLength: 5,
   movable: 4,
   notMove: 0,
