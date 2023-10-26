@@ -1,6 +1,9 @@
 export const Constant = {
   maxNameLength: 5,
   notMove: 0,
+
+  minRandomNum: 0,
+  maxRandomNum: 9,
 };
 
 export const MESSAGE = {
