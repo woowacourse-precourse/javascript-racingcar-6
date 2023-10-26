@@ -28,11 +28,23 @@ class App {
     const NUM_MOVES = parent(INPUT);
 
     //예외처리
-    if (isNaN(NUM_MOVES) || NUM_MOVES <= 0) {
+    if (NUM_MOVES <= 0 || isNaN(NUM_MOVES)) {
       throw new Error('[ERROR]');
     }
 
     return NUM_MOVES;
+  }
+
+  //랜덤 숫자로 자동차 움직여서 결과 도출
+  resultByRandomNumber() {
+    const RESULT = {};
+    const RANDOM_NUMBER = Random.pickNumberInRange(0, 9);
+    for (let index = 0; index < this.carNames.length; index++) {
+      // 각 carNames의 value에 RANDOM_NUMBER가 4이상이면 true, 4이하면 false가 저장됨
+      RESULT[this.carNames[index]] = RANDOM_NUMBER >= 4;
+    }
+
+    return RESULT;
   }
 }
 
