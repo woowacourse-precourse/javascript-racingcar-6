@@ -1,17 +1,20 @@
+// import { Console } from '@woowacourse/mission-utils';
 import RandomNumberGenerator from './RandomNumberGenerator.js';
 
 class GameCalculator {
   constructor(userInputCars, userInputTryCount) {
     this.userInputCarsArr = userInputCars.split(',');
     this.userInputTryCount = userInputTryCount;
-    this.randomNumberArr = null;
+    this.arrForRace = null;
   }
 
   calculate() {
     const RANDOM_NUMBER_GENERATOR = new RandomNumberGenerator(
-      this.userInputTryCount
+      this.userInputTryCount,
+      this.userInputCarsArr.length
     );
-    this.randomNumberArr = RANDOM_NUMBER_GENERATOR.generateRandomNumber();
+    this.arrForRace = RANDOM_NUMBER_GENERATOR.generateRandomNumber();
+    // Console.print(this.arrForRace);
   }
 }
 
