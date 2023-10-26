@@ -1,16 +1,18 @@
 class Car {
   constructor(carNames, tryCount) {
-    this.cars = {};
+    this.cars = [];
     this.tryCount = tryCount;
 
     this.initCars(carNames);
   }
 
   initCars(carNames) {
-    this.cars = carNames.map((name) => ({
-      name,
-      position: 0,
-    }));
+    carNames.forEach((name) => {
+      this.cars.push({
+        name,
+        position: 0,
+      });
+    });
   }
 }
 
