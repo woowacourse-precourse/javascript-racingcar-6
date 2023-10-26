@@ -10,10 +10,24 @@
     "@babel/core": "^7.23.0",
     "@babel/preset-env": "^7.22.20",
     "babel-jest": "^29.7.0",
-    "jest": "29.6.0"
+    "eslint": "^8.52.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "husky": "^8.0.3",
+    "jest": "29.6.0",
+    "prettier": "^3.0.3"
   },
   "scripts": {
-    "test": "jest --detectOpenHandles"
+    "test": "jest --detectOpenHandles",
+    "postinstall": "husky install",
+    "prepare": "husky install",
+    "lint": "eslint ./src/**/*.js",
+    "lint:fix": "eslint --fix ./src/**/*.js",
+    "prettier": "prettier --write --config ./.prettierrc.json './src/**/*.js'",
+    "format": "prettier --cache --write './src/**/*.js'",
+    "lint-staged": "lint-staged"
   },
   "keywords": [],
   "author": "woowacourse",
@@ -32,5 +46,11 @@
   "engines": {
     "npm": ">=9.6.7",
     "node": ">=18.17.1"
+  },
+  "lint-staged": {
+    "*.{js}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
   }
 }
