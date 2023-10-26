@@ -36,7 +36,7 @@ class GameStart {
 
     #printResult() {
         this.CONTROL.findChampions();
-        console.log(CONSTANTS.champion);
+        Console.print(`${OUTPUT_MSG.WINNER_IS} ${CONSTANTS.champion.join(', ')}`);
     }
 }
 
