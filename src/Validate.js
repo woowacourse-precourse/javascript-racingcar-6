@@ -1,6 +1,7 @@
 import {
   BLINK_REGEX,
   MIN_CAR_NUMBER,
+  MIN_TRY_COUNT,
   NAME_LENGTH,
   ONLY_NUMBER_REGEX,
 } from "./constant/rule.js";
@@ -20,6 +21,10 @@ class Validate {
 
   static isNumber(value) {
     return ONLY_NUMBER_REGEX.test(value);
+  }
+
+  static minTryCount(count) {
+    return count >= MIN_TRY_COUNT;
   }
 }
 
