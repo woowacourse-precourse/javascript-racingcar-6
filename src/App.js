@@ -1,5 +1,9 @@
+import makeCarList from "./util/makeCarList.js";
+
 class App {
-  async play() {}
+  async play() {
+    let cars = makeCarList();
+  }
 }
 
 export default App;
