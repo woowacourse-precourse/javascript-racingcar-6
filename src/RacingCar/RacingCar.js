@@ -1,7 +1,7 @@
 import { Console } from "@woowacourse/mission-utils";
 
-import { MESSAGE } from "./constants.js";
-import Car from "./RacingCar/Car.js";
+import { MESSAGE } from "../constants.js";
+import Car from "./Car.js";
 
 class RacingCar {
   async start() {
