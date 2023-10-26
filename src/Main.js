@@ -8,3 +8,11 @@ async function getCarName() {
     // reject 되는 경우
   }
 }
+
+async function getTryNum() {
+    try {
+      const tryNum = await Console.readLineAsync(INPUT_MESSAGES.INPUT_TRY_NUM);
+    } catch (error) {
+      // reject 되는 경우
+    }
+  }
