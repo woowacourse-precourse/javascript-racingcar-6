@@ -1,16 +1,14 @@
 export const INPUT_MESSAGES = {
   INPUT_CAR_NAME:
     '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
-  INPUT_TRY_NUM: '시도할 횟수는 몇 회인가요?',
+  INPUT_TRY_NUM: '시도할 횟수는 몇 회인가요?\n',
 };
-
-let 우승자, 이름, 진행상황
 
 export const PRINT_MESSAGES = {
   PROGRESS_RESULT: '실행 결과',
-  WINNER_LIST: `최종 우승자 : ${우승자}`,
-  PROGRESS_PROCESS: `${이름} : ${진행상황}`,
-  FORWARD: '-'
+  WINNER_LIST: (winnerList) => `최종 우승자 : ${winnerList}`,
+  PROGRESS_PROCESS: (name, progress) => `${name} : ${progress}`,
+  FORWARD: '-',
 };
 
 export const ERROR_MESSAGES = {
