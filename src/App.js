@@ -28,11 +28,39 @@ class App {
     if (isValidMoveChanceCount(moveChanceCountString)) {
       this.moveChanceCount = Number(moveChanceCountString);
     }
+
+    Console.print('');
+  }
+
+  printDistance(carNamesAndDistanceMap) {
+    for (const [carName, distance] of carNamesAndDistanceMap) {
+      Console.print(`${carName} : ${'-'.repeat(distance)}`);
+    }
+    Console.print('');
+  }
+
+  move(carNamesAndDistanceMap) {
+    for (const [carName, distance] of carNamesAndDistanceMap) {
+      const randomInteger = Random.pickNumberInRange(0, 9);
+
+      if (randomInteger >= 4) {
+        const distanceAfterMove = distance + 1;
+        carNamesAndDistanceMap.set(carName, distanceAfterMove);
+      }
+    }
+
+    this.printDistance(carNamesAndDistanceMap);
   }
 
   async play() {
     await this.setCarNames();
     await this.setMoveChanceCount();
+
+    Console.print('실행 결과');
+
+    while ((this.moveChanceCount -= 1)) {
+      this.move(this.carNamesAndDistanceMap);
+    }
   }
 }
 
