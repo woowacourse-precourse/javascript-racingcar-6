@@ -26,6 +26,7 @@ App.js(컨트롤러) <- RacingCar.service.js(서비스)
 ## validateRacingCarNameQueryInput
 
 - 경주할 자동차 이름이 각각 5자 이하인지 확인합니다.
+- 경주할 자동차 이름이 1글자 이상인지 확인합니다. (e.g. '1,,')
 - 경주할 자동차 이름이 유일한지 확인합니다.
 
 ### Parameters
