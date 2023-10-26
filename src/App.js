@@ -9,7 +9,19 @@ class App {
       "시도할 횟수는 몇 회인가요?\n"
     );
     if (!isValidNumber(number)) throw new Error("[ERROR]");
-    console.log(names, number);
+    const result = initResult(names);
+    MissionUtils.Console.print("");
+    MissionUtils.Console.print("실행 결과");
+    for (let i = 0; i < number; i++) {
+      for (let j = 0; j < result.length; j++) {
+        const randomNumber = MissionUtils.Random.pickNumberInRange(1, 9);
+        if (randomNumber >= 4) result[j][1] += "-";
+      }
+      for (let j = 0; j < result.length; j++) {
+        MissionUtils.Console.print(`${result[j][0]} : ${result[j][1]}`);
+      }
+      MissionUtils.Console.print("");
+    }
   }
 }
 
@@ -24,6 +36,14 @@ const isValidNames = (names) => {
 const isValidNumber = (number) => {
   if (isNaN(number)) return false;
   return true;
+};
+
+const initResult = (names) => {
+  const result = [];
+  for (let name of names.split(",")) {
+    result.push([name, ""]);
+  }
+  return result;
 };
 
 export default App;
