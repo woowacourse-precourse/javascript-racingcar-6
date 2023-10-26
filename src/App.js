@@ -22,6 +22,17 @@ class App {
       }
       MissionUtils.Console.print("");
     }
+    const points = [];
+    const winners = [];
+    for (let j = 0; j < result.length; j++) {
+      points.push(result[j][1].length);
+    }
+    const max_point = Math.max(...points);
+    for (let j = 0; j < result.length; j++) {
+      if (result[j][1].length == max_point) winners.push(result[j][0]);
+    }
+    const temp_result = winners.join(", ");
+    MissionUtils.Console.print(`최종 우승자 : ${temp_result}`);
   }
 }
 
