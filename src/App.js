@@ -1,4 +1,4 @@
-import { Console } from '@woowacourse/mission-utils';
+import { Console, Random } from '@woowacourse/mission-utils';
 import Validate from './Validate.js';
 
 class App {
@@ -8,18 +8,52 @@ class App {
   }
 
   async play() {
+    await this.gameProgress();
+  }
+
+  async gameProgress() {
+    this.getRandomBoolean();
     this.joinCars = await this.getJoinCarsArray();
     this.repeatNumber = await this.getRepeatNumber();
 
     if (!Validate.isPositiveInteger(this.repeatNumber)) {
       throw new Error('[ERROR]');
     }
+
+    this.gameStart(this.joinCars, this.repeatNumber);
+  }
+
+  /**
+   * 모든 입력값을 받은 후 게임이 실행되는 함수
+   * @param {{name: string, result: string}[]} joinCars 객체
+   * @param {string} repeatNumber - 반복 횟수
+   */
+  gameStart(joinCars, repeatNumber) {
+    for (let i = 0; i < repeatNumber; i++) {
+      joinCars.forEach((car) => {
+        if (this.getRandomBoolean()) {
+          car.result += '-';
+        }
+        console.log(`${car.name} : ${car.result}`);
+      });
+      console.log(''); // 빈 줄 추가
+    }
+  }
+
+  /**
+   * 랜덤의 boolean 값을 반환하는 함수
+   * @returns {boolean}
+   */
+  getRandomBoolean() {
+    const random = Random.pickNumberInRange(0, 9);
+    return random >= 4;
   }
 
   async getJoinCarsArray() {
     const cars = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n');
+    const carNames = cars.split(',');
 
-    return cars.split(',');
+    return carNames.map((name) => ({ name, result: '' }));
   }
 
   async getRepeatNumber() {
