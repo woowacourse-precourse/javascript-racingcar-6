@@ -7,6 +7,7 @@ async function getCarName() {
   } catch (error) {
     // reject 되는 경우
   }
+  return carName;
 }
 
 async function getTryNum() {
@@ -15,4 +16,5 @@ async function getTryNum() {
     } catch (error) {
       // reject 되는 경우
     }
+    return tryNum;
   }
