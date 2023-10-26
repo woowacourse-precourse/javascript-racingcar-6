@@ -1,16 +1,29 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 class App {
-  async play() { }
-  
+  async play() {
+    try {
+      const carNames = await this.carNameInput();
+      const userNumber = await this.numberTimesInput();
+      const numberTimes = parseInt(userNumber);
+      const result = this.playGame(carNames, numberTimes);
+      this.endGame(result);
+    } catch (error) {
+      throw new Error("[ERROR]");
+    }
+  }
+
   async carNameInput() {
     MissionUtils.Console.print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
     const carUserInput = await MissionUtils.Console.readLineAsync("");
-    const carName = carUserInput.split(",")
+    const carName = carUserInput.split(",");
 
-    if (!carName || carName.length === 0 || carName.length > 5) {
+    if (carName.some(name => name.trim() === "" || carName.length <= 1 || carName.length > 5)) {
       throw new Error("[ERROR] 이름이 잘못된 형식입니다.");
     }
+
+    MissionUtils.Console.print(`${carName.join(',')}`);
+    return carName; 
   }
 
   async numberTimesInput() {
@@ -19,26 +32,53 @@ class App {
 
     if (!/^\d+$/.test(numberUserInput)) {
       throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
-    }
+    };
+
+    MissionUtils.Console.print(`${numberUserInput}`);
+    return numberUserInput; 
   }
 
-  async playGame() {
-    const carNames = this.carNameInput();
-    const userNumber = await this.numberUserInput();
-    const numberTimes = parseInt(userNumber);
+  playGame(carNames, numberTimes) {
+    const result = [];
 
     for (let i = 0; i < numberTimes; i++) {
-      const randomValue = MissionUtils.Random.pickNumberInRange(0, 9);
-
+      const saveResult = [];
+      
       for (const carName of carNames) {
+        const randomValue = MissionUtils.Random.pickNumberInRange(0, 9);
         const action = randomValue >= 4 ? '-' : '';
+        saveResult.push({ carName, action });
+      }
+      result.push(saveResult);
+    }
+
+    return result;
+  }
+
+  endGame(result) {
+    for (const saveResult of result) {
+      for (const { carName, action } of saveResult) {
         MissionUtils.Console.print(`${carName} : ${action}`);
       }
     }
 
-    // 최종 우승자 판별 및 출력 (구현 예정)
-  }
+    const resultCount = {};
+    for (const saveResult of result) {
+      for (const { carName, action } of saveResult) {
+        if (action === '-') {
+          if (!resultCount[carName]) {
+            resultCount[carName] = 1;
+          } else {
+            resultCount[carName]++;
+          }
+        }
+      }
+    }
 
+    const maxScore = Math.max(...Object.values(resultCount));
+    const winners = Object.keys(resultCount).filter(carName => resultCount[carName] === maxScore);
+    MissionUtils.Console.print(`최종 우승자: ${winners.join(',')}`);
+  }
 }
 
 export default App;
