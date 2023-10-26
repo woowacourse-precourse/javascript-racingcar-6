@@ -13,4 +13,13 @@ const CONDITION = Object.freeze({
   TRY_COUNT: (count) => count < 1 || Math.ceil(count) !== count,
 });
 
-export { INPUT_MESSAGE, ERROR_MESSAGE, CONDITION };
+const OUTPUT_MESSAGE = Object.freeze({
+  RESULT: '\n실행 결과',
+  RACE: (name, forwardCount) => `${name} : ${'-'.repeat(forwardCount)}`,
+  WINNERS: (winners) => {
+    const winnerNames = winners.map((winner) => winner.getName());
+    return `최종 우승자 : ${winnerNames.join(', ')}`;
+  },
+});
+
+export { INPUT_MESSAGE, ERROR_MESSAGE, CONDITION, OUTPUT_MESSAGE };
