@@ -14,7 +14,7 @@ class RacingGame {
 
   async getUserInput() {
     this.userInputCars = await Console.readLineAsync(GET_INPUT_MESSAGE.carName);
-    this.userInputTryCount = await console.readLineAsync(
+    this.userInputTryCount = await Console.readLineAsync(
       GET_INPUT_MESSAGE.tryCount
     );
 
@@ -26,6 +26,8 @@ class RacingGame {
       this.userInputCars,
       this.userInputTryCount
     );
+
+    GAME_CALCULATOR.calculate();
   }
 }
 
