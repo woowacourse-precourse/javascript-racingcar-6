@@ -60,3 +60,12 @@ function sayHi(name) {
 - 가장 많이 앞서 나간 자동차가 우승
 - 우승자는 한 명 이상일 수 있음
 - 우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분
+
+## 🛠️ 구현 함수명
+
+- startGame(): 게임 시작 함수
+- getCarsName(): 경주할 자동차 이름 입력
+- getTryNumber(): 게임 시도 횟수 입력
+- printExecutionResult(): 게임 실행 결과 출력
+- printFinalWinner(): 최종 우승자 출력
+- endGame(): 게임 종료 함수
