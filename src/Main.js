@@ -7,8 +7,9 @@ async function gameStart() {
   let tryNum = await getTryNum();
   while (tryNum) {
     carList.map((el) => progressOrStop(el));
-    tryNum--
+    tryNum--;
   }
+  Console.print(PRINT_MESSAGES.WINNER_LIST(checkWinner(carList)));
 }
 
 const progressOrStop = (car) => {
@@ -16,6 +17,14 @@ const progressOrStop = (car) => {
     car.progress += PRINT_MESSAGES.FORWARD;
   }
   Console.print(PRINT_MESSAGES.PROGRESS_PROCESS(car.name, car.progress));
+};
+
+const checkWinner = (carList) => {
+  return carList
+    .sort((a, b) => b.progress.length - a.progress.length)
+    .filter((el) => el.progress.length === carList[0].progress.length)
+    .map((el) => el.name)
+    .join(',');
 };
 
 gameStart();
