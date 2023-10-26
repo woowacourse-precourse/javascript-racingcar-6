@@ -2,9 +2,9 @@
 
 ## 1. 기본 설정
 
-- [ ] Node.js 버전 18.17.1에서 실행 가능하도록 설정한다.
-- [ ] 필요한 package를 설치하고 설정한다. (`@woowacourse/mission-utils` 등)
-- [ ] Jest를 설치하여 테스트 환경을 구성한다.
+- [x] Node.js 버전 18.17.1에서 실행 가능하도록 설정한다.
+- [x] 필요한 package를 설치하고 설정한다. (`@woowacourse/mission-utils` 등)
+- [x] Jest를 설치하여 테스트 환경을 구성한다.
 
 ## 2. 입력 받기
 
