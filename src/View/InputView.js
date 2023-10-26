@@ -1,5 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
-import { checkRacingCarName } from "../Util/Validation.js";
+import { checkRacingCarName, checkGameCount } from "../Util/Validation.js";
 
 async function inputRacingCarName(message) {
   const racingCarName = await Console.readLineAsync(message);
@@ -11,7 +11,8 @@ async function inputRacingCarName(message) {
 
 async function inputGameCount (message) {
   const gameCount = await Console.readLineAsync(message);
-
+  checkGameCount(gameCount);
+  return Number(gameCount);
 }
 
 export { inputRacingCarName, inputGameCount }

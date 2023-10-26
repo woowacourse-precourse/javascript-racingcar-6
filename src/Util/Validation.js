@@ -7,4 +7,9 @@ function checkRacingCarName(racingCarName){
   })
 }
 
-export { checkRacingCarName }
+function checkGameCount(gameCount){
+  if (gameCount === '') throw new Error(ERROR_MESSAGE.GAMECOUNT_BLANK);
+  if (/[^0-9]/.test(gameCount)) throw new Error(ERROR_MESSAGE.GAMECOUNT_NOTNUM);
+}
+
+export { checkRacingCarName, checkGameCount }
