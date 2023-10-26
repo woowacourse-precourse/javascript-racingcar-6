@@ -1,4 +1,4 @@
-import RacingCarService from './RacingCar.service';
+import RacingCarService from './RacingCar.service.js';
 
 class App {
   #racingCarService;
