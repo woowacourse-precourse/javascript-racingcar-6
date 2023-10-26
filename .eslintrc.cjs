@@ -21,5 +21,6 @@ module.exports = {
   },
   rules: {
     semi: [2, "always"],
+    "max-depth": ["error", 2],
   },
 };
