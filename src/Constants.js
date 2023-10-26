@@ -8,6 +8,8 @@ export const MESSAGE = {
   DUPLICATE_CAR_NAME: '[ERROR] 중복된 자동차 이름이 존재합니다.',
   CAR_NAME_MIN_LENGTH: 1,
   CAR_NAME_MAX_LENGTH: 5,
+  CAR_FORWARD_RANGE: [0, 9],
+  CAR_FORWARD_CONDITION: 4,
 }
 
 export default { MESSAGE }
