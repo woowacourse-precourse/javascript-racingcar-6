@@ -10,6 +10,7 @@ class App {
     this.buildRacingCar();
     this.repeatCount = await this.getRepeatCountInput();
     this.repeatCountValidation();
+    this.repeatGame();
   }
 
   async getCarNamesInput() {
@@ -42,6 +43,18 @@ class App {
   repeatCountValidation() {
     const numberValidate = [...this.repeatCount].every((digit) => !isNaN(+digit));
     if (!numberValidate) throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
+  }
+
+  repeatGame() {
+    Console.print("");
+    Console.print("실행 결과");
+    for (let i = 0; i < this.repeatCount; i++) {
+      this.repeatCarMove();
+    }
+  }
+  repeatCarMove() {
+    this.racingCars.forEach((car) => car.carMoveEvaluation());
+    Console.print("");
   }
 }
 
