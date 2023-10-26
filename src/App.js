@@ -1,5 +1,9 @@
+import playGame from "./game/playGame";
+
 class App {
-  async play() {}
+  async play() {
+    await playGame();
+  }
 }
 
 export default App;
