@@ -44,9 +44,9 @@ App.js(컨트롤러) <- RacingCar.service.js(서비스)
 
 ### Parameters
 
-| Name | Type   | Description |
-| ---- | ------ | ----------- |
-| try  | string | 이동할 횟수 |
+| Name  | Type   | Description |
+| ----- | ------ | ----------- |
+| tries | string | 이동할 횟수 |
 
 ### Returns
 
@@ -68,10 +68,10 @@ jun : ----
 
 ### Parameters
 
-| Name | Type     | Description        |
-| ---- | -------- | ------------------ |
-| cars | string[] | 경주할 자동차 이름 |
-| try  | number   | 시도할 횟수        |
+| Name  | Type     | Description        |
+| ----- | -------- | ------------------ |
+| cars  | string[] | 경주할 자동차 이름 |
+| tries | number   | 시도할 횟수        |
 
 ### Returns
 
