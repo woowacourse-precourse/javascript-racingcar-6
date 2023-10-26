@@ -31,14 +31,13 @@ describe("사용자 입력 테스트", () => {
   });
 
   test.each([
-    ["  ", ERROR.EMPTY_INPUT],
-    ["       pobi,woni", ERROR.INVALID_CAR_NAMES],
-    ["pobi,woni         ", ERROR.INVALID_CAR_NAMES],
+    [" ", ERROR.EMPTY_INPUT],
+    ["joo,", ERROR.INPUT_ENDS_WITH_COMMA],
+    ["joo,woni,", ERROR.INPUT_ENDS_WITH_COMMA],
+    ["pobi,woni  ", ERROR.INVALID_CAR_NAMES],
     ["pobi, woni,java", ERROR.INVALID_CAR_NAMES],
     ["pobi,woni,joowoni", ERROR.INVALID_CAR_NAMES],
-    ["pobi,woni,hhhhhh", ERROR.INVALID_CAR_NAMES],
-    ["pobi,pobi,pobi", ERROR.DUPLICATE_CAR_NAME],
-    ["woni,woni,woni", ERROR.DUPLICATE_CAR_NAME],
+    ["pobi,pobi", ERROR.DUPLICATE_CAR_NAME],
     ["woni,woni,wond,java", ERROR.DUPLICATE_CAR_NAME],
   ])("자동차 이름 입력 예외 처리 - %s", (input, expectedError) => {
     mockQuestions([input]);
