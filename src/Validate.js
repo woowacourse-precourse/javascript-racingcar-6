@@ -32,7 +32,7 @@ class Validate {
   }
 
   static anyDuplicateCarName(cars) {
-    const set = new Set(...cars);
+    const set = new Set(cars);
 
     if (set.size !== cars.length) {
       return true;
