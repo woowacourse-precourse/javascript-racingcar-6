@@ -28,11 +28,10 @@ class App {
     return TRY
   }
 
-
   async play() {
     const CAR_ARRAY = await this.getCarName();
     const TRY_NUM = await this.getTryNum();
-    console.log(CAR_ARRAY);
+    console.log(TRY_NUM);
   }
 }
 
