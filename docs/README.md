@@ -12,8 +12,13 @@
 
 ## doRace(racers, times): 자동차 경주 진행
 - 자동차(racers)와 시도할 횟수(times)를 입력받아 경주 시작
-- Random.pickNumberInRange() 활용
+- 한 번 시도할 때마다 현재 거리를 출력
 - 시도 횟수만큼 시도 후 이동 거리를 number 배열 형태로 반환
+
+## getLength(length): 자동차별 1회 시도 진행
+- 자동차의 현재 이동 거리(length)를 입력받아 1회 시도한 결과를 반환
+- 무작위로 생성한 값이 4 이상일 경우 이동 거리 1 증가, 4 미만일 경우 제자리로 반환
+- Random.pickNumberInRange() 활용
 
 ## printCurrentRace(racers, length): 현재 진행 상황 출력
 - 자동차(racers)와 차별 이동 거리(length)를 받아 결과 출력
