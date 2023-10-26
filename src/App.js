@@ -29,6 +29,7 @@ class App {
       // 레이싱게임 진행
       console.log(cars, tryCount);
       let winner = new RacingGame(cars, tryCount).racing();
+
       // 최종 우승자 출력하기
       Console.print(`최종 우승자 : ${winner.join(", ")}`);
     } catch (error) {
