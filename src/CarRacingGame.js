@@ -18,15 +18,23 @@ class CarRacingGame {
             }
 
             this.cars = carNames.split(",");
-
             
+            if (this.validateCarNames(this.cars) === false) {
+                throw new Error("[ERROR] 잘못된 입력입니다.");
+            }
+
         } catch (error) {
             throw error;
         }
     }
 
 
-
+    validateCarNames(cars) {
+        cars.forEach(car => {
+            if(car.length > 5 || car.length === 0) return false;
+            return true;
+        });
+    }
 
 }
 
