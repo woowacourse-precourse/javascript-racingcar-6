@@ -48,7 +48,7 @@ export default class RacingCarService {
     });
     for (let i = 0; i < tries; ++i) {
       cars.forEach((car) => {
-        result[car] += Random.pickNumberInRange(1, 9) >= 4 ? '_' : '';
+        result[car] += Random.pickNumberInRange(1, 9) >= 4 ? '-' : '';
         Console.print(`${car} : ${result[car]}`);
       });
       Console.print('');
@@ -56,5 +56,17 @@ export default class RacingCarService {
     this.printResult(result);
   }
 
-  printResult(result) {}
+  printResult(result) {
+    let max = 0;
+    for (const [key, value] of Object.entries(result)) {
+      max = Math.max(value.length);
+    }
+    const winners = [];
+    for (const [key, value] of Object.entries(result)) {
+      if (value.length === max) {
+        winners.push(key);
+      }
+    }
+    Console.print(`최종 우승자 : ${winners.join(', ')}`);
+  }
 }
