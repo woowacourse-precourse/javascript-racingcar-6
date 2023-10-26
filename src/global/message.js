@@ -10,6 +10,7 @@ export const errorCarMessage = {
   INVALID_CAR_NAME_LENGTH: "[ERROR] 자동차 이름은 5자 이하만 가능합니다.",
   INVALID_CAR_NAME_DUPLICATE:
     "[ERROR] 중복된 자동차 이름은 사용할 수 없습니다.",
+  INVALID_CAR_NAME_SPACED: "[ERROR] 자동차 이름 사이에 공백이 올 수 없습니다.",
 };
 
 export const errorTryCountMessage = {
