@@ -73,10 +73,10 @@ class App {
     const carRaceWinnerArray = [];
     raceResultArray.forEach((element, index) => {
       if(winnerIndexArray.includes(index)) {
-        carRaceWinnerArray.push(element);
+        carRaceWinnerArray.push(element.name);
       }
     });
-    return carRaceWinnerArray;
+    return carRaceWinnerNameArray;
   }
 
   checkCarRaceWinner(raceResultArray) {
@@ -99,7 +99,8 @@ class App {
       this.printCarRaceResult(this.raceResultArray);
       this.countRepeat++;
     }
-    const carRaceWinnerArray = this.checkCarRaceWinner(this.raceResultArray);    
+    const carRaceWinnerNameArray = this.checkCarRaceWinner(this.raceResultArray);
+    this.printCarRaceWinner(carRaceWinnerArray);   
   }
 }
 
