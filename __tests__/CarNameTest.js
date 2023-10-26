@@ -7,7 +7,7 @@ describe('자동차 이름 유효성 테스트', () => {
 
     expect(() => {
       InputValidator.validateCarNames(carNames);
-    }).toThrow(ERROR_MESSAGES.tooLongCarName);
+    }).toThrow(ERROR_MESSAGES.tooLongName);
   });
 
   it('자동차 이름을 의도적으로 입력하지 않음', () => {
@@ -15,7 +15,7 @@ describe('자동차 이름 유효성 테스트', () => {
 
     expect(() => {
       InputValidator.validateCarNames(carNames);
-    }).toThrow(ERROR_MESSAGES.emptyCarName);
+    }).toThrow(ERROR_MESSAGES.emptyName);
   });
 
   it('글자 사이의 의도된 공백', () => {
@@ -23,7 +23,23 @@ describe('자동차 이름 유효성 테스트', () => {
 
     expect(() => {
       InputValidator.validateCarNames(carNames);
-    }).toThrow(ERROR_MESSAGES.tooLongCarName);
+    }).toThrow(ERROR_MESSAGES.tooLongName);
+  });
+
+  it('특수문자 사용', () => {
+    const carNames = ['K!A'];
+
+    expect(() => {
+      InputValidator.validateCarNames(carNames);
+    }).toThrow(ERROR_MESSAGES.noSpecialChar);
+  });
+
+  it('중복된 자동차 이름 입력', () => {
+    const carNames = ['volvo', 'Volvo'];
+
+    expect(() => {
+      InputValidator.validateCarNames(carNames);
+    }).toThrow(ERROR_MESSAGES.noDuplicateName);
   });
 
   it('단일의 유효한 자동차 이름 입력', () => {
