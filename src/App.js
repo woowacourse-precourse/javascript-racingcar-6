@@ -2,7 +2,7 @@ import { Console, Random } from "@woowacourse/mission-utils";
 
 class App {
   async play() {
-    const racers = await getRacer();
+    const racers = await this.getRacer();
     const times = await Console.readAsyncLine("시도할 횟수는 몇 회인가요?\n");
     if(isNaN(times))  throw new Error("[Error] 시도 횟수는 숫자 형식만 가능합니다.")
 
@@ -16,10 +16,13 @@ class App {
   }
 
   doRace(racers, times) {
-    let length = racers.map(el=>0);
+    let length = racers.map(_=>0);
     for(let i=0;i<times;i++) {
       length = getLength(length);
+      this.printCurrentRace(racers, length);
+      Console.print("");
     }
+    return length;
   }
 
   getLength(length) {
