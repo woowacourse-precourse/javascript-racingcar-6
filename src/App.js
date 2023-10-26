@@ -1,5 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
 import racingCar from "./racingCar.js";
+
 class App {
   async play() {
     Console.print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -7,6 +8,7 @@ class App {
     this.racingCars = [];
     this.carNamesValidation();
     this.buildRacingCar();
+    this.repeatCount = await this.getRepeatCountInput();
   }
 
   async getCarNamesInput() {
@@ -29,6 +31,11 @@ class App {
       const car = new racingCar(carName);
       this.racingCars.push(car);
     }
+  }
+
+  async getRepeatCountInput() {
+    Console.print("시도할 횟수는 몇 회인가요?");
+    return await Console.readLineAsync("");
   }
 }
 
