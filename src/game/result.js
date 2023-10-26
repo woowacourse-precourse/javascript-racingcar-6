@@ -1,13 +1,8 @@
-import advanceCondition from '../data/advanceCondition.js';
+import gameRounds from './gameRounds.js';
 
 export default function result(carArr, count) {
     let strArr = [...Array(carArr.length).fill('')];
-    for(let i = 0; i < count; i++) {
-        for(let j = 0; j < carArr.length; j++) {
-            if(advanceCondition()) {
-                strArr[j] += '-';
-            }
-            console.log(carArr[j],':', strArr[j]);
-        }
+    for(let round = 0; round < count; round++) {
+        gameRounds(carArr, strArr);
     }
 }
