@@ -12,7 +12,7 @@ class RacingGame {
 
   moveAllCars() {
     this.#cars.forEach((car) => car.move());
-    return this.#cars.map((car) => car.getMoveResult()).join(`\n`) + '\n';
+    return this.#cars.map((car) => car.getMoveResult()).join(`\n`);
   }
 
   setWinners() {

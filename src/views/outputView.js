@@ -6,7 +6,7 @@ const outputView = {
     Console.print(GAME_MESSAGES.resultHeader);
   },
   printResult(result) {
-    Console.print(result);
+    Console.print(result + '\n');
   },
 
   printWinners(winners) {
