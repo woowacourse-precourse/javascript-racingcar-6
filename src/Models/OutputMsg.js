@@ -3,4 +3,8 @@ const OUTPUT_MSG = {
     INPUT_PLAY_TIME : '시도할 횟수는 몇 회인가요?',
 }
 
-module.exports = { OUTPUT_MSG }
+const ERROR_MSG = {
+    USER_NAME_ERROR : '[ERROR] 사용자 이름은 5자 이하만 가능합니다.'
+}
+
+module.exports = { OUTPUT_MSG , ERROR_MSG }
