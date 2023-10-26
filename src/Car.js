@@ -2,7 +2,9 @@ import { Random } from '@woowacourse/mission-utils';
 import { CAR } from './Constants.js';
 
 class Car {
+  /** @type {string} */
   #name
+  /** @type {number} */
   #distance
 
   /**
