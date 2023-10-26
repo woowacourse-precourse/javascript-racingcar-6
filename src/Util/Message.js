@@ -1,6 +1,10 @@
+import { progressBar } from "./Constants.js";
+
 const GAME_MESSAGE = Object.freeze({
   INPUT_CARNAME : '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
   INPUT_GAMECOUNT : '시도할 횟수는 몇 회인가요?\n',
+  OUTPUT_TITLE : '실행결과\n',
+  OUTPUT_CARRACING : (carName, moveCount) => `${carName} : ${progressBar.repeat(moveCount)}`
 })
 
 const ERROR_MESSAGE = Object.freeze({
