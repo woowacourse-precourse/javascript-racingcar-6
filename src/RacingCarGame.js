@@ -10,6 +10,8 @@ class RacingCarGame {
     const carNameList = await this.#getCarNamesInput();
     const numOfAttempts = await this.#getNumOfAttempts();
     this.#racingCars = new RacingCars(carNameList);
+    const movingLog = this.#racingCars.getRacingCarsMovingLog();
+    Console.print(movingLog);
   }
 
   async #getCarNamesInput() {
