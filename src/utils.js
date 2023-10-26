@@ -1,7 +1,5 @@
-import { NUMBER_RANGE } from './constants.js';
 import { MissionUtils } from '@woowacourse/mission-utils';
 
-export const generateRandomNumbers = MissionUtils.Random.pickNumberInRange(
-  NUMBER_RANGE.MIN,
-  NUMBER_RANGE.MAX
-);
+export const generateRandomNumber = (min, max) => {
+  MissionUtils.Random.pickNumberInRange(min, max);
+};
