@@ -1,4 +1,5 @@
 import { Random } from '@woowacourse/mission-utils';
+import { GAME_NUMBERS, SYMBOLS } from '../utils/constants.js';
 
 class RacingCar {
   #name;
@@ -32,7 +33,7 @@ class RacingCar {
   }
 
   move() {
-    if (this.#canMove) {
+    if (this.#canMove()) {
       this.#position += 1;
       this.#moveResult += SYMBOLS.dash;
     }
