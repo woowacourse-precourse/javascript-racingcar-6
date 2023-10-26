@@ -4,3 +4,10 @@ export const MESSAGE = {
   executeResult: '실행 결과\n',
   finalWinner: '최종 우승자 :',
 };
+
+export const ERROR = {
+  hasDuplicate: '[ERROR] 중복된 자동차 이름이 있습니다.',
+  exceedMaxNum: '[ERROR] 길이가 5자 초과인 이름이 있습니다. 이름은 5자 이하여야 합니다.',
+  isNotANumber: '[ERROR] 입력값이 숫자가 아닙니다.',
+  isZero: '[ERROR] 입력값이 0입니다. 게임을 위해서 실행 횟수는 0보다 커야 합니다.',
+};
