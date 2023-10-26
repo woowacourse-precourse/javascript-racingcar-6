@@ -4,9 +4,11 @@ import { outputView } from '../views/outputView.js';
 
 class RacingGameController {
   #racingGame;
+  #factory;
 
-  constructor(game) {
+  constructor(game, factory) {
     this.#racingGame = game;
+    this.#factory = factory;
   }
 
   async initiate() {
@@ -20,7 +22,7 @@ class RacingGameController {
   }
 
   #handleCarNamesInput(names) {
-    const cars = names.map((item) => new RacingCar(item));
+    const cars = names.map((item) => this.#factory.createCar(item));
     this.#racingGame.setCars(cars);
   }
 
