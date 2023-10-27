@@ -1,5 +1,6 @@
 import { GameText } from "../message";
 import GameModel from "./GameModel";
+import GameUtil from "./GameUtil";
 import GameView from "./GameView";
 import { MissionUtils } from "@woowacourse/mission-utils";
 
@@ -7,6 +8,7 @@ class GameController {
   constructor() {
     this.model = null;
     this.view = new GameView();
+    this.util = new GameUtil();
   }
   async start() {
     // 게임이 종료되기 전까지 반복
@@ -36,8 +38,10 @@ class GameController {
   async getCarnameInput() {
     this.view.printGetMessage(GameText.GET_CAR_NAME);
     const getUserInput = await MissionUtils.Console.readLineAsync();
+    const cars = getUserInput.split(",");
+    await cars.forEach((car) => this.util.carNameVaildator(car));
 
-    return getUserInput.split(",").map(String);
+    return getUserInput.split(",");
   }
 
   async getRacingcarAttempts() {

@@ -5,3 +5,9 @@ export const GameText = Object.freeze({
   GET_GAME_RESTART: "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.",
   END_MESSAGE: "게임을 종료합니다",
 });
+
+export const ErrorMessage = Object.freeze({
+  CAR_NAME_LENGTH: "[ERROR] 자동차 이름은 5글자까지 가능합니다.",
+  ATTEMPTS_VALID_NUM: "[ERROR] 실행 횟수는 1 이상의 정수로만 입력 가능합니다.",
+  ATTEMPTS_TYPE: "[ERROR] 샐행 횟수는 숫자만 입력할 수 있습니다.",
+});
