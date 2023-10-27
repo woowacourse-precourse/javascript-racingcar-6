@@ -13,9 +13,10 @@ class App {
 
   getValidateCarName(inputValue) {
     const racingCars = inputValue.replaceAll(' ', '').split(',');
+    const MAX_LENGTH = 5;
 
     racingCars.map((name) => {
-      if (name.length > 5) {
+      if (name.length > MAX_LENGTH) {
         throw new Error('[ERROR] 자동차 이름은 5자 이하만 가능합니다.');
       }
     });
