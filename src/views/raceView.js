@@ -9,12 +9,15 @@ const RACE_CONSOLE_VIEW = {
     return Console.readLineAsync(MESSAGES.INPUT_TRY_NUMBER);
   },
   raceResult(raceResult) {
-    let output = '';
+    let output = `${MESSAGES.RACE_RESULT}\n`;
     raceResult.forEach((round) => {
       const roundOutput = round.join('\n');
       output += `${roundOutput}\n\n`;
     });
     Console.print(output);
+  },
+  winner(winnerList) {
+    Console.print(`${MESSAGES.WINNER} : ${winnerList.join(',')}`);
   },
 };
 
