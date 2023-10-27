@@ -1,5 +1,6 @@
 import { Console, MissionUtils } from "@woowacourse/mission-utils";
 import FowardConditions from "./FowardCondition.js";
+import message from "./Message.js";
 /*
   주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
   각 자동차에 이름을 부여할 수 있다. 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
@@ -12,17 +13,18 @@ import FowardConditions from "./FowardCondition.js";
 */
 class App {
   async play() {
-    await Console.print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+    await Console.print(message.game.START_MESSAGE);
     const cars = await Console.readLineAsync('');
     const users = cars.split(',');
     // const carsScores = new Map();
     
     /*자동차 이름과 기본 점수 설정 => gameSetting 으로 빼도 될거 같음 */ 
     const carsScores = [];
+    // numbers.forEach(number => console.log(number)); 
     for (let i = 0; i < users.length; i++) {
       if(users[i].length>5){
         Console.print(`${users[i]}오류`);
-        throw Error("[ERROR] 자동차의 이름은 5글자 이하여야 합니다.");
+        throw Error(message.error.NAME_CREATION_ERROR);
       }else{
         // carsScores.set(users[i],0);
         carsScores.push([users[i],0]);
@@ -34,9 +36,12 @@ class App {
     await Console.print(`${carsScores[0][0]} : `+"-".repeat(carsScores[0][1]));
     await Console.print(cars);
     await Console.print(users);
+
     FowardConditions();
-    await Console.print("시도할 횟수는 몇 회인가요?");
+    
+    await Console.print(message.game.ATTEMPTS_NUMBER_QUESTION);
     const numberOfAttempts = await Console.readLineAsync('');
+    
     // await Console.print(numberOfAttempts);
   }
 }
