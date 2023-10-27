@@ -6,17 +6,17 @@ class App {
         const NUMBER = await this.inputNumber();
 
         Console.print("\n실행결과");
+        // 실행 결과 텍스트 출력
         for (let i = 0; i < NUMBER; i++) {
             players = this.raceController(players);
-
             Object.keys(players).forEach((key) => {
-                Console.print(`${key} : ${"-".repeat(players[key])}`);
+                Console.print(`${key} : ${"-".repeat(players[key])}\n`);
             });
-
-            Console.print("");
         }
+        // 우승자 텍스트 출력
+        Console.print(`최종 우승자 : ${this.strWinner(players)}`);
 
-        Console.print(`최종 우승자 : ${this.outputWinner(players)}`);
+        return;
     }
 
     // 플레이어 객체 반환 함수
@@ -52,7 +52,7 @@ class App {
     }
 
     // 우승자 문자열 반환 함수
-    outputWinner(players) {
+    strWinner(players) {
         // 최고기록 저장
         const WINNER_VALUE = Object.values(players).reduce((value1, value2) => {
             return Math.max(value1, value2);
@@ -61,7 +61,7 @@ class App {
         const WINNER_ARRAY = Object.keys(players).filter((key) => {
             if (players[key] === WINNER_VALUE) return key;
         });
-
+        // 문자열화
         return WINNER_ARRAY.join(", ");
     }
 }
