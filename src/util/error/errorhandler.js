@@ -1,7 +1,7 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import errorList from './errorCode.js';
 
-function errorhandler(code) {
+function gameErrorhandler(code) {
   const occuredError = errorList.get(code);
 
   const errorMessage = occuredError !== undefined ? occuredError : '예상치 못한 에러가 발생했습니다.';
@@ -13,4 +13,8 @@ function errorhandler(code) {
   return Promise.reject(result);
 }
 
-export default errorhandler;
+function defaultErrorHandler(error) {
+  return Promise.reject(error);
+}
+
+export { gameErrorhandler, defaultErrorHandler };
