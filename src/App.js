@@ -32,6 +32,10 @@ class App {
       throw new Error('[ERROR] 자동차는 최소 2대여야합니다.');
     }
 
+    if (new Set(cars).size !== cars.length) {
+      throw new Error('[ERROR] 중복된 자동차가 존재합니다.');
+    }
+
     const isExceed = cars.some((car) => car.length > 5);
 
     if (isExceed) {
