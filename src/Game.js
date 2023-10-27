@@ -3,10 +3,31 @@ import { Console, Random } from "@woowacourse/mission-utils";
 class Game {
   carNameList = [];
   countAttempt = null;
+  currState = [];
+  result = [];
 
   start = async () => {
     await this.getCarNameList();
     await this.getCountAttempt();
+
+    let i = 0;
+    this.initState();
+    while (i < this.countAttempt) {
+      this.playRound();
+      i++;
+    }
+    console.log(this.result);
+  };
+
+  playRound = () => {
+    this.currState = this.currState.map((pos) => {
+      if (this.shouldMoveForward()) return pos + 1;
+      else return pos;
+    });
+    this.result.push(this.currState);
+  };
+  initState = () => {
+    this.currState = new Array(this.carNameList.length).fill(0);
   };
 
   getCarNameList = async () => {
@@ -38,6 +59,12 @@ class Game {
       throw new Error("시도 횟수는 1번 이상이여야 합니다.");
     }
     this.countAttempt = count;
+  };
+
+  shouldMoveForward = () => {
+    const randomValue = Random.pickNumberInRange(0, 9);
+    if (randomValue >= 4) return true;
+    return false;
   };
 }
 
