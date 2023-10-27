@@ -1,13 +1,9 @@
-import ConvertInputTo from './modules/ConvertInputTo.js';
+import Make from './modules/Make.js';
 import Print from './modules/Print.js';
 
 class App {
   async play() {
-    const carList = await ConvertInputTo.carList();
-    const gameCount = await ConvertInputTo.gameCount();
-    const positionList = new Array(carList.length).fill(0);
-
-    Print.beforeRacingMessage();
+    const racingInfo = await Make.racingInfo();
   }
 }
 
