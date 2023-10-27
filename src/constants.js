@@ -5,3 +5,8 @@ export const MESSAGE = Object.freeze({
   tellResult: ({ name, steps }) => `${name} : ${'-'.repeat(steps)}\n`,
   announceWinners: (winners) => `최종 우승자 : ${winners.join(', ')}`,
 });
+
+export const ERROR = Object.freeze({
+  OVER_FIVE_LETTERS: '[ERROR] 자동차 이름은 5글자 이하여야 합니다.',
+  NAN: '[ERROR] 숫자 형식이 아닙니다.',
+});

@@ -1,8 +1,13 @@
 import Message from './Message.js';
+import Validate from './Validate.js';
 
 export default class Assistant {
-  validateCarName(list) {}
-  validateNumberOfTry(count) {}
+  validateCarList(list) {
+    return Validate.inputCarList(list);
+  }
+  validateNumberOfTry(count) {
+    return Validate.inputNumberOfTry(count);
+  }
 
   getCarList() {
     return Message.printEnterCarNames();
