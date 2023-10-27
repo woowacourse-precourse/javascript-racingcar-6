@@ -2,7 +2,7 @@ import inputNames from "./data/inputNames";
 import inputNumber from "./data/inputNumber";
 import getWinners from "./race/getWinners";
 import doRace from "./race/doRace";
-import printResult from "./printResult";
+import printResult from "./race/printResult";
 class App {
   async play() {
     const names = await inputNames();

@@ -1,5 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import { TEXT } from "../common/text";
+import { TEXT } from "../common/index";
 
 const doRace = (names, number) => {
   const result = initResult(names);
