@@ -6,9 +6,13 @@ const CAR_LIST_INPUT_MESSAGE =
 
 class ConvertInputTo {
   static async carList() {
-    const inputString = await Console.readLineAsync(query);
+    const inputString = await Console.readLineAsync();
     ErrorCheck.carListString(inputString);
     return inputString.split(',');
+  }
+
+  static async gameCount() {
+    const inputString = await Console.readLineAsync();
   }
 }
 
