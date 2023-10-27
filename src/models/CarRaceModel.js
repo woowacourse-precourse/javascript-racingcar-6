@@ -31,7 +31,9 @@ class CarRaceModel {
   }
 
   calculateWinner() {
-    const valuesArray = Object.values(this.gameProgress).map(value => value.length);
+    const valuesArray = Object.values(this.gameProgress).map(
+      value => value.length,
+    );
     const longestDistance = calculateLongestDistance(valuesArray);
     const winnerList = [];
 

@@ -3,7 +3,11 @@
 import CarRaceModel from '../models/CarRaceModel.js';
 import CarRaceView from '../views/CarRaceView.js';
 import { repeatFunctionNTimes } from '../utils/repeatFunctionNTimes.js';
-import { validateCarName, hasDuplicate, validateCountNumber } from '../utils/validateValue.js';
+import {
+  validateCarName,
+  hasDuplicate,
+  validateCountNumber,
+} from '../utils/validateValue.js';
 
 class CarRaceController {
   constructor() {
@@ -11,7 +15,7 @@ class CarRaceController {
   }
 
   async init() {
-    const { model, gamePlay, printWinner } = this;
+    const { model, gamePlay } = this;
 
     const inputCarList = await this.getCarName();
     model.setCarList(inputCarList);
