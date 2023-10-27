@@ -19,9 +19,11 @@ class App {
   }
 
   async decideParticipants() {
-    const carList = await this.assistant.getCarList();
-    this.assistant.validateCarName(carList);
-    carList.split(',').forEach((name) => {
+    const data = await this.assistant.getCarList();
+    const carList = data.split(',');
+
+    this.assistant.validateCarList(carList);
+    carList.forEach((name) => {
       const car = new RancingCar(name);
       this.participants.push(car);
     });
