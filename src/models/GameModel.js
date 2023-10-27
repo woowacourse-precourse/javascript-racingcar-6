@@ -40,6 +40,11 @@ class GameModel {
     }
     return this.attempt;
   }
+
+  getRandomValue() {
+    let rand = Random.pickNumberInRange(0, 9);
+    return rand;
+  }
 }
 
 const model = new GameModel();
