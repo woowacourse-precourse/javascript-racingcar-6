@@ -1,3 +1,6 @@
+import { Console } from '@woowacourse/mission-utils';
+import MESSAGE from './constants/message.js';
+
 class App {
   #cars = [];
   #numberOfTimes = 0;
@@ -18,7 +21,10 @@ class App {
     this.#numberOfTimes = number;
   }
 
-  async play() {}
+  async play() {
+    const answerOfCars = await Console.readLineAsync(MESSAGE.input.carName);
+    return;
+  }
 }
 
 const app = new App();
