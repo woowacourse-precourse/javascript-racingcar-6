@@ -1,10 +1,9 @@
 import { Random } from "@woowacourse/mission-utils";
-import { CAN_GO_NUM, GO_SYMBOL, MAX_NUM, MIN_NUM } from "./constant/rule";
+import { CAN_GO_NUM, GO_SYMBOL, MAX_NUM, MIN_NUM } from "./constant/rule.js";
 
 class Car {
-  constructor(name, count) {
+  constructor(name) {
     this.name = name;
-    this.count = count;
     this.result = "";
   }
 
@@ -19,6 +18,8 @@ class Car {
     if (randomNumber >= CAN_GO_NUM) {
       this.result += GO_SYMBOL;
     }
+
+    console.log(this.name, this.result);
   }
 }
 

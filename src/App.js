@@ -6,9 +6,8 @@ class App {
     const cars = await Print.getCars();
     const tryCount = await Print.getTryCount();
 
-    cars.forEach((carName) => {
-      const car = new Car(carName, tryCount);
-    });
+    let carInstanceArray;
+    carInstanceArray = cars.map((carName) => new Car(carName));
   }
 }
 
