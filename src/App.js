@@ -1,5 +1,6 @@
 import Print from "./Print.js";
 import Car from "./Car.js";
+import Calculate from "./Calculate.js";
 
 class App {
   constructor() {
@@ -10,6 +11,7 @@ class App {
   async play() {
     await this.setInitialState();
     this.startRace();
+    this.pickOutWinner();
   }
 
   async setInitialState() {
@@ -43,6 +45,11 @@ class App {
 
       Print.showRaceResult(name, result);
     }
+  }
+
+  pickOutWinner() {
+    const calculate = new Calculate(this.carInstanceArray);
+    calculate.calcWinners();
   }
 }
 
