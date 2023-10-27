@@ -63,7 +63,8 @@ winner(arrayCarName, count){
       arrayWinner.push(element);
     }
   });
-  MissionUtils.Console.print(`최종우승자 : ${arrayWinner}`)
+  const textWinner = arrayCarName.join(", ");
+  MissionUtils.Console.print(`최종우승자 : ${textWinner}`)
 }
 }
 export default App;
