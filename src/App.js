@@ -13,30 +13,32 @@ async getNameOfCar(){
 async attemptNumber(arrayCarName){
   const tryNumber = await MissionUtils.Console.readLineAsync(MESSAGE.NUMBER);
   this.errorTry(tryNumber);
-  this.gameReady(arrayCarName);
+  this.gameReady(arrayCarName,tryNumber);
 }
 
-// 각 자동차 이름 객체 만들기
-gameReady(arrayCarName){
-  const count =[];
+// 각 자동차 이름 객체 만들기. count는 몇번 전진했는지 세는 변수
+gameReady(arrayCarName,tryNumber){
+  const count = [];
   const objectCarName = new Object()
   arrayCarName.forEach((a,i) => {
     objectCarName[a] = 0;
-    count.push(0);
+    count.push('');
   });
-  this.gameStart(objectCarName, arrayCarName, count);  
+  for (let i = 0; i < tryNumber; i++){
+    this.gameStart(objectCarName, arrayCarName, count);  
+  }
 }
 
-// 매 게임이 마다 객체에 숫자 랜덤으로 넣고 5이상이면 count에 1 추가 
-// 나중에 count가 1인 것들은 print에 -추가
+// 매 게임이 마다 객체에 숫자 랜덤으로 넣고 5이상이면 count에 - 추가 
+// 
 gameStart(objectCarName, arrayCarName, count){
   for(let i = 0; i<arrayCarName.length; i++){
     objectCarName[i] = this.randomNumber;
    if(Object.values(objectCarName)[i]>=5){
-      count[i]++
+      count[i]= count[i]+'-';
     } 
+    MissionUtils.Console.Print(`${arrayCarName[i]} : ${myProgress[i]}`)
   }
-  this.gamePrint(count)
 }
 
 randomNumber(){
@@ -48,11 +50,6 @@ errorTry(tryNumber){
   if(isNaN(parseInt(tryNumber))===false){throw new Error(ERROR.NUMBER);}
 
 }
-
-gamePrint(){
-
-}
-
 }
 
 export default App;
