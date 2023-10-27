@@ -1,5 +1,5 @@
 import { shouldCarRun } from "../../utils";
-import { Car } from "../car";
+import { Car } from "../Car";
 
 export class Cars {
   #cars = [];
@@ -9,8 +9,7 @@ export class Cars {
   }
 
   setCars(carNames) {
-    const carNamesArray = carNames.split(",");
-    carNamesArray.forEach((carName) => {
+    carNames.forEach((carName) => {
       this.#cars.push(new Car(carName));
     });
   }
