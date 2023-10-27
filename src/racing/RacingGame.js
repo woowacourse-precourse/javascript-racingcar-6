@@ -22,4 +22,11 @@ class RacingGame {
       car.randomlyMove();
     });
   }
+
+  presentCurrentDistance(cars) {
+    const currentDistance = cars.reduce((result, car) => {
+      return `${result}${car.currentDistanceMessage()}\n`;
+    }, '');
+    View.print(currentDistance);
+  }
 }
