@@ -1,6 +1,6 @@
 import { Random } from '@woowacourse/mission-utils';
-import Validator from '../../utils/Validator';
-import Input from '../View/Input';
+import Validator from '../../utils/Validator.js';
+import Input from '../View/Input.js';
 
 export default class RacingGame {
   #carModel;
@@ -12,9 +12,9 @@ export default class RacingGame {
   }
 
   async start() {
-    this.#makeCar();
+    await this.#makeCar();
     const answer = await Input.readAttemps();
-    if (Validator.isValidateAttemps()) {
+    if (Validator.isValidateAttemps(answer)) {
       this.#attemps = answer;
       this.#racing();
     }
