@@ -6,6 +6,7 @@ class App {
     this.arrCarName = [];
     this.attempts = [];
     this.race = [];
+    this.winner = [];
   }
   async play() {
     // 1-a
