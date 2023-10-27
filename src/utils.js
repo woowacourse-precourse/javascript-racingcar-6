@@ -15,3 +15,11 @@ export const removeSpaces = (carNames) => {
 
   return carNameArray;
 };
+
+export const validateCarNames = (carNameArray) => {
+  if (carNameArray.length === 1) {
+    throw new Error('[ERROR] 자동차 이름은 최소 2개 이상 입력되어야 합니다.');
+  }
+
+  return true;
+};
