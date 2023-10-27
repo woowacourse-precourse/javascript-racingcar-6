@@ -5,3 +5,5 @@ class Is {
     return Random.pickNumberInRange(0, 9) >= 4;
   }
 }
+
+export default Is;
