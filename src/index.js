@@ -43,8 +43,18 @@ class GamePlay {
 
   selectWinner(result) {
     // const MOVE_RESULT = Object.keys(result);
+    const WINNERS = [];
 
     const RANK = Object.keys(result).sort((a, b) => result[b] - result[a]);
+    WINNERS.push(RANK[0]);
+
+    for (let i = 0; i < RANK.length; i++) {
+      if (result[RANK[i]] !== result[RANK[i + 1]]) break;
+      WINNERS.push(RANK[i + 1]);
+    }
+
+    const ANSWER = WINNERS.join(", ");
+    Console.print(`최종 우승자 : ${ANSWER}`);
   }
 
   async getCarNames() {
