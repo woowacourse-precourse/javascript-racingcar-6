@@ -9,7 +9,7 @@ class App {
     try {
       await this.game();
     } catch (error) {
-      Console.print(`[${ERROR_LABEL.default}] ${error.message}`);
+      throw new Error(`[${ERROR_LABEL.default}] ${error.message}`);
     }
   }
 
