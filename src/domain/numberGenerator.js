@@ -4,10 +4,13 @@ import { MissionUtils } from '@woowacourse/mission-utils';
 export const makeRandomNumberAndJudge = async (tryNumber) => {
   const RANDOM_NUMBER_ARRAY = [];
   for (let i = 0; i < tryNumber; i++) {
-    const NUMBER = MissionUtils.Random.pickNumberInRange(0, 9);
+    const NUMBER = await MissionUtils.Random.pickNumberInRange(0, 9);
     if (NUMBER > 4) {
       RANDOM_NUMBER_ARRAY.push(NUMBER);
+    } else {
+      RANDOM_NUMBER_ARRAY.push(0);
     }
   }
-  MissionUtils.Console.print(RANDOM_NUMBER_ARRAY);
+  //   MissionUtils.Console.print(RANDOM_NUMBER_ARRAY);
+  return RANDOM_NUMBER_ARRAY;
 };

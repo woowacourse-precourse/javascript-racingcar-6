@@ -1,1 +1,1 @@
-makeRandomNumberAndJudge
+ESULT);
