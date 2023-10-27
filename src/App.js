@@ -55,6 +55,14 @@ class App {
     this.race.sort((a, b) => {
       return b[1] - a[1];
     });
+    // 3-b
+    for (const item of this.race) {
+      if (item[1] == this.race[0][1]) {
+        this.winner.push(item[0]);
+      } else {
+        break;
+      }
+    }
   }
 }
 
