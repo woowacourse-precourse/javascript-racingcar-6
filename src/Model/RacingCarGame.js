@@ -33,4 +33,4 @@ function getRacingCarWinner(racingCarList){
   return convertListFreeze(winnerRacingCarList);
 }
 
-export { getTurnOverResult, getRacingCarWinner };
+export { getTurnOverResult, getRacingCarWinner, getMaxMoveCount };
