@@ -7,4 +7,9 @@ export default class Input {
     );
     return answer;
   }
+
+  static async readAttemps() {
+    const answer = await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
+    return answer;
+  }
 }
