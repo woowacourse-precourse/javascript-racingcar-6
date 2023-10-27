@@ -10,8 +10,8 @@ class App {
       const GAME_CNT = await this.getGameCnt();
 
     }
-    // const CAR_LIST = await this.setCarDict(CAR_INPUT);
-    // console.log(CAR_LIST);
+    const CAR_DICT = await this.setCarDict(CAR_LIST);
+    console.log(CAR_DICT);
 
   }
 
@@ -25,6 +25,7 @@ class App {
       }
       else {
         console.log("isvalid",CAR_INPUT[i]);
+
       }
     }
   }
@@ -32,10 +33,13 @@ class App {
     return await Console.readLineAsync("")
   }
 
-  // async setCarDict(CAR_INPUT) {
-  //
-  //   return
-  // }
+  async setCarDict(CAR_INPUT) {
+    const dictionary = {};
+    for (const car of CAR_INPUT) {
+      dictionary[car] = [];
+    }
+    return dictionary;
+  }
 }
 
 
