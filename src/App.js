@@ -36,13 +36,19 @@ class App {
       this.race.push([name, 0]);
     });
     // 2-b
+    MissionUtils.Console.print("실행 결과");
     for (let i = 0; i < this.attempts; i++) {
       this.arrCarName.map((name, index) => {
         const result = MissionUtils.Random.pickNumberInRange(0, 9);
         if (result >= 4) {
           this.race[index][1]++;
         }
+        // 2-c
+        MissionUtils.Console.print(
+          `${name} : ${"-".repeat(this.race[index][1])}`
+        );
       });
+      MissionUtils.Console.print(" ");
     }
   }
 }
