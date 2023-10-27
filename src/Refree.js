@@ -16,6 +16,12 @@ class Refree {
       if (randomNumber >= 4) car.move(1);
     });
   }
+
+  getResultList() {
+    const result = [];
+    this.#carList.forEach((car) => result.push(car.getResult()));
+    return result;
+  }
 }
 
 export default Refree;

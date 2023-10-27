@@ -22,6 +22,7 @@ class App {
 
     Array.from({ length: this.#totalRounds }).forEach(() => {
       this.#refree.moveCars();
+      OutputView.printResult(this.#refree.getResultList());
     });
   }
 }
