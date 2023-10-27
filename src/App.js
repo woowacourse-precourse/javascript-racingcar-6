@@ -1,8 +1,9 @@
 import { Console } from '@woowacourse/mission-utils';
 import MESSAGE from './constants/message.js';
+import CONDITION from './constants/condition.js';
 
 class App {
-  #cars = [];
+  #cars = new Map();
   #numberOfTimes = 0;
 
   get cars() {
@@ -23,7 +24,24 @@ class App {
 
   async play() {
     const answerOfCars = await Console.readLineAsync(MESSAGE.input.carName);
+    this.validateNamesOfCar(answerOfCars);
     return;
+  }
+
+  validateNamesOfCar(answer) {
+    const info = new Map();
+    answer.split(',').forEach((str) => {
+      if (str.length === 0 || str.length > CONDITION.carNameLength) {
+        throw new Error(MESSAGE.error.carName);
+      } else if (CONDITION.notNormalCharacter.test(str)) {
+        throw new Error(MESSAGE.error.specialCharacter);
+      } else if (info.has(str)) {
+        throw new Error(MESSAGE.error.duplicateName);
+      } else {
+        info.set(str, 0);
+      }
+    });
+    this.cars = info;
   }
 }
 
