@@ -15,13 +15,16 @@ class RacingGame {
 
   async getUserInput() {
     this.userInputCars = await Console.readLineAsync(GET_INPUT_MESSAGE.carName);
-
-    const USER_INPUT_VALIDATOR = new UserInputValidator(this.userInputCars);
-    USER_INPUT_VALIDATOR.validate();
-
     this.userInputTryCount = await Console.readLineAsync(
       GET_INPUT_MESSAGE.tryCount
     );
+    const USER_INPUT_VALIDATOR = new UserInputValidator(
+      this.userInputCars,
+      this.userInputTryCount
+    );
+    USER_INPUT_VALIDATOR.validateCar();
+    USER_INPUT_VALIDATOR.validateNumber();
+
     this.showGameResult();
   }
 
