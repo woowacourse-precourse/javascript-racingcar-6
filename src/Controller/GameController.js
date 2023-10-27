@@ -1,5 +1,4 @@
 import GameView from "../View/GameView.js";
-
 import carInstance from "../Model/Car.js";
 
 class GameController {
