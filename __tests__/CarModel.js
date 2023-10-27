@@ -12,11 +12,11 @@ describe('CarModel Test', () => {
     expect(carModel.getCar()).toEqual([
       {
         name: 'pobi',
-        isMoves: [],
+        moveCounts: 0,
       },
       {
         name: 'ukgi',
-        isMoves: [],
+        moveCounts: 0,
       },
     ]);
   });
@@ -24,8 +24,8 @@ describe('CarModel Test', () => {
   test('자동차가 움직이거나 정지했으면 상태를 업데이트한다.', () => {
     carModel.updateMove('pobi', true);
     expect(carModel.getCar()).toEqual([
-      { name: 'pobi', isMoves: [true] },
-      { name: 'ukgi', isMoves: [] },
+      { name: 'pobi', moveCounts: 1 },
+      { name: 'ukgi', moveCounts: 0 },
     ]);
   });
 });
