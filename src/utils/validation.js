@@ -22,3 +22,15 @@ export const validateInputVehicles = vehicles => {
     throw new Error(MESSAGES.ERROR.DUPLICATE_VEHICLES_NAME);
   }
 };
+
+export const validateInputRound = round => {
+  if (!round.match(REGEXP.ROUND.INPUT_FORMAT_CHECK_REGEXP)) {
+    throw new Error(MESSAGES.ERROR.INVALID_INPUT_FORMAT_ROUND);
+  }
+  if (!round.match(REGEXP.ROUND.FIRST_NUM_CHECK_REGEXP)) {
+    throw new Error(MESSAGES.ERROR.LEADING_ZERO_ROUND_NUM);
+  }
+  if (!round.match(REGEXP.ROUND.MAXIMUM_ROUND_NUM_CHECK_REGEXP)) {
+    throw new Error(MESSAGES.ERROR.EXCEED_MAXIMUM_ROUND_NUM);
+  }
+};

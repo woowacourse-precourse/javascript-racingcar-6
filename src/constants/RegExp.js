@@ -5,6 +5,11 @@ const REGEXP = {
     NAME_LENGTH_CHECK_REGEXP: /^[a-zA-Z]{1,5}(,[a-zA-Z]{1,5})*$/,
     MINIMUM_VEHICLE_NUM_CHECK_REGEXP: /^[a-zA-Z]{1,5}(,[a-zA-Z]{1,5})+$/,
   },
+  ROUND: {
+    INPUT_FORMAT_CHECK_REGEXP: /^\d+$/,
+    FIRST_NUM_CHECK_REGEXP: /^[1-9]\d*$/,
+    MAXIMUM_ROUND_NUM_CHECK_REGEXP: /^[1-9]{1}\d{0,1}$/,
+  },
 };
 
 export default REGEXP;

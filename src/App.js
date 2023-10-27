@@ -1,6 +1,9 @@
 import { Console } from '@woowacourse/mission-utils';
 import MESSAGES from './constants/Messages.js';
-import { validateInputVehicles } from './utils/validation.js';
+import {
+  validateInputRound,
+  validateInputVehicles,
+} from './utils/validation.js';
 
 class App {
   constructor() {
@@ -18,8 +21,19 @@ class App {
     this.vehicleList = inputVehicles.split(',');
   }
 
+  async setRound() {
+    const inputRound = await Console.readLineAsync(
+      MESSAGES.REQUEST.INPUT_ROUND,
+    );
+
+    validateInputRound(inputRound);
+
+    this.round = +inputRound;
+  }
+
   async play() {
-    this.setVehicleList();
+    await this.setVehicleList();
+    await this.setRound();
   }
 }
 
