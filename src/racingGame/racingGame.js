@@ -13,11 +13,14 @@ class RacingGame {
   constructor() {
     this.carList = [];
     this.tryNum = 0;
+    this.maxMove = 0;
   }
   async start() {
     await this.getCarName();
     await this.getTryNum();
     this.startRacing();
+    this.maxMove = this.getMaxMove();
+    this.printResult(this.getRacingWinList());
   }
 
   async getCarName() {
@@ -26,8 +29,6 @@ class RacingGame {
       const carNameList = splitInputCarName(inputCarName);
       checkinputCarList(carNameList);
       checkInputCarNameValidation(carNameList);
-
-      console.log(carNameList);
       this.carList = carNameList.map((car) => new Car(car));
     } catch (error) {
       throw error;
@@ -63,6 +64,22 @@ class RacingGame {
       }
       Console.print(`${car.name} : ${car.moveForward}`);
     });
+  }
+  getMaxMove() {
+    const maxMove = this.carList.reduce((acc, cur) => {
+      return acc >= cur.moveCount ? acc : cur.moveCount;
+    }, 0);
+    return maxMove;
+  }
+  getRacingWinList() {
+    const winList = this.carList.filter(
+      (car) => car.moveCount === this.maxMove
+    );
+    return winList;
+  }
+  printResult(inputs) {
+    const list = inputs.map((input) => input.name).join(", ");
+    Console.print(`최종우승자 : ${list}`);
   }
 }
 export default RacingGame;
