@@ -4,11 +4,18 @@ import MESSAGE from "./constants/constants.js";
 class App {
   constructor() {
     this.cars = [];
+    this.playTimes = 0;
   }
 
   async play() {
     const answer = await Console.readLineAsync(MESSAGE.start);
     this.cars = answer.split(",");
+    if (this.CheckCarsName()) {
+      const playTimes = await Console.readLineAsync(MESSAGE.roundsToPlay);
+      this.playTimes = playTimes;
+    } else {
+      throw new Error();
+    }
   }
 
   CheckCarsName() {
