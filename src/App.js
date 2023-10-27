@@ -11,23 +11,30 @@ class App {
     return carNamesArray;
   }
 
-  nameException(carNamesArray){
-    if(this.hasDuplicates(carNamesArray)){
+  nameException(carNamesArray) {
+    if (this.hasDuplicates(carNamesArray)) {
       throw new Error('[ERROR] 올바른 값을 입력하세요');
     }
   }
 
-  hasDuplicates(carNamesArray){
+  hasDuplicates(carNamesArray) {
     const uniqueNames = new Set(carNamesArray);
     return uniqueNames.size !== carNamesArray.length; //다르면 참 반환
   }
-  
+
+  vaildateCarNamesLength(carNamesArray) {
+    carNamesArray.forEach((name) => {
+      if (name.length > 5) {
+        throw new Error('[ERROR] 올바른 값을 입력하세요');
+      }
+    });
+  }
   async play() {
     this.start();
-    try{
+    try {
       const carNames = await this.getCarNames();
       this.nameException(carNames);
-    } catch(error){
+    } catch (error) {
       throw new Error(error.message);
     }
   }
