@@ -3,12 +3,10 @@ import { GO_FORWARD } from "../constatnts/index.js";
 class Car {
   constructor() {
     this.cars = [];
-    this.tryCount = 0;
   }
 
-  init(cars, tryCount) {
+  init(cars) {
     this.cars = cars;
-    this.tryCount = tryCount;
   }
 
   // 3-2. 무작위 값이 4 이상일 경우 해당 자동차를 전진시킨다
