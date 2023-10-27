@@ -9,4 +9,10 @@ describe('Validator Test', () => {
       }).toThrow('[ERROR] 자동차 이름이 올바르지 않습니다.');
     },
   );
+
+  test.each(['', ' ', '1f'])('숫자가 아닌 값은 에러를 던집니다.', (input) => {
+    expect(() => {
+      Validator.isValidateAttemps(input);
+    }).toThrow('[ERROR] 숫자만 입력해주세요.');
+  });
 });
