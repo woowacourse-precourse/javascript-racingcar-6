@@ -1,4 +1,4 @@
-import { MissionUtils } from '@woowacourse/mission-utils';
+import { Random, Console } from '@woowacourse/mission-utils';
 import ERROR from './error.js';
 
 
@@ -16,7 +16,7 @@ class App {
 
   // 사용자가 부여한 자동차 이름들을 받아오는 코드
   async getUserCarListInput(){
-    const userCarListInput = await MissionUtils.Console.readLineAsync("차 이름을 입력해주세여");
+    const userCarListInput = await Console.readLineAsync("차 이름을 입력해주세여");
     // 쉼표를 기준으로 5자 이하인지 체크 - 쉼표를 기준으로 5자 이상인것 오류
     const carList = userCarListInput.split(',');
 
@@ -39,8 +39,11 @@ class App {
       if (car.length >= 5) {
         throw new Error(ERROR.OVERSIZE_CAR_NAME);
       }
+      // 사용자가 차 이름을 여러개 입력후 , 로 입력을 끝내면 빈 문자열이 차 리스트에 생김
+      if (car.length == 0) {
+        throw new Error(ERROR.INVALID_CAR_NAME_SPACE);
+      }
     });
-    return inputCarList;
   }
 
   // 정규 표현식을 사용한 글자 체크 마지막 자리를 제외한 문자열에 숫자가 포함되어 있다면 오류 ex sm5 k6 
@@ -51,7 +54,6 @@ class App {
         throw new Error(ERROR.INVALID_CAR_NAME);
       }
     });
-    return inputCarList;
   }
 
   // 차 이름 중간에는 공백이 존재할 수 있다고 생각함 하지만 첫자리와 마지막 자리는 그렇지 않기에 오류처리 or 공백을 없애줄까 고민중
@@ -60,31 +62,39 @@ class App {
     inputCarList.forEach(car => {
       console.log(`${car}끝자리 체크`, car, car.slice(car.length - 1, car.length), "끝자리");
       if (forCheckSpace.test(car.slice(0,1))){
-        throw new ERROR("입력하신 차종들중 첫자리에 공백이 존재하는 차가 있습니다.")
+        throw new ERROR(ERROR.INVALID_INPUT_FIRST)
       }
       if (forCheckSpace.test(car.slice(car.length-1, car.length))) {
-        throw new ERROR("입력하신 차종들중 끝자리에 공백이 존재하는 차가 있습니다.")
+        throw new ERROR(ERROR.INVALID_INPUT_FINAL)
       }
     });
   }
-
   
-
   // 사용자가 원하는 게임 전진 도전 횟수
   async getUserWantMoveCount(){
-    const inputCount = await MissionUtils.Console.readLineAsync("몇번");
+    const inputCount = await Console.readLineAsync("몇번");
     console.log(inputCount);
     // 사용자 입력이 숫자인지 체크하는 기능
-    if (!(Number(inputCount))){
-      throw new Error(ERROR.INVALID_INPUT);
-    }
+    this.checkNumber(inputCount);
     return inputCount;
   }
 
   // 
 
+  checkNumber(inputCount){
+    if (!(Number(inputCount))) {
+      throw new Error(ERROR.INVALID_INPUT);
+    }
 
+    if (this.checkSpace(inputCount)){
+      throw new Error(ERROR.INVALID_INPUT_SPACE);
+    }
+  }
 
+  checkSpace(input){
+    const forCheckSpace = /\s/;
+    return forCheckSpace.test(input);
+  }
 
 }
 
