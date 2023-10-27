@@ -129,4 +129,35 @@ describe('함수 기능 유닛 테스트', () => {
 			expect(realResult).toEqual(expectedResult);
 		});
 	});
+
+	describe('getWinner', () => {
+		test.each([
+			{ wonCarNum: [0], values: [1, 0, 0] },
+			{ wonCarNum: [1], values: [0, 1, 0] },
+			{ wonCarNum: [2], values: [0, 0, 1] },
+		])('우승자가 1명인 경우', ({ wonCarNum, values }) => {
+			const input = Object.fromEntries(Array.from(Array(3), (_, i) => [CARS_NAME[i], values[i]]));
+			const expectedResult = wonCarNum.map((e) => CARS_NAME[e]);
+			const realResult = app.getWinner(input, 1);
+			expect(realResult).toEqual(expectedResult);
+		});
+
+		test.each([
+			{ wonCarNum: [0, 1], values: [1, 1, 0] },
+			{ wonCarNum: [0, 2], values: [1, 0, 1] },
+			{ wonCarNum: [1, 2], values: [0, 1, 1] },
+		])('우승자가 2명인 경우', ({ wonCarNum, values }) => {
+			const input = Object.fromEntries(Array.from(Array(3), (_, i) => [CARS_NAME[i], values[i]]));
+			const expectedResult = wonCarNum.map((e) => CARS_NAME[e]);
+			const realResult = app.getWinner(input, 1);
+			expect(realResult).toEqual(expectedResult);
+		});
+
+		test.each([{ wonCarNum: [0, 1, 2], values: [1, 1, 1] }])('우승자가 3명인 경우', ({ wonCarNum, values }) => {
+			const input = Object.fromEntries(Array.from(Array(3), (_, i) => [CARS_NAME[i], values[i]]));
+			const expectedResult = wonCarNum.map((e) => CARS_NAME[e]);
+			const realResult = app.getWinner(input, 1);
+			expect(realResult).toEqual(expectedResult);
+		});
+	});
 });

@@ -36,6 +36,12 @@ class App {
 		return Object.values(cars).reduce((a, c) => (a > c ? a : c), 0);
 	}
 
+	getWinner(cars = {}, max = 0) {
+		return Object.entries(cars)
+			.filter(([, value]) => value === max)
+			.map(([key, _]) => key);
+	}
+
 	async play() {}
 }
 
