@@ -36,6 +36,21 @@ function printResult(car) {
   }
 }
 
+function printWinner(car) {
+  let winnerCount = Math.max(...car.map((tuple) => tuple[1]));
+  let winners = [];
+  for (let i = 0; i < car.length; i++) {
+    if (car[i][1] == winnerCount) {
+      winners.push(car[i][0]);
+    }
+  }
+  if (winners.length == 1) {
+    Console.print("최종 우승자 : " + winners[0]);
+  } else {
+    Console.print("최종 우승자 : " + winners.join(", "));
+  }
+}
+
 class App {
   async play() {
     let car = await inputCar();
@@ -46,6 +61,7 @@ class App {
       printResult(car);
       Console.print("\n");
     }
+    printWinner(car);
   }
 }
 export default App;
