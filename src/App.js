@@ -10,6 +10,8 @@ import Random from './Random.js';
 import Refree from './Referee.js';
 
 class App {
+  #cars;
+
   async play() {
     const carNames = await Console.readLineAsync(INPUT_MESSAGE.CAR_NAME);
     const carNameArray = carNames.split(',');
@@ -18,19 +20,23 @@ class App {
     const tryCount = await Console.readLineAsync(INPUT_MESSAGE.TRY_COUNT);
     App.#validateTryCount(tryCount);
 
-    const cars = carNameArray.map((carName) => new Car(carName));
+    this.#cars = carNameArray.map((carName) => new Car(carName));
+    this.#printRaceResult(tryCount);
 
+    const winners = Refree.judge(this.#cars);
+    Console.print(OUTPUT_MESSAGE.WINNERS(winners));
+  }
+
+  #printRaceResult(count) {
     Console.print(OUTPUT_MESSAGE.RESULT);
-    for (let i = 0; i < tryCount; i++) {
-      cars.forEach((car) => car.race(Random.createRandomNumber()));
-      cars.forEach((car) =>
+
+    for (let i = 0; i < count; i++) {
+      this.#cars.forEach((car) => car.race(Random.createRandomNumber()));
+      this.#cars.forEach((car) =>
         Console.print(OUTPUT_MESSAGE.RACE(car.getName(), car.getForwardCount()))
       );
       Console.print('');
     }
-
-    const winners = Refree.judge(cars);
-    Console.print(OUTPUT_MESSAGE.WINNERS(winners));
   }
 
   static #validateNameLength(carNameArray) {
