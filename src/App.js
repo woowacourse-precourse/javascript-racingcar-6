@@ -2,8 +2,7 @@ import { Console } from '@woowacourse/mission-utils';
 
 import Race from './Race.js';
 import Car from './Car.js';
-import { INPUT_NAME, ERROR } from './constants/constants.js';
-
+import { INPUT_NAME, ERROR, INPUT_COUNT } from './constants/constants.js';
 class App {
   async getCarNames() {
     const input = await Console.readLineAsync(INPUT_NAME);
@@ -30,8 +29,30 @@ class App {
     }
   }
 
+  async getGameCount() {
+    const input = await Console.readLineAsync(INPUT_COUNT);
+    const count = Number(input);
+    this.validateGameCount(count);
+
+    return count;
+  }
+
+  validateGameCount(count) {
+    if (count < 1) {
+      throw new Error(ERROR.invalidCountRange);
+    }
+
+    const NumberRegExp = /^[0-9]+$/;
+    if (!NumberRegExp.test(count)) {
+      throw new Error(ERROR.invalidCountType);
+    }
+  }
+
   async play() {
     const carNames = await this.getCarNames();
+    const gameCount = await this.getGameCount();
+
+    const cars = carNames.map((name) => new Car(name));
   }
 }
 
