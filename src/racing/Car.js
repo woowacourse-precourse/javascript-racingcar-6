@@ -18,4 +18,8 @@ export default class Car {
     }
     return false;
   }
+
+  currentDistanceMessage() {
+    return `${this.carName} : ${this.carDistance}`;
+  }
 }
