@@ -1,23 +1,21 @@
-import errorList from '../error/errorCode.js';
 import { gameErrorhandler } from '../error/errorhandler.js';
 
 async function checkCarValid(input) {
   const primaryArray = input.split(',');
 
   try {
-    const carLengthCheck = [...primaryArray].map((item) => item.length <= 5);
+    const carNameCheck = [...primaryArray].map((item) => item.length <= 5);
 
-    const isNotValid = carLengthCheck.includes(false);
+    const isNotValid = carNameCheck.includes(false);
 
     if (isNotValid) {
       const errorKey = 'tooLongRacerName';
-      const errorCode = errorList.get(errorKey);
-      throw errorCode;
+      throw errorKey;
     }
     return primaryArray;
   } catch (error) {
     gameErrorhandler(error);
-    return null;
+    throw error;
   }
 }
 
@@ -36,7 +34,6 @@ async function checkRaceCountValid(input) {
       const errorCode = 'inputIsNaN';
       throw errorCode;
     }
-    console.log(count);
     return count;
   } catch (error) {
     gameErrorhandler(error);
