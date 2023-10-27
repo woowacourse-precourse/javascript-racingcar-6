@@ -3,24 +3,12 @@ import { Random, Console } from '@woowacourse/mission-utils';
 const MESSAGE = {
   ENTER_CAR_NAME:
     '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
-  ERROR: '[ERROR] 숫자가 올바른 형식이 아닙니다.',
+  ERROR: '[ERROR] 입력이 올바른 형식이 아닙니다.',
 };
 
 class App {
   async play() {}
 }
-
-const getCarNames = async () => {
-  const carNames = await Console.readLineAsync(
-    '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n'
-  );
-  checkCarNamesAreValid(carNames);
-};
-
-const getTryNumber = async () => {
-  const tryNumber = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
-  checkTryNumberIsValid(tryNumber);
-};
 
 const checkCarNamesAreValid = (userInput) => {
   const input = userInput.split(',');
@@ -30,6 +18,8 @@ const checkCarNamesAreValid = (userInput) => {
   if (inputHaveOverName) {
     throw new Error('[ERROR] 입력이 올바른 형식이 아닙니다.');
   }
+
+  return input;
 };
 
 const checkTryNumberIsValid = (userInput) => {
@@ -42,4 +32,17 @@ const checkTryNumberIsValid = (userInput) => {
   }
 };
 
+const getCarNames = async () => {
+  const carNames = await Console.readLineAsync(
+    '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n'
+  );
+  return checkCarNamesAreValid(carNames);
+};
+
+const getTryNumber = async () => {
+  const tryNumber = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+  checkTryNumberIsValid(tryNumber);
+
+  return tryNumber;
+};
 export default App;
