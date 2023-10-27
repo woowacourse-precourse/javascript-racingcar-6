@@ -6,7 +6,7 @@ class App {
   }
 
   async play() {
-    this.raceController.start();
+    await this.raceController.start();
   }
 }
 
