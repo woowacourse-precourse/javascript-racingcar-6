@@ -4,7 +4,7 @@ import { CarNameLimitLength } from "./Constants.js";
 function checkRacingCarName(racingCarName){
   racingCarName.split(",").forEach((carName) => {
     if (carName.length > CarNameLimitLength) throw new Error(ERROR_MESSAGE.NAME_LENGTH);
-    if (carName === '') throw new Error(ERROR_MESSAGE.NAME_BLANK);
+    if (carName.trim() === '') throw new Error(ERROR_MESSAGE.NAME_BLANK);
   })
 }
 
