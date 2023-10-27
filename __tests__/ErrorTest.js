@@ -1,4 +1,4 @@
-import errorhandler from '../src/util/error/errorhandler';
+import { gameErrorhandler } from '../src/util/error/errorhandler';
 
 describe('에러 처리 test', () => {
   test('존재하는 에러코드에 대한 메세지 출력', () => {
@@ -7,14 +7,15 @@ describe('에러 처리 test', () => {
     const output = '이름이 없는 자동차가 존재합니다.';
 
     // when
-    expect(errorhandler(code)).rejects.toThrow(output);
+    expect(gameErrorhandler(code)).rejects.toThrow(output);
   });
 
   test('존재하지 않는 에러코드에 대한 메세지 출력', () => {
-    //given
+    // given
     const code = 'testErrorNotDeclared';
     const output = '예상치 못한 에러가 발생했습니다.';
 
-    expect(errorhandler(code)).rejects.toThrow(output);
+    // when
+    expect(gameErrorhandler(code)).rejects.toThrow(output);
   });
 });
