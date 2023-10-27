@@ -1,8 +1,8 @@
 const SYMBOLS = {
   comma: ',',
-  commaWithSpace: ', ',
+  winnerNameSeparator: ', ',
   dash: '-',
-  divider: ' : ',
+  playerResultSeparator: ' : ',
 };
 
 const GAME_NUMBERS = {
