@@ -16,8 +16,8 @@ class GameModel {
     for (let attempt = 0; attempt < this.attempts; attempt++) {
       this.cars.forEach((car) => {
         car.move();
-        this.controller.updateCarProgress(car);
       });
+      this.controller.updateCarProgress(this.cars);
     }
   }
 

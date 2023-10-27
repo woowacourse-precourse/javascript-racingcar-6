@@ -10,8 +10,13 @@ class GameView {
     await MissionUtils.Console.print(userInput);
   }
 
-  printCarProgress(car) {
-    MissionUtils.Console.print(`${car.name} : ${car.getDisplay()}`);
+  printCarProgress(cars) {
+    let progressMessage = "";
+    cars.forEach((car) => {
+      progressMessage += `${car.name} : ${car.getDisplay()}\n`;
+    });
+
+    MissionUtils.Console.print(progressMessage);
   }
 
   printWinners(winners) {

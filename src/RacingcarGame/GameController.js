@@ -47,8 +47,8 @@ class GameController {
     return getAttempts;
   }
 
-  updateCarProgress(car) {
-    this.view.printCarProgress(car);
+  updateCarProgress(cars) {
+    this.view.printCarProgress(cars);
   }
 
   async getGameRestart() {
