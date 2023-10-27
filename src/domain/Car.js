@@ -1,10 +1,9 @@
 class Car {
   #name;
-  #progress;
+  #progress = 0;
 
   constructor(name) {
     this.#name = name;
-    this.#progress = 0;
   }
 
   getName() {
