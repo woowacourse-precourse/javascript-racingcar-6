@@ -13,6 +13,12 @@ class App {
     );
     // 1-b
     this.arrCarName = this.strCarName.split(",");
+    // 1-c
+    this.arrCarName.map((name) => {
+      if (name.trim().length > 5 || name.trim().length < 1) {
+        throw new Error("[ERROR] : 자동차 이름은 5글자 이내로 입력해야 합니다!");
+      }
+    });
   }
 }
 
