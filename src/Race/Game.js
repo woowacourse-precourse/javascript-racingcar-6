@@ -13,9 +13,17 @@ export class Game {
   }
 
   async init() {
-    const startingLine = await this.cars.add();
-    const laps = await this.howManyLaps();
-    console.log(startingLine, laps);
+    const lineup = await this.cars.add();
+    this.startingLine(lineup);
+  }
+
+  async startingLine(array) {
+    const newArray = [];
+    array.forEach((car) => {
+      newArray.push({ name: car, distance: 0 });
+    });
+    console.log(newArray);
+    return newArray;
   }
 
   async howManyLaps() {
