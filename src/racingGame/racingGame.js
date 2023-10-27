@@ -1,6 +1,9 @@
 import { Console } from "@woowacourse/mission-utils";
 import { GAMEMSG } from "../constants/message.js";
-import { splitInputCarName } from "./utils/validation.js";
+import {
+  splitInputCarName,
+  checkInputCarNameValidation,
+} from "./utils/validation.js";
 
 class RacingGame {
   async start() {
@@ -11,8 +14,8 @@ class RacingGame {
     let inputCarName;
     try {
       inputCarName = await Console.readLineAsync(GAMEMSG.inputCarName);
-      splitInputCarName(inputCarName);
-      Console.print(splitInputCarName(inputCarName));
+      const carNameList = splitInputCarName(inputCarName);
+      checkInputCarNameValidation(carNameList);
     } catch (error) {
       throw error;
     }
