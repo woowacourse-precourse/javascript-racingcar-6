@@ -1,6 +1,10 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 class App {
+  constructor() {
+    this.currentMovements = {};
+  }
+
   async readUserRaceCarName() {
     try {
       const raceCarName = await MissionUtils.Console.readLineAsync(
@@ -12,7 +16,16 @@ class App {
           throw new Error();
         }
       }
-      this.userTryCount();
+
+      for (const name of validNames) {
+        this.currentMovements[name] = "";
+      }
+
+      const tryCount = await this.userTryCount();
+
+      for (let i = 0; i < tryCount; i++) {
+        this.playGame(validNames);
+      }
     } catch (e) {
       throw new Error("[ERROR] 잘못된 문자 형식입니다.");
     }
@@ -23,9 +36,25 @@ class App {
       const tryCount = await MissionUtils.Console.readLineAsync(
         `${"시도할 횟수는 몇 회인가요?"}\n`,
       );
+      MissionUtils.Console.print("실행 결과");
+      return parseInt(tryCount, 10);
     } catch (e) {
       throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
     }
+  }
+
+  playGame(validNames) {
+    for (const name of validNames) {
+      const movement = this.calcMoveCount();
+      this.currentMovements[name] += movement;
+      MissionUtils.Console.print(`${name} : ${this.currentMovements[name]}`);
+    }
+    MissionUtils.Console.print(" ");
+  }
+
+  calcMoveCount() {
+    const raceCarMoveCount = MissionUtils.Random.pickNumberInRange(0, 9);
+    return raceCarMoveCount >= 4 ? "-" : "";
   }
 
   async play() {
