@@ -8,21 +8,30 @@ class GamePlay {
     return INPUT;
   }
 
-  isCarMoved(cars) {
-    let carList = cars.split(",");
+  setInitialMovePoint(Cars) {
     const CAR_POINT = {};
-    const CAR_MOVEPOINT = [];
+    Cars.map((el) => (CAR_POINT[el] = 0));
 
-    carList.map((el, idx) => {
-      CAR_POINT[el] = 0;
+    return CAR_POINT;
+  }
+
+  isCarMoved(cars) {
+    const CAR_MOVEPOINT = [];
+    const CAR_LIST = cars.split(",");
+
+    const CAR_POINT = this.setInitialMovePoint(CAR_LIST);
+
+    CAR_LIST.map((el) => {
       const number = MissionUtils.Random.pickNumberInRange(0, 9);
       CAR_MOVEPOINT.push(number);
 
       if (number >= 4) CAR_POINT[el] += 1;
+      const MOVE_COUNT = "-".repeat(CAR_POINT[el]);
+
+      Console.print(`${el} : ${MOVE_COUNT}`);
     });
 
     console.log(CAR_POINT);
-    console.log(carList);
     console.log(CAR_MOVEPOINT);
   }
 
@@ -31,11 +40,14 @@ class GamePlay {
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
     );
 
+    // this.getTryTimes();
     this.isCarMoved(CARS);
   }
 
   async getTryTimes() {
     const TIMES = await this.getUserInput("시도할 횟수는 몇 회인가요?");
+
+    return TIMES;
   }
 }
 
