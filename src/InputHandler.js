@@ -10,7 +10,7 @@ import {
 } from "./utils/validators.js";
 
 class InputHandler {
-  async getCarNameArray() {
+  static async getCarNameArray() {
     const inputStr = await Console.readLineAsync(MESSAGE.ENTER_CAR_NAMES);
 
     if (endsWithComma(inputStr)) {
@@ -34,7 +34,7 @@ class InputHandler {
     return array;
   }
 
-  async getMoveAttemptCount() {
+  static async getMoveAttemptCount() {
     const inputStr = await Console.readLineAsync(
       MESSAGE.ENTER_MOVE_ATTEMPT_COUNT
     );
