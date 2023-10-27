@@ -26,3 +26,10 @@ export const checkInputCarNameValidation = (inputs) => {
       throw new Error(ERRORMSG.invalid_korean_character);
   }, 0);
 };
+
+export const checkInputTryNumValidation = (input) => {
+  if (!GMAEVALIDATION.check_only_number.test(input))
+    throw new Error(ERRORMSG.invalid_not_number);
+  if (input.includes("0")) throw new Error(ERRORMSG.invalid_include_zero);
+  if (input >= 10) throw new Error(ERRORMSG.invalid_exceed_max_try);
+};

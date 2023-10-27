@@ -3,19 +3,29 @@ import { GAMEMSG } from "../constants/message.js";
 import {
   splitInputCarName,
   checkInputCarNameValidation,
+  checkInputTryNumValidation,
 } from "./utils/validation.js";
 
 class RacingGame {
   async start() {
-    this.getCarName();
+    await this.getCarName();
+    await this.getTryNum();
   }
 
   async getCarName() {
-    let inputCarName;
     try {
-      inputCarName = await Console.readLineAsync(GAMEMSG.inputCarName);
+      const inputCarName = await Console.readLineAsync(GAMEMSG.input_CarName);
       const carNameList = splitInputCarName(inputCarName);
       checkInputCarNameValidation(carNameList);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getTryNum() {
+    try {
+      const inputTryNum = await Console.readLineAsync(GAMEMSG.input_tryNum);
+      checkInputTryNumValidation(inputTryNum);
     } catch (error) {
       throw error;
     }
