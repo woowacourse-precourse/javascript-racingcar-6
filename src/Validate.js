@@ -13,7 +13,10 @@ class Validate {
   }
 
   static eachCarNameLength(cars) {
-    return cars.every((car) => car.length <= CAR.MAX_NAME_LENGTH);
+    return cars.every(
+      (car) =>
+        car.length >= CAR.MIN_NAME_LENGTH && car.length <= CAR.MAX_NAME_LENGTH
+    );
   }
 
   static minCarsLength(cars) {

@@ -7,7 +7,7 @@ export const ASK = {
 
 export const ERROR = {
   CARS_START_AND_END_WITH_COMMA: `[ERROR] 자동차를 입력할 때 양 끝에 ${CARS_SEPARATOR.NAME}(${CARS_SEPARATOR.SYMBOL})를 입력하면 안됩니다.`,
-  CAR_NAME_LENGTH: `[ERROR] 각 자동차의 이름은 길이가 ${CAR.MAX_NAME_LENGTH} 이하여야 합니다.`,
+  CAR_NAME_LENGTH: `[ERROR] 각 자동차의 이름은 길이가 ${CAR.MIN_NAME_LENGTH} 이상, ${CAR.MAX_NAME_LENGTH} 이하여야 합니다.`,
   CARS_LENGTH: `[ERROR] 자동차는 최소 ${CAR.MIN_CARS_LENGTH}개를 생성해야합니다.`,
   CAR_NAME_HAS_BLANK: "[ERROR] 자동차 이름에는 공백을 포함할 수 없습니다.",
   CARS_NAME_DUPLICATED: "[ERROR] 자동차 이름을 중복해서 입력할 수 없습니다.",
