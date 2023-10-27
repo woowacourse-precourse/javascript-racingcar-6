@@ -64,4 +64,18 @@ describe("[CUSTOM] 입력받은 자동차들에 대한 예외 처리", () => {
       await expect(playPromise).rejects.toThrow("[ERROR]");
     }
   );
+  test.each([[["abc, abc"]], [["abc,abc "]], [["abc, abc"]], [["abc,a b c"]]])(
+    "중복에 대한 예외",
+    async (inputs) => {
+      // given
+      mockQuestions(inputs);
+
+      // when
+      const app = new App();
+      const playPromise = app.play();
+
+      // then
+      await expect(playPromise).rejects.toThrow("[ERROR]");
+    }
+  );
 });
