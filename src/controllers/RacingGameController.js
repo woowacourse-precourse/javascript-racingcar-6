@@ -13,26 +13,26 @@ class RacingGameController {
 
   async initiate() {
     const carNames = await inputView.readNamesInput();
-    this.#handleCarNamesInput(carNames);
+    this.#setupCarsFromNames(carNames);
     const rounds = await inputView.readRoundsNumberInput();
     outputView.printResultHeader();
-    this.#handleRoundsNumberInput(rounds);
+    this.#executeRacingRounds(rounds);
+    this.#racingGame.concludeGame();
     const winners = this.#racingGame.getWinners();
     outputView.printWinners(winners);
   }
 
-  #handleCarNamesInput(names) {
+  #setupCarsFromNames(names) {
     const cars = names.map((item) => this.#factory.createCar(item));
     this.#racingGame.setCars(cars);
   }
 
-  #handleRoundsNumberInput(roundsNumber) {
+  #executeRacingRounds(roundsNumber) {
     for (let i = 0; i < roundsNumber; i += 1) {
       this.#racingGame.moveAllCars();
       const roundResult = this.#racingGame.getAllCarsMovementResult();
       outputView.printResult(roundResult);
     }
-    this.#racingGame.concludeGame();
   }
 }
 
