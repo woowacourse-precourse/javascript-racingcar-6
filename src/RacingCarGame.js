@@ -8,10 +8,10 @@ class RacingCarGame {
 
   async startGame() {
     const carNameList = await this.#getCarNamesInput();
-    const numOfAttempts = await this.#getNumOfAttempts();
+    const attemptsCount = await this.#getAttemptsInput();
 
     this.#racingCars = new RacingCars(carNameList);
-    this.#repeatMovement(numOfAttempts);
+    this.#repeatMovement(attemptsCount);
     Console.print(this.#makeFinalWinnerString());
   }
 
@@ -41,7 +41,7 @@ class RacingCarGame {
     }
   }
 
-  async #getNumOfAttempts() {
+  async #getAttemptsInput() {
     const attempt = await Console.readLineAsync(MESSAGE.enterNumbersOfAttempts);
     const numberAttempt = Number(attempt);
     this.#validateAttemptsInput(numberAttempt);
