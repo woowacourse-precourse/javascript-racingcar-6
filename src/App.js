@@ -77,11 +77,8 @@ class App {
   }
 
   calculateLongestDistance() {
-    let longestDistance = 0;
-    for (const key in this.gameProgress) {
-      const gameDistance = this.gameProgress[key].length;
-      longestDistance = Math.max(gameDistance, longestDistance);
-    }
+    const gameArrays = Object.values(this.gameProgress);
+    const longestDistance = gameArrays.reduce((max, game) => Math.max(max, game.length), 0);
 
     return longestDistance;
   }
