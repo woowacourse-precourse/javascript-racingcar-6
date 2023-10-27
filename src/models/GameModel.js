@@ -49,6 +49,16 @@ class GameModel {
     let rand = Random.pickNumberInRange(0, 9);
     return rand;
   }
+
+  // - push
+  getForwardCount(car) {
+    let randomValue = this.getRandomValue(); //함수 호출때마다 난수 새로 생성
+    if (randomValue >= 4) {
+      // this.countForwardArr.push("-");
+      this.carModels[car].countForwardArr.push("-");
+    }
+    return this.carModels[car].countForwardArr.join("");
+  }
 }
 
 const model = new GameModel();
