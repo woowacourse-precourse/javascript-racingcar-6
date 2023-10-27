@@ -46,3 +46,7 @@ git commit 메시지 신경
    - [ ] 한글과 영어만 포함이 되어있는지
 2. 시도할 횟수를 입력받는다.
    - [ ] 숫자 범위에 해당되는지 확인
+
+### 객체 설계
+
+<img width="744" alt="image" src="https://github.com/Ryan-Dia/javascript-racingcar-6/assets/76567238/85b7c0be-84f5-4cea-a9a8-607ea00c985b">
