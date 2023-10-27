@@ -2,7 +2,7 @@ export const Messages = {
   ENTER_RACING_CAR_NAME_MESSAGE:
     "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n",
   ENTER_COUNT_MESSAGE: "시도할 횟수는 몇 회인가요?\n",
-  CAR_RACING_RESULT: "\n실헹 결과",
+  CAR_RACING_RESULT: "\n실행 결과",
 };
 
 export const ErrorMessage = {
