@@ -1,6 +1,6 @@
 import { Random } from "@woowacourse/mission-utils";
-import Car from "./Car.js";
-import { SEPARATOR, RANDOM } from "./constant/rule.js";
+import Car from "./Car";
+import { SEPARATOR, RANDOM } from "./constant/rule";
 
 class Utils {
   static getCarNameArray(enteredCars) {

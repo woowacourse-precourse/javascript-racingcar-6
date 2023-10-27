@@ -1,7 +1,7 @@
-import Print from "./Print.js";
-import Calculate from "./Calculate.js";
-import Validate from "./Validate.js";
-import Utils from "./Utils.js";
+import Print from "./Print";
+import Calculate from "./Calculate";
+import Validate from "./Validate";
+import Utils from "./Utils";
 
 class App {
   constructor() {

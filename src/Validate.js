@@ -1,5 +1,5 @@
-import { CAR, MIN_TRY_COUNT, REGEX, SEPARATOR } from "./constant/rule.js";
-import { ERROR } from "./constant/message.js";
+import { CAR, MIN_TRY_COUNT, REGEX, SEPARATOR } from "./constant/rule";
+import { ERROR } from "./constant/message";
 
 class Validate {
   checkEnteredCarsIsValid(enteredCars) {

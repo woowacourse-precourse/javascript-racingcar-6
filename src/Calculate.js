@@ -1,4 +1,4 @@
-import { SEPARATOR } from "./constant/rule.js";
+import { SEPARATOR } from "./constant/rule";
 
 class Calculate {
   constructor() {

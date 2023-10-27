@@ -1,4 +1,4 @@
-import { GO_SYMBOL, RANDOM } from "./constant/rule.js";
+import { GO_SYMBOL, RANDOM } from "./constant/rule";
 
 class Car {
   constructor(name) {

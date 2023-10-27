@@ -1,5 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
-import { ASK, MESSAGE } from "./constant/message.js";
+import { ASK, MESSAGE } from "./constant/message";
 
 class Print {
   static async getCars() {

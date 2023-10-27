@@ -1,4 +1,4 @@
-import { SEPARATOR, CAR, MIN_TRY_COUNT } from "./rule.js";
+import { SEPARATOR, CAR, MIN_TRY_COUNT } from "./rule";
 
 export const ASK = {
   CARS: `경주할 자동차 이름을 입력하세요.(이름은 ${SEPARATOR.CARS.NAME}(${SEPARATOR.CARS.SYMBOL}) 기준으로 구분)\n`,
