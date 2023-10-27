@@ -1,25 +1,33 @@
 import Car from './Car.js';
+import { Random } from '@woowacourse/mission-utils';
 
 class CarRacingGame {
   #cars;
   #round;
 
-  // carNames 배열로 받아야됨. ex) ['Car1', 'Car2', 'Car3']
-  // Todo: 각 이름에 맞는 Car인스턴스 생성
   constructor(carNames, round) {
     this.#cars = carNames.map((carName) => new Car(carName));
     this.#round = round;
   }
 
-  race() {}
+  // Todo: 각 인스턴스에서 랜덤값이 4이상일때 move실행
+  // Todo: Random 생성을 유틸함수로 만들어서 분리해야됨
+  race() {
+    this.#cars.forEach((car) => {
+      const randomNumber = Random.pickNumberInRange(0, 9);
 
-  // Todo: 해당 라운드의 Car인스턴스의 각 이름과 진행값을 return시킴
+      console.log(randomNumber);
+
+      if (randomNumber >= 4) car.move();
+    });
+  }
+
   getRoundResult() {
     return this.#cars.map((car) => {
       const name = car.getName();
       const progress = car.getProgress();
 
-      return console.log({ name, progress });
+      return { name, progress };
     });
   }
 
@@ -27,7 +35,8 @@ class CarRacingGame {
 }
 
 // console.log 테스트를 위한 코드
-const racingGame = new CarRacingGame(['Car1', 'Car2', 'Car3'], 5);
-racingGame.getRoundResult();
+const racingGame = new CarRacingGame(['Car1', 'Car2', 'Car3'], 1);
+racingGame.race();
+console.log(racingGame.getRoundResult());
 
 export default CarRacingGame;
