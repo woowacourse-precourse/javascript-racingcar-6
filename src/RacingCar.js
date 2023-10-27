@@ -26,6 +26,15 @@ class RacingCar {
     }
     return input;
   }
+
+  async createNumber() {
+    this.#carList.forEach((car) => {
+      const randNum = Random.pickNumberInRange(1, 9);
+      if(randNum >= 4){
+        car.moveForward();
+      }
+    })
+  }
 }
 
 export default RacingCar;
