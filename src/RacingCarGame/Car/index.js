@@ -18,6 +18,10 @@ class Car {
   length() {
     return this.postion.length;
   }
+
+  toStringPosition() {
+    return `${this.name}${SYMBOLS.colon}${this.postion}\n`;
+  }
 }
 
 export default Car;
