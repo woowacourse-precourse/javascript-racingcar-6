@@ -15,7 +15,7 @@ class Car {
     return this.#distance;
   }
 
-  MoveForward() {
+  moveForward() {
     this.#distance += 1;
   } 
 }
