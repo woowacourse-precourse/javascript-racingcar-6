@@ -30,6 +30,12 @@ function numToBar(num) {
   return bar;
 }
 
+function printResult(car) {
+  for (let i = 0; i < car.length; i++) {
+    Console.print(car[i][0] + " : " + numToBar(car[i][1]));
+  }
+}
+
 class App {
   async play() {
     let car = await inputCar();
@@ -37,7 +43,8 @@ class App {
     Console.print("\n실행 결과");
     for (let i = 0; i < trialNumber; i++) {
       moveOrStay(car);
-      // Console.print(car);
+      printResult(car);
+      Console.print("\n");
     }
   }
 }
