@@ -12,9 +12,17 @@ class App {
   }
 
   async setInitialState() {
+    await this.getRacingCars();
+    await this.getTryCount();
+  }
+
+  async getRacingCars() {
     const cars = await Print.getCars();
-    this.tryCount = await Print.getTryCount();
     this.carInstanceArray = cars.map((carName) => new Car(carName));
+  }
+
+  async getTryCount() {
+    this.tryCount = await Print.getTryCount();
   }
 }
 
