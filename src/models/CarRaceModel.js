@@ -1,6 +1,6 @@
 // models/CarRaceModel.js
 import { Random } from '@woowacourse/mission-utils';
-
+import { calculateLongestDistance } from '../utils/calculateLongestDistance.js';
 class CarRaceModel {
   constructor() {
     this.carList = [];
@@ -30,13 +30,9 @@ class CarRaceModel {
     }
   }
 
-  calculateLongestDistance() {
-    const gameDistances = this.carList.map(car => this.gameProgress[car].length);
-    return Math.max(...gameDistances);
-  }
-
   calculateWinner() {
-    const longestDistance = this.calculateLongestDistance();
+    const valuesArray = Object.values(this.gameProgress).map(value => value.length);
+    const longestDistance = calculateLongestDistance(valuesArray);
     const winnerList = [];
 
     for (const key in this.gameProgress) {
