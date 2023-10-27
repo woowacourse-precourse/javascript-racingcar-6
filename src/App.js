@@ -6,7 +6,12 @@ class App {
     this.carNames = [];
   }
 
-  async play() {}
+  //게임 실행 함수
+  async play() {
+    this.userInputCarNames();
+    const NUMBER_OF_MOVES = await this.userInputNumberOfMoves();
+    this.startGame();
+  }
 
   //사용자가 입력한 자동차 이름 가져오기
   async userInputCarNames() {
@@ -23,16 +28,16 @@ class App {
   }
 
   //사용자가 입력한 자동차 이동 횟수 가져오기
-  async userInputNumMoves() {
+  async userInputNumberOfMoves() {
     const INPUT = await Console.readLineAsync();
-    const NUM_MOVES = parent(INPUT);
+    const NUMBER_OF_MOVES = parent(INPUT);
 
     //예외처리
-    if (NUM_MOVES <= 0 || isNaN(NUM_MOVES)) {
+    if (NUMBER_OF_MOVES <= 0 || isNaN(NUMBER_OF_MOVES)) {
       throw new Error('[ERROR]');
     }
 
-    return NUM_MOVES;
+    return NUMBER_OF_MOVES;
   }
 
   //랜덤 숫자로 자동차 움직여서 결과 도출
@@ -46,6 +51,9 @@ class App {
 
     return RESULT;
   }
+
+  //게임 진행하는 로직 분리
+  startGame() {}
 }
 
 export default App;
