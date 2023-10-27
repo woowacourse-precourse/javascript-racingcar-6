@@ -23,14 +23,15 @@ class App {
         Object.keys(this.racingCars).map((car) => {
           const number = Random.pickNumberInRange(1, 9);
           if (number > 4) this.racingCars[car]++;
+          let meter = '-'.repeat(this.racingCars[car]);
+          Console.print(`${car} : ${meter}`);
         });
+        Console.print(`\n`);
       }
-      console.log(this.racingCars);
 
       Object.values(this.racingCars).map((score) =>
         this.winnerScore < score ? (this.winnerScore = score) : ''
       );
-      console.log(this.winnerScore);
 
       for (const car in this.racingCars) {
         if (this.racingCars[car] === this.winnerScore) this.winner.push(car);
