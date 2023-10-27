@@ -13,15 +13,15 @@ class RacingCars {
   }
 
   getWinners() {
-    const maxCar = this.#findMaxNumOfMoves();
-    return this.#findSameScoreCars(maxCar);
+    const maxMoveCount = this.#findMaxMoveCount();
+    return this.#findSameMoveCount(maxMoveCount);
   }
 
-  #findMaxNumOfMoves() {
-    return this.#cars.reduce((max, car) => (car.compareToMax(max) > 0 ? car : max));
+  #findMaxMoveCount() {
+    return this.#cars.reduce((maxCount, car) => (car.compareToMax(maxCount) > 0 ? car : maxCount));
   }
 
-  #findSameScoreCars(maxCar) {
+  #findSameMoveCount(maxCar) {
     return this.#cars.filter((car) => car.compareIsSame(maxCar)).map((car) => car.getCarName());
   }
 }
