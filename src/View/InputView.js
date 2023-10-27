@@ -5,8 +5,6 @@
 
 import { Console } from "@woowacourse/mission-utils";
 
-import Car from "../Model/Car.js";
-
 class InputView {
   // 1-1. 경주할 자동차의 이름을 입력받는다.
   async getCarNames() {
@@ -44,10 +42,6 @@ class InputView {
     const isOverOne = Number(tryCount) >= 1;
 
     return isNumber && isOverOne;
-  }
-
-  static createCar(carNames, tryCount) {
-    return new Car(carNames, tryCount);
   }
 }
 
