@@ -20,10 +20,12 @@ class Car {
 class App {
   constructor() {
     this.cars = [];
+    this.chances = 0;
   }
 
   async play() {
     this.getCars();
+    this.getChances();
   }
 
   getCars() {
@@ -32,6 +34,11 @@ class App {
     );
     const input = Console.readLineAsync();
     this.cars = input.split(",").map((name) => new Car(name));
+  }
+
+  getChances() {
+    Console.print("시도할 횟수는 몇 회인가요?");
+    this.chances = parseInt(Console.readLineAsync());
   }
 }
 
