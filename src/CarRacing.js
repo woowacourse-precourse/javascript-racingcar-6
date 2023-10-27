@@ -1,9 +1,10 @@
 import { Console } from "@woowacourse/mission-utils";
 
-import Messages from "./common/message.js";
+import { Messages, ErrorMessage } from "./common/message.js";
 
 import validateCarNameInput from "./utils/validateCarNameInput.js";
 import validateCarNameArray from "./utils/validateCarNameArray.js";
+import validateGameCount from "./utils/validateGameCount.js";
 
 class CarRacing {
   constructor() {
@@ -23,19 +24,21 @@ class CarRacing {
     this.cars = carName.split(",");
     this.cars.map((car) => {
       if (!validateCarNameInput(car)) {
-        throw new Error(Messages.RACING_CAR_INPUT_ERROR_MESSAGE);
+        throw new Error(ErrorMessage.RACING_CAR_INPUT_ERROR_MESSAGE);
       }
     });
     console.log(this.cars);
+
     if (!validateCarNameArray(this.cars))
-      throw new Error(Messages.RACING_CAR_DUPLICATE_ERROR_MESSAGE);
+      throw new Error(ErrorMessage.RACING_CAR_DUPLICATE_ERROR_MESSAGE);
 
     this.getGameCount();
   }
 
   async getGameCount() {
     this.count = await Console.readLineAsync(Messages.ENTER_COUNT_MESSAGE);
-    console.log(this.count);
+    if (!validateGameCount(this.count))
+      throw new Error(ErrorMessage.GAME_COUNT_ERROR_MESSAGE);
   }
 }
 
