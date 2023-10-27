@@ -21,7 +21,7 @@ class App {
         players = players.split(","); // ['pobi', 'woni', 'jun']
 
         const TMP_OBJ = players.reduce((accumulator, value) => {
-            return { ...accumulator, [value]: "" };
+            return { ...accumulator, [value]: 0 };
         }, {});
 
         return TMP_OBJ;
@@ -38,7 +38,7 @@ class App {
     // 경기 진행 함수
     raceController(players) {
         Object.keys(players).forEach((key) => {
-            if (4 <= Random.pickNumberInRange(0, 9)) players[key] += "-";
+            if (4 <= Random.pickNumberInRange(0, 9)) players[key] += 1;
         });
         return;
     }
@@ -46,9 +46,15 @@ class App {
     // 경기 결과 텍스트 출력기
     outputPlayers(players) {
         Object.keys(players).forEach((key) => {
-            Console.print(`${key} : ${players[key]}`);
+            Console.print(`${key} : ${"-".repeat(players[key])}`);
         });
     }
+
+    // winnerChoose(players) {
+    //     Object.keys(players).reduce((key1, key2) => {
+    //         if (players[key1].length < players[key2].length);
+    //     });
+    // }
 }
 
 export default App;
