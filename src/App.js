@@ -1,8 +1,11 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import { Message } from "./message.js";
 
 class App {
-  async play() {}
+  async play() {
+    const carArray = await getCarInput();
+    validateCarArray(carArray);
+    MissionUtils.Console.print(carArray);
+  }
 }
 
 async function getCarInput() {
@@ -10,24 +13,19 @@ async function getCarInput() {
   const input = await MissionUtils.Console.readLineAsync(
     `${message.carInputMessage}`
   );
-  const carArray = input.split(",");
-  return carArray;
-}
-
-async function inputToArray(input) {
-  const carArray = input.split(",");
+  const carArray = input.split(`,`);
   return carArray;
 }
 
 async function validateCarArray(carArray) {
   const message = new Message();
-  if (carArray.length < 2) {
+  if (carArray.length < MIN_CAR_COUNT) {
     throw new Error(`${message.carInputErrorMessage4}`);
   }
-  if (carArray.length > 10) {
+  if (carArray.length > MAX_CAR_COUNT) {
     throw new Error(`${message.carInputErrorMessage5}`);
   }
-  if (carArray.some((car) => car.length > 10)) {
+  if (carArray.some((car) => car.length > MAX_NAME_LENGTH)) {
     throw new Error(`${message.carInputErrorMessage}`);
   }
   if (carArray.some((car) => car.trim().length === 0)) {
@@ -37,5 +35,8 @@ async function validateCarArray(carArray) {
     throw new Error(`${message.carInputErrorMessage3}`);
   }
 }
+
+const app = new App();
+app.play();
 
 export default App;
