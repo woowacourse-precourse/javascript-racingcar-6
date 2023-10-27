@@ -1,4 +1,4 @@
-import { getCarName, getPlayNumber } from './gameData.js';
+import { getCarName, getPlayNumber } from './Util/gameData.js';
 
 import playGame from './playGame.js';
 import printWinner from './printWinner.js';
