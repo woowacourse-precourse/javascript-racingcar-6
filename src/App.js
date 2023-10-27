@@ -39,6 +39,13 @@ class App {
     }
     MissionUtils.Console.print(result);
   }
+  // 전진하는 조건
+  MOVE_CAR(car) {
+    const randomNumbers = MissionUtils.Random.pickNumberInRange(0, 9);
+    if (randomNumbers >= 4) {
+      car.position++;
+    }
+  }
 }
 
 const app = new App();
