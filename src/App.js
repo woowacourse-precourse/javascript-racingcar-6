@@ -21,6 +21,19 @@ class App {
             MissionUtils.Console.print(outString);
             cnt++;
         }
+        let max = -1;
+        for (let i = 0; i < FORWARD_ARR.length; i++) {
+            if (FORWARD_ARR[i] > max) {
+                max = FORWARD_ARR[i];
+            }
+        }
+        let RESULT_ARRAY = [];
+        FORWARD_ARR.forEach((VALUE, INDEX) => {
+            if (VALUE === max) {
+                RESULT_ARRAY.push(NAME_ARR[INDEX]);
+            }
+        });
+        MissionUtils.Console.print(`최종 우승자 : ${RESULT_ARRAY.join(',')}`);
     }
 
 }
