@@ -1,8 +1,8 @@
 import { Console } from '@woowacourse/mission-utils';
-import { CONDITION, ERROR, MESSAGE } from './constants/index.js';
-import Car from './Car.js';
-import Random from './Random.js';
-import Refree from './Referee.js';
+import { CONDITION, ERROR, MESSAGE } from './constants/index';
+import Car from './Car';
+import Random from './Random';
+import Refree from './Referee';
 
 class App {
   #cars;
@@ -23,7 +23,7 @@ class App {
   #printRaceResult(count) {
     Console.print(MESSAGE.RESULT);
 
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i < count; i += 1) {
       this.#cars.forEach((car) => car.race(Random.createRandomNumber()));
       this.#cars.forEach((car) =>
         Console.print(MESSAGE.RACE(car.getName(), car.getForwardCount()))

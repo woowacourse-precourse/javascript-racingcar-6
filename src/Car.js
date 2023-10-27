@@ -1,4 +1,4 @@
-import { CONDITION } from './constants/index.js';
+import { CONDITION } from './constants/index';
 
 class Car {
   #name;
