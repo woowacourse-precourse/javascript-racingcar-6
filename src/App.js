@@ -82,12 +82,9 @@ const Message = Object.freeze({
     zeroCharacter : '[ERROR] 자동차 이름을 1글자 이상 5글자 이하로 설정하세요.',
     moreThanTwoCars : '[ERROR] 2개 이상의 자동차 이름을 입력하세요.',
     notNumber : '[ERROR] 시도 횟수를 입력하세요.'
-
-
   }
 });
 
 const app = new App();
-app.play();
 
 export default App
