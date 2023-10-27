@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import PROMPT_MESSAGE from '../constant/message';
+import { PROMPT_MESSAGE } from '../constant/message';
 
 class GameQnA {
   static async carsName() {
