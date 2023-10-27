@@ -1,13 +1,19 @@
 import { Console } from '@woowacourse/mission-utils';
-import { checkIsValidNumber, isUserInputValid, splitCarsInput } from './utils.js';
+import {
+  checkIsValidNumber,
+  generateRandomNumber,
+  isUserInputValid,
+  splitCarsInput,
+} from './utils.js';
 
 class App {
-  cars = [];
+  cars = new Map();
   tryNumber = 0;
 
   async play() {
     await this.getCarName();
     await this.getTryNumber();
+    this.startRacing();
   }
 
   async getCarName() {
@@ -19,7 +25,9 @@ class App {
   initializeCars(carsInput) {
     isUserInputValid(carsInput);
     const cars = splitCarsInput(carsInput);
-    this.cars = [...cars];
+    cars.forEach((car) => {
+      this.cars.set(car, 0);
+    });
   }
 
   async getTryNumber() {
@@ -31,6 +39,29 @@ class App {
   initializeTryNumber(numberInput) {
     checkIsValidNumber(numberInput);
     this.tryNumber = Number(numberInput);
+  }
+
+  startRacing() {
+    Console.print('');
+    Console.print('실행 결과');
+    for (let i = 0; i < this.tryNumber; i++) {
+      this.moveRandomDistance();
+      Console.print('');
+    }
+  }
+
+  moveRandomDistance() {
+    this.cars.forEach((distance, car) => {
+      const randomNumber = generateRandomNumber();
+      this.cars.set(car, distance + randomNumber);
+      this.printMoveResult(car);
+    });
+  }
+
+  printMoveResult(car) {
+    const distance = this.cars.get(car);
+    const result = '-'.repeat(distance);
+    Console.print(`${car} : ${result}`);
   }
 }
 

@@ -1,3 +1,5 @@
+import { Random } from '@woowacourse/mission-utils';
+
 /**
  * @param {string} input
  **/
@@ -58,4 +60,12 @@ export function checkIsValidNumber(input) {
   if (numberedInput > 50) {
     throw new Error('[ERROR] 50 이하의 수를 입력해 주세요.');
   }
+}
+
+export function generateRandomNumber() {
+  const number = Random.pickNumberInRange(0, 9);
+  if (number >= 4) {
+    return number;
+  }
+  return 0;
 }
