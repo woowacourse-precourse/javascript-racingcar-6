@@ -3,4 +3,4 @@ const MOVE_RANGE = {
     TO : 9
 }
 
-module.exports = { CONSTANTS , MOVE_RANGE }
+module.exports = { MOVE_RANGE }

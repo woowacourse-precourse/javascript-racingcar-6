@@ -1,11 +1,9 @@
-import Validate from '../utils/Validate';
 import UpdateConstants from '../models/UpdateConstant';
 import { Console } from '@woowacourse/mission-utils';
 import { OUTPUT_MSG } from '../constants/OutputMsg';
 
 class Controller {
     constructor() {
-        this.VALIDATE = new Validate();
         this.UPDATE_MODEL = new UpdateConstants();
     }
 

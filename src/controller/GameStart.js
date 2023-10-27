@@ -23,14 +23,13 @@ class GameStart {
 
     async #getPlayTimes() {
         this.OUT_VIEW.printInputPlayTimeMsg();
-        const PLAY_TIME = await this.CONTROL.inputPlayTimes();
-        this.OUT_VIEW.printGamePlayTime(PLAY_TIME);
+        this.#PLAY_TIME = await this.CONTROL.inputPlayTimes();
+        this.OUT_VIEW.printGamePlayTime(this.#PLAY_TIME);
         this.#moveVehicle();
     }
 
     #moveVehicle() {
         this.CONTROL.makeVehicleObject();
-        this.#PLAY_TIME = this.CONTROL.getPlayTimeNumber();
         for (let idx = 0; idx < this.#PLAY_TIME; idx++) {
             this.#MOVE_PROCEDURE = this.CONTROL.setVehicleObjectNumber();
             this.OUT_VIEW.printMoveProcedure(this.#VEHICLE_NAME,this.#MOVE_PROCEDURE);
