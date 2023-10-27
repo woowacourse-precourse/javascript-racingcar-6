@@ -15,7 +15,7 @@ class Car {
       this.score += 1;
     }
     const result = "-".repeat(this.score);
-    Console.print(`${this.name}: ${result}`);
+    Console.print(`${this.name} : ${result}`);
   }
 }
 
@@ -25,12 +25,19 @@ class App {
     const tryNumber = await this.getTryNumber();
 
     Console.print("\n실행 결과");
+    let maxScore = -1;
     Array.from({ length: tryNumber }).map(() => {
       carList.map((car) => {
         car.printMyScore();
       });
       Console.print("");
     });
+
+    const winner = [];
+    carList.map((data) => (maxScore = Math.max(maxScore, data.score)));
+    const result = carList.filter((data) => maxScore === data.score);
+    const lastWinner = result.map((data) => data.name).join(", ");
+    Console.print(`최종 우승자 : ${lastWinner}`);
   }
 
   async getCarList() {
