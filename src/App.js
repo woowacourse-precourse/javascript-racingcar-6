@@ -4,6 +4,7 @@ class App {
   constructor() {
     this.racingCars = {};
     this.winnerScore = 0;
+    this.winner = [];
   }
 
   async play() {
@@ -25,6 +26,17 @@ class App {
         });
       }
       console.log(this.racingCars);
+
+      Object.values(this.racingCars).map((score) =>
+        this.winnerScore < score ? (this.winnerScore = score) : ''
+      );
+      console.log(this.winnerScore);
+
+      for (const car in this.racingCars) {
+        if (this.racingCars[car] === this.winnerScore) this.winner.push(car);
+      }
+
+      Console.print(`최종 우승자 : ${this.winner}`);
     } catch (error) {
       throw new Error('[ERROR] 숫자가 잘못된 형식입니다.');
     }
