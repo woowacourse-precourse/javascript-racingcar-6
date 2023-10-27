@@ -39,8 +39,8 @@ export const printAction = (gameResults) => {
 };
 
 export const printResult = (champion) => {
-  if (champion < 2) {
-    Console.print(`최종 우승자: ${champion}`);
+  if (champion.length < 2) {
+    Console.print(`최종 우승자: ${champion[0]}`);
   } else {
     Console.print(`최종 우승자: ${champion.join(', ')}`);
   }
