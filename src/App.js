@@ -1,16 +1,14 @@
-import Race from './models/Race.js';
-import InputView from './views/InputView.js';
+import GameController from './controller/GameController.js';
 
 class App {
-  /**
-   * 레이스에 참가하는 자동차 이름과 점수를 나타내는 스코어보드
-   * @types { [key: string]: number }
-   */
-  #scoreBoard;
+  #startGame;
+
+  constructor() {
+    this.#startGame = new GameController();
+  }
 
   async play() {
-    const carNames = await InputView.getCarNames();
-    this.#scoreBoard = Race.getScoreBoard(carNames);
+    await this.#startGame.ready();
   }
 }
 
