@@ -10,4 +10,12 @@ export default class Car {
       this.carDistance += '-';
     }
   }
+
+  canMove() {
+    const randomNumber = Random.pickNumberInRange(0, 9);
+    if (randomNumber >= 4) {
+      return true;
+    }
+    return false;
+  }
 }
