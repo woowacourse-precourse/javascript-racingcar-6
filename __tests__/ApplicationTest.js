@@ -95,4 +95,17 @@ describe("자동차 경주 게임", () => {
     expect(() => Validation.validateDuplicateName(passInput)).not.toThrow();
     expect(() => Validation.validateDuplicateName(failInput)).toThrow("[ERROR]");
   });
+
+  test("Validation.validateTryCount() 테스트", () => {
+    const passInputs = ['1', '123', '9999'];
+    const failInputs = ['0', '-1', 'test', '1.2'];
+
+    passInputs.forEach(input => {
+      expect(() => Validation.validateTryCount(input)).not.toThrow();
+    });
+
+    failInputs.forEach(input => {
+      expect(() => Validation.validateTryCount(input)).toThrow("[ERROR]");
+    });
+  });
 });
