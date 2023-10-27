@@ -19,6 +19,10 @@ class App {
     this.#totalRounds = await InputView.getTotalRounds();
 
     OutputView.printResultTitleMessage();
+
+    Array.from({ length: this.#totalRounds }).forEach(() => {
+      this.#refree.moveCars();
+    });
   }
 }
 
