@@ -18,6 +18,7 @@ class App {
         MissionUtils.Console.print("실행 결과");
 
         for (let i = 0; i < lapCount; i++) {
+            await this.goForward(cars);
             await this.printResult(cars);
             MissionUtils.Console.print("");
         }
@@ -53,13 +54,20 @@ class App {
         //TODO : 랜덤한 값을 반환
         return MissionUtils.Random.pickNumberInRange(1, 9);
     }
-
-    async goForward() {
+    async isValueAboveFour(random){
+        //TODO : 무작위 값이 4이상일 경우인지를 판단
+        return random >= 4;
+    }
+    async goForward(cars) {
         //TODO : 자동차 전진
+        for (let i = 0; i < cars.length; i++) {
+            if(await this.isValueAboveFour(await this.randomInt()))cars[i].distance++;
+        }
     }
 
-    async printWinner() {
+    async printWinner(cars) {
         //TODO : 최송 우승자 안내 문구를 출력
+
     }
 }
 
