@@ -1,4 +1,4 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Console, Random } from "@woowacourse/mission-utils";
 import MESSAGE from "./constants/constants.js";
 
 class App {
@@ -13,8 +13,13 @@ class App {
     if (this.CheckCarsName()) {
       const playTimes = await Console.readLineAsync(MESSAGE.roundsToPlay);
       this.playTimes = playTimes;
+      if (this.CheckPlayTimes()) {
+        this.StartRacing();
+      } else {
+        throw new Error(MESSAGE.notValidPlaytimes);
+      }
     } else {
-      throw new Error();
+      throw new Error(MESSAGE.notValidCarsName);
     }
   }
 
@@ -23,7 +28,7 @@ class App {
 
     const hasNotSpace = (car) => !car.includes(" ");
     const isNotSpace = (car) => car.length !== 0;
-    const checkFive = (car) => car.length >= 5;
+    const checkFive = (car) => car.length <= 5;
 
     const isValidate = this.cars.every(
       (car) => hasNotSpace(car) && isNotSpace(car) && checkFive(car)
@@ -33,7 +38,7 @@ class App {
   }
 
   CheckPlayTimes() {
-    const hasNotSpace = (car) => !car.includes(" ");
+    const hasNotSpace = (number) => !number.includes(" ");
     const checkUnderTen = /^(10|[1-9])$/;
 
     if (!checkUnderTen.test(this.playTimes) || !hasNotSpace(this.playTimes)) {
@@ -42,6 +47,32 @@ class App {
     return true;
   }
 
+  StartRacing() {
+    let count = 1;
+    const cars = this.cars.reduce((acc, cur) => {
+      acc[cur] = "";
+      return acc;
+    }, {});
+
+    while (count <= this.playTimes) {
+      this.cars.map((car) => {
+        if (this.CanMoveForward()) {
+          cars[car] += "-";
+        }
+        return Console.print(`${car} : ${cars[car]}`);
+      });
+      count += 1;
+    }
+    return cars;
+  }
+
+  CanMoveForward() {
+    const randomNumber = Random.pickNumberInRange(0, 9);
+    if (randomNumber >= 4) {
+      return true;
+    }
+    return false;
+  }
 }
 
 export default App;
