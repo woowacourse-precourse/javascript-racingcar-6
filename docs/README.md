@@ -4,6 +4,9 @@
 
 -[X] play()
     - 게임을 시작함
+-[ ] Car
+    - 자동차 객체 생성
+    - 이름(String)과 전진한 거리(Int) 인스턴스 생성
 -[ ] getUserInputString()
     - 한 줄을 입력 받고 쉼표로 구분하여 세개의 문자열을 만듦
 -[ ] getUserInputInt()
