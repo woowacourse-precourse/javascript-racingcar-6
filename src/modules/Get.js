@@ -1,3 +1,4 @@
+import { run } from 'jest';
 import Is from './Is.js';
 
 class Get {
@@ -12,6 +13,24 @@ class Get {
       if (index <= count && running) return previous + 1;
       else return previous;
     }, 0);
+  }
+
+  static winnerIndexList(racingList) {
+    const lastPositionList = Get.lastPositionList(racingList);
+    const maxPostion = Math.max(...lastPositionList);
+    const result = [];
+    lastPositionList.forEach((position, index) => {
+      if (position === maxPostion) result.push(index);
+    });
+    return result;
+  }
+
+  static lastPositionList(racingList) {
+    const lastPosition = [];
+    racingList.didItRun.forEach(runList => {
+      lastPosition.push(Get.position(runList, racingList.gameOfNumber - 1));
+    });
+    return lastPosition;
   }
 }
 
