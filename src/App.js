@@ -1,5 +1,10 @@
+import RacingGame from './racing/RacingGame.js';
+
 class App {
-  async play() {}
+  play() {
+    const racingGame = new RacingGame();
+    racingGame.gameStart();
+  }
 }
 
 export default App;
