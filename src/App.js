@@ -9,6 +9,8 @@ class App {
         throw new Error('[ERROR] 입력이 5자 이하가 아닙니다');
       }
     });
+
+    const LOOP_COUNT = await MissionUtils.Console.readLineAsync('');
   }
 }
 
