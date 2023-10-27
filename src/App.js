@@ -1,25 +1,22 @@
-import { getCarNames, getAttempts } from "./view/InputView.js";
-import GameLogic from "./game/Game.js";
+import InputView from "./view/InputView.js";
+import RacingGame from "./game/RacingCar.js";
+import OutputView from "./view/OutputView.js";
 
 class App {
-  #carNames;
-  #attempts;
-  #GAME;
-
-  constructor() {
-    this.#GAME = new GameLogic();
-  }
 
   async play() {
-    try {
-      this.#carNames = await getCarNames();
-      this.#attempts = await getAttempts();
-      await this.#GAME.gameStart(this.#carNames, this.#attempts);
-    } catch (error) {
-      throw new Error("[ERROR]");
-    }
+    const racingGame = new RacingGame();
+
+    const carNames = await InputView.getCarNames();
+    carNames.forEach((name) => racingGame.addCar(name));
+    
+    const attempts = await InputView.getAttempts();
+    await OutputView.printResult();
+    await racingGame.startGame(attempts);
+
+    const winners = racingGame.getWinners();
+    await OutputView.printWinner(winners);
   }
 }
-
 
 export default App;
