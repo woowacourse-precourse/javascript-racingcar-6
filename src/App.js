@@ -25,12 +25,19 @@ class App {
             "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
         );
         players = players.split(","); // ['pobi', 'woni', 'jun']
-
-        const TMP_OBJ = players.reduce((accumulator, value) => {
-            return { ...accumulator, [value]: 0 };
+        const TMP_PLAYERS_OBJ = players.reduce((accumulator, value) => {
+            return { ...accumulator, [value.trim()]: 0 };
         }, {});
 
-        return TMP_OBJ;
+        // 예외처리
+        Object.keys(TMP_PLAYERS_OBJ).forEach((key) => {
+            // 공백이 있거나, 숫자이면
+            if (key.includes(" ") || !isNaN(key)) {
+                throw new Error("[ERROR]");
+            }
+        });
+
+        return TMP_PLAYERS_OBJ;
     }
 
     // 반복 횟수 반환 함수
@@ -38,7 +45,11 @@ class App {
         const NUMBER = await Console.readLineAsync(
             "시도할 횟수는 몇 회인가요?"
         );
-        return Number(NUMBER);
+        // 예외처리
+        if (isNaN(NUMBER))
+            // 숫자가 아니면
+            throw new Error("[ERROR]");
+        else return Number(NUMBER);
     }
 
     // 경기 진행 함수
