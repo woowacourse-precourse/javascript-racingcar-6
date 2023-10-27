@@ -22,6 +22,13 @@ class Race {
       distance: car.getDistance(), // 이동한 거리만큼의 '-'를 가져옴
     }));
   }
+
+  getWinners() {
+    const maxDistance = Math.max(...this.cars.map(car => car.distance));
+    return this.cars
+      .filter(car => car.distance === maxDistance)
+      .map(car => car.name);
+  }
 }
 
 export default Race;
