@@ -6,9 +6,14 @@ export const splitInputCarName = (input) => {
 };
 
 export const checkInputCarNameValidation = (inputs) => {
+  const unique = new Set(inputs);
+  if (unique.size !== inputs.length)
+    throw new Error(ERRORMSG.invalid_duplicate_name);
+
   if (inputs.length > GMAEVALIDATION.max_carlist_length)
     throw new Error(ERRORMSG.invalid_carlist_length);
   inputs.reduce((acc, cur) => {
+    // 콘솔 디버깅
     console.log(cur);
 
     if (cur.length > GMAEVALIDATION.max_carname_length)
