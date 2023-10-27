@@ -46,7 +46,7 @@ class Car {
 
   validateOfLength() {
     if (this.#car.length > Car.CAR_NAME_MAX_LENGTH) {
-      throw new AppError(ERROR_MESSAGES.out_of_range);
+      throw new AppError(ERROR_MESSAGES.out_of_range_of_names);
     }
   }
 }
