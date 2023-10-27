@@ -12,14 +12,17 @@ class RacingGameController {
   }
 
   async initiate() {
-    const carNames = await inputView.readNamesInput();
+    const { carNames, rounds } = await this.#getUserInputs();
     this.#setupCarsFromNames(carNames);
-    const rounds = await inputView.readRoundsNumberInput();
-    outputView.printResultHeader();
     this.#executeRacingRounds(rounds);
     this.#racingGame.concludeGame();
-    const winners = this.#racingGame.getWinners();
-    outputView.printWinners(winners);
+    this.#displayResult();
+  }
+
+  async #getUserInputs() {
+    const carNames = await inputView.readNamesInput();
+    const rounds = await inputView.readRoundsNumberInput();
+    return { carNames, rounds };
   }
 
   #setupCarsFromNames(names) {
@@ -28,11 +31,16 @@ class RacingGameController {
   }
 
   #executeRacingRounds(roundsNumber) {
+    outputView.printResultHeader();
     for (let i = 0; i < roundsNumber; i += 1) {
       this.#racingGame.moveAllCars();
       const roundResult = this.#racingGame.getAllCarsMovementResult();
       outputView.printResult(roundResult);
     }
+  }
+  #displayResult() {
+    const winners = this.#racingGame.getWinners();
+    outputView.printWinners(winners);
   }
 }
 
