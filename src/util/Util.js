@@ -7,4 +7,7 @@ class Util {
 		}
 		return false;
 	}
+	static trimStringInArray(arr) {
+		return arr.map((str) => str.trim());
+	}
 }
