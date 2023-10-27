@@ -25,3 +25,13 @@ export const inputNumber = async () => {
 
   return Number(number);
 };
+
+export const printAction = (gameResults) => {
+  gameResults.forEach((gameResult) => {
+    const [carName, result] = gameResult;
+
+    const dash = '-'.repeat(result);
+
+    Console.print(`${carName} : ${dash}\n`);
+  });
+};
