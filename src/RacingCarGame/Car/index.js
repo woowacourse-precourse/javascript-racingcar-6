@@ -1,5 +1,5 @@
 import { Random } from '@woowacourse/mission-utils';
-import { NUMBER } from '../constants/index.js';
+import { NUMBER, SYMBOLS } from '../constants/index.js';
 
 class Car {
   constructor(name = '') {
@@ -9,6 +9,10 @@ class Car {
 
   canMove() {
     return Random.pickNumberInRange(NUMBER.minRandom, NUMBER.maxRandom);
+  }
+
+  move() {
+    this.postion += this.canMove() ? SYMBOLS.move : '';
   }
 }
 
