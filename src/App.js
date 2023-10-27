@@ -53,11 +53,13 @@ class App {
     }
   }
 
-  printResults(carNames, carPositions){
-    carNames.forEach((name)=>{
+  printResults(carNames, carPositions) {
+    carNames.forEach((name) => {
       Console.print(`${name}: ${'-'.repeat(carPositions[name])}`);
     });
   }
+
+
 
   async play() {
     this.start();
@@ -75,7 +77,18 @@ class App {
         await this.moveCarPositions(carNames, carPositions);
       }
 
-      this.printResults(carNames,carPositions);
+      //차수별 실행결과
+      this.printResults(carNames, carPositions);
+
+      //우승자 찾기
+      const winner = Math.max(...Object.values(carPositions));
+      const jointWinner = Object.keys(carPositions).filter((name) => carPositions[name] === winner);
+
+      if (jointWinner.length > 1) {
+        Console.print(`공동 우승자: ${jointWinner.join(', ')}`);
+      } else {
+        Console.print(`우승자: ${jointWinner[0]}`);
+      }
 
     } catch (error) {
       throw new Error(error.message);
