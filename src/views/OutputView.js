@@ -12,7 +12,7 @@ class OutputView {
 
   printWinners(winners) {
     const winnersString = winners.join(SYMBOLS.winnerNameSeparator);
-    Console.print(GAME_MESSAGES.winnerAnnouncementHeader + winnersString);
+    Console.print(GAME_MESSAGES.winnerPrefix + winnersString);
   }
 }
 

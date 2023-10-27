@@ -14,10 +14,10 @@ const GAME_NUMBERS = {
 
 const GAME_MESSAGES = {
   carNameQuery:
-    '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
-  roundsNumberQuery: '시도할 횟수는 몇 회인가요?\n',
+    '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)',
+  roundsNumberQuery: '시도할 횟수는 몇 회인가요?',
   resultHeader: '실행 결과',
-  winnerAnnouncementHeader: '최종 우승자 : ',
+  winnerPrefix: '최종 우승자 : ',
 };
 
 const ERROR_MESSAGES = {
