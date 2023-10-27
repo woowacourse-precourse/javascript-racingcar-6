@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-
+import { validateCarNameLength } from './Validation.js';
 // 5자 이하,
 async function getCarNamesList() {
 	const carNames = await Console.readLineAsync(
@@ -7,10 +7,7 @@ async function getCarNamesList() {
 	);
 	const carNamesList = carNames.split(',');
 	carNamesList.map((name) => {
-		//차후 검증 함수로 바꿀 것.
-		if (name.length > 5) {
-			throw new Error('[ERROR] 특정 자동차의 이름이 5자를 초과하였습니다.');
-		}
+		validateCarNameLength(name);
 	});
 	return carNamesList;
 }

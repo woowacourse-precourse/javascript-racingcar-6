@@ -8,5 +8,5 @@
     - [ ] 무작위 값이 4 이상인지 알 수 있다. - Validation#validateForMove()
   - [ ] 한명 이상의 우승자를 알 수 있다. - Racing#getWinner()
 - [ ] 사용자가 잘못된 값을 입력시 검증 해야 한다.
-  - [ ] 자동차 이름 입력을 검증한다. - Validation#validateCarNameList()
+  - [x] 자동차 이름 입력을 검증한다. - Validation#validateCarNameLength()
   - [ ] 시도할 횟수를 검증한다. - Validation#validatePlayCount()
