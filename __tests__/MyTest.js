@@ -18,6 +18,12 @@ const mockRandoms = (numbers) => {
   }, MissionUtils.Random.pickNumberInRange);
 };
 
+const getLogSpy = () => {
+  const logSpy = jest.spyOn(MissionUtils.Console, "print");
+  logSpy.mockClear();
+  return logSpy;
+};
+
 describe('자동차 경주 게임', () => {
   test('자동차 이름입력', async () => {
     const inputs = ['pobi,woni'];
@@ -78,6 +84,27 @@ describe('자동차 경주 게임', () => {
 
     array.forEach((element, index) => {
       expect(element.getAdvanceCount()).toEqual(result[index]);
+    });
+  });
+
+  test('각 시도에서 상태 출력', async () => {
+    // given
+    const MOVING_FORWARD = 4;
+    const STOP = 3;
+    const inputs = ["pobi,woni", "1"];
+    const outputs = ["pobi : -"];
+    const randoms = [MOVING_FORWARD, STOP];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    // when
+    const app = new App();
+    await app.play();
+    
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
   });
 });
