@@ -4,6 +4,7 @@ import Print from './modules/Print.js';
 class App {
   async play() {
     const racingInfo = await Make.racingInfo();
+    Print.racingResultFrom(racingInfo);
   }
 }
 

@@ -1,10 +1,22 @@
 import { Console } from '@woowacourse/mission-utils';
-
-const BEFORE_RACING_MESSAGE = '실행 결과';
+import Get from './Get.js';
+const RESULT_FIRST_MESSAGE = '실행 결과';
 
 class Print {
-  static beforeRacingMessage() {
-    Console.print(this.BEFORE_RACING_MESSAGE);
+  static racingResultFrom(racingInfo) {
+    Console.print(RESULT_FIRST_MESSAGE);
+    for (let i = 0; i < racingInfo.numberOfGame; i++) {
+      Print.racingPerGame(racingInfo, i);
+    }
+  }
+  static racingPerGame(racingInfo, gameCount) {
+    racingInfo.carList.forEach((name, index) => {
+      Console.print(
+        `${name}: ${'-'.repeat(
+          Get.position(racingInfo.didItRun[index], gameCount)
+        )}`
+      );
+    });
   }
 }
 
