@@ -1,14 +1,17 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
+import Car from "./Cars";
 
 class GameModel {
   constructor(carNames, attempts) {
-    this.CARS = carNames;
-    this.ATTEMPTS = attempts;
+    this.cars = carNames.map((name) => new Car(name));
+    this.attempts = attempts;
   }
 
   run() {
-    for (let attempt = 0; attempt < this.ATTEMPTS; attempt++) {
-      this.CARS.forEach((car) => MissionUtils.Console.print(car));
+    for (let attempt = 0; attempt < this.attempts; attempt++) {
+      this.cars.forEach((car) => {
+        MissionUtils.Console.print(car);
+      });
     }
   }
 }
