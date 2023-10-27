@@ -1,3 +1,5 @@
+import { WINNERS_SEPARATOR } from "./constant/rule.js";
+
 class Calculate {
   constructor(carInstanceArray) {
     this.max = 0;
@@ -9,6 +11,8 @@ class Calculate {
     this.cars.forEach((car) => {
       this.compareEachResult(car);
     });
+
+    return this;
   }
 
   compareEachResult(car) {
@@ -22,6 +26,10 @@ class Calculate {
       this.max = finalResult.length;
       this.winners = [name];
     }
+  }
+
+  getWinners() {
+    return this.winners.join(WINNERS_SEPARATOR);
   }
 }
 

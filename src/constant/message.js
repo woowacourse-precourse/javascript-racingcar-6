@@ -20,3 +20,5 @@ export const ERROR = {
 
 export const RESULT_PHRASE_MESSAGE = "\n실행 결과";
 export const RESULT_MESSAGE = (name, result) => `${name} : ${result}`;
+
+export const WINNERS_MESSAGE = (winners) => `최종 우승자 : ${winners}`;

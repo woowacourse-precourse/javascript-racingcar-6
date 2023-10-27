@@ -14,3 +14,5 @@ export const MAX_NUM = 9;
 export const CAN_GO_NUM = 4;
 
 export const GO_SYMBOL = "-";
+
+export const WINNERS_SEPARATOR = ", ";

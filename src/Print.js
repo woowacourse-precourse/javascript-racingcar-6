@@ -5,6 +5,7 @@ import {
   ERROR,
   RESULT_MESSAGE,
   RESULT_PHRASE_MESSAGE,
+  WINNERS_MESSAGE,
 } from "./constant/message.js";
 import { separator } from "./constant/rule.js";
 import Validate from "./Validate.js";
@@ -62,6 +63,10 @@ class Print {
 
   static showEmptyNewLine() {
     Console.print("");
+  }
+
+  static showWinners(winners) {
+    Console.print(WINNERS_MESSAGE(winners));
   }
 }
 

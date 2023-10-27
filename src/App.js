@@ -49,7 +49,8 @@ class App {
 
   pickOutWinner() {
     const calculate = new Calculate(this.carInstanceArray);
-    calculate.calcWinners();
+    const winners = calculate.calcWinners().getWinners();
+    Print.showWinners(winners);
   }
 }
 
