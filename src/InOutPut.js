@@ -35,3 +35,11 @@ export const printAction = (gameResults) => {
     Console.print(`${carName} : ${dash}\n`);
   });
 };
+
+export const printResult = (champion) => {
+  if (champion < 2) {
+    Console.print(`최종 우승자: ${champion}`);
+  } else {
+    Console.print(`최종 우승자: ${champion.join(', ')}`);
+  }
+};
