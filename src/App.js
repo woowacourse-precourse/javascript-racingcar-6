@@ -17,7 +17,10 @@ const getCarNames = async () => {
   checkCarNamesAreValid(carNames);
 };
 
-const getTryNumber = () => {};
+const getTryNumber = async () => {
+  const tryNumber = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+  checkTryNumberIsValid(tryNumber);
+};
 
 const checkCarNamesAreValid = (userInput) => {
   const input = userInput.split(',');
@@ -25,10 +28,18 @@ const checkCarNamesAreValid = (userInput) => {
   const inputHaveOverName = input.find((carName) => carName.length > 5);
 
   if (inputHaveOverName) {
-    throw new Error('[ERROR] 숫자가 올바른 형식이 아닙니다.');
+    throw new Error('[ERROR] 입력이 올바른 형식이 아닙니다.');
   }
 };
 
-const checkTryNumberIsValid = (userInput) => {};
+const checkTryNumberIsValid = (userInput) => {
+  if (userInput.length != 1) {
+    throw new Error('[ERROR] 입력이 올바른 형식이 아닙니다.');
+  }
+
+  if (Number.isNaN(Number(userInput)) || Number(userInput) === 0) {
+    throw new Error('[ERROR] 입력이 올바른 형식이 아닙니다.');
+  }
+};
 
 export default App;
