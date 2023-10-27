@@ -8,6 +8,7 @@ class RacingCar {
   async start() {
     await this.getCarsNames();
     await this.repeatForward();
+    await this.checkWinner();
   }
 
   async getCarsNames() {
@@ -66,6 +67,17 @@ class RacingCar {
     }
     return slash;
   }
+
+  async checkWinner() {
+    const allDistance = this.#carList.map((car) => car.getCarDistance());
+    const maxDistance = Math.max(...allDistance);
+    const winners = this.#carList
+      .filter((car) => car.getCarDistance() === maxDistance)
+      .map((car) => car.getCarName());
+    
+    Console.print(`최종 우승자 : ${winners}`);
+  }
+  
 }
 
 export default RacingCar;
