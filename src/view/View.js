@@ -22,4 +22,8 @@ export default class View extends Validation {
      */
     return parseInt(repeatTime, 10);
   }
+
+  print(message) {
+    Console.print(message);
+  }
 }
