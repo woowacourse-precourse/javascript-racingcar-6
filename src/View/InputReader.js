@@ -3,7 +3,13 @@ import { GAME_MESSAGE } from '../constants/gameMessage.js';
 
 export default class InputReader {
   async carNames() {
-    this.#onRead(GAME_MESSAGE.REQUEST_CAR_NAMES);
+    const userInput = this.#onRead(GAME_MESSAGE.REQUEST.CAR_NAME);
+    return userInput;
+  }
+
+  async tryRount() {
+    const userInput = this.#onRead(GAME_MESSAGE.REQUEST.TRY_ROUND);
+    return userInput;
   }
 
   async #onRead(message) {
