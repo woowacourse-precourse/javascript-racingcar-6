@@ -1,6 +1,6 @@
 import { ERROR } from '../constants.js';
 
-const validation = (name) => {
+export default (name) => {
   const nameArray = name.split(',');
   if (name.trim()) throw new Error(ERROR.EMPTY_CAR_NAME);
   if (nameArray.some((val) => val.trim() === ''))
