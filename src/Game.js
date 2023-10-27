@@ -5,6 +5,7 @@ class Game {
   countAttempt = null;
   currState = [];
   result = [];
+  winnerList = [];
 
   start = async () => {
     await this.getCarNameList();
@@ -17,6 +18,9 @@ class Game {
       i++;
     }
     this.printResult();
+
+    this.getWinnerList();
+    this.printWinnerList();
   };
 
   playRound = () => {
@@ -81,6 +85,23 @@ class Game {
     const randomValue = Random.pickNumberInRange(0, 9);
     if (randomValue >= 4) return true;
     return false;
+  };
+
+  getWinnerList = () => {
+    const finalState = this.result.slice(-1)[0];
+    const maxValue = finalState.reduce((acc, curr) => {
+      return Math.max(acc, curr);
+    }, Number.NEGATIVE_INFINITY);
+
+    finalState.forEach((pos, index) => {
+      if (pos === maxValue) {
+        this.winnerList.push(this.carNameList.at(index));
+      }
+    });
+  };
+
+  printWinnerList = () => {
+    Console.print(`최종 우승자 : ${this.winnerList.join(", ")}`);
   };
 }
 
