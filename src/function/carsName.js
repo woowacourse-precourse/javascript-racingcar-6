@@ -5,10 +5,12 @@ export const carsName = async () => {
     "경주 할 자동차 이름(이름은 쉼표(,) 기준으로 구분)"
   );
 
-  const result = userInputValue.split(",");
+  const result = userInputValue.split(",").map((el) => {
+    return { [el]: "" };
+  });
 
-  result.forEach((el) => {
-    if (el.length > 5) {
+  result.forEach((name) => {
+    if (Object.keys(name)[0].length > 5) {
       throw new Error(
         "[ERROR] 자동차 이름의 길이는 5자 이하입니다. 게임을 다시 시작해주세요"
       );
