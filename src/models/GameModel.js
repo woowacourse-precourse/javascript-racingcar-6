@@ -4,8 +4,8 @@ class GameModel {
     this.carModels = [];
   }
 
-  //[ 'a', 'b', 'c' ]
-  async getCarModel() {
+  // this.carModels = [ 'a', 'b', 'c' ]
+  async getCarModels() {
     const getCarModels = await Console.readLineAsync(
       `경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n`
     );
@@ -26,9 +26,24 @@ class GameModel {
     this.carModels = carModelsArr;
     return this.carModels;
   }
+
+  // this.attempt = 5
+  async getRaceAttempt() {
+    const getRaceAttempt = await Console.readLineAsync(
+      `시도할 횟수는 몇 회인가요?\n`
+    );
+
+    this.attempt = parseInt(getRaceAttempt);
+    // 타입이 `Number`이어야 한다.
+    if (isNaN(getRaceAttempt) !== false) {
+      throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
+    }
+    return this.attempt;
+  }
 }
 
 const model = new GameModel();
-model.getCarModel();
+// model.getCarModel();
+model.getRaceAttempt();
 
 export default GameModel;
