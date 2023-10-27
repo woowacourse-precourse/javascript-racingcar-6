@@ -4,10 +4,20 @@ function isEveryCarNamesUnique(carNamesArray) {
   return carNamesSet.size === carNamesArray.length;
 }
 
+function isAlphabetOrInteger(carName) {
+  return /^[a-zA-Z0-9]+$/.test(carName);
+}
+
 function isValidCarNames(carNamesString) {
   const carNamesArray = carNamesString.split(',');
 
   for (const carName of carNamesArray) {
+    if (!isAlphabetOrInteger(carName)) {
+      throw new Error(
+        '[ERROR] 자동차 이름은 알파벳과 숫자로만 구성되어야 합니다.'
+      );
+    }
+
     if (carName.length > 5)
       throw new Error('[ERROR] 자동차 이름은 5자 이하로 설정되어야 합니다.');
   }
