@@ -18,10 +18,6 @@ const ConsoleOutput = {
     Console.print(GAME_MESSAGES.RESULT);
   },
 
-  printResult: () => {
-    Console.print(GAME_MESSAGES.RESULT);
-  },
-
   printGameResult: (carPositions) => {
     for (const car in carPositions) {
       let position = "-".repeat(carPositions[car]);
@@ -30,7 +26,8 @@ const ConsoleOutput = {
   },
 
   printGameWinner: (winnerNames) => {
-    Console.print(`최종 우승자 : ${winnerNames}`);
+    const winnerString = winnerNames.join(", ");
+    Console.print(`최종 우승자 : ${winnerString}`);
   },
 };
 
