@@ -14,6 +14,7 @@ class App {
     );
     const carNameList = await this.inputCarName();
     this.carNameArr = convertStrToArr(carNameList);
+    this.isValidCarNames(this.carNameArr);
     Console.print("시도할 횟수는 몇 회인가요?");
     this.attemptCount = await this.inputAttemptCount();
     this.isValidAttemptCount(this.attemptCount);
@@ -25,6 +26,13 @@ class App {
   async inputCarName() {
     const carNames = await Console.readLineAsync("");
     return carNames;
+  }
+  isValidCarNames() {
+    for (let i = 0; i < this.carNameArr.length; i++) {
+      if (this.carNameArr[i].length > 5) {
+        throw new Error("[ERROR] 자동차 이름은 5자 이하로 입력해주세요.");
+      }
+    }
   }
   async inputAttemptCount() {
     const countValue = await Console.readLineAsync("");
@@ -42,11 +50,9 @@ class App {
       const randomNum = Random.pickNumberInRange(0, 9);
       this.randomNumArr.push(randomNum);
     }
+    console.log(this.randomNumArr);
   }
   updateCarPosition() {
-    if (!this.dashSymbol) {
-      this.dashSymbol = this.carNameArr.map(() => "");
-    }
     for (let i = 0; i < this.carNameArr.length; i++) {
       if (!this.dashSymbol[i]) {
         this.dashSymbol[i] = "";
