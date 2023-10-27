@@ -17,6 +17,12 @@ class App {
       const car = new Car(name);
       this.#carNames.push(car);
     });
+    await this.movementCount();
+  }
+
+  async movementCount() {
+    this.#moveCount =
+      await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
   }
 }
 
