@@ -27,7 +27,9 @@ class App {
     // 공백 제거 후 ","로 입력값을 나누어 저장
     const CARS = USER_INPUT.replace(/\s/g, "").split(",");
 
-    this.debug(CARS);
+    // 5자 이하의 이름인지 확인, 아니면 에러
+    if (CARS.every((el) => el.length > 5))
+      this.throwError("숫자가 잘못된 형식입니다.");
 
     // 사용자가 입력한 차 이름 배열 리턴
     return CARS;
@@ -35,6 +37,10 @@ class App {
 
   debug(...args) {
     console.log(...args);
+  }
+
+  throwError(COMMENT) {
+    throw new Error(`[ERROR] ${COMMENT}`);
   }
 }
 
