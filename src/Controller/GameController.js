@@ -9,31 +9,33 @@ class GameController {
   constructor() {
     this.inputView = new InputView();
     this.car = new Car();
+
+    this.tryCount = 0;
   }
 
   // 1. 사용자의 입력을 받는다
   async init() {
     const carNames = await this.inputView.getCarNames();
-    const tryCount = await this.inputView.getTryCount();
+    this.tryCount = await this.inputView.getTryCount();
 
     // 2. 입력된 이름과 시도 횟수를 바탕으로 자동차를 생성한다
-    this.createCar(carNames, tryCount);
+    this.createCar(carNames);
 
     return this.startGame();
   }
 
-  createCar(carNames, tryCount) {
+  createCar(carNames) {
     const cars = carNames.map((name) => ({ name, position: 0 }));
-    this.car.init(cars, tryCount);
+    this.car.init(cars);
   }
 
   // 3. 자동차 경주 게임을 진행한다
   startGame() {
-    const { cars, tryCount } = this.car;
+    const { cars } = this.car;
     const gameView = new GameView();
     
     // 3-1. 시도 횟수마다 자동차 대수만큼 무작위 값을 생성한다
-    for (let i = 0; i < tryCount; i += 1) {
+    for (let i = 0; i < this.tryCount; i += 1) {
       const randomNumbers = this.generateRandomNumber(cars.length);
       const currnetCarStatus = this.car.move(randomNumbers);
 
