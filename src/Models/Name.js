@@ -1,4 +1,4 @@
-class Name {
+export default class Name {
   constructor(string) {
     const trimmedString = string.trim();
     this.#validationSize(trimmedString);
@@ -6,7 +6,7 @@ class Name {
   }
 
   #validationSize(string) {
-    if (string.length > 5)
+    if (0 < string.length <= 5)
       throw new Error("[ERROR] 이름은 최대 5자까지만 가능합나디.");
   }
 }
