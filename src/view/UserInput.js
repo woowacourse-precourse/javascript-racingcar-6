@@ -11,5 +11,11 @@ class UserInput{
         const VALIDATE_CAR_NAME = this.comm.racingCarInputValutate(RACING_CAR_NAME.split(','));
         return VALIDATE_CAR_NAME;
     }
+
+    async inputRacingCount(){
+        return await Console.readLineAsync(`${MESSAGE.RACING_COUNT}\n`);
+    }
+
 }
+
 export default UserInput;
