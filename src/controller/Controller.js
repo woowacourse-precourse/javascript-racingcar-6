@@ -2,7 +2,6 @@ import Validate from '../utils/Validate';
 import UpdateConstants from '../models/UpdateConstant';
 import { Console } from '@woowacourse/mission-utils';
 import { OUTPUT_MSG } from '../constants/OutputMsg';
-import { CONSTANTS } from '../constants/Constants';
 
 class Controller {
     constructor() {
@@ -13,8 +12,7 @@ class Controller {
     async inputVehicleName() {
         try {
             const VEHICLE_NAME = await Console.readLineAsync(OUTPUT_MSG.INPUT_VEHICLE_NAME);
-            this.UPDATE_MODEL.updateVehicleNameList(VEHICLE_NAME);
-            this.VALIDATE.vehicleNameValidate(CONSTANTS.vehicleNameList);
+            return this.UPDATE_MODEL.updateVehicleNameList(VEHICLE_NAME);
         } catch (error) {
             throw error;
         }
@@ -23,8 +21,7 @@ class Controller {
     async inputPlayTimes() {
         try {
             const PLAY_TIME = await Console.readLineAsync(OUTPUT_MSG.INPUT_PLAY_TIME);
-            this.UPDATE_MODEL.updateGamePlayTimes(PLAY_TIME);
-            this.VALIDATE.playTimeValidate(CONSTANTS.gamePlayTimes);
+            return this.UPDATE_MODEL.updateGamePlayTimes(PLAY_TIME);
         } catch (error) {
             throw error;
         }
@@ -34,16 +31,21 @@ class Controller {
         this.UPDATE_MODEL.updateObjectKeyValues()
     }
 
-    setVehicleObjectNumber() {
-        this.UPDATE_MODEL.updateVehicleObjectValue();
+    getPlayTimeNumber() {
+        return this.UPDATE_MODEL.getPlayTime();
     }
 
-    findChampions() {
-        const procedureLength = Object.values(CONSTANTS.moveProcedure).map((move) => move.length);
-        const maxValue = Math.max(...procedureLength);
-        Object.entries(CONSTANTS.moveProcedure).forEach((vehicle) => {
-            if (vehicle[1].length === maxValue) CONSTANTS.champion.push(vehicle[0]);
+    setVehicleObjectNumber() {
+        return this.UPDATE_MODEL.updateVehicleObjectValue();
+    }
+
+    findChampions(moveProcedure,champion) {
+        const PROCEDURE_LENGTH = Object.values(moveProcedure).map((move) => move.length);
+        const MAX_VALUE = Math.max(...PROCEDURE_LENGTH);
+        Object.entries(moveProcedure).forEach((vehicle) => {
+            if (vehicle[1].length === MAX_VALUE) champion.push(vehicle[0]);
         })
+        return champion;
     }
 
 }

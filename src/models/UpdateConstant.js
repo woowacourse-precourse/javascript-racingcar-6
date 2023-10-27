@@ -1,36 +1,55 @@
 import Validate from '../utils/Validate';
-import { CONSTANTS, MOVE_RANGE } from '../constants/Constants';
+import { MOVE_RANGE } from '../constants/Constants';
 import { Random } from '@woowacourse/mission-utils';
 
 
 class UpdateConstants {
+    #vehicleNameList
+    #gamePlayTimes
+    #vehicleNameObject
+    #moveProcedure
+    
     constructor() {
         this.VALIDATE = new Validate();
+        this.#vehicleNameList =  [];
+        this.#gamePlayTimes = 0;
+        this.#vehicleNameObject = {};
+        this.#moveProcedure = {};
     }
+
     updateVehicleNameList(vehicleName) {
-        CONSTANTS.vehicleNameList = vehicleName.split(',');
+        this.#vehicleNameList = vehicleName.split(',');
+        this.VALIDATE.vehicleNameValidate(this.#vehicleNameList);
+        return this.#vehicleNameList
     }
 
     updateGamePlayTimes(playTime) {
-        CONSTANTS.gamePlayTimes = Number(playTime);
+        this.#gamePlayTimes = Number(playTime);
+        this.VALIDATE.playTimeValidate(this.#gamePlayTimes);
+        return this.#gamePlayTimes;
     }
 
     updateObjectKeyValues() {
-        CONSTANTS.vehicleNameList.forEach((vehicleName) => {
-            CONSTANTS.vehicleNameObject[vehicleName] = 0
-            CONSTANTS.moveProcedure[vehicleName] = '';
+        this.#vehicleNameList.forEach((vehicleName) => {
+            this.#vehicleNameObject[vehicleName] = 0;
+            this.#moveProcedure[vehicleName] = '';
         });
     }
 
+    getPlayTime() {
+        return this.#gamePlayTimes;
+    }
+
     updateVehicleObjectValue() {
-        CONSTANTS.vehicleNameList.forEach((vehicleName) => CONSTANTS.vehicleNameObject[vehicleName] = this.#getMoveNumber(vehicleName));
+        this.#vehicleNameList.forEach((vehicleName) => this.#vehicleNameObject[vehicleName] = this.#getMoveNumber(vehicleName));
+        return this.#moveProcedure
     }
 
     #getMoveNumber(vehicleName) {
-        const moveNumber = Random.pickNumberInRange(MOVE_RANGE.FROM, MOVE_RANGE.TO);
-        if (this.VALIDATE.moveNumberValidate(moveNumber)) {
-            CONSTANTS.moveProcedure[vehicleName] += '-';
-            return moveNumber;
+        const MOVE_NUMBER = Random.pickNumberInRange(MOVE_RANGE.FROM, MOVE_RANGE.TO);
+        if (this.VALIDATE.moveNumberValidate(MOVE_NUMBER)) {
+            this.#moveProcedure[vehicleName] += '-';
+            return MOVE_NUMBER;
         }
         return 0;
     }

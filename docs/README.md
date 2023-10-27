@@ -56,3 +56,44 @@ MVC 패턴을 기반으로 하던 중  `의존성원칙` 에 대한 중요성을
 
 
 `의존성원칙` 을 생각하며 코드 리팩토링 하였습니다.
+
+
+
+#### :wrench:두번째 리팩토링
+
+기존의 코드에선 
+
+```js
+const CONSTANTS = {
+    vehicleNameList : [],
+    gamePlayTimes : 0,
+    vehicleNameObject : {},
+    moveProcedure : {},
+    champion : [],
+}
+```
+
+와 같이 CONSTANTS 객체를 선언 뒤, Controller 나 View 등에서 사용하였다.
+하지만 외부에서 쉽게 변경 가능하다는 점과, 상수는 재할당이 이뤄지면 안되는데,
+재할당이 이뤄지고 있었다.
+
+그래서 이번 리팩토링을 통해, const CONSTANTS = { } 객체 대신
+
+```js
+class UpdateConstants {
+    #vehicleNameList
+    #gamePlayTimes
+    #vehicleNameObject
+    #moveProcedure
+    
+    constructor() {
+        this.VALIDATE = new Validate();
+        this.#vehicleNameList =  [];
+        this.#gamePlayTimes = 0;
+        this.#vehicleNameObject = {};
+        this.#moveProcedure = {};
+    }
+}
+```
+
+Models/에 private필드로 변수를 선언 후 관리하는 방식으로 리팩토링 하였다.

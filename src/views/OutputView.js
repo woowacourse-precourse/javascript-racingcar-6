@@ -1,4 +1,3 @@
-import { CONSTANTS } from '../constants/Constants';
 import { Console } from '@woowacourse/mission-utils';
 import { OUTPUT_MSG } from '../constants/OutputMsg';
 
@@ -8,26 +7,26 @@ class OutputView {
         Console.print(OUTPUT_MSG.INPUT_VEHICLE_NAME);
     }
 
-    printVehicleName() {
-        Console.print(CONSTANTS.vehicleNameList.join(','));
+    printVehicleName(vehicleName) {
+        Console.print(vehicleName.join(','));
     }
 
     printInputPlayTimeMsg () {
         Console.print(OUTPUT_MSG.INPUT_PLAY_TIME);
     }
 
-    printGamePlayTime() {
-        Console.print(CONSTANTS.gamePlayTimes);
+    printGamePlayTime(playTime) {
+        Console.print(playTime);
     }
 
-    printMoveProcedure() {
-        CONSTANTS.vehicleNameList.forEach((vehicleName) => {
-            Console.print(`${vehicleName} : ${CONSTANTS.moveProcedure[vehicleName]}`);
+    printMoveProcedure(vehicleNameList,moveProcedure) {
+        vehicleNameList.forEach((vehicleName) => {
+            Console.print(`${vehicleName} : ${moveProcedure[vehicleName]}`);
         })
     }
 
-    printResult() {
-        Console.print(`${OUTPUT_MSG.WINNER_IS} ${CONSTANTS.champion.join(', ')}`);
+    printResult(champion) {
+        Console.print(`${OUTPUT_MSG.WINNER_IS} ${champion.join(', ')}`);
     }
 
 }
