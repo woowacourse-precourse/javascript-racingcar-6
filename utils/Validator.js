@@ -10,7 +10,8 @@ export default class Validator {
   }
 
   static isValidateAttemps(answer) {
-    if (Number.isNaN(answer) || typeof answer !== 'number') {
+    const attemps = answer.replace(/\s/g, '');
+    if (Number.isNaN(Number(attemps)) || attemps.length === 0) {
       throw new Error('[ERROR] 숫자만 입력해주세요.');
     }
     return true;
