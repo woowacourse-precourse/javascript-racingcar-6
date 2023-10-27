@@ -1,6 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import UserInput from "./userinput.js";
-import Race from "./race.js";
+import Race from "./lib/race.js";
 
 class App {
   async play() {
@@ -10,6 +10,9 @@ class App {
 
     const raceTryInput = await userInput.getRaceTryInput();
     await userInput.validateRaceTryInput(raceTryInput);
+
+    const race = new Race(carArray, raceTryInput);
+    await race.start();
   }
 }
 

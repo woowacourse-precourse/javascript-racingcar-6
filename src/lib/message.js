@@ -1,7 +1,7 @@
 // 파일명 : message.js
 // 설명 : 메시지 모음
 
-import { CAR, RACE } from "./constants/constants.js";
+import { CAR, RACE } from "../constants/constants.js";
 
 export class Message {
   carInputMessage = `경주 할 자동차의 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분) : `;

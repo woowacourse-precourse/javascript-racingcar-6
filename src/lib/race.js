@@ -18,7 +18,7 @@ class Race {
   }
 
   async start() {
-    //"실행 결과" 출력
+    // "실행 결과" 출력
     await MissionUtils.Console.print(this.message.raceResultMessage);
 
     for (let i = 0; i < this.race; i++) {
@@ -38,7 +38,7 @@ class Race {
   }
 
   async getRaceResult() {
-    const randomNumber = this.random.getRandomNumber();
+    const randomNumber = await this.random.getRandomNumber();
     if (randomNumber >= 4) {
       return 1;
     }
@@ -49,18 +49,18 @@ class Race {
     for (let i = 0; i < this.raceResult.length; i++) {
       const car = this.cars[i];
       const result = "-".repeat(this.raceResult[i]);
-      MissionUtils.Console.print(`${car} : ${result}`);
+      await MissionUtils.Console.print(`${car} : ${result}`);
     }
-    MissionUtils.Console.print("");
+    await MissionUtils.Console.print("");
   }
 
   async getWinner() {
     for (let i = 0; i < this.raceResult.length; i++) {
-      this.setMax(this.raceResult[i]);
+      await this.setMax(this.raceResult[i]);
     }
 
     for (let i = 0; i < this.raceResult.length; i++) {
-      this.pushWinner(i);
+      await this.pushWinner(i);
     }
   }
 
