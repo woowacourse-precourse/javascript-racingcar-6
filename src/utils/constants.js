@@ -8,3 +8,7 @@ export const OUTPUT_MESSAGE = Object.freeze({
   result: '\n실행 결과',
   winner: '최종 우승자 : ',
 });
+
+export const ERROR_MESSAGE = Object.freeze({
+  input: '[ERROR] 입력 값이 잘못된 형식입니다.',
+});
