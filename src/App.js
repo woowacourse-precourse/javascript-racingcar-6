@@ -5,7 +5,7 @@ class App {
     const CAR_NAME_SPLIT = await carCreater();
     const VALIDATED_TRY_NUMBER = await tryCounter();
     carMoveResult(CAR_NAME_SPLIT, VALIDATED_TRY_NUMBER);
-    //console.log(CAR_MOVE_STORAGE);
+    winner(CAR_NAME_SPLIT);
   }
 }
 
@@ -14,6 +14,8 @@ export default App;
 const CAR_MOVE_STORAGE = {
 
 }
+
+let winnerarray = [];
 
 async function carCreater() {
   MissionUtils.Console.print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -35,7 +37,6 @@ function validationNameLength(names) {
 function carNameSave(carnames) {
   for (let i = 0; i < carnames.length; i++) {
     CAR_MOVE_STORAGE[carnames[i]] = "";
-    //console.log(CAR_MOVE_STORAGE)
   }
 }
 
@@ -43,7 +44,6 @@ async function tryCounter() {
   MissionUtils.Console.print("시도할 횟수는 몇 회인가요?");
   const TRY_NUMBER = await MissionUtils.Console.readLineAsync('');
   const VALIDATED_TRY_NUMBER = validationTryNumber(TRY_NUMBER);
-  //console.log(VALIDATER_TRY_NUMBER)
   return VALIDATED_TRY_NUMBER;
 }
 
@@ -76,4 +76,34 @@ function carMoveOrStop(carname) {
     CAR_MOVE_STORAGE[carname] += "-";
   }
   MissionUtils.Console.print(`${carname} : ${CAR_MOVE_STORAGE[carname]}`);
+}
+
+function winner(carnames) {
+  var maxmoves = 0;
+  for (let i = 0; i < carnames.length; i++) {
+    maxmoves = Math.max(CAR_MOVE_STORAGE[carnames[i]].length,maxmoves);
+  }
+  for (let i = 0; i < carnames.length; i++) {
+    const MOVE = CAR_MOVE_STORAGE[carnames[i]].length
+    if (MOVE === maxmoves) {
+      winnerarray.push(carnames[i]); 
+    }
+  }
+  printWinner();
+}
+
+function printWinner() {
+  if (winnerarray.length === 1) {
+    MissionUtils.Console.print(`최종 우승자 : ${winnerarray[0]}`);
+  } else {
+    printWinners()
+  }
+}
+
+function printWinners() {
+  var winners = winnerarray[0]
+  for (let i = 1; i < winnerarray.length; i++) {
+    winners += `, ${winnerarray[i]}`
+  }
+  MissionUtils.Console.print(`최종 우승자 : ${winners}`);
 }

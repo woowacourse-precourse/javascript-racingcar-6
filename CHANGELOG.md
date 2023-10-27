@@ -1,3 +1,5 @@
+- fix: limit trynumber zero
+- feat: add car move or stop, game result
 - feat: add try counter and try number validater
 - feat: add carname creater and name length validater
 - docs: add function list
