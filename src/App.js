@@ -22,9 +22,7 @@ class App {
 
     this.#cars = carNameArray.map((carName) => new Car(carName));
     this.#printRaceResult(tryCount);
-
-    const winners = Refree.judge(this.#cars);
-    Console.print(OUTPUT_MESSAGE.WINNERS(winners));
+    this.#printWinners();
   }
 
   #printRaceResult(count) {
@@ -37,6 +35,11 @@ class App {
       );
       Console.print('');
     }
+  }
+
+  #printWinners() {
+    const winners = Refree.judge(this.#cars);
+    Console.print(OUTPUT_MESSAGE.WINNERS(winners));
   }
 
   static #validateNameLength(carNameArray) {
