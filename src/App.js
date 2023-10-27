@@ -2,10 +2,10 @@ import { Console } from "@woowacourse/mission-utils";
 
 class App {
   async play() {
-    const arrCarNames = await this.getCarNames();
+    const arrCarName = await this.getCarNames();
     const totalRound = await this.getTotalRound();
 
-    this.validateInput(arrCarNames, totalRound);
+    this.validateInput(arrCarName, totalRound);
     /*
       Todo :
       raceState - [{'이름1' : '이동 거리'}, {'이름2' : '이동 거리'}] 형태의 배열

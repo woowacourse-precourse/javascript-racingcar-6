@@ -7,6 +7,10 @@ class Car {
     moveForward(){
         this.distance += 1;
     }
+
+    getDistance(){
+        return '-'.repeat(this.distance);
+    }
 }
 
 export default Car;
