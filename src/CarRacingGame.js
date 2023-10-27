@@ -33,6 +33,21 @@ class CarRacingGame {
       }));
     }
   }
+
+  /**
+   * 최종 우승자의 차 이름을 반환
+   * @returns {string[]} 우승 차의 이름들
+   */
+  getWinner() {
+    const max = this.#cars.reduce((max, car) => Math.max(max, car.getDistance()), 0);
+    const result = this.#cars.reduce((result, car) => {
+      if (car.getDistance() === max) {
+        result.push(car.getName());
+      }
+      return result;
+    }, []);
+    return result;
+  }
 }
 
 export default CarRacingGame;
