@@ -6,7 +6,7 @@ export default class Name {
   }
 
   #validationSize(string) {
-    if (0 < string.length <= 5)
+    if (string.length <= 0 || string.length > 5)
       throw new Error("[ERROR] 이름은 공백이 아니고 5자 이하여야합니다.");
   }
 }
