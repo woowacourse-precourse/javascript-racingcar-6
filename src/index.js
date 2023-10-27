@@ -15,7 +15,7 @@ class GamePlay {
     return CAR_POINT;
   }
 
-  async isCarMoved(cars) {
+  async calculateCarMove(cars) {
     const CAR_LIST = cars.split(",");
     const CAR_POINT = this.setInitialMovePoint(CAR_LIST);
 
@@ -36,9 +36,15 @@ class GamePlay {
       // 콘솔 화면 상 각 횟수별 결과 구별위한 출력
       Console.print("");
     }
-
+    this.selectWinner(CAR_POINT);
     console.log(CAR_POINT);
-    console.log(TRY_TIMES);
+    // console.log(TRY_TIMES);
+  }
+
+  selectWinner(result) {
+    // const MOVE_RESULT = Object.keys(result);
+
+    const RANK = Object.keys(result).sort((a, b) => result[b] - result[a]);
   }
 
   async getCarNames() {
@@ -46,7 +52,7 @@ class GamePlay {
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
     );
 
-    await this.isCarMoved(CARS);
+    await this.calculateCarMove(CARS);
   }
 
   async getTryTimes() {
