@@ -15,7 +15,7 @@ class Car {
   }
 
   getDisplay() {
-    MissionUtils.Console.print(`${this.name} : ${'-'.repeat(this.position)}`);
+    return `${this.name} : ${'-'.repeat(this.position)}`;
   }
 }
 
@@ -32,17 +32,31 @@ class RaceModel {
 
   play(numAttempt) {
     for (let attempt = 1; attempt <= numAttempt; attempt++) {
-      this.cars.forEach((car) => {
-        car.move();
-        car.getDisplay();
-      });
-      MissionUtils.Console.print('\n');
+      MissionUtils.Console.print(this.moveCarsAndDisplay());
     }
+    this.determineWinner();
+  }
+
+  moveCarsAndDisplay() {
+    return this.cars
+      .map((car) => {
+        car.move();
+        return car.getDisplay();
+      })
+      .join('\n');
+  }
+
+  compareWinner(maxPosition) {
+    this.cars.forEach((car) => {
+      if (car.position === maxPosition) {
+        this.winners.push(car.name);
+      }
+    });
   }
 
   determineWinner() {
     const maxPosition = Math.max(...this.cars.map((car) => car.position));
-    this.winners = this.cars.filter((car) => car.position === maxPosition).map((car) => car.name);
+    this.compareWinner(maxPosition);
   }
 }
 
@@ -57,11 +71,10 @@ class RaceController {
 
   play(numAttempt) {
     this.model.play(numAttempt);
-    this.model.determineWinner();
   }
 
   getWinner() {
-    return this.model.winners.join('');
+    return this.model.winners.join(', '); //문자열
   }
 }
 
@@ -80,7 +93,7 @@ const gamePlay = (carNames, gameAttempt) => {
   carNames.forEach((carName) => raceController.addCar(carName));
   raceController.play(gameAttempt);
 
-  MissionUtils.Console.print(`\n최종 우승자 : ${raceController.getWinner}`);
+  MissionUtils.Console.print(`\n최종 우승자 : ${raceController.getWinner()}`);
 };
 
 const gameStart = async () => {
