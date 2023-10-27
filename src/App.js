@@ -4,11 +4,8 @@ class App {
   async play() {
     const controller = new Controller();
 
-    controller.start();
+    controller.startGame();
   }
 }
-
-const app = new App();
-app.play();
 
 export default App;
