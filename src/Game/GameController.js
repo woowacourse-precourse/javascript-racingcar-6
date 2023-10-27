@@ -7,7 +7,6 @@ class GameController {
     constructor() {
         this.validate = new Validate();
         this.racing = new Racing();
-
     }
   
     async inputCars() {
@@ -21,6 +20,7 @@ class GameController {
         this.validate.validateTryMoveCount(input);
         return input;
     }
+    
     
 }
 
