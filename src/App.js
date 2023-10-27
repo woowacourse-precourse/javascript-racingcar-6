@@ -1,5 +1,16 @@
+import GameController from "./GameController.js"
+
 class App {
-  async play() {}
+    gameController;
+    constructor() {
+        this.init();
+    }
+    init() {
+        this.gameController = new GameController();
+    }
+    async play() {
+       await this.gameController.inputCars();
+    }
 }
 
 export default App;
