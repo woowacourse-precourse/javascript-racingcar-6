@@ -15,29 +15,35 @@ class RacingGame {
     return distance;
   }
 
-  addDistance(cars, accumulate) {
+  addDistance(cars, accumulateDistance) {
     for (let car = 0; car < this.cars.length; car++) {
       let distance = this.generateRandomNum();
-      accumulate[car] += distance >= driveNumber.MIN_DRIVE_LENGTH ? "-" : "";
-      Console.print(`${this.cars[car]} : ${accumulate[car]}`);
+      accumulateDistance[car] +=
+        distance >= driveNumber.MIN_DRIVE_LENGTH ? "-" : "";
+      Console.print(`${this.cars[car]} : ${accumulateDistance[car]}`);
     }
-    return accumulate;
+    return accumulateDistance;
+  }
+
+  chooseWinner(cars, accumulateDistance, maxDistance) {
+    let winner = [];
+    for (let i = 0; i < cars.length; i++) {
+      if (accumulateDistance[i].length === maxDistance) winner.push(cars[i]);
+    }
+    return winner;
   }
 
   racing() {
-    let accumulate = Array(this.cars.length).fill("");
+    let accumulateDistance = Array(this.cars.length).fill("");
     for (let i = 0; i < this.tryCount; i++) {
-      accumulate = this.addDistance(this.cars, accumulate);
+      accumulateDistance = this.addDistance(this.cars, accumulateDistance);
       Console.print("");
     }
     const maxDistance =
-      accumulate.length > 0
-        ? Math.max(...accumulate.map((str) => str.length))
+      accumulateDistance.length > 0
+        ? Math.max(...accumulateDistance.map((str) => str.length))
         : 0;
-    let winner = [];
-    for (let i = 0; i < this.cars.length; i++) {
-      if (accumulate[i].length === maxDistance) winner.push(this.cars[i]);
-    }
+    let winner = this.chooseWinner(this.cars, accumulateDistance, maxDistance);
     return winner;
   }
 }
