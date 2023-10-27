@@ -3,58 +3,54 @@ import Validate from './Validate.js';
 
 class RacingGame {
   constructor() {
-    this.joinCars = [];
+    this.joinList = [];
     this.repeatNumber = '';
   }
 
   async start() {
-    await this.gameProgress();
-  }
-
-  async gameProgress() {
-    this.joinCars = await this.getJoinCarsArray();
+    this.joinList = await this.getJoinList();
     this.repeatNumber = await this.getRepeatNumber();
 
     if (!Validate.isPositiveInteger(this.repeatNumber)) {
       throw new Error('[ERROR]');
     }
 
-    this.gameStart(this.joinCars, this.repeatNumber);
+    this.gameStart(this.joinList, this.repeatNumber);
   }
 
   /**
    * 모든 입력값을 받은 후 게임이 실행되는 함수
-   * @param {{name: string, result: string}[]} joinCars 객체
+   * @param {{name: string, progress: string}[]} joinList 객체
    * @param {string} repeatNumber - 반복 횟수
    */
-  gameStart(joinCars, repeatNumber) {
+  gameStart(joinList, repeatNumber) {
     for (let i = 0; i < repeatNumber; i++) {
-      this.printEachProgress(joinCars);
+      this.printEachProgress(joinList);
     }
 
-    this.printResult(this.joinCars);
+    this.printWinner(this.joinList);
   }
 
   /**
    *
-   * @param {{name:string,result:string}[]} joinCars
+   * @param {{name:string,progress:string}[]} joinList
    */
-  printResult(joinCars) {
-    const winnerList = this.getWinner(joinCars);
+  printWinner(joinList) {
+    const winnerList = this.getWinner(joinList);
     Console.print(`최종 우승자 : ${winnerList.join(', ')}`);
   }
 
   /**
    *
-   * @param {{name:string,result : string}[]} joinCars
+   * @param {{name:string,progress : string}[]} joinList
    * @returns {string[]} 우승자 배열
    */
-  getWinner(joinCars) {
-    const maxLength = joinCars.reduce((maxValue, { result }) => {
-      return maxValue > result.length ? maxValue : result.length;
+  getWinner(joinList) {
+    const maxLength = joinList.reduce((maxValue, { progress }) => {
+      return maxValue > progress.length ? maxValue : progress.length;
     }, 0);
-    const winnerList = joinCars.filter(({ result }) => {
-      return result.length === maxLength;
+    const winnerList = joinList.filter(({ progress }) => {
+      return progress.length === maxLength;
     });
 
     return winnerList.map((winner) => winner.name);
@@ -62,15 +58,15 @@ class RacingGame {
 
   /**
    *
-   * @param {{name:string,result:string}[]} joinCars
+   * @param {{name:string,progress:string}[]} joinList
    */
-  printEachProgress(joinCars) {
-    joinCars.forEach((car) => {
+  printEachProgress(joinList) {
+    joinList.forEach((car) => {
       if (this.getRandomBoolean()) {
-        car.result += '-';
+        car.progress += '-';
       }
 
-      Console.print(`${car.name} : ${car.result}`);
+      Console.print(`${car.name} : ${car.progress}`);
     });
 
     Console.print(''); // 빈 줄 추가
@@ -81,15 +77,16 @@ class RacingGame {
    * @returns {boolean}
    */
   getRandomBoolean() {
-    const random = Random.pickNumberInRange(0, 9);
-    return random >= 4;
+    const randomInteger = Random.pickNumberInRange(0, 9);
+
+    return randomInteger >= 4;
   }
 
-  async getJoinCarsArray() {
-    const cars = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n');
-    const carNames = cars.split(',');
+  async getJoinList() {
+    const joinString = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n');
+    const joinList = joinString.split(',');
 
-    return carNames.map((name) => ({ name, result: '' }));
+    return joinList.map((name) => ({ name, progress: '' }));
   }
 
   async getRepeatNumber() {
