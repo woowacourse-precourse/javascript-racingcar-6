@@ -3,6 +3,7 @@ import {
   QUESTION_MESSAGES,
   PURPOSE_OF_QUESTION_MESSAGES,
 } from "./constants/questionMessage.js";
+import { RANGE } from "./constants/randomNumberRange.js";
 
 class App {
   async play() {}
@@ -21,6 +22,10 @@ class App {
 
       return Number(lap);
     }
+  }
+
+  getRandomNumber(start, end) {
+    return Random.pickNumberInRange(start, end);
   }
 }
 
