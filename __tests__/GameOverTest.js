@@ -48,7 +48,7 @@ describe("어플리케이션 최종 출력 테스트", () => {
     const MOVING_FORWARD = 4;
     const STOP = 3;
     const inputs = ["pobi,kim,woni", "1"];
-    const output = "최종 우승자 : pobi,kim";
+    const output = "최종 우승자 : pobi, kim";
     const randoms = [MOVING_FORWARD, MOVING_FORWARD, STOP];
     const logSpy = getLogSpy();
 
