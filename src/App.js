@@ -15,9 +15,9 @@ class App {
       this.displayRaceStateOfRound(race.getRaceState());
     }
 
-    /*winners - 우승자 명단이 들어있는 배열
-      displayWinners(winners);
-    */
+    // winners == ['우승자1', '우승자2']
+    const winners = race.getWinners();
+    this.displayWinners(winners);
   }
 
   async getCarNames() {
