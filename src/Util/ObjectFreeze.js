@@ -13,5 +13,5 @@ export function getCarNewObject(carName, moveCount) {
 }
 
 export function convertListFreeze(list) {
-  return Object.freeze(list);
+  return Object.freeze([...list]);
 }
