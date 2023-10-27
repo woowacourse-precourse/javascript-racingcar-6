@@ -1,4 +1,5 @@
 import {MissionUtils} from "@woowacourse/mission-utils";
+import Car from './Car.js';
 
 class App {
 
@@ -11,7 +12,11 @@ class App {
         for (let i = 0; i < numberOfCars; i++) {
             cars.push(new Car(carName[i]));
         }
+        cars[0].distance++;
+        cars[1].distance++;
+        cars[2].distance++;
         //const lapCount = await this.getUserInputInt();
+        await this.printResult(cars);
     }
 
     async getUserInputString() {
@@ -28,8 +33,11 @@ class App {
         //TODO : 시도할 횟수를 입력 받음
     }
 
-    async printResult() {
+    async printResult(cars) {
         //TODO : 실행 결과를 출력
+        for (let i = 0; i < cars.length; i++) {
+            MissionUtils.Console.print(cars[i].name+" : "+'-'.repeat(cars[i].distance));
+        }
     }
 
     async randomInt() {

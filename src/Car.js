@@ -4,3 +4,5 @@ class Car {
         this.distance = 0;
     }
 }
+
+export default Car;
