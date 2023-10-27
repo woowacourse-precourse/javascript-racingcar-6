@@ -58,11 +58,18 @@ class GamePlay {
   }
 
   async getCarNames() {
-    const CARS = await this.getUserInput(
+    const INPUT = await this.getUserInput(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
     );
 
-    await this.calculateCarMove(CARS);
+    const CARS = INPUT.split(",");
+
+    for (let i = 0; i < CARS.length; i++) {
+      if (CARS[i].length > 5)
+        throw new Error("[ERROR] 이름이 잘못된 형식입니다.");
+    }
+
+    await this.calculateCarMove(INPUT);
   }
 
   async getTryTimes() {
