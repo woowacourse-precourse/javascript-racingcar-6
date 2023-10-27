@@ -8,4 +8,11 @@ export default class Validator {
     }
     return true;
   }
+
+  static isValidateAttemps(answer) {
+    if (Number.isNaN(answer) || typeof answer !== 'number') {
+      throw new Error('[ERROR] 숫자만 입력해주세요.');
+    }
+    return true;
+  }
 }
