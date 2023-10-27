@@ -8,6 +8,7 @@ const inputsWithInvalidCarName = [
   ["pobi", "pobibi"],
   ["pobii", "pobibi"],
 ];
+const inputsWithInvalidCarsLength = [["q"], ["qw"], ["qwe"], ["qwer"]];
 
 let validate;
 
@@ -68,6 +69,33 @@ describe("자동차명 입력에 대한 Validate 클래스 테스트", () => {
     inputsWithInvalidCarName.forEach((input) => {
       expect(() => validate.checkEachOfCarsIsValid(input)).toThrow(
         new Error(ERROR.CAR_NAME_LENGTH)
+      );
+    });
+  });
+
+  test("자동차의 개수가 2개 미만이라면 false 반환.", () => {
+    inputsWithInvalidCarsLength.forEach((input) => {
+      expect(validate.minCarsLength(input)).toBeFalsy();
+    });
+  });
+
+  test("자동차의 개수가 2개 이상이라면 true 반환.", () => {
+    const inputsWithValidCarName = [
+      ["pobi", "woni"],
+      ["pobi", "w", "qwer"],
+      ["p", "woni", "asdf", "qwer"],
+      ["p", "woni", "asdf", "qwer", "zxcv"],
+    ];
+
+    inputsWithValidCarName.forEach((input) => {
+      expect(validate.minCarsLength(input)).toBeTruthy();
+    });
+  });
+
+  test("자동차의 개수가 2개 미만이라면 에러가 발생한다.", () => {
+    inputsWithInvalidCarsLength.forEach((input) => {
+      expect(() => validate.checkEachOfCarsIsValid(input)).toThrow(
+        new Error(ERROR.CARS_LENGTH)
       );
     });
   });
