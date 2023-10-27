@@ -29,4 +29,13 @@ class RacingGame {
     }, '');
     View.print(currentDistance);
   }
+
+  getWinners(cars) {
+    const maxDistance = Math.max(...cars.map((car) => car.carDistance.length));
+    const winners = cars.filter(
+      (car) => car.carDistance.length === maxDistance
+    );
+    const winnerNames = winners.map((winner) => winner.carName).join(', ');
+    View.print(`최종우승자 : ${winnerNames}`);
+  }
 }
