@@ -9,11 +9,15 @@ import {
 class App {
   cars = new Map();
   tryNumber = 0;
+  winner = [];
+  topScore = 0;
 
   async play() {
     await this.getCarName();
     await this.getTryNumber();
     this.startRacing();
+    this.checkWinner();
+    this.printWinner();
   }
 
   async getCarName() {
@@ -62,6 +66,31 @@ class App {
     const distance = this.cars.get(car);
     const result = '-'.repeat(distance);
     Console.print(`${car} : ${result}`);
+  }
+
+  checkWinner() {
+    this.checkTopScore();
+    this.insertWinner();
+  }
+
+  checkTopScore() {
+    this.cars.forEach((value) => {
+      this.topScore = Math.max(this.topScore, value);
+    });
+  }
+
+  insertWinner() {
+    this.cars.forEach((value, key) => {
+      if (value === this.topScore) {
+        this.winner.push(key);
+      }
+    });
+  }
+
+  // winners 배열에 담긴 요소들을 형식에 맞게 출력해준다
+  printWinner() {
+    const winnerString = this.winner.join(', ');
+    Console.print(`최종 우승자 : ${winnerString}`);
   }
 }
 
