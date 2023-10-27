@@ -7,6 +7,9 @@ jest.mock("@woowacourse/mission-utils", () => ({
       readLineAsync: jest.fn(),
       print: jest.fn(),
     },
+    Random: {
+      pickNumberInRange: jest.fn(),
+    },
   },
 }));
 describe("문자열 테스트", () => {
@@ -51,12 +54,13 @@ describe("문자열 테스트", () => {
         "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
     );
     expect(MissionUtils.Console.readLineAsync).toHaveBeenCalledWith("시도할 횟수는 몇 회인가요?\n");
-    expect(MissionUtils.Console.print).toHaveBeenCalledWith("실행 결과");
+    expect(MissionUtils.Console.print).toHaveBeenCalledWith("\n실행 결과");
   });
 
-  test("랜덤한 숫자를 뽑아서 4이상의 값만 필터링하여 길이 알려주기", () => {
+  test("주어진 사이즈만큼의 랜덤 값을 넣은 배열을 만든 후 4 이상만", () => {
     const input = 4;
-    expect(makeAndFilter(input)).toBeLessThanOrEqual(input);
+    expect(makeAndFilter(input).length).toBeLessThanOrEqual(input);
   });
+
 
 });
