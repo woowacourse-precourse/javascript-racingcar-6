@@ -51,6 +51,7 @@ class App {
 
   async printGameLimit() {
     this.moveCount = await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
+    this.validateCountNumber();
     Console.print(`${this.moveCount}회`);
   }
 
@@ -97,6 +98,31 @@ class App {
     }
 
     this.gameWinner = winnerList.join(', ');
+  }
+
+  validateCountNumber() {
+    const inputValueNumber = Number(this.moveCount);
+    if (inputValueNumber % 1 !== 0) {
+      throw new Error('[ERROR] 정수를 입력해주세요.');
+    }
+
+    if (inputValueNumber < 0) {
+      throw new Error('[ERROR] 음수를 입력할 수 없습니다');
+    }
+
+    if (typeof inputValueNumber !== 'number') {
+      throw new Error('[ERROR] 숫자를 입력해주세요.');
+    }
+
+    if (inputValueNumber === 0) {
+      throw new Error('[ERROR] 1이상의 숫자를 입력해주세요.');
+    }
+
+    if (inputValueNumber === '') {
+      throw new Error('[ERROR] 횟수를 비워둘 수 없습니다.');
+    }
+
+    return false;
   }
 }
 
