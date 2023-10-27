@@ -9,11 +9,14 @@ export default class CarRacingGame {
       throw new Error('[ERROR]')
     });
 
-    const tryCount = await this.getTryCount().catch(() => {
+    let tryCount = await this.getTryCount().catch(() => {
       throw new Error('[ERROR]')
     })
 
     this.#carNameArray = this.carNamesToCarNameArray(carNames);
+    while(tryCount-- > 0){
+      this.tryAdvance();
+    }
   }
 
   carNamesToCarNameArray(carNames = ''){
@@ -24,6 +27,18 @@ export default class CarRacingGame {
       }
       return new Car(trimCarName);
     })
+  }
+
+  tryAdvance(){
+    this.#carNameArray.forEach((car) => {
+      if(this.isAdvance()){
+        car.plusAdvanceCount();
+      }
+    });
+  }
+
+  isAdvance(){
+    return Random.pickNumberInRange(0, 9) >= 4;
   }
 
   getCarNameArray(){
