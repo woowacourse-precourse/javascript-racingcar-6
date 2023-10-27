@@ -1,3 +1,5 @@
+import { CONDITION } from './constants/index.js';
+
 class Car {
   #name;
   #forwardCount;
@@ -16,7 +18,7 @@ class Car {
   }
 
   race(number) {
-    if (number >= 4) {
+    if (CONDITION.FORWARD(number)) {
       this.#moveForward();
     }
   }
