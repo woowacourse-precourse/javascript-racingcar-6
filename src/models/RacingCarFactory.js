@@ -1,7 +1,7 @@
-import RacingCar from './RacingCar';
+import RacingCar from './RacingCar.js';
 
 class RacingCarFactory {
-  createCar(name) {
+  createRacingCar(name) {
     return new RacingCar(name);
   }
 }

@@ -26,7 +26,7 @@ class RacingGameController {
   }
 
   #setupCarsFromNames(names) {
-    const cars = names.map((item) => this.#factory.createCar(item));
+    const cars = names.map((item) => this.#factory.createRacingCar(item));
     this.#racingGame.setCars(cars);
   }
 
