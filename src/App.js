@@ -17,6 +17,7 @@ class App {
       this.CAR_NAMES.push({ name: carName, position: 0 });
     }
   }
+  //자동차 경주 시작
   async play() {
     const carNames = await this.inputCarNames();
     this.addCar(carNames);
@@ -27,6 +28,16 @@ class App {
     }
     this.printRoundResults();
     this.printWinner();
+  }
+  // 중간 결과 출력창
+  printRoundResults() {
+    let result = "";
+    for (const car of this.CAR_NAMES) {
+      const carName = car.name;
+      const dashes = "-".repeat(car.position);
+      result += `${carName} : ${dashes}\n`;
+    }
+    MissionUtils.Console.print(result);
   }
 }
 
