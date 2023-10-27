@@ -25,7 +25,7 @@ class App {
   }
 
   validateCarNameList(inputResult) {
-    this.carList = inputResult.split(',');
+    this.carList = inputResult.split(',').map(carName => carName.trim());
     this.carList.forEach(car => this.validateCarName(car));
 
     const isDuplicate = this.isDuplicateCarName();
