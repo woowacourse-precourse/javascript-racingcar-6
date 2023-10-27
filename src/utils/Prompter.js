@@ -4,7 +4,7 @@ export default class Prompter {
 
   async getUserInput(guide) {
     const userInputValue = await MissionUtils.Console.readLineAsync(guide);
-    return userInputValue;
+    return userInputValue.toString();
   }
 
 }

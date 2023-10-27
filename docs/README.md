@@ -55,11 +55,11 @@
 - [x] 사용자한테 입력 받기 (getUserInput())
   - [x] 출전 선수 목록 (players)
   - [x] 몇 번의 이동을 할 것인지 입력 받기 (moveNumber)
-- [ ] 입력 유효성 검사 (Inspector)
-  - [ ] 쉼표로 구분이 되어 있는지 (isSplited())
-  - [ ] 두 명 이상인지
-  - [ ] 각 이름이 5자 이하인지 (isUnderFive())
-  - [ ] 숫자인지 isNumber (JS함수 혹은 정규표현식 사용)
+- [x] 입력 유효성 검사 (Inspector)
+  - [x] 쉼표로 구분이 되어 있는지 (isSplited())
+  - [x] 각 이름이 5자 이하인지 -(isUnderFive())-
+  - [x] 두 명 이상인지
+  - [x] 숫자인지 isNumber (JS함수 혹은 정규표현식 사용)
 - [ ] 경주 시작 (Race)
   - [ ] 0 - 9의 랜덤 숫자 구하기 (NumberGenerator.getRandomNumber())
   - [ ] 숫자에 따라 전진 혹은 유지 구분하기 (isSuccess())
