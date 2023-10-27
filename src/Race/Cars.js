@@ -25,7 +25,7 @@ export class Cars {
         continue;
       }
       isValid = true;
+      return arrayCars;
     }
-    return arrayCars;
   }
 }
