@@ -2,14 +2,16 @@ import View from '../view/View.js';
 import Car from './Car.js';
 
 export default class RacingGame {
-  constructor() {
-    const carNames = View.readCarNames();
+  async init() {
+    const carNames = await View.readCarNames();
 
-    this.repeatTime = View.readRepeatTime();
+    this.repeatTime = await View.readRepeatTime();
     this.cars = carNames.map((name) => new Car(name));
   }
 
-  gameStart() {
+  async gameStart() {
+    await this.init();
+
     for (let i = 0; i < this.repeatTime; i++) {
       this.moveCars();
       this.presentCurrentDistance();
