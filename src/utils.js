@@ -21,5 +21,11 @@ export const validateCarNames = (carNameArray) => {
     throw new Error('[ERROR] 자동차 이름은 최소 2개 이상 입력되어야 합니다.');
   }
 
+  for (const name of carNameArray) {
+    if (name.length > 5) {
+      throw new Error('[ERROR] 자동차 이름은 5자 이하이어야 합니다.');
+    }
+  }
+
   return true;
 };
