@@ -10,13 +10,13 @@ class App {
     this.validateInput(arrCarName, totalRound);
     
     for (let i = 0; i < totalRound; i++) {
-      race.roundStart();
+      race.startRound();
       // race.getRaceState == [{name1 : '이름', distance : '---'}, {name2 : '이름2', distance : '--'} ...]
-      this.displayRaceStateOfRound(race.getRaceState());
+      this.displayRaceStateOfRound(race.stateOfRace());
     }
 
     // winners == ['우승자1', '우승자2']
-    const winners = race.getWinners();
+    const winners = race.decideWinners();
     this.displayWinners(winners);
   }
 

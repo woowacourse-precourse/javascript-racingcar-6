@@ -13,8 +13,8 @@ describe("Race class의 getWinners 메서드 테스트", () => {
     race.cars[2].distance = 5; // jun
   });
 
-  test("getWinners 메서드가 올바른 우승자를 반환", () => {
-    const winners = race.getWinners();
+  test("decideWinners 메서드가 올바른 우승자를 반환", () => {
+    const winners = race.decideWinners();
 
     expect(winners.length).toBe(2);
     expect(winners).toContain("pobi");
