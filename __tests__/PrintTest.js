@@ -1,4 +1,4 @@
-import { printStartApp, printInputAttemptNumber, printStartRaceResult, printRaceResult, printFinalWinner } from '../src/utils/print.js';
+import { printStartApp, printRaceResult, printFinalWinner } from '../src/utils/print.js';
 import { MissionUtils } from '@woowacourse/mission-utils';
 import Car from '../src/Car.js';
 
@@ -11,7 +11,6 @@ const getLogSpy = () => {
 describe('출력 테스트', () => {
     test('애플리케이션 시작 문구 출력', () => {
         const logSpy = getLogSpy();
-        
         const output = '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)';
 
         printStartApp();
