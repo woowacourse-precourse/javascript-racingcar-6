@@ -7,6 +7,7 @@ class Print {
     Console.print(RESULT_FIRST_MESSAGE);
     for (let i = 0; i < racingInfo.numberOfGame; i++) {
       Print.racingPerGame(racingInfo, i);
+      Console.Print('');
     }
   }
   static racingPerGame(racingInfo, gameCount) {
