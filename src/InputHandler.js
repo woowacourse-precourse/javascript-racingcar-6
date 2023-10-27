@@ -5,6 +5,7 @@ import {
   endsWithComma,
   hasDuplicateItem,
   isEmptyString,
+  isNaturalNumberString,
   isValidCarName,
 } from "./utils/validators.js";
 
@@ -31,6 +32,22 @@ class InputHandler {
     }
 
     return array;
+  }
+
+  async getMoveAttemptCount() {
+    const inputStr = await Console.readLineAsync(
+      MESSAGE.ENTER_MOVE_ATTEMPT_COUNT
+    );
+
+    if (isEmptyString(inputStr)) {
+      throw new Error(ERROR.EMPTY_INPUT);
+    }
+
+    if (!isNaturalNumberString(inputStr)) {
+      throw new Error(ERROR.INVALID_MOVE_ATTEMPT_COUNT);
+    }
+
+    return Number(inputStr);
   }
 }
 
