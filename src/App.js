@@ -4,7 +4,7 @@ import {
   ERROR_MESSAGE,
   CONDITION,
   RACE_MESSAGE,
-} from './constants.js';
+} from './constant/constants.js';
 import Car from './Car.js';
 import Random from './Random.js';
 import Refree from './Referee.js';
