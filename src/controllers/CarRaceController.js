@@ -3,7 +3,8 @@
 import CarRaceModel from '../models/CarRaceModel.js';
 import CarRaceView from '../views/CarRaceView.js';
 import { repeatFunctionNTimes } from '../utils/repeatFunctionNTimes.js';
-import { validateCarName, hasDuplicate, validateCountNumber } from '../validtate/validate.js';
+import { validateCarName, hasDuplicate, validateCountNumber } from '../utils/validateValue.js';
+
 class CarRaceController {
   constructor() {
     this.model = new CarRaceModel();
