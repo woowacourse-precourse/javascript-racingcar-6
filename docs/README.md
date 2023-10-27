@@ -24,6 +24,7 @@
 
 ### 행동
 
+- [x] `addCars(names)`: 입력받은 자동차를 `cars` 배열에 저장합니다.
 - [] `lap()`: 각 `Car` 인스턴스의 1회 전진을 지시합니다.
 - [] `makeCurrentPositions()` 각 `Car`의 이동 결과를 생성하여 반환합니다.
 - [] `calMaxLength()`: 모든 `Car` 인스턴스 중 최대 전진 거리를 계산합니다.
