@@ -14,13 +14,23 @@ const readLineAsync = async (message) => {
  * 우승자 확인 기능
  * return : 우승자를 배열로 반환
  */
-// const checkWinner = async (participants) =>{
-//   const winner = [];
-//   let min = 0;
-//   for(let i = 0; i < participants.length; i++){
-//     const name = participants[i];
-//   }
-// }
+const checkWinner = async (participants) =>{
+  const winner = [];
+  for(let i = 0; i < participants.length; i++){
+    const name = participants[i];
+    winner.push([name, goStopCheck[name][1]]);
+  }
+  const sortedWinner = winner.sort( (a,b) => b[1]-a[1]);
+  const returnWinner = [];
+  let max = sortedWinner[0][1];
+  for(let i = 0; i < sortedWinner.length; i++){
+    if (sortedWinner[i][1] < max){
+      break;
+    }
+    returnWinner.push(sortedWinner[i][0]);
+  }
+  return returnWinner;
+}
 
 /**
  * 매 게임 진행마다 참가자 진행 결과를 출력
@@ -43,7 +53,6 @@ const showResult = async (participants) => {
     }
     index ++;
   }
-  console.log("goStopCheck",goStopCheck)
   // *** 리팩토링 하기, showResult 함수로 두기 *** 인자로 참가자 및 최종 진행 거리를 받고 출력만 함
   for(let i = 0; i < participants.length; i++){
     const result = `${participants[i]} : ${goStopCheck[participants[i]][0]}` 
@@ -106,7 +115,8 @@ class App {
 
     // 게임 종료
     // *** 리팩토링 할 때 함수로, 들여쓰기 오버 ***
-    // print('최종 우승자 ');
+    const winner = await checkWinner(participants);
+    print(`최종 우승자 : ${winner.join(', ')}`);
 
   }
 }
