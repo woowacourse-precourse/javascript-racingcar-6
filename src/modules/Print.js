@@ -19,6 +19,10 @@ class Print {
       );
     });
   }
+
+  static winnerFrom(winnerNameList) {
+    Console.print(`최종 우승자 : ${winnerNameList.join(', ')}`);
+  }
 }
 
 export default Print;

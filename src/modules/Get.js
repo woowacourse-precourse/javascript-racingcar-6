@@ -15,6 +15,15 @@ class Get {
     }, 0);
   }
 
+  static winnerNameList(racingInfo) {
+    const winnerIndexList = Get.winnerIndexList(racingInfo);
+    const result = [];
+    winnerIndexList.forEach(winnerIndex =>
+      result.push(result.carList[winnerIndex])
+    );
+    return result;
+  }
+
   static winnerIndexList(racingList) {
     const lastPositionList = Get.lastPositionList(racingList);
     const maxPostion = Math.max(...lastPositionList);
