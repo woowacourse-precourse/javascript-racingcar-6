@@ -1,6 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
 import { ASK, ERROR, MESSAGE } from "./constant/message.js";
-import { CARS_SEPARATOR } from "./constant/rule.js";
+import { SEPARATOR } from "./constant/rule.js";
 import Validate from "./Validate.js";
 
 class Print {
@@ -12,7 +12,7 @@ class Print {
     }
 
     const cars = enteredCars
-      .split(CARS_SEPARATOR.SYMBOL)
+      .split(SEPARATOR.CARS.SYMBOL)
       .map((car) => car.trim());
 
     if (!Validate.eachCarNameLength(cars)) {

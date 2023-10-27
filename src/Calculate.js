@@ -1,4 +1,4 @@
-import { WINNERS_SEPARATOR } from "./constant/rule.js";
+import { SEPARATOR } from "./constant/rule.js";
 
 class Calculate {
   constructor(carInstanceArray) {
@@ -29,7 +29,7 @@ class Calculate {
   }
 
   getWinners() {
-    return this.winners.join(WINNERS_SEPARATOR);
+    return this.winners.join(SEPARATOR.WINNERS);
   }
 }
 

@@ -1,6 +1,9 @@
-export const CARS_SEPARATOR = {
-  NAME: "쉼표",
-  SYMBOL: ",",
+export const SEPARATOR = {
+  CARS: {
+    NAME: "쉼표",
+    SYMBOL: ",",
+  },
+  WINNERS: ", ",
 };
 
 export const MIN_TRY_COUNT = 1;
@@ -23,5 +26,3 @@ export const RANDOM = {
 };
 
 export const GO_SYMBOL = "-";
-
-export const WINNERS_SEPARATOR = ", ";

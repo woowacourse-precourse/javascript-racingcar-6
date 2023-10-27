@@ -1,10 +1,10 @@
-import { CAR, MIN_TRY_COUNT, REGEX, CARS_SEPARATOR } from "./constant/rule.js";
+import { CAR, MIN_TRY_COUNT, REGEX, SEPARATOR } from "./constant/rule.js";
 
 class Validate {
   static eachSideContainComma(cars) {
     return (
-      cars[0] === CARS_SEPARATOR.SYMBOL ||
-      cars[cars.length - 1] === CARS_SEPARATOR.SYMBOL
+      cars[0] === SEPARATOR.CARS.SYMBOL ||
+      cars[cars.length - 1] === SEPARATOR.CARS.SYMBOL
     );
   }
 
