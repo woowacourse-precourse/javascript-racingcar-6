@@ -25,8 +25,12 @@ class App {
       const input = await Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분) ");
       const carNames = input.split(',').map(name => name.trim())
 
-      const car = carNames.map(name => new Car(name));
+      // 이름에 대한 예외 처리
+      if(carNames.some(name => name.length > 5)){
+        throw new Error("[ERROR] 자동차 이름은 5자 이하로 입력하세요.")
+      }
 
+      const car = carNames.map(name => new Car(name));
       const rounds = parseInt(await Console.readLineAsync("시도할 횟수는 몇 회인가요? "));
 
       if (rounds <= 0) {  // 시도할 회수 0 방지
