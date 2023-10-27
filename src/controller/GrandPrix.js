@@ -1,5 +1,5 @@
 import { InputView } from '../view/index.js';
-import RacingCarGrid from '../Model/RacingCarGrid.js';
+import RacingCarGrid from '../model/RacingCarGrid.js';
 
 export default class GrandPrix {
   #racingCarGrid;
