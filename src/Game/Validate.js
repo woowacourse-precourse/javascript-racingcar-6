@@ -1,6 +1,6 @@
 
-import { ERRORS, RULES } from "./constants/index.js";
-import { throwError } from "./utils/index.js";
+import { ERRORS, RULES } from "../constants/index.js";
+import { throwError } from "../utils/index.js";
 
 class Validate {
     
