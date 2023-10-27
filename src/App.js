@@ -10,7 +10,9 @@ function playGame(cnt) {
 
 class App {
   async play() {
-    const CAR_LIST_INPUT = await MissionUtils.Console.readLineAsync('');
+    const CAR_LIST_INPUT = await MissionUtils.Console.readLineAsync(
+      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
+    );
     const CAR_LIST = CAR_LIST_INPUT.split(',');
     CAR_LIST.forEach((CAR_NAME) => {
       if (CAR_NAME.length > 5) {
@@ -18,16 +20,20 @@ class App {
       }
     });
 
-    const LOOP_COUNT = await MissionUtils.Console.readLineAsync('');
-
-    const DISTANCE_CAR_MOVE = new Array(Number(LOOP_COUNT)).fill(0);
+    const LOOP_COUNT =
+      await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    MissionUtils.Console.print('실행 결과');
+    const DISTANCE_CAR_MOVE = new Array(CAR_LIST.length).fill(0);
     for (let i = 0; i < LOOP_COUNT; i++) {
-      const DISTANCES = playGame(LOOP_COUNT);
+      const DISTANCES = playGame(CAR_LIST.length);
+      let print = '';
       DISTANCES.forEach((distance, index) => {
         if (distance >= 4) {
           DISTANCE_CAR_MOVE[index] += distance;
         }
+        print += `${CAR_LIST[index]} : ${'-'.repeat(distance)}\n`;
       });
+      MissionUtils.Console.print(print);
     }
   }
 }
