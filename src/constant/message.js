@@ -4,4 +4,5 @@ export const PROMPT_MESSAGE = {
 
 export const ERROR_MESSAGE = {
   EMPTY_INPUT: '[ERROR] 값을 입력해주세요.',
+  INVALID_INPUT: '[ERROR] 영대소문자, 한글, "," 로만 이루어져야 합니다.',
 };
