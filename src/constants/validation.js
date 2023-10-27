@@ -7,4 +7,5 @@ export const GMAEVALIDATION = Object.freeze({
   max_carlist_length: 5,
   min_carlist: 2,
   max_try: 9,
+  car_move_condition: 4,
 });
