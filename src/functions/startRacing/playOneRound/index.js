@@ -6,7 +6,7 @@ const playOneRound = (racingResult) => {
 
   racingCarList.forEach((racingCar) => {
     const randomNum = MissionUtils.Random.pickNumberInRange(0, 9);
-    if (randomNum < 4) {
+    if (randomNum >= 4) {
       copiedRacingResult[racingCar] += 1;
     }
   });
