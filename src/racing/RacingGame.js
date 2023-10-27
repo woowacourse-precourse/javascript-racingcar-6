@@ -11,28 +11,30 @@ class RacingGame {
 
   gameStart() {
     for (let i = 0; i < this.repeatTime; i++) {
-      this.moveCars(this.cars);
-      this.presentCurrentDistance(this.cars);
+      this.moveCars();
+      this.presentCurrentDistance();
     }
-    this.getWinners(this.cars);
+    this.getWinners();
   }
 
-  moveCars(cars) {
-    cars.forEach((car) => {
+  moveCars() {
+    this.cars.forEach((car) => {
       car.randomlyMove();
     });
   }
 
-  presentCurrentDistance(cars) {
-    const currentDistance = cars.reduce((result, car) => {
+  presentCurrentDistance() {
+    const currentDistance = this.cars.reduce((result, car) => {
       return `${result}${car.currentDistanceMessage()}\n`;
     }, '');
     View.print(currentDistance);
   }
 
-  getWinners(cars) {
-    const maxDistance = Math.max(...cars.map((car) => car.carDistance.length));
-    const winners = cars.filter(
+  getWinners() {
+    const maxDistance = Math.max(
+      ...this.cars.map((car) => car.carDistance.length)
+    );
+    const winners = this.cars.filter(
       (car) => car.carDistance.length === maxDistance
     );
     const winnerNames = winners.map((winner) => winner.carName).join(', ');
