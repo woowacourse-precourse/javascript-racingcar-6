@@ -10,6 +10,10 @@ class Car {
   move(distance) {
     this.#position += distance;
   }
+
+  getResult() {
+    return [this.#name, this.#position];
+  }
 }
 
 export default Car;
