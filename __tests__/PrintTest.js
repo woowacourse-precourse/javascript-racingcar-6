@@ -45,7 +45,6 @@ describe('출력 테스트', () => {
         const outputs = ['최종 우승자 : pobi', '최종 우승자 : pobi, jun'];
         const logSpy = getLogSpy();
 
-
         outputs.forEach((output, index) => {
             printFinalWinner(inputs[index]);
             expect(logSpy).toHaveBeenCalledWith(output);
