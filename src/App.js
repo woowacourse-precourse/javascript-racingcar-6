@@ -1,4 +1,4 @@
-import RacingCarController from "./RacingCarController.js";
+import RacingCarController from "./controller/RacingCarController.js";
 
 class App {
   constructor() {

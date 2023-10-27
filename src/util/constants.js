@@ -3,7 +3,9 @@ const MESSAGE = {
 };
 
 const ERROR = {
-  CarListError: `[ERROR] 이름은 5자 이하, 쉼표로 구분하세요.`,
+  carCount: `[ERROR] 서로 다른 이름을 가진 2대 이상의 자동차를 입력하세요.`,
+  carInputWord: `[ERROR] 띄어쓰기는 입력 불가합니다.`,
+  carNameLength: `[ERROR] 이름은 5자 이하로 작성하세요.`,
 };
 
-export { MESSAGE };
+export { MESSAGE, ERROR };
