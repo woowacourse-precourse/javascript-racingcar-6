@@ -1,7 +1,8 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Console, MissionUtils } from "@woowacourse/mission-utils";
 class Controll {
   constructor() {
     this.carNames = [];
+    this.carScores = [];
     this.tryNumber = 0;
   }
   async input(Question) {
@@ -20,6 +21,24 @@ class Controll {
       }
     }
   }
+  checkGoOrStop(carScoreIndex) {
+    this.carScores[carScoreIndex] += 1;
+  }
+  makeRandomNumber() {
+    for (let i = 0; i < this.carNames.length; i++) {
+      let randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
+      if (4 < randomNumber) {
+        this.checkGoOrStop(i);
+      };
+    }
+  }
+  initialCarScore() {
+    let i = this.carNames.length;
+    while (i > 0) {
+      this.carScores.push(0);
+      i -= 1;
+    }
+  }
 }
 class App {
   constructor() {
@@ -32,6 +51,8 @@ class App {
       this.controll.tryNumber = Number(await this.controll.input("시도할 횟수는 몇 회인가요?\n"));
       this.controll.carNameValidate();
       this.controll.tryNumberValidate();
+      this.controll.initialCarScore();
+      this.controll.makeRandomNumber();
     } catch (error) {
       throw new Error(error)
     }
