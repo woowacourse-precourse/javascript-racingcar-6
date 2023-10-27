@@ -47,6 +47,13 @@ function winners(carMap, highestScore) {
   Console.print(`최종 우승자 : ${carWin.join(",")}`);
 }
 
+// 예외 처리
+function handling(length) {
+  if (length > 5) {
+    throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
+  }
+}
+
 class App {
   async play() {
     const CAR_NAMES = await getUserData(MESSAGES.CAR);
