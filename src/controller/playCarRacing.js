@@ -14,19 +14,24 @@ const playCarRacing = (cars, count) => {
 
   for (let i = 0; i < count; i++) {
     const randomNumbers = pickRandomNumbers(cars.length);
-
-    cars.forEach((car, index) => {
-      if (randomNumbers[index] > 3) {
-        carDic[car] += "-";
-      }
-    });
-
-    cars.forEach((car) => {
-      Console.print(`${car} : ${carDic[car]}`);
-    });
-
+    updateCarDic(cars, carDic, randomNumbers);
+    printCarResults(cars, carDic);
     Console.print("");
   }
 };
 
-// playCarRacing(["a", "b", "c"], 5);
+const updateCarDic = (cars, carDic, randomNumbers) => {
+  cars.forEach((car, index) => {
+    if (randomNumbers[index] > 3) {
+      carDic[car] += "-";
+    }
+  });
+};
+
+const printCarResults = (cars, carDic) => {
+  cars.forEach((car) => {
+    Console.print(`${car} : ${carDic[car]}`);
+  });
+};
+
+export default playCarRacing;
