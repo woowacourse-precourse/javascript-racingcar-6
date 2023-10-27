@@ -1,7 +1,9 @@
 import { Console } from '@woowacourse/mission-utils';
 import CarMotion from './CarMotion';
+import FindIndex from './FindIndex';
 
 const carMotion = new CarMotion;
+const findIndex = new FindIndex;
 
 class Output {
     constructor(CAR,MOVE_COUNT,TRY) {
@@ -23,5 +25,8 @@ class Output {
                 IsFinish = true;
             }
         }
+    }
+    PrintOneWinner() {
+        Console.print(`최종 우승자 : ${this.CAR[this.MOVE_COUNT.join('').indexOf(this.TRY)]}`);
     }
 }
