@@ -31,6 +31,17 @@ class App {
 
     return isValidate;
   }
+
+  CheckPlayTimes() {
+    const hasNotSpace = (car) => !car.includes(" ");
+    const checkUnderTen = /^(10|[1-9])$/;
+
+    if (!checkUnderTen.test(this.playTimes) || !hasNotSpace(this.playTimes)) {
+      return false;
+    }
+    return true;
+  }
+
 }
 
 export default App;
