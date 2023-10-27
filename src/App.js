@@ -35,6 +35,15 @@ class App {
     this.arrCarName.forEach((name) => {
       this.race.push([name, 0]);
     });
+    // 2-b
+    for (let i = 0; i < this.attempts; i++) {
+      this.arrCarName.map((name, index) => {
+        const result = MissionUtils.Random.pickNumberInRange(0, 9);
+        if (result >= 4) {
+          this.race[index][1]++;
+        }
+      });
+    }
   }
 }
 
