@@ -58,7 +58,16 @@ class App {
     return cars;
   }
 
-  getWinners(cars) {}
+  getWinners(cars) {
+    const carDistances = cars.map((car) => car.progress.length);
+    const maxDistance = Math.max(...carDistances);
+
+    const winners = cars
+      .filter((car) => car.progress.length === maxDistance)
+      .map((car) => car.name);
+
+    return winners;
+  }
 }
 
 export class Car {
