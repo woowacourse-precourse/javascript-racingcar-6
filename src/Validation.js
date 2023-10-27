@@ -7,3 +7,11 @@ export function validateCarNameLength(name) {
 }
 
 function validatePlayCount() {}
+
+export function validateIsNumZeroToNine(num) {
+	if (num < 0 || num > 9) {
+		throw new Error(
+			'[ERROR] 차의 전진 유무를 판단하는 무작위 값이 0보다 작거나 9보다 큽니다.'
+		);
+	}
+}
