@@ -2,12 +2,8 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 import { GameText } from "../message";
 
 class GameView {
-  async printGetCarname() {
-    await MissionUtils.Console.print(GameText.GET_CAR_NAME);
-  }
-
-  async printGetAttempts() {
-    await MissionUtils.Console.print(GameText.GET_GAME_ATTEMPTS);
+  async printGetMessage(message) {
+    await MissionUtils.Console.print(message);
   }
 
   async printUserInput(userInput) {
@@ -21,6 +17,10 @@ class GameView {
   printWinners(winners) {
     const winnerNames = winners.map((car) => car.name).join(", ");
     MissionUtils.Console.print(`최종 우승자 : ${winnerNames}`);
+  }
+
+  printGameMessage(message) {
+    MissionUtils.Console.print(message);
   }
 }
 
