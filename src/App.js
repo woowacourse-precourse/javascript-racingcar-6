@@ -53,6 +53,12 @@ class App {
     }
   }
 
+  printResults(carNames, carPositions){
+    carNames.forEach((name)=>{
+      Console.print(`${name}: ${'-'.repeat(carPositions[name])}`);
+    });
+  }
+
   async play() {
     this.start();
     try {
@@ -68,6 +74,8 @@ class App {
       for (let i = 0; i < counts; i++) {
         await this.moveCarPositions(carNames, carPositions);
       }
+
+      this.printResults(carNames,carPositions);
 
     } catch (error) {
       throw new Error(error.message);
