@@ -22,4 +22,19 @@ export default class Validation {
       }
     });
   }
+
+  static hasDuplicateName(carNames) {
+    const set = new Set(carNames);
+    if (set.size !== carNames.length) {
+      throw new Error('duplicate');
+    }
+  }
+
+  static isMoreThanFiveLetters(carNames) {
+    carNames.foreach((carName) => {
+      if (carName.length > 5) {
+        throw new Error('moreThanFiveLetters');
+      }
+    });
+  }
 }
