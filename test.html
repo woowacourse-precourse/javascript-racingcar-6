@@ -31,7 +31,7 @@
 
 
 
-  let count =[0,1,0,1];
+//   let count =[0,1,0,1];
   const myProgress = ['','','',''];
   let arrayCarName=['woosup','pobi','eefqwf','werer'];
   let objectCarName={'woosup':1,'pobi':8,'eefqwf':4,'werer':7};
@@ -40,11 +40,13 @@
 //     count.push(0);
 //     myProgress.push('');
 //     });
-  for(let i = 0; i<arrayCarName.length; i++){
+const count = Array(arrayCarName.length).fill('');  
+for(let i = 0; i<arrayCarName.length; i++){
    if(Object.values(objectCarName)[i]>=5){
       count[i]++
       myProgress[i] = myProgress[i] + '-';
     } 
+    console.log(count);
     console.log(`${arrayCarName[i]} : ${myProgress[i]}\n`);
     console.log(`${arrayCarName[i]} : ${count[i]}\n`);
     
