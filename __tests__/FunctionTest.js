@@ -27,4 +27,77 @@ describe('함수 기능 유닛 테스트', () => {
 			await expect(app.getInput()).rejects.toThrow('[ERROR]');
 		});
 	});
+
+	describe('doRace', () => {
+		let INITIAL_CARS_STATE;
+
+		beforeEach(() => {
+			INITIAL_CARS_STATE = Object.fromEntries(Array.from(Array(3), (_, i) => [CARS_NAME[i], 0]));
+		});
+
+		test.each([
+			{ num: [4, 0, 0], values: [1, 0, 0] },
+			{ num: [0, 4, 0], values: [0, 1, 0] },
+			{ num: [0, 0, 4], values: [0, 0, 1] },
+		])('1개의 자동차가 전진하는 경우', ({ num, values }) => {
+			Random.pickNumberInRange = jest
+				.fn()
+				.mockReturnValueOnce(num[0])
+				.mockReturnValueOnce(num[1])
+				.mockReturnValueOnce(num[2]);
+
+			const expectedResult = Object.fromEntries(Array.from(Array(3), (_, i) => [CARS_NAME[i], values[i]]));
+			const realResult = app.doRace(INITIAL_CARS_STATE);
+
+			expect(realResult).toEqual(expectedResult);
+		});
+
+		test.each([
+			{ num: [4, 4, 0], values: [1, 1, 0] },
+			{ num: [4, 0, 4], values: [1, 0, 1] },
+			{ num: [0, 4, 4], values: [0, 1, 1] },
+		])('2개의 자동차가 전진하는 경우', ({ num, values }) => {
+			Random.pickNumberInRange = jest
+				.fn()
+				.mockReturnValueOnce(num[0])
+				.mockReturnValueOnce(num[1])
+				.mockReturnValueOnce(num[2]);
+
+			const expectedResult = Object.fromEntries(Array.from(Array(3), (_, i) => [CARS_NAME[i], values[i]]));
+			const realResult = app.doRace(INITIAL_CARS_STATE);
+
+			expect(realResult).toEqual(expectedResult);
+		});
+
+		test.each([
+			{ num: [4, 4, 4], values: [1, 1, 1] },
+			{ num: [4, 4, 4], values: [1, 1, 1] },
+			{ num: [4, 4, 4], values: [1, 1, 1] },
+		])('3개의 자동차가 전진하는 경우', ({ num, values }) => {
+			Random.pickNumberInRange = jest
+				.fn()
+				.mockReturnValueOnce(num[0])
+				.mockReturnValueOnce(num[1])
+				.mockReturnValueOnce(num[2]);
+
+			const expectedResult = Object.fromEntries(Array.from(Array(3), (_, i) => [CARS_NAME[i], values[i]]));
+			const realResult = app.doRace(INITIAL_CARS_STATE);
+
+			expect(realResult).toEqual(expectedResult);
+		});
+
+		test.each([0, 1, 2, 3])('자동차가 전진하지 않는 경우', (num) => {
+			Random.pickNumberInRange = jest.fn().mockReturnValue(num);
+			const expectedResult = INITIAL_CARS_STATE;
+			const realResult = app.doRace(INITIAL_CARS_STATE);
+			expect(realResult).toEqual(expectedResult);
+		});
+
+		test.each([4, 5, 6, 7, 8, 9])('자동차가 전진하는 경우', (num) => {
+			Random.pickNumberInRange = jest.fn().mockReturnValue(num);
+			const expectedResult = Object.fromEntries(Array.from(Array(3), (_, i) => [CARS_NAME[i], 1]));
+			const realResult = app.doRace(INITIAL_CARS_STATE);
+			expect(realResult).toEqual(expectedResult);
+		});
+	});
 });

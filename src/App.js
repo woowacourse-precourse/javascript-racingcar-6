@@ -21,6 +21,17 @@ class App {
 		return [Object.fromEntries(cars.map((e) => [e, 0])), limit];
 	}
 
+	doRace(cars = {}) {
+		for (const car of Object.keys(cars)) {
+			const rand = Random.pickNumberInRange(0, 9);
+			rand >= 4 && cars[car]++;
+			Console.print(`${car} : ${'-'.repeat(cars[car])}`);
+		}
+		Console.print('');
+
+		return cars;
+	}
+
 	async play() {}
 }
 
