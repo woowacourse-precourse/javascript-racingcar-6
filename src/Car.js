@@ -6,11 +6,11 @@ class Car {
     this.distance = 0;
   }
   moveForward(distance) {
-    this.distance + distance;
+    this.distance += distance;
   }
   printPosition() {
     const dashes = "-".repeat(this.distance);
-    Console.print(dashes);
+    Console.print(this.name + " : " + dashes);
   }
 }
 
