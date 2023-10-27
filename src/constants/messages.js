@@ -4,6 +4,7 @@ const MESSAGES = {
   INPUT_TRY_NUMBER: '시도할 횟수는 몇 회인가요?',
   RACE_RESULT: '실행 결과',
   ONE_STEP: '-',
+  WINNER: '최종 우승자',
 };
 
 export default MESSAGES;
