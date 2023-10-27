@@ -22,38 +22,84 @@
 사용자가 잘못된 값을 입력한 경우 throw문을 사용해 "[ERROR]"로 시작하는 메시지를 가지는 예외를 발생시킨 후, 애플리케이션은 종료되어야 한다.
 
 
-## 기능 목록
+# 기능 목록
 
-### 1. 게임 시작 
-- [ ] 게임 시작 시 경주 자동차 등록 `registCars()`
-    - [ ] 이름은 쉼표(,) 기준으로 구분한다.
-    - [ ] 자동차 등록 수 제한은 없다.
-    - [ ] 객체 하나를 생성하고, 그 안에 차량이름 ="" 로 저장해서 등록한다.
-    - [ ] 경주 자동차 이름 검사 `checkCarsName()`
-        - [ ] 자동차 이름은 5자까지만 가능하다.
-        - [ ] 에러 발생 시 프로그램 종료
-- [ ] 전진 시도 회수 등록 `registForwardTryCount()`
-    - [ ] 숫자가 아니라면 에러 발생 후 프로그램 종료
-### 2. 게임 진행
-- [ ] 게임 진행 상황 출력 `printProgress()`
-    - [ ] 각 차량의 전진 상황을 출력함
-    - [ ] 전진하였을 경우 "-"를 추가한다.
-- [ ] 전진 가능 여부 확인 `isForward()`
-    - [ ] 0~9 범위에서 무작위 값을 구한 후 4 이상일 경우 전진한다.
+## `GameController` class 
+- ### 메소드
+    - [ ] `inputCars()` : 경주 자동차들의 이름을 입력받는다.
+        - [ ] 입력 안내 문구를 출력한다.
+        - [ ] 이름은 쉼표(,) 기준으로 구분한다.
+        - [ ] 자동차 등록 수 제한은 없다.
+        - [ ] 경주 자동차 이름 검사
+            - `Validate` 클래스의 `validateCarName()` 활용
+    - [ ] `inputTryMoveCount()` : 전진 시도 횟수를 입력받는다.
+        - [ ] 전진 시도 횟수 검사
+            - `Validate` 클래스의 `validatTryMoveCount()`
 
-### 3. 게임 종료
-- [ ] 우승자 출력 `printWinner()`
-    - [ ] 객체중 key값의 문자열 길이가 가장 긴 것이 우승자. 
-    - [ ] 다수의 공동 우승이 가능하다.
-    - [ ] 다수 우승자 출력 시 쉼표(,)를 이용하여 구분한다.
+    - [ ] `start()` : 전진 시도 횟수에 따른 게임 진행
+    - [ ] `result()` : 게임 결과 (우승자 발표)
 
-### 4. etc
-- 각종 안내 문구 및 조건들을 위한 상수 파일 생성
-    - src/constants
-- 주어진 API와 반복적인 작업을 함수로 만들어 간편하게 불러올 수 있도록 작성
-    - src/utils
-        - API 관련
-            - print() : MissionUtils.Console.print()
-            - readLineAsync() : MissionUtils.Console.readLineAsync()
-        - Error 관련
-            - throwError() : throw new Error()을 활용하여 생성
+## `Racing` class
+- ### 멤버 변수
+    - `cars` : `Car` 인스턴스로 구성된 배열
+- ###  메소드 
+    - [ ] `registCar()` : 입력받은 자동차 데이터를 `Car` 인스턴스에 저장한다.
+        - `cars` 에 `inputCars()`의 값을 배열로 변환하여 넣는다. 
+    - [ ] `moveCycle()` : 모든 `Car` 인스턴스를 `move()` 시킨다.
+    - [ ] `oneMoveCycleResult()` : 경주 자동차들의 이동 결과를 문자열로 반환한다.
+    - [ ] `getMaxDistance` : 경주 자동차의 최대 이동거리를 산출한다.
+    - [ ] `getWinner` : 이동거리를 비교하여 경주 우승자를 구한다. 
+        - 우승자는 여러 명이 나올 수 있다.
+
+## `Car` class
+- ### 멤버 변수
+    - `name` : 경주 자동차 이름
+    - `distance` : 경주 자동차 이동 거리
+- ### 메소드
+    - [ ] `isMove()` : `Car` 인스턴스 의 전진 여부를 파악하여 bolean형으로 리턴한다.
+        - return 3이하: false 4이상 : true
+    - [ ] `move()` : 특정 조건에 따라 경주 자동차를 전진시킨다.
+    - [ ] `getDistance` : 이동거리를 숫자로 수치화한다.
+    - [ ] `toStringResult` : 현재 이동거리를 문자열로 생성한다.
+        - 예시
+        ```
+        name: 'hongs'
+        distance: '--' 일때
+        this.toStringResult = "hongs : --
+        ```
+
+
+## `Validate` class
+- [ ] `validateCarName()` : 경주 자동차의 이름을 검사한다.
+    - [ ] 자동차 이름은 중복되지 않아야 한다.
+    - [ ] 자동차 이름은 5자 이하여야만 한다.
+    - [ ] 에러 발생 시 프로그램 종료
+- [ ] `validateTryMoveCount()` : 전진 시도 횟수를 검사한다.
+    - [ ] 전진 시도 횟수는 자연수로만 이루어진다.
+    - [ ] 에러 발생 시 프로그램 종료
+## `constants`
+- [x]  `MESSAGES` : 출력 메세지에 고정적으로 사용되는 문자열들
+
+- [x]  `ERRORS` : 에러 메세지에 고정적으로 사용되는 문자열들
+
+- [x] `RULES` : 게임 룰에 사용되는 상수들
+
+## `utils`
+- ### API 
+    - [x] `print()` : 문자열을 출력한다.
+        - `MissionUtils.Console.print()` 활용
+
+    - [x] `readLineAsync()` : 문자열을 출력한 후 데이터를 입력받는다.
+        - `MissionUtils.Console.readLineAsync()` 활용
+
+    - [x] `pickNumberInRange()` :  무작위 숫자를 생성한다
+        - ` MissionUtils.Random.pickNumberInRange()` 활용
+
+- ### ERROR
+    - [x] `throwError()` : 조건에 따른 에러를 처리한다.
+
+
+
+
+
+
