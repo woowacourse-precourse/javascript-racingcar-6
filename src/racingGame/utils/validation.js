@@ -1,8 +1,14 @@
 import { ERRORMSG } from "../../constants/message.js";
 import { GMAEVALIDATION } from "../../constants/validation.js";
+
 export const splitInputCarName = (input) => {
   const carNameList = input.split(",");
   return carNameList;
+};
+
+export const checkinputCarList = (input) => {
+  if (input.length < GMAEVALIDATION.min_carlist)
+    throw new Error(ERRORMSG.invalid_min_carList);
 };
 
 export const checkInputCarNameValidation = (inputs) => {

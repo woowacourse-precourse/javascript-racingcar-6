@@ -7,6 +7,7 @@ export const GAMEMSG = Object.freeze({
 });
 
 export const ERRORMSG = Object.freeze({
+  invalid_min_carList: `[ERROR] 최소 자동차의 갯수는 ${GMAEVALIDATION.min_carlist}대입니다.`,
   invalid_carlist_length: `[ERROR] 입력할 수 있는 자동차의 최대갯수는 ${GMAEVALIDATION.max_carlist_length}대입니다.`,
   invalid_duplicate_name: "[ERROR] 중복된 자동차 이름은 입력할 수 없습니다.",
   invalid_carname_length: `[ERROR] 자동차 이름은 ${GMAEVALIDATION.max_carname_length}글자 이하여야 합니다.`,

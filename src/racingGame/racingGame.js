@@ -4,6 +4,7 @@ import {
   splitInputCarName,
   checkInputCarNameValidation,
   checkInputTryNumValidation,
+  checkinputCarList,
 } from "./utils/validation.js";
 
 class RacingGame {
@@ -16,6 +17,7 @@ class RacingGame {
     try {
       const inputCarName = await Console.readLineAsync(GAMEMSG.input_CarName);
       const carNameList = splitInputCarName(inputCarName);
+      checkinputCarList(carNameList);
       checkInputCarNameValidation(carNameList);
     } catch (error) {
       throw error;
