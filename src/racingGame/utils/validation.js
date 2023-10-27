@@ -19,9 +19,6 @@ export const checkInputCarNameValidation = (inputs) => {
   if (inputs.length > GMAEVALIDATION.max_carlist_length)
     throw new Error(ERRORMSG.invalid_carlist_length);
   inputs.reduce((acc, cur) => {
-    // 콘솔 디버깅
-    console.log(cur);
-
     if (cur.length > GMAEVALIDATION.max_carname_length)
       throw new Error(ERRORMSG.invalid_carname_length);
     if (cur.includes(" ")) throw new Error(ERRORMSG.invalid_contain_gap);
