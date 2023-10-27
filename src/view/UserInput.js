@@ -2,7 +2,9 @@ import { Console } from "@woowacourse/mission-utils";
 import { Comm, MESSAGE } from '../model/Comm.js';
 
 class UserInput{
-    constructor(){
+
+    constructor(racingCar){
+        this.racingCar = racingCar;
         this.comm = new Comm();
     }
 

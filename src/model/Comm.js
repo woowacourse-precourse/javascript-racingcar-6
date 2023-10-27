@@ -56,6 +56,6 @@ class Comm{
             }
             return carName;
         }, "");
-    }    
+    }
 }
 export { MESSAGE, ERROR_MESSAGE, Comm }

@@ -4,7 +4,7 @@ class Racing{
 
     #scoreNumber
 
-    constructor(){
+    constructor(racingCar){
         this.#scoreNumber = [];
         this.racing = racingCar;
     }
@@ -43,6 +43,6 @@ class Racing{
         }
         return this.racing.racingCarWinner;
     }
-
 }
+
 export default Racing
