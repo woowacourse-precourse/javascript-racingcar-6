@@ -1,4 +1,4 @@
-import GameController from "./GameController.js"
+import GameController from "./Game/GameController.js"
 
 class App {
     gameController;
