@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 이거 [a,b,c] 이런식으로 하면 에러 나옴
+        let arr = [['first',1],['second',2]];
+        let obj = Object.fromEntries(arr);
+        console.log(obj)
+
+        let arrayCarName=['woosup','pobi'];
+        
+        const objectCarName = new Object()
+  arrayCarName.forEach((a,i) => {
+    objectCarName[a] = 1;
+  });
+  console.log(objectCarName);
+    </script>
+</body>
+</html>
