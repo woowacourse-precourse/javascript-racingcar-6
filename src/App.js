@@ -45,4 +45,24 @@ const getTryNumber = async () => {
 
   return tryNumber;
 };
+
+const createRandomNumber = () => {
+  const randomNumber = Random.pickNumberInRange(0, 9);
+
+  return randomNumber;
+};
+
+const checkCanMove = () => {
+  return createRandomNumber() >= 4 ? true : false;
+};
+
+const calcurateScore = (scoreBoard) => {
+  const calcuratedScoreBoard = { ...scoreBoard };
+  calcuratedScoreBoard.forEach((car) => {
+    if (checkCanMove()) {
+      car.score += 1;
+    }
+  });
+  return calcuratedScoreBoard;
+};
 export default App;
