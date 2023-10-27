@@ -20,6 +20,16 @@ const Validation = {
       throw new Error(MESSAGE.DUPLICATE_CAR_NAME);
     }
   },
+
+  /**
+   * 시도 횟수가 자연수인지 검사
+   * @param {number} count 시도 횟수
+   */
+  validateTryCount: (count) => {
+    if (!Number.isInteger(parseFloat(count)) || count < 1) {
+      throw new Error(MESSAGE.INVALID_TRY_COUNT);
+    }
+  },
 }
 
 export default Validation;
