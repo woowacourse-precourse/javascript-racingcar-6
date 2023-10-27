@@ -1,37 +1,28 @@
+/**
+ * @class InputView
+ * @description 사용자의 입력을 받고, model에 전달한다
+ */
+
 import { Console } from "@woowacourse/mission-utils";
 
-import Car from "../Model/Car.js";
-
-class InputController {
-  constructor() {
-    this.carNames = [];
-    this.tryCount = 0;
-  }
-
-  async init() {
-    this.carNames = await InputController.getCarNames();
-    this.tryCount = await InputController.getTryCount();
-
-    // 2. 입력된 이름과 시도 횟수를 바탕으로 자동차를 생성한다
-    return InputController.createCar(this.carNames, this.tryCount);
-  }
-
-  static async getCarNames() {
+class InputView {
+  // 1-1. 경주할 자동차의 이름을 입력받는다.
+  async getCarNames() {
     const result = await Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
-
     const carNames = result.trim() === "" ? [] : result.split(",");
 
-    if (!InputController.isValidCarNames(carNames)) {
+    if (!InputView.isValidCarNames(carNames)) {
       throw new Error("[ERROR] 유효하지 않은 자동차 이름입니다.");
     }
 
     return carNames;
   }
 
-  static async getTryCount() {
+  // 1-2. 시도할 횟수를 입력받는다.
+  async getTryCount() {
     const tryCount = await Console.readLineAsync("시도할 회수는 몇 회인가요?\n");
 
-    if (!InputController.isValidTryCount(tryCount)) {
+    if (!InputView.isValidTryCount(tryCount)) {
       throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
     }
 
@@ -41,8 +32,9 @@ class InputController {
   static isValidCarNames(carNames) {
     const isUnderFive = carNames.every((carName) => carName.length <= 5);
     const isOverOne = carNames.length >= 1;
+    const isRepeat = new Set(carNames).size === carNames.length;
 
-    return isUnderFive && isOverOne;
+    return isUnderFive && isOverOne && isRepeat;
   }
 
   static isValidTryCount(tryCount) {
@@ -51,10 +43,6 @@ class InputController {
 
     return isNumber && isOverOne;
   }
-
-  static createCar(carNames, tryCount) {
-    return new Car(carNames, tryCount);
-  }
 }
 
-export default InputController;
+export default InputView;

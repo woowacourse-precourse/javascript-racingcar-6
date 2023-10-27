@@ -1,0 +1,58 @@
+import { Random } from "@woowacourse/mission-utils";
+
+import InputView from "../View/InputView.js";
+import GameView from "../View/GameView.js";
+
+import Car from "../Model/Car.js";
+
+class GameController {
+  constructor() {
+    this.inputView = new InputView();
+    this.car = new Car();
+  }
+
+  // 1. 사용자의 입력을 받는다
+  async init() {
+    const carNames = await this.inputView.getCarNames();
+    const tryCount = await this.inputView.getTryCount();
+
+    // 2. 입력된 이름과 시도 횟수를 바탕으로 자동차를 생성한다
+    this.createCar(carNames, tryCount);
+
+    return this.startGame();
+  }
+
+  createCar(carNames, tryCount) {
+    const cars = carNames.map((name) => ({ name, position: 0 }));
+    this.car.init(cars, tryCount);
+  }
+
+  // 3. 자동차 경주 게임을 진행한다
+  startGame() {
+    const { cars, tryCount } = this.car;
+    const gameView = new GameView();
+    
+    // 3-1. 시도 횟수마다 자동차 대수만큼 무작위 값을 생성한다
+    for (let i = 0; i < tryCount; i += 1) {
+      const randomNumbers = this.generateRandomNumber(cars.length);
+      const currnetCarStatus = this.car.move(randomNumbers);
+
+      gameView.printEachResult(currnetCarStatus);
+    }
+
+    gameView.printFinalResult(cars);
+  }
+
+  generateRandomNumber(size) {
+    const randomNumbers = [];
+
+    while (randomNumbers.length < size) {
+      const randomNumber = Random.pickNumberInRange(0, 9);
+      randomNumbers.push(randomNumber);
+    }
+
+    return randomNumbers;
+  }
+}
+
+export default GameController;
