@@ -49,13 +49,13 @@ class App {
   }
 
   getResultOfEachCar() {
-    for (let i = 0; i < this.carInstanceArray.length; i++) {
-      const currentCar = this.carInstanceArray[i];
-      currentCar.decideGo();
+    this.carInstanceArray.forEach((currentCar) => {
+      const randomNumber = Utils.getRandomNumber();
+      currentCar.decideGo(randomNumber);
       const [name, result] = currentCar.getCurrentCarState();
 
       Print.showRaceResult(name, result);
-    }
+    });
   }
 
   pickOutWinner() {
