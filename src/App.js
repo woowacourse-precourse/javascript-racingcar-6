@@ -74,9 +74,31 @@ class App {
   race() {}
 
   /**
+   * 차수별 실행 결과를 출력하는 메소드
+   */
+  print_racing() {}
+
+  /**
+   * 최종 우승자를 판별하고 이를 출력하는 메소드
+   */
+  print_race_result() {}
+
+  /**
    * 자동차 경주 게임을 실행하는 메소드
    */
-  async game() {}
+  async game() {
+    this.#RACE_CARS = this.get_car_input();
+    this.#TRY = this.get_try_input();
+
+    Console.print("\n실행 결과");
+
+    for (let i = 0; i < this.#TRY; ++i) {
+      this.race();
+      this.print_racing();
+    }
+
+    this.print_race_result();
+  }
 }
 
 export default App;
