@@ -10,4 +10,17 @@ class Util {
 	static trimStringInArray(arr) {
 		return arr.map((str) => str.trim());
 	}
+	static getWinners(carStateArray) {
+		let maxForwardNumber = 0;
+		carStateArray.forEach((carState) => {
+			maxForwardNumber = Math.max(maxForwardNumber, carState.forwardNumber);
+		});
+		let winnersList = [];
+		carStateArray.forEach((carState) => {
+			if (carState.forwardNumber === maxForwardNumber) {
+				winnersList.push(carState.name);
+			}
+		});
+		return winnersList.join(', ');
+	}
 }
