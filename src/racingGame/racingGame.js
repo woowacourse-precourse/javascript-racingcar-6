@@ -1,5 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
-import { GAMEMSG } from "./constants/message.js";
+import { GAMEMSG } from "../constants/message.js";
 
 class RacingGame {
   constructor() {}
