@@ -29,7 +29,7 @@ describe("자동차 경주 입력값 길이 유효성 검사", () => {
     })
   }
 
-  checkCarNameLength()
+  checkCarNameLength();
 })
 
 describe("자동차 경주 공백 유효성 검사", () => {
@@ -52,5 +52,5 @@ describe("자동차 경주 공백 유효성 검사", () => {
     })
   }
 
-  checkCarNameBlank()
+  checkCarNameBlank();
 })
