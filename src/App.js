@@ -5,6 +5,7 @@ class App {
     this.strCarName = "";
     this.arrCarName = [];
     this.attempts = [];
+    this.race = [];
   }
   async play() {
     // 1-a
@@ -29,6 +30,11 @@ class App {
     if (this.attempts < 0 || isNaN(this.attempts) == true) {
       throw new Error("[ERROR] : 시도 횟수가 잘못 입력되었습니다. 정수를 입력해주세요.");
     }
+
+    // 2-a
+    this.arrCarName.forEach((name) => {
+      this.race.push([name, 0]);
+    });
   }
 }
 
