@@ -17,9 +17,11 @@ class InputValidator {
   /**
    *
    * @param {string} input
+   * @returns {number}
    */
   static async tryNumValidator(input) {
     if (isNaN(input)) throw new Error('[ERROR] 숫자를 입력해주세요.');
+    return Number(input);
   }
 }
 
