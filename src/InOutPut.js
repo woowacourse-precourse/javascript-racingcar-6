@@ -19,3 +19,9 @@ export const inputCarName = async () => {
 
   return carNames;
 };
+
+export const inputNumber = async () => {
+  const number = await Console.readLineAsync();
+
+  return Number(number);
+};
