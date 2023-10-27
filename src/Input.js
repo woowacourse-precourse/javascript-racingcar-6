@@ -6,9 +6,9 @@ class Input {
 
   async readText() {
     try {
-      const text = await MissionUtils.Console.readLineAsync(MESSAGE.input);
       this.nameArray = text.split(',');
       this.validateName();
+      const text = await MissionUtils.Console.readLineAsync(MESSAGE.inputName);
     } catch (error) {
       throw new Error(error);
     }
