@@ -22,6 +22,7 @@ export const inputCarName = async () => {
 };
 
 export const inputNumber = async () => {
+  Console.print('시도할 회수는 몇회인가요?');
   const number = await Console.readLineAsync();
 
   return Number(number);
