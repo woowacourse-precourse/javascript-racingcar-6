@@ -1,26 +1,16 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 
 import gameRounds from './gameRounds.js';
+import selectWinner from './selectWinner.js';
 
 export default function result(carArr, count) {
-    let strArr = [...Array(carArr.length).fill('')];
+    let scoreArr = [...Array(carArr.length).fill('')];
     for(let round = 0; round < count; round++) {
-        gameRounds(carArr, strArr);
+        gameRounds(carArr, scoreArr);
         MissionUtils.Console.print('\n');
     }
+    const winner = selectWinner(carArr, scoreArr);
 
-    let res = -1;
-    let winner = [];
-    for(const [index, score] of strArr.entries()) {
-        if(score.length === res) {
-            winner.push(carArr[index]);
-        }
-        if(score.length > res) {
-            winner = [];
-            res = score.length;
-            winner.push(carArr[index]);
-        }
-    }
-    const tmp = winner.join(', ');
-    console.log("최종 우승자 : ", tmp);
+    const winnerPrint = '최종 우승자 : ' + winner;
+    MissionUtils.Console.print(winnerPrint);
 }

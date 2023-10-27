@@ -6,7 +6,6 @@ class App {
   async play() {
     const carArr = await inputCarName();
     const count = await inputCount();
-    // advanceCondition();
     playGame(carArr, count);
   }
 }
