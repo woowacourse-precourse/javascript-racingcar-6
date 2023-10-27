@@ -7,10 +7,16 @@ class App {
 
         Console.print("\n실행결과");
         for (let i = 0; i < NUMBER; i++) {
-            this.raceController(players);
-            this.outputPlayers(players);
+            players = this.raceController(players);
+
+            Object.keys(players).forEach((key) => {
+                Console.print(`${key} : ${"-".repeat(players[key])}`);
+            });
+
             Console.print("");
         }
+
+        Console.print(`최종 우승자 : ${this.outputWinner(players)}`);
     }
 
     // 플레이어 객체 반환 함수
@@ -37,24 +43,27 @@ class App {
 
     // 경기 진행 함수
     raceController(players) {
-        Object.keys(players).forEach((key) => {
-            if (4 <= Random.pickNumberInRange(0, 9)) players[key] += 1;
+        let tmp = Object.assign({}, players);
+        Object.keys(tmp).forEach((key) => {
+            if (4 <= Random.pickNumberInRange(0, 9)) tmp[key] += 1;
         });
-        return;
+
+        return tmp;
     }
 
-    // 경기 결과 텍스트 출력기
-    outputPlayers(players) {
-        Object.keys(players).forEach((key) => {
-            Console.print(`${key} : ${"-".repeat(players[key])}`);
+    // 우승자 문자열 반환 함수
+    outputWinner(players) {
+        // 최고기록 저장
+        const WINNER_VALUE = Object.values(players).reduce((value1, value2) => {
+            return Math.max(value1, value2);
         });
-    }
+        // 최고기록인 사람 배열로
+        const WINNER_ARRAY = Object.keys(players).filter((key) => {
+            if (players[key] === WINNER_VALUE) return key;
+        });
 
-    // winnerChoose(players) {
-    //     Object.keys(players).reduce((key1, key2) => {
-    //         if (players[key1].length < players[key2].length);
-    //     });
-    // }
+        return WINNER_ARRAY.join(", ");
+    }
 }
 
 export default App;
