@@ -3,8 +3,8 @@ class Car {
   #distance
 
   constructor(name, distance){
-    this.name = name;
-    this.distance = distance;
+    this.#name = name;
+    this.#distance = distance;
   }
 
   getCarName() {
