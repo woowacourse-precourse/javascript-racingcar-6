@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import { validate, inputCarRegex } from './validate.js';
+import { validate, inputCarRegex, inputNumber } from './validate.js';
 
 class App {
   async play() {
@@ -8,7 +8,7 @@ class App {
     if (!validate(carInput, inputCarRegex)) {
       throw new Error('[ERROR] 입력이 잘못된 형식입니다.');
     }
-    const cars = input.split(',');
+    const cars = carInput.split(',');
   }
 }
 
