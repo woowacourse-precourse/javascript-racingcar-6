@@ -1,10 +1,12 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Console, Random } from "@woowacourse/mission-utils";
 
 class Game {
+  carNameList = [];
+  countAttempt = null;
+
   start = async () => {
-    const carNameList = await this.getCarNameList();
-    const countAttempt = await this.getCountAttempt();
-    console.log(countAttempt, typeof countAttempt);
+    await this.getCarNameList();
+    await this.getCountAttempt();
   };
 
   getCarNameList = async () => {
@@ -15,7 +17,7 @@ class Game {
     if (input.length == 0 || !this.isCarNameListValid(list)) {
       throw new Error("잘못된 형식입니다.");
     }
-    return list;
+    this.carNameList = list;
   };
 
   isCarNameListValid = (list) => {
@@ -35,7 +37,7 @@ class Game {
     if (count === 0) {
       throw new Error("시도 횟수는 1번 이상이여야 합니다.");
     }
-    return count;
+    this.countAttempt = count;
   };
 }
 
