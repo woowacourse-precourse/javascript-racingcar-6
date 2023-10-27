@@ -17,3 +17,16 @@ export const isForward = (car) => {
 
   return num > 3;
 };
+
+export const checkChampion = (cars) => {
+  let max = 0;
+
+  cars.forEach((car) => {
+    if (max < car[1]) {
+      const count = car[1];
+      max = count;
+    }
+  });
+
+  return cars.filter((car) => car[1] === max).map((car) => car[0]);
+};
