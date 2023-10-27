@@ -15,4 +15,8 @@ describe('Validator Test', () => {
       Validator.isValidateAttemps(input);
     }).toThrow('[ERROR] 숫자만 입력해주세요.');
   });
+
+  test('시도 횟수 타입은 숫자이다.', () => {
+    expect(Validator.isValidateAttemps('1')).toBeTruthy();
+  });
 });
