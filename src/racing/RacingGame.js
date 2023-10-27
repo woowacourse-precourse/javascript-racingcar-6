@@ -16,4 +16,10 @@ class RacingGame {
     }
     this.getWinners(this.cars);
   }
+
+  moveCars(cars) {
+    cars.forEach((car) => {
+      car.randomlyMove();
+    });
+  }
 }
