@@ -19,7 +19,16 @@ class App {
    * 입력받은 숫자에 대한 검증 과정도 포함한다
    * @returns {int} try
    */
-  async get_try_input() {}
+  async get_try_input() {
+    Console.print("시도할 횟수는 몇 회인가요?");
+    const INPUT_TRY = await Console.readLineAsync();
+
+    if (isNaN(INPUT_TRY) || parseInt(INPUT_TRY) <= 0) {
+      throw new Error(ERROR_MSG.WRONG_NUMBER);
+    }
+
+    return parseInt(INPUT_TRY);
+  }
 
   /**
    * 사용자로부터 자동차 이름을 입력받은 후 이를 리턴한다.
