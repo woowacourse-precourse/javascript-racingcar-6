@@ -1,3 +1,5 @@
+import { GO_FORWARD } from "../constatnts/index.js";
+
 class Car {
   constructor() {
     this.cars = [];
@@ -14,7 +16,7 @@ class Car {
     const newPositions = this.cars.map((car) => {
       const randomValue = numbers.shift();
 
-      if (randomValue >= 4) {
+      if (randomValue >= GO_FORWARD) {
         return car.position + 1;
       }
 

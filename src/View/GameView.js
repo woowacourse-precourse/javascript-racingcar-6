@@ -1,12 +1,14 @@
 import { Console } from "@woowacourse/mission-utils";
 
+import { MESSAGE } from "../constatnts/index.js";
+
 class GameView {
   constructor() {
     this.init();
   }
 
   init() {
-    Console.print("\n실행 결과");
+    Console.print(MESSAGE.GAME_INIT);
   }
 
   // 3-3. 입력된 횟수에 대해 각 횟수마다 실행 결과를 출력한다
@@ -25,7 +27,7 @@ class GameView {
     const winners = cars.filter((car) => car.position === maxPosition);
 
     const winnerNames = winners.map((winner) => winner.name).join(", ");
-    Console.print(`최종 우승자 : ${winnerNames}`);
+    Console.print(`${MESSAGE.GAME_RESULT} : ${winnerNames}`);
   }
 }
 
