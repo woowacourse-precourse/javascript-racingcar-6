@@ -1,11 +1,13 @@
 import { ERROR } from "./Constant.js";
 
 const Validation = {
-  async carNameValidation(name) {
-    if (!name.length) {
-      throw new Error(ERROR.INPUT_NAME_LENGTH_ZERO)
-    } else if (!name.length || name.length > 5) {
-      throw new Error(ERROR.INPUT_NAME_OVER_FIVE);
+  async carNameValidation(nameArr) {
+    for (const name of nameArr) {
+      if (!name.length) {
+        throw new Error(ERROR.INPUT_NAME_LENGTH_ZERO)
+      } else if (name.length > 5) {
+        throw new Error(ERROR.INPUT_NAME_OVER_FIVE);
+      }
     }
   },
 }
