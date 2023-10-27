@@ -3,7 +3,7 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 class App {
   constructor() {
     this.countRepeat = 0;
-    this.raceResultArray = [];
+    this.raceResult = [];
   }
 
   getCarNamesArray(carNames) {
@@ -28,15 +28,15 @@ class App {
       name: carName,
       result: "",
     };
-    this.raceResultArray.push(carObject);
+    this.raceResult.push(carObject);
   }
 
-  makeRandomNumber(raceResultArray) {
-    raceResultArray.forEach((element) => {
+  makeRandomNumber(raceResult) {
+    raceResult.forEach((element) => {
       const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
       element = this.goForward(element, randomNumber);
     });
-    return raceResultArray;
+    return raceResult;
   }
 
   goForward(element, randomNumber) {
@@ -45,82 +45,71 @@ class App {
     }
   }
 
-  printResult(raceResultArray) {
-    raceResultArray.forEach((e) => {
+  printResult(raceResult) {
+    raceResult.forEach((e) => {
       MissionUtils.Console.print(`${e.name} : ${e.result}\n`);
     });
     MissionUtils.Console.print("\n");
   }
 
-  findlengthArray(raceResultArray) {
+  findlength(raceResult) {
     const lengthArray = [];
-    raceResultArray.forEach((element) => {
+    raceResult.forEach((element) => {
       lengthArray.push(element.result.length);
     });
     return lengthArray;
   }
 
-  pushWinnerIndexToArray(element, index, winnerIndexMaxNumber, winnerIndex) {
-    if (winnerIndexMaxNumber === element.result.length) {
+  getWinnerIndex(element, index, maxLength, winnerIndex) {
+    if (maxLength === element.result.length) {
       winnerIndex.push(index);
     }
     return winnerIndex;
   }
 
-  makeCarRaceWinnerIndexArray(raceResultArray, winnerIndexMaxNumber) {
+  makeWinnerIndexArray(raceResult, maxLength) {
     let winnerIndex = [];
-    raceResultArray.forEach((element, index) => {
-      winnerIndex = this.pushWinnerIndexToArray(
-        element,
-        index,
-        winnerIndexMaxNumber,
-        winnerIndex
-      );
+    raceResult.forEach((element, index) => {
+      winnerIndex = this.getWinnerIndex(element, index, maxLength, winnerIndex);
     });
     return winnerIndex;
   }
 
-  findCarRaceWinnerIndexMax(lengthArray) {
+  findMaxLength(lengthArray) {
     return Math.max(...lengthArray);
   }
 
-  pushWinnerName(element, index, winnerIndexArray, winnerNameArray) {
+  pushWinnerName(element, index, winnerIndexArray, winnerName) {
     if (winnerIndexArray.includes(index)) {
-      winnerNameArray.push(element.name);
+      winnerName.push(element.name);
     }
-    return winnerNameArray;
+    return winnerName;
   }
 
-  makeCarRaceWinnerArray(raceResultArray, winnerIndexArray) {
-    let winnerNameArray = [];
-    raceResultArray.forEach((element, index) => {
-      winnerNameArray = this.pushWinnerName(
+  makeWinnerArray(raceResult, winnerIndexArray) {
+    let winnerName = [];
+    raceResult.forEach((element, index) => {
+      winnerName = this.pushWinnerName(
         element,
         index,
         winnerIndexArray,
-        winnerNameArray
+        winnerName
       );
     });
-    return winnerNameArray;
+    return winnerName;
   }
 
-  checkWinner(raceResultArray) {
+  checkWinner(raceResult) {
     /* 한 자동차당 전진한 수를 구하는 함수 */
-    const lengthArray = this.findlength(raceResultArray);
-    const winnerIndexMaxNumber = this.findCarRaceWinnerIndexMax(lengthArray);
-    const winnerIndexArray = this.makeCarRaceWinnerIndexArray(
-      raceResultArray,
-      winnerIndexMaxNumber
-    );
-    const carRaceWinnerArray = this.makeCarRaceWinnerArray(
-      raceResultArray,
-      winnerIndexArray
-    );
-    return carRaceWinnerArray;
+    const lengthArray = this.findlength(raceResult);
+    const maxLength = this.findMaxLength(lengthArray);
+    const winnerIndexArray = this.makeWinnerIndexArray(raceResult, maxLength);
+    const winnerArray = this.makeWinnerArray(raceResult, winnerIndexArray);
+    return winnerArray;
   }
 
-  printWinner(winnerNameArray) {
-    const winnerNameString = winnerNameArray.join(", ");
+  printWinner(winnerName) {
+    const winnerNameString = winnerName.join(", ");
     MissionUtils.Console.print(`최종 우승자 : ${winnerNameString}`);
   }
 
@@ -138,12 +127,12 @@ class App {
       this.makeObject(element);
     });
     while (this.countRepeat < repeatNumber) {
-      this.raceResultArray = this.makeRandomNumber(this.raceResultArray);
-      this.printResult(this.raceResultArray);
+      this.raceResult = this.makeRandomNumber(this.raceResult);
+      this.printResult(this.raceResult);
       this.countRepeat++;
     }
-    const winnerNameArray = this.checkWinner(this.raceResultArray);
-    this.printWinner(winnerNameArray);
+    const winnerName = this.checkWinner(this.raceResult);
+    this.printWinner(winnerName);
   }
 }
 
