@@ -4,6 +4,7 @@ import {
   ASK_TRY_COUNT,
   ERROR,
   RESULT_MESSAGE,
+  RESULT_PHRASE_MESSAGE,
 } from "./constant/message.js";
 import { separator } from "./constant/rule.js";
 import Validate from "./Validate.js";
@@ -49,6 +50,10 @@ class Print {
     }
 
     return count;
+  }
+
+  static showResultPhrase() {
+    Console.print(RESULT_PHRASE_MESSAGE);
   }
 
   static showRaceResult(name, result) {

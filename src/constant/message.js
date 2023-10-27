@@ -18,4 +18,5 @@ export const ERROR = {
   COUNT_LESS_THAN_MIN: `[ERROR] 실행 횟수는 ${MIN_TRY_COUNT} 이상만 가능합니다.`,
 };
 
+export const RESULT_PHRASE_MESSAGE = "\n실행 결과";
 export const RESULT_MESSAGE = (name, result) => `${name} : ${result}`;

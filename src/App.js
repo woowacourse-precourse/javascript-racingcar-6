@@ -27,6 +27,8 @@ class App {
   }
 
   startRace() {
+    Print.showResultPhrase();
+
     for (let count = 0; count < this.tryCount; count++) {
       this.getResultOfEachCar();
     }
