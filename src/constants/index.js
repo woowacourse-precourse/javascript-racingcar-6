@@ -22,7 +22,7 @@ const RULES = Object.freeze({
     // 4미만: 정지, 4이상: 전진
     STANDARD: 4,
     FORWARD: "-",
-    MIN_MAX: 0,
+    MIN_MOVE: 0,
     MAX_MOVE: 9,
     MAX_STRING: 5,
 })
