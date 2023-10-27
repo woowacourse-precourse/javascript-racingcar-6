@@ -162,3 +162,29 @@ describe("자동차명 입력에 대한 Validate 클래스 테스트", () => {
     });
   });
 });
+
+const inputsWithInvalidTryCount = ["a", "ㅁ", "[", "-"];
+
+describe("시도 횟수에 대한 Validate 클래스 테스트", () => {
+  test("시도 횟수 입력값이 숫자가 아니라면 false 반환.", () => {
+    inputsWithInvalidTryCount.forEach((input) => {
+      expect(validate.isNumber(input)).toBeFalsy();
+    });
+  });
+
+  test("시도 횟수 입력값이 숫자라면 true 반환.", () => {
+    const inputsWithValidTryCount = ["1", "5", "10"];
+
+    inputsWithValidTryCount.forEach((input) => {
+      expect(validate.isNumber(input)).toBeTruthy();
+    });
+  });
+
+  test("시도 횟수 입력값이 숫자가 아니라면 에러가 발생한다.", () => {
+    inputsWithInvalidTryCount.forEach((input) => {
+      expect(() => validate.checkTryCountIsValid(input)).toThrow(
+        new Error(ERROR.COUNT_IS_NOT_NUMBER)
+      );
+    });
+  });
+});
