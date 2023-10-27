@@ -17,6 +17,7 @@ class AllNamesOfCars {
   constructor(cars) {
     this.#cars = cars;
     this.validate();
+    this.initializeCars();
   }
 
   validate() {
