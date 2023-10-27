@@ -12,16 +12,27 @@ const ERROR_MESSAGE = {
 }
 
 class Comm{
-    constructor(){
 
-        racingCarInputValutate = (carName) => {
-            return carName.reduce((arr, cur, idx) => {
-                if(cur.length > 5){
-                    throw Error(`${ERROR_MESSAGE.INPUT_ERROR}`);
-                }
-                return carName;
-            }, "");
-        }
+    #carName
+
+    constructor(){
+        this.#carName = [];
     }
+
+    carNameOutPutUpdate = (carName) => {
+        return carName.reduce((arr, cur, idx) => {
+            this.#carName.push(cur+' : ');
+            return this.#carName;
+        }, "");
+    }
+
+    racingCarInputValutate = (carName) => {
+        return carName.reduce((arr, cur, idx) => {
+            if(cur.length > 5){
+                throw Error(`${ERROR_MESSAGE.INPUT_ERROR}`);
+            }
+            return carName;
+        }, "");
+    }    
 }
 export { MESSAGE, ERROR_MESSAGE, Comm }

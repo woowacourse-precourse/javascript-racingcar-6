@@ -8,6 +8,7 @@ class RacingcarController{
 
     async racingCarStart(){
         const RACING_CAR_NAME = await this.userInput.inputRacingcarName();
+        const RACING_OUTPUT_NAME = this.comm.carNameOutPutUpdate(RACING_CAR_NAME);
     }
 }
 
