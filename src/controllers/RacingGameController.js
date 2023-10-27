@@ -1,12 +1,12 @@
-import RacingCar from '../models/RacingCar.js';
-import { inputView } from '../views/inputView.js';
-import { outputView } from '../views/outputView.js';
-
 class RacingGameController {
+  #inputView;
+  #outputView;
   #racingGame;
   #factory;
 
-  constructor(game, factory) {
+  constructor(inputView, outputView, game, factory) {
+    this.#inputView = inputView;
+    this.#outputView = outputView;
     this.#racingGame = game;
     this.#factory = factory;
   }
@@ -16,31 +16,31 @@ class RacingGameController {
     this.#setupCarsFromNames(carNames);
     this.#executeRacingRounds(rounds);
     this.#racingGame.concludeGame();
-    this.#displayResult();
+    this.#displayWinners();
   }
 
   async #getUserInputs() {
-    const carNames = await inputView.readNamesInput();
-    const rounds = await inputView.readRoundsNumberInput();
+    const carNames = await this.#inputView.readCarNamesInput();
+    const rounds = await this.#inputView.readRoundsNumberInput();
     return { carNames, rounds };
   }
 
   #setupCarsFromNames(names) {
-    const cars = names.map((item) => this.#factory.createCar(item));
+    const cars = names.map((item) => this.#factory.createRacingCar(item));
     this.#racingGame.setCars(cars);
   }
 
   #executeRacingRounds(roundsNumber) {
-    outputView.printResultHeader();
+    this.#outputView.printResultHeader();
     for (let i = 0; i < roundsNumber; i += 1) {
       this.#racingGame.moveAllCars();
-      const roundResult = this.#racingGame.getAllCarsMovementResult();
-      outputView.printResult(roundResult);
+      const roundResult = this.#racingGame.getAllCarsMoveResult();
+      this.#outputView.printRoundResult(roundResult);
     }
   }
-  #displayResult() {
+  #displayWinners() {
     const winners = this.#racingGame.getWinners();
-    outputView.printWinners(winners);
+    this.#outputView.printWinners(winners);
   }
 }
 

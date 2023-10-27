@@ -9,7 +9,7 @@ class RacingCar {
   constructor(name) {
     this.#name = name;
     this.#position = 0;
-    this.#moveResult = `${this.#name}${SYMBOLS.divider}`;
+    this.#moveResult = `${this.#name}${SYMBOLS.playerResultSeparator}`;
   }
 
   getName() {
@@ -35,7 +35,7 @@ class RacingCar {
   move() {
     if (this.#canMove()) {
       this.#position += 1;
-      this.#moveResult += SYMBOLS.dash;
+      this.#moveResult += SYMBOLS.moveIndicator;
     }
   }
 }
