@@ -10,7 +10,7 @@ class Car {
   }
   printPosition() {
     const dashes = "-".repeat(this.distance);
-    Console.print(this.name + " : " + dashes);
+    Console.print(`${this.name} : ${dashes}\n`);
   }
 }
 
