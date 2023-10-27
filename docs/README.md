@@ -52,9 +52,9 @@
  
 # 2. 2주차 
 ## 2.1 기능 목록
-- [ ] 사용자한테 입력 받기 (getUserInput())
-  - [ ] 출전 선수 목록 (players)
-  - [ ] 몇 번의 이동을 할 것인지 입력 받기 (moveNumber)
+- [x] 사용자한테 입력 받기 (getUserInput())
+  - [x] 출전 선수 목록 (players)
+  - [x] 몇 번의 이동을 할 것인지 입력 받기 (moveNumber)
 - [ ] 입력 유효성 검사 (Inspector)
   - [ ] 쉼표로 구분이 되어 있는지 (isSplited())
   - [ ] 두 명 이상인지
