@@ -10,43 +10,71 @@ class CarRaceController {
   }
 
   async init() {
-    const { model } = this;
+    const { model, gamePlay, printWinner } = this;
 
-    const carListInput = await CarRaceView.readCarNames();
-    const inputCarList = carListInput.split(',').map(carName => carName.trim());
+    const inputCarList = await this.getCarName();
+    model.setCarList(inputCarList);
 
-    inputCarList.forEach(carName => validateCarName(carName));
-    const isDuplicte = hasDuplicate(inputCarList);
+    const moveCount = await this.getMoveCount();
+    model.setMoveCount(moveCount);
 
-    if (isDuplicte) {
-      throw new Error('[ERROR] car 이름은 중복이 불가합니다.');
-    }
+    model.carList.forEach(carName => model.initGameProgress(carName));
 
-    this.model.setCarList(inputCarList);
-    const moveCountInput = await CarRaceView.readMoveCount();
+    repeatFunctionNTimes(model.moveCount, gamePlay.bind(this));
 
+    model.calculateWinner();
+
+    this.printWinner();
+  }
+
+  async getMoveCount() {
+    const { readMoveCount } = CarRaceView;
+
+    const moveCountInput = await readMoveCount();
     const moveCount = Number(moveCountInput);
     validateCountNumber(moveCount);
 
-    model.setMoveCount(moveCount);
-    model.carList.forEach(carName => model.initGameProgress(carName));
+    return moveCount;
+  }
 
-    repeatFunctionNTimes(model.moveCount, this.gamePlay.bind(this));
+  async getCarName() {
+    const { readCarNames } = CarRaceView;
 
-    model.calculateWinner();
-    CarRaceView.printOutput('실행 결과');
-    CarRaceView.printOutput(`최종 우승자 : ${model.gameWinner}`);
+    const carListInput = await readCarNames();
+    const inputCarList = carListInput.split(',').map(carName => carName.trim());
+    this.validateCar(inputCarList);
+
+    return inputCarList;
+  }
+
+  validateCar(inputCarList) {
+    inputCarList.forEach(carName => validateCarName(carName));
+
+    const isDuplicte = hasDuplicate(inputCarList);
+    if (isDuplicte) {
+      throw new Error('[ERROR] car 이름은 중복이 불가합니다.');
+    }
+  }
+
+  printWinner() {
+    const { model } = this;
+    const { printOutput } = CarRaceView;
+
+    printOutput('실행 결과');
+    printOutput(`최종 우승자 : ${model.gameWinner}`);
   }
 
   gamePlay() {
-    this.model.calculateCarMove();
-    for (const key in this.model.gameProgress) {
-      CarRaceView.printProgress(key, this.model.gameProgress[key]);
-    }
-    CarRaceView.printNewline();
-  }
+    const { printProgress, printNewline } = CarRaceView;
+    const { model } = this;
 
-  validateCount() {}
+    model.calculateCarMove();
+    for (const key in model.gameProgress) {
+      printProgress(key, model.gameProgress[key]);
+    }
+
+    printNewline();
+  }
 }
 
 export default CarRaceController;
