@@ -1,9 +1,10 @@
 import { Console, Random } from "@woowacourse/mission-utils";
 
 class App {
-  async play() {}
-
-  
+  async play() {
+    const cars = await this.inputCarNames();
+    await this.exportResult(cars);
+  }
 
   async inputCarNames() {
     const carNameInput = await Console.readLineAsync(Message.askCarName);
@@ -30,32 +31,45 @@ class App {
     return times;
   }
 
-  getCarsMove(cars) {
+  getEachCarsMove(cars) {
     for(let i = 0; i < cars.length; i++) {
       cars[i].randomNumber = Random.pickNumberInRange(0, 9);
-      if(cars[i].randomNumber >= 4) cars[i].moveTimes++; 
+      if(cars[i].randomNumber >= 4) cars[i].move += '-';
+      Console.print(`${cars[i].name} : ${cars[i].move}` );
     }
-    return cars;
+    return;
   }
 
   async exportResult(cars) {
-    const times = this.inputTryTimes();
+    const times = await this.inputTryTimes();
     Console.print('실행 결과\n');
     for(let i = 0; i < times; i++) {
-      const carsThisRound = this.getCarsMove(cars);
-      Console.print(`${carsThisRound.name} : ${carsThisRound.moveTimes}\n`);
+      this.getEachCarsMove(cars);
+      Console.print('\n');
     }
-    Console.print('\n');
+    Console.print('최종우승자 : ' + this.exportWinner(cars));
+    return;
   }
 
-
+  exportWinner(cars) {
+    let winner = '';
+    for(let i = 0; i < cars.length - 1; i++) {
+      if(cars[i].move.length < cars[i + 1].move.length) [cars[i], cars[i + 1]] = [cars[i + 1], cars[i]];
+    }
+    winner += cars[0].name;
+    for(let i = 0; i < cars.length - 1; i++) {
+      if(cars[0].move.length > cars[i + 1].move.length) break;
+      winner += ', '+ cars[i + 1].name;
+    }
+    return winner;
+  }
 }
 
 class Car {
   constructor(name) {
     this.name = name;
     this.randomNumber;
-    this.moveTimes = 0;
+    this.move = '';
   }
 }
 
@@ -74,6 +88,6 @@ const Message = Object.freeze({
 });
 
 const app = new App();
-app.exportResult();
+app.play();
 
 export default App
