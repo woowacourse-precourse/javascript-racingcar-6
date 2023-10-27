@@ -17,27 +17,35 @@ class App {
     return this.constructCars(cars);
   }
 
-  constructCars(array) {
-    for(let i = 0; i < array.length; i++) {
-      array[i] = new Car(array[i]);
+  constructCars(cars) {
+    for(let i = 0; i < cars.length; i++) {
+      cars[i] = new Car(cars[i]);
     }
-    array = this.getCarsMove(array);
-    console.log(array);
-    return array;
+    return cars;
   }
 
   async inputTryTimes() {
-    const times = await Console.readLineAsync(Message.askGameRounds);
+    const times = await Console.readLineAsync(Message.askTryTimes);
     if(isNaN(times)) throw new Error(Message.error.notNumber);
     return times;
   }
 
-  getCarsMove(array) {
-    for(let i = 0; i < array.length; i++) {
-      array[i].randomNumber = Random.pickNumberInRange(0, 9);
-      if(array[i].randomNumber >= 4) array[i].moveTimes++; 
+  getCarsMove(cars) {
+    for(let i = 0; i < cars.length; i++) {
+      cars[i].randomNumber = Random.pickNumberInRange(0, 9);
+      if(cars[i].randomNumber >= 4) cars[i].moveTimes++; 
     }
-    return array;
+    return cars;
+  }
+
+  async exportResult(cars) {
+    const times = this.inputTryTimes();
+    Console.print('실행 결과\n');
+    for(let i = 0; i < times; i++) {
+      const carsThisRound = this.getCarsMove(cars);
+      Console.print(`${carsThisRound.name} : ${carsThisRound.moveTimes}\n`);
+    }
+    Console.print('\n');
   }
 
 
@@ -66,6 +74,6 @@ const Message = Object.freeze({
 });
 
 const app = new App();
-app.inputCarNames();
+app.exportResult();
 
 export default App
