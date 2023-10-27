@@ -6,9 +6,13 @@ import UserInput from '../view/UserInput.js';
 class RacingcarController{
 
     #playCount
+    #racingCarPlay
 
     constructor(){
         this.#playCount = 1;
+        this.#racingCarPlay = '';
+        this.comm = new Comm();
+        this.racing = new Racing(this);
     }
 
     async racingCarStart(){
@@ -19,6 +23,7 @@ class RacingcarController{
 
         while(this.#playCount <= RACING_COUNT){
             const RACING_CAR_FORWARD_NUMBER = this.racing.randomForwardCount(RACING_OUTPUT_NAME.length);
+            this.#racingCarPlay = this.racing.racingPlay(RACING_OUTPUT_NAME, RACING_CAR_FORWARD_NUMBER);
         }
     }
 }

@@ -5,6 +5,15 @@ class Racing{
 
     }
 
+    racingPlay = (racingCarName, forward_number) => {
+        racingCarName.forEach((data, index) => {
+            if(forward_number[index] >= 4){
+                racingCarName[index] = data + '-';
+            }
+        });
+        return racingCarName;
+    }
+
     randomForwardCount = (num) => {
         let forwardNumber = [];
         for(let i = 0; i < num; i++){
