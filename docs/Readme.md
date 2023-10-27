@@ -27,12 +27,12 @@
   - 이름별 진행도 출력
 
 - printResult
+
   - 최종 우승자
 
 ### 진행
 
 - inputTryNumber 까지 완료 되면 initialization
-
 - n번 반복하여 진행
 - 매 회차 이름별 진행도 갱신 (4이상의 수가 나오면 +1) 및 출력
 
