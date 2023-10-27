@@ -12,6 +12,9 @@ class App {
     const inputResult = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)');
     this.validateCarNameList(inputResult);
     await this.printGameLimit();
+    this.gameInit();
+    Console.print('실행 결과');
+    Array.from({ length: this.moveCount }, () => this.calculateCarMove());
   }
 
   validateCarNameList(inputResult) {
@@ -49,6 +52,19 @@ class App {
     this.carList.forEach(car => {
       this.gameProgress[car] = '';
     });
+  }
+
+  calculateCarMove() {
+    for (const key in this.gameProgress) {
+      const randomNumber = Random.pickNumberInRange(1, 9);
+      if (randomNumber >= 4) {
+        this.gameProgress[key] += '-';
+      }
+
+      const result = `${key} : ${this.gameProgress[key]}`;
+      Console.print(result);
+    }
+    Console.print('\n');
   }
 }
 
