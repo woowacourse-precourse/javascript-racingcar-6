@@ -13,4 +13,13 @@ export default class View extends Validation {
     const carNamesToArray = carNames.split(',');
     return carNamesToArray;
   }
+
+  readRepeatTime() {
+    const repeatTime = Console.readLineAsync('시도할 회수는 몇회인가요?\n');
+    /**
+     * validation 체크 내용 추가
+     * ex) 0 이하의 숫자가 입력된 경우, 숫자가 아닌 문자가 입력된 경우
+     */
+    return parseInt(repeatTime, 10);
+  }
 }
