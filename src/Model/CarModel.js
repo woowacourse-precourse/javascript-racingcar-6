@@ -8,7 +8,7 @@ export default class CarModel {
   makeCar(carNameList) {
     this.#cars = carNameList.split(',').map((name) => ({
       name,
-      isMoves: [],
+      moveCounts: 0,
     }));
   }
 
@@ -18,8 +18,8 @@ export default class CarModel {
 
   updateMove(carName, isMove) {
     const carToUpdate = this.#cars.find((car) => car.name === carName);
-    return isMove
-      ? carToUpdate.isMoves.push(true)
-      : carToUpdate.isMoves.push(false);
+    if (isMove) {
+      carToUpdate.moveCounts += 1;
+    }
   }
 }
