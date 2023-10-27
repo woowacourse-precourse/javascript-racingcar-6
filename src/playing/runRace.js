@@ -56,3 +56,5 @@ const findWinnerName = (raceResults, targetScore) => {
   }
   return winnerNames;
 }
+
+module.exports = { runRace };
