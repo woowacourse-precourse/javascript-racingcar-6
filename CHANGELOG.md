@@ -1,0 +1,4 @@
+- feat: add try counter and try number validater
+- feat: add carname creater and name length validater
+- docs: add function list
+- feat: setup precourse racingcar project
