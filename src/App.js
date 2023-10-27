@@ -50,6 +50,11 @@ class App {
       });
       MissionUtils.Console.print(" ");
     }
+
+    // 3-a
+    this.race.sort((a, b) => {
+      return b[1] - a[1];
+    });
   }
 }
 
