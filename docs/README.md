@@ -68,10 +68,10 @@
 
 <br>
 
-- [x] `validateCarName(name)`
+- [x] `validateCarNames(names)`
   1. 각 이름이 5글자 이하인지 검사합니다.
   2. 이름을 입력하지 않은 경우를 검사합니다.
-- [] `validateMoveCount(count)`: 시도할 횟수가 숫자인지 확인합니다.
+- [x] `validateLapNumber(number)`: 시도 횟수가 `2^53` 이하의 안전한 자연수인지 확인합니다.
 
 <br/>
 
