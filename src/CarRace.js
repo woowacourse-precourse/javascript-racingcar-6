@@ -1,59 +1,98 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-
+import Car from "./Car";
 class CarRace {
   #cars;
+  #tryNumber;
 
   async handleRace() {
     await this.handleCar();
-    // 1. 시도 횟수를 입력 받습니다.
-    this.readTryNumber();
+
+    const TRY_NUMBER = await this.readTryNumber();
+    this.setTryNumber(TRY_NUMBER);
 
     this.handleRaceResult();
   }
 
   async handleCar() {
-    let carNames;
+    let input;
     try {
-      carNames = await this.readCarsInput();
-      // 2. 입력값을 토대로 car클래스를 만듭니다.
+      input = await this.readCarsInput();
     } catch (error) {
       throw error;
     }
-    const CAR_CLASSES = this.handleCarConvertedToClass(carNames);
-    // 3. 그 값을 CarRace의 Cars변수에 할당합니다.
+
+    const CAR_NAMES = input.split(",");
+    const CAR_CLASSES = this.handleCarConvertedToClass(CAR_NAMES);
     this.setCars(CAR_CLASSES);
   }
   async readCarsInput() {
     let input;
     try {
-      input = await MissionUtils.Console.readLineAsync();
+      input = await MissionUtils.Console.readLineAsync(
+        "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
+      );
+      if (input === "")
+        throw new Error("[ERROR] 자동차 이름을 입력하지 않으셨습니다.");
     } catch (error) {
       throw error;
     }
-    const CARS = input.split(",");
-    this.validateCarsInput(CARS);
-    return CARS;
+    this.validateCarsInput(input);
+    return input;
   }
 
-  validateCarsInput(cars) {
-    const carsSet = new Set(cars);
-    if (carsSet.size !== cars.length) {
+  validateCarsInput(input) {
+    const CARS = input.split(",");
+    const carsSet = new Set(CARS);
+    if (carsSet.size !== CARS.length) {
       throw new Error("[ERROR] 자동차 이름에 중복이 있습니다.");
     }
-    for (const car of cars) {
-      const trimCarName = car.trim();
-      if (car.length > 5) {
+    for (const CAR of CARS) {
+      const trimCarName = CAR.trim();
+      if (CAR.length > 5) {
         throw new Error("[ERROR] 자동차 이름의 길이는 5를 넘어선 안됩니다.");
       }
-      if (trimCarName !== car) {
+      if (trimCarName !== CAR) {
         throw new Error(
           "[ERROR] 자동차 이름의 앞 뒤에는 공백이 있어선 안됩니다."
         );
       }
     }
   }
+  handleCarConvertedToClass(cars) {
+    const carClasses = cars.map((car) => {
+      const carClass = new Car(car);
+      return carClass;
+    });
+    return carClasses;
+  }
+
   setCars(carClasses) {
     this.#cars = [...carClasses];
+  }
+
+  async readTryNumber() {
+    let input;
+    try {
+      input = await MissionUtils.Console.readLineAsync(
+        "시도할 횟수는 몇 회인가요?"
+      );
+    } catch (error) {
+      throw error;
+    }
+    this.validTryNumber(input);
+    return Number(input);
+  }
+
+  validTryNumber(input) {
+    const trimInput = input.trim();
+    if (trimInput === "")
+      throw new Error("[ERROR] 시도 횟수를 입력하지 않으셨습니다.");
+    if (Number.isNaN(Number(trimInput)))
+      throw new Error("[ERROR] 시도 횟수는 숫자 값만 입력해주세요.");
+  }
+
+  setTryNumber(number) {
+    this.#tryNumber = number;
   }
 
   handleRaceResult() {

@@ -32,15 +32,15 @@
    - 2. [ ] 이동한 거리 set, get 함수
 
 2. [ ] RaceGame 클래스 생성
-   - 1. [ ] handle Race 게임을 시작하는 메서드
+   - 1. [ ] handleRace 게임을 시작하는 메서드
    - 2. [x] readCarsInput 자동차를 입력받는 메서드
-   - 3. [ ] readTryNumber 시도 횟수를 입력받는 메서드
+   - 3. [x] readTryNumber 시도 횟수를 입력받는 메서드
    - 4. [ ] 실행 결과를 출력하는 메서드
    - 5. [ ] 우승자를 출력하는 메서드
    - 6. [ ] 참여한 자동차 배열, 시도횟수 변수
 
 3. 추가 메서드 기능
-   - 1. [ ] handleCarConvertedToClass 인자 배열의 값을 Class로 변환.
+   - 1. [x] handleCarConvertedToClass 인자 배열의 값을 Class로 변환.
 
 
 ### ❗Test List
