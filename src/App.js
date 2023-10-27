@@ -4,7 +4,7 @@ class App {
   constructor(){
     this.cars = new Map();
     this.try = 0;
-    this.max = 0;//최대 이동
+    this.max = -1;//최대 이동
   }
 
   async play() {
@@ -109,7 +109,8 @@ class App {
       }
     })
 
-    Console.print(`최종 우승자 : ${result.join(", ")}`);
+    let winner = result.join(", ")===""?"없음":result.join(", ");
+    Console.print(`최종 우승자 : ${winner}`);
   }
 
 }
