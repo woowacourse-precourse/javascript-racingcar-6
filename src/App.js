@@ -15,7 +15,7 @@ class App {
   #round = null;
 
   async play() {
-    this.#transition("setting");
+    await this.#transition("setting");
   }
 
   async #transition(status) {
@@ -43,7 +43,7 @@ class App {
         this.#cars = cars;
         this.#round = round;
 
-        this.#transition("start");
+        await this.#transition("start");
         break;
       }
       case "start": {
@@ -54,7 +54,7 @@ class App {
           this.#round -= 1;
         }
 
-        this.#transition("finish");
+        await this.#transition("finish");
         break;
       }
       case "finish": {
