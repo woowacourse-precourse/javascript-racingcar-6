@@ -12,6 +12,10 @@ const InputValidator = {
     return name.length >= 1 && name.length <= 5;
   },
 
+  hasValidUniqueName(names) {
+    return new Set(names).size === names.length;
+  },
+
   hasValidRoundNumber(round) {
     return round >= 1 && this.isNumeric(round);
   },
