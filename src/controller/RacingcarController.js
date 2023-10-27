@@ -30,6 +30,7 @@ class RacingcarController{
             this.#playCount++;
         }
         const RACING_CAR_RESULT = this.racing.racingCarResult(this.#racingCarPlay);
+        this.comm.outputWinnerMessage(RACING_CAR_NAME, RACING_CAR_RESULT);
     }
 }
 

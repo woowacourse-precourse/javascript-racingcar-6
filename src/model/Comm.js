@@ -15,10 +15,12 @@ class Comm{
 
     #carName
     #outRacingData
+    #outputWinnerData
 
     constructor(){
         this.#carName = [];
         this.#outRacingData = '';
+        this.#outputWinnerData = '';
     }
 
     outputRacingMessage = (reacingCarResult) => {
@@ -27,6 +29,17 @@ class Comm{
         }, "");
         Console.print(this.#outRacingData);
         this.#outRacingData = '';
+    }
+
+    outputWinnerMessage = (name, winnerIndex) => {
+        winnerIndex.forEach((data, index) => {
+            if(index != 0){
+                this.#outputWinnerData += ', '+name[data];    
+            } else if(index == 0){
+                this.#outputWinnerData += name[data];
+            }
+        });
+        Console.print('최종 우승자 : '+this.#outputWinnerData);
     }
 
     carNameOutPutUpdate = (carName) => {
