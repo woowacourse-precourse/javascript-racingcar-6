@@ -1,14 +1,19 @@
+import { Console,Random } from "@woowacourse/mission-utils";
+
+// 출력할 문구들
 const MESSAGES = {
   CAR: '경주할 자동차 이름을 입력하세요. (이름은 쉼표(,)로 구분)',
   NUM: '시도할 횟수는 몇 회인가요?',
   RESULT: '실행 결과'
 };
 
+// 사용자 입력 추출
 async function getUserData(message) {
   const userData = await Console.readLineAsync(message);
   return userData;
 }
 
+// 자동차 이름 map 자료형 변환
 function carToMap(carNames, carMap) {
   carNames.split(',').forEach(name => {
     handling(name.length);
@@ -16,10 +21,12 @@ function carToMap(carNames, carMap) {
   });
 }
 
+// 자동차가 전진하는지 멈추는지 결정
 function goAndStop() {
   return Random.pickNumberInRange(0, 9) >= 4;
 }
 
+// 전진하는 자동차 기록
 function currentMatchResults(carMap) {
   let highestScore = 0;
   carMap.forEach((value, key) => {
@@ -29,6 +36,15 @@ function currentMatchResults(carMap) {
   });
   Console.print('');
   return highestScore;
+}
+
+// 정답 추출
+function winners(carMap, highestScore) {
+  const carWin = [];
+  carMap.forEach((value, key) => {
+    if (value.length === highestScore) carWin.push(key);
+  });
+  Console.print(`최종 우승자 : ${carWin.join(",")}`);
 }
 
 class App {
@@ -46,6 +62,8 @@ class App {
     for (let i = 0; i < USER_NUMBER; i++) {
       highestScore = currentMatchResults(carMap);
     }
+      
+    winners(carMap, highestScore);
   }
 }
 
