@@ -4,18 +4,24 @@ const print = (printString = '') => {
     MissionUtils.Console.print(printString);
 };
 
-const getForwardDistanceString = (forwardDistance, currentString = '') => {
-    if (currentString.length === forwardDistance) {
-        return currentString;
+const getForwardDistanceString = (forwardDistance) => {
+    const makeString = (currentString = '') => {
+        if (currentString.length === forwardDistance) {
+            return currentString;
+        }
+
+        return makeString(currentString + '-');
     }
 
-    return getForwardDistanceString(forwardDistance, currentString + '-');
-};
+    return makeString;
+}
 
 const getOneCarResult = (car) => {
     const carName = car.getCarName();
     const forwardDistance = car.getForwardDistance();
-    const forwardDistanceString = getForwardDistanceString(forwardDistance);
+    const makeCarForwardDistanceString = getForwardDistanceString(forwardDistance);
+    const forwardDistanceString = makeCarForwardDistanceString();
+    
     return `${carName} : ${forwardDistanceString}`;
 };
 
