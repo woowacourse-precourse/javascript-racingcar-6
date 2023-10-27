@@ -46,17 +46,42 @@ describe("자동차 경주 게임", () => {
     });
   });
 
-  test.each([
-    [["pobi,javaji"]],
-    [["pobi,eastjun"]]
-  ])("이름에 대한 예외 처리", async (inputs) => {
-    // given
+  test.each([[["pobi,javaji"]], [["pobi,eastjun"]]])(
+    "이름에 대한 예외 처리",
+    async (inputs) => {
+      // given
+      mockQuestions(inputs);
+
+      // when
+      const app = new App();
+
+      // then
+      await expect(app.play()).rejects.toThrow("[ERROR]");
+    }
+  );
+});
+
+describe("App 클래스에서의 Car 객체 관리", () => {
+  test("Car 객체 생성 및 관리", async () => {
+    const inputs = ["pobi,woni", "1"];
     mockQuestions(inputs);
 
-    // when
     const app = new App();
+    await app.play();
 
-    // then
-    await expect(app.play()).rejects.toThrow("[ERROR]");
+    expect(app.cars.length).toBe(2);
+    expect(app.cars[0].name).toBe("pobi");
   });
+});
+
+describe("자동차 이름 길이에 대한 예외 처리", () => {
+  test.each([["pobiiii,woni"], ["a,b,c,d,e,f"]])(
+    "이름 길이 예외 처리",
+    async (inputs) => {
+      mockQuestions([inputs]);
+
+      const app = new App();
+      await expect(app.play()).rejects.toThrow("[ERROR]");
+    }
+  );
 });
