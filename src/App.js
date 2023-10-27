@@ -8,17 +8,18 @@ class App {
 
     // 선수 입력값 받아오기
     const players = await prompter.getUserInput('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)');
-    if (inspector.isSplitable(players)){
+    const splitedPlayers = await inspector.isSplitable(players);
+    if (!splitedPlayers){
       throw new Error('[error] 선수 입력 오류')
-    }
+    } 
 
     // 움직임 입력값 받아오기
     const moveNumber = await prompter.getUserInput('시도할 횟수는 몇 회인가요?');
-    if (inspector.isNumber(moveNumber)){
+    const numberNumber = await inspector.isNumber(moveNumber);
+    if (!numberNumber){
       throw new Error('[error] 시도 횟수 입력 오류')
     }
 
-    // 
   }
 }
 
