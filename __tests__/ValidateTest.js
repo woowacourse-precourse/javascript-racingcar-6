@@ -14,6 +14,11 @@ const inputsWithBlank = [
   ["pob i", "w oni"],
   ["po bi", "wo ni"],
 ];
+const inputsWithDuplicate = [
+  ["pobi", "pobi"],
+  ["qwer", "qwer"],
+  ["woni", "woni"],
+];
 
 let validate;
 
@@ -127,6 +132,32 @@ describe("자동차명 입력에 대한 Validate 클래스 테스트", () => {
     inputsWithBlank.forEach((input) => {
       expect(() => validate.checkEachOfCarsIsValid(input)).toThrow(
         new Error(ERROR.CAR_NAME_HAS_BLANK)
+      );
+    });
+  });
+
+  test("중복되는 자동차 이름이 없다면 false 반환.", () => {
+    const inputsWithoutDuplicate = [
+      ["pobi", "woni"],
+      ["qwer", "weaar"],
+      ["as", "lie"],
+    ];
+
+    inputsWithoutDuplicate.forEach((input) => {
+      expect(validate.anyDuplicateCarName(input)).toBeFalsy();
+    });
+  });
+
+  test("중복되는 자동차 이름이 있다면 true 반환.", () => {
+    inputsWithDuplicate.forEach((input) => {
+      expect(validate.anyDuplicateCarName(input)).toBeTruthy();
+    });
+  });
+
+  test("중복되는 자동차 이름이 있다면 에러가 발생한다.", () => {
+    inputsWithDuplicate.forEach((input) => {
+      expect(() => validate.checkEachOfCarsIsValid(input)).toThrow(
+        new Error(ERROR.CARS_NAME_DUPLICATED)
       );
     });
   });
