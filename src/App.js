@@ -62,6 +62,14 @@ class App {
     );
     return input;
   }
+  // 우승자
+  printWinner() {
+    const maxPosition = Math.max(...this.CAR_NAMES.map((car) => car.position));
+    const winners = this.CAR_NAMES.filter(
+      (car) => car.position === maxPosition
+    ).map((car) => car.name);
+    MissionUtils.Console.print("최종 우승자 : " + winners.join(", "));
+  }
 }
 
 const app = new App();
