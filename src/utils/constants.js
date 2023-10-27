@@ -1,7 +1,7 @@
 const SYMBOLS = {
-  comma: ',',
+  carNameSeparator: ',',
   winnerNameSeparator: ', ',
-  dash: '-',
+  moveIndicator: '-',
   playerResultSeparator: ' : ',
 };
 

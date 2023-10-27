@@ -12,7 +12,7 @@ class InputView {
     const input = await Console.readLineAsync(
       GAME_MESSAGES.carNameQuery + '\n'
     );
-    const names = input.split(SYMBOLS.comma);
+    const names = input.split(SYMBOLS.carNameSeparator);
     this.#validator.validateCarNames(names);
     return names;
   }

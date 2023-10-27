@@ -35,7 +35,7 @@ class RacingCar {
   move() {
     if (this.#canMove()) {
       this.#position += 1;
-      this.#moveResult += SYMBOLS.dash;
+      this.#moveResult += SYMBOLS.moveIndicator;
     }
   }
 }
