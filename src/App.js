@@ -13,7 +13,7 @@ class App {
 		}));
 		this.racing(cars);
 	}
-	
+
 	// 입력받은 시도횟수만큼 전진/정지
 	async racing(cars) {
 		const tryCount = await Console.readLineAsync(MESSAGE.race);
@@ -26,8 +26,13 @@ class App {
 		}
 		this.winner(cars);
 	}
+
 	//전진/정지 판단
-	addReps(cars, carsNumber) {}
+	addReps(cars, carsNumber) {
+		cars.map((car, index) => {
+			if (carsNumber[index] >= 4) car.count += '-';
+		});
+	}
 	//단계별 진행상황 출력
 	printCars(cars) {}
 	// 우승자 출력
