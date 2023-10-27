@@ -1,4 +1,4 @@
-import { Console } from '@woowacourse/mission-utils';
+import { Console, Random } from '@woowacourse/mission-utils';
 import MESSAGE from './constants/message.js';
 import CONDITION from './constants/condition.js';
 
@@ -55,6 +55,14 @@ class App {
     } else {
       throw new Error(MESSAGE.error.numberOfTimes);
     }
+  }
+
+  decideToMoveForward() {
+    const random = Random.pickNumberInRange(
+      CONDITION.rangeStart,
+      CONDITION.rangeEnd
+    );
+    return random >= CONDITION.movingForward;
   }
 }
 
