@@ -11,6 +11,13 @@ const mockQuestions = (inputs) => {
   });
 };
 
+const mockRandoms = (numbers) => {
+  MissionUtils.Random.pickNumberInRange = jest.fn();
+  numbers.reduce((acc, number) => {
+    return acc.mockReturnValueOnce(number);
+  }, MissionUtils.Random.pickNumberInRange);
+};
+
 describe('자동차 경주 게임', () => {
   test('자동차 이름입력', async () => {
     const inputs = ['pobi,woni'];
@@ -41,7 +48,7 @@ describe('자동차 경주 게임', () => {
     await expect(app.play()).rejects.toThrow("[ERROR]");
   });
 
-  test('배열에 저장되어 있는 값 확인', async () => {
+  test('배열에 저장되어 있는 값 확인(name)', async () => {
     const inputs = 'pobi,woni';
     const expectedNames = inputs.split(',').map(name => name.trim());
     mockQuestions([inputs]);
@@ -54,6 +61,23 @@ describe('자동차 경주 게임', () => {
     array.forEach((element, index) => {
       expect(element.getName()).toEqual(expectedNames[index]);
     });
-    
+  });
+
+  test('배열에 저장되어 있는 값 확인(advanceCount)', async () => {
+    const inputs = 'pobi,woni';
+    const MOVING_FORWARD = 4;
+    const STOP = 3;
+    const randoms = [MOVING_FORWARD, STOP];
+    const result = [1,0]
+    mockQuestions([inputs,'1']);
+    mockRandoms([...randoms]);
+    // given
+    const game = new CarRacingGame();
+    await game.gameStart();
+    const array = [...game.getCarNameArray()];
+
+    array.forEach((element, index) => {
+      expect(element.getAdvanceCount()).toEqual(result[index]);
+    });
   });
 });
