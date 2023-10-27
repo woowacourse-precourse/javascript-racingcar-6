@@ -8,14 +8,19 @@ export default function result(carArr, count) {
         gameRounds(carArr, strArr);
         MissionUtils.Console.print('\n');
     }
+
     let res = -1;
-    let winner = null;
+    let winner = [];
     for(const [index, score] of strArr.entries()) {
+        if(score.length === res) {
+            winner.push(carArr[index]);
+        }
         if(score.length > res) {
+            winner = [];
             res = score.length;
-            winner = carArr[index];
+            winner.push(carArr[index]);
         }
     }
-
-    console.log(winner);
+    const tmp = winner.join(', ');
+    console.log("최종 우승자 : ", tmp);
 }
