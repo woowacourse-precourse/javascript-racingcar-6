@@ -11,6 +11,12 @@ class Race {
       .split(SYMBOLS.nameDivider)
       .map((name) => name);
   }
+
+  lap() {
+    this.cars.forEach((car) => {
+      car.move();
+    });
+  }
 }
 
 export default Race;
