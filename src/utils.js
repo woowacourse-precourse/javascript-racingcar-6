@@ -45,3 +45,14 @@ function isNameDuplicate(arr) {
     throw new Error('[ERROR] 차 이름은 중복될 수 없습니다.');
   }
 }
+
+/**
+ * @param {string} input
+ * */
+export function checkIsValidNumber(input) {
+  const numberedInput = Number(input);
+  if (isNaN(numberedInput)) throw new Error('[ERROR] 숫자를 입력해 주세요.');
+  if (numberedInput > 50) {
+    throw new Error('[ERROR] 50 이하의 수를 입력해 주세요.');
+  }
+}
