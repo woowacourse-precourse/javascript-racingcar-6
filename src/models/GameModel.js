@@ -42,7 +42,6 @@ class GameModel {
     if (isNaN(getRaceAttempt) !== false) {
       throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
     }
-    return this.attempt;
   }
 
   getRandomValue() {
@@ -64,6 +63,16 @@ class GameModel {
     for (const car in this.carModels) {
       let forwardCount = this.getForwardCount(car);
       Console.print(`${car} : ${forwardCount}`);
+    }
+  }
+
+  //입력한 시도 횟수만큼 반복
+  repeatRace() {
+    let attempt = this.attempt; // 5
+    while (attempt > 0) {
+      this.printCarForward();
+      attempt--;
+      Console.print(` `);
     }
   }
 }
