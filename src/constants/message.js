@@ -5,4 +5,6 @@ export const MESSAGE = {
   noticeWinner: '최종 우승자',
 };
 
-export const ERROR_MESSAGE = {};
+export const ERROR_MESSAGE = {
+  tooLongName: '[ERROR] 차 이름은 5자 이하로 입력해주세요.',
+};

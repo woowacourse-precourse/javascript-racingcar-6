@@ -1,8 +1,8 @@
 import { Console } from '@woowacourse/mission-utils';
 import { MESSAGE } from '../../constants/message';
-import getRacingCars from './getRacingCars/index';
-import getRepeatNum from './getRepeatNum/index';
-import playOneRound from './playOneRound/index';
+import getRacingCars from './getRacingCars';
+import getRepeatNum from './getRepeatNum';
+import playOneRound from './playOneRound';
 import printCarLocation from './printCarLocation';
 
 const startRacing = async () => {

@@ -1,4 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
+import canGo from './canGo';
 
 const playOneRound = (racingResult) => {
   const copiedRacingResult = { ...racingResult };
@@ -6,7 +7,7 @@ const playOneRound = (racingResult) => {
 
   racingCarList.forEach((racingCar) => {
     const randomNum = MissionUtils.Random.pickNumberInRange(0, 9);
-    if (randomNum >= 4) {
+    if (canGo(randomNum)) {
       copiedRacingResult[racingCar] += 1;
     }
   });
