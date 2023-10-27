@@ -18,4 +18,5 @@ export const MESSAGE = {
 export const ERROR = {
   prefix: '[ERROR]',
   invalidNameLength: `${NUMBER.maxNameLength}글자 이내의 이름을 입력해주세요.`,
+  invalidLapNumber: '올바른 자연수를 입력해주세요.',
 };

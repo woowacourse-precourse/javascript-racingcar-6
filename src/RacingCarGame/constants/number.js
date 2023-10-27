@@ -1,7 +1,9 @@
 export const NUMBER = {
   canMove: 4,
   maxNameLength: 5,
+};
 
-  minRandom: 0,
-  maxRandom: 9,
+export const RANDOM = {
+  min: 0,
+  max: 9,
 };
