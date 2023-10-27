@@ -28,6 +28,22 @@ export const isForward = (cars) => {
   return result;
 };
 
+export const curCarState = (cars, forwardArr) => {
+  const result = [];
+
+  cars.forEach((car, index) => {
+    const [carName, curState] = car;
+
+    if (forwardArr[index][1]) {
+      result.push([carName, curState + 1]);
+    } else {
+      result.push([carName, curState]);
+    }
+  });
+
+  return result;
+};
+
 export const checkChampion = (cars) => {
   let max = 0;
 

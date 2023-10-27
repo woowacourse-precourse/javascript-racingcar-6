@@ -11,4 +11,5 @@
 2. Play.js
    - makeRandomeNums(cars): 랜덤 숫자 반환 함수
    - isForward(car): 전진 여부 반환 함수
+   - curCarState(cars, forwardArr): 현재 자동차 상황 변화 함수
    - checkChampion(cars): 우승자 반환 함수
