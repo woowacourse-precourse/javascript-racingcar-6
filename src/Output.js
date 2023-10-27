@@ -36,4 +36,16 @@ class Output {
         }
         Console.print(`최종 우승자 : ${SEVERAL_WINNER.join(',')}`);
     }
+    WhoIsWinner() {
+        let WINNER_COUNT = 0;
+        WINNER_COUNT = this.MOVE_COUNT.filter(el => el == this.TRY).length;
+        if(WINNER_COUNT >= 2) {
+            let RESULT = findIndex.FindArrayIndex(this.MOVE_COUNT,this.TRY);
+            this.PrintSeveralWinner(RESULT);
+        }else{
+            this.PrintOneWinner();
+        }
+    }
 }
+
+export default Output;
