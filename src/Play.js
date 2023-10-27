@@ -1,3 +1,5 @@
+import { Random } from '@woowacourse/mission-utils';
+
 export const makeRandomNums = (cars) => {
   const result = [];
 
@@ -8,4 +10,10 @@ export const makeRandomNums = (cars) => {
   });
 
   return result;
+};
+
+export const isForward = (car) => {
+  const num = car[1];
+
+  return num > 3;
 };
