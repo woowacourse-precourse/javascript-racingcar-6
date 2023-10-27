@@ -19,7 +19,6 @@ const checkCarNamesAreValid = (userInput) => {
   if (inputHaveOverName) {
     throw new Error('[ERROR] 입력이 올바른 형식이 아닙니다.');
   }
-
   return input;
 };
 
@@ -45,6 +44,15 @@ const getTryNumber = async () => {
   checkTryNumberIsValid(tryNumber);
 
   return tryNumber;
+};
+
+const createScoreBoard = (userInput) => {
+  const scoreBoard = [];
+  userInput.forEach((car) => {
+    scoreBoard.push({ name: car, score: '' });
+  });
+
+  console.log(scoreBoard);
 };
 
 const createRandomNumber = () => {
