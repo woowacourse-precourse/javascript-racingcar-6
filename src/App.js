@@ -20,8 +20,7 @@ class App {
       }
     });
 
-    const LOOP_COUNT =
-      await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    const LOOP_COUNT = await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
     MissionUtils.Console.print('실행 결과');
     const DISTANCE_CAR_MOVE = new Array(CAR_LIST.length).fill(0);
     for (let i = 0; i < LOOP_COUNT; i++) {
@@ -35,6 +34,9 @@ class App {
       });
       MissionUtils.Console.print(print);
     }
+    const WIN_DISTANCE = Math.max(...DISTANCE_CAR_MOVE);
+    const MEMBERS = CAR_LIST.filter((car, index) => DISTANCE_CAR_MOVE[index] >= WIN_DISTANCE);
+    MissionUtils.Console.print(`최종 우승자 : ${MEMBERS.join(', ')}`);
   }
 }
 
