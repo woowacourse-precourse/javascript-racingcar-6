@@ -12,9 +12,9 @@
 - [ ] `start()`: 게임을 시작. 자동차 이름과 라운드 수를 받아 경주를 실행하고 결과를 출력.
 - [ ] `getCarNames()`: 사용자로부터 자동차 이름을 입력받아 처리하고 유효성 검사.
 - [ ] `getRounds()`: 사용자로부터 라운드 수를 입력받아 유효성 검사.
-- [ ] `initRace(carNames, rounds)`: `Car` 객체와 `Race` 객체를 초기화.
-- [ ] `runRace(race, rounds)`: 실제 경주를 실행하며 각 라운드의 결과를 출력.
-- [ ] `displayWinners(race)`: 경주가 끝난 후 우승자를 출력.
+- [ ] `initRace()`: `Car` 객체와 `Race` 객체를 초기화.
+- [ ] `runRace()`: 실제 경주를 실행하며 각 라운드의 결과를 출력.
+- [ ] `displayWinners()`: 경주가 끝난 후 우승자를 출력.
 
 ### 모델
 
