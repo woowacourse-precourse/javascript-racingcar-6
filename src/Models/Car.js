@@ -4,7 +4,7 @@ import { Random } from "@woowacourse/mission-utils";
 export default class Car {
   #MIN_VALUE = 4;
   constructor(name) {
-    this.totalDistance;
+    this.totalDistance = 0;
     this.name = new Name(name).name;
   }
   #getRandomDistance() {
