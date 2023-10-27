@@ -22,6 +22,14 @@ function moveOrStay(car) {
   }
 }
 
+function numToBar(num) {
+  let bar = "";
+  for (let i = 0; i < num; i++) {
+    bar += "-";
+  }
+  return bar;
+}
+
 class App {
   async play() {
     let car = await inputCar();
