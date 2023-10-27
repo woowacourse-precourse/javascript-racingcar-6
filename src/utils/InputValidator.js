@@ -2,12 +2,14 @@ import { ErrorMessage } from "../static/Static.js";
 import { StaticNumber } from "../static/Static.js";
 
 const InputValidator = {
-  // input 값은 배열의 형태
   validateCarName(input) {
-    if (input.some((name) => name.length > StaticNumber.NAME_LENGTH_LIMIT))
+    const inputNames = input.split(",");
+    if (inputNames.some((name) => name.length > StaticNumber.NAME_LENGTH_LIMIT))
       throw new Error(ErrorMessage.NAME_LENGTH_ERROR);
-    if (input.length !== new Set(input).size)
+    if (inputNames.length !== new Set(inputNames).size)
       throw new Error(ErrorMessage.NAME_DUPLICATE_ERROR);
+    if (input.replace(/\s/g, "").length !== input.length)
+      throw new Error(ErrorMessage.NAME_CONTAIN_GAP_ERROR);
   },
 
   validateTimesNumber(input) {
