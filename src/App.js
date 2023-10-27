@@ -7,7 +7,7 @@ class App {
   async play() {
     const CAR = await getInput.GetCarNameInput();
     const TRY = await getInput.GetNumberInput();
-    const MOVE_COUNT_ARRAY = Array.From({length: CAR.length}, () => 0);
+    const MOVE_COUNT_ARRAY = Array.from({length: CAR.length}, () => 0);
     const output = new Output(CAR,MOVE_COUNT_ARRAY,TRY);
     output.RunWhileFinish();
     output.WhoIsWinner();
