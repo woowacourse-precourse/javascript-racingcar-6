@@ -1,4 +1,4 @@
-import { Cars } from "./Cars.js";
+import { Car } from "./Car.js";
 
 export class Verification {
   exceedLength(array) {
