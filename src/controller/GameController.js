@@ -1,5 +1,4 @@
 import { MESSAGE } from '../constants/messages.js';
-import GameView from '../view/gameView.js';
 
 export default class GameController {
   constructor({ model, view }) {
@@ -8,6 +7,6 @@ export default class GameController {
   }
 
   init() {
-    GameView.print(MESSAGE.START);
+    this.view.print(MESSAGE.START);
   }
 }
