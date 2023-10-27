@@ -14,4 +14,8 @@ class RacingCarGame {
   advanceIfOverFour() {
     if (this.makeRandomNumber() >= 4) this.advance += 1;
   }
+
+  printAdvanceResult() {
+    return `${this.name} : ${'-'.repeat(this.advance)}`;
+  }
 }
