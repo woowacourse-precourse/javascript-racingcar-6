@@ -29,7 +29,7 @@ class Car {
     }
 
     toStringResult() {
-        return `${this.name} : ${this.distance}`;
+        return `${this.name} : ${this.distance}\n`;
     }
 }
 

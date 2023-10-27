@@ -1,4 +1,4 @@
-import GameController from "./Game/GameController.js"
+import GameController from "./game/GameController.js"
 
 class App {
     gameController;
@@ -9,7 +9,11 @@ class App {
         this.gameController = new GameController();
     }
     async play() {
-       await this.gameController.inputCars();
+        const gameController = this.gameController;
+        const racing = gameController.racing;
+        await gameController.inputCars();
+        await gameController.inputTryMoveCount();
+        
     }
 }
 
