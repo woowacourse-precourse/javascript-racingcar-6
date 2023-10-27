@@ -16,7 +16,7 @@ class RacingGameController {
     this.#setupCarsFromNames(carNames);
     this.#executeRacingRounds(rounds);
     this.#racingGame.concludeGame();
-    this.#displayResult();
+    this.#displayWinners();
   }
 
   async #getUserInputs() {
@@ -38,7 +38,7 @@ class RacingGameController {
       this.#outputView.printResult(roundResult);
     }
   }
-  #displayResult() {
+  #displayWinners() {
     const winners = this.#racingGame.getWinners();
     this.#outputView.printWinners(winners);
   }
