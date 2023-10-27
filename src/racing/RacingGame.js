@@ -1,7 +1,7 @@
-import View from '../common/View.js';
+import View from '../view/View.js';
 import Car from './Car.js';
 
-class RacingGame {
+export default class RacingGame {
   constructor() {
     const carNames = View.readCarNames();
 
