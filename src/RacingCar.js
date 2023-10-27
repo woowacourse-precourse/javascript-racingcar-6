@@ -1,6 +1,6 @@
 import { Console, Random } from "@woowacourse/mission-utils";
 import Car from "./Car.js";
-import { checkValidCarsName } from "./Validation.js";
+import { checkValidCarsName, checkValidNumber } from "./Validation.js";
 
 class RacingCar {
   #carList = [];
@@ -17,6 +17,14 @@ class RacingCar {
       throw new Error('[ERROR] 유효하지 않은 입력 값');
     }
     this.#carList = inputList.map((car) => new Car(car, 0));
+  }
+
+  async getCountTimes() {
+    const input = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    if(!checkValidNumber(input)){
+      throw new Error('[ERROR] 올바른 숫자를 입력해주세요.');
+    }
+    return input;
   }
 }
 

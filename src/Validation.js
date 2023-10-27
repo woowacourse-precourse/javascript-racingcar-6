@@ -9,3 +9,7 @@ const isDuplicated = (list) => {
 export const checkValidCarsName = (list) => {
   return isDuplicated(list) && isLessThanFive(list);
 }
+
+export const checkValidNumber = (num) => {
+  return !isNaN(num) && num > '0';
+} 
