@@ -7,14 +7,14 @@ const INPUTVEIW_MESSAGE = Object.freeze({
 });
 
 export default class InputView {
-  async promptCarNames() {
+  static async promptCarNames() {
     const input = await Console.readLineAsync(
       INPUTVEIW_MESSAGE.promptCarNames_message
     );
     return input.split(",");
   }
 
-  async promptRaceRound() {
+  static async promptRaceRound() {
     const input = await Console.readLineAsync(
       INPUTVEIW_MESSAGE.promptRaceRound_message
     );
