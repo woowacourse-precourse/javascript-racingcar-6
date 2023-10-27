@@ -1,14 +1,16 @@
 class CarData {
-	#maxMove;
+  #maxMove;
   #carList = {};
 
-  constructor() {};
-
   constructor(carList) {
-		this.#maxMove = 0;
+    this.#maxMove = 0;
 
-		carList.forEach((car) => {
-			carList[car] = 0;
-		});
-	};
+    carList.forEach((car) => {
+      this.#carList[car] = 0;
+    });
+
+    console.log(this.#carList);
+  }
 }
+
+export default CarData;

@@ -1,14 +1,13 @@
-// import CarData from "../model/CarData.js";
+import CarData from "../model/CarData.js";
+import inputView from "../view/InputView.js";
 
 class Racing {
-  // #CarData;
-  #input;
+  #CarData;
 
-  constructor() {
-    this.#input = "";
+  async startRace() {
+    const input = await inputView.CarList();
+    this.#CarData = new CarData(input.split(","));
   }
-
-  async startRace() {}
 }
 
 export default Racing;
