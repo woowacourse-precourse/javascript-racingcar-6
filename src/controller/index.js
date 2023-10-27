@@ -1,8 +1,8 @@
 import InputView from '../view/InputView.js';
 
 class RacingCarController {
-  startGame() {
-    const carNames = InputView.readRacingCarNames();
+  async startGame() {
+    const carNames = await InputView.readRacingCarNames();
   }
 }
 
