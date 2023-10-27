@@ -4,19 +4,19 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 
 class GameController {
   constructor() {
-    this.model = new GameModel();
+    this.model = null;
     this.view = new GameView();
   }
   async start() {
-    try {
-      const carnameArr = await this.getCarnameInput();
-      this.model.setCarName(carnameArr);
-      await MissionUtils.Console.print(this.model.CAR_NAME.join(","));
-      const attempts = await this.getRacingcarAttempts();
-      this.model.setAttempts(attempts);
-      await MissionUtils.Console.print(this.model.ATTEMPTS);
-    } catch (error) {
-      throw Error(error.message);
+    // 게임이 종료되기 전까지 반복
+    while (true) {
+      const CAR_NAMES = await this.getCarnameInput();
+      MissionUtils.Console.print(CAR_NAMES.join(","));
+      const ATTEMPTS = await this.getRacingcarAttempts();
+      MissionUtils.Console.print(ATTEMPTS);
+
+      this.model = new GameModel(CAR_NAMES, ATTEMPTS);
+      this.model.run();
     }
   }
 

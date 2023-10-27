@@ -1,9 +1,11 @@
 import GameController from "./RacingcarGame/GameController";
 
 class App {
+  constructor() {
+    this.controller = new GameController();
+  }
   async play() {
-    const gameController = new GameController();
-    await gameController.start();
+    await this.controller.start();
   }
 }
 
