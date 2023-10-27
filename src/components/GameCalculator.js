@@ -1,4 +1,3 @@
-import { Console } from '@woowacourse/mission-utils';
 import RandomNumberGenerator from './RandomNumberGenerator.js';
 import RaceManager from './RaceManager.js';
 // import GameInformationOrganizer from './GameInformationOrganizer.js';
@@ -32,7 +31,7 @@ class GameCalculator {
       this.arrForRace
     );
 
-    RACE_MANAGER.runRace();
+    return RACE_MANAGER.runRace();
   }
 }
 

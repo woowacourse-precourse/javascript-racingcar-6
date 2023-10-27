@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import { GET_INPUT_MESSAGE } from '../utils/constants.js';
+import { GET_INPUT_MESSAGE, OUTPUT_MESSAGE } from '../utils/constants.js';
 import GameCalculator from './GameCalculator.js';
 
 class RacingGame {
@@ -25,7 +25,10 @@ class RacingGame {
       this.userInputCars,
       this.userInputTryCount
     );
-    GAME_CALCULATOR.calculate();
+    const raceResult = GAME_CALCULATOR.calculate();
+    Console.print(OUTPUT_MESSAGE.result);
+    Console.print(raceResult[0]);
+    Console.print(`${OUTPUT_MESSAGE.winner}${raceResult[1]}`);
   }
 }
 
