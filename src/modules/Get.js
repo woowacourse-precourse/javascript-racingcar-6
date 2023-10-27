@@ -7,3 +7,5 @@ class Get {
       .map(() => new Array(numberOfCar).fill(Is.running()));
   }
 }
+
+export default Get;
