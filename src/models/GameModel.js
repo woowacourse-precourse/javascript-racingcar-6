@@ -59,6 +59,13 @@ class GameModel {
     }
     return this.carModels[car].countForwardArr.join("");
   }
+
+  printCarForward() {
+    for (const car in this.carModels) {
+      let forwardCount = this.getForwardCount(car);
+      Console.print(`${car} : ${forwardCount}`);
+    }
+  }
 }
 
 const model = new GameModel();
