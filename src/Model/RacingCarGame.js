@@ -8,23 +8,21 @@ function generateRandomNumber() {
 }
 
 function decideMoveOrStop() {
-  if (generateRandomNumber() >= moveLimitNumber) return true;
-  return false;
+  return generateRandomNumber() >= moveLimitNumber ? true : false;
 }
 
 function getTurnOverResult(racingCarList) {
-  const newRacingCarList = racingCarList.map((carObject) => {
-    if(decideMoveOrStop()) return getCarNewObject(carObject.carName, carObject.moveCount + 1);
-    return carObject;
-  })
+  const newRacingCarList = racingCarList.map((carObject) => 
+    decideMoveOrStop() ? getCarNewObject(carObject.carName, carObject.moveCount + 1) : carObject
+  )
   return convertObjectListFreeze(newRacingCarList);
 }
 
 function getCarNewObject(carName, moveCount) {
-  return {
+  return Object.freeze({
     carName : carName,
     moveCount : moveCount
-  }
+  })
 }
 
 function getMaxMoveCount(racingCarList) {

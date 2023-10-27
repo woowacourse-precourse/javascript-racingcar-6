@@ -1,8 +1,8 @@
-import { racingcarGameStart } from "./Controller/RacingCarGameController.js"; 
+import { gameController } from "./Controller/RacingCarGameController.js"; 
 
 class App {
   async play() {
-    await racingcarGameStart();
+    await gameController();
   }
 }
 

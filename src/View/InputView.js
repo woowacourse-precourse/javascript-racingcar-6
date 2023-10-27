@@ -6,7 +6,6 @@ async function inputRacingCarName(message) {
   const racingCarName = await Console.readLineAsync(message);
   checkRacingCarName(racingCarName);
   const racingCarList = getRacingCarList(racingCarName);
-  // const racingCarList = racingCarName.split(",").map((carName) => ({ [carName]: 0 }));
   return convertObjectListFreeze(racingCarList);
 }
 
