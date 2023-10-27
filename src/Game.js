@@ -3,7 +3,8 @@ import { Console } from "@woowacourse/mission-utils";
 class Game {
   start = async () => {
     const carNameList = await this.getCarNameList();
-    console.log(carNameList);
+    const countAttempt = await this.getCountAttempt();
+    console.log(countAttempt, typeof countAttempt);
   };
 
   getCarNameList = async () => {
@@ -23,6 +24,18 @@ class Game {
     return list.every((name) => {
       return name.length > 0 && name.length <= 5;
     });
+  };
+
+  getCountAttempt = async () => {
+    const input = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+    const count = Number(input);
+    if (isNaN(count)) {
+      throw new Error("잘못된 형식입니다.");
+    }
+    if (count === 0) {
+      throw new Error("시도 횟수는 1번 이상이여야 합니다.");
+    }
+    return count;
   };
 }
 
