@@ -5,8 +5,11 @@ class App {
         let players = await this.inputPlayers();
         const NUMBER = await this.inputNumber();
 
+        Console.print("\n실행결과");
         for (let i = 0; i < NUMBER; i++) {
-            this.race(players);
+            this.raceController(players);
+            this.outputPlayers(players);
+            Console.print("");
         }
     }
 
@@ -34,10 +37,17 @@ class App {
 
     // 경기 진행 함수
     raceController(players) {
-        Object.keys(players).forEach((value) => {
-            if (4 <= Random.pickNumberInRange(0, 9)) players[value] += "-";
+        Object.keys(players).forEach((key) => {
+            if (4 <= Random.pickNumberInRange(0, 9)) players[key] += "-";
         });
         return;
+    }
+
+    // 경기 결과 텍스트 출력기
+    outputPlayers(players) {
+        Object.keys(players).forEach((key) => {
+            Console.print(`${key} : ${players[key]}`);
+        });
     }
 }
 
