@@ -19,6 +19,7 @@ class App {
     this.isValidAttemptCount(this.attemptCount);
     Console.print("");
     Console.print("실행 결과");
+    this.gameResult();
   }
 
   async inputCarName() {
@@ -52,6 +53,17 @@ class App {
       }
       const dashes = "-".repeat(this.randomNumArr[i] >= 4 ? 1 : 0);
       this.dashSymbol[i] += dashes;
+    }
+  }
+  gameResult() {
+    for (let i = 0; i < this.attemptCount; i++) {
+      Console.print("");
+      this.createRandomNumber();
+      this.updateCarPosition();
+
+      for (let j = 0; j < this.carNameArr.length; j++) {
+        Console.print(`${this.carNameArr[j]} : ${this.dashSymbol[j]}`);
+      }
     }
   }
 }
