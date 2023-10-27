@@ -48,7 +48,7 @@ class App {
   getWinners(cars) {}
 }
 
-class Car {
+export class Car {
   constructor(name) {
     this.name = name;
     this.progress = '';
