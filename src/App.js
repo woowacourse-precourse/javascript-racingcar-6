@@ -5,6 +5,7 @@ class App {
     const arrCarNames = await this.getCarNames();
     const totalRound = await this.getTotalRound();
 
+    this.validateInput(arrCarNames, totalRound);
     /*
       Todo :
       raceState - [{'이름1' : '이동 거리'}, {'이름2' : '이동 거리'}] 형태의 배열
@@ -36,6 +37,16 @@ class App {
 
   displayWinners(winners) {
     Console.print(`최종 우승자 : ${winners.join(", ")}`);
+  }
+
+  validateInput(arrCarNames, totalRound) {
+    if (arrCarNames.some((name) => name.length > 5 || name.length === 0)) {
+      throw new Error("[ERROR] 이름은 1자 이상, 5자 이하만 가능합니다.");
+    }
+
+    if (isNaN(totalRound) || totalRound < 0 || totalRound > 9) {
+      throw new Error("[ERROR] 0과 9사이의 자연수만 입력 가능합니다.");
+    }
   }
 }
 
