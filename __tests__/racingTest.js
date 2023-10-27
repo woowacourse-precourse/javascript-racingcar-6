@@ -11,7 +11,7 @@ describe('레이싱 테스트', () => {
       car5: 5,
     };
     const result = ['car2', 'car3'];
-    expect(result).toEqual(getWinners(input));
+    expect(getWinners(input)).toEqual(result);
   });
 
   test('값이 4이상일 때 전진, 4미만일 때 멈춤', () => {
@@ -25,7 +25,7 @@ describe('레이싱 테스트', () => {
       10: true,
     };
     Object.entries(mockData).forEach(([input, result]) => {
-      expect(result).toEqual(canGo(input));
+      expect(canGo(input)).toEqual(result);
     });
   });
 });
