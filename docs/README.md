@@ -21,7 +21,9 @@
 
 ### RaceRound
 
-- [ ] type이 number인지 검증한다.
+<!-- - [ ] type이 number인지 검증한다. -->
+
+- [ ] 받아온 문자열이 숫자인지 검증하고 number로 변환한다.
 
 ## Controllers
 
