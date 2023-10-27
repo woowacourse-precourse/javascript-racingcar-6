@@ -29,4 +29,11 @@ class Output {
     PrintOneWinner() {
         Console.print(`최종 우승자 : ${this.CAR[this.MOVE_COUNT.join('').indexOf(this.TRY)]}`);
     }
+    PrintSeveralWinner(RESULT){
+        let SEVERAL_WINNER = [];
+        for(let i in RESULT) {
+            SEVERAL_WINNER.push(this.CAR[RESULT[i]]);
+        }
+        Console.print(`최종 우승자 : ${SEVERAL_WINNER.join(',')}`);
+    }
 }
