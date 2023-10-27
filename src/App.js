@@ -54,7 +54,13 @@ class Car {
     this.progress = '';
   }
 
-  moveOrStop() {}
+  moveOrStop() {
+    const randomNumber = Random.pickNumberInRange(0, 9);
+
+    if (randomNumber >= 4) {
+      this.progress += '-';
+    }
+  }
 }
 
 export default App;
