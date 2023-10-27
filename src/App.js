@@ -21,21 +21,25 @@ class App {
     for(let i = 0; i < array.length; i++) {
       array[i] = new Car(array[i]);
     }
+    array = this.getCarsMove(array);
+    console.log(array);
     return array;
   }
 
   async inputTryTimes() {
     const times = await Console.readLineAsync(Message.askGameRounds);
-    if(isNaN(times)) throw new Error(Message.askTryTimes);
+    if(isNaN(times)) throw new Error(Message.error.notNumber);
     return times;
   }
 
-  getCarsRandomNumber(array) {
+  getCarsMove(array) {
     for(let i = 0; i < array.length; i++) {
       array[i].randomNumber = Random.pickNumberInRange(0, 9);
+      if(array[i].randomNumber >= 4) array[i].moveTimes++; 
     }
     return array;
   }
+
 
 }
 
@@ -43,13 +47,7 @@ class Car {
   constructor(name) {
     this.name = name;
     this.randomNumber;
-    this.moveNumber;
-  }
-
-  
-
-  addMoveNumber() {
-    if(this.randomNumber >= 4) this.moveNumber++;
+    this.moveTimes = 0;
   }
 }
 
