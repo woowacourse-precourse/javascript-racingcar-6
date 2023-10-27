@@ -1,5 +1,6 @@
 import { Random, Console } from '@woowacourse/mission-utils';
 import { isValidCarNames, isValidMoveChanceCount } from './utils.js';
+import { INQUIRY, RESULT, UTILITY } from './messages.js';
 
 class App {
   constructor() {
@@ -7,9 +8,7 @@ class App {
   }
 
   async setCarNames() {
-    const carNamesString = await Console.readLineAsync(
-      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n'
-    );
+    const carNamesString = await Console.readLineAsync(INQUIRY.CAR_NAME);
 
     if (isValidCarNames(carNamesString)) {
       const carNamesArray = carNamesString.split(',');
@@ -22,21 +21,22 @@ class App {
 
   async setMoveChanceCount() {
     const moveChanceCountString = await Console.readLineAsync(
-      '시도할 횟수는 몇 회인가요?\n'
+      INQUIRY.MOVE_CHANCE
     );
 
     if (isValidMoveChanceCount(moveChanceCountString)) {
       this.moveChanceCount = Number(moveChanceCountString);
     }
 
-    Console.print('');
+    Console.print(UTILITY.EMPTY);
   }
 
   printDistance(carNamesAndDistanceMap) {
     for (const [carName, distance] of carNamesAndDistanceMap) {
       Console.print(`${carName} : ${'-'.repeat(distance)}`);
     }
-    Console.print('');
+
+    Console.print(UTILITY.EMPTY);
   }
 
   move(carNamesAndDistanceMap) {
@@ -65,7 +65,7 @@ class App {
     await this.setCarNames();
     await this.setMoveChanceCount();
 
-    Console.print('실행 결과');
+    Console.print(RESULT.OUTPUT);
 
     while (this.moveChanceCount > 0) {
       this.moveChanceCount -= 1;
@@ -74,7 +74,7 @@ class App {
 
     const winners = this.getWinners().join(', ');
 
-    Console.print(`최종 우승자 : ${winners}`);
+    Console.print(`${RESULT.WINNERS} ${winners}`);
   }
 }
 
