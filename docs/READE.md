@@ -4,10 +4,19 @@
 
 - error 폴더 : 올바르지 않은 사용자 입력에 대한 에러발생 총괄
 
-- require : 사용자에게 받은 데이터를 처리
+- util 폴더 : 
 
-- calculate : 자동차 경주 실행 결과를 계산 및 리턴
+  1. Random.js
+    input : n
+    output : 길이가 n인 랜덤배열
 
+  2. Accumulate.js
+    function1 = (랜덤배열, RunningDistance배열) => 누적 RunningDistance배열 
+    function2 = (랜덤배열, Score배열) => 누적 Score배열
+
+- controller 폴더 :
+  
+  RacingGame : 게임결과 계산 및 출력(중앙통제)
 
 # Small Sketch
 
