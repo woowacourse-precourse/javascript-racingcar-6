@@ -1,9 +1,23 @@
 class RacingGame {
   #cars;
   #winners;
+  #maxPosition;
 
   constructor() {
     this.#winners = [];
+    this.#maxPosition = 0;
+  }
+
+  #setMaxPosition() {
+    this.#maxPosition = this.#cars.reduce((max, car) => {
+      return car.getPosition() > max ? car.getPosition() : max;
+    }, 0);
+  }
+
+  #setWinners() {
+    this.#winners = this.#cars
+      .filter((car) => car.getPosition() === this.#maxPosition)
+      .map((car) => car.getName());
   }
 
   setCars(cars) {
@@ -12,17 +26,15 @@ class RacingGame {
 
   moveAllCars() {
     this.#cars.forEach((car) => car.move());
+  }
+
+  getAllCarsMovementResult() {
     return this.#cars.map((car) => car.getMoveResult()).join(`\n`);
   }
 
-  setWinners() {
-    const maxPosition = this.#cars.reduce((max, car) => {
-      return car.getPosition() > max ? car.getPosition() : max;
-    }, 0);
-
-    this.#winners = this.#cars
-      .filter((car) => car.getPosition() === maxPosition)
-      .map((car) => car.getName());
+  concludeGame() {
+    this.#setMaxPosition();
+    this.#setWinners();
   }
 
   getWinners() {
