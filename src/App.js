@@ -1,8 +1,9 @@
-import { Console } from '@woowacourse/mission-utils';
+import { Console, Random } from '@woowacourse/mission-utils';
 
 class App {
   async play() {
-    getCarName();
+    await getCarName();
+    await getTryCount();
   }
 }
 
@@ -21,4 +22,9 @@ async function getTryCount() {
   const tryCount = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
   console.log(tryCount);
   return tryCount;
+}
+
+async function getRandomNumber() {
+  const randomNumber = await Random.pickNumberInRange(0, 9);
+  return randomNumber;
 }
