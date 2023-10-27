@@ -1,3 +1,5 @@
+import { Console, Random } from '@woowacourse/mission-utils';
+
 class Car {
   constructor(name) {
     this.name = name;
@@ -12,4 +14,15 @@ class Car {
   }
 }
 
-export default Car;
+class SettingCars {
+  async registerCars() {
+    const carNameList = await Console.readLineAsync(
+      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)'
+    );
+    const carNameArray = carNameList.split(',');
+    const registeredCars = carNameArray.map((carName) => new Car(carName));
+    return registeredCars;
+  }
+}
+
+export default SettingCars;
