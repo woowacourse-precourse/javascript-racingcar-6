@@ -7,10 +7,30 @@ class App {
 
   async getCarNames() {
     const names = await Console.readLineAsync();
-    const carNamesArray = names.split(',').map(name => name.trim)
+    const carNamesArray = names.split(',').map(name => name.trim());
     return carNamesArray;
   }
-  async play() { }
+
+  nameException(carNamesArray){
+    if(this.hasDuplicates(carNamesArray)){
+      throw new Error('[ERROR] 올바른 값을 입력하세요');
+    }
+  }
+
+  hasDuplicates(carNamesArray){
+    const uniqueNames = new Set(carNamesArray);
+    return uniqueNames.size !== carNamesArray.length; //다르면 참 반환
+  }
+  
+  async play() {
+    this.start();
+    try{
+      const carNames = await this.getCarNames();
+      this.nameException(carNames);
+    } catch(error){
+      throw new Error(error.message);
+    }
+  }
 }
 
 export default App;
