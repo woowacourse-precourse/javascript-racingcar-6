@@ -44,6 +44,43 @@ describe("유닛 테스트", () => {
 
     const carRace = new CarRace();
     const cars = await carRace.readCarsInput();
-    expect(cars).toEqual(["car1", "car2", "lurgi", "tisi"]);
+    expect(cars).toEqual("car1,car2,lurgi,tisi");
+  });
+
+  test("readTryNumber 에러1", async () => {
+    const answer = ["1e"];
+    mockQuestions(answer);
+
+    const carRace = new CarRace();
+    await expect(carRace.readTryNumber()).rejects.toThrow(
+      "[ERROR] 시도 횟수는 숫자 값만 입력해주세요."
+    );
+  });
+
+  test("readTryNumber 에러2", async () => {
+    const answer = ["1234q"];
+    mockQuestions(answer);
+
+    const carRace = new CarRace();
+    await expect(carRace.readTryNumber()).rejects.toThrow(
+      "[ERROR] 시도 횟수는 숫자 값만 입력해주세요."
+    );
+  });
+  test("readTryNumber 에러3", async () => {
+    const answer = [""];
+    mockQuestions(answer);
+
+    const carRace = new CarRace();
+    await expect(carRace.readTryNumber()).rejects.toThrow(
+      "[ERROR] 시도 횟수를 입력하지 않으셨습니다."
+    );
+  });
+  test("readTryNumber 통과", async () => {
+    const answer = ["5"];
+    mockQuestions(answer);
+
+    const carRace = new CarRace();
+    const output = await carRace.readTryNumber();
+    expect(output).toEqual(5);
   });
 });
