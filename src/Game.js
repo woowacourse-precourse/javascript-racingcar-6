@@ -24,12 +24,23 @@ class Game {
     this.output.printMessage(MESSAGE.inputRound);
     await this.input.readText(true);
     this.totalRound = this.input.round;
+    this.output.printMessage(this.input.round);
   }
 
   async start() {
     await this.input.readText(false);
     this.setCarArray(this.input.nameArray);
     await this.setTotalRound();
+  }
+
+  play() {
+    const updateCarArray = this.carArray.map((c) => {
+      c.handleMovement();
+      return c;
+    });
+    updateCarArray.forEach((c) => this.output.printPlayResult(c));
+    this.currentRound += 1;
+    this.carArray = updateCarArray;
   }
 }
 
