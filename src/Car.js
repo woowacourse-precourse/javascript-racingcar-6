@@ -9,7 +9,7 @@ class Car {
   move() {
     const randomNumber = Random.pickNumberInRange(0, 9);
     if (randomNumber >= 4) {
-      location += 1;
+      this.location += 1;
     }
   }
 }
