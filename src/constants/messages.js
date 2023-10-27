@@ -5,6 +5,7 @@ const MESSAGES = {
   RACE_RESULT: '실행 결과',
   ONE_STEP: '-',
   WINNER: '최종 우승자',
+  ERROR: '[ERROR]',
 };
 
 export default MESSAGES;
