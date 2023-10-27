@@ -10,7 +10,7 @@ class App {
   async play() {
     this.userInputCarNames();
     const NUMBER_OF_MOVES = await this.userInputNumberOfMoves();
-    this.startGame();
+    this.startGame(NUMBER_OF_MOVES);
   }
 
   //사용자가 입력한 자동차 이름 가져오기
@@ -52,8 +52,17 @@ class App {
     return RESULT;
   }
 
-  //게임 진행하는 로직 분리
-  startGame() {}
+  //게임 진행하는 로직
+  startGame(numberOfMovees) {
+    //게임을 numberOfMovees횟수만큼 반복해서 실행해야하기 때문에 for문 실행
+    for (let moveNum = 0; moveNum < numberOfMovees; moveNum++) {
+      const RESULT = this.resultByRandomNumber();
+      for (const carName in RESULT) {
+        const STATUS = RESULT[carName] ? '-' : '';
+        Console.print(`${carName} : ${STATUS}`);
+      }
+    }
+  }
 }
 
 export default App;
