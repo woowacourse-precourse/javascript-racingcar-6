@@ -59,8 +59,13 @@ class App {
   }
 
   pickOutWinner() {
-    const calculate = new Calculate(this.carInstanceArray);
-    calculate.calcWinners();
+    const calculate = new Calculate();
+
+    this.carInstanceArray.forEach((currentCar) => {
+      const [name, finalResult] = currentCar.getCurrentCarState();
+      calculate.calcWinners(name, finalResult);
+    });
+
     const winners = calculate.getWinners();
 
     Print.showWinners(winners);

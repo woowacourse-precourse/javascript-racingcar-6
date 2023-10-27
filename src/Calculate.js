@@ -1,27 +1,18 @@
 import { SEPARATOR } from "./constant/rule.js";
 
 class Calculate {
-  constructor(carInstanceArray) {
+  constructor() {
     this.max = 0;
     this.winners = [];
-    this.cars = carInstanceArray;
   }
 
-  calcWinners() {
-    this.cars.forEach((car) => {
-      this.compareEachResult(car);
-    });
-  }
-
-  compareEachResult(car) {
-    const [name, finalResult] = car.getCurrentCarState();
-
-    if (finalResult.length === this.max) {
+  calcWinners(name, result) {
+    if (result.length === this.max) {
       this.winners.push(name);
     }
 
-    if (finalResult.length > this.max) {
-      this.max = finalResult.length;
+    if (result.length > this.max) {
+      this.max = result.length;
       this.winners = [name];
     }
   }
