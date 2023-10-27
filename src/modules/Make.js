@@ -4,10 +4,10 @@ import Get from './Get.js';
 
 class Make {
   static async racingInfo() {
-    info = new RacingInfo();
+    const info = new RacingInfo();
     info.carList = await ConvertInputTo.carList();
     info.numberOfGame = await ConvertInputTo.numberOfGame();
-    info.didItRun = Get.didItRun(numberOfGame, carList.length);
+    info.didItRun = Get.didItRun(info.numberOfGame, info.carList.length);
     return info;
   }
 }

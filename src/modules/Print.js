@@ -12,7 +12,7 @@ class Print {
   static racingPerGame(racingInfo, gameCount) {
     racingInfo.carList.forEach((name, index) => {
       Console.print(
-        `${name}: ${'-'.repeat(
+        `${name} : ${'-'.repeat(
           Get.position(racingInfo.didItRun[index], gameCount)
         )}`
       );
