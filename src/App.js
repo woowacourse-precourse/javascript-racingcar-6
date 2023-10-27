@@ -12,11 +12,15 @@ class App {
         for (let i = 0; i < numberOfCars; i++) {
             cars.push(new Car(carName[i]));
         }
-        cars[0].distance++;
-        cars[1].distance++;
-        cars[2].distance++;
-        //const lapCount = await this.getUserInputInt();
-        await this.printResult(cars);
+
+        const lapCount = await this.getUserInputInt();
+
+        MissionUtils.Console.print("실행 결과");
+
+        for (let i = 0; i < lapCount; i++) {
+            await this.printResult(cars);
+            MissionUtils.Console.print("");
+        }
     }
 
     async getUserInputString() {
@@ -31,6 +35,11 @@ class App {
 
     async getUserInputInt() {
         //TODO : 시도할 횟수를 입력 받음
+        let userInput = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+        // if () {
+        //     throw new Error('[ERROR]');
+        // }
+        return parseInt(userInput);
     }
 
     async printResult(cars) {
