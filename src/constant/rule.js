@@ -1,17 +1,26 @@
-export const separator = {
-  name: "쉼표",
-  symbol: ",",
+export const CARS_SEPARATOR = {
+  NAME: "쉼표",
+  SYMBOL: ",",
 };
 
-export const NAME_LENGTH = 5;
-export const MIN_CAR_NUMBER = 2;
-export const BLINK_REGEX = /\s/g;
-export const ONLY_NUMBER_REGEX = /^[0-9]+$/;
 export const MIN_TRY_COUNT = 1;
 
-export const MIN_NUM = 0;
-export const MAX_NUM = 9;
-export const CAN_GO_NUM = 4;
+export const CAR = {
+  MAX_NAME_LENGTH: 5,
+  MIN_NAME_LENGTH: 1,
+  MIN_CARS_LENGTH: 2,
+};
+
+export const REGEX = {
+  BLINK: /\s/g,
+  ONLY_NUMBER: /^[0-9]+$/,
+};
+
+export const RANDOM = {
+  MIN_RANGE: 0,
+  MAX_RANGE: 9,
+  CAN_GO_NUM: 4,
+};
 
 export const GO_SYMBOL = "-";
 

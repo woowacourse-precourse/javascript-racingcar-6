@@ -1,24 +1,19 @@
 import { Console } from "@woowacourse/mission-utils";
-import {
-  ASK_CARS,
-  ASK_TRY_COUNT,
-  ERROR,
-  RESULT_MESSAGE,
-  RESULT_PHRASE_MESSAGE,
-  WINNERS_MESSAGE,
-} from "./constant/message.js";
-import { separator } from "./constant/rule.js";
+import { ASK, ERROR, MESSAGE } from "./constant/message.js";
+import { CARS_SEPARATOR } from "./constant/rule.js";
 import Validate from "./Validate.js";
 
 class Print {
   static async getCars() {
-    const enteredCars = await Console.readLineAsync(ASK_CARS);
+    const enteredCars = await Console.readLineAsync(ASK.CARS);
 
     if (Validate.eachSideContainComma(enteredCars)) {
       throw new Error(ERROR.CARS_START_AND_END_WITH_COMMA);
     }
 
-    const cars = enteredCars.split(separator.symbol).map((car) => car.trim());
+    const cars = enteredCars
+      .split(CARS_SEPARATOR.SYMBOL)
+      .map((car) => car.trim());
 
     if (!Validate.eachCarNameLength(cars)) {
       throw new Error(ERROR.CAR_NAME_LENGTH);
@@ -40,7 +35,7 @@ class Print {
   }
 
   static async getTryCount() {
-    const count = await Console.readLineAsync(ASK_TRY_COUNT);
+    const count = await Console.readLineAsync(ASK.TRY_COUNT);
 
     if (!Validate.isNumber(count)) {
       throw new Error(ERROR.COUNT_IS_NOT_NUMBER);
@@ -54,11 +49,11 @@ class Print {
   }
 
   static showResultPhrase() {
-    Console.print(RESULT_PHRASE_MESSAGE);
+    Console.print(MESSAGE.RESULT_PHRASE);
   }
 
   static showRaceResult(name, result) {
-    Console.print(RESULT_MESSAGE(name, result));
+    Console.print(MESSAGE.RACING_RESULT(name, result));
   }
 
   static showEmptyNewLine() {
@@ -66,7 +61,7 @@ class Print {
   }
 
   static showWinners(winners) {
-    Console.print(WINNERS_MESSAGE(winners));
+    Console.print(MESSAGE.WINNERS(winners));
   }
 }
 

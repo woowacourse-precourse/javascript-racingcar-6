@@ -1,17 +1,10 @@
-import {
-  BLINK_REGEX,
-  MIN_CAR_NUMBER,
-  MIN_TRY_COUNT,
-  NAME_LENGTH,
-  ONLY_NUMBER_REGEX,
-  separator,
-} from "./constant/rule.js";
+import { CAR, MIN_TRY_COUNT, REGEX, CARS_SEPARATOR } from "./constant/rule.js";
 
 class Validate {
   static eachSideContainComma(cars) {
     if (
-      cars[0] === separator.symbol ||
-      cars[cars.length - 1] === separator.symbol
+      cars[0] === CARS_SEPARATOR.SYMBOL ||
+      cars[cars.length - 1] === CARS_SEPARATOR.SYMBOL
     ) {
       return true;
     }
@@ -20,15 +13,15 @@ class Validate {
   }
 
   static eachCarNameLength(cars) {
-    return cars.every((car) => car.length <= NAME_LENGTH);
+    return cars.every((car) => car.length <= CAR.MAX_NAME_LENGTH);
   }
 
   static minCarsLength(cars) {
-    return cars.length >= MIN_CAR_NUMBER;
+    return cars.length >= CAR.MIN_CARS_LENGTH;
   }
 
   static eachCarNameHasBlank(cars) {
-    return cars.some((car) => BLINK_REGEX.test(car));
+    return cars.some((car) => REGEX.BLINK.test(car));
   }
 
   static anyDuplicateCarName(cars) {
@@ -42,7 +35,7 @@ class Validate {
   }
 
   static isNumber(value) {
-    return ONLY_NUMBER_REGEX.test(value);
+    return REGEX.ONLY_NUMBER.test(value);
   }
 
   static minTryCount(count) {

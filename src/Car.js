@@ -1,5 +1,5 @@
 import { Random } from "@woowacourse/mission-utils";
-import { CAN_GO_NUM, GO_SYMBOL, MAX_NUM, MIN_NUM } from "./constant/rule.js";
+import { GO_SYMBOL, RANDOM } from "./constant/rule.js";
 
 class Car {
   constructor(name) {
@@ -8,14 +8,14 @@ class Car {
   }
 
   getRandomNumber() {
-    const num = Random.pickNumberInRange(MIN_NUM, MAX_NUM);
+    const num = Random.pickNumberInRange(RANDOM.MIN_RANGE, RANDOM.MAX_RANGE);
     return num;
   }
 
   decideGo() {
     const randomNumber = this.getRandomNumber();
 
-    if (randomNumber >= CAN_GO_NUM) {
+    if (randomNumber >= RANDOM.CAN_GO_NUM) {
       this.result += GO_SYMBOL;
     }
 
