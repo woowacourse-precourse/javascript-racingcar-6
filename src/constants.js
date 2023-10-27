@@ -13,7 +13,7 @@ const CONDITION = Object.freeze({
   TRY_COUNT: (count) => count < 1 || Math.ceil(count) !== count,
 });
 
-const OUTPUT_MESSAGE = Object.freeze({
+const RACE_MESSAGE = Object.freeze({
   RESULT: '\n실행 결과',
   RACE: (name, forwardCount) => `${name} : ${'-'.repeat(forwardCount)}`,
   WINNERS: (winners) => {
@@ -22,4 +22,4 @@ const OUTPUT_MESSAGE = Object.freeze({
   },
 });
 
-export { INPUT_MESSAGE, ERROR_MESSAGE, CONDITION, OUTPUT_MESSAGE };
+export { INPUT_MESSAGE, ERROR_MESSAGE, CONDITION, RACE_MESSAGE };

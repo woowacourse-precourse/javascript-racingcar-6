@@ -3,7 +3,7 @@ import {
   INPUT_MESSAGE,
   ERROR_MESSAGE,
   CONDITION,
-  OUTPUT_MESSAGE,
+  RACE_MESSAGE,
 } from './constants.js';
 import Car from './Car.js';
 import Random from './Random.js';
@@ -26,12 +26,12 @@ class App {
   }
 
   #printRaceResult(count) {
-    Console.print(OUTPUT_MESSAGE.RESULT);
+    Console.print(RACE_MESSAGE.RESULT);
 
     for (let i = 0; i < count; i++) {
       this.#cars.forEach((car) => car.race(Random.createRandomNumber()));
       this.#cars.forEach((car) =>
-        Console.print(OUTPUT_MESSAGE.RACE(car.getName(), car.getForwardCount()))
+        Console.print(RACE_MESSAGE.RACE(car.getName(), car.getForwardCount()))
       );
       Console.print('');
     }
@@ -39,7 +39,7 @@ class App {
 
   #printWinners() {
     const winners = Refree.judge(this.#cars);
-    Console.print(OUTPUT_MESSAGE.WINNERS(winners));
+    Console.print(RACE_MESSAGE.WINNERS(winners));
   }
 
   static #validateNameLength(carNameArray) {
