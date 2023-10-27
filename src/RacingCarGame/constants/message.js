@@ -2,6 +2,7 @@ export const SYMBOLS = {
   nameDivider: ',',
   winnerDivider: ', ',
   colon: ' : ',
+  move: '-',
 };
 
 export const MESSAGE = {
