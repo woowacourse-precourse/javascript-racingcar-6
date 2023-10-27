@@ -29,7 +29,7 @@ async function carCreater() {
 function validationNameLength(names) {
   for (let i = 0; i < names.length; i++) {
     if (names[i].length > 5) {
-      throw new Error("[ERROR]")
+      throw new Error("[ERROR] 자동차 이름이 5자를 초과했습니다.")
     }
   }
 }
@@ -51,7 +51,7 @@ function validationTryNumber(number) {
   if (/^[+]?[1-9]\d*$/.test(number)) {
     return Number(number);
   } else {
-    throw new Error("[ERROR]");
+    throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
   }
 }
 
