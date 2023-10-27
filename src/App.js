@@ -1,5 +1,6 @@
-import * as MissionUtils from "@woowacourse/mission-utils";
 import { Console, Random } from "@woowacourse/mission-utils";
+import { MESSAGE } from "./contants/message";
+import { CONDITION } from "./contants/condition";
 
 class App {
   async play() {
