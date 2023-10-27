@@ -25,6 +25,10 @@ class App {
   async play() {
     const answerOfCars = await Console.readLineAsync(MESSAGE.input.carName);
     this.validateNamesOfCar(answerOfCars);
+    const answerOfNumber = await Console.readLineAsync(
+      MESSAGE.input.numberOfTimes
+    );
+    this.validateNumberOfTimes(answerOfNumber);
     return;
   }
 
@@ -42,6 +46,15 @@ class App {
       }
     });
     this.cars = info;
+  }
+
+  validateNumberOfTimes(answer) {
+    const number = Number(answer);
+    if (Number.isSafeInteger(number) && number > 0) {
+      this.numberOfTimes = number;
+    } else {
+      throw new Error(MESSAGE.error.numberOfTimes);
+    }
   }
 }
 
