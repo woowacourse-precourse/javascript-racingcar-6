@@ -1,4 +1,3 @@
-import { ERROR } from "../src/utils/Constant.js";
 import { Validation } from "../src/utils/Validation.js";
 
 describe("자동차 이름 입력 테스트", () => {
