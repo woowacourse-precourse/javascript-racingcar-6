@@ -1,7 +1,10 @@
 import { Console } from "@woowacourse/mission-utils";
+
+const ERROR_HEADER = "[ERROR]";
 class App {
   constructor() {
     this.racingCars;
+    this.tryNumber;
   }
 
   async getRacingCars() {
@@ -11,11 +14,21 @@ class App {
     this.racingCars = inputValue.split(",");
   }
 
+  async getTryNumber() {
+    let input = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+    let number = parseInt(input);
+    if (isNaN(number) || number < 1) {
+      throw new Error(`${ERROR_HEADER} 1이상의 수를 입력하세요.`);
+    }
+    this.tryNumber = number;
+  }
+
   initPlay() {}
 
   async play() {
     this.initPlay();
-    this.getRacingCars();
+    await this.getRacingCars();
+    await this.getTryNumber();
   }
 }
 
