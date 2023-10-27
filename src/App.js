@@ -24,6 +24,10 @@ class App {
     this.attempts = await MissionUtils.Console.readLineAsync(
       "시도할 횟수는 몇 회인가요?"
     );
+    // 1-e
+    if (this.attempts < 0 || isNaN(this.attempts) == true) {
+      throw new Error("[ERROR] : 시도 횟수가 잘못 입력되었습니다. 정수를 입력해주세요.");
+    }
   }
 }
 
