@@ -13,10 +13,24 @@ async function inputTrialNumber() {
   return Number(trialNumber);
 }
 
+function moveOrStay(car) {
+  for (let i = 0; i < car.length; i++) {
+    let isMove = Random.pickNumberInRange(0, 9) < 5 ? true : false;
+    if (isMove) {
+      car[i][1] += 1;
+    }
+  }
+}
+
 class App {
   async play() {
     let car = await inputCar();
     let trialNumber = await inputTrialNumber();
+    Console.print("\n실행 결과");
+    for (let i = 0; i < trialNumber; i++) {
+      moveOrStay(car);
+      // Console.print(car);
+    }
   }
 }
 export default App;
