@@ -21,7 +21,7 @@ describe('자동차 경주 자체 테스트', () => {
     });
   });
 
-  test('전진-정지 테스트', async () => {
+  test('전진-정지 테스트', () => {
     const car = new Car('hCar');
     const outputs = ['', '-', '--'];
     const randoms = [3, 4, 6];
