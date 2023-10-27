@@ -1,7 +1,7 @@
 import { ERROR_MESSAGES, CAR_NAME_REGEX, NUMBER_REGEX } from "../constants/Constants.js";
 
 const isEmpty = (input) => {
-  if (input.length === 0) {
+  if (!input || input[0] == "") {
     throw new Error(ERROR_MESSAGES.EMPTY_INPUT);
   }
 };
@@ -36,10 +36,12 @@ const isValidNumber = (input) => {
 };
 
 const InputValidator = (input) => {
+  console.log(input);
   if (typeof input === "number") {
     isEmpty(input);
     isValidNumber(input);
   }
+
   if (Array.isArray(input)) {
     isEmpty(input);
     isDuplicateName(input);
