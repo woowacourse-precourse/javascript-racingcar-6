@@ -1,4 +1,4 @@
-import GameStart from './views/GameStart';
+import GameStart from './controller/GameStart';
 
 class App {
   constructor() {

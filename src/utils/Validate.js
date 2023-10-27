@@ -1,4 +1,4 @@
-import { ERROR_MSG } from '../models/OutputMsg';
+import { ERROR_MSG } from '../constants/OutputMsg';
 
 class Validate {
     vehicleNameValidate(vehicleName) {

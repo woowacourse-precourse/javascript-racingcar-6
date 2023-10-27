@@ -1,8 +1,6 @@
-import Controller from '../controller/Controller';
+import Controller from './Controller';
 import OutputView from '../views/OutputView';
-import { Console } from '@woowacourse/mission-utils';
-import { OUTPUT_MSG } from '../models/OutputMsg';
-import { CONSTANTS } from '../models/Constants';
+import { CONSTANTS } from '../constants/Constants';
 
 
 class GameStart {
@@ -12,16 +10,16 @@ class GameStart {
     }
     
     async startGame() {
-        Console.print(OUTPUT_MSG.INPUT_VEHICLE_NAME);
+        this.OUT_VIEW.printInputVehicleMsg();
         await this.CONTROL.inputVehicleName();
-        Console.print(CONSTANTS.vehicleNameList.join(','));
+        this.OUT_VIEW.printVehicleName();
         await this.#getPlayTimes();
     }
 
     async #getPlayTimes() {
-        Console.print(OUTPUT_MSG.INPUT_PLAY_TIME);
+        this.OUT_VIEW.printInputPlayTimeMsg();
         await this.CONTROL.inputPlayTimes();
-        Console.print(CONSTANTS.gamePlayTimes);
+        this.OUT_VIEW.printGamePlayTime();
         this.#moveVehicle();
     }
 
@@ -31,12 +29,12 @@ class GameStart {
             this.CONTROL.setVehicleObjectNumber();
             this.OUT_VIEW.printMoveProcedure();
         }
-        this.#printResult();
+        this.#gameResult();
     }
 
-    #printResult() {
+    #gameResult() {
         this.CONTROL.findChampions();
-        Console.print(`${OUTPUT_MSG.WINNER_IS} ${CONSTANTS.champion.join(', ')}`);
+        this.OUT_VIEW.printResult();
     }
 }
 
