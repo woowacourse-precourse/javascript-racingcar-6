@@ -14,6 +14,10 @@ class Car {
   move() {
     this.postion += this.canMove() ? SYMBOLS.move : '';
   }
+
+  length() {
+    return this.postion.length;
+  }
 }
 
 export default Car;
