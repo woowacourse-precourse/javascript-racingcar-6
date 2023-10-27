@@ -1,20 +1,23 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Console, Random } from "@woowacourse/mission-utils";
 import Car from "./Car.js";
+import { checkValidCarsName } from "./Validation.js";
 
 class RacingCar {
-    #carList = [];
+  #carList = [];
 
-    async start() {
-      await this.getCarsNames();
-    }
+  async start() {
+    await this.getCarsNames();
+    await this.getCountTimes();
+  }
 
-    async getCarsNames() {
-      const input = await Console.readLineAsync('이름은 쉼표(,) 기준으로 구분\n');
-      this.#carList = input.split(',').forEach((car) => {
-        this.#carList.push(new Car(car, 0));
-      })
-      console.log(this.#carList);
+  async getCarsNames() {
+    const input = await Console.readLineAsync('이름은 쉼표(,) 기준으로 구분\n');
+    const inputList = input.split(',');
+    if(!checkValidCarsName(inputList)){
+      throw new Error('[ERROR] 유효하지 않은 입력 값');
     }
+    this.#carList = inputList.map((car) => new Car(car, 0));
+  }
 }
 
 export default RacingCar;
