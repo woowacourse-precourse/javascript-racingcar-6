@@ -3,6 +3,7 @@ class App {
   carList;
   moveCount;
   gameProgress;
+  gameWinner;
 
   async play() {
     await this.setCarList();
@@ -15,6 +16,8 @@ class App {
     this.gameInit();
     Console.print('실행 결과');
     Array.from({ length: this.moveCount }, () => this.calculateCarMove());
+    this.carlcultateWinner();
+    Console.print(`최종 우승자 : ${this.gameWinner}`);
   }
 
   validateCarNameList(inputResult) {
@@ -65,6 +68,34 @@ class App {
       Console.print(result);
     }
     Console.print('\n');
+  }
+
+  carlcultateWinner() {
+    this.gameWinner = '';
+    const longestDistance = this.calculateLongestDistance();
+    this.printWinner(longestDistance);
+  }
+
+  calculateLongestDistance() {
+    let longestDistance = 0;
+    for (const key in this.gameProgress) {
+      const gameDistance = this.gameProgress[key].length;
+      longestDistance = Math.max(gameDistance, longestDistance);
+    }
+
+    return longestDistance;
+  }
+
+  printWinner(longestDistance) {
+    const winnerList = [];
+    for (const key in this.gameProgress) {
+      const gameDistance = this.gameProgress[key].length;
+      if (gameDistance === longestDistance) {
+        winnerList.push(key);
+      }
+    }
+
+    this.gameWinner = winnerList.join(', ');
   }
 }
 
