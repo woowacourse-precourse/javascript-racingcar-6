@@ -1,30 +1,46 @@
 import errorList from '../error/errorCode.js';
+import { gameErrorhandler } from '../error/errorhandler.js';
 
-function checkCarValid(input) {
+async function checkCarValid(input) {
   const primaryArray = input.split(',');
 
-  const carLengthCheck = [...primaryArray].map((item) => item.length <= 5);
+  try {
+    const carLengthCheck = [...primaryArray].map((item) => item.length <= 5);
 
-  const isNotValid = carLengthCheck.includes(false);
+    const isNotValid = carLengthCheck.includes(false);
 
-  if (isNotValid) {
-    const errorKey = 'tooLongRacerName';
-    const errorCode = errorList.get(errorKey);
-    throw errorCode;
-  } else {
+    if (isNotValid) {
+      const errorKey = 'tooLongRacerName';
+      const errorCode = errorList.get(errorKey);
+      throw errorCode;
+    }
     return primaryArray;
+  } catch (error) {
+    gameErrorhandler(error);
+    return null;
   }
 }
 
-function checkRaceCountValid(input) {
-  const isNotValid = input !== '0';
+async function checkRaceCountValid(input) {
+  try {
+    const count = Number(input);
+    const isCountZero = count === 0;
+    const isCountNaN = Number.isNaN(count);
 
-  if (isNotValid) {
-    const errorKey = 'inputIsZero';
-    const errorCode = errorList.get(errorKey);
-    throw errorCode;
-  } else {
-    return input;
+    if (isCountZero) {
+      const errorCode = 'inputIsZero';
+      throw errorCode;
+    }
+
+    if (isCountNaN) {
+      const errorCode = 'inputIsNaN';
+      throw errorCode;
+    }
+    console.log(count);
+    return count;
+  } catch (error) {
+    gameErrorhandler(error);
+    return null;
   }
 }
 
