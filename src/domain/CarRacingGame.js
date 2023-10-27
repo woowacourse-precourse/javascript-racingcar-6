@@ -1,5 +1,5 @@
 import Car from './Car.js';
-import { Random } from '@woowacourse/mission-utils';
+import randomNumberGenerator from '../utils/RandomNumberGenerator.js';
 
 class CarRacingGame {
   #cars;
@@ -12,9 +12,9 @@ class CarRacingGame {
 
   // Todo: 각 인스턴스에서 랜덤값이 4이상일때 move실행
   // Todo: Random 생성을 유틸함수로 만들어서 분리해야됨
-  race() {
+  race(randomNumberGenerator) {
     this.#cars.forEach((car) => {
-      const randomNumber = Random.pickNumberInRange(0, 9);
+      const randomNumber = randomNumberGenerator();
 
       console.log(randomNumber);
 
@@ -36,7 +36,7 @@ class CarRacingGame {
 
 // console.log 테스트를 위한 코드
 const racingGame = new CarRacingGame(['Car1', 'Car2', 'Car3'], 1);
-racingGame.race();
+racingGame.race(randomNumberGenerator);
 console.log(racingGame.getRoundResult());
 
 export default CarRacingGame;
