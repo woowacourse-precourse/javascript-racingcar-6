@@ -20,3 +20,15 @@ const findMaxScore = (raceResults) => {
 
   return maxScore;
 }
+
+
+const findWinnerName = (raceResults, targetScore) => {
+  const winnerNames = [];
+
+  for (const participant in raceResults) {
+    if (raceResults[participant].length === targetScore) {
+      winnerNames.push(participant);
+    }
+  }
+  return winnerNames;
+}
