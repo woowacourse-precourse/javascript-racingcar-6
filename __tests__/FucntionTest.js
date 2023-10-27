@@ -30,7 +30,7 @@ describe("이름 입력 테스트", () => {
 describe("Racing 클래스 테스트", () => {
     
     test("registCar() 테스트", () => {
-        const names = "hong,se u ng,ta  e k;
+        const names = "hong,se u ng,ta  e k";
         const removeBlank = names.replace(/\s/g, '');
         const splitCars = removeBlank.split(',');
         const cars = splitCars.map(car => new Car(car));
