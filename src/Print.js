@@ -59,6 +59,10 @@ class Print {
   static showRaceResult(name, result) {
     Console.print(RESULT_MESSAGE(name, result));
   }
+
+  static showEmptyNewLine() {
+    Console.print("");
+  }
 }
 
 export default Print;

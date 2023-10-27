@@ -31,6 +31,7 @@ class App {
 
     for (let count = 0; count < this.tryCount; count++) {
       this.getResultOfEachCar();
+      Print.showEmptyNewLine();
     }
   }
 
