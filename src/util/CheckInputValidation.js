@@ -7,6 +7,10 @@ const CheckInputValidation = {
     if (!input.includes(Constant.COMMA)) {
       throw new Error(Message.ERROR.NAME_SHOULD_SPLIT_BY_COMMA);
     }
+    // , 가 연속으로 중복된 경우
+    if (Constant.COMMA_REPEATED_REGEX.test(input)) {
+      throw new Error(Message.ERROR.NAME_HAS_REPEATED_COMMA);
+    }
     const carNames = input.split(Constant.COMMA);
     // 이름이 5자 초과한 경우
     for (const carName of carNames) {

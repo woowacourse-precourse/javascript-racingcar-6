@@ -41,6 +41,22 @@ describe("예외처리", () => {
     }
   );
 
+  test.each([[["pobi,,javaji"]], [["pobi east,,jun"]]])(
+    ",가 연속으로 중복된 경우",
+    async (inputs) => {
+      // given
+      mockQuestions(inputs);
+
+      // when
+      const app = new App();
+
+      // then
+      await expect(app.play()).rejects.toThrow(
+        Message.ERROR.NAME_HAS_REPEATED_COMMA
+      );
+    }
+  );
+
   test.each([[["pobi,javaji"]], [["pobiiiii,eastjun"]]])(
     "이름이 5자 초과한 경우",
     async (inputs) => {

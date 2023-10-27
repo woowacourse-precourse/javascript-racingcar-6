@@ -4,6 +4,7 @@ const Constant = {
   MIN_NUM: 0,
   MAX_NUM: 9,
   STANDARD_T0_GO: 4,
+  COMMA_REPEATED_REGEX: /\,{2,}/g,
 };
 
 export default Constant;
