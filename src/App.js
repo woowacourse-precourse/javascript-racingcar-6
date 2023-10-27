@@ -26,6 +26,8 @@ class App {
       for (let i = 0; i < tryCount; i++) {
         this.playGame(validNames);
       }
+      const winners = this.calculateWinners(validNames);
+      MissionUtils.Console.print(`최종 우승자 : ${winners.join(", ")}`);
     } catch (e) {
       throw new Error("[ERROR] 잘못된 문자 형식입니다.");
     }
@@ -55,6 +57,24 @@ class App {
   calcMoveCount() {
     const raceCarMoveCount = MissionUtils.Random.pickNumberInRange(0, 9);
     return raceCarMoveCount >= 4 ? "-" : "";
+  }
+
+  calculateWinners(names) {
+    const winners = [];
+    let maxDashes = 0;
+
+    for (const name of names) {
+      const dashes = (this.currentMovements[name].match(/-/g) || []).length;
+      if (dashes > maxDashes) {
+        maxDashes = dashes;
+        winners.length = 0;
+        winners.push(name);
+      } else if (dashes === maxDashes) {
+        winners.push(name);
+      }
+    }
+
+    return winners;
   }
 
   async play() {
