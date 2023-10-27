@@ -1,4 +1,4 @@
-import { Car } from '../src/App';
+import App, { Car } from '../src/App';
 import { Console, Random } from '@woowacourse/mission-utils';
 
 const mockRandoms = (numbers) => {
@@ -33,5 +33,22 @@ describe('자동차 경주 자체 테스트', () => {
 
       expect(car.progress).toBe(output);
     });
+  });
+
+  test('우승자 반환 테스트', () => {
+    const inputs = ['hCar', 'kCar', 'sCar'];
+    const distances = ['--', '-', '--'];
+    const cars = inputs.map((input, i) => {
+      const car = new Car(input);
+      car.progress = distances[i];
+
+      return car;
+    });
+    const output = 'hCar, sCar';
+
+    const app = new App();
+    const result = app.getWinners(cars).join(', ');
+
+    expect(result).toBe(output);
   });
 });
