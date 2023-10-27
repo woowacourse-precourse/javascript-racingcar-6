@@ -1,9 +1,9 @@
-class Car(){
+class Car{
     #name;
     #position = [];
 
-    construct(name){
-        this._name = name;
+    constructor(name){
+        this.#name = name;
     }
 
     getPosition(){
@@ -15,7 +15,7 @@ class Car(){
     }
 
     getName(){
-        return this._name;
+        return this.#name;
     }
 }
 
