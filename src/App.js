@@ -1,5 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import { ATTEMPTS_NUMBER, CAR_NAME } from "./constants/questions";
+import { ERROR_ATTEMPTS_NUMBER, ERROR_CAR_NAME } from "./constants/errors";
 
 class App {
   constructor() {
@@ -17,9 +18,7 @@ class App {
     // 1-c
     this.arrCarName.map((name) => {
       if (name.trim().length > 5 || name.trim().length < 1) {
-        throw new Error(
-          "[ERROR] : 자동차 이름은 5글자 이내로 입력해야 합니다!"
-        );
+        throw new Error(ERROR_CAR_NAME);
       }
     });
 
@@ -27,9 +26,7 @@ class App {
     this.attempts = await MissionUtils.Console.readLineAsync(ATTEMPTS_NUMBER);
     // 1-e
     if (this.attempts < 0 || isNaN(this.attempts) == true) {
-      throw new Error(
-        "[ERROR] : 시도 횟수가 잘못 입력되었습니다. 정수를 입력해주세요."
-      );
+      throw new Error(ERROR_ATTEMPTS_NUMBER);
     }
 
     // 2-a
