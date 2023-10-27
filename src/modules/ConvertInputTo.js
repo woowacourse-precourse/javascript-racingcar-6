@@ -15,6 +15,7 @@ class ConvertInputTo {
   static async gameCount() {
     const inputString = await Console.readLineAsync(GAME_COUNT_INPUT_MESSAGE);
     ErrorCheck.gameCountString(inputString);
+    return Number(inputString);
   }
 }
 
