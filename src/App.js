@@ -57,6 +57,9 @@ class App {
     if(!re.test(number)){
       throw new Error("[ERROR] 숫자 형식을 맞춰주세요.");
     }
+    if(Number(number)===0){
+      throw new Error("[ERROR] 1이상의 숫자를 입력해주세요.")
+    }
   }
 
 }
