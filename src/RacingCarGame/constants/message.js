@@ -1,3 +1,5 @@
+import { NUMBER } from './number.js';
+
 export const SYMBOLS = {
   nameDivider: ',',
   winnerDivider: ', ',
@@ -11,4 +13,9 @@ export const MESSAGE = {
   askLapCount: `시도할 횟수는 몇 회인가요?${SYMBOLS.lineBreak}`,
   result: `실행 결과${SYMBOLS.lineBreak}`,
   winner: `최종 우승자 `,
+};
+
+export const ERROR = {
+  prefix: '[ERROR]',
+  invalidNameLength: `${NUMBER.maxNameLength}글자 이내의 이름을 입력해주세요.`,
 };
