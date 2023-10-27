@@ -21,10 +21,10 @@ const getAttempt = async () =>{
   const attempt = await readLineAsync('시도할 횟수는 몇 회인가요?\n');
   
   // *** 리팩토링 하면서 함수로 빼기 ***
-  if(!(+attempt)) throw new Error('[ERROR] 횟수는 숫자여야 합니다.');
-  if((+attempt) <=0 ) throw new Error('[ERROR] 횟수는 0회 보다 커야합니다.');
+  if(!Number(attempt)) throw new Error('[ERROR] 횟수는 숫자여야 합니다.');
+  if(Number(attempt) <=0 ) throw new Error('[ERROR] 횟수는 0회 보다 커야합니다.');
 
-  return +attempt;
+  return Number(attempt);
 }
 
 /**
@@ -49,6 +49,7 @@ class App {
   async play() {
     const participants = await getParticipant()
     const attempt = await getAttempt();
+
   }
 }
 
