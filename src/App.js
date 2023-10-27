@@ -27,6 +27,14 @@ class App {
     Validation.validateDuplicateName(cars);
 
     this.carRacingGame.setCars(cars.map(car => new Car(car)));
+    await this.readTryCount();
+  }
+
+  // 사용자로부터 전진 시도 횟수를 입력받음
+  async readTryCount() {
+    const answer = await Console.readLineAsync(MESSAGE.INPUT_TRY_COUNT);
+    
+    Validation.validateTryCount(answer);
   }
 }
 
