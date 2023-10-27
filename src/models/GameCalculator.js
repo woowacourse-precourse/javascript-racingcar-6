@@ -15,10 +15,11 @@ const isAdvanceCar = (currentPosition) => {
 };
 
 const arrayToObject = (arr) => {
-  let obj = arr.reduce((acc, curr) => {
-    acc[curr] = 0;
-    return acc;
-  }, {});
+  let obj = {};
+
+  arr.forEach((item) => {
+    obj[item] = 0;
+  });
   return obj;
 };
 
@@ -32,12 +33,11 @@ const gameResult = (cars, attemps) => {
     ConsoleOutput.printGameResult(carPositions);
     ConsoleOutput.printEmptyLine();
   }
-
   return carPositions;
 };
 
 const gameWinner = (carPositions) => {
-  let maxPosition = Math.max(...Object.values(carPositions));
+  const maxPosition = Math.max(...Object.values(carPositions));
   let winners = [];
 
   for (const car in carPositions) {
@@ -45,13 +45,14 @@ const gameWinner = (carPositions) => {
       winners.push(car);
     }
   }
-
-  ConsoleOutput.printGameWinner(winners);
+  return winners;
 };
 
 const GameCalculator = (cars, attempts) => {
-  let carPositions = gameResult(cars, attempts);
-  gameWinner(carPositions);
+  const carPositions = gameResult(cars, attempts);
+  const winners = gameWinner(carPositions);
+  ConsoleOutput.printGameWinner(winners);
 };
 
 export default GameCalculator;
+export { computerPick, gameResult, gameWinner };

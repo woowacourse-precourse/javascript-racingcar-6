@@ -36,7 +36,6 @@ const isValidNumber = (input) => {
 };
 
 const InputValidator = (input) => {
-  console.log(input);
   if (typeof input === "number") {
     isEmpty(input);
     isValidNumber(input);
