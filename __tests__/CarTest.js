@@ -1,6 +1,6 @@
 import Car from "../src/Car";
 
-describe("자동차 객체 ", () => {
+describe('자동차 객체 ', () => {
   let car;
 
   beforeEach(() => {
@@ -26,5 +26,4 @@ describe("자동차 객체 ", () => {
     car.move(4);
     expect(car.printPosition()).toBe('testCar : -');
   });
-
 });
