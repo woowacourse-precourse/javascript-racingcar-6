@@ -63,6 +63,8 @@ class App {
         break;
       }
     }
+    // 3-c
+    MissionUtils.Console.print(`최종 우승자 : ${this.winner.join(", ")}`);
   }
 }
 
