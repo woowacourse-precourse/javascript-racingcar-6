@@ -17,6 +17,11 @@ class GameView {
   printCarProgress(car) {
     MissionUtils.Console.print(`${car.name} : ${car.getDisplay()}`);
   }
+
+  printWinners(winners) {
+    const winnerNames = winners.map((car) => car.name).join(", ");
+    MissionUtils.Console.print(`최종 우승자 : ${winnerNames}`);
+  }
 }
 
 export default GameView;

@@ -19,6 +19,9 @@ class GameController {
       this.model.registerController(this);
       MissionUtils.Console.print("실행결과");
       this.model.run();
+
+      const winners = this.model.getWinner();
+      this.view.printWinners(winners);
     }
   }
 

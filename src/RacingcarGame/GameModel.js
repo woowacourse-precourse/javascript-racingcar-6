@@ -20,6 +20,11 @@ class GameModel {
       });
     }
   }
+
+  getWinner() {
+    const maxPosition = Math.max(...this.cars.map((car) => car.position));
+    return this.cars.filter((car) => car.position === maxPosition);
+  }
 }
 
 export default GameModel;
