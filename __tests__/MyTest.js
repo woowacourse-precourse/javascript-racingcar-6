@@ -24,9 +24,9 @@ const getLogSpy = () => {
   return logSpy;
 };
 
-describe("자동차 경주 게임", () => {
+describe("예외처리", () => {
   test.each([[["pobi javaji"]], [["pobi eastjun"]]])(
-    "이름을 ,로 구분 안 한 경우",
+    "이름을 , 로 구분 안 한 경우",
     async (inputs) => {
       // given
       mockQuestions(inputs);
@@ -37,6 +37,22 @@ describe("자동차 경주 게임", () => {
       // then
       await expect(app.play()).rejects.toThrow(
         Message.ERROR.NAME_SHOULD_SPLIT_BY_COMMA
+      );
+    }
+  );
+
+  test.each([[["pobi,javaji"]], [["pobiiiii,eastjun"]]])(
+    "이름이 5자 초과한 경우",
+    async (inputs) => {
+      // given
+      mockQuestions(inputs);
+
+      // when
+      const app = new App();
+
+      // then
+      await expect(app.play()).rejects.toThrow(
+        Message.ERROR.NAME_EXCEEDED_MAX_LEN
       );
     }
   );
