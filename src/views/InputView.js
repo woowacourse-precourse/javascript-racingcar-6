@@ -8,7 +8,7 @@ class InputView {
     this.#validator = validator;
   }
 
-  async readNamesInput() {
+  async readCarNamesInput() {
     const input = await Console.readLineAsync(GAME_MESSAGES.carNameQuery);
     const names = input.split(SYMBOLS.comma);
     this.#validator.validateCarNames(names);

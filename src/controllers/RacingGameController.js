@@ -20,7 +20,7 @@ class RacingGameController {
   }
 
   async #getUserInputs() {
-    const carNames = await this.#inputView.readNamesInput();
+    const carNames = await this.#inputView.readCarNamesInput();
     const rounds = await this.#inputView.readRoundsNumberInput();
     return { carNames, rounds };
   }
