@@ -5,24 +5,18 @@ class App {
 
     async play() {
         //TODO : 자동차 객체 생성
-        const cars = [];
-        const numberOfCars = 3;
-
-        const carName = await this.getUserInputString();
-        for (let i = 0; i < numberOfCars; i++) {
-            cars.push(new Car(carName[i]));
-        }
-
+        const carNames = await this.getUserInputString();
         const lapCount = await this.getUserInputInt();
+        const cars = carNames.map(name => new Car(name));
 
         MissionUtils.Console.print("실행 결과");
 
         for (let i = 0; i < lapCount; i++) {
             await this.goForward(cars);
-            await this.printResult(cars);
-            MissionUtils.Console.print("");
+            this.printResult(cars);
         }
-        await this.printWinner(cars);
+
+        this.printWinner(cars);
     }
 
     async getUserInputString() {
@@ -31,10 +25,19 @@ class App {
 
         const userInputSplit = userInput.split(',');
 
+        const uniqueNames = new Set();
+
         for (const name of userInputSplit) {
             if (name.length > 5) {
                 throw new Error('[ERROR] 이름은 5자 이하만 가능합니다.');
             }
+            if (name.trim() === '') {
+                throw new Error('[ERROR] 이름이 비어 있습니다.');
+            }
+            if (uniqueNames.has(name)) {
+                throw new Error('[ERROR] 중복되는 이름이 있습니다.');
+            }
+            uniqueNames.add(name);
         }
         return userInputSplit;
     }
@@ -44,20 +47,21 @@ class App {
         let userInput = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
         const inputAsInt = parseInt(userInput);
 
-        if (isNaN(inputAsInt)) {
-            throw new Error('[ERROR] 숫자가 잘못된 형식입니다.');
+        if (inputAsInt<=0 || isNaN(inputAsInt)) {
+            throw new Error('[ERROR] 잘못된 숫자 입력입니다.');
         }
         return inputAsInt;
     }
 
-    async printResult(cars) {
+    printResult(cars) {
         //TODO : 실행 결과를 출력
-        for (let i = 0; i < cars.length; i++) {
-            MissionUtils.Console.print(cars[i].name + " : " + '-'.repeat(cars[i].distance));
+        for (const car of cars) {
+            MissionUtils.Console.print(`${car.name} : ${'-'.repeat(car.distance)}`);
         }
+        MissionUtils.Console.print("");
     }
 
-    async randomInt() {
+    randomInt() {
         //TODO : 랜덤한 값을 반환
         return MissionUtils.Random.pickNumberInRange(1, 9);
     }
@@ -70,20 +74,19 @@ class App {
     async goForward(cars) {
         //TODO : 자동차 전진
         for (let i = 0; i < cars.length; i++) {
-            if (await this.isValueAboveFour(await this.randomInt())) cars[i].distance++;
+            if (await this.isValueAboveFour(await this.randomInt())) {
+                cars[i].distance++;
+            }
         }
     }
 
-    async printWinner(cars) {
+    printWinner(cars) {
         //TODO : 최송 우승자 안내 문구를 출력
         const maxDistance = Math.max(...cars.map(car => car.distance));
         const winners = cars.filter(car => car.distance === maxDistance);
 
-        if (winners.length === 1) {
-            MissionUtils.Console.print(`최종 우승자 : ${winners[0].name}`);
-        } else {
-            MissionUtils.Console.print(`최종 우승자 : ${winners.map(winner => winner.name).join(', ')}`);
-        }
+        const winnerNames = winners.map(winner => winner.name).join(', ');
+        MissionUtils.Console.print(`최종 우승자 : ${winnerNames}`);
     }
 }
 
