@@ -13,6 +13,10 @@ class GameView {
   async printUserInput(userInput) {
     await MissionUtils.Console.print(userInput);
   }
+
+  printCarProgress(car) {
+    MissionUtils.Console.print(`${car.name} : ${car.getDisplay()}`);
+  }
 }
 
 export default GameView;

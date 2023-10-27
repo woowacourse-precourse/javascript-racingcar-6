@@ -11,6 +11,10 @@ class Car {
       this.position += 1;
     }
   }
+
+  getDisplay() {
+    return "-".repeat(this.position);
+  }
 }
 
 export default Car;

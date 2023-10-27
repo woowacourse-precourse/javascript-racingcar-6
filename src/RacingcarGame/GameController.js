@@ -16,6 +16,8 @@ class GameController {
       MissionUtils.Console.print(ATTEMPTS);
 
       this.model = new GameModel(CAR_NAMES, ATTEMPTS);
+      this.model.registerController(this);
+      MissionUtils.Console.print("실행결과");
       this.model.run();
     }
   }
@@ -32,6 +34,10 @@ class GameController {
     const getAttempts = await MissionUtils.Console.readLineAsync();
 
     return getAttempts;
+  }
+
+  updateCarProgress(car) {
+    this.view.printCarProgress(car);
   }
 }
 
