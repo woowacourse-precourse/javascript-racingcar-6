@@ -24,6 +24,10 @@ class App {
 
       Console.print('');
     }
+
+    const winners = this.getWinners(cars);
+
+    Console.print(`최종 우승자 : ${winners.join(', ')}`);
   }
 
   validateInput(input) {
