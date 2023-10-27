@@ -74,4 +74,20 @@ describe("기능 단위 테스트", () => {
     // then
     expect(logSpy).toHaveBeenCalledWith(outputs);
   });
+
+  test("기능 2. 자동차 경주 게임 시도 횟수 받기", async () => {
+    // given
+    const inputs = ["2"];
+    const outputs = "2";
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+    await app.userTryCount();
+
+    // then
+    expect(logSpy).toHaveBeenCalledWith(outputs);
+  });
 });
