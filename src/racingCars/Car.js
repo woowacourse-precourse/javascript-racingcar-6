@@ -11,7 +11,7 @@ class Car {
   }
 
   checkMoveCondition() {
-    this.goOrStop = Random.pickNumberInRange(0, 9) > this.MOVE_LIMIT ? true : false;
+    this.goOrStop = Random.pickNumberInRange(0, 9) >= this.MOVE_LIMIT ? true : false;
   }
 
   showMoveStatus() {
