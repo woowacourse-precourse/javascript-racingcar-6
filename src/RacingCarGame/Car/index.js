@@ -8,11 +8,16 @@ class Car {
   }
 
   canMove() {
-    return Random.pickNumberInRange(NUMBER.minRandom, NUMBER.maxRandom);
+    return (
+      Random.pickNumberInRange(NUMBER.minRandom, NUMBER.maxRandom) >=
+      NUMBER.canMove
+    );
   }
 
   move() {
-    this.postion += this.canMove() ? SYMBOLS.move : '';
+    if (this.canMove()) {
+      this.postion += SYMBOLS.move;
+    }
   }
 
   countMove() {
