@@ -11,6 +11,19 @@ class App {
     const totalRounds = this.validateInput(
       await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n')
     );
+
+    const cars = carNames.map((carName) => new Car(carName));
+
+    Console.print('\n실행 결과');
+
+    for (let i = 0; i < totalRounds; i++) {
+      cars.forEach((car) => {
+        car.moveOrStop();
+        Console.print(`${car.name} : ${car.progress}`);
+      });
+
+      Console.print('');
+    }
   }
 
   validateInput(input) {
