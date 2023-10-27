@@ -18,7 +18,7 @@ class GameController {
     const carNames = await this.inputView.getCarNames();
     this.tryCount = await this.inputView.getTryCount();
 
-    // 2. 입력된 이름과 시도 횟수를 바탕으로 자동차를 생성한다
+    // 2. 입력된 자동차 이름을 바탕으로 자동차를 생성한다
     this.createCar(carNames);
 
     return this.startGame();
