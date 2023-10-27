@@ -47,6 +47,14 @@ class App {
         break;
       }
       case "start": {
+        print("\n실행 결과");
+        while (this.#round > 0) {
+          this.#cars.forEach((car) => car.move());
+          print(this.#getSnapshot());
+          this.#round -= 1;
+        }
+
+        this.#transition("finish");
         break;
       }
       case "finish": {
@@ -56,6 +64,10 @@ class App {
         break;
       }
     }
+  }
+
+  #getSnapshot() {
+    return this.#cars.reduce((acc, car) => acc.concat(`${car.getName()} : ${"-".repeat(car.getMileage())}\n`), "");
   }
 }
 
