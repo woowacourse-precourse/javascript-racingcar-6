@@ -1,6 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import { randomMinNumber, randomMaxNumber, moveLimitNumber } from "../Util/Constants.js";
-import { convertObjectListFreeze, convertListFreeze } from "../Util/ObjectFreeze.js";
+import { convertObjectListFreeze, convertListFreeze, getCarNewObject } from "../Util/ObjectFreeze.js";
 
 
 function generateRandomNumber() {
@@ -16,13 +16,6 @@ function getTurnOverResult(racingCarList) {
     decideMoveOrStop() ? getCarNewObject(carObject.carName, carObject.moveCount + 1) : carObject
   )
   return convertObjectListFreeze(newRacingCarList);
-}
-
-function getCarNewObject(carName, moveCount) {
-  return Object.freeze({
-    carName : carName,
-    moveCount : moveCount
-  })
 }
 
 function getMaxMoveCount(racingCarList) {
