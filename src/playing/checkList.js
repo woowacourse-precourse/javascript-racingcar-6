@@ -19,4 +19,11 @@ const validateNames = (humanInputName) => {
   return trimmedNameArray;
 }
 
-module.exports = { validateNames };
+const validateParseNumber = (racingTrackInput) => {
+  if (Number.isNaN(racingTrackInput)) throw new Error('[ERROR] 숫자를 입력해 주세요.')
+
+  return parseInt(racingTrackInput, 10);
+}
+
+
+module.exports = { validateNames, validateParseNumber };
