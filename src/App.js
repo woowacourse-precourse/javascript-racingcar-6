@@ -1,6 +1,7 @@
 import Print from "./Print.js";
-import Car from "./Car.js";
 import Calculate from "./Calculate.js";
+import Validate from "./Validate.js";
+import Utils from "./Utils.js";
 
 class App {
   constructor() {
@@ -20,12 +21,22 @@ class App {
   }
 
   async getRacingCars() {
-    const cars = await Print.getCars();
-    this.carInstanceArray = cars.map((carName) => new Car(carName));
+    const enteredCars = await Print.getCars();
+
+    const validate = new Validate();
+    validate.checkEnteredCarsIsValid(enteredCars);
+
+    const cars = Utils.getCarNameArray(enteredCars);
+
+    validate.checkEachOfCarsIsValid(cars);
+
+    this.carInstanceArray = Utils.getEachCarInstanceArray(cars);
   }
 
   async getTryCount() {
     this.tryCount = await Print.getTryCount();
+    const validate = new Validate();
+    validate.checkTryCountIsValid(this.tryCount);
   }
 
   startRace() {
