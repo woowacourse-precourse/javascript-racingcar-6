@@ -39,9 +39,9 @@ class App {
 
   getResultOfEachCar() {
     for (let i = 0; i < this.carInstanceArray.length; i++) {
-      const [name, result] = this.carInstanceArray[i]
-        .decideGo()
-        .getCurrentCarState();
+      const currentCar = this.carInstanceArray[i];
+      currentCar.decideGo();
+      const [name, result] = currentCar.getCurrentCarState();
 
       Print.showRaceResult(name, result);
     }
@@ -49,7 +49,9 @@ class App {
 
   pickOutWinner() {
     const calculate = new Calculate(this.carInstanceArray);
-    const winners = calculate.calcWinners().getWinners();
+    calculate.calcWinners();
+    const winners = calculate.getWinners();
+
     Print.showWinners(winners);
   }
 }

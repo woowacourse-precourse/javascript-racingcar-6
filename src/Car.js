@@ -18,8 +18,6 @@ class Car {
     if (randomNumber >= RANDOM.CAN_GO_NUM) {
       this.result += GO_SYMBOL;
     }
-
-    return this;
   }
 
   getCurrentCarState() {

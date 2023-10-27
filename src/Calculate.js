@@ -11,8 +11,6 @@ class Calculate {
     this.cars.forEach((car) => {
       this.compareEachResult(car);
     });
-
-    return this;
   }
 
   compareEachResult(car) {
