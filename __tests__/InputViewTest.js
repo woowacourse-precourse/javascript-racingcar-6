@@ -18,8 +18,7 @@ describe("InputView 기능 테스트", () => {
     mockQuestions(inputValues);
 
     // when
-    const inputView = new InputView();
-    const carNames = await inputView.promptCarNames();
+    const carNames = await InputView.promptCarNames();
 
     // then
     expect(carNames).toEqual(["daniel", "hani"]);
@@ -32,8 +31,7 @@ describe("InputView 기능 테스트", () => {
     mockQuestions(inputValues);
 
     // when
-    const inputView = new InputView();
-    const raceRound = await inputView.promptRaceRound();
+    const raceRound = await InputView.promptRaceRound();
 
     // then
     expect(raceRound).toEqual("5");
