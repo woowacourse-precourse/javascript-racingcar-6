@@ -5,6 +5,9 @@ class Car {
     this.name = name;
     this.distance = 0;
   }
+  getDistance() {
+    return this.distance;
+  }
   moveForward(distance) {
     this.distance += distance;
   }

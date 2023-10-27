@@ -30,6 +30,25 @@ class App {
         car.printPosition();
       });
     }
+    let maxDistance = -1;
+    let winners = [];
+
+    this.cars.forEach((car) => {
+      if (car.getDistance() === maxDistance) {
+        winners.push(car);
+      }
+      if (car.getDistance() > maxDistance) {
+        winners = [];
+        maxDistance = car.getDistance();
+        winners.push(car);
+      }
+    });
+    if (winners.length === 1) {
+      Console.print(`최종 우승자 : ${winners[0].name}`);
+      return;
+    }
+    const winnerNames = winners.map((car) => car.name).join(",");
+    Console.print(`최종 우승자 : ${winnerNames}`);
   }
 }
 
