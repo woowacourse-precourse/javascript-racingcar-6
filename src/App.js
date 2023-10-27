@@ -1,5 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import AppError from "./AppError.js";
+import Car from "./Car.js";
 
 const REGEX_NUMBER = /^[0-9]+$/;
 
@@ -37,6 +38,12 @@ class App {
         const round = Number(roundInput);
         if (round === 0) throw new AppError("1 이상의 숫자로 입력해주세요.");
 
+        const cars = names.map((name) => new Car(name));
+
+        this.#cars = cars;
+        this.#round = round;
+
+        this.#transition("start");
         break;
       }
       case "start": {
