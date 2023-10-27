@@ -2,14 +2,10 @@ import { CAR, MIN_TRY_COUNT, REGEX, CARS_SEPARATOR } from "./constant/rule.js";
 
 class Validate {
   static eachSideContainComma(cars) {
-    if (
+    return (
       cars[0] === CARS_SEPARATOR.SYMBOL ||
       cars[cars.length - 1] === CARS_SEPARATOR.SYMBOL
-    ) {
-      return true;
-    }
-
-    return false;
+    );
   }
 
   static eachCarNameLength(cars) {
@@ -30,11 +26,7 @@ class Validate {
   static anyDuplicateCarName(cars) {
     const set = new Set(cars);
 
-    if (set.size !== cars.length) {
-      return true;
-    }
-
-    return false;
+    return set.size !== cars.length;
   }
 
   static isNumber(value) {
