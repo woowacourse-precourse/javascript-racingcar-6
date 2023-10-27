@@ -98,6 +98,7 @@ class CarRace {
   handleRaceResult() {
     MissionUtils.Console.print("실행 결과");
     // 1. 시도 횟수만큼 전진 혹은 정지 합니다. 이 값은 랜덤으로 정합니다.
+    // 2. 출력합니다.
     let tryOrder = 0;
     let printString = "";
 
@@ -113,6 +114,30 @@ class CarRace {
 
     MissionUtils.Console.print(printString);
     // 3. 우승자를 출력합니다.
+    const CAR_OBJECTS = this.#cars.map((carClass) => {
+      const CAR_OBJECT = {
+        name: carClass.getName(),
+        distance: carClass.getDistanceString().length,
+      };
+      return CAR_OBJECT;
+    });
+
+    const CAR_SORT = CAR_OBJECTS.sort(
+      (car_object1, car_object2) => car_object2.distance - car_object1.distance
+    );
+
+    const WIN_DISTANCE = CAR_SORT[0].distance;
+    if (WIN_DISTANCE === 0) {
+      //우승자는 없습니다
+      return;
+    }
+    const winner = [];
+    CAR_SORT.forEach(({ name, distance }) => {
+      if (distance === WIN_DISTANCE) winner.push(name);
+      if (distance < WIN_DISTANCE) return;
+    });
+    const WINNER_STRING = winner.join(", ");
+    MissionUtils.Console.print(`최종 우승자 : ${WINNER_STRING}`);
   }
 }
 
