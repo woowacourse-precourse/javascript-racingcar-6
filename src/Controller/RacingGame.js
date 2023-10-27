@@ -5,10 +5,13 @@ import Input from '../View/Input.js';
 export default class RacingGame {
   #carModel;
 
+  #resultModel;
+
   #attemps;
 
-  constructor(carModel) {
+  constructor(carModel, resultModel) {
     this.#carModel = carModel;
+    this.#resultModel = resultModel;
   }
 
   async start() {
@@ -29,11 +32,13 @@ export default class RacingGame {
 
   #racing() {
     const cars = this.#carModel.getCar();
-    while (this.#attemps !== 0) {
+    let attemps = this.#attemps;
+    while (attemps !== 0) {
       cars.forEach(({ name }) => {
         this.#carModel.updateMove(name, Random.pickNumberInRange(0, 9) >= 4);
       });
-      this.#attemps -= 1;
+      this.#resultModel.addAttempsResult(this.#carModel.getCar());
+      attemps -= 1;
     }
   }
 }
