@@ -18,7 +18,7 @@ class App {
   checkInputValidity(carArr) {
     carArr.map((car) => {
       if (car.length > 5) {
-        Console.print("5넘음"); // error throw 해야 함
+        throw new Error("숫자가 잘못된 형식입니다. 5자 이하만 가능합니다.");
       }
     });
     this.inputTrialNum();
@@ -29,7 +29,7 @@ class App {
     const input = await Console.readLineAsync("");
 
     if (Number(isNaN(input))) {
-      Console.print("숫자가 아님"); // error throw 해야 함
+      throw new Error("숫자가 아닙니다.");
     } else {
       Console.print(input);
     }
