@@ -40,7 +40,7 @@ class App {
   }
 
   static #validateNameLength(carNameArray) {
-    if (carNameArray.some(CONDITION.NAME_LENGTH)) {
+    if (CONDITION.NAME_LENGTH(carNameArray)) {
       throw new Error(ERROR_MESSAGE.NAME_LENGTH);
     }
   }
