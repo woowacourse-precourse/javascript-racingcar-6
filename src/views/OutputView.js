@@ -6,7 +6,7 @@ class OutputView {
     Console.print(GAME_MESSAGES.resultHeader);
   }
 
-  printResult(result) {
+  printRoundResult(result) {
     Console.print(result + '\n');
   }
 

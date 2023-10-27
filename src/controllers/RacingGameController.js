@@ -35,7 +35,7 @@ class RacingGameController {
     for (let i = 0; i < roundsNumber; i += 1) {
       this.#racingGame.moveAllCars();
       const roundResult = this.#racingGame.getAllCarsMoveResult();
-      this.#outputView.printResult(roundResult);
+      this.#outputView.printRoundResult(roundResult);
     }
   }
   #displayWinners() {
