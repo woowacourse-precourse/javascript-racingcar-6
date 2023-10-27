@@ -57,10 +57,15 @@ class App {
     //게임을 numberOfMovees횟수만큼 반복해서 실행해야하기 때문에 for문 실행
     for (let moveNum = 0; moveNum < numberOfMovees; moveNum++) {
       const RESULT = this.resultByRandomNumber();
-      for (const carName in RESULT) {
-        const STATUS = RESULT[carName] ? '-' : '';
-        Console.print(`${carName} : ${STATUS}`);
-      }
+      this.printProgress(RESULT);
+    }
+  }
+
+  //진행상황 출력 로직
+  printProgress(result) {
+    for (const carName in result) {
+      const STATUS = result[carName] ? '-' : '';
+      Console.print(`${carName} : ${STATUS}`);
     }
   }
 }
