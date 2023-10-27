@@ -35,6 +35,23 @@ class App {
     const answer = await Console.readLineAsync(MESSAGE.INPUT_TRY_COUNT);
     
     Validation.validateTryCount(answer);
+
+    this.printRacingResult(answer);
+  }
+
+  /**
+   * 레이싱을 진행하고 결과 출력
+   * @param {number} count 전진 시도 횟수 
+   * @returns {void}
+   */
+  printRacingResult(count) {
+    Console.print('\n' + MESSAGE.GAME_RESULT);
+    this.carRacingGame.goForward(count, results => {
+      results.forEach(({ name, distance }) => {
+        Console.print(`${name} : ${'-'.repeat(distance)}`);
+      });
+      Console.print(' ');
+    });
   }
 }
 
