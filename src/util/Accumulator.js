@@ -8,6 +8,7 @@ export const racingTraceAccumulator = (currentTraceArray, randomArray) => {
   return currentTraceArray.map((element, index) => element + newTraceArray[index]);
 }
 
+
 export const scoreAccumulator = (CurrentScoreArray, randomArray) => {
   const newScoreArray = ScoreConverter.generator(randomArray);
 

@@ -12,5 +12,6 @@ class ScoreConverter {
     return numberArray.map((element) => this.scoreFilter(element));
   }
 }
+
 export default ScoreConverter
 
