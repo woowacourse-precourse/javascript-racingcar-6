@@ -11,6 +11,18 @@ const readLineAsync = async (message) => {
 }
 
 /**
+ * 우승자 확인 기능
+ * return : 우승자를 배열로 반환
+ */
+// const checkWinner = async (participants) =>{
+//   const winner = [];
+//   let min = 0;
+//   for(let i = 0; i < participants.length; i++){
+//     const name = participants[i];
+//   }
+// }
+
+/**
  * 매 게임 진행마다 참가자 진행 결과를 출력
  * return : 숫자로 반환
  * 주의 : 0 이하거나 숫자가 아니면 ERROR
@@ -25,19 +37,20 @@ const showResult = async (participants) => {
     const randomNumber = Random.pickNumberInRange(0, 9);
     const name = participants[index];
     if(randomNumber >= 4) {
-      goStopCheck[name] = goStopCheck[name] ? goStopCheck[name]+'-' : '-';
+      goStopCheck[name] = goStopCheck[name] ? [goStopCheck[name][0]+'-', goStopCheck[name][1]+1] : ['-',1];
     } else {
-      goStopCheck[name] = goStopCheck[name] ? goStopCheck[name] : '';
+      goStopCheck[name] = goStopCheck[name] ? [...goStopCheck[name]] : ['',0];
     }
     index ++;
   }
+  console.log("goStopCheck",goStopCheck)
   // *** 리팩토링 하기, showResult 함수로 두기 *** 인자로 참가자 및 최종 진행 거리를 받고 출력만 함
   for(let i = 0; i < participants.length; i++){
-    const result = `${participants[i]} : ${goStopCheck[participants[i]]}` 
+    const result = `${participants[i]} : ${goStopCheck[participants[i]][0]}` 
     print(result);
   }
 
-  // 매번 출력해야 함
+  // 매번 출력해야 함 => 보관 변수를 전역으로 지정
 }
 
 /**
@@ -79,14 +92,22 @@ class App {
   }
 
   async play() {
+    // 게임 세팅
     const participants = await getParticipant()
     const attempt = await getAttempt();
+    
+    // 게임 진행
     // *** 리팩토링 할 때 함수로, 들여쓰기 오버 ***
     print('실행 결과');
     while(this.count < attempt){
-      showResult(participants);
+      await showResult(participants);
       this.count += this.count+1;
     }
+
+    // 게임 종료
+    // *** 리팩토링 할 때 함수로, 들여쓰기 오버 ***
+    // print('최종 우승자 ');
+
   }
 }
 
