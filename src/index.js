@@ -66,7 +66,7 @@ class GamePlay {
 
     for (let i = 0; i < CARS.length; i++) {
       if (CARS[i].length > 5)
-        throw new Error("[ERROR] 이름이 잘못된 형식입니다.");
+        throw new Error("[ERROR] 이름은 5자 이하로 입력해주세요.");
     }
 
     await this.calculateCarMove(INPUT);
