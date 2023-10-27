@@ -1,6 +1,9 @@
 import { Console } from "@woowacourse/mission-utils";
+
 import Messages from "./common/message.js";
+
 import validateCarNameInput from "./utils/validateCarNameInput.js";
+import validateCarNameArray from "./utils/validateCarNameArray.js";
 
 class CarRacing {
   constructor() {
@@ -22,6 +25,8 @@ class CarRacing {
         throw new Error(Messages.RACING_CAR_INPUT_ERROR_MESSAGE);
       }
     });
+    if (!validateCarNameArray(this.cars))
+      throw new Error(Messages.RACING_CAR_DUPLICATE_ERROR_MESSAGE);
   }
 }
 
