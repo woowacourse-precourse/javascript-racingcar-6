@@ -1,4 +1,4 @@
-import { MissionUtils } from '@woowacourse/mission-utils'
+import { MissionUtils } from '@woowacourse/mission-utils';
 import Messages from './Messages.js';
 import Car from './Car.js';
 
@@ -28,16 +28,22 @@ class App {
 
   checkNames(names) {
     names.forEach(name => {
-      if (!name || name.length > 5) {
+      if (name.length > 5) {
         throw new Error(Messages.ERROR_CARS);
       }
     });
   }
 
   checkGameTimes(gameTimes) {
-    if (gameTimes < 0) throw new Error(Messages.ERROR_CNTS_POSITIVE);
-    // todo: check difference of isNaN and isInteger
-    if (Number.isNaN(gameTimes)) throw new Error(Messages.ERROR_CNTS_NAN);
+    if (!gameTimes) throw new Error(Messages.ERROR_CNTS_EMPTY);
+
+    if (!Number.isInteger(Number(gameTimes))) throw new Error(Messages.ERROR_CNTS_TYPE);
+
+    const intTimes = parseInt(gameTimes);
+
+    if(intTimes <= 0) throw new Error(Messages.ERROR_CNTS_RANGE);
+
+    if(Number.isNaN(intTimes)) throw new Error(Messages.ERROR_CNTS_NAN);
   }
 
   displayResult(players, gameTimes) {
