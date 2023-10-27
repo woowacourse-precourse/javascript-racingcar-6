@@ -4,7 +4,7 @@ class RacingCars {
   #cars;
 
   constructor(carNameList) {
-    this.#cars = carNameList.map((carName) => new Car(carName));
+    this.#cars = Array.from(carNameList, (carName) => new Car(carName));
   }
 
   getRacingCarsMovingLog() {
