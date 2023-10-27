@@ -12,7 +12,7 @@ const mockQuestions = (inputs) => {
 };
 
 describe('자동차 경주 게임', () => {
-  test('입력', async () => {
+  test('자동차 이름입력', async () => {
     const inputs = ['pobi,woni'];
     mockQuestions(inputs);
 
@@ -20,6 +20,16 @@ describe('자동차 경주 게임', () => {
     const game = new CarRacingGame();
     const carNames = await game.getCarNames();
     expect(carNames).toEqual('pobi,woni');
+  });
+
+  test('시도 횟수 입력', async () => {
+    const inputs = ['5'];
+    mockQuestions(inputs);
+
+    // given
+    const game = new CarRacingGame();
+    const tryCount = await game.getTryCount();
+    expect(tryCount).toEqual('5');
   });
 
   test('문자 길이 5이상 혹은 0', async () => {
