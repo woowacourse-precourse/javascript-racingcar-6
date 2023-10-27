@@ -21,8 +21,15 @@ const GAME_MESSAGES = {
 };
 
 const ERROR_MESSAGES = {
-  invalidCarNameLength: `[ERROR]자동차 이름은 ${GAME_NUMBERS.carNameMaxLength} 이하만 가능합니다.`,
-  invalidMovementCountNumber: '[ERROR]숫자가 잘못된 형식입니다.',
+  carName: {
+    invalidLength: `자동차 이름은 ${GAME_NUMBERS.carNameMaxLength} 이하만 가능합니다.`,
+    duplicate: '자동차 이름은 중복될 수 없습니다.',
+    blank: '자동차 이름이 공백입니다.',
+  },
+  roundsNumber: {
+    negativeValue: '시도 횟수는 음수일 수 없습니다.',
+    notNumber: '시도 횟수는 숫자만 허용됩니다.',
+  },
 };
 
 export { SYMBOLS, GAME_NUMBERS, GAME_MESSAGES, ERROR_MESSAGES };
