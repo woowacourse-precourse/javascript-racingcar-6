@@ -7,6 +7,10 @@ export default class RacingCar {
     this.#name = name;
   }
 
+  moveRacingCar() {
+    this.#status += 1;
+  }
+
   getRacingCarStatus() {
     return { name: this.#name, status: this.#status };
   }
