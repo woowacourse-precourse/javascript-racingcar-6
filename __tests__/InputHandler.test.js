@@ -51,4 +51,34 @@ describe("사용자 입력 테스트", () => {
       MESSAGE.ENTER_CAR_NAMES
     );
   });
+
+  test.each([
+    ["1", 1],
+    ["23", 23],
+    ["4", 4],
+    ["250", 250],
+  ])("유효한 이동 시도 횟수 입력 - %s", async (input, expectedOutput) => {
+    mockQuestions([input]);
+
+    const inputHandler = new InputHandler();
+    const result = await inputHandler.getMoveAttemptCount();
+
+    expect(result).toBe(expectedOutput);
+  });
+
+  test.each([
+    [" ", ERROR.EMPTY_INPUT],
+    ["10s", ERROR.INVALID_MOVE_ATTEMPT_COUNT],
+    ["joowon", ERROR.INVALID_MOVE_ATTEMPT_COUNT],
+    ["-1", ERROR.INVALID_MOVE_ATTEMPT_COUNT],
+    ["102.3", ERROR.INVALID_MOVE_ATTEMPT_COUNT],
+  ])("이동 시도 횟수 입력 예외 처리 -%s", (input, expectedError) => {
+    mockQuestions([input]);
+
+    const inputHandler = new InputHandler();
+
+    expect(async () => {
+      await inputHandler.getMoveAttemptCount();
+    }).rejects.toThrow(expectedError);
+  });
 });
