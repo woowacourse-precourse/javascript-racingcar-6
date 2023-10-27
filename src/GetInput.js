@@ -26,5 +26,22 @@ class GetInput {
             throw new Error(error.message);
         }
     }
-    
+
+    async GetNumberInput() {
+        try{
+            const USER_NUMBER_INPUT = await Console.readLineAsync(this.GET_NUMBER_NAME_MESSAGE);
+            console.log("");
+            if(!Number(USER_NUMBER_INPUT)) {
+                throw new Error("[ERROR] 시도할 횟수를 숫자로 입력해주세요.");
+            }
+            else if(USER_NUMBER_INPUT == 0) {
+                throw new Error("[ERROR] 시도할 횟수를 1회 이상 입력해주세요.");
+            }
+            return USER_NUMBER_INPUT;
+        }catch(error){
+            throw new Error(error.message);
+        }
+    }
 }
+
+export default GetInput;
