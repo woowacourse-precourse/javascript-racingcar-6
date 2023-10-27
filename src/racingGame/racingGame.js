@@ -8,6 +8,10 @@ import {
 } from "./utils/validation.js";
 
 class RacingGame {
+  constructor() {
+    this.carList = [];
+    this.tryNum = 0;
+  }
   async start() {
     await this.getCarName();
     await this.getTryNum();
@@ -19,6 +23,7 @@ class RacingGame {
       const carNameList = splitInputCarName(inputCarName);
       checkinputCarList(carNameList);
       checkInputCarNameValidation(carNameList);
+      this.carList = carNameList;
     } catch (error) {
       throw error;
     }
@@ -28,9 +33,14 @@ class RacingGame {
     try {
       const inputTryNum = await Console.readLineAsync(GAMEMSG.input_tryNum);
       checkInputTryNumValidation(inputTryNum);
+      this.tryNum = inputTryNum;
     } catch (error) {
       throw error;
     }
+  }
+
+  getRandomNum() {
+    return Random.pickNumberInRange(0, 9);
   }
 }
 export default RacingGame;
