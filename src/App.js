@@ -19,7 +19,7 @@ class App {
 
   hasDuplicates(carNamesArray) {
     const uniqueNames = new Set(carNamesArray);
-    return uniqueNames.size !== carNamesArray.length; //다르면 참 반환
+    return uniqueNames.size !== carNamesArray.length; // 다르면 참 반환
   }
 
   vaildateCarNamesLength(carNamesArray) {
@@ -37,6 +37,10 @@ class App {
       throw new Error('[ERROR] 올바른 값을 입력하세요');
     }
     return counts;
+  }
+
+  randomNumber(){
+    return MissionUtils.Random.pickNumberInRange(0, 9);
   }
 
   async play() {
