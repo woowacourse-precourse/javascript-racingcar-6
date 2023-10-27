@@ -60,9 +60,16 @@ const calcurateScore = (scoreBoard) => {
   const calcuratedScoreBoard = { ...scoreBoard };
   calcuratedScoreBoard.forEach((car) => {
     if (checkCanMove()) {
-      car.score += 1;
+      car.score += '-';
     }
   });
   return calcuratedScoreBoard;
 };
+
+const printScore = (calcuratedScoreBoard) => {
+  calcuratedScoreBoard.forEach((car) => {
+    Console.print(`${car.name} : ${car.score}`);
+  });
+};
+
 export default App;
