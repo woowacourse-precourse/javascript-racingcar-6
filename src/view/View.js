@@ -2,7 +2,7 @@ import { Console } from '@woowacourse/mission-utils';
 import Validation from './validation.js';
 
 export default class View extends Validation {
-  readCarNames() {
+  static readCarNames() {
     const carNames = Console.readLineAsync(
       '경주할 자동차 이름을 입력하세요(이름은 쉼표(,) 기준으로 구분)\n'
     );
@@ -14,7 +14,7 @@ export default class View extends Validation {
     return carNamesToArray;
   }
 
-   readRepeatTime() {
+   static readRepeatTime() {
   	const repeatTime = Console.readLineAsync('시도할 회수는 몇회인가요?\n');
     /**
      * validation 체크 내용 추가
@@ -23,7 +23,7 @@ export default class View extends Validation {
     return parseInt(repeatTime, 10);
   }
 
-  print(message) {
+  static print(message) {
     Console.print(message);
   }
 }
