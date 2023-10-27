@@ -5,13 +5,16 @@ export function isUserInputValid(input) {
   if (isIncludeSpace(input)) {
     throw new Error('[ERROR] 입력에 공백을 제거 해주세요.');
   }
-  if (isInputValid(input)) {
-    throw new Error('[ERROR] 유요하지 않음 입력입니다. 다시시도해 주세요.');
+  if (!isInputValid(input)) {
+    throw new Error('[ERROR] 유요하지 않은 입력입니다. 다시시도해 주세요.');
   }
 }
 
+/**
+ * @param {string} input
+ * */
 function isIncludeSpace(input) {
-  return input.include(' ');
+  return input.includes(' ');
 }
 
 function isInputValid(input) {
@@ -23,8 +26,8 @@ function isInputValid(input) {
  * @param {string} input
  * */
 export function splitCarsInput(input) {
-  const cars = input.split('');
-  carsOverLimitNumber(input);
+  const cars = input.split(',');
+  carsOverLimitNumber(cars);
   isNameDuplicate(cars);
   return cars;
 }
