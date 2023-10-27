@@ -11,9 +11,10 @@ class InputView {
   async readNamesInput() {
     const input = await Console.readLineAsync(GAME_MESSAGES.carNameQuery);
     const names = input.split(SYMBOLS.comma);
-    names.forEach((item) => this.#validator.validateCarName(item));
+    this.#validator.validateCarNames(names);
     return names;
   }
+
   async readRoundsNumberInput() {
     const input = await Console.readLineAsync(GAME_MESSAGES.roundsNumberQuery);
     const roundsNumber = parseInt(input, 10);
