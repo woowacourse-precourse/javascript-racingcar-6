@@ -51,6 +51,7 @@ class App {
 
     async randomInt() {
         //TODO : 랜덤한 값을 반환
+        return MissionUtils.Random.pickNumberInRange(1, 9);
     }
 
     async goForward() {
