@@ -12,7 +12,6 @@ class RacingGame {
   }
 
   async gameProgress() {
-    this.getRandomBoolean();
     this.joinCars = await this.getJoinCarsArray();
     this.repeatNumber = await this.getRepeatNumber();
 
