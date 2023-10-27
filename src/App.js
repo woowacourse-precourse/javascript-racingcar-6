@@ -1,17 +1,21 @@
 import { Console } from "@woowacourse/mission-utils";
+import Race from "./Race";
 
 class App {
   async play() {
     const arrCarName = await this.getCarNames();
     const totalRound = await this.getTotalRound();
+    const race = new Race(arrCarName);
 
     this.validateInput(arrCarName, totalRound);
-    /*
-      Todo :
-      raceState - [{'이름1' : '이동 거리'}, {'이름2' : '이동 거리'}] 형태의 배열
-      displayRaceStateOfRound(raceState);
+    
+    for (let i = 0; i < totalRound; i++) {
+      race.roundStart();
+      // race.getRaceState == [{name1 : '이름', distance : '---'}, {name2 : '이름2', distance : '--'} ...]
+      this.displayRaceStateOfRound(race.getRaceState());
+    }
 
-      winners - 우승자 명단이 들어있는 배열
+    /*winners - 우승자 명단이 들어있는 배열
       displayWinners(winners);
     */
   }
