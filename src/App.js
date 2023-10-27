@@ -1,5 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
-import Race from "./Race";
+import Race from "./Race.js";
 
 class App {
   async play() {
