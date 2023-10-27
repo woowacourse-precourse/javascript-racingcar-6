@@ -9,11 +9,11 @@ describe('InputValidator', () => {
     expect(InputValidator.hasValidCountCars(count)).toBe(false);
   });
 
-  test.each(invalidCarNames)('자동차 이름이 1글자 이상 5글자 이하인지 테스트한다.', (carNames) => {
-    expect(InputValidator.hasValidCarName(carNames)).toBe(false);
+  test.each(invalidCarNames)('자동차 이름이 1글자 이상 5글자 이하인지 테스트한다.', (carName) => {
+    expect(InputValidator.hasValidCarName(carName)).toBe(false);
   });
 
-  test.each(invalidRounds)('시도할 횟수가 1이상인 숫자인지 테스트한다.', (rounds) => {
-    expect(InputValidator.hasValidCarName(rounds)).toBe(false);
+  test.each(invalidRounds)('시도할 횟수가 1이상인 숫자인지 테스트한다.', (round) => {
+    expect(InputValidator.hasValidRoundNumber(round)).toBe(false);
   });
 });
