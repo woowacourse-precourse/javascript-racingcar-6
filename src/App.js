@@ -1,4 +1,4 @@
-import ConvertInputTo from './modules/ConverInputTo.js';
+import ConvertInputTo from './modules/ConvertInputTo.js';
 
 class App {
   async play() {
