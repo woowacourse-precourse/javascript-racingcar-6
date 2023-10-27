@@ -40,11 +40,9 @@ class App {
   }
 
   static #validateNameLength(carNameArray) {
-    carNameArray.forEach((carName) => {
-      if (CONDITION.NAME_LENGTH(carName)) {
-        throw new Error(ERROR_MESSAGE.NAME_LENGTH);
-      }
-    });
+    if (carNameArray.some(CONDITION.NAME_LENGTH)) {
+      throw new Error(ERROR_MESSAGE.NAME_LENGTH);
+    }
   }
 
   static #validateTryCount(count) {
