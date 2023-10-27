@@ -14,6 +14,7 @@ const ERROR = {
 	NO_ALONE: '두 명 이상을 입력해주세요.',
 	ONLY_UNDER_FIVE: '5자리 이하만 가능합니다.',
 	ONLY_NUMBER: '숫자만 입력가능합니다.',
+	NO_ZERO:'1 이상을 입력해주세요.'
 };
 
 const REG_EXP = {
