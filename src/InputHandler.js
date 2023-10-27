@@ -13,6 +13,11 @@ class InputHandler {
 
   async getCarNameArray() {
     const inputStr = await Console.readLineAsync(MESSAGE.ENTER_CAR_NAMES);
+
+    if (inputStr.endsWith(",")) {
+      throw new Error(ERROR.INPUT_ENDS_WITH_COMMA);
+    }
+
     if (inputStr.trim() === "") {
       throw new Error(ERROR.EMPTY_INPUT);
     }
