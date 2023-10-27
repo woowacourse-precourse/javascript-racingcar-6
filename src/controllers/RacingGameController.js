@@ -28,10 +28,11 @@ class RacingGameController {
 
   #handleRoundsNumberInput(roundsNumber) {
     for (let i = 0; i < roundsNumber; i += 1) {
-      const roundResult = this.#racingGame.moveAllCars();
+      this.#racingGame.moveAllCars();
+      const roundResult = this.#racingGame.getAllCarsMovementResult();
       outputView.printResult(roundResult);
     }
-    this.#racingGame.setWinners();
+    this.#racingGame.concludeGame();
   }
 }
 
