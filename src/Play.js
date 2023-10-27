@@ -12,10 +12,20 @@ export const makeRandomNums = (cars) => {
   return result;
 };
 
-export const isForward = (car) => {
-  const num = car[1];
+export const isForward = (cars) => {
+  const result = [];
 
-  return num > 3;
+  cars.forEach((car) => {
+    const [carName, randomNum] = car;
+
+    if (randomNum > 3) {
+      result.push([carName, true]);
+    } else {
+      result.push([carName, false]);
+    }
+  });
+
+  return result;
 };
 
 export const checkChampion = (cars) => {
