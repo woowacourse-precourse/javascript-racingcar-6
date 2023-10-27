@@ -1,11 +1,13 @@
 class Car {
   constructor(name) {
     this._name = name;
-    this._position = "";
+    this._position = '';
   }
 
   move(value) {
-    if (value >= 4) this._position += "-";
+    if (value >= 4) {
+      this._position += '-';
+    }
   }
 
   printPosition() {
