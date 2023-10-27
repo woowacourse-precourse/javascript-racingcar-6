@@ -1,7 +1,10 @@
 import { Console } from '@woowacourse/mission-utils';
+import { GAME_MESSAGE } from '../constants/gameMessage.js';
 
 export default class InputReader {
-  constructor() {}
+  async carNames() {
+    this.#onRead(GAME_MESSAGE.REQUEST_CAR_NAMES);
+  }
 
   async #onRead(message) {
     try {
