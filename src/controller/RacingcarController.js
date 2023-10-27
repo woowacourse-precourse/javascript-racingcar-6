@@ -11,8 +11,10 @@ class RacingcarController{
     constructor(){
         this.#playCount = 1;
         this.#racingCarPlay = '';
+        this.racingCarWinner = [];
         this.comm = new Comm();
         this.racing = new Racing(this);
+        this.userInput = new UserInput(this);
     }
 
     async racingCarStart(){
@@ -25,7 +27,9 @@ class RacingcarController{
             const RACING_CAR_FORWARD_NUMBER = this.racing.randomForwardCount(RACING_OUTPUT_NAME.length);
             this.#racingCarPlay = this.racing.racingPlay(RACING_OUTPUT_NAME, RACING_CAR_FORWARD_NUMBER);
             this.comm.outputRacingMessage(this.#racingCarPlay);
+            this.#playCount++;
         }
+        const RACING_CAR_RESULT = this.racing.racingCarResult(this.#racingCarPlay);
     }
 }
 
