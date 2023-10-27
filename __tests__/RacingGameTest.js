@@ -14,7 +14,7 @@ describe('CarRacingGame', () => {
     carRacingGame.race(randomNumberGenerator);
   });
 
-  test('라운드마다 객체배열 형태의 진행결과값을 반환하는지 테스트', () => {
+  test('라운드마다 객체배열 형태의 진행결과값을 반환하는지 테스트한다.', () => {
     const expected = [
       { name: 'car1', progress: 0 },
       { name: 'car2', progress: 1 },
@@ -28,5 +28,11 @@ describe('CarRacingGame', () => {
     const expected = ['car2', 'car3'];
 
     expect(carRacingGame.getWinners()).toEqual(expected);
+  });
+
+  test('라운드가 마지막일때, 우승자를 반환하는지 테스트한다.', () => {
+    expect(carRacingGame.isPlaying()).toBe(false);
+
+    expect(carRacingGame.getWinners()).toEqual(['car2', 'car3']);
   });
 });
