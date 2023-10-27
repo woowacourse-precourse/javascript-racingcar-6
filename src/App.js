@@ -9,6 +9,7 @@ class App {
 
   async play() {
     await this.setInitialState();
+    this.startRace();
   }
 
   async setInitialState() {
@@ -23,6 +24,18 @@ class App {
 
   async getTryCount() {
     this.tryCount = await Print.getTryCount();
+  }
+
+  startRace() {
+    for (let count = 0; count < this.tryCount; count++) {
+      this.getResultOfEachCar();
+    }
+  }
+
+  getResultOfEachCar() {
+    for (let i = 0; i < this.carInstanceArray.length; i++) {
+      this.carInstanceArray[i].decideGo();
+    }
   }
 }
 
