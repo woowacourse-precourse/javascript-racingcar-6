@@ -16,7 +16,7 @@ class Game {
       this.playRound();
       i++;
     }
-    console.log(this.result);
+    this.printResult();
   };
 
   playRound = () => {
@@ -28,6 +28,22 @@ class Game {
   };
   initState = () => {
     this.currState = new Array(this.carNameList.length).fill(0);
+  };
+
+  printResult = () => {
+    Console.print("");
+    Console.print("실행 결과");
+
+    this.result.forEach((state) => {
+      this.printState(state);
+    });
+  };
+
+  printState = (state) => {
+    state.forEach((pos, index) => {
+      Console.print(`${this.carNameList.at(index)} : ${"-".repeat(pos)}`);
+    });
+    Console.print("");
   };
 
   getCarNameList = async () => {
