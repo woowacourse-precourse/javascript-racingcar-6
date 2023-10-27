@@ -9,6 +9,11 @@ const inputsWithInvalidCarName = [
   ["pobii", "pobibi"],
 ];
 const inputsWithInvalidCarsLength = [["q"], ["qw"], ["qwe"], ["qwer"]];
+const inputsWithBlank = [
+  ["pob i", "woni"],
+  ["pob i", "w oni"],
+  ["po bi", "wo ni"],
+];
 
 let validate;
 
@@ -96,6 +101,32 @@ describe("자동차명 입력에 대한 Validate 클래스 테스트", () => {
     inputsWithInvalidCarsLength.forEach((input) => {
       expect(() => validate.checkEachOfCarsIsValid(input)).toThrow(
         new Error(ERROR.CARS_LENGTH)
+      );
+    });
+  });
+
+  test("자동차 이름에 공백이 포함되지 않았다면 false 반환.", () => {
+    const inputsWithoutBlank = [
+      ["pobi", "woni"],
+      ["qwer", "weaar"],
+      ["as", "lie"],
+    ];
+
+    inputsWithoutBlank.forEach((input) => {
+      expect(validate.eachCarNameHasBlank(input)).toBeFalsy();
+    });
+  });
+
+  test("자동차 이름에 공백이 포함되었다면 true 반환.", () => {
+    inputsWithBlank.forEach((input) => {
+      expect(validate.eachCarNameHasBlank(input)).toBeTruthy();
+    });
+  });
+
+  test("자동차 이름에 공백이 포함되었다면 에러가 발생한다.", () => {
+    inputsWithBlank.forEach((input) => {
+      expect(() => validate.checkEachOfCarsIsValid(input)).toThrow(
+        new Error(ERROR.CAR_NAME_HAS_BLANK)
       );
     });
   });
