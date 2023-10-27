@@ -4,6 +4,7 @@ const MESSAGE = {
   ENTER_CAR_NAME:
     '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
   ERROR: '[ERROR] 입력이 올바른 형식이 아닙니다.',
+  FINAL_WINNER: '최종 우승자 : ',
 };
 
 class App {
@@ -72,4 +73,37 @@ const printScore = (calcuratedScoreBoard) => {
   });
 };
 
+const printGameResult = (calcuratedScoreBoard) => {
+  const winner = findWhoIsWinner(calcuratedScoreBoard);
+  const winningString = winner.reduce(
+    (acc, cur) => (acc += `${cur.name}, `),
+    '최종 우승자 : '
+  );
+
+  Console.print(winningString.substring(0, winningString.length - 2));
+};
+
+const findWhoIsWinner = (calcuratedScoreBoard) => {
+  const winner = [];
+
+  calcuratedScoreBoard.forEach((car, index) => {
+    const winnerLastIndex = winner[winner.length - 1]?.score.length;
+    if (index === 0) {
+      winner.push(car);
+      return;
+    }
+
+    if (car.score.length > winnerLastIndex) {
+      winner.length = 0;
+      winner.push(car);
+      return;
+    }
+    if (car.score.length === winnerLastIndex) {
+      winner.push(car);
+      return;
+    }
+  });
+
+  return winner;
+};
 export default App;
