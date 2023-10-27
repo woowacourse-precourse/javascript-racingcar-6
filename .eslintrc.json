@@ -12,6 +12,6 @@
     },
     "rules": {
       "class-methods-use-this": "off",
-      "import/extensions": 1
+      "import/extensions": "off"
     }
 }
