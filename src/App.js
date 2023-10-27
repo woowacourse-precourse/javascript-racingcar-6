@@ -52,6 +52,8 @@ class App {
       });
       Console.print(' ');
     });
+
+    Console.print(`${MESSAGE.FINAL_WINNER} : ${this.carRacingGame.getWinner().join(', ')}`);
   }
 }
 
