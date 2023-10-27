@@ -4,6 +4,7 @@ class App {
   constructor() {
     this.strCarName = "";
     this.arrCarName = [];
+    this.attempts = [];
   }
   async play() {
     // 1-a
