@@ -15,4 +15,13 @@ class Output {
         }
         console.log("");
     }
+    RunWhileFinish() {
+        let IsFinish = false;
+        while(!IsFinish){
+            this.PrintResult(carMotion.MoveOrStop(this.CAR,this.MOVE_COUNT));
+            if(this.MOVE_COUNT.join('').indexOf(this.TRY) != '-1') {
+                IsFinish = true;
+            }
+        }
+    }
 }
