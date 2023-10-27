@@ -4,6 +4,7 @@ import InputView from './view/InputView.js';
 
 class App {
   #refree;
+  #totalRounds;
 
   constructor() {
     this.#refree = new Refree();
@@ -11,7 +12,10 @@ class App {
 
   async play() {
     const carNames = await InputView.getCarNames();
+
     this.#refree.registerCars(carNames);
+
+    this.#totalRounds = await InputView.getTotalRounds();
   }
 }
 
