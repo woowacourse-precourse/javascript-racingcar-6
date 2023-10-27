@@ -1,7 +1,7 @@
 import { Random, Console } from "@woowacourse/mission-utils";
 class GameModel {
   constructor() {
-    this.carModels = [];
+    this.carModels = {};
   }
 
   // this.carModels = [ 'a', 'b', 'c' ]
@@ -22,9 +22,13 @@ class GameModel {
     if (carModelsArr.length !== set.size) {
       throw new Error("[ERROR] 이름이 중복되었습니다.");
     }
+    Console.print(carModelsArr);
 
-    this.carModels = carModelsArr;
-    return this.carModels;
+    carModelsArr.forEach((car) => {
+      this.carModels[car] = {
+        countForwardArr: [],
+      };
+    });
   }
 
   // this.attempt = 5
@@ -49,6 +53,8 @@ class GameModel {
 
 const model = new GameModel();
 // model.getCarModel();
-model.getRaceAttempt();
+// await model.getRaceAttempt();
+// model.getForwardCount();
+// model.repeatRace();
 
 export default GameModel;
