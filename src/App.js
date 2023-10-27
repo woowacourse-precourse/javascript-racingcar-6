@@ -39,8 +39,18 @@ class App {
     return counts;
   }
 
-  randomNumber(){
+  generateRandomNumber() {
     return MissionUtils.Random.pickNumberInRange(0, 9);
+  }
+
+  async moveCarPositions(carNames, carPositions) {
+    for (let i = 0; i < carNames.length; i++) {
+      const name = carNames[i];
+      const randomNumber = this.generateRandomNumber();
+      if (randomNumber >= 4) {
+        carPositions[name]++;
+      }
+    }
   }
 
   async play() {
@@ -49,6 +59,16 @@ class App {
       const carNames = await this.getCarNames();
       this.nameException(carNames);
       const counts = await this.tryCounts();
+
+      const carPositions = {};
+      for (const name of carNames) {
+        carPositions[name] = 0;
+      }
+
+      for (let i = 0; i < counts; i++) {
+        await this.moveCarPositions(carNames, carPositions);
+      }
+
     } catch (error) {
       throw new Error(error.message);
     }
