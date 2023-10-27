@@ -1,8 +1,9 @@
 export default class Validation {
   static hasSpace(carNames) {
-    if (carNames.includes(' ')) {
-      return true;
-    }
-    return false;
+    carNames.foreach((carName) => {
+      if (carName.includes(' ')) {
+        throw new Error('space');
+      }
+    });
   }
 }
