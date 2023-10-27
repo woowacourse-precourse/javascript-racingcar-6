@@ -29,6 +29,7 @@ class App {
       MESSAGE.input.numberOfTimes
     );
     this.validateNumberOfTimes(answerOfNumber);
+    this.printExecutionResult();
     return;
   }
 
@@ -63,6 +64,22 @@ class App {
       CONDITION.rangeEnd
     );
     return random >= CONDITION.movingForward;
+  }
+
+  printExecutionResult() {
+    Console.print(MESSAGE.result.execution);
+    const updatedCars = new Map([...this.cars]);
+    for (let i = 1; i <= this.numberOfTimes; i += 1) {
+      const result = [];
+      updatedCars.forEach((value, key) => {
+        if (this.decideToMoveForward()) {
+          updatedCars.set(key, (value += 1));
+        }
+        result.push(`${key} : ${MESSAGE.result.distance.repeat(value)}\n`);
+      });
+      Console.print(result.join(''));
+    }
+    this.cars = updatedCars;
   }
 }
 
