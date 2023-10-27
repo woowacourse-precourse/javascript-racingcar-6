@@ -4,6 +4,7 @@ class App {
   constructor(){
     this.cars = new Map();
     this.try = 0;
+    this.max = 0;//최대 이동
   }
 
   async play() {
@@ -14,7 +15,10 @@ class App {
     const tryInput = await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
     this.checkTryNumber(tryInput);
     this.try = Number(tryInput)
+    this.racing();
 
+    //최종 결과
+    this.result();
   }
 
   carInit(input){
@@ -60,6 +64,52 @@ class App {
     if(Number(number)===0){
       throw new Error("[ERROR] 1이상의 숫자를 입력해주세요.")
     }
+  }
+
+  /**
+   * 레이싱 진행
+   * @returns 
+   */
+  racing(){
+    if(this.try===0) return;
+
+    Console.print("실행 결과")
+    this.cars.forEach((value,key)=>{
+      const number = MissionUtils.Random.pickNumberInRange(0, 9);
+      //4이상이면 이동
+      if(number>=4){
+        this.cars.set(key,value+1);
+        this.max = Math.max(value+1,this.max)
+      }
+      this.printCar(key);
+    })
+
+    this.try--;
+    this.racing();
+  }
+
+  /**
+   * 현재 자동차의 상태 출력
+   */
+  printCar(name){
+    let num = this.cars.get(name);
+    
+    //n번 반복
+    Console.print(`${name} : ${"-".repeat(num)}`);
+  }
+
+  /**
+   * 최종 결과
+   */
+  result(){
+    let result = [];
+    this.cars.forEach((value,key)=>{
+      if(this.max===value){
+        result.push(key);
+      }
+    })
+
+    Console.print(`최종 우승자 : ${result.join(", ")}`);
   }
 
 }
