@@ -16,7 +16,7 @@ const checkCarNamesAreValid = (userInput) => {
 
   const inputHaveOverName = input.find((carName) => carName.length > 5);
 
-  if (inputHaveOverName) {
+  if (inputHaveOverName || inputHaveBlank) {
     throw new Error('[ERROR] 입력이 올바른 형식이 아닙니다.');
   }
   return input;
@@ -52,7 +52,7 @@ const createScoreBoard = (userInput) => {
     scoreBoard.push({ name: car, score: '' });
   });
 
-  console.log(scoreBoard);
+  return scoreBoard;
 };
 
 const createRandomNumber = () => {
@@ -66,7 +66,7 @@ const checkCanMove = () => {
 };
 
 const calcurateScore = (scoreBoard) => {
-  const calcuratedScoreBoard = { ...scoreBoard };
+  const calcuratedScoreBoard = [...scoreBoard];
   calcuratedScoreBoard.forEach((car) => {
     if (checkCanMove()) {
       car.score += '-';
@@ -79,6 +79,7 @@ const printScore = (calcuratedScoreBoard) => {
   calcuratedScoreBoard.forEach((car) => {
     Console.print(`${car.name} : ${car.score}`);
   });
+  Console.print('');
 };
 
 const printGameResult = (calcuratedScoreBoard) => {
@@ -114,4 +115,20 @@ const findWhoIsWinner = (calcuratedScoreBoard) => {
 
   return winner;
 };
+
+const playRacingGame = async () => {
+  const carNames = await getCarNames();
+  let tryNumber = await getTryNumber();
+  let scoreBoard = createScoreBoard(carNames);
+
+  while (tryNumber !== 0) {
+    scoreBoard = calcurateScore(scoreBoard);
+    printScore(scoreBoard);
+    tryNumber -= 1;
+  }
+
+  printGameResult(scoreBoard);
+};
+
+playRacingGame();
 export default App;
