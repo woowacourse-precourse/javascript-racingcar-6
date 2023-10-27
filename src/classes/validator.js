@@ -12,6 +12,12 @@ class Validator {
       throw new Error(ERROR_MESSAGE.INVALID_INPUT);
     }
   }
+
+  static overTwoNames(names) {
+    if (!names.includes(',')) {
+      throw new Error(ERROR_MESSAGE.LESS_TWO_NAME);
+    }
+  }
 }
 
 export default Validator;
