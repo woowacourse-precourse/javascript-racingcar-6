@@ -4,7 +4,7 @@ const INQUIRY = {
 };
 
 const ERROR = {
-  INVALID_NAME: '[ERROR] 자동차 이름은 알파벳과 숫자로만 구성되어야 합니다.',
+  INVALID_NAME: '[ERROR] 자동차 이름은 공백이 될 수 없습니다.',
   TOO_LONG_NAME: '[ERROR] 자동차 이름은 5자 이하로 설정되어야 합니다.',
   DUPLICATED_NAME: '[ERROR] 중복된 자동차 이름이 존재합니다.',
   NOT_NUMBER: '[ERROR] 시도 횟수는 유효한 숫자로 설정되어야 합니다.',

@@ -6,15 +6,15 @@ function isEveryCarNamesUnique(carNamesArray) {
   return carNamesSet.size === carNamesArray.length;
 }
 
-function isAlphabetOrInteger(carName) {
-  return /^[a-zA-Z0-9]+$/.test(carName);
+function isSpace(carName) {
+  return carName.trim().length === 0;
 }
 
 function isValidCarNames(carNamesString) {
   const carNamesArray = carNamesString.split(',');
 
   for (const carName of carNamesArray) {
-    if (!isAlphabetOrInteger(carName)) {
+    if (isSpace(carName)) {
       throw new Error(ERROR.INVALID_NAME);
     }
 
