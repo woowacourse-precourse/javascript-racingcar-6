@@ -17,3 +17,5 @@ export const ERROR = {
   COUNT_IS_NOT_NUMBER: "[ERROR] 실행 횟수는 숫자만 입력할 수 있습니다.",
   COUNT_LESS_THAN_MIN: `[ERROR] 실행 횟수는 ${MIN_TRY_COUNT} 이상만 가능합니다.`,
 };
+
+export const RESULT_MESSAGE = (name, result) => `${name} : ${result}`;

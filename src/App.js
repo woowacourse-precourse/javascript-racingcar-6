@@ -34,7 +34,11 @@ class App {
 
   getResultOfEachCar() {
     for (let i = 0; i < this.carInstanceArray.length; i++) {
-      this.carInstanceArray[i].decideGo();
+      const [name, result] = this.carInstanceArray[i]
+        .decideGo()
+        .getCurrentCarState();
+
+      Print.showRaceResult(name, result);
     }
   }
 }

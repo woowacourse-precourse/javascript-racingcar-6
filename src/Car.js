@@ -19,7 +19,11 @@ class Car {
       this.result += GO_SYMBOL;
     }
 
-    console.log(this.name, this.result);
+    return this;
+  }
+
+  getCurrentCarState() {
+    return [this.name, this.result];
   }
 }
 
