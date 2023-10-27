@@ -11,6 +11,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
+  ignorePatterns: ["docs"],
   rules: {
     // 들여쓰기를 2까지만 허용한다.
     'max-depth': ['error', 2],
