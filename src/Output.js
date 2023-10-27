@@ -1,6 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
-import CarMotion from './CarMotion';
-import FindIndex from './FindIndex';
+import CarMotion from './CarMotion.js';
+import FindIndex from './FindIndex.js';
 
 const carMotion = new CarMotion;
 const findIndex = new FindIndex;
