@@ -32,6 +32,10 @@ class App {
 		return cars;
 	}
 
+	getMax(cars = {}) {
+		return Object.values(cars).reduce((a, c) => (a > c ? a : c), 0);
+	}
+
 	async play() {}
 }
 

@@ -100,4 +100,33 @@ describe('함수 기능 유닛 테스트', () => {
 			expect(realResult).toEqual(expectedResult);
 		});
 	});
+
+	describe('getMax', () => {
+		test.each([{ values: [1, 0, 0] }, { values: [0, 1, 0] }, { values: [0, 0, 1] }])(
+			'최댓값이 1개인 경우',
+			({ values }) => {
+				const input = Object.fromEntries(Array.from(Array(3), (_, i) => [CARS_NAME[i], values[i]]));
+				const expectedResult = 1;
+				const realResult = app.getMax(input);
+				expect(realResult).toEqual(expectedResult);
+			},
+		);
+
+		test.each([{ values: [1, 1, 0] }, { values: [1, 0, 1] }, { values: [0, 1, 1] }])(
+			'최댓값이 2개인 경우',
+			({ values }) => {
+				const input = Object.fromEntries(Array.from(Array(3), (_, i) => [CARS_NAME[i], values[i]]));
+				const expectedResult = 1;
+				const realResult = app.getMax(input);
+				expect(realResult).toEqual(expectedResult);
+			},
+		);
+
+		test.each([{ values: [1, 1, 1] }])('최댓값이 3개인 경우', ({ values }) => {
+			const input = Object.fromEntries(Array.from(Array(3), (_, i) => [CARS_NAME[i], values[i]]));
+			const expectedResult = 1;
+			const realResult = app.getMax(input);
+			expect(realResult).toEqual(expectedResult);
+		});
+	});
 });
