@@ -7,4 +7,9 @@ export default class InputView {
     );
     return input.split(",");
   }
+
+  async promptRaceRound() {
+    const input = await Console.readLineAsync("시도할 횟수는 몇 회인가요?");
+    return input;
+  }
 }
