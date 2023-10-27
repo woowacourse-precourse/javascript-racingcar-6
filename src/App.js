@@ -19,6 +19,11 @@ class App {
         throw new Error("[ERROR] : 자동차 이름은 5글자 이내로 입력해야 합니다!");
       }
     });
+
+    // 1-d
+    this.attempts = await MissionUtils.Console.readLineAsync(
+      "시도할 횟수는 몇 회인가요?"
+    );
   }
 }
 
