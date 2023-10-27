@@ -1,3 +1,9 @@
-class OutputView {}
+class OutputView {
+  printStartMessage() {}
+
+  printProgress() {}
+
+  printWinnerCar() {}
+}
 
 export default OutputView;
