@@ -1,8 +1,12 @@
-import startRacing from './functions/startRacing/index.js';
+import startRacing from './functions/startRacing';
 
 class App {
+  constructor() {
+    this.startRacing = startRacing;
+  }
+
   async play() {
-    await startRacing();
+    await this.startRacing();
   }
 }
 

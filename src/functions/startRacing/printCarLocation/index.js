@@ -1,4 +1,4 @@
-import { Console, MissionUtils } from '@woowacourse/mission-utils';
+import { Console } from '@woowacourse/mission-utils';
 
 const printCarLocation = (racingCarLocation) => {
   const locationInfoList = Object.entries(racingCarLocation);

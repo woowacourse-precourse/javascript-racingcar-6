@@ -1,13 +1,17 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 
 const playOneRound = (racingCarLocation) => {
-  const racingCarList = Object.keys(racingCarLocation);
+  const copiedRacingCarLocation = { ...racingCarLocation };
+  const racingCarList = Object.keys(copiedRacingCarLocation);
 
   racingCarList.forEach((racingCar) => {
     const randomNum = MissionUtils.Random.pickNumberInRange(0, 9);
-    const goOrNot = randomNum < 4 ? 0 : 1;
-    racingCarLocation[racingCar] += goOrNot;
+    if (randomNum < 4) {
+      copiedRacingCarLocation[racingCar] += 1;
+    }
   });
+
+  return copiedRacingCarLocation;
 };
 
 export default playOneRound;
