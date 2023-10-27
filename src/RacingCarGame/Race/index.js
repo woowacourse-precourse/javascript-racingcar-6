@@ -20,8 +20,8 @@ class Race {
 
   makeOneLapResult() {
     return (
-      this.cars.reduce((result, car) => result + car.toStringPosition(), '') +
-      '\n'
+      this.cars.map((car) => car.toStringPosition()).join(SYMBOLS.lineBreak) +
+      SYMBOLS.lineBreak
     );
   }
 
@@ -34,12 +34,8 @@ class Race {
     const maxMoveCount = this.calMaxMove();
 
     return this.cars
-      .reduce((arr, car) => {
-        if (maxMoveCount === car.countMove()) {
-          return [...arr, car.name];
-        }
-        return arr;
-      }, [])
+      .filter((car) => maxMoveCount === car.countMove())
+      .map((car) => car.name)
       .join(SYMBOLS.winnerDivider);
   }
 }
