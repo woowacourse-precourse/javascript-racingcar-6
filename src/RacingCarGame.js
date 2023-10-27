@@ -18,4 +18,8 @@ class RacingCarGame {
   printAdvanceResult() {
     return `${this.name} : ${'-'.repeat(this.advance)}`;
   }
+
+  resetAdvance() {
+    this.advance = 0;
+  }
 }
