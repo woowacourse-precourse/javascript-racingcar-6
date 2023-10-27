@@ -24,3 +24,5 @@ class Util {
 		return winnersList.join(', ');
 	}
 }
+
+export default Util;
