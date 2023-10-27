@@ -91,4 +91,6 @@ describe("유닛 테스트", () => {
     const output = await carRace.readTryNumber();
     expect(output).toEqual(99);
   });
+
+  test("handleRaceResult 출력 테스트", () => {});
 });

@@ -1,5 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import Car from "./Car";
+import Car from "./Car.js";
 class CarRace {
   #cars;
   #tryNumber;
@@ -96,7 +96,22 @@ class CarRace {
   }
 
   handleRaceResult() {
-    // 2. 시도 횟수를 토대로 실행 결과를 출력합니다.
+    MissionUtils.Console.print("실행 결과");
+    // 1. 시도 횟수만큼 전진 혹은 정지 합니다. 이 값은 랜덤으로 정합니다.
+    let tryOrder = 0;
+    let printString = "";
+
+    while (tryOrder < this.#tryNumber) {
+      this.#cars.forEach((carClass) => {
+        const RANDOM = MissionUtils.Random.pickNumberInRange(0, 9);
+        if (RANDOM >= 4) carClass.setDistancePlusOne();
+        printString += `${carClass.getName()} : ${carClass.getDistanceString()}\n`;
+      });
+      printString += "\n";
+      tryOrder += 1;
+    }
+
+    MissionUtils.Console.print(printString);
     // 3. 우승자를 출력합니다.
   }
 }
