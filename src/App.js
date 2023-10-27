@@ -1,5 +1,7 @@
+import { GAME } from './pages/texts.js';
+
 class App {
-  async play() {}
+    async play() {}
 }
 
 export default App;
