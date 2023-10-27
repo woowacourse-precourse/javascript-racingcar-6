@@ -29,7 +29,10 @@ class App {
       const rounds = parseInt(await Console.readLineAsync("시도할 횟수는 몇 회인가요? "));
 
       Console.print("\n" + "실행 결과");
-      this.startRace(car, rounds)
+      this.startRace(car, rounds)  // 경기 시작
+
+      const winner = this.raceWinner(car);
+      Console.print(`\n최종 우숭자: ${winner}`);
       
     } catch (error){
       Console.print(error.message);
@@ -43,14 +46,16 @@ class App {
       Console.print("\n");
       car.forEach(player => {
         player.move();
-        Console.print(`${player.name}: ${player.getPosition()}`);
+        Console.print(`${player.name}:${player.getPosition()}`);
       });
     }
   }
 
   // 우승자
-  raceWinner(){
-
+  raceWinner(car){
+    const finPosition = Math.max(...car.map(player => player.position));  // 가장 큰 위치 값 찾기
+    const jointWinner = car.filter(player => player.position === finPosition)
+    return jointWinner.map(winner => winner.name).join(', ');
   }
 }
 
