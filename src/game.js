@@ -1,8 +1,8 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 
 export default class Game {
-  start() {
-    this.enterCarNames();
+  async start() {
+    await this.enterCarNames();
   }
 
   async enterCarNames() {
@@ -11,10 +11,11 @@ export default class Game {
     );
     const carNameStr = await MissionUtils.Console.readLineAsync('');
     const carList = carNameStr.split(',');
-    console.log(carList);
 
     if (carList.filter((item) => item.length > 5).length) {
       throw new Error('[ERROR] 자동차 이름은 5자 이하만 가능합니다.');
     }
+
+    return carList;
   }
 }
