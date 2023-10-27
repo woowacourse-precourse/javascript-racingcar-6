@@ -17,6 +17,13 @@ class Race {
       car.move();
     });
   }
+
+  makeOneLapResult() {
+    return (
+      this.cars.reduce((result, car) => result + car.toStringPosition(), '') +
+      '\n'
+    );
+  }
 }
 
 export default Race;
