@@ -34,8 +34,9 @@ class InputView {
   static isValidCarNames(carNames) {
     const isUnderFive = carNames.every((carName) => carName.length <= 5);
     const isOverOne = carNames.length >= 1;
+    const isRepeat = new Set(carNames).size === carNames.length;
 
-    return isUnderFive && isOverOne;
+    return isUnderFive && isOverOne && isRepeat;
   }
 
   static isValidTryCount(tryCount) {
