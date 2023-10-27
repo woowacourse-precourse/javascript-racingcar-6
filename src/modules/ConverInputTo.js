@@ -8,5 +8,6 @@ class ConvertInputTo {
   static async carList() {
     const inputString = await Console.readLineAsync(query);
     ErrorCheck.carListString(inputString);
+    return inputString.split(',');
   }
 }
