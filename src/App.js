@@ -10,6 +10,7 @@ class App {
   async play() {
     await this.gameStart();
     this.gameProgress();
+    this.gameOver();
   }
 
   async gameStart() {
@@ -30,6 +31,24 @@ class App {
 
     // car name object 데이터를 전역적으로 사용할 수 있게 바꿈
     this.carNameObjects = carNameObjects;
+  }
+
+  gameOver() {
+    const maxCarData = this.carNameObjects[0];
+    const maxCarNames = [];
+
+    // 주어진 car name object에서 우승자를 찾아내는 코드
+    this.carNameObjects.map((car) => {
+      let currCarPosition = car.getCarPosition();
+      let maxCarPosition = maxCarData.getCarPosition();
+
+      if (currCarPosition >= maxCarPosition) {
+        maxCarNames.push(car.getCarName());
+        maxCarPosition = currCarPosition;
+      }
+    });
+
+    Console.print("최종 우승자 : " + maxCarNames.join(", "));
   }
 
   printCarNameStatus(carNameObjects) {
