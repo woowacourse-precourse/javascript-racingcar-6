@@ -4,6 +4,7 @@ class App {
   async play() {
     const cars = await this.inputCarNames();
     await this.exportResult(cars);
+    return;
   }
 
   async inputCarNames() {
