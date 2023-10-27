@@ -7,6 +7,6 @@ export default class Name {
 
   #validationSize(string) {
     if (0 < string.length <= 5)
-      throw new Error("[ERROR] 이름은 최대 5자까지만 가능합나디.");
+      throw new Error("[ERROR] 이름은 공백이 아니고 5자 이하여야합니다.");
   }
 }
