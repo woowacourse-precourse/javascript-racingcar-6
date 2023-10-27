@@ -3,16 +3,44 @@ import { Console, Random } from "@woowacourse/mission-utils";
 class App {
   constructor() {
     this.carNames = [];
+    this.carNameObjects = [];
     this.roundCount = 0;
   }
 
   async play() {
     await this.gameStart();
+    this.gameProgress();
   }
 
   async gameStart() {
     await this.getCarNames();
     await this.getRoundCount();
+  }
+
+  gameProgress() {
+    const carNameObjects = this.carNames.map((carName) => new Car(carName));
+
+    Console.print("\n실행 결과");
+
+    // round count 만큼 반복문을 돌면서 결과값을 출력
+    for (let i = 0; i < this.roundCount; i++) {
+      this.printCarNameStatus(carNameObjects);
+      Console.print("\n");
+    }
+
+    // car name object 데이터를 전역적으로 사용할 수 있게 바꿈
+    this.carNameObjects = carNameObjects;
+  }
+
+  printCarNameStatus(carNameObjects) {
+    carNameObjects.map((car) => {
+      car.checkPosition();
+
+      const name = car.getCarName();
+      const position = car.getCarPosition();
+
+      Console.print(`${name} : ${"-".repeat(position)}`);
+    });
   }
 
   async getCarNames() {
