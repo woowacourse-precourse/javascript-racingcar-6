@@ -70,13 +70,16 @@
 
 
 ## `Validate` class
-- [ ] `validateCarName()` : 경주 자동차의 이름을 검사한다.
-    - [ ] 자동차 이름은 중복되지 않아야 한다.
-    - [ ] 자동차 이름은 5자 이하여야만 한다.
-    - [ ] 에러 발생 시 프로그램 종료
-- [ ] `validateTryMoveCount()` : 전진 시도 횟수를 검사한다.
-    - [ ] 전진 시도 횟수는 자연수로만 이루어진다.
-    - [ ] 에러 발생 시 프로그램 종료
+- [x] `validateCarName()` : 경주 자동차의 이름을 검사한다.
+    - [x] 에러 발생 시 프로그램 종료
+    - [x] `removeBlankSplit()`, `checkDuplication()` `checkNameLength()`을 활용하여 검사한다. 
+- [x] `removeBlankSplit()` : 공백 제거 후, 배열로 반환한다.
+- [x] `checkDuplication()` : 자동차 이름들의 중복 검사한다.
+- [x] `checkNameLength()` : 자동차 이름 길이 검사한다 (5자 이하).
+
+- [x] `validateTryMoveCount()` : 전진 시도 횟수를 검사한다.
+    - [x] 전진 시도 횟수는 자연수로만 이루어진다.
+    - [x] 에러 발생 시 프로그램 종료
 ## `constants`
 - [x]  `MESSAGES` : 출력 메세지에 고정적으로 사용되는 문자열들
 
