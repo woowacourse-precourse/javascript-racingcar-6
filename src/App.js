@@ -1,9 +1,9 @@
 import { Console } from "@woowacourse/mission-utils";
-import CarNames from "./CarNames.js";
+import CarNameInput from "./CarNameInput.js";
 
 class App {
   constructor() {
-    this.carNames = new CarNames();
+    this.carNames = new CarNameInput();
   }
   async play() {
     const cars = await this.carNames.getCarNames();
