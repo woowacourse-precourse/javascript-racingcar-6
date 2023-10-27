@@ -10,7 +10,35 @@ const readLineAsync = async (message) => {
   return await Console.readLineAsync(message);
 }
 
+/**
+ * 매 게임 진행마다 참가자 진행 결과를 출력
+ * return : 숫자로 반환
+ * 주의 : 0 이하거나 숫자가 아니면 ERROR
+ */
+// *** 리팩토링 하기 ***
+const goStopCheck = {}; // 이름 변경
+const showResult = async (participants) => {
+  let index = 0 ;
+  // *** 리팩토링 하기 ***
+  while(index < participants.length){
+    // 함수로 빼기 -> return이 최종 결과 객체 ex) goStopCheck
+    const randomNumber = Random.pickNumberInRange(0, 9);
+    const name = participants[index];
+    if(randomNumber >= 4) {
+      goStopCheck[name] = goStopCheck[name] ? goStopCheck[name]+'-' : '-';
+    } else {
+      goStopCheck[name] = goStopCheck[name] ? goStopCheck[name] : '';
+    }
+    index ++;
+  }
+  // *** 리팩토링 하기, showResult 함수로 두기 *** 인자로 참가자 및 최종 진행 거리를 받고 출력만 함
+  for(let i = 0; i < participants.length; i++){
+    const result = `${participants[i]} : ${goStopCheck[participants[i]]}` 
+    print(result);
+  }
 
+  // 매번 출력해야 함
+}
 
 /**
  * 게임 진행 횟수를 입력받는 기능
@@ -46,10 +74,19 @@ const getParticipant = async () =>{
 
 class App {
 
+  constructor() {
+    this.count = 0;
+  }
+
   async play() {
     const participants = await getParticipant()
     const attempt = await getAttempt();
-
+    // *** 리팩토링 할 때 함수로, 들여쓰기 오버 ***
+    print('실행 결과');
+    while(this.count < attempt){
+      showResult(participants);
+      this.count += this.count+1;
+    }
   }
 }
 
