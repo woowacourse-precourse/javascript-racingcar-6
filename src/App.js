@@ -7,12 +7,8 @@ class App {
     const players = await this.getCarsNames();
     const gameTimes = await this.getGameTimes();
 
-    /**
-     * check: parsing worked
-    *players.forEach(player => {
-    *  MissionUtils.Console.print(player.name);
-    *});
-    */
+    this.displayResult(players, gameTimes);
+    this.displayWinner(players);
   }
 
   async getCarsNames() {
@@ -33,7 +29,7 @@ class App {
   checkNames(names) {
     names.forEach(name => {
       if (!name || name.length > 5) {
-        throw new Error(Messages.ERROR_INPUT_CARS);
+        throw new Error(Messages.ERROR_CARS);
       }
     });
   }
@@ -42,6 +38,29 @@ class App {
     if (gameTimes < 0) throw new Error(Messages.ERROR_CNTS_POSITIVE);
     // todo: check difference of isNaN and isInteger
     if (Number.isNaN(gameTimes)) throw new Error(Messages.ERROR_CNTS_NAN);
+  }
+
+  displayResult(players, gameTimes) {
+    MissionUtils.Console.print(Messages.MSG_RESULT);
+    for (let i = 0; i < gameTimes; i++) {
+      players.forEach(player => {
+        player.moveOrNot();
+      });
+      MissionUtils.Console.print('\n');
+    }
+  }
+
+  displayWinner(players) {
+    const winner = this.getWinner(players);
+    MissionUtils.Console.print(Messages.MSG_WINNER + winner);
+  }
+
+  getWinner(players) {
+    const maxDistance = Math.max(...players.map(player => player.moved_distance));
+    const winners = players.filter(player => player.moved_distance === maxDistance);
+    const winnerNames = winners.map(winner => winner.name);
+
+    return winnerNames.join(', ');
   }
 }
 
