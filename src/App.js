@@ -17,8 +17,21 @@ class App {
       "시도할 횟수는 몇 회인가요?"
     );
     MissionUtils.Console.print("실행결과");
-    for (let k = 0; k < trial_count.length; k++) {
-      for (let i = 0; i < cars_arr.length; i++) {
+    startRace(trial_count);
+
+    // console.log(cars, "주어진");
+    // console.log(cars_arr, "자동차");
+    // console.log(cars_win_count_num, "숫자승리");
+    // console.log(cars_win_count_line, "작대기승리");
+
+    function startRace(count) {
+      for (let k = 0; k < count.length; k++) {
+        getWinLine(cars_arr);
+      }
+    }
+
+    function getWinLine(arr) {
+      for (let i = 0; i < arr.length; i++) {
         const random = MissionUtils.Random.pickNumberInRange(0, 9);
         let win_line = "";
         if (random >= 4) {
@@ -28,20 +41,13 @@ class App {
           }
         }
 
-        for (let i = 0; i < cars_arr.length; i++) {
-          MissionUtils.Console.print(
-            `${cars_arr[i]} : ${cars_win_count_line[i]}`
-          );
+        for (let i = 0; i < arr.length; i++) {
+          MissionUtils.Console.print(`${arr[i]} : ${cars_win_count_line[i]}`);
         }
         cars_win_count_line[i] = win_line;
       }
     }
-    console.log(cars, "주어진");
-    console.log(cars_arr, "자동차");
-    console.log(cars_win_count_num, "숫자승리");
-    console.log(cars_win_count_line, "작대기승리");
-
-    MissionUtils.Random.pickNumberInRange(0, 9); //0에서 9까지의 정수 중 한 개의 정수 반환
+    //Todo: isWinner함수 작성하기
   }
 }
 
