@@ -2,6 +2,7 @@ import { Console, Random } from '@woowacourse/mission-utils';
 class App {
   carList;
   moveCount;
+  gameProgress;
 
   async play() {
     await this.setCarList();
@@ -41,6 +42,13 @@ class App {
   async printGameLimit() {
     this.moveCount = await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
     Console.print(`${this.moveCount}회`);
+  }
+
+  gameInit() {
+    this.gameProgress = {};
+    this.carList.forEach(car => {
+      this.gameProgress[car] = '';
+    });
   }
 }
 
