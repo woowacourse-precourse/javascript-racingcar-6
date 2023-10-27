@@ -1,37 +1,34 @@
 import { Console } from '@woowacourse/mission-utils';
 import { MESSAGE } from './utils/Constants';
 import getCarsNumber from './utils/Random';
+import { checkLength, checkTryCount } from './utils/CheckInput';
 
-// 자동차의 갯수만큼 랜덤값 받아오기
 class App {
-	// 게임 시작
-	async start() {
-		const inputCars = await Console.readLineAsync(MESSAGE.start);
-		// const inputCars = 'pobi,woni';
-		this.getCars(inputCars);
-	}
-
 	// 자동차 이름 받고 분리하기
 	getCars(input) {
-		const cars = input.split(',').map((element) => ({
-			name: element,
-			count: '',
-		}));
-		this.racing(cars);
+		const carList = input.split(',').map((element) => {
+			checkLength(element);
+
+			return {
+				name: element,
+				count: '',
+			};
+		});
+		return carList;
 	}
 
 	// 입력받은 시도횟수만큼 전진/정지
 	async racing(cars) {
 		const tryCount = await Console.readLineAsync(MESSAGE.race);
-		// const tryCount = '10';
-		console.log('시도횟수: ', tryCount);
+
+		checkTryCount(tryCount);
+
 		Console.print('실행 결과');
 		for (let i = 0; i < tryCount; i++) {
 			const carsNumber = getCarsNumber(cars.length);
 			this.addReps(cars, carsNumber);
 			this.printCars(cars);
 		}
-		this.winner(cars);
 	}
 
 	//전진/정지 판단
@@ -46,10 +43,10 @@ class App {
 		let result = '';
 		cars.forEach((element) => {
 			result += `${element.name} : ${element.count}\n`;
-			// Console.print(`${element.name} : ${element.count}\n`);
 		});
 		Console.print(result);
 	}
+
 	// 우승자 출력
 	winner(cars) {
 		const winnerScore = Math.max(
@@ -58,16 +55,21 @@ class App {
 			})
 		);
 
-		const winner = cars
+		const winnerList = cars
 			.filter((element) => element.count.length === winnerScore)
 			.map((car) => car.name)
 			.join(', ');
-		// console.log(winner);
-		Console.print(MESSAGE.end + winner);
+
+		Console.print(MESSAGE.end + winnerList);
 	}
 
 	async play() {
-		this.start();
+		const inputCars = await Console.readLineAsync(MESSAGE.start);
+		const cars = this.getCars(inputCars);
+
+		this.racing(cars);
+
+		this.winner(cars);
 	}
 }
 
