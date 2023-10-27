@@ -11,3 +11,5 @@ class ConvertInputTo {
     return inputString.split(',');
   }
 }
+
+export default ConvertInputTo;
