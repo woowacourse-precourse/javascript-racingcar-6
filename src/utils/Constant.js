@@ -4,8 +4,8 @@ const MESSAGE = {
 
 const ERROR = {
   INPUT_NAME_LENGTH_ZERO: '[ERROR] 자동차 이름이 입력되지 않았습니다.',
-  INPUT_NAME_OVER_FIVE: '[ERROR] 자동차 이름 길이는 5이하 입니다.',
-  INPUT_NAME_IN_SPACE: '[ERROR] 자동차 이름 안에 띄어쓰기가 있습니다.',
+  INPUT_NAME_LENGTH_OVER_FIVE: '[ERROR] 자동차 이름 길이는 5이하 입니다.',
+  INPUT_SPACE_IN_NAME: '[ERROR] 자동차 이름 안에 띄어쓰기가 있습니다.',
 }
 
 export { MESSAGE, ERROR }
