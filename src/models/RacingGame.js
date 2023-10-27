@@ -28,7 +28,7 @@ class RacingGame {
     this.#cars.forEach((car) => car.move());
   }
 
-  getAllCarsMovementResult() {
+  getAllCarsMoveResult() {
     return this.#cars.map((car) => car.getMoveResult()).join(`\n`);
   }
 
