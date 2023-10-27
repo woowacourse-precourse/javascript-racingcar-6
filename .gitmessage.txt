@@ -1,9 +1,11 @@
-type : 커밋 메세지 제목
+type(scope): subject
 
-본문
+body
 
+footer
+# ---------------------------------------------------------
 # 기본 형태
-# <type>(<scope>) : <subject>
+# <type>(<scope>): <subject>
 #
 # <body>
 #
