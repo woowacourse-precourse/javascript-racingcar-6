@@ -42,7 +42,16 @@ class App {
 			.map(([key, _]) => key);
 	}
 
-	async play() {}
+	async play() {
+		let [cars, limit] = await this.getInput();
+
+		Console.print('\n실행 결과');
+		for (let _ = 0; _ < limit; _++) {
+			cars = this.doRace(cars);
+		}
+
+		Console.print(`최종 우승자 : ${this.getWinner(cars, this.getMax(cars)).join(', ')}`);
+	}
 }
 
 export default App;
