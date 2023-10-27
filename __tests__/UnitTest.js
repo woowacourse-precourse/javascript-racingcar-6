@@ -1,3 +1,6 @@
+import CarRace from "../src/CarRace.js";
+import { MissionUtils } from "@woowacourse/mission-utils";
+
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
 
@@ -12,7 +15,8 @@ describe("유닛 테스트", () => {
     const answer = [" car,car34,car1"];
     mockQuestions(answer);
 
-    expect(readCarsInput()).rejects.toThrow(
+    const carRace = new CarRace();
+    expect(carRace.readCarsInput()).rejects.toThrow(
       "[ERROR] 자동차 이름의 앞 뒤에는 공백이 있어선 안됩니다."
     );
   });
@@ -20,15 +24,17 @@ describe("유닛 테스트", () => {
     const answer = ["carcar,car34,car1"];
     mockQuestions(answer);
 
-    expect(readCarsInput()).rejects.toThrow(
+    const carRace = new CarRace();
+    expect(carRace.readCarsInput()).rejects.toThrow(
       "[ERROR] 자동차 이름의 길이는 5를 넘어선 안됩니다."
     );
   });
   test("readCarsInput 중복 에러", () => {
-    const answer = ["carcar,car34,car1"];
+    const answer = ["carca,carca,car1"];
     mockQuestions(answer);
 
-    expect(readCarsInput()).rejects.toThrow(
+    const carRace = new CarRace();
+    expect(carRace.readCarsInput()).rejects.toThrow(
       "[ERROR] 자동차 이름에 중복이 있습니다."
     );
   });
