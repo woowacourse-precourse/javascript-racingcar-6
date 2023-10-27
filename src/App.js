@@ -29,11 +29,22 @@ class App {
       }
     });
   }
+
+  async tryCounts() {
+    Console.print("시도할 횟수는 몇 회인가요?");
+    const counts = parseInt(await Console.readLineAsync());
+    if (isNaN(counts) || counts <= 0) {
+      throw new Error('[ERROR] 올바른 값을 입력하세요');
+    }
+    return counts;
+  }
+
   async play() {
     this.start();
     try {
       const carNames = await this.getCarNames();
       this.nameException(carNames);
+      const counts = await this.tryCounts();
     } catch (error) {
       throw new Error(error.message);
     }
