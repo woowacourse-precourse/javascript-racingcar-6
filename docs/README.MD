@@ -41,9 +41,10 @@
 ### 📝 테스트 작성 목록
 
 - [x] 각 클래스에 대한 단위 테스트를 작성한다.
-  - [x] InputView 테스트 작성
-  - [x] InputValidator 테스트 작성
-  - [x] OutputView 테스트 작성
-  - [x] RacingCar 테스트 작성
+  - [x] InputView 테스트 작성 (입력값 반환, 검증 함수 전달)
+  - [x] InputValidator 테스트 작성 (입력값 유효성 검증)
+  - [x] OutputView 테스트 작성 (출력값 검증)
+  - [x] RacingCar 테스트 작성 (상태 초기화, 이동 메서드 검증)
+  - [x] RacingCarFactory 테스트 작성 (RacingCar 인스턴스 생성 검증)
   - [x] RacingGame 테스트 작성 (캡슐화되지 않은 메서드도 퍼블릭 메서드를 통해 간접 테스트)
   - [x] RacingGameController 테스트 작성 (전체 게임 흐름을 테스트)
