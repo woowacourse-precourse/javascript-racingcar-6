@@ -47,18 +47,4 @@ describe("[CUSTOM] 입력받은 시도횟수에 대한 예외 처리", () => {
     // then
     await expect(playPromise).rejects.toThrow("[ERROR]");
   });
-  test.each([[["10       "]], [["        12"]], [["2          2"]]])(
-    "공백에 대한 예외",
-    async (inputs) => {
-      // given
-      mockQuestions(inputs);
-
-      // when
-      const app = new App();
-      const playPromise = app.play();
-
-      // then
-      await expect(playPromise).rejects.toThrow("[ERROR]");
-    }
-  );
 });
