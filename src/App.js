@@ -8,7 +8,7 @@ class App {
     let carName = new Map();
     await getCarName(carName);
     let playNumber = await getPlayNumber();
-    playGame(playNumber, carName);
+    await playGame(playNumber, carName);
     printWinner(carName);
   }
 }
