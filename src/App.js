@@ -48,7 +48,7 @@ async function tryCounter() {
 }
 
 function validationTryNumber(number) {
-  if (/^[+]?\d+$/.test(number)) {
+  if (/^[+]?[1-9]\d*$/.test(number)) {
     return Number(number);
   } else {
     throw new Error("[ERROR]");
