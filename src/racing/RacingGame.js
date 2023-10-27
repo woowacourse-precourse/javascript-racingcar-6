@@ -8,4 +8,12 @@ class RacingGame {
     this.repeatTime = View.readRepeatTime();
     this.cars = carNames.map((name) => new Car(name));
   }
+
+  gameStart() {
+    for (let i = 0; i < this.repeatTime; i++) {
+      this.moveCars(this.cars);
+      this.presentCurrentDistance(this.cars);
+    }
+    this.getWinners(this.cars);
+  }
 }
