@@ -4,17 +4,17 @@ import { CONSTANT } from './Constant.js';
 class Car {
   #name;
 
-  #numOfMoves;
+  #moveCount;
 
   constructor(carName) {
     this.#name = carName;
-    this.#numOfMoves = 0;
+    this.#moveCount = 0;
   }
 
   moveForward() {
     const randomNumber = this.#makeRandomNumber();
     if (randomNumber >= CONSTANT.movable) {
-      this.#numOfMoves += 1;
+      this.#moveCount += 1;
     }
     return this.#makeMovingResultString();
   }
@@ -24,16 +24,16 @@ class Car {
   }
 
   #makeMovingResultString() {
-    const movingLog = '-'.repeat(this.#numOfMoves);
+    const movingLog = '-'.repeat(this.#moveCount);
     return `${this.#name} : ${movingLog}`;
   }
 
   compareToMax(anotherCar) {
-    return this.#numOfMoves - anotherCar.#numOfMoves;
+    return this.#moveCount - anotherCar.#moveCount;
   }
 
   compareIsSame(anotherCar) {
-    return this.#numOfMoves === anotherCar.#numOfMoves;
+    return this.#moveCount === anotherCar.#moveCount;
   }
 
   getCarName() {
