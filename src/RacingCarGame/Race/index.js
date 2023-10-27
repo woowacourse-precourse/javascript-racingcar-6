@@ -24,6 +24,11 @@ class Race {
       '\n'
     );
   }
+
+  calMaxMove() {
+    const moves = this.cars.map((car) => car.countMove());
+    return Math.max(...moves);
+  }
 }
 
 export default Race;

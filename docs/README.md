@@ -27,7 +27,7 @@
 - [x] `addCars(names)`: 입력받은 자동차를 `cars` 배열에 저장합니다.
 - [x] `lap()`: 각 `Car` 인스턴스의 1회 전진을 지시합니다.
 - [x] `makeOneLapResult()`: 각 자동차의 이동 결과를 합쳐서 문자열로 반환합니다.
-- [] `calMaxLength()`: 모든 `Car` 인스턴스 중 최대 전진 거리를 계산합니다.
+- [x] `calMaxMove()`: 모든 `Car` 인스턴스 중 최대 전진 거리를 계산합니다.
 - [] `electWinner()`: 각 `Car` 인스턴스의 전진을 비교하여 우승자를 도출합니다.
 
 <br/>
@@ -45,7 +45,7 @@
 
 - [x] `canMove()`: 전진 가능 여부를 불리언으로 반환 (`MissionUtils.Random.pickNumberInRange` 메서드 사용)
 - [x] `move()`: `Car` 인스턴스를 전진하거나 제자리에서 그대로 유지합니다.
-- [x] `length()`: 현재 회차까지의 전진 길이를 반환합니다.
+- [x] `countMove()`: 현재 회차까지의 전진 길이를 반환합니다.
 - [x] `toStringPosition()` 현재까지의 이동 결과를 생성하여 반환합니다.
 
 <br/>

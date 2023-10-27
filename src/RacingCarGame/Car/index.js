@@ -15,7 +15,7 @@ class Car {
     this.postion += this.canMove() ? SYMBOLS.move : '';
   }
 
-  length() {
+  countMove() {
     return this.postion.length;
   }
 
