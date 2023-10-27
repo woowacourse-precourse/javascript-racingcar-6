@@ -36,7 +36,7 @@ class RacingCarGame {
     if (!Validator.checkHasDuplicate(carNameList)) {
       throw new Error(ERROR.hasDuplicate);
     }
-    if (Validator.checkIsExceedMaxNum(carNameList)) {
+    if (!Validator.checkIsLessThanMaxLen(carNameList)) {
       throw new Error(ERROR.exceedMaxNum);
     }
   }
@@ -52,7 +52,7 @@ class RacingCarGame {
     if (!Validator.checkIsNumber(attempt)) {
       throw new Error(ERROR.isNotANumber);
     }
-    if (Validator.checkIsNotMove(attempt)) {
+    if (!Validator.checkIsMoving(attempt)) {
       throw new Error(ERROR.notMoving);
     }
   }

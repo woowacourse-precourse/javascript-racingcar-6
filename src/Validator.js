@@ -5,21 +5,21 @@ class Validator {
     return new Set(userInput).size === userInput.length;
   }
 
-  static checkIsExceedMaxNum(userInput) {
+  static checkIsLessThanMaxLen(userInput) {
     for (let i = 0; i < userInput.length; i++) {
       if (userInput[i].length > CONSTANT.maxNameLength) {
-        return true;
+        return false;
       }
     }
-    return false;
+    return true;
   }
 
   static checkIsNumber(userInput) {
     return !Number.isNaN(userInput);
   }
 
-  static checkIsNotMove(userInput) {
-    return userInput === CONSTANT.notMove;
+  static checkIsMoving(userInput) {
+    return userInput !== CONSTANT.notMove;
   }
 }
 
