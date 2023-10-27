@@ -14,9 +14,19 @@ const ERROR_MESSAGE = {
 class Comm{
 
     #carName
+    #outRacingData
 
     constructor(){
         this.#carName = [];
+        this.#outRacingData = '';
+    }
+
+    outputRacingMessage = (reacingCarResult) => {
+        reacingCarResult.reduce((acc, cur, idx) => {
+            this.#outRacingData = this.#outRacingData.concat(cur+'\n');
+        }, "");
+        Console.print(this.#outRacingData);
+        this.#outRacingData = '';
     }
 
     carNameOutPutUpdate = (carName) => {

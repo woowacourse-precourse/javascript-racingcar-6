@@ -24,6 +24,7 @@ class RacingcarController{
         while(this.#playCount <= RACING_COUNT){
             const RACING_CAR_FORWARD_NUMBER = this.racing.randomForwardCount(RACING_OUTPUT_NAME.length);
             this.#racingCarPlay = this.racing.racingPlay(RACING_OUTPUT_NAME, RACING_CAR_FORWARD_NUMBER);
+            this.comm.outputRacingMessage(this.#racingCarPlay);
         }
     }
 }
