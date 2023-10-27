@@ -13,7 +13,8 @@ const MESSAGE = Object.freeze({
   },
   result: {
     execution: '\n실행 결과',
-    distance: '-'
+    distance: '-',
+    finalWinner: '최종 우승자 : '
   }
 });
 

@@ -30,6 +30,7 @@ class App {
     );
     this.validateNumberOfTimes(answerOfNumber);
     this.printExecutionResult();
+    this.printFinalWinner();
     return;
   }
 
@@ -80,6 +81,17 @@ class App {
       Console.print(result.join(''));
     }
     this.cars = updatedCars;
+  }
+
+  printFinalWinner() {
+    const winners = [];
+    const max = Math.max(...this.cars.values());
+    this.cars.forEach((value, key) => {
+      if (value === max) {
+        winners.push(key);
+      }
+    });
+    Console.print(`${MESSAGE.result.finalWinner}${winners.join(', ')}`);
   }
 }
 
