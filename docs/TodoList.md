@@ -25,8 +25,8 @@
   - [x] 이외에 커스텀으로 eslint를 설정해준다.
   - [x] prettier 설정을 해준다.
 - 폴더 구조
-  - [ ] src > model, controller, view 를 만들어준다.
-  - [ ] src > constants, utils도 만들어준다.
+  - [x] src > model, controller, view 를 만들어준다.
+  - [x] src > constants, utils도 만들어준다.
 - 기능 목록 작성
 - 기능 목록을 커밋 단위를 고려해 리스트를 정리한다.
 - 목록은 docs 폴더 `READ.ME`에 정리한다.
