@@ -30,7 +30,19 @@ class App {
 
   async gameNumberInput() {
     const userInput = await Console.readLineAsync("시도할 횟수는 몇 회인가요?");
+    try {
+      this.gameNumberValidation(userInput);
+    } catch (error) {
+      Console.print(error.message);
+      throw error;
+    }
     return userInput;
+  }
+
+  gameNumberValidation(userInput) {
+    if (!+userInput) {
+      throw new Error("[ERROR] 숫자를 입력해 주세요.");
+    }
   }
 
   async play() {}
