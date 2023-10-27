@@ -1,8 +1,19 @@
 import { Console } from '@woowacourse/mission-utils';
 import InputValidator from './InputValidator.js';
+import Car from './Model/Car.js';
 class App {
+  /**
+   *
+   * @param {Car[]} cars
+   */
+  constructor(cars) {
+    this.cars = cars;
+  }
+
   async play() {
     const carNames = await this.#inputCarNames();
+    this.cars = carNames.map((carName) => new Car(carName));
+
     const tryNum = await this.#inputTryNum();
   }
 
