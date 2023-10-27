@@ -1,6 +1,7 @@
 import Refree from './Refree.js';
 
 import InputView from './view/InputView.js';
+import OutputView from './view/OutputView.js';
 
 class App {
   #refree;
@@ -16,6 +17,8 @@ class App {
     this.#refree.registerCars(carNames);
 
     this.#totalRounds = await InputView.getTotalRounds();
+
+    OutputView.printResultTitleMessage();
   }
 }
 
