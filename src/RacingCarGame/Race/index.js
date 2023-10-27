@@ -29,6 +29,19 @@ class Race {
     const moves = this.cars.map((car) => car.countMove());
     return Math.max(...moves);
   }
+
+  electWinner() {
+    const maxMoveCount = this.calMaxMove();
+
+    return this.cars
+      .reduce((arr, car) => {
+        if (maxMoveCount === car.countMove()) {
+          return [...arr, car.name];
+        }
+        return arr;
+      }, [])
+      .join(SYMBOLS.winnerDivider);
+  }
 }
 
 export default Race;
