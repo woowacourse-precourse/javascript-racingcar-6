@@ -16,3 +16,9 @@ async function getCarName() {
   const carObject = carNames.map((name) => ({ name, position: 0 }));
   return carObject;
 }
+
+async function getTryCount() {
+  const tryCount = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+  console.log(tryCount);
+  return tryCount;
+}
