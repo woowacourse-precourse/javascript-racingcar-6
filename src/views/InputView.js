@@ -2,6 +2,7 @@ import InputValidator from '../domain/InputValidator.js';
 import { Console } from '@woowacourse/mission-utils';
 
 const InputView = {
+  // TODO: 검증로직 컨트롤러로 이동시키기, 뷰에선 입력값만 받을 수 있도록 수정필요
   async getCarNames() {
     const carNames = await Console.readLineAsync(
       '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n'
@@ -27,8 +28,16 @@ const InputView = {
 
     return nameList;
   },
+
+  async getRound() {
+    const round = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+
+    if (!InputValidator.hasValidRoundNumber(round.trim())) {
+      throw new Error('[ERROR] 최소 1이상의 숫자여야 합니다.');
+    }
+
+    return round.trim();
+  },
 };
 
 export default InputView;
-
-console.log(await InputView.getCarNames());
