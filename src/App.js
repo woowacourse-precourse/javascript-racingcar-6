@@ -56,6 +56,10 @@ class App {
         throw new Error("[ERROR] 자동차 이름은 한 글자 이상 다섯 글자 이하로만 입력하실 수 있습니다.");
       }   
     });
+
+    if (!Number(raceTimes) || Number(raceTimes) < 1 || Number(raceTimes) !== Math.trunc(Number(raceTimes))) {
+      throw new Error("[ERROR] 자동차 경주 횟수는 양의 정수만 입력하실 수 있습니다.");
+    }
   }
 }
 
