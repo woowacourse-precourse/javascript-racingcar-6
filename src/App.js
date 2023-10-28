@@ -39,6 +39,16 @@ class App {
     return input;
   }
 
+  /**
+   * 0 ~ 9의 임의의 수를 생성하여 4이상인 경우 true, 그렇지 않은 경우 false 반환
+   * @returns boolean
+   */
+  getRandomNumber() {
+    const random = MissionUtils.Random.pickNumberInRange(0, 9);
+    const result = random >= 4 ? true : false;
+    return result;
+  }
+
   async play() {
     const carNames = await this.getInputCarNames();
     const count = await this.getInputCount();
