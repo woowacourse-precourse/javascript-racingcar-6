@@ -1,5 +1,5 @@
 import { Console } from "../../utils/console/console.js";
-import { ErrorMessage } from "../../utils/message/errorMessage.js";
+import { ErrorMessage, RacingGameMessage } from "../../utils/message/message.js";
 import RacingGame from "./RacingGame.js";
 
 const names = ["a", "b", "c"];
@@ -31,7 +31,7 @@ describe("RacingGame 객체 테스트", () => {
     await racingGame.start();
 
     expect(Console.readLineAsync).toHaveBeenCalledTimes(2);
-    expect(Console.print).toHaveBeenCalledTimes(3 + count * (names.length + 1));
+    expect(Console.print).toHaveBeenCalledTimes(4 + count * (names.length + 1));
   });
 
   test("getWinners 검증", async () => {
@@ -44,7 +44,7 @@ describe("RacingGame 객체 테스트", () => {
   });
 
   test("잘못된 입력값 확인 => IncorrectFormatError", async () => {
-    const inputs = [names.join(","), "숫자가 아닙니다."];
+    const inputs = ["a", "숫자가 아닙니다."];
     mockConsole(inputs);
     const errorMessage = ErrorMessage.incorrectFormatErrorMessage();
     try {

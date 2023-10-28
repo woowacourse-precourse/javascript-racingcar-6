@@ -3,6 +3,7 @@ import RacingCar from "../RacingCar/RacingCar.js";
 import IncorrectFormatError from "../../error/IncorrectFormatError.js";
 import { RacingGameState } from "../../constanst/game.js";
 import { getRandomNumber } from "../../utils/random/random.js";
+import { RacingGameMessage } from "../../utils/message/message.js";
 
 class RacingGame {
   #racingCars;
@@ -15,14 +16,13 @@ class RacingGame {
   }
 
   async start() {
-    // 시작 메시지
-    Console.print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-
     // 자동차 이름 입력 받기 & RacingCar 객체 생성
+    Console.print(RacingGameMessage.nameTitle());
     const names = await Console.readLineAsync();
     names.split(",").forEach((name) => this.#racingCars.push(new RacingCar(name)));
 
     // 시도 횟수 입력
+    Console.print(RacingGameMessage.countTitle());
     const count = await Console.readLineAsync();
     if (isNaN(Number(count))) {
       throw new IncorrectFormatError();
@@ -30,12 +30,12 @@ class RacingGame {
     this.#totalCount = count;
 
     // totalCount 만큼 게임 진행
-    Console.print("실행 결과");
+    Console.print(RacingGameMessage.resultTitle());
     while (this.run());
 
     // 우승자 출력
     const winners = this.getWinners();
-    Console.print(`최종 우승자 : ${winners.join(", ")}`);
+    Console.print(RacingGameMessage.winner(winners.join(", ")));
   }
 
   run() {
@@ -56,7 +56,7 @@ class RacingGame {
       Console.print(log);
     });
     // 한 줄 띄어쓰기
-    Console.print();
+    Console.print("");
 
     // count 횟수 증가 시키고 진행 가능 여부 리턴
     return ++this.#currentCount < this.#totalCount;

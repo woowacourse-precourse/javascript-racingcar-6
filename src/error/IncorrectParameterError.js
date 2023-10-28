@@ -1,4 +1,4 @@
-import { ErrorMessage } from "../utils/message/errorMessage.js";
+import { ErrorMessage } from "../utils/message/message.js";
 import BasicError from "./BasicError.js";
 
 class IncorrectParameterError extends BasicError {

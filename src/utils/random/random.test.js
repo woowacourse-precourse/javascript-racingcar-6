@@ -1,4 +1,4 @@
-import { ErrorMessage } from "../message/errorMessage.js";
+import { ErrorMessage } from "../message/message.js";
 import { getRandomNumber } from "./random.js";
 
 describe("getRandomNumber 유효성 체크", () => {
