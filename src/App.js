@@ -44,10 +44,13 @@ function startRace(name, count){
   const result = new Map();
   name.forEach(string => result.set(string, ""));
 
+  MissionUtils.Console.print("\n실행 결과");
   while(count--){
     for(const car of name){
       decideForwardOrStop(car, result);
+      MissionUtils.Console.print(`${car} : ${result.get(car)}`);
     }
+    MissionUtils.Console.print("");
   }
 }
 
