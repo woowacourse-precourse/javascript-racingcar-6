@@ -7,7 +7,9 @@ class App {
     this.numberOfCars = 0;
   }
 
-  async play() {}
+  async play() {
+    await this.playRacingGame();
+  }
   
   // 입력
   async inputCarNames() {
@@ -80,6 +82,19 @@ class App {
     const winners = winnerIndexes.map(playerIndex => this.car[playerIndex]);
     const winnerMessage = winners.join(', ');
     Console.print(`최종 우승자 : ${winnerMessage}`);
+  }
+
+  async playRacingGame() {
+    await this.inputCarNames();
+    let moveCount = await this.inputMoveCount();
+    Console.print('실행 결과');
+    while (moveCount > 0) {
+      this.decideMovement();
+      this.printRacingProgress();
+      Console.print(' ');
+      moveCount -= 1;
+    }
+    this.printRacingWinner();
   }
 }
 
