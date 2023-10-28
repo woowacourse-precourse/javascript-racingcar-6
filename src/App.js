@@ -1,11 +1,7 @@
 import { Console, Random } from '@woowacourse/mission-utils';
+import Car from './Car.js';
 
 class App {
-  constructor() {
-    this.CARS = [];
-    this.WINNER = {};
-  }
-
   async play() {
     // function chkInput(carInput, countInput) {
     //   const TMP_CARS = carInput.split(',');
@@ -20,26 +16,37 @@ class App {
 
     //   }
 
-    
+    function makeArrayOfCars(carInput) {
+      const TMP_CARS = carInput.split(',');
+      const TMP_CARS_ARRAY = [];
+
+      TMP_CARS.forEach((element) => {
+        TMP_CARS_ARRAY.push(new Car(element, 0));
+      });
+      Console.print(TMP_CARS_ARRAY);
+      return TMP_CARS_ARRAY;
+    }
 
     async function getInputCars() {
       const CAR_INPUT = await Console.readLineAsync(
         '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
       );
+
+      makeArrayOfCars(CAR_INPUT);
     }
 
-    async function getInput() {
-      const COUNT_INPUT =
-        await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    // async function getInput() {
+    //   const COUNT_INPUT =
+    //     await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
 
-      // chkInput을 통과할 경우 객체에 담는다.
-      if (chkInput(CAR_INPUT, COUNT_INPUT)) {
-        const CARS = CAR_INPUT.split(',');
-        makeCarList(CARS, COUNT_INPUT);
-      }
-    }
+    //   // chkInput을 통과할 경우 객체에 담는다.
+    //   if (chkInput(CAR_INPUT, COUNT_INPUT)) {
+    //     const CARS = CAR_INPUT.split(',');
+    //     makeCarList(CARS, COUNT_INPUT);
+    //   }
+    // }
 
-    getInput();
+    getInputCars();
   }
 }
 
