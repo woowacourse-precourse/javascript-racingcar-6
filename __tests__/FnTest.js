@@ -1,6 +1,6 @@
 import App from "../src/App.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
-
+const {Random} = MissionUtils;
 
 describe("Fn 기능 테스트", () => {
     test("자동차 게임 결과",async () => {

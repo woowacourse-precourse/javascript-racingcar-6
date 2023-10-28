@@ -19,10 +19,15 @@ class App {
     this.CARSGOCOUNT = new Array(this.CARSNAME.length).fill("");
 
   }
+  async getTry() {
+    this.TRYDATA = await Console.readLineAsync("시도할 횟수를 입력하세요." + "\n");
+    if(isNaN(this.TRYDATA)) throw Error("[ERROR]숫자를 입력해주세요.")
+  }
 
   
   async play() {
     await this.getCarsName();
+    await this.getTry();
 
   }
 }
