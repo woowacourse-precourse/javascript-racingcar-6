@@ -17,4 +17,8 @@ export default class RacingGame {
   clearRound() {
     this.tryRound -= 1;
   }
+
+  isMovalbe(number) {
+    return number >= 4;
+  }
 }
