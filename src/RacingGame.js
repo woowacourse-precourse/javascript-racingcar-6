@@ -1,4 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
+import * as messages from "./constants/messages";
 
 import Car from "./Car.js";
 
@@ -8,9 +9,7 @@ class RacingGame {
     this.tryCount = 0;
   }
   async startGame() {
-    const carNamesInput = await Console.readLineAsync(
-      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
-    );
+    const carNamesInput = await Console.readLineAsync(messages.CAR_NAME_PROMPT);
     const carNames = carNamesInput.split(",");
 
     const isValidCarName = (name) => {
@@ -20,9 +19,7 @@ class RacingGame {
     carNames.forEach((carName) => {
       try {
         if (!isValidCarName(carName)) {
-          throw new Error(
-            `[ERROR] 자동차 이름 "${carName}"은(는) 5자 이하여야 합니다.`
-          );
+          throw new Error(messages.CAR_NAME_ERROR(carName));
         }
         const car = new Car(carName);
         this.cars.push(car);
@@ -32,7 +29,7 @@ class RacingGame {
     });
 
     const tryCountInput = await Console.readLineAsync(
-      "시도할 횟수는 몇 회인가요?\n"
+      messages.TRY_COUNT_PROMPT
     );
     this.tryCount = Number(tryCountInput);
   }

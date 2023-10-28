@@ -1,8 +1,9 @@
 import { Console, Random } from "@woowacourse/mission-utils";
+import * as messages from "./constants/messages";
 
 export function playRaceRound(game) {
   while (game.tryCount--) {
-    Console.print("실행 결과\n");
+    Console.print(messages.EXECUTION_RESULT_PROMPT);
     game.cars.forEach((car) => {
       const randomValue = Random.pickNumberInRange(0, 9);
       if (randomValue >= 4) {
@@ -28,9 +29,9 @@ export function printWinners(game) {
     }
   });
   if (winners.length === 1) {
-    Console.print(`최종 우승자 : ${winners[0].name}`);
+    Console.print(messages.FINAL_WINNER_SINGLE(winners[0].name));
     return;
   }
   const winnerNames = winners.map((car) => car.name).join(",");
-  Console.print(`최종 우승자 : ${winnerNames}`);
+  Console.print(messages.FINAL_WINNER_MULTIPLE(winnerNames));
 }
