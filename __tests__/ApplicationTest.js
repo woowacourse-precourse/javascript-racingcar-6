@@ -46,6 +46,27 @@ describe("자동차 경주 게임", () => {
     });
   });
 
+  test("공동 우승", async () => {
+    // given
+    const inputs = ["pobi,woni,curry", "3"];
+    const outputs = ["pobi : ","woni : ","curry : ", "pobi : -","woni : ","curry : -", "pobi : --","woni : ","curry : --"];
+    const randoms = [1,2,3,4,0,4,9,1,8];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    // when
+    const app = new App();
+    await app.play();
+
+    // then
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
+
+
   test.each([
     [["pobi,javaji"]],
     [["pobi,eastjun"]]
