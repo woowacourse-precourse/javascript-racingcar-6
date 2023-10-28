@@ -36,6 +36,8 @@ class RacingGame {
   async getExecutionResult(tryNumber) {
     for (let i = 0; i < tryNumber; i++) {
       await this.decidePosition();
+      await this.getExecutionResultBoard();
+      console.log();
     }
   }
   
@@ -45,6 +47,14 @@ class RacingGame {
       car.checkPosition(randomNumber);
     }
   }
+
+  async getExecutionResultBoard(){
+    for (const car of this.#car) {
+      const nowPosition = await car.getPosition();
+      await OutputView.outputExecutionResultBoard(car.name, nowPosition);
+    }
+  }
+
 }
 
 export default RacingGame;

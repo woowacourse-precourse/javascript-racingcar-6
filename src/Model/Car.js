@@ -14,6 +14,9 @@ class Car {
     if (tryNumber >= 4) this.#position += 1;
   }
 
+  getPosition() {
+    return this.#position;
+  }
 }
 
 export default Car;
