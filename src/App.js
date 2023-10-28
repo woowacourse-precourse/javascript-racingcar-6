@@ -14,6 +14,12 @@ class App {
     return inputValue.split(",");
   }
 
+  async setRacingCars(racingCars) {
+    for (let racingCar of racingCars) {
+      this.racingCars.set(racingCar, "");
+    }
+  }
+
   async getTryNumber() {
     let input = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
     let number = parseInt(input);
