@@ -12,7 +12,7 @@ class RacingGame {
   }
   
   async inputCarName() {
-    const carArr = await InputView.InputCarsName();
+    const carArr = await InputView.inputCarsName();
     for (const carName of carArr) {
       let car = new Car();
       car.getName(carName);
