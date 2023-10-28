@@ -28,12 +28,12 @@ class Race {
     this.cars.forEach((car) => {
       car.move();
     });
-    this.logLap();
   }
 
   makeLapResult() {
     for (let i = 0; i < this.lapCount; i++) {
       this.lap();
+      this.logLap();
     }
     return this.lapLogs.join(SYMBOLS.lineBreak);
   }
