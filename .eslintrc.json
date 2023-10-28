@@ -11,5 +11,5 @@
   "rules": {
     "linebreak-style": 0
   },
-  "ignorePatterns": ["ApplicationTest.js", "StringTest.js"]
+  "ignorePatterns": ["*Test.js"]
 }
