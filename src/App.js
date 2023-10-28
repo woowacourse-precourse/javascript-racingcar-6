@@ -5,7 +5,7 @@ class App {
     async play() {
         Data.input.player = await Controller.setPlayer();
         Data.input.number = await Controller.setNumber();
-        Controller.raceProgress();
+        Controller.raceProgress(Data.input.player);
         console.log(Data);
         console.log(Controller.getRaceResultText(Data.input.player));
         console.log(Controller.getWinnerText(Data.input.player));

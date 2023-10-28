@@ -24,10 +24,9 @@ class Controller {
     }
 
     // 경기 진행 함수
-    static raceProgress() {
-        Object.keys(Data.input.player).forEach((key) => {
-            if (4 <= Random.pickNumberInRange(0, 9))
-                Data.input.player[key] += 1;
+    static raceProgress(obj) {
+        Object.keys(obj).forEach((key) => {
+            if (4 <= Random.pickNumberInRange(0, 9)) obj[key] += 1;
         });
         return;
     }
