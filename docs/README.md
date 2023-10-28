@@ -1,8 +1,8 @@
-# 🛠️ 구현할 기능 목록 정리
+# 🛠️ 구현할 기능 목록
 
 ## 🚗 RandomNumberGenerator
 
-- [ ] 0에서 9사이에서 무작위 값을 구한다.
+- [x] 0에서 9사이에서 무작위 값을 구한다.
 
 ## 🚗 RacingcarGamePlayer
 
