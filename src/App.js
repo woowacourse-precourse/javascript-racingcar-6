@@ -12,7 +12,8 @@ class App {
   }
 
   async play() {
-    const carNames = await InputView.getCarNames();
+    const carNameString = await InputView.getCarNames();
+    const carNames = carNameString.split(',');
 
     this.#refree.registerCars(carNames);
 
