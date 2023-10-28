@@ -4,27 +4,44 @@ import ERROR from './error.js';
 class App {
 
   constructor() {
+    this.inputCount;
     this.carList;
     this.gameStatus = [];
   }
 
   async play() {
+    await this.mainGameLogic();
+  }
+
+  async mainGameLogic() {
     await this.getUserCarListInput();
     await this.makeForCheckGameStatus(this.carList);
     await this.getUserWantMoveCount();
-
-    // 사용자가 차들 이름을 입력한 후 몇번의 시도를 할 지 입력하면 그만큼 게임이 돌아가야함
-    // 사용자의 도전 횟수 입력 -> 횟수만큼 반복하는 코드 -> 횟수별 전진 정지 판별 후 게임 상태 업데이트
-    // 최종 우승자 출력
-    this.makeRandomNumber();
+    this.checkGoStop();
   }
 
-  
-
-
   // 전진 또는 정지를 위한 랜덤 넘버 생성
-  makeRandomNumber(){
+  makeRandomNumber() {
     return Random.pickNumberInRange(0, 9);
+  }
+
+  findWinner(){
+    const playerList = this.gameStatus
+    
+  }
+
+  checkGoStop(){
+    for (let i = 0; i < this.inputCount; i++) {
+      this.gameStatus.forEach(car => {
+        let score = 0;
+        const randomNumber = this.makeRandomNumber();
+        console.log("randomNumber", randomNumber);
+        if (randomNumber >= 4) {
+          car[0] += "-";
+          console.log("go \n", car[0]);
+        }
+      });
+    }
   }
 
   // 게임 진행하는 동안 차들의 상태를 저장하기 위한 배열 생성 - 현재는 이름과 결과를 한번에 저장하려고함
@@ -32,7 +49,7 @@ class App {
   makeForCheckGameStatus(userinput){
     this.gameStatus = Array.from({ length: userinput.length }, () => []);
     for (let i = 0; i < this.gameStatus.length; i++) {
-      this.gameStatus[i].push(`${userinput[i]} :`);
+      this.gameStatus[i].push(`${userinput[i]} : `);
     }
     return this.gameStatus;
   }
@@ -95,11 +112,11 @@ class App {
   
   // 사용자가 원하는 게임 전진 도전 횟수
   async getUserWantMoveCount(){
-    const inputCount = await Console.readLineAsync("몇번");
-    console.log(inputCount);
+    this.inputCount = await Console.readLineAsync("몇번");
+    console.log(this.inputCount);
     // 사용자 입력이 숫자인지 체크하는 기능
-    this.checkNumber(inputCount);
-    return inputCount;
+    this.checkNumber(this.inputCount);
+    return this.inputCount;
   }
 
 
