@@ -18,16 +18,41 @@ class RacingCar {
     let time = 0;
 
     Console.print("\n실행 결과");
+
     while (time < tryNumber) {
       this.racingResult(players, playersResult);
       time++;
     }
+
+    this.end(playersResult);
+  }
+
+  end(playersResult) {
+    const winners = this.getWinners(playersResult).join(", ");
+
+    Console.print(`최종 우승자 : ${winners}`);
+  }
+
+  getWinners(playersResult) {
+    const playersWinnerLength = Object.values(playersResult)
+      .map((arr) => arr.length)
+      .sort((a, b) => b - a)[0];
+
+    const winners = [];
+
+    for (const property in playersResult) {
+      playersResult[property].length === playersWinnerLength ? winners.push(property) : "";
+    }
+
+    return winners;
   }
 
   racingResult(players, playersResult) {
     players.forEach((player, i) => {
       const randomNumber = Random.pickNumberInRange(0, 9);
+
       randomNumber >= 4 ? playersResult[player].push("-") : "";
+
       Console.print(`${player} : ${playersResult[player].join("")} ${i === players.length - 1 ? "\n" : ""}`);
     });
   }
