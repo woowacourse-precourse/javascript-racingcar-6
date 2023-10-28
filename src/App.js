@@ -1,15 +1,13 @@
-import {Random, Console} from '@woowacourse/mission-utils'
-
+import { getUserName, getTrialFrequency } from './getValue';
+import { playCarRace } from './playCarRace';
+import { endGame } from './endGame';
 class App {
-	async play() {}
+	async play() {
+		const userNameArr = await getUserName();
+		const userTrialFrequency = await getTrialFrequency();
+		const gameResult = playCarRace(userNameArr, userTrialFrequency);
+		endGame(gameResult);
+	}
 }
 
 export default App;
-
-class CustomError extends Error {
-	constructor(value, ...params) {
-		super(...params);
-		this.message = [...params];
-		this.name = value;
-	}
-}
