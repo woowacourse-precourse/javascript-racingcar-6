@@ -79,15 +79,18 @@ class App {
     });
   }
 
-  initPlay() {}
+  printWinners() {
+    const winners = this.winners.join(", ");
+    Console.print(`최종 우승자 : ${winners}`);
+  }
 
   async play() {
-    this.initPlay();
     const carArr = await this.getCars();
     await this.setCars(carArr);
     const tryNumber = await this.getTryNumber();
     this.startRacing(tryNumber);
     this.selectWinners();
+    this.printWinners();
   }
 }
 
