@@ -8,7 +8,7 @@ class CarListCheck {
       this.checkCarList(carList, inputCarList);
       return carList;
     } catch (error) {
-      Console.print(error);
+      // Console.print(error);
       throw error;
     }
   }

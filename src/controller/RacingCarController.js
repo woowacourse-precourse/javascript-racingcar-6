@@ -17,24 +17,24 @@ class RacingCarController {
   }
 
   async start() {
-    await this.setcarName();
-    await this.setTryNumber();
-    Console.print(this.carNames + this.tryCount);
+    try {
+      this.carNames = await this.setcarName();
+      this.tryCount = await this.setTryNumber();
+      Console.print(this.carNames + this.tryCount);
+    } catch (error) {
+      throw new Error(error);
+    }
   }
 
   //자동차 이름 입력받기
   async setcarName() {
-    this.carNames = this.carListCheck.validate(
-      await this.input.inputCarNames()
-    );
+    return this.carListCheck.validate(await this.input.inputCarNames());
   }
 
   //게임 횟수 입력받기
   async setTryNumber() {
     Console.print("dd");
-    this.tryCount = this.tryNumberCheck.validate(
-      await this.input.inputTryNumber()
-    );
+    return this.tryNumberCheck.validate(await this.input.inputTryNumber());
   }
 }
 
