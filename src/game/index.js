@@ -29,5 +29,30 @@ const racingCarGame = {
   checkForwardCondition(number, { min, max }) {
     return number >= min && number <= max;
   },
+
+  runRacingTurn(racingStatus) {
+    if (!Array.isArray(racingStatus)) {
+      throw new Error('[ERROR] 인자는 각 자동차의 상태가 담긴 배열입니다');
+    }
+
+    return racingStatus.map((car) => {
+      const randomNumber = this.getRandomNumber(
+        VALIDATION_CONDITION.randomNumberRange,
+      );
+
+      if (
+        this.checkForwardCondition(
+          randomNumber,
+          VALIDATION_CONDITION.forwardNumberRange,
+        )
+      ) {
+        return {
+          ...car,
+          forwardCount: car.forwardCount + 1,
+        };
+      }
+      return car;
+    });
+  },
 };
 export default racingCarGame;

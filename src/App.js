@@ -1,7 +1,6 @@
-import racingCarGame from './game';
+import racingCarGame from './game/index.js';
 
 class App {
-  async play() {
   constructor() {
     this.moveCount = 0;
     this.racingStatus = [];
@@ -16,6 +15,11 @@ class App {
 
   async play() {
     await this.ready();
+
+    for (let turn = 0; turn < this.moveCount; turn += 1) {
+      const turnResult = racingCarGame.runRacingTurn(this.racingStatus);
+      this.racingStatus = turnResult;
+    }
   }
 }
 
