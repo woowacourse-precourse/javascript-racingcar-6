@@ -7,6 +7,14 @@ export default class Validation {
     });
   }
 
+  static isMoreThanFiveLetters(carNames) {
+    carNames.forEach((carName) => {
+      if (carName.length > 5) {
+        throw new Error('[ERROR] : moreThanFiveLetters');
+      }
+    });
+  }
+
   static hasSpecialChar(carNames) {
     carNames.forEach((carName) => {
       if (carName.match(/[^a-zA-Z0-9가-힣]/)) {
@@ -28,13 +36,5 @@ export default class Validation {
     if (set.size !== carNames.length) {
       throw new Error('duplicate');
     }
-  }
-
-  static isMoreThanFiveLetters(carNames) {
-    carNames.forEach((carName) => {
-      if (carName.length > 5) {
-        throw new Error('moreThanFiveLetters');
-      }
-    });
   }
 }
