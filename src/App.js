@@ -49,12 +49,32 @@ class App {
     return result;
   }
 
+  /**
+   * 게임 진행 결과 출력
+   * @param {*} carNames 자동차 이름 배열
+   * @param {*} carPositions 자동차 위치 배열
+   */
+  printCarPositions(carNames, carPositions) {
+    carNames.forEach((carName, index) =>
+      MissionUtils.Console.print(
+        carName + " : " + "-".repeat(carPositions[index])
+      )
+    );
+    MissionUtils.Console.print("\n");
+  }
+
   async play() {
     const carNames = await this.getInputCarNames();
     const count = await this.getInputCount();
 
-    //console.log(carNames);
-    //console.log(count);
+    MissionUtils.Console.print("\n실행결과");
+    let carsPositions = new Array(carNames.length).fill(0);
+    for (let i = 0; i < parseInt(count); i++) {
+      carNames.forEach((carName, index) => {
+        if (this.getRandomNumber()) carsPositions[index]++;
+      });
+      this.printCarPositions(carNames, carsPositions);
+    }
   }
 }
 
