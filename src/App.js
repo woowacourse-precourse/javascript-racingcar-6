@@ -3,7 +3,7 @@ import { Console, Random } from "@woowacourse/mission-utils";
 const ERROR_HEADER = "[ERROR] ";
 const numberCanMoveForward = 4;
 
-export const meassageBeforeInput = Object.freeze({
+export const messageBeforeInput = Object.freeze({
   carNames: "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n",
   attempts: "시도할 횟수는 몇 회인가요?\n",
 });
@@ -23,7 +23,7 @@ class App {
   }
 
   async getCars() {
-    let inputCars = await Console.readLineAsync(meassageBeforeInput.carNames);
+    let inputCars = await Console.readLineAsync(messageBeforeInput.carNames);
     return inputCars.split(",");
   }
 
@@ -40,7 +40,7 @@ class App {
   }
 
   async getNumberOfAttempts() {
-    let input = await Console.readLineAsync(meassageBeforeInput.attempts);
+    let input = await Console.readLineAsync(messageBeforeInput.attempts);
     let numberOfAttempts = parseInt(input);
     if (this.isValidNumberOfAttempts(numberOfAttempts)) {
       this.numberOfAttempts = numberOfAttempts;
