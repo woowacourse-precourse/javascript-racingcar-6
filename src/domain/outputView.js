@@ -41,11 +41,9 @@ export const finalWinner = async (carNamesArray, countArr) => {
   finalWinnerResultAndSort(result, carNamesArray, countArr);
   if (result[0][1] !== result[1][1]) {
     winnerIsOnePrint(result);
-  }
-  if (result[0][1] === result[result.length - 1][1]) {
-    winnerIsManyPrint(result);
-  }
-  if (result[0][1] === result[1][1]) {
+  } else if (result[0][1] === result[result.length - 1][1]) {
     winnerIsAllPrint(result);
+  } else if (result[0][1] === result[1][1]) {
+    winnerIsManyPrint(result);
   }
 };
