@@ -60,7 +60,7 @@ describe("자동차 경주 게임", () => {
     }
   );
 
-  test("우승자 테스트", async () => {
+  test("최종 우승자 테스트", async () => {
     // given
     const MOVING_FORWARD = 4;
     const STOP = 3;
