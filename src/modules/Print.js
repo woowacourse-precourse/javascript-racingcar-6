@@ -1,12 +1,13 @@
 import { Console } from '@woowacourse/mission-utils';
 import Get from './Get.js';
-const RESULT_FIRST_MESSAGE = '실행 결과';
+const RESULT_FIRST_MESSAGE = '\n실행 결과';
+const WINNER_FROM_FIRST_MESSAGE = '최종 우승자 : ';
 
 class Print {
   static racingResultFrom(racingInfo) {
     Console.print(RESULT_FIRST_MESSAGE);
-    for (let i = 0; i < racingInfo.numberOfGame; i++) {
-      Print.racingPerGame(racingInfo, i);
+    for (let gameCount = 0; gameCount < racingInfo.numberOfGame; gameCount++) {
+      Print.racingPerGame(racingInfo, gameCount);
       Console.print('');
     }
   }
@@ -14,14 +15,14 @@ class Print {
     racingInfo.carList.forEach((name, index) => {
       Console.print(
         `${name} : ${'-'.repeat(
-          Get.position(racingInfo.runList[index], gameCount)
+          Get.positionWhen(racingInfo.runListArray[index], gameCount)
         )}`
       );
     });
   }
 
   static winnerFrom(winnerNameList) {
-    Console.print(`최종 우승자 : ${winnerNameList.join(', ')}`);
+    Console.print(`${WINNER_FROM_FIRST_MESSAGE}${winnerNameList.join(', ')}`);
   }
 }
 

@@ -6,7 +6,10 @@ class Make {
     const info = {};
     info.carList = await ConvertInputTo.carList();
     info.numberOfGame = await ConvertInputTo.numberOfGame();
-    info.runList = Get.runList(info.carList.length, info.numberOfGame);
+    info.runListArray = Get.runListArray(
+      info.carList.length,
+      info.numberOfGame
+    );
     return Object.freeze(info);
   }
 }

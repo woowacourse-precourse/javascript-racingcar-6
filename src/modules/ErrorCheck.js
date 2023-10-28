@@ -1,5 +1,6 @@
 const EXCEEDED_NAME_LENGTH_ERROR_MSG = '[ERROR] 이름 길이 제한을 초과했습니다.';
 const WRONG_FORMAT_NUMBER_ERROR_MSG = '[ERROR] 숫자가 잘못된 형식입니다.';
+
 class ErrorCheck {
   static carListString(string) {
     string.split(',').forEach(name => {

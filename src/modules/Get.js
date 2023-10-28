@@ -1,11 +1,15 @@
 import Is from './Is.js';
 
 class Get {
-  static runList(numberOfCar, numberOfGame) {
+  static runListArray(numberOfCar, numberOfGame) {
     return new Array(numberOfCar).fill(numberOfGame).map(Get.randomRunList);
   }
 
-  static position(runList, count) {
+  static randomRunList(numberOfGame) {
+    return new Array(numberOfGame).fill(null).map(Is.running);
+  }
+
+  static positionWhen(runList, count) {
     return runList.reduce((previous, running, index) => {
       if (index <= count && running) return previous + 1;
       else return previous;
@@ -21,8 +25,8 @@ class Get {
     return result;
   }
 
-  static winnerIndexList(racingList) {
-    const lastPositionList = Get.lastPositionList(racingList);
+  static winnerIndexList(racingInfo) {
+    const lastPositionList = Get.lastPositionList(racingInfo);
     const maxPostion = Math.max(...lastPositionList);
     const result = [];
     lastPositionList.forEach((position, index) => {
@@ -31,16 +35,12 @@ class Get {
     return result;
   }
 
-  static lastPositionList(racingList) {
+  static lastPositionList(racingInfo) {
     const lastPositionList = [];
-    racingList.runList.forEach(list => {
-      lastPositionList.push(Get.position(list, racingList.numberOfGame));
+    racingInfo.runListArray.forEach(list => {
+      lastPositionList.push(Get.positionWhen(list, racingInfo.numberOfGame));
     });
     return lastPositionList;
-  }
-
-  static randomRunList(numberOfGame) {
-    return new Array(numberOfGame).fill(null).map(Is.running);
   }
 }
 
