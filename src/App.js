@@ -1,5 +1,11 @@
+import InputView from './views/InputView.js';
+
 class App {
-  async play() {}
+  constructor() {}
+
+  async play() {
+    const carName = await InputView.readcarName();
+  }
 }
 
 export default App;
