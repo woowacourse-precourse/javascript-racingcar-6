@@ -24,5 +24,21 @@ export class RacingGame {
     this.tryCount = +count;
   }
 
-  
+
+
+  async go(num) {
+    
+    await Object.keys(this.cars).forEach(async (car) => {
+      const move = await isMove();
+      if (move) {
+        this.cars[car] += 1;
+      }
+      await print(`${car} : ${this.cars[car]}`);
+    });
+    await print('');
+    
+
+    if (num <= this.tryCount) await this.go(num + 1);
+  }
+
 }
