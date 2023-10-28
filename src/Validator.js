@@ -4,7 +4,7 @@ import ValidationError from './ValidationError.js';
 class Validator {
   static checkHasEmpty(userInput) {
     if (userInput.includes('')) {
-      throw new ValidationError(ERROR.isEmpty);
+      throw new ValidationError(ERROR.hasEmpty);
     }
   }
 
@@ -23,7 +23,7 @@ class Validator {
   }
 
   static checkIsNotNumber(userInput) {
-    if (Number.isNaN(userInput)) {
+    if (Number.isNaN(Number(userInput))) {
       throw new ValidationError(ERROR.isNotNumber);
     }
   }
