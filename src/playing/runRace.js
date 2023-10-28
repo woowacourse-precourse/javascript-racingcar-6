@@ -12,7 +12,7 @@ const runRace = (totalRaces, participants) => {
       if (determineWin()) {
         raceResults[participant] += '-';
       }
-      MissionUtils.Console.print(`${participant} : ${raceResults[participant]}`);
+      MissionUtils.Console.print(`${participant} : ${raceResults[participant]}\n`);
     })
 
     MissionUtils.Console.print('\n');
@@ -21,7 +21,7 @@ const runRace = (totalRaces, participants) => {
   const maxScore = findMaxScore(raceResults);
   const winnerNamesArray = findWinnerName(raceResults, maxScore);
 
-  MissionUtils.Console.print(`최종 우승자 : ${winnerNamesArray.join(', ')}`);
+  MissionUtils.Console.print(`최종 우승자 : ${winnerNamesArray.join(', ')}\n`);
 }
 
 
