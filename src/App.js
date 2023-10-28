@@ -1,4 +1,4 @@
-import RacingCarGameController from './controller/RacingCarGameController';
+import RacingCarGameController from './controller/RacingCarGameController.js';
 
 class App {
   #racingGameController = new RacingCarGameController();

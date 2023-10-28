@@ -22,4 +22,16 @@
  * @property {CommonValidationType} lengthOfCarName - 최대 자동차 길이를 만족하는지 확인하기 위한 객체
  */
 
+/**
+ * @typedef {object} MoveCountValidationType
+ * @property {string} errorMessage - 유효성 검사 실패 시의 에러 메시지
+ * @property {(moveCount : number) => boolean} isValid - 유효성 검사 함수
+ */
+
+/**
+ * @typedef {object} MoveCountValidationTypes
+ * @property {MoveCountValidationType} checkTypeOfNumber - 이동 횟수가 숫자인지 확인하기 위한 객체
+ * @property {MoveCountValidationType} checkNaturalNumber - 이동 횟수가 자연수인지 확인하기 위한 객체
+ */
+
 export {};

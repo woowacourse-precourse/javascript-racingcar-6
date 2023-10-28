@@ -19,8 +19,12 @@ const InputView = {
    * @public
    * @returns {Promise<string>} 유저로부터 입력 받은 자동차 이름
    */
-  async readRacingCarNames() {
+  readRacingCarNames() {
     return this.read(INPUT_MESSAGE.playerRacingCarNames);
+  },
+
+  readRacingCarMoveCount() {
+    return this.read(INPUT_MESSAGE.moveCount);
   },
 };
 
