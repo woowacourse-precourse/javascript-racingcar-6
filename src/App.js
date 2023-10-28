@@ -20,13 +20,13 @@ class App {
     }
   }
 
-  async getTryNumber() {
+  async getNumberOfAttempts() {
     let input = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
-    let inputTryNumber = parseInt(input);
-    if (isNaN(inputTryNumber) || inputTryNumber < 1) {
+    let numberOfAttempts = parseInt(input);
+    if (isNaN(numberOfAttempts) || numberOfAttempts < 1) {
       throw new Error(`${ERROR_HEADER} 1이상의 수를 입력하세요.`);
     }
-    return inputTryNumber;
+    return numberOfAttempts;
   }
 
   moveCarForward(car) {
@@ -50,14 +50,14 @@ class App {
     });
   }
 
-  startRace(tryNumber) {
+  startRace(numberOfAttempts) {
     Console.print("\n실행 결과");
     do {
       this.doAttempt();
       this.printTurnResult();
       Console.print("");
-      tryNumber--;
-    } while (tryNumber > 0);
+      numberOfAttempts--;
+    } while (numberOfAttempts > 0);
   }
 
   getLongestDistance() {
@@ -87,8 +87,8 @@ class App {
   async play() {
     const carArr = await this.getCars();
     await this.setCars(carArr);
-    const tryNumber = await this.getTryNumber();
-    this.startRace(tryNumber);
+    const numberOfAttempts = await this.getNumberOfAttempts();
+    this.startRace(numberOfAttempts);
     this.selectWinners();
     this.printWinners();
   }
