@@ -10,11 +10,11 @@ export default class Car {
     return this.#name;
   }
 
-  getAdvanceCount(){
+  getAdvanceCount() {
     return this.#advanceCount;
   }
 
-  plusAdvanceCount(){
+  plusAdvanceCount() {
     this.#advanceCount++;
   }
 }
