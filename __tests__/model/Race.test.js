@@ -6,11 +6,11 @@ describe('Race 클래스', () => {
 
   beforeEach(() => {
     mockCars = [
-      { name: 'pobi', move: jest.fn(), getRepresentation: jest.fn(), position: 1 },
-      { name: 'wono', move: jest.fn(), getRepresentation: jest.fn(), position: 2 },
-      { name: 'jun', move: jest.fn(), getRepresentation: jest.fn(), position: 3 },
-      { name: 'huni', move: jest.fn(), getRepresentation: jest.fn(), position: 2 },
-      { name: 'joe', move: jest.fn(), getRepresentation: jest.fn(), position: 1 }
+      { name: 'pobi', move: jest.fn(), getCurrentPositionRepresentation: jest.fn(), position: 1 },
+      { name: 'wono', move: jest.fn(), getCurrentPositionRepresentation: jest.fn(), position: 2 },
+      { name: 'jun', move: jest.fn(), getCurrentPositionRepresentation: jest.fn(), position: 3 },
+      { name: 'huni', move: jest.fn(), getCurrentPositionRepresentation: jest.fn(), position: 2 },
+      { name: 'joe', move: jest.fn(), getCurrentPositionRepresentation: jest.fn(), position: 1 }
     ];
 
     race = new Race(mockCars, 5);
@@ -30,7 +30,7 @@ describe('Race 클래스', () => {
       const results = race.getRoundResults();
       results.forEach((result, index) => {
         expect(result.name).toBe(mockCars[index].name);
-        expect(result.representation).toBe(mockCars[index].getRepresentation());
+        expect(result.representation).toBe(mockCars[index].getCurrentPositionRepresentation());
       });
     });
   });
@@ -45,6 +45,8 @@ describe('Race 클래스', () => {
       const winners = race.getWinners();
       expect(winners).not.toContain('pobi');
       expect(winners).not.toContain('joe');
+      expect(winners).not.toContain('huni');
+      expect(winners).not.toContain('wono');
     });
   });
 
@@ -58,6 +60,8 @@ describe('Race 클래스', () => {
       const winnersString = race.getWinnersString();
       expect(winnersString).not.toContain('pobi');
       expect(winnersString).not.toContain('joe');
+      expect(winnersString).not.toContain('huni');
+      expect(winnersString).not.toContain('wono');
     });
   });
 });
