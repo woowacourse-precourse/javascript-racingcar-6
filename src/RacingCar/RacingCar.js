@@ -15,9 +15,14 @@ class RacingCar {
     Console.print("실행 결과");
 
     for (let i = 0; i < numOfRacing; i++) {
+      let result = "";
       cars.forEach((car) => {
-        if (this.movingForward) car.move();
+        if (this.movingForward()) car.move();
+
+        const strDistance = this.convertDistanceToString(car.distance);
+        result += `${car.name} : ${strDistance}\n`;
       });
+      console.log(result + "\n");
     }
   }
 
@@ -37,6 +42,15 @@ class RacingCar {
 
     if (randomNum >= 4) return true;
     return false;
+  }
+
+  convertDistanceToString(distance) {
+    let str = "";
+    for (let j = 0; j < car.distance; j++) {
+      str += "-";
+    }
+
+    return str;
   }
 }
 
