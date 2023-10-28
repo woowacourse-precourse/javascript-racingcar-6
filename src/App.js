@@ -24,6 +24,8 @@ class App {
       this.#refree.moveCars();
       OutputView.printResult(this.#refree.getResultList());
     });
+
+    const winner = this.#refree.getWinner();
   }
 }
 

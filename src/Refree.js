@@ -22,6 +22,13 @@ class Refree {
     this.#carList.forEach((car) => result.push(car.getResult()));
     return result;
   }
+
+  getWinner() {
+    const resultList = this.getResultList();
+    const max = Math.max(...resultList.map(([_, position]) => position));
+    const winner = resultList.filter(([_, position]) => position === max).map(([name, _]) => name);
+    return winner;
+  }
 }
 
 export default Refree;
