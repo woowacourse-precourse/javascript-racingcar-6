@@ -10,7 +10,7 @@ class Validator {
 
   static isSafeInteger(number) {
     if (!Number.isSafeInteger(Number(number)) || !number) {
-      throw new ValidationError(ERROR.invalidLapNumber);
+      throw new ValidationError(ERROR.invalidLapCount);
     }
   }
 
@@ -18,6 +18,7 @@ class Validator {
     names
       .replace(/\s/g, '')
       .split(SYMBOLS.nameDivider)
+      .filter((name) => name)
       .forEach(this.isValidCarNameLength);
   }
 
