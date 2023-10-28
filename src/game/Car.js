@@ -9,7 +9,7 @@ class Car {
   async move() {
     const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
     if (randomNumber >= 4) {
-      this.position += 1;
+      this.position++;
     }
   }
 

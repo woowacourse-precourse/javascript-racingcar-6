@@ -7,7 +7,7 @@ class App {
   async play() {
     const racingGame = new RacingGame();
 
-    const carNames = await InputView.getCarNames();
+    const carNames = (await InputView.getCarNames()).split(",");
     carNames.forEach((name) => racingGame.addCar(name));
     
     const attempts = await InputView.getAttempts();

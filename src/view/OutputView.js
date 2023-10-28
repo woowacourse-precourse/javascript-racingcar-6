@@ -2,7 +2,7 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 
 class OutputView {
   static async printResult() {
-    MissionUtils.Console.print("실행 결과");
+    MissionUtils.Console.print("\n실행 결과");
   }
 
   static async printLine(car, position) {
@@ -10,7 +10,7 @@ class OutputView {
   }
 
   static async printBlankLine() {
-    MissionUtils.Console.print('\n');
+    MissionUtils.Console.print("");
   }
 
   static async printWinner(winners){
