@@ -53,7 +53,12 @@ export class RacingGame {
   }
 
   async printResultMove(car) {
+    let progress = '';
+    for(let i = 0 ; i < this.cars[car] ; i++){
+      progress += '-';
+    }
     
+    return print(`${car} : ${progress}`);
   }
 
   async printWinner() {}
