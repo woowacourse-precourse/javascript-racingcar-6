@@ -30,9 +30,9 @@ class App {
   }
 
   moveForward(car) {
-    const currPosition = this.cars.get(car);
-    const nextPosition = currPosition + "-";
-    this.cars.set(car, nextPosition);
+    const curDistance = this.cars.get(car);
+    const nextDistance = curDistance + "-";
+    this.cars.set(car, nextDistance);
   }
 
   tryTurn() {
@@ -45,8 +45,8 @@ class App {
   }
 
   printTurnResult() {
-    this.cars.forEach((currPosition, car) => {
-      Console.print(`${car} : ${currPosition}`);
+    this.cars.forEach((curDistance, car) => {
+      Console.print(`${car} : ${curDistance}`);
     });
   }
 
@@ -62,9 +62,9 @@ class App {
 
   getWinnerDistance() {
     let winnerDistance = 0;
-    for (let position of this.cars.values()) {
-      if (position.length >= winnerDistance) {
-        winnerDistance = position.length;
+    for (let distance of this.cars.values()) {
+      if (distance.length >= winnerDistance) {
+        winnerDistance = distance.length;
       }
     }
     return winnerDistance;
@@ -72,8 +72,8 @@ class App {
 
   selectWinners() {
     const winnerDistance = this.getWinnerDistance();
-    this.cars.forEach((currPosition, car) => {
-      if (currPosition.length === winnerDistance) {
+    this.cars.forEach((distance, car) => {
+      if (distance.length === winnerDistance) {
         this.winners.push(car);
       }
     });
