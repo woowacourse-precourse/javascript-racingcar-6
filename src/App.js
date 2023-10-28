@@ -8,6 +8,8 @@ class App {
 
   async play() {
     this.getPlayerName();
+    this.getPlayerInputRacingRounds();
+    
   }
 
   async getPlayerName() {
@@ -19,6 +21,17 @@ class App {
     }
 
     this.players = [...this.players, ...PLAYER_NAME_SPLIT];
+  }
+
+  async getPlayerInputRacingRounds() {
+    const ROUNDS = await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?')
+    const ROUNDSNUMBER = parseInt(ROUNDS, 10);
+
+    if (isNaN(ROUNDSNUMBER)) {
+      throw new Error('[ERROR] 숫자가 잘못된 형식입니다.')
+    }
+
+    this.moveAttempts = ROUNDSNUMBER;
   }
 
 }
