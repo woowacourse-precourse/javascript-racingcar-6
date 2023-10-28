@@ -22,8 +22,11 @@ class RacingCar {
         const strDistance = this.convertDistanceToString(car.distance);
         result += `${car.name} : ${strDistance}\n`;
       });
-      console.log(result);
+      Console.print(result);
     }
+
+    const winners = this.pickWinner(cars);
+    Console.print(`최종 우승자: ${winners.join(", ")}`);
   }
 
   createCarArray(nameArray) {
@@ -51,6 +54,15 @@ class RacingCar {
     }
 
     return str;
+  }
+
+  pickWinner(cars) {
+    const maxDistance = Math.max(...cars.map((car) => car.distance));
+    const winners = cars
+      .filter((car) => car.distance === maxDistance)
+      .map((car) => car.name);
+
+    return winners;
   }
 }
 
