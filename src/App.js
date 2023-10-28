@@ -1,4 +1,5 @@
-import { Console, Random } from '@woowacourse/mission-utils';
+// import { Console, Random } from '@woowacourse/mission-utils';
+import { MissionUtils } from '@woowacourse/mission-utils';
 
 class App {
   //자동차 이름 초기화
@@ -18,13 +19,13 @@ class App {
       this.printProgress(RESULT);
     }
 
-    const WINNERS = this.calculateWinner();
+    const WINNERS = this.calculateWinner(RESULTS);
     this.printWinner(WINNERS);
   }
 
   //사용자가 입력한 자동차 이름 가져오기
   async userInputCarNames() {
-    const INPUT = await Console.readLineAsync();
+    const INPUT = await MissionUtils.Console.readLineAsync();
     // Console.print(INPUT);
     const CAR_NAMES = INPUT.split(',');
 
@@ -38,7 +39,7 @@ class App {
 
   //사용자가 입력한 자동차 이동 횟수 가져오기
   async userInputNumberOfMoves() {
-    const INPUT = await Console.readLineAsync();
+    const INPUT = await MissionUtils.Console.readLineAsync();
     const NUMBER_OF_MOVES = parent(INPUT);
 
     //예외처리
@@ -65,18 +66,43 @@ class App {
   printProgress(result) {
     for (const carName in result) {
       const STATUS = result[carName] ? '-' : '';
-      Console.print(`${carName} : ${STATUS}`);
+      MissionUtils.Console.print(`${carName} : ${STATUS}`);
     }
   }
 
   // 우승자 출력
   printWinner(winners) {
     const WINNERS_NAME = winners.join(', ');
-    Console.print(`최종 우승자 : ${WINNERS_NAME}`);
+    MissionUtils.Console.print(`최종 우승자 : ${WINNERS_NAME}`);
   }
 
   // 우승자 계산
-  calculateWinner() {}
+  calculateWinner(results) {
+    const LAST_GAME_INDEX = results.length - 1;
+
+    const MAX_POSITION = results[LAST_GAME_INDEX].reduce((max, result) => {
+      for (const carName in result) {
+        max = Math.max(max, this.calculatePosition(carName, result));
+      }
+      return max;
+    }, 0);
+
+    let winners = [];
+    for (const carName in results[LAST_GAME_INDEX]) {
+      if (
+        calculatePosition(carName, results[LAST_GAME_INDEX]) === MAX_POSITION
+      ) {
+        winner.push(carName);
+      }
+    }
+
+    return winners;
+  }
+
+  // 자동차 위치 계산
+  calculatePosition(carName, result) {
+    return result[carName].split('-').length - 1;
+  }
 }
 
 export default App;
