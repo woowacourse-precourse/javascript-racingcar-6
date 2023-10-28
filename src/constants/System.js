@@ -6,6 +6,8 @@ export const SYSTEM = {
   quantityMin: 2,
   koreanPattern: 'ㄱ-ㅎㅏ-ㅣ가-힣',
   englishPattern: 'a-zA-Z',
+  countMax: 9,
+  countMin: 1,
 };
 
 export const SYSTEM_TEXT = {
