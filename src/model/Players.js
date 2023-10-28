@@ -43,4 +43,8 @@ export default class Players {
   getPlayers() {
     return this.#players.map((player) => this.makeTemplatePlayer(player));
   }
+
+  getMaxMoveCount() {
+    return Math.max(...this.getPlayers().map((player) => player.count));
+  }
 }
