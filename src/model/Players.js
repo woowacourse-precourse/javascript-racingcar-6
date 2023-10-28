@@ -9,10 +9,6 @@ export default class Players {
     this.#players.push(player);
   }
 
-  getPlayers() {
-    return this.#players;
-  }
-
   setTryCount(tryCount) {
     this.#tryCount = tryCount;
   }
@@ -35,10 +31,16 @@ export default class Players {
         player.increaseMoveCount();
       }
     });
+  }
 
-    // 디버깅용
-    this.#players.forEach((player) => {
-      console.log({ player }, player.getMoveCount());
-    });
+  makeTemplatePlayer(player) {
+    return {
+      name: player.name,
+      count: player.getMoveCount(),
+    };
+  }
+
+  getPlayers() {
+    return this.#players.map((player) => this.makeTemplatePlayer(player));
   }
 }
