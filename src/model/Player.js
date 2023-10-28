@@ -8,4 +8,8 @@ export default class Player {
   increaseMoveCount() {
     this.#moveCount += 1;
   }
+
+  getMoveCount() {
+    return this.#moveCount;
+  }
 }
