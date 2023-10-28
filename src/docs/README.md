@@ -1,4 +1,4 @@
-# :car: 자동차 경주 기능 목록
+# 🚗 자동차 경주 기능 목록
 
 ## 유저
 
@@ -45,5 +45,36 @@
   <예외 상황>
   - 숫자가 아닌 값 입력
   - 0을 입력
-
   ```
+
+<br><br>
+
+# 📁 파일 구조
+
+```
+src
+┣ controller
+┃ ┗ RacingCarController.js
+┣ docs
+┃ ┗ README.md
+┣ model
+┃ ┗ CarMoving.js
+┣ util
+┃ ┗ constants.js
+┣ validate
+┃ ┣ CarListCheck.js
+┃ ┗ TryNumberCheck.js
+┣ view
+┃ ┣ Input.js
+┃ ┗ Output.js
+┣ App.js
+┗ index.js
+```
+
+<br><br>
+
+# ✨각 파일의 기능
+
+<br><br>
+
+# 🚨 테스트 목록
