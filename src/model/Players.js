@@ -47,4 +47,8 @@ export default class Players {
   getMaxMoveCount() {
     return Math.max(...this.getPlayers().map((player) => player.count));
   }
+
+  checkMoveCountNotZero(maxMoveCount) {
+    return maxMoveCount > 0;
+  }
 }
