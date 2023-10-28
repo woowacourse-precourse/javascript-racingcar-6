@@ -39,3 +39,14 @@ export function checkTryNumber(number) {
   }
   return;
 }
+
+/**
+ * 파라미터가 MOVABLE 이상인지 확인
+ * @param {number} randomNumber
+ */
+export function checkRandomNumber(randomNumber) {
+  if (randomNumber < 4) {
+    return false;
+  }
+  return true;
+}
