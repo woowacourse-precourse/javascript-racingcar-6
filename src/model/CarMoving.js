@@ -1,5 +1,5 @@
 import { Console, Random } from "@woowacourse/mission-utils";
-import RandomCarMoving from "../model/RandomCarMoving.js";
+// import RandomCarMoving from "../model/RandomCarMoving.js";
 
 class CarMoving {
   //자동차 개수만큼 랜덤 돌리기
@@ -9,7 +9,7 @@ class CarMoving {
       this.winnerCount[i] = await this.eachCar();
     }
     Console.print(this.winnerCount);
-    return this.winnerNumber();
+    // return this.winnerNumber();
   }
 
   async eachCar() {
@@ -20,12 +20,12 @@ class CarMoving {
     if (racingNumber >= 4) {
       return racingNumber;
     }
-    return this.eachCar();
+    return 0;
   }
 
   // 우승자의 인덱스 리턴
   winnerNumber() {
-    let winner = new Array();
+    let winner = [];
     let maxValue = Math.max(...this.winnerCount);
     let idx = this.winnerCount.indexOf(maxValue);
 

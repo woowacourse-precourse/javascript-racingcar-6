@@ -39,27 +39,29 @@ class RacingCarController {
   }
 
   //게임 횟수만큼 랜덤값 생성
-  async randomStart() {
+  randomStart() {
     this.output.racingStartMessage();
     for (let i = 0; i < this.tryCount; i++) {
-      this.countWinner(await this.carMoving.eachRound(this.winCount.length));
+      this.carMoving.eachRound(this.carNames.length);
+      // Console.print(await this.carMoving.eachRound(this.winCount.length));
+      // this.countWinner(await this.carMoving.eachRound(this.winCount.length));
     }
   }
 
-  //승리자 개수 증가시키기
-  async countWinner(winner) {
-    await winner.forEach((idx) => {
-      this.winCount[idx] += "-";
-      // Console.print(idx);
-    });
-    // Console.print(this.winCount);
-    this.printResultControll();
-    // Console.print(this.printResultControll());
-  }
+  // //승리자 개수 증가시키기
+  // async countWinner(winner) {
+  //   await winner.forEach((idx) => {
+  //     this.winCount[idx] += "-";
+  //     // Console.print(idx);
+  //   });
+  //   // Console.print(this.winCount);
+  //   this.printResultControll(this.carNames, this.winCount);
+  //   // Console.print(this.printResultControll());
+  // }
 
-  printResultControll() {
-    this.output.eachRacingResult(this.carNames, this.winCount);
-  }
+  // printResultControll(carNames, winCount) {
+  //   this.output.eachRacingResult(carNames, winCount);
+  // }
 }
 
 export default RacingCarController;
