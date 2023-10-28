@@ -4,11 +4,11 @@ export default class Car {
 
   carDistance = '';
   carName = '';
-  
+
   constructor(carName) {
     this.carName = carName;
   }
-
+  
   randomlyMove() {
     if (this.canMove()) {
       this.carDistance += '-';
