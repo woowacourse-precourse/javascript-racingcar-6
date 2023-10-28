@@ -21,5 +21,9 @@ const racingCarGame = {
     }
     return carsNameArray.map((name) => ({ name, forwardCount: 0 }));
   },
+
+  getRandomNumber({ min, max }) {
+    return MissionUtils.Random.pickNumberInRange(min, max);
+  },
 };
 export default racingCarGame;
