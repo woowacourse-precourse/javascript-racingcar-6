@@ -1,5 +1,10 @@
 import { Console, Random } from '@woowacourse/mission-utils';
-import { validate, inputCarRegex, inputNumberRegex } from './validate.js';
+import {
+  validate,
+  inputCarRegex,
+  inputCarDuplicateRegex,
+  inputNumberRegex,
+} from './validate.js';
 
 class App {
   async play() {
@@ -7,6 +12,9 @@ class App {
     const carInput = (await Console.readLineAsync('')).trim();
     if (!validate(carInput, inputCarRegex)) {
       throw new Error('[ERROR] 입력이 잘못된 형식입니다.');
+    }
+    if (validate(carInput, inputCarDuplicateRegex)) {
+      throw new Error('[ERROR] 중복된 입력값입니다.');
     }
     const cars = carInput.split(',');
 
