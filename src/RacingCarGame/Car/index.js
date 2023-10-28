@@ -22,7 +22,7 @@ class Car {
   }
 
   toStringPosition() {
-    return `${this.name}${SYMBOLS.colon}${this.postion}\n`;
+    return `${this.name}${SYMBOLS.colon}${this.postion}${SYMBOLS.lineBreak}`;
   }
 }
 
