@@ -18,10 +18,10 @@ const inputCarNames = async () => {
 };
 
 const inputAttemptNumber = async () => {
-  const attemptNumber = await input();
+  const attemptNumber = Number(await input());
   validateInputAttemptNumber(attemptNumber);
 
-  return Number(attemptNumber);
+  return attemptNumber;
 };
 
 export { inputCarNames, inputAttemptNumber };
