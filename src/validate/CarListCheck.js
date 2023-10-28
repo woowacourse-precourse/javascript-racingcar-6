@@ -15,21 +15,20 @@ class CarListCheck {
 
   checkCarList(carList, inputCarList) {
     this.checkSameName(carList);
-    this.checkSpace(inputCarList);
+    this.checkNoInput(inputCarList);
     carList.forEach((carName) => this.checkNameLength(carName));
+  }
+
+  checkNoInput(inputCarList) {
+    if (inputCarList.length === 0) {
+      throw ERROR.noInputCarList;
+    }
   }
 
   checkSameName(carList) {
     const removeSameNameCount = new Set(carList).size;
-    if (removeSameNameCount <= 1 || removeSameNameCount !== carList.length) {
+    if (removeSameNameCount !== carList.length) {
       throw ERROR.carCount;
-    }
-  }
-
-  checkSpace(input) {
-    const re = new RegExp(/\s+/g);
-    if (re.test(input)) {
-      throw ERROR.carInputWord;
     }
   }
 

@@ -10,6 +10,15 @@ class Input {
       throw `[ERROR]` + error;
     }
   }
+
+  async inputTryNumber() {
+    try {
+      const TRY_NUMBER = await Console.readLineAsync(MESSAGE.inputTryNumber);
+      return TRY_NUMBER;
+    } catch (error) {
+      throw `[ERROR]` + error;
+    }
+  }
 }
 
 export default Input;
