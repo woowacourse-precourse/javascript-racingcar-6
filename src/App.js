@@ -9,19 +9,22 @@ class App {
 
     carNameList.forEach(carName => {
       if (!this.isValidCarName(carName))
-        throw new Error('[ERROR] 자동차 이름이 5자를 초과하였습니다.\n');
+        throw new Error('[ERROR] 자동차 이름이 잘못된 형식입니다.\n');
       carList.push(new Car(carName));
     });
 
     const tryNum = await this.inputTryNum();
     if (!this.isValidTryNum(tryNum))
-      throw new Error('[ERROR] 숫자가 아닌 문자가 포함되어 있습니다.\n');
+      throw new Error('[ERROR] 숫자가 잘못된 형식입니다.\n');
 
     Console.print('\n실행 결과');
     for (let i = 0; i < tryNum; i++) {
       this.tryCarGame(carList);
       this.printTryResult(carList);
     }
+
+    const winners = this.getWinners(carList);
+    this.printWinners(winners);
   }
 
   async inputCarNames() {
@@ -46,7 +49,7 @@ class App {
   }
 
   isValidTryNum(tryNum) {
-    const regex = /[^0-9]/;
+    const regex = /[^0-9]/; //입력값이 숫자로만 이루어져있는지 체크
     //Q. 시도횟수에 대한 제한은? ex) n < 10000 조건을 넣어야 할지 말지고민
     if (regex.test(tryNum)) {
       return false;
@@ -77,6 +80,18 @@ class App {
   getRandomNumber() {
     const number = Random.pickNumberInRange(0, 9);
     return number;
+  }
+
+  getWinners(carList) {
+    const maxPos = carList.reduce((prev, curr) => {
+      return prev.position >= curr.position ? prev : curr;
+    });
+    const maxPosCars = carList.filter(car => car.position === maxPos.position);
+    const winners = maxPosCars.map(car => car.name);
+    return winners;
+  }
+  printWinners(winnerList) {
+    Console.print(`최종 우승자: ${winnerList.join(', ')}`);
   }
 }
 export default App;
