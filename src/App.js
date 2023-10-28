@@ -9,8 +9,10 @@ class App {
   // 자동차 경주 시작
   async carRacingGame() {
     try {
-      const carNameArr = await this.getCarNames();
+      const carNames = await this.getCarNames();
       const tryNumber = await this.getTryNumber();
+
+      const carList = this.getCarList(carNames);
     } catch (e) {
       throw e;
     }
@@ -19,7 +21,7 @@ class App {
   async getCarNames() {
     const carNames = await Console.readLineAsync(GAME_MESSAGE.INPUT_CAR_NAME);
     checkCarNames(carNames);
-    return carNames.split(',');
+    return carNames;
   }
 
   async getTryNumber() {
@@ -28,6 +30,14 @@ class App {
     );
     checkTryNumber(tryNumber);
     return tryNumber;
+  }
+
+  getCarList(carNames) {
+    let carList = {};
+    carNames.split(',').forEach(carName => {
+      carList[carName] = '';
+    });
+    return carList;
   }
 }
 
