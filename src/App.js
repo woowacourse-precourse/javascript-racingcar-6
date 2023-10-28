@@ -46,6 +46,18 @@ class App {
 
     const ROUNDS = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?");
     this.checkRound(ROUNDS);
+    
+
+    MissionUtils.Console.print("실행 결과");
+    
+    for (let round = 0; round < ROUNDS; round++) {
+      for (let car = 0; car < CARS.length; car++) {
+        
+        CARS[car].drive();
+      }
+    }
+
+    this.printWinner(CARS);
   }
 }
 
