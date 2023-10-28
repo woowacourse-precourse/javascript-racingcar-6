@@ -1,5 +1,11 @@
+import GameUi from "./game/GameUi.js";
 class App {
-  async play() {}
+  constructor() {
+    this.gameUi = new GameUi();
+  }
+  async play() {
+    this.gameUi.askCarName();
+  }
 }
 
 export default App;
