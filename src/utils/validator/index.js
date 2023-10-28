@@ -1,5 +1,5 @@
 import { SYSTEM_TEXT } from '../../constants/System.js';
-import { isDelimiter, isLanguageValid, isNameLength } from './utils/index.js';
+import { isDelimiter, isDuplication, isLanguageValid, isNameLength } from './utils/index.js';
 
 const Validator = {
   checkRacingCarNames(carNames) {
@@ -8,6 +8,7 @@ const Validator = {
     }
     if (!isNameLength(carNames)) throw new Error('[ERROR] 이름의 길이가 유효하지 않습니다.');
     if (!isLanguageValid(carNames)) throw new Error('[ERROR] 유효하지 않은 언어가 사용되었습니다.');
+    if (isDuplication(carNames)) throw new Error('[ERROR] 중복되는 이름이 존재합니다.');
   },
 };
 
