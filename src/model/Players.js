@@ -17,6 +17,10 @@ export default class Players {
     this.#tryCount = tryCount;
   }
 
+  getTryCount() {
+    return this.#tryCount;
+  }
+
   generateRandomNumber() {
     return Random.pickNumberInRange(
       GAME_RULL.START_PICK_NUMBER,
@@ -30,6 +34,11 @@ export default class Players {
       if (pickedNumber >= GAME_RULL.MOVE_CONDITION_COUNT) {
         player.increaseMoveCount();
       }
+    });
+
+    // 디버깅용
+    this.#players.forEach((player) => {
+      console.log({ player }, player.getMoveCount());
     });
   }
 }
