@@ -42,6 +42,18 @@ class App {
     Console.print(RACE);
   }
 
+  raceResult() {
+    const WINNERNUM = Math.max(...this.CARSRANK);
+    let WINNERS = "";
+    for(let i = 0; i < this.CARSRANK.length; i++){
+      if(this.CARSRANK[i] == WINNERNUM) WINNERS += this.CARSNAME[i];
+    }
+    
+    Console.print(`최종 우승자 : ${WINNERS}`);
+
+  }
+
+
   
   async play() {
     await this.getCarsName();
@@ -49,7 +61,7 @@ class App {
     while(this.TRYDATA--){
       this.raceStart();
     }
-
+    this.raceResult();
   }
 }
 
