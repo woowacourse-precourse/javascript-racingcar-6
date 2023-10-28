@@ -24,9 +24,10 @@ const getLogSpy = () => {
   return logSpy;
 };
 
+// ===================== 자동차 이름 ===========================
 describe("예외처리", () => {
   test.each([[["pobi javaji"]], [["pobi eastjun"]]])(
-    "이름을 , 로 구분 안 한 경우",
+    "이름을 , 로 구분 안 한 경우 (입력하지 않은 경우)",
     async (inputs) => {
       // given
       mockQuestions(inputs);
@@ -62,10 +63,8 @@ describe("예외처리", () => {
     async (inputs) => {
       // given
       mockQuestions(inputs);
-
       // when
       const app = new App();
-
       // then
       await expect(app.play()).rejects.toThrow(
         Message.ERROR.NAME_EXCEEDED_MAX_LEN
@@ -73,12 +72,25 @@ describe("예외처리", () => {
     }
   );
 
+  test.each([[["pobi,pobi"]]])("이름이 중복된 경우", async (inputs) => {
+    // given
+    mockQuestions(inputs);
+    // when
+    const app = new App();
+    // then
+    await expect(app.play()).rejects.toThrow(Message.ERROR.NAME_HAS_REDUNDANCY);
+  });
+
+  // ===================== 실행 횟수 ===========================
   test.each([
     [["pobi,java"], ["a"]],
     [["asd,fgh,sdf"], ["13$"]],
-  ])("실행할 횟수가 숫자가 아닌 경우", async (inputs) => {
+    [["asd,fgh,sdf"], [""]],
+  ])("실행횟수 입력이 양의 정수가 아닌 경우", async (inputs) => {
     mockQuestions(inputs);
     const app = new App();
-    await expect(app.play()).rejects.toThrow(Message.ERROR.COUNT_SHOULD_BE_NUM);
+    await expect(app.play()).rejects.toThrow(
+      Message.ERROR.COUNT_SHOULD_BE_POSITIVE_INT
+    );
   });
 });
