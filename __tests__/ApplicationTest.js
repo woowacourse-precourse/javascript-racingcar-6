@@ -73,4 +73,31 @@ describe('자동차 경주 게임', () => {
       await expect(app.play()).rejects.toThrow('[ERROR]');
     },
   );
+
+  test.each([[['pobi,java', '']], [['pobi,east', 'number']]])(
+    '시도 횟수에 대한 예외 처리',
+    async inputs => {
+      // given
+      mockQuestions(inputs);
+
+      // when
+      const app = new App();
+
+      // then
+      await expect(app.play()).rejects.toThrow('[ERROR]');
+    },
+  );
+
+  test('이름 중복에 대한 예외 처리', async () => {
+    // given
+    const inputs = ['pobi,woni,pobi', '1'];
+
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow('[ERROR]');
+  });
 });
