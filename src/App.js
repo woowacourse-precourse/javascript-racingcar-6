@@ -2,7 +2,7 @@ import { MissionUtils } from '@woowacourse/mission-utils';
 
 class App {
   async play() {
-    //시작
+    //시작 해피해피해피
     const VEHICLE_STRING = await MissionUtils.Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,)기준으로 구분)\n");
     const VEHICLE = VEHICLE_STRING.split(','); //입력받은 문자열을 쉼표 기준으로 슬라이스 해서 배열에 저장
     except_five(VEHICLE);//다섯글자 이내인지 판별
@@ -15,7 +15,7 @@ class App {
     const TRIAL = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
     MissionUtils.Console.print("\n실행 결과");
 
-    goStop(TRIAL,VEHICLE_GO);
+    goStop(TRIAL,VEHICLE_GO);//전진 프로세스
     //console.log(VEHICLE_GO);
     winner(VEHICLE_GO); //최종 우승자
   }
