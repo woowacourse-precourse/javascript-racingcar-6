@@ -16,6 +16,7 @@ class App {
     this.createCars(carNamesArr); // 자동차 생성하기
     await this.getValidExecuteCount(); // 실행횟수 묻기
     this.execute(); // 실행 결과 출력하기
+    this.showWinner(); // 우승자 출력
   }
 
   async getValidCarNames() {
@@ -36,6 +37,7 @@ class App {
     Console.print(Message.INFO.SHOW_EXECUTE_RESULT);
     for (let round = 0; round < this.executeCount; round += 1) {
       this.executeOneRound(round);
+      Console.print("\n");
     }
   }
 
@@ -50,6 +52,17 @@ class App {
         this.maxStep = Math.max(this.maxStep, currentCar.getStep());
       }
     }
+  }
+
+  getWinner() {
+    return this.cars
+      .filter((car) => car.getStep() === this.maxStep) // 최대step을 간 우승자목록을 리턴한다
+      .map((car) => car.name);
+  }
+
+  showWinner() {
+    const winners = this.getWinner();
+    Console.print(`최종 우승자 : ${winners.join(", ")}`);
   }
 }
 

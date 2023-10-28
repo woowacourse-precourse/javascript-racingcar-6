@@ -8,8 +8,6 @@ const Message = {
   ERROR: {
     NAME_SHOULD_SPLIT_BY_COMMA:
       "[ERROR] 자동차 이름은 쉼표(,)를 기준으로 구분해야 합니다",
-    NAME_HAS_REPEATED_COMMA:
-      "[ERROR] 자동차 이름 입력 시 , 를 중복 입력 할 수 없습니다.",
     NAME_EXCEEDED_MAX_LEN: "[ERROR] 자동차 이름은 5자 이하만 가능합니다",
     NAME_HAS_REDUNDANCY: "자동차 이름은 중복될 수 없습니다",
     EXECUTE_COUNT_SHOULD_BE_POSITIVE_INT:
