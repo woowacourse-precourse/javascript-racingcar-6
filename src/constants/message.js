@@ -14,7 +14,7 @@ export const ERROR_MESSAGE = {
     noInput: '[ERROR] 입력을 하지 않았습니다. 자동차의 이름을 입력해주세요.',
   },
   playNum: {
-    includeStr: '[ERROR] 문자를 입력했습니다. 1이상의 숫자를 입력해주세요.',
+    includeStr: '[ERROR] 문자가 포함되었습니다. 1이상의 숫자만 입력해주세요.',
     includeZero: '[ERROR] 0을 입력했습니다. 1이상의 숫자를 입력해주세요.',
     noInput: '[ERROR] 0을 입력했습니다. 1이상의 숫자를 입력해주세요.',
   },
