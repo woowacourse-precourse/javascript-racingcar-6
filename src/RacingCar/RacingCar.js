@@ -12,6 +12,12 @@ class RacingCar {
     );
 
     Console.print("실행 결과");
+
+    for (let i = 0; i < numOfRacing; i++) {
+      cars.forEach((car) => {
+        if (this.movingForward) car.move();
+      });
+    }
   }
 
   createCarArr(name) {
@@ -29,6 +35,7 @@ class RacingCar {
 
   movingForward() {
     const randomNum = Random.pickNumberInRange(0, 9);
+
     if (randomNum >= 4) return true;
     return false;
   }
