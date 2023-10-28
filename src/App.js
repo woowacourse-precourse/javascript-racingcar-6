@@ -25,8 +25,8 @@ class App {
   carNameValidation(userInput) {
     const carNames = userInput.split(",");
     carNames.forEach((carName) => {
-      if (carName.length < 5) {
-        throw new Error("[ERROR] 자동차 이름이 5글자 아래입니다.");
+      if (carName.length > 5) {
+        throw new Error("[ERROR] 5글자 이내로 입력해주세요.");
       }
     });
   }
