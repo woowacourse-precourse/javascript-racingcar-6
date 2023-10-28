@@ -10,6 +10,10 @@ class App {
     );
     const racingCarNames = inputRacingCars.split(",");
     validateRacingCars(racingCarNames);
+
+    const inputAttemptCount = await Console.readLineAsync(
+      INPUT_MESSAGE.ATTEMPT_COUNT
+    );
   }
 }
 
