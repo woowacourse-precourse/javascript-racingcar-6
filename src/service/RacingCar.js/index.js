@@ -43,7 +43,7 @@ export class RacingCarGame {
     console(MESSAGES.RESULT);
     while (this.#currentRound < this.#totalRounds) {
       this.#cars.getCars().forEach((car) => {
-        if (this.#rule.shouldCarRun()) car.run();
+        if (this.#rule.shouldRun()) car.run();
       });
 
       console(this.#getRoundResult());
