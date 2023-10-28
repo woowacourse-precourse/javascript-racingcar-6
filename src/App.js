@@ -28,6 +28,22 @@ class App {
     const inputTryCount = await Console.readLineAsync(
       '시도할 횟수는 몇 회인가요?'
     );
+
+    const parsedNumberCount = Number(inputTryCount);
+
+    return this.validateInputCount(parsedNumberCount);
+  }
+
+  validateInputCount(inputValue) {
+    if (Number.isNaN(inputValue)) {
+      throw new Error('[ERROR] 숫자가 잘못된 형식입니다.');
+    }
+
+    if (!!inputValue) {
+      return;
+    }
+
+    throw new Error('[ERROR] 숫자가 잘못된 형식입니다.');
   }
 }
 
