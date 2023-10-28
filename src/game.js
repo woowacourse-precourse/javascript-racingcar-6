@@ -8,12 +8,16 @@ const generateRandomNumber = () => {
 const printResult = async (cars, trials) => {
   const randomNumber = generateRandomNumber();
   Console.print("실행 결과");
-  Console.print(randomNumber);
-  Console.print(cars);
-  Console.print(trials);
+  //   Console.print(randomNumber);
+  //   Console.print(cars);
+  //   Console.print(trials);
   //   Console.print("name1 : ", "-");
   //   Console.print("name2 : ", "-");
   //   Console.print("name3 : ", "-");
+
+  for (let i = 0; i < trials; i++) {
+    for (let j = 0; j < cars; j++) {}
+  }
 };
 
 const inputCarName = async () => {
