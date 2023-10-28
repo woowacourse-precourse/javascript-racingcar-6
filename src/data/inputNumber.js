@@ -1,5 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import { TEXT } from "../common/index";
+import { TEXT } from "../utils/common";
 
 const inputNumber = async () => {
   const number = await MissionUtils.Console.readLineAsync(
