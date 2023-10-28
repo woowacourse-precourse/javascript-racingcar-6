@@ -3,6 +3,7 @@ export const MESSAGES = Object.freeze({
   WINNER: (winnerNames) => `최종 우승자 : ${winnerNames}`,
   ERROR: {
     PREFIX: "[ERROR]",
+    RULE: "올바르지 않은 레이싱 규칙입니다.",
     CAR: {
       NAME: {
         EMPTY: "자동차 이름으로 빈 문자열을 입력할 수 없습니다.",
