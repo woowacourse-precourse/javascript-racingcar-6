@@ -1,7 +1,7 @@
 import { Console } from "../../utils/console/console.js";
 import RacingCar from "../RacingCar/RacingCar.js";
 import IncorrectFormatError from "../../error/IncorrectFormatError.js";
-import { RacingGameState } from "../../constanst/game.js";
+import { RacingGameState } from "../../constants/game.js";
 import { getRandomNumber } from "../../utils/random/random.js";
 import { RacingGameMessage } from "../../utils/message/message.js";
 import OutOfRangeError from "../../error/OutOfRangeError.js";

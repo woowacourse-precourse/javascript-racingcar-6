@@ -1,4 +1,4 @@
-import { RacingGameState } from "../constanst/game.js";
+import { RacingGameState } from "../constants/game.js";
 import { ErrorMessage } from "../utils/message/message.js";
 import BasicError from "./BasicError.js";
 

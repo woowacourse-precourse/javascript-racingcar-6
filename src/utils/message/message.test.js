@@ -1,4 +1,4 @@
-import { RacingGameState } from "../../constanst/game.js";
+import { RacingGameState } from "../../constants/game.js";
 import { ErrorMessage } from "./message.js";
 
 describe("errorMessage 검증", () => {
