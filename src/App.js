@@ -26,6 +26,12 @@ class App {
 
   async inputTryCount() {
     const count = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+
+    const numberRegex = /^[0-9]+$/;
+    if (!numberRegex.test(count)) {
+      throw new Error("[ERROR] 숫자가 잘못된 형식입니다.")
+    }
+    
     this.tryCount = parseInt(count);
   }
 
