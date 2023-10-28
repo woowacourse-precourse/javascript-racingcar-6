@@ -63,6 +63,22 @@ class App {
     MissionUtils.Console.print("\n");
   }
 
+  /**
+   * 우승자 확인
+   * @param {*} carNames 자동차 이름 배열
+   * @param {*} carPositions 자동차 위치 배열
+   * @returns 우승자
+   */
+  checkWinner(carNames, carPositions) {
+    let winners = []; //우승자 배열
+    const maxPosition = Math.max(...carPositions);
+    carNames.forEach((carName, index) => {
+      if (carPositions[index] === maxPosition) winners.push(carName);
+    });
+
+    return winners;
+  }
+
   async play() {
     const carNames = await this.getInputCarNames();
     const count = await this.getInputCount();
@@ -75,6 +91,9 @@ class App {
       });
       this.printCarPositions(carNames, carsPositions);
     }
+
+    const winners = this.checkWinner(carNames, carsPositions);
+    MissionUtils.Console.print("최종 우승자: " + winners.join(", "));
   }
 }
 
