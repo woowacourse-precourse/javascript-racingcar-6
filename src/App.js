@@ -2,6 +2,7 @@ import { Console, Random } from "@woowacourse/mission-utils";
 
 const ERROR_HEADER = "[ERROR] ";
 const numberCanMoveForward = 4;
+const validCarNameLength = 5;
 
 export const messageBeforeInput = Object.freeze({
   carNames: "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n",
@@ -13,6 +14,7 @@ export const messagePrint = Object.freeze({
 });
 export const messageError = Object.freeze({
   validAttempts: "1이상의 수를 입력하세요.",
+  validCarName: "자동차 이름은 5자 이하만 가능합니다",
 });
 
 class App {
@@ -22,9 +24,19 @@ class App {
     this.numberOfAttempts = 0;
   }
 
+  checkValidCarName(carName) {
+    if (carName.length > validCarNameLength) {
+      throw new Error(`${ERROR_HEADER}${messageError.validCarName}`);
+    }
+  }
+
   async getCars() {
     let inputCars = await Console.readLineAsync(messageBeforeInput.carNames);
-    return inputCars.split(",");
+    let carsArr = inputCars.split(",");
+    for (let carName of carsArr) {
+      this.checkValidCarName(carName);
+    }
+    return carsArr;
   }
 
   async setCars(carArr) {
@@ -33,17 +45,16 @@ class App {
     }
   }
 
-  isValidNumberOfAttempts(numberOfAttempts) {
+  checkValidNumberOfAttempts(numberOfAttempts) {
     if (isNaN(numberOfAttempts) || numberOfAttempts < 1) {
       throw new Error(`${ERROR_HEADER}${messageError.validAttempts}`);
     }
-    return true;
   }
 
   async getNumberOfAttempts() {
     let input = await Console.readLineAsync(messageBeforeInput.attempts);
     let numberOfAttempts = parseInt(input);
-    if (this.isValidNumberOfAttempts(numberOfAttempts)) {
+    if (this.checkValidNumberOfAttempts(numberOfAttempts)) {
       this.numberOfAttempts = numberOfAttempts;
     }
   }
