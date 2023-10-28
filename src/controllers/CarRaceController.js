@@ -1,7 +1,9 @@
-import CarModel from '../models/CarModel.js';
+import Car from '../models/Car.js';
 import RaceManagerModel from '../models/RaceManagerModel.js';
 import CarRaceView from '../views/CarRaceView.js';
 import { repeatFunctionNTimes } from '../utils/repeatFunctionNTimes.js';
+import { calculateLongestDistance } from '../utils/calculateLongestDistance.js';
+
 import {
   validateCarName,
   hasDuplicate,
@@ -17,7 +19,7 @@ class CarRaceController {
 
   async initializeGame() {
     const carNames = await this.promptCarNames();
-    this.carModels = carNames.map(carName => new CarModel(carName));
+    this.carModels = carNames.map(carName => new Car(carName));
     this.raceModel = new RaceManagerModel(this.carModels);
     const moveCount = await this.promptMoveCount();
     this.raceModel.setMoveCount(moveCount);
@@ -42,7 +44,7 @@ class CarRaceController {
   }
 
   getGameResult() {
-    this.gameWinner = this.raceModel.calcultateWinner();
+    this.gameWinner = this.calcultateWinner();
   }
 
   async promptMoveCount() {
@@ -76,6 +78,15 @@ class CarRaceController {
     if (isDuplicte) {
       throw new Error('[ERROR] car 이름은 중복이 불가합니다.');
     }
+  }
+
+  calcultateWinner() {
+    const maxPosition = calculateLongestDistance(this.carModels);
+
+    const winners = this.carModels.filter(
+      carModel => carModel.position.length === maxPosition,
+    );
+    return winners.map(winner => winner.carName).join(', ');
   }
 
   printWinner() {
