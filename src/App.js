@@ -1,5 +1,11 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
+const ERROR_MESSAGES = {
+  CAR_NAME_OVER: "[ERROR] 차량 이름은 5자 이하로 입력해 주세요",
+  CAR_NAME_ZERO: "[ERROR] 숫자만 입력해 주세요",
+  INPUT_ATTEMPT_NOT_STRING: "[ERROR] 1 또는 2의 숫자만 입력해 주세요.",
+};
+
 class App {
   async play() {
     const CARS = await MissionUtils.Console.readLineAsync(
@@ -30,6 +36,7 @@ class App {
       });
       MissionUtils.Console.print("");
     }
+
     const maxValue = OBJECT.reduce(
       (max, current) => Math.max(max, current.value),
       -Infinity
@@ -41,14 +48,17 @@ class App {
 }
 
 function checkCarName(car) {
-  if (car.length > 5 || car.length === 0) {
-    throw new Error("[ERROR] 차량 이름 입력이 잘못됨.");
+  if (car.length > 5) {
+    throw new Error(ERROR_MESSAGES.CAR_NAME_OVER);
+  }
+  if (car.length === 0) {
+    throw new Error(ERROR_MESSAGES.CAR_NAME_ZERO);
   }
 }
 
 function checkAttempsCount(attemps) {
   if (isNaN(attemps)) {
-    throw new Error("[ERROR] 횟수 입력이 잘못됨.");
+    throw new Error(ERROR_MESSAGES.INPUT_ATTEMPT_NOT_STRING);
   }
 }
 
