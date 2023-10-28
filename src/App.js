@@ -1,5 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
-import { ERROR_LABEL, ERROR_MSG, MAX_LENGTH_OF_NAME } from "./constants";
+import { ERROR_LABEL, MAX_LENGTH_OF_NAME, ERROR_MSG } from "constants";
 
 class App {
   #TRY = 0; // 시도 횟수
@@ -21,7 +21,7 @@ class App {
    */
   async get_try_input() {
     Console.print("시도할 횟수는 몇 회인가요?");
-    const INPUT_TRY = await Console.readLineAsync();
+    const INPUT_TRY = await Console.readLineAsync("");
 
     if (isNaN(INPUT_TRY) || parseInt(INPUT_TRY) <= 0) {
       throw new Error(ERROR_MSG.WRONG_NUMBER);
@@ -40,7 +40,7 @@ class App {
     Console.print(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
     );
-    const INPUT_CARS = await Console.readLineAsync();
+    const INPUT_CARS = await Console.readLineAsync("");
 
     // ? 사용자 입력 검증 과정
     // 1. ","를 기준으로 문자열 분해 & 각 문자의 불필요한 공백 제거
@@ -48,20 +48,11 @@ class App {
     car_names = car_names.map((value) => value.trim()); // 앞/뒤 공백 제거
 
     // 2. 길이 검사
-    // ! depth = 2 ?
     car_names.forEach((value) => {
       if (value.length > MAX_LENGTH_OF_NAME) {
         throw new Error(ERROR_MSG.NAME_LEN_EXCEED);
       }
     });
-
-    // const valid_name_count = car_names.filter(
-    //   (value) => value.length <= MAX_LENGTH_OF_NAME
-    // ).length; // valid한 이름의 갯수
-
-    // if (valid_name_count !== car_names.length) {
-    //   throw new Error(ERROR_MSG.NAME_LEN_EXCEED);
-    // }
 
     return car_names;
   }
