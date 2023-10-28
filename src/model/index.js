@@ -8,6 +8,13 @@ class RacingCarModel {
     const randomNumber = RandomNumberGenerator.run();
     return randomNumber >= SYSTEM.moveStartPoint;
   }
+
+  saveCarNames(carNames) {
+    this.#carData = new Map();
+    carNames.split(SYSTEM.delimiter).forEach((carName) => {
+      this.#carData.set(carName, '');
+    });
+  }
 }
 
 export default RacingCarModel;
