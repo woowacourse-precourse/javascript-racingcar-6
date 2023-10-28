@@ -14,16 +14,22 @@ class Car {
     const cars = await user.inputCarName();
     const tryCount = await user.inputTryCount();
 
-    Console.print(GAME_MESSAGE.result);
+    Console.print('\n' + GAME_MESSAGE.result);
+
+    const resultArray = new Array(cars.length).fill('');
 
     for (let i = 0; i < tryCount; i++) {
-      cars.forEach(car => {
-        let resultMark = '-';
-        if (this.generateRandomNumber() >= 4) {
-          resultMark += '-';
+      cars.forEach((car, index) => {
+        const randomNumber = this.generateRandomNumber();
+        if (randomNumber >= 4) {
+          resultArray[index] += '-';
         }
-        Console.print(`${car} : ${resultMark}`);
       });
+
+      cars.forEach((car, index) => {
+        Console.print(`${car} : ${resultArray[index]}`);
+      });
+
       Console.print('');
     }
   }
