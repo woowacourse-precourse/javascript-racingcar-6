@@ -11,13 +11,6 @@ const mockQuestions = (inputs) => {
   });
 };
 
-const mockRandoms = (numbers) => {
-  MissionUtils.Random.pickNumberInRange = jest.fn();
-  numbers.reduce((acc, number) => {
-    return acc.mockReturnValueOnce(number);
-  }, MissionUtils.Random.pickNumberInRange);
-};
-
 const getLogSpy = () => {
   const logSpy = jest.spyOn(MissionUtils.Console, 'print');
   logSpy.mockClear();
@@ -72,7 +65,6 @@ describe('자동차 이름 유효성 테스트', () => {
     const logSpy = getLogSpy();
 
     mockQuestions(inputs);
-    mockRandoms([1, 10]);
 
     const app = new App();
     await app.play();
