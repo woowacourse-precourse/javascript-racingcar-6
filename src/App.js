@@ -5,6 +5,7 @@ class App {
     this.random = 0;
     this.carList = [];
     this.round = 0;
+    this.racing = [];
   }
 
   // 2. 경주할 자동차 이름 받기
@@ -47,20 +48,21 @@ class App {
     Console.print("실행 결과");
 
     // 자동차 별 진행 속도
-    let racingArr = new Array(this.round).fill("");
+    const init = new Array(this.round).fill("");
+    this.racingArr = [...init];
 
     // 경주 실행
     for (let i = 0; i < this.round; i++) {
       for (let j = 0; j < this.carList.length; j++) {
         const random = Random.pickNumberInRange(0, 9);
         if (random >= 4) {
-          racingArr[j] += "-";
+          this.racingArr[j] += "-";
         }
       }
 
       // 각 차수별 실행 결과 출력
       for (let k = 0; k < this.carList.length; k++) {
-        Console.print(this.carList[k] + " : " + racingArr[k]);
+        Console.print(this.carList[k] + " : " + this.racingArr[k]);
       }
 
       // 각 차수 구분 공백
