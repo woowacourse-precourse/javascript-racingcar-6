@@ -8,6 +8,9 @@ export const SYSTEM = {
   englishPattern: 'a-zA-Z',
   countMax: 9,
   countMin: 1,
+  randomNumberStart: 0,
+  randomNumberEnd: 9,
+  moveStartPoint: 4,
 };
 
 export const SYSTEM_TEXT = {
