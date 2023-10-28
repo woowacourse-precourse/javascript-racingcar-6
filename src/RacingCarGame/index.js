@@ -24,7 +24,7 @@ class RacingCarGame {
   }
 
   compete() {
-    const result = this.race.makeLapResult();
+    const result = this.race.formatResult();
     Output.log(MESSAGE.result);
     Output.log(result);
     this.prize();

@@ -16,6 +16,7 @@ class Race {
     this.cars = names
       .replace(/\s/g, '')
       .split(SYMBOLS.nameDivider)
+      .filter((name) => name)
       .map((name) => new Car(name));
   }
 
@@ -30,8 +31,8 @@ class Race {
     });
   }
 
-  makeLapResult() {
-    for (let i = 0; i < this.lapCount; i++) {
+  formatResult() {
+    for (let i = 0; i < this.lapCount; i += 1) {
       this.lap();
       this.logLap();
     }
@@ -47,7 +48,7 @@ class Race {
     const maxMoveCount = this.calMaxMove();
     return this.cars
       .filter((car) => maxMoveCount === car.countMove())
-      .map((car) => car.name)
+      .map((car) => car.getName())
       .join(SYMBOLS.winnerDivider);
   }
 }
