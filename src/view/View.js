@@ -7,12 +7,7 @@ export default class View {
     const carNames = await Console.readLineAsync(MESSAGE.input);
     const carNamesToArray = carNames.split(',');
 
-    Validation.hasSpace(carNamesToArray);
-    Validation.hasSpecialChar(carNamesToArray);
-    Validation.hasEmptyName(carNamesToArray);
-    Validation.hasDuplicateName(carNamesToArray);
-    Validation.isMoreThanFiveLetters(carNamesToArray);
-
+    Validation.checkValidation(carNamesToArray);
     return carNamesToArray;
   }
 

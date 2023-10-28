@@ -1,6 +1,14 @@
 import { ERROR } from '../constants/constants';
 
 export default class Validation {
+  static checkValidation(carNames) {
+    this.hasSpace(carNames);
+    this.isMoreThanFiveLetters(carNames);
+    this.hasSpecialChar(carNames);
+    this.hasEmptyName(carNames);
+    this.hasDuplicateName(carNames);
+  }
+
   static hasSpace(carNames) {
     carNames.forEach((carName) => {
       if (carName.includes(' ')) {
