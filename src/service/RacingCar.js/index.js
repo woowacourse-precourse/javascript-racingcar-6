@@ -1,7 +1,8 @@
 import { MESSAGES } from "../../constants/messages";
 import { Cars } from "../../domain";
 import { CustomError } from "../../exceptions";
-import { readLine } from "../../utils";
+import { readLine, shouldCarRun } from "../../utils";
+import { console } from "../../utils/console";
 
 CAR_NAME_LENGTH_LIMIT = 5;
 
@@ -11,10 +12,12 @@ export class RacingCarGame {
   #currentRound = 0;
   #winners;
 
+  static createGame() {
+    return new RacingCarGame();
+  }
+
   async promptCarNames() {
-    const carNamesInput = await readLine(
-      MESSAGES.PLACEHOLDER.CAR.NAME(CAR_NAME_LENGTH_LIMIT)
-    );
+    const carNamesInput = await readLine(MESSAGES.PLACEHOLDER.CAR.NAME);
     const carNames = carNamesInput.split(",");
 
     carNames.forEach((carName) => {
@@ -57,5 +60,16 @@ export class RacingCarGame {
 
     if (!Number.isInteger(totalRounds))
       throw new CustomError(MESSAGES.ERROR.TOTAL_ROUNDS.NOT_INTEGER);
+  }
+
+  #getRoundResult() {
+    const carNames = this.#cars.getCarNames();
+    const roundResult = this.#cars.getCarOffsets().map((offset) => {
+      return "-".repeat(offset);
+    });
+
+    return carNames.map((carName, index) => {
+      return `${carName} : ${roundResult[index]}`;
+    });
   }
 }
