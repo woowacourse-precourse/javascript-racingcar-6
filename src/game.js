@@ -5,6 +5,28 @@ const generateRandomNumber = () => {
   return Random.pickNumberInRange(0, 9);
 };
 
+const findWinner = (map) => {
+  let max = -Infinity;
+  const keys = [];
+
+  for (const [key, value] of map) {
+    if (value > max) {
+      max = value;
+      keys.length = 0;
+    }
+
+    if (value === max) {
+      keys.push(key);
+    }
+  }
+
+  if (keys.length > 1) {
+    return `최종 우승자 : ${keys.join(", ")}`;
+  }
+
+  return `최종 우승자 : ${keys[0]}`;
+};
+
 const printResult = async (cars, trials) => {
   Console.print("실행 결과");
 
@@ -22,6 +44,8 @@ const printResult = async (cars, trials) => {
       Console.print(`${cars[j]} : ` + "-".repeat(map.get(cars[j])));
     }
   }
+
+  Console.print(findWinner(map));
 };
 
 const inputCarName = async () => {
