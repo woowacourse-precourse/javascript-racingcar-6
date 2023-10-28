@@ -17,10 +17,10 @@ describe('Car 클래스', () => {
     });
   });
 
-  describe('getRepresentation 메서드', () => {
+  describe('getCurrentPositionRepresentation 메서드', () => {
     test('현재 위치를 문자열로 반환해야 한다', () => {
       const car = new Car('pobi', alwaysMoveStrategy);
-      expect(car.getRepresentation()).toBe('');
+      expect(car.getCurrentPositionRepresentation()).toBe('');
     });
   });
 

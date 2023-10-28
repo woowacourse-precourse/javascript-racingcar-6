@@ -13,7 +13,7 @@ export default class Race {
 
   getRoundResults() {
     return this.#cars.map((car) => {
-      return { name: car.name, representation: car.getRepresentation() };
+      return { name: car.name, representation: car.getCurrentPositionRepresentation() };
     });
   }
 

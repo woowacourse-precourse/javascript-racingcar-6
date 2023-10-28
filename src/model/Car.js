@@ -7,8 +7,8 @@ export default class Car {
     this.carMovementStrategy = carMovementStrategy;
   }
 
-  getRepresentation() {
-    return GameSettings.CAR_REPRESENTATION.repeat(this.position);
+  getCurrentPositionRepresentation() {
+    return GameSettings.FORWARD_MOVE_REPRESENTATION.repeat(this.position);
   }
 
   move() {
