@@ -1,0 +1,14 @@
+export const RANGE_NUMBER = Object.freeze({
+  min: 0,
+  max: 9,
+});
+
+export const MESSAGE = Object.freeze({
+  winner: '최종 우승자 : ',
+  ask_car_name: '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
+  ask_number_of_time: '시도할 횟수는 몇 회인가요?\n',
+  empty: '',
+  execution_result: '실행 결과',
+});
+
+export const DITANCE_SYMBOL = '-';
