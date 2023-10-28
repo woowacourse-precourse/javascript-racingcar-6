@@ -15,7 +15,8 @@ class App {
 
       if (racingCarNames.indexOf(',') === -1) throw new Error();
 
-      racingCarNames.split(',').map((car) => {
+      racingCarNames.split(',').map((car, _, array) => {
+        if (array.length > 5) throw new Error();
         this.racingCars[car] = 0;
         if (car === '') throw new Error();
       });
