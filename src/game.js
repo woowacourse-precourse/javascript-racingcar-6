@@ -13,8 +13,8 @@ export default class Game {
     const carNameStr = await MissionUtils.Console.readLineAsync('');
     const carList = carNameStr.split(',');
 
-    if (carList.filter((item) => item.length > 5).length) {
-      throw new Error('[ERROR] 자동차 이름은 5자 이하만 가능합니다.');
+    if (carList.filter((item) => item.length > 5 || item.length < 1).length) {
+      throw new Error('[ERROR] 자동차 이름은 최소 1자, 최대 5자만 가능합니다.');
     }
 
     return carList;
