@@ -1,11 +1,23 @@
 import { Console } from '@woowacourse/mission-utils';
+import Parser from './Parser';
+import Validator from './Validator';
+import InputError from '../errors/InputError';
 
 class Input {
-  #carNameInputQuery =
-    '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)';
+  #carNameInputQuery = '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n';
 
-  carNameInput() {
-    Console.print(this.#carNameInputQuery);
+  /** 자동차 이름을 입력받는 메소드
+   * @returns {Promise<string[]>} 자동차 이름 배열
+   */
+  async getCarNames() {
+    const inputString = await Console.readLineAsync(this.#carNameInputQuery);
+
+    const parsedArray = Parser.stringToArray(inputString);
+    const { isValid, reason } = Validator.isValidCarName(parsedArray);
+
+    if (!isValid) throw new InputError(reason);
+
+    return parsedArray;
   }
 }
 
