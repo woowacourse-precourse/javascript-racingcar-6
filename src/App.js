@@ -71,10 +71,28 @@ class App {
     }
   }
 
+  // 5. 우승자 계산
+  async whoIsWinner() {
+    Console.print("최종 결과 : " + this.racing);
+
+    const resultNum = this.racing.map((car) => car.length);
+    // 최대 값과 같으면 정답에 추가
+    let winner = [];
+    const max = Math.max(...resultNum);
+    for (let i = 0; i < resultNum.length; i++) {
+      if (resultNum[i] === max) {
+        winner.push(this.carList[i]);
+      }
+    }
+
+    Console.print("최종 우승자 : " + winner);
+  }
+
   async play() {
     await this.inputCarList();
     await this.inputRound();
     await this.race();
+    await this.whoIsWinner();
   }
 }
 
