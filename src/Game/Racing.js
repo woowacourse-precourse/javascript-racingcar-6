@@ -41,7 +41,6 @@ class Racing {
         const maxDistance = this.getMaxDistance();
         const winCar = cars.filter(car => car.getDistance() === maxDistance);
         return winCar.map(car => car.name).join(', ');
-    
     }
 }
 
