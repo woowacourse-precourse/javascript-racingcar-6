@@ -37,3 +37,7 @@ export const isDuplication = (input) => {
 
   return inputArray.length !== nameSet.size;
 };
+
+export const isValidCount = (input) => {
+  return Number(input) >= SYSTEM.countMin && Number(input) <= SYSTEM.countMax;
+};
