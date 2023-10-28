@@ -4,7 +4,8 @@ import {
   isLanguageValid,
   isNameLength,
   isQuantityValid,
-} from '../src/utils/validator/utils';
+  isValidCount,
+} from '../src/utils/validator/utils/index.js';
 
 describe('validator test', () => {
   describe('isDelimiter', () => {
@@ -52,6 +53,21 @@ describe('validator test', () => {
 
     test('중복되는 이름이 존재하지 않을 때 false 리턴', () => {
       expect(isDuplication('fobi,toto,lala')).toBe(false);
+    });
+  });
+
+  describe('isValidCount', () => {
+    test('유효한 횟수를 입력하였을 때 true 리턴', () => {
+      expect(isValidCount('3')).toBe(true);
+    });
+
+    test.each([
+      ['33', false],
+      ['#@$', false],
+      ['삼십', false],
+      ['one', false],
+    ])('유효한 횟수를 입력하지 않았을 때 false 리턴', (input, expected) => {
+      expect(isValidCount(input)).toBe(expected);
     });
   });
 });
