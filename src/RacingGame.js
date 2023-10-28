@@ -13,4 +13,8 @@ export default class RacingGame {
   isFinish() {
     return this.tryRound === 0;
   }
+
+  clearRound() {
+    this.tryRound -= 1;
+  }
 }
