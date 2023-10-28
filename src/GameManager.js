@@ -5,6 +5,7 @@ import { INPUT_CARS } from './constants/messages.js';
 class GameManager {
   constructor() {
     this.cars = [];
+    this.attempt = 0;
   }
 
   async recruitCars() {
@@ -17,6 +18,11 @@ class GameManager {
     nameList.forEach((name) => {
       this.cars.push(new Car(name));
     });
+  }
+
+  async inputNumberOfAttempt() {
+    const input = await Console.readLineAsync('시도 횟수 : ');
+    this.attempt = Number(input);
   }
 
   announceInterimResult() {
