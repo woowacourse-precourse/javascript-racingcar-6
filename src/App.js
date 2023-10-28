@@ -23,25 +23,8 @@ class App {
     await this.getAttemptNumber();
     this.checkAttemptNumber();
 
-    // 2-a
-    this.arrCarName.forEach((name) => {
-      this.race.push([name, 0]);
-    });
-    // 2-b
-    MissionUtils.Console.print(EXECUTION_ENDS);
-    for (let i = 0; i < this.attempts; i++) {
-      this.arrCarName.map((name, index) => {
-        const result = MissionUtils.Random.pickNumberInRange(0, 9);
-        if (result >= 4) {
-          this.race[index][1]++;
-        }
-        // 2-c
-        MissionUtils.Console.print(
-          `${name} : ${RACE_RESULT.repeat(this.race[index][1])}`
-        );
-      });
-      MissionUtils.Console.print(RACE_RESULT_GAP);
-    }
+    this.preparationRace();
+    this.startRace();
 
     // 3-a
     this.race.sort((a, b) => {
@@ -78,6 +61,28 @@ class App {
   checkAttemptNumber() {
     if (this.attempts < 0 || isNaN(this.attempts) == true) {
       throw new Error(ERROR_ATTEMPTS_NUMBER);
+    }
+  }
+
+  preparationRace() {
+    this.arrCarName.forEach((name) => {
+      this.race.push([name, 0]);
+    });
+  }
+  startRace() {
+    MissionUtils.Console.print(EXECUTION_ENDS);
+    for (let i = 0; i < this.attempts; i++) {
+      this.arrCarName.map((name, index) => {
+        const result = MissionUtils.Random.pickNumberInRange(0, 9);
+        if (result >= 4) {
+          this.race[index][1]++;
+        }
+
+        MissionUtils.Console.print(
+          `${name} : ${RACE_RESULT.repeat(this.race[index][1])}`
+        );
+      });
+      MissionUtils.Console.print(RACE_RESULT_GAP);
     }
   }
 }
