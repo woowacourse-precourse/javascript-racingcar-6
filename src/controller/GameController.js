@@ -26,6 +26,12 @@ export default class GameController {
     const tryCount = await this.view.getUserInput(MESSAGE.TRY_COUNT);
     this.#validateTryCount(tryCount);
     this.model.setTryCount(Number(tryCount));
+
+    const roofCount = this.model.getTryCount();
+    for (let i = 0; i < roofCount; i++) {
+      this.model.setMoveCount();
+      // this.view.printResult();
+    }
   }
 
   splitPlayerNames(names) {
