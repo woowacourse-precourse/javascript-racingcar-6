@@ -14,10 +14,7 @@ class App {
 
   async play() {
     await this.#readCarNames();
-
-    const totalRoundsString = await InputView.getTotalRounds();
-    Validation.validateTotalRounds(totalRoundsString);
-    this.#totalRounds = Number(totalRoundsString);
+    await this.#readTotalRounds();
 
     OutputView.printResultTitleMessage();
 
@@ -35,6 +32,12 @@ class App {
     Validation.validateCarNames(carNames);
 
     this.#refree.registerCars(carNames);
+  }
+
+  async #readTotalRounds() {
+    const totalRoundsString = await InputView.getTotalRounds();
+    Validation.validateTotalRounds(totalRoundsString);
+    this.#totalRounds = Number(totalRoundsString);
   }
 }
 
