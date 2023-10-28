@@ -18,27 +18,51 @@ async function start() {
     "시도할 횟수는 몇 회인가요?\n"
   );
   checkAttempsCount(ATTEMPS_COUNT);
+  MissionUtils.Console.print("실행 결과");
+  //각 변수를 object화 해서 값을 1씩 증가시키는 방법이 있음.
+  const OBJECT = CAR_ARRAY.map((car) => ({ name: car, value: 0 }));
 
   for (let i = 0; i < ATTEMPS_COUNT; i++) {
-    const RANDOMNUMBER = MissionUtils.Random.pickNumberInRange(0, 9);
-    console.log(RANDOMNUMBER);
-    if (RANDOMNUMBER >= 4) {
-      console.log("전진");
-    }
+    OBJECT.forEach((car, index) => {
+      const RANDOMNUMBER = MissionUtils.Random.pickNumberInRange(0, 9);
+      if (RANDOMNUMBER >= 4) {
+        OBJECT[index].value++;
+      }
+      let value = "-".repeat(OBJECT[index].value);
+      MissionUtils.Console.print(`${OBJECT[index].name} : ${value}`);
+    });
+    MissionUtils.Console.print("\n");
+    // MissionUtils.Console.print(OBJECT);
   }
-  MissionUtils.Console.print(CAR_ARRAY);
-  MissionUtils.Console.print(ATTEMPS_COUNT);
+  // MissionUtils.Console.print(OBJECT);
+  // MissionUtils.Console.print(CAR_ARRAY);
+  // MissionUtils.Console.print(ATTEMPS_COUNT);
+  const maxValue = OBJECT.reduce(
+    (max, current) => Math.max(max, current.value),
+    -Infinity
+  );
+  const maxObjects = OBJECT.filter((obj) => obj.value === maxValue);
+  const names = maxObjects.map((obj) => obj.name).join(", ");
+  MissionUtils.Console.print(`최종 우승자 : ${names}`);
 }
 
 function checkCarName(car) {
-  if (car.length > 5 || car.length === 0) {
-    throw new Error("[ERROR] 차량 이름 입력이 잘못됨.");
+  try {
+    if (car.length > 5 || car.length === 0) {
+      throw new Error("[ERROR] 차량 이름 입력이 잘못됨.");
+    }
+  } catch (error) {
+    MissionUtils.Console.print(error.message);
   }
 }
 
 function checkAttempsCount(attemps) {
-  if (isNaN(attemps)) {
-    throw new Error("[ERROR] 횟수 입력이 잘못됨.");
+  try {
+    if (isNaN(attemps)) {
+      throw new Error("[ERROR] 횟수 입력이 잘못됨.");
+    }
+  } catch (error) {
+    MissionUtils.Console.print(error.message);
   }
 }
 
