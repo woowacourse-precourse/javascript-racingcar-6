@@ -5,4 +5,4 @@ export const WINNER = "최종 우승자";
 
 export const FORWARD_MATCHING_POINT = 4;
 export const FORWARD_DASH = "-";
-export const ERROR_MESSAGE = "[ERROR] 숫자가 잘못된 형식입니다.";
+export const ERROR_MESSAGE = "[ERROR] 모든 차 이름은 5자 이내로 입력해 주세요.";

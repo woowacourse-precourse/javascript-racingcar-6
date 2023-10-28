@@ -1,4 +1,4 @@
-import { QUESTION_CAR_NAME } from "../const/Messages";
+import { QUESTION_CAR_NAME, ERROR_MESSAGE } from "../const/Messages";
 
 class CarNameManager {
   constructor() {
@@ -15,9 +15,8 @@ class CarNameManager {
 
   setCarNames(carNames) {
     const carNamesValid = carNames.every((name) => name.length <= 5);
-
     if (!carNamesValid) {
-      throw new Error("[ERROR]");
+      throw new Error(ERROR_MESSAGE);
     }
 
     this.members = carNames;
