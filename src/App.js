@@ -16,12 +16,8 @@ class App {
     await this.#readCarNames();
     await this.#readTotalRounds();
 
-    OutputView.printResultTitleMessage();
+    await this.#playRace();
 
-    Array.from({ length: this.#totalRounds }).forEach(() => {
-      this.#refree.moveCars();
-      OutputView.printResult(this.#refree.getResultList());
-    });
     const winner = this.#refree.getWinner();
     OutputView.printWinner(winner);
   }
@@ -38,6 +34,15 @@ class App {
     const totalRoundsString = await InputView.getTotalRounds();
     Validation.validateTotalRounds(totalRoundsString);
     this.#totalRounds = Number(totalRoundsString);
+  }
+
+  async #playRace() {
+    OutputView.printResultTitleMessage();
+
+    Array.from({ length: this.#totalRounds }).forEach(() => {
+      this.#refree.moveCars();
+      OutputView.printResult(this.#refree.getResultList());
+    });
   }
 }
 
