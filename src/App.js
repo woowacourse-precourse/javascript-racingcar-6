@@ -5,6 +5,8 @@ class App {
   async play() {
     Console.print(GAME_MESSAGE.inputName);
     const carNames = await Console.readLineAsync("");
+    Console.print(GAME_MESSAGE.inputNumber);
+    const raceTrial = await Console.readLineAsync("");
   }
 }
 
