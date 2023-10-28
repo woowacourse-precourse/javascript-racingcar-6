@@ -1,33 +1,34 @@
-import { attemptsInput, carNamesInput } from './helpers/userInput.js';
-
 import { Console } from '@woowacourse/mission-utils';
+import { OUTPUT_MESSAGES } from './constants/index.js';
 import Race from './Race.js';
+import ReaderView from './helpers/ReaderView.js';
 
 class App {
+  #raceCars = [];
+
+  constructor() {
+    this.#raceCars = null;
+  }
+
   async play() {
-    const carNameList = await carNamesInput();
-    const numberOfAttempts = await attemptsInput();
+    await this.initRace();
+    this.runRace();
+    this.announceWinner();
+  }
 
-    const racingCarItem = new Race(carNameList, numberOfAttempts);
-    racingCarItem.startRace();
+  async initRace() {
+    const carNameList = await ReaderView.readCarNames();
+    const numberOfAttempts = await ReaderView.readAttempts();
+    this.#raceCars = new Race(carNameList, numberOfAttempts);
+  }
 
-    const findWinner = () => {
-      let maxNumber = -Infinity;
-      let winners = [];
-      for (const car of racingCarItem.cars) {
-        const moveCountResult = car.position;
-        if (moveCountResult > maxNumber) {
-          maxNumber = moveCountResult;
-          winners = [car];
-        } else if (moveCountResult === maxNumber) {
-          winners.push(car);
-        }
-      }
-      return winners;
-    };
+  runRace() {
+    this.#raceCars.startRace();
+  }
 
-    const winnerNames = [...findWinner()].map((i) => i.name);
-    Console.print(`최종 우승자 : ${winnerNames}`);
+  announceWinner() {
+    const winnerNames = this.#raceCars.findWinner();
+    Console.print(`${OUTPUT_MESSAGES.WINNER_PREFIX}${winnerNames}`);
   }
 }
 
