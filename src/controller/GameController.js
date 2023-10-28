@@ -10,15 +10,8 @@ export default class GameController {
   }
 
   async start() {
-    const playerNames = await this.view.getUserInputAsync(MESSAGE.START);
-    const players = this.splitPlayerNames(playerNames);
-    this.checkValidatePlayer(players);
-
-    players.forEach((playerName) => {
-      this.checkValidateName(playerName);
-      const player = new Player(playerName);
-      this.model.addPlayer(player);
-    });
+    const players = await this.getPlayers();
+    this.setPlayers(players);
 
     await this.setTryCount();
 
@@ -29,6 +22,21 @@ export default class GameController {
       this.printResult();
     }
     this.printWinner();
+  }
+
+  async getPlayers() {
+    const playerNames = await this.view.getUserInputAsync(MESSAGE.START);
+    const players = this.splitPlayerNames(playerNames);
+    this.checkValidatePlayer(players);
+    return players;
+  }
+
+  setPlayers(players) {
+    players.forEach((playerName) => {
+      this.checkValidateName(playerName);
+      const player = new Player(playerName);
+      this.model.addPlayer(player);
+    });
   }
 
   async setTryCount() {
