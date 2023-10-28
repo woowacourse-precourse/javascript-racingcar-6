@@ -7,11 +7,9 @@ import TryNumberCheck from "../validate/TryNumberCheck.js";
 
 class RacingCarController {
   constructor() {
-    this.carNames;
-    this.tryCount;
     this.input = new Input();
     // this.randomMoving = new RandomCarMoving();
-    this.car = new CarMoving();
+    this.carMoving = new CarMoving();
     this.carListCheck = new CarListCheck();
     this.tryNumberCheck = new TryNumberCheck();
   }
@@ -20,7 +18,9 @@ class RacingCarController {
     try {
       this.carNames = await this.setcarName();
       this.tryCount = await this.setTryNumber();
-      Console.print(this.carNames + this.tryCount);
+      this.winCount = Array.from({ length: this.carNames.length }, () => "");
+      this.randomStart();
+      // Console.print(this.carNames + this.tryCount);
     } catch (error) {
       throw new Error(error);
     }
@@ -33,8 +33,23 @@ class RacingCarController {
 
   //게임 횟수 입력받기
   async setTryNumber() {
-    Console.print("dd");
     return this.tryNumberCheck.validate(await this.input.inputTryNumber());
+  }
+
+  //게임 횟수만큼 랜덤값 생성
+  async randomStart() {
+    for (let i = 0; i < this.tryCount; i++) {
+      this.countWinner(await this.carMoving.eachRound(this.winCount.length));
+    }
+  }
+
+  //승리자 개수 증가시키기
+  async countWinner(winner) {
+    await winner.forEach((idx) => {
+      this.winCount[idx] += "-";
+      Console.print(idx);
+    });
+    Console.print(this.winCount);
   }
 }
 
