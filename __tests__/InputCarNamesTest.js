@@ -18,7 +18,8 @@ describe('자동차 입력을 테스트합니다.', () => {
     mockQuestion(input);
 
     // when
-    const cars = await RacingGame.inputRacingCarNames(input);
+    const racingGame = new RacingGame();
+    const cars = await racingGame.inputRacingCarNames(input);
 
     // then
     expect(cars).toEqual(answers);
@@ -31,6 +32,7 @@ describe('자동차 입력을 테스트합니다.', () => {
     mockQuestion(input);
 
     // when & then
-    await expect(RacingGame.inputRacingCarNames(input)).rejects.toThrow("[ERROR]");
+    const racingGame = new RacingGame();
+    await expect(racingGame.inputRacingCarNames(input)).rejects.toThrow("[ERROR]");
   })
 });
