@@ -10,7 +10,7 @@ export default class RacingGameController {
   async start() {
     const carNames = await this.#createCarNames();
     const rounds = await this.#createRounds();
-    const race = this.#initRace(carNames, rounds);
+    const race = this.#initializeRace(carNames, rounds);
 
     this.#runRace(race, rounds);
     this.#displayWinners(race);
@@ -32,7 +32,7 @@ export default class RacingGameController {
     return rounds;
   }
 
-  #initRace(carNames, rounds) {
+  #initializeRace(carNames, rounds) {
     const cars = carNames.map((name) => new Car(name, randomMovementStrategy));
     return new Race(cars, rounds);
   }
