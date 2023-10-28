@@ -31,6 +31,20 @@ class App {
     console.log(carName);
     return carName;
   }
+  //시도 횟수 받기
+  getTryNum() {
+    return new Promise((resolve, reject) => {
+      this.rl.question("시도할 횟수는 몇 회인가요?", function (userNumInput) {
+        const tryNum = userNumInput;
+        if (isNaN(userNumInput) || userNumInput < 0) {
+          console.log("[ERROR] 숫자가 잘못된 형식입니다.");
+          reject(undefined);
+        } else {
+          resolve(userNumInput);
+        }
+      });
+    });
+  }
 }
 
 export default App;
