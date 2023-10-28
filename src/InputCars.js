@@ -1,13 +1,20 @@
 import { Console } from '@woowacourse/mission-utils';
 import Car from './Car.js';
+import {
+  OUTPUT_MESSAGES,
+  SEPARATORS,
+  ERROR_MESSAGES,
+} from './utils/messages.js';
+
+const WITH_SPACE_REGEX = /\s/;
 
 class InputCars {
   async createCars() {
     const input = await Console.readLineAsync(
-      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
+      OUTPUT_MESSAGES.input_car_names_message,
     );
 
-    const carNames = input.split(',');
+    const carNames = input.split(SEPARATORS.car_name_separator);
 
     this.#validateCarNames(carNames);
 
@@ -16,19 +23,19 @@ class InputCars {
 
   #validateCarNames(carNames) {
     if (carNames.some(name => name.length === 0)) {
-      throw new Error('[ERROR] 자동차 이름은 공백일 수 없습니다.');
+      throw new Error(ERROR_MESSAGES.car_name_empty);
     }
 
     if (new Set(carNames).size !== carNames.length) {
-      throw new Error('[ERROR] 자동차 이름이 중복되었습니다.');
+      throw new Error(ERROR_MESSAGES.car_name_duplicated);
     }
 
     if (carNames.some(name => name !== name.trim())) {
-      throw new Error('[ERROR] 자동차 이름 양 끝에 공백이 있습니다.');
+      throw new Error(ERROR_MESSAGES.car_name_has_trailing_spaces);
     }
 
-    if (carNames.some(name => /\s/.test(name))) {
-      throw new Error('[ERROR] 자동차 이름에 공백이 포함되어 있습니다.');
+    if (carNames.some(name => WITH_SPACE_REGEX.test(name))) {
+      throw new Error(ERROR_MESSAGES.car_name_has_spaces);
     }
   }
 }

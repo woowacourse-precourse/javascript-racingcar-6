@@ -1,8 +1,11 @@
 import { Console } from '@woowacourse/mission-utils';
+import { OUTPUT_MESSAGES, ERROR_MESSAGES } from './utils/messages.js';
 
 class InputMoveCount {
   async getMoveCount() {
-    const input = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    const input = await Console.readLineAsync(
+      OUTPUT_MESSAGES.input_move_count_message,
+    );
     const moveCount = Number(input);
 
     this.#validateMoveCount(moveCount);
@@ -12,13 +15,13 @@ class InputMoveCount {
 
   #validateMoveCount(input) {
     if (isNaN(input)) {
-      throw new Error('[ERROR] 숫자를 입력해주세요.');
+      throw new Error(ERROR_MESSAGES.not_a_number);
     }
     if (input <= 0) {
-      throw new Error('[ERROR] 1이상의 숫자를 입력해주세요.');
+      throw new Error(ERROR_MESSAGES.not_positive_integer);
     }
     if (!Number.isInteger(input)) {
-      throw new Error('[ERROR] 정수를 입력해주세요.');
+      throw new Error(ERROR_MESSAGES.not_an_integer);
     }
   }
 }
