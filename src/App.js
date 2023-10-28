@@ -25,6 +25,14 @@ class App {
         '시도할 횟수는 몇 회인가요?\n'
       );
 
+      if (
+        isNaN(+racingTryNumbers) ||
+        racingTryNumbers < 1 ||
+        racingTryNumbers === Infinity ||
+        racingTryNumbers === -Infinity
+      )
+        throw new Error();
+
       Console.print('\n실행 결과');
       for (let i = 0; i < racingTryNumbers; i++) {
         Object.keys(this.racingCars).map((car) => {
