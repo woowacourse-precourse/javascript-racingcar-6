@@ -58,7 +58,7 @@ class App {
   doAttempt() {
     for (let car of this.cars.keys()) {
       let randomNum = Random.pickNumberInRange(0, 9);
-      if (canMoveCarForward(randomNum)) {
+      if (this.canMoveCarForward(randomNum)) {
         this.moveCarForward(car);
       }
     }
