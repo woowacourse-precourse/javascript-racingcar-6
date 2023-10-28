@@ -25,14 +25,20 @@ class App {
     this.carList.forEach((element) => {
       const RandomNum = Random.pickNumberInRange(0, 9);
       if (RandomNum >= 4) {
-        element.distance = RandomNum;
+        element.distance += RandomNum;
       }
     });
   }
 
+  updateAsTimes() {
+    for (let i = 0; i < this.times; i += 1) {
+      this.updateObjectDistance();
+    }
+  }
+
   async play() {
     await this.userInputCarAndTimes();
-    this.updateObjectDistance();
+    this.updateAsTimes();
   }
 }
 
