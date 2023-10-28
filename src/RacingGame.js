@@ -1,9 +1,12 @@
 import { Random } from '@woowacourse/mission-utils';
 
 export default class RacingGame {
+  #carList;
+  #tryRound;
+
   constructor(carList, tryRound) {
-    this.carList = carList;
-    this.tryRound = tryRound;
+    this.#carList = carList;
+    this.#tryRound = tryRound;
   }
 
   createRandomNumber() {
@@ -11,11 +14,11 @@ export default class RacingGame {
   }
 
   isFinish() {
-    return this.tryRound === 0;
+    return this.#tryRound === 0;
   }
 
   clearRound() {
-    this.tryRound -= 1;
+    this.#tryRound -= 1;
   }
 
   isMovalbe(number) {
