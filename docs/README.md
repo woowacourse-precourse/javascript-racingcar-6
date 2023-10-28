@@ -48,7 +48,8 @@
 
 ### 행동
 
-- [x] `canMove()`: 전진 가능 여부를 불리언으로 반환 (`MissionUtils.Random.pickNumberInRange` 메서드 사용)
+- [x] `getName()`: 현재 자동차의 이름을 반환합니다.
+- [x] `canMove()`: 전진 가능 여부를 불리언으로 반환합니다. (`MissionUtils.Random.pickNumberInRange` 메서드 사용)
 - [x] `move()`: `Car` 인스턴스를 전진하거나 제자리에서 그대로 유지합니다.
 - [x] `countMove()`: 현재 회차까지의 전진 길이를 반환합니다.
 - [x] `toStringPosition()` 현재까지의 이동 결과를 생성하여 반환합니다.

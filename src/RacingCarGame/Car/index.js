@@ -7,6 +7,10 @@ class Car {
     this.postion = '';
   }
 
+  getName() {
+    return this.name;
+  }
+
   canMove() {
     return Random.pickNumberInRange(RANDOM.min, RANDOM.max) >= NUMBER.canMove;
   }
