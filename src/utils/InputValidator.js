@@ -15,7 +15,8 @@ const InputValidator = {
   validateTimesNumber(input) {
     if (input.replace(/\d/g, "").length > 0)
       throw new Error(ErrorMessage.TIMES_NUMBER_ERROR);
-    if (input === Number(0)) throw new Error(ErrorMessage.TIMES_ZERO_ERROR);
+    if (input === "0" || input === "")
+      throw new Error(ErrorMessage.TIMES_ZERO_ERROR);
   },
 };
 
