@@ -11,18 +11,28 @@ class App {
       '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
     );
     const inputCarList = inputCar.split(',');
-    for (let i = 0; i < inputCarList.length; i += 1) {
+    const inputTimes = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    inputCarList.forEach((element) => {
       this.carList.push({
-        name: inputCarList[i],
+        name: element,
         distance: 0,
       });
-    }
-    const inputTimes = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    });
     this.times = inputTimes;
   }
 
+  updateObjectDistance() {
+    this.carList.forEach((element) => {
+      const RandomNum = Random.pickNumberInRange(0, 9);
+      if (RandomNum >= 4) {
+        element.distance = RandomNum;
+      }
+    });
+  }
+
   async play() {
-    this.userInputCarAndTimes();
+    await this.userInputCarAndTimes();
+    this.updateObjectDistance();
   }
 }
 
