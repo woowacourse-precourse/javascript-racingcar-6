@@ -5,11 +5,11 @@ const MESSAGE = {
 };
 
 const ERROR_MESSAGE = {
-    nameLength: '5자 이하의 이름만 가능합니다.'
+    playerNameLength: '5자 이하의 이름만 가능합니다.'
 }
 
 const INPUT_LIMIT = {
-    name: 5
+    playerName: 5
 }
 
 export { MESSAGE, ERROR_MESSAGE, INPUT_LIMIT, };
