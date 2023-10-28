@@ -4,9 +4,7 @@ import Validator from '../../utils/Validator';
 
 const InputView = {
   async readCarNames() {
-    const carNames = await Console.readLineAsync(MESSAGES.nameQuery);
-    Validator.validateCarNames(carNames);
-    return carNames;
+    return await Console.readLineAsync(MESSAGES.nameQuery);
   },
 };
 
