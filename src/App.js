@@ -37,6 +37,7 @@ class App {
     if (isNaN(numberOfAttempts) || numberOfAttempts < 1) {
       throw new Error(`${ERROR_HEADER}${messageError.validAttempts}`);
     }
+    return true;
   }
 
   async getNumberOfAttempts() {
