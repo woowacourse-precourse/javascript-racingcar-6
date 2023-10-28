@@ -17,7 +17,7 @@ import {MissionUtils} from "@woowacourse/mission-utils";
 - 각 차량에 랜덤한 수 배정
 - 배정된 수가 4이상이면 전진
 
-5. 게임 진행도 출력
+5. 게임 진행도 출력✅
 6. 우승자 확인
 7. 우승자 발표
 
@@ -41,8 +41,8 @@ class App {
         const randomNumber = Random.pickNumberInRange(0, 9);
         if (randomNumber >= 4) progress[car]++;
       }
+      printProgress(progress);
     }
-    console.log(progress);
   }
 }
 
@@ -62,4 +62,13 @@ const checkNameValidation = (name) => {
 const checkInputCount = (inputCount) => {
   if (!inputCount) throw Error("[ERROR]");
   if (!typeof inputCount === "string" || isNaN(inputCount)) throw Error("[ERROR]");
+};
+
+const printProgress = (progress) => {
+  let totalProgressbar = "";
+  for (let car in progress) {
+    const progressbar = "-".repeat(Number(progress[car]));
+    totalProgressbar += car + " : " + progressbar + "\n";
+  }
+  Console.print(totalProgressbar);
 };
