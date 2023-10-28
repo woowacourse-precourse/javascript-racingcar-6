@@ -4,23 +4,41 @@ import Data from "./Data.js";
 class Controller {
     // 참가자 객체 반환 함수
     static async setPlayer() {
-        let player = await Console.readLineAsync(Data.MESSAGE.GET_PLAYER);
-        // 공백 제거 및 배열로 분리
-        player = player.split(",").map((value) => {
-            return value.trim();
-        });
-        // 배열의 요소를 가지고 객체화
-        const PLAYER_OBJ = player.reduce((accumulator, value) => {
-            return { ...accumulator, [value.trim()]: 0 };
-        }, {});
+        try {
+            let player = await Console.readLineAsync(Data.MESSAGE.GET_PLAYER);
 
-        return PLAYER_OBJ;
+            player = player.split(",").map((value) => {
+                return value.trim();
+            }); // 앞뒤 공백 제거 및 배열로 분리
+
+            // 예외처리
+            player.forEach((value) => {
+                if (value.includes(" ") || !isNaN(value))
+                    throw new Error(Data.MESSAGE.ERROR);
+            });
+
+            const PLAYER_OBJ = player.reduce((accumulator, value) => {
+                return { ...accumulator, [value.trim()]: 0 };
+            }, {}); // 배열의 요소를 가지고 객체화
+
+            return PLAYER_OBJ;
+        } catch (e) {
+            throw new Error(e.message);
+        }
     }
 
     // 반복 횟수 반환 함수
     static async setNumber() {
-        const NUMBER = await Console.readLineAsync(Data.MESSAGE.GET_NUMBER);
-        return Number(NUMBER);
+        try {
+            const NUMBER = await Console.readLineAsync(Data.MESSAGE.GET_NUMBER);
+
+            //예외처리
+            if (isNaN(NUMBER)) throw new Error(Data.MESSAGE.ERROR);
+
+            return Number(NUMBER);
+        } catch (e) {
+            throw new Error(e.message);
+        }
     }
 
     // 경기 진행 함수
