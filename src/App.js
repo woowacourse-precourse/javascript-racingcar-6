@@ -3,6 +3,7 @@ import { inputView } from './ViewController/InputView.js';
 import RacingGame from './models/RacingGame.js';
 import AllNamesOfCars from './models/AllNamesOfCars.js';
 import CountOfAttemp from './models/CountOfAttemp.js';
+import { outputView } from './ViewController/outputView.js';
 
 class App {
   /**
@@ -23,10 +24,24 @@ class App {
 
   #attemps;
 
+  /**
+   * @type { string [] } 우승자
+   */
+
+  #winners;
+
+  /**
+   * @type {Array<Map<string, number|string>>} 각 라운드마다 결과를 담을 배열
+   */
+
+  #roundStatus;
+
   async play() {
-    this.#game = new RacingGame();
     await this.inputCarNames();
     await this.inputCountOfAttemp();
+    this.getGameResults();
+    this.printGameResults();
+    this.printGameWinner();
   }
 
   async inputCarNames() {
@@ -37,6 +52,29 @@ class App {
   async inputCountOfAttemp() {
     const valueOfAttemps = await inputView.readLine(GAME_MESSAGES.input_count_of_attemp);
     this.#attemps = CountOfAttemp.fromInputString(valueOfAttemps);
+    outputView.divideLine();
+  }
+
+  getGameResults() {
+    outputView.printLine(GAME_MESSAGES.print_result_start);
+    this.#game = new RacingGame(this.#cars, this.#attemps);
+    this.#roundStatus = this.#game.getResult();
+    this.#winners = this.#game.getFinalWinner();
+  }
+
+  printGameResults() {
+    this.#roundStatus.forEach((round) => this.printRoundStatus(round));
+  }
+
+  printRoundStatus(round) {
+    round.forEach((status, car) => {
+      outputView.printLine(GAME_MESSAGES.game_result(status, car));
+    });
+    outputView.divideLine();
+  }
+
+  printGameWinner() {
+    outputView.printLine(GAME_MESSAGES.winner_result(this.#winners));
   }
 }
 
