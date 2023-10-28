@@ -8,6 +8,8 @@ export const GAME_MESSAGE = Object.freeze({
 
 export const ERROR_MESSAGE = Object.freeze({
   LENGTH_ERROR: '[ERROR] 자동차 이름은 5자 이하로 입력 가능합니다.',
-  DUPLICATE_ERROR: '[ERROR] 자동차 이름이 중복되었습니다.\n',
+  DUPLICATE_ERROR: '[ERROR] 자동차 이름이 중복되었습니다.',
   NOT_NUMBER_ERROR: '[ERROR] 잘못된 데이터 형식입니다. 숫자를 입력해주세요.',
+  NO_CAR_NAME: '[ERROR] 자동차 이름을 입력해주세요.',
+  NO_NUMBER: '[ERROR] 시도 횟수를 입력해주세요.',
 });

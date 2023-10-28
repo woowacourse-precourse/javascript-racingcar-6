@@ -10,6 +10,10 @@ const REG_NUMBER = /^[0-9]+/;
  * @returns {string}
  */
 export function checkCarNames(carNames) {
+  if (carNames === '') {
+    return ERROR_MESSAGE.NO_CAR_NAME;
+  }
+
   const carNameArr = carNames.split(',');
   carNameArr.forEach(carName => {
     if (carName.length > MAX_LENGTH) {
@@ -29,6 +33,9 @@ export function checkCarNames(carNames) {
  * @returns {string}
  */
 export function checkTryNumber(number) {
+  if (number === '') {
+    return ERROR_MESSAGE.NO_NUMBER;
+  }
   if (!REG_NUMBER.test(parseInt(number))) {
     return ERROR_MESSAGE.NOT_NUMBER_ERROR;
   }
