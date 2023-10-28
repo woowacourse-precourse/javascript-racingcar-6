@@ -11,6 +11,15 @@ class InputValue {
       Console.print('[ERROR] ' + error.message);
     }
   }
+
+  async moveCount() {
+    try {
+      const input = await Console.readLineAsync(MESSAGE.INPUT_MOVE_COUNT);
+      return input;
+    } catch (error) {
+      Console.print('[ERROR] ' + error.message);
+    }
+  }
 }
 
 export default InputValue;
