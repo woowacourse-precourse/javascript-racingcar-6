@@ -26,6 +26,20 @@ class App {
       }
       Console.print('');
     }
+
+    const winners = cars.reduce((acc, car) => {
+      if (!acc.length) {
+        return [car];
+      }
+      if (carsProgress[car] > carsProgress[acc[0]]) {
+        return [car];
+      }
+      if (carsProgress[car] === carsProgress[acc[0]]) {
+        return [...acc, car];
+      }
+      return acc;
+    }, []);
+    Console.print(`최종 우승자 : ${winners.join(', ')}`);
   }
 }
 
