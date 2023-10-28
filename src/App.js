@@ -40,7 +40,7 @@ class App {
   //사용자가 입력한 자동차 이동 횟수 가져오기
   async userInputNumberOfMoves() {
     const INPUT = await MissionUtils.Console.readLineAsync();
-    const NUMBER_OF_MOVES = parent(INPUT);
+    const NUMBER_OF_MOVES = parseInts(INPUT);
 
     //예외처리
     if (NUMBER_OF_MOVES <= 0 || isNaN(NUMBER_OF_MOVES)) {
@@ -53,7 +53,7 @@ class App {
   //랜덤 숫자로 자동차 움직여서 결과 도출
   resultByRandomNumber() {
     const RESULT = {};
-    const RANDOM_NUMBER = Random.pickNumberInRange(0, 9);
+    const RANDOM_NUMBER = MissionUtils.Random.pickNumberInRange(0, 9);
     for (let index = 0; index < this.carNames.length; index++) {
       // 각 carNames의 value에 RANDOM_NUMBER가 4이상이면 true, 4이하면 false가 저장됨
       RESULT[this.carNames[index]] = RANDOM_NUMBER >= 4;
@@ -92,7 +92,7 @@ class App {
       if (
         calculatePosition(carName, results[LAST_GAME_INDEX]) === MAX_POSITION
       ) {
-        winner.push(carName);
+        winners.push(carName);
       }
     }
 
