@@ -10,7 +10,7 @@ class RacingGame {
   }
   
   async start() {
-    this.inputCarName();
+    await this.inputCarName();
   }
   
   async inputCarName() {
@@ -20,17 +20,17 @@ class RacingGame {
       car.getName(carName);
       this.#car.push(car);
     }
-    this.getTryNumber();
+    await this.getTryNumber();
   }
 
   async getTryNumber() {
     const tryNumber = await InputView.inputTryNumber();
     await this.readyToExecutionResultMessage();
-    this.getExecutionResult(tryNumber);
+    await this.getExecutionResult(tryNumber);
   }
 
   async readyToExecutionResultMessage() {
-    OutputView.outputExecutionResultMessage();
+    await OutputView.outputExecutionResultMessage();
   }
 
   async getExecutionResult(tryNumber) {
