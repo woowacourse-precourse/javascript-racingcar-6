@@ -20,4 +20,51 @@
 ---
 
 4. 추가된 요구 사항
-   위의 동작의 테스트 코드를 보완하여 구현하다.
+   아래의 테스트 코드를 구현하였습니다.
+
+### 풀이
+
+1. 시도할 횟수가 숫자가 아닐 경우의 예외 처리
+
+```javascript
+test('시도할 횟수가 숫자가 아닐 경우의 예외 처리', async () => {
+  const app = new App();
+  const notNumber = 'abc';
+  MissionUtils.Console.readLineAsync.mockResolvedValue(notNumber);
+
+  await expect(app.getCycleCountInput()).rejects.toThrow('[ERROR]');
+});
+```
+
+- mockResolvedValue를 사용하여 Console.readLineAsync의 결과 값을 'abc'로 모킹하였습니다(흉내 냈습니다.).
+
+- 그러면 App Class 내부의 getCycleCountInput 메서드내부의 변수 cycleCount값은 'abc'가 되어 ERROR를 일의 킵니다.
+
+```javascript
+  async getCycleCountInput() {
+    Console.print(TRY_COUNT);
+    // 'abc'
+    const cycleCount = await Console.readLineAsync('');
+    const convertNumber = Number(cycleCount);
+    if (isNaN(convertNumber)) {
+      throw new Error(`${ERROR_PREFIX} : 시도 횟수는 숫자이어야 합니다.`);
+    }
+    this.#cycleCount = convertNumber;
+  }
+```
+
+2. carValidator의 Car Class 생성
+
+- 각각의 car가 Car Class에 맞게 instance가 잘 생성 되었는지 테스트 하였습니다.
+
+```javascript
+test('carValidator의 Car Class 생성', () => {
+  const app = new App();
+  const cars = '멍멍이,다람쥐,고양이';
+  app.carValidator(cars);
+
+  app.carArray.forEach((car) => {
+    expect(car).toBeInstanceOf(Car);
+  });
+});
+```
