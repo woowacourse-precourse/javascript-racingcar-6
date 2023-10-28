@@ -35,6 +35,7 @@ module.exports = {
     'max-lines-per-function': ['error', 15],
     'class-methods-use-this': 'off',
     'no-empty-function': 'off',
+    'jsdoc/no-undefined-types': 'off',
 
     // 우테코 요구사항
     'max-depth': ['error', 2],
