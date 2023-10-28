@@ -1,15 +1,17 @@
 import { Console } from "@woowacourse/mission-utils";
+import Car from "./Car.js";
 
 class CarRacingGame {
 
     constructor() {
-        this.cars;
+        this.cars = [];
         this.attempts;
     }
 
     async start() {
         await this.getCarNames();
         await this.getNumberOfAttempts();
+
     }
 
     async getCarNames() {
@@ -19,10 +21,16 @@ class CarRacingGame {
                 throw new Error("[ERROR] 잘못된 입력입니다.");
             }
 
-            this.cars = carNames.split(",");
-            if (this.validateCarNames(this.cars)) {
+            const carNamesArray = carNames.split(",");
+            if (this.validateCarNames(carNamesArray)) {
                 throw new Error("[ERROR] 잘못된 입력입니다.");
             }
+
+            for(let i = 0; i < carNamesArray.length; i++) {
+                this.cars.push(new Car(carNamesArray[i]));
+            }
+
+            console.log(this.cars);
 
         } catch (error) {
             throw error;
@@ -30,9 +38,9 @@ class CarRacingGame {
     }
 
 
-    validateCarNames(cars) {
-        cars.forEach(car => {
-            if (car.length > 5 || car.length === 0) return true;
+    validateCarNames(carNamesArray) {
+        carNamesArray.forEach(carName => {
+            if (carName.length > 5 || carName.length === 0) return true;
             return false;
         });
     }
@@ -63,8 +71,5 @@ class CarRacingGame {
     }
 
 }
-
-const test = new CarRacingGame();
-test.start();
 
 export default CarRacingGame
