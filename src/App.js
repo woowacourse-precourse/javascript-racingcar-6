@@ -1,4 +1,4 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Console, Random } from "@woowacourse/mission-utils";
 
 const ERROR_HEADER = "[ERROR]";
 class App {
@@ -28,10 +28,21 @@ class App {
     return inputTryNumber;
   }
 
+  moveForward(car) {}
+
+  tryTurn() {
+    for (const car of this.racingCars.keys()) {
+      let randomNum = Random.pickNumberInRange(0, 9);
+      if (randomNum >= 4) {
+        this.moveForward(car);
+      }
+    }
+  }
+
   playRacing(tryNumber) {
     Console.print("\n실행 결과");
     do {
-      this.moveCars();
+      this.tryTurn();
       tryNumber--;
     } while (tryNumber > 0);
   }
