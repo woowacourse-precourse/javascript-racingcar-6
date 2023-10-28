@@ -4,6 +4,11 @@ import { ERROR_MESSAGES } from '../constants/errorMessages.js';
 
 class AllNamesOfCars {
   /**
+   * @type { string } 자동차 이름들이 분리 되는 기준점
+   */
+  static SEPERATION_STANDARD = ',';
+
+  /**
    * @type { string[] }
    */
 
@@ -49,7 +54,7 @@ class AllNamesOfCars {
    * @returns { AllNamesOfCars }
    */
   static fromInputString(inputString) {
-    const cars = inputString.split(',');
+    const cars = inputString.split(AllNamesOfCars.SEPERATION_STANDARD);
     return new AllNamesOfCars(cars);
   }
 }
