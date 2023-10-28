@@ -1,10 +1,12 @@
 import { Console } from "@woowacourse/mission-utils";
-import { inputQuery } from "../constants/messages.js";
+import { INPUT_QUERY } from "../constants/messages.js";
 
 class InputView {
   static async readCarNames() {
-    return await InputView.#readInput(inputQuery.CAR_NAMES);
+    return await InputView.#readInput(INPUT_QUERY.carNames);
   }
+
+  static async readRoundNumber() {}
 
   static async #readInput(query) {
     return await Console.readLineAsync(query);

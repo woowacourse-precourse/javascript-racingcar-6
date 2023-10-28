@@ -1,4 +1,4 @@
-import { errorMessage } from "../constants/messages.js";
+import { ERROR_MESSAGE } from "../constants/messages.js";
 import { validateIsArray } from "../utils/validators.js";
 import Car from "./Car.js";
 
@@ -17,7 +17,7 @@ class Cars {
 
   static #validateType(array) {
     const isCars = array.every((element) => element instanceof Car);
-    if (!isCars) throw Error(errorMessage.NOT_CARS);
+    if (!isCars) throw Error(ERROR_MESSAGE.notCars);
   }
 }
 

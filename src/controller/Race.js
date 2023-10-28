@@ -2,7 +2,7 @@ import InputView from "../view/InputView.js";
 import Car from "../model/Car.js";
 import Cars from "../model/Cars.js";
 import CarNamesParser from "../parser/CarNamesParser.js";
-import { errorMessage } from "../constants/messages.js";
+import { ERROR_MESSAGE } from "../constants/messages.js";
 
 class Race {
   #racingCars;
@@ -21,7 +21,7 @@ class Race {
   }
 
   #register(cars) {
-    if (cars.length < 2) throw Error(errorMessage.LESS_THEN_TWO_CARS);
+    if (cars.length < 2) throw Error(ERROR_MESSAGE.lessThenTwoCars);
     this.#racingCars = cars;
   }
 }
