@@ -1,4 +1,5 @@
 import { MissionUtils, Console } from "@woowacourse/mission-utils";
+import { GAME } from "./message.js";
 
 export default function startGame(carMap, repeatCount) {
   for (let i = 0; i < repeatCount; i++) {
@@ -10,6 +11,12 @@ export default function startGame(carMap, repeatCount) {
 
     printOneStep(carMap);
   }
+
+  let maxAdvance = 0;
+  for (let value of carMap.values()) {
+    maxAdvance = value > maxAdvance ? value : maxAdvance;
+  }
+  SearchWinner(carMap, maxAdvance);
 }
 
 function checkAdvanceCar() {
@@ -29,4 +36,20 @@ function printOneStep(carMap) {
     Console.print(key + " : " + dash);
   }
   Console.print("");
+}
+
+function SearchWinner(carMap, maxAdvance) {
+  let winner = "";
+  let first = true;
+  for (let [key, value] of carMap) {
+    if (maxAdvance === value) {
+      if (first) {
+        winner += key;
+        first = false;
+      } else {
+        winner += ", " + key;
+      }
+    }
+  }
+  Console.print(GAME.RESULT + winner);
 }
