@@ -1,5 +1,5 @@
 import { ERROR_MESSAGE } from '../constant/message';
-import CAR_NAME_MAX_LENGTH from '../constant/maxLength';
+import LIMIT from '../constant/limit';
 
 class Validator {
   static emptyInput(names) {
@@ -22,7 +22,7 @@ class Validator {
 
   static nameLength(names) {
     names.split(',').forEach((carName) => {
-      if (carName.trim().length > CAR_NAME_MAX_LENGTH) {
+      if (carName.trim().length > LIMIT.CAR_NAME_LENGTH) {
         throw new Error(ERROR_MESSAGE.OVER_LENGTH_NAME);
       }
     });
