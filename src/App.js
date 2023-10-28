@@ -33,8 +33,10 @@ class App {
           carsObject[carName] > maxDistance ? carsObject[carName] : maxDistance;
       });
 
-      Console.print(carsObject);
-      Console.print(maxDistance);
+      Object.entries(carsObject).forEach(([carName, carDistance]) => {
+        Console.print(`${carName} : ${"-".repeat(carDistance)}`);
+      });
+      Console.print("");
     }
   }
 }
