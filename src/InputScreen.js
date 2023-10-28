@@ -15,6 +15,6 @@ export const Input_First = async () => {
 export const Input_Second = async () => {
     const SECOND_Q = "시도할 횟수는 몇 회인가요?\n"
     const COUNT = await MissionUtils.Console.readLineAsync(SECOND_Q);
-    if (isNaN(COUNT)) throw new Error("[ERROR] 숫자만 입력해주세요");
-    return COUNT;
+    if (isNaN(parseInt(COUNT))) throw new Error("[ERROR] 숫자만 입력해주세요");
+    return parseInt(COUNT);
 };
