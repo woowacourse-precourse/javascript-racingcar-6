@@ -6,13 +6,20 @@
 
 - util 폴더 : 
 
-  1. Random.js
+  1. RandomArrayGenerator.js
     input : n
     output : 길이가 n인 랜덤배열
 
-  2. Accumulate.js
+  2. Accumulator.js
     function1 = (랜덤배열, RunningDistance배열) => 누적 RunningDistance배열 
     function2 = (랜덤배열, Score배열) => 누적 Score배열
+
+  3. ScoreConverter.js
+    input : 랜덤배열
+    output : 랜덤배열의 각 원소를 다음과 같은 규칙으로 치환하여 새로운 배열을 반환한다
+    0~3 : 0으로 치환
+    4~9 : 1로 치환
+      
 
 - controller 폴더 :
   

@@ -1,18 +1,19 @@
-import ScoreConverter from "./ScoreConverter.js";
+import Converter from "./Converter.js";
 
-export const racingTraceAccumulator = (currentTraceArray, randomArray) => {
-  const newScoreArray = ScoreConverter.generator(randomArray);
+
+export const TraceAccumulator = (traceData, randomArray) => {
+  const newScoreData = Converter.scoreFilter(randomArray);
   const trace = '';
-  const newTraceArray = newScoreArray.map((element) => trace.padStart(element, '-'));
+  const newTraceData = newScoreData.map((element) => trace.padStart(element, '-'));
   
-  return currentTraceArray.map((element, index) => element + newTraceArray[index]);
+  return traceData.map((element, index) => element + newTraceData[index]); //수정하기, 빈배열에도 대응해야됨
 }
 
+export const scoreAccumulator = (scoreData, randomArray) => {
+  const newScoreData = Converter.scoreFilter(randomArray);
 
-export const scoreAccumulator = (CurrentScoreArray, randomArray) => {
-  const newScoreArray = ScoreConverter.generator(randomArray);
-
-  return CurrentScoreArray.map((element, index) => element + newScoreArray[index]);
+  return scoreData.map((element, index) => element + newScoreData[index]); //수정하기, 빈 배열에도 대응해야됨
 }
+
 
 
