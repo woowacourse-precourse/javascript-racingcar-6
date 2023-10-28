@@ -55,6 +55,18 @@ class App {
       index += 1;
     }
   }
+
+  decideWinner() {
+    const result = this.movement.map((move, index) => move.length - this.car[index].length);
+    const max = Math.max(...result);
+    const indexesOfMax = [];
+    lengthsOfMovement.forEach((value, index) => {
+        if (value === max) {
+            indexesOfMax.push(index);
+        }
+    });
+    return indexesOfMax;
+  }
 }
 
 export default App;
