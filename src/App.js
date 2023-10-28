@@ -1,6 +1,6 @@
 import { Random, Console } from "@woowacourse/mission-utils";
-import { MIN_NAME_LENGTH, MAX_NAME_LENGTH } from "./lib/constants.js";
-import { INPUT_PROMPT1, INPUT_PROMPT2, INVALID_INPUT1, INVALID_INPUT2 } from "./lib/logs.js";
+import { MIN_NAME_LENGTH, MAX_NAME_LENGTH, PROGRESS_SIGN } from "./lib/constants.js";
+import { LOGS } from "./lib/logs.js";
 
 class App {
   cars;
@@ -17,25 +17,24 @@ class App {
   }
 
   async inputCarsWithValidate() {
-    const input = await Console.readLineAsync(INPUT_PROMPT1);
+    const input = await Console.readLineAsync(LOGS.INPUT_PROMPT1);
     const inputArr = input.replace(/\s/g, "").replace(/,+/g, ",").split(",");
-    inputArr.forEach((str) => this.validateInputLength(str));
+    inputArr.forEach((str) => this.validateEachLength(str));
     this.cars = inputArr;
   }
 
-  validateInputLength(str) {
-    if (!(str.length >= MIN_NAME_LENGTH && str.length <= MAX_NAME_LENGTH)) throw Error(INVALID_INPUT1);
+  validateEachLength(str) {
+    if (!(str.length >= MIN_NAME_LENGTH && str.length <= MAX_NAME_LENGTH)) throw Error(LOGS.INVALID_INPUT1);
   }
 
   async inputTryWithValidate() {
-    const input = await Console.readLineAsync(INPUT_PROMPT2);
-    this.validateTry(input);
+    const input = await Console.readLineAsync(LOGS.INPUT_PROMPT2);
+    this.validateTryIsNumber(input);
     this.tryNum = parseInt(input, 10);
-    Console.print("");
   }
 
-  validateTry(str) {
-    if (!/^[1-9]\d*$/.test(str)) throw Error(INVALID_INPUT2);
+  validateTryIsNumber(str) {
+    if (!/^[1-9]\d*$/.test(str)) throw Error(LOGS.INVALID_INPUT2);
   }
 
   init() {
@@ -46,24 +45,29 @@ class App {
 
   // recursive
   run(curr = 0) {
-    if (curr === 0) Console.print("실행 결과");
-    if (this.tryNum <= curr) return;
-    const randomArr = Array.from({ length: this.carsNum }, () => Random.pickNumberInRange(0, 9));
-    randomArr.forEach((e, i) => (e >= 4 ? this.carsProgress[i]++ : null));
+    Console.print(LOGS.NEW_LINE);
+
+    if (curr === 0) Console.print(LOGS.RUN_PROMPT); // 첫 실행결과 PROMPT
+    if (this.tryNum <= curr) return; // 종료조건
+
+    this.computeScore();
     this.carsProgress.forEach((_, i) => this.printEachProgress(i));
-    Console.print("");
     this.run(curr + 1);
   }
 
+  computeScore() {
+    const randomArr = Array.from({ length: this.carsNum }, () => Random.pickNumberInRange(0, 9));
+    randomArr.forEach((e, i) => (e >= 4 ? this.carsProgress[i]++ : null));
+  }
+
   printEachProgress(idx) {
-    const PROGRESS = "-".repeat(this.carsProgress[idx]);
+    const PROGRESS = PROGRESS_SIGN.repeat(this.carsProgress[idx]);
     Console.print(`${this.cars[idx]} : ${PROGRESS}`);
   }
 
   printWinners() {
     const MAX = Math.max(...this.carsProgress);
-    const WINNERS = [];
-    this.carsProgress.forEach((e, i) => (e === MAX ? WINNERS.push(this.cars[i]) : null));
+    const WINNERS = this.carsProgress.map((e, i) => (e === MAX ? this.cars[i] : null)).filter((e) => !!e);
     Console.print(`최종 우승자 : ${WINNERS.join(", ")}`);
   }
 }
