@@ -1,6 +1,7 @@
 import { GAME_RULL } from '../constants/gameRules.js';
 import { ERROR_MESSAGE, MESSAGE } from '../constants/messages.js';
 import { REG_EXP } from '../constants/regexp.js';
+import Player from '../model/Player.js';
 
 export default class GameController {
   constructor({ model, view }) {
@@ -14,9 +15,14 @@ export default class GameController {
     this.#validatePlayersCount(players);
     this.#validateDuplicationPlayer(players);
 
-    players.forEach((player) => {
-      this.#validatePlayerName(player);
-      this.#validatePlayerNameLength(player);
+    players.forEach((playerName) => {
+      this.#validatePlayerName(playerName);
+      this.#validatePlayerNameLength(playerName);
+
+      const player = new Player(playerName);
+      this.model.addPlayer(player);
+
+      console.log(this.model.getPlayers());
     });
   }
 
