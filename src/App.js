@@ -67,7 +67,7 @@ class App {
     const round = parseInt(roundInput, 10);
 
     if (isNaN(round)) {
-      throw new Error("[ERROR] 시도 횟수는 유효한 숫자여야 합니다.");
+      throw new Error("[ERROR] 시도 횟수는 숫자여야 합니다.");
     }
 
     const race = new Race(carNames, round);
