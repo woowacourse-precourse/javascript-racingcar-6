@@ -45,7 +45,7 @@
   ```
 
 - 입력받은 값을 객체로 관리 `({ carNameArray, moveCount })`
-- [ ] 자동차마다 전진한 횟수를 객체로 관리 `({ name, forwardCount })`
+- [x] 자동차마다 전진한 횟수를 객체로 관리 `({ name, forwardCount })`
 - [ ] 입력받은 `move` 수 만큼 경주 게임 반복
 - cars 배열을 순회하면서
   - 랜덤한 수 뽑기 → 만약 이게 4이상일 경우 → forwardCount+=1

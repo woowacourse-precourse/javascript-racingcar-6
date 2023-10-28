@@ -14,5 +14,12 @@ const racingCarGame = {
 
     return { carNameArray, moveCount: Number(moveCount) };
   },
+
+  makeCarsWithForwardCount(carsNameArray) {
+    if (!Array.isArray(carsNameArray)) {
+      throw new Error('[ERROR] 인자는 배열이여야 합니다.');
+    }
+    return carsNameArray.map((name) => ({ name, forwardCount: 0 }));
+  },
 };
 export default racingCarGame;
