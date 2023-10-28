@@ -9,9 +9,9 @@ class CarRacingGameController {
 
   async startGame() {
     const carNames = await InputView.getCarNames();
-    const round = await InputView.getRound();
-
     const validCarNames = InputValidator.hasValidCarNames(carNames);
+
+    const round = await InputView.getRound();
     const validRound = InputValidator.hasValidRound(round);
 
     this.#carRacingGame = new CarRacingGame(validCarNames, validRound);
