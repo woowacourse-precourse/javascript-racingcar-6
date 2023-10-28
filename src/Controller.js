@@ -31,6 +31,18 @@ class Controller {
         });
         return;
     }
+
+    // 현재 결과 문자열 반환 함수
+    static raceResultText(obj) {
+        let raceResult = "";
+        Object.keys(obj).forEach((key) => {
+            raceResult += `${key} : ${"-".repeat(obj[key])}\n`;
+        });
+        return raceResult;
+    }
+
+    // 우승자 문자열 반환 함수
+    static winnerText(obj) {}
 }
 
 export default Controller;

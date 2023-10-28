@@ -28,7 +28,7 @@
 
 # Controller.js
 
-### 입력함수
+### 입력 함수
 
 -   setPlayer
 
@@ -43,3 +43,12 @@
 
 -   raceProgress
     -   데이터의 player에 접근해 랜덤숫자가 4이상이면 1을 증가시킴
+
+### 결과 문자열 반환 함수
+
+-   raceResultText
+
+    -   현재 참가자들의 거리를 원하는 출력에 맞게 텍스트로 변경해서 리턴
+
+-   winnerText
+    -   우승자를 텍스트로 변환해서 리턴

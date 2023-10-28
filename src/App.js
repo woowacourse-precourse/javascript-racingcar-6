@@ -7,6 +7,7 @@ class App {
         Data.input.number = await Controller.setNumber();
         Controller.raceProgress();
         console.log(Data);
+        console.log(Controller.raceResultText(Data.input.player));
     }
 }
 
