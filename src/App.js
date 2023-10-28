@@ -8,12 +8,10 @@ class App {
 
     const carName = enterCarName.split(",");
 
-    function verifyNameLength() {
-      if (carName.length > 5) {
-        throw new Error(
-          "[ERROR] 입력한 이름이 5자를 초과하였습니다. 게임을 다시 시작해주세요."
-        );
-      }
+    if (carName.length > 5) {
+      throw new Error(
+        "[ERROR] 입력한 이름이 5자를 초과하였습니다. 게임을 다시 시작해주세요."
+      );
     }
   }
 }
