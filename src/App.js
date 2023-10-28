@@ -23,7 +23,13 @@ class App {
     for (let i = 0; i < inputAttemptCount; i++) {
       Object.entries(carsObject).forEach(([carName, carDistance]) => {
         const randomNumber = Random.pickNumberInRange(0, 9);
+
+        if (randomNumber >= 4) {
+          carsObject[carName] = carDistance + 1;
+        }
       });
+
+      Console.print(carsObject);
     }
   }
 }
