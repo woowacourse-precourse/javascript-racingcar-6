@@ -21,12 +21,16 @@
 ### 상태
 
 - `cars`: `Car` 인스턴스(배열)
+- `lapCount`: 시도 횟수 (숫자)
+- `lapLogs`: 자동차 경주의 횟수별 기록 저장(배열)
 
 ### 행동
 
+- [x] `setLapCount(lapCount)`: 시도 횟수를 저장합니다.
 - [x] `addCars(names)`: 입력받은 자동차를 `cars` 배열에 저장합니다.
 - [x] `lap()`: 각 `Car` 인스턴스의 1회 전진을 지시합니다.
-- [x] `makeOneLapResult()`: 각 자동차의 이동 결과를 합쳐서 문자열로 반환합니다.
+- [x] `logLap()`: 해당 시도에 시행된 모든 `Car` 인스턴스의 전진 결과를 저장합니다.
+- [x] `makeLapResult()`: 모든 자동차의 이동 결과를 합쳐서 문자열로 반환합니다.
 - [x] `calMaxMove()`: 모든 `Car` 인스턴스 중 최대 전진 거리를 계산합니다.
 - [x] `electWinner()`: 각 `Car` 인스턴스의 전진을 비교하여 우승자를 도출합니다.
 
