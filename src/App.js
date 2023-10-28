@@ -20,6 +20,10 @@ class App {
     this.tryNum = await this.#inputTryNum();
 
     this.#playRacing();
+
+    const winners = this.#winnerGenerator().map((winner) => winner.name);
+
+    Output.printWinners(winners);
   }
 
   async #inputCarNames() {
@@ -51,6 +55,13 @@ class App {
 
       this.tryNum -= 1;
     }
+  }
+
+  #winnerGenerator() {
+    const maxDistance = Math.max(...this.cars.map((car) => car.distance));
+    const winners = this.cars.filter((car) => car.distance === maxDistance);
+
+    return winners;
   }
 }
 
