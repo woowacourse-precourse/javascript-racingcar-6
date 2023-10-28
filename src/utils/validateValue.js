@@ -31,7 +31,18 @@ export function validateCarName(carName) {
   }
 }
 
+export function valiadateDuplicteName(list) {
+  const isDuplicte = hasDuplicate(list);
+  if (isDuplicte) {
+    throw new Error('[ERROR] car 이름은 중복이 불가합니다.');
+  }
+}
+
 export function hasDuplicate(list) {
   const set = new Set(list);
   return set.size < list.length;
+}
+
+export function validateCarNames(list) {
+  list.forEach(carName => validateCarName(carName));
 }

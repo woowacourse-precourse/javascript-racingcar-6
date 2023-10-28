@@ -2,11 +2,9 @@ import Car from '../models/Car.js';
 import RaceManager from '../models/RaceManager.js';
 import CarRaceView from '../views/CarRaceView.js';
 import { repeatFunctionNTimes } from '../utils/repeatFunctionNTimes.js';
-import { calculateLongestDistance } from '../utils/calculateLongestDistance.js';
-
 import {
-  validateCarName,
-  hasDuplicate,
+  validateCarNames,
+  valiadateDuplicteName,
   validateCountNumber,
 } from '../utils/validateValue.js';
 
@@ -62,7 +60,8 @@ class CarRaceController {
 
     const carListInput = await readCarNames();
     const inputCarList = carListInput.split(',').map(carName => carName.trim());
-    this.validateCarNames(inputCarList);
+    validateCarNames(inputCarList);
+    valiadateDuplicteName(inputCarList);
 
     return inputCarList;
   }
@@ -71,14 +70,6 @@ class CarRaceController {
    * @param {string[]} inputCarList - 입력된 차 이름 목록
    * @throws {Error} 차 이름이 중복되는 경우
    */
-  validateCarNames(inputCarList) {
-    inputCarList.forEach(carName => validateCarName(carName));
-
-    const isDuplicte = hasDuplicate(inputCarList);
-    if (isDuplicte) {
-      throw new Error('[ERROR] car 이름은 중복이 불가합니다.');
-    }
-  }
 
   printWinner() {
     const { printOutput } = CarRaceView;
