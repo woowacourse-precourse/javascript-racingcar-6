@@ -9,6 +9,7 @@ class App {
     const carNames = inputCarName.split(',');
     const gameResults = [];
 
+    MissionUtils.Console.print('실행 결과');
     for (let i = 0; i < count; i++) {
       // 랜덤 숫자 생성
       const randomNumbers = [];
@@ -24,6 +25,12 @@ class App {
           gameResults[i] = result;
         }
       }
+
+      // 게임 결과 출력
+      for (let i = 0; i < carNames.length; i++) {
+        MissionUtils.Console.print(`${carNames[i]} : ${gameResults[i] ? gameResults[i] : ''}`);
+      }
+      MissionUtils.Console.print('');
     }
   }
 }
