@@ -24,7 +24,7 @@ export const getTryNumber = async (carNames) => {
   if (USER_TRY_NUMBER <= 0) {
     throw new Error('[ERROR] 잘못된 값을 입력하였습니다.');
   }
-  racingProgress(carNames, USER_TRY_NUMBER);
+  await racingProgress(carNames, USER_TRY_NUMBER);
 };
 
 export const stringToArray = (string) => {

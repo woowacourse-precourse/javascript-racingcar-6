@@ -26,7 +26,7 @@ export const racingProgress = async (carNamesArray, tryNumber) => {
   }
 
   countArr = countArr.map((el) => (el = el.length));
-  finalWinner(carNamesArray, countArr);
+  await finalWinner(carNamesArray, countArr);
 };
 
 export const finalWinner = (carNamesArray, countArr) => {
