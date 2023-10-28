@@ -23,7 +23,6 @@ const Validation = {
       throw new Error(MESSAGE.DUPLICATE_CAR_NAME);
     }
   },
-
   /**
    * 시도 횟수가 자연수인지 검사
    * @param {number} count 시도 횟수
