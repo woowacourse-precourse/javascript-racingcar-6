@@ -16,12 +16,14 @@ jest.mock("@woowacourse/mission-utils", () => ({
     },
 }));
 const mockQuestions = (inputs) => {
+    MissionUtils.Console.readLineAsync = jest.fn();
     MissionUtils.Console.readLineAsync.mockImplementation(() => {
         const input = inputs.shift();
         return Promise.resolve(input);
     });
 };
 const mockRandoms = (numbers) => {
+    MissionUtils.Random.pickNumberInRange = jest.fn();
     numbers.reduce((acc, number) => {
         return acc.mockReturnValueOnce(number);
     }, MissionUtils.Random.pickNumberInRange);
@@ -107,7 +109,7 @@ describe("문자열 테스트", () => {
         await expect(Input_Second()).rejects.toThrow("[ERROR]");
     });
 
-    test("결과값 출력",  () => {
+    test("결과 값 출력 확인", async () => {
         // given
         const MOVING_FORWARD = 4;
         const STOP = 3;
@@ -120,7 +122,8 @@ describe("문자열 테스트", () => {
         mockRandoms([...randoms]);
 
         // when
-        GAME_RESULT(["pobi", "woni"], 1);
+        const app = new App();
+        await app.play();
 
         // then
         outputs.forEach((output) => {
