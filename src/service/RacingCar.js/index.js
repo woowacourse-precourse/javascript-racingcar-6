@@ -47,6 +47,13 @@ export class RacingCarGame {
     }
   }
 
+  displayWinners() {
+    const winners = this.#getWinners();
+    const winnerNames = winners.map((winner) => winner.name).join(", ");
+
+    console(MESSAGES.WINNER(winnerNames));
+  }
+
   #setCars(carNames) {
     this.#cars = new Cars(carNames);
   }
