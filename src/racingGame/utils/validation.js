@@ -28,7 +28,7 @@ export const checkInputCarNameValidation = (inputs) => {
       throw new Error(ERRORMSG.invalid_special_character);
     if (GMAEVALIDATION.check_korean_characters.test(input))
       throw new Error(ERRORMSG.invalid_korean_character);
-  }, 0);
+  });
 };
 
 export const checkInputTryNumValidation = (input) => {
