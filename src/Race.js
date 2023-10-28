@@ -1,5 +1,5 @@
 import Car from './Car.js';
-import { Console } from '@woowacourse/mission-utils';
+import PrinterView from './helpers/PrinterView.js';
 
 class Race {
   constructor(carNames, attempts) {
@@ -8,16 +8,16 @@ class Race {
   }
 
   startRace() {
-    let i = 0;
-    while (i < this.attempts) {
-      this.moveCar();
+    let currentAttempts = 0;
+    while (currentAttempts < this.attempts) {
+      this.moveCars();
       this.printRaceStatus();
-      Console.print('\n');
-      i++;
+      PrinterView.printNewLine();
+      currentAttempts += 1;
     }
   }
 
-  moveCar() {
+  moveCars() {
     for (const car of this.cars) {
       car.move();
     }
@@ -25,8 +25,28 @@ class Race {
 
   printRaceStatus() {
     for (const car of this.cars) {
-      Console.print(`${car.name} : ${'-'.repeat(car.position)}`);
+      const name = car.name;
+      const position = car.getPosition();
+      const dash = '-'.repeat(position);
+
+      PrinterView.print(`${name} : ${dash}`);
     }
+  }
+
+  // TODO: 맥스값 로직 수정 필요
+  findWinner() {
+    let maxPosition = -Infinity;
+    let winningCars = [];
+    for (const car of this.cars) {
+      const carPosition = car.getPosition();
+      if (carPosition > maxPosition) {
+        maxPosition = carPosition;
+        winningCars = [car];
+      } else if (carPosition === maxPosition) {
+        winningCars.push(car);
+      }
+    }
+    return winningCars.map((winner) => winner.name);
   }
 }
 
