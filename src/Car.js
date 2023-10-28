@@ -8,7 +8,6 @@ class Car {
 
     goForword() {
         this.forwardCount += 1;
-        MissionUtils.Console.print(this.forwardCount);
     }
 
     printState() {
