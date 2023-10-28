@@ -1,16 +1,54 @@
-import RacingGame from './RacingGame.js';
+import Refree from './Refree.js';
+import Validation from './util/Validation.js';
+
+import InputView from './view/InputView.js';
+import OutputView from './view/OutputView.js';
 
 class App {
-  #racingGame;
+  #refree;
+  #totalRounds;
 
   constructor() {
-    this.#racingGame = new RacingGame();
+    this.#refree = new Refree();
   }
 
   async play() {
-    await this.#racingGame.setUpRaceGame();
-    await this.#racingGame.playRaceGame();
-    await this.#racingGame.findWinner();
+    await this.#setUpRaceGame();
+    await this.#playRaceGame();
+    await this.#findWinner();
+  }
+
+  async #setUpRaceGame() {
+    await this.#readCarNames();
+    await this.#readTotalRounds();
+  }
+
+  async #readCarNames() {
+    const carNameString = await InputView.getCarNames();
+    const carNames = carNameString.split(',');
+    Validation.validateCarNames(carNames);
+
+    this.#refree.registerCars(carNames);
+  }
+
+  async #readTotalRounds() {
+    const totalRoundsString = await InputView.getTotalRounds();
+    Validation.validateTotalRounds(totalRoundsString);
+    this.#totalRounds = Number(totalRoundsString);
+  }
+
+  async #playRaceGame() {
+    OutputView.printResultTitleMessage();
+
+    Array.from({ length: this.#totalRounds }).forEach(() => {
+      this.#refree.moveCars();
+      OutputView.printRoundResult(this.#refree.getRcordList());
+    });
+  }
+
+  async #findWinner() {
+    const winner = this.#refree.getWinner();
+    OutputView.printWinner(winner);
   }
 }
 
