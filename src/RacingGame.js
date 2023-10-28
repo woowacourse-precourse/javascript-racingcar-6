@@ -24,7 +24,7 @@ class RacingGame {
    * @param {string} repeatNumber - 반복 횟수
    */
   gameStart(joinList, repeatNumber) {
-    for (let i = 0; i < repeatNumber; i++) {
+    for (let i = 0; i < repeatNumber; i += 1) {
       this.printEachProgress(joinList);
     }
 
@@ -46,12 +46,10 @@ class RacingGame {
    * @returns {string[]} 우승자 배열
    */
   getWinner(joinList) {
-    const maxLength = joinList.reduce((maxValue, { progress }) => {
-      return maxValue > progress.length ? maxValue : progress.length;
-    }, 0);
-    const winnerList = joinList.filter(({ progress }) => {
-      return progress.length === maxLength;
-    });
+    const maxLength = joinList.reduce((maxValue, { progress }) => (
+      maxValue > progress.length ? maxValue : progress.length
+    ), 0);
+    const winnerList = joinList.filter(({ progress }) => progress.length === maxLength);
 
     return winnerList.map((winner) => winner.name);
   }
@@ -90,7 +88,9 @@ class RacingGame {
   }
 
   async getRepeatNumber() {
-    return await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    const repeatNumber = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+
+    return repeatNumber;
   }
 }
 
