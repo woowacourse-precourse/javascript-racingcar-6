@@ -1,22 +1,18 @@
-import { Random, Console } from "@woowacourse/mission-utils";
+import { Random, Console } from '@woowacourse/mission-utils';
 
-export default class racingCar {
+export default class RacingCar {
   constructor(name) {
     this.name = name;
     this.distance = 0;
   }
 
   carMoveEvaluation() {
-    const randomNumber = this.genarateRandomNumber();
-    if (randomNumber >= 4) this.distance++;
+    const randomNumber = Random.pickNumberInRange(0, 9);
+    if (randomNumber >= 4) this.distance += 1;
     this.printRacingCarStatus();
   }
 
-  genarateRandomNumber() {
-    return Random.pickNumberInRange(0, 9);
-  }
-
   printRacingCarStatus() {
-    Console.print(`${this.name} : ${"-".repeat(this.distance)}`);
+    Console.print(`${this.name} : ${'-'.repeat(this.distance)}`);
   }
 }
