@@ -39,6 +39,12 @@ class App {
       });
       Console.print("");
     }
+
+    Console.print(
+      `최종 우승자 : ${Object.entries(carsObject)
+        .filter(([carName, carDistance]) => carDistance === maxDistance)
+        .map(([carName, carDistance]) => carName)}`
+    );
   }
 }
 
