@@ -1,6 +1,6 @@
 import { Console, Random } from '@woowacourse/mission-utils';
 
-import { MOVE, RESULT_MESSAGE } from './constants/constants.js';
+import { MOVE, RESULT_MESSAGE, FINAL_WINNER } from './constants/constants.js';
 
 class Race {
   constructor(cars, round) {
@@ -14,6 +14,7 @@ class Race {
       this.playRound();
       this.printRoundResult();
     }
+    Console.print(FINAL_WINNER + this.getWinners());
   }
 
   playRound() {
@@ -33,6 +34,17 @@ class Race {
       Console.print(`${car.getName()} : ${MOVE.repeat(car.getMoveCount())}`);
     });
     Console.print('');
+  }
+
+  getWinners() {
+    const moveCountArr = this.cars.map((car) => car.getMoveCount());
+    const maxMoveCount = Math.max(...moveCountArr);
+
+    const winners = this.cars
+      .filter((car) => car.getMoveCount() === maxMoveCount)
+      .map((car) => car.getName());
+
+    return winners.join(', ');
   }
 }
 
