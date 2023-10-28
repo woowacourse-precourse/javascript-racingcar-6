@@ -1,6 +1,10 @@
 import { Console } from '@woowacourse/mission-utils';
 
 class App {
+  constructor() {
+    this.racingResult = new Map();
+  }
+
   static isVaildCarList(input, carList) {
     const overMaxLengthReg = /[^,]{6,}/;
 
