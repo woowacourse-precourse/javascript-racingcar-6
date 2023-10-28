@@ -38,7 +38,7 @@ class RacingCarGame {
     if (Validator.checkIsEmpty(carNameList)) {
       throw new ValidationError(ERROR.isEmpty);
     }
-    if (!Validator.checkHasDuplicate(carNameList)) {
+    if (Validator.checkHasDuplicate(carNameList)) {
       throw new ValidationError(ERROR.hasDuplicate);
     }
     if (!Validator.checkIsLessThanMaxLen(carNameList)) {

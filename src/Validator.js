@@ -6,7 +6,7 @@ class Validator {
   }
 
   static checkHasDuplicate(userInput) {
-    return new Set(userInput).size === userInput.length;
+    return new Set(userInput).size !== userInput.length;
   }
 
   static checkIsLessThanMaxLen(userInput) {
