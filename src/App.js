@@ -28,10 +28,30 @@ class App {
       );
     }
 
-    const randomNumber = MissionUtils.Console.pickNumberInRange(1, 9);
+    for (let i = 0; i < numberOfRounds; i++) {
+      const a = this.forwardCar(carName);
+
+      console.log(a);
+    }
   }
 
-  forwardCar() {}
+  forwardCar(carName) {
+    let curCarScore = [];
+
+    for (let i = 0; i < carName.length; i++) {
+      const car = {
+        name: carName[i],
+        score: "",
+      };
+      const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
+      if (randomNumber >= 4) {
+        car.score += "-";
+      }
+      curCarScore.push(car);
+    }
+
+    return curCarScore;
+  }
 }
 
 export default App;
