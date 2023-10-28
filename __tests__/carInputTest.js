@@ -29,8 +29,7 @@ describe("자동차 이름 입력 메소드 테스트", () => {
 
     mockQuestions(inputs);
 
-    const app = new App();
-    const result = await app.carInput();
+    const result = await App.carInput();
 
     expect(result).toStrictEqual(outputArray);
   });
@@ -41,8 +40,7 @@ describe("자동차 이름 입력 메소드 테스트", () => {
 
     mockQuestions(inputs);
 
-    const app = new App();
-    const result = await app.carInput();
+    const result = await App.carInput();
 
     expect(result).toStrictEqual(outputArray);
   });
@@ -62,9 +60,17 @@ describe("자동차 이름 입력 메소드 테스트", () => {
 
     mockQuestions(inputs);
 
-    const app = new App();
-    const result = await app.carInput();
+    const result = await App.carInput();
 
     expect(result).toStrictEqual(outputArray);
   });
+
+  test.each([[["pobi,longname"]], [["longname"]], [["pobi,,name"]]])(
+    "자동차 이름 예외 처리 테스트",
+    async (inputs) => {
+      mockQuestions(inputs);
+
+      await expect(App.carInput()).rejects.toThrow("[ERROR]");
+    }
+  );
 });
