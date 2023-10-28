@@ -19,9 +19,24 @@ class App {
     return cars;
   };
 
+  checkRacingCountValidation = (el) => {
+    return /^[1-9]\d*$/.test(el) ? true : false;
+  };
+
+  getRacingCountInput = async () => {
+    const input = await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
+
+    if (!this.checkRacingCountValidation(input)) {
+      throw new Error('[ERROR] 입력이 양수인 숫자가 아닙니다.');
+    }
+
+    return input;
+  };
+
   async play() {
     try {
       await this.getRacingCarNameInput();
+      await this.getRacingCountInput();
     } catch (err) {
       Console.print(err.message);
       throw err;
