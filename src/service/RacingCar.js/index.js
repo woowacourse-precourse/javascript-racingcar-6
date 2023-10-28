@@ -4,10 +4,10 @@ import { CustomError } from "../../exceptions";
 import { readLine, shouldCarRun } from "../../utils";
 import { console } from "../../utils/console";
 
-CAR_NAME_LENGTH_LIMIT = 5;
+const CAR_NAME_LENGTH_LIMIT = 5;
 
 export class RacingCarGame {
-  #cars;
+  #cars = [];
   #totalRounds;
   #currentRound = 0;
 
@@ -37,7 +37,7 @@ export class RacingCarGame {
   play() {
     console(MESSAGES.RESULT);
     while (this.#currentRound < this.#totalRounds) {
-      this.#cars.forEach((car) => {
+      this.#cars.getCars().forEach((car) => {
         if (shouldCarRun()) car.run();
       });
 
@@ -56,6 +56,10 @@ export class RacingCarGame {
 
   #setCars(carNames) {
     this.#cars = new Cars(carNames);
+  }
+
+  #getCars() {
+    return this.#cars;
   }
 
   #validateCarNames(carName) {
