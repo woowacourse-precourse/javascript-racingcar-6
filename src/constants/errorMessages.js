@@ -6,10 +6,10 @@
  * 카멜인지 무엇인지는 정확히 기재되어있지는 않네요.
  */
 
-export const ERROR_MESSAGES = {
+export const ERROR_MESSAGES = Object.freeze({
   have_a_space: '공백이 존재하는 자동차가 있어요!',
   out_of_range_of_names: '각 자동차의 이름은 1글자 이상 5글자 이하여야해요!',
   have_duplication: '이름이 중복되는 자동차가 있어요!',
   not_a_number: '시도 횟수는 숫자여야해요!',
   out_of_range_of_attemps: '시도 횟수는 최소 1보다 커야해요!',
-};
+});
