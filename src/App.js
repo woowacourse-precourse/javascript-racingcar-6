@@ -16,6 +16,7 @@ class App {
       this.carList.push({
         name: element,
         distance: 0,
+        going: '-',
       });
     });
     this.times = inputTimes;
@@ -26,6 +27,7 @@ class App {
       const RandomNum = Random.pickNumberInRange(0, 9);
       if (RandomNum >= 4) {
         element.distance += RandomNum;
+        element.going += '-';
       }
     });
   }
@@ -39,7 +41,7 @@ class App {
 
   printCarListAsTimes() {
     this.carList.forEach((element) => {
-      Console.print(`${element.name} : ${element.distance}`);
+      Console.print(`${element.name} : ${element.going}`);
     });
     Console.print('');
   }
