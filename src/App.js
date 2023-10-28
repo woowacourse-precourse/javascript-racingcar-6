@@ -1,10 +1,8 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 class App {
-
   constructor() {
     this.players = [];
-    this.moveAttempts = 0;
   }
 
   async getPlayerName() {
@@ -38,10 +36,14 @@ class App {
   }
 
   findWinner() {
-    const MAX_MOVEATTEMPTS = Math.max(...this.players.map(player => player.moveAttempts));
-    const WINNERS = this.players.filter(player => player.moveAttempts === MAX_MOVEATTEMPTS)
-    let raceResult = WINNERS.map(player => player.name).join(', ');
-    return `최종 우승자 : ${raceResult}`
+    const MAX_MOVEATTEMPTS = Math.max(
+      ...this.players.map((player) => player.moveAttempts)
+    );
+    const WINNERS = this.players.filter(
+      (player) => player.moveAttempts === MAX_MOVEATTEMPTS
+    );
+    let raceResult = WINNERS.map((player) => player.name).join(", ");
+    return `최종 우승자 : ${raceResult}`;
   }
 
   playerMoveCount(player) {
