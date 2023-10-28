@@ -2,6 +2,7 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 import { ATTEMPTS_NUMBER, CAR_NAME } from "./constants/questions";
 import { ERROR_ATTEMPTS_NUMBER, ERROR_CAR_NAME } from "./constants/errors";
 import { CAR_NAME_STANDARD, WINNER_STANDARD } from "./constants/separations";
+import { EXECUTION_ENDS, RACE_RESULT, RACE_RESULT_GAP, RACE_WINNER } from "./constants/notices";
 
 class App {
   constructor() {
@@ -35,7 +36,7 @@ class App {
       this.race.push([name, 0]);
     });
     // 2-b
-    MissionUtils.Console.print("실행 결과");
+    MissionUtils.Console.print(EXECUTION_ENDS);
     for (let i = 0; i < this.attempts; i++) {
       this.arrCarName.map((name, index) => {
         const result = MissionUtils.Random.pickNumberInRange(0, 9);
@@ -44,10 +45,10 @@ class App {
         }
         // 2-c
         MissionUtils.Console.print(
-          `${name} : ${"-".repeat(this.race[index][1])}`
+          `${name} : ${RACE_RESULT.repeat(this.race[index][1])}`
         );
       });
-      MissionUtils.Console.print(" ");
+      MissionUtils.Console.print(RACE_RESULT_GAP);
     }
 
     // 3-a
@@ -63,7 +64,7 @@ class App {
       }
     }
     // 3-c
-    MissionUtils.Console.print(`최종 우승자 : ${this.winner.join(WINNER_STANDARD)}`);
+    MissionUtils.Console.print(`${RACE_WINNER} : ${this.winner.join(WINNER_STANDARD)}`);
   }
 }
 
