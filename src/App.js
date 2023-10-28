@@ -1,11 +1,13 @@
 import { Console } from "@woowacourse/mission-utils";
 import { GAME } from "./message.js";
 import inputUser from "./inputUser.js";
+import startGame from "./startGame.js";
 
 class App {
   async play() {
-    const { carArr, repeatCount } = await inputUser();
+    const { carMap, repeatCount } = await inputUser();
     Console.print(GAME.START);
+    startGame(carMap, repeatCount);
   }
 }
 

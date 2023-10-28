@@ -1,22 +1,32 @@
-export default function startGame(carArr, repeatCount) {
-  
-  for(let i=0; i<repeatCount; i++){
-    // 현재 카운트 주고 전진할수있는지 판단
-    // 전진한 횟수 리턴하는 함수
-    // 그만큼 - 출력
-  }
-  
-  carArr.map((car)=>{
-    if(checkAdvanceCar()){
-      
-    }
-  })
+import { MissionUtils, Console } from "@woowacourse/mission-utils";
 
+export default function startGame(carMap, repeatCount) {
+  for (let i = 0; i < repeatCount; i++) {
+    for (let [key, value] of carMap) {
+      if (checkAdvanceCar()) {
+        carMap.set(key, value + 1);
+      }
+    }
+
+    printOneStep(carMap);
+  }
 }
 
-export default function checkAdvanceCar(){
+function checkAdvanceCar() {
   let randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
 
-  if(randomNumber >= 4) return true;
+  if (randomNumber >= 4) return true;
   return false;
+}
+
+function printOneStep(carMap) {
+  for (let [key, value] of carMap) {
+    let dash = "";
+    for (let i = 0; i < value; i++) {
+      dash += "-";
+    }
+
+    Console.print(key + " : " + dash);
+  }
+  Console.print("");
 }
