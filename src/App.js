@@ -18,8 +18,7 @@ class App {
 
     await this.#playRace();
 
-    const winner = this.#refree.getWinner();
-    OutputView.printWinner(winner);
+    await this.#findWinner();
   }
 
   async #readCarNames() {
@@ -43,6 +42,11 @@ class App {
       this.#refree.moveCars();
       OutputView.printResult(this.#refree.getResultList());
     });
+  }
+
+  async #findWinner() {
+    const winner = this.#refree.getWinner();
+    OutputView.printWinner(winner);
   }
 }
 
