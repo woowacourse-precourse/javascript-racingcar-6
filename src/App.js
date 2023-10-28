@@ -33,11 +33,21 @@ class App {
   updateAsTimes() {
     for (let i = 0; i < this.times; i += 1) {
       this.updateObjectDistance();
+      this.printCarListAsTimes();
     }
+  }
+
+  printCarListAsTimes() {
+    this.carList.forEach((element) => {
+      Console.print(`${element.name} : ${element.distance}`);
+    });
+    Console.print('');
   }
 
   async play() {
     await this.userInputCarAndTimes();
+    Console.print('');
+    Console.print('실행 결과');
     this.updateAsTimes();
   }
 }
