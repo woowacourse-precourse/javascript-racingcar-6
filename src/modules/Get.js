@@ -1,4 +1,3 @@
-import { run } from 'jest';
 import Is from './Is.js';
 
 class Get {
@@ -19,7 +18,7 @@ class Get {
     const winnerIndexList = Get.winnerIndexList(racingInfo);
     const result = [];
     winnerIndexList.forEach(winnerIndex =>
-      result.push(result.carList[winnerIndex])
+      result.push(racingInfo.carList[winnerIndex])
     );
     return result;
   }
@@ -35,11 +34,11 @@ class Get {
   }
 
   static lastPositionList(racingList) {
-    const lastPosition = [];
+    const lastPositionList = [];
     racingList.didItRun.forEach(runList => {
-      lastPosition.push(Get.position(runList, racingList.gameOfNumber - 1));
+      lastPositionList.push(Get.position(runList, racingList.numberOfGame));
     });
-    return lastPosition;
+    return lastPositionList;
   }
 }
 
