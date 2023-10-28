@@ -1,3 +1,7 @@
+import { MissionUtils } from "@woowacourse/mission-utils";
+import { resolve } from "path";
+import * as readline from "readline";
+
 class App {
   constructor() {
     //사용자 입력 받기
@@ -44,6 +48,24 @@ class App {
         }
       });
     });
+  }
+  //결과 받기
+  result(carName, tryNum) {
+    console.log("실행 결과");
+    // 총 tryNum만큼 실행
+    for (i = 0; i < tryNum; i++) {
+      oneResult(carName);
+    }
+    //가장 긴 자동차 이름 return하기
+  }
+  oneResult(carName) {
+    for (i = 0; i < carName.length(); i++) {
+      //랜덤한 숫자 불러오기
+      const randomNum = MissionUtils.Random.pickNumberInRange(0, 9);
+      if (randomNum >= 4) {
+        console.log(`${carName[i]} : -`); // -을 하나씩  추가하는 방법?
+      }
+    }
   }
 }
 
