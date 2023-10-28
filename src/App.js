@@ -8,20 +8,21 @@ class App {
       '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)'
     );
 
-    return this.getValidateCarName(inputCarName);
+    const racingCars = inputCarName.replaceAll(' ', '').split(',');
+
+    this.validateCarName(racingCars);
+
+    return racingCars;
   }
 
-  getValidateCarName(inputValue) {
-    const racingCars = inputValue.replaceAll(' ', '').split(',');
+  validateCarName(inputValue) {
     const MAX_LENGTH = 5;
 
-    racingCars.map((name) => {
+    inputValue.forEach((name) => {
       if (name.length > MAX_LENGTH) {
         throw new Error('[ERROR] 자동차 이름은 5자 이하만 가능합니다.');
       }
     });
-
-    return racingCars;
   }
 
   async getTryCount() {
