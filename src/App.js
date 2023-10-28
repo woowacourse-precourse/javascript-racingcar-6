@@ -7,6 +7,7 @@ class App {
     const inputRacingCars = await Console.readLineAsync(
       INPUT_MESSAGE.RACING_CARS
     );
+    const racingCarNames = inputRacingCars.split(",");
   }
 }
 
