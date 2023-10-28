@@ -23,4 +23,14 @@ describe('자동차 입력을 테스트합니다.', () => {
     // then
     expect(cars).toEqual(answers);
   });
+
+  test('다섯 자리가 넘는 입력이 있으면 예외를 발생시키고 애플리케이션을 종료합니다.', async () => {
+    // given
+    const input = 'pobi,crong,pororo';
+
+    mockQuestion(input);
+
+    // when & then
+    await expect(RacingGame.inputRacingCarNames(input)).rejects.toThrow("[ERROR]");
+  })
 });
