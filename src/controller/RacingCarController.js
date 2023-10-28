@@ -1,5 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
 import Input from "../view/Input.js";
+import Output from "../view/Output.js";
 // import RandomCarMoving from "../model/RandomCarMoving.js";
 import CarMoving from "../model/CarMoving.js";
 import CarListCheck from "../validate/CarListCheck.js";
@@ -8,6 +9,7 @@ import TryNumberCheck from "../validate/TryNumberCheck.js";
 class RacingCarController {
   constructor() {
     this.input = new Input();
+    this.output = new Output();
     // this.randomMoving = new RandomCarMoving();
     this.carMoving = new CarMoving();
     this.carListCheck = new CarListCheck();
@@ -38,6 +40,7 @@ class RacingCarController {
 
   //게임 횟수만큼 랜덤값 생성
   async randomStart() {
+    this.output.racingStartMessage();
     for (let i = 0; i < this.tryCount; i++) {
       this.countWinner(await this.carMoving.eachRound(this.winCount.length));
     }
@@ -47,9 +50,15 @@ class RacingCarController {
   async countWinner(winner) {
     await winner.forEach((idx) => {
       this.winCount[idx] += "-";
-      Console.print(idx);
+      // Console.print(idx);
     });
-    Console.print(this.winCount);
+    // Console.print(this.winCount);
+    this.printResultControll();
+    // Console.print(this.printResultControll());
+  }
+
+  printResultControll() {
+    this.output.eachRacingResult(this.carNames, this.winCount);
   }
 }
 
