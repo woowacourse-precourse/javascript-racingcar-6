@@ -28,7 +28,7 @@ class App {
 
     const cars = carNames.map((name) => new Car(name));
     const race = new Race(cars, gameCount);
-    race.startRace();
+    race.start();
   }
 }
 

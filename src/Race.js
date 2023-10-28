@@ -8,7 +8,7 @@ class Race {
     this.cars = cars;
   }
 
-  startRace() {
+  start() {
     Console.print(RESULT_MESSAGE);
     for (let i = 0; i < this.round; i++) {
       this.playRound();
