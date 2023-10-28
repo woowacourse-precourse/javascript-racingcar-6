@@ -19,13 +19,10 @@ class App {
   async readCarNames() {
     const answer = await Console.readLineAsync(MESSAGE.INPUT_CAR_NAMES);
     const cars = answer.split(',');
-
     cars.forEach((car) => {
       Validation.validateCarName(car);
     });
-
     Validation.validateDuplicateName(cars);
-
     this.carRacingGame.setCars(cars.map((car) => new Car(car)));
     await this.readTryCount();
   }
@@ -33,9 +30,7 @@ class App {
   // 사용자로부터 전진 시도 횟수를 입력받음
   async readTryCount() {
     const answer = await Console.readLineAsync(MESSAGE.INPUT_TRY_COUNT);
-
     Validation.validateTryCount(answer);
-
     this.printRacingResult(answer);
   }
 
@@ -52,7 +47,6 @@ class App {
       });
       Console.print(' ');
     });
-
     Console.print(
       `${MESSAGE.FINAL_WINNER} : ${this.carRacingGame.getWinner().join(', ')}`,
     );
