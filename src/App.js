@@ -1,6 +1,19 @@
 import { Console, Random } from "@woowacourse/mission-utils";
 
-const ERROR_HEADER = "[ERROR]";
+const ERROR_HEADER = "[ERROR] ";
+
+export const meassageBeforeInput = Object.freeze({
+  carNames: "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n",
+  attempts: "시도할 횟수는 몇 회인가요?\n",
+});
+export const messagePrint = Object.freeze({
+  result: "\n실행 결과",
+  winners: "최종 우승자 : ",
+});
+export const messageError = Object.freeze({
+  validAttempts: "1이상의 수를 입력하세요.",
+});
+
 class App {
   constructor() {
     this.cars = new Map();
@@ -8,9 +21,7 @@ class App {
   }
 
   async getCars() {
-    let inputCars = await Console.readLineAsync(
-      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
-    );
+    let inputCars = await Console.readLineAsync(meassageBeforeInput.carNames);
     return inputCars.split(",");
   }
 
@@ -21,10 +32,10 @@ class App {
   }
 
   async getNumberOfAttempts() {
-    let input = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+    let input = await Console.readLineAsync(meassageBeforeInput.attempts);
     let numberOfAttempts = parseInt(input);
     if (isNaN(numberOfAttempts) || numberOfAttempts < 1) {
-      throw new Error(`${ERROR_HEADER} 1이상의 수를 입력하세요.`);
+      throw new Error(`${ERROR_HEADER}${messageError.validAttempts}`);
     }
     return numberOfAttempts;
   }
@@ -51,7 +62,7 @@ class App {
   }
 
   startRace(numberOfAttempts) {
-    Console.print("\n실행 결과");
+    Console.print(messagePrint.result);
     do {
       this.doAttempt();
       this.printTurnResult();
@@ -81,7 +92,7 @@ class App {
 
   printWinners() {
     const winners = this.winners.join(", ");
-    Console.print(`최종 우승자 : ${winners}`);
+    Console.print(`${messagePrint.winners}${winners}`);
   }
 
   async play() {
