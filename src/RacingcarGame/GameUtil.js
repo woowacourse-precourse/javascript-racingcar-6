@@ -13,6 +13,10 @@ class GameUtil {
       MissionUtils.Console.print(ErrorMessage.ATTEMPTS_VALID_NUM);
       throw new Error(ErrorMessage.ATTEMPTS_VALID_NUM);
     }
+    if (/\D/.test(attempts)) {
+      MissionUtils.Console.print(ErrorMessage.ATTEMPTS_VALID_NUM);
+      throw new Error(ErrorMessage.ATTEMPTS_TYPE);
+    }
   }
 }
 
