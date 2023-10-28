@@ -12,7 +12,13 @@ class App {
       const racingCarNames = await Console.readLineAsync(
         '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n'
       );
-      racingCarNames.split(',').map((car) => (this.racingCars[car] = 0));
+
+      if (racingCarNames.indexOf(',') === -1) throw new Error();
+
+      racingCarNames.split(',').map((car) => {
+        this.racingCars[car] = 0;
+        if (car === '') throw new Error();
+      });
 
       const racingTryNumbers = await Console.readLineAsync(
         '시도할 횟수는 몇 회인가요?\n'
@@ -39,7 +45,7 @@ class App {
 
       Console.print(`최종 우승자 : ${this.winner}`);
     } catch (error) {
-      throw new Error('[ERROR] 숫자가 잘못된 형식입니다.');
+      throw new Error('[ERROR] 잘못된 형식입니다.');
     }
   }
 }
