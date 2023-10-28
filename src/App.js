@@ -1,4 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
+import Car from "./Car.js";
 
 class App {
   constructor() {}
@@ -51,48 +52,42 @@ class App {
 
   /**
    * 게임 진행 결과 출력
-   * @param {*} carNames 자동차 이름 배열
-   * @param {*} carPositions 자동차 위치 배열
+   * @param {*} cars 자동차 객체 배열
    */
-  printCarPositions(carNames, carPositions) {
-    carNames.forEach((carName, index) =>
-      MissionUtils.Console.print(
-        carName + " : " + "-".repeat(carPositions[index])
-      )
-    );
+  printCarPositions(cars) {
+    cars.forEach((car) => car.print());
     MissionUtils.Console.print("\n");
   }
 
   /**
    * 우승자 확인
-   * @param {*} carNames 자동차 이름 배열
-   * @param {*} carPositions 자동차 위치 배열
+   * @param {*} cars 자동차 객체 배열
    * @returns 우승자
    */
-  checkWinner(carNames, carPositions) {
-    let winners = []; //우승자 배열
-    const maxPosition = Math.max(...carPositions);
-    carNames.forEach((carName, index) => {
-      if (carPositions[index] === maxPosition) winners.push(carName);
-    });
-
-    return winners;
+  checkWinner(cars) {
+    const tmpPositions = cars.map((car) => car.position);
+    const maxPosition = Math.max(...tmpPositions);
+    const winners = cars.filter((car) => car.position === maxPosition);
+    return winners.map((winner) => winner.name);
   }
 
   async play() {
     const carNames = await this.getInputCarNames();
+    const cars = [];
+    carNames.forEach((carName) => {
+      cars.push(new Car(carName));
+    });
     const count = await this.getInputCount();
 
     MissionUtils.Console.print("\n실행결과");
-    let carsPositions = new Array(carNames.length).fill(0);
     for (let i = 0; i < parseInt(count); i++) {
-      carNames.forEach((carName, index) => {
-        if (this.getRandomNumber()) carsPositions[index]++;
+      cars.forEach((car, index) => {
+        if (this.getRandomNumber()) car.forward();
       });
-      this.printCarPositions(carNames, carsPositions);
+      this.printCarPositions(cars);
     }
 
-    const winners = this.checkWinner(carNames, carsPositions);
+    const winners = this.checkWinner(cars);
     MissionUtils.Console.print("최종 우승자: " + winners.join(", "));
   }
 }
