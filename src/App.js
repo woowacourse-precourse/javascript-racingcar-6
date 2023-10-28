@@ -5,7 +5,7 @@ import MoveCount from './MoveCount.js';
 class App {
   #carNames = [];
   #moveCount;
-
+  #resultObject = {};
   async play() {
     await this.setCarNames();
   }
@@ -36,6 +36,8 @@ class App {
     for (let i = 0; i < move; i++) {
       this.calculateMove(move);
     }
+
+    this.printWinner();
   }
 
   calculateMove(move) {
@@ -51,6 +53,29 @@ class App {
 
   showProgress(name, position) {
     Console.print(`${name} : ${position.join('')}`);
+  }
+
+  printWinner() {
+    this.#carNames.forEach(car => {
+      this.#resultObject[car.getName()] = Object.keys(car.getPosition()).length;
+    });
+    const max = this.findMaxValue(this.#resultObject);
+    const raceWinners = this.findWinner(this.#resultObject, max);
+    Console.print('최종 우승자 : ' + raceWinners.map(name => name).join(','));
+  }
+
+  findMaxValue(result) {
+    let max = -Infinity;
+    for (const key in result) {
+      if (result[key] > max) {
+        max = result[key];
+      }
+    }
+    return max;
+  }
+
+  findWinner(result, max) {
+    return Object.keys(result).filter(key => result[key] === max);
   }
 }
 
