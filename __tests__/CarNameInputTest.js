@@ -25,7 +25,7 @@ describe('자동차 이름 유효성 테스트', () => {
 
       const app = new App();
 
-      await expect(app.play()).rejects.toThrow(ERROR.INVALID_NAME);
+      await expect(app.play()).rejects.toThrow(ERROR.START_OR_END_WITH_SPACE);
     }
   );
 

@@ -7,24 +7,20 @@ function isEveryCarNamesUnique(carNamesArray) {
   return carNamesSet.size === carNamesArray.length;
 }
 
-function isSpace(carName) {
-  return carName.trim().length === 0;
-}
-
 function isValidCarNames(carNamesString) {
   const carNamesArray = carNamesString.split(CAR_NAME_INPUT_SEPARATOR);
 
   for (const carName of carNamesArray) {
-    if (isSpace(carName)) {
-      throw new Error(ERROR.INVALID_NAME);
+    if (
+      carName.startsWith(' ') ||
+      carName.endsWith(' ') ||
+      carName.length === 0
+    ) {
+      throw new Error(ERROR.START_OR_END_WITH_SPACE);
     }
 
     if (carName.length > MAX_LENGTH_FOR_CAR_NAME)
       throw new Error(ERROR.TOO_LONG_NAME);
-
-    if (carName.startsWith(' ') || carName.endsWith(' ')) {
-      throw new Error(ERROR.START_OR_END_WITH_SPACE);
-    }
   }
 
   if (!isEveryCarNamesUnique(carNamesArray)) {
