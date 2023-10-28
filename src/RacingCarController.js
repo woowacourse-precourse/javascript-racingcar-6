@@ -20,6 +20,9 @@ class RacingCarController {
     Validator.validateCarNames(carNamesArray);
     this.racingCar.generateCars(carNamesArray);
   }
+  readTrialCount() {
+    const trialCount = InputView.readTrialCount();
+  }
 }
 
 export default RacingCarController;

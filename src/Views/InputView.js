@@ -5,6 +5,9 @@ const InputView = {
   async readCarNames() {
     return await Console.readLineAsync(MESSAGES.nameQuery);
   },
+  async readTrialCount() {
+    return await Console.readLineAsync(MESSAGES.trialQuery);
+  },
 };
 
 export default InputView;
