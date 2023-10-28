@@ -1,7 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
-import Validate from './Validate.js';
-import Participant from './Participant.js';
 import Util from './Util.js';
+import Input from './Input.js';
 
 class RacingGame {
   constructor() {
@@ -10,13 +9,8 @@ class RacingGame {
   }
 
   async start() {
-    this.joinList = await this.getJoinList();
-    this.repeatNumber = await this.getRepeatNumber();
-
-    if (!Validate.isPositiveInteger(this.repeatNumber)) {
-      throw new Error('[ERROR]');
-    }
-
+    this.joinList = await Input.getJoinList();
+    this.repeatNumber = await Input.getRepeatNumber();
     this.gameStart(this.joinList, this.repeatNumber);
   }
 
@@ -66,19 +60,6 @@ class RacingGame {
     });
 
     Console.print(''); // 빈 줄 추가
-  }
-
-  async getJoinList() {
-    const joinString = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n');
-    const joinList = joinString.split(',');
-
-    return joinList.map((name) => new Participant(name));
-  }
-
-  async getRepeatNumber() {
-    const repeatNumber = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
-
-    return repeatNumber;
   }
 }
 

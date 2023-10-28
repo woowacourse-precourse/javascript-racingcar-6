@@ -17,7 +17,7 @@ class Util {
   * @returns {boolean}
   */
   static getMaxLength(joinList) {
-    joinList.reduce((maxValue, { progress }) => (
+    return joinList.reduce((maxValue, { progress }) => (
       maxValue > progress.length ? maxValue : progress.length
     ), 0);
   }
@@ -29,7 +29,7 @@ class Util {
   * @returns {string[]}
   */
   static getWinnerList(joinList, maxLength) {
-    joinList.filter(({ progress }) => progress.length === maxLength);
+    return joinList.filter(({ progress }) => progress.length === maxLength);
   }
 }
 
