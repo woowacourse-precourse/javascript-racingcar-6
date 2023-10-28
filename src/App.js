@@ -69,6 +69,11 @@ class App {
     }
   }
 
+  winnerMovelength() {
+    const sortMoveArray = [...this.carMoveArray].sort((a, b) => b.length - a.length);
+    return sortMoveArray[0].length;
+  }
+
   async play() {
   }
 }
