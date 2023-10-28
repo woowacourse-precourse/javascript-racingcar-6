@@ -4,10 +4,12 @@ class CarRacingGame {
 
     constructor() {
         this.cars;
+        this.attempts;
     }
 
     start() {
         this.getCarNames();
+        this.getNumberOfAttempts();
     }
 
     async getCarNames() {
@@ -19,7 +21,7 @@ class CarRacingGame {
 
             this.cars = carNames.split(",");
             
-            if (this.validateCarNames(this.cars) === false) {
+            if (!this.validateCarNames(this.cars)) {
                 throw new Error("[ERROR] 잘못된 입력입니다.");
             }
 
@@ -35,6 +37,15 @@ class CarRacingGame {
             return true;
         });
     }
+
+    async getNumberOfAttempts() {
+        try {
+            this.attempts = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+        } catch (error) {
+            
+        }
+    }
+        
 
 }
 
