@@ -6,16 +6,22 @@ const throwIfFalse = (boolean, errorMessage) => {
   }
 };
 
-const validateIsString = (value) => {
-  throwIfFalse(typeof value === "string", ERROR_MESSAGE.notString);
-};
+const typeValidator = {
+  isString(value) {
+    throwIfFalse(typeof value === "string", ERROR_MESSAGE.notString);
+  },
 
-const validateIsArray = (value) => {
-  throwIfFalse(Array.isArray(value), ERROR_MESSAGE.notArray);
+  isNumber(value) {
+    throwIfFalse(typeof value === "number" && !Number.isNaN(value), ERROR_MESSAGE.notNumber);
+  },
+
+  isArray(value) {
+    throwIfFalse(Array.isArray(value), ERROR_MESSAGE.notArray);
+  },
 };
 
 const validateLengthBelow = (value, maxLength) => {
   throwIfFalse(value.length < maxLength, ERROR_MESSAGE.overMaxLength(maxLength));
 };
 
-export { validateIsString, validateIsArray, validateLengthBelow };
+export { typeValidator, validateLengthBelow };

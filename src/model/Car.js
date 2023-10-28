@@ -1,4 +1,4 @@
-import { validateIsString, validateLengthBelow } from "../utils/validators.js";
+import { typeValidator, validateLengthBelow } from "../utils/validators.js";
 
 class Car {
   #name;
@@ -13,7 +13,7 @@ class Car {
   }
 
   static #validateName(value) {
-    validateIsString(value);
+    typeValidator.isString(value);
     validateLengthBelow(value, 6);
   }
 

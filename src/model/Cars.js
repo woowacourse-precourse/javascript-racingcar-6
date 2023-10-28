@@ -1,5 +1,5 @@
 import { ERROR_MESSAGE } from "../constants/messages.js";
-import { validateIsArray } from "../utils/validators.js";
+import { typeValidator } from "../utils/validators.js";
 import Car from "./Car.js";
 
 class Cars {
@@ -11,7 +11,7 @@ class Cars {
   }
 
   static #validate(value) {
-    validateIsArray(value);
+    typeValidator.isArray(value);
     Cars.#validateType(value);
   }
 

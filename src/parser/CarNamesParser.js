@@ -1,4 +1,4 @@
-import { validateIsString } from "../utils/validators.js";
+import { typeValidator } from "../utils/validators.js";
 
 class CarNamesParser {
   #carNames = [];
@@ -11,7 +11,7 @@ class CarNamesParser {
   }
 
   static #validate(value) {
-    validateIsString(value);
+    typeValidator.isString(value);
   }
 
   static #splitByComma(string) {

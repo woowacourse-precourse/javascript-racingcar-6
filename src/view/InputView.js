@@ -6,7 +6,9 @@ class InputView {
     return await InputView.#readInput(INPUT_QUERY.carNames);
   }
 
-  static async readRoundNumber() {}
+  static async readRoundNumber() {
+    return await InputView.#readInput(INPUT_QUERY.roundNumbers);
+  }
 
   static async #readInput(query) {
     return await Console.readLineAsync(query);
