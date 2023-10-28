@@ -1,5 +1,6 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import App from '../src/App';
+import printWinners from '../src/functions/startRacing/printWinners';
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -60,4 +61,17 @@ describe('자동차 경주 게임', () => {
       await expect(app.play()).rejects.toThrow('[ERROR]');
     },
   );
+
+  test('우승자 출력', () => {
+    // given
+    const input = ['car1', 'car3'];
+    const result = '최종 우승자 : car1, car3';
+    const logSpy = getLogSpy();
+
+    // when
+    printWinners(input);
+
+    // then
+    expect(logSpy).toHaveBeenCalledWith(result);
+  });
 });
