@@ -11,6 +11,7 @@ export const SYSTEM = {
   randomNumberStart: 0,
   randomNumberEnd: 9,
   moveStartPoint: 4,
+  move: '-',
 };
 
 export const SYSTEM_TEXT = {
