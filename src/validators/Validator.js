@@ -1,4 +1,4 @@
-import ValidationError from '../../Error.js';
+import ValidationError from '../errors/ValidationError.js';
 import { ERROR_MESSAGE, EXCUTION_NUMBER, REGEXP } from '../constant.js';
 
 class Validator {
