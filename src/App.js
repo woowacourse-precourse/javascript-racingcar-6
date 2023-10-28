@@ -1,6 +1,16 @@
 import { Random, Console } from '@woowacourse/mission-utils';
 import { isValidCarNames, isValidMoveChanceCount } from './utils.js';
 import { INQUIRY, RESULT, UTILITY } from './messages.js';
+import {
+  CAR_NAME_INPUT_SEPARATOR,
+  DISTANCE_UNIT,
+  INITIAL_DISTANCE,
+  MIN_VALUE_FOR_MOVE,
+  MOVEMENT_UNIT,
+  RANDOM_INTEGER_MAX,
+  RANDOM_INTEGER_MIN,
+  WINNERS_OUTPUT_SEPARATOR,
+} from './data.js';
 
 class App {
   constructor() {
@@ -11,10 +21,10 @@ class App {
     const carNamesString = await Console.readLineAsync(INQUIRY.CAR_NAME);
 
     if (isValidCarNames(carNamesString)) {
-      const carNamesArray = carNamesString.split(',');
+      const carNamesArray = carNamesString.split(CAR_NAME_INPUT_SEPARATOR);
 
       for (const carName of carNamesArray) {
-        this.carNamesAndDistanceMap.set(carName, 0);
+        this.carNamesAndDistanceMap.set(carName, INITIAL_DISTANCE);
       }
     }
   }
@@ -33,7 +43,7 @@ class App {
 
   printDistance(carNamesAndDistanceMap) {
     for (const [carName, distance] of carNamesAndDistanceMap) {
-      Console.print(`${carName} : ${'-'.repeat(distance)}`);
+      Console.print(`${carName} : ${DISTANCE_UNIT.repeat(distance)}`);
     }
 
     Console.print(UTILITY.EMPTY);
@@ -41,10 +51,13 @@ class App {
 
   move(carNamesAndDistanceMap) {
     for (const [carName, distance] of carNamesAndDistanceMap) {
-      const randomInteger = Random.pickNumberInRange(0, 9);
+      const randomInteger = Random.pickNumberInRange(
+        RANDOM_INTEGER_MIN,
+        RANDOM_INTEGER_MAX
+      );
 
-      if (randomInteger >= 4) {
-        const distanceAfterMove = distance + 1;
+      if (randomInteger >= MIN_VALUE_FOR_MOVE) {
+        const distanceAfterMove = distance + MOVEMENT_UNIT;
         carNamesAndDistanceMap.set(carName, distanceAfterMove);
       }
     }
@@ -72,7 +85,7 @@ class App {
       this.move(this.carNamesAndDistanceMap);
     }
 
-    const winners = this.getWinners().join(', ');
+    const winners = this.getWinners().join(WINNERS_OUTPUT_SEPARATOR);
 
     Console.print(`${RESULT.WINNERS} ${winners}`);
   }

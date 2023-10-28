@@ -1,3 +1,4 @@
+import { CAR_NAME_INPUT_SEPARATOR, MAX_LENGTH_FOR_CAR_NAME } from './data.js';
 import { ERROR } from './messages.js';
 
 function isEveryCarNamesUnique(carNamesArray) {
@@ -11,14 +12,15 @@ function isSpace(carName) {
 }
 
 function isValidCarNames(carNamesString) {
-  const carNamesArray = carNamesString.split(',');
+  const carNamesArray = carNamesString.split(CAR_NAME_INPUT_SEPARATOR);
 
   for (const carName of carNamesArray) {
     if (isSpace(carName)) {
       throw new Error(ERROR.INVALID_NAME);
     }
 
-    if (carName.length > 5) throw new Error(ERROR.TOO_LONG_NAME);
+    if (carName.length > MAX_LENGTH_FOR_CAR_NAME)
+      throw new Error(ERROR.TOO_LONG_NAME);
   }
 
   if (!isEveryCarNamesUnique(carNamesArray)) {
