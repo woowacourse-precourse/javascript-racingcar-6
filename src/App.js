@@ -1,5 +1,5 @@
 import { Console, Random } from '@woowacourse/mission-utils';
-import { validate, inputCarRegex, inputNumber } from './validate.js';
+import { validate, inputCarRegex, inputNumberRegex } from './validate.js';
 
 class App {
   async play() {
@@ -12,7 +12,7 @@ class App {
 
     Console.print('시도할 횟수는 몇 회인가요?');
     const retryInput = (await Console.readLineAsync('')).trim();
-    if (!validate(retryInput, inputNumber)) {
+    if (!validate(retryInput, inputNumberRegex)) {
       throw new Error('[ERROR] 입력이 잘못된 형식입니다.');
     }
     const retry = Number(retryInput);
