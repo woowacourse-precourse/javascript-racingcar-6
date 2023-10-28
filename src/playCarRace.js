@@ -5,28 +5,29 @@ import { Console } from '@woowacourse/mission-utils';
 export function playCarRace(userNameArr, userTrialFrequency) {
 	Console.print(RESULT.GAME_PROGRESS);
 	const playerScore = {};
+	const gameResult = {};
 	setPlayerScore(userNameArr, playerScore);
+	console.log('player score', playerScore);
 	repeatCycle(userNameArr, userTrialFrequency, playerScore);
-	const gameResult = setGameResult(playerScore);
+	setGameResult(playerScore, gameResult);
 	return gameResult;
 }
 
 function setPlayerScore(userNameArr, playerScore) {
-	userNameArr.forEach(async (userName) => {
-		Object.defineProperty(playerScore, `${userName}`, {
-			value: '',
-			writable: true,
-		});
+	userNameArr.forEach((userName) => {
+		playerScore[userName] = '';
 	});
+	console.log('forEach:', playerScore);
+	return;
 }
-function repeatCycle(userTrialFrequency, userNameArr, score) {
-	for (let i = 0; i < userTrialFrequency; i++) {
-		userNameArr.forEach(async (userName) => {
-			const randomNumber = await getRandomNumber();
+function repeatCycle(userNameArr, userTrialFrequency, playerScore) {
+	for (let i = 1; i <= userTrialFrequency; i++) {
+		userNameArr.forEach((userName) => {
+			const randomNumber = getRandomNumber();
 			if (moveForward(randomNumber)) {
-				score[userName] += '-';
-			}
-			Console.print(`${userName} : ${score[userName]}`);
+				playerScore[userName] += '-';
+			} 
+			Console.print(`${userName} : ${playerScore[userName]}`);
 		});
 	}
 }
@@ -36,13 +37,9 @@ function moveForward(randomNumber) {
 	}
 	return false;
 }
-function setGameResult(playerScore) {
-	const gameResult = {};
-	for (const userName in playerScore) {
-		Object.defineProperty(gameResult, userName, {
-			value: playerScore[userName].length,
-			writable: true,
-		});
+function setGameResult(playerScore, gameResult) {
+	for (let userName in playerScore) {
+		gameResult[userName] = playerScore[userName].length;
+		console.log('game result:', gameResult);
 	}
-	return gameResult;
 }

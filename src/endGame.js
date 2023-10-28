@@ -4,24 +4,24 @@ import { Console } from '@woowacourse/mission-utils';
 export function endGame(gameResult) {
 	const winnerArr = compareGameResult(gameResult);
 	reportWinner(winnerArr);
+	return;
 }
 
 function compareGameResult(gameResult) {
 	let winnerArr = [];
 	let maxScore = 0;
-	for (user in gameResult) {
+	for (let user in gameResult) {
 		winnerArr.push(user);
-		if (gameResult[user] > maxScore) {
+		if (gameResult[user] >= maxScore) {
 			maxScore = gameResult[user];
 		} else {
-			winner.pop();
+			winnerArr.pop();
 		}
 	}
+	console.log('winnerArr:', winnerArr);
 	return winnerArr;
 }
 function reportWinner(winnerArr) {
-	const winner = winnerArr.join(' ,');
+	const winner = winnerArr.join(', ');
 	Console.print(RESULT.FINAL_WINNER + winner);
 }
-
-
