@@ -34,7 +34,7 @@ export function checkTryNumber(number) {
   if (number === '') {
     return new Error(ERROR_MESSAGE.NO_NUMBER);
   }
-  if (REG_NUMBER.test(parseInt(number))) {
+  if (REG_NUMBER.test(Number(number))) {
     return new Error(ERROR_MESSAGE.NOT_NUMBER_ERROR);
   }
   return;
