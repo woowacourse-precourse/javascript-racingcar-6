@@ -1,6 +1,5 @@
 import { Console, Random } from "@woowacourse/mission-utils";
 import { GAMEMSG } from "../constants/message.js";
-import { GMAEVALIDATION } from "../constants/validation.js";
 import {
   getMaxMove,
   getRacingWinList,
