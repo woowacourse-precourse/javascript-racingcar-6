@@ -85,11 +85,6 @@ export default class App {
   }
 
   getMaxDistance() {
-    let maxDistance = 0;
-    for (let i = 0; i < this.racingCars.length; i += 1) {
-      const currentDistance = this.racingCars[i].distance;
-      if (currentDistance > maxDistance) maxDistance = currentDistance;
-    }
-    return maxDistance;
+    return this.racingCars.reduce((max, { distance }) => Math.max(max, distance), 0);
   }
 }
