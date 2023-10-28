@@ -3,8 +3,9 @@ import Controller from "./Controller.js";
 
 class App {
     async play() {
-        Data.input.player = await Controller.getPlayer();
-        Data.input.number = await Controller.getNumber();
+        Data.input.player = await Controller.setPlayer();
+        Data.input.number = await Controller.setNumber();
+        Controller.raceProgress();
         console.log(Data);
     }
 }

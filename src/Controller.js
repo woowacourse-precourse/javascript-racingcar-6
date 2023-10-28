@@ -3,7 +3,7 @@ import Data from "./Data.js";
 
 class Controller {
     // 참가자 객체 반환 함수
-    static async getPlayer() {
+    static async setPlayer() {
         let player = await Console.readLineAsync(Data.MESSAGE.GET_PLAYER);
         // 공백 제거 및 배열로 분리
         player = player.split(",").map((value) => {
@@ -18,9 +18,18 @@ class Controller {
     }
 
     // 반복 횟수 반환 함수
-    static async getNumber() {
+    static async setNumber() {
         const NUMBER = await Console.readLineAsync(Data.MESSAGE.GET_NUMBER);
         return Number(NUMBER);
+    }
+
+    // 경기 진행 함수
+    static raceProgress() {
+        Object.keys(Data.input.player).forEach((key) => {
+            if (4 <= Random.pickNumberInRange(0, 9))
+                Data.input.player[key] += 1;
+        });
+        return;
     }
 }
 
