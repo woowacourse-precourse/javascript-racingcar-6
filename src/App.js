@@ -62,9 +62,9 @@ class App {
     const result = this.movement.map((move, index) => move.length - this.car[index].length);
     const max = Math.max(...result);
     const indexesOfMax = [];
-    lengthsOfMovement.forEach((value, index) => {
+    result.forEach((value, index) => {
         if (value === max) {
-            indexesOfMax.push(index);
+            result.push(index);
         }
     });
     return indexesOfMax;
