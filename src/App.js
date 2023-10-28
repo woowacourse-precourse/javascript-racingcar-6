@@ -40,10 +40,31 @@ function checkNumberValidation(count){
   }
 }
 
+function startRace(name, count){
+  const result = new Map();
+  name.forEach(string => result.set(string, ""));
+
+  while(count--){
+    for(const car of name){
+      decideForwardOrStop(car, result);
+    }
+  }
+}
+
+function decideForwardOrStop(car, result){
+  const number = MissionUtils.Random.pickNumberInRange(0, 9);
+  if(number >= 4){
+    const newValue = result.get(car) + "-";
+    result.set(car, newValue);
+  }
+}
+
 class App {
   async play() {
     const name = await getNameInput();
     const count = await getNumberInput();
+
+    startRace(name, count);
   }
 }
 
