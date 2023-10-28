@@ -6,6 +6,9 @@ class App {
         const NAMES = (await MissionUtils.Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"));
         const NAME_ARR = NAMES.split(',');
         const FORWARD_ARR = [...NAME_ARR].fill(0);
+        NAME_ARR.forEach(v => {
+            if (v.length >5)throw new Error("[ERROR] 이름 숫자는 5이하만 가능합니다.")
+        })
         const ROUND = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
         MissionUtils.Console.print("\n실행 결과");
         let cnt = 1;
