@@ -54,9 +54,8 @@ class App {
   async getNumberOfAttempts() {
     let input = await Console.readLineAsync(messageBeforeInput.attempts);
     let numberOfAttempts = parseInt(input);
-    if (this.checkValidNumberOfAttempts(numberOfAttempts)) {
-      this.numberOfAttempts = numberOfAttempts;
-    }
+    this.checkValidNumberOfAttempts(numberOfAttempts);
+    this.numberOfAttempts = numberOfAttempts;
   }
 
   moveCarForward(car) {
