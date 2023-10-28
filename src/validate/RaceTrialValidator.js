@@ -11,6 +11,9 @@ export default class RaceTrialValidator {
     if (this.isNotNumber(trial)) {
       throw new Error(ERROR_MESSAGE.notNumber);
     }
+    if (this.isNotNaturalNumber(trial)) {
+      throw new Error(ERROR_MESSAGE.notNaturalNumber);
+    }
   }
 
   static isEmptyInput(input) {
@@ -23,5 +26,9 @@ export default class RaceTrialValidator {
 
   static isNotNumber(trial) {
     return isNaN(trial) || trial.includes('.');
+  }
+
+  static isNotNaturalNumber(trial) {
+    return parseInt(trial) <= 0;
   }
 }

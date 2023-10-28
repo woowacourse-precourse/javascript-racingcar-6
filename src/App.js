@@ -1,6 +1,7 @@
 import { Console } from "@woowacourse/mission-utils";
 import { GAME_MESSAGE } from "./constants/Message";
 import CarNameValidator from "./validate/CarNameValidator";
+import RaceTrialValidator from "./validate/RaceTrialValidator"; 
 
 class App {
   async play() {
@@ -11,6 +12,8 @@ class App {
 
     Console.print(GAME_MESSAGE.inputNumber);
     const raceTrial = await Console.readLineAsync("");
+
+    RaceTrialValidator.validateTrial(raceTrial);
   }
 }
 
