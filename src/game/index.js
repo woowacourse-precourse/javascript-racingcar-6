@@ -40,5 +40,13 @@ export class RacingGame {
 
     if (num <= this.tryCount) await this.go(num + 1);
   }
+  async start() {
+    await this.initCars();
+    await this.initTryCount();
+
+    await this.go(1);
+
+    console.log(this.cars);
+  }
 
 }
