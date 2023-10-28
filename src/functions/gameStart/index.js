@@ -1,11 +1,23 @@
 import { Console } from '@woowacourse/mission-utils';
-import { MESSAGE } from '../../constants/message';
+import { ERROR_MESSAGE, MESSAGE } from '../../constants/message';
+
+const invalidCarName = carList => {
+  if (carList.length === 0) throw Error(ERROR_MESSAGE.carName.noInput);
+
+  carList.forEach(car => {
+    if (car.length > 5) throw Error(ERROR_MESSAGE.carName.tooLong);
+    if (car === '' || car === ' ') throw Error(ERROR_MESSAGE.carName.noInput);
+  });
+
+  if (carList.length > new Set(carList).length)
+    throw Error(ERROR_MESSAGE.carName.duplicate);
+};
 
 export const getCarName = async () => {
   const inputCarName = await Console.readLineAsync(MESSAGE.getCarName);
   const carList = inputCarName.split(',');
 
-  // TODO : 자동차 이름 유효검사
+  invalidCarName(carList);
 
   return carList;
 };
