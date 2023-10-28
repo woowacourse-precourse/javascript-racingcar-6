@@ -6,6 +6,7 @@ class App {
   running_race(cars, repetitions) {
     for(let i =0 ;i<repetitions;i++) {
       const moves = Random.pickUniqueNumbersInRange(1, 10, cars.len); 
+      cars.move_cars(moves);
     }
   }
 
