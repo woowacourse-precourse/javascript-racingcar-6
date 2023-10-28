@@ -13,6 +13,7 @@ class App {
 
       while (CNT>0) {
         const STEP = this.playGame(CAR_DICT);
+        CNT-=1
       }
     }else {
       throw new Error("[ERROR] 이름은 5글자 이하로 작성해주세요")
@@ -52,6 +53,11 @@ class App {
   generateRandomNumber() {
     const NUMBER = Random.pickNumberInRange(0,9);
     return NUMBER;
+  }
+  moveCar(carDict, car) {
+    carDict[car].push('-');
+    // console.log(car)
+    return carDict;
   }
 
 }
