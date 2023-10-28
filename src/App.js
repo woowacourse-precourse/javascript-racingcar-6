@@ -9,7 +9,11 @@ class App {
       const CAR_DICT = await this.setCarDict(CAR_INPUT);
       Console.print("시도할 횟수는 몇 회인가요?")
       let CNT = await this.getGameCnt();
+      Console.print('\n실행 결과');
 
+      while (CNT>0) {
+        const STEP = this.playGame(CAR_DICT);
+      }
     }else {
       throw new Error("[ERROR] 이름은 5글자 이하로 작성해주세요")
     }
@@ -36,6 +40,18 @@ class App {
   }
   async getGameCnt() {
     return await Console.readLineAsync("")
+  }
+  playGame(Car_Dict) {
+    for(const car in Car_Dict) {
+      if (this.generateRandomNumber() >= 4) {
+        this.moveCar(Car_Dict,car);
+      }
+    }
+    return Car_Dict
+  }
+  generateRandomNumber() {
+    const NUMBER = Random.pickNumberInRange(0,9);
+    return NUMBER;
   }
 
 }
