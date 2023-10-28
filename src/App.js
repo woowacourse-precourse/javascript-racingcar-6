@@ -22,8 +22,29 @@ class App {
     return carNames;
   }
 
+  /**
+   * 게임 시도 횟수를 입력받아 반환
+   * @returns 게임 시도 횟수
+   */
+  async getInputCount() {
+    const input = await MissionUtils.Console.readLineAsync(
+      "시도할 횟수는 몇 회인가요?\n"
+    );
+
+    //에러처리
+    if (input.match(/\D/g)) {
+      throw new Error("[ERROR]횟수는 숫자여야합니다.");
+    }
+
+    return input;
+  }
+
   async play() {
     const carNames = await this.getInputCarNames();
+    const count = await this.getInputCount();
+
+    //console.log(carNames);
+    //console.log(count);
   }
 }
 
