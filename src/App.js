@@ -13,15 +13,21 @@ class App {
   async play() {
     const carNamesArr = await this.getValidCarNames(); // 자동차 이름 묻기
     this.createCars(carNamesArr); // 자동차 생성하기
+    await this.getValidCount(); // 시도횟수 묻기
   }
 
   async getValidCarNames() {
-    const input = await Console.readLineAsync(Message.INFO.START);
+    const input = await Console.readLineAsync(Message.INFO.ASK_CAR_NAMES);
     return InputValidator.CarNames(input);
   }
 
   createCars(carNamesArr) {
     this.cars = carNamesArr.map((carName) => new Car(carName));
+  }
+
+  async getValidCount() {
+    const input = await Console.readLineAsync(Message.INFO.ASK_TRY_COUNT);
+    this.tryCount = InputValidator.tryCount(input);
   }
 }
 

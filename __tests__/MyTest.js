@@ -42,7 +42,7 @@ describe("예외처리", () => {
   );
 
   test.each([[["pobi,,javaji"]], [["pobi east,,jun"]]])(
-    ",가 연속으로 중복된 경우",
+    "이름에서 ,가 연속으로 중복된 경우",
     async (inputs) => {
       // given
       mockQuestions(inputs);
@@ -72,4 +72,13 @@ describe("예외처리", () => {
       );
     }
   );
+
+  test.each([
+    [["pobi,java"], ["a"]],
+    [["asd,fgh,sdf"], ["13$"]],
+  ])("실행할 횟수가 숫자가 아닌 경우", async (inputs) => {
+    mockQuestions(inputs);
+    const app = new App();
+    await expect(app.play()).rejects.toThrow(Message.ERROR.COUNT_SHOULD_BE_NUM);
+  });
 });

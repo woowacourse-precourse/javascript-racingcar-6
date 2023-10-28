@@ -20,6 +20,12 @@ const InputValidator = {
     }
     return carNames;
   },
+  tryCount(input) {
+    if (Constant.NON_NUM_REGEX.test(input)) {
+      throw new Error(Message.ERROR.COUNT_SHOULD_BE_NUM);
+    }
+    return Number(input);
+  },
 };
 
 export default InputValidator;
