@@ -24,12 +24,9 @@ export class RacingGame {
     this.tryCount = +count;
   }
 
-
-
   async go(num) {
-    
     await this.moveCar();
-    await print('');
+    await print("");
 
     if (num < this.tryCount) await this.go(num + 1);
   }
@@ -42,7 +39,7 @@ export class RacingGame {
     await this.printWinner();
   }
 
-  async moveCar(){
+  async moveCar() {
     await Object.keys(this.cars).forEach(async (car) => {
       const move = await isMove();
       if (move) {
@@ -53,13 +50,22 @@ export class RacingGame {
   }
 
   async printResultMove(car) {
-    let progress = '';
-    for(let i = 0 ; i < this.cars[car] ; i++){
-      progress += '-';
+    let progress = "";
+    for (let i = 0; i < this.cars[car]; i++) {
+      progress += "-";
     }
-    
+
     return print(`${car} : ${progress}`);
   }
 
-  async printWinner() {}
+  async printWinner() {
+    const HIGHEST_SCORE = Object.values(this.cars).sort((a, b) => b - a)[0];
+
+    let winner = [];
+    for (let car in this.cars) {
+      if (this.cars[car] === HIGHEST_SCORE) winner.push(car);
+    }
+
+    print(`최종 우승자 : ${winner.join(", ")}`);
+  }
 }
