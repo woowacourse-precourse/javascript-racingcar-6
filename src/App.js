@@ -10,10 +10,17 @@ class App {
 
   async play() {
     await this.getUserCarListInput();
-    await this.getUserWantMoveCount();
-    this.makeRandomNumber();
     await this.makeForCheckGameStatus(this.carList);
+    await this.getUserWantMoveCount();
+
+    // 사용자가 차들 이름을 입력한 후 몇번의 시도를 할 지 입력하면 그만큼 게임이 돌아가야함
+    // 사용자의 도전 횟수 입력 -> 횟수만큼 반복하는 코드 -> 횟수별 전진 정지 판별 후 게임 상태 업데이트
+    // 최종 우승자 출력
+    this.makeRandomNumber();
   }
+
+  
+
 
   // 전진 또는 정지를 위한 랜덤 넘버 생성
   makeRandomNumber(){
@@ -26,10 +33,7 @@ class App {
     this.gameStatus = Array.from({ length: userinput.length }, () => []);
     for (let i = 0; i < this.gameStatus.length; i++) {
       this.gameStatus[i].push(`${userinput[i]} :`);
-      console.log(this.gameStatus[i]);
-      console.log(userinput[i]);
     }
-    console.log(this.gameStatus);
     return this.gameStatus;
   }
 
