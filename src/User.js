@@ -6,6 +6,12 @@ class User {
 
     return cars.split(',').map(String);
   }
+
+  async inputTryCount() {
+    const tryCount = await Console.readLineAsync('');
+
+    return tryCount;
+  }
 }
 
 export default User;

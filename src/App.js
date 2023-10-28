@@ -8,6 +8,10 @@ class App {
 
     const user = new User();
     const cars = await user.inputCarName();
+
+    Console.print(GAME_MESSAGE.inputTry);
+
+    const tryCount = await user.inputTryCount();
   }
 }
 
