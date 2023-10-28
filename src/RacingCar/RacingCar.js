@@ -46,7 +46,7 @@ class RacingCar {
 
   convertDistanceToString(distance) {
     let str = "";
-    for (let j = 0; j < car.distance; j++) {
+    for (let j = 0; j < distance; j++) {
       str += "-";
     }
 
