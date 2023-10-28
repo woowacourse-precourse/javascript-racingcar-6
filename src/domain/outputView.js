@@ -11,6 +11,7 @@ import {
   winnerIsManyPrint,
   winnerIsOnePrint,
 } from './print.js';
+import { TEXT } from '../constants/constant.js';
 
 export const racingProgress = async (carNamesArray, tryNumber) => {
   const RESULT = [];
@@ -21,8 +22,8 @@ export const racingProgress = async (carNamesArray, tryNumber) => {
     RESULT.push(await makeRandomNumberAndJudge(tryNumber));
   }
 
-  MissionUtils.Console.print('');
-  MissionUtils.Console.print('실행 결과');
+  MissionUtils.Console.print(TEXT.ENTER);
+  MissionUtils.Console.print(TEXT.RACING_RESULT);
   for (let i = 0; i < tryNumber; i++) {
     for (let j = 0; j < RESULT.length; j++) {
       resultJudge(RESULT, countArr, i, j);

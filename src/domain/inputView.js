@@ -5,12 +5,11 @@ import {
   userInputCarNameLengthError,
   userInputTryNumberError,
 } from './Error.js';
+import { TEXT } from '../constants/constant.js';
 
 export const getCarName = async () => {
   let CAR_NAMES_ARRAY = [];
-  const CAR_NAMES = await MissionUtils.Console.readLineAsync(
-    '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
-  );
+  const CAR_NAMES = await MissionUtils.Console.readLineAsync(TEXT.GET_CAR_NAMES);
   userInputCarNameFormError(CAR_NAMES);
   CAR_NAMES_ARRAY = stringToArray(CAR_NAMES);
   userInputCarNameLengthError(CAR_NAMES_ARRAY);
@@ -18,7 +17,7 @@ export const getCarName = async () => {
 };
 
 export const getTryNumber = async (carNames) => {
-  const USER_TRY_NUMBER = await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+  const USER_TRY_NUMBER = await MissionUtils.Console.readLineAsync(TEXT.GET_TRY_NUMBER);
   userInputTryNumberError(USER_TRY_NUMBER);
   await racingProgress(carNames, USER_TRY_NUMBER);
 };

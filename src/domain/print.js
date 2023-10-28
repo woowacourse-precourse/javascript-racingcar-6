@@ -1,12 +1,13 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import { howManyFirstCars, makeWinnerArrayAndJoin } from './controller.js';
+import { TEXT } from '../constants/constant.js';
 
 export const racingProgressPrint = (carNamesArray, countArr, j) => {
   MissionUtils.Console.print(`${carNamesArray[j]} : ${countArr[j].join('').trim()}`);
 };
 
 export const winnerIsOnePrint = (result) => {
-  MissionUtils.Console.print(`최종 우승자 : ${result[0][0]}`);
+  MissionUtils.Console.print(TEXT.FINAL_WINNER + result[0][0]);
   return;
 };
 
@@ -14,7 +15,7 @@ export const winnerIsManyPrint = (result) => {
   let winners = [];
   makeWinnerArrayAndJoin(winners, result, result.length - 1);
   winners = winners.join(', ');
-  MissionUtils.Console.print(`최종 우승자 : ${winners}`);
+  MissionUtils.Console.print(TEXT.FINAL_WINNER + winners);
   return;
 };
 
@@ -24,6 +25,6 @@ export const winnerIsAllPrint = (result) => {
   howManyFirstCars(result, k);
   makeWinnerArrayAndJoin(winners, result, k);
   winners = winners.join(', ');
-  MissionUtils.Console.print(`최종 우승자 : ${winners}`);
+  MissionUtils.Console.print(TEXT.FINAL_WINNER + winners);
   return;
 };
