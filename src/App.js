@@ -72,19 +72,19 @@ class App {
   }
 
   getLongestDistance() {
-    let winnerDistance = 0;
+    let longestDistance = 0;
     for (let distance of this.cars.values()) {
-      if (distance.length >= winnerDistance) {
-        winnerDistance = distance.length;
+      if (distance.length >= longestDistance) {
+        longestDistance = distance.length;
       }
     }
-    return winnerDistance;
+    return longestDistance;
   }
 
   selectWinners() {
-    const winnerDistance = this.getLongestDistance();
+    const longestDistance = this.getLongestDistance();
     this.cars.forEach((distance, car) => {
-      if (distance.length === winnerDistance) {
+      if (distance.length === longestDistance) {
         this.winners.push(car);
       }
     });
