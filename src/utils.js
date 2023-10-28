@@ -33,7 +33,10 @@ function isValidCarNames(carNamesString) {
 function isValidMoveChanceCount(moveChanceCountString) {
   const moveChanceCountNumber = Number(moveChanceCountString);
 
-  if (Number.isNaN(moveChanceCountNumber)) {
+  if (
+    moveChanceCountString.trim().length === 0 ||
+    Number.isNaN(moveChanceCountNumber)
+  ) {
     throw new Error(ERROR.NOT_NUMBER);
   }
 
