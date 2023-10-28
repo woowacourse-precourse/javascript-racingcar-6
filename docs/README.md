@@ -3,7 +3,7 @@
 ## 🚀 개선된 점
 
 - 개발 환경과 테스팅 환경 동기화를 위한 요소 확장합니다.
-  - 요구사항이 적용된 `.eslintrc.js`와 `.prettierrc` 설정을 `문서로 제공(docs/STYLE.md)`하여 협업 환경에서 동일한 코드컨벤션을 제공합니다.
+  - 요구사항이 적용된 `.eslintrc.js`와 `.prettierrc` 설정을 `문서로 제공(docs/CODE_CONVENTION.md)`하여 협업 환경에서 동일한 코드컨벤션을 제공합니다.
   - `.eslintrc.js`에서 testCode의 `max-depth` 제한을 해제하여 도메인별 자세한 테스트를 가능케합니다.
   - 추가된 요구사항 중 코드 컨벤션과 관련된 내용을 rules에 추가하여 관리합니다.
 - 문제를 분석하고, 작성한 기능 명세서를 작성하는 코드를 작성, 테스트 진행 및 커밋하는 것에 초점을 맞춥니다.
@@ -40,7 +40,7 @@
 ## Convention(Code, Commit)
 
 - DO : 기능명세서 단위로 commit을 진행한다.
-- [ ] DO NOT : indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다.
+- [x] DO NOT : indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다.
 
 ---
 
