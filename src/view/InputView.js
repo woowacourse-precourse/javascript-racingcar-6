@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import Validator from '../utils/validator';
+import Validator from '../utils/validator/index.js';
 
 const InputView = {
   async readRacingCarNames() {
