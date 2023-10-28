@@ -6,7 +6,7 @@ class RacingGame {
     return Number(raceTimes);
   }
 
-  async raceCars(carsArray) {
+  async playRacing(carsArray) {
     carsArray.forEach((car) => car.move());
   }
 }
