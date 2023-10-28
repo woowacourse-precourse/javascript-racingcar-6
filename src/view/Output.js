@@ -12,6 +12,10 @@ class Output {
     }
     Console.print(``);
   }
+
+  finalResult(finalWinner) {
+    Console.print(`${MESSAGE.finalMessage}${finalWinner.join(`, `)}`);
+  }
 }
 
 export default Output;

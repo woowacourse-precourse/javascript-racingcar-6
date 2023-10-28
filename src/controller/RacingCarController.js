@@ -11,7 +11,6 @@ class RacingCarController {
   constructor() {
     this.input = new Input();
     this.output = new Output();
-    // this.randomMoving = new RandomCarMoving();
     this.carMoving = new CarMoving();
     this.carListCheck = new CarListCheck();
     this.tryNumberCheck = new TryNumberCheck();
@@ -23,6 +22,7 @@ class RacingCarController {
       this.tryCount = await this.setTryNumber();
       this.winCount = Array.from({ length: this.carNames.length }, () => "");
       await this.randomStart();
+      await this.printFinalResult(this.finalWinnerCount());
     } catch (error) {
       throw new Error(error);
     }
@@ -56,6 +56,23 @@ class RacingCarController {
 
   printResultControll(carNames, winCount) {
     this.output.eachRacingResult(carNames, winCount);
+  }
+
+  finalWinnerCount() {
+    let totalWinnerCount = this.winCount.map((x) => x.length);
+    let maxWinnerLength = Math.max(...totalWinnerCount);
+    let idx = totalWinnerCount.indexOf(maxWinnerLength);
+    let finalWinner = [];
+
+    while (idx !== -1) {
+      finalWinner.push(this.carNames[idx]);
+      idx = totalWinnerCount.indexOf(maxWinnerLength, idx + 1);
+    }
+    return finalWinner;
+  }
+
+  printFinalResult(finalWinner) {
+    this.output.finalResult(finalWinner);
   }
 }
 
