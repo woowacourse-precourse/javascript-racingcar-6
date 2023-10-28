@@ -1,7 +1,7 @@
 import Constant from "./Constant.js";
 import Message from "./Message.js";
 
-const CheckInputValidation = {
+const InputValidator = {
   CarNames(input) {
     // 이름을 , 로 구분 안 한 경우
     if (!input.includes(Constant.COMMA)) {
@@ -22,4 +22,4 @@ const CheckInputValidation = {
   },
 };
 
-export default CheckInputValidation;
+export default InputValidator;

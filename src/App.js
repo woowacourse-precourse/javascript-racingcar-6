@@ -1,6 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
 import Message from "./util/Message.js";
-import CheckInputValidation from "./util/CheckInputValidation.js";
+import InputValidator from "./util/InputValidator.js";
 
 class App {
   constructor() {
@@ -15,7 +15,7 @@ class App {
 
   async getValidCarNames() {
     const input = await Console.readLineAsync(Message.INFO.START);
-    return CheckInputValidation.CarNames(input);
+    return InputValidator.CarNames(input);
   }
 }
 
