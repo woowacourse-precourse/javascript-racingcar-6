@@ -13,11 +13,7 @@ class App {
   }
 
   async play() {
-    const carNameString = await InputView.getCarNames();
-    const carNames = carNameString.split(',');
-    Validation.validateCarNames(carNames);
-
-    this.#refree.registerCars(carNames);
+    await this.#readCarNames();
 
     const totalRoundsString = await InputView.getTotalRounds();
     Validation.validateTotalRounds(totalRoundsString);
@@ -31,6 +27,14 @@ class App {
     });
     const winner = this.#refree.getWinner();
     OutputView.printWinner(winner);
+  }
+
+  async #readCarNames() {
+    const carNameString = await InputView.getCarNames();
+    const carNames = carNameString.split(',');
+    Validation.validateCarNames(carNames);
+
+    this.#refree.registerCars(carNames);
   }
 }
 
