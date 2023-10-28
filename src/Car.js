@@ -1,10 +1,10 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
-class Car {
+class Cars {
     constructor(names) {
         this.number = names.length; // 자동차의 개수
         this.names = names;
-        this.distances = new Array(number).fill(0);
+        this.distances = new Array(this.number).fill(0);
         this.winners = [];
     }
 
@@ -26,7 +26,7 @@ class Car {
 
     getWinners() {
         const maxDistance = Math.max(...this.distances);
-        
+
         for (var i = 0; i < this.number; i++) {
             if (this.distances[i] == maxDistance)
                 this.winners.push(this.names[i]);
@@ -34,4 +34,4 @@ class Car {
     }
 }
 
-export default Car;
+export default Cars;

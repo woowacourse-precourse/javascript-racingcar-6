@@ -14,6 +14,7 @@ class OutputView {
             const line = this.getLine(distance[i]);
             Console.print(`${name[i]} : ${line}`);
         }
+        Console.print('');
     }
 
     static printWinners(winners) {
