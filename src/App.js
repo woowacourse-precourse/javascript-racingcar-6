@@ -1,13 +1,15 @@
-import { Console, MissionUtils } from "@woowacourse/mission-utils";
+import { Console, MissionUtils } from '@woowacourse/mission-utils';
 
 class App {
   start() {
-    Console.print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분")
+    Console.print(
+      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분',
+    );
   }
 
   async getCarNames() {
     const names = await Console.readLineAsync();
-    const carNamesArray = names.split(',').map(name => name.trim());
+    const carNamesArray = names.split(',').map((name) => name.trim());
     return carNamesArray;
   }
 
@@ -31,7 +33,7 @@ class App {
   }
 
   async tryCounts() {
-    Console.print("시도할 횟수는 몇 회인가요?");
+    Console.print('시도할 횟수는 몇 회인가요?');
     const counts = parseInt(await Console.readLineAsync());
     if (isNaN(counts) || counts <= 0) {
       throw new Error('[ERROR] 올바른 값을 입력하세요');
@@ -59,8 +61,6 @@ class App {
     });
   }
 
-
-
   async play() {
     this.start();
     try {
@@ -82,14 +82,15 @@ class App {
 
       //우승자 찾기
       const winner = Math.max(...Object.values(carPositions));
-      const jointWinner = Object.keys(carPositions).filter((name) => carPositions[name] === winner);
+      const jointWinner = Object.keys(carPositions).filter(
+        (name) => carPositions[name] === winner,
+      );
 
       if (jointWinner.length > 1) {
-        Console.print(`공동 우승자: ${jointWinner.join(', ')}`);
+        Console.print(`최종 우승자: ${jointWinner.join(', ')}`);
       } else {
-        Console.print(`우승자: ${jointWinner[0]}`);
+        Console.print(`최종 우승자: ${jointWinner[0]}`);
       }
-
     } catch (error) {
       throw new Error(error.message);
     }
