@@ -1,4 +1,6 @@
-import racingCarGame from './game/index.js';
+import printMsg from '../utils/printMsg';
+import racingCarGame from './game';
+import MESSAGE from './game/game.message';
 
 class App {
   constructor() {
@@ -16,6 +18,7 @@ class App {
   async play() {
     await this.ready();
 
+    printMsg(MESSAGE.start);
     for (let turn = 0; turn < this.moveCount; turn += 1) {
       const turnResult = racingCarGame.runRacingTurn(this.racingStatus);
       this.racingStatus = turnResult;
