@@ -21,15 +21,10 @@ const printResult = async (cars, trials) => {
       if (randomNumber >= 4) {
         map.set(cars[j], map.get(cars[j]) + 1);
       }
+      Console.print(`${cars[j]} : `);
+      Console.print("-".repeat(map.get(cars[j])));
     }
   }
-
-  for (let i = 0; i < trials; i++) {
-    for (let j = 0; j < cars.length; j++) {}
-  }
-
-  //   Console.print(`${cars[j]} : `);
-  //   Console.print("-" * map.get(cars[j]));
 };
 
 const inputCarName = async () => {
@@ -41,6 +36,11 @@ const inputCarName = async () => {
   );
   // 자동차 이름 5자 이상일 경우 예외처리
   const convertToArr = input.split(",");
+  for (let i = 0; i < convertToArr.length; i++) {
+    if (convertToArr[i].length > 4) {
+      throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
+    }
+  }
   return convertToArr;
 };
 
