@@ -1,4 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
+import { messages } from "./Message.js";
+import { checkCarNameLength, checkCountType } from "./Validation.js";
 import Car from "./Car.js";
 
 class App {
@@ -9,17 +11,12 @@ class App {
    * @returns 자동차 이름을 담은 배열
    */
   async getInputCarNames() {
-    const input = await MissionUtils.Console.readLineAsync(
-      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
+    const inputTmp = await MissionUtils.Console.readLineAsync(
+      messages.INPUT_CARNAMES
     );
-    const carNames = input.split(",");
-
-    //에러처리
-    carNames.forEach((carName) => {
-      if (carName.length > 5)
-        throw new Error("[ERROR] 자동차 이름은 5자이하여야 합니다.");
-    });
-
+    const carNames = inputTmp.split(",");
+    //예외처리
+    checkCarNameLength(carNames);
     return carNames;
   }
 
@@ -28,16 +25,12 @@ class App {
    * @returns 게임 시도 횟수
    */
   async getInputCount() {
-    const input = await MissionUtils.Console.readLineAsync(
-      "시도할 횟수는 몇 회인가요?\n"
+    const count = await MissionUtils.Console.readLineAsync(
+      messages.INPUT_COUNT
     );
-
-    //에러처리
-    if (input.match(/\D/g)) {
-      throw new Error("[ERROR]횟수는 숫자여야합니다.");
-    }
-
-    return input;
+    //예외처리
+    checkCountType(count);
+    return count;
   }
 
   /**
@@ -79,7 +72,7 @@ class App {
     });
     const count = await this.getInputCount();
 
-    MissionUtils.Console.print("\n실행결과");
+    MissionUtils.Console.print(messages.PRINT_RESULT);
     for (let i = 0; i < parseInt(count); i++) {
       cars.forEach((car, index) => {
         if (this.getRandomNumber()) car.forward();
@@ -88,7 +81,7 @@ class App {
     }
 
     const winners = this.checkWinner(cars);
-    MissionUtils.Console.print("최종 우승자: " + winners.join(", "));
+    MissionUtils.Console.print(messages.PRINT_WINNER + winners.join(", "));
   }
 }
 
