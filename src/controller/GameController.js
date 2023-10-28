@@ -28,10 +28,17 @@ export default class GameController {
     this.model.setTryCount(Number(tryCount));
 
     const roofCount = this.model.getTryCount();
+    this.view.print(MESSAGE.RESULT);
     for (let i = 0; i < roofCount; i++) {
       this.model.setMoveCount();
-      // this.view.printResult();
+      const players = this.model.getPlayers();
+      players.forEach((player) => {
+        this.view.printResult(player);
+      });
+      this.view.print();
     }
+    const winners = this.model.getWinner();
+    this.view.printWinner(winners);
   }
 
   splitPlayerNames(names) {
