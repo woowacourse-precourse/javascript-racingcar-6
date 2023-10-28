@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import { MESSAGE } from './constants.js';
+import { MESSAGE } from './Constant.js';
 
 class InputValue {
   static async carName() {
