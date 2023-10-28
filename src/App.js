@@ -1,23 +1,20 @@
 import { Console, MissionUtils } from '@woowacourse/mission-utils';
 import Car from './Car.js';
 import MoveCount from './MoveCount.js';
+import InputCars from './InputCars.js';
 
 class App {
   #carNames = [];
   #moveCount;
   #resultObject = {};
+
   async play() {
     await this.setCarNames();
   }
 
   async setCarNames() {
-    const inputArray = await Console.readLineAsync(
-      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
-    );
-    inputArray.split(',').forEach(name => {
-      const car = new Car(name);
-      this.#carNames.push(car);
-    });
+    const inputCars = new InputCars();
+    this.#carNames = await inputCars.createCars();
     await this.movementCount();
   }
 
@@ -61,7 +58,7 @@ class App {
     });
     const max = this.findMaxValue(this.#resultObject);
     const raceWinners = this.findWinner(this.#resultObject, max);
-    Console.print('최종 우승자 : ' + raceWinners.map(name => name).join(','));
+    Console.print('최종 우승자 : ' + raceWinners.map(name => name).join(', '));
   }
 
   findMaxValue(result) {
