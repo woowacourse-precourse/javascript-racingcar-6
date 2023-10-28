@@ -9,10 +9,10 @@ class Refree {
   }
 
   moveCars() {
-    this.#carRegistry.forEach((car) => {
+    this.#carRegistry.forEach((carInstance) => {
       const randomNumber = Random.pickNumberInRange(0, 9);
-      if (randomNumber >= 4) car.move(1);
-      if (randomNumber < 4) car.stop();
+      if (randomNumber >= 4) carInstance.move(1);
+      if (randomNumber < 4) carInstance.stop();
     });
   }
 
