@@ -51,10 +51,14 @@ class App {
     this.cars.set(car, nextDistance);
   }
 
+  canMoveCarForward(randomNum) {
+    return randomNum >= numberStay;
+  }
+
   doAttempt() {
     for (let car of this.cars.keys()) {
       let randomNum = Random.pickNumberInRange(0, 9);
-      if (randomNum >= numberStay) {
+      if (canMoveCarForward(randomNum)) {
         this.moveCarForward(car);
       }
     }
