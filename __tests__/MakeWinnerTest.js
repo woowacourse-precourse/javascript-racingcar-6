@@ -14,4 +14,18 @@ describe('MakeWinner Test', () => {
     ];
     expect(makeWinner(cars)).toBe('pobi');
   });
+
+  test('중복 우승자 생성', () => {
+    const cars = [
+      {
+        name: 'pobi',
+        moveCounts: 2,
+      },
+      {
+        name: 'ukgi',
+        moveCounts: 2,
+      },
+    ];
+    expect(makeWinner(cars)).toBe('pobi,ukgi');
+  });
 });
