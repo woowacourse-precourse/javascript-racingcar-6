@@ -1,12 +1,18 @@
 class RacingCar {
   #name;
   #displacement;
-  #dice;
 
   constructor(name) {
     this.#name = name;
     this.#displacement = 0;
-    this.#dice = 0;
+  }
+
+  advance() {
+    const randomNumer = MissionUtils.Random.pickNumberInRange(0, 9);
+    
+    if (randomNumer >= 4) {
+      this.#displacement += 1;
+    }
   }
 }
 

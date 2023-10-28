@@ -21,6 +21,11 @@ class RacingController {
   async run() {
     await this.#createRacingCars()
     this.#inputRetryCount();
+    for (let counter = 0; counter < this.#retryCount ; counter++) {
+      this.#racingCarArray.forEach((car) => {
+        car.advance()
+      })
+    }
   }
 
   async #createRacingCars() {
@@ -42,7 +47,6 @@ class RacingController {
   #inputRetryCount() {
     this.#retryCount = this.#inputView.readRetryCount();
   }
-
 }
 
 export default RacingController;
