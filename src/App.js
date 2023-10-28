@@ -1,12 +1,13 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
+import Car from "./Car.js";
 
 class App {
   constructor() {
     this.ERROR = {
-      LENGTH : '[ERROR] 이름은 5자 이내로 작성해주세요.',
-      INCORRECT_FORMAT :'[ERROR] 이름을 쉼표(,)로 구분해주세요.',
-      INCORRECT_TPYE : '[ERROR] 잘못된 형식입니다. 숫자를 입력해주세요.'
-    }
+      LENGTH: "[ERROR] 이름은 5자 이내로 작성해주세요.",
+      INCORRECT_FORMAT: "[ERROR] 이름을 쉼표(,)로 구분해주세요.",
+      INCORRECT_TPYE: "[ERROR] 잘못된 형식입니다. 숫자를 입력해주세요.",
+    };
   }
 
   getRandomNumber() {
@@ -17,8 +18,18 @@ class App {
     throw new Error(errorMessage);
   }
 
+  printRace(cars) {
+    for (let car of cars) {
+      const randomNumber = this.getRandomNumber();
+
+      if (randomNumber > 3) car.moveForward();
+      car.displayMovement();
+    }
+  }
+
   getMoveCount() {
-    const moveCount = MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?\n')
+    const moveCount =
+      MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
 
     return moveCount;
   }
@@ -26,11 +37,24 @@ class App {
   async initializeCars() {
     const pattern = /[.\/-]/;
     const carNames = await this.getCarName();
-    const carArray = carNames.split(",");
-    const isCorrectName = carArray.every((value) => value.length < 5);
+    const readyCarNames = carNames.split(",");
+    const isCorrectName = readyCarNames.every((value) => value.length < 5);
 
-    if(pattern.test(carNames)) this.printErrorMessage(this.ERROR.INCORRECT_FORMAT);
-    if(!isCorrectName) this.printErrorMessage(this.ERROR.LENGTH);
+    if (pattern.test(carNames))
+      this.printErrorMessage(this.ERROR.INCORRECT_FORMAT);
+    if (!isCorrectName) this.printErrorMessage(this.ERROR.LENGTH);
+
+    return readyCarNames;
+  }
+
+  setCars(carNames) {
+    const cars = [];
+
+    for (let i = 0; i < carNames.length; i++) {
+      cars.push(new Car(carNames[i]));
+    }
+
+    return cars;
   }
 
   getCarName() {
@@ -42,11 +66,17 @@ class App {
   }
 
   async play() {
-    await this.initializeCars();
+    const carNames = await this.initializeCars();
+    const moveCount = await this.getMoveCount();
 
-    const moveCount = await this.getMoveCount()
+    if (isNaN(moveCount)) this.printErrorMessage(this.ERROR.INCORRECT_TPYE);
 
-    if(isNaN(moveCount)) this.printErrorMessage(this.ERROR.INCORRECT_TPYE)
+    const readyCarsForAction = this.setCars(carNames);
+
+    for (let i = 0; i < moveCount; i++) {
+      this.printRace(readyCarsForAction);
+      MissionUtils.Console.print("");
+    }
   }
 }
 
