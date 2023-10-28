@@ -1,5 +1,6 @@
 import {
   isDelimiter,
+  isDuplication,
   isLanguageValid,
   isNameLength,
   isQuantityValid,
@@ -41,6 +42,16 @@ describe('validator test', () => {
       ['고고,고롱,2투', false],
     ])('허용되지 않는 언어 또는 특수문자를 사용하였을 때 false를 리턴한다.', (input, expected) => {
       expect(isLanguageValid(input)).toBe(expected);
+    });
+  });
+
+  describe('isDuplication', () => {
+    test('중복되는 이름이 존재할 때 true 리턴', () => {
+      expect(isDuplication('도레미,미미미,도레미')).toBe(true);
+    });
+
+    test('중복되는 이름이 존재하지 않을 때 false 리턴', () => {
+      expect(isDuplication('fobi,toto,lala')).toBe(false);
     });
   });
 });
