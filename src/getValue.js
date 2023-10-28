@@ -1,6 +1,6 @@
 import { INPUT_REQUEST } from './constants';
-import {Random} from '@woowacourse/mission-utils'
-import {validateName,validateNumber} from './validateInput'
+import { Random, Console } from '@woowacourse/mission-utils';
+import { validateName, validateNumber } from './validateInput';
 
 async function getUserName() {
 	Console.print(INPUT_REQUEST.NAME);
