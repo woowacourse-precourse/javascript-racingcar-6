@@ -1,5 +1,5 @@
-import { NUMBER, SYMBOLS, ERROR } from '../constants/index.js';
 import ValidationError from './ValidationError/index.js';
+import { NUMBER, SYMBOLS, ERROR } from '../constants/index.js';
 
 class Validator {
   static isValidCarNameLength({ length }) {
