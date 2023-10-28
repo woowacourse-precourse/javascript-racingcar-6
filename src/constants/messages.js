@@ -7,7 +7,10 @@ const errorString = (message) => `[ERROR] ${message}`;
 const errorMessage = {
   NOT_STRING: errorString("값이 문자열 타입이 아닙니다."),
   NOT_ARRAY: errorString("값이 배열 타입이 아닙니다."),
-  NOT_CARS: errorString("모든 요소가 Car 클래스의 인스턴스여야 합니다."),
+  NOT_CARS: errorString("배열에 Car 클래스의 인스턴스가 아닌 요소가 포함되어 있습니다."),
+
+  LESS_THEN_TWO_CARS: errorString("경주에 참가하는 자동차는 2대 이상이어야 합니다."),
+
   OVER_MAX_LENGTH: (maxLength) => errorString(`길이가 ${maxLength} 이하여야 합니다.`),
 };
 

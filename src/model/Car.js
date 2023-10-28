@@ -12,10 +12,6 @@ class Car {
     return this.#name;
   }
 
-  static isCar(value) {
-    return value instanceof Car;
-  }
-
   static #validateName(value) {
     validateIsString(value);
     validateLengthBelow(value, 6);
