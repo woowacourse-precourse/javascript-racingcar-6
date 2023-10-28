@@ -1,5 +1,6 @@
 import InputView from './view/InputView.js';
 import Car from './model/Car.js';
+import RandomNumber from './model/RandomNumber.js';
 
 import ErrorHandler from './utils/ErrorHandler.js';
 import { validateCarName, validateTryNumber } from './Validator.js';
@@ -7,6 +8,8 @@ import { validateCarName, validateTryNumber } from './Validator.js';
 class App {
   constructor() {
     this.cars = [];
+    this.randomNumber = new RandomNumber();
+    this.currentTryNumber = 0;
   }
 
   async play() {
@@ -32,13 +35,29 @@ class App {
 
   createCars(cars) {
     cars.forEach((car) => this.cars.push(new Car(car)));
-    console.log(this.cars);
   }
 
   async readTryNumber() {
     const tryNumber = await InputView.readTryNumber();
 
     this.validate(tryNumber);
+    this.race(tryNumber);
+  }
+
+  race(tryNumber) {
+    while (tryNumber !== this.currentTryNumber) {
+      this.cars.forEach((car) => this.run(car));
+      this.addCurrentTryNumber();
+    }
+  }
+
+  run(car) {
+    this.randomNumber.create();
+    car.run(this.randomNumber.canMove());
+  }
+
+  addCurrentTryNumber() {
+    this.currentTryNumber += 1;
   }
 }
 
