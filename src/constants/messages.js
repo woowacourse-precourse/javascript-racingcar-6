@@ -3,6 +3,10 @@ const INPUT_QUERY = {
   roundNumbers: "시도할 횟수는 몇 회인가요?" + "\n",
 };
 
+const OUTPUT_MESSAGE = {
+  SHOW_RESULT: "실행 결과",
+};
+
 const errorString = (message) => `[ERROR] ${message}`;
 
 const ERROR_MESSAGE = {
@@ -25,4 +29,4 @@ const ERROR_MESSAGE = {
   overMaxLength: (maxLength) => errorString(`길이가 ${maxLength} 이하여야 합니다.`),
 };
 
-export { INPUT_QUERY, ERROR_MESSAGE };
+export { INPUT_QUERY, OUTPUT_MESSAGE, ERROR_MESSAGE };

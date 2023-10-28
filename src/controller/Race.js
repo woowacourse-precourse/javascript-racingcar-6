@@ -4,6 +4,7 @@ import Cars from "../model/Cars.js";
 import CarNamesParser from "../parser/CarNamesParser.js";
 import IntParser from "../parser/IntParser.js";
 import { ERROR_MESSAGE } from "../constants/messages.js";
+import OutputView from "../view/OutputView.js";
 
 class Race {
   static #MIN_CAR_COUNT = 2;
@@ -13,7 +14,7 @@ class Race {
 
   #racingCars = [];
   #roundNumber = 0;
-  #carsPosition = {};
+  #carDistanceRecord = {};
 
   constructor() {}
 
@@ -37,6 +38,7 @@ class Race {
   }
 
   #startGame() {
+    OutputView.printShowResult();
     for (let i = 0; i < this.#roundNumber; i++) {
       this.#processRound();
     }
@@ -45,21 +47,22 @@ class Race {
   #processRound() {
     const roundResult = this.#racingCars.moveAll();
 
-    const carNames = Object.keys(roundResult);
-    carNames.forEach((carName) => {
-      const isMove = roundResult[carName];
-      if (isMove) this.#increaseCarPosition(carName);
-    });
+    for (const carName in roundResult) {
+      const isMoved = roundResult[carName];
+      if (isMoved) this.#increaseCarDistance(carName);
+    }
+
+    OutputView.printCarDistanceRecord(this.#carDistanceRecord);
   }
 
-  #increaseCarPosition(carName) {
-    const prevCarPosition = this.#carsPosition[carName] || 0;
+  #increaseCarDistance(carName) {
+    const prevCarDistance = this.#carDistanceRecord[carName] || 0;
 
-    const updatedCarsPosition = {
-      ...this.#carsPosition,
-      [carName]: prevCarPosition + 1,
+    const updatedRecord = {
+      ...this.#carDistanceRecord,
+      [carName]: prevCarDistance + 1,
     };
-    this.#carsPosition = updatedCarsPosition;
+    this.#carDistanceRecord = updatedRecord;
   }
 
   #registerCars(cars) {

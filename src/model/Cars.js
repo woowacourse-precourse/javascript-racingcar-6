@@ -13,7 +13,9 @@ class Cars {
   moveAll() {
     return this.#cars.reduce((acc, car) => {
       const result = { ...acc };
-      result[car.getName()] = car.move();
+      const carName = car.getName();
+      const isMoved = car.move();
+      result[carName] = isMoved;
       return result;
     }, {});
   }
