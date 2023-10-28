@@ -64,4 +64,4 @@ function validateRacingCars(racingCarNames) {
   return;
 }
 
-export { validateRacingCars };
+export default validateRacingCars;

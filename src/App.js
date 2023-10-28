@@ -1,7 +1,7 @@
 import { Random, Console } from "@woowacourse/mission-utils";
 
 import INPUT_MESSAGE from "./constants/game.js";
-import { validateRacingCars } from "./util/car-validation.js";
+import validateRacingCars from "./util/car-validation.js";
 import validateAttemptCount from "./util/attempt-validation.js";
 import { convertArrayToObject } from "./util/converter.js";
 
