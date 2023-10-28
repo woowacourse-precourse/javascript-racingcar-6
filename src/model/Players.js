@@ -51,4 +51,17 @@ export default class Players {
   checkMoveCountNotZero(maxMoveCount) {
     return maxMoveCount > 0;
   }
+
+  getWinner() {
+    const winnerCandidates = this.getPlayers().filter(
+      (player) => player.count === this.getMaxMoveCount(),
+    );
+
+    const winners = winnerCandidates.reduce((acc, cur) => {
+      if (!this.checkMoveCountNotZero(cur.count)) return acc;
+      return [...acc, cur];
+    }, []);
+
+    return winners;
+  }
 }
