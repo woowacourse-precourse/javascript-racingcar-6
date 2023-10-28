@@ -19,7 +19,7 @@ class Race {
   stateOfRace() {
     return this.cars.map((car) => ({
       name: car.name,
-      distance: car.getDistance(), // 이동한 거리만큼의 '-'를 가져옴
+      distance: car.shapeOfDistance, // 이동한 거리만큼의 '-'를 가져옴
     }));
   }
 

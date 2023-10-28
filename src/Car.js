@@ -8,7 +8,7 @@ class Car {
         this.distance += 1;
     }
 
-    getDistance(){
+    get shapeOfDistance(){
         return '-'.repeat(this.distance);
     }
 }

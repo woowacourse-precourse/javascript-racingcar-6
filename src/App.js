@@ -11,7 +11,7 @@ class App {
     
     for (let i = 0; i < totalRound; i++) {
       race.startRound();
-      // race.getRaceState == [{name1 : '이름', distance : '---'}, {name2 : '이름2', distance : '--'} ...]
+      // race.stateOfRace() == [{name1 : '이름', distance : '---'}, {name2 : '이름2', distance : '--'} ...]
       this.displayRaceStateOfRound(race.stateOfRace());
     }
 
@@ -44,7 +44,7 @@ class App {
   }
 
   validateInput(arrCarNames, totalRound) {
-    if (arrCarNames.some((name) => name.length > 5 || name.length === 0)) {
+    if (arrCarNames.some((name) => name.length === 0 || name.length > 5)) {
       throw new Error("[ERROR] 이름은 1자 이상, 5자 이하만 가능합니다.");
     }
 
