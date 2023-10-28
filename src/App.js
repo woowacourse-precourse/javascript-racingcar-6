@@ -9,9 +9,12 @@ import {MissionUtils} from "@woowacourse/mission-utils";
 
 - 숫자 입력 및 유효성 검사
 
-3. 각 차량에 랜덤한 수 배정
-4. 배정된 수가 4이상이면 전진
-5. 우승자 발표
+3.각 차량의 전진을 저장 기능✅
+
+
+4. 각 차량에 랜덤한 수 배정
+5. 배정된 수가 4이상이면 전진
+6. 우승자 발표
 
 - 우승자는 한 명 이상일 수 있다. 여러명이면 ','로 구분
 
@@ -20,19 +23,28 @@ const {Console, Random} = MissionUtils;
 
 class App {
   async play() {
+    const progress = {};
     const carNameArray = await Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)").then((names) =>
       names.split(",")
     );
     carNameArray.forEach((name) => checkNameValidation(name));
+    initProgress(progress, carNameArray);
 
-    const inputCount = await Console.readLineAsync("시도할 횟수");
+    const inputCount = await Console.readLineAsync("시도할 횟수:");
     checkInputCount(inputCount);
     const attemptCount = Number(inputCount);
+
+    for (let count = 1; count <= attemptCount; count++) {}
   }
 }
 
 export default App;
 
+const initProgress = (process, carNames) => {
+  for (let car of carNames) {
+    process[car] = 0;
+  }
+};
 const checkNameValidation = (name) => {
   if (!name) throw Error("[ERROR]");
   if (name.length > 5) throw Error("[ERROR]");
