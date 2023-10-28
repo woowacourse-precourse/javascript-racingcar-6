@@ -65,17 +65,32 @@ class App {
     });
   }
 
+  findWinners(carPositions) {
+    const winner = Math.max(...Object.values(carPositions));
+    return Object.keys(carPositions).filter(
+      (name) => carPositions[name] === winner,
+    );
+  }
+
+  printWinners(winner) {
+    if (winner.length > 1) {
+      Console.print(`최종 우승자: ${winner.join(', ')}`);
+    } else {
+      Console.print(`최종 우승자: ${winner[0]}`);
+    }
+  }
+
   async play() {
     this.start();
     while (true) {
       const carNames = await this.getCarNames();
-      this.nameException(carNames);
-      const counts = await this.tryCounts();
       const carPositions = {};
       for (const name of carNames) {
         carPositions[name] = 0;
       }
       try {
+        this.nameException(carNames);
+        const counts = await this.tryCounts();
         for (let i = 0; i < counts; i++) {
           await this.moveCarPositions(carNames, carPositions);
           this.printResults(carNames, carPositions);
@@ -85,16 +100,8 @@ class App {
         this.printResults(carNames, carPositions);
 
         //우승자 찾기
-        const winner = Math.max(...Object.values(carPositions));
-        const jointWinner = Object.keys(carPositions).filter(
-          (name) => carPositions[name] === winner,
-        );
-
-        if (jointWinner.length > 1) {
-          Console.print(`최종 우승자: ${jointWinner.join(', ')}`);
-        } else {
-          Console.print(`최종 우승자: ${jointWinner[0]}`);
-        }
+        const jointWinner = this.findWinners(carPositions);
+        this.printWinners(jointWinner);
       } catch (error) {
         Console.print(error.message);
       }
