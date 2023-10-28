@@ -16,8 +16,19 @@ const carName = userInput => {
   }
 };
 
+const playCount = userInput => {
+  const nonNumericRegex = /[^0-9]/;
+
+  if (nonNumericRegex.test(userInput)) {
+    throw Error(errorMessage.NON_NUMERIC_PLAYCOUNT);
+  }
+  if (userInput <= 0) {
+    throw Error(errorMessage.NON_POSITIVE_PLAYCOUNT);
+  }
+};
 const validate = {
   carName,
+  playCount,
 };
 
 export default validate;
