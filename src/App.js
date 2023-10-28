@@ -8,7 +8,7 @@ class App {
       const model = new Cars();
       const view = new GameView();
       const controller = new GameController({ model, view });
-      await controller.init();
+      await controller.start();
     } catch (err) {
       throw new Error(err);
     }

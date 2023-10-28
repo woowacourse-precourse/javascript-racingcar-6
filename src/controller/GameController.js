@@ -8,7 +8,7 @@ export default class GameController {
     this.view = view;
   }
 
-  async init() {
+  async start() {
     const playerNames = await this.view.getUserInput(MESSAGE.START);
     const players = this.splitPlayerNames(playerNames);
     players.forEach((player) => {
@@ -32,6 +32,12 @@ export default class GameController {
 
     if (isWrongPlayerCount) {
       throw new Error(ERROR_MESSAGE.PLAYER_COUNT);
+    }
+  }
+
+  #validateCarName(carName) {
+    if (!REG_EXP.test(carName)) {
+      throw new Error(ERROR_MESSAGE.INVALID_NAME);
     }
   }
 }
