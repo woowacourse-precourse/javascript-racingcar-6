@@ -1,5 +1,6 @@
 import { GAME_RULL } from '../constants/gameRules.js';
 import { ERROR_MESSAGE, MESSAGE } from '../constants/messages.js';
+import { REG_EXP } from '../constants/regexp.js';
 
 export default class GameController {
   constructor({ model, view }) {
@@ -8,26 +9,29 @@ export default class GameController {
   }
 
   async init() {
-    const carNames = await this.view.getUserInput(MESSAGE.START);
-    this.checkValidation(carNames);
+    const playerNames = await this.view.getUserInput(MESSAGE.START);
+    const players = this.splitPlayerNames(playerNames);
+    players.forEach((player) => {
+      console.log(player);
+    });
   }
 
-  checkValidation(userInput) {
-    this.#validateCarCount(userInput);
+  splitPlayerNames(names) {
+    return names.split(GAME_RULL.DIVISION).map((name) => name.trim());
+  }
 
+  checkValidationCar(car) {
+    this.#validatePlayersCount(car);
     return true;
   }
 
-  #validateCarCount(carNames) {
-    const cars = carNames.split(GAME_RULL.DIVISION).map((name) => name.trim());
+  #validatePlayersCount(players) {
     const isWrongPlayerCount =
-      cars.length < GAME_RULL.PLAYER_MIN_NUMBER ||
-      cars.length > GAME_RULL.PLAYER_MAX_NUMBER;
+      players.length < GAME_RULL.PLAYER_MIN_NUMBER ||
+      players.length > GAME_RULL.PLAYER_MAX_NUMBER;
 
     if (isWrongPlayerCount) {
       throw new Error(ERROR_MESSAGE.PLAYER_COUNT);
     }
   }
-
-  #validateCarName(carName) {}
 }
