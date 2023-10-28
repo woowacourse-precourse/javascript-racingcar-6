@@ -7,6 +7,7 @@ describe("console test", () => {
   test("print test - MissionUtils 의 print 사용하는지 확인", () => {
     const printSpy = jest.spyOn(MissionUtils.Console, "print").mockImplementation((msg) => msg);
     Console.print(text);
+
     expect(printSpy).toHaveBeenCalledWith(expect.stringContaining(text));
   });
 
@@ -14,6 +15,7 @@ describe("console test", () => {
     MissionUtils.Console.readLineAsync = jest.fn();
     MissionUtils.Console.readLineAsync.mockImplementation(async (text) => text);
     const res = await Console.readLineAsync(text);
+
     expect(res).toBe(text);
   });
 });

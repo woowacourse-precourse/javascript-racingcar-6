@@ -18,6 +18,7 @@ describe("RacingCar 객체 테스트", () => {
     const prevCount = racingCar.getCount();
     racingCar.move();
     const nextCount = racingCar.getCount();
+
     expect(nextCount).toBe(prevCount + 1);
   });
 
@@ -25,6 +26,7 @@ describe("RacingCar 객체 테스트", () => {
     racingCar.move();
     const log = racingCar.getLog();
     const count = racingCar.getCount();
+
     expect(log).toBe(`${name} : ${"-".repeat(count)}`);
   });
 });
