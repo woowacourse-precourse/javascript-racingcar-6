@@ -33,19 +33,25 @@ class App {
     const move = this.#moveCount.getMove();
     Console.print('실행 결과');
 
-    this.calculateMove(move);
-  }
-
-  calculateMove(move) {
     for (let i = 0; i < move; i++) {
-      this.#carNames.forEach(car => {
-        const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
-        this.decideMovement(randomNumber);
-      });
+      this.calculateMove(move);
     }
   }
 
-  decideMovement(randomNumber) {}
+  calculateMove(move) {
+    this.#carNames.forEach(car => {
+      const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
+      if (randomNumber >= 4) {
+        car.setPosition();
+      }
+      this.showProgress(car.getName(), car.getPosition());
+    });
+    Console.print(' ');
+  }
+
+  showProgress(name, position) {
+    Console.print(`${name} : ${position.join('')}`);
+  }
 }
 
 export default App;
