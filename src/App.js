@@ -14,8 +14,14 @@ class App {
       );
     }
 
-    const enterRounds =
+    const numberOfRounds =
       MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요? \n");
+
+    if (typeof Number(numberOfRounds) == !"Number") {
+      throw new Error(
+        "[ERROR] 게임 횟수에는 숫자만 입력할 수 있습니다. 게임을 다시 시작해주세요"
+      );
+    }
   }
 }
 
