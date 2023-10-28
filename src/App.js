@@ -21,6 +21,7 @@ async attemptNumber(){
   const getNumber = await MissionUtils.Console.readLineAsync(MESSAGE.NUMBER);
   const newNumber = parseInt(getNumber);
   if(isNaN(newNumber)){throw new Error(ERROR.NUMBER);}
+  if(newNumber===0){throw new Error(ERROR.ZERO);}
   return newNumber
 }
 
@@ -28,7 +29,7 @@ async attemptNumber(){
 gameReady(arrayCarName,tryNumber){
   const count = Array(arrayCarName.length).fill(0);
   const myProgress = Array(arrayCarName.length).fill('');
-  const objectCarName = {};
+  let objectCarName = {};
   arrayCarName.forEach((a) => {
     objectCarName[a] = 0;
   });
@@ -38,21 +39,16 @@ gameReady(arrayCarName,tryNumber){
   this.winner(arrayCarName, count);
 }
 
-// 매 게임마다 객체에 숫자 랜덤으로 넣고 5이상이면 count에 +1, myProgress에 - 추가 
-async gameStart(objectCarName, arrayCarName, count, myProgress){
+// 매 게임마다 객체에 숫자 랜덤으로 넣고 4이상이면 count에 +1, myProgress에 - 추가 
+gameStart(objectCarName, arrayCarName, count, myProgress){
   for(let i = 0; i<arrayCarName.length; i++){
-    objectCarName[arrayCarName[i]] = await this.randomNumber();
-   if(Object.values(objectCarName)[i]>=5){
+    objectCarName[arrayCarName[i]] = MissionUtils.Random.pickNumberInRange(0,9);
+   if(Object.values(objectCarName)[i]>=4){
       count[i]++;
       myProgress[i] = myProgress[i]+'-'
     } 
     MissionUtils.Console.print(`${arrayCarName[i]} : ${myProgress[i]}`)
   }
-}
-
-randomNumber(){
-  const processNumber = MissionUtils.Random.pickNumberInRange(0,9)
-  return processNumber;
 }
 
 winner(arrayCarName, count){
