@@ -1,7 +1,9 @@
+import { MissionUtils } from '@woowacourse/mission-utils';
+import printMsg from '../../utils/printMsg';
 import prompt from '../../utils/prompt';
-import stringToArray from '../../utils/stringToArray';
 import validations from './game.error';
 import PROMPT_PHASE from './game.promptPhase';
+import VALIDATION_CONDITION from './game.validation';
 
 const racingCarGame = {
   async promptToRacingObject() {
@@ -30,7 +32,7 @@ const racingCarGame = {
     return number >= min && number <= max;
   },
 
-  runRacingTurn(racingStatus) {
+  increaseForwardCountRandomly(racingStatus) {
     if (!Array.isArray(racingStatus)) {
       throw new Error('[ERROR] 인자는 각 자동차의 상태가 담긴 배열입니다');
     }
@@ -71,6 +73,13 @@ const racingCarGame = {
       racingTurnResult += `${name} : ${this.getNumberToDash(forwardCount)}\n`;
     });
     printMsg(racingTurnResult);
+  },
+
+  runRacingTurn(racingStatus) {
+    const turnResultStatus = this.increaseForwardCountRandomly(racingStatus);
+    this.printRacingTurn(turnResultStatus);
+
+    return turnResultStatus;
   },
 };
 export default racingCarGame;
