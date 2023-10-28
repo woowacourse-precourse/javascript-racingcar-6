@@ -8,28 +8,18 @@ class App {
    *
    * @param {Car[]} cars
    */
-  constructor(cars) {
+  constructor(cars, tryNum) {
     this.cars = cars;
+    this.tryNum = tryNum;
   }
 
   async play() {
     const carNames = await this.#inputCarNames();
     this.cars = carNames.map((carName) => new Car(carName));
 
-    let tryNum = await this.#inputTryNum();
+    this.tryNum = await this.#inputTryNum();
 
-    Console.print('\n실행 결과');
-
-    while (tryNum > 0) {
-      this.cars.forEach((car) => {
-        car.addDistance();
-        Output.printCarState(car.name, car.distance);
-      });
-
-      Console.print('');
-
-      tryNum -= 1;
-    }
+    this.#playRacing();
   }
 
   async #inputCarNames() {
@@ -46,6 +36,21 @@ class App {
     );
     const validatedTryNum = InputValidator.tryNumValidator(tryNumInput);
     return validatedTryNum;
+  }
+
+  #playRacing() {
+    Console.print('\n실행 결과');
+
+    while (this.tryNum > 0) {
+      this.cars.forEach((car) => {
+        car.addDistance();
+        Output.printCarState(car.name, car.distance);
+      });
+
+      Console.print('');
+
+      this.tryNum -= 1;
+    }
   }
 }
 
