@@ -6,23 +6,23 @@ const FORWARD_CONDITION = 4;
 const DISTANCE_CHARACTER = '-';
 
 export default class Car {
-    constructor(name) {
-        this.name = name;
+  constructor(name) {
+    this.name = name;
         this.distance = '';
     }
 
     async attemptForward() {
-        if ( this.isReady() ) {
+        if (this.isReady()) {
             this.runForward();
         }
     }
-    
+
     runForward() {
         this.distance += DISTANCE_CHARACTER;
     }
 
     isReady() {
-        if ( this.checkForwardCondition() ) {
+        if (this.checkForwardCondition()) {
             return true;
         }
 
@@ -31,10 +31,7 @@ export default class Car {
 
     checkForwardCondition() {
         const randomNumber = Random.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
-        if ( 
-            randomNumber >=
-            FORWARD_CONDITION
-        ) {
+        if (randomNumber >= FORWARD_CONDITION) {
             return true;
         }
 

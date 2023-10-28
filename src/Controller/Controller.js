@@ -1,4 +1,4 @@
-import { InputView } from '../View/InputView.js';
+import InputView from '../View/InputView.js';
 import Car from '../Model/Car.js';
 import OutputView from '../View/OutputView.js';
 
@@ -39,6 +39,6 @@ export default class Controller {
             car.attemptForward();
             OutputView.print(`${car.name} : ${car.distance}`);
         });
-        OutputView.print('');
-    } 
+        OutputView.printEndOfRound();
+    }
 }
