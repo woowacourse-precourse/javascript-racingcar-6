@@ -7,7 +7,9 @@ class Car {
     this.step = 0;
   }
 
-  run() {}
+  run(canMove) {
+    if (canMove) this.step += 1;
+  }
 }
 
 export default Car;
