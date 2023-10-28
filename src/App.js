@@ -28,7 +28,7 @@ class App {
 				max = Math.max(max, result[k].getCount());
 			}
 			[...result].map((result) => result.getCount() === max && champion.push(result.getName()));
-			Console.print(`최종 우승자 : ${champion}`);
+			Console.print(`최종 우승자 : ${champion.join()}`);
 		} catch (e) {
 			throw e;
 		}
