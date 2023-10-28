@@ -27,7 +27,7 @@ module.exports = {
   rules: {
     'import/prefer-default-export': 'off',
     'import/extensions': ['off'],
-    'linebreak-style': 0,
+    'linebreak-style': ['error', 'unix'],
     'no-plusplus': 0,
     'jsdoc/require-param-description': 'off',
     'jsdoc/require-returns-description': 'off',
