@@ -1,4 +1,4 @@
-import { Random } from '@woowacourse/mission-utils';
+import Util from './Util';
 
 class Participant {
   constructor(name) {
@@ -7,20 +7,9 @@ class Participant {
   }
 
   moveOrNot() {
-    console.log('asdasd : ');
-    if (this.getRandomBoolean()) {
+    if (Util.getRandomBoolean()) {
       this.progress += '-';
     }
-  }
-
-  /**
-   * 랜덤의 boolean 값을 반환하는 함수
-   * @returns {boolean}
-   */
-  getRandomBoolean() {
-    const randomInteger = Random.pickNumberInRange(0, 9);
-
-    return randomInteger >= 4;
   }
 }
 
