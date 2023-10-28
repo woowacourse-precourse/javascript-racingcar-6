@@ -5,6 +5,7 @@ class App {
     const carsName = await this.receiveUserInput('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n');
     const cars = this.seperateNames(carsName);
     const gamesNum = await this.receiveUserInput('시도할 횟수는 몇 회인가요?\n');
+    const num = this.isValidGameNum(gamesNum);
   }
 
   async receiveUserInput(guideMsg) {
@@ -34,6 +35,12 @@ class App {
 
   isValidLen(name) {
     if(name.length > 5) throw new Error('[ERROR] 자동차 이름의 길이는 5 이하입니다.');
+  }
+
+  isValidGameNum(num) {
+    const regEx = /[1-9]\d*/;
+    if(!num.match(regEx)) throw new Error('[ERROR] 시도 횟수는 올바른 숫자값으로 입력해 주세요.');
+    return Number(num);
   }
 }
 
