@@ -28,6 +28,8 @@ export default class Controller {
   startRun() {
     this.iterateCarInRounds(this.rounds);
     this.winners = getWinners(this.cars);
+
+    OutputView.printWinners(this.winners);
   }
 
   iterateCarInRounds(rounds) {

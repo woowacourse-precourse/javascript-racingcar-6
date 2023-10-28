@@ -1,21 +1,27 @@
 import { Console } from "@woowacourse/mission-utils";
 
-const RESULT_MESSAGE = '\n실행 결과';
+const EXECUTION_MESSAGE = '\n실행 결과';
 const END_OF_ROUND_MESSAGE = '';
+const WINNER_MESSAGE = '최종 우승자 : ';
+const COMMA_TO_SEPERATE = ', ';
 
 const OutputView = {
 
-    print(message) {
-        Console.print(message);
-    },
+  print(message) {
+    Console.print(message);
+  },
 
-    printResultMessage() {
-        this.print(RESULT_MESSAGE);
-    },
+  printExecutionMessage() {
+    this.print(EXECUTION_MESSAGE);
+  },
 
-    printEndOfRound() {
-        this.print(END_OF_ROUND_MESSAGE);
-    }
+  printEndOfRound() {
+    this.print(END_OF_ROUND_MESSAGE);
+  },
+
+  printWinners(winners) {
+    this.print(`${WINNER_MESSAGE}${winners.join(COMMA_TO_SEPERATE)}`);
+  },
 }
 
 export default OutputView;
