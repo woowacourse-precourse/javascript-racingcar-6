@@ -5,7 +5,7 @@ const OutputView = {
     Console.print('\n실행결과');
   },
 
-  printResult(result) {
+  printRoundResult(result) {
     result.forEach(([name, position]) => {
       Console.print(`${name} : ${'-'.repeat(position)}`);
     });
