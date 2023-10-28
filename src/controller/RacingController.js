@@ -18,7 +18,7 @@ class RacingController {
   }
 
   startRacing(randomArray) {
-    this.scoreData = Converter.scoreFilter(randomArray); // 최초 scoreData,traceData 업로드
+    this.scoreData = Converter.scoreFilter(randomArray); 
     this.traceData = Converter.traceFilter(randomArray);
 
     Console.print('실행 결과');
@@ -26,7 +26,7 @@ class RacingController {
     
   }
 
-  traceMaker() {                                           //data에 저장된 값을 기반으로 trace 출력
+  traceMaker() {                                          
     this.traceData.forEach((element, index) => {
       Console.print(this.playersArray[index] + ' : ' + element);
     })  
@@ -43,7 +43,7 @@ class RacingController {
     this.renewData(); 
   }
 
-  renewData() {                                           //새로운 랜덤값생성, scoreData,traceData 갱신. traceMaker로 콜백
+  renewData() {                                          
     const newRandomArray = randomArrayGenerator(this.playersArray.length)
     
     this.scoreData = scoreAccumulator(this.scoreData, newRandomArray);
