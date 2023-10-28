@@ -1,4 +1,3 @@
-import { shouldCarRun } from "../../utils";
 import { Car } from "../Car";
 
 export class Cars {
@@ -11,12 +10,6 @@ export class Cars {
   setCars(carNames) {
     carNames.forEach((carName) => {
       this.#cars.push(new Car(carName));
-    });
-  }
-
-  progressRound() {
-    this.#cars.forEach((car) => {
-      if (shouldCarRun()) car.run();
     });
   }
 
