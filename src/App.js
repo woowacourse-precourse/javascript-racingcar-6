@@ -1,4 +1,4 @@
-import { Console } from '@woowacourse/mission-utils';
+import { Console, MissionUtils } from '@woowacourse/mission-utils';
 import Car from './Car.js';
 import MoveCount from './MoveCount.js';
 
@@ -32,7 +32,20 @@ class App {
   startRace() {
     const move = this.#moveCount.getMove();
     Console.print('실행 결과');
+
+    this.calculateMove(move);
   }
+
+  calculateMove(move) {
+    for (let i = 0; i < move; i++) {
+      this.#carNames.forEach(car => {
+        const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
+        this.decideMovement(randomNumber);
+      });
+    }
+  }
+
+  decideMovement(randomNumber) {}
 }
 
 export default App;
