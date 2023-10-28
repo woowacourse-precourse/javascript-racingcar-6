@@ -2,7 +2,12 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 import { ATTEMPTS_NUMBER, CAR_NAME } from "./constants/questions";
 import { ERROR_ATTEMPTS_NUMBER, ERROR_CAR_NAME } from "./constants/errors";
 import { CAR_NAME_STANDARD, WINNER_STANDARD } from "./constants/separations";
-import { EXECUTION_ENDS, RACE_RESULT, RACE_RESULT_GAP, RACE_WINNER } from "./constants/notices";
+import {
+  EXECUTION_ENDS,
+  RACE_RESULT,
+  RACE_RESULT_GAP,
+  RACE_WINNER,
+} from "./constants/notices";
 
 class App {
   constructor() {
@@ -13,23 +18,10 @@ class App {
     this.winner = [];
   }
   async play() {
-    // 1-a
-    this.strCarName = await MissionUtils.Console.readLineAsync(CAR_NAME);
-    // 1-b
-    this.arrCarName = this.strCarName.split(CAR_NAME_STANDARD);
-    // 1-c
-    this.arrCarName.map((name) => {
-      if (name.trim().length > 5 || name.trim().length < 1) {
-        throw new Error(ERROR_CAR_NAME);
-      }
-    });
-
-    // 1-d
-    this.attempts = await MissionUtils.Console.readLineAsync(ATTEMPTS_NUMBER);
-    // 1-e
-    if (this.attempts < 0 || isNaN(this.attempts) == true) {
-      throw new Error(ERROR_ATTEMPTS_NUMBER);
-    }
+    await this.getCarName();
+    this.checkCarName();
+    await this.getAttemptNumber();
+    this.checkAttemptNumber();
 
     // 2-a
     this.arrCarName.forEach((name) => {
@@ -64,7 +56,29 @@ class App {
       }
     }
     // 3-c
-    MissionUtils.Console.print(`${RACE_WINNER} : ${this.winner.join(WINNER_STANDARD)}`);
+    MissionUtils.Console.print(
+      `${RACE_WINNER} : ${this.winner.join(WINNER_STANDARD)}`
+    );
+  }
+
+  async getCarName() {
+    this.strCarName = await MissionUtils.Console.readLineAsync(CAR_NAME);
+  }
+  checkCarName() {
+    this.arrCarName = this.strCarName.split(CAR_NAME_STANDARD);
+    this.arrCarName.map((name) => {
+      if (name.trim().length > 5 || name.trim().length < 1) {
+        throw new Error(ERROR_CAR_NAME);
+      }
+    });
+  }
+  async getAttemptNumber() {
+    this.attempts = await MissionUtils.Console.readLineAsync(ATTEMPTS_NUMBER);
+  }
+  checkAttemptNumber() {
+    if (this.attempts < 0 || isNaN(this.attempts) == true) {
+      throw new Error(ERROR_ATTEMPTS_NUMBER);
+    }
   }
 }
 
