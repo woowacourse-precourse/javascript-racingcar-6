@@ -14,6 +14,10 @@ class RacingCar {
     return this.#count;
   }
 
+  getName() {
+    return this.#name;
+  }
+
   getLog() {
     return `${this.#name} : ${"-".repeat(this.#count)}`;
   }
