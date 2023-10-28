@@ -17,6 +17,13 @@ class App {
     return carObject;
   }
 
+  async askForRacingCount() {
+    Console.print("시도할 횟수는 몇 회인가요?");
+    const racingCount = await Console.readLineAsync("");
+
+    return racingCount;
+  }
+
   play() {
     this.createCarObjectFromInput();
   }
