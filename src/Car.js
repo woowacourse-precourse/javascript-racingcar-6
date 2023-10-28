@@ -1,22 +1,22 @@
-class Car{
-    #name;
-    #position = [];
+class Car {
+  #name;
+  #position = [];
 
-    constructor(name){
-        this.#name = name;
-    }
+  constructor(name) {
+    this.#name = name;
+  }
 
-    getPosition(){
-        return this._position;
-    }
+  getPosition() {
+    return this.#position;
+  }
 
-    setPosition(){
-        this._position.push('-');
-    }
+  setPosition() {
+    this.#position.push('-');
+  }
 
-    getName(){
-        return this.#name;
-    }
+  getName() {
+    return this.#name;
+  }
 }
 
 export default Car;
