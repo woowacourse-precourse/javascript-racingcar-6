@@ -22,6 +22,10 @@ class App {
       if (name.length > MAX_LENGTH) {
         throw new Error('[ERROR] 자동차 이름은 5자 이하만 가능합니다.');
       }
+
+      if (name === '') {
+        throw new Error('[ERROR] 입력값이 잘못된 형식입니다.');
+      }
     });
   }
 
