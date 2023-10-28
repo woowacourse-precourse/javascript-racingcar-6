@@ -53,6 +53,8 @@ class App {
     const gameCount = await this.getGameCount();
 
     const cars = carNames.map((name) => new Car(name));
+    const race = new Race(cars, gameCount);
+    race.startRace();
   }
 }
 

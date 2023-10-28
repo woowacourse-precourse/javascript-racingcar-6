@@ -11,7 +11,7 @@ const ERROR = {
   invalidCountRange: `${ERROR_PREFIX} 1 이상의 숫자만 입력 가능합니다.`,
 };
 
-const RESULT_MESSAGE = '실행 결과';
+const RESULT_MESSAGE = '\n실행 결과';
 const FINAL_WINNER = '최종 우승자 : ';
 
 const MOVE = '-';
