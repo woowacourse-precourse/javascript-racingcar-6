@@ -1,6 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
-import { INFO_MESSAGE } from './message.js';
-import checkRandomNumber from './randomNumber.js';
+import { INFO_MESSAGE } from './Util/message.js';
+import checkRandomNumber from './Util/randomNumber.js';
 
 const playGame = async (playNumber, carName) => {
   Console.print(INFO_MESSAGE.result);

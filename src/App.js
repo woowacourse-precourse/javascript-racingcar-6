@@ -1,7 +1,7 @@
 import { getCarName, getPlayNumber } from './Util/gameData.js';
 
 import playGame from './playGame.js';
-import printWinner from './printWinner.js';
+import printWinner from './View/printWinner.js';
 
 class App {
   async play() {

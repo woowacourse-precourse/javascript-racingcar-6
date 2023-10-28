@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import { INFO_MESSAGE } from './message.js';
+import { INFO_MESSAGE } from '../Util/message.js';
 
 const printWinner = (carName) => {
   const carArr = Array.from(carName);
