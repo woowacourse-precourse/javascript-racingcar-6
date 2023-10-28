@@ -33,7 +33,7 @@ class Controller {
     }
 
     // 현재 결과 문자열 반환 함수
-    static raceResultText(obj) {
+    static getRaceResultText(obj) {
         let raceResult = "";
         Object.keys(obj).forEach((key) => {
             raceResult += `${key} : ${"-".repeat(obj[key])}\n`;
@@ -42,7 +42,7 @@ class Controller {
     }
 
     // 우승자 문자열 반환 함수
-    static winnerText(obj) {
+    static getWinnerText(obj) {
         // 최고기록 저장
         const WINNER_VALUE = Object.values(obj).reduce((value1, value2) => {
             return Math.max(value1, value2);

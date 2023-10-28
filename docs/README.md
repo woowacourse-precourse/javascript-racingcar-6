@@ -46,9 +46,9 @@
 
 ### 결과 문자열 반환 함수
 
--   raceResultText
+-   getRaceResultText
 
     -   현재 참가자들의 거리를 원하는 출력에 맞게 텍스트로 변경해서 리턴
 
--   winnerText
+-   getWinnerText
     -   우승자를 텍스트로 변환해서 리턴
