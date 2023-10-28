@@ -3,7 +3,7 @@ import { Console, Random } from "@woowacourse/mission-utils";
 class App {
   async play() {
     const cars = await this.inputCarNames();
-    await this.exportResult(cars);
+    await this.exportEntireResults(cars);
     return;
   }
 
@@ -32,20 +32,37 @@ class App {
     return times;
   }
 
-  getEachCarsMove(cars) {
+  getEachCarsRandomNumber(cars) {
     for(let i = 0; i < cars.length; i++) {
       cars[i].randomNumber = Random.pickNumberInRange(0, 9);
-      if(cars[i].randomNumber >= 4) cars[i].move += '-';
+    }
+    return;
+  }
+
+  getEachCarsMove(cars) {
+    for(let i = 0; i < cars.length; i++) {
+      if(cars[i].randomNumber >= 4) {
+        cars[i].move += '-';
+        cars[i].moveNumber += 1;
+      }
+    }
+    return;
+  }
+
+  exportEachRoundResults(cars) {
+    for(let i = 0; i < cars.length; i++) {
       Console.print(`${cars[i].name} : ${cars[i].move}` );
     }
     return;
   }
 
-  async exportResult(cars) {
+  async exportEntireResults(cars) {
     const times = await this.inputTryTimes();
     Console.print('실행 결과\n');
     for(let i = 0; i < times; i++) {
+      this.getEachCarsRandomNumber(cars);
       this.getEachCarsMove(cars);
+      this.exportEachRoundResults(cars);
       Console.print('\n');
     }
     Console.print('최종우승자 : ' + this.exportWinner(cars));
@@ -55,11 +72,11 @@ class App {
   exportWinner(cars) {
     let winner = '';
     for(let i = 0; i < cars.length - 1; i++) {
-      if(cars[i].move.length < cars[i + 1].move.length) [cars[i], cars[i + 1]] = [cars[i + 1], cars[i]];
+      if(cars[i].moveNumber < cars[i + 1].moveNumber) [cars[i], cars[i + 1]] = [cars[i + 1], cars[i]];
     }
     winner += cars[0].name;
     for(let i = 0; i < cars.length - 1; i++) {
-      if(cars[0].move.length > cars[i + 1].move.length) break;
+      if(cars[0].moveNumber > cars[i + 1].moveNumber) break;
       winner += ', '+ cars[i + 1].name;
     }
     return winner;
@@ -71,6 +88,7 @@ class Car {
     this.name = name;
     this.randomNumber;
     this.move = '';
+    this.moveNumber = 0;
   }
 }
 
