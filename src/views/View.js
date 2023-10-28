@@ -11,6 +11,7 @@ class View {
     let answer = await MissionUtils.Console.readLineAsync(message);
     answer = this.removeSpace(answer);
     Validator.nameValidate(answer);
+    answer = answer.split(',');
     return answer;
   }
 
