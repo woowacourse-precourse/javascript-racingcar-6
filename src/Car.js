@@ -1,14 +1,15 @@
 import { Random } from '@woowacourse/mission-utils';
-import { CAR } from './Constants.js';
+import { CAR } from './Constants';
 
 class Car {
   /** @type {string} */
-  #name
+  #name;
+
   /** @type {number} */
-  #distance
+  #distance;
 
   /**
-   * @constructor 
+   * @constructor
    * @param {string} name
    */
   constructor(name) {
@@ -26,7 +27,9 @@ class Car {
    * @returns {number} 누적 전진 거리
    */
   goForward() {
-    if (Random.pickNumberInRange(...CAR.FORWARD_RANGE) >= CAR.FORWARD_CONDITION) {
+    if (
+      Random.pickNumberInRange(...CAR.FORWARD_RANGE) >= CAR.FORWARD_CONDITION
+    ) {
       this.#distance += 1;
     }
 

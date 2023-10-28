@@ -1,8 +1,8 @@
 import { Console } from '@woowacourse/mission-utils';
-import { MESSAGE } from './Constants.js';
-import Validation from './Validation.js';
-import CarRacingGame from './CarRacingGame.js';
-import Car from './Car.js';
+import { MESSAGE } from './Constants';
+import Validation from './Validation';
+import CarRacingGame from './CarRacingGame';
+import Car from './Car';
 
 class App {
   /** @constructor */
@@ -20,20 +20,20 @@ class App {
     const answer = await Console.readLineAsync(MESSAGE.INPUT_CAR_NAMES);
     const cars = answer.split(',');
 
-    cars.forEach(car => {
-      Validation.validateCarName(car)
+    cars.forEach((car) => {
+      Validation.validateCarName(car);
     });
 
     Validation.validateDuplicateName(cars);
 
-    this.carRacingGame.setCars(cars.map(car => new Car(car)));
+    this.carRacingGame.setCars(cars.map((car) => new Car(car)));
     await this.readTryCount();
   }
 
   // 사용자로부터 전진 시도 횟수를 입력받음
   async readTryCount() {
     const answer = await Console.readLineAsync(MESSAGE.INPUT_TRY_COUNT);
-    
+
     Validation.validateTryCount(answer);
 
     this.printRacingResult(answer);
@@ -41,19 +41,21 @@ class App {
 
   /**
    * 레이싱을 진행하고 결과 출력
-   * @param {number} count 전진 시도 횟수 
+   * @param {number} count 전진 시도 횟수
    * @returns {void}
    */
   printRacingResult(count) {
-    Console.print('\n' + MESSAGE.GAME_RESULT);
-    this.carRacingGame.goForward(count, results => {
+    Console.print(`\n${MESSAGE.GAME_RESULT}`);
+    this.carRacingGame.goForward(count, (results) => {
       results.forEach(({ name, distance }) => {
         Console.print(`${name} : ${'-'.repeat(distance)}`);
       });
       Console.print(' ');
     });
 
-    Console.print(`${MESSAGE.FINAL_WINNER} : ${this.carRacingGame.getWinner().join(', ')}`);
+    Console.print(
+      `${MESSAGE.FINAL_WINNER} : ${this.carRacingGame.getWinner().join(', ')}`,
+    );
   }
 }
 
