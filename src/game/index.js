@@ -54,5 +54,23 @@ const racingCarGame = {
       return car;
     });
   },
+
+  getNumberToDash(repeatNumber) {
+    if (Number.isNaN(Number(repeatNumber))) {
+      throw new Error('[ERROR] 인자는 숫자여야 합니다');
+    }
+
+    if (repeatNumber <= 0) return '';
+
+    return '-'.repeat(repeatNumber);
+  },
+
+  printRacingTurn(racingStatus) {
+    let racingTurnResult = '';
+    racingStatus.forEach(({ name, forwardCount }) => {
+      racingTurnResult += `${name} : ${this.getNumberToDash(forwardCount)}\n`;
+    });
+    printMsg(racingTurnResult);
+  },
 };
 export default racingCarGame;
