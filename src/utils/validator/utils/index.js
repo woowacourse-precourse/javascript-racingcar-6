@@ -14,3 +14,9 @@ export const isNameLength = (input) => {
     return name.length >= name_length_min && name.length <= name_length_max;
   });
 };
+
+export const isQuantityValid = (input) => {
+  input.split(SYSTEM.delimiter).every((quantity) => {
+    return quantity >= SYSTEM.quantity_min && quantity <= SYSTEM.quantity_max;
+  });
+};
