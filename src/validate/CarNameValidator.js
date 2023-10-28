@@ -11,6 +11,9 @@ export default class CarNameValidator {
     if (this.exceedNameLimit(names)) {
       throw new Error(ERROR_MESSAGE.exceedNameLimit);
     }
+    if (this.isDuplicate(names)) {
+      throw new Error(ERROR_MESSAGE.duplicateName);
+    }
   }
 
   static isEmptyInput(input) {
@@ -22,5 +25,10 @@ export default class CarNameValidator {
   static exceedNameLimit(names) {
     const nameArray = names.split(",");
     return nameArray.some(name => name.length > 5);
+  }
+  static isDuplicate(names) {
+    const nameArray = names.split(",");
+    const nameSet = new Set(nameArray);
+    return nameArray.length !== nameSet.size;
   }
 }
