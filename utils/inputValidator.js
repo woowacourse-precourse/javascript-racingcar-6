@@ -1,7 +1,6 @@
-import { Console } from '@woowacourse/mission-utils';
+export const validateCarName = (carName) => {
+  const regex = new RegExp(/^(\w{1,5},)+\w{1,5}$/);
 
-class inputValidator {
-  validateCarName() {
-    // 정규표현식 객체 생성
-  }
-}
+  if (!regex.test(carName))
+    throw new Error("[ERROR] 자동차 이름이 잘못된 형식입니다.");
+};
