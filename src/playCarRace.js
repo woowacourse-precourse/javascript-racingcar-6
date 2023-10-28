@@ -3,7 +3,7 @@ import { RESULT } from './constants';
 import { getRandomNumber } from './getValue';
 import { Console } from '@woowacourse/mission-utils';
 
-/**@type {function(string[],number):object} */
+/**@type {function(string[],number):Object.<string,number>|{}} */
 export function playCarRace(userNameArr, userTrialFrequency) {
 	Console.print(RESULT.GAME_PROGRESS);
 	const playerScore = {};
@@ -13,20 +13,20 @@ export function playCarRace(userNameArr, userTrialFrequency) {
 	setGameResult(playerScore, gameResult);
 	return gameResult;
 }
-/**@type {function(string[],object):object} */
+/**@type {function(string[],Object.<string,string>|{}):void} */
 function setPlayerScore(userNameArr, playerScore) {
 	userNameArr.forEach((userName) => {
 		playerScore[userName] = '';
 	});
 	return;
 }
-/**@type {function(string[],number,object):void} */
+/**@type {function(string[],number,Object.<string,string>|{}):void} */
 function repeatCycle(userNameArr, userTrialFrequency, playerScore) {
 	for (let i = 1; i <= userTrialFrequency; i++) {
 		playOneCycle(userNameArr, playerScore);
 	}
 }
-/**@type {function(string[],object):void} */
+/**@type {function(string[],Object.<string,string>|{}):void} */
 function playOneCycle(userNameArr, playerScore) {
 	userNameArr.forEach((userName) => {
 		const randomNumber = getRandomNumber();
@@ -43,7 +43,7 @@ function moveForward(randomNumber) {
 	}
 	return false;
 }
-/**@type {function(object,object):void} */
+/**@type {function(Object.<string,string>|{},Object.<string,number>|{}):void} */
 function setGameResult(playerScore, gameResult) {
 	for (let userName in playerScore) {
 		gameResult[userName] = playerScore[userName].length;

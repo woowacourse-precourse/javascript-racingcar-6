@@ -10,6 +10,7 @@ export function validateName(inputArr) {
 	if (inputArr.length === 1) {
 		throw new CustomError(ERROR.NAME, ERROR.NO_ALONE);
 	}
+	/**@type {string[]} */
 	const validNameArr = inputArr.map((name) => {
 		if (name.length > 5) {
 			throw new CustomError(ERROR.NAME, ERROR.ONLY_UNDER_FIVE);

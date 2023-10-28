@@ -2,14 +2,14 @@
 import { RESULT } from './constants';
 import { Console } from '@woowacourse/mission-utils';
 
-/**@type {function(object):void} */
+/**@type {function(Object.<string,number>):void} */
 export function endGame(gameResult) {
 	/** @type {string[]}*/
 	const winnerArr = compareGameResult(gameResult);
 	reportWinner(winnerArr);
 }
 
-/**@type {function(object):string[]} */
+/**@type {function(Object.<string,number>):string[]} */
 function compareGameResult(gameResult) {
 	/** @type {string[]}*/
 	let winnerArr = [];
