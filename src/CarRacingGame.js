@@ -21,7 +21,7 @@ class CarRacingGame {
 
             this.cars = carNames.split(",");
             
-            if (!this.validateCarNames(this.cars)) {
+            if (this.validateCarNames(this.cars)) {
                 throw new Error("[ERROR] 잘못된 입력입니다.");
             }
 
@@ -33,8 +33,8 @@ class CarRacingGame {
 
     validateCarNames(cars) {
         cars.forEach(car => {
-            if(car.length > 5 || car.length === 0) return false;
-            return true;
+            if(car.length > 5 || car.length === 0) return true;
+            return false;
         });
     }
 
