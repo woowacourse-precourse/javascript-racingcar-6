@@ -3,7 +3,7 @@ import { Console } from "@woowacourse/mission-utils";
 const ERROR_HEADER = "[ERROR]";
 class App {
   constructor() {
-    this.racingCars;
+    this.racingCars = new Map();
     this.tryNumber;
   }
 
@@ -11,7 +11,7 @@ class App {
     let inputValue = await Console.readLineAsync(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
     );
-    this.racingCars = inputValue.split(",");
+    return inputValue.split(",");
   }
 
   async getTryNumber() {
@@ -27,7 +27,8 @@ class App {
 
   async play() {
     this.initPlay();
-    await this.getRacingCars();
+    const racingCars = await this.getRacingCars();
+    await this.setRacingCars(racingCars);
     await this.getTryNumber();
   }
 }
