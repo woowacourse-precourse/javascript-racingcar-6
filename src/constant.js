@@ -26,6 +26,7 @@ export const EXCUTION_NUMBER = Object.freeze({
 
 export const REGEXP = Object.freeze({
   only_en_ko: /^[a-zA-Z가-힣ㄱ-ㅎ]+$/,
+  only_number: /^\d+$/,
 });
 
 export const DITANCE_SYMBOL = '-';
