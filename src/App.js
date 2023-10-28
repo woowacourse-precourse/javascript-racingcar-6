@@ -7,7 +7,7 @@ class App {
     let cars = await makeCarList();
     const count = await enterValue("시도할 횟수는 몇회인가요?");
     for (let i = 0; i < count; i++) {
-      cars = await checkForward(cars, count);
+      cars = await checkForward(cars);
     }
   }
 }
