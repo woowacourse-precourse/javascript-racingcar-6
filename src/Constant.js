@@ -15,6 +15,7 @@ export const MESSAGE = {
 };
 
 export const ERROR = {
+  errorPrefix: '[ERROR]',
   isEmpty: '[ERROR] 자동차 이름 중 공백이 있습니다.',
   hasDuplicate: '[ERROR] 중복된 자동차 이름이 있습니다.',
   exceedMaxNum: '[ERROR] 길이가 5자 초과인 이름이 있습니다. 이름은 5자 이하여야 합니다.',
