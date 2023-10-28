@@ -9,13 +9,23 @@ export const messageBeforeInput = Object.freeze({
   attempts: "시도할 횟수는 몇 회인가요?\n",
 });
 export const messagePrint = Object.freeze({
-  result: "\n실행 결과",
+  start: "\n실행 결과",
   winners: "최종 우승자 : ",
 });
 export const messageError = Object.freeze({
   validAttempts: "1이상의 수를 입력하세요.",
   validCarName: "자동차 이름은 5자 이하만 가능합니다",
 });
+
+export const printWinnersMessage = (winners) => {
+  Console.print(`${messagePrint.winners}${winners}`);
+};
+export const printStartMessage = () => {
+  Console.print(messagePrint.start);
+};
+export const printAttemptResultMessage = (distance, car) => {
+  Console.print(`${car} : ${distance}`);
+};
 
 class App {
   constructor() {
@@ -75,7 +85,7 @@ class App {
 
   printAttemptResult() {
     this.cars.forEach((curDistance, car) => {
-      Console.print(`${car} : ${curDistance}`);
+      printAttemptResultMessage(curDistance, car);
     });
   }
 
@@ -87,7 +97,7 @@ class App {
   }
 
   startRace() {
-    Console.print(messagePrint.result);
+    printStartMessage();
     do {
       this.doAttemptCycle();
     } while (this.numberOfAttempts > 0);
@@ -114,7 +124,7 @@ class App {
 
   printWinners() {
     const winners = this.winners.join(", ");
-    Console.print(`${messagePrint.winners}${winners}`);
+    printWinnersMessage(winners);
   }
 
   async play() {
