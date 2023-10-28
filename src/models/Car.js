@@ -1,4 +1,4 @@
-class CarModel {
+class Car {
   constructor(carName) {
     this.carName = carName;
     this.position = '';
@@ -7,13 +7,13 @@ class CarModel {
   move() {
     const randomNumber = Math.floor(Math.random() * 10);
     if (randomNumber >= 4) {
-      this.position += '-';
+      this.setPosition('-');
     }
   }
 
   setPosition(position) {
-    this.position = position;
+    this.position += position;
   }
 }
 
-export default CarModel;
+export default Car;
