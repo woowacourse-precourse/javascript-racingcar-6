@@ -1,4 +1,4 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Console, Random } from "@woowacourse/mission-utils";
 
 class App {
   async play() {
@@ -17,6 +17,10 @@ class App {
 
   printMsg(msg) {
     Console.print(msg);
+  }
+
+  moveForward() {
+    return Random.pickNumberInRange(0, 9) >= 4;
   }
 
   seperateNames(names) {
