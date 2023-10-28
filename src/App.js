@@ -5,8 +5,7 @@ import inputUser from "./inputUser.js";
 class App {
   async play() {
     const { carArr, repeatCount } = await inputUser();
-    Console.print(carArr);
-    Console.print(repeatCount);
+    Console.print(GAME.START);
   }
 }
 
