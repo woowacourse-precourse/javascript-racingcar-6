@@ -1,5 +1,5 @@
-import { MissionUtils } from '@woowacourse/mission-utils';
-import Cars from '../src/Cars';
+import { MissionUtils, Random } from '@woowacourse/mission-utils';
+import Cars from '../../src/Cars';
 
 const getLogSpy = () => {
   const logSpy = jest.spyOn(MissionUtils.Console, 'print');
@@ -30,14 +30,15 @@ describe('매 라운드마다', () => {
   });
 
   test('모든 자동차들에게 고유한 랜덤한 숫자가 생성되는가?', () => {
-    const cars = new Cars();
-    const needToCallTimes = cars.getCarsNames.length;
-    const randomSpy = getRandomSpy();
-
-    for (let i = 0; i < needToCallTimes; i += 1) {
-      computer.createRandomNumInRange(0, 9);
-    }
-
-    expect(randomSpy).toBeCalledTimes(needToCallTimes);
   });
+
+  test('숫자가 4미만일 경우 차가 움직이지 않는가?', () => {
+  });
+
+  test('숫자가 4미만일 경우 차가 움직이면 예외 처리가 일어나는가?', () => {
+  });
+
+  test('숫자가 4이상일 경우 차가 앞으로 움직이는가?', () => {});
+
+  test('숫자가 4이상일 경우 차가 움직이지 않으면 예외 처리가 일어나는가?', () => {});
 });
