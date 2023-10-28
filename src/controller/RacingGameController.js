@@ -1,10 +1,13 @@
-import InputView from '../view/InputView.js';
-import OutputView from '../view/OutputView.js';
-import Car from '../model/Car.js';
-import Race from '../model/Race.js';
-import InputValidator from '../utils/InputValidator.js';
-import { randomMovementStrategy } from '../model/movementStrategies.js';
-import { processCarNames } from '../utils/CarNameProcessor.js';
+import InputView from '../view/InputView';
+import OutputView from '../view/OutputView';
+
+import Car from '../model/Car';
+import Race from '../model/Race';
+
+import InputValidator from '../utils/InputValidator';
+import { processCarNames } from '../utils/CarNameProcessor';
+
+import { randomMovementStrategy } from '../model/movementStrategies';
 
 export default class RacingGameController {
   async start() {

@@ -1,6 +1,6 @@
 import InputValidator from '../../src/utils/InputValidator';
+
 import { ErrorMessages } from '../../src/constants/ErrorMessages';
-import { VALIDATION_RULES } from '../../src/constants/ValidationRules';
 
 describe('InputValidator 클래스', () => {
   describe('validateCarName 메서드', () => {

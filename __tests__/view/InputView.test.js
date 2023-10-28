@@ -1,5 +1,6 @@
-import InputView from '../../src/view/InputView';
 import { MissionUtils } from '@woowacourse/mission-utils';
+
+import InputView from '../../src/view/InputView';
 
 describe('InputView 클래스', () => {
   test('printCarNames 메서드는 사용자 입력을 반환해야 한다', async () => {

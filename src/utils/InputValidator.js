@@ -1,5 +1,5 @@
-import { ErrorMessages } from '../constants/ErrorMessages.js';
-import { VALIDATION_RULES } from '../constants/ValidationRules.js';
+import { ErrorMessages } from '../constants/ErrorMessages';
+import { VALIDATION_RULES } from '../constants/ValidationRules';
 
 export default class InputValidator {
   static validateCarName(name) {

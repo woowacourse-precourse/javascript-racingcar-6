@@ -1,17 +1,22 @@
 import RacingGameController from '../../src/controller/RacingGameController';
+
 import InputView from '../../src/view/InputView';
 import OutputView from '../../src/view/OutputView';
+
+import { processCarNames } from '../../src/utils/CarNameProcessor';
 import InputValidator from '../../src/utils/InputValidator';
+
 import Car from '../../src/model/Car';
 import Race from '../../src/model/Race';
-import { processCarNames } from '../../src/utils/CarNameProcessor';
 
 jest.mock('../../src/view/InputView');
 jest.mock('../../src/view/OutputView');
+
 jest.mock('../../src/utils/InputValidator');
+jest.mock('../../src/utils/CarNameProcessor');
+
 jest.mock('../../src/model/Car');
 jest.mock('../../src/model/Race');
-jest.mock('../../src/utils/CarNameProcessor');
 
 describe('RacingGameController 클래스', () => {
   let controller;

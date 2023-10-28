@@ -1,4 +1,4 @@
-import { GameSettings } from '../constants/GameSettings.js';
+import { GameSettings } from '../constants/GameSettings';
 
 export default class Car {
   constructor(name, carMovementStrategy) {
