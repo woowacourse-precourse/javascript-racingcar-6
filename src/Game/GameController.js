@@ -20,10 +20,11 @@ class GameController {
         const input = await readLineAsync(MESSAGES.QUEST_TRY_COUNT);
         this.validate.validateTryMoveCount(input);
         this.count = input;
+        print("");
     }
     start() {
         const racing = this.racing;
-        print(`\n${MESSAGES.PROGRESS_RESULT}`);
+        print(`${MESSAGES.PROGRESS_RESULT}`);
         for (let i=0; i<this.count; i++) {
             racing.moveCycle();
             racing.oneMoveCycleResult();

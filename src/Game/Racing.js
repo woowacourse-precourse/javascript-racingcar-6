@@ -10,7 +10,6 @@ class Racing {
         const removeBlank = names.replace(/\s/g, '');
         const splitCars = removeBlank.split(',');
         this.cars = splitCars.map(car => new Car(car));
-        console.log(this.cars);
     }
     
     moveCycle() {
@@ -28,7 +27,6 @@ class Racing {
     getMaxDistance() {
         const cars = this.cars;
         const distanceArr = cars.map(car=> car.getDistance());
-        
         const maxDistance = distanceArr.reduce((max,current) => {
             return current > max ? current : max
         },distanceArr[0]);
