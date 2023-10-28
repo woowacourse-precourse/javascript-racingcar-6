@@ -9,14 +9,23 @@ class CarRaceModel {
     this.gameWinner = '';
   }
 
+  /**
+   * @param {string[]} carList - 차 이름 목록
+   */
   setCarList(carList) {
     this.carList = carList;
   }
 
+  /**
+   * @param {number} moveCount - 이동 횟수
+   */
   setMoveCount(moveCount) {
     this.moveCount = moveCount;
   }
 
+  /**
+   * @param {string} carName - 차 이름
+   */
   initGameProgress(carName) {
     this.gameProgress[carName] = '';
   }

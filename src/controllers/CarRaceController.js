@@ -52,6 +52,10 @@ class CarRaceController {
     return inputCarList;
   }
 
+  /**
+   * @param {string[]} inputCarList - 입력된 차 이름 목록
+   * @throws {Error} 차 이름이 중복되는 경우
+   */
   validateCarNames(inputCarList) {
     inputCarList.forEach(carName => validateCarName(carName));
 
