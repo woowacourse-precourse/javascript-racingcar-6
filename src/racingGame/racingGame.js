@@ -2,6 +2,12 @@ import { Console, Random } from "@woowacourse/mission-utils";
 import { GAMEMSG } from "../constants/message.js";
 import { GMAEVALIDATION } from "../constants/validation.js";
 import {
+  getMaxMove,
+  getRacingWinList,
+  printResult,
+  getRandomNum,
+} from "./utils/gameFn.js";
+import {
   splitInputCarName,
   checkInputCarNameValidation,
   checkInputTryNumValidation,
@@ -19,8 +25,8 @@ class RacingGame {
     await this.getCarName();
     await this.getTryNum();
     this.startRacing();
-    this.maxMove = this.getMaxMove();
-    this.printResult(this.getRacingWinList());
+    this.maxMove = getMaxMove(this.carList);
+    printResult(getRacingWinList(this.carList, this.maxMove));
   }
 
   async getCarName() {
@@ -45,41 +51,18 @@ class RacingGame {
     }
   }
 
-  getRandomNum() {
-    return Random.pickNumberInRange(0, 9);
-  }
-
   startRacing() {
     for (let tryCount = 0; tryCount < this.tryNum; tryCount++) {
       this.tryRacing();
       Console.print("\n");
     }
   }
+
   tryRacing() {
     this.carList.forEach((car) => {
-      let randomNum = this.getRandomNum();
-      if (randomNum >= GMAEVALIDATION.car_move_condition) {
-        car.moveForward += "-";
-        car.moveCount += 1;
-      }
-      Console.print(`${car.name} : ${car.moveForward}`);
+      Car.move(car, getRandomNum());
+      Car.printMove(car);
     });
-  }
-  getMaxMove() {
-    const maxMove = this.carList.reduce((acc, cur) => {
-      return acc >= cur.moveCount ? acc : cur.moveCount;
-    }, 0);
-    return maxMove;
-  }
-  getRacingWinList() {
-    const winList = this.carList.filter(
-      (car) => car.moveCount === this.maxMove
-    );
-    return winList;
-  }
-  printResult(inputs) {
-    const list = inputs.map((input) => input.name).join(", ");
-    Console.print(`최종우승자 : ${list}`);
   }
 }
 export default RacingGame;
