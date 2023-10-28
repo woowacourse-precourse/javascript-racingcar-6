@@ -15,11 +15,19 @@ class RacingGame {
   }
 
   gameStart() {
-    for (let i = 0; i < this.repeatNumber; i += 1) {
-      this.printEachProgress();
-    }
+    Array.from({ length: this.repeatNumber }).forEach(() => this.printEachProgress());
 
     this.printWinner();
+  }
+
+  printEachProgress() {
+    this.joinList.forEach((car) => {
+      car.moveOrNot();
+
+      Output.printProgress(car.name, car.progress);
+    });
+
+    Output.printEmptyLine();
   }
 
   printWinner() {
@@ -32,16 +40,6 @@ class RacingGame {
     const winnerList = Util.getWinnerList(this.joinList, maxLength);
 
     return winnerList.map((winner) => winner.name);
-  }
-
-  printEachProgress() {
-    this.joinList.forEach((car) => {
-      car.moveOrNot();
-
-      Output.printProgress(car.name, car.progress);
-    });
-
-    Output.printEmptyLine();
   }
 }
 
