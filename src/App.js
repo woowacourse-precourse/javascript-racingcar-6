@@ -13,6 +13,9 @@ class App {
         "[ERROR] 입력한 이름이 5자를 초과하였습니다. 게임을 다시 시작해주세요."
       );
     }
+
+    const enterRounds =
+      MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요? \n");
   }
 }
 
