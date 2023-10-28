@@ -10,6 +10,8 @@ class RacingGame {
   static async inputRacingCarNames() {
     const input = await ConsoleInput.input(MESSAGE.INPUT_RACING_CAR_NAMES);
     const cars = InputManager.getCarNames(input);
+    InputManager.validateCarName(cars);
+
     return cars;
   }
 }
