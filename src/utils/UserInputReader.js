@@ -1,6 +1,6 @@
 class UserInputReader {
   constructor() {
-    this.UserInput = '';
+    this.UserInput = "";
   }
   getUserInput() {
     return this.UserInput;
