@@ -1,4 +1,5 @@
 import CarRacingGame from '../domain/CarRacingGame.js';
+import InputValidator from '../domain/InputValidator.js';
 import randomNumberGenerator from '../utils/RandomNumberGenerator.js';
 import InputView from '../views/InputView.js';
 import OutputView from '../views/OutputView.js';
@@ -9,7 +10,11 @@ class CarRacingGameController {
   async startGame() {
     const carNames = await InputView.getCarNames();
     const round = await InputView.getRound();
-    this.#carRacingGame = new CarRacingGame(carNames, round);
+
+    const validCarNames = InputValidator.hasValidCarNames(carNames);
+    const validRound = InputValidator.hasValidRound(round);
+
+    this.#carRacingGame = new CarRacingGame(validCarNames, validRound);
     this.currentRacing();
   }
 
