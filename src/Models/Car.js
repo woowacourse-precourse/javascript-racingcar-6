@@ -3,10 +3,15 @@ import { Random } from "@woowacourse/mission-utils";
 
 export default class Car {
   #MIN_VALUE = 4;
+
   constructor(name) {
     this.totalDistance = 0;
     this.name = new Name(name).name;
   }
+  getStatus() {
+    return { name: this.name, totalDistance: this.totalDistance };
+  }
+
   #getRandomDistance() {
     return Random.pickNumberInRange(0, 9);
   }
