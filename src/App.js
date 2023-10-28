@@ -13,8 +13,9 @@ export const messagePrint = Object.freeze({
   winners: "최종 우승자 : ",
 });
 export const messageError = Object.freeze({
-  validAttempts: "1이상의 수를 입력하세요.",
+  emptyValue: "빈 입력값입니다.",
   validCarName: "자동차 이름은 5자 이하만 가능합니다",
+  validAttempts: "1이상의 수를 입력하세요.",
 });
 
 export const printWinnersMessage = (winners) => {
@@ -34,18 +35,21 @@ class App {
     this.numberOfAttempts = 0;
   }
 
-  checkValidCarName(carName) {
-    if (carName.length > validCarNameLength) {
-      throw new Error(`${ERROR_HEADER}${messageError.validCarName}`);
+  checkValidCarName(carsArr) {
+    for (let carName of carsArr) {
+      if (carName.length > validCarNameLength) {
+        throw new Error(`${ERROR_HEADER}${messageError.validCarName}`);
+      }
     }
   }
 
   async getCars() {
     let inputCars = await Console.readLineAsync(messageBeforeInput.carNames);
-    let carsArr = inputCars.split(",");
-    for (let carName of carsArr) {
-      this.checkValidCarName(carName);
+    if (!inputCars) {
+      throw new Error(`${ERROR_HEADER}${messageError.emptyValue}`);
     }
+    let carsArr = inputCars.split(",");
+    this.checkValidCarName(carsArr);
     return carsArr;
   }
 
