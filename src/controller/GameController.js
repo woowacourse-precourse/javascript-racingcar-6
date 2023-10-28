@@ -12,13 +12,10 @@ export default class GameController {
   async start() {
     const playerNames = await this.view.getUserInputAsync(MESSAGE.START);
     const players = this.splitPlayerNames(playerNames);
-    this.#validatePlayersCount(players);
-    this.#validateDuplicationPlayer(players);
+    this.checkValidatePlayer(players);
 
     players.forEach((playerName) => {
-      this.#validatePlayerName(playerName);
-      this.#validatePlayerNameLength(playerName);
-
+      this.checkValidateName(playerName);
       const player = new Player(playerName);
       this.model.addPlayer(player);
     });
@@ -43,6 +40,16 @@ export default class GameController {
 
   splitPlayerNames(names) {
     return names.split(GAME_RULL.DIVISION).map((name) => name.trim());
+  }
+
+  checkValidatePlayer(players) {
+    this.#validatePlayersCount(players);
+    this.#validateDuplicationPlayer(players);
+  }
+
+  checkValidateName(playerName) {
+    this.#validatePlayerName(playerName);
+    this.#validatePlayerNameLength(playerName);
   }
 
   #validatePlayersCount(players) {
