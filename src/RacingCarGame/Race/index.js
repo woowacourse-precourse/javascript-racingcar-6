@@ -14,7 +14,7 @@ class Race {
 
   addCars(names) {
     this.cars = names
-      .replace(/s/g, '')
+      .replace(/\s/g, '')
       .split(SYMBOLS.nameDivider)
       .map((name) => new Car(name));
   }
