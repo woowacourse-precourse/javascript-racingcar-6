@@ -39,6 +39,13 @@ class App {
     }
   }
 
+  printStepResult() {
+    this.racingResult.forEach((value, key) => {
+      Console.print(`${key} : ${value}`);
+    });
+    Console.print('');
+  }
+
   async play() {
     const inputCarList = await Console.readLineAsync(
       '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
@@ -57,6 +64,7 @@ class App {
     Console.print('\n실행 결과');
     for (let i = 0; i < count; i += 1) {
       carList.forEach((car) => this.randomShift(car));
+      this.printStepResult();
     }
   }
 }
