@@ -1,4 +1,5 @@
 import { ERROR_MSG } from '../constants/OutputMsg';
+import { CONSTANTS } from '../constants/Constants';
 
 class Validate {
     #REGAX
@@ -9,7 +10,7 @@ class Validate {
 
     vehicleNameValidate(vehicleName) {
         if (vehicleName.some(name => this.#REGAX.test(name))) throw new Error(ERROR_MSG.USER_NAME_REGAX_ERROR);
-        if (vehicleName.some(name => name.length > 5 || name.trim().length === 0)) throw new Error(ERROR_MSG.USER_NAME_LENGTH_ERROR);
+        if (vehicleName.some(name => name.length > CONSTANTS.max_vehicle_name || name.trim().length === 0)) throw new Error(ERROR_MSG.USER_NAME_LENGTH_ERROR);
     }
 
     playTimeRegaxValidate(playTime) {
@@ -22,7 +23,7 @@ class Validate {
     }
 
     moveNumberValidate(moveNumber) {
-        return (moveNumber >= 4) ? true : false;
+        return (moveNumber >= CONSTANTS.vehicle_can_move) ? true : false;
     }
 
 }

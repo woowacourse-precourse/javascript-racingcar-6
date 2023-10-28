@@ -1,6 +1,11 @@
+const CONSTANTS = {
+    max_vehicle_name : 5,
+    vehicle_can_move : 4
+};
+
 const MOVE_RANGE = {
-    FROM : 0,
-    TO : 9
+    from : 0,
+    to : 9
 }
 
-module.exports = { MOVE_RANGE }
+module.exports = { CONSTANTS, MOVE_RANGE }

@@ -47,7 +47,7 @@ class UpdateConstants {
     }
 
     #getMoveNumber(vehicleName) {
-        const MOVE_NUMBER = Random.pickNumberInRange(MOVE_RANGE.FROM, MOVE_RANGE.TO);
+        const MOVE_NUMBER = Random.pickNumberInRange(MOVE_RANGE.from, MOVE_RANGE.to);
         if (this.VALIDATE.moveNumberValidate(MOVE_NUMBER)) {
             this.#moveProcedure[vehicleName] += '-';
             return MOVE_NUMBER;
