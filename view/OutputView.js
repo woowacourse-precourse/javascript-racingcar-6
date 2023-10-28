@@ -15,6 +15,10 @@ class OutputView {
             Console.print(`${name[i]} : ${line}`);
         }
     }
+
+    static printWinners(winners) {
+        Console.print(`최종 우승자 : ${winners.join(", ")}`);
+    }
 }
 
 export default OutputView;
