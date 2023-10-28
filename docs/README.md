@@ -26,14 +26,14 @@
 
 ## `GameController` class 
 - ### 메소드
-    - [ ] `inputCars()` : 경주 자동차들의 이름을 입력받는다.
-        - [ ] 입력 안내 문구를 출력한다.
-        - [ ] 이름은 쉼표(,) 기준으로 구분한다.
-        - [ ] 자동차 등록 수 제한은 없다.
-        - [ ] 경주 자동차 이름 검사
+    - [x] `inputCars()` : 경주 자동차들의 이름을 입력받는다.
+        - [x] 입력 안내 문구를 출력한다.
+        - [x] 이름은 쉼표(,) 기준으로 구분한다.
+        - [x] 자동차 등록 수 제한은 없다.
+        - [x] 경주 자동차 이름 검사
             - `Validate` 클래스의 `validateCarName()` 활용
-    - [ ] `inputTryMoveCount()` : 전진 시도 횟수를 입력받는다.
-        - [ ] 전진 시도 횟수 검사
+    - [x] `inputTryMoveCount()` : 전진 시도 횟수를 입력받는다.
+        - [x] 전진 시도 횟수 검사
             - `Validate` 클래스의 `validatTryMoveCount()`
 
     - [ ] `start()` : 전진 시도 횟수에 따른 게임 진행
@@ -43,11 +43,11 @@
 - ### 멤버 변수
     - `cars` : `Car` 인스턴스로 구성된 배열
 - ###  메소드 
-    - [ ] `registCar()` : 입력받은 자동차 데이터를 `Car` 인스턴스에 저장한다.
+    - [x] `registCar()` : 입력받은 자동차 데이터를 `cars` 배열에 저장한다.
         - `cars` 에 `inputCars()`의 값을 배열로 변환하여 넣는다. 
-    - [ ] `moveCycle()` : 모든 `Car` 인스턴스를 `move()` 시킨다.
-    - [ ] `oneMoveCycleResult()` : 경주 자동차들의 이동 결과를 문자열로 반환한다.
-    - [ ] `getMaxDistance` : 경주 자동차의 최대 이동거리를 산출한다.
+    - [x] `moveCycle()` : 모든 `Car` 인스턴스를 `move()` 시킨다.
+    - [x] `oneMoveCycleResult()` : 경주 자동차들의 이동 결과를 문자열로 반환한다.
+    - [x] `getMaxDistance` : 경주 자동차의 최대 이동거리를 산출한다.
     - [ ] `getWinner` : 이동거리를 비교하여 경주 우승자를 구한다. 
         - 우승자는 여러 명이 나올 수 있다.
 
@@ -56,11 +56,11 @@
     - `name` : 경주 자동차 이름
     - `distance` : 경주 자동차 이동 거리
 - ### 메소드
-    - [ ] `isMove()` : `Car` 인스턴스 의 전진 여부를 파악하여 bolean형으로 리턴한다.
+    - [x] `isMove()` : `Car` 인스턴스 의 전진 여부를 파악하여 bolean형으로 리턴한다.
         - return 3이하: false 4이상 : true
-    - [ ] `move()` : 특정 조건에 따라 경주 자동차를 전진시킨다.
-    - [ ] `getDistance` : 이동거리를 숫자로 수치화한다.
-    - [ ] `toStringResult` : 현재 이동거리를 문자열로 생성한다.
+    - [x] `move()` : 특정 조건에 따라 경주 자동차를 전진시킨다.
+    - [x] `getDistance` : 이동거리를 숫자로 수치화한다.
+    - [x] `toStringResult` : 현재 이동거리를 문자열로 생성한다.
         - 예시
         ```
         name: 'hongs'
