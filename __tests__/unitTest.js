@@ -1,6 +1,9 @@
 import { repeatFunctionNTimes } from '../src/utils/repeatFunctionNTimes.js';
 import { calculateLongestDistance } from './../src/utils/calculateLongestDistance.js';
-import { hasDuplicate } from './../src/utils/validateValue.js';
+import {
+  valiadateDuplicteName,
+  hasDuplicate,
+} from './../src/utils/validateValue.js';
 import { MissionUtils } from '@woowacourse/mission-utils';
 import Car from '../src/models/Car';
 
@@ -51,5 +54,21 @@ describe('Car Model', () => {
     const car = new Car('TestCar');
     car.move();
     expect(car.position).toBe('-');
+  });
+});
+
+// Error Unit Test
+
+describe('valiadateDuplicteName', () => {
+  test('car 이름은 중복이 불가하다.', () => {
+    const carList = ['car1', 'car2', 'car1'];
+    expect(() => valiadateDuplicteName(carList)).toThrowError(
+      '[ERROR] car 이름은 중복이 불가합니다.',
+    );
+  });
+
+  test('중복이 없는 car 이름이면 테스트를 통과한다.', () => {
+    const carList = ['car1', 'car2', 'car3'];
+    expect(() => valiadateDuplicteName(carList)).not.toThrow();
   });
 });
