@@ -1,15 +1,25 @@
 # prologue
 
 이번엔 mvc패턴을 참고하여 코드를 설계
-model, view, controller
-여기서 view의 경우 console.print가 대신해주기에 그 역할을 제외
+여기서 view의 경우 콘솔에 출력만 하기에 제외
 
+종합저으로
 생성할 파일은
 
 -   App.js : 메인함수(시작지점)
 -   Data.js : 상수 및 변수들 저장
 -   Controller.js : 데이터 조작 후 출력까지 이후 데이터 업데이트
 
-# 1 getPlayer
+# Data.js
 
-# 2 getNumber
+### 변수
+
+-   플레이어 객체 ex) 이름 : 주행거리(숫자로)
+-   반복 횟수
+
+### 상수
+
+-   플레이어 객체 인풋 메시지
+-   반복 횟수 인풋 메시지
+-   "실행결과"
+-   "최종우승자 :"
