@@ -43,7 +43,7 @@ export class Game {
 
   async getHowManyLaps(carsArray) {
     const laps = await this.input.get(this.constants.tries);
-    this.compete(carsArray, laps);
+    this.compete(carsArray, +laps);
   }
 
   compete(carsArray, laps) {
@@ -59,7 +59,8 @@ export class Game {
       this.render(carsArray);
       round++;
     }
-    console.log(carsArray); // 디버깅 로그
+    // console.log(carsArray); // 디버깅 로그
+    this.whoDidWin(carsArray, laps);
   }
 
   render(array) {
@@ -67,5 +68,20 @@ export class Game {
       this.output.print(`${car.name} : ${car.showTrail(car.distance)}`);
     });
     this.output.print("\n");
+  }
+
+  whoDidWin(cars, laps) {
+    const winners = cars.filter((car) => car.distance === laps);
+    console.log(winners);
+
+    if (winners.length >= 2) {
+      const winnersName = winners.map((car) => car.name);
+      this.output.print(`최종 우승자 : ${winnersName.join(", ")}`);
+      return;
+    }
+
+    let winner;
+    [winner] = winners;
+    this.output.print(`최종 우승자 : ${winner.name}`);
   }
 }
