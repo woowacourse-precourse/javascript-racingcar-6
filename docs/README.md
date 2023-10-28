@@ -36,9 +36,9 @@
         - [x] 전진 시도 횟수 검사
             - `Validate` 클래스의 `validatTryMoveCount()`
 
-    - [ ] `start()` : 전진 시도 횟수에 따른 게임 진행
-    - [ ] `result()` : 게임 결과 (우승자 발표)
-
+    - [x] `start()` : 전진 시도 횟수에 따른 게임 진행
+    - [x] `result()` : 게임 결과 (우승자 발표)
+    
 ## `Racing` class
 - ### 멤버 변수
     - `cars` : `Car` 인스턴스로 구성된 배열
