@@ -13,6 +13,7 @@ const OutputView = Object.freeze({
     );
     Console.print(SYMBOLS.empty);
   },
+
   printRaceWinner(winner) {
     return Console.print(GRANDPRIX_RESULT_NOTIFICATION.printRaceWinner(winner));
   },
