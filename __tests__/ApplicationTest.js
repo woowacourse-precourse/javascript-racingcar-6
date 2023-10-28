@@ -59,4 +59,12 @@ describe("자동차 경주 게임", () => {
     // then
     await expect(app.play()).rejects.toThrow("[ERROR]");
   });
+
+  test("시도할 횟수가 숫자가 아닐 경우의 예외 처리", async () => {
+    const app = new App();
+    const notNumber = "abc";
+    MissionUtils.Console.readLineAsync.mockResolvedValue(notNumber);
+
+    await expect(app.getCycleCountInput()).rejects.toThrow("[ERROR]");
+  });
 });
