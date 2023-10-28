@@ -10,7 +10,7 @@ class Car {
     return this.#position;
   }
 
-  setPosition() {
+  printPosition() {
     this.#position.push('-');
   }
 

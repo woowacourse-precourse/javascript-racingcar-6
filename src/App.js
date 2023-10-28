@@ -30,17 +30,17 @@ class App {
     Console.print('실행 결과');
 
     for (let i = 0; i < move; i++) {
-      this.calculateMove(move);
+      this.calculateMove();
     }
 
     this.printWinner();
   }
 
-  calculateMove(move) {
+  calculateMove() {
     this.#carNames.forEach(car => {
       const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
       if (randomNumber >= 4) {
-        car.setPosition();
+        car.printPosition();
       }
       this.showProgress(car.getName(), car.getPosition());
     });
@@ -53,7 +53,7 @@ class App {
 
   printWinner() {
     this.#carNames.forEach(car => {
-      this.#resultObject[car.getName()] = Object.keys(car.getPosition()).length;
+      this.#resultObject[car.getName()] = car.getPosition().length;
     });
     const max = this.findMaxValue(this.#resultObject);
     const raceWinners = this.findWinner(this.#resultObject, max);
