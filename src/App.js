@@ -52,7 +52,7 @@ class App {
     const count = Number(inputCount);
     App.isValidCount(count);
 
-    this.initializeCarDistance(carList);
+    this.initializeDistance(carList);
 
     Console.print('\n실행 결과');
     for (let i = 0; i < count; i += 1) {
