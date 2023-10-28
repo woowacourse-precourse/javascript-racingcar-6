@@ -12,7 +12,7 @@
 
 ##### Play Racing
 
-- [] 시도 횟수만큼 루프 실행
+- [x] 시도 횟수만큼 루프 실행
 - [] 각 시행마다 모든 플레이어가 전진 시도
   - [] 0과 9 사이의 무작위 값이 4 이상인지 판별
 - [] 각 시행 결과 출력
@@ -35,6 +35,7 @@ RacingGame : 게임 인스턴스 생성
   - startGame() : 게임 시작 진입점
   - getCarRacePlayer() : 경주할 자동차 입력 받기
   - getAttemptCount() : 시도 횟수 입력 받기
+  - playRacing() : 시도 횟수만큼 race 시행
 
 GameManager : 자동차 경주 게임을 관리하고 진행하는 기능 제공
 
