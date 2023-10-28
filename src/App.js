@@ -20,6 +20,7 @@ class App {
 
     const carsObject = convertArrayToObject(racingCarNames);
 
+    Console.print("\n실행 결과");
     let maxDistance = 0;
     for (let i = 0; i < inputAttemptCount; i++) {
       Object.entries(carsObject).forEach(([carName, carDistance]) => {
