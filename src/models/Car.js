@@ -1,3 +1,5 @@
+import Util from '../utils/Util.js';
+
 class Car {
   #distance;
 
@@ -14,6 +16,14 @@ class Car {
 
   getDistance() {
     return this.#distance;
+  }
+
+  move() {
+    const randomNumber = Util.getInRangeRandomNumber();
+
+    if (randomNumber >= 4) {
+      this.#distance += 1;
+    }
   }
 }
 
