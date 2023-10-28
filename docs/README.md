@@ -2,19 +2,19 @@
 
 ## 구현할 기능 목록
 
-- [ ] 사용자로부터 경주 할 자동차 이름 받아오기
+- [x] 사용자로부터 경주 할 자동차 이름 받아오기
 
-  - [ ] 쉼표를 기준으로 구분
-  - [ ] 5자 이하의 이름 사용
+  - [x] 쉼표를 기준으로 구분
+  - [x] 5자 이하의 이름 사용
 
   ```
   pobi,woni,jun
   ```
 
-  - [ ] 사용자가 잘못된 값을 입력한 경우 예외 발생 후 종료
+  - [x] 사용자가 잘못된 값을 입력한 경우 예외 발생 후 종료
 
   ```
-  [ERROR] 자동차 이름이 잘못된 형식입니다.
+  [ERROR] 자동차 이름은 5자 이하여야 합니다.
   ```
 
 - [ ] 사용자로부터 경주를 시도할 회차 수 받아오기
@@ -90,15 +90,15 @@ jun : -----
 
 ## 프로그래밍 요구 사항 확인 목록
 
-- [ ] Node.js 18.17.1 버전에 실행 가능해야 함
-- [ ] 프로그램 실행 시작점은 `App.js`의 `play` 메서드
+- [x] Node.js 18.17.1 버전에 실행 가능해야 함
+- [x] 프로그램 실행 시작점은 `App.js`의 `play` 메서드
   ```
   const app = new App();
   app.play();
   ```
 - [ ] package.json 변경 불가 & 순수 Vanila JS 구현
 - [ ] [JavaScript 코드 컨벤션](https://github.com/woowacourse/woowacourse-docs/tree/main/styleguide/javascript)을 지키면서 프로그래밍
-- [ ] [커밋 메시지 컨벤션 가이드](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)를 참고하여 기능 목록 단위로 커밋
+- [x] [커밋 메시지 컨벤션 가이드](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)를 참고하여 기능 목록 단위로 커밋
 - [ ] 프로그램 종료 시 `process.exit()`를 호출하지 않음
 - [ ] 프로그래밍 요구 사항에서 달리 명시하지 않는 한 파일, 패키지 이름 수정 및 이동 금지
 - [ ] indent depth를 2까지만 허용
