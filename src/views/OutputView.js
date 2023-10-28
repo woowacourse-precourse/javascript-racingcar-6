@@ -13,7 +13,13 @@ const OutputView = {
       output += `${name} : ${progressString}\n`;
     });
 
-    this.printStaticMessage(output);
+    return this.printStaticMessage(output);
+  },
+
+  printFinalWinner(winners) {
+    let message = '';
+    message += `최종 우승자 : ${winners.join(', ')}`;
+    return this.printStaticMessage(message);
   },
 };
 
