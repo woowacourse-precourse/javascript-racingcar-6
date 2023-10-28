@@ -13,26 +13,27 @@ export class Game {
   }
 
   async init() {
-    const entryList = await this.entry();
-    this.getIn(entryList);
+    try {
+      const entryList = await this.entry();
+      this.getIn(entryList);
+    } catch (error) {
+      this.output.print(error);
+      throw error;
+    }
   }
 
   async entry() {
-    let isValid = false;
-    while (!isValid) {
-      const inputString = await this.input.get(this.constants.askNames);
-      const arrayCars = inputString.split(",");
-      if (this.verify.exceedLength(arrayCars)) {
-        this.output.print(this.constants.exceeded);
-        continue;
-      }
-      if (this.verify.findDuplicates(arrayCars)) {
-        this.output.print(this.constants.duplicates);
-        continue;
-      }
-      isValid = true;
-      return arrayCars;
+    const inputString = await this.input.get(this.constants.askNames);
+    const arrayCars = inputString.split(",");
+    if (this.verify.exceedLength(arrayCars)) {
+      this.output.print(this.constants.exceeded);
+      throw new Error("[ERROR] 입력가능한 글자 수를 초과했습니다.");
     }
+    if (this.verify.findDuplicates(arrayCars)) {
+      this.output.print(this.constants.duplicates);
+      throw new Error("[ERROR] 중복된 이름은 입력할 수 없습니다.");
+    }
+    return arrayCars;
   }
 
   getIn(array) {
@@ -59,7 +60,6 @@ export class Game {
       this.render(carsArray);
       round++;
     }
-    // console.log(carsArray); // 디버깅 로그
     this.whoDidWin(carsArray, laps);
   }
 
