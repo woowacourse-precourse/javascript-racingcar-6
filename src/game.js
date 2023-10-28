@@ -3,6 +3,7 @@ import { MissionUtils } from '@woowacourse/mission-utils';
 export default class Game {
   async start() {
     await this.enterCarNames();
+    await this.enterNumberOfAttempts();
   }
 
   async enterCarNames() {
@@ -17,5 +18,16 @@ export default class Game {
     }
 
     return carList;
+  }
+
+  async enterNumberOfAttempts() {
+    MissionUtils.Console.print('시도할 횟수는 몇 회인가요?');
+    const count = await MissionUtils.Console.readLineAsync('');
+
+    if (/[^1-9]/.test(count)) {
+      throw new Error('[ERROR] 횟수는 숫자 형식만 입력 가능합니다.');
+    }
+
+    return count;
   }
 }
