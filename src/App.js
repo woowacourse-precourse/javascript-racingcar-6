@@ -15,7 +15,17 @@ class App {
   seperateNames(names) {
     // 이름에 대한 예외 처리 필요
     const seperated = names.split(',');
+
+    seperated.forEach(el => {
+      this.isValidName(el);
+    });
+
     return seperated;
+  }
+
+  isValidName(name) {
+    const regEx = /^[a-z]*$/;
+    if(!name.match(regEx)) throw new Error('[ERROR] 자동차 이름은 영문 소문자만 가능합니다.');
   }
 }
 
