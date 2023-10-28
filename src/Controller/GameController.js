@@ -8,7 +8,6 @@ export default class GameController {
 
   async start() {
     const carNames = await View.readCarNames();
-    console.log(carNames);
     this.racingCar.getRacingCars(carNames);
   }
 }
