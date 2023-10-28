@@ -16,19 +16,19 @@ class InputCars {
 
   #validateCarNames(carNames) {
     if (carNames.some(name => name.length === 0)) {
-      throw new Error('자동차 이름은 공백일 수 없습니다.');
+      throw new Error('[ERROR] 자동차 이름은 공백일 수 없습니다.');
     }
 
     if (new Set(carNames).size !== carNames.length) {
-      throw new Error('자동차 이름이 중복되었습니다.');
+      throw new Error('[ERROR] 자동차 이름이 중복되었습니다.');
     }
 
     if (carNames.some(name => name !== name.trim())) {
-      throw new Error('자동차 이름 양 끝에 공백이 있습니다.');
+      throw new Error('[ERROR] 자동차 이름 양 끝에 공백이 있습니다.');
     }
 
     if (carNames.some(name => /\s/.test(name))) {
-      throw new Error('자동차 이름에 공백이 포함되어 있습니다.');
+      throw new Error('[ERROR] 자동차 이름에 공백이 포함되어 있습니다.');
     }
   }
 }
