@@ -10,7 +10,7 @@ const MESSAGES = Object.freeze({
   finalWinner: '최종 우승자 : ',
   winnerDelimeter: ', ',
   invalidNameLength: `${PREFIX}이름은 5글자 이하로 엽릭해주세요.`,
-  invalidTrialCount: `${PREFIX}시도할 횟수를 숫자로 입력해주세요.`,
+  invalidTrialCount: `${PREFIX}시도할 횟수를 1 이상의 양의 정수로 입력해주세요.`,
 });
 
 export default MESSAGES;
