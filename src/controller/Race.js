@@ -22,6 +22,7 @@ class Race {
     await this.#registerCarsFromUserInput();
     await this.#setRoundNumberFromUserInput();
     this.#startGame();
+    this.#AnnounceWinners();
   }
 
   async #registerCarsFromUserInput() {
@@ -44,25 +45,9 @@ class Race {
     }
   }
 
-  #processRound() {
-    const roundResult = this.#racingCars.moveAll();
-
-    for (const carName in roundResult) {
-      const isMoved = roundResult[carName];
-      if (isMoved) this.#increaseCarDistance(carName);
-    }
-
-    OutputView.printCarDistanceRecord(this.#carDistanceRecord);
-  }
-
-  #increaseCarDistance(carName) {
-    const prevCarDistance = this.#carDistanceRecord[carName] || 0;
-
-    const updatedRecord = {
-      ...this.#carDistanceRecord,
-      [carName]: prevCarDistance + 1,
-    };
-    this.#carDistanceRecord = updatedRecord;
+  #AnnounceWinners() {
+    const winners = Race.#getWinners(this.#carDistanceRecord);
+    throw new Error("구현 마저해야 함");
   }
 
   #registerCars(cars) {
@@ -93,6 +78,36 @@ class Race {
     if (number > Race.#MAX_ROUND_NUMBER) {
       throw Error(ERROR_MESSAGE.moreThanMaxRound(Race.#MAX_ROUND_NUMBER));
     }
+  }
+
+  #processRound() {
+    const roundResult = this.#racingCars.moveAll();
+
+    for (const carName in roundResult) {
+      const isMoved = roundResult[carName];
+      if (isMoved) this.#increaseCarDistance(carName);
+    }
+
+    OutputView.printCarDistanceRecord(this.#carDistanceRecord);
+  }
+
+  #increaseCarDistance(carName) {
+    const prevCarDistance = this.#carDistanceRecord[carName] || 0;
+
+    const updatedRecord = {
+      ...this.#carDistanceRecord,
+      [carName]: prevCarDistance + 1,
+    };
+    this.#carDistanceRecord = updatedRecord;
+  }
+
+  static #getWinners(record) {
+    const distanceCounts = Object.values(record);
+    const maxCount = Math.max(...distanceCounts);
+
+    const carNames = Object.keys(record);
+    const winners = carNames.filter((name) => record[name] === maxCount);
+    return winners;
   }
 }
 

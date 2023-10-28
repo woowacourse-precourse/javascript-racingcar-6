@@ -2,7 +2,7 @@ import { Console } from "@woowacourse/mission-utils";
 import { OUTPUT_MESSAGE } from "../constants/messages.js";
 
 class OutputView {
-  static #PASSED_DISTANCE = "-";
+  static #DISTANCE = "-";
 
   static printShowResult() {
     Console.print(OUTPUT_MESSAGE.SHOW_RESULT);
@@ -20,7 +20,7 @@ class OutputView {
 
     for (const carName in carDistanceRecord) {
       const distanceCount = carDistanceRecord[carName];
-      const distances = new Array(distanceCount).fill(OutputView.#PASSED_DISTANCE).join("");
+      const distances = new Array(distanceCount).fill(OutputView.#DISTANCE).join("");
       result.push(`${carName} : ${distances}`);
     }
 
