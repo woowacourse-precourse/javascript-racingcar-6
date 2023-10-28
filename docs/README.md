@@ -182,5 +182,5 @@ class UpdateConstants {
 
 
 
-![image-20231028224216576](/Users/ijonghyeon/Library/Application Support/typora-user-images/image-20231028224216576.png)
+![image-20231028224216576](스크린샷 2023-10-28 오후 10.44.45.png)
 
