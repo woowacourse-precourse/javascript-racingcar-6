@@ -7,6 +7,7 @@ class App {
     this.inputCount;
     this.carList;
     this.gameStatus = [];
+    this.finalScore = [];
   }
 
   async play() {
@@ -18,6 +19,8 @@ class App {
     await this.makeForCheckGameStatus(this.carList);
     await this.getUserWantMoveCount();
     this.checkGoStop();
+    this.checkScore();
+    this.awards();
   }
 
   // 전진 또는 정지를 위한 랜덤 넘버 생성
@@ -25,22 +28,51 @@ class App {
     return Random.pickNumberInRange(0, 9);
   }
 
-  findWinner(){
-    const playerList = this.gameStatus
+  checkScore(){
+    this.gameStatus.forEach(car => {
+      const score = car.split(":")[1].trim();
+      this.finalScore.push(Number(score.length));
+    });
+    // console.log("finalScore", this.finalScore);
+    // console.log(this.finalScore[0]);
+  }
+
+  awards(){
+    const maxScore = Math.max(...this.finalScore);
+    
+    // 공동 우승 찾기
+    const winner = [];
+    for (let i = 0; i < this.finalScore.length; i++) {
+      if (this.finalScore[i] === maxScore){
+        winner.push(this.gameStatus[i].split(":")[0].trim());
+      }
+    }
+
+    console.log(winner);
+    console.log("winner length",winner[0],winner.length);
+    if (winner.length === 1){
+      Console.print(`최종 우승자 : ${winner[0]}`);
+    }
+
+    if (winner.length !== 1){
+      Console.print(`최종 우승자 : ${winner.join(", ")}`);
+    }
     
   }
 
+
+
   checkGoStop(){
     for (let i = 0; i < this.inputCount; i++) {
-      this.gameStatus.forEach(car => {
-        let score = 0;
+      this.gameStatus.forEach((car,i) => {
         const randomNumber = this.makeRandomNumber();
-        console.log("randomNumber", randomNumber);
+        // console.log("randomNumber", randomNumber);
         if (randomNumber >= 4) {
-          car[0] += "-";
-          console.log("go \n", car[0]);
+          this.gameStatus[i] += "-";
         }
+        Console.print(this.gameStatus[i]);
       });
+    
     }
   }
 
