@@ -1,19 +1,17 @@
-export const findWinner = (plyaersArray,scoreData) => {
-  
-  const winnerScore = Math.max(...scoreData);
+export const findWinner = (playersArray, scoreArray) => {
+  const winnerScore = Math.max(...scoreArray);
 
-  const temp = plyaersArray.map((element, index) => {
-
-    return [element,scoreData[index]];
+  const playerWithScoreArray = playersArray.map((player, index) => {
+    return [player, scoreArray[index]];
   })
 
-  const table = Object.fromEntries(temp);
-  const winnerArray = []
+  const racingBoard = Object.fromEntries(playerWithScoreArray);
+  const winnerArray = [];
 
-  for(let player in table) {
-    
-    if(table[player] === winnerScore) winnerArray.push(player);
-    
+  for (let player in racingBoard) {
+    if (racingBoard[player] === winnerScore) {
+      winnerArray.push(player);
+    }
   }
 
   return winnerArray;

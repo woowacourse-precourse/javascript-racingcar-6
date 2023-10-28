@@ -3,31 +3,32 @@ import { randomArrayGenerator } from "../util/RandomArrayGenerator.js";
 import Converter from "../util/Converter.js";
 import { Console } from "@woowacourse/mission-utils";
 import { findWinner } from "./FindeWinner.js";
+import { GAME_MESSEAGE } from "../constants/Messeage.js";
 
 class RacingController {  
   playersArray;
   attemptNumber;
 
-  scoreData = [];
-  traceData = [];
+  scoreArray = [];
+  traceArray = [];
   playTime = 0;
 
   constructor(playersArray, attemptNumber) {
-    this.playersArray = playersArray
+    this.playersArray = playersArray;
     this.attemptNumber = attemptNumber;
   }
 
   startRacing(randomArray) {
-    this.scoreData = Converter.scoreFilter(randomArray); 
-    this.traceData = Converter.traceFilter(randomArray);
+    this.scoreArray = Converter.scoreFilter(randomArray); 
+    this.traceArray = Converter.traceFilter(randomArray);
 
-    Console.print('실행 결과');
+    Console.print(GAME_MESSEAGE.executeResult);
     this.traceMaker();
     
   }
 
   traceMaker() {                                          
-    this.traceData.forEach((element, index) => {
+    this.traceArray.forEach((element, index) => {
       Console.print(this.playersArray[index] + ' : ' + element);
     })  
     Console.print('');
@@ -35,21 +36,21 @@ class RacingController {
     this.playTime++;
 
     if (this.playTime === this.attemptNumber) {
-      
-      const result = findWinner(this.playersArray,this.scoreData);
-      return Console.print(`최종 우승자 : ${result.join(', ')}`);
+      const result = findWinner(this.playersArray, this.scoreArray);
+
+      return Console.print(`${GAME_MESSEAGE.winner} : ${result.join(', ')}`);
     }
     
-    this.renewData(); 
+    this.updateRacingBoard(); 
   }
 
-  renewData() {                                          
-    const newRandomArray = randomArrayGenerator(this.playersArray.length)
+  updateRacingBoard() {                                          
+    const newRandomArray = randomArrayGenerator(this.playersArray.length);
     
-    this.scoreData = scoreAccumulator(this.scoreData, newRandomArray);
-    this.traceData = traceAccumulator(this.traceData, newRandomArray);
+    this.scoreArray = scoreAccumulator(this.scoreArray, newRandomArray);
+    this.traceArray = traceAccumulator(this.traceArray, newRandomArray);
 
-    this.traceMaker() 
+    this.traceMaker(); 
   }
 }
 

@@ -5,20 +5,22 @@ import { randomArrayGenerator } from "./util/RandomArrayGenerator.js";
 import Error from "./error/Error.js";
 
 class App {
+
+  constructor() {
+    
+    this.error = new Error();
+  }
   
 
   async play() {
     const playersArray = await Console.readLineAsync(`${GAME_MESSEAGE.inputName}\n`);
-
-    const check = new Error();
-    check.name(playersArray);
+    this.error.name(playersArray);
 
     const k = playersArray.split(',');
     
     const attemptNumber = await Console.readLineAsync(`${GAME_MESSEAGE.inputAttempt}\n`);
-
-    check.attempt(attemptNumber);
-
+    this.error.attempt(attemptNumber);
+    
     Console.print('');
 
     const a = new RacingController(k, Number(attemptNumber));
@@ -30,8 +32,9 @@ class App {
 
 }
 
+/*
 const app = new App()
 app.play();
-
+*/
 
 export default App;
