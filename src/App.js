@@ -1,7 +1,10 @@
 import { Console } from '@woowacourse/mission-utils';
 
 class App {
-  async play() {}
+  async play() {
+    const racingCars = await this.getCarName();
+    const tryCount = await this.getTryCount();
+  }
 
   async getCarName() {
     const inputCarName = await Console.readLineAsync(
