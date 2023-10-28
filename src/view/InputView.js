@@ -13,6 +13,8 @@ const InputView = {
 
   async readRacingCount() {
     const racingCount = await Console.readLineAsync('시도할 횟누는 몇 회인가요?\n');
+
+    Validator.checkRacingCount(racingCount);
     return racingCount;
   },
 };
