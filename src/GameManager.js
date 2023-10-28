@@ -26,8 +26,8 @@ class GameManager {
   }
 
   announceInterimResult() {
-    const cars = [{ name: 'pobi', movement: '-' }];
-    cars.forEach((car) => {
+    this.cars.forEach((car) => {
+      car.move();
       Console.print(`${car.name} : ${car.movement}`);
     });
   }
