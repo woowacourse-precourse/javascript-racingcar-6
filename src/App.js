@@ -6,6 +6,7 @@ const Random = MissionUtils.Random;
 class App {
   constructor() {
     this.carMoveArray = [];
+    this.winnerCarArray = [];
   }
 
   async carNameInput() {
@@ -72,6 +73,18 @@ class App {
   winnerMovelength() {
     const sortMoveArray = [...this.carMoveArray].sort((a, b) => b.length - a.length);
     return sortMoveArray[0].length;
+  }
+
+  getWinnerArray(winnerLength) {
+    this.carMoveArray.forEach((carMove, index) => {
+      this.winnerCar(carMove, winnerLength, index);
+    });
+  }
+
+  winnerCar(carMove, winnerLength, index) {
+    if(carMove.length === winnerLength) {
+      this.winnerCarArray.push(this.carMoveArray[index]);
+    }
   }
 
   async play() {
