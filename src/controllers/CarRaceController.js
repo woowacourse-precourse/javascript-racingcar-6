@@ -14,25 +14,25 @@ class CarRaceController {
     this.model = new CarRaceModel();
   }
 
-  async init() {
-    const { model, gamePlay } = this;
+  async initializeGame() {
+    const { model, playGameRound } = this;
 
-    const inputCarList = await this.getCarName();
+    const inputCarList = await this.promptCarNames();
     model.setCarList(inputCarList);
 
-    const moveCount = await this.getMoveCount();
+    const moveCount = await this.promptMoveCount();
     model.setMoveCount(moveCount);
 
     model.carList.forEach(carName => model.initGameProgress(carName));
 
-    repeatFunctionNTimes(model.moveCount, gamePlay.bind(this));
+    repeatFunctionNTimes(model.moveCount, playGameRound.bind(this));
 
     model.calculateWinner();
 
     this.printWinner();
   }
 
-  async getMoveCount() {
+  async promptMoveCount() {
     const { readMoveCount } = CarRaceView;
 
     const moveCountInput = await readMoveCount();
@@ -42,17 +42,17 @@ class CarRaceController {
     return moveCount;
   }
 
-  async getCarName() {
+  async promptCarNames() {
     const { readCarNames } = CarRaceView;
 
     const carListInput = await readCarNames();
     const inputCarList = carListInput.split(',').map(carName => carName.trim());
-    this.validateCar(inputCarList);
+    this.validateCarNames(inputCarList);
 
     return inputCarList;
   }
 
-  validateCar(inputCarList) {
+  validateCarNames(inputCarList) {
     inputCarList.forEach(carName => validateCarName(carName));
 
     const isDuplicte = hasDuplicate(inputCarList);
@@ -69,7 +69,7 @@ class CarRaceController {
     printOutput(`최종 우승자 : ${model.gameWinner}`);
   }
 
-  gamePlay() {
+  playGameRound() {
     const { printProgress, printNewline } = CarRaceView;
     const { model } = this;
 
