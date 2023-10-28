@@ -27,8 +27,24 @@ class App {
     });
   }
 
+  // 3. 몇 번의 이동을 할 것인지 입력 받기
+  async inputRound() {
+    const input = await Console.readLineAsync("시도할 횟수는 몇 회인가요?");
+    this.isValdiateRound(input);
+  }
+
+  isValdiateRound(round) {
+    if (isNaN(+round)) {
+      throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
+    } else {
+      this.round = +round;
+      return;
+    }
+  }
+
   async play() {
-    this.inputCarList();
+    await this.inputCarList();
+    await this.inputRound();
   }
 }
 
