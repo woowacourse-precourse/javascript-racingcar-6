@@ -26,7 +26,7 @@ class App {
   }
 
   startRace() {
-    const move = this.#moveCount.getMove();
+    const move = this.#moveCount;
     Console.print('실행 결과');
 
     for (let i = 0; i < move; i++) {
