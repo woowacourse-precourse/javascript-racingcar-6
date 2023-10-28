@@ -1,5 +1,6 @@
 import Race from './Race/index.js';
-import { Input } from './View/index.js';
+import { Input, Output } from './View/index.js';
+import { MESSAGE } from './constants/index.js';
 
 class RacingCarGame {
   constructor() {
@@ -20,6 +21,13 @@ class RacingCarGame {
     const lapCount = await Input.readLapCount();
     this.race.setLapCount(lapCount);
     this.compete();
+  }
+
+  compete() {
+    const result = this.race.makeLapResult();
+    Output.log(MESSAGE.result);
+    Output.log(result);
+    this.prize();
   }
 }
 
