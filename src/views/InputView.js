@@ -11,6 +11,15 @@ const InputView = {
       throw error;
     }
   },
+
+  async readTryNumber() {
+    try {
+      const tryNumber = await Console.readLineAsync(INPUT_MESSAGE.tryNumber);
+      return Number(tryNumber);
+    } catch (error) {
+      throw error;
+    }
+  },
 };
 
 export default InputView;

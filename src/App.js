@@ -13,10 +13,15 @@ class App {
     const carName = await InputView.readCarName();
 
     this.validate(carName);
+    await this.readTryNumber();
   }
 
   validate(carName) {
     ErrorHandler(validateCarName, carName);
+  }
+
+  async readTryNumber() {
+    const tryNumber = await InputView.readTryNumber();
   }
 }
 
