@@ -26,22 +26,8 @@ class App {
     this.preparationRace();
     this.startRace();
 
-    // 3-a
-    this.race.sort((a, b) => {
-      return b[1] - a[1];
-    });
-    // 3-b
-    for (const item of this.race) {
-      if (item[1] == this.race[0][1]) {
-        this.winner.push(item[0]);
-      } else {
-        break;
-      }
-    }
-    // 3-c
-    MissionUtils.Console.print(
-      `${RACE_WINNER} : ${this.winner.join(WINNER_STANDARD)}`
-    );
+    this.sortResult();
+    this.announceResult();
   }
 
   async getCarName() {
@@ -84,6 +70,24 @@ class App {
       });
       MissionUtils.Console.print(RACE_RESULT_GAP);
     }
+  }
+
+  sortResult() {
+    this.race.sort((a, b) => {
+      return b[1] - a[1];
+    });
+    for (const item of this.race) {
+      if (item[1] == this.race[0][1]) {
+        this.winner.push(item[0]);
+      } else {
+        break;
+      }
+    }
+  }
+  announceResult() {
+    MissionUtils.Console.print(
+      `${RACE_WINNER} : ${this.winner.join(WINNER_STANDARD)}`
+    );
   }
 }
 
