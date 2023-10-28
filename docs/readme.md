@@ -47,7 +47,7 @@
     </tr>
     <tr>
         <td><input type="checkBox" disabled></td>
-        <td>인터페이스 컴포넌트</td>
+        <td rowsp>인터페이스 컴포넌트</td>
         <td>사용자 입력</td>
     </tr>
     <tr>
@@ -75,4 +75,73 @@
         <td>로직 컴포넌트</td>
         <td>우승자 정보 전달 기능</td>
     </tr>   
+</table>
+
+<br>
+
+### 사용자 입력 테스트
+
+<table>
+    <tr>
+        <th style = 'width : 100px'>완료 상태</th>
+        <th>테스트</th>
+    </tr>
+    <tr>
+        <td><input type="checkBox" disabled></td>
+        <td>자동차 이름은 쉼표 기준 구분</td>
+    </tr>
+    <tr>
+        <td><input type="checkBox" disabled></td>
+        <td>자동차 이름은 5자 이하로 제한</td>
+    </tr>
+    <tr>
+        <td><input type="checkBox" disabled></td>
+        <td>시도 횟수 입력 기능</td>
+    </tr>
+</table>
+
+<br>
+
+### 기능 테스트
+
+<table>
+    <tr>
+        <th style = 'width : 100px'>완료 상태</th>
+        <th>테스트</th>
+    </tr>
+    <tr>
+        <td><input type="checkBox" disabled></td>
+        <td>잘못된 값을 입력할 경우 예외 처리</td>
+    </tr>
+    <tr>
+        <td><input type="checkBox" disabled></td>
+        <td>주어진 횟수 자동차 움직임 판별</td>
+    </tr>
+    <tr>
+        <td><input type="checkBox" disabled></td>
+        <td>랜덤 값 0-9 중 4 이상일 경우 이동 판별</td>
+    </tr>
+</table>
+
+<br>
+
+### 출력 테스트
+
+<table>
+    <tr>
+        <th style = 'width : 100px'>완료 상태</th>
+        <th>테스트</th>
+    </tr>
+    <tr>
+        <td><input type="checkBox" disabled></td>
+        <td>자동차 게임 완료 후 누가 우승했는지 출력</td>
+    </tr>
+    <tr>
+        <td><input type="checkBox" disabled></td>
+        <td>우승자는 한 명 이상일 수 있음</td>
+    </tr>
+    <tr>
+        <td><input type="checkBox" disabled></td>
+        <td>우승자가 여러 명일 경우 쉼표(,)로 구분</td>
+    </tr>
 </table>
