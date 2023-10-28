@@ -59,12 +59,12 @@ export class Game {
       this.render(carsArray);
       round++;
     }
-    console.log(carsArray);
+    console.log(carsArray); // 디버깅 로그
   }
 
   render(array) {
     array.forEach((car) => {
-      this.output.print(`${car.name}: ${car.showTrail(car.distance)}`);
+      this.output.print(`${car.name} : ${car.showTrail(car.distance)}`);
     });
     this.output.print("\n");
   }
