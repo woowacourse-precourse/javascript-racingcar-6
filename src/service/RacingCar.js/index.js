@@ -1,8 +1,8 @@
-import { MESSAGES } from "../../constants/messages";
-import { Cars } from "../../domain";
+import { console, readLine, shouldCarRun } from "../../utils";
+import { MESSAGES } from "../../constants";
 import { CustomError } from "../../exceptions";
-import { readLine, shouldCarRun } from "../../utils";
-import { console } from "../../utils/console";
+
+import { Cars } from "../../domain";
 
 const CAR_NAME_LENGTH_LIMIT = 5;
 
@@ -27,11 +27,11 @@ export class RacingCarGame {
   }
 
   async promptTotalRounds() {
-    const totalRoundsInput = await readLine(MESSAGES.PLACEHOLDER.ROUND);
+    const totalRoundsInput = +(await readLine(MESSAGES.PLACEHOLDER.ROUND));
 
     this.#validateTotalRounds(totalRoundsInput);
 
-    this.#totalRounds = +totalRoundsInput;
+    this.#totalRounds = totalRoundsInput;
   }
 
   play() {
@@ -77,8 +77,8 @@ export class RacingCarGame {
     if (totalRounds <= 0)
       throw new CustomError(MESSAGES.ERROR.TOTAL_ROUNDS.LENGTH);
 
-    // if (!Number.isInteger(totalRounds))
-    //   throw new CustomError(MESSAGES.ERROR.TOTAL_ROUNDS.NOT_INTEGER);
+    if (!Number.isInteger(totalRounds))
+      throw new CustomError(MESSAGES.ERROR.TOTAL_ROUNDS.NOT_INTEGER);
   }
 
   #getRoundResult() {
