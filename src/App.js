@@ -2,7 +2,7 @@ import { Console, Random } from "@woowacourse/mission-utils";
 
 class App {
   constructor() {
-    this.results = {}; // 각 자동차의 결과를 저장하는 객체
+    this.results = []; // 각 자동차의 결과를 저장하는 객체
   }
 
   async play() {
@@ -15,14 +15,15 @@ class App {
     );
     const input = await Console.readLineAsync("");
     const carArr = input.split(",");
-    Console.print(carArr);
     this.checkInputValidity(carArr);
   }
 
   checkInputValidity(carArr) {
     carArr.map((car) => {
       if (car.length > 5) {
-        throw new Error("숫자가 잘못된 형식입니다. 5자 이하만 가능합니다.");
+        throw new Error(
+          "[ERROR] 숫자가 잘못된 형식입니다. 5자 이하만 가능합니다."
+        );
       }
     });
     this.inputTrialNum(carArr);
@@ -33,10 +34,18 @@ class App {
     const trialNum = await Console.readLineAsync("");
 
     if (Number(isNaN(trialNum))) {
-      throw new Error("숫자가 아닙니다.");
+      throw new Error("[ERROR] 숫자가 아닙니다.");
     }
-
+    this.addObj(carArr);
+    Console.print("");
+    Console.print("실행 결과");
     this.racingCar(carArr, trialNum);
+  }
+
+  addObj(carArr) {
+    carArr.forEach((car) => {
+      this.results.push({ car, state: [] });
+    });
   }
 
   racingCar(carArr, trialNum) {
@@ -44,25 +53,46 @@ class App {
       carArr.forEach((car) => {
         this.calcResult(car);
       });
-      Console.print("");
+
       this.printResults();
+      Console.print("");
     }
+    this.printWinner();
+  }
+
+  printWinner() {
+    const winners = [];
+
+    let maxDistance = -1;
+    this.results.forEach((result) => {
+      if (result.state.toString().length > maxDistance) {
+        maxDistance = result.state.toString().length;
+      }
+    });
+
+    this.results.forEach((result) => {
+      if (result.state.toString().length === maxDistance) {
+        winners.push(result.car);
+      }
+    });
+
+    Console.print("최종 우승자: " + winners.join(", "));
   }
 
   printResults() {
-    for (const car in this.results) {
-      Console.print(`${car} : ${this.results[car]}`);
-    }
+    this.results.forEach((result) => {
+      const movements = result.state.join("");
+      Console.print(`${result.car} : ${movements}`);
+    });
   }
 
   calcResult(car) {
     const condition = this.racingCondition();
 
-    let carResult = this.results[car] || ""; // 자동차의 이전 결과 가져오기
-    if (condition === "전진") {
-      carResult += "-";
-    }
-    this.results[car] = carResult;
+    const addState = condition === "전진" ? "-" : "";
+
+    const carName = this.results.find((result) => result.car === car);
+    carName.state.push(addState);
   }
 
   racingCondition() {
