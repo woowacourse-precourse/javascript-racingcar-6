@@ -9,6 +9,9 @@ async function getCar() {
     "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
   );
   value = value.split(",");
+  value.map((e) => {
+    if (e.length > 5) throw Error("[ERROR] 차 이름의 길이가 5 초과입니다.");
+  });
   return value;
 }
 async function getTryNum() {
