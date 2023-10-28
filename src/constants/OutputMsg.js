@@ -5,8 +5,11 @@ const OUTPUT_MSG = {
 }
 
 const ERROR_MSG = {
-    USER_NAME_ERROR : '[ERROR] 사용자 이름은 5자 이하만 가능합니다.',
-    PLAY_TIME_ERROR : '[ERROR] 잘못된 시도 횟수를 입력하셨습니다.'
+    USER_NAME_LENGTH_ERROR : '[ERROR] 사용자 이름은 5자 이하만 가능합니다.',
+    USER_NAME_REGAX_ERROR : '[ERROR] 사용자 이름에 특수문자 및 공백은 사용할 수 없습니다.',
+    PLAY_TIME_ERROR : '[ERROR] 잘못된 시도 횟수를 입력하셨습니다.',
+    PLAY_TIME_REGAX_ERROR : '[ERROR] 특수문자 및 공백은 사용할 수 없습니다.',
+    PLAY_TIME_NOT_NULL_ERROR : '[ERROR] 시도 횟수를 입력해주세요',
 }
 
 module.exports = { OUTPUT_MSG , ERROR_MSG }

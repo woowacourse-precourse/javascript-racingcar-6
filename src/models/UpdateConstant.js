@@ -24,6 +24,7 @@ class UpdateConstants {
     }
 
     updateGamePlayTimes(playTime) {
+        this.VALIDATE.playTimeRegaxValidate(playTime);
         this.#gamePlayTimes = Number(playTime);
         this.VALIDATE.playTimeValidate(this.#gamePlayTimes);
         return this.#gamePlayTimes;
