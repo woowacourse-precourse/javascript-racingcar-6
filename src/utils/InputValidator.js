@@ -10,6 +10,7 @@ const InputValidator = {
       throw new Error(ErrorMessage.NAME_DUPLICATE_ERROR);
     if (input.replace(/\s/g, "").length !== input.length)
       throw new Error(ErrorMessage.NAME_CONTAIN_GAP_ERROR);
+    if (input.length === 0) throw new Error(ErrorMessage.NAME_INPUT_ERROR);
   },
 
   validateTimesNumber(input) {
