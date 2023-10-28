@@ -3,7 +3,7 @@ import { InputView } from './InputView.js';
 import { MESSAGE } from '../constants/Message.js';
 
 export const View = {
-  async readPlayerNames() {
+  async readCarNames() {
     return await InputView.inputLine(MESSAGE.NAME);
   },
 
