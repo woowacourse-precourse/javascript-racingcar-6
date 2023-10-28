@@ -20,3 +20,11 @@ export const isQuantityValid = (input) => {
     return quantity >= SYSTEM.quantity_min && quantity <= SYSTEM.quantity_max;
   });
 };
+
+export const isLanguageValid = (input) => {
+  return input.split(SYSTEM.delimiter).every((name) => {
+    const pattern = new RegExp(`[^${SYSTEM.koreanPattern}${SYSTEM.englishPattern}]+`, 'g');
+    console.log(pattern);
+    return !pattern.test(name);
+  });
+};
