@@ -1,4 +1,5 @@
 import { Random, Console } from '@woowacourse/mission-utils';
+import Validation from './validation.js';
 
 class App {
   constructor() {
@@ -11,7 +12,9 @@ class App {
       '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
     );
     const inputCarList = inputCar.split(',');
+    Validation.strSize(inputCarList);
     const inputTimes = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    Validation.isItNumber(inputTimes);
     inputCarList.forEach((element) => {
       this.carList.push({
         name: element,
