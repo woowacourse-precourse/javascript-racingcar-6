@@ -1,5 +1,3 @@
-class App {
+export default class App {
   async play() {}
 }
-
-export default App;
