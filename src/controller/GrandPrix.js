@@ -12,25 +12,27 @@ export default class GrandPrix {
 
   async #readGrandPrixInputs() {
     const racingCarInput = await InputView.readRacingCarNames();
-    const moveAttemptInput = await InputView.readMoveAttemptNumber();
+    const lapNumberInput = await InputView.readLapNumber();
 
     this.#racingCarGrid = new RacingCarGrid(racingCarInput);
-    this.#lapNumber = Number(moveAttemptInput);
+    this.#lapNumber = Number(lapNumberInput);
     return this.#race();
   }
 
   #race() {
     let lapCount = 0;
 
-    OutputView.printRaceResult();
+    OutputView.printLapResult();
     while (lapCount < this.#lapNumber) {
       this.#racingCarGrid.setRacingGrid();
       OutputView.printRacingGrid(this.#racingCarGrid.getRacingGrid());
       lapCount += 1;
     }
+    return this.#podium();
   }
 
-  test() {
-    console.log(this.#racingCarGrid.getRacingGrid());
+  #podium() {
+    const winner = this.#racingCarGrid.getPodium();
+    OutputView.printRaceWinner(winner);
   }
 }
