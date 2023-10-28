@@ -28,3 +28,14 @@
 - 자동차(racers)와 이동 거리(length)를 받아 최종 우승자 출력
 - 우승자가 여러 명일 경우, 쉼표(,)를 이용하여 구분
 - Console.print() 활용
+
+# 10.28 코드 수정
+
+## Car 클래스 생성
+- 자동차 경주에 참여하는, 이름(name)과 현재 이동 거리(length)를 가지는 자동차 클래스를 생성
+- getName(), getLength() : 각각 name, length 반환
+- tryMoveForward() : Random.pickNumberInRange()를 이용하여 앞으로 이동
+- printCurrentPosition() : "name : length" 형식으로 현재 위치를 출력
+
+## getLength(), printCurrentRace() 함수 삭제
+- 해당 함수의 기능이 Car 클래스 내부에 추가되었으므로 해당 함수 삭제
