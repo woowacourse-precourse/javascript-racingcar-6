@@ -7,7 +7,6 @@ export async function getUserName() {
 	const input = await Console.readLineAsync(INPUT_REQUEST.NAME);
 	const inputArr = input.split(',');
 	const validNameArr = validateName(inputArr);
-	console.log('valid Name Arr', validNameArr);
 	return validNameArr;
 }
 
@@ -15,7 +14,6 @@ export async function getTrialFrequency() {
 	Console.print(INPUT_REQUEST.FREQUENCY);
 	const input = await Console.readLineAsync(INPUT_REQUEST.FREQUENCY);
 	const validNumber = validateNumber(input);
-	console.log('valid number', validNumber);
 	return +validNumber;
 }
 

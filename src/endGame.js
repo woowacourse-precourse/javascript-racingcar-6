@@ -18,7 +18,6 @@ function compareGameResult(gameResult) {
 			winnerArr.pop();
 		}
 	}
-	console.log('winnerArr:', winnerArr);
 	return winnerArr;
 }
 function reportWinner(winnerArr) {

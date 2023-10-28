@@ -7,7 +7,6 @@ export function playCarRace(userNameArr, userTrialFrequency) {
 	const playerScore = {};
 	const gameResult = {};
 	setPlayerScore(userNameArr, playerScore);
-	console.log('player score', playerScore);
 	repeatCycle(userNameArr, userTrialFrequency, playerScore);
 	setGameResult(playerScore, gameResult);
 	return gameResult;
@@ -17,7 +16,6 @@ function setPlayerScore(userNameArr, playerScore) {
 	userNameArr.forEach((userName) => {
 		playerScore[userName] = '';
 	});
-	console.log('forEach:', playerScore);
 	return;
 }
 function repeatCycle(userNameArr, userTrialFrequency, playerScore) {
@@ -40,6 +38,5 @@ function moveForward(randomNumber) {
 function setGameResult(playerScore, gameResult) {
 	for (let userName in playerScore) {
 		gameResult[userName] = playerScore[userName].length;
-		console.log('game result:', gameResult);
 	}
 }

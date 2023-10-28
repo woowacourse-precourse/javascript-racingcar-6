@@ -5,7 +5,6 @@ class App {
 	async play() {
 		const userNameArr = await getUserName();
 		const userTrialFrequency = await getTrialFrequency();
-		console.log('usertrialFrequency', userTrialFrequency);
 		const gameResult = playCarRace(userNameArr, userTrialFrequency);
 		endGame(gameResult);
 		return;
