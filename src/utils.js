@@ -21,6 +21,10 @@ function isValidCarNames(carNamesString) {
 
     if (carName.length > MAX_LENGTH_FOR_CAR_NAME)
       throw new Error(ERROR.TOO_LONG_NAME);
+
+    if (carName.startsWith(' ') || carName.endsWith(' ')) {
+      throw new Error(ERROR.START_OR_END_WITH_SPACE);
+    }
   }
 
   if (!isEveryCarNamesUnique(carNamesArray)) {

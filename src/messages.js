@@ -4,7 +4,10 @@ const INQUIRY = {
 };
 
 const ERROR = {
-  INVALID_NAME: '[ERROR] 자동차 이름은 공백이 될 수 없습니다.',
+  INVALID_NAME:
+    '[ERROR] 자동차 이름에 두 칸 이상의 공백 및 - (하이픈)을 제외한 다른 특수 문자를 포함할 수 없습니다.',
+  START_OR_END_WITH_SPACE:
+    '[ERROR] 자동차 이름은 공백으로 시작하거나 끝날 수 없습니다.',
   TOO_LONG_NAME: '[ERROR] 자동차 이름은 5자 이하로 설정되어야 합니다.',
   DUPLICATED_NAME: '[ERROR] 중복된 자동차 이름이 존재합니다.',
   NOT_NUMBER: '[ERROR] 시도 횟수는 유효한 숫자로 설정되어야 합니다.',

@@ -30,6 +30,21 @@ describe('자동차 이름 유효성 테스트', () => {
   );
 
   test.each([
+    [[' A']],
+    [['A ']],
+    [[' A,B']],
+    [['A ,B']],
+    [['A, B']],
+    [['A,B ']],
+  ])('자동차 이름이 공백으로 시작하거나 끝나는 경우', async (inputs) => {
+    mockQuestions(inputs);
+
+    const app = new App();
+
+    await expect(app.play()).rejects.toThrow(ERROR.START_OR_END_WITH_SPACE);
+  });
+
+  test.each([
     [['ABCDEF']],
     [['ABC,ABCDEF']],
     [['ABCDEF,ABC']],
