@@ -16,7 +16,7 @@ class App {
       inputView,
       outputView,
       racingGame,
-      racingCarFactory
+      racingCarFactory,
     );
     await racingGameController.initiate();
   }

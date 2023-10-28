@@ -10,7 +10,7 @@ import OutputView from '../src/views/outputView';
 import InputView from '../src/views/inputView';
 import InputValidator from '../src/utils/InputValidator';
 import RacingCarFactory from '../src/models/RacingCarFactory';
-const mockQuestions = (inputs) => {
+const mockQuestions = inputs => {
   MissionUtils.Console.readLineAsync = jest.fn();
 
   MissionUtils.Console.readLineAsync.mockImplementation(() => {
@@ -19,7 +19,7 @@ const mockQuestions = (inputs) => {
   });
 };
 
-const mockRandoms = (numbers) => {
+const mockRandoms = numbers => {
   MissionUtils.Random.pickNumberInRange = jest.fn();
   numbers.reduce((acc, number) => {
     return acc.mockReturnValueOnce(number);
@@ -45,7 +45,7 @@ describe('RacingGameController 테스트', () => {
       inputView,
       outputView,
       racingGame,
-      factory
+      factory,
     );
   });
 

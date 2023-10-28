@@ -16,8 +16,8 @@ class RacingGame {
 
   #setWinners() {
     this.#winners = this.#cars
-      .filter((car) => car.getPosition() === this.#maxPosition)
-      .map((car) => car.getName());
+      .filter(car => car.getPosition() === this.#maxPosition)
+      .map(car => car.getName());
   }
 
   setCars(cars) {
@@ -25,11 +25,11 @@ class RacingGame {
   }
 
   moveAllCars() {
-    this.#cars.forEach((car) => car.move());
+    this.#cars.forEach(car => car.move());
   }
 
   getAllCarsMoveResult() {
-    return this.#cars.map((car) => car.getMoveResult()).join(`\n`);
+    return this.#cars.map(car => car.getMoveResult()).join(`\n`);
   }
 
   concludeGame() {

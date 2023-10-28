@@ -5,7 +5,7 @@ import { GAME_NUMBERS } from '../src/utils/constants';
 
 Random.pickNumberInRange = jest.fn();
 
-const mockRandomNumber = (number) => {
+const mockRandomNumber = number => {
   Random.pickNumberInRange.mockReturnValue(number);
 };
 

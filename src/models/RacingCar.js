@@ -27,7 +27,7 @@ class RacingCar {
   #canMove() {
     const randomNumber = Random.pickNumberInRange(
       GAME_NUMBERS.rangeMin,
-      GAME_NUMBERS.rangeMax
+      GAME_NUMBERS.rangeMax,
     );
     return randomNumber >= GAME_NUMBERS.movementThreshold;
   }
