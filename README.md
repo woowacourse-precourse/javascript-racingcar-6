@@ -172,3 +172,13 @@ MissionUtils.Random.pickNumberInRange(0, 9);
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
   - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+# 구현할 기능 목록
+
+- [ ] 경주할 자동차 이름 입력받기 - getCarName
+  - [ ] _예외_: 자동차 이름이 5자 이하인지 확인 - isValidCarName
+- [ ] 시도할 횟수 입력받기 - getTryNumber
+  - [ ] _예외_: 1 이상의 정수를 입력했는지 확인 - getTryNumber
+- [ ] 0~9 사이 무작위 값이 4 이상인지 확인 - shouldMoveForward
+- [ ] 각 자동차 별로 전진 여부 확인해서 차수별 실행 결과 출력 - printCarPosition
+- [ ] 가장 멀리 간 자동차를 확인해서 우승자 이름 출력
