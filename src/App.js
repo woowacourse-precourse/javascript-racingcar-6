@@ -90,10 +90,14 @@ class App {
     return longestDistance;
   }
 
+  compareToLongestDistance(distance, longestDistance) {
+    return distance === longestDistance;
+  }
+
   selectWinners() {
     const longestDistance = this.getLongestDistance();
     this.cars.forEach((distance, car) => {
-      if (distance.length === longestDistance) {
+      if (this.compareToLongestDistance(distance.length, longestDistance)) {
         this.winners.push(car);
       }
     });
