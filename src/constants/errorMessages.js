@@ -12,4 +12,5 @@ export const ERROR_MESSAGES = Object.freeze({
   have_duplication: '이름이 중복되는 자동차가 있어요!',
   not_a_number: '시도 횟수는 숫자여야해요!',
   out_of_range_of_attemps: '시도 횟수는 최소 1보다 커야해요!',
+  invalid_characters: '자동차 이름은 한글, 영어, 숫자만 가능해요!',
 });

@@ -36,6 +36,7 @@ class Car {
   validate() {
     this.validateOfHaveASpace();
     this.validateOfLength();
+    this.validateOfSpecialCharacters();
   }
 
   validateOfHaveASpace() {
@@ -47,6 +48,13 @@ class Car {
   validateOfLength() {
     if (this.#car.length > Car.CAR_NAME_MAX_LENGTH) {
       throw new AppError(ERROR_MESSAGES.out_of_range_of_names);
+    }
+  }
+
+  validateOfSpecialCharacters() {
+    const regex = /^[a-zA-Z0-9가-힣]+$/;
+    if (!regex.test(this.#car)) {
+      throw new AppError(ERROR_MESSAGES.invalid_characters);
     }
   }
 }
