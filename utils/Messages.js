@@ -1,6 +1,6 @@
 const PREFIX = '[ERROR]';
 
-const MESSAGES = object.freeze({
+const MESSAGES = Object.freeze({
   nameQuery: '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)',
   trialQuery: '시도할 횟수는 몇 회인가요?',
   result: '실행 결과',
