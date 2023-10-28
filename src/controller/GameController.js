@@ -13,6 +13,10 @@ export default class GameController {
     const players = this.splitPlayerNames(playerNames);
     this.#validatePlayersCount(players);
     this.#validateDuplicationPlayer(players);
+
+    players.forEach((player) => {
+      this.#validatePlayerName(player);
+    });
   }
 
   splitPlayerNames(names) {
@@ -32,6 +36,12 @@ export default class GameController {
   #validateDuplicationPlayer(players) {
     if (players.length !== new Set(players).size) {
       throw new Error(ERROR_MESSAGE.DUPLICATION);
+    }
+  }
+
+  #validatePlayerName(name) {
+    if (!REG_EXP.test(name)) {
+      throw new Error(ERROR_MESSAGE.INVALID_NAME);
     }
   }
 }
