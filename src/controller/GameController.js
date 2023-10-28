@@ -17,10 +17,13 @@ export default class GameController {
 
     this.view.print(MESSAGE.RESULT);
     const roofCount = this.model.getTryCount();
-    for (let i = 0; i < roofCount; i++) {
-      this.model.setMoveCount();
-      this.printResult();
-    }
+    Array(roofCount)
+      .fill(0)
+      .forEach((_) => {
+        this.model.setMoveCount();
+        this.printResult();
+      });
+
     this.printWinner();
   }
 
