@@ -29,17 +29,17 @@ class App {
     return inputTryNumber;
   }
 
-  moveForward(car) {
+  moveCarForward(car) {
     const curDistance = this.cars.get(car);
     const nextDistance = curDistance + "-";
     this.cars.set(car, nextDistance);
   }
 
-  tryTurn() {
+  doAttempt() {
     for (let car of this.cars.keys()) {
       let randomNum = Random.pickNumberInRange(0, 9);
       if (randomNum >= 4) {
-        this.moveForward(car);
+        this.moveCarForward(car);
       }
     }
   }
@@ -50,17 +50,17 @@ class App {
     });
   }
 
-  startRacing(tryNumber) {
+  startRace(tryNumber) {
     Console.print("\n실행 결과");
     do {
-      this.tryTurn();
+      this.doAttempt();
       this.printTurnResult();
       Console.print("");
       tryNumber--;
     } while (tryNumber > 0);
   }
 
-  getWinnerDistance() {
+  getLongestDistance() {
     let winnerDistance = 0;
     for (let distance of this.cars.values()) {
       if (distance.length >= winnerDistance) {
@@ -71,7 +71,7 @@ class App {
   }
 
   selectWinners() {
-    const winnerDistance = this.getWinnerDistance();
+    const winnerDistance = this.getLongestDistance();
     this.cars.forEach((distance, car) => {
       if (distance.length === winnerDistance) {
         this.winners.push(car);
@@ -88,7 +88,7 @@ class App {
     const carArr = await this.getCars();
     await this.setCars(carArr);
     const tryNumber = await this.getTryNumber();
-    this.startRacing(tryNumber);
+    this.startRace(tryNumber);
     this.selectWinners();
     this.printWinners();
   }
