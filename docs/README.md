@@ -2,12 +2,13 @@
 
 ##### 게임 시작
 
-- [] 경주할 자동차 입력 받기
-  - [] 참가자 문자열 입력 받기
-  - [] validate 이름
-  - [] 플레이어 객체 생성
-- [] 시도할 횟수 입력 받기
-  - [] validate 시도 횟수
+- [x] 경주할 자동차 입력 받기 : getCarRacePlayer()
+  - [x] 참가자 문자열 입력 받기
+  - [x] validate 이름 : validatePlayerName()
+  - [x] 플레이어 객체 생성 : class Player
+  - [x] 생성된 객체 플레이어 그룹에 추가 : registerPlayer()
+- [x] 시도할 횟수 입력 받기
+  - [x] validate 시도 횟수
 
 ##### Play Racing
 
@@ -29,9 +30,29 @@ App : 프로젝트 시작 지점
 
 RacingGame : 게임 인스턴스 생성
 
+- 메서드
+
+  - startGame() : 게임 시작 진입점
+  - getCarRacePlayer() : 경주할 자동차 입력 받기
+  - getAttemptCount() : 시도 횟수 입력 받기
+
 GameManager : 자동차 경주 게임을 관리하고 진행하는 기능 제공
 
+- 프로퍼티
+
+  - this.playerGroup : 전체 참가자 배열
+  - this.attemptCount : 게임의 시도 횟수
+
+- 메서드
+
+  - registerPlayer() : 참가자를 플레이어 그룹에 추가
+
 Player : 참가자 인스턴스 생성
+
+- 프로퍼티
+
+  - this.name : 참가자 이름
+  - this.moveDistance : 이동한 총 거리
 
 ---
 

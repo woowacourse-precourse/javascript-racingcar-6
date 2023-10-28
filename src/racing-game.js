@@ -2,7 +2,7 @@ import { Console } from "@woowacourse/mission-utils";
 import { MESSAGES } from "./module/message.js";
 import GameManager from "./game-manager.js";
 import Player from "./player.js";
-import { validatePlayerName } from "./module/validate.js";
+import { validateAttemptCount, validatePlayerName } from "./module/validate.js";
 
 class RacingGame {
   constructor() {
@@ -11,6 +11,7 @@ class RacingGame {
 
   async startGame() {
     await this.getCarRacePlayer();
+    await this.getAttemptCount();
   }
 
   async getCarRacePlayer() {
@@ -25,6 +26,18 @@ class RacingGame {
         const player = new Player(name);
         this.gameManager.registerPlayer(player);
       });
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+
+  async getAttemptCount() {
+    try {
+      const input = await Console.readLineAsync(
+        MESSAGES.ATTEMPT_COUNT_INPUT_PROMPT
+      );
+      validateAttemptCount(input);
+      this.gameManager.attemptCount = input;
     } catch (error) {
       throw new Error(error.message);
     }

@@ -13,9 +13,20 @@ function isNameWithinLimit(name) {
   }
 }
 
+function isInputNumeric(input) {
+  if (isNaN(input)) {
+    throw new Error(MESSAGES.NOT_NUMBER_ERROR);
+  }
+}
+
 function validatePlayerName(input) {
   isInputEmpty(input);
   isNameWithinLimit(input);
 }
 
-export { validatePlayerName };
+function validateAttemptCount(input) {
+  isInputEmpty(input);
+  isInputNumeric(input);
+}
+
+export { validatePlayerName, validateAttemptCount };
