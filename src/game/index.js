@@ -3,6 +3,7 @@ import REGEX from '../../constants/regex.constant';
 import printMsg from '../../utils/printMsg';
 import prompt from '../../utils/prompt';
 import validations from './game.error';
+import MESSAGE from './game.message';
 import PROMPT_PHASE from './game.promptPhase';
 import VALIDATION_CONDITION from './game.validation';
 
@@ -82,6 +83,23 @@ const racingCarGame = {
     this.printRacingTurn(turnResultStatus);
 
     return turnResultStatus;
+  },
+
+  getWinner(racingStatus) {
+    const winnerArray = [];
+
+    // forwardCount 기준 내림차순 정렬
+    racingStatus.sort((a, b) => b.forwardCount - a.forwardCount);
+    const maxCount = racingStatus[0].forwardCount;
+
+    racingStatus.forEach((car) => {
+      if (car.forwardCount === maxCount) winnerArray.push(car.name);
+    });
+    return winnerArray;
+  },
+
+  printWinner(racingStatus) {
+    printMsg(`${MESSAGE.result} ${this.getWinner(racingStatus).join(', ')}`);
   },
 };
 export default racingCarGame;

@@ -23,6 +23,12 @@ class App {
       const turnResult = racingCarGame.runRacingTurn(this.racingStatus);
       this.racingStatus = turnResult;
     }
+
+    this.finish();
+  }
+
+  finish() {
+    racingCarGame.printWinner(this.racingStatus);
   }
 }
 
