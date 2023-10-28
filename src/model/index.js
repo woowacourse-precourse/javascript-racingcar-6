@@ -18,7 +18,7 @@ class RacingCarModel {
 
   racing() {
     this.#carData.forEach((progress, car) => {
-      if (this.canMove()) {
+      if (RacingCarModel.canMove()) {
         this.#carData.set(car, `${progress}${SYSTEM.move}`);
       }
     });
