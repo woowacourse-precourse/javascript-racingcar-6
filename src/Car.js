@@ -7,8 +7,8 @@ export default class Car {
     this.#position = 0;
   }
 
-  increasePosition(isMovable) {
-    if (isMovable) this.#position += 1;
+  increasePosition() {
+    this.#position += 1;
   }
 
   getPositionResult() {
