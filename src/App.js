@@ -3,6 +3,7 @@ import { Console } from "@woowacourse/mission-utils";
 import INPUT_MESSAGE from "./constants/game.js";
 import { validateRacingCars } from "./util/car-validation.js";
 import validateAttemptCount from "./util/attempt-validation.js";
+import { convertArrayToObject } from "./util/converter.js";
 
 class App {
   async play() {
@@ -16,6 +17,8 @@ class App {
       INPUT_MESSAGE.ATTEMPT_COUNT
     );
     validateAttemptCount(inputAttemptCount);
+
+    const carsObject = convertArrayToObject(racingCarNames);
   }
 }
 
