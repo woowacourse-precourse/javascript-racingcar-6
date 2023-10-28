@@ -39,6 +39,9 @@ export const finalWinner = (carNamesArray, countArr) => {
     MissionUtils.Console.print(`최종 우승자 : ${result[0][0]}`);
   } else if (result[0][1] === result[result.length - 1][1]) {
     let winners = [];
+    for (let i = 0; i < result.length; i++) {
+      winners.push(result[i][0]);
+    }
     winners = winners.join(', ');
     MissionUtils.Console.print(`최종 우승자 : ${winners}`);
   } else {
