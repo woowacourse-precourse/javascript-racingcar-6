@@ -1,6 +1,5 @@
 import { Console, Random } from '@woowacourse/mission-utils';
 import { MESSAGE } from './constants.js'
-import { nameValidation } from './utils/validation.js';
 
 class App {
   #gameData = { name : [], number : 0, }
