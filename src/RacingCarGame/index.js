@@ -1,6 +1,6 @@
 import Race from './Race/index.js';
 import { Input, Output } from './View/index.js';
-import { MESSAGE } from './constants/index.js';
+import { MESSAGE, SYMBOLS } from './constants/index.js';
 
 class RacingCarGame {
   constructor() {
@@ -28,6 +28,10 @@ class RacingCarGame {
     Output.log(MESSAGE.result);
     Output.log(result);
     this.prize();
+  }
+
+  prize() {
+    Output.log(`${MESSAGE.winner}${SYMBOLS.colon}${this.race.electWinner()}`);
   }
 }
 
