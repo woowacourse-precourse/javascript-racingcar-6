@@ -1,38 +1,32 @@
-import { Random, Console } from "@woowacourse/mission-utils";
+import {Console, Random} from "@woowacourse/mission-utils";
+
 class App {
   async play() {
+
     Console.print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     const CAR_INPUT = await this.getCarInput();
-    const CAR_LIST = CAR_INPUT.split(",");
-    if (!this.isValidCarInput(CAR_LIST)) {
+    if (this.isValidCarInput(CAR_INPUT)) {
+      const CAR_DICT = await this.setCarDict(CAR_INPUT);
       Console.print("시도할 횟수는 몇 회인가요?")
+      let CNT = await this.getGameCnt();
 
-      const GAME_CNT = await this.getGameCnt();
-
+    }else {
+      throw new Error("[ERROR] 이름은 5글자 이하로 작성해주세요")
     }
-    const CAR_DICT = await this.setCarDict(CAR_LIST);
-    console.log(CAR_DICT);
-
   }
-
   async getCarInput() {
-    return await Console.readLineAsync("")
+    return (await Console.readLineAsync('')).split(',');
   }
   isValidCarInput(CAR_INPUT) {
     for (let i=0; i<CAR_INPUT.length;i++) {
       if (CAR_INPUT[i].length >= 6){
-        throw new Error("[ERROR] 이름은 5글자 이하로 작성해주세요")
+        return false
       }
       else {
-        console.log("isvalid",CAR_INPUT[i]);
-
+        return true
       }
     }
   }
-  async getGameCnt() {
-    return await Console.readLineAsync("")
-  }
-
   async setCarDict(CAR_INPUT) {
     const dictionary = {};
     for (const car of CAR_INPUT) {
@@ -40,7 +34,9 @@ class App {
     }
     return dictionary;
   }
+  async getGameCnt() {
+    return await Console.readLineAsync("")
+  }
+
 }
-
-
 export default App;
