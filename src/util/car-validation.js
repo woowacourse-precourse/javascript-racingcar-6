@@ -1,5 +1,6 @@
 const ERROR_MESSAGE = Object.freeze({
   LENGTH: "[ERROR] 자동차의 이름은 1자 이상 5자 이내로 구성되어야 합니다.",
+  DUPLICATION: "[ERROR] 중복된 자동차의 이름이 존재합니다.",
 });
 
 /**
@@ -17,6 +18,21 @@ function isLengthError(racingCarName) {
 }
 
 /**
+ * 중복된 자동차의 이름이 존재하는지 검증하기 위한 함수
+ * @param {string[]} racingCarNames 자동차의 이름들
+ * @throw 중복된 자동차의 이름이 존재하면 에러를 던진다.
+ * @returns
+ */
+function isDuplicationError(racingCarNames) {
+  const uniqueRacingCarNames = new Set(racingCarNames);
+  if (uniqueRacingCarNames.size !== racingCarNames.length) {
+    throw new Error(ERROR_MESSAGE.DUPLICATION);
+  }
+
+  return;
+}
+
+/**
  * 입력받은 자동차들의 이름을 검증하기 위한 함수
  * @param {string[]} racingCarNames 자동차들의 이름
  * @returns
@@ -25,6 +41,7 @@ function validateRacingCars(racingCarNames) {
   racingCarNames.forEach((racingCarName) => {
     isLengthError(racingCarName);
   });
+  isDuplicationError(racingCarNames);
 
   return;
 }
