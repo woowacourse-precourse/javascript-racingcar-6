@@ -46,6 +46,28 @@ describe('자동차 경주 게임', () => {
     });
   });
 
+  test('우승자가 2명', async () => {
+    // given
+    const MOVING_FORWARD = 4;
+    const STOP = 3;
+    const inputs = ['a,b,c', '1'];
+    const outputs = ['최종 우승자 : a,c'];
+    const randoms = [MOVING_FORWARD, STOP, MOVING_FORWARD];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    // when
+    const app = new App();
+    await app.play();
+
+    // then
+    outputs.forEach(output => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
+
   test.each([
     [['pobi,javaji']],
     [['pobi,eastjun']],
