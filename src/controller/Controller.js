@@ -26,7 +26,7 @@ class Controller {
     }
 
     makeVehicleObject() {
-        this.UPDATE_MODEL.updateObjectKeyValues()
+        this.UPDATE_MODEL.updateObjectKeyValues();
     }
 
     getPlayTimeNumber() {
@@ -42,7 +42,7 @@ class Controller {
         const MAX_VALUE = Math.max(...PROCEDURE_LENGTH);
         Object.entries(moveProcedure).forEach((vehicle) => {
             if (vehicle[1].length === MAX_VALUE) champion.push(vehicle[0]);
-        })
+        });
         return champion;
     }
 

@@ -2,7 +2,7 @@ import { ERROR_MSG } from '../constants/OutputMsg';
 import { CONSTANTS } from '../constants/Constants';
 
 class Validate {
-    #REGAX
+    #REGAX;
     
     constructor() {
         this.#REGAX = /\s|[!@#$%^&*(),.?":{}|<>]/;

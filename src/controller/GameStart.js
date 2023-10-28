@@ -3,10 +3,10 @@ import OutputView from '../views/OutputView';
 
 
 class GameStart {
-    #VEHICLE_NAME
-    #PLAY_TIME
-    #MOVE_PROCEDURE
-    #champion
+    #VEHICLE_NAME;
+    #PLAY_TIME;
+    #MOVE_PROCEDURE;
+    #champion;
 
     constructor() {
         this.OUT_VIEW = new OutputView();

@@ -22,7 +22,7 @@ class OutputView {
     printMoveProcedure(vehicleNameList,moveProcedure) {
         vehicleNameList.forEach((vehicleName) => {
             Console.print(`${vehicleName} : ${moveProcedure[vehicleName]}`);
-        })
+        });
     }
 
     printResult(champion) {

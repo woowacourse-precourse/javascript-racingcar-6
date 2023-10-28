@@ -4,9 +4,9 @@ import { Random } from '@woowacourse/mission-utils';
 
 
 class UpdateConstants {
-    #vehicleNameList
-    #gamePlayTimes
-    #moveProcedure
+    #vehicleNameList;
+    #gamePlayTimes;
+    #moveProcedure;
     
     constructor() {
         this.VALIDATE = new Validate();
@@ -18,7 +18,7 @@ class UpdateConstants {
     updateVehicleNameList(vehicleName) {
         this.#vehicleNameList = vehicleName.split(',');
         this.VALIDATE.vehicleNameValidate(this.#vehicleNameList);
-        return this.#vehicleNameList
+        return this.#vehicleNameList;
     }
 
     updateGamePlayTimes(playTime) {
@@ -40,7 +40,7 @@ class UpdateConstants {
 
     updateVehicleObjectValue() {
         this.#vehicleNameList.forEach((vehicleName) => this.#moveProcedure[vehicleName] += this.#getMoveNumber());
-        return this.#moveProcedure
+        return this.#moveProcedure;
     }
 
     #getMoveNumber() {
