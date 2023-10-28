@@ -1,5 +1,6 @@
 import { ERROR, REG_EXP } from './constants';
 import CustomError from './CustomError';
+import {Console} from '@woowacourse/mission-utils'
 
 function validateName(inputArr) {
 	//input이 없는 경우
