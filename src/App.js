@@ -9,7 +9,7 @@ class App {
 // 자동차 이름은 쉼표로 구분된다.
   async setName() {
     const nameInput = await Console.readLineAsync(MESSAGE.nameQuery);
-    this.#gameData.name = await nameInput.split(',');
+    this.#gameData.name = await nameInput.split(',').map((name) => name.trim());
     this.#gameData.name.forEach(nameValidation);
   }
 
@@ -24,7 +24,7 @@ class App {
 // 우승자가 여러 명인 경우 쉼표로 구분해 같이 출력한다.
 
   async play() {
-
+    Console.print(this.#gameData);
   }
 }
 
