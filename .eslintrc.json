@@ -10,7 +10,7 @@
   },
   "rules": {
     "linebreak-style": 0,
-    "max-depth": ["error", 3]
+    "max-depth": ["error", 2]
   },
   "ignorePatterns": ["*Test.js"]
 }
