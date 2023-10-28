@@ -46,6 +46,22 @@ class App {
     Console.print('');
   }
 
+  printFinalResult() {
+    const distanceArray = Array.from(this.racingResult.values()).map(
+      (distance) => distance.length,
+    );
+    const longest = Math.max(...distanceArray);
+
+    const winner = [];
+    this.racingResult.forEach((value, key) => {
+      if (value.length === longest) {
+        winner.push(key);
+      }
+    });
+
+    Console.print(`최종 우승자 : ${winner.join(', ')}`);
+  }
+
   async play() {
     const inputCarList = await Console.readLineAsync(
       '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
@@ -66,6 +82,7 @@ class App {
       carList.forEach((car) => this.randomShift(car));
       this.printStepResult();
     }
+    this.printFinalResult();
   }
 }
 
