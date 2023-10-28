@@ -35,7 +35,7 @@ class App {
    * 사용자로부터 자동차 이름을 입력받은 후 이를 리턴한다.
    *
    * 입력받은 문자열에 대한 검증 과정도 포함한다.
-   * @returns {string[]}
+   * @returns {Array<RaceCar>}
    */
   async get_car_input() {
     Console.print(
@@ -55,7 +55,10 @@ class App {
       }
     });
 
-    return car_names;
+    return car_names.map((car_name) => ({
+      name: car_name,
+      distance: 0,
+    }));
   }
 
   /**
