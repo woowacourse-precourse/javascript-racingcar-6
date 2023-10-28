@@ -1,4 +1,4 @@
-import { isDelimiter, isNameLength } from '../src/utils/validator/utils';
+import { isDelimiter, isNameLength, isQuantityValid } from '../src/utils/validator/utils';
 
 describe('validator test', () => {
   describe('isDelimiter', () => {
@@ -17,7 +17,7 @@ describe('validator test', () => {
     });
 
     test('이름의 글자수가 조건에 맞을 때 false를 리턴한다.', () => {
-      expect(isNameLength('fobifobi', 'kakao', 'no')).toBe(false);
+      expect(isNameLength('fobifobi,kakao,no')).toBe(false);
     });
   });
 });
