@@ -1,4 +1,10 @@
+import { MissionUtils } from '@woowacourse/mission-utils';
 import Car from '../src/Car';
+
+const mockRandom = (number) => {
+  MissionUtils.Random.pickNumberInRange = jest.fn();
+  MissionUtils.Random.pickNumberInRange.mockReturnValue(number);
+};
 
 describe('Car 클래스 테스트', () => {
   test('자동차 이름 반환', () => {
@@ -7,10 +13,23 @@ describe('Car 클래스 테스트', () => {
     expect(result).toEqual('myCar');
   });
 
-  test('자동차 이동', () => {
+  test('자동차 전진', () => {
     const car = new Car('myCar');
-    car.moveForward();
-    const result = car.getForwardDistance();
-    expect(result).toEqual(1);
+    const input = 5;
+    const ouput = 1;
+    mockRandom(input);
+    car.runRandomMotion();
+
+    expect(car.getForwardDistance()).toEqual(ouput);
+  });
+
+  test('자동차 정지', () => {
+    const car = new Car('myCar');
+    const input = 3;
+    const ouput = 0;
+    mockRandom(input);
+    car.runRandomMotion();
+
+    expect(car.getForwardDistance()).toEqual(ouput);
   });
 });

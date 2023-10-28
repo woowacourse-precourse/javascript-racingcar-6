@@ -1,3 +1,5 @@
+import pickRandomNumberInRange from './utils/pickRandomNumberInRange';
+
 class Car {
   #carName;
 
@@ -16,8 +18,16 @@ class Car {
     return this.#forwardDistance;
   }
 
-  moveForward() {
+  #moveForward() {
     this.#forwardDistance += 1;
+  }
+
+  runRandomMotion() {
+    const randomNumber = pickRandomNumberInRange(0, 9);
+
+    if (randomNumber >= 4) {
+      this.#moveForward();
+    }
   }
 }
 

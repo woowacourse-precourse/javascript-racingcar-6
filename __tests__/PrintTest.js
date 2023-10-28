@@ -6,6 +6,11 @@ import {
 } from '../src/utils/print';
 import Car from '../src/Car';
 
+const mockRandom = (number) => {
+  MissionUtils.Random.pickNumberInRange = jest.fn();
+  MissionUtils.Random.pickNumberInRange.mockReturnValue(number);
+};
+
 const getLogSpy = () => {
   const logSpy = jest.spyOn(MissionUtils.Console, 'print');
   logSpy.mockClear();
@@ -27,12 +32,17 @@ describe('출력 테스트', () => {
     const car2 = new Car('secondCar');
     const car3 = new Car('thirdCar');
 
-    car1.moveForward();
-    car1.moveForward();
-    car2.moveForward();
-    car3.moveForward();
-    car3.moveForward();
-    car3.moveForward();
+    const MOVE_FORWARD = 5;
+
+    mockRandom(MOVE_FORWARD);
+    car1.runRandomMotion();
+    car1.runRandomMotion();
+
+    car2.runRandomMotion();
+
+    car3.runRandomMotion();
+    car3.runRandomMotion();
+    car3.runRandomMotion();
 
     const outputs = ['firstCar : --', 'secondCar : -', 'thirdCar : ---'];
     const logSpy = getLogSpy();
