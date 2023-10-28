@@ -23,6 +23,7 @@ class App {
 
       Console.print(GAME_MESSAGE.GAME_WINNER + winnerArr.join(','));
     } catch (e) {
+      Console.print(e.message);
       throw e;
     }
   }
