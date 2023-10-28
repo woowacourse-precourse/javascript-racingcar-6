@@ -4,9 +4,8 @@ class Car {
     this.forwardCount = 0;
   }
 
-  forwardCar(carName) {
-    this.carName = carName
-
+  forwardCar() {
+    this.forwardCar += 1;
   }
 }
 
