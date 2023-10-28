@@ -8,7 +8,11 @@ describe("errorMessage 검증", () => {
   });
   test("incorrectFormatErrorMessage", () => {
     const res = ErrorMessage.incorrectFormatErrorMessage("test");
-    expect(res).toBe("숫자가 잘못된 형식입니다.");
+    expect(res).toBe("잘못된 형식입니다.");
+  });
+  test("incorrectFormatErrorMessage", () => {
+    const res = ErrorMessage.incorrectParameterErrorMessage("test");
+    expect(res).toBe("잘못된 매개변수입니다.");
   });
   test("numberOutOfRangeErrorMessage", () => {
     const num = 10;
