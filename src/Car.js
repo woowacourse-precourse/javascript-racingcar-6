@@ -1,23 +1,24 @@
 class Car {
-    #carName;
-    #forwardDistance;
-    
-    constructor(carName) {
-        this.#carName = carName;
-        this.#forwardDistance = 0;
-    }
+  #carName;
 
-    getCarName() {
-        return this.#carName;
-    }
+  #forwardDistance;
 
-    getForwardDistance() {
-        return this.#forwardDistance;
-    }
+  constructor(carName) {
+    this.#carName = carName;
+    this.#forwardDistance = 0;
+  }
 
-    moveForward() {
-        this.#forwardDistance += 1;
-    }
+  getCarName() {
+    return this.#carName;
+  }
+
+  getForwardDistance() {
+    return this.#forwardDistance;
+  }
+
+  moveForward() {
+    this.#forwardDistance += 1;
+  }
 }
 
 export default Car;

@@ -1,22 +1,27 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import { validateInputAttemptNumber, validateInputCarNames } from '../validations/validateInputUser.js';
+import {
+  validateInputAttemptNumber,
+  validateInputCarNames,
+} from '../validations/validateInputUser';
 
 const input = async (printString = '') => {
-    return await MissionUtils.Console.readLineAsync(printString);
+  const inputedValue = await MissionUtils.Console.readLineAsync(printString);
+
+  return inputedValue;
 };
 
 const inputCarNames = async () => {
-    const carNames = await input();
-    validateInputCarNames(carNames);
+  const carNames = await input();
+  validateInputCarNames(carNames);
 
-    return carNames.split(',');
+  return carNames.split(',');
 };
 
 const inputAttemptNumber = async () => {
-    const attemptNumber = await input();
-    validateInputAttemptNumber(attemptNumber);
+  const attemptNumber = await input();
+  validateInputAttemptNumber(attemptNumber);
 
-    return Number(attemptNumber);
-}
+  return Number(attemptNumber);
+};
 
 export { inputCarNames, inputAttemptNumber };

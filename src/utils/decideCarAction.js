@@ -1,14 +1,14 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 
 const pickRandomNumberInRange = (start, end) => {
-    return MissionUtils.Random.pickNumberInRange(start, end);
+  return MissionUtils.Random.pickNumberInRange(start, end);
 };
 
 const decideCarMoveForward = () => {
-    const randomNumber = pickRandomNumberInRange(0, 9);
-    const answer = randomNumber >= 4;
+  const randomNumber = pickRandomNumberInRange(0, 9);
+  const answer = randomNumber >= 4;
 
-    return answer;
+  return answer;
 };
 
-export { decideCarMoveForward };
+export default decideCarMoveForward;

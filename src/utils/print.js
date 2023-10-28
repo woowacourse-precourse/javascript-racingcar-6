@@ -1,51 +1,57 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 
 const print = (printString = '') => {
-    MissionUtils.Console.print(printString);
+  MissionUtils.Console.print(printString);
 };
 
 const getForwardDistanceString = (forwardDistance) => {
-    const makeString = (currentString = '') => {
-        if (currentString.length === forwardDistance) {
-            return currentString;
-        }
-
-        return makeString(currentString + '-');
+  const makeString = (currentString = '') => {
+    if (currentString.length === forwardDistance) {
+      return currentString;
     }
 
-    return makeString;
-}
+    return makeString(`${currentString}-`);
+  };
+
+  return makeString;
+};
 
 const getOneCarResult = (car) => {
-    const carName = car.getCarName();
-    const forwardDistance = car.getForwardDistance();
-    const makeCarForwardDistanceString = getForwardDistanceString(forwardDistance);
-    const forwardDistanceString = makeCarForwardDistanceString();
-    
-    return `${carName} : ${forwardDistanceString}`;
+  const carName = car.getCarName();
+  const forwardDistance = car.getForwardDistance();
+  const makeForwardDistanceString = getForwardDistanceString(forwardDistance);
+  const forwardDistanceString = makeForwardDistanceString();
+
+  return `${carName} : ${forwardDistanceString}`;
 };
 
 const printStartApp = () => {
-    print('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)');
+  print('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)');
 };
 
 const printInputAttemptNumber = () => {
-    print('시도할 횟수는 몇 회인가요?');
+  print('시도할 횟수는 몇 회인가요?');
 };
 
 const printStartRaceResult = () => {
-    print('실행 결과');
+  print('실행 결과');
 };
 
 const printRaceResult = (cars) => {
-    cars.forEach(car => {
-        print(getOneCarResult(car));
-    });
-    print();
+  cars.forEach((car) => {
+    print(getOneCarResult(car));
+  });
+  print();
 };
 
 const printFinalWinner = (cars) => {
-    print(`최종 우승자 : ${cars.join(', ')}`);
-}
+  print(`최종 우승자 : ${cars.join(', ')}`);
+};
 
-export { printStartApp, printInputAttemptNumber, printStartRaceResult, printRaceResult, printFinalWinner };
+export {
+  printStartApp,
+  printInputAttemptNumber,
+  printStartRaceResult,
+  printRaceResult,
+  printFinalWinner,
+};
