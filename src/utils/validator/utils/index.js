@@ -8,9 +8,9 @@ export const isDelimiter = (input) => {
 };
 
 export const isNameLength = (input) => {
-  const { name_length_max, name_length_min, delimiter } = SYSTEM;
+  const { nameLengthMax, nameLengthMin, delimiter } = SYSTEM;
   return input.split(delimiter).every((name) => {
-    return name.length >= name_length_min && name.length <= name_length_max;
+    return name.length >= nameLengthMin && name.length <= nameLengthMax;
   });
 };
 
