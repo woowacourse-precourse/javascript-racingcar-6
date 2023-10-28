@@ -8,6 +8,9 @@ export default class CarNameValidator {
     if (this.hasWhiteSpace(names)) {
       throw new Error(ERROR_MESSAGE.hasWhiteSpace);
     }
+    if (this.exceedNameLimit(names)) {
+      throw new Error(ERROR_MESSAGE.exceedNameLimit);
+    }
   }
 
   static isEmptyInput(input) {
@@ -15,5 +18,9 @@ export default class CarNameValidator {
   }
   static hasWhiteSpace(names) {
     return names.includes(' ');
+  }
+  static exceedNameLimit(names) {
+    const nameArray = names.split(",");
+    return nameArray.some(name => name.length > 5);
   }
 }
