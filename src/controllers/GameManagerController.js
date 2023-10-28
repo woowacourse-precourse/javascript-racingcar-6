@@ -85,18 +85,6 @@ class CarRaceController {
     printOutput('실행 결과');
     printOutput(`최종 우승자 : ${this.gameWinner}`);
   }
-
-  playGameRound() {
-    const { printProgress, printNewline } = CarRaceView;
-    const { model } = this;
-
-    model.calculateCarMove();
-    for (const key in model.gameProgress) {
-      printProgress(key, model.gameProgress[key]);
-    }
-
-    printNewline();
-  }
 }
 
 export default CarRaceController;
