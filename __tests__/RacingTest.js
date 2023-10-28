@@ -2,8 +2,6 @@
 import Car from "../src/Game/Car.js";
 
 
-
-
 describe("Racing 클래스 테스트", () => {
     
     test("registCar() 테스트", () => {
