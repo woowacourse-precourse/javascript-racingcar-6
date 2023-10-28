@@ -17,6 +17,7 @@ class Controller {
     await this.askMaxRun();
     this.executeAsMaxRun();
     this.findWinners();
+    this.printWinner();
   }
 
   async makeRaceCar() {
@@ -55,6 +56,11 @@ class Controller {
       const distance = car.getDistance();
       if (maxMoved === distance) this.winners.push(car);
     });
+  }
+
+  printWinner() {
+    const winnerList = this.winners.map((winner) => winner.getName());
+    View.winnerPrint(winnerList);
   }
 }
 
