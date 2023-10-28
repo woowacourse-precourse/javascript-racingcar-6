@@ -25,7 +25,7 @@ const getOneCarResult = (car) => {
   return `${carName} : ${forwardDistanceString}`;
 };
 
-const printStartApp = () => {
+const printInputCarNames = () => {
   print('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)');
 };
 
@@ -49,7 +49,7 @@ const printFinalWinner = (cars) => {
 };
 
 export {
-  printStartApp,
+  printInputCarNames,
   printInputAttemptNumber,
   printStartRaceResult,
   printRaceResult,

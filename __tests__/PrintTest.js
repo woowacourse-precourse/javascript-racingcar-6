@@ -1,6 +1,6 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import {
-  printStartApp,
+  printInputCarNames,
   printRaceResult,
   printFinalWinner,
 } from '../src/utils/print';
@@ -22,7 +22,7 @@ describe('출력 테스트', () => {
     const logSpy = getLogSpy();
     const output = `경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)`;
 
-    printStartApp();
+    printInputCarNames();
 
     expect(logSpy).toHaveBeenCalledWith(output);
   });

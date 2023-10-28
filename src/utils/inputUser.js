@@ -1,5 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import { printStartApp, printInputAttemptNumber } from './print';
+import { printInputCarNames, printInputAttemptNumber } from './print';
 import {
   validateInputAttemptNumber,
   validateInputCarNames,
@@ -12,7 +12,7 @@ const input = async (printString = '') => {
 };
 
 const inputCarNames = async () => {
-  printStartApp();
+  printInputCarNames();
   const carNames = await input();
   validateInputCarNames(carNames);
 
