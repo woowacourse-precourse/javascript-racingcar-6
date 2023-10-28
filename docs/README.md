@@ -48,7 +48,7 @@
     - [x] `moveCycle()` : 모든 `Car` 인스턴스를 `move()` 시킨다.
     - [x] `oneMoveCycleResult()` : 경주 자동차들의 이동 결과를 문자열로 반환한다.
     - [x] `getMaxDistance` : 경주 자동차의 최대 이동거리를 산출한다.
-    - [ ] `getWinner` : 이동거리를 비교하여 경주 우승자를 구한다. 
+    - [x] `getWinner` : 이동거리를 비교하여 경주 우승자를 구한다. 
         - 우승자는 여러 명이 나올 수 있다.
 
 ## `Car` class
