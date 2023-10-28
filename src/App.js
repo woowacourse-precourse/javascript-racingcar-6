@@ -1,6 +1,7 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import { ATTEMPTS_NUMBER, CAR_NAME } from "./constants/questions";
 import { ERROR_ATTEMPTS_NUMBER, ERROR_CAR_NAME } from "./constants/errors";
+import { CAR_NAME_STANDARD, WINNER_STANDARD } from "./constants/separations";
 
 class App {
   constructor() {
@@ -14,7 +15,7 @@ class App {
     // 1-a
     this.strCarName = await MissionUtils.Console.readLineAsync(CAR_NAME);
     // 1-b
-    this.arrCarName = this.strCarName.split(",");
+    this.arrCarName = this.strCarName.split(CAR_NAME_STANDARD);
     // 1-c
     this.arrCarName.map((name) => {
       if (name.trim().length > 5 || name.trim().length < 1) {
@@ -62,7 +63,7 @@ class App {
       }
     }
     // 3-c
-    MissionUtils.Console.print(`최종 우승자 : ${this.winner.join(", ")}`);
+    MissionUtils.Console.print(`최종 우승자 : ${this.winner.join(WINNER_STANDARD)}`);
   }
 }
 
