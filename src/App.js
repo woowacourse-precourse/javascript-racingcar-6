@@ -35,11 +35,29 @@ class App {
 
 
 
+    
+    
+    //최대값찾기
+    let max=0;
+    const winnerList= [];
+
+    for (let item of playersKeyList){
+      if (players[item]>max){
+        max=players[item];
+      }
+    }
+
+    for (let item of playersKeyList){
+      if(players[item]===max){
+        winnerList.push(item);
+      }
+    }    
+
+    //최종 우승자 출력
+    const output=winnerList.join(", ");
+    Console.print(`최종 우승자 : ${output}`);
+
   }
 }
-
-
-const app = new App();
-app.play();
 
 export default App;
