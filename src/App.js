@@ -3,27 +3,12 @@ import { MESSAGE, ERROR } from './constants/index.js';
 
 class App {
   async play() {
-    const CAR = [];
-    let candidate = await MissionUtils.Console.readLineAsync(
-      MESSAGE.carNameForStart,
-    );
-    candidate.split(',').forEach(name => {
-      if (name.length > 5) {
-        throw new Error(ERROR.carNameInputLong);
-      }
-      CAR.push([name, '']);
-    });
-    let counts = await MissionUtils.Console.readLineAsync(
-      MESSAGE.raceRoundForStart,
-    );
-    const ROUND = parseInt(counts, 10);
-    if (isNaN(ROUND)) {
-      throw new Error(ERROR.roundInputNumber);
-    }
+    const CARS = await this.getCarNames();
+    const ROUNDS = await this.getNumberOfRounds();
 
     MissionUtils.Console.print(MESSAGE.roundResult);
-    for (let i = 0; i < ROUND; i++) {
-      CAR.forEach(player => {
+    for (let i = 0; i < ROUNDS; i++) {
+      CARS.forEach(player => {
         const NAME = player[0];
         let step = player[1];
         if (choiceGoOrStop()) {
@@ -37,7 +22,7 @@ class App {
 
     let winner = '';
     let distance = 0;
-    CAR.forEach(player => {
+    CARS.forEach(player => {
       if (player[1].length > distance) {
         winner = player[0];
         distance = player[1].length;
@@ -55,6 +40,31 @@ class App {
         return false;
       }
     }
+  }
+
+  async getCarNames() {
+    const CARS = [];
+    const NAMES = await MissionUtils.Console.readLineAsync(
+      MESSAGE.carNameForStart,
+    );
+    NAMES.split(',').forEach(name => {
+      if (name.length > 5) {
+        throw new Error(ERROR.carNameInputLong);
+      }
+      CARS.push([name, '']);
+    });
+    return CARS;
+  }
+
+  async getNumberOfRounds() {
+    const COUNTS = await MissionUtils.Console.readLineAsync(
+      MESSAGE.raceRoundForStart,
+    );
+    const ROUNDS = parseInt(COUNTS, 10);
+    if (isNaN(ROUNDS)) {
+      throw new Error(ERROR.roundInputNumber);
+    }
+    return ROUNDS;
   }
 }
 
