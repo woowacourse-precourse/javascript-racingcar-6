@@ -180,4 +180,4 @@ class UpdateConstants {
 
 ---
 
-![RESULT_IMG](/Users/ijonghyeon/Desktop/Desktop/woowa/javascript-racingcar-6/docs/IMG/RESULT_IMG.png)
+![RESULT_IMG](./IMG/RESULT_IMG.png)
