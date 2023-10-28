@@ -43,6 +43,15 @@ class GameManager {
       this.printCurrentProgress();
     }
   }
+
+  findWinner() {
+    const maxDistance = Math.max(
+      ...this.playerGroup.map((player) => player.moveDistance)
+    );
+    this.winner = this.playerGroup.filter(
+      (player) => player.moveDistance === maxDistance
+    );
+  }
 }
 
 export default GameManager;
