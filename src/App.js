@@ -5,7 +5,7 @@ import {MissionUtils} from "@woowacourse/mission-utils";
 1. 자동차 수에 맞는 이름 입력✅
 - 이름은 ','로 구분, 5자 이하만, 유효성 검사
 
-2. 시도 횟수 입력
+2. 시도 횟수 입력✅
 
 - 숫자 입력 및 유효성 검사
 
@@ -24,6 +24,10 @@ class App {
       names.split(",")
     );
     carNameArray.forEach((name) => checkNameValidation(name));
+
+    const inputCount = await Console.readLineAsync("시도할 횟수");
+    checkInputCount(inputCount);
+    const attemptCount = Number(inputCount);
   }
 }
 
@@ -32,4 +36,9 @@ export default App;
 const checkNameValidation = (name) => {
   if (!name) throw Error("[ERROR]");
   if (name.length > 5) throw Error("[ERROR]");
+};
+
+const checkInputCount = (inputCount) => {
+  if (!inputCount) throw Error("[ERROR]");
+  if (!typeof inputCount === "string" || isNaN(inputCount)) throw Error("[ERROR]");
 };
