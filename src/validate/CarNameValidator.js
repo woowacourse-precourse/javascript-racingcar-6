@@ -5,9 +5,15 @@ export default class CarNameValidator {
     if (this.isEmptyInput(names)) {
       throw new Error(ERROR_MESSAGE.emptyInput);
     }
+    if (this.hasWhiteSpace(names)) {
+      throw new Error(ERROR_MESSAGE.hasWhiteSpace);
+    }
   }
 
   static isEmptyInput(input) {
     return !input || input.trim().length === 0;
+  }
+  static hasWhiteSpace(names) {
+    return names.includes(' ');
   }
 }
