@@ -1,12 +1,13 @@
 import { Console } from '@woowacourse/mission-utils';
+import message from './message.js';
 
 export default class AppView {
   static printInstruction() {
-    Console.print('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)');
+    Console.print(message.START_MESSAGE);
   }
 
   static printResultHeader() {
-    Console.print('\n실행 결과');
+    Console.print(message.REPEAT_RESULT_HEAD);
   }
 
   static printCarStatus(name, distance) {

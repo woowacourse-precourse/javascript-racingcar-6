@@ -1,6 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
 import RacingCar from './racingCar.js';
 import AppView from './appVIew.js';
+import message from './message.js';
 
 export default class App {
   constructor() {
@@ -28,7 +29,7 @@ export default class App {
     const emptyValidate = carNames.some((name) => name === '');
     const uniqueValidate = setCarNames.size !== carNames.length;
     if (lengthValidate || emptyValidate || uniqueValidate) {
-      throw new Error('[ERROR] 자동차 이름이 잘못된 형식입니다.');
+      throw new Error(message.CAR_NAME_ERROR);
     }
 
     this.buildRacingCar(carNames);
@@ -43,14 +44,14 @@ export default class App {
   }
 
   async getRepeatCountInput() {
-    this.repeatCount = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    this.repeatCount = await Console.readLineAsync(message.ASK_REPEAT_COUNT);
     this.repeatCountValidation(this.repeatCount);
   }
 
   /* eslint-disable class-methods-use-this */
   repeatCountValidation(repeatCount) {
     const numberValidate = [...repeatCount].every((digit) => !Number.isNaN(+digit));
-    if (!numberValidate) throw new Error('[ERROR] 숫자가 잘못된 형식입니다.');
+    if (!numberValidate) throw new Error(message.REPEAT_COUNT_ERROR);
   }
 
   repeatGame() {
