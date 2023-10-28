@@ -51,7 +51,7 @@ class Controller {
             if (obj[key] === WINNER_VALUE) return key;
         });
         // 문자열화
-        return WINNER_ARRAY.join(", ");
+        return `${Data.MESSAGE.WINNER}${WINNER_ARRAY.join(", ")}`;
     }
 }
 
