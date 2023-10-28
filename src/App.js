@@ -24,10 +24,31 @@ class App {
     if(isNaN(this.TRYDATA)) throw Error("[ERROR]숫자를 입력해주세요.")
   }
 
+  raceStart() {
+    let RACE = "";
+      for(let i = 0; i < this.CARSNAME.length; i++){
+        let GOORSTOP = Random.pickNumberInRange(0,9);
+        RACE += `${this.CARSNAME[i]} : `
+        if(GOORSTOP >= 4){
+          this.CARSGOCOUNT[i] += "-";
+          RACE += this.CARSGOCOUNT[i];
+          this.CARSRANK[i] += 1
+        }else{
+          RACE += this.CARSGOCOUNT[i];
+        }
+        RACE += "\n";
+    }
+
+    Console.print(RACE);
+  }
+
   
   async play() {
     await this.getCarsName();
     await this.getTry();
+    while(this.TRYDATA--){
+      this.raceStart();
+    }
 
   }
 }
