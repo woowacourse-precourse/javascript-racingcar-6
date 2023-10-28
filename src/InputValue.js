@@ -8,7 +8,7 @@ class InputValue {
       const arr = input.split(',');
       return arr;
     } catch (error) {
-      Console.print('[ERROR] ' + error.message);
+      Console.print(`[ERROR] ${error.message}`);
     }
   }
 
@@ -17,7 +17,7 @@ class InputValue {
       const input = await Console.readLineAsync(MESSAGE.INPUT_MOVE_COUNT);
       return input;
     } catch (error) {
-      Console.print('[ERROR] ' + error.message);
+      Console.print(`[ERROR] ${error.message}`);
     }
   }
 }
