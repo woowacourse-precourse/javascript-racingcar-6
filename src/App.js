@@ -3,19 +3,19 @@ import { Console, Random } from "@woowacourse/mission-utils";
 const ERROR_HEADER = "[ERROR]";
 class App {
   constructor() {
-    this.racingCars = new Map();
+    this.cars = new Map();
   }
 
-  async getRacingCars() {
-    let inputRacingCars = await Console.readLineAsync(
+  async getCars() {
+    let inputCars = await Console.readLineAsync(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
     );
-    return inputRacingCars.split(",");
+    return inputCars.split(",");
   }
 
-  async setRacingCars(racingCars) {
-    for (let racingCar of racingCars) {
-      this.racingCars.set(racingCar, "");
+  async setCars(cars) {
+    for (let car of cars) {
+      this.cars.set(car, "");
     }
   }
 
@@ -29,13 +29,13 @@ class App {
   }
 
   moveForward(car) {
-    const currPosition = this.racingCars.get(car);
+    const currPosition = this.cars.get(car);
     const nextPosition = currPosition + "-";
-    this.racingCars.set(car, nextPosition);
+    this.cars.set(car, nextPosition);
   }
 
   tryTurn() {
-    for (const car of this.racingCars.keys()) {
+    for (const car of this.cars.keys()) {
       let randomNum = Random.pickNumberInRange(0, 9);
       if (randomNum >= 4) {
         this.moveForward(car);
@@ -43,7 +43,7 @@ class App {
     }
   }
 
-  playRacing(tryNumber) {
+  startRacing(tryNumber) {
     Console.print("\n실행 결과");
     do {
       this.tryTurn();
@@ -55,10 +55,10 @@ class App {
 
   async play() {
     this.initPlay();
-    const racingCars = await this.getRacingCars();
-    await this.setRacingCars(racingCars);
+    const cars = await this.getCars();
+    await this.setCars(cars);
     const tryNumber = await this.getTryNumber();
-    this.playRacing(tryNumber);
+    this.startRacing(tryNumber);
   }
 }
 
