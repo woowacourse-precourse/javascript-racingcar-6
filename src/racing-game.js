@@ -14,6 +14,9 @@ class RacingGame {
     await this.getAttemptCount();
 
     this.gameManager.playRacing();
+
+    this.gameManager.findWinner();
+    this.gameManager.announceWinner();
   }
 
   async getCarRacePlayer() {

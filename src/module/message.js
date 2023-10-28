@@ -4,6 +4,7 @@ const MESSAGES = {
   ATTEMPT_COUNT_INPUT_PROMPT: "시도할 횟수는 몇 회인가요?\n",
   RESULT: "실행 결과",
   NEW_LINE: "\n",
+  FINAL_WINNER_MESSAGE: "최종 우승자: ",
 
   EMPTY_ERROR: "[ERROR] 입력을 하지 않으셨습니다.",
   MAX_NAME_LENGTH_ERROR: "[ERROR] 이름은 5자 이하만 가능합니다.",

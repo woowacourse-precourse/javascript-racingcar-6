@@ -20,7 +20,7 @@
 ##### The Winner is...
 
 - [x] 우승자 찾기 : findWinner()
-- [] 우승자 발표
+- [x] 우승자 발표 : announceWinner()
 
 ---
 
@@ -35,7 +35,6 @@ RacingGame : 게임 인스턴스 생성
   - startGame() : 게임 시작 진입점
   - getCarRacePlayer() : 경주할 자동차 입력 받기
   - getAttemptCount() : 시도 횟수 입력 받기
-  - playRacing() : 시도 횟수만큼 race 시행
 
 GameManager : 자동차 경주 게임을 관리하고 진행하는 기능 제공
 
@@ -43,6 +42,7 @@ GameManager : 자동차 경주 게임을 관리하고 진행하는 기능 제공
 
   - this.playerGroup : 전체 참가자 배열
   - this.attemptCount : 게임의 시도 횟수
+  - this.winner : 우승자 배열
 
 - 메서드
 
@@ -52,6 +52,7 @@ GameManager : 자동차 경주 게임을 관리하고 진행하는 기능 제공
   - shouldGoForward() : 전진 여부 판별
   - printCurrentProgress() : 각 시행별 경주 상황 출력
   - findWinner() : 가장 멀리 간 참가자 찾기
+  - announceWinner() : 우승자 발표
 
 Player : 참가자 인스턴스 생성
 

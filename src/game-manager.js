@@ -11,6 +11,7 @@ class GameManager {
   constructor() {
     this.playerGroup = [];
     this.attemptCount = null;
+    this.winner = null;
   }
 
   registerPlayer(player) {
@@ -51,6 +52,11 @@ class GameManager {
     this.winner = this.playerGroup.filter(
       (player) => player.moveDistance === maxDistance
     );
+  }
+
+  announceWinner() {
+    const winners = this.winner.map((player) => player.name).join(", ");
+    Console.print(`${MESSAGES.FINAL_WINNER_MESSAGE}${winners}`);
   }
 }
 
