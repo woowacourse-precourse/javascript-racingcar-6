@@ -30,5 +30,19 @@ const validations = {
       throw new Error('[ERROR] 중복된 자동차 이름이 없도록 입력해주세요');
     }
   },
+
+  moveCount(count) {
+    if (!count) {
+      throw new Error('[ERROR] 횟수를 입력하지 않으셨습니다');
+    }
+
+    if (Number.isNaN(Number(count))) {
+      throw new Error('[ERROR] 숫자만을 입력해주세요');
+    }
+
+    if (Number(count) < 0) {
+      throw new Error('ERROR] 음수는 입력할 수 없습니다');
+    }
+  },
 };
 export default validations;
