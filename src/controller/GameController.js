@@ -21,9 +21,10 @@ export default class GameController {
 
       const player = new Player(playerName);
       this.model.addPlayer(player);
-
-      console.log(this.model.getPlayers());
     });
+
+    const tryCount = await this.view.getUserInput(MESSAGE.TRY_COUNT);
+    this.#validateTryCount(tryCount);
   }
 
   splitPlayerNames(names) {
@@ -47,7 +48,7 @@ export default class GameController {
   }
 
   #validatePlayerName(name) {
-    if (!REG_EXP.test(name)) {
+    if (!REG_EXP.ONLY_ALPHABETS.test(name)) {
       throw new Error(ERROR_MESSAGE.INVALID_NAME);
     }
   }
@@ -58,6 +59,22 @@ export default class GameController {
 
     if (isWrongNameLength) {
       throw new Error(ERROR_MESSAGE.NUMBER_OF_CHARACTERS);
+    }
+  }
+
+  #validateTryCount(tryCount) {
+    const convertNumberTryCount = Number(tryCount);
+
+    if (Number.isNaN(convertNumberTryCount)) {
+      throw new Error(ERROR_MESSAGE.NOT_NUMBER);
+    }
+
+    const isOverRange =
+      convertNumberTryCount < GAME_RULL.MOVE_MIN_COUNT ||
+      convertNumberTryCount > GAME_RULL.MOVE_MAX_COUNT;
+
+    if (isOverRange) {
+      throw new Error(ERROR_MESSAGE.INVALID_MOVE_COUNT);
     }
   }
 }
