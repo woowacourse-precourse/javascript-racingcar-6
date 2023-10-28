@@ -10,7 +10,7 @@ class Commas {
   }
 
   commaResult(players) {
-    return this.isCommaInHeadTail(players) && this.isCommaContinuous(players);
+    return this.isCommaInHeadTail(players) || this.isCommaContinuous(players);
   }
 
   showCommaError(players) {
