@@ -3,9 +3,10 @@ import { Console } from '@woowacourse/mission-utils';
 import { INPUT_MESSAGE } from '../constants.js';
 
 const InputView = {
-  async readcarName() {
+  async readCarName() {
     try {
-      return await Console.readLineAsync(INPUT_MESSAGE.carName);
+      const carName = await Console.readLineAsync(INPUT_MESSAGE.carName);
+      return carName.split(',');
     } catch (error) {
       throw error;
     }
