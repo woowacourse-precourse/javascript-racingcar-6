@@ -4,6 +4,7 @@ class App {
   constructor() {
     this.random = 0;
     this.carList = [];
+    this.round = 0;
   }
 
   // 2. 경주할 자동차 이름 받기
@@ -13,10 +14,10 @@ class App {
     );
     const inputArr = input.split(",");
     this.carList = [...inputArr];
-    this.isValidate();
+    this.isValidateCar();
   }
 
-  isValidate() {
+  isValidateCar() {
     this.carList.forEach((car) => {
       if (car.length > 5) {
         throw new Error("[ERROR] 자동차 이름은 5글자 이하만 가능합니다.");
