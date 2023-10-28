@@ -87,6 +87,11 @@ class App {
     }
   }
 
+  resultText() {
+    const winnerCarNames = this.winnerCarArray.join(",");
+    Console.print("최종 우승자 : " + winnerCarNames);
+  }
+
   async play() {
   }
 }
