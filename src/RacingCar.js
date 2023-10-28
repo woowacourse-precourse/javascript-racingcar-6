@@ -1,4 +1,4 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Console, Random } from "@woowacourse/mission-utils";
 import { validPlayerInput, validTryInput } from "./validInput.js";
 
 class RacingCar {
@@ -9,6 +9,27 @@ class RacingCar {
 
     validPlayerInput(players);
     validTryInput(tryInput);
+    this.start(players, tryInput);
+  }
+
+  async start(players, tryInput) {
+    const tryNumber = Number(tryInput);
+    const playersResult = players.reduce((a, v) => ({ ...a, [v]: [] }), {});
+    let time = 0;
+
+    Console.print("\n실행 결과");
+    while (time < tryNumber) {
+      this.racingResult(players, playersResult);
+      time++;
+    }
+  }
+
+  racingResult(players, playersResult) {
+    players.forEach((player, i) => {
+      const randomNumber = Random.pickNumberInRange(0, 9);
+      randomNumber >= 4 ? playersResult[player].push("-") : "";
+      Console.print(`${player} : ${playersResult[player].join("")} ${i === players.length - 1 ? "\n" : ""}`);
+    });
   }
 }
 
