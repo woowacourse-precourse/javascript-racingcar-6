@@ -52,6 +52,8 @@ function startRace(name, count){
     }
     MissionUtils.Console.print("");
   }
+
+  return result;
 }
 
 function decideForwardOrStop(car, result){
@@ -62,12 +64,30 @@ function decideForwardOrStop(car, result){
   }
 }
 
+function getWinner(name, result){
+  let maxLength = 0;
+  let winner = [];
+  name.forEach((car) => {
+    const length = result.get(car).length;
+    if(length == maxLength){
+      winner.push(car);
+    }
+    else if(length > maxLength){
+      maxLength = length;
+      winner = [];
+      winner.push(car);
+    }
+  });
+  return winner;
+}
+
 class App {
   async play() {
     const name = await getNameInput();
     const count = await getNumberInput();
-
-    startRace(name, count);
+    const result = startRace(name, count);
+    const winner = getWinner(name, result);
+    return winner;
   }
 }
 
