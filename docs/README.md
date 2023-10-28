@@ -29,6 +29,7 @@
 - inputValidation : 사용자 입력 유효성 검사. checkCarNamesAreValid, checkTryNumberIsValid
 - scoreBoard : 자동차 게임 점수 관련. createScoreBoard, calcurateScore, printScore
 - gameResult : 자동차 게임 결과 관련. printGameResult
+- utils : 유틸리티 함수. createRandomNumber, checkCanMove
 
 ## 기능요구사항
 
