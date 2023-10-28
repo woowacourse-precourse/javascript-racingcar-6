@@ -1,9 +1,10 @@
-import gameStart from "./Main.js";
+import { gameStart } from './Main';
 
-class App {
-  async play() {
-    await gameStart();
+export default class App {
+  static play() {
+    gameStart();
   }
 }
 
-export default App;
+const app = new App();
+app.play();

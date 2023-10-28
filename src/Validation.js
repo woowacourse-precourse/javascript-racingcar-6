@@ -1,11 +1,4 @@
-import { ERROR_MESSAGES } from './Message.js';
-
-export const checkCarNameInput = (carName) =>{
-  checkCarNameEmpty(carName);
-  checkCarNameSpace(carName);
-  checkCarNameLen(carName);
-  checkCarNameType(carName);
-}
+import { ERROR_MESSAGES } from './Message';
 
 const checkCarNameEmpty = (carName) => {
   if (!carName.length) throw new Error(ERROR_MESSAGES.ERROR_NAME_EMPTY);
@@ -17,8 +10,8 @@ const checkCarNameSpace = (carName) => {
 };
 
 const checkCarNameLen = (carName) => {
-  carName.split(',').map((el) => {
-    if (el.length > 5) throw new Error(ERROR_MESSAGES.ERROR_NAME_LEN);
+  carName.split(',').forEach((car) => {
+    if (car.length > 5) throw new Error(ERROR_MESSAGES.ERROR_NAME_LEN);
   });
 };
 const checkCarNameType = (carName) => {
@@ -28,5 +21,12 @@ const checkCarNameType = (carName) => {
 };
 
 export const checkTryNumType = (tryNum) => {
-  if(tryNum.match(/\D/g)) throw new Error(ERROR_MESSAGES.ERROR_TRY_NUM_TYPE);
-}
+  if (tryNum.match(/\D/g)) throw new Error(ERROR_MESSAGES.ERROR_TRY_NUM_TYPE);
+};
+
+export const checkCarNameInput = (carName) => {
+  checkCarNameEmpty(carName);
+  checkCarNameSpace(carName);
+  checkCarNameLen(carName);
+  checkCarNameType(carName);
+};
