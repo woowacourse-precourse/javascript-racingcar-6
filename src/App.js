@@ -18,14 +18,45 @@ class App {
 
     const CARS_ARRAY = [];
 
+    function checkArrayOfCars(carsArray) {
+      const TMP_CAR_FOR_CHECK = carsArray;
+
+      if (new Set(TMP_CAR_FOR_CHECK).size !== TMP_CAR_FOR_CHECK.length) {
+        // set과 배열의 길이가 다를 경우 중복이 제거된 것이므로 중복 발생.
+        Console.print('중복 발생');
+        throw new Error('[Error]: 자동차 이름이 중복됩니다.');
+      }
+
+      TMP_CAR_FOR_CHECK.forEach((element) => {
+        if (
+          element.includes(' ') ||
+          element.length === 0 ||
+          element.length > 5
+        ) {
+          // 이름에 공백 포함 여부, 길이 조건 만족하는지 판단.
+          Console.print('올바르지 않은 입력');
+          throw new Error('[Error]: 자동차 이름이 중복되거나 올바르지 않습니다.');
+        }
+      });
+
+      return true;
+    }
+
     function makeArrayOfCars(carInput) {
       const TMP_CARS = carInput.split(',');
 
       TMP_CARS.forEach((element) => {
         CARS_ARRAY.push(new Car(element, 0));
       });
-      Console.print(CARS_ARRAY);
-      return CARS_ARRAY;
+
+      try{
+        if(checkArrayOfCars(TMP_CARS)) {
+          Console.print("올바른 입력");
+          Console.print(CARS_ARRAY);
+        }
+      } catch(e) {
+        Console.print(e);
+      }
     }
 
     async function getInputCars() {
@@ -35,17 +66,6 @@ class App {
 
       makeArrayOfCars(CAR_INPUT);
     }
-
-    // async function getInput() {
-    //   const COUNT_INPUT =
-    //     await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
-
-    //   // chkInput을 통과할 경우 객체에 담는다.
-    //   if (chkInput(CAR_INPUT, COUNT_INPUT)) {
-    //     const CARS = CAR_INPUT.split(',');
-    //     makeCarList(CARS, COUNT_INPUT);
-    //   }
-    // }
 
     getInputCars();
   }
