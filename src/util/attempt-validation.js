@@ -1,6 +1,7 @@
 const ERROR_MESSAGE = Object.freeze({
   LENGTH: "[ERROR] 시도 횟수를 입력하지 않으셨습니다.",
   NOT_NUMBER: "[ERROR] 시도 횟수는 숫자만 입력 가능합니다.",
+  FLOAT_ERROR: "[ERROR] 시도 횟수는 정수만 가능합니다.",
 });
 
 /**
@@ -32,6 +33,18 @@ function isNumeric(inputAttemptCount) {
 }
 
 /**
+ * 시도 횟수가 정수인지 검증하는 함수
+ * @param {string} inputAttemptCount 시도 횟수
+ * @throws 시도 횟수가 정수가 아니라면 에러를 던진다.
+ * @returns
+ */
+function isFloatError(inputAttemptCount) {
+  if (inputAttemptCount.includes(".")) {
+    throw new Error(ERROR_MESSAGE.FLOAT_ERROR);
+  }
+}
+
+/**
  * 입력받은 시도 횟수를 검증하는 함수
  * @param {string} inputAttemptCount 입력받은 검증 횟수
  * @returns {integer} 정수 형태의 검증 횟수
@@ -39,6 +52,7 @@ function isNumeric(inputAttemptCount) {
 function validateAttemptCount(inputAttemptCount) {
   isLengthError(inputAttemptCount);
   isNumeric(inputAttemptCount);
+  isFloatError(inputAttemptCount);
 
   return parseInt(inputAttemptCount);
 }
