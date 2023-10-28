@@ -4,6 +4,8 @@ export const SYSTEM = {
   delimiter: ',',
   quantity_max: 6,
   quantity_min: 2,
+  koreanPattern: 'ㄱ-ㅎㅏ-ㅣ가-힣',
+  englishPattern: 'a-zA-Z',
 };
 
 export const SYSTEM_TEXT = {
