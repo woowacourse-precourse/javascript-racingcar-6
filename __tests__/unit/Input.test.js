@@ -79,3 +79,20 @@ describe('쉼표로 구분한 이름이', () => {
     expect(() => evaluateValidation(carNames)).toThrow('[ERROR]');
   });
 });
+
+describe('입력 받은 시도 횟수가', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+  test('0이상의 정수인가?', async () => {
+    
+  });
+
+  test('숫자가 아닐경우 예외가 발생하는가?', () => {
+
+  });
+
+  test('0 보다 작을 경우 예외가 발생하는가?', () => {
+
+  });
+});
