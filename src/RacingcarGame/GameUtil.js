@@ -1,5 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import { ErrorMessage } from '../message';
+import { ErrorMessage } from '../Message';
 
 class GameUtil {
   carNameVaildator(car) {

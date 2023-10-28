@@ -1,4 +1,4 @@
-import { GameText } from '../message';
+import { GameText } from '../Message';
 import GameModel from './GameModel';
 import GameUtil from './GameUtil';
 import GameView from './GameView';

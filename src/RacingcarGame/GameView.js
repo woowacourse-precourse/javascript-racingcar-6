@@ -1,5 +1,5 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
-import { GameText } from "../message";
+import { MissionUtils } from '@woowacourse/mission-utils';
+import { GameText } from '../Message';
 
 class GameView {
   async printGetMessage(message) {
@@ -11,8 +11,8 @@ class GameView {
   }
 
   printCarProgress(cars) {
-    let progressMessage = "";
-    cars.forEach((car) => {
+    let progressMessage = '';
+    cars.forEach(car => {
       progressMessage += `${car.name} : ${car.getDisplay()}\n`;
     });
 
@@ -20,7 +20,7 @@ class GameView {
   }
 
   printWinners(winners) {
-    const winnerNames = winners.map((car) => car.name).join(", ");
+    const winnerNames = winners.map(car => car.name).join(', ');
     MissionUtils.Console.print(`최종 우승자 : ${winnerNames}`);
   }
 
