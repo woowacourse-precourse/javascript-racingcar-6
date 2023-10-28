@@ -1,6 +1,9 @@
+import { pickRandomSingleDigitNumber } from "../utils/random.js";
 import { typeValidator, validateLengthBelow } from "../utils/validators.js";
 
 class Car {
+  static #MIN_MOVE_VALUE = 4;
+
   #name;
 
   constructor(name) {
@@ -10,6 +13,11 @@ class Car {
 
   getName() {
     return this.#name;
+  }
+
+  move() {
+    const randomNumber = pickRandomSingleDigitNumber();
+    return randomNumber >= Car.#MIN_MOVE_VALUE;
   }
 
   static #validateName(value) {

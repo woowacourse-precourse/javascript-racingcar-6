@@ -11,14 +11,16 @@ class Race {
   static #MIN_ROUND_NUMBER = 1;
   static #MAX_ROUND_NUMBER = 100;
 
-  #racingCars;
-  #roundNumber;
+  #racingCars = [];
+  #roundNumber = 0;
+  #carsPosition = {};
 
   constructor() {}
 
   async init() {
     await this.#registerCarsFromUserInput();
     await this.#setRoundNumberFromUserInput();
+    this.#startGame();
   }
 
   async #registerCarsFromUserInput() {
@@ -32,6 +34,32 @@ class Race {
     const input = await InputView.readRoundNumber();
     const roundNumber = IntParser.parse(input);
     this.#setRoundNumber(roundNumber);
+  }
+
+  #startGame() {
+    for (let i = 0; i < this.#roundNumber; i++) {
+      this.#processRound();
+    }
+  }
+
+  #processRound() {
+    const roundResult = this.#racingCars.moveAll();
+
+    const carNames = Object.keys(roundResult);
+    carNames.forEach((carName) => {
+      const isMove = roundResult[carName];
+      if (isMove) this.#increaseCarPosition(carName);
+    });
+  }
+
+  #increaseCarPosition(carName) {
+    const prevCarPosition = this.#carsPosition[carName] || 0;
+
+    const updatedCarsPosition = {
+      ...this.#carsPosition,
+      [carName]: prevCarPosition + 1,
+    };
+    this.#carsPosition = updatedCarsPosition;
   }
 
   #registerCars(cars) {

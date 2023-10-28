@@ -10,6 +10,14 @@ class Cars {
     this.#cars = cars;
   }
 
+  moveAll() {
+    return this.#cars.reduce((acc, car) => {
+      const result = { ...acc };
+      result[car.getName()] = car.move();
+      return result;
+    }, {});
+  }
+
   static #validate(value) {
     typeValidator.isArray(value);
     Cars.#validateType(value);
