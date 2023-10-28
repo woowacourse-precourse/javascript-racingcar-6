@@ -3,6 +3,7 @@ import { calculateLongestDistance } from './../src/utils/calculateLongestDistanc
 import {
   valiadateDuplicteName,
   hasDuplicate,
+  validateCountNumber,
 } from './../src/utils/validateValue.js';
 import { MissionUtils } from '@woowacourse/mission-utils';
 import Car from '../src/models/Car';
@@ -58,11 +59,10 @@ describe('Car Model', () => {
 });
 
 // Error Unit Test
-
 describe('valiadateDuplicteName', () => {
   test('car 이름은 중복이 불가하다.', () => {
     const carList = ['car1', 'car2', 'car1'];
-    expect(() => valiadateDuplicteName(carList)).toThrowError(
+    expect(() => valiadateDuplicteName(carList)).toThrow(
       '[ERROR] car 이름은 중복이 불가합니다.',
     );
   });
@@ -70,5 +70,35 @@ describe('valiadateDuplicteName', () => {
   test('중복이 없는 car 이름이면 테스트를 통과한다.', () => {
     const carList = ['car1', 'car2', 'car3'];
     expect(() => valiadateDuplicteName(carList)).not.toThrow();
+  });
+});
+
+describe('validateCountNumber', () => {
+  test('정수가 아닌 입력에 대해 에러를 던진다.', () => {
+    expect(() => validateCountNumber('2.5')).toThrow(
+      '[ERROR] 정수를 입력해주세요.',
+    );
+  });
+
+  test('음수 입력에 대해 에러를 던져야 한다.', () => {
+    expect(() => validateCountNumber(-2)).toThrow(
+      '[ERROR] 음수를 입력할 수 없습니다.',
+    );
+  });
+
+  test('숫자가 아닌 입력에 대해 에러를 던져야 한다.', () => {
+    expect(() => validateCountNumber('abc')).toThrowError(
+      '[ERROR] 숫자를 입력해주세요.',
+    );
+  });
+
+  test('0 입력에 대해 에러를 던져야 한다.', () => {
+    expect(() => validateCountNumber(0)).toThrow(
+      '[ERROR] 1이상의 숫자를 입력해주세요.',
+    );
+  });
+
+  test('유효한 입력에 대해 에러를 던지지 않는다.', () => {
+    expect(() => validateCountNumber(3)).not.toThrow();
   });
 });

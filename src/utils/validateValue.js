@@ -1,15 +1,16 @@
 export function validateCountNumber(moveCount) {
   const inputValueNumber = Number(moveCount);
+
+  if (isNaN(inputValueNumber)) {
+    throw new Error('[ERROR] 숫자를 입력해주세요.');
+  }
+
   if (inputValueNumber % 1 !== 0) {
     throw new Error('[ERROR] 정수를 입력해주세요.');
   }
 
   if (inputValueNumber < 0) {
-    throw new Error('[ERROR] 음수를 입력할 수 없습니다');
-  }
-
-  if (typeof inputValueNumber !== 'number') {
-    throw new Error('[ERROR] 숫자를 입력해주세요.');
+    throw new Error('[ERROR] 음수를 입력할 수 없습니다.');
   }
 
   if (inputValueNumber === 0) {
