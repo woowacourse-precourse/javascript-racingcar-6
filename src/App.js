@@ -1,27 +1,46 @@
 import { Random, Console } from '@woowacourse/mission-utils';
 import ERROR from './error.js';
 
-
-
-
 class App {
 
   constructor() {
+    this.carList;
+    this.gameStatus = [];
   }
 
   async play() {
     await this.getUserCarListInput();
     await this.getUserWantMoveCount();
+    this.makeRandomNumber();
+    await this.makeForCheckGameStatus(this.carList);
+  }
+
+  // 전진 또는 정지를 위한 랜덤 넘버 생성
+  makeRandomNumber(){
+    return Random.pickNumberInRange(0, 9);
+  }
+
+  // 게임 진행하는 동안 차들의 상태를 저장하기 위한 배열 생성 - 현재는 이름과 결과를 한번에 저장하려고함
+  // 이름과 결과를 따로 저장하고 출력시에만 같이 출력할까 고민중
+  makeForCheckGameStatus(userinput){
+    this.gameStatus = Array.from({ length: userinput.length }, () => []);
+    for (let i = 0; i < this.gameStatus.length; i++) {
+      this.gameStatus[i].push(`${userinput[i]} :`);
+      console.log(this.gameStatus[i]);
+      console.log(userinput[i]);
+    }
+    console.log(this.gameStatus);
+    return this.gameStatus;
   }
 
   // 사용자가 부여한 자동차 이름들을 받아오는 코드
   async getUserCarListInput(){
     const userCarListInput = await Console.readLineAsync("차 이름을 입력해주세여");
     // 쉼표를 기준으로 5자 이하인지 체크 - 쉼표를 기준으로 5자 이상인것 오류
-    const carList = userCarListInput.split(',');
-
-    this.checkInvalidCarName(carList);
-    console.log("this.checkInvalidCarName(carList);", this.checkInvalidCarName(carList))
+    this.carList = userCarListInput.split(',');
+    this.checkInvalidCarName(this.carList);
+    console.log("this.checkInvalidCarName(carList)", this.checkInvalidCarName(this.carList));
+    return this.carList;
   }
 
   // 사용자가 입력한 차들의 이름이 입력 기준을 만족하는지 체크하는 기능
@@ -79,7 +98,6 @@ class App {
     return inputCount;
   }
 
-  // 
 
   checkNumber(inputCount){
     if (!(Number(inputCount))) {
@@ -91,11 +109,14 @@ class App {
     }
   }
 
+
   checkSpace(input){
     const forCheckSpace = /\s/;
     return forCheckSpace.test(input);
   }
 
+  
+  
 }
 
 export default App;
