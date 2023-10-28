@@ -8,6 +8,8 @@ const ERROR = {
   // carInputWord: `[ERROR] 띄어쓰기는 입력 불가합니다.`,
   carNameLength: `[ERROR] 이름은 5자 이하로 작성하세요.`,
   noInputCarList: `[ERROR] 자동차를 입력하세요.`,
+  tryNumberZero: `[ERROR] 1 이상의 숫자를 입력하세요`,
+  tryNumberIntType: `[ERROR] 숫자만 입력 가능합니다.`,
 };
 
 export { MESSAGE, ERROR };

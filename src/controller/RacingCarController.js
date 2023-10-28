@@ -8,7 +8,7 @@ import TryNumberCheck from "../validate/TryNumberCheck.js";
 class RacingCarController {
   constructor() {
     this.carNames;
-    this.TryCount;
+    this.tryCount;
     this.input = new Input();
     // this.randomMoving = new RandomCarMoving();
     this.car = new CarMoving();
@@ -17,16 +17,22 @@ class RacingCarController {
   }
 
   async start() {
-    // this.carNames = await this.input.inputCarNames();
+    await this.setcarName();
+    await this.setTryNumber();
+    Console.print(this.carNames + this.tryCount);
+  }
 
-    //자동차 이름 입력받기
+  //자동차 이름 입력받기
+  async setcarName() {
     this.carNames = this.carListCheck.validate(
       await this.input.inputCarNames()
     );
+  }
 
-    // Console.print(this.carNames);
-    //게임 횟수 입력받기
-    this.TryCount = this.tryNumberCheck.validate(
+  //게임 횟수 입력받기
+  async setTryNumber() {
+    Console.print("dd");
+    this.tryCount = this.tryNumberCheck.validate(
       await this.input.inputTryNumber()
     );
   }
