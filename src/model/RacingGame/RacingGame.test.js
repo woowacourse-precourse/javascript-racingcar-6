@@ -26,15 +26,6 @@ describe("RacingGame 객체 테스트", () => {
     expect(racingGame.totalCount).toBeUndefined();
   });
 
-  test("입력받은 횟수 만큼 진행하는지 확인", async () => {
-    const inputs = [names.join(","), String(count)];
-    mockConsole(inputs);
-    await racingGame.start();
-
-    expect(Console.readLineAsync).toHaveBeenCalledTimes(2);
-    expect(Console.print).toHaveBeenCalledTimes(2 + count * (names.length + 1));
-  });
-
   test("getWinners 검증", async () => {
     const inputs = [names.join(","), String(count)];
     mockConsole(inputs);

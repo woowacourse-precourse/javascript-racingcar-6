@@ -5,12 +5,15 @@ import { RacingGameState } from "../../constants/game.js";
 import { getRandomNumber } from "../../utils/random/random.js";
 import { RacingGameMessage } from "../../utils/message/message.js";
 import OutOfRangeError from "../../error/OutOfRangeError.js";
+import Log from "../Log/Log.js";
 
 class RacingGame {
+  #gameLogs;
   #racingCars;
   #totalCount;
   #currentCount;
   constructor() {
+    this.#gameLogs = new Log(RacingGameState.MAX_LOG_LENGTH);
     this.#racingCars = [];
     this.#totalCount = 0;
     this.#currentCount = 0;
@@ -40,12 +43,15 @@ class RacingGame {
     this.#totalCount = count;
 
     // totalCount 만큼 게임 진행
-    Console.print(RacingGameMessage.resultTitle());
+    this.#gameLogs.push(RacingGameMessage.resultTitle());
     while (this.run());
 
     // 우승자 출력
     const winners = this.getWinners();
-    Console.print(RacingGameMessage.winner(winners.join(", ")));
+    this.#gameLogs.push(RacingGameMessage.winner(winners.join(", ")));
+
+    // 모아둔 게임 로그 전부 출력
+    this.#gameLogs.flush();
   }
 
   run() {
@@ -63,10 +69,10 @@ class RacingGame {
 
       // 현재 결과 출력
       const log = racingCar.getLog();
-      Console.print(log);
+      this.#gameLogs.push(log);
     });
     // 한 줄 띄어쓰기
-    Console.print("");
+    this.#gameLogs.push("");
 
     // count 횟수 증가 시키고 진행 가능 여부 리턴
     return ++this.#currentCount < this.#totalCount;
@@ -78,6 +84,10 @@ class RacingGame {
     return this.#racingCars
       .filter((racingCar) => racingCar.getCount() === maxCount)
       .map((racingCar) => racingCar.getName());
+  }
+
+  addGameLog(msg) {
+    this.#gameLogs;
   }
 }
 
