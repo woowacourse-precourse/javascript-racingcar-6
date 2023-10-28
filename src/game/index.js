@@ -3,6 +3,7 @@ import { isMove } from "../util/Random.js";
 import { input } from "../util/input.js";
 import { makeCarsArray } from "../util/message.js";
 import { print } from "../util/output.js";
+import { vaildTryCount } from "../validation/tryValidation.js";
 
 export class RacingGame {
   constructor() {
@@ -21,7 +22,8 @@ export class RacingGame {
 
   async initTryCount() {
     const count = await input(INPUT_MESSAGE.TRY_COUNT);
-    this.tryCount = +count;
+    const VAILD_COUNT = vaildTryCount(+count);
+    this.tryCount = VAILD_COUNT;
   }
 
   async go(num) {
