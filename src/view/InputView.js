@@ -1,5 +1,5 @@
 import InputValidator from "../utils/InputValidator.js";
-import { PrintMessage, ErrorMessage } from "../static/Static.js";
+import { PrintMessage } from "../static/Static.js";
 import { Console } from "@woowacourse/mission-utils";
 
 const InputView = {

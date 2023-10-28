@@ -1,5 +1,4 @@
-import { ErrorMessage } from "../static/Static.js";
-import { StaticNumber } from "../static/Static.js";
+import { ErrorMessage, StaticNumber } from "../static/Static.js";
 
 const InputValidator = {
   validateCarName(input) {
