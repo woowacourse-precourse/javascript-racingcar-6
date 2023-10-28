@@ -1,4 +1,4 @@
-import { RacingGameState } from "../../constanst/game";
+import { RacingGameState } from "../../constanst/game.js";
 
 const ErrorMessage = {
   basicErrorMessage: (msg) => `[ERROR] ${msg}`,
