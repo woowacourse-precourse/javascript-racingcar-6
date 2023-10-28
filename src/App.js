@@ -1,4 +1,4 @@
-import { Console } from '@woowacourse/mission-utils';
+import { Console, Random } from '@woowacourse/mission-utils';
 import { validate, inputCarRegex, inputNumber } from './validate.js';
 
 class App {
@@ -16,6 +16,16 @@ class App {
       throw new Error('[ERROR] 입력이 잘못된 형식입니다.');
     }
     const retry = Number(retryInput);
+
+    Console.print('실행 결과');
+    const carsProgress = Object.fromEntries(cars.map((k) => [k, 0]));
+    for (let i = 0; i < retry; i += 1) {
+      for (const car of cars) {
+        carsProgress[car] += Random.pickNumberInRange(0, 9) >= 4
+        Console.print(`${car} : ${'-'.repeat(carsProgress[car])}`);
+      }
+      Console.print('');
+    }
   }
 }
 
