@@ -15,6 +15,14 @@ class RacingCarModel {
       this.#carData.set(carName, '');
     });
   }
+
+  racing() {
+    this.#carData.forEach((progress, car) => {
+      if (this.canMove()) {
+        this.#carData.set(car, `${progress}${SYSTEM.move}`);
+      }
+    });
+  }
 }
 
 export default RacingCarModel;
