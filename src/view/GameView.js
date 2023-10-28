@@ -1,7 +1,11 @@
 import { Console } from '@woowacourse/mission-utils';
 
 export default class GameView {
-  static print(message) {
+  print(message) {
     Console.print(message);
+  }
+
+  async getUserInput(query) {
+    return Console.readLineAsync(query);
   }
 }
