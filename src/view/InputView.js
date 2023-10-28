@@ -10,6 +10,11 @@ const InputView = {
     Validator.checkRacingCarNames(carNames);
     return carNames;
   },
+
+  async readRacingCount() {
+    const racingCount = await Console.readLineAsync('시도할 횟누는 몇 회인가요?\n');
+    return racingCount;
+  },
 };
 
 export default InputView;
