@@ -1,6 +1,6 @@
 import InputView from './views/InputView.js';
 import ErrorHandler from './utils/ErrorHandler.js';
-import { validateCarName } from './Validator.js';
+import { validateCarName, validateTryNumber } from './Validator.js';
 
 class App {
   constructor() {}
@@ -16,12 +16,19 @@ class App {
     await this.readTryNumber();
   }
 
-  validate(carName) {
-    ErrorHandler(validateCarName, carName);
+  validate(input) {
+    if (Array.isArray(input)) {
+      ErrorHandler(validateCarName, input);
+      return;
+    }
+
+    ErrorHandler(validateTryNumber, input);
   }
 
   async readTryNumber() {
     const tryNumber = await InputView.readTryNumber();
+
+    this.validate(tryNumber);
   }
 }
 
