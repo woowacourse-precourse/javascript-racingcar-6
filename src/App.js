@@ -87,7 +87,18 @@ class App {
   /**
    * 최종 우승자를 판별하고 이를 출력하는 메소드
    */
-  print_race_result() {}
+  print_race_result() {
+    // ? 1. 최대 거리 구하기
+    const MAX_DIST = this.#RACE_CARS.reduce(
+      (max, cur) => (cur.distance > max ? cur.distance : max),
+      0
+    );
+
+    // ? 2. 우승자 판별 - 최대 거리를 갖는 경주차
+    const RESULT = this.#RACE_CARS.filter((car) => car.distance === MAX_DIST);
+
+    RESULT.forEach((winner) => Console.print(`최종 우승자 : ${winner.name}`));
+  }
 
   /**
    * 자동차 경주 게임을 실행하는 메소드
