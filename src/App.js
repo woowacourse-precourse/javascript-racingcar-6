@@ -13,7 +13,14 @@ class App {
       }
       CAR.push([name, '']);
     });
-    MissionUtils.Console.print(CAR);
+    let counts = await MissionUtils.Console.readLineAsync(
+      MESSAGE.raceRoundForStart,
+    );
+    const ROUND = parseInt(counts, 10);
+    if (isNaN(ROUND)) {
+      throw new Error(ERROR.roundInputNumber);
+    }
+    MissionUtils.Console.print(ROUND);
   }
 }
 
