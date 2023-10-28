@@ -33,14 +33,14 @@
 ## Env
 
 - DO : 기능을 구현하기 전 docs/README.md에 구현할 기능 목록을 정리해 추가한다.
+- DO : Git의 커밋 단위는 앞 단계에서 docs/README.md에 정리한 기능 목록 단위로 추가한다
 - [x] DO NOT : .vscode는 commit 대상에서 제외한다.
-- [ ] DO : Git의 커밋 단위는 앞 단계에서 docs/README.md에 정리한 기능 목록 단위로 추가한다
 - [ ] DO : Node.js 18.17.1 버전에서 실행 가능해야 한다.
 
 ## Convention(Code, Commit)
 
+- DO : 기능명세서 단위로 commit을 진행한다.
 - [ ] DO NOT : indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다.
-- [ ] DO : 기능명세서 단위로 commit을 진행한다.
 
 ---
 
