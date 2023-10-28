@@ -18,6 +18,7 @@ export default class CarRacingGame {
       this.tryAdvance();
       this.eachResultPrint();
     }
+    this.printWinners();
   }
 
   carNamesToCarNameArray(carNames = ''){
@@ -48,6 +49,17 @@ export default class CarRacingGame {
       Console.print(`${car.getName()} : ${advances}`);
     })
     Console.print('');
+  }
+
+  printWinners() {
+    const maxAdvanceCount = Math.max(
+      ...this.#carNameArray.map((car) => car.getAdvanceCount())
+    );
+    const winners = this.#carNameArray.filter(
+      (car) => car.getAdvanceCount() === maxAdvanceCount
+    );
+    const winnerNames = winners.map((car) => car.getName()).join(', ');
+    Console.print(`최종 우승자 : ${winnerNames}`);
   }
 
   getCarNameArray(){
