@@ -67,6 +67,20 @@ class App {
     });
     return indexesOfMax;
   }
+
+  // 출력
+  printRacingProgress() {
+    this.movement.forEach(result => {
+      Console.print(result);
+    })
+  }
+
+  printRacingWinner() {
+    const winnerIndexes = this.decideWinner();
+    const winners = winnerIndexes.map(playerIndex => this.car[playerIndex]);
+    const winnerMessage = winners.join(', ');
+    Console.print(`최종 우승자 : ${winnerMessage}`);
+  }
 }
 
 export default App;
