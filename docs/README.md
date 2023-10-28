@@ -15,7 +15,7 @@
 - [x] 시도 횟수만큼 루프 실행 : playRacing()
 - [x] 각 시행마다 모든 플레이어가 전진 시도 : performAttempt()
   - [x] 0과 9 사이의 무작위 값이 4 이상인지 판별 : shouldGoForward()
-- [] 각 시행 결과 출력
+- [x] 각 시행 결과 출력
 
 ##### The Winner is...
 
@@ -50,6 +50,7 @@ GameManager : 자동차 경주 게임을 관리하고 진행하는 기능 제공
   - playRacing() : 시도 횟수만큼 루프 실행
   - perforAttempt() : 각 시행마다 참가자 전진 시도
   - shouldGoForward() : 전진 여부 판별
+  - printCurrentProgress() : 각 시행별 경주 상황 출력
 
 Player : 참가자 인스턴스 생성
 

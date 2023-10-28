@@ -4,6 +4,7 @@ import {
   MIN_FORWARD_THRESHOLD,
   RANDOM_MAX,
   RANDOM_MIN,
+  SINGLE_STEP,
 } from "./module/constants.js";
 
 class GameManager {
@@ -27,10 +28,19 @@ class GameManager {
     });
   }
 
+  printCurrentProgress() {
+    this.playerGroup.forEach((player) => {
+      const progress = SINGLE_STEP.repeat(player.moveDistance);
+      Console.print(`${player.name} : ${progress}`);
+    });
+    Console.print(MESSAGES.NEW_LINE);
+  }
+
   playRacing() {
     Console.print(MESSAGES.RESULT);
     for (let i = 0; i < this.attemptCount; i++) {
       this.performAttempt();
+      this.printCurrentProgress();
     }
   }
 }
