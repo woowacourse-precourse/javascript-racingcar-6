@@ -1,6 +1,6 @@
 import { MissionUtils, Console } from "@woowacourse/mission-utils";
 import carRacing from "./racing.js";
-
+import printRacingResult from "./racingResult.js";
 class App {
   async play() {
     try {
@@ -11,10 +11,14 @@ class App {
       const attempt = await Console.readLineAsync(
         "시도할 횟수는 몇 회인가요?\n"
       );
-      console.log(carNames);
+
+      // console.log(carNames);
       const splittedCarNames = carNames.split(",");
-      console.log(splittedCarNames);
-      carRacing(splittedCarNames, attempt);
+      // console.log(splittedCarNames);
+      Console.print("실행결과");
+      const forwardNumber = carRacing(splittedCarNames, attempt);
+      printRacingResult(splittedCarNames, forwardNumber);
+      // console.log("forward ", forwardNumber);
     } catch (err) {}
   }
 }

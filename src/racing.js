@@ -6,17 +6,22 @@ function carRacing(carName, attempt) {
 
   for (let i = 0; i < attempt; i++) {
     for (let j = 0; j < carNumbers; j++) {
-      isGoingForward(car, j);
-      console.log(`${carName[j]}`, car[j]);
+      const forwardNumber = isGoingForward(car, j);
+      Console.print(`${carName[j]} : ${forwardNumber[j]}`);
+      // console.log(`${carName[j]}`, car[j]);
+    }
+    if (i < attempt - 1) {
+      Console.print("");
     }
   }
 
   console.log(car);
+  return car;
 }
 
 function isGoingForward(currentCar, j) {
   const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
-  console.log("randNum ", randomNumber);
+  // console.log("randNum ", randomNumber);
   if (randomNumber >= 4) {
     currentCar[j] += "-";
   }
