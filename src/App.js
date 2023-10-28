@@ -60,7 +60,7 @@ export default class App {
       this.repeatCarMove();
       AppView.printGap();
     }
-    this.printWinner();
+    this.winnerSelection();
   }
 
   repeatCarMove() {
@@ -70,7 +70,7 @@ export default class App {
     });
   }
 
-  printWinner() {
+  winnerSelection() {
     const maxDistance = this.getMaxDistance();
     const winnersName = this.getWinnersName(maxDistance);
     AppView.printWinner(winnersName);
