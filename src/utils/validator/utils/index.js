@@ -26,3 +26,14 @@ export const isLanguageValid = (input) => {
     return !pattern.test(name);
   });
 };
+
+export const isDuplication = (input) => {
+  const inputArray = input.split(SYSTEM.delimiter);
+  const nameSet = new Set();
+
+  inputArray.forEach((name) => {
+    nameSet.add(name);
+  });
+
+  return inputArray.length !== nameSet.size;
+};
