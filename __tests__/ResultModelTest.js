@@ -5,6 +5,7 @@ describe('ResultModel Test', () => {
   beforeEach(() => {
     resultModel = new ResultModel();
   });
+
   test('회차마다 레이싱 결과를 만든다.', () => {
     const cars = [
       { name: 'pobi', moveCounts: 1 },
