@@ -1,20 +1,12 @@
 module.exports = {
-    // 쌍따옴표 대신 홑따옴표 사용
-    "singleQuote": true,
-    // 모든 구문 끝에 세미콜론 출력
-    "semi": true,
-    // 탭 대신 공백으로 들여쓰기
-    "useTabs": false,
-    // 들여쓰기 공백 수
-    "tabWidth": 2,
-    // 가능하면 후행 쉼표 사용
-    "trailingComma": "all",
-    // 줄 바꿈할 길이
-    "printWidth": 80,
-    // 객체 괄호에 공백 삽입
-    "bracketSpacing": true,
-    // 항상 화살표 함수의 매개 변수를 괄호로 감쌈
-    "arrowParens": "always",
-    // OS에 따른 코드라인 끝 처리 방식 사용
-    "endOfLine": "auto"
-  }
+  printWidth: 80,           // 한 줄 최대 문자 수
+  tabWidth: 2,              // 들여쓰기 시, 탭 너비
+  useTabs: false,           // 스페이스 대신 탭 사용
+  semi: true,               // 문장 끝 세미콜론 사용
+  singleQuote: true,        // 작은따옴표 사용
+  trailingComma: 'all',     // 꼬리 콤마 사용
+  bracketSpacing: true,     // 중괄호 내부 공백 사용
+  arrowParens: 'avoid',     // 화살표 함수 단일 인자 시, 괄호 생략
+  proseWrap: 'never',       // 마크다운 포맷팅 제외
+  endOfLine: 'auto',        // 개행문자 유지 (혼합일 경우, 첫 줄 개행문자로 동일)
+};
