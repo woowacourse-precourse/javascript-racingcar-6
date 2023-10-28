@@ -4,6 +4,7 @@ import { MESSAGE } from './constants/message';
 class App {
   constructor() {
     this.carList = [];
+    this.playNum = 0;
   }
 
   async getCarName() {
@@ -15,7 +16,18 @@ class App {
     this.carList = carList;
   }
 
-  async play() {}
+  async getPlayNum() {
+    const inputPlayNum = await Console.readLineAsync(MESSAGE.getPlayNum);
+    const playNum = parseInt(inputPlayNum, 10);
+
+    // TODO : 시도할 횟수 유효검사
+
+    this.playNum = playNum;
+  }
+
+  async play() {
+    this.start();
+  }
 }
 
 export default App;
