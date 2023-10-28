@@ -15,7 +15,17 @@ export class User {
     }
   }
 
-  async inputTryNumber() {}
+  async inputTryNumber() {
+    try {
+      const userInput = await Console.readLineAsync(m.INPUT_TRY_NUMBER_MESSAGE);
+      if (!this.isValidNumberInput(userInput)) {
+        throw new Error(m.INPUT_ERROR);
+      }
+      return userInput;
+    } catch {
+      throw new Error(m.INPUT_ERROR);
+    }
+  }
 
   isValidCarNamesInput(names) {
     if (names.some((name) => name.length < 1 || name.length > 5)) {
@@ -27,5 +37,10 @@ export class User {
     return true;
   }
 
-  isValidNumberInput(userInput) {}
+  isValidNumberInput(userInput) {
+    if (isNaN(userInput) || Number(userInput) < 1) {
+      return false;
+    }
+    return true;
+  }
 }
