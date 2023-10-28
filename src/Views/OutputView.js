@@ -2,6 +2,7 @@ import { Console } from "@woowacourse/mission-utils";
 
 const OUTPUTVIEW_MESSAGE = Object.freeze({
   executionResult: "실행결과",
+  finalWinner: "최종 우승자",
 });
 
 export default class OutputView {
@@ -17,5 +18,9 @@ export default class OutputView {
       result.push(`${name} : ${this.#ONE_STEP.repeat(totalDistance)}`);
     });
     Console.print(result.join("\n"));
+  }
+
+  static printWinner(winners) {
+    Console.print(`${OUTPUTVIEW_MESSAGE.finalWinner} : ${winners}`);
   }
 }
