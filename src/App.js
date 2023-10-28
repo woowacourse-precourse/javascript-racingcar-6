@@ -18,6 +18,10 @@ class App {
       for (let i = 0; i < Number(tryNumber); i++) {
         Console.print(this.moveCar(carList));
       }
+
+      const winnerArr = this.getWinnerArr(carList);
+
+      Console.print(GAME_MESSAGE.GAME_WINNER + winnerArr.join(','));
     } catch (e) {
       throw e;
     }
@@ -63,6 +67,15 @@ class App {
       if (distance.length > maxDistance) maxDistance = distance.length;
     }
     return maxDistance;
+  }
+
+  getWinnerArr(carList) {
+    let winnerArr = [];
+    const maxDistance = this.getMaxDistance(carList);
+    for (const [car, distance] of Object.entries(carList)) {
+      if (distance.length === maxDistance) winnerArr.push(car);
+    }
+    return winnerArr;
   }
 }
 
