@@ -4,7 +4,6 @@ export const isDelimiter = (input) => {
   const DELIMITER = ',';
   const Reg = new RegExp(DELIMITER, 'g');
   const result = input.match(Reg)?.length;
-
   return Boolean(result);
 };
 
@@ -24,7 +23,6 @@ export const isQuantityValid = (input) => {
 export const isLanguageValid = (input) => {
   return input.split(SYSTEM.delimiter).every((name) => {
     const pattern = new RegExp(`[^${SYSTEM.koreanPattern}${SYSTEM.englishPattern}]+`, 'g');
-    console.log(pattern);
     return !pattern.test(name);
   });
 };
