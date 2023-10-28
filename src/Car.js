@@ -1,0 +1,13 @@
+class Car {
+  constructor() {
+    this.step = 0;
+  }
+
+  oneStepForward() {
+    this.step += 1;
+  }
+
+  get step() {
+    return this.step;
+  }
+}
