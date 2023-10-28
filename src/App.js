@@ -53,9 +53,7 @@ class App {
   }
 
   playerStatus(player) {
-    return MissionUtils.Console.print(
-      `${player.name} : ${"-".repeat(player.moveAttempts)}`
-    );
+    return `${player.name} : ${"-".repeat(player.moveAttempts)}`;
   }
 
   async play() {
