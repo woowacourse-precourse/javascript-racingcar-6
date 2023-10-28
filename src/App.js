@@ -6,7 +6,6 @@ const Random = MissionUtils.Random;
 class App {
   constructor() {
     this.carMoveArray = [];
-    this.winnerCarArray = [];
   }
 
   async carNameInput() {
@@ -48,14 +47,6 @@ class App {
     }
   }
 
-  carMoveText(carName) {
-    for(let i = 0; i < carName.length; i++) {
-      const randomNumber = Random.pickNumberInRange(0, 9);
-      this.carMoveArray[i] += this.carMoveQualification(randomNumber);
-      Console.print(carName[i] + " : " + this.carMoveArray[i]);
-    }
-  }
-
   carMoveEmptyArray(carName) {
     for(let i = 0; i < carName.length; i++) {
       this.carMoveArray.push("");
@@ -70,31 +61,8 @@ class App {
     }
   }
 
-  winnerMovelength() {
-    const sortMoveArray = [...this.carMoveArray].sort((a, b) => b.length - a.length);
-    return sortMoveArray[0].length;
+  async play() {
   }
-
-  getWinnerArray(winnerLength) {
-    this.carMoveArray.forEach((carMove, index) => {
-      this.winnerCar(carMove, winnerLength, index);
-    });
-  }
-
-  winnerCar(carMove, winnerLength, index) {
-    if(carMove.length === winnerLength) {
-      this.winnerCarArray.push(this.carMoveArray[index]);
-    }
-  }
-
-  resultText() {
-    const winnerCarNames = this.winnerCarArray.join(",");
-    Console.print("최종 우승자 : " + winnerCarNames);
-  }
-
-
-  
-  async play() {}
 }
 
 export default App;
