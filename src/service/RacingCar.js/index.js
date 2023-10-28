@@ -35,6 +35,19 @@ export class RacingCarGame {
     this.#totalRounds = +totalRoundsInput;
   }
 
+  play() {
+    console(MESSAGES.RESULT);
+    while (this.#currentRound < this.#totalRounds) {
+      this.#cars.forEach((car) => {
+        if (shouldCarRun()) car.run();
+      });
+
+      console(this.#getRoundResult());
+
+      this.#currentRound += 1;
+    }
+  }
+
   #setCars(carNames) {
     this.#cars = new Cars(carNames);
   }
