@@ -25,6 +25,7 @@ export default class GameController {
 
     const tryCount = await this.view.getUserInput(MESSAGE.TRY_COUNT);
     this.#validateTryCount(tryCount);
+    this.model.setTryCount(Number(tryCount));
   }
 
   splitPlayerNames(names) {
