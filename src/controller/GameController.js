@@ -20,9 +20,7 @@ export default class GameController {
       this.model.addPlayer(player);
     });
 
-    const tryCount = await this.view.getUserInputAsync(MESSAGE.TRY_COUNT);
-    this.#validateTryCount(tryCount);
-    this.model.setTryCount(Number(tryCount));
+    await this.setTryCount();
 
     const roofCount = this.model.getTryCount();
     this.view.print(MESSAGE.RESULT);
@@ -36,6 +34,12 @@ export default class GameController {
     }
     const winners = this.model.getWinner();
     this.view.printWinner(winners);
+  }
+
+  async setTryCount() {
+    const tryCount = await this.view.getUserInputAsync(MESSAGE.TRY_COUNT);
+    this.#validateTryCount(tryCount);
+    this.model.setTryCount(Number(tryCount));
   }
 
   splitPlayerNames(names) {
