@@ -28,3 +28,15 @@ test("숫자 만큼 길을 문자로 생성", () => {
 
   expect(result).toBe("---");
 });
+
+test("가장 멀리 간 자동차를 우승자로 선정", () => {
+  const input = [
+    { name: "pobi", distance: 3 },
+    { name: "ann", distance: 1 },
+    { name: "sera", distance: 3 },
+  ];
+
+  const winners = racingCar.pickWinner(input);
+
+  expect(winners).toContain("pobi", "sera");
+});
