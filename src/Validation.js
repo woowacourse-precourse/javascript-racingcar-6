@@ -1,7 +1,8 @@
 import { ERROR_MESSAGE } from './Message';
 
-export const MOVABLE = 4;
+const MOVABLE = 4;
 const MAX_LENGTH = 5;
+const REG_NUMBER = /^[0-9]+/;
 
 class ValidationCheck {
   /**
@@ -19,6 +20,15 @@ class ValidationCheck {
         throw new Error(DUPLICATE_ERROR + carName);
       }
     });
+  }
+  /**
+   * 입력한 값이 숫자[0-9]인지 검사
+   * @param {String} number
+   */
+  checkTryNumber(number) {
+    if (!REG_NUMBER.test(ParseInt(number))) {
+      throw new Error(ERROR_MESSAGE.NOT_NUMBER_ERROR);
+    }
   }
 }
 

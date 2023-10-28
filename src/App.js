@@ -15,7 +15,7 @@ class App {
       const tryNumber = await Console.readLineAsync(
         GAME_MESSAGE.INPUT_TRY_NUMBER,
       );
-      this.checkCarNames(carNames);
+      ValidationCheck.checkTryNumber(tryNumber);
     } catch (e) {
       Console.print(e.message);
       throw e;
