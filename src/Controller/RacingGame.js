@@ -1,5 +1,6 @@
-import { InputView } from "../View/InputView.js";
 import Car from "../Model/Car.js";
+import { InputView } from "../View/InputView.js";
+import { OutputView } from "../View/OutputView.js";
 
 class RacingGame {
   #car;
@@ -18,6 +19,16 @@ class RacingGame {
       car.getName(carName);
       this.#car.push(car);
     }
+    this.getTryNumber();
+  }
+
+  async getTryNumber() {
+    const tryNumber = await InputView.inputTryNumber();
+    await this.readyToExecutionResultMessage();
+  }
+
+  async readyToExecutionResultMessage() {
+    OutputView.outputExcutionResultMessage();
   }
 }
 

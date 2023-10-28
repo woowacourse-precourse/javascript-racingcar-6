@@ -12,6 +12,14 @@ const Validation = {
       } 
     }
   },
+
+  async tryNumberValidation(number) {
+    if (!number.length) {
+      throw new Error(ERROR.INPUT_TRY_NUMBER_EMPTY);
+    } else if (isNaN(number)) {
+      throw new Error(ERROR.INPUT_STRING_IN_TRY_NUMBER);
+    }
+  },
 }
 
 export { Validation };
