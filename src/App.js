@@ -27,6 +27,8 @@ class App {
         "게임 횟수에는 숫자만 입력할 수 있습니다. 다시 입력해주세요."
       );
     }
+
+    const randomNumber = MissionUtils.Console.pickNumberInRange(1, 9);
   }
 
   forwardCar() {}
