@@ -7,14 +7,19 @@ class App {
 
 // 사용자로부터 자동차 이름을 입력받는다.
 // 자동차 이름은 쉼표로 구분된다.
+// 이름이 5자를 초과할 경우 throw문을 사용해 error를 발생시키고 애플리케이션을 종료한다.
   async setName() {
     const nameInput = await Console.readLineAsync(MESSAGE.nameQuery);
     this.#gameData.name = await nameInput.split(',').map((name) => name.trim());
     this.#gameData.name.forEach(nameValidation);
   }
 
-// 이름이 5자를 초과할 경우 throw문을 사용해 error를 발생시키고 애플리케이션을 종료한다.
 // 사용자로부터 이동 횟수를 입력받는다.
+  async setNumber() {
+    const numberInput = await Console.readLineAsync(MESSAGE.numberQuery);
+    this.#gameData.number = Number(await numberInput);
+  }
+
 // 자동차 경주 게임 결과를 출력한다.
 // "실행 결과" 문구를 출력한다.
 // 각 차수별 실행 결과를 출력한다.
