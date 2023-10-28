@@ -14,6 +14,13 @@ class View {
     return answer;
   }
 
+  static async askExecutionNumber(message) {
+    let answer = await MissionUtils.Console.readLineAsync(message);
+    answer = this.removeSpace(answer);
+    Validator.executionNumberValidate(answer);
+    return answer;
+  }
+
   static removeSpace(string) {
     return string.replaceAll(' ', '');
   }
