@@ -3,11 +3,11 @@ import MESSAGE from './constants/Message.js';
 import InputManager from './utils/InputManager.js';
 
 class RacingGame {
-  static start() {
-    return null;
+  start() {
+    return this;
   }
 
-  static async inputRacingCarNames() {
+  async inputRacingCarNames() {
     const input = await ConsoleInput.input(MESSAGE.INPUT_RACING_CAR_NAMES);
     const cars = InputManager.getCarNames(input);
     InputManager.validateCarName(cars);
