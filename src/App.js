@@ -3,6 +3,7 @@ import { Console, Random } from "@woowacourse/mission-utils";
 const ERROR_HEADER = "[ERROR] ";
 const numberCanMoveForward = 4;
 const validCarNameLength = 5;
+const newDistance = "-";
 
 export const messageBeforeInput = Object.freeze({
   carNames: "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n",
@@ -74,7 +75,7 @@ class App {
 
   moveCarForward(car) {
     const curDistance = this.cars.get(car);
-    const nextDistance = curDistance + "-";
+    const nextDistance = curDistance + newDistance;
     this.cars.set(car, nextDistance);
   }
 
