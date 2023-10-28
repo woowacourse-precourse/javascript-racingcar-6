@@ -2,7 +2,7 @@ import { Console, Random } from "@woowacourse/mission-utils";
 import { GAMEMSG } from "../constants/message.js";
 import {
   getMaxMove,
-  getRacingWinList,
+  getWinList,
   printResult,
   getRandomNum,
 } from "./utils/gameFn.js";
@@ -21,11 +21,15 @@ class RacingGame {
     this.maxMove = 0;
   }
   async start() {
-    await this.getCarName();
-    await this.getTryNum();
-    this.startRacing();
-    this.maxMove = getMaxMove(this.carList);
-    printResult(getRacingWinList(this.carList, this.maxMove));
+    try {
+      await this.getCarName();
+      await this.getTryNum();
+      this.startRacing();
+      this.maxMove = getMaxMove(this.carList);
+      printResult(getWinList(this.carList, this.maxMove));
+    } catch (error) {
+      throw error;
+    }
   }
 
   async getCarName() {

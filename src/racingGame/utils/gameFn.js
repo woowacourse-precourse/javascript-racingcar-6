@@ -7,7 +7,7 @@ export const getMaxMove = (list) => {
   return maxMove;
 };
 
-export const getRacingWinList = (list, maxMove) => {
+export const getWinList = (list, maxMove) => {
   const winList = list.filter((car) => car.moveCount === maxMove);
   return winList;
 };
