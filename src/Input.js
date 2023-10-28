@@ -10,6 +10,7 @@ class Input {
   static async getJoinList() {
     const joinString = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n');
     const joinList = joinString.split(',');
+    joinList.forEach((joinItem) => Validate.checkJoinItem(joinItem));
 
     return joinList.map((name) => new Participant(name));
   }
@@ -20,9 +21,7 @@ class Input {
    */
   static async getRepeatNumber() {
     const repeatNumber = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
-    if (!Validate.isPositiveInteger(repeatNumber)) {
-      throw new Error('[ERROR]');
-    }
+    Validate.checkRepeatNumber(repeatNumber);
 
     return repeatNumber;
   }
