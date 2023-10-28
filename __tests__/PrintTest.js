@@ -35,14 +35,14 @@ describe('출력 테스트', () => {
     const MOVE_FORWARD = 5;
 
     mockRandom(MOVE_FORWARD);
-    car1.runRandomMotion();
-    car1.runRandomMotion();
+    car1.runRandomAction();
+    car1.runRandomAction();
 
-    car2.runRandomMotion();
+    car2.runRandomAction();
 
-    car3.runRandomMotion();
-    car3.runRandomMotion();
-    car3.runRandomMotion();
+    car3.runRandomAction();
+    car3.runRandomAction();
+    car3.runRandomAction();
 
     const outputs = ['firstCar : --', 'secondCar : -', 'thirdCar : ---'];
     const logSpy = getLogSpy();

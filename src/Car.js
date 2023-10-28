@@ -22,7 +22,7 @@ class Car {
     this.#forwardDistance += 1;
   }
 
-  runRandomMotion() {
+  runRandomAction() {
     const randomNumber = pickRandomNumberInRange(0, 9);
 
     if (randomNumber >= 4) {

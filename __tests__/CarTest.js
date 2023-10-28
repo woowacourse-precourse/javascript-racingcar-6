@@ -18,7 +18,7 @@ describe('Car 클래스 테스트', () => {
     const input = 5;
     const ouput = 1;
     mockRandom(input);
-    car.runRandomMotion();
+    car.runRandomAction();
 
     expect(car.getForwardDistance()).toEqual(ouput);
   });
@@ -28,7 +28,7 @@ describe('Car 클래스 테스트', () => {
     const input = 3;
     const ouput = 0;
     mockRandom(input);
-    car.runRandomMotion();
+    car.runRandomAction();
 
     expect(car.getForwardDistance()).toEqual(ouput);
   });
