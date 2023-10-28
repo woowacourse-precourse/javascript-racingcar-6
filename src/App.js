@@ -1,15 +1,9 @@
-import inputNames from "./data/inputNames";
-import inputNumber from "./data/inputNumber";
-import getWinners from "./race/getWinners";
-import doRace from "./race/doRace";
-import printResult from "./race/printResult";
+import AppController from "./controller/AppController";
+
 class App {
   async play() {
-    const names = await inputNames();
-    const number = await inputNumber();
-    const result = doRace(names, number);
-    const winners = getWinners(result);
-    printResult(winners);
+    const appController = new AppController();
+    await appController.play();
   }
 }
 
