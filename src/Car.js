@@ -2,7 +2,8 @@ import generateRandomNumber from './functions/generateRandomNumber.js';
 import { MIN_MOVEMENT } from './constants/constants.js';
 
 class Car {
-  constructor() {
+  constructor(name) {
+    this.name = name;
     this.number = generateRandomNumber();
   }
 
