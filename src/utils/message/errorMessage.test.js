@@ -1,4 +1,4 @@
-import { ErrorMessage } from "./errorMessage";
+import { ErrorMessage } from "./errorMessage.js";
 
 describe("errorMessage 검증", () => {
   test("basicErrorMessage", () => {

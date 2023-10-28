@@ -1,5 +1,5 @@
-import { ErrorMessage } from "../message/errorMessage";
-import { getRandomNumber } from "./random";
+import { ErrorMessage } from "../message/errorMessage.js";
+import { getRandomNumber } from "./random.js";
 
 describe("getRandomNumber 유효성 체크", () => {
   test("parameter 값 : start = end => return start", () => {

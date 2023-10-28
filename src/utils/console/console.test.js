@@ -1,4 +1,4 @@
-import { Console } from "./console";
+import { Console } from "./console.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 const text = "안녕";

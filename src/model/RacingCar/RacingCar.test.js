@@ -1,4 +1,4 @@
-import RacingCar from "./RacingCar";
+import RacingCar from "./RacingCar.js";
 
 const name = "my car";
 
@@ -10,8 +10,8 @@ describe("RacingCar 객체 테스트", () => {
   });
 
   test("field가 private으로 선언되어 있는지 확인", () => {
-    expect(racingCar.name).toBe(undefined);
-    expect(racingCar.count).toBe(undefined);
+    expect(racingCar.name).toBeUndefined();
+    expect(racingCar.count).toBeUndefined();
   });
 
   test("move & getCount 메서드 검증", () => {

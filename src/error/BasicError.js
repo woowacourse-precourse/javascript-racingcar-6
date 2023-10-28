@@ -1,4 +1,4 @@
-import { ErrorMessage } from "../utils/message/errorMessage";
+import { ErrorMessage } from "../utils/message/errorMessage.js";
 
 class BasicError extends Error {
   constructor(msg) {

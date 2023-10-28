@@ -1,5 +1,5 @@
-import IncorrectFormatError from "../../error/IncorrectFormatError";
-import IncorrectParameterError from "../../error/IncorrectParameterError";
+import IncorrectFormatError from "../../error/IncorrectFormatError.js";
+import IncorrectParameterError from "../../error/IncorrectParameterError.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 // start ~ end 사이의 무작위 값 리턴
