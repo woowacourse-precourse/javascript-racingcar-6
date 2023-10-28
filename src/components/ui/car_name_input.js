@@ -1,10 +1,13 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 const carNameSplit = (input) =>{
-    return null;
+    let carArray = input.trim().split(',');
+    return carArray;
 };
 
 async function carNameInput(){
-    return null;
+    let input = await MissionUtils.Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
+    let carName = carNameSplit(input);
+    return carName;
 };
 export default carNameInput;
