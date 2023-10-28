@@ -1,4 +1,5 @@
 import { ERROR_MESSAGE } from '../constant/message';
+import CAR_NAME_MAX_LENGTH from '../constant/maxLength';
 
 class Validator {
   static emptyInput(names) {
@@ -17,6 +18,21 @@ class Validator {
     if (!names.includes(',')) {
       throw new Error(ERROR_MESSAGE.LESS_TWO_NAME);
     }
+  }
+
+  static nameLength(names) {
+    names.split(',').forEach((carName) => {
+      if (carName.trim().length > CAR_NAME_MAX_LENGTH) {
+        throw new Error(ERROR_MESSAGE.OVER_LENGTH_NAME);
+      }
+    });
+  }
+
+  static carsNameInput(names) {
+    this.emptyInput(names);
+    this.specialCharactor(names);
+    this.overTwoNames(names);
+    this.nameLength(names);
   }
 }
 
