@@ -20,6 +20,8 @@ export default class RacingGame {
     if (Validator.isValidateAttemps(answer)) {
       this.#attemps = answer;
       this.#racing();
+      const totalResult = this.#resultModel.makeTotalResult();
+      const winners = this.#getWinner();
     }
   }
 
@@ -40,5 +42,21 @@ export default class RacingGame {
       this.#resultModel.addAttempsResult(this.#carModel.getCar());
       attemps -= 1;
     }
+  }
+
+  #getWinner() {
+    const allMoveCounts = [];
+    const winners = [];
+    const cars = this.#carModel.getCar();
+    cars.forEach(({ name, moveCounts }) => {
+      allMoveCounts.push(moveCounts);
+    });
+    const maxMove = Math.max(...allMoveCounts);
+    cars.forEach(({ name, moveCounts }) => {
+      if (moveCounts === maxMove) {
+        winners.push(name);
+      }
+    });
+    return winners.join(',');
   }
 }
