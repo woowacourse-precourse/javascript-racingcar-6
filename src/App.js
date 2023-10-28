@@ -14,6 +14,13 @@ class App {
     this.participants = nameArray.map((name) => ({ name, position: 0 }));
   }
 
+  async inputRound() {
+    const inputNum = await Console.readLineAsync(
+      "시도할 횟수는 몇 회인가요? \n"
+    );
+    return inputNum;
+  }
+
   getName(input) {
     const nameArray = input.split(",").map((name) => name.trim());
     this.validateInput(nameArray);
@@ -44,7 +51,13 @@ class App {
 
   async play() {
     await this.inputName();
-    await this.playRound();
+    const rounds = await this.inputRound();
+    for (let i = 0; i < rounds; i++) {
+      await this.playRound();
+    }
+    this.participants.forEach((participant) => {
+      Console.print(`${participant.name}: ${participant.position}`);
+    });
   }
 }
 const app = new App();
