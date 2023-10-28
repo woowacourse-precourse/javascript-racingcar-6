@@ -60,7 +60,6 @@ class App {
     
   }
 
-
   // 오류난 이유 정리하기 공백을 추가해 주지 않으면
   checkGoStop() {
     for (let i = 0; i < this.inputCount; i++) {
@@ -70,7 +69,8 @@ class App {
           this.gameStatus[index] += "-";
         }
         
-        // 일관된 데이터 유형을 유지하기 위해 
+        // 일관된 데이터 유형을 유지하기 위해 gamestatus는 2차원 배열인데 randomNumber가 4 이상일 때는 문자열로 변환되고
+        // 4 미만일때는 그냥 넘겨버리면 2차원 배열 안에 문자열과 배열이 존재해버려 split(":"")시에 오류가남 
         if (randomNumber < 4) {
           this.gameStatus[index] += "";
         }
