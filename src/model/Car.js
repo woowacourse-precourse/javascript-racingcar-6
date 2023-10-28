@@ -12,11 +12,11 @@ export default class Car {
   }
 
   move() {
-    if (this.#shouldMove()) {
+    if (this.#shouldMoveBasedOnStrategy()) {
       this.position += 1;
     }
   }
-  #shouldMove() {
+  #shouldMoveBasedOnStrategy() {
     return this.carMovementStrategy.shouldMove();
   }
 }
