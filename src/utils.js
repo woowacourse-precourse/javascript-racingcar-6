@@ -34,4 +34,20 @@ const isValidInputNames = (input) => {
   return true;
 }
 
-export { printMessage, readLineAsync, isValidInputNames };
+const getValidInputNumber = (input) => {
+  input = Number(input.trim());
+  const { MIN_INPUT_NUMBER } = SETTING;
+  const { NOT_NUMBER, NOT_RANGE } = ERROR_MESSAGE;
+
+  if (isNaN(input)) {
+    throw new Error(`${NOT_NUMBER}`);
+  }
+
+  if (input < MIN_INPUT_NUMBER) {
+    throw new Error(`${NOT_RANGE}`);
+  }
+
+  return input;
+}
+
+export { printMessage, readLineAsync, isValidInputNames, getValidInputNumber };
