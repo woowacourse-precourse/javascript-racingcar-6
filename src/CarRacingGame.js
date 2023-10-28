@@ -16,7 +16,7 @@ export default class CarRacingGame {
     this.#carNameArray = this.carNamesToCarNameArray(carNames);
     while (tryCount-- > 0) {
       this.tryAdvance();
-      this.eachResultPrint();
+      this.printEachResult();
     }
     this.printWinners();
   }
@@ -43,7 +43,7 @@ export default class CarRacingGame {
     return Random.pickNumberInRange(0, 9) >= 4;
   }
 
-  eachResultPrint() {
+  printEachResult() {
     this.#carNameArray.forEach((car) => {
       const advances = '-'.repeat(car.getAdvanceCount());
       Console.print(`${car.getName()} : ${advances}`);
