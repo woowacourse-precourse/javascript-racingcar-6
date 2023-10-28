@@ -1,3 +1,5 @@
+import checkSpace from "./common-validation.js";
+
 const ERROR_MESSAGE = Object.freeze({
   NOT_NUMBER: "[ERROR] 시도 횟수는 숫자만 입력 가능합니다.",
   FLOAT_ERROR: "[ERROR] 시도 횟수는 정수만 가능합니다.",
@@ -50,6 +52,7 @@ function isPositiveIntegerError(inputAttemptCount) {
  * @returns {integer} 정수 형태의 검증 횟수
  */
 function validateAttemptCount(inputAttemptCount) {
+  checkSpace(inputAttemptCount);
   isNumeric(inputAttemptCount);
   isFloatError(inputAttemptCount);
   isPositiveIntegerError(inputAttemptCount);
