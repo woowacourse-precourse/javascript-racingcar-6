@@ -3,7 +3,7 @@ import MESSAGES from '../../utils/Messages';
 import Validator from '../../utils/Validator';
 
 const InputView = {
-  async readCarsName() {
+  async readCarNames() {
     const carNames = await Console.readLineAsync(MESSAGES.nameQuery);
     Validator.validateCarNames(carNames);
     return carNames;
