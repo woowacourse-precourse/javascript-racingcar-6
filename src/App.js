@@ -43,10 +43,18 @@ class App {
     }
   }
 
+  printTurnResult() {
+    this.cars.forEach((currPosition, car) => {
+      Console.print(`${car} : ${currPosition}`);
+    });
+  }
+
   startRacing(tryNumber) {
     Console.print("\n실행 결과");
     do {
       this.tryTurn();
+      this.printTurnResult();
+      Console.print("\n");
       tryNumber--;
     } while (tryNumber > 0);
   }
