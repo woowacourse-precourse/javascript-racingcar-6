@@ -31,12 +31,16 @@ class App {
     }
   }
 
-  async getNumberOfAttempts() {
-    let input = await Console.readLineAsync(meassageBeforeInput.attempts);
-    let numberOfAttempts = parseInt(input);
+  isValidNumberOfAttempts(numberOfAttempts) {
     if (isNaN(numberOfAttempts) || numberOfAttempts < 1) {
       throw new Error(`${ERROR_HEADER}${messageError.validAttempts}`);
     }
+  }
+
+  async getNumberOfAttempts() {
+    let input = await Console.readLineAsync(meassageBeforeInput.attempts);
+    let numberOfAttempts = parseInt(input);
+    this.isValidNumberOfAttempts(numberOfAttempts);
     return numberOfAttempts;
   }
 
