@@ -16,6 +16,24 @@ class App {
 
     //사용자 객체 키 리스트
     const playersKeyList=Object.keys(players);
+    //시도횟수 입력
+    const trynumber = await Console.readLineAsync("시도할 횟수는 몇 회인가요?");
+
+    Console.print("실행 결과");
+
+    //게임 시작 및 출력
+    for(let i =0; i<trynumber;i++){
+      for (let item of playersKeyList){
+        const goForward=Random.pickNumberInRange(0,9);
+        if(goForward>=4){
+          players[item]++;
+        }
+        Console.print(`${item} : `+"-".repeat(players[item]));
+      }
+      Console.print("");
+    }
+
+
 
   }
 }
