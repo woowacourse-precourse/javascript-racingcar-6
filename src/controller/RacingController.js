@@ -8,16 +8,19 @@ class RacingController {
   #outputView;
   #racingCarValidator;
   #racingCarArray;
+  #retryCount;
 
   constructor() {
     this.#inputView = new InputView();
     this.#outputView = new OutputView();
     this.#racingCarValidator = new RacingCarValidatorValidator();
     this.#racingCarArray = [];
+    this.#retryCount = 0;
   }
 
-  run() {
-    this.#createRacingCars()
+  async run() {
+    await this.#createRacingCars()
+    this.#inputRetryCount();
   }
 
   async #createRacingCars() {
@@ -35,9 +38,10 @@ class RacingController {
       }
     }
   }
-  // async #() {
 
-  // }
+  #inputRetryCount() {
+    this.#retryCount = this.#inputView.readRetryCount();
+  }
 
 }
 
