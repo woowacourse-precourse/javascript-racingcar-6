@@ -7,6 +7,7 @@ class GameController {
     constructor() {
         this.validate = new Validate();
         this.racing = new Racing();
+        this.count = 0;
     }
   
     async inputCars() {
@@ -18,9 +19,23 @@ class GameController {
     async inputTryMoveCount() {
         const input = await readLineAsync(MESSAGES.QUEST_TRY_COUNT);
         this.validate.validateTryMoveCount(input);
-        return input;
+        this.count = input;
     }
-    
+    start() {
+        const racing = this.racing;
+        print(`\n${MESSAGES.PROGRESS_RESULT}`);
+        for (let i=0; i<this.count; i++) {
+            racing.moveCycle();
+            racing.oneMoveCycleResult();
+            print("");
+        }
+    }
+    result() {
+        const racing = this.racing;
+        const winner = racing.getWinner();
+        print(`${MESSAGES.WINNER}${winner}`);
+    }
+
     
 }
 
