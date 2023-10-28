@@ -1,12 +1,19 @@
 class Car {
   name;
+  #position;
   constructor() {
     this.name = '';
+    this.#position = 0;
   }
 
-  async getName(name) {
+  getName(name) {
     this.name = name;
   }
+
+  checkPosition(tryNumber) {
+    if (tryNumber >= 4) this.#position += 1;
+  }
+
 }
 
 export default Car;

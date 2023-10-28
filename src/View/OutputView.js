@@ -1,7 +1,7 @@
 import { MESSAGE } from "../utils/Constant.js"
 
 const OutputView = {
-  async outputExcutionResultMessage() {
+  async outputExecutionResultMessage() {
     console.log(MESSAGE.EXECUTION_RESULT);
   },
 }

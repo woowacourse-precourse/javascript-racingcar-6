@@ -1,4 +1,5 @@
 import Car from "../Model/Car.js";
+import RandomNumberGenerator from "../utils/RandomNumberGenerator.js";
 import { InputView } from "../View/InputView.js";
 import { OutputView } from "../View/OutputView.js";
 
@@ -7,7 +8,7 @@ class RacingGame {
   constructor() {
     this.#car = [];
   }
-
+  
   async start() {
     this.inputCarName();
   }
@@ -25,10 +26,24 @@ class RacingGame {
   async getTryNumber() {
     const tryNumber = await InputView.inputTryNumber();
     await this.readyToExecutionResultMessage();
+    this.getExecutionResult(tryNumber);
   }
 
   async readyToExecutionResultMessage() {
-    OutputView.outputExcutionResultMessage();
+    OutputView.outputExecutionResultMessage();
+  }
+
+  async getExecutionResult(tryNumber) {
+    for (let i = 0; i < tryNumber; i++) {
+      await this.decidePosition();
+    }
+  }
+  
+  async decidePosition() {
+    for (const car of this.#car) {
+      const randomNumber = await RandomNumberGenerator.getRandomNumber()
+      car.checkPosition(randomNumber);
+    }
   }
 }
 
