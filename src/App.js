@@ -13,12 +13,14 @@ class App {
   }
 
   async play() {
+    await this.#setUpRaceGame();
+    await this.#playRace();
+    await this.#findWinner();
+  }
+
+  async #setUpRaceGame() {
     await this.#readCarNames();
     await this.#readTotalRounds();
-
-    await this.#playRace();
-
-    await this.#findWinner();
   }
 
   async #readCarNames() {
