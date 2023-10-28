@@ -6,6 +6,7 @@ class App {
     this.randomNumArr = [];
     this.attemptCount = 0;
     this.dash = "-";
+    this.errorMessage = "[ERROR] 자동차 이름은 5자 이하로 입력해주세요.";
   }
   async play() {
     Console.print(
@@ -19,9 +20,10 @@ class App {
     this.isValidAttemptCount(this.attemptCount);
     Console.print("");
     Console.print("실행 결과");
-    this.gameResult();
+    this.displayCarPosition();
     Console.print("");
-    this.finalWinner();
+    const maxValue = this.getMaxValue();
+    this.getFinalWinner(maxValue);
   }
 
   async inputCarName() {
@@ -31,7 +33,7 @@ class App {
   isValidCarNames() {
     for (let i = 0; i < this.carNameArr.length; i++) {
       if (this.carNameArr[i].length > 5) {
-        throw new Error("[ERROR] 자동차 이름은 5자 이하로 입력해주세요.");
+        throw new Error(this.errorMessage);
       }
     }
   }
@@ -51,8 +53,8 @@ class App {
       const randomNum = Random.pickNumberInRange(0, 9);
       this.randomNumArr.push(randomNum);
     }
-    console.log(this.randomNumArr);
   }
+
   updateCarPosition() {
     for (let i = 0; i < this.carNameArr.length; i++) {
       if (!this.dashSymbol[i]) {
@@ -62,7 +64,8 @@ class App {
       this.dashSymbol[i] += dashes;
     }
   }
-  gameResult() {
+
+  displayCarPosition() {
     for (let i = 0; i < this.attemptCount; i++) {
       Console.print("");
       this.createRandomNumber();
@@ -72,9 +75,9 @@ class App {
         Console.print(`${this.carNameArr[j]} : ${this.dashSymbol[j]}`);
       }
     }
-    console.log(this.carNameArr);
   }
-  finalWinner() {
+
+  getMaxValue() {
     let maxName = [this.carNameArr[0]];
     let maxDash = this.dashSymbol[0].length;
     for (let i = 1; i < this.carNameArr.length; i++) {
@@ -85,8 +88,11 @@ class App {
         maxName.push(this.carNameArr[i]);
       }
     }
+    return maxName;
+  }
+  getFinalWinner(maxName) {
     const winners = maxName.join(", ");
-    console.log(`최종 우승자 : ${winners}`);
+    Console.print(`최종 우승자 : ${winners}`);
   }
 }
 
