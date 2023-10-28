@@ -9,7 +9,18 @@ class App {
 
   //게임 실행 함수
   async play() {
-    this.userInputCarNames();
+    // this.userInputCarNames();
+    const INPUT = await MissionUtils.Console.readLineAsync();
+    MissionUtils.Console.print(INPUT);
+    const CAR_NAMES = INPUT.split(',');
+
+    // 예외처리
+    if (CAR_NAMES.length < 2 || CAR_NAMES.some(carName => carName.length > 5)) {
+      throw new Error('[ERROR] 이름 오류');
+    }
+
+    this.carNames = CAR_NAMES;
+
     const NUMBER_OF_MOVES = await this.userInputNumberOfMoves();
     const RESULTS = [];
     // this.startGame(NUMBER_OF_MOVES);
@@ -24,27 +35,27 @@ class App {
   }
 
   //사용자가 입력한 자동차 이름 가져오기
-  async userInputCarNames() {
-    const INPUT = await MissionUtils.Console.readLineAsync();
-    // Console.print(INPUT);
-    const CAR_NAMES = INPUT.split(',');
+  // async userInputCarNames() {
+  //   const INPUT = await MissionUtils.Console.readLineAsync();
+  //   MissionUtils.Console.print(INPUT);
+  //   const CAR_NAMES = INPUT.split(',');
 
-    // 예외처리
-    if (CAR_NAMES.length < 2 || CAR_NAMES.some(carName => carName.length > 5)) {
-      throw new Error('[ERROR]');
-    }
+  //   // 예외처리
+  //   if (CAR_NAMES.length < 2 || CAR_NAMES.some(carName => carName.length > 5)) {
+  //     throw new Error('[ERROR] 이름 오류');
+  //   }
 
-    this.carNames = CAR_NAMES;
-  }
+  //   this.carNames = CAR_NAMES;
+  // }
 
   //사용자가 입력한 자동차 이동 횟수 가져오기
   async userInputNumberOfMoves() {
     const INPUT = await MissionUtils.Console.readLineAsync();
-    const NUMBER_OF_MOVES = parseInts(INPUT);
+    const NUMBER_OF_MOVES = parseInt(INPUT);
 
     //예외처리
     if (NUMBER_OF_MOVES <= 0 || isNaN(NUMBER_OF_MOVES)) {
-      throw new Error('[ERROR]');
+      throw new Error('[ERROR] 횟수 오류');
     }
 
     return NUMBER_OF_MOVES;
@@ -90,7 +101,8 @@ class App {
     let winners = [];
     for (const carName in results[LAST_GAME_INDEX]) {
       if (
-        calculatePosition(carName, results[LAST_GAME_INDEX]) === MAX_POSITION
+        this.calculatePosition(carName, results[LAST_GAME_INDEX]) ===
+        MAX_POSITION
       ) {
         winners.push(carName);
       }
