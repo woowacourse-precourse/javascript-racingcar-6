@@ -1,5 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
-import { ERROR_LABEL, MAX_LENGTH_OF_NAME, ERROR_MSG } from "constants";
+import { MAX_LENGTH_OF_NAME, ERROR_MSG } from "constants";
 
 class App {
   #TRY = 0; // 시도 횟수
@@ -9,7 +9,7 @@ class App {
     try {
       await this.game();
     } catch (error) {
-      throw new Error(`[${ERROR_LABEL.default}] ${error.message}`);
+      throw new Error(`[ERROR] ${error.message}`);
     }
   }
 
@@ -81,7 +81,7 @@ class App {
     this.#RACE_CARS = this.get_car_input();
     this.#TRY = this.get_try_input();
 
-    Console.print("\n실행 결과");
+    Console.print("실행 결과");
 
     for (let i = 0; i < this.#TRY; ++i) {
       this.race();

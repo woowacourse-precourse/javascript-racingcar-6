@@ -1,10 +1,6 @@
 export const MAX_LENGTH_OF_NAME = 5;
 export const FORWARD_BOUND = 4;
 
-export const ERROR_LABEL = {
-  default: "ERROR",
-};
-
 export const ERROR_MSG = {
   NO_INPUT: "입력 값이 존재하지 않습니다.",
   WRONG_NUMBER: `숫자가 잘못된 형식입니다.`,
