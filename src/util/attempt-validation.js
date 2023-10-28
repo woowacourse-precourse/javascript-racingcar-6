@@ -49,7 +49,7 @@ function checkPositiveNumber(inputAttemptCount) {
 /**
  * 입력받은 시도 횟수를 검증하는 함수
  * @param {string} inputAttemptCount 입력받은 검증 횟수
- * @returns {integer} 정수 형태의 검증 횟수
+ * @returns
  */
 function validateAttemptCount(inputAttemptCount) {
   checkSpace(inputAttemptCount);
@@ -57,7 +57,7 @@ function validateAttemptCount(inputAttemptCount) {
   checkPositiveNumber(inputAttemptCount);
   checkIntegerNumber(inputAttemptCount);
 
-  return parseInt(inputAttemptCount);
+  return;
 }
 
 export default validateAttemptCount;
