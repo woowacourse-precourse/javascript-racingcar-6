@@ -7,9 +7,9 @@ class CarRacingGame {
         this.attempts;
     }
 
-    start() {
-        this.getCarNames();
-        this.getNumberOfAttempts();
+    async start() {
+        await this.getCarNames();
+        await this.getNumberOfAttempts();
     }
 
     async getCarNames() {
