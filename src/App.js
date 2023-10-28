@@ -85,10 +85,8 @@ class App {
         maxName.push(this.carNameArr[i]);
       }
     }
-    if (maxName.length >= 2) {
-      const winners = maxName.join(", ");
-      console.log(`최종 우승자 : ${winners}`);
-    }
+    const winners = maxName.join(", ");
+    console.log(`최종 우승자 : ${winners}`);
   }
 }
 
