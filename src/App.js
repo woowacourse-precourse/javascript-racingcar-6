@@ -2,6 +2,8 @@ import makeCarList from "./util/makeCarList.js";
 import enterValue from "./util/enterValue.js";
 import checkForward from "./util/checkForward.js";
 import goFoward from "./util/goFoward.js";
+import { Console } from "@woowacourse/mission-utils";
+
 class App {
   async play() {
     let cars = await makeCarList();

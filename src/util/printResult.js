@@ -1,3 +1,13 @@
-function printResult(cars) {}
+import { Console } from "@woowacourse/mission-utils";
 
-export default printResult;
+function printLocation(cars) {
+  for (let i = 0; i < cars.length; i++) {
+    Console.print(cars[i].name + " : ");
+    for (let j = 0; j < cars[i].curLocation; j++) {
+      Console.print("-");
+    }
+  }
+  return;
+}
+
+export default printLocation;
