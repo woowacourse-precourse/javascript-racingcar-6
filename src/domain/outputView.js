@@ -1,26 +1,32 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import { makeRandomNumberAndJudge } from './NumberGenerator.js';
+import {
+  finalWinnerResultAndSort,
+  makeEmptyArray,
+  makeRandomNumberAndJudge,
+  resultJudge,
+} from './controller.js';
+import {
+  racingProgressPrint,
+  winnerIsAllPrint,
+  winnerIsManyPrint,
+  winnerIsOnePrint,
+} from './print.js';
 
 export const racingProgress = async (carNamesArray, tryNumber) => {
   const RESULT = [];
   let countArr = [];
-  for (let i = 0; i < carNamesArray.length; i++) {
-    countArr.push([]);
-  }
+  makeEmptyArray(carNamesArray, countArr);
 
   for (let i = 0; i < carNamesArray.length; i++) {
     RESULT.push(await makeRandomNumberAndJudge(tryNumber));
   }
 
   MissionUtils.Console.print('');
-
   MissionUtils.Console.print('실행 결과');
   for (let i = 0; i < tryNumber; i++) {
     for (let j = 0; j < RESULT.length; j++) {
-      if (RESULT[j][i] != 0) {
-        countArr[j].push('-');
-      }
-      MissionUtils.Console.print(`${carNamesArray[j]} : ${countArr[j].join('').trim()}`);
+      resultJudge(RESULT, countArr, i, j);
+      racingProgressPrint(carNamesArray, countArr, j);
     }
     MissionUtils.Console.print('');
   }
@@ -29,34 +35,16 @@ export const racingProgress = async (carNamesArray, tryNumber) => {
   await finalWinner(carNamesArray, countArr);
 };
 
-export const finalWinner = (carNamesArray, countArr) => {
+export const finalWinner = async (carNamesArray, countArr) => {
   let result = [];
-  for (let i = 0; i < carNamesArray.length; i++) {
-    result.push([carNamesArray[i], countArr[i]]);
-  }
-  result = result.sort((a, b) => b[1] - a[1]);
+  finalWinnerResultAndSort(result, carNamesArray, countArr);
   if (result[0][1] !== result[1][1]) {
-    MissionUtils.Console.print(`최종 우승자 : ${result[0][0]}`);
-  } else if (result[0][1] === result[result.length - 1][1]) {
-    let winners = [];
-    for (let i = 0; i < result.length; i++) {
-      winners.push(result[i][0]);
-    }
-    winners = winners.join(', ');
-    MissionUtils.Console.print(`최종 우승자 : ${winners}`);
-  } else {
-    let k = 0;
-    let winners = [];
-    for (let i = 0; i < result.length - 1; i++) {
-      if (result[i][1] !== result[i + 1][1]) {
-        k = i;
-        break;
-      }
-    }
-    for (let i = 0; i <= k; i++) {
-      winners.push(result[i][0]);
-    }
-    winners = winners.join(', ');
-    MissionUtils.Console.print(`최종 우승자 : ${winners}`);
+    winnerIsOnePrint(result);
+  }
+  if (result[0][1] === result[result.length - 1][1]) {
+    winnerIsManyPrint(result);
+  }
+  if (result[0][1] === result[1][1]) {
+    winnerIsAllPrint(result);
   }
 };
