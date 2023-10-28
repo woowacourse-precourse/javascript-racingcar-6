@@ -1,4 +1,5 @@
 import Refree from './Refree.js';
+import Validation from './util/Validation.js';
 
 import InputView from './view/InputView.js';
 import OutputView from './view/OutputView.js';
@@ -14,6 +15,7 @@ class App {
   async play() {
     const carNameString = await InputView.getCarNames();
     const carNames = carNameString.split(',');
+    Validation.validateCarNames(carNames);
 
     this.#refree.registerCars(carNames);
 
