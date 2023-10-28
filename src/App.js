@@ -16,15 +16,16 @@ class App {
 
     //   }
 
+    const CARS_ARRAY = [];
+
     function makeArrayOfCars(carInput) {
       const TMP_CARS = carInput.split(',');
-      const TMP_CARS_ARRAY = [];
 
       TMP_CARS.forEach((element) => {
-        TMP_CARS_ARRAY.push(new Car(element, 0));
+        CARS_ARRAY.push(new Car(element, 0));
       });
-      Console.print(TMP_CARS_ARRAY);
-      return TMP_CARS_ARRAY;
+      Console.print(CARS_ARRAY);
+      return CARS_ARRAY;
     }
 
     async function getInputCars() {
