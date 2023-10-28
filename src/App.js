@@ -1,5 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import UserInput from "./userinput.js";
+import UserInput from "./lib/userinput.js";
 import Race from "./lib/race.js";
 
 class App {
@@ -16,7 +16,7 @@ class App {
   }
 }
 
-const app = new App();
-app.play();
+// const app = new App();
+// app.play();
 
 export default App;

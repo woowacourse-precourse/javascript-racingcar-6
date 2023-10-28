@@ -1,8 +1,8 @@
 // 파일명 : userinput.js
 // 설명 : 사용자 입력 관련
 
-import { CAR, RACE } from "./constants/constants.js";
-import { Message } from "./lib/message.js";
+import { CAR, RACE } from "../constants/constants.js";
+import { Message } from "./message.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 class UserInput {

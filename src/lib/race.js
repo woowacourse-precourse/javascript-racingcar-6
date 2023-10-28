@@ -1,3 +1,6 @@
+// 파일명 : race.js
+// 설명 : 레이스 진행
+
 import Random from "./random.js";
 import { Message } from "./message.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
