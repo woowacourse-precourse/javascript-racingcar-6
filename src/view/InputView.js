@@ -5,23 +5,21 @@ import { Console } from "@woowacourse/mission-utils";
 const InputView = {
   async readCarsName(callback) {
     try {
-      await Console.readLineAsync(PrintMessage.INPUT_NAMES).then((input) => {
-        InputValidator.validateCarName(input);
-        callback(input);
-      });
+      const input = await Console.readLineAsync(PrintMessage.INPUT_NAMES);
+      InputValidator.validateCarName(input);
+      callback(input);
     } catch (error) {
-      Console.print(error);
+      throw new Error(error);
     }
   },
 
   async readTryTimes(callback) {
     try {
-      await Console.readLineAsync(PrintMessage.INPUT_TIMES).then((input) => {
-        InputValidator.validateTimesNumber(input);
-        callback(input);
-      });
+      const input = await Console.readLineAsync(PrintMessage.INPUT_TIMES);
+      InputValidator.validateTimesNumber(input);
+      callback(input);
     } catch (error) {
-      Console.print(error);
+      throw new Error(error);
     }
   },
 };
