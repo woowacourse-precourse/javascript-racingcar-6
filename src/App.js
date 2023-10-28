@@ -51,7 +51,10 @@ class App {
     const init = new Array(this.round).fill("");
     this.racingArr = [...init];
 
-    // 경주 실행
+    this.startRace();
+  }
+
+  startRace() {
     for (let i = 0; i < this.round; i++) {
       for (let j = 0; j < this.carList.length; j++) {
         const random = Random.pickNumberInRange(0, 9);
@@ -60,12 +63,10 @@ class App {
         }
       }
 
-      // 각 차수별 실행 결과 출력
       for (let k = 0; k < this.carList.length; k++) {
         Console.print(this.carList[k] + " : " + this.racingArr[k]);
       }
 
-      // 각 차수 구분 공백
       Console.print("");
     }
   }
