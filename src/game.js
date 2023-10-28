@@ -6,18 +6,30 @@ const generateRandomNumber = () => {
 };
 
 const printResult = async (cars, trials) => {
-  const randomNumber = generateRandomNumber();
   Console.print("실행 결과");
   //   Console.print(randomNumber);
   //   Console.print(cars);
   //   Console.print(trials);
-  //   Console.print("name1 : ", "-");
-  //   Console.print("name2 : ", "-");
-  //   Console.print("name3 : ", "-");
+  let map = new Map();
+  for (let i = 0; i < cars.length; i++) {
+    map.set(cars[i], 0);
+  }
 
   for (let i = 0; i < trials; i++) {
-    for (let j = 0; j < cars; j++) {}
+    for (let j = 0; j < cars.length; j++) {
+      const randomNumber = generateRandomNumber();
+      if (randomNumber >= 4) {
+        map.set(cars[j], map.get(cars[j]) + 1);
+      }
+    }
   }
+
+  for (let i = 0; i < trials; i++) {
+    for (let j = 0; j < cars.length; j++) {}
+  }
+
+  //   Console.print(`${cars[j]} : `);
+  //   Console.print("-" * map.get(cars[j]));
 };
 
 const inputCarName = async () => {
