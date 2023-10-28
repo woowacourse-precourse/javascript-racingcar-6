@@ -1,8 +1,11 @@
+import { RacingGameState } from "../../constanst/game";
+
 const ErrorMessage = {
   basicErrorMessage: (msg) => `[ERROR] ${msg}`,
   incorrectFormatErrorMessage: () => `잘못된 형식입니다.`,
   incorrectParameterErrorMessage: () => `잘못된 매개변수입니다.`,
-  outOfRangeErrorMessage: (num) => `${num}자 이하로 입력해 주세요.`,
+  outOfRangeErrorMessage: (num = RacingGameState.MAX_NAME_LENGTH) =>
+    `${num}자 이하로 입력해 주세요.`,
 };
 
 const RacingGameMessage = {

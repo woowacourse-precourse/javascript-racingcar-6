@@ -1,3 +1,4 @@
+import { RacingGameState } from "../../constanst/game.js";
 import { ErrorMessage } from "./message.js";
 
 describe("errorMessage 검증", () => {
@@ -22,8 +23,10 @@ describe("errorMessage 검증", () => {
 
   test("outOfRangeErrorMessage", () => {
     const num = 10;
-    const res = ErrorMessage.outOfRangeErrorMessage(num);
+    const res = ErrorMessage.outOfRangeErrorMessage();
+    const resWithParam = ErrorMessage.outOfRangeErrorMessage(num);
 
-    expect(res).toBe(`${num}자 이하로 입력해 주세요.`);
+    expect(res).toBe(`${RacingGameState.MAX_NAME_LENGTH}자 이하로 입력해 주세요.`);
+    expect(resWithParam).toBe(`${num}자 이하로 입력해 주세요.`);
   });
 });
