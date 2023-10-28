@@ -7,6 +7,10 @@ const Validation = {
     if (new Set(carNames).size !== carNames.length) {
       throw new Error('[ERROR] 중복되는 자동차 이름이 존재합니다.');
     }
+
+    if (!carNames.every((carName) => carName.trim() !== '')) {
+      throw new Error('[ERROR] 자동차 이름은 빈값이 될 수 없습니다');
+    }
   },
 };
 
