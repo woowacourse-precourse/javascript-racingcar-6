@@ -6,11 +6,17 @@ class App {
     const cars = this.seperateNames(carsName);
     const gamesNum = await this.receiveUserInput('시도할 횟수는 몇 회인가요?\n');
     const num = this.isValidGameNum(gamesNum);
+
+    this.printMsg('\n실행 결과');
   }
 
   async receiveUserInput(guideMsg) {
     const userInput = await Console.readLineAsync(guideMsg);
     return userInput;
+  }
+
+  printMsg(msg) {
+    Console.print(msg);
   }
 
   seperateNames(names) {
