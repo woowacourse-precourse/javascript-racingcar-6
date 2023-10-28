@@ -48,8 +48,8 @@ class App {
     Console.print("실행 결과");
 
     // 자동차 별 진행 속도
-    const init = new Array(this.round).fill("");
-    this.racingArr = [...init];
+    const init = new Array(this.carList.length).fill("");
+    this.racing = init;
 
     this.startRace();
   }
@@ -59,12 +59,12 @@ class App {
       for (let j = 0; j < this.carList.length; j++) {
         const random = Random.pickNumberInRange(0, 9);
         if (random >= 4) {
-          this.racingArr[j] += "-";
+          this.racing[j] += "-";
         }
       }
 
       for (let k = 0; k < this.carList.length; k++) {
-        Console.print(this.carList[k] + " : " + this.racingArr[k]);
+        Console.print(this.carList[k] + " : " + this.racing[k]);
       }
 
       Console.print("");
