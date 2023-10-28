@@ -19,7 +19,7 @@ class App {
     }
 
     const WINNERS = this.calculateWinner();
-    this.printWinner();
+    this.printWinner(WINNERS);
   }
 
   //사용자가 입력한 자동차 이름 가져오기
@@ -61,7 +61,7 @@ class App {
     return RESULT;
   }
 
-  //진행상황 출력 로직
+  //진행상황 출력
   printProgress(result) {
     for (const carName in result) {
       const STATUS = result[carName] ? '-' : '';
@@ -69,7 +69,11 @@ class App {
     }
   }
 
-  // 위치 계산
+  // 우승자 출력
+  printWinner(winners) {
+    const WINNERS_NAME = winners.join(', ');
+    Console.print(`최종 우승자 : ${WINNERS_NAME}`);
+  }
 
   // 우승자 계산
   calculateWinner() {}
