@@ -1,10 +1,10 @@
 // @ts-check
+import { Console } from '@woowacourse/mission-utils';
 import { RESULT } from './constants';
 import { getRandomNumber } from './getValue';
-import { Console } from '@woowacourse/mission-utils';
 
-/**@type {function(string[],number):Object.<string,number>|{}} */
-export function playCarRace(userNameArr, userTrialFrequency) {
+/**	@type {function(string[],number):Object.<string,number>|{}} */
+export default function playCarRace(userNameArr, userTrialFrequency) {
 	Console.print(RESULT.GAME_PROGRESS);
 	const playerScore = {};
 	const gameResult = {};
@@ -13,20 +13,20 @@ export function playCarRace(userNameArr, userTrialFrequency) {
 	setGameResult(playerScore, gameResult);
 	return gameResult;
 }
-/**@type {function(string[],Object.<string,string>|{}):void} */
+/**	@type {function(string[],Object.<string,string>|{}):void} */
 function setPlayerScore(userNameArr, playerScore) {
 	userNameArr.forEach((userName) => {
 		playerScore[userName] = '';
 	});
-	return;
+
 }
-/**@type {function(string[],number,Object.<string,string>|{}):void} */
+/**	@type {function(string[],number,Object.<string,string>|{}):void} */
 function repeatCycle(userNameArr, userTrialFrequency, playerScore) {
-	for (let i = 1; i <= userTrialFrequency; i++) {
+	for (let i = 1; i <= userTrialFrequency; i+=1) {
 		playOneCycle(userNameArr, playerScore);
 	}
 }
-/**@type {function(string[],Object.<string,string>|{}):void} */
+/**	@type {function(string[],Object.<string,string>|{}):void} */
 function playOneCycle(userNameArr, playerScore) {
 	userNameArr.forEach((userName) => {
 		const randomNumber = getRandomNumber();
@@ -36,14 +36,14 @@ function playOneCycle(userNameArr, playerScore) {
 		Console.print(`${userName} : ${playerScore[userName]}`);
 	});
 }
-/**@type {function(number):boolean} */
+/**	@type {function(number):boolean} */
 function moveForward(randomNumber) {
 	if (randomNumber >= 4) {
 		return true;
 	}
 	return false;
 }
-/**@type {function(Object.<string,string>|{},Object.<string,number>|{}):void} */
+/**	@type {function(Object.<string,string>|{},Object.<string,number>|{}):void} */
 function setGameResult(playerScore, gameResult) {
 	for (let userName in playerScore) {
 		gameResult[userName] = playerScore[userName].length;
