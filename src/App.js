@@ -44,11 +44,28 @@ class App {
     Console.print('');
   }
 
+  printWinner() {
+    const winner = [];
+    let maxDistance = 0;
+    this.carList.forEach((element) => {
+      if (maxDistance < element.distance) {
+        maxDistance = element.distance;
+      }
+    });
+    this.carList.forEach((element) => {
+      if (element.distance === maxDistance) {
+        winner.push(element.name);
+      }
+    });
+    Console.print(`최종 우승자 : ${winner.join(', ')}`);
+  }
+
   async play() {
     await this.userInputCarAndTimes();
     Console.print('');
     Console.print('실행 결과');
     this.updateAsTimes();
+    this.printWinner();
   }
 }
 
