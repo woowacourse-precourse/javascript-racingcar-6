@@ -19,6 +19,7 @@ class App {
   constructor() {
     this.cars = new Map();
     this.winners = [];
+    this.numberOfAttempts = 0;
   }
 
   async getCars() {
@@ -41,8 +42,9 @@ class App {
   async getNumberOfAttempts() {
     let input = await Console.readLineAsync(meassageBeforeInput.attempts);
     let numberOfAttempts = parseInt(input);
-    this.isValidNumberOfAttempts(numberOfAttempts);
-    return numberOfAttempts;
+    if (this.isValidNumberOfAttempts(numberOfAttempts)) {
+      this.numberOfAttempts = numberOfAttempts;
+    }
   }
 
   moveCarForward(car) {
@@ -60,20 +62,24 @@ class App {
     }
   }
 
-  printTurnResult() {
+  printAttemptResult() {
     this.cars.forEach((curDistance, car) => {
       Console.print(`${car} : ${curDistance}`);
     });
   }
 
-  startRace(numberOfAttempts) {
+  doAttemptCycle() {
+    this.doAttempt();
+    this.printAttemptResult();
+    Console.print("");
+    this.numberOfAttempts--;
+  }
+
+  startRace() {
     Console.print(messagePrint.result);
     do {
-      this.doAttempt();
-      this.printTurnResult();
-      Console.print("");
-      numberOfAttempts--;
-    } while (numberOfAttempts > 0);
+      this.doAttemptCycle();
+    } while (this.numberOfAttempts > 0);
   }
 
   getLongestDistance() {
@@ -103,8 +109,8 @@ class App {
   async play() {
     const carArr = await this.getCars();
     await this.setCars(carArr);
-    const numberOfAttempts = await this.getNumberOfAttempts();
-    this.startRace(numberOfAttempts);
+    await this.getNumberOfAttempts();
+    this.startRace();
     this.selectWinners();
     this.printWinners();
   }
