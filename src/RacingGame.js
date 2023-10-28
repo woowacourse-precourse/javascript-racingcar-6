@@ -21,10 +21,10 @@ class RacingGame {
   }
 
   printEachProgress() {
-    this.joinList.forEach((car) => {
-      car.moveOrNot();
+    this.joinList.forEach((participant) => {
+      participant.moveOrNot();
 
-      Output.printProgress(car.name, car.progress);
+      Output.printProgress(participant.name, participant.progress);
     });
 
     Output.printEmptyLine();
