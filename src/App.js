@@ -1,9 +1,9 @@
 import { Console } from '@woowacourse/mission-utils';
-import carNameInput from './input/carNameInput.js';
+import getCarNames from './input/getCarNames.js';
 
 class App {
   async play() {
-    this.cars = await carNameInput();
+    this.cars = await getCarNames();
     Console.print(this.cars);
   }
 }
