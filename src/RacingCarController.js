@@ -10,6 +10,7 @@ class RacingCarController {
 
   play() {
     this.readCarNames();
+    this.readTrialCount();
   }
   readCarNames() {
     const carNames = InputView.readCarNames();
@@ -22,6 +23,10 @@ class RacingCarController {
   }
   readTrialCount() {
     const trialCount = Number(InputView.readTrialCount());
+    this.handleTrialCount(trialCount);
+  }
+  handleTrialCount(trialCount) {
+    Validator.validateTrialCount(trialCount);
   }
 }
 
