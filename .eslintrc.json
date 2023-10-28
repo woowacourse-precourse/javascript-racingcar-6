@@ -9,7 +9,8 @@
     "sourceType": "module"
   },
   "rules": {
-    "linebreak-style": 0
+    "linebreak-style": 0,
+    "max-depth": ["error", 3]
   },
   "ignorePatterns": ["*Test.js"]
 }
