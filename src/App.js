@@ -1,5 +1,6 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Console, Random } from "@woowacourse/mission-utils";
 import { MAX_LENGTH_OF_NAME, ERROR_MSG } from "constants";
+import { FORWARD_BOUND } from "./constants";
 
 class App {
   #TRY = 0; // 시도 횟수
@@ -58,11 +59,21 @@ class App {
   }
 
   /**
+   * 이동 거리(+1 혹은 정지)를 랜덤으로 반환하는 메소드
+   * @returns {int} distance
+   */
+  get_distance() {
+    return Random.pickNumberInRange(0, 9) >= FORWARD_BOUND ? 1 : 0;
+  }
+
+  /**
    * 각 회차마다 실행할 자동차 경주 메소드
    *
    * RACE_CARS 배열 내부 값들을 갱신한다.
    */
-  race() {}
+  race() {
+    this.#RACE_CARS.forEach((car) => (car.distance += this.get_distance()));
+  }
 
   /**
    * 현재까지의 자동차 이동 거리를 출력하는 메소드
