@@ -5,6 +5,7 @@ class App {
   
   constructor() {
     this.cars = [];
+    this.tryCount = 0;
   }
 
   async inputCarNames() {
@@ -16,17 +17,24 @@ class App {
       if (name.length > 5) {
         throw new Error("[Error] 이름이 5자를 초과했습니다.")
       }
-      
+
       this.cars.push(new Car(name));
     })
     
     MissionUtils.Console.print(this.cars);
   }
 
+  async inputTryCount() {
+    const count = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+    this.tryCount = parseInt(count);
+  }
+
   async play() {
     const names = await this.inputCarNames();
 
     this.makeCarArray(names)
+
+    this.inputTryCount();
   }
 }
 
