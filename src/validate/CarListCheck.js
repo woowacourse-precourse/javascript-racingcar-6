@@ -1,5 +1,4 @@
 import { ERROR } from "../util/constants.js";
-import { Console } from "@woowacourse/mission-utils";
 
 class CarListCheck {
   validate(inputCarList) {
@@ -8,7 +7,6 @@ class CarListCheck {
       this.checkCarList(carList, inputCarList);
       return carList;
     } catch (error) {
-      // Console.print(error);
       throw error;
     }
   }

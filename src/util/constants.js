@@ -7,7 +7,6 @@ const MESSAGE = {
 
 const ERROR = {
   carCount: `[ERROR] 서로 다른 자동차 이름을 입력하세요.`,
-  // carInputWord: `[ERROR] 띄어쓰기는 입력 불가합니다.`,
   carNameLength: `[ERROR] 이름은 5자 이하로 작성하세요.`,
   noInputCarList: `[ERROR] 자동차를 입력하세요.`,
   tryNumberZero: `[ERROR] 1 이상의 숫자를 입력하세요`,

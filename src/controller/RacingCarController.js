@@ -1,8 +1,5 @@
-import { Console } from "@woowacourse/mission-utils";
-import { MESSAGE } from "../util/constants.js";
 import Input from "../view/Input.js";
 import Output from "../view/Output.js";
-// import RandomCarMoving from "../model/RandomCarMoving.js";
 import CarMoving from "../model/CarMoving.js";
 import CarListCheck from "../validate/CarListCheck.js";
 import TryNumberCheck from "../validate/TryNumberCheck.js";

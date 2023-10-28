@@ -1,14 +1,11 @@
 import { ERROR } from "../util/constants.js";
-import { Console } from "@woowacourse/mission-utils";
 
 class TryNumberCheck {
   validate(tryNumber) {
     try {
-      // this.checkCarList(carList, inputCarList);
       this.checkTryNumber(tryNumber);
       return tryNumber;
     } catch (error) {
-      Console.print(error);
       throw error;
     }
   }

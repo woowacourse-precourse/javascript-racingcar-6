@@ -1,5 +1,4 @@
-import { Console, Random } from "@woowacourse/mission-utils";
-// import RandomCarMoving from "../model/RandomCarMoving.js";
+import { Random } from "@woowacourse/mission-utils";
 
 class CarMoving {
   //자동차 개수만큼 랜덤 돌리기
@@ -8,7 +7,6 @@ class CarMoving {
     for (let i = 0; i < carCount; i++) {
       this.winnerCount[i] = await this.eachCar();
     }
-    // Console.print(this.winnerCount);
     return this.winnerNumber();
   }
 

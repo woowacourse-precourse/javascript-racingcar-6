@@ -14,7 +14,6 @@ class Input {
   async inputTryNumber() {
     try {
       const TRY_NUMBER = await Console.readLineAsync(MESSAGE.inputTryNumber);
-      // Console.print(TRY_NUMBER);
       return TRY_NUMBER;
     } catch (error) {
       throw `[ERROR]` + error;
