@@ -3,7 +3,7 @@ import { GAME_MESSAGE } from './Message';
 import { checkCarNames, checkTryNumber, checkRandomNumber } from './Validation';
 class App {
   async play() {
-    const winner = await this.carRacingGame();
+    await this.carRacingGame();
   }
 
   // 자동차 경주 시작
@@ -55,6 +55,14 @@ class App {
       executeResult += car + ' : ' + carList[car] + '\n';
     }
     return executeResult;
+  }
+
+  getMaxDistance(carList) {
+    let maxDistance = 0;
+    for (const distance of Object.values(carList)) {
+      if (distance.length > maxDistance) maxDistance = distance.length;
+    }
+    return maxDistance;
   }
 }
 
