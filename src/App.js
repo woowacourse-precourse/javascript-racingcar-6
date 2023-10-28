@@ -1,3 +1,8 @@
+import RacingGameController from './controller/RacingGameController';
+
 export default class App {
-  async play() {}
+  async play() {
+    const racingGame = new RacingGameController();
+    await racingGame.start();
+  }
 }
