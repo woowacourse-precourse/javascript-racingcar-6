@@ -1,10 +1,8 @@
 import Is from './Is.js';
 
 class Get {
-  static didItRun(numberOfGame, numberOfCar) {
-    return new Array(numberOfCar)
-      .fill(null)
-      .map(() => new Array(numberOfGame).fill(Is.running()));
+  static runList(numberOfCar, numberOfGame) {
+    return new Array(numberOfCar).fill(numberOfGame).map(Get.randomRunList);
   }
 
   static position(runList, count) {
@@ -35,10 +33,14 @@ class Get {
 
   static lastPositionList(racingList) {
     const lastPositionList = [];
-    racingList.didItRun.forEach(runList => {
-      lastPositionList.push(Get.position(runList, racingList.numberOfGame));
+    racingList.runList.forEach(list => {
+      lastPositionList.push(Get.position(list, racingList.numberOfGame));
     });
     return lastPositionList;
+  }
+
+  static randomRunList(numberOfGame) {
+    return new Array(numberOfGame).fill(null).map(Is.running);
   }
 }
 

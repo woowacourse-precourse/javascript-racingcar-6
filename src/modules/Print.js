@@ -14,7 +14,7 @@ class Print {
     racingInfo.carList.forEach((name, index) => {
       Console.print(
         `${name} : ${'-'.repeat(
-          Get.position(racingInfo.didItRun[index], gameCount)
+          Get.position(racingInfo.runList[index], gameCount)
         )}`
       );
     });
