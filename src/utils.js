@@ -29,3 +29,15 @@ export const validateCarNames = (carNameArray) => {
 
   return true;
 };
+
+export const validateNumberInput = (input) => {
+  if (input === '0') {
+    throw new Error('[ERROR] 시도할 횟수는 0 이상이여야 합니다.');
+  }
+
+  if (isNaN(input)) {
+    throw new Error('[ERROR] 입력값은 숫자여야 합니다.');
+  }
+
+  return true;
+};
