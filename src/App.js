@@ -14,6 +14,30 @@ class App {
       throw new Error("[ERROR]");
     }
   }
+
+  printWinner(cars) {
+
+    let winners = [];
+    let top = 0;
+
+    for (let i = 0; i < cars.length; i++) {
+      if (cars[i].location === top) {
+        winners.push(cars[i].name);
+      }
+      else if (cars[i].location > top) {
+        winners.length = 0;
+        winners = [cars[i].name];
+        top = cars[i].location;
+      }
+    }
+
+    if(winners.length === 1){
+      MissionUtils.Console.print(`최종 우승자 : ${winners[0]}`);
+    }
+    else if(winners.length > 1){
+      MissionUtils.Console.print(`공동 우승자 : ${winners.join(', ')}`);
+    }
+  }
   
   async play() {
     const CARS = [];
