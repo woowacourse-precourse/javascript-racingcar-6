@@ -1,6 +1,6 @@
-import { Console } from '@woowacourse/mission-utils';
 import Util from './Util.js';
 import Input from './Input.js';
+import Output from './Output.js';
 
 class RacingGame {
   constructor() {
@@ -32,12 +32,12 @@ class RacingGame {
    * @param {{name:string,progress:string}[]} joinList
    */
   printWinner(joinList) {
-    const winnerList = this.getWinner(joinList);
-    Console.print(`최종 우승자 : ${winnerList.join(', ')}`);
+    const winner = this.getWinner(joinList).join(', ');
+    Output.print(winner);
   }
 
   /**
-   *
+   * 우승자의 이름을 반환하는 함수
    * @param {{name:string,progress : string}[]} joinList
    * @returns {string[]} 우승자 배열
    */
@@ -56,10 +56,10 @@ class RacingGame {
     joinList.forEach((car) => {
       car.moveOrNot();
 
-      Console.print(`${car.name} : ${car.progress}`);
+      Output.printProgress(car.name, car.progress);
     });
 
-    Console.print(''); // 빈 줄 추가
+    Output.printEmptyLine();
   }
 }
 

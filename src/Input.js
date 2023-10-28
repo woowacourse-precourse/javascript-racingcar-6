@@ -20,7 +20,7 @@ class Input {
    */
   static async getRepeatNumber() {
     const repeatNumber = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
-    if (!Validate.isPositiveInteger(this.repeatNumber)) {
+    if (!Validate.isPositiveInteger(repeatNumber)) {
       throw new Error('[ERROR]');
     }
 
