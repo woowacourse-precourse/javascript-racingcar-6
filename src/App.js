@@ -5,6 +5,8 @@ import Car from './Car';
 class App {
 	async play() {
 		const result = [];
+		const champion = [];
+		let max = 0;
 		const userInputCar = await Console.readLineAsync(START_MESSAGE);
 		const cars = userInputCar.split(',');
 		cars.map((car) => (car.length > LIMIT_NAME_LENGTH ? this.error() : result.push(new Car(car))));
@@ -20,12 +22,14 @@ class App {
 					dash++;
 					result[j].setCount(dash);
 				}
-				Console.print(`${result[j].getName()}:${'-'.repeat(dash)}`);
+				Console.print(`${result[j].getName()} : ${'-'.repeat(dash)}`);
 			}
 		}
-		const champion = Math.max(...result);
-		console.log(champion);
-		Console.print(`최종 우승자 : ${String(champion)}`);
+		for (let k = 0; k < result.length; k++) {
+			max = Math.max(max, result[k].getCount());
+		}
+		[...result].map((result) => result.getCount() === max && champion.push(result.getName()));
+		Console.print(`최종 우승자 : ${champion}`);
 	}
 	// 에러메시지
 	error() {
