@@ -4,21 +4,15 @@ import { SEPARATOR, RANDOM } from "./constant/rule";
 
 class Utils {
   static getCarNameArray(enteredCars) {
-    const cars = enteredCars
-      .split(SEPARATOR.CARS.SYMBOL)
-      .map((car) => car.trim());
-
-    return cars;
+    return enteredCars.split(SEPARATOR.CARS.SYMBOL).map((car) => car.trim());
   }
 
   static getEachCarInstanceArray(cars) {
-    const carInstanceArray = cars.map((carName) => new Car(carName));
-    return carInstanceArray;
+    return cars.map((carName) => new Car(carName));
   }
 
   static getRandomNumber() {
-    const num = Random.pickNumberInRange(RANDOM.MIN_RANGE, RANDOM.MAX_RANGE);
-    return num;
+    return Random.pickNumberInRange(RANDOM.MIN_RANGE, RANDOM.MAX_RANGE);
   }
 }
 
