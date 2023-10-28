@@ -11,6 +11,10 @@ const Validation = {
     if (!carNames.every((carName) => carName.trim() !== '')) {
       throw new Error('[ERROR] 자동차 이름은 빈값이 될 수 없습니다');
     }
+
+    if (!carNames.every((carName) => !/\s/.test(carName))) {
+      throw new Error('[ERROR] 자동차 이름에 공백을 사용할 수 없습니다.');
+    }
   },
 };
 
