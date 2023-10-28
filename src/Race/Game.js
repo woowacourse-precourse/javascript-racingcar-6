@@ -48,15 +48,24 @@ export class Game {
 
   compete(carsArray, laps) {
     let longestDistance = 0;
+    let round = 1;
 
     while (longestDistance < laps) {
       carsArray.forEach((car) => {
         car.distance += car.didProceed();
         if (car.distance > longestDistance) longestDistance = car.distance;
       });
+      this.output.print(`${round}라운드`);
+      this.render(carsArray);
+      round++;
     }
     console.log(carsArray);
   }
 
-  render(array, number) {}
+  render(array) {
+    array.forEach((car) => {
+      this.output.print(`${car.name}: ${car.showTrail(car.distance)}`);
+    });
+    this.output.print("\n");
+  }
 }
