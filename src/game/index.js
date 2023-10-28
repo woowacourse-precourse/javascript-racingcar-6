@@ -42,13 +42,13 @@ export class RacingGame {
   }
 
   async moveCar() {
-    await Object.keys(this.cars).forEach(async (car) => {
+    for(let car in this.cars){
       const move = await isMove();
       if (move) {
         this.cars[car] += 1;
       }
       await this.printResultMove(car);
-    });
+    }
   }
 
   async printResultMove(car) {
