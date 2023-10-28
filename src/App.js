@@ -51,14 +51,10 @@ class App {
     this.cars.set(car, nextDistance);
   }
 
-  canMoveCarForward(randomNum) {
-    return randomNum >= numberCanMoveForward;
-  }
-
   doAttempt() {
     for (let car of this.cars.keys()) {
       let randomNum = Random.pickNumberInRange(0, 9);
-      if (this.canMoveCarForward(randomNum)) {
+      if (randomNum >= numberCanMoveForward) {
         this.moveCarForward(car);
       }
     }
@@ -90,14 +86,10 @@ class App {
     return longestDistance;
   }
 
-  compareToLongestDistance(distance, longestDistance) {
-    return distance === longestDistance;
-  }
-
   selectWinners() {
     const longestDistance = this.getLongestDistance();
     this.cars.forEach((distance, car) => {
-      if (this.compareToLongestDistance(distance.length, longestDistance)) {
+      if (distance === longestDistance) {
         this.winners.push(car);
       }
     });
