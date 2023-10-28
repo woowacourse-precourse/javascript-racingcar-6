@@ -11,7 +11,7 @@ const ERROR_MESSAGE = Object.freeze({
  * @throw 길이가 1~5자를 벗어난다면 에러를 던진다.
  * @returns
  */
-function isLengthError(racingCarName) {
+function checkLength(racingCarName) {
   if (racingCarName.length < 1 || racingCarName.length > 5) {
     throw new Error(ERROR_MESSAGE.LENGTH);
   }
@@ -25,7 +25,7 @@ function isLengthError(racingCarName) {
  * @throw 중복된 자동차의 이름이 존재하면 에러를 던진다.
  * @returns
  */
-function isDuplicationError(racingCarNames) {
+function checkDuplication(racingCarNames) {
   const uniqueRacingCarNames = new Set(racingCarNames);
   if (uniqueRacingCarNames.size !== racingCarNames.length) {
     throw new Error(ERROR_MESSAGE.DUPLICATION);
@@ -42,9 +42,9 @@ function isDuplicationError(racingCarNames) {
 function validateRacingCars(racingCarNames) {
   racingCarNames.forEach((racingCarName) => {
     checkSpace(racingCarName);
-    isLengthError(racingCarName);
+    checkLength(racingCarName);
   });
-  isDuplicationError(racingCarNames);
+  checkDuplication(racingCarNames);
 
   return;
 }

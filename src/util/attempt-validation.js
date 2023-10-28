@@ -12,7 +12,7 @@ const ERROR_MESSAGE = Object.freeze({
  * @throws 시도 횟수의 길이가 0이라면 에러를 던진다.
  * @returns
  */
-function isNumeric(inputAttemptCount) {
+function checkNumeric(inputAttemptCount) {
   if (isNaN(Number(inputAttemptCount))) {
     throw new Error(ERROR_MESSAGE.NOT_NUMBER);
   }
@@ -26,7 +26,7 @@ function isNumeric(inputAttemptCount) {
  * @throws 시도 횟수가 정수가 아니라면 에러를 던진다.
  * @returns
  */
-function isFloatError(inputAttemptCount) {
+function checkIntegerNumber(inputAttemptCount) {
   if (inputAttemptCount.includes(".")) {
     throw new Error(ERROR_MESSAGE.FLOAT_ERROR);
   }
@@ -38,7 +38,7 @@ function isFloatError(inputAttemptCount) {
  * @throws 시도 횟수가 1이상이 아니라면 에러를 던진다.
  * @returns
  */
-function isPositiveIntegerError(inputAttemptCount) {
+function checkPositiveNumber(inputAttemptCount) {
   if (parseInt(inputAttemptCount) < 1) {
     throw new Error(ERROR_MESSAGE.POSITIVE);
   }
@@ -53,9 +53,9 @@ function isPositiveIntegerError(inputAttemptCount) {
  */
 function validateAttemptCount(inputAttemptCount) {
   checkSpace(inputAttemptCount);
-  isNumeric(inputAttemptCount);
-  isFloatError(inputAttemptCount);
-  isPositiveIntegerError(inputAttemptCount);
+  checkNumeric(inputAttemptCount);
+  checkPositiveNumber(inputAttemptCount);
+  checkIntegerNumber(inputAttemptCount);
 
   return parseInt(inputAttemptCount);
 }
