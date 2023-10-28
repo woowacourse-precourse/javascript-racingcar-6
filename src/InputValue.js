@@ -2,7 +2,7 @@ import { Console } from '@woowacourse/mission-utils';
 import { MESSAGE } from './constants.js';
 
 class InputValue {
-  async carName() {
+  static async carName() {
     try {
       const input = await Console.readLineAsync(MESSAGE.INPUT_CAR_NAME);
       const arr = input.split(',');
@@ -12,7 +12,7 @@ class InputValue {
     }
   }
 
-  async moveCount() {
+  static async moveCount() {
     try {
       const input = await Console.readLineAsync(MESSAGE.INPUT_MOVE_COUNT);
       return input;
