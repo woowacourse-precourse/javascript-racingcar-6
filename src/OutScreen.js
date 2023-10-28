@@ -4,7 +4,7 @@ import {makeAndFilter} from "./Random.js";
 let FORWARD_ARR= [];
 const ON_GAME = (NAME) => {
     let outString = ``;
-    let FORWARD_MARK = "-"
+    const FORWARD_MARK = "-"
     let max = -1;
     let WINNER = [];
     makeAndFilter(FORWARD_ARR.length).forEach((VALUE, INDEX) => {
@@ -24,14 +24,15 @@ const ON_GAME = (NAME) => {
             WINNER.push(NAME[INDEX]);
         }
     });
+
     return WINNER;
 };
 export const GAME_RESULT = (NAME, NUM) => {
     const RESULT_OUT = "\n실행 결과"
+    let RESULT_ARRAY = [];
+    let cnt = 1;
     FORWARD_ARR = [...NAME].fill(0);
     MissionUtils.Console.print(RESULT_OUT);
-    let cnt = 1;
-    let RESULT_ARRAY = [];
     while (cnt <= NUM) {
         RESULT_ARRAY = ON_GAME(NAME);
         cnt++;
