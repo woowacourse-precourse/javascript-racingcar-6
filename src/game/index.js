@@ -57,7 +57,7 @@ export class RacingGame {
       progress += "-";
     }
 
-    return print(`${car} : ${progress}`);
+    if(progress !== "") await print(`${car} : ${progress}`);
   }
 
   async printWinner() {
