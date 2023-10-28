@@ -40,6 +40,21 @@ class App {
       throw new Error("[ERROR] 입력한 값이 문자입니다.");
     }
   }
+
+   // 기능
+  generateRandomNumber() {
+    const randomNumber = Random.pickNumberInRange(0, 9);
+    return randomNumber;
+  }
+
+  decideMovement() {
+    let index = 0;
+    while (index < this.numberOfCars) {
+      const randomNumber = this.generateRandomNumber();
+      if (randomNumber >= 4) this.movement[index] += '-';
+      index += 1;
+    }
+  }
 }
 
 export default App;
