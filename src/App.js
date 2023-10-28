@@ -1,4 +1,4 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Console, Random } from "@woowacourse/mission-utils";
 
 class App {
   async play() {}
@@ -25,6 +25,39 @@ class App {
 
   return NumberOfmoves;
  }
+
+  startRacing(participatingCar, numberOfMoves){
+    const MOVEOFCARS = new Array(participatingCar.length).fill('')
+    const WINNERS = []
+    let mostMoves = 0;
+
+    for(let i=0; i<numberOfMoves; i++){
+      MOVEOFCARS.forEach((el, idx, arr)=>{
+        const RANDOMNUMBER = Random.pickNumberInRange(1, 9)
+        if(RANDOMNUMBER >= 4){
+          arr[idx] = el+'-'
+        }
+      })
+
+      participatingCar.forEach((el,idx)=>{
+        Console.print(el+" : "+MOVEOFCARS[idx])
+      })
+    }
+
+    MOVEOFCARS.forEach((el)=>{
+      if(el.length > mostMoves){
+        mostMoves = el.length;
+      }
+    })
+
+    MOVEOFCARS.forEach((el,idx)=>{
+      if(el.length === mostMoves){
+        WINNERS.push(participatingCar[idx])
+      }
+    })
+
+    Console.print(WINNERS.toString())
+  }
   
 }
 
