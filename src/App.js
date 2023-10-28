@@ -1,5 +1,23 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
-// 예시: console.log(MissionUtils.Random.pickNumberInList([1, 2, 3]));
+import { Console, MissionUtils } from "@woowacourse/mission-utils";
+
+class Car {
+  constructor(name, position) {
+    this.name = name;
+    this.position = position;
+  }
+  position() {
+    return `${Car.name}: ${Car.position}`;
+  }
+}
+
+function applyCarName(totalCarNum, carNameArr) {
+  const carArr = [];
+  for (let i = 0; i < totalCarNum; i++) {
+    let car = new Car(carNameArr[i], 0);
+    carArr.push(car);
+  }
+  return carArr;
+}
 
 class App {
   async play() {}
@@ -8,11 +26,14 @@ class App {
     const carNames = await Console.readLineAsync(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
     );
-    const carNameList = carNames.split(",");
+    const carNameArr = carNames.split(",");
+    const totalCarNum = carNameArr.length;
+    return [carNameArr, totalCarNum];
   }
 
   async getMoveCount() {
-    const movecount = await Console.readLineAsync("시도할 횟수는 몇 회인가요?");
+    const moveCount = await Console.readLineAsync("시도할 횟수는 몇 회인가요?");
+    return moveCount;
   }
 }
 
