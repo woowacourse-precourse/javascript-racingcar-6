@@ -9,7 +9,9 @@ class App {
 
   async getCarNames() {
     const names = await Console.readLineAsync();
-
+    if (names === null) {
+      throw new Error('[ERROR] 올바른 값을 입력하세요');
+    }
     const carNamesArray = (names || '').split(',').map((name) => name.trim());
     return carNamesArray;
   }
