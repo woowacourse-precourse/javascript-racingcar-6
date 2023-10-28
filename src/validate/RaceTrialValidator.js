@@ -8,12 +8,20 @@ export default class RaceTrialValidator {
     if (this.hasWhiteSpace(trial)) {
       throw new Error(ERROR_MESSAGE.hasWhiteSpace);
     }
+    if (this.isNotNumber(trial)) {
+      throw new Error(ERROR_MESSAGE.notNumber);
+    }
   }
 
   static isEmptyInput(input) {
     return !input || input.trim().length === 0;
   }
+
   static hasWhiteSpace(trial) {
     return trial.includes(' ');
+  }
+
+  static isNotNumber(trial) {
+    return isNaN(trial) || trial.includes('.');
   }
 }
