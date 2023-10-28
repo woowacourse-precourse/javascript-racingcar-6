@@ -16,6 +16,12 @@ class App {
     const tryNum = await this.inputTryNum();
     if (!this.isValidTryNum(tryNum))
       throw new Error('[ERROR] 숫자가 아닌 문자가 포함되어 있습니다.\n');
+
+    Console.print('\n실행 결과');
+    for (let i = 0; i < tryNum; i++) {
+      this.tryCarGame(carList);
+      this.printTryResult(carList);
+    }
   }
 
   async inputCarNames() {
@@ -47,11 +53,30 @@ class App {
     }
     return true;
   }
+
   isValidCarName(carName) {
     if (carName.length > 5) {
       return false;
     }
     return true;
+  }
+
+  tryCarGame(carList) {
+    carList.forEach(car => {
+      if (this.getRandomNumber() >= 4) car.move();
+    });
+  }
+
+  printTryResult(carList) {
+    carList.forEach(car => {
+      Console.print(`${car.name} : ` + '-'.repeat(car.position + '\n'));
+    });
+    Console.print('');
+  }
+
+  getRandomNumber() {
+    const number = Random.pickNumberInRange(0, 9);
+    return number;
   }
 }
 export default App;
