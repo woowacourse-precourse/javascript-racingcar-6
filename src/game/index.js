@@ -28,17 +28,10 @@ export class RacingGame {
 
   async go(num) {
     
-    await Object.keys(this.cars).forEach(async (car) => {
-      const move = await isMove();
-      if (move) {
-        this.cars[car] += 1;
-      }
-      await print(`${car} : ${this.cars[car]}`);
-    });
+    await this.moveCar();
     await print('');
-    
 
-    if (num <= this.tryCount) await this.go(num + 1);
+    if (num < this.tryCount) await this.go(num + 1);
   }
   async start() {
     await this.initCars();
@@ -46,7 +39,22 @@ export class RacingGame {
 
     await this.go(1);
 
-    console.log(this.cars);
+    await this.printWinner();
   }
 
+  async moveCar(){
+    await Object.keys(this.cars).forEach(async (car) => {
+      const move = await isMove();
+      if (move) {
+        this.cars[car] += 1;
+      }
+      await this.printResultMove(car);
+    });
+  }
+
+  async printResultMove(car) {
+    
+  }
+
+  async printWinner() {}
 }
