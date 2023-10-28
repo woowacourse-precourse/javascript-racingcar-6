@@ -1,6 +1,6 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import Validator from '../validators/Validator.js';
-import { DITANCE_SYMBOL } from '../constant.js';
+import { DITANCE_SYMBOL, MESSAGE } from '../constant.js';
 
 class View {
   static print(message) {
@@ -20,6 +20,11 @@ class View {
 
   static roundPrint(name, distance) {
     MissionUtils.Console.print(`${name} : ${DITANCE_SYMBOL.repeat(distance)}`);
+  }
+
+  static winnerPrint(winnerList) {
+    const splitWinners = winnerList.join(', ');
+    MissionUtils.Console.print(`${MESSAGE.winner}${splitWinners}`);
   }
 }
 export default View;
