@@ -14,6 +14,7 @@ class Refree {
     this.#carList.forEach((car) => {
       const randomNumber = Random.pickNumberInRange(0, 9);
       if (randomNumber >= 4) car.move(1);
+      if (randomNumber < 4) car.stop();
     });
   }
 

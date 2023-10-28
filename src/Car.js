@@ -11,6 +11,10 @@ class Car {
     this.#position += distance;
   }
 
+  stop() {
+    this.#position += 0;
+  }
+
   getResult() {
     return [this.#name, this.#position];
   }
