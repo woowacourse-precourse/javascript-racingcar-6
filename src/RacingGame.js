@@ -1,5 +1,6 @@
-import { Console, Random } from '@woowacourse/mission-utils';
+import { Console } from '@woowacourse/mission-utils';
 import Validate from './Validate.js';
+import Participant from './Participant.js';
 
 class RacingGame {
   constructor() {
@@ -9,6 +10,7 @@ class RacingGame {
 
   async start() {
     this.joinList = await this.getJoinList();
+    console.log(this.joinList);
     this.repeatNumber = await this.getRepeatNumber();
 
     if (!Validate.isPositiveInteger(this.repeatNumber)) {
@@ -60,9 +62,7 @@ class RacingGame {
    */
   printEachProgress(joinList) {
     joinList.forEach((car) => {
-      if (this.getRandomBoolean()) {
-        car.progress += '-';
-      }
+      car.moveOrNot();
 
       Console.print(`${car.name} : ${car.progress}`);
     });
@@ -70,21 +70,11 @@ class RacingGame {
     Console.print(''); // 빈 줄 추가
   }
 
-  /**
-   * 랜덤의 boolean 값을 반환하는 함수
-   * @returns {boolean}
-   */
-  getRandomBoolean() {
-    const randomInteger = Random.pickNumberInRange(0, 9);
-
-    return randomInteger >= 4;
-  }
-
   async getJoinList() {
     const joinString = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n');
     const joinList = joinString.split(',');
 
-    return joinList.map((name) => ({ name, progress: '' }));
+    return joinList.map((name) => new Participant(name));
   }
 
   async getRepeatNumber() {
