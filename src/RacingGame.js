@@ -8,11 +8,11 @@ class RacingGame {
     return Number(raceTimes);
   }
 
-  async playRacing(carsArray) {
+  playRacing(carsArray) {
     carsArray.forEach((car) => car.move());
   }
 
-  async showGameStatus(carsArray) {
+  showGameStatus(carsArray) {
     carsArray.forEach((car) => {
       Console.print(`${car.name} : ${this.statusMark.repeat(car.location)}`);
     });
