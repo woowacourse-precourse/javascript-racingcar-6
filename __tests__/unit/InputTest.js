@@ -85,14 +85,23 @@ describe('입력 받은 시도 횟수가', () => {
     jest.clearAllMocks();
   });
   test('0이상의 정수인가?', async () => {
+    const inputs = [54]
     
+    const tryingCount = await Input.enterTryingCount();
+    expect(tryingCount).toBeGreaterThan(0);
   });
 
-  test('숫자가 아닐경우 예외가 발생하는가?', () => {
+  test('숫자가 아닐경우 예외가 발생하는가?', async () => {
+    const inputs = ['Number'];
 
+    const tryingCount = await Input.enterTryingCount();
+    expect(() => evaluateTryingCount(tryingCount)).toThrow('[ERROR]');
   });
+  
+  test('숫자가 아닐경우 예외가 발생하는가?', async () => {
+    const inputs = [-2];
 
-  test('0 보다 작을 경우 예외가 발생하는가?', () => {
-
+    const tryingCount = await Input.enterTryingCount();
+    expect(() => evaluateTryingCount(tryingCount)).toThrow('[ERROR]');
   });
 });
