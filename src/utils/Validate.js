@@ -10,7 +10,7 @@ class Validate {
 
     vehicleNameValidate(vehicleName) {
         if (vehicleName.some(name => this.#REGAX.test(name))) throw new Error(ERROR_MSG.USER_NAME_REGAX_ERROR);
-        if (vehicleName.some(name => name.length > CONSTANTS.max_vehicle_name || name.trim().length === 0)) throw new Error(ERROR_MSG.USER_NAME_LENGTH_ERROR);
+        if (vehicleName.some(name => name.length > CONSTANTS.maxVehicleName || name.trim().length === 0)) throw new Error(ERROR_MSG.USER_NAME_LENGTH_ERROR);
     }
 
     playTimeRegaxValidate(playTime) {
@@ -23,7 +23,7 @@ class Validate {
     }
 
     moveNumberValidate(moveNumber) {
-        return (moveNumber >= CONSTANTS.vehicle_can_move) ? true : false;
+        return (moveNumber >= CONSTANTS.vehicleCanMove) ? true : false;
     }
 
 }

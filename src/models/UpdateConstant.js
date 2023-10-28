@@ -1,19 +1,17 @@
 import Validate from '../utils/Validate';
-import { MOVE_RANGE } from '../constants/Constants';
+import { MOVE_RANGE, VEHICLE_MOVE } from '../constants/Constants';
 import { Random } from '@woowacourse/mission-utils';
 
 
 class UpdateConstants {
     #vehicleNameList
     #gamePlayTimes
-    #vehicleNameObject
     #moveProcedure
     
     constructor() {
         this.VALIDATE = new Validate();
         this.#vehicleNameList =  [];
         this.#gamePlayTimes = 0;
-        this.#vehicleNameObject = {};
         this.#moveProcedure = {};
     }
 
@@ -32,7 +30,6 @@ class UpdateConstants {
 
     updateObjectKeyValues() {
         this.#vehicleNameList.forEach((vehicleName) => {
-            this.#vehicleNameObject[vehicleName] = 0;
             this.#moveProcedure[vehicleName] = '';
         });
     }
@@ -42,17 +39,16 @@ class UpdateConstants {
     }
 
     updateVehicleObjectValue() {
-        this.#vehicleNameList.forEach((vehicleName) => this.#vehicleNameObject[vehicleName] = this.#getMoveNumber(vehicleName));
+        this.#vehicleNameList.forEach((vehicleName) => this.#moveProcedure[vehicleName] += this.#getMoveNumber());
         return this.#moveProcedure
     }
 
-    #getMoveNumber(vehicleName) {
+    #getMoveNumber() {
         const MOVE_NUMBER = Random.pickNumberInRange(MOVE_RANGE.from, MOVE_RANGE.to);
         if (this.VALIDATE.moveNumberValidate(MOVE_NUMBER)) {
-            this.#moveProcedure[vehicleName] += '-';
-            return MOVE_NUMBER;
+            return VEHICLE_MOVE.move;
         }
-        return 0;
+        return VEHICLE_MOVE.stop;
     }
 
 }
