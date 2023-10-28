@@ -1,3 +1,5 @@
+import { Random } from '@woowacourse/mission-utils';
+
 class Car {
   constructor(carName) {
     this.carName = carName;
@@ -5,7 +7,7 @@ class Car {
   }
 
   move() {
-    const randomNumber = Math.floor(Math.random() * 10);
+    const randomNumber = Random.pickNumberInRange(0, 9);
     if (randomNumber >= 4) {
       this.setPosition('-');
     }
