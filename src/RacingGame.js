@@ -1,6 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
 import Validate from './Validate.js';
 import Participant from './Participant.js';
+import Util from './Util.js';
 
 class RacingGame {
   constructor() {
@@ -10,7 +11,6 @@ class RacingGame {
 
   async start() {
     this.joinList = await this.getJoinList();
-    console.log(this.joinList);
     this.repeatNumber = await this.getRepeatNumber();
 
     if (!Validate.isPositiveInteger(this.repeatNumber)) {
@@ -48,10 +48,8 @@ class RacingGame {
    * @returns {string[]} 우승자 배열
    */
   getWinner(joinList) {
-    const maxLength = joinList.reduce((maxValue, { progress }) => (
-      maxValue > progress.length ? maxValue : progress.length
-    ), 0);
-    const winnerList = joinList.filter(({ progress }) => progress.length === maxLength);
+    const maxLength = Util.getMaxLength(joinList);
+    const winnerList = Util.getWinnerList(joinList, maxLength);
 
     return winnerList.map((winner) => winner.name);
   }
