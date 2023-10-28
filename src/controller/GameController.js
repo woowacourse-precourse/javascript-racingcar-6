@@ -16,6 +16,7 @@ export default class GameController {
 
     players.forEach((player) => {
       this.#validatePlayerName(player);
+      this.#validatePlayerNameLength(player);
     });
   }
 
@@ -42,6 +43,15 @@ export default class GameController {
   #validatePlayerName(name) {
     if (!REG_EXP.test(name)) {
       throw new Error(ERROR_MESSAGE.INVALID_NAME);
+    }
+  }
+
+  #validatePlayerNameLength(name) {
+    const isWrongNameLength =
+      !name.length || name.length > GAME_RULL.CAR_NAME_MAX_LENGTH;
+
+    if (isWrongNameLength) {
+      throw new Error(ERROR_MESSAGE.NUMBER_OF_CHARACTERS);
     }
   }
 }
