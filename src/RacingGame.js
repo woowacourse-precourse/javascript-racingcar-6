@@ -9,4 +9,8 @@ export default class RacingGame {
   createRandomNumber() {
     return Random.pickNumberInRange(0, 9);
   }
+
+  isFinish() {
+    return this.tryRound === 0;
+  }
 }
