@@ -1,8 +1,8 @@
+import {MissionUtils} from "@woowacourse/mission-utils";
 /*
 ### 기능 목록
 
-1. 자동차 수에 맞는 이름 입력
-
+1. 자동차 수에 맞는 이름 입력✅
 - 이름은 ','로 구분, 5자 이하만, 유효성 검사
 
 2. 시도 횟수 입력
@@ -16,8 +16,20 @@
 - 우승자는 한 명 이상일 수 있다. 여러명이면 ','로 구분
 
 */
+const {Console, Random} = MissionUtils;
+
 class App {
-  async play() {}
+  async play() {
+    const carNameArray = await Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)").then((names) =>
+      names.split(",")
+    );
+    carNameArray.forEach((name) => checkNameValidation(name));
+  }
 }
 
 export default App;
+
+const checkNameValidation = (name) => {
+  if (!name) throw Error("[ERROR]");
+  if (name.length > 5) throw Error("[ERROR]");
+};
