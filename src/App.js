@@ -14,7 +14,7 @@ class App {
 
   async play() {
     await this.#setUpRaceGame();
-    await this.#playRace();
+    await this.#playRaceGame();
     await this.#findWinner();
   }
 
@@ -37,7 +37,7 @@ class App {
     this.#totalRounds = Number(totalRoundsString);
   }
 
-  async #playRace() {
+  async #playRaceGame() {
     OutputView.printResultTitleMessage();
 
     Array.from({ length: this.#totalRounds }).forEach(() => {
