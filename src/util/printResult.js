@@ -1,13 +1,9 @@
 import { Console } from "@woowacourse/mission-utils";
+import checkWinner from "./checkWinner.js";
 
-function printLocation(cars) {
-  for (let i = 0; i < cars.length; i++) {
-    Console.print(cars[i].name + " : ");
-    for (let j = 0; j < cars[i].curLocation; j++) {
-      Console.print("-");
-    }
-  }
-  return;
+function printResult(cars) {
+  const winnerList = checkWinner(cars);
+  Console.print("최종 우승자 : " + winnerList.join(","));
 }
 
-export default printLocation;
+export default printResult;

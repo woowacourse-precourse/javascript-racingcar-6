@@ -3,6 +3,7 @@ import enterValue from "./util/enterValue.js";
 import checkForward from "./util/checkForward.js";
 import goFoward from "./util/goFoward.js";
 import { Console } from "@woowacourse/mission-utils";
+import printResult from "./util/printResult.js";
 
 class App {
   async play() {
@@ -13,6 +14,8 @@ class App {
       cars = await checkForward(cars);
       goFoward(cars);
     }
+    printResult(cars);
+    return;
   }
 }
 

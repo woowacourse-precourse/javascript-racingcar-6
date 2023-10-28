@@ -1,4 +1,4 @@
-import printResult from "./printResult.js";
+import printLocation from "./printLocation.js";
 
 function goFoward(cars) {
   for (let i = 0; i < cars.length; i++) {
@@ -6,7 +6,7 @@ function goFoward(cars) {
       cars[i].curLocation = cars[i].curLocation + 1;
     }
   }
-  printResult(cars);
+  printLocation(cars);
 }
 
 export default goFoward;
