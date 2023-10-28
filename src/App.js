@@ -4,6 +4,7 @@ const ERROR_HEADER = "[ERROR]";
 class App {
   constructor() {
     this.cars = new Map();
+    this.winners = [];
   }
 
   async getCars() {
@@ -13,8 +14,8 @@ class App {
     return inputCars.split(",");
   }
 
-  async setCars(cars) {
-    for (let car of cars) {
+  async setCars(carArr) {
+    for (let car of carArr) {
       this.cars.set(car, "");
     }
   }
@@ -35,7 +36,7 @@ class App {
   }
 
   tryTurn() {
-    for (const car of this.cars.keys()) {
+    for (let car of this.cars.keys()) {
       let randomNum = Random.pickNumberInRange(0, 9);
       if (randomNum >= 4) {
         this.moveForward(car);
@@ -54,19 +55,39 @@ class App {
     do {
       this.tryTurn();
       this.printTurnResult();
-      Console.print("\n");
+      Console.print("");
       tryNumber--;
     } while (tryNumber > 0);
+  }
+
+  getWinnerDistance() {
+    let winnerDistance = 0;
+    for (let position of this.cars.values()) {
+      if (position.length >= winnerDistance) {
+        winnerDistance = position.length;
+      }
+    }
+    return winnerDistance;
+  }
+
+  selectWinners() {
+    const winnerDistance = this.getWinnerDistance();
+    this.cars.forEach((currPosition, car) => {
+      if (currPosition.length === winnerDistance) {
+        this.winners.push(car);
+      }
+    });
   }
 
   initPlay() {}
 
   async play() {
     this.initPlay();
-    const cars = await this.getCars();
-    await this.setCars(cars);
+    const carArr = await this.getCars();
+    await this.setCars(carArr);
     const tryNumber = await this.getTryNumber();
     this.startRacing(tryNumber);
+    this.selectWinners();
   }
 }
 
