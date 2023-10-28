@@ -28,6 +28,14 @@ class App {
     return inputTryNumber;
   }
 
+  playRacing(tryNumber) {
+    Console.print("\n실행 결과");
+    do {
+      this.moveCars();
+      tryNumber--;
+    } while (tryNumber > 0);
+  }
+
   initPlay() {}
 
   async play() {
@@ -35,6 +43,7 @@ class App {
     const racingCars = await this.getRacingCars();
     await this.setRacingCars(racingCars);
     const tryNumber = await this.getTryNumber();
+    this.playRacing(tryNumber);
   }
 }
 
