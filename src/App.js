@@ -3,6 +3,10 @@ import { Console, Random } from "@woowacourse/mission-utils";
 class App {
   async play() {
     const carName = await this.getCarInput();
+
+    if (carName.every((car) => car.length <= 5)) {
+      throw new Error("자동차 이름은 5자 이하만 가능합니다.");
+    }
   }
 
   async getCarInput() {
