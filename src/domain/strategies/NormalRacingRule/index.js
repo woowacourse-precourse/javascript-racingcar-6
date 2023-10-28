@@ -1,4 +1,5 @@
 import { RacingRule } from "../RacingRule";
+import { pickNumberInRage } from "../../../utils";
 
 const MIN_VALUE = 0;
 const MAX_VALUE = 9;
