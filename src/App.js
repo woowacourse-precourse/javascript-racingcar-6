@@ -29,12 +29,12 @@ class App {
   }
 
   checkScore(){
+    // console.log("this.gamestatus length",this.gameStatus.length);
     this.gameStatus.forEach(car => {
-      const score = car.split(":")[1].trim();
+      const score = car.split(":")[1];
+      // console.log("car", this.gameStatus);
       this.finalScore.push(Number(score.length));
     });
-    // console.log("finalScore", this.finalScore);
-    // console.log(this.finalScore[0]);
   }
 
   awards(){
@@ -48,8 +48,8 @@ class App {
       }
     }
 
-    console.log(winner);
-    console.log("winner length",winner[0],winner.length);
+    // console.log("print winner",winner);
+    // console.log("winner length",winner[0],winner.length);
     if (winner.length === 1){
       Console.print(`최종 우승자 : ${winner[0]}`);
     }
@@ -61,18 +61,22 @@ class App {
   }
 
 
-
-  checkGoStop(){
+  // 오류난 이유 정리하기 공백을 추가해 주지 않으면
+  checkGoStop() {
     for (let i = 0; i < this.inputCount; i++) {
-      this.gameStatus.forEach((car,i) => {
+      this.gameStatus.forEach((car, index) => {
         const randomNumber = this.makeRandomNumber();
-        // console.log("randomNumber", randomNumber);
         if (randomNumber >= 4) {
-          this.gameStatus[i] += "-";
+          this.gameStatus[index] += "-";
         }
-        Console.print(this.gameStatus[i]);
+        
+        // 일관된 데이터 유형을 유지하기 위해 
+        if (randomNumber < 4) {
+          this.gameStatus[index] += "";
+        }
+        Console.print(this.gameStatus[index]);
       });
-    
+      Console.print("\n");
     }
   }
 
@@ -83,6 +87,7 @@ class App {
     for (let i = 0; i < this.gameStatus.length; i++) {
       this.gameStatus[i].push(`${userinput[i]} : `);
     }
+    // console.log("game status 생성",this.gameStatus);
     return this.gameStatus;
   }
 
@@ -92,7 +97,7 @@ class App {
     // 쉼표를 기준으로 5자 이하인지 체크 - 쉼표를 기준으로 5자 이상인것 오류
     this.carList = userCarListInput.split(',');
     this.checkInvalidCarName(this.carList);
-    console.log("this.checkInvalidCarName(carList)", this.checkInvalidCarName(this.carList));
+    // console.log("this.checkInvalidCarName(carList)", this.checkInvalidCarName(this.carList));
     return this.carList;
   }
 
@@ -132,7 +137,7 @@ class App {
   checkSpace(inputCarList){
     const forCheckSpace = /\s/;
     inputCarList.forEach(car => {
-      console.log(`${car}끝자리 체크`, car, car.slice(car.length - 1, car.length), "끝자리");
+      // console.log(`${car}끝자리 체크`, car, car.slice(car.length - 1, car.length), "끝자리");
       if (forCheckSpace.test(car.slice(0,1))){
         throw new ERROR(ERROR.INVALID_INPUT_FIRST)
       }
@@ -145,7 +150,7 @@ class App {
   // 사용자가 원하는 게임 전진 도전 횟수
   async getUserWantMoveCount(){
     this.inputCount = await Console.readLineAsync("몇번");
-    console.log(this.inputCount);
+    // console.log(this.inputCount);
     // 사용자 입력이 숫자인지 체크하는 기능
     this.checkNumber(this.inputCount);
     return this.inputCount;
