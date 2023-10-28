@@ -49,6 +49,7 @@ class Car {
     }
     MissionUtils.Console.print(`${this.name} : ${string}`);
   }
+  
 }
 
 
