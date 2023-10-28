@@ -1,4 +1,4 @@
-import GameView from '../src/view/gameView.js';
+import GameView from '../src/model/GameView.js';
 import { MESSAGE } from '../src/constants/messages.js';
 
 const getLogSpy = () => {
