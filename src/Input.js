@@ -12,6 +12,15 @@ class Input {
       throw new InputException(errorCode);
     }
   }
+
+  static async enterTryingCount() {
+    try {
+      const tryingCount = await Interface.requestValueforContent('시도할 횟수');
+      Validator.evaluteTryingCount(tryingCount);
+    } catch (errorCode) {
+      throw new InputException(errorCode);
+    }
+  }
 }
 
 export default Input;
