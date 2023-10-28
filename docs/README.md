@@ -181,6 +181,3 @@ class UpdateConstants {
 ---
 
 
-
-![image-20231028224216576](/Users/ijonghyeon/Library/Application Support/typora-user-images/image-20231028224216576.png)
-
