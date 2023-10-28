@@ -1,0 +1,1 @@
+export const gameResult = "실행 결과";
