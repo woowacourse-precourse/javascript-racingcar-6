@@ -1,6 +1,6 @@
 import { calculateLongestDistance } from '../utils/calculateLongestDistance.js';
 
-class RaceManagerModel {
+class RaceManager {
   constructor(carModels) {
     this.carModels = carModels;
     this.moveCount = 0;
@@ -15,4 +15,4 @@ class RaceManagerModel {
   }
 }
 
-export default RaceManagerModel;
+export default RaceManager;

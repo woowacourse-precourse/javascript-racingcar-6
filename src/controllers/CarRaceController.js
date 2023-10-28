@@ -1,5 +1,5 @@
 import Car from '../models/Car.js';
-import RaceManagerModel from '../models/RaceManagerModel.js';
+import RaceManager from '../models/RaceManager.js';
 import CarRaceView from '../views/CarRaceView.js';
 import { repeatFunctionNTimes } from '../utils/repeatFunctionNTimes.js';
 import { calculateLongestDistance } from '../utils/calculateLongestDistance.js';
@@ -13,14 +13,14 @@ import {
 class CarRaceController {
   constructor() {
     this.carModels = [];
-    this.raceManagerModel = new RaceManagerModel([]);
+    this.raceManagerModel = new RaceManager([]);
     this.gameWinner = '';
   }
 
   async initializeGame() {
     const carNames = await this.promptCarNames();
     this.carModels = carNames.map(carName => new Car(carName));
-    this.raceModel = new RaceManagerModel(this.carModels);
+    this.raceModel = new RaceManager(this.carModels);
     const moveCount = await this.promptMoveCount();
     this.raceModel.setMoveCount(moveCount);
   }
