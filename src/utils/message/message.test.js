@@ -17,9 +17,9 @@ describe("errorMessage 검증", () => {
     expect(res).toBe("잘못된 매개변수입니다.");
   });
 
-  test("numberOutOfRangeErrorMessage", () => {
+  test("outOfRangeErrorMessage", () => {
     const num = 10;
-    const res = ErrorMessage.numberOutOfRangeErrorMessage(num);
-    expect(res).toBe(`${num}이하의 숫자를 입력해 주세요.`);
+    const res = ErrorMessage.outOfRangeErrorMessage(num);
+    expect(res).toBe(`${num}자 이하로 입력해 주세요.`);
   });
 });

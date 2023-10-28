@@ -1,5 +1,6 @@
+import { RacingGameState } from "../../constanst/game.js";
 import { Console } from "../../utils/console/console.js";
-import { ErrorMessage, RacingGameMessage } from "../../utils/message/message.js";
+import { ErrorMessage } from "../../utils/message/message.js";
 import RacingGame from "./RacingGame.js";
 
 const names = ["a", "b", "c"];
@@ -31,7 +32,7 @@ describe("RacingGame 객체 테스트", () => {
     await racingGame.start();
 
     expect(Console.readLineAsync).toHaveBeenCalledTimes(2);
-    expect(Console.print).toHaveBeenCalledTimes(4 + count * (names.length + 1));
+    expect(Console.print).toHaveBeenCalledTimes(2 + count * (names.length + 1));
   });
 
   test("getWinners 검증", async () => {
@@ -43,10 +44,22 @@ describe("RacingGame 객체 테스트", () => {
     expect(names).toEqual(expect.arrayContaining(winners));
   });
 
-  test("잘못된 입력값 확인 => IncorrectFormatError", async () => {
+  test("시도 횟수 숫자가 아닌 값이면 오류 => IncorrectFormatError", async () => {
     const inputs = ["a", "숫자가 아닙니다."];
     mockConsole(inputs);
     const errorMessage = ErrorMessage.incorrectFormatErrorMessage();
+    try {
+      await racingGame.start();
+      testFail();
+    } catch (e) {
+      expect(e.message).toBe(`[ERROR] ${errorMessage}`);
+    }
+  });
+
+  test(`자동차 이름 ${RacingGameState.MAX_NAME_LENGTH}자 초과하면 오류 => OutOfRangeError`, async () => {
+    const inputs = ["aaaaaa", 0];
+    mockConsole(inputs);
+    const errorMessage = ErrorMessage.outOfRangeErrorMessage(RacingGameState.MAX_NAME_LENGTH);
     try {
       await racingGame.start();
       testFail();

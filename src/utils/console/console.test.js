@@ -12,8 +12,8 @@ describe("console test", () => {
 
   test("readLineSync test - MissionUtils 의 readLineAsync 사용하는지 확인", async () => {
     MissionUtils.Console.readLineAsync = jest.fn();
-    MissionUtils.Console.readLineAsync.mockImplementation(async () => text);
-    const res = await Console.readLineAsync();
+    MissionUtils.Console.readLineAsync.mockImplementation(async (text) => text);
+    const res = await Console.readLineAsync(text);
     expect(res).toBe(text);
   });
 });

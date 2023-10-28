@@ -4,6 +4,7 @@ import IncorrectFormatError from "../../error/IncorrectFormatError.js";
 import { RacingGameState } from "../../constanst/game.js";
 import { getRandomNumber } from "../../utils/random/random.js";
 import { RacingGameMessage } from "../../utils/message/message.js";
+import OutOfRangeError from "../../error/OutOfRangeError.js";
 
 class RacingGame {
   #racingCars;
@@ -16,15 +17,24 @@ class RacingGame {
   }
 
   async start() {
-    // 자동차 이름 입력 받기 & RacingCar 객체 생성
-    Console.print(RacingGameMessage.nameTitle());
-    const names = await Console.readLineAsync();
-    names.split(",").forEach((name) => this.#racingCars.push(new RacingCar(name)));
+    // 자동차 이름 입력 받기
+    const nameInput = await Console.readLineAsync(RacingGameMessage.nameTitle());
+    const names = nameInput.split(",");
 
-    // 시도 횟수 입력
-    Console.print(RacingGameMessage.countTitle());
-    const count = await Console.readLineAsync();
-    if (isNaN(Number(count))) {
+    // 이름이 MAX_NAME_LENGTH를 초과하면 OutOfRangeError
+    if (names.some((name) => name.length > RacingGameState.MAX_NAME_LENGTH)) {
+      throw new OutOfRangeError(RacingGameState.MAX_NAME_LENGTH);
+    }
+
+    // RacingCar 객체 생성 & racingCars에 push
+    names.forEach((name) => this.#racingCars.push(new RacingCar(name)));
+
+    // 시도 횟수 입력 받기
+    const countInput = await Console.readLineAsync(RacingGameMessage.countTitle());
+    const count = Number(countInput);
+
+    // 시도 횟수가 숫자가 아니면 IncorrectFormatError
+    if (isNaN(count)) {
       throw new IncorrectFormatError();
     }
     this.#totalCount = count;
@@ -64,8 +74,7 @@ class RacingGame {
 
   // 우승자 반환 string[]
   getWinners() {
-    let maxCount = 0;
-    this.#racingCars.forEach((racingCar) => (maxCount = Math.max(maxCount, racingCar.getCount())));
+    const maxCount = Math.max(...this.#racingCars.map((racingCar) => racingCar.getCount()));
     return this.#racingCars
       .filter((racingCar) => racingCar.getCount() === maxCount)
       .map((racingCar) => racingCar.getName());
