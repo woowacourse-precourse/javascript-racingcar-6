@@ -1,4 +1,4 @@
-import { calculateLongestDistance } from '../utils/calculateLongestDistance.js';
+import { calculateLongestDistance } from './../utils/calculateLongestDistance';
 
 class RaceManager {
   constructor(carModels) {
@@ -6,12 +6,21 @@ class RaceManager {
     this.moveCount = 0;
   }
 
+  race() {
+    this.carModels.forEach(carModel => carModel.move());
+  }
+
   setMoveCount(moveCount) {
     this.moveCount = moveCount;
   }
 
-  race() {
-    this.carModels.forEach(carModel => carModel.move());
+  calcultateWinner() {
+    const maxPosition = calculateLongestDistance(this.carModels);
+
+    const winners = this.carModels.filter(
+      carModel => carModel.position.length === maxPosition,
+    );
+    return winners.map(winner => winner.carName).join(', ');
   }
 }
 

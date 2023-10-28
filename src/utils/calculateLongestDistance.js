@@ -1,4 +1,4 @@
-export function calculateLongestDistance(carList) {
-  const gameDistances = carList.map(car => carList[car].length);
-  return Math.max(...gameDistances);
+export function calculateLongestDistance(carModles) {
+  const maxPosition = Math.max(...carModles.map(car => car.position.length));
+  return maxPosition;
 }

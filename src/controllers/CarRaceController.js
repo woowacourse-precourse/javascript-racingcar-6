@@ -44,7 +44,7 @@ class CarRaceController {
   }
 
   getGameResult() {
-    this.gameWinner = this.calcultateWinner();
+    this.gameWinner = this.raceModel.calcultateWinner();
   }
 
   async promptMoveCount() {
@@ -78,15 +78,6 @@ class CarRaceController {
     if (isDuplicte) {
       throw new Error('[ERROR] car 이름은 중복이 불가합니다.');
     }
-  }
-
-  calcultateWinner() {
-    const maxPosition = calculateLongestDistance(this.carModels);
-
-    const winners = this.carModels.filter(
-      carModel => carModel.position.length === maxPosition,
-    );
-    return winners.map(winner => winner.carName).join(', ');
   }
 
   printWinner() {
