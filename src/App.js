@@ -39,7 +39,9 @@ class App {
 
     const parsedNumberCount = Number(inputTryCount);
 
-    return this.validateInputCount(parsedNumberCount);
+    this.validateInputCount(parsedNumberCount);
+
+    return parsedNumberCount;
   }
 
   validateInputCount(inputValue) {
