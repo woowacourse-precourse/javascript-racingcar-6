@@ -1,6 +1,7 @@
 import CarRacingGame from '../domain/CarRacingGame.js';
 import randomNumberGenerator from '../utils/RandomNumberGenerator.js';
 import InputView from '../views/InputView.js';
+import OutputView from '../views/OutputView.js';
 
 class CarRacingGameController {
   #carRacingGame;
@@ -13,15 +14,20 @@ class CarRacingGameController {
   }
 
   currentRacing() {
+    OutputView.printStaticMessage('\n실행 결과');
     while (this.#carRacingGame.isPlaying()) {
       this.#carRacingGame.race(randomNumberGenerator);
 
       const currentResult = this.#carRacingGame.getRoundResult();
-      console.log(currentResult);
+      OutputView.printCurrentResult(currentResult);
     }
 
     const winners = this.#carRacingGame.getWinners();
-    console.log(winners);
+    this.endGame(winners);
+  }
+
+  endGame(winners) {
+    return OutputView.printFinalWinner(winners);
   }
 }
 
