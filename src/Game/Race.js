@@ -12,10 +12,7 @@ export class Race {
     for (let i = 0; i < this.rounds; i++) {
       this.cars.forEach(car => {
         const NAME = car[0];
-        let steps = car[1];
-        if (choiceGoOrStop()) {
-          steps += '-';
-        }
+        let steps = this.move(car[1]);
         MissionUtils.Console.print(`${NAME} : ${steps}`);
         car[1] = steps;
       });
@@ -24,15 +21,19 @@ export class Race {
 
     const winner = this.decideWinner();
     MissionUtils.Console.print(`${MESSAGE.winnerResult}${winner}`);
+  }
 
-    function choiceGoOrStop() {
-      const DICE = MissionUtils.Random.pickNumberInRange(0, 9);
-      if (DICE >= 4) {
-        return true;
-      } else {
-        return false;
-      }
+  move(currentSteps) {
+    let steps = currentSteps;
+    if (this.choiceToMove()) {
+      steps += '-';
     }
+    return steps;
+  }
+
+  choiceToMove() {
+    const DICE = MissionUtils.Random.pickNumberInRange(0, 9);
+    return DICE >= 4;
   }
 
   decideWinner() {
