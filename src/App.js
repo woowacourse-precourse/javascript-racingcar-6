@@ -31,7 +31,7 @@ class App {
     if (!numberRegex.test(count)) {
       throw new Error("[ERROR] 숫자가 잘못된 형식입니다.")
     }
-    
+
     this.tryCount = parseInt(count);
   }
 
@@ -40,7 +40,7 @@ class App {
 
     this.makeCarArray(names)
 
-    this.inputTryCount();
+    await this.inputTryCount();
   }
 }
 
