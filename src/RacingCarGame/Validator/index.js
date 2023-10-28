@@ -21,8 +21,8 @@ class Validator {
       .forEach(this.isValidCarNameLength);
   }
 
-  static validateLapNumber(number) {
-    return this.isSafeInteger(number);
+  static validateLapCount(number) {
+    this.isSafeInteger(number);
   }
 }
 
