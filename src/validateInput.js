@@ -15,7 +15,6 @@ export function validateName(inputArr) {
 			return name;
 		}
 	});
-	console.log('valid name Arr:', validNameArr);
 	return validNameArr;
 }
 
