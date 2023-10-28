@@ -19,7 +19,9 @@ class App {
 
     this.#refree.registerCars(carNames);
 
-    this.#totalRounds = await InputView.getTotalRounds();
+    const totalRoundsString = await InputView.getTotalRounds();
+    Validation.validateTotalRounds(totalRoundsString);
+    this.#totalRounds = Number(totalRoundsString);
 
     OutputView.printResultTitleMessage();
 
