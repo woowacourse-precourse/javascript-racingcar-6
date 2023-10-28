@@ -7,7 +7,7 @@ import { console } from "../../utils/console";
 const CAR_NAME_LENGTH_LIMIT = 5;
 
 export class RacingCarGame {
-  #cars = [];
+  #cars;
   #totalRounds;
   #currentRound = 0;
 
@@ -58,10 +58,6 @@ export class RacingCarGame {
     this.#cars = new Cars(carNames);
   }
 
-  #getCars() {
-    return this.#cars;
-  }
-
   #validateCarNames(carName) {
     if (carName === "") throw new CustomError(MESSAGES.ERROR.CAR.NAME.EMPTY);
 
@@ -81,8 +77,8 @@ export class RacingCarGame {
     if (totalRounds <= 0)
       throw new CustomError(MESSAGES.ERROR.TOTAL_ROUNDS.LENGTH);
 
-    if (!Number.isInteger(totalRounds))
-      throw new CustomError(MESSAGES.ERROR.TOTAL_ROUNDS.NOT_INTEGER);
+    // if (!Number.isInteger(totalRounds))
+    //   throw new CustomError(MESSAGES.ERROR.TOTAL_ROUNDS.NOT_INTEGER);
   }
 
   #getRoundResult() {
@@ -91,9 +87,13 @@ export class RacingCarGame {
       return "-".repeat(offset);
     });
 
-    return carNames.map((carName, index) => {
-      return `${carName} : ${roundResult[index]}\n`;
+    let result = "";
+
+    carNames.forEach((carName, index) => {
+      result += `${carName} : ${roundResult[index]}\n`;
     });
+
+    return result;
   }
 
   #getWinners() {
