@@ -16,6 +16,7 @@ class Controller {
     await this.makeRaceCar();
     await this.askMaxRun();
     this.executeAsMaxRun();
+    this.findWinners();
   }
 
   async makeRaceCar() {
@@ -41,6 +42,18 @@ class Controller {
     this.#cars.forEach((car) => {
       car.move();
       View.roundPrint(car.getName(), car.getDistance());
+    });
+  }
+
+  findWinners() {
+    let maxMoved = 0;
+    this.#cars.forEach((car) => {
+      const distance = car.getDistance();
+      if (distance > maxMoved) maxMoved = distance;
+    });
+    this.#cars.forEach((car) => {
+      const distance = car.getDistance();
+      if (maxMoved === distance) this.winners.push(car);
     });
   }
 }
