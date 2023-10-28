@@ -1,4 +1,4 @@
-import RacingGame from './racing/RacingGame.js';
+import RacingGame from './racing/RacingGame';
 
 class App {
   play() {

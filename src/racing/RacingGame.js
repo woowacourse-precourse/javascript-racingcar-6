@@ -1,5 +1,6 @@
-import View from '../view/View.js';
-import Car from './Car.js';
+import { MESSAGE } from '../constants/constants';
+import View from '../view/View';
+import Car from './Car';
 
 export default class RacingGame {
   async init() {
@@ -40,6 +41,6 @@ export default class RacingGame {
       (car) => car.carDistance.length === maxDistance
     );
     const winnerNames = winners.map((winner) => winner.carName).join(', ');
-    View.print(`최종우승자 : ${winnerNames}`);
+    View.print(`${MESSAGE.winner}${winnerNames}`);
   }
 }
