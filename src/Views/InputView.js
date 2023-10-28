@@ -3,7 +3,7 @@ import MESSAGES from '../../utils/Messages';
 
 const InputView = {
   async readCarsName() {
-    const carsName = await Console.readLineAsync(MESSAGES.nameQuery);
+    const carNames = await Console.readLineAsync(MESSAGES.nameQuery);
   },
 };
 
