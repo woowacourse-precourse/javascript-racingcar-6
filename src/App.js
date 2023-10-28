@@ -95,7 +95,7 @@ class App {
   selectWinners() {
     const longestDistance = this.getLongestDistance();
     this.cars.forEach((distance, car) => {
-      if (distance === longestDistance) {
+      if (distance.length === longestDistance) {
         this.winners.push(car);
       }
     });
