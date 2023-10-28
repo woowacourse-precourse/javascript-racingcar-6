@@ -1,15 +1,21 @@
+import Car from '../Car/index.js';
 import { SYMBOLS } from '../constants/index.js';
 
 class Race {
   constructor() {
     this.cars = [];
+    this.lapCount = 0;
+  }
+
+  setLapCount(lapCount) {
+    this.lapCount = lapCount;
   }
 
   addCars(names) {
     this.cars = names
       .replace(/s/g, '')
       .split(SYMBOLS.nameDivider)
-      .map((name) => name);
+      .map((name) => new Car(name));
   }
 
   lap() {
@@ -18,11 +24,11 @@ class Race {
     });
   }
 
-  makeOneLapResult() {
-    return (
-      this.cars.map((car) => car.toStringPosition()).join(SYMBOLS.lineBreak) +
-      SYMBOLS.lineBreak
-    );
+  makeLapResult() {
+    for (let i = 0; i < this.lapCount; i++) {
+      this.lap();
+    }
+    return this.cars.map((car) => car.toStringPosition()).join('');
   }
 
   calMaxMove() {
