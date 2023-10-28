@@ -2,6 +2,10 @@ import { PrintMessage } from "../static/Static.js";
 import { Console } from "@woowacourse/mission-utils";
 
 const OutputView = {
+  printSingleLine() {
+    Console.print("");
+  },
+
   printResultMessage() {
     Console.print(PrintMessage.RESULT_MESSAGE);
   },
