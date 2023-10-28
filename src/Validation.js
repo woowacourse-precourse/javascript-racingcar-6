@@ -10,7 +10,7 @@ const REG_NUMBER = /[^0-9]+/;
  */
 export function checkCarNames(carNames) {
   if (carNames === '') {
-    throw new Error(ERROR_MESSAGE.NO_CAR_NAME);
+    return new Error(ERROR_MESSAGE.NO_CAR_NAME);
   }
 
   const carNameArr = carNames.split(',');
@@ -19,7 +19,7 @@ export function checkCarNames(carNames) {
       throw new Error(ERROR_MESSAGE.LENGTH_ERROR);
     }
     if (carNameArr.indexOf(carName) !== carNameArr.lastIndexOf(carName)) {
-      throw new Error(ERROR_MESSAGE.DUPLICATE_ERROR);
+      return new Error(ERROR_MESSAGE.DUPLICATE_ERROR);
     }
   }
 
@@ -32,13 +32,10 @@ export function checkCarNames(carNames) {
  */
 export function checkTryNumber(number) {
   if (number === '') {
-    throw new Error(ERROR_MESSAGE.NO_NUMBER);
+    return new Error(ERROR_MESSAGE.NO_NUMBER);
   }
   if (REG_NUMBER.test(Number(number))) {
-    throw new Error(ERROR_MESSAGE.NOT_NUMBER_ERROR);
-  }
-  if (REG_NUMBER.test(Number(number))) {
-    throw new Error(ERROR_MESSAGE.NOT_NUMBER_ERROR);
+    return new Error(ERROR_MESSAGE.NOT_NUMBER_ERROR);
   }
   return;
 }
