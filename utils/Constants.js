@@ -4,6 +4,7 @@ const CONSTANTS = Object.freeze({
   minimumValue: 0,
   maximumValue: 9,
   progressValue: 4,
+  initialStatus: 0,
 });
 
 export default CONSTANTS;
