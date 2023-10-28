@@ -8,7 +8,7 @@ export default class GameView {
     Console.print(message);
   }
 
-  async getUserInput(query) {
+  getUserInput(query) {
     return Console.readLineAsync(query);
   }
 
