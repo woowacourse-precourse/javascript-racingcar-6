@@ -1,9 +1,13 @@
-import InputView from './views/InputView.js';
+import InputView from './view/InputView.js';
+import Car from './model/Car.js';
+
 import ErrorHandler from './utils/ErrorHandler.js';
 import { validateCarName, validateTryNumber } from './Validator.js';
 
 class App {
-  constructor() {}
+  constructor() {
+    this.cars = [];
+  }
 
   async play() {
     await this.readCarName();
@@ -13,6 +17,7 @@ class App {
     const carName = await InputView.readCarName();
 
     this.validate(carName);
+    this.createCars(carName);
     await this.readTryNumber();
   }
 
@@ -23,6 +28,11 @@ class App {
     }
 
     ErrorHandler(validateTryNumber, input);
+  }
+
+  createCars(cars) {
+    cars.forEach((car) => this.cars.push(new Car(car)));
+    console.log(this.cars);
   }
 
   async readTryNumber() {
