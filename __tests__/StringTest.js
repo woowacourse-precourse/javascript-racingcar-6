@@ -2,6 +2,7 @@ import App from "../src/App.js";
 import {makeAndFilter} from "../src/Random.js";
 import {MissionUtils} from "@woowacourse/mission-utils";
 import {Input_First, Input_Second} from "../src/InputScreen.js";
+import {GAME_RESULT} from "../src/OutScreen.js";
 
 jest.mock("@woowacourse/mission-utils", () => ({
     MissionUtils: {
@@ -24,6 +25,12 @@ const mockRandoms = (numbers) => {
     numbers.reduce((acc, number) => {
         return acc.mockReturnValueOnce(number);
     }, MissionUtils.Random.pickNumberInRange);
+};
+
+const getLogSpy = () => {
+    const logSpy = jest.spyOn(MissionUtils.Console, "print");
+    logSpy.mockClear();
+    return logSpy;
 };
 describe("문자열 테스트", () => {
     test("split 메서드로 주어진 값을 구분", () => {
@@ -95,8 +102,29 @@ describe("문자열 테스트", () => {
     test.each([
         [["1 2"]],
         [["dannysir"]]
-    ])("예외처리 - 횟수 입력 예외 처리", async (inputs) => {
+    ])("예외처리 - 횟수 입력 예외 처", async (inputs) => {
         mockRandoms(inputs);
         await expect(Input_Second()).rejects.toThrow("[ERROR]");
+    });
+
+    test("결과값 출력",  () => {
+        // given
+        const MOVING_FORWARD = 4;
+        const STOP = 3;
+        const inputs = ["pobi,woni", "1"];
+        const outputs = ["pobi : -"];
+        const randoms = [MOVING_FORWARD, STOP];
+        const logSpy = getLogSpy();
+
+        mockQuestions(inputs);
+        mockRandoms([...randoms]);
+
+        // when
+        GAME_RESULT(["pobi", "woni"], 1);
+
+        // then
+        outputs.forEach((output) => {
+            expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+        });
     });
 });
