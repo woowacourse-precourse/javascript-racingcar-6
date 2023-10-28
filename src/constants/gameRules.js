@@ -5,4 +5,6 @@ export const GAME_RULL = Object.freeze({
   CAR_NAME_MAX_LENGTH: 5,
   MOVE_MAX_COUNT: 10,
   MOVE_MIN_COUNT: 1,
+  START_PICK_NUMBER: 0,
+  END_PICK_NUMBER: 9,
 });
