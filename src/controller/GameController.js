@@ -28,9 +28,7 @@ export default class GameController {
       this.model.setMoveCount();
       this.printResult();
     }
-
-    const winners = this.model.getWinner();
-    this.view.printWinner(winners);
+    this.printWinner();
   }
 
   async setTryCount() {
@@ -43,6 +41,11 @@ export default class GameController {
     const players = this.model.getPlayers();
     players.forEach((player) => this.view.printResult(player));
     this.view.print();
+  }
+
+  printWinner() {
+    const winners = this.model.getWinner();
+    this.view.printWinner(winners);
   }
 
   splitPlayerNames(names) {
