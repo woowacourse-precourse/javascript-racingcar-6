@@ -11,7 +11,6 @@ export function playCarRace(userNameArr, userTrialFrequency) {
 	setGameResult(playerScore, gameResult);
 	return gameResult;
 }
-
 function setPlayerScore(userNameArr, playerScore) {
 	userNameArr.forEach((userName) => {
 		playerScore[userName] = '';
@@ -20,14 +19,17 @@ function setPlayerScore(userNameArr, playerScore) {
 }
 function repeatCycle(userNameArr, userTrialFrequency, playerScore) {
 	for (let i = 1; i <= userTrialFrequency; i++) {
-		userNameArr.forEach((userName) => {
-			const randomNumber = getRandomNumber();
-			if (moveForward(randomNumber)) {
-				playerScore[userName] += '-';
-			} 
-			Console.print(`${userName} : ${playerScore[userName]}`);
-		});
+		playOneCycle(userNameArr,playerScore);
 	}
+}
+function playOneCycle(userNameArr,playerScore) {
+	userNameArr.forEach((userName) => {
+		const randomNumber = getRandomNumber();
+		if (moveForward(randomNumber)) {
+			playerScore[userName] += '-';
+		}
+		Console.print(`${userName} : ${playerScore[userName]}`);
+	});
 }
 function moveForward(randomNumber) {
 	if (randomNumber >= 4) {
