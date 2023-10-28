@@ -17,7 +17,7 @@ describe('class Car test', () => {
 
       const result = car.getPositionResult();
 
-      expect(result).toBe('---');
+      expect(result).toEqual({ name: '이두리', position: '---' });
     });
   });
 });
