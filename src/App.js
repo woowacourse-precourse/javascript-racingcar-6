@@ -104,8 +104,8 @@ class App {
    * 자동차 경주 게임을 실행하는 메소드
    */
   async game() {
-    this.#RACE_CARS = this.get_car_input();
-    this.#TRY = this.get_try_input();
+    this.#RACE_CARS = await this.get_car_input();
+    this.#TRY = await this.get_try_input();
 
     Console.print("실행 결과");
 
