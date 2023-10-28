@@ -24,10 +24,10 @@ const InputValidator = {
     }
     return carNames;
   },
-  tryCount(input) {
+  executeCount(input) {
     // 실행 횟수를 숫자가 아닌 입력을 한 경우 (미입력)
     if (!Constant.POSITIVE_INT_REGEX.test(input)) {
-      throw new Error(Message.ERROR.COUNT_SHOULD_BE_POSITIVE_INT);
+      throw new Error(Message.ERROR.EXECUTE_COUNT_SHOULD_BE_POSITIVE_INT);
     }
     return Number(input);
   },

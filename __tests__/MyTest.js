@@ -86,11 +86,12 @@ describe("예외처리", () => {
     [["pobi,java"], ["a"]],
     [["asd,fgh,sdf"], ["13$"]],
     [["asd,fgh,sdf"], [""]],
+    [["asd,fgh,sdf"], ["0"]],
   ])("실행횟수 입력이 양의 정수가 아닌 경우", async (inputs) => {
     mockQuestions(inputs);
     const app = new App();
     await expect(app.play()).rejects.toThrow(
-      Message.ERROR.COUNT_SHOULD_BE_POSITIVE_INT
+      Message.ERROR.EXECUTE_COUNT_SHOULD_BE_POSITIVE_INT
     );
   });
 });

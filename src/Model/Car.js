@@ -2,22 +2,22 @@ import { Random } from "@woowacourse/mission-utils";
 import Constant from "../util/Constant.js";
 
 class Car {
-  #step;
+  #stepCount;
 
   constructor(name) {
     this.name = name;
-    this.#step = 0;
+    this.#stepCount = 0;
   }
 
   decideGoOrStop() {
     const num = Random.pickNumberInRange(Constant.MIN_NUM, Constant.MAX_NUM);
     if (num >= Constant.STANDARD_T0_GO) {
-      this.#step += 1;
+      this.#stepCount += 1;
     }
   }
 
   getStep() {
-    return this.#step;
+    return this.#stepCount;
   }
 }
 
