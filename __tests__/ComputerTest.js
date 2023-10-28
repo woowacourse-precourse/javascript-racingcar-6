@@ -1,0 +1,29 @@
+import Computer from '../src/Computer.js';
+
+describe('컴퓨터 예외 처리 테스트', () => {
+  test.each([',car', 'car,', ',car,'])(
+    '문장의 맨 앞이나 뒤에 ,를 입력할 경우 예외 처리',
+    (inputs) => {
+      const computer = new Computer();
+      expect(() => computer.getCarNameArrayFromUserInput(inputs)).toThrow(
+        '[ERROR]'
+      );
+    }
+  );
+
+  test('이름이 5자 초과인 차 이름을 입력하는 경우 예외 처리', () => {
+    const computer = new Computer();
+    expect(() => computer.getCarNameArrayFromUserInput('longcar, car')).toThrow(
+      '[ERROR]'
+    );
+  });
+
+  test('차 이름을 올바르게 입력한 경우 배열 반환', () => {
+    const computer = new Computer();
+    expect(computer.getCarNameArrayFromUserInput('carA, carB, carC')).toEqual([
+      'carA',
+      'carB',
+      'carC',
+    ]);
+  });
+});
