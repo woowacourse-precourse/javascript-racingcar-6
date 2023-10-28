@@ -1,19 +1,19 @@
-import GameController from "./game/GameController.js"
+import GameController from "./Game/GameController.js"
 
 class App {
-    gameController;
+    
     constructor() {
-        this.init();
+        this.gameController = new GameController
     }
-    init() {
-        this.gameController = new GameController();
-    }
+
     async play() {
         const gameController = this.gameController;
-        const racing = gameController.racing;
+        
         await gameController.inputCars();
         await gameController.inputTryMoveCount();
         
+        gameController.start();
+        gameController.result();
     }
 }
 
