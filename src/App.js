@@ -1,9 +1,11 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 
-// 입력값 질문 상수
+// 입력값 출력값 상수
 const INPUT_CAR_NAME = '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n';
 const INPUT_TRY_NUMBER = '시도할 횟수는 몇 회인가요?\n';
+const PRINT_START_GAME = '\n실행 결과';
+const PRINT_RESULT = '최종 우승자 : ';
 
 // 에러 상수
 const WRONG_NAME_ERROR = '[ERROR] 이름 규칙에 알맞지 않은 문자가 포함되어 있습니다.';
@@ -23,19 +25,19 @@ class App {
     // 자동차 이름 입력
     const carName = await this.inputCarName();
     this.validateCarName(carName);
+
     // 게임 진행 횟수 입력
-    let playNumber = await this.inputPlayNumber();
+    const playNumber = await this.inputPlayNumber();
     this.validatePlayNumber(playNumber);
     
-    MissionUtils.Console.print('\n실행 결과');
-
     // 자동차 이름을 배열로 만든 객체
     const carNameArr = carName.split(",");
-
-    // 진행과정을 저장할 객체 만드는 메서드.
+    
+    // 게임 진행과정을 저장할 객체
     let gameBoard = this.createGameArr(carNameArr.length);
-
+    
     // 게임 시작
+    MissionUtils.Console.print(`${PRINT_START_GAME}`);
     for (let idx = 0; idx < Number(playNumber); idx++){
       gameBoard = this.moveCarGame(carNameArr, gameBoard);
     }
@@ -117,12 +119,13 @@ class App {
     return hyphen;
   }
 
+
   // 우승자 발표 메서드
   resultGame(gameResult, carNameArr) {
     const max = Math.max(...gameResult); // 최대스코어 점수
     let bestPlayerIdx = []; // 최대 스코어 가진 사람들 인덱스 배열
     
-    // 최대스코어 가진 사람들 인덱스 찾는 메서드
+    // 최대스코어 가진 사람들의 인덱스 찾는 메서드
     bestPlayerIdx = gameResult.map((score, idx) => {
       return score === max ? idx : null;
     })
@@ -134,7 +137,7 @@ class App {
     })
 
     // 마지막 우승자 출력!
-    MissionUtils.Console.print('최종 우승자 : ' + `${bestPlayerName.join(', ')}`);
+    MissionUtils.Console.print(`${PRINT_RESULT}${bestPlayerName.join(', ')}`);
   }
 
 }
