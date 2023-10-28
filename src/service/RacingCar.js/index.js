@@ -1,18 +1,23 @@
-import { console, readLine, shouldCarRun } from "../../utils";
-import { MESSAGES } from "../../constants";
+import { console, readLine } from "../../utils";
+import { CAR_NAME_LENGTH_LIMIT, MESSAGES } from "../../constants";
 import { CustomError } from "../../exceptions";
 
-import { Cars } from "../../domain";
-
-const CAR_NAME_LENGTH_LIMIT = 5;
+import { Cars, RacingRule } from "../../domain";
 
 export class RacingCarGame {
+  #rule;
   #cars;
   #totalRounds;
   #currentRound = 0;
 
-  static createGame() {
-    return new RacingCarGame();
+  constructor(rule) {
+    this.#rule = rule;
+  }
+
+  static createGame(rule) {
+    if (!(rule instanceof RacingRule))
+      throw new CustomError(MESSAGES.ERROR.RULE);
+    return new RacingCarGame(rule);
   }
 
   async promptCarNames() {
@@ -34,11 +39,11 @@ export class RacingCarGame {
     this.#totalRounds = totalRoundsInput;
   }
 
-  play() {
+  startRacing() {
     console(MESSAGES.RESULT);
     while (this.#currentRound < this.#totalRounds) {
       this.#cars.getCars().forEach((car) => {
-        if (shouldCarRun()) car.run();
+        if (this.#rule.shouldCarRun()) car.run();
       });
 
       console(this.#getRoundResult());
@@ -65,6 +70,8 @@ export class RacingCarGame {
       throw new CustomError(
         MESSAGES.ERROR.CAR.NAME.LENGTH(CAR_NAME_LENGTH_LIMIT)
       );
+
+    return true;
   }
 
   #validateTotalRounds(totalRounds) {
