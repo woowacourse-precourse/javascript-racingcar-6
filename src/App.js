@@ -1,6 +1,7 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 class App {
+
   constructor() {
     this.players = [];
     this.moveAttempts = 0;
@@ -36,6 +37,13 @@ class App {
     this.ROUNDS = ROUNDSNUMBER;
   }
 
+  findWinner() {
+    const MAX_MOVEATTEMPTS = Math.max(...this.players.map(player => player.moveAttempts));
+    const WINNERS = this.players.filter(player => player.moveAttempts === MAX_MOVEATTEMPTS)
+    let raceResult = WINNERS.map(player => player.name).join(', ');
+    return `최종 우승자 : ${raceResult}`
+  }
+
   playerMoveCount(player) {
     if (MissionUtils.Random.pickNumberInRange(0, 9) >= 4) {
       player.moveAttempts++;
@@ -60,6 +68,8 @@ class App {
       );
       MissionUtils.Console.print(""); // 실행 결과 표시에서 필요한 결과 사이 공백
     }
+
+    MissionUtils.Console.print(this.findWinner());
   }
 }
 
