@@ -6,6 +6,10 @@ class App {
   constructor() {}
 
   async play() {
+    await this.readCarName();
+  }
+
+  async readCarName() {
     const carName = await InputView.readCarName();
 
     this.validate(carName);
