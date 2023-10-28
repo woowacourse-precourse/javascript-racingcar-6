@@ -39,9 +39,10 @@ class App {
     for (let idx = 0; idx < Number(playNumber); idx++){
       gameBoard = this.moveCarGame(carNameArr, gameBoard);
     }
-    
-    // 우승자 발표
+
+    // 우승자 출력
     this.resultGame(gameBoard, carNameArr);
+
   }
   
 
@@ -116,7 +117,6 @@ class App {
     return hyphen;
   }
 
-
   // 우승자 발표 메서드
   resultGame(gameResult, carNameArr) {
     const max = Math.max(...gameResult); // 최대스코어 점수
@@ -136,6 +136,7 @@ class App {
     // 마지막 우승자 출력!
     MissionUtils.Console.print('최종 우승자 : ' + `${bestPlayerName.join(', ')}`);
   }
+
 }
 
 
