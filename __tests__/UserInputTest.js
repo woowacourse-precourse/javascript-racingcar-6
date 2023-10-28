@@ -32,10 +32,13 @@ const testCases = [
 test.each(testCases)(
   "$description",
   async ({ inputs, expectedErrorMessage }) => {
+    // given
     mockQuestions(inputs);
 
+    // when
     const app = new App();
 
+    // then
     await expect(app.play()).rejects.toThrow(expectedErrorMessage);
   }
 );
