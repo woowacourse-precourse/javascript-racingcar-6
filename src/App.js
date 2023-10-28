@@ -1,8 +1,6 @@
-import gameStart from "./components/ui/gamestart";
-
 class App {
   async play() {
-    gameStart()
+    
   }
 }
 

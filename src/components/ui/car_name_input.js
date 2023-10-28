@@ -5,6 +5,6 @@ const carNameSplit = (input) =>{
 };
 
 async function carNameInput(){
-    
+    return null;
 };
-export default carNameSplit;
+export default carNameInput;
