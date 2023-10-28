@@ -3,7 +3,30 @@ import { START_MESSAGE, LIMIT_NAME_LENGTH, COUNT_MESSAGE, RESULT_MESSAGE, GO_NUM
 import Car from './Car';
 
 class App {
-	async play() {}
+	async play() {
+		const result = [];
+		const userInputCar = await Console.readLineAsync(START_MESSAGE);
+		const cars = userInputCar.split(',');
+		cars.map((car) => (car.length > LIMIT_NAME_LENGTH ? this.error() : result.push(new Car(car))));
+		Console.print(userInputCar);
+		const userInputCount = await Console.readLineAsync(COUNT_MESSAGE);
+		Console.print(userInputCount);
+		Console.print(RESULT_MESSAGE);
+		for (let i = 0; i < userInputCount; i++) {
+			for (let j = 0; j < result.length; j++) {
+				let dash = result[j].getCount();
+				const go = this.randomNumber();
+				if (go >= GO_NUMBER) {
+					dash++;
+					result[j].setCount(dash);
+				}
+				Console.print(`${result[j].getName()}:${'-'.repeat(dash)}`);
+			}
+		}
+		const champion = Math.max(...result);
+		console.log(champion);
+		Console.print(`최종 우승자 : ${String(champion)}`);
+	}
 	// 에러메시지
 	error() {
 		throw new Error('[ERROR] 입력된 값이 숫자가 아닙니다.');
