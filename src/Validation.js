@@ -1,4 +1,4 @@
-import { ERROR_MESSAGES } from './Message';
+import { ERROR_MESSAGES } from './Message.js';
 
 const checkCarNameEmpty = (carName) => {
   if (!carName.length) throw new Error(ERROR_MESSAGES.ERROR_NAME_EMPTY);
@@ -20,8 +20,17 @@ const checkCarNameType = (carName) => {
     throw new Error(ERROR_MESSAGES.ERROR_NAME_TYPE);
 };
 
-export const checkTryNumType = (tryNum) => {
+const checkTryNumType = (tryNum) => {
   if (tryNum.match(/\D/g)) throw new Error(ERROR_MESSAGES.ERROR_TRY_NUM_TYPE);
+};
+
+const checkTryNumZero = (tryNum) => {
+  if (!~~tryNum) throw new Error(ERROR_MESSAGES.ERROR_TRY_NUM_ZERO);
+};
+
+export const checkTryNum = (tryNum) => {
+  checkTryNumType(tryNum);
+  checkTryNumZero(tryNum);
 };
 
 export const checkCarNameInput = (carName) => {

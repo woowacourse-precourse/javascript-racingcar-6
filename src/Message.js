@@ -17,4 +17,5 @@ export const ERROR_MESSAGES = {
   ERROR_NAME_EMPTY: '[ERROR] 입력 값이 없습니다. 이름을 입력해주세요.',
   ERROR_NAME_TYPE: '[ERROR] 이름은 한글과 영어만 허용됩니다.',
   ERROR_TRY_NUM_TYPE: '[ERROR] 입력 값이 숫자가 아닙니다.',
+  ERROR_TRY_NUM_ZERO: '[ERROR] 게임을 진행할 수 없습니다.',
 };
