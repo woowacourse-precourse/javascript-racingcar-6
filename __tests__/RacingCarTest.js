@@ -21,3 +21,10 @@ test("이름 배열을 넘기면 각 이름을 가진 차 인스턴스 배열 �
   expect(cars.length).toBe(3);
   expect(cars.map((car) => car.name)).toContain("pobi", "woni", "jun");
 });
+
+test("숫자 만큼 길을 문자로 생성", () => {
+  const input = 3;
+  const result = racingCar.convertDistanceToString(input);
+
+  expect(result).toBe("---");
+});
