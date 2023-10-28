@@ -16,14 +16,14 @@ class Refree {
     });
   }
 
-  getResultList() {
+  getRcordList() {
     const result = [];
-    this.#carList.forEach((car) => result.push(car.getResult()));
+    this.#carList.forEach((carInstance) => result.push(carInstance.record()));
     return result;
   }
 
   getWinner() {
-    const resultList = this.getResultList();
+    const resultList = this.getRcordList();
     const max = Math.max(...resultList.map(([_, position]) => position));
     const winner = resultList.filter(([_, position]) => position === max).map(([name, _]) => name);
     return winner;

@@ -15,7 +15,7 @@ class Car {
     this.#position += 0;
   }
 
-  getResult() {
+  record() {
     return [this.#name, this.#position];
   }
 }

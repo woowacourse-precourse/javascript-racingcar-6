@@ -36,7 +36,7 @@ class RacingGame {
 
     Array.from({ length: this.#totalRounds }).forEach(() => {
       this.#refree.moveCars();
-      OutputView.printResult(this.#refree.getResultList());
+      OutputView.printResult(this.#refree.getRcordList());
     });
   }
 
