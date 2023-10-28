@@ -1,6 +1,7 @@
 import { Console, Random } from "@woowacourse/mission-utils";
 
 const ERROR_HEADER = "[ERROR] ";
+const numberStay = 4;
 
 export const meassageBeforeInput = Object.freeze({
   carNames: "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n",
@@ -53,7 +54,7 @@ class App {
   doAttempt() {
     for (let car of this.cars.keys()) {
       let randomNum = Random.pickNumberInRange(0, 9);
-      if (randomNum >= 4) {
+      if (randomNum >= numberStay) {
         this.moveCarForward(car);
       }
     }
