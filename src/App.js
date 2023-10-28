@@ -36,6 +36,8 @@ class App {
   isValdiateRound(round) {
     if (isNaN(+round)) {
       throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
+    } else if (+round < 1) {
+      throw new Error("[ERROR] 1 이상의 숫자를 입력해주세요.");
     } else {
       this.round = +round;
       return;
