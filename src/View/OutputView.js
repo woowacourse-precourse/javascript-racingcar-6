@@ -1,4 +1,4 @@
-import { MESSAGE } from "../utils/Constant"
+import { MESSAGE } from "../utils/Constant.js"
 
 const OutputView = {
   async outputExcutionResultMessage() {
