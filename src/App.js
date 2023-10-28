@@ -57,15 +57,24 @@ class App {
       oneResult(carName);
     }
     //가장 긴 자동차 이름 return하기
+    const maxLong = Math.max.apply(null, goCount);
+    console.log(`최종 우승자 : ${maxLong}`);
   }
   oneResult(carName) {
+    //전진한 횟수 저장하는 변수
+    var goCount = [];
+    for (i = 0; i < carName.length(); i++) {
+      goCount.push(0);
+    }
     for (i = 0; i < carName.length(); i++) {
       //랜덤한 숫자 불러오기
       const randomNum = MissionUtils.Random.pickNumberInRange(0, 9);
       if (randomNum >= 4) {
-        console.log(`${carName[i]} : -`); // -을 하나씩  추가하는 방법?
+        goCount[i] += 1;
+        console.log(`${carName[i]} + : + ${goCount[i] * "-"}`);
       }
     }
+    return goCount;
   }
 }
 
