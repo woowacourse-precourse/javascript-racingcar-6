@@ -28,7 +28,11 @@ class App {
     return inputTryNumber;
   }
 
-  moveForward(car) {}
+  moveForward(car) {
+    const currPosition = this.racingCars.get(car);
+    const nextPosition = currPosition + "-";
+    this.racingCars.set(car, nextPosition);
+  }
 
   tryTurn() {
     for (const car of this.racingCars.keys()) {
