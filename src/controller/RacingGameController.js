@@ -1,13 +1,12 @@
 import InputView from '../view/InputView';
 import OutputView from '../view/OutputView';
 
+import { randomMovementStrategy } from '../model/movementStrategies';
 import Car from '../model/Car';
 import Race from '../model/Race';
 
 import InputValidator from '../utils/InputValidator';
 import { processCarNames } from '../utils/CarNameProcessor';
-
-import { randomMovementStrategy } from '../model/movementStrategies';
 
 export default class RacingGameController {
   async start() {
