@@ -3,13 +3,14 @@ import { Console, MissionUtils } from '@woowacourse/mission-utils';
 class App {
   start() {
     Console.print(
-      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분',
+      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)',
     );
   }
 
   async getCarNames() {
     const names = await Console.readLineAsync();
-    const carNamesArray = names.split(',').map((name) => name.trim());
+
+    const carNamesArray = (names || '').split(',').map((name) => name.trim());
     return carNamesArray;
   }
 
@@ -56,6 +57,7 @@ class App {
   }
 
   printResults(carNames, carPositions) {
+    Console.print('실행 결과');
     carNames.forEach((name) => {
       Console.print(`${name}: ${'-'.repeat(carPositions[name])}`);
     });
@@ -63,36 +65,37 @@ class App {
 
   async play() {
     this.start();
-    try {
+    while (true) {
       const carNames = await this.getCarNames();
       this.nameException(carNames);
       const counts = await this.tryCounts();
-
       const carPositions = {};
       for (const name of carNames) {
         carPositions[name] = 0;
       }
+      try {
+        for (let i = 0; i < counts; i++) {
+          await this.moveCarPositions(carNames, carPositions);
+          this.printResults(carNames, carPositions);
+        }
 
-      for (let i = 0; i < counts; i++) {
-        await this.moveCarPositions(carNames, carPositions);
+        //차수별 실행결과
+        this.printResults(carNames, carPositions);
+
+        //우승자 찾기
+        const winner = Math.max(...Object.values(carPositions));
+        const jointWinner = Object.keys(carPositions).filter(
+          (name) => carPositions[name] === winner,
+        );
+
+        if (jointWinner.length > 1) {
+          Console.print(`최종 우승자: ${jointWinner.join(', ')}`);
+        } else {
+          Console.print(`최종 우승자: ${jointWinner[0]}`);
+        }
+      } catch (error) {
+        Console.print(error.message);
       }
-
-      //차수별 실행결과
-      this.printResults(carNames, carPositions);
-
-      //우승자 찾기
-      const winner = Math.max(...Object.values(carPositions));
-      const jointWinner = Object.keys(carPositions).filter(
-        (name) => carPositions[name] === winner,
-      );
-
-      if (jointWinner.length > 1) {
-        Console.print(`최종 우승자: ${jointWinner.join(', ')}`);
-      } else {
-        Console.print(`최종 우승자: ${jointWinner[0]}`);
-      }
-    } catch (error) {
-      throw new Error(error.message);
     }
   }
 }
