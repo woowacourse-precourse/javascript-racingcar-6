@@ -42,7 +42,18 @@ class Controller {
     }
 
     // 우승자 문자열 반환 함수
-    static winnerText(obj) {}
+    static winnerText(obj) {
+        // 최고기록 저장
+        const WINNER_VALUE = Object.values(obj).reduce((value1, value2) => {
+            return Math.max(value1, value2);
+        });
+        // 최고기록인 사람 배열로
+        const WINNER_ARRAY = Object.keys(obj).filter((key) => {
+            if (obj[key] === WINNER_VALUE) return key;
+        });
+        // 문자열화
+        return WINNER_ARRAY.join(", ");
+    }
 }
 
 export default Controller;

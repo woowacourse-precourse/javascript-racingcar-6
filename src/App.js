@@ -8,6 +8,7 @@ class App {
         Controller.raceProgress();
         console.log(Data);
         console.log(Controller.raceResultText(Data.input.player));
+        console.log(Controller.winnerText(Data.input.player));
     }
 }
 
