@@ -17,13 +17,24 @@ class App {
     }
   }
 
+  static isValidCount(count) {
+    if (!(Number.isInteger(count) && count > 0)) {
+      throw new Error('[ERROR] 1 이상의 정수를 입력해주세요!');
+    }
+  }
+
   async play() {
     const inputCarList = await Console.readLineAsync(
       '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
     );
     const carList = inputCarList.split(',');
-
     App.isVaildCarList(inputCarList, carList);
+
+    const inputCount = await Console.readLineAsync(
+      '시도할 횟수는 몇 회인가요?\n',
+    );
+    const count = Number(inputCount);
+    App.isValidCount(count);
   }
 }
 
