@@ -35,6 +35,18 @@ class App {
       MissionUtils.Console.print(`\n`);
     }
 
+    let winner = '';
+    let distance = 0;
+    CAR.forEach(player => {
+      if (player[1].length > distance) {
+        winner = player[0];
+        distance = player[1].length;
+      } else if (player[1].length === distance) {
+        winner += `, ${player[0]}`;
+      }
+    });
+    MissionUtils.Console.print(`${MESSAGE.winnerResult}${winner}`);
+
     function choiceGoOrStop() {
       const DICE = MissionUtils.Random.pickNumberInRange(0, 9);
       if (DICE >= 4) {
