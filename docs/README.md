@@ -5,13 +5,13 @@
 ---
 
 - [ ] 사용자로부터 입력을 받는다.
-  - [x] 사용자로부터 `자동차 이름`을 입력받는다
-    - [x] `경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)` 라는 문구를 출력한다. - [`6a09f7f`](https://github.com/woowacourse-precourse/javascript-racingcar-6/commit/6a09f7ff8b83c1b89be5c98529bbea7122cf9116)
-    - [x] 이름은 5자 이하로 입력받는다. - [`5dd0191`](https://github.com/ho991217/javascript-racingcar-6/commit/5dd01916d72931d7c2fd48b6d148adc85b1ed6b6)
+  - [x] 사용자로부터 `자동차 이름`을 입력받는다. - [`commit d87e529`](https://github.com/ho991217/javascript-racingcar-6/commit/d87e529f826a88fe1423edb30b4d18715bd0621d)
+    - [x] `경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)` 라는 문구를 출력한다. - [`commit 6a09f7f`](https://github.com/woowacourse-precourse/javascript-racingcar-6/commit/6a09f7ff8b83c1b89be5c98529bbea7122cf9116)
+    - [x] 이름은 5자 이하로 입력받는다. - [`commit 5dd0191`](https://github.com/ho991217/javascript-racingcar-6/commit/5dd01916d72931d7c2fd48b6d148adc85b1ed6b6)
       - [x] 5자 초과일 경우 예외를 발생시킨다.
       - [x] 중복된 이름이 있을 경우 예외를 발생시킨다.
       - [x] 입력값이 없을 경우 예외를 발생시킨다.
-    - [x] 입력 받은 문자열을 쉼표`,`를 기준으로 분리한다.
+    - [x] 입력 받은 문자열을 쉼표`,`를 기준으로 분리한다. - [`commit d87e529`](https://github.com/ho991217/javascript-racingcar-6/commit/d87e529f826a88fe1423edb30b4d18715bd0621d)
       - [x] 쉼표`,` 전후 공백이 있다면 제거한다.
       - [x] 빈 자동차 이름이 있다면 예외를 발생시킨다.
   - [ ] 사용자로부터 `시도할 횟수`를 입력받는다.
