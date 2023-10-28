@@ -1,4 +1,4 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Console, Random } from "@woowacourse/mission-utils";
 
 class App {
   async play() {
@@ -6,6 +6,13 @@ class App {
     this.checkCarNames(carNames);
     const countCars = carNames.length;
     const count = await this.inputCount();
+    const carForwards = new Array(countCars).fill(0);
+
+    for (let i = 0; i < count; i++) {
+      this.moveCars(carForwards);
+      this.printCarStatus(carForwards, carNames);
+      Console.print("");
+    }
   }
 
   async inputCarNames() {
@@ -41,6 +48,22 @@ class App {
     }
 
     return count;
+  }
+
+  moveCars(carForwards) {
+    carForwards.forEach((_, j) => {
+      const forwardOrStop = Random.pickNumberInRange(0, 9);
+      if (forwardOrStop >= 4) {
+        carForwards[j] += 1;
+      }
+    });
+  }
+
+  printCarStatus(carForwards, carNames) {
+    carForwards.forEach((car, j) => {
+      const dashed = "-".repeat(car);
+      Console.print(`${carNames[j]} : ${dashed}`);
+    });
   }
 }
 
