@@ -7,14 +7,14 @@
   - [x] validate 이름 : validatePlayerName()
   - [x] 플레이어 객체 생성 : class Player
   - [x] 생성된 객체 플레이어 그룹에 추가 : registerPlayer()
-- [x] 시도할 횟수 입력 받기
-  - [x] validate 시도 횟수
+- [x] 시도할 횟수 입력 받기 : getAttemptCount()
+  - [x] validate 시도 횟수 : validateAttemptCount()
 
 ##### Play Racing
 
-- [x] 시도 횟수만큼 루프 실행
-- [] 각 시행마다 모든 플레이어가 전진 시도
-  - [] 0과 9 사이의 무작위 값이 4 이상인지 판별
+- [x] 시도 횟수만큼 루프 실행 : playRacing()
+- [x] 각 시행마다 모든 플레이어가 전진 시도 : performAttempt()
+  - [x] 0과 9 사이의 무작위 값이 4 이상인지 판별 : shouldGoForward()
 - [] 각 시행 결과 출력
 
 ##### The Winner is...
@@ -47,6 +47,9 @@ GameManager : 자동차 경주 게임을 관리하고 진행하는 기능 제공
 - 메서드
 
   - registerPlayer() : 참가자를 플레이어 그룹에 추가
+  - playRacing() : 시도 횟수만큼 루프 실행
+  - perforAttempt() : 각 시행마다 참가자 전진 시도
+  - shouldGoForward() : 전진 여부 판별
 
 Player : 참가자 인스턴스 생성
 
