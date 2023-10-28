@@ -8,7 +8,7 @@ class App {
     Console.print(GAME_MESSAGE.inputName);
     const carNames = await Console.readLineAsync("");
 
-    CarNameValidator.namesvalidate(carNames);
+    CarNameValidator.validateNames(carNames);
 
     Console.print(GAME_MESSAGE.inputNumber);
     const raceTrial = await Console.readLineAsync("");

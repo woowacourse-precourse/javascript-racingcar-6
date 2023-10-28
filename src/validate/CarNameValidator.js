@@ -1,7 +1,7 @@
 import { ERROR_MESSAGE } from "../constants/Message"
 
 export default class CarNameValidator {
-  static namesvalidate(names) {
+  static validateNames(names) {
     if (this.isEmptyInput(names)) {
       throw new Error(ERROR_MESSAGE.emptyInput);
     }
