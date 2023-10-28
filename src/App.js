@@ -24,7 +24,6 @@ class App {
   }
 
   seperateNames(names) {
-    // 이름에 대한 예외 처리 필요
     const seperated = names.split(',');
 
     seperated.forEach(el => {

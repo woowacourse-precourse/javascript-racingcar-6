@@ -1,5 +1,6 @@
 class Car {
-  constructor() {
+  constructor(name) {
+    this.name = name;
     this.step = 0;
   }
 
