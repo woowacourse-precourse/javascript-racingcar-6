@@ -1,4 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
+import REGEX from '../../constants/regex.constant';
 import printMsg from '../../utils/printMsg';
 import prompt from '../../utils/prompt';
 import validations from './game.error';
@@ -7,8 +8,9 @@ import VALIDATION_CONDITION from './game.validation';
 
 const racingCarGame = {
   async promptToRacingObject() {
-    const carName = await prompt(PROMPT_PHASE.carName);
-    const carNameArray = stringToArray(carName.replace(' ', ''), ',');
+    const carNameArray = (await prompt(PROMPT_PHASE.carName))
+      .replace(REGEX.space, '')
+      .split(',');
     validations.carsName(carNameArray);
 
     const moveCount = await prompt(PROMPT_PHASE.moveCount);
