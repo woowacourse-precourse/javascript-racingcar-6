@@ -1,6 +1,8 @@
 import { Random } from '@woowacourse/mission-utils';
 import Validator from '../../utils/Validator.js';
 import Input from '../View/Input.js';
+import Output from '../View/Output.js';
+import makeWinner from '../../utils/makeWinner.js';
 
 export default class RacingGame {
   #carModel;
@@ -21,7 +23,9 @@ export default class RacingGame {
       this.#attemps = answer;
       this.#racing();
       const totalResult = this.#resultModel.makeTotalResult();
-      const winners = this.#getWinner();
+      const winners = makeWinner(this.#carModel.getCar());
+      Output.printTotalResult(totalResult);
+      Output.printWinners(winners);
     }
   }
 
@@ -42,21 +46,5 @@ export default class RacingGame {
       this.#resultModel.addAttempsResult(this.#carModel.getCar());
       attemps -= 1;
     }
-  }
-
-  #getWinner() {
-    const allMoveCounts = [];
-    const winners = [];
-    const cars = this.#carModel.getCar();
-    cars.forEach(({ name, moveCounts }) => {
-      allMoveCounts.push(moveCounts);
-    });
-    const maxMove = Math.max(...allMoveCounts);
-    cars.forEach(({ name, moveCounts }) => {
-      if (moveCounts === maxMove) {
-        winners.push(name);
-      }
-    });
-    return winners.join(',');
   }
 }
