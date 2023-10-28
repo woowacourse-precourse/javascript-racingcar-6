@@ -1,21 +1,40 @@
 import RacingGame from '../src/lib/racingGame';
+import { MissionUtils } from '@woowacourse/mission-utils';
+
+const getLogSpy = () => {
+  const logSpy = jest.spyOn(MissionUtils.Console, 'print');
+  logSpy.mockClear();
+  return logSpy;
+};
 
 describe('레이싱 게임 테스트', () => {
-  let racingGame;
-
-  beforeAll(() => {
-    racingGame = new RacingGame();
-  });
-
   describe('차 이름 입력 테스트', () => {
     test('차 이름 정상적으로 입력된 경우 콤마로 구분하여 차 이름 반환', () => {
-      const result = racingGame.readCarNames('pobi,woni,jun');
+      // given
+      const input = 'pobi,woni,jun';
+      const output =
+        '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)';
+      const logSpy = getLogSpy();
+
+      // when
+      const racingGame = new RacingGame();
+      const result = racingGame.readCarNames(input);
+
+      // then
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
       result.toEqual(['pobi', 'woni', 'jun']);
     });
     test('차 이름 5자 넘는 경우 오류', () => {
-      expect(racingGame.readCarNames('pobiii,woni,jun')).rejects.toThrow(
-        '[ERROR]'
-      );
+      // given
+      const input = 'pobiii,woni,jun';
+      const ERROR_MESSAGE = '[ERROR]';
+
+      // when
+      const racingGame = new RacingGame();
+      const result = racingGame.readCarNames(input);
+
+      // then
+      expect(result).rejects.toThrow(ERROR_MESSAGE);
     });
   });
   describe('시도 횟수 입력 테스트', () => {
