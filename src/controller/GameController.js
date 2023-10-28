@@ -10,7 +10,7 @@ export default class GameController {
   }
 
   async start() {
-    const playerNames = await this.view.getUserInput(MESSAGE.START);
+    const playerNames = await this.view.getUserInputAsync(MESSAGE.START);
     const players = this.splitPlayerNames(playerNames);
     this.#validatePlayersCount(players);
     this.#validateDuplicationPlayer(players);
@@ -23,7 +23,7 @@ export default class GameController {
       this.model.addPlayer(player);
     });
 
-    const tryCount = await this.view.getUserInput(MESSAGE.TRY_COUNT);
+    const tryCount = await this.view.getUserInputAsync(MESSAGE.TRY_COUNT);
     this.#validateTryCount(tryCount);
     this.model.setTryCount(Number(tryCount));
 
