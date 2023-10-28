@@ -3,7 +3,7 @@ import Validate from './Validate.js';
 
 export default class Assistant {
   validateCarList(list) {
-    return Validate.inputCarList(list);
+    list.forEach((name) => Validate.inputCarName(name));
   }
   validateNumberOfTry(count) {
     return Validate.inputNumberOfTry(count);

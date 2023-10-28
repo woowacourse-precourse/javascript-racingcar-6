@@ -1,8 +1,8 @@
 import { ERROR } from './constants.js';
 
 const Validate = {
-  inputCarList(carList) {
-    if (carList.some(this.isOverFiveLetters)) {
+  inputCarName(name) {
+    if (this.isOverFiveLetters(name)) {
       throw new Error(ERROR.OVER_FIVE_LETTERS);
     }
   },
