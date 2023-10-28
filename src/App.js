@@ -1,4 +1,5 @@
 import { Console, Random } from "@woowacourse/mission-utils";
+import { Car } from "./Car.js";
 
 class App {
   async play() {
@@ -6,6 +7,12 @@ class App {
     const cars = this.seperateNames(carsName);
     const gamesNum = await this.receiveUserInput('시도할 횟수는 몇 회인가요?\n');
     const num = this.isValidGameNum(gamesNum);
+    const carArr = [];
+
+    cars.forEach(el => {
+      const newCar = new Car(el);
+      carArr.push(newCar);
+    });
 
     this.printMsg('\n실행 결과');
   }

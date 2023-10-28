@@ -1,4 +1,4 @@
-class Car {
+export class Car {
   constructor(name) {
     this.name = name;
     this.step = 0;
@@ -8,7 +8,7 @@ class Car {
     this.step += 1;
   }
 
-  get step() {
+  get get_step() {
     return this.step;
   }
 }
