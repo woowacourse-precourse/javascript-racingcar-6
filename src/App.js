@@ -5,7 +5,7 @@ const TRY_COUNT = '시도할 횟수는 몇 회인가요?';
 const PROCESS_RESULT = '실행 결과';
 const ERROR_PREFIX = '[ERROR]';
 const FINAL_WINNER = '최종 우승자';
-class Car {
+export class Car {
   constructor(name, forWardCount) {
     this.name = name;
     this.forWardCount = forWardCount;
@@ -15,6 +15,11 @@ class Car {
 class App {
   #carArray = [];
   #cycleCount;
+
+  get carArray() {
+    return this.#carArray;
+  }
+
   async play() {
     await this.getCarInput();
     await this.getCycleCountInput();

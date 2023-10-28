@@ -1,4 +1,4 @@
-import App from "../src/App.js";
+import App ,{ Car } from "../src/App.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 const mockQuestions = (inputs) => {
@@ -67,4 +67,14 @@ describe("자동차 경주 게임", () => {
 
     await expect(app.getCycleCountInput()).rejects.toThrow("[ERROR]");
   });
+
+  test("carValidator의 Car Class 생성",()=>{
+    const app = new App();
+    const cars = '멍멍이,다람쥐,고양이'
+    app.carValidator(cars)
+
+    app.carArray.forEach((car)=>{
+      expect(car).toBeInstanceOf(Car)
+    })
+  })
 });
