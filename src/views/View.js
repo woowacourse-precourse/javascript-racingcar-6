@@ -1,5 +1,6 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import Validator from '../validators/Validator.js';
+import { DITANCE_SYMBOL } from '../constant.js';
 
 class View {
   static print(message) {
@@ -15,6 +16,10 @@ class View {
 
   static removeSpace(string) {
     return string.replaceAll(' ', '');
+  }
+
+  static roundPrint(name, distance) {
+    MissionUtils.Console.print(`${name} : ${DITANCE_SYMBOL.repeat(distance)}`);
   }
 }
 export default View;
