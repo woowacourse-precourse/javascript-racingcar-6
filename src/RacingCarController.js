@@ -21,7 +21,7 @@ class RacingCarController {
     this.racingCar.generateCars(carNamesArray);
   }
   readTrialCount() {
-    const trialCount = InputView.readTrialCount();
+    const trialCount = Number(InputView.readTrialCount());
   }
 }
 
