@@ -1,4 +1,4 @@
-import GameRaceController from './controllers/GameManagerController.js';
+import GameRaceController from './controllers/CarRaceController.js';
 
 class App {
   async play() {

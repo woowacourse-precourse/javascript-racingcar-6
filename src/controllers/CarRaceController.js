@@ -12,7 +12,6 @@ class CarRaceController {
   constructor() {
     this.carModels = [];
     this.raceManagerModel = new RaceManagerModel([]);
-    this.gameProgress = {};
     this.gameWinner = '';
   }
 
