@@ -24,4 +24,15 @@ export default class RacingGame {
   isMovalbe(number) {
     return number >= 4;
   }
+
+  roundStart() {
+    this.#carList.forEach((car) => {
+      const carPickNumber = this.createRandomNumber();
+      const isMovable = this.isMovalbe(carPickNumber);
+
+      if (isMovable) {
+        car.increasePosition();
+      }
+    });
+  }
 }
