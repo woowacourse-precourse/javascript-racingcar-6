@@ -1,6 +1,10 @@
 import { CONSTANT } from './Constant.js';
 
 class Validator {
+  static checkIsEmpty(userInput) {
+    return userInput.includes('');
+  }
+
   static checkHasDuplicate(userInput) {
     return new Set(userInput).size === userInput.length;
   }

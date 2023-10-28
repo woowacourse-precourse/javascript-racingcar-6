@@ -26,7 +26,7 @@ class RacingCarGame {
 
   async #getCarNamesInput() {
     const carNames = await Console.readLineAsync(MESSAGE.enterCarNames);
-    const splitCarNames = carNames.split(',');
+    const splitCarNames = carNames.trim().split(',');
     this.#validateCarNamesInput(splitCarNames);
 
     return splitCarNames;
