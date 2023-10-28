@@ -1,5 +1,6 @@
 import { Console, Random } from '@woowacourse/mission-utils';
 import { MESSAGE } from './constants.js'
+import { nameValidation } from './utils/validation.js';
 
 class App {
   #gameData = { name : [], number : 0, }
@@ -9,6 +10,7 @@ class App {
   async setName() {
     const nameInput = await Console.readLineAsync(MESSAGE.nameQuery);
     this.#gameData.name = await nameInput.split(',');
+    this.#gameData.name.forEach(nameValidation);
   }
 
 // 이름이 5자를 초과할 경우 throw문을 사용해 error를 발생시키고 애플리케이션을 종료한다.
