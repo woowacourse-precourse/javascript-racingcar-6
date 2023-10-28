@@ -1,4 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
+import { MESSAGE } from "../util/constants.js";
 import Input from "../view/Input.js";
 import Output from "../view/Output.js";
 // import RandomCarMoving from "../model/RandomCarMoving.js";
@@ -21,8 +22,7 @@ class RacingCarController {
       this.carNames = await this.setcarName();
       this.tryCount = await this.setTryNumber();
       this.winCount = Array.from({ length: this.carNames.length }, () => "");
-      this.randomStart();
-      // Console.print(this.carNames + this.tryCount);
+      await this.randomStart();
     } catch (error) {
       throw new Error(error);
     }
@@ -39,29 +39,24 @@ class RacingCarController {
   }
 
   //게임 횟수만큼 랜덤값 생성
-  randomStart() {
+  async randomStart() {
     this.output.racingStartMessage();
     for (let i = 0; i < this.tryCount; i++) {
-      this.carMoving.eachRound(this.carNames.length);
-      // Console.print(await this.carMoving.eachRound(this.winCount.length));
-      // this.countWinner(await this.carMoving.eachRound(this.winCount.length));
+      this.countWinner(await this.carMoving.eachRound(this.winCount.length));
     }
   }
 
-  // //승리자 개수 증가시키기
-  // async countWinner(winner) {
-  //   await winner.forEach((idx) => {
-  //     this.winCount[idx] += "-";
-  //     // Console.print(idx);
-  //   });
-  //   // Console.print(this.winCount);
-  //   this.printResultControll(this.carNames, this.winCount);
-  //   // Console.print(this.printResultControll());
-  // }
+  //승리자 개수 증가시키기
+  async countWinner(winner) {
+    await winner.forEach((idx) => {
+      this.winCount[idx] += "-";
+    });
+    this.printResultControll(this.carNames, this.winCount);
+  }
 
-  // printResultControll(carNames, winCount) {
-  //   this.output.eachRacingResult(carNames, winCount);
-  // }
+  printResultControll(carNames, winCount) {
+    this.output.eachRacingResult(carNames, winCount);
+  }
 }
 
 export default RacingCarController;

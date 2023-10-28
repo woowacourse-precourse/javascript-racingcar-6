@@ -8,8 +8,8 @@ class CarMoving {
     for (let i = 0; i < carCount; i++) {
       this.winnerCount[i] = await this.eachCar();
     }
-    Console.print(this.winnerCount);
-    // return this.winnerNumber();
+    // Console.print(this.winnerCount);
+    return this.winnerNumber();
   }
 
   async eachCar() {
