@@ -23,47 +23,17 @@ const getLogSpy = () => {
   return logSpy;
 };
 
-describe("play racing test", () => {
-  test("시도 횟수만큼 실행되는지 테스트", async () => {
+describe("find winner test", () => {
+  test("공동 우승자 테스트", async () => {
     // given
     const MOVING_FORWARD = 4;
-    const STOP = 3;
-    const inputs = ["alex, goni", "3"];
+    const inputs = ["alex, goni", "2"];
+    const outputs = ["최종 우승자: alex, goni"];
     const randoms = [
       MOVING_FORWARD,
-      STOP,
       MOVING_FORWARD,
-      STOP,
       MOVING_FORWARD,
-      STOP,
-    ];
-    const logSpy = getLogSpy();
-
-    mockQuestions(inputs);
-    mockRandoms([...randoms]);
-
-    // when
-    const app = new App();
-    await app.play();
-
-    // then
-    expect(logSpy).toHaveBeenCalledTimes(11);
-    // 11 = 1(실행결과) + 3(alex, goni, NEW_LINE) * 3(attemptCount) + 1(최종 우승자)
-  });
-
-  test("실행 결과 테스트", async () => {
-    // given
-    const MOVING_FORWARD = 4;
-    const STOP = 3;
-    const inputs = ["alex, goni", "3"];
-    const outputs = ["alex : ---", "goni : "];
-    const randoms = [
       MOVING_FORWARD,
-      STOP,
-      MOVING_FORWARD,
-      STOP,
-      MOVING_FORWARD,
-      STOP,
     ];
     const logSpy = getLogSpy();
 
