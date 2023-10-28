@@ -12,7 +12,7 @@ class RacingCar {
       MESSAGE.enterNumberOfRacing
     );
 
-    Console.print("실행 결과");
+    Console.print("\n실행 결과");
 
     for (let i = 0; i < numOfRacing; i++) {
       let result = "";
@@ -22,7 +22,7 @@ class RacingCar {
         const strDistance = this.convertDistanceToString(car.distance);
         result += `${car.name} : ${strDistance}\n`;
       });
-      console.log(result + "\n");
+      console.log(result);
     }
   }
 
