@@ -1,6 +1,5 @@
-import { TraceAccumulator, scoreAccumulator } from "../util/Accumulator.js";
+/*
 import { randomArrayGenerator } from "../util/RandomArrayGenerator.js";
-
 import { Console } from "@woowacourse/mission-utils";
 
 //레이싱 컨트롤 알고리즘
@@ -38,3 +37,4 @@ class RacingController {
 }
 
 export default RacingController;
+*/

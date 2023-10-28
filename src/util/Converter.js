@@ -15,11 +15,9 @@ class Converter {
   //[3,7,9] -> [0,1,1] -> ['','-','-']
   static traceFilter(randomArray) {
     const scoreArray = this.scoreFilter(randomArray);
-    scoreArray.map((element) => {
-      const trace = '';
-      return trace.padStart(element, '-');
-    })
+    return scoreArray.map((element) => ''.padStart(element, '-'))
   }
 }
 
 export default Converter;
+
