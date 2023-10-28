@@ -4,8 +4,8 @@ class App {
   constructor() {
     this.ERROR = {
       LENGTH : '[ERROR] 이름은 5자 이내로 작성해주세요.',
-      INCORRECT_FORMAT :'[ERROR] 이름을 쉼표(,)로 구분해주세요.'
-
+      INCORRECT_FORMAT :'[ERROR] 이름을 쉼표(,)로 구분해주세요.',
+      INCORRECT_TPYE : '[ERROR] 잘못된 형식입니다. 숫자를 입력해주세요.'
     }
   }
 
@@ -15,6 +15,12 @@ class App {
 
   printErrorMessage(errorMessage) {
     throw new Error(errorMessage);
+  }
+
+  getMoveCount() {
+    const moveCount = MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?\n')
+
+    return moveCount;
   }
 
   async initializeCars() {
@@ -36,7 +42,11 @@ class App {
   }
 
   async play() {
-    this.initializeCars();
+    await this.initializeCars();
+
+    const moveCount = await this.getMoveCount()
+
+    if(isNaN(moveCount)) this.printErrorMessage(this.ERROR.INCORRECT_TPYE)
   }
 }
 
