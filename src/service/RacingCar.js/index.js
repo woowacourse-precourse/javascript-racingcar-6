@@ -10,7 +10,6 @@ export class RacingCarGame {
   #cars;
   #totalRounds;
   #currentRound = 0;
-  #winners;
 
   static createGame() {
     return new RacingCarGame();
@@ -82,7 +81,16 @@ export class RacingCarGame {
     });
 
     return carNames.map((carName, index) => {
-      return `${carName} : ${roundResult[index]}`;
+      return `${carName} : ${roundResult[index]}\n`;
     });
+  }
+
+  #getWinners() {
+    const maxOffset = Math.max(...this.#cars.getCarOffsets());
+    const winners = this.#cars.getCars().filter((car) => {
+      return car.horizontalOffset === maxOffset;
+    });
+
+    return winners;
   }
 }
