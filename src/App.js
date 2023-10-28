@@ -8,13 +8,13 @@ class App {
     // 자동차 이름 분리하기
     const carNames = inputCarName.split(',');
 
-   for (let i = 0; i < count; i++) {
+    for (let i = 0; i < count; i++) {
       // 랜덤 숫자 생성
       const randomNumbers = [];
       for (let i = 0; i < carNames.length; i++) {
         randomNumbers[i] = await MissionUtils.Random.pickNumberInRange(0, 9);
       }
-   }
+    }
   }
 }
 
