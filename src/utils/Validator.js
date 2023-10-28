@@ -1,5 +1,6 @@
-import { ERROR_MESSAGE, MAX_NAME_LENGTH } from '../constants';
-import CustomString from './EnhancedString';
+import { ERROR_MESSAGE } from '../constants';
+import CustomArray from './CustomArray';
+import CustomString from './CustomString';
 
 class Validator {
   /**
@@ -8,11 +9,11 @@ class Validator {
    * @returns {{ isValid: boolean, reason: string }}
    */
   static isValidCarName(carName) {
-    if (carName.some((str) => CustomString.isOverLength(str, MAX_NAME_LENGTH))) {
+    if (carName.some(CustomString.isOverMaxLength)) {
       return { isValid: false, reason: ERROR_MESSAGE.tooLongCarName };
     }
 
-    if (new Set(carName).size !== carName.length) {
+    if (CustomArray.hasDuplicated(carName)) {
       return { isValid: false, reason: ERROR_MESSAGE.duplicateCarName };
     }
 

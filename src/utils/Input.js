@@ -12,12 +12,12 @@ class Input {
   async getCarNames() {
     const inputString = await Console.readLineAsync(this.#carNameInputQuery);
 
-    const parsedArray = Parser.stringToArray(inputString);
-    const { isValid, reason } = Validator.isValidCarName(parsedArray);
+    const carNames = Parser.stringToArray(inputString);
+    const { isValid, reason } = Validator.isValidCarName(carNames);
 
     if (!isValid) throw new InputError(reason);
 
-    return parsedArray;
+    return carNames;
   }
 }
 
