@@ -18,8 +18,8 @@ import {MissionUtils} from "@woowacourse/mission-utils";
 - 배정된 수가 4이상이면 전진
 
 5. 게임 진행도 출력✅
-6. 우승자 확인
-7. 우승자 발표
+
+6. 우승자 확인✅
 
 
 */
@@ -35,7 +35,7 @@ class App {
     const inputCount = await Console.readLineAsync("시도할 횟수:");
     checkInputCount(inputCount);
     const attemptCount = Number(inputCount);
-
+    Console.print("실행 결과");
     for (let count = 1; count <= attemptCount; count++) {
       for (let car of cars) {
         const randomNumber = Random.pickNumberInRange(0, 9);
@@ -43,14 +43,15 @@ class App {
       }
       printProgress(progress);
     }
+    checkWinner(progress);
   }
 }
 
 export default App;
 
-const initProgress = (process, carNames) => {
+const initProgress = (progress, carNames) => {
   for (let car of carNames) {
-    process[car] = 0;
+    progress[car] = 0;
   }
 };
 //TODO 중복 제거
@@ -65,10 +66,19 @@ const checkInputCount = (inputCount) => {
 };
 
 const printProgress = (progress) => {
-  let totalProgressbar = "";
+  let total = "";
   for (let car in progress) {
     const progressbar = "-".repeat(Number(progress[car]));
-    totalProgressbar += car + " : " + progressbar + "\n";
+    total += car + " : " + progressbar + "\n";
   }
-  Console.print(totalProgressbar);
+  Console.print(total);
+};
+
+const checkWinner = (progress) => {
+  const winners = [];
+  const maxCount = Math.max(...Object.values(progress));
+  for (let car in progress) {
+    if (progress[car] === maxCount) winners.push(car);
+  }
+  Console.print("최종 우승자 : " + winners.join(", "));
 };
