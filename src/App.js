@@ -8,7 +8,7 @@ class App {
   }
 
   async getCarNames() {
-    const names = await Console.readLineAsync();
+    const names = await Console.readLineAsync('');
     if (names === null) {
       throw new Error('[ERROR] 올바른 값을 입력하세요');
     }
@@ -17,6 +17,7 @@ class App {
   }
 
   nameException(carNamesArray) {
+    this.vaildateCarNamesLength(carNamesArray);
     if (this.hasDuplicates(carNamesArray)) {
       throw new Error('[ERROR] 올바른 값을 입력하세요');
     }
@@ -37,7 +38,7 @@ class App {
 
   async tryCounts() {
     Console.print('시도할 횟수는 몇 회인가요?');
-    const counts = parseInt(await Console.readLineAsync());
+    const counts = parseInt(await Console.readLineAsync(''));
     if (isNaN(counts) || counts <= 0) {
       throw new Error('[ERROR] 올바른 값을 입력하세요');
     }
@@ -59,7 +60,6 @@ class App {
   }
 
   printResults(carNames, carPositions) {
-    Console.print('실행 결과');
     carNames.forEach((name) => {
       Console.print(`${name}: ${'-'.repeat(carPositions[name])}`);
     });
@@ -82,31 +82,28 @@ class App {
 
   async play() {
     this.start();
-    while (true) {
-      const carNames = await this.getCarNames();
-      const carPositions = {};
-      for (const name of carNames) {
-        carPositions[name] = 0;
-      }
-      try {
-        this.nameException(carNames);
-        const counts = await this.tryCounts();
-        for (let i = 0; i < counts; i++) {
-          await this.moveCarPositions(carNames, carPositions);
-          this.printResults(carNames, carPositions);
-        }
-
-        //차수별 실행결과
+    const carNames = await this.getCarNames();
+    const carPositions = {};
+    for (const name of carNames) {
+      carPositions[name] = 0;
+    }
+    Console.print('실행 결과');
+    try {
+      this.nameException(carNames);
+      const counts = await this.tryCounts();
+      for (let i = 0; i < counts; i++) {
+        await this.moveCarPositions(carNames, carPositions);
         this.printResults(carNames, carPositions);
-
-        //우승자 찾기
-        const jointWinner = this.findWinners(carPositions);
-        this.printWinners(jointWinner);
-      } catch (error) {
-        Console.print(error.message);
       }
+
+      //차수별 실행결과
+      this.printResults(carNames, carPositions);
+
+      //우승자 찾기
+      const jointWinner = this.findWinners(carPositions);
+      this.printWinners(jointWinner);
+    } catch (error) {
+      Console.print(error.message);
     }
   }
 }
-
-export default App;
