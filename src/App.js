@@ -1,17 +1,14 @@
 import { Random, Console } from "@woowacourse/mission-utils";
 
 import INPUT_MESSAGE from "./constants/game.js";
-import validateRacingCars from "./util/car-validation.js";
 import validateAttemptCount from "./util/attempt-validation.js";
 import { convertArrayToObject } from "./util/converter.js";
+import InputView from "./view/inputView.js";
 
 class App {
   async play() {
-    const inputRacingCars = await Console.readLineAsync(
-      INPUT_MESSAGE.RACING_CARS
-    );
-    const racingCarNames = inputRacingCars.split(",");
-    validateRacingCars(racingCarNames);
+    // 게임 준비
+    const racingCarNames = await InputView.readRacingCarNames();
 
     const inputAttemptCount = await Console.readLineAsync(
       INPUT_MESSAGE.ATTEMPT_COUNT
