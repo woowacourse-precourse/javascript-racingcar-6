@@ -11,18 +11,12 @@ export default class GameController {
   async start() {
     const playerNames = await this.view.getUserInput(MESSAGE.START);
     const players = this.splitPlayerNames(playerNames);
-    players.forEach((player) => {
-      console.log(player);
-    });
+    this.#validatePlayersCount(players);
+    this.#validateDuplicationPlayer(players);
   }
 
   splitPlayerNames(names) {
     return names.split(GAME_RULL.DIVISION).map((name) => name.trim());
-  }
-
-  checkValidationCar(car) {
-    this.#validatePlayersCount(car);
-    return true;
   }
 
   #validatePlayersCount(players) {
@@ -35,9 +29,9 @@ export default class GameController {
     }
   }
 
-  #validateCarName(carName) {
-    if (!REG_EXP.test(carName)) {
-      throw new Error(ERROR_MESSAGE.INVALID_NAME);
+  #validateDuplicationPlayer(players) {
+    if (players.length !== new Set(players).size) {
+      throw new Error(ERROR_MESSAGE.DUPLICATION);
     }
   }
 }
