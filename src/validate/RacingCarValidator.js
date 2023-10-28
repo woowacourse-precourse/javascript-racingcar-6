@@ -7,15 +7,8 @@ class RacingCarValidator {
     return regExp.test(str);
   }
 
-  eachracingCarName(nameArray) {
-    nameArray.forEach(async (name) => {
-      if(!this.#isValidName(name)){
-        console.log('뭔가가 잘못됨');
-        return false
-      }
-    })
-    console.log('다 잘됨');
-    return true
+  isValidNameArray(nameArray) {
+    return nameArray.every(this.#isValidName);
   }
 }
 

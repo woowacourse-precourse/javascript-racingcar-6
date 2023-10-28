@@ -1,34 +1,44 @@
 import RacingCarValidatorValidator from "../validate/RacingCarValidator.js";
-import InputView from "../view/InputView.js";
 import RacingCar from "../model/RacingCar.js";
+import InputView from "../view/inputView.js";
+import OutputView from "../view/OutputView.js";
 
 class RacingController {
   #inputView;
-  // #outputView;
+  #outputView;
   #racingCarValidator;
+  #racingCarArray;
 
   constructor() {
     this.#inputView = new InputView();
-    // this.#outputView = new OutputView();
+    this.#outputView = new OutputView();
     this.#racingCarValidator = new RacingCarValidatorValidator();
+    this.#racingCarArray = [];
   }
 
   run() {
-    this.#createracingCars()
+    this.#createRacingCars()
   }
 
-  async #createracingCars() {
-    const racingCarArray = [];
+  async #createRacingCars() {
+    while (true) {
+      const racingCarNameArray = await this.#inputView.readRacingCarNames();
 
-    const racingCarNameArray = await this.#inputView.readracingCarNames();
-    if (this.#racingCarValidator.eachracingCarName(racingCarNameArray)) {
-      racingCarNameArray.forEach(element => {
-        racingCarArray.push(new RacingCar(element));
-      });
-    };
+      if (this.#racingCarValidator.isValidNameArray(racingCarNameArray)) {
+        racingCarNameArray.forEach(element => {
+          this.#racingCarArray.push(new RacingCar(element));
+        });
 
-    console.log(racingCarArray);
+        break
+      } else {
+        this.#outputView.retryInputRacingCarNames();
+      }
+    }
   }
+  // async #() {
+
+  // }
+
 }
 
 export default RacingController;
