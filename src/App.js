@@ -1,19 +1,26 @@
-import {Console, Random} from '@woowacourse/mission-utils';
-import {GAME_MESSAGE} from './Message';
-
+import { Console, Random } from '@woowacourse/mission-utils';
+import { GAME_MESSAGE } from './Message';
+import { ValidationCheck } from './Validation';
 class App {
-  async play() {  
+  async play() {
     const winner = this.carRacingGame();
-
   }
 
+  // 자동차 경주 시작
   async carRacingGame() {
-    this.carNames = await Console.readLineAsync(GAME_MESSAGE.INPUT_CAR_NAME);
-    const tryNumber = await Console.readLineAsync(GAME_MESSAGE.INPUT_TRY_NUMBER);
+    try {
+      const carNames = await Console.readLineAsync(GAME_MESSAGE.INPUT_CAR_NAME);
+      ValidationCheck.checkCarNames(carNames);
 
-
+      const tryNumber = await Console.readLineAsync(
+        GAME_MESSAGE.INPUT_TRY_NUMBER,
+      );
+      this.checkCarNames(carNames);
+    } catch (e) {
+      Console.print(e.message);
+      throw e;
+    }
   }
-
 }
 
 export default App;
