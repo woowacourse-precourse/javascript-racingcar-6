@@ -1,4 +1,4 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Random, Console } from "@woowacourse/mission-utils";
 
 import INPUT_MESSAGE from "./constants/game.js";
 import { validateRacingCars } from "./util/car-validation.js";
@@ -19,6 +19,12 @@ class App {
     validateAttemptCount(inputAttemptCount);
 
     const carsObject = convertArrayToObject(racingCarNames);
+
+    for (let i = 0; i < inputAttemptCount; i++) {
+      Object.entries(carsObject).forEach(([carName, carDistance]) => {
+        const randomNumber = Random.pickNumberInRange(0, 9);
+      });
+    }
   }
 }
 
