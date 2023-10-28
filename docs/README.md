@@ -38,6 +38,12 @@ chore (maintain)
 
 
 
+### :warning: 기능 구현 중 이슈
+
+----
+
+
+
 #### 커밋메세지 영어에서 한글로 변경
 
 우테코 프리코스 미션 중 `커밋 메시지를 의미 있게 작성한다` 라는 피드백이 있어,
@@ -55,7 +61,7 @@ MVC 패턴을 기반으로 하던 중  `의존성원칙` 에 대한 중요성을
 
 
 
-`의존성원칙` 을 생각하며 코드 리팩토링 하였습니다.
+> ##### `의존성원칙` 을 생각하며 코드 리팩토링 하였습니다.
 
 
 
@@ -96,4 +102,85 @@ class UpdateConstants {
 }
 ```
 
-Models/에 private필드로 변수를 선언 후 관리하는 방식으로 리팩토링 하였다.
+> ##### Models/에 private fields 로 변수를 선언 후 관리하는 방식으로 리팩토링 하였다.
+
+
+
+### :file_folder: 폴더구조
+
+------
+
+
+
+```
+└── src
+    ├── App.js
+    ├── constants
+    │   ├── Constants.js
+    │   └── OutputMsg.js
+    ├── controller
+    │   ├── Controller.js
+    │   └── GameStart.js
+    ├── index.js
+    ├── models
+    │   └── UpdateConstant.js
+    ├── utils
+    │   └── Validate.js
+    └── views
+        └── OutputView.js
+```
+
+
+
+#### index & App
+
+- 프로그램 실행
+
+#### GameStart
+
+- 프로그램 전제 로직 제어
+- View와 상호작용
+
+#### Controller
+
+- 사용자 입력 받기
+- model 과의 상호작용
+- 우승자 확인
+
+#### UpdateConstant
+
+- 프로그램에 사용되는 객체 상태변화 관리
+  - 경주할 자동차 정보
+  - 시도 횟수
+  - 자동차 전진-정지 과정
+
+#### OutputView
+
+- 메세지 와 자동차 전진-정지 과정을 출력
+
+#### Validate
+
+- 입력값에 대한 유효성 검사
+- Random 숫자가 4이상인지 확인
+
+### Constants
+
+- 프로그램에 필요한 상수관리
+  - `이름은 5자 이하만 가능하다.`
+  - `전진하는 조건은 0에서 9 사이에서 무작위 값을 구한 후 무작위 값이 4 이상`
+  - `전진 : -` `정지 : `
+
+#### OutputMsg
+
+- 프로그램에 필요한 메세지 관리
+
+
+
+### :rocket: 실행 결과
+
+---
+
+
+
+![image-20231028224216576](/Users/ijonghyeon/Library/Application Support/typora-user-images/image-20231028224216576.png)
+
