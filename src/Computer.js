@@ -9,7 +9,7 @@ export default class Computer {
   playGame(user) {}
 
   async getCarNameInputFromUser(user) {
-    const userInput = await user.getCarNameInput();
+    const userInput = await user.inputCarName();
     const carNameArr = this.getCarNameArrayFromString(userInput);
     this.racingCars = carNameArr.map((carName) => new RacingCar(carName));
   }
@@ -19,5 +19,18 @@ export default class Computer {
     if (carNameArr.some((carName) => carName.length > 5 || carName === ''))
       throw new Error('[ERROR] 잘못된 입력입니다.');
     return carNameArr;
+  }
+
+  async getTrialNumberInputFromUser(user) {
+    const userInput = await user.inputTrialNumber();
+    const trialNum = this.getTrialNumberFromString(userInput);
+    console.log(trialNum);
+    return trialNum;
+  }
+
+  getTrialNumberFromString(str) {
+    if (Number.isNaN(Number(str)))
+      throw new Error('[ERROR] 잘못된 입력입니다.');
+    return Number(str);
   }
 }
