@@ -1,8 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
-import { ERROR, MESSAGE } from './Constant.js';
+import { MESSAGE } from './Constant.js';
 import Validator from './Validator.js';
 import RacingCars from './RacingCars.js';
-import ValidationError from './ValidationError.js';
 
 class RacingCarGame {
   #racingCars;
@@ -17,10 +16,10 @@ class RacingCarGame {
     Console.print(this.#makeFinalWinnerString());
   }
 
-  #repeatMovement(numOfAttempts) {
+  #repeatMovement(attemptsCount) {
     Console.print(`\n${MESSAGE.executeResult}`);
 
-    for (let i = 0; i < numOfAttempts; i += 1) {
+    for (let i = 0; i < attemptsCount; i += 1) {
       const movingLog = this.#racingCars.getRacingCarsMovingLog();
       Console.print(`${movingLog}\n`);
     }
@@ -35,15 +34,9 @@ class RacingCarGame {
   }
 
   #validateCarNamesInput(carNameList) {
-    if (Validator.checkIsEmpty(carNameList)) {
-      throw new ValidationError(ERROR.isEmpty);
-    }
-    if (Validator.checkHasDuplicate(carNameList)) {
-      throw new ValidationError(ERROR.hasDuplicate);
-    }
-    if (!Validator.checkIsLessThanMaxLen(carNameList)) {
-      throw new ValidationError(ERROR.exceedMaxNum);
-    }
+    Validator.checkHasEmpty(carNameList);
+    Validator.checkHasDuplicate(carNameList);
+    Validator.checkIsLongerThanMaxLen(carNameList);
   }
 
   async #getAttemptsInput() {
@@ -55,12 +48,8 @@ class RacingCarGame {
   }
 
   #validateAttemptsInput(attempt) {
-    if (!Validator.checkIsNumber(attempt)) {
-      throw new ValidationError(ERROR.isNotANumber);
-    }
-    if (!Validator.checkIsMoving(attempt)) {
-      throw new ValidationError(ERROR.notMoving);
-    }
+    Validator.checkIsNotNumber(attempt);
+    Validator.checkIsNotMoving(attempt);
   }
 
   #makeFinalWinnerString() {

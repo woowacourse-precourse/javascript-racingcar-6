@@ -1,29 +1,37 @@
-import { CONSTANT } from './Constant.js';
+import { CONSTANT, ERROR } from './Constant.js';
+import ValidationError from './ValidationError.js';
 
 class Validator {
-  static checkIsEmpty(userInput) {
-    return userInput.includes('');
+  static checkHasEmpty(userInput) {
+    if (userInput.includes('')) {
+      throw new ValidationError(ERROR.isEmpty);
+    }
   }
 
   static checkHasDuplicate(userInput) {
-    return new Set(userInput).size !== userInput.length;
+    if (new Set(userInput).size !== userInput.length) {
+      throw new ValidationError(ERROR.hasDuplicate);
+    }
   }
 
-  static checkIsLessThanMaxLen(userInput) {
+  static checkIsLongerThanMaxLen(userInput) {
     for (let i = 0; i < userInput.length; i++) {
       if (userInput[i].length > CONSTANT.maxNameLength) {
-        return false;
+        throw new ValidationError(ERROR.longerThanMaxLen);
       }
     }
-    return true;
   }
 
-  static checkIsNumber(userInput) {
-    return !Number.isNaN(userInput);
+  static checkIsNotNumber(userInput) {
+    if (Number.isNaN(userInput)) {
+      throw new ValidationError(ERROR.isNotNumber);
+    }
   }
 
-  static checkIsMoving(userInput) {
-    return userInput !== CONSTANT.notMove;
+  static checkIsNotMoving(userInput) {
+    if (userInput === CONSTANT.notMove) {
+      throw new ValidationError(ERROR.notMoving);
+    }
   }
 }
 
