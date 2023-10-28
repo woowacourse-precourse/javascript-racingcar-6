@@ -1,4 +1,4 @@
-import game from "./game";
+import game from "./controller/game";
 
 class App {
   async play() {
