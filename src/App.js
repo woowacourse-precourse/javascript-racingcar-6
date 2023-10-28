@@ -35,12 +35,28 @@ class App {
     this.tryCount = parseInt(count);
   }
 
+  startRacing() {
+    for (let count = 0; count < this.tryCount ; count++) {
+      this.cars.forEach((car) => {
+        this.moveForward(car)
+      })
+    }
+  }
+
+  moveForward(car) {
+    if (MissionUtils.Random.pickNumberInRange(0, 9) >= 4) {
+      MissionUtils.Console.print(car);
+    }
+  }
+
   async play() {
     const names = await this.inputCarNames();
 
     this.makeCarArray(names)
 
     await this.inputTryCount();
+
+    this.startRacing();
   }
 }
 
