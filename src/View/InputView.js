@@ -7,14 +7,14 @@ const InputView = {
   async readCarNames() {
     const names = await Console.readLineAsync(INPUT_MESSAGE_CAR_NAMES);
 
-        return names;
-    },
+    return names;
+  },
 
-    async readRoundCounts() {
-        const counts = await Console.readLineAsync(INPUT_MESSAGE_TRY_COUNTS);
+  async readRoundCounts() {
+    const counts = await Console.readLineAsync(INPUT_MESSAGE_TRY_COUNTS);
 
-        return counts;
-    }
+    return counts;
+  }
 }
 
 export default InputView;

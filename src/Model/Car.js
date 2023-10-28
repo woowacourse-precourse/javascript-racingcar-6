@@ -8,33 +8,41 @@ const DISTANCE_CHARACTER = '-';
 export default class Car {
   constructor(name) {
     this.name = name;
-        this.distance = '';
+    this.distance = '';
+  }
+
+  async attemptForward() {
+    if (this.isReady()) {
+      this.runForward();
+    }
+  }
+
+  runForward() {
+    this.distance += DISTANCE_CHARACTER;
+  }
+
+  isReady() {
+    if (this.checkForwardCondition()) {
+      return true;
     }
 
-    async attemptForward() {
-        if (this.isReady()) {
-            this.runForward();
-        }
+    return false;
+  }
+
+  checkForwardCondition() {
+    const randomNumber = Random.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
+    if (randomNumber >= FORWARD_CONDITION) {
+      return true;
     }
 
-    runForward() {
-        this.distance += DISTANCE_CHARACTER;
-    }
+    return false;
+  }
 
-    isReady() {
-        if (this.checkForwardCondition()) {
-            return true;
-        }
+  getName() {
+    return this.name;
+  }
 
-        return false;
-    }
-
-    checkForwardCondition() {
-        const randomNumber = Random.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
-        if (randomNumber >= FORWARD_CONDITION) {
-            return true;
-        }
-
-        return false;
-    }
+  getDistance() {
+    return this.distance.length;
+  }
 }
