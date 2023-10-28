@@ -1,5 +1,5 @@
 import { Random, Console } from "@woowacourse/mission-utils";
-import { MIN_NAME_LENGTH, MAX_NAME_LENGTH, PROGRESS_SIGN } from "./lib/constants.js";
+import { MIN_NAME_LENGTH, MAX_NAME_LENGTH, PROGRESS_SIGN, THRESHOLD } from "./lib/constants.js";
 import { LOGS } from "./lib/logs.js";
 
 class App {
@@ -57,7 +57,7 @@ class App {
 
   computeScore() {
     const randomArr = Array.from({ length: this.carsNum }, () => Random.pickNumberInRange(0, 9));
-    randomArr.forEach((e, i) => (e >= 4 ? this.carsProgress[i]++ : null));
+    randomArr.forEach((e, i) => (e >= THRESHOLD ? this.carsProgress[i]++ : null));
   }
 
   printEachProgress(idx) {
