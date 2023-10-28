@@ -1,6 +1,10 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import { GAME_MESSAGES } from './constants.js';
-import { removeSpaces, validateCarNames } from './utils.js';
+import {
+  removeSpaces,
+  validateCarNames,
+  validateNumberInput,
+} from './utils.js';
 
 const InputView = {
   async inputGetCarNames() {
@@ -22,7 +26,11 @@ const InputView = {
       const userInput = await MissionUtils.Console.readLineAsync(
         GAME_MESSAGES.GET_TRIES
       );
-      return userInput;
+      const tryCountRemoveSpaces = removeSpaces(userInput);
+
+      if (validateNumberInput(tryCountRemoveSpaces)) {
+        return tryCountRemoveSpaces;
+      }
     } catch (error) {
       throw error;
     }
