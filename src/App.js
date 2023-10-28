@@ -11,7 +11,7 @@ class App {
       "이름을 경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분) : \n"
     );
     const nameArray = this.getName(input);
-    this.participants = nameArray.map((name) => ({ name, position: 0 }));
+    this.participants = nameArray.map((name) => ({ name, positions: [] }));
   }
 
   async inputRound() {
@@ -44,7 +44,9 @@ class App {
     for (let i = 0; i < numParticipants; i++) {
       const randomNum = await this.RandomNumber();
       if (randomNum >= 4) {
-        this.participants[i].position += 1;
+        this.participants[i].positions.push(1);
+      } else {
+        this.participants[i].positions.push(0);
       }
     }
   }
@@ -54,10 +56,14 @@ class App {
     const rounds = await this.inputRound();
     for (let i = 0; i < rounds; i++) {
       await this.playRound();
+      this.participants.forEach((eachParticipant) => {
+        const positionOutput = eachParticipant.positions
+          .map((p) => (p === 1 ? "-" : ""))
+          .join("");
+        Console.print(`${eachParticipant.name}: ${positionOutput}`);
+      });
+      Console.print("\n");
     }
-    this.participants.forEach((participant) => {
-      Console.print(`${participant.name}: ${participant.position}`);
-    });
   }
 }
 const app = new App();
