@@ -17,6 +17,6 @@ export default class Car {
       () => '-'
     ).join('');
 
-    return positionString;
+    return { name: this.#name, position: positionString };
   }
 }
