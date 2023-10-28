@@ -1,4 +1,4 @@
-import { MissionUtils, Console } from "@woowacourse/mission-utils";
+import { MissionUtils } from "@woowacourse/mission-utils";
 
 
 // 상수
@@ -7,8 +7,8 @@ const INPUT_TRY_NUMBER = '시도할 횟수는 몇 회인가요?\n';
 
 // 유효성 검사 정규표현식
 const regFirstForm = /^[가-힣a-zA-Z]{1}[가-힣a-zA-Z,]{1,}[가-힣a-zA-Z]{1}$/g;
-const regNumber = /^[0-9]$/g;
-
+const regLanguage = /^[가-힣]$|^[a-z]$|^[A-Z]$/g;
+const regNameLen = /^[가-힣a-zA-Z]{1,5}$/g;
 
 class App {
   async play() {
@@ -16,11 +16,12 @@ class App {
     this.validateCarName(carName);
     const playNumber = await this.inputPlayNumber();
     this.validatePlayNumber(playNumber);
+    MissionUtils.Console.print('\n실행 결과');
    }
   
   // 차 이름 입력받는 메서드
   async inputCarName() {
-    const carName = await Console.readLineAsync(`${INPUT_CAR_NAME}`);
+    const carName = await MissionUtils.Console.readLineAsync(`${INPUT_CAR_NAME}`);
     return carName;
   }
 
@@ -32,11 +33,13 @@ class App {
     const nameSplitArrLen = nameSplitArr.length;
     for (let idx = 0; idx < nameSplitArrLen; idx++){
       if (!nameSplitArr[idx]) throw new Error('[ERROR] 이름이 빈 공간입니다.');
+      if (!regLanguage.test(nameSplitArr[idx])) throw new Error('[ERROR] 한가지의 언어로만 입력해주세요.(한글 or 영어)');
+      if (!regNameLen.test(nameSplitArr[idx])) throw new Error('[ERROR] 이름은 한글자 이상 다섯글자 이하로만 작성해주세요.')
     }
   }
 
   async inputPlayNumber() {
-    const playNumber = await Console.readLineAsync(`${INPUT_TRY_NUMBER}`);
+    const playNumber = await MissionUtils.Console.readLineAsync(`${INPUT_TRY_NUMBER}`);
     return playNumber;
   }
 
