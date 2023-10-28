@@ -92,4 +92,4 @@ function except_five(name){
 export default App;
 
 
-//주석바꿧지롱 커밋할거지롱
+//주석바꿧지롱 커밋할거지롱 삘타서 코드짜다가 커밋 까먹고 완성해버렸지롱
