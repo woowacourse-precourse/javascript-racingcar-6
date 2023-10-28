@@ -5,5 +5,6 @@ export const LOGS = {
   INVALID_INPUT2: "[ERROR] 숫자가 잘못된 형식입니다.",
   NEW_LINE: "",
   RUN_PROMPT: "실행 결과",
-  PROGRESS_SIGN: "-",
+  WINNER_PROMPT: (winners) => `최종 우승자 : ${winners.join(", ")}`,
+  PROGRESS_PROMPT: (name, progress) => `${name} : ${progress}`,
 };

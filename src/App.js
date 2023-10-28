@@ -62,13 +62,13 @@ class App {
 
   printEachProgress(idx) {
     const PROGRESS = PROGRESS_SIGN.repeat(this.carsProgress[idx]);
-    Console.print(`${this.cars[idx]} : ${PROGRESS}`);
+    Console.print(LOGS.PROGRESS_PROMPT(this.cars(idx), PROGRESS));
   }
 
   printWinners() {
     const MAX = Math.max(...this.carsProgress);
     const WINNERS = this.carsProgress.map((e, i) => (e === MAX ? this.cars[i] : null)).filter((e) => !!e);
-    Console.print(`최종 우승자 : ${WINNERS.join(", ")}`);
+    Console.print(LOGS.WINNER_PROMPT(WINNERS));
   }
 }
 
