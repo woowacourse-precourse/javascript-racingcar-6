@@ -4,4 +4,8 @@ export const outputView = {
   printLine(message) {
     MissionUtils.Console.print(message);
   },
+
+  divideLine() {
+    MissionUtils.Console.print('');
+  },
 };

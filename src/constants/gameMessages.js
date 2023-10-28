@@ -9,4 +9,7 @@
 export const GAME_MESSAGES = Object.freeze({
   input_car_names: '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
   input_count_of_attemp: '시도할 횟수는 몇 회인가요?\n',
+  print_result_start: '실행 결과',
+  game_result: (status, car) => `${car} : ${'-'.repeat(status || 0)}`,
+  winner_result: (winner) => `최종 우승자 : ${winner.join(', ')}`,
 });
