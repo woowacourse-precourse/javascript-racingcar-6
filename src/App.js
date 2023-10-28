@@ -2,7 +2,6 @@ import { Console, Random } from "@woowacourse/mission-utils";
 
 class App {
   constructor() {
-    this.random = 0;
     this.carList = [];
     this.round = 0;
     this.racing = [];
