@@ -42,21 +42,31 @@ describe("예외처리", () => {
     }
   );
 
-  test.each([[["pobi,,javaji"]], [["pobi east,,jun"]]])(
-    "이름에서 ,가 연속으로 중복된 경우",
-    async (inputs) => {
-      // given
-      mockQuestions(inputs);
+  test("이름에서 ,가 연속으로 중복되거나 마지막에 ,를 입력한 경우", async () => {
+    // given
+    const randoms = [4, 4, 1, 4];
+    const inputs = ["pobi,,woni,", "2"];
+    const outputs = [
+      "pobi : -",
+      "woni : -",
+      "pobi : -",
+      "woni : --",
+      "최종 우승자 : woni",
+    ];
+    const logSpy = getLogSpy();
 
-      // when
-      const app = new App();
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
 
-      // then
-      await expect(app.play()).rejects.toThrow(
-        Message.ERROR.NAME_HAS_REPEATED_COMMA
-      );
-    }
-  );
+    // when
+    const app = new App();
+    await app.play();
+
+    // then
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
 
   test.each([[["pobi,javaji"]], [["pobiiiii,eastjun"]]])(
     "이름이 5자 초과한 경우",
@@ -93,5 +103,33 @@ describe("예외처리", () => {
     await expect(app.play()).rejects.toThrow(
       Message.ERROR.EXECUTE_COUNT_SHOULD_BE_POSITIVE_INT
     );
+  });
+});
+
+describe("자동차 경주 게임", () => {
+  test("전진-정지", async () => {
+    // given
+    const randoms = [4, 4, 1, 4];
+    const inputs = ["pobi,woni", "2"];
+    const outputs = [
+      "pobi : -",
+      "woni : -",
+      "pobi : -",
+      "woni : --",
+      "최종 우승자 : woni",
+    ];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    // when
+    const app = new App();
+    await app.play();
+
+    // then
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
   });
 });
