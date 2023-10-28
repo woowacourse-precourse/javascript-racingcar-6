@@ -1,6 +1,8 @@
+// @ts-check
 import { ERROR, REG_EXP } from './constants';
 import CustomError from './CustomError';
 
+/**@type {function(string[]):string[]} */
 export function validateName(inputArr) {
 	if (inputArr.length === 0) {
 		throw new CustomError(ERROR.NAME, ERROR.NO_INPUT);
@@ -18,6 +20,7 @@ export function validateName(inputArr) {
 	return validNameArr;
 }
 
+/**@type {function(string):string} */
 export function validateNumber(input) {
 	if (containsSpecialCharacter(input)) {
 		throw new CustomError(ERROR.NAME, ERROR.ONLY_NUMBER);
@@ -25,15 +28,17 @@ export function validateNumber(input) {
 	if (containsCharacters(input)) {
 		throw new CustomError(ERROR.NAME, ERROR.ONLY_NUMBER);
 	}
-	if (input === 0) {
+	if (input === '0') {
 		throw new CustomError(ERROR.NAME, ERROR.NO_ZERO);
 	}
 	return input;
 }
+/**@type {function(string):boolean} */
 function containsSpecialCharacter(str) {
 	const regex = new RegExp(REG_EXP.SPECIAL_CHARACTER);
 	return regex.test(str);
 }
+/**@type {function(string):boolean} */
 function containsCharacters(str) {
 	const regex = new RegExp(REG_EXP.STRING_CHARACTER);
 	return regex.test(str);
