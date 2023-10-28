@@ -6,7 +6,8 @@ import Car from "./Car.js";
 class RacingCar {
   async start() {
     const name = await Console.readLineAsync(MESSAGE.enterCarName);
-    const cars = this.createCarArr(name);
+    const splitedName = this.splitName(name);
+    const cars = this.createCarArray(splitedName);
     const numOfRacing = await Console.readLineAsync(
       MESSAGE.enterNumberOfRacing
     );
@@ -20,11 +21,9 @@ class RacingCar {
     }
   }
 
-  createCarArr(name) {
+  createCarArray(nameArray) {
     let cars = [];
-
-    const splitedName = this.splitName(name);
-    splitedName.forEach((name) => cars.push(new Car(name)));
+    nameArray.forEach((name) => cars.push(new Car(name)));
 
     return cars;
   }
