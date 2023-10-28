@@ -87,7 +87,8 @@ class App {
     const count = await getNumberInput();
     const result = startRace(name, count);
     const winner = getWinner(name, result);
-    return winner;
+    
+    MissionUtils.Console.print(`최종 우승자 : ${winner.map((member) => member).join(',')}`);
   }
 }
 
