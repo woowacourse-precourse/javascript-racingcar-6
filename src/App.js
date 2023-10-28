@@ -47,6 +47,14 @@ class App {
     }
   }
 
+  carMoveText(carName) {
+    for(let i = 0; i < carName.length; i++) {
+      const randomNumber = Random.pickNumberInRange(0, 9);
+      this.carMoveArray[i] += this.carMoveQualification(randomNumber);
+      Console.print(carName[i] + " : " + this.carMoveArray[i]);
+    }
+  }
+
   carMoveEmptyArray(carName) {
     for(let i = 0; i < carName.length; i++) {
       this.carMoveArray.push("");
