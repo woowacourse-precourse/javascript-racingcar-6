@@ -30,3 +30,7 @@
       2. `resultNum` 의 최대 숫자와 같은 자동차를 우승자 배열(`winner`)에 넣음
    2. 출력 `최종 우승자 : winner`
 6. 게임 종료
+
+## 테스트 항목
+
+1. 입력값 유효성 검사 `isValidateCar()` `isValidateRound()`
