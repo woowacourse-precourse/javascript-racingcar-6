@@ -15,6 +15,12 @@ class RacingCarGame {
     this.race.addCars(carNames);
     await this.askLapCount();
   }
+
+  async askLapCount() {
+    const lapCount = await Input.readLapCount();
+    this.race.setLapCount(lapCount);
+    this.compete();
+  }
 }
 
 export default RacingCarGame;
