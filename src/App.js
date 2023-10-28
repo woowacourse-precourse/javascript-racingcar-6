@@ -20,10 +20,10 @@ class App {
     Console.print('실행 결과');
     const carsProgress = Object.fromEntries(cars.map((k) => [k, 0]));
     for (let i = 0; i < retry; i += 1) {
-      for (const car of cars) {
-        carsProgress[car] += Random.pickNumberInRange(0, 9) >= 4
+      cars.forEach((car) => {
+        carsProgress[car] += Random.pickNumberInRange(0, 9) >= 4;
         Console.print(`${car} : ${'-'.repeat(carsProgress[car])}`);
-      }
+      });
       Console.print('');
     }
 
