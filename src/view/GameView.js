@@ -17,6 +17,11 @@ export default class GameView {
   }
 
   printWinner(winners) {
-    Console.print(`${MESSAGE.WINNER}${winners}`);
+    if (!winners.length) {
+      return Console.print(`${MESSAGE.WINNER}${MESSAGE.NONE}`);
+    }
+
+    const winnerNames = winners.map((winner) => winner.name).join(', ');
+    Console.print(`${MESSAGE.WINNER}${winnerNames}`);
   }
 }
