@@ -13,6 +13,13 @@ const invalidCarName = carList => {
     throw Error(ERROR_MESSAGE.carName.duplicate);
 };
 
+const invalidPlayNum = (inputPlayNum, playNum) => {
+  if (inputPlayNum.length === 0) throw Error(ERROR_MESSAGE.playNum.noInput);
+  if (Number.isNaN(playNum) || !Number.isInteger(playNum))
+    throw Error(ERROR_MESSAGE.playNum.includeStr);
+  if (playNum === 0) throw Error(ERROR_MESSAGE.playNum.includeZero);
+};
+
 export const getCarName = async () => {
   const inputCarName = await Console.readLineAsync(MESSAGE.getCarName);
   const carList = inputCarName.split(',');
@@ -24,9 +31,9 @@ export const getCarName = async () => {
 
 export const getPlayNum = async () => {
   const inputPlayNum = await Console.readLineAsync(MESSAGE.getPlayNum);
-  const playNum = parseInt(inputPlayNum, 10);
+  const playNum = Number(inputPlayNum);
 
-  // TODO : 시도할 횟수 유효검사
+  invalidPlayNum(inputPlayNum, playNum);
 
   return playNum;
 };
