@@ -25,5 +25,9 @@ const racingCarGame = {
   getRandomNumber({ min, max }) {
     return MissionUtils.Random.pickNumberInRange(min, max);
   },
+
+  checkForwardCondition(number, { min, max }) {
+    return number >= min && number <= max;
+  },
 };
 export default racingCarGame;
