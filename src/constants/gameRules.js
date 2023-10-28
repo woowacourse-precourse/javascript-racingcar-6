@@ -7,4 +7,5 @@ export const GAME_RULL = Object.freeze({
   MOVE_MIN_COUNT: 1,
   START_PICK_NUMBER: 0,
   END_PICK_NUMBER: 9,
+  MOVE_CONDITION_COUNT: 4,
 });
