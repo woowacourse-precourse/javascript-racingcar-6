@@ -1,7 +1,7 @@
 import { Console, MissionUtils } from '@woowacourse/mission-utils';
 import Car from './Car.js';
-import MoveCount from './MoveCount.js';
 import InputCars from './InputCars.js';
+import InputMoveCount from './InputMoveCount.js';
 
 class App {
   #carNames = [];
@@ -19,9 +19,8 @@ class App {
   }
 
   async movementCount() {
-    const inputMove =
-      await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
-    this.#moveCount = new MoveCount(inputMove);
+    const inputMoveCount = new InputMoveCount();
+    this.#moveCount = await inputMoveCount.getMoveCount();
 
     this.startRace();
   }
