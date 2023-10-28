@@ -4,7 +4,6 @@ class App {
     this.carNameArr = [];
     this.dashSymbol = [];
     this.randomNumArr = [];
-    this.carPosition = {};
     this.attemptCount = 0;
     this.dash = "-";
   }
@@ -21,6 +20,8 @@ class App {
     Console.print("");
     Console.print("실행 결과");
     this.gameResult();
+    Console.print("");
+    this.finalWinner();
   }
 
   async inputCarName() {
@@ -70,6 +71,23 @@ class App {
       for (let j = 0; j < this.carNameArr.length; j++) {
         Console.print(`${this.carNameArr[j]} : ${this.dashSymbol[j]}`);
       }
+    }
+    console.log(this.carNameArr);
+  }
+  finalWinner() {
+    let maxName = [this.carNameArr[0]];
+    let maxDash = this.dashSymbol[0].length;
+    for (let i = 1; i < this.carNameArr.length; i++) {
+      if (this.dashSymbol[i].length > maxDash) {
+        maxName = [this.carNameArr[i]];
+        maxDash = this.dashSymbol[i].length;
+      } else if (this.dashSymbol[i].length === maxDash) {
+        maxName.push(this.carNameArr[i]);
+      }
+    }
+    if (maxName.length >= 2) {
+      const winners = maxName.join(", ");
+      console.log(`최종 우승자 : ${winners}`);
     }
   }
 }
