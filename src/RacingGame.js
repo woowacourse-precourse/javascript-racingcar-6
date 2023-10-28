@@ -11,49 +11,31 @@ class RacingGame {
   async start() {
     this.joinList = await Input.getJoinList();
     this.repeatNumber = await Input.getRepeatNumber();
-    this.gameStart(this.joinList, this.repeatNumber);
+    this.gameStart();
   }
 
-  /**
-   * 모든 입력값을 받은 후 게임이 실행되는 함수
-   * @param {{name: string, progress: string}[]} joinList 객체
-   * @param {string} repeatNumber - 반복 횟수
-   */
-  gameStart(joinList, repeatNumber) {
-    for (let i = 0; i < repeatNumber; i += 1) {
-      this.printEachProgress(joinList);
+  gameStart() {
+    for (let i = 0; i < this.repeatNumber; i += 1) {
+      this.printEachProgress();
     }
 
-    this.printWinner(this.joinList);
+    this.printWinner();
   }
 
-  /**
-   *
-   * @param {{name:string,progress:string}[]} joinList
-   */
-  printWinner(joinList) {
-    const winner = this.getWinner(joinList).join(', ');
-    Output.print(winner);
+  printWinner() {
+    const winner = this.getWinner(this.joinList).join(', ');
+    Output.printWinner(winner);
   }
 
-  /**
-   * 우승자의 이름을 반환하는 함수
-   * @param {{name:string,progress : string}[]} joinList
-   * @returns {string[]} 우승자 배열
-   */
-  getWinner(joinList) {
-    const maxLength = Util.getMaxLength(joinList);
-    const winnerList = Util.getWinnerList(joinList, maxLength);
+  getWinner() {
+    const maxLength = Util.getMaxLength(this.joinList);
+    const winnerList = Util.getWinnerList(this.joinList, maxLength);
 
     return winnerList.map((winner) => winner.name);
   }
 
-  /**
-   *
-   * @param {{name:string,progress:string}[]} joinList
-   */
-  printEachProgress(joinList) {
-    joinList.forEach((car) => {
+  printEachProgress() {
+    this.joinList.forEach((car) => {
       car.moveOrNot();
 
       Output.printProgress(car.name, car.progress);
