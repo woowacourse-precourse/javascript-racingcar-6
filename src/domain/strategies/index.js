@@ -1,1 +1,1 @@
-export * from "./BaseRacingRule";
+export * from "./RacingRule";
