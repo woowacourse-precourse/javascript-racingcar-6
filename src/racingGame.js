@@ -10,9 +10,22 @@ export async function userInputRound() {
 
 export async function generateRandomNum() {
   const carsList = await carGenerate();
-  const movingCarsList = carsList.map((car) => ({
+  const randomCarsList = carsList.map((car) => ({
     carName: car,
-    carMoveDistance: MissionUtils.Random.pickNumberInRange(0, 9),
+    carRandomNum: MissionUtils.Random.pickNumberInRange(0, 9),
+    carDistance: "",
   }));
-  return movingCarsList;
+  return randomCarsList;
 }
+
+async function checkRandomNum() {
+  const needCheckList = await generateRandomNum();
+  const filteredCars = needCheckList.map((car) => {
+    if (car.carRandomNum >= 4) {
+      return { ...car, carDistance: car.carDistance + "-" };
+    }
+    return car;
+  });
+}
+
+checkRandomNum();
