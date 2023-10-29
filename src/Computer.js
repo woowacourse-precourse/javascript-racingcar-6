@@ -6,7 +6,10 @@ export default class Computer {
     this.racingCars = [];
   }
 
-  playGame(user) {}
+  async playGame(user) {
+    await this.getCarNameInputFromUser(user);
+    await this.getTrialNumberInputFromUser(user);
+  }
 
   async getCarNameInputFromUser(user) {
     const userInput = await user.inputCarName();
@@ -24,7 +27,6 @@ export default class Computer {
   async getTrialNumberInputFromUser(user) {
     const userInput = await user.inputTrialNumber();
     const trialNum = this.getTrialNumberFromString(userInput);
-    console.log(trialNum);
     return trialNum;
   }
 
