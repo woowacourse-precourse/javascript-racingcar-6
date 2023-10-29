@@ -29,9 +29,14 @@ class App {
     );
     const names = input.split(',');
     names.map((carName) => {
-      const car = new Car(carName);
-      this.#carArray.push(car);
+      this.checkName(carName);
+      this.#carArray.push(new Car(carName));
     });
+  }
+
+  checkName(name) {
+    if (name.length > 5)
+      throw new Error('[ERROR] 입력된 이름이 5자 이상입니다.');
   }
 
   async readMaxAttempt() {
