@@ -7,21 +7,29 @@ const getLogSpy = () => {
   return logSpy;
 };
 
-const mockCarNameInput = (input) => {
+const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
 
   MissionUtils.Console.readLineAsync.mockImplementation(() => {
+    const input = inputs.shift();
     return Promise.resolve(input);
   });
+};
+
+const mockRandoms = (numbers) => {
+  MissionUtils.Random.pickNumberInRange = jest.fn();
+  numbers.reduce((acc, number) => {
+    return acc.mockReturnValueOnce(number);
+  }, MissionUtils.Random.pickNumberInRange);
 };
 
 describe('레이싱 게임 테스트', () => {
   describe('차 이름 입력 테스트', () => {
     test('차 이름 정상적으로 입력된 경우 콤마로 구분하여 차 이름 반환', async () => {
       // given
-      const input = 'pobi,woni,jun';
+      const inputs = ['pobi,woni,jun'];
       const outputs = ['pobi', 'woni', 'jun'];
-      mockCarNameInput(input);
+      mockQuestions(inputs);
 
       // when
       const racingGame = new RacingGame();
@@ -32,8 +40,9 @@ describe('레이싱 게임 테스트', () => {
     });
     test('차 이름 5자 넘는 경우 오류', async () => {
       // given
-      const input = 'pobiii,woni,jun';
+      const inputs = 'pobiii,woni,jun';
       const ERROR_MESSAGE = '[ERROR]';
+      mockQuestions(inputs);
 
       // when
       const racingGame = new RacingGame();
@@ -44,8 +53,32 @@ describe('레이싱 게임 테스트', () => {
     });
   });
   describe('시도 횟수 입력 테스트', () => {
-    test('시도 횟수 숫자가 입력될 경우, 숫자 반환', () => {});
-    test('시도 횟수 숫자가 아닌 문자 입력될 경우, 에러 반환', () => {});
+    test('시도 횟수 숫자가 입력될 경우, 숫자 반환', async () => {
+      // given
+      const inputs = [5];
+      const outputs = [5];
+      mockQuestions(inputs);
+
+      // when
+      const racingGame = new RacingGame();
+      const result = await racingGame.readMoveCount();
+
+      // then
+      expect(result).toEqual(outputs);
+    });
+    test('시도 횟수 숫자가 아닌 문자 입력될 경우, 에러 반환', async () => {
+      // given
+      const inputs = ['hi'];
+      const ERROR_MESSAGE = '[ERROR]';
+      mockQuestions(inputs);
+
+      // when
+      const racingGame = new RacingGame();
+      const result = await racingGame.readMoveCount();
+
+      // then
+      expect(result).rejects.toThrow(ERROR_MESSAGE);
+    });
   });
   describe('실행결과 표시 테스트', () => {
     test('실행결과 표시', () => {});
