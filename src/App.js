@@ -11,16 +11,49 @@ class App {
   }
 
   async play() {
-    await this.mainGameLogic();
+    await this.totalGameLogic();
   }
 
-  async mainGameLogic() {
+  async totalGameLogic() {
     await this.getUserCarListInput();
     await this.makeForCheckGameStatus(this.carList);
     await this.getUserWantMoveCount();
-    this.checkGoStop();
+    this.mainLogic();
     this.checkScore();
     this.awards();
+  }
+
+  // 게임 메인 로직 - 전진할지 멈출지 판단하고 사용자가 원하는 횟수만큼 시도
+  mainLogic() {
+    for (let i = 0; i < this.inputCount; i++) {
+      this.decideMove();
+      Console.print("\n");
+    }
+  }
+
+  // 전진할지 멈출지 판단하는 함수
+  decideMove() {
+    this.gameStatus.forEach((car, index) => {
+      const randomNumber = this.makeRandomNumber();
+      if (randomNumber >= 4) {
+        this.gameStatus[index] += "-";
+      }
+
+      // 일관된 데이터 유형을 유지하기 위해 gamestatus는 2차원 배열인데 randomNumber가 4 이상일 때는 문자열로 변환되고
+      // 4 미만일때 그냥 넘겨버리면 만약 한번도 전진을 못한경우 문자열이 아닌 배열 그대로 존재해버림 2차원 배열 안에 문자열과 배열이 존재해버려
+      // 31라인 checkScore 함수의 .split(":")에서 오류 [car1:--,[car2:],car3:--]
+      if (randomNumber < 4) {
+        this.gameStatus[index] += "";
+      }
+      Console.print(this.gameStatus[index]);
+    });
+  }
+
+  checkScore() {
+    this.gameStatus.forEach(car => {
+      const score = car.split(":")[1];
+      this.finalScore.push(Number(score.length));
+    });
   }
 
   // 전진 또는 정지를 위한 랜덤 넘버 생성
@@ -28,68 +61,28 @@ class App {
     return Random.pickNumberInRange(0, 9);
   }
 
-  checkScore(){
-    // console.log("this.gamestatus length",this.gameStatus.length);
-    this.gameStatus.forEach(car => {
-      const score = car.split(":")[1];
-      // console.log("car", this.gameStatus);
-      this.finalScore.push(Number(score.length));
-    });
-  }
-
-  awards(){
+  awards() {
     const maxScore = Math.max(...this.finalScore);
-    
+
     // 공동 우승 찾기
     const winner = [];
     for (let i = 0; i < this.finalScore.length; i++) {
-      if (this.finalScore[i] === maxScore){
+      if (this.finalScore[i] === maxScore) {
         winner.push(this.gameStatus[i].split(":")[0].trim());
       }
     }
 
-    // console.log("print winner",winner);
-    // console.log("winner length",winner[0],winner.length);
-    if (winner.length === 1){
+    if (winner.length === 1) {
       Console.print(`최종 우승자 : ${winner[0]}`);
     }
 
-    if (winner.length !== 1){
+    if (winner.length !== 1) {
       Console.print(`최종 우승자 : ${winner.join(", ")}`);
     }
-    
-  }
 
-  // 오류난 이유 정리하기 공백을 추가해 주지 않으면
-  checkGoStop() {
-    for (let i = 0; i < this.inputCount; i++) {
-      this.gameStatus.forEach((car, index) => {
-        const randomNumber = this.makeRandomNumber();
-        if (randomNumber >= 4) {
-          this.gameStatus[index] += "-";
-        }
-        
-        // 일관된 데이터 유형을 유지하기 위해 gamestatus는 2차원 배열인데 randomNumber가 4 이상일 때는 문자열로 변환되고
-        // 4 미만일때는 그냥 넘겨버리면 2차원 배열 안에 문자열과 배열이 존재해버려 split(":"")시에 오류가남 
-        if (randomNumber < 4) {
-          this.gameStatus[index] += "";
-        }
-        Console.print(this.gameStatus[index]);
-      });
-      Console.print("\n");
-    }
-  }
+  }  
 
-  // 게임 진행하는 동안 차들의 상태를 저장하기 위한 배열 생성 - 현재는 이름과 결과를 한번에 저장하려고함
-  // 이름과 결과를 따로 저장하고 출력시에만 같이 출력할까 고민중
-  makeForCheckGameStatus(userinput){
-    this.gameStatus = Array.from({ length: userinput.length }, () => []);
-    for (let i = 0; i < this.gameStatus.length; i++) {
-      this.gameStatus[i].push(`${userinput[i]} : `);
-    }
-    // console.log("game status 생성",this.gameStatus);
-    return this.gameStatus;
-  }
+
 
   // 사용자가 부여한 자동차 이름들을 받아오는 코드
   async getUserCarListInput(){
@@ -97,7 +90,6 @@ class App {
     // 쉼표를 기준으로 5자 이하인지 체크 - 쉼표를 기준으로 5자 이상인것 오류
     this.carList = userCarListInput.split(',');
     this.checkInvalidCarName(this.carList);
-    // console.log("this.checkInvalidCarName(carList)", this.checkInvalidCarName(this.carList));
     return this.carList;
   }
 
@@ -108,6 +100,20 @@ class App {
     this.ckeckLength(inputCarList);
     this.checkLastName(inputCarList);
     return inputCarList;
+  }
+
+  // 차 이름 중간에는 공백이 존재할 수 있다고 생각함 하지만 첫자리와 마지막 자리는 그렇지 않기에 오류처리
+  checkSpace(inputCarList) {
+    const forCheckSpace = /\s/;
+    inputCarList.forEach(car => {
+
+      if (forCheckSpace.test(car.slice(0, 1))) {
+        throw new ERROR(ERROR.INVALID_INPUT_FIRST)
+      }
+      if (forCheckSpace.test(car.slice(car.length - 1, car.length))) {
+        throw new ERROR(ERROR.INVALID_INPUT_FINAL)
+      }
+    });
   }
 
   // 고차 함수를 사용한 car length 비교
@@ -125,24 +131,10 @@ class App {
 
   // 정규 표현식을 사용한 글자 체크 마지막 자리를 제외한 문자열에 숫자가 포함되어 있다면 오류 ex sm5 k6 
   checkLastName(inputCarList){
-    const forCheckNumber = /\d/;
+    const forisInvalidInput = /\d/;
     inputCarList.forEach(car => {
-      if (forCheckNumber.test(car.slice(0,car.length - 1))) {
+      if (forisInvalidInput.test(car.slice(0,car.length - 1))) {
         throw new Error(ERROR.INVALID_CAR_NAME);
-      }
-    });
-  }
-
-  // 차 이름 중간에는 공백이 존재할 수 있다고 생각함 하지만 첫자리와 마지막 자리는 그렇지 않기에 오류처리 or 공백을 없애줄까 고민중
-  checkSpace(inputCarList){
-    const forCheckSpace = /\s/;
-    inputCarList.forEach(car => {
-      // console.log(`${car}끝자리 체크`, car, car.slice(car.length - 1, car.length), "끝자리");
-      if (forCheckSpace.test(car.slice(0,1))){
-        throw new ERROR(ERROR.INVALID_INPUT_FIRST)
-      }
-      if (forCheckSpace.test(car.slice(car.length-1, car.length))) {
-        throw new ERROR(ERROR.INVALID_INPUT_FINAL)
       }
     });
   }
@@ -150,14 +142,14 @@ class App {
   // 사용자가 원하는 게임 전진 도전 횟수
   async getUserWantMoveCount(){
     this.inputCount = await Console.readLineAsync("몇번");
-    // console.log(this.inputCount);
+
     // 사용자 입력이 숫자인지 체크하는 기능
-    this.checkNumber(this.inputCount);
+    this.isInvalidInput(this.inputCount);
     return this.inputCount;
   }
 
-
-  checkNumber(inputCount){
+  // 전진 도전 횟수에서 입력값이 숫자인지 체크
+  isInvalidInput(inputCount){
     if (!(Number(inputCount))) {
       throw new Error(ERROR.INVALID_INPUT);
     }
@@ -167,12 +159,19 @@ class App {
     }
   }
 
-
   checkSpace(input){
     const forCheckSpace = /\s/;
     return forCheckSpace.test(input);
   }
 
+  // 게임 진행하는 동안 차들의 상태를 저장하기 위한 배열 생성 - 현재는 이름과 결과를 한번에 저장하려고함
+  makeForCheckGameStatus(userinput) {
+    this.gameStatus = Array.from({ length: userinput.length }, () => []);
+    for (let i = 0; i < this.gameStatus.length; i++) {
+      this.gameStatus[i].push(`${userinput[i]} : `);
+    }
+    return this.gameStatus;
+  }
   
   
 }
