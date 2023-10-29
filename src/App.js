@@ -1,5 +1,5 @@
-// import { Console, Random } from '@woowacourse/mission-utils';
-import { MissionUtils } from '@woowacourse/mission-utils';
+import { Console, Random } from '@woowacourse/mission-utils';
+// import { MissionUtils } from '@woowacourse/mission-utils';
 
 class App {
   //자동차 이름 초기화
@@ -10,8 +10,8 @@ class App {
   //게임 실행 함수
   async play() {
     // this.userInputCarNames();
-    const INPUT = await MissionUtils.Console.readLineAsync();
-    // MissionUtils.Console.print(INPUT);
+    const INPUT = await Console.readLineAsync();
+    // Console.print(INPUT);
     const CAR_NAMES = INPUT.split(',');
 
     // 예외처리
@@ -30,16 +30,9 @@ class App {
     for (let moveNum = 0; moveNum < NUMBER_OF_MOVES; moveNum++) {
       const RESULT = this.resultByRandomNumber();
       this.calculateCumulativeResult(RESULT, roundStatus);
-      // for (const carName in RESULT) {
-      //   if (RESULT[carName] === '-') {
-      //     roundStatus[carName] = (roundStatus[carName] || '') + '-';
-      //   } else {
-      //     roundStatus[carName] = (roundStatus[carName] || '') + '';
-      //   }
-      // }
       RESULTS.push({ ...roundStatus });
-      // MissionUtils.Console.print(NUMBER_OF_MOVES);
-      MissionUtils.Console.print(RESULTS);
+      // Console.print(NUMBER_OF_MOVES);
+      Console.print(roundStatus);
       this.printProgress(roundStatus);
     }
 
@@ -49,8 +42,8 @@ class App {
 
   //사용자가 입력한 자동차 이름 가져오기
   // async userInputCarNames() {
-  //   const INPUT = await MissionUtils.Console.readLineAsync();
-  //   MissionUtils.Console.print(INPUT);
+  //   const INPUT = await Console.readLineAsync();
+  //   Console.print(INPUT);
   //   const CAR_NAMES = INPUT.split(',');
 
   //   // 예외처리
@@ -63,7 +56,7 @@ class App {
 
   //사용자가 입력한 자동차 이동 횟수 가져오기
   async userInputNumberOfMoves() {
-    const INPUT = await MissionUtils.Console.readLineAsync();
+    const INPUT = await Console.readLineAsync();
     const NUMBER_OF_MOVES = parseInt(INPUT);
 
     //예외처리
@@ -79,10 +72,10 @@ class App {
     const RESULT = {};
     for (let index = 0; index < this.carNames.length; index++) {
       // 각 carNames의 value에 RANDOM_NUMBER가 4이상이면 true, 4이하면 false가 저장됨 -> true면 -, false면 공백 저장되도록 변경
-      const RANDOM_NUMBER = MissionUtils.Random.pickNumberInRange(0, 9);
+      const RANDOM_NUMBER = Random.pickNumberInRange(0, 9);
       // const RANDOM_NUMBER = 4;
       RESULT[this.carNames[index]] = RANDOM_NUMBER >= 4 ? '-' : '';
-      MissionUtils.Console.print(RANDOM_NUMBER);
+      // Console.print(RANDOM_NUMBER);
     }
 
     return RESULT;
@@ -103,14 +96,14 @@ class App {
   printProgress(result) {
     for (const carName in result) {
       // const STATUS = result[carName] ? '-' : '';
-      MissionUtils.Console.print(`${carName} : ${result[carName]}`);
+      Console.print(`${carName} : ${result[carName]}`);
     }
   }
 
   // 우승자 출력
   printWinner(winners) {
     const WINNERS_NAME = winners.join(', ');
-    MissionUtils.Console.print(`최종 우승자 : ${WINNERS_NAME}`);
+    Console.print(`최종 우승자 : ${WINNERS_NAME}`);
   }
 
   // 우승자 계산
@@ -139,7 +132,7 @@ class App {
 
   // 자동차 위치 계산
   calculatePosition(carName, result) {
-    // MissionUtils.Console.print(result[carName]);
+    // Console.print(result[carName].split('-'));
     return result[carName].split('-').length - 1;
   }
 }
