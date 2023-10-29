@@ -48,7 +48,7 @@ describe("RacingCarGame 기능 테스트", () => {
     spies.forEach((spy) => spy.mockRestore());
   });
 
-  test("우승자가 1명일 때", () => {
+  test("최종 우승자 구하기 - 우승자가 1명일 때", () => {
     // given
     const nameInputs = ["jenn", "terry", "erric"];
     const statusInputs = [
@@ -75,5 +75,33 @@ describe("RacingCarGame 기능 테스트", () => {
 
     // then
     expect(game.getWinner()).toBe("erric");
+  });
+
+  test("최종 우승자 구하기 - 우승자가 2명일 때", () => {
+    // given
+    const nameInputs = ["jenn", "terry", "erric"];
+    const statusInputs = [
+      {
+        name: "jenn",
+        totalDistance: 2,
+      },
+      {
+        name: "terry",
+        totalDistance: 4,
+      },
+      {
+        name: "erric",
+        totalDistance: 4,
+      },
+    ];
+
+    // when
+    const game = new RacingCarGame();
+    game.cars = Array.from(nameInputs, (name) => new Car(name));
+    game.cars.map((car, index) => {
+      car.getStatus = jest.fn(() => statusInputs[index]);
+    });
+
+    expect(game.getWinner()).toBe("terry, erric");
   });
 });
