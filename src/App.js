@@ -47,14 +47,15 @@ class App {
 
   race(tryNumber) {
     OutputView.printTryResultMessage();
+
     while (tryNumber !== this.currentTryNumber) {
-      this.cars.forEach((car) => this.run(car));
+      this.cars.forEach((car) => this.move(car));
       this.printCarStep();
       this.addCurrentTryNumber();
     }
   }
 
-  run(car) {
+  move(car) {
     this.randomNumber.create();
     car.run(this.randomNumber.canMove());
   }
