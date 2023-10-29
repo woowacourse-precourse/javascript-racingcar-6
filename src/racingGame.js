@@ -1,6 +1,9 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import { carGenerate } from "./car.js";
 
+export async function resultAlert() {
+  MissionUtils.Console.print("\n실행 결과");
+}
 export async function userInputRound() {
   const roundNum = await MissionUtils.Console.readLineAsync(
     "시도할 횟수는 몇 회인가요?\n"
@@ -28,13 +31,14 @@ export async function checkRandomNum(carList) {
 }
 
 export async function playRacing() {
-  const round = await userInputRound();
   let cars = await generateCars();
+  const round = await userInputRound();
+  await resultAlert();
   for (let i = 0; i < round; i++) {
     cars = await checkRandomNum(cars);
     cars.forEach((car) => {
       MissionUtils.Console.print(`${car.carName} : ${car.carDistance}`);
     });
-    MissionUtils.Console.print();
+    MissionUtils.Console.print("\n");
   }
 }
