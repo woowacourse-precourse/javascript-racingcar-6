@@ -9,7 +9,7 @@ class Car {
     this.score = score;
   }
 
-  printMyScore() {
+  printScore() {
     const number = Random.pickNumberInRange(0, 9);
     if (number >= 4) {
       this.score += 1;

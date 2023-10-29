@@ -1,5 +1,5 @@
 import { Random, Console } from "@woowacourse/mission-utils";
-import Car from "./Car";
+import Car from "./Car.js";
 
 class App {
   async play() {
