@@ -1,8 +1,11 @@
 import ConsoleInput from './io/ConsoleInput.js';
 import MESSAGE from './constants/Message.js';
 import InputManager from './utils/InputManager.js';
+import RacingCar from './domain/RacingCar.js';
 
 class RacingGame {
+  #racingCars;
+
   start() {
     return this;
   }
@@ -12,7 +15,18 @@ class RacingGame {
     const cars = InputManager.getCarNames(input);
     InputManager.validateCarName(cars);
 
-    return cars;
+    this.#generateRacingCars(cars);
+  }
+
+  #generateRacingCars(cars) {
+    const racingCars = [];
+
+    cars.forEach((car) => {
+      const newCar = new RacingCar(car);
+      racingCars.push(newCar);
+    });
+
+    this.#racingCars = racingCars;
   }
 }
 
