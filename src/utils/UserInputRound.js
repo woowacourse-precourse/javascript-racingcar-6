@@ -1,3 +1,4 @@
+import { Console } from "@woowacourse/mission-utils";
 import { QUESTION_GOAL_COUNT, ERROR_WRONG_ROUND } from "../const/Messages";
 
 class UserInputRound {

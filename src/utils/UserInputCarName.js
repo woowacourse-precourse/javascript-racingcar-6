@@ -1,3 +1,4 @@
+import { Console } from "@woowacourse/mission-utils";
 import { QUESTION_CAR_NAME, ERROR_WRONG_NAME } from "../const/Messages";
 
 class UserInputCarName {
