@@ -2,10 +2,11 @@ import { Console, MissionUtils } from "@woowacourse/mission-utils"; //이거 왜
 
 class App {
   async play() {
-    let cars = await this.getCarName();
-    let times = await this.getCount();
-    this.validCheckAboutName(cars);
+    let cars = await this.getCarName(); // 배열상태
+    let times = await this.getCount(); // 숫자형태
+    this.validCheckAboutCarName(cars);
     this.validChedkAboutNumber(times);
+    this.drivePersonerCar(cars);
     
 
   }
@@ -46,10 +47,6 @@ class App {
     } else return true;
   }
 
-
-
-
-
   validCheckAboutCarName(carNameArry) {
     if (!this.checkDupl(carNameArry)) {
       throw new Error(`[ERROR] 중복된 이름입니다.`);
@@ -59,12 +56,6 @@ class App {
     }
     
   }
-
-  // removeEmptyInput(input) { // input안에 getCarName() return 값 들어감.
-  //     for(let i = 0; i < input.length; i++) {
-  //       let removeEmpty = input[i].trim();
-  //     }
-  // }//일단 이렇게 하긴 했는데 이걸 forEach로 하고 싶음!
   
   checkDupl(carNameArry) {
     let carNameSet = new Set(carNameArry);
@@ -76,15 +67,23 @@ class App {
 
   checkNamelength(carNameArry) {
     for (let i = 0; i < carNameArry.length; i++) {
-      Console.print(carNameArry[i].length);
+
       if (carNameArry[i].length < 1 || carNameArry[i].length > 5) {
         return false;
       } 
     }return true;
   }
 
+// 쉽게만 살아가면 재미없어 빙고! //
+  sumAllofMovefunc() {
 
+  }
 
+  drivePersonerCar(cars) {
+    cars.forEach(name => {
+    Console.print(`${name} : `) //name을 매개변수로 받는 0-9 랜덤값 받아서 - 출력하는 함수 여기 적음.      
+    });
+  }
 
 
 
