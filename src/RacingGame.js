@@ -17,6 +17,25 @@ class RacingGame {
       Console.print(`${car.name} : ${this.statusMark.repeat(car.location)}`);
     });
   }
+
+  findWinner(carsArray) {
+    const initialWinnersArray = [carsArray[0]];
+    const targetCarsArray = carsArray.slice(1);
+    const winnersArray = targetCarsArray.reduce((fastestCars, targetCar) => {
+      const targetFastestCar = fastestCars.pop();
+      if (targetFastestCar.location > targetCar.location) {
+        return [...fastestCars, targetFastestCar];
+      }
+
+      if (targetFastestCar.location === targetCar.location) {
+        return [...fastestCars, targetFastestCar, targetCar];
+      }
+
+      return [targetCar];
+    }, initialWinnersArray);
+
+    return winnersArray;
+  }
 }
 
 export default RacingGame;
