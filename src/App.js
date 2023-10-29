@@ -23,8 +23,6 @@ class App {
 
       this.cars.push(new Car(name));
     })
-
-    MissionUtils.Console.print(this.cars);
   }
 
   async inputTryCount() {
