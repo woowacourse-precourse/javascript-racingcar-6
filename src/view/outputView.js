@@ -15,7 +15,10 @@ const outputView = {
     Console.print("");
   },
 
-  winner() {},
+  winner(winners) {
+    const winnersStr = winners.join(", ");
+    Console.print(`${OUTPUT_MSG.WINNER}${winnersStr}`);
+  },
 };
 
 export default outputView;

@@ -26,6 +26,11 @@ class CarData {
     });
     return this.#carList;
   }
+
+  findWinner() {
+    const winners = this.#carList.filter((car) => car.move === this.#maxMove);
+    return winners.map((car) => car.name);
+  }
 }
 
 export default CarData;

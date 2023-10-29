@@ -28,13 +28,16 @@ class CarRacing {
     }
   }
 
-  findWinner() {}
+  awards() {
+    const winners = this.#CarData.findWinner();
+    outputView.winner(winners);
+  }
 
   async racing() {
     await this.setCarList();
     await this.setMoveCount();
     this.goRace();
-    this.findWinner();
+    this.awards();
   }
 }
 
