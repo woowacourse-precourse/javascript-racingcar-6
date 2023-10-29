@@ -8,9 +8,12 @@ class ErrorCheck {
     });
   }
 
-  static isNumber(string) {
+  static isPositiveIntegerString(string) {
     const numberFromString = Number(string);
     if (isNaN(numberFromString)) throw new Error(WRONG_FORMAT_NUMBER_ERROR_MSG);
+    if (numberFromString <= 0) throw new Error(WRONG_FORMAT_NUMBER_ERROR_MSG);
+    if (!Number.isInteger(numberFromString))
+      throw new Error(WRONG_FORMAT_NUMBER_ERROR_MSG);
   }
 }
 

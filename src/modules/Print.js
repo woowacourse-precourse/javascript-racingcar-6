@@ -12,6 +12,7 @@ class Print {
       Console.print(BLANK);
     }
   }
+
   static racingPerGame(racingInfo, gameCount) {
     racingInfo.carList.forEach((name, index) => {
       Console.print(

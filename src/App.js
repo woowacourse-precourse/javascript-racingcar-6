@@ -1,6 +1,4 @@
-import Make from './modules/Make.js';
-import Print from './modules/Print.js';
-import Get from './modules/Get.js';
+import { Get, Make, Print } from './modules/AppModules.js';
 
 class App {
   async play() {
