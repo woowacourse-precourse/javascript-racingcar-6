@@ -1,14 +1,15 @@
-import { readLineCar } from './utils.js';
+import { readLineCar, readLineGameCount } from './utils.js';
 
 function inputCarName() {
-  readLineCar().then((inputCar) => {
+  return readLineCar().then((inputCar) => {
     const carNames = inputCar.split(',');
     const cars = {};
     carNames.forEach((name) => {
       cars[`${name.trim()}`] = '';
     });
     console.log(cars);
+    return cars;
   });
 }
 
-inputCarName();
+export default inputCarName;

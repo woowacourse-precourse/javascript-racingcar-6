@@ -17,4 +17,14 @@ function consoleWinner() {
   return MissionUtils.Console.print(`최종 우승자 : ${winner}`);
 }
 
-export { readLineCar, readLineGameCount, consoleResult, consoleWinner };
+function randomNum() {
+  return MissionUtils.Random.pickNumberInRange(0, 9);
+}
+
+export {
+  readLineCar,
+  readLineGameCount,
+  consoleResult,
+  consoleWinner,
+  randomNum,
+};
