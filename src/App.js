@@ -11,7 +11,48 @@ class App {
   carsRecordBoard = {};
   winner = [];
 
-  async play() {}
+  async play() {
+    const carNameInput = await this.getUserInput(
+      PURPOSE_OF_QUESTION_MESSAGES.SET_CARS_NAME
+    );
+
+    this.validation(CAR_NAME, carNameInput);
+
+    const allCars = carNameInput.split(",");
+
+    const lapInput = await this.getUserInput(
+      PURPOSE_OF_QUESTION_MESSAGES.SET_LAPS
+    );
+
+    this.validation(LAP_TIME, lapInput);
+
+    let laps = Number(lapInput);
+
+    this.setCarsRecordBoard(allCars);
+
+    Console.print(`${"\n"}${NOW_RESULT}`);
+
+    while (laps > 0) {
+      for (let car of allCars) {
+        const randomNumber = this.getRandomNumber(
+          RANGE.START_NUM,
+          RANGE.END_NUM
+        );
+
+        this.moveCar(car, this.checkCanMove(randomNumber));
+
+        this.printCurrentResult(car);
+      }
+
+      Console.print("");
+
+      laps--;
+    }
+
+    this.findWinner(allCars);
+
+    this.printFinalResult();
+  }
 
   async getUserInput(purpose) {
     if (purpose === PURPOSE_OF_QUESTION_MESSAGES.SET_CARS_NAME) {
