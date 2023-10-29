@@ -14,8 +14,8 @@ class App {
 
   async play() {
     await this.#setUpRaceGame();
-    await this.#playRaceGame();
-    await this.#findWinner();
+    this.#playRaceGame();
+    this.#findWinner();
   }
 
   async #setUpRaceGame() {
