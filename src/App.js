@@ -37,11 +37,23 @@ class App {
       MissionUtils.Console.print("");
     }
   }
+  checkWinner() {
+    const winners = [];
+    let highScore = 0;
+    this.cars.map((car) => {
+      if (car.getDistance() > highScore) highScore = car.getDistance();
+    });
+    this.cars.map((car) => {
+      if (car.getDistance() === highScore) winners.push(car.getName());
+    });
+    MissionUtils.Console.print(`최종 우승자 : ${winners}`);
+  }
   async play() {
     try {
       await this.inputCars();
       await this.inputNumber();
       this.racingGame();
+      this.checkWinner();
     } catch (error) {
       throw error;
     }
