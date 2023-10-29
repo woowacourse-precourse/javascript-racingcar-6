@@ -5,7 +5,7 @@ export default class CommonValidator {
   #input;
 
   constructor(input) {
-    this.#input = input;
+    this.#input = input.trim();
   }
 
   static COMMON_VALIDATION_TYPES = Object.freeze({
