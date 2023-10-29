@@ -3,7 +3,7 @@ import { OUTPUT_MESSAGE } from '../constants/messages.js';
 
 export default class Output {
   static printTotalResult(totalResult) {
-    Console.print(totalResult);
+    Console.print(`${OUTPUT_MESSAGE.totalResult}${totalResult}`);
   }
 
   static printWinners(winners) {
