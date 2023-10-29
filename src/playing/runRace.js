@@ -15,8 +15,11 @@ const updateRaceResults = (participants, raceResults) => {
     if (determineMove()) {
       updatedRaceResults[participant] += '-';
     }
+
     MissionUtils.Console.print(`${participant} : ${updatedRaceResults[participant]}\n`);
   });
+
+  MissionUtils.Console.print('\n');
 
   return updatedRaceResults;
 };
@@ -57,7 +60,6 @@ const runRace = (totalRaces, participants) => {
 
   for (let race = 1; race < totalRaces + 1; race += 1) {
     raceResults = updateRaceResults(participants, raceResults);
-    MissionUtils.Console.print('\n');
   }
 
   const maxScore = findMaxScore(raceResults);
