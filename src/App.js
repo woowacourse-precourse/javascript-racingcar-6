@@ -27,6 +27,7 @@ class App {
     for (let moveNum = 0; moveNum < NUMBER_OF_MOVES; moveNum++) {
       const RESULT = this.resultByRandomNumber();
       RESULTS.push(RESULT);
+      // MissionUtils.Console.print(RESULTS);
       this.printProgress(RESULT);
     }
 
@@ -64,13 +65,13 @@ class App {
   //랜덤 숫자로 자동차 움직여서 결과 도출
   resultByRandomNumber() {
     const RESULT = {};
-    const RANDOM_NUMBER = MissionUtils.Random.pickNumberInRange(0, 9);
     for (let index = 0; index < this.carNames.length; index++) {
       // 각 carNames의 value에 RANDOM_NUMBER가 4이상이면 true, 4이하면 false가 저장됨 -> true면 -, false면 공백 저장되도록 변경
+      const RANDOM_NUMBER = MissionUtils.Random.pickNumberInRange(0, 9);
       RESULT[this.carNames[index]] = RANDOM_NUMBER >= 4 ? '-' : '';
+      MissionUtils.Console.print(RANDOM_NUMBER);
     }
 
-    MissionUtils.Console.print(RESULT);
     return RESULT;
   }
 
