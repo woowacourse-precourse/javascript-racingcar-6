@@ -30,6 +30,14 @@ class App {
             throw Error("[ERROR] 이름이 잘못된 형식입니다.");
         }
     }
+
+    MoveCar() {
+        this.cars.forEach((car) => {
+            if (MissionUtils.Random.pickNumberInRange(0, 9) >= 4) {
+                car.distance += 1;
+            }
+        });
+    }
 }
 
 export default App;
