@@ -2,39 +2,46 @@ import { Console, Random } from "@woowacourse/mission-utils";
 
 class App {
   constructor() {
-    this.results = []; // 각 자동차의 결과를 저장하는 객체
+    this.results = [];
   }
 
   async play() {
-    this.gameStart();
+    await this.inputName();
   }
 
-  async gameStart() {
+  async inputName() {
     Console.print(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
     );
-    const input = await Console.readLineAsync("");
-    const carArr = input.split(",");
-    this.checkInputValidity(carArr);
+    let input = await Console.readLineAsync("");
+
+    if (!input) {
+      throw new Error("[ERROR] 입력하세요");
+    } else if (input.includes(",")) {
+      const carArr = input.split(",");
+      await this.checkInputValidity(carArr);
+    } else {
+      throw new Error("[ERROR] 한 명 이상 입력");
+    }
   }
 
-  checkInputValidity(carArr) {
-    carArr.map((car) => {
-      if (car.length > 5) {
-        throw new Error(
-          "[ERROR] 숫자가 잘못된 형식입니다. 5자 이하만 가능합니다."
-        );
-      }
-    });
-    this.inputTrialNum(carArr);
-  }
+  async checkInputValidity(carArr) {
+    const invalidNames = carArr.filter((car) => car.length > 5);
 
+    if (invalidNames.length > 0) {
+      throw new Error("[ERROR] 5자 초과");
+    } else {
+      this.inputTrialNum(carArr);
+    }
+  }
   async inputTrialNum(carArr) {
     Console.print("시도할 횟수는 몇 회인가요?");
     const trialNum = await Console.readLineAsync("");
 
     if (Number(isNaN(trialNum))) {
       throw new Error("[ERROR] 숫자가 아닙니다.");
+    } else if (Number(trialNum) == 0) {
+      throw new Error("[ERROR] 0입니다.");
     }
     this.addObj(carArr);
     Console.print("");
