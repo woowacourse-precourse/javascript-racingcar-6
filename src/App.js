@@ -5,6 +5,7 @@ const MIN_RANDOM_NUMBER = 0;
 const MAX_RANDOM_NUMBER = 9;
 const MOVE_THRESHOLD = 4;
 const CAR_POSITION_SYMBOL = "-";
+
 class App {
   async getCarStatusFromUserInput() {
     const carsStatus = {};
@@ -32,11 +33,13 @@ class App {
       if (!name) {
         throw new Error("[ERROR] 자동차 이름이 비어있습니다.");
       }
+
       if (name.length > MAX_NAME_LENGTH) {
         throw new Error(
           `[ERROR] 자동차 이름 '${name}'이/가 ${MAX_NAME_LENGTH}자 초과입니다.`
         );
       }
+
       if (nameSet.has(name)) {
         throw new Error(`[ERROR] 자동차 이름 '${name}'이/가 중복됩니다.`);
       }
@@ -58,12 +61,13 @@ class App {
 
   validateCount(count) {
     if (Number.isNaN(count)) throw new Error("[ERROR] 숫자만 입력 가능합니다.");
+
     if (count <= 0) throw new Error("[ERROR] 시도 횟수가 0 이하입니다.");
   }
 
   runRacing(carsStatus, racingCount) {
-    const updatedStatus = { ...carsStatus };
     const carNames = Object.keys(carsStatus);
+    const updatedStatus = { ...carsStatus };
 
     for (let count = 0; count < racingCount; count += 1) {
       carNames.forEach((car) => {
