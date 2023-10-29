@@ -1,26 +1,19 @@
-const CAR_NAME_MAX_LENGTH = 5;
+const NAME_MIN_LENGTH = 1;
+const NAME_MAX_LENGTH = 5;
 class Validation {
   isProperInput(userInput) {
     const carList = userInput.split(',');
     if (carList.length === 0) {
       return false;
     }
-    if (!carList.every(this.hasProperCarName)) {
-      return false;
-    }
-    if (!carList.every(this.hasProperCarNameLength)) {
-      return false;
-    }
-    return true;
+    return carList.every(this.hasProperCarName);
   }
 
   hasProperCarName(car) {
-    const regex = /^[a-zA-Z]+$/;
+    const regex = new RegExp(
+      `^[a-zA-Z]{${NAME_MIN_LENGTH},${NAME_MAX_LENGTH}}$`
+    );
     return regex.test(car);
-  }
-
-  hasProperCarNameLength(car) {
-    return car.length === CAR_NAME_MAX_LENGTH;
   }
 }
 
