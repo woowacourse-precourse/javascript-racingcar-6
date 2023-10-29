@@ -1,7 +1,7 @@
 import App from "../src/App.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 
-const mockQuestions = (inputs) => {
+export const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
 
   MissionUtils.Console.readLineAsync.mockImplementation(() => {
@@ -10,14 +10,14 @@ const mockQuestions = (inputs) => {
   });
 };
 
-const mockRandoms = (numbers) => {
+export const mockRandoms = (numbers) => {
   MissionUtils.Random.pickNumberInRange = jest.fn();
   numbers.reduce((acc, number) => {
     return acc.mockReturnValueOnce(number);
   }, MissionUtils.Random.pickNumberInRange);
 };
 
-const getLogSpy = () => {
+export const getLogSpy = () => {
   const logSpy = jest.spyOn(MissionUtils.Console, "print");
   logSpy.mockClear();
   return logSpy;
@@ -28,8 +28,8 @@ describe("자동차 경주 게임", () => {
     // given
     const MOVING_FORWARD = 4;
     const STOP = 3;
-    const inputs = ["pobi,woni", "1"];
-    const outputs = ["pobi : -"];
+    const inputs = ["a,b", "1"];
+    const outputs = ["a : -"];
     const randoms = [MOVING_FORWARD, STOP];
     const logSpy = getLogSpy();
 
@@ -59,4 +59,6 @@ describe("자동차 경주 게임", () => {
     // then
     await expect(app.play()).rejects.toThrow("[ERROR]");
   });
+
+
 });
