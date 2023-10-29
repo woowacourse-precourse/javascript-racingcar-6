@@ -2,7 +2,9 @@ import { Console } from '@woowacourse/mission-utils';
 import { message, error, num } from './Constants.js';
 
 class App {
-  async play() {}
+  async play() {
+    this.generateResultTemplate(['asd', 'aa', 'fs']);
+  }
 
   async getRacecarNameInput() {
     const racecarNameInput = await Console.readLineAsync(message.ASK_RACECAR_NAMES);
@@ -45,6 +47,15 @@ class App {
 
   async checkAttemptValidity(attemptInput) {
     return /^\d+$/.test(attemptInput);
+  }
+
+  generateResultTemplate(racecarNames) {
+    const template = racecarNames.reduce((acc, cur) => {
+      acc.push(`${cur} : `);
+      return acc;
+    }, []);
+
+    return template;
   }
 
   async printFinalResult(finalWinner) {
