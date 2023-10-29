@@ -19,11 +19,11 @@ let winnerarray = [];
 
 async function carCreater() {
   MissionUtils.Console.print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-  const CAR_NAME = await MissionUtils.Console.readLineAsync('');
-  const CAR_NAME_SPLIT = CAR_NAME.split(',');
-  validationNameLength(CAR_NAME_SPLIT);
-  carNameSave(CAR_NAME_SPLIT);
-  return CAR_NAME_SPLIT;
+  const carName = await MissionUtils.Console.readLineAsync('');
+  const carNameSplit = carName.split(',');
+  validationNameLength(carNameSplit);
+  carNameSave(carNameSplit);
+  return carNameSplit;
 }
 
 function validationNameLength(names) {
