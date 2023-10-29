@@ -5,12 +5,12 @@ class App {
     this.carName=[];
   }
 
-  setCarName(carName){
+  set CarName(carName){
     this.carName = carName;
   }
 
   async play() {
-    this.setCarName(await inputCarName());
+    this.carName = await inputCarName();
   }
 }
 
