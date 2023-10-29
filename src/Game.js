@@ -4,6 +4,7 @@ import CarList from './CarList.js';
 
 class Game {
   #carListArr = [];
+  #tryMove = '';
 
   async init() {
     const carListInput = await Console.readLineAsync(
@@ -18,6 +19,10 @@ class Game {
     this.#carListArr.forEach((carName) => {
       carList.add(new Car(carName));
     });
+  }
+
+  async moveQuestion() {
+    this.#tryMove = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
   }
 }
 
