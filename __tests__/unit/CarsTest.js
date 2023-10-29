@@ -18,7 +18,7 @@ describe('자동차 객체는', () => {
   });
 
   test('거리의 업데이트가 가능한가?', () => {
-    const EXPECTED_DISTANCE = 1;
+    const EXPECTED_DISTANCE = '-';
 
     INPUTS.forEach((name) => {
       cars.movingForwardByName(name);

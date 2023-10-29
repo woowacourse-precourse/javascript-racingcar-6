@@ -7,7 +7,7 @@ class Cars {
 
   static initialize(names) {
     return new Map(names.map((name) => {
-      const distance = 0;
+      const distance = '';
       return [
         name, {
           distance,
@@ -26,7 +26,7 @@ class Cars {
 
   movingForwardByName(name) {
     const { distance } = this.#INFO.get(name);
-    this.#INFO.set(name, { distance: distance + 1 });
+    this.#INFO.set(name, { distance: `${distance}-` });
   }
 }
 
