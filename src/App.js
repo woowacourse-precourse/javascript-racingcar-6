@@ -1,5 +1,9 @@
+import { readCarName } from './RaceInput.js';
+
 class App {
-  async play() {}
-}
+  async play() {
+    await readCarName();
+  }
+};
 
 export default App;
