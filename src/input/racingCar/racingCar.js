@@ -11,3 +11,5 @@ const racingCar = (input) => {
   });
   return input_object_array;
 };
+
+export default racingCar;
