@@ -38,7 +38,8 @@ describe("기능 테스트", () => {
         "checkCarFormat 함수 테스트",
         async (value) => {
             const app = new App();
-            await expect(() => app.checkCarFormat(value)).toThrow(
+            const valueArr = value.split(",");
+            await expect(() => app.checkCarFormat(value, valueArr)).toThrow(
                 "[ERROR] 자동차 이름이 잘못된 형식입니다."
             );
         }
