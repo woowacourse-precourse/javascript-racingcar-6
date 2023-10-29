@@ -7,6 +7,7 @@ class App {
 
   async play() {
     this.carList = new CarList(await this.view.getCarName());
+    const COUNT = await this.view.getRound();
   }
 }
 
