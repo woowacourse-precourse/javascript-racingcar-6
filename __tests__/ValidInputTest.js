@@ -23,13 +23,16 @@ describe("입력값 유효성 검사", () => {
     await expect(racingCar.init()).rejects.toThrow();
   });
 
-  test("횟수 인풋에 숫자를 입력안하면 예외 처리 한다.", async () => {
+  test.each([
+    ["jak,jaka", "k"],
+    ["jak,jaka", "1.2"],
+    ["jak,jaka", "-1"],
+  ])("횟수 인풋에 0보다 작거나 소수 또는 숫자가 아니면 예외 처리 한다.", async (input) => {
     // given
-    const inputs = ["jak,jaka", "k"];
+    mockQuestions(input);
 
     // when
     const racingCar = new RacingCar();
-    mockQuestions(inputs);
 
     // then
     await expect(racingCar.init()).rejects.toThrow();
