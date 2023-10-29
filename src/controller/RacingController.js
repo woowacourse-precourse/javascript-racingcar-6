@@ -27,10 +27,7 @@ class RacingController {
     Object.entries(this.carsObject).forEach(([carName, carDistance]) => {
       if (this.isForwardRacingCar()) {
         this.carsObject[carName] = carDistance + 1;
-        this.maxDistance =
-          this.carsObject[carName] > this.maxDistance
-            ? this.carsObject[carName]
-            : this.maxDistance;
+        this.renewMaxDistance(this.carsObject[carName]);
       }
 
       OutputView.printCurrentRacingCar(carName, this.carsObject[carName]);
@@ -45,6 +42,14 @@ class RacingController {
     }
 
     return false;
+  }
+
+  renewMaxDistance(distance) {
+    if (distance > this.maxDistance) {
+      this.maxDistance = distance;
+    }
+
+    return;
   }
 
   end() {
