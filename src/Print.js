@@ -36,6 +36,10 @@ class Print {
   static getRaceResult(name, result) {
     Console.print(TEXT.RESULT_MESSAGE(name, result));
   }
+
+  static printRaceResult() {
+    Console.print(TEXT.RESULT_ALERT_MESSAGE);
+  }
 }
 
 export default Print;
