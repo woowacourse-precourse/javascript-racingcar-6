@@ -4,10 +4,16 @@ import { validateCarNames } from '../validations/carNamesValidation.js';
 import { validateCommon } from '../validations/commonValidation.js';
 import { validateMoveCount } from '../validations/moveCountValidation.js';
 
-import { InputView } from '../views/index.js';
+import { InputView, OutputView } from '../views/index.js';
+
+import RacingGameService from '../service/RacingCarGameService.js';
 
 class RacingCarGameController {
   #inputView = InputView;
+
+  #racingGameService = RacingGameService;
+
+  #outputView = OutputView;
 
   async run() {
     await this.#processRacingGame();
@@ -16,7 +22,11 @@ class RacingCarGameController {
   async #processRacingGame() {
     const racingCarNames = await this.#requireRacingCarNames();
     const moveCount = await this.#requireRacingCarMoveCount();
-    console.log(racingCarNames, moveCount);
+    const { racingResult, racingWinners } = this.#racingGameService.calculateRacingCarGameResult(
+      racingCarNames,
+      moveCount,
+    );
+    this.#outputView.printRacingGameResult({ racingResult, racingWinners });
   }
 
   async #requireRacingCarNames() {
