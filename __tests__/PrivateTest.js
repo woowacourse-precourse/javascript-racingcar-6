@@ -1,16 +1,36 @@
-describe("사용자 입력 테스트", () => {
-  test("split 메서드로 주어진 값을 구분", () => {
-    const input = "1,2";
-    const result = input.split(",");
+import User from "../src/User.js";
 
-    expect(result).toContain("2", "1");
-    expect(result).toContainEqual("1", "2");
+import { MissionUtils } from '@woowacourse/mission-utils';
+
+const mockQuestions = (inputs) => {
+  MissionUtils.Console.readLineAsync = jest.fn();
+
+  MissionUtils.Console.readLineAsync.mockImplementation(() => {
+    const input = inputs.shift();
+    return Promise.resolve(input);
+  });
+};
+
+describe('사용자 입력 테스트', () => {
+  test.each([
+    [['kim,park']]
+  ])('split 메서드로 주어진 값을 구분', async (inputs) => {
+    mockQuestions(inputs);
+
+    const user = new User();
+
+    await expect(user.inputPlayersName()).resolves.toContainEqual('kim', 'park');
   });
 
-  test("split 메서드로 구분자가 포함되지 않은 경우 값을 그대로 반환", () => {
-    const input = "1";
-    const result = input.split(",");
+  test.each([
+    [['kim']]
+  ])('split 메서드로 구분자가 포함되지 않은 경우 값을 그대로 반환', async (inputs) => {
+    mockQuestions(inputs);
 
-    expect(result).toContain("1");
+    const user = new User();
+
+    await expect(user.inputPlayersName()).resolves.toContainEqual('kim');
   });
+
+  
 })
