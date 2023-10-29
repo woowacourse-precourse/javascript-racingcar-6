@@ -16,6 +16,7 @@ const ERRORS = Object.freeze({
     NAME: "자동차 이릉의 길이는 5글자를 넘을 수 없습니다.",
     TRY: "전진 시도 회수는 자연수로 이루어져야합니다.",
     DUPLICATION: "자동차 이름은 중복하여 입력할 수 없습니다.",
+    ONLYONE: "출전하는 자동차는 2대 이상이어야 합니다."
 })
 
 const RULES = Object.freeze({

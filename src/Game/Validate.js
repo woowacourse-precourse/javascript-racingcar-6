@@ -6,10 +6,14 @@ class Validate {
     
     validateCarName(input) {
         const names = this.removeBlankSplit(input);
+        this.checkLength(names);
         this.checkDuplication(names);
         this.checkNameLength(names);
     }
-
+    checkLength(arr){
+        const condition = (arr.length ===1);
+        throwError(condition,ERRORS.ONLYONE);
+    }
     removeBlankSplit(input){
         const inputs = input.replace(/\s/g, '');
         const names= inputs.split(',');
@@ -18,7 +22,7 @@ class Validate {
 
     checkDuplication(array){
         const set = new Set(array);
-        const condition = set.size != array.length
+        const condition = (set.size != array.length);
         throwError(condition,ERRORS.DUPLICATION);
     }
 
