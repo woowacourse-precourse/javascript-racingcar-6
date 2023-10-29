@@ -5,7 +5,7 @@ import RacingCar from "../model/racingCar";
 
 class AppController {
   constructor() {
-    this.racingGame = new RacingCar();
+    this.racingCar = new RacingCar();
   }
 
   async play() {
@@ -16,16 +16,16 @@ class AppController {
     this.runRace(names, number);
 
     this.selectWinner();
-    const winner = this.racingGame.getWinner();
+    const winner = this.racingCar.getWinner();
     OutputView.printMessage(winner);
   }
 
   runRace(names, number) {
-    this.racingGame.setResult(names);
-    const result = this.racingGame.getResult();
+    this.racingCar.setResult(names);
+    const result = this.racingCar.getResult();
 
     for (let i = 0; i < number; i++) {
-      this.racingGame.carMove();
+      this.racingCar.carMove();
       this.displayResult(result);
     }
   }
@@ -37,8 +37,8 @@ class AppController {
   }
 
   selectWinner() {
-    const maxPoint = this.racingGame.getMaxPoint();
-    this.racingGame.calWinner(maxPoint);
+    const maxPoint = this.racingCar.getMaxPoint();
+    this.racingCar.calWinner(maxPoint);
   }
 }
 

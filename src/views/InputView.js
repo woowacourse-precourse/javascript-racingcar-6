@@ -1,7 +1,7 @@
 import { Console } from "@woowacourse/mission-utils";
 import MESSAGE from "../constants/message";
-import nameValidator from "../validator/nameValidator";
-import numberValidator from "../validator/numberValidator";
+import nameValidator from "../validators/nameValidator";
+import numberValidator from "../validators/numberValidator";
 
 const InputView = {
   readName: async () => {
