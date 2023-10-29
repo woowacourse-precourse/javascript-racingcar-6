@@ -5,14 +5,19 @@ class App {
   #carRace;
 
   async play() {
-    this.#setGameConfig();
+    await this.#setGameConfig();
+    this.#startRace();
   }
 
   async #setGameConfig() {
     const carNameList = await InputView.getCarNameInput();
     const raceCount = await InputView.getRaceCountInput();
     this.#carRace = new CarRace(carNameList, raceCount);
-    this.#carRace.consoleCar();
+  }
+
+  #startRace() {
+    const raceResult = this.#carRace.doRace();
+    console.log(raceResult);
   }
 }
 
