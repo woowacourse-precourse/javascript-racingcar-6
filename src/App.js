@@ -13,7 +13,6 @@ class App {
     for (let count = 0; count < totalRacingCount; count += 1) {
       racingGame.playRacing(registeredCars);
       racingGame.showGameStatus(registeredCars);
-      // Console.print('');
     }
 
     const racingWinners = racingGame.findWinner(registeredCars);
