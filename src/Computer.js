@@ -11,6 +11,12 @@ export default class Computer {
     await this.getTrialNumberInputFromUser(user);
   }
 
+  tryToMoveCars(times) {
+    for (let time = 0; time < times; time++) {
+      this.racingCars.forEach((car) => car.moveForward());
+    }
+  }
+
   async getCarNameInputFromUser(user) {
     const userInput = await user.inputCarName();
     const carNameArr = this.getCarNameArrayFromString(userInput);
