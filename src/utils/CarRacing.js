@@ -1,5 +1,4 @@
 import { Console } from "@woowacourse/mission-utils";
-import { FORWARD_CRITERIA } from "./Constants.js";
 import Car from "./Car.js";
 import User from "./User.js";
 
@@ -14,7 +13,7 @@ const CarRacing = {
       const carMovesList = Car.createCarMoves(carNameList.length);
 
       this.showTryResult(carNameList, carMovesList);
-      this.countMoveForward(carMoveForwardList, carMovesList);
+      Car.countMoveForward(carMoveForwardList, carMovesList);
       const winners = this.decideWinner(carMoveForwardList);
       this.printWinner(winners);
     }
@@ -23,15 +22,6 @@ const CarRacing = {
   showTryResult(carNames, carMoves) {
     carNames.forEach((name, index) => {
       Console.print(`${name} : ${carMoves[index]}`);
-    });
-  },
-
-  countMoveForward(carMoveForwards, carMoves) {
-    carMoveForwards.forEach((forward, index) => {
-      if (carMoves[index] >= FORWARD_CRITERIA) {
-        return forward + 1;
-      }
-      return forward;
     });
   },
 
