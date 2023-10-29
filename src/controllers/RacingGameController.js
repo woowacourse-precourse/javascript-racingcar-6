@@ -38,6 +38,7 @@ class RacingGameController {
       this.#outputView.printRoundResult(roundResult);
     }
   }
+
   #displayWinners() {
     const winners = this.#racingGame.getWinners();
     this.#outputView.printWinners(winners);
