@@ -1,4 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
+import Validation from './Validation.js';
+import ErrorHandler from './ErrorHandler.js';
 
 class RacingGame {
   statusMark = '-';
@@ -7,7 +9,14 @@ class RacingGame {
     const racingCount = await Console.readLineAsync(
       '시도할 횟수는 몇 회인가요?'
     );
-    return Number(racingCount);
+    const racingCountNumber = Number(racingCount);
+    const validation = new Validation();
+    const errorHandler = new ErrorHandler();
+    if (!validation.isValidRacingCount(racingCountNumber)) {
+      errorHandler.throwInvalidRacingCountError();
+    }
+
+    return racingCountNumber;
   }
 
   playRacing(carsArray) {
