@@ -10,4 +10,8 @@ class Car {
   move(step) {
     this.#step += step;
   }
+
+  getName() {
+    return this.#name;
+  }
 }
