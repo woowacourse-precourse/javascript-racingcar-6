@@ -2,21 +2,19 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 
 class Cars {
     constructor(names) {
-        this.number = names.length; // 자동차의 개수
+        this.number = names.length;
         this.names = names;
-        this.distances = new Array(this.number).fill(0);
-        this.winners = [];
+        this.distances = new Array(names.length).fill(0);
     }
 
     moveCars() {
         for (var i = 0; i < this.number; i++) {
-            if (this.ismove())
-                this.distances[i] += 1;
+            if (this.isMove())
+                this.distances[i]++;
         }
     }
 
-    // 자동차가 전진할 것인지 판단
-    ismove() {
+    isMove() {
         const number = MissionUtils.Random.pickNumberInRange(0, 9);
         if (number >= 4)
             return true;
@@ -25,12 +23,15 @@ class Cars {
     };
 
     getWinners() {
+        const winners = [];
         const maxDistance = Math.max(...this.distances);
 
         for (var i = 0; i < this.number; i++) {
             if (this.distances[i] == maxDistance)
-                this.winners.push(this.names[i]);
+                winners.push(this.names[i]);
         }
+
+        return winners;
     }
 }
 

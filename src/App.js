@@ -1,4 +1,4 @@
-import Cars from './Car.js';
+import Cars from './Cars.js';
 import InputView from './view/InputView.js';
 import OutputView from './view/OutputView.js';
 import { Console } from '@woowacourse/mission-utils';
@@ -16,8 +16,8 @@ class App {
       OutputView.printCars(cars.names, cars.distances);
     }
 
-    cars.getWinners()
-    OutputView.printWinners(cars.winners);
+    const winners = cars.getWinners()
+    OutputView.printWinners(winners);
   }
 }
 
