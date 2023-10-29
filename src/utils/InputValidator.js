@@ -6,6 +6,14 @@ class InputValidator {
     }
     return false;
   }
+
+  checkMoveCount(count) {
+    const regExp = /^(?:[1-9]+\d*)$/;
+    if (regExp.test(count)) {
+      return true;
+    }
+    return false;
+  }
 }
 
 export default InputValidator;
