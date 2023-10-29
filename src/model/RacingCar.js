@@ -1,6 +1,14 @@
 export default class RacingCar {
+  /**
+   * @private
+   * @type {string}
+   */
   #name;
 
+  /**
+   * @private
+   * @type {number}
+   */
   #status = 0;
 
   /**
