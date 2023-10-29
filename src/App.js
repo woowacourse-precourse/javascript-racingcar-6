@@ -20,16 +20,28 @@ class App {
       throw new Error('[ERROR] 자동차 이름을 입력해 주세요');
     }
 
+    return names;
+  }
+
+  async getRepeatTimes() {
+    const times = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    const pattern = /^[1-9]d*$/;
+    if (!pattern.test(times)) {
+      throw new Error('[ERROR] 시도할 횟수는 자연수여야 합니다');
+    }
+    return times;
+  }
+
+  async play() {
+    const names = await this.getCarNames();
     names.split(',').forEach((element) => {
       if (element.length > 5) {
         throw new Error('[ERROR] 이름은 5자 이하여야 합니다');
       }
       this.#cars.push({ name: element, count: 0 });
     });
-  }
 
-  async play() {
-    this.getCarNames();
+    this.#times = await this.getRepeatTimes();
   }
 }
 
