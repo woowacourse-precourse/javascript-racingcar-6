@@ -6,18 +6,15 @@ class Car {
     this.position = 0;
   }
 
-  makeRandomNumber() {
-    return MissionUtils.Random.pickNumberInRange(0, 9);
-  }
-
   goForward() {
-    if (this.makeRandomNumber() >= 4) {
+    let randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
+    if (randomNumber >= 4) {
       this.position++;
     }
   }
 
   displayPosition() {
-    return `${Car.name}: ${Car.position}`;
+    Console.print(`${this.name} : ${this.position}`);
   }
 }
 
@@ -57,7 +54,23 @@ class App {
     isCarNameOverFiveLetters(carNameArr);
     isCarNameSame(carNameArr);
 
+    let racingRound = await this.getMoveCount();
+
     let carArr = makeCarArray(carNameArr);
+    this.doRace(carArr, racingRound);
+  }
+
+  oneRound(carArr) {
+    carArr.forEach((car) => {
+      car.goForward();
+      car.displayPosition();
+    });
+  }
+
+  doRace(carArr, racingRound) {
+    for (let i = 0; i < racingRound; i++) {
+      this.oneRound(carArr);
+    }
   }
 
   async getCarName() {
@@ -75,3 +88,6 @@ class App {
 }
 
 export default App;
+
+// const app = new App();
+// app.play();
