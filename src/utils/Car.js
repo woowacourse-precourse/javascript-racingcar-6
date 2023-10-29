@@ -1,4 +1,5 @@
 import { Random } from "@woowacourse/mission-utils";
+import { FORWARD_CRITERIA } from "./Constants.js";
 
 const Car = {
   getMoveForwards(carNames) {
@@ -10,6 +11,15 @@ const Car = {
       Random.pickNumberInRange(0, 9)
     );
     return carMoves;
+  },
+
+  countMoveForward(carMoveForwards, carMoves) {
+    carMoveForwards.forEach((forward, index) => {
+      if (carMoves[index] >= FORWARD_CRITERIA) {
+        return forward + 1;
+      }
+      return forward;
+    });
   },
 };
 
