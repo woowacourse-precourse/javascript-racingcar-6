@@ -1,3 +1,4 @@
+import { MissionUtils } from '@woowacourse/mission-utils';
 import Car from './Car.js';
 
 class Race {
@@ -8,6 +9,12 @@ class Race {
   moveAllCars() {
     this.cars.forEach((car) => {
       car.move();
+    });
+  }
+
+  displayAllCars() {
+    this.cars.forEach((car) => {
+      MissionUtils.Console.print(`${car.name} : ${car.track}`);
     });
   }
 

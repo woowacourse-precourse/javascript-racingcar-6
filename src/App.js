@@ -20,13 +20,16 @@ class App {
       throw new Error('[ERROR] 숫자가 잘못된 형식입니다.');
     }
 
+    MissionUtils.Console.print('\n실행 결과');
     const race = new Race(names);
     for (let i = 0; i < attempts; i += 1) {
       race.moveAllCars();
+      race.displayAllCars();
+      MissionUtils.Console.print('');
     }
 
     const winners = race.getWinners();
-    MissionUtils.Console.print(`최종 우승자: ${winners.join(', ')}`);
+    MissionUtils.Console.print(`최종 우승자 : ${winners.join(', ')}`);
   }
 }
 
