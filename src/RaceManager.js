@@ -1,5 +1,5 @@
 import { Console, Random } from '@woowacourse/mission-utils';
-import { MIN_RANGE, MAX_RANGE } from './constants/constants';
+import { MIN_RANGE, MAX_RANGE } from './constants/constants.js';
 
 class RaceManager {
   static async getNumberOfAttempts() {
