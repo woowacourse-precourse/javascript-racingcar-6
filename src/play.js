@@ -4,13 +4,15 @@ import Result from './Result.js';
 class Play {
   constructor() {}
   racing(carList) {
-    for (let i = 0; i < carList.length; i++) {
+    carList.forEach((car) => {
       const number = Random.pickNumberInRange(0, 9);
       if (number >= 4) {
-        carList[i].go();
+        car.go();
       }
-      Console.print(`${carList[i].name} : ${'-'.repeat(carList[i].position)}`);
-    }
+
+      Console.print(`${car.name} : ${'-'.repeat(car.position)}`);
+    });
+
     console.log('\r');
   }
 
