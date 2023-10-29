@@ -19,30 +19,38 @@ class App {
     this.loopNumber = 0;
   }
 
+  CheckValidName(name) {
+    if (name.length === 0 || name.length > 5) {
+      CAR_NAME_LENGTH_ERROR();
+    }
+    if (this.carNames.includes(name)) {
+      CAR_NAME_DUPLICATE_ERROR();
+    }
+  }
+
   async getCar() {
     GetCarNameMessage();
     const inputCarName = await Console.readLineAsync().then((res) =>
       res.split(",")
     );
     inputCarName.forEach((name) => {
-      if (name.length === 0 || name.length > 5) {
-        CAR_NAME_LENGTH_ERROR();
-      }
-      if (this.carNames.includes(name)) {
-        CAR_NAME_DUPLICATE_ERROR();
-      }
+      this.CheckValidName(name);
       const newCar = new Car(name);
       this.carNames.push(name);
       this.cars.push(newCar);
     });
   }
 
-  async GetLoopNumber() {
-    GetLoopNumberMessage();
-    const inputNumber = await Console.readLineAsync();
+  CheckValidType(inputNumber) {
     if (Number.isNaN(+inputNumber)) {
       LOOP_NUMBER_TYPE_ERROR();
     }
+  }
+
+  async GetLoopNumber() {
+    GetLoopNumberMessage();
+    const inputNumber = await Console.readLineAsync();
+    this.CheckValidType(inputNumber);
     this.loopNumber = inputNumber;
   }
 
