@@ -4,18 +4,23 @@ import { NUMBER } from '../util/Constant.js';
 class CarGame {
   checkPosition(carMap, attempts) {
     carMap.forEach((_, carName) => {
-      carMap.set(carName, this.getRandomNumber(Number(attempts)));
+      carMap.set(carName, this.getForwardCount(Number(attempts)));
     });
     return carMap;
   }
 
-  getRandomNumber(attempts) {
+  getForwardCount(attempts) {
     let count = 0;
     for (let i = 0; i < attempts; i++) {
-      const randomValue = Random.pickNumberInRange(NUMBER.MIN, NUMBER.MAX);
-      if (randomValue >= NUMBER.RANDOM) {
-        count += 1;
-      }
+      count = this.getRandomNumber(count);
+    }
+    return count;
+  }
+
+  getRandomNumber(count) {
+    const randomValue = Random.pickNumberInRange(NUMBER.MIN, NUMBER.MAX);
+    if (randomValue >= NUMBER.RANDOM) {
+      count += 1;
     }
     return count;
   }
