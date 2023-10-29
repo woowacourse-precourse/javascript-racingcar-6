@@ -7,7 +7,7 @@ const CarRacing = {
   async playCarRacing() {
     const carNameList = await User.getCarNames();
     const tryCount = await User.getTryCount();
-    const carMoveForwardList = new Array(carNameList.length).fill(0);
+    const carMoveForwardList = Car.getMoveForwards(carNameList);
 
     for (let count = 0; count < tryCount; count += 1) {
       const carMovesList = Car.getCarMovesList(carNameList.length);
