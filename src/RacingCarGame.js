@@ -17,8 +17,10 @@ class RacingCarGame {
     this.#cars = [];
   }
 
-  #getCarNames() {
-    const carNames = IOManager.input(RacingCarGame.#MESSAGE.GET_CAR_NAMES);
+  async #getCarNames() {
+    const carNames = await IOManager.input(
+      RacingCarGame.#MESSAGE.GET_CAR_NAMES
+    );
     this.#validateCarNames(carNames);
     return carNames;
   }
@@ -49,8 +51,8 @@ class RacingCarGame {
     });
   }
 
-  #getTryCount() {
-    const tryCount = IOManager.input('시도할 횟수는 몇 회인가요?');
+  async #getTryCount() {
+    const tryCount = await IOManager.input('시도할 횟수는 몇 회인가요?');
     this.#validateTryCount(tryCount);
     return parseInt(tryCount);
   }
@@ -92,6 +94,24 @@ class RacingCarGame {
   #displayResult(winners) {
     const winnerNames = winners.map((winner) => winner.getName()).join(', ');
     IOManager.output(`최종 우승자 : ${winnerNames}`);
+  }
+
+  async start() {
+    const carNames = await this.#getCarNames();
+    this.#createCarObjectsFromNames(carNames);
+    const tryCount = await this.#getTryCount();
+
+    IOManager.output('\n실행 결과');
+    for (let i = 0; i < tryCount; i++) {
+      this.#cars.forEach((car) => {
+        this.#decideToMove(car);
+        this.#displayCurrentProgress(car);
+      });
+      IOManager.output('');
+    }
+
+    const winners = this.#getWinners();
+    this.#displayResult(winners);
   }
 }
 
