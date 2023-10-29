@@ -12,4 +12,6 @@ const INPUT_LIMIT = {
     playerName: 5
 }
 
-export { MESSAGE, ERROR_MESSAGE, INPUT_LIMIT, };
+const POSITION_MARK = '-'
+
+export { MESSAGE, ERROR_MESSAGE, INPUT_LIMIT, POSITION_MARK, };

@@ -45,6 +45,13 @@ class App {
     Object.keys(this.#gameData).forEach((playerName) => this.printCurrentPosition(playerName));
   }
 
+  repeatTurn(repeatCount) {
+    Array.from( {length: repeatCount}).forEach(() => {
+      this.oneTurn();
+      Console.print('');
+    })
+  }
+
 // 최종 우승자를 출력한다.
 // 우승자가 여러 명인 경우 쉼표로 구분해 같이 출력한다.
 
@@ -52,8 +59,9 @@ class App {
     await this.setGameData();
     await this.setRepeatCount();
     Console.print('');
-    Console.print(MESSAGE.gameStart);a
-    this.oneTurn();
+    Console.print(MESSAGE.gameStart);
+
+    this.repeatTurn(this.#repeatCount);
 
     Console.print(this.#gameData);
     Console.print(this.#repeatCount);
