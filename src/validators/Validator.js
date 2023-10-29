@@ -23,7 +23,7 @@ class Validator {
       throw new ValidationError(ERROR_MESSAGE.only_number);
     }
 
-    if (Number(number) < EXCUTION_NUMBER.min && Number(number) > EXCUTION_NUMBER.max) {
+    if (Number(number) < EXCUTION_NUMBER.min || Number(number) > EXCUTION_NUMBER.max) {
       throw new ValidationError(ERROR_MESSAGE.invalid_number_of_time);
     }
   }
