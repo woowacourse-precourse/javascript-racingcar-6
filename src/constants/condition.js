@@ -3,7 +3,7 @@ const CONDITION = Object.freeze({
   notNormalCharacter: /[^a-z|가-힣]/gi,
   rangeStart: 0,
   rangeEnd: 9,
-  movingForward: 4
+  movingForward: 4,
 });
 
 export default CONDITION;
