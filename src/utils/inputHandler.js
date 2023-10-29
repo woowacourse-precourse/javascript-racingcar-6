@@ -10,5 +10,10 @@ export async function inputHandler() {
   const carList = carName.split(",");
   CarError.checkInputLength(carList);
 
-  return carList;
+  return generateTrimmedArray(carList);
+}
+
+function generateTrimmedArray(inputList) {
+  const trimmedArray = inputList.map((element) => element.trim());
+  return trimmedArray;
 }
