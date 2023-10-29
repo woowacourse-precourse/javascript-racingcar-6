@@ -25,6 +25,15 @@ class App {
 
 Console.print(MESSAGE.ACTION_RESULT);
 
+for (let i = 0; i < try_number; i++) {
+  var try_game = {};
+  player_array.forEach(function (value,index) {
+    const action_result = (try_game.name = player_array[index] + ' ' + ':' + ' ');
+    Console.print(action_result);
+}
+) 
+Console.print(' ');
+}
 
 
   }
