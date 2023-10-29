@@ -1,6 +1,6 @@
 import MESSAGE from "../constants/message";
-import InputView from "../view/InputView";
-import OutputView from "../view/OutputView";
+import InputView from "../views/InputView";
+import OutputView from "../views/OutputView";
 import RacingCar from "../model/racingCar";
 
 class AppController {
