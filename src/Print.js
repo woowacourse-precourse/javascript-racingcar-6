@@ -26,6 +26,10 @@ class Print {
       throw new ERROR(ERROR.COUNT_INPUT);
     }
 
+    if (!Validate.minTryNumber(count)) {
+      throw new ERROR(ERROR.COUNT_INPUT_MIN);
+    }
+
     return count;
   }
 }
