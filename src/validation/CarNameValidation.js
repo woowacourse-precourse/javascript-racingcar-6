@@ -1,11 +1,18 @@
-import { ERROR } from '../constants.js';
+class CarNameValidation {
+  static checkIfEmpty(name) {
+    return name.trim() === '';
+  }
 
-export default (name) => {
-  const nameArray = name.split(',');
-  if (name.trim()) throw new Error(ERROR.EMPTY_CAR_NAME);
-  if (nameArray.some((val) => val.trim() === ''))
-    throw new Error(ERROR.INVALID_CAR_NAME);
-  if (new Set(nameArray).size) throw new Error(ERROR.DUPLICATE_CAR_NAME);
-  if (nameArray.some((val) => val.length >= 6))
-    throw new Error(ERROR.OVER_CAR_NAME_LENGTH);
-};
+  static checkIfInvalid(name) {
+    return name.split(',').some((val) => val.trim() === '');
+  }
+
+  static checkIfDuplicate(name) {
+    return new Set(name.split(',')).size !== name.split(',').length;
+  }
+
+  static checkIfOverLength(name) {
+    return name.split(',').some((val) => val.length >= 6);
+  }
+}
+export default CarNameValidation;
