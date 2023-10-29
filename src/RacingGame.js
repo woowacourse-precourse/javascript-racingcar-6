@@ -26,10 +26,16 @@ class RacingGame {
   }
 
   showGameStatus(carsArray) {
-    carsArray.forEach((car) => {
-      Console.print(
-        `${car.name} : ${this.SETTINGS.gameStatusMark.repeat(car.location)}`
-      );
+    const lastStatusIndex = carsArray.length - 1;
+    carsArray.forEach((car, index) => {
+      let statusString = `${car.name} : ${this.SETTINGS.gameStatusMark.repeat(
+        car.location
+      )}`;
+      if (index === lastStatusIndex) {
+        statusString += '\n';
+      }
+
+      Console.print(statusString);
     });
   }
 
