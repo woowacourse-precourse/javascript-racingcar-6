@@ -8,24 +8,35 @@ export async function userInputRound() {
   return roundNum;
 }
 
-export async function generateRandomNum() {
+export async function generateCars() {
   const carsList = await carGenerate();
   const randomCarsList = carsList.map((car) => ({
     carName: car,
-    carRandomNum: MissionUtils.Random.pickNumberInRange(0, 9),
     carDistance: "",
   }));
   return randomCarsList;
 }
 
-async function checkRandomNum() {
-  const needCheckList = await generateRandomNum();
-  const filteredCars = needCheckList.map((car) => {
-    if (car.carRandomNum >= 4) {
+async function checkRandomNum(carList) {
+  return carList.map((car) => {
+    const randomNum = MissionUtils.Random.pickNumberInRange(0, 9);
+    if (randomNum >= 4) {
       return { ...car, carDistance: car.carDistance + "-" };
     }
     return car;
   });
 }
 
-checkRandomNum();
+async function playRacing() {
+  const round = await userInputRound();
+  let carList = await generateCars();
+  for (let i = 0; i < round; i++) {
+    const roundResult = await checkRandomNum(carList);
+    roundResult.forEach((car) => {
+      console.log(`${car.carName} : ${car.carDistance}`);
+    });
+    console.log();
+  }
+}
+
+playRacing();
