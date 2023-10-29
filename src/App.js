@@ -1,4 +1,4 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Console, Random } from "@woowacourse/mission-utils";
 
 class App {
   async createCarObjectFromInput() {
@@ -21,11 +21,30 @@ class App {
     Console.print("시도할 횟수는 몇 회인가요?");
     const racingCount = await Console.readLineAsync("");
 
-    return racingCount;
+    return parseInt(racingCount, 10);
   }
 
-  play() {
-    this.createCarObjectFromInput();
+  runRacing(carObject, racingCount) {
+    const newObject = { ...carObject };
+    const names = Object.keys(carObject);
+
+    for (let count = 0; count < racingCount; count += 1) {
+      names.forEach((name) => {
+        const number = Random.pickNumberInRange(0, 9);
+        newObject[name] += number >= 4 ? 1 : 0;
+
+        Console.print(`${name} : ${"-".repeat(newObject[name])}`);
+      });
+
+      Console.print(" ");
+    }
+  }
+
+  async play() {
+    const carObject = await this.createCarObjectFromInput();
+    const racingCount = await this.askForRacingCount();
+
+    this.runRacing(carObject, racingCount);
   }
 }
 
