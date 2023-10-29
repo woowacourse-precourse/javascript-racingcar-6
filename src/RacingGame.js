@@ -22,7 +22,6 @@ class RacingGame{
     }
   }
 
-
   #setPlayer(arr){
   arr.forEach((name) => {
       this.#player.push({
