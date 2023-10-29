@@ -9,6 +9,10 @@ export default class OutputView {
     });
   }
 
+  printPadding() {
+    Console.print('');
+  }
+
   #onPrint(text) {
     Console.print(text);
   }
