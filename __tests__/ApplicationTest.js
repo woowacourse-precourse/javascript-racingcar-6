@@ -86,3 +86,14 @@ test('자동차 객체 생성', () => {
 
   expect(racingCar.distance).toBe(1); // 레이싱카 이동 테스트
 });
+
+test.each([[['1e3']], [['hello']], [['12 3']]])('반복 횟수 예외 처리', async (inputs) => {
+  // given
+  mockQuestions(inputs);
+
+  // when
+  const app = new App();
+
+  // then
+  await expect(app.getRepeatCountInput()).rejects.toThrow('[ERROR]');
+});
