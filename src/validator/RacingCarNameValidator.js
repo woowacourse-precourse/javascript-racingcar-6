@@ -29,8 +29,8 @@ export default class RacingCarNameValidator {
   });
 
   constructor(input) {
-    this.#commonValidator = new CommonValidator(input);
     this.#input = input;
+    this.#commonValidator = new CommonValidator(input);
   }
 
   static generate(input) {
