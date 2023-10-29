@@ -1,17 +1,25 @@
 import { SPACE } from '../constants/constants.js';
 
-export default function makeWinner(cars) {
+function makeAllMoveCounts(cars) {
   const allMoveCounts = [];
-  const winners = [];
-
   cars.forEach(({ moveCounts }) => {
     allMoveCounts.push(moveCounts);
   });
-  const maxMove = Math.max(...allMoveCounts);
-  cars.forEach(({ name, moveCounts }) => {
+  return allMoveCounts;
+}
+
+function makeWinnerTemplate(winners, maxMove) {
+  return ({ name, moveCounts }) => {
     if (moveCounts === maxMove) {
       winners.push(`${SPACE}${name}`);
     }
-  });
+  };
+}
+
+export default function makeWinner(cars) {
+  const allMoveCounts = makeAllMoveCounts(cars);
+  const winners = [];
+  const maxMove = Math.max(...allMoveCounts);
+  cars.forEach(makeWinnerTemplate(winners, maxMove));
   return winners.join(',');
 }
