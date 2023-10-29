@@ -7,19 +7,21 @@ class RacingCarGame {
     this.advance = 0;
   }
 
-  makeRandomNumber() {
-    return MissionUtils.Random.pickNumberInRange(0, 9);
+  advanceIfOverFour(number) {
+    if (number >= 4) this.advance += 1;
   }
 
-  advanceIfOverFour() {
-    if (this.makeRandomNumber() >= 4) this.advance += 1;
+  changeAdvanceToHyphen() {
+    return '-'.repeat(this.advance);
   }
 
   printAdvanceResult() {
-    return `${this.name} : ${'-'.repeat(this.advance)}`;
+    return `${this.name} : ${this.changeAdvanceToHyphen()}`;
   }
 
   resetAdvance() {
     this.advance = 0;
   }
 }
+
+export default RacingCarGame;
