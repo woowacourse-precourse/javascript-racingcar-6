@@ -4,9 +4,13 @@ export async function checkCarNameValid(input) {
   const primaryArray = input.split(',');
 
   try {
-    const carNameCheck = [...primaryArray].map((item) => item.length <= 5 && item.length > 0);
+    const lengthCheck = [...primaryArray].map((item) => item.length <= 5 && item.length > 0);
+    const duplicateCheck = new Set([...primaryArray]);
 
-    const isNotValid = carNameCheck.includes(false);
+    const isLenghtNotValid = lengthCheck.includes(false);
+    const isDuplicateNotValid = primaryArray.length !== duplicateCheck.size;
+
+    const isNotValid = isLenghtNotValid || isDuplicateNotValid;
 
     if (isNotValid) {
       const errorKey = 'tooLongRacerName';
