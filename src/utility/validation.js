@@ -29,3 +29,9 @@ export const isDuplicateString = (string, array) => {
     throw new Error(ERROR_MESSAGE.duplicateNameInput);
   }
 };
+
+export const isContainString = (string, seperator) => {
+  if (!string.includes(seperator)) {
+    throw new Error(ERROR_MESSAGE.wrongNameInput);
+  }
+};
