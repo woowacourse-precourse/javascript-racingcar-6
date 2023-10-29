@@ -1,5 +1,5 @@
 import { defaultErrorHandler } from '../src/util/error/errorhandler';
-import { consoleInput, consolePrint } from '../src/util/libraryFeatures/consoleHandler';
+import { consolePrint } from '../src/util/libraryFeatures/MissionUtilsHandler.js';
 import { checkRaceCountValid } from '../src/util/ready/checkInputValid';
 import receiveGameCount from '../src/util/ready/receiveGameCount';
 

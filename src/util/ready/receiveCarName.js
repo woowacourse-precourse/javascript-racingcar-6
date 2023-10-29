@@ -1,5 +1,5 @@
 import { checkCarNameValid } from './checkInputValid.js';
-import { consoleInput } from '../libraryFeatures/consoleHandler.js';
+import { consoleInput } from '../libraryFeatures/MissionUtilsHandler.js';
 import { defaultErrorHandler } from '../error/errorhandler.js';
 
 async function receiveCarName() {

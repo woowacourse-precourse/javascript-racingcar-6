@@ -1,5 +1,5 @@
 import { defaultErrorHandler } from '../error/errorhandler.js';
-import { consoleInput } from '../libraryFeatures/consoleHandler.js';
+import { consoleInput } from '../libraryFeatures/MissionUtilsHandler.js';
 import { checkRaceCountValid } from './checkInputValid.js';
 
 async function receiveGameCount() {

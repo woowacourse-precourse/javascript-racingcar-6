@@ -1,4 +1,4 @@
-import { consolePrint } from '../libraryFeatures/consoleHandler.js';
+import { consolePrint } from '../libraryFeatures/MissionUtilsHandler.js';
 import errorList from './errorCode.js';
 
 export function occuredErrorhandler(code) {
