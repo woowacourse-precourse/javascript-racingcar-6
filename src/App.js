@@ -12,8 +12,19 @@ class App {
         }
       }
     }
+    const getTrialNumInput = async() => {
+      const trialNum = await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?\n')
+      return trialNum
+    }
+    const checkValidTrialNum = async(trialNum) => {
+      if (isNaN(trialNum)) {
+        throw new Error("[ERROR] 숫자가 아닙니다.")
+      }
+    }
     const carNameArr = await getCarNameInput();
-    checkValidCarName(carNameArr)
+    await checkValidCarName(carNameArr)
+    const trialNum = await getTrialNumInput();
+    await checkValidTrialNum(trialNum)
   }
 }
 
