@@ -82,5 +82,55 @@ describe("게임 로직 테스트", () => {
     judge.printResultInStep(gameResultInStep);
 
     expect(consoleSpy).toHaveBeenCalledWith(result);
-  })
+  });
+
+  test("최종 우승자 출력 (우승자 하나인 경우)", () => {
+    const gameResultInStep = [
+      {
+        name: 'kim',
+        moveNum: 2
+      },
+      {
+        name: 'park',
+        moveNum: 3
+      },
+      {
+        name: 'lee',
+        moveNum: 4
+      }
+    ];
+    const result = '최종 우승자 : lee';
+
+    const judge = new Judge();
+
+    const consoleSpy = jest.spyOn(console, 'log');
+    judge.printWinner(gameResultInStep);
+
+    expect(consoleSpy).toHaveBeenCalledWith(result);
+  });
+
+  test("최종 우승자 출력 (우승자 둘 이상인 경우)", () => {
+    const gameResultInStep = [
+      {
+        name: 'kim',
+        moveNum: 2
+      },
+      {
+        name: 'park',
+        moveNum: 3
+      },
+      {
+        name: 'lee',
+        moveNum: 3
+      }
+    ];
+    const result = '최종 우승자 : park, lee';
+
+    const judge = new Judge();
+
+    const consoleSpy = jest.spyOn(console, 'log');
+    judge.printWinner(gameResultInStep);
+
+    expect(consoleSpy).toHaveBeenCalledWith(result);
+  });
 })
