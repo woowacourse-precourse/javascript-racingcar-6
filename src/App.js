@@ -1,7 +1,8 @@
-import { Random, Console } from "@woowacourse/mission-utils";
+import { Random } from "@woowacourse/mission-utils";
 
 import { convertArrayToObject } from "./util/converter.js";
 import InputView from "./view/inputView.js";
+import OutputView from "./view/OutputView.js";
 
 class App {
   async play() {
@@ -11,7 +12,7 @@ class App {
 
     const carsObject = convertArrayToObject(racingCarNames);
 
-    Console.print("\n실행 결과");
+    OutputView.printRacingStart();
     let maxDistance = 0;
     for (let i = 0; i < attemptCount; i++) {
       Object.entries(carsObject).forEach(([carName, carDistance]) => {
@@ -23,19 +24,13 @@ class App {
 
         maxDistance =
           carsObject[carName] > maxDistance ? carsObject[carName] : maxDistance;
-      });
 
-      Object.entries(carsObject).forEach(([carName, carDistance]) => {
-        Console.print(`${carName} : ${"-".repeat(carDistance)}`);
+        OutputView.printCurrentRacingCar(carName, carsObject[carName]);
       });
-      Console.print("");
+      OutputView.printSpacing();
     }
 
-    Console.print(
-      `최종 우승자 : ${Object.entries(carsObject)
-        .filter(([carName, carDistance]) => carDistance === maxDistance)
-        .map(([carName, carDistance]) => carName)}`
-    );
+    OutputView.printRacingFinalWinners(carsObject, maxDistance);
   }
 }
 
