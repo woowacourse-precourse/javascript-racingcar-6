@@ -21,7 +21,7 @@ class App {
     let scores=Array(5).fill(0);
     for (let round=0; round<try_number; round++){
       let race_str=[];
-      scores=try_randomly(scores);
+      scores=go_randomly(scores);
       runners.map((runner, index)=>{
         race_str.push(`${runner} : ${"-".repeat(scores[index])}`);
       })
