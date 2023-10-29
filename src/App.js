@@ -13,10 +13,13 @@ class App {
     Console.print(GAME_MESSAGE.inputNumber);
     const raceTrial = await Console.readLineAsync("");
     RaceTrialValidator.validateTrial(raceTrial); 
+
     const racingGame = new Race(carNames);
+    racingGame.setTrial(raceTrial);
+
     Console.print("");
     Console.print(GAME_MESSAGE.printResult);
   }
-}  
+}
 
 export default App;
