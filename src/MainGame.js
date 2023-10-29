@@ -1,10 +1,15 @@
 import { Console } from '@woowacourse/mission-utils';
 import { Message } from './Message.js';
+import { Car } from './Car.js';
 
 class MainGame {
   start = async () => {
     Console.print(Message.INPUT_CAR_NAME);
-    await this.inputCarName();
+    const carNameList = await this.inputCarName();
+    const attemptsNumber = await this.inputAttemptsNumber();
+    await this.printExecutionResult();
+
+    const cars = carNameList.map((name) => new Car(name));
   };
 
   static isSplitComma = (carNameList) => {
@@ -38,7 +43,7 @@ class MainGame {
     MainGame.isSplitComma(carNameList);
     MainGame.isFiveLength(carNameList);
     MainGame.isIncludeBlank(carNameList);
-    this.inputAttemptsNumber();
+    return carNameList.split(',');
   };
 
   static isNumber = (attemptsNumber) => {
@@ -51,6 +56,11 @@ class MainGame {
     Console.print(Message.INPUT_NUMBER_OF_ATTEMPTS);
     const attemptsNumber = await Console.readLineAsync('');
     MainGame.isNumber(attemptsNumber);
+    return attemptsNumber;
+  };
+
+  printExecutionResult = () => {
+    Console.print(`\n${Message.EXECUTION_RESULT}`);
   };
 }
 
