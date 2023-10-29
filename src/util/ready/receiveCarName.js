@@ -8,8 +8,8 @@ async function receiveCarName() {
     const carList = await checkCarNameValid(input);
     return carList;
   } catch (error) {
-    const promise = defaultErrorHandler(error);
-    return promise;
+    const ERROR = defaultErrorHandler(error);
+    return ERROR;
   }
 }
 

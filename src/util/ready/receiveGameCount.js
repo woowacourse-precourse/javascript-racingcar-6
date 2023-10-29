@@ -8,8 +8,8 @@ async function receiveGameCount() {
     const validCount = await checkRaceCountValid(count);
     return validCount;
   } catch (error) {
-    const promise = defaultErrorHandler(error);
-    return promise;
+    const ERROR = defaultErrorHandler(error);
+    return ERROR;
   }
 }
 
