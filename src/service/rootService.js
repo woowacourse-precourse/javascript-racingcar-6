@@ -10,7 +10,7 @@ export default async function rootService() {
     consolePrint(gameResult);
     return gameResult;
   } catch (error) {
-    const promise = defaultErrorHandler(error);
-    return promise;
+    const ERROR = defaultErrorHandler(error);
+    throw ERROR;
   }
 }

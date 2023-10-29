@@ -29,8 +29,8 @@ export async function checkCarNameValid(input) {
 
     return primaryArray;
   } catch (error) {
-    const promise = occuredErrorhandler(error);
-    return promise;
+    const ERROR = occuredErrorhandler(error);
+    throw ERROR;
   }
 }
 
@@ -51,7 +51,7 @@ export async function checkRaceCountValid(input) {
     }
     return count;
   } catch (error) {
-    const promise = occuredErrorhandler(error);
-    return promise;
+    const ERROR = occuredErrorhandler(error);
+    throw ERROR;
   }
 }

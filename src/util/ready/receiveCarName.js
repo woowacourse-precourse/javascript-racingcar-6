@@ -9,7 +9,7 @@ async function receiveCarName() {
     return carList;
   } catch (error) {
     const ERROR = defaultErrorHandler(error);
-    return ERROR;
+    throw ERROR;
   }
 }
 

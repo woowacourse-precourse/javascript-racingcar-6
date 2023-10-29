@@ -17,6 +17,6 @@ export default async function gameStart() {
     return gameData;
   } catch (error) {
     const ERROR = defaultErrorHandler(error);
-    return ERROR;
+    throw ERROR;
   }
 }
