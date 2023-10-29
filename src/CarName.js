@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import Car from './car.js';
+import Car from './Car.js';
 import Play from './play.js';
 
 class CarName {
