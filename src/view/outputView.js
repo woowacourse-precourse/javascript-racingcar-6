@@ -12,6 +12,7 @@ const printResult = async (cars, trials) => {
 
   const makingProgress = (index) => {
     const randomNumber = generateRandomNumber();
+    Console.print(`randomNumber : ${randomNumber}`);
     if (randomNumber >= 4) {
       map.set(cars[index], map.get(cars[index]) + 1);
     }
