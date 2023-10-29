@@ -12,6 +12,17 @@ class GameUtlis {
   static generateRandomNumberFromZeroToNine() {
     return Number(MissionUtils.Random.pickNumberInRange(0, 9));
   }
+
+  static printCarNameAndRandomNumber(carName, randomNumber) {
+    ConsoleOutput.output(`${carName} : ${GameUtlis.getDash(randomNumber)}`);
+  }
+
+  static getDash(randomNumber) {
+    const totalDash = [];
+    Array.from({ length: randomNumber }, () => totalDash.push('-'));
+
+    return totalDash.join('');
+  }
 }
 
 export default GameUtlis;

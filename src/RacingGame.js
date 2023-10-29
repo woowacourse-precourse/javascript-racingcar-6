@@ -24,7 +24,11 @@ class RacingGame {
   }
 
   tryOneAttempt() {
-    return this;
+    this.getRacingCars().map((racingCar) => {
+      const randomNumber = GameUtlis.generateRandomNumberFromZeroToNine();
+      GameUtlis.printCarNameAndRandomNumber(racingCar.getName(), randomNumber);
+      return this;
+    });
   }
 }
 
