@@ -80,6 +80,14 @@ class RacingCarGame {
   #displayCurrentProgress(car) {
     IOManager.output(RacingCarGame.#MESSAGE.DISPLAY_CURRENT_PROGRESS(car));
   }
+
+  #getWinners() {
+    const maxStep = this.#cars.reduce((maxStep, car) => {
+      return Math.max(maxStep, car.getStep());
+    }, 0);
+
+    return this.#cars.filter((car) => car.getStep() === maxStep);
+  }
 }
 
 export default RacingCarGame;
