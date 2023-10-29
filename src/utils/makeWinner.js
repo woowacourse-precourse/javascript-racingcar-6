@@ -4,7 +4,7 @@ export default function makeWinner(cars) {
   const allMoveCounts = [];
   const winners = [];
 
-  cars.forEach(({ name, moveCounts }) => {
+  cars.forEach(({ moveCounts }) => {
     allMoveCounts.push(moveCounts);
   });
   const maxMove = Math.max(...allMoveCounts);
