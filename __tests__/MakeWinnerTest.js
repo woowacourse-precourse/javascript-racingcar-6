@@ -1,3 +1,4 @@
+import { SPACE } from '../src/constants/constants';
 import makeWinner from '../src/utils/makeWinner';
 
 describe('MakeWinner Test', () => {
@@ -12,7 +13,7 @@ describe('MakeWinner Test', () => {
         moveCounts: 1,
       },
     ];
-    expect(makeWinner(cars)).toBe('pobi');
+    expect(makeWinner(cars)).toBe(`${SPACE}pobi`);
   });
 
   test('중복 우승자 생성', () => {
@@ -26,6 +27,6 @@ describe('MakeWinner Test', () => {
         moveCounts: 2,
       },
     ];
-    expect(makeWinner(cars)).toBe('pobi,ukgi');
+    expect(makeWinner(cars)).toBe(`${SPACE}pobi,${SPACE}ukgi`);
   });
 });
