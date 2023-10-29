@@ -85,7 +85,7 @@ class App {
 
   winnerCar(carMove, winnerLength, index) {
     if(carMove.length === winnerLength) {
-      this.winnerCarArray.push(this.carMoveArray[index]);
+      this.winnerCarArray.push(this.carName[index]);
     }
   }
 
