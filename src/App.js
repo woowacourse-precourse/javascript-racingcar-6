@@ -21,6 +21,14 @@ class App {
         throw new Error("[ERROR] 숫자가 아닙니다.")
       }
     }
+    const raceStart = async(carNameArr) => {
+      const carNum = carNameArr.length
+
+      for (let i=0; i<carNum; i++) {
+        const randomNum = MissionUtils.Random.pickNumberInRange(0, 9);
+      }
+      return moveForwardArr
+    }
     const carNameArr = await getCarNameInput();
     await checkValidCarName(carNameArr)
     const trialNum = await getTrialNumInput();
