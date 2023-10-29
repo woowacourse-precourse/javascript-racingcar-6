@@ -13,7 +13,7 @@ function readLineGameCount() {
 function consoleResult(msg) {
   return MissionUtils.Console.print(`${msg}`);
 }
-function consoleWinner() {
+function consoleWinner(winner) {
   return MissionUtils.Console.print(`최종 우승자 : ${winner}`);
 }
 

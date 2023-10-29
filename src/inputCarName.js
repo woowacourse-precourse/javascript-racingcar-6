@@ -7,7 +7,6 @@ function inputCarName() {
     carNames.forEach((name) => {
       cars[`${name.trim()}`] = '';
     });
-    console.log(cars);
     return cars;
   });
 }
