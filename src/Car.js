@@ -1,11 +1,11 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 class Car {
-  #name = "";
-  #position = 0;
+  name = "";
+  position = 0;
 
   constructor(carName) {
-    this.#name = carName;
+    this.name = carName;
   }
 
   static #randomNumGenerate() {
@@ -14,12 +14,12 @@ class Car {
   }
 
   #printPosition() {
-    MissionUtils.Console.print(`${this.#name} : ${"-".repeat(this.#position)}`);
+    MissionUtils.Console.print(`${this.name} : ${"-".repeat(this.position)}`);
   }
 
   move() {
     const randomNum = Car.#randomNumGenerate();
-    if (randomNum >= 4) this.#position += 1;
+    if (randomNum >= 4) this.position += 1;
     this.#printPosition();
   }
 }

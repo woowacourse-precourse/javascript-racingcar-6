@@ -45,12 +45,28 @@ class App {
     this.#cars.forEach((car) => {
       car.move();
     });
+    MissionUtils.Console.print("");
+  }
+
+  #printFinalWinner() {
+    let winners = [];
+    let winnerPosition = -1;
+    this.#cars.forEach((car) => {
+      if (car.position > winnerPosition) {
+        winnerPosition = car.position;
+        winners = [car.name];
+      } else if (car.position === winnerPosition) {
+        winners.push(car.name);
+      }
+    });
+    MissionUtils.Console.print(`최종 우승자 : ${winners.join(", ")}`);
   }
 
   async play() {
     await this.#inputCar();
     const roundNum = await App.#inputRoundNum();
     this.#playRound();
+    this.#printFinalWinner();
   }
 }
 
