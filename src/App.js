@@ -56,7 +56,6 @@ class App {
     if (!this.checkNamelength(carNameArry)) {
       throw new Error(`[ERROR] 유효하지 않은 이름 길이입니다.`);
     }
-    
   }
   
   checkDupl(carNameArry) {
@@ -77,6 +76,7 @@ class App {
   }
 
   resultOfWinner(car, forwordArry2) {
+   
     let winner = [];
     forwordArry2.forEach((result, index) => {
       winner.push(result.length);
@@ -102,8 +102,9 @@ class App {
     for (i = 0; i < forcarIndex.length; i++) {
       finerWiner.push(car[forcarIndex[i]]);
     }
-
+    
     Console.print("최종 우승자" + finerWiner.join(', '));
+    // return finerWiner;//테스트용. 지워야 함.
   }
 
 
@@ -157,13 +158,6 @@ class App {
     } 
     return marker;
   }
-
-
-
-
-
-
-
 
 }
 //for test
