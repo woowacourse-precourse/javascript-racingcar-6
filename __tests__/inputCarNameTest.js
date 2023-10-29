@@ -29,7 +29,7 @@ describe("자동차 이름 입력 메소드 테스트", () => {
 
     mockQuestions(inputs);
 
-    const result = await App.carNameInput();
+    const result = await App.inputCarName();
 
     expect(result).toStrictEqual(outputArray);
   });
@@ -40,7 +40,7 @@ describe("자동차 이름 입력 메소드 테스트", () => {
 
     mockQuestions(inputs);
 
-    const result = await App.carNameInput();
+    const result = await App.inputCarName();
 
     expect(result).toStrictEqual(outputArray);
   });
@@ -60,7 +60,7 @@ describe("자동차 이름 입력 메소드 테스트", () => {
 
     mockQuestions(inputs);
 
-    const result = await App.carNameInput();
+    const result = await App.inputCarName();
 
     expect(result).toStrictEqual(outputArray);
   });
@@ -70,7 +70,7 @@ describe("자동차 이름 입력 메소드 테스트", () => {
     async (inputs) => {
       mockQuestions(inputs);
 
-      await expect(App.carNameInput()).rejects.toThrow("[ERROR]");
+      await expect(App.inputCarName()).rejects.toThrow("[ERROR]");
     }
   );
 });

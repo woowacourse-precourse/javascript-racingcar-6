@@ -18,11 +18,11 @@ describe("자동차 참가 테스트", () => {
     mockQuestions(inputs);
 
     const app = new App();
-    await app.carInput();
+    await app.inputCar();
 
     expect(app.cars).toContainEqual({ name: "pobi" });
-    expect(app.cars).toContainEqual({ name: "pobi" });
-    expect(app.cars).toContainEqual({ name: "pobi" });
+    expect(app.cars).toContainEqual({ name: "woni" });
+    expect(app.cars).toContainEqual({ name: "jun" });
   });
 
   test.each([[["pobi,longname"]], [["longname"]], [["pobi,,name"]]])(
@@ -32,7 +32,7 @@ describe("자동차 참가 테스트", () => {
 
       const app = new App();
 
-      await expect(app.carInput()).rejects.toThrow("[ERROR]");
+      await expect(app.inputCar()).rejects.toThrow("[ERROR]");
     }
   );
 });

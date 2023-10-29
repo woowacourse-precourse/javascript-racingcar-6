@@ -4,28 +4,47 @@ import Car from "../src/Car";
 class App {
   cars = [];
 
-  static #isValidInput(input) {
+  // 자동차 이름 입력에 대한 유효성 테스트
+  static #isValidCarName(input) {
     if (input.some((carName) => carName.length > 5 || carName.length < 1))
       throw new Error("[ERROR] 1자 이상, 5자 이하의 이름만 사용 가능합니다.");
   }
 
+  // 시도 횟수 입력에 대한 유효성 테스트
+  static #isValidRoundNum(input) {
+    if (isNaN(input) || input < 1)
+      throw new Error("[ERROR] 시도 횟수는 1 이상의 숫자여야합니다.");
+  }
+
   // 자동차의 이름들을 입력받는 메소드
-  static async #carNameInput() {
+  static async #inputCarName() {
     const carNames = await MissionUtils.Console.readLineAsync(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
     );
     const carNameArray = carNames.split(",");
-    App.#isValidInput(carNameArray);
+    App.#isValidCarName(carNameArray);
     return carNameArray;
   }
 
   // 입력받은 자동차들을 참여시키는 메소드
-  async carInput() {
-    const carNameArray = await App.#carNameInput();
+  async #inputCar() {
+    const carNameArray = await App.#inputCarName();
     this.cars = carNameArray.map((carName) => new Car(carName));
   }
 
-  async play() {}
+  static async #inputRoundNum() {
+    const roundInputs = await MissionUtils.Console.readLineAsync(
+      "시도할 횟수는 몇 회인가요?"
+    );
+    const roundNum = parseInt(roundInputs);
+    App.#isValidRoundNum(roundNum);
+    return roundNum;
+  }
+
+  async play() {
+    await this.#inputCar();
+    const roundNum = await App.#inputRoundNum();
+  }
 }
 
 export default App;
