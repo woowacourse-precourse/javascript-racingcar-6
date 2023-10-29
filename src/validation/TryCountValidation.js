@@ -1,7 +1,10 @@
-import { ERROR } from '../constants.js';
+class TryCountValidation {
+  static checkIfEmpty(count) {
+    return !count;
+  }
 
-export default (count) => {
-  // 빈 값이면 에러
-  if (!count) throw new Error(ERROR.EMPTY_COUNT);
-  if (count <= 0) throw new Error(ERROR.MUST_ENTER_A_NUMBER_OVER_ZERO);
-};
+  static checkIfZeroOrLess(count) {
+    return !(count > 0);
+  }
+}
+export default TryCountValidation;
