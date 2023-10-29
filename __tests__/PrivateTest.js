@@ -1,5 +1,5 @@
-import User from "../src/User.js";
-import Judge from "../src/Judge.js";
+import User from '../src/User.js';
+import Judge from '../src/Judge.js';
 
 import { MissionUtils } from '@woowacourse/mission-utils';
 
@@ -42,7 +42,7 @@ describe('사용자 입력 테스트', () => {
 
     const user = new User();
 
-    await expect(user.inputPlayersName()).rejects.toThrow("[ERROR]");
+    await expect(user.inputPlayersName()).rejects.toThrow('[ERROR]');
   });
 
   test.each([
@@ -56,14 +56,15 @@ describe('사용자 입력 테스트', () => {
   });
 });
 
-describe("게임 로직 테스트", () => {
-  test("무작위 값에 대한 전진 여부 확인", () => {
+describe('게임 로직 테스트', () => {
+  test('무작위 값에 대한 전진 여부 확인', () => {
     const judge = new Judge();
 
     expect(judge.checkMoveCondition(5)).toBeTruthy();
   });
 
-  test("차수별 실행 결과 출력", () => {
+
+  test('차수별 실행 결과 출력', () => {
     const gameResultInStep = [
       {
         name: 'kim',
@@ -84,7 +85,7 @@ describe("게임 로직 테스트", () => {
     expect(consoleSpy).toHaveBeenCalledWith(result);
   });
 
-  test("최종 우승자 출력 (우승자 하나인 경우)", () => {
+  test('최종 우승자 출력 (우승자 하나인 경우)', () => {
     const gameResultInStep = [
       {
         name: 'kim',
@@ -109,7 +110,7 @@ describe("게임 로직 테스트", () => {
     expect(consoleSpy).toHaveBeenCalledWith(result);
   });
 
-  test("최종 우승자 출력 (우승자 둘 이상인 경우)", () => {
+  test('최종 우승자 출력 (우승자 둘 이상인 경우)', () => {
     const gameResultInStep = [
       {
         name: 'kim',

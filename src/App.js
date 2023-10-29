@@ -1,6 +1,6 @@
-import { Console } from "@woowacourse/mission-utils";
-import User from "./User.js";
-import Judge from "./Judge.js";
+import { Console } from '@woowacourse/mission-utils';
+import User from './User.js';
+import Judge from './Judge.js';
 
 class App {
   async play() {

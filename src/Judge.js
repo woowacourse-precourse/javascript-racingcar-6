@@ -1,4 +1,4 @@
-import { Console, Random } from "@woowacourse/mission-utils";
+import { Console, Random } from '@woowacourse/mission-utils';
 
 class Judge {
   checkMoveCondition(randomNum) {
@@ -21,11 +21,12 @@ class Judge {
   printResultInStep(gameResultInStep) {
     let result = '';
     gameResultInStep.forEach((player) => {
-      let moveMark = ''
+      let moveMark = '';
       for(let i = 0; i < player.moveNum; i++) {
         moveMark += '-';
       }
-      result += `${player.name} : ${moveMark}\n`
+
+      result += `${player.name} : ${moveMark}\n`;
     })
 
     Console.print(result);
@@ -45,7 +46,7 @@ class Judge {
       if (player.moveNum === maxMove) {
         winnerPlayers.push(player.name);
       }
-    })
+    });
 
     Console.print(`최종 우승자 : ${winnerPlayers.map((member) => member).join(', ')}`);
   }
