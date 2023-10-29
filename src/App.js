@@ -19,6 +19,9 @@ class App {
       }
       Console.print('\n');
     }
+
+    const winners = this.findWinners(names, nameToNumberMap);
+    Console.print(`최종 우승자 : ${winners.join(', ')}`);
   }
 
   async getCarNames() {
@@ -52,6 +55,24 @@ class App {
   randomIndex() {
     const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
     return randomNumber >= 4 ? 1 : 0;
+  }
+
+  findWinners(names, nameToNumberMap) {
+    const winners = [];
+    let highestScore = -1;
+
+    for (const name of names) {
+      const number = nameToNumberMap[name];
+      if (number > highestScore) {
+        highestScore = number;
+        winners.length = 0;
+        winners.push(name);
+      } else if (number == highestScore) {
+        winners.push(name);
+      }
+    }
+
+    return winners;
   }
 }
 
