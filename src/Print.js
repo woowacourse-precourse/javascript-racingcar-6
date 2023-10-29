@@ -1,5 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
 import { TEXT } from './constants/constants';
+import Validate from './Validate';
+import { COMMAS, ERROR } from './constants/constants';
 
 class Print {
   static async getCarsName() {
@@ -9,6 +11,10 @@ class Print {
 
     if (!Validate.isCarNameLengthValid(cars)) {
       throw new Error(ERROR.CAR_NAME_LENGTH);
+    }
+
+    if (!Validate.minCarsNumber(cars)) {
+      throw new Error(ERROR.CAR_MIN);
     }
 
     return cars;

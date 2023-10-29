@@ -1,8 +1,12 @@
-import { CAR_NAME } from './constants/constants';
+import { CAR } from './constants/constants';
 
 class Validate {
   static isCarNameLengthValid(cars) {
-    return cars.every(car => car.length <= CAR_NAME.LENGTH);
+    return cars.every(car => car.length <= CAR.LENGTH);
+  }
+
+  static minCarsNumber(cars) {
+    return cars.length >= CAR.MIN;
   }
 }
 

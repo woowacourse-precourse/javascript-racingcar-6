@@ -3,7 +3,8 @@ export const COMMAS = {
   SYMBOL: ',',
 };
 
-export const CAR_NAME = {
+export const CAR = {
+  MIN: 2,
   LENGTH: 5,
 };
 
@@ -12,5 +13,6 @@ export const TEXT = {
 };
 
 export const ERROR = {
-  CAR_NAME_LENGTH: `[ERROR] 각 자동차 이름의 길이는 ${CAR_NAME.LENGTH} 이하여야 합니다.`,
+  CAR_NAME_LENGTH: `[ERROR] 각 자동차 이름의 길이는 ${CAR.LENGTH} 이하여야 합니다.`,
+  CAR_MIN: `[ERROR] 최소 경주에 참여하는 자동차는 ${CAR.MIN}대여야 합니다.`,
 };
