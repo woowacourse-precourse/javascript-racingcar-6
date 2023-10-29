@@ -14,6 +14,8 @@ class App {
     const raceTrial = await Console.readLineAsync("");
     RaceTrialValidator.validateTrial(raceTrial); 
     const racingGame = new Race(carNames);
+    Console.print("");
+    Console.print(GAME_MESSAGE.printResult);
   }
 }  
 
