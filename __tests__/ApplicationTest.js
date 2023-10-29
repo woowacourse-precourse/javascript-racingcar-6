@@ -61,7 +61,7 @@ describe('자동차 경주 게임', () => {
     }
   );
 
-  test.each([[['pobi,javaji', '-1']], [['pobi,eastjun', '7.5']]])(
+  test.each([[['pobi,jun', '-1']], [['pobi,js', '7.5']]])(
     '시도할 횟수에 대한 예외 처리',
     async (inputs) => {
       // given
