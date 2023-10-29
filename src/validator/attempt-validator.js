@@ -1,4 +1,5 @@
 import { ATTEMPT_ERROR_MESSAGE } from "../constants/error-message.js";
+import InputError from "./InputError.js";
 import checkSpace from "./common-validator.js";
 
 /**
@@ -8,7 +9,7 @@ import checkSpace from "./common-validator.js";
  */
 function checkNumeric(inputAttemptCount) {
   if (isNaN(Number(inputAttemptCount))) {
-    throw new Error(ATTEMPT_ERROR_MESSAGE.NOT_NUMERIC);
+    throw new InputError(ATTEMPT_ERROR_MESSAGE.NOT_NUMERIC);
   }
 }
 
@@ -19,7 +20,7 @@ function checkNumeric(inputAttemptCount) {
  */
 function checkIntegerNumber(inputAttemptCount) {
   if (inputAttemptCount.includes(".")) {
-    throw new Error(ATTEMPT_ERROR_MESSAGE.NOT_INTEGER_NUMBER);
+    throw new InputError(ATTEMPT_ERROR_MESSAGE.NOT_INTEGER_NUMBER);
   }
 }
 
@@ -30,7 +31,7 @@ function checkIntegerNumber(inputAttemptCount) {
  */
 function checkPositiveNumber(inputAttemptCount) {
   if (parseInt(inputAttemptCount) < 1) {
-    throw new Error(ATTEMPT_ERROR_MESSAGE.NOT_POSITIVE);
+    throw new InputError(ATTEMPT_ERROR_MESSAGE.NOT_POSITIVE);
   }
 }
 

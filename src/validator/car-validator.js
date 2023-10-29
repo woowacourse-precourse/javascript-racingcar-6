@@ -1,5 +1,6 @@
 import { CAR_ERROR_MESSAGE } from "../constants/error-message.js";
 import { CAR_NAME_LENGTH } from "../constants/setting.js";
+import InputError from "./InputError.js";
 import checkSpace from "./common-validator.js";
 
 /**
@@ -12,7 +13,7 @@ function checkLength(racingCarName) {
     racingCarName.length < CAR_NAME_LENGTH.MIN ||
     racingCarName.length > CAR_NAME_LENGTH.MAX
   ) {
-    throw new Error(CAR_ERROR_MESSAGE.LENGTH);
+    throw new InputError(CAR_ERROR_MESSAGE.LENGTH);
   }
 }
 
@@ -24,7 +25,7 @@ function checkLength(racingCarName) {
 function checkDuplication(racingCarNames) {
   const uniqueRacingCarNames = new Set(racingCarNames);
   if (uniqueRacingCarNames.size !== racingCarNames.length) {
-    throw new Error(CAR_ERROR_MESSAGE.DUPLICATION);
+    throw new InputError(CAR_ERROR_MESSAGE.DUPLICATION);
   }
 }
 

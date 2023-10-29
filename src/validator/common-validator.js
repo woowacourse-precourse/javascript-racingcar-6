@@ -1,4 +1,5 @@
 import { SPACE_ERROR_MESSAGE } from "../constants/error-message.js";
+import InputError from "./InputError.js";
 
 const spacePattern = /\s/g;
 
@@ -9,7 +10,7 @@ const spacePattern = /\s/g;
  */
 function checkSpace(inputString) {
   if (inputString.match(spacePattern)) {
-    throw new Error(SPACE_ERROR_MESSAGE);
+    throw new InputError(SPACE_ERROR_MESSAGE);
   }
 }
 
