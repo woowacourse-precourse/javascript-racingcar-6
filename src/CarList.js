@@ -5,8 +5,6 @@ class CarList {
 
   constructor(carList) {
     this.carList = carList.map((name) => new Car(name));
-
-    console.log(this.carList);
   }
 }
 

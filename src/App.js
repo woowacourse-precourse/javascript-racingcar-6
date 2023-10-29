@@ -7,7 +7,6 @@ class App {
 
   async play() {
     this.carList = new CarList(await this.view.getCarName());
-    console.log(this.carList);
   }
 }
 
