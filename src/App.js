@@ -50,8 +50,10 @@ export default class App {
 
   /* eslint-disable class-methods-use-this */
   repeatCountValidation(repeatCount) {
-    const numberValidate = [...repeatCount].every((digit) => !Number.isNaN(+digit));
-    if (!numberValidate) throw new Error(message.REPEAT_COUNT_ERROR);
+    const numberRegex = /^[0-9]+$/;
+    const numberValidate = numberRegex.test(repeatCount);
+    const zeroValidate = +repeatCount === 0;
+    if (!numberValidate || zeroValidate) throw new Error(message.REPEAT_COUNT_ERROR);
   }
 
   repeatGame() {
