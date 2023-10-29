@@ -1,5 +1,5 @@
 import RacingCar from './domain/RacingCar.js';
-import GameUtlis from './utils/GameUtils.js';
+import GameUtils from './utils/GameUtils.js';
 
 class RacingGame {
   #racingCars;
@@ -24,7 +24,7 @@ class RacingGame {
   }
 
   startRacing(attemptNumber) {
-    GameUtlis.repeatRacing(attemptNumber, this);
+    GameUtils.repeatRacing(attemptNumber, this);
   }
 }
 

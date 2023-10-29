@@ -1,6 +1,6 @@
 import RacingGame from "../src/RacingGame.js";
 import RacingCar from "../src/domain/RacingCar.js";
-import GameUtlis from "../src/utils/GameUtils.js";
+import GameUtils from "../src/utils/GameUtils.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 const mockRandoms = (numbers) => {
@@ -22,13 +22,13 @@ describe('게임 진행에 관한 테스트입니다', () => {
     const input = 3;
     const racingGame = new RacingGame();
     racingGame.generateRacingCars(['pobi', 'crong', 'rupee']);
-    racingGame.tryOneAttempt = jest.fn();
+    GameUtils.tryOneAttempt = jest.fn();
 
     // when
-    GameUtlis.repeatRacing(input, racingGame);
+    GameUtils.repeatRacing(input, racingGame);
 
     // then
-    expect(racingGame.tryOneAttempt).toBeCalledTimes(input);
+    expect(GameUtils.tryOneAttempt).toBeCalledTimes(input);
   });
 
   test('0부터 9사이의 무작위의 값이 나온다.', () => {
@@ -36,7 +36,7 @@ describe('게임 진행에 관한 테스트입니다', () => {
     const answers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
     // when
-    const randomNumber = GameUtlis.generateRandomNumberFromZeroToNine();
+    const randomNumber = GameUtils.generateRandomNumberFromZeroToNine();
 
     // then
     expect(answers).toContain(randomNumber);
@@ -50,8 +50,8 @@ describe('게임 진행에 관한 테스트입니다', () => {
     mockRandoms(randomNumber);
 
     // when
-    const pobiNumber = GameUtlis.generateRandomNumberFromZeroToNine();
-    GameUtlis.printCarNameAndRandomNumber('pobi', pobiNumber);
+    const pobiNumber = GameUtils.generateRandomNumberFromZeroToNine();
+    GameUtils.printCarNameAndRandomNumber('pobi', pobiNumber);
     
     // then
     expect(logSpy).toHaveBeenCalledWith(expect.stringMatching(answer));
@@ -67,7 +67,7 @@ describe('게임 진행에 관한 테스트입니다', () => {
 
     // when
     const pobiCar = new RacingCar('pobi');
-    GameUtlis.proceedAttemptByRacingCar(pobiCar);
+    GameUtils.proceedAttemptByRacingCar(pobiCar);
 
     // then
     expect(pobiCar.getAccumulatedForward()).toEqual(answer);
@@ -83,7 +83,7 @@ describe('게임 진행에 관한 테스트입니다', () => {
 
     // when
     const pobiCar = new RacingCar('pobi');
-    GameUtlis.proceedAttemptByRacingCar(pobiCar);
+    GameUtils.proceedAttemptByRacingCar(pobiCar);
 
     // then
     expect(pobiCar.getAccumulatedForward()).toEqual(answer);

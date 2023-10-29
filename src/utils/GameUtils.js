@@ -3,12 +3,12 @@ import MESSAGE from '../constants/Message.js';
 import ConsoleOutput from '../io/ConsoleOutput.js';
 import { MIN_NUMBER_TO_MOVING_FORWARD } from '../constants/Enum.js';
 
-class GameUtlis {
+class GameUtils {
   static repeatRacing(attemptNumber, racingGame) {
     ConsoleOutput.output(MESSAGE.GAME_RESULT);
 
     Array.from({ length: attemptNumber }, () =>
-      GameUtlis.tryOneAttempt(racingGame),
+      GameUtils.tryOneAttempt(racingGame),
     );
   }
 
@@ -16,10 +16,10 @@ class GameUtlis {
     const racingCars = racingGame.getRacingCars();
 
     racingCars.map((racingCar) =>
-      GameUtlis.proceedAttemptByRacingCar(racingCar),
+      GameUtils.proceedAttemptByRacingCar(racingCar),
     );
 
-    GameUtlis.proceedNextAttempt();
+    GameUtils.proceedNextAttempt();
   }
 
   static generateRandomNumberFromZeroToNine() {
@@ -27,7 +27,7 @@ class GameUtlis {
   }
 
   static printCarNameAndRandomNumber(carName, randomNumber) {
-    ConsoleOutput.output(`${carName} : ${GameUtlis.getDash(randomNumber)}`);
+    ConsoleOutput.output(`${carName} : ${GameUtils.getDash(randomNumber)}`);
   }
 
   static getDash(randomNumber) {
@@ -38,10 +38,10 @@ class GameUtlis {
   }
 
   static proceedAttemptByRacingCar(racingCar) {
-    const randomNumber = GameUtlis.generateRandomNumberFromZeroToNine();
-    GameUtlis.printCarNameAndRandomNumber(racingCar.getName(), randomNumber);
+    const randomNumber = GameUtils.generateRandomNumberFromZeroToNine();
+    GameUtils.printCarNameAndRandomNumber(racingCar.getName(), randomNumber);
 
-    const isMovingForwardBoolean = GameUtlis.isMovingForward(randomNumber);
+    const isMovingForwardBoolean = GameUtils.isMovingForward(randomNumber);
 
     if (isMovingForwardBoolean) {
       racingCar.moveForward();
@@ -57,4 +57,4 @@ class GameUtlis {
   }
 }
 
-export default GameUtlis;
+export default GameUtils;
