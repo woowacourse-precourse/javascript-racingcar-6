@@ -16,6 +16,7 @@ class App {
 
     const racingGame = new Race(carNames);
     racingGame.setTrial(raceTrial);
+    racingGame.start();
 
     Console.print("");
     Console.print(GAME_MESSAGE.printResult);

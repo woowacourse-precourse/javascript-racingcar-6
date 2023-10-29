@@ -1,3 +1,4 @@
+import { Random } from "@woowacourse/mission-utils";
 import Car from "./Car";
 
 export default class Race {
@@ -22,5 +23,14 @@ export default class Race {
   
   getTrial() { // setTrial로 설정한 값이 제대로 저장되었는지 확인하는 테스트 코드에 필요한 로직
     return this.#trial;
+  }
+
+  start() {
+    for (let i = 0; i < this.#trial; i++) {
+      this.#cars.forEach(car => {
+        const randomNumber = Random.pickNumberInRange(0, 9);
+        car.move(randomNumber);
+      });
+    }
   }
 }
