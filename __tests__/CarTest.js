@@ -49,7 +49,7 @@ describe('Car 클래스 테스트', () => {
     car.moveForward();
     const anotherCar = new Car('another');
     anotherCar.moveForward();
-    const result = car.compareToMax(anotherCar);
+    const result = car.compareWith(anotherCar);
 
     expect(result).toBe(output);
   });

@@ -18,7 +18,7 @@ class RacingCars {
   }
 
   #findMaxMoveCount() {
-    return this.#cars.reduce((maxCount, car) => (car.compareToMax(maxCount) > 0 ? car : maxCount));
+    return this.#cars.reduce((maxCount, car) => (car.compareWith(maxCount) > 0 ? car : maxCount));
   }
 
   #findSameMoveCount(maxMoveCount) {

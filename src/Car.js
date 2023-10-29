@@ -28,7 +28,7 @@ class Car {
     return `${this.#name} : ${movingLog}`;
   }
 
-  compareToMax(anotherCar) {
+  compareWith(anotherCar) {
     return this.#moveCount - anotherCar.#moveCount;
   }
 
