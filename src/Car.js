@@ -9,6 +9,14 @@ class Car {
   createRandomNumber = () => {
     return Random.pickNumberInRange(0, 9);
   };
+
+  makeStepForwardOrStop = () => {
+    const number = this.createRandomNumber();
+
+    if (number > 3) {
+      this.step += number;
+    }
+  };
 }
 
 export default Car;
