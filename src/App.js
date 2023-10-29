@@ -53,7 +53,18 @@ class App {
     WinnerMessage(winnerArray.join(", "));
   }
 
-  async play() {}
+  async play() {
+    await this.GetCar();
+    await this.GetLoopNumber();
+    LineBreakMessage();
+    for (let loop = 0; loop < this.loopNumber; loop += 1) {
+      this.carArray.forEach((car) => {
+        car.Move();
+      });
+      LineBreakMessage();
+    }
+    this.PrintWinner();
+  }
 }
 
 export default App;
