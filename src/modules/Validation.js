@@ -22,9 +22,8 @@ class Validation {
     const number = Number(answer);
     if (Number.isSafeInteger(number) && number > 0) {
       return number;
-    } else {
-      throw new Error(MESSAGE.error.numberOfTimes);
     }
+    throw new Error(MESSAGE.error.numberOfTimes);
   }
 }
 
