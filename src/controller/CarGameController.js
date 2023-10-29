@@ -1,4 +1,5 @@
 import Car from '../model/Car.js';
+import CarGame from '../model/CarGame.js';
 import InputView from '../view/InputView.js';
 
 class CarGameController {
@@ -10,7 +11,7 @@ class CarGameController {
 
   async playGameStage(carMap) {
     const attempts = await InputView.readAttempts();
-    console.log(attempts);
+    const randomNumbers = new CarGame().getRandomNumber(attempts);
   }
 }
 
