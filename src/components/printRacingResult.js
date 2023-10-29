@@ -8,6 +8,7 @@ const printRacingResult = (carNameDict) => {
     }
     Console.print(resultStr);
   }
+  Console.print("");
 };
 
 export { printRacingResult };
