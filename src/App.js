@@ -42,9 +42,19 @@ class App {
     });
     return carArray;
   }
+
   async getGameCount() {
     let gameCount = await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
     return gameCount;
+  }
+  gameTrial(carArray, gameCount) {
+    MissionUtils.Console.print('실행결과');
+    for (let i = 0; i < gameCount; i++) {
+      carArray.forEach((car) => {
+        car.goForward();
+      });
+      MissionUtils.Console.print('\n');
+    }
   }
 }
 const app = new App();
