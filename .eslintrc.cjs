@@ -22,5 +22,6 @@ module.exports = {
   rules: {
     'max-depth': ['error', 2],
     'import/extensions': ['error', 'ignorePackages'],
+    'class-methods-use-this': 'off',
   },
 };
