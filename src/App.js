@@ -69,12 +69,23 @@ const showResult = async (participants) => {
  */
 const getAttempt = async () =>{
   const attempt = await readLineAsync('시도할 횟수는 몇 회인가요?\n');
-  
-  // *** 리팩토링 하면서 함수로 빼기 ***
-  if(!Number(attempt)) throw new Error('[ERROR] 횟수는 숫자여야 합니다.');
-  if(Number(attempt) <=0 ) throw new Error('[ERROR] 횟수는 0회 보다 커야합니다.');
+  if(!Number(attempt)) throw new Error('[ERROR] 숫자를 입력해주세요.');
+  if(Number(attempt) <=0 || Number(attempt) > 9) throw new Error('[ERROR] 0~9사이 값을 입력해주세요.');
 
   return Number(attempt);
+}
+
+/**
+ * @param {*} participants : 참가자 명단 확인
+ * 이름이 5글자 초과, 빈 칸, 영어가 아닌 경우 ERROR
+ */
+const checkParticipants = async (participants) =>{
+  const english = /^[a-zA-Z]*$/; 
+  
+  for(let name of participants){
+    if (!english.test(name)) throw new Error('[ERROR] 참가자 이름이 영어가 아닙니다.');
+    if (name.length > 5 || name.length === 0) throw new Error('[ERROR] 참가자 이름은 1~5글자로 작성해주세요.'); // ERROR문구 상수로 빼기
+  }
 }
 
 /**
@@ -84,14 +95,11 @@ const getAttempt = async () =>{
  */
 const getParticipant = async () =>{
   const participants = await readLineAsync('경주 할 자동차 이름(이름은 쉼표(,) 기준으로 구분)\n');
-  const participantsArr = participants.split(',');
+  const participantsList = participants.split(',');
 
-  // *** 리팩토링 하면서 함수로 뺴기 ***
-  for(let name of participantsArr){
-    if(name.length > 5) throw new Error('[ERROR] 참가자 이름이 5글자를 초과합니다.'); // ERROR문구 상수로 빼기
-  }
+  await checkParticipants(participantsList);
 
-  return participantsArr;
+  return participantsList;
 }
 
 class App {
