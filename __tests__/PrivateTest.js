@@ -18,7 +18,7 @@ describe('사용자 입력 테스트', () => {
     mockQuestions(inputs);
 
     const user = new User();
-
+   
     await expect(user.inputPlayersName()).resolves.toContainEqual('kim', 'park');
   });
 
@@ -32,5 +32,16 @@ describe('사용자 입력 테스트', () => {
     await expect(user.inputPlayersName()).resolves.toContainEqual('kim');
   });
 
+  test.each([
+    [['kimkim']],
+    [['kim,parkpark']],
+    [['kimkim,park']]
+  ])('이름에 대한 예외 처리', async (inputs) => {
+    mockQuestions(inputs);
+
+    const user = new User();
+
+    await expect(user.inputPlayersName()).rejects.toThrow("[ERROR]");
+  });
   
 })
