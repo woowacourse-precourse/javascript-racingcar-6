@@ -3,6 +3,7 @@ const {
   READ_RACING_CAR_NAMES,
   ERROR_MORE_THAN_TWO_CARS,
   ERROR_NOT_MORE_THAN_FIVE_CHARACTERS,
+  READ_NUMBER_OF_ATTEMPTS,
 } = require('./Constant');
 
 const InputView = {
@@ -27,6 +28,10 @@ const InputView = {
         throw new Error(ERROR_NOT_MORE_THAN_FIVE_CHARACTERS);
       }
     });
+  },
+
+  async readAttemptCounts() {
+    const answer = await Console.readLineAsync(READ_NUMBER_OF_ATTEMPTS);
   },
 };
 
