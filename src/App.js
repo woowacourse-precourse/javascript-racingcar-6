@@ -5,13 +5,11 @@ class App {
     const user = new User();
 
     try {
-      await user.inputPlayersName();
+      const players = await user.inputPlayersName();
     } catch (error) {
       console.error(error.message);
       throw new Error('[ERROR] 숫자가 잘못된 형식입니다.');
     }  
-
-    user.inputMoveNum();
   }
 }
 
