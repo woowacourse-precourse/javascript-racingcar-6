@@ -21,14 +21,13 @@ class App {
     let scores=Array(5).fill(0);
     for (let round=0; round<try_number; round++){
       let race_str=[];
-      scores=go_randomly(scores);
+      scores=try_randomly(scores);
       runners.map((runner, index)=>{
         race_str.push(`${runner} : ${"-".repeat(scores[index])}`);
       })
       MissionUtils.Console.print(race_str.join('\n'));
     }
 
-    print_winners();
 
     function go_randomly(scores){
       let random_number;
@@ -38,15 +37,6 @@ class App {
         if (random_number>3){ scores[i]=scores[i]+1; }
       }
       return scores;
-    }
-
-    function print_winners(){
-      const max=Math.max(...scores);
-      let winners=[];
-      scores.map((score, index)=>{
-        if(score>=max){winners.push(runners[index]);}
-      })
-      MissionUtils.Console.print(`최종 우승자 : ${winners.join()}`);
     }
   }
 }
