@@ -38,6 +38,14 @@ class App {
             }
         });
     }
+
+    ShowDistance() {
+        this.cars.forEach((car) => {
+            MissionUtils.Console.print(
+                `${car.name} : ${"-".repeat(car.distance)}`
+            );
+        });
+    }
 }
 
 export default App;
