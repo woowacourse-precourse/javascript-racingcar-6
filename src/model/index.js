@@ -1,4 +1,5 @@
 import { SYSTEM } from '../constants/System.js';
+import FinalWinnerSelector from './FinalWinnerSelector.js';
 import RandomNumberGenerator from './RandomNumberGenerator.js';
 
 class RacingCarModel {
@@ -22,6 +23,11 @@ class RacingCarModel {
         this.#carData.set(car, `${progress}${SYSTEM.move}`);
       }
     });
+  }
+
+  getFinalWinner() {
+    const finalWinner = FinalWinnerSelector.evaluate(this.#carData);
+    return finalWinner;
   }
 
   getCarData() {
