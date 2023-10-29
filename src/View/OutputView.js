@@ -9,7 +9,7 @@ export default class OutputView {
     });
   }
 
-  printPadding() {
+  static printPadding() {
     Console.print('');
   }
 
