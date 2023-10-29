@@ -24,23 +24,24 @@ class App {
   }
 
   async play() {
-    this.getCars();
-    this.getChances();
+    await this.getCars();
+    await this.getChances();
     this.startRace();
     this.getResult();
   }
 
-  getCars() {
+  async getCars() {
     Console.print(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
     );
-    const input = Console.readLineAsync();
+    const input = await Console.readLineAsync();
     this.cars = input.split(",").map((name) => new Car(name));
   }
 
-  getChances() {
+  async getChances() {
     Console.print("시도할 횟수는 몇 회인가요?");
-    this.chances = parseInt(Console.readLineAsync());
+    const input = await Console.readLineAsync();
+    this.chances = parseInt(input);
   }
 
   startRace() {
