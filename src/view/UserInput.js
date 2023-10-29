@@ -1,5 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
-import { Comm, MESSAGE } from '../model/Comm.js';
+import { Comm } from '../model/Comm.js';
+import { MESSAGE } from '../constant/OutputMessage.js';
 
 class UserInput{
 

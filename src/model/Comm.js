@@ -1,5 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
-import { MESSAGE, ERROR_MESSAGE } from "../constant/OutputMessage";
+import { MESSAGE, ERROR_MESSAGE } from "../constant/OutputMessage.js";
 
 class Comm{
 
@@ -48,4 +48,4 @@ class Comm{
         }, "");
     }
 }
-export { MESSAGE, ERROR_MESSAGE, Comm }
+export { Comm }
