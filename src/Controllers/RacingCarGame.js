@@ -47,4 +47,15 @@ export default class RacingCarGame {
       this.displayRaceResults();
     });
   }
+
+  getWinner() {
+    const carsStatus = this.getCarsStatus();
+    const maxDistance = Math.max(...carsStatus.map((car) => car.totalDistance));
+
+    const winners = carsStatus
+      .filter((car) => car.totalDistance === maxDistance)
+      .map((car) => car.name);
+
+    return winners.join(", ");
+  }
 }
