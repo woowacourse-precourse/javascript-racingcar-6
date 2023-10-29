@@ -18,11 +18,11 @@ class App {
     App.#validateTryCount(tryCount);
 
     this.#cars = carNameArray.map((carName) => new Car(carName));
-    this.#printRaceResult(Number(tryCount));
-    this.#printWinners();
+    this.#startCarRace(Number(tryCount));
+    this.#judgeCarRaceWinner();
   }
 
-  #printRaceResult(count) {
+  #startCarRace(count) {
     Console.print(MESSAGE.RESULT);
 
     for (let i = 0; i < count; i += 1) {
@@ -34,7 +34,7 @@ class App {
     }
   }
 
-  #printWinners() {
+  #judgeCarRaceWinner() {
     const winners = Refree.judge(this.#cars);
     Console.print(MESSAGE.WINNERS(winners));
   }
