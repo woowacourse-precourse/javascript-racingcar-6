@@ -31,7 +31,7 @@ class CarsNameValidator {
 		}
 	}
 
-	static validateCarsName(carsName) {
+	static validate(carsName) {
 		const carsNameValidator = new CarsNameValidator();
 		carsNameValidator.validateEmptyString(carsName);
 		carsNameValidator.validateNotSetCarName(carsName);
