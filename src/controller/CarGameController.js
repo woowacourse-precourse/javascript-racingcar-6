@@ -3,8 +3,12 @@ import CarGame from '../model/CarGame.js';
 import GameResult from '../model/GameResult.js';
 import InputView from '../view/InputView.js';
 import OutputView from '../view/OutputView.js';
+import { Console } from '@woowacourse/mission-utils';
 
 class CarGameController {
+  #gameResult;
+  #carLog;
+
   async start() {
     const carNames = await InputView.readCarNames();
     const carMap = new Car().convertStringToMap(carNames);
@@ -20,7 +24,14 @@ class CarGameController {
   checkResultStage(carPosition, attempts) {
     OutputView.printResultMessage();
     const prevLog = new Map();
-    const carLog = new GameResult().getForwardResult(carPosition, prevLog);
+    this.#gameResult = new GameResult();
+    console.log('total: ', carPosition);
+
+    for (let i = 0; i < attempts; i++) {
+      this.#carLog = this.#gameResult.getForwardResult(carPosition, prevLog);
+      OutputView.printGameProcess(this.#carLog);
+      Console.print('\n');
+    }
   }
 }
 

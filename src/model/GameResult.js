@@ -1,6 +1,5 @@
 class GameResult {
   getForwardResult(carPosition, prevLog) {
-    console.log('prev: ', carPosition);
     carPosition.forEach((value, carName) => {
       switch (true) {
         case value > 0:
@@ -13,7 +12,6 @@ class GameResult {
           prevLog.set(carName, prevLog.get(carName) || 0);
       }
     });
-    console.log(`after: `, carPosition);
     console.log(`forward: `, prevLog);
     return prevLog;
   }
