@@ -4,8 +4,8 @@
 
 - [ ] 0에서 9까지의 수를 생성한다. `NumberGenerator#createRandomNumbers()`
 - [ ] n대의 자동차가 있다. `Car`
-  - [ ] 자동차는 전진 또는 멈출 수 있다. => 상태를 가지고 있다. `level`, `win` 등...
-    - [ ] 전달받은 랜덤 수를 기준으로 변화한다. => `setter` 필요?!
+  - [x] 자동차는 전진 또는 멈출 수 있다. => 상태를 가지고 있다. `level`, `win` 등...
+    - [x] 전달받은 랜덤 수를 기준으로 변화한다. => `setter` 필요?!
     - [ ] 0 ~ 3 : 후진 `moveBackward`
     - [ ] 4 ~ : 전진 `moveForward`
   - [ ] 자동차 이름은 쉼표(,) 를 기준으로 구분하며 이름은 5자 이하만 가능하다. `InputValidator#checkCarName` + 쉼표를 parser하는 것도 분리할 지 고민해보자.
