@@ -1,5 +1,6 @@
 //테스트할 함수파일명.test.js 네이밍
-import { inputCars, makeHash } from '../src/racingCars/playGame';
+import { inputCars } from '../src/racingCars/playGame';
+import { makeHash } from '../src/racingCars/utils/index.js';
 import { Random, Console } from '@woowacourse/mission-utils';
 
 test('문자열을 쉼표를 구분해 객체를 만듭니다', async () => {
