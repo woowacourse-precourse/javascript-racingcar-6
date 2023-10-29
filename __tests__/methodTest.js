@@ -80,7 +80,9 @@ describe("메서드별 기능 테스트", () => {
     const app = new App();
 
     // then
-    await expect(app.play()).rejects.toThrow("[ERROR]");
+    await expect(app.play()).rejects.toThrow(
+      "[ERROR] 자동차 이름은 5글자까지 가능합니다."
+    );
   });
 
   test("유효한 실행 횟수 입력", async () => {
