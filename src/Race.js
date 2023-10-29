@@ -35,18 +35,8 @@ class Race {
 
   // TODO: 맥스값 로직 수정 필요
   findWinner() {
-    let maxPosition = -Infinity;
-    let winningCars = [];
-    for (const car of this.cars) {
-      const carPosition = car.getPosition();
-      if (carPosition > maxPosition) {
-        maxPosition = carPosition;
-        winningCars = [car];
-      } else if (carPosition === maxPosition) {
-        winningCars.push(car);
-      }
-    }
-    return winningCars.map((winner) => winner.name);
+    const maxPosition = Math.max(...this.cars.map((car) => car.getPosition()));
+    return this.cars.filter((car) => car.getPosition() === maxPosition).map((winner) => winner.name);
   }
 }
 
