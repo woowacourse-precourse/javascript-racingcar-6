@@ -45,4 +45,30 @@ describe("게임 라운드 수 테스트", () => {
   });
 });
 
+describe("게임 진행 상황 출력 테스트", () => {
+  test("전진 상황 출력 테스트", () => {
+    const MOVING_FORWARD = 4;
+    const STOP = 3;
+    const inputs = ["sung", "soo"];
+    const outputs = ["sung : ", "soo : -"];
 
+    MissionUtils.Random.pickNumberInRange = jest.fn();
+    MissionUtils.Random.pickNumberInRange.mockReturnValueOnce(STOP);
+    MissionUtils.Random.pickNumberInRange.mockReturnValueOnce(MOVING_FORWARD);
+    const logSpy = jest.spyOn(MissionUtils.Console, "print");
+
+    const app = new App();
+    app.carMoveArray = ["", ""];
+    app.carMoveText(inputs);
+
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
+
+  test("최종 우승자 선별 테스트", () => {
+    const carNameArray = ["sung", "soo"];
+    const carMoveArray = ["-", "--"];
+
+  })
+});
