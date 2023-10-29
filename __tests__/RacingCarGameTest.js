@@ -102,6 +102,36 @@ describe("RacingCarGame 기능 테스트", () => {
       car.getStatus = jest.fn(() => statusInputs[index]);
     });
 
+    // then
     expect(game.getWinner()).toBe("terry, erric");
+  });
+
+  test("최종 우승자 구하기 - 모든 자동차의 총이동거리가 같을 때", () => {
+    // given
+    const nameInputs = ["jenn", "terry", "erric"];
+    const statusInputs = [
+      {
+        name: "jenn",
+        totalDistance: 3,
+      },
+      {
+        name: "terry",
+        totalDistance: 3,
+      },
+      {
+        name: "erric",
+        totalDistance: 3,
+      },
+    ];
+
+    // when
+    const game = new RacingCarGame();
+    game.cars = Array.from(nameInputs, (name) => new Car(name));
+    game.cars.map((car, index) => {
+      car.getStatus = jest.fn(() => statusInputs[index]);
+    });
+
+    // then
+    expect(game.getWinner()).toBe("jenn, terry, erric");
   });
 });
