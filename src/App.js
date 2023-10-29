@@ -1,4 +1,5 @@
-import { Console, Random } from "@woowacourse/mission-utils";
+import { Console } from "@woowacourse/mission-utils";
+import Car from "./Car";
 
 class App {
   constructor() {
@@ -37,7 +38,7 @@ class App {
     const maxCarData = this.carNameObjects[0];
     const maxCarNames = [];
 
-    // 주어진 car name object에서 우승자를 찾아내는 코드
+    // 주어진 car name object에서 우승자를 찾아내는 코드 (비지니스 로직)
     this.carNameObjects.map((car) => {
       let currCarPosition = car.getCarPosition();
       let maxCarPosition = maxCarData.getCarPosition();
@@ -48,6 +49,7 @@ class App {
       }
     });
 
+    //UI 로직 (최종 우승자 선별 로직)
     Console.print("최종 우승자 : " + maxCarNames.join(", "));
   }
 
@@ -102,28 +104,6 @@ class App {
     }
 
     return roundCount;
-  }
-}
-
-class Car {
-  constructor(name) {
-    this.name = name;
-    this.position = 0;
-  }
-
-  getCarName() {
-    return this.name;
-  }
-
-  getCarPosition() {
-    return this.position;
-  }
-
-  checkPosition() {
-    const randomString = Random.pickNumberInRange(0, 9);
-    if (randomString >= 4) {
-      this.position += 1;
-    }
   }
 }
 
