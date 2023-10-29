@@ -1,11 +1,11 @@
 import Cars from './Car.js';
-import InputView from '../view/inputView.js';
-import OutputView from '../view/OutputView.js';
+import InputView from './view/InputView.js';
+import OutputView from './view/OutputView.js';
 import { Console } from '@woowacourse/mission-utils';
 
 class App {
   async play() {
-    const carNames = await InputView.getCarName();
+    const carNames = await InputView.getCarNames();
     const tryNumber = await InputView.getTryNumber();
 
     const cars = new Cars(carNames);
