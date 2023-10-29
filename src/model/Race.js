@@ -4,14 +4,10 @@ export default class Race {
   #cars = [];
 
   constructor(carNames) {
-    this.#cars = this.registerCars(carNames);
+    carNames.split(",").forEach(name => this.addCar(new Car(name)));
   }
 
-  registerCars(names) {
-    const cars = [];
-    for (let name of names.split(",")) {
-      cars.push(new Car(name));
-    }
-    return cars;
+  addCar(car) {
+    this.#cars.push(car);
   }
 }
