@@ -1,11 +1,12 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import { ERROR, GAME } from "../src/pages/text.js";
-
-import inputRacingCar from "../src/components/inputRacingCar.js";
-import inputTryNumber from "./components/inputTryNumber.js";
-import isGo from "./components/IsGo.js";
-import whoIsWinner from "./components/whoIsWinner.js";
-import printResult from "./components/printResult.js";
+import {
+  inputRacingCar,
+  inputTryNumber,
+  isGo,
+  whoIsWinner,
+  printResult,
+} from "./pages/modules.js";
 
 class App {
   async play() {
