@@ -13,8 +13,8 @@ const OutputView = {
     Console.print('');
   },
 
-  printWinners(winners) {
-    Console.print(`최종 우승자 : ${winners.join(', ')}`);
+  printWinners(names) {
+    Console.print(`최종 우승자 : ${names.join(', ')}`);
   },
 };
 

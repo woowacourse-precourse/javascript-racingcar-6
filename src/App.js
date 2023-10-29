@@ -15,15 +15,15 @@ class App {
   }
 
   async play() {
-    await this.readCarName();
+    await this.readCarNames();
+    await this.readTryNumber();
   }
 
-  async readCarName() {
-    const carName = await InputView.readCarName();
+  async readCarNames() {
+    const carNames = await InputView.readCarNames();
 
-    this.validate(carName);
-    this.createCars(carName);
-    await this.readTryNumber();
+    this.validate(carNames);
+    this.createCars(carNames);
   }
 
   validate(input) {
@@ -35,8 +35,8 @@ class App {
     handleError(validateTryNumber, input);
   }
 
-  createCars(cars) {
-    cars.forEach((car) => this.cars.push(new Car(car)));
+  createCars(carNames) {
+    carNames.forEach((carName) => this.cars.push(new Car(carName)));
   }
 
   async readTryNumber() {
@@ -51,7 +51,7 @@ class App {
 
     while (tryNumber !== this.currentTryNumber) {
       this.cars.forEach((car) => this.move(car));
-      this.printCarStep();
+      this.printStep();
       this.addCurrentTryNumber();
     }
 
@@ -63,7 +63,7 @@ class App {
     car.run(this.randomNumber.canMove());
   }
 
-  printCarStep() {
+  printStep() {
     OutputView.printStep(this.cars);
   }
 
@@ -72,13 +72,13 @@ class App {
   }
 
   findWinners() {
-    let winners = findWinners(this.cars).map((car) => car.getName());
+    const winnersName = findWinners(this.cars).map((car) => car.getName());
 
-    this.printWinners(winners);
+    this.printWinners(winnersName);
   }
 
-  printWinners(winners) {
-    OutputView.printWinners(winners);
+  printWinners(name) {
+    OutputView.printWinners(name);
   }
 }
 
