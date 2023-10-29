@@ -2,14 +2,15 @@ import { Console } from '@woowacourse/mission-utils';
 import { ERROR_MESSAGE, MESSAGE } from '../../constants/message';
 
 const invalidCarName = carList => {
-  if (carList.length === 0) throw Error(ERROR_MESSAGE.carName.noInput);
+  if (carList.length === 1 && carList[0] === '')
+    throw Error(ERROR_MESSAGE.carName.noInput);
 
   carList.forEach(car => {
     if (car.length > 5) throw Error(ERROR_MESSAGE.carName.tooLong);
     if (car === '') throw Error(ERROR_MESSAGE.carName.noname);
   });
 
-  if (carList.length > new Set(carList).length)
+  if (carList.length > new Set(carList).size)
     throw Error(ERROR_MESSAGE.carName.duplicate);
 };
 
