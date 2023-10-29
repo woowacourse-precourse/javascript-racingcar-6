@@ -14,8 +14,12 @@ class View {
     const input = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
     checkValidNumber(input);
     return Number(input);
-    Console.print(error.message);
+  }
+
+  printDistanceToSlash(carName, distance) {
+    Console.print(`${carName} : ${'-'.repeat(distance)}`);
   }
 }
+
 
 export default View;

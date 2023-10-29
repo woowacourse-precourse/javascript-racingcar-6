@@ -47,13 +47,9 @@ class RacingCar {
 
   printAllCars() {
     this.#carList.forEach((car) => {
-      this.carInfo(car.getName(),car.getDistance());
+      this.#view.printDistanceToSlash(car.getName(),car.getDistance());
     })
     Console.print('\n');
-  }
-
-  carInfo(name, distance) {
-    Console.print(`${name} : ${'-'.repeat(distance)}`);
   }
 
   checkWinner() {
