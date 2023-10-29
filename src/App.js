@@ -44,10 +44,12 @@ class App {
     this.#times = await this.getRepeatTimes();
 
     while (this.#num < this.#times) {
+      Console.print('\n실행 결과');
       this.#cars.forEach((element) => {
         if (Random.pickNumberInRange(0, 9) >= 4) {
           element.count += 1;
         }
+        Console.print(element.name + ' : ' + '-'.repeat(element.count));
       });
       this.#num += 1;
     }
