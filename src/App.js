@@ -27,6 +27,18 @@ class App {
     return Number(attempts);
   }
 
+  async CheckMove() {
+
+    const num = Random.pickNumberInRange(0, 9);
+    
+    if (num >= 4) {
+      return true;
+    } else {
+      return false;
+    }
+
+  }
+
 }
 
 const app = new App();
