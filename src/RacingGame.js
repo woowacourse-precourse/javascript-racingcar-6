@@ -66,10 +66,34 @@ class RacingGame {
     }
   };
 
+  printCarPosition = (status) => {
+    Object.keys(status).forEach((key) => {
+      const dashes = '-'.repeat(status[key]);
+      MissionUtils.Console.print(`${key} : ${dashes}`);
+    });
+    MissionUtils.Console.print('');
+  };
+
   startGame = async () => {
     try {
       await this.setCarName();
       await this.setTryNumber();
+
+      let TRY_NUMBER = this.getTryNumber();
+      const CARS_LIST = this.getCarsList();
+      const CARS_STATUS = {};
+      CARS_LIST.forEach((key) => {
+        CARS_STATUS[key] = 0;
+      });
+
+      while (TRY_NUMBER--) {
+        for (let i = 0; i < CARS_LIST.length; i++) {
+          if (this.shouldMoveForward()) {
+            CARS_STATUS[CARS_LIST[i]]++;
+          }
+        }
+        this.printCarPosition(CARS_STATUS);
+      }
     } catch {
       throw new Error(Messages.ERROR_DEFAULT);
     }
