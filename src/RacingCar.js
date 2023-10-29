@@ -47,24 +47,13 @@ class RacingCar {
 
   printAllCars() {
     this.#carList.forEach((car) => {
-      const distance = car.getDistance();
-      const name = car.getName();
-      const slash = this.getDistanceToSlash(distance);
-      this.carInfo(name,slash);
+      this.carInfo(car.getName(),car.getDistance());
     })
     Console.print('\n');
   }
 
-  carInfo(name, slash) {
-    Console.print(`${name} : ${slash}`);
-  }
-
-  getDistanceToSlash(num) {
-    let slash = '';
-    while(slash.length < num){
-      slash += '-';
-    }
-    return slash;
+  carInfo(name, distance) {
+    Console.print(`${name} : ${'-'.repeat(distance)}`);
   }
 
   checkWinner() {
