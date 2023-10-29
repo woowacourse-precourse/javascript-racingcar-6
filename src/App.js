@@ -4,6 +4,8 @@ class App {
   async play() {
     const racingCars = await this.getCarName();
     const tryCount = await this.getTryCount();
+
+    this.setGameResult(racingCars, tryCount);
   }
 
   async getCarName() {
@@ -74,6 +76,18 @@ class App {
     }
 
     return 0;
+  }
+
+  setGameResult(racingCars, count) {
+    let number = 0;
+
+    while (number < count) {
+      Object.entries(racingCars).forEach(([key, value]) => {
+        this.moveForward(key, value, racingCars);
+      });
+
+      number += 1;
+    }
   }
 }
 
