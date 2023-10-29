@@ -8,10 +8,10 @@ class App {
 
   async inputName() {
     const input = await Console.readLineAsync(
-      "이름을 경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분) : \n"
+      "이름을 경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
     );
     const nameArray = this.getName(input);
-    this.participants = nameArray.map((name) => ({ name, positions: [] }));
+    this.participants = nameArray.map((name) => ({ name, position: 0 }));
   }
 
   async inputRound() {
@@ -35,34 +35,40 @@ class App {
     });
   }
 
-  RandomNumber() {
+  getRandomNumber() {
     return MissionUtils.Random.pickNumberInRange(1, 9);
   }
 
   async playRound() {
     const numParticipants = this.participants.length;
     for (let i = 0; i < numParticipants; i++) {
-      const randomNum = await this.RandomNumber();
+      const randomNum = await this.getRandomNumber();
       if (randomNum >= 4) {
-        this.participants[i].positions.push(1);
-      } else {
-        this.participants[i].positions.push(0);
+        this.participants[i].position++;
       }
     }
+  }
+
+  createLine(num) {
+    let result = "";
+    for (let i = 0; i < this.participants[num].position; i++) {
+      result += "-";
+    }
+    return result;
   }
 
   async play() {
     await this.inputName();
     const rounds = await this.inputRound();
+
+    Console.print("\n실행결과");
     for (let i = 0; i < rounds; i++) {
       await this.playRound();
-      this.participants.forEach((eachParticipant) => {
-        const positionOutput = eachParticipant.positions
-          .map((p) => (p === 1 ? "-" : ""))
-          .join("");
-        Console.print(`${eachParticipant.name}: ${positionOutput}`);
+      this.participants.forEach((eachParticipant, num) => {
+        const line = this.createLine(num);
+        Console.print(`${eachParticipant.name} : ${line}`);
       });
-      Console.print("\n");
+      Console.print(" ");
     }
   }
 }
