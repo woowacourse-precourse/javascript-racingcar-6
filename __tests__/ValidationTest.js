@@ -54,4 +54,11 @@ describe('userInputCarName 함수 테스트', () => {
     expect(() => userInputCarNameLengthError(['abcd'])).toThrowError(ERROR.ERROR_SHORT_LENGTH);
     expect(() => userInputCarNameLengthError([])).toThrowError(ERROR.ERROR_SHORT_LENGTH);
   });
+
+  test('이름에 특수문자가 포함되면 오류 throw', () => {
+    expect(() => userInputCarNameLengthError(['a./c', 'abcd', 'qwe'])).toThrowError(
+      ERROR.ERROR_TYPE,
+    );
+    expect(() => userInputCarNameLengthError(['./$#', '$@#!'])).toThrowError(ERROR.ERROR_TYPE);
+  });
 });
