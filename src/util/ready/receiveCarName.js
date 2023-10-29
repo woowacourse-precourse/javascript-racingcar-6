@@ -14,5 +14,3 @@ async function receiveCarName() {
 }
 
 export default receiveCarName;
-
-receiveCarName();
