@@ -74,6 +74,16 @@ class RacingGame {
     MissionUtils.Console.print('');
   };
 
+  printWinners = (status) => {
+    const max_score = Math.max(...Object.values(status));
+    const winners = Object.keys(status).filter(
+      (key) => status[key] === max_score
+    );
+
+    const result = Messages.PRINT_WINNERS + winners.join(', ');
+    MissionUtils.Console.print(result);
+  };
+
   startGame = async () => {
     try {
       await this.setCarName();
@@ -86,6 +96,7 @@ class RacingGame {
         CARS_STATUS[key] = 0;
       });
 
+      MissionUtils.Console.print('\n' + Messages.PRINT_RACING_RESULT);
       while (TRY_NUMBER--) {
         for (let i = 0; i < CARS_LIST.length; i++) {
           if (this.shouldMoveForward()) {
@@ -94,6 +105,7 @@ class RacingGame {
         }
         this.printCarPosition(CARS_STATUS);
       }
+      this.printWinners(CARS_STATUS);
     } catch {
       throw new Error(Messages.ERROR_DEFAULT);
     }
