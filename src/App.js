@@ -49,6 +49,10 @@ class App {
       this.carsRecordBoard[car] += "-";
     }
   }
+
+  printCurrentResult(car) {
+    Console.print(`${car} : ${this.carsRecordBoard[car]}`);
+  }
 }
 
 export default App;
