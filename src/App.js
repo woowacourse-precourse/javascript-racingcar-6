@@ -5,6 +5,7 @@ import {
 } from "./constants/questionMessage.js";
 import { RANGE } from "./constants/randomNumberRange.js";
 import { NOW_RESULT, FINAL_RESULT } from "./constants/playingMessages.js";
+import { CAR_NAME, LAP_TIME } from "./constants/validationMode.js";
 
 class App {
   carsRecordBoard = {};
@@ -18,13 +19,13 @@ class App {
         QUESTION_MESSAGES.WHAT_IS_CARS_NAME
       );
 
-      return cars.split(",");
+      return cars;
     }
 
     if (purpose === PURPOSE_OF_QUESTION_MESSAGES.SET_LAPS) {
       const lap = await Console.readLineAsync(QUESTION_MESSAGES.HOW_MANY);
 
-      return Number(lap);
+      return lap;
     }
   }
 
