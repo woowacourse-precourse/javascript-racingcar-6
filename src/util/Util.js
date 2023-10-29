@@ -11,13 +11,13 @@ class Util {
 		return arr.map((str) => str.trim());
 	}
 	static getWinners(carStateArray) {
-		let maxForwardNumber = 0;
+		let maxForwardCount = 0;
 		carStateArray.forEach((carState) => {
-			maxForwardNumber = Math.max(maxForwardNumber, carState.forwardNumber);
+			maxForwardCount = Math.max(maxForwardCount, carState.forwardCount);
 		});
 		let winnersList = [];
 		carStateArray.forEach((carState) => {
-			if (carState.forwardNumber === maxForwardNumber) {
+			if (carState.forwardCount === maxForwardCount) {
 				winnersList.push(carState.name);
 			}
 		});
