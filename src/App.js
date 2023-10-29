@@ -9,20 +9,33 @@ const getUserInput = async(text) => {
   return userInput;
 }
 
-const getUserName = (userInput) => {
-  const userNames = userInput.split(',');
-  return userNames;
+const splitUserInputByComma = (userInput) => {
+  const inputSplitByComma = userInput.split(',');
+  return inputSplitByComma;
 }
+
+const checkNameLength = (userNames) => {
+  userNames.forEach((val) => {
+    if(val.length > 5) throw new Error("[ERROR] : 이름은 다섯자 이하입니다.");
+  })
+}
+
+
 
 class App {
   async play() {
     try {
       const userInput = await getUserInput('Enter your Input : ');
+      const userNames = await splitUserInputByComma(userInput);
 
-      const userNames = await getUserName(userInput);
+      checkNameLength(userNames);
+
       MissionUtils.Console.print(userNames);
+
+
     } catch(err) {
-      console.log(err);
+      console.log(err.msg);
+      return Promise.reject(err);
     }
   }
 }
