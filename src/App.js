@@ -1,4 +1,5 @@
 import InputView from './view/InputView.js';
+import OutputView from './view/OutputView.js';
 import Car from './model/Car.js';
 import RandomNumber from './model/RandomNumber.js';
 
@@ -47,6 +48,7 @@ class App {
   race(tryNumber) {
     while (tryNumber !== this.currentTryNumber) {
       this.cars.forEach((car) => this.run(car));
+      this.printCarStep();
       this.addCurrentTryNumber();
     }
   }
@@ -54,6 +56,10 @@ class App {
   run(car) {
     this.randomNumber.create();
     car.run(this.randomNumber.canMove());
+  }
+
+  printCarStep() {
+    OutputView.printStep(this.cars);
   }
 
   addCurrentTryNumber() {

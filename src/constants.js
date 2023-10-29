@@ -7,3 +7,5 @@ export const CAR_NAME_LENGTH = 5;
 export const MIN_NUMBER = 0;
 export const MAX_NUMBER = 9;
 export const MOVABLE_NUMBER = 4;
+
+export const STEP_SHAPE = '-';
