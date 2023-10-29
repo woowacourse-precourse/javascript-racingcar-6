@@ -30,12 +30,12 @@ class App {
 
     carNamesArray.forEach((carName) => {
       if (!pattern.test(carName)) {
-        throw new Error('[Error] 이름의 형식이 잘못됐습니다.');
+        throw new Error('[ERROR] 이름의 형식이 잘못됐습니다.');
       }
     });
 
     if (carNamesArray.length < 2) {
-      throw new Error('[Error] 이름은 두 개 이상 입력해야 합니다.');
+      throw new Error('[ERROR] 이름은 두 개 이상 입력해야 합니다.');
     }
 
     if (carNamesArray.length !== uniqueCarNamesArray.length) {
@@ -54,12 +54,12 @@ class App {
 
     carNamesArray.forEach((carName) => {
       if (!pattern.test(carName)) {
-        throw new Error('[Error] 이름의 형식이 잘못됐습니다.');
+        throw new Error('[ERROR] 이름의 형식이 잘못됐습니다.');
       }
     });
 
     if (carNamesArray.length < 2) {
-      throw new Error('[Error] 이름은 두 개 이상 입력해야 합니다.');
+      throw new Error('[ERROR] 이름은 두 개 이상 입력해야 합니다.');
     }
 
     if (carNamesArray.length !== uniqueCarNamesArray.length) {
