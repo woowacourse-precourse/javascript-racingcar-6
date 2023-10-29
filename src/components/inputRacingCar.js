@@ -10,4 +10,5 @@ export default async function inputRacingCar() {
     const lengthInCodePoints = [...car].length;
     if (lengthInCodePoints > 5) throw new Error(ERROR.LENGTH);
   });
+  return CARS;
 }
