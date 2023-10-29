@@ -1,6 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
-import RacingCarGame from "../src/Controllers/RacingCarGame.js";
-import Car from "../src/Models/Car.js";
+import RacingCarGame from "../../src/Controllers/RacingCarGame.js";
+import Car from "../../src/Models/Car.js";
 
 const mockQuestions = (inputs) => {
   Console.readLineAsync = jest.fn();

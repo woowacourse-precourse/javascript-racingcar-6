@@ -1,4 +1,4 @@
-import RaceRound from "../src/Models/RaceRound.js";
+import RaceRound from "../../src/Models/RaceRound.js";
 
 describe("RaceRound 기능 테스트", () => {
   test("number로 형변환", () => {

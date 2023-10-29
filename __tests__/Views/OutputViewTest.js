@@ -1,4 +1,4 @@
-import OutputView from "../src/Views/OutputView.js";
+import OutputView from "../../src/Views/OutputView.js";
 import { Console } from "@woowacourse/mission-utils";
 
 const getLogSpy = () => {
