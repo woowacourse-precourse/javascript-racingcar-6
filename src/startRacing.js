@@ -8,7 +8,6 @@ export default function startGame(carMap, repeatCount) {
         carMap.set(key, value + 1);
       }
     }
-
     printOneStep(carMap);
   }
 
@@ -32,24 +31,19 @@ function printOneStep(carMap) {
     for (let i = 0; i < value; i++) {
       dash += "-";
     }
-
     Console.print(key + " : " + dash);
   }
   Console.print("");
 }
 
 function SearchWinner(carMap, maxAdvance) {
-  let winner = "";
-  let first = true;
+  let winners = [];
   for (let [key, value] of carMap) {
     if (maxAdvance === value) {
-      if (first) {
-        winner += key;
-        first = false;
-      } else {
-        winner += ", " + key;
-      }
+      winners.push(key);
     }
   }
-  Console.print(GAME.RESULT + winner);
+  let racingWinner = winners.map((winner) => winner).join(", ");
+
+  Console.print(GAME.RESULT + racingWinner);
 }
