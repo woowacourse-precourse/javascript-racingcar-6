@@ -1,4 +1,4 @@
-import { PLUS_MOVE_COUNT, INIT_MOVE_COUNT } from '../constants/constants.js';
+import { PLUS_MOVE_COUNT, INIT_MOVE_COUNT } from '../constants/racing.js';
 
 export default class CarModel {
   #cars;

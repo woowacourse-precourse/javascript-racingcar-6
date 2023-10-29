@@ -3,6 +3,7 @@ import Input from '../view/Input.js';
 import Output from '../view/Output.js';
 import makeWinner from '../utils/makeWinner.js';
 import isMove from '../utils/isMove.js';
+import { DECREASE_RACING_COUNT, RACING_END } from '../constants/racing.js';
 
 export default class RacingGame {
   #carModel;
@@ -39,12 +40,12 @@ export default class RacingGame {
   #racing() {
     const cars = this.#carModel.getCar();
     let racingCount = this.#attemps;
-    while (racingCount !== 0) {
+    while (racingCount !== RACING_END) {
       cars.forEach(({ name }) => {
         this.#carModel.updateMove(name, isMove());
       });
       this.#resultModel.addAttempsResult(this.#carModel.getCar());
-      racingCount -= 1;
+      racingCount -= DECREASE_RACING_COUNT;
     }
   }
 }
