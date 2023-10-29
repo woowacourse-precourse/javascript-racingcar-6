@@ -29,6 +29,9 @@ class App {
 
     const game = new RacingGame(carNames, totalAttempts);
     game.playGame();
+
+    const winners = game.determineWinner();
+    MissionUtils.Console.print(`최종 우승자: ${winners.join(', ')}`);
   }
 }
 

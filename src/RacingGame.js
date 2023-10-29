@@ -19,6 +19,13 @@ class RacingGame {
   }
 
   // TODO: Mission 6: 우승자 결정 메서드입니다.
+  determineWinner() {
+    const maxPosition = Math.max(...this.cars.map(car => car.position));
+    const winners = this.cars
+      .filter(car => car.position === maxPosition)
+      .map(car => car.name);
+    return winners;
+  }
 }
 
 export default RacingGame;
