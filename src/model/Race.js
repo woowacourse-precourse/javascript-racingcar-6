@@ -12,6 +12,10 @@ export default class Race {
     this.#cars.push(car);
   }
   
+  getCars() { // 자동차 객체들을 제대로 관리하고 있는지 확인하는 테스트 코드에 필요한 로직
+    return this.#cars;
+  }
+  
   setTrial(trial) {
     this.#trial = trial;
   }
