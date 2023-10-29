@@ -5,8 +5,10 @@ const IN_GAME_MESSAGE = {
   finalWinner: '최종 우승자 : ',
 }
 
+const FORWARD_CRITERIA = 4;
+
 const ERROR_MESSAGE = {
 
 }
 
-export { IN_GAME_MESSAGE, ERROR_MESSAGE};
+export { IN_GAME_MESSAGE, FORWARD_CRITERIA, ERROR_MESSAGE};
