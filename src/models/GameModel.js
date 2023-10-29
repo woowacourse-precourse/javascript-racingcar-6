@@ -1,32 +1,34 @@
+import { ErrorMessage, PromptMessage } from "../views/Messages.js";
 import { Random, Console } from "@woowacourse/mission-utils";
+
 class GameModel {
   constructor() {
     this.carModels = {};
+    this;
   }
 
-  // this.carModels = [ 'a', 'b', 'c' ]
   async getCarModels() {
     const getCarModels = await Console.readLineAsync(
-      `경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n`
+      PromptMessage.ENTER_CARNAME
     );
     this.carModelsArr = getCarModels.split(",").map((name) => name.trim());
     const carModelsArr = this.carModelsArr;
-    //5 자 이하여야 한다.
+
     carModelsArr.forEach((e) => {
       if (e.length > 5) {
-        throw new Error("[ERROR] 이름이 5자를 초과하였습니다.");
+        throw new Error(ErrorMessage.INVALID_LENGTH);
       }
     });
-    //공백이면 안된다.
+
     carModelsArr.forEach((e) => {
       if (e === "") {
-        throw new Error("[ERROR] 공백인 이름이 있습니다.");
+        throw new Error(ErrorMessage.SPACE_NAME);
       }
     });
-    //중복되면 안된다.
+
     const set = new Set(carModelsArr);
     if (carModelsArr.length !== set.size) {
-      throw new Error("[ERROR] 이름이 중복되었습니다.");
+      throw new Error(ErrorMessage.DUPLICATE_NAME);
     }
 
     carModelsArr.forEach((car) => {
@@ -36,15 +38,14 @@ class GameModel {
     });
   }
 
-  // this.attempt = 5
   async getRaceAttempt() {
     const getRaceAttempt = await Console.readLineAsync(
-      `시도할 횟수는 몇 회인가요?\n`
+      PromptMessage.ENTER_ATTEMPT
     );
     this.attempt = parseInt(getRaceAttempt);
-    // 타입이 `Number`이어야 한다.
+
     if (isNaN(getRaceAttempt) !== false) {
-      throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
+      throw new Error(ErrorMessage.INVALID_INPUT);
     }
   }
 
@@ -53,9 +54,8 @@ class GameModel {
     return rand;
   }
 
-  // - push
   getForwardCount(car) {
-    let randomValue = this.getRandomValue(); //함수 호출때마다 난수 새로 생성
+    let randomValue = this.getRandomValue();
     if (randomValue >= 4) {
       // this.forwardCountArr.push("-");
       this.carModels[car].forwardCountArr.push("-");
@@ -70,10 +70,9 @@ class GameModel {
     }
   }
 
-  //입력한 시도 횟수만큼 반복
   repeatRace() {
-    let attempt = this.attempt; // 5
-    Console.print("\n실행 결과");
+    let attempt = this.attempt;
+    Console.print(PromptMessage.PRINT_RACESTART);
     while (attempt > 0) {
       this.printCarForward();
       attempt--;
@@ -101,7 +100,8 @@ class GameModel {
     }
 
     const winner = maxCountIndexArr.map((idx) => this.carModelsArr[idx]);
-    Console.print(`최종 우승자 : ${winner.join(", ")}`);
+
+    Console.print(PromptMessage.PRINT_WINNER(winner.join(", ")));
   }
 }
 
