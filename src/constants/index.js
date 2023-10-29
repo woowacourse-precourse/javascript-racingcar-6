@@ -6,7 +6,7 @@ const GAME_MESSAGE = {
 };
 
 const ERROR_MESSAGE = {
-  IS_DIGIT: "[ERROR] 5자 이하로 입력해주세요.",
+  IS_LENGTH: "[ERROR] 5자 이하로 입력해주세요.",
   IS_STRING: "[ERROR] 문자열로 입력해주세요.",
   IS_COMMA: "[ERROR] 쉼표로 구분해주세요.",
   IS_NUMBER: "[ERROR] 숫자로 입력해주세요.",
