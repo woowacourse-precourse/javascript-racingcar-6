@@ -30,17 +30,22 @@
 
 ### 객체화
 
-- App
+- App.js
 
-  - 게임의 전체적인 흐름을 출력하는 역할 (시작, 끝)
+  - 게임의 전체적인 흐름을 관리하는 역할 (시작, 끝)
 
-- Input
+- View
 
-  - 전체적인 입력을 처리하는 역할
+  - InputView.js
 
-- RacingManager
+    - 게임진행의 전체적인 입력 출력부분
+
+  - OutputView.js
+    - 게임진행의 전체적인 결과 출력부분
+
+- RacingManager.js
 
   - 게임의 중요 계산 로직을 관리하는 역할
 
-- Data
+- Data.js
   - 필요한 모든 data를 제공하는 역할
