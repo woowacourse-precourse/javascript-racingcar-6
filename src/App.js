@@ -50,7 +50,16 @@ class App {
   }
 
   showWinners() {
-    
+    const win = Object.entries(this.goTimes).reduce((max, [key, value]) => {
+      if (value > max) {
+        return value;
+      }
+      return max;
+    }, 0);
+
+    const winners = Object.keys(this.goTimes).filter(key => this.goTimes[key] === win);
+
+    MissionUtils.Console.print(`\n최종 우승자 : ${winners.join(", ")}`);
   }
 
   handleErrors(cars, raceTimes) {
