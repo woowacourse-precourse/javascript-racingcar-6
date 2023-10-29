@@ -4,9 +4,17 @@ class View {
   static ADVANCE_CHAR = '-';
 
   printAdvanceResult(models) {
-    models?.forEach(({ name, moveCnt }) => {
-      Console.print(`${name} : ${View.ADVANCE_CHAR.repeat(moveCnt)}`);
+    models?.forEach((model) => {
+      Console.print(this.formatResult(model));
     });
+  }
+
+  formatResult({ name, moveCnt }) {
+    return `${name} : ${this.generateAdvanceString(moveCnt)}`;
+  }
+
+  generateAdvanceString(moveCnt) {
+    return View.ADVANCE_CHAR.repeat(moveCnt);
   }
 }
 
