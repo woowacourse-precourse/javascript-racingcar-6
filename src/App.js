@@ -22,14 +22,24 @@ class App {
     this.carNames = CAR_NAMES;
 
     const NUMBER_OF_MOVES = await this.userInputNumberOfMoves();
+    // const NUMBER_OF_MOVES = 3;
+    // NUMBER_OF_MOVES = 1
     const RESULTS = [];
+    let roundStatus = {};
     // this.startGame(NUMBER_OF_MOVES);
     for (let moveNum = 0; moveNum < NUMBER_OF_MOVES; moveNum++) {
       const RESULT = this.resultByRandomNumber();
-      RESULTS.push(RESULT);
+      for (const carName in RESULT) {
+        if (RESULT[carName] === '-') {
+          roundStatus[carName] = (roundStatus[carName] || '') + '-';
+        } else {
+          roundStatus[carName] = (roundStatus[carName] || '') + '';
+        }
+      }
+      RESULTS.push({ ...roundStatus });
       // MissionUtils.Console.print(NUMBER_OF_MOVES);
-      MissionUtils.Console.print(RESULT);
-      this.printProgress(RESULT);
+      MissionUtils.Console.print(RESULTS);
+      this.printProgress(roundStatus);
     }
 
     const WINNERS = this.calculateWinner(RESULTS);
@@ -70,7 +80,7 @@ class App {
       // 각 carNames의 value에 RANDOM_NUMBER가 4이상이면 true, 4이하면 false가 저장됨 -> true면 -, false면 공백 저장되도록 변경
       const RANDOM_NUMBER = MissionUtils.Random.pickNumberInRange(0, 9);
       RESULT[this.carNames[index]] = RANDOM_NUMBER >= 4 ? '-' : '';
-      // MissionUtils.Console.print(RANDOM_NUMBER);
+      MissionUtils.Console.print(RANDOM_NUMBER);
     }
 
     return RESULT;
