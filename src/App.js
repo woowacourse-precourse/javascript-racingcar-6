@@ -2,9 +2,7 @@ import { Console } from '@woowacourse/mission-utils';
 import { message, error, num } from './Constants.js';
 
 class App {
-  async play() {
-    this.generateResultTemplate(['asd', 'aa', 'fs']);
-  }
+  async play() {}
 
   async getRacecarNameInput() {
     const racecarNameInput = await Console.readLineAsync(message.ASK_RACECAR_NAMES);
