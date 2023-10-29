@@ -9,14 +9,20 @@ const getUserInput = async(text) => {
   return userInput;
 }
 
+const getUserName = (userInput) => {
+  const userNames = userInput.split(',');
+  return userNames;
+}
+
 class App {
   async play() {
     try {
       const userInput = await getUserInput('Enter your Input : ');
 
-      MissionUtils.Console.print(userInput);
+      const userNames = await getUserName(userInput);
+      MissionUtils.Console.print(userNames);
     } catch(err) {
-
+      console.log(err);
     }
   }
 }
