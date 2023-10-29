@@ -1,7 +1,8 @@
+import { Console } from "@woowacourse/mission-utils";
 import validateRacingCar from "./validateRacingCar.js";
 
-const racingCar = (input) => {
-  const input_string = input;
+const racingCar = async () => {
+  const input_string = await Console.readLineAsync("");
   const input_array = input_string.split(",");
 
   if (!validateRacingCar(input_array)) {

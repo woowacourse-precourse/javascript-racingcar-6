@@ -12,9 +12,7 @@ import announceWinner from "./print/announceWinner.js";
 class App {
   async play() {
     startGame();
-
-    const car_name_string = await Console.readLineAsync("");
-    let car_object_array = getRacingCar(car_name_string);
+    let car_object_array = await getRacingCar();
 
     askTryNumber();
     let try_number = await getTryNumber();
