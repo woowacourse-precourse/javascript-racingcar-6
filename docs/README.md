@@ -29,7 +29,9 @@
 > 데이터의 흐름을 깔끔하게 표현하기 위해 MVC 패턴을 적용.
 
 ### View
-- [ ] `generateAdvanceString(moveCnt)`
-  > 전진 표기 문자열을 생성하는 함수 (ex, input: 3, output: '---')
 - [ ] `printAdvanceResult(models)`
   > Controller로부터 데이터를 받아 결과를 출력하는 함수
+- [ ] `formatResult({ name, moveCnt })`
+  > 전진 표기 문자열을 생성하는 함수 (ex, input: 3, output: '---')
+- [ ] `generateAdvanceString(moveCnt)`
+  > 전진 표기 문자열을 생성하는 함수 (ex, input: 3, output: '---')
