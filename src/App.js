@@ -16,7 +16,7 @@ class App {
     App.#validateTryCount(tryCount);
 
     this.#cars = carNameArray.map((carName) => new Car(carName));
-    this.#printRaceResult(tryCount);
+    this.#printRaceResult(Number(tryCount));
     this.#printWinners();
   }
 
