@@ -14,18 +14,18 @@ class RacingCar {
 
   async start() {
     await this.getCarsNames();
+    const times = await this.getCountTimes();
+    this.repeatForward(times);
   }
 
   async getCarsNames() {
     const carArr = await this.#view.initCarName();
     this.#carList = carArr.map((car) => new Car(car, 0));
-    console.log(this.#carList);
-    await this.getCountTimes();
   }
 
   async getCountTimes() {
     const input = await this.#view.initCountNumber();
-    this.repeatForward(input);
+    return input;
   }
 
   repeatForward(input) {
@@ -47,8 +47,8 @@ class RacingCar {
 
   printAllCars() {
     this.#carList.forEach((car) => {
-      const distance = car.getCarDistance();
-      const name = car.getCarName();
+      const distance = car.getDistance();
+      const name = car.getName();
       const slash = this.getDistanceToSlash(distance);
       this.carInfo(name,slash);
     })
@@ -68,11 +68,11 @@ class RacingCar {
   }
 
   checkWinner() {
-    const allDistance = this.#carList.map((car) => car.getCarDistance());
+    const allDistance = this.#carList.map((car) => car.getDistance());
     const maxDistance = Math.max(...allDistance);
     const winners = this.#carList
-      .filter((car) => car.getCarDistance() === maxDistance)
-      .map((car) => car.getCarName());
+      .filter((car) => car.getDistance() === maxDistance)
+      .map((car) => car.getName());
     
     Console.print(`최종 우승자 : ${winners}`);
   }
