@@ -1,5 +1,6 @@
 import Lap from './Lap.js';
 import validate from './validation.js';
+import printResult from './printWinner.js';
 import MESSAGE from './constants.js';
 import { Console } from '@woowacourse/mission-utils';
 
@@ -12,14 +13,15 @@ class App {
   }
 
   async play() {
-    await this.inputEntry();
-    await this.inputLapLength();
-    const lap = new Lap(this.entry, this.lapLength);
-
+    await this.inputEntry(); // 자동차 이름 입력, 유효성 검사
+    await this.inputLapLength(); // 실행 횟수 입력, 유효성 검사 진행
+    const lap = new Lap(this.entry, this.lapLength); 
+    // '실행 결과' 출력
     Console.print(MESSAGE.RESULT);
-
+    // 차수별 전진 내용 출력
     Array.from({ length: this.lapLength }, () => lap.printStage());
-    this.printWinner(lap.record);
+    // 우승자 출력
+    printResult(lap.record, this.lapLength, this.winner);
   }
 
   async inputEntry() {
@@ -33,17 +35,6 @@ class App {
     const inputNum = await Console.readLineAsync(MESSAGE.ASK_LAP);
     validate.lapLength(inputNum);
     this.lapLength = inputNum;
-  }
-
-  printWinner(finalRecord) {
-    finalRecord.forEach((record) => {
-      const countLength = record.lastIndexOf('-') - record.indexOf('-') + 1;
-      const carName = record.split(' ');
-      if (countLength === parseInt(this.lapLength, 10)) this.winner.push(carName[0]);
-    });
-
-    if (this.winner.length === 0) Console.print(MESSAGE.NO_WINNER);
-    else Console.print(`${MESSAGE.FINAL_WINNER + this.winner.join(', ')}`);
   }
 }
 
