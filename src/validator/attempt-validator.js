@@ -10,21 +10,17 @@ const ERROR_MESSAGE = Object.freeze({
  * 시도 횟수가 숫자인지 검증하는 함수
  * @param {string} inputAttemptCount 시도 횟수
  * @throws 시도 횟수의 길이가 0이라면 에러를 던진다.
- * @returns
  */
 function checkNumeric(inputAttemptCount) {
   if (isNaN(Number(inputAttemptCount))) {
     throw new Error(ERROR_MESSAGE.NOT_NUMERIC);
   }
-
-  return;
 }
 
 /**
  * 시도 횟수가 정수인지 검증하는 함수
  * @param {string} inputAttemptCount 시도 횟수
  * @throws 시도 횟수가 정수가 아니라면 에러를 던진다.
- * @returns
  */
 function checkIntegerNumber(inputAttemptCount) {
   if (inputAttemptCount.includes(".")) {
@@ -36,28 +32,22 @@ function checkIntegerNumber(inputAttemptCount) {
  * 1 이상의 정수인지 검증하는 함수
  * @param {string} inputAttemptCount 시도 횟수
  * @throws 시도 횟수가 1이상이 아니라면 에러를 던진다.
- * @returns
  */
 function checkPositiveNumber(inputAttemptCount) {
   if (parseInt(inputAttemptCount) < 1) {
     throw new Error(ERROR_MESSAGE.NOT_POSITIVE);
   }
-
-  return;
 }
 
 /**
  * 입력받은 시도 횟수를 검증하는 함수
  * @param {string} inputAttemptCount 입력받은 검증 횟수
- * @returns
  */
 function validateAttemptCount(inputAttemptCount) {
   checkSpace(inputAttemptCount);
   checkNumeric(inputAttemptCount);
   checkPositiveNumber(inputAttemptCount);
   checkIntegerNumber(inputAttemptCount);
-
-  return;
 }
 
 export default validateAttemptCount;

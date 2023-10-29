@@ -61,14 +61,11 @@ class RacingController {
   /**
    * 현재 레이싱의 최대 거리를 갱신하는 함수
    * @param {number} distance 자동차의 이동 거리
-   * @returns
    */
   renewMaxDistance(distance) {
     if (distance > this.maxDistance) {
       this.maxDistance = distance;
     }
-
-    return;
   }
 
   /**
