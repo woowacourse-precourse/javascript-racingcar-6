@@ -15,7 +15,8 @@ const CarRacing = {
 
       this.showTryResult(carNameList, carMovesList);
       this.countMoveForward(carMoveForwardList, carMovesList);
-      this.getWinner(carMoveForwardList);
+      const winners = this.decideWinner(carMoveForwardList);
+      this.printWinner(winners);
     }
   },
 
@@ -34,7 +35,7 @@ const CarRacing = {
     });
   },
 
-  getWinner(carNameList, carMoveForwardList) {
+  decideWinner(carNameList, carMoveForwardList) {
     const winnerList = [];
     const maxMoveForwardCount = Math.max(...carMoveForwardList);
 
@@ -46,6 +47,11 @@ const CarRacing = {
 
     return winnerList;
   },
+
+  printWinner(winners){
+    const finalWinners = winners.map((winner) => winner).join(',');
+    return finalWinners;
+  }
 };
 
 export default CarRacing;
