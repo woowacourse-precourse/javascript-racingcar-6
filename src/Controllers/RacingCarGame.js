@@ -1,7 +1,5 @@
-import InputView from "../Views/InputView.js";
-import Car from "../Models/Car.js";
-import OutputView from "../Views/OutputView.js";
-import RaceRound from "../Models/RaceRound.js";
+import { InputView, OutputView } from "../Views";
+import { Car, RaceRound } from "../Models";
 
 export default class RacingCarGame {
   constructor() {
