@@ -18,12 +18,8 @@ const OutputView = {
     Console.print("");
   },
 
-  printRacingFinalWinners: (carsObject, maxDistance) => {
-    Console.print(
-      `${OUTPUT_MESSAGE.FINAL_WINNERS} : ${Object.entries(carsObject)
-        .filter(([carName, carDistance]) => carDistance === maxDistance)
-        .map(([carName, carDistance]) => carName)}`
-    );
+  printRacingFinalWinners: (winners) => {
+    Console.print(`${OUTPUT_MESSAGE.FINAL_WINNERS} : ${winners}`);
   },
 };
 
