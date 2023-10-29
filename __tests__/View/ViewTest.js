@@ -1,5 +1,6 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import View from '../../src/View/View';
+import ERROR from '../../src/constants/error';
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -22,7 +23,7 @@ describe('View 테스트', () => {
 
       // then
       await expect(view.readUserInput(emptyString, validator)).rejects.toThrow(
-        '[ERROR]',
+        `[ERROR] ${ERROR.message.emptyString}`,
       );
     });
   });
