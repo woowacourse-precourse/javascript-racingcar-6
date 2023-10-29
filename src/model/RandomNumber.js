@@ -6,7 +6,6 @@ class RandomNumber {
 
   constructor() {
     this.#randomNumber = 0;
-    this.create();
   }
 
   create() {
