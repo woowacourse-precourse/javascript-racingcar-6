@@ -3,6 +3,10 @@ export const INPUT_MESSAGE = Object.freeze({
   tryNumber: '시도할 횟수는 몇 회인가요?\n',
 });
 
+export const OUTPUT_MESSAGE = Object.freeze({
+  result: '실행 결과',
+});
+
 export const CAR_NAME_LENGTH = 5;
 export const MIN_NUMBER = 0;
 export const MAX_NUMBER = 9;

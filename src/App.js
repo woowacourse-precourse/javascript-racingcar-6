@@ -46,6 +46,7 @@ class App {
   }
 
   race(tryNumber) {
+    OutputView.printTryResultMessage();
     while (tryNumber !== this.currentTryNumber) {
       this.cars.forEach((car) => this.run(car));
       this.printCarStep();
