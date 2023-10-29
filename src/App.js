@@ -1,6 +1,6 @@
-import RacingGame from './Controller/RacingGame.js';
-import CarModel from './Model/CarModel.js';
-import ResultModel from './Model/ResultModel.js';
+import RacingGame from './controller/RacingGame.js';
+import CarModel from './model/CarModel.js';
+import ResultModel from './model/ResultModel.js';
 
 class App {
   async play() {

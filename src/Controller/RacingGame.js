@@ -1,8 +1,8 @@
 import { Random } from '@woowacourse/mission-utils';
-import Validator from '../../utils/Validator.js';
-import Input from '../View/Input.js';
-import Output from '../View/Output.js';
-import makeWinner from '../../utils/makeWinner.js';
+import Validator from '../utils/Validator.js';
+import Input from '../view/Input.js';
+import Output from '../view/Output.js';
+import makeWinner from '../utils/makeWinner.js';
 
 export default class RacingGame {
   #carModel;

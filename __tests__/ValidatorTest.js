@@ -1,4 +1,4 @@
-import Validator from '../utils/Validator';
+import Validator from '../src/utils/Validator';
 
 describe('Validator Test', () => {
   test.each(['', ' ', 'pobi,', 'pobi, ', 'pobi,javajigi'])(

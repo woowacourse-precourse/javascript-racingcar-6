@@ -1,4 +1,4 @@
-import makeWinner from '../utils/makeWinner';
+import makeWinner from '../src/utils/makeWinner';
 
 describe('MakeWinner Test', () => {
   test('우승자 생성기능 테스트', () => {
