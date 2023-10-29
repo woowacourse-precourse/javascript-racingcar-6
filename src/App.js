@@ -2,7 +2,7 @@ import RacingCarController from './RacingCarController';
 
 class App {
   async play() {
-    await new RacingCarController.play();
+    await new RacingCarController().play();
   }
 }
 
