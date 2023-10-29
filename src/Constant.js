@@ -4,7 +4,11 @@ const MESSAGE = {
 };
 
 const ERROR_MESSAGE = {
-  nothing: '입력되지 않았습니다.',
+  nothing: '[ERROR] 입력되지 않았습니다.',
+  deficiency: '[ERROR] 입력된 자동차가 2대 미만입니다.',
+  duplication: '[ERROR] 중복된 자동차 이름이 존재합니다.',
+  empty: '[ERROR] 자동차 이름이 입력되지 않은 부분이 있습니다.',
+  over: '[ERROR] 자동차 이름이 5자를 초과했습니다.',
   number: '숫자가 아닙니다.',
   integar: '정수가 아닙니다.',
   small: '1 미만의 숫자입니다.',

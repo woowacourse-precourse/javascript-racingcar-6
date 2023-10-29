@@ -4,13 +4,9 @@ import Validation from './Validation.js';
 
 class InputValue {
   static async carName() {
-    try {
-      const input = await Console.readLineAsync(MESSAGE.INPUT_CAR_NAME);
-      const arr = input.split(',');
-      return arr;
-    } catch (error) {
-      Console.print(`[ERROR] ${error.message}`);
-    }
+    const input = await Console.readLineAsync(MESSAGE.INPUT_CAR_NAME);
+    Validation.checkCarName(input.trim().split(','));
+    return input.trim().split(',');
   }
 
   static async moveCount() {
