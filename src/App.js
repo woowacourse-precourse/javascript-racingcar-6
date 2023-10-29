@@ -7,15 +7,18 @@ import RacingGame from './RacingGame.js';
 const player = new Player();
 const game = new RacingGame();
 
+
 class App {
 
   #player
   #repeat
+  #point
 
   async play() {
     await this.setGame();
-    
-    
+    this.#point = await game.start(this.#player, this.#repeat);
+
+
   }
 
   async setGame(){
