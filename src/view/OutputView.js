@@ -14,7 +14,7 @@ const OutputView = {
   },
 
   printWinners(names) {
-    Console.print(`최종 우승자 : ${names.join(', ')}`);
+    Console.print(`${OUTPUT_MESSAGE.winners}${names.join(', ')}`);
   },
 };
 
