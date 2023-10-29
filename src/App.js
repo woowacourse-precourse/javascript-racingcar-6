@@ -70,6 +70,18 @@ class App {
       this.proceedRaceTurn();
     }
   }
+
+  proceedRaceTurn() {
+    this.playersData.forEach(player => {
+      if (this.shouldMoveForward()) {
+        this.addCarMoveProgressBar(player);
+      }
+    });
+    this.playersData.forEach(player => {
+      const line = `${player.playerName} : ${player.trackLocation}`;
+      Console.print(line);
+    });
+  }
 }
 
 export default App;
