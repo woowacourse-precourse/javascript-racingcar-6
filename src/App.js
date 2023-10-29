@@ -25,7 +25,7 @@ class App {
 
   async play() {
     const answerOfCars = await Console.readLineAsync(MESSAGE.input.carName);
-    this.cars = Validation.getNamesOfCar(answerOfCars);
+    this.cars = Validation.getNamesOfCar(answerOfCars, CONDITION.carNameLength);
     const answerOfNumber = await Console.readLineAsync(
       MESSAGE.input.numberOfTimes,
     );
