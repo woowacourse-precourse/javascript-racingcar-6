@@ -1,5 +1,12 @@
+import CarName from './CarName.js';
+
 class App {
-  async play() {}
+  constructor() {
+    this.carName = new CarName();
+  }
+  async play() {
+    await this.carName.start();
+  }
 }
 
 export default App;

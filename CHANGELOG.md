@@ -1,0 +1,2 @@
+- docs: 기능 목록 문서작성
+- feat: setup precourse racingcar project
