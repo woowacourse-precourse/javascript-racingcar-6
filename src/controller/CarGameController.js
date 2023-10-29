@@ -11,7 +11,8 @@ class CarGameController {
 
   async playGameStage(carMap) {
     const attempts = await InputView.readAttempts();
-    const randomNumbers = new CarGame().getRandomNumber(attempts);
+    const carPosition = new CarGame().checkPosition(carMap, attempts);
+    console.log(carPosition);
   }
 }
 

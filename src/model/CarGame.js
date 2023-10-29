@@ -1,6 +1,13 @@
 import { Random } from '@woowacourse/mission-utils';
 
 class CarGame {
+  checkPosition(carMap, attempts) {
+    carMap.forEach((_, carName) => {
+      carMap.set(carName, this.getRandomNumber(Number(attempts)));
+    });
+    return carMap;
+  }
+
   getRandomNumber(attempts) {
     let count = 0;
     for (let i = 0; i < attempts; i++) {
@@ -10,7 +17,7 @@ class CarGame {
         count += 1;
       }
     }
-    console.log(`count: ${count}`);
+    console.log(`count per car: ${count}`);
     return count;
   }
 }
