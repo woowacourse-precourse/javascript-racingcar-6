@@ -34,7 +34,6 @@ class CreateCarName {
     return this.carNameArr.push(inputNameElement);
   }
 
-  // 시도할 횟수 입력 메서드
   async playNumber() {
     const inputNumber = await Console.readLineAsync(strings.ASK_NUMBER);
     const race = new RacingCar();
