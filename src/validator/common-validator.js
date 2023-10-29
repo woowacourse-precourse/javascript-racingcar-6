@@ -1,4 +1,4 @@
-const SPACE_ERROR_MESSAGE = "[ERROR] 입력에 공백이 포함될 수 없습니다.";
+import { SPACE_ERROR_MESSAGE } from "../constants/error-message.js";
 
 /**
  * 입력받은 문자열에 공백이 존재하는지 검증하기 위한 함수

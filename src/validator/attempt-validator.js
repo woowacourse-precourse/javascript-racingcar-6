@@ -1,10 +1,5 @@
+import { ATTEMPT_ERROR_MESSAGE } from "../constants/error-message.js";
 import checkSpace from "./common-validator.js";
-
-const ERROR_MESSAGE = Object.freeze({
-  NOT_NUMERIC: "[ERROR] 시도 횟수는 숫자만 입력 가능합니다.",
-  NOT_INTEGER_NUMBER: "[ERROR] 시도 횟수는 정수만 가능합니다.",
-  NOT_POSITIVE: "[ERROR] 시도 횟수는 1이상의 정수만 가능합니다.",
-});
 
 /**
  * 시도 횟수가 숫자인지 검증하는 함수
@@ -13,7 +8,7 @@ const ERROR_MESSAGE = Object.freeze({
  */
 function checkNumeric(inputAttemptCount) {
   if (isNaN(Number(inputAttemptCount))) {
-    throw new Error(ERROR_MESSAGE.NOT_NUMERIC);
+    throw new Error(ATTEMPT_ERROR_MESSAGE.NOT_NUMERIC);
   }
 }
 
@@ -24,7 +19,7 @@ function checkNumeric(inputAttemptCount) {
  */
 function checkIntegerNumber(inputAttemptCount) {
   if (inputAttemptCount.includes(".")) {
-    throw new Error(ERROR_MESSAGE.NOT_INTEGER_NUMBER);
+    throw new Error(ATTEMPT_ERROR_MESSAGE.NOT_INTEGER_NUMBER);
   }
 }
 
@@ -35,7 +30,7 @@ function checkIntegerNumber(inputAttemptCount) {
  */
 function checkPositiveNumber(inputAttemptCount) {
   if (parseInt(inputAttemptCount) < 1) {
-    throw new Error(ERROR_MESSAGE.NOT_POSITIVE);
+    throw new Error(ATTEMPT_ERROR_MESSAGE.NOT_POSITIVE);
   }
 }
 

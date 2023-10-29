@@ -1,9 +1,5 @@
+import { CAR_ERROR_MESSAGE } from "../constants/error-message.js";
 import checkSpace from "./common-validator.js";
-
-const ERROR_MESSAGE = Object.freeze({
-  LENGTH: "[ERROR] 자동차의 이름은 1자 이상 5자 이내로 구성되어야 합니다.",
-  DUPLICATION: "[ERROR] 중복된 자동차의 이름이 존재합니다.",
-});
 
 /**
  * 자동차 이름의 길이를 검증하기 위한 함수
@@ -12,7 +8,7 @@ const ERROR_MESSAGE = Object.freeze({
  */
 function checkLength(racingCarName) {
   if (racingCarName.length < 1 || racingCarName.length > 5) {
-    throw new Error(ERROR_MESSAGE.LENGTH);
+    throw new Error(CAR_ERROR_MESSAGE.LENGTH);
   }
 }
 
@@ -24,7 +20,7 @@ function checkLength(racingCarName) {
 function checkDuplication(racingCarNames) {
   const uniqueRacingCarNames = new Set(racingCarNames);
   if (uniqueRacingCarNames.size !== racingCarNames.length) {
-    throw new Error(ERROR_MESSAGE.DUPLICATION);
+    throw new Error(CAR_ERROR_MESSAGE.DUPLICATION);
   }
 }
 
