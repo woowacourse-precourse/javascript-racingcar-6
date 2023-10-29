@@ -1,12 +1,12 @@
 import playerRegistration from "../src/playerRegistration";
 
-describe("자동차 경주 게임", () => {
+describe("플레이어 입력", () => {
   test("split 메서드로 주어진 값을 구분", () => {
     const input = "pobi,woni";
-    const result = input.split(",");
 
-    expect(result).toContain("pobi", "woni");
-    expect(result).toContainEqual("pobi", "woni");
+    expect(() => {
+      playerRegistration(input).toEqual(["pobi", "woni"]);
+    });
   });
   test("플레이어의 이름이 5자리 초과할 경우", () => {
     const longString = "aaaaaa";
