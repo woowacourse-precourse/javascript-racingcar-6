@@ -5,7 +5,10 @@ class Car {
     this.name = name;
     this.distance = '';
   }
-  
+  goForward() {
+    const number = MissionUtils.Random.pickNumberInRange(1, 9);
+    
+  }
 }
 // class StartGame {
 
@@ -40,7 +43,6 @@ class App {
     let gameCount = await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
     return gameCount;
   }
-  
 }
 const app = new App();
 await app.play();
