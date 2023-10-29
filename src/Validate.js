@@ -4,7 +4,7 @@ export default class Validate {
   }
 
   static isInvalidLength(string) {
-    return string.length <= 5;
+    return string.length > 5;
   }
 
   static isPositiveInteger(number) {
@@ -14,7 +14,7 @@ export default class Validate {
   }
 
   static checkJoinItem(joinItem) {
-    if (this.isInvalidLength(joinItem) && this.isEmpty(joinItem)) {
+    if (this.isInvalidLength(joinItem) || this.isEmpty(joinItem)) {
       throw new Error('[ERROR]');
     }
   }
