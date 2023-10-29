@@ -1,5 +1,5 @@
 import { Console, Random } from '@woowacourse/mission-utils';
-
+import Result from './result.js';
 class Play {
   constructor() {}
   전진기능(carList) {
@@ -29,7 +29,8 @@ class Play {
     Console.print('시도할 횟수는 몇 회인가요?');
     const 시도횟수 = await Console.readLineAsync('');
     this.시도하기기능(시도횟수, carList);
-    //최종결과 판단으로
+    const result = new Result();
+    result.최종결과(carList);
   }
 }
 
