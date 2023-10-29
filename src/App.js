@@ -1,5 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import Car from "../src/Car";
+import Car from "./Car";
 
 class App {
   #cars = [];
