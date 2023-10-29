@@ -24,6 +24,9 @@ class App {
     for (let i = 0; i < attempts; i += 1) {
       race.moveAllCars();
     }
+
+    const winners = race.getWinners();
+    MissionUtils.Console.print(`최종 우승자: ${winners.join(', ')}`);
   }
 }
 
