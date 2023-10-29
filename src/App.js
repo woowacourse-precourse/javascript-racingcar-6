@@ -2,13 +2,29 @@ import Print from './Print';
 import Car from './Car';
 
 class App {
-  async play() {
-    const participateCars = await Print.getCarsName();
-    const count = await Print.getCount();
+  constructor() {
+    this.carArray = [];
+    this.count = 0;
+  }
 
-    participateCars.forEach(carName => {
-      const car = new Car(carName, count);
-    });
+  async play() {
+    await this.setInitialValue();
+  }
+
+  async setInitialValue() {
+    await this.getParticipateCars();
+    await this.getCount();
+  }
+
+  async getParticipateCars() {
+    const participateCars = await Print.getCarsName();
+    this.carArray = participateCars.map(
+      participateCar => new Car(participateCar),
+    );
+  }
+
+  async getCount() {
+    this.count = await Print.getCount();
   }
 }
 
