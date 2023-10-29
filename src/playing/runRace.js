@@ -8,6 +8,20 @@ const determineMove = () => {
 }
 
 
+const updateRaceResults = (participants, raceResults) => {
+  const updatedRaceResults = { ...raceResults };
+
+  participants.forEach((participant) => {
+    if (determineMove()) {
+      updatedRaceResults[participant] += '-';
+    }
+    MissionUtils.Console.print(`${participant} : ${updatedRaceResults[participant]}\n`);
+  });
+
+  return updatedRaceResults;
+};
+
+
 const findMaxScore = (raceResults) => {
   let maxScore = 0;
 
@@ -20,15 +34,6 @@ const findMaxScore = (raceResults) => {
 
   return maxScore;
 }
-
-const updateRaceResults = (participants, raceResults) => {
-  participants.forEach((participant) => {
-    if (determineMove()) {
-      raceResults[participant] += '-';
-    }
-    MissionUtils.Console.print(`${participant} : ${raceResults[participant]}\n`);
-  });
-};
 
 
 const findWinnerName = (raceResults, targetScore) => {
@@ -45,13 +50,13 @@ const findWinnerName = (raceResults, targetScore) => {
 
 
 const runRace = (totalRaces, participants) => {
-  const raceResults = {};
+  let raceResults = {};
   participants.forEach((participant) => {
     raceResults[participant] = '';
   })
 
   for (let race = 1; race < totalRaces + 1; race += 1) {
-    updateRaceResults(participants, raceResults);
+    raceResults = updateRaceResults(participants, raceResults);
     MissionUtils.Console.print('\n');
   }
 
