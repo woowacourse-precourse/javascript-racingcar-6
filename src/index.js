@@ -1,4 +1,4 @@
-import App from "./App.js";
+const GameManager = require("./GameManager");
 
-const app = new App();
-app.play();
+const gameManger = new GameManager();
+gameManger.play();
