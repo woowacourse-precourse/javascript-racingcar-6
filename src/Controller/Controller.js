@@ -2,6 +2,9 @@ import InputView from '../View/InputView.js';
 import Car from '../Model/Car.js';
 import OutputView from '../View/OutputView.js';
 import { getWinners } from '../Model/Result.js';
+import Validator from './Validator.js';
+
+const COMMA = ',';
 
 export default class Controller {
   constructor() {
@@ -10,19 +13,35 @@ export default class Controller {
     this.rounds = 0;
   }
 
+  static validate(input, validateFunction) {
+    try {
+      validateFunction(input);
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
+
   async startGame() {
-    const carNames = await InputView.readCarNames();
-    const rounds = await InputView.readRoundCounts();
-    this.initializeCars(carNames);
-    this.rounds = rounds;
+    await this.initializeCars();
+    await this.initializeRounds();
 
     this.startRun();
   }
 
-  initializeCars(carNames) {
-    carNames.split(",").map((name) => {
+  async initializeCars() {
+    const carsInput = await InputView.readCarNames();
+    const carNames = carsInput.split(COMMA);
+    Controller.validate(carNames, Validator.validateNames);
+
+    carNames.map((name) => {
       this.cars.push(new Car(name));
     });
+  }
+
+  async initializeRounds() {
+    const rounds = await InputView.readRoundCounts();
+    Controller.validate(rounds, Validator.validateRounds);
+    this.rounds = rounds;
   }
 
   startRun() {
