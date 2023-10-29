@@ -32,6 +32,15 @@ class App {
     return times;
   }
 
+  startGoOrStop() {
+    this.#cars.forEach((element) => {
+      if (Random.pickNumberInRange(0, 9) >= 4) {
+        element.count += 1;
+      }
+      Console.print(element.name + ' : ' + '-'.repeat(element.count));
+    });
+  }
+
   async play() {
     const names = await this.getCarNames();
     names.split(',').forEach((element) => {
@@ -45,12 +54,7 @@ class App {
 
     while (this.#num < this.#times) {
       Console.print('\n실행 결과');
-      this.#cars.forEach((element) => {
-        if (Random.pickNumberInRange(0, 9) >= 4) {
-          element.count += 1;
-        }
-        Console.print(element.name + ' : ' + '-'.repeat(element.count));
-      });
+      this.startGoOrStop();
       this.#num += 1;
     }
   }
