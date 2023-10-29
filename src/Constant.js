@@ -2,9 +2,11 @@ export const CONSTANT = Object.freeze({
   maxNameLength: 5,
   movable: 4,
   notMove: 0,
+});
 
-  minRandomNum: 0,
-  maxRandomNum: 9,
+export const RANDOM_NUMBER = Object.freeze({
+  minNum: 0,
+  maxNum: 9,
 });
 
 export const MESSAGE = Object.freeze({
