@@ -8,3 +8,5 @@ class View {
     return NAME_STRING.split(",");
   }
 }
+
+export default View;
