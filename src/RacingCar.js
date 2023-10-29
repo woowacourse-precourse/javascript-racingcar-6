@@ -1,15 +1,15 @@
-import RandomNumber from "./utils/Random.js";
+import RandomNumber from "./utils/RandomNumber.js";
 import RaceOrganizer from "./view/RaceOrganizer.js";
 
 class RacingCar {
-  #createEntry(names) {
+  createEntry(names) {
     const list = new Map();
     names.forEach((key) => list.set(`${key}`, ""));
 
     return list;
   }
 
-  #reportRaceStatus(key, value, map) {
+  #reportRaceStatus(value, key, map) {
     if (RandomNumber.isGreaterThanFour()) {
       const currentValue = value + "-";
 
@@ -21,9 +21,9 @@ class RacingCar {
     RaceOrganizer.talkToCarMovingForward(key, value);
   }
 
-  #moveFowardCar(entry, lap) {
-    const round = 1;
+  moveFowardCar(entry, lap) {
     const participant = new Map(entry);
+    let round = 1;
 
     while (round <= lap) {
       participant.forEach(this.#reportRaceStatus);

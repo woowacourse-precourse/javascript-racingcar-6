@@ -1,12 +1,12 @@
 import { Console } from "@woowacourse/mission-utils";
 
 class RaceOrganizer {
-  getCandidates(participant) {
+  static getCandidates(participant) {
     const strongCandidate = [...participant].sort(
       (a, b) => b[1].length - a[1].length,
     );
 
-    const maxLap = strongCandidate[0][1].length;
+    const maxLap = strongCandidate[0][1];
     const winner = strongCandidate.flatMap(([name, lap]) =>
       maxLap === lap ? name : [],
     );
@@ -15,7 +15,7 @@ class RaceOrganizer {
   }
 
   static talkToCarMovingForward(name, lap) {
-    if (lap.length) {
+    if (lap.length > 0) {
       Console.print(`${name} : ${lap}`);
       return;
     }
@@ -23,9 +23,9 @@ class RaceOrganizer {
   }
 
   static talkToWinner(participant) {
-    const winner = this.getCandidates(participant).join(", ");
+    const winner = RaceOrganizer.getCandidates(participant).join(", ");
 
-    Console.print(`${winner}`);
+    Console.print(`최종 우승자 : ${winner}`);
   }
 }
 
