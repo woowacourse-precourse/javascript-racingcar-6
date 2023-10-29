@@ -3,8 +3,15 @@ import ErrorHandler from './ErrorHandler';
 
 class RacingGameInputManager {
   constructor() {
+    this.racingInfo = { racingCars: [], playCount: 0 };
     this.racingCars = [];
     this.playCount = 0;
+  }
+
+  async getRacingInfo() {
+    this.racingInfo.racingCars = await this.getRacingCars();
+    this.racingInfo.playCount = await this.getPlayCount();
+    return this.racingInfo;
   }
 
   async getRacingCars() {
