@@ -7,7 +7,6 @@ class Cars {
   #cars = new Map();
 
   addCars(carNames) {
-    // this.#cars = carNaes.map((carName) => new Car(carName));
     carNames.forEach((carName) => {
       this.#cars.set(carName, new Car(carName));
     });
