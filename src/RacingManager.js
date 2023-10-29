@@ -27,6 +27,16 @@ class RacingManager {
 
     return list;
   }
+
+  determineWinner() {
+    const winner = [];
+    const maxScore = Math.max(...this.state);
+    this.state.map((score, idx) => {
+      if (score === maxScore) winner.push(this.cars[idx]);
+    })
+
+    return winner;
+  }
 }
 
 export default RacingManager;
