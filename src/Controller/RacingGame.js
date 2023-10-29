@@ -3,6 +3,7 @@ import Validator from '../utils/Validator.js';
 import Input from '../view/Input.js';
 import Output from '../view/Output.js';
 import makeWinner from '../utils/makeWinner.js';
+import isMove from '../utils/isMove.js';
 
 export default class RacingGame {
   #carModel;
@@ -41,7 +42,7 @@ export default class RacingGame {
     let attemps = this.#attemps;
     while (attemps !== 0) {
       cars.forEach(({ name }) => {
-        this.#carModel.updateMove(name, Random.pickNumberInRange(0, 9) >= 4);
+        this.#carModel.updateMove(name, isMove());
       });
       this.#resultModel.addAttempsResult(this.#carModel.getCar());
       attemps -= 1;
