@@ -9,8 +9,8 @@ export default function result(carArr, count) {
         gameRounds(carArr, scoreArr);
         MissionUtils.Console.print('\n');
     }
-    const winner = selectWinner(carArr, scoreArr);
+    let winner = selectWinner(carArr, scoreArr);
+    winner = '최종 우승자 : ' + winner;
 
-    const winnerPrint = '최종 우승자 : ' + winner;
-    MissionUtils.Console.print(winnerPrint);
+    return winner;
 }

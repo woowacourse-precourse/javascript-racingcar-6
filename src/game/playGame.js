@@ -4,5 +4,7 @@ import result from './result.js';
 
 export default function playGame(carArr, count) {
     MissionUtils.Console.print('실행 결과');
-    result(carArr, count);
+    const winner = result(carArr, count);
+    
+    MissionUtils.Console.print(winner);
 }

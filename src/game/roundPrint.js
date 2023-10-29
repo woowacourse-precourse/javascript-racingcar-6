@@ -10,7 +10,7 @@ export default function roundPrint(carArr, scoreArr, car) {
 }
 
 export async function advanceCondition(number) {
-    if(number < 5) {
+    if(number < 4) {
         return false;
     }
 
