@@ -22,7 +22,10 @@ describe('이름 입력 처리 테스트', () => {
 });
 
 describe('이름 입력 예외 테스트', () => {
-  test.each([[['pobi', 'javaji']], [['']]])('각 이름은 1~5자이다', (inputs) => {
-    expect(() => validateName(inputs)).toThrow('[ERROR]');
-  });
+  test.each([[['pobi', 'javaji']], [['']]])(
+    '이름이 5자 이내가 아니면 에러를 발생시킨다 (입력된 이름들: %s)',
+    (inputs) => {
+      expect(() => validateName(inputs)).toThrow('[ERROR]');
+    },
+  );
 });
