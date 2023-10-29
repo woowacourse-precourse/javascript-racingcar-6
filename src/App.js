@@ -44,7 +44,7 @@ class App {
   }
 
   static #validateTryCount(count) {
-    if (CONDITION.INVALID_TRY_COUNT(Number(count))) {
+    if (CONDITION.INVALID_TRY_COUNT(count)) {
       throw new Error(ERROR.TRY_COUNT);
     }
   }
