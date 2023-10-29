@@ -19,6 +19,17 @@ class App {
             return { name: carName, distance: 0 };
         });
     }
+
+    async InputTryNumber() {
+        const input = await MissionUtils.Console.readLineAsync(
+            "시도할 횟수는 몇 회인가요?"
+        );
+        this.tryNum = parseInt(input, 10); //입력을 정수로 변환해서 저장
+
+        if (isNaN(this.tryNum)) {
+            throw Error("[ERROR] 이름이 잘못된 형식입니다.");
+        }
+    }
 }
 
 export default App;
