@@ -4,7 +4,15 @@ class App {
     cars = []; // 자동차 객체를 저장할 배열
     tryNum = 0; //몇회 할 것인지 저장하는 변수
 
-    async play() {}
+    async play() {
+        await this.InputCarName();
+        await this.InputTryNumber();
+        for (let i = 0; i < this.tryNum; i++) {
+            this.MoveCar();
+            this.ShowDistance();
+        }
+        this.ShowWinner();
+    }
 
     async InputCarName() {
         const name = await MissionUtils.Console.readLineAsync(
