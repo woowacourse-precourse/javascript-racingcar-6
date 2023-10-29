@@ -41,8 +41,17 @@ describe('userInputCarName 함수 테스트', () => {
     expect(() => userInputCarNameFormError('de f')).toThrowError(ERROR.ERROR_SPACE);
   });
 
-  // test('길이가 5를 초과할 때 오류 throw', () => {
-  //   expect(() => userInputCarNameLengthError('abcdef')).toThrowError(ERROR.ERROR_LENGTH);
-  //   expect(() => userInputCarNameLengthError('안녕하시렵니까')).toThrowError(ERROR.ERROR_LENGTH);
-  // });
+  test('이름 길이가 5를 초과할 때 오류 throw', () => {
+    expect(() => userInputCarNameLengthError(['abcd', 'abcdef', 'jun'])).toThrowError(
+      ERROR.ERROR_LONG_LENGTH,
+    );
+    expect(() => userInputCarNameLengthError(['abcdef', 'abcdefg', 'jun'])).toThrowError(
+      ERROR.ERROR_LONG_LENGTH,
+    );
+  });
+
+  test('이름 개수가 2개 미만일 때 오류 throw', () => {
+    expect(() => userInputCarNameLengthError(['abcd'])).toThrowError(ERROR.ERROR_SHORT_LENGTH);
+    expect(() => userInputCarNameLengthError([])).toThrowError(ERROR.ERROR_SHORT_LENGTH);
+  });
 });
