@@ -42,7 +42,7 @@ export default class RacingCarGame {
   }
 
   runRaces() {
-    Array.from({ length: this.raceRound }, () => {
+    Array.from({ length: this.raceround }, () => {
       this.executeRace();
       this.displayRaceResults();
     });
@@ -62,7 +62,7 @@ export default class RacingCarGame {
   async start() {
     await this.setupCars();
     await this.setupRaceRound();
-    this.play();
+    this.runRaces();
     const winners = this.getWinner();
     OutputView.printWinner(winners);
   }
