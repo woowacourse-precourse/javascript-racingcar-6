@@ -1,14 +1,13 @@
 export default class Cars {
   constructor(input) {
-    this.cars = input.split(",");
-    this.len = this.cars.length
+    this.obj = {};
+    input.split(",").forEach(v=>this.obj[v]= 0);
+    this.len = input.split(",").length;
   }
 
   move_cars(moves) {
-    moves.forEach((v,i) => {
-      if(v>=4) {
-        this.cars[i] += v;
-      }
-    })
+    Object.keys(this.obj).forEach((item,i) => {
+      if(moves[i] >= 4) this.obj[item]++;
+    });
   }
 }
