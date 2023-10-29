@@ -28,3 +28,15 @@ export const isValidInput = (name) => {
     }
 };
 
+//입력받은 시도횟수의 유효성 검사
+export const isValidCount = (count) => {
+    //정수가 아닐 경우
+    if( !Number.isInteger(count) ) {
+        throw new Error( NAME_ERROR.COUNT_ERROR );
+    }
+
+    //NULL값인 경우
+    if ( count === NULL ) {
+        throw new Error( NAME_ERROR.NULL_ERROR );
+    }
+};
