@@ -11,7 +11,7 @@ class App {
   }
 
   async play() {
-    const raceEntry = this.getPlayerCarsInput();
+    const raceEntry = await this.getPlayerCarsInput();
     this.createPlayerData(raceEntry);
   }
 
@@ -40,6 +40,11 @@ class App {
       return userInput;
     }
   }
+
+  shouldMoveForward() {
+    const pickedNumber = Random.pickNumberInRange(0, 9);
+    return pickedNumber >= 4;
+  }
 }
 
 export default App;
@@ -48,10 +53,6 @@ const app = new App();
 app.play();
 
 // 필요한 함수들
-// getPlayerCarsInput
-// isPlayerCarNameValidated
-// getPlayerTryNumberInput
-// isPlayerTryNumberValidated
 // startRace
 // shouldCarMoveForward
 // addCarMoveProgressBar
