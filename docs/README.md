@@ -46,7 +46,7 @@
 
 - 입력받은 값을 객체로 관리 `({ carNameArray, moveCount })`
 - [x] 자동차마다 전진한 횟수를 객체로 관리 `({ name, forwardCount })`
-- [ ] 입력받은 `move` 수 만큼 경주 게임 반복
+- [x] 입력받은 `move` 수 만큼 경주 게임 반복
 - cars 배열을 순회하면서
   - 랜덤한 수 뽑기 → 만약 이게 4이상일 경우 → forwardCount+=1
 - cars 배열 순회가 끝나면 forwardCount씩 출력
@@ -59,6 +59,6 @@
   car3 : -
   ```
 
-- [ ] 위 반복이 끝나면 cars에서 forwardCount를 통해 우승자 출력
+- [x] 위 반복이 끝나면 cars에서 forwardCount를 통해 우승자 출력
 - sort를 통해 max를 고정해두고 해당 max 값을 가진 자동차의 이름을 배열에 저장하자
 - 위 우승자 배열을 `.join(', ')`을 이용해서 문자열로 변환하자`(배열의 원소가 하나라면 ', ' 문자열이 붙지 않기 때문에 조건문은 필요없다)`
