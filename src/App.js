@@ -6,12 +6,21 @@ class App {
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
     );
 
-    return await MissionUtils.Console.readLineAsync("");
+    const INPUT_CAR_NAME = await MissionUtils.Console.readLineAsync("");
+
+    const CARS_ARRAY = INPUT_CAR_NAME.split(",");
+
+    CARS_ARRAY.forEach((name) => {
+      if (name.length < 1 || name.length > 5) {
+        throw new Error("[ERROR] 자동차 이름은 5글자 이하로 입력해야 합니다.");
+      }
+    });
+
+    return await CARS_ARRAY;
   }
 
   async play() {
-    const CAR_NAME_LIST = await this.inputCarName();
-    // MissionUtils.Console.print(CAR_NAME_LIST);
+    await this.inputCarName();
   }
 }
 
