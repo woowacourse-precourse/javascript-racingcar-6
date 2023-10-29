@@ -1,10 +1,8 @@
-import { Random } from '@woowacourse/mission-utils';
 import { isValidateCarName, isValidateAttemps } from '../utils/validator.js';
 import Input from '../view/Input.js';
 import Output from '../view/Output.js';
 import makeWinner from '../utils/makeWinner.js';
 import isMove from '../utils/isMove.js';
-import { ONE, ZERO } from '../constants/constants.js';
 
 export default class RacingGame {
   #carModel;
@@ -41,12 +39,12 @@ export default class RacingGame {
   #racing() {
     const cars = this.#carModel.getCar();
     let attemps = this.#attemps;
-    while (attemps !== ZERO) {
+    while (attemps !== 0) {
       cars.forEach(({ name }) => {
         this.#carModel.updateMove(name, isMove());
       });
       this.#resultModel.addAttempsResult(this.#carModel.getCar());
-      attemps -= ONE;
+      attemps -= 1;
     }
   }
 }

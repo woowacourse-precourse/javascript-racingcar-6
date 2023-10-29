@@ -1,5 +1,5 @@
-const ZERO = 0;
-const ONE = 1;
+const INIT_MOVE_COUNT = 0;
+const PLUS_MOVE_COUNT = 1;
 const NEW_LINE = '\n';
 const SPACE = ' ';
 
@@ -8,4 +8,4 @@ const STICK = Object.freeze({
   oneStick: '-',
 });
 
-export { ZERO, ONE, NEW_LINE, SPACE, STICK };
+export { INIT_MOVE_COUNT, PLUS_MOVE_COUNT, NEW_LINE, SPACE, STICK };

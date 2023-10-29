@@ -1,11 +1,11 @@
-import { NEW_LINE, ONE, STICK, ZERO } from '../constants/constants.js';
+import { NEW_LINE, STICK } from '../constants/constants.js';
 
 function makeStick(moveCount) {
   let count = moveCount;
   let sticks = STICK.newSticks;
-  while (count !== ZERO) {
+  while (count !== 0) {
     sticks += STICK.oneStick;
-    count -= ONE;
+    count -= 1;
   }
   return sticks;
 }
