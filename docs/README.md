@@ -20,7 +20,7 @@
 
   - `lap`의 `record`를 통해 우승자를 확인하고, 출력한다.
 
-- `lap(entry, labLength)`
+- `Lap(entry, labLength)`
 
   - 차수별 실행 결과를 출력한다. `printStage()`
 
