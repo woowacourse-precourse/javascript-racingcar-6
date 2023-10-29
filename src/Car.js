@@ -14,4 +14,8 @@ class Car {
   getName() {
     return this.#name;
   }
+
+  getStep() {
+    return this.#step;
+  }
 }
