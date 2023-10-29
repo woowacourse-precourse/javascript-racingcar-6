@@ -12,4 +12,11 @@ class Lap {
       this.record.push(`${carName} : `);
     });
   }
+
+  printStage() {
+    for (let i = 0; i < this.lablength; i += 1) {
+      if (Random.pickNumberInRange(0, 9) > 3) this.record[i] += '-';
+    }
+    Console.print(this.record.join('\n'));
+  }
 }
