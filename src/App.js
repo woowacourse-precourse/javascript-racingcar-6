@@ -8,6 +8,10 @@ class App {
     );
 
     // TODO: Mission 2: 이동 시도 횟수 입력 메서드입니다.
+    const totalAttempts = parseInt(
+      await MissionUtils.Console.readLineAsync('시도할 횟수를 입력하세요:'),
+      10,
+    );
 
     // TODO: Mission 5: 오류 처리 메서드입니다.
   }
