@@ -19,6 +19,17 @@ class Print {
     }
     return updatedCars;
   }
+
+  static announceWinner(cars) {
+    const winners = [];
+    const max = Math.max(...cars.values());
+    cars.forEach((value, key) => {
+      if (value === max) {
+        winners.push(key);
+      }
+    });
+    Console.print(`${MESSAGE.result.finalWinner}${winners.join(', ')}`);
+  }
 }
 
 export default Print;

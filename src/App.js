@@ -33,18 +33,7 @@ class App {
     );
     this.numberOfTimes = Validation.getNumberOfTimes(answerOfNumber);
     this.cars = Print.executeProcess(this.cars, this.numberOfTimes);
-    this.printFinalWinner();
-  }
-
-  printFinalWinner() {
-    const winners = [];
-    const max = Math.max(...this.cars.values());
-    this.cars.forEach((value, key) => {
-      if (value === max) {
-        winners.push(key);
-      }
-    });
-    Console.print(`${MESSAGE.result.finalWinner}${winners.join(', ')}`);
+    Print.announceWinner(this.cars);
   }
 }
 
