@@ -12,8 +12,8 @@ class CarRacing {
     this.count;
   }
 
-  startGame() {
-    this.getCarName();
+  async startGame() {
+    await this.getCarName();
   }
 
   async getCarName() {
