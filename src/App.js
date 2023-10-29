@@ -1,4 +1,4 @@
-import { Console } from '@woowacourse/mission-utils';
+import { Console, Random } from '@woowacourse/mission-utils';
 import { message, error, num } from './Constants.js';
 
 class App {
@@ -54,6 +54,16 @@ class App {
     }, []);
 
     return template;
+  }
+
+  generateAdvanceConditions(racecarNames) {
+    const advanceConditions = [];
+
+    for (let i = 0; i < racecarNames; i++) {
+      advanceConditions.push(Random.pickNumberInRange(num.LOWER_LIMIT, num.UPPER_LIMIT));
+    }
+
+    return advanceConditions;
   }
 
   async printFinalResult(finalWinner) {
