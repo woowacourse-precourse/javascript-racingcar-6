@@ -5,6 +5,6 @@ export default class App {
 
   async play() {
     this.#grandPrix = new GrandPrix();
-    await this.#grandPrix.readGrandPrixInputs();
+    await this.#grandPrix.initialize();
   }
 }

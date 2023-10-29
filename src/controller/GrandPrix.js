@@ -6,7 +6,7 @@ export default class GrandPrix {
 
   #lapNumber;
 
-  async readGrandPrixInputs() {
+  async initialize() {
     const racingCarInput = await InputView.readRacingCarNames();
     const lapNumberInput = await InputView.readLapNumber();
 
