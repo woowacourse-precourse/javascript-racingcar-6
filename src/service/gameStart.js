@@ -20,5 +20,3 @@ export default async function gameStart() {
     return promise;
   }
 }
-
-gameStart();
