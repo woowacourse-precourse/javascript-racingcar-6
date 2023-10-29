@@ -14,9 +14,11 @@ class App {
         console.log(numberOfGames);
     }
     async createCarNameArr() {
-        const carNameArr = await Console.readLineAsync().then((value) =>
-            value.split(",")
-        );
+        const inputValue = await Console.readLineAsync().then((value) => value);
+        const carNameArr = inputValue.split(",");
+
+        this.checkCarFormat(inputValue, carNameArr);
+
         return carNameArr;
     }
     async getNumberOfGames() {
@@ -25,6 +27,16 @@ class App {
         );
 
         return numberOfGames;
+    }
+    checkCarFormat(input, inputArr) {
+        if (!input || !input.includes(",")) {
+            throw new Error("[ERROR] 자동차 이름이 잘못된 형식입니다.");
+        }
+
+        const iscarNameUnderFiveChars = inputArr.every((el) => el.length <= 5);
+        if (!iscarNameUnderFiveChars) {
+            throw new Error("[ERROR] 자동차 이름이 잘못된 형식입니다.");
+        }
     }
 }
 
