@@ -12,11 +12,10 @@ describe('getRacingCars 함수 테스트', () => {
     mockQuestion(input);
 
     // when
-    const result = await getRacingCars();
+    const racingCars = await getRacingCars();
 
     // then
-    await expect(result).toContain('car1');
-    await expect(result).toContain('car2');
+    await expect(racingCars).toContain('car1', 'car2');
   });
 
   test('경주차 이름 입력이 하나일 때 처리', async () => {
@@ -63,8 +62,6 @@ describe('getRacingCars 함수 테스트', () => {
     const racingCars = await getRacingCars();
 
     // then
-    expect(racingCars).toContain('car1');
-    expect(racingCars).toContain('car2');
-    expect(racingCars).toContain('car3');
+    expect(racingCars).toContain('car1', 'car2', 'car3');
   });
 });

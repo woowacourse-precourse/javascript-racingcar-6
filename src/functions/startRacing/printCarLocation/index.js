@@ -1,12 +1,11 @@
-import { Console } from '@woowacourse/mission-utils';
+import { MissionUtils } from '@woowacourse/mission-utils';
 
 const printCarLocation = (racingResult) => {
-  const locationInfoList = Object.entries(racingResult);
-
-  locationInfoList.forEach(([carName, carLocation]) => {
+  Object.entries(racingResult).forEach(([carName, carLocation]) => {
     const progressBar = '-'.repeat(carLocation);
-    Console.print(`${carName} : ${progressBar}`);
+    MissionUtils.Console.print(`${carName} : ${progressBar}`);
   });
+  MissionUtils.Console.print('\n');
 };
 
 export default printCarLocation;

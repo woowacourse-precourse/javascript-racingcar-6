@@ -9,16 +9,16 @@ const startRacing = async () => {
   const racingCarList = await getRacingCars();
   const repeatNum = await getRepeatNum();
 
-  let racingCarLocation = racingCarList.reduce((acc, car) => {
+  let prevRoundResult = racingCarList.reduce((acc, car) => {
     acc[car] = 0;
     return acc;
   }, {});
 
   Console.print(`\n${MESSAGE.result}`);
   for (let round = 0; round < repeatNum; round += 1) {
-    racingCarLocation = playOneRound(racingCarLocation);
-    printCarLocation(racingCarLocation);
-    Console.print('\n');
+    const currentRoundResult = playOneRound(prevRoundResult);
+    printCarLocation(currentRoundResult);
+    prevRoundResult = currentRoundResult;
   }
 };
 

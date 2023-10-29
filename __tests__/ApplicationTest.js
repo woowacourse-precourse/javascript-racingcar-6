@@ -1,15 +1,7 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import App from '../src/App';
 import printWinners from '../src/functions/startRacing/printWinners';
-
-const mockQuestions = (inputs) => {
-  MissionUtils.Console.readLineAsync = jest.fn();
-
-  MissionUtils.Console.readLineAsync.mockImplementation(() => {
-    const input = inputs.shift();
-    return Promise.resolve(input);
-  });
-};
+import { getLogSpy, mockQuestions } from '../src/utils/testUtils';
 
 const mockRandoms = (numbers) => {
   MissionUtils.Random.pickNumberInRange = jest.fn();
@@ -17,12 +9,6 @@ const mockRandoms = (numbers) => {
     (acc, number) => acc.mockReturnValueOnce(number),
     MissionUtils.Random.pickNumberInRange,
   );
-};
-
-const getLogSpy = () => {
-  const logSpy = jest.spyOn(MissionUtils.Console, 'print');
-  logSpy.mockClear();
-  return logSpy;
 };
 
 describe('자동차 경주 게임', () => {
