@@ -1,5 +1,4 @@
-import { Random } from "@woowacourse/mission-utils";
-
+import getRandomNumber from "../util/generator.js";
 import OutputView from "../view/OutputView.js";
 
 class RacingController {
@@ -51,7 +50,7 @@ class RacingController {
    * @returns {boolean} 랜덤 숫자가 4 이상이라면 전진
    */
   isForwardRacingCar() {
-    const randomNumber = Random.pickNumberInRange(0, 9);
+    const randomNumber = getRandomNumber();
     if (randomNumber >= 4) {
       return true;
     }
