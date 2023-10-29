@@ -3,7 +3,7 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 class App {
   cars = [];
   raceTimes = 0;
-  raceResults = [];
+  raceResults = "";
   goTimes = {};
 
   async play() {
@@ -23,6 +23,10 @@ class App {
       randomNumbers = this.pickRandomNumbers(randomNumbers);
       this.goStop(randomNumbers);
     }
+
+    // console.log("\n실행 결과");
+    // console.log(this.raceResults.trim());
+    // console.log("\nTHE END");
   }
 
   pickRandomNumbers(randomNumbers) {
@@ -31,8 +35,14 @@ class App {
   }
 
   goStop(randomNumbers) {
-    console.log("HOORAY!");
-    console.log(randomNumbers);
+    for (let key in randomNumbers) {
+      if (randomNumbers[key] >=4 && randomNumbers[key] <= 9) {
+        this.goTimes[key] = this.goTimes[key] + 1;
+      }
+      this.raceResults = this.raceResults + `${key} : ${"-".repeat(this.goTimes[key])}\n`;
+    }
+
+    this.raceResults = this.raceResults + "\n";
   }
 
   showResults() {
