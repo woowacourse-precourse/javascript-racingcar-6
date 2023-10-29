@@ -1,5 +1,5 @@
 import { Console, Random } from '@woowacourse/mission-utils';
-import { MESSAGE } from './constants.js'
+import { MESSAGE, POSITION_MARK, } from './constants.js'
 import { nameValidation } from './utils/validation.js';
 
 class App {
@@ -36,6 +36,15 @@ class App {
   }
 
 // 모든 자동차의 전진 현황을 "이름 : --" 의 형식으로 출력한다.
+  printCurrentPosition(playerName) {
+    Console.print(`${playerName} : ${POSITION_MARK.repeat(this.#gameData[playerName].position)}`);
+  }
+
+  oneTurn() {
+    Object.keys(this.#gameData).forEach((playerName) => this.playerTurn(playerName));
+    Object.keys(this.#gameData).forEach((playerName) => this.printCurrentPosition(playerName));
+  }
+
 // 최종 우승자를 출력한다.
 // 우승자가 여러 명인 경우 쉼표로 구분해 같이 출력한다.
 
@@ -43,8 +52,8 @@ class App {
     await this.setGameData();
     await this.setRepeatCount();
     Console.print('');
-    Console.print(MESSAGE.gameStart);
-    Object.keys(this.#gameData).forEach((playerName) => this.playerTurn(playerName));
+    Console.print(MESSAGE.gameStart);a
+    this.oneTurn();
 
     Console.print(this.#gameData);
     Console.print(this.#repeatCount);
