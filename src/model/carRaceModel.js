@@ -46,5 +46,5 @@ class RacingGame{
         return WINNERS.map((car) => car.getName()).join(", ");
     }
 }
-export default {Car,RacingGame};
+export {Car,RacingGame};
 

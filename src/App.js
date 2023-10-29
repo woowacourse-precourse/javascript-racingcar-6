@@ -1,5 +1,9 @@
+import {PLAY} from "./controller/carRaceController.js";
+
 class App {
-  async play() {}
+    PLAY(){
+        this.PLAY();
+    }
 }
 
 export default App;
