@@ -3,7 +3,7 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 
 class App {
   carName;
-  numOfGame
+  numOfGame;
   
   //User 입력부분
   async getUserInput() {
@@ -13,7 +13,7 @@ class App {
   async getCarName(callback) {
     const inputValue = await MissionUtils.Console.readLineAsync('경주 할 자동차 이름(이름은 쉼표(,)기준으로 구분)');
     this.carName = inputValue.split(',');
-    if(this.carName.some((value)=>value == '')) throw new Error('[ERROR] 입력값이 없습니다.');
+    if(this.carName.some((value)=>value === '')) throw new Error('[ERROR] 입력값이 없습니다.');
     if(this.carName.some((value)=>value.length>5)) throw new Error('[ERROE] 자동차 이름은 5자 이하로만 입력해주세요.');
     MissionUtils.Console.print(`자동차 이름은 : ${this.carName}`);
     callback();
@@ -22,12 +22,45 @@ class App {
   async getNumber() {
     const inputValue = await MissionUtils.Console.readLineAsync('시도할 횟수');
     if(isNaN(inputValue)) throw new Error('[ERROR] 숫자만 입력해주세요.')
-    if(inputValue == '' || inputValue == 0) throw new Error('[ERROR] 시도할 횟수는 1회 이상이어야합니다.');
+    if(inputValue === '' || inputValue === 0) throw new Error('[ERROR] 시도할 횟수는 1회 이상이어야합니다.');
     this.numOfGame = inputValue;
     MissionUtils.Console.print(`시도할 회수는 : ${this.numOfGame}회`);
+    return this.getGameResult();
   }
 
-  
+  //Game 진행부분
+
+  generateRandomNum() {
+    let randomNum = MissionUtils.Random.pickNumberInRange(0,9);
+    return this.checkResult(randomNum);
+  }
+
+  checkResult(randomNum) {
+    let result = '';
+    if(randomNum > 3) {result = 'go';}
+    else if(randomNum < 4) {result = 'stop';}
+    return result;
+  }
+
+  getGameResult() {
+    let i = 0;  
+    let cnt = Array.from({length: this.numOfGame}, () => 0);
+    let showResult;
+    while(i < this.numOfGame) {
+      MissionUtils.Console.print(`${i+1}회차`)
+      this.carName.forEach((e,idx )=>{
+        let result = this.generateRandomNum();
+        if(result === 'go') {
+          cnt[idx]++;
+        }
+        showResult = '-'.repeat(cnt[idx]);
+        MissionUtils.Console.print(`${this.carName[idx]} : ${showResult}`);
+      }
+      )
+      i++;
+      MissionUtils.Console.print('');
+    }
+  }
 
   async play() {
     this.getUserInput();
