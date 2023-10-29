@@ -38,13 +38,13 @@ class App {
   }
 
   static #validateNameLength(carNameArray) {
-    if (CONDITION.NAME_LENGTH(carNameArray)) {
+    if (CONDITION.INVALID_NAME_LENGTH(carNameArray)) {
       throw new Error(ERROR.NAME_LENGTH);
     }
   }
 
   static #validateTryCount(count) {
-    if (CONDITION.TRY_COUNT(Number(count))) {
+    if (CONDITION.INVALID_TRY_COUNT(Number(count))) {
       throw new Error(ERROR.TRY_COUNT);
     }
   }
