@@ -2,15 +2,15 @@ import Messages from './Messages.js';
 import { MissionUtils } from '@woowacourse/mission-utils';
 
 class RacingGame {
-  constructor() {
-    this.CARS_LIST = [];
-  }
+  #TRY_NUMBER;
+  #CARS_LIST = [];
 
-  shouldMoveForward = () => {
-    let canMove = true;
-    const score = MissionUtils.Random.pickNumberInRange(0, 9);
-    if (score < 4) canMove = false;
-    return canMove;
+  getCarsList = () => {
+    return this.#CARS_LIST;
+  };
+
+  getTryNumber = () => {
+    return this.#TRY_NUMBER;
   };
 
   isValidCarName = (input) => {
@@ -25,12 +25,12 @@ class RacingGame {
       }
     });
     if (isValid) {
-      this.CARS_LIST = car_names;
+      this.#CARS_LIST = car_names;
     }
     return isValid;
   };
 
-  getTryNumber = async () => {
+  setTryNumber = async () => {
     try {
       let input = await MissionUtils.Console.readLineAsync(
         Messages.INPUT_TRY_NUMBER
@@ -38,14 +38,15 @@ class RacingGame {
       input = parseInt(input);
       if (isNaN(input) | (input < 1)) {
         throw new Error(Messages.ERROR_TRY_NUMBER);
+      } else {
+        this.#TRY_NUMBER = input;
       }
-      return input;
-    } catch (error) {
-      throw error;
+    } catch {
+      throw new Error(Messages.ERROR_DEFAULT);
     }
   };
 
-  getCarName = async () => {
+  setCarName = async () => {
     try {
       let input = await MissionUtils.Console.readLineAsync(
         Messages.INPUT_CAR_NAME
@@ -53,18 +54,20 @@ class RacingGame {
       if (!this.isValidCarName(input)) {
         throw new Error(Messages.ERROR_CAR_NAME_LENGTH);
       }
-      return this.CARS_LIST;
-    } catch (error) {
-      throw error;
+    } catch {
+      throw new Error(Messages.ERROR_DEFAULT);
     }
   };
 
   startGame = async () => {
     try {
-      const CARS = await this.getCarName();
-      const TRY_NUMBER = await this.getTryNumber();
-    } catch (error) {
-      throw error;
+      await this.setCarName();
+      await this.setTryNumber();
+
+      console.log(this.getCarsList());
+      console.log(this.getTryNumber());
+    } catch {
+      throw new Error(Messages.ERROR_DEFAULT);
     }
   };
 }
