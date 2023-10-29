@@ -53,7 +53,7 @@ describe('사용자 입력 테스트', () => {
     const user = new User();
 
     await expect(user.inputMoveNum()).resolves.toEqual(5);
-  })
+  });
 });
 
 describe("게임 로직 테스트", () => {
@@ -61,5 +61,26 @@ describe("게임 로직 테스트", () => {
     const judge = new Judge();
 
     expect(judge.checkMoveCondition(5)).toBeTruthy();
+  });
+
+  test("차수별 실행 결과 출력", () => {
+    const gameResultInStep = [
+      {
+        name: 'kim',
+        moveNum: 2
+      },
+      {
+        name: 'park',
+        moveNum: 3
+      }
+    ];
+    const result = 'kim : --\npark : ---\n';
+
+    const judge = new Judge();
+
+    const consoleSpy = jest.spyOn(console, 'log');
+    judge.printResultInStep(gameResultInStep);
+
+    expect(consoleSpy).toHaveBeenCalledWith(result);
   })
 })

@@ -21,9 +21,9 @@ class App {
       name,
       moveNum: 0
     }));
-
+    Console.print(gameResultInStep)
     Console.print('\n실행 결과');
-    
+
     let gameStep = 0;
     while (gameStep < gameMoveNum) {
       gameResultInStep.forEach((player) => {
