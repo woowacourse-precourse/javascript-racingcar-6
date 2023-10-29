@@ -1,11 +1,16 @@
-import { errorHandler } from './errorHandler.js';
+import { Console } from '@woowacourse/mission-utils';
 
 export default class Validator {
   static validate(condition, errorMessage) {
-    if (!condition) {
-      return errorHandler(errorMessage);
+    try {
+      if (!condition) {
+        throw errorMessage;
+      }
+      return true;
+    } catch (err) {
+      Console.print(err);
+      throw new Error(err);
     }
-    return true;
   }
 
   static validateUndefinedOrNullOrSpacesOrLengthZero(value) {

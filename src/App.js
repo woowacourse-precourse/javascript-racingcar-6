@@ -51,6 +51,21 @@ class App {
       App.printRaceResults(arrayedCarNames, raceProgressGraph);
       copiedMoveCount -= 1;
     }
+    return raceProgressGraph;
+  }
+
+  static checkWinner(racingResult, arrayedCarNames) {
+    let maxNum = 0;
+    racingResult.forEach(progressDegree => {
+      if (maxNum < progressDegree.length) maxNum = progressDegree.length;
+    });
+    return arrayedCarNames.filter(
+      (_, idx) => racingResult[idx].length === maxNum,
+    );
+  }
+
+  static printWinner(winner) {
+    Console.print(`최종 우승자 : ${winner.join(', ')}`);
   }
 
   static async startGame() {
@@ -59,11 +74,14 @@ class App {
     App.ValidateCarNames(arrayedCarNames);
     const moveCount = await App.getMoveCountInput();
     Validator.validateMoveCount(moveCount);
-    this.simulateCarRace(arrayedCarNames, moveCount);
+    const racingResult = App.simulateCarRace(arrayedCarNames, moveCount);
+    const winner = App.checkWinner(racingResult, arrayedCarNames);
+    App.printWinner(winner);
+    return null;
   }
 
   async play() {
-    App.startGame();
+    return App.startGame();
   }
 }
 
