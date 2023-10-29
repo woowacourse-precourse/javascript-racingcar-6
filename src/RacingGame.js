@@ -34,5 +34,10 @@ export default class RacingGame {
         car.increasePosition();
       }
     });
+    this.clearRound();
+  }
+
+  getRoundResult() {
+    return this.#carList.map((car) => car.getPositionResult());
   }
 }
