@@ -35,6 +35,14 @@ class App {
       this.carsRecordBoard[car] = "";
     }
   }
+
+  checkCanMove(randomNumber) {
+    if (randomNumber >= 4) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
 
 export default App;
