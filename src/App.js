@@ -28,9 +28,7 @@ class App {
   validateCarNames(carNames) {
     const nameSet = new Set();
 
-    for (let i = 0; i < carNames.length; i += 1) {
-      const name = carNames[i];
-
+    carNames.forEach((name) => {
       if (!name) {
         throw new Error("[ERROR] 자동차 이름이 비어있습니다.");
       }
@@ -44,7 +42,7 @@ class App {
       }
 
       nameSet.add(name);
-    }
+    });
   }
 
   async getRaceCountFromUserInput() {
