@@ -62,7 +62,7 @@ class App {
 
   printWinner() {
     const winners = this.getWinnersNames();
-    MissionUtils.Console.print(winners);
+    MissionUtils.Console.print(`최종 우승자 : ${winners.join(", ")}`);
   }
 
   async play() {
