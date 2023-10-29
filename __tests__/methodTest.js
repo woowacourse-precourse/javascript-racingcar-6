@@ -82,4 +82,34 @@ describe("메서드별 기능 테스트", () => {
     // then
     await expect(app.play()).rejects.toThrow("[ERROR]");
   });
+
+  test("유효한 실행 횟수 입력", async () => {
+    // given
+    const MOVING_FORWARD = 4;
+    const STOP = 3;
+    const inputs = ["승규,수민", "5"];
+    const message = ["5"];
+    const randoms = [
+      MOVING_FORWARD,
+      STOP,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      STOP,
+      STOP,
+    ];
+    const logSpy = getLogSpy(); // 로그 출력 스파이
+
+    // 사용자 입력 및 랜덤 값 모의화
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    // when
+    const app = new App();
+    await app.play(); // App의 `play` 메서드 실행
+
+    // then
+    message.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
 });
