@@ -8,12 +8,12 @@ class RacingCarController {
     this.racingCar = new RacingCar();
   }
 
-  play() {
-    this.readCarNames();
+  async play() {
+    await this.readCarNames();
     this.readTrialCount();
   }
-  readCarNames() {
-    const carNames = InputView.readCarNames();
+  async readCarNames() {
+    const carNames = await InputView.readCarNames();
     const carNamesArray = carNames.split(CONSTANTS.delimiter);
     this.handleCarNames(carNamesArray);
   }
@@ -21,8 +21,8 @@ class RacingCarController {
     Validator.validateCarNames(carNamesArray);
     this.racingCar.generateCars(carNamesArray);
   }
-  readTrialCount() {
-    const trialCount = Number(InputView.readTrialCount());
+  async readTrialCount() {
+    const trialCount = Number(await InputView.readTrialCount());
     this.handleTrialCount(trialCount);
   }
   handleTrialCount(trialCount) {
