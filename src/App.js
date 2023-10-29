@@ -74,6 +74,7 @@ class App {
       this.CARS_ARRAY.forEach((car, index) => {
         this.#moveForward(index);
       });
+      this.#printEachGameResult();
     }
 
     Console.print(this.CARS_ARRAY);
@@ -85,6 +86,18 @@ class App {
     if (RANDOM_NUMBER > 4) {
       this.CARS_ARRAY[carIndex].forwardCar();
     }
+  }
+
+  #printEachGameResult() {
+    let resultBar = '';
+
+    this.CARS_ARRAY.forEach((car) => {
+      for(let i = 0; i < car.forwardCount; i += 1) {
+        resultBar += '-';
+      }
+      Console.print(`${car.carName} : ${resultBar}`);
+    })
+    Console.print(' ');
   }
 
   async play() {
