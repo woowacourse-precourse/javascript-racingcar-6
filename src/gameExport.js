@@ -104,7 +104,9 @@ async function startGame() {
     consoleResult(result);
     const winner = await gameWinner();
     consoleWinner(winner);
-  } catch (error) {}
+  } catch (error) {
+    throw new Error('[ERROR] 게임 실행 중 오류 발생:', error);
+  }
 }
 
 export { startGame };

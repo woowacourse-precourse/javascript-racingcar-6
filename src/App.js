@@ -6,7 +6,7 @@ class App {
     try {
       await startGame();
     } catch (error) {
-      console.error('[ERROR] 게임 실행 중 오류 발생:', error);
+      throw new Error('[ERROR] 게임 실행 중 오류 발생:', error);
     }
   }
 }
