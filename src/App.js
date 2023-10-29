@@ -1,4 +1,3 @@
-import { Console } from '@woowacourse/mission-utils';
 import SettingCars from './SettingCars.js';
 import RacingGame from './RacingGame.js';
 
