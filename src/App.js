@@ -5,9 +5,14 @@ class App {
   carList;
   view = new View();
 
+  oneRound() {
+    this.carList.oneRound();
+  }
+
   async play() {
     this.carList = new CarList(await this.view.getCarName());
     const COUNT = await this.view.getRound();
+    this.oneRound();
   }
 }
 
