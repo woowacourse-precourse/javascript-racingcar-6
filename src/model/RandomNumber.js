@@ -5,15 +5,16 @@ class RandomNumber {
   #randomNumber;
 
   constructor() {
+    this.#randomNumber = 0;
     this.create();
   }
 
   create() {
-    this.randomNumber = Random.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
+    this.#randomNumber = Random.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
   }
 
   canMove() {
-    return this.randomNumber >= MOVABLE_NUMBER;
+    return this.#randomNumber >= MOVABLE_NUMBER;
   }
 }
 
