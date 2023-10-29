@@ -12,7 +12,7 @@ class App {
     }
     return COMPUTER_NUMBER;
   }
-  
+
   Check_Name(){} //이름 예외 처리
 
   Check_Match_Num(MATCH_NUM){}//숫자 예외 처리
@@ -52,7 +52,20 @@ class App {
       }
       
     }
-    
+
+    let max =0;
+    for(let x=0; x<COUNT_NUM.length; x++){
+      if (COUNT_NUM[x]>max) {
+        max=COUNT_NUM[x];
+      }
+    }
+    const WINNER_MEMBER = [];
+    for(let y=0; y<COUNT_NUM.length; y++){
+      if (COUNT_NUM[y]==max){
+        WINNER_MEMBER.push(USER_NAME[y]);
+      }
+    }
+    Console.print('최종 우승자 : ' + WINNER_MEMBER.map((member) => member).join(','));
   }
 }
 export default App;
