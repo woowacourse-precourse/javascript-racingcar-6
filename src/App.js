@@ -1,11 +1,12 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import { randomNumber } from "./randomNumber.js";
+import getCarName from "./getCarName.js";
 
 class App {
   async play() {
-    MissionUtils.Console.print(randomNumber());
+    const carName = await getCarName();
+    MissionUtils.Console.print(carName);
   }
 }
-const app = new App();
-app.play();
+
 export default App;
