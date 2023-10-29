@@ -10,7 +10,7 @@ class CarList {
     carInputArray.map((data) => {
       if (data.length > 5) throw new Error(MESSAGE.OVER_NAMELENGTH_MSG);
     });
-    carInputArray.map((carName) => this.cars.push(new Car(carName, 0)));
+    carInputArray.map((carName) => this.cars.push(new Car(carName)));
   }
 
   printCarListScore(tryNumber) {

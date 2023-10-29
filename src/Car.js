@@ -4,9 +4,8 @@ class Car {
   name = "";
   score = 0;
 
-  constructor(name, score) {
+  constructor(name) {
     this.name = name;
-    this.score = score;
   }
 
   printScore() {
