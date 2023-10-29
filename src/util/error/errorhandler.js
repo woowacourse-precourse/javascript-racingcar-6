@@ -14,7 +14,7 @@ export function defaultErrorHandler(error) {
 }
 
 export function appErrorHandler(error) {
-  const errorMessage = new Error(`[ERROR] ${error}`);
+  const errorMessage = `[ERROR] ${error}`;
   consolePrint(errorMessage);
   return Promise.reject(errorMessage);
 }
