@@ -1,4 +1,4 @@
-import MESSAGE from '../constants.js';
+import MESSAGE from '../utils/constants.js';
 import { Console } from '@woowacourse/mission-utils';
 
 const printResult = (finalRecord, lapLength) => {
