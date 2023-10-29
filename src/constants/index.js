@@ -9,7 +9,6 @@ export const OUTPUT_MESSAGES = {
 };
 
 export const ERROR_MESSAGES = Object.freeze({
-  PREFIX: '[ERROR]',
   INVALID_CAR: '유효한 입력값이 아닙니다.',
   INVALID_ATTEMPTS: '유효한 숫자를 입력해주세요.',
 });
@@ -18,7 +17,8 @@ export const ERROR_MESSAGES = Object.freeze({
 export const FORWARD_THRESHOLD = 4;
 
 export const CONSTANTS = {
-  FORWARD_THRESHOLD,
-  OUTPUT_MESSAGES,
   INPUT_MESSAGES,
+  OUTPUT_MESSAGES,
+  ERROR_MESSAGES,
+  FORWARD_THRESHOLD,
 };
