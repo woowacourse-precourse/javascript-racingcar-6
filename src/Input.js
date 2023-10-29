@@ -1,5 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import MESSAGE from './Message.js';
+import MESSAGE from './Message';
 
 class Input {
   nameArray = [];

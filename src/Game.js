@@ -1,7 +1,6 @@
-import Car from './Car.js';
-import Input from './Input.js';
-import MESSAGE from './Message.js';
-import Output from './Output.js';
+import Car from './Car';
+import Input from './Input';
+import Output from './Output';
 
 class Game {
   totalRound = 0;
@@ -21,10 +20,10 @@ class Game {
   }
 
   async setTotalRound() {
-    this.output.printMessage(MESSAGE.inputRound);
+    this.output.printInputRoundMessage();
     await this.input.readText(true);
     this.totalRound = this.input.round;
-    this.output.printMessage(this.input.round);
+    this.output.printTotalRound(this.input.round);
   }
 
   async start() {

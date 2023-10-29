@@ -1,6 +1,5 @@
-import Game from './Game.js';
-import MESSAGE from './Message.js';
-import Output from './Output.js';
+import Game from './Game';
+import Output from './Output';
 
 class App {
   game = new Game();
@@ -9,7 +8,7 @@ class App {
 
   async play() {
     await this.game.start();
-    this.output.printMessage(MESSAGE.gameResult);
+    this.output.printPlayMessage();
     while (this.game.currentRound < this.game.totalRound) {
       this.game.play();
     }
