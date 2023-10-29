@@ -67,8 +67,21 @@ describe("게임 진행 상황 출력 테스트", () => {
   });
 
   test("최종 우승자 선별 테스트", () => {
-    const carNameArray = ["sung", "soo"];
-    const carMoveArray = ["-", "--"];
+    const NameArray = ["sung", "soo"];
+    const MoveArray = ["-", "--"];
+    const outPut = "최종 우승자 : soo";
+    const winnerLength = 2;
 
-  })
+    const logSpy = jest.spyOn(MissionUtils.Console, "print");
+    logSpy.mockClear();
+
+    const app = new App();
+    app.carName = NameArray;
+    app.carMoveArray = MoveArray;
+    app.getWinnerArray(winnerLength);
+    app.resultText();
+    
+
+    expect(logSpy).toHaveBeenCalledWith(outPut);
+  });
 });
