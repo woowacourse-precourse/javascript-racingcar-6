@@ -1,4 +1,8 @@
-import { NAME_MAX_LENGTH, NAME_MIN_LENGTH } from '../constants/Enum.js';
+import {
+  MIN_GAME_ATTEMPT_NUMBER,
+  NAME_MAX_LENGTH,
+  NAME_MIN_LENGTH,
+} from '../constants/Enum.js';
 import ERROR_MESSAGE from '../constants/ErrorMessage.js';
 import MESSAGE from '../constants/Message.js';
 import ConsoleInput from '../io/ConsoleInput.js';
@@ -18,6 +22,8 @@ class InputManager {
 
   static async inputGameAttemptNumber() {
     const input = await ConsoleInput.input(MESSAGE.INPUT_GAME_ATTEMPT_NUMBER);
+    InputManager.#validateNaturalNumber(input);
+
     return input;
   }
 
@@ -53,6 +59,18 @@ class InputManager {
 
   static #checkDuplicateInArray(cars, car) {
     return cars.indexOf(car) !== cars.lastIndexOf(car);
+  }
+
+  static #validateNaturalNumber(attemptNumber) {
+    const attemptNumberToNumberType = Number(attemptNumber);
+
+    if (Number.isNaN(attemptNumberToNumberType)) {
+      throw Error(ERROR_MESSAGE.INPUT_NOT_NATURAL_NUMBER);
+    }
+
+    if (attemptNumberToNumberType < MIN_GAME_ATTEMPT_NUMBER) {
+      throw Error(ERROR_MESSAGE.INPUT_NOT_NATURAL_NUMBER);
+    }
   }
 }
 
