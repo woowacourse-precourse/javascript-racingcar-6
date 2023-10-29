@@ -29,13 +29,14 @@ class App {
     // this.startGame(NUMBER_OF_MOVES);
     for (let moveNum = 0; moveNum < NUMBER_OF_MOVES; moveNum++) {
       const RESULT = this.resultByRandomNumber();
-      for (const carName in RESULT) {
-        if (RESULT[carName] === '-') {
-          roundStatus[carName] = (roundStatus[carName] || '') + '-';
-        } else {
-          roundStatus[carName] = (roundStatus[carName] || '') + '';
-        }
-      }
+      this.calculateCumulativeResult(RESULT, roundStatus);
+      // for (const carName in RESULT) {
+      //   if (RESULT[carName] === '-') {
+      //     roundStatus[carName] = (roundStatus[carName] || '') + '-';
+      //   } else {
+      //     roundStatus[carName] = (roundStatus[carName] || '') + '';
+      //   }
+      // }
       RESULTS.push({ ...roundStatus });
       // MissionUtils.Console.print(NUMBER_OF_MOVES);
       MissionUtils.Console.print(RESULTS);
@@ -79,11 +80,23 @@ class App {
     for (let index = 0; index < this.carNames.length; index++) {
       // 각 carNames의 value에 RANDOM_NUMBER가 4이상이면 true, 4이하면 false가 저장됨 -> true면 -, false면 공백 저장되도록 변경
       const RANDOM_NUMBER = MissionUtils.Random.pickNumberInRange(0, 9);
+      // const RANDOM_NUMBER = 4;
       RESULT[this.carNames[index]] = RANDOM_NUMBER >= 4 ? '-' : '';
       MissionUtils.Console.print(RANDOM_NUMBER);
     }
 
     return RESULT;
+  }
+
+  //누적 결과 계산
+  calculateCumulativeResult(result, roundStatus) {
+    for (const carName in result) {
+      if (result[carName] === '-') {
+        roundStatus[carName] = (roundStatus[carName] || '') + '-';
+      } else {
+        roundStatus[carName] = (roundStatus[carName] || '') + '';
+      }
+    }
   }
 
   //진행상황 출력
