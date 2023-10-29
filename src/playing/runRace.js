@@ -1,7 +1,7 @@
 const MissionUtils = require('@woowacourse/mission-utils');
 
 
-const determineWin = () => {
+const determineMove = () => {
   const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
 
   return randomNumber >= 4;
@@ -43,7 +43,7 @@ const runRace = (totalRaces, participants) => {
 
   for (let race = 1; race < totalRaces + 1; race += 1) {
     participants.forEach((participant) => {
-      if (determineWin()) {
+      if (determineMove()) {
         raceResults[participant] += '-';
       }
       MissionUtils.Console.print(`${participant} : ${raceResults[participant]}\n`);
