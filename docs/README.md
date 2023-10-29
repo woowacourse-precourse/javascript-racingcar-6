@@ -3,12 +3,12 @@
 ## 기능 목록
 
 - [x] 0에서 9까지의 수를 생성한다. `NumberGenerator#createRandomNumbers()`
-- [ ] n대의 자동차가 있다. `Car`
+- [x] n대의 자동차가 있다. `Car`
   - [x] 자동차는 전진 또는 멈출 수 있다. => 상태를 가지고 있다. `level`, `win` 등...
     - [x] 전달받은 랜덤 수를 기준으로 변화한다. => `setter` 필요?!
     - [ ] 0 ~ 3 : 후진 `moveBackward`
     - [ ] 4 ~ : 전진 `moveForward`
-  - [ ] 자동차 이름은 쉼표(,) 를 기준으로 구분한다. + 쉼표를 parser하는 것도 분리할 지 고민해보자.
+  - [x] 자동차 이름은 쉼표(,) 를 기준으로 구분한다. + 쉼표를 parser하는 것도 분리할 지 고민해보자. => 상수 분리하면 한 번 더 확인해야하는 문제가 있는 것 같다(파일에 들어가 separator가 뭔지 확인 한 번 더함).
   - [x] 이름은 5자 이하만 가능하다. `InputValidator#checkCarName`
 - [x] 사용자는 시도 횟수(이동 횟수)를 입력한다. `InputProcessor#moveCountInput`
 - [ ] 경주 게임 완료 후 우승자를 알려준다. `OutputProcessor#printWinner`
