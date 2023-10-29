@@ -1,7 +1,8 @@
 import { Console } from "@woowacourse/mission-utils";
 import UserInputCarName from "./utils/UserInputCarName";
 import { movingForwardCase } from "./utils/MovingForwardCase";
-import { FORWARD_DASH, WINNER, GAME_RESULT } from "./const/Messages";
+import { FORWARD_DASH } from "./const/Messages";
+import ShowGameWinner from "./utils/ShowGameWinner";
 
 class App {
   constructor() {
@@ -18,6 +19,7 @@ class App {
     this.carManager.getCarName().forEach((carName) => {
       this.carPositions[carName] = "";
     });
+    this.winnerUtils = new ShowGameWinner(this.carPositions);
   }
 
   playRound() {
@@ -37,17 +39,11 @@ class App {
   }
 
   findWinner() {
-    const maxPosition = Math.max(...Object.values(this.carPositions).map((pos) => pos.length));
-    return Object.entries(this.carPositions)
-      .filter(([_, position]) => position.length === maxPosition)
-      .map(([carName, _]) => carName);
+    return this.winnerUtils.findWinner();
   }
 
-  printGameResult(carGame) {
-    Console.print(GAME_RESULT);
-    carGame.printRoundResult();
-    const winners = carGame.findWinner();
-    Console.print(`${WINNER} : ${winners.join(", ")}`);
+  printGameResult() {
+    return this.winnerUtils.printGameResult(this);
   }
 }
 
