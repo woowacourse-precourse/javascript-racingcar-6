@@ -7,7 +7,7 @@
 
 ## class GameUtils
 
-- [ ] getRandomNumberInRange // 범위 안에서 랜덤 숫자를 얻는 함수
+- [x] getRandomNumberInRange // 범위 안에서 랜덤 숫자를 얻는 함수
 
 ## class Car
 
