@@ -46,6 +46,10 @@ class App {
   async checkAttemptValidity(attemptInput) {
     return /^\d+$/.test(attemptInput);
   }
+
+  async printFinalResult(finalWinner) {
+    Console.print(`${message.FINAL_WINNER}${finalWinner.join(', ')}`);
+  }
 }
 
 export default App;
