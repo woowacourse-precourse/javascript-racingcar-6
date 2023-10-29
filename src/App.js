@@ -65,7 +65,12 @@ class App {
   async play() {
     await this.#inputCar();
     const roundNum = await App.#inputRoundNum();
-    this.#playRound();
+    let currentRound = 1;
+    MissionUtils.Console.print("실행 결과");
+    while (currentRound <= roundNum) {
+      this.#playRound();
+      currentRound += 1;
+    }
     this.#printFinalWinner();
   }
 }
