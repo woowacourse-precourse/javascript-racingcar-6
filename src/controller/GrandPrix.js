@@ -6,6 +6,10 @@ export default class GrandPrix {
 
   #lapNumber;
 
+  /**
+   * @async
+   * @returns {Promise<void>}
+   */
   async initialize() {
     const racingCarInput = await InputView.readRacingCarNames();
     const lapNumberInput = await InputView.readLapNumber();
@@ -15,6 +19,10 @@ export default class GrandPrix {
     return this.#race();
   }
 
+  /**
+   * @private
+   * @returns {void}
+   */
   #race() {
     let lapCount = 0;
 
@@ -27,6 +35,10 @@ export default class GrandPrix {
     return this.#podium();
   }
 
+  /**
+   * @private
+   * @returns {void}
+   */
   #podium() {
     const winner = this.#racingCarGrid.getPodium();
     return OutputView.printRaceWinner(winner);
