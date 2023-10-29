@@ -87,7 +87,6 @@ class App {
     });
   }
 
-  // winners 배열에 담긴 요소들을 형식에 맞게 출력해준다
   printWinner() {
     const winnerString = this.winner.join(', ');
     Console.print(`최종 우승자 : ${winnerString}`);

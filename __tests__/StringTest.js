@@ -1,4 +1,4 @@
-import { checkIsValidNumber, isUserInputValid, splitCarsInput } from '../src/utils.js';
+import { checkIsValidNumber, isUserInputValid, splitCarsInput } from '../src/utils';
 
 describe('차 입력 문자열 유효성 검증 함수 테스트', () => {
   test('입력에 공백 있으면 에러', () => {

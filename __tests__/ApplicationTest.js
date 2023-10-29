@@ -1,5 +1,5 @@
-import App from '../src/App.js';
 import { MissionUtils } from '@woowacourse/mission-utils';
+import App from '../src/App.js';
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -12,9 +12,10 @@ const mockQuestions = (inputs) => {
 
 const mockRandoms = (numbers) => {
   MissionUtils.Random.pickNumberInRange = jest.fn();
-  numbers.reduce((acc, number) => {
-    return acc.mockReturnValueOnce(number);
-  }, MissionUtils.Random.pickNumberInRange);
+  numbers.reduce(
+    (acc, number) => acc.mockReturnValueOnce(number),
+    MissionUtils.Random.pickNumberInRange,
+  );
 };
 
 const getLogSpy = () => {
@@ -55,5 +56,26 @@ describe('자동차 경주 게임', () => {
 
     // then
     await expect(app.play()).rejects.toThrow('[ERROR]');
+  });
+
+  test('우승자가 여러명인 경우', async () => {
+    // given
+    const MOVING_FORWARD = 5;
+    const inputs = ['pobi,woni', '1'];
+    const outputs = ['최종 우승자 : pobi, woni'];
+    const randoms = [MOVING_FORWARD, MOVING_FORWARD];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    // when
+    const app = new App();
+    await app.play();
+
+    // then
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
   });
 });
