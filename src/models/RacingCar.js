@@ -24,16 +24,20 @@ class RacingCar {
     return this.#moveResult;
   }
 
-  #canMove() {
-    const randomNumber = Random.pickNumberInRange(
+  #generateRandomRacingGameNumber() {
+    return Random.pickNumberInRange(
       GAME_NUMBERS.rangeMin,
       GAME_NUMBERS.rangeMax,
     );
+  }
+
+  #canMove(randomNumber) {
     return randomNumber >= GAME_NUMBERS.movementThreshold;
   }
 
   move() {
-    if (this.#canMove()) {
+    const randomNumber = this.#generateRandomRacingGameNumber();
+    if (this.#canMove(randomNumber)) {
       this.#position += 1;
       this.#moveResult += SYMBOLS.moveIndicator;
     }
