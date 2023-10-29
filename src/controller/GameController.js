@@ -46,15 +46,16 @@ class GameController {
   move() {
     const { cars, currentTryCount } = this.model.getData();
 
-    const newCars = cars.map((car) => {
+    const newCars = [];
+
+    for (let i = 0; i < cars.length; i++) {
+      const car = cars[i];
       const randomNumber = pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
 
-      if (randomNumber < 4) {
-        return car;
-      }
+      const currentCar = randomNumber < 4 ? car : { ...car, distance: car.distance + 1 };
 
-      return { ...car, distance: car.distance + 1 };
-    });
+      newCars.push(currentCar);
+    }
 
     this.model.setData({ cars: newCars, currentTryCount: currentTryCount + 1 });
   }
