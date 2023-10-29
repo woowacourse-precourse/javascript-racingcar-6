@@ -2,7 +2,7 @@ import { Console, Random } from '@woowacourse/mission-utils';
 import { MIN_RANGE, MAX_RANGE } from './constants/constants';
 
 class RaceManager {
-  static async getNumberOfAttempt() {
+  static async getNumberOfAttempts() {
     const input = await Console.readLineAsync('시도 횟수 : ');
     return Number(input);
   }
