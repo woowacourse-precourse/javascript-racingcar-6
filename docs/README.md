@@ -95,6 +95,7 @@ members.map((member) => member).join(','); // "east,west,south"
   - 쉼표가 연속적으로 입력 된 경우 Error 를 throw 한다.
   - 쉼표가 맨 앞이나 맨 뒤에 입력된경우 Error 를 throw 한다.
   - 이름안에 공백이 포함되는 경우엔 Error를 throw 한다.
+  - 이름에 숫자, 영문, 한글이 아닌 다른 문자가 들어 갈 경우 Error를 throw 한다.
 
 ## 2. 이동 할 횟수를 입력 받는다.
 
@@ -123,13 +124,30 @@ members.map((member) => member).join(','); // "east,west,south"
 
   # - 🎯 프로그래밍 요구 사항
 
-## 1. Node.js 18.17.1 버전에서 실행 가능해야 한다
+- <details>
+    <summary> .nvmrc 에 노드 버전 기재</summary> 
+    
+    `v.18.17.1`
+  </details>
 
-- nvmrc에 기재
+- <details>
+    <summary>eslint 룰 적용</summary>
 
-## 2. indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다
+  `npm install --save-dev eslint eslint-plugin-jsdoc@latest eslint-plugin-jest@latest eslint-plugin-prettier@latest eslint-config-prettier @babel/eslint-parser` 로 설치하고 .eslintrc.cjs 파일을 만들어서 룰 적용
+  </details>
 
-- eslint를 사용한 룰 적용
+- <details>
+    <summary> indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다</summary>
+    
+    eslint 에 `max-depth': ['error', 2]`  룰 추가
+  </details>
+
+- <details>
+  <summary>JavaScript 코드 컨벤션을 지키면서 프로그래밍 한다</summary>
+
+  `npm install --save-dev eslint-config-airbnb` 설치 후 .eslintrc.cjs 에서 `extends : ['airbnb']` 추가
+
+</details>
 
 ---
 
@@ -137,7 +155,7 @@ members.map((member) => member).join(','); // "east,west,south"
 
 ## 1. 기능을 구현하기 전 docs/README.md에 구현할 기능 목록을 정리해 추가한다.
 
-- REAME.md 작성 중
+- README.md 작성
 
 # - 파일 구조
 
@@ -160,4 +178,17 @@ members.map((member) => member).join(','); // "east,west,south"
  ┃ ┗ 📜generatorRandomNumber.js  랜덤한 숫자를 생성하는 함수
  ┣ 📜App.js 메인 실행 파일
  ┗ 📜index.js  진입 파일
+```
+
+```
+📦__tests__
+ ┣ 📂AllNamesOfCars
+ ┃ ┗ 📜AllNamesOfCarsTest.js 입력 받은 모든 자동차 이름들을 담는 클래스에 대한 테스트 파일
+ ┣ 📂Car
+ ┃ ┗ 📜CarTest.js 각각 독립된 자동차를 담는 클래스에 대한 테스트 파일
+ ┣ 📂CountOfAttempt
+ ┃ ┗ 📜CountOfAttempTest.js 시도 횟수를 담는 클래스에 대한 테스트 파일
+ ┣ 📜AdditionalTest.js 추가적인 테스트 케이스들을 담은 파일
+ ┣ 📜ApplicationTest.js
+ ┗ 📜StringTest.js
 ```
