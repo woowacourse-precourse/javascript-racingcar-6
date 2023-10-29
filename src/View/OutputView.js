@@ -8,7 +8,11 @@ const OutputView = {
 
   async outputExecutionResultBoard(name, position) {
     Console.print(`${name} : ${'-'.repeat(position)}`);
-  }
+  },
+
+  async outputWinnerResult(winner) {
+    Console.print(MESSAGE.OUTPUT_WINNER_RESULT + String(winner.join(', ')));
+  },
 }
 
 export { OutputView };

@@ -5,8 +5,12 @@ import { OutputView } from "../View/OutputView.js";
 
 class RacingGame {
   #car;
+  #maxPosition;
+  #winner;
   constructor() {
     this.#car = [];
+    this.#maxPosition = 0;
+    this.#winner = [];
   }
   
   async start() {
@@ -39,6 +43,7 @@ class RacingGame {
       await this.getExecutionResultBoard();
       console.log();
     }
+    await this.findWinner();
   }
   
   async decidePosition() {
@@ -55,6 +60,27 @@ class RacingGame {
     }
   }
 
+  async findWinner() {
+    for (const car of this.#car) {
+      await this.getWinnerConditionalStatement(car);
+    }
+    await this.showWinner();
+  }
+
+  async getWinnerConditionalStatement(car) {
+    const nowCarPosition = car.getPosition();
+    if (nowCarPosition > this.#maxPosition) {
+      this.#maxPosition = nowCarPosition;
+      this.#winner = [];
+      this.#winner.push(car.name);
+    } else if (nowCarPosition === this.#maxPosition) {
+      this.#winner.push(car.name);
+    }
+  }
+
+  async showWinner() {
+    await OutputView.outputWinnerResult(this.#winner);
+  }
 }
 
 export default RacingGame;
