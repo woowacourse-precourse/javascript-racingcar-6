@@ -19,10 +19,26 @@ class App {
 
     return temp;
   }
+  async readCount(){
+    let inputCount = await MissionUtils.Console.readLineAsync(
+      `시도할 횟수는 몇 회인가요?`
+    );
+
+    if (isNaN(inputCount)) {
+      throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
+    }
+    if (inputCount <= 0){
+      throw new Error("[ERROR] 1 이상인 숫자를 입력해야 합니다.");
+    }
+    
+    return inputCount
+  }
   async play() {
     // const number = MissionUtils.Random.pickNumberInRange(1, 9);
     let carList = await this.readCar();
     console.log(carList);
+    let count = await this.readCount();
+    console.log(count);
   }
 }
 
