@@ -114,4 +114,31 @@ describe("메서드별 기능 테스트", () => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
   });
+
+  test("유효하지 않은 범위의 실행 횟수 입력", async () => {
+    // given
+    const MOVING_FORWARD = 4;
+    const STOP = 3;
+    const inputs = ["승규,수민", "0"];
+    const randoms = [
+      MOVING_FORWARD,
+      STOP,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      STOP,
+      STOP,
+    ];
+
+    // 사용자 입력 및 랜덤 값 모의화
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow(
+      "[ERROR] 실행 횟수는 1 이상의 정수로만 입력 가능합니다."
+    );
+  });
 });
