@@ -17,6 +17,18 @@ class App {
       throw new Error('[ERROR] 숫자가 잘못된 형식입니다.');
     }
 
+    //경기 시작, 경기 상황 출력
+    let scores=Array(5).fill(0);
+    for (let round=0; round<try_number; round++){
+      let race_str=[];
+      scores=try_randomly(scores);
+      runners.map((runner, index)=>{
+        race_str.push(`${runner} : ${"-".repeat(scores[index])}`);
+      })
+      MissionUtils.Console.print(race_str.join('\n'));
+    }
+
+
     function go_randomly(scores){
       let random_number;
       for (let i=0;i<scores.length;i++){
