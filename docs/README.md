@@ -9,7 +9,7 @@
     - [ ] 0 ~ 3 : 후진 `moveBackward`
     - [ ] 4 ~ : 전진 `moveForward`
   - [ ] 자동차 이름은 쉼표(,) 를 기준으로 구분하며 이름은 5자 이하만 가능하다. `InputValidator#checkCarName` + 쉼표를 parser하는 것도 분리할 지 고민해보자.
-- [ ] 사용자는 시도 횟수(이동 횟수)를 입력한다. `InputProcessor#moveCountInput`
+- [x] 사용자는 시도 횟수(이동 횟수)를 입력한다. `InputProcessor#moveCountInput`
 - [ ] 경주 게임 완료 후 우승자를 알려준다. `OutputProcessor#printWinner`
   - [ ] 우승자는 한 명 이상일 수도 있다. 이 경우, 쉼표(,)를 이용하여 구분한다.
 - [ ] 사용자가 잘못된 값을 입력한 경우 `throw`문을 사용해 `"[ERROR]"`로 시작하는 메시지를 가지는 예외를 발생시킨 후, 애플리케이션은 종료된다.
