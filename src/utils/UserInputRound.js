@@ -1,4 +1,4 @@
-import { QUESTION_GOAL_COUNT } from "../const/Messages";
+import { QUESTION_GOAL_COUNT, ERROR_WRONG_ROUND } from "../const/Messages";
 
 class UserInputRound {
   constructor() {
@@ -16,7 +16,7 @@ class UserInputRound {
   setRounds(rounds) {
     const roundsValid = !Number.isNaN(rounds) && rounds > 0;
     if (!roundsValid) {
-      throw new Error("[ERROR]");
+      throw new Error(ERROR_WRONG_ROUND);
     }
 
     this.rounds = rounds;
