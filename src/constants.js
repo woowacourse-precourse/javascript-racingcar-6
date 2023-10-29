@@ -18,6 +18,7 @@ export const ERROR_MESSAGE = Object.freeze({
   length: `[ERROR] 자동차 이름은 ${CAR_NAME_LENGTH}자 이하여야 합니다.`,
   blank: '[ERROR] 공백의 이름을 입력했습니다.',
   duplication: '[ERROR] 동일한 이름을 중복하여 입력했습니다.',
+  invalidType: '[ERROR] 자동차 이름에 공백,특수문자,이모지를 포함하지 마세요.',
   numberType: '[ERROR] 숫자 형식으로만 입력해야 합니다.',
   integerType: '[ERROR] 양의 정수만 입력해야 합니다.',
 });
