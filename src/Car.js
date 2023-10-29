@@ -1,6 +1,7 @@
 export default class Car {
   #name;
   #advanceCount;
+
   constructor(name = '') {
     this.#name = name;
     this.#advanceCount = 0;
@@ -15,6 +16,6 @@ export default class Car {
   }
 
   plusAdvanceCount() {
-    this.#advanceCount++;
+    this.#advanceCount += 1;
   }
 }
