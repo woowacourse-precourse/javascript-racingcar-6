@@ -1,6 +1,6 @@
 import CarNameManager from "./UserInputCarName";
 import { movingForwardCase } from "./MovingForwardCase";
-import { FORWARD_DASH } from "../const/Messages";
+import { FORWARD_DASH, WINNER, GAME_RESULT } from "../const/Messages";
 
 class playGame {
   constructor() {
@@ -36,6 +36,13 @@ class playGame {
     return Object.entries(this.carPositions)
       .filter(([_, position]) => position.length === maxPosition)
       .map(([carName, _]) => carName);
+  }
+
+  printGameResult(carGame) {
+    Console.print(GAME_RESULT);
+    carGame.printRoundResult();
+    const winners = carGame.findWinner();
+    Console.print(`${WINNER} : ${winners.join(", ")}`);
   }
 }
 
