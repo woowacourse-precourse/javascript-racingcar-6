@@ -13,30 +13,30 @@ class RacingCar {
   }
 
   async start() {
-    await this.getCarsNames();
-    const times = await this.getCountTimes();
-    this.repeatForward(times);
+    await this.setCarList();
+    const times = await this.getRepeatTime();
+    this.repeatMoveOrStop(times);
   }
 
-  async getCarsNames() {
-    const carArr = await this.#view.initCarName();
+  async setCarList() {
+    const carArr = await this.#view.inputCarNames();
     this.#carList = carArr.map((car) => new Car(car, 0));
   }
 
-  async getCountTimes() {
-    const input = await this.#view.initCountNumber();
+  async getRepeatTime() {
+    const input = await this.#view.InputRepeatNumber();
     return input;
   }
 
-  repeatForward(input) {
+  repeatMoveOrStop(input) {
     for(let i = 0; i < input; i++){
-      this.createNumber();
-      this.printAllCars();
+      this.determineMoveByRandom();
+      this.printAllCarsInfo();
     }
-    this.checkWinner();
+    this.chooseWinner();
   }
 
-  createNumber() {
+  determineMoveByRandom() {
     this.#carList.forEach((car) => {
       const randNum = Random.pickNumberInRange(1, 9);
       if(randNum >= 4){
@@ -45,14 +45,14 @@ class RacingCar {
     })
   }
 
-  printAllCars() {
+  printAllCarsInfo() {
     this.#carList.forEach((car) => {
-      this.#view.printDistanceToSlash(car.getName(),car.getDistance());
+      this.#view.printCarResult(car.getName(), car.getDistance());
     })
     Console.print('\n');
   }
 
-  checkWinner() {
+  chooseWinner() {
     const allDistance = this.#carList.map((car) => car.getDistance());
     const maxDistance = Math.max(...allDistance);
     const winners = this.#carList
