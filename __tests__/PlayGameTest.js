@@ -1,4 +1,5 @@
 import RacingGame from "../src/RacingGame.js";
+import RacingCar from "../src/domain/RacingCar.js";
 import GameUtlis from "../src/utils/GameUtils.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 
@@ -50,9 +51,41 @@ describe('게임 진행에 관한 테스트입니다', () => {
 
     // when
     const pobiNumber = GameUtlis.generateRandomNumberFromZeroToNine();
-    GameUtlis.printCarNameAndRandomNumber('pobi', pobiNumber)
+    GameUtlis.printCarNameAndRandomNumber('pobi', pobiNumber);
     
     // then
-    expect(logSpy).toHaveBeenCalledWith(expect.stringMatching(answer))
+    expect(logSpy).toHaveBeenCalledWith(expect.stringMatching(answer));
+  });
+
+  test('포비가 4라는 랜덤 값을 받아 포비가 전진합니다.', () => {
+    // given
+    const MOVED_FORWARD = 1;
+
+    const randomNumber = [4];
+    const answer = MOVED_FORWARD;
+    mockRandoms(randomNumber);
+
+    // when
+    const pobiCar = new RacingCar('pobi');
+    GameUtlis.proceedAttemptByRacingCar(pobiCar);
+
+    // then
+    expect(pobiCar.getAccumulatedForward()).toEqual(answer);
+  });
+
+  test('포비가 3이라는 랜덤 값을 받아 포비가 전진하지 않습니다.', () => {
+    // given
+    const STOP = 0;
+
+    const randomNumber = [3];
+    const answer = STOP;
+    mockRandoms(randomNumber);
+
+    // when
+    const pobiCar = new RacingCar('pobi');
+    GameUtlis.proceedAttemptByRacingCar(pobiCar);
+
+    // then
+    expect(pobiCar.getAccumulatedForward()).toEqual(answer);
   })
 })
