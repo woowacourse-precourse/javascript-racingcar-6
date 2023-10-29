@@ -40,4 +40,11 @@ export default class RacingCarGame {
     const carsStatus = this.getCarsStatus();
     OutputView.printOneRound(carsStatus);
   }
+
+  runRaces() {
+    Array.from({ length: this.raceRound }, () => {
+      this.executeRace();
+      this.displayRaceResults();
+    });
+  }
 }
