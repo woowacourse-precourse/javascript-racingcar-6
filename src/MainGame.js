@@ -34,10 +34,23 @@ class MainGame {
   };
 
   inputCarName = async () => {
-    const carNameList = await Console.readLineAsync(''); // 사용자 입력을 받기 위해 await 추가
+    const carNameList = await Console.readLineAsync('');
     MainGame.isSplitComma(carNameList);
     MainGame.isFiveLength(carNameList);
     MainGame.isIncludeBlank(carNameList);
+    this.inputAttemptsNumber();
+  };
+
+  static isNumber = (attemptsNumber) => {
+    if (!/^[1-9]\d*$/.test(attemptsNumber)) {
+      throw new Error(Message.ERROR.NOT_NUMBER);
+    }
+  };
+
+  inputAttemptsNumber = async () => {
+    Console.print(Message.INPUT_NUMBER_OF_ATTEMPTS);
+    const attemptsNumber = await Console.readLineAsync('');
+    MainGame.isNumber(attemptsNumber);
   };
 }
 

@@ -9,7 +9,7 @@ const Message = {
     NOT_SPLIT_COMMA: '[ERROR] 쉼표(,)로 구분되어있지 않습니다.',
     NOT_FIVE_FIGURES: '[ERROR] 5글자가 아닙니다.',
     INCLUDES_BLANK: '[ERROR] 입력에 공백이 존재합니다',
-    NOT_NUMBER: '[ERROR] 숫자형식이 아닙니다.',
+    NOT_NUMBER: '[ERROR] 1이상의 숫자형식이 아닙니다.',
   },
 };
 export { Message };
