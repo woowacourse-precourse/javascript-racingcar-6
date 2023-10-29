@@ -10,6 +10,13 @@ class RacingGame {
     });
   }
 
+  * play(tryTime) {
+    for (let i = 0; i < tryTime; i += 1) {
+      this.#moveForwardRandomly();
+      yield this.#racingCars;
+    }
+  }
+
   #moveForwardRandomly() {
     this.#racingCars.forEach((car) => {
       const canGoForward = Random.pickNumberInRange(0, 9) >= 4;
