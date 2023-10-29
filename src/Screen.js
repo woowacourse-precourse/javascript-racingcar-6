@@ -13,6 +13,12 @@ class Screen {
     const nameInput = await Console.readLineAsync();
     const names = nameInput.split(',').map((name) => name.trim());
 
+    names.forEach((name) => {
+      if (name.length > 5) {
+        throw new Error(this.MESSAGES.INVALID_NAME_ERROR_MESSAGE);
+      }
+    });
+
     return names;
   }
 }
