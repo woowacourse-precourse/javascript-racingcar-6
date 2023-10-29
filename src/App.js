@@ -1,6 +1,8 @@
+import inputRacingCar from "../src/components/inputRacingCar.js";
+
 class App {
   async play() {
-    console.log("i");
+    inputRacingCar();
   }
 }
 
