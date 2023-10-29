@@ -17,7 +17,13 @@ export const startGame = async () => {
 const getCarsName = async () => {
   const cars = await Console.readLineAsync(GAME_MSG.GET_CARS_NAME);
   Console.print(`${GAME_MSG.GET_CARS_NAME}\n${cars}`);
+  if (cars === "") {
+    throw new Error("[ERROR]");
+  }
   const carNames = cars.split(",");
+  if (new Set(carNames).size !== carNames.length) {
+    throw new Error("[ERROR]");
+  }
   for (let i = 0; i < carNames.length; i++) {
     if (carNames[i].length > 5) {
       throw new Error(ERROR_MSG.CAR_NAME_OVER_LENGTH);
