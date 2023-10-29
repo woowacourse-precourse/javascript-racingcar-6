@@ -14,4 +14,4 @@ class Car {
   // printPosition() {}
 }
 
-module.exports = Car;
+export default Car;
