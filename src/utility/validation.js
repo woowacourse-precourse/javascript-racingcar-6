@@ -11,3 +11,9 @@ export const isValidateNumber = (string) => {
     }
   });
 };
+
+export const isNumberWithinBounds = (number, startNumber, endNumber) => {
+  if (number < startNumber || number > endNumber) {
+    throw new Error(ERROR_MESSAGE.wrongNameInput);
+  }
+};
