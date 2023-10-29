@@ -1,5 +1,22 @@
 class App {
   async play() {
+    const MAX_CAR_NAME_LENGTH = 5;
+
+    MissionUtils.Console.print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+    const input=await MissionUtils.Console.readLineAsync();
+    const runners=input.split(',');
+    runners.map((runner)=>{
+      if (runner.length>MAX_CAR_NAME_LENGTH){
+        throw new Error('[ERROR] 자동차 이름은 5자 이하만 가능합니다.')
+      }
+    })
+
+    MissionUtils.Console.print("시도할 횟수는 몇 회인가요?");
+    const try_number=await MissionUtils.Console.readLineAsync();
+    if (isNaN(try_number)){
+      throw new Error('[ERROR] 숫자가 잘못된 형식입니다.');
+    }
+
     function go_randomly(scores){
       let random_number;
       for (let i=0;i<scores.length;i++){
