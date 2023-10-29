@@ -36,6 +36,11 @@ class RacingGame {
 
     return winnersArray;
   }
+
+  announceWinner(winnersArray) {
+    const winnersNames = winnersArray.map((winner) => winner.name);
+    Console.print(`최종 우승자 : ${winnersNames.join(', ')}`);
+  }
 }
 
 export default RacingGame;
