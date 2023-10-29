@@ -26,6 +26,8 @@ class App {
   async play() {
     this.getCars();
     this.getChances();
+    this.startRace();
+    this.getResult();
   }
 
   getCars() {
@@ -39,6 +41,23 @@ class App {
   getChances() {
     Console.print("시도할 횟수는 몇 회인가요?");
     this.chances = parseInt(Console.readLineAsync());
+  }
+
+  startRace() {
+    for (let chance = 0; chance < this.chances; chance++) {
+      this.cars.forEach((car) => car.move());
+    }
+  }
+
+  getResult() {
+    this.cars.forEach((car) => Console.print(car.toString()));
+    const maxPosition = Math.max(...this.cars.map((car) => car.position));
+    const winners = this.cars
+      .filter((car) => car.position === maxPosition)
+      .map((car) => car.name);
+
+    if (winners.length === 1) Console.print(`최종 우승자: ${winners[0]}`);
+    else Console.print(`최종 우승자: ${winners.join(", ")}`);
   }
 }
 
