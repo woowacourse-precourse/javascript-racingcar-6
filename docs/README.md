@@ -32,8 +32,8 @@
 - [x] 숫자 `raceTimes`만큼 자동차 경주 실행
   - [x] 배열 `cars`의 요소를 키로 `Random.pickNumberInRange()` 메소드를 활용하여 생성한 0부터 9까지의 랜덤 숫자를 값으로 변경
   - [x] 자동차가 전진할 지 멈출 지를 결정할 `goStop()` 메소드 호출
-- [ ] 자동차 경주가 끝난 후 실행 결과를 보여 줄 `showResults()` 메소드 호출
-- [ ] 자동차 경주의 최종 우승자를 보여 줄 `showWinner()` 메소드 정의
+- [x] 자동차 경주가 끝난 후 실행 결과를 보여 줄 `showResults()` 메소드 호출
+- [x] 자동차 경주의 최종 우승자를 보여 줄 `showWinners()` 메소드 호출
 
 ### `goStop()` 메소드 정의
 
@@ -46,8 +46,7 @@
 
 ### `showResults()` 메소드 정의
 
-- [ ] `Console.print()` 메소드를 활용하여 자동차 경주 실행 결과 출력
-  - [ ] 배열 `raceResults`를 개행 문자로 구분하여 문자열로 변환
+- [x] `Console.print()` 메소드를 활용하여 자동차 경주 실행 결과 출력
 
 ### `showWinners()` 메소드 정의
 
