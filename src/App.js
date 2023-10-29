@@ -1,15 +1,19 @@
 import { Console, Random } from "@woowacourse/mission-utils";
+import { Message } from "./env/Message.js";
+import Validation from "./Validation.js";
 
 function App(initialState = {}) {
   this.play = async () => {
     const raceCarNameArr = await inputRaceCarName();
     this.setState(raceCarNameArr);
-    console.log(this.state);
+
     const raceCount = await inputRaceCount();
-    raceStart(this.state, raceCount);
+    raceStart(raceCount);
     const winnerArr = raceWinner();
     winnerPrint(winnerArr);
   };
+
+  const validation = new Validation();
 
   this.state = initialState;
 
@@ -18,24 +22,30 @@ function App(initialState = {}) {
   };
 
   const inputRaceCarName = async () => {
-    const tempRaceCarNameArr = await Console.readLineAsync(
-      "경주 할 자동차 이름(이름은 쉼표(,) 기준으로 구분)\n"
-    );
+    const tempRaceCarNameArr = await Console.readLineAsync(Message.START);
     const raceCarNameArr = tempRaceCarNameArr.split(",");
+
+    validation.InputCarNameLengthValidation(raceCarNameArr);
+    validation.InputValueDuplicatedValidation(
+      raceCarNameArr,
+      raceCarNameArr.length
+    );
+
     return raceCarNameArr.map((car) => {
       return { carName: car, goCount: "" };
     });
   };
 
   const inputRaceCount = async () => {
-    const raceCount = await Console.readLineAsync(
-      "시도할 횟수는 몇 회인가요?\n"
-    );
+    const raceCount = await Console.readLineAsync(Message.COUNT_INPUT);
+
+    validation.InputValueTypeOfValidation(raceCount);
+
     return parseInt(raceCount);
   };
 
-  const raceStart = (raceCarNameArr, raceCount) => {
-    Console.print("실행결과");
+  const raceStart = (raceCount) => {
+    Console.print(Message.RESULT_MESSAGE);
     let count = 1;
     while (count <= raceCount) {
       raceCarGoOrStop();
@@ -81,7 +91,7 @@ function App(initialState = {}) {
     });
   };
   const winnerPrint = (winnerArr) => {
-    Console.print(`최종 우승자 : ${winnerArr.join(", ")}`);
+    Console.print(Message.WINNER_MESSAGE + `${winnerArr.join(", ")}`);
   };
 }
 
