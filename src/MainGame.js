@@ -24,10 +24,20 @@ class MainGame {
     }
   };
 
+  static isIncludeBlank = (carNameList) => {
+    let carName = carNameList.split(',');
+    for (let i = 0; i < carName.length; i++) {
+      if (carName[i].includes(' ')) {
+        throw new Error(Message.ERROR.INCLUDES_BLANK);
+      }
+    }
+  };
+
   inputCarName = async () => {
     const carNameList = await Console.readLineAsync(''); // 사용자 입력을 받기 위해 await 추가
     MainGame.isSplitComma(carNameList);
     MainGame.isFiveLength(carNameList);
+    MainGame.isIncludeBlank(carNameList);
   };
 }
 
