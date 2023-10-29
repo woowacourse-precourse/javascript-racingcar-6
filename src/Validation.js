@@ -1,19 +1,19 @@
 class Validation {
   VALIDATION_STANDARD = {
     minimumNameLength: 5,
-    minimumRaceCount: 1,
+    minimumRacingCount: 1,
   };
 
   isValidCarName(carName) {
     return carName.length <= this.VALIDATION_STANDARD.minimumNameLength;
   }
 
-  isValidRaceCount(raceCount) {
-    if (!Number.isInteger(raceCount)) {
+  isValidRacingCount(racingCount) {
+    if (!Number.isInteger(racingCount)) {
       return false;
     }
 
-    if (raceCount < VALIDATION_STANDARD.minimumRaceCount) {
+    if (racingCount < VALIDATION_STANDARD.minimumRacingCount) {
       return false;
     }
 
