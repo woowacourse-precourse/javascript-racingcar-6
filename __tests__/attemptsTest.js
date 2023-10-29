@@ -1,9 +1,16 @@
 import attempts from "../src/attempts";
+import { MissionUtils } from "@woowacourse/mission-utils";
 
-test("시도 횟수 입력 테스트", () => {
-  const input = 3;
+jest.mock("@woowacourse/mission-utils");
 
-  expect(() => {
-    attempts(input).toBe(3);
-  });
+beforeEach(() => {
+  MissionUtils.Console.readLineAsync.mockClear();
+});
+
+it("시도 횟수 입력 테스트", async () => {
+  MissionUtils.Console.readLineAsync.mockResolvedValue(3);
+
+  const result = await attempts("횟수를 입력");
+
+  expect(result).toBe(3);
 });
