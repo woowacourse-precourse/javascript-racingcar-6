@@ -1,6 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
-import { splitByComma } from '../../utils/splitByComma.js';
-import { validateCarName, validateTryNumber } from '../../utils/inputValidator.js';
+import { splitByComma } from '../utils/splitByComma.js';
+import { validateCarName, validateTryNumber } from '../utils/inputValidator.js';
 
 class InputView {
   
