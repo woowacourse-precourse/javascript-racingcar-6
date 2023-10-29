@@ -1,6 +1,6 @@
-import { MESSAGE } from '../constants/constants';
-import View from '../view/View';
-import Car from './Car';
+import { MESSAGE } from '../constants/constants.js';
+import View from '../view/View.js';
+import Car from './Car.js';
 
 export default class RacingGame {
   async init() {

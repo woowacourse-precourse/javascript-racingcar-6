@@ -1,4 +1,4 @@
-import { ERROR } from '../constants/constants';
+import { ERROR } from '../constants/constants.js';
 
 export default class Validation {
   static checkValidation(carNames) {
