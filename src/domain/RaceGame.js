@@ -3,7 +3,8 @@ import {
   printProgressProcess,
   printWinnerList,
   printProgressResult,
-} from '../utils/Utils.js';
+  printEmptyLine,
+} from '../util/Utils.js';
 
 export default class RaceGame {
   constructor(carNameList, tryNum) {
@@ -11,7 +12,7 @@ export default class RaceGame {
     this.tryNum = tryNum;
   }
 
-  gameTry() {
+  #gameTry() {
     let tries = this.tryNum;
     while (tries) {
       tries -= 1;
@@ -19,10 +20,11 @@ export default class RaceGame {
         car.move();
         printProgressProcess(car.name, car.progress);
       });
+      printEmptyLine();
     }
   }
 
-  checkWinner() {
+  #checkWinner() {
     const winnerList = this.cars
       .sort((a, b) => b.progress - a.progress)
       .filter((car) => car.progress === this.cars[0].progress)
@@ -33,7 +35,7 @@ export default class RaceGame {
 
   async gameStart() {
     printProgressResult();
-    this.gameTry();
-    this.checkWinner();
+    this.#gameTry();
+    this.#checkWinner();
   }
 }

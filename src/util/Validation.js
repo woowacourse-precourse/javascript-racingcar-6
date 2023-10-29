@@ -1,4 +1,4 @@
-import { ERROR_MESSAGES } from '../constants/Constants.js';
+import { ERROR_MESSAGES } from '../constant/Constants.js';
 
 const checkCarNameEmpty = (carName) => {
   if (!carName.length) throw new Error(ERROR_MESSAGES.errorNameEmpty);

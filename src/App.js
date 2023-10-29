@@ -1,4 +1,4 @@
-import { getCarNameList, getTryNum } from './utils/Utils.js';
+import { getCarNameList, getTryNum } from './util/Utils.js';
 import RaceGame from './domain/RaceGame.js';
 
 export default class App {

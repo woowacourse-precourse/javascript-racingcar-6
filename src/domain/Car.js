@@ -1,5 +1,5 @@
 import { Random } from '@woowacourse/mission-utils';
-import { GAME_RULE_NUMBER } from '../constants/Constants.js';
+import { GAME_RULE_NUMBER } from '../constant/Constants.js';
 
 export default class Car {
   constructor(name) {
