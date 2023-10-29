@@ -19,3 +19,21 @@ export function parseValidNumber(input) {
 const isNumericString = (value) => {
   return /^[0-9]+$/.test(value);
 };
+
+/**
+ * input 값이 separator로 구분된 올바른 값인지 확인 후 null 혹은 문자열 배열을 반환
+ * 1. 올바른 구분자로 구분이 되
+ * @param {string} inputCarNames
+ * @param {string} separator
+ * @returns
+ */
+export function parseValidCarNames(input, separator) {
+  let carNameList = input.trim().split(separator);
+  for (let i = 0; i < carNameList.length; i++) {
+    carNameList[i] = carNameList[i].trim();
+    if (carNameList[i] === "") return null;
+    if (5 < carNameList[i].length) return null;
+  }
+  if (carNameList.length <= 1) return null;
+  return carNameList;
+}

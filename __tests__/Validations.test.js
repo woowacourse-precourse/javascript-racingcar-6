@@ -51,3 +51,104 @@ describe("getValidAttemptCount 함수 테스트", () => {
     expect(result).toBe(expectedResult);
   });
 });
+
+describe("parseValidCarNames 함수 테스트", () => {
+  test("정상 입력값 : mj,yj,sj", () => {
+    const input = "mj,yj,sj";
+    const result = parseValidNumber(input, ",");
+    const expectedResult = result;
+
+    // 예상되는 결과와 실제 결과를 비교
+    expect(result).toBe(expectedResult);
+  });
+  test("정상 입력값 : mj, yj, sj", () => {
+    const input = "mj, yj, sj";
+    const result = parseValidNumber(input, ",");
+    const expectedResult = result;
+
+    // 예상되는 결과와 실제 결과를 비교
+    expect(result).toBe(expectedResult);
+  });
+
+  test("정상 입력값 : mj , yj , sj", () => {
+    const input = "mj , yj , sj";
+    const result = parseValidNumber(input, ",");
+    const expectedResult = result;
+
+    // 예상되는 결과와 실제 결과를 비교
+    expect(result).toBe(expectedResult);
+  });
+
+  test("비정상 입력값 : ,mj,yj,sj", () => {
+    const input = ",mj,yj,sj";
+    const result = parseValidNumber(input, ",");
+    const expectedResult = result;
+
+    // 예상되는 결과와 실제 결과를 비교
+    expect(result).toBe(expectedResult);
+  });
+  test("비정상 입력값 : mj,yj,sj,", () => {
+    const input = "mj,yj,sj,";
+    const result = parseValidNumber(input, ",");
+    const expectedResult = result;
+
+    // 예상되는 결과와 실제 결과를 비교
+    expect(result).toBe(expectedResult);
+  });
+  test("비정상 입력값 : mj", () => {
+    const input = "mj";
+    const result = parseValidNumber(input, ",");
+    const expectedResult = result;
+
+    // 예상되는 결과와 실제 결과를 비교
+    expect(result).toBe(expectedResult);
+  });
+  test("비정상 입력값 : ,mj", () => {
+    const input = ",mj";
+    const result = parseValidNumber(input, ",");
+    const expectedResult = result;
+
+    // 예상되는 결과와 실제 결과를 비교
+    expect(result).toBe(expectedResult);
+  });
+  test("비정상 입력값 : mj,", () => {
+    const input = "mj,";
+    const result = parseValidNumber(input, ",");
+    const expectedResult = result;
+
+    // 예상되는 결과와 실제 결과를 비교
+    expect(result).toBe(expectedResult);
+  });
+  test("비정상 입력값 : ,", () => {
+    const input = ",";
+    const result = parseValidNumber(input, ",");
+    const expectedResult = result;
+
+    // 예상되는 결과와 실제 결과를 비교
+    expect(result).toBe(expectedResult);
+  });
+  test("비정상 입력값 : ,,", () => {
+    const input = ",,";
+    const result = parseValidNumber(input, ",");
+    const expectedResult = result;
+
+    // 예상되는 결과와 실제 결과를 비교
+    expect(result).toBe(expectedResult);
+  });
+  test("비정상 입력값 : abc,abcde,abcdef", () => {
+    const input = "abc,abcde,abcdef";
+    const result = parseValidNumber(input, ",");
+    const expectedResult = result;
+
+    // 예상되는 결과와 실제 결과를 비교
+    expect(result).toBe(expectedResult);
+  });
+  test("비정상 입력값 : abcdef", () => {
+    const input = "abcdef";
+    const result = parseValidNumber(input, ",");
+    const expectedResult = result;
+
+    // 예상되는 결과와 실제 결과를 비교
+    expect(result).toBe(expectedResult);
+  });
+});
