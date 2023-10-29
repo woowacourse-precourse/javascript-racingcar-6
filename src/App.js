@@ -68,7 +68,7 @@ const showResult = async (participants) => {
  */
 const checkAttempt = async (attempt) =>{
   if(!Number(attempt)) throw new Error('[ERROR] 숫자를 입력해주세요.');
-  if(Number(attempt) <=0 || Number(attempt) > 9) throw new Error('[ERROR] 0~9사이 값을 입력해주세요.');
+  if(Number(attempt) <=0 ) throw new Error('[ERROR] 0보다 큰 값을 입력해주세요.');
 }
 
 /**
