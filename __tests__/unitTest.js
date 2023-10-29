@@ -50,12 +50,30 @@ describe('hasDuplicate', () => {
 
 //Model Method
 describe('Car Model', () => {
-  test('랜덤 숫자를 구한 후 그 값이 4 이상일 때 전진한다.', () => {
+  let car;
+  beforeEach(() => {
+    car = new Car('TestCar');
     MissionUtils.Random.pickNumberInRange = jest.fn();
+  });
+
+  test('랜덤 숫자를 구한 후 그 값이 4 이상일 때 전진한다.', () => {
     MissionUtils.Random.pickNumberInRange.mockReturnValue(4);
-    const car = new Car('TestCar');
+    const initialPosition = car.position;
+
     car.move();
-    expect(car.position).toBe('-');
+
+    // 4 이상인 경우, position은 이전 값에 '-'가 추가되어야 한다.
+    expect(car.position).toBe(initialPosition + '-');
+  });
+
+  test('랜덤 숫자를 구한 후 그 값이 4 미만일 때 전진하지 않는다.', () => {
+    MissionUtils.Random.pickNumberInRange.mockReturnValue(3);
+    const initialPosition = car.position;
+
+    car.move();
+
+    // 4 미만인 경우, position은 이전 값과 동일해야 한다.
+    expect(car.position).toBe(initialPosition);
   });
 });
 
