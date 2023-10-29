@@ -1,6 +1,8 @@
 class Car {
   #name;
+
   #distanceString = "";
+
   constructor(name) {
     this.#name = name;
   }

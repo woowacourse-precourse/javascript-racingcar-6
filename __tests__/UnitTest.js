@@ -1,5 +1,5 @@
-import CarRace from "../src/CarRace.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
+import CarRace from "../src/CarRace";
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -83,6 +83,7 @@ describe("유닛 테스트", () => {
     const output = await carRace.readTryNumber();
     expect(output).toEqual(5);
   });
+
   test("readTryNumber 통과2", async () => {
     const answer = ["99"];
     mockQuestions(answer);

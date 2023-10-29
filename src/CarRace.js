@@ -1,7 +1,9 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import Car from "./Car.js";
+import Car from "./Car";
+
 class CarRace {
   #cars;
+
   #tryNumber;
 
   async handleRace() {
@@ -14,30 +16,22 @@ class CarRace {
   }
 
   async handleCar() {
-    let input;
-    try {
-      input = await this.readCarsInput();
-    } catch (error) {
-      throw error;
-    }
+    const INPUT = await this.readCarsInput();
 
-    const CAR_NAMES = input.split(",");
+    const CAR_NAMES = INPUT.split(",");
     const CAR_CLASSES = this.handleCarConvertedToClass(CAR_NAMES);
     this.setCars(CAR_CLASSES);
   }
+
   async readCarsInput() {
-    let input;
-    try {
-      input = await MissionUtils.Console.readLineAsync(
-        "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
-      );
-      if (input === "")
-        throw new Error("[ERROR] 자동차 이름을 입력하지 않으셨습니다.");
-    } catch (error) {
-      throw error;
-    }
-    this.validateCarsInput(input);
-    return input;
+    const INPUT = await MissionUtils.Console.readLineAsync(
+      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
+    );
+    if (INPUT === "")
+      throw new Error("[ERROR] 자동차 이름을 입력하지 않으셨습니다.");
+
+    this.validateCarsInput(INPUT);
+    return INPUT;
   }
 
   validateCarsInput(input) {
@@ -46,7 +40,7 @@ class CarRace {
     if (carsSet.size !== CARS.length) {
       throw new Error("[ERROR] 자동차 이름에 중복이 있습니다.");
     }
-    for (const CAR of CARS) {
+    CARS.forEach((CAR) => {
       const trimCarName = CAR.trim();
       if (CAR.length > 5) {
         throw new Error("[ERROR] 자동차 이름의 길이는 5를 넘어선 안됩니다.");
@@ -56,8 +50,9 @@ class CarRace {
           "[ERROR] 자동차 이름의 앞 뒤에는 공백이 있어선 안됩니다."
         );
       }
-    }
+    });
   }
+
   handleCarConvertedToClass(cars) {
     const carClasses = cars.map((car) => {
       const carClass = new Car(car);
@@ -71,16 +66,11 @@ class CarRace {
   }
 
   async readTryNumber() {
-    let input;
-    try {
-      input = await MissionUtils.Console.readLineAsync(
-        "시도할 횟수는 몇 회인가요?"
-      );
-    } catch (error) {
-      throw error;
-    }
-    this.validTryNumber(input);
-    return Number(input);
+    const INPUT =
+      await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?");
+
+    this.validTryNumber(INPUT);
+    return Number(INPUT);
   }
 
   validTryNumber(input) {
@@ -100,19 +90,21 @@ class CarRace {
     // 1. 시도 횟수만큼 전진 혹은 정지 합니다. 이 값은 랜덤으로 정합니다.
     // 2. 출력합니다.
     let tryOrder = 0;
-    let printString = "";
+    let stringToPrint = "";
 
     while (tryOrder < this.#tryNumber) {
+      let string = "";
       this.#cars.forEach((carClass) => {
         const RANDOM = MissionUtils.Random.pickNumberInRange(0, 9);
         if (RANDOM >= 4) carClass.setDistancePlusOne();
-        printString += `${carClass.getName()} : ${carClass.getDistanceString()}\n`;
+        string += `${carClass.getName()} : ${carClass.getDistanceString()}\n`;
       });
-      printString += "\n";
+      stringToPrint += string;
+      stringToPrint += "\n";
       tryOrder += 1;
     }
 
-    MissionUtils.Console.print(printString);
+    MissionUtils.Console.print(stringToPrint);
     // 3. 우승자를 출력합니다.
     const CAR_OBJECTS = this.#cars.map((carClass) => {
       const CAR_OBJECT = {
@@ -123,7 +115,7 @@ class CarRace {
     });
 
     const CAR_SORT = CAR_OBJECTS.sort(
-      (car_object1, car_object2) => car_object2.distance - car_object1.distance
+      (carObject1, carObject2) => carObject2.distance - carObject1.distance
     );
 
     const WIN_DISTANCE = CAR_SORT[0].distance;
@@ -134,7 +126,6 @@ class CarRace {
     const winner = [];
     CAR_SORT.forEach(({ name, distance }) => {
       if (distance === WIN_DISTANCE) winner.push(name);
-      if (distance < WIN_DISTANCE) return;
     });
     const WINNER_STRING = winner.join(", ");
     MissionUtils.Console.print(`최종 우승자 : ${WINNER_STRING}`);

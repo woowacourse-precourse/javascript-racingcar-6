@@ -1,4 +1,4 @@
-import CarRace from "../src/CarRace.js";
+import CarRace from "./CarRace";
 
 class App {
   async play() {
