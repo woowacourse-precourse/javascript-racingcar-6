@@ -1,4 +1,5 @@
-import { ONE, NEW_LINE, STICK, ZERO } from '../constants/constants.js';
+import { NEW_LINE } from '../constants/constants.js';
+import makeResultStringTemplate from '../utils/makeResultStringTemplate.js';
 
 export default class ResultModel {
   #result;
@@ -23,22 +24,10 @@ export default class ResultModel {
     const totalResult = [];
     this.#result.forEach((attempResult) => {
       attempResult.forEach(([carName, moveCount]) => {
-        totalResult.push(
-          `${carName} : ${this.#makeStick(moveCount)}${NEW_LINE}`,
-        );
+        totalResult.push(makeResultStringTemplate(carName, moveCount));
       });
       totalResult.push(NEW_LINE);
     });
     return totalResult.join('');
-  }
-
-  #makeStick(moveCount) {
-    let count = moveCount;
-    let sticks = STICK.newSticks;
-    while (count !== ZERO) {
-      sticks += STICK.oneStick;
-      count -= ONE;
-    }
-    return sticks;
   }
 }
