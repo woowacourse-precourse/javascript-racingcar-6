@@ -1,16 +1,31 @@
-import Data from './Data.js';
-import Input from './Input.js';
-
 class RacingManager {
-  constructor(input, data) {
-    this.input = input;
+  constructor(cars, count, data) {
+    this.cars = cars;
+    this.count = count;
     this.data = data;
+    this.state = Array(this.cars.length).fill(0);
   }
 
-  validMovingCount () {
-    const movingCount = this.data.randomNumberList(this.input.attemptsCount());
+  validMoving() {
+    const moving = this.data.generateRandomNumbers();
 
-    return movingCount.filter((count) => count >= 4).length;
+    if (moving >= 4) return true;
+  }
+
+  racing() {
+    this.state.map((_, idx) => {
+      if(this.validMoving()) this.state[idx] += 1;
+    })
+  }
+
+  racingResult() {
+    const list = [];
+    for (let i = 0; i < this.count; i++) {
+      this.racing();
+      list.push([...this.state]);
+    }
+
+    return list;
   }
 }
 
