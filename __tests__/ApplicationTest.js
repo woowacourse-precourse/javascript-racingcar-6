@@ -90,6 +90,7 @@ describe("자동차 경주 게임", () => {
     [["pobi,javaji"]],
     [["pobi,eastjun"]],
     [["pobi,pobi,java"]],
+    [["pobi,,java"]],
     [[""]],
   ])("이름에 대한 예외 처리", async (inputs) => {
     // given
@@ -102,7 +103,7 @@ describe("자동차 경주 게임", () => {
     await expect(app.play()).rejects.toThrow("[ERROR]");
   });
 
-  test.each([[["pobi,woni", "hi"]]])(
+  test.each([[["pobi,woni", "hi"]], [["pobi, woni", ""]]])(
     "시도횟수 대한 예외 처리",
     async (inputs) => {
       // given
