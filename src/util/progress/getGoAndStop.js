@@ -1,10 +1,10 @@
 import { defaultErrorHandler } from '../error/errorhandler.js';
 import { getRandomNumberInRange } from '../libraryFeatures/MissionUtilsHandler.js';
 
-export default async function getGoAndStop(count, recentGoAndStop) {
+export default async function getGoAndStop(racerCount, gameCount, recentGoAndStop) {
   try {
     const newGoAndStop = [];
-    while (newGoAndStop.length < count) {
+    while (newGoAndStop.length < racerCount) {
       const progressStatus = getRandomNumberInRange() > 4 ? 'go' : 'stop';
       newGoAndStop.push(progressStatus);
     }
@@ -12,8 +12,8 @@ export default async function getGoAndStop(count, recentGoAndStop) {
 
     resultGoAndStop.push(newGoAndStop);
 
-    if (resultGoAndStop.length < count) {
-      return getGoAndStop(count, resultGoAndStop);
+    if (resultGoAndStop.length < gameCount) {
+      return getGoAndStop(racerCount, gameCount, resultGoAndStop);
     }
     return resultGoAndStop;
   } catch (error) {
