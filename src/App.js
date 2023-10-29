@@ -6,9 +6,8 @@ class App {
   }
   
   async play() {
-    const CarNames = this.UserInput.inputCarNames();
-    
-
+    const CarNames = await this.UserInput.inputCarNames();
+    const TryNumber = await this.UserInput.inputTryNum();
   }
   
   
