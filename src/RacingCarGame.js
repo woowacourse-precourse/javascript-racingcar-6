@@ -1,3 +1,4 @@
+import GameUtils from './GameUtils';
 import IOManager from './IOManager';
 
 class RacingCarGame {
@@ -61,6 +62,14 @@ class RacingCarGame {
 
     if (parseInt(tryCount) < 1) {
       throw new Error('시도 횟수는 1보다 작을 수 없습니다.');
+    }
+  }
+
+  #decideToMove(car) {
+    const randomNumber = GameUtils.getRandomNumberInRange(0, 9);
+
+    if (randomNumber >= 4) {
+      car.move(1);
     }
   }
 }
