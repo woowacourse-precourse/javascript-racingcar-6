@@ -8,22 +8,27 @@ import { validateCarName, validateTryNumber } from './Validator.js';
 import { findWinners } from './utils/findWinners.js';
 
 class App {
+  #lastRound;
+  #currentRound;
+
   constructor() {
     this.cars = [];
     this.randomNumber = new RandomNumber();
-    this.currentTryNumber = 0;
+    this.#currentRound = 0;
   }
 
   async play() {
     await this.readCarNames();
     await this.readTryNumber();
+    this.race();
+    this.findWinners();
   }
 
   async readCarNames() {
     const carNames = await InputView.readCarNames();
 
     this.validate(carNames);
-    this.createCars(carNames);
+    this.setCars(carNames);
   }
 
   validate(input) {
@@ -35,7 +40,7 @@ class App {
     handleError(validateTryNumber, input);
   }
 
-  createCars(carNames) {
+  setCars(carNames) {
     carNames.forEach((carName) => this.cars.push(new Car(carName)));
   }
 
@@ -43,22 +48,32 @@ class App {
     const tryNumber = await InputView.readTryNumber();
 
     this.validate(tryNumber);
-    this.race(tryNumber);
+    this.setLastRound(tryNumber);
   }
 
-  race(tryNumber) {
+  setLastRound(tryNumber) {
+    this.#lastRound = tryNumber;
+  }
+
+  race() {
     OutputView.printTryResultMessage();
 
-    while (tryNumber !== this.currentTryNumber) {
-      this.cars.forEach((car) => this.move(car));
+    while (!this.finished()) {
+      this.moveCars();
       this.printStep();
-      this.addCurrentTryNumber();
+      this.goNextRound();
     }
-
-    this.findWinners();
   }
 
-  move(car) {
+  finished() {
+    return this.#currentRound === this.#lastRound;
+  }
+
+  moveCars() {
+    this.cars.forEach((car) => this.run(car));
+  }
+
+  run(car) {
     this.randomNumber.create();
     car.run(this.randomNumber.canMove());
   }
@@ -67,8 +82,8 @@ class App {
     OutputView.printStep(this.cars);
   }
 
-  addCurrentTryNumber() {
-    this.currentTryNumber += 1;
+  goNextRound() {
+    this.#currentRound += 1;
   }
 
   findWinners() {
