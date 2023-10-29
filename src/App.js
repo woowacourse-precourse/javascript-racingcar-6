@@ -42,6 +42,15 @@ class App {
     });
 
     this.#times = await this.getRepeatTimes();
+
+    while (this.#num < this.#times) {
+      this.#cars.forEach((element) => {
+        if (Random.pickNumberInRange(0, 9) >= 4) {
+          element.count += 1;
+        }
+      });
+      this.#num += 1;
+    }
   }
 }
 
