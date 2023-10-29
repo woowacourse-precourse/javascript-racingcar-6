@@ -13,7 +13,11 @@ class GameModel {
     );
     this.carModelsArr = getCarModels.split(",").map((name) => name.trim());
     const carModelsArr = this.carModelsArr;
+<<<<<<< HEAD
 
+=======
+    //5 자 이하여야 한다.
+>>>>>>> a42ea4848b0a6b242fa83e8a9d4c12f97b178e3d
     carModelsArr.forEach((e) => {
       if (e.length > 5) {
         throw new Error(ErrorMessage.INVALID_LENGTH);
@@ -25,7 +29,17 @@ class GameModel {
         throw new Error(ErrorMessage.SPACE_NAME);
       }
     });
+<<<<<<< HEAD
 
+=======
+    //공백이면 안된다.
+    carModelsArr.forEach((e) => {
+      if (e === "") {
+        throw new Error("[ERROR] 공백인 이름이 있습니다.");
+      }
+    });
+    //중복되면 안된다.
+>>>>>>> a42ea4848b0a6b242fa83e8a9d4c12f97b178e3d
     const set = new Set(carModelsArr);
     if (carModelsArr.length !== set.size) {
       throw new Error(ErrorMessage.DUPLICATE_NAME);
@@ -71,8 +85,13 @@ class GameModel {
   }
 
   repeatRace() {
+<<<<<<< HEAD
     let attempt = this.attempt;
     Console.print(PromptMessage.PRINT_RACESTART);
+=======
+    let attempt = this.attempt; // 5
+    Console.print("\n실행 결과");
+>>>>>>> a42ea4848b0a6b242fa83e8a9d4c12f97b178e3d
     while (attempt > 0) {
       this.printCarForward();
       attempt--;
@@ -100,8 +119,12 @@ class GameModel {
     }
 
     const winner = maxCountIndexArr.map((idx) => this.carModelsArr[idx]);
+<<<<<<< HEAD
 
     Console.print(PromptMessage.PRINT_WINNER(winner.join(", ")));
+=======
+    Console.print(`최종 우승자 : ${winner.join(", ")}`);
+>>>>>>> a42ea4848b0a6b242fa83e8a9d4c12f97b178e3d
   }
 }
 
