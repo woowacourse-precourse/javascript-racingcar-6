@@ -47,4 +47,33 @@ describe("RacingCarGame 기능 테스트", () => {
 
     spies.forEach((spy) => spy.mockRestore());
   });
+
+  test("우승자가 1명일 때", () => {
+    // given
+    const nameInputs = ["jenn", "terry", "erric"];
+    const statusInputs = [
+      {
+        name: "jenn",
+        totalDistance: 1,
+      },
+      {
+        name: "terry",
+        totalDistance: 2,
+      },
+      {
+        name: "erric",
+        totalDistance: 3,
+      },
+    ];
+
+    // when
+    const game = new RacingCarGame();
+    game.cars = Array.from(nameInputs, (name) => new Car(name));
+    game.cars.map((car, index) => {
+      car.getStatus = jest.fn(() => statusInputs[index]);
+    });
+
+    // then
+    expect(game.getWinner()).toBe("erric");
+  });
 });
