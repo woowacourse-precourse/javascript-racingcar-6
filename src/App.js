@@ -40,6 +40,12 @@ class App {
       if (number >= 4) forwardList[carIdx]++;
     }
   }
+  async printExecResult(carList, forwardList){
+    for (let carIdx = 0; carIdx < carList.length; carIdx++){
+      MissionUtils.Console.print(`${carList[carIdx]} : ${"-".repeat(forwardList[carIdx])}`);
+    }
+    MissionUtils.Console.print("");
+  }
 
   async play() {
     const carList = await this.readCar();
@@ -51,7 +57,8 @@ class App {
     MissionUtils.Console.print("\n실행 결과");
     for (let i = 0; i < count; i++) {
       this.goForward(forwardList);
-      console.log(forwardList);
+      // console.log(forwardList);
+      this.printExecResult(carList, forwardList);
     }
   }
 }
