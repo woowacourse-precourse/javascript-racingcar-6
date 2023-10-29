@@ -25,8 +25,11 @@ class App {
     if (!this.checkDupl(carNameArry)) {
       throw new Error(`[ERROR] 중복된 이름입니다.`);
     }
-    if(!this.checkNamelength(carNameArry)) {
+    if (!this.checkNamelength(carNameArry)) {
       throw new Error(`[ERROR] 유효하지 않은 이름 길이 입니다.`);
+    }
+    if (!this.checkHowManyCars(carNameArry)) {
+      throw new Error(`[ERROR] 유효하지 않은 차 대수 입니다.`);
     }
   }
 
@@ -45,13 +48,29 @@ class App {
   }
 
   checkNamelength(carNameArry) {
-    for(let i = 0; i < carNameArry.length; i++) {
+    for (let i = 0; i < carNameArry.length; i++) {
       Console.print(carNameArry[i].length);
-      if(carNameArry[i].length < 1 || carNameArry[i].length > 5) {
+      if (carNameArry[i].length < 1 || carNameArry[i].length > 5) {
         return false;
       } 
     }return true;
   }
+
+  checkHowManyCars(carNameArry) {
+    if (1 > carNameArry.length || carNameArry.length > 9) { // 1>=일지 1>일지 헷갈림..혼자여도 경기가능?
+      return false;
+    } return true;
+  }
+
+
+
+
+
+
+
+
+
+
 }
 //for test
 new App().play();
