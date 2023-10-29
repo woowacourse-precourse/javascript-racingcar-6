@@ -5,6 +5,7 @@ import RandomNumber from './model/RandomNumber.js';
 
 import handleError from './utils/handleError.js';
 import { validateCarName, validateTryNumber } from './Validator.js';
+import { findWinners } from './utils/findWinners.js';
 
 class App {
   constructor() {
@@ -53,6 +54,8 @@ class App {
       this.printCarStep();
       this.addCurrentTryNumber();
     }
+
+    this.findWinners();
   }
 
   move(car) {
@@ -66,6 +69,10 @@ class App {
 
   addCurrentTryNumber() {
     this.currentTryNumber += 1;
+  }
+
+  findWinners() {
+    let winners = findWinners(this.cars).map((car) => car.getName());
   }
 }
 
