@@ -4,6 +4,7 @@ import {
   PURPOSE_OF_QUESTION_MESSAGES,
 } from "./constants/questionMessage.js";
 import { RANGE } from "./constants/randomNumberRange.js";
+import { NOW_RESULT, FINAL_RESULT } from "./constants/playingMessages.js";
 
 class App {
   carsRecordBoard = {};
@@ -66,6 +67,14 @@ class App {
       if (this.carsRecordBoard[car].length === winnerCount) {
         this.winner.push(car);
       }
+    }
+  }
+
+  printFinalResult() {
+    if (this.winner.length === 1) {
+      Console.print(`${FINAL_RESULT} : ${this.winner.toString()}`);
+    } else {
+      Console.print(`${FINAL_RESULT} : ${this.winner.join(", ")}`);
     }
   }
 }
