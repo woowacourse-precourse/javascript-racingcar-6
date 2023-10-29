@@ -22,4 +22,8 @@ const ERROR_MESSAGE = Object.freeze({
   INVALID_TRY_COUNT: `${GAME_SETTING.MIN_TRY_COUNT}이상의 숫자를 입력해주세요.`,
 });
 
-export { MESSAGE, ERROR_MESSAGE, GAME_SETTING };
+const STATE_KEY = Object.freeze({
+  GAME: "game",
+});
+
+export { MESSAGE, ERROR_MESSAGE, GAME_SETTING, STATE_KEY };

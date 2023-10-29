@@ -5,14 +5,19 @@ import InputValidate from "../core/InputValidate.js";
 const { INPUT_CAR_NAMES, INPUT_TRY_COUNT } = MESSAGE;
 
 class InputView {
-  validate = new InputValidate();
+  async inputData() {
+    const carNames = await this.inputCarNames();
+    const tryCount = await this.inputTryCount();
+
+    return { carNames, tryCount };
+  }
 
   async inputCarNames() {
     const input = await readLineAsync(INPUT_CAR_NAMES);
 
-    const carNames = input.split(",");
+    const carNames = input.split(",").map((carName) => carName.trim());
 
-    this.validate.checkCarNames(carNames);
+    InputValidate.checkCarNames(carNames);
 
     return carNames;
   }
@@ -22,7 +27,7 @@ class InputView {
 
     const tryCount = Number(input);
 
-    this.validate.checkTryCount(tryCount);
+    InputValidate.checkTryCount(tryCount);
 
     return tryCount;
   }
