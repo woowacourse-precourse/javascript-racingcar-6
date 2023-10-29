@@ -6,7 +6,9 @@ class App {
     let times = await this.getCount(); // 숫자형태
     this.validCheckAboutCarName(cars);
     this.validChedkAboutNumber(times);
-    this.drivePersonerCar(cars);
+   
+    let forwordArry2 = this.sumAllofMovefunc(cars, times);
+    this.resultOfWinner(cars, forwordArry2);
     
 
   }
@@ -35,7 +37,7 @@ class App {
   }
 
   checkNoText(howMove) {
-    Console.print(Number.isNaN(howMove));
+  
     if (Number.isNaN(howMove)) {
       return false;
     } else return true;
@@ -74,16 +76,88 @@ class App {
     }return true;
   }
 
-// 쉽게만 살아가면 재미없어 빙고! //
-  sumAllofMovefunc() {
-
-  }
-
-  drivePersonerCar(cars) {
-    cars.forEach(name => {
-    Console.print(`${name} : `) //name을 매개변수로 받는 0-9 랜덤값 받아서 - 출력하는 함수 여기 적음.      
+  resultOfWinner(car, forwordArry2) {
+    let winner = [];
+    forwordArry2.forEach((result, index) => {
+      winner.push(result.length);
     });
+    // Console.print(winner);
+    let forcarIndex = [];
+    let maximum = 0;
+    let i;
+    for (i = 0; i < winner.length; i++) {
+      if (maximum <= winner[i]) {
+        if (maximum < winner[i]) {
+          forcarIndex = [];
+        };
+        maximum = winner[i];
+        forcarIndex.push(i);// 이게 안됨..
+      }
+    }
+
+    // Console.print(maximum);
+    // Console.print(forcarIndex);
+
+    let finerWiner = [];
+    for (i = 0; i < forcarIndex.length; i++) {
+      finerWiner.push(car[forcarIndex[i]]);
+    }
+
+    Console.print("최종 우승자" + finerWiner.join(', '));
   }
+
+
+// 쉽게만 살아가면 재미없어 빙고! //
+  sumAllofMovefunc(car, times) {
+    let forwordArry2 = [...car]; // 배열 복제
+    forwordArry2.fill(''); // 배열의 모든 원소들을 매개변수로 받은 값으로 채워 준다
+    // Console.print('length: ' + forwordArry2.length);
+    // Console.print('arr: ' + forwordArry2);
+
+    for (let i = 0; i < times; i++) {
+      this.driveSecondCar(car, forwordArry2);
+      Console.print("\n");
+    }
+    return forwordArry2;
+  }
+
+  driveSecondCar(car, forwordArry2) {
+
+    for (let i = 0; i < car.length ; i++) {
+      // forwordArry2[i] = '' + ''
+      forwordArry2[i] += this.forwordOrStop(); //foreach도 이렇게 넣으면 되는거 아닐까
+      Console.print(`${car[i]} : ${forwordArry2[i]}`);
+
+    }
+    return forwordArry2;
+  }
+
+  // drivePersonerCar(cars, times) {
+  //   let forwordArry = [];
+  //   cars.forEach((name, index) => {
+
+  //   //Console.print(`${name} : ${this.forwordOrStop()}`);  //name을 매개변수로 받는 0-9 랜덤값 받아서 - 출력하는 함수 여기 적음.
+    
+  //   });
+
+  // }
+
+
+  makeRandomNumber() {    
+    let goStop = Number(MissionUtils.Random.pickNumberInRange(0, 9));
+
+    return goStop;
+  }
+
+  forwordOrStop() {
+    let randomnum = this.makeRandomNumber();
+    let marker = '';
+    if (4 <= randomnum &&randomnum <= 9) {
+      marker = '-';
+    } 
+    return marker;
+  }
+
 
 
 
@@ -93,5 +167,5 @@ class App {
 
 }
 //for test
-new App().play();
+// new App().play();
 export default App;
