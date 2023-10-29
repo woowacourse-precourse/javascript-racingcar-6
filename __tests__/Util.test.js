@@ -13,4 +13,13 @@ describe('Util 클래스 테스트', () => {
 
     expect(Util.getRandomBoolean()).toBe(false);
   });
+
+  test('getMaxLength 함수 테스트', () => {
+    const JOIN_LIST = [
+      { name: 'tae', progress: '---' },
+      { name: 'yoon', progress: '-' },
+    ];
+    const result = Util.getMaxLength(JOIN_LIST);
+    expect(result).toBe(3);
+  });
 });
