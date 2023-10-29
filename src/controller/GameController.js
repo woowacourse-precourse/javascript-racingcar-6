@@ -28,10 +28,14 @@ export default class GameController {
   }
 
   async getPlayers() {
-    const playerNames = await this.view.getUserInputAsync(MESSAGE.START);
+    const playerNames = await this.getPlayerNames();
     const players = this.splitPlayerNames(playerNames);
     this.checkValidatePlayer(players);
     return players;
+  }
+
+  async getPlayerNames() {
+    return await this.view.getUserInputAsync(MESSAGE.START);
   }
 
   setPlayers(players) {
