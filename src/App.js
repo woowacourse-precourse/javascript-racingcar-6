@@ -78,9 +78,47 @@ class App {
       Console.print(`${FINAL_RESULT} : ${this.winner.join(", ")}`);
     }
   }
+
+  validation(mode, input) {
+    if (mode === CAR_NAME) {
+      this.carNameCheck(input);
+    } else if (mode === LAP_TIME) {
+      this.lapTimeCheck(input);
+    }
+  }
+
+  carNameCheck(carNameInput) {
+    if (!carNameInput.includes(",")) {
+      throw new Error("[ERROR] 컴마를 기준으로 구분해 주세요.");
+    } else if (carNameInput.includes(" ")) {
+      throw new Error("[ERROR] 공백은 포함할 수 없습니다.");
+    }
+
+    const carArr = carNameInput.split(",");
+
+    for (let car of carArr) {
+      if (car.length > 5) {
+        throw new Error("[ERROR] 5자 이하로 입력해 주세요.");
+      } else if (car.length === 0) {
+        throw new Error("[ERROR] 컴마는 붙여서 사용할 수 없습니다.");
+      }
+    }
+  }
+
+  lapTimeCheck(lapInput) {
+    if (!Number(lapInput)) {
+      throw new Error("[ERROR] 숫자를 입력 해주세요.");
+    } else if (Number(lapInput) < 1) {
+      throw new Error("[ERROR] 1 이상의 수를 입력해 주세요.");
+    } else if (lapInput.includes(" ")) {
+      throw new Error("[ERROR] 공백은 입력할 수 없습니다.");
+    } else if (lapInput.includes(".")) {
+      throw new Error("[ERROR] . 은 포함할 수 없습니다.");
+    }
+  }
 }
 
 export default App;
 
-const app = new App();
-app.play();
+// const app = new App();
+// app.play();
