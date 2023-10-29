@@ -14,6 +14,14 @@ class Car {
         MissionUtils.Console.print(`${this.name} : ${"-".repeat(this.forwardCount)}`);
     }
 
+    isWinner(maxCount) {
+        return maxCount === this.forwardCount;
+    }
+
+    get getName() {
+        return this.name;
+    }
+
     get getForwardCount() {
         return this.forwardCount;
     }
