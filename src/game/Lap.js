@@ -2,9 +2,8 @@ import computer from '../utils/console.js';
 import { Random } from '@woowacourse/mission-utils';
 
 class Lap {
-  constructor(entry, laplength) {
+  constructor(entry) {
     this.entry = entry;
-    this.laplength = laplength;
     this.record = [];
     this.makeRecord();
   }
