@@ -17,6 +17,11 @@ export const RANDOM_NUMBER = {
   MAX: 9,
 };
 
+export const MOVE = {
+  CONSTRAINT_NUM: 4,
+  SYMBOL: '-',
+};
+
 export const TEXT = {
   INITIAL: `경주할 자동차 이름을 입력하세요.(이름은 ${COMMAS.KR_NAME}(${COMMAS.SYMBOL}) 기준으로 구분)\n`,
   TRY: '시도할 횟수는 몇 회인가요?',
