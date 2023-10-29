@@ -1,33 +1,13 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import { defaultErrorHandler } from '../error/errorhandler.js';
 
-async function consoleInput(text) {
-  try {
-    const consoleText = text;
-    return MissionUtils.Console.readLineAsync(consoleText);
-  } catch (error) {
-    defaultErrorHandler(error);
-    return null;
-  }
+export async function consoleInput(announcementText) {
+  return MissionUtils.Console.readLineAsync(announcementText);
 }
 
-async function consolePrint(text) {
-  try {
-    const consoleText = text;
-    return MissionUtils.Console.print(consoleText);
-  } catch (error) {
-    defaultErrorHandler(error);
-    return null;
-  }
+export function consolePrint(announcementText) {
+  return MissionUtils.Console.print(announcementText);
 }
 
-async function getrandomNumberInRange(firstNumber, secondNumber) {
-  try {
-    return MissionUtils.Random.pickNumberInRange(firstNumber, secondNumber);
-  } catch (error) {
-    defaultErrorHandler(error);
-    return null;
-  }
+export function getRandomNumberInRange(startNumber, endNumber) {
+  return MissionUtils.Random.pickNumberInRange(startNumber, endNumber);
 }
-
-export { consoleInput, consolePrint, getrandomNumberInRange };
