@@ -1,14 +1,28 @@
 import User from '../cargame/User.js';
+import { RaceSimulator } from '../cargame/CarRacing.js';
+import { MissionUtils } from '@woowacourse/mission-utils';
 
 class App {
   async play() {
     const user = new User();
-
     await user.getCarNames();
-    console.log('게임을 시작합니다. 경주할 자동차 이름:', user.carNames);
-
     await user.getTryNumber();
-    console.log('시도할 횟수:', user.tryNumber);
+
+    const carNames = user.carNames;
+    const tryNumber = user.tryNumber;
+
+    MissionUtils.Console.print(' ');
+    MissionUtils.Console.print('실행 결과');
+
+    const raceSimulator = new RaceSimulator(carNames);
+    raceSimulator.simulateRace(tryNumber);
+
+    const raceResults = raceSimulator.getRaceResults();
+
+    raceResults.forEach((result) => {
+      MissionUtils.Console.print(result);
+      MissionUtils.Console.print(' ');
+    });
   }
 }
 
