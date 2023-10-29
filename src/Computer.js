@@ -26,7 +26,7 @@ export default class Computer {
   }
 
   getCarNameArrayFromString(str) {
-    const carNameArr = str.replace(/ /g, '').split(',');
+    const carNameArr = str.split(',').map((name) => name.trim());
     if (carNameArr.some((carName) => carName.length > 5 || carName === ''))
       throw new Error('[ERROR] 잘못된 입력입니다.');
     return carNameArr;
