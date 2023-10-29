@@ -19,8 +19,11 @@ class App {
 
     return carMap;
   }
+
+  
   
 }
+console.log('test');
 
 const app = new App();
 app.Usercar_input();
