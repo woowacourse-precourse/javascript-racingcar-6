@@ -18,7 +18,7 @@
 
 - [x] constructor // 자동차 State 초기화
 - [x] getCarNames // 각 자동차에 이름을 부여할 수 있다
-- [ ] validateCarNames // 자동차 이름은 쉼표(,)를 기준으로 구분하며 이름은 5자 이하만 가능하다
+- [x] validateCarNames // 자동차 이름은 쉼표(,)를 기준으로 구분하며 이름은 5자 이하만 가능하다
 - [ ] createCarObjectsFromNames // n대의 자동차 생성
 - [ ] getTryCount // 사용자는 몇 번의 이동을 할 것인지를 입력할 수 있어야 한다
 - [ ] validateTryCount // 몇 번의 이동이기 때문에 '1 이상'의 '숫자'이어야 한다.

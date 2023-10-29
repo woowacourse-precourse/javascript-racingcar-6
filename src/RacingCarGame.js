@@ -18,7 +18,23 @@ class RacingCarGame {
     return carNames;
   }
 
-  #validateCarNames(carNames) {}
+  #validateCarNames(carNames) {
+    if (carNames === '') {
+      throw new Error('입력이 없습니다.');
+    }
+
+    const carNameList = carNames.split(',');
+
+    carNameList.forEach((carName) => {
+      if (carName.trim().length === 0) {
+        throw new Error('자동차 이름은 공백이 될 수 없습니다.');
+      }
+
+      if (carName.trim().length > 5) {
+        throw new Error('자동차 이름은 5자 이하만 가능합니다.');
+      }
+    });
+  }
 }
 
 export default RacingCarGame;
