@@ -5,7 +5,6 @@ import tryCountValidation from '../utils/validation/tryCountValidation.js';
 
 class RacingTrack {
 	#drivers; // {name1: currentLocation, name2: ...}
-	#tryCount;
 
 	constructor() {
 		this.#drivers = {};
@@ -18,17 +17,6 @@ class RacingTrack {
 		driverNamesValidation(driverArr);
 
 		driverArr.forEach((name) => (this.#drivers[name] = 0));
-	}
-
-	initTryCount(tryCountStr) {
-		// TODO: 유효성 검사 필요
-		tryCountValidation(tryCountStr);
-
-		this.#tryCount = parseInt(tryCountStr);
-	}
-
-	getTryCount() {
-		return this.#tryCount;
 	}
 
 	#move() {
