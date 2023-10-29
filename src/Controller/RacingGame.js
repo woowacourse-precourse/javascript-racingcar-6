@@ -38,13 +38,13 @@ export default class RacingGame {
 
   #racing() {
     const cars = this.#carModel.getCar();
-    let attemps = this.#attemps;
-    while (attemps !== 0) {
+    let racingCount = this.#attemps;
+    while (racingCount !== 0) {
       cars.forEach(({ name }) => {
         this.#carModel.updateMove(name, isMove());
       });
       this.#resultModel.addAttempsResult(this.#carModel.getCar());
-      attemps -= 1;
+      racingCount -= 1;
     }
   }
 }
