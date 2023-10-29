@@ -10,36 +10,39 @@ const ERROR_MESSAGES = {
 class App {
   async play() {
     const CAR_ARRAY = await inputCarNames();
-    checkCarName(CAR_ARRAY);
     const ATTEMPT_COUNT = +(await inputAttempt());
+    checkCarName(CAR_ARRAY);
     checkAttemptCount(ATTEMPT_COUNT);
     const CAR_OBJECT_ARRAY = makeCarObject(CAR_ARRAY);
-    MissionUtils.Console.print("실행 결과");
-
-    for (let i = 0; i < ATTEMPT_COUNT; i++) {
-      CAR_OBJECT_ARRAY.forEach((car, index) => {
-        const RANDOMNUMBER = MissionUtils.Random.pickNumberInRange(0, 9);
-        if (RANDOMNUMBER >= 4) {
-          CAR_OBJECT_ARRAY[index].value++;
-        }
-        let value = "-".repeat(CAR_OBJECT_ARRAY[index].value);
-        MissionUtils.Console.print(
-          `${CAR_OBJECT_ARRAY[index].name} : ${value}`
-        );
-      });
-      MissionUtils.Console.print("");
-    }
-
-    const maxValue = CAR_OBJECT_ARRAY.reduce(
-      (max, current) => Math.max(max, current.value),
-      -Infinity
-    );
-    const maxObjects = CAR_OBJECT_ARRAY.filter((obj) => obj.value === maxValue);
-    const names = maxObjects.map((obj) => obj.name).join(", ");
-    MissionUtils.Console.print(`최종 우승자 : ${names}`);
+    showRaceResults(CAR_OBJECT_ARRAY, ATTEMPT_COUNT);
+    showWinner(CAR_OBJECT_ARRAY);
   }
 }
-function raceStart(car_object_array, attempt_count) {}
+
+function showRaceResults(car_object_array, attempt_count) {
+  for (let i = 0; i < attempt_count; i++) {
+    car_object_array.forEach((car, index) => {
+      const RANDOMNUMBER = MissionUtils.Random.pickNumberInRange(0, 9);
+      if (RANDOMNUMBER >= 4) {
+        car_object_array[index].value++;
+      }
+      let value = "-".repeat(car_object_array[index].value);
+      MissionUtils.Console.print(`${car_object_array[index].name} : ${value}`);
+    });
+    MissionUtils.Console.print("");
+  }
+}
+
+function showWinner(car_object_array) {
+  const maxValue = car_object_array.reduce(
+    (max, current) => Math.max(max, current.value),
+    -Infinity
+  );
+  const maxObjects = car_object_array.filter((obj) => obj.value === maxValue);
+
+  const WINNER_NAME = maxObjects.map((obj) => obj.name).join(", ");
+  MissionUtils.Console.print(`최종 우승자 : ${WINNER_NAME}`);
+}
 
 function makeCarObject(CAR_ARRAY) {
   //각 변수를 object화 해서 값을 1씩 증가시키는 방법이 있음.
