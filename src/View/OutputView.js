@@ -7,6 +7,7 @@ export default class OutputView {
     roundResult.forEach(({ name, position }) => {
       this.#onPrint(`${name} : ${position}`);
     });
+    OutputView.printPadding();
   }
 
   static printPadding() {
