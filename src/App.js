@@ -5,6 +5,9 @@ class App {
     const carNames = await this.getCarNames();
     const carNamesArray = this.convertNamesToArray(carNames);
     this.validateCarNames(carNamesArray);
+    const tryCount = await this.getTryCount();
+    this.validateTryCount(tryCount);
+    const raceResults = this.race(carNamesArray, tryCount);
   }
 
   async getCarNames() {
@@ -77,6 +80,30 @@ class App {
     if (tryCount < 1) {
       throw new Error('[ERROR] 횟수는 1이상의 자연수를 입력해야 합니다.');
     }
+  }
+
+  race(carNamesArray, tryCount) {
+    const carProgressArray = carNamesArray.map(() => '');
+
+    // MissionUtils.Console.print('실행결과');
+
+    while (tryCount > 0) {
+      this.updateCarProgress(carProgressArray);
+      //printCarProgress(carNamesArray, carProgressArray);
+      tryCount -= 1;
+    }
+    return carProgressArray;
+  }
+
+  updateCarProgress(carProgressArray) {
+    carProgressArray.forEach((carProgress, index, carProgressArray) => {
+      const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
+
+      if (randomNumber >= 4) {
+        carProgressArray[index] = carProgress + '-';
+      }
+    });
+    return carProgressArray;
   }
 }
 
