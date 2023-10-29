@@ -17,19 +17,22 @@ class App {
 
     const gameMoveNum = await user.inputMoveNum();
 
-    const gameResult = players.map((name) => ({
+    const gameResultInStep = players.map((name) => ({
       name,
       moveNum: 0
     }));
 
+    Console.print('\n실행 결과');
+    
     let gameStep = 0;
     while (gameStep < gameMoveNum) {
-      gameResult.forEach((player) => {
+      gameResultInStep.forEach((player) => {
         const randomNum = Random.pickNumberInRange(0, 9);
         if (judge.checkMoveCondition(randomNum)) {
           player.moveNum++;
         }
       })
+      judge.printResultInStep(gameResultInStep);
       gameStep++;
     }
   }
