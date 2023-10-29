@@ -19,7 +19,7 @@ const mockRandoms = (numbers) => {
 };
 
 const getLogSpy = () => {
-  const logSpy = jest.spyOn(MissionUtils.Console, "print");
+  const logSpy = jest.spyOn(MissionUtils.Console, 'print');
   logSpy.mockClear();
   return logSpy;
 };
@@ -45,8 +45,8 @@ describe('자동차 경주 게임', () => {
     expect(tryCount).toEqual('5');
   });
 
-  test('문자 길이 5이상 혹은 0', async () => {
-    const inputs = ['pobi,woni,,'];
+  test('시도 횟수 입력(정수 이외 입력 경우)', async () => {
+    const inputs = ['ef,ew', '0.7'];
     mockQuestions(inputs);
 
     // given
@@ -54,10 +54,19 @@ describe('자동차 경주 게임', () => {
     await expect(app.play()).rejects.toThrow("[ERROR]");
   });
 
+  test('문자 길이 5이상 혹은 0', async () => {
+    const inputs = ['pobi,woni,,'];
+    mockQuestions(inputs);
+
+    // given
+    const app = new App();
+    await expect(app.play()).rejects.toThrow('[ERROR]');
+  });
+
   test('배열에 저장되어 있는 값 확인(name)', async () => {
     const inputs = 'pobi,woni';
-    const expectedNames = inputs.split(',').map(name => name.trim());
-    mockQuestions([inputs]);
+    const expectedNames = inputs.split(',').map((name) => name.trim());
+    mockQuestions([inputs,'1']);
 
     // given
     const game = new CarRacingGame();
@@ -74,8 +83,8 @@ describe('자동차 경주 게임', () => {
     const MOVING_FORWARD = 4;
     const STOP = 3;
     const randoms = [MOVING_FORWARD, STOP];
-    const result = [1,0]
-    mockQuestions([inputs,'1']);
+    const result = [1, 0];
+    mockQuestions([inputs, '1']);
     mockRandoms([...randoms]);
     // given
     const game = new CarRacingGame();
@@ -91,8 +100,8 @@ describe('자동차 경주 게임', () => {
     // given
     const MOVING_FORWARD = 4;
     const STOP = 3;
-    const inputs = ["pobi,woni", "1"];
-    const outputs = ["pobi : -"];
+    const inputs = ['pobi,woni', '1'];
+    const outputs = ['pobi : -'];
     const randoms = [MOVING_FORWARD, STOP];
     const logSpy = getLogSpy();
 
@@ -102,7 +111,7 @@ describe('자동차 경주 게임', () => {
     // when
     const app = new App();
     await app.play();
-    
+
     outputs.forEach((output) => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
@@ -112,8 +121,8 @@ describe('자동차 경주 게임', () => {
     // given
     const MOVING_FORWARD = 4;
     const STOP = 4;
-    const inputs = ["pobi,woni", "1"];
-    const outputs = ["pobi, woni"];
+    const inputs = ['pobi,woni', '1'];
+    const outputs = ['pobi, woni'];
     const randoms = [MOVING_FORWARD, STOP];
     const logSpy = getLogSpy();
 
@@ -123,7 +132,7 @@ describe('자동차 경주 게임', () => {
     // when
     const app = new App();
     await app.play();
-    
+
     outputs.forEach((output) => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
