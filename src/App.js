@@ -1,4 +1,5 @@
 import { Random, Console } from '@woowacourse/mission-utils';
+import Car from './Car.js';
 
 class App {
   checkRacingCarNameValidation = (el) => {
@@ -37,7 +38,18 @@ class App {
   async play() {
     try {
       const carNames = await this.getRacingCarNameInput();
-      await this.getRacingCountInput();
+      const cars = carNames.map((el) => new Car(el));
+
+      const count = await this.getRacingCountInput();
+
+      Console.print('실행 결과');
+
+      Array.from({ length: count }).forEach(() => {
+        cars.forEach((car) => {
+          car.makeStepForwardOrStop();
+          Console.print(car.name + ' : ' + '-'.repeat(car.step));
+        });
+      });
     } catch (err) {
       Console.print(err.message);
       throw err;
