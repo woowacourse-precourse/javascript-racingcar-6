@@ -1,4 +1,4 @@
-import { Console } from '@woowacourse/mission-utils';
+import { Console, Random } from '@woowacourse/mission-utils';
 
 class App {
   async play() {
@@ -54,6 +54,10 @@ class App {
     }
 
     throw new Error('[ERROR] 숫자가 잘못된 형식입니다.');
+  }
+
+  getRandomNumber() {
+    return Random.pickNumberInRange(0, 9);
   }
 }
 
