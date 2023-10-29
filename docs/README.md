@@ -72,7 +72,8 @@
 ## `Validate` class
 - [x] `validateCarName()` : 경주 자동차의 이름을 검사한다.
     - [x] 에러 발생 시 프로그램 종료
-    - [x] `removeBlankSplit()`, `checkDuplication()` `checkNameLength()`을 활용하여 검사한다. 
+    - [x] `checkLength()`,`removeBlankSplit()`, `checkDuplication()` `checkNameLength()`을 활용하여 검사한다. 
+- [x] `checkLength()` : 경주 자동차가 1대일 경우 에러를 던진다.
 - [x] `removeBlankSplit()` : 공백 제거 후, 배열로 반환한다.
 - [x] `checkDuplication()` : 자동차 이름들의 중복 검사한다.
 - [x] `checkNameLength()` : 자동차 이름 길이 검사한다 (5자 이하).
