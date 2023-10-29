@@ -3,13 +3,13 @@ import { Random } from "@woowacourse/mission-utils";
 import OutputView from "../view/OutputView.js";
 
 class RacingController {
-  carsObject = {};
+  racingBoard = {};
   attemptCount = 0;
   maxDistance = 0;
 
   constructor(racingCarNames, attemptCount) {
     racingCarNames.forEach((racingCarName) => {
-      this.carsObject[racingCarName] = 0;
+      this.racingBoard[racingCarName] = 0;
     });
 
     this.attemptCount = attemptCount;
@@ -24,13 +24,13 @@ class RacingController {
   }
 
   playRound() {
-    Object.entries(this.carsObject).forEach(([carName, carDistance]) => {
+    Object.entries(this.racingBoard).forEach(([carName, carDistance]) => {
       if (this.isForwardRacingCar()) {
-        this.carsObject[carName] = carDistance + 1;
-        this.renewMaxDistance(this.carsObject[carName]);
+        this.racingBoard[carName] = carDistance + 1;
+        this.renewMaxDistance(this.racingBoard[carName]);
       }
 
-      OutputView.printCurrentRacingCar(carName, this.carsObject[carName]);
+      OutputView.printCurrentRacingCar(carName, this.racingBoard[carName]);
     });
     OutputView.printSpacing();
   }
@@ -53,7 +53,7 @@ class RacingController {
   }
 
   end() {
-    OutputView.printRacingFinalWinners(this.carsObject, this.maxDistance);
+    OutputView.printRacingFinalWinners(this.racingBoard, this.maxDistance);
   }
 }
 
