@@ -31,7 +31,7 @@ class App {
       .map(item => item.trim());
 
     if (carNames.some(name => name.length > 5)) {
-      throw new Error('이름은 5글자 이하로만 입력할 수 있습니다.');
+      throw new Error('[ERROR]이름은 5글자 이하로만 입력할 수 있습니다.');
     }
 
     return carNames;
