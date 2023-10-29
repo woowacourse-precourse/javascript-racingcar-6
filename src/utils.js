@@ -10,8 +10,8 @@ function readLineGameCount() {
   return MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
 }
 
-function consoleResult() {
-  return MissionUtils.Console.print(`실행결과\n${cars}`);
+function consoleResult(msg) {
+  return MissionUtils.Console.print(`${msg}`);
 }
 function consoleWinner() {
   return MissionUtils.Console.print(`최종 우승자 : ${winner}`);

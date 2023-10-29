@@ -1,4 +1,4 @@
-import { readLineCar, readLineGameCount } from './utils.js';
+import { readLineCar } from './utils.js';
 
 function inputCarName() {
   return readLineCar().then((inputCar) => {
