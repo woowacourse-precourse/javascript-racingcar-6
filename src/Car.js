@@ -6,7 +6,7 @@ class Car {
         this.forwardCount = 0;
     }
 
-    goForword() {
+    goForward() {
         this.forwardCount += 1;
     }
 
