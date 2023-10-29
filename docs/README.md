@@ -23,10 +23,13 @@
 
 ## :file_folder: 패키지 구조 및 파일명
 - src
+  - comm
+  - - Validate.js
+  - constant
+  - - OutputMessage.js
   - controller
   - - RacingcarController.js
   - model
-  - - Comm.js
   - - Racing.js
   - view
   - - UserInput.js
