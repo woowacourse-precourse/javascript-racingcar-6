@@ -1,10 +1,10 @@
 import { gameErrorhandler } from '../error/errorhandler.js';
 
-async function checkCarValid(input) {
+export async function checkCarNameValid(input) {
   const primaryArray = input.split(',');
 
   try {
-    const carNameCheck = [...primaryArray].map((item) => item.length <= 5);
+    const carNameCheck = [...primaryArray].map((item) => item.length <= 5 && item.length > 0);
 
     const isNotValid = carNameCheck.includes(false);
 
@@ -14,12 +14,12 @@ async function checkCarValid(input) {
     }
     return primaryArray;
   } catch (error) {
-    gameErrorhandler(error);
-    throw error;
+    const promise = gameErrorhandler(error);
+    return promise;
   }
 }
 
-async function checkRaceCountValid(input) {
+export async function checkRaceCountValid(input) {
   try {
     const count = Number(input);
     const isCountZero = count === 0;
@@ -36,9 +36,7 @@ async function checkRaceCountValid(input) {
     }
     return count;
   } catch (error) {
-    gameErrorhandler(error);
-    return null;
+    const promise = gameErrorhandler(error);
+    return promise;
   }
 }
-
-export { checkCarValid, checkRaceCountValid };
