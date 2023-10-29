@@ -3,6 +3,7 @@ import generateRandomNumber from "../util/generator.js";
 import OutputView from "../view/OutputView.js";
 
 class RacingController {
+  // key: 자동차의 이름, value: 전진 거리
   racingBoard = {};
   attemptCount = 0;
   maxDistance = 0;
@@ -48,7 +49,7 @@ class RacingController {
 
   /**
    * 자동차의 전진 여부를 판단하는 함수
-   * @returns {boolean} 랜덤 숫자가 4 이상이라면 전진
+   * @returns {boolean} 랜덤 숫자가 FORWARD_THRESHOLD(4) 이상이라면 true를 반환
    */
   isForwardRacingCar() {
     const randomNumber = generateRandomNumber();
@@ -58,7 +59,7 @@ class RacingController {
 
   /**
    * 현재 레이싱의 최대 거리를 갱신하는 함수
-   * @param {number} distance 자동차의 이동 거리
+   * @param {number} distance 자동차의 전진 거리
    */
   renewMaxDistance(distance) {
     if (distance > this.maxDistance) {
