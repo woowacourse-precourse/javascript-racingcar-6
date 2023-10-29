@@ -7,5 +7,5 @@ export const PLAYER_INPUT = {
 export const RACE = {
   PROGRESS_BAR: '-',
   START: '실행 결과',
-  WINNERS: '최종 우승자',
+  WINNERS: '최종 우승자 : ',
 };
