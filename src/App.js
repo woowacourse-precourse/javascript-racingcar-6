@@ -4,6 +4,7 @@ import {
   isPlayerCarNameValidated,
   isPlayerTryNumberValidated,
 } from './Validation.js';
+import CONSTANTS from './Constants.js';
 
 class App {
   constructor() {
@@ -46,8 +47,11 @@ class App {
   }
 
   shouldMoveForward() {
-    const pickedNumber = Random.pickNumberInRange(0, 9);
-    return pickedNumber >= 4;
+    const pickedNumber = Random.pickNumberInRange(
+      CONSTANTS.MIN_NUM,
+      CONSTANTS.MAX_NUM,
+    );
+    return pickedNumber >= CONSTANTS.IS_FORWARD;
   }
 
   moveCarForward(player) {
