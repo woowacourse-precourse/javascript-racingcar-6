@@ -7,7 +7,7 @@ class App {
     };
     const checkValidCarName = async(carNameArr) => {
       for (let i=0; i<carNameArr.length; i++) {
-        if (carNameArr[i].length > 5) {
+        if (carNameArr[i].length > 5 || carNameArr[i].length ===0) {
           throw new Error("[ERROR] 자동차 이름이 잘못된 형식입니다.")
         }
       }
