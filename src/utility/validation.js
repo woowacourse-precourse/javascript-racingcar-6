@@ -23,3 +23,9 @@ export const isLengthWithinBounds = (string, startNumber, endNumber) => {
     throw new Error(ERROR_MESSAGE.wrongNameInput);
   }
 };
+
+export const isDuplicateString = (string, array) => {
+  if (array.includes(string)) {
+    throw new Error(ERROR_MESSAGE.duplicateNameInput);
+  }
+};
