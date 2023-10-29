@@ -2,6 +2,7 @@ import { Random, Console } from "@woowacourse/mission-utils";
 
 class App {
   inputData = "";
+  inputArray = [];
 
   async start() {
     return Console.readLineAsync(
@@ -9,8 +10,14 @@ class App {
     );
   }
 
+  splitCarName() {
+    this.inputArray = this.inputData.split(",");
+  }
+
   async play() {
     this.inputData = await this.start();
+
+    this.splitCarName();
   }
 }
 
