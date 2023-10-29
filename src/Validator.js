@@ -23,13 +23,13 @@ class Validator {
   }
 
   static checkIsNotNumber(userInput) {
-    if (Number.isNaN(Number(userInput))) {
+    if (Number.isNaN(Number(userInput)) || userInput === '') {
       throw new ValidationError(ERROR.isNotNumber);
     }
   }
 
   static checkIsNotMoving(userInput) {
-    if (userInput === CONSTANT.notMove) {
+    if (Number(userInput) === CONSTANT.notMove) {
       throw new ValidationError(ERROR.notMoving);
     }
   }
