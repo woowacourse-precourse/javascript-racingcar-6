@@ -27,7 +27,8 @@ class App {
     for (let moveNum = 0; moveNum < NUMBER_OF_MOVES; moveNum++) {
       const RESULT = this.resultByRandomNumber();
       RESULTS.push(RESULT);
-      // MissionUtils.Console.print(RESULTS);
+      // MissionUtils.Console.print(NUMBER_OF_MOVES);
+      MissionUtils.Console.print(RESULT);
       this.printProgress(RESULT);
     }
 
@@ -69,7 +70,7 @@ class App {
       // 각 carNames의 value에 RANDOM_NUMBER가 4이상이면 true, 4이하면 false가 저장됨 -> true면 -, false면 공백 저장되도록 변경
       const RANDOM_NUMBER = MissionUtils.Random.pickNumberInRange(0, 9);
       RESULT[this.carNames[index]] = RANDOM_NUMBER >= 4 ? '-' : '';
-      MissionUtils.Console.print(RANDOM_NUMBER);
+      // MissionUtils.Console.print(RANDOM_NUMBER);
     }
 
     return RESULT;
@@ -78,8 +79,8 @@ class App {
   //진행상황 출력
   printProgress(result) {
     for (const carName in result) {
-      const STATUS = result[carName] ? '-' : '';
-      MissionUtils.Console.print(`${carName} : ${STATUS}`);
+      // const STATUS = result[carName] ? '-' : '';
+      MissionUtils.Console.print(`${carName} : ${result[carName]}`);
     }
   }
 
