@@ -14,4 +14,5 @@ export const num = {
   LOWER_LIMIT: 0,
   UPPER_LIMIT: 9,
   ADVANCE_IF_GREATER_THAN: 4,
+  NAME_LENGTH_LIMIT: 5,
 };
