@@ -3,14 +3,19 @@ import { getRandomNumberInRange } from '../libraryFeatures/MissionUtilsHandler.j
 
 export default async function getGoAndStop(count, recentGoAndStop) {
   try {
-    const progressStatus = getRandomNumberInRange() > 4 ? 'go' : 'stop';
-    const goAndStop = [...recentGoAndStop];
-    goAndStop.push(progressStatus);
-
-    if (goAndStop.length < count) {
-      return getGoAndStop(count, goAndStop);
+    const newGoAndStop = [];
+    while (newGoAndStop.length < count) {
+      const progressStatus = getRandomNumberInRange() > 4 ? 'go' : 'stop';
+      newGoAndStop.push(progressStatus);
     }
-    return goAndStop;
+    const resultGoAndStop = [...recentGoAndStop];
+
+    resultGoAndStop.push(newGoAndStop);
+
+    if (resultGoAndStop.length < count) {
+      return getGoAndStop(count, resultGoAndStop);
+    }
+    return resultGoAndStop;
   } catch (error) {
     const ERROR = defaultErrorHandler(error);
     return ERROR;
