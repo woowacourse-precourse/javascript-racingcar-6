@@ -10,6 +10,10 @@ class CustomError extends Error {
   static InputView(message) {
     return new CustomError(message, ERROR.name.inputView);
   }
+
+  static Car(message) {
+    return new CustomError(message, ERROR.name.car);
+  }
 }
 
 export default CustomError;

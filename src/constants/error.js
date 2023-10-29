@@ -6,6 +6,7 @@ const message = Object.freeze({
 
 const name = Object.freeze({
   inputView: 'inputViewError',
+  car: 'carError',
 });
 
 const errorCase = Object.freeze({

@@ -2,6 +2,7 @@ const movement = Object.freeze({
   min: 0,
   max: 9,
   threshold: 4,
+  unit: 1,
 });
 
 const name = Object.freeze({
@@ -10,11 +11,15 @@ const name = Object.freeze({
   separator: ',',
 });
 
+const position = Object.freeze({
+  min: 0,
+  max: 6,
+});
+
 const CAR = Object.freeze({
   movement,
   name,
-  MIN_POSITION: 0,
-  MAX_POSITION: 6,
+  position,
 });
 
 export default CAR;

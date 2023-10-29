@@ -24,7 +24,7 @@ const Validator = {
     const isvalidLength = this.isValidCarNameLength(carName);
 
     if (!isvalidLength) {
-      throw CustomError.InputView(ERROR.message.invalidCarNameLength);
+      throw CustomError.Car(ERROR.message.invalidCarNameLength);
     }
   },
 
