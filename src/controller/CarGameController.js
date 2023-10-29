@@ -5,7 +5,12 @@ class CarGameController {
   async start() {
     const carNames = await InputView.readCarNames();
     const carMap = new Car().convertStringToMap(carNames);
-    console.log(carMap);
+    this.playGameStage(carMap);
+  }
+
+  async playGameStage(carMap) {
+    const attempts = await InputView.readAttempts();
+    console.log(attempts);
   }
 }
 

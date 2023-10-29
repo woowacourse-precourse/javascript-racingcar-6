@@ -28,6 +28,12 @@ const Validator = {
       }
     });
   },
+
+  validateNumber(attempts) {
+    if (!/^\d+$/.test(attempts.trim())) {
+      throw new Error('[ERROR] 숫자를 입력해주세요.');
+    }
+  },
 };
 
 export default Validator;

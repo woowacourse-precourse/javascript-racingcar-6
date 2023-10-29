@@ -9,6 +9,13 @@ const InputView = {
     Validator.validateBlank(carNames);
     return carNames;
   },
+
+  async readAttempts() {
+    const attempts =
+      await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    Validator.validateNumber(attempts);
+    return attempts;
+  },
 };
 
 export default InputView;
