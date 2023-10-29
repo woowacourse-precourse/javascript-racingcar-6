@@ -41,9 +41,16 @@ class App {
     return roundNum;
   }
 
+  #playRound() {
+    this.#cars.forEach((car) => {
+      car.move();
+    });
+  }
+
   async play() {
     await this.#inputCar();
     const roundNum = await App.#inputRoundNum();
+    this.#playRound();
   }
 }
 
