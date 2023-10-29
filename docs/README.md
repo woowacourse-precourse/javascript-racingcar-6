@@ -10,6 +10,18 @@
 
 ---
 
+## 추가로 고려할 사항
+
 - 상수 쓰기
 - 함수명 명확하게
 - MVC패턴 적용해보기
+- for 대신 forEach 사용하기
+
+---
+
+### MVC 패턴으로 나누기
+
+- model : setCarNamesAndDistances, getCarNamesAndDistances, moveOrStay
+- view : numToBar, printResult, printWinner
+- controller : inputCarName, inputTrialNumber
+- error : isValidCarName, isValidTrialNumber
