@@ -17,6 +17,8 @@ class App {
   async startGame() {
     //차 이름 받기
     const carName = await this.getCarName();
+    //시도 횟수 받기
+    const tryNum = await this.getTryNum();
   }
   //차 이름 받기 (유저 입력 받는 것 앞에는 비동기가 있어야 하나?)
   async getCarName() {
@@ -31,12 +33,26 @@ class App {
               reject(undefined);
             } else {
               resolve(carName);
-              console.log(carName);
               return carName;
             }
           }
         }
       );
+    });
+  }
+  //시도 횟수 받기
+  async getTryNum() {
+    return new Promise((resolve, reject) => {
+      this.rl.question("시도할 횟수는 몇 회인가요?", function (userNumInput) {
+        const tryNum = userNumInput;
+        if (isNaN(tryNum) || tryNum < 0) {
+          console.log("[ERROR] 숫자가 잘못된 형식입니다.");
+          reject(undefined);
+        } else {
+          resolve(tryNum);
+          return tryNum;
+        }
+      });
     });
   }
 }
