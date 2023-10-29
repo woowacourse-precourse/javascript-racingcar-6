@@ -45,13 +45,13 @@ describe("기능 테스트", () => {
         }
     );
 
-    test.each([``, `숫자`, `1,2`])(
-        "handleInvalidNumberOfGames함수 테스트",
+    test.each([``, `0`, `숫자`, `1,2`])(
+        "checkNumberOfGamesFormat함수 테스트",
         async (value) => {
             // when
             const app = new App();
             await expect(() =>
-                app.handleInvalidNumberOfGames.moving(value)
+                app.checkNumberOfGamesFormat.moving(value)
             ).toThrow("[ERROR] 시도 횟수가 잘못된 형식입니다.");
         }
     );
