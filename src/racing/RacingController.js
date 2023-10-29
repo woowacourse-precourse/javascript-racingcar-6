@@ -2,6 +2,8 @@ import Util from '../util/Util.js';
 import Racing from './Racing.js';
 import InputView from './view/InputView.js';
 import OutputView from './view/OutputView.js';
+import CarsNameValidator from '../validator/CarsNameValidator.js';
+import RoundsCountValidator from '../validator/RoundsCountValidator.js';
 
 class RacingController {
 	#racing;
@@ -9,11 +11,14 @@ class RacingController {
 
 	async #setupCars() {
 		const carsName = await InputView.inputCarsNameAsync();
+		CarsNameValidator.validate(carsName);
 		this.#racing = new Racing(Util.trimStringInArray(carsName.split(',')));
 	}
 
 	async #setupRoundsCount() {
-		this.#roundsCount = await InputView.inputTryCountAsync();
+		const roundsCount = await InputView.inputTryCountAsync();
+		RoundsCountValidator.validate(roundsCount);
+		this.#roundsCount = roundsCount;
 		OutputView.printNewLine();
 	}
 
