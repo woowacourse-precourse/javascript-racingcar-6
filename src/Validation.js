@@ -27,6 +27,13 @@ export const isPlayerCarNameValidated = raceEntry => {
 };
 
 export const isPlayerTryNumberValidated = tryNumber => {
+  if (isNaN(Number(tryNumber))) {
+    throw new CustomError(
+      'InvalidTryNumber',
+      ERROR_MESSAGES.INVALID_TRY_NUMBER_STRING,
+    );
+  }
+
   if (tryNumber < 1) {
     throw new CustomError(
       'InvalidTryNumber',

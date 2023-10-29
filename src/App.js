@@ -42,7 +42,7 @@ class App {
       PLAYER_INPUT.TRY_NUMBER_PROMPT,
     );
     if (isPlayerTryNumberValidated(userInput)) {
-      return userInput;
+      return Number(userInput);
     }
   }
 
