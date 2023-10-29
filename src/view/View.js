@@ -1,6 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
-import { MESSAGE } from '../constants/constants';
-import Validation from './validation';
+import { MESSAGE } from '../constants/constants.js';
+import Validation from './Validation.js';
 
 export default class View {
   static async readCarNames() {
