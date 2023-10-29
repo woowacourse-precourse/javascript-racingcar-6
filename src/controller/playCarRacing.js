@@ -2,6 +2,7 @@ import { Console } from "@woowacourse/mission-utils";
 
 import { Messages } from "../common/message.js";
 import pickRandomNumbers from "./pickRandomNumbers.js";
+import getFinalWinner from "./getFinalWinner.js";
 
 const playCarRacing = (cars, count) => {
   let carDic = {};
@@ -18,6 +19,8 @@ const playCarRacing = (cars, count) => {
     printCarResults(cars, carDic);
     Console.print("");
   }
+  const winners = getFinalWinner(carDic).join(", ");
+  Console.print(`${Messages.FINAL_WINNERS} ${winners}`);
 };
 
 const updateCarDic = (cars, carDic, randomNumbers) => {
