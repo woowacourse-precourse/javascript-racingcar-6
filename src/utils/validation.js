@@ -27,11 +27,8 @@ export const isValidNameInput = (input) => {
 
 //횟수 검사
 export const isValidCountInput = (input) => {
-  if (!input) throw new Error(ERROR.INVALID_COUNT_RANGE);
-
-  const numInput = Number.isInteger(input);
-
-  if (numInput < SETTING.MIN_COUNT_NUM)
+  const numInput = parseInt(input);
+  if (numInput < SETTING.MIN_COUNT_NUM || isNaN(numInput))
     throw new Error(ERROR.INVALID_COUNT_RANGE);
 
   if (numInput > 30)

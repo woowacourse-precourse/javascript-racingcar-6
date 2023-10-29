@@ -131,7 +131,7 @@ describe("자동차 경주 게임", () => {
     const app = new App();
 
     await expect(app.play()).rejects.toThrow(
-      "[ERROR]아무것도 입력하지 않았습니다.",
+      "[ERROR]1이상의 정수를 입력해 주세요.",
     );
   });
 
