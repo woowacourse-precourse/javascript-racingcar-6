@@ -1,21 +1,25 @@
 import { ERROR_MESSAGE } from '../constants/messages.js';
 
-export default class Validator {
-  static isValidateCarName(answer) {
-    const carName = answer.replace(/\s/g, '');
-    if (
-      !carName.split(',').every((name) => name.length > 0 && name.length <= 5)
-    ) {
-      throw new Error(ERROR_MESSAGE.carName);
-    }
-    return true;
-  }
-
-  static isValidateAttemps(answer) {
-    const attemps = answer.replace(/\s/g, '');
-    if (Number.isNaN(Number(attemps)) || attemps.length === 0) {
-      throw new Error(ERROR_MESSAGE.attemps);
-    }
-    return true;
-  }
+function removeSpace(answer) {
+  return answer.replace(/\s/g, '');
 }
+
+function isValidateCarName(answer) {
+  const carName = removeSpace(answer);
+  if (
+    !carName.split(',').every((name) => name.length > 0 && name.length <= 5)
+  ) {
+    throw new Error(ERROR_MESSAGE.carName);
+  }
+  return true;
+}
+
+function isValidateAttemps(answer) {
+  const attemps = removeSpace(answer);
+  if (Number.isNaN(Number(attemps)) || attemps.length === 0) {
+    throw new Error(ERROR_MESSAGE.attemps);
+  }
+  return true;
+}
+
+export { isValidateCarName, isValidateAttemps };

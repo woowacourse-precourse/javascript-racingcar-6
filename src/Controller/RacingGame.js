@@ -1,5 +1,5 @@
 import { Random } from '@woowacourse/mission-utils';
-import Validator from '../utils/Validator.js';
+import { isValidateCarName, isValidateAttemps } from '../utils/validator.js';
 import Input from '../view/Input.js';
 import Output from '../view/Output.js';
 import makeWinner from '../utils/makeWinner.js';
@@ -21,7 +21,7 @@ export default class RacingGame {
   async start() {
     await this.#makeCar();
     const answer = await Input.readAttemps();
-    if (Validator.isValidateAttemps(answer)) {
+    if (isValidateAttemps(answer)) {
       this.#attemps = answer;
       this.#racing();
       const totalResult = this.#resultModel.makeTotalResult();
@@ -33,7 +33,7 @@ export default class RacingGame {
 
   async #makeCar() {
     const answer = await Input.readCarName();
-    if (Validator.isValidateCarName(answer)) {
+    if (isValidateCarName(answer)) {
       this.#carModel.makeCar(answer);
     }
   }
