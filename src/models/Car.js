@@ -1,7 +1,7 @@
 import { Random } from '@woowacourse/mission-utils';
 
 class Car {
-  #MINIMUM_MOVE_VALUE = 4;
+  _MINIMUM_MOVE_VALUE = 4;
   _position;
   /**
    * @param {string} carName - 차량의 이름을 나타내는 문자열
@@ -13,7 +13,7 @@ class Car {
 
   move() {
     const randomNumber = Random.pickNumberInRange(0, 9);
-    if (randomNumber >= this.#MINIMUM_MOVE_VALUE) {
+    if (randomNumber >= this._MINIMUM_MOVE_VALUE) {
       this._setPosition('-');
     }
   }
