@@ -18,15 +18,18 @@ const getCarsName = async () => {
   const cars = await Console.readLineAsync(GAME_MSG.GET_CARS_NAME);
   Console.print(`${GAME_MSG.GET_CARS_NAME}\n${cars}`);
   if (cars === "") {
-    throw new Error("[ERROR]");
+    throw new Error(ERROR_MSG.NO_INPUT);
   }
   const carNames = cars.split(",");
   if (new Set(carNames).size !== carNames.length) {
-    throw new Error("[ERROR]");
+    throw new Error(ERROR_MSG.CAR_NAME_IS_DUPLICATION);
   }
   for (let i = 0; i < carNames.length; i++) {
     if (carNames[i].length > 5) {
       throw new Error(ERROR_MSG.CAR_NAME_OVER_LENGTH);
+    }
+    if (carNames[i] === "") {
+      throw new Error(ERROR_MSG.NO_CAR_NAME);
     }
   }
   for (let i = 0; i < carNames.length; i++) {
@@ -41,6 +44,9 @@ const getCarsName = async () => {
 const getTryTimes = async () => {
   const tryTimes = await Console.readLineAsync(GAME_MSG.GET_TRY_TIMES);
   Console.print(`${GAME_MSG.GET_TRY_TIMES}\n${tryTimes}`);
+  if (tryTimes === "") {
+    throw new Error(ERROR_MSG.NO_INPUT);
+  }
   if (isNaN(tryTimes)) {
     throw new Error(ERROR_MSG.TRY_TIMES_NUMBER);
   }
@@ -49,7 +55,7 @@ const getTryTimes = async () => {
 
 // 실행 결과 출력
 const printExecutionResult = (carNames, tryTimes) => {
-  Console.print(`${GAME_MSG.EXECUTION_RESULT}`);
+  Console.print(GAME_MSG.EXECUTION_RESULT);
   while (tryTimes > 0) {
     getExecution(carNames);
     Console.print(`${carNames.join("\n")}\n`);
