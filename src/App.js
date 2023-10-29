@@ -17,18 +17,25 @@ class App {
       car[element] = '';
     });
 
-    function goStop(value) {
-      for (const [key, val] of Object.entries(car)) {
+    function goStop() {
+      for (const key of Object.keys(car)) {
+        const value = Random.pickNumberInRange(0, 9);
         if (value >= 4) {
           car[key] += '-';
         }
       }
     }
+
+    function carPrint() {
+      for (const [key, value] of Object.entries(car)) {
+        Console.print(`${key} : ${value}`);
+      }
+      Console.print('');
+    }
     function carValue() {
       for (let index = 0; index < numInput; index++) {
-        const value = Random.pickNumberInRange(0, 9);
-        // Console.print(value);
-        goStop(value);
+        goStop();
+        carPrint();
       }
     }
 
