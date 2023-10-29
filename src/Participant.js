@@ -1,4 +1,5 @@
 import Util from './Util.js';
+import { MESSAGE } from './constant.js';
 
 class Participant {
   constructor(name) {
@@ -8,7 +9,7 @@ class Participant {
 
   moveOrNot() {
     if (Util.getRandomBoolean()) {
-      this.progress += '-';
+      this.progress += MESSAGE.progressIcon;
     }
   }
 }

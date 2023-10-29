@@ -1,6 +1,7 @@
 import Util from './Util.js';
 import Input from './Input.js';
 import Output from './Output.js';
+import { MESSAGE } from './constant.js';
 
 class RacingGame {
   constructor() {
@@ -15,7 +16,9 @@ class RacingGame {
   }
 
   gameStart() {
-    Array.from({ length: this.repeatNumber }).forEach(() => this.printEachProgress());
+    Array.from({ length: this.repeatNumber }).forEach(() =>
+      this.printEachProgress(),
+    );
 
     this.printWinner();
   }
@@ -31,7 +34,7 @@ class RacingGame {
   }
 
   printWinner() {
-    const winner = this.getWinner(this.joinList).join(', ');
+    const winner = this.getWinner(this.joinList).join(MESSAGE.winnerDivider);
     Output.printWinner(winner);
   }
 

@@ -1,6 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
 import Participant from './Participant.js';
 import Validate from './Validate.js';
+import { PROMPT } from './constant.js';
 
 class Input {
   /**
@@ -8,7 +9,7 @@ class Input {
    * @returns {Participant[]}
    */
   static async getJoinList() {
-    const joinString = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n');
+    const joinString = await Console.readLineAsync(PROMPT.joinList);
     const joinList = joinString.split(',');
     joinList.forEach((joinItem) => Validate.checkJoinItem(joinItem));
 
@@ -20,7 +21,7 @@ class Input {
    * @returns {string}
    */
   static async getRepeatNumber() {
-    const repeatNumber = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    const repeatNumber = await Console.readLineAsync(PROMPT.repeatNumber);
     Validate.checkRepeatNumber(repeatNumber);
 
     return repeatNumber;
