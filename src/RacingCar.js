@@ -53,7 +53,7 @@ class RacingCar {
 
       randomNumber >= 4 ? playersResult[player].push("-") : "";
 
-      Console.print(`${player} : ${playersResult[player].join("")} ${i === players.length - 1 ? "\n" : ""}`);
+      Console.print(`${player} : ${playersResult[player].join("")}${i === players.length - 1 ? "\n" : ""}`);
     });
   }
 }
