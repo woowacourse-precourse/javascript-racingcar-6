@@ -1,3 +1,5 @@
+import { MissionUtils } from "@woowacourse/mission-utils";
+
 class App {
   async play() {
     const MAX_CAR_NAME_LENGTH = 5;
@@ -28,6 +30,7 @@ class App {
       MissionUtils.Console.print(race_str.join('\n'));
     }
 
+    print_winners();
 
     function go_randomly(scores){
       let random_number;
@@ -37,6 +40,15 @@ class App {
         if (random_number>3){ scores[i]=scores[i]+1; }
       }
       return scores;
+    }
+
+    function print_winners(){
+      const max=Math.max(...scores);
+      let winners=[];
+      scores.map((score, index)=>{
+        if(score>=max){winners.push(runners[index]);}
+      })
+      MissionUtils.Console.print(`최종 우승자 : ${winners.join()}`);
     }
   }
 }
