@@ -6,7 +6,7 @@ const invalidCarName = carList => {
 
   carList.forEach(car => {
     if (car.length > 5) throw Error(ERROR_MESSAGE.carName.tooLong);
-    if (car === '' || car === ' ') throw Error(ERROR_MESSAGE.carName.noInput);
+    if (car === '') throw Error(ERROR_MESSAGE.carName.noname);
   });
 
   if (carList.length > new Set(carList).length)
