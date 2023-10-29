@@ -14,6 +14,8 @@ class App {
   async play() {
     const raceEntry = await this.getPlayerCarsInput();
     this.createPlayerData(raceEntry);
+    const tryNumber = await this.getPlayerTryNumberInput();
+    this.startRace(tryNumber);
   }
 
   async getPlayerCarsInput() {
@@ -47,8 +49,8 @@ class App {
     return pickedNumber >= 4;
   }
 
-  addCarMoveProgressBar(playerData) {
-    playerData.trackLocation.concat(RACE.PROGRESS_BAR);
+  addCarMoveProgressBar(player) {
+    player.trackLocation = player.trackLocation.concat(RACE.PROGRESS_BAR);
   }
 
   checkWinners() {
@@ -60,6 +62,13 @@ class App {
         player => player.trackLocation.length === FARTHEST_TRACK_LOCATION,
       ),
     );
+  }
+
+  startRace(tryNumber) {
+    Console.print(RACE.START);
+    for (let i = 0; i < tryNumber; i++) {
+      this.proceedRaceTurn();
+    }
   }
 }
 
