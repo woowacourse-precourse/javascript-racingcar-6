@@ -4,8 +4,8 @@ import Car from "./Car.js";
 
 const CarRacing = {
   async playCarRacing() {
-    const carNameList = await Console.readLineAsync(
-      IN_GAME_MESSAGE.getCarName
+    const carNameList = (
+      await Console.readLineAsync(IN_GAME_MESSAGE.getCarName)
     ).split(",");
     const tryCount = await Console.readLineAsync(IN_GAME_MESSAGE.getTryCount);
     const carMoveForwardList = new Array(carNameList.length).fill(0);
@@ -15,6 +15,7 @@ const CarRacing = {
 
       this.showTryResult(carNameList, carMovesList);
       this.countMoveForward(carMoveForwardList, carMovesList);
+      this.getWinner(carMoveForwardList);
     }
   },
 
@@ -31,6 +32,19 @@ const CarRacing = {
       }
       return forward;
     });
+  },
+
+  getWinner(carNameList, carMoveForwardList) {
+    const winnerList = [];
+    const maxMoveForwardCount = Math.max(...carMoveForwardList);
+
+    carMoveForwardList.forEach((forward, index) => {
+      if (forward === maxMoveForwardCount) {
+        winnerList.push(carNameList[index]);
+      }
+    });
+
+    return winnerList;
   },
 };
 
