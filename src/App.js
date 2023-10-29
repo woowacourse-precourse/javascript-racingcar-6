@@ -1,4 +1,5 @@
 import RacingGame from './RacingGame.js';
+import GameUtlis from './utils/GameUtils.js';
 import InputManager from './utils/InputManager.js';
 
 class App {
@@ -8,7 +9,8 @@ class App {
     const cars = await InputManager.inputRacingCarNames();
     racingGame.generateRacingCars(cars);
 
-    await InputManager.inputGameAttemptNumber();
+    const attemptNumber = await InputManager.inputGameAttemptNumber();
+    GameUtlis.repeatRacing(attemptNumber, racingGame);
   }
 }
 
