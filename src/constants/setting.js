@@ -3,4 +3,9 @@ const CAR_NAME_LENGTH = Object.freeze({
   MAX: 5,
 });
 
-export { CAR_NAME_LENGTH };
+const RANDOM_NUMBER_RANGE = Object.freeze({
+  MIN: 1,
+  MAX: 9,
+});
+
+export { CAR_NAME_LENGTH, RANDOM_NUMBER_RANGE };
