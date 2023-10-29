@@ -88,6 +88,11 @@ class RacingCarGame {
 
     return this.#cars.filter((car) => car.getStep() === maxStep);
   }
+
+  #displayResult(winners) {
+    const winnerNames = winners.map((winner) => winner.getName()).join(', ');
+    IOManager.output(`최종 우승자 : ${winnerNames}`);
+  }
 }
 
 export default RacingCarGame;
