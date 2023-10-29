@@ -15,7 +15,7 @@ describe('Validator Test', () => {
     const cars = 'pobi,pobi,ukgi';
     expect(() => {
       isValidateCarName(cars);
-    }).toThrow('[ERROR]');
+    }).toThrow(ERROR_MESSAGE.duplicatedCarName);
   });
 
   test.each(['', ' ', '1f'])(

@@ -11,6 +11,9 @@ function isValidateCarName(answer) {
   ) {
     throw new Error(ERROR_MESSAGE.carName);
   }
+  if (carName.split(',').length !== new Set(carName.split(',')).size) {
+    throw new Error(ERROR_MESSAGE.duplicatedCarName);
+  }
   return true;
 }
 
