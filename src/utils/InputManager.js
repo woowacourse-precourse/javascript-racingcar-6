@@ -16,6 +16,11 @@ class InputManager {
     return cars;
   }
 
+  static async inputGameAttemptNumber() {
+    const input = await ConsoleInput.input(MESSAGE.INPUT_GAME_ATTEMPT_NUMBER);
+    return input;
+  }
+
   static validateCarName(cars) {
     InputManager.#validateNotMoreThanFiveChar(cars);
     InputManager.#validateNotLessThanOneChar(cars);

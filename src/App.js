@@ -7,6 +7,8 @@ class App {
     racingGame.start();
     const cars = await InputManager.inputRacingCarNames();
     racingGame.generateRacingCars(cars);
+
+    await InputManager.inputGameAttemptNumber();
   }
 }
 
