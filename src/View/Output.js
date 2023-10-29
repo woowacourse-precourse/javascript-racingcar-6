@@ -1,4 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
+import { OUTPUT_MESSAGE } from '../constants/messages.js';
 
 export default class Output {
   static printTotalResult(totalResult) {
@@ -6,6 +7,6 @@ export default class Output {
   }
 
   static printWinners(winners) {
-    Console.print(`최종 우승자 : ${winners}`);
+    Console.print(`${OUTPUT_MESSAGE.winner}${winners}`);
   }
 }

@@ -1,5 +1,13 @@
 import { Random } from '@woowacourse/mission-utils';
+import {
+  MAX_RANGE_NUMBER,
+  MIN_MOVE_NUMBER,
+  MIN_RANGE_NUMBER,
+} from '../constants/conditions.js';
 
 export default function isMove() {
-  return Random.pickNumberInRange(0, 9) >= 4;
+  return (
+    Random.pickNumberInRange(MIN_RANGE_NUMBER, MAX_RANGE_NUMBER) >=
+    MIN_MOVE_NUMBER
+  );
 }

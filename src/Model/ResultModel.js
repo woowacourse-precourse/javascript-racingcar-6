@@ -1,3 +1,5 @@
+import { ONE, SPACE, STICK, ZERO } from '../constants/constants.js';
+
 export default class ResultModel {
   #result;
 
@@ -21,20 +23,20 @@ export default class ResultModel {
     const totalResult = [];
     this.#result.forEach((attempResult) => {
       attempResult.forEach(([carName, moveCount]) => {
-        totalResult.push(`${carName} : ${this.#makeStick(moveCount)}\n`);
+        totalResult.push(`${carName} : ${this.#makeStick(moveCount)}${SPACE}`);
       });
-      totalResult.push('\n');
+      totalResult.push(SPACE);
     });
     return totalResult.join('');
   }
 
   #makeStick(moveCount) {
     let count = moveCount;
-    let stick = '';
-    while (count !== 0) {
-      stick += '-';
-      count -= 1;
+    let sticks = STICK.newSticks;
+    while (count !== ZERO) {
+      sticks += STICK.oneStick;
+      count -= ONE;
     }
-    return stick;
+    return sticks;
   }
 }
