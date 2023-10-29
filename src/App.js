@@ -1,11 +1,9 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import { carGenerate } from "./car.js";
+import { playRacing } from "./racingGame.js";
 
 class App {
   async start() {
-    const carsList = await carGenerate();
-    console.log(carsList);
-    carGenerate();
+    await playRacing();
   }
 
   async play() {

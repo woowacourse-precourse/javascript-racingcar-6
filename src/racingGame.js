@@ -17,7 +17,7 @@ export async function generateCars() {
   return randomCarsList;
 }
 
-async function checkRandomNum(carList) {
+export async function checkRandomNum(carList) {
   return carList.map((car) => {
     const randomNum = MissionUtils.Random.pickNumberInRange(0, 9);
     if (randomNum >= 4) {
@@ -27,16 +27,14 @@ async function checkRandomNum(carList) {
   });
 }
 
-async function playRacing() {
+export async function playRacing() {
   const round = await userInputRound();
   let cars = await generateCars();
   for (let i = 0; i < round; i++) {
     cars = await checkRandomNum(cars);
     cars.forEach((car) => {
-      console.log(`${car.carName} : ${car.carDistance}`);
+      MissionUtils.Console.print(`${car.carName} : ${car.carDistance}`);
     });
-    console.log();
+    MissionUtils.Console.print();
   }
 }
-
-playRacing();
