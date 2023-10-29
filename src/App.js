@@ -1,15 +1,15 @@
 import { Console } from "@woowacourse/mission-utils";
 import Car from "./Car";
 import {
-  GetCarNameMessage,
-  GetLoopNumberMessage,
-  LineBreakMessage,
-  WinnerMessage,
+  getCarNameMessage,
+  getLoopNumberMessage,
+  lineBreakMessage,
+  winnerMessage,
 } from "./Messages/Message";
 import {
-  CAR_NAME_DUPLICATE_ERROR,
-  CAR_NAME_LENGTH_ERROR,
-  LOOP_NUMBER_TYPE_ERROR,
+  carNameLengthError,
+  carNameDuplicateError,
+  loopNumberTypeError,
 } from "./Messages/Error";
 
 class App {
@@ -21,15 +21,15 @@ class App {
 
   checkValidName(name) {
     if (name.length === 0 || name.length > 5) {
-      CAR_NAME_LENGTH_ERROR();
+      carNameLengthError();
     }
     if (this.carNames.includes(name)) {
-      CAR_NAME_DUPLICATE_ERROR();
+      carNameDuplicateError();
     }
   }
 
   async getCar() {
-    GetCarNameMessage();
+    getCarNameMessage();
     const inputCarName = await Console.readLineAsync().then((res) =>
       res.split(",")
     );
@@ -43,12 +43,12 @@ class App {
 
   checkValidType(inputNumber) {
     if (Number.isNaN(+inputNumber)) {
-      LOOP_NUMBER_TYPE_ERROR();
+      loopNumberTypeError();
     }
   }
 
   async getLoopNumber() {
-    GetLoopNumberMessage();
+    getLoopNumberMessage();
     const inputNumber = await Console.readLineAsync();
     this.checkValidType(inputNumber);
     this.loopNumber = inputNumber;
@@ -71,16 +71,16 @@ class App {
         winnerArray.push(car.name);
       }
     });
-    WinnerMessage(winnerArray.join(", "));
+    winnerMessage(winnerArray.join(", "));
   }
 
   async play() {
     await this.getCar();
     await this.getLoopNumber();
-    LineBreakMessage();
+    lineBreakMessage();
     for (let loop = 0; loop < this.loopNumber; loop += 1) {
       this.processRound();
-      LineBreakMessage();
+      lineBreakMessage();
     }
     this.printWinner();
   }

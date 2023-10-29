@@ -1,5 +1,5 @@
 import { Random } from "@woowacourse/mission-utils";
-import { AfterMoveMessage } from "./Messages/Message";
+import { afterMoveMessage } from "./Messages/Message";
 
 class Car {
   constructor(name) {
@@ -14,7 +14,7 @@ class Car {
       this.countMove += 1;
       this.showMove += "-";
     }
-    AfterMoveMessage(this.name, this.showMove);
+    afterMoveMessage(this.name, this.showMove);
   }
 }
 
