@@ -22,13 +22,28 @@ class Race {
     });
   }
 
+  determineWinners() {
+    const MAX_POSITION = Math.max(...this.POSITIONS);
+    const WINNERS = this.CAR_NAMES.filter(
+      (_, i) => this.POSITIONS[i] === MAX_POSITION
+    );
+
+    return WINNERS;
+  }
+
   run() {
     Console.print("실행 결과");
+
     for (let i = 0; i < this.ROUNDS; i++) {
       this.moveCars();
       this.raceResults();
       Console.print(""); // 라운드 구분을 위한 빈 줄
     }
+
+    const WINNERS = this.determineWinners();
+    const WINNER_NAMES = WINNERS.join(", ");
+
+    Console.print(`최종 우승자: ${WINNER_NAMES}`);
   }
 }
 
