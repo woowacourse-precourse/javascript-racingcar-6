@@ -17,6 +17,9 @@ class App {
       if (name.length > 5) {
         throw new Error("[ERROR] 이름이 5자를 초과했습니다.")
       }
+      if (this.cars.find((car) => car.isSameName(name)) !== undefined) {
+        throw new Error("[ERROR] 중복된 이름이 존재합니다.")
+      }
 
       this.cars.push(new Car(name));
     })

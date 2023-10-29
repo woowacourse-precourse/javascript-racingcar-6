@@ -18,6 +18,10 @@ class Car {
         return maxCount === this.forwardCount;
     }
 
+    isSameName(name) {
+        return this.name === name;
+    }
+
     get getName() {
         return this.name;
     }
