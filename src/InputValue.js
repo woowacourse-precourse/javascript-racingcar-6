@@ -16,8 +16,8 @@ class InputValue {
   static async moveCount() {
     try {
       const input = await Console.readLineAsync(MESSAGE.INPUT_MOVE_COUNT);
-      const count = Validation.checkMoveCount(input);
-      return count;
+      Validation.checkMoveCount(input);
+      return Number(input);
     } catch (error) {
       Console.print(`[ERROR] ${error.message}`);
     }
