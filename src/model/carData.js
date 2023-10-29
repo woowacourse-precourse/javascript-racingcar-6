@@ -1,21 +1,21 @@
+import { Random } from "@woowacourse/mission-utils";
+
 class CarData {
   #maxMove;
-  #carList = [];
+  #carList;
 
-  constructor(carList) {
+  constructor(cars) {
     this.#maxMove = 0;
 
-    // carList.forEach((car) => {
-    //   console.log(car);
-    //   this.#carList[car] = 0;
-    // });
-    this.#carList = carList.map((car) => {
-      const tempObj = {};
-      tempObj[car] = 0;
-      return tempObj;
-    });
+    this.#carList = cars.map((car) => ({ name: car, move: 0 }));
     console.log(this.#carList);
   }
+
+  // moveCar(moveCount) {
+  // for (let i = 0; i < moveCount; i++) {
+  //   return;
+  // }
+  // }
 }
 
 export default CarData;

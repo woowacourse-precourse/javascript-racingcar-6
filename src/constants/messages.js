@@ -4,6 +4,8 @@ export const ERROR_MSG = {
   DUPLICATED_CAR_NAME: "[ERROR] 자동차 이름은 중복될 수 없습니다.",
   INVALID_CAR_NAME: "[ERROR] 자동차 이름이 잘못된 형식입니다.",
   INVALID_MOVE_COUNT: "[ERROR] 시도할 횟수가 잘못된 형식입니다.",
+  TOO_BIG_MOVE_COUNT:
+    "[ERROR] 가능한 이동 횟수 범위는 1 ~ 2,147,483,647 입니다.",
 };
 
 export const INPUT_MSG = {
