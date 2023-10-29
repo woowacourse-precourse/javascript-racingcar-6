@@ -40,11 +40,24 @@ class App {
       if (number >= 4) forwardList[carIdx]++;
     }
   }
-  async printExecResult(carList, forwardList){
-    for (let carIdx = 0; carIdx < carList.length; carIdx++){
-      MissionUtils.Console.print(`${carList[carIdx]} : ${"-".repeat(forwardList[carIdx])}`);
+  async printExecResult(carList, forwardList) {
+    for (let carIdx = 0; carIdx < carList.length; carIdx++) {
+      MissionUtils.Console.print(
+        `${carList[carIdx]} : ${"-".repeat(forwardList[carIdx])}`
+      );
     }
     MissionUtils.Console.print("");
+  }
+
+  async printWinner(carList, forwardList) {
+    const MAXCOUNT = Math.max(...forwardList);
+    let winnerList = "";
+    for (let carIdx = 0; carIdx < carList.length; carIdx++) {
+      if (forwardList[carIdx] == MAXCOUNT) {
+        winnerList += carList[carIdx] + ",";
+      }
+    }
+    MissionUtils.Console.print(`최종 우승자 : ${winnerList.slice(0, -1)}`);
   }
 
   async play() {
@@ -60,6 +73,8 @@ class App {
       // console.log(forwardList);
       this.printExecResult(carList, forwardList);
     }
+
+    this.printWinner(carList, forwardList);
   }
 }
 
