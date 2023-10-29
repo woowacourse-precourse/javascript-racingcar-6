@@ -7,7 +7,8 @@ export const TEXT = {
 };
 
 export const ERROR = {
-  ERROR_LENGTH: '[ERROR] 5자리 이하의 이름을 입력해주세요.',
+  ERROR_SHORT_LENGTH: '[ERROR] 2개 이상의 이름을 입력해주세요.',
+  ERROR_LONG_LENGTH: '[ERROR] 5자리 이하의 이름을 입력해주세요.',
   ERROR_TYPE: '[ERROR] 잘못된 값을 입력하였습니다.',
   ERROR_SPACE: '[ERROR] 공백을 제거하여 입력해주세요.',
 };

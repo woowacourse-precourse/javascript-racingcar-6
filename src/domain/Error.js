@@ -2,9 +2,12 @@ import { ERROR } from '../constants/constant.js';
 
 export const userInputCarNameLengthError = (carNamesArray) => {
   const regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g;
+  if (carNamesArray.length <= 1) {
+    throw new Error(ERROR.ERROR_SHORT_LENGTH);
+  }
   for (let i = 0; i < carNamesArray.length; i++) {
     if (carNamesArray[i].length > 5) {
-      throw new Error(ERROR.ERROR_LENGTH);
+      throw new Error(ERROR.ERROR_LONG_LENGTH);
     }
     if (regExp.test(carNamesArray[i])) {
       throw new Error(ERROR.ERROR_TYPE);
