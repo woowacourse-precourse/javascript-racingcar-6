@@ -30,14 +30,21 @@ export default class App {
 
     this.#racingGame = new RacingGame(carArray, tryRound);
 
-    await this.racingStart();
+    this.racingStart();
   }
 
-  async racingStart() {
+  racingStart() {
     while (!this.#racingGame.isFinish()) {
       this.#racingGame.roundStart();
       const roundResult = this.#racingGame.getRoundResult();
       this.#outputView.printRoundResult(roundResult);
     }
+    this.checkWinner();
+  }
+
+  checkWinner() {
+    const winners = this.#racingGame.getWinners();
+
+    this.#outputView.printWinners(winners);
   }
 }
