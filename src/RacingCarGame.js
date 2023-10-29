@@ -8,10 +8,10 @@ class RacingCarGame {
 
   async startGame() {
     const carNameList = await this.#getCarNamesInput();
-    const attemptsCount = await this.#getAttemptsInput();
+    const attemptCount = await this.#getAttemptInput();
 
     this.#racingCars = new RacingCars(carNameList);
-    this.#repeatMovement(attemptsCount);
+    this.#repeatMovement(attemptCount);
 
     Console.print(this.#makeFinalWinnerString());
   }
@@ -43,15 +43,15 @@ class RacingCarGame {
     Validator.checkIsLongerThanMaxLen(carNameList);
   }
 
-  async #getAttemptsInput() {
+  async #getAttemptInput() {
     const attempt = await Console.readLineAsync(MESSAGE.enterNumbersOfAttempts);
     const numberAttempt = Number(attempt);
-    this.#validateAttemptsInput(numberAttempt);
+    this.#validateAttemptInput(numberAttempt);
 
     return numberAttempt;
   }
 
-  #validateAttemptsInput(attempt) {
+  #validateAttemptInput(attempt) {
     Validator.checkIsNotNumber(attempt);
     Validator.checkIsNotMoving(attempt);
   }
