@@ -1,4 +1,4 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Console, Random } from "@woowacourse/mission-utils";
 import Car from "./Car.js";
 
 class App {
@@ -8,6 +8,29 @@ class App {
     let moveCount = await this.getMoveCount();
 
     this.startRacing(carObjects, moveCount);
+  }
+
+  startRacing(cars, moveCount) {
+    if (moveCount > 0) {
+      cars.forEach((car) => {
+        this.racing(car);
+        this.printResult(car);
+      });
+
+      this.startRacing(cars, moveCount - 1);
+    }
+  }
+
+  racing(car) {
+    const number = Random.pickNumberInRange(0, 9);
+    if (number > 4) {
+      car.move();
+    }
+  }
+
+  printResult(car) {
+    Console.print(car.name + ":");
+    Console.print(car.position);
   }
 
   async getCarName() {
@@ -33,7 +56,14 @@ class App {
   }
 
   async getMoveCount() {
-    return Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+    const moveCount = await Console.readLineAsync(
+      "시도할 횟수는 몇 회인가요?\n"
+    );
+    if (!isNaN(moveCount)) {
+      return moveCount;
+    } else {
+      throw new Error("[ERROR] 숫자를 입력 해야돼");
+    }
   }
 }
 
