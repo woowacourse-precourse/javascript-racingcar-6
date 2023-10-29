@@ -1,5 +1,7 @@
 import { Console } from "@woowacourse/mission-utils";
 import { MESSAGE } from "./message.js";
+import { realNumber, try_racing } from "./computer.js";
+
 
 class App {
   async play() {
@@ -17,11 +19,18 @@ class App {
     REGEX.test(player) !== true &&
     player_array.length <= 1) {throw new Error(MESSAGE.ERROR)};  
 
-    const play_number = await Console.readLineAsync(MESSAGE.TRY_NUMBER);
+    const try_number = await Console.readLineAsync(MESSAGE.TRY_NUMBER);
+    console.log(typeof(try_number));
+    Console.print(' ');
 
-    
+Console.print(MESSAGE.ACTION_RESULT);
+
+
+
   }
+  
 }
-const app = new App(); 
-app.play();
-// export default App;
+
+// const app = new App(); 
+// app.play();
+export default App;
