@@ -42,4 +42,18 @@ describe('✨ [GameController] 클래스 메서드 테스트 ', () => {
       expectedPlayers,
     );
   });
+
+  test('[getPlayers] 플레이어의 이름을 쉼표(,)로 구분하고 배열로 반환한다.', async () => {
+    const mockNames = 'Reason,LeeYu';
+    const expectedPlayers = ['Reason', 'LeeYu'];
+
+    mockView.getUserInputAsync.mockResolvedValueOnce(mockNames);
+    controller.splitPlayerNames = jest
+      .fn()
+      .mockReturnValueOnce(expectedPlayers);
+
+    const result = await controller.getPlayers();
+
+    expect(result).toEqual(expectedPlayers);
+  });
 });
