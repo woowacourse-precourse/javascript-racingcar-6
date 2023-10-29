@@ -15,7 +15,7 @@ class CarRaceController {
     const carList = carNames.map(carName => new Car(carName));
 
     this.raceManager = new RaceManager(carList);
-    this.raceManager.setMoveCount(moveCount);
+    this.raceManager._setMoveCount(moveCount);
   }
 
   palyRace() {

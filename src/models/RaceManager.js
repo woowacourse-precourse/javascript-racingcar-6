@@ -1,7 +1,7 @@
 import { calculateLongestDistance } from './../utils/calculateLongestDistance.js';
 
 class RaceManager {
-  #gameWinner;
+  _gameWinner;
 
   /**
    * @constructor
@@ -10,7 +10,7 @@ class RaceManager {
   constructor(carModels) {
     this.carModels = carModels;
     this.moveCount = 0;
-    this.#gameWinner = '';
+    this._gameWinner = '';
   }
 
   race() {
@@ -21,7 +21,7 @@ class RaceManager {
    * 이동 횟수를 지정된 값으로 설정
    * @param {number} moveCount - 설정할 새로운 이동 횟수
    */
-  setMoveCount(moveCount) {
+  _setMoveCount(moveCount) {
     this.moveCount = moveCount;
   }
 
@@ -38,11 +38,11 @@ class RaceManager {
       carModel => carModel.getPosition().length === maxPosition,
     );
 
-    this.#gameWinner = winners.map(winner => winner.carName).join(', ');
+    this._gameWinner = winners.map(winner => winner.carName).join(', ');
   }
 
   getGameWinner() {
-    return this.#gameWinner;
+    return this._gameWinner;
   }
 }
 
