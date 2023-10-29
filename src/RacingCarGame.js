@@ -11,12 +11,13 @@ class RacingCarGame {
 
   async setupGame() {
     const user = new User();
-    await user.inputCarsName();
+    await user.inputCarsNameAndAttempts();
 
     user.getCarsName().forEach((carName) => {
       this.#scoreBoard[carName] = 0;
     });
-    Console.print(this.#scoreBoard);
+
+    const attempts = user.getAttempts();
   }
 }
 
