@@ -16,6 +16,7 @@ class App {
     this.createPlayerData(raceEntry);
     const tryNumber = await this.getPlayerTryNumberInput();
     this.startRace(tryNumber);
+    this.announceWinners();
   }
 
   async getPlayerCarsInput() {
@@ -64,18 +65,21 @@ class App {
         )
         .map(player => player.playerName),
     );
+  }
+
+  announceWinners() {
     Console.print(RACE.WINNERS + this.winners.join(', '));
   }
 
   startRace(tryNumber) {
     Console.print(RACE.START);
     for (let i = 0; i < tryNumber; i++) {
-      this.proceedRaceTurn();
+      this.proceedEachRaceTurn();
     }
     this.findWinners();
   }
 
-  proceedRaceTurn() {
+  proceedEachRaceTurn() {
     this.playersData.forEach(player => {
       if (this.shouldMoveForward()) {
         this.moveCarForward(player);
