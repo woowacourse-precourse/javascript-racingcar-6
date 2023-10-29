@@ -29,10 +29,10 @@ async function checkRandomNum(carList) {
 
 async function playRacing() {
   const round = await userInputRound();
-  let carList = await generateCars();
+  let cars = await generateCars();
   for (let i = 0; i < round; i++) {
-    const roundResult = await checkRandomNum(carList);
-    roundResult.forEach((car) => {
+    cars = await checkRandomNum(cars);
+    cars.forEach((car) => {
       console.log(`${car.carName} : ${car.carDistance}`);
     });
     console.log();
