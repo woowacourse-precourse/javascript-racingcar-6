@@ -16,7 +16,7 @@ export const userInputTryNumberError = (tryNumber) => {
   if (tryNumber <= 0) {
     throw new Error(ERROR.ERROR_TYPE);
   }
-  if (isNaN(tryNumber)) {
+  if (tryNumber % 1 !== 0 || isNaN(tryNumber)) {
     throw new Error(ERROR.ERROR_TYPE);
   }
 };
