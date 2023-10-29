@@ -20,18 +20,33 @@ const checkNameLength = (userNames) => {
   })
 }
 
+const stringToNaturalNumber = (userInputNumber) => {
+  const number = Number(userInputNumber);
+
+  if(isNaN(number)) throw new Error('[ERROR] : 입력이 숫자가 아닙니다.');
+
+  if(!Number.isInteger(number)) throw new Error('[ERROR] : 입력이 자연수가 아닙니다.' );
+
+  if(number <= 0) throw new Error('[ERROR] : 입력이 자연수가 아닙니다.');
+
+  return number;
+}
+
 
 
 class App {
   async play() {
     try {
-      const userInput = await getUserInput('Enter your Input : ');
-      const userNames = await splitUserInputByComma(userInput);
+      const userInputNames = await getUserInput('Enter your Input : ');
+      const userNames = await splitUserInputByComma(userInputNames);
 
       checkNameLength(userNames);
 
-      MissionUtils.Console.print(userNames);
+      const userInputgameRep = await getUserInput('시도할 횟수는 몇 회인가요?');
 
+      const gameRep = stringToNaturalNumber(userInputgameRep);
+
+      MissionUtils.Console.print(gameRep);
 
     } catch(err) {
       console.log(err.msg);
