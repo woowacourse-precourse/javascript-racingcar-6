@@ -1,5 +1,5 @@
 export const ERROR = {
-  NUMBER: "[ERROR] 입력값은 숫자여야 합니다.",
+  NUMBER: "[ERROR] 입력값은 정수(숫자)여야 합니다.",
   INCLUDE_0: "[ERROR] 1회 이상이어야 합니다.",
   LENGTH: "[ERROR] 이름은 5자 이하여야 합니다.",
 };
