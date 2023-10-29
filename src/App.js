@@ -1,5 +1,5 @@
-import { MissionUtils } from '@woowacourse/mission-utils';
-import { startGame } from './playing/startGame';
+const MissionUtils = require('@woowacourse/mission-utils');
+const { startGame } = require('./playing/startGame');
 
 class App {
   async play() {
