@@ -2,7 +2,7 @@
 
 ## 기능 목록
 
-- [ ] 0에서 9까지의 수를 생성한다. `NumberGenerator#createRandomNumbers()`
+- [x] 0에서 9까지의 수를 생성한다. `NumberGenerator#createRandomNumbers()`
 - [ ] n대의 자동차가 있다. `Car`
   - [x] 자동차는 전진 또는 멈출 수 있다. => 상태를 가지고 있다. `level`, `win` 등...
     - [x] 전달받은 랜덤 수를 기준으로 변화한다. => `setter` 필요?!
