@@ -2,7 +2,7 @@
 
 ## class IOManager
 
-- [ ] input // 게임 내 사용자 입력 함수
+- [x] input // 게임 내 사용자 입력 함수
 - [ ] output // 게임 내 디스플레이 함수
 
 ## class GameUtils
