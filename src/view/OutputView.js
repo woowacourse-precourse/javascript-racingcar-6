@@ -1,27 +1,47 @@
-import { MESSAGE } from "../utils/constants.js";
+import { MESSAGE, STATE_KEY } from "../utils/constants.js";
 import { printMessage } from "../utils/index.js";
 
 const { OUTPUT_RESULT, OUTPUT_WINNER } = MESSAGE;
 
 class OutputView {
-  printResultStatus(status) {
-    printMessage(OUTPUT_RESULT);
-
-    for (let i = 0; i < status.length; i++) {
-      const result = status[i];
-
-      const drivingMessages = this.generateResultMessage(result);
-
-      printMessage(`${drivingMessages.join("\n")}\n`);
-    }
+  constructor({ model }) {
+    this.model = model;
+    this.model.subscribe(STATE_KEY.GAME, this.print.bind(this));
   }
 
-  printWinner(winners) {
+  print() {
+    this.printStatus();
+    this.printWinner();
+  }
+
+  printStatus() {
+    const { currentTryCount, winners, cars } = this.model.get(STATE_KEY.GAME);
+
+    if (winners.length) {
+      return;
+    }
+
+    if (currentTryCount === 1) {
+      printMessage(OUTPUT_RESULT);
+    }
+
+    const drivingMessages = this.generateDrivingMessage(cars);
+
+    printMessage(`${drivingMessages.join("\n")}\n`);
+  }
+
+  printWinner() {
+    const { winners } = this.model.get(STATE_KEY.GAME);
+
+    if (!winners.length) {
+      return;
+    }
+
     printMessage(`${OUTPUT_WINNER}${winners.join(", ")}`);
   }
 
-  generateResultMessage(result) {
-    return result.map(({ name, distance }) => `${name} : ${"-".repeat(distance)}`);
+  generateDrivingMessage(cars) {
+    return cars.map(({ name, distance }) => `${name} : ${"-".repeat(distance)}`);
   }
 }
 
