@@ -1,6 +1,6 @@
-import { MissionUtils } from '@woowacourse/mission-utils';
-import { validateNames, validateParseNumber } from './checkList';
-import { runRace } from './runRace';
+const MissionUtils = require('@woowacourse/mission-utils');
+const { validateNames, validateParseNumber } = require('./checkList');
+const { runRace } = require('./runRace');
 
 
 const startGame = async () => {
