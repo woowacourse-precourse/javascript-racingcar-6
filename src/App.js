@@ -4,9 +4,11 @@ class App {
     this.carNameArr = [];
     this.dashSymbol = [];
     this.randomNumArr = [];
-    this.attemptCount = 0;
     this.dash = "-";
-    this.errorMessage = "[ERROR] 자동차 이름은 5자 이하로 입력해주세요.";
+    this.errorMessage = [
+      "[ERROR] 자동차 이름은 5자 이하로 입력해주세요.",
+      "[ERROR] 숫자가 잘못된 형식입니다.",
+    ];
   }
   async play() {
     Console.print(
@@ -33,7 +35,7 @@ class App {
   isValidCarNames() {
     for (let i = 0; i < this.carNameArr.length; i++) {
       if (this.carNameArr[i].length > 5) {
-        throw new Error(this.errorMessage);
+        throw new Error(this.errorMessage[0]);
       }
     }
   }
@@ -43,7 +45,7 @@ class App {
   }
   isValidAttemptCount(count) {
     if (isNaN(count)) {
-      throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
+      throw new Error(this.errorMessage[1]);
     }
   }
 
@@ -78,8 +80,8 @@ class App {
   }
 
   getMaxValue() {
-    let maxName = [this.carNameArr[0]];
-    let maxDash = this.dashSymbol[0].length;
+    const maxName = [this.carNameArr[0]];
+    const maxDash = this.dashSymbol[0].length;
     for (let i = 1; i < this.carNameArr.length; i++) {
       if (this.dashSymbol[i].length > maxDash) {
         maxName = [this.carNameArr[i]];
@@ -90,6 +92,7 @@ class App {
     }
     return maxName;
   }
+
   getFinalWinner(maxName) {
     const winners = maxName.join(", ");
     Console.print(`최종 우승자 : ${winners}`);
