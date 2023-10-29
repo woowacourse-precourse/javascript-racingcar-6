@@ -1,11 +1,11 @@
 import { Console } from "@woowacourse/mission-utils";
-import CarNameManager from "./utils/UserInputCarName";
+import UserInputCarName from "./utils/UserInputCarName";
 import { movingForwardCase } from "./utils/MovingForwardCase";
 import { FORWARD_DASH, WINNER, GAME_RESULT } from "./const/Messages";
 
 class App {
   constructor() {
-    this.carManager = new CarNameManager();
+    this.carManager = new UserInputCarName();
     this.carPositions = {};
   }
 
