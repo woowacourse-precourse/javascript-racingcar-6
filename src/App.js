@@ -9,6 +9,8 @@ class App {
 
   async play() {
     const carNames = await Console.readLineAsync(MESSAGE.CAR_NAME);
+    App.#validateCarRaceEntry(carNames);
+
     const carNameArray = carNames.split(',');
     App.#validateCarNameLength(carNameArray);
 
@@ -35,6 +37,12 @@ class App {
   #printWinners() {
     const winners = Refree.judge(this.#cars);
     Console.print(MESSAGE.WINNERS(winners));
+  }
+
+  static #validateCarRaceEntry(carNames) {
+    if (CONDITION.INVALID_CAR_RACE_ENTRY(carNames)) {
+      throw new Error(ERROR.CAR_RACE_ENTRY);
+    }
   }
 
   static #validateCarNameLength(carNameArray) {
