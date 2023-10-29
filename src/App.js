@@ -4,13 +4,10 @@ import { appErrorHandler } from './util/error/errorhandler.js';
 class App {
   async play() {
     try {
-      const game = await rootService();
-      return game;
+      await rootService();
     } catch (error) {
-      const ERROR = appErrorHandler(error);
-      return ERROR;
+      appErrorHandler(error);
     }
   }
 }
-
 export default App;
