@@ -1,24 +1,35 @@
-import { gameErrorhandler } from '../error/errorhandler.js';
+import { occuredErrorhandler } from '../error/errorhandler.js';
 
 export async function checkCarNameValid(input) {
   const primaryArray = input.split(',');
 
   try {
-    const lengthCheck = [...primaryArray].map((item) => item.length <= 5 && item.length > 0);
+    const tooLongNameCheck = [...primaryArray].map((item) => item.length <= 5);
+    const noNameCheck = [...primaryArray].map((item) => item.length !== 0);
     const duplicateCheck = new Set([...primaryArray]);
 
-    const isLenghtNotValid = lengthCheck.includes(false);
-    const isDuplicateNotValid = primaryArray.length !== duplicateCheck.size;
+    const isNameTooLong = tooLongNameCheck.includes(false);
+    const isNoName = noNameCheck.includes(false);
+    const isHasDuplicateName = primaryArray.length !== duplicateCheck.size;
 
-    const isNotValid = isLenghtNotValid || isDuplicateNotValid;
-
-    if (isNotValid) {
+    if (isNameTooLong) {
       const errorKey = 'tooLongRacerName';
       throw errorKey;
     }
+
+    if (isNoName) {
+      const errorKey = 'noRacerName';
+      throw errorKey;
+    }
+
+    if (isHasDuplicateName) {
+      const errorKey = 'hasDuplicateName';
+      throw errorKey;
+    }
+
     return primaryArray;
   } catch (error) {
-    const promise = gameErrorhandler(error);
+    const promise = occuredErrorhandler(error);
     return promise;
   }
 }
@@ -40,7 +51,7 @@ export async function checkRaceCountValid(input) {
     }
     return count;
   } catch (error) {
-    const promise = gameErrorhandler(error);
+    const promise = occuredErrorhandler(error);
     return promise;
   }
 }
