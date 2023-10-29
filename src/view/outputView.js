@@ -3,12 +3,13 @@ import generateRandomNumber from "../utils/generateRandomNumber";
 import findWinner from "../model/findWinner";
 
 const printResult = async (cars, trials) => {
-  Console.print("실행 결과");
   let map = new Map();
 
   for (let i = 0; i < cars.length; i++) {
     map.set(cars[i], 0);
   }
+
+  Console.print("실행 결과");
 
   const makingProgress = (index) => {
     const randomNumber = generateRandomNumber();
@@ -22,6 +23,7 @@ const printResult = async (cars, trials) => {
     for (let j = 0; j < cars.length; j++) {
       makingProgress(j);
     }
+    Console.print("\n");
   };
 
   for (let i = 0; i < trials; i++) {
