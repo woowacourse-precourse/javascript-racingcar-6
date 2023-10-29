@@ -3,7 +3,9 @@ import Validation from './Validation.js';
 import ErrorHandler from './ErrorHandler.js';
 
 class RacingGame {
-  statusMark = '-';
+  SETTINGS = {
+    gameStatusMark: '-',
+  };
 
   async getRacingCount() {
     const racingCount = await Console.readLineAsync(
@@ -25,7 +27,9 @@ class RacingGame {
 
   showGameStatus(carsArray) {
     carsArray.forEach((car) => {
-      Console.print(`${car.name} : ${this.statusMark.repeat(car.location)}`);
+      Console.print(
+        `${car.name} : ${this.SETTINGS.gameStatusMark.repeat(car.location)}`
+      );
     });
   }
 
