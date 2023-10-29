@@ -1,6 +1,8 @@
+import RACING_CAR_GAME from '../Constant/Constant.js';
+
 const ValidateGameNumber = (gameNumber) => {
   if (gameNumber <= 0 || !/^\d+$/.test(gameNumber)) {
-    throw '[ERROR] 게임 횟수는 0보다 큰 숫자를 입력하셔야 합니다.';
+    throw RACING_CAR_GAME.ERROR.GAME_NUMBER;
   }
 };
 

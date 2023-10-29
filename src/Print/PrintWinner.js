@@ -1,4 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
+import RACING_CAR_GAME from '../Constant/Constant.js';
 
 const PrintWinner = (racingCar) => {
   const RACING_CAR_NUMBER = [];
@@ -15,7 +16,7 @@ const PrintWinner = (racingCar) => {
     if (item[1].length === WINNER_NUMBER) WINNER.push(item[0]);
   });
 
-  MissionUtils.Console.print(`최종 우승자 : ${WINNER.join(', ')}`);
+  MissionUtils.Console.print(`${RACING_CAR_GAME.RESULT}${WINNER.join(', ')}`);
 };
 
 export default PrintWinner;
