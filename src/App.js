@@ -11,11 +11,11 @@ class App {
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
     );
 
-    CarNamesValidation(carNames);
+    validateCarNames(carNames);
   }
 }
 
-function CarNamesValidation(carNames) {
+function validateCarNames(carNames) {
   const carNamesArray = carNames.split(",");
 
   if (carNamesArray.length < 2) {
