@@ -31,3 +31,30 @@ describe('자동차 이름 입력', () => {
     },
   );
 });
+
+describe('시도할 횟수 입력', () => {
+  test('횟수를 성공적으로 반환', () => {
+    // given
+    const inputs = ['3', '5', '7'];
+    const outputs = [3, 5, 7];
+
+    // when
+    const { getNumberOfTimes } = Validation;
+
+    // then
+    outputs.forEach((output, idx) => {
+      expect(getNumberOfTimes(inputs[idx])).toBe(output);
+    });
+  });
+
+  test.each(['룰루', '0', '여섯'])('횟수에 대한 예외 처리', (input) => {
+    // when
+    const { getNumberOfTimes } = Validation;
+    function wrongInput() {
+      getNumberOfTimes(input);
+    }
+
+    // then
+    expect(wrongInput).toThrow('[ERROR]');
+  });
+});
