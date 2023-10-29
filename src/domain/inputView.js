@@ -4,6 +4,7 @@ import {
   userInputCarNameFormError,
   userInputCarNameLengthError,
   userInputTryNumberError,
+  userInputCarNameOverlapError,
 } from './Error.js';
 import { TEXT } from '../constants/constant.js';
 
@@ -13,6 +14,7 @@ export const getCarName = async () => {
   userInputCarNameFormError(CAR_NAMES);
   CAR_NAMES_ARRAY = stringToArray(CAR_NAMES);
   userInputCarNameLengthError(CAR_NAMES_ARRAY);
+  userInputCarNameOverlapError(CAR_NAMES_ARRAY);
   await getTryNumber(CAR_NAMES_ARRAY);
 };
 
