@@ -1,4 +1,5 @@
 import { CAR_ERROR_MESSAGE } from "../constants/error-message.js";
+import { CAR_NAME_LENGTH } from "../constants/setting.js";
 import checkSpace from "./common-validator.js";
 
 /**
@@ -7,7 +8,10 @@ import checkSpace from "./common-validator.js";
  * @throw 길이가 1~5자를 벗어난다면 에러를 던진다.
  */
 function checkLength(racingCarName) {
-  if (racingCarName.length < 1 || racingCarName.length > 5) {
+  if (
+    racingCarName.length < CAR_NAME_LENGTH.MIN ||
+    racingCarName.length > CAR_NAME_LENGTH.MAX
+  ) {
     throw new Error(CAR_ERROR_MESSAGE.LENGTH);
   }
 }

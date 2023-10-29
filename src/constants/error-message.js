@@ -1,5 +1,7 @@
+import { CAR_NAME_LENGTH } from "./setting.js";
+
 const CAR_ERROR_MESSAGE = Object.freeze({
-  LENGTH: "[ERROR] 자동차의 이름은 1자 이상 5자 이내로 구성되어야 합니다.",
+  LENGTH: `[ERROR] 자동차의 이름은 ${CAR_NAME_LENGTH.MIN}자 이상 ${CAR_NAME_LENGTH.MAX}자 이내로 구성되어야 합니다.`,
   DUPLICATION: "[ERROR] 중복된 자동차의 이름이 존재합니다.",
 });
 
