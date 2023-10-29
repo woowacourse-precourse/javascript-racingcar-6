@@ -1,3 +1,5 @@
+import { COMMAS } from './constants/constants';
+
 class Result {
   constructor(carArray) {
     this.max = 0;
@@ -6,9 +8,9 @@ class Result {
   }
 
   findWinners() {
-    this.cars.forEach(car => {
-      this.compareResult(car);
-    });
+    this.winners = this.cars.map(car => this.compareResult(car));
+
+    return this;
   }
 
   compareResult(car) {
@@ -22,6 +24,10 @@ class Result {
       this.max = finalResult.length;
       this.winners = [name];
     }
+  }
+
+  joinWinners() {
+    return this.winners.join(COMMAS.SYMBOL);
   }
 }
 

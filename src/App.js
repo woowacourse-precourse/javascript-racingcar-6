@@ -47,8 +47,9 @@ class App {
 
   selectWinner() {
     const result = new Result(this.carArray);
-    result.findWinners();
-    Print.getWinnersName(result.winners);
+    const winners = result.findWinners().joinWinners();
+
+    Print.getWinnersName(winners);
   }
 }
 
