@@ -5,7 +5,7 @@ class Car {
   }
 
   forwardCar() {
-    this.forwardCar += 1;
+    this.forwardCount += 1;
   }
 }
 
