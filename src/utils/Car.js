@@ -7,7 +7,7 @@ const Car = {
   },
 
   createCarMoves(length) {
-    const carMoves = new Array(length).map(() =>
+    const carMoves = Array.from({ length }, () =>
       Random.pickNumberInRange(0, 9)
     );
     return carMoves;
