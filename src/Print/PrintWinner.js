@@ -17,7 +17,7 @@ const PrintWinner = (racingCar) => {
   }
 
   MissionUtils.Console.print(
-    `${RACING_CAR_GAME.PRINT_WINNER}${WINNER.join(', ')}`
+    `${RACING_CAR_GAME.PRINT_WINNER} : ${WINNER.join(', ')}`
   );
 };
 
