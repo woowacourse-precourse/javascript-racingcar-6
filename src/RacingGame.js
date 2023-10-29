@@ -26,14 +26,6 @@ class RacingGame {
   startRacing(attemptNumber) {
     GameUtlis.repeatRacing(attemptNumber, this);
   }
-
-  tryOneAttempt() {
-    this.getRacingCars().map((racingCar) =>
-      GameUtlis.proceedAttemptByRacingCar(racingCar),
-    );
-
-    GameUtlis.proceedNextAttempt();
-  }
 }
 
 export default RacingGame;

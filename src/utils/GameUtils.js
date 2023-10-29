@@ -7,7 +7,19 @@ class GameUtlis {
   static repeatRacing(attemptNumber, racingGame) {
     ConsoleOutput.output(MESSAGE.GAME_RESULT);
 
-    Array.from({ length: attemptNumber }, () => racingGame.tryOneAttempt());
+    Array.from({ length: attemptNumber }, () =>
+      GameUtlis.tryOneAttempt(racingGame),
+    );
+  }
+
+  static tryOneAttempt(racingGame) {
+    const racingCars = racingGame.getRacingCars();
+
+    racingCars.map((racingCar) =>
+      GameUtlis.proceedAttemptByRacingCar(racingCar),
+    );
+
+    GameUtlis.proceedNextAttempt();
   }
 
   static generateRandomNumberFromZeroToNine() {
