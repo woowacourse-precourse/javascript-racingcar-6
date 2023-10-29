@@ -11,7 +11,7 @@ class App {
   async play() {
     // this.userInputCarNames();
     const INPUT = await MissionUtils.Console.readLineAsync();
-    MissionUtils.Console.print(INPUT);
+    // MissionUtils.Console.print(INPUT);
     const CAR_NAMES = INPUT.split(',');
 
     // 예외처리
@@ -66,10 +66,11 @@ class App {
     const RESULT = {};
     const RANDOM_NUMBER = MissionUtils.Random.pickNumberInRange(0, 9);
     for (let index = 0; index < this.carNames.length; index++) {
-      // 각 carNames의 value에 RANDOM_NUMBER가 4이상이면 true, 4이하면 false가 저장됨
-      RESULT[this.carNames[index]] = RANDOM_NUMBER >= 4;
+      // 각 carNames의 value에 RANDOM_NUMBER가 4이상이면 true, 4이하면 false가 저장됨 -> true면 -, false면 공백 저장되도록 변경
+      RESULT[this.carNames[index]] = RANDOM_NUMBER >= 4 ? '-' : '';
     }
 
+    MissionUtils.Console.print(RESULT);
     return RESULT;
   }
 
@@ -91,7 +92,7 @@ class App {
   calculateWinner(results) {
     const LAST_GAME_INDEX = results.length - 1;
 
-    const MAX_POSITION = results[LAST_GAME_INDEX].reduce((max, result) => {
+    const MAX_POSITION = results.reduce((max, result) => {
       for (const carName in result) {
         max = Math.max(max, this.calculatePosition(carName, result));
       }
@@ -113,6 +114,7 @@ class App {
 
   // 자동차 위치 계산
   calculatePosition(carName, result) {
+    // MissionUtils.Console.print(result[carName]);
     return result[carName].split('-').length - 1;
   }
 }
