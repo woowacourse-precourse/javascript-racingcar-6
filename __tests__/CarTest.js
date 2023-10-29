@@ -10,17 +10,13 @@ describe('자동차 테스트', () => {
     expect(car.getName()).toBe('haesa');
   });
 
-  test('임의의 숫자가 4이상일 때 자동차 전진', () => {
-    car.race(0);
+  test.each([[4, 9]])('임의의 숫자가 4이상일 때 자동차 전진', (number) => {
+    car.race(number);
+    expect(car.getForwardCount()).toBe(1);
+  });
+
+  test.each([0, 1])('임의의 숫자가 4미만일 때 자동차 정지', (number) => {
+    car.race(number);
     expect(car.getForwardCount()).toBe(0);
-
-    car.race(4);
-    expect(car.getForwardCount()).toBe(1);
-
-    car.race(1);
-    expect(car.getForwardCount()).toBe(1);
-
-    car.race(9);
-    expect(car.getForwardCount()).toBe(2);
   });
 });
