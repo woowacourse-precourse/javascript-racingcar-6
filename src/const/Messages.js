@@ -5,4 +5,5 @@ export const WINNER = "최종 우승자";
 
 export const FORWARD_MATCHING_POINT = 4;
 export const FORWARD_DASH = "-";
-export const ERROR_MESSAGE = "[ERROR] 모든 차 이름은 5자 이내로 입력해 주세요.";
+export const ERROR_WRONG_NAME = "[ERROR] 모든 차 이름은 5자 이내로 입력하세요.";
+export const ERROR_WRONG_ROUND = "[ERROR] 양의 정수를 입력하세요.";
