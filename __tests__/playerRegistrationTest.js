@@ -1,23 +1,33 @@
 import playerRegistration from "../src/playerRegistration";
+import { MissionUtils } from "@woowacourse/mission-utils";
 
-describe("플레이어 입력", () => {
-  test("split 메서드로 주어진 값을 구분", () => {
-    const input = "pobi,woni";
+jest.mock("@woowacourse/mission-utils");
 
-    expect(() => {
-      playerRegistration(input).toEqual(["pobi", "woni"]);
-    });
+beforeEach(() => {
+  MissionUtils.Console.readLineAsync.mockClear();
+});
+
+describe("playerRegistration 함수", () => {
+  it("올바른 입력을 받아서 배열로 반환", async () => {
+    // 모킹된 readLineAsync를 설정
+    MissionUtils.Console.readLineAsync.mockResolvedValue("pobi,woni");
+
+    const result = await playerRegistration(
+      "Enter player names separated by comma"
+    );
+    expect(result).toEqual(["pobi", "woni"]);
   });
-  test("플레이어의 이름이 5자리 초과할 경우", () => {
-    const longString = "aaaaaa";
-    expect(() => {
-      playerRegistration(longString).toThrow("[ERROR] 입력은 최대 5글자까지");
-    });
-  });
-  test("플레이어의 이름이 5자리를 초과하지 않을 경우", () => {
-    const shortString = "aaaaa";
-    expect(() => {
-      playerRegistration(shortString).not.toThrow();
-    });
+
+  it("5자리를 초과하는 입력이 들어오면 에러를 던짐", async () => {
+    // 모킹된 readLineAsync를 설정
+    MissionUtils.Console.readLineAsync.mockResolvedValue("123456,abcdefg");
+
+    try {
+      await playerRegistration("Enter player names separated by comma");
+      // 예외를 던지지 않으면 실패 처리
+      fail("Expected an error to be thrown.");
+    } catch (error) {
+      expect(error.message).toBe("[ERROR] 입력은 최대 5글자까지");
+    }
   });
 });

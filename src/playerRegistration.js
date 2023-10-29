@@ -11,7 +11,6 @@ const playerRegistration = async (answer) => {
       throw new Error("[ERROR] 입력은 최대 5글자까지");
     }
   }
-  console.log(player);
   return player;
 };
 
