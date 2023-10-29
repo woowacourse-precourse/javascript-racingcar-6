@@ -1,10 +1,10 @@
-import { MissionUtils } from '@woowacourse/mission-utils';
 import REGEX from '../../constants/regex.constant';
 import printMsg from '../../utils/printMsg';
 import prompt from '../../utils/prompt';
 import racingGameValidationMethods from './game.error';
 import MESSAGE from './game.message';
 import PROMPT_PHASE from './game.promptPhase';
+import gameUtils from './game.utils';
 import VALIDATION_CONDITION from './game.validation';
 
 const racingCarGame = {
@@ -27,10 +27,6 @@ const racingCarGame = {
     return carsNameArray.map((name) => ({ name, forwardCount: 0 }));
   },
 
-  getRandomNumber({ min, max }) {
-    return MissionUtils.Random.pickNumberInRange(min, max);
-  },
-
   checkForwardCondition(number, { min, max }) {
     return number >= min && number <= max;
   },
@@ -41,7 +37,7 @@ const racingCarGame = {
     }
 
     return racingStatus.map((car) => {
-      const randomNumber = this.getRandomNumber(
+      const randomNumber = gameUtils.getRandomNumber(
         VALIDATION_CONDITION.randomNumberRange,
       );
 
@@ -60,20 +56,12 @@ const racingCarGame = {
     });
   },
 
-  getNumberToDash(repeatNumber) {
-    if (Number.isNaN(Number(repeatNumber))) {
-      throw new Error('[ERROR] 인자는 숫자여야 합니다');
-    }
-
-    if (repeatNumber <= 0) return '';
-
-    return '-'.repeat(repeatNumber);
-  },
-
   printRacingTurn(racingStatus) {
     let racingTurnResult = '';
     racingStatus.forEach(({ name, forwardCount }) => {
-      racingTurnResult += `${name} : ${this.getNumberToDash(forwardCount)}\n`;
+      racingTurnResult += `${name} : ${gameUtils.getNumberToDash(
+        forwardCount,
+      )}\n`;
     });
     printMsg(racingTurnResult);
   },
