@@ -1,8 +1,8 @@
 import { Console } from "@woowacourse/mission-utils";
 import MESSAGES from "../constants/Messages.js";
 
-const gameStart = () => {
+const startGame = () => {
   Console.print(MESSAGES.GAME_START);
 };
 
-export default gameStart;
+export default startGame;
