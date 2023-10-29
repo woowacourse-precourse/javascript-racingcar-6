@@ -38,6 +38,7 @@ class Race {
     scoreBoards.forEach(scoreBoard => {
       this.#gasStation();
       this.#getBooster();
+
       if (this.#booster) scoreBoard += OPTIONS.point;
     });
     this.#showScoreBoard(scoreBoards);

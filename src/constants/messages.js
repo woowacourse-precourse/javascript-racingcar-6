@@ -1,10 +1,11 @@
 const GUIDE_MESSAGES = Object.freeze({
   carNames: '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
   laps: '시도할 횟수는 몇 회인가요?\n',
-  result: '\n실행 결과',
+  output: '\n실행 결과',
   whiteSpace: '',
   dash: '-',
   lapScore: (carName, score) => `${carName} : ${score}`,
+  finalWinner: winners => `최중 우승자 : ${winners}`,
 });
 
 const ERROR_MESSAGES = Object.freeze({
