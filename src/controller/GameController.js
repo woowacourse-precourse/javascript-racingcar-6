@@ -16,8 +16,8 @@ export default class GameController {
     await this.setTryCount();
 
     this.view.print(MESSAGE.RESULT);
-    const roofCount = this.model.getTryCount();
-    Array(roofCount)
+    const loopCount = this.model.getTryCount();
+    Array(loopCount)
       .fill(0)
       .forEach((_) => {
         this.model.setMoveCount();
@@ -35,7 +35,7 @@ export default class GameController {
   }
 
   async getPlayerNames() {
-    return await this.view.getUserInputAsync(MESSAGE.START);
+    return this.view.getUserInputAsync(MESSAGE.START);
   }
 
   setPlayers(players) {
@@ -46,8 +46,12 @@ export default class GameController {
     });
   }
 
+  async getTryCount() {
+    return this.view.getUserInputAsync(MESSAGE.TRY_COUNT);
+  }
+
   async setTryCount() {
-    const tryCount = await this.view.getUserInputAsync(MESSAGE.TRY_COUNT);
+    const tryCount = await this.getTryCount();
     this.#validateTryCount(tryCount);
     this.model.setTryCount(Number(tryCount));
   }
