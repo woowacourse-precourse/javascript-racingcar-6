@@ -10,6 +10,10 @@ class CarList {
   race() {
     this.cars.forEach((car) => car.move());
   }
+
+  printCarCurrnetState() {
+    this.cars.forEach((car) => car.printCarData());
+  }
 }
 
 export default CarList;
