@@ -23,6 +23,8 @@ class App {
     racingGame.getCars().forEach(car => {
       Console.print(`${car.getName()} : ${"-".repeat(car.getPosition())}`);
     });
+
+    Console.print(`${GAME_MESSAGE.printWinner}${racingGame.getWinners().join(", ")}`);
   }
 }
 
