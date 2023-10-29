@@ -1,5 +1,5 @@
 export const strToArrByComma = (str) => {
-  str = str.replaceAll(' ', '');
-  const arr = str.split(',');
-  return arr;
+	str = str.replaceAll(' ', '');
+	const arr = str.split(',');
+	return arr;
 };

@@ -4,21 +4,21 @@ import OutputView from './view/OutputView.js';
 import { Console } from '@woowacourse/mission-utils';
 
 class App {
-  async play() {
-    const carNames = await InputView.getCarNames();
-    const tryNumber = await InputView.getTryNumber();
+	async play() {
+		const carNames = await InputView.getCarNames();
+		const tryNumber = await InputView.getTryNumber();
 
-    const cars = new Cars(carNames);
+		const cars = new Cars(carNames);
 
-    Console.print("\n실행 결과");
-    for (var i = 0; i < tryNumber; i++) {
-      cars.moveCars()
-      OutputView.printCars(cars.names, cars.distances);
-    }
+		Console.print("\n실행 결과");
+		for (var i = 0; i < tryNumber; i++) {
+			cars.moveCars()
+			OutputView.printCars(cars.names, cars.distances);
+		}
 
-    const winners = cars.getWinners()
-    OutputView.printWinners(winners);
-  }
+		const winners = cars.getWinners()
+		OutputView.printWinners(winners);
+	}
 }
 
 export default App;
