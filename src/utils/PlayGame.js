@@ -23,6 +23,13 @@ class playGame {
       }
     });
   }
+
+  printRoundResult() {
+    Object.entries(this.carPositions).forEach(([carName, position]) => {
+      Console.print(`${carName} : ${position}`);
+    });
+    Console.print();
+  }
 }
 
 export default playGame;
