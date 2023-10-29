@@ -2,7 +2,7 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 import Car from "./Car.js";
 
 class App {
-  
+
   constructor() {
     this.cars = [];
     this.tryCount = 0;
@@ -20,7 +20,7 @@ class App {
 
       this.cars.push(new Car(name));
     })
-    
+
     MissionUtils.Console.print(this.cars);
   }
 
@@ -38,19 +38,31 @@ class App {
   startRacing() {
     MissionUtils.Console.print("\n실행 결과");
 
-    for (let count = 0; count < this.tryCount ; count++) {
+    for (let count = 0; count < this.tryCount; count++) {
       this.cars.forEach((car) => {
         this.moveForward(car)
         car.printState();
       });
       MissionUtils.Console.print("\n");
     }
+
+    this.printWinner()
   }
 
   moveForward(car) {
     if (MissionUtils.Random.pickNumberInRange(0, 9) >= 4) {
       car.goForword();
     }
+  }
+
+  getWinnersNames() {
+    const maxForwardCount = Math.max.apply(null, this.cars.map((car) => car.getForwardCount))
+    return this.cars.filter((car) => car.isWinner(maxForwardCount)).map((car) => car.getName);
+  }
+
+  printWinner() {
+    const winners = this.getWinnersNames();
+    MissionUtils.Console.print(winners);
   }
 
   async play() {
