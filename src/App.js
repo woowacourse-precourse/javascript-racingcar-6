@@ -19,11 +19,24 @@ class App {
     return moves;
   }
 
+  printWinner(cars) {
+    let winners = "", max= 0;
+    Object.keys(cars.obj).forEach((item) => {
+      if(max < cars.obj[item]) {
+        winners = item;
+        max = cars.obj[item];
+      }
+      else if(max === cars.obj[item]) winners += `, ${item}`;
+    });
+    Console.print(winners);
+  }
+
   running_race(cars, repetitions) {
     for(let i =0 ;i<repetitions;i++) {
       cars.move_cars(this.getMoveArr(cars));
       this.printCarMoves(cars);
     }
+    this.printWinner(cars);
   }
 
   nameValidation(carNames) {
