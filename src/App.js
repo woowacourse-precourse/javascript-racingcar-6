@@ -73,6 +73,12 @@ class App {
 
   findWinners() {
     let winners = findWinners(this.cars).map((car) => car.getName());
+
+    this.printWinners(winners);
+  }
+
+  printWinners(winners) {
+    OutputView.printWinners(winners);
   }
 }
 
