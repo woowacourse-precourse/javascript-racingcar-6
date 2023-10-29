@@ -1,22 +1,22 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
 import App from "./App.js";
+import { MissionUtils } from "@woowacourse/mission-utils";
 import {isvalidCarNames, isvalidAttempt} from './validate.js';
+import { RaceController } from './RaceController.js';
 
-async function start() {
-    const app = new App();
+export async function startGame() {
 
-    
-    const carNamesInput = await MissionUtils.Console.readLineAsync("자동차 이름을 입력하세요 (쉼표(,)로 구분): ");
+    const carNamesInput = await MissionUtils.Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
     const carNames = carNamesInput.split(',');
-    console.log(carNames);
+    //console.log(carNames);
     isvalidCarNames(carNames);
 
-    const attemptInput = await MissionUtils.Console.readLineAsync("몇 번의 이동을 할 것인가요?: ");
+    const attemptInput = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?");
     const attempt = parseInt(attemptInput, 10);
-    console.log(attempt);
+    //console.log(attempt);
     isvalidAttempt(attempt);
-    // 게임 시작
-    app.play(carNames, attempt);
+
+    const raceController = new RaceController(carNames);
+    raceController.startRace(attempt);
 }
 
-start();
+startGame();
