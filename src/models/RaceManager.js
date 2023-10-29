@@ -1,6 +1,8 @@
 import { calculateLongestDistance } from './../utils/calculateLongestDistance.js';
 
 class RaceManager {
+  #gameWinner;
+
   /**
    * @constructor
    * @param {string[]} carModels - 차량 모델의 배열
@@ -8,6 +10,7 @@ class RaceManager {
   constructor(carModels) {
     this.carModels = carModels;
     this.moveCount = 0;
+    this.#gameWinner = '';
   }
 
   race() {
@@ -22,13 +25,24 @@ class RaceManager {
     this.moveCount = moveCount;
   }
 
-  calcultateWinner() {
-    const maxPosition = calculateLongestDistance(this.carModels);
-
-    const winners = this.carModels.filter(
-      carModel => carModel.position.length === maxPosition,
+  calculateLongestDistance() {
+    const maxPosition = Math.max(
+      ...this.carModels.map(car => car.getPosition().length),
     );
-    return winners.map(winner => winner.carName).join(', ');
+    return maxPosition;
+  }
+
+  calcultateWinner() {
+    const maxPosition = this.calculateLongestDistance();
+    const winners = this.carModels.filter(
+      carModel => carModel.getPosition().length === maxPosition,
+    );
+
+    this.#gameWinner = winners.map(winner => winner.carName).join(', ');
+  }
+
+  getGameWinner() {
+    return this.#gameWinner;
   }
 }
 

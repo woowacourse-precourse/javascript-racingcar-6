@@ -9,40 +9,36 @@ import {
 } from '../utils/validateValue.js';
 
 class CarRaceController {
-  constructor() {
-    this.carModels = [];
-    this.raceManagerModel = new RaceManager([]);
-    this.gameWinner = '';
-  }
-
   async initializeGame() {
     const carNames = await this.promptCarNames();
-    this.carModels = carNames.map(carName => new Car(carName));
-    this.raceModel = new RaceManager(this.carModels);
     const moveCount = await this.promptMoveCount();
-    this.raceModel.setMoveCount(moveCount);
+    const carList = carNames.map(carName => new Car(carName));
+
+    this.raceManager = new RaceManager(carList);
+    this.raceManager.setMoveCount(moveCount);
   }
 
   palyRace() {
-    this.raceModel.race();
+    this.raceManager.race();
     this.printRaceProgress();
   }
 
   printRaceProgress() {
     const { printNewline, printProgress } = CarRaceView;
-    this.carModels.forEach(carModel => {
-      const { carName, position } = carModel;
+    this.raceManager.carModels.forEach(carModel => {
+      const carName = carModel.carName;
+      const position = carModel.getPosition();
       printProgress(carName, position);
     });
     printNewline();
   }
 
   playGame() {
-    repeatFunctionNTimes(this.raceModel.moveCount, this.palyRace.bind(this));
+    repeatFunctionNTimes(this.raceManager.moveCount, this.palyRace.bind(this));
   }
 
   getGameResult() {
-    this.gameWinner = this.raceModel.calcultateWinner();
+    this.raceManager.calcultateWinner();
   }
 
   async promptMoveCount() {
@@ -73,9 +69,10 @@ class CarRaceController {
 
   printWinner() {
     const { printOutput } = CarRaceView;
+    const gameWinner = this.raceManager.getGameWinner();
 
     printOutput('실행 결과');
-    printOutput(`최종 우승자 : ${this.gameWinner}`);
+    printOutput(`최종 우승자 : ${gameWinner}`);
   }
 }
 
