@@ -8,12 +8,15 @@ export default class CarRacingGame {
     const carNames = await this.getCarNames().catch((error) => {
       throw error;
     });
-
-    let tryCount = await this.getTryCount().catch((error) => {
-      throw error;
-    });
-
     this.#carNameArray = this.carNamesToCarNameArray(carNames);
+    let tryCount = await this.getTryCount().then((answer) => {
+      if (!this.isValidTryCount(answer)) {
+        throw new Error('[ERROR] 시도 횟수 이상');
+      }
+      return answer;
+    }).catch((error) => {
+      throw error
+    });
     while (tryCount-- > 0) {
       this.tryAdvance();
       this.printEachResult();
@@ -41,6 +44,13 @@ export default class CarRacingGame {
 
   isAdvance() {
     return Random.pickNumberInRange(0, 9) >= 4;
+  }
+
+  isValidTryCount(tryCount = 0){
+    if (Number(tryCount) <= 0 || !Number.isInteger(Number(tryCount))){
+      return false;
+    }
+    return true;
   }
 
   printEachResult() {
@@ -82,12 +92,9 @@ export default class CarRacingGame {
       const tryCount = await Console.readLineAsync(
         '시도할 횟수는 몇 회인가요?'
       );
-      if (Number(tryCount) <= 0 || !Number.isInteger(Number(tryCount))) {
-        throw new Error('[ERROR] 시도 횟수 이상');
-      }
       return tryCount;
     } catch (error) {
-      throw error;
+      throw new Error('[ERROR]');
     }
   }
 }
