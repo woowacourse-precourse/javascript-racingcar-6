@@ -1,9 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
 
-const OUTPUT_MESSAGE = Object.freeze({
-  ROUND_RESULT: "\n실행 결과",
-  FINAL_WINNERS: "최종 우승자",
-});
+import { OUTPUT_MESSAGE } from "../constants/io-message.js";
 
 const OutputView = {
   printRacingStart: () => {
