@@ -7,11 +7,11 @@ class ErrorHandler {
   };
 
   throwInvalidCarNameError() {
-    throw new Error(ERROR_MESSAGE.invalidCarName);
+    throw new Error(this.ERROR_MESSAGE.invalidCarName);
   }
 
   throwInvalidRacingCountError() {
-    throw new Error(ERROR_MESSAGE.invalidRacingCount);
+    throw new Error(this.ERROR_MESSAGE.invalidRacingCount);
   }
 }
 

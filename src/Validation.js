@@ -13,7 +13,7 @@ class Validation {
       return false;
     }
 
-    if (racingCount < VALIDATION_STANDARD.minimumRacingCount) {
+    if (racingCount < this.VALIDATION_STANDARD.minimumRacingCount) {
       return false;
     }
 
