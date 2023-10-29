@@ -1,8 +1,13 @@
 import { Console } from "@woowacourse/mission-utils";
 
+const OUTPUT_MESSAGE = Object.freeze({
+  ROUND_RESULT: "\n실행 결과",
+  FINAL_WINNERS: "최종 우승자",
+});
+
 const OutputView = {
   printRacingStart: () => {
-    Console.print("\n실행 결과");
+    Console.print(OUTPUT_MESSAGE.ROUND_RESULT);
   },
 
   printCurrentRacingCar: (carName, carDistance) => {
@@ -15,7 +20,7 @@ const OutputView = {
 
   printRacingFinalWinners: (carsObject, maxDistance) => {
     Console.print(
-      `최종 우승자 : ${Object.entries(carsObject)
+      `${OUTPUT_MESSAGE.FINAL_WINNERS} : ${Object.entries(carsObject)
         .filter(([carName, carDistance]) => carDistance === maxDistance)
         .map(([carName, carDistance]) => carName)}`
     );
