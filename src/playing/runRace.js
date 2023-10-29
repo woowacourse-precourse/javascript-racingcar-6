@@ -11,12 +11,12 @@ const determineWin = () => {
 const findMaxScore = (raceResults) => {
   let maxScore = 0;
 
-  for (const participant in raceResults) {
+  Object.keys(raceResults).forEach((participant) => {
     const participantScore = raceResults[participant].length;
     if (participantScore >= maxScore) {
       maxScore = participantScore;
     }
-  }
+  });
 
   return maxScore;
 }
@@ -25,11 +25,12 @@ const findMaxScore = (raceResults) => {
 const findWinnerName = (raceResults, targetScore) => {
   const winnerNames = [];
 
-  for (const participant in raceResults) {
+  Object.keys(raceResults).forEach((participant) => {
     if (raceResults[participant].length === targetScore) {
       winnerNames.push(participant);
     }
-  }
+  });
+
   return winnerNames;
 }
 
