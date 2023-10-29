@@ -16,7 +16,7 @@ export default async function gameStart() {
 
     return gameData;
   } catch (error) {
-    const promise = defaultErrorHandler(error);
-    return promise;
+    const ERROR = defaultErrorHandler(error);
+    return ERROR;
   }
 }
