@@ -6,19 +6,29 @@ import {
 } from './Validation.js';
 
 class App {
+  constructor() {
+    this.playerData = [];
+  }
+
   async play() {
     const raceEntry = this.getPlayerCarsInput();
   }
 
   async getPlayerCarsInput() {
-    const UserInput = await Console.readLineAsync(
+    const userInput = await Console.readLineAsync(
       PLAYER_INPUT.CARS_NAME_PROMPT,
     );
-    const raceEntry = UserInput.split(',');
+    const raceEntry = userInput.split(',');
 
     if (isPlayerCarNameValidated(raceEntry)) {
-      return raceEntry.split(',');
+      return [...raceEntry];
     }
+  }
+
+  createPlayerData(raceEntry) {
+    raceEntry.forEach(playerName => {
+      this.playerData.push({ playerName, trackLocation: '' });
+    });
   }
 }
 
