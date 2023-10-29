@@ -16,7 +16,9 @@ const PrintWinner = (racingCar) => {
     if (item[1].length === WINNER_NUMBER) WINNER.push(item[0]);
   });
 
-  MissionUtils.Console.print(`${RACING_CAR_GAME.RESULT}${WINNER.join(', ')}`);
+  MissionUtils.Console.print(
+    `${RACING_CAR_GAME.PRINT_WINNER}${WINNER.join(', ')}`
+  );
 };
 
 export default PrintWinner;
