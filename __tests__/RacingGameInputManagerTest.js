@@ -11,6 +11,8 @@ const mockQuestions = (inputs) => {
   });
 };
 
+const inputManager = new RacingGameInputManager();
+
 describe('자동차 경주 게임', () => {
   const validNameList = [
     [['pobi,woni']],
@@ -23,21 +25,31 @@ describe('자동차 경주 게임', () => {
     [['zxxng']],
     [['123,233,233']],
   ];
-  const inputManager = new RacingGameInputManager();
 
   test.each(validNameList)('유효한 이름 목록', async (inputs) => {
     // 주어진 입력을 모의화
     mockQuestions(inputs);
-
-    // not.toThrow 확인
     await expect(inputManager.getRacingCars()).resolves.not.toThrow('[ERROR]');
   });
 
   test.each(invalidNameList)('유효하지 않은 이름 목록', async (inputs) => {
-    // 주어진 입력을 모의화
     mockQuestions(inputs);
-
-    // toThrow 확인
     await expect(inputManager.getRacingCars()).rejects.toThrow('[ERROR]');
+  });
+
+  const validNumberList = ['1', '2', '3', '4', '5'];
+  const invalidNumberList = ['0', '-2', '2번', 'two'];
+
+  validNumberList.forEach((input) => {
+    test(`유효한 숫자 목록 - ${input}`, async () => {
+      mockQuestions([input]);
+      await expect(inputManager.getPlayCount()).resolves.not.toThrow('[ERROR]');
+    });
+  });
+  invalidNumberList.forEach((input) => {
+    test(`유효하지 않은 숫자 목록 - ${input}`, async () => {
+      mockQuestions([input]);
+      await expect(inputManager.getPlayCount()).rejects.toThrow('[ERROR]');
+    });
   });
 });
