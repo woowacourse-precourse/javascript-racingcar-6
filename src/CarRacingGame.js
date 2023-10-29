@@ -5,13 +5,13 @@ export default class CarRacingGame {
   #carNameArray;
 
   async gameStart() {
-    const carNames = await this.getCarNames().catch((error) => {
+    const carNames = await CarRacingGame.getCarNames().catch((error) => {
       throw error;
     });
-    this.#carNameArray = this.carNamesToCarNameArray(carNames);
-    let tryCount = await this.getTryCount()
+    this.#carNameArray = CarRacingGame.carNamesToCarNameArray(carNames);
+    let tryCount = await CarRacingGame.getTryCount()
       .then((answer) => {
-        if (!this.isValidTryCount(answer)) {
+        if (!CarRacingGame.isValidTryCount(answer)) {
           throw new Error('[ERROR] 시도 횟수 이상');
         }
         return answer;
@@ -27,7 +27,7 @@ export default class CarRacingGame {
     this.printWinners();
   }
 
-  carNamesToCarNameArray(carNames = '') {
+  static carNamesToCarNameArray(carNames = '') {
     return carNames.split(',').map((carName) => {
       const trimCarName = carName.trim();
       if (trimCarName.length > 5 || trimCarName.length === 0) {
@@ -39,17 +39,17 @@ export default class CarRacingGame {
 
   tryAdvance() {
     this.#carNameArray.forEach((car) => {
-      if (this.isAdvance()) {
+      if (CarRacingGame.isAdvance()) {
         car.plusAdvanceCount();
       }
     });
   }
 
-  isAdvance() {
+  static isAdvance() {
     return Random.pickNumberInRange(0, 9) >= 4;
   }
 
-  isValidTryCount(tryCount = 0) {
+  static isValidTryCount(tryCount = 0) {
     if (Number(tryCount) <= 0 || !Number.isInteger(Number(tryCount))) {
       return false;
     }
@@ -79,7 +79,7 @@ export default class CarRacingGame {
     return this.#carNameArray;
   }
 
-  async getCarNames() {
+  static async getCarNames() {
     try {
       const carNames = await Console.readLineAsync(
         '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)'
@@ -90,7 +90,7 @@ export default class CarRacingGame {
     }
   }
 
-  async getTryCount() {
+  static async getTryCount() {
     try {
       const tryCount = await Console.readLineAsync(
         '시도할 횟수는 몇 회인가요?'

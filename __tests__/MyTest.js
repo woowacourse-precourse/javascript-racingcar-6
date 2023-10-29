@@ -30,8 +30,7 @@ describe('자동차 경주 게임', () => {
     mockQuestions(inputs);
 
     // given
-    const game = new CarRacingGame();
-    const carNames = await game.getCarNames();
+    const carNames = await CarRacingGame.getCarNames();
     expect(carNames).toEqual('pobi,woni');
   });
 
@@ -40,8 +39,7 @@ describe('자동차 경주 게임', () => {
     mockQuestions(inputs);
 
     // given
-    const game = new CarRacingGame();
-    const tryCount = await game.getTryCount();
+    const tryCount = await CarRacingGame.getTryCount();
     expect(tryCount).toEqual('5');
   });
 
