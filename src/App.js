@@ -46,6 +46,14 @@ class App {
             );
         });
     }
+
+    ShowWinner() {
+        const maxDistance = Math.max(...this.cars.map((car) => car.distance));
+        const winner = this.cars
+            .filter((car) => car.distance === maxDistance)
+            .map((car) => car.name);
+        MissionUtils.Console.print(`최종 우승자 : ${winner.join(", ")}`);
+    }
 }
 
 export default App;
