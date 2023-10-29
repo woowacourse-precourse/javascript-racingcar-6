@@ -8,6 +8,8 @@ class App {
     const tryCount = await this.getTryCount();
     this.validateTryCount(tryCount);
     const raceResults = this.race(carNamesArray, tryCount);
+    const winCarNamesArray = this.findWinner(carNamesArray, raceResults);
+    this.printWinner(winCarNamesArray);
   }
 
   async getCarNames() {
@@ -111,6 +113,27 @@ class App {
       MissionUtils.Console.print(`${carName} : ${carProgressArray[index]}`);
     });
     MissionUtils.Console.print('');
+  }
+
+  findWinner(carNamesArray, raceResults) {
+    const carProgressCountArray = raceResults.map(
+      (progress) => progress.length
+    );
+    const maxProgress = Math.max(...carProgressCountArray);
+    const winCarNamesArray = [];
+
+    carProgressCountArray.forEach((progress, index) => {
+      if (progress === maxProgress) {
+        winCarNamesArray.push(carNamesArray[index]);
+      }
+    });
+    return winCarNamesArray;
+  }
+
+  printWinner(winCarNamesArray) {
+    const winCarNamesString = winCarNamesArray.join(', ');
+
+    MissionUtils.Console.print(`최종 우승자 : ${winCarNamesString}`);
   }
 }
 
