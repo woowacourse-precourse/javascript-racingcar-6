@@ -18,7 +18,7 @@ export const userInputCarNameLengthError = (carNamesArray) => {
 export const userInputCarNameOverlapError = (carNamesArray) => {
   for (let i = 0; i < carNamesArray.length - 1; i++) {
     if (carNamesArray[i] === carNamesArray[i + 1]) {
-      throw new Error('중복 에러');
+      throw new Error(ERROR.ERROR_OVERLAP);
     }
   }
 };

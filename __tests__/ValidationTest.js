@@ -3,6 +3,7 @@ import {
   userInputTryNumberError,
   userInputCarNameFormError,
   userInputCarNameLengthError,
+  userInputCarNameOverlapError,
 } from '../src/domain/Error.js';
 
 // Jest 테스트 스위트 시작
@@ -35,7 +36,7 @@ describe('userInputTryNumberError 함수 테스트', () => {
   });
 });
 
-describe('userInputCarName 함수 테스트', () => {
+describe('getCarName 함수 테스트', () => {
   test('공백이 포함될 경우 오류 throw', () => {
     expect(() => userInputCarNameFormError('a b c')).toThrowError(ERROR.ERROR_SPACE);
     expect(() => userInputCarNameFormError('de f')).toThrowError(ERROR.ERROR_SPACE);
@@ -60,5 +61,14 @@ describe('userInputCarName 함수 테스트', () => {
       ERROR.ERROR_TYPE,
     );
     expect(() => userInputCarNameLengthError(['./$#', '$@#!'])).toThrowError(ERROR.ERROR_TYPE);
+  });
+
+  test('이름이 중복될 때 오류 throw', () => {
+    expect(() => userInputCarNameOverlapError(['abcd', 'abcd', 'aaaaa'])).toThrowError(
+      ERROR.ERROR_OVERLAP,
+    );
+    expect(() => userInputCarNameOverlapError(['aaaaa', 'abcd', 'abcd'])).toThrowError(
+      ERROR.ERROR_OVERLAP,
+    );
   });
 });
