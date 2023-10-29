@@ -1,4 +1,4 @@
-import CONDITIONS from "../../constants/Conditions";
+import CONDITIONS from "../../constants/Conditions.js";
 
 const validateTryNumber = (number) => {
   const input_number = number;
