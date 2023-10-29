@@ -114,7 +114,7 @@ class App {
     }
 
     // 게임 종료
-    // *** 리팩토링 할 때 함수로, 들여쓰기 오버 ***
+    // *** 리팩토링 할 때 함수로***
     const winner = await checkWinner(participants);
     print(`최종 우승자 : ${winner.join(', ')}`);
 
