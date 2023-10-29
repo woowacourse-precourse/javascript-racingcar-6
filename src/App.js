@@ -49,6 +49,16 @@ class App {
     }
   }
 
+  findWinners() {
+    const maxPosition = Math.max(
+      ...this.participants.map((participant) => participant.position)
+    );
+    const winners = this.participants.filter(
+      (participant) => participant.position === maxPosition
+    );
+    return winners;
+  }
+
   createLine(num) {
     let result = "";
     for (let i = 0; i < this.participants[num].position; i++) {
@@ -70,6 +80,9 @@ class App {
       });
       Console.print(" ");
     }
+    const winners = this.findWinners();
+    const winnerNames = winners.map((winner) => winner.name);
+    Console.print(`최종 우승자: ${winnerNames.join(",")}`);
   }
 }
 const app = new App();
