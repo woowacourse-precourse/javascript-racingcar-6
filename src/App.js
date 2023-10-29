@@ -17,10 +17,16 @@ class App {
       else throw new Error("[ERROR] 이름이 5자리 이상입니다.");
     });
   }
-
+  async inputNumber() {
+    MissionUtils.Console.print("시도할 횟수는 몇 회인가요?");
+    const input = await MissionUtils.Console.readLineAsync("");
+    if (/\d/.test(input) && input > 0) this.number = parseInt(input);
+    else throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
+  }
   async play() {
     try {
       await this.inputCars();
+      await this.inputNumber();
     } catch (error) {
       throw error;
     }
