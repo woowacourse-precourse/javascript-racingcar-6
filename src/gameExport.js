@@ -1,13 +1,25 @@
 import inputCarName from './inputCarName.js';
 import gameCount from './gameCount.js';
-import { randomNum, consoleResult } from './utils.js';
+import { randomNum, consoleResult, consoleWinner } from './utils.js';
 
-const carNames = await inputCarName();
-const carNamesKey = Object.keys(carNames);
-const gameCountNum = await gameCount();
+let gameData = null;
+
+async function initializeGame() {
+  const carNames = await inputCarName();
+  const carNamesKey = Object.keys(carNames);
+  const gameCountNum = await gameCount();
+
+  gameData = { carNames, carNamesKey, gameCountNum };
+  return gameData;
+}
 
 // 게임 반복 횟수와 진행 로직.
 async function gameExport() {
+  const { carNamesKey, gameCountNum } = gameData;
+  return createGameRounds(carNamesKey, gameCountNum);
+}
+
+function createGameRounds(carNamesKey, gameCountNum) {
   let roundResult = '';
   for (let i = 0; i < gameCountNum; i++) {
     roundResult += createRoundResult(carNamesKey);
@@ -19,6 +31,8 @@ async function gameExport() {
 }
 
 function condition(key) {
+  const { carNames } = gameData;
+
   return (carNames[key] += randomNum() > 3 ? '-' : '');
 }
 
@@ -73,6 +87,8 @@ function getLongestLines(lines, maxLength, startIndex) {
 }
 
 function compareLineLength(lines) {
+  const { carNamesKey } = gameData;
+
   const startIndex = lines.length - carNamesKey.length;
   const maxLength = findMaxLength(lines, startIndex);
   const result = getLongestLines(lines, maxLength, startIndex);
@@ -80,4 +96,14 @@ function compareLineLength(lines) {
   return result.map((item) => item).join(', ');
 }
 
-export { gameExport, gameWinner };
+async function startGame() {
+  try {
+    await initializeGame();
+    const result = await gameExport();
+    consoleResult(result);
+    const winner = await gameWinner();
+    consoleWinner(winner);
+  } catch (error) {}
+}
+
+export { startGame };
