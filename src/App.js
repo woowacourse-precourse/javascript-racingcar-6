@@ -1,17 +1,28 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
+import { GAME_MESSAGE, ERROR_MESSAGE } from "./Messages.js";
 
 class App {
   async play() {
-    const carNames = await MissionUtils.Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
-    const repeatNumber = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
-    MissionUtils.Console.print("실행 결과");
-    const carNameArray = carNames.split(',');
-    const carObjects = carNameArray.map(name => ({ [name.trim()]: 0 }));
+    const carNames = await MissionUtils.Console.readLineAsync(
+      GAME_MESSAGE.GAME_START
+    );
+    if (carNames.split(",").some((name) => name.trim().length > 5)) {
+      throw new Error(ERROR_MESSAGE.INVALID_NAME_LENGTH);
+    }
+    const repeatNumber = await MissionUtils.Console.readLineAsync(
+      GAME_MESSAGE.INPUT_REPEAT_NUMBER
+    );
+    if (Number.isNaN(Number(repeatNumber))) {
+      throw new Error(ERROR_MESSAGE.NOT_ONLY_NUMBER);
+    }
+    MissionUtils.Console.print(GAME_MESSAGE.GAME_RESULT);
+    const carNameArray = carNames.split(",");
+    const carObjects = carNameArray.map((name) => ({ [name.trim()]: 0 }));
 
-    for( let i = 0 ; i < repeatNumber ; i++){
+    for (let i = 0; i < repeatNumber; i++) {
       for (const carObject of carObjects) {
         for (const carName in carObject) {
-          this.generateRandomNumber(carObject)
+          this.generateRandomNumber(carObject);
           const ResultNumber = this.repeatDash(carObject, carName);
           MissionUtils.Console.print(carName + " : " + ResultNumber);
         }
@@ -33,23 +44,23 @@ class App {
         }
       }
     }
-    MissionUtils.Console.print("최종 우승자 : " + winCarArr)
+    MissionUtils.Console.print(GAME_MESSAGE.GAME_WINNER + winCarArr);
   }
 
-  generateRandomNumber(carObject) {        
+  generateRandomNumber(carObject) {
     const randomNumber = MissionUtils.Random.pickNumberInRange(1, 9);
-    if(randomNumber > 3){
+    if (randomNumber > 3) {
       for (const carName in carObject) {
         carObject[carName]++;
       }
     }
-    return carObject
+    return carObject;
   }
 
   repeatDash(carObject, carName) {
-    let ResultNumber = '';
-    for( let i = 0 ; i < carObject[carName] ; i++ ){
-      ResultNumber = ResultNumber.concat('-');
+    let ResultNumber = "";
+    for (let i = 0; i < carObject[carName]; i++) {
+      ResultNumber = ResultNumber.concat("-");
     }
     return ResultNumber;
   }
