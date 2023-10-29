@@ -24,7 +24,7 @@ const getLogSpy = () => {
 };
 
 describe("자동차 경주 게임", () => {
-  test.skip("전진-정지", async () => {
+  test("전진-정지", async () => {
     // given
     const MOVING_FORWARD = 4;
     const STOP = 3;
@@ -46,7 +46,7 @@ describe("자동차 경주 게임", () => {
     });
   });
 
-  test.skip.each([[["pobi,javaji"]], [["pobi,eastjun"]]])(
+  test.each([[["pobi,javaji"]], [["pobi,eastjun"]]])(
     "이름에 대한 예외 처리",
     async (inputs) => {
       // given

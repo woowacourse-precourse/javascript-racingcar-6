@@ -78,6 +78,11 @@ class App {
 
   validateCarNameLength(carName) {
     const carNames = carName.split(",");
+    const carNamesSet = [...new Set(carNames)];
+
+    if (carNamesSet.length !== carNames.length) {
+      throw new Error("[ERROR] 자동차 이름에 중복이 들어갔습니다.");
+    }
 
     return carNames.map((carName) => {
       if (carName.length > 5) {
@@ -92,7 +97,7 @@ class App {
       throw new Error("[ERROR] 숫자 형식이 아닙니다.");
     }
 
-    if (roundCount.includes("-")) {
+    if (parseInt(roundCount, 10) < 0) {
       throw new Error("[ERROR] 음수가 들어갈 수 없습니다.");
     }
 
