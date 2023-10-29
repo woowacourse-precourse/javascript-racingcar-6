@@ -39,6 +39,20 @@ class App {
     this.loopNumber = inputNumber;
   }
 
+  PrintWinner() {
+    let winnerArray = [];
+    let maxCount = 0;
+    this.carArray.forEach((car) => {
+      if (car.countMove > maxCount) {
+        winnerArray = [car.name];
+        maxCount = car.countMove;
+      } else if (car.countMove === maxCount) {
+        winnerArray.push(car.name);
+      }
+    });
+    WinnerMessage(winnerArray.join(", "));
+  }
+
   async play() {}
 }
 
