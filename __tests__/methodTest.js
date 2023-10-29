@@ -190,4 +190,33 @@ describe("메서드별 기능 테스트", () => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
   });
+
+  test("우승자 표시", async () => {
+    // given
+    const MOVING_FORWARD = 4;
+    const STOP = 3;
+    const inputs = ["승규,수민", "3"];
+    const outputs = ["최종 우승자 : 승규, 수민"];
+    const randoms = [
+      MOVING_FORWARD,
+      STOP,
+      STOP,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+    ];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    // when
+    const app = new App();
+    await app.play();
+
+    // then
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
 });
