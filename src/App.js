@@ -49,10 +49,25 @@
       this.#makeArrayOfCars(CAR_INPUT);
     }
 
+    #checkGameCountInput() {
+      if(!Number.isNaN(this.GAME_COUNT)) {
+        throw new Error("[ERROR]: 시도할 횟수는 숫자여야 합니다.");
+      }
+
+      return true;
+    }
+
     async #getInputGameCount() {
       this.GAME_COUNT = await Console.readLineAsync(
         '시도할 횟수는 몇 회인가요?\n'
       );
+
+      try{
+        this.#checkGameCountInput()
+        Console.print("올바른 입력");
+      } catch(e) {
+        Console.print(e);
+      }
     }
 
     async play() {
