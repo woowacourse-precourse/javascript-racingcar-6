@@ -3,8 +3,8 @@ import { MissionUtils } from '@woowacourse/mission-utils';
 const PrintResults = (user, gameNumber) => {
   const RACING_CAR = new Map();
 
-  for (let i = 0; i < user.length; i++) {
-    RACING_CAR.set(user[i], '');
+  for (const CAR of user) {
+    RACING_CAR.set(CAR, '');
   }
 
   for (let index = 0; index < gameNumber; index += 1) {
