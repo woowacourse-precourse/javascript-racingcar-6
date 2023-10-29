@@ -29,19 +29,10 @@ class App {
     const answerOfNumber = await Console.readLineAsync(
       MESSAGE.input.numberOfTimes,
     );
-    this.validateNumberOfTimes(answerOfNumber);
+    this.numberOfTimes = Validation.getNumberOfTimes(answerOfNumber);
     this.printExecutionResult();
     this.printFinalWinner();
     return;
-  }
-
-  validateNumberOfTimes(answer) {
-    const number = Number(answer);
-    if (Number.isSafeInteger(number) && number > 0) {
-      this.numberOfTimes = number;
-    } else {
-      throw new Error(MESSAGE.error.numberOfTimes);
-    }
   }
 
   decideToMoveForward() {
