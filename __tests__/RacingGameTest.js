@@ -30,17 +30,17 @@ describe('레이싱 게임 테스트', () => {
       // then
       expect(result).toEqual(outputs);
     });
-    test('차 이름 5자 넘는 경우 오류', () => {
+    test('차 이름 5자 넘는 경우 오류', async () => {
       // given
       const input = 'pobiii,woni,jun';
       const ERROR_MESSAGE = '[ERROR]';
 
       // when
       const racingGame = new RacingGame();
-      const result = racingGame.readCarNames(input);
+      const result = await racingGame.readCarNames(input);
 
       // then
-      // expect(result).rejects.toThrow(ERROR_MESSAGE);
+      expect(result).rejects.toThrow(ERROR_MESSAGE);
     });
   });
   describe('시도 횟수 입력 테스트', () => {
