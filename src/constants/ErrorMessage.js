@@ -3,6 +3,7 @@ const ERROR_MESSAGE = {
     '[ERROR]: 다섯 자가 넘는 이름이 포함되어있습니다.',
   INCLUDE_LESS_THEN_ONE_CHAR:
     '[ERROR]: 한 자리 이하의 이름이 포함되어있습니다.',
+  INCLUDE_DUPLICATE_NAMES: '[ERROR]: 중복된 이름이 존재합니다.',
 };
 
 export default ERROR_MESSAGE;

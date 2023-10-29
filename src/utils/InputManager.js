@@ -19,6 +19,8 @@ class InputManager {
   static validateCarName(cars) {
     InputManager.#validateNotMoreThanFiveChar(cars);
     InputManager.#validateNotLessThanOneChar(cars);
+    InputManager.#validateNotIncludeDuplicateNames(cars);
+
     return cars;
   }
 
@@ -36,6 +38,16 @@ class InputManager {
     }
 
     return cars;
+  }
+
+  static #validateNotIncludeDuplicateNames(cars) {
+    if (cars.some((car) => this.#checkDuplicateInArray(cars, car))) {
+      throw Error(ERROR_MESSAGE.INCLUDE_DUPLICATE_NAMES);
+    }
+  }
+
+  static #checkDuplicateInArray(cars, car) {
+    return cars.indexOf(car) !== cars.lastIndexOf(car);
   }
 }
 
