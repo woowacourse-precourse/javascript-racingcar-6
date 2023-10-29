@@ -58,4 +58,12 @@ export default class RacingCarGame {
 
     return winners.join(", ");
   }
+
+  async start() {
+    await this.setupCars();
+    await this.setupRaceRound();
+    this.play();
+    const winners = this.getWinner();
+    OutputView.printWinner(winners);
+  }
 }
