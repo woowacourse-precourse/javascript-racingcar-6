@@ -4,6 +4,7 @@ import {
   valiadateDuplicteName,
   hasDuplicate,
   validateCountNumber,
+  validateCarName,
 } from './../src/utils/validateValue.js';
 import { MissionUtils } from '@woowacourse/mission-utils';
 import Car from '../src/models/Car';
@@ -58,7 +59,7 @@ describe('Car Model', () => {
   });
 });
 
-// Error Unit Test
+// Error Unit Test : CarList
 describe('valiadateDuplicteName', () => {
   test('car 이름은 중복이 불가하다.', () => {
     const carList = ['car1', 'car2', 'car1'];
@@ -100,5 +101,19 @@ describe('validateCountNumber', () => {
 
   test('유효한 입력에 대해 에러를 던지지 않는다.', () => {
     expect(() => validateCountNumber(3)).not.toThrow();
+  });
+});
+
+// Error Unit Test : CarList
+describe('Car Name의 에러를 검증한다.', () => {
+  test('빈 값을 입력했을때 에러를 던져야한다.', () => {
+    expect(() => validateCarName('')).toThrow(
+      '[ERROR] car 이름은 비워 둘 수 없습니다.',
+    );
+  });
+  test('5자 초과의 이름이 있을때 에러를 던져야한다.', () => {
+    expect(() => validateCarName('123456')).toThrow(
+      '[ERROR] car 이름은 5자 이하만 가능합니다.',
+    );
   });
 });
