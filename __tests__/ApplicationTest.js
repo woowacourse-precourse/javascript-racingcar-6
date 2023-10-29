@@ -1,4 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
+import { ERROR } from '../src/constants';
 import App from '../src/App';
 
 const mockQuestions = (inputs) => {
@@ -57,7 +58,7 @@ describe('자동차 경주 게임', () => {
       const app = new App();
 
       // then
-      await expect(app.play()).rejects.toThrow('[ERROR]');
+      await expect(app.play()).rejects.toThrow(ERROR.NAME_LENGTH);
     }
   );
 
@@ -71,7 +72,7 @@ describe('자동차 경주 게임', () => {
       const app = new App();
 
       // then
-      await expect(app.play()).rejects.toThrow('[ERROR]');
+      await expect(app.play()).rejects.toThrow(ERROR.TRY_COUNT);
     }
   );
 });
