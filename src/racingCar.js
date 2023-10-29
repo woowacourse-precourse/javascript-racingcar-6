@@ -16,6 +16,7 @@ export const startGame = async () => {
 // 자동차 이름 입력
 const getCarsName = async () => {
   const cars = await Console.readLineAsync(GAME_MSG.GET_CARS_NAME);
+  Console.print(`${GAME_MSG.GET_CARS_NAME}\n${cars}`);
   const carNames = cars.split(",");
   for (let i = 0; i < carNames.length; i++) {
     if (carNames[i].length > 5) {
@@ -33,7 +34,8 @@ const getCarsName = async () => {
 // 시도 횟수 입력
 const getTryTimes = async () => {
   try {
-    const tryTimes = await Console.readLineAsync(GAME_MSG.GET_TRY_NUMBER);
+    const tryTimes = await Console.readLineAsync(GAME_MSG.GET_TRY_TIMES);
+    Console.print(`${GAME_MSG.GET_TRY_TIMES}\n${tryTimes}`);
     if (isNaN(tryTimes)) {
       throw new Error(ERROR_MSG.TRY_TIMES_NUMBER);
     }
@@ -45,13 +47,10 @@ const getTryTimes = async () => {
 
 // 실행 결과 출력
 const printExecutionResult = (carNames, tryTimes) => {
-  Console.print(GAME_MSG.EXECUTION_RESULT);
+  Console.print(`${GAME_MSG.EXECUTION_RESULT}`);
   while (tryTimes > 0) {
     getExecution(carNames);
-    for (let i = 0; i < carNames.length; i++) {
-      Console.print(carNames[i]);
-    }
-    Console.print("\n");
+    Console.print(`${carNames.join("\n")}\n`);
     tryTimes--;
   }
 };
@@ -88,7 +87,7 @@ const printFinalWinner = (carNames) => {
   });
 
   let gameResult = maxCars.join(", ");
-  Console.print(`최종 우승자 : ${gameResult}`);
+  Console.print(`${GAME_MSG.GAME_WINNER}${gameResult}`);
 };
 
 const endGame = () => {

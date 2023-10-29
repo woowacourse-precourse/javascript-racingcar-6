@@ -2,7 +2,11 @@ import { startGame } from "./racingCar";
 
 class App {
   async play() {
-    startGame();
+    try {
+      await startGame();
+    } catch (error) {
+      throw new Error("[ERROR]");
+    }
   }
 }
 
