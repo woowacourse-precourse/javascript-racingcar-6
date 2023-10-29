@@ -1,6 +1,6 @@
 import { QUESTION_CAR_NAME, ERROR_MESSAGE } from "../const/Messages";
 
-class CarNameManager {
+class UserInputCarName {
   constructor() {
     this.members = [];
   }
@@ -27,8 +27,4 @@ class CarNameManager {
   }
 }
 
-/* const manager = new CarNameManager();
-manager.inputCarName();
-Console.print(manager.getCarName()); */
-
-export default CarNameManager;
+export default UserInputCarName;
