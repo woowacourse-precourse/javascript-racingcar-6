@@ -1,30 +1,23 @@
 class Car {
   #name;
 
-  #forwardCount;
-
-  #backwardCount;
+  #position;
 
   constructor(name) {
     this.#name = name;
-    this.#forwardCount = 0;
-    this.#backwardCount = 0;
+    this.#position = 0;
   }
 
-  moveForward(count) {
-    this.#forwardCount += count;
-  }
-
-  moveBackWard(count) {
-    this.#backwardCount += count;
-  }
-
-  calcPosition() {
-    return this.#forwardCount - this.#backwardCount;
+  moveForward() {
+    this.#position += 1;
   }
 
   get name() {
     return this.#name;
+  }
+
+  get position() {
+    return this.#position;
   }
 }
 
