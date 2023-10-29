@@ -23,6 +23,10 @@ class RacingCarModel {
       }
     });
   }
+
+  getCarData() {
+    return this.#carData;
+  }
 }
 
 export default RacingCarModel;
