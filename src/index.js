@@ -1,6 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import App from "./App.js";
-import {isvalidCarNames, isvalidAttempt} from './validators.js';
+import {isvalidCarNames, isvalidAttempt} from './validate.js';
 
 async function start() {
     const app = new App();
