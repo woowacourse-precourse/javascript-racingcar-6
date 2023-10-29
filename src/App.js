@@ -7,10 +7,10 @@ class App {
   async getRacecarNameInput() {
     const racecarNameInput = await Console.readLineAsync(message.ASK_RACECAR_NAMES);
 
-    const checkResult = await this.checkRacecarNameValidity(racecarNameInput);
+    const isValid = await this.checkRacecarNameValidity(racecarNameInput);
 
-    if (checkResult) {
-      return checkResult;
+    if (isValid) {
+      return isValid;
     } else {
       throw new Error(error.NOT_VALID_NAME);
     }
@@ -34,9 +34,9 @@ class App {
   async getAttemptInput() {
     const attemptInput = await Console.readLineAsync(message.ASK_ATTEMPT_NUMBER);
 
-    const checkResult = await this.checkAttemptValidity(attemptInput);
+    const isValid = await this.checkAttemptValidity(attemptInput);
 
-    if (checkResult) {
+    if (isValid) {
       return Number(attemptInput);
     } else {
       throw new Error(error.NOT_A_NUMBER);
