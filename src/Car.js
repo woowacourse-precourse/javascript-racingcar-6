@@ -1,11 +1,17 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 
-class car {
+class Car {
   constructor(name) {
     this.name = name;
+    this.track = '';
   }
 
-  getRandomNumber() {
-    return MissionUtils.Random.pickNumberInRange(0, 9);
+  move() {
+    const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
+    if (randomNumber >= 4) {
+      this.track += '-';
+    }
   }
 }
+
+export default Car;

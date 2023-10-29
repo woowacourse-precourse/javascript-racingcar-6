@@ -1,4 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
+import Race from './Race.js';
 
 class App {
   async play() {
@@ -17,6 +18,11 @@ class App {
     const isInvalidNumber = Number.isNaN(attempts);
     if (isInvalidNumber) {
       throw new Error('[ERROR] 숫자가 잘못된 형식입니다.');
+    }
+
+    const race = new Race(names);
+    for (let i = 0; i < attempts; i += 1) {
+      race.moveAllCars();
     }
   }
 }
