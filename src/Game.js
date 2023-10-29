@@ -17,6 +17,7 @@ class Game {
 
   setCarArray(nameArray) {
     this.carArray = nameArray.map((n) => new Car(n));
+    this.output.printMessage(nameArray.join(','));
   }
 
   async setTotalRound() {
@@ -27,6 +28,7 @@ class Game {
   }
 
   async start() {
+    this.output.printInputNameMessage();
     await this.input.readText(false);
     this.setCarArray(this.input.nameArray);
     await this.setTotalRound();

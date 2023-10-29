@@ -10,8 +10,8 @@ class Output {
     };
   }
 
-  printPlayMessage() {
-    this.printMessage(MESSAGE.gameResult);
+  printInputNameMessage() {
+    this.printMessage(MESSAGE.inputName);
   }
 
   printInputRoundMessage() {
@@ -19,7 +19,11 @@ class Output {
   }
 
   printTotalRound(round) {
-    this.printMessage(round);
+    this.printMessage(round.toString());
+  }
+
+  printPlayMessage() {
+    this.printMessage(MESSAGE.gameResult);
   }
 
   printPlayResult({ name, movement }) {
