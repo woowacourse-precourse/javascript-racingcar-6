@@ -1,5 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import carHandler from "./utils/carHandler";
+import numberHandler from "./utils/numberHandler";
 
 class CarRace {
   #cars;
@@ -9,8 +10,7 @@ class CarRace {
   async handleRace() {
     await this.handleCar();
 
-    const TRY_NUMBER = await this.readTryNumber();
-    this.setTryNumber(TRY_NUMBER);
+    await this.handleTryNumber();
 
     this.handleRaceResult();
   }
@@ -27,20 +27,9 @@ class CarRace {
     this.#cars = [...carClasses];
   }
 
-  async readTryNumber() {
-    const INPUT =
-      await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?");
-
-    this.validTryNumber(INPUT);
-    return Number(INPUT);
-  }
-
-  validTryNumber(input) {
-    const trimInput = input.trim();
-    if (trimInput === "")
-      throw new Error("[ERROR] 시도 횟수를 입력하지 않으셨습니다.");
-    if (Number.isNaN(Number(trimInput)))
-      throw new Error("[ERROR] 시도 횟수는 숫자 값만 입력해주세요.");
+  async handleTryNumber() {
+    const TRY_NUMBER = await numberHandler.readTryNumber();
+    this.setTryNumber(TRY_NUMBER);
   }
 
   setTryNumber(number) {
@@ -49,31 +38,37 @@ class CarRace {
 
   handleRaceResult() {
     MissionUtils.Console.print("실행 결과");
-    // 1. 시도 횟수만큼 전진 혹은 정지 합니다. 이 값은 랜덤으로 정합니다.
-    // 2. 출력합니다.
-    let tryOrder = 0;
+
+    const STRINGTOPRINT = this.getResultString();
+    MissionUtils.Console.print(STRINGTOPRINT);
+
+    const WINNER = this.getWinner(this.#cars);
+    this.printWinner(WINNER);
+  }
+
+  getResultString() {
     let stringToPrint = "";
 
-    while (tryOrder < this.#tryNumber) {
+    for (let tryOrder = 0; tryOrder < this.#tryNumber; tryOrder += 1) {
       let string = "";
       this.#cars.forEach((carClass) => {
-        const RANDOM = MissionUtils.Random.pickNumberInRange(0, 9);
+        const RANDOM = this.getRandomeNumberInRange(0, 9);
         if (RANDOM >= 4) carClass.setDistancePlusOne();
         string += `${carClass.getName()} : ${carClass.getDistanceString()}\n`;
       });
       stringToPrint += string;
       stringToPrint += "\n";
-      tryOrder += 1;
     }
 
-    MissionUtils.Console.print(stringToPrint);
-    // 3. 우승자를 출력합니다.
-    const WINNER = this.getWinner();
-    this.printWinner(WINNER);
+    return stringToPrint;
   }
 
-  getWinner() {
-    const CAR_OBJECTS = this.#cars.map((carClass) => {
+  getRandomeNumberInRange(min, max) {
+    return MissionUtils.Random.pickNumberInRange(min, max);
+  }
+
+  getWinner(cars) {
+    const CAR_OBJECTS = cars.map((carClass) => {
       const CAR_OBJECT = {
         name: carClass.getName(),
         distance: carClass.getDistanceString().length,

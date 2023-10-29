@@ -1,6 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import CarRace from "../src/CarRace";
 import carHandler from "../src/utils/carHandler";
+import numberHandler from "../src/utils/numberHandler";
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -48,18 +48,15 @@ describe("유닛 테스트", () => {
     const answer = ["1e"];
     mockQuestions(answer);
 
-    const carRace = new CarRace();
-    await expect(carRace.readTryNumber()).rejects.toThrow(
+    await expect(numberHandler.readTryNumber()).rejects.toThrow(
       "[ERROR] 시도 횟수는 숫자 값만 입력해주세요."
     );
   });
-
   test("readTryNumber 에러2", async () => {
     const answer = ["1234q"];
     mockQuestions(answer);
 
-    const carRace = new CarRace();
-    await expect(carRace.readTryNumber()).rejects.toThrow(
+    await expect(numberHandler.readTryNumber()).rejects.toThrow(
       "[ERROR] 시도 횟수는 숫자 값만 입력해주세요."
     );
   });
@@ -67,8 +64,7 @@ describe("유닛 테스트", () => {
     const answer = [""];
     mockQuestions(answer);
 
-    const carRace = new CarRace();
-    await expect(carRace.readTryNumber()).rejects.toThrow(
+    await expect(numberHandler.readTryNumber()).rejects.toThrow(
       "[ERROR] 시도 횟수를 입력하지 않으셨습니다."
     );
   });
@@ -76,17 +72,14 @@ describe("유닛 테스트", () => {
     const answer = ["5"];
     mockQuestions(answer);
 
-    const carRace = new CarRace();
-    const output = await carRace.readTryNumber();
+    const output = await numberHandler.readTryNumber();
     expect(output).toEqual(5);
   });
-
   test("readTryNumber 통과2", async () => {
     const answer = ["99"];
     mockQuestions(answer);
 
-    const carRace = new CarRace();
-    const output = await carRace.readTryNumber();
+    const output = await numberHandler.readTryNumber();
     expect(output).toEqual(99);
   });
 
