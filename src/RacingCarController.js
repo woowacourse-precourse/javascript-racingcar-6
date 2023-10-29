@@ -1,4 +1,5 @@
 import InputView from './Views/InputView';
+import OutputView from './Views/OutputView';
 import Validator from '../utils/Validator';
 import CONSTANTS from '../utils/Constants';
 import RacingCar from './RacingCar';
@@ -30,11 +31,16 @@ class RacingCarController {
     for (let i = 1; i <= trialCount; i++) {
       this.progressCars();
     }
+    this.printResult();
   }
 
   progressCars() {
     this.racingCar.progressCars();
     this.racingCar.pushEachProgressStatus();
+  }
+
+  printResult() {
+    OutputView.printMessage(this.racingCar.getTotalProgressStatus());
   }
 }
 

@@ -19,6 +19,10 @@ class RacingCar {
       this.cars.map((car) => car.getProgressStatus()).join(MESSAGES.lineBreak) + MESSAGES.lineBreak;
     this.totalProgressStatus.push(eachProgressStatus);
   }
+  getTotalProgressStatus() {
+    const totalProgressStatusString = this.totalProgressStatus.join(MESSAGES.lineBreak);
+    return MESSAGES.result + totalProgressStatusString;
+  }
 }
 
 export default RacingCar;
