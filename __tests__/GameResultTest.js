@@ -77,5 +77,30 @@ describe('게임 결과에 대한 테스트입니다.', () => {
 
     // then
     expect(logSpy).toHaveBeenCalledWith(expect.stringMatching(answer));
+  });
+
+  test('포비가 3칸 크롱이 3칸 움직였을 때 우승자로 포비와 크롱이 출력됩니다.', () => {
+    // given
+
+    const pobiCar = new RacingCar('pobi');
+    const crongCar = new RacingCar('crong');
+
+    const answer = `${MESSAGE.FINAL_WINNERS} : pobi, crong`;
+    const logSpy = getLogSpy();
+    
+    pobiCar.moveForward();
+    pobiCar.moveForward();
+    pobiCar.moveForward();
+
+    crongCar.moveForward();
+    crongCar.moveForward();
+    crongCar.moveForward();
+
+    // when
+    const winner = GameUtils.selectWinners([pobiCar, crongCar]);
+    GameUtils.printFinalWinners(winner);
+
+    // then
+    expect(logSpy).toHaveBeenCalledWith(expect.stringMatching(answer));
   })
 })
