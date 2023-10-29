@@ -1,5 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
 import CarList from "./CarList.js";
+import MESSAGE from "./constants/message.js";
 
 class App {
   async play() {
@@ -8,7 +9,7 @@ class App {
     console.log(carList, carArray);
     const tryNumber = await this.getTryNumber();
 
-    Console.print("\n실행 결과");
+    Console.print(MESSAGE.END_GAME_MSG);
     Array.from({ length: tryNumber }).map(() => {
       carArray.map((car) => {
         car.printScore();
@@ -24,7 +25,7 @@ class App {
   }
 
   async getTryNumber() {
-    Console.print("시도할 횟수는 몇 회인가요?");
+    Console.print(MESSAGE.INPUT_TRYNUMBER_MSG);
     const tryNumber = await Console.readLineAsync("");
     return tryNumber;
   }
