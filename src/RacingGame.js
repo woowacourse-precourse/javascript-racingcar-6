@@ -13,6 +13,13 @@ class RacingGame {
     return this.#TRY_NUMBER;
   };
 
+  shouldMoveForward = () => {
+    let canMove = true;
+    const score = MissionUtils.Random.pickNumberInRange(0, 9);
+    if (score < 4) canMove = false;
+    return canMove;
+  };
+
   isValidCarName = (input) => {
     const car_names = input
       .split(',')
@@ -63,9 +70,6 @@ class RacingGame {
     try {
       await this.setCarName();
       await this.setTryNumber();
-
-      console.log(this.getCarsList());
-      console.log(this.getTryNumber());
     } catch {
       throw new Error(Messages.ERROR_DEFAULT);
     }
