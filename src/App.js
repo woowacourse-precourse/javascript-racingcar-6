@@ -23,10 +23,25 @@ class App {
     if (/\d/.test(input) && input > 0) this.number = parseInt(input);
     else throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
   }
+  racingGame() {
+    MissionUtils.Console.print("실행 결과");
+    for (let i = 0; i < this.number; i++) {
+      this.cars.map((car) => {
+        if (MissionUtils.Random.pickNumberInRange(0, 9) >= 4) {
+          car.go();
+        }
+        MissionUtils.Console.print(
+          `${car.getName()} : ${"-".repeat(car.getDistance())}`
+        );
+      });
+      MissionUtils.Console.print("");
+    }
+  }
   async play() {
     try {
       await this.inputCars();
       await this.inputNumber();
+      this.racingGame();
     } catch (error) {
       throw error;
     }
