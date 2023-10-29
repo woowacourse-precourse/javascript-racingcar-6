@@ -8,7 +8,8 @@ const validate = {
   },
   lapLength: (length) => {
     const numberCheck = /[^1-9]/;
-    if (numberCheck.test(length)) throw new Error('[ERROR] 숫자를 입력해주세요');
+    if (numberCheck.test(length)) throw new Error('[ERROR] 숫자를 입력해주세요.');
+    if (length > 99) throw new Error('[ERROR] 최대 2자리 수까지 입력이 가능합니다.');
   },
 };
 
