@@ -41,6 +41,13 @@ class App {
     });
   }
 
+  findMaxCount() {
+    const maxCount = Math.max(...this.#cars.map((car) => car.count));
+    const maxCountCars = this.#cars.filter((car) => car.count === maxCount);
+    const maxCountCarNames = maxCountCars.map((car) => car.name);
+    return maxCountCarNames;
+  }
+
   async play() {
     const names = await this.getCarNames();
     names.split(',').forEach((element) => {
@@ -57,6 +64,9 @@ class App {
       this.startGoOrStop();
       this.#num += 1;
     }
+
+    const max = this.findMaxCount();
+    Console.print('\n최종 우승자' + ' : ' + max.join(', '));
   }
 }
 
