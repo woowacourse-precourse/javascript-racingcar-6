@@ -49,8 +49,7 @@ const CarRacing = {
   },
 
   printWinner(winners){
-    const finalWinners = winners.map((winner) => winner).join(',');
-    return finalWinners;
+    return winners.map((winner) => winner).join(',');
   }
 };
 
