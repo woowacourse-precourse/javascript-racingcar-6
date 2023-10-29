@@ -19,11 +19,11 @@ class App {
   }
 
   async #setUpRaceGame() {
-    await this.#readCarNames();
-    await this.#readTotalRounds();
+    await this.#setUpCars();
+    await this.#setUpTotalRounds();
   }
 
-  async #readCarNames() {
+  async #setUpCars() {
     const carNameString = await InputView.getCarNames();
     const carNames = carNameString.split(',');
     Validation.validateCarNames(carNames);
@@ -31,7 +31,7 @@ class App {
     this.#refree.registerCars(carNames);
   }
 
-  async #readTotalRounds() {
+  async #setUpTotalRounds() {
     const totalRoundsString = await InputView.getTotalRounds();
     Validation.validateTotalRounds(totalRoundsString);
     this.#totalRounds = Number(totalRoundsString);
