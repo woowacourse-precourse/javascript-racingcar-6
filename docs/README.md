@@ -25,9 +25,6 @@
   - name : 자동차 이름을 담을 변수
   - countMove : 현재 전진 횟수를 담을 변수
   - showMove : 현재 전진 상태를 출력할때 쓰일 변수
-- printAfterMove메서드
-  - `@woowacourse/mission-utils`에서 제공하는 `Console.print` 사용
-  - 라운드별 이동 결과를 출력
 - move메서드
   - getRandomNumber함수를 호출하여 4 이상일 경우 countMove에 1을 더하고 showMove에 `-`추가
 
