@@ -11,7 +11,6 @@ class App {
     try {
       players = await user.inputPlayersName();
     } catch (error) {
-      console.error(error.message);
       throw new Error('[ERROR] 숫자가 잘못된 형식입니다.');
     }  
 
@@ -21,7 +20,7 @@ class App {
       name,
       moveNum: 0
     }));
-    Console.print(gameResultInStep)
+
     Console.print('\n실행 결과');
 
     let gameStep = 0;
@@ -35,6 +34,8 @@ class App {
       judge.printResultInStep(gameResultInStep);
       gameStep++;
     }
+
+    judge.printWinner(gameResultInStep);
   }
 }
 

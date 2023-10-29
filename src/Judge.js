@@ -21,6 +21,25 @@ class Judge {
 
     Console.print(result);
   }
+
+  printWinner(gameResult) {
+    let maxMove = 0;
+
+    gameResult.forEach((player) => {
+      if (maxMove < player.moveNum) {
+        maxMove = player.moveNum;
+      }
+    });
+
+    const winnerPlayers = [];
+    gameResult.forEach((player) => {
+      if (player.moveNum === maxMove) {
+        winnerPlayers.push(player.name);
+      }
+    })
+
+    Console.print(`최종 우승자 : ${winnerPlayers.map((member) => member).join(',')}`);
+  }
 }
 
 export default Judge;
