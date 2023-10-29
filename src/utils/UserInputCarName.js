@@ -24,7 +24,7 @@ class UserInputCarName {
   }
 
   getCarName() {
-    return this.members.join(",");
+    return this.members;
   }
 }
 
