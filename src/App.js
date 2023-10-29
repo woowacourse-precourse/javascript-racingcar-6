@@ -15,7 +15,7 @@ class App {
   makeCarArray(names) {
     names.split(",").forEach((name) => {
       if (name.length > 5) {
-        throw new Error("[Error] 이름이 5자를 초과했습니다.")
+        throw new Error("[ERROR] 이름이 5자를 초과했습니다.")
       }
 
       this.cars.push(new Car(name));
