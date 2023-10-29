@@ -24,8 +24,10 @@ class Refree {
 
   getWinner() {
     const resultList = this.getRecordResultList();
-    const max = Math.max(...resultList.map(([_, position]) => position));
-    const winner = resultList.filter(([_, position]) => position === max).map(([name, _]) => name);
+    const maxPosition = Math.max(...resultList.map(([_, position]) => position));
+    const winner = resultList
+      .filter(([_, position]) => position === maxPosition)
+      .map(([name, _]) => name);
     return winner;
   }
 }
