@@ -37,20 +37,24 @@ describe("자동차 이름 입력 테스트", () => {
   });
 });
 
-// describe("경주 횟수 입력 테스트", () => {
-//   const racingNumberValidate = new TryNumberValidate();
+describe("레이싱 횟수 입력 테스트", () => {
+  const racingNumberValidate = new TryNumberValidate();
 
-//   test("0을 입력하거나 값을 입력하지 않은 경우 에러처리", () => {
-//     const input = [0, ""];
-//     const result = ERROR.tryNumberZero;
+  test("0을 입력하거나 값을 입력하지 않은 경우 에러처리", () => {
+    const input = [-2, 0, ""];
+    const result = ERROR.tryNumberZero;
 
-//     expect(() => racingNumberValidate.checkZero(input).toThrow(result));
-//   });
+    input.forEach((input) => {
+      expect(() => racingNumberValidate.checkZero(input).toThrow(result));
+    });
+  });
 
-//   // test("숫자가 아닌 형식을 입력한 경우", () => {
-//   //   const input = ["a", " "];
-//   //   const result = ERROR.tryNumberZero;
+  test("숫자가 아닌 형식을 입력한 경우", () => {
+    const input = ["a", "!", " ", "가"];
+    const result = ERROR.tryNumberZero;
 
-//   //   expect(() => racingNumberValidate.checkZero(input).toThrow(result));
-//   // });
-// });
+    input.forEach((input) => {
+      expect(() => racingNumberValidate.checkType(input).toThrow(result));
+    });
+  });
+});
