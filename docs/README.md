@@ -26,23 +26,23 @@
 
 =============
 
-# MVC 패턴 정리
+# MVC 패턴 구조화
 
 - M(Models)
     - Car
         - 속성: name(자동차 이름), position(현재 위치)
-        - 메서드: move(전진)
+        - 함수: move(전진)
     - Race
         - 속성: cars(참가 자동차 배열), tryCount(시도 횟수)
-        - 메서드: runRace(레이스 실행), determineWinner(우승자 결정)
+        - 함수: runRace(레이스 실행), determineWinner(우승자 결정)
 
 - V(Views)
     - InputView
-        - 메서드: getCarNames(자동차 이름 입력받기), getTryCount(시도 횟수 입력받기)
+        - 함수: getCarNames(자동차 이름 입력받기), getTryCount(시도 횟수 입력받기)
     - OutputView
-        - 메서드: showCurrentPositions(현재 자동차 위치 출력), showWinners(우승자 출력)
+        - 함수: showCurrentPositions(현재 자동차 위치 출력), showWinners(우승자 출력)
 
 - C(Controllers)
     - GameController
         - 속성: race(레이스), inputView(입력 뷰), outputView(출력 뷰)
-        - 메서드: startGame(게임 시작), playRound(한 라운드 게임 실행)
+        - 함수: startGame(게임 시작), playRound(한 라운드 게임 실행)
