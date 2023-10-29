@@ -39,6 +39,12 @@ class App {
     this.loopNumber = inputNumber;
   }
 
+  ProcessRound() {
+    this.carArray.forEach((car) => {
+      car.Move();
+    });
+  }
+
   PrintWinner() {
     let winnerArray = [];
     let maxCount = 0;
@@ -58,9 +64,7 @@ class App {
     await this.GetLoopNumber();
     LineBreakMessage();
     for (let loop = 0; loop < this.loopNumber; loop += 1) {
-      this.carArray.forEach((car) => {
-        car.Move();
-      });
+      this.ProcessRound();
       LineBreakMessage();
     }
     this.PrintWinner();
