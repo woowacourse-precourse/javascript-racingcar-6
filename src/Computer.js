@@ -7,20 +7,22 @@ export default class Computer {
   }
 
   async playGame(user) {
-    await this.getCarNameInputFromUser(user);
-    await this.getTrialNumberInputFromUser(user);
+    this.racingCars = await this.getCarNameArrayFromUserInput(user);
+    const trialNum = await this.getTrialNumberFromUserInput(user);
+    this.tryToMoveCars(trialNum);
   }
 
   tryToMoveCars(times) {
     for (let time = 0; time < times; time++) {
+      console.log('move cars');
       this.racingCars.forEach((car) => car.moveForward());
     }
   }
 
-  async getCarNameInputFromUser(user) {
+  async getCarNameArrayFromUserInput(user) {
     const userInput = await user.inputCarName();
     const carNameArr = this.getCarNameArrayFromString(userInput);
-    this.racingCars = carNameArr.map((carName) => new RacingCar(carName));
+    return carNameArr.map((carName) => new RacingCar(carName));
   }
 
   getCarNameArrayFromString(str) {
@@ -30,7 +32,7 @@ export default class Computer {
     return carNameArr;
   }
 
-  async getTrialNumberInputFromUser(user) {
+  async getTrialNumberFromUserInput(user) {
     const userInput = await user.inputTrialNumber();
     const trialNum = this.getTrialNumberFromString(userInput);
     return trialNum;
