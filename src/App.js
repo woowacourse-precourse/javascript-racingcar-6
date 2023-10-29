@@ -25,6 +25,16 @@ class App {
 
 // 각 차수별 실행 결과를 출력한다.
 // 각 자동차는 0~9 사이 무작위 값을 구해 그 값이 4 이상일 경우 전진한다.
+  isGoing() {
+    return Random.pickNumberInRange(0, 9) >= 4;
+  }
+
+  playerTurn(playerName) {
+    if (this.isGoing()) {
+      this.#gameData[playerName].position += 1;
+    }
+  }
+
 // 모든 자동차의 전진 현황을 "이름 : --" 의 형식으로 출력한다.
 // 최종 우승자를 출력한다.
 // 우승자가 여러 명인 경우 쉼표로 구분해 같이 출력한다.
@@ -34,6 +44,7 @@ class App {
     await this.setRepeatCount();
     Console.print('');
     Console.print(MESSAGE.gameStart);
+    Object.keys(this.#gameData).forEach((playerName) => this.playerTurn(playerName));
 
     Console.print(this.#gameData);
     Console.print(this.#repeatCount);
