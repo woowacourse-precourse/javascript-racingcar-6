@@ -28,8 +28,13 @@ class RacingCarController {
   handleTrialCount(trialCount) {
     Validator.validateTrialCount(trialCount);
     for (let i = 1; i <= trialCount; i++) {
-      this.racingCar.progressCars();
+      this.progressCars();
     }
+  }
+
+  progressCars() {
+    this.racingCar.progressCars();
+    this.racingCar.pushEachProgressStatus();
   }
 }
 

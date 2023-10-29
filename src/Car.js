@@ -11,6 +11,9 @@ class Car {
     const value = Random.pickNumberInRange(CONSTANTS.minimumValue, CONSTANTS.maximumValue);
     if (value >= CONSTANTS.progressValue) this.progressStatus += MESSAGES.progressBar;
   }
+  getProgressStatus() {
+    return this.name + MESSAGES.resultDelimeter + this.progressStatus;
+  }
 }
 
 export default Car;
