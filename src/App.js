@@ -17,7 +17,21 @@ class App {
     const carNameList = carNames.split(',');
     const trimmedCarNames = carNameList.map((carName) => carName.trim());
 
+    if (!this.isValidCarNames(trimmedCarNames)) {
+      throw new Error('[ERROR] 잘못된 입력값입니다.');
+    }
+
     return trimmedCarNames;
+  }
+
+  isValidCarNames(carNameList) {
+    if (carNameList.length === 1) return false;
+
+    for (let carName of carNameList) {
+      if (carName.length === 0 || carName.length > 5) return false;
+    }
+
+    return true;
   }
 }
 
