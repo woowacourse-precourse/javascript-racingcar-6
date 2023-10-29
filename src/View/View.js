@@ -3,6 +3,7 @@ import OutputView from './OutputView.js';
 import Validator from '../utils/Validator.js';
 import MESSAGE from '../constants/message.js';
 import CAR from '../constants/car.js';
+import RACING_GAME from '../constants/racingGame.js';
 
 class View {
   #inputView = InputView;
@@ -18,6 +19,14 @@ class View {
     carNames.forEach(this.#validator.validateCarName.bind(this.#validator));
 
     return carNames;
+  }
+
+  async readRound() {
+    const userInput = await this.#inputView.readLineAsync(MESSAGE.read.round);
+
+    this.#validator.validateRound(userInput);
+
+    return parseInt(userInput, RACING_GAME.round.radix);
   }
 
   print(message) {

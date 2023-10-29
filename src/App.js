@@ -4,9 +4,10 @@ class App {
   #view = new View();
 
   async play() {
-    const userInput = await this.#view.readCarName();
+    const carNames = await this.#view.readCarName();
+    const round = await this.#view.readRound();
 
-    this.#view.print(userInput);
+    this.#view.print(`carNames: ${carNames}, round: ${round}`);
   }
 }
 

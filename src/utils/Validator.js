@@ -1,5 +1,6 @@
 import CAR from '../constants/car.js';
 import ERROR from '../constants/error.js';
+import RACING_GAME from '../constants/racingGame.js';
 import CustomError from '../errors/error.js';
 
 const Validator = {
@@ -24,6 +25,15 @@ const Validator = {
 
     if (!isvalidLength) {
       throw CustomError.InputView(ERROR.message.invalidCarNameLength);
+    }
+  },
+
+  validateRound(round) {
+    const isPositiveInteger =
+      Number.isInteger(Number(round)) && round >= RACING_GAME.round.min;
+
+    if (!isPositiveInteger) {
+      throw CustomError.InputView(ERROR.message.invalidRound);
     }
   },
 };
