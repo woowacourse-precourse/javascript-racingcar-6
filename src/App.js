@@ -56,6 +56,12 @@ class App {
       MissionUtils.Console.print('\n');
     }
   }
+  async play() {
+    let carArray = await this.getCarName();
+    let gameCount = await this.getGameCount();
+    console.log(carArray, gameCount);
+    this.gameTrial(carArray, gameCount);
+  }
 }
 const app = new App();
 await app.play();
