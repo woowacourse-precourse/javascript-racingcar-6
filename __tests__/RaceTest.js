@@ -14,4 +14,14 @@ describe("Race 클래스 테스트", () => {
       expect(expectedCar.getName()).toBe(actualCars[index].getName());
     });
   });
+
+  test("경주 시도 횟수 저장 기능", () => {
+    const carNames = "pobi,woni,jun";
+    const race = new Race(carNames);
+
+    const trial = 5;
+    race.setTrial(trial);
+
+    expect(race.getTrial()).toBe(trial);
+  });
 });
