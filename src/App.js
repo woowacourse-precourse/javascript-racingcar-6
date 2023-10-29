@@ -2,6 +2,12 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 
 const { Random, Console } = MissionUtils;
 
+export const ERROR_MESSAGE = {
+  LENGTH: "[ERROR] 이름은 5자 이하만 가능합니다.",
+  NUMBER: "[ERROR] 숫자를 잘못 입력했습니다.",
+  EMPTY: "[ERROR] 입력이 비어있습니다.",
+};
+
 class Car {
   constructor(name) {
     this.name = name;
@@ -35,12 +41,21 @@ class App {
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
     );
     const input = await Console.readLineAsync();
+
+    if (!input || input.trim() === "") throw new Error(ERROR_MESSAGE.EMPTY);
+
+    const carNames = input.split(",").map((name) => name.trim());
+    if (carNames.some((name) => name.length > 5))
+      throw new Error(ERROR_MESSAGE.LENGTH);
+
     this.cars = input.split(",").map((name) => new Car(name));
   }
 
   async getChances() {
     Console.print("시도할 횟수는 몇 회인가요?");
     const input = await Console.readLineAsync();
+
+    if (!input || isNaN(input)) throw new Error(ERROR_MESSAGE.NUMBER);
     this.chances = parseInt(input);
   }
 
