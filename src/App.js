@@ -1,5 +1,6 @@
 import GetCarsName from './GetCarsName.js';
 import GetTryNumber from './GetTryNumber.js';
+import Game from './Game.js';
 
 class App {
   async play() {
@@ -9,7 +10,9 @@ class App {
     const getTryNumber = new GetTryNumber();
     const tryNumber = await getTryNumber.getTryNumber();
 
-    console.log(carsList, tryNumber);
+    // console.log(carsList, tryNumber);
+    const game = new Game(carsList, tryNumber);
+    game.gameStart();
   }
 }
 
