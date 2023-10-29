@@ -1,14 +1,14 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Console } from '@woowacourse/mission-utils';
 
 const printRacingResult = (carNameDict) => {
   for (let carName in carNameDict) {
-    let resultStr = carName + " : ";
+    let resultStr = carName + ' : ';
     for (let i = 0; i < carNameDict[carName]; i++) {
-      resultStr += "-";
+      resultStr += '-';
     }
     Console.print(resultStr);
   }
-  Console.print("");
+  Console.print('');
 };
 
 export { printRacingResult };

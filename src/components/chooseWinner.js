@@ -1,9 +1,9 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Console } from '@woowacourse/mission-utils';
 
 const makeResultStr = (resultStr, item, maxScore) => {
   if (item[1] == maxScore) {
-    if (resultStr === "") resultStr += item[0];
-    else resultStr += ", " + item[0];
+    if (resultStr === '') resultStr += item[0];
+    else resultStr += ', ' + item[0];
   }
   return resultStr;
 };
@@ -19,14 +19,14 @@ const chooseWinner = (carNameDict) => {
     return b[1] - a[1];
   });
 
-  let resultStr = "";
+  let resultStr = '';
   const maxScore = sortCarNameDict[0][1];
 
   sortCarNameDict.forEach((item) => {
     resultStr = makeResultStr(resultStr, item, maxScore);
   });
 
-  Console.print("최종 우승자 : " + resultStr);
+  Console.print('최종 우승자 : ' + resultStr);
 };
 
 export { chooseWinner };
