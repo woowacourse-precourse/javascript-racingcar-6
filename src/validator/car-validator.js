@@ -19,7 +19,7 @@ function checkLength(racingCarName) {
 
 /**
  * 중복된 자동차의 이름이 존재하는지 검증하기 위한 함수
- * @param {string[]} racingCarNames 자동차의 이름들
+ * @param {string[]} racingCarNames 자동차들의 이름
  * @throw 중복된 자동차의 이름이 존재하면 에러를 던진다.
  */
 function checkDuplication(racingCarNames) {

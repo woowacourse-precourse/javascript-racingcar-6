@@ -5,7 +5,7 @@ import checkSpace from "./common-validator.js";
 /**
  * 시도 횟수가 숫자인지 검증하는 함수
  * @param {string} inputAttemptCount 시도 횟수
- * @throws 시도 횟수의 길이가 0이라면 에러를 던진다.
+ * @throws 시도 횟수가 숫자가 아니라면 에러를 던진다.
  */
 function checkNumeric(inputAttemptCount) {
   if (isNaN(Number(inputAttemptCount))) {
@@ -37,7 +37,7 @@ function checkPositiveNumber(inputAttemptCount) {
 
 /**
  * 입력받은 시도 횟수를 검증하는 함수
- * @param {string} inputAttemptCount 입력받은 검증 횟수
+ * @param {string} inputAttemptCount 시도 횟수
  */
 function validateAttemptCount(inputAttemptCount) {
   checkSpace(inputAttemptCount);
