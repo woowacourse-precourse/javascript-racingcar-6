@@ -85,11 +85,11 @@ class App {
   race(carNamesArray, tryCount) {
     const carProgressArray = carNamesArray.map(() => '');
 
-    // MissionUtils.Console.print('실행결과');
+    MissionUtils.Console.print('\n실행결과');
 
     while (tryCount > 0) {
       this.updateCarProgress(carProgressArray);
-      //printCarProgress(carNamesArray, carProgressArray);
+      this.printCarProgress(carNamesArray, carProgressArray);
       tryCount -= 1;
     }
     return carProgressArray;
@@ -104,6 +104,13 @@ class App {
       }
     });
     return carProgressArray;
+  }
+
+  printCarProgress(carNamesArray, carProgressArray) {
+    carNamesArray.forEach((carName, index) => {
+      MissionUtils.Console.print(`${carName} : ${carProgressArray[index]}`);
+    });
+    MissionUtils.Console.print('');
   }
 }
 
