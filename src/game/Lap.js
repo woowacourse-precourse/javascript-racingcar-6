@@ -1,4 +1,5 @@
-import { Random, Console } from '@woowacourse/mission-utils';
+import computer from '../utils/console.js';
+import { Random } from '@woowacourse/mission-utils';
 
 class Lap {
   constructor(entry, laplength) {
@@ -18,8 +19,8 @@ class Lap {
     for (let i = 0; i < this.entry.length; i += 1) {
       if (Random.pickNumberInRange(0, 9) > 3) this.record[i] += '-';
     }
-    Console.print(this.record.join('\n'));
-    Console.print('');
+    computer.tell(this.record.join('\n'));
+    computer.tell('');
   }
 }
 

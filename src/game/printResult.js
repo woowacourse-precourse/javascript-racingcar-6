@@ -1,5 +1,5 @@
 import MESSAGE from '../utils/constants.js';
-import { Console } from '@woowacourse/mission-utils';
+import computer from '../utils/console.js';
 
 const printResult = (finalRecord, lapLength) => {
   const winner = [];
@@ -8,8 +8,8 @@ const printResult = (finalRecord, lapLength) => {
     const carName = record.split(' ');
     if (countLength === parseInt(lapLength, 10)) winner.push(carName[0]);
   });
-  if (winner.length === 0) Console.print(MESSAGE.NO_WINNER);
-  else Console.print(`${MESSAGE.FINAL_WINNER + winner.join(', ')}`);
+  if (winner.length === 0) computer.tell(MESSAGE.NO_WINNER);
+  else computer.tell(`${MESSAGE.FINAL_WINNER + winner.join(', ')}`);
 };
 
 export default printResult;

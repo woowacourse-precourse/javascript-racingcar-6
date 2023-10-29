@@ -1,6 +1,6 @@
 import Lap from './game/Lap.js';
 import validate from './game/validation.js';
-import printResult from './game/printWinner.js';
+import printResult from './game/printResult.js';
 import computer from './utils/console.js';
 import ABOUT from './utils/constants.js';
 
