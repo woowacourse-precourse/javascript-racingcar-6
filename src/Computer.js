@@ -6,39 +6,38 @@ export default class Computer {
     this.racingCars = [];
   }
 
-  async playGame(user) {
-    this.racingCars = await this.getCarNameArrayFromUserInput(user);
-    const trialNum = await this.getTrialNumberFromUserInput(user);
+  async playGame() {
+    this.racingCars = await Computer.getCarNameArrayFromUserInput();
+    const trialNum = await Computer.getTrialNumberFromUserInput();
     this.tryToMoveCars(trialNum);
   }
 
   tryToMoveCars(times) {
-    for (let time = 0; time < times; time++) {
-      console.log('move cars');
+    for (let time = 0; time < times; time += 1) {
       this.racingCars.forEach((car) => car.moveForward());
     }
   }
 
-  async getCarNameArrayFromUserInput(user) {
-    const userInput = await user.inputCarName();
-    const carNameArr = this.getCarNameArrayFromString(userInput);
+  static async getCarNameArrayFromUserInput() {
+    const userInput = await User.inputCarName();
+    const carNameArr = Computer.getCarNameArrayFromString(userInput);
     return carNameArr.map((carName) => new RacingCar(carName));
   }
 
-  getCarNameArrayFromString(str) {
+  static getCarNameArrayFromString(str) {
     const carNameArr = str.split(',').map((name) => name.trim());
     if (carNameArr.some((carName) => carName.length > 5 || carName === ''))
       throw new Error('[ERROR] 잘못된 입력입니다.');
     return carNameArr;
   }
 
-  async getTrialNumberFromUserInput(user) {
-    const userInput = await user.inputTrialNumber();
-    const trialNum = this.getTrialNumberFromString(userInput);
+  static async getTrialNumberFromUserInput() {
+    const userInput = await User.inputTrialNumber();
+    const trialNum = Computer.getTrialNumberFromString(userInput);
     return trialNum;
   }
 
-  getTrialNumberFromString(str) {
+  static getTrialNumberFromString(str) {
     if (Number.isNaN(Number(str)))
       throw new Error('[ERROR] 잘못된 입력입니다.');
     return Number(str);

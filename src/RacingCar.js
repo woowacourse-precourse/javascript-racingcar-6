@@ -2,6 +2,7 @@ import { Random } from '@woowacourse/mission-utils';
 
 export default class RacingCar {
   static RAND_START = 0;
+
   static RAND_END = 9;
 
   constructor(name) {
@@ -12,7 +13,7 @@ export default class RacingCar {
   moveForward() {
     const randomNumber = RacingCar.getRandomNumber(
       RacingCar.RAND_START,
-      RacingCar.RAND_END
+      RacingCar.RAND_END,
     );
 
     if (randomNumber >= 4) this.distance += 1;
