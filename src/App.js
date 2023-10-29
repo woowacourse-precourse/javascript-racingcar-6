@@ -16,6 +16,10 @@ class App {
     if (player.includes(',') !== true &&
     REGEX.test(player) !== true &&
     player_array.length <= 1) {throw new Error(MESSAGE.ERROR)};  
+
+    const play_number = await Console.readLineAsync(MESSAGE.TRY_NUMBER);
+
+    
   }
 }
 const app = new App(); 
