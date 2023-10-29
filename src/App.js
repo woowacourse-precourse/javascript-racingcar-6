@@ -6,10 +6,8 @@ class App {
       "경주할 자동차 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분)"
     );
     const userAttempts = await this.attempts("시도할 횟수는 몇 회인가요?");
-    console.log(player);
-    console.log(userAttempts);
     const raceStart = this.race(player, userAttempts);
-    console.log(raceStart);
+    console.log(this.winner(raceStart));
   }
 
   async playerRegistration(answer) {
@@ -29,17 +27,19 @@ class App {
     const userAttempts = await MissionUtils.Console.readLineAsync(answer);
     return userAttempts;
   }
+
   race(player, userAttempts) {
     let results = {};
+
     MissionUtils.Console.print("실행 결과");
     for (let i = 1; i <= userAttempts; i++) {
       // console.log(`실행횟수 ${i}번`);
-      this.race2(player, results);
+      this.calculate(player, results);
     }
     return results;
   }
 
-  race2(player, results) {
+  calculate(player, results) {
     for (let j = 0; j < player.length; j++) {
       let result = "";
       if (MissionUtils.Random.pickNumberInRange(0, 9) >= 4) {
@@ -54,6 +54,23 @@ class App {
     }
 
     return results;
+  }
+  winner(result) {
+    let maxHyphenCount = 0;
+    let winners = [];
+
+    for (const player in result) {
+      const hyphenCount = (result[player].match(/-/g) || []).length;
+
+      if (hyphenCount > maxHyphenCount) {
+        maxHyphenCount = hyphenCount;
+        winners = [player];
+      } else if (hyphenCount === maxHyphenCount) {
+        winners.push(player);
+      }
+    }
+
+    return winners.join(", ");
   }
 }
 
