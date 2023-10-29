@@ -26,4 +26,18 @@ export default class RacingCarGame {
       car.race();
     });
   }
+
+  getCarsStatus() {
+    const carsStatus = [];
+    Array.from(this.cars, (car) => {
+      const carStus = car.getStatus();
+      carsStatus.push(carStus);
+    });
+    return carsStatus;
+  }
+
+  displayRaceResults() {
+    const carsStatus = this.getCarsStatus();
+    OutputView.printOneRound(carsStatus);
+  }
 }
