@@ -33,4 +33,26 @@ describe("자동차 전진 테스트", () => {
 
     expect(result).toEqual(6);
   });
+
+  test("숫자 확인 후 전진 테스트", () => {
+    const randoms = [6];
+
+    mockRandoms([...randoms]);
+
+    const car = new Car("pobi");
+    car.move();
+
+    expect(car.position).toEqual(1);
+  });
+
+  test("숫자 확인 후 정지 테스트", () => {
+    const randoms = [3];
+
+    mockRandoms([...randoms]);
+
+    const car = new Car("pobi");
+    car.move();
+
+    expect(car.position).toEqual(0);
+  });
 });

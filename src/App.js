@@ -2,7 +2,7 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 import Car from "../src/Car";
 
 class App {
-  cars = [];
+  #cars = [];
 
   // 자동차 이름 입력에 대한 유효성 테스트
   static #isValidCarName(input) {
@@ -29,7 +29,7 @@ class App {
   // 입력받은 자동차들을 참여시키는 메소드
   async #inputCar() {
     const carNameArray = await App.#inputCarName();
-    this.cars = carNameArray.map((carName) => new Car(carName));
+    this.#cars = carNameArray.map((carName) => new Car(carName));
   }
 
   static async #inputRoundNum() {
