@@ -1,8 +1,8 @@
 import { Console } from '@woowacourse/mission-utils';
-import { MESSAGE } from './Constants';
-import Validation from './Validation';
-import CarRacingGame from './CarRacingGame';
-import Car from './Car';
+import { MESSAGE } from './Constants.js';
+import Validation from './Validation.js';
+import CarRacingGame from './CarRacingGame.js';
+import Car from './Car.js';
 
 class App {
   /** @constructor */
