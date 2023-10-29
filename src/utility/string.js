@@ -4,8 +4,4 @@ export const getHyphens = (count) => {
   return '-'.repeat(count);
 };
 
-export const splitStringByComma = string => string.split(',');
-
-export const joinArrayWithComma = array => array.join(',');
-
-export const isEmptyString = string => string.trim() === '';
+export const splitStringByComma = (string) => string.split(',');
