@@ -4,7 +4,6 @@ import { ERROR, GAME } from "../pages/text.js";
 /** 자동차 입력받는 기능 */
 export default async function inputRacingCar() {
   let CARS = [];
-
   const userInput = await MissionUtils.Console.readLineAsync(GAME.INPUT);
   const CARS_STRING = userInput.split(",");
 
