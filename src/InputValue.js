@@ -10,13 +10,9 @@ class InputValue {
   }
 
   static async moveCount() {
-    try {
-      const input = await Console.readLineAsync(MESSAGE.INPUT_MOVE_COUNT);
-      Validation.checkMoveCount(input);
-      return Number(input);
-    } catch (error) {
-      Console.print(`[ERROR] ${error.message}`);
-    }
+    const input = await Console.readLineAsync(MESSAGE.INPUT_MOVE_COUNT);
+    Validation.checkMoveCount(input);
+    return Number(input);
   }
 }
 
