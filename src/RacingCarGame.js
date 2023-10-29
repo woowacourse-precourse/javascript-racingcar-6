@@ -43,6 +43,14 @@ class RacingCarGame {
       this.#cars.push(new Car(carName.trim()));
     });
   }
+
+  #getTryCount() {
+    const tryCount = IOManager.input('시도할 횟수는 몇 회인가요?');
+    this.#validateTryCount(tryCount);
+    return tryCount;
+  }
+
+  #validateTryCount(tryCount) {}
 }
 
 export default RacingCarGame;
