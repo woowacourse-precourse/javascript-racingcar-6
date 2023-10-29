@@ -25,6 +25,17 @@ class App {
       if (randomNumber > 3) car.moveForward();
       car.displayMovement();
     }
+    MissionUtils.Console.print("");
+  }
+
+  printWinners(cars) {
+    const totalMovements = cars.map((car) => car.move);
+    const maxMovement = Math.max(...totalMovements);
+    const winners = cars
+      .filter((car) => car.move === maxMovement)
+      .map((car) => car.name);
+
+    MissionUtils.Console.print(`최종 우승자 : ${winners.join(", ")}`);
   }
 
   getMoveCount() {
@@ -71,12 +82,14 @@ class App {
 
     if (isNaN(moveCount)) this.printErrorMessage(this.ERROR.INCORRECT_TPYE);
 
-    const readyCarsForAction = this.setCars(carNames);
+    const cars = this.setCars(carNames);
 
     for (let i = 0; i < moveCount; i++) {
-      this.printRace(readyCarsForAction);
-      MissionUtils.Console.print("");
+      this.printRace(cars);
     }
+
+    this.printWinners(cars);
+    return;
   }
 }
 
