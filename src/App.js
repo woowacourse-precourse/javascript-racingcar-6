@@ -1,4 +1,5 @@
 import { Console, Random } from "@woowacourse/mission-utils";
+import { ERROR, RACING } from "./Constant.js";
 
 class App {
   constructor() {
@@ -6,91 +7,64 @@ class App {
   }
 
   async play() {
-    await this.inputName();
+    await this.startRacing();
   }
 
-  async inputName() {
-    Console.print(
-      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
-    );
-    let input = await Console.readLineAsync("");
+  async startRacing() {
+    Console.print(RACING.START);
+    let inputCars = await Console.readLineAsync("");
 
-    if (!input) {
-      throw new Error("[ERROR] 입력하세요");
-    } else if (input.includes(",")) {
-      const carArr = input.split(",");
-      await this.checkInputValidity(carArr);
+    if (!inputCars) {
+      throw new Error(ERROR.NOT_NAME);
+    } else if (inputCars.includes(",")) {
+      const carsArr = inputCars.split(",");
+      await this.checkInputValidity(carsArr);
     } else {
-      throw new Error("[ERROR] 한 명 이상 입력");
+      throw new Error(ERROR.ONE_NAME);
     }
   }
 
-  async checkInputValidity(carArr) {
-    const invalidNames = carArr.filter((car) => car.length > 5);
+  async checkInputValidity(carsArr) {
+    const invalidNames = carsArr.filter((car) => car.length > 5);
 
     if (invalidNames.length > 0) {
-      throw new Error("[ERROR] 5자 초과");
+      throw new Error(ERROR.INVALID_NAME);
     } else {
-      this.inputTrialNum(carArr);
+      this.inputTrialNum(carsArr);
     }
   }
-  async inputTrialNum(carArr) {
-    Console.print("시도할 횟수는 몇 회인가요?");
+
+  async inputTrialNum(carsArr) {
+    Console.print(RACING.TRIAL_NUM);
     const trialNum = await Console.readLineAsync("");
 
     if (Number(isNaN(trialNum))) {
-      throw new Error("[ERROR] 숫자가 아닙니다.");
+      throw new Error(ERROR.NOT_NUMBER);
     } else if (Number(trialNum) == 0) {
-      throw new Error("[ERROR] 0입니다.");
+      throw new Error(ERROR.INVALID_TRIAL);
     }
-    this.addObj(carArr);
+
+    this.createResultsState(carsArr);
     Console.print("");
-    Console.print("실행 결과");
-    this.racingCar(carArr, trialNum);
+    Console.print(RACING.RESULT);
+    this.racingCars(carsArr, trialNum);
   }
 
-  addObj(carArr) {
-    carArr.forEach((car) => {
+  createResultsState(carsArr) {
+    carsArr.forEach((car) => {
       this.results.push({ car, state: [] });
     });
   }
 
-  racingCar(carArr, trialNum) {
+  racingCars(carsArr, trialNum) {
     for (let i = 0; i < trialNum; i++) {
-      carArr.forEach((car) => {
+      carsArr.forEach((car) => {
         this.calcResult(car);
       });
-
       this.printResults();
       Console.print("");
     }
     this.printWinner();
-  }
-
-  printWinner() {
-    const winners = [];
-
-    let maxDistance = -1;
-    this.results.forEach((result) => {
-      if (result.state.toString().length > maxDistance) {
-        maxDistance = result.state.toString().length;
-      }
-    });
-
-    this.results.forEach((result) => {
-      if (result.state.toString().length === maxDistance) {
-        winners.push(result.car);
-      }
-    });
-
-    Console.print("최종 우승자: " + winners.join(", "));
-  }
-
-  printResults() {
-    this.results.forEach((result) => {
-      const movements = result.state.join("");
-      Console.print(`${result.car} : ${movements}`);
-    });
   }
 
   calcResult(car) {
@@ -109,6 +83,32 @@ class App {
     } else {
       return "정지";
     }
+  }
+
+  printResults() {
+    this.results.forEach((result) => {
+      const movements = result.state.join("");
+      Console.print(`${result.car} : ${movements}`);
+    });
+  }
+
+  printWinner() {
+    const winners = [];
+
+    let maxDistance = -1;
+    this.results.forEach((result) => {
+      if (result.state.toString().length > maxDistance) {
+        maxDistance = result.state.toString().length;
+      }
+    });
+
+    this.results.forEach((result) => {
+      if (result.state.toString().length === maxDistance) {
+        winners.push(result.car);
+      }
+    });
+
+    Console.print(RACING.WINNER + winners.join(", "));
   }
 }
 
