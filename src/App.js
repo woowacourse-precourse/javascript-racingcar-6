@@ -4,7 +4,7 @@ import {
   isPlayerCarNameValidated,
   isPlayerTryNumberValidated,
 } from './Validation.js';
-import CONSTANTS from './Constants.js';
+import { CONSTANTS } from './Constants.js';
 
 class App {
   constructor() {
