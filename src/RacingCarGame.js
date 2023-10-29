@@ -1,5 +1,6 @@
-import GameUtils from './GameUtils';
-import IOManager from './IOManager';
+import Car from './Car.js';
+import GameUtils from './GameUtils.js';
+import IOManager from './IOManager.js';
 
 class RacingCarGame {
   #cars;
