@@ -12,8 +12,8 @@ class RacingGame{
     // const racing = new Racing();
     // const result = new Result();
 
-    const carNameArray = await input.getCarName();
-    //const racingNumber = await input.getRacingNumber();
+    const carNameArray = await input.getCarName(); 
+    const racingNumber = await input.getRacingNumber(); 
   }
 }
 
