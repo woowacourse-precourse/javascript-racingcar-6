@@ -3,6 +3,7 @@ import {Console} from "@woowacourse/mission-utils";
 class App {
   async play() {
     const cars = await this.getCars()
+    const number = await this.getNumber()
 
   }
 
@@ -16,6 +17,17 @@ class App {
     }
     return cars
   }
+
+  async getNumber () {
+    const inputNum = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n")
+    if(!/[0-9]/g.test(inputNum)){
+      throw new Error("[ERROR] 숫자가 잘못된 형식입니다.")
+    }
+    return +inputNum
+  }
+
+
+
 
 
 }
