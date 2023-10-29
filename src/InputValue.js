@@ -1,5 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
 import { MESSAGE } from './Constant.js';
+import Validation from './Validation.js';
 
 class InputValue {
   static async carName() {
@@ -15,7 +16,8 @@ class InputValue {
   static async moveCount() {
     try {
       const input = await Console.readLineAsync(MESSAGE.INPUT_MOVE_COUNT);
-      return input;
+      const count = Validation.moveCount(input);
+      return count;
     } catch (error) {
       Console.print(`[ERROR] ${error.message}`);
     }

@@ -3,4 +3,11 @@ const MESSAGE = {
   INPUT_MOVE_COUNT: '시도할 횟수는 몇 회인가요?\n',
 };
 
-export { MESSAGE };
+const ERROR_MESSAGE = {
+  nothing: '입력되지 않았습니다.',
+  number: '숫자가 아닙니다.',
+  integar: '정수가 아닙니다.',
+  small: '1 미만의 숫자입니다.',
+};
+
+export { MESSAGE, ERROR_MESSAGE };
