@@ -20,6 +20,9 @@ class App {
 
     Console.print("");
     Console.print(GAME_MESSAGE.printResult);
+    racingGame.getCars().forEach(car => {
+      Console.print(`${car.getName()} : ${"-".repeat(car.getPosition())}`);
+    });
   }
 }
 
