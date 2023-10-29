@@ -1,6 +1,10 @@
 import { Console, Random } from '@woowacourse/mission-utils';
 
 class App {
+  constructor() {
+    this.GAME_PLAYERS = [];
+    this.GAME_ROUND = 0;
+  }
   async play() {}
 
   // TODO : 에러 처리 변수에 담아서 할 것인지 즉각 할 것인지 결정하기
@@ -14,8 +18,8 @@ class App {
       if (GAME_PLAYER_INPUT.includes(' ')) {
         gamePlayerInputValid = false;
       } else {
-        const GAME_PLAYERS = GAME_PLAYER_INPUT.split(',');
-        gamePlayerInputValid = GAME_PLAYERS.every((player) => player.length <= 5);
+        this.GAME_PLAYERS = GAME_PLAYER_INPUT.split(',');
+        gamePlayerInputValid = this.GAME_PLAYERS.every((player) => player.length <= 5);
       }
 
       if (!gamePlayerInputValid) {
@@ -23,8 +27,8 @@ class App {
       }
 
       // 게임 횟수 입력받기
-      const GAME_ROUND_INPUT = await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
-      if (isNaN(GAME_ROUND_INPUT)) {
+      this.GAME_ROUND = await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
+      if (isNaN(this.GAME_ROUND)) {
         throw new Error('숫자가 잘못된 형식입니다.');
       }
     } catch (error) {
