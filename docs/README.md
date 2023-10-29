@@ -8,17 +8,6 @@
 
 - [x] `getUserInput(flag)`: 사용자에게 입력을 받는 메서드
 
-- [x] 입력값 검증
-
-  - [x] `validateCarNames(input)`: 자동차 이름 검사
-
-    - [x] 5자 이하이며, 쉼표로 구분
-    - [x] 중복 X
-    - [x] 경주를 위해 최소 2대 이상
-
-  - [x] `validateTotalRounds(input)`: 시도 횟수 검사
-    - [x] 숫자이며, 해당 횟수동안 반복
-
 - [x] `startRace(cars, totalRounds)`: 레이스를 실행하는 메서드
 
 - [x] `printWinners(cars)`: 우승자를 출력하는 메서드
@@ -32,6 +21,19 @@
 
 - [x] `moveOrStop()`: 자동차를 전진시키는 메서드
   - 무작위 수를 생성해 4 이상일 경우 진행도 증가
+
+### validateInput.js
+
+입력값 검증 메서드를 모듈화
+
+- [x] `validateCarNames(input)`: 자동차 이름 검사
+
+  - [x] 5자 이하이며, 쉼표로 구분
+  - [x] 중복 X
+  - [x] 경주를 위해 최소 2대 이상
+
+- [x] `validateTotalRounds(input)`: 시도 횟수 검사
+  - [x] 숫자이며, 해당 횟수동안 반복
 
 ## 테스트 코드
 
