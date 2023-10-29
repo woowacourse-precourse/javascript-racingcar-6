@@ -1,3 +1,5 @@
+import { Random, Console } from '@woowacourse/mission-utils';
+
 class Car {
   #position;
 
@@ -8,10 +10,14 @@ class Car {
     this.#name = name;
   }
 
-  // 구현 전 기능
-  // tryMove() {}
+  tryMove() {
+    const randomNum = Random.pickNumberInRange(0, 9);
+    if (randomNum >= 4) this.#position += 1;
+  }
 
-  // printPosition() {}
+  printPosition() {
+    Console.print(`${this.#name} : ${'-'.repeat(this.#position)}`);
+  }
 }
 
 export default Car;
