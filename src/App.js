@@ -49,3 +49,12 @@ function printCarPosition(carObjects) {
   }
   Console.print('');
 }
+function printWinner(carObjects) {
+  const winnerPosition = Math.max(
+    ...carObjects.map((carObject) => carObject.position)
+  );
+  const winners = carObjects
+    .filter((carObject) => carObject.position === winnerPosition)
+    .map((carObject) => carObject.name);
+  Console.print(`최종 우승자 : ${winners.join(', ')}`);
+}
