@@ -22,6 +22,12 @@ class RacingGameInputManager {
     });
     return this.racingCars;
   }
+
+  async getPlayCount() {
+    this.playCount = await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
+    ErrorHandler.validatePlayCount(this.playCount);
+    return this.playCount;
+  }
 }
 
 export default RacingGameInputManager;

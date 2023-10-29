@@ -12,6 +12,16 @@ class ErrorHandler {
       }
     });
   }
+
+  static validatePlayCount(playCount) {
+    const regex = /^[0-9]+$/;
+    if (!regex.test(playCount)) {
+      throw new Error('[ERROR] 시도할 횟수를 숫자로 입력해주세요.');
+    }
+    if (playCount <= 0) {
+      throw new Error('[ERROR] 시도할 횟수를 1 이상으로 입력해주세요.');
+    }
+  }
 }
 
 export default ErrorHandler;
