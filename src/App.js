@@ -1,5 +1,10 @@
 import { Console, Random } from "@woowacourse/mission-utils";
 
+const MAX_NAME_LENGTH = 5;
+const MIN_RANDOM_NUMBER = 0;
+const MAX_RANDOM_NUMBER = 9;
+const MOVE_THRESHOLD = 4;
+const CAR_POSITION_SYMBOL = "-";
 class App {
   async getCarStatusFromUserInput() {
     try {
@@ -33,8 +38,10 @@ class App {
       if (!name) {
         throw new Error("[ERROR] 자동차 이름이 비어있습니다.");
       }
-      if (name.length > 5) {
-        throw new Error(`[ERROR] 자동차 이름 '${name}'이/가 5자 초과입니다.`);
+      if (name.length > MAX_NAME_LENGTH) {
+        throw new Error(
+          `[ERROR] 자동차 이름 '${name}'이/가 ${MAX_NAME_LENGTH}자 초과입니다.`
+        );
       }
       if (nameSet.has(name)) {
         throw new Error(`[ERROR] 자동차 이름 '${name}'이/가 중복됩니다.`);
@@ -70,10 +77,15 @@ class App {
 
     for (let count = 0; count < racingCount; count += 1) {
       carNames.forEach((car) => {
-        const number = Random.pickNumberInRange(0, 9);
-        updatedStatus[car] += number >= 4 ? 1 : 0;
+        const number = Random.pickNumberInRange(
+          MIN_RANDOM_NUMBER,
+          MAX_RANDOM_NUMBER
+        );
+        updatedStatus[car] += number >= MOVE_THRESHOLD ? 1 : 0;
 
-        Console.print(`${car} : ${"-".repeat(updatedStatus[car])}`);
+        Console.print(
+          `${car} : ${CAR_POSITION_SYMBOL.repeat(updatedStatus[car])}`
+        );
       });
 
       Console.print(" ");
