@@ -2,8 +2,8 @@
 ## 구현 기능 목록
 ### 클래스 - APP
 - Constructor
-  - carArray : 자동차 객체들을 담을 배열
-  - carNameArray : 자동차 이름 중복 확인을 위해 이름만을 담을 배열
+  - cars : 자동차 객체들을 담을 배열
+  - carNames : 자동차 이름 중복 확인을 위해 이름만을 담을 배열
   - loopNumber : 반복 횟수를 담을 변수
 - getCar메서드
   - `@woowacourse/mission-utils`에서 제공하는 `Console.readLineAsync` 사용
