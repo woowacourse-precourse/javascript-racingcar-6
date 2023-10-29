@@ -1,4 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
+import Car from './Car.js';
+import CarList from './CarList.js';
 
 class Game {
   async init() {
@@ -8,6 +10,16 @@ class Game {
     const carListArr = carListInput.split(',');
 
     return carListArr;
+  }
+
+  async createCars(carListArr) {
+    const carList = new CarList();
+
+    carListArr.forEach((carName) => {
+      carList.add(new Car(carName));
+    });
+
+    return carList.cars;
   }
 }
 
