@@ -1,12 +1,16 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
-const carNameValidation = (carName) =>{
-    for (let i = 0; i < carName.length; i++) {
-        if (carName[i].length > 6) {
-            MissionUtils.Console.print('[ERROR] 자동차 이름이 5를 초과했습니다.');
-            throw new Error("[ERROR]");
-        }
+const carNameMaxLen = (carName) =>{
+    let nameLenArray = carName.map(x => x.length);
+    let maxLenName = Math.max(...nameLenArray);
+    if (maxLenName > 6) {
+        MissionUtils.Console.print('[ERROR] 자동차 이름을 5글자 이하로 지어주세요.');
+        throw new Error("[ERROR]");
     }
+};
+
+const carNameValidation = (carName) =>{
+    carNameMaxLen(carName);
 };
 
 export default carNameValidation;
