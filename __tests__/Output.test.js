@@ -12,4 +12,12 @@ describe('Output 클래스 테스트', () => {
 
     expect(logSpy).toHaveBeenCalledWith(MESSAGE.progressResult(NAME, PROGRESS));
   });
+
+  test('printEmptyLine 함수 테스트', () => {
+    const logSpy = jest.spyOn(Console, 'print');
+
+    Output.printEmptyLine();
+
+    expect(logSpy).toHaveBeenCalledWith(MESSAGE.progressDivider);
+  });
 });
