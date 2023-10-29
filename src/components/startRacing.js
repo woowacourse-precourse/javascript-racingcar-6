@@ -1,5 +1,6 @@
 import { Random, Console } from "@woowacourse/mission-utils";
 import { printRacingResult } from "./printRacingResult.js";
+import { chooseWinner } from "./chooseWinner.js";
 
 const checkGoOrStop = async () => {
   const number = Random.pickNumberInRange(0, 9);
@@ -14,6 +15,7 @@ const changeRacingDistance = (carNameDict, carName, goOrStop) => {
 
 const startRacing = async (carNameDict, trialCount) => {
   Console.print("\n실행 결과");
+
   for (let i = 0; i < trialCount; i++) {
     for (let carName in carNameDict) {
       const goOrStop = await checkGoOrStop();
@@ -21,6 +23,7 @@ const startRacing = async (carNameDict, trialCount) => {
     }
     printRacingResult(carNameDict);
   }
+  chooseWinner(carNameDict);
 };
 
 export { startRacing };
