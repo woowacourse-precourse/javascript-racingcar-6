@@ -5,12 +5,12 @@ export default class CarRacingGame {
   #carNameArray;
 
   async gameStart() {
-    const carNames = await this.getCarNames().catch(() => {
-      throw new Error('[ERROR]');
+    const carNames = await this.getCarNames().catch((error) => {
+      throw error;
     });
 
-    let tryCount = await this.getTryCount().catch(() => {
-      throw new Error('[ERROR]');
+    let tryCount = await this.getTryCount().catch((error) => {
+      throw error;
     });
 
     this.#carNameArray = this.carNamesToCarNameArray(carNames);
@@ -79,12 +79,15 @@ export default class CarRacingGame {
 
   async getTryCount() {
     try {
-      const carNames = await Console.readLineAsync(
+      const tryCount = await Console.readLineAsync(
         '시도할 횟수는 몇 회인가요?'
       );
-      return carNames;
+      if (Number(tryCount) <= 0 || !Number.isInteger(tryCount)) {
+        throw new Error('[ERROR] 시도 횟수 이상');
+      }
+      return tryCount;
     } catch (error) {
-      throw new Error('[ERROR]');
+      throw error;
     }
   }
 }
