@@ -1,8 +1,8 @@
 import { NEW_LINE } from './constants.js';
 
 const INPUT_MESSAGE = Object.freeze({
-  run: '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)',
-  attemps: '시도할 횟수는 몇 회인가요?',
+  run: `경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)${NEW_LINE}`,
+  attemps: `시도할 횟수는 몇 회인가요?${NEW_LINE}`,
 });
 
 const ERROR_MESSAGE = Object.freeze({
