@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import { INPUT_MESSAGES } from './Message.js';
+import { INPUT_MESSAGES } from './Constants.js';
 import { checkCarNameInput, checkTryNum } from './Validation.js';
 
 class Car {
@@ -9,15 +9,15 @@ class Car {
   }
 }
 
-export async function getCarName() {
-  const carName = await Console.readLineAsync(INPUT_MESSAGES.INPUT_CAR_NAME);
+export async function getCarNameList() {
+  const carName = await Console.readLineAsync(INPUT_MESSAGES.inputCarName);
   checkCarNameInput(carName);
   const carNameList = carName.split(',').map((name) => new Car(name));
   return carNameList;
 }
 
 export async function getTryNum() {
-  const tryNum = await Console.readLineAsync(INPUT_MESSAGES.INPUT_TRY_NUM);
+  const tryNum = await Console.readLineAsync(INPUT_MESSAGES.inputTryNum);
   checkTryNum(tryNum);
   return tryNum;
 }

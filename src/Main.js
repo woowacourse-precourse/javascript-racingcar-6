@@ -1,32 +1,41 @@
 import { Console, Random } from '@woowacourse/mission-utils';
-import { PRINT_MESSAGES } from './Message.js';
-import { getCarName, getTryNum } from './Car.js';
+import { PRINT_MESSAGES, GAME_RULE_NUMBER } from './Constants.js';
+import { getCarNameList, getTryNum } from './Car.js';
 
 export const progressOrStop = (car) => {
-  if (Random.pickNumberInRange(0, 9) >= 4) {
-    car.progress.push(PRINT_MESSAGES.FORWARD);
+  if (
+    Random.pickNumberInRange(GAME_RULE_NUMBER.min, GAME_RULE_NUMBER.max) >=
+    GAME_RULE_NUMBER.threshold
+  ) {
+    car.progress.push(PRINT_MESSAGES.forward);
   }
   Console.print(
-    PRINT_MESSAGES.PROGRESS_PROCESS(car.name, car.progress.join(''))
+    PRINT_MESSAGES.progressProcess(car.name, car.progress.join('')),
   );
 };
 
 export const checkWinner = (carList) => {
-  return carList
+  const winnerList = carList
     .sort((a, b) => b.progress.length - a.progress.length)
     .filter((el) => el.progress.length === carList[0].progress.length)
     .map((el) => el.name)
     .join(',');
+  Console.print(PRINT_MESSAGES.winnerList(winnerList));
+};
+
+const gameTry = (carNameList, tryNum) => {
+  let tries = tryNum;
+  while (tries) {
+    tries -= 1;
+    carNameList.map((car) => progressOrStop(car));
+    Console.print('');
+  }
 };
 
 export async function gameStart() {
-  const carNameList = await getCarName();
-  let tryNum = await getTryNum();
-  Console.print(PRINT_MESSAGES.PROGRESS_RESULT);
-  while (tryNum) {
-    carNameList.forEach((car) => progressOrStop(car));
-    Console.print('');
-    tryNum -= 1;
-  }
-  Console.print(PRINT_MESSAGES.WINNER_LIST(checkWinner(carNameList)));
+  const carNameList = await getCarNameList();
+  const tryNum = await getTryNum();
+  Console.print(PRINT_MESSAGES.progressResult);
+  gameTry(carNameList, tryNum);
+  checkWinner(carNameList);
 }
