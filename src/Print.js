@@ -32,6 +32,10 @@ class Print {
 
     return count;
   }
+
+  static getRaceResult(name, result) {
+    Console.print(TEXT.RESULT_MESSAGE(name, result));
+  }
 }
 
 export default Print;

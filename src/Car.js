@@ -17,8 +17,14 @@ class Car {
     const randomizeNumber = this.getRandomNumber();
 
     if (randomizeNumber >= MOVE.CONSTRAINT_NUM) {
-      return (this.result += MOVE.SYMBOL);
+      this.result += MOVE.SYMBOL;
     }
+
+    return this;
+  }
+
+  getCarScore() {
+    return [this.name, this.result];
   }
 }
 

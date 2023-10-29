@@ -9,6 +9,7 @@ class App {
 
   async play() {
     await this.setInitialValue();
+    this.startRace();
   }
 
   async setInitialValue() {
@@ -25,6 +26,19 @@ class App {
 
   async getCount() {
     this.count = await Print.getCount();
+  }
+
+  startRace() {
+    for (let count = 0; count < this.count; count++) {
+      this.getCarResult();
+    }
+  }
+
+  getCarResult() {
+    this.carArray.map(car => {
+      const [name, result] = car.move().getCarScore();
+      Print.getRaceResult(name, result);
+    });
   }
 }
 
