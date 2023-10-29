@@ -19,7 +19,6 @@ class App {
     return moves;
   }
 
-
   running_race(cars, repetitions) {
     for(let i =0 ;i<repetitions;i++) {
       cars.move_cars(this.getMoveArr(cars));
