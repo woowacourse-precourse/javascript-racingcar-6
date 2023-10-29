@@ -2,10 +2,11 @@ import { Console, MissionUtils } from "@woowacourse/mission-utils"; //이거 왜
 
 class App {
   async play() {
-    //let cars = await this.getCarName();
+    let cars = await this.getCarName();
     let times = await this.getCount();
+    this.validCheckAboutName(cars);
     this.validChedkAboutNumber(times);
-   // this.validCheckAboutName(cars);
+    
 
   }
 
@@ -26,7 +27,9 @@ class App {
     if (!this.checkNoText(howMove)) {
       throw new Error(`[ERROR] 유효하지 않은 숫자 형식입니다.`);
     }
-
+    if (!this.checkNumOverZero(howMove)) {
+      throw new Error(`[ERROR] 0보다 큰 값이어야 합니다.`);
+    }
 
   }
 
@@ -38,7 +41,9 @@ class App {
   }
 
   checkNumOverZero(howMove) {
-    
+    if (howMove < 1) {
+      return false;
+    } else return true;
   }
 
 
