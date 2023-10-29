@@ -1,6 +1,6 @@
 export const ERROR = {
   NUMBER: "[ERROR] 입력값은 숫자여야 합니다.",
-  INCLUDE_0: "[ERROR] 0회 이상이어야 합니다.",
+  INCLUDE_0: "[ERROR] 1회 이상이어야 합니다.",
   LENGTH: "[ERROR] 이름은 5자 이하여야 합니다.",
   REPEATED: "[ERROR] 입력값의 각 자리 수는 서로 다른 숫자여야 합니다.",
 };

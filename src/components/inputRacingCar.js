@@ -3,12 +3,16 @@ import { ERROR, GAME } from "../pages/text.js";
 
 /** 자동차 입력받는 기능 */
 export default async function inputRacingCar() {
-  const userInput = await MissionUtils.Console.readLineAsync(GAME.INPUT);
-  const CARS = userInput.split(",");
+  let CARS = [];
 
-  CARS.forEach((car) => {
+  const userInput = await MissionUtils.Console.readLineAsync(GAME.INPUT);
+  const CARS_STRING = userInput.split(",");
+
+  CARS_STRING.forEach((car) => {
     const lengthInCodePoints = [...car].length;
     if (lengthInCodePoints > 5) throw new Error(ERROR.LENGTH);
+    CARS.push({ name: car, go: 0 });
   });
+
   return CARS;
 }

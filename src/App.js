@@ -4,18 +4,11 @@ import isGo from "./components/IsGo.js";
 
 class App {
   async play() {
-    data = {
-      car: "",
-      go: 0,
-    };
-    const CARS = inputRacingCar();
-    const TRYS = inputTryNumber();
-    let goal = false;
-
-    while (!goal) {
+    const CARS = await inputRacingCar();
+    let TRYS = await inputTryNumber();
+    while (TRYS--) {
       CARS.forEach((car) => {
-        if (isGo) {
-        }
+        if (isGo) CARS.go++;
       });
     }
   }
