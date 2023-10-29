@@ -20,7 +20,7 @@ class App {
     const cars = carName.map((name) => new Car(name));
 
     for (let i = 0; i < raceCount; i++) {
-      cars.forEach((car) => car.move());
+      cars.forEach((car) => car.moveCar());
       this.printMoveResult(cars);
     }
 

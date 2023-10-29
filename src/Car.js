@@ -6,11 +6,13 @@ export default class Car {
     this.move = 0;
   }
 
-  move() {
+  moveCar() {
     const randomMove = Random.pickNumberInRange(0, 9);
 
     if (randomMove >= 4) {
       this.move++;
+    } else {
+      this.move = this.move;
     }
   }
 }
