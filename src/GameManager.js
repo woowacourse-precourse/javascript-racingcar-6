@@ -10,13 +10,6 @@ class GameManager {
     const input = await Console.readLineAsync('시도 횟수 : ');
     this.attempt = Number(input);
   }
-
-  announceInterimResult() {
-    this.cars.forEach((car) => {
-      car.move();
-      Console.print(`${car.name} : ${car.movement}`);
-    });
-  }
 }
 
 export default GameManager;
