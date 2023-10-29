@@ -172,3 +172,13 @@ MissionUtils.Random.pickNumberInRange(0, 9);
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
   - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+## - 구현할 기능 목록
+
+1. @woowacourse/mission-utils 라이브러리를 사용하여 사용자로부터 자동차 이름 값을 입력받는다. ( , 을 기준으로 구분한 값이 5자리 초과일 경우 예외 처리) -> 입력 받은 자동차의 이름을 , 을 기준으로 구분하여 배열에 객체로 집어 넣는다.
+
+2. @woowacourse/mission-utils 라이브러리를 사용하여 사용자로부터 시도할 횟수를 입력받는다. (입력받은 값이 숫자가 아니거나 음수인 경우 예외 처리)
+
+3. 사용자로 부터 입력받은 회수만큼 게임을 진행한다.
+
+4. 회수만큼 게임이 종료된 후 자동차의 이동거리가 가장 긴 자동차가 우승한다. (만약 우승자가 여러 명일 경우 , 으로 구분한다.)
