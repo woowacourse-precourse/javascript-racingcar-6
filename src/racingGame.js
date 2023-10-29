@@ -41,7 +41,7 @@ export async function playRacing() {
     cars.forEach((car) => {
       MissionUtils.Console.print(`${car.carName} : ${car.carDistance}`);
     });
-    MissionUtils.Console.print("\n");
+    MissionUtils.Console.print("");
   }
   return cars;
 }
