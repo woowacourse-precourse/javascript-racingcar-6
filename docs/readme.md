@@ -91,7 +91,7 @@
         <td>자동차 이름은 쉼표 기준 구분</td>
     </tr>
     <tr>
-        <td><input type="checkBox" disabled></td>
+        <td><input type="checkBox" checked></td>
         <td>자동차 이름은 5자 이하로 제한</td>
     </tr>
     <tr>
