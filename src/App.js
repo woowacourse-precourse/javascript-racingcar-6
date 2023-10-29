@@ -26,11 +26,12 @@ class App {
     let carsForward = [];
     carList.map(car => carsForward.push(0));
     // Console.print(carsForward)
+    Console.print('');
     Console.print('실행 결과');
 
     while (count !== counts) {
       count++;
-      Console.print(count)
+      // Console.print(count)
       // 리스트 순회하며 랜덤 숫자 선택
       carList.map((car, idx) => {
         const random = MissionUtils.Random.pickNumberInRange(0, 9);
@@ -39,8 +40,9 @@ class App {
           carsForward[idx]++
           // Console.print(carsForward + ' 전진!');
         };
-        Console.print(car + ' : ' + '-')
+        Console.print(car + ' : ' + '-'.repeat(carsForward[idx]))
       })
+      Console.print('')
     }
     
     // 최댓값
