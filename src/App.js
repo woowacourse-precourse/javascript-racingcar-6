@@ -14,7 +14,8 @@ class App {
   async play() {
     await this.readCar();
     await this.readMaxAttempt();
-    // this.race();
+    Console.print('\n실행 결과');
+    this.race();
     // this.printWinner;
   }
 
@@ -34,9 +35,18 @@ class App {
     this.#attemptLeft = parseInt(input, 10);
   }
 
-  // 구현 전 기능
-  // race() {}
-  // printWinner() {}
+  race() {
+    while (this.#attemptLeft > 0) {
+      this.#attemptLeft -= 1;
+      this.#carArray.map((car) => {
+        car.tryMove();
+        car.printPosition();
+      });
+      Console.print('');
+    }
+  }
+
+  printWinner() {}
 }
 
 export default App;
