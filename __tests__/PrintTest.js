@@ -57,4 +57,48 @@ describe('실행 결과와 우승자 가려내기', () => {
     });
     expect(updatedCars).toEqual(result);
   });
+
+  const doubleWinner = [
+    [
+      ['Fiat', 3],
+      ['BMW', 1],
+      ['Volvo', 3],
+      ['Jeep', 2],
+    ],
+    'Fiat, Volvo',
+  ];
+  const allWinner = [
+    [
+      ['Fiat', 1],
+      ['BMW', 1],
+      ['Volvo', 1],
+      ['Jeep', 1],
+    ],
+    'Fiat, BMW, Volvo, Jeep',
+  ];
+  const onlyWinner = [
+    [
+      ['Fiat', 2],
+      ['BMW', 0],
+      ['Volvo', 4],
+      ['Jeep', 2],
+    ],
+    'Volvo',
+  ];
+
+  test.each([doubleWinner, allWinner, onlyWinner])(
+    '우승자 가려내기',
+    (input, result) => {
+      // given
+      const cars = new Map(input);
+      const logSpy = getLogSpy();
+
+      // when
+      const { announceWinner } = Print;
+      announceWinner(cars);
+
+      // then
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(result));
+    },
+  );
 });
