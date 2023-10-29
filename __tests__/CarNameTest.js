@@ -5,6 +5,6 @@ describe("올바른 car 객체 판단 테스트", () => {
   
   test("자동차 이름 테스트", () => {
     const testList = carList.map((car) => new Car(car, 0));
-    testList.forEach((car, index) => expect(car.getCarName()).toEqual(carList.at(index)));
+    testList.forEach((car, index) => expect(car.getName()).toEqual(carList.at(index)));
   });
 });
