@@ -17,9 +17,17 @@ export async function validateCarNames(carNames) {
   }
 }
 
+export async function validateTryNumber(tryNumberInput) {
+  const regex = /^\d+$/;
+  if (!regex.test(tryNumberInput)) {
+    throw new Error('[ERROR] 입력하신 시도할 횟수가 잘못된 형식입니다.');
+  }
+}
+
 class User {
   constructor() {
     this.carNames = [];
+    this.tryNumber = 0;
   }
 
   async getCarNames() {
@@ -30,6 +38,19 @@ class User {
       const carNames = input.split(',').map((name) => name.trim());
       validateCarNames(carNames);
       this.carNames = carNames;
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+
+  async getTryNumber() {
+    try {
+      const tryNumberInput =
+        await MissionUtils.Console.readLineAsync(
+          '시도할 횟수는 몇 회인가요?\n',
+        );
+      validateTryNumber(tryNumberInput);
+      this.tryNumber = parseInt(tryNumberInput);
     } catch (error) {
       console.error(error.message);
     }
