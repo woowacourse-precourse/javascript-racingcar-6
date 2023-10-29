@@ -6,15 +6,17 @@ export function occuredErrorhandler(code) {
 
   const errorMessage = occuredError !== undefined ? occuredError : '예상치 못한 에러가 발생했습니다.';
 
-  return Promise.reject(errorMessage);
+  throw errorMessage;
 }
 
 export function defaultErrorHandler(error) {
-  return Promise.reject(error);
+  throw error;
 }
 
 export function appErrorHandler(error) {
   const errorMessage = `[ERROR] ${error}`;
   consolePrint(errorMessage);
-  return Promise.reject(errorMessage);
+  const ERROR = new Error(errorMessage);
+
+  throw ERROR;
 }
