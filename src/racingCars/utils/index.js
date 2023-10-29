@@ -15,7 +15,8 @@ export function makeHash(carsText) {
 
 export function validateInputCount(count) {
   //숫자여야 하며, 0은 받을 수 없다.
-  if (Number.isSafeInteger(count) && count > 0) {
+
+  if (Number.isSafeInteger(Number(count)) && Number(count) > 0) {
     return true;
   }
   throw '시도 횟수는 양의 정수여야 합니다';
