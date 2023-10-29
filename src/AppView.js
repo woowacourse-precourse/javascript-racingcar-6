@@ -2,7 +2,7 @@ import { Console } from '@woowacourse/mission-utils';
 import message from './message.js';
 
 export default class AppView {
-  static printInstruction() {
+  static printGameStart() {
     Console.print(message.START_MESSAGE);
   }
 

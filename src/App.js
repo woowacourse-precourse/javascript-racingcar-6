@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import RacingCar from './racingCar.js';
+import RacingCar from './RacingCar.js';
 import AppView from './appVIew.js';
 import message from './message.js';
 
@@ -10,7 +10,7 @@ export default class App {
   }
 
   async play() {
-    AppView.printInstruction();
+    AppView.printGameStart();
     await this.getCarNamesInput();
     await this.getRepeatCountInput();
     this.repeatGame();
