@@ -63,14 +63,23 @@ const showResult = async (participants) => {
 }
 
 /**
+ * @param {*} participants : 진행 횟수 확인
+ * 0~9사이 값이 아니거나 숫자가 아니면 ERROR
+ */
+const checkAttempt = async (attempt) =>{
+  if(!Number(attempt)) throw new Error('[ERROR] 숫자를 입력해주세요.');
+  if(Number(attempt) <=0 || Number(attempt) > 9) throw new Error('[ERROR] 0~9사이 값을 입력해주세요.');
+}
+
+/**
  * 게임 진행 횟수를 입력받는 기능
  * return : 숫자로 반환
  * 주의 : 0 이하거나 숫자가 아니면 ERROR
  */
 const getAttempt = async () =>{
   const attempt = await readLineAsync('시도할 횟수는 몇 회인가요?\n');
-  if(!Number(attempt)) throw new Error('[ERROR] 숫자를 입력해주세요.');
-  if(Number(attempt) <=0 || Number(attempt) > 9) throw new Error('[ERROR] 0~9사이 값을 입력해주세요.');
+
+  await checkAttempt(attempt);
 
   return Number(attempt);
 }
