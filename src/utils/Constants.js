@@ -5,6 +5,8 @@ const IN_GAME_MESSAGE = {
   finalWinner: '최종 우승자 : ',
 }
 
-const Constants = [ IN_GAME_MESSAGE, ]
+const ERROR_MESSAGE = {
 
-export default Constants;
+}
+
+export { IN_GAME_MESSAGE, ERROR_MESSAGE};
