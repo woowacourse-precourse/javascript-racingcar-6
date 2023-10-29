@@ -1,6 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
-import { movingForwardCase } from "./utils/MovingForwardCase";
-import { FORWARD_DASH } from "./const/Messages";
+import { movingForwardCase } from "./MovingForwardCase";
+import { FORWARD_DASH } from "../const/Messages";
 
 class RoundManager {
   constructor(carPositions) {
