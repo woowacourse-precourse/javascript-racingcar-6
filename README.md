@@ -173,7 +173,7 @@ MissionUtils.Random.pickNumberInRange(0, 9);
   - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
 
-## - 구현할 기능 목록
+## 구현할 기능 목록 - 오정환
 
 1. @woowacourse/mission-utils 라이브러리를 사용하여 사용자로부터 자동차 이름 값을 입력받는다. ( , 을 기준으로 구분한 값이 5자리 초과일 경우 예외 처리) -> 입력 받은 자동차의 이름을 , 을 기준으로 구분하여 배열에 객체로 집어 넣는다.
 
