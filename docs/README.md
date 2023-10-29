@@ -23,7 +23,7 @@
 - 입출력 관련 함수들
   - `Console.readLineAsync()` ✔️
   - `Console.print()` ✔️
-- 난수 추출 관련 함수: `Random.pickNumberInRange()`
+- 난수 추출 관련 함수: `Random.pickNumberInRange()` ✔️
 - 사용자 입력과 기타 유효성을 판단하는 함수
   - 주어진 문자열 하나가 0 ~ 9 사이의 10진수 자리수를 나타내는지 판단 ✔️
   - 입력이 유효한 10진수 숫자인지 판단 ✔️
