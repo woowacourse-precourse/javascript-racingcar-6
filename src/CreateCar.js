@@ -9,6 +9,9 @@ async function CreateCar() {
     if (carArray[i].length > 5) {
       throw new Error('[ERROR]: 잘못된 입력입니다.');
     }
+    if (carArray[i].length === 0) {
+      throw new Error('[ERROR]: 잘못된 입력입니다.');
+    }
   }
 
   return carArray;
