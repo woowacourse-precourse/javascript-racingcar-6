@@ -3,6 +3,7 @@ import { Console, MissionUtils } from '@woowacourse/mission-utils';
 class App {
   async play() {
     const names = await this.getCarNames();
+    const count = await this.getPlayCount();
   }
 
   async getCarNames() {
@@ -17,6 +18,21 @@ class App {
 
     return carNames;
   } 
+  
+  async getPlayCount() {
+    const input = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    const count = parseInt(input, 10);
+
+    this.validatePlayCount(count);
+
+    return count;
+  }
+
+  validatePlayCount(count) {
+    if (isNaN(count)) {
+      throw new Error('[ERROR] 값이 잘 못 입력되었습니다.');
+    }
+  }
 }
 
 export default App;
