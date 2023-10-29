@@ -9,7 +9,10 @@ class App {
   async play() {
     const carNames = await MissionUtils.Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분) \n");
     this.cars = carNames.split(",");
-    this.cars.forEach(car => { this.goTimes[car] = 0; });
+    this.cars.forEach(car => { 
+      this.goTimes[car] = 0; 
+    });
+
     this.raceTimes = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요? \n");
 
     this.handleErrors(this.cars, this.raceTimes);
@@ -29,15 +32,19 @@ class App {
   }
 
   pickRandomNumbers(randomNumbers) {
-    this.cars.forEach(car => { randomNumbers[car] = MissionUtils.Random.pickNumberInRange(0, 9); });
+    this.cars.forEach(car => {
+      randomNumbers[car] = MissionUtils.Random.pickNumberInRange(0, 9);
+    });
+
     return randomNumbers;
   }
 
   goStop(randomNumbers) {
-    for (let key in randomNumbers) {
+    for (const key in randomNumbers) {
       if (randomNumbers[key] >=4 && randomNumbers[key] <= 9) {
         this.goTimes[key] = this.goTimes[key] + 1;
       }
+
       this.raceResults = this.raceResults + `${key} : ${"-".repeat(this.goTimes[key])}\n`;
     }
 
@@ -87,8 +94,5 @@ class App {
     }
   }
 }
-
-// const app = new App();
-// app.play();
 
 export default App;
