@@ -24,9 +24,8 @@ class App {
       this.goStop(randomNumbers);
     }
 
-    // console.log("\n실행 결과");
-    // console.log(this.raceResults.trim());
-    // console.log("\nTHE END");
+    this.showResults();
+    this.showWinners();
   }
 
   pickRandomNumbers(randomNumbers) {
@@ -46,11 +45,12 @@ class App {
   }
 
   showResults() {
-
+    MissionUtils.Console.print("\n실행 결과");
+    MissionUtils.Console.print(this.raceResults.trim());
   }
 
   showWinners() {
-
+    
   }
 
   handleErrors(cars, raceTimes) {
