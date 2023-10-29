@@ -1,11 +1,13 @@
+import { Console, Random } from "@woowacourse/mission-utils";
 import User from "./User.js";
+
 
 class App {
   async play() {
     const user = new User();
 
     try {
-      const players = await user.inputPlayersName();
+      players = await user.inputPlayersName();
     } catch (error) {
       console.error(error.message);
       throw new Error('[ERROR] 숫자가 잘못된 형식입니다.');

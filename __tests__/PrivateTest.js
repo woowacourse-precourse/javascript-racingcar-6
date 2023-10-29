@@ -1,5 +1,5 @@
 import User from "../src/User.js";
-import Car from "../src/Car.js";
+import Judge from "../src/Judge.js";
 
 import { MissionUtils } from '@woowacourse/mission-utils';
 
@@ -58,8 +58,8 @@ describe('사용자 입력 테스트', () => {
 
 describe("게임 로직 테스트", () => {
   test("무작위 값에 대한 전진 여부 확인", () => {
-    const car = new Car();
+    const judge = new Judge();
 
-    expect(car.checkMoveCondition(5)).toBeTruthy();
+    expect(judge.checkMoveCondition(5)).toBeTruthy();
   })
 })

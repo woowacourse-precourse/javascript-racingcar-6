@@ -1,4 +1,4 @@
-class Car {
+class Judge {
   checkMoveCondition(randomNum) {
     if (randomNum >= 4) {
       return true;
@@ -8,4 +8,4 @@ class Car {
   }
 }
 
-export default Car;
+export default Judge;
