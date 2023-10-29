@@ -59,6 +59,17 @@ class App {
   getRandomNumber() {
     return Random.pickNumberInRange(0, 9);
   }
+
+  moveForward() {
+    const MINIMUM_FORWARD_VALUE = 4;
+    let randomNum = this.getRandomNumber();
+
+    if (randomNum > MINIMUM_FORWARD_VALUE) {
+      return 1;
+    }
+
+    return 0;
+  }
 }
 
 export default App;
