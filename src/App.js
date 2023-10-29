@@ -11,7 +11,7 @@ class App {
       const game_cnt = Number(
         await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?\n')
       );
-      ValidateGameCnt(game_cnt);
+      validateGameCnt(game_cnt);
       let car_positions = new Array(car_names.length).fill(0);
 
       MissionUtils.Console.print('\n실행 결과');
@@ -68,7 +68,7 @@ const printWinner = (car_names, car_positions) => {
   MissionUtils.Console.print('최종 우승자 : ' + winners.join(', '));
 };
 
-const ValidateGameCnt = (game_cnt) => {
+const validateGameCnt = (game_cnt) => {
   if (Number.isNaN(game_cnt))
     throw new Error('[ERROR] 입력이 숫자 형식이 아닙니다');
 };
