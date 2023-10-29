@@ -10,7 +10,7 @@ class Car {
     if (number > 3) {
       this.distance += '-';
     }
-    
+    MissionUtils.Console.print(`${this.name} : ${this.distance}`);
   }
 }
 // class StartGame {
