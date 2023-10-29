@@ -5,21 +5,17 @@ import InputView from '../views/InputView.js';
 class RacingCarController {
   #cars;
 
-  #moveCount;
-
   constructor() {
     this.#cars = [];
-    this.#moveCount = 0;
   }
 
-  startGame() {
-    this.makeCars();
+  async startGame() {
+    const names = await InputView.inputCarNames();
+    this.makeCars(names.split(','));
   }
 
-  async makeCars() {
-    const response = await InputView.inputCarNames();
-    const carNames = response.split(',');
-    carNames.forEach(name => {
+  makeCars(names) {
+    names.forEach(name => {
       if (InputValidator.checkCarName(name)) {
         const car = new Car(name);
         this.#cars.push(car);
