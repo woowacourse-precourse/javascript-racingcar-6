@@ -1,4 +1,5 @@
 import { Console, Random } from '@woowacourse/mission-utils';
+import Validation from './modules/Validation.js';
 import MESSAGE from './constants/message.js';
 import CONDITION from './constants/condition.js';
 
@@ -24,30 +25,14 @@ class App {
 
   async play() {
     const answerOfCars = await Console.readLineAsync(MESSAGE.input.carName);
-    this.validateNamesOfCar(answerOfCars);
+    this.cars = Validation.getNamesOfCar(answerOfCars);
     const answerOfNumber = await Console.readLineAsync(
-      MESSAGE.input.numberOfTimes
+      MESSAGE.input.numberOfTimes,
     );
     this.validateNumberOfTimes(answerOfNumber);
     this.printExecutionResult();
     this.printFinalWinner();
     return;
-  }
-
-  validateNamesOfCar(answer) {
-    const info = new Map();
-    answer.split(',').forEach((str) => {
-      if (str.length === 0 || str.length > CONDITION.carNameLength) {
-        throw new Error(MESSAGE.error.carName);
-      } else if (CONDITION.notNormalCharacter.test(str)) {
-        throw new Error(MESSAGE.error.specialCharacter);
-      } else if (info.has(str)) {
-        throw new Error(MESSAGE.error.duplicateName);
-      } else {
-        info.set(str, 0);
-      }
-    });
-    this.cars = info;
   }
 
   validateNumberOfTimes(answer) {
@@ -62,7 +47,7 @@ class App {
   decideToMoveForward() {
     const random = Random.pickNumberInRange(
       CONDITION.rangeStart,
-      CONDITION.rangeEnd
+      CONDITION.rangeEnd,
     );
     return random >= CONDITION.movingForward;
   }
