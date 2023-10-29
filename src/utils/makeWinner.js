@@ -1,3 +1,5 @@
+import { SPACE } from '../constants/constants.js';
+
 export default function makeWinner(cars) {
   const allMoveCounts = [];
   const winners = [];
@@ -8,7 +10,7 @@ export default function makeWinner(cars) {
   const maxMove = Math.max(...allMoveCounts);
   cars.forEach(({ name, moveCounts }) => {
     if (moveCounts === maxMove) {
-      winners.push(name);
+      winners.push(`${SPACE}${name}`);
     }
   });
   return winners.join(',');
