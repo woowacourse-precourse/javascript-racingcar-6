@@ -1,18 +1,22 @@
 import { Console } from "@woowacourse/mission-utils";
+import Car from "./Car.js";
 
 class App {
   async play() {
-    const cars = await this.getCarName();
-    const moveCount = await this.getMoveCount();
+    const carNames = await this.getCarName();
+    const carObjects = carNames.map((carName) => new Car(carName));
+    let moveCount = await this.getMoveCount();
+
+    this.startRacing(carObjects, moveCount);
   }
 
   async getCarName() {
-    const cars = await Console.readLineAsync(
+    const carNames = await Console.readLineAsync(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분\n"
     );
-    const carArray = cars.split(",");
-    if (this.validationCarName(carArray)) {
-      return carArray;
+    const carNameArray = carNames.split(",");
+    if (this.validationCarName(carNameArray)) {
+      return carNameArray;
     } else {
       throw Error("[ERROR] 에러");
     }
