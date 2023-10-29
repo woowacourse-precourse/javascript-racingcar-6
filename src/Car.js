@@ -16,3 +16,5 @@ class Car {
     Console.print(`${this.#name} : ${"-" * this.#moveCount}`);
   }
 }
+
+export default Car;
