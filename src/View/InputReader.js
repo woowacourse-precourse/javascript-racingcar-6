@@ -1,13 +1,16 @@
 import { Console } from '@woowacourse/mission-utils';
 import { GAME_MESSAGE } from '../constants/gameMessage.js';
+import OutputView from './OutputView.js';
 
 export default class InputReader {
   async carNames() {
+    OutputView.printPadding();
     const userInput = this.#onRead(GAME_MESSAGE.REQUEST.CAR_NAME);
     return userInput;
   }
 
   async tryRount() {
+    OutputView.printPadding();
     const userInput = this.#onRead(GAME_MESSAGE.REQUEST.TRY_ROUND);
     return userInput;
   }
