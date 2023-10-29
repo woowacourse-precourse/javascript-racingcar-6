@@ -1,7 +1,7 @@
+import { Console } from '@woowacourse/mission-utils';
 import Cars from './Cars.js';
 import InputView from './views/InputView.js';
 import OutputView from './views/OutputView.js';
-import { Console } from '@woowacourse/mission-utils';
 
 class App {
 	async play() {
