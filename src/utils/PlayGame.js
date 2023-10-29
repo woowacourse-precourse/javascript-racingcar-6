@@ -30,6 +30,13 @@ class playGame {
     });
     Console.print();
   }
+
+  findWinner() {
+    const maxPosition = Math.max(...Object.values(this.carPositions).map((pos) => pos.length));
+    return Object.entries(this.carPositions)
+      .filter(([_, position]) => position.length === maxPosition)
+      .map(([carName, _]) => carName);
+  }
 }
 
 export default playGame;
