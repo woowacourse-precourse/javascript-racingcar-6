@@ -16,4 +16,9 @@ export const TEXT = {
 export const ERROR = {
   CAR_NAME_LENGTH: `[ERROR] 각 자동차 이름의 길이는 ${CAR.LENGTH} 이하여야 합니다.`,
   CAR_MIN: `[ERROR] 최소 경주에 참여하는 자동차는 ${CAR.MIN}대여야 합니다.`,
+  COUNT_INPUT: `[ERROR] 실행 횟수는 숫자만 입력 가능 합니다.`,
+};
+
+export const REG_EXP = {
+  INPUT_NUMBER_VALIDATION: /^[0-9]+$/,
 };

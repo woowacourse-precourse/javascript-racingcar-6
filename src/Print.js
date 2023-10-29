@@ -21,6 +21,11 @@ class Print {
 
   static async getCount() {
     const count = await Console.readLineAsync(TEXT.TRY);
+
+    if (!Validate.isNumber(count)) {
+      throw new ERROR(ERROR.COUNT_INPUT);
+    }
+
     return count;
   }
 }

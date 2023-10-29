@@ -1,4 +1,4 @@
-import { CAR } from './constants/constants';
+import { CAR, REG_EXP } from './constants/constants';
 
 class Validate {
   static isCarNameLengthValid(cars) {
@@ -7,6 +7,10 @@ class Validate {
 
   static minCarsNumber(cars) {
     return cars.length >= CAR.MIN;
+  }
+
+  static isNumber(count) {
+    return REG_EXP.INPUT_NUMBER_VALIDATION.test(count);
   }
 }
 
