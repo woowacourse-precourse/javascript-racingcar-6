@@ -5,7 +5,11 @@ export default class OutputView {
 
   printRoundResult(roundResult) {
     roundResult.forEach(({ name, position }) => {
-      Console.print(`${name} : ${position}`);
+      this.#onPrint(`${name} : ${position}`);
     });
+  }
+
+  #onPrint(text) {
+    Console.print(text);
   }
 }
