@@ -2,8 +2,10 @@ import { Console, MissionUtils } from "@woowacourse/mission-utils"; //이거 왜
 
 class App {
   async play() {
-    let cars = await this.getCarName();
-    this.validCheckAboutName(cars);
+    //let cars = await this.getCarName();
+    let times = await this.getCount();
+    this.validChedkAboutNumber(times);
+   // this.validCheckAboutName(cars);
 
   }
 
@@ -15,22 +17,42 @@ class App {
   }
 
   async getCount() {
-    const HOW_MANY_MOVE = await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    const howMove = await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    
+    return Number(howMove);
+  }
 
-    return Number(HOW_MANY_MOVE); // 유효성 검사할 때 NaN면 throw ㄱㄱ
+  validChedkAboutNumber(howMove) {
+    if (!this.checkNoText(howMove)) {
+      throw new Error(`[ERROR] 유효하지 않은 숫자 형식입니다.`);
+    }
+
+
+  }
+
+  checkNoText(howMove) {
+    Console.print(Number.isNaN(howMove));
+    if (Number.isNaN(howMove)) {
+      return false;
+    } else return true;
+  }
+
+  checkNumOverZero(howMove) {
+    
   }
 
 
-  validCheckAboutName(carNameArry) {
+
+
+
+  validCheckAboutCarName(carNameArry) {
     if (!this.checkDupl(carNameArry)) {
       throw new Error(`[ERROR] 중복된 이름입니다.`);
     }
     if (!this.checkNamelength(carNameArry)) {
-      throw new Error(`[ERROR] 유효하지 않은 이름 길이 입니다.`);
+      throw new Error(`[ERROR] 유효하지 않은 이름 길이입니다.`);
     }
-    if (!this.checkHowManyCars(carNameArry)) {
-      throw new Error(`[ERROR] 유효하지 않은 차 대수 입니다.`);
-    }
+    
   }
 
   // removeEmptyInput(input) { // input안에 getCarName() return 값 들어감.
@@ -54,12 +76,6 @@ class App {
         return false;
       } 
     }return true;
-  }
-
-  checkHowManyCars(carNameArry) {
-    if (1 > carNameArry.length || carNameArry.length > 9) { // 1>=일지 1>일지 헷갈림..혼자여도 경기가능?
-      return false;
-    } return true;
   }
 
 
