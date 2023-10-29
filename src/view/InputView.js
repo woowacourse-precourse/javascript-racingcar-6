@@ -1,7 +1,7 @@
 import { Console } from "@woowacourse/mission-utils";
 
-import validateRacingCars from "../util/car-validation.js";
-import validateAttemptCount from "../util/attempt-validation.js";
+import validateRacingCars from "../validator/car-validator.js";
+import validateAttemptCount from "../validator/attempt-validator.js";
 
 const INPUT_MESSAGE = Object.freeze({
   RACING_CARS:

@@ -1,4 +1,4 @@
-import checkSpace from "./common-validation.js";
+import checkSpace from "./common-validator.js";
 
 const ERROR_MESSAGE = Object.freeze({
   NOT_NUMERIC: "[ERROR] 시도 횟수는 숫자만 입력 가능합니다.",

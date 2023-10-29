@@ -1,4 +1,4 @@
-import checkSpace from "./common-validation.js";
+import checkSpace from "./common-validator.js";
 
 const ERROR_MESSAGE = Object.freeze({
   LENGTH: "[ERROR] 자동차의 이름은 1자 이상 5자 이내로 구성되어야 합니다.",
