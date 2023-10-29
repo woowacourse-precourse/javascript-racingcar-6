@@ -12,7 +12,6 @@ class Car {
     }
     MissionUtils.Console.print(`${this.name} : ${this.distance}`);
   }
-  
 }
 // class StartGame {
 
@@ -58,7 +57,14 @@ class App {
     }
   }
   async printWinner(carArray) {
+    let distanceArray = [];
+    carArray.forEach((car) => {
+      distanceArray.push(car.distance);
+    });
+    let maxDistance = Math.max(...distanceArray);
+    let winnerCar = carArray.find((car) => car.distance.length === maxDistance);
     
+    MissionUtils.Console.print(`최종 우승자 : ${winnerCar.name}`);
   }
   async play() {
     let carArray = await this.getCarName();
