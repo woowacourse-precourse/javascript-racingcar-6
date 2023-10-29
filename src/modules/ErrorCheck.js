@@ -8,7 +8,7 @@ class ErrorCheck {
     });
   }
 
-  static numberString(string) {
+  static isNumber(string) {
     const numberFromString = Number(string);
     if (isNaN(numberFromString)) throw new Error(WRONG_FORMAT_NUMBER_ERROR_MSG);
   }
