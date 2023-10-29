@@ -39,7 +39,7 @@ function checkDuplication(racingCarNames) {
  * @param {string[]} racingCarNames 자동차들의 이름
  * @returns
  */
-function validateRacingCars(racingCarNames) {
+function validateRacingCarNames(racingCarNames) {
   racingCarNames.forEach((racingCarName) => {
     checkSpace(racingCarName);
     checkLength(racingCarName);
@@ -49,4 +49,4 @@ function validateRacingCars(racingCarNames) {
   return;
 }
 
-export default validateRacingCars;
+export default validateRacingCarNames;

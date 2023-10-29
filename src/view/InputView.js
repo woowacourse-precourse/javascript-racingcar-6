@@ -1,6 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
 
-import validateRacingCars from "../validator/car-validator.js";
+import validateRacingCarNames from "../validator/car-validator.js";
 import validateAttemptCount from "../validator/attempt-validator.js";
 
 const INPUT_MESSAGE = Object.freeze({
@@ -15,7 +15,7 @@ const InputView = {
       INPUT_MESSAGE.RACING_CARS
     );
     const racingCarNames = inputRacingCarNames.split(",");
-    validateRacingCars(racingCarNames);
+    validateRacingCarNames(racingCarNames);
 
     return racingCarNames;
   },
