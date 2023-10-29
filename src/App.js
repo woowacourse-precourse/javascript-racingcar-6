@@ -2,21 +2,21 @@ import { Console } from "@woowacourse/mission-utils";
 import Car from "./Car";
 import {
   getCarNameMessage,
-  getLoopNumberMessage,
+  getRoundNumberMessage,
   lineBreakMessage,
   winnerMessage,
 } from "./Messages/Message";
 import {
   carNameLengthError,
   carNameDuplicateError,
-  loopNumberTypeError,
+  roundNumberTypeError,
 } from "./Messages/Error";
 
 class App {
   constructor() {
     this.cars = [];
     this.carNames = [];
-    this.loopNumber = 0;
+    this.roundNumber = 0;
   }
 
   checkValidName(name) {
@@ -43,15 +43,15 @@ class App {
 
   checkValidType(inputNumber) {
     if (Number.isNaN(+inputNumber)) {
-      loopNumberTypeError();
+      roundNumberTypeError();
     }
   }
 
-  async getLoopNumber() {
-    getLoopNumberMessage();
+  async getRoundNumber() {
+    getRoundNumberMessage();
     const inputNumber = await Console.readLineAsync();
     this.checkValidType(inputNumber);
-    this.loopNumber = inputNumber;
+    this.roundNumber = inputNumber;
   }
 
   processRound() {
@@ -70,9 +70,9 @@ class App {
 
   async play() {
     await this.getCar();
-    await this.getLoopNumber();
+    await this.getRoundNumber();
     lineBreakMessage();
-    for (let loop = 0; loop < this.loopNumber; loop += 1) {
+    for (let round = 0; round < this.roundNumber; round += 1) {
       this.processRound();
       lineBreakMessage();
     }
