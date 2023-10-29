@@ -7,6 +7,7 @@ import { RANGE } from "./constants/randomNumberRange.js";
 
 class App {
   carsRecordBoard = {};
+  winner = [];
 
   async play() {}
 
@@ -52,6 +53,20 @@ class App {
 
   printCurrentResult(car) {
     Console.print(`${car} : ${this.carsRecordBoard[car]}`);
+  }
+
+  findWinner(cars) {
+    let winnerCount = 0;
+
+    for (let car of cars) {
+      winnerCount = Math.max(winnerCount, this.carsRecordBoard[car].length);
+    }
+
+    for (let car of cars) {
+      if (this.carsRecordBoard[car].length === winnerCount) {
+        this.winner.push(car);
+      }
+    }
   }
 }
 
