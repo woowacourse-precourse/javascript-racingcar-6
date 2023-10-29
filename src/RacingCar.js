@@ -1,4 +1,4 @@
-import Random from "./utils/Random.js";
+import RandomNumber from "./utils/Random.js";
 import RaceOrganizer from "./view/RaceOrganizer.js";
 
 class RacingCar {
@@ -10,7 +10,7 @@ class RacingCar {
   }
 
   #reportRaceStatus(key, value, map) {
-    if (Random.getRandomNumber() >= 4) {
+    if (RandomNumber.isGreaterThanFour()) {
       const currentValue = value + "-";
 
       map.set(key, currentValue);

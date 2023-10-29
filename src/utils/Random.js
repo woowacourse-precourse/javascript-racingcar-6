@@ -1,10 +1,14 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import { NUMBER } from "./Constants.js";
 
-class Random {
+class RandomNumber {
+  static isGreaterThanFour() {
+    return RandomNumber.getRandomNumber() >= 4;
+  }
+
   static getRandomNumber() {
     return MissionUtils.Random.pickNumberInRange(NUMBER.MIN, NUMBER.MAX);
   }
 }
 
-export default Random;
+export default RandomNumber;
