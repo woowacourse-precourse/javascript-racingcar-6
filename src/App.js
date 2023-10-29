@@ -1,12 +1,7 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 class App {
-  async readCar() {
-    const inputCar = await MissionUtils.Console.readLineAsync(
-      `경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)`
-    );
-
-    // 입력값 검증
+  async checkCar(inputCar) {
     const temp = inputCar.split(",");
     for (let i = 0; i < temp.length; i++) {
       if (temp[i].length <= 0) {
@@ -19,12 +14,7 @@ class App {
 
     return temp;
   }
-  async readCount() {
-    const inputCount = await MissionUtils.Console.readLineAsync(
-      `시도할 횟수는 몇 회인가요?`
-    );
-
-    // 입력값 검증
+  async checkCount(inputCount) {
     if (isNaN(inputCount)) {
       throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
     }
@@ -61,16 +51,21 @@ class App {
   }
 
   async play() {
-    const carList = await this.readCar();
-    // console.log(carList);
-    const count = await this.readCount();
-    // console.log(count);
+    const inputCar = await MissionUtils.Console.readLineAsync(
+      `경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)`
+    );
+    const carList = await this.checkCar(inputCar);
+
+    const inputCount = await MissionUtils.Console.readLineAsync(
+      `시도할 횟수는 몇 회인가요?`
+    );
+    const count = await this.checkCount(inputCount);
+
     let forwardList = new Array(carList.length).fill(0);
 
     MissionUtils.Console.print("\n실행 결과");
     for (let i = 0; i < count; i++) {
       this.goForward(forwardList);
-      // console.log(forwardList);
       this.printExecResult(carList, forwardList);
     }
 
@@ -80,5 +75,5 @@ class App {
 
 export default App;
 
-const app = new App();
-app.play();
+// const app = new App();
+// app.play();
