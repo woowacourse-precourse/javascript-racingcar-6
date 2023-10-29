@@ -4,6 +4,7 @@ const {
   ERROR_MORE_THAN_TWO_CARS,
   ERROR_NOT_MORE_THAN_FIVE_CHARACTERS,
   READ_NUMBER_OF_ATTEMPTS,
+  ERROR_ATTEMPT_COUNT,
 } = require('./Constant');
 
 const InputView = {
@@ -11,6 +12,7 @@ const InputView = {
     const answer = await Console.readLineAsync(READ_RACING_CAR_NAMES);
     const answerArray = answer.split(',');
     this.validatorCarNames(answerArray);
+
     return answerArray;
   },
 
@@ -32,6 +34,16 @@ const InputView = {
 
   async readAttemptCounts() {
     const answer = await Console.readLineAsync(READ_NUMBER_OF_ATTEMPTS);
+    const answerNumber = Number(answer);
+    validatorAttemptCount(answerNumber);
+
+    return answerNumber;
+  },
+
+  validatorAttemptCount(count) {
+    if (isNaN(answerNumber) || answerNumber < 0 || answerNumber === 0) {
+      throw new Error(ERROR_ATTEMPT_COUNT);
+    }
   },
 };
 
