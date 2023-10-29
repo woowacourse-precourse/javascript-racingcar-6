@@ -56,13 +56,13 @@ class App {
   }
 
   getGameResults() {
-    outputView.printLine(GAME_MESSAGES.print_result_start);
     this.#game = new RacingGame(this.#cars, this.#attemps);
     this.#roundStatus = this.#game.getResult();
     this.#winners = this.#game.getFinalWinner();
   }
 
   printGameResults() {
+    outputView.printLine(GAME_MESSAGES.print_result_start);
     this.#roundStatus.forEach((round) => this.printRoundStatus(round));
   }
 
