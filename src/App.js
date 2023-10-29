@@ -7,26 +7,22 @@ const MOVE_THRESHOLD = 4;
 const CAR_POSITION_SYMBOL = "-";
 class App {
   async getCarStatusFromUserInput() {
-    try {
-      const carsStatus = {};
+    const carsStatus = {};
 
-      Console.print(
-        "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
-      );
+    Console.print(
+      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
+    );
 
-      const carNamesInput = await Console.readLineAsync("");
-      const carNames = carNamesInput.split(",").map((name) => name.trim());
+    const carNamesInput = await Console.readLineAsync("");
+    const carNames = carNamesInput.split(",").map((name) => name.trim());
 
-      this.validateCarNames(carNames);
+    this.validateCarNames(carNames);
 
-      carNames.forEach((name) => {
-        carsStatus[name] = 0;
-      });
+    carNames.forEach((name) => {
+      carsStatus[name] = 0;
+    });
 
-      return carsStatus;
-    } catch (error) {
-      throw new Error(error.message);
-    }
+    return carsStatus;
   }
 
   validateCarNames(carNames) {
@@ -52,18 +48,14 @@ class App {
   }
 
   async getRaceCountFromUserInput() {
-    try {
-      Console.print("시도할 횟수는 몇 회인가요?");
+    Console.print("시도할 횟수는 몇 회인가요?");
 
-      const raceCountInput = await Console.readLineAsync("");
-      const racingCount = parseInt(raceCountInput, 10);
+    const raceCountInput = await Console.readLineAsync("");
+    const racingCount = parseInt(raceCountInput, 10);
 
-      this.validateCount(racingCount);
+    this.validateCount(racingCount);
 
-      return racingCount;
-    } catch (error) {
-      throw new Error(error.message);
-    }
+    return racingCount;
   }
 
   validateCount(count) {
@@ -100,10 +92,14 @@ class App {
   }
 
   async play() {
-    const carsStatus = await this.getCarStatusFromUserInput();
-    const racingCount = await this.getRaceCountFromUserInput();
+    try {
+      const carsStatus = await this.getCarStatusFromUserInput();
+      const racingCount = await this.getRaceCountFromUserInput();
 
-    this.runRacing(carsStatus, racingCount);
+      this.runRacing(carsStatus, racingCount);
+    } catch (error) {
+      throw new Error(error.message);
+    }
   }
 }
 
