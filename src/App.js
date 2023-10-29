@@ -61,16 +61,10 @@ class App {
   }
 
   printWinner() {
-    let winnerArray = [];
-    let maxCount = 0;
-    this.cars.forEach((car) => {
-      if (car.countMove > maxCount) {
-        winnerArray = [car.name];
-        maxCount = car.countMove;
-      } else if (car.countMove === maxCount) {
-        winnerArray.push(car.name);
-      }
-    });
+    const maxCount = Math.max(...this.cars.map((car) => car.countMove));
+    const winnerArray = this.cars
+      .filter((car) => car.countMove === maxCount)
+      .map((car) => car.name);
     winnerMessage(winnerArray.join(", "));
   }
 
