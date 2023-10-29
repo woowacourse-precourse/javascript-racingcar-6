@@ -1,14 +1,14 @@
 import { Console } from "@woowacourse/mission-utils";
 import { MESSAGE } from "../constants/constants.js";
 
-const printRaceWinner = (race_result) => {
+const printRaceWinner = (raceResult) => {
   const winner = [];
-  const max_length = Math.max(
-    ...Object.values(race_result).map((path) => path.length)
+  const maxLength = Math.max(
+    ...Object.values(raceResult).map((path) => path.length)
   );
 
-  for (let [car, path] of Object.entries(race_result)) {
-    if (path.length === max_length) {
+  for (let [car, path] of Object.entries(raceResult)) {
+    if (path.length === maxLength) {
       winner.push(car);
     }
   }

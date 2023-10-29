@@ -1,38 +1,38 @@
 import { Console, Random } from "@woowacourse/mission-utils";
 import { MESSAGE } from "../constants/constants.js";
 
-const initRaceResult = (race_cars) => {
-  const cars_result = {};
+const initRaceResult = (raceCars) => {
+  const carsResult = {};
 
-  race_cars.forEach((car) => (cars_result[car] = ""));
+  raceCars.forEach((car) => (carsResult[car] = ""));
 
-  return cars_result;
+  return carsResult;
 };
 
-const updateRaceResult = (race_cars, cars_result) => {
-  race_cars.forEach((car) => {
+const updateRaceResult = (raceCars, carsResult) => {
+  raceCars.forEach((car) => {
     const random_number = Random.pickNumberInRange(0, 9);
     if (random_number >= 4) {
-      cars_result[car] += "-";
+      carsResult[car] += "-";
     }
   });
 };
 
-const printRaceResult = (race_cars, race_count) => {
+const printRaceResult = (raceCars, race_count) => {
   Console.print(`\n${MESSAGE.OUTPUT_RESULT}`);
 
-  const race_result = initRaceResult(race_cars);
+  const raceResult = initRaceResult(raceCars);
 
   for (let i = 0; i < race_count; i++) {
-    updateRaceResult(race_cars, race_result);
+    updateRaceResult(raceCars, raceResult);
 
-    for (let [car, path] of Object.entries(race_result)) {
+    for (let [car, path] of Object.entries(raceResult)) {
       Console.print(`${car} : ${path}`);
     }
     Console.print("");
   }
 
-  return race_result;
+  return raceResult;
 };
 
 export default printRaceResult;

@@ -3,9 +3,9 @@ import { ERROR, MESSAGE } from "../constants/constants.js";
 
 const getRaceCars = async () => {
   const cars = [];
-  const race_cars = await Console.readLineAsync(`${MESSAGE.INPUT_CARS} \n`);
+  const raceCars = await Console.readLineAsync(`${MESSAGE.INPUT_CARS} \n`);
 
-  race_cars.split(",").forEach((car) => {
+  raceCars.split(",").forEach((car) => {
     if (car.length > 5) {
       throw new Error(ERROR.CAR_NAME_LENGTH);
     } else {
@@ -17,13 +17,13 @@ const getRaceCars = async () => {
 };
 
 const getRaceCount = async () => {
-  const race_count = await Console.readLineAsync(`${MESSAGE.INPUT_COUNT} \n`);
+  const raceCount = await Console.readLineAsync(`${MESSAGE.INPUT_COUNT} \n`);
 
-  if (isNaN(race_count)) {
+  if (isNaN(raceCount)) {
     throw new Error(ERROR.COUNT_FORMAT);
   }
 
-  return race_count;
+  return raceCount;
 };
 
 export { getRaceCars, getRaceCount };
