@@ -1,37 +1,34 @@
 import App from "../src/App.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 
-const mockQuestions = (inputs) => {
+const mockQuestions = (input) => {
     MissionUtils.Console.readLineAsync = jest.fn();
 
     MissionUtils.Console.readLineAsync.mockImplementation(() => {
-        const input = inputs;
         return Promise.resolve(input);
     });
 };
 
 describe("기능 테스트", () => {
     test("createCarNameArr함수 테스트", async () => {
-        const inputs = `치이카와, 우사기, 하치와레`;
-        const result = inputs.split(",");
-        // given
-        mockQuestions(inputs);
+        const input = `치이카와, 우사기, 하치와레`;
+        const result = input.split(",");
 
-        // when
+        mockQuestions(input);
+
         const app = new App();
-        await expect(app.createCarNameArr()).toEqual(result);
+        await expect(await app.createCarNameArr()).toEqual(result);
     });
 
     test("getNumberOfGames함수 테스트", async () => {
-        const inputs = "1";
+        const input = "1";
         const result = 1;
-        // given
-        mockQuestions(inputs);
 
-        // when
+        mockQuestions(input);
+
         const app = new App();
 
-        await expect(app.getNumberOfGames()).toContain(result);
+        await expect(await app.getNumberOfGames()).toEqual(result);
     });
 
     test.each([``, `치이카와 우사기 하치와레`, `이름엄청길다,이름,이`])(
