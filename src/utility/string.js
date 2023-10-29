@@ -5,3 +5,5 @@ export const getHyphens = (count) => {
 };
 
 export const splitStringByComma = (string) => string.split(',');
+
+export const joinArrayWithComma = (array) => array.join(',');
