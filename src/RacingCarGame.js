@@ -47,10 +47,22 @@ class RacingCarGame {
   #getTryCount() {
     const tryCount = IOManager.input('시도할 횟수는 몇 회인가요?');
     this.#validateTryCount(tryCount);
-    return tryCount;
+    return parseInt(tryCount);
   }
 
-  #validateTryCount(tryCount) {}
+  #validateTryCount(tryCount) {
+    if (tryCount === '') {
+      throw new Error('입력이 없습니다.');
+    }
+
+    if (isNaN(tryCount)) {
+      throw new Error('숫자가 아닙니다.');
+    }
+
+    if (parseInt(tryCount) < 1) {
+      throw new Error('시도 횟수는 1보다 작을 수 없습니다.');
+    }
+  }
 }
 
 export default RacingCarGame;
