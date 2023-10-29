@@ -11,9 +11,14 @@ class App {
       '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)'
     );
 
-    const racingCars = inputCarName.replaceAll(' ', '').split(',');
+    const racingCarNames = inputCarName.replaceAll(' ', '').split(',');
 
-    this.validateCarName(racingCars);
+    this.validateCarName(racingCarNames);
+
+    const racingCars = racingCarNames.reduce((acc, value) => {
+      acc[value] = 0;
+      return acc;
+    }, {});
 
     return racingCars;
   }
