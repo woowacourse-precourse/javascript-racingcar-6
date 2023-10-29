@@ -1,4 +1,4 @@
-import { Console, Random } from "@woowacourse/mission-utils";
+import { Console } from "@woowacourse/mission-utils";
 import User from "./User.js";
 import Judge from "./Judge.js";
 
@@ -25,12 +25,7 @@ class App {
 
     let gameStep = 0;
     while (gameStep < gameMoveNum) {
-      gameResultInStep.forEach((player) => {
-        const randomNum = Random.pickNumberInRange(0, 9);
-        if (judge.checkMoveCondition(randomNum)) {
-          player.moveNum++;
-        }
-      })
+      judge.playStep(gameResultInStep);
       judge.printResultInStep(gameResultInStep);
       gameStep++;
     }

@@ -1,4 +1,4 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Console, Random } from "@woowacourse/mission-utils";
 
 class Judge {
   checkMoveCondition(randomNum) {
@@ -7,6 +7,15 @@ class Judge {
     }
 
     return false;
+  }
+
+  playStep(gameResultInStep) {
+    gameResultInStep.forEach((player) => {
+      const randomNum = Random.pickNumberInRange(0, 9);
+      if (this.checkMoveCondition(randomNum)) {
+        player.moveNum++;
+      }
+    })
   }
 
   printResultInStep(gameResultInStep) {
