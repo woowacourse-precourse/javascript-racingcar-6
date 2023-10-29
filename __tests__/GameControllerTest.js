@@ -27,4 +27,19 @@ describe('✨ [GameController] 클래스 메서드 테스트 ', () => {
 
     expect(controller.splitPlayerNames(mockNames)).toEqual(expectedResult);
   });
+
+  test('[getPlayers] 구분한 이름들에 대해 유효성 검사를 수행한다.', async () => {
+    const expectedPlayers = ['Reason', 'LeeYu'];
+
+    controller.checkValidatePlayer = jest.fn();
+    controller.splitPlayerNames = jest
+      .fn()
+      .mockReturnValueOnce(expectedPlayers);
+
+    await controller.getPlayers();
+
+    expect(controller.checkValidatePlayer).toHaveBeenCalledWith(
+      expectedPlayers,
+    );
+  });
 });
