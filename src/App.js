@@ -1,8 +1,9 @@
-import InputView from './InputView';
+import CarRacingReferee from './CarRacingReferee';
+const carRacingReferee = new CarRacingReferee();
 
 class App {
   async play() {
-    await InputView.readCarNames();
+    await carRacingReferee.raceStart();
   }
 }
 

@@ -10,7 +10,7 @@ const InputView = {
     const answer = await Console.readLineAsync(READ_RACING_CAR_NAMES);
     const answerArray = answer.split(',');
     this.validatorCarNames(answerArray);
-    return answer;
+    return answerArray;
   },
 
   validatorCarNames(names) {
