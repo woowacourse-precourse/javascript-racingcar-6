@@ -1,5 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
 import ReceptionDesk from '../src/ReceptionDesk.js';
+import { validateName } from '../src/functions/validate.js';
 
 describe('이름 입력 처리 테스트', () => {
   test('이름 입력 시, Console.readLineAsync를 사용한다', async () => {
@@ -17,5 +18,16 @@ describe('이름 입력 처리 테스트', () => {
     const outputs = await ReceptionDesk.createNameList(inputs);
     const expected = ['pobi', 'woni', 'jun'];
     expect(outputs).toStrictEqual(expected);
+  });
+});
+
+describe('이름 입력 예외 테스트', () => {
+  test('각 이름은 1~5자이다', () => {
+    const inputs = ['pobi', 'javajigi'];
+    expect(() => validateName(inputs)).toThrow('[ERROR]');
+  });
+  test('각 이름은 1~5자이다', () => {
+    const inputs = [''];
+    expect(() => validateName(inputs)).toThrow('[ERROR]');
   });
 });
