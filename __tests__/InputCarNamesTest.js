@@ -20,7 +20,7 @@ describe('자동차 입력을 테스트합니다.', () => {
     mockQuestion(input);
 
     // when
-    const cars = await InputManager.inputRacingCarNames(input);
+    const cars = await InputManager.inputRacingCarNames();
 
     // then
     expect(cars).toEqual(answers);
@@ -33,7 +33,7 @@ describe('자동차 입력을 테스트합니다.', () => {
     mockQuestion(input);
 
     // when & then
-    await expect(InputManager.inputRacingCarNames(input)).rejects.toThrow("[ERROR]");
+    await expect(InputManager.inputRacingCarNames()).rejects.toThrow("[ERROR]");
   })
 
   test('한 자리 미만의 입력이 있으면 예외를 발생시키고 애플리케이션을 종료합니다.', async () => {
@@ -43,7 +43,7 @@ describe('자동차 입력을 테스트합니다.', () => {
     mockQuestion(input);
 
     // when & then
-    await expect(InputManager.inputRacingCarNames(input)).rejects.toThrow("[ERROR]");
+    await expect(InputManager.inputRacingCarNames()).rejects.toThrow("[ERROR]");
   })
 
   test('중복된 이름이 존재할 때 예외를 발생시키고 애플리케이션을 종료합니다.', async () => {
@@ -53,7 +53,7 @@ describe('자동차 입력을 테스트합니다.', () => {
     mockQuestion(input);
 
     // when & then
-    await expect(InputManager.inputRacingCarNames(input)).rejects.toThrow("[ERROR]");
+    await expect(InputManager.inputRacingCarNames()).rejects.toThrow("[ERROR]");
   })
 
   test('입력한대로 자동차를 올바르게 생성합니다.', async () => {
@@ -65,7 +65,7 @@ describe('자동차 입력을 테스트합니다.', () => {
 
     // when
     const racingGame = new RacingGame();
-    const cars = await InputManager.inputRacingCarNames(input);
+    const cars = await InputManager.inputRacingCarNames();
     racingGame.generateRacingCars(cars);
     
     // then
