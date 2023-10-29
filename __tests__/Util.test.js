@@ -19,7 +19,30 @@ describe('Util 클래스 테스트', () => {
       { name: 'tae', progress: '---' },
       { name: 'yoon', progress: '-' },
     ];
-    const result = Util.getMaxLength(JOIN_LIST);
-    expect(result).toBe(3);
+    const maxLength = Util.getMaxLength(JOIN_LIST);
+
+    expect(maxLength).toBe(3);
+  });
+
+  test('getWinnerList 함수 우승자 한명일 경우 테스트', () => {
+    const JOIN_LIST = [
+      { name: 'tae', progress: '---' },
+      { name: 'yoon', progress: '-' },
+    ];
+    const maxLength = Util.getMaxLength(JOIN_LIST);
+    const winnerList = Util.getWinnerList(JOIN_LIST, maxLength);
+
+    expect(winnerList).toEqual([JOIN_LIST[0]]);
+  });
+
+  test('getWinnerList 함수 우승자 여러명일 경우 테스트', () => {
+    const JOIN_LIST = [
+      { name: 'tae', progress: '---' },
+      { name: 'yoon', progress: '---' },
+    ];
+    const maxLength = Util.getMaxLength(JOIN_LIST);
+    const winnerList = Util.getWinnerList(JOIN_LIST, maxLength);
+
+    expect(winnerList).toEqual(JOIN_LIST);
   });
 });
