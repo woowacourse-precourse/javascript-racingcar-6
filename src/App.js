@@ -1,10 +1,11 @@
 import { Console } from "@woowacourse/mission-utils";
-import { ERROR_MESSAGE, GAME_MESSAGE } from "./constants/index.js";
+import RacingcarGame from "./RacingcarGame.js";
 
 class App {
   async play() {
-    Console.print(GAME_MESSAGE.START);
-    Console.print(ERROR_MESSAGE.IS_COMMA);
+    const racingcar = new RacingcarGame();
+    const inputValue = await racingcar.inputValue();
+    if (inputValue) Console.print(inputValue);
   }
 }
 
