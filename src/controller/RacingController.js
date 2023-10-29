@@ -8,7 +8,7 @@ import { GAME_MESSEAGE } from "../constants/Messeage.js";
 class RacingController {  
   playersArray;
   attemptNumber;
-
+  //레이싱 보드
   scoreArray = [];
   traceArray = [];
   playTime = 0;
@@ -18,39 +18,40 @@ class RacingController {
     this.attemptNumber = attemptNumber;
   }
 
-  startRacing(randomArray) {
-    this.scoreArray = Converter.scoreFilter(randomArray); 
-    this.traceArray = Converter.traceFilter(randomArray);
+  startRacing() {
+    const driveArray = this.driveRandomArray();
+    this.scoreArray = Converter.scoreFilter(driveArray); 
+    this.traceArray = Converter.traceFilter(driveArray);
 
     Console.print(GAME_MESSEAGE.executeResult);
+
     this.traceMaker();
-    
   }
 
   traceMaker() {                                          
-    this.traceArray.forEach((element, index) => {
-      Console.print(this.playersArray[index] + ' : ' + element);
-    })  
+    this.traceArray.forEach((trace, index) => Console.print(this.playersArray[index] + ' : ' + trace));   
     Console.print('');
 
-    this.playTime++;
-
-    if (this.playTime === this.attemptNumber) {
-      const result = findWinner(this.playersArray, this.scoreArray);
-
-      return Console.print(`${GAME_MESSEAGE.winner} : ${result.join(', ')}`);
-    }
+    this.playTime += 1;
+    if (this.playTime === this.attemptNumber) return this.showWinners();
     
     this.updateRacingBoard(); 
   }
 
   updateRacingBoard() {                                          
-    const newRandomArray = randomArrayGenerator(this.playersArray.length);
-    
-    this.scoreArray = scoreAccumulator(this.scoreArray, newRandomArray);
-    this.traceArray = traceAccumulator(this.traceArray, newRandomArray);
+    this.scoreArray = scoreAccumulator(this.scoreArray, this.driveRandomArray());
+    this.traceArray = traceAccumulator(this.traceArray, this.driveRandomArray());
 
     this.traceMaker(); 
+  }
+
+  driveRandomArray() {
+    return randomArrayGenerator(this.playersArray.length);
+  }
+  
+  showWinners() {
+    const winners = findWinner(this.playersArray, this.scoreArray);
+    Console.print(`${GAME_MESSEAGE.winner} : ${winners.join(', ')}`);
   }
 }
 

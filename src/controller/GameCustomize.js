@@ -16,6 +16,8 @@ export const getAttemptNumber = async () => {
 
   const check = new Error();
   check.attempt(attemptNumber);
+  
+  Console.print('');
 
   return Number(attemptNumber);
 }
