@@ -3,6 +3,7 @@ export const ERROR = {
     NAME: '[ERROR] 이름은 문자만 입력해주세요.',
     LENGTH: '[ERROR] 이름은 5자 이하로 입력해주세요.',
     DOUBLE: '[ERROR] 서로 다른 이름을 입력해주세요.',
+    INCLUDE_0: '[ERROR] 빈칸은 입력할 수 없습니다.',
 };
 
 export const CAR = {
