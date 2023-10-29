@@ -1,8 +1,15 @@
 import { Console } from "@woowacourse/mission-utils";
-import { GetCarNameMessage } from "./Messages/Message";
+import Car from "./Car";
+import {
+  GetCarNameMessage,
+  GetLoopNumberMessage,
+  LineBreakMessage,
+  WinnerMessage,
+} from "./Messages/Message";
 import {
   CAR_NAME_DUPLICATE_ERROR,
   CAR_NAME_LENGTH_ERROR,
+  LOOP_NUMBER_TYPE_ERROR,
 } from "./Messages/Error";
 
 class App {
