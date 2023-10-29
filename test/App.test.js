@@ -34,7 +34,15 @@ describe("게임 라운드 수 테스트", () => {
     const app = new App();
     const result = await app.gameNumberInput();
     expect(result).toBe(1);
-  })
-})
+  });
+
+  test("사용자 입력 예외 처리", async () => {
+    const inputs = ["a"];
+    MissionUtils.Console.readLineAsync = jest.fn();
+    MissionUtils.Console.readLineAsync.mockResolvedValue(Promise.resolve(inputs[0]));
+    const app = new App();
+    expect(app.gameNumberInput()).rejects.toThrow("[ERROR]");
+  });
+});
 
 
