@@ -1,6 +1,7 @@
 import { Console, MissionUtils } from "@woowacourse/mission-utils";
-import FowardConditions from "./FowardCondition.js";
+import fowardConditions from "./FowardCondition.js";
 import message from "./Message.js";
+import game from "./Game.js";
 /*
   주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
   각 자동차에 이름을 부여할 수 있다. 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
@@ -20,29 +21,34 @@ class App {
     
     /*자동차 이름과 기본 점수 설정 => gameSetting 으로 빼도 될거 같음 */ 
     const carsScores = [];
-    // numbers.forEach(number => console.log(number)); 
     for (let i = 0; i < users.length; i++) {
       if(users[i].length>5){
         Console.print(`${users[i]}오류`);
         throw Error(message.error.NAME_CREATION_ERROR);
       }else{
-        // carsScores.set(users[i],0);
         carsScores.push([users[i],0]);
       }
-    } 
-
-    await Console.print(carsScores);
-    carsScores[0][1]+=1;
-    await Console.print(`${carsScores[0][0]} : `+"-".repeat(carsScores[0][1]));
-    await Console.print(cars);
-    await Console.print(users);
-
-    FowardConditions();
-    
+    }   
     await Console.print(message.game.ATTEMPTS_NUMBER_QUESTION);
+    let Winner = [];
     const numberOfAttempts = await Console.readLineAsync('');
-    
-    // await Console.print(numberOfAttempts);
+    Console.print(message.game.RESULT);
+    for(let j = 1; j<=numberOfAttempts;j++){
+      // game(carsScores,numberOfAttempts);
+      for(let i =0;i<carsScores.length;i++){
+          let scoreCondition = MissionUtils.Random.pickNumberInRange(0,9);
+          if(scoreCondition>=4){
+              carsScores[i][1]+=1;
+          }
+          if(numberOfAttempts == carsScores[i][1]){
+              Winner.push(carsScores[i][0]);
+          }
+          await Console.print(`${carsScores[i][0]} : ${"-".repeat(carsScores[i][1])}`);
+      }
+      await Console.print('');
+    }
+    await Console.print(`최종 우승자 : ${Winner.join(',')}`);
+    await Console.print(carsScores);
   }
 }
 
