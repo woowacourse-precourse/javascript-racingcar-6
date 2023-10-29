@@ -30,3 +30,6 @@ export const REGEXP = Object.freeze({
 });
 
 export const DITANCE_SYMBOL = '-';
+export const NAME_MAX_LENGTH = 5;
+export const WINNER_DIVIDER = ', ';
+export const INPUT_DIVIDER = ',';

@@ -1,9 +1,15 @@
 import ValidationError from '../errors/ValidationError.js';
-import { ERROR_MESSAGE, EXCUTION_NUMBER, REGEXP } from '../constant.js';
+import {
+  ERROR_MESSAGE,
+  EXCUTION_NUMBER,
+  INPUT_DIVIDER,
+  NAME_MAX_LENGTH,
+  REGEXP,
+} from '../constant.js';
 
 class Validator {
   static nameValidate(names) {
-    const splitWords = names.split(',');
+    const splitWords = names.split(INPUT_DIVIDER);
 
     if (splitWords.length <= 1) {
       throw new ValidationError(ERROR_MESSAGE.wrong_answer);
@@ -13,7 +19,7 @@ class Validator {
       throw new ValidationError(ERROR_MESSAGE.only_text);
     }
 
-    if (splitWords.some((word) => word.length > 5)) {
+    if (splitWords.some((word) => word.length > NAME_MAX_LENGTH)) {
       throw new ValidationError(ERROR_MESSAGE.over_name_length);
     }
   }

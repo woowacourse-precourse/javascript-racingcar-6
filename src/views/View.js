@@ -1,6 +1,6 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import Validator from '../validators/Validator.js';
-import { DITANCE_SYMBOL, MESSAGE } from '../constant.js';
+import { DITANCE_SYMBOL, INPUT_DIVIDER, MESSAGE, WINNER_DIVIDER } from '../constant.js';
 
 class View {
   static print(message) {
@@ -11,7 +11,7 @@ class View {
     let answer = await MissionUtils.Console.readLineAsync(message);
     answer = this.removeSpace(answer);
     Validator.nameValidate(answer);
-    answer = answer.split(',');
+    answer = answer.split(INPUT_DIVIDER);
     return answer;
   }
 
@@ -31,7 +31,7 @@ class View {
   }
 
   static winnerPrint(winnerList) {
-    const splitWinners = winnerList.join(', ');
+    const splitWinners = winnerList.join(WINNER_DIVIDER);
     MissionUtils.Console.print(`${MESSAGE.winner}${splitWinners}`);
   }
 }
