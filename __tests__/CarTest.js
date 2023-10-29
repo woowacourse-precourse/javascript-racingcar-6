@@ -1,5 +1,7 @@
-import App, { Car } from '../src/App';
 import { Console, Random } from '@woowacourse/mission-utils';
+
+import App from '../src/App';
+import Car from '../src/Car';
 
 const mockRandoms = (numbers) => {
   Random.pickNumberInRange = jest.fn();
