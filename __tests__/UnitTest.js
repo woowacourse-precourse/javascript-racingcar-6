@@ -1,5 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import CarRace from "../src/CarRace";
+import carHandler from "../src/utils/carHandler";
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -15,8 +16,7 @@ describe("유닛 테스트", () => {
     const answer = [" car,car34,car1"];
     mockQuestions(answer);
 
-    const carRace = new CarRace();
-    await expect(carRace.readCarsInput()).rejects.toThrow(
+    await expect(carHandler.readCarsInput()).rejects.toThrow(
       "[ERROR] 자동차 이름의 앞 뒤에는 공백이 있어선 안됩니다."
     );
   });
@@ -24,8 +24,7 @@ describe("유닛 테스트", () => {
     const answer = ["carcar,car34,car1"];
     mockQuestions(answer);
 
-    const carRace = new CarRace();
-    await expect(carRace.readCarsInput()).rejects.toThrow(
+    await expect(carHandler.readCarsInput()).rejects.toThrow(
       "[ERROR] 자동차 이름의 길이는 5를 넘어선 안됩니다."
     );
   });
@@ -33,8 +32,7 @@ describe("유닛 테스트", () => {
     const answer = ["carca,carca,car1"];
     mockQuestions(answer);
 
-    const carRace = new CarRace();
-    await expect(carRace.readCarsInput()).rejects.toThrow(
+    await expect(carHandler.readCarsInput()).rejects.toThrow(
       "[ERROR] 자동차 이름에 중복이 있습니다."
     );
   });
@@ -42,8 +40,7 @@ describe("유닛 테스트", () => {
     const answer = ["car1,car2,lurgi,tisi"];
     mockQuestions(answer);
 
-    const carRace = new CarRace();
-    const cars = await carRace.readCarsInput();
+    const cars = await carHandler.readCarsInput();
     expect(cars).toEqual("car1,car2,lurgi,tisi");
   });
 
