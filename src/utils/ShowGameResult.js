@@ -1,7 +1,7 @@
 import { GAME_RESULT, WINNER } from "../const/Messages";
 import { Console } from "@woowacourse/mission-utils";
 
-class ShowGameWinner {
+class showGameResult {
   constructor(carPositions) {
     this.carPositions = carPositions;
   }
@@ -13,7 +13,7 @@ class ShowGameWinner {
       .map(([carName, _]) => carName);
   }
 
-  printGameWinner(carGame) {
+  printGameResult(carGame) {
     Console.print(GAME_RESULT);
     carGame.printRoundResult();
     const winners = this.findWinner();
@@ -21,4 +21,4 @@ class ShowGameWinner {
   }
 }
 
-export default ShowGameWinner;
+export default showGameResult;
