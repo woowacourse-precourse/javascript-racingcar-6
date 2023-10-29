@@ -9,6 +9,10 @@ const OutputView = {
       })
       console.log('-'.repeat('\n'));
     })
+  },
+
+  printWinner(winner) {
+    Console.print(`최종 우승자 : ${winner.join(', ')}`);
   }
 }
 
