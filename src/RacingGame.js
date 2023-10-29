@@ -1,6 +1,3 @@
-import ConsoleInput from './io/ConsoleInput.js';
-import MESSAGE from './constants/Message.js';
-import InputManager from './utils/InputManager.js';
 import RacingCar from './domain/RacingCar.js';
 
 class RacingGame {
@@ -10,15 +7,7 @@ class RacingGame {
     return this;
   }
 
-  async inputRacingCarNames() {
-    const input = await ConsoleInput.input(MESSAGE.INPUT_RACING_CAR_NAMES);
-    const cars = InputManager.getCarNames(input);
-    InputManager.validateCarName(cars);
-
-    this.#generateRacingCars(cars);
-  }
-
-  #generateRacingCars(cars) {
+  generateRacingCars(cars) {
     const racingCars = [];
 
     cars.forEach((car) => {
@@ -27,6 +16,10 @@ class RacingGame {
     });
 
     this.#racingCars = racingCars;
+  }
+
+  getRacingCars() {
+    return this.#racingCars;
   }
 }
 

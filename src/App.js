@@ -1,10 +1,12 @@
 import RacingGame from './RacingGame.js';
+import InputManager from './utils/InputManager.js';
 
 class App {
   async play() {
     const racingGame = new RacingGame();
     racingGame.start();
-    await racingGame.inputRacingCarNames();
+    const cars = await InputManager.inputRacingCarNames();
+    racingGame.generateRacingCars(cars);
   }
 }
 
