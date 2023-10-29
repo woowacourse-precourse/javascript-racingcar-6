@@ -17,12 +17,22 @@ class App {
   }
 
   async raceCars() {
-
-
+    let randomNumbers = {};
+    
+    for (let i = 0; i < Number(this.raceTimes); i++) {
+      randomNumbers = this.pickRandomNumbers(randomNumbers);
+      this.goStop(randomNumbers);
+    }
   }
 
-  goStop() {
+  pickRandomNumbers(randomNumbers) {
+    this.cars.forEach(car => { randomNumbers[car] = MissionUtils.Random.pickNumberInRange(0, 9); });
+    return randomNumbers;
+  }
 
+  goStop(randomNumbers) {
+    console.log("HOORAY!");
+    console.log(randomNumbers);
   }
 
   showResults() {
@@ -30,7 +40,6 @@ class App {
   }
 
   showWinners() {
-
 
   }
 
