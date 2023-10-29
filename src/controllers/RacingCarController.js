@@ -3,6 +3,7 @@ import Car from '../models/Car.js';
 import InputValidator from '../utils/InputValidator.js';
 import NumberGenerator from '../utils/NumberGenerator.js';
 import InputView from '../views/InputView.js';
+import OutputView from '../views/OutputView.js';
 
 class RacingCarController {
   #cars;
@@ -22,6 +23,8 @@ class RacingCarController {
     if (InputValidator.checkMoveCount(moveCount)) {
       this.#moveCount = moveCount;
     }
+
+    OutputView.printResultText();
 
     for (let count = 0; count < this.#moveCount; count += 1) {
       this.moveCars();
@@ -46,6 +49,15 @@ class RacingCarController {
         car.moveForward();
       }
     });
+
+    this.showResult();
+  }
+
+  showResult() {
+    this.#cars.forEach(car => {
+      OutputView.printCarPosition(car);
+    });
+    OutputView.printLine();
   }
 }
 
