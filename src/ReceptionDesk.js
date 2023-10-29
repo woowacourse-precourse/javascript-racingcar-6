@@ -3,18 +3,19 @@ import Car from './Car.js';
 import { INPUT_CARS } from './constants/messages.js';
 
 class ReceptionDesk {
-  static async recruitCars() {
+  static async registerRacingCars() {
     const input = await Console.readLineAsync(INPUT_CARS);
-    return this.makeCarList(input);
+    const nameList = this.createNameList(input);
+    const cars = this.createCarList(nameList);
+    return cars;
   }
 
-  makeCarList(input) {
-    const nameList = input.replaceAll(' ', '').split(',');
-    const cars = [];
-    nameList.forEach((name) => {
-      cars.push(new Car(name));
-    });
-    return cars;
+  static createCarList(nameList) {
+    return nameList.map((name) => new Car(name));
+  }
+
+  static createNameList(input) {
+    return input.replaceAll(' ', '').split(',');
   }
 }
 
