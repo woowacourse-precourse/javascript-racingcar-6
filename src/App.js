@@ -4,10 +4,13 @@ import Car from './Car.js';
 class App {
   #carArray;
 
+  #winnerCar;
+
   #attemptLeft;
 
   constructor() {
     this.#carArray = [];
+    this.#winnerCar = [];
     this.#attemptLeft = 0;
   }
 
@@ -16,7 +19,8 @@ class App {
     await this.readMaxAttempt();
     Console.print('\n실행 결과');
     this.race();
-    // this.printWinner;
+    this.findWinner();
+    this.printWinner();
   }
 
   async readCar() {
@@ -46,7 +50,21 @@ class App {
     }
   }
 
-  printWinner() {}
+  findWinner() {
+    let max = 0;
+    this.#carArray.map((car) => {
+      const pos = car.getPosition();
+      if (max < pos) {
+        this.#winnerCar = [car.getName()];
+        max = pos;
+      } else if (max === pos) this.#winnerCar.push(car.getName());
+    });
+  }
+
+  printWinner() {
+    const winners = this.#winnerCar.join(', ');
+    Console.print(`최종 우승자 : ${winners}`);
+  }
 }
 
 export default App;
