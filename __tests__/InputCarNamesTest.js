@@ -1,5 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
 import RacingGame from './../src/RacingGame';
+import RacingCar from '../src/domain/RacingCar';
+import InputManager from '../src/utils/InputManager';
 
 const mockQuestion = (input) => {
   Console.readLineAsync = jest.fn();
@@ -18,8 +20,7 @@ describe('자동차 입력을 테스트합니다.', () => {
     mockQuestion(input);
 
     // when
-    const racingGame = new RacingGame();
-    const cars = await racingGame.inputRacingCarNames(input);
+    const cars = await InputManager.inputRacingCarNames(input);
 
     // then
     expect(cars).toEqual(answers);
@@ -32,7 +33,23 @@ describe('자동차 입력을 테스트합니다.', () => {
     mockQuestion(input);
 
     // when & then
+    await expect(InputManager.inputRacingCarNames(input)).rejects.toThrow("[ERROR]");
+  })
+
+  test('입력한대로 자동차를 올바르게 생성합니다.', async () => {
+    // given
+    const input = 'pobi,crong,rupee';
+    const answers = [new RacingCar('pobi'), new RacingCar('crong'), new RacingCar('rupee')];
+
+    mockQuestion(input);
+
+    // when
     const racingGame = new RacingGame();
-    await expect(racingGame.inputRacingCarNames(input)).rejects.toThrow("[ERROR]");
+    const cars = await InputManager.inputRacingCarNames(input);
+    racingGame.generateRacingCars(cars);
+    
+    // then
+    const generatedCars = racingGame.getRacingCars();
+    expect(answers).toEqual(expect.arrayContaining(generatedCars));
   })
 });
