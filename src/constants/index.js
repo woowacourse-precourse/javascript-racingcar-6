@@ -13,6 +13,11 @@ export const ERROR_MESSAGES = Object.freeze({
   INVALID_ATTEMPTS: '유효한 숫자를 입력해주세요.',
 });
 
+export const REGEX_PATTERNS = Object.freeze({
+  ALPHABETIC: /^[a-zA-Z]{1,5}$/,
+  NUMERICL: /^[1-9]\d*$/,
+});
+
 /** 전진 여부를 결정하는 최소값 */
 export const FORWARD_THRESHOLD = 4;
 
@@ -20,5 +25,6 @@ export const CONSTANTS = {
   INPUT_MESSAGES,
   OUTPUT_MESSAGES,
   ERROR_MESSAGES,
+  REGEX_PATTERNS,
   FORWARD_THRESHOLD,
 };
