@@ -176,11 +176,11 @@ MissionUtils.Random.pickNumberInRange(0, 9);
 # 구현할 기능 목록
 
 - [x] 경주 게임을 관리하는 RacingGame 클래스를 새로운 파일로 분리
-- [ ] 화면에 출력하는 문구를 저장하는 Messages 객체를 새로운 파일로 분리
-- [ ] 경주할 자동차 이름 입력받기 - getCarName
-  - [ ] _예외_: 자동차 이름이 5자 이하인지 확인 - isValidCarName
-- [ ] 시도할 횟수 입력받기 - getTryNumber
-  - [ ] _예외_: 1 이상의 정수를 입력했는지 확인 - getTryNumber
+- [x] 화면에 출력하는 문구를 저장하는 Messages 객체를 새로운 파일로 분리
+- [x] 경주할 자동차 이름 입력받기 - setCarName
+  - [x] _예외_: 자동차 이름이 5자 이하인지 확인 - isValidCarName
+- [ ] 시도할 횟수 입력받기 - setTryNumber
+  - [ ] _예외_: 1 이상의 정수를 입력했는지 확인 - setTryNumber
 - [ ] 0~9 사이 무작위 값이 4 이상인지 확인 - shouldMoveForward
 - [ ] 각 자동차 별로 전진 여부 확인해서 차수별 실행 결과 출력 - printCarPosition
 - [ ] 가장 멀리 간 자동차를 확인해서 우승자 이름 출력
