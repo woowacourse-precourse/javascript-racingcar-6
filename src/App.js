@@ -1,20 +1,21 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
+import { GAME_MESSAGE, ERROR_MESSAGE } from "./Messages.js";
 
 class App {
   async play() {
     const carNames = await MissionUtils.Console.readLineAsync(
-      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
+      GAME_MESSAGE.GAME_START
     );
     if (carNames.split(",").some((name) => name.trim().length > 5)) {
-      throw new Error("[ERROR] 자동차 이름은 최대 5자만 가능합니다.");
+      throw new Error(ERROR_MESSAGE.INVALID_NAME_LENGTH);
     }
     const repeatNumber = await MissionUtils.Console.readLineAsync(
-      "시도할 횟수는 몇 회인가요?\n"
+      GAME_MESSAGE.INPUT_REPEAT_NUMBER
     );
     if (Number.isNaN(Number(repeatNumber))) {
-      throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
+      throw new Error(ERROR_MESSAGE.NOT_ONLY_NUMBER);
     }
-    MissionUtils.Console.print("실행 결과");
+    MissionUtils.Console.print(GAME_MESSAGE.GAME_RESULT);
     const carNameArray = carNames.split(",");
     const carObjects = carNameArray.map((name) => ({ [name.trim()]: 0 }));
 
@@ -43,7 +44,7 @@ class App {
         }
       }
     }
-    MissionUtils.Console.print("최종 우승자 : " + winCarArr);
+    MissionUtils.Console.print(GAME_MESSAGE.GAME_WINNER + winCarArr);
   }
 
   generateRandomNumber(carObject) {
