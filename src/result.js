@@ -1,9 +1,7 @@
-import { Console, Random } from '@woowacourse/mission-utils';
-import Car from './Car.js';
-class Result {
-  constructor() {}
+import { Console } from '@woowacourse/mission-utils';
 
-  최종결과(carList) {
+class Result {
+  FinalResult(carList) {
     let maxPosition = 0;
     let maxPositionCars = [];
 
@@ -18,4 +16,5 @@ class Result {
     Console.print(`최종 우승자 : ${maxPositionCars}`);
   }
 }
+
 export default Result;
