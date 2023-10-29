@@ -35,13 +35,13 @@ const InputView = {
   async readAttemptCounts() {
     const answer = await Console.readLineAsync(READ_NUMBER_OF_ATTEMPTS);
     const answerNumber = Number(answer);
-    validatorAttemptCount(answerNumber);
+    this.validatorAttemptCount(answerNumber);
 
     return answerNumber;
   },
 
   validatorAttemptCount(count) {
-    if (isNaN(answerNumber) || answerNumber < 0 || answerNumber === 0) {
+    if (isNaN(count) || count < 0 || count === 0) {
       throw new Error(ERROR_ATTEMPT_COUNT);
     }
   },

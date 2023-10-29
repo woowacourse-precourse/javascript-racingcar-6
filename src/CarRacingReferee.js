@@ -6,7 +6,7 @@ const cars = new Cars();
 class CarRacingReferee {
   async raceStart() {
     cars.names = await InputView.readCarNames();
-    await InputView.readAttemptCounts();
+    cars.attemptCount = await InputView.readAttemptCounts();
   }
 }
 

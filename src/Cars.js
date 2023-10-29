@@ -1,8 +1,10 @@
 class Cars {
   #names;
+  #attemptCount;
 
   constructor() {
     this.#names = [];
+    this.#attemptCount = 0;
   }
 
   get names() {
@@ -11,6 +13,14 @@ class Cars {
 
   set names(answer) {
     this.#names = answer;
+  }
+
+  get attemptCount() {
+    return this.#attemptCount;
+  }
+
+  set attemptCount(count) {
+    this.#attemptCount = count;
   }
 }
 

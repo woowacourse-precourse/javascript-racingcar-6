@@ -34,27 +34,27 @@ const getLogSpy = () => {
 };
 
 describe('자동차 경주 게임', () => {
-  // test('전진-정지', async () => {
-  //   // given
-  //   const MOVING_FORWARD = 4;
-  //   const STOP = 3;
-  //   const inputs = ['pobi,woni', '1'];
-  //   const outputs = ['pobi : -'];
-  //   const randoms = [MOVING_FORWARD, STOP];
-  //   const logSpy = getLogSpy();
+  test('전진-정지', async () => {
+    // given
+    const MOVING_FORWARD = 4;
+    const STOP = 3;
+    const inputs = ['pobi,woni', '1'];
+    const outputs = ['pobi : -'];
+    const randoms = [MOVING_FORWARD, STOP];
+    const logSpy = getLogSpy();
 
-  //   mockNamesQuestions(inputs);
-  //   mockRandoms([...randoms]);
+    mockNamesQuestions(inputs);
+    mockRandoms([...randoms]);
 
-  //   // when
-  //   const app = new App();
-  //   await app.play();
+    // when
+    const app = new App();
+    await app.play();
 
-  //   // then
-  //   outputs.forEach(output => {
-  //     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
-  //   });
-  // });
+    // then
+    outputs.forEach(output => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
 
   test.each([[['pobi']], [['pobi,,woni']], [['pobi,javaji']], [['pobi,eastjun']]])(
     '이름에 대한 예외 처리',
