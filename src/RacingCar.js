@@ -49,7 +49,7 @@ class RacingCar {
     this.#carList.forEach((car) => {
       this.#view.printCarResult(car.getName(), car.getDistance());
     })
-    Console.print('\n');
+    Console.print('');
   }
 
   chooseWinner() {
@@ -59,7 +59,7 @@ class RacingCar {
       .filter((car) => car.getDistance() === maxDistance)
       .map((car) => car.getName());
     
-    Console.print(`최종 우승자 : ${winners}`);
+    this.#view.printWinners(winners);
   }
   
 }

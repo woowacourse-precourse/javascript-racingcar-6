@@ -19,6 +19,10 @@ class View {
   printCarResult(carName, distance) {
     Console.print(`${carName} : ${'-'.repeat(distance)}`);
   }
+
+  printWinners(winnerList) {
+    Console.print(winnerList.join(', '));
+  }
 }
 
 
