@@ -13,7 +13,7 @@ class App {
   async getRaceCount() {
     const race = await Console.readLineAsync("시도할 횟수는 몇 회인가요?");
 
-    return race;
+    return parseInt(race);
   }
 
   async startRace(carName, raceCount) {
@@ -36,6 +36,7 @@ class App {
 
   getWinner(carResult) {
     const raceResult = Math.max(...carResult.map((car) => car.move));
+
     return carResult
       .filter((car) => car.move === raceResult)
       .map((car) => car.name);
@@ -44,7 +45,7 @@ class App {
   async play() {
     const carName = await this.getCarInput();
 
-    if (carName.every((car) => car.length <= 5)) {
+    if (carName.every((car) => car.length > 5)) {
       throw new Error("[ERROR] 자동차 이름은 5자 이하만 가능합니다.");
     }
 
