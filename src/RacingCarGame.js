@@ -7,7 +7,7 @@ class RacingCarGame {
 
   static #MESSAGE = Object.freeze({
     GET_CAR_NAMES:
-      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)',
+      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
     DISPLAY_CURRENT_PROGRESS: (car) => {
       return `${car.getName()} : ${'-'.repeat(car.getStep())}`;
     },
@@ -52,7 +52,7 @@ class RacingCarGame {
   }
 
   async #getTryCount() {
-    const tryCount = await IOManager.input('시도할 횟수는 몇 회인가요?');
+    const tryCount = await IOManager.input('시도할 횟수는 몇 회인가요?\n');
     this.#validateTryCount(tryCount);
     return parseInt(tryCount);
   }
@@ -97,21 +97,25 @@ class RacingCarGame {
   }
 
   async start() {
-    const carNames = await this.#getCarNames();
-    this.#createCarObjectsFromNames(carNames);
-    const tryCount = await this.#getTryCount();
+    try {
+      const carNames = await this.#getCarNames();
+      this.#createCarObjectsFromNames(carNames);
+      const tryCount = await this.#getTryCount();
 
-    IOManager.output('\n실행 결과');
-    for (let i = 0; i < tryCount; i++) {
-      this.#cars.forEach((car) => {
-        this.#decideToMove(car);
-        this.#displayCurrentProgress(car);
-      });
-      IOManager.output('');
+      IOManager.output('\n실행 결과');
+      for (let i = 0; i < tryCount; i++) {
+        this.#cars.forEach((car) => {
+          this.#decideToMove(car);
+          this.#displayCurrentProgress(car);
+        });
+        IOManager.output('');
+      }
+
+      const winners = this.#getWinners();
+      this.#displayResult(winners);
+    } catch (error) {
+      throw new Error(error.message);
     }
-
-    const winners = this.#getWinners();
-    this.#displayResult(winners);
   }
 }
 
