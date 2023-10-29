@@ -6,7 +6,7 @@ const check = new Validate();
 
 class Player{
   
-  async gameStart(){
+  async carName(){
     Console.print(INPUT_MESSAGE.INPUT_CARS_NAME);
     const PLAYER = this.inputPlayerName();
 
@@ -17,6 +17,13 @@ class Player{
     const INPUT_PLAYER = await Console.readLineAsync('');
 
     return check.validateName(INPUT_PLAYER);
+  }
+
+  async repeatTimes(){
+    Console.print(INPUT_MESSAGE.INPUT_REPEAT)
+    const REPEAT_TIMES = await Console.readLineAsync('')
+
+    return check.validateNumber(REPEAT_TIMES)
   }
 
 }

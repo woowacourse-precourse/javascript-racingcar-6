@@ -7,8 +7,7 @@ export const ERROR_MESSAGE = {
   NAME_LONGER_THAN_FIVE: "[ERROR] 이름이 5글자 이상입니다.",
   NAME_WRONG_TYPE: "[ERROR] 이름이 한글이나 알파벳, 숫자가 아닙니다.",
   NAME_BLANK: "[ERROR] 이름에 공백이 존재합니다.",
-  
-  REPEAT_SMALLER_THAN_ZERO: "[ERROR] 입력 값이 0보다 작습니다.",
-  REPEAT_TYPE: "[ERROR] 입력 값이 숫자가 아닙니다.",
+
+  REPEAT_WRONG_TYPE: "[ERROR] 입력 값이 숫자가 아닙니다.",
   REPEAT_NOT_NATURAL: "[ERROR] 입력 값이 자연수가 아닙니다.",
 }

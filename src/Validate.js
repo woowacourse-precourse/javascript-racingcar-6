@@ -15,13 +15,13 @@ class Validate{
         throw ERROR_MESSAGE.NAME_BLANK
       }
 
-      this.#checkNameTypeError(name);
+      this.#checkNameType(name);
     })
 
     return NAME;
   }
 
-  #checkNameTypeError(name){
+  #checkNameType(name){
     const NAME = name.split('')
     NAME.forEach((letter) => {
       if(letter === ' '){
@@ -33,6 +33,20 @@ class Validate{
         throw ERROR_MESSAGE.NAME_WRONG_TYPE
       }
     })
+  }
+
+  async validateNumber(num){
+    const NUMBER = Number(num)
+
+    if(isNaN(num) || num === ''){
+      throw ERROR_MESSAGE.REPEAT_WRONG_TYPE
+    }
+
+    if(NUMBER % 1 !== 0 || NUMBER < 1){
+      throw ERROR_MESSAGE.REPEAT_NOT_NATURAL
+    }
+
+    return NUMBER
   }
 
 }
