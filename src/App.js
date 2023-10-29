@@ -1,3 +1,6 @@
+import { MissionUtils } from '@woowacourse/mission-utils';
+import RacingGame from './RacingGame';
+
 class App {
   async play() {
     MissionUtils.Console.print('자동차 경주 게임을 시작합니다.');
@@ -14,6 +17,18 @@ class App {
     );
 
     // TODO: Mission 5: 오류 처리 메서드입니다.
+    // 예외 처리: 입력 값이 부적절한 경우
+    if (!carNames || carNames.trim() === '') {
+      throw new Error('[ERROR] 자동차 이름은 필수 입력 항목입니다.');
+    }
+
+    // 예외 처리: 시도 횟수가 유효하지 않은 경우
+    if (Number.isNaN(totalAttempts) || totalAttempts <= 0) {
+      throw new Error('[ERROR] 시도 횟수는 양의 정수여야 합니다.');
+    }
+
+    const game = new RacingGame(carNames, totalAttempts);
+    game.playGame();
   }
 }
 
