@@ -8,6 +8,6 @@ export function consolePrint(announcementText) {
   return MissionUtils.Console.print(announcementText);
 }
 
-export function getRandomNumberInRange(startNumber, endNumber) {
-  return MissionUtils.Random.pickNumberInRange(startNumber, endNumber);
+export function getRandomNumberInRange() {
+  return MissionUtils.Random.pickNumberInRange(0, 9);
 }
