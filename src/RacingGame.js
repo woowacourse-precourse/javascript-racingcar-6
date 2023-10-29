@@ -26,6 +26,10 @@ class RacingGame {
   startRacing(attemptNumber) {
     GameUtils.repeatRacing(attemptNumber, this);
   }
+
+  announceGameWinners() {
+    const winners = GameUtils.selectWinners(this.#racingCars);
+  }
 }
 
 export default RacingGame;

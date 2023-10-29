@@ -55,6 +55,22 @@ class GameUtils {
   static proceedNextAttempt() {
     ConsoleOutput.output('');
   }
+
+  static selectWinners(cars) {
+    const accumulatedForwardByCar = cars.map((car) =>
+      car.getAccumulatedForward(),
+    );
+
+    const highestAccumulatedForward = Math.max(...accumulatedForwardByCar);
+
+    const winners = cars.filter(
+      (car) => car.getAccumulatedForward() === highestAccumulatedForward,
+    );
+
+    const winnersName = winners.map((winner) => winner.getName());
+
+    return winnersName;
+  }
 }
 
 export default GameUtils;

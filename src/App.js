@@ -10,6 +10,8 @@ class App {
 
     const attemptNumber = await InputManager.inputGameAttemptNumber();
     racingGame.startRacing(attemptNumber);
+
+    racingGame.announceGameWinners();
   }
 }
 
