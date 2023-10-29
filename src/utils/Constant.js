@@ -13,4 +13,8 @@ const ERROR = {
   INPUT_STRING_IN_TRY_NUMBER: '[ERROR] 시도할 횟수에 문자가 있습니다.',
 }
 
-export { MESSAGE, ERROR }
+const NUMBER = {
+  MAX_NAME_LENGTH: 5,
+}
+
+export { MESSAGE, ERROR, NUMBER }
