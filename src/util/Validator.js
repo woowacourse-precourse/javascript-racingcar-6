@@ -1,3 +1,5 @@
+import { NUMBER, ERROR_HEADER } from './Constant.js';
+
 const Validator = {
   validateCarNames(carNames) {
     const carList = carNames
@@ -5,16 +7,20 @@ const Validator = {
       .map(string => string.trim())
       .filter(string => string !== '');
 
-    if (carList.length < 2) {
-      throw new Error('[ERROR] 최소 2개 이상의 자동차 이름이 필요합니다.');
+    if (carList.length < NUMBER.LENGTH) {
+      throw new Error(
+        `${ERROR_HEADER} 최소 ${NUMBER.LENGTH}개 이상의 자동차 이름이 필요합니다.`,
+      );
     }
 
     carList.forEach(name => {
-      if (name.length > 5) {
-        throw new Error('[ERROR] 자동차 이름은 공백 포함 5자 이하여야 합니다.');
+      if (name.length > NUMBER.NAME) {
+        throw new Error(
+          `${ERROR_HEADER} 자동차 이름은 공백 포함 ${NUMBER.NAME}자 이하여야 합니다.`,
+        );
       }
       if (carList.filter(item => item === name).length > 1) {
-        throw new Error('[ERROR] 중복된 이름은 입력할 수 없습니다.');
+        throw new Error(`${ERROR_HEADER} 중복된 이름은 입력할 수 없습니다.`);
       }
     });
   },
@@ -24,14 +30,16 @@ const Validator = {
 
     carList.forEach(carName => {
       if (carName === '') {
-        throw new Error('[ERROR] 자동차 이름은 공백으로 지정할 수 없습니다.');
+        throw new Error(
+          `${ERROR_HEADER} 자동차 이름은 공백으로 지정할 수 없습니다.`,
+        );
       }
     });
   },
 
   validateNumber(attempts) {
     if (!/^\d+$/.test(attempts.trim())) {
-      throw new Error('[ERROR] 숫자를 입력해주세요.');
+      throw new Error(`${ERROR_HEADER} 숫자를 입력해주세요.`);
     }
   },
 };

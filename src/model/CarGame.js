@@ -1,4 +1,5 @@
 import { Random } from '@woowacourse/mission-utils';
+import { NUMBER } from '../util/Constant.js';
 
 class CarGame {
   checkPosition(carMap, attempts) {
@@ -11,8 +12,8 @@ class CarGame {
   getRandomNumber(attempts) {
     let count = 0;
     for (let i = 0; i < attempts; i++) {
-      const randomValue = Random.pickNumberInRange(0, 9);
-      if (randomValue >= 4) {
+      const randomValue = Random.pickNumberInRange(NUMBER.MIN, NUMBER.MAX);
+      if (randomValue >= NUMBER.RANDOM) {
         count += 1;
       }
     }

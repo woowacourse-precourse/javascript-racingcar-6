@@ -1,18 +1,16 @@
 import { Console } from '@woowacourse/mission-utils';
 import Validator from '../util/Validator.js';
+import { MESSAGE } from '../util/Constant.js';
 
 const InputView = {
   async readCarNames() {
-    const carNames = await Console.readLineAsync(
-      '경주할 자동차 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분)\n',
-    );
+    const carNames = await Console.readLineAsync(MESSAGE.READ_NAMES);
     Validator.validateBlank(carNames);
     return carNames;
   },
 
   async readAttempts() {
-    const attempts =
-      await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    const attempts = await Console.readLineAsync(MESSAGE.READ_ATTEMPTS);
     Validator.validateNumber(attempts);
     return attempts;
   },
