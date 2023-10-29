@@ -20,4 +20,10 @@ export default class RacingCarGame {
     const raceround = await InputView.promptRaceRound();
     this.raceround = new RaceRound(raceround).raceRound;
   }
+
+  executeRace() {
+    Array.from(this.cars, (car) => {
+      car.race();
+    });
+  }
 }
