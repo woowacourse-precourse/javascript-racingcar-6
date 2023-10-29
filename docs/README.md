@@ -50,9 +50,9 @@
 
 ### `showWinners()` 메소드 정의
 
-- [ ] `Console.print()` 메소드를 활용하여 최종 우승자 안내 문구 출력
-  - [ ] 최종 우승자를 담을 빈 배열 `winners` 선언 및 초기화
-  - [ ] 객체 `goTimes`의 값들을 비교하여 전진 수가 가장 많은 키를 배열 `winners`의 요소로 삽입
+- [x] `Console.print()` 메소드를 활용하여 최종 우승자 안내 문구 출력
+  - [x] 최종 우승자를 담을 빈 배열 `winners` 선언 및 초기화
+  - [x] 객체 `goTimes`의 값들을 비교하여 전진 수가 가장 많은 키를 배열 `winners`의 요소로 삽입
 
 ### `handleErrors()` 메소드 정의
 
