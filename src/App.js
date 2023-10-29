@@ -40,6 +40,19 @@ class App {
       }
       await MissionUtils.Console.print("\n")
     }
+    const printWinners = async(carNameArr, curMoveForwardArr) => {
+      const maxMove = Math.max(...curMoveForwardArr);
+
+      let winners = [];
+
+      for (let i=0; i<carNameArr.length; i++) {
+        if (maxMove === curMoveForwardArr[i]) {
+          winners.push(carNameArr[i])
+        }
+      }
+
+      await MissionUtils.Console.print("최종 우승자 : "+winners.join(", "))
+    }
     const carNameArr = await getCarNameInput();
     await checkValidCarName(carNameArr)
     const trialNum = await getTrialNumInput();
@@ -53,6 +66,8 @@ class App {
       await printCurCarMove(carNameArr, curMoveForwardArr)
       i += 1
     }
+
+    await printWinners(carNameArr, curMoveForwardArr)
   }
 }
 
