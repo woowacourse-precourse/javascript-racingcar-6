@@ -8,8 +8,11 @@ class App {
     let scores = {};
     cars.forEach((car) => (scores[car] = 0));
     for (let i = 0; i < number; i++) {
-      this.round(cars, scores);
+      await this.round(cars, scores);
     }
+    const maxScore = Math.max(...cars.map(car=> scores[car]));
+    const result = cars.filter((car) => scores[car] === maxScore);
+    Console.print(`최종 우승자 : ${result.join(", ")}`);
   }
 
   async getCars() {
@@ -35,7 +38,7 @@ class App {
     return +inputNum;
   }
 
-  round(cars, scores) {
+  async round(cars, scores) {
     cars.forEach((car) => {
       const n = Random.pickNumberInRange(0, 9);
       if (n >= 4) {
@@ -48,7 +51,7 @@ class App {
 
   printRound(cars, scores) {
     cars.forEach((car) => Console.print(`${car} : ${"-".repeat(scores[car])}`));
-    Console.print(" ")
+    Console.print(" ");
   }
 }
 
