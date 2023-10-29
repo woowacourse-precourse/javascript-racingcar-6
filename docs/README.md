@@ -12,7 +12,7 @@
 ## class Car
 
 - [x] constructor // State 초기화 함수, 여기서 이름이 정해지고, 자동차의 이동 거리가 0으로 초기화됨.
-- [ ] move // 자동차의 이동 거리를 변화 시키는 함수.
+- [x] move // 자동차의 이동 거리를 변화 시키는 함수.
 
 ## class RacingCarGame
 
