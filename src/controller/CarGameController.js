@@ -1,6 +1,8 @@
 import Car from '../model/Car.js';
 import CarGame from '../model/CarGame.js';
+import GameResult from '../model/GameResult.js';
 import InputView from '../view/InputView.js';
+import OutputView from '../view/OutputView.js';
 
 class CarGameController {
   async start() {
@@ -12,7 +14,13 @@ class CarGameController {
   async playGameStage(carMap) {
     const attempts = await InputView.readAttempts();
     const carPosition = new CarGame().checkPosition(carMap, attempts);
-    console.log(carPosition);
+    this.checkResultStage(carPosition, Number(attempts));
+  }
+
+  checkResultStage(carPosition, attempts) {
+    OutputView.printResultMessage();
+    const prevLog = new Map();
+    const carLog = new GameResult().getForwardResult(carPosition, prevLog);
   }
 }
 
