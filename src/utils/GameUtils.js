@@ -71,6 +71,10 @@ class GameUtils {
 
     return winnersName;
   }
+
+  static printFinalWinner(winner) {
+    ConsoleOutput.output(`${MESSAGE.FINAL_WINNERS} : ${winner}`);
+  }
 }
 
 export default GameUtils;

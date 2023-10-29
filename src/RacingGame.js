@@ -29,6 +29,7 @@ class RacingGame {
 
   announceGameWinners() {
     const winners = GameUtils.selectWinners(this.#racingCars);
+    GameUtils.printFinalWinner(winners);
   }
 }
 
