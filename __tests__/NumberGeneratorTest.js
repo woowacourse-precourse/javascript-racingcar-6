@@ -1,4 +1,4 @@
-import NumberGenerator from '../src/lib/classes/NumberGenerator';
+import NumberGenerator from '../src/racingcar/lib/classes/NumberGenerator';
 
 // createRandomNumbers 통과
 test('createRandomNumbers / 랜덤 숫자 생성 test-1', () => {
