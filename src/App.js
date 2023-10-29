@@ -74,6 +74,10 @@ class App {
     return updated;
   }
 
+  printUpdateResult(updated) {
+    Console.print(updated.join('\n'));
+  }
+
   async printFinalResult(finalWinner) {
     Console.print(`${message.FINAL_WINNER}${finalWinner.join(', ')}`);
   }
