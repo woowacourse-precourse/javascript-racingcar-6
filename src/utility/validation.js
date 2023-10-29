@@ -17,3 +17,9 @@ export const isNumberWithinBounds = (number, startNumber, endNumber) => {
     throw new Error(ERROR_MESSAGE.wrongNameInput);
   }
 };
+
+export const isLengthWithinBounds = (string, startNumber, endNumber) => {
+  if (string.length < startNumber || string.length > endNumber) {
+    throw new Error(ERROR_MESSAGE.wrongNameInput);
+  }
+};
