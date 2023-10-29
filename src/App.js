@@ -10,7 +10,7 @@ class App {
   async play() {
     const carNames = await Console.readLineAsync(MESSAGE.CAR_NAME);
     const carNameArray = carNames.split(',');
-    App.#validateNameLength(carNameArray);
+    App.#validateCarNameLength(carNameArray);
 
     const tryCount = await Console.readLineAsync(MESSAGE.TRY_COUNT);
     App.#validateTryCount(tryCount);
@@ -37,7 +37,7 @@ class App {
     Console.print(MESSAGE.WINNERS(winners));
   }
 
-  static #validateNameLength(carNameArray) {
+  static #validateCarNameLength(carNameArray) {
     if (CONDITION.INVALID_NAME_LENGTH(carNameArray)) {
       throw new Error(ERROR.NAME_LENGTH);
     }
