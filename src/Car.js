@@ -6,9 +6,17 @@ class Car {
     this.dist = "";
   }
 
+  go() {
+    this.dist += "-";
+  }
+
+  getLengthOfDist() {
+    return this.dist.length;
+  }
+
   goIfNumberIsLagerThanThree() {
     const NUMBER = MissionUtils.Random.pickNumberInRange(0, 9);
-    if (NUMBER > 3) this.dist += "-";
+    if (NUMBER > 3) this.go();
   }
 
   printResult() {

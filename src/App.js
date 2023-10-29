@@ -18,6 +18,10 @@ class App {
     this.carList = new CarList(await this.view.getCarName());
     const COUNT = await this.view.getRound();
     this.playNTimes(COUNT);
+    const WINNER_LIST = this.carList.findWinner();
+    const WINNERS_NAME_LIST = WINNER_LIST.map((winner) => winner.name);
+    const WINNER_NAME = WINNERS_NAME_LIST.join(", ");
+    MissionUtils.Console.print(`최종 우승자 : ${WINNER_NAME}`);
   }
 }
 
