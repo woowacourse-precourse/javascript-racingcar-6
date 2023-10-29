@@ -9,6 +9,7 @@ const inputView = {
 
   async moveCount() {
     const input = await Console.readLineAsync(INPUT_MSG.MOVE_COUNT);
+    return input;
   },
 };
 

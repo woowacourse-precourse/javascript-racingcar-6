@@ -4,6 +4,11 @@ import validation from "../utils/validation.js";
 
 class CarRacing {
   #CarData;
+  #moveCount;
+
+  constructor() {
+    this.#moveCount = 0;
+  }
 
   async setCarList() {
     const input = await inputView.CarList();
@@ -11,18 +16,25 @@ class CarRacing {
     this.#CarData = new CarData(input.split(","));
   }
 
-  async getMoveCount() {
+  async setMoveCount() {
     const input = await inputView.moveCount();
     validation.moveCountValidCheck(input);
+    this.#moveCount = parseInt(input);
   }
 
-  goRace() {}
+  goRace() {
+    for (let i = 0; i < this.#moveCount; i++) {
+      this.#CarData.moveCar();
+    }
+  }
 
   findWinner() {}
 
   async racing() {
     await this.setCarList();
-    await this.goRace();
+    await this.setMoveCount();
+    this.goRace();
+    this.findWinner();
   }
 }
 
