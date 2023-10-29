@@ -10,6 +10,10 @@ export default class OutputView {
     OutputView.printPadding();
   }
 
+  printWinners(winners) {
+    this.#onPrint(`최종 우승자 : ${winners}`);
+  }
+
   static printPadding() {
     Console.print('');
   }
