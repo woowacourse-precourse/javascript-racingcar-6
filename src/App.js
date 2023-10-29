@@ -1,4 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
+import Validator from './utils/Validator.js';
 
 class App {
   static getCarNamesInput() {
@@ -8,16 +9,26 @@ class App {
   }
 
   static getMoveCountInput() {
-    return Console.readLineAsync('시도할 횟수는 몇 회인가요?');
+    return Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
   }
 
-  async startGame() {
+  static splitAndValidate(carNames) {
+    Validator.validateUndefinedOrNullOrSpacesOrLengthZero(carNames);
+    carNames.split(',').forEach(name => {
+      Validator.isMaxLengthFive(name);
+    });
+    return true;
+  }
+
+  static async startGame() {
     const carNames = await App.getCarNamesInput();
+    App.splitAndValidate(carNames);
     const moveCount = await App.getMoveCountInput();
+    Validator.validateMoveCount(moveCount);
   }
 
   async play() {
-    this.startGame();
+    App.startGame();
   }
 }
 
