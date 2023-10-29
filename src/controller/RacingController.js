@@ -19,22 +19,26 @@ class RacingController {
     OutputView.printRacingStart();
 
     for (let i = 0; i < this.attemptCount; i++) {
-      Object.entries(this.carsObject).forEach(([carName, carDistance]) => {
-        const randomNumber = Random.pickNumberInRange(0, 9);
-
-        if (randomNumber >= 4) {
-          this.carsObject[carName] = carDistance + 1;
-        }
-
-        this.maxDistance =
-          this.carsObject[carName] > this.maxDistance
-            ? this.carsObject[carName]
-            : this.maxDistance;
-
-        OutputView.printCurrentRacingCar(carName, this.carsObject[carName]);
-      });
-      OutputView.printSpacing();
+      this.playRound();
     }
+  }
+
+  playRound() {
+    Object.entries(this.carsObject).forEach(([carName, carDistance]) => {
+      const randomNumber = Random.pickNumberInRange(0, 9);
+
+      if (randomNumber >= 4) {
+        this.carsObject[carName] = carDistance + 1;
+      }
+
+      this.maxDistance =
+        this.carsObject[carName] > this.maxDistance
+          ? this.carsObject[carName]
+          : this.maxDistance;
+
+      OutputView.printCurrentRacingCar(carName, this.carsObject[carName]);
+    });
+    OutputView.printSpacing();
   }
 
   end() {
