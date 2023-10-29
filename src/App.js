@@ -1,8 +1,9 @@
-import { readCarName } from './RaceInput.js';
+import { readCarName, readRaceCount } from './RaceInput.js';
 
 class App {
   async play() {
     await readCarName();
+    await readRaceCount();
   }
 };
 
