@@ -20,7 +20,7 @@ describe("RacingCarGame 기능 테스트", () => {
 
     // when
     const racingCarGame = new RacingCarGame();
-    await racingCarGame.start();
+    await racingCarGame.setupCars();
 
     // then
     expect(racingCarGame.cars.length).toBe(3);
