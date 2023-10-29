@@ -30,6 +30,15 @@ class App {
     });
   }
 
+  async GetLoopNumber() {
+    GetLoopNumberMessage();
+    const inputNumber = await Console.readLineAsync();
+    if (Number.isNaN(+inputNumber)) {
+      LOOP_NUMBER_TYPE_ERROR();
+    }
+    this.loopNumber = inputNumber;
+  }
+
   async play() {}
 }
 
