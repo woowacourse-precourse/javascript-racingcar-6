@@ -4,15 +4,14 @@ module.exports = {
     commonjs: true,
     es2021: true,
   },
-  extends: ['airbnb-base', 'prettier'],
+  extends: ['airbnb-base', 'prettier', 'jest'],
   overrides: [
     {
       env: {
         node: true,
+        jest: true,
       },
-      files: [
-        '.eslintrc.{js,cjs}',
-      ],
+      files: ['.eslintrc.{js,cjs}'],
       parserOptions: {
         sourceType: 'script',
       },
@@ -22,5 +21,11 @@ module.exports = {
     ecmaVersion: 'latest',
   },
   rules: {
+    // 들여쓰기 깊이 제한
+    'max-depth': ['error', 2],
+    // 함수의 매개변수 개수 제한
+    'max-params': ['error', 3],
+    // 함수의 길이 제한
+    'max-lines-per-function': ['error', { max: 10 }],
   },
 };
