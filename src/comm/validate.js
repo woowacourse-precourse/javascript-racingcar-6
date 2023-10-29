@@ -5,6 +5,8 @@ class Validate{
         return carName.reduce((arr, cur, idx) => {
             if(cur.length > 5){
                 throw Error(`${ERROR_MESSAGE.INPUT_LENGTH_ERROR}`);
+            } else if(cur.length === 0 || cur.trim() === ''){
+                throw Error(`${ERROR_MESSAGE.INPUT_BLANK_ERROR}`);
             }
             return carName;
         }, "");
@@ -12,6 +14,8 @@ class Validate{
     racingCountInputValidate = (racingCount) => {
         if(isNaN(racingCount)){
             throw Error(`${ERROR_MESSAGE.INPUT_NUMBER_ERROR}`);
+        } else if(racingCount === 0 || racingCount.trim() === ''){
+            throw Error(`${ERROR_MESSAGE.INPUT_BLANK_ERROR}`);
         }
         return racingCount
     }

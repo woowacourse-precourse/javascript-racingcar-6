@@ -7,6 +7,7 @@ const MESSAGE = {
 
 const ERROR_MESSAGE = {
     INPUT_LENGTH_ERROR: '[ERROR] 입력한 자동차 이름이 5자 이상입니다.',
+    INPUT_BLANK_ERROR: '[ERROR] 입력한 값이 공백입니다.',
     INPUT_NUMBER_ERROR: '[ERROR] 입력한 값이 숫자가 아닙니다.'
 }
 
