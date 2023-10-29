@@ -40,6 +40,10 @@ class Print {
   static printRaceResult() {
     Console.print(TEXT.RESULT_ALERT_MESSAGE);
   }
+
+  static getWinnersName(winners) {
+    Console.print(TEXT.WINNERS_MESSAGE(winners));
+  }
 }
 
 export default Print;

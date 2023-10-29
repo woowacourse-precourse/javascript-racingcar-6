@@ -1,5 +1,6 @@
 import Print from './Print';
 import Car from './Car';
+import Result from './Result';
 
 class App {
   constructor() {
@@ -10,6 +11,7 @@ class App {
   async play() {
     await this.setInitialValue();
     this.startRace();
+    this.selectWinner();
   }
 
   async setInitialValue() {
@@ -41,6 +43,12 @@ class App {
       const [name, result] = car.move().getCarScore();
       Print.getRaceResult(name, result);
     });
+  }
+
+  selectWinner() {
+    const result = new Result(this.carArray);
+    result.findWinners();
+    Print.getWinnersName(result.winners);
   }
 }
 

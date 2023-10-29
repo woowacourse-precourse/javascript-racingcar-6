@@ -27,6 +27,7 @@ export const TEXT = {
   TRY: '시도할 횟수는 몇 회인가요?\n',
   RESULT_MESSAGE: (name, result) => `${name} : ${result}\n`,
   RESULT_ALERT_MESSAGE: '실행 결과',
+  WINNERS_MESSAGE: winners => `최종 우승자: ${winners}`,
 };
 
 export const ERROR = {
