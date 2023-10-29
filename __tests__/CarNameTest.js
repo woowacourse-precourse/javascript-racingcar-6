@@ -24,5 +24,12 @@ describe("자동차 이름 입력에 대한 테스트", () => {
         expect(output).toContain("car2", "car1");
         expect(output).toContainEqual("car1", "car2");
     });
+
+    test("자동차 이름이 5글자를 초과했을 경우", async () => {
+        const input = "mini, Bently";
+        mockCarName(input);
+        
+        await expect(carNameInput()).rejects.toThrow("[ERROR]");
+    });
 });
   
