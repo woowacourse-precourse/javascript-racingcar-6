@@ -30,6 +30,11 @@ class App {
 		}
 		const carNames = carNameInput.split(',').map((carNameInput) => carNameInput.trim());
 
+		const duplicateNames = carNames.filter((name, index) => carNames.indexOf(name) !== index);
+		if (duplicateNames.length > 0) {
+			throw new Error('\x1b[31m[ERROR] 중복된 자동차 이름이 있습니다.\x1b[37m');
+		}
+
 		carNames.forEach((carName) => {
 			if (carNames < 2) {
 				throw new Error('\x1b[31m[ERROR] 2명 이상의 이름을 입력해야합니다.\x1b[37m');
@@ -59,7 +64,7 @@ class App {
 			cars.forEach((car) => {
 				Console.print(`${car.name} : ${car.message.join('')}`);
 			});
-			
+
 			Console.print('');
 			raceTry--;
 		}
