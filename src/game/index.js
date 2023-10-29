@@ -2,7 +2,7 @@ import { MissionUtils } from '@woowacourse/mission-utils';
 import REGEX from '../../constants/regex.constant';
 import printMsg from '../../utils/printMsg';
 import prompt from '../../utils/prompt';
-import validations from './game.error';
+import racingGameValidationMethods from './game.error';
 import MESSAGE from './game.message';
 import PROMPT_PHASE from './game.promptPhase';
 import VALIDATION_CONDITION from './game.validation';
@@ -12,10 +12,10 @@ const racingCarGame = {
     const carNameArray = (await prompt(PROMPT_PHASE.carName))
       .replace(REGEX.space, '')
       .split(',');
-    validations.carsName(carNameArray);
+    racingGameValidationMethods.carsName(carNameArray);
 
     const moveCount = await prompt(PROMPT_PHASE.moveCount);
-    validations.moveCount(moveCount);
+    racingGameValidationMethods.moveCount(moveCount);
 
     return { carNameArray, moveCount: Number(moveCount) };
   },

@@ -1,6 +1,6 @@
 import VALIDATION_CONDITION from './game.validation';
 
-const validations = {
+const racingGameValidationMethods = {
   validLength(item, min, max) {
     return item.length >= min && item.length <= max;
   },
@@ -45,4 +45,4 @@ const validations = {
     }
   },
 };
-export default validations;
+export default racingGameValidationMethods;
