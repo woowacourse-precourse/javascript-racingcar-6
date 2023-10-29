@@ -20,7 +20,7 @@ describe('RacingGame 테스트', () => {
     it('모든 차량의 이동 결과를 문자열로 반환한다.', () => {
       const car = new RacingCar('testCar');
       game.setCars([car]);
-      expect(game.getAllCarsMoveResult()).toBe('testCar : ');
+      expect(game.getAllCarsMovementHistory()).toBe('testCar : ');
     });
   });
 

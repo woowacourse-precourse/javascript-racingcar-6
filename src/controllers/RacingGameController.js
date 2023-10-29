@@ -34,7 +34,7 @@ class RacingGameController {
     this.#outputView.printResultHeader();
     for (let i = 0; i < roundsNumber; i += 1) {
       this.#racingGame.moveAllCars();
-      const roundResult = this.#racingGame.getAllCarsMoveResult();
+      const roundResult = this.#racingGame.getAllCarsMovementHistory();
       this.#outputView.printRoundResult(roundResult);
     }
   }

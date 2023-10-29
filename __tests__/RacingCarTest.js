@@ -25,7 +25,7 @@ describe('RacingCar 테스트', () => {
     });
 
     it('차량 이동 결과 문자열 초기화 테스트', () => {
-      expect(car.getMoveResult()).toEqual('testCar : ');
+      expect(car.getMovementHistory()).toEqual('testCar : ');
     });
   });
 
@@ -33,13 +33,13 @@ describe('RacingCar 테스트', () => {
     it('무작위 숫자가 기준 수 이상일 때 이동하는지 테스트', () => {
       mockRandomNumber(GAME_NUMBERS.movementThreshold);
       car.move();
-      expect(car.getMoveResult()).toEqual('testCar : -');
+      expect(car.getMovementHistory()).toEqual('testCar : -');
     });
 
     it('무작위 숫자가 기준 수 미만일 때 이동하지 않는지 테스트', () => {
       mockRandomNumber(GAME_NUMBERS.movementThreshold - 1);
       car.move();
-      expect(car.getMoveResult()).toEqual('testCar : ');
+      expect(car.getMovementHistory()).toEqual('testCar : ');
     });
   });
 });

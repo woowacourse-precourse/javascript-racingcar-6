@@ -4,12 +4,12 @@ import { GAME_NUMBERS, SYMBOLS } from '../utils/constants.js';
 class RacingCar {
   #name;
   #position;
-  #moveResult;
+  #movementHistory;
 
   constructor(name) {
     this.#name = name;
     this.#position = 0;
-    this.#moveResult = `${this.#name}${SYMBOLS.playerResultSeparator}`;
+    this.#movementHistory = `${this.#name}${SYMBOLS.playerResultSeparator}`;
   }
 
   getName() {
@@ -20,8 +20,8 @@ class RacingCar {
     return this.#position;
   }
 
-  getMoveResult() {
-    return this.#moveResult;
+  getMovementHistory() {
+    return this.#movementHistory;
   }
 
   #generateRandomRacingGameNumber() {
@@ -39,7 +39,7 @@ class RacingCar {
     const randomNumber = this.#generateRandomRacingGameNumber();
     if (this.#canMove(randomNumber)) {
       this.#position += 1;
-      this.#moveResult += SYMBOLS.moveIndicator;
+      this.#movementHistory += SYMBOLS.moveIndicator;
     }
   }
 }

@@ -28,8 +28,8 @@ class RacingGame {
     this.#cars.forEach(car => car.move());
   }
 
-  getAllCarsMoveResult() {
-    return this.#cars.map(car => car.getMoveResult()).join(`\n`);
+  getAllCarsMovementHistory() {
+    return this.#cars.map(car => car.getMovementHistory()).join(`\n`);
   }
 
   concludeGame() {

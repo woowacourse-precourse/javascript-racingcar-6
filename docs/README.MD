@@ -26,7 +26,7 @@
   - [x] 이를 RacingGame의 setCar 메서드로 게임 내부로 넘긴다.
   - [x] 실행 결과 헤더를 출력한 뒤, 입력된 시도 횟수만큼 모든 차량을 이동시키고 결과를 출력한다.
     - [x] RacingGame의 moveAllCars로 모든 차량의 move메서드를 호출하여 이동시킨다.
-    - [x] RacingGame의 getAllCarsMoveResult로 실행 결과 문자열을 반환받고, 이를 출력한다.
+    - [x] RacingGame의 getAllCarsMovementHistory로 실행 결과 문자열을 반환받고, 이를 출력한다.
   - [x] 모든 이동 실행이 종료되면 RacingGame의 concludeGame 메서드를 호출하여 최대 위치를 계산하고, 우승자를 설정한다.
   - [x] 설정된 우승자를 반환받아 형식에 맞게 출력한다.
 
