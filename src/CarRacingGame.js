@@ -82,7 +82,7 @@ export default class CarRacingGame {
       const tryCount = await Console.readLineAsync(
         '시도할 횟수는 몇 회인가요?'
       );
-      if (Number(tryCount) <= 0 || !Number.isInteger(tryCount)) {
+      if (Number(tryCount) <= 0 || !Number.isInteger(Number(tryCount))) {
         throw new Error('[ERROR] 시도 횟수 이상');
       }
       return tryCount;
