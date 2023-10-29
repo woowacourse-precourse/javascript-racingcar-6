@@ -9,7 +9,10 @@ class App {
   async play() {
     await this.game.start();
     this.output.printPlayMessage();
-    while (this.game.currentRound < this.game.totalRound) {
+    while (
+      (this.game.totalRound === 0 && this.game.currentRound === 0) ||
+      this.game.currentRound < this.game.totalRound
+    ) {
       this.game.play();
     }
   }

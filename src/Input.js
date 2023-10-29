@@ -25,13 +25,13 @@ class Input {
   validateName() {
     this.nameArray.forEach((name) => {
       const pass =
-        name.length <= 5 && name.split('').every((i) => /[a-zA-Z]$/.test(i));
+        name.length <= 5 && name.split('').every((i) => /.*/.test(i));
       if (!pass) throw new Error(MESSAGE.nameError);
     });
   }
 
   validateRound(text) {
-    const pass = !Number.isNaN(Number(text));
+    const pass = !Number.isNaN(Number(text)) && Number(text) >= 0;
     if (!pass) {
       throw new Error(MESSAGE.roundError);
     } else {
