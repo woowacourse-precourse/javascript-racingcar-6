@@ -6,9 +6,9 @@ class Output {
     Console.print(MESSAGE.racingResult);
   }
 
-  eachRacingResult(carName, winner) {
-    for (let i = 0; i < carName.length; i++) {
-      Console.print(`${carName[i]} : ${winner[i]}`);
+  eachRacingResult(carNames, winnerList) {
+    for (let i = 0; i < carNames.length; i++) {
+      Console.print(`${carNames[i]} : ${winnerList[i]}`);
     }
     Console.print(``);
   }

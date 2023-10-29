@@ -16,10 +16,10 @@ class RacingCarController {
   async start() {
     try {
       this.carNames = await this.setcarName();
-      this.tryCount = await this.setTryNumber();
-      this.winCount = Array.from({ length: this.carNames.length }, () => "");
+      this.tryNumber = await this.setTryNumber();
+      this.winnerList = Array.from({ length: this.carNames.length }, () => "");
       await this.randomStart();
-      await this.printFinalResult(this.finalWinnerCount());
+      this.printFinalResult(this.finalWinnerCount());
     } catch (error) {
       throw new Error(error);
     }
@@ -38,25 +38,25 @@ class RacingCarController {
   //게임 횟수만큼 랜덤값 생성
   async randomStart() {
     this.output.racingStartMessage();
-    for (let i = 0; i < this.tryCount; i++) {
-      this.countWinner(await this.carMoving.eachRound(this.winCount.length));
+    for (let i = 0; i < this.tryNumber; i++) {
+      this.countWinner(await this.carMoving.eachRound(this.winnerList.length));
     }
   }
 
   //승리자 개수 증가시키기
   async countWinner(winner) {
     await winner.forEach((idx) => {
-      this.winCount[idx] += "-";
+      this.winnerList[idx] += "-";
     });
-    this.printResultControll(this.carNames, this.winCount);
+    this.printResultControll();
   }
 
-  printResultControll(carNames, winCount) {
-    this.output.eachRacingResult(carNames, winCount);
+  printResultControll() {
+    this.output.eachRacingResult(this.carNames, this.winnerList);
   }
 
   finalWinnerCount() {
-    let totalWinnerCount = this.winCount.map((x) => x.length);
+    let totalWinnerCount = this.winnerList.map((x) => x.length);
     let maxWinnerLength = Math.max(...totalWinnerCount);
     let idx = totalWinnerCount.indexOf(maxWinnerLength);
     let finalWinner = [];
