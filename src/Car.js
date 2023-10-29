@@ -13,6 +13,10 @@ class Car {
     printState() {
         MissionUtils.Console.print(`${this.name} : ${"-".repeat(this.forwardCount)}`);
     }
+
+    get getForwardCount() {
+        return this.forwardCount;
+    }
 }
 
 export default Car;
