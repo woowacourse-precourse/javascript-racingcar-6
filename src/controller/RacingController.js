@@ -1,3 +1,4 @@
+import { FORWARD_THRESHOLD } from "../constants/setting.js";
 import getRandomNumber from "../util/generator.js";
 import OutputView from "../view/OutputView.js";
 
@@ -51,11 +52,8 @@ class RacingController {
    */
   isForwardRacingCar() {
     const randomNumber = getRandomNumber();
-    if (randomNumber >= 4) {
-      return true;
-    }
 
-    return false;
+    return randomNumber >= FORWARD_THRESHOLD;
   }
 
   /**
