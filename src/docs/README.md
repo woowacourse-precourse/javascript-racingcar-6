@@ -90,5 +90,5 @@
 | `attemptsValidator()`    | 시도 횟수가 숫자가 아닌 경우         | 예외 발생          | 예외 발생          | 통과      |
 | `getRacingcarAttempts()` | 시도 횟수가 0 이하인 경우            | 오류 메시지 출력   | 오류 메시지 출력   | 통과      |
 | `attemptsValidator()`    | 시도 횟수가 0 이하인 경우            | 예외 발생          | 예외 발생          | 통과      |
-| `updateCarProgress()`    | 자동차 배열을 주고 진행 상황 표시    | 진행 상황 표시     | 미실행             | 미실행    |
+| `updateCarProgress()`    | 자동차 배열을 주고 진행 상황 표시    | 진행 상황 표시     | 진행 상황 표시     | 통과      |
 | `printWinners()`         | 우승자 배열을 주고 우승자 표시       | 우승자 표시        | 미실행             | 미실행    |

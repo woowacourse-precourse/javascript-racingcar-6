@@ -168,4 +168,26 @@ describe("메서드별 기능 테스트", () => {
       "[ERROR] 샐행 횟수는 숫자만 입력할 수 있습니다."
     );
   });
+
+  test("진행 상황 표시", async () => {
+    // given
+    const MOVING_FORWARD = 4;
+    const STOP = 3;
+    const inputs = ["승규,수민", "1"];
+    const outputs = ["승규 : -", "수민 :"];
+    const randoms = [MOVING_FORWARD, STOP];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    // when
+    const app = new App();
+    await app.play();
+
+    // then
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
 });
