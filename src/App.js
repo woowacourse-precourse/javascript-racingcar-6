@@ -43,6 +43,12 @@ class App {
       return false;
     }
   }
+
+  moveCar(car, flag) {
+    if (flag) {
+      this.carsRecordBoard[car] += "-";
+    }
+  }
 }
 
 export default App;
