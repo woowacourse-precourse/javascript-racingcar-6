@@ -40,4 +40,32 @@ export default class RacingGame {
   getRoundResult() {
     return this.#carList.map((car) => car.getPositionResult());
   }
+
+  getWinners() {
+    if (this.#tryRound !== 0) {
+      throw new Error(
+        `[ERROR] 게임 round가 전부 실행되지 않았습니다. 잔여 라운드 : ${
+          this.#tryRound
+        }회`
+      );
+    }
+
+    const finalRoundResult = this.getRoundResult();
+    const maxMoveAmount = finalRoundResult.reduce(
+      (maxMoveAmount, carResult) => {
+        return (maxMoveAmount = Math.max(
+          maxMoveAmount,
+          carResult['position'].length
+        ));
+      },
+      Number.MIN_SAFE_INTEGER
+    );
+
+    const winners = finalRoundResult
+      .filter((car) => car.position.length === maxMoveAmount)
+      .map((car) => car.name)
+      .join(', ');
+
+    return winners;
+  }
 }
