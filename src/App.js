@@ -4,24 +4,15 @@ import MESSAGE from "./constants/message.js";
 
 class App {
   async play() {
+    Console.print(MESSAGE.INPUT_CARNAME_MSG);
+    const carInput = await Console.readLineAsync("");
     const carList = new CarList();
-    const carArray = await carList.getCarList();
-    console.log(carList, carArray);
+    await carList.setCarList(carInput);
     const tryNumber = await this.getTryNumber();
 
     Console.print(MESSAGE.END_GAME_MSG);
-    Array.from({ length: tryNumber }).map(() => {
-      carArray.map((car) => {
-        car.printScore();
-      });
-      Console.print("");
-    });
-
-    let maxScore = -1;
-    carArray.map((data) => (maxScore = Math.max(maxScore, data.score)));
-    const result = carArray.filter((data) => maxScore === data.score);
-    const lastWinner = result.map((data) => data.name).join(", ");
-    Console.print(`최종 우승자 : ${lastWinner}`);
+    carList.printCarListScore(tryNumber);
+    carList.printFinalResult();
   }
 
   async getTryNumber() {

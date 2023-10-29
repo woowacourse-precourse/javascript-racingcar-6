@@ -3,17 +3,31 @@ import Car from "./Car.js";
 import MESSAGE from "./constants/message.js";
 
 class CarList {
-  carList = [];
+  cars = [];
 
-  async getCarList() {
-    Console.print(MESSAGE.INPUT_CARNAME_MSG);
-    const carInput = await Console.readLineAsync("");
+  async setCarList(carInput) {
     const carInputArray = carInput.split(",");
     carInputArray.map((data) => {
       if (data.length > 5) throw new Error(MESSAGE.OVER_NAMELENGTH_MSG);
     });
-    const carObjectArray = carInputArray.map((carName) => new Car(carName, 0));
-    return carObjectArray;
+    carInputArray.map((carName) => this.cars.push(new Car(carName, 0)));
+  }
+
+  printCarListScore(tryNumber) {
+    Array.from({ length: tryNumber }).map(() => {
+      this.cars.map((car) => {
+        car.printScore();
+      });
+      Console.print("");
+    });
+  }
+
+  printFinalResult() {
+    let maxScore = -1;
+    this.cars.map((data) => (maxScore = Math.max(maxScore, data.score)));
+    const result = this.cars.filter((data) => maxScore === data.score);
+    const lastWinner = result.map((data) => data.name).join(", ");
+    Console.print(`최종 우승자 : ${lastWinner}`);
   }
 }
 
