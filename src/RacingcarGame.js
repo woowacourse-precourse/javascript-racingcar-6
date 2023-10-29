@@ -4,11 +4,12 @@ import { ERROR_MESSAGE, GAME_MESSAGE } from "./constants/index.js";
 class RacingcarGame {
   validate(cars) {
     const carsArray = cars.split(",");
+    const regex = /\^[0-9]/g;
+    if (!cars.includes(",")) throw new Error(ERROR_MESSAGE.IS_COMMA);
     carsArray.forEach((element) => {
       if (element.length > 5) throw new Error(ERROR_MESSAGE.IS_LENGTH);
     });
-    if (!cars.includes(",")) throw new Error(ERROR_MESSAGE.IS_COMMA);
-    if (typeof cars === "string") throw new Error(ERROR_MESSAGE.IS_STRING);
+    if (!regex.test(cars)) throw new Error(ERROR_MESSAGE.IS_STRING);
     return carsArray;
   }
 
