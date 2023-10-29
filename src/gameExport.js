@@ -100,6 +100,7 @@ async function startGame() {
   try {
     await initializeGame();
     const result = await gameExport();
+    consoleResult('\n실행 결과');
     consoleResult(result);
     const winner = await gameWinner();
     consoleWinner(winner);
