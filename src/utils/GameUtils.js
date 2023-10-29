@@ -31,10 +31,9 @@ class GameUtils {
   }
 
   static getDash(randomNumber) {
-    const totalDash = [];
-    Array.from({ length: randomNumber }, () => totalDash.push('-'));
+    const totalDash = '';
 
-    return totalDash.join('');
+    return totalDash.padEnd(randomNumber, '-');
   }
 
   static proceedAttemptByRacingCar(racingCar) {
