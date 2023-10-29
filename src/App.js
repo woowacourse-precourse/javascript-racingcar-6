@@ -34,6 +34,13 @@ class App {
     });
   }
 
+  getWinner(carResult) {
+    const raceResult = Math.max(...carResult.map((car) => car.move));
+    return carResult
+      .filter((car) => car.move === raceResult)
+      .map((car) => car.name);
+  }
+
   async play() {
     const carName = await this.getCarInput();
 
@@ -47,7 +54,10 @@ class App {
       throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
     }
 
-    await this.startRace(carName, raceCount);
+    const carResult = await this.startRace(carName, raceCount);
+
+    const winner = this.getWinner(carResult);
+    Console.print(`최종 우승자 : ${winner.join(", ")}`);
   }
 }
 
