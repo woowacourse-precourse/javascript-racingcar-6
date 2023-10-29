@@ -7,7 +7,7 @@ import {
 
 class App {
   constructor() {
-    this.playerData = [];
+    this.playersData = [];
   }
 
   async play() {
@@ -28,7 +28,7 @@ class App {
 
   createPlayerData(raceEntry) {
     raceEntry.forEach(playerName => {
-      this.playerData.push({ playerName, trackLocation: '' });
+      this.playersData.push({ playerName, trackLocation: '' });
     });
   }
 
@@ -45,6 +45,10 @@ class App {
     const pickedNumber = Random.pickNumberInRange(0, 9);
     return pickedNumber >= 4;
   }
+
+  addCarMoveProgressBar(playerData) {
+    playerData.trackLocation.concat(RACE.PROGRESS_BAR);
+  }
 }
 
 export default App;
@@ -54,7 +58,6 @@ app.play();
 
 // 필요한 함수들
 // startRace
-// shouldCarMoveForward
 // addCarMoveProgressBar
 // checkWinners
 // printRaceStatus
