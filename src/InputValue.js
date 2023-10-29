@@ -1,16 +1,16 @@
 import { Console } from '@woowacourse/mission-utils';
-import { MESSAGE } from './Constant.js';
+import { INPUT_MESSAGE } from './Constant.js';
 import Validation from './Validation.js';
 
 class InputValue {
   static async carName() {
-    const input = await Console.readLineAsync(MESSAGE.INPUT_CAR_NAME);
+    const input = await Console.readLineAsync(INPUT_MESSAGE.name);
     Validation.checkCarName(input.trim().split(','));
     return input.trim().split(',');
   }
 
   static async moveCount() {
-    const input = await Console.readLineAsync(MESSAGE.INPUT_MOVE_COUNT);
+    const input = await Console.readLineAsync(INPUT_MESSAGE.count);
     Validation.checkMoveCount(input);
     return Number(input);
   }

@@ -1,6 +1,6 @@
-const MESSAGE = {
-  INPUT_CAR_NAME: '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
-  INPUT_MOVE_COUNT: '시도할 횟수는 몇 회인가요?\n',
+const INPUT_MESSAGE = {
+  name: '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
+  count: '시도할 횟수는 몇 회인가요?\n',
 };
 
 const ERROR_MESSAGE = {
@@ -14,4 +14,4 @@ const ERROR_MESSAGE = {
   small: '1 미만의 숫자입니다.',
 };
 
-export { MESSAGE, ERROR_MESSAGE };
+export { INPUT_MESSAGE, ERROR_MESSAGE };
