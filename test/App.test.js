@@ -26,4 +26,15 @@ describe("자동차 이름 테스트", () =>{
   });
 });
 
+describe("게임 라운드 수 테스트", () => {
+  test("사용자 입력 받는 함수", async () => {
+    const inputs = [1];
+    MissionUtils.Console.readLineAsync = jest.fn();
+    MissionUtils.Console.readLineAsync.mockResolvedValue(Promise.resolve(inputs[0]));
+    const app = new App();
+    const result = await app.gameNumberInput();
+    expect(result).toBe(1);
+  })
+})
+
 
