@@ -11,5 +11,6 @@
   },
   "parserOptions": {
     "ecmaVersion": 2022
-  }
+  },
+  "class-methods-use-this": ["error", { "enforceForClassFields": false }]
 }
