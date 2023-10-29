@@ -14,6 +14,6 @@ export const INPUT_MSG = {
 };
 
 export const OUTPUT_MSG = {
-  RESULT: "실행 결과\n",
+  RESULT: "\n실행 결과\n",
   WINNER: "최종 우승자 : ",
 };

@@ -6,16 +6,26 @@ class CarData {
 
   constructor(cars) {
     this.#maxMove = 0;
-
     this.#carList = cars.map((car) => ({ name: car, move: 0 }));
-    console.log(this.#carList);
   }
 
-  // moveCar(moveCount) {
-  // for (let i = 0; i < moveCount; i++) {
-  //   return;
-  // }
-  // }
+  moveOrNot() {
+    const moveOrNot = Random.pickNumberInRange(0, 9);
+    if (moveOrNot >= 4) return true;
+    return false;
+  }
+
+  updateMaxMove(moveCount) {
+    this.#maxMove = Math.max(this.#maxMove, moveCount);
+  }
+
+  moveCar() {
+    this.#carList.forEach((car) => {
+      if (this.moveOrNot()) car.move += 1;
+      this.updateMaxMove(car.move);
+    });
+    return this.#carList;
+  }
 }
 
 export default CarData;
