@@ -28,4 +28,23 @@ describe("RacingCarGame 기능 테스트", () => {
       expect(car).toBeInstanceOf(Car);
     });
   });
+
+  test("executeRace 메서드는 모든 자동차에 대해 race 메서드를 호출해야 함", () => {
+    // given
+    const inputs = ["jenn", "terry", "erric"];
+    const cars = Array.from(inputs, (name) => new Car(name));
+    const spies = Array.from(cars, (car) => jest.spyOn(car, "race"));
+
+    // when
+    const racingCarGame = new RacingCarGame();
+    racingCarGame.cars = cars;
+    racingCarGame.executeRace();
+
+    //then
+    spies.forEach((spy) => {
+      expect(spy).toHaveBeenCalled();
+    });
+
+    spies.forEach((spy) => spy.mockRestore());
+  });
 });
