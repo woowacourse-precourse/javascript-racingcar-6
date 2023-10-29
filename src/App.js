@@ -23,9 +23,12 @@ class App {
     }
     const raceStart = async(carNameArr) => {
       const carNum = carNameArr.length
-
+      let moveForwardArr = [0]*(carNum)
       for (let i=0; i<carNum; i++) {
         const randomNum = MissionUtils.Random.pickNumberInRange(0, 9);
+        if (randomNum >= 4) {
+          moveForwardArr[i] = 1
+        }
       }
       return moveForwardArr
     }
