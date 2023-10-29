@@ -2,20 +2,20 @@ import Car from "./Car.js";
 import OutputView from "../view/OutputView.js";
 
 class RacingGame {
-    #cars
+    cars
 
   constructor() {
-    this.#cars = [];
+    this.cars = [];
   }
 
   addCar(carName) {
     const car = new Car(carName);
-    this.#cars.push(car);
+    this.cars.push(car);
   }
 
   async startGame(attempts) {
     for (let i = 0; i < attempts; i++) {
-      for (const car of this.#cars) {
+      for (const car of this.cars) {
         await car.move();
         const position = await car.getPosition();
         await OutputView.printLine(car, position);
@@ -32,12 +32,12 @@ class RacingGame {
   }
 
   #getMaxPosition() {
-    const positions = this.#cars.map((car) => car.position);
+    const positions = this.cars.map((car) => car.position);
     return Math.max(...positions);
   }
 
   #getWinningCars(maxPosition) {
-    return this.#cars.filter((car) => car.position === maxPosition);
+    return this.cars.filter((car) => car.position === maxPosition);
   }
 
   #joinWinners(winners) {
