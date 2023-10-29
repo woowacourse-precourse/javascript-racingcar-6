@@ -1,4 +1,6 @@
-import { Console, Random } from '@woowacourse/mission-utils';
+import { Console } from '@woowacourse/mission-utils';
+
+import Car from './Car.js';
 
 class App {
   async play() {
@@ -90,21 +92,6 @@ class App {
       .map((car) => car.name);
 
     return winners;
-  }
-}
-
-export class Car {
-  constructor(name) {
-    this.name = name;
-    this.progress = '';
-  }
-
-  moveOrStop() {
-    const randomNumber = Random.pickNumberInRange(0, 9);
-
-    if (randomNumber >= 4) {
-      this.progress += '-';
-    }
   }
 }
 
