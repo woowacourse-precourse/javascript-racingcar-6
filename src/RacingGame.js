@@ -29,7 +29,14 @@ class RacingGame {
 
   announceGameWinners() {
     const winners = GameUtils.selectWinners(this.#racingCars);
-    GameUtils.printFinalWinner(winners);
+    const isSoloWinner = winners.length <= 1;
+
+    if (isSoloWinner) {
+      GameUtils.printFinalWinner(winners);
+      return;
+    }
+
+    GameUtils.printFinalWinners(winners);
   }
 }
 
