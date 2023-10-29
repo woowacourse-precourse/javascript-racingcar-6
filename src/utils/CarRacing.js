@@ -7,10 +7,11 @@ const CarRacing = {
   async playCarRacing() {
     const carNameList = await User.getCarNames();
     const tryCount = await User.getTryCount();
+
     const carMoveForwardList = Car.getMoveForwards(carNameList);
 
     for (let count = 0; count < tryCount; count += 1) {
-      const carMovesList = Car.getCarMovesList(carNameList.length);
+      const carMovesList = Car.createCarMoves(carNameList.length);
 
       this.showTryResult(carNameList, carMovesList);
       this.countMoveForward(carMoveForwardList, carMovesList);
@@ -26,7 +27,7 @@ const CarRacing = {
   },
 
   countMoveForward(carMoveForwards, carMoves) {
-    carMoveForwards.map((forward, index) => {
+    carMoveForwards.forEach((forward, index) => {
       if (carMoves[index] >= FORWARD_CRITERIA) {
         return forward + 1;
       }
@@ -47,9 +48,10 @@ const CarRacing = {
     return winnerList;
   },
 
-  printWinner(winners){
-    return winners.map((winner) => winner).join(',');
-  }
+  printWinner(winners) {
+    const finalWinners = winners.map((winner) => winner).join(",");
+    return finalWinners;
+  },
 };
 
 export default CarRacing;
