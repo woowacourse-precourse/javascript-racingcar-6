@@ -12,7 +12,6 @@ class Car {
     }
     MissionUtils.Console.print(`${this.name} : ${this.distance}`);
   }
-  
 }
 // class StartGame {
 
@@ -76,11 +75,11 @@ class App {
   async play() {
     let carArray = await this.getCarName();
     let gameCount = await this.getGameCount();
-    console.log(carArray, gameCount);
+
     this.gameTrial(carArray, gameCount);
     this.printWinner(carArray);
   }
 }
-const app = new App();
-await app.play();
+// const app = new App();
+// await app.play();
 export default App;
