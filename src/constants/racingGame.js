@@ -1,4 +1,6 @@
 const round = Object.freeze({
+  default: 0,
+  unit: 1,
   min: 1,
   radix: 10,
 });
