@@ -6,6 +6,10 @@ class CarList {
   add(car) {
     this.cars.push(car);
   }
+
+  race() {
+    this.cars.forEach((car) => car.move());
+  }
 }
 
 export default CarList;
