@@ -30,24 +30,23 @@ class App {
       if (number >= 4) forwardList[carIdx]++;
     }
   }
-  async printExecResult(carList, forwardList) {
+  async makeExecResult(carList, forwardList) {
+    let result = "";
     for (let carIdx = 0; carIdx < carList.length; carIdx++) {
-      MissionUtils.Console.print(
-        `${carList[carIdx]} : ${"-".repeat(forwardList[carIdx])}`
-      );
+      result += `${carList[carIdx]} : ${"-".repeat(forwardList[carIdx])}\n`;
     }
-    MissionUtils.Console.print("");
+    return result;
   }
 
-  async printWinner(carList, forwardList) {
+  async makeWinner(carList, forwardList) {
     const MAXCOUNT = Math.max(...forwardList);
     let winnerList = "";
     for (let carIdx = 0; carIdx < carList.length; carIdx++) {
       if (forwardList[carIdx] == MAXCOUNT) {
-        winnerList += carList[carIdx] + ",";
+        winnerList += carList[carIdx] + ", ";
       }
     }
-    MissionUtils.Console.print(`최종 우승자 : ${winnerList.slice(0, -1)}`);
+    return winnerList.slice(0, -2);
   }
 
   async play() {
@@ -66,14 +65,17 @@ class App {
     MissionUtils.Console.print("\n실행 결과");
     for (let i = 0; i < count; i++) {
       this.goForward(forwardList);
-      this.printExecResult(carList, forwardList);
+      MissionUtils.Console.print(
+        await this.makeExecResult(carList, forwardList)
+      );
     }
-
-    this.printWinner(carList, forwardList);
+    MissionUtils.Console.print(
+      `최종 우승자 : ${await this.makeWinner(carList, forwardList)}`
+    );
   }
 }
 
 export default App;
 
-// const app = new App();
-// app.play();
+const app = new App();
+app.play();
