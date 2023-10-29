@@ -1,5 +1,5 @@
-import { MissionUtils } from '@woowacourse/mission-utils';
-import { ErrorMessage } from '../Message';
+import { MissionUtils } from "@woowacourse/mission-utils";
+import { ErrorMessage } from "../Message";
 
 class GameUtil {
   carNameVaildator(car) {
@@ -14,7 +14,7 @@ class GameUtil {
       throw new Error(ErrorMessage.ATTEMPTS_VALID_NUM);
     }
     if (/\D/.test(attempts)) {
-      MissionUtils.Console.print(ErrorMessage.ATTEMPTS_VALID_NUM);
+      MissionUtils.Console.print(ErrorMessage.ATTEMPTS_TYPE);
       throw new Error(ErrorMessage.ATTEMPTS_TYPE);
     }
   }

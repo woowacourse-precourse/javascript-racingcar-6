@@ -86,8 +86,8 @@
 | `carNameVaildator()`     | 자동차 이름 길이가 5를 초과하는 경우 | 예외 발생          | 예외 발생          | 통과      |
 | `getRacingcarAttempts()` | 유효한 시도 횟수 입력                | 시도 횟수 반환     | 시도 횟수 반환     | 통과      |
 | `attemptsValidator()`    | 유효한 시도 횟수 입력                | 예외 없음          | 예외 없음          | 통과      |
-| `getRacingcarAttempts()` | 시도 횟수가 숫자가 아닌 경우         | 오류 메시지 출력   | 미실행             | 미실행    |
-| `attemptsValidator()`    | 시도 횟수가 숫자가 아닌 경우         | 예외 발생          | 미실행             | 미실행    |
+| `getRacingcarAttempts()` | 시도 횟수가 숫자가 아닌 경우         | 오류 메시지 출력   | 오류 메시지 출력   | 통과      |
+| `attemptsValidator()`    | 시도 횟수가 숫자가 아닌 경우         | 예외 발생          | 예외 발생          | 통과      |
 | `getRacingcarAttempts()` | 시도 횟수가 0 이하인 경우            | 오류 메시지 출력   | 오류 메시지 출력   | 통과      |
 | `attemptsValidator()`    | 시도 횟수가 0 이하인 경우            | 예외 발생          | 예외 발생          | 통과      |
 | `updateCarProgress()`    | 자동차 배열을 주고 진행 상황 표시    | 진행 상황 표시     | 미실행             | 미실행    |
