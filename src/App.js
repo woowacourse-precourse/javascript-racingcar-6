@@ -1,7 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
 import { PROGRESS_SIGN, THRESHOLD } from './lib/constants.js';
 import LOGS from './lib/logs.js';
-import { computeWinners, generateRandomArr } from './util.js';
+import { generateRandomArr } from './util.js';
 import Validator from './Validator.js';
 
 class App {
@@ -75,8 +75,8 @@ class App {
   // 우승자들 출력
   printWinners() {
     const MAX = Math.max(...this.carsProgress);
-    const WINNERS = computeWinners(this.carsProgress, this.cars, MAX);
-    Console.print(LOGS.winnerPrompt(WINNERS));
+    const WINNERS = this.carsProgress.map((e, i) => e === MAX && this.cars[i]);
+    Console.print(LOGS.winnerPrompt(WINNERS.filter(i => !!i)));
   }
 }
 

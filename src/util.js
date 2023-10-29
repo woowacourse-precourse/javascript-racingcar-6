@@ -1,15 +1,8 @@
 import { Random } from '@woowacourse/mission-utils';
+import { MAX_RANDOM_NUMBER, MIN_RANDOM_NUMBER } from './lib/constants';
 
-export function generateRandomArr(carsNum) {
-  return Array.from({ length: carsNum }, () => Random.pickNumberInRange(0, 9));
-}
-
-export function computeWinners(progresses, cars, max) {
-  if (max === 0) {
-    return [];
-  }
-
-  return progresses
-    .map((e, i) => (e === max ? cars[i] : null))
-    .filter(e => !!e);
+export function generateRandomArr(arrLength) {
+  return Array.from({ length: arrLength }, () =>
+    Random.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER),
+  );
 }
