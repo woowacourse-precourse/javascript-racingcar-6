@@ -35,14 +35,10 @@ describe("기능 테스트", () => {
     });
 
     test.each([``, `치이카와 우사기 하치와레`, `이름엄청길다,이름,이`])(
-        "handleInvalidCarName함수 테스트",
-        async (inputs) => {
-            // given
-            mockQuestions(inputs);
-
-            // when
+        "checkCarFormat 함수 테스트",
+        async (value) => {
             const app = new App();
-            await expect(() => app.handleInvalidCarName.moving(value)).toThrow(
+            await expect(() => app.checkCarFormat(value)).toThrow(
                 "[ERROR] 자동차 이름이 잘못된 형식입니다."
             );
         }
@@ -50,10 +46,7 @@ describe("기능 테스트", () => {
 
     test.each([``, `숫자`, `1,2`])(
         "handleInvalidNumberOfGames함수 테스트",
-        async (inputs) => {
-            // given
-            mockQuestions(inputs);
-
+        async (value) => {
             // when
             const app = new App();
             await expect(() =>
