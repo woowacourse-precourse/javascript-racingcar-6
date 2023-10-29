@@ -84,23 +84,13 @@ describe("자동차 경주 게임", () => {
     });
   });
 
-  test("undefined일 때 예외 처리", async () => {
-    mockQuestions([]);
-
-    const app = new App();
-
-    await expect(app.play()).rejects.toThrow(
-      "[ERROR]2개 이상으로 입력해주세요.",
-    );
-  });
-
-  test("빈값일 때 예외 처리", async () => {
+  test("이름이 빈값일 때 예외 처리", async () => {
     mockQuestions([""]);
 
     const app = new App();
 
     await expect(app.play()).rejects.toThrow(
-      "[ERROR]2개 이상으로 입력해주세요.",
+      "[ERROR]아무것도 입력하지 않았습니다.",
     );
   });
 
@@ -125,13 +115,13 @@ describe("자동차 경주 게임", () => {
     );
   });
 
-  test("횟수 undefined일 때 예외 처리", async () => {
-    mockQuestions(["pobi,rin"], undefined);
+  test("횟수 입력하지 않았을 때 예외 처리", async () => {
+    mockQuestions(["pobi,rin", ""]);
 
     const app = new App();
 
     await expect(app.play()).rejects.toThrow(
-      "[ERROR]1이상의 정수를 입력해 주세요.",
+      "[ERROR]아무것도 입력하지 않았습니다.",
     );
   });
 
@@ -146,15 +136,18 @@ describe("자동차 경주 게임", () => {
     );
   });
 
-  test.each(["0", "seven", "2.3"])("횟수에 대한 예외 처리", async (inputs) => {
-    mockQuestions(["pobi,rin"], inputs);
+  test.each([["0"], ["seven"], ["a1"], ["2.3"]])(
+    "횟수에 대한 예외 처리",
+    async (input) => {
+      mockQuestions(["pobi,rin", input]);
 
-    const app = new App();
+      const app = new App();
 
-    await expect(app.play()).rejects.toThrow(
-      "[ERROR]1이상의 정수를 입력해 주세요.",
-    );
-  });
+      await expect(app.play()).rejects.toThrow(
+        "[ERROR]1이상의 정수를 입력해 주세요.",
+      );
+    },
+  );
 
   test.each([[["pobi,javaji"]], [["pobi,eastjun"]]])(
     "이름 길이에 대한 예외 처리",

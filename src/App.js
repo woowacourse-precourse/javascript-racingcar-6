@@ -3,41 +3,39 @@ import selectWinner from "./utils/selectWinner.js";
 import moveWithRandomNum from "./utils/moveWithRandomNum.js";
 import {
   hasSameName,
+  isIntegerNumber,
   isNameLengthUnderFive,
   isValidCountInput,
   isValidNameInput,
 } from "./utils/validation.js";
+import inputFunc from "./utils/inputFunc.js";
 
 class App {
   async play() {
-    const carsInput =
-      await Console.readLineAsync("경주할 자동차 이름을 입력하세요.");
-
-    isValidNameInput(carsInput);
-    hasSameName(carsInput);
-
-    const cars = carsInput.split(",");
+    const carsArr = await inputFunc.getCarNames();
+    isValidNameInput(carsArr);
+    hasSameName(carsArr);
 
     const carsWithMoveNum = {};
-    cars.forEach((car) => {
+    carsArr.forEach((car) => {
       isNameLengthUnderFive(car);
       carsWithMoveNum[car] = 0;
     });
 
-    const countInput =
-      await Console.readLineAsync("시도할 횟수는 몇 회인가요?");
-    isValidCountInput(countInput);
+    const count = await inputFunc.getCountNumber();
+    isValidCountInput(count);
+    isIntegerNumber(count);
 
-    const lastCount = countInput;
+    const lastCount = count;
     let currentCount = 0;
 
     while (currentCount < lastCount) {
-      moveWithRandomNum(cars, carsWithMoveNum);
+      moveWithRandomNum(carsArr, carsWithMoveNum);
       Console.print("");
       currentCount++;
     }
 
-    const winner = selectWinner(cars, carsWithMoveNum);
+    const winner = selectWinner(carsArr, carsWithMoveNum);
     Console.print(`최종 우승자 : ${winner.join(", ")}`);
   }
 }
