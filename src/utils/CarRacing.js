@@ -20,6 +20,7 @@ const CarRacing = {
   },
 
   showTryResult(carNames, carMoves) {
+    Console.print('\n');
     const moveSign = carMoves.map((moves) => '-'.repeat(moves));
     carNames.forEach((name, index) => {
       Console.print(`${name} : ${moveSign[index]}`);
