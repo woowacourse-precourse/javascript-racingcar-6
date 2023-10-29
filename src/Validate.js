@@ -8,11 +8,11 @@ class Validate{
 
     NAME.map((name) => {
       if(name.length > 5){
-        throw ERROR_MESSAGE.NAME_LONGER_THAN_FIVE
+        throw new Error (ERROR_MESSAGE.NAME_LONGER_THAN_FIVE)
       }
 
       if(name === ''){
-        throw ERROR_MESSAGE.NAME_BLANK
+        throw new Error (ERROR_MESSAGE.NAME_BLANK)
       }
 
       this.#checkNameType(name);
@@ -25,12 +25,12 @@ class Validate{
     const NAME = name.split('')
     NAME.forEach((letter) => {
       if(letter === ' '){
-        throw ERROR_MESSAGE.NAME_BLANK
+        throw new Error (ERROR_MESSAGE.NAME_BLANK)
       }
 
       const REG_EXP = /[0-9a-zA-Z가-힣]/
       if(letter.search(REG_EXP)){
-        throw ERROR_MESSAGE.NAME_WRONG_TYPE
+        throw new Error (ERROR_MESSAGE.NAME_WRONG_TYPE)
       }
     })
   }
@@ -39,11 +39,11 @@ class Validate{
     const NUMBER = Number(num)
 
     if(isNaN(num) || num === ''){
-      throw ERROR_MESSAGE.REPEAT_WRONG_TYPE
+      throw new Error (ERROR_MESSAGE.REPEAT_WRONG_TYPE)
     }
 
     if(NUMBER % 1 !== 0 || NUMBER < 1){
-      throw ERROR_MESSAGE.REPEAT_NOT_NATURAL
+      throw new Error (ERROR_MESSAGE.REPEAT_NOT_NATURAL)
     }
 
     return NUMBER
