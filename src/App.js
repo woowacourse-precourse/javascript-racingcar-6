@@ -1,4 +1,4 @@
-import startGame from "./controller/GameController";
+import startGame from "./controllers/GameController";
 
 class App {
   async play() {

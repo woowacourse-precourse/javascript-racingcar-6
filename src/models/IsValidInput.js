@@ -2,7 +2,7 @@ import NAME_ERROR from "../constants/ErrorMsg";
 
 //입력받은 자동차의 이름 유효성 검사
 export const isValidInput = (name) => {
-    let nameArray = name.split(',');
+    const nameArray = name.split(',');
 
     //1. ','로 구분되있지 않을 경우
     if ( !name.inculdes(',') ) {
