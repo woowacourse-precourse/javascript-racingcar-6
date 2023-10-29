@@ -11,12 +11,14 @@ const mockRandoms = (numbers) => {
 describe("RandomPick 함수 테스트", () => {
   test("랜덤값이 4이상일 경우 '-'반환", () => {
     const inputs = ['6'];
+    
     mockRandoms(inputs);
     expect(RandomPick()).toBe('-');
   });
 
   test("4이하일 경우 ''반환", () => {
     const inputs = ['3'];
+
     mockRandoms(inputs);
     expect(RandomPick()).toBe('');
   });
