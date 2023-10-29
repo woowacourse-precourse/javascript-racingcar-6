@@ -11,7 +11,8 @@ export default async function createExecutionLog(currentGoAndStops, currentCarDa
     let resultString = '';
 
     singleStatus.forEach((item, index) => {
-      const newCarValue = carValues[index] + item;
+      const moveStatus = item >= 4 ? '-' : '';
+      const newCarValue = carValues[index] + moveStatus;
       const racerString = `${carKeys[index]} : ${newCarValue} \n`;
       updatedCarData.set(carKeys[index], newCarValue);
       resultString += racerString;

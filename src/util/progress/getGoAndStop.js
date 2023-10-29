@@ -5,7 +5,7 @@ export default async function getGoAndStop(racerCount, gameCount, recentGoAndSto
   try {
     const newGoAndStop = [];
     while (newGoAndStop.length < racerCount) {
-      const progressStatus = getRandomNumberInRange() > 4 ? '-' : '';
+      const progressStatus = getRandomNumberInRange();
       newGoAndStop.push(progressStatus);
     }
     const resultGoAndStop = [...recentGoAndStop];
