@@ -52,6 +52,16 @@ class App {
     })
   }
 
+  printWinner() {
+    const maxPosition = Object.values(this.#gameData).reduce((prevMax, { position }) => {
+      return Math.max(prevMax, position);
+    }, -Infinity);
+    const winnerName = Object.keys(this.#gameData).filter((playerName) => {
+      return this.#gameData[playerName].position === maxPosition;
+    })
+    Console.print(`${MESSAGE.theWinnerIs}${winnerName.join(', ')}`);
+  }
+
 // 최종 우승자를 출력한다.
 // 우승자가 여러 명인 경우 쉼표로 구분해 같이 출력한다.
 
@@ -62,9 +72,7 @@ class App {
     Console.print(MESSAGE.gameStart);
 
     this.repeatTurn(this.#repeatCount);
-
-    Console.print(this.#gameData);
-    Console.print(this.#repeatCount);
+    this.printWinner();
   }
 }
 
