@@ -5,6 +5,7 @@ const MESSAGE = {
   roundError: '[ERROR] 잘못된 형식입니다.',
   movement: '-',
   gameResult: '실행 결과',
+  winner: '최종 우승자 : ',
 };
 
 export default MESSAGE;

@@ -1,6 +1,7 @@
 import Car from './Car';
 import Input from './Input';
 import Output from './Output';
+import Referee from './Referee';
 
 class Game {
   totalRound = 0;
@@ -9,11 +10,11 @@ class Game {
 
   carArray = [];
 
-  winner = [];
-
   input = new Input();
 
   output = new Output();
+
+  referee = new Referee();
 
   setCarArray(nameArray) {
     this.carArray = nameArray.map((n) => new Car(n));
@@ -42,6 +43,11 @@ class Game {
     updateCarArray.forEach((c) => this.output.printPlayResult(c));
     this.currentRound += 1;
     this.carArray = updateCarArray;
+  }
+
+  decideWinner() {
+    this.referee.comparePoint(this.carArray);
+    this.referee.showWinner();
   }
 }
 

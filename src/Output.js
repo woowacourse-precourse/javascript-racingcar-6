@@ -29,6 +29,11 @@ class Output {
   printPlayResult({ name, movement }) {
     this.printMessage(`${name} : ${movement.join('')}`);
   }
+
+  printWinner(winnerArray) {
+    const winnerSentence = winnerArray.join(', ');
+    this.printMessage(`${MESSAGE.winner}${winnerSentence}`);
+  }
 }
 
 export default Output;

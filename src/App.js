@@ -15,6 +15,7 @@ class App {
     ) {
       this.game.play();
     }
+    this.game.decideWinner();
   }
 }
 
