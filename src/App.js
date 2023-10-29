@@ -23,7 +23,7 @@ class App {
     }
     const raceStart = async(carNameArr) => {
       const carNum = carNameArr.length
-      let moveForwardArr = [0]*(carNum)
+      let moveForwardArr = new Array(carNum).fill(0);
       for (let i=0; i<carNum; i++) {
         const randomNum = MissionUtils.Random.pickNumberInRange(0, 9);
         if (randomNum >= 4) {
@@ -32,10 +32,27 @@ class App {
       }
       return moveForwardArr
     }
+    const printCurCarMove = async(carNameArr, curMoveForwardArr) => {
+      for (let i=0; i<carNameArr.length; i++){
+        const carName = carNameArr[i]
+        const curMoveForward = curMoveForwardArr[i]
+        await MissionUtils.Console.print(carName+ " : "+ "-".repeat(curMoveForward))
+      }
+      await MissionUtils.Console.print("\n")
+    }
     const carNameArr = await getCarNameInput();
     await checkValidCarName(carNameArr)
     const trialNum = await getTrialNumInput();
     await checkValidTrialNum(trialNum)
+
+    let curMoveForwardArr = new Array(carNameArr.length).fill(0);
+    let i = 0
+    while(i< trialNum) {
+      const moveForwardArr = await raceStart(carNameArr)
+      curMoveForwardArr = curMoveForwardArr.map((value, index) => value + moveForwardArr[index]);
+      await printCurCarMove(carNameArr, curMoveForwardArr)
+      i += 1
+    }
   }
 }
 
