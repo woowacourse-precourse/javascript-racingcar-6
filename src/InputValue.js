@@ -6,7 +6,15 @@ class InputValue {
   static async carName() {
     const input = await Console.readLineAsync(INPUT_MESSAGE.name);
     Validation.checkCarName(input.trim().split(','));
-    return input.trim().split(',');
+    return this.carNameArr(input.trim().split(','));
+  }
+
+  static carNameArr(input) {
+    const arr = input.map((carName) => ({
+      carName,
+      move: 0,
+    }));
+    return arr;
   }
 
   static async moveCount() {
