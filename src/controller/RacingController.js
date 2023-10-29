@@ -12,7 +12,7 @@ class RacingController {
   scoreArray = [];
   traceArray = [];
   playTime = 0;
-
+  //
   constructor(playersArray, attemptNumber) {
     this.playersArray = playersArray;
     this.attemptNumber = attemptNumber;
@@ -24,7 +24,6 @@ class RacingController {
     this.traceArray = Converter.traceFilter(driveArray);
 
     Console.print(GAME_MESSEAGE.executeResult);
-
     this.traceMaker();
   }
 
@@ -34,7 +33,7 @@ class RacingController {
 
     this.playTime += 1;
     if (this.playTime === this.attemptNumber) return this.showWinners();
-    
+
     this.updateRacingBoard(); 
   }
 

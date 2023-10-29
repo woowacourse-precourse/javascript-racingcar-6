@@ -1,6 +1,6 @@
 import { scoreAccumulator, traceAccumulator } from "../src/util/Accumulator.js"
 
-describe('점수,트레이스 누적기 테스트',() => {
+describe('점수,이동거리 누적기 테스트',() => {
   test('점수 누적기 테스트', () => {
     const scoreArray = [1,0,1];
     const randomArray = [3,4,0];
