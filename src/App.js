@@ -32,6 +32,16 @@ const checkWinner = async (participants) =>{
   return returnWinner;
 }
 
+
+/**
+ * @param {*} randomNumber : 참가자가 받는 값
+ * 0~9사이 값이 아니거나 숫자가 아니면 ERROR
+ */
+const checkRandomNumber = async (randomNumber) =>{
+  if(!Number(randomNumber)) throw new Error('[ERROR] 숫자를 입력해주세요.');
+  if(Number(randomNumber) <=0 || Number(randomNumber) > 9 ) throw new Error('[ERROR] 0~9사이 값을 입력해주세요.');
+}
+
 /**
  * 매 게임 진행마다 참가자 진행 결과를 출력
  * return : 숫자로 반환
@@ -45,6 +55,7 @@ const showResult = async (participants) => {
   while(index < participants.length){
     // 함수로 빼기 -> return이 최종 결과 객체 ex) goStopCheck
     const randomNumber = Random.pickNumberInRange(0, 9);
+    await checkRandomNumber(randomNumber);
     const name = participants[index];
     if(randomNumber >= 4) {
       goStopCheck[name] = goStopCheck[name] ? [goStopCheck[name][0]+'-', goStopCheck[name][1]+1] : ['-',1];
@@ -64,7 +75,7 @@ const showResult = async (participants) => {
 
 /**
  * @param {*} participants : 진행 횟수 확인
- * 0~9사이 값이 아니거나 숫자가 아니면 ERROR
+ * 0보다 작거나 숫자가 아니면 ERROR
  */
 const checkAttempt = async (attempt) =>{
   if(!Number(attempt)) throw new Error('[ERROR] 숫자를 입력해주세요.');
