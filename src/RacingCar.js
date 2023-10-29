@@ -46,7 +46,7 @@ class RacingCar {
   }
 
   printAllCars() {
-    this.#carList.forEach(async (car) => {
+    this.#carList.forEach((car) => {
       const distance = car.getCarDistance();
       const name = car.getCarName();
       const slash = this.getDistanceToSlash(distance);
