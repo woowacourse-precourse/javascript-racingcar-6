@@ -2,17 +2,22 @@ import RacingGame from './RacingGame.js';
 import InputManager from './utils/InputManager.js';
 
 class App {
+  #racingGame;
+
+  constructor() {
+    this.#racingGame = new RacingGame();
+  }
+
   async play() {
-    const racingGame = new RacingGame();
-    racingGame.start();
+    this.#racingGame.start();
     const cars = await InputManager.inputRacingCarNames();
-    racingGame.generateRacingCars(cars);
+    this.#racingGame.generateRacingCars(cars);
 
     const attemptNumber = await InputManager.inputGameAttemptNumber();
-    racingGame.startRacing(attemptNumber);
+    this.#racingGame.startRacing(attemptNumber);
 
-    racingGame.announceGameWinners();
-    racingGame.end();
+    this.#racingGame.announceGameWinners();
+    this.#racingGame.end();
   }
 }
 
