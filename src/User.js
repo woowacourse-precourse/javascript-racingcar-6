@@ -1,15 +1,23 @@
 import { Console } from '@woowacourse/mission-utils';
+import Computer from './Computer.js';
 
 export default class User {
+  static async inputQuery(query) {
+    const input = await Console.readLineAsync(query);
+    return input;
+  }
+
   static async inputCarName() {
-    const input = await Console.readLineAsync(
-      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
+    const input = await User.inputQuery(
+      Computer.MESSAGE.COMMAND_INPUT_CAR_NAME,
     );
     return input;
   }
 
   static async inputTrialNumber() {
-    const input = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    const input = await User.inputQuery(
+      Computer.MESSAGE.COMMAND_INPUT_TRIAL_NUMBER,
+    );
     return input;
   }
 }
