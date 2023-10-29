@@ -17,6 +17,7 @@ export default class OutputView {
     carsStatus.forEach(({ name, totalDistance }) => {
       result.push(`${name} : ${this.#ONE_STEP.repeat(totalDistance)}`);
     });
+    result.push(""); // 한 라운드 출력 후,다음 라운드 출력 전 한 줄의 공백을 주기 위해 추가
     Console.print(result.join("\n"));
   }
 
