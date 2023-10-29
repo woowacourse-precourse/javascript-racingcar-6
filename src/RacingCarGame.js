@@ -35,6 +35,14 @@ class RacingCarGame {
       }
     });
   }
+
+  #createCarObjectsFromNames(carNames) {
+    const carNameList = carNames.split(',');
+
+    carNameList.forEach((carName) => {
+      this.#cars.push(new Car(carName.trim()));
+    });
+  }
 }
 
 export default RacingCarGame;
