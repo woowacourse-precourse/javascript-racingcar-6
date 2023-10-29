@@ -38,7 +38,7 @@ class Judge {
       }
     })
 
-    Console.print(`최종 우승자 : ${winnerPlayers.map((member) => member).join(',')}`);
+    Console.print(`최종 우승자 : ${winnerPlayers.map((member) => member).join(', ')}`);
   }
 }
 
