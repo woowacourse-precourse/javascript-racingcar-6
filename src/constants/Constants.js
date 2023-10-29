@@ -1,7 +1,7 @@
 export const GAME_RULE_NUMBER = {
-  min: 0,
-  max: 9,
-  threshold: 4,
+  numMin: 0,
+  numMax: 9,
+  thresholdNum: 4,
   nameLen: 5,
 };
 

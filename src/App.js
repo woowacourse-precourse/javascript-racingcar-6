@@ -1,7 +1,11 @@
-import { gameStart } from './Main.js';
+import { getCarNameList, getTryNum } from './utils/Utils.js';
+import RaceGame from './domain/RaceGame.js';
 
 export default class App {
   async play() {
-    await gameStart();
+    const carNameList = await getCarNameList();
+    const tryNum = await getTryNum();
+    const raceGame = new RaceGame(carNameList, tryNum);
+    raceGame.gameStart();
   }
 }
