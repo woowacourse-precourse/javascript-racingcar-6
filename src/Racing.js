@@ -3,9 +3,11 @@ import RandomPick from './RandomPick.js';
 
 function Racing(car, n) {
   const forward = [];
-  for(let i=0; i<car.length; i++){
+  
+  for (let i=0; i<car.length; i++) {
     forward[i] = '';
   }
+
   Console.print('\n실행 결과');
 
   for (let i=0; i<n; i++) {
