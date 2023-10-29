@@ -21,6 +21,11 @@ const isValidInput = (name) => {
     if ( nameArray.length !== nameSet.length ) {
         throw new Error( NAME_ERROR.SAME_NAME_ERROR );
     }
+
+    //4. NULL값인 경우
+    if ( name === null ) {
+        throw new Error( NAME_ERROR.NULL_ERROR );
+    }
     
     return true;
 };
