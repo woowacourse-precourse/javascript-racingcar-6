@@ -8,44 +8,44 @@ export default class RacingCarGame {
   }
 
   async start() {
-    await this.setupCars();
-    await this.setupRaceRound();
-    this.runRaces();
-    const winners = this.getWinner();
+    await this.#setupCars();
+    await this.#setupRaceRound();
+    this.#runRaces();
+    const winners = this.#getWinner();
     OutputView.printWinner(winners);
   }
 
-  async setupCars() {
+  async #setupCars() {
     const carNamesInput = await InputView.promptCarNames();
     Array.from(carNamesInput, (carName) => {
       this.cars.push(new Car(carName));
     });
   }
 
-  async setupRaceRound() {
+  async #setupRaceRound() {
     const raceround = await InputView.promptRaceRound();
     this.raceround = new RaceRound(raceround).raceRound;
   }
 
-  runRaces() {
+  #runRaces() {
     Array.from({ length: this.raceround }, () => {
-      this.executeRace();
-      this.displayRaceResults();
+      this.#executeRace();
+      this.#displayRaceResults();
     });
   }
 
-  executeRace() {
+  #executeRace() {
     Array.from(this.cars, (car) => {
       car.race();
     });
   }
 
-  displayRaceResults() {
-    const carsStatus = this.getCarsStatus();
+  #displayRaceResults() {
+    const carsStatus = this.#getCarsStatus();
     OutputView.printOneRound(carsStatus);
   }
 
-  getCarsStatus() {
+  #getCarsStatus() {
     const carsStatus = [];
     Array.from(this.cars, (car) => {
       const carStus = car.getStatus();
@@ -54,8 +54,8 @@ export default class RacingCarGame {
     return carsStatus;
   }
 
-  getWinner() {
-    const carsStatus = this.getCarsStatus();
+  #getWinner() {
+    const carsStatus = this.#getCarsStatus();
     const maxDistance = Math.max(...carsStatus.map((car) => car.totalDistance));
 
     const winners = carsStatus
