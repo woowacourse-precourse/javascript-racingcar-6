@@ -1,0 +1,45 @@
+import { Random } from "@woowacourse/mission-utils";
+
+import OutputView from "../view/OutputView.js";
+
+class RacingController {
+  carsObject = {};
+  attemptCount = 0;
+  maxDistance = 0;
+
+  constructor(racingCarNames, attemptCount) {
+    racingCarNames.forEach((racingCarName) => {
+      this.carsObject[racingCarName] = 0;
+    });
+
+    this.attemptCount = attemptCount;
+  }
+
+  start() {
+    OutputView.printRacingStart();
+
+    for (let i = 0; i < this.attemptCount; i++) {
+      Object.entries(this.carsObject).forEach(([carName, carDistance]) => {
+        const randomNumber = Random.pickNumberInRange(0, 9);
+
+        if (randomNumber >= 4) {
+          this.carsObject[carName] = carDistance + 1;
+        }
+
+        this.maxDistance =
+          this.carsObject[carName] > this.maxDistance
+            ? this.carsObject[carName]
+            : this.maxDistance;
+
+        OutputView.printCurrentRacingCar(carName, this.carsObject[carName]);
+      });
+      OutputView.printSpacing();
+    }
+  }
+
+  end() {
+    OutputView.printRacingFinalWinners(this.carsObject, this.maxDistance);
+  }
+}
+
+export default RacingController;
