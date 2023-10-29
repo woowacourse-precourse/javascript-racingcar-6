@@ -7,14 +7,14 @@ class Car {
     this.carModels = {};
   }
 
-  async getCarModels() {
+  async getCarModelsArr() {
     const getCarModels = await Console.readLineAsync(
       PromptMessage.ENTER_CARNAME
     );
     this.carModelsArr = getCarModels.split(",").map((name) => name.trim());
   }
 
-  getCarModelsArr(carModelsArr) {
+  validateCarModels(carModelsArr) {
     carModelsArr = this.carModelsArr;
     carModelsArr.forEach((e) => {
       if (e.length > 5) {
