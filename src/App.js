@@ -1,8 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
 import UserInputCarName from "./utils/UserInputCarName";
-import { movingForwardCase } from "./utils/MovingForwardCase";
-import { FORWARD_DASH } from "./const/Messages";
-import ShowGameWinner from "./utils/ShowGameWinner";
+import ShowGameResult from "./utils/ShowGameResult";
 
 class App {
   constructor() {
@@ -19,31 +17,24 @@ class App {
     this.carManager.getCarName().forEach((carName) => {
       this.carPositions[carName] = "";
     });
-    this.winnerUtils = new ShowGameWinner(this.carPositions);
+    this.gameResult = new ShowGameResult(this.carPositions);
+    this.roundManager = new RoundManager(this.carPositions);
   }
 
   playRound() {
-    Object.keys(this.carPositions).forEach((carName) => {
-      if (movingForwardCase()) {
-        this.carPositions[carName] += FORWARD_DASH;
-        Console.print(FORWARD_DASH);
-      }
-    });
+    this.roundManager.playRound();
   }
 
   printRoundResult() {
-    Object.entries(this.carPositions).forEach(([carName, position]) => {
-      Console.print(`${carName} : ${position}`);
-    });
-    Console.print();
+    this.roundManager.printRoundResult();
   }
 
   findWinner() {
-    return this.winnerUtils.findWinner();
+    return this.gameResult.findWinner();
   }
 
   printGameResult() {
-    return this.winnerUtils.printGameResult(this);
+    return this.gameResult.printWinner(this);
   }
 }
 
