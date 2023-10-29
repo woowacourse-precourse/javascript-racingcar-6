@@ -1,15 +1,15 @@
 import Converter from "./Converter.js";
 
-export const traceAccumulator = (traceData, randomArray) => {
-  const newTraceData = Converter.traceFilter(randomArray);
+export const traceAccumulator = (traceArray, randomArray) => {
+  const newTraceArray = Converter.traceFilter(randomArray);
   
-  return traceData.map((element, index) => element + newTraceData[index]); 
+  return traceArray.map((trace, index) => trace + newTraceArray[index]); 
 }
 
-export const scoreAccumulator = (scoreData, randomArray) => {
-  const newScoreData = Converter.scoreFilter(randomArray);
+export const scoreAccumulator = (scoreArray, randomArray) => {
+  const newScoreArray = Converter.scoreFilter(randomArray);
 
-  return scoreData.map((element, index) => element + newScoreData[index]); 
+  return scoreArray.map((score, index) => score + newScoreArray[index]); 
 }
 
 
