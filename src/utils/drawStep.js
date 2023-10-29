@@ -1,9 +1,10 @@
 import { STEP_SHAPE } from '../constants.js';
 
 const drawStep = (car) => {
-  let step = STEP_SHAPE.repeat(car.step);
+  const name = car.getName();
+  const step = STEP_SHAPE.repeat(car.getStep());
 
-  return `${car.name} : ${step}`;
+  return `${name} : ${step}`;
 };
 
 export default drawStep;
