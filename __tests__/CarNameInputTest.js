@@ -17,9 +17,9 @@ const getLogSpy = () => {
   return logSpy;
 };
 
-describe('자동차 이름 유효성 테스트', () => {
-  test.each([[[' ']], [[',']], [[' ,']], [[', ']]])(
-    '자동차 이름이 공백인 경우',
+describe('자동차 이름 유효성 테스트', () => {은
+  test.each([[[' ']], [[',']], [[' ,']], [[', ']], [['']], [[',a']]])(
+    '자동차 이름이 공백이거나 주어지지 않은 경우',
     async (inputs) => {
       mockQuestions(inputs);
 
