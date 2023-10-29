@@ -57,6 +57,17 @@ describe("자동차 경주 게임", () => {
     expect(result).toEqual(expectedOutput);
   });
 
+  test("inputAttemptCount 함수 테스트", async () => {
+    const inputs = ["3"];
+    const expectedOutput = "3";
+    mockQuestions(inputs);
+
+    const app = new App();
+    const result = await app.inputAttemptCount();
+
+    expect(result).toEqual(expectedOutput);
+  });
+
   test.each([[["pobi,javaji"]], [["pobi,eastjun"]]])(
     "이름에 대한 예외 처리",
     async (inputs) => {
