@@ -6,6 +6,8 @@ import {
 import { RANGE } from "./constants/randomNumberRange.js";
 
 class App {
+  carsRecordBoard = {};
+
   async play() {}
 
   async getUserInput(purpose) {
@@ -26,6 +28,12 @@ class App {
 
   getRandomNumber(start, end) {
     return Random.pickNumberInRange(start, end);
+  }
+
+  setCarsRecordBoard(cars) {
+    for (let car of cars) {
+      this.carsRecordBoard[car] = "";
+    }
   }
 }
 
