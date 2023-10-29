@@ -33,16 +33,12 @@ const getCarsName = async () => {
 
 // 시도 횟수 입력
 const getTryTimes = async () => {
-  try {
-    const tryTimes = await Console.readLineAsync(GAME_MSG.GET_TRY_TIMES);
-    Console.print(`${GAME_MSG.GET_TRY_TIMES}\n${tryTimes}`);
-    if (isNaN(tryTimes)) {
-      throw new Error(ERROR_MSG.TRY_TIMES_NUMBER);
-    }
-    return tryTimes;
-  } catch (error) {
-    return error;
+  const tryTimes = await Console.readLineAsync(GAME_MSG.GET_TRY_TIMES);
+  Console.print(`${GAME_MSG.GET_TRY_TIMES}\n${tryTimes}`);
+  if (isNaN(tryTimes)) {
+    throw new Error(ERROR_MSG.TRY_TIMES_NUMBER);
   }
+  return tryTimes;
 };
 
 // 실행 결과 출력
@@ -71,6 +67,7 @@ const getRandomNumber = () => {
   return false;
 };
 
+// 최종 우승자 출력
 const printFinalWinner = (carNames) => {
   const resultLength = [];
   carNames.forEach((car, idx) => {
@@ -89,7 +86,7 @@ const printFinalWinner = (carNames) => {
   let gameResult = maxCars.join(", ");
   Console.print(`${GAME_MSG.GAME_WINNER}${gameResult}`);
 };
-
+//게임종료
 const endGame = () => {
   return;
 };
