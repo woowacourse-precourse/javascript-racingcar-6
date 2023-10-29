@@ -1,10 +1,10 @@
 const ZERO = 0;
 const ONE = 1;
-const SPACE = '\n';
+const NEW_LINE = '\n';
 
 const STICK = Object.freeze({
   newSticks: '',
   oneStick: '-',
 });
 
-export { ZERO, ONE, SPACE, STICK };
+export { ZERO, ONE, NEW_LINE, STICK };

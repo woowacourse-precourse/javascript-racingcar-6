@@ -1,4 +1,4 @@
-import { ONE, SPACE, STICK, ZERO } from '../constants/constants.js';
+import { ONE, NEW_LINE, STICK, ZERO } from '../constants/constants.js';
 
 export default class ResultModel {
   #result;
@@ -23,9 +23,11 @@ export default class ResultModel {
     const totalResult = [];
     this.#result.forEach((attempResult) => {
       attempResult.forEach(([carName, moveCount]) => {
-        totalResult.push(`${carName} : ${this.#makeStick(moveCount)}${SPACE}`);
+        totalResult.push(
+          `${carName} : ${this.#makeStick(moveCount)}${NEW_LINE}`,
+        );
       });
-      totalResult.push(SPACE);
+      totalResult.push(NEW_LINE);
     });
     return totalResult.join('');
   }
