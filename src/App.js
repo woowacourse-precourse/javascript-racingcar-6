@@ -12,6 +12,7 @@ class App {
     racingGame.startRacing(attemptNumber);
 
     racingGame.announceGameWinners();
+    racingGame.end();
   }
 }
 

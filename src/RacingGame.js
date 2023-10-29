@@ -38,6 +38,10 @@ class RacingGame {
 
     GameUtils.printFinalWinners(winners);
   }
+
+  end() {
+    return this;
+  }
 }
 
 export default RacingGame;
