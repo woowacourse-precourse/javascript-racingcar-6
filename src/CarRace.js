@@ -119,10 +119,6 @@ class CarRace {
     );
 
     const WIN_DISTANCE = CAR_SORT[0].distance;
-    if (WIN_DISTANCE === 0) {
-      //우승자는 없습니다
-      return;
-    }
     const winner = [];
     CAR_SORT.forEach(({ name, distance }) => {
       if (distance === WIN_DISTANCE) winner.push(name);
