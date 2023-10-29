@@ -3,12 +3,10 @@ import { MissionUtils } from '@woowacourse/mission-utils';
 const PrintResults = (user, gameNumber) => {
   const RACING_CAR = new Map();
 
-  for (const CAR of user) {
-    RACING_CAR.set(CAR, '');
-  }
-
   for (let index = 0; index < gameNumber; index += 1) {
     for (const CAR of user) {
+      if (!RACING_CAR.has(CAR)) RACING_CAR.set(CAR, '');
+
       const RANDOM_NUMBER = MissionUtils.Random.pickNumberInRange(0, 9);
 
       if (RANDOM_NUMBER >= 4) {
