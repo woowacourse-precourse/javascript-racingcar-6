@@ -3,17 +3,18 @@ import { Console } from '@woowacourse/mission-utils';
 const checkCarNameLength = (userInputCarNames) => {
   const carNameDict = {};
   const carNames = userInputCarNames.split(',');
-  const carAmount = carNames.length;
 
-  for (let i = 0; i < carAmount; i++) {
-    let checkCarNameLength = carNames[i].length;
+  carNames.forEach((name) => {
+    const checkCarNameLength = name.length;
 
-    if (checkCarNameLength >= 1 && checkCarNameLength <= 5) {
-      carNameDict[carNames[i]] = 0;
+    if (Object.keys(carNameDict).includes(name)) {
+      throw new Error('[ERROR] 이름은 중복될 수 없습니다.');
+    } else if (checkCarNameLength >= 1 && checkCarNameLength <= 5) {
+      carNameDict[name] = 0;
     } else {
       throw new Error('[ERROR] 자동차 이름은 1글자~5글자입니다.');
     }
-  }
+  });
 
   return carNameDict;
 };
