@@ -9,12 +9,16 @@ const InputView = {
   async readCarNames() {
     const answer = await Console.readLineAsync(READ_RACING_CAR_NAMES);
     const answerArray = answer.split(',');
+    this.validatorCarNames(answerArray);
+    return answer;
+  },
 
-    if (answerArray.length === 1) {
+  validatorCarNames(names) {
+    if (names.length === 1) {
       throw new Error(ERROR_MORE_THAN_TWO_CARS);
     }
 
-    answerArray.map(item => {
+    names.map(item => {
       if (item.length === 0) {
         throw new Error(ERROR_MORE_THAN_TWO_CARS);
       }
@@ -23,8 +27,6 @@ const InputView = {
         throw new Error(ERROR_NOT_MORE_THAN_FIVE_CHARACTERS);
       }
     });
-
-    return answer;
   },
 };
 
