@@ -1,5 +1,6 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import App from '../src/App.js';
+import RacingCar from '../src/RacingCar.js';
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -44,7 +45,7 @@ describe('자동차 경주 게임', () => {
     });
   });
 
-  test.each([[['pobi,javaji']], [['pobi,eastjun']]])('이름에 대한 예외 처리', async (inputs) => {
+  test.each([[[',javaji']], [['pobi,eastjun']]])('이름에 대한 예외 처리', async (inputs) => {
     // given
     mockQuestions(inputs);
 
@@ -57,6 +58,7 @@ describe('자동차 경주 게임', () => {
 });
 
 test.each([[['tomas  ,myeon']], [['tom ,   mac']]])('자동차 이름 공백 제거 테스트', async (inputs) => {
+  // given
   mockQuestions(inputs);
 
   // when
@@ -64,4 +66,23 @@ test.each([[['tomas  ,myeon']], [['tom ,   mac']]])('자동차 이름 공백 제
 
   // then
   await expect(app.getCarNamesInput()).resolves.not.toThrow();
+});
+
+test('자동차 객체 생성', () => {
+  // given
+  const carName = 'pobi';
+
+  // when
+  const racingCar = new RacingCar(carName);
+  mockRandoms([4]);
+
+  // then
+
+  expect(racingCar.name).toBe('pobi'); // 레이싱카 이름
+
+  expect(racingCar.distance).toBe(0); // 레이싱카 초기 거리 테스트
+
+  racingCar.carMoveEvaluation();
+
+  expect(racingCar.distance).toBe(1); // 레이싱카 이동 테스트
 });
