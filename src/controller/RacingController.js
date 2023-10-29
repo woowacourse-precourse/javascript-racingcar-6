@@ -1,5 +1,5 @@
 import { FORWARD_THRESHOLD } from "../constants/setting.js";
-import getRandomNumber from "../util/generator.js";
+import generateRandomNumber from "../util/generator.js";
 import OutputView from "../view/OutputView.js";
 
 class RacingController {
@@ -51,7 +51,7 @@ class RacingController {
    * @returns {boolean} 랜덤 숫자가 4 이상이라면 전진
    */
   isForwardRacingCar() {
-    const randomNumber = getRandomNumber();
+    const randomNumber = generateRandomNumber();
 
     return randomNumber >= FORWARD_THRESHOLD;
   }
