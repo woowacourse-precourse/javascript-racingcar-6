@@ -11,7 +11,8 @@ class Print {
       updatedCars.forEach((value, key) => {
         let moveNum = value;
         if (Decision.moveForward()) {
-          updatedCars.set(key, (moveNum += 1));
+          moveNum += 1;
+          updatedCars.set(key, moveNum);
         }
         result.push(`${key} : ${MESSAGE.result.distance.repeat(moveNum)}\n`);
       });
