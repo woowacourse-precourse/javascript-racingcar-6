@@ -49,19 +49,22 @@ class App {
     return pickedNumber >= 4;
   }
 
-  addCarMoveProgressBar(player) {
+  moveCarForward(player) {
     player.trackLocation = player.trackLocation.concat(RACE.PROGRESS_BAR);
   }
 
-  checkWinners() {
+  findWinners() {
     const FARTHEST_TRACK_LOCATION = Math.max(
       ...this.playersData.map(player => player.trackLocation.length),
     );
     this.winners.push(
-      ...this.playersData.filter(
-        player => player.trackLocation.length === FARTHEST_TRACK_LOCATION,
-      ),
+      ...this.playersData
+        .filter(
+          player => player.trackLocation.length === FARTHEST_TRACK_LOCATION,
+        )
+        .map(player => player.playerName),
     );
+    Console.print(RACE.WINNERS + this.winners.join(', '));
   }
 
   startRace(tryNumber) {
@@ -69,29 +72,23 @@ class App {
     for (let i = 0; i < tryNumber; i++) {
       this.proceedRaceTurn();
     }
+    this.findWinners();
   }
 
   proceedRaceTurn() {
     this.playersData.forEach(player => {
       if (this.shouldMoveForward()) {
-        this.addCarMoveProgressBar(player);
+        this.moveCarForward(player);
       }
     });
+    let raceStatus = '';
     this.playersData.forEach(player => {
-      const line = `${player.playerName} : ${player.trackLocation}`;
-      Console.print(line);
+      raceStatus = raceStatus.concat(
+        `${player.playerName} : ${player.trackLocation}\n`,
+      );
     });
+    Console.print(raceStatus);
   }
 }
 
 export default App;
-
-const app = new App();
-app.play();
-
-// 필요한 함수들
-// startRace
-// addCarMoveProgressBar
-// checkWinners
-// printRaceStatus
-// printWinners
