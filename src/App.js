@@ -1,18 +1,31 @@
 import { Console, Random } from '@woowacourse/mission-utils';
-import { PLAYER_INPUT, ERROR_MESSAGES, RACE } from './Logs.js';
+import { PLAYER_INPUT, RACE } from './Logs.js';
+import {
+  isPlayerCarNameValidated,
+  isPlayerTryNumberValidated,
+} from './Validation.js';
 
 class App {
-  async play() {}
+  async play() {
+    const raceEntry = this.getPlayerCarsInput();
+  }
 
   async getPlayerCarsInput() {
-    const ANSWER = await Console.readLineAsync(PLAYER_INPUT.CARS_NAME_PROMPT);
+    const UserInput = await Console.readLineAsync(
+      PLAYER_INPUT.CARS_NAME_PROMPT,
+    );
+    const raceEntry = UserInput.split(',');
 
-    // 유효성 검사
-    return ANSWER.split(',');
+    if (isPlayerCarNameValidated(raceEntry)) {
+      return raceEntry.split(',');
+    }
   }
 }
 
 export default App;
+
+const app = new App();
+app.play();
 
 // 필요한 함수들
 // getPlayerCarsInput
