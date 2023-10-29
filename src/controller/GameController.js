@@ -4,15 +4,15 @@ import CustomError from "../core/CustomError.js";
 import GameModel from "../model/GameModel.js";
 
 import { pickNumberInRange } from "../utils/index.js";
-import { GAME_SETTING } from "../utils/constants.js";
+import { GAME_SETTING, STATE_KEY } from "../utils/constants.js";
 
 const { MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER } = GAME_SETTING;
 
 class GameController {
   constructor() {
-    this.model = null;
-    this.inputView = null;
-    this.outputView = null;
+    this.model = new GameModel();
+    this.inputView = new InputView();
+    this.outputView = new OutputView({ model: this.model });
   }
 
   async start() {
@@ -26,13 +26,10 @@ class GameController {
   }
 
   async init() {
-    this.model = new GameModel();
-    this.inputView = new InputView({ model: this.model });
-
     const { carNames, tryCount } = await this.inputView.inputData();
 
     this.model.initData({ carNames, tryCount });
-    this.outputView = new OutputView({ model: this.model });
+    this.model.subscribe(STATE_KEY.GAME, this.outputView.print.bind(this.outputView));
   }
 
   racing() {
@@ -65,7 +62,17 @@ class GameController {
 
     const maxDistance = Math.max(...cars.map((car) => car.distance));
 
-    const winners = cars.filter((car) => car.distance === maxDistance).map((car) => car.name);
+    const winners = [];
+
+    for (let i = 0; i < cars.length; i++) {
+      const car = cars[i];
+
+      if (car.distance !== maxDistance) {
+        continue;
+      }
+
+      winners.push(car.name);
+    }
 
     this.model.setData({ winners });
   }

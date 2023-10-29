@@ -6,7 +6,6 @@ const { OUTPUT_RESULT, OUTPUT_WINNER } = MESSAGE;
 class OutputView {
   constructor({ model }) {
     this.model = model;
-    this.model.subscribe(STATE_KEY.GAME, this.print.bind(this));
   }
 
   print() {
