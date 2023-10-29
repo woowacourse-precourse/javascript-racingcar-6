@@ -19,7 +19,7 @@ class App {
     this.loopNumber = 0;
   }
 
-  CheckValidName(name) {
+  checkValidName(name) {
     if (name.length === 0 || name.length > 5) {
       CAR_NAME_LENGTH_ERROR();
     }
@@ -34,36 +34,36 @@ class App {
       res.split(",")
     );
     inputCarName.forEach((name) => {
-      this.CheckValidName(name);
+      this.checkValidName(name);
       const newCar = new Car(name);
       this.carNames.push(name);
       this.cars.push(newCar);
     });
   }
 
-  CheckValidType(inputNumber) {
+  checkValidType(inputNumber) {
     if (Number.isNaN(+inputNumber)) {
       LOOP_NUMBER_TYPE_ERROR();
     }
   }
 
-  async GetLoopNumber() {
+  async getLoopNumber() {
     GetLoopNumberMessage();
     const inputNumber = await Console.readLineAsync();
-    this.CheckValidType(inputNumber);
+    this.checkValidType(inputNumber);
     this.loopNumber = inputNumber;
   }
 
-  ProcessRound() {
-    this.carArray.forEach((car) => {
-      car.Move();
+  processRound() {
+    this.cars.forEach((car) => {
+      car.move();
     });
   }
 
-  PrintWinner() {
+  printWinner() {
     let winnerArray = [];
     let maxCount = 0;
-    this.carArray.forEach((car) => {
+    this.cars.forEach((car) => {
       if (car.countMove > maxCount) {
         winnerArray = [car.name];
         maxCount = car.countMove;
@@ -75,14 +75,14 @@ class App {
   }
 
   async play() {
-    await this.GetCar();
-    await this.GetLoopNumber();
+    await this.getCar();
+    await this.getLoopNumber();
     LineBreakMessage();
     for (let loop = 0; loop < this.loopNumber; loop += 1) {
-      this.ProcessRound();
+      this.processRound();
       LineBreakMessage();
     }
-    this.PrintWinner();
+    this.printWinner();
   }
 }
 
