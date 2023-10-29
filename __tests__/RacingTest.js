@@ -33,6 +33,7 @@ describe("자동차 경주 게임", () => {
       "pobi : --",
       "woni : ",
       "john : --",
+      "최종 우승자 : pobi,john",
     ];
     const randoms = [9, 1, 4, 5, 2, 3, 3, 2, 8];
     const logSpy = getLogSpy();

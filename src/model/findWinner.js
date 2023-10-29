@@ -14,7 +14,7 @@ const findWinner = (map) => {
   }
 
   if (keys.length > 1) {
-    return `최종 우승자 : ${keys.join(", ")}`;
+    return `최종 우승자 : ${keys.join(",")}`;
   }
   return `최종 우승자 : ${keys[0]}`;
 };
