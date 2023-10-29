@@ -1,4 +1,4 @@
-import Car from "../src/Models/Car.js";
+import Car from "../../src/Models/Car.js";
 import { Random } from "@woowacourse/mission-utils";
 
 const mockRandoms = (numbers) => {

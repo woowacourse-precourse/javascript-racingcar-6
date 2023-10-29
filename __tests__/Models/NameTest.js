@@ -1,4 +1,4 @@
-import Name from "../src/Models/Name.js";
+import Name from "../../src/Models/Name.js";
 
 describe("Name 기능 테스트", () => {
   test("공백 없는 이름 길이 검증", () => {
