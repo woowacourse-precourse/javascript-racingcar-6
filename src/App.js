@@ -1,12 +1,23 @@
+import Lap from './Lap.js';
 import { Console } from '@woowacourse/mission-utils';
 
 class App {
   constructor() {
     this.entry = [];
     this.lapLength = 0;
+    this.finalRecord = [];
+    this.winner = [];
   }
 
-  async play() {}
+  async play() {
+    await this.inputEntry();
+    await this.inputLapLength();
+    const lap = new Lap(this.entry, this.lapLength);
+    for (let i = 0; i < this.lapLength; i += 1) {
+      lap.printStage();
+    }
+    this.printWinner(lap.record);
+  }
 
   async inputEntry() {
     const inputName = await Console.readLineAsync(this.message('INPUT_NAME'));
@@ -17,6 +28,7 @@ class App {
   async inputLapLength() {
     const inputNum = await Console.readLineAsync(this.message('ASK_LAP'));
     this.lapLength = inputNum;
+    Console.print('\n실행 결과');
   }
 
   message(option) {
@@ -27,6 +39,20 @@ class App {
     };
     return MESSAGE[option];
   }
+
+  printWinner(finalRecord) {
+    finalRecord.forEach((record) => {
+      let countLength = record.lastIndexOf('-') - record.indexOf('-') + 1;
+      let carName = record.split(' ');
+      if (countLength === parseInt(this.lapLength, 10))
+        this.winner.push(carName[0]);
+    });
+    if (this.winner.length === 0) Console.print('최종 우승자 : 없음');
+    else Console.print(`최종 우승자 : ${this.winner.join(', ')}`);
+  }
 }
+
+const app = new App();
+app.play();
 
 export default App;

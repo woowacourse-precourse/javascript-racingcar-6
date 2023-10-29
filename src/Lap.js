@@ -5,6 +5,7 @@ class Lap {
     this.entry = entry;
     this.laplength = laplength;
     this.record = [];
+    this.makeRecord();
   }
 
   makeRecord() {
@@ -14,9 +15,12 @@ class Lap {
   }
 
   printStage() {
-    for (let i = 0; i < this.lablength; i += 1) {
+    for (let i = 0; i < this.entry.length; i += 1) {
       if (Random.pickNumberInRange(0, 9) > 3) this.record[i] += '-';
     }
     Console.print(this.record.join('\n'));
+    Console.print('');
   }
 }
+
+export default Lap;
