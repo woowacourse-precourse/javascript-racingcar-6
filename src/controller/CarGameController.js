@@ -25,7 +25,6 @@ class CarGameController {
     OutputView.printResultMessage();
     const prevLog = new Map();
     this.#gameResult = new GameResult();
-    console.log('total: ', carPosition);
 
     for (let i = 0; i < attempts; i++) {
       this.#carLog = this.#gameResult.getForwardResult(carPosition, prevLog);
