@@ -1,9 +1,16 @@
+import CAR from '../constants/car.js';
 import ERROR from '../constants/error.js';
 import CustomError from '../errors/error.js';
 
 const Validator = {
   isEmptyString(string) {
     return string === ERROR.errorCase.emptyString;
+  },
+
+  isValidCarNameLength(name) {
+    return (
+      name.length >= CAR.name.minLength && name.length <= CAR.name.maxLength
+    );
   },
 
   validateUserInput(name) {
@@ -13,9 +20,11 @@ const Validator = {
   },
 
   validateCarName(carName) {
-    const names = carName.split(',');
+    const isvalidLength = this.isValidCarNameLength(carName);
 
-    names.forEach((name) => this.validateUserInput(name));
+    if (!isvalidLength) {
+      throw CustomError.InputView(ERROR.message.invalidCarNameLength);
+    }
   },
 };
 

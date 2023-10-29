@@ -1,10 +1,9 @@
 import ERROR from '../constants/error.js';
-
-const formatMessage = (message) => `[ERROR] ${message}`;
+import MessageFormat from '../utils/messageFormat.js';
 
 class CustomError extends Error {
   constructor(message, name) {
-    super(formatMessage(message));
+    super(MessageFormat.error(message));
     this.name = name || this.constructor.name;
   }
 
