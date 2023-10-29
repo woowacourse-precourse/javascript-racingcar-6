@@ -5,6 +5,7 @@ const Random = MissionUtils.Random;
 
 class App {
   constructor() {
+    this.carName;
     this.carMoveArray = [];
     this.winnerCarArray = [];
   }
@@ -19,6 +20,7 @@ class App {
       Console.print(error.message);
       throw error;
     }
+    this.carName = userInput.split(",");
     return userInput.split(",");
   }
 
