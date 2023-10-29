@@ -15,6 +15,10 @@ class OutputView {
     OutputView.#printBlankLine();
   }
 
+  static printWinners(cars) {
+    Console.print(`최종 우승자 : ${cars.join(", ")}`);
+  }
+
   static #getCarDistanceStrings(carDistanceRecord) {
     const result = [];
 

@@ -47,7 +47,7 @@ class Race {
 
   #AnnounceWinners() {
     const winners = Race.#getWinners(this.#carDistanceRecord);
-    throw new Error("구현 마저해야 함");
+    OutputView.printWinners(winners);
   }
 
   #registerCars(cars) {
