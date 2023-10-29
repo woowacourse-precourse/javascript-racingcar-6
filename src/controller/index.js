@@ -19,6 +19,7 @@ class RacingCarController {
       OutputView.printProgress(this.#model.getCarData());
     }
     const finalWinner = this.#model.getFinalWinner();
+    OutputView.printFinalWinner(finalWinner);
   }
 }
 
