@@ -19,3 +19,5 @@ class Car {
     return this.#step;
   }
 }
+
+export default Car;
