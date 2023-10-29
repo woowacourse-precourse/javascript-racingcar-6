@@ -1,3 +1,4 @@
+import { ERROR_MESSAGE } from '../src/constants/messages';
 import Validator from '../src/utils/Validator';
 
 describe('Validator Test', () => {
@@ -6,14 +7,14 @@ describe('Validator Test', () => {
     (input) => {
       expect(() => {
         Validator.isValidateCarName(input);
-      }).toThrow('[ERROR] 자동차 이름이 올바르지 않습니다.');
+      }).toThrow(ERROR_MESSAGE.carName);
     },
   );
 
   test.each(['', ' ', '1f'])('숫자가 아닌 값은 에러를 던집니다.', (input) => {
     expect(() => {
       Validator.isValidateAttemps(input);
-    }).toThrow('[ERROR] 숫자만 입력해주세요.');
+    }).toThrow(ERROR_MESSAGE.attemps);
   });
 
   test('시도 횟수 타입은 숫자이다.', () => {

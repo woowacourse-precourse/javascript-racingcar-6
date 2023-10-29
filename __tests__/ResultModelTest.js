@@ -1,4 +1,5 @@
 import ResultModel from '../src/Model/ResultModel';
+import { NEW_LINE } from '../src/constants/constants';
 
 describe('ResultModel Test', () => {
   let resultModel;
@@ -24,6 +25,8 @@ describe('ResultModel Test', () => {
 
   test('모든 실행결과를 출력할 수 있는 템플릿을 만든다.', () => {
     resultModel.addAttempsResult(cars);
-    expect(resultModel.makeTotalResult()).toContain('pobi : -\nukgi : \n');
+    expect(resultModel.makeTotalResult()).toContain(
+      `pobi : -${NEW_LINE}ukgi : ${NEW_LINE}`,
+    );
   });
 });
