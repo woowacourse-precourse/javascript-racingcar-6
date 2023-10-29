@@ -1,8 +1,9 @@
 import { Console, Random } from '@woowacourse/mission-utils';
-import Result from './result.js';
+import Result from './Result.js';
+
 class Play {
   constructor() {}
-  전진기능(carList) {
+  racing(carList) {
     for (let i = 0; i < carList.length; i++) {
       const number = Random.pickNumberInRange(0, 9);
       if (number >= 4) {
@@ -13,24 +14,26 @@ class Play {
     console.log('\r');
   }
 
-  시도하기기능(시도횟수, carList) {
+  raceStart(numberOfTimes, carList) {
+    const inputNumber = !Number.isNaN(numberOfTimes);
+    const inputString = isNaN(numberOfTimes);
     Console.print('\n실행결과');
-    if (!isNaN(시도횟수)) {
-      for (let i = 1; i <= 시도횟수; i++) {
-        this.전진기능(carList);
+    if (inputNumber) {
+      for (let i = 1; i <= numberOfTimes; i++) {
+        this.racing(carList);
       }
     }
-    if (isNaN(시도횟수)) {
-      throw new Error('[ERROR] 숫자입력하셈');
+    if (inputString) {
+      throw new Error('[ERROR] 숫자를 입력하세요.');
     }
   }
 
-  async 횟수입력(carList) {
+  async enterNumberOfTimes(carList) {
     Console.print('시도할 횟수는 몇 회인가요?');
-    const 시도횟수 = await Console.readLineAsync('');
-    this.시도하기기능(시도횟수, carList);
+    const numberOfTimes = await Console.readLineAsync('');
+    this.raceStart(numberOfTimes, carList);
     const result = new Result();
-    result.최종결과(carList);
+    result.FinalResult(carList);
   }
 }
 
