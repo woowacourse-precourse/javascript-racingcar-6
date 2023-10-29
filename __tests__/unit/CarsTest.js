@@ -3,7 +3,8 @@ import Cars from "../../src/Cars";
 const INPUTS = ['pobi', 'navi', 'gori'];
 
 describe('자동차 객체는', () => {
-  const cars = new Cars(INPUTS);
+  const cars = new Cars();
+  cars.initializeCarNames(INPUTS);
 
   test('생성된 이름의 갯수만큼의 크기를 지니는가?', () => {
     const carsNameSize = cars.getNames.length

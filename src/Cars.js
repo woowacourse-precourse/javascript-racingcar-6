@@ -1,12 +1,8 @@
 class Cars {
   #INFO;
 
-  constructor(names) {
-    this.#INFO = Cars.initialize(names);
-  }
-
-  static initialize(names) {
-    return new Map(names.map((name) => {
+  initializeCarNames(names) {
+    this.#INFO = new Map(names.map((name) => {
       const distance = '';
       return [
         name, {
