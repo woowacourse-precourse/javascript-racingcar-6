@@ -2,7 +2,7 @@ import InputView from './view/InputView.js';
 import Car from './model/Car.js';
 import RandomNumber from './model/RandomNumber.js';
 
-import ErrorHandler from './utils/ErrorHandler.js';
+import handleError from './utils/handleError.js';
 import { validateCarName, validateTryNumber } from './Validator.js';
 
 class App {
@@ -26,11 +26,11 @@ class App {
 
   validate(input) {
     if (Array.isArray(input)) {
-      ErrorHandler(validateCarName, input);
+      handleError(validateCarName, input);
       return;
     }
 
-    ErrorHandler(validateTryNumber, input);
+    handleError(validateTryNumber, input);
   }
 
   createCars(cars) {

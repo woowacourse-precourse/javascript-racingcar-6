@@ -1,4 +1,4 @@
-const ErrorHandler = (validate, input) => {
+const handleError = (validate, input) => {
   try {
     validate(input);
   } catch (error) {
@@ -6,4 +6,4 @@ const ErrorHandler = (validate, input) => {
   }
 };
 
-export default ErrorHandler;
+export default handleError;
