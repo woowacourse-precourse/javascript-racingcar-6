@@ -5,7 +5,7 @@ import ResultModel from './model/ResultModel.js';
 class App {
   async play() {
     this.racingGame = new RacingGame(new CarModel(), new ResultModel());
-    await this.racingGame.start();
+    await this.racingGame.run();
   }
 }
 

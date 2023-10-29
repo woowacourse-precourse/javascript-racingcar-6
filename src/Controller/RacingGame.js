@@ -18,7 +18,7 @@ export default class RacingGame {
     this.#resultModel = resultModel;
   }
 
-  async start() {
+  async run() {
     await this.#makeCar();
     const answer = await Input.readAttemps();
     if (isValidateAttemps(answer)) {
