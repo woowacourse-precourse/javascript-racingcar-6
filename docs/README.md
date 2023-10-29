@@ -39,17 +39,45 @@
          6) 가장 멀리 전진한 자동차 이름 출력
              (a) 객체배열에 저장된 정보 확인후 우승 자동차 이름 출력
 
-# 실제 구현한 메소드
+# 실제 구현한 메소드 및 동작 구조
 
-    - 차후 추가 예정
+1. 10/29 일
 
-# 동작 구조
+   1. makeCarList()
+      : car모델 생성 및 car모델 배열 선언
 
-    - 차후 추가 예정
+      (a) enterValue()
+      : 사용자로부터 자동차이름 입력받음
+
+      (b) validateCarNames
+      : 이름의 글자수를 확인 및 검증
+
+   2. enterValue()
+      : 사용자에게 시도할 횟수 입력받음
+
+   3. checkForward()
+      : 각 시도별, 자동차별 전진여부 판단 및 저장. 각 배열에 저장된 자동차 객체 각각 Random을 사용하여 전진 여부 확인 및 저장
+
+   4. goFoward()
+      : 전진여부를 판단하여 car 모델 내 전진 기록 저장.
+
+      (a) printLocation()
+      : 전진 기록을 바탕으로 모든 car에 대해 기록 출력
+
+   5. printResult()
+      : 모든 car에 대해서 최고기록 여부 조사 및 출력
+
+      (a) CheckWinner()
+      : 최고 기록을 가진 car 판단
 
 # 수행 결과
 
-    - 차후 추가 예정
+npm test를 통한 확인 결과
+
+Test Suites: 2passed, 2 total
+Test: 7passed, 7 total
+Snapshots: 0 total
+Time: 1.399 s, estimated 2 s
 
 # 2주차 중점적으로 생각한 부분
 
