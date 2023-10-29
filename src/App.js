@@ -12,6 +12,7 @@ class App {
 
   async play() {
     const raceEntry = this.getPlayerCarsInput();
+    this.createPlayerData(raceEntry);
   }
 
   async getPlayerCarsInput() {
@@ -29,6 +30,15 @@ class App {
     raceEntry.forEach(playerName => {
       this.playerData.push({ playerName, trackLocation: '' });
     });
+  }
+
+  async getPlayerTryNumberInput() {
+    const userInput = await Console.readLineAsync(
+      PLAYER_INPUT.TRY_NUMBER_PROMPT,
+    );
+    if (isPlayerTryNumberValidated(userInput)) {
+      return userInput;
+    }
   }
 }
 
