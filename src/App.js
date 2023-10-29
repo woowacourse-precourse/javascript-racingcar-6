@@ -43,3 +43,9 @@ async function moveCar(carObjects) {
   }
   return carObjects;
 }
+function printCarPosition(carObjects) {
+  for (const carObject of carObjects) {
+    Console.print(`${carObject.name} : ${'-'.repeat(carObject.position)}`);
+  }
+  Console.print('');
+}
