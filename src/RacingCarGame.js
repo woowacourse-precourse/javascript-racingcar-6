@@ -18,6 +18,12 @@ class RacingCarGame {
     });
 
     const attempts = user.getAttempts();
+    this.playGame(attempts);
+  }
+
+  playGame(totalAttempts) {
+    const carMovementDecision = new CarMovementDecision();
+    carMovementDecision.getRandomNumber();
   }
 }
 
