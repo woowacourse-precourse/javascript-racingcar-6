@@ -8,6 +8,7 @@ import {
 class App {
   constructor() {
     this.playersData = [];
+    this.winners = [];
   }
 
   async play() {
@@ -48,6 +49,17 @@ class App {
 
   addCarMoveProgressBar(playerData) {
     playerData.trackLocation.concat(RACE.PROGRESS_BAR);
+  }
+
+  checkWinners() {
+    const FARTHEST_TRACK_LOCATION = Math.max(
+      ...this.playersData.map(player => player.trackLocation.length),
+    );
+    this.winners.push(
+      ...this.playersData.filter(
+        player => player.trackLocation.length === FARTHEST_TRACK_LOCATION,
+      ),
+    );
   }
 }
 
