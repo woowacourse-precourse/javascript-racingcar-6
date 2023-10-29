@@ -11,4 +11,11 @@ describe('이름 입력 처리 테스트', () => {
     expect(readSpy).toHaveBeenCalled();
     readSpy.mockClear();
   });
+
+  test('입력받은 이름을 쉼표(,)를 기준으로 구분한다', async () => {
+    const inputs = 'pobi,woni,jun';
+    const outputs = await ReceptionDesk.createNameList(inputs);
+    const expected = ['pobi', 'woni', 'jun'];
+    expect(outputs).toStrictEqual(expected);
+  });
 });
