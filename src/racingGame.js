@@ -43,4 +43,19 @@ export async function playRacing() {
     });
     MissionUtils.Console.print("\n");
   }
+  return cars;
+}
+
+export async function winner() {
+  const gameResult = await playRacing();
+  const bestDistance = Math.max(
+    ...gameResult.map((result) => result.carDistance.length)
+  );
+  const winners = gameResult.filter(
+    (result) => result.carDistance.length === bestDistance
+  );
+  MissionUtils.Console.print(
+    "최종 우승자 : " + winners.map((result) => result.carName).join(", ")
+  );
+  return;
 }

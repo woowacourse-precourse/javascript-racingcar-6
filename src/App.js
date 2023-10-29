@@ -1,9 +1,10 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import { playRacing } from "./racingGame.js";
+import { playRacing, winner } from "./racingGame.js";
 
 class App {
   async start() {
-    await playRacing();
+    // await playRacing();
+    await winner();
   }
 
   async play() {
