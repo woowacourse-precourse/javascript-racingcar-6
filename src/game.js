@@ -1,6 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
 import Car from './car.js';
-
+import Play from './play.js';
 class Game {
   constructor() {}
   자리수검사(carNames) {
@@ -12,7 +12,8 @@ class Game {
       // 같은이름 검사기능
       return new Car(e);
     });
-    //시도횟수입력으로 이동
+    const play = new Play();
+    play.횟수입력(carList);
   }
 
   콤마점검(carNames) {
