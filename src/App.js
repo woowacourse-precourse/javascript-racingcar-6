@@ -1,6 +1,6 @@
-import Lap from './Lap.js';
-import validate from './validation.js';
-import printResult from './printWinner.js';
+import Lap from './game/Lap.js';
+import validate from './game/validation.js';
+import printResult from './game/printWinner.js';
 import MESSAGE from './constants.js';
 import { Console } from '@woowacourse/mission-utils';
 
@@ -21,7 +21,7 @@ class App {
     // 차수별 전진 내용 출력
     Array.from({ length: this.lapLength }, () => lap.printStage());
     // 우승자 출력
-    printResult(lap.record, this.lapLength, this.winner);
+    printResult(lap.record, this.lapLength);
   }
 
   async inputEntry() {

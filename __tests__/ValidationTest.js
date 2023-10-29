@@ -1,4 +1,4 @@
-import validate from '../src/validation.js';
+import validate from '../src/game/validation.js';
 
 describe('유효성 검사 테스트', () => {
   describe('이름 입력 테스트 확인', () => {
