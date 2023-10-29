@@ -1,6 +1,3 @@
-import { MissionUtils } from '@woowacourse/mission-utils';
-// import { GAME, ERROR } from './constants.js';
-
 class RacingCarGame {
   constructor(name) {
     this.name = name;
