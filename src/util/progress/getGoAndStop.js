@@ -12,7 +12,7 @@ export default async function getGoAndStop(racerCount, gameCount, recentGoAndSto
 
     resultGoAndStop.push(newGoAndStop);
 
-    if (resultGoAndStop.length <= gameCount) {
+    if (resultGoAndStop.length < gameCount) {
       return getGoAndStop(racerCount, gameCount, resultGoAndStop);
     }
 
