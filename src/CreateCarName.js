@@ -1,4 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
+import strings from './constants.js';
+import RacingCar from './RacingCar.js';
 class CreateCarName {
   constructor() {
     this.carNameArr = [];
@@ -12,6 +14,8 @@ class CreateCarName {
     });
 
     Console.print(this.carNameArr.join(','));
+
+    this.playNumber();
   }
 
   wrongName(inputNameElement) {
@@ -28,6 +32,13 @@ class CreateCarName {
     }
 
     return this.carNameArr.push(inputNameElement);
+  }
+
+  // 시도할 횟수 입력 메서드
+  async playNumber() {
+    const inputNumber = await Console.readLineAsync(strings.ASK_NUMBER);
+    const race = new RacingCar();
+    race.playRace(inputNumber);
   }
 }
 export default CreateCarName;
