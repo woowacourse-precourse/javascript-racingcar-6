@@ -5,7 +5,7 @@ const { MIN_CAR_NAME_LENGTH, MAX_CAR_NAME_LENGTH, MIN_TRY_COUNT } = GAME_SETTING
 const { DUPLICATED_CAR_NAME, INVALID_CAR_NAME, INVALID_TRY_COUNT, EMPTY_INPUT } = ERROR_MESSAGE;
 
 class InputValidate {
-  checkCarNames(carNames) {
+  static checkCarNames(carNames) {
     throwError(EMPTY_INPUT, carNames.length === 0);
 
     for (let i = 0; i < carNames.length; i++) {
@@ -18,7 +18,7 @@ class InputValidate {
     throwError(DUPLICATED_CAR_NAME, new Set(carNames).size !== carNames.length);
   }
 
-  checkTryCount(tryCount) {
+  static checkTryCount(tryCount) {
     throwError(INVALID_TRY_COUNT, isNaN(tryCount));
     throwError(INVALID_TRY_COUNT, tryCount < MIN_TRY_COUNT);
   }
