@@ -7,7 +7,8 @@ class App {
     );
     const userAttempts = await this.attempts("시도할 횟수는 몇 회인가요?");
     const raceStart = this.race(player, userAttempts);
-    console.log(this.winner(raceStart));
+    const playWinner = winner(raceStart);
+    MissionUtils.Console.print(`최종 우승자 : ${playWinner}`);
   }
 
   async playerRegistration(answer) {
@@ -33,7 +34,6 @@ class App {
 
     MissionUtils.Console.print("실행 결과");
     for (let i = 1; i <= userAttempts; i++) {
-      // console.log(`실행횟수 ${i}번`);
       this.calculate(player, results);
     }
     return results;
