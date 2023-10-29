@@ -1,4 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
+import { checkRoundValid } from "./inputValidCheck.js";
 
 class View {
   async getCarName() {
@@ -12,6 +13,7 @@ class View {
     const ROUND = await MissionUtils.Console.readLineAsync(
       "시도할 횟수는 몇 회인가요?\n"
     );
+    checkRoundValid(ROUND);
     return ROUND;
   }
 }
