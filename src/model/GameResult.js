@@ -12,8 +12,20 @@ class GameResult {
           prevLog.set(carName, prevLog.get(carName) || 0);
       }
     });
-    console.log(`forward: `, prevLog);
     return prevLog;
+  }
+
+  getWinner(carLog) {
+    const values = Array.from(carLog.values());
+    const maxValue = Math.max(...values);
+    const winners = [];
+
+    carLog.forEach((value, carName) => {
+      if (value === maxValue) {
+        winners.push(carName);
+      }
+    });
+    return winners.join(', ');
   }
 }
 

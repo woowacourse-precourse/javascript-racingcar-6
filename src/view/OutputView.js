@@ -10,6 +10,10 @@ const OutputView = {
       Console.print(`${carName} : ` + '-'.repeat(log));
     });
   },
+
+  printWinner(winners) {
+    Console.print(`최종 우승자 : ${winners}`);
+  },
 };
 
 export default OutputView;

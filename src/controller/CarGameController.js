@@ -32,6 +32,12 @@ class CarGameController {
       OutputView.printGameProcess(this.#carLog);
       Console.print('\n');
     }
+    this.determineWinnerStage(this.#carLog);
+  }
+
+  determineWinnerStage(carLog) {
+    const winners = this.#gameResult.getWinner(carLog);
+    OutputView.printWinner(winners);
   }
 }
 
