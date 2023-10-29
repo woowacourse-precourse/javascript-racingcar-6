@@ -1,23 +1,26 @@
 import { ERROR_MESSAGE } from '../src/constants/messages';
-import Validator from '../src/utils/Validator';
+import { isValidateCarName, isValidateAttemps } from '../src/utils/validator';
 
 describe('Validator Test', () => {
   test.each(['', ' ', 'pobi,', 'pobi, ', 'pobi,javajigi'])(
     '자동차 이름이 형식에 맞지 않으면 에러를 던집니다.',
     (input) => {
       expect(() => {
-        Validator.isValidateCarName(input);
+        isValidateCarName(input);
       }).toThrow(ERROR_MESSAGE.carName);
     },
   );
 
-  test.each(['', ' ', '1f'])('숫자가 아닌 값은 에러를 던집니다.', (input) => {
-    expect(() => {
-      Validator.isValidateAttemps(input);
-    }).toThrow(ERROR_MESSAGE.attemps);
-  });
+  test.each(['', ' ', '1f'])(
+    '시도횟수가 숫자가 아니면 에러를 던집니다.',
+    (input) => {
+      expect(() => {
+        isValidateAttemps(input);
+      }).toThrow(ERROR_MESSAGE.attemps);
+    },
+  );
 
-  test('시도 횟수 타입은 숫자이다.', () => {
-    expect(Validator.isValidateAttemps('1')).toBeTruthy();
+  test('시도횟수의 타입은 Number입니다.', () => {
+    expect(isValidateAttemps('1')).toBeTruthy();
   });
 });
