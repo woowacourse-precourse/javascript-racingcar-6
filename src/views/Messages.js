@@ -4,6 +4,7 @@ class ErrorMessage {
   static DUPLICATE_NAME = "[ERROR] 이름은 중복되지 않아야 합니다.";
   static INVALID_INPUT = "[ERROR] 입력은 숫자여야 합니다.";
 }
+
 class PromptMessage {
   static ENTER_CARNAME =
     "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n";

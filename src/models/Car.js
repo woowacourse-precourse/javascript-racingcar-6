@@ -1,5 +1,5 @@
+import { ErrorMessage, PromptMessage } from "../views/Messages.js";s
 import { Console } from "@woowacourse/mission-utils";
-import { ErrorMessage, PromptMessage } from "../views/Messages.js";
 
 class Car {
   constructor() {

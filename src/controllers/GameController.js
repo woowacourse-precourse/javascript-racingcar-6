@@ -1,5 +1,5 @@
-import { Random, Console } from "@woowacourse/mission-utils";
 import { PromptMessage } from "../views/Messages.js";
+import { Random, Console } from "@woowacourse/mission-utils";
 
 class GameController {
   getRandomValue() {
@@ -11,6 +11,8 @@ class GameController {
     let randomValue = this.getRandomValue();
     if (randomValue >= 4) {
       carModels[car].forwardCountArr.push("-");
+    } else {
+      carModels[car].forwardCountArr.push();
     }
     return carModels[car].forwardCountArr.join("");
   }
@@ -32,7 +34,7 @@ class GameController {
   }
 
   printWinner(carModels, carModelsArr) {
-    const totalCountArr = []; //각 자동차의 전진 횟수
+    const totalCountArr = []; //모든 자동차들의 전진 횟수
     const maxCountIndexArr = []; //totalCountArr요소들 중 최댓값의 인덱스들
 
     for (const car in carModels) {

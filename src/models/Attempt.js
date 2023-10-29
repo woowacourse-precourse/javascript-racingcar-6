@@ -1,5 +1,5 @@
-import { Console } from "@woowacourse/mission-utils";
 import { ErrorMessage, PromptMessage } from "../views/Messages.js";
+import { Console } from "@woowacourse/mission-utils";
 
 class Attempt {
   async getRaceAttempt() {

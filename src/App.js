@@ -8,8 +8,9 @@ class App {
     this.car = new Car();
     this.attempt = new Attempt();
   }
+
   async play() {
-    this.car.getCarModelsArr(await this.car.getCarModels());
+    this.car.validateCarModels(await this.car.getCarModelsArr());
     await this.attempt.getRaceAttempt();
 
     let carModels = this.car.carModels;
@@ -20,7 +21,5 @@ class App {
     this.controller.printWinner(carModels, carModelsArr);
   }
 }
-const app = new App();
-app.play();
 
 export default App;
