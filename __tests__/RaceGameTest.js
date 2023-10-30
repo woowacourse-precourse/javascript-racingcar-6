@@ -1,7 +1,7 @@
 import { Random, Console } from '@woowacourse/mission-utils';
 import Car from '../src/domain/Car';
 import RaceGame from '../src/domain/RaceGame.js';
-import { GAME_RULE_NUMBER } from '../src/constant/Constants.js';
+import { GAME_RULE_NUMBER, ERROR_MESSAGES } from '../src/constant/Constants.js';
 import {
   printProgressProcess,
   printWinnerList,
@@ -11,6 +11,14 @@ import {
   getTryNum,
 } from '../src/util/Utils.js';
 import App from '../src/App.js';
+import {
+  checkCarNameEmpty,
+  checkCarNameLen,
+  checkCarNameSpace,
+  checkCarNameType,
+  checkTryNumType,
+  checkTryNumZero,
+} from '../src/util/Validation';
 
 describe('게임 기능 테스트', () => {
   describe('Car Class 테스트', () => {
@@ -59,10 +67,50 @@ describe('유틸 기능 테스트', () => {
     });
 
     test('시도 횟수 입력', async () => {
-      const expectedTryNum = '5';
+      const expectedTryNum = '15';
       Console.readLineAsync.mockResolvedValue(expectedTryNum);
       const result = await getTryNum();
       expect(result).toBe(expectedTryNum);
     });
   });
+  describe('입력 값 검증 테스트', () => {
+    describe('checkCarNameEmpty 테스트', () => {
+      test('빈 문자열인 경우 에러 발생', () => {
+        const carName = '';
+        expect(() => checkCarNameEmpty(carName)).toThrowError(
+          ERROR_MESSAGES.errorNameEmpty,
+        );
+      });
+      test('빈 문자열이 아니면 에러 발생하지 않음', () => {
+        const carName = 'chan';
+        expect(() => checkCarNameEmpty(carName)).not.toThrow();
+      });
+    });
+
+    describe('checkCarNameSpace 테스트', () => {
+      test('공백이 있으면 에러 반환', () => {
+        const carName = 'chan, bo';
+        expect(() => checkCarNameSpace(carName)).toThrowError(
+          ERROR_MESSAGES.errorNameSpace,
+        );
+      });
+      test('공백이 없으면 에러 발생하지 않음', () => {
+        const carName = 'chan,bo';
+        expect(() => checkCarNameSpace(carName)).not.toThrow();
+      });
+    });
+  });
 });
+
+/* test('', () => {
+    const carName = '';
+    expect(() => checkCarNameEmpty(carName)).toThrowError(
+      ERROR_MESSAGES.errorNameEmpty,
+    );
+  });
+  test('', () => {
+    const carName = '';
+    expect(() => checkCarNameEmpty(carName)).not.toThrow();
+  }); */
+
+console.log('aa aa');
