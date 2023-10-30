@@ -8,4 +8,11 @@ export default class Validation {
       }
     });
   }
+
+  static tryCountInput(tryCountInput) {
+    const NUMBER_RANGE_REGEXP = /^\d+$/;
+    if (!NUMBER_RANGE_REGEXP.test(tryCountInput)) {
+      throw new Error(Message.TRY_COUNT_INPUT_ERROR);
+    }
+  }
 }
