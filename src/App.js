@@ -40,6 +40,21 @@ class App {
     }
   }
 
+  async getWinner(racingCars) {
+    const moves = [];
+    racingCars.map((car) => moves.push(car.getMoveCount()));
+    const maxScore = Math.max(...moves);
+    const winners = [];
+
+    racingCars.map((car) => {
+      if (car.getMoveCount() === maxScore) {
+        winners.push(car.getName());
+      }
+    });
+
+    MissionUtils.Console.print(`최종 우승자 : ${winners.join(", ")}`);
+  }
+
   async play() {
     const carNames = await this.inputName();
 
@@ -48,6 +63,8 @@ class App {
     const racingCars = await this.makeRacingCar(carNames);
 
     await this.runRace(racingCars, racingRound);
+
+    await this.getWinner(racingCars);
   }
 }
 
