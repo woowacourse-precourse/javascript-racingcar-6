@@ -18,11 +18,11 @@ class Lap {
   }
 
   recordCheck() {
-    this.goFoward(this.#record);
+    this.goForward(this.#record);
     Lap.printStage(this.#record);
   }
 
-  goFoward(record) {
+  goForward(record) {
     // 전진 여부 확인 로직
     const recordBoard = record;
     for (let i = 0; i < this.entry.length; i += 1) {

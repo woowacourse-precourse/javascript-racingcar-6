@@ -36,7 +36,7 @@
 
     - `goFoward` 메서드와 `printStage` 메서드를 외부에서 호출할 때 사용 
 
-  - `goFoward`[+]
+  - `goForward`[+]
 
     - 참가한 자동차들의 전진 가능 여부 판단 로직
 
