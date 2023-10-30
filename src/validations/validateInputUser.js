@@ -2,7 +2,8 @@ import {
   getNameLengthErrorMessage,
   getNameBlankErrorMessage,
   getNotIntegerErrorMessage,
-} from '../constants/errorMessages';
+  getWhiteSpacesErrorMessage,
+} from '../constants/errorMessages.js';
 
 const removeWhiteSpaces = (string) => string.split(' ').join('');
 
@@ -18,10 +19,27 @@ const isNameLengthLessThanOrEqualN = (n) => (name) => {
   return true;
 };
 
+const isNoWhiteSpaces = (name) => {
+  if (removeWhiteSpaces(name).length !== name.length) {
+    throw new Error(getWhiteSpacesErrorMessage());
+  }
+
+  return true;
+};
+
 const validateInputCarNames = (carNames) => {
+  const carNamesArray = carNames.split(',');
   const isNameLengthLessThanOrEqualFive = isNameLengthLessThanOrEqualN(5);
 
-  return carNames.split(',').every(isNameLengthLessThanOrEqualFive);
+  if (!carNamesArray.every(isNameLengthLessThanOrEqualFive)) {
+    return false;
+  }
+
+  if (!carNamesArray.every(isNoWhiteSpaces)) {
+    return false;
+  }
+
+  return true;
 };
 
 const validateInputAttemptNumber = (n) => {
