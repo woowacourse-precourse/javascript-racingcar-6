@@ -1,6 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-const NAME = 0;
-const DISTANCE = 1;
+import {NAME, DISTANCE} from "../constants/scoreStorage.js"
 
 class Racing {
 
@@ -13,6 +12,8 @@ class Racing {
       this.#eachRacing(scoreStorage);  // 각 차수별 레이싱 진행
       this.#printScore(scoreStorage) // 누적거리 출력
     }
+
+    return scoreStorage;
   }
 
   #makeScoreStorage(carNameArray) {
