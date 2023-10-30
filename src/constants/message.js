@@ -3,3 +3,9 @@ export const INPUT_MESSAGE = Object.freeze({
 });
 
 export const OUTPUT_MESSAGE = {};
+
+export const ERROR_MESSAGE = Object.freeze({
+  LOWERCASE: '[ERROR] 차 이름은 소문자영어로만 이뤄져야합니다.',
+  LENFIVE: '[ERROR] 차 이름은 5글자 이하여야만 합니다.',
+  UNIQUE: '[ERROR] 차 이름은 중복될 수 없습니다.'
+})
