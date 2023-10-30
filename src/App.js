@@ -5,7 +5,8 @@ class App {
     try {
        const CARS = await this.participatingCar()
        const NUMBEROFCARS = await this.numberOfMoves()
-       this.startRacing(CARS, NUMBEROFCARS) 
+       const result = this.startRacing(CARS, NUMBEROFCARS) 
+       Console.print(result)
     } catch (err) {
       throw new Error(err);
     }
@@ -84,7 +85,7 @@ class App {
       })
     }
 
-    Console.print(this.winnerSelect(participatingCar, moveOfCars))
+    return this.winnerSelect(participatingCar, moveOfCars)
   }
   
 }
