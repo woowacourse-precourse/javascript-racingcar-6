@@ -160,3 +160,33 @@ describe('findMaxScore 테스트', () => {
     jest.restoreAllMocks();
   });
 })
+
+describe('findWinnerName 테스트', () => {
+  test('우승자 배열 확인', () => {
+    const RaceResults = [
+      { 'car1': '-', 'car2': '-', 'car3': '-' },
+      { '1': '', '2': '-', '3': '' },
+      { '나는': '--', '지금': '', '배고파': '' },
+      { '나는': '', '지금': '', '배고파': '' },
+      { 'car1': '----', 'car2': '-', 'car3': '-' }
+    ];
+
+    const targetScore = [1, 1, 2, 0, 4];
+
+    const expectResults = [
+      ['car1', 'car2', 'car3'],
+      ['2'],
+      ['나는'],
+      ['나는', '지금', '배고파'],
+      ['car1']
+    ];
+
+    RaceResults.forEach((_, index) => {
+      const currentWinnerNameArray = findWinnerName(RaceResults[index], targetScore[index]);
+
+      expect(currentWinnerNameArray).toEqual(expectResults[index]);
+    });
+
+    jest.restoreAllMocks();
+  });
+})
