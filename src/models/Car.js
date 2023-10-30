@@ -16,25 +16,26 @@ class Car {
   }
 
   validateCarModels(carModelsArr) {
-    carModelsArr = this.carModelsArr;
-    carModelsArr.forEach((e) => {
+    let remainCarArr = carModelsArr;
+    remainCarArr = this.carModelsArr;
+    remainCarArr.forEach((e) => {
       if (e.length > 5) {
         throw new Error(ErrorMessage.INVALID_LENGTH);
       }
     });
 
-    carModelsArr.forEach((e) => {
+    remainCarArr.forEach((e) => {
       if (e === '') {
         throw new Error(ErrorMessage.SPACE_NAME);
       }
     });
 
-    const set = new Set(carModelsArr);
-    if (carModelsArr.length !== set.size) {
+    const set = new Set(remainCarArr);
+    if (remainCarArr.length !== set.size) {
       throw new Error(ErrorMessage.DUPLICATE_NAME);
     }
 
-    carModelsArr.forEach((car) => {
+    remainCarArr.forEach((car) => {
       this.carModels[car] = {
         forwardCountArr: [],
       };
