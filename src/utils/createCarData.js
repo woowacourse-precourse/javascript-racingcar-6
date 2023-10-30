@@ -1,9 +1,8 @@
-export const createCarData = (carName) => {
-  const carNameList = carName.split(',');
+export const createCarData = (carNameList) => {
   const carData = [];
 
-  carNameList.forEach((car) => {
-    carData.push({ name: car, number: 0, result: '' });
+  carNameList.forEach((carName) => {
+    carData.push({ name: carName, number: 0, result: '' });
   });
 
   return carData;

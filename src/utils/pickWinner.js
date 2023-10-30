@@ -1,7 +1,9 @@
-export const pickWinner = (car) => {
-  const maxResultLength = Math.max(...car.map((car) => car.result.length));
-  const winners = car
-    .filter((car) => car.result.length === maxResultLength)
-    .map((car) => car.name);
+export const pickWinner = (carData) => {
+  const maxResultLength = Math.max(
+    ...carData.map((data) => data.result.length),
+  );
+  const winners = carData
+    .filter((data) => data.result.length === maxResultLength)
+    .map((winner) => winner.name);
   return winners;
 };

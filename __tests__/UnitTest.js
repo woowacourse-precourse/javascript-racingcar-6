@@ -106,8 +106,9 @@ describe('유틸리티 함수', () => {
 
   test('자동차 객체 생성', () => {
     const carName = 'pobi,woni,juru';
+    const carNameList = carName.split(',');
 
-    expect(createCarData(carName)).toEqual([
+    expect(createCarData(carNameList)).toEqual([
       {
         name: 'pobi',
         number: 0,
