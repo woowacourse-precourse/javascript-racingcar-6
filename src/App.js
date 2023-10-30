@@ -3,6 +3,9 @@ import { Console, Random } from '@woowacourse/mission-utils';
 class App {
   async play() {
 
+  constructor() {
+    this.racingCar = new Map();
+  }
   }
 
   async Usercar_input() {
@@ -11,13 +14,13 @@ class App {
     
     const Car = User_input.split(',');
 
-    const carMap = new Map();
-
     for (let i in Car) {
-      carMap.set(Car[i], "");
+      this.racingCar.set(Car[i], "");
     }
 
-    return carMap;
+    Console.print(this.racingCar);
+
+    return this.racingcar;
   }
   
   async NumberOfAttempts() {
