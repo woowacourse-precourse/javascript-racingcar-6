@@ -1,6 +1,6 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import { checkNames, checkRounds } from './modules/checkUserInput.js';
 import { startRound } from './modules/startRound.js';
+import { REGEX } from './modules/constants.js';
 
 class App {
   async play() {
@@ -30,7 +30,9 @@ class App {
     const namesInput = await MissionUtils.Console.readLineAsync(
       '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n'
     );
-    checkNames(namesInput);
+    if (!REGEX.names.test(namesInput)) {
+      throw new Error('[ERROR] 잘못된 Names 입력입니다.');
+    }
     const namesArray = namesInput.split(',');
     return namesArray;
   }
@@ -39,7 +41,9 @@ class App {
     const roundsInput = await MissionUtils.Console.readLineAsync(
       '시도할 횟수는 몇 회인가요?\n'
     );
-    checkRounds(roundsInput);
+    if (!REGEX.rounds.test(roundsInput)) {
+      throw new Error('[ERROR] 잘못된 Rounds 입력입니다.');
+    }
     return parseInt(roundsInput);
   }
 
