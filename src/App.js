@@ -3,6 +3,7 @@ import inputTryRacing from "../functions/InputTryRacing.js";
 import carAdvance from "../functions/CarAdvance.js";
 import { Console } from "@woowacourse/mission-utils";
 import printCarAdvanceState from "../functions/PrintCarAdvanceState.js";
+import printWinner from "../functions/PrintWinner.js";
 
 class App {
   constructor() {
@@ -52,15 +53,13 @@ class App {
 
     Console.print('\n실행 결과');
 
-    for(let tryCount = 0; tryCount<this.tryRacing; tryCount++) {
+    for(let tryCount = 0; tryCount < this.tryRacing; tryCount++) {
       this.carAdvanceState = await carAdvance(this.carAdvanceState);  
       printCarAdvanceState(this.carName, this.carAdvanceState);
     }
 
+    await printWinner(this.carName, this.carAdvanceState);
   }
 }
-
-const myApp = new App();
-myApp.play();
 
 export default App;

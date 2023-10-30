@@ -6,6 +6,7 @@ async function inputTryRacing(){
     if(isNaN(tryRacing)){
         throw new Error('[ERROR] 숫자가 아닙니다.');
     }
+    
     return tryRacing;
 }
 
