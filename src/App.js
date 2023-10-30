@@ -1,5 +1,9 @@
+import { playerInput } from "./view/View.js";
+
 class App {
-  async play() {}
+  async play() {
+    playerInput();
+  }
 }
 
 export default App;
