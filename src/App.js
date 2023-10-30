@@ -16,29 +16,28 @@ class App {
       const tryNum = await this.getTryNum();
       this.result(carName, tryNum);
     } finally {
-      this.rl.close(); // readline 인터페이스를 닫아줍니다.
+      this.rl.close(); // 게임 재실행을 위해 readline 인터페이스를 닫아줌
     }
   }
   // 차 이름 받기 (유저 입력 받는 것 앞에는 비동기가 있어야 하나?)
   async getCarName() {
     return new Promise((resolve, reject) => {
       this.rl.question(
+        //이름이 통과할 때도 있고 막힐 때도 있다.
         "경주할 자동차 이름을 입력하세요.(이름은 쉽표(,) 기준으로 구분)",
         function (userInput) {
           const carName = userInput.split(",");
           for (let i = 0; i < carName.length; i++) {
             if (carName[i].length > 5) {
               throw new Error("[ERROR] 이름이 잘못된 형식입니다.");
-            } else {
-              resolve(carName);
-              return carName;
             }
           }
+          resolve(carName);
+          return carName;
         }
       );
     });
   }
-
   //시도 횟수 받기
   async getTryNum() {
     return new Promise((resolve, reject) => {
@@ -87,5 +86,3 @@ const app = new App();
 app.play();
 
 export default App;
-
-//왜 게임 재실행 하려고 하면 안 되는 거지?
