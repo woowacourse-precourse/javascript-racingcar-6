@@ -7,7 +7,6 @@ class App {
       '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n'
     );
     const carNameArray = carNames.split(',');
-
     const carObjectArray = carNameArray.map((name) => new RacingCar(name));
 
     const chanceInput =
@@ -19,8 +18,17 @@ class App {
       carObjectArray.forEach((car) => {
         car.moveOrStay();
       });
+
+      printResult(carObjectArray);
     }
   }
+}
+
+function printResult(carArray) {
+  carArray.forEach((car) => {
+    Console.print(`${car.name} : ${'-'.repeat(car.moveCount)}`);
+  });
+  Console.print('');
 }
 
 export default App;
