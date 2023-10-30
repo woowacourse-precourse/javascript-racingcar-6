@@ -1,5 +1,4 @@
 /* eslint-disable import/extensions */
-import { Console } from '@woowacourse/mission-utils';
 import Settings from './Settings.js';
 
 class App {
