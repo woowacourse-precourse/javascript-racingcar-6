@@ -5,6 +5,7 @@ import createRandomNumber from '../utils/createRandomNumber.js';
 import MESSAGES from '../constants/messages.js';
 import throwError from '../utils/throwError.js';
 import RaceResult from '../models/RaceResult.js';
+import checkNumber from '../utils/checkNumber.js';
 
 class RaceController {
   #maxRound = 0;
@@ -76,12 +77,20 @@ class RaceController {
   static checkCarNameUserInput(carList) {
     if (RaceController.checkSameCarName(carList)) {
       throwError('중복된 자동차 이름이 있습니다');
-    }
-    if (RaceController.checkCarNameLength(carList)) {
+    } else if (RaceController.checkCarNameLength(carList)) {
       throwError(`자동차의 이름이 ${CONFIG.MAX_CAR_NAME_LENGTH} 보다 깁니다`);
-    }
-    if (RaceController.checkCarNameVoid(carList)) {
+    } else if (RaceController.checkCarNameVoid(carList)) {
       throwError(`이름이 존재하지 않는 차가 있습니다`);
+    }
+  }
+
+  static checkUserInputTryNumber(userInput) {
+    if (!checkNumber.checkNumberType(userInput)) {
+      throwError(
+        '입력값이 잘못된 형식입니다. 정수로 이루어진 숫자만 입력해주세요'
+      );
+    } else if (checkNumber.checkGreaterThan(userInput, 0)) {
+      throwError('1 이상의 값을 입력해주세요');
     }
   }
 }
