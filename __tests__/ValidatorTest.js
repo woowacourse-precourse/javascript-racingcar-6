@@ -14,8 +14,12 @@ describe('ValidatorTest', () => {
     expect(() => Validator.validateCarNames(['abcdef'])).toThrow(
       ErrorMessage.MAX_LENGTH,
     );
+    expect(() => Validator.validateCarNames(['abc', 'abcdef'])).toThrow(
+      ErrorMessage.MAX_LENGTH,
+    );
   });
   test('자동차 이름이 5자 이하일 경우 에러 발생하지 않음', () => {
     expect(() => Validator.validateCarNames(['abcde'])).not.toThrow();
+    expect(() => Validator.validateCarNames(['tom', 'jerry'])).not.toThrow();
   });
 });
