@@ -17,13 +17,17 @@ async function startRacing() {
 		count += 1;
 	}
 }
+function isGoForward(name, countObject) {
+	const randomNum = createRandomNum();
+	if (validateForMove(randomNum)) {
+		countObject[name] += 1;
+	}
+	Console.print(`${name} :${'-'.repeat(countObject[name])}`);
+}
 
 async function carMove(carNames, countObject) {
 	carNames.map((name, index) => {
-		const randomNum = createRandomNum();
-		if (validateForMove(randomNum)) {
-			countObject[name] += 1;
-		}
-		Console.print(`${name} :${'-'.repeat(countObject[name])}`);
+		isGoForward(name, countObject);
 	});
 }
+startRacing();
