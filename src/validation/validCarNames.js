@@ -1,4 +1,4 @@
-import ERROR_MESSAGE, { MAX_NAME_LENGTH, MIN_NAME_LENGTH } from '../constants/constants';
+import ERROR_MESSAGE, { MAX_NAME_LENGTH, MIN_NAME_LENGTH } from '../constants/constants.js';
 
 const isWrongCarName = (names) => {
   const wrongCarName = names.some(
