@@ -1,3 +1,6 @@
+- style(tryCounter): modify code according to code convetsion
+- docs: revise test function list
+- test: add carmove number input and validate test
 - style(carCreater): modify code according to code conventsion
 - test: add carname input and split test
 - docs: add function test list
