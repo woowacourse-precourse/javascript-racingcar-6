@@ -13,8 +13,7 @@
     "jest": "29.6.0"
   },
   "scripts": {
-    "test": "jest --detectOpenHandles",
-    "test-raceround": "jest --watch --coverage ./__tests__/unit/RaceRoundTest.js"
+    "test": "jest --detectOpenHandles"
   },
   "keywords": [],
   "author": "woowacourse",

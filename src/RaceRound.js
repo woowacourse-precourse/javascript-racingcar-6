@@ -1,13 +1,20 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import Cars from './Cars.js';
+import Message from './Message.js';
+import Interface from './Interface.js';
 
 class RaceRound extends Cars {
-  constructor(names) {
+  #TOTAL_ROUND;
+
+  constructor(names, totalRound) {
     super();
     this.initializeCarNames(names);
+    this.#TOTAL_ROUND = totalRound;
   }
 
   proceedRound() {
+    Interface.printMessage('');
+    Interface.printMessage('실행 결과');
     let totalRound = this.getTotalRound;
     const names = this.getAllNames;
     while (totalRound > 0) {
@@ -17,12 +24,11 @@ class RaceRound extends Cars {
           this.movingForwardByName(name);
         }
       });
+      Message.roundResults(this.getCarsInfo);
       totalRound -= 1;
     }
-  }
 
-  get getTotalRound() {
-    return this.getAllNames.length;
+    this.announceGameResult();
   }
 
   announceGameResult() {
@@ -40,7 +46,12 @@ class RaceRound extends Cars {
       }
     });
 
+    Message.announceWinners(winners);
     return winners;
+  }
+
+  get getTotalRound() {
+    return this.#TOTAL_ROUND;
   }
 
   static createRandomNum() {

@@ -1,4 +1,4 @@
-import Cars from "../../src/Cars";
+import Cars from '../../src/Cars.js';
 
 const INPUTS = ['pobi', 'navi', 'gori'];
 
@@ -7,12 +7,11 @@ describe('자동차 객체는', () => {
   cars.initializeCarNames(INPUTS);
 
   test('생성된 이름의 갯수만큼의 크기를 지니는가?', () => {
-    const carsNameSize = cars.getNames.length
-    expect(carsNameSize).toBe(INPUTS.length);
+    expect(cars.getAllNames.length).toBe(INPUTS.length);
   });
 
   test('거리를 키로 갖는 오브젝트를 지니고 있는가?', () => {
-    cars.getNames.forEach((name) => {
+    cars.getAllNames.forEach((name) => {
       const namedCar = cars.getDistanceByName(name);
       expect(namedCar.distance).toBeDefined();
     });

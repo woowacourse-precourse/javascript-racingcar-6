@@ -20,6 +20,10 @@ class Cars {
     return [...this.#INFO.entries()];
   }
 
+  get getCarsInfo() {
+    return this.#INFO;
+  }
+
   getDistanceByName(name) {
     return this.#INFO.get(name);
   }

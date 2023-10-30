@@ -1,5 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import RaceRound from "../../src/RaceRound";
+import RaceRound from '../../src/RaceRound';
 
 const mockRandoms = (numbers) => {
   RaceRound.createRandomNum = jest.fn();
@@ -12,28 +12,29 @@ const getRandomSpy = () => {
   return logSpy;
 };
 
-describe('경기가 진행되는 라운드는', () => {
-  test('0~9 사이의 랜덤한 숫자를 생성하는가?', () => {
+describe('경기가 진행되는 라운드', () => {
+  test('는 0~9 사이의 랜덤한 숫자를 생성하는가?', () => {
     const randomSpy = getRandomSpy();
     RaceRound.createRandomNum();
 
     expect(randomSpy).toBeCalledTimes(1);
   });
 
-  test('자동차의 이름 수 만큼 라운드가 진행되는가?', () => {
+  test('는 자동차의 이름 수 만큼 라운드가 진행되는가?', () => {
     const names = ['pobi', 'nori', 'goni'];
-    const raceRound = new RaceRound(names);
+    const totalRound = 3;
+    const raceRound = new RaceRound(names, totalRound);
     const randomSpy = getRandomSpy();
-    const totalRound = names.length ** 2;
+    const expectRound = totalRound * names.length;
     raceRound.proceedRound();
 
-    expect(randomSpy).toBeCalledTimes(totalRound);
+    expect(randomSpy).toBeCalledTimes(expectRound);
   });
 
   test('모든 자동차에게 랜덤한 숫자를 제공하는가?', () => {
     const names = ['pobi'];
     const MOVING_FORWARD = 4;
-    const raceRound = new RaceRound(names);
+    const raceRound = new RaceRound(names, 1);
     const movingForwardSpy = jest.spyOn(raceRound, 'movingForwardByName');
 
     mockRandoms([MOVING_FORWARD]);
@@ -47,7 +48,7 @@ describe('경기가 진행되는 라운드는', () => {
     const MOVING_FORWARD = 4;
     const STOP = 0;
     const randoms = [MOVING_FORWARD, STOP];
-    const raceRound = new RaceRound(names);
+    const raceRound = new RaceRound(names, 2);
 
     mockRandoms([...randoms]);
 
