@@ -1,5 +1,6 @@
-import { Console, Random } from "@woowacourse/mission-utils";
+import { Console } from "@woowacourse/mission-utils";
 import { ERROR_MESSAGE, GAME_MESSAGE } from "./constants/index.js";
+import Car from "./Car.js";
 
 class RacingcarGame {
   validate(cars) {
@@ -19,34 +20,21 @@ class RacingcarGame {
       if (isNaN(tryCount)) {
         throw new Error(ERROR_MESSAGE.IS_NUMBER);
       }
+      Console.print(GAME_MESSAGE.RESULT);
 
-      this.moveForward(carsArray, tryCount);
+      for (let i = 0; i < tryCount; i++) {
+        carsArray.map((car) => {
+          const racingCar = new Car(car);
+          racingCar.moveForward(tryCount);
+        });
+        Console.print("\n");
+      }
 
       // return cars;
     } catch (error) {
       throw error;
     }
   }
-
-  moveForward(carsArray, tryCount) {
-    this.tryCount = tryCount;
-    this.carsArray = carsArray;
-    const randomValue = Random.pickNumberInRange(0, 9)
-    let countForward = []
-    Console.print(GAME_MESSAGE.RESULT);
-
-    for (let i = 1; i <= this.tryCount; i++) {
-      this.carsArray.map((car) => {
-        if (randomValue > 4) {
-          countForward.push('-')
-        }
-        Console.print(`${car} : ${countForward.join("")}`);
-      });
-      // countForward = []
-      Console.print("\n");
-    }
-  }
-
 }
 
 export default RacingcarGame;
