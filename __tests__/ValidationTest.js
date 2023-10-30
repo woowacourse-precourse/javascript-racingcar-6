@@ -22,7 +22,7 @@ describe('유효성 검사 테스트', () => {
       expect(() => validate.carName(nameArray)).toThrowError('[ERROR] 문자열을 입력해주세요.');
     });
 
-    test('자동차 수는 9대 이상을 넘어가지 않는다.', () => {
+    test('자동차 수는 한자리수 이상을 초과하지 않는다.', () => {
       const nameArray = ['감','사','의','마','음','을','담','아','테스트를','작성','합니다','.'];
       expect(() => validate.carName(nameArray)).toThrowError('[ERROR] 자동차는 9대까지 등록가능합니다.');
     });
