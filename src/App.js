@@ -19,7 +19,9 @@ class App {
             const CAR_NAMES_INPUT = await this.getCarNames();
             const RACE_TIME_INPUT = await this.getRaceTimes();
             const CARS = CREATE_CARS(CAR_NAMES_INPUT);
+
             RACE_RUN(CARS, RACE_TIME_INPUT);
+
             const WINNERS = FIND_WINNERS(CARS);
             PRINT_WINNERS(WINNERS);
         } catch (ERROR) {
