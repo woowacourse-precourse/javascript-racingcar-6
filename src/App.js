@@ -3,9 +3,21 @@ import { checkNames, checkRounds } from './modules/checkUserInput.js';
 
 class App {
   async play() {
-    await this.getCarNames();
-    await this.getRounds();
+    const namesArray = await this.getCarNames();
+    const rounds = await this.getRounds();
+
     MissionUtils.Console.print('\n실행 결과');
+
+    // 점수를 저장할 객체
+    const scoreObject = {};
+    namesArray.forEach((carName, index) => {
+      scoreObject[`${carName}`] = 0;
+    });
+
+    for (let i = 0; i < rounds; i++) {
+      this.startRound(namesArray, scoreObject);
+    }
+    MissionUtils.Console.print(scoreObject);
   }
 
   async getCarNames() {
@@ -23,6 +35,16 @@ class App {
     );
     checkRounds(roundsInput);
     return parseInt(roundsInput);
+  }
+
+  startRound(namesArray, scoreObject) {
+    // 랜덤으로 점수 + 1
+    namesArray.forEach(carName => {
+      const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
+      if (randomNumber >= 4) {
+        scoreObject[`${carName}`] += 1;
+      }
+    });
   }
 }
 
