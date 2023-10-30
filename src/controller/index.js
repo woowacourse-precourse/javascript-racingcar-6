@@ -1,8 +1,9 @@
+import SYSTEM from '../constants/System.js';
 import InputView from '../view/InputView.js';
 
 class RacingController {
   async startGame() {
-    const racingVehicleName = await InputView.readRacingVehicleName('자동차');
+    const racingVehicleName = await InputView.readRacingVehicleName(SYSTEM.car);
   }
 }
 
