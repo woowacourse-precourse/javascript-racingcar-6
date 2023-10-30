@@ -1,23 +1,28 @@
 import { Console } from "@woowacourse/mission-utils";
 import { MESSAGE } from "./message.js";
-import { realNumber, try_racing } from "./computer.js";
+import { player, player_array, lengthError, regexError } from "./player.js"
 
 
 class App {
+  constructor() {
+    this.player = null;
+    this.player_array = null;
+  }
   async play() {
-    Console.print(MESSAGE.GAME_START)
+    await Console.print(MESSAGE.GAME_START);
 
-    const player = await Console.readLineAsync(MESSAGE.RACING_CAR_NAME);
+    this.player = player;
+    this.player_array = player_array;
     
-    const player_array = player.split(',');
-    player_array.forEach(function (value, index) {
-    if (player_array[index].length > 5) throw new Error(MESSAGE.ERROR);
-    });
+    if (lengthError.some((valid) => !valid)) {
+    throw new Error(MESSAGE.ERROR);
+    }
 
-    const REGEX = /[`~!@#$%^&*()_|+\-=?;:'".<>\{\}\[\]\\\/ ]/gim;
-    if (player.includes(',') !== true &&
-    REGEX.test(player) !== true &&
-    player_array.length <= 1) {throw new Error(MESSAGE.ERROR)};  
+    try {regexError();} 
+    catch (error) {
+    throw new Error(MESSAGE.ERROR);
+    }
+
 
     const try_number = await Console.readLineAsync(MESSAGE.TRY_NUMBER);
     console.log(typeof(try_number));
@@ -40,6 +45,6 @@ Console.print(' ');
   
 }
 
-// const app = new App(); 
-// app.play();
-export default App;
+const app = new App(); 
+app.play();
+// export default App;
