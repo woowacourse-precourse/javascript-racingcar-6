@@ -32,8 +32,8 @@ class AppController {
 
   displayResult(cars) {
     cars.forEach((car) => {
-      const { name } = car;
-      const count = MESSAGE.MOVE_SYMBOL.repeat(car.moveCount);
+      const name = car.getName();
+      const count = MESSAGE.MOVE_SYMBOL.repeat(car.getMoveCount());
       OutputView.printMessage(`${name} : ${count}`);
     });
   }

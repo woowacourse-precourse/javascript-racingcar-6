@@ -27,14 +27,14 @@ class RacingApp {
   }
 
   getMaxCount() {
-    const counts = this.cars.map((car) => car.moveCount);
+    const counts = this.cars.map((car) => car.getMoveCount());
     return Math.max(...counts);
   }
 
   getWinner(maxCount) {
     const winner = this.cars
-      .filter((car) => car.moveCount === maxCount)
-      .map((car) => car.name);
+      .filter((car) => car.getMoveCount() === maxCount)
+      .map((car) => car.getName());
     return winner;
   }
 }
