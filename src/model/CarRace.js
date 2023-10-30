@@ -1,3 +1,4 @@
+import { validCarName, validtryCount } from '../utils/validateInput';
 import Car from './Car';
 
 class CarRace {
@@ -12,7 +13,7 @@ class CarRace {
   }
 
   makeCarList(carNames) {
-    // 유효성 검사
+    validCarName(carNames);
     const nameFormatting = names => names.replace(/(\s*)/g, '').split(',');
     this.carNames = nameFormatting(carNames);
     this.carNames.forEach(name => {
@@ -22,7 +23,7 @@ class CarRace {
   }
 
   getRace() {
-    // 유효성 검사
+    validtryCount(this.tryCount);
     this.tryCount = Number(this.tryCount);
     for (let count = 0; count < this.tryCount; count += 1) {
       const round = this.getRaceRound();

@@ -17,7 +17,9 @@ class RaceController {
         this.carRace.makeCarList(carNames);
         this.insertTryCount();
       } catch (error) {
-        Console.print(error);
+        Console.print(
+          '[ERROR] 유효하지 않은 자동차 이름입니다. 다시 입력해주세요.',
+        );
         this.insertCarNames();
       }
     });
@@ -34,7 +36,9 @@ class RaceController {
           .getResult();
         Console.print(result);
       } catch (error) {
-        Console.print(error);
+        Console.print(
+          '[ERROR] 유효하지 않은 시도 횟수입니다. 다시 입력해주세요.',
+        );
         this.insertTryCount();
       }
     });
