@@ -1,74 +1,36 @@
 import { Console } from '@woowacourse/mission-utils';
-import Car from './Car.js';
+import { InGameMessages } from './Constants.js';
+import Input from './Input.js';
+import CarSet from './CarSet.js';
 
 class App {
-  #carArray;
-
-  #winnerCar;
+  #carSet;
 
   #attemptLeft;
 
-  constructor() {
-    this.#carArray = [];
-    this.#winnerCar = [];
-    this.#attemptLeft = 0;
-  }
-
   async play() {
-    await this.readCar();
-    await this.readMaxAttempt();
-    Console.print('\n실행 결과');
-    this.race();
-    this.findWinner();
+    await this.getInputs();
+    this.runGame();
     this.printWinner();
   }
 
-  async readCar() {
-    const input = await Console.readLineAsync(
-      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
-    );
-    const names = input.split(',');
-    names.map((carName) => {
-      this.checkName(carName);
-      this.#carArray.push(new Car(carName));
-    });
+  async getInputs() {
+    const carString = await Input.readCarString();
+    this.#carSet = new CarSet(carString);
+    this.#attemptLeft = await Input.readAttemptString();
   }
 
-  checkName(name) {
-    if (name.length > 5)
-      throw new Error('[ERROR] 입력된 이름이 5자 이상입니다.');
-  }
-
-  async readMaxAttempt() {
-    const input = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
-    this.#attemptLeft = parseInt(input, 10);
-  }
-
-  race() {
+  runGame() {
+    Console.print(InGameMessages.PRINT_RESULT);
     while (this.#attemptLeft > 0) {
       this.#attemptLeft -= 1;
-      this.#carArray.map((car) => {
-        car.tryMove();
-        car.printPosition();
-      });
-      Console.print('');
+      this.#carSet.race();
     }
   }
 
-  findWinner() {
-    let max = 0;
-    this.#carArray.map((car) => {
-      const pos = car.getPosition();
-      if (max < pos) {
-        this.#winnerCar = [car.getName()];
-        max = pos;
-      } else if (max === pos) this.#winnerCar.push(car.getName());
-    });
-  }
-
   printWinner() {
-    const winners = this.#winnerCar.join(', ');
-    Console.print(`최종 우승자 : ${winners}`);
+    const winners = this.#carSet.findWinners().join(', ');
+    Console.print(`${InGameMessages.PRINT_WINNER}${winners}`);
   }
 }
 
