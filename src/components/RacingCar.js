@@ -3,7 +3,7 @@ import { CreateNumber } from "./CreateNumber.js";
 import AppConstants from "../constants/AppConstants.js";
 import Messages from "../constants/Messages.js";
 
-class RacingCar {
+export class RacingCar {
   constructor(inputNameArray, inputNumber) {
     this.inputNameArray = inputNameArray;
     this.inputNumber = inputNumber;
@@ -35,5 +35,3 @@ class RacingCar {
     return randomNumber >= AppConstants.FORWARD_CONDITION;
   }
 }
-
-export default RacingCar;

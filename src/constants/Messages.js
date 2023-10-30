@@ -4,6 +4,11 @@ const Messages = Object.freeze({
   OUTPUT: "\n실행결과",
   WINNER: "최종 우승자 : ",
 
-  ERROR: {},
+  ERROR: {
+    INVALID_NAME_NULL: "[ERROR] 자동차 이름을 입력해주세요",
+    INVALID_NAME_NOT_SPACE: "[ERROR] 자동차 이름엔 띄어쓰기가 들어갈 수 없습니다.",
+    INVALID_NAME_LENGTH_LIMIT: "[ERROR] 이름은 5자 이하로만 입력해주세요",
+    INVALID_NUMBER_INTEGER: "[ERROR] 횟수는 1이상의 정수만 가능합니다.",
+  },
 });
 export default Messages;
