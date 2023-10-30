@@ -38,7 +38,6 @@ export default class RacingGame {
     this.cars.forEach((car) => {
       car.printStatus();
     });
-    console.log('\n');
   }
   getWinners() {
     let winners = [];
@@ -62,10 +61,12 @@ export default class RacingGame {
   async play() {
     await this.readCarNames();
     await this.readGameCount();
+    console.log('');
     console.log('실행 결과');
     for (let i = 0; i < this.gameCount; i++) {
       await this.playOneTurn();
       await this.printRacingStatus();
+      console.log('');
     }
     this.printWinner();
   }
