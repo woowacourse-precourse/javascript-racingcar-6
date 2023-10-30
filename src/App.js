@@ -120,6 +120,9 @@ class App {
   }
 
   async play() {
+    await this.intro();
+    this.main();
+    this.end();
   }
 }
 
