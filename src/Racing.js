@@ -3,12 +3,12 @@ import { getCarNamesList, getPlayCount } from './Input.js';
 import { validateForMove } from './Validation.js';
 import { createRandomNum } from './Number.js';
 
-function isGoForward(name, carNameObj) {
+async function isGoForward(name, carNameObj) {
 	const randomNum = createRandomNum();
 	if (validateForMove(randomNum)) {
 		carNameObj[name] += 1;
 	}
-	Console.print(`${name} :${'-'.repeat(carNameObj[name])}`);
+	Console.print(`${name} : ${'-'.repeat(carNameObj[name])}`);
 }
 
 async function carMove(carNames, carNameObj) {

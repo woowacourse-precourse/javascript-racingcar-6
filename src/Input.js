@@ -14,5 +14,6 @@ export async function getCarNamesList() {
 export async function getPlayCount() {
 	const playCount = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
 	validatePlayCount(playCount);
+	Console.print('');
 	return Number(playCount);
 }

@@ -2,7 +2,7 @@ import { startRacing } from './Racing.js';
 
 class App {
 	async play() {
-		startRacing();
+		await startRacing();
 	}
 }
 export default App;
