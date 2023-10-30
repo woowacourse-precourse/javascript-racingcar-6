@@ -24,9 +24,9 @@ export const checkRandomNumber = async (randomNumber) => {
  */
 export const checkParticipants = async (participants) => {
   const english = /^[a-zA-Z]*$/;
-
   for (let name of participants) {
-    if (!english.test(name)) throw new Error(ERROR_MESSAGE.ERROR_NAME_CONFIGURATION);
+    if (name.length !== name.trim().length) throw new Error(ERROR_MESSAGE.ERROR_NAME_HAVE_GAP);
     if (name.length > 5 || name.length === 0) throw new Error(ERROR_MESSAGE.ERROR_NAME_LENGTH);
+    if (!english.test(name)) throw new Error(ERROR_MESSAGE.ERROR_NAME_CONFIGURATION);
   }
 };

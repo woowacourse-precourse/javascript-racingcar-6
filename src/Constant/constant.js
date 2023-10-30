@@ -11,6 +11,7 @@ export const ERROR_MESSAGE = {
   ERROR_LESS_THAN_ZERO: "[ERROR] 0보다 큰 값을 입력해주세요.",
   ERROR_NAME_CONFIGURATION: "[ERROR] 참가자 이름이 영어가 아닙니다.",
   ERROR_NAME_LENGTH: "[ERROR] 참가자 이름은 1~5글자로 작성해주세요.",
+  ERROR_NAME_HAVE_GAP: "[ERROR] 이름에 공백이 있습니다."
 };
 
 export const NUMBER = {

@@ -29,9 +29,7 @@ const changeDistance = async (participants, index) => {
 
   const name = participants[index];
   if (randomNumber >= NUMBER.STANDARD) {
-    participantsDistance[name] = participantsDistance[name]
-    ? [participantsDistance[name][0] + '-', participantsDistance[name][1] + 1]
-    : ['-', 1];
+    participantsDistance[name] = participantsDistance[name] ? [participantsDistance[name][0] + '-', participantsDistance[name][1] + 1] : ['-', 1];
   } else {
     participantsDistance[name] = participantsDistance[name] ? [...participantsDistance[name]] : ['', 0];
   }
