@@ -1,7 +1,7 @@
-import { Console, Random } from '@woowacourse/mission-utils';
+import { Random } from '@woowacourse/mission-utils';
 import Car from './Car.js';
 import View from './View.js';
-import { Sign, Value } from './constants/constants.js';
+import { VALUE } from './constants/constants.js';
 
 class RacingCar {
   #carList;
@@ -20,7 +20,7 @@ class RacingCar {
 
   async setCarList() {
     const carArr = await this.#view.inputCarNames();
-    this.#carList = carArr.map((car) => new Car(car, Value.INITIAL_DISTANCE));
+    this.#carList = carArr.map((car) => new Car(car, VALUE.INITIAL_DISTANCE));
   }
 
   async getRepeatTime() {
@@ -39,10 +39,10 @@ class RacingCar {
   determineMoveByRandom() {
     this.#carList.forEach((car) => {
       const randNum = Random.pickNumberInRange(
-        Value.MIN_NUMBER,
-        Value.MAX_NUMBER,
+        VALUE.MIN_NUMBER,
+        VALUE.MAX_NUMBER,
       );
-      if (randNum >= Value.NEXT_MOVE_CONDITION) {
+      if (randNum >= VALUE.NEXT_MOVE_CONDITION) {
         car.moveForward();
       }
     });

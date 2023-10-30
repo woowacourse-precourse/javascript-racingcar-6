@@ -1,27 +1,27 @@
 import { Console } from '@woowacourse/mission-utils';
 import { checkValidCarsName, checkValidNumber } from './Validation.js';
-import { Message, Sign } from './constants/constants.js';
+import { MESSAGE, SIGN } from './constants/constants.js';
 
 class View {
   async inputCarNames() {
-    const input = await Console.readLineAsync(Message.NAME_INPUT);
-    const inputList = input.split(Sign.DECIMAL);
+    const input = await Console.readLineAsync(MESSAGE.NAME_INPUT);
+    const inputList = input.split(SIGN.DECIMAL);
     checkValidCarsName(inputList);
     return inputList;
   }
 
   async inputRepeatNumber() {
-    const input = await Console.readLineAsync(Message.NUMBER_INPUT);
+    const input = await Console.readLineAsync(MESSAGE.NUMBER_INPUT);
     checkValidNumber(input);
     return Number(input);
   }
 
   printCarResult(carName, distance) {
-    Console.print(Message.RESULT_DISTANCE(carName,distance));
+    Console.print(MESSAGE.RESULT_DISTANCE(carName, distance));
   }
 
   printWinners(winnerList) {
-    Console.print(Message.RESULT_WINNER(winnerList));
+    Console.print(MESSAGE.RESULT_WINNER(winnerList));
   }
 }
 
