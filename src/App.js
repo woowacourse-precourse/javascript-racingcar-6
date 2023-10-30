@@ -47,6 +47,7 @@ class App {
   async startRace() {
     for (let i=0; i<this.rounds; i++) {
       this.moveCars();
+      this.printRaceResult();
     }
   }
 
@@ -56,6 +57,12 @@ class App {
       if (randomNumber >= 4) {
         car.move();
       }
+    });
+  }
+
+  printRaceResult() {
+    this.cars.forEach(car => {
+      MissionUtils.Console.print(`${car.name} : ${"-".repeat(car.position)}`);
     });
   }
 }
