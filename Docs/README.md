@@ -1,6 +1,7 @@
 # 📋 구현 기능 리스트
 
-<img src="https://github.com/cho-hyeonjin/javascript-racingcar-6/assets/78816754/594966dc-f30e-44cc-ad32-6c48f365f691" width="80%">
+<img src="https://github.com/cho-hyeonjin/javascript-racingcar-6/assets/78816754/594966dc-f30e-44cc-ad32-6c48f365f691" >
+<img src="https://github.com/cho-hyeonjin/javascript-racingcar-6/assets/78816754/39008773-f2e2-4496-8d20-22d9b959a2e7" >
 
 ## 👩🏻‍💻 User
 

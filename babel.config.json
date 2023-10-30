@@ -1,4 +1,0 @@
-{
-  "presets": ["@babel/preset-env"],
-  "parser": "@babel/eslint-parser"
-}
