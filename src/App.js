@@ -4,6 +4,7 @@ export default class App {
   constructor() {
     this.cars = [];
     this.totalRound = "";
+    this.winner = [];
   }
 
   async play() {
@@ -11,6 +12,8 @@ export default class App {
     await this.getTotalRound();
     Console.print("실행 결과");
     this.raceStart(this.cars, this.totalRound);
+    this.findWinners(this.cars, this.winner);
+    this.printWinners(this.winner);
   }
 
   async getCarsName() {
@@ -41,10 +44,26 @@ export default class App {
     }
   }
   printRoundResult(cars) {
-    Console.print(" ");
     for (const car of cars) {
-      Console.print(`${car.name} : ${"-".repeat(car.position)}`);
+      Console.print(`\n${car.name} : ${"-".repeat(car.position)}`);
     }
+  }
+  findWinners(cars, winner) {
+    let max_position = 0;
+    for (const car of cars) {
+      if (car.position > max_position) {
+        max_position = car.position;
+      }
+    }
+    for (const car of cars) {
+      if (car.position === max_position) {
+        winner.push(car.name);
+      }
+    }
+  }
+  printWinners(winners) {
+    const winnerNumbers = winners.map((_, index) => index + 1).join(", ");
+    Console.print(`\n최종 우승자 : ${winnerNumbers}`);
   }
 }
 
