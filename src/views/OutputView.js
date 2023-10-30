@@ -15,6 +15,10 @@ const OutputView = {
   printLine() {
     return Console.print('');
   },
+
+  printWinners(winners) {
+    return Console.print(OUTPUT_MESSAGE.prinitWinners(winners));
+  },
 };
 
 export default OutputView;

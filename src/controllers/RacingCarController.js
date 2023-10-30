@@ -10,9 +10,12 @@ class RacingCarController {
 
   #moveCount;
 
+  #winners;
+
   constructor() {
     this.#cars = [];
     this.#moveCount = 0;
+    this.#winners = [];
   }
 
   async startGame() {
@@ -29,6 +32,9 @@ class RacingCarController {
     for (let count = 0; count < this.#moveCount; count += 1) {
       this.moveCars();
     }
+
+    this.calcWinners();
+    OutputView.printWinners(this.#winners);
   }
 
   makeCars(names) {
@@ -58,6 +64,21 @@ class RacingCarController {
       OutputView.printCarPosition(car);
     });
     OutputView.printLine();
+  }
+
+  calcWinners() {
+    let maxPosition = 0;
+
+    this.#cars.forEach(car => {
+      if (car.position === maxPosition) {
+        this.#winners.push(car.name);
+      }
+      if (car.position > maxPosition) {
+        this.#winners = [];
+        this.#winners.push(car.name);
+        maxPosition = car.position;
+      }
+    });
   }
 }
 

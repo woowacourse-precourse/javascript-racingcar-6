@@ -12,4 +12,7 @@ export const OUTPUT_MESSAGE = Object.freeze({
   printCarPosition(name, position) {
     return `${name} : ${'-'.repeat(position)}`;
   },
+  prinitWinners(winners) {
+    return `최종 우승자 : ${winners.join(', ')}`;
+  },
 });
