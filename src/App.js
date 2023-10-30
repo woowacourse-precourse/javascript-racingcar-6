@@ -1,4 +1,10 @@
 import * as MissionUtils from "@woowacourse/mission-utils";
+class Car {
+  constructor(name) {
+    this.name = name;
+    this.position = 0;
+  }
+}
 
 class App {
   async inputCarName() {
@@ -19,8 +25,21 @@ class App {
     return await CARS_ARRAY;
   }
 
+  async saveCarName(CARS_ARRAY) {
+    const CARS = [];
+
+    CARS_ARRAY.forEach((name) => {
+      const car = new Car(name);
+      CARS.push(car);
+      // MissionUtils.Console.print(CARS);
+    });
+
+    return CARS;
+  }
+
   async play() {
-    await this.inputCarName();
+    const CARS_ARRAY = await this.inputCarName();
+    await this.saveCarName(CARS_ARRAY);
   }
 }
 
