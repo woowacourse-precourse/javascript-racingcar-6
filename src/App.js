@@ -96,6 +96,14 @@ class App {
     getMaxMoveCnt(carObjArr) {
         return Math.max(...carObjArr.map(({ move }) => move));
     }
+
+    /**
+     * @param {CarObject[]} carObjArr
+     * @param {number} maxMove
+     */
+    filterWonCar(carObjArr, maxMove) {
+        return carObjArr.filter(({ move }) => move === maxMove);
+    }
 }
 
 export default App;
