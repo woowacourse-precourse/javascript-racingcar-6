@@ -1,13 +1,13 @@
 import { Console } from '@woowacourse/mission-utils';
 import { MESSAGE } from '../constants/constants.js';
-import Validation from './Validation.js';
+import validation from './Validation.js';
 
 export default class View {
   static async readCarNames() {
     const carNames = await Console.readLineAsync(MESSAGE.input);
     const carNamesToArray = carNames.split(',');
 
-    Validation.checkValidation(carNamesToArray);
+    validation(carNamesToArray);
     return carNamesToArray;
   }
 

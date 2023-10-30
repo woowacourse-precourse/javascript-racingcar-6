@@ -41,7 +41,7 @@ const Validation = {
   },
 };
 
-const validationCheck = (carNames) => {
+const validation = (carNames) => {
   Validation.hasSpace(carNames);
   Validation.isMoreThanFiveLetters(carNames);
   Validation.hasSpecialChar(carNames);
