@@ -12,10 +12,10 @@
 6. [ ] 게임 완료 시 누적값을 비교하며 최종 우승자 체크 기능
 7. [O] 전진 횟수 리셋 기능 - resetAdvance()
 
-### [입력 기능]
+### [입력 기능] - Input.js
 
-1. [ ] 경주할 자동차 이름 입력
-2. [ ] 시도할 횟수 입력
+1. [O] 경주할 자동차 이름 입력 - Input.text(GAME.CAR_NAME_INPUT)
+2. [O] 시도할 횟수 입력 - Input.text(GAME.TRY_COUNT_INPUT)
 
 ### [출력 기능] - Output.js
 
