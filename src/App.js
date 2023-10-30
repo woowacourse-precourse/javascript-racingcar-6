@@ -1,5 +1,5 @@
 import { getAttempt, getParticipant } from './Game/Settings';
-import { progress } from './Game/Progress';
+import { progressGame } from './Game/Progress';
 import { terminateGame } from './Game/End';
 
 class App {
@@ -9,7 +9,7 @@ class App {
     const attempt = await getAttempt();
 
     // 게임 진행
-    const participantsDistance = await progress(attempt, participants);
+    const participantsDistance = await progressGame(attempt, participants);
 
     // 게임 종료
     await terminateGame(participants, participantsDistance);
