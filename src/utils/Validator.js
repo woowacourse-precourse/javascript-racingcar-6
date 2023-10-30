@@ -1,3 +1,4 @@
+import { MAX_CARNAME_LENGTH, NO_LENGTH } from '../constants/constants.js';
 import { ERROR_MESSAGE } from '../constants/messages.js';
 
 function removeSpace(answer) {
@@ -5,13 +6,15 @@ function removeSpace(answer) {
 }
 
 function isValidateCarName(answer) {
-  const carName = removeSpace(answer);
+  const carNameList = removeSpace(answer).split(',');
   if (
-    !carName.split(',').every((name) => name.length > 0 && name.length <= 5)
+    !carNameList.every(
+      (name) => name.length > NO_LENGTH && name.length <= MAX_CARNAME_LENGTH,
+    )
   ) {
     throw new Error(ERROR_MESSAGE.carName);
   }
-  if (carName.split(',').length !== new Set(carName.split(',')).size) {
+  if (carNameList.length !== new Set(carNameList).size) {
     throw new Error(ERROR_MESSAGE.duplicatedCarName);
   }
   return true;
@@ -19,7 +22,7 @@ function isValidateCarName(answer) {
 
 function isValidateAttemps(answer) {
   const attemps = removeSpace(answer);
-  if (Number.isNaN(Number(attemps)) || attemps.length === 0) {
+  if (Number.isNaN(Number(attemps)) || attemps.length === NO_LENGTH) {
     throw new Error(ERROR_MESSAGE.attemps);
   }
   return true;
