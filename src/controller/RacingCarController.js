@@ -21,7 +21,7 @@ class RacingCarController {
 
   async inputTryTimes() {
     await InputView.readTryTimes((input) => {
-      this.#cars.setRacingTimes(input);
+      this.#cars.setRacingTries(input);
     });
     this.raceStart();
   }
@@ -33,7 +33,7 @@ class RacingCarController {
 
   raceStart() {
     OutputView.printResultMessage();
-    for (let i = 0; i < this.#cars.getRacingTimes(); i++) {
+    for (let i = 0; i < this.#cars.getRacingTries(); i++) {
       this.#cars.setMoveOrStay();
       OutputView.printMoveMarking(this.#cars.getCurrentPosition());
       OutputView.printSingleLine();

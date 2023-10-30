@@ -4,7 +4,7 @@ import { StaticNumber } from "../static/Static.js";
 
 class RacingCars {
   #cars;
-  #times;
+  #tries;
   #finalDistance = [];
   #winners = [];
 
@@ -12,19 +12,19 @@ class RacingCars {
     this.#cars = inputNames.split(",").map((name) => new RacingCar(name));
   }
 
-  setRacingTimes(inputTimes) {
-    this.#times = Number(inputTimes);
+  setRacingTries(inputTries) {
+    this.#tries = Number(inputTries);
   }
 
-  getRacingTimes() {
-    return this.#times;
+  getRacingTries() {
+    return this.#tries;
   }
 
   setMoveOrStay() {
-    for (let i = 0; i < this.#cars.length; i++) {
+    this.#cars.map((car) => {
       const randomNumber = RandomNumberGenerator.generate();
-      if (randomNumber >= StaticNumber.CAN_MOVE_CONDITION) this.#cars[i].move();
-    }
+      if (randomNumber >= StaticNumber.CAN_MOVE_CONDITION) car.move();
+    });
   }
 
   getCurrentPosition() {
