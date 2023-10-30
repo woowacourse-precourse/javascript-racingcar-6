@@ -15,11 +15,10 @@ class Game {
   }
 
   //각각의 레이스 게임을 실행하는 메소드
-  eachRaceGame() {
+  playEachRaceGame() {
     for (let index in CARS) {
       this.gameUtil.storeMovingForward(index);
     }
-    console.log(CARS);
   }
 }
 export default Game;
