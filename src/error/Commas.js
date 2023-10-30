@@ -15,7 +15,7 @@ class Commas {
 
   showCommaError(players) {
     if (this.isCommaMisuse(players)) {
-      throw new Error(ERROR_MESSEAGE.commaMisuse)
+      throw new Error(ERROR_MESSEAGE.commaMisuse);
     }
   }
 }

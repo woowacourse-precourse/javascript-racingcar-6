@@ -10,18 +10,18 @@ class OverName extends Commas {
       return true;
     } 
   }
-  //이건 comma에러가 아닐때 고려한다.
+  
   overNameArray(players) {
-    if(this.isOverName(players)) {
+    if (this.isOverName(players)) {
       return players.split(',').filter((carName) => carName.length > GAME_RULE.maxNameLength);
     }
   }
 
   showOverNameError(players) {
     if (this.isOverName(players)) {
-      throw new Error(ERROR_MESSEAGE.nameLength);
+      throw new Error(`${ERROR_MESSEAGE.nameLength} [${this.overNameArray(players)}]`);
     }
   }
 }
 
-export default OverName
+export default OverName;
