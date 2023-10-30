@@ -17,8 +17,8 @@ const Validation = {
     }
   },
 
-  validateTotalRounds(totalRounds) {
-    if (!/^[0-9]+$/.test(totalRounds) || Number(totalRounds) < 1) {
+  validateTotalRounds(totalRoundsString) {
+    if (!/^[0-9]+$/.test(totalRoundsString) || Number(totalRoundsString) < 1) {
       throw new Error('[ERROR] 시도 횟수는 1 이상의 숫자만 입력 가능합니다.');
     }
   },
