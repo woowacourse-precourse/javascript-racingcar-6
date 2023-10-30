@@ -2,7 +2,6 @@ import { Console } from "@woowacourse/mission-utils";
 
 class Car {
   moveOrStop(carName, randomNum) {
-    // console.log('carName: ', carName, ', randomNum: ', randomNum);
     if (randomNum >= 4) {
       return 1;
     }
