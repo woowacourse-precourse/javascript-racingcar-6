@@ -8,6 +8,14 @@ const Validation = {
     }
   },
 
+  isEmpty(nameList){
+    nameList.forEach(name => {
+      if(name.length === 0){
+        throw new Error(NAME_INPUT_ERROR.empty);
+      }
+    })
+  },
+
 
 }
 export default Validation;
