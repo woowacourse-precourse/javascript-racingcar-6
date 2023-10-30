@@ -41,3 +41,12 @@ const Validation = {
   },
 };
 
+const validationCheck = (carNames) => {
+  Validation.hasSpace(carNames);
+  Validation.isMoreThanFiveLetters(carNames);
+  Validation.hasSpecialChar(carNames);
+  Validation.hasEmptyName(carNames);
+  Validation.hasDuplicateName(carNames);
+};
+
+export default validationCheck;
