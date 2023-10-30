@@ -1,6 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import Car from "./Car.js";
-import { isRandomNumberAtLeast4, validateCount, validateName } from "./utils/validation.js";
+import { isNumberAtLeast4, validateCount, validateName } from "./utils/validation.js";
 
 class App {
 
@@ -52,7 +52,7 @@ class App {
   }
 
   moveForward(car) {
-    if (isRandomNumberAtLeast4()) {
+    if (isNumberAtLeast4(MissionUtils.Random.pickNumberInRange(0, 9))) {
       car.goForward();
     }
   }

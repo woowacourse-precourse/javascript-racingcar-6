@@ -1,5 +1,3 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
-
 const isNumber = (count) => {
     const numberRegex = /^[0-9]+$/;
     return numberRegex.test(count);
@@ -9,7 +7,7 @@ const isLongerThan5 = (name) => name.length > 5;
 
 const isNameDuplicate = (name, cars) => cars.find((car) => car.isSameName(name)) !== undefined;
 
-const isRandomNumberAtLeast4 = () => MissionUtils.Random.pickNumberInRange(0, 9) >= 4;
+const isNumberAtLeast4 = (number) => number >= 4;
 
 const validateName = (name, cars) => {
     if (isLongerThan5(name)) {
@@ -30,7 +28,7 @@ export {
     isNumber,
     isLongerThan5,
     isNameDuplicate,
-    isRandomNumberAtLeast4,
+    isNumberAtLeast4,
     validateName,
     validateCount
 }
