@@ -1,17 +1,17 @@
-import { LapNumberValidator } from '../../src/validator/index.js';
+import { GRANDPRIX_ERROR_NOTIFICATION } from '../../src/constants/GrandPrixError.js';
+import { validateLapNumber } from '../../src/validator/index.js';
 
 describe('시행 횟수 유효성 검증 테스트', () => {
-  const errorMessage = Object.freeze({
-    invalidCharactor: LapNumberValidator.LAPNUMBER_VALIDATION_TYPES.validCharactor.message,
+  const expectErrorMessage = Object.freeze({
+    invalidCharactor: GRANDPRIX_ERROR_NOTIFICATION.invalidCharactor,
   });
 
   test.each([
-    { input: 'abc', expectError: errorMessage.invalidCharactor },
-    { input: 'abc def', expectError: errorMessage.invalidCharactor },
-    { input: '123abc', expectError: errorMessage.invalidCharactor },
-    { input: 'abc123', expectError: errorMessage.invalidCharactor },
+    { input: 'abc', expectError: expectErrorMessage.invalidCharactor },
+    { input: 'abc def', expectError: expectErrorMessage.invalidCharactor },
+    { input: '123abc', expectError: expectErrorMessage.invalidCharactor },
+    { input: 'abc123', expectError: expectErrorMessage.invalidCharactor },
   ])('문자 입력 테스트', ({ input, expectError }) => {
-    const lapNumberValidator = new LapNumberValidator(input);
-    expect(() => lapNumberValidator.validateLapNumber(input)).toThrow(expectError);
+    expect(() => validateLapNumber(input)).toThrow(expectError);
   });
 });
