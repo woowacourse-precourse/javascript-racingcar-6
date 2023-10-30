@@ -1,3 +1,7 @@
-import App from "../src/App.js";
-import { MissionUtils } from "@woowacourse/mission-utils";
+describe("기능 목록 테스트", () => { // 테스트 스위트를 정의하는 블록
+  test("", () => { // 첫 번째 테스트 케이스를 정의하는 블록
+    
+  });
+});
 
+// 이런 형식으로 시작하면 됨
