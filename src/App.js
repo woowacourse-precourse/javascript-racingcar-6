@@ -3,9 +3,12 @@ import Input from './Input.js';
 import Validation from './Validation.js';
 
 class App {
+  carNames;
+
   async play() {
-    const carNames = await Input.getCarNamesFromUser();
-    Validation.validateCarName(carNames);
+    const inputCarNames = await Input.getCarNamesFromUser();
+    Validation.validateCarName(inputCarNames);
+    this.carNames = inputCarNames;
   }
 }
 
