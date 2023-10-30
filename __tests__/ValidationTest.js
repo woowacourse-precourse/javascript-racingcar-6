@@ -7,6 +7,7 @@ describe('유효성 검사 테스트', () => {
     expect(validator.validNameLength('가나다라', maxLength)).toBe(true)
     expect(validator.validNameLength('가나다라마', maxLength)).toBe(true)
     expect(validator.validNameLength('가나다라마바', maxLength)).toBe(false)
+    expect(validator.validNameLength('', maxLength)).toBe(false)
   })
 
   test('레이싱카 이름이 중복되면 안된다.', () => {
@@ -23,6 +24,9 @@ describe('유효성 검사 테스트', () => {
     expect(validator.validTryCount(0, minTryCount)).toBe(false)
     expect(validator.validTryCount(-1, minTryCount)).toBe(false)
     expect(validator.validTryCount('a', minTryCount)).toBe(false)
-    expect(validator.validTryCount('1.1', minTryCount)).toBe(false)
+    expect(validator.validTryCount(1.1, minTryCount)).toBe(false)
+    expect(validator.validTryCount('1', minTryCount)).toBe(false)
+    expect(validator.validTryCount(null, minTryCount)).toBe(false)
+    expect(validator.validTryCount(undefined, minTryCount)).toBe(false)
   })
 })
