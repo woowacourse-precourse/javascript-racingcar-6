@@ -1,3 +1,4 @@
+import { createCarData } from '../src/utils/createCarData';
 import { createRandomNumber } from '../src/utils/createRandomList';
 import { goStopCar } from '../src/utils/goStopCar';
 import { pickWinner } from '../src/utils/pickWinner';
@@ -83,5 +84,27 @@ describe('유틸리티 함수', () => {
     ];
 
     expect(pickWinner(car)).toEqual(['pobi', 'juru']);
+  });
+
+  test('자동차 객체 생성', () => {
+    const carName = 'pobi,woni,juru';
+
+    expect(createCarData(carName)).toEqual([
+      {
+        name: 'pobi',
+        number: 0,
+        result: '',
+      },
+      {
+        name: 'woni',
+        number: 0,
+        result: '',
+      },
+      {
+        name: 'juru',
+        number: 0,
+        result: '',
+      },
+    ]);
   });
 });
