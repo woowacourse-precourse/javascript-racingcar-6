@@ -1,4 +1,5 @@
 import { Console, Random } from '@woowacourse/mission-utils';
+import { ERROR } from './constants/Error.js';
 
 class App {
   async play() {
@@ -26,6 +27,7 @@ async function getCarName() {
 
 async function getTryCount() {
   const tryCount = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+  validTryCount(tryCount);
   return parseInt(tryCount);
 }
 
@@ -63,12 +65,21 @@ function printWinner(carObjects) {
 
 function validName(name) {
   if (name === '') {
-    throw new Error('[ERROR] 이름을 입력해주세요.');
+    throw new Error(ERROR.nameBlank);
   }
   const carNames = name.split(',').map((name) => name.trim());
   for (const carName of carNames) {
     if (carName.length > 5) {
       throw new Error('[ERROR] 이름은 5글자를 초과할 수 없습니다.');
     }
+  }
+}
+
+function validTryCount(tryCount) {
+  if (tryCount === '') {
+    throw new Error(ERROR.tryCountBlank);
+  }
+  if (isNaN(tryCount)) {
+    throw new Error(ERROR.tryCountNaN);
   }
 }
