@@ -3,7 +3,7 @@ import { OUTPUT_MESSAGE } from "../constants/message.js";
 
 class OutputView {
   static printResultStartMessage() {
-    MissionUtils.Console.print(OUTPUT_MESSAGE.resultStart);
+    MissionUtils.Console.print(OUTPUT_MESSAGE.RESULT_START);
   }
 
   static printResult({ position, name }) {
@@ -15,7 +15,7 @@ class OutputView {
   }
 
   static printWinner(winner) {
-    MissionUtils.Console.print(`${OUTPUT_MESSAGE.winner}${winner}`);
+    MissionUtils.Console.print(`${OUTPUT_MESSAGE.WINNER}${winner}`);
   }
 }
 

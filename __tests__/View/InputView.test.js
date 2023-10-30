@@ -14,7 +14,7 @@ describe("InputView 클래스 테스트", () => {
     const resolvedPromise = Promise.resolve(carNameInput);
     MissionUtils.Console.readLineAsync.mockReturnValue(resolvedPromise);
     await InputView.getCarNameInput();
-    expect(MissionUtils.Console.readLineAsync).toBeCalledWith(INPUT_MESSAGE.carName);
+    expect(MissionUtils.Console.readLineAsync).toBeCalledWith(INPUT_MESSAGE.CAR_NAME);
   });
 
   test("getCarNameInput 메서드가 promise를 반환하고 그 resolve 값이 입력값이어야 한다.", async () => {
@@ -32,7 +32,7 @@ describe("InputView 클래스 테스트", () => {
 
   test("getRaceCountInput 메서드가 호출되면 MissionUtils.Console.readLineAsync가 호출되어야 한다.", async () => {
     await InputView.getRaceCountInput();
-    expect(MissionUtils.Console.readLineAsync).toBeCalledWith(INPUT_MESSAGE.raceCount);
+    expect(MissionUtils.Console.readLineAsync).toBeCalledWith(INPUT_MESSAGE.RACE_COUNT);
   });
 
   test("getRaceCountInput 메서드가 promise를 반환하고 그 resolve 값이 입력값이어야 한다.", async () => {

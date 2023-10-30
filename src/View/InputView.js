@@ -3,7 +3,7 @@ import { INPUT_MESSAGE } from "../constants/message.js";
 
 class InputView {
   static async getCarNameInput() {
-    const carNameList = await MissionUtils.Console.readLineAsync(INPUT_MESSAGE.carName);
+    const carNameList = await MissionUtils.Console.readLineAsync(INPUT_MESSAGE.CAR_NAME);
     return carNameList
       .split(",")
       .map((name) => name.trim())
@@ -11,7 +11,7 @@ class InputView {
   }
 
   static async getRaceCountInput() {
-    const raceCount = await MissionUtils.Console.readLineAsync(INPUT_MESSAGE.raceCount);
+    const raceCount = await MissionUtils.Console.readLineAsync(INPUT_MESSAGE.RACE_COUNT);
     return Number(raceCount);
   }
 }

@@ -11,7 +11,7 @@ describe("OutputView 클래스 테스트", () => {
 
   test("printResultStartMessage가 호출되면 MissionUtils.Console.print가 호출되야 한다.", () => {
     OutputView.printResultStartMessage();
-    expect(MissionUtils.Console.print).toBeCalledWith(OUTPUT_MESSAGE.resultStart);
+    expect(MissionUtils.Console.print).toBeCalledWith(OUTPUT_MESSAGE.RESULT_START);
   });
 
   test("printResult 메서드를 가지고 있어야 한다.", () => {
