@@ -13,11 +13,17 @@ class App {
     const carInput = await Console.readLineAsync(
       '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n ',
     );
+
     const numInput = await Console.readLineAsync(
       '시도할 횟수는 몇 회인가요?\n',
     );
 
-    const carArr = carInput.split(',');
+    const carArr = carInput.split(',').map((e) => {
+      if (e.length >= 5) {
+        throw new Error('[ERROR] 올바른 형식이 아닙니다');
+      }
+      return e;
+    });
     const carObj = carArr.map((e) => new Car(e));
 
     // 전진할지 멈출지 정하는 함수
