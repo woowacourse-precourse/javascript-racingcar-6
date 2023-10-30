@@ -14,7 +14,7 @@ const ValidationTry = {
   },
 
   isChar(tryCount) {
-    if (Number.isNaN(tryCount)) {
+    if (!Number.isNaN(tryCount)) {
       throw new Error(TRY_INPUT_ERROR.char);
     }
   },
