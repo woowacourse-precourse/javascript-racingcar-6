@@ -40,6 +40,7 @@ export const positionHandler = (carsArr) => {
 export const positionHandleIterator = (carsArr, round) => {
   for (let i = 0; i < round; i++) {
     positionHandler(carsArr);
+    racingResultPrint(carsArr);
   }
   return carsArr;
 };
@@ -59,4 +60,17 @@ export const findWinner = (carsArr) => {
   });
   console.log(winner);
   return winner;
+};
+
+export const racingResultPrint = (carsArr) => {
+  carsArr.forEach((carsInfo) => {
+    let position = carsInfo.position;
+    let movingDistance = "";
+    for (let i = 0; i < position; i++) {
+      movingDistance += "-";
+    }
+    console.log(`${carsInfo.name} : ${movingDistance}`);
+    const resultMessage = `${carsInfo.name} : ${movingDistance}`;
+    return resultMessage;
+  });
 };
