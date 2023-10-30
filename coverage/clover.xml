@@ -1,17 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1698556655809" clover="3.2.0">
-  <project timestamp="1698556655809" name="All files">
-    <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6" elements="14" coveredelements="14" complexity="0" loc="8" ncloc="8" packages="1" files="1" classes="1"/>
+<coverage generated="1698640699209" clover="3.2.0">
+  <project timestamp="1698640699209" name="All files">
+    <metrics statements="20" coveredstatements="19" conditionals="2" coveredconditionals="2" methods="10" coveredmethods="9" elements="32" coveredelements="30" complexity="0" loc="20" ncloc="20" packages="1" files="2" classes="2"/>
     <file name="Cars.js" path="/home/sunub/wooteaco/javascript-racingcar-6/src/Cars.js">
-      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
-      <line num="5" count="1" type="stmt"/>
-      <line num="9" count="1" type="stmt"/>
-      <line num="10" count="3" type="stmt"/>
-      <line num="11" count="3" type="stmt"/>
-      <line num="20" count="2" type="stmt"/>
-      <line num="24" count="8" type="stmt"/>
-      <line num="28" count="4" type="stmt"/>
-      <line num="29" count="4" type="stmt"/>
+      <metrics statements="7" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="4"/>
+      <line num="5" count="2" type="stmt"/>
+      <line num="6" count="4" type="stmt"/>
+      <line num="7" count="4" type="stmt"/>
+      <line num="16" count="4" type="stmt"/>
+      <line num="20" count="0" type="stmt"/>
+      <line num="24" count="5" type="stmt"/>
+      <line num="25" count="5" type="stmt"/>
+    </file>
+    <file name="RaceRound.js" path="/home/sunub/wooteaco/javascript-racingcar-6/src/RaceRound.js">
+      <metrics statements="13" coveredstatements="13" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="5"/>
+      <line num="6" count="2" type="stmt"/>
+      <line num="7" count="2" type="stmt"/>
+      <line num="11" count="2" type="stmt"/>
+      <line num="12" count="2" type="stmt"/>
+      <line num="13" count="2" type="stmt"/>
+      <line num="14" count="4" type="stmt"/>
+      <line num="15" count="10" type="stmt"/>
+      <line num="16" count="10" type="cond" truecount="2" falsecount="0"/>
+      <line num="17" count="5" type="stmt"/>
+      <line num="20" count="4" type="stmt"/>
+      <line num="25" count="2" type="stmt"/>
+      <line num="29" count="10" type="stmt"/>
+      <line num="30" count="10" type="stmt"/>
     </file>
   </project>
 </coverage>

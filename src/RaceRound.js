@@ -14,7 +14,6 @@ class RaceRound extends Cars {
       names.forEach((name) => {
         const randomNum = RaceRound.createRandomNum();
         if (randomNum >= 4) {
-          super.movingForwardByName(name);
           this.movingForwardByName(name);
         }
       });
@@ -22,13 +21,8 @@ class RaceRound extends Cars {
     }
   }
 
-  movingCarsSpecificName(name) {
-    console.log(name);
-    super.movingForwardByName(name);
-  }
-
   getTotalRound() {
-    return super.getNames.length;
+    return this.getNames.length;
   }
 
   static createRandomNum() {

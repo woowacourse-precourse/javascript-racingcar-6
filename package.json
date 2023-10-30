@@ -14,7 +14,7 @@
   },
   "scripts": {
     "test": "jest --detectOpenHandles",
-    "test-cars": "jest --watch --coverage ./__tests__/unit/CarsTest.js"
+    "test-raceround": "jest --watch --coverage ./__tests__/unit/RaceRoundTest.js"
   },
   "keywords": [],
   "author": "woowacourse",
