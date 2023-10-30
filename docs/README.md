@@ -16,8 +16,10 @@
 ### play
 프로그램 실행의 시작점
 메인 메서드
-### getInput
-사용자로부터 인풋을 받는 메서드
+### getCarList
+사용자로부터 자동차의 이름 리스트를 받는 메서드
+### getAttempts
+사용자로부터 실행 횟수를 받는 메서드
 ### randomMoveOfCar
 자동차의 이동값을 생성해주는 메서드
 ### printCarPosition
