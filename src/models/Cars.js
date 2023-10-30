@@ -5,6 +5,10 @@ class Cars {
 
   #turns;
 
+  /**
+   *
+   * @returns {string[]} cars
+   */
   getCars() {
     return this.#cars;
   }
@@ -17,6 +21,10 @@ class Cars {
     this.#cars = carList;
   }
 
+  /**
+   *
+   * @returns {{[key: string]: number}[]} movings
+   */
   getMovings() {
     return this.#movings;
   }
@@ -29,6 +37,10 @@ class Cars {
     this.#movings.push(moving);
   }
 
+  /**
+   *
+   * @returns {number} turns
+   */
   getTurns() {
     return this.#turns;
   }
