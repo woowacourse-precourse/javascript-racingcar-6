@@ -15,6 +15,11 @@ class App {
     });
 
     this.printMsg('\n실행 결과');
+
+    for(let i = 0; i < num; i++){
+      this.runOneCycle(carArr);
+      this.printMsg('');
+    }
   }
 
   async receiveUserInput(guideMsg) {
@@ -28,6 +33,13 @@ class App {
 
   moveForward() {
     return Random.pickNumberInRange(0, 9) >= 4;
+  }
+
+  runOneCycle(carArr) {
+    carArr.forEach(el => {
+      if(this.moveForward()) el.oneStepForward();
+      this.printMsg(`${el.name}: ${'-'.repeat(el.step)}`);
+    });
   }
 
   seperateNames(names) {

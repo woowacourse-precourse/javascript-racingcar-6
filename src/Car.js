@@ -11,4 +11,8 @@ export class Car {
   get get_step() {
     return this.step;
   }
+
+  get get_name() {
+    return this.name;
+  }
 }
