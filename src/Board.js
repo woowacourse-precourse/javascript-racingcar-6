@@ -1,3 +1,4 @@
+import { Console } from '@woowacourse/mission-utils';
 import Car from './Car.js'
 
 class Board {
@@ -5,21 +6,22 @@ class Board {
   /** @type {Array<Car>} */
   #cars = [];
 
-  setCars() {
-    const carNames = this.#inputCarNames();
+  /**
+   * 사용자로부터 입력받은 이름의 레이싱카 객체를 생성한다.
+   */
+  async setCars() {
+    const carNames = await this.#inputCarNames();
     carNames.forEach((name) => {
       this.#cars.push(new Car(name));
     });
-
-    this.#cars.forEach((car) => {
-      console.log(car.name);
-    })
   }
 
-  #inputCarNames() {
-    // TEST: 임시 이름 배열을 carNames 전달
-    const carNames = ['car1', 'car2'];
-    return carNames;
+  /**
+   * 사용자로부터 레이싱카들의 이름을 입력받아 배열로 반환한다.
+   * @returns {Array<String>} carNames
+   */
+  async #inputCarNames() {
+    return await Console.readLineAsync().split(',');
   }
 
   setNumTurns() {
