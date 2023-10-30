@@ -26,8 +26,7 @@ describe('비동기 유저 입력값 유효성 및 오류 잡아내는지 테스
   test('올바른 자동차 이름을 넣었을때', async () => {
     const userInput = "pobi,crong,woong";
     const result = ["pobi","crong","woong"];
-    const userWrongInput = "pobi,crong,,";
-
+    
     mockQuestions(userInput);
     
     await expect(getPlayersName()).resolves.toEqual(result);

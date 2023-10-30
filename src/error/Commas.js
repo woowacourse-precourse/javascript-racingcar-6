@@ -9,12 +9,12 @@ class Commas {
     return players.includes(',,');
   }
 
-  commaResult(players) {
+  isCommaMisuse(players) {
     return this.isCommaInHeadTail(players) || this.isCommaContinuous(players);
   }
 
   showCommaError(players) {
-    if (this.commaResult(players)) {
+    if (this.isCommaMisuse(players)) {
       throw new Error(ERROR_MESSEAGE.commaMisuse)
     }
   }

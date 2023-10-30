@@ -8,6 +8,8 @@ class Error extends SingleName {
     this.showSingleNameError(players);
   }
 
+  
+
   attempt(number) {
     if(isNaN(number)) {
       throw new Error(ERROR_MESSEAGE.attempt);

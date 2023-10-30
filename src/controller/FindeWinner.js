@@ -16,4 +16,7 @@ export const findWinner = (playersArray, scoreArray) => {
 
   return winnersArray;
 }
-
+/*
+const a = ['pobi','crong','woong','b','c'];
+const b = [4,3,4,9,9];
+console.log(findWinner(a,b));*/

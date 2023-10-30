@@ -37,9 +37,10 @@ class RacingController {
     this.updateRacingBoard(); 
   }
 
-  updateRacingBoard() {                                          
-    this.scoreArray = scoreAccumulator(this.scoreArray, this.driveRandomArray());
-    this.traceArray = traceAccumulator(this.traceArray, this.driveRandomArray());
+  updateRacingBoard() {       
+    const newdriveArray = this.driveRandomArray();                                   
+    this.scoreArray = scoreAccumulator(this.scoreArray, newdriveArray);
+    this.traceArray = traceAccumulator(this.traceArray, newdriveArray);
 
     this.traceMaker(); 
   }
