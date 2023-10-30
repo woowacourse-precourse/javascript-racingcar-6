@@ -30,6 +30,14 @@ describe("Car 클래스 테스트", () => {
     );
   });
 
+  test("빈 문자열의 이름을 입력받으면 에러를 발생시킨다.", () => {
+    // given
+    const name = "";
+
+    // when & then
+    expect(() => new Car(name)).toThrow("[ERROR] 자동차의 이름은 필수입니다.");
+  });
+
   test("move메서드가 호출되었을 때 4이상의 값을 받으면 position을 1 증가시킨다.", () => {
     // given
     const car = new Car("test");
@@ -46,7 +54,7 @@ describe("Car 클래스 테스트", () => {
   test("move메서드가 호출되었을 때 3이하의 값을 받으면 이동하지 않는다.", () => {
     // given
     const car = new Car("test");
-    const random = 1;
+    const random = 3;
     mockRandoms([random]);
 
     // when
