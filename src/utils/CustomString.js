@@ -16,8 +16,9 @@ class CustomString extends String {
    * @param {string} value
    * @returns {boolean}
    */
-  static isEmpty(value) {
-    return value.length === 0;
+  static isEmptyString(value) {
+    const trimmed = value.trim();
+    return trimmed.length === 0;
   }
 }
 

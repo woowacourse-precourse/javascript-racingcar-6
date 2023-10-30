@@ -21,6 +21,17 @@ class Parser {
   }
 
   /**
+   * 문자열을 정수로 변환하는 메소드.
+   * @param {string} value 숫자로 변환할 문자열
+   * @returns {number} 정수
+   */
+  static stringToNumber(value) {
+    if (CustomString.isEmptyString(value)) throw new InputError(ERROR_MESSAGE.noInput);
+
+    return Number(value);
+  }
+
+  /**
    * 콤마로 문자열을 분리하는 메소드.
    *
    * 공백은 제거됩니다.
@@ -30,7 +41,7 @@ class Parser {
    * @returns {string[]}
    */
   static splitByComma(value) {
-    if (CustomString.isEmpty(value)) throw new InputError(ERROR_MESSAGE.noInput);
+    if (CustomString.isEmptyString(value)) throw new InputError(ERROR_MESSAGE.noInput);
     return value.split(',').map((str) => str.trim());
   }
 }

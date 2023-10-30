@@ -7,7 +7,7 @@ class CustomArray extends Array {
    * @returns {boolean}
    */
   static hasEmpty(value) {
-    return value.length === 0 || value.some((str) => CustomString.isEmpty(str));
+    return value.length === 0 || value.some((str) => CustomString.isEmptyString(str));
   }
 
   /**
