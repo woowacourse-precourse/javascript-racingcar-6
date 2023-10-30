@@ -1,10 +1,11 @@
 import { Console } from '@woowacourse/mission-utils';
-import doValidate from './Validate.js';
+import { doValidateCarName, doValidateMoveCount } from './Validate.js';
 class Racing {
   async start() {
     this.cars = await this.getCarsName();
     this.validateCarName();
     this.moveCount = await this.getMoveCount();
+    this.validateMoveCount();
   }
 
   async getCarsName() {
@@ -19,8 +20,12 @@ class Racing {
 
   validateCarName() {
     this.cars.forEach((name) => {
-      doValidate(name);
+      doValidateCarName(name);
     });
+  }
+
+  validateMoveCount() {
+    doValidateMoveCount(this.moveCount);
   }
 }
 export default Racing;
