@@ -19,6 +19,7 @@ class RacingGame {
 
   #gameFlow() {
     this.#playGame();
+    this.#getWinners();
   }
 
   #moveCars() {
@@ -29,6 +30,16 @@ class RacingGame {
 
       if (shouldMove) car.move();
     });
+  }
+
+  #getCarPositions() {
+    return this.#cars.map((car) => car.getPosition());
+  }
+
+  #getWinners() {
+    const maxPosition = Math.max(...this.#getCarPositions());
+
+    return this.#cars.filter((car) => car.getPosition() === maxPosition);
   }
 
   #gameEnd() {
