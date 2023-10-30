@@ -7,3 +7,8 @@ export const validateCarNameLength = (carName) => {
     if (car.length > 5) throw new Error(ERROR_MESSAGE.notLengthFiveOrLess);
   });
 };
+
+export const validateTypeNumber = (count) => {
+  if (Number.isNaN(Number(count)))
+    throw new Error(ERROR_MESSAGE.notNumberMoveCount);
+};
