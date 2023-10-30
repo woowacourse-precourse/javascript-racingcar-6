@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import { RACING_MESSAGE } from '../constants/constants';
+import { RACING_MESSAGE } from '../constants/constants.js';
 
 const inputView = {
   /** 자동차 이름 입력받는 함수 */
