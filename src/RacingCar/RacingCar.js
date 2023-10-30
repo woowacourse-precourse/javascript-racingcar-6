@@ -6,13 +6,8 @@ import Message from "../Message.js";
 
 class RacingCar {
   async start() {
-    const name = await Console.readLineAsync(MESSAGE.enterCarName);
+    const name = await Console.readLineAsync(MESSAGE.enterName);
     const splitedName = this.splitName(name.trim());
-
-    splitedName.forEach((name) => {
-      Message.logIf(name.length > 5, ERROR_MESSAGE.enterRightCarName);
-    });
-
     const cars = this.createCarArray(splitedName);
     const numOfRacing = await Console.readLineAsync(
       MESSAGE.enterNumberOfRacing
@@ -20,7 +15,7 @@ class RacingCar {
 
     Message.logIf(
       !this.isValidNumber(numOfRacing),
-      ERROR_MESSAGE.enterNaturalNumber
+      ERROR_MESSAGE.notValidNumber
     );
 
     Console.print("\n실행 결과");
