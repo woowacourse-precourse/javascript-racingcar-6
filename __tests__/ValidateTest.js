@@ -39,7 +39,7 @@ describe("자동차 이름 입력 테스트", () => {
 describe("레이싱 횟수 입력 테스트", () => {
   const racingNumberValidate = new TryNumberValidate();
 
-  test("0을 입력하거나 값을 입력하지 않은 경우 에러처리", () => {
+  test("0이하 입력 또는 입력값 없는 경우", () => {
     const input = [-2, 0, ""];
     const result = ERROR.tryNumberZero;
 

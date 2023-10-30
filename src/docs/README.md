@@ -122,3 +122,84 @@ src
 <br><br>
 
 # 🚨 테스트 목록
+
+<div align="center">
+  <table>
+    <tr>
+      <th align="center">File</th>
+      <th align="center">Describe</th>
+      <th align="center">Test</th>
+    </tr>
+    <tr>
+      <td rowspan="3"><b>🕹&nbsp;&nbsp;ApplicationTest</b></td>
+      <td rowspan="3"><b>자동차 경주 게임</b></td>
+    </tr>
+    <tr>
+      <td>전진-정지</td>
+    </tr>
+    <tr>
+      <td>이름에 대한 예외 처리</td>
+    </tr>
+    <tr><td colspan="3"></td></tr>
+    <tr>
+      <td rowspan="6"><b>🕹&nbsp;&nbsp;ValidateTest</b></td>
+      <td rowspan="4">자동차 이름 입력 테스트</td>
+      <td>split 메서드로 주어진 값을 구분</td>
+    </tr>
+    <tr>
+      <td>이름을 하나도 입력하지 않은 경우</td>
+    </tr>
+    <tr>
+      <td>중복되는 이름을 입력한 경우</td>
+    </tr>
+    <tr>
+      <td>5글자를 초과하는 이름을 입력한 경우</td>
+    </tr>
+    <tr>
+      <td rowspan="2">레이싱 횟수 입력 테스트</td>
+      <td>0이하 입력 또는 입력값 없는 경우</td>
+    </tr>
+    <tr>
+      <td>숫자가 아닌 형식을 입력한 경우</td>
+    </tr>
+    <tr><td colspan="3"></td></tr>
+    <tr>
+      <td rowspan="4"><b>🕹&nbsp;&nbsp;CarMovingTest</b></td>
+      <td rowspan="4">자동차 랜덤 이동값 테스트</td>
+      <td>자동차 랜덤값이 4 미만일 경우 전진하지 않음</td>
+    </tr>
+    <tr>
+      <td>자동차 랜덤값이 4 이상일 때만 전진</td>
+    </tr>
+    <tr>
+      <td>각 레이싱 별 우승자 계산(한 명일 경우)</td>
+    </tr>
+    <tr>
+      <td>각 레이싱 별 우승자 계산(여러명인 경우)</td>
+    </tr>
+    <tr><td colspan="3"></td></tr>
+    <tr>
+      <td rowspan="4"><b>🕹&nbsp;&nbsp;StringTest</b></td>
+      <td rowspan="4">문자열 테스트</td>
+      <td>split 메서드로 주어진 값을 구분</td>
+    </tr>
+    <tr>
+      <td>split 메서드로 구분자가 포함되지 않은 경우 값을 그대로 반환</td>
+    </tr>
+    <tr>
+      <td>substring 메서드로 특정 구간 값을 반환</td>
+    </tr>
+    <tr>
+      <td>at 메서드로 특정 위치의 문자 찾기</td>
+    </tr>
+    <tr><td colspan="3"></td></tr>
+  </table>
+</div>
+
+```
+__tests__
+ ┣ ApplicationTest.js
+ ┣ CarMovingTest.js
+ ┣ StringTest.js
+ ┗ ValidateTest.js
+```
