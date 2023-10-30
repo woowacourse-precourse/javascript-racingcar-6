@@ -24,9 +24,7 @@ class App {
     // split the inputs by "," and trim any possible whitespaces
     const names = racecarNameInput.split(',').map((item) => item.trim());
 
-    const isValid = await this.checkRacecarNameValidity(names);
-
-    if (isValid) {
+    if (await this.checkRacecarNameValidity(names)) {
       return names;
     } else {
       throw new Error(error.NOT_VALID_NAME);
