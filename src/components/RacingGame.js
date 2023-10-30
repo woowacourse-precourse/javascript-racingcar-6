@@ -9,6 +9,7 @@ class RacingGame {
     this.userInputTryCount = null;
     this.randomNumberForRace = null;
     this.allRaceForAllCar = [];
+    this.raceResultMessage = OTHERS.empty;
   }
 
   // CONTROLLER
@@ -106,7 +107,17 @@ class RacingGame {
   }
 
   //MODEL
-  getRaceResultMessage() {}
+  getRaceResultMessage() {
+    for (let i = 0; i < this.userInputTryCount; i++) {
+      for (let j = 0; j < this.userInputCarCount; j++) {
+        this.raceResultMessage += `${this.userInputCarNameList[j]} ${OTHERS.colon} ${this.allRaceForAllCar[j][i]}${OTHERS.lineBreak}`;
+      }
+
+      if (i < this.userInputTryCount - 1) {
+        this.raceResultMessage += OTHERS.lineBreak;
+      }
+    }
+  }
 
   //MODEL
   getWinnerMessage() {}
