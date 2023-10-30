@@ -17,23 +17,6 @@ const mockRandoms = (numbers) => {
   }, MissionUtils.Random.pickNumberInRange);
 };
 
-describe('자동차이름 등록 테스트', () => {
-  let refree;
-
-  beforeEach(() => {
-    refree = new Refree();
-  });
-
-  test.each([[['자동차', '자동ㅅㅂ']], [['자동차', '시발']]])(
-    '자동차 이름에 욕설이 포함시 예외 처리',
-    async (inputs) => {
-      expect(() => {
-        refree.registerCars(inputs);
-      }).toThrow('[ERROR]');
-    }
-  );
-});
-
 describe('1라운드 진행시 결과 테스트', () => {
   let refree;
   const MOVING_FORWARD = 4;

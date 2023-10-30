@@ -38,3 +38,26 @@ describe('자동차 이동 테스트', () => {
     expect(car.record()).toEqual(['타요', 8]);
   });
 });
+
+describe('자동차이름 테스트', () => {
+  test('자동차 이름이 ㅅㅂ 인 경우 유효성 검사', () => {
+    expect(() => {
+      const input = 'ㅅㅂ';
+      new Car(input);
+    }).toThrow('[ERROR]');
+  });
+
+  test('자동차 이름이 시발자동차 인 경우 유효성 검사', () => {
+    expect(() => {
+      const input = '시발자동차';
+      new Car(input);
+    }).toThrow('[ERROR]');
+  });
+
+  test('자동차 이름이 자동차 인 경우 유효성 검사', () => {
+    expect(() => {
+      const input = '자동차';
+      new Car(input);
+    }).not.toThrow('[ERROR]');
+  });
+});
