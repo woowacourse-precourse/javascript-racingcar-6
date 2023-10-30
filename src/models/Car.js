@@ -1,5 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-
+import { ERROR_MESSAGE } from "../constants";
 class Car {
   constructor(name) {
     this.validateName(name);
@@ -9,11 +9,11 @@ class Car {
 
   validateName(name) {
     if (name.length > 5) {
-      throw new Error("[ERROR] 자동차의 이름은 5자 이하만 가능합니다.");
+      throw new Error(`[ERROR] ${ERROR_MESSAGE.invalidLength(5)}`);
     }
 
     if (name === "") {
-      throw new Error("[ERROR] 자동차의 이름은 필수입니다.");
+      throw new Error(`[ERROR] ${ERROR_MESSAGE.isCarNameNull}`);
     }
   }
 

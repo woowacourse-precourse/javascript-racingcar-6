@@ -1,5 +1,6 @@
 import InputView from "../src/views/InputView";
 import { MissionUtils } from "@woowacourse/mission-utils";
+import { ERROR_MESSAGE } from "../src/constants";
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -32,7 +33,7 @@ describe("InputView 클래스 테스트", () => {
 
     // when then
     await expect(inputView.getCarNamesUserInput()).rejects.toThrow(
-      "[ERROR] 1개 이상의 자동차 이름을 입력해주세요"
+      `[ERROR] ${ERROR_MESSAGE.isCarListNull}`
     );
   });
 
@@ -57,7 +58,7 @@ describe("InputView 클래스 테스트", () => {
 
     // when then
     await expect(inputView.getTotalRoundUserInput()).rejects.toThrow(
-      "[ERROR] 정수를 입력해주세요"
+      `[ERROR] ${ERROR_MESSAGE.isNotNumber}`
     );
   });
 });

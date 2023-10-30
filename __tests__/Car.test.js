@@ -1,6 +1,6 @@
 import Car from "../src/models/Car";
 import { MissionUtils } from "@woowacourse/mission-utils";
-
+import { ERROR_MESSAGE } from "../src/constants";
 const mockRandoms = (numbers) => {
   MissionUtils.Random.pickNumberInRange = jest.fn();
   numbers.reduce((acc, number) => {
@@ -26,7 +26,7 @@ describe("Car 클래스 테스트", () => {
 
     // when & then
     expect(() => new Car(name)).toThrow(
-      "[ERROR] 자동차의 이름은 5자 이하만 가능합니다."
+      `[ERROR] ${ERROR_MESSAGE.invalidLength(5)}`
     );
   });
 
@@ -35,7 +35,9 @@ describe("Car 클래스 테스트", () => {
     const name = "";
 
     // when & then
-    expect(() => new Car(name)).toThrow("[ERROR] 자동차의 이름은 필수입니다.");
+    expect(() => new Car(name)).toThrow(
+      `[ERROR] ${ERROR_MESSAGE.isCarNameNull}`
+    );
   });
 
   test("move메서드가 호출되었을 때 4이상의 값을 받으면 position을 1 증가시킨다.", () => {
