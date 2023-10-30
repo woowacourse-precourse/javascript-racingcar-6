@@ -11,6 +11,7 @@ __tests__
 ├── unit.ErrorTest.js
 ├── unit.createExecutionLogTest.js
 ├── unit.getGoAndStop.js
+├── unit.identifyWinner.js
 ├── unit.receiveCarNameTest.js
 └── unit.receiveGameCountTest.js
 docs
@@ -155,6 +156,7 @@ unit.receiveCarNameTest.js
 unit.receiveGameCOuntTest.js
 unit.createExecutionLog.js
 unit.getGoAndStop.js
+unit.identifyWinner.js
 
 ---
 
