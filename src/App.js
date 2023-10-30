@@ -28,13 +28,14 @@ class App {
   }
 
   async CheckMove() {
+  CheckMove() {
 
     const num = Random.pickNumberInRange(0, 9);
     
     if (num >= 4) {
-      return true;
+      return '-';
     } else {
-      return false;
+      return '';
     }
 
   }
