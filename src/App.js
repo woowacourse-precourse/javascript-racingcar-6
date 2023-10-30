@@ -1,8 +1,12 @@
-import { Console, Random } from "@woowacourse/mission-utils";
+import { Console } from "@woowacourse/mission-utils";
+import { isInvalidTryNumber, getRandomNumber, isMovable } from "./util";
 
+const MAX_CAR_NAME_LENGTH = 5;
+const INITIAL_RACING_COUNT = 0;
+const INITIAL_TRY_NUMBER = 0;
 class App {
   carNames = [];
-  tryNumber = 0;
+  tryNumber = INITIAL_TRY_NUMBER;
   racingCounts = {};
 
   async getCarName() {
@@ -11,10 +15,10 @@ class App {
     );
     this.carNames = receivedCarNames.split(",");
     this.carNames.forEach((carName) => {
-      if (carName.length > 5) {
+      if (carName.length > MAX_CAR_NAME_LENGTH) {
         throw new Error("[ERROR]: 자동차 이름은 5자 이하로 입력해주세요");
       }
-      this.racingCounts[carName] = 0;
+      this.racingCounts[carName] = INITIAL_RACING_COUNT;
     });
   }
 
@@ -22,8 +26,10 @@ class App {
     const receivedTryNumber = await Console.readLineAsync(
       "시도할 횟수는 몇 회인가요?\n"
     );
-    //TODO 숫자가 아니거나 0 미만의 숫자를 입력했을 때 에러 반환
     this.tryNumber = Number(receivedTryNumber);
+    if (isInvalidTryNumber(this.tryNumber)) {
+      throw new Error("[ERROR]: 시도 횟수는 0보다 큰 숫자로 입력해주세요");
+    }
   }
 
   async play() {
@@ -31,41 +37,60 @@ class App {
     await this.getTryNumber();
     Console.print("실행 결과");
 
-    while (this.tryNumber > 0) {
-      Object.keys(this.racingCounts).forEach((key) => {
-        if (this.isMovable(this.getRandomNumber())) {
-          this.racingCounts[key] = this.racingCounts[key] + 1;
-        }
-      });
-      Object.keys(this.racingCounts).forEach((key) => {
-        Console.print(`${key} : ${"-".repeat(this.racingCounts[key])}`);
-      });
-      Console.print("");
-      this.tryNumber = this.tryNumber - 1;
+    this.doRace();
+
+    Console.print(`최종 우승자: ${this.getWinner()}`);
+  }
+
+  doRace() {
+    while (!this.isCompletedRace()) {
+      this.moveCars();
+      this.showRacingStatus();
+      this.decreaseTryNumber();
     }
+  }
 
-    const { winner } = Object.entries(this.racingCounts).reduce(
-      ({ winner, maxRacingCount }, [key, value]) => {
-        if (maxRacingCount < value) {
-          return { winner: [key], maxRacingCount: value };
-        } else if (maxRacingCount === value) {
-          return { winner: [...winner, key], maxRacingCount };
-        } else {
-          return { winner, maxRacingCount };
-        }
-      },
-      { winner: [], maxRacingCount: -1 }
+  isCompletedRace() {
+    return this.tryNumber <= 0;
+  }
+
+  decreaseTryNumber() {
+    this.tryNumber = this.tryNumber - 1;
+  }
+
+  increaseRacingCountsBy(carName) {
+    this.racingCounts[carName] = this.racingCounts[carName] + 1;
+  }
+
+  moveCars() {
+    Object.keys(this.racingCounts).forEach((carName) => this.moveCar(carName));
+  }
+
+  moveCar(carName) {
+    if (isMovable(getRandomNumber())) {
+      this.increaseRacingCountsBy(carName);
+    }
+  }
+
+  showRacingStatus() {
+    Object.keys(this.racingCounts).forEach((carName) =>
+      Console.print(this.getStatus(carName))
     );
-
-    Console.print(`최종 우승자: ${winner.join(", ")}`);
+    Console.print("");
   }
 
-  getRandomNumber() {
-    return Random.pickNumberInRange(0, 9);
+  getStatus(carName) {
+    return `${carName} : ${"-".repeat(this.racingCounts[carName])}`;
   }
 
-  isMovable(number) {
-    return number >= 4;
+  getWinner() {
+    const maxRacingCount = Math.max(...Object.values(this.racingCounts));
+    const winner = Object.entries(this.racingCounts)
+      .filter(([, racingCount]) => racingCount === maxRacingCount)
+      .map(([carName]) => carName)
+      .join(", ");
+
+    return winner;
   }
 }
 
