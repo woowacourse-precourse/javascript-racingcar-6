@@ -42,7 +42,7 @@ class App {
   runOneCycle(carArr) {
     carArr.forEach(el => {
       if(this.moveForward()) el.oneStepForward();
-      this.printMsg(`${el.name}: ${'-'.repeat(el.step)}`);
+      this.printMsg(`${el.name} : ${'-'.repeat(el.step)}`);
     });
   }
 
