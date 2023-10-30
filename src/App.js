@@ -67,15 +67,13 @@ class App {
     return Random.pickNumberInRange(0, 9);
   }
 
-  moveForward() {
+  moveForward(key, value, racingCars) {
     const MINIMUM_FORWARD_VALUE = 4;
     let randomNum = this.getRandomNumber();
 
-    if (randomNum > MINIMUM_FORWARD_VALUE) {
-      return 1;
+    if (randomNum >= MINIMUM_FORWARD_VALUE) {
+      racingCars[key] = value += 1;
     }
-
-    return 0;
   }
 
   setGameResult(racingCars, count) {
