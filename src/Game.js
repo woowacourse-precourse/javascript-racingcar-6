@@ -13,6 +13,10 @@ class Game {
 
   #input;
 
+  #gameResultQuery = '\n실행 결과';
+
+  #winnersQuery = '최종 우승자 : ';
+
   constructor() {
     this.#cars = [];
     this.#trialCount = 0;
@@ -34,11 +38,12 @@ class Game {
   }
 
   #printResult() {
-    Console.print('실행 결과\n');
+    Console.print(this.#gameResultQuery);
     for (let i = 0; i < this.#trialCount; i += 1) {
       this.#executeRound();
+      Console.print('');
     }
-    Console.print(`최종 우승자 : ${this.#winners.join(', ')}`);
+    Console.print(`${this.#winnersQuery}${this.#winners.join(', ')}`);
   }
 
   #executeRound() {
@@ -48,8 +53,6 @@ class Game {
       if (this.#winningPosition < car.getPosition()) this.#winningPosition = car.getPosition();
     });
     this.#winners = this.#cars.filter((car) => car.position === this.#winningPosition);
-
-    Console.print('\n');
   }
 }
 
