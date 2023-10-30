@@ -1,5 +1,6 @@
 import getPlayInfo from "./getPlayInfo";
 import playGame from "./playGame";
+import printResult from "./printResult";
 
 const player = {};
 class App {
@@ -12,6 +13,7 @@ class App {
     });
     for (let i = 0; i < TRIALS; i++) {
       playGame(player);
+      printResult(player);
     }
   }
 }
