@@ -27,11 +27,11 @@
 >   - [ ] 자동차 이름 입력
 >     - [ ] 안내메시지 출력
 >     - [x] 사용자 입력
->     - [ ] 유효성 검사 (예외처리)
+>     - [x] 유효성 검사 (예외처리)
 >   - [ ] 시도 횟수 입력 (안내메시지 출력 및 사용자 입력)
 >     - [ ] 안내메시지 출력
->     - [ ] 사용자 입력
->     - [ ] 유효성 검사 (예외처리)
+>     - [x] 사용자 입력
+>     - [x] 유효성 검사 (예외처리)
 > </br></br>
 > - [ ] 게임 진행
 >   - [ ] 시도 횟수만큼 반복
@@ -100,7 +100,13 @@
 > ### Functions
 > - `setCars()` : 레이싱카 셋팅
 >   - `carNames = this.#inputCarNames()`
->   - `carNames.forEach((name) => { this.#cars.push(new Car(name)) })`
+>   - `carNames.forEach((name) => { })`
+>     - `this.#validateName(name)`
+>     - `this.#cars.push(new Car(name))`
+> </br></br>
+> - `#validateName` `(String name)` : 이름 유효성 검사
+>   - `name.length > MAX_NAME_LENGTH` : 길이 검사
+>   - `Strings.ERROR_NAME_LENGTH` : 에러 발생`
 > </br></br>
 > - `Array<String>` `#inputCarNames()` : 레이싱카 이름 입력
 > </br></br>
@@ -148,12 +154,7 @@
 > </br></br>
 > ### Functions
 > - `constructor` `(String name)` : 생성자
->   - `this.#validateName()`
 >   - `this.#name = name`
-> </br></br>
-> - `#validateName()` : 이름 유효성 검사
->   - `this.#name.length <= MAX_NAME_LENGTH` : 길이 검사
->   - `Strings.ERROR_NAME_LENGTH` : 에러 발생
 > </br></br>
 > - `move()` : 1만큼 이동
 >   - `this.#distance++;`
