@@ -5,7 +5,7 @@ class App {
   validateCarNames = (carNames) => {
     for(let carName of carNames) {
       if(carName.length > 5) {
-        throw new Error("[Error] 자동차 이름은 5자 이하만 가능합니다.");
+        throw new Error("[ERROR] 자동차 이름은 5자 이하만 가능합니다.");
       }
     }
   }
