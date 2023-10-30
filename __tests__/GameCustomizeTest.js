@@ -73,6 +73,7 @@ describe('비동기 유저 입력값 유효성 및 오류 잡아내는지 테스
   ])('자동차 이름 예외 테스트', async (inputs) => {
 
     mockQuestions2(inputs);
+    
     await expect(getPlayersName()).rejects.toThrow("[ERROR]");
   })
 

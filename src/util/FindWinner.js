@@ -3,7 +3,7 @@ export const findWinner = (playersArray, scoreArray) => {
 
   const playerWithScoreArray = playersArray.map((player, index) => {
     return [player, scoreArray[index]];
-  })
+  });
 
   const racingBoard = Object.fromEntries(playerWithScoreArray);
 
@@ -15,4 +15,4 @@ export const findWinner = (playersArray, scoreArray) => {
   }
 
   return winnersArray;
-}
+};

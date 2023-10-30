@@ -8,4 +8,4 @@ export const randomArrayGenerator = (arrayLength) => {
   }
 
   return computer;
-}
+};

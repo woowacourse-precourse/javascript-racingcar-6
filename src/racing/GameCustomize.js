@@ -9,7 +9,7 @@ export const getPlayersName = async () => {
   checkError.name(playersArray);
 
   return playersArray.split(',');
-}
+};
 
 export const getAttemptNumber = async () => {
   const attemptNumber = await Console.readLineAsync(`${GAME_MESSEAGE.inputAttempt}\n`);
@@ -20,5 +20,5 @@ export const getAttemptNumber = async () => {
   Console.print('');
 
   return Number(attemptNumber);
-}
+};
 

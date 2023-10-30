@@ -11,4 +11,4 @@ export const ERROR_MESSEAGE = Object.freeze({
   commaMisuse : '[ERROR] 쉼표(,)의 사용이 잘못되었습니다.',
   attempt : '[ERROR] 올바른 숫자 형식이 아닙니다.',
   nameDuplication : '[ERROR] 중복된 자동차 이름이 포함되어 있습니다.',
-})
+});
