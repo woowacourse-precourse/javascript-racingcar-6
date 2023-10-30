@@ -6,7 +6,7 @@ export default class Car {
         
     }
     run() { 
-        if (MissionUtils.Random.pickNumberInRange(0, 9)>=4){
+        if (MissionUtils.Random.pickNumberInRange(0, 9)>3){
             this.forward++;
         }       
         return this.forword;

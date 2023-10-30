@@ -12,7 +12,7 @@ class App {
     return carsWithMaxForward;
   }
   roundInputCheck(round) {
-    const intRound = pareInt(round);
+    const intRound = parseInt(round);
     if(isNaN(intRound)) {
       throw new Error("[ERROR] 숫자를 입력해주세요.");
     }
@@ -47,7 +47,7 @@ class App {
       await MissionUtils.Console.print("");
     }
     const members = this.findCarsWithMaxForward(cars)
-    await MissionUtils.Console.print("최종 우승자 : "+members.map((member)=>member).join(', ')); 
+    await MissionUtils.Console.print("최종 우승자 : "+members.map((member)=>member.name).join(', ')); 
     
   }
 
