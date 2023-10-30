@@ -28,7 +28,7 @@ function goOrStay(carName, Go, carGoCount) {
 }
 function printGoProgress(carGoCount, car) {
   let carGoCountForPrint = [];
-  let winnerForPirnt = "";
+  let winnerForPrint = "";
   let max = 0;
   let winner = [];
   car.map((e, i) => {
@@ -42,26 +42,30 @@ function printGoProgress(carGoCount, car) {
     for (let j = 0; j < carGoCount[e]; j++) carGoCountForPrint[i] += "-";
     Console.print(`${e} : ${carGoCountForPrint[i]}`);
   });
+  Console.print("");
   car.map((e) => {
     if (max == carGoCount[e] && winner[0] != e) winner.push(e);
   });
 
   winner.map((e, i) => {
-    if (i != 0) winnerForPirnt += ", ";
-    winnerForPirnt += e;
+    if (i != 0) winnerForPrint += ", ";
+    winnerForPrint += e;
   });
-  Console.print(`최종 우승자 : ${winnerForPirnt}`);
+
+  return winnerForPrint;
 }
 
 function playGame(tryNum, carGoCount, car) {
   let Go = "";
+  let winner = "";
   for (let i = 0; i < tryNum; i++) {
     for (let j = 0; j < car.length; j++) {
       Go = getRandomNum();
       goOrStay(car[j], Go, carGoCount);
     }
+    winner = printGoProgress(carGoCount, car); //각 차의 진행상황 출력하는 코드
   }
-  printGoProgress(carGoCount, car); //각 차의 진행상황 출력하는 코드
+  Console.print(`최종 우승자 : ${winner}`);
 }
 class App {
   async play() {
