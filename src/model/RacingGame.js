@@ -5,7 +5,7 @@
 class RacingGame {
   /**
    *
-   * @param {RacingCar[]} cars
+   * @param {RacingCar[]} racingCars
    */
   constructor(racingCars) {
     this.racingCars = racingCars
@@ -18,6 +18,10 @@ class RacingGame {
   getWinner() {
     const maxDistance = Math.max(...this.racingCars.map((racingCar) => racingCar.getDistance()))
     return this.racingCars.filter((racingCar) => racingCar.getDistance() === maxDistance)
+  }
+
+  getRacingCars() {
+    return this.racingCars
   }
 }
 

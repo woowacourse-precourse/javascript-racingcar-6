@@ -1,7 +1,11 @@
 import { Random } from '@woowacourse/mission-utils'
-import { GAME_RULE } from '../constants'
+import { GAME_RULE } from '../constants/index.js'
 
 class RacingCar {
+  /**
+   *
+   * @param {string} name
+   */
   constructor(name) {
     this.name = name
     this.fowardCount = 0
