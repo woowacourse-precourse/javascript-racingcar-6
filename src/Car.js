@@ -1,4 +1,4 @@
-const { Console } = require('@woowacourse/mission-utils');
+import { Console } from '@woowacourse/mission-utils';
 
 async function getCarNames() {
     try {
@@ -17,7 +17,7 @@ async function getCarNames() {
     }
 }
 
-async function main() {
+export async function main() {
     const carNames = await getCarNames();
 
     if (carNames === null) {
@@ -26,5 +26,3 @@ async function main() {
 
     console.log(`입력한 자동차 이름: ${carNames.join(', ')}`);
 }
-
-module.exports = { main };
