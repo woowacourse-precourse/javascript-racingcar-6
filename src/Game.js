@@ -1,26 +1,21 @@
-import { Console } from '@woowacourse/mission-utils';
 import Players from './Players.js';
-import { MESSAGE } from './Constant.js';
-import CheckError from './CheckError.js';
+import Input from './Input.js';
 
 class Game {
   #players;
   #numberOfGames;
 
   async play() {
-    await this.setPlayerName();
+    await this.setPlayerNames();
+    await this.setNumberOfGames();
   }
 
-  async setPlayerName() {
-    const players = await Console.readLineAsync(MESSAGE.NAME_INPUT);
-    this.#players = new Players(players);
+  async setPlayerNames() {
+    this.#players = new Players(await Input.returnArrayOfPlayers());
   }
 
   async setNumberOfGames() {
-    const input = await Console.readLineAsync(MESSAGE.NUMBER_INPUT);
-    const trimmed = Number(input.trim());
-    CheckError.isNumber(trimmed);
-    this.#numberOfGames = trimmed;
+    this.#numberOfGames = await Input.returnNumberOfGames();
   }
 }
 

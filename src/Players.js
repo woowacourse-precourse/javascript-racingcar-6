@@ -5,11 +5,7 @@ class Players {
   #gameResult;
 
   constructor(names) {
-    this.#names = names.split(',').map((name) => {
-      const trimmed = name.trim();
-      CheckError.isLessThanMaxNameLength(trimmed);
-      return trimmed;
-    });
+    this.#names = names;
     this.#gameResult = [...this.#names].fill(0);
   }
 
