@@ -4,8 +4,10 @@ import {
   getNotIntegerErrorMessage,
 } from '../constants/errorMessages';
 
+const removeWhiteSpaces = (string) => string.split(' ').join('');
+
 const isNameLengthLessThanOrEqualN = (n) => (name) => {
-  if (name.length === 0) {
+  if (removeWhiteSpaces(name).length === 0) {
     throw new Error(getNameBlankErrorMessage());
   }
 
