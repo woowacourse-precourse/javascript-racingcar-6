@@ -1,7 +1,7 @@
-import RacingCarGameController from './controller/RacingCarGameController.js';
+import RacingGameController from './controller/RacingGameController.js';
 
 class App {
-  #racingGameController = new RacingCarGameController();
+  #racingGameController = new RacingGameController();
 
   async play() {
     await this.#racingGameController.run();

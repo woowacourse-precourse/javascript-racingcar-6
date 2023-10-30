@@ -8,7 +8,8 @@ import { InputView, OutputView } from '../views/index.js';
 
 import RacingGameService from '../service/RacingCarGameService.js';
 
-class RacingCarGameController {
+// TODO: 네이밍 고민해보기
+class RacingGameController {
   #inputView = InputView;
 
   #racingGameService = RacingGameService;
@@ -19,6 +20,7 @@ class RacingCarGameController {
     await this.#processRacingGame();
   }
 
+  // TODO: 세부적으로 분리할 부분 찾아보기
   async #processRacingGame() {
     const racingCarNames = await this.#requireRacingCarNames();
     const moveCount = await this.#requireRacingCarMoveCount();
@@ -42,6 +44,7 @@ class RacingCarGameController {
     return this.#inputView.readRacingCarNames();
   }
 
+  // TODO: requireRacingCarNames와 함께 추상화 할 수 있는 방법 찾아보기
   async #requireRacingCarMoveCount() {
     const inputMoveCount = await this.#requireInputRacingCarMoveCount();
     const moveCount = Number(inputMoveCount);
@@ -56,4 +59,4 @@ class RacingCarGameController {
   }
 }
 
-export default RacingCarGameController;
+export default RacingGameController;
