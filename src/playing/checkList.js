@@ -14,7 +14,9 @@ const validateNames = (humanInputName) => {
 }
 
 const validateParseNumber = (racingTrackInput) => {
-  if (Number.isNaN(Number(racingTrackInput))) throw new Error('[ERROR] 숫자를 입력해 주세요.')
+  const trimmedRacingTrackInput = racingTrackInput.trim();
+  if (trimmedRacingTrackInput === '') throw new Error('[ERROR] 숫자를 입력해 주세요.')
+  if (Number.isNaN(Number(trimmedRacingTrackInput))) throw new Error('[ERROR] 숫자만 입력해 주세요.')
 
   return parseInt(racingTrackInput, 10);
 }
