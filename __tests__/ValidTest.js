@@ -1,3 +1,4 @@
+import { MissionUtils } from "@woowacourse/mission-utils";
 import { getCarNames, getTryCount } from "../src/views/InputView";
 import { isValidInput, isValidCount } from "../src/models/IsValidInput";
 
@@ -37,7 +38,7 @@ describe('사용자의 입력값에 대한 유효성 테스트', () => {
 
         // then
         const name = await getCarNames();
-        expect(() => isValidInput(name)).toThrowError("[ERROR]");
+        expect(() => isValidInput(name)).toThrow(/^(\[ERROR\])/);
     });
 
     //시도횟수 유효성 검사
