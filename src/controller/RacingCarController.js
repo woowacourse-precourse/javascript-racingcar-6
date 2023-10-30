@@ -1,8 +1,8 @@
-import Input from "../view/Input.js";
-import Output from "../view/Output.js";
-import CarMoving from "../model/CarMoving.js";
-import CarListCheck from "../validate/CarListCheck.js";
-import TryNumberCheck from "../validate/TryNumberCheck.js";
+import Input from '../view/Input.js';
+import Output from '../view/Output.js';
+import CarMoving from '../model/CarMoving.js';
+import CarListCheck from '../validate/CarListCheck.js';
+import TryNumberCheck from '../validate/TryNumberCheck.js';
 
 class RacingCarController {
   constructor() {
@@ -17,7 +17,7 @@ class RacingCarController {
     try {
       this.carNames = await this.setCarName();
       this.tryNumber = await this.setTryNumber();
-      this.winnerList = Array.from({ length: this.carNames.length }, () => "");
+      this.winnerList = Array.from({ length: this.carNames.length }, () => '');
       await this.startRacing();
       this.printFinalResult(this.getFinalWinnerName());
     } catch (error) {
@@ -48,7 +48,7 @@ class RacingCarController {
   //승리자 개수 증가시키기
   async countWinner(winnerIndexList) {
     await winnerIndexList.forEach((winnerIndex) => {
-      this.winnerList[winnerIndex] += "-";
+      this.winnerList[winnerIndex] += '-';
     });
     this.printEachResult();
   }

@@ -1,9 +1,9 @@
-import { ERROR } from "../util/constants.js";
+import { ERROR } from '../util/constants.js';
 
 class CarListCheck {
   validate(inputCarList) {
     try {
-      const carList = inputCarList.split(",");
+      const carList = inputCarList.split(',');
       this.checkCarList(carList, inputCarList);
       return carList;
     } catch (error) {

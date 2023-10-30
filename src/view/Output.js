@@ -1,5 +1,5 @@
-import { Console } from "@woowacourse/mission-utils";
-import { MESSAGE } from "../util/constants.js";
+import { Console } from '@woowacourse/mission-utils';
+import { MESSAGE } from '../util/constants.js';
 
 class Output {
   racingStartMessage() {

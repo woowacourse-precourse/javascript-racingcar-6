@@ -1,4 +1,4 @@
-import { ERROR } from "../util/constants.js";
+import { ERROR } from '../util/constants.js';
 
 class TryNumberCheck {
   validate(tryNumber) {

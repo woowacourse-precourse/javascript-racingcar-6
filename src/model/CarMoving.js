@@ -1,4 +1,4 @@
-import { Random } from "@woowacourse/mission-utils";
+import { Random } from '@woowacourse/mission-utils';
 
 class CarMoving {
   //자동차 개수만큼 랜덤 돌리기
