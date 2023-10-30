@@ -72,7 +72,9 @@ class App {
     }
 
     printWinner(cars) {
-        MissionUtils.Console.print('최종 우승자 : vin');
+        const max = Math.max(...Object.values(cars));
+        const winners = Object.keys(cars).filter((name) => cars[name] === max);
+        MissionUtils.Console.print(`최종 우승자 : ${winners.join(', ')}`);
     }
 }
 
