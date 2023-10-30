@@ -36,9 +36,10 @@ export default class Controller {
     this.createCar(carNameList);
 
     const tryCount = await InputView.tryCount();
-    Validation.tryCountInput(tryCount);
+    const tryCountNumber = Number(tryCount);
+    Validation.tryCountInput(tryCountNumber);
     OutputView.printNewLine();
-    this.moveCars(tryCount);
+    this.moveCars(tryCountNumber);
   }
 }
 
