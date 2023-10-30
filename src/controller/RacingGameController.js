@@ -1,5 +1,6 @@
 import RacingCar from '../model/RacingCar.js';
 import RacingGame from '../model/RacingGame.js';
+import { validateMoveCount } from '../utils/validate.js';
 import inputView from '../view/inputView.js';
 
 class RacingGameController {
@@ -34,6 +35,7 @@ class RacingGameController {
   /** 이동 횟수 입력 함수 */
   async inputMoveCount() {
     const count = await inputView.readMoveCount();
+    validateMoveCount(Number(count));
   }
 }
 
