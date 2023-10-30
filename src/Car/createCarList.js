@@ -1,4 +1,4 @@
-import Car from "./Car/car";
+import Car from "./car";
 
 function createCarList(carNameList) {
   let carList = [];
