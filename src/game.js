@@ -12,4 +12,11 @@ class Game {
       this.printStatus();
     }
   }
+
+  printStatus() {
+    this.cars.forEach((car) => {
+      Console.print(`${car.name} : ${'-'.repeat(car.position)}`);
+    });
+    Console.print(''); // 줄 바꿈
+  }
 }
