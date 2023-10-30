@@ -55,10 +55,20 @@ describe("세부 기능 테스트", () => {
       await expect(app.play()).rejects.toThrow("[ERROR]");
     });
 
-    test("시도 횟수가 1미만인 경우에 대해 예외 처리를 하는가", async () => {
+    test("시도 횟수 입력 값이 1미만인 경우에 대해 예외 처리를 하는가", async () => {
       const app = new App();
 
       const inputs = ["자동차1, 자동차2", 0];
+
+      mockQuestions(inputs);
+
+      await expect(app.play()).rejects.toThrow("[ERROR]");
+    });
+
+    test("시도 횟수 입력 값이 1000을 초과할 경우에 대해 예외 처리를 하는가", async () => {
+      const app = new App();
+
+      const inputs = ["자동차1, 자동차2", 1001];
 
       mockQuestions(inputs);
 

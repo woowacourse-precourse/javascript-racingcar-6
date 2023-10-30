@@ -10,7 +10,7 @@ class Race {
   static #MIN_CAR_COUNT = 2;
   static #MAX_CAR_COUNT = 100;
   static #MIN_ROUND_NUMBER = 1;
-  static #MAX_ROUND_NUMBER = 100;
+  static #MAX_ROUND_NUMBER = 1000;
 
   #racingCars = [];
   #roundNumber = 0;
