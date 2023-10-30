@@ -7,9 +7,9 @@
     - [x]  중복된 이름이 있으면 예외 처리
 
 - [x]  시도할 횟수 입력
-    - [ ]  입력받은 횟수가 1이상이 아닐 경우 예외 처리
-    - [ ]  숫자가 아닐 경우 예외 처리
-    - [ ]  정수가 아닐 경우 예외 처리
+    - [x]  입력받은 횟수가 1이상이 아닐 경우 예외 처리
+    - [x]  숫자가 아닐 경우 예외 처리
+    - [x]  정수가 아닐 경우 예외 처리
 
 - [ ]  0~9까지의 정수 중 한 개의 정수 선택해서 무작위 값 구하기
     - [ ]  • `[@woowacourse/mission-utils](https://github.com/woowacourse-projects/javascript-mission-utils)` 라이브러리의 `Random.pickNumberInRange()` 사용
