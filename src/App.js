@@ -8,6 +8,7 @@ export default class App {
 
   async play() {
     await this.getCarsName();
+    await this.getTotalRound();
   }
 
   async getCarsName() {
@@ -16,6 +17,12 @@ export default class App {
     );
     const validCars = isValidCars(cars);
     this.player = validCars;
+  }
+
+  async getTotalRound() {
+    const round = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+    const validRound = isValidRound(round);
+    this.race = validRound;
   }
 }
 
@@ -36,4 +43,18 @@ function isValidCars(cars) {
   }
 
   return underFiveDigitCars;
+}
+
+function isValidRound(round) {
+  const roundNumber = Number(round);
+
+  if (isNaN(round)) {
+    throw new Error("[ERROR] 시도할 횟수는 숫자만 가능합니다.");
+  }
+
+  if (!Number.isInteger(roundNumber)) {
+    throw new Error("[ERROR] 시도할 횟수는 자연수만 가능합니다.");
+  }
+
+  return roundNumber;
 }
