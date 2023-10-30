@@ -65,6 +65,11 @@ class App {
       if(nameList.length===1){
         throw new Error('[ERROR] 한대의 자동차만 입력되었습니다.');
       }
+      // 4. 이름이 5자 이하가 아닌경우
+      if(carName.length>5){
+        throw new Error('[ERROR] 자동차의 이름이 5자 이상입니다');
+
+      }
       let car = new Car(carName);
       carArray.push(car);
     });
