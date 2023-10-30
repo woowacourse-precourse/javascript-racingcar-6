@@ -7,7 +7,7 @@
 - [x] get random value until end (경기 종료 전까지 랜덤 값 get)
   - [x] advance of game (전진)
   - [x] end of game (게임 종료)
-- [ ] print racing game result (경주 실행 결과 출력)
+- [x] print racing game result (경주 실행 결과 출력)
 - [ ] separate multiple winners (우승자 구분)
 - [ ] handle exception (예외 처리)
 
