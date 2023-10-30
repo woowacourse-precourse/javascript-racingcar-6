@@ -10,13 +10,13 @@ export const startRound = function startRoundAndCalculateScore(
   });
 };
 
-export const printRoundResult = function printRoundResultInSpecificFormat(
+export const getRoundResult = function returnRoundResultInSpecificFormat(
   namesArray,
   scoreObject
 ) {
-  namesArray.forEach(car => {
+  return namesArray.map(car => {
     const scoreCount = '-'.repeat(scoreObject[`${car}`]);
-    MissionUtils.Console.print(`${car} : ${scoreCount}`);
+    return `${car} : ${scoreCount}`;
   });
 };
 

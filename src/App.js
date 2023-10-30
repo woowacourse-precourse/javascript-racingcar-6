@@ -1,7 +1,7 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import {
   startRound,
-  printRoundResult,
+  getRoundResult,
   getWinners
 } from './modules/dealWithScore.js';
 import { REGEX } from './modules/constants.js';
@@ -11,18 +11,18 @@ class App {
     const namesArray = await this.getCarNames();
     const rounds = await this.getRounds();
 
-    MissionUtils.Console.print('\n실행 결과');
-
     // 점수를 저장할 객체
     const scoreObject = {};
     namesArray.forEach(carName => {
       scoreObject[`${carName}`] = 0;
     });
 
+    MissionUtils.Console.print('\n실행 결과');
+
     for (let i = 0; i < rounds; i++) {
       startRound(namesArray, scoreObject);
-      printRoundResult(namesArray, scoreObject);
-      MissionUtils.Console.print('\n');
+      const roundResult = getRoundResult(namesArray, scoreObject);
+      MissionUtils.Console.print(`${roundResult[i]}\n`);
     }
 
     const winnersArray = getWinners(namesArray, scoreObject);
