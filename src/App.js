@@ -57,10 +57,20 @@ class App {
     return template;
   }
 
+  async repeatProcess(attempts, resultTemplate) {
+    const advanceConditions = this.generateAdvanceConditions(resultTemplate);
+
+    for (let i = 0; i < attempts; i++) {
+      this.updateResult(resultTemplate, advanceConditions);
+    }
+
+    Console.print(resultTemplate.join('\n') + '\n');
+  }
+
   generateAdvanceConditions(racecarNames) {
     const advanceConditions = [];
 
-    for (let i = 0; i < racecarNames; i++) {
+    for (let i = 0; i < racecarNames.length; i++) {
       advanceConditions.push(Random.pickNumberInRange(num.LOWER_LIMIT, num.UPPER_LIMIT));
     }
 
