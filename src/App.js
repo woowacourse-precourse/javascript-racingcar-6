@@ -1,12 +1,12 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Console, Random } from "@woowacourse/mission-utils";
 
 const NAME_PROMPT = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
 const NUMBER_PROMPT = "시도할 횟수는 몇 회인가요?";
+const MOVING_RESULT = "실행 결과";
+const MOVE = "-";
 
 class App {
-  /** 자동차 이름, 횟수 입력 
-   * param: -
-  */
+  /** 자동차 이름, 횟수 입력 */
   nameAndNumberInput = async () => {
     // 이름 입력
     Console.print(NAME_PROMPT);
@@ -54,6 +54,21 @@ class App {
       })
     });
   };
+
+  /** 무작위 값을 생성해 전진 여부 확인 */
+  isMoveForward = (namesArray) => {
+    let movingList = [];
+
+    for (let i = 0; i < namesArray.length; i++) {
+      let randomNum = Random.pickNumberInRange(0, 9);
+      // 랜덤값이 적절한지 검증하는 코드 추가
+
+      if (randomNum >= 4) movingList[i] = true;
+      if (randomNum < 4) movingList[i] = false;
+    }
+
+    return movingList;
+  }
 
 
   async play() {
