@@ -16,6 +16,10 @@ class App {
       return `${car} : `;
     });
 
+    Console.print('시도할 횟수는 몇 회인가요?');
+    const COUNT = await Console.readLineAsync('');
+    this.validateCountNumber(COUNT);
+
 
   validateCarNameLength(carList) {
     carList.forEach((car) => {
@@ -23,6 +27,16 @@ class App {
         throw new Error('[ERROR] 자동차 이름은 5자 이하로 입력해 주세요.');
       }
     });
+  }
+
+  validateCountNumber(count) {
+    if (count === '0') {
+      throw new Error('[ERROR] 시도할 횟수는 1회 이상 입력해 주세요');
+    }
+
+    if (/[^1-9]/.test(count)) {
+      throw new Error('[ERROR] 숫자만 입력이 가능합니다.');
+    }
   }
 
 }
