@@ -7,4 +7,15 @@ const getCanMove = () => {
   return true;
 };
 
-export default getCanMove;
+const playOneRound = carDistanceList => {
+  carDistanceList.forEach(car => {
+    if (getCanMove) {
+      const updateCar = car;
+      updateCar.distance += '-';
+      return updateCar;
+    }
+    return car;
+  });
+};
+
+export default playOneRound;
