@@ -1,4 +1,4 @@
-import { getCarName,getRacingNumber,goRacing,printDistance,moveForward } from "../src/App.js";
+import { getCarName,getRacingNumber,goRacing,printDistance,moveForward,printWinner } from "../src/App.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 const { Console } = MissionUtils; 
 
@@ -36,5 +36,16 @@ describe("자동차 경주 기능 테스트", () => {
         for (let i = 0; i < result.length; i++) {
             expect(result[i]).toBeLessThanOrEqual(expectresult[i]);
         }
+    });
+
+    test("우승자 출력", async () => {
+        const CarName = ["poni","woni","jun"];
+        const RacingNumber = "3";
+        const Distance = [3,3,1]
+        const expectresult = ["poni","woni"];
+  
+        const result = printWinner(Distance, CarName, RacingNumber);
+
+        expect(result).toEqual(expectresult);
     });
 });

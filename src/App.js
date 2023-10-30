@@ -43,6 +43,18 @@ export function moveForward(Road,Distance,index){
   };
 }
 
+export function printWinner(Distance,CarName,RacingNumber){
+  let i;
+  let Winner =[];
+  for(i=0;i<CarName.length;i++){    //이동 거리가 레이싱넘버와 똑같은 자동차는 Winner 배열에 저장
+    if(Distance[i]==RacingNumber){
+      Winner.push(CarName[i]);
+    }
+  }
+  MissionUtils.Console.print("최종 우승자 : "+Winner.join(', ')); //Winner 배열의 원소들을 스트링으로 출력
+  return Winner;
+}
+
 class App {
   async play() {
     try{
@@ -50,6 +62,7 @@ class App {
      const RacingNumber = await getRacingNumber();
      MissionUtils.Console.print("\n실행결과");
      const Distance = await goRacing(CarName,RacingNumber);
+     printWinner(Distance,CarName,RacingNumber);
     } catch(error){throw error;}
   }
 }
