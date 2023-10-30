@@ -15,7 +15,10 @@ class RacingCar {
     this.#randomNumberGenerator = randomNumberGenerator;
   }
 
-  static from(racingCarInfo, randomNumberGenerator = Random.pickNumberInRange) {
+  static of(
+    racingCarInfo,
+    { randomNumberGenerator } = { randomNumberGenerator: Random.pickNumberInRange },
+  ) {
     return new RacingCar(racingCarInfo, randomNumberGenerator);
   }
 

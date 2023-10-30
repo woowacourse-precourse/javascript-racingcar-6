@@ -23,7 +23,7 @@ class RacingGame {
 
   #updateRacingResult() {
     this.#racingStatus = this.#racingStatus.map((currentRacingCarInfo) =>
-      RacingCar.from(currentRacingCarInfo).move(),
+      RacingCar.of(currentRacingCarInfo).move(),
     );
   }
 
