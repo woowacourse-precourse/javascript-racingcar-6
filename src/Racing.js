@@ -31,7 +31,7 @@ function getWinner(carNameObj) {
 	});
 
 	Object.entries(carNameObj).forEach(([key, value]) => {
-		if (value === max && value !== maxKeys[0]) {
+		if (value === max && key !== maxKeys[0]) {
 			maxKeys.push(key);
 			isDuplicate = true;
 		}
@@ -44,7 +44,7 @@ function getWinner(carNameObj) {
 	}
 }
 
-async function startRacing() {
+export async function startRacing() {
 	const carNames = await getCarNamesList();
 	const carNameObj = {};
 	carNames.forEach((name) => {
@@ -60,5 +60,3 @@ async function startRacing() {
 	}
 	getWinner(carNameObj);
 }
-
-startRacing();
