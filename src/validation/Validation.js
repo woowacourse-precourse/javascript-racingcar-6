@@ -1,9 +1,11 @@
 class Validation {
+
   // 사용자가 입력한 차 이름 입력값 검증
   static validateCarNameInput(input) {
     this.isNoComma(input);
     this.isemptyInput(input);
   }
+
   // 각 차이름 검증
   static validateCarNames(carNames) {
     this.validateDuplicateCarName(carNames);
@@ -11,6 +13,12 @@ class Validation {
       this.isNoInputafterComma(carNames[index]);
       this.isexceedsFiveCharacters(carNames[index]);
     }
+  }
+  
+  // 시도할 횟수 입력값 검증
+  static validateAttemptCountInput(input) {
+    this.isemptyInput(input);
+    this.isNotNumber(input);
   }
 
   // 입력값에 ','가 있는지 검증
@@ -46,6 +54,13 @@ class Validation {
      if(new Set(carNames).size !== Number(carNames.length)) {
         throw new Error('[ERROR] 차 이름이 중복되었습니다.');
      }
+  }
+
+  // 숫자를 입력하지 않았을 때
+  static isNotNumber(input) {
+    if (isNaN(input)) {
+      throw new Error('[ERROR] 숫자를 입력하지 않으셨습니다.');
+    }
   }
 }
 export default Validation;

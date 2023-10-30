@@ -15,10 +15,11 @@ class GameUi {
 
   // 사용자가 시도할 횟수를 입력
   async askAttemptCount() {
-    const ATTEMPT_COUNT = await MissionUtils.Console.readLineAsync(
+    const ATTEMPT_COUNT_INPUT = await MissionUtils.Console.readLineAsync(
       '시도할 횟수는 몇 회인가요?\n'
     );
-    return ATTEMPT_COUNT;
+    Validation.validateAttemptCountInput(ATTEMPT_COUNT_INPUT);
+    return ATTEMPT_COUNT_INPUT;
   }
 
   // 레이스 게임 실행 결과 출력 안내 메시지 출력
