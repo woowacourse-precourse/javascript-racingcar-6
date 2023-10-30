@@ -16,9 +16,8 @@ class App {
     if (moveCount > 0) {
       cars.forEach((car) => {
         this.racing(car);
-        this.printResult(car);
       });
-      Console.print("");
+      this.displayRacingResults(cars);
 
       this.startRacing(cars, moveCount - 1);
     }
@@ -36,8 +35,14 @@ class App {
     for (let i of Array.from({ length: car.position }, (_, index) => index)) {
       score.push("-");
     }
-
     Console.print(car.name + " : " + score.join(""));
+  }
+
+  displayRacingResults(cars) {
+    cars.forEach((car) => {
+      this.printResult(car);
+    });
+    Console.print("");
   }
 
   async getCarName() {
