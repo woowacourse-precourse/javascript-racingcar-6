@@ -2,6 +2,8 @@ export const validateCarName = (carListArr) => {
   carListArr.forEach((carName) => {
     if (carName.length < 1 || carName.length > 5)
       throw new Error('[ERROR] 자동차 이름은 1~5자 사이로 입력해주세요.');
+    else if (carName.split('').find((element) => element === ' '))
+      throw new Error('[ERROR] 스페이스 입력은 불가능합니다.');
   });
 
   if (carListArr.length !== new Set(carListArr).size)
