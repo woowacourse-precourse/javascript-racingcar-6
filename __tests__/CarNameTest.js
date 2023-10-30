@@ -17,4 +17,12 @@ describe('자동차 이름 입력 테스트', () => {
     expect(() => Validation.validateCarNameAlphabetic(validInput)).not.toThrow();
     expect(() => Validation.validateCarNameAlphabetic(errorInput)).toThrow(ERROR.CAR_NAME_TYPE);
   });
+
+  test('중복성 검사', () => {
+    const validInput = 'pobi,min,hasu';
+    const errorInput = 'pobi,min,pobi,hasu';
+
+    expect(() => Validation.validateCarNameDuplicate(validInput)).not.toThrow();
+    expect(() => Validation.validateCarNameDuplicate(errorInput)).toThrow(ERROR.CAR_NAME_DUPLICATE);
+  });
 });
