@@ -15,6 +15,7 @@ const ERROR_MESSAGE = {
   notArray: errorString("값이 배열 타입이 아닙니다."),
 
   notCars: errorString("배열에 Car 클래스의 인스턴스가 아닌 요소가 포함되어 있습니다."),
+  duplicateNames: errorString("중복된 이름이 포함되어 있으면 안 됩니다."),
 
   lessThanMinCarCount: (minCarCount) =>
     errorString(`경주에 참가하는 자동차 수는 최소 ${minCarCount}대 이상이어야 합니다.`),
