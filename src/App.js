@@ -8,6 +8,25 @@ class App {
     this.tryCount = 0;
   }
 
+  async initGame() {
+    const names = await this.inputCarNames();
+
+    this.makeCarArray(names)
+
+    await this.inputTryCount();
+  }
+
+  async inputTryCount() {
+    const count = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+
+    const numberRegex = /^[0-9]+$/;
+    if (!numberRegex.test(count)) {
+      throw new Error("[ERROR] 숫자가 잘못된 형식입니다.")
+    }
+
+    this.tryCount = parseInt(count);
+  }
+
   async inputCarNames() {
     return await MissionUtils.Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n")
   }
@@ -23,17 +42,6 @@ class App {
 
       this.cars.push(new Car(name));
     })
-  }
-
-  async inputTryCount() {
-    const count = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
-
-    const numberRegex = /^[0-9]+$/;
-    if (!numberRegex.test(count)) {
-      throw new Error("[ERROR] 숫자가 잘못된 형식입니다.")
-    }
-
-    this.tryCount = parseInt(count);
   }
 
   startRacing() {
@@ -67,11 +75,7 @@ class App {
   }
 
   async play() {
-    const names = await this.inputCarNames();
-
-    this.makeCarArray(names)
-
-    await this.inputTryCount();
+    await this.initGame();
 
     this.startRacing();
   }
