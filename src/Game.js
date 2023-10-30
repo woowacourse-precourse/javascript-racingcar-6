@@ -1,15 +1,15 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import Car from './Car';
 
-function checkName(str) {
-  const regExp = /[ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z\,]/g;
-  if (regExp.test(str) && str.search(/\s/) === -1) {
-    return true;
-  } else {
-    return false;
-  }
-}
 class Game {
+  checkName(str) {
+    const regExp = /[ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z\,]/g;
+    if (regExp.test(str) && str.search(/\s/) === -1) {
+      return true;
+    } else {
+      return false;
+    }
+  }
   async getCarName() {
     let input = await MissionUtils.Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n');
     // 1. 아무것도 입력하지 않았을 경우
@@ -24,7 +24,7 @@ class Game {
     let carArray = [];
     nameList.forEach((carName) => {
       // 2. 이름으로 문자열을 입력하지 않은 경우 && 6.쉼표가 연속으로 사용된경우
-      if (!checkName(carName)) {
+      if (!this.checkName(carName)) {
         throw new Error('[ERROR] 입력값이 문자가 아닙니다.');
       }
       // 3. 1대의 자동차 이름만 입력한경우
@@ -38,7 +38,6 @@ class Game {
       let car = new Car(carName);
       carArray.push(car);
     });
-
     return carArray;
   }
 
