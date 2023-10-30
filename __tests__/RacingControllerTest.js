@@ -1,4 +1,4 @@
-import RacingController from "../src/controller/RacingController.js";
+import RacingController from "../src/racing/RacingController.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 const mockRandoms = (numbers) => {

@@ -1,5 +1,5 @@
-import RacingController from "./controller/RacingController.js";
-import { getPlayersName, getAttemptNumber } from "./controller/GameCustomize.js";
+import RacingController from "./racing/RacingController.js";
+import { getPlayersName, getAttemptNumber } from "./racing/GameCustomize.js";
 
 class App {
   async play() {

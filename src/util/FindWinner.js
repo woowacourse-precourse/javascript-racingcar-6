@@ -6,8 +6,8 @@ export const findWinner = (playersArray, scoreArray) => {
   })
 
   const racingBoard = Object.fromEntries(playerWithScoreArray);
-  const winnersArray = [];
 
+  const winnersArray = [];
   for (let player in racingBoard) {
     if (racingBoard[player] === winnersScore) {
       winnersArray.push(player);

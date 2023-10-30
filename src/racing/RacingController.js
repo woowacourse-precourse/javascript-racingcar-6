@@ -2,7 +2,7 @@ import { scoreAccumulator, traceAccumulator } from "../util/Accumulator.js";
 import { randomArrayGenerator } from "../util/RandomArrayGenerator.js";
 import Converter from "../util/Converter.js";
 import { Console } from "@woowacourse/mission-utils";
-import { findWinner } from "./FindeWinner.js";
+import { findWinner } from "../util/FindWinner.js";
 import { GAME_MESSEAGE } from "../constants/Messeage.js";
 
 class RacingController {  

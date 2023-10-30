@@ -1,4 +1,4 @@
-import { getPlayersName, getAttemptNumber } from "../src/controller/GameCustomize.js";
+import { getPlayersName, getAttemptNumber } from "../src/racing/GameCustomize.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 //값을 넣을때 [] 한겹 빼주기
