@@ -15,3 +15,9 @@ export const validateNoWhiteSpace = (input) => {
 
   return input;
 };
+
+export const validateNumberType = (input) => {
+  const regex = /^\d{1,2}$/;
+
+  if (!regex.test(input)) throw new Error(ERROR.NUMBER_TYPE);
+};

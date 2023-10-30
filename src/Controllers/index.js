@@ -6,6 +6,7 @@ import {
   validateNoWhiteSpace,
   validateCarNameLength,
   validateCarNameInput,
+  validateNumberType,
 } from "../Vaildation/index.js";
 
 class Controllers {
@@ -23,9 +24,9 @@ class Controllers {
     return result;
   }
 
-  async getTryTimes() {
-    // 여기 validation 검사 추가예정
-    const TIMES = await this.getUserInput(MESSAGE.TRY_TIMES);
+  async getTryTimes(message) {
+    const TIMES = await this.getUserInput(message);
+    validateNumberType(TIMES);
     return TIMES;
   }
 
