@@ -1,6 +1,7 @@
 import getPlayInfo from "./getPlayInfo";
 import playGame from "./playGame";
 import printResult from "./printResult";
+import decideWinner from "./decideWinner";
 
 const player = {};
 class App {
@@ -15,6 +16,7 @@ class App {
       playGame(player);
       printResult(player);
     }
+    decideWinner(player);
   }
 }
 
