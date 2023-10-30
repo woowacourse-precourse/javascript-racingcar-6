@@ -6,6 +6,7 @@ import OutputView from '../view/OutputView.js';
 export default class Controller {
   constructor() {
     this.carList = [];
+    this.MAX_MOVE = 0;
   }
 
   createCar(carNameList) {
@@ -17,6 +18,7 @@ export default class Controller {
   singleTry() {
     this.carList.forEach((car) => {
       car.tryToMove();
+      this.MAX_MOVE = Math.max(this.MAX_MOVE, car.getMove());
     });
     OutputView.printSingleTryResult(this.carList);
   }
