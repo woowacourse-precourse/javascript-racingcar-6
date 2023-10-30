@@ -23,7 +23,7 @@ class InputValidator {
    * @returns {number}
    */
   static tryNumValidator(input) {
-    if (isNaN(input)) throw new Error('[ERROR] 숫자를 입력해주세요.');
+    if (!/[0-9]/) throw new Error('[ERROR] 숫자를 입력해주세요.');
 
     return Number(input);
   }
