@@ -61,12 +61,12 @@ class RacingGame {
 
   async findWinner() {
     for (const car of this.#car) {
-      await this.getWinnerConditionalStatement(car);
+      await this.getWinnerList(car);
     }
     await this.showWinner();
   }
 
-  async getWinnerConditionalStatement(car) {
+  async getWinnerList(car) {
     const nowCarPosition = car.getPosition();
     if (nowCarPosition > this.#maxPosition) {
       this.#maxPosition = nowCarPosition;
