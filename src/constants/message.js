@@ -8,5 +8,8 @@ export const OUTPUT_MESSAGE = {};
 export const ERROR_MESSAGE = Object.freeze({
   LOWERCASE: '[ERROR] 차 이름은 소문자영어로만 이뤄져야합니다.',
   LENFIVE: '[ERROR] 차 이름은 5글자 이하여야만 합니다.',
-  UNIQUE: '[ERROR] 차 이름은 중복될 수 없습니다.'
+  UNIQUE: '[ERROR] 차 이름은 중복될 수 없습니다.',
+  NUMBER: '[ERROR] 숫자만 입력해야합니다.',
+  NEGATIVE: '[ERROR] 횟수는 0보다 커야합니다.',
+  INT: '[ERROR] 양수인 정수만 입력해야합니다.',
 })

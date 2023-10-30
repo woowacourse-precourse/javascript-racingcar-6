@@ -1,4 +1,4 @@
-import { validateCarsName } from '../utils/inputValidator';
+import { validateCarsName } from '../utils/carsNameValidator';
 import { strToStrArr } from '../utils/typeConvertor';
 
 class CarPlayers {
