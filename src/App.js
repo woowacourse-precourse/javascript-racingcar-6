@@ -58,7 +58,7 @@ class App {
     }
 
     const mostFastest = Math.max(...carList.map(car => car.state.length));
-    const winners = carList.filter(car => car.state.length === mostFastest);
+    const winners = carList.filter(car => car.state.length === mostFastest).map(car => car.name);
 
     MissionUtils.Console.print("\n최종 우승자 : " + winners.join(', '));
   }
