@@ -12,7 +12,7 @@
 
 ## ✔ 무작위 값 구하기
 
-- 0 ~ 9 사이의 무작위 값을 `@woowacourse/mission-utils`의 `Random.pickNumberInRage()`를 이용해 구한다.
+- 0 ~ 9 사이의 무작위 값을 `@woowacourse/mission-utils`의 `Random.pickNumberInRange()`를 이용해 구한다.
 
 ## ✔ 자동차 위치 계산하기
 
