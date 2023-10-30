@@ -2,7 +2,7 @@
 
 import { Console } from "@woowacourse/mission-utils";
 import { ReadLineError } from "../utils/error.js";
-import { assertNameValid } from "../utils/validity.js";
+import { assertNameValid, assertTryAmountValid } from "../utils/validity.js";
 
 /**
  * @returns { Promise<string[]> }
@@ -26,6 +26,26 @@ export async function askNames() {
 }
 
 /**
+ *
+ * @returns {Promise<number>}
+ */
+export async function askTryAmount() {
+  let amount = null;
+
+  try {
+    amount = parseInt(
+      await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n")
+    );
+  } catch (error) {
+    throw new ReadLineError();
+  }
+
+  assertTryAmountValid(amount);
+
+  return amount;
+}
+
+/**
  * @param {string} nameString
  * @returns {string[]}
  */
@@ -44,3 +64,5 @@ function checkNamesAreValid(names) {
     assertNameValid(name);
   });
 }
+
+console.log(await askTryAmount());
