@@ -9,16 +9,14 @@ const isExistDuplicateName = (namesOfCars) =>
 	);
 
 /**
- *
+ * @description 5글자 초과, 중복 이름 존재 여부 검사
  * @param {string[]} namesOfCars
  */
 const validateNamesOfCars = (namesOfCars) => {
-	// 5자 초과
 	if (isOverFive(namesOfCars)) {
 		throw new Error(ERROR_MESSAGE.lengthOfNameOverFive);
 	}
 
-	// 중복 존재
 	if (isExistDuplicateName(namesOfCars)) {
 		throw new Error(ERROR_MESSAGE.existDuplicateName);
 	}
