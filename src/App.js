@@ -108,11 +108,15 @@ class App {
   async determineWinner(result) {
     const winners = [];
 
-    const maxLength = Math.max(...result.map((item) => item.length));
+    const distance = result.map((item) => {
+      return item.slice(item.indexOf('-'), item.lastIndexOf('-') + 1);
+    });
 
-    result.filter((item) => {
-      if (item.length === maxLength) {
-        return winners.push(item);
+    const maxLength = Math.max(...distance.map((item) => item.length));
+
+    result.filter((item, idx) => {
+      if (distance[idx].length === maxLength) {
+        winners.push(item);
       }
     });
 
