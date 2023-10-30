@@ -8,9 +8,23 @@ class RacingCarGame {
   static #MESSAGE = Object.freeze({
     GET_CAR_NAMES:
       '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
+    GET_TRY_COUNT: '시도할 횟수는 몇 회인가요?\n',
+    RESULT: '\n실행 결과',
+    NEW_LINE: '',
     DISPLAY_CURRENT_PROGRESS: (car) => {
       return `${car.getName()} : ${'-'.repeat(car.getStep())}`;
     },
+    WINNER_ANNOUNCEMENT: (winnerNames) => {
+      return `최종 우승자: ${winnerNames}`;
+    },
+  });
+
+  static #ERROR_MESSAGE = Object.freeze({
+    EMPTY_INPUT: '[ERROR] 입력이 없습니다.',
+    INVALID_CAR_NAME: '[ERROR] 자동차 이름은 공백이 될 수 없습니다.',
+    INVALID_CAR_NAME_LENGTH: '[ERROR] 자동차 이름은 5자 이하만 가능합니다.',
+    INVALID_TRY_COUNT: '[ERROR] 숫자가 아닙니다.',
+    INVALID_TRY_COUNT_RANGE: '[ERROR] 시도 횟수는 1보다 작을 수 없습니다.',
   });
 
   constructor() {
@@ -27,18 +41,18 @@ class RacingCarGame {
 
   #validateCarNames(carNames) {
     if (carNames === '') {
-      throw new Error('[ERROR] 입력이 없습니다.');
+      throw new Error(RacingCarGame.#ERROR_MESSAGE.EMPTY_INPUT);
     }
 
     const carNameList = carNames.split(',');
 
     carNameList.forEach((carName) => {
       if (carName.trim().length === 0) {
-        throw new Error('[ERROR] 자동차 이름은 공백이 될 수 없습니다.');
+        throw new Error(RacingCarGame.#ERROR_MESSAGE.INVALID_CAR_NAME);
       }
 
       if (carName.trim().length > 5) {
-        throw new Error('[ERROR] 자동차 이름은 5자 이하만 가능합니다.');
+        throw new Error(RacingCarGame.#ERROR_MESSAGE.INVALID_CAR_NAME_LENGTH);
       }
     });
   }
@@ -52,22 +66,24 @@ class RacingCarGame {
   }
 
   async #getTryCount() {
-    const tryCount = await IOManager.input('시도할 횟수는 몇 회인가요?\n');
+    const tryCount = await IOManager.input(
+      RacingCarGame.#MESSAGE.GET_TRY_COUNT
+    );
     this.#validateTryCount(tryCount);
     return parseInt(tryCount);
   }
 
   #validateTryCount(tryCount) {
     if (tryCount === '') {
-      throw new Error('[ERROR] 입력이 없습니다.');
+      throw new Error(RacingCarGame.#ERROR_MESSAGE.EMPTY_INPUT);
     }
 
     if (isNaN(tryCount)) {
-      throw new Error('[ERROR] 숫자가 아닙니다.');
+      throw new Error(RacingCarGame.#ERROR_MESSAGE.INVALID_TRY_COUNT);
     }
 
     if (parseInt(tryCount) < 1) {
-      throw new Error('[ERROR] 시도 횟수는 1보다 작을 수 없습니다.');
+      throw new Error(RacingCarGame.#ERROR_MESSAGE.INVALID_TRY_COUNT_RANGE);
     }
   }
 
@@ -93,7 +109,7 @@ class RacingCarGame {
 
   #displayResult(winners) {
     const winnerNames = winners.map((winner) => winner.getName()).join(', ');
-    IOManager.output(`최종 우승자 : ${winnerNames}`);
+    IOManager.output(RacingCarGame.#MESSAGE.WINNER_ANNOUNCEMENT(winnerNames));
   }
 
   async start() {
@@ -102,13 +118,13 @@ class RacingCarGame {
       this.#createCarObjectsFromNames(carNames);
       const tryCount = await this.#getTryCount();
 
-      IOManager.output('\n실행 결과');
+      IOManager.output(RacingCarGame.#MESSAGE.RESULT);
       for (let i = 0; i < tryCount; i++) {
         this.#cars.forEach((car) => {
           this.#decideToMove(car);
           this.#displayCurrentProgress(car);
         });
-        IOManager.output('');
+        IOManager.output(RacingCarGame.#MESSAGE.NEW_LINE);
       }
 
       const winners = this.#getWinners();
