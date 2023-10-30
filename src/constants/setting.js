@@ -1,8 +1,8 @@
 const SETTING = {
-  MAX_NAME_LENGTH: 5,
-  MIN_RANDOM_NUMBER: 1,
-  MAX_RANDOM_NUMBER: 9,
-  FORWARD: 4,
+  maxNameLength: 5,
+  minRandomNumber: 1,
+  maxRandomNumber: 9,
+  forward: 4,
 };
 
 export default Object.freeze(SETTING);

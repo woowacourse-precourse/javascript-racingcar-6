@@ -1,4 +1,3 @@
-import MESSAGE from "../constants/message";
 import generateNumber from "../utils/generateNumber";
 import SETTING from "../constants/setting";
 import Car from "./Car";
@@ -19,10 +18,10 @@ class RacingApp {
   carMove() {
     this.cars.forEach((car) => {
       const randomNumber = generateNumber(
-        SETTING.MIN_RANDOM_NUMBER,
-        SETTING.MAX_RANDOM_NUMBER
+        SETTING.minRandomNumber,
+        SETTING.maxRandomNumber
       );
-      if (randomNumber >= SETTING.FORWARD) car.move();
+      if (randomNumber >= SETTING.forward) car.move();
     });
   }
 
