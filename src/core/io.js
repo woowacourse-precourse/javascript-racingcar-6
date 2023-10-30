@@ -65,6 +65,10 @@ export function printResultUsingScoreBoard(scoreboard) {
   Console.print("");
 }
 
+export function printResultTitle() {
+  Console.print("\n실행 결과");
+}
+
 /**
  *
  * @param {string[]} names

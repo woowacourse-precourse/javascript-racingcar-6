@@ -1,6 +1,11 @@
 //@ts-check
 
-import { askNames, askTryAmount } from "./core/io.js";
+import {
+  askNames,
+  askTryAmount,
+  printResultTitle,
+  printResultUsingScoreBoard,
+} from "./core/io.js";
 import { makeScoreboardByNames } from "./utils/parse.js";
 import { isFowardAllowed } from "./utils/prob.js";
 
@@ -10,7 +15,9 @@ class App {
     this.tryAmount = await askTryAmount();
     this.scoreboard = makeScoreboardByNames(this.names);
 
+    printResultTitle();
     this.simulateOneTurn();
+    printResultUsingScoreBoard(this.scoreboard);
   }
 
   /**
