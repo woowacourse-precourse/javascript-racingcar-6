@@ -1,6 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import Car from './racingcar.js';
-
 class App {
   constructor() {
     this.cars = [];
@@ -47,7 +46,6 @@ class App {
   printWinners() { //결과의 최댓값을 연산하여 콤마를 기준으로 최종 우승자를 추출하는 구문
     const maxPosition = Math.max(...this.cars.map(car => car.getPosition().length));
     const winnersNames = [];
-
     for (const car of this.cars)
       if (car.getPosition().length === maxPosition) winnersNames.push(car.getName());
     MissionUtils.Console.print(`최종 우승자: ${winnersNames.join(", ")}`);
