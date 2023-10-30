@@ -24,6 +24,7 @@ class App {
   }
 
   makeObject(carName) {
+    // test code 완료
     const carObject = {
       name: carName,
       result: "",
@@ -52,7 +53,7 @@ class App {
     Console.print("\n");
   }
 
-  findlength(raceResult) {
+  findLength(raceResult) {
     const lengthArray = [];
     raceResult.forEach((element) => {
       lengthArray.push(element.result.length);
@@ -101,7 +102,7 @@ class App {
 
   checkWinner(raceResult) {
     /* 한 자동차당 전진한 수를 구하는 함수 */
-    const lengthArray = this.findlength(raceResult);
+    const lengthArray = this.findLength(raceResult);
     const maxLength = this.findMaxLength(lengthArray);
     const winnerIndexArray = this.makeWinnerIndexArray(raceResult, maxLength);
     const winnerArray = this.makeWinnerArray(raceResult, winnerIndexArray);

@@ -15,4 +15,16 @@ describe("class App test", () => {
       expect(testObject).toMatchObject(testResult);
     });
   });
+
+  describe("method test : findLength()", () => {
+    test("result가 -----인 객체를 인수로 준다면 result.length 배열이 [5, 1, 3]이 되는가 ? ", () => {
+      const testParameter = [
+        { name: "equus", result: "-----" },
+        { name: "pony", result: "-" },
+        { name: "ray", result: "---" },
+      ];
+      let testLength = app.findLength(testParameter);
+      expect(testLength).toEqual([5, 1, 3]);
+    });
+  });
 });
