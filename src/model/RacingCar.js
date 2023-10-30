@@ -1,11 +1,12 @@
-import { RACING_MOVE } from '../constants/constants.js';
+import { RACING_CAR } from '../constants/constants.js';
+import { validateCarName } from '../utils/validate.js';
 
 class RacingCar {
   constructor() {
     /** @type {string} */
     this.carName = '';
     /** @type {number} */
-    this.moveCount = RACING_MOVE.START_POSITION;
+    this.moveCount = RACING_CAR.START_POSITION;
   }
 
   /** @returns {string} */
@@ -15,6 +16,8 @@ class RacingCar {
 
   /** @param {string} name */
   set setCarName(name) {
+    validateCarName(name);
+
     this.carName = name;
   }
 }
