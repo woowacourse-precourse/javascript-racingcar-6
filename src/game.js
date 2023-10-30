@@ -1,22 +1,22 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
+import { Console, Random } from "@woowacourse/mission-utils";
 import MSG from "./message.js"
 
 function game(carNames, cnt) {
-    MissionUtils.Console.print(MSG.RESULT)
+    Console.print(MSG.RESULT)
     var carDistance = Array.from({length : carNames.length}, ()=> 0)
     for (let i = 0; i < cnt; i++) {
       const gameResult = race(carNames, carDistance)
       for (let i = 0; i < carNames.length; i++) {
-        MissionUtils.Console.print(carNames[i] + " : " + "-".repeat(gameResult[i]))
+        Console.print(carNames[i] + " : " + "-".repeat(gameResult[i]))
       }
-      MissionUtils.Console.print("")
+      Console.print("")
     }
     printWinner(carNames, carDistance)
 }
 
 function race(carNames, carDistance) {    
     for (let i = 0; i < carNames.length; i++) {
-      let num = MissionUtils.Random.pickNumberInRange(0, 9);
+      let num = Random.pickNumberInRange(0, 9);
       if (num > 3) {
         carDistance[i] += 1;
       }
@@ -32,7 +32,7 @@ function printWinner(carNames, carDistance) {
         winner.push(carNames[i])
       }
     }
-    MissionUtils.Console.print(`${MSG.WINNER} ${winner.join(", ")}`)
+    Console.print(`${MSG.WINNER} ${winner.join(", ")}`)
 }
 
 export default game;
