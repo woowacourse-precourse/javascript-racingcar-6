@@ -1,3 +1,6 @@
+import { MissionUtils } from "@woowacourse/mission-utils";
+import OutputView from "../view/OutputView.js";
+
 class RacingCar {
   #name;
   #displacement;
@@ -9,10 +12,17 @@ class RacingCar {
 
   advance() {
     const randomNumer = MissionUtils.Random.pickNumberInRange(0, 9);
-    
+
     if (randomNumer >= 4) {
       this.#displacement += 1;
     }
+  }
+
+  getState() {
+    let stringDisplacement = '-'.repeat(this.#displacement)
+    const state = `${this.#name} : ${stringDisplacement}`;
+
+    return state
   }
 }
 
