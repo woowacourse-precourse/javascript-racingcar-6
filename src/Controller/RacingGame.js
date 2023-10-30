@@ -1,7 +1,6 @@
 import { isValidateCarName, isValidateAttemps } from '../utils/validator.js';
 import Input from '../view/Input.js';
 import Output from '../view/Output.js';
-import makeWinner from '../utils/makeWinner.js';
 import isMove from '../utils/isMove.js';
 import { DECREASE_RACING_COUNT, RACING_END } from '../constants/racing.js';
 
@@ -10,11 +9,14 @@ export default class RacingGame {
 
   #resultModel;
 
+  #winnerModel;
+
   #attemps;
 
-  constructor(carModel, resultModel) {
+  constructor(carModel, resultModel, winnerModel) {
     this.#carModel = carModel;
     this.#resultModel = resultModel;
+    this.#winnerModel = winnerModel;
   }
 
   async run() {
@@ -27,10 +29,8 @@ export default class RacingGame {
   }
 
   #printResult() {
-    const totalResult = this.#resultModel.makeTotalResult();
-    const winners = makeWinner(this.#carModel.getCar());
-    Output.printTotalResult(totalResult);
-    Output.printWinners(winners);
+    Output.printTotalResult(this.#resultModel.makeTotalResult());
+    Output.printWinners(this.#winnerModel.makeWinner(this.#carModel.getCar()));
   }
 
   async #makeCar() {
