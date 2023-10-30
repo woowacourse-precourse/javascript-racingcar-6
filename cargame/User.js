@@ -1,5 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import { MESSAGE } from '../constants/message.js';
+import { MESSAGES } from '../constants/message.js';
 import { validateCarNames } from '../validates/carNames.js';
 import { validateTryNumber } from '../validates/tryNumber.js';
 
@@ -11,7 +11,7 @@ class User {
 
   async getCarNames() {
     const input = await MissionUtils.Console.readLineAsync(
-      MESSAGE.CAR_NAMES_INPUT,
+      MESSAGES.CAR_NAMES_INPUT,
     );
     const carNames = input.split(',').map((name) => name.trim());
     validateCarNames(carNames);
@@ -20,7 +20,7 @@ class User {
 
   async getTryNumber() {
     const tryNumberInput = await MissionUtils.Console.readLineAsync(
-      MESSAGE.TRY_NUMBER_INPUT,
+      MESSAGES.TRY_NUMBER_INPUT,
     );
     validateTryNumber(tryNumberInput);
     this.tryNumber = parseInt(tryNumberInput);
