@@ -32,6 +32,7 @@ class App {
       await this.startRace();
      } catch (error) {
       console.error(error.message);
+      throw error;
      }
   }
 
