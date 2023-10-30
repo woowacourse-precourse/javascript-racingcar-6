@@ -84,8 +84,8 @@
 
 `prob.js` 코드 내부에 구현하며, 전부 함수로만 구현한다.
 
-- [ ] prob.js 파일 생성
-- [ ] isFowardAllowed 함수를 구현한다. [0, 9] 범위의 값을 랜덤으로 가져오고, const.js에 작성된 전진 임계 값을 기준으로 미만이면 false, 이상이면 true를 리턴한다.
+- [x] prob.js 파일 생성
+- [x] isFowardAllowed 함수를 구현한다. [0, 9] 범위의 값을 랜덤으로 가져오고, const.js에 작성된 전진 임계 값을 기준으로 미만이면 false, 이상이면 true를 리턴한다.
 
 ### 게임 구현
 
