@@ -1,3 +1,24 @@
+## 📂 파일 구조
+
+```
+📦src
+ ┣ 📂controller
+ ┃ ┗ 📜CarGameController.js
+ ┣ 📂model
+ ┃ ┣ 📜Car.js
+ ┃ ┣ 📜CarGame.js
+ ┃ ┗ 📜GameResult.js
+ ┣ 📂util
+ ┃ ┣ 📜Constant.js
+ ┃ ┗ 📜Validator.js
+ ┣ 📂view
+ ┃ ┣ 📜InputView.js
+ ┃ ┗ 📜OutputView.js
+ ┣ 📜App.js
+ ┗ 📜index.js
+
+```
+
 ## 🚀 구현 기능 목록
 
 1. 자동차 이름 입력받는 기능
