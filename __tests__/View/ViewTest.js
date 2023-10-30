@@ -58,4 +58,40 @@ describe('View 테스트', () => {
       );
     });
   });
+
+  describe('사용자로부터 라운드를 입력받는다.', () => {
+    const validRound = '5';
+    const invalidRound = '0';
+
+    test('비어있는 문자열에 대해 예외 처리를 진행한다.', async () => {
+      // given
+      mockQuestions([emptyString]);
+
+      // then
+      await expect(view.readRound()).rejects.toThrow(
+        `[ERROR] ${ERROR.message.emptyString}`,
+      );
+    });
+
+    test('라운드를 입력받는다.', async () => {
+      // given
+      mockQuestions([validRound]);
+
+      // when
+      const result = await view.readRound();
+
+      // then
+      expect(result).toEqual(parseInt(validRound, 10));
+    });
+
+    test('라운드가 0인 경우 예외 처리를 진행한다.', async () => {
+      // given
+      mockQuestions([invalidRound]);
+
+      // then
+      await expect(view.readRound()).rejects.toThrow(
+        `[ERROR] ${ERROR.message.invalidRound}`,
+      );
+    });
+  });
 });
