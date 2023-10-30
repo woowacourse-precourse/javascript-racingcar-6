@@ -1,4 +1,5 @@
 import { Random, Console } from "@woowacourse/mission-utils";
+import message from "./message.js";
 
 class App {
   async play() {
@@ -6,22 +7,18 @@ class App {
   }
 
   async displayResults() {
-    const carName = await Console.readLineAsync(
-      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
-    );
+    const carName = await Console.readLineAsync(message.START_MESSAGE);
     const cars = carName.trim().split(",");
     let carScores = new Array(cars.length).fill(0);
 
     cars.map((el) => {
       if (el.length > 5 || el.length <= 0) {
-        throw new Error("[ERROR]");
+        throw new Error(message.INPUT_CARNAME_ERROR);
       }
     });
-    const ROTATION = await Console.readLineAsync("시도할 횟수는 몇 회인가요?");
+    const ROTATION = await Console.readLineAsync(message.INPUT_ROTATION);
 
-    let HIGHSCORE = 0;
-
-    Console.print("실행 결과");
+    Console.print(message.DISPLAYING_RESULTS);
     for (let i = 0; i < ROTATION; i++) {
       cars.map((car, index) => {
         const SCORE = Random.pickNumberInRange(0, 9);
