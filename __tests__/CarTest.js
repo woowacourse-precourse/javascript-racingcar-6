@@ -54,4 +54,18 @@ describe("Car 클래스 테스트", () => {
         const result = car.isWinner(MaxCount);
         expect(result).toBeFalsy();
     });
+    test("자동차 중복 이름 검사 - 중복", () => {
+        const newName = "soyoung125";
+        const car = new Car("soyoung125");
+
+        const result = car.isSameName(newName);
+        expect(result).toBeTruthy();
+    });
+    test("자동차 중복 이름 검사 - 미중복", () => {
+        const newName = "labong";
+        const car = new Car("soyoung125");
+
+        const result = car.isSameName(newName);
+        expect(result).toBeFalsy();
+    });
 })
