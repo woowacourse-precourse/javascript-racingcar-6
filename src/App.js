@@ -11,8 +11,7 @@ class App {
     await this.#setGameConfig();
     const { winner, raceResult } = this.#game.startRace();
 
-    this.#view.printRaceResult(raceResult);
-    this.#view.printWinners(winner);
+    this.#view.printRaceResult({ winner, raceResult });
   }
 
   async #setGameConfig() {

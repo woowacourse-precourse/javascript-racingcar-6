@@ -1,12 +1,13 @@
 const MessageFormat = {
   error: (message) => `[ERROR] ${message}`,
-  winners: (winners) => `최종 우승자: ${winners.join(', ')}`,
-  result: (roundResult) => `\n실행 결과\n${roundResult}\n`,
-  carPosition: (car) => `${car.name}: ${'-'.repeat(car.position)}`,
-  round: (raceResult) =>
-    raceResult
-      .map((round) => round.map(MessageFormat.carPosition).join('\n'))
-      .join('\n\n'),
+  winner: (winners) => `최종 우승자: ${winners.join(', ')}`,
+  carPosition: (car) => `${car.name} : ${'-'.repeat(car.position)}`,
+  roundResult: (round) => round.map(MessageFormat.carPosition).join('\n'),
+  raceResult: (raceResult) => {
+    const rounds = raceResult.map(MessageFormat.roundResult).join('\n\n');
+
+    return `\n실행 결과\n${rounds}\n`;
+  },
 };
 
 export default MessageFormat;

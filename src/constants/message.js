@@ -3,6 +3,10 @@ const read = Object.freeze({
   round: '시도할 회수는 몇회인가요?\n',
 });
 
-const MESSAGE = Object.freeze({ read });
+const result = Object.freeze({
+  title: '\n실행 결과',
+});
+
+const MESSAGE = Object.freeze({ read, result });
 
 export default MESSAGE;

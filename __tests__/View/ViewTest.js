@@ -1,7 +1,16 @@
-import mockQuestions from '../utils/mockQuestion';
+import { MissionUtils } from '@woowacourse/mission-utils';
 import View from '../../src/View/View';
 import ERROR from '../../src/constants/error';
 import InputView from '../../src/View/InputView';
+
+const mockQuestions = (inputs) => {
+  MissionUtils.Console.readLineAsync = jest.fn();
+
+  MissionUtils.Console.readLineAsync.mockImplementation(() => {
+    const input = inputs.shift();
+    return Promise.resolve(input);
+  });
+};
 
 describe('View 테스트', () => {
   let view;

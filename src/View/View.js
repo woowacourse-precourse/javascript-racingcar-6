@@ -30,13 +30,12 @@ class View {
     return parseInt(userInput, RACING_GAME.round.radix);
   }
 
-  printRaceResult(raceResult) {
-    const { result, round } = MessageFormat;
-    this.#outputView.print(result(round(raceResult)));
-  }
+  printRaceResult({ winner, raceResult }) {
+    const resultMessage = MessageFormat.raceResult(raceResult);
+    const winnerMessage = MessageFormat.winner(winner);
 
-  printWinners(winners) {
-    this.#outputView.print(MessageFormat.winners(winners));
+    this.#outputView.print(resultMessage);
+    this.#outputView.print(winnerMessage);
   }
 }
 
