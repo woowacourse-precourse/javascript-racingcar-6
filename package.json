@@ -19,7 +19,9 @@
     "prettier": "^3.0.3"
   },
   "scripts": {
-    "test": "jest --detectOpenHandles"
+    "test": "jest --detectOpenHandles",
+    "lint": "eslint './src/**/*.js'",
+    "lint:fix": "eslint --fix './src/**/*.js'"
   },
   "keywords": [],
   "author": "woowacourse",
