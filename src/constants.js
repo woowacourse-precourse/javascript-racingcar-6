@@ -25,7 +25,7 @@ const GAME = {
     POSITION: '-',
 };
 
-module.exports = {
+export {
     INPUT,
     OUTPUT,
     ERROR,
