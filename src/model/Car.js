@@ -1,8 +1,8 @@
 class Car {
-  #name
-  #distance
+  #name;
+  #distance;
 
-  constructor(name, distance){
+  constructor(name, distance) {
     this.#name = name;
     this.#distance = distance;
   }
@@ -17,7 +17,7 @@ class Car {
 
   moveForward() {
     this.#distance += 1;
-  } 
+  }
 }
 
 export default Car;

@@ -1,5 +1,5 @@
-import Car from '../src/Car';
-import { checkLessThanFive, checkHasSpace, checkDuplicated } from '../src/Validation.js';
+import Car from '../src/model/Car.js';
+import { checkLessThanFive, checkHasSpace, checkDuplicated } from '../src/utils/Validation.js';
 
 describe('올바른 car 객체 판단 테스트', () => {
   const carList = ['아빠차', '엄마차', '내차'];

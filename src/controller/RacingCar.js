@@ -1,7 +1,7 @@
 import { Random } from '@woowacourse/mission-utils';
-import Car from './Car.js';
-import View from './View.js';
-import { VALUE } from './constants/constants.js';
+import Car from '../model/Car.js';
+import View from '../view/View.js';
+import { VALUE } from '../constants/constants.js';
 
 class RacingCar {
   #carList;

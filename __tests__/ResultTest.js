@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import View from '../src/View';
+import View from '../src/view/View';
 
 const getLogSpy = () => {
   const logSpy = jest.spyOn(Console, 'print');

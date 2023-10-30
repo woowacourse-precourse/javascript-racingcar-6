@@ -1,6 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
-import { checkValidCarsName, checkValidNumber } from './Validation.js';
-import { MESSAGE, SIGN } from './constants/constants.js';
+import { checkValidCarsName, checkValidNumber } from '../utils/Validation.js';
+import { MESSAGE, SIGN } from '../constants/constants.js';
 
 class View {
   async inputCarNames() {

@@ -1,4 +1,4 @@
-import { ERRMSG, SIGN, VALUE } from './constants/constants.js';
+import { ERRMSG, SIGN, VALUE } from '../constants/constants.js';
 
 const checkLessThanFive = (list) => {
   if (list.some((carName) => carName.length > VALUE.LIMIT_LEETER_LEN)) {
