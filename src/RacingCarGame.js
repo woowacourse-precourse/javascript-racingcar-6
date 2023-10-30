@@ -13,9 +13,9 @@ class RacingCarGame {
 
   async setupGame() {
     const user = new User();
-    await user.inputCarsNameAndAttempts();
+    await user.inputCarNamesAndAttempts();
 
-    user.getCarsName().forEach((carName) => {
+    user.getCarNames().forEach((carName) => {
       this.#scoreBoard[carName] = "";
     });
 
