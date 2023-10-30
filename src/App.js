@@ -35,6 +35,9 @@ class App {
         console.log(`${carName} : ${roundResults[j]}`);
       });
     }
+    const maxDistance = Math.max(...roundResults.map((result) => result.length));
+    const winners = this.carNames.filter((carName, index) => roundResults[index].length === maxDistance);
+    console.log(`최종 우승자 : ${winners.join(", ")}`);
   }
 
   async play() {
