@@ -4,6 +4,16 @@ const curry =
   (arg, ..._) =>
     _.length ? func(arg, ..._) : (..._) => func(arg, ..._);
 
+export const map = curry((func, iterable) => {
+  let result = [];
+
+  for (const a of iterable) {
+    result.push(func(a));
+  }
+
+  return result;
+});
+
 // if문 대신 사용
 export const filter = curry((func, iterable) => {
   let result = [];

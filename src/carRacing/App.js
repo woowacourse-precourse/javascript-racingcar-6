@@ -1,28 +1,29 @@
 import { Console } from "@woowacourse/mission-utils";
 import validateNameLength from "./validation/validateNameLength.js";
+import * as F from "./utility/utilityFunctions.js";
 
 class App {
-  constructor() {
-    this.carNamesList = [];
-  }
+  constructor() {}
 
   async play() {
     await this.enterGameBaseSetting();
   }
 
   async enterGameBaseSetting() {
-    await this.enterCarNames();
-    this.enterRoundCount();
+    const enteredCarNames = await this.enterCarNames();
   }
 
   async enterCarNames() {
     try {
+      let carNamesList = [];
+
       const userInput = await Console.readLineAsync(
         "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n",
       );
-      this.carNamesList = userInput.split(",");
 
-      validateNameLength(this.carNamesList, 5);
+      carNamesList = userInput.split(",");
+
+      return carNamesList;
     } catch (error) {
       throw new Error(`[ERROR] ${error}`);
     }
