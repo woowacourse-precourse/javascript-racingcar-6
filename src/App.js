@@ -30,7 +30,7 @@ class App {
     throw new Error('[ERROR] 올바른 형식으로 입력해주세요')
   }
 
-  return NumberOfmoves;
+  return Number(NumberOfmoves);
  }
 
   trackingCarsMove(moveOfCars, roundRandomNumber){ 
