@@ -57,14 +57,14 @@ class App {
     return template;
   }
 
-  async repeatProcess(attempts, resultTemplate) {
-    const advanceConditions = this.generateAdvanceConditions(resultTemplate);
-
+  async repeatProcess(attempts, template) {
     for (let i = 0; i < attempts; i++) {
-      this.updateResult(resultTemplate, advanceConditions);
-    }
+      const advanceConditions = this.generateAdvanceConditions(template);
 
-    Console.print(resultTemplate.join('\n') + '\n');
+      template = this.updateResult(template, advanceConditions);
+
+      Console.print(template.join('\n') + '\n');
+    }
   }
 
   generateAdvanceConditions(racecarNames) {
