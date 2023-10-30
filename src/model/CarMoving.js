@@ -1,7 +1,6 @@
 import { Random } from '@woowacourse/mission-utils';
 
 class CarMoving {
-  //자동차 개수만큼 랜덤 돌리기
   async playEachRound(carCount) {
     this.racingCount = new Array(carCount);
     for (let i = 0; i < carCount; i++) {
@@ -21,7 +20,6 @@ class CarMoving {
     return 0;
   }
 
-  // 우승자의 인덱스 리턴
   countWinnerIndex() {
     let winnerIndex = [];
     let maxValue = Math.max(...this.racingCount);
@@ -31,7 +29,6 @@ class CarMoving {
       winnerIndex.push(maxValueIndex);
       maxValueIndex = this.racingCount.indexOf(maxValue, maxValueIndex + 1);
     }
-
     return winnerIndex;
   }
 }

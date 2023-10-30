@@ -25,17 +25,14 @@ class RacingCarController {
     }
   }
 
-  //자동차 이름 입력받기
   async setCarName() {
     return this.carListCheck.validate(await this.input.inputCarNames());
   }
 
-  //게임 횟수 입력받기
   async setTryNumber() {
     return this.tryNumberCheck.validate(await this.input.inputTryNumber());
   }
 
-  //게임 횟수만큼 랜덤값 생성
   async startRacing() {
     this.output.racingStartMessage();
 
@@ -48,7 +45,6 @@ class RacingCarController {
     this.countWinner(await this.carMoving.playEachRound(this.carNames.length));
   }
 
-  //승리자 개수 증가시키기
   async countWinner(winnerIndexList) {
     await winnerIndexList.forEach((winnerIndex) => {
       this.winnerList[winnerIndex] += '-';
