@@ -20,6 +20,14 @@ class Car {
     }
   }
 
+  getName() {
+    return this.#name;
+  }
+
+  getMoveCount() {
+    return this.#moveCount;
+  }
+
   print() {
     MissionUtils.Console.print(
       `${this.#name} : ${"-".repeat(this.#moveCount)}`

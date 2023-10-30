@@ -19,24 +19,35 @@ class App {
     return userInput;
   }
 
-  async play() {
-    const carNames = await this.inputName();
-    const racingRound = await this.inputRaceRound();
+  async makeRacingCar(carNames) {
     const racingCars = [];
     carNames.map((name) => {
       const newCar = new Car(name);
       racingCars.push(newCar);
     });
 
-    console.log("실행 결과");
+    return racingCars;
+  }
 
+  async runRace(racingCars, racingRound) {
+    MissionUtils.Console.print("실행 결과");
     for (let i = 0; i < racingRound; i++) {
       racingCars.map((car) => {
         car.move();
         car.print();
       });
-      console.log("\n");
+      MissionUtils.Console.print("");
     }
+  }
+
+  async play() {
+    const carNames = await this.inputName();
+
+    const racingRound = await this.inputRaceRound();
+
+    const racingCars = await this.makeRacingCar(carNames);
+
+    await this.runRace(racingCars, racingRound);
   }
 }
 
