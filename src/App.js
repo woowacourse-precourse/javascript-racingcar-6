@@ -19,7 +19,7 @@ class App {
     const lap = new Lap(this.#entry);
     computer.tell(ABOUT.RESULT_IS);
     Array.from({ length: this.#lapLength }, () => lap.recordCheck());
-    printResult(lap.record, this.#lapLength);
+    printResult(lap.getRecord(), this.#lapLength);
   }
 
   async inputEntry() {
