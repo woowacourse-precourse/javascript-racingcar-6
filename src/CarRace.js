@@ -1,6 +1,6 @@
 import Car from './Car';
 import { MissionUtils } from '@woowacourse/mission-utils';
-import { SETTING, SCORE } from './constants';
+import { SETTING, SCORE, MESSAGE } from './constants';
 import { printMessage } from './utils';
 
 export default class CarRace {
@@ -41,5 +41,19 @@ export default class CarRace {
       printMessage(`${car.name} : ${FORWARD.repeat(car.position)}`);
     });
     printMessage('\n');
+  }
+
+  getWinner() {
+    const max = Math.max(...this.carNames.map(car => car.position));
+    const winners = this.carNames
+      .filter((car) => car.position === max)
+      .map((car) => car.name);
+    return winners;
+  }
+
+  getWinnerMessage() {
+    const { WINNER } = MESSAGE;
+    const winners = this.getWinner().join(',');
+    printMessage(`${WINNER}${winners}`);
   }
 }

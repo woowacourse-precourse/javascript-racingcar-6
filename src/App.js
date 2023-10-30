@@ -13,7 +13,7 @@ class App {
       const carNames = getValidInputNames(inputNames);
       const inputNumber = await readLineAsync(INPUT_NUMBER);
       const count = getValidInputNumber(inputNumber);
-      
+
       this.carRace = new CarRace(carNames, count);
     } catch (error) {
       throw new Error(error);
@@ -23,6 +23,8 @@ class App {
       this.carRace.calculateResult();
       this.carRace.getResultMessage();
     }
+
+    this.carRace.getWinnerMessage();
   }
 }
 
