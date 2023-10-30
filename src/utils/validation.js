@@ -27,6 +27,9 @@ const validateCount = (count) => {
 }
 
 export {
+    isNumber,
+    isBiggerThan5,
+    isNameDuplicate,
     isRandomNumberAtLeast4,
     validateName,
     validateCount
