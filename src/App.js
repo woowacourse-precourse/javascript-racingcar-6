@@ -65,6 +65,28 @@ class App {
     }
   }
 
+  printWinner() {
+    const winner = [];
+    let highScore = -1;
+    let carInfo;
+    for (carInfo of this.cars) {
+      if (carInfo.score > highScore) {
+        highScore = carInfo.score;
+      }
+    }
+    for (carInfo of this.cars) {
+      if (highScore === carInfo.score) {
+        winner.push(carInfo.name);
+      }
+    }
+    if (winner.length === 1) {
+      Console.print(`최종 우승자 : ${winner}`);
+    }
+    if (winner.length > 1) {
+      Console.print(`최종 우승자 : ${winner.join(", ")}`);
+    }
+  }
+
   async play() {
     try {
       const inputCarNames = await Console.readLineAsync(
@@ -81,6 +103,7 @@ class App {
       this.gameCount = inputNumber;
 
       this.startRacing();
+      this.printWinner();
     } catch (error) {
       console.log(error);
     }
