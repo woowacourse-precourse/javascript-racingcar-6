@@ -25,6 +25,28 @@ const getLogSpy = () => {
 };
 
 describe('자동차 경주 게임', () => {
+  test('레이싱 시작 전 문구가 잘 출력되는지', async () => {
+    // given
+    const CAR_NAMES = 'pobi,woni';
+    const MOVE_COUNT = '1';
+    MissionUtils.Console.readLineAsync = jest.fn();
+    MissionUtils.Console.readLineAsync
+      .mockReturnValueOnce(CAR_NAMES) // 경주할 자동차 이름
+      .mockReturnValueOnce(MOVE_COUNT); // 시도할 횟수
+
+    // when
+    const app = new App();
+    await app.play();
+
+    // then
+    expect(MissionUtils.Console.readLineAsync).toHaveBeenCalledWith(
+      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
+    );
+    expect(MissionUtils.Console.readLineAsync).toHaveBeenCalledWith(
+      '시도할 횟수는 몇 회인가요\n',
+    );
+  });
+
   test('전진-정지', async () => {
     // given
     const MOVING_FORWARD = 4;
