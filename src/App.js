@@ -41,6 +41,14 @@ class App {
       }
     }
   }
+
+  printMessage() {
+    for (const car in this.carList) {
+      const msg = `${car} : ${this.carList[car]}`;
+      Console.print(msg);
+    }
+    Console.print('');
+  }
 }
 
 const app = new App();
