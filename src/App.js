@@ -7,6 +7,8 @@ class App {
     const carObjects = carNames.map((carName) => new Car(carName));
     let moveCount = await this.getMoveCount();
 
+    Console.print("실행 경과");
+
     this.startRacing(carObjects, moveCount);
   }
 
@@ -16,6 +18,7 @@ class App {
         this.racing(car);
         this.printResult(car);
       });
+      Console.print("");
 
       this.startRacing(cars, moveCount - 1);
     }
@@ -29,7 +32,12 @@ class App {
   }
 
   printResult(car) {
-    Console.print(car.name + ":" + car.position);
+    const score = [];
+    for (let i of Array.from({ length: car.position }, (_, index) => index)) {
+      score.push("-");
+    }
+
+    Console.print(car.name + " : " + score.join(""));
   }
 
   async getCarName() {
