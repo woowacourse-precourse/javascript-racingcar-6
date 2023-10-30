@@ -6,7 +6,7 @@ class App {
     let times = await this.getCount();
     Console.print("\n");
     this.validCheckAboutCarName(cars);
-    this.validChedkAboutNumber(times);
+    this.validCheckAboutNumber(times);
     let forwordArry = this.printEachProcess(cars, times);
     let finerWiner = this.resultOfWinner(cars, forwordArry);
     Console.print("최종 우승자 : " + finerWiner.join(', '));
@@ -27,9 +27,8 @@ class App {
   }
 
 //--------------횟수(숫자)유효성 판단--------------------
-  validChedkAboutNumber(howMove) {
+  validCheckAboutNumber(howMove) {
     if (Number.isNaN(howMove)) {
-
       throw new Error(`[ERROR] 유효하지 않은 숫자 형식입니다.`);
     }
     if (howMove < 1) {
