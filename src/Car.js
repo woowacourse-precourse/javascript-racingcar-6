@@ -1,4 +1,5 @@
 import { Random } from "@woowacourse/mission-utils";
+import { RACE_MOVE_LIMIT_DIGIT, RACE_POSITION_OUTPUT } from "./Define";
 
 class Car {
     constructor(name) {
@@ -12,13 +13,13 @@ class Car {
 
     move() {
         const RANDOM_NUM = Random.pickNumberInRange(0, 9);
-        if (RANDOM_NUM >= 4) {
+        if (RANDOM_NUM >= RACE_MOVE_LIMIT_DIGIT) {
             this.position += 1;
         }
     }
 
     toString() {
-        return `${this.name} : ${'-'.repeat(this.position)}`;
+        return `${this.name} : ${RACE_POSITION_OUTPUT.repeat(this.position)}`;
     }
 }
 

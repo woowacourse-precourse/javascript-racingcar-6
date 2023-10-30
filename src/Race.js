@@ -10,6 +10,7 @@ import {
     RACE_WINNER_PRINT_MESSAGE,
     NOT_FOUND_WINNER_ERROR_MESSAGE,
     DUPLICATE_CAR_NAME_ERROR_MESSAGE,
+    CAR_NAME_LIMIT_LENGTH,
 } from "./Define";
 
 export const VALIDATE_CAR_NAME = (CAR_NAME_INPUT) => {
@@ -17,7 +18,7 @@ export const VALIDATE_CAR_NAME = (CAR_NAME_INPUT) => {
         throw new Error(CAR_NAME_NULL_ERROR_MESSAGE);
     }
     const CAR_NAMES = CAR_NAME_INPUT.split(',').map(NAME => NAME.trim());
-    if (CAR_NAMES.some(CAR_NAME => CAR_NAME.length > 5)) {
+    if (CAR_NAMES.some(CAR_NAME => CAR_NAME.length > CAR_NAME_LIMIT_LENGTH)) {
         throw new Error(CAR_NAME_INVALID_ERROR_MESSAGE);
     }
     const DUPLICATE_CHECK_NAME = new Set(CAR_NAMES);
