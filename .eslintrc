@@ -2,13 +2,7 @@
   "extends": ["airbnb-base", "plugin:prettier/recommended"],
   "rules": {
     "prettier/prettier": ["error"],
-    "class-methods-use-this": "off"
-  },
-  "settings": {
-    "import/resolver": {
-      "node": {
-        "paths": ["src"]
-      }
-    }
+    "class-methods-use-this": "off",
+    "import/extensions": "off"
   }
 }
