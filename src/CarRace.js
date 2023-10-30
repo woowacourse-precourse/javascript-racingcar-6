@@ -8,14 +8,6 @@ class CarRace {
 
   #tryNumber;
 
-  async handleRace() {
-    await this.handleCar();
-
-    await this.handleTryNumber();
-
-    this.handleRaceResult();
-  }
-
   async handleCar() {
     const INPUT = await carHandler.readCarsInput();
 

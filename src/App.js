@@ -1,10 +1,18 @@
 import CarRace from "./CarRace";
 
 class App {
-  async play() {
-    const carRace = new CarRace();
+  #carRace;
 
-    await carRace.handleRace();
+  constructor() {
+    this.#carRace = new CarRace();
+  }
+
+  async play() {
+    await this.#carRace.handleCar();
+
+    await this.#carRace.handleTryNumber();
+
+    this.#carRace.handleRaceResult();
   }
 }
 
