@@ -1,24 +1,22 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import { inputCarName } from "./InputCarName.js";
-import { invaildCarName } from "./InvalidCarName.js";
+import { vaildCarName } from "./ValidCarName.js";
 import Car from "./Car.js";
-import { invalidCount } from "./InvalidCount.js";
+import { validCount } from "./ValidCount.js";
 import { inputCount } from "./InputCount.js";
 class App {
   async play() {
     const carNames = await inputCarName();
 
     const car = carNames.split(',').map(name => {
-      if(invaildCarName(name)){
+      if(vaildCarName(name)){
         return new Car(name, 0);
       }
     })
 
-    // MissionUtils.Console.print(car);
-
     const count = await inputCount();
-    if(invalidCount(count)){
-      MissionUtils.Console.print(count);
+    if(validCount(count)){
+      
     }
   }
 }
