@@ -15,8 +15,6 @@ const ModelView = {
       raceResults[name] = this.currentMovements[name];
     }
 
-    MissionUtils.Console.print(" ");
-
     return raceResults;
   },
 
