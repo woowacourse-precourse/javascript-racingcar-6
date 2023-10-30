@@ -1,5 +1,6 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import { CARS } from '../Constants.js';
+import Validation from '../validation/Validation.js';
 class GameUi {
   constructor() {}
 
@@ -8,6 +9,7 @@ class GameUi {
     const CAR_NAMES_INPUT = await MissionUtils.Console.readLineAsync(
       '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n'
     );
+    Validation.validateCarNameInput(CAR_NAMES_INPUT);
     return CAR_NAMES_INPUT;
   }
 
