@@ -5,13 +5,13 @@ class RacingGame {
   #TRY_NUMBER;
   #CARS_LIST = [];
 
-  get CARS_LIST() {
+  getCarsList = () => {
     return this.#CARS_LIST;
-  }
+  };
 
-  get TRY_NUMBER() {
+  getTryNumber = () => {
     return this.#TRY_NUMBER;
-  }
+  };
 
   shouldMoveForward = () => {
     let canMove = true;
