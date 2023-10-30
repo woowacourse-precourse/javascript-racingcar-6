@@ -49,4 +49,4 @@ const validation = (carNames) => {
   Validation.hasDuplicateName(carNames);
 };
 
-export default validationCheck;
+export default validation;
