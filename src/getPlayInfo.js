@@ -1,5 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
 import processNameError from "./errors/processNameError";
+import processTrialError from "./errors/processTrialError";
 
 const getPlayInfo = async () => {
   const DUMMY_PARTICIPANTS = await Console.readLineAsync(
@@ -9,6 +10,7 @@ const getPlayInfo = async () => {
   processNameError(PARTICIPANTS);
 
   const TRIALS = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+  processTrialError(TRIALS);
 
   return [PARTICIPANTS, TRIALS];
 };
