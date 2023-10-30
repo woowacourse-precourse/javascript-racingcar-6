@@ -1,6 +1,8 @@
 const CONFIG = {
   MAX_CAR_NAME_LENGTH: 5,
   MINIMUM_CAN_MOVE_FOWARD: 4,
+  MIN_RANDOM_COUNT: 0,
+  MAX_RANDOM_COUNT: 9,
 };
 
 export default CONFIG;
