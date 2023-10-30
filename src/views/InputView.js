@@ -13,8 +13,9 @@ class InputView {
     const userInput = await Console.readLineAsync(
       "시도할 횟수는 몇 회인가요?\n"
     );
-    this.validateIsNumber(userInput);
-    return userInput;
+    const userInputNumber = Number(userInput);
+    this.validateIsNumber(userInputNumber);
+    return userInputNumber;
   }
 
   validateIsNumber(input) {
