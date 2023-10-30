@@ -1,7 +1,12 @@
 import RacingCar from '../model/RacingCar.js';
+import RacingGame from '../model/RacingGame.js';
 import inputView from '../view/inputView.js';
 
 class RacingGameController {
+  constructor() {
+    this.racingGame = new RacingGame();
+  }
+
   /** 레이싱 경주 시작 함수 */
   async start() {
     /** @type {string} 자동차 이름 */
@@ -17,10 +22,12 @@ class RacingGameController {
   registerRacingCar(carList) {
     /** @type {RacingCar[]} */
     const racingCars = carList.map((carName) => {
-      const racingCar = new RacingCar();
-      racingCar.setCarName = carName;
-      return racingCar;
+      const car = new RacingCar();
+      car.setCarName = carName;
+      return car;
     });
+
+    this.racingGame.setRacingCar = racingCars;
   }
 }
 
