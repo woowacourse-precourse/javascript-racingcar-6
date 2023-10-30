@@ -27,6 +27,7 @@ class RacingCarController {
       this.#moveCount = moveCount;
     }
 
+    OutputView.printLine();
     OutputView.printResultText();
     for (let count = 0; count < this.#moveCount; count += 1) {
       this.moveCars();

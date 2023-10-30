@@ -8,7 +8,7 @@ export const INPUT_MESSAGE = Object.freeze({
 });
 
 export const OUTPUT_MESSAGE = Object.freeze({
-  resultText: '\n실행 결과',
+  resultText: '실행 결과',
   printCarPosition(name, position) {
     return `${name} : ${'-'.repeat(position)}`;
   },
