@@ -20,6 +20,7 @@ class App {
     if (times == NaN || times == 0) throw new Error("[ERROR] 이동 횟수가 잘못된 형식입니다.\n");
     race(cars, times);
     let winnerNames = getFinalWinners(cars);
+    printFinalWinners(winnerNames);
   }
 }
 
@@ -106,6 +107,11 @@ function getMaxPosition(cars) {
     if ( position > maxPosition) maxPosition = position;
   }
   return maxPosition;
+}
+
+function printFinalWinners(winners) {
+  let winnerString = winners.join(', ');
+  MissionUtils.Console.print(`최종 우승자 : ${winnerString}`);
 }
 
 export default App;
