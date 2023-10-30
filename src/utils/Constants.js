@@ -6,6 +6,7 @@ const IN_GAME_MESSAGE = {
 }
 
 const FORWARD_CRITERIA = 4;
+
 const CHARACTER_LIMIT = 5;
 
 const NAME_INPUT_ERROR = {
@@ -14,4 +15,10 @@ const NAME_INPUT_ERROR = {
   long: '[ERROR] 이름이 다섯 글자를 초과했습니다. 다섯 글자 이하의 이름을 입력해 주세요.',
 }
 
-export { IN_GAME_MESSAGE, FORWARD_CRITERIA, CHARACTER_LIMIT, NAME_INPUT_ERROR};
+const TRY_INPUT_ERROR = {
+  null: '[ERROR]: 아무것도 입력하지 않았습니다. 숫자를 입력해 주세요.',
+  char: '[ERROR]: 문자를 입력하였습니다. 숫자만 입력해 주세요.',
+  blank: '[ERROR]: 공백없이 입력해야 합니다. 숫자만 입력해 주세요.',
+}
+
+export { IN_GAME_MESSAGE, FORWARD_CRITERIA, CHARACTER_LIMIT, NAME_INPUT_ERROR, TRY_INPUT_ERROR};
