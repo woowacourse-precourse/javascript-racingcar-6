@@ -18,18 +18,29 @@ const mockRandoms = (numbers) => {
 };
 
 const getLogSpy = () => {
-  const logSpy = jest.spyOn(MissionUtils.Console, "print");
+  const logSpy = jest.spyOn(MissionUtils.Console, 'print');
   logSpy.mockClear();
   return logSpy;
 };
 
-describe('게임 실행 테스트', () => {
-  test('', () => {
-    //given
+describe('경기 테스트', () => {
+  test('경기 진행 후, 각 턴마다 실행결과와 최종 우승자를 출력한다.', async () => {
+    // given
+    const inputs = ['sonata,lay', '2'];
+    const outputs = ['실행 결과', 'sonata : ', 'lay : ----', 'sonata : -----', 'lay : --------', '최종 우승자 : lay'];
+    const randoms = [0, 4, 5, 8];
+    const logSpy = getLogSpy();
 
-    //when
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
 
-    //then - 출력 어떻게 나오는지
+    // when
+    const app = new App();
+    await expect(app.play()).resolves.not.toThrow();
 
-  })
+    // then
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
 })
