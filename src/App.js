@@ -9,6 +9,7 @@ class App {
     const inputCarNames = await Input.getCarNamesFromUser();
     Validation.validateCarName(inputCarNames);
     this.carNames = inputCarNames;
+    const inputGameCount = await Input.getGameCountFromUser();
   }
 }
 

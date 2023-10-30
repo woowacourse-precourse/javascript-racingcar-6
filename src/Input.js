@@ -7,7 +7,7 @@ const Input = {
     return userInput;
   },
 
-  async getCarNamesFromUser() {
+  async getGameCountFromUser() {
     const userInput = await Console.readLineAsync(MESSAGE.INPUT_GAME_COUNT);
     return userInput;
   },
