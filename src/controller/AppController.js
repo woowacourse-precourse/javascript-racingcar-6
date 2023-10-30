@@ -31,8 +31,8 @@ class AppController {
   }
 
   displayResult(result) {
-    result.forEach(([name, point]) => {
-      OutputView.printMessage(`${name} : ${point}`);
+    result.forEach((car) => {
+      OutputView.printMessage(`${car.name} : ${car.point}`);
     });
   }
 
