@@ -1,19 +1,19 @@
 import VALIDATION_CONDITION from './game.validation';
 
 const racingGameValidationMethods = {
-  validLength(item, min, max) {
-    return item.length >= min && item.length <= max;
+  checkLengthInRange(item, minLength, maxLength) {
+    return item.length >= minLength && item.length <= maxLength;
   },
 
-  validDuplication(array) {
+  checkUniqueElement(array) {
     return array.every((item, index) => array.lastIndexOf(item) === index);
   },
 
-  carsName(nameArray) {
+  validateCarNames(carNameArray) {
     // 자동차 이름의 길이 검사
     if (
-      !nameArray.every((name) =>
-        this.validLength(
+      !carNameArray.every((name) =>
+        this.checkLengthInRange(
           name,
           VALIDATION_CONDITION.carNameLength.min,
           VALIDATION_CONDITION.carNameLength.max,
@@ -26,21 +26,21 @@ const racingGameValidationMethods = {
     }
 
     // 중복된 이름이 있는지 검사
-    if (!this.validDuplication(nameArray)) {
+    if (!this.checkUniqueElement(carNameArray)) {
       throw new Error('[ERROR] 중복된 자동차 이름이 없도록 입력해주세요');
     }
   },
 
-  moveCount(count) {
-    if (!count) {
+  validateMoveCount(moveCount) {
+    if (!moveCount) {
       throw new Error('[ERROR] 횟수를 입력하지 않으셨습니다');
     }
 
-    if (Number.isNaN(Number(count))) {
+    if (Number.isNaN(Number(moveCount))) {
       throw new Error('[ERROR] 숫자만을 입력해주세요');
     }
 
-    if (Number(count) < 0) {
+    if (Number(moveCount) < 0) {
       throw new Error('[ERROR] 음수는 입력할 수 없습니다');
     }
   },

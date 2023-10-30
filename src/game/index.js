@@ -12,19 +12,19 @@ const racingCarGame = {
     const carNameArray = (await prompt(PROMPT_PHASE.carName))
       .replace(REGEX.space, '')
       .split(',');
-    racingGameValidationMethods.carsName(carNameArray);
+    racingGameValidationMethods.validateCarNames(carNameArray);
 
     const moveCount = await prompt(PROMPT_PHASE.moveCount);
-    racingGameValidationMethods.moveCount(moveCount);
+    racingGameValidationMethods.validateMoveCount(moveCount);
 
     return { carNameArray, moveCount: Number(moveCount) };
   },
 
-  makeCarsWithForwardCount(carsNameArray) {
-    if (!Array.isArray(carsNameArray)) {
+  makeCarsWithForwardCount(validateCarNamesArray) {
+    if (!Array.isArray(validateCarNamesArray)) {
       throw new Error('[ERROR] 인자는 배열이여야 합니다.');
     }
-    return carsNameArray.map((name) => ({ name, forwardCount: 0 }));
+    return validateCarNamesArray.map((name) => ({ name, forwardCount: 0 }));
   },
 
   checkForwardCondition(number, { min, max }) {
