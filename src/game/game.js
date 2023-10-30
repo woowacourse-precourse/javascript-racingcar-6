@@ -1,5 +1,12 @@
 import {MissionUtils} from "@woowacourse/mission-utils";
-import {MAX_RANDOM_RANGE, MIN_RANDOM_RANGE, MOVE_FORWARD_NUMBER, NEWLINE, SHOW_EXECUTION_TITLE} from "./constants.js";
+import {
+    MAX_RANDOM_RANGE,
+    MIN_RANDOM_RANGE,
+    MOVE_FORWARD_NUMBER,
+    NEWLINE,
+    SHOW_EXECUTION_TITLE,
+    SHOW_WINNER_TITLE
+} from "./constants.js";
 
 class Game {
     constructor() {
@@ -42,6 +49,16 @@ class Game {
             }
         })
         return winnerList;
+    }
+    
+    showWinner() {
+        const winnerIdx = this.getWinner();
+
+        if (winnerIdx.length === 1) {
+            MissionUtils.Console.print(SHOW_WINNER_TITLE + this.carsList[0]);
+        } else {
+            MissionUtils.Console.print(SHOW_WINNER_TITLE + winnerIdx.map((winner) => winner).join(','));
+        }
     }
 
     generateRandomNumber = () => {
