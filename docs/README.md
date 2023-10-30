@@ -40,7 +40,10 @@ score.getScore(this.cars)
 1) 실행결과의 score값이 최대값인 요소 고르는 함수 만들기 (getWinner)
 - playGame(count,names)에서 받아온 'names'에는 차이름, score 정보 모두 들어있음
 2) 실행결과(currentScore) array 형태 정리하기
+- 형태정리: array.forEach 사용
 [ Save { name: '이름1', score: '' },
   Save { name: '이름2', score: '--' },
   Save { name: '이름3', score: '--' } ]
 => [{이름1, 점수1}, {이름2, 점수2}, {이름3, 점수3}]
+- 최대값 비교를 위해 score 값을 숫자로 변환
+(score.length: '-' 문자열 길이 세기)

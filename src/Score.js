@@ -16,10 +16,14 @@ export default class Score {
                 element.score += '-'
             } currentScore += `${element.name}: ${element.score} \n`
         }) 
-        console.log(currentScore)
+        MissionUtils.Console.print(currentScore)
     } 
 
     getWinner(result) {
-        console.log(result) 
+        let checkScore = []
+        result.forEach((e) => {
+            checkScore.push({name: e.name, score: e.score.length})
+        })
+        console.log(checkScore)
     }
 }
