@@ -1,3 +1,4 @@
+import { Console } from '@woowacourse/mission-utils';
 import { Dice } from './Dice.js';
 
 export class RacingGame {
@@ -6,7 +7,8 @@ export class RacingGame {
   }
   play() {
     const scores = this.getScore({ a: 0, b: 0, c: 0 });
-    this.validateScores(scores, { a: 0, b: 0, c: 0 });
+    const result = this.validateScores(scores, { a: 0, b: 0, c: 0 });
+    this.printScores(result);
   }
 
   getScore(cars) {
@@ -21,5 +23,12 @@ export class RacingGame {
       if (score >= 4) previousResult[car] += 1;
     });
     return previousResult;
+  }
+
+  printScores(result) {
+    Object.keys(result).forEach((car) => {
+      const score = '-'.repeat(result[car]);
+      Console.print(`${car} : ${score}`);
+    });
   }
 }
