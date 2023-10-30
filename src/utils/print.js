@@ -44,8 +44,8 @@ const printCarsForwardDistance = (cars) => {
   print();
 };
 
-const printWinners = (cars) => {
-  print(`최종 우승자 : ${cars.join(', ')}`);
+const printWinners = (carNamesArray) => {
+  print(`최종 우승자 : ${carNamesArray.join(', ')}`);
 };
 
 export {
