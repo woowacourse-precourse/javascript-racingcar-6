@@ -1,13 +1,15 @@
 import { Console } from '@woowacourse/mission-utils';
-import { CarNameValidator } from './validator.js';
+import { CarNameLengthValidator } from './validator.js';
 class App {
   async play() {
     try {
       const carNamesString = await this.getUserInputCarNames();
 
-      const isCarNamesValid = CarNameValidator.isValid(carNamesString);
+      const isCarNamesValid = CarNameLengthValidator.isValid(carNamesString);
       if (!isCarNamesValid) {
-        throw new Error('[ERROR] 자동차 이름은 5자 이하만 가능합니다. ');
+        throw new Error(
+          '[ERROR] 자동차 이름은 1자 이상 5자 이하만 가능합니다. '
+        );
         return;
       }
       const attemptForwardCount = await this.getUsetInputForwardCount();
