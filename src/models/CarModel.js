@@ -1,4 +1,6 @@
-class Model {
+import { ERRORS } from '../constants/errors.js';
+
+class CarModel {
   constructor() {
     this.cars = new Map();
   }
@@ -9,20 +11,18 @@ class Model {
 
   addCar(name) {
     if (!this.cars.has(name)) {
-      this.cars.set(name, 0);
-      return;
+      return this.cars.set(name, 0);
     }
-    throw new Error('[ERROR] 이미 존재하는 자동차입니다.');
+    throw new Error(ERRORS.carAlreadyExists);
   }
 
   increaseMoveCntByName(name) {
     if (this.cars.has(name)) {
       const moveCnt = this.cars.get(name);
       return this.cars.set(name, moveCnt + 1);
-    } else {
-      throw new Error('[ERROR] 존재하지 않는 자동차입니다.');
     }
+    throw new Error(ERRORS.carNotFound);
   }
 }
 
-export default Model;
+export default CarModel;

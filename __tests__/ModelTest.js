@@ -1,10 +1,10 @@
-import Model from '../src/Model';
+import CarModel from '../src/models/CarModel';
 
 describe('Model 테스트', () => {
   test('자동차 모델 추가 - 정상 작동', () => {
     const inputs = ['pobi', 'java'];
 
-    const model = new Model();
+    const model = new CarModel();
 
     inputs.forEach((name) => {
       model.addCar(name);
@@ -18,9 +18,9 @@ describe('Model 테스트', () => {
   test('자동차 모델 추가 - 자동차 이름 중복 입력', async () => {
     const INPUT = 'pobi';
 
-    const model = new Model();
+    const model = new CarModel();
 
-    expect(model.addCar(INPUT)).toBeUndefined();
+    expect(() => model.addCar(INPUT)).not.toThrow();
     expect(() => model.addCar(INPUT)).toThrowError('[ERROR]');
   });
 });
