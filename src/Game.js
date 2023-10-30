@@ -26,6 +26,20 @@ class Game {
     );
     this.attemptNumber = attemptNumber;
   }
+
+  decideFinalWinner() {
+    let maxPosition = 0;
+    let finalWinner = [];
+    for (const car of this.carList) {
+      if (car.position > maxPosition) {
+        maxPosition = car.position;
+        finalWinner = [car.name];
+      } else if (car.position === maxPosition) {
+        finalWinner.push(car.name);
+      }
+    }
+    this.finalWinner = finalWinner;
+  }
 }
 
 export default Game;
