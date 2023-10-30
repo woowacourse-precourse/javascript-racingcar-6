@@ -24,9 +24,9 @@
 
 ---
 
-- [x] 차수별로 게임을 실행한다.
+- [x] 차수별로 게임을 실행한다. - [`commit feec443`](https://github.com/ho991217/javascript-racingcar-6/commit/feec4434fbe67e4fc16fd25d9d3d7e71461cd8db)
   - [x] 0에서 9까지의 무작위 수 중, 값이 4 이상일 경우 자동차는 전진한다.
-  - [x] 실행 결과를 출력하기 전 `실행 결과`라는 문구를 출력한다.
+  - [x] 실행 결과를 출력하기 전 `실행 결과`라는 문구를 출력한다. - [`commit 4202a96`](https://github.com/ho991217/javascript-racingcar-6/commit/4202a96f59916d78ab386af37fe740e5e103f8db)
   - [x] 각 차수별 실행 결과를 출력한다.
     - [x] 각 플레이어의 이름을 출력한다.
     - [x] 각 플레이어의 전진 결과를 출력한다.
