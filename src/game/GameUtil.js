@@ -1,5 +1,5 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
-import { CARS } from "../Constants.js";
+import { MissionUtils } from '@woowacourse/mission-utils';
+import { CARS } from '../Constants.js';
 
 class GameUtil {
   constructor() {}
@@ -7,7 +7,7 @@ class GameUtil {
   // 각 자동차의 전진횟수 저장하는 메소드(자동차 전진횟수 저장)
   storeMovingForward(index) {
     if (this.isMovingForward()) {
-      CARS[index][1] += 1;
+      CARS[index].forwardNumber += 1;
     }
   }
 

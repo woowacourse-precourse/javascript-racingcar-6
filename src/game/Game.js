@@ -1,5 +1,5 @@
-import { CARS } from "../Constants.js";
-import GameUtil from "./GameUtil.js";
+import { CARS } from '../Constants.js';
+import GameUtil from './GameUtil.js';
 
 class Game {
   constructor() {
@@ -8,9 +8,9 @@ class Game {
 
   // 자동차 이름을 초기 전진횟수와 함께 CARS에 저장
   storeCars(CAR_NAMES_INPUT) {
-    const CAR_NAMES = CAR_NAMES_INPUT.split(",");
-    CAR_NAMES.forEach((eachCarName) => {
-      CARS.push([eachCarName, 0]);
+    const CAR_NAMES = CAR_NAMES_INPUT.split(',');
+    CAR_NAMES.forEach((carName) => {
+      CARS.push({carName, forwardNumber:0});
     });
   }
 
