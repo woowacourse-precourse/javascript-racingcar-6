@@ -8,8 +8,10 @@ import checkSpace from "./common-validator.js";
  * @throws 시도 횟수가 숫자가 아니라면 에러를 던진다.
  */
 function checkNumeric(inputAttemptCount) {
-  if (isNaN(Number(inputAttemptCount))) {
-    throw new InputError(ATTEMPT_ERROR_MESSAGE.NOT_NUMERIC);
+  for (let i = 0; i < inputAttemptCount.length; i++) {
+    if (inputAttemptCount[i] < "0" || inputAttemptCount[i] > "9") {
+      throw new InputError(ATTEMPT_ERROR_MESSAGE.NOT_NUMERIC);
+    }
   }
 }
 
