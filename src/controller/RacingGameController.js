@@ -2,6 +2,7 @@ import RacingCar from '../model/RacingCar.js';
 import RacingGame from '../model/RacingGame.js';
 import { validateMoveCount } from '../utils/validate.js';
 import inputView from '../view/inputView.js';
+import outputView from '../view/outputView.js';
 
 class RacingGameController {
   constructor() {
@@ -45,9 +46,19 @@ class RacingGameController {
    * @param {number} count
    */
   moveCars(count) {
+    outputView.printRacingComment();
     for (let i = 0; i < count; i++) {
       this.racingGame.checkMove();
+
+      this.racingResult();
     }
+  }
+
+  /** 레이싱 결과 출력 함수 */
+  racingResult() {
+    const carList = this.racingGame.getRacingCar;
+    carList.forEach((car) => outputView.printRacing(car));
+    outputView.printSpace();
   }
 }
 
