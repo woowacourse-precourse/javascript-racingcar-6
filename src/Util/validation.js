@@ -9,7 +9,7 @@ const checkErrorInputName = (inputArr) => {
 };
 
 const checkErrorPlayNumber = (inputNum) => {
-  if (isNaN(inputNum)) throw new Error(ERROR_MESSAGE.type);
+  if (!Number.isFinite(inputNum)) throw new Error(ERROR_MESSAGE.type);
   if (inputNum < 1) throw new Error(ERROR_MESSAGE.scope);
 };
 

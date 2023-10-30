@@ -1,13 +1,13 @@
-import { getCarName, getPlayNumber } from './Util/gameData.js';
+import { getCarName, getPlayNumber } from './Util/inputData.js';
 
 import playGame from './playGame.js';
 import printWinner from './View/printWinner.js';
 
 class App {
   async play() {
-    let carName = new Map();
-    await getCarName(carName);
-    let playNumber = await getPlayNumber();
+    const carName = new Map();
+    await getCarName().forEach((name) => carName.set(name, ''));
+    const playNumber = await getPlayNumber();
     await playGame(playNumber, carName);
     printWinner(carName);
   }
