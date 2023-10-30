@@ -12,7 +12,6 @@ class Car {
     }
     MissionUtils.Console.print(`${this.name} : ${this.distance}`);
   }
-  
 }
-
+module.exports = Car;
 export default Car;
