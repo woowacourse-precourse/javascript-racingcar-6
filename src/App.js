@@ -1,7 +1,7 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 class Car {
-  constructor(carName) {
+  constructor(name) {
     this.validateName(name);
     this.name = name;
     this.position = 0;
@@ -28,7 +28,8 @@ class App {
 
     try {
       await this.inputCarNames();
-      await this.inputRound();
+      await this.inputRounds();
+      await this.startRace();
      } catch (error) {
       console.error(error.message);
      }
@@ -39,8 +40,23 @@ class App {
     this.cars = names.split(',').map(name => new Car(name));
   }
 
-  async inputRound() {
+  async inputRounds() {
     this.rounds = await MissionUtils.Console.readLineAsync();
+  }
+
+  async startRace() {
+    for (let i=0; i<this.rounds; i++) {
+      this.moveCars();
+    }
+  }
+
+  moveCars() {
+    this.cars.forEach (car => {
+      const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
+      if (randomNumber >= 4) {
+        car.move();
+      }
+    });
   }
 }
 
