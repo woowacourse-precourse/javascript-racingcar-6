@@ -1,2 +1,2 @@
-export { default as RacingCarNameValidator } from './RacingCarNameValidator.js';
-export { default as LapNumberValidator } from './LapNumberValidator.js';
+export { default as validateLapNumber } from './LapNumberValidator.js';
+export { default as validateRacingCarName } from './RacingCarNameValidator.js';
