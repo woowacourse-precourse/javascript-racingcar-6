@@ -82,6 +82,13 @@ class App {
             carObj.move++;
         }
     }
+
+    /**
+     * @param {CarObject} carObj
+     */
+    printCarStatus(carObj) {
+        MissionUtils.Console.print(`${carObj.name} : ${'-'.repeat(carObj.move)}`);
+    }
 }
 
 export default App;
