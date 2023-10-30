@@ -8,18 +8,23 @@ class App {
   }
 
   async play() {
-    this.playGame();
+    const carList = await this.getCarList();
+    const count = await this.getTryCount();
   }
 
-  async playGame() {
-    const carNameInput = await Console.readLineAsync(
-      GAME_MESSAGE.CARNAME_INPUT
-    );
-    const carNameInputList = [...carNameInput.split(",")];
-    this.Error.validateCarNameInput(carNameInputList);
+  async getCarList() {
+    const carInput = await Console.readLineAsync(GAME_MESSAGE.CARNAME_INPUT);
+    const carList = [...carInput.split(",")];
+    this.Error.validateCarNameInput(carList);
 
+    return carList;
+  }
+
+  async getTryCount() {
     const tryCount = await Console.readLineAsync(GAME_MESSAGE.COUNT_INPUT);
     this.Error.validateCountInput(tryCount);
+
+    return tryCount;
   }
 }
 
