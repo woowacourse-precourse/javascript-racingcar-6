@@ -65,6 +65,8 @@ src
 
 > MissionUtils.Random.PickNumberInRange()를 반환
 
+---
+
 ### errorHandler.js / errorCode.js
 
 목적: 반복되는 코드의 최소화, 담당 기능의 구체화  
@@ -74,6 +76,8 @@ src
 > 2.  오류 코드가 정의되어 있을 경우 해당 메시지를 반환한다
 > 3.  오류 코드가 정의되어 있지 않을 경우 '예상치 못한 에러 발생' 메시지를 반환한다
 > 4.  커스텀 Error를 발생 시켜 애플리케이션을 종료한다
+
+---
 
 ### checkInputValid.js
 
@@ -93,25 +97,35 @@ src
 > 입력값이 0, NaN, 빈값일 경우 해당하는 error code를 throw  
 > 유효할 경우 변환된 입력값을 반환
 
+---
+
 ### parseArrayToMap.js
 
 목적: 유효한 자동차의 데이터를 파싱  
 기능: 자동차의 입력값의 배열을 Map 자료구조로 파싱해서 반환
+
+---
 
 ### receiveCarName / receiveGameCount
 
 목적: 모듈화된 함수들을 호출  
 기능: 안내 문구를 출력 후 입력값의 유효성을 검사
 
+---
+
 ### getGoAndStop.js
 
 목적: 입력된 race 시행횟수 만큼 게임을 진행하기 위해 전진 여부를 결정하는 데이터 생성  
 기능: 입력된 자동차의 갯수만큼의 길이를 가진 배열을 입력된 race의 시행 횟수 만큼의 길이를 가지는 2차원 배열을 반환
 
+---
+
 ### createExecutionLog.js
 
 목적: 한번의 실행에 대한 결과 값을 시행 횟수만큼 출력  
 기능: 자동차 map을 입력 받아서 시행 횟수 만큼 진행 결과를 Console로 출력, 자동차 map의 데이터를 최신화 해서 시행 횟수만큼 출력을 한 후 최종 데이터를 반환
+
+---
 
 ### identifyWinner.js
 
@@ -127,9 +141,11 @@ src
 호출 함수:  
 receiveCarName(), receiveGameCount(), parseArrayToMap()
 
-기능:
+기능:  
 모듈화된 게임 시작에 해당하는 input의 기능을 담당하는 함수를 호출,
 생성된 데이터를 Object 형태로 반환
+
+---
 
 ### gameInProgress.js
 
@@ -139,24 +155,26 @@ getGoAndStop(), createExecutionLog(), identifyWinner();
 기능:  
 모듈화된 게임 진행에 해당하는 함수를 호출, 최종 우승자를 출력
 
+---
+
 ### rootService.js
 
-호출 함수:
+호출 함수:  
 gameStart(), gameInProgress()
 
-기능:
+기능:  
 자동차 게임의 Service 담당 함수를 관리, 호출
 
 ---
 
 - ### Test
 
-unit.ErrorTest.js
-unit.receiveCarNameTest.js
-unit.receiveGameCOuntTest.js
-unit.createExecutionLog.js
-unit.getGoAndStop.js
-unit.identifyWinner.js
+unit.ErrorTest.js  
+unit.receiveCarNameTest.js  
+unit.receiveGameCOuntTest.js  
+unit.createExecutionLog.js  
+unit.getGoAndStop.js  
+unit.identifyWinner.js  
 
 ---
 
