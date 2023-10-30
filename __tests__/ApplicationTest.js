@@ -113,3 +113,5 @@ describe("자동차 경주 게임", () => { // 테스트 스위트(테스트 슈
     // app.play()에서 발생한 에러가 "[ERROR]"라는 문자열을 던지는지 확인함
   });
 });
+
+export { mockQuestions };
