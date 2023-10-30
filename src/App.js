@@ -5,6 +5,7 @@ import {
   askTryAmount,
   printResultTitle,
   printResultUsingScoreBoard,
+  printWinners,
 } from "./core/io.js";
 import { makeScoreboardByNames } from "./utils/parse.js";
 import { isFowardAllowed } from "./utils/prob.js";
@@ -26,6 +27,7 @@ class App {
 
     printResultTitle();
     this.#loop();
+    printWinners(this.judgeWinner());
   }
 
   #loop() {
