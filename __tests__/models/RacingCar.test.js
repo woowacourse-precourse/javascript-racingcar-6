@@ -34,11 +34,10 @@ describe('RacingCar 테스트', () => {
     '입력 받은 자동차의 position이 $input.racingCarInfo.position 이고 랜덤 숫자가 $input.randomNumber일 때, 예상 position은 $expected.position 이다.',
     ({ input: { randomNumber, racingCarInfo }, expected }) => {
       // given
-      const mockRandomGenerator = jest.fn(() => randomNumber);
-      const racingCar = new RacingCar(racingCarInfo, mockRandomGenerator);
+      const racingCar = new RacingCar(racingCarInfo);
 
       // when
-      const updateRacingCarInfo = racingCar.move();
+      const updateRacingCarInfo = racingCar.move(randomNumber);
 
       // then
       expect(updateRacingCarInfo.position).toBe(expected.position);

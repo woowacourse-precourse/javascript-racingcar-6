@@ -1,3 +1,5 @@
+import { RANDOM_NUMBER_RANGE } from '../constants/random.js';
+import { pickRandomNumberInRange } from '../utils/random.js';
 import RacingCar from './RacingCar.js';
 
 class RacingGame {
@@ -22,8 +24,9 @@ class RacingGame {
   }
 
   #updateRacingResult() {
+    const { minNumber, maxNumber } = RANDOM_NUMBER_RANGE;
     this.#racingStatus = this.#racingStatus.map((currentRacingCarInfo) =>
-      RacingCar.of(currentRacingCarInfo).move(),
+      RacingCar.from(currentRacingCarInfo).move(pickRandomNumberInRange(minNumber, maxNumber)),
     );
   }
 

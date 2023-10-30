@@ -1,6 +1,3 @@
-import { Random } from '@woowacourse/mission-utils';
-import { RANDOM_NUMBER_RANGE } from '../constants/random.js';
-
 class RacingCar {
   static MOVE_THRESHOLD = 4;
 
@@ -8,24 +5,16 @@ class RacingCar {
 
   #racingCarInfo;
 
-  #randomNumberGenerator;
-
-  constructor(racingCarInfo, randomNumberGenerator = Random.pickNumberInRange) {
+  constructor(racingCarInfo) {
     this.#racingCarInfo = { ...racingCarInfo };
-    this.#randomNumberGenerator = randomNumberGenerator;
   }
 
-  static of(
-    racingCarInfo,
-    { randomNumberGenerator } = { randomNumberGenerator: Random.pickNumberInRange },
-  ) {
-    return new RacingCar(racingCarInfo, randomNumberGenerator);
+  static from(racingCarInfo) {
+    return new RacingCar(racingCarInfo);
   }
 
-  move() {
+  move(randomNumber) {
     const { position: prevPosition } = this.#racingCarInfo;
-    const { minNumber, maxNumber } = RANDOM_NUMBER_RANGE;
-    const randomNumber = this.#randomNumberGenerator(minNumber, maxNumber);
     return randomNumber >= RacingCar.MOVE_THRESHOLD
       ? { ...this.#racingCarInfo, position: prevPosition + 1 }
       : this.#racingCarInfo;
