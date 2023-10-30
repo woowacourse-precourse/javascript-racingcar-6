@@ -33,5 +33,23 @@ class RacingGame {
     });
     Console.print('\n');
   }
+
+  printWinner() {
+    const winner = this.getWinnerList();
+    Console.print(`최종 우승자 : ${winner}`);
+  }
+
+  getWinnerList() {
+    let winner = [];
+    let mostScore = 0;
+    this.racingCars.forEach((racingCar) => {
+      mostScore = Math.max(mostScore, racingCar.score);
+    });
+    winner = this.racingCars
+      .filter((racingCar) => racingCar.score === mostScore)
+      .map((car) => car.carName)
+      .join(', ');
+    return winner;
+  }
 }
 export default RacingGame;
