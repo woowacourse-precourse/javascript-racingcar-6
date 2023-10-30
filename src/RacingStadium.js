@@ -55,15 +55,9 @@ class RacingStadium {
   selectWinners() {
     const racingCars = this.getRacingCars();
 
-    const accumulatedForwardByCar = racingCars.map((car) =>
-      car.getAccumulatedForward(),
-    );
+    const highestScore = GameUtils.getHighestScore(racingCars);
 
-    const highestAccumulatedForward = Math.max(...accumulatedForwardByCar);
-
-    const winners = racingCars.filter(
-      (car) => car.getAccumulatedForward() === highestAccumulatedForward,
-    );
+    const winners = GameUtils.findWinners(racingCars, highestScore);
 
     const winnersName = winners.map((winner) => winner.getName());
 

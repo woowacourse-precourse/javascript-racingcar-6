@@ -22,6 +22,22 @@ class GameUtils {
     return randomNumber >= MIN_NUMBER_TO_MOVING_FORWARD;
   }
 
+  static getHighestScore(racingCars) {
+    const accumulatedForwardByCar = racingCars.map((car) =>
+      car.getAccumulatedForward(),
+    );
+
+    return Math.max(...accumulatedForwardByCar);
+  }
+
+  static findWinners(racingCars, highestScore) {
+    const winners = racingCars.filter(
+      (car) => car.getAccumulatedForward() === highestScore,
+    );
+
+    return winners;
+  }
+
   static printFinalWinner(winner) {
     ConsoleOutput.output(`${MESSAGE.FINAL_WINNERS} : ${winner}`);
   }
