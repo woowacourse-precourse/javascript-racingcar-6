@@ -1,9 +1,11 @@
 import { Console } from '@woowacourse/mission-utils';
 import strings from './constants.js';
+import Car from './Car.js';
 import RacingCar from './RacingCar.js';
 class CreateCarName {
   constructor() {
     this.carNameArr = [];
+    this.carArr = [];
   }
 
   carName(inputName) {
@@ -15,6 +17,10 @@ class CreateCarName {
 
     Console.print(this.carNameArr.join(','));
 
+    this.carNameArr.forEach((element) => {
+      this.carArr.push(new Car(element));
+    });
+
     this.playNumber();
   }
 
@@ -23,7 +29,7 @@ class CreateCarName {
       throw new Error('[ERROR] 값이 입력되지 않았습니다.');
     }
 
-    if (inputNameElement.length >= 5) {
+    if (inputNameElement.length > 5) {
       throw new Error('[ERROR] 이름은 5자 이하로 입력해주세요.');
     }
 
@@ -37,7 +43,7 @@ class CreateCarName {
   async playNumber() {
     const inputNumber = await Console.readLineAsync(strings.ASK_NUMBER);
     const race = new RacingCar();
-    race.playRace(inputNumber);
+    race.playRace(inputNumber, this.carArr);
   }
 }
 export default CreateCarName;

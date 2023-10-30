@@ -1,8 +1,22 @@
-import { Console } from '@woowacourse/mission-utils';
+import { Console, Random } from '@woowacourse/mission-utils';
+import strings from './constants.js';
 class RacingCar {
-  playRace(inputNumber) {
+  playRace(inputNumber, carArr) {
     const attemptNumber = this.wrongNumber(inputNumber);
+    let round = 0;
+
     Console.print(attemptNumber);
+
+    Console.print('\n' + strings.RESULT);
+
+    while (round < attemptNumber) {
+      carArr.forEach((element) => {
+        element.departureCount = this.startOrStop(element.departureCount);
+        Console.print(`${element.carName} : ${element.departureCount}`);
+      });
+      Console.print('\n');
+      round += 1;
+    }
   }
 
   wrongNumber(inputNumber) {
@@ -19,6 +33,16 @@ class RacingCar {
     }
 
     return Number(inputNumber);
+  }
+
+  startOrStop(departureCount) {
+    const randomNumber = Random.pickNumberInRange(0, 9);
+
+    if (randomNumber >= strings.CONDITION_NUMBER) {
+      departureCount += '-';
+    }
+
+    return departureCount;
   }
 }
 export default RacingCar;
