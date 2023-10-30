@@ -14,7 +14,7 @@ class App {
     this.player = player;
     this.player_array = player_array;
     
-    if (lengthError.some((valid) => !valid)) {
+    if (lengthError.some((element) => !element)) {
     throw new Error(MESSAGE.ERROR);
     }
 
