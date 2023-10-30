@@ -39,6 +39,25 @@ class App {
 
   }
 
+  Update_Distance(racingcar) {
+    
+    for (let [key, value] of racingcar) {
+      racingcar.set(key, value + this.CheckMove());
+    }
+    
+    return racingcar;
+  }
+
+  Print_Distance(racingcar) {
+    
+    for (let [key, value] of racingcar) {
+      Console.print(key + " : " + value);
+    }
+
+  }
+
+  
+
 }
 
 const app = new App();
