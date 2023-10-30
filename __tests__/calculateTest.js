@@ -31,4 +31,20 @@ describe("경기 테스트 ", () => {
       car2: "-",
     });
   });
+  it("매 결과 출력 작동 확인", () => {
+    const player = ["car1", "car2"];
+    const results = {};
+    MissionUtils.Random.pickNumberInRange.mockReturnValue(4);
+    calculate(player, results);
+
+    expect(results).toEqual({
+      car1: "-",
+      car2: "-",
+    });
+    for (let car in results) {
+      expect(MissionUtils.Console.print).toHaveBeenCalledWith(
+        expect.stringContaining(`${car} : `)
+      );
+    }
+  });
 });

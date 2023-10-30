@@ -7,8 +7,8 @@ beforeEach(() => {
   MissionUtils.Console.readLineAsync.mockClear();
 });
 
-describe("playerRegistration 함수", () => {
-  it("올바른 입력을 받아서 배열로 반환", async () => {
+describe("플레이어 입력 테스트", () => {
+  it("배열로 변환 테스트", async () => {
     // 모킹된 readLineAsync를 설정
     MissionUtils.Console.readLineAsync.mockResolvedValue("pobi,woni");
 
@@ -18,7 +18,7 @@ describe("playerRegistration 함수", () => {
     expect(result).toEqual(["pobi", "woni"]);
   });
 
-  it("5자리를 초과하는 입력이 들어오면 에러를 던짐", async () => {
+  it("5자리 초과입력시 에러 출력", async () => {
     // 모킹된 readLineAsync를 설정
     MissionUtils.Console.readLineAsync.mockResolvedValue("12456,abcefg");
 
