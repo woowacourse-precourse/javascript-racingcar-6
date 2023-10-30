@@ -37,6 +37,10 @@ class App {
     for (let i = 0; i < count; i++) {
       this.round(carList, score);
     }
+
+    const maxScore = Math.max(...carList.map((car) => score[car]));
+    const result = carList.filter((car) => score[car] === maxScore);
+    Console.print(`${GAME_MESSAGE.WINNER} : ${result.join(", ")}`);
   }
 
   round(carList, score) {
