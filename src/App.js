@@ -1,5 +1,6 @@
 import { Console, MissionUtils } from '@woowacourse/mission-utils';
 import { CheckLength } from './CheckLength.js';
+import { CheckRandomNum } from './CheckRandomNum.js';
 
 class App {
   async play() {
@@ -33,12 +34,16 @@ class App {
       count++;
     
       carList.map((car, idx) => {
-        const randomNum = MissionUtils.Random.pickNumberInRange(0, 9);
-        if (randomNum >= 4) {
-          forwardCounts[idx]++
-        };
+        forwardCounts = CheckRandomNum(forwardCounts, idx)
         Console.print(car + ' : ' + '-'.repeat(forwardCounts[idx]));
       })
+      // carList.map((car, idx) => {
+      //   const randomNum = MissionUtils.Random.pickNumberInRange(0, 9);
+      //   if (randomNum >= 4) {
+      //     forwardCounts[idx]++
+      //   };
+      //   Console.print(car + ' : ' + '-'.repeat(forwardCounts[idx]));
+      // })
       Console.print('');
     }
     
