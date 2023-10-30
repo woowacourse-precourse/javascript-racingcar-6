@@ -9,7 +9,7 @@ export const filter = curry((func, iterable) => {
   let result = [];
 
   for (const value of iterable) {
-    if (func(value)) ret.push(value);
+    if (func(value)) result.push(value);
   }
 
   return result;
