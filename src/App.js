@@ -25,6 +25,7 @@ class App {
     validateCarNames(this.inputCarNames);
   }
 
+  //입력 받은 자동차 이름을 객체로 배열로 저장
   makeCarsInfo() {
     this.inputCarNames.forEach((carName) => {
       const carsInfo = {
