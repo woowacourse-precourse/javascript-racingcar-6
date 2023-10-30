@@ -14,7 +14,7 @@ const Car = {
   },
 
   countMoveForward(carMoveForwards, carMoves) {
-    carMoveForwards.forEach((forward, index) => {
+    return carMoveForwards.map((forward, index) => {
       if (carMoves[index] >= FORWARD_CRITERIA) {
         return forward + 1;
       }
