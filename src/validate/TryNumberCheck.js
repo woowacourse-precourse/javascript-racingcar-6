@@ -11,12 +11,12 @@ class TryNumberCheck {
   }
 
   checkTryNumber(tryNumber) {
-    this.checkZero(tryNumber);
+    this.checkPositiveInteger(tryNumber);
     this.checkType(tryNumber);
   }
 
-  checkZero(tryNumber) {
-    if (Number(tryNumber) === 0) {
+  checkPositiveInteger(tryNumber) {
+    if (Number(tryNumber) <= 0 || Number(tryNumber) % 1 !== 0) {
       throw ERROR.tryNumberZero;
     }
   }

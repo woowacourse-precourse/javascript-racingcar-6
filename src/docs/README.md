@@ -44,7 +44,7 @@
   ```
   <예외 상황>
   - 숫자가 아닌 값 입력
-  - 0을 입력
+  - 1 이상의 양의 정수가 아닌 값 입력 (실수, 음의 정수, '0'..)
   ```
 
 <br><br>
@@ -131,7 +131,7 @@ src
       <th align="center">Test</th>
     </tr>
     <tr>
-      <td rowspan="3"><b>🕹&nbsp;&nbsp;ApplicationTest</b></td>
+      <td rowspan="3"><b>🚨&nbsp;&nbsp;ApplicationTest</b></td>
       <td rowspan="3"><b>자동차 경주 게임</b></td>
     </tr>
     <tr>
@@ -142,7 +142,7 @@ src
     </tr>
     <tr><td colspan="3"></td></tr>
     <tr>
-      <td rowspan="7"><b>🕹&nbsp;&nbsp;ValidateTest</b></td>
+      <td rowspan="7"><b>🚨&nbsp;&nbsp;ValidateTest</b></td>
       <td rowspan="5">자동차 이름 입력 테스트</td>
       <td>split 메서드로 주어진 값을 구분</td>
     </tr>
@@ -167,7 +167,7 @@ src
     </tr>
     <tr><td colspan="3"></td></tr>
     <tr>
-      <td rowspan="4"><b>🕹&nbsp;&nbsp;CarMovingTest</b></td>
+      <td rowspan="4"><b>🚨&nbsp;&nbsp;CarMovingTest</b></td>
       <td rowspan="4">자동차 랜덤 이동값 테스트</td>
       <td>자동차 랜덤값이 4 미만일 경우 전진하지 않음</td>
     </tr>
@@ -182,7 +182,7 @@ src
     </tr>
     <tr><td colspan="3"></td></tr>
     <tr>
-      <td rowspan="4"><b>🕹&nbsp;&nbsp;StringTest</b></td>
+      <td rowspan="4"><b>🚨&nbsp;&nbsp;StringTest</b></td>
       <td rowspan="4">문자열 테스트</td>
       <td>split 메서드로 주어진 값을 구분</td>
     </tr>
