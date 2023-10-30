@@ -9,4 +9,13 @@ describe('ValidatorTest', () => {
     expect(() => Validator.validateCarNames(['jerry'])).not.toThrow();
     expect(() => Validator.validateCarNames(['jerry', 'tom'])).not.toThrow();
   });
+
+  test('자동차 이름이 6자 이상일 경우 MAX_LENGTH 에러 발생', () => {
+    expect(() => Validator.validateCarNames(['abcdef'])).toThrow(
+      ErrorMessage.MAX_LENGTH,
+    );
+  });
+  test('자동차 이름이 5자 이하일 경우 에러 발생하지 않음', () => {
+    expect(() => Validator.validateCarNames(['abcde'])).not.toThrow();
+  });
 });
