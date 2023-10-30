@@ -49,6 +49,23 @@ class App {
       MissionUtils.Console.print("");
       i++;
     }
+
+    let winnerCount = 0;
+
+    progress.map(({ currentProgress }) => {
+      if (currentProgress.length >= winnerCount) {
+        winnerCount = currentProgress.length;
+        return;
+      }
+    });
+
+    const winner = [];
+
+    progress.map(({ name, currentProgress }) => {
+      if (currentProgress.length >= winnerCount) winner.push(name);
+    });
+
+    MissionUtils.Console.print("최종 우승자 : " + winner.join(","));
   }
 }
 
