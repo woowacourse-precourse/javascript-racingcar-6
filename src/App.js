@@ -22,7 +22,6 @@ class App {
     // 전진 구현
     // 전진 조건은 0~9 사이 난수 >= 4 면 1칸 이동
     // 전진 구현하면서 동시에 출력
-    // enterCars = enterCars.map((car) => (car += " : "));
     let raceProgress = new Array(enterCars.length);
     raceProgress.fill(0);
     for (let i = 0; i < raceCount; i++) {
@@ -36,6 +35,21 @@ class App {
       }
       MissionUtils.Console.print("");
     }
+
+    // 최종 우승차 출력
+    let winner = [];
+    let winnerIdx = raceProgress.indexOf(Math.max(...raceProgress));
+    while (winnerIdx != -1) {
+      winner.push(enterCars[winnerIdx]);
+      winnerIdx = raceProgress.indexOf(
+        Math.max(...raceProgress),
+        winnerIdx + 1
+      );
+    }
+    // 우승자 출력
+    MissionUtils.Console.print(
+      `${PRINTOUT.RACE_WINNER} ${winner.map((name) => name).join(", ")}`
+    );
   }
 }
 
