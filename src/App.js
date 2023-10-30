@@ -80,6 +80,23 @@ class App {
     }
   }
 
+  printWinner(cars) {
+    const maxPosition = Math.max(...cars.map(car => car.position));
+    const winners = [];
+
+    for (let car of cars) {
+      if (car.position === maxPosition) winners.push(car.name);
+    }
+
+    if (winners.length === 0) {
+      Console.print('우승자가 없습니다.');
+    } else if (winners.length === 1) {
+      Console.print(`최종 우승자 : ${winners[0]}`);
+    } else {
+      Console.print(`최종 우승자 : ${winners.join(', ')}`);
+    }
+  }
+
   async play() {
     const names = await this.getUserInput();
     this.checkInputValid(names);
@@ -87,6 +104,7 @@ class App {
     this.checkCountValid(count);
     const cars = this.createCars(names);
     this.executeRacing(cars, count);
+    this.printWinner(cars);
   }
 }
 
