@@ -28,29 +28,29 @@ describe('RacingCars 클래스 테스트', () => {
   test.each([
     {
       names: ['pobi'],
-      random: [4],
-      output: ['pobi'],
+      randoms: [4],
+      outputs: ['pobi'],
     },
     {
       names: ['pobi', 'yuna', 'lisa'],
-      random: [1, 9, 2],
-      output: ['yuna'],
+      randoms: [1, 9, 2],
+      outputs: ['yuna'],
     },
     {
       names: ['pobi', 'yuna', 'lisa'],
-      random: [8, 9, 2],
-      output: ['pobi', 'yuna'],
+      randoms: [8, 9, 2],
+      outputs: ['pobi', 'yuna'],
     },
-  ])('이동 횟수를 비교해서 우승자를 가려내는 기능 테스트', ({ names, random, output }) => {
+  ])('이동 횟수를 비교해서 우승자를 가려내는 기능 테스트', ({ names, randoms, outputs }) => {
     // given
-    mockRandoms(random);
-
-    // when
+    mockRandoms(randoms);
     const racingCars = new RacingCars(names);
     racingCars.getRacingCarsMovingLog();
+
+    // when
     const result = racingCars.getWinners();
 
     // then
-    expect(result).toEqual(output);
+    expect(result).toEqual(outputs);
   });
 });

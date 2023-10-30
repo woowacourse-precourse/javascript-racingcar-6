@@ -13,20 +13,20 @@ describe('입력값 검증 테스트', () => {
     expect(newError).toThrow('[ERROR]');
   });
 
-  test('자동차의 이름 중 중복된 이름이 존재하면 오류가 발생되어야 한다.', () => {
-    // given
-    const names = ['pobi', 'yuna', 'pobi'];
-
-    // then
-    expect(() => Validator.checkHasDuplicate(names).toThrow(ERROR.hasDuplicate));
-  });
-
   test('자동차의 이름 중 공백이 존재하면 오류가 발생되어야 한다.', () => {
     // given
     const names = ['pobi', ''];
 
     // then
     expect(() => Validator.checkHasEmpty(names)).toThrow(ERROR.hasEmpty);
+  });
+
+  test('자동차의 이름 중 중복된 이름이 존재하면 오류가 발생되어야 한다.', () => {
+    // given
+    const names = ['pobi', 'yuna', 'pobi'];
+
+    // then
+    expect(() => Validator.checkHasDuplicate(names).toThrow(ERROR.hasDuplicate));
   });
 
   test('자동차의 이름이 최대 길이보다 길면 오류가 발생해야 한다.', () => {
