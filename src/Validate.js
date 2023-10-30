@@ -1,4 +1,3 @@
-import { Console } from '@woowacourse/mission-utils'
 import { ERROR_MESSAGE } from './Message.js';
 
 class Validate{

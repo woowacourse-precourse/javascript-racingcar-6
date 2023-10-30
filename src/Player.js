@@ -8,9 +8,8 @@ class Player{
   
   async carName(){
     Console.print(INPUT_MESSAGE.INPUT_CARS_NAME);
-    const PLAYER = this.inputPlayerName();
 
-    return PLAYER
+    return this.inputPlayerName();
   }
   
   async inputPlayerName(){
