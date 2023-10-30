@@ -15,6 +15,9 @@ class App {
       }
       Console.print(""); // 개행해줌
     }
+    // 최종 우승자 결정 후 출력
+    game.decideFinalWinner();
+    this.printFinalResultMessage(game.finalWinnerList);
   }
 
   printResultMessage(car) {
@@ -23,6 +26,15 @@ class App {
       resultMessage += "-";
     }
     Console.print(resultMessage);
+  }
+
+  printFinalResultMessage(finalWinnerList) {
+    let finalResultMessage = "최종 우승자 : ";
+    for (const finalWinner of finalWinnerList) {
+      finalResultMessage += finalWinner + ", ";
+    }
+    finalResultMessage = finalResultMessage.slice(0, -2);
+    Console.print(finalResultMessage);
   }
 }
 
