@@ -1,14 +1,16 @@
 import { getCarNames, getTryCount } from "../views/InputView";
-import { isValidInput } from "../models/IsValidInput";
-import { setCars } from "../models/Car";
+import { isValidInput, isValidCount } from "../models/IsValidInput";
+import { setCars } from "../models/setCar";
+import { random } from "../util/RandomNum";
 
 const startGame = async () => {
     const inputName = await getCarNames();
     const name = isValidInput(inputName);
-    setCars(name);
     
     const count = await getTryCount();
     isValidCount(count);
+
+    setCars(name, count);
 };
 
 export default startGame;

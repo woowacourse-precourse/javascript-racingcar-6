@@ -33,23 +33,23 @@ export const isValidInput = (inputName) => {
         
     //6. 중복된 이름이 있을 경우
     let nameSet = new Set(name);
-    if ( name.length !== nameSet.length ) {
+    if ( name.length !== nameSet.size ) {
         throw new Error( NAME_ERROR.SAME_NAME_ERROR );
     }
     return name;
 };
 
 //입력받은 시도횟수의 유효성 검사
-export const isValidCount = (count) => {
-    //정수가 아닐 경우
-    if( !Number.isInteger(count) ) {
-        throw new Error( NAME_ERROR.COUNT_ERROR );
+export const isValidCount = (inputCount) => {
+    if (inputCount === null) {
+        throw new Error(NAME_ERROR.NULL_ERROR);
     }
 
-    //NULL값인 경우
-    if ( count === NULL ) {
-        throw new Error( NAME_ERROR.NULL_ERROR );
+    const count = parseInt(inputCount);
+    if (isNaN(count) || count.toString() !== inputCount.toString()) {
+        throw new Error(NAME_ERROR.COUNT_ERROR);
     }
 
     return count;
 };
+;
