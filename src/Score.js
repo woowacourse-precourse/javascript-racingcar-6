@@ -24,6 +24,8 @@ export default class Score {
         result.forEach((e) => {
             checkScore.push({name: e.name, score: e.score.length})
         })
-        console.log(checkScore)
+
+        let max_val = checkScore.map(e => e.score).reduce((max, curr) => max < curr ? curr : max)
+        console.log(max_val)
     }
 }
