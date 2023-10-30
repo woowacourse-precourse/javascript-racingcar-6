@@ -31,4 +31,18 @@ describe("경주 게임 테스트", () => {
       );
     }
   );
+
+  test.each([
+    ["1번 시도", ["car", "bus"], 1],
+    ["3번 시도", ["car", "bus"], 3],
+    ["100번 시도", ["car", "bus"], 100],
+  ])(
+    "시도 횟수만큼 자동차 전진 시도 - %s",
+    (testName, carNameArray, attemptCount) => {
+      const carArray = carNameArray.map((name) => new Car(name));
+      const game = new RacingGame(carArray, attemptCount);
+      game.play();
+      expect(game.resultArray).toHaveLength(attemptCount);
+    }
+  );
 });
