@@ -14,6 +14,7 @@ class Car {
     this.position = 0;
   }
 }
+
 class App {
   async getUserInput() {
     const userInput = await Console.readLineAsync(
