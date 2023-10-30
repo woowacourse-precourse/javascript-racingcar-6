@@ -138,3 +138,25 @@ describe('updateRaceResults 테스트', () => {
     jest.restoreAllMocks();
   });
 });
+
+describe('findMaxScore 테스트', () => {
+  test('가장 높은 점수 확인', () => {
+    const RaceResults = [
+      { car1: '-', car2: '-', car3: '-' },
+      { '1': '', '2': '-', '3': '' },
+      { '나는': '--', '지금': '', '배고파': '' },
+      { '나는': '', '지금': '', '배고파': '' },
+      { car1: '----', car2: '-', car3: '-' }
+    ];
+
+    const expectResults = [1, 1, 2, 0, 4];
+
+    RaceResults.forEach((currentRace, index) => {
+      const currentMaxScore = findMaxScore(currentRace);
+
+      expect(currentMaxScore).toBe(expectResults[index]);
+    });
+
+    jest.restoreAllMocks();
+  });
+})
