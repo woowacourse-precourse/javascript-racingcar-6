@@ -2,11 +2,14 @@ import { Console } from "@woowacourse/mission-utils";
 import { MESSAGE } from "./Constant.js";
 
 const Output = {
-  racingResult() {
+  result() {
     Console.print(MESSAGE.turn);
   },
-  winner(nameList) {
-    Console.print(MESSAGE.end + nameList.map((name) => name).join(', '));
+  racingResult(car, distance) {
+    Console.print(`${car.getName()} : ${Array.from({ length: distance }, () => '-').join('')}`);
+  },
+  winner(names) {
+    Console.print(`${MESSAGE.end} : ${names.join(', ')}`);
   },
 }
 
