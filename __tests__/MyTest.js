@@ -94,4 +94,29 @@ describe('기능 구현 테스트', () => {
         const result = app.printGameStatus(cars);
         expect(logSpy).toHaveBeenCalledWith(result.stringContaining('yoo : -'));
     });
+
+    test('우승자를 출력한다.', () => {
+        const logSpy = getLogSpy();
+        const cars = {
+            yoo: 1,
+            vin: 2,
+        };
+        const result = app.printWinner(cars);
+        expect(logSpy).toHaveBeenCalledWith(
+            result.stringContaining('최종 우승자 : vin')
+        );
+    });
+
+    test('우승자가 두명 이상이면 쉼표로 구분하여 출력한다.', () => {
+        const logSpy = getLogSpy();
+        const cars = {
+            yoo: 1,
+            vin: 2,
+            shim: 2,
+        };
+        const result = app.printWinner(cars);
+        expect(logSpy).toHaveBeenCalledWith(
+            result.stringContaining('최종 우승자 : vin, shim')
+        );
+    });
 });
