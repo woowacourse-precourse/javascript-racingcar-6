@@ -1,10 +1,11 @@
-import OutputView from "../view/OutputView.js";
 import InputView from "../view/InputView.js";
 import CustomError from "../core/CustomError.js";
 import GameModel from "../model/GameModel.js";
 
 import { pickNumberInRange } from "../utils/index.js";
-import { GAME_SETTING, STATE_KEY } from "../utils/constants.js";
+import { GAME_SETTING } from "../utils/constants.js";
+import OutputStatusView from "../view/OutputWinnerView.js";
+import OutputWinnerView from "../view/OutputStatusView.js";
 
 const { MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER } = GAME_SETTING;
 
@@ -12,7 +13,6 @@ class GameController {
   constructor() {
     this.model = new GameModel();
     this.inputView = new InputView();
-    this.outputView = new OutputView({ model: this.model });
   }
 
   async start() {
@@ -29,7 +29,9 @@ class GameController {
     const { carNames, tryCount } = await this.inputView.inputData();
 
     this.model.initData({ carNames, tryCount });
-    this.model.subscribe(STATE_KEY.GAME, this.outputView.print.bind(this.outputView));
+
+    this.outputStatusView = new OutputStatusView({ model: this.model });
+    this.outputWinnerView = new OutputWinnerView({ model: this.model });
   }
 
   racing() {
