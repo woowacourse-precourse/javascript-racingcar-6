@@ -10,6 +10,13 @@ const mockQuestions = (inputs) => {
   });
 };
 
+const mockRandoms = (numbers) => {
+  MissionUtils.Random.pickNumberInRange = jest.fn();
+  numbers.reduce((acc, number) => {
+    return acc.mockReturnValueOnce(number);
+  }, MissionUtils.Random.pickNumberInRange);
+};
+
 describe("story1. 자동차 이름 입력", () => {
   test("입력을 받아서 문자열을 반환한다.", async () => {
     // given
@@ -52,6 +59,24 @@ describe("story4. 차수별 진행상황 출력", () => {
     array.forEach((input) => {
       result.push(`${input} : `);
     });
+
+    expect(result).toEqual(answer);
+  });
+});
+
+describe("story4. 숫자가 4이상일 경우 record 배열에 '-' 추가", () => {
+  test("자동차 이름을 가지고, 기록용 배열을 만든다.", async () => {
+    // given
+    const randoms = [9, 3, 2, 8];
+    const result = ['산 : ', '바다 : ', '강 : ', '하늘 : '];
+    const answer = ['산 : -', '바다 : ', '강 : ', '하늘 : -'];
+
+    mockRandoms(randoms);
+
+    for (let i = 0; i < result.length; i += 1) {
+      const randomNum = MissionUtils.Random.pickNumberInRange();
+      if (randomNum > 3) result[i] += '-';
+    }
 
     expect(result).toEqual(answer);
   });
