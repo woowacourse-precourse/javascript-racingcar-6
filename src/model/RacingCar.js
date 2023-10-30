@@ -6,7 +6,7 @@ class RacingCar {
     /** @type {string} */
     this.carName = '';
     /** @type {number} */
-    this.moveCount = RACING_CAR.START_POSITION;
+    this.carPosition = RACING_CAR.START_POSITION;
   }
 
   /** @returns {string} */
