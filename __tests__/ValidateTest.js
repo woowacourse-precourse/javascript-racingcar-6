@@ -1,7 +1,6 @@
 import CarListValidate from "../src/validate/CarListCheck.js";
 import TryNumberValidate from "../src/validate/TryNumberCheck.js";
 import { ERROR } from "../src/util/constants.js";
-// import { ERROR } from "../src/BaseballGame/constants/index.js";
 
 describe("자동차 이름 입력 테스트", () => {
   const carValidate = new CarListValidate();

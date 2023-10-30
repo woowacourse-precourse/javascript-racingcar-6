@@ -39,7 +39,9 @@ class RacingCarController {
   async randomStart() {
     this.output.racingStartMessage();
     for (let i = 0; i < this.tryNumber; i++) {
-      this.countWinner(await this.carMoving.eachRound(this.winnerList.length));
+      this.countWinner(
+        await this.carMoving.playEachRound(this.winnerList.length)
+      );
     }
   }
 
