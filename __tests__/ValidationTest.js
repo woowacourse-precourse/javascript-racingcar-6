@@ -26,6 +26,11 @@ describe('유효성 검사 테스트', () => {
       const nameArray = ['감','사','의','마','음','을','담','아','테스트를','작성','합니다','.'];
       expect(() => validate.carName(nameArray)).toThrowError('[ERROR] 자동차는 9대까지 등록가능합니다.');
     });
+
+    test('공백만으로 이루어진 입력이 있으면 [ERROR]를 던진다.', () => {
+      const nameArray = [' ', '   '];
+      expect(() => validate.carName(nameArray)).toThrowError('[EEROR] 최소 한개 이상은 입력해주세요.');
+    });
   });
 
   describe('실행 횟수 입력 테스트 확인', () => {

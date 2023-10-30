@@ -13,7 +13,6 @@ const validate = {
     if (!length) throw new Error('[ERROR] 숫자를 정확히 입력해주세요.');
     if (/[^1-9]/.test(length)) throw new Error('[ERROR] 1-9 사이에 숫자를 입력해주세요.');
     if (length > 99) throw new Error('[ERROR] 최대 2자리 수까지 입력이 가능합니다.');
-    if (/^\s*$/.test(carName)) throw new Error('[EEROR] 최소 한개 이상은 입력해주세요.');
   },
 };
 
