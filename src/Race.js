@@ -6,6 +6,7 @@ import {
     RACE_RESULT_MESSAGE,
     RACE_TIME_ERROR_MESSAGE,
     CREATE_CAR_ERROR_MESSAGE,
+    NOT_MOVE_WIN_ERROR_MESSAGE,
 } from "./Define";
 
 export const VALIDATE_CAR_NAME = (CAR_NAME_INPUT) => {
@@ -40,4 +41,12 @@ export const RACE_RUN = (CARS, RACE_TIMES) => {
         CARS.forEach(CAR => Console.print(CAR.toString()));
         Console.print('');
     }
+}
+
+export const FIND_WINNERS = (CARS) => {
+    const WIN_POSITION = Math.max(...CARS.map(CAR => CAR.getPosition()));
+    if (WIN_POSITION === 0) {
+        throw new Error(NOT_MOVE_WIN_ERROR_MESSAGE);
+    }
+    return CARS.filter(CAR => CAR.getPosition() === WIN_POSITION).map(CAR => CAR.name);
 }

@@ -7,6 +7,7 @@ import {
     VALIDATE_CAR_NAME,
     CREATE_CARS,
     RACE_RUN,
+    FIND_WINNERS,
 } from './Race';
 
 class App {
@@ -15,6 +16,7 @@ class App {
         const CARS = CREATE_CARS(CAR_NAMES_INPUT);
         const RACE_TIME_INPUT = await this.getRaceTimes();
         RACE_RUN(CARS, RACE_TIME_INPUT);
+        const WINNERS = FIND_WINNERS(CARS);
     }
 
     async getCarNames() {
