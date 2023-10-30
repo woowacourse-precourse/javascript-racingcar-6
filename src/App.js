@@ -17,6 +17,7 @@ class App {
       for (let i = 0; i < inputNumber; i++) {
         this.runRace(carArr, carDictionary);
         Console.print(carDictionary);
+        this.printRace(carDictionary);
       }
     } catch (error) {
       console.error(error.message);
@@ -39,6 +40,12 @@ class App {
       if (this.generateRandomNumber()) {
         carDictionary[key] += 1;
       }
+    });
+  }
+
+  printRace(carDictionary) {
+    Object.entries(carDictionary).forEach(([key, value]) => {
+      console.log(`${key}: ${'-'.repeat(value)}`);
     });
   }
 }
