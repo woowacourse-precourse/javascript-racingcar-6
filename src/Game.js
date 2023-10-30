@@ -1,21 +1,25 @@
 import { Console } from '@woowacourse/mission-utils';
 import Players from './Players.js';
+import { MESSAGE, ERROR } from './Constant.js';
 
 class Game {
   #players;
-  #gameLength;
+  #numberOfGames;
 
   async play() {
     await this.setPlayerName();
   }
 
   async setPlayerName() {
-    const players = await Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
+    const players = await Console.readLineAsync(MESSAGE.NAME_INPUT);
     this.#players = new Players(players);
   }
 
-  async setGameLength() {
-
+  async setNumberOfGames() {
+    const input = await Console.readLineAsync(MESSAGE.NUMBER_INPUT);
+    const trimmed = Number(input.trim());
+    if (trimmed === NaN) throw new Error(ERROR.WRONG_NUMBER);
+    this.#numberOfGames = trimmed;
   }
 }
 
