@@ -71,8 +71,8 @@ describe('잘못된 값을 입력하면 에러 문구 출력 - 시도 횟수', (
     );
   });
 
-  test('시도 횟수가 0보다 큰 수가 아닐 경우', () => {
-    const names = [0, -1];
+  test('시도 횟수가 0보다 큰 정수가 아닐 경우', () => {
+    const names = [-1, 0.5];
 
     names.map((name) =>
       expect(() => RacingTryCount.validate(name)).toThrow(ERROR.MUST_ENTER_A_NUMBER_OVER_ZERO),
