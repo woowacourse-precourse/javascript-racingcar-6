@@ -10,6 +10,10 @@ class RacingCars {
   getStatus = () => {
     return this.#CARS_STATUS;
   };
+
+  increaseCarPosition = (car) => {
+    this.#CARS_STATUS[car]++;
+  };
 }
 
 export default RacingCars;
