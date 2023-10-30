@@ -1,8 +1,11 @@
 import { Console } from '@woowacourse/mission-utils';
 
 const OutputView =  {
-	outputWinnerName: async (winnerName) => {
+	outputWinnerName: (winnerName) => {
 		Console.print(winnerName);
+	},
+	outputDistanceCars: (distanceimformation) => {
+		Console.print(distanceimformation);
 	}
 }
 
