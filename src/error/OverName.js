@@ -1,6 +1,6 @@
 import { ERROR_MESSEAGE } from "../constants/Messeage.js";
-import Commas from "./Commas.js";
 import { GAME_RULE } from "../constants/Constants.js";
+import Commas from "./Commas.js";
 
 class OverName extends Commas {
   isOverName(players) {
