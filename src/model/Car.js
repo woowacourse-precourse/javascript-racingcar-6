@@ -1,3 +1,5 @@
+import { Random } from '@woowacourse/mission-utils';
+
 export default class Car {
   constructor(name) {
     this.name = name;
@@ -14,5 +16,13 @@ export default class Car {
 
   getMove() {
     return this.move;
+  }
+
+  tryToMove() {
+    const RANDOM_NUMBER = Random.pickNumberInRange(0, 9);
+
+    if (RANDOM_NUMBER >= 4) {
+      this.oneStepForward();
+    }
   }
 }
