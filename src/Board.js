@@ -62,8 +62,12 @@ class Board {
     }
   }
 
+  /**
+   * 사용자로부터 입력받은 총 턴 수를 반환한다.
+   * @returns {Number} numTurns
+   */
   getNumTurns() {
-
+    return this.#numTurns;
   }
 
   executeTurn() {
