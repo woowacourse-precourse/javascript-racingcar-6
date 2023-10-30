@@ -10,6 +10,8 @@ const ERRORS = {
   NOT_INTEGER: '[ERROR] 정수 형태로만 입력할 수 있습니다.',
   NOT_CONVERTABLE: '[ERROR] 시도 횟수가 잘못된 형식으로 입력되었습니다.',
   UNSAFE_INTEGER: '[ERROR] 시도 횟수가 너무 큽니다.',
+  CONTAINS_BLANK: '[ERROR] 공백이 포함되지 않은 이름만 입력할 수 있습니다.',
+  DUPLICATE_VALUE: '[ERROR] 중복되지 않은 이름만 입력할 수 있습니다.',
 };
 
 const NUMBERS = {

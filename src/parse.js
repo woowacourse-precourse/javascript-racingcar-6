@@ -23,6 +23,18 @@ const parseCarNames = input => {
     throw new Error(CONSTANTS.ERRORS.OVER_LIMIT);
   }
 
+  const containsBlank = value => value.includes(' ');
+
+  if (splited.some(containsBlank)) {
+    throw new Error(CONSTANTS.ERRORS.CONTAINS_BLANK);
+  }
+
+  const deduplicated = new Set(splited);
+
+  if (splited.length !== deduplicated.length) {
+    throw new Error(CONSTANTS.ERRORS.DUPLICATE_VALUE);
+  }
+
   return splited;
 };
 
