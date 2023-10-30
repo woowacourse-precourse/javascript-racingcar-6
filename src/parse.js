@@ -1,6 +1,6 @@
 import CONSTANTS from './constants';
 
-const parseCarNames = input => {
+export const parseCarNames = input => {
   const splited = input.split(',').filter(name => name.length !== 0);
 
   const carCount = splited.length;
@@ -38,7 +38,7 @@ const parseCarNames = input => {
   return splited;
 };
 
-const parseNumberOfAttempts = input => {
+export const parseNumberOfAttempts = input => {
   if (input.includes('.')) {
     throw new Error(CONSTANTS.ERRORS.NOT_INTEGER);
   }
