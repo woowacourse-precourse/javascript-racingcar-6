@@ -47,3 +47,9 @@ score.getScore(this.cars)
 => [{이름1, 점수1}, {이름2, 점수2}, {이름3, 점수3}]
 - 최대값 비교를 위해 score 값을 숫자로 변환
 (score.length: '-' 문자열 길이 세기)
+3) score 최대값 구하기 (max_val)
+- arr.map.reduce 사용
+4) array 각 요소의 score값과 이전에 구한 최대값 비교하기
+- 우승자 이름을 담는 새로운 array 만들기
+- 각 요소의 score 값과 최대값이 같으면(forEach 사용)
+새로 만든 array에 요소의 이름(this.name) 넣기(array.push)

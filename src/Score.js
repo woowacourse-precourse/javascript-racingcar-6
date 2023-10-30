@@ -26,6 +26,12 @@ export default class Score {
         })
 
         let max_val = checkScore.map(e => e.score).reduce((max, curr) => max < curr ? curr : max)
-        console.log(max_val)
+        let winner = []
+        checkScore.forEach((e)=> {
+            if(max_val === e.score) {
+                winner.push(`${e.name}`);
+            }
+        })
+        console.log(winner)
     }
 }
