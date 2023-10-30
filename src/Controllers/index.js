@@ -1,14 +1,7 @@
 import { Console } from "@woowacourse/mission-utils";
 import Model from "../Models/index.js";
 import Views from "../Views/index.js";
-import {
-  validateNoWhiteSpace,
-  validateCarNameLength,
-  validateCarNameInput,
-  validateNumberType,
-  validateDuplicate,
-  validateNumberLength,
-} from "../Vaildation/index.js";
+import * as validate from "../Vaildation/index.js";
 
 class Controllers {
   constructor() {
@@ -18,25 +11,25 @@ class Controllers {
 
   async getUserInput(message) {
     let input = await Console.readLineAsync(message);
-    validateNoWhiteSpace(input);
+    validate.validateNoWhiteSpace(input);
 
     input = input?.split(",");
-    validateDuplicate(input);
+    validate.validateDuplicate(input);
 
     return input;
   }
 
   async getTryTimes(message) {
     const TIMES = await this.getUserInput(message);
-    validateNumberType(TIMES);
-    validateNumberLength(...TIMES);
+    validate.validateNumberType(TIMES);
+    validate.validateNumberLength(...TIMES);
     return TIMES;
   }
 
   async carMoveCheck(cars, tryTime) {
     for (let i = 0; i < cars.length; i++) {
-      validateCarNameLength(cars, i);
-      validateCarNameInput(cars, i);
+      validate.validateCarNameLength(cars, i);
+      validate.validateCarNameInput(cars, i);
       cars[i] = this.Model.removeWhitespace(cars[i]);
     }
 
