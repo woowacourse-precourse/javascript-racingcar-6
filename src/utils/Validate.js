@@ -5,10 +5,12 @@ class Validate {
     #REGAX;
     
     constructor() {
-        this.#REGAX = /\s|[!@#$%^&*(),.?":{}|<>]/;
+        this.#REGAX = /\s|[!@#$%^&*(),.?":{}|<>]|\d/;
     }
 
     vehicleNameValidate(vehicleName) {
+        const NAME_DUPLICATION = new Set(vehicleName).size;
+        if (vehicleName.length !== NAME_DUPLICATION) throw new Error(ERROR_MSG.NAME_DUPLICATION_ERROR);
         if (vehicleName.some(name => this.#REGAX.test(name))) throw new Error(ERROR_MSG.USER_NAME_REGAX_ERROR);
         if (vehicleName.some(name => name.length > CONSTANTS.maxVehicleName || name.trim().length === 0)) throw new Error(ERROR_MSG.USER_NAME_LENGTH_ERROR);
     }
