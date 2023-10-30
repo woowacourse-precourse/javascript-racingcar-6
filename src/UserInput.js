@@ -12,7 +12,7 @@ async function enterCarNames() {
 async function enterAttempts() {
     const attempt = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
     if (attempt < 1) throw new Error('[ERROR] 시도할 횟수가 잘못된 형식입니다.');
-    // if (isNaN(attempt)) throw new Error('[ERROR] 시도할 횟수가 잘못된 형식입니다.');
+    if (isNaN(attempt)) throw new Error('[ERROR] 시도할 횟수가 잘못된 형식입니다.');
 
     return Number(attempt);
 }
