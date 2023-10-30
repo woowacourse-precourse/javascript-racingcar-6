@@ -34,6 +34,12 @@ describe("자동차 이름 입력 테스트", () => {
     expect(() => carValidate.checkNameLength(notErrorInput).not.toThrow());
     expect(() => carValidate.checkNameLength(errorInput).toThrow(result));
   });
+
+  test("영문, 한글, 특수문자 입력 가능", () => {
+    const notErrorInput = [" ", "!", "가나다", "a"];
+
+    expect(() => carValidate.validate(notErrorInput).not.toThrow());
+  });
 });
 
 describe("레이싱 횟수 입력 테스트", () => {

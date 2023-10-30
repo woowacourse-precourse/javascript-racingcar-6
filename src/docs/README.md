@@ -142,8 +142,8 @@ src
     </tr>
     <tr><td colspan="3"></td></tr>
     <tr>
-      <td rowspan="6"><b>🕹&nbsp;&nbsp;ValidateTest</b></td>
-      <td rowspan="4">자동차 이름 입력 테스트</td>
+      <td rowspan="7"><b>🕹&nbsp;&nbsp;ValidateTest</b></td>
+      <td rowspan="5">자동차 이름 입력 테스트</td>
       <td>split 메서드로 주어진 값을 구분</td>
     </tr>
     <tr>
@@ -154,6 +154,9 @@ src
     </tr>
     <tr>
       <td>5글자를 초과하는 이름을 입력한 경우</td>
+    </tr>
+    <tr>
+      <td>영문, 한글, 특수문자 입력 가능</td>
     </tr>
     <tr>
       <td rowspan="2">레이싱 횟수 입력 테스트</td>
