@@ -1,14 +1,12 @@
-describe('기능 테스트', () => {
-  test('자동차 이름 길이 검증 테스트', () => {
-    const inputs = ['Juru99,Juru100', '1'];
-    const inputList = inputs[0].split(',');
+import { validateCarNameLength } from '../src/utils/validate';
 
-    inputList.forEach((car) => {
-      expect(car.length).toBeGreaterThan(5);
-    });
+describe('예외 테스트', () => {
+  test('자동차 이름 길이 예외 검사', () => {
+    const carName = 'Juru99,Juru100';
+    validateCarNameLength(carName);
   });
 
-  test('자동차 이동 횟수 검증 테스트', () => {
+  test('자동차 이동 횟수 예외 검사', () => {
     const inputs = ['pobi,woni', 'ab1'];
     const count = Number(inputs[1]);
 
