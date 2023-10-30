@@ -4,7 +4,7 @@ import Car from "./Car.js";
 class Game {
   constructor() {
     this.attemptNumber = 0;
-    this.finalWinner = [];
+    this.finalWinnerList = [];
     this.carList = [];
   }
 
@@ -29,16 +29,16 @@ class Game {
 
   decideFinalWinner() {
     let maxPosition = 0;
-    let finalWinner = [];
+    let finalWinnerList = [];
     for (const car of this.carList) {
       if (car.position > maxPosition) {
         maxPosition = car.position;
-        finalWinner = [car.name];
+        finalWinnerList = [car.name];
       } else if (car.position === maxPosition) {
-        finalWinner.push(car.name);
+        finalWinnerList.push(car.name);
       }
     }
-    this.finalWinner = finalWinner;
+    this.finalWinnerList = finalWinnerList;
   }
 }
 
