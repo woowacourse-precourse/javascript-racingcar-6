@@ -15,9 +15,9 @@ const User = {
   },
 
   async getTryCount() {
-    const tryCount = (await Console.readLineAsync(IN_GAME_MESSAGE.getTryCount));
+    const tryCount = await Console.readLineAsync(IN_GAME_MESSAGE.getTryCount);
     Console.print(tryCount);
-    
+
     ValidationTry.isCorrectTryCount(tryCount);
 
     return tryCount;
