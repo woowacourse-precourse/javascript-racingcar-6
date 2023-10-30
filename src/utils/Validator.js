@@ -1,25 +1,47 @@
-export const Validator = {
-  isPresent(value) {
-    return value != null;
-  },
+import { ERROR } from '../constants/Error.js';
+import { throwError, Conditions } from './Util.js';
+const {
+  ONLY_ONE,
+  NON_EXIST,
+  GAP,
+  LENGTH,
+  DUPLICATE,
+  NOT_NUMBER,
+  NOT_NATURAL_NUMBER,
+} = ERROR;
+const {
+  isMoreThanOne,
+  isPresent,
+  isContainSpace,
+  isCorrectLength,
+  isDuplicate,
+  isNumber,
+  isNaturalNumber,
+} = Conditions;
 
-  isContainSpace(value) {
-    return !/\s/.test(value);
-  },
+export default class Validator {
+  static validateRacingCars(input) {
+    const array = input.split(',');
 
-  isCorrectLength(value) {
-    return value.length <= 5;
-  },
+    throwError(NON_EXIST, isPresent(input));
+    throwError(ONLY_ONE, isMoreThanOne(input));
 
-  isDuplicate(arr) {
-    return new Set(arr).size === arr.length;
-  },
+    array.forEach((value) => {
+      throwError(GAP, isContainSpace(value));
+      throwError(LENGTH, isCorrectLength(value));
+    });
 
-  isNumber(value) {
-    return !isNaN(value);
-  },
+    throwError(DUPLICATE, isDuplicate(array));
 
-  isNaturalNumber(value) {
-    return Number.isInteger(Number(value)) && Number(value) > 0;
-  },
-};
+    return true;
+  }
+
+  static validateAttemptNumber(value) {
+    throwError(NON_EXIST, isPresent(value));
+    throwError(GAP, isContainSpace(value));
+    throwError(NOT_NUMBER, isNumber(value));
+    throwError(NOT_NATURAL_NUMBER, isNaturalNumber(value));
+
+    return true;
+  }
+}
