@@ -39,26 +39,25 @@ class RacingGame {
 
   async getExecutionResult(tryNumber) {
     for (let i = 0; i < tryNumber; i++) {
-      await this.decidePosition();
       await this.getExecutionResultBoard();
-      console.log();
     }
     await this.findWinner();
   }
   
-  async decidePosition() {
-    for (const car of this.#car) {
-      const randomNumber = await RandomNumberGenerator.getRandomNumber()
-      car.checkPosition(randomNumber);
-    }
-  }
-
   async getExecutionResultBoard(){
     for (const car of this.#car) {
+      await this.decidePosition(car);
       const nowPosition = await car.getPosition();
       await OutputView.outputExecutionResultBoard(car.name, nowPosition);
     }
+    console.log();
   }
+  
+  async decidePosition(car) {
+    const randomNumber = await RandomNumberGenerator.getRandomNumber()
+    car.checkPosition(randomNumber);
+  }
+  
 
   async findWinner() {
     for (const car of this.#car) {
