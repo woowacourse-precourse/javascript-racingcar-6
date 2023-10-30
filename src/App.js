@@ -50,6 +50,17 @@ class App {
             throw new Error('[ERROR] 1 이상의 숫자를 입력해주세요.');
         }
     }
+
+    /**
+     * @param {string[]} nameArr
+     * @returns {CarObject[]}
+     */
+    getCarObjArr(nameArr) {
+        return nameArr.map(name => ({
+            name,
+            move: 0,
+        }));
+    }
 }
 
 export default App;
