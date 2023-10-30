@@ -8,9 +8,9 @@ class GameManager {
   }
 
   static printWinner(racingCars) {
-    const winnerFar = Math.max(...Array.from(racingCars, (car) => car.howFar()));
+    const maxDistance = Math.max(...Array.from(racingCars, (car) => car.howFar()));
     const winners = racingCars
-      .filter((car) => car.howFar() === winnerFar)
+      .filter((car) => car.howFar() === maxDistance)
       .map((car) => car.name);
 
     Console.print(`${MESSAGE.WINNER}${winners.join(', ')}`);
