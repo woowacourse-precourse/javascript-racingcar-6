@@ -6,6 +6,7 @@ class App {
   async play() {
     await this.gameManager.initGame();
     await this.gameManager.startRace();
+    await this.gameManager.finishGame();
   }
 }
 

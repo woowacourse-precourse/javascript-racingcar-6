@@ -19,5 +19,37 @@ class GameUtil {
     }
     return false;
   }
+
+  // 가장 큰 전진횟수를 반환
+  maxForwardNumber() {
+    return CARS.reduce(
+      (maxForwardNumber, currentcar) =>
+        Math.max(maxForwardNumber, currentcar.forwardNumber),
+      0
+    );
+  }
+
+  // 전진횟수로 차 찾기
+  findCarsWithForwardNumber(forwardNumber) {
+    return CARS.filter((car) => car.forwardNumber === forwardNumber);
+  }
+
+  //공동우승시 ',' 출력하는 메소드
+  commaGenerator(index, length) {
+    if (Number(index) !== length) {
+      return ', ';
+    }
+    return '';
+  }
+
+  // 공동우승한 차의 이름들 반환
+  getSharedVictoryCarNames(WINNER_CARS) {
+    let winnerCarNames = '';
+    for (let index in WINNER_CARS) {
+      winnerCarNames += WINNER_CARS[index].carName;
+      winnerCarNames += this.commaGenerator(index, WINNER_CARS.length - 1);
+    }
+    return winnerCarNames;
+  }
 }
 export default GameUtil;

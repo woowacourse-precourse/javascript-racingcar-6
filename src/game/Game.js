@@ -20,5 +20,21 @@ class Game {
       this.gameUtil.storeMovingForward(index);
     }
   }
+
+  //우승한 차 찾기
+  findRaceWinner() { 
+    const MAX_FORWARD_NUMBER = this.gameUtil.maxForwardNumber();
+    const WINNER_CARS = this.gameUtil.findCarsWithForwardNumber(MAX_FORWARD_NUMBER);
+    return WINNER_CARS;
+  }
+
+  //우승한 차의 이름을 반환
+  getRaceWinnerCarNames() {
+    const WINNER_CARS = this.findRaceWinner();
+    if (WINNER_CARS.length>0){
+      return this.gameUtil.getSharedVictoryCarNames(WINNER_CARS);
+    }
+    return `${WINNER_CARS.carName}`;
+  }
 }
 export default Game;

@@ -18,9 +18,10 @@ class GameUi {
     );
     return ATTEMPT_COUNT;
   }
+
   // 레이스 게임 실행 결과 출력 안내 메시지 출력
   printResultMessage() {
-    MissionUtils.Console.print('실행 결과');
+    MissionUtils.Console.print('\n실행 결과');
   }
 
   // 각 레이스 게임당 자동차들의 전진현황 출력
@@ -32,6 +33,11 @@ class GameUi {
       MissionUtils.Console.print(`${CAR_NAME} : ${FORWARDED}`);
     }
     MissionUtils.Console.print('');
+  }
+
+  // 최종 우승자 출력
+  printWinner(winnerCarNames) {
+    MissionUtils.Console.print(`최종 우승자: ${winnerCarNames}`)
   }
 }
 export default GameUi;

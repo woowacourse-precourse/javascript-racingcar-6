@@ -1,4 +1,4 @@
-import GameUi from "../view/GameUi.js";
+import GameUi from '../view/GameUi.js';
 import Game from '../game/Game.js';
 class GameManager {
     constructor() {
@@ -15,12 +15,18 @@ class GameManager {
     // 레이스 게임 시작
     async startRace() {
         const ATTEMPT_COUNT = await this.gameUi.askAttemptCount();
+        this.gameUi.printResultMessage();
         for (let attemptedCount = 0; attemptedCount < ATTEMPT_COUNT; attemptedCount++) {
             this.game.playEachRaceGame();
             this.gameUi.printeachRaceGame();
         }
     }
 
+    // 레이스 게임 마무리
+    async finishGame() {
+        const WINNER_NAME = this.game.getRaceWinnerCarNames();
+        this.gameUi.printWinner(WINNER_NAME);
+    }
 
 }
 export default GameManager;
