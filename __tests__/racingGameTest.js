@@ -30,6 +30,17 @@ describe("자동차 경주 게임", () => {
 
     const result = await carGenerate();
 
+    expect(result).toContain("pobi", "woni");
     expect(result).toContainEqual("woni", "pobi");
+  });
+
+  test("split 메서드로 구분자가 포함되지 않은 경우 값을 그대로 반환", async () => {
+    const input = "1";
+    mockReadLineAsync.mockResolvedValue(input);
+    carGenerate.mockResolvedValueOnce(["1"]);
+
+    const result = await carGenerate();
+
+    expect(result).toContainEqual("1");
   });
 });
