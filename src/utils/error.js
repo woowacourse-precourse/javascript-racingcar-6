@@ -6,6 +6,7 @@ export class InvalidPlayerNameError extends Error {
   static TYPE_LENGTH = 0;
   static TYPE_SPACE_BETWEEN = 1;
   static TYPE_CONTAINS_SPECIAL = 2;
+  static TYPE_DUPLICATED = 3;
 
   /**
    * @param {number} errorType
@@ -29,6 +30,10 @@ export class InvalidPlayerNameError extends Error {
 
     if (type === InvalidPlayerNameError.TYPE_CONTAINS_SPECIAL) {
       return `${DEFAULT_ERROR_MESSAGE} 이름에 특수문자가 포함되어 있습니다.`;
+    }
+
+    if (type === InvalidPlayerNameError.TYPE_DUPLICATED) {
+      return `${DEFAULT_ERROR_MESSAGE} 중복된 이름이 있습니다.`;
     }
 
     return DEFAULT_ERROR_MESSAGE;
