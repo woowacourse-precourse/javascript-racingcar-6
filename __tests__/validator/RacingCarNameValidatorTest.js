@@ -1,22 +1,22 @@
-import { RacingCarNameValidator } from '../../src/validator/index.js';
+import { GRANDPRIX_ERROR_NOTIFICATION } from '../../src/constants/GrandPrixError.js';
+import { validateRacingCarName } from '../../src/validator/index.js';
 
 describe('레이싱카 이름 유효성 검증 테스트', () => {
-  const errorMessage = Object.freeze({
-    invalidLength: RacingCarNameValidator.CARNAME_VALIDATION_TYPES.validNameLength.message,
-    duplicationName: RacingCarNameValidator.CARNAME_VALIDATION_TYPES.duplicationName.message,
+  const expectErrorMessage = Object.freeze({
+    invalidLength: GRANDPRIX_ERROR_NOTIFICATION.invalidNameLength,
+    duplicationName: GRANDPRIX_ERROR_NOTIFICATION.duplicatedName,
   });
 
   test.each([
-    { input: 'abcdef,ghi', expectError: errorMessage.invalidLength },
-    { input: 'abc,def,ghijkl', expectError: errorMessage.invalidLength },
-    { input: 'abcdef,ghi,jkl', expectError: errorMessage.invalidLength },
-    { input: 'wooteco,precourse', expectError: errorMessage.invalidLength },
-    { input: 'abc,abc,abc,abc', expectError: errorMessage.duplicationName },
-    { input: 'bcd,efg,bcd,efg', expectError: errorMessage.duplicationName },
-    { input: 'woote,woote', expectError: errorMessage.duplicationName },
-    { input: 'preco,preco', expectError: errorMessage.duplicationName },
+    { input: 'abcdef,ghi', expectError: expectErrorMessage.invalidLength },
+    { input: ',def,ghijkl', expectError: expectErrorMessage.invalidLength },
+    { input: 'abcdef,ghi,', expectError: expectErrorMessage.invalidLength },
+    { input: 'wooteco,precourse', expectError: expectErrorMessage.invalidLength },
+    { input: 'abc,abc,abc,abc', expectError: expectErrorMessage.duplicationName },
+    { input: 'bcd,efg,bcd,efg', expectError: expectErrorMessage.duplicationName },
+    { input: 'woote,woote', expectError: expectErrorMessage.duplicationName },
+    { input: 'preco,preco', expectError: expectErrorMessage.duplicationName },
   ])('에러 테스트', ({ input, expectError }) => {
-    const racingCarNameValidator = new RacingCarNameValidator(input);
-    expect(() => racingCarNameValidator.validateRacingCarName()).toThrow(expectError);
+    expect(() => validateRacingCarName(input)).toThrow(expectError);
   });
 });
