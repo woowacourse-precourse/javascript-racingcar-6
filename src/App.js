@@ -14,6 +14,7 @@ class App {
 
   async play() {
     await this.registerRacingCars();
+    await this.registerRacingRepeatNumber();
   }
 
   async registerRacingCars() {
@@ -23,6 +24,16 @@ class App {
 
     if (cars) {
       this.racingCars = this.racingCars.concat(cars.map((car) => new Car(car)));
+    }
+  }
+
+  async registerRacingRepeatNumber() {
+    const number = Validation.validateRacingRepeatNumber(
+      await inputConsoleAsync(MESSAGES.COMMENT_INPUT_PLAY_REPEAT_NUMBER)
+    );
+
+    if (number) {
+      this.racingRepeatNumber = number;
     }
   }
 }
