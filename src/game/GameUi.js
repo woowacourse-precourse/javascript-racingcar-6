@@ -17,7 +17,7 @@ class GameUi {
   // 사용자가 시도할 횟수를 입력
   async askAttemptCount() {
     const ATTEMPT_COUNT = await MissionUtils.Console.readLineAsync(
-      '시도할 횟수는 몇 회인가요?'
+      "시도할 횟수는 몇 회인가요?"
     );
     this.game.runRaceGamesWithAttempts(ATTEMPT_COUNT);
   }
