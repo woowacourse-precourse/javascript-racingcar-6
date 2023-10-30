@@ -9,4 +9,11 @@ export default class OutputView {
   static printTryResult() {
     Console.print(Message.TRY_RESULT);
   }
+
+  static printSingleTryResult(carList) {
+    carList.forEach((car) => {
+      Console.print(`${car.getName()} : ${'-'.repeat(car.getMove())}`);
+    });
+    Console.print('');
+  }
 }
