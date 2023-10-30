@@ -43,7 +43,7 @@ describe("경기 테스트 ", () => {
     });
     for (let car in results) {
       expect(MissionUtils.Console.print).toHaveBeenCalledWith(
-        expect.stringContaining(`${car} : `)
+        expect.stringContaining(`${car} : -`)
       );
     }
   });
