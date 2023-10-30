@@ -54,6 +54,7 @@ class App {
     }
 
     playGame(tryCount, cars) {
+        MissionUtils.Console.print('');
         MissionUtils.Console.print('실행 결과');
         for (let i = 0; i < tryCount; i++) {
             Object.keys(cars).forEach((name) => {
@@ -67,6 +68,7 @@ class App {
             });
 
             this.printGameStatus(cars);
+            MissionUtils.Console.print('');
         }
         return cars;
     }
