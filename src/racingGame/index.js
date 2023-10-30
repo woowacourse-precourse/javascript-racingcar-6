@@ -2,17 +2,21 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 
 import Input from "./Input.js";
 import Racing from "./Racing.js";
-// import Result from "./Result.js";
+import Winner from "./Winner.js";
 
 class RacingGame {
   async gameStart() {
     const input = new Input();  // 초기 입력 클래스
     const racing = new Racing();  // 레이싱 진행 클래스
-    // const result = new Result(); // 결과 출력 클래스
-    const racingResult = racing.racingStart(
+    const winner = new Winner(); // 우승자 출력 클래스
+
+    const scoreStorage = await racing.racingStart(
       await input.getCarName(),
       await input.getRacingNumber()
     )
+
+    winner.winnerPrint(scoreStorage);
+
   }
 }
 
