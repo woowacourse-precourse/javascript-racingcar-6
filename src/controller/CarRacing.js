@@ -1,27 +1,28 @@
-import CarData from "../model/CarData.js";
-import inputView from "../view/InputView.js";
-import outputView from "../view/outputView.js";
-import validation from "../utils/validation.js";
+import CarData from '../model/CarData.js';
+import inputView from '../view/inputView.js';
+import outputView from '../view/outputView.js';
+import validation from '../utils/validation.js';
 
 class CarRacing {
   #CarData;
+
   #moveCount;
 
   async setCarList() {
     const input = await inputView.CarList();
     validation.carNameValidCheck(input);
-    this.#CarData = new CarData(input.split(","));
+    this.#CarData = new CarData(input.split(','));
   }
 
   async setMoveCount() {
     const input = await inputView.moveCount();
     validation.moveCountValidCheck(input);
-    this.#moveCount = parseInt(input);
+    this.#moveCount = parseInt(input, 10);
   }
 
   goRace() {
     outputView.raceResultTitle();
-    for (let i = 0; i < this.#moveCount; i++) {
+    for (let i = 0; i < this.#moveCount; i += 1) {
       const result = this.#CarData.moveCar();
       result.forEach((car) => outputView.raceResult(car.name, car.move));
       outputView.raceResultNewLine();
