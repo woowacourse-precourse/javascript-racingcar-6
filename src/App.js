@@ -9,16 +9,16 @@ import Car from './Car.js';
 
 class App {
   checkRacingCarNameValidation = (el) => {
-    return el.length < 6 ? true : false;
+    if (el.length > 5) {
+      throw new Error(ERRORS.carName.length);
+    }
   };
 
   getRacingCarNameInput = async () => {
     const input = await Console.readLineAsync(INPUT_MESSAGES.carName);
 
     const carNames = input.split(',').map((el) => {
-      if (!this.checkRacingCarNameValidation(el)) {
-        throw new Error(ERRORS.carName.length);
-      }
+      this.checkRacingCarNameValidation(el);
       return el;
     });
 
@@ -26,15 +26,15 @@ class App {
   };
 
   checkRacingCountValidation = (el) => {
-    return COUNTREGEX.test(el) ? true : false;
+    if (!COUNTREGEX.test(el)) {
+      throw new Error(ERRORS.gameCount.range);
+    }
   };
 
   getRacingCountInput = async () => {
     const input = await Console.readLineAsync(INPUT_MESSAGES.gameCount);
 
-    if (!this.checkRacingCountValidation(input)) {
-      throw new Error(ERRORS.gameCount.range);
-    }
+    this.checkRacingCountValidation(input);
 
     return input;
   };
