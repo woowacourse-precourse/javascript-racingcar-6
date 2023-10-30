@@ -26,7 +26,7 @@ class CarListCheck {
   checkSameName(carList) {
     const removeSameNameCount = new Set(carList).size;
     if (removeSameNameCount !== carList.length) {
-      throw ERROR.carCount;
+      throw ERROR.sameName;
     }
   }
 
