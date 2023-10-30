@@ -1,5 +1,5 @@
 import { NEW_LINE } from '../constants/constants.js';
-import makeResultStringTemplate from '../utils/makeResultStringTemplate.js';
+import formatCarMovementStrings from '../utils/formatCarMovementStrings.js';
 
 export default class ResultModel {
   #allAttempsResult;
@@ -24,7 +24,7 @@ export default class ResultModel {
     const displayedResults = [];
     this.#allAttempsResult.forEach((attempResult) => {
       attempResult.forEach(([carName, moveCount]) => {
-        displayedResults.push(makeResultStringTemplate(carName, moveCount));
+        displayedResults.push(formatCarMovementStrings(carName, moveCount));
       });
       displayedResults.push(NEW_LINE);
     });

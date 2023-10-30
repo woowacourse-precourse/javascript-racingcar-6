@@ -15,6 +15,6 @@ function makeStick(moveCount) {
   return sticks;
 }
 
-export default function makeResultStringTemplate(carName, moveCount) {
+export default function formatCarMovementStrings(carName, moveCount) {
   return `${carName} : ${makeStick(moveCount)}${NEW_LINE}`;
 }
