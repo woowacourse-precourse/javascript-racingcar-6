@@ -15,18 +15,18 @@ class RacingCarController {
 
   async start() {
     try {
-      this.carNames = await this.setcarName();
+      this.carNames = await this.setCarName();
       this.tryNumber = await this.setTryNumber();
       this.winnerList = Array.from({ length: this.carNames.length }, () => "");
-      await this.randomStart();
-      this.printFinalResult(this.finalWinnerCount());
+      await this.startRacing();
+      this.printFinalResult(this.getFinalWinnerName());
     } catch (error) {
       throw new Error(error);
     }
   }
 
   //자동차 이름 입력받기
-  async setcarName() {
+  async setCarName() {
     return this.carListCheck.validate(await this.input.inputCarNames());
   }
 
@@ -36,36 +36,36 @@ class RacingCarController {
   }
 
   //게임 횟수만큼 랜덤값 생성
-  async randomStart() {
+  async startRacing() {
     this.output.racingStartMessage();
     for (let i = 0; i < this.tryNumber; i++) {
       this.countWinner(
-        await this.carMoving.playEachRound(this.winnerList.length)
+        await this.carMoving.playEachRound(this.carNames.length)
       );
     }
   }
 
   //승리자 개수 증가시키기
-  async countWinner(winner) {
-    await winner.forEach((idx) => {
-      this.winnerList[idx] += "-";
+  async countWinner(winnerIndexList) {
+    await winnerIndexList.forEach((winnerIndex) => {
+      this.winnerList[winnerIndex] += "-";
     });
-    this.printResultControll();
+    this.printEachResult();
   }
 
-  printResultControll() {
-    this.output.eachRacingResult(this.carNames, this.winnerList);
+  printEachResult() {
+    this.output.eachResult(this.carNames, this.winnerList);
   }
 
-  finalWinnerCount() {
+  getFinalWinnerName() {
     let totalWinnerCount = this.winnerList.map((x) => x.length);
     let maxWinnerLength = Math.max(...totalWinnerCount);
-    let idx = totalWinnerCount.indexOf(maxWinnerLength);
+    let winnerIndex = totalWinnerCount.indexOf(maxWinnerLength);
     let finalWinner = [];
 
-    while (idx !== -1) {
-      finalWinner.push(this.carNames[idx]);
-      idx = totalWinnerCount.indexOf(maxWinnerLength, idx + 1);
+    while (winnerIndex !== -1) {
+      finalWinner.push(this.carNames[winnerIndex]);
+      winnerIndex = totalWinnerCount.indexOf(maxWinnerLength, winnerIndex + 1);
     }
     return finalWinner;
   }
