@@ -1,7 +1,8 @@
 import {MissionUtils} from "@woowacourse/mission-utils";
-import {ERROR_HEAD, INPUT_CARS_STRING, INPUT_PLAY_COUNT_STRING, SPLIT_MARK} from "./constants.js";
+import {ERROR_HEAD, INPUT_CARS_STRING, INPUT_PLAY_COUNT_STRING, NEWLINE, SPLIT_MARK} from "./constants.js";
 
 import {carListValidator, carNameValidator, carStringValidator, playCountValidator} from "./validator.js";
+import Game from "./game.js";
 
 class Init {
 
@@ -20,8 +21,11 @@ class Init {
         MissionUtils.Console.print(INPUT_PLAY_COUNT_STRING);
         const playCount = await MissionUtils.Console.readLineAsync('');
 
+        MissionUtils.Console.print(NEWLINE);
+
         if (playCountValidator(playCount)) {
-            // Racing(carsList, playCount);
+            const game = new Game();
+            return game.startRacing(carsList, playCount);
         } else {
             throw new Error(ERROR_HEAD);
         }
