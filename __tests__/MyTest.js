@@ -25,18 +25,19 @@ const getLogSpy = () => {
 
 describe('기능 구현 테스트', () => {
     const app = new App();
+    const inputs = ['yoo, vin', 'yoovin, vin', '5', '-5', 'a'];
+    const randoms = [4, 5, 3, 6, 2, 1];
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
 
     test('이름을 입력받는다.', async () => {
-        const inputs = ['yoo, vin'];
-        mockQuestions(inputs);
-        const result = app.getUserInput();
+        const result = await app.getUserInput();
         expect(result).toEqual(['yoo', 'vin']);
     });
 
     test('입력받은 이름이 5글자가 넘으면 error 발생', async () => {
-        const inputs = ['yoovin, vin'];
-        mockQuestions(inputs);
-        const result = app.getUserInput();
+        const result = await app.getUserInput();
         await expect(result).rejects.toThrow('[ERROR]');
     });
 
@@ -50,30 +51,22 @@ describe('기능 구현 테스트', () => {
     });
 
     test('횟수를 입력받는다.', async () => {
-        const inputs = ['5'];
-        mockQuestions(inputs);
         const result = app.getTryCount();
         expect(result).toEqual(5);
     });
 
     test('횟수가 0보다 작으면 error 발생', async () => {
-        const inputs = ['-5'];
-        mockQuestions(inputs);
         const result = app.getTryCount();
         await expect(result).rejects.toThrow('[ERROR]');
     });
 
     test('횟수가 숫자가 아니면 error 발생', async () => {
-        const inputs = ['a'];
-        mockQuestions(inputs);
         const result = app.getTryCount();
         await expect(result).rejects.toThrow('[ERROR]');
     });
 
     test('경기를 진행한다.', () => {
         const tryCount = 3;
-        const randoms = [4, 5, 3, 6, 2, 1];
-        mockRandoms([...randoms]);
         const cars = {
             yoo: 0,
             vin: 0,
