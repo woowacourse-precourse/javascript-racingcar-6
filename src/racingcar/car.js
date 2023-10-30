@@ -1,10 +1,10 @@
 import { GameRule } from '../models/const.js';
 
-export default class Racer {
+export default class Car {
   isValidValue(value) {
     const names = value.split(',').map(name => name.trim());
 
-    if (this.#isInvalidNumberOfRacers(names)) {
+    if (this.#isInvalidNumberOfCars(names)) {
       return false;
     }
 
@@ -19,14 +19,14 @@ export default class Racer {
     return true;
   }
 
-  #isInvalidNumberOfRacers(names) {
-    return GameRule.MinNumberOfRacer > names.length;
+  #isInvalidNumberOfCars(names) {
+    return GameRule.MinNumberOfCar > names.length;
   }
 
   #isInvalidNameLength(names) {
     return names.some(name => {
       const { length } = name;
-      return GameRule.MinLengthOfRacerName > length || GameRule.MaxLengthOfRacerName < length;
+      return GameRule.MinLengthOfCarName > length || GameRule.MaxLengthOfCarName < length;
     });
   }
 

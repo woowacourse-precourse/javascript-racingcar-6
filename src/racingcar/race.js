@@ -1,32 +1,32 @@
-import { Console } from '@woowacourse/mission-utils';
 import { ErrorMessage, GameMessage } from '../models/const.js';
-import Racer from './racer.js';
+import Car from './car.js';
 import Round from './round.js';
+import Util from '../utils/util.js';
 
 export default class Race {
-  #racer;
+  #car;
   #round;
 
   constructor() {
-    this.#racer = new Racer();
+    this.#car = new Car();
     this.#round = new Round();
   }
 
   async start() {
-    await this.#requestRacer();
+    await this.#requestCarName();
     await this.#requestRound();
   }
 
-  async #requestRacer() {
-    const racers = await Console.readLineAsync(GameMessage.InputRacer);
+  async #requestCarName() {
+    const carNames = await Util.readLineAsyncConsole(`${GameMessage.InputCarName}\n`);
 
-    if (!this.#racer.isValidValue(racers)) {
-      throw new Error(ErrorMessage.RacerName);
+    if (!this.#car.isValidValue(carNames)) {
+      throw new Error(ErrorMessage.CarName);
     }
   }
 
   async #requestRound() {
-    const round = await Console.readLineAsync(GameMessage.InputRound);
+    const round = await Util.readLineAsyncConsole(`${GameMessage.InputRound}\n`);
 
     if (!this.#round.isValidValue(round)) {
       throw new Error(ErrorMessage.Round);

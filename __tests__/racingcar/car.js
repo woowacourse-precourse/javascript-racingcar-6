@@ -1,4 +1,4 @@
-import Racer from '../../src/racingcar/racer.js';
+import Car from '../../src/racingcar/car.js';
 
 describe('경주할 자동차 이름을 입력받는다.', () => {
   test('이름은 쉼표(,)를 기준으로 구분한다.', () => {
@@ -6,8 +6,8 @@ describe('경주할 자동차 이름을 입력받는다.', () => {
     const input = 'car1, car2';
 
     // when
-    const racer = new Racer();
-    const result = racer.isValidValue(input);
+    const car = new Car();
+    const result = car.isValidValue(input);
 
     // then
     expect(result).toBeTruthy();
@@ -21,8 +21,8 @@ describe('경주할 자동차 이름을 입력받는다.', () => {
     '',
   ])('이름에 대한 예외 처리', input => {
     // when
-    const racer = new Racer();
-    const result = racer.isValidValue(input);
+    const car = new Car();
+    const result = car.isValidValue(input);
 
     // then
     expect(result).toBeFalsy();
