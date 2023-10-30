@@ -6,7 +6,7 @@ import printWinner from './View/printWinner.js';
 class App {
   async play() {
     const carName = new Map();
-    await getCarName().forEach((name) => carName.set(name, ''));
+    await getCarName(carName);
     const playNumber = await getPlayNumber();
     await playGame(playNumber, carName);
     printWinner(carName);
