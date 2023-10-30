@@ -65,3 +65,76 @@ bar(async () => {
   await doSomething();
 });
 ```
+
+## 3. model을 잘 작성한 걸까?
+
+> 1차로 작성한 model은 아래와 같다. 과연 레이싱카말고 제트스키라면? 모터싸이클이라면? 변경해야할 부분이 꽤 생겨서 2차로 작성할 때는 다시 한번 고려해 봐야 한다.
+
+```js
+import { SYSTEM } from '../constants/System.js';
+import FinalWinnerSelector from './FinalWinnerSelector.js';
+import RandomNumberGenerator from './RandomNumberGenerator.js';
+
+class RacingCarModel {
+  #carData;
+
+  static canMove() {
+    const randomNumber = RandomNumberGenerator.run();
+    return randomNumber >= SYSTEM.moveStartPoint;
+  }
+
+  saveCarNames(carNames) {
+    this.#carData = new Map();
+    carNames.split(SYSTEM.delimiter).forEach((carName) => {
+      this.#carData.set(carName, '');
+    });
+  }
+
+  racing() {
+    this.#carData.forEach((progress, car) => {
+      if (RacingCarModel.canMove()) {
+        this.#carData.set(car, `${progress}${SYSTEM.move}`);
+      }
+    });
+  }
+
+  getFinalWinner() {
+    const finalWinner = FinalWinnerSelector.evaluate(this.#carData);
+    return finalWinner;
+  }
+
+  getCarData() {
+    return this.#carData;
+  }
+}
+
+export default RacingCarModel;
+```
+
+## 4. controller를 의존성 없이?
+
+> 현재 컨트롤러는 아래와 같다
+> before
+
+```js
+class RacingCarController {
+  #model;
+
+  constructor() {
+    this.#model = new RacingCarModel();
+  }
+
+  ...
+}
+```
+
+> after
+
+```js
+class RacingCarController {
+  constructor(model) {
+    this.#model = model;
+  }
+  // ...
+}
+```
