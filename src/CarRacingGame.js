@@ -7,6 +7,7 @@ class CarRacingGame {
     this.cars = [];
     this.attempts = '';
     this.raceResult = [];
+    this.raceWinner = [];
   }
 
 
@@ -24,6 +25,9 @@ class CarRacingGame {
       }
       Console.print('\n');
     }
+
+    this.raceWinner = this.determineRaceWinner(this.raceResult);
+    Console.print(`최종 우승자 : ${this.raceWinner.join(",")}`);
   }
 
 
@@ -53,9 +57,7 @@ class CarRacingGame {
 
 
   validateCarNames(carNamesArray) {
-    return carNamesArray.some(carName => {
-      return carName.length > 5 || carName.length === 0;
-    });
+    return carNamesArray.some(carName => carName.length > 5 || carName.length === 0);
   }
 
 
@@ -77,8 +79,8 @@ class CarRacingGame {
 
   validateAttempts(attempts) {
     for (let i = 0; i < attempts.length; i++) {
-      let char = attempts.charAt(i)
-      let ascii = char.charCodeAt()
+      const char = attempts.charAt(i)
+      const ascii = char.charCodeAt()
       if ('1'.charCodeAt() <= ascii && ascii <= '9'.charCodeAt()) {
         continue;
       }
@@ -92,6 +94,19 @@ class CarRacingGame {
       this.raceResult[index] += 1;
     }
     Console.print(`${car.carName} : ${'-'.repeat(this.raceResult[index])}`);
+  }
+
+  determineRaceWinner(raceResult) {
+    const raceWinner = [];
+    const maxDistance = Math.max(...raceResult);
+
+    raceResult.forEach((element, index) => {
+      if (element === maxDistance) {
+        raceWinner.push(this.cars[index].carName);
+      }
+    });
+
+    return raceWinner;
   }
 
 }
