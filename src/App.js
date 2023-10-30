@@ -5,6 +5,7 @@ class App {
   inputArray = [];
   movementCount = 0;
   advanceCount = [];
+  winnerList = [];
 
   async start() {
     return Console.readLineAsync(
@@ -41,7 +42,7 @@ class App {
   }
 
   getResult() {
-    Console.print("실행 결과");
+    Console.print("\n실행 결과");
     while (
       !this.advanceCount
         .map((data) => data.advance === Number(this.movementCount))
@@ -50,6 +51,12 @@ class App {
       this.advanceCount.map((advance) => this.getRandomValue(advance));
       Console.print("\n");
     }
+  }
+
+  getWinner() {
+    this.winnerList = this.advanceCount.filter(
+      (data) => data.advance === Number(this.movementCount)
+    );
   }
 
   async play() {
@@ -65,6 +72,11 @@ class App {
     );
 
     this.getResult();
+    this.getWinner();
+
+    Console.print(
+      "최종 우승자 :" + this.winnerList.map((winner) => " " + winner.carName)
+    );
   }
 }
 

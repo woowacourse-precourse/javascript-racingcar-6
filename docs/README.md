@@ -8,7 +8,7 @@
   - [x] advance of game (전진)
   - [x] end of game (게임 종료)
 - [x] print racing game result (경주 실행 결과 출력)
-- [ ] separate multiple winners (우승자 구분)
+- [x] separate multiple winners (우승자 구분)
 - [ ] handle exception (예외 처리)
 
 ## 기능 요구사항 정리
