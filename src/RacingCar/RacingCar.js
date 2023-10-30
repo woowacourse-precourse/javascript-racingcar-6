@@ -14,15 +14,14 @@ class RacingCar {
 
     Console.print("\n실행 결과");
 
-    for (let i = 0; i < numOfRacing; i++) {
-      let result = "";
+    for (let i = 0; i < parseInt(numOfRacing); i++) {
       cars.forEach((car) => {
         if (this.movingForward()) car.move();
 
         const strDistance = this.convertDistanceToString(car.distance);
-        result += `${car.name} : ${strDistance}\n`;
+        Console.print(`${car.name} : ${strDistance}`);
       });
-      Console.print(result);
+      Console.print("");
     }
 
     const winners = this.pickWinner(cars);
