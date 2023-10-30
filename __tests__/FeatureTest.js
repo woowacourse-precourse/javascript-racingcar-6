@@ -73,11 +73,20 @@ describe("story4. 숫자가 4이상일 경우 record 배열에 '-' 추가", () =
 
     mockRandoms(randoms);
 
+    // when
     for (let i = 0; i < result.length; i += 1) {
       const randomNum = MissionUtils.Random.pickNumberInRange();
       if (randomNum > 3) result[i] += '-';
     }
 
     expect(result).toEqual(answer);
+  });
+});
+
+describe('story5. 최종 우승자 출력', () => {
+  test("'-'의 인덱스 값 확인", () => {
+    const input = '산 : -----';
+    const result = input.lastIndexOf('-') - input.indexOf('-') + 1;
+    expect(result).toEqual(5);
   });
 });
