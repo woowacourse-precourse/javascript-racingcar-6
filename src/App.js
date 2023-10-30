@@ -1,4 +1,5 @@
 import { Random, Console } from "@woowacourse/mission-utils";
+
 class App {
   async play() {
     const carNameInput = await Console.readLineAsync(
@@ -16,23 +17,22 @@ class App {
             carProgress[i]++;
           }
         }
-        console.log(carProgress);
+        printResults(carNameArray, carProgress);
       }
       return carProgress;
     }
 
-    playRacing();
-
-    function randomValue() {
-      return Math.floor(Math.random() * 10);
-    }
-    function printResults(names, progress) {
-      for (let i = 0; i < names.length; i++) {
-        let progressString = "-".repeat(progress[i]);
-        Console.print(`${names[i]} : ${progressString}`);
-        console.log(`${names[i]} : ${progressString}`);
-      }
-    }
+    const result = playRacing();
+  }
+}
+function randomValue() {
+  return Math.floor(Math.random() * 10);
+}
+function printResults(names, progress) {
+  for (let i = 0; i < names.length; i++) {
+    let progressString = "-".repeat(progress[i]);
+    Console.print(`${names[i]} : ${progressString}`);
+    
   }
 }
 
