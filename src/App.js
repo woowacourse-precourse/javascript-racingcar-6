@@ -5,9 +5,13 @@ class App {
     const racingCars = await this.getCarName();
     const tryCount = await this.getTryCount();
 
+    Console.print('실행 결과');
+
     this.setGameResult(racingCars, tryCount);
 
     const finalWinner = this.getFinalWinner(racingCars);
+
+    Console.print(`최종 우승자 : ${finalWinner}`);
   }
 
   async getCarName() {
