@@ -88,7 +88,8 @@ describe("게임 진행 상황 출력 테스트", () => {
     const app = new App();
     app.carName = NameArray;
     app.carMoveArray = MoveArray;
-    app.getWinnerArray(winnerLength);
+    app.winnerMovelength();
+    app.getWinnerArray();
     app.resultText();
     
 
