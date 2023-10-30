@@ -105,4 +105,35 @@ describe('자동차 경주 게임', () => {
       );
     },
   );
+
+  test.each([
+    [['sujin,jinsu', 'a']],
+    [['sujin,jinsu', '일']],
+    [['sujin,jinsu', '!']],
+    [['sujin,jinsu', 'l']],
+  ])('시도 횟수가 숫자 형식이 아닌 경우 예외 처리', async (inputs) => {
+    mockQuestions(inputs);
+
+    const app = new App();
+
+    await expect(app.play()).rejects.toThrow(
+      '[ERROR] 숫자 형식으로만 입력해야 합니다.',
+    );
+  });
+
+  test.each([
+    [['sujin,jinsu', '0']],
+    [['sujin,jinsu', '-1']],
+    [['sujin,jinsu', '3.14']],
+    [['sujin,jinsu', '+2.5']],
+    [['sujin,jinsu', '-6.8']],
+  ])('시도 횟수가 양의 정수가 아닌 경우 예외 처리', async (inputs) => {
+    mockQuestions(inputs);
+
+    const app = new App();
+
+    await expect(app.play()).rejects.toThrow(
+      '[ERROR] 양의 정수만 입력해야 합니다.',
+    );
+  });
 });
