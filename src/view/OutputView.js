@@ -16,4 +16,10 @@ export default class OutputView {
     });
     Console.print('');
   }
+
+  static printWinner(carList) {
+    Console.print(
+      Message.FINAL_WINNER + carList.map((car) => car.getName()).join(', '),
+    );
+  }
 }
