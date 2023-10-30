@@ -11,7 +11,10 @@ const CarRacing = {
 
     for (let count = 0; count < tryCount; count += 1) {
       const carMovesList = Car.createCarMoves(carNameList.length);
-      carMoveForwardList = Car.countMoveForward(carMoveForwardList, carMovesList);
+      carMoveForwardList = Car.countMoveForward(
+        carMoveForwardList,
+        carMovesList
+      );
       this.showMoveResult(carNameList, carMoveForwardList);
     }
 
@@ -41,8 +44,8 @@ const CarRacing = {
   },
 
   printWinner(winners) {
-    const finalWinners = winners.map((winner) => winner).join(",");
-    Console.print(`${IN_GAME_MESSAGE.finalWinner} ${finalWinners}`);
+    const finalWinners = winners.map((winner) => winner).join(", ");
+    Console.print(`\n${IN_GAME_MESSAGE.finalWinner} ${finalWinners}`);
   },
 };
 
