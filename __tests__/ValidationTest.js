@@ -3,22 +3,22 @@ import validate from '../src/game/validation.js';
 describe('유효성 검사 테스트', () => {
   describe('이름 입력 테스트 확인', () => {
     test('입력으로 5자리 이상으로 들어오면 [ERROR]을 던진다', () => {
-      const nameArray = ['TO', '우테코.. .. ..'];
+      const nameArray = ['To', '우테코 선생님들'];
       expect(() => validate.carName(nameArray)).toThrowError('[ERROR] 입력은 최대 5자입니다.');
     });
 
     test('입력으로 빈문자가 들어올 경우 [ERROR]을 던진다', () => {
-      const nameArray = ['좋아합니다', ''];
+      const nameArray = ['안녕하세요', ''];
       expect(() => validate.carName(nameArray)).toThrowError('[ERROR] 한자리 이상의 이름을 입력해주세요.');
     });
 
     test('입력으로 undefinded가 들어오면 [ERROR]을 던진다', () => {
-      const nameArray = [undefined, '이렇게 좋은 배움의 기회를 주셔서'];
+      const nameArray = [undefined, '우테코 선생님들'];
       expect(() => validate.carName(nameArray)).toThrowError('[ERROR] 문자열을 입력해주세요.');
     });
 
     test('입력으로 null이 들어오면 [ERROR]을 던진다', () => {
-      const nameArray = [null, '감사하게', '생각하고 있습니다.'];
+      const nameArray = [null, '프리코스 모두 힘내봅시다', '화이팅입니다!!'];
       expect(() => validate.carName(nameArray)).toThrowError('[ERROR] 문자열을 입력해주세요.');
     });
 
