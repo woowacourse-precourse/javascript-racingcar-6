@@ -1,7 +1,7 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import carHandler from "./utils/carHandler";
-import numberHandler from "./utils/numberHandler";
-import resultHandler from "./utils/resultHandler";
+import carHandler from "./handler/carHandler";
+import numberHandler from "./handler/numberHandler";
+import resultHandler from "./handler/resultHandler";
 
 class CarRace {
   #cars;

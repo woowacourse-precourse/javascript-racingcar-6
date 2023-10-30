@@ -1,5 +1,5 @@
 import { mockRandoms, getLogSpy } from "../../src/utils/testUtils";
-import resultHandler from "../../src/utils/resultHandler";
+import resultHandler from "../../src/handler/resultHandler";
 import Car from "../../src/Car";
 
 describe("ResultHandler 테스트", () => {
@@ -42,7 +42,7 @@ describe("ResultHandler 테스트", () => {
     const OUTPUT = resultHandler.getResultString({
       tryNumber: TRY_NUMBER,
       cars: CARS,
-    });
+    })[0];
     expect(OUTPUT.split("\n")).toStrictEqual(EXPECT);
   });
 

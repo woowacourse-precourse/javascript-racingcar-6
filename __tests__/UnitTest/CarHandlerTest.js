@@ -1,5 +1,5 @@
 import { mockQuestions } from "../../src/utils/testUtils";
-import carHandler from "../../src/utils/carHandler";
+import carHandler from "../../src/handler/carHandler";
 
 const ERROR_MESSAGES = {
   NOT_SPACE: "[ERROR] 자동차 이름의 앞 뒤에는 공백이 있어선 안됩니다.",

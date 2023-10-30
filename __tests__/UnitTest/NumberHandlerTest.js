@@ -1,5 +1,5 @@
 import { mockQuestions } from "../../src/utils/testUtils";
-import numberHandler from "../../src/utils/numberHandler";
+import numberHandler from "../../src/handler/numberHandler";
 
 const ERROR_MESSAGES = {
   ONLY_NUMBER: "[ERROR] 시도 횟수는 숫자 값만 입력해주세요.",
