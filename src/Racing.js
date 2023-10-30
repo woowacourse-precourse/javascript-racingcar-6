@@ -40,6 +40,7 @@ export const positionHandleIterator = (carsArr, round) => {
   for (let i = 1; i <= round; i++) {
     positionHandler(carsArr);
     racingResultPrint(carsArr);
+    MissionUtils.Console.print("\n");
   }
   return carsArr;
 };
