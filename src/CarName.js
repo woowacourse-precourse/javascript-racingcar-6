@@ -7,6 +7,16 @@ class CarName {
     const carNamesInArray = carNames.split(',');
     const deleteSameNameInArray = new Set(carNamesInArray);
     const sameNameCheck = deleteSameNameInArray.size !== carNamesInArray.length;
+    const hasConsecutiveCommas = /,,/.test(carNames);
+    const startCommaOrEndComma = /^,|,$/.test(carNames);
+
+    if (startCommaOrEndComma) {
+      throw new Error('[ERROR] 콤마로 시작하거나 콤마로 끝나면 안됩니다.');
+    }
+
+    if (hasConsecutiveCommas) {
+      throw new Error('[ERROR] 콤마를 두 번 이상 연속으로 사용하면 안됩니다.');
+    }
 
     const carList = carNamesInArray.map((carName) => {
       const moreThan5Characters = carName.length > 5;
