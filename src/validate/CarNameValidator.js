@@ -1,4 +1,4 @@
-import { ERROR_MESSAGE } from "../constants/Message"
+import { ERROR_MESSAGE } from "../constants/Message";
 
 export default class CarNameValidator {
   static validateNames(names) {
@@ -20,11 +20,11 @@ export default class CarNameValidator {
     return !input || input.trim().length === 0;
   }
   static hasWhiteSpace(names) {
-    return names.includes(' ');
+    return names.includes(" ");
   }
   static exceedNameLimit(names) {
     const nameArray = names.split(",");
-    return nameArray.some(name => name.length > 5);
+    return nameArray.some((name) => name.length > 5);
   }
   static isDuplicate(names) {
     const nameArray = names.split(",");

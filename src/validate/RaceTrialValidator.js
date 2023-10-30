@@ -21,11 +21,11 @@ export default class RaceTrialValidator {
   }
 
   static hasWhiteSpace(trial) {
-    return trial.includes(' ');
+    return trial.includes(" ");
   }
 
   static isNotNumber(trial) {
-    return isNaN(trial) || trial.includes('.');
+    return isNaN(trial) || trial.includes(".");
   }
 
   static isNotNaturalNumber(trial) {
