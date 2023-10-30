@@ -1,6 +1,14 @@
-import { Console } from "@woowacourse/mission-utils";
-import { checkRacingCarName, checkGameCount } from "../Util/Validation.js";
-import { convertObjectListFreeze } from "../Util/ObjectFreeze.js"; 
+/* eslint-disable import/extensions */
+import { Console } from '@woowacourse/mission-utils';
+import { checkRacingCarName, checkGameCount } from '../Util/Validation.js';
+import { convertObjectListFreeze } from '../Util/ObjectFreeze.js';
+
+function getRacingCarList(racingCarName) {
+  return racingCarName.split(',').map(paramCarName => ({
+    carName: paramCarName,
+    moveCount: 0,
+  }));
+}
 
 async function inputRacingCarName(message) {
   const racingCarName = await Console.readLineAsync(message);
@@ -9,21 +17,10 @@ async function inputRacingCarName(message) {
   return convertObjectListFreeze(racingCarList);
 }
 
- function getRacingCarList(racingCarName){
-  return racingCarName
-    .split(",")
-    .map((carName) => (
-      {
-        carName : carName,
-        moveCount : 0
-      }
-    ))
-}
-
-async function inputGameCount (message) {
+async function inputGameCount(message) {
   const gameCount = await Console.readLineAsync(message);
   checkGameCount(gameCount);
   return Number(gameCount);
 }
 
-export { inputRacingCarName, inputGameCount }
+export { inputRacingCarName, inputGameCount };
