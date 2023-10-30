@@ -1,6 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import App from '../src/App.js';
-import { printForwardCar } from "../src/PrintMessage.js";
+import { printForwardCar, printWinner } from "../src/PrintMessage.js";
+import App from "../src/App.js";
 
 const app = new App();
 
@@ -16,6 +16,13 @@ describe("자동차 경주 테스트", () => {
         MissionUtils.Console.print = jest.fn();
         printForwardCar(carName, forwardCount);
         expect(MissionUtils.Console.print).toHaveBeenCalledWith("car1 : -----");
+    });
+
+    test("자동차 경주 게임을 완료한 후 최종 우승자 출력", () => {
+        const forwardCarData = { 'car1': 4, 'car2': 4, 'car3': 2 };
+        MissionUtils.Console.print = jest.fn();
+        printWinner(forwardCarData);
+        expect(MissionUtils.Console.print).toHaveBeenCalledWith("최종 우승자 : car1, car2");
     });
 
     jest.clearAllMocks();
