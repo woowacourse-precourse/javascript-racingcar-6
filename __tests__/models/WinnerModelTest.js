@@ -1,8 +1,13 @@
-import makeWinner from '../../src/utils/makeWinner';
+import WinnerModel from '../../src/model/WinnerModel';
 
 describe('MakeWinner Test', () => {
+  let winnerModel;
+  beforeEach(() => {
+    winnerModel = new WinnerModel();
+  });
+
   test('우승자 생성기능 테스트', () => {
-    const cars = [
+    const completedRaceCars = [
       {
         name: 'pobi',
         moveCounts: 2,
@@ -12,11 +17,14 @@ describe('MakeWinner Test', () => {
         moveCounts: 1,
       },
     ];
-    expect(makeWinner(cars)).toEqual(expect.stringContaining('pobi'));
+
+    expect(winnerModel.makeWinner(completedRaceCars)).toEqual(
+      expect.stringContaining('pobi'),
+    );
   });
 
   test('중복 우승자 생성', () => {
-    const cars = [
+    const completedRaceCars = [
       {
         name: 'pobi',
         moveCounts: 2,
@@ -27,8 +35,11 @@ describe('MakeWinner Test', () => {
       },
     ];
     const expectedWinner = ['pobi', 'ukgi'];
+
     expectedWinner.forEach((winner) => {
-      expect(makeWinner(cars)).toEqual(expect.stringContaining(winner));
+      expect(winnerModel.makeWinner(completedRaceCars)).toEqual(
+        expect.stringContaining(winner),
+      );
     });
   });
 });
