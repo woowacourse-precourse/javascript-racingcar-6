@@ -22,6 +22,16 @@ export function assertNameValid(name) {
 
 /**
  *
+ * @param {string[]} names
+ */
+export function assertUniqueNameIn(names) {
+  const uniqueNames = new Set(names);
+  if (uniqueNames.size !== names.length)
+    throw new InvalidPlayerNameError(InvalidPlayerNameError.TYPE_DUPLICATED);
+}
+
+/**
+ *
  * @param {number} amount
  */
 export function assertTryAmountValid(amount) {

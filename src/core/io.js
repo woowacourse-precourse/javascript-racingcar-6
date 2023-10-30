@@ -2,7 +2,11 @@
 
 import { Console } from "@woowacourse/mission-utils";
 import { ReadLineError } from "../utils/error.js";
-import { assertNameValid, assertTryAmountValid } from "../utils/validity.js";
+import {
+  assertNameValid,
+  assertTryAmountValid,
+  assertUniqueNameIn,
+} from "../utils/validity.js";
 import { splitNamesFrom } from "../utils/parse.js";
 
 /**
@@ -22,6 +26,7 @@ export async function askNames() {
   const names = splitNamesFrom(nameString);
 
   checkNamesAreValid(names);
+  assertUniqueNameIn(names);
 
   return names;
 }
