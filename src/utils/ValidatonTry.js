@@ -12,6 +12,12 @@ const ValidationTry = {
       throw new Error(TRY_INPUT_ERROR.char);
     }
   },
+
+  isBlank(tryCount) {
+    if (tryCount.trim().length !== tryCount.length) {
+      throw new Error(TRY_INPUT_ERROR.blank);
+    }
+  },
 };
 
 export default ValidationTry;
