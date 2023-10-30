@@ -56,6 +56,7 @@ const showResult = async (participants) => {
     // 함수로 빼기 -> return이 최종 결과 객체 ex) goStopCheck
     const randomNumber = Random.pickNumberInRange(0, 9);
     await checkRandomNumber(randomNumber);
+    // 리팩토링하기 
     const name = participants[index];
     if(randomNumber >= 4) {
       goStopCheck[name] = goStopCheck[name] ? [goStopCheck[name][0]+'-', goStopCheck[name][1]+1] : ['-',1];
@@ -63,7 +64,9 @@ const showResult = async (participants) => {
       goStopCheck[name] = goStopCheck[name] ? [...goStopCheck[name]] : ['',0];
     }
     index ++;
+    // 여기까지
   }
+  
   // *** 리팩토링 하기, showResult 함수로 두기 *** 인자로 참가자 및 최종 진행 거리를 받고 출력만 함
   for(let i = 0; i < participants.length; i++){
     const result = `${participants[i]} : ${goStopCheck[participants[i]][0]}` 
