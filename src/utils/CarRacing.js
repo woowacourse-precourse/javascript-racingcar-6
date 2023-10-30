@@ -14,7 +14,7 @@ const CarRacing = {
 
       this.showTryResult(carNameList, carMovesList);
       Car.countMoveForward(carMoveForwardList, carMovesList);
-      const winners = this.decideWinner(carMoveForwardList);
+      const winners = this.decideWinner(carNameList,carMoveForwardList);
       this.printWinner(winners);
     }
   },
