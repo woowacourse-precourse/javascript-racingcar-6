@@ -1,6 +1,6 @@
-import { MESSAGE } from "../Constant/constant";
-import { readLineAsync } from "../Utils/Utils";
-import { checkAttempt, checkParticipants } from "../Validates";
+import { MESSAGE } from '../Constant/constant';
+import { readLineAsync } from '../Utils/Utils';
+import { checkAttempt, checkParticipants } from '../Validates';
 
 /**
  * 게임 진행 횟수를 입력받는 기능
@@ -9,7 +9,7 @@ import { checkAttempt, checkParticipants } from "../Validates";
  */
 export const getAttempt = async () => {
   const attempt = await readLineAsync(MESSAGE.ATTEMPT);
-  
+
   await checkAttempt(attempt);
 
   return Number(attempt);
@@ -22,7 +22,7 @@ export const getAttempt = async () => {
  */
 export const getParticipant = async () => {
   const participants = await readLineAsync(MESSAGE.START);
-  const participantsList = participants.split(",");
+  const participantsList = participants.split(',');
 
   await checkParticipants(participantsList);
 

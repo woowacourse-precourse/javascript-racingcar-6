@@ -1,4 +1,4 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
+import { MissionUtils } from '@woowacourse/mission-utils';
 const { Console } = MissionUtils;
 
 /**
@@ -8,7 +8,6 @@ const { Console } = MissionUtils;
 export const print = (message) => {
   Console.print(message);
 };
-
 
 /**
  * 인자로 받은 message를 출력하고 입력 값을 받아옴

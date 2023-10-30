@@ -1,4 +1,4 @@
-import { ERROR_MESSAGE, NUMBER } from "./Constant/constant";
+import { ERROR_MESSAGE, NUMBER } from './Constant/constant';
 
 /**
  * @param {*} participants : 진행 횟수 확인
@@ -13,7 +13,7 @@ export const checkAttempt = async (attempt) => {
  * @param {*} randomNumber : 참가자가 받는 값
  * 0~9사이 값이 아니거나 숫자가 아니면 ERROR
  */
-export  const checkRandomNumber = async (randomNumber) => {
+export const checkRandomNumber = async (randomNumber) => {
   if (!Number(randomNumber)) throw new Error(ERROR_MESSAGE.ERROR_NOT_NUMBER);
   if (Number(randomNumber) <= NUMBER.MIN || Number(randomNumber) > NUMBER.MAX) throw new Error(ERROR_MESSAGE.ERROR_OUT_OF_RANGE);
 };

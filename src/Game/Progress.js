@@ -12,13 +12,14 @@ const { Random } = MissionUtils;
  * @returns 회당 참가자 거리를 반환
  */
 const xxx = async (participants, participantsDistance) => {
+  let returnValue = participantsDistance
   let index = 0;
   while (index < participants.length) {
-    participantsDistance = await changeDistance(participants, participantsDistance, index);
+    returnValue = await changeDistance(participants, participantsDistance, index);
     index++;
   }
 
-  return participantsDistance;
+  return returnValue;
 };
 
 /**
@@ -36,10 +37,10 @@ const changeDistance = async (participants, participantsDistance, index) => {
   const name = participants[index];
   if (randomNumber >= NUMBER.STANDARD) {
     goStopCheck[name] = goStopCheck[name]
-      ? [goStopCheck[name][0] + "-", goStopCheck[name][1] + 1]
-      : ["-", 1];
+      ? [goStopCheck[name][0] + '-', goStopCheck[name][1] + 1]
+      : ['-', 1];
   } else {
-    goStopCheck[name] = goStopCheck[name] ? [...goStopCheck[name]] : ["", 0];
+    goStopCheck[name] = goStopCheck[name] ? [...goStopCheck[name]] : ['', 0];
   }
 
   return goStopCheck;
@@ -52,7 +53,9 @@ const changeDistance = async (participants, participantsDistance, index) => {
  */
 const showResult = async (participants, participantsDistance) => {
   for (let i = 0; i < participants.length; i++) {
-    const result = `${participants[i]} : ${participantsDistance[participants[i]][0]}`;
+    const result = `${participants[i]} : ${
+      participantsDistance[participants[i]][0]
+    }`;
     print(result);
   }
 };
@@ -66,10 +69,10 @@ const showResult = async (participants, participantsDistance) => {
  */
 export const progress = async (attempt, participants, distance) => {
   print(MESSAGE.RESULT);
-  for (let i=0; i < attempt; i++) {
+  for (let i = 0; i < attempt; i++) {
     distance = await xxx(participants, distance);
     await showResult(participants, distance);
   }
 
-	return distance;
+  return distance;
 };
