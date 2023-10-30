@@ -7,23 +7,18 @@ class App {
   }
   async play() {}
 
-  // TODO : 에러 처리 변수에 담아서 할 것인지 즉각 할 것인지 결정하기
   async gameStart() {
     try {
+      const GAME_PLAYER_INPUT_REGEX = /^([a-zA-Z가-힣]{1,5},)*[a-zA-Z가-힣]{1,5}$/i;
       // 이름 입력받기
       const GAME_PLAYER_INPUT = await Console.readLineAsync(
         '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분'
       );
-      let gamePlayerInputValid = true;
-      if (GAME_PLAYER_INPUT.includes(' ')) {
-        gamePlayerInputValid = false;
-      } else {
-        this.GAME_PLAYERS = GAME_PLAYER_INPUT.split(',');
-        gamePlayerInputValid = this.GAME_PLAYERS.every((player) => player.length <= 5);
-      }
 
-      if (!gamePlayerInputValid) {
-        throw new Error('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분');
+      if (GAME_PLAYER_INPUT_REGEX.test(GAME_PLAYER_INPUT)) {
+        this.GAME_PLAYERS = GAME_PLAYER_INPUT.split(',');
+      } else {
+        throw new Error('[ERROR] 경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분');
       }
 
       // 게임 횟수 입력받기
@@ -38,4 +33,3 @@ class App {
 }
 
 export default App;
-
