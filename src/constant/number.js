@@ -3,4 +3,5 @@ const NUMBER = Object.freeze({
   MAX: 9,
   MOVE_NUMBER: 4,
 });
-export default NUMBER;
+const RegExp = /^\d+$/;
+export { NUMBER, RegExp };
