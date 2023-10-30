@@ -78,3 +78,6 @@ describe("시도하기",()=>{
         });
     })
 })
+
+
+// const tryNumber = App.attemptNumber();
