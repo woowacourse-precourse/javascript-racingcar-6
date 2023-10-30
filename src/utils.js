@@ -25,3 +25,11 @@ export const getCarArrFromInputValue = async () => {
 
   return carArr;
 };
+
+export const getTryNumber = async () => {
+  let inputTryNumber = await MissionUtils.Console.readLineAsync(
+    '시도할 횟수는 몇 회인가요?\n'
+  );
+
+  return inputTryNumber;
+};
