@@ -1,3 +1,8 @@
+import { Console } from "@woowacourse/mission-utils";
+import { checkName, checkNumber } from "../util/check";
+import Car from "./Car";
+import RACING from "../constants/message";
+
 class Game {
     static async setRacingCars() {
         let carStringNames = await Console.readLineAsync(RACING.NAMING_GUIDE)
@@ -22,3 +27,5 @@ class Game {
         return moveCount
     }
 }
+
+export default Game
