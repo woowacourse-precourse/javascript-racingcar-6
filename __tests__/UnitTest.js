@@ -1,7 +1,5 @@
-import { createCarData } from '../src/utils/createCarData';
+import Utils from '../src/utils/Utils';
 import { createRandomNumber } from '../src/utils/createRandomNumber';
-import { goStopCar } from '../src/utils/goStopCar';
-import { pickWinner } from '../src/utils/pickWinner';
 import { validateLength, validateIsNumber } from '../src/utils/validate';
 
 describe('예외 테스트', () => {
@@ -63,7 +61,7 @@ describe('유틸리티 함수', () => {
       },
     ];
 
-    expect(goStopCar(carData)).toEqual([
+    expect(Utils.goStopCar(carData)).toEqual([
       {
         name: 'pobi',
         number: 5,
@@ -101,14 +99,14 @@ describe('유틸리티 함수', () => {
       },
     ];
 
-    expect(pickWinner(carData)).toEqual(['pobi', 'juru']);
+    expect(Utils.pickWinner(carData)).toEqual(['pobi', 'juru']);
   });
 
   test('자동차 객체 생성', () => {
     const carName = 'pobi,woni,juru';
     const carNameList = carName.split(',');
 
-    expect(createCarData(carNameList)).toEqual([
+    expect(Utils.createCarData(carNameList)).toEqual([
       {
         name: 'pobi',
         number: 0,
