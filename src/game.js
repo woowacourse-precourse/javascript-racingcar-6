@@ -2,6 +2,7 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 import MSG from "./message.js"
 
 function game(carNames, cnt) {
+    MissionUtils.Console.print(MSG.RESULT)
     var carDistance = Array.from({length : carNames.length}, ()=> 0)
     for (let i = 0; i < cnt; i++) {
       const gameResult = race(carNames, carDistance)

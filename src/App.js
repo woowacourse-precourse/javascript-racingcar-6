@@ -5,12 +5,10 @@ import game from "./game.js";
 
 class App {
   async play() {
-    const inputName = await MissionUtils.Console.readLineAsync(MSG.GAMESTART);
-    const carNames = inputName.split(",");
+    const carNames = (await MissionUtils.Console.readLineAsync(MSG.GAMESTART)).split(",");
     carValidation(carNames);
     const cnt = await MissionUtils.Console.readLineAsync(MSG.INPUTCOUNT);
     countValidation(cnt);
-    MissionUtils.Console.print(MSG.RESULT)
     game(carNames, cnt)
   }
     
