@@ -30,6 +30,10 @@ export default class Controller {
     }
   }
 
+  findMaxMoveCars() {
+    return this.carList.filter((car) => this.MAX_MOVE === car.getMove());
+  }
+
   async run() {
     const carNames = await InputView.carName();
     const carNameList = carNames.split(',');
@@ -42,6 +46,8 @@ export default class Controller {
     Validation.tryCountInput(tryCountNumber);
     OutputView.printNewLine();
     this.moveCars(tryCountNumber);
+
+    const maxMoveCars = this.findMaxMoveCars();
   }
 }
 
