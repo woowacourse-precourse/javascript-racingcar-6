@@ -16,7 +16,6 @@ class App {
     MissionUtils.Console.print(name);
 
     const tryNum = await this.getNumberOfTry();
-    MissionUtils.Console.print(tryNum);
   }
 
   async getCarName() {
@@ -33,7 +32,18 @@ class App {
   async getNumberOfTry() {
     MissionUtils.Console.print("시도할 횟수는 몇 회인가요?");
     const tryNum = await MissionUtils.Console.readLineAsync();
-    return tryNum;
+    return this.isValidNumberOfTry(Number(tryNum));
+  }
+
+  isValidNumberOfTry(tryNum) {
+    if (Number.isNaN(tryNum)) {
+      MissionUtils.Console.print("[ERROR] 숫자가 잘못된 형식입니다.");
+      throw new Error("[ERROR]");
+    } else {
+      MissionUtils.Console.print(tryNum);
+      MissionUtils.Console.print("");
+      return tryNum;
+    }
   }
 }
 
