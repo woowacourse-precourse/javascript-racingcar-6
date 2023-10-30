@@ -10,13 +10,14 @@ const getLogSpy = () => {
 const car1 = new Car('kwani');
 const car2 = new Car('pobi');
 const carArray = [car1, car2];
+const GAMECOUNT = 1;
 const game = new Game();
 const logSpy = getLogSpy();
 
 describe(' Car 의 전진결과를 출력하는 함수 gameTrial()', () => {
   test(' 전진 결과를 잘 출력 하는지 ', () => {
     // 정지, 전진은 goForward.js 에서 테스트
-    game.gameTrial(carArray,1)
+    game.gameTrial(carArray, GAMECOUNT);
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('kwani : '));
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('pobi : '));
   });

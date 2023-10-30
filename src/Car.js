@@ -6,8 +6,9 @@ class Car {
     this.distance = '';
   }
   goForward() {
+    const STOP =3;
     const number = MissionUtils.Random.pickNumberInRange(0, 9);
-    if (number > 3) {
+    if (number > STOP) {
       this.distance += '-';
     }
     MissionUtils.Console.print(`${this.name} : ${this.distance}`);
