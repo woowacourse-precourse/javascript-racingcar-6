@@ -12,59 +12,79 @@ class App {
   }
 
   async participatingCar(){
-  let cars = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)');
+  let cars = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)')
   cars = cars.split(',')
   
-  cars.forEach(el => { // 유효성 검사.
-    if(el.legnth > 5){
-      throw new Error('[ERROR] 올바른 형식으로 입력해주세요');
+  cars.forEach(el => { 
+    if(el.length > 5){
+      throw new Error('[ERROR] 올바른 형식으로 입력해주세요')
     }
   });
 
   return cars
  }
 
- async numberOfMoves(){
+  async numberOfMoves(){
   let NumberOfmoves = await Console.readLineAsync('시도할 횟수는 몇 회인가요?')
-  // 시도횟수의 제한은 없으며 숫자만 입력 가능하다.
   if(isNaN(NumberOfmoves)){
-    throw new Error('[ERROR] 올바른 형식으로 입력해주세요');
+    throw new Error('[ERROR] 올바른 형식으로 입력해주세요')
   }
 
   return NumberOfmoves;
  }
 
-  startRacing(participatingCar, numberOfMoves){
-    const MOVEOFCARS = new Array(participatingCar.length).fill('')
-    const WINNERS = []
-    let mostMoves = 0;
+  trackingCarsMove(moveOfCars, roundRandomNumber){ 
+  for(let i=0; i<roundRandomNumber.length; i++){
+   if(roundRandomNumber[i]>=4){
+     moveOfCars[i] = moveOfCars[i]+'-';
+   }
+  }
 
-    for(let i=0; i<numberOfMoves; i++){
-      MOVEOFCARS.forEach((el, idx, arr)=>{
-        const RANDOMNUMBER = Random.pickNumberInRange(1, 9)
-        if(RANDOMNUMBER >= 4){
-          arr[idx] = el+'-'
-        }
-      })
+  return moveOfCars;
+ }
 
-      participatingCar.forEach((el,idx)=>{
-        Console.print(el+" : "+MOVEOFCARS[idx])
-      })
-    }
+  createRoundRandomNumbers(participatingCarsNumber){ 
+  let arr = []
+  for(let i=0; i<participatingCarsNumber; i++){
+    arr.push(Random.pickNumberInRange(1,9))
+  }
 
-    MOVEOFCARS.forEach((el)=>{
+  return arr
+}
+
+  winnerSelect(participatingCar, moveOfCars){ 
+    let mostMoves = 0
+    let winners = []
+
+    moveOfCars.forEach((el)=>{
       if(el.length > mostMoves){
         mostMoves = el.length;
       }
     })
 
-    MOVEOFCARS.forEach((el,idx)=>{
+    moveOfCars.forEach((el,idx)=>{
       if(el.length === mostMoves){
-        WINNERS.push(participatingCar[idx])
+        winners.push(participatingCar[idx])
       }
     })
 
-    Console.print(WINNERS.toString())
+    return winners.toString()
+  }
+
+  startRacing(participatingCar, numberOfMoves){
+    let moveOfCars = new Array(participatingCar.length).fill('')
+    let roundRandomNumber = new Array(participatingCar.length)
+
+    for(let i=0; i<numberOfMoves; i++){  
+      roundRandomNumber = this.createRoundRandomNumbers(participatingCar.length)
+      moveOfCars = this.trackingCarsMove(moveOfCars, roundRandomNumber)
+
+      participatingCar.forEach((el,idx)=>{
+        Console.print(el+" : "+moveOfCars[idx])
+      })
+    }
+
+    Console.print(this.winnerSelect(participatingCar, moveOfCars))
   }
   
 }
