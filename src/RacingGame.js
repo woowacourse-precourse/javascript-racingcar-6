@@ -7,9 +7,13 @@ export class RacingGame {
   }
   play(gameCount, cars) {
     const initializedCars = this.initializeScore(cars);
-    const scores = this.getScore(initializedCars);
-    const result = this.validateScores(scores, initializedCars);
-    this.printScores(result);
+    let previousResult = initializedCars;
+    for (let i = 0; i < gameCount; i++) {
+      const scores = this.getScore(cars);
+      const result = this.validateScores(scores, previousResult);
+      previousResult = result;
+    }
+    this.printScores(previousResult);
   }
 
   initializeScore(cars) {
@@ -20,7 +24,7 @@ export class RacingGame {
 
   getScore(cars) {
     const scores = {};
-    Object.keys(cars).forEach((car) => (scores[car] = this.dice.roll()));
+    cars.forEach((car) => (scores[car] = this.dice.roll()));
     return scores;
   }
 
