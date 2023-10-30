@@ -6,7 +6,6 @@ import RoundManager from "./utils/RoundManager";
 class App {
   constructor() {
     this.carManager = new UserInputCarName();
-    this.carPositions = {};
   }
 
   async play() {
@@ -14,10 +13,7 @@ class App {
   }
 
   async setupGame() {
-    await this.carManager.inputCarName();
-    this.carManager.getCarName().forEach((carName) => {
-      this.carPositions[carName] = "";
-    });
+    this.carPositions = await this.carManager.setupCarPositions();
     this.gameResult = new ShowGameResult(this.carPositions);
     this.roundManager = new RoundManager(this.carPositions);
   }

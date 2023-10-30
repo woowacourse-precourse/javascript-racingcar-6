@@ -14,6 +14,15 @@ class UserInputCarName {
     this.setCarNames(carNames);
   }
 
+  async setupCarPositions() {
+    await this.inputCarName();
+    const carPositions = {};
+    this.members.forEach((carName) => {
+      carPositions[carName] = "";
+    });
+    return carPositions;
+  }
+
   setCarNames(carNames) {
     const carNamesValid = carNames.every((name) => name.length <= 5);
     if (!carNamesValid) {
