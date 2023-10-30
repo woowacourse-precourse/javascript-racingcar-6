@@ -1,5 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
-import { MESSAGE } from "./Constant";
+import { MESSAGE } from "./Constant.js";
 
 const Input = {
   async racingCar() {
@@ -13,4 +13,4 @@ const Input = {
   },
 }
 
-export default Input;
+export { Input };
