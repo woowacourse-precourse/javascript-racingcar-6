@@ -1,6 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
 import Input from './Input.js';
 import Race from './Race.js';
+import Result from './Result.js';
 
 class App {
   constructor() {
@@ -11,6 +12,7 @@ class App {
     try {
       const input = new Input();
       const race = new Race();
+      const result = new Result();
 
       const carArr = await input.getCarName();
       const inputNumber = await input.getRepeatNumber();
@@ -23,8 +25,8 @@ class App {
         race.printRace(this.carDictionary);
       }
 
-      const winners = this.determineWinner();
-      this.printWinner(winners);
+      const winners = result.determineWinner(this.carDictionary);
+      result.printWinner(winners);
     } catch (error) {
       console.error(error.message);
     }
@@ -34,26 +36,6 @@ class App {
     carArr.forEach(name => {
       this.carDictionary[name] = 0;
     });
-  }
-
-  determineWinner() {
-    let maxScore = 0;
-    let winners = [];
-
-    Object.entries(this.carDictionary).forEach(([key, value]) => {
-      if (value > maxScore) {
-        maxScore = value;
-        winners = [key];
-      } else if (value === maxScore) {
-        winners.push(key);
-      }
-    });
-
-    return winners;
-  }
-
-  printWinner(winners) {
-    Console.print('최종 우승자 : ' + winners.join(', '));
   }
 }
 
