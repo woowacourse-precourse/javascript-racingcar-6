@@ -8,7 +8,7 @@ export const GameMessages = {
 export const ErrorMessages = {
   EMPTY_INPUT: "[ERROR] 값이 비어있습니다. 값을 입력해주세요.",
   CAR_NAME_LENGTH_EXCEEDED: "[ERROR] 자동차 이름은 1자 이상 5자 이하로 입력해주세요.",
-  DUPLICATE_CAR_NAME: "[ERROR] 해당 자동차 중에 중복되는 이름이 있습니다. 확인해주시고 다시 시도해주세요.",
+  DUPLICATE_CAR_NAME: "[ERROR] 입력하신 자동차들 중에 중복되는 이름이 있습니다. 확인해주시고 다시 시도해주세요.",
   NEGATIVE_RACE_COUNT: "[ERROR] 입력값이 음수로 입력되었습니다. 양수로 입력해주세요.",
   INVALID_NUMBER_FORMAT: "[ERROR] 숫자가 잘못된 형식입니다. 숫자 형식으로 입력해주세요."
 }
