@@ -59,9 +59,9 @@
 
 `error.js` 코드 내부에 구현하며, `Error` 객체를 확장하여 클래스로 구현한다. 함수를 작성할 수 있지만 이를 export 하지는 않는다.
 
-- [ ] error.js 파일 생성
-- [ ] InvalidPlayerNameError 구현 (플레이어 이름이 유효하지 않을 때 사용)
-- [ ] TryAmountError 구현 (시도 횟수가 유효하지 않을 때 사용)
+- [x] error.js 파일 생성
+- [x] InvalidPlayerNameError 구현 (플레이어 이름이 유효하지 않을 때 사용)
+- [x] TryAmountError 구현 (시도 횟수가 유효하지 않을 때 사용)
 
 #### 유효성
 
