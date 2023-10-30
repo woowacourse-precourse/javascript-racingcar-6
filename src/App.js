@@ -13,9 +13,9 @@ class App {
     this.car.validateCarModels(await this.car.getCarModelsArr());
     await this.attempt.getRaceAttempt();
 
-    let carModels = this.car.carModels;
-    let carModelsArr = this.car.carModelsArr;
-    let attempt = this.attempt.attemptCount;
+    const {carModels} = this.car;
+    const {carModelsArr} = this.car;
+    const attempt = this.attempt.attemptCount;
 
     this.controller.repeatRace(carModels, attempt);
     this.controller.printWinner(carModels, carModelsArr);
