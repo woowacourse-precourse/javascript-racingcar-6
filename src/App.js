@@ -1,5 +1,5 @@
 import { Console, Random } from '@woowacourse/mission-utils';
-import { ERROR } from './constants/Error.js';
+import { validName, validTryCount } from './Validation.js';
 
 class App {
   async play() {
@@ -61,25 +61,4 @@ function printWinner(carObjects) {
     .filter((carObject) => carObject.position === winnerPosition)
     .map((carObject) => carObject.name);
   Console.print(`최종 우승자 : ${winners.join(', ')}`);
-}
-
-function validName(name) {
-  if (name === '') {
-    throw new Error(ERROR.nameBlank);
-  }
-  const carNames = name.split(',').map((name) => name.trim());
-  for (const carName of carNames) {
-    if (carName.length > 5) {
-      throw new Error('[ERROR] 이름은 5글자를 초과할 수 없습니다.');
-    }
-  }
-}
-
-function validTryCount(tryCount) {
-  if (tryCount === '') {
-    throw new Error(ERROR.tryCountBlank);
-  }
-  if (isNaN(tryCount)) {
-    throw new Error(ERROR.tryCountNaN);
-  }
 }
