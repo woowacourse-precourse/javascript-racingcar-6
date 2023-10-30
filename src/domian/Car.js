@@ -10,17 +10,25 @@ class Car {
 
   constructor(cars) {
     this.#cars = cars;
+    this.progress = "";
   }
 
   get cars() {
     return this.#cars;
   }
 
-  printProgress() {
-    const progress = MovingGenerator.move();
+  // 이동 여부 판단
+  canMove() {
+    const randomNumber = Random.pickNumberInRange(1, 9);
+    return randomNumber >= 4;
   }
-
-  compareCarsAndGetWinner() {}
+  // 이동하고 문자열로 경로 생성
+  move() {
+    if (this.canMove()) {
+      this.progress += SYMBOL.MOVE;
+      return this.progress; // '---'
+    }
+  }
 }
 
 export default Car;

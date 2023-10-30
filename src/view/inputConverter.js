@@ -9,6 +9,6 @@ export class InputConverter {
 
   convertFromInputToNumber(input) {
     const attempt = Number(input);
-    return new MovingGenerator(attempt);
+    return new Racing(attempt);
   }
 }

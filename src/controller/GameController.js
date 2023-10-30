@@ -11,15 +11,16 @@ export class GameController {
     this.#outputView = outputView;
   }
 
-  async raceCount() {
+  async start() {
+    const cars = await this.#inputView.inputCarName();
+    const attempt = await this.#inputView.inputAttempt();
+    const result = compareCarsAndGetWinner(cars);
+    this.#outputView.printResult(result);
+  }
+
+  async totalRace() {
     for (let i = 0; i < this.#attempt; i++) {
       this.start();
     }
-  }
-
-  async start() {
-    const cars = await this.#inputView.inputCarName();
-    const result = compareCarsAndGetWinner(cars);
-    this.#outputView.printResult(result);
   }
 }
