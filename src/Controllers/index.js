@@ -12,17 +12,19 @@ class Controllers {
 
   async getUserInput(message) {
     const input = await Console.readLineAsync(message);
-    return input;
+    const result = input?.split(",");
+
+    return result;
   }
 
   async getTryTimes() {
+    // 여기 validation 검사 추가예정
     const TIMES = await this.getUserInput(MESSAGE.TRY_TIMES);
     return TIMES;
   }
 
-  async carMoveCheck(car, tryTime) {
+  async carMoveCheck(cars, tryTime) {
     const { validateCarNameInput, validateCarNameLength } = ValidateCheck();
-    const cars = car.split(",");
 
     for (let i = 0; i < cars.length; i++) {
       validateCarNameLength(cars, i);
@@ -41,9 +43,8 @@ class Controllers {
 
     for (let i = 0; i < tryTime; i++) {
       moveResult = this.Model.calculateCarMovePoint(init);
-
       cars?.forEach((el) => {
-        const moved = "-".repeat(moveResult[el]);
+        const moved = this.Views.printRepeatedMessage("-", moveResult[el]);
         this.Views.printRacingResult({ el, moved });
       });
 

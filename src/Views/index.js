@@ -12,6 +12,12 @@ class Views {
   printCustomMessage(message) {
     Console.print(message);
   }
+
+  printRepeatedMessage(message, times) {
+    const result = message.repeat(times);
+
+    return result;
+  }
 }
 
 export default Views;
