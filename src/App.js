@@ -1,4 +1,5 @@
 import getPlayInfo from "./getPlayInfo";
+import playGame from "./playGame";
 
 const player = {};
 class App {
@@ -9,6 +10,9 @@ class App {
         player[participant] = "";
       }
     });
+    for (let i = 0; i < TRIALS; i++) {
+      playGame(player);
+    }
   }
 }
 
