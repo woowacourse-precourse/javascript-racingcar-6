@@ -2,7 +2,8 @@ import { MissionUtils } from '@woowacourse/mission-utils';
 import InputView from './InputView.js';
 import OutputView from './OutputView.js';
 import RacingCar from './RacingCar.js';
-import { GAME_MESSAGES } from './constants.js';
+import { GAME_MESSAGES, NUMBER_RANGE } from './constants.js';
+import { generateRandomNumber } from './utils.js';
 
 class RacingGame {
   #cars;
@@ -27,8 +28,12 @@ class RacingGame {
   play() {
     MissionUtils.Console.print('');
     MissionUtils.Console.print(GAME_MESSAGES.EXECUTION_RESULT);
+
     for (let i = 0; i < this.#tryCount; i++) {
-      this.#cars.forEach((car) => car.move());
+      this.#cars.forEach((car) => {
+        const random = generateRandomNumber(NUMBER_RANGE.MIN, NUMBER_RANGE.MAX);
+        car.move(random);
+      });
       OutputView.printRoundResults(this.#cars);
     }
 

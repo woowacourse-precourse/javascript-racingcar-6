@@ -1,5 +1,4 @@
-import { NUMBER_RANGE, RANDOM_THRESHOLD } from './constants.js';
-import { generateRandomNumber } from './utils.js';
+import { RANDOM_THRESHOLD } from './constants.js';
 
 class RacingCar {
   #name;
@@ -10,9 +9,8 @@ class RacingCar {
     this.#position = 0;
   }
 
-  move() {
-    const random = generateRandomNumber(NUMBER_RANGE.MIN, NUMBER_RANGE.MAX);
-    if (random >= RANDOM_THRESHOLD) {
+  move(number) {
+    if (number >= RANDOM_THRESHOLD) {
       this.#position++;
     }
   }
