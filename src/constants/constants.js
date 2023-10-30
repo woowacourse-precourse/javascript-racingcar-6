@@ -6,6 +6,7 @@ export const RACING_MESSAGE = Object.freeze({
 
 export const RACING_CAR = Object.freeze({
   START_POSITION: 0,
+  MOVE_NUMBER: 4,
 });
 
 export const RACING_ERROR = Object.freeze({

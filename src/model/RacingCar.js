@@ -20,6 +20,10 @@ class RacingCar {
 
     this.carName = name;
   }
+
+  move() {
+    this.carPosition++;
+  }
 }
 
 export default RacingCar;

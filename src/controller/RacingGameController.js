@@ -36,6 +36,18 @@ class RacingGameController {
   async inputMoveCount() {
     const count = await inputView.readMoveCount();
     validateMoveCount(Number(count));
+
+    this.moveCars(Number(count));
+  }
+
+  /**
+   * 자동차 이동 함수
+   * @param {number} count
+   */
+  moveCars(count) {
+    for (let i = 0; i < count; i++) {
+      this.racingGame.checkMove();
+    }
   }
 }
 
