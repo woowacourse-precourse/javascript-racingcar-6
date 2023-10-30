@@ -1,4 +1,4 @@
-class Car {
+class RacingCar {
   #name;
   #distance = 0;
 
@@ -18,4 +18,4 @@ class Car {
   }
 }
 
-export default Car;
+export default RacingCar;
