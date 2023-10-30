@@ -59,4 +59,95 @@ describe("자동차 경주 게임", () => {
     // then
     await expect(app.play()).rejects.toThrow("[ERROR]");
   });
+
+  test("전진-정지 인원 4명, 우승자 1명", async () => {
+    // given
+    const MOVING_FORWARD = 8;
+    const STOP = 2;
+    const inputs = [
+      "pobi,woni,nana,cake", "3"
+    ];
+    const outputs = [
+      "pobi : -","woni : ","nana : ","cake : -",
+      "pobi : -","woni : ","nana : -","cake : -",
+      "pobi : -","woni : -","nana : --","cake : -",
+      "nana"
+    ];
+    const randoms = [
+      MOVING_FORWARD, STOP, STOP, MOVING_FORWARD,
+      STOP, STOP, MOVING_FORWARD, STOP,
+      STOP, MOVING_FORWARD, MOVING_FORWARD, STOP,
+    ];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    // when
+    const app = new App();
+    await app.play();
+
+    // then
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
+
+  test("전진-정지 인원 4명, 우승자 3명", async () => {
+    // given
+    const MOVING_FORWARD = 8;
+    const STOP = 2;
+    const inputs = [
+      "pobi,woni,nana,cake", "3"
+    ];
+    const outputs = [
+      "pobi : -","woni : ","nana : ","cake : -",
+      "pobi : -","woni : ","nana : -","cake : -",
+      "pobi : -","woni : --","nana : --","cake : --",
+      "woni, nana, cake"
+    ];
+    const randoms = [
+      MOVING_FORWARD, STOP, STOP, MOVING_FORWARD,
+      STOP, MOVING_FORWARD, MOVING_FORWARD, STOP,
+      STOP, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+    ];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    // when
+    const app = new App();
+    await app.play();
+
+    // then
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
+
+  // ERROR 테스트케이스
+  test.each([
+    [["pobiwoni"]],
+    [["pobi,woninana"]],
+    [["pobi,woni,nanacake"]],
+    [["pobi,woni,nana,"]],
+    [["pobi,woni,nana,  "]],
+    [["pobi,woni,nana","cake"]],
+    [["pobi,wo  n,nana","cake"]],
+    [['','','']],
+    [[' ',' ',' ']],
+    [['  ','  ','  ']],
+    [['     ','     ','     ']],
+  ])("이름에 대한 예외 처리", async (inputs) => {
+    // given
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow("[ERROR]");
+  });
+
 });
