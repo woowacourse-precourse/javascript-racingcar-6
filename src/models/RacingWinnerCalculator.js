@@ -1,35 +1,37 @@
 import { SYMBOLS } from '../constants/symbols.js';
 
 class RacingWinnerCalculator {
-  #racingResult;
+  #lastRacingStatus;
 
-  constructor(racingResult) {
-    this.#racingResult = [...racingResult];
+  constructor(lastRacingStatus) {
+    this.#lastRacingStatus = [...lastRacingStatus];
   }
 
-  static from(racingResult) {
-    return new RacingWinnerCalculator(racingResult);
+  static from(lastRacingStatus) {
+    return new RacingWinnerCalculator(lastRacingStatus);
   }
 
-  #sortRacingResultPositionByDescending() {
-    this.#racingResult = this.#racingResult.sort(
+  #sortLastRacingStatusPositionByDescending() {
+    this.#lastRacingStatus = this.#lastRacingStatus.sort(
       (elementA, elementB) => elementB.position - elementA.position,
     );
     return this;
   }
 
   #filterTopPositionCars() {
-    const topPosition = this.#racingResult.at(0).position;
-    this.#racingResult = this.#racingResult.filter(({ position }) => position === topPosition);
+    const topPosition = this.#lastRacingStatus.at(0).position;
+    this.#lastRacingStatus = this.#lastRacingStatus.filter(
+      ({ position }) => position === topPosition,
+    );
     return this;
   }
 
   #extractWinnerNames() {
-    return this.#racingResult.map(({ carName }) => carName);
+    return this.#lastRacingStatus.map(({ carName }) => carName);
   }
 
   calculateRacingWinners() {
-    return this.#sortRacingResultPositionByDescending()
+    return this.#sortLastRacingStatusPositionByDescending()
       .#filterTopPositionCars()
       .#extractWinnerNames()
       .join(`${SYMBOLS.comma} `);
