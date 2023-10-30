@@ -2,7 +2,7 @@ import { Console } from '@woowacourse/mission-utils';
 import GAME_MESSAGE from './constant/gameMessage.js';
 import Car from './car.js';
 import Game from './game.js';
-import Input from './input.js';
+import Input from './inputView.js';
 
 class App {
   async play() {
