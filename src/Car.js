@@ -7,7 +7,7 @@ class Car {
   }
 
   createRandomNumber = () => {
-    const number = Random.pickNumberInRange(1, 9);
+    const number = Random.pickNumberInRange(0, 9);
     return number;
   };
 
