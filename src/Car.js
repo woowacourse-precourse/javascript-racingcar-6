@@ -16,4 +16,8 @@ class Car {
             this.position += 1;
         }
     }
+
+    toString() {
+        return `${this.name} : ${'-'.repeat(this.position)}`;
+    }
 }
