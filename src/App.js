@@ -36,17 +36,30 @@ class App {
     return Random.pickNumberInRange(0, 9);
   }
 
+  printRoundResult() {
+    let carInfo;
+    let scoreLine;
+    for (carInfo of this.cars) {
+      scoreLine = "-".repeat(carInfo.score);
+      Console.print(`${carInfo.name} ${scoreLine}`);
+    }
+    Console.print("");
+  }
+
   playOneRound() {
     let carInfo, score;
     for (carInfo of this.cars) {
       score = this.rollDice();
-      if (count > 4) {
+      if (score > 4) {
         carInfo.score += score;
       }
     }
+    this.printRoundResult();
   }
 
   startRacing() {
+    Console.print("");
+    Console.print("실행 결과");
     for (let i = 0; i < this.gameCount; ++i) {
       this.playOneRound();
     }
