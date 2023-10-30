@@ -6,6 +6,7 @@ class App {
     this.CARS_ARRAY = [];
     this.CARS_NAME_ARRAY = [];
     this.GAME_COUNT = 0;
+    this.WINNER_CAR_NAME = [];
   }
 
   async #getInputCars() {
@@ -43,7 +44,6 @@ class App {
     }
   }
 
-
   #checkGameCountInput(gameCount) {
     if (Number.isNaN(gameCount)) {
       throw new Error('[ERROR]');
@@ -62,10 +62,10 @@ class App {
   async #playGame() {
     this.CARS_ARRAY.forEach((car, index) => {
       const RANDOM_NUMBER = Random.pickNumberInRange(0, 9);
-      if(RANDOM_NUMBER >= 4) {
-        this.#moveForwardCar(index)
+      if (RANDOM_NUMBER >= 4) {
+        this.#moveForwardCar(index);
       }
-    })
+    });
     this.#printEachGameResult();
   }
 
@@ -76,110 +76,57 @@ class App {
   async #printEachGameResult() {
     this.CARS_ARRAY.forEach((car) => {
       Console.print(`${car.carName} : ${'-'.repeat(car.forwardCount)}`);
-    })
+    });
     Console.print('');
   }
 
   #pickWinnerOfGame() {
     let maxForward = 0;
-    const WINNER_ARRAY = [];
-
 
     this.CARS_ARRAY.forEach((car) => {
       maxForward = Math.max(car.forwardCount, maxForward);
-    })
+    });
 
     this.CARS_ARRAY.forEach((car) => {
-      if(car.forwardCount === maxForward) {
-        WINNER_ARRAY.push(car.carName);
+      if (car.forwardCount === maxForward) {
+        this.WINNER_CAR_NAME.push(car.carName);
       }
-    })
+    });
 
-    return WINNER_ARRAY;
+    this.#printWinner();
   }
 
+  #printWinner() {
+    if (this.WINNER_CAR_NAME.length > 1) {
+      this.#makeWinnerArray();
+    } else {
+      Console.print(`최종 우승자 : ${this.WINNER_CAR_NAME[0]}`);
+    }
+  }
 
+  #makeWinnerArray() {
+    let carNames = '';
 
+    for (let i = 0; i < this.WINNER_CAR_NAME.length; i += 1) {
+      if (i !== this.WINNER_CAR_NAME.length - 1) {
+        carNames += `${this.WINNER_CAR_NAME[i]}, `;
+      } else {
+        carNames += `${this.WINNER_CAR_NAME[i]}`;
+      }
+    }
 
-  // async #gameStart() {
-  //   this.CARS_ARRAY.forEach((car, index) => {
-  //     const RANDOM_NUMBER = Random.pickNumberInRange(0, 9);
-  //     this.#moveForward(index, RANDOM_NUMBER);
-  //     // this.#printEachGameResult(index);
-  //   });
-  // }
-
-  // #moveForward(carIndex, randomNumber) {
-  //   if (randomNumber > 4) {
-  //     this.CARS_ARRAY[carIndex].forwardCount += 1;
-  //   }
-  //   let resultBar = '';
-  //   for (let i = 0; i < this.CARS_ARRAY[carIndex].forwardCount; i += 1) {
-  //     resultBar += '-';
-  //   }
-
-  //   Console.print(`${this.CARS_ARRAY[carIndex].carName} : ${resultBar}`);
-  // }
-
-  // #printEachGameResult(carIndex) {
-  //   let resultBar = '';
-
-  //   for (let i = 0; i < this.CARS_ARRAY[carIndex].forwardCount; i += 1) {
-  //     resultBar += '-';
-  //   }
-
-  //   Console.print(`${this.CARS_ARRAY[carIndex].carName} : ${resultBar}`);
-  // }
-
-  // #pickWinnerCar() {
-  //   let winner = 0;
-
-  //   this.CARS_ARRAY.forEach((car) => {
-  //     winner = Math.max(winner, car.forwardCount);
-  //   });
-
-  //   const WINNER_CAR_ARRAY = this.CARS_ARRAY.filter(
-  //     (car) => car.forwardCount === winner,
-  //   );
-
-  //   let result = '최종 우승자 : ';
-
-  //   if (WINNER_CAR_ARRAY.length > 1) {
-  //     WINNER_CAR_ARRAY.forEach((winnerCar, index) => {
-  //       if (index < WINNER_CAR_ARRAY.length - 1) {
-  //         result += `${winnerCar.carName}, `;
-  //       } else {
-  //         result += winnerCar.carName;
-  //       }
-  //     });
-  //   } else {
-  //     result += WINNER_CAR_ARRAY[0].carName;
-  //   }
-  //   return result;
-  // }
+    Console.print(`최종 우승자 : ${carNames}`);
+  }
 
   async play() {
     await this.#getInput();
-    Console.print(this.CARS_ARRAY);
-    Console.print(this.GAME_COUNT);
 
-    for(let i = 0; i < this.GAME_COUNT; i += 1) {
+    Console.print("\n실행 결과");
+    for (let i = 0; i < this.GAME_COUNT; i += 1) {
       this.#playGame();
     }
 
-    Console.print(this.#pickWinnerOfGame());
-    //   try {
-    //     await this.#getInputCars();
-    //   } catch(e) {
-    //     Console.print(e);
-    //   }
-
-    //   await this.#getInputGameCount();
-
-    //   for (let i = 0; i <= this.GAME_COUNT; i += 1) {
-    //     this.#gameStart();
-    //   }
-    // }
+    this.#pickWinnerOfGame();
   }
 }
 
