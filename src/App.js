@@ -9,27 +9,23 @@ class App {
   }
 
   async play() {
-    try {
-      const input = new Input();
-      const race = new Race();
-      const result = new Result();
+    const input = new Input();
+    const race = new Race();
+    const result = new Result();
 
-      const carArr = await input.getCarName();
-      const inputNumber = await input.getRepeatNumber();
+    const carArr = await input.getCarName();
+    const inputNumber = await input.getRepeatNumber();
 
-      this.initializeCarDictionary(carArr);
+    this.initializeCarDictionary(carArr);
 
-      Console.print('\n실행 결과');
-      for (let i = 0; i < inputNumber; i++) {
-        race.runRace(carArr, this.carDictionary);
-        race.printRace(this.carDictionary);
-      }
-
-      const winners = result.determineWinner(this.carDictionary);
-      result.printWinner(winners);
-    } catch (error) {
-      console.error(error.message);
+    Console.print('\n실행 결과');
+    for (let i = 0; i < inputNumber; i++) {
+      race.runRace(carArr, this.carDictionary);
+      race.printRace(this.carDictionary);
     }
+
+    const winners = result.determineWinner(this.carDictionary);
+    result.printWinner(winners);
   }
 
   initializeCarDictionary(carArr) {
