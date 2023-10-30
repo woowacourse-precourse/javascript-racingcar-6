@@ -1,9 +1,10 @@
 import Race from "../src/models/Race";
 import Car from "../src/models/Car";
 import { MissionUtils } from "@woowacourse/mission-utils";
+import { MOVE_THRESHOLD } from "../src/constants";
 
-const MOVING_FORWARD = 4;
-const STOP = 3;
+const MOVING_FORWARD = MOVE_THRESHOLD;
+const STOP = 1;
 
 const mockRandoms = (numbers) => {
   MissionUtils.Random.pickNumberInRange = jest.fn();
