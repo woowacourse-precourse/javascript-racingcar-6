@@ -9,6 +9,7 @@ import { findWinners } from './utils/findWinners.js';
 
 class App {
   #lastRound;
+
   #currentRound;
 
   constructor() {
@@ -27,11 +28,11 @@ class App {
   async readCarNames() {
     const carNames = await InputView.readCarNames();
 
-    this.validate(carNames);
+    App.validate(carNames);
     this.setCars(carNames);
   }
 
-  validate(input) {
+  static validate(input) {
     if (Array.isArray(input)) {
       handleError(validateCarName, input);
       return;
@@ -47,7 +48,7 @@ class App {
   async readTryNumber() {
     const tryNumber = await InputView.readTryNumber();
 
-    this.validate(tryNumber);
+    App.validate(tryNumber);
     this.setLastRound(tryNumber);
   }
 
@@ -89,10 +90,10 @@ class App {
   findWinners() {
     const winnersName = findWinners(this.cars).map((car) => car.getName());
 
-    this.printWinners(winnersName);
+    App.printWinners(winnersName);
   }
 
-  printWinners(name) {
+  static printWinners(name) {
     OutputView.printWinners(name);
   }
 }
