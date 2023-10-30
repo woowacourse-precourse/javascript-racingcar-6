@@ -1,14 +1,19 @@
-import { getCarName, getPlayNum } from './functions/gameStart';
+import {
+  getCarName,
+  getPlayNum,
+  setInitialDistance,
+} from './functions/gameStart';
 
 class App {
   constructor() {
-    this.carList = [];
+    this.carDistanceList = [];
     this.playNum = 0;
   }
 
   start() {
-    this.carList = getCarName();
+    const carList = getCarName();
     this.playNum = getPlayNum();
+    this.carDistanceList = setInitialDistance(carList);
   }
 
   async play() {

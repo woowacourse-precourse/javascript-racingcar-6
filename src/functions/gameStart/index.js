@@ -38,3 +38,11 @@ export const getPlayNum = async () => {
 
   return playNum;
 };
+
+export const setInitialDistance = carList => {
+  const carDistanceList = [];
+
+  carList.forEach(car => carDistanceList.push({ carName: car, distance: '' }));
+
+  return carDistanceList;
+};
