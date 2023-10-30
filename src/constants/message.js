@@ -17,7 +17,7 @@ export const ERRORMSG = Object.freeze({
     "[ERROR] 자동차 이름에 특수문자는 사용할 수 없습니다.",
   invalid_korean_character:
     "[ERROR] 자동차 이름에 한국어는 사용할 수 없습니다.",
-
+  invalid_negative: "[ERROR] 1이상의 값을 입력해주세요.",
   invalid_not_number: "[ERROR] 숫자를 입력했는지 확인해주세요",
   invalid_exceed_max_try: `[ERROR] 최대 ${GMAEVALIDATION.max_try}만큼 시도할 수 있습니다.`,
 });

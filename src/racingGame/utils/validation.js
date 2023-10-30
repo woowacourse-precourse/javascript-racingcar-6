@@ -32,9 +32,11 @@ export const checkInputCarNameValidation = (inputs) => {
 };
 
 export const checkInputTryNumValidation = (input) => {
-  console.log(typeof input);
-  if (!GMAEVALIDATION.check_only_number.test(input))
+  if (!GMAEVALIDATION.check_only_number.test(input)) {
+    console.log(input);
     throw new Error(ERRORMSG.invalid_not_number);
+  }
+  if (input <= 0) throw new Error(ERRORMSG.invalid_negative);
   if (input > GMAEVALIDATION.max_try)
     throw new Error(ERRORMSG.invalid_exceed_max_try);
 };
