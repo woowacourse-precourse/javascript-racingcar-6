@@ -1,6 +1,11 @@
 import { CHARACTER_LIMIT, NAME_INPUT_ERROR } from "./Constants.js";
 
 const Validation = {
+  isCorrectName(nameList){
+    this.isNull(nameList);
+    this.isEmpty(nameList);
+    this.isLong(nameList);
+  },
 
   isNull(nameList){
     if(nameList.length === 1 && nameList[0] === ''){
