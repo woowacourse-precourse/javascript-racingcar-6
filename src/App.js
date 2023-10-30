@@ -1,6 +1,4 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import { rejects } from "assert";
-import { resolve } from "path";
 import * as readline from "readline";
 
 class App {
@@ -22,7 +20,7 @@ class App {
     //결과, 최종 우승자 받기
     const result = this.result(carName, tryNum);
   }
-  //차 이름 받기 (유저 입력 받는 것 앞에는 비동기가 있어야 하나?)
+  // 차 이름 받기 (유저 입력 받는 것 앞에는 비동기가 있어야 하나?)
   async getCarName() {
     return new Promise((resolve, reject) => {
       this.rl.question(
@@ -31,8 +29,7 @@ class App {
           const carName = userInput.split(",");
           for (let i = 0; i < carName.length; i++) {
             if (carName[i].length > 5) {
-              console.log("[ERROR] 이름이 잘못된 형식입니다.");
-              reject(undefined);
+              throw new Error("[ERROR] 이름이 잘못된 형식입니다.");
             } else {
               resolve(carName);
               return carName;
@@ -42,14 +39,14 @@ class App {
       );
     });
   }
+
   //시도 횟수 받기
   async getTryNum() {
     return new Promise((resolve, reject) => {
       this.rl.question("시도할 횟수는 몇 회인가요?", function (userNumInput) {
         const tryNum = userNumInput;
         if (isNaN(tryNum) || tryNum < 0) {
-          console.log("[ERROR] 숫자가 잘못된 형식입니다.");
-          reject(undefined);
+          throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
         } else {
           resolve(tryNum);
           return tryNum;
@@ -75,9 +72,16 @@ class App {
         console.log(carName[i], ":", "-".repeat(goCount[i]));
       }
     }
-    //가장 긴 자동차 이름 return하기
+    //우승자 return 하기
+    const winner = [];
     const maxLong = Math.max.apply(null, goCount);
-    console.log(`최종 우승자 : ${carName[maxLong]}`);
+    for (let i = 0; i < goCount.length; i++) {
+      if (goCount[i] == maxLong) {
+        winner.push(carName[i]);
+      }
+    }
+
+    console.log(`최종 우승자 : ${winner}`);
   }
 }
 const app = new App();
