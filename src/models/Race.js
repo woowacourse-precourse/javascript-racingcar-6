@@ -1,21 +1,18 @@
-import { Console } from "@woowacourse/mission-utils";
-
 class Race {
-  constructor(cars, totalRounds) {
+  constructor(cars) {
     this.cars = cars;
-    this.totalRounds = totalRounds;
   }
 
-  start() {
-    for (let round = 0; round < this.totalRounds; round++) {
-      this.cars.forEach((car) => car.move());
-      this.printRoundResult();
-    }
+  progressRound() {
+    this.cars.forEach((car) => car.move());
   }
 
-  printRoundResult() {
-    this.cars.forEach((car) => {
-      Console.log(`${car.getName()} : ${"-".repeat(car.getPosition())}`);
+  getRoundResult() {
+    return this.cars.map((car) => {
+      return {
+        name: car.getName(),
+        position: car.getPosition(),
+      };
     });
   }
 
