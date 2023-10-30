@@ -4,11 +4,7 @@ const NO_LENGTH = 0;
 const MAX_CARNAME_LENGTH = 5;
 const NEW_LINE = '\n';
 const SPACE = ' ';
-
-const STICK = Object.freeze({
-  newSticks: '',
-  oneStick: '-',
-});
+const STICK = '-';
 
 export {
   NEW_LINE,
