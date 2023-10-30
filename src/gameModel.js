@@ -1,4 +1,6 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
+import { OUTPUT_TEXT } from './message/gameMessage.js';
+import { GAME_DEFAULT } from './default/gameDefault.js';
 
 class Car {
   constructor(carName) {
@@ -7,14 +9,17 @@ class Car {
   }
 
   move() {
-    const randomValue = MissionUtils.Random.pickNumberInRange(0, 9);
-    if (randomValue >= 4) {
+    const randomValue = MissionUtils.Random.pickNumberInRange(
+      GAME_DEFAULT.randomMin,
+      GAME_DEFAULT.randomMax,
+    );
+    if (randomValue >= GAME_DEFAULT.movable) {
       this.position += 1;
     }
   }
 
   getDisplay() {
-    return `${this.name} : ${'-'.repeat(this.position)}`;
+    return `${this.name} : ${OUTPUT_TEXT.go.repeat(this.position)}`;
   }
 }
 

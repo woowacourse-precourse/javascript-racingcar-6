@@ -1,19 +1,22 @@
+import { INPUT_ERROR } from './message/errorMessage.js';
+import { GAME_DEFAULT } from './default/gameDefault.js';
+
 export const nameError = (cars) => {
   cars.forEach((car) => {
-    if (car.length > 5) {
-      throw new Error('[ERROR] 이름의 길이가 형식과 다릅니다.');
+    if (car.length > GAME_DEFAULT.nameLength) {
+      throw new Error(INPUT_ERROR.lengthError);
     }
     if (car.trim().length !== car.length) {
-      throw new Error('[ERROR] 입력에 공백이 있습니다.');
+      throw new Error(INPUT_ERROR.spaceError);
     }
   });
 };
 
 export const numberError = (gameAttempt) => {
   if (isNaN(Number(gameAttempt))) {
-    throw new Error('[ERROR] 숫자 외에 입력이 있습니다.');
+    throw new Error(INPUT_ERROR.numError);
   }
   if (gameAttempt.trim().length !== gameAttempt.length) {
-    throw new Error('[ERROR] 입력에 공백이 있습니다.');
+    throw new Error(INPUT_ERROR.spaceError);
   }
 };
