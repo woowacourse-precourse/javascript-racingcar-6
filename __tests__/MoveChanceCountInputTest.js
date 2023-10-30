@@ -17,6 +17,8 @@ const getLogSpy = () => {
   return logSpy;
 };
 
+
+// 1e3과 같은 지수 표현식은 큰 값을 쉽게 표현하기 위해 허용
 describe('시도 횟수 입력 유효성 테스트', () => {
   test.each([
     [['a,b,c', 'e']],
