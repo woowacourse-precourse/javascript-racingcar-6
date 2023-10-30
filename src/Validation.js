@@ -1,16 +1,5 @@
-/* eslint-disable import/extensions */
-// export default function nameOverFive(splitCar) {
-//   const SET_COLLECTION = new Set(splitCar);
-//   if (splitCar.some((name) => name.length > 5)) {
-//     return true;
-//   }
-//   if (SET_COLLECTION.size < splitCar.length) {
-//     return true;
-//   }
-//   return false;
-// }
-
 const VALIDATION = {
+  // 조건문 결과가 false여야 검사를 통과.
   nameOverFive(splitCar) {
     if (splitCar.some((name) => name.length > 5)) {
       return true;
@@ -48,6 +37,13 @@ const VALIDATION = {
 
   isSpacing(splitCar) {
     if (splitCar.some((spacing) => spacing.includes(' ') === true)) {
+      return true;
+    }
+    return false;
+  },
+
+  isNum(tryNum) {
+    if (Number.isNaN(tryNum) || tryNum <= 0) {
       return true;
     }
     return false;

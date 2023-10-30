@@ -7,6 +7,8 @@ export default class Settings {
   constructor() {
     this.INPUT_CAR = '';
     this.CAR_NAME = '';
+    this.INPUT_NUM = '';
+    this.TRY_NUM = '';
   }
 
   async inputCarName() {
@@ -21,10 +23,22 @@ export default class Settings {
     }
     //   console.log(VALIDATION.inputNothing(this.CAR_NAME));
     if (VALIDATION.inputNothing(this.CAR_NAME)) {
-      throw ERROR_MESSAGE.NOTHING_NAME;
+      throw ERROR_MESSAGE.NOTHING_INPUT;
     }
     if (VALIDATION.isSpacing(this.CAR_NAME)) {
       throw ERROR_MESSAGE.SPACING_NAME;
+    }
+    try {
+      await this.inputTry();
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
+
+  async inputTry() {
+    this.INPUT_NUM = await Console.readLineAsync(COMPUTER_MESSAGES.TRY);
+    if (VALIDATION.isNum(this.INPUT_NUM)) {
+      throw ERROR_MESSAGE.NOT_NUMBER;
     }
   }
 }
