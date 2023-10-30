@@ -1,22 +1,22 @@
 import { Console } from '@woowacourse/mission-utils';
-import { Dice } from './Dice.js';
-import { Judge } from './Judge.js';
 
 export class RacingGame {
-  constructor() {
-    this.dice = new Dice();
-    this.judge = new Judge();
+  constructor(dice, judge) {
+    this.dice = dice;
+    this.judge = judge;
   }
+
   play(gameCount, cars) {
     const initializedCars = this.initializeScore(cars);
     let totalScores = initializedCars;
+    Console.print('실행 결과');
     for (let i = 0; i < gameCount; i++) {
       const scores = this.getScore(cars);
       const result = this.validateScores(scores, totalScores);
-      this.printScores(result);
       totalScores = result;
+      this.printScores(totalScores);
     }
-    const winners = this.judge.decideWinner(totalScores);
+    this.judge.decideWinner(totalScores);
   }
 
   initializeScore(cars) {
