@@ -11,3 +11,7 @@ export const ERROR = {
   NAME_DUPLICATION_ERROR: "[ERROR] 자동차 이름 중 중복된 이름이 있습니다.",
   NUMBER_ERROR: "[ERROR] 시도 횟수는 0 이상의 자연수로 입력해주세요.",
 };
+
+export const SYMBOL = {
+  MOVE: "-",
+};
