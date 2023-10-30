@@ -4,8 +4,8 @@ import GameModel from "../model/GameModel.js";
 
 import { pickNumberInRange } from "../utils/index.js";
 import { GAME_SETTING } from "../utils/constants.js";
-import OutputStatusView from "../view/OutputWinnerView.js";
-import OutputWinnerView from "../view/OutputStatusView.js";
+import OutputWinnerView from "../view/OutputWinnerView.js";
+import OutputStatusView from "../view/OutputStatusView.js";
 
 const { MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER } = GAME_SETTING;
 
