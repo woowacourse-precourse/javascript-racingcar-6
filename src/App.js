@@ -1,15 +1,14 @@
 import { Console, Random } from '@woowacourse/mission-utils';
 import Validator from './utils/Validator.js';
+import { INFO_MESSAGE } from './constants/messages.js';
 
 class App {
   static getCarNamesInput() {
-    return Console.readLineAsync(
-      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
-    );
+    return Console.readLineAsync(INFO_MESSAGE.INPUT_CAR_NAME_MESSAGE);
   }
 
   static getMoveCountInput() {
-    return Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    return Console.readLineAsync(INFO_MESSAGE.INPUT_MOVE_COUNT_MESSAGE);
   }
 
   static ValidateCarNames(arrayedCarNames) {
@@ -45,7 +44,7 @@ class App {
       () => '',
     );
     let copiedMoveCount = moveCount;
-    Console.print('\n실행 결과');
+    Console.print(INFO_MESSAGE.PROGRESS_RESULT_MESSAGE);
     while (copiedMoveCount) {
       raceProgressGraph = App.calculateRaceProgress(raceProgressGraph);
       App.printRaceResults(arrayedCarNames, raceProgressGraph);

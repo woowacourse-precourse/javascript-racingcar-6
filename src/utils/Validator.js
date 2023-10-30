@@ -1,4 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
+import { ERROR_MESSAGE } from '../constants/messages.js';
 
 export default class Validator {
   static validate(condition, errorMessage) {
@@ -35,44 +36,29 @@ export default class Validator {
   }
 
   static isMaxLengthFive(value) {
-    return Validator.validate(
-      value.length <= 5,
-      '[ERROR] 입력이 유효하지 않습니다. 5글자 이하로 입력해주세요.',
-    );
+    return Validator.validate(value.length <= 5, ERROR_MESSAGE.MAX_NUM_ERR);
   }
 
   static isMinLengthOne(value) {
-    return Validator.validate(
-      value.length >= 1,
-      '[ERROR] 입력이 유효하지 않습니다. 1글자 이상으로 입력해주세요.',
-    );
+    return Validator.validate(value.length >= 1, ERROR_MESSAGE.MIN_NUM_ERR);
   }
 
   static isNotNull(value) {
-    return Validator.validate(
-      value !== null,
-      '[ERROR] 입력이 유효하지 않습니다. null 또는 undefined일 수 없습니다.',
-    );
+    return Validator.validate(value !== null, ERROR_MESSAGE.NULL_ERR);
   }
 
   static isNotUndefined(value) {
-    return Validator.validate(
-      value !== undefined,
-      '[ERROR] 입력이 유효하지 않습니다. null 또는 undefined일 수 없습니다.',
-    );
+    return Validator.validate(value !== undefined, ERROR_MESSAGE.UNDEFINED_ERR);
   }
 
   static isNotIncludeSpace(value) {
-    return Validator.validate(
-      !value.includes(' '),
-      '[ERROR] 입력이 유효하지 않습니다. 문자열에 공백이 포함되어 있습니다.',
-    );
+    return Validator.validate(!value.includes(' '), ERROR_MESSAGE.SPACE_ERR);
   }
 
   static isNum(value) {
     return Validator.validate(
       /^[1-9]\d*$/.test(value),
-      '[ERROR] 입력이 유효하지 않습니다. 숫자를 입력해 주세요.',
+      ERROR_MESSAGE.IS_NUM_ERR,
     );
   }
 }
