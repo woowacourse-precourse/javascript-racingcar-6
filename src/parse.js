@@ -17,7 +17,7 @@ export const parseCarNames = input => {
 
   const nameLengthLimit = 5;
 
-  const isLengthOverLimit = value => value > nameLengthLimit;
+  const isLengthOverLimit = value => value.length > nameLengthLimit;
 
   if (splited.some(isLengthOverLimit)) {
     throw new Error(CONSTANTS.ERRORS.OVER_LIMIT);
@@ -31,7 +31,7 @@ export const parseCarNames = input => {
 
   const deduplicated = new Set(splited);
 
-  if (splited.length !== deduplicated.length) {
+  if (splited.length !== deduplicated.size) {
     throw new Error(CONSTANTS.ERRORS.DUPLICATE_VALUE);
   }
 
@@ -49,7 +49,7 @@ export const parseNumberOfAttempts = input => {
     throw new Error(CONSTANTS.ERRORS.NOT_CONVERTABLE);
   }
 
-  if (Number.isSafeInteger(parsed)) {
+  if (!Number.isSafeInteger(parsed)) {
     throw new Error(CONSTANTS.ERRORS.UNSAFE_INTEGER);
   }
 
