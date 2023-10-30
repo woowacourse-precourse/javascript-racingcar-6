@@ -16,6 +16,13 @@ const Validation = {
     })
   },
 
+  isLong(nameList){
+    nameList.forEach(name => {
+      if(name.length > CHARACTER_LIMIT){
+        throw new Error(NAME_INPUT_ERROR.long);
+      }
+    })
+  },
 
 }
 export default Validation;
