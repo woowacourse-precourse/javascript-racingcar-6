@@ -1,10 +1,7 @@
-import { Random, Console } from "@woowacourse/mission-utils";
-import { InputValidator, InputView, OutputView } from "./view";
+import { GameController } from "./controller/GameController";
 class App {
   async play() {
-    const inputValidator = new InputValidator();
-    const inputView = new InputView(inputValidator);
-    
+    await GameController.racingGame();
   }
 }
 
