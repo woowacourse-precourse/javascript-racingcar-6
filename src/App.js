@@ -1,12 +1,13 @@
 import { Console, Random } from "@woowacourse/mission-utils";
 import { Car } from "./Car.js";
+import { NORMAG_MSG, ERROR_MSG } from "./constants.js";
 
 class App {
   async play() {
-    const carsName = await this.receiveUserInput('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n');
+    const carsName = await this.receiveUserInput(NORMAG_MSG.INPUT_CARS_NAME);
     const cars = this.seperateNames(carsName);
     this.isNotDuplicate(cars);
-    const gamesNum = await this.receiveUserInput('시도할 횟수는 몇 회인가요?\n');
+    const gamesNum = await this.receiveUserInput(NORMAG_MSG.INPUT_GAME_NUM);
     const num = this.isValidGameNum(gamesNum);
     const carArr = [];
 
@@ -15,7 +16,7 @@ class App {
       carArr.push(newCar);
     });
 
-    this.printMsg('\n실행 결과');
+    this.printMsg(NORMAG_MSG.RESULT);
 
     for(let i = 0; i < num; i++){
       this.runOneCycle(carArr);
@@ -68,20 +69,20 @@ class App {
 
   isValidName(name) {
     const regEx = /^[a-z]*$/;
-    if(!name.match(regEx)) throw new Error('[ERROR] 자동차 이름은 영문 소문자만 가능합니다.');
+    if(!name.match(regEx)) throw new Error(this.makeErrorMsg(ERROR_MSG.INVALID_NAME));
   }
 
   isValidLen(name) {
-    if((name.length < 1) || (name.length > 5)) throw new Error('[ERROR] 자동차 이름의 길이는 1 이상, 5 이하입니다.');
+    if((name.length < 1) || (name.length > 5)) throw new Error(this.makeErrorMsg(ERROR_MSG.INVALID_LENGTH));
   }
 
   isNotDuplicate(nameArr) {
-    if(new Set(nameArr).size !== nameArr.length) throw new Error('[ERROR] 자동차 이름은 중복될 수 없습니다.');
+    if(new Set(nameArr).size !== nameArr.length) throw new Error(this.makeErrorMsg(ERROR_MSG.DUPLICATE));
   }
 
   isValidGameNum(num) {
     const regEx = /[1-9]\d*/;
-    if(!num.match(regEx)) throw new Error('[ERROR] 시도 횟수는 올바른 숫자값으로 입력해 주세요.');
+    if(!num.match(regEx)) throw new Error(this.makeErrorMsg(ERROR_MSG.NOT_A_NUMBER));
     return Number(num);
   }
 
