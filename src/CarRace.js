@@ -32,10 +32,11 @@ class CarRace {
   handleRaceResult() {
     MissionUtils.Console.print("실행 결과");
 
-    const RESULT_STRING = resultHandler.getResultString({
+    const [RESULT_STRING, NEW_CARS] = resultHandler.getResultString({
       tryNumber: this.#tryNumber,
       cars: this.#cars,
     });
+    this.setCars(NEW_CARS);
     MissionUtils.Console.print(RESULT_STRING);
 
     const WINNER = resultHandler.getWinner(this.#cars);
