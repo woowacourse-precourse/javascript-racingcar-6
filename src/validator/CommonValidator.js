@@ -1,45 +1,23 @@
 import { SYMBOLS } from '../constants/Symbols.js';
 import ValidationError from '../error/ValidationError.js';
+import { GRANDPRIX_ERROR_NOTIFICATION } from '../constants/GrandPrixError.js';
 
-export default class CommonValidator {
-  /**
-   * @private
-   * @type {string}
-   */
-  #input;
-
-  /**
-   * @constructor
-   * @param {string} input
-   */
-  constructor(input) {
-    this.#input = input.trim();
+/**
+ * @throws {ValidationError}
+ * @param {string} input
+ */
+const checkInputEmpty = (input) => {
+  if (input === SYMBOLS.empty) {
+    throw new ValidationError(GRANDPRIX_ERROR_NOTIFICATION.emptyInput);
   }
+};
 
-  /**
-   * @static
-   * @public
-   * @constant
-   */
-  static COMMON_VALIDATION_TYPES = Object.freeze({
-    emptyInput: Object.freeze({
-      message: '입력이 존재하지 않습니다, 다시 입력해주세요.',
-      isValid(input) {
-        return input !== SYMBOLS.empty;
-      },
-    }),
-  });
+/**
+ * @param {string} input - 검사할 문자열
+ */
+const validateCommon = (input) => {
+  const trimmedInput = input.trim();
+  checkInputEmpty(trimmedInput);
+};
 
-  /**
-   * @public
-   * @throws {ValidationError}
-   * @returns {void}
-   */
-  validate() {
-    Object.values(CommonValidator.COMMON_VALIDATION_TYPES).forEach(({ message, isValid }) => {
-      if (!isValid(this.#input)) {
-        throw new ValidationError(message);
-      }
-    });
-  }
-}
+export default validateCommon;
