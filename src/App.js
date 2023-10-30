@@ -18,7 +18,9 @@ class App {
     }
 
     const splitNames = carNames.split(',').map(name => name.trim());
-    if (carNames.split(',').length !== splitNames.length) {
+    if (splitNames.length < 2) {
+      throw new Error("이름은 2개 이상 입력해야 합니다.");
+    } else if (carNames.split(',').length !== splitNames.length) {
       throw new Error("이름은 ,(콤마)로 구분합니다.");
     } else if (splitNames.some(name => name.length > 5)) {
       throw new Error("이름은 5자 이하만 가능합니다.");
@@ -42,7 +44,23 @@ class App {
   }
 
   racingResult(carNames, numAttempts) {
-    // 작성
+    const carList = carNames.map(name => ({ name, state: '' }));
+    MissionUtils.Console.print("\n실행 결과");
+    for (let count = 1; count <= numAttempts; count++) {
+      MissionUtils.Console.print("\n");
+      carList.forEach(car => {
+        const move = MissionUtils.Random.pickNumberInRange(0, 9);
+        if (move >= 4) {
+          car.state += '-';
+        }
+        MissionUtils.Console.print(`${car.name} : ${car.state}`);
+      });
+    }
+
+    const mostFastest = Math.max(...carList.map(car => car.state.length));
+    const winners = carList.filter(car => car.state.length === mostFastest);
+
+    MissionUtils.Console.print("최종 우승자: " + winners.join(', '));
   }
 }
 
