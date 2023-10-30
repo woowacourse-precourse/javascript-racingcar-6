@@ -17,9 +17,10 @@ const InputView = {
 
   async readAttemptsCount() {
     try {
-      const AttemptsCount = await MissionUtils.Console.readLineAsync(
+      const userInputAttemptsCount = await MissionUtils.Console.readLineAsync(
         `${MESSAGE.game.AttemptsCount}\n`,
       );
+      const AttemptsCount = this.validateAttemptsCount(userInputAttemptsCount);
 
       return parseInt(AttemptsCount, 10);
     } catch (e) {
@@ -36,6 +37,14 @@ const InputView = {
     }
 
     return validRaceCarName;
+  },
+
+  validateAttemptsCount(userInputAttemptsCount) {
+    if (isNaN(userInputAttemptsCount)) {
+      throw new Error();
+    }
+
+    return userInputAttemptsCount;
   },
 };
 
