@@ -78,15 +78,8 @@ class CarRacingGame {
 
 
   validateAttempts(attempts) {
-    for (let i = 0; i < attempts.length; i++) {
-      const char = attempts.charAt(i)
-      const ascii = char.charCodeAt()
-      if ('1'.charCodeAt() <= ascii && ascii <= '9'.charCodeAt()) {
-        continue;
-      }
-      return true;
-    }
-    return false;
+    const parsedAttempts = Number(attempts);
+    return !(Number.isInteger(parsedAttempts) && parsedAttempts > 0)
   }
 
   printRaceProgress(car, index) {
