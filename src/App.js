@@ -1,6 +1,8 @@
 import inputCarName from "../functions/InputCarName.js";
 import inputTryRacing from "../functions/InputTryRacing.js";
 import carAdvance from "../functions/CarAdvance.js";
+import { Console } from "@woowacourse/mission-utils";
+import printCarAdvanceState from "../functions/PrintCarAdvanceState.js";
 
 class App {
   constructor() {
@@ -25,11 +27,11 @@ class App {
     return this._carAdvanceState;
   }
 
-  get carName(){
+  get carName() {
     return this._carName;
   }
 
-  get tryRacing(){
+  get tryRacing() {
     return this._tryRacing;
   }
 
@@ -48,9 +50,13 @@ class App {
     this.tryRacing = await inputTryRacing();
     await this.makeCarAdvanceStateZero();
 
+    Console.print('\n실행 결과');
+
     for(let tryCount = 0; tryCount<this.tryRacing; tryCount++) {
       this.carAdvanceState = await carAdvance(this.carAdvanceState);  
+      printCarAdvanceState(this.carName, this.carAdvanceState);
     }
+
   }
 }
 
