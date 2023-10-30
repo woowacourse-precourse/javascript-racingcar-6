@@ -23,6 +23,26 @@ describe('사용자 입력 테스트', () => {
     await expect(inputCarNames()).rejects.toThrow('[ERROR] 빈 이름입니다.');
   });
 
+  test('이름 중 공백 이름이 있을때 입력 오류', async () => {
+    const input = 'pobi, ,jun';
+
+    const mockedInput = jest.spyOn(MissionUtils.Console, 'readLineAsync');
+    mockedInput.mockResolvedValue(input);
+
+    await expect(inputCarNames()).rejects.toThrow('[ERROR] 빈 이름입니다.');
+  });
+
+  test('이름 중 공백 문자가 있을 때 오류', async () => {
+    const input = 'pobi, jun';
+
+    const mockedInput = jest.spyOn(MissionUtils.Console, 'readLineAsync');
+    mockedInput.mockResolvedValue(input);
+
+    await expect(inputCarNames()).rejects.toThrow(
+      '[ERROR] 이름에 공백이 있습니다.',
+    );
+  });
+
   test('길이가 5를 넘기는 자동차 이름 입력 오류 ', async () => {
     const input = 'pobi,woniwo';
 
