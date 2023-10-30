@@ -1,5 +1,6 @@
 import App from '../src/App.js';
 import Car from '../src/racing/Car.js';
+import RacingGame from '../src/racing/RacingGame.js';
 import validation from '../src/view/Validation.js';
 import { MissionUtils } from '@woowacourse/mission-utils';
 
@@ -19,7 +20,13 @@ const mockRandoms = (numbers) => {
   }, MissionUtils.Random.pickNumberInRange);
 };
 
-describe('자동차 경주 게임', () => {
+const getLogSpy = () => {
+  const logSpy = jest.spyOn(MissionUtils.Console, 'print');
+  logSpy.mockClear();
+  return logSpy;
+};
+
+describe('기능 단위 테스트', () => {
   test('canMove 메소드 테스트', async () => {
     // given
     const MOVING_FORWARD = 4;
@@ -42,7 +49,31 @@ describe('자동차 경주 게임', () => {
     ['pobi,po ', '[ERROR] : 이름에 공백이 있습니다.'],
     ['pobi,po@', '[ERROR] : 이름에 특수문자가 있습니다.'],
     ['pobi,', '[ERROR] : 빈 이름이 있습니다.'],
-  ])('validation 테스트', (input, message) => {
+  ])('validation 함수 테스트', (input, message) => {
     expect(() => validation(input.split(','))).toThrow(message);
+  });
+
+  test('randomlyMove 메소드 테스트', async () => {
+    // given
+    const MOVING_FORWARD = 4;
+    const STOP = 3;
+    const outputs = '---';
+    const randoms = [
+      MOVING_FORWARD,
+      STOP,
+      MOVING_FORWARD,
+      STOP,
+      MOVING_FORWARD,
+    ];
+
+    mockRandoms(randoms);
+
+    const car = new Car();
+
+    for(let i = 0; i < randoms.length; i++)
+      car.randomlyMove();
+
+    // then
+    expect(car.carDistance).toEqual(outputs);
   });
 });
