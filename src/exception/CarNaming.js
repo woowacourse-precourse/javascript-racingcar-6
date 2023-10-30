@@ -1,5 +1,8 @@
 import BaseExceptionHandler from "./Errorcase.js";
 
+// 상수 모듈
+import { NUMBER } from "../utils/Constants.js";
+
 class CarNaming extends BaseExceptionHandler {
   constructor(names) {
     super();
@@ -8,13 +11,13 @@ class CarNaming extends BaseExceptionHandler {
 
   isValidArrayLength() {
     const { names } = this;
-    if (names.length <= 1) {
+    if (names.length <= NUMBER.ONE) {
       throw new Error(
         "[ERROR] 자동차 이름을 작성하지 않았거나, 자동차 한 대로는 게임을 진행할 수가 없습니다.",
       );
     }
 
-    if (names.length > 20) {
+    if (names.length > NUMBER.TWENTY) {
       throw new Error(
         "[ERROR] 저희 F1 월드 챔피언쉽은 한 경기에 출전할 수 있는 자동차의 수가 최대 20대입니다.",
       );
@@ -33,7 +36,7 @@ class CarNaming extends BaseExceptionHandler {
     this.handleDuplicatedName();
 
     this.names.forEach((name) => {
-      if (name.length >= 6 || name.length <= 0) {
+      if (name.length >= NUMBER.SIX || name.length <= NUMBER.ZERO) {
         throw new Error(
           "[ERROR] 자동차 이름은 1글자에서 5글자까지만 가능합니다.",
         );
