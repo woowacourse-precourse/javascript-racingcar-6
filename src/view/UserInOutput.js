@@ -4,8 +4,8 @@ import { MESSAGE } from '../constant/OutputMessage.js';
 
 class UserInOutput{
 
-    #outRacingData
-    #outputWinnerData
+    #outRacingData;
+    #outputWinnerData;
 
     constructor(racingCar){
         this.racingCar = racingCar;
@@ -21,7 +21,7 @@ class UserInOutput{
     }
 
     async inputRacingCount(){
-        const RACING_COUNT = await Console.readLineAsync(`${MESSAGE.RACING_COUNT}\n`)
+        const RACING_COUNT = await Console.readLineAsync(`${MESSAGE.RACING_COUNT}\n`);
         const VALIDATE_RACING_COUNT = this.validate.racingCountInputValidate(RACING_COUNT);
         return VALIDATE_RACING_COUNT;
     }

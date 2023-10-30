@@ -1,4 +1,4 @@
-import { MESSAGE, ERROR_MESSAGE } from "../constant/OutputMessage.js";
+import { ERROR_MESSAGE } from "../constant/OutputMessage.js";
 
 class Validate{
     racingCarInputValidate = (carName) => {
@@ -17,7 +17,7 @@ class Validate{
         } else if(racingCount === 0 || racingCount.trim() === ''){
             throw Error(`${ERROR_MESSAGE.INPUT_BLANK_ERROR}`);
         }
-        return racingCount
+        return racingCount;
     }
 }
 

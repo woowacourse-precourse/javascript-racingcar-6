@@ -2,8 +2,8 @@ import { Random } from "@woowacourse/mission-utils";
 
 class Racing{
 
-    #scoreNumber
-    #carName
+    #scoreNumber;
+    #carName;
 
     constructor(racingCar){
         this.#scoreNumber = [];
@@ -34,7 +34,7 @@ class Racing{
         }
         const MAX_VALUE = Math.max(...this.#scoreNumber);
         const RACING_MAX_VALUE = this.#racingScoreCompare(MAX_VALUE);
-        return RACING_MAX_VALUE
+        return RACING_MAX_VALUE;
     }
 
     carNameUpdate = (carName) => {

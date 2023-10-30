@@ -1,11 +1,10 @@
-import { Console } from "@woowacourse/mission-utils";
 import Racing from '../model/Racing.js';
 import UserInOutput from '../view/UserInOutput.js';
 
 class RacingcarController{
 
-    #playCount
-    #racingCarPlay
+    #playCount;
+    #racingCarPlay;
 
     constructor(){
         this.#playCount = 1;
