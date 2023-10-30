@@ -1,4 +1,4 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Console, Random } from "@woowacourse/mission-utils";
 
 class Car {
   #name = "";
@@ -8,8 +8,16 @@ class Car {
     this.#name = name;
   }
 
+  canMove() {
+    const randomNumber = Random.pickNumberInRange(0, 9);
+
+    return randomNumber >= 4;
+  }
+
   move() {
-    this.#moveCount += 1;
+    if (this.canMove()) {
+      this.#moveCount += 1;
+    }
   }
 
   print() {
