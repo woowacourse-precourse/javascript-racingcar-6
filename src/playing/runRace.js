@@ -69,4 +69,10 @@ const runRace = (totalRaces, participants) => {
 }
 
 
-module.exports = { runRace };
+module.exports = {
+  determineMove,
+  updateRaceResults,
+  findMaxScore,
+  findWinnerName,
+  runRace
+};
