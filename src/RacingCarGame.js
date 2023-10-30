@@ -1,7 +1,6 @@
 import { RacingCar } from './RacingCar.js';
 import { Input } from './utils/Input.js';
 import { Output } from './utils/Output.js';
-import { Validator } from './utils/Validator.js';
 import { Random } from "@woowacourse/mission-utils";
 
 class RacingCarGame { 
