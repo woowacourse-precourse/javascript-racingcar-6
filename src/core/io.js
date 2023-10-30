@@ -4,7 +4,6 @@ import { Console } from "@woowacourse/mission-utils";
 import { ReadLineError } from "../utils/error.js";
 
 /**
- * @va
  * @returns { Promise<string[]> }
  */
 export async function askNames() {
@@ -18,5 +17,15 @@ export async function askNames() {
     throw new ReadLineError();
   }
 
-  return nameString.split(",");
+  return splitNamesFrom(nameString);
+}
+
+/**
+ * @param {string} nameString
+ * @returns {string[]}
+ */
+function splitNamesFrom(nameString) {
+  let names = nameString.split(",");
+  names = names.map((name) => name.trim());
+  return names;
 }
