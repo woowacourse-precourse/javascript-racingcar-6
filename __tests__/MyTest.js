@@ -82,7 +82,7 @@ describe('기능 구현 테스트', () => {
             vin: 2,
         };
         const result = app.printGameStatus(cars);
-        expect(logSpy).toHaveBeenCalledWith(result.stringContaining('yoo : -'));
+        expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('yoo : -'));
     });
 
     test('우승자를 출력한다.', () => {
