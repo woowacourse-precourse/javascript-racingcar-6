@@ -31,6 +31,13 @@ class App {
             throw new Error('[ERROR] 1글자 이상, 5글자 이하의 이름만 사용 가능 합니다.');
         }
     }
+
+    /**
+     * @returns {Promise<number>}
+     */
+    async getInputTryCount() {
+        return parseInt(await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?\n'));
+    }
 }
 
 export default App;
