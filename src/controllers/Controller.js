@@ -64,10 +64,12 @@ class Controller {
     View.printRacingGameStart();
 
     for (let i = 0; i < turns; i += 1) {
-      const carsTurnObj = Controller.#initMovingsDataset(carsNameList);
+      const carsTurnObj = Controller.#calculateMovingsDataset(carsNameList);
       this.#cars.setMovings(carsTurnObj);
       View.printRacingGameRound(carsTurnObj);
     }
+
+    this.#calculateWinner();
   }
 
   /**
@@ -75,18 +77,41 @@ class Controller {
    * @param {string[]} carsNameList
    * @returns {{[carName:string] : number}} movings dataFrame
    */
-  static #initMovingsDataset(carsNameList) {
+  static #calculateMovingsDataset(carsNameList) {
     const data = {};
     carsNameList.forEach((name) => {
-      data[name] = Controller.#calculateEachCarMoving();
+      data[name] = Controller.#pickEachCarMoving();
     });
     return data;
   }
 
-  static #calculateEachCarMoving() {
+  static #pickEachCarMoving() {
     const moving = Random.pickNumberInRange(0, 9);
     if (moving < 4) return 0;
     return moving - 3;
+  }
+
+  // 승자 계산하기
+  #calculateWinner() {
+    const movings = this.#cars.getMovings();
+    const totalMovingObj = {};
+
+    movings.forEach((moving) => {
+      const movinList = Object.entries(moving);
+      Controller.#sumCarMoving(movinList, totalMovingObj);
+    });
+
+    const maxScore = Math.max(...Object.values(totalMovingObj));
+    const winners = Object.keys(totalMovingObj).filter((key) => totalMovingObj[key] === maxScore);
+    View.printRacingGameWinners(winners.join(', '));
+  }
+
+  static #sumCarMoving(movinList, totalMovingObj) {
+    const obj = totalMovingObj;
+    movinList.forEach(([name, number]) => {
+      if (totalMovingObj[name]) obj[name] += number;
+      else obj[name] = number;
+    });
   }
 }
 

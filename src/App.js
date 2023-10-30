@@ -1,9 +1,11 @@
 import Controller from './controllers/Controller.js';
 
 class App {
+  #controller;
+
   async play() {
-    const controller = new Controller();
-    await controller.startGame();
+    this.#controller = new Controller();
+    await this.#controller.startGame();
   }
 }
 
