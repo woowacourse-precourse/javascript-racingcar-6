@@ -1,7 +1,15 @@
+function getMaxMovementCount(cars) {
+  return cars.reduce((max, car) => Math.max(max, car.movement.length), 0);
+}
+
+function getWinners(cars, maxMovementCount) {
+  return cars.filter((car) => car.movement.length === maxMovementCount);
+}
+
 class Referee {
   static checkWinners(cars) {
-    const maxValue = Math.max(...cars.map((car) => car.movement.length));
-    const winners = cars.filter((car) => car.movement.length === maxValue);
+    const maxMovementCount = getMaxMovementCount(cars);
+    const winners = getWinners(cars, maxMovementCount);
     return winners;
   }
 }
