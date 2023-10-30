@@ -1,12 +1,12 @@
 import ErrorMessage from './ErrorMessage.js';
 
 class Validator {
-  static validateCarNames() {
-    if (this.#isEmpty()) throw new Error(ErrorMessage.EMPTY);
+  static validateCarNames(array) {
+    if (this.#isEmpty(array[0])) throw new Error(ErrorMessage.EMPTY);
   }
 
-  static #isEmpty() {
-    return true;
+  static #isEmpty(value) {
+    return value === '';
   }
 }
 
