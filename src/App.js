@@ -5,10 +5,7 @@ import { checkMoving } from "./Racing.js";
 
 class App {
   constructor() {
-    this.carsInfo = {
-      name: "",
-      position: 0,
-    };
+    this.carsArr = [];
     this.inputCarNames = [];
     this.winner = [];
     this.round = 0;
@@ -28,10 +25,12 @@ class App {
   }
 
   makeCarsInfo() {
-    this.inputCarNames.forEach((carNames) => {
-      this.carsInfo.name = carNames;
-      this.carsInfo.position = 0;
-      console.log(this.carsInfo);
+    this.inputCarNames.forEach((carName) => {
+      const carsInfo = {
+        name: carName,
+        position: 0,
+      };
+      this.carsArr.push(carsInfo);
     });
   }
 
