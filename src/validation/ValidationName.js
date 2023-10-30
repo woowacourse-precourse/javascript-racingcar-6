@@ -1,4 +1,4 @@
-import { CHARACTER_LIMIT, NAME_INPUT_ERROR } from "./Constants.js";
+import { CHARACTER_LIMIT, NAME_INPUT_ERROR } from "../utils/Constants.js";
 
 const ValidationName = {
   isCorrectName(nameList) {

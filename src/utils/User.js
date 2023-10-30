@@ -1,7 +1,7 @@
 import { Console } from "@woowacourse/mission-utils";
 import { IN_GAME_MESSAGE } from "./Constants.js";
-import ValidationName from "./ValidationName.js";
-import ValidationTry from "./ValidatonTry.js";
+import ValidationName from "../validation/ValidationName.js";
+import ValidationTry from "../validation/ValidatonTry.js";
 
 const User = {
   async getCarNames() {

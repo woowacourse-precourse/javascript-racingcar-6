@@ -1,5 +1,4 @@
-import { Console } from "@woowacourse/mission-utils";
-import { TRY_INPUT_ERROR } from "./Constants.js";
+import { TRY_INPUT_ERROR } from "../utils/Constants.js";
 
 const ValidationTry = {
   isCorrectTryCount(tryCount) {
