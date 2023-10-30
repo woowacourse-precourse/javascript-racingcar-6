@@ -17,10 +17,9 @@
 ## 예외 처리
 1. 자동차 이름을 입력할 때
 - [ ] 6자 이상의 이름을 입력했을 때
-- [ ] 자동차를 하나만 입력했을 때
 - [ ] 공백 문자를 입력했을 때
 
-2. 시도할 횟수 입력
+1. 시도할 횟수 입력
 - [ ] 숫자가 아닌 문자를 입력했을 때
 
 <br/>
@@ -29,18 +28,37 @@
 > 데이터의 흐름을 깔끔하게 표현하기 위해 MVC 패턴을 적용.
 
 ### Model
-- [X] 자동차 리스트를 저장하는 `cars` map 생성
-- [X] `getCars()`
-  > cars 변수의 getter
-- [X] `addCars(name)`
-  > 매개변수로 이름을 받아 key 값으로 map에 데이터 추가
-- [ ] `increaseMoveCntByName(name)`
-  > 매개변수로 이름을 받아 전진한 횟수 1 증가
 
+- Car 클래스
+  - [X] 이름, 현재 위치 저장
+  - [X] 이동 기능
+  
+- GameModel 클래스
+  - [X] 게임 설정 저장(라운드 수)
+  - [X] 자동차 목록을 저장
+  - [ ] 게임 결과 업데이트
+  
 ### View
-- [X] `printAdvanceResult(models)`
-  > Controller로부터 데이터를 받아 결과를 출력하는 함수
-- [X] `formatResult({ name, moveCnt })`
-  > 포맷팅된 전진 결과를 반환하는 함수 (input: `{pobi, 3}` -> output: `'pobi : ---'`)
-- [X] `generateAdvanceString(moveCnt)`
-  > 전진 표기 문자열을 생성하는 함수 (input: `3` -> output: `'---'`)
+
+- InputView 클래스
+  - [X] 게임 설정 (횟수 및 자동차 이름)을 입력
+  - [ ] 입력 형식 검증(이름 구분자, 길이 제한 등)
+
+
+- OutputView 클래스
+  - [X] 라운드 진행 상태 출력
+  - [ ] 우승자 출력
+
+
+### Controller
+
+- GameController 클래스
+  
+  - [ ] 플레이어로부터 입력 받기
+    - [ ] 자동차 이름 <- InputView
+    - [ ] 시도 횟수 <- InputView
+    - [ ] 위를 바탕으로 GameModel에 데이터 저장
+  - [ ] 라운드 진행
+    - [ ] GameModel.move()
+    - [ ] GameModel.getResult()
+  - [ ] OutputView를 통해 결과 출력
