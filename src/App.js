@@ -5,6 +5,7 @@ import Car from "./Car.js";
 import { validCount } from "./ValidCount.js";
 import { inputCount } from "./InputCount.js";
 import { moveCar } from "./MoveCar.js";
+import { printCar } from "./printCar.js";
 class App {
   async play() {
     const carNames = await inputCarName();
@@ -16,9 +17,20 @@ class App {
     let count = await inputCount();
     if(validCount(count)) count = Number(count);
 
+    MissionUtils.Console.print('');
+
     cars.forEach(car => {
       car.move += moveCar();
     });
+
+    cars.forEach(car => {
+      printCar(car.name, car.move);
+    })
+
+    MissionUtils.Console.print('');
+    
+    
+
 
 
   }
