@@ -23,14 +23,12 @@ export default class RacingGame {
     if (isValidateAttemps(answer)) {
       this.#attemps = answer;
       this.#racing();
-      this.#printResult();
     }
   }
 
   #printResult() {
     const totalResult = this.#resultModel.makeTotalResult();
     const winners = makeWinner(this.#carModel.getCar());
-
     Output.printTotalResult(totalResult);
     Output.printWinners(winners);
   }
@@ -44,14 +42,12 @@ export default class RacingGame {
 
   #racing() {
     const cars = this.#carModel.getCar();
-    let racingCount = this.#attemps;
+    cars.forEach(({ name }) => {
+      this.#carModel.updateMove(name, isMove());
+    });
+    this.#resultModel.addAttempsResult(cars);
+    this.#attemps -= DECREASE_RACING_COUNT;
 
-    while (racingCount !== RACING_END) {
-      cars.forEach(({ name }) => {
-        this.#carModel.updateMove(name, isMove());
-      });
-      this.#resultModel.addAttempsResult(this.#carModel.getCar());
-      racingCount -= DECREASE_RACING_COUNT;
-    }
+    return this.#attemps === RACING_END ? this.#printResult() : this.#racing();
   }
 }
