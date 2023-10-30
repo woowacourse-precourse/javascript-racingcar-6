@@ -12,5 +12,10 @@ describe('Race 테스트', () => {
             expect(CARS[0].name).toBe('car1');
             expect(CARS[1].name).toBe('car2');
         });
+
+        test('자동차 0개 입력 시 오류 발생', () => {
+            const CAR_NAMES = [];
+            expect(() => CREATE_CARS(CAR_NAMES)).toThrowError(CREATE_CAR_ERROR_MESSAGE);
+        });
     });
 });
