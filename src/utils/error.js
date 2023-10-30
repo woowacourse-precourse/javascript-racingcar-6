@@ -34,3 +34,31 @@ export class InvalidPlayerNameError extends Error {
     return DEFAULT_ERROR_MESSAGE;
   }
 }
+
+export class TryAmountError extends Error {
+  static TYPE_NOT_INTEGER = 0;
+  static TYPE_IS_SMALL_THAN_ONE = 1;
+
+  /**
+   * @param {number} errorType
+   */
+  constructor(errorType = -1) {
+    super(TryAmountError.#getMessage(errorType));
+  }
+
+  /**
+   *
+   * @param {number} type
+   */
+  static #getMessage(type) {
+    if (type === TryAmountError.TYPE_NOT_INTEGER) {
+      return `${DEFAULT_ERROR_MESSAGE} 입력된 횟수가 유효하지 않은 형식입니다.`;
+    }
+
+    if (type === TryAmountError.TYPE_IS_SMALL_THAN_ONE) {
+      return `${DEFAULT_ERROR_MESSAGE} 횟수가 1 보다 작습니다.`;
+    }
+
+    return DEFAULT_ERROR_MESSAGE;
+  }
+}
