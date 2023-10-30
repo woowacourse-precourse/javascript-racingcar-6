@@ -24,7 +24,7 @@ class RacingGame {
   }
 
   #race() {
-    while (!this.#gameEnd()) {
+    while (!this.#isEnd()) {
       this.#moveCars();
       this.#captureRound();
       this.#round.current += RACING_GAME.round.unit;
@@ -40,7 +40,7 @@ class RacingGame {
     this.#result.push(raceResult);
   }
 
-  #gameEnd() {
+  #isEnd() {
     return this.#round.current >= this.#round.total;
   }
 
@@ -58,7 +58,7 @@ class RacingGame {
     return this.#cars.map((car) => car.getPosition());
   }
 
-  #getWinners() {
+  #getWinner() {
     const maxPosition = Math.max(...this.#getCarPositions());
     const cars = this.#cars.filter((car) => car.getPosition() === maxPosition);
 
@@ -66,7 +66,7 @@ class RacingGame {
   }
 
   #getRaceResult() {
-    const winner = this.#getWinners();
+    const winner = this.#getWinner();
     const raceResult = this.#result;
 
     return { winner, raceResult };
