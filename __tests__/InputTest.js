@@ -1,6 +1,6 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 
-import { getCarNames } from '../src/utils/input';
+import { getCarNames, getGameCount } from '../src/utils/input';
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -25,6 +25,22 @@ describe('자동차 경주 게임 입력 테스트', () => {
       mockQuestions(inputs);
 
       await expect(getCarNames()).rejects.toThrow('[ERROR]');
+    });
+  });
+
+  describe('게임 횟수 입력 테스트', () => {
+    test('시도할 횟수를 입력받고 숫자로 반환', async () => {
+      const inputs = ['5'];
+      mockQuestions(inputs);
+
+      await expect(getGameCount()).resolves.toEqual(5);
+    });
+
+    test('시도할 횟수를 잘못된 값으로 입력한 경우 예외 발생', async () => {
+      const inputs = ['abc'];
+      mockQuestions(inputs);
+
+      await expect(getGameCount()).rejects.toThrow('[ERROR]');
     });
   });
 });
