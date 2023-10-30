@@ -31,6 +31,25 @@ describe("자동차 경주 게임", () => {
     expect(app.scoreboard).toEqual(answer);
   });
 
+  test("우승자 결과 테스트", () => {
+    const inputs = [
+      { a: 3, b: 2, c: 1, d: 0 },
+      { a: 3, b: 3, c: 1, d: 2 },
+      { a: 3, b: 3, c: 3, d: 3 },
+      { a: 0, b: 0, c: 0 },
+    ];
+    const answer = [["a"], ["a", "b"], ["a", "b", "c", "d"], ["a", "b", "c"]];
+
+    const app = new App();
+
+    inputs.forEach((input, index) => {
+      app.scoreboard = input;
+
+      const winners = app.judgeWinner();
+      expect(winners).toEqual(answer[index]);
+    });
+  });
+
   test("전진-정지", async () => {
     // given
     const MOVING_FORWARD = 4;
