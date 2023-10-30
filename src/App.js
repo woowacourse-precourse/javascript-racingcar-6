@@ -13,12 +13,20 @@ class App {
     
   }
 
-  oneTurn(carArray) {
-    for(let i=0; i<carArray.length; i++) {
-      const car = carArray[i];
-      oneTurnEachCar(eachCar); //전역변수에 각 자동차 전진여부에 따라 - 붙임    
+  race() {
+    MissionUtils.Console.print(`실행 결과`)
+    for(let i=0; i<tryInput; i++) {
+      this.oneTurn();
+    }
+    MissionUtils.Console.print(`\n최종 우승 : ${d}`) //
+  }
+
+  oneTurn() {
+    for(const car of this.carObj) {
+      oneTurnEachCar(car); //전역변수에 각 자동차 전진여부에 따라 - 붙임    
       MissionUtils.Console.print(`${car} : ${this.carObj[car]}`)
     }
+    MissionUtils.Console.print(``);
   }
 
   oneTurnEachCar(car) {
