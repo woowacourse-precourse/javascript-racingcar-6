@@ -8,7 +8,7 @@ class Car {
   moveForward() {
     let countForward = [];
     const randomValue = Random.pickNumberInRange(0, 9);
-    if (randomValue > 4) {
+    if (randomValue >= 4) {
       countForward.push("-");
     }
     return countForward;
