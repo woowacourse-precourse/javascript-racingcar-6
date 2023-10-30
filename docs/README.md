@@ -23,7 +23,7 @@ while (computer.length < 3) {
 inhwa,pobi
 ```
 
-## 🔍기능 3) 경주 횟수
+## 🔍기능 3) 경주 횟수 입력 & 예외 처리
 - 사용자 숫자 입력
   **`readLineAsync(query)`**
 - 주어진 질문을 화면에 출력하고, 사용자가 입력한 답변을 Promise를 통해 반환
@@ -33,7 +33,7 @@ inhwa,pobi
 4
 ```
 
-## 🔍기능 4) 경주 결과 계산 및 출력
+## 🔍기능 4) 경주 결과 계산 & 출력
 - 컴퓨터 랜덤 숫자가 **4 이상**인 경우 COUNT 점수 +1
 ```javascript
 if (Number(COM_RANDOM_NUM[j])>=4){
@@ -62,7 +62,7 @@ inhwa : ----
 pobi : ---
 ```
 
-## 🔍기능 5) 최종 우승자
+## 🔍기능 5) 최종 우승자 출력
 - COUNT 수가 가장 큰 자동차 탐색 후 최종 우승자 출력
 ```javascript
 for(let y=0; y<COUNT_NUM.length; y++){
