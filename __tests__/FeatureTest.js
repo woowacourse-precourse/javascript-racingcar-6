@@ -87,20 +87,28 @@ describe('story5. 최종 우승자 출력', () => {
   test("'-'의 인덱스 값 확인", () => {
     const input = '산 : -----';
     const result = input.lastIndexOf('-') - input.indexOf('-') + 1;
+
     expect(result).toEqual(5);
   });
 
-  test("문자를 공백으로 나눈 배열을 반환한다.", () => {
+  test("문자열에서 첫번째 공백을 찾는다.", () => {
     const input = '산 : -----';
-    const result = input.split(' ');
-    const answer = ['산', ':', '-----'];
-    expect(result).toEqual(answer);
+    const result = input.indexOf(' ');
+
+    expect(result).toEqual(1);
   });
 
-  test("공백으로 나눈 배열에서 첫번째 원소를 반환한다.", () => {
-    const input = ['산', ':', '-----'];
-    const result = input[0];
-    const answer = '산';
-    expect(result).toEqual(answer);
-  });
+  // test("문자를 공백으로 나눈 배열을 반환한다.", () => {
+  //   const input = '산 : -----';
+  //   const result = input.split(' ');
+  //   const answer = ['산', ':', '-----'];
+  //   expect(result).toEqual(answer);
+  // });
+
+  // test("공백으로 나눈 배열에서 첫번째 원소를 반환한다.", () => {
+  //   const input = ['산', ':', '-----'];
+  //   const result = input[0];
+  //   const answer = '산';
+  //   expect(result).toEqual(answer);
+  // });
 });
