@@ -4,6 +4,8 @@ import PromptMessage from '../views/PromptMessage.js';
 class GameController {
   constructor() {
     this.rand = 0;
+    this.totalCountArr = []; // 모든 자동차들의 전진 횟수
+    this.maxCountIndexArr = []; // totalCountArr요소들 중 최댓값의 인덱스들
   }
 
   getRandomValue() {
@@ -22,10 +24,10 @@ class GameController {
   }
 
   printCarForward(carModels) {
-    for (const car in carModels) {
+    Object.keys(carModels).forEach((car) => {
       const forwardCount = this.getForwardCount(carModels, car);
       Console.print(`${car} : ${forwardCount}`);
-    }
+    });
   }
 
   repeatRace(carModels, attempt) {
@@ -40,25 +42,22 @@ class GameController {
   }
 
   printWinner(carModels, carModelsArr) {
-    const totalCountArr = []; // 모든 자동차들의 전진 횟수
-    const maxCountIndexArr = []; // totalCountArr요소들 중 최댓값의 인덱스들
-
-    for (const car in carModels) {
+    Object.keys(carModels).forEach((car) => {
       const forwardCount = carModels[car].forwardCountArr;
-      totalCountArr.push(forwardCount.length);
-    }
+      this.totalCountArr.push(forwardCount.length);
+    });
 
     // 최댓값 들어있는 인덱스들의 값 반환
-    let formIndex = totalCountArr.indexOf(Math.max(...totalCountArr));
+    let formIndex = this.totalCountArr.indexOf(Math.max(...this.totalCountArr));
     while (formIndex !== -1) {
-      maxCountIndexArr.push(formIndex);
-      formIndex = totalCountArr.indexOf(
-        Math.max(...totalCountArr),
+      this.maxCountIndexArr.push(formIndex);
+      formIndex = this.totalCountArr.indexOf(
+        Math.max(...this.totalCountArr),
         formIndex + 1,
       );
     }
 
-    const winner = maxCountIndexArr.map((idx) => carModelsArr[idx]);
+    const winner = this.maxCountIndexArr.map((idx) => carModelsArr[idx]);
     Console.print(PromptMessage.PRINT_WINNER(winner.join(', ')));
   }
 }
