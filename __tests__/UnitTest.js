@@ -1,5 +1,5 @@
 import { createCarData } from '../src/utils/createCarData';
-import { createRandomNumber } from '../src/utils/createRandomList';
+import { createRandomNumber } from '../src/utils/createRandomNumber';
 import { goStopCar } from '../src/utils/goStopCar';
 import { pickWinner } from '../src/utils/pickWinner';
 import { validateLength, validateIsNumber } from '../src/utils/validate';
@@ -20,14 +20,32 @@ describe('예외 테스트', () => {
 
 describe('유틸리티 함수', () => {
   test('무작위 숫자 생성', () => {
-    const randomNumber = createRandomNumber();
-
-    expect(randomNumber).toBeGreaterThanOrEqual(0);
-    expect(randomNumber).toBeLessThan(10);
+    const carData = [
+      {
+        name: 'pobi',
+        number: 0,
+        result: '',
+      },
+      {
+        name: 'woni',
+        number: 0,
+        result: '',
+      },
+      {
+        name: 'juru',
+        number: 0,
+        result: '',
+      },
+    ];
+    const newCarData = createRandomNumber(carData);
+    newCarData.forEach((data) => {
+      expect(data.number).toBeGreaterThanOrEqual(0);
+      expect(data.number).toBeLessThan(10);
+    });
   });
 
   test('자동차 전진', () => {
-    const car = [
+    const carData = [
       {
         name: 'pobi',
         number: 5,
@@ -45,7 +63,7 @@ describe('유틸리티 함수', () => {
       },
     ];
 
-    expect(goStopCar(car)).toEqual([
+    expect(goStopCar(carData)).toEqual([
       {
         name: 'pobi',
         number: 5,
@@ -65,7 +83,7 @@ describe('유틸리티 함수', () => {
   });
 
   test('우승 자동차 선정', () => {
-    const car = [
+    const carData = [
       {
         name: 'pobi',
         number: 5,
@@ -83,7 +101,7 @@ describe('유틸리티 함수', () => {
       },
     ];
 
-    expect(pickWinner(car)).toEqual(['pobi', 'juru']);
+    expect(pickWinner(carData)).toEqual(['pobi', 'juru']);
   });
 
   test('자동차 객체 생성', () => {
