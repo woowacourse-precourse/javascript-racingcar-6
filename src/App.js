@@ -54,6 +54,7 @@ class App {
   }
 
   findLength(raceResult) {
+    // test code 완료
     const lengthArray = [];
     raceResult.forEach((element) => {
       lengthArray.push(element.result.length);

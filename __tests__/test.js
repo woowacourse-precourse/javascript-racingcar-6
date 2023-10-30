@@ -27,4 +27,12 @@ describe("class App test", () => {
       expect(testLength).toEqual([5, 1, 3]);
     });
   });
+
+  describe("method test : findMaxLength()", () => {
+    test("[9, 3, 7]을 인수로 준다면 9가 반환이 되는가 ?", () => {
+      const testParameter = [9, 3, 7];
+      const testMaxLength = app.findMaxLength(testParameter);
+      expect(testMaxLength).toBe(9);
+    });
+  });
 });
