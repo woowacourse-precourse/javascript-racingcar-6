@@ -1,7 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
-import RacingGame from './../src/RacingGame';
 import RacingCar from '../src/domain/RacingCar';
 import InputManager from '../src/utils/InputManager';
+import RacingStadium from '../src/RacingStadium';
 
 const mockQuestion = (input) => {
   Console.readLineAsync = jest.fn();
@@ -56,7 +56,7 @@ describe('자동차 입력을 테스트합니다.', () => {
     await expect(InputManager.inputRacingCarNames()).rejects.toThrow("[ERROR]");
   })
 
-  test('입력한대로 자동차를 올바르게 생성합니다.', async () => {
+  test('입력한대로 자동차가 올바르게 준비됩니다.', async () => {
     // given
     const input = 'pobi,crong,rupee';
     const answers = [new RacingCar('pobi'), new RacingCar('crong'), new RacingCar('rupee')];
@@ -64,12 +64,13 @@ describe('자동차 입력을 테스트합니다.', () => {
     mockQuestion(input);
 
     // when
-    const racingGame = new RacingGame();
     const cars = await InputManager.inputRacingCarNames();
-    racingGame.generateRacingCars(cars);
+
+    const racingStadium = new RacingStadium();
+    racingStadium.setRacingCars(cars);
     
     // then
-    const generatedCars = racingGame.getRacingCars();
-    expect(answers).toEqual(expect.arrayContaining(generatedCars));
+    const readyCars = racingStadium.getRacingCars();
+    expect(answers).toEqual(expect.arrayContaining(readyCars));
   })
 });
