@@ -31,3 +31,14 @@ test.each([[['cat,catcat']], [['cat,cat']], [['cat,']], [['cat, cat ']]])(
     await expect(app.play()).rejects.toThrow('[ERROR]');
   },
 );
+
+test.each([[['cat,dog', '0']], [['cat,dog', '']], [['cat,dog', '-1']]])(
+  'myTest : 시도 횟수에 대한 예외처리',
+  async (inputs) => {
+    Mockfn(inputs);
+
+    const app = new App();
+
+    await expect(app.play()).rejects.toThrow('[ERROR]');
+  },
+);

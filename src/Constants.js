@@ -8,7 +8,7 @@ const COMPUTER_MESSAGES = Object.freeze({
 const ERROR_MESSAGE = Object.freeze({
   OVER_FIVE: '[ERROR] 자동차 이름은 5자 이하로 입력해주세요.',
   DUPLICATE_NAME: '[ERROR] 중복되는 자동차 이름 없이 입력해주세요.',
-  NOTHING_NAME: '[ERROR] 자동차 이름을 입력해주세요.',
+  NOTHING_INPUT: '[ERROR] 입력값이 없습니다.',
   SPACING_NAME: '[ERROR] 띄어쓰기(공백) 없이 입력해주세요.',
   NOT_NUMBER: '[ERROR] 1 이상의 숫자만 입력해주세요.',
 });

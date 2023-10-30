@@ -8,12 +8,9 @@ class App {
   }
 
   async play() {
-    try {
-      this.settings = new Settings();
-      await this.settings.inputCarName();
-    } catch (error) {
-      throw new Error(error);
-    }
+    this.settings = new Settings();
+    await this.settings.inputCarName();
+    await this.settings.inputTry();
   }
 }
 
