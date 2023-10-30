@@ -5,7 +5,7 @@ import OutputView from "../view/OutputView.js";
 import { StaticNumber } from "../static/Static.js";
 
 class RacingCarController {
-  #cars = [];
+  #cars;
   #finalDistance = [];
   #winners = [];
 
@@ -42,6 +42,14 @@ class RacingCarController {
     this.handleWinners();
   }
 
+  handleWinners() {
+    this.#cars.map((car) => {
+      if (car.getCurrentDistance() === this.calculateMaxDistance())
+        this.#winners.push(car.getName());
+    });
+    OutputView.printWinnerMessage(this.#winners);
+  }
+
   calculateMovement() {
     this.#cars.forEach((car) => {
       const randomNumber = RandomNumberGenerator.generate();
@@ -52,16 +60,12 @@ class RacingCarController {
     });
   }
 
-  handleWinners() {
+  calculateMaxDistance() {
     this.#cars.map((car) => {
       this.#finalDistance.push(car.getCurrentDistance());
     });
-    const maxDistance = Math.max(...this.#finalDistance);
-    this.#cars.map((car) => {
-      if (car.getCurrentDistance() === maxDistance)
-        this.#winners.push(car.getName());
-    });
-    OutputView.printWinnerMessage(this.#winners);
+
+    return Math.max(...this.#finalDistance);
   }
 }
 
