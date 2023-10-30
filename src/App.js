@@ -123,6 +123,6 @@ class App {
     this.printWinner(carArray);
   }
 }
-const app = new App();
-await app.play();
+// const app = new App();
+// await app.play();
 export default App;
