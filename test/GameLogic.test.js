@@ -1,7 +1,7 @@
-import makeRandomNumber from '../racingcargame/MakeRandomNumber.js';
-import { RANDOM } from '../constants.js';
-import PlayRacingCar from '../racingcargame/PlayRacingCar.js';
-import GameWinner from '../racingcargame/GameWinner.js';
+import makeRandomNumber from '../src/racingcargame/MakeRandomNumber.js';
+import { RANDOM } from '../src/constants.js';
+import PlayRacingCar from '../src/racingcargame/PlayRacingCar.js';
+import GameWinner from '../src/racingcargame/GameWinner.js';
 
 // [게임 로직 기능] 테스트 파일
 describe('0에서 9 사이에 랜덤 값 추출 기능', () => {

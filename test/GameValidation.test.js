@@ -1,5 +1,5 @@
-import CarNameValidation from '../validation/CarNameValidation';
-import TryCountValidation from '../validation/TryCountValidation';
+import CarNameValidation from '../src/validation/CarNameValidation';
+import TryCountValidation from '../src/validation/TryCountValidation';
 
 describe('[검증 기능] - 사용자 입력에 대한 예외(자동차 이름)', () => {
   test('자동차 이름을 입력하지 않은 경우', () => {

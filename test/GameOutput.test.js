@@ -1,9 +1,9 @@
-import { GAME, ERROR } from '../constants.js';
-import Output from '../view/output.js';
-import RacingCarName from '../racingcargame/RacingCarName.js';
-import RacingTryCount from '../racingcargame/RacingTryCount.js';
-import CarController from '../racingcargame/Car.js';
-import GameWinner from '../racingcargame/GameWinner.js';
+import { GAME, ERROR } from '../src/constants.js';
+import Output from '../src/view/output.js';
+import RacingCarName from '../src/racingcargame/RacingCarName.js';
+import RacingTryCount from '../src/racingcargame/RacingTryCount.js';
+import CarController from '../src/racingcargame/CarController.js';
+import GameWinner from '../src/racingcargame/GameWinner.js';
 
 describe('게임 문구 출력', () => {
   test('경주할 자동차 이름을 입력하세요 메시지가 출력되는지 확인', async () => {
