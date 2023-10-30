@@ -2,6 +2,8 @@ import { printMessage, readLineAsync, getValidInputNames, getValidInputNumber } 
 import { MESSAGE } from './constants';
 import CarRace from './CarRace';
 
+const { INPUT_NAME, INPUT_NUMBER, RESULT } = MESSAGE;
+
 class App {
   #carRace;
 
@@ -12,7 +14,6 @@ class App {
   }
 
   async initCarRaceGame() {
-    const { INPUT_NAME, INPUT_NUMBER } = MESSAGE;
     try {
       const inputNames = await readLineAsync(INPUT_NAME);
       const carNames = getValidInputNames(inputNames);
@@ -26,6 +27,7 @@ class App {
   }
 
   runCarRaceGame() {
+    printMessage(RESULT);
     while (this.#carRace.isPlaying()) {
       this.#carRace.calculateResult();
       const result = this.#carRace.getResultMessage();
