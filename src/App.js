@@ -1,5 +1,6 @@
-import { Console, Random } from '@woowacourse/mission-utils';
+import { Console } from '@woowacourse/mission-utils';
 import Input from './Input.js';
+import Race from './Race.js';
 
 class App {
   constructor() {
@@ -9,6 +10,8 @@ class App {
   async play() {
     try {
       const input = new Input();
+      const race = new Race();
+
       const carArr = await input.getCarName();
       const inputNumber = await input.getRepeatNumber();
 
@@ -16,9 +19,9 @@ class App {
 
       Console.print('\n실행 결과');
       for (let i = 0; i < inputNumber; i++) {
-        this.runRace(carArr);
-        // Console.print(carDictionary);
-        this.printRace();
+        race.runRace(carArr, this.carDictionary);
+        // Console.print(this.carDictionary);
+        race.printRace(this.carDictionary);
       }
     } catch (error) {
       console.error(error.message);
@@ -29,29 +32,6 @@ class App {
     carArr.forEach(name => {
       this.carDictionary[name] = 0;
     });
-  }
-
-  generateRandomNumber() {
-    const startInclusive = 0;
-    const endInclusive = 9;
-    let randomNumber = Random.pickNumberInRange(startInclusive, endInclusive);
-
-    return randomNumber >= 4;
-  }
-
-  runRace(carArr) {
-    carArr.forEach(key => {
-      if (this.generateRandomNumber()) {
-        this.carDictionary[key] += 1;
-      }
-    });
-  }
-
-  printRace() {
-    Object.entries(this.carDictionary).forEach(([key, value]) => {
-      console.log(`${key} : ${'-'.repeat(value)}`);
-    });
-    Console.print('');
   }
 }
 
