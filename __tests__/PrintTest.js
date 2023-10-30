@@ -55,7 +55,7 @@ describe('실행 결과와 우승자 가려내기', () => {
     outputs.forEach((output) => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
-    expect(updatedCars).toEqual(result);
+    expect(updatedCars).toStrictEqual(result);
   });
 
   const doubleWinner = [
