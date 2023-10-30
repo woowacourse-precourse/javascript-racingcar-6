@@ -1,7 +1,7 @@
 import { Console, Random } from "@woowacourse/mission-utils";
 import Car from "./Car.js";
-import { checkValidCarsName, checkValidNumber } from "./Validation.js";
 import View from "./View.js";
+import { Sign, Value } from "./constants/constants.js";
 
 class RacingCar {
   #carList
@@ -20,7 +20,7 @@ class RacingCar {
 
   async setCarList() {
     const carArr = await this.#view.inputCarNames();
-    this.#carList = carArr.map((car) => new Car(car, 0));
+    this.#carList = carArr.map((car) => new Car(car, Value.INITIAL_DISTANCE));
   }
 
   async getRepeatTime() {
@@ -38,8 +38,8 @@ class RacingCar {
 
   determineMoveByRandom() {
     this.#carList.forEach((car) => {
-      const randNum = Random.pickNumberInRange(1, 9);
-      if(randNum >= 4){
+      const randNum = Random.pickNumberInRange(Value.MIN_NUMBER, Value.MAX_NUMBER);
+      if(randNum >= Value.NEXT_MOVE_CONDITION){
         car.moveForward();
       }
     })
@@ -49,7 +49,6 @@ class RacingCar {
     this.#carList.forEach((car) => {
       this.#view.printCarResult(car.getName(), car.getDistance());
     })
-    Console.print('');
   }
 
   chooseWinner() {

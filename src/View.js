@@ -1,27 +1,28 @@
 import { Console } from "@woowacourse/mission-utils"
 import { checkValidCarsName, checkValidNumber} from "./Validation.js";
+import { Message, Sign } from "./constants/constants.js";
 
 class View {
 
   async inputCarNames() {
-    const input = await Console.readLineAsync('이름은 쉼표(,) 기준으로 구분\n');
-    const inputList = input.split(',');
+    const input = await Console.readLineAsync(Message.NAME_INPUT);
+    const inputList = input.split(Sign.DECIMAL);
     checkValidCarsName(inputList);
     return inputList;
   }
 
   async InputRepeatNumber() {
-    const input = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    const input = await Console.readLineAsync(Message.NUMBER_INPUT);
     checkValidNumber(input);
     return Number(input);
   }
 
   printCarResult(carName, distance) {
-    Console.print(`${carName} : ${'-'.repeat(distance)}`);
+    Console.print(`${carName} : ${Sign.DASH.repeat(distance)}`);
   }
 
   printWinners(winnerList) {
-    Console.print(winnerList.join(', '));
+    Console.print(winnerList.join(Sign.DECIMAL + Sign.SPACE) + Message.RESULT_WINNER);
   }
 }
 

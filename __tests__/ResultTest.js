@@ -23,7 +23,7 @@ describe("결과 출력 테스트", () => {
     ];
     
     example.forEach((output, index) => {
-      view.printDistanceToSlash(output.name, output.distance);
+      view.printCarResult(output.name, output.distance);
       expect(logSpy).toHaveBeenCalledWith(expectedAnswer[index]);
     });
   });
