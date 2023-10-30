@@ -1,4 +1,4 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Console, Random } from "@woowacourse/mission-utils";
 
 class App {
   carNames = [];
@@ -28,6 +28,14 @@ class App {
   async play() {
     await this.getCarName();
     await this.getTryNumber();
+  }
+
+  getRandomNumber() {
+    return Random.pickNumberInRange(0, 9);
+  }
+
+  isMovable(number) {
+    return number >= 4;
   }
 }
 
