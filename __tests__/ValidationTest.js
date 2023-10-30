@@ -66,3 +66,71 @@ describe('자동차 이름 입력 유효성 테스트', () => {
     );
   });
 });
+
+describe('자동차 경주 횟수 입력 유효성 테스트', () => {
+  test('자동차 경주 횟수가 정상적으로 입력된 경우', async () => {
+    const input = ['3'];
+
+    const app = new App();
+    mockQuestions(input);
+
+    const result = await app.getRacingCountInput();
+
+    expect(result).toEqual('3');
+  });
+
+  test('자동차 경주 횟수가 입력되지 않은 경우', async () => {
+    const input = [''];
+
+    const app = new App();
+    mockQuestions(input);
+
+    await expect(async () => await app.getRacingCountInput()).rejects.toThrow(
+      '[ERROR]'
+    );
+  });
+
+  test('자동차 경주 횟수가 숫자가 아닌 경우', async () => {
+    const input = ['str'];
+
+    const app = new App();
+    mockQuestions(input);
+
+    await expect(async () => await app.getRacingCountInput()).rejects.toThrow(
+      '[ERROR]'
+    );
+  });
+
+  test('자동차 경주 횟수가 소수인 경우', async () => {
+    const input = ['1.8'];
+
+    const app = new App();
+    mockQuestions(input);
+
+    await expect(async () => await app.getRacingCountInput()).rejects.toThrow(
+      '[ERROR]'
+    );
+  });
+
+  test('자동차 경주 횟수가 0인 경우', async () => {
+    const input = ['0'];
+
+    const app = new App();
+    mockQuestions(input);
+
+    await expect(async () => await app.getRacingCountInput()).rejects.toThrow(
+      '[ERROR]'
+    );
+  });
+
+  test('자동차 경주 횟수가 음수인 경우', async () => {
+    const input = ['-1'];
+
+    const app = new App();
+    mockQuestions(input);
+
+    await expect(async () => await app.getRacingCountInput()).rejects.toThrow(
+      '[ERROR]'
+    );
+  });
+});
