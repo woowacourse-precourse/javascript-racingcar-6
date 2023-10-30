@@ -10,6 +10,13 @@ const mockQuestions = (inputs) => {
   });
 };
 
+const mockRandoms = (numbers) => {
+  MissionUtils.Random.pickNumberInRange = jest.fn();
+  numbers.reduce((acc, number) => {
+    return acc.mockReturnValueOnce(number);
+  }, MissionUtils.Random.pickNumberInRange);
+};
+
 const getLogSpy = () => {
   const logSpy = jest.spyOn(MissionUtils.Console, 'print');
   logSpy.mockClear();
@@ -33,10 +40,38 @@ describe('추가적인 테스트', () => {
   });
 
   test('정상적인 게임 실행', async () => {
-    mockQuestions(['car1,car2', '3']);
+    // given
+    const MOVING_FORWARD = 4;
+    const STOP = 3;
+    const inputs = ['car1,car2,car3', '5'];
+    const randoms = [
+      MOVING_FORWARD,
+      STOP,
+      MOVING_FORWARD,
+      STOP,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      STOP,
+      MOVING_FORWARD,
+      STOP,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      STOP,
+      MOVING_FORWARD,
+      STOP,
+      MOVING_FORWARD,
+    ];
     const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
     await app.play();
 
-    expect(logSpy).toHaveBeenCalled();
+    const expectedOutputs = ['car1 : -', 'car2 : ', 'car3 : --'];
+
+    expectedOutputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
   });
 });
