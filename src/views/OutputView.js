@@ -1,19 +1,26 @@
 import { Console } from "@woowacourse/mission-utils";
+import { RACE_GAME_OUTPUT_MESSAGE } from "../constants";
 
 class OutputView {
   printRoundResultInitMessage() {
-    Console.print("실행 결과");
+    Console.print(RACE_GAME_OUTPUT_MESSAGE.roundResultInit);
   }
 
   printRoundStatus(roundResult) {
     roundResult.forEach((result) => {
-      Console.print(`${result.name} : ${"-".repeat(result.position)}`);
+      Console.print(
+        `${result.name} : ${RACE_GAME_OUTPUT_MESSAGE.progressStatus.repeat(
+          result.position
+        )}`
+      );
     });
     Console.print("\n");
   }
 
   printWinners(winnerNames) {
-    Console.print(`최종 우승자: ${winnerNames.join(", ")}`);
+    Console.print(
+      `${RACE_GAME_OUTPUT_MESSAGE.winners}: ${winnerNames.join(", ")}`
+    );
   }
 }
 
