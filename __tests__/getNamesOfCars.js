@@ -1,6 +1,8 @@
+/* eslint-disable no-undef */
+
 import { MissionUtils } from "@woowacourse/mission-utils";
-import RacingcarGame from "../src/RacingcarGame";
-import { ERROR_MESSAGE } from "../src/constants/message";
+import RacingcarGame from "../src/RacingcarGame/index.js";
+import { ERROR_MESSAGE } from "../src/constants/message.js";
 
 const mockQuestions = (input) => {
 	MissionUtils.Console.readLineAsync = jest.fn();
