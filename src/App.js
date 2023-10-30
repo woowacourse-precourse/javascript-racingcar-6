@@ -1,49 +1,29 @@
 import { Random, Console } from "@woowacourse/mission-utils";
 import message from "./message.js";
+import {
+  validateAndDisplayResult,
+  validateCarNames,
+  validateDisplayWinner,
+} from "./validation.js";
 
 class App {
   async play() {
-    await this.displayResults();
-  }
+    const playerRacecar = await Console.readLineAsync(message.START_MESSAGE);
+    const allRacecars = playerRacecar.trim().split(",");
+    let carScores = new Array(allRacecars.length).fill(0);
 
-  async displayResults() {
-    const carName = await Console.readLineAsync(message.START_MESSAGE);
-    const cars = carName.trim().split(",");
-    let carScores = new Array(cars.length).fill(0);
+    // racecar 유효성 검사
+    validateCarNames(allRacecars);
 
-    cars.map((el) => {
-      if (el.length > 5 || el.length <= 0) {
-        throw new Error(message.INPUT_CARNAME_ERROR);
-      }
-    });
+    // 참여자 점수 iteration, 출력
     const ROTATION = await Console.readLineAsync(message.INPUT_ROTATION);
-
-    Console.print(message.DISPLAYING_RESULTS);
+    Console.print(message.DISPLAYING_RESULTS_MSG);
     for (let i = 0; i < ROTATION; i++) {
-      cars.map((car, index) => {
-        const SCORE = Random.pickNumberInRange(0, 9);
-        //
-        if (SCORE <= 4) {
-          return Console.print(`${car} : -`);
-        } else if (SCORE > 4) {
-          Console.print(`${car} : ${SCORE}`);
-          carScores[index] += SCORE;
-        } else {
-          throw new Error("[ERROR]");
-        }
-      });
+      validateAndDisplayResult(allRacecars, carScores);
     }
 
-    const highestScore = Math.max(...carScores);
-    const highestScoringCars = cars.filter(
-      (_, carIndex) => carScores[carIndex] === highestScore
-    );
-    Console.print(
-      "최종 우승자 : " +
-        (highestScoringCars.length === 1
-          ? highestScoringCars
-          : highestScoringCars.join(", "))
-    );
+    // 최종 우승자 출력 함수
+    validateDisplayWinner(carScores, allRacecars);
   }
 }
 
