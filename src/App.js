@@ -1,5 +1,6 @@
 import { Console, Random } from '@woowacourse/mission-utils';
 import { validName, validTryCount } from './Validation.js';
+import { INPUTMESSAGE } from './constants/Message.js';
 
 class App {
   async play() {
@@ -16,9 +17,7 @@ class App {
 export default App;
 
 async function getCarName() {
-  const carName = await Console.readLineAsync(
-    '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n'
-  );
+  const carName = await Console.readLineAsync(INPUTMESSAGE.CAR_NAME);
   validName(carName);
   const carNames = carName.split(',').map((name) => name.trim());
   const carObjects = carNames.map((name) => ({ name, position: 0 }));
@@ -26,7 +25,7 @@ async function getCarName() {
 }
 
 async function getTryCount() {
-  const tryCount = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+  const tryCount = await Console.readLineAsync(INPUTMESSAGE.TRY_COUNT);
   validTryCount(tryCount);
   return parseInt(tryCount);
 }
