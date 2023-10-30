@@ -1,4 +1,7 @@
-const FORWARD_CONDITION_NUM = 4;
+const FORWARD = Object.freeze({
+  CONDITION_NUM: 4,
+  TRUE: 1,
+});
 
 const INPUT_MSG = Object.freeze({
   INPUT_CAR_NAMES:
@@ -17,4 +20,4 @@ const ERROR_MSG = Object.freeze({
   TRY_COUNT: '[ERROR] 시도 횟수는 1 이상의 자연수를 입력해야 합니다.',
 });
 
-export { FORWARD_CONDITION_NUM, INPUT_MSG, OUTPUT_MSG, ERROR_MSG };
+export { FORWARD, INPUT_MSG, OUTPUT_MSG, ERROR_MSG };
