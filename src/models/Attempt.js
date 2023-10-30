@@ -1,10 +1,11 @@
-import { Console } from "@woowacourse/mission-utils";
-import { ErrorMessage, PromptMessage } from "../views/Messages.js";
+import { Console } from '@woowacourse/mission-utils';
+import ErrorMessage from '../views/ErrorMessage.js';
+import PromptMessage from '../views/PromptMessage.js';
 
 class Attempt {
   async getRaceAttempt() {
     const getRaceAttempt = await Console.readLineAsync(
-      PromptMessage.ENTER_ATTEMPT
+      PromptMessage.ENTER_ATTEMPT,
     );
     this.attemptCount = parseInt(getRaceAttempt, 10);
 

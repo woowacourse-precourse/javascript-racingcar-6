@@ -1,5 +1,6 @@
-import { ErrorMessage, PromptMessage } from "../views/Messages.js";
-import { Console } from "@woowacourse/mission-utils";
+import { Console } from '@woowacourse/mission-utils';
+import ErrorMessage from '../views/ErrorMessage.js';
+import PromptMessage from '../views/PromptMessage.js';
 
 class Car {
   constructor() {
@@ -9,9 +10,9 @@ class Car {
 
   async getCarModelsArr() {
     const getCarModels = await Console.readLineAsync(
-      PromptMessage.ENTER_CARNAME
+      PromptMessage.ENTER_CARNAME,
     );
-    this.carModelsArr = getCarModels.split(",").map((name) => name.trim());
+    this.carModelsArr = getCarModels.split(',').map((name) => name.trim());
   }
 
   validateCarModels(carModelsArr) {
@@ -23,7 +24,7 @@ class Car {
     });
 
     carModelsArr.forEach((e) => {
-      if (e === "") {
+      if (e === '') {
         throw new Error(ErrorMessage.SPACE_NAME);
       }
     });

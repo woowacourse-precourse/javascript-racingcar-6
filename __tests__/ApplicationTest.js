@@ -14,7 +14,10 @@ const mockQuestions = (inputs) => {
 
 const mockRandoms = (numbers) => {
   MissionUtils.Random.pickNumberInRange = jest.fn();
-  numbers.reduce((acc, number) => acc.mockReturnValueOnce(number), MissionUtils.Random.pickNumberInRange);
+  numbers.reduce(
+    (acc, number) => acc.mockReturnValueOnce(number),
+    MissionUtils.Random.pickNumberInRange,
+  );
 };
 
 const getLogSpy = () => {
@@ -57,7 +60,7 @@ describe('자동차 경주 게임', () => {
 
       // then
       await expect(app.play()).rejects.toThrow('[ERROR]');
-    }
+    },
   );
 });
 
