@@ -1,11 +1,18 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import MESSAGE from '../constants/Message.js';
 import ConsoleOutput from '../io/ConsoleOutput.js';
-import { MIN_NUMBER_TO_MOVING_FORWARD } from '../constants/Enum.js';
+import {
+  MIN_NUMBER_TO_MOVING_FORWARD,
+  RANDOM_MIN_NUM,
+  RANDOM_MAX_NUM,
+  DASH,
+} from '../constants/Enum.js';
 
 class GameUtils {
   static generateRandomNumberFromZeroToNine() {
-    return Number(MissionUtils.Random.pickNumberInRange(0, 9));
+    return Number(
+      MissionUtils.Random.pickNumberInRange(RANDOM_MIN_NUM, RANDOM_MAX_NUM),
+    );
   }
 
   static printCarNameAndRandomNumber(carName, randomNumber) {
@@ -15,7 +22,7 @@ class GameUtils {
   static getDash(randomNumber) {
     const totalDash = '';
 
-    return totalDash.padEnd(randomNumber, '-');
+    return totalDash.padEnd(randomNumber, DASH);
   }
 
   static isMovingForward(randomNumber) {
