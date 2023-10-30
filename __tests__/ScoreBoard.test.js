@@ -9,14 +9,13 @@ const getLogSpy = () => {
 };
 
 jest.mock('../src/Car.js');
+Car.mockImplementation((name, movement) => ({
+  name,
+  movement,
+  move: jest.fn(),
+}));
 
 test('자동차의 전진/정지 결과를 받아서, 형식에 맞게 출력한다', () => {
-  // Car 클래스 모킹
-  Car.mockImplementation((name, movement) => ({
-    name,
-    movement,
-    move: jest.fn(),
-  }));
   const logSpy = getLogSpy();
   const inputs = [Car('pobi', '-'), Car('woni', ''), Car('jun', '-')];
   const expected = ['pobi : -', 'woni : ', 'jun : -'];
@@ -29,12 +28,6 @@ test('자동차의 전진/정지 결과를 받아서, 형식에 맞게 출력한
 });
 
 test('경주 판정 결과를 받아서, 최종 우승자를 출력한다', () => {
-  // Car 클래스 모킹
-  Car.mockImplementation((name, movement) => ({
-    name,
-    movement,
-    move: jest.fn(),
-  }));
   const logSpy = getLogSpy();
   const inputs = [Car('pobi', '-'), Car('jun', '-')];
   const expected = '최종 우승자 : pobi, jun';
