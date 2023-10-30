@@ -2,9 +2,29 @@ import { Random, Console } from '@woowacourse/mission-utils';
 
 class App {
   constructor() {
-    this.racingCars = {};
-    this.winnerScore = 0;
-    this.winner = [];
+    this._racingCars = {};
+    this._winnerScore = 0;
+    this._winner = [];
+  }
+
+  get racingCars() {
+    return this._racingCars;
+  }
+
+  get winnerScore() {
+    return this._winnerScore;
+  }
+
+  set winnerScore(score) {
+    this._winnerScore = score;
+  }
+
+  get winner() {
+    return this._winner;
+  }
+
+  set winner(winner) {
+    this._winner = winner;
   }
 
   validateCarNames(carNames) {
