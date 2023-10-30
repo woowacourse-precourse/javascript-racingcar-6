@@ -9,6 +9,14 @@ const mockQuestions = (inputs) => {
     return Promise.resolve(input);
   });
 };
+const mockNumbers = (inputs) => {
+  MissionUtils.Console.readLineAsync = jest.fn();
+
+  MissionUtils.Console.readLineAsync.mockImplementation(() => {
+    
+    return Promise.resolve(inputs[1]);
+  });
+};
 
 const mockRandoms = (numbers) => {
   MissionUtils.Random.pickNumberInRange = jest.fn();
@@ -67,15 +75,15 @@ describe('자동차 경주 게임', () => {
   });
 
   test.each([
-  [['']], // #1.1 
-  [['pobi,woni,']], // #1.1
-  [['##,%%,!']], // #1.2
-  [['1,2,3']], // #1.2
-  [['pobi']], // #1.3 
-  [['pobi,javaji']], // #1.4 
-  [['pobi,eastjun']], // #1.4 
-  [['pobi,pobi']], // #1.5
-  [['pobi,,,java']] // #1.6
+    [['']], // #1.1 
+    [['pobi,woni,']], // #1.1
+    [['##,%%,!']], // #1.2
+    [['1,2,3']], // #1.2
+    [['pobi']], // #1.3 
+    [['pobi,javaji']], // #1.4 
+    [['pobi,eastjun']], // #1.4 
+    [['pobi,pobi']], // #1.5
+    [['pobi,,,java']] // #1.6
   ])('이름에 대한 예외 처리',
     async (inputs) => {
       // given
@@ -88,4 +96,19 @@ describe('자동차 경주 게임', () => {
       await expect(app.play()).rejects.toThrow('[ERROR]');
     }
   );
+  test.each([
+    [['pobi,woni','']], // #2.1
+    [['pobi,woni','pobi,woni']], // #2.2
+    [['pobi,woni','0']], // #2.3
+  ])('횟수에 대한 예외 처리',
+  async(inputs)=>{
+
+    mockQuestions(inputs);
+    
+
+    const app = new App();
+
+    await expect(app.play()).rejects.toThrow('[ERROR]');
+  }
+  )
 });

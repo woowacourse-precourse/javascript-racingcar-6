@@ -51,7 +51,6 @@ class App {
     if (new Set(nameList).size !== nameList.length) {
       throw new Error('[ERROR] 같은 이름이 입력되었습니다');
     }
-    console.log(nameList);
     let carArray = [];
     nameList.forEach((carName) => {
       // 2. 이름으로 문자열을 입력하지 않은 경우 && 6.쉼표가 연속으로 사용된경우
