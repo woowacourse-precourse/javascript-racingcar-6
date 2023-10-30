@@ -20,6 +20,10 @@ class Car {
     const cars = InputView.inputCarName;
   }
 
+  printProgress() {
+    const progress = MovingGenerator.move();
+  }
+
   compareCarsAndGetWinner() {}
 }
 
