@@ -5,7 +5,7 @@ class Game {
   constructor() {
     this.attemptNumber = 0;
     this.finalWinner = [];
-    this.car = [];
+    this.carList = [];
   }
 
   async inputCarName() {
@@ -16,7 +16,7 @@ class Game {
       if (carName.length > 5) {
         throw new Error("[ERROR] 이름이 5자 초과입니다.");
       }
-      this.car.push(new Car(carName));
+      this.carList.push(new Car(carName));
     }
   }
 
