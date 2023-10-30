@@ -1,7 +1,7 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import { INPUT_MESSAGE, OUTPUT_MESSAGE, ERROR_MESSAGE } from "./Message.js";
-import { validateCarNames, validateRound } from "./InputOutput.js";
-import { positionHandleIterator, positionHandler } from "./Racing.js";
+import { validateCarNames, validateRound } from "./Validate.js";
+import { findWinner, positionHandleIterator } from "./Racing.js";
 class App {
   constructor() {
     this.carsArr = [];
