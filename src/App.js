@@ -27,6 +27,12 @@ class App {
       this.addPointRaceAndScores(RACE, SCORES);
     }
 
+    const MAX_SCORE = Math.max(...SCORES);
+
+    const RESULT = this.calculateMaxScoreCarList(CAR_LIST, SCORES, MAX_SCORE);
+
+    Console.print(`최종 우승자 : ${RESULT.join(', ')}`);
+  }
 
   addPointRaceAndScores(race, scores) {
     race.forEach((car, idx) => {
@@ -57,6 +63,10 @@ class App {
     }
   }
 
+  calculateMaxScoreCarList(carList, scores, maxScore) {
+    const result = carList.filter((car, idx) => scores[idx] === maxScore);
+    return result;
+  }
 }
 
 export default App;
