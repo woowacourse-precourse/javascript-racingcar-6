@@ -1,5 +1,6 @@
 import { Random, Console } from "@woowacourse/mission-utils";
 import NumberGenerator from "./NumberGenerator.js";
+import ResultManager from "./ResultManager.js";
 
 class App {
   constructor() {
@@ -56,6 +57,14 @@ class App {
       this.racingCarMembers.forEach((number, index) => {
         this.isMovingForward[index].push(numberGenerator.createRandomNumbers());
       });
+    }
+
+    const resultManager = new ResultManager();
+
+    Console.print("\n실행 결과");
+    for (let i = 0; i <= this.roundNumber; i++) {
+      resultManager.printOneRoundResults(i, this.racingCarMembers, this.isMovingForward);
+      Console.print("\n");
     }
   }
 }
