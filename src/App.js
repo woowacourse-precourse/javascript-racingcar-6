@@ -7,12 +7,16 @@ import {
   printRaceStatusMessage,
 } from './functions/printMessages.js';
 
+function raceOnce(cars) {
+  cars.forEach((car) => {
+    const randomNumber = RaceManager.generateRandomNumber();
+    car.move(randomNumber);
+  });
+}
+
 function race(cars, attempts) {
   for (let i = 0; i < attempts; i += 1) {
-    cars.forEach((car) => {
-      const randomNumber = RaceManager.generateRandomNumber();
-      car.move(randomNumber);
-    });
+    raceOnce(cars);
     ScoreBoard.announceInterimResult(cars);
     printLineBreak();
   }
