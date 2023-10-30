@@ -19,7 +19,7 @@ class Lap {
 
   recordCheck() {
     this.goFoward(this.#record);
-    this.printStage(this.#record);
+    Lap.printStage(this.#record);
   }
 
   goFoward(record) {
