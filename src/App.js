@@ -1,18 +1,6 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
+import Car from './Car.js';
 
-class Car {
-  constructor(name) {
-    this.name = name;
-    this.distance = '';
-  }
-  goForward() {
-    const number = MissionUtils.Random.pickNumberInRange(1, 9);
-    if (number > 3) {
-      this.distance += '-';
-    }
-    MissionUtils.Console.print(`${this.name} : ${this.distance}`);
-  }
-}
 // class StartGame {
 
 //   async getCarName() {
