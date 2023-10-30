@@ -1,4 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
+import ERROR from './constants/Error.js';
 
 const Input = {
   async getCarNames() {
@@ -7,7 +8,7 @@ const Input = {
     );
 
     if (!names) {
-      throw new Error('[ERROR] 자동차 이름을 입력해 주세요');
+      throw new Error(ERROR.carName);
     }
 
     return names;
@@ -18,7 +19,7 @@ const Input = {
 
     const pattern = /^[1-9]d*$/;
     if (!pattern.test(times)) {
-      throw new Error('[ERROR] 시도할 횟수는 자연수여야 합니다');
+      throw new Error(ERROR.attemptNum);
     }
     return times;
   },

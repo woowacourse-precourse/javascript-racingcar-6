@@ -1,5 +1,6 @@
 import { Console, Random } from '@woowacourse/mission-utils';
 import Input from './Input.js';
+import ERROR from './constants/Error.js';
 
 class App {
   #cars;
@@ -38,7 +39,7 @@ class App {
     const names = await Input.getCarNames();
     names.split(',').forEach((element) => {
       if (element.length > 5) {
-        throw new Error('[ERROR] 이름은 5자 이하여야 합니다');
+        throw new Error(ERROR.nameLength);
       }
       this.#cars.push({ name: element, count: 0 });
     });
