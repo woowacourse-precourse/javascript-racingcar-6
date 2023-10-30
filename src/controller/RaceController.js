@@ -5,7 +5,11 @@ class RaceController {
     this.carRace = new CarRace();
   }
 
-  playGame() {}
+  runRace() {
+    this.insertCarNames();
+  }
+
+  insertCarNames() {}
 }
 
 export default RaceController;
