@@ -12,6 +12,12 @@ class App {
     // 쉼표로 이름 분리
     let enterCars = inputCars.split(",");
     MissionUtils.Console.print(enterCars);
+
+    // 시도 횟수 입력 받기
+    const raceCount = await MissionUtils.Console.readLineAsync(
+      PRINTOUT.ASK_COUNT
+    );
+    MissionUtils.Console.print(raceCount);
   }
 }
 
