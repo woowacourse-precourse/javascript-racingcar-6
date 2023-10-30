@@ -3,6 +3,6 @@ export const INPUT_MESSAGE = {
   TRY_COUNT: '시도할 횟수는 몇 회인가요?\n',
 };
 
-export const PRINT_MESSAGE = {
+export const OUTPUT_MESSAGE = {
   WINNER: '최종 우승자 : ',
 };

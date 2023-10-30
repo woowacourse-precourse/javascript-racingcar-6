@@ -1,6 +1,6 @@
 import { Console, Random } from '@woowacourse/mission-utils';
 import { validName, validTryCount } from './Validation.js';
-import { INPUT_MESSAGE, PRINT_MESSAGE } from './constants/Message.js';
+import { INPUT_MESSAGE, OUTPUT_MESSAGE } from './constants/Message.js';
 import { NUMBER } from './constants/ConstantNumber.js';
 
 class App {
@@ -66,5 +66,5 @@ function printWinner(carObjects) {
   const winners = carObjects
     .filter((carObject) => carObject.position === winnerPosition)
     .map((carObject) => carObject.name);
-  Console.print(`${PRINT_MESSAGE.WINNER}${winners.join(', ')}`);
+  Console.print(`${OUTPUT_MESSAGE.WINNER}${winners.join(', ')}`);
 }
