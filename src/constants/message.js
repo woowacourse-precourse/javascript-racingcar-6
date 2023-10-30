@@ -3,7 +3,9 @@ export const INPUT_MESSAGE = Object.freeze({
   MOVE_COUNTS: '시도할 횟수는 몇 회인가요?\n',
 });
 
-export const OUTPUT_MESSAGE = {};
+export const OUTPUT_MESSAGE = Object.freeze({
+  START: '실행 결과',
+});
 
 export const ERROR_MESSAGE = Object.freeze({
   LOWERCASE: '[ERROR] 차 이름은 소문자영어로만 이뤄져야합니다.',
