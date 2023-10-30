@@ -9,4 +9,8 @@ class Car {
   generateRandomNumbers() {
     return MissionUtils.Random.pickNumberInRange(0, 9);
   }
+
+  moreThanFour(randomNumber) {
+    return randomNumber >= 4;
+  }
 }
