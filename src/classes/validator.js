@@ -66,7 +66,7 @@ class Validator {
     }
   }
 
-  static tryTime(input) {
+  static tryTimeInput(input) {
     this.isNumber(input);
     this.lessThanOne(input);
     this.isInteger(input);

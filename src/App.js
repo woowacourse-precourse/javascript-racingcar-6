@@ -8,7 +8,7 @@ class App {
     const carNameInput = await GameQnA.carsName();
     Validator.carsNameInput(carNameInput);
     const tryTimeInput = await GameQnA.tryTime();
-    Validator.tryTime(tryTimeInput);
+    Validator.tryTimeInput(tryTimeInput);
 
     const racingGame = new RacingGame(carNameInput);
     const game = racingGame.play(tryTimeInput);
