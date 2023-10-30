@@ -3,6 +3,7 @@ export default class Validation {
         try {
             this.checkLength(input);
             this.checkBlank(input);
+            this.checkDuplicatione(input);
         } catch(e) {
           throw(e)
         } return true;
@@ -17,6 +18,13 @@ export default class Validation {
     static checkBlank(input) {
         if(input.some((input) => input === "" )) {
             throw new Error('[ERROR] 이름을 입력해주세요.')
+        } return true;
+    }
+
+    static checkDuplicatione(input) {
+        const set = new Set(input)
+        if(set.size !== input.length) {
+            throw new Error('[ERROR] 중복된 값이 있습니다.')
         } return true;
     }
 }
