@@ -2,14 +2,16 @@ import RandomNumber from "./RandomNumber.js";
 
 const getRandomNumber = new RandomNumber;
 class CarMotion {
-    MoveOrStop(CAR, MOVE_COUNT_ARRAY){
-        for(let i in CAR) {
-            const RANDOM_COUNT = getRandomNumber.CreateRandomNumber();
+    moveCountArr = [];
+    moveOrStop(car, moveCountArray){
+        this.moveCountArr = moveCountArray;
+        for(let i in car) {
+            const RANDOM_COUNT = getRandomNumber.createRandomNumber();
             if(RANDOM_COUNT >= 4) {
-                MOVE_COUNT_ARRAY[i]++;
+                this.moveCountArr[i]+=1;
             }
         }
-        return MOVE_COUNT_ARRAY;
+        return this.moveCountArr;
     }
 }
 

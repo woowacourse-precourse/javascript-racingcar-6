@@ -6,44 +6,44 @@ const carMotion = new CarMotion;
 const findIndex = new FindIndex;
 
 class Output {
-    constructor(CAR,MOVE_COUNT,TRY) {
-        this.CAR = CAR;
-        this.MOVE_COUNT = MOVE_COUNT;
-        this.TRY = TRY;
+    constructor(car,moveCount,tryCount) {
+        this.car = car;
+        this.moveCountArr = moveCount;
+        this.tryCount = tryCount;
     }
-    PrintResult() {
-        for(let i in this.CAR) {
-            Console.print(`${this.CAR[i]} : ${'-'.repeat(this.MOVE_COUNT[i])}`);
+    printResult() {
+        for(let i in this.car) {
+            Console.print(`${this.car[i]} : ${'-'.repeat(this.moveCountArr[i])}`);
         }
         console.log("");
     }
-    RunWhileFinish() {
-        let IsFinish = false;
-        while(!IsFinish){
-            this.PrintResult(carMotion.MoveOrStop(this.CAR,this.MOVE_COUNT));
-            if(this.MOVE_COUNT.join('').indexOf(this.TRY) != '-1') {
-                IsFinish = true;
+    runWhileFinish() {
+        let isFinish = false;
+        while(!isFinish){
+            this.printResult(carMotion.moveOrStop(this.car,this.moveCountArr));
+            if(this.moveCountArr.join('').indexOf(this.tryCount) != '-1') {
+                isFinish = true;
             }
         }
     }
-    PrintOneWinner() {
-        Console.print(`최종 우승자 : ${this.CAR[this.MOVE_COUNT.join('').indexOf(this.TRY)]}`);
+    printOneWinner() {
+        Console.print(`최종 우승자 : ${this.car[this.moveCountArr.join('').indexOf(this.tryCount)]}`);
     }
-    PrintSeveralWinner(RESULT){
-        let SEVERAL_WINNER = [];
-        for(let i in RESULT) {
-            SEVERAL_WINNER.push(this.CAR[RESULT[i]]);
+    printSeveralWinner(result){
+        let severalWinner = [];
+        for(let i in result) {
+            severalWinner.push(this.car[result[i]]);
         }
-        Console.print(`최종 우승자 : ${SEVERAL_WINNER.join(',')}`);
+        Console.print(`최종 우승자 : ${severalWinner.join(',')}`);
     }
-    WhoIsWinner() {
-        let WINNER_COUNT = 0;
-        WINNER_COUNT = this.MOVE_COUNT.filter(el => el == this.TRY).length;
-        if(WINNER_COUNT >= 2) {
-            let RESULT = findIndex.FindArrayIndex(this.MOVE_COUNT,this.TRY);
-            this.PrintSeveralWinner(RESULT);
-        }else{
-            this.PrintOneWinner();
+    whoIsWinner() {
+        let winnerCount = 0;
+        winnerCount = this.moveCountArr.filter(el => el == this.tryCount).length;
+        if(winnerCount >= 2) {
+            let result = findIndex.FindArrayIndex(this.moveCountArr,this.tryCount);
+            this.printSeveralWinner(result);
+        }else {
+            this.printOneWinner();
         }
     }
 }
