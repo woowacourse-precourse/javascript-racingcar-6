@@ -28,31 +28,39 @@ class App {
     if (carName.includes(' ') || carName.length < 1 || carName.length > 5) {
       throw new Error('[ERROR] 자동차 이름이 올바르지 않습니다.');
     } else {
-      Console.print('올바르다');
+      this.CARS_ARRAY.push(new Car(carName, 0));
     }
   }
 
-  // #checkArrayOfCars() {
-  //   if (new Set(this.TEMP_CARS).size !== this.TEMP_CARS.length) {
-  //     throw new Error('[ERROR]');
-  //   }
+  async #getInputGameCount() {
+    const GAME_COUNT_INPUT =
+      await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
 
-  //   this.TEMP_CARS.forEach((element) => {
-  //     if (element.includes(' ') || element.length === 0 || element.length > 5) {
-  //       throw new Error('[ERROR]');
-  //     }
-  //   });
+    try {
+      this.#checkGameCountInput(GAME_COUNT_INPUT);
+    } catch (e) {
+      Console.print(e);
+    }
+  }
 
-  //   return true;
-  // }
 
-  // #checkGameCountInput() {
-  //   if (Number.isNaN(this.GAME_COUNT)) {
-  //     throw new Error('[ERROR]');
-  //   }
+  #checkGameCountInput(gameCount) {
+    if (Number.isNaN(gameCount)) {
+      throw new Error('[ERROR]');
+    } else {
+      this.GAME_COUNT = gameCount;
+    }
 
-  //   return true;
-  // }
+    return true;
+  }
+
+  async #getInput() {
+    await this.#getInputCars();
+    await this.#getInputGameCount();
+
+    Console.print(this.CARS_ARRAY);
+    Console.print(this.GAME_COUNT);
+  }
 
   // #makeArrayOfCars() {
   //   this.TEMP_CARS.forEach((carName) => {
@@ -129,7 +137,7 @@ class App {
   // }
 
   async play() {
-    this.#getInputCars();
+    await this.#getInput();
     //   try {
     //     await this.#getInputCars();
     //   } catch(e) {
