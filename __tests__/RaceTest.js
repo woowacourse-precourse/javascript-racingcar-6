@@ -63,3 +63,31 @@ describe('자동차 경주 게임 진행 테스트', () => {
     });
   });
 });
+
+describe('최종 우승자 출력 테스트', () => {
+  test('최종 우승자가 한 명', () => {
+    const cars = [new Car('c1'), new Car('c2'), new Car('c3')];
+    const gameCount = 3;
+    const randoms = [2, 4, 5, 7, 8, 1, 6, 9, 4];
+
+    mockRandoms([...randoms]);
+
+    const race = new Race(cars, gameCount);
+    race.start();
+
+    expect(race.getWinners()).toBe('c2');
+  });
+
+  test('최종 우승자가 여러 명인 경우 쉼표로 구분해서 출력', () => {
+    const cars = [new Car('c1'), new Car('c2'), new Car('c3'), new Car('c4')];
+    const gameCount = 3;
+    const randoms = [5, 6, 3, 2, 4, 2, 8, 1, 3, 9, 4, 5];
+
+    mockRandoms([...randoms]);
+
+    const race = new Race(cars, gameCount);
+    race.start();
+
+    expect(race.getWinners()).toBe('c1, c2, c3');
+  });
+});
