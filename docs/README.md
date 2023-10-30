@@ -2,7 +2,7 @@
 
 - [x] input car name (자동차 이름 입력)
 - [x] split car name (입력 받은 자동차 이름 구분)
-- [ ] validate car name (자동차 이름 validate)
+- [x] validate car name (자동차 이름 validate)
 - [ ] input movement count (이동 횟수 입력)
 - [ ] get random value until end (경기 종료 전까지 랜덤 값 get)
 - [ ] advance of game (전진)

@@ -1,7 +1,7 @@
 import { Random, Console } from "@woowacourse/mission-utils";
 
 class App {
-  inputData = "";
+  carData = "";
   inputArray = [];
 
   async start() {
@@ -11,13 +11,20 @@ class App {
   }
 
   splitCarName() {
-    this.inputArray = this.inputData.split(",");
+    this.inputArray = this.carData.split(",");
+  }
+
+  validate() {
+    if (this.inputArray.map((data) => data.length > 5).includes(true)) {
+      throw new Error("[ERROR] 잘못된 값을 입력하였습니다.");
+    }
   }
 
   async play() {
-    this.inputData = await this.start();
+    this.carData = await this.start();
 
     this.splitCarName();
+    this.validate();
   }
 }
 
