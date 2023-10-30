@@ -1,4 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
+import { EXEPTION } from "./Exception";
 
 class GetInput {
     carName = [];
@@ -10,13 +11,13 @@ class GetInput {
             const USER_INPUT = await Console.readLineAsync(this.GET_CAR_NAME_MESSAGE);
             const USER_INPUT_SPLIT = USER_INPUT.split(',');
             if(USER_INPUT_SPLIT == '' || USER_INPUT_SPLIT[USER_INPUT_SPLIT.length-1] == '') {
-                throw new Error("[ERROR] 자동차의 이름을 2개 이상 입력해주세요.");
+                throw new Error(EXEPTION.CAR_NAME_COUNT_ERROR);
             }
             else if(USER_INPUT_SPLIT.some(name => name.length >= 5)) {
-                throw new Error("[ERROR] 자동차의 이름을 4자 이하로 정해주세요.");
+                throw new Error(EXEPTION.CAR_NAME_LENGTH_ERROR);
             }
             else if(USER_INPUT_SPLIT.length != [...new Set(USER_INPUT_SPLIT)].length) {
-                throw new Error("[ERROR] 자동차의 이름은 한 번씩만 사용할 수 있습니다.");
+                throw new Error(EXEPTION.CAR_NAME_LENGTH_ERROR);
             }
             else{
                 this.carName = USER_INPUT_SPLIT;
@@ -32,10 +33,10 @@ class GetInput {
             const USER_NUMBER_INPUT = await Console.readLineAsync(this.GET_NUMBER_NAME_MESSAGE);
             console.log("");
             if(!Number(USER_NUMBER_INPUT)) {
-                throw new Error("[ERROR] 시도할 횟수를 숫자로 입력해주세요.");
+                throw new Error(EXEPTION.INVALID_TYPE_TRY_ERROR);
             }
             else if(USER_NUMBER_INPUT == 0) {
-                throw new Error("[ERROR] 시도할 횟수를 1회 이상 입력해주세요.");
+                throw new Error(EXEPTION.TRY_COUNT_ERROR);
             }
             return USER_NUMBER_INPUT;
         }catch(error){
