@@ -1,38 +1,38 @@
 import RacingCar from './RacingCar.js';
 
-class RacingResult {
+class RacingGame {
   #carNames;
 
   #moveCount;
 
-  #racingCarInfos;
+  #racingStatus;
 
   constructor(carNames, moveCount) {
     this.#carNames = carNames;
     this.#moveCount = moveCount;
-    this.#racingCarInfos = this.#initializeRacingCarInfos();
+    this.#racingStatus = this.#initializeRacingStatus();
   }
 
   static of(carNames, moveCount) {
-    return new RacingResult(carNames, moveCount);
+    return new RacingGame(carNames, moveCount);
   }
 
-  #initializeRacingCarInfos() {
+  #initializeRacingStatus() {
     return this.#carNames.map((carName) => ({ carName, position: 0 }));
   }
 
   #updateRacingResult() {
-    this.#racingCarInfos = this.#racingCarInfos.map((racingCarInfo) =>
-      RacingCar.from(racingCarInfo).move(),
+    this.#racingStatus = this.#racingStatus.map((currentRacingCarInfo) =>
+      RacingCar.from(currentRacingCarInfo).move(),
     );
   }
 
-  calculateRacingResult() {
+  play() {
     return Array.from({ length: this.#moveCount }, () => {
       this.#updateRacingResult();
-      return [...this.#racingCarInfos];
+      return [...this.#racingStatus];
     });
   }
 }
 
-export default RacingResult;
+export default RacingGame;

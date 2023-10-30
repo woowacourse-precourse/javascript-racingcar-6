@@ -1,5 +1,5 @@
 import { Random } from '@woowacourse/mission-utils';
-import { RacingResult } from '../../src/models/index.js';
+import RacingGame from '../../src/models/RacingGame.js';
 
 describe('RacingResult 테스트', () => {
   beforeAll(() => {
@@ -44,13 +44,13 @@ describe('RacingResult 테스트', () => {
     '자동차 이름이 $carNames 이고 이동 횟수가 $moveCount 일 때, 예상 결과는 $expectedResults 이다.',
     ({ carNames, moveCount, expectedResults }) => {
       // given
-      const racingResult = new RacingResult(carNames, moveCount);
+      const racingGame = new RacingGame(carNames, moveCount);
 
       // when
-      const results = racingResult.calculateRacingResult();
+      const racingResult = racingGame.play();
 
       // then
-      expect(results).toStrictEqual(expectedResults);
+      expect(racingResult).toStrictEqual(expectedResults);
     },
   );
 });
