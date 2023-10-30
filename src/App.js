@@ -44,8 +44,8 @@ class App {
     Object.entries(this.carDictionary).forEach(([key, value]) => {
       if (value > maxScore) {
         maxScore = value;
-        winners = key;
-      } else if (key === maxScore) {
+        winners = [key];
+      } else if (value === maxScore) {
         winners.push(key);
       }
     });
