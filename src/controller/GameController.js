@@ -13,6 +13,10 @@ class GameController {
     const attemptNum = await this.inputAttemptNum();
 
     this.gameModel = new GameModel(attemptNum, cars);
+
+    while (!this.gameModel.isGameOver()) {
+      this.gameModel.playRound();
+    }
   }
 
   async inputCars() {
