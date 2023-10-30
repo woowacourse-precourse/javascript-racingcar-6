@@ -53,6 +53,21 @@ class App {
       if (isFowardAllowed()) this.giveScoreTo(name);
     });
   }
+
+  /**
+   *
+   * @returns { string[] }
+   */
+  judgeWinner() {
+    const maxScore = Math.max(...Object.values(this.scoreboard));
+
+    const winners = [];
+    Object.entries(this.scoreboard).forEach(([name, score]) => {
+      if (score === maxScore) winners.push(name);
+    });
+
+    return winners;
+  }
 }
 
 export default App;
