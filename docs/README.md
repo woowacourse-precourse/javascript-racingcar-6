@@ -1,4 +1,4 @@
-bbbb# Lv1. 기능 분석
+# Lv1. 기능 분석
 
 ## 기본 입출력 요구사항
 > - 입력
@@ -13,11 +13,11 @@ bbbb# Lv1. 기능 분석
 >     - `시도할 횟수는 몇 회인가요?`
 >     - `실행 결과`
 >   - 차수 별 실행 결과
->     - `${car_name} : --`
+>     - `${carName} : --`
 >     - 매 차수마다 출력 (하이픈(-)은 이동 거리)
 >   - 우승자 안내 문구
->     - 단독 우승 : `최종 우승자 : ${car_name}`
->     - 공동 우승 : `최종 우승자 : ${car_name1}, ${car_name2}`
+>     - 단독 우승 : `최종 우승자 : ${carName}`
+>     - 공동 우승 : `최종 우승자 : ${carName1}, ${carName2}`
 >   - 예외 발생 : `[ERROR] ${context}` 형식으로 출력
 
 </br>
@@ -26,7 +26,7 @@ bbbb# Lv1. 기능 분석
 > - [ ] 게임 시작
 >   - [ ] 자동차 이름 입력
 >     - [ ] 안내메시지 출력
->     - [ ] 사용자 입력
+>     - [x] 사용자 입력
 >     - [ ] 유효성 검사 (예외처리)
 >   - [ ] 시도 횟수 입력 (안내메시지 출력 및 사용자 입력)
 >     - [ ] 안내메시지 출력
@@ -60,89 +60,103 @@ bbbb# Lv1. 기능 분석
 ## 🕹️ GameManager
 프로그램의 전체적인 흐름을 처리하는 클래스
 > ### variables
-> - `Board` `_board` : 게임보드
+> - `Board` `#board` : 게임보드
 > </br></br>
 > ### functions
 > - `play()` : 프로그램 실행
->   - `this._startGame()`
->   - `this._playGame()`
->   - `this._finishGame()`
+>   - `this.#startGame()`
+>   - `this.#playGame()`
+>   - `this.#finishGame()`
 > </br></br>
-> - `_startGame()` : 게임 시작 (사용자 입력)
+> - `#startGame()` : 게임 시작 (사용자 입력)
 >   - `this.board = new Board()` : 게임보드 생성
 >   - `Strings.INPUT_CAR_NAMES`
->   - `this._board.setCars()` : 레이싱카 셋팅
+>   - `this.#board.setCars()` : 레이싱카 셋팅
 >   - `Strings.INPUT_NUM_TURNS`
->   - `this._board.setNumTurns()` : 턴 수 입력
+>   - `this.#board.setNumTurns()` : 턴 수 입력
 > </br></br>
-> - `_playGame()` : 게임 진행
->   - `numTurns = this._board.getNumTurns()`
+> - `#playGame()` : 게임 진행
+>   - `numTurns = this.#board.getNumTurns()`
 >   - `Strings.GAME_RESULT`
 >   - `for (numTurns)` : 턴 진행
->     - `this._board.executeTurn()` : 하나의 턴 수행
->     - `this._board.printMiddleResult()` : 중간 결과 출력
+>     - `this.#board.executeTurn()` : 하나의 턴 수행
+>     - `this.#board.printMiddleResult()` : 중간 결과 출력
 > </br></br>
-> - `_finishGame()` : 게임 종료 (최종 우승자 출력)
->   - `this._board.pickOutWinner()` : 우승자 선별
->   - `this._board.printFinalResult()` : 최종 결과 출력
+> - `#finishGame()` : 게임 종료 (최종 우승자 출력)
+>   - `this.#board.pickOutWinner()` : 우승자 선별
+>   - `this.#board.printFinalResult()` : 최종 결과 출력
 
 </br>
 
 ## 🎮 Board
 게임의 진행 상태를 담당하는 클래스
+> ### Const
+> - `POSITIVE_INTEGER_REGEX = /^\d+$/` : 양의 정수 패턴식
 > ### Members
-> - `Number` `_numTurns` : 턴 수
-> - `Array<Car>` `_cars` : 레이싱카 리스트
-> - `Array<Car>` `_winners` : 최종 우승자 리스트
+> - `Number` `#numTurns` : 턴 수
+> - `Array<Car>` `#cars` : 레이싱카 리스트
+> - `Array<Car>` `#winners` : 최종 우승자 리스트
 > </br></br>
 > ### Functions
 > - `setCars()` : 레이싱카 셋팅
->   - `carNames = this._inputCarNames()`
->   - `this._cars.push(new Car(carNames[i]))`
+>   - `carNames = this.#inputCarNames()`
+>   - `carNames.forEach((name) => { this.#cars.push(new Car(name)) })`
 > </br></br>
-> - `Array<String>` `_inputCarNames()` : 레이싱카 이름 입력
+> - `Array<String>` `#inputCarNames()` : 레이싱카 이름 입력
 > </br></br>
 > - `setNumTurns()` : 턴 수 입력
->   - `this._numTurns`
+>   - `this.#validatePositiveInteger(input)`
+>   - `this.#numTurns`
+> </br></br>
+> - `#validatePositiveInteger` `(String input)` : 유효성 검사
+>   - `POSITIVE_INTEGER_REGEX.test(input)`
+>   - `Strings.ERROR_NON_POSITIVE_INTEGER` : 에러 발생
 > </br></br>
 > - `executeTurn()` : 턴 수행
->   - `this._cars.forEach((car) => { })`
->     - `this._getRandomDigit()`
+>   - `this.#cars.forEach((car) => { })`
+>     - `this.#getRandomDigit()`
 >     - `if (randomDigit >= 4)`
 >       - `car.move()`
 > </br></br>
-> - `Number` `_getRandomDigit()` : 0~9 사이 정수 랜덤 반환
+> - `Number` `#getRandomDigit()` : 0~9 사이 정수 랜덤 반환
 > </br></br>
 > - `printMiddleResult()` : 중간 결과 출력
->   - `this._cars.forEach((car) => )`
+>   - `this.#cars.forEach((car) => )`
 >   - `[car.getName(), Strings.COLON, Strings.DISTANCE.repeat(car.getDistance())].join(' ')`
 > </br></br>
 > - `pickOutWinner()` : 우승자 선별
->   - `this._sortCarsByDistanceDescending()`
+>   - `this.#sortCarsByDistanceDescending()`
 > </br></br>
-> - `_sortCarsByDistanceDescending()` : Cars를 distance를 기준으로 내림차순 정렬
->   - `this._cars.sort((a, b) => b.getDistance() - a.getDistance())`
+> - `#sortCarsByDistanceDescending()` : Cars를 distance를 기준으로 내림차순 정렬
+>   - `this.#cars.sort((a, b) => b.getDistance() - a.getDistance())`
 > </br></br>
 > - `printFinalResult()` : 최종 결과 출력
->   - `[Strings.FINAL_WINNER, Strings.COLON].concat(this._getWinnerNames().join(', ')).join(' ')`
+>   - `[Strings.FINAL_WINNER, Strings.COLON].concat(this.#getWinnerNames().join(', ')).join(' ')`
 > </br></br>
-> - `Array<String>` `_getWinnerNames()` : 최종 우승자 이름 배열 반환
->   - `winnerNames.push(this._cars[i].getName())`
+> - `Array<String>` `#getWinnerNames()` : 최종 우승자 이름 배열 반환
+>   - `winnerNames.push(this.#cars[i].getName())`
 
 </br>
 
 ## 🎮 Car
 레이싱카의 정보를 저장하는 클래스
+> ### Const
+> - `MAX_NAME_LENGTH = 5` : 최대 이름 길이
 > ### Members
-> - `String` `_name` : 이름
-> - `Number` `_distance = 0` : 이동 거리
+> - `String` `#name` : 이름
+> - `Number` `#distance = 0` : 이동 거리
 > </br></br>
 > ### Functions
 > - `constructor` `(String name)` : 생성자
->   - `this._name = name`
+>   - `this.#validateName()`
+>   - `this.#name = name`
+> </br></br>
+> - `#validateName()` : 이름 유효성 검사
+>   - `this.#name.length <= MAX_NAME_LENGTH` : 길이 검사
+>   - `Strings.ERROR_NAME_LENGTH` : 에러 발생
 > </br></br>
 > - `move()` : 1만큼 이동
->   - `this._distance++;`
+>   - `this.#distance++;`
 > </br></br>
 > - `String` `getName()` : 이름 반환
 > </br></br>
@@ -159,3 +173,5 @@ bbbb# Lv1. 기능 분석
 > - `INPUT_NUM_TURNS` : `시도할 횟수는 몇 회인가요?`
 > - `GAME_RESULT` : `실행 결과`
 > - `FINAL_WINNER` : `최종 우승자`
+> - `ERROR_NAME_LENGTH` : `[ERROR] Invalid Input value. Input length exceeds the limit.`
+> - `ERROR_NON_POSITIVE_INTEGER` : `[ERROR] Invalid Input value. Input is not positive integer.`
