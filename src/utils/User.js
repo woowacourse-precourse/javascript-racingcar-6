@@ -1,6 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
 import { IN_GAME_MESSAGE } from "./Constants.js";
-import Validation from "./Validation.js";
+import ValidationName from "./ValidationName.js";
 
 const User = {
   async getCarNames() {
@@ -8,7 +8,7 @@ const User = {
       await Console.readLineAsync(IN_GAME_MESSAGE.getCarName)
     ).split(",");
 
-    Validation.isCorrectName(userInput);
+    ValidationName.isCorrectName(userInput);
 
     return userInput;
   },
