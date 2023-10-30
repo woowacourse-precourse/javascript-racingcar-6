@@ -1,4 +1,7 @@
-import { MIN_MOVEMENT, MOVEMENT_FORWARD } from './constants/constants.js';
+import {
+  MIN_MOVEMENT,
+  MOVEMENT_FORWARD,
+} from './constants/carMovementConstants.js';
 
 class Car {
   #movement = '';

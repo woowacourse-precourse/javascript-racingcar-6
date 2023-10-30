@@ -1,4 +1,7 @@
-import { MAX_NAME_LENGTH, MIN_NAME_LENGTH } from '../constants/constants.js';
+import {
+  MAX_NAME_LENGTH,
+  MIN_NAME_LENGTH,
+} from '../constants/carNameConstants.js';
 import {
   ERROR_ATTEMPTS_NOT_NATURAL,
   ERROR_NAME_LENGTH,

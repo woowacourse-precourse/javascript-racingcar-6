@@ -1,5 +1,5 @@
 import Car from '../src/Car.js';
-import { MIN_MOVEMENT } from '../src/constants/constants.js';
+import { MIN_MOVEMENT } from '../src/constants/carMovementConstants.js';
 
 describe(`랜덤 숫자가 ${MIN_MOVEMENT}이상이면 전진, 미만이면 정지한다`, () => {
   test.each([
