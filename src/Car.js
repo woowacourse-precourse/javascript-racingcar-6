@@ -11,6 +11,8 @@ class Car {
         }       
         return this.forword;
     }
-    
+    printRunResult() {
+        MissionUtils.Console.print(`${this.name} : ${'-'.repeat(this.forward)}`)
+    }
 
 }
