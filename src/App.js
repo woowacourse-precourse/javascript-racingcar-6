@@ -9,6 +9,7 @@ class App {
     this.carMoveArray = [];
     this.winnerCarArray = [];
     this.winnerLength;
+    this.gameRound;
   }
 
   async carNameInput() {
@@ -42,7 +43,8 @@ class App {
       Console.print(error.message);
       throw error;
     }
-    return userInput;
+    this.gameRound = userInput;
+    return this.gameRound;
   }
 
   gameNumberValidation(userInput) {
