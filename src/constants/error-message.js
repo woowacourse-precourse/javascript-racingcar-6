@@ -9,7 +9,6 @@ const CAR_ERROR_MESSAGE = Object.freeze({
 
 const ATTEMPT_ERROR_MESSAGE = Object.freeze({
   NOT_NUMERIC: "시도 횟수는 숫자만 입력 가능합니다.",
-  NOT_INTEGER_NUMBER: "시도 횟수는 정수만 가능합니다.",
   NOT_POSITIVE: "시도 횟수는 1이상의 정수만 가능합니다.",
 });
 

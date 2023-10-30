@@ -16,17 +16,6 @@ function checkNumeric(inputAttemptCount) {
 }
 
 /**
- * 시도 횟수가 정수인지 검증하는 함수
- * @param {string} inputAttemptCount 시도 횟수
- * @throws 시도 횟수가 정수가 아니라면 에러를 던진다.
- */
-function checkIntegerNumber(inputAttemptCount) {
-  if (inputAttemptCount.includes(".")) {
-    throw new InputError(ATTEMPT_ERROR_MESSAGE.NOT_INTEGER_NUMBER);
-  }
-}
-
-/**
  * 1 이상의 정수인지 검증하는 함수
  * @param {string} inputAttemptCount 시도 횟수
  * @throws 시도 횟수가 1이상이 아니라면 에러를 던진다.
@@ -45,7 +34,6 @@ function validateAttemptCount(inputAttemptCount) {
   checkSpace(inputAttemptCount);
   checkNumeric(inputAttemptCount);
   checkPositiveNumber(inputAttemptCount);
-  checkIntegerNumber(inputAttemptCount);
 }
 
 export default validateAttemptCount;
