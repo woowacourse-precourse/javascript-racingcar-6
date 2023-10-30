@@ -3,7 +3,6 @@ import Car from "./Car.js";
 import { isNumberAtLeast4, validateCount, validateName } from "./utils/validation.js";
 
 class App {
-
   constructor() {
     this.cars = [];
     this.tryCount = 0;
@@ -12,7 +11,7 @@ class App {
   async initGame() {
     const names = await this.inputCarNames();
 
-    this.makeCarArray(names)
+    this.makeCarArray(names);
 
     await this.inputTryCount();
   }
@@ -26,7 +25,7 @@ class App {
   }
 
   async inputCarNames() {
-    return await MissionUtils.Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n")
+    return await MissionUtils.Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
   }
 
   makeCarArray(names) {
@@ -34,7 +33,7 @@ class App {
       validateName(name, this.cars);
 
       this.cars.push(new Car(name));
-    })
+    });
   }
 
   startRacing() {
@@ -42,13 +41,13 @@ class App {
 
     for (let count = 0; count < this.tryCount; count++) {
       this.cars.forEach((car) => {
-        this.moveForward(car)
+        this.moveForward(car);
         car.printState();
       });
       MissionUtils.Console.print("\n");
     }
 
-    this.printWinner()
+    this.printWinner();
   }
 
   moveForward(car) {
@@ -58,7 +57,10 @@ class App {
   }
 
   getWinnersNames() {
-    const maxForwardCount = Math.max.apply(null, this.cars.map((car) => car.getForwardCount))
+    const maxForwardCount = Math.max.apply(
+      null,
+      this.cars.map((car) => car.getForwardCount)
+    );
     return this.cars.filter((car) => car.isWinner(maxForwardCount)).map((car) => car.getName);
   }
 

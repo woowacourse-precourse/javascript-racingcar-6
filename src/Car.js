@@ -1,36 +1,36 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 class Car {
-    #name = "";
-    #forwardCount = 0;
+  #name = "";
+  #forwardCount = 0;
 
-    constructor(name) {
-        this.#name = name;
-    }
+  constructor(name) {
+    this.#name = name;
+  }
 
-    goForward() {
-        this.#forwardCount += 1;
-    }
+  goForward() {
+    this.#forwardCount += 1;
+  }
 
-    printState() {
-        MissionUtils.Console.print(`${this.#name} : ${"-".repeat(this.#forwardCount)}`);
-    }
+  printState() {
+    MissionUtils.Console.print(`${this.#name} : ${"-".repeat(this.#forwardCount)}`);
+  }
 
-    isWinner(maxCount) {
-        return this.#forwardCount === maxCount;
-    }
+  isWinner(maxCount) {
+    return this.#forwardCount === maxCount;
+  }
 
-    isSameName(name) {
-        return this.#name === name;
-    }
+  isSameName(name) {
+    return this.#name === name;
+  }
 
-    get getName() {
-        return this.#name;
-    }
+  get getName() {
+    return this.#name;
+  }
 
-    get getForwardCount() {
-        return this.#forwardCount;
-    }
+  get getForwardCount() {
+    return this.#forwardCount;
+  }
 }
 
 export default Car;
