@@ -6,8 +6,8 @@ export default class Score {
         MissionUtils.Console.print('\n실행결과')
         for(let i = 0 ; i < count ; i ++) {
             this.getScore(names)
-        } console.log(count)
-    }
+        } this.getWinner(names)
+    } 
 
     getScore(names) {
         let currentScore = ''
@@ -18,4 +18,8 @@ export default class Score {
         }) 
         console.log(currentScore)
     } 
+
+    getWinner(result) {
+        console.log(result) 
+    }
 }
