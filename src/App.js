@@ -13,10 +13,10 @@ class App {
         carDictionary[name] = 0;
       });
 
-      // Console.print('실행 결과');
+      Console.print('\n실행 결과');
       for (let i = 0; i < inputNumber; i++) {
         this.runRace(carArr, carDictionary);
-        Console.print(carDictionary);
+        // Console.print(carDictionary);
         this.printRace(carDictionary);
       }
     } catch (error) {
@@ -45,8 +45,9 @@ class App {
 
   printRace(carDictionary) {
     Object.entries(carDictionary).forEach(([key, value]) => {
-      console.log(`${key}: ${'-'.repeat(value)}`);
+      console.log(`${key} : ${'-'.repeat(value)}`);
     });
+    Console.print('');
   }
 }
 
