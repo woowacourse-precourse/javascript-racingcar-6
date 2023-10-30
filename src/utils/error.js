@@ -62,3 +62,9 @@ export class TryAmountError extends Error {
     return DEFAULT_ERROR_MESSAGE;
   }
 }
+
+export class ReadLineError extends Error {
+  constructor() {
+    super(`${DEFAULT_ERROR_MESSAGE} 잘못된 입력 호출입니다.`);
+  }
+}
