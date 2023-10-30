@@ -1,7 +1,7 @@
 //@ts-check
 
-import { ALPHABET, NAME_LENGTH_LIMIT, NUMBERS } from "./const";
-import { InvalidPlayerNameError, TryAmountError } from "./error";
+import { ALPHABET, NAME_LENGTH_LIMIT, NUMBERS } from "./const.js";
+import { InvalidPlayerNameError, TryAmountError } from "./error.js";
 
 /**
  *

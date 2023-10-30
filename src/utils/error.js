@@ -1,6 +1,6 @@
 //@ts-check
 
-import { DEFAULT_ERROR_MESSAGE } from "./const";
+import { DEFAULT_ERROR_MESSAGE } from "./const.js";
 
 export class InvalidPlayerNameError extends Error {
   static TYPE_LENGTH = 0;

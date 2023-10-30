@@ -1,5 +1,5 @@
 import { Random } from "@woowacourse/mission-utils";
-import { FOWARD_PROB_BOUNDARY } from "./const";
+import { FOWARD_PROB_BOUNDARY } from "./const.js";
 
 /**
  * @returns {boolean}
