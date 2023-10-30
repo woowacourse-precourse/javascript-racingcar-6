@@ -13,6 +13,11 @@ export async function inputCarNameHandler() {
   return generateTrimmedArray(carList);
 }
 
+export async function inputTryNumberHandler() {
+  const TryNumber = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+  return TryNumber.trim();
+}
+
 function generateTrimmedArray(inputList) {
   const trimmedArray = inputList.map((element) => element.trim());
   return trimmedArray;
