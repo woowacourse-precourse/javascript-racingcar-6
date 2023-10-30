@@ -11,10 +11,10 @@ class RacingGame {
     let currentPlayCount = 0;
     while (this.playCount > currentPlayCount) {
       this.countScore();
-      this.playCount();
+      this.printScore();
       currentPlayCount += 1;
     }
-    // 우승자 출력
+    this.printWinner();
   }
 
   countScore() {
