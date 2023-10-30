@@ -1,57 +1,29 @@
-import { Console, MissionUtils } from "@woowacourse/mission-utils";
-import fowardConditions from "./FowardCondition.js";
+import fowardConditions from "./Game/FowardCondition.js";
+import { Console } from "@woowacourse/mission-utils";
+import gameSetting from "./Game/GameSetting.js";
 import message from "./Message.js";
-import game from "./Game.js";
-/*
-  주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
-  각 자동차에 이름을 부여할 수 있다. 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
-  자동차 이름은 쉼표(,)를 기준으로 구분하며 이름은 5자 이하만 가능하다.
-  사용자는 몇 번의 이동을 할 것인지를 입력할 수 있어야 한다.
-  전진하는 조건은 0에서 9 사이에서 무작위 값을 구한 후 무작위 값이 4 이상일 경우이다.
-  자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한 명 이상일 수 있다.
-  우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분한다.
-  사용자가 잘못된 값을 입력한 경우 throw문을 사용해 "[ERROR]"로 시작하는 메시지를 가지는 예외를 발생시킨 후, 애플리케이션은 종료되어야 한다.
-*/
+
 class App {
   async play() {
     await Console.print(message.game.START_MESSAGE);
     const cars = await Console.readLineAsync('');
     const users = cars.split(',');
-    // const carsScores = new Map();
-    
-    /*자동차 이름과 기본 점수 설정 => gameSetting 으로 빼도 될거 같음 */ 
-    const carsScores = [];
-    for (let i = 0; i < users.length; i++) {
-      if(users[i].length>5){
-        Console.print(`${users[i]}오류`);
-        throw Error(message.error.NAME_CREATION_ERROR);
-      }else{
-        carsScores.push([users[i],0]);
-      }
-    }   
+    let carsScores = [];
+    let winner = [];
+    carsScores = await gameSetting(users,carsScores);
     await Console.print(message.game.ATTEMPTS_NUMBER_QUESTION);
-    let Winner = [];
     const numberOfAttempts = await Console.readLineAsync('');
-    Console.print(message.game.RESULT);
+    if(typeof(numberOfAttempts) != "number") await Console.print(message.error.NOT_A_NUMBER_ERROR);
+    Console.print(message.game.PROCESS_RESULT);
     for(let j = 1; j<=numberOfAttempts;j++){
-      // game(carsScores,numberOfAttempts);
-      for(let i =0;i<carsScores.length;i++){
-          let scoreCondition = MissionUtils.Random.pickNumberInRange(0,9);
-          if(scoreCondition>=4){
-              carsScores[i][1]+=1;
-          }
-          if(numberOfAttempts == carsScores[i][1]){
-              Winner.push(carsScores[i][0]);
-          }
-          await Console.print(`${carsScores[i][0]} : ${"-".repeat(carsScores[i][1])}`);
-      }
+      await fowardConditions(carsScores,numberOfAttempts,winner);
       await Console.print('');
     }
-    await Console.print(`최종 우승자 : ${Winner.join(',')}`);
-    await Console.print(carsScores);
+    await Console.print(message.game.RESULT_PRINT+winner.join(','));
+
+    const status = await Console.readLineAsync(message.game.CONTINUE_OR_STOP_QUESTION);
+    if(status == 1) this.play();
+    else if(status == 2) await Console.print(message.game.END_MESSAGE);
   }
 }
-
-// const status = await Console.readLineAsync("게임 을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
 export default App;
