@@ -1,13 +1,18 @@
 import { Console } from "@woowacourse/mission-utils";
+
+// 예외사항 모듈
 import RaceStatus from "../exception/RaceStatus.js";
+
+// 상수 모듈
+import { COMMENT, NUMBER } from "../utils/Constants.js";
 
 class RaceOrganizer {
   static getCandidates(participant) {
     const strongCandidate = [...participant].sort(
-      (a, b) => b[1].length - a[1].length,
+      (a, b) => b[NUMBER.ONE].length - a[NUMBER.ONE].length,
     );
 
-    const maxLap = strongCandidate[0][1];
+    const maxLap = strongCandidate[NUMBER.ZERO][NUMBER.ONE];
     RaceStatus.reportTrackIssue(maxLap);
 
     const winner = strongCandidate.flatMap(([name, lap]) =>
@@ -18,7 +23,7 @@ class RaceOrganizer {
   }
 
   static talkToCarMovingForward(name, lap) {
-    if (lap.length > 0) {
+    if (lap.length > NUMBER.ZERO) {
       Console.print(`${name} : ${lap}`);
       return;
     }
@@ -28,7 +33,7 @@ class RaceOrganizer {
   static talkToWinner(participant) {
     const winner = RaceOrganizer.getCandidates(participant).join(", ");
 
-    Console.print(`최종 우승자 : ${winner}`);
+    Console.print(`${COMMENT.FINAL_WINNER} : ${winner}`);
   }
 }
 
