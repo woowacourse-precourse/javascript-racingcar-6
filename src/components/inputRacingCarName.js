@@ -10,26 +10,11 @@ export default async function inputRacingCarName() {
     const Cars = CarsNameInput.split(',');
 
     Cars.forEach((car) => {
-        /** 자동차 한 대의 이름의 길이 측정 */
+        /** 자동차 한 대 이름의 길이 */
         const lengthOfCarName = [...car].length;
         if (lengthOfCarName > 5) throw new Error(ERROR.LENGTH);
         CARS.push({ name: car, go: 0 });
     });
 
     return CARS;
-
-    /* 자동차 이름 예외 처리 */
-    // for (let i = 0; i < Cars.length; i++) {
-    //     if (Cars[i].length > 5) {
-    //         /* 길이가 5보다 길때 */
-    //         throw new Error(ERROR.LENGTH);
-    //     } else if (Cars[i].length == 0) {
-    //         /* 길이가 0일때 */
-    //         throw new Error(ERROR.INCLUDE_0);
-    //     } else {
-    //         MissionUtils.Console.print(Cars[i] + ' : ');
-    //     }
-    // }
 }
-
-inputRacingCarName();
