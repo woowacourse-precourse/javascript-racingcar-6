@@ -35,6 +35,12 @@ class App {
     return input;
   };
 
+  calculateFinalWinner = (cars) => {
+    const maxStep = Math.max(...cars.map((el) => el.step));
+
+    return cars.filter((el) => el.step === maxStep);
+  };
+
   async play() {
     try {
       const carNames = await this.getRacingCarNameInput();
@@ -50,6 +56,12 @@ class App {
           Console.print(car.name + ' : ' + '-'.repeat(car.step));
         });
       });
+
+      const winners = this.calculateFinalWinner(cars);
+
+      Console.print(
+        '최종 우승자 : ' + winners.map((winner) => winner.name).join()
+      );
     } catch (err) {
       Console.print(err.message);
       throw err;
