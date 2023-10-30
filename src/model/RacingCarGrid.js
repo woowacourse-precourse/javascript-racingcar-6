@@ -22,6 +22,7 @@ export default class RacingCarGrid {
    */
   setRacingGrid() {
     const randomMovementResults = RandomNumberGenerator.generate(this.#racingCarList.length);
+
     randomMovementResults.forEach((value, idx) => {
       if (value >= GRANDPRIX_MOVE_OPTION.move) {
         this.#racingCarList[idx].status += 1;
