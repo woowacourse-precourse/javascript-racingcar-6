@@ -7,7 +7,7 @@ class App {
     const carObjects = carNames.map((carName) => new Car(carName));
     let moveCount = await this.getMoveCount();
 
-    Console.print("\n실행 경과");
+    Console.print("\n실행 결과");
 
     this.startRacing(carObjects, moveCount);
   }
