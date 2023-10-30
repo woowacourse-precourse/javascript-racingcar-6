@@ -1,4 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
+import { RandomNumbers } from './RandomNumbers.js';
 
 
 function printResultTitle() {
@@ -8,8 +9,11 @@ function printResultTitle() {
 //각 게임 실행 결과 출력 
 function printEachResult(names, racingCars) {
     names.forEach((name) => {
-        if (racingCars.has(name)) racingCars.set(name, 1 + racingCars.get(name));
-        else racingCars.set(name, 1);
+        const moveOrNot = RandomNumbers();
+        if (moveOrNot > 3) {
+            if (racingCars.has(name)) racingCars.set(name, 1 + racingCars.get(name));
+            else racingCars.set(name, 1);
+        }
         Console.print(`${name} : ${'-'.repeat(racingCars.get(name))}`);
     })
 }

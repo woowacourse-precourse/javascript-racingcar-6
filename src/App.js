@@ -1,5 +1,9 @@
+import { Game } from './Game.js';
+
 class App {
-  async play() {}
+  async play() {
+    Game();
+  }
 }
 
 export default App;
