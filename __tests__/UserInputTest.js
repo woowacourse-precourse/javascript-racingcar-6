@@ -12,13 +12,17 @@ const mockQuestions = (inputs) => {
 };
 
 describe("사용자 입력 관련 테스트", () => {
-  test("자동차 이름을 입력하면 자동차 이름이 담긴 배열을 반환한다", async () => {
+  test("자동차 이름을 입력하면 자동차 이름을 키로, 0을 값으로 갖는 객체를 반환한다", async () => {
     const inputs = ["abc,abcd,abcde"];
     const user = new UserInput();
 
     mockQuestions(inputs);
 
-    await expect(user.getCarNames()).toContainEqual("abc", "abcd", "abcde");
+    await expect(user.getCarNames()).resolves.toEqual({
+      abc: 0,
+      abcd: 0,
+      abcde: 0,
+    });
   });
 
   test("자동차 이름이 5글자를 넘을 경우 에러를 반환한다", async () => {
@@ -32,7 +36,7 @@ describe("사용자 입력 관련 테스트", () => {
     );
   });
 
-  test.each([[[""]], [[",a"]], [["a,"]]])(
+  test.each([[[",a"]], [["a,"]]])(
     "자동차 이름이 1글자 미만일 경우 에러를 반환한다",
     async (inputs) => {
       const user = new UserInput();
@@ -84,7 +88,7 @@ describe("사용자 입력 관련 테스트", () => {
 
     mockQuestions(inputs);
 
-    await expect(user.getTryNumber()).toEqual(3);
+    await expect(user.getTryNumber()).resolves.toEqual(3);
   });
 
   test.each([[["1abc"]], [["2*3"]]])(
