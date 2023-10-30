@@ -28,7 +28,7 @@ class App {
       name: carName,
       result: "",
     };
-    this.raceResult.push(carObject);
+    return carObject;
   }
 
   makeRandomNumber(raceResult) {
@@ -124,7 +124,7 @@ class App {
     );
     this.checkRepeatNumber(repeatNumber);
     carNamesArray.forEach((element) => {
-      this.makeObject(element);
+      this.raceResult.push(this.makeObject(element));
     });
     while (this.countRepeat < repeatNumber) {
       this.raceResult = this.makeRandomNumber(this.raceResult);
