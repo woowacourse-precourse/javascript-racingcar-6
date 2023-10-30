@@ -1,5 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import Car from "./Car.js";
+import { isRandomNumberAtLeast4, validateCount, validateName } from "./utils/validation.js";
 
 class App {
 
@@ -19,10 +20,7 @@ class App {
   async inputTryCount() {
     const count = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
 
-    const numberRegex = /^[0-9]+$/;
-    if (!numberRegex.test(count)) {
-      throw new Error("[ERROR] 숫자가 잘못된 형식입니다.")
-    }
+    validateCount(count);
 
     this.tryCount = parseInt(count);
   }
@@ -33,12 +31,7 @@ class App {
 
   makeCarArray(names) {
     names.split(",").forEach((name) => {
-      if (name.length > 5) {
-        throw new Error("[ERROR] 이름이 5자를 초과했습니다.")
-      }
-      if (this.cars.find((car) => car.isSameName(name)) !== undefined) {
-        throw new Error("[ERROR] 중복된 이름이 존재합니다.")
-      }
+      validateName(name, this.cars);
 
       this.cars.push(new Car(name));
     })
@@ -59,7 +52,7 @@ class App {
   }
 
   moveForward(car) {
-    if (MissionUtils.Random.pickNumberInRange(0, 9) >= 4) {
+    if (isRandomNumberAtLeast4()) {
       car.goForward();
     }
   }
