@@ -80,6 +80,24 @@ class App {
     Console.print('');
   }
 
+  #pickWinnerOfGame() {
+    let maxForward = 0;
+    const WINNER_ARRAY = [];
+
+
+    this.CARS_ARRAY.forEach((car) => {
+      maxForward = Math.max(car.forwardCount, maxForward);
+    })
+
+    this.CARS_ARRAY.forEach((car) => {
+      if(car.forwardCount === maxForward) {
+        WINNER_ARRAY.push(car.carName);
+      }
+    })
+
+    return WINNER_ARRAY;
+  }
+
 
 
 
@@ -148,6 +166,8 @@ class App {
     for(let i = 0; i < this.GAME_COUNT; i += 1) {
       this.#playGame();
     }
+
+    Console.print(this.#pickWinnerOfGame());
     //   try {
     //     await this.#getInputCars();
     //   } catch(e) {
