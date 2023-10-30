@@ -48,7 +48,7 @@ class RacingGame {
 
   // MODEL
   validateUserInputTryCount() {
-    // = 주위에서 줄바꿈 X -> 나중에 소괄호로 묶기
+    // '=' 주위에서 줄바꿈 X -> 나중에 소괄호로 묶기
     const IS_VALID =
       typeof this.userInputTryCount === OTHERS.number &&
       this.userInputTryCount >= 0 &&
@@ -130,7 +130,7 @@ class RacingGame {
 
     this.allRaceForAllCar.forEach((racePerCar, index) => {
       if (racePerCar[this.userInputTryCount - 1]) {
-        // = 주위에서 줄바꿈 X -> 나중에 소괄호로 묶기
+        // '=' 주위에서 줄바꿈 X -> 나중에 소괄호로 묶기
         objForLastRace[this.userInputCarNameList[index]] =
           racePerCar[this.userInputTryCount - 1].length;
       }
