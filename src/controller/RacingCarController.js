@@ -34,14 +34,14 @@ class RacingCarController {
   raceStart() {
     OutputView.printResultMessage();
     for (let i = 0; i < this.#cars.getRacingTimes(); i++) {
-      this.#cars.setCarsMoving();
-      OutputView.printMoveMarking(this.#cars.getCarsMoving());
+      this.#cars.setMoveOrStay();
+      OutputView.printMoveMarking(this.#cars.getCurrentPosition());
       OutputView.printSingleLine();
     }
-    this.printWinners();
+    this.raceResult();
   }
 
-  printWinners() {
+  raceResult() {
     this.#maxDistance = this.#cars.getMaxDistance();
     this.#winners = this.#cars.getWinners(this.#maxDistance);
     OutputView.printWinnerMessage(this.#winners);

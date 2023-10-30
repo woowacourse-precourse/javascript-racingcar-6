@@ -13,7 +13,7 @@ class RacingCar {
     return this.#name;
   }
 
-  getCurrentDistance() {
+  getDistance() {
     return this.#distance;
   }
 }
