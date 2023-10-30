@@ -5,7 +5,21 @@ import { MissionUtils } from '@woowacourse/mission-utils';
  */
 
 class App {
-    async play() {}
+    async play() {
+        const inputCarNames = await this.getInputNames();
+        const carNameArr = this.getSplittedName(inputCarNames);
+        this.nameValidate(carNameArr);
+
+        const tryCnt = await this.getInputTryCount();
+        this.tryCountValidate(tryCnt);
+
+        const carObjArr = this.getCarObjArr(carNameArr);
+
+        this.runRacing(carObjArr, tryCnt);
+
+        const maxMove = this.getMaxMoveCnt(carObjArr);
+        this.printWonCar(this.filterWonCar(carObjArr, maxMove));
+    }
 
     /**
      * @returns {Promise<string>}
