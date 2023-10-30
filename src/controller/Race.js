@@ -1,10 +1,10 @@
 import InputView from "../view/InputView.js";
+import OutputView from "../view/OutputView.js";
+import CarNamesParser from "../parser/CarNamesParser.js";
 import Car from "../model/Car.js";
 import Cars from "../model/Cars.js";
-import CarNamesParser from "../parser/CarNamesParser.js";
 import IntParser from "../parser/IntParser.js";
 import { ERROR_MESSAGE } from "../constants/messages.js";
-import OutputView from "../view/OutputView.js";
 
 class Race {
   static #MIN_CAR_COUNT = 2;
@@ -19,23 +19,29 @@ class Race {
   constructor() {}
 
   async init() {
-    await this.#registerCarsFromUserInput();
-    await this.#setRoundNumberFromUserInput();
+    const carNames = await this.#getCarNamesFromUser();
+    await this.#registerCars(carNames);
+    const roundNumber = await this.#getRoundNumberFromUser();
+    this.#setRoundNumber(roundNumber);
     this.#startGame();
     this.#AnnounceWinners();
   }
 
-  async #registerCarsFromUserInput() {
+  async #getCarNamesFromUser() {
     const input = await InputView.readCarNames();
     const carNames = CarNamesParser.parse(input);
-    const cars = carNames.map((name) => new Car(name));
-    this.#registerCars(new Cars(cars));
+    return carNames;
   }
 
-  async #setRoundNumberFromUserInput() {
+  async #registerCars(carNames) {
+    const cars = carNames.map((name) => new Car(name));
+    this.#setCars(new Cars(cars));
+  }
+
+  async #getRoundNumberFromUser() {
     const input = await InputView.readRoundNumber();
     const roundNumber = IntParser.parse(input);
-    this.#setRoundNumber(roundNumber);
+    return roundNumber;
   }
 
   #startGame() {
@@ -50,7 +56,7 @@ class Race {
     OutputView.printWinners(winners);
   }
 
-  #registerCars(cars) {
+  #setCars(cars) {
     Race.#validateCarCounts(cars.length);
     this.#racingCars = cars;
   }
