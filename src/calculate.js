@@ -3,7 +3,7 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 const calculate = (player, results) => {
   for (let j = 0; j < player.length; j++) {
     let result = "";
-    if (MissionUtils.Random.pickNumberInRange(0, 9) >= 4) {
+    if (MissionUtils.Random.pickaNumberInRange(0, 9) >= 4) {
       result += "-";
     }
     if (!results[player[j]]) {
@@ -13,7 +13,7 @@ const calculate = (player, results) => {
     }
     MissionUtils.Console.print(`${player[j]} : ${results[player[j]]} `);
   }
-
+  console.log("results : ", results);
   return results;
 };
 export default calculate;
