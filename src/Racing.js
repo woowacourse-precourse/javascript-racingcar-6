@@ -20,8 +20,8 @@ class Racing {
 
   async registration() {
     const screen = new Screen();
-    const participants = await screen.getUserInput(MSG_GAME_START);
     const validation = new Validation();
+    const participants = await screen.getUserInput(MSG_GAME_START);
     if (!validation.isProperInput(participants)) {
       throw new Error(ERROR_MSG_INPUT);
     }
@@ -29,6 +29,7 @@ class Racing {
       this.addPlayer(carName);
     });
   }
+
   async decideGameCount() {
     const screen = new Screen();
     const validation = new Validation();
@@ -38,7 +39,18 @@ class Racing {
     }
     this.numberOfGames = gameCount;
   }
-  race() {}
+
+  race() {
+    const screen = new Screen();
+    screen.printMessage('\n실행 결과');
+    for (let i = 0; i < this.numberOfGames; i++) {
+      this.players.forEach((car) => {
+        car.move();
+        screen.printCarStatus(car.status());
+      });
+      screen.printEmptyLine();
+    }
+  }
   calculateWinner() {}
 }
 export default Racing;
