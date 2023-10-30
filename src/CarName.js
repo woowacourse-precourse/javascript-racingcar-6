@@ -5,6 +5,8 @@ import Play from './Play.js';
 class CarName {
   checkNumberDigits(carNames) {
     const carNamesInArray = carNames.split(',');
+    const deleteSameNameInArray = new Set(carNamesInArray);
+    const sameNameCheck = deleteSameNameInArray.size !== carNamesInArray.length;
 
     const carList = carNamesInArray.map((carName) => {
       const moreThan5Characters = carName.length > 5;
@@ -12,7 +14,11 @@ class CarName {
       if (moreThan5Characters) {
         throw new Error('[ERROR] 자동차의 이름은 5자 이하만 가능합니다.');
       }
-      // 같은이름 검사기능 추가하기
+
+      if (sameNameCheck) {
+        throw new Error('[ERROR] 서로다른 이름을 입력하세요');
+      }
+
       return new Car(carName);
     });
 
