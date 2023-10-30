@@ -7,23 +7,20 @@ const START_RANGE = 0;
 const END_RANGE = 9;
 
 class App {
-  constructor() {
-    this.forwardCarData = {};
-  }
-
   async play() {
     const carName = await readCarName();
     const carNames = carName.split(',');
     const raceCount = await readRaceCount();
 
+    this.forwardCarData = this.setForwardCarData(carNames);
     this.startRace(carNames, raceCount);
   }
 
-  startRace(carNames, raceCount) {
-    this.forwardCarData = carNames.reduce((acc, name) => {
-      return { ...acc, [name]: 0 };
-    }, {});
+  setForwardCarData(carNames) {
+    return carNames.reduce((acc, name) => ({ ...acc, [name]: 0 }), {});
+  }
 
+  startRace(carNames, raceCount) {
     MissionUtils.Console.print("");
     MissionUtils.Console.print(RACE_RESULT);
     for (let index = 0; index < raceCount; index += 1) {
