@@ -1,5 +1,6 @@
 import { Console, Random } from "@woowacourse/mission-utils";
-import Car from "./Car.js";
+import { GameMessages } from "../utils/constants.js";
+import Car from "../model/Car.js";
 
 class Race {
   constructor() {
@@ -30,7 +31,7 @@ class Race {
   }
 
   printWinner(winnerCarName) {
-    Console.print('최종 우승자: '+ winnerCarName);
+    Console.print(GameMessages.FINAL_WINNER + winnerCarName);
   }
 }
 

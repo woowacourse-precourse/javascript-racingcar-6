@@ -1,4 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
+import { GameMessages } from "./constants";
 
 class IOManager {
   async getUserInput(question) {
@@ -6,12 +7,12 @@ class IOManager {
   }
 
   async getCarsName() {
-    const cars = await this.getUserInput('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분) ');
+    const cars = await this.getUserInput(GameMessages.INPUT_CARS_NAME);
     return cars.split(',').map((name) => name.trim());
   }
 
   async getRaceCount() {
-    return await this.getUserInput('시도할 횟수는 몇 회인가요? ');
+    return await this.getUserInput(GameMessages.INPUT_RACE_COUNT);
   }
 }
 
