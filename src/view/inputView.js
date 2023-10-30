@@ -1,10 +1,10 @@
 import { Random, Console } from "@woowacourse/mission-utils";
 import { MESSAGE } from "../constants/constants";
 class InputView {
-  getCarName() {
+  inputCarName() {
     let carName = Console.readLineAsync(MESSAGE.START_CAR_NAME);
   }
 
-  getNumberOfAttempt() {}
+  inputNumberOfAttempt() {}
 }
 export default InputView;
