@@ -18,8 +18,16 @@ class UserInput {
   }
 
   async getTryNumber() {
-    //사용자로부터 시도 횟수를 입력받는다. (이때, 입력은 문자열임을 주의하자!)
-    // isVaildTryNumber() 을 사용하여 정상적인 입력인지 확인한다.
+    try {
+      const tryNumber = await Console.readLineAsync(Messages.GET_TRY_NUMBER);
+      const [isVaild, message, result] = this.isVaildTryNumber(tryNumber);
+      if (!isVaild) {
+        throw new Error(message);
+      }
+      return result;
+    } catch (error) {
+      throw error;
+    }
   }
 
   isVaildCarName(names) {
