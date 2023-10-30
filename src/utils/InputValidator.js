@@ -3,7 +3,7 @@ import { ERROR_MESSAGES, GAME_NUMBERS } from './constants.js';
 
 class InputValidator {
   validateCarNames(names) {
-    for (let name of names) {
+    for (const name of names) {
       this.#validateNameLength(name);
       this.#validateBlankName(name);
     }
