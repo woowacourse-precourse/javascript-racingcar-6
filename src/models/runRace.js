@@ -5,10 +5,11 @@ import { racingOutput } from "../views/OutputView";
 export const runByCount = (cars, count) => {
   const carObject = runRace(cars);
   racingOutput("실행 결과");
-  for ( let round = 0; round < count; round++ ) {
+  for (let round = 0; round < count; round++) {
     racingOutput(carObject);
   }
-}
+};
+
 
 //랜덤수에 따른 전진 상태 결정
 export const runRace = (cars) => {
