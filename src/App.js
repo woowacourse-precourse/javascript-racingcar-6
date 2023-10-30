@@ -84,8 +84,20 @@ class App {
         this.moveForward(key, value, racingCars);
       });
 
+      this.printGameRound(racingCars);
+
       number += 1;
     }
+  }
+
+  printGameRound(result) {
+    const resultArr = Object.entries(result);
+
+    resultArr.forEach(([key, value]) => {
+      const hyphenValue = this.convertValueToHyphen(value);
+
+      Console.print(`${key} : ${hyphenValue}`);
+    });
   }
 }
 
