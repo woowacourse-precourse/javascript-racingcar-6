@@ -1,19 +1,22 @@
 import { Console } from '@woowacourse/mission-utils';
 import { Dice } from './Dice.js';
+import { Judge } from './Judge.js';
 
 export class RacingGame {
   constructor() {
     this.dice = new Dice();
+    this.judge = new Judge();
   }
   play(gameCount, cars) {
     const initializedCars = this.initializeScore(cars);
-    let previousResult = initializedCars;
+    let totalScores = initializedCars;
     for (let i = 0; i < gameCount; i++) {
       const scores = this.getScore(cars);
-      const result = this.validateScores(scores, previousResult);
-      previousResult = result;
+      const result = this.validateScores(scores, totalScores);
+      this.printScores(result);
+      totalScores = result;
     }
-    this.printScores(previousResult);
+    this.judge.decideWinner(totalScores);
   }
 
   initializeScore(cars) {
@@ -28,12 +31,12 @@ export class RacingGame {
     return scores;
   }
 
-  validateScores(scores, previousResult) {
+  validateScores(scores, totalScores) {
     Object.keys(scores).forEach((car) => {
       const score = scores[car];
-      if (score >= 4) previousResult[car] += 1;
+      if (score >= 4) totalScores[car] += 1;
     });
-    return previousResult;
+    return totalScores;
   }
 
   printScores(result) {
@@ -41,5 +44,6 @@ export class RacingGame {
       const score = '-'.repeat(result[car]);
       Console.print(`${car} : ${score}`);
     });
+    Console.print('\n');
   }
 }
