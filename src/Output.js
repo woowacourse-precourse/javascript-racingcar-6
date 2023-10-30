@@ -1,6 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
-import CarMotion from './CarMotion.js';
-import FindIndex from './FindIndex.js';
+import CarMotion from './CarMotion';
+import FindIndex from './FindIndex';
+import { MESSAGE } from './Message';
 
 const carMotion = new CarMotion;
 const findIndex = new FindIndex;
@@ -27,20 +28,20 @@ class Output {
         }
     }
     printOneWinner() {
-        Console.print(`최종 우승자 : ${this.car[this.moveCountArr.join('').indexOf(this.tryCount)]}`);
+        Console.print(`${MESSAGE.WINNER_MESSAGE} ${this.car[this.moveCountArr.join('').indexOf(this.tryCount)]}`);
     }
     printSeveralWinner(result){
         let severalWinner = [];
         for(let i in result) {
             severalWinner.push(this.car[result[i]]);
         }
-        Console.print(`최종 우승자 : ${severalWinner.join(',')}`);
+        Console.print(`${MESSAGE.WINNER_MESSAGE} ${severalWinner.join(',')}`);
     }
     whoIsWinner() {
         let winnerCount = 0;
         winnerCount = this.moveCountArr.filter(el => el == this.tryCount).length;
         if(winnerCount >= 2) {
-            let result = findIndex.FindArrayIndex(this.moveCountArr,this.tryCount);
+            let result = findIndex.findArrayIndex(this.moveCountArr,this.tryCount);
             this.printSeveralWinner(result);
         }else {
             this.printOneWinner();

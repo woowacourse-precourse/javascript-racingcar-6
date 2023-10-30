@@ -1,5 +1,5 @@
-import GetInput from "./GetInput.js";
-import Output from "./Output.js";
+import GetInput from "./GetInput";
+import Output from "./Output";
 
 const getInput = new GetInput;
 

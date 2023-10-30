@@ -1,4 +1,4 @@
-import RandomNumber from "./RandomNumber.js";
+import RandomNumber from "./RandomNumber";
 
 const getRandomNumber = new RandomNumber;
 class CarMotion {
