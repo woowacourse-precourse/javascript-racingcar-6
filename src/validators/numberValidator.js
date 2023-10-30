@@ -1,5 +1,5 @@
 const numberValidator = {
-  isNumber: (number) => !isNaN(number),
+  isNumber: (number) => !Number.isNaN(number),
 };
 
 export default numberValidator;
