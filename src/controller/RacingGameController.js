@@ -50,12 +50,14 @@ class RacingGameController {
     for (let i = 0; i < count; i++) {
       this.racingGame.checkMove();
 
-      this.racingResult();
+      this.printRacingResult();
     }
+
+    this.printWinner();
   }
 
   /** 레이싱 결과 출력 함수 */
-  racingResult() {
+  printRacingResult() {
     const carList = this.racingGame.getRacingCar;
     carList.forEach((car) => outputView.printRacing(car));
     outputView.printSpace();
