@@ -37,6 +37,14 @@ class App {
       throw new Error('[ERROR] 숫자 입력이 잘못된 형식입니다.');
   }
 
+  racing(cars) {
+    Object.keys(cars).map((car) => {
+      const number = Random.pickNumberInRange(1, 9);
+      if (number > 4) cars[car] += '-';
+      Console.print(`${car} : ${cars[car]}`);
+    });
+  }
+
   async play() {
     try {
       const racingCarNames = await Console.readLineAsync(
@@ -51,11 +59,7 @@ class App {
 
       Console.print('\n실행 결과');
       for (let i = 0; i < racingTryNumbers; i++) {
-        Object.keys(this.racingCars).map((car) => {
-          const number = Random.pickNumberInRange(1, 9);
-          if (number > 4) this.racingCars[car] += '-';
-          Console.print(`${car} : ${this.racingCars[car]}`);
-        });
+        this.racing(this.racingCars);
         Console.print(`\n`);
       }
 
