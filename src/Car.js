@@ -1,3 +1,5 @@
+import { Random } from "@woowacourse/mission-utils";
+
 export default class Car {
   #name;
   #distance;
@@ -5,6 +7,19 @@ export default class Car {
     this.#name = name;
     this.#distance = 0;
   }
+
+  move() {
+    if (this.#getRandomNumber() >= 4) {
+      this.#distance++;
+      return;
+    }
+    return;
+  }
+
+  #getRandomNumber() {
+    return Random.pickNumberInRange(0, 9);
+  }
+
   get carName() {
     return this.#name;
   }
