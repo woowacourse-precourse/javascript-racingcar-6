@@ -1,9 +1,23 @@
 import { Console, MissionUtils } from '@woowacourse/mission-utils';
 import GAME_MESSAGE from './constants/gameMessage.js';
 import ERROR_MESSAGE from './constant/errorMessage.js';
+import Car from './car.js';
+import Game from './game.js';
 
 class App {
-  async play() {}
+  async play() {
+    const playerNames = await this.printGameMessage();
+    const times = await this.printNumberOfTimes();
+
+    const cars = playerNames.map((name) => new Car(name));
+    const racingGame = new Game(cars);
+    Console.print('실행 결과');
+
+    racingGame.race(times);
+
+    const winners = racingGame.getWinners();
+    Console.print(winners);
+  }
 
   isValidNameFormat(names) {
     return names.every((name) => name.length <= 5);
