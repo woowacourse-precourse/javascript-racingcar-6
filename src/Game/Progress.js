@@ -26,7 +26,7 @@ const xxx = async (participants, participantsDistance) => {
  * @param {*} participants : 참가자 명단
  * @param {*} participantsDistance : 참가자 거리
  * @param {*} index : 순서
- * @returns randomNumber에 따른 참가자 거리를 반환
+ * @returns randomNumber에 따른 참가자 거리를 반환, "참가자" : ["거리", 총 거리 길이(number)]
  */
 const changeDistance = async (participants, participantsDistance, index) => {
   const randomNumber = Random.pickNumberInRange(NUMBER.MIN, NUMBER.MAX);
@@ -52,9 +52,7 @@ const changeDistance = async (participants, participantsDistance, index) => {
  */
 const showResult = async (participants, participantsDistance) => {
   for (let i = 0; i < participants.length; i++) {
-    const result = `${participants[i]} : ${
-      participantsDistance[participants[i]][0]
-    }`;
+    const result = `${participants[i]} : ${participantsDistance[participants[i]][0]}`;
     print(result);
   }
 };
