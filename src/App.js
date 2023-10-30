@@ -11,6 +11,14 @@ class App {
   includeSemiColon(input) {
     return input.includes(',');
   }
+
+  async printGameMessage() {
+    const playerInput = await Console.readLineAsync(
+      GAME_MESSAGE.INPUT_CAR_NAME,
+    );
+    const playerCarName = playerInput.split(',').map((name) => name.trim());
+    return playerCarName;
+  }
 }
 
 export default App;
