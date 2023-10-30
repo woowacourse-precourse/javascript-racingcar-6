@@ -4,8 +4,8 @@ const MESSAGE = Object.freeze({
   GET_TRY_COUNT: '시도할 횟수는 몇 회인가요?\n',
   RESULT: '\n실행 결과',
   NEW_LINE: '',
-  DISPLAY_CURRENT_PROGRESS: (car) => {
-    return `${car.getName()} : ${'-'.repeat(car.getStep())}`;
+  DISPLAY_CURRENT_PROGRESS: (name, step) => {
+    return `${name} : ${'-'.repeat(step)}`;
   },
   WINNER_ANNOUNCEMENT: (winnerNames) => {
     return `최종 우승자: ${winnerNames}`;

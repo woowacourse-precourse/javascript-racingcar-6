@@ -11,11 +11,11 @@ class Car {
     this.#step += step;
   }
 
-  getName() {
+  get name() {
     return this.#name;
   }
 
-  getStep() {
+  get step() {
     return this.#step;
   }
 }

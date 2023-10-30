@@ -80,19 +80,21 @@ class RacingCarGame {
   }
 
   #displayCurrentProgress(car) {
-    IOManager.output(RacingCarGame.#MESSAGE.DISPLAY_CURRENT_PROGRESS(car));
+    IOManager.output(
+      RacingCarGame.#MESSAGE.DISPLAY_CURRENT_PROGRESS(car.name, car.step)
+    );
   }
 
   #getWinners() {
     const maxStep = this.#cars.reduce((maxStep, car) => {
-      return Math.max(maxStep, car.getStep());
+      return Math.max(maxStep, car.step);
     }, 0);
 
-    return this.#cars.filter((car) => car.getStep() === maxStep);
+    return this.#cars.filter((car) => car.name === maxStep);
   }
 
   #displayResult(winners) {
-    const winnerNames = winners.map((winner) => winner.getName()).join(', ');
+    const winnerNames = winners.map((winner) => winner.name).join(', ');
     IOManager.output(RacingCarGame.#MESSAGE.WINNER_ANNOUNCEMENT(winnerNames));
   }
 
