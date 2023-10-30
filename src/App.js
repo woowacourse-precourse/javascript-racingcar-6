@@ -29,6 +29,16 @@ class App {
     }
     return cars;
   }
+  // 무작위 값 각 이름마다 생성
+  getRandomNumberForEachCar() {
+    return MissionUtils.Random.pickNumberInRange(0, 9);
+  }
+
+  //- 전진 하는지 안하는지 count 함수
+  forwardCount() {
+    const randomNumber = this.getRandomNumberForEachCar();
+    return randomNumber >= 4;
+  }
 }
 
 export default App;
