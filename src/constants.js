@@ -12,9 +12,14 @@ const ERRORS = {
   UNSAFE_INTEGER: '[ERROR] 시도 횟수가 너무 큽니다.',
 };
 
+const NUMBERS = {
+  MOVE_FORWARD: 4,
+};
+
 const CONSTANTS = {
   MESSAGES,
   ERRORS,
+  NUMBERS,
 };
 
 export default CONSTANTS;
