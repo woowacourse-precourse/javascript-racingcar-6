@@ -1,7 +1,7 @@
 export const CONSTANT = Object.freeze({
-  maxNameLength: 5,
-  movable: 4,
   notMove: 0,
+  movable: 4,
+  maxNameLength: 5,
 });
 
 export const RANDOM_NUMBER = Object.freeze({
@@ -9,10 +9,14 @@ export const RANDOM_NUMBER = Object.freeze({
   maxNum: 9,
 });
 
+export const SYMBOL = Object.freeze({
+  movement: '-',
+});
+
 export const MESSAGE = Object.freeze({
   enterCarNames: '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
   enterNumbersOfAttempts: '시도할 횟수는 몇 회인가요?\n',
-  executeResult: '실행 결과\n',
+  executeResult: '실행 결과',
   finalWinner: '최종 우승자 :',
 });
 

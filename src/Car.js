@@ -1,5 +1,5 @@
 import { Random } from '@woowacourse/mission-utils';
-import { CONSTANT, RANDOM_NUMBER } from './Constant.js';
+import { CONSTANT, RANDOM_NUMBER, SYMBOL } from './Constant.js';
 
 class Car {
   #name;
@@ -24,7 +24,7 @@ class Car {
   }
 
   #makeMovingResultString() {
-    const movingLog = '-'.repeat(this.#moveCount);
+    const movingLog = SYMBOL.movement.repeat(this.#moveCount);
     return `${this.#name} : ${movingLog}`;
   }
 
