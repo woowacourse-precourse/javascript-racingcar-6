@@ -14,12 +14,11 @@ class RacingcarGame {
         throw new Error(ERROR_MESSAGE.IS_NUMBER);
       }
       Console.print(GAME_MESSAGE.RESULT);
-
+      let countForward = [];
       for (let i = 0; i < tryCount; i++) {
         carsArray.map((car) => {
           const racingCar = new Car(car);
-          let countForward = racingCar.moveForward();
-          Console.print(`${car} : ${countForward.join("")}`);
+          countForward = racingCar.moveForward(countForward);
         });
         Console.print("\n");
       }
