@@ -73,11 +73,7 @@ class App {
     });
     Console.print("\n실행 결과");
     playGame(tryNum, carGoCount, car);
-    const a = ["-", "-", "-", "-"];
   }
 }
 
 export default App;
-
-const app = new App();
-app.play();
