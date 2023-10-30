@@ -7,12 +7,14 @@ class RacingGame {
 
   #round;
 
-  #currentRound;
+  #result = RACING_GAME.result.default;
 
   constructor({ cars = [], round = RACING_GAME.round.default }) {
     this.#cars = cars;
-    this.#round = round;
-    this.#currentRound = RACING_GAME.round.default;
+    this.#round = {
+      total: round,
+      current: RACING_GAME.round.default,
+    };
   }
 
   startRace() {
@@ -24,12 +26,22 @@ class RacingGame {
   #race() {
     while (!this.#gameEnd()) {
       this.#moveCars();
-      this.#currentRound += RACING_GAME.round.unit;
+      this.#captureRound();
+      this.#round.current += RACING_GAME.round.unit;
     }
   }
 
+  #captureRound() {
+    const raceResult = this.#cars.map((car) => ({
+      name: car.getName(),
+      position: car.getPosition(),
+    }));
+
+    this.#result.push(raceResult);
+  }
+
   #gameEnd() {
-    return this.#currentRound >= this.#round;
+    return this.#round.current >= this.#round.total;
   }
 
   #moveCars() {
@@ -55,10 +67,7 @@ class RacingGame {
 
   #getRaceResult() {
     const winner = this.#getWinners();
-    const raceResult = this.#cars.map((car) => ({
-      name: car.getName(),
-      position: car.getPosition(),
-    }));
+    const raceResult = this.#result;
 
     return { winner, raceResult };
   }

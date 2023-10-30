@@ -9,8 +9,9 @@ class App {
 
   async play() {
     await this.#setGameConfig();
-    const { winner } = this.#game.startRace();
+    const { winner, raceResult } = this.#game.startRace();
 
+    this.#view.printRaceResult(raceResult);
     this.#view.printWinners(winner);
   }
 
