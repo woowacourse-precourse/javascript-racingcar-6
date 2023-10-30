@@ -17,7 +17,9 @@ const Input = {
   },
   async moveCount() {
     // TODO: Mission 2: 이동 시도 횟수 입력 메서드입니다.
-    const totalAttempts = await MissionUtils.Console.readLineAsync(MESSAGE.count);
+    const totalAttempts = await MissionUtils.Console.readLineAsync(
+      MESSAGE.count,
+    );
     Validation.checkNull(totalAttempts);
     Validation.checkCount(totalAttempts);
     return parseInt(totalAttempts, 10);
