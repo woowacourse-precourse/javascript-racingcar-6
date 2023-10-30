@@ -4,3 +4,4 @@ export const RACE_RESULT = "실행 결과";
 
 export const CAR_NAME_ERROR_MESSAGE = "[ERROR] 자동차 이름이 잘못된 형식입니다.";
 export const RACE_COUNT_ERROR_MESSAGE = "[ERROR] 횟수가 잘못된 형식입니다.";
+export const WINNER_MESSAGE = "최종 우승자";

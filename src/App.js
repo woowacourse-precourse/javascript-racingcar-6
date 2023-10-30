@@ -1,6 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import { readCarName, readRaceCount } from './RaceInput.js';
-import { printForwardCar } from './PrintMessage.js';
+import { printForwardCar, printWinner } from './PrintMessage.js';
 import { RACE_RESULT } from './Messages.js';
 
 const START_RANGE = 0;
@@ -27,6 +27,8 @@ class App {
       this.randomForward(carNames);
       MissionUtils.Console.print("");
     }
+
+    printWinner(this.forwardCarData);
   }
 
   randomForward(carNames) {
