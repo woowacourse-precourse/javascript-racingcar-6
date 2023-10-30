@@ -1,7 +1,7 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import MSG from "./message.js"
-import carValidation from "./validation.js"
-import game from "./game.js"
+import MSG from "./message.js";
+import {carValidation, countValidation} from "./validation.js";
+import game from "./game.js";
 
 class App {
   async play() {
@@ -9,6 +9,7 @@ class App {
     const carNames = inputName.split(",");
     carValidation(carNames);
     const cnt = await MissionUtils.Console.readLineAsync(MSG.INPUTCOUNT);
+    countValidation(cnt);
     MissionUtils.Console.print(MSG.RESULT)
     game(carNames, cnt)
   }

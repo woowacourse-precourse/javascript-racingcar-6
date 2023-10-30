@@ -17,4 +17,15 @@ function carValidation(carNames) {
   }
 }
 
-export default carValidation;
+function countValidation(cnt) {
+  const num = Number(cnt)
+  if (isNaN(num)) {
+    throw new Error ("[ERROR] 횟수는 숫자만 입력해주세요.")
+  }
+
+  if (num < 1) {
+    throw new Error ("[ERROR 올바른 숫자를 입력해주세요.")
+  }
+}
+
+export {carValidation, countValidation};
