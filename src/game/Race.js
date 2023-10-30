@@ -1,37 +1,36 @@
-import { Console, Random } from "@woowacourse/mission-utils";
-import { GameMessages } from "../utils/constants.js";
+import { Random } from "@woowacourse/mission-utils";
 import Car from "../model/Car.js";
+import GameResult from "./GameResult.js";
+import IOManager from "../utils/IOManager.js";
 
 class Race {
   constructor() {
     this.car = new Car();
+    this.ioManager = new IOManager();
+    this.gameResult = new GameResult();
   }
   createRandomNum() {
     return Random.pickNumberInRange(0, 9);
   }
 
-  playRace(carsName, raceCount) {
+  executeRace(carsName, raceCount) {
     let carsPosition = new Array(carsName.length).fill(0);
     
     for (let i=0 ; i<raceCount; i++) {
-      for (let j=0; j<carsName.length; j++) {
-        let randomNum = this.createRandomNum();
-
-        carsPosition[j] += this.car.moveOrStop(carsName[j], randomNum);
-        this.car.printCurrentPosition(carsName[j], carsPosition[j]);
-      }
+      this.moveAllCars(carsName, carsPosition);
+      console.log();
     }
 
-    return this.calculateWinner(carsName, carsPosition);
+    return this.gameResult.calculateWinner(carsName, carsPosition);
   }
 
-  calculateWinner(carsName, carsPosition) {
-    let winnerPosition = Math.max(...carsPosition);
-    return this.printWinner(carsName[carsPosition.indexOf(winnerPosition)]);
-  }
+  moveAllCars(carsName, carsPosition) {
+    carsName.forEach((carName, index) => {
+      const randomNum = this.createRandomNum();
 
-  printWinner(winnerCarName) {
-    Console.print(GameMessages.FINAL_WINNER + winnerCarName);
+      carsPosition[index] += this.car.moveOrStop(randomNum);
+      this.ioManager.printCurrentPosition(carName, carsPosition[index]);
+    })
   }
 }
 
