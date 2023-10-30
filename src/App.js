@@ -29,8 +29,7 @@ class App {
   }
 
   printResult(car) {
-    Console.print(car.name + ":");
-    Console.print(car.position);
+    Console.print(car.name + ":" + car.position);
   }
 
   async getCarName() {
@@ -41,18 +40,12 @@ class App {
     if (this.validationCarName(carNameArray)) {
       return carNameArray;
     } else {
-      throw Error("[ERROR] 에러");
+      throw Error("[ERROR] 자동차 이름을 5자 이하로 해야돼");
     }
   }
 
   validationCarName(carArray) {
-    carArray.forEach((car) => {
-      if (car.length > 5) {
-        Console.print("에러 (5자 이하로 해야돼)");
-        return false;
-      }
-    });
-    return true;
+    return carArray.every((car) => car.length <= 5);
   }
 
   async getMoveCount() {
