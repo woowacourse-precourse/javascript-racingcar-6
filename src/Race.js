@@ -16,12 +16,12 @@ export const VALIDATE_CAR_NAME = (CAR_NAME_INPUT) => {
     if (!CAR_NAME_INPUT) {
         throw new Error(CAR_NAME_NULL_ERROR_MESSAGE);
     }
-    const CAR_NAMES = CAR_NAME_INPUT.split(',');
-    if (CAR_NAMES.some(CAR_NAME => CAR_NAME.trim().length > 5)) {
+    const CAR_NAMES = CAR_NAME_INPUT.split(',').map(NAME => NAME.trim());
+    if (CAR_NAMES.some(CAR_NAME => CAR_NAME.length > 5)) {
         throw new Error(CAR_NAME_INVALID_ERROR_MESSAGE);
     }
-    const DUPLICATE_CHECK_NAME = new Set(NAMES);
-    if (DUPLICATE_CHECK_NAME.size !== NAMES.length) {
+    const DUPLICATE_CHECK_NAME = new Set(CAR_NAMES);
+    if (DUPLICATE_CHECK_NAME.size !== CAR_NAMES.length) {
         throw new Error(DUPLICATE_CAR_NAME_ERROR_MESSAGE);
     }
 }
