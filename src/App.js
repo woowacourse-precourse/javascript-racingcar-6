@@ -1,4 +1,4 @@
-import { Console } from '@woowacourse/mission-utils';
+import { Console, Random } from '@woowacourse/mission-utils';
 
 const ERROR_MESSAGE = '[ERROR]';
 const ERROR_MESSAGES = {
@@ -54,12 +54,31 @@ class App {
     return names.map(name => new Car(name));
   }
 
+  executeRacing(cars, count) {
+    while (count > 0) {
+      this.moveCarsRandomly(cars);
+      count--;
+    }
+    return cars;
+  }
+
+  moveCarsRandomly(cars) {
+    for (let car of cars) {
+      let randomNumber = Random.pickNumberInRange(0, 9);
+      if (randomNumber >= 4) {
+        car.position++;
+      }
+    }
+    return cars;
+  }
+
   async play() {
     const names = await this.getUserInput();
     this.checkInputValid(names);
     const count = await this.getCounts();
     this.checkCountValid(count);
     const cars = this.createCars(names);
+    this.executeRacing(cars, count);
   }
 }
 
