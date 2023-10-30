@@ -1,7 +1,7 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import {
   printInputCarNames,
-  printRaceResult,
+  printCarsForwardDistance,
   printWinners,
 } from '../src/utils/print';
 import Car from '../src/Car';
@@ -47,7 +47,7 @@ describe('출력 테스트', () => {
     const outputs = ['firstCar : --', 'secondCar : -', 'thirdCar : ---'];
     const logSpy = getLogSpy();
 
-    printRaceResult([car1, car2, car3]);
+    printCarsForwardDistance([car1, car2, car3]);
 
     outputs.forEach((output) => {
       expect(logSpy).toHaveBeenCalledWith(output);

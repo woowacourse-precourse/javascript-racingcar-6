@@ -16,7 +16,7 @@ const getForwardDistanceString = (forwardDistance) => {
   return makeString;
 };
 
-const getOneCarResult = (car) => {
+const getCarForwardDistance = (car) => {
   const carName = car.getCarName();
   const forwardDistance = car.getForwardDistance();
   const forwardDistanceString = getForwardDistanceString(forwardDistance)();
@@ -37,9 +37,9 @@ const printStartRaceResult = () => {
   print('실행 결과');
 };
 
-const printRaceResult = (cars) => {
+const printCarsForwardDistance = (cars) => {
   cars.forEach((car) => {
-    print(getOneCarResult(car));
+    print(getCarForwardDistance(car));
   });
   print();
 };
@@ -52,6 +52,6 @@ export {
   printInputCarNames,
   printInputAttemptNumber,
   printStartRaceResult,
-  printRaceResult,
+  printCarsForwardDistance,
   printWinners,
 };

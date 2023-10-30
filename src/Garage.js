@@ -1,7 +1,7 @@
 import Car from './Car';
 import {
   printStartRaceResult,
-  printRaceResult,
+  printCarsForwardDistance,
   printWinners,
 } from './utils/print';
 
@@ -20,7 +20,7 @@ class Garage {
   }
 
   printCarsAfterRun() {
-    printRaceResult(this.#cars);
+    printCarsForwardDistance(this.#cars);
 
     return this;
   }
