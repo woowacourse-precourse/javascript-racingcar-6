@@ -1,15 +1,15 @@
 import { Console } from "@woowacourse/mission-utils";
-import CarError from "../errors/CarErrors.js";
+import CarErrors from "../errors/CarErrors.js";
 import TryErrors from "../errors/TryErrors.js";
 
 export async function inputCarNameHandler() {
   const carName = await Console.readLineAsync(
     "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
   );
-  CarError.checkInput(carName);
+  CarErrors.checkInput(carName);
 
   const carList = carName.split(",");
-  CarError.checkInputLength(carList);
+  CarErrors.checkInputLength(carList);
 
   return generateTrimmedArray(carList);
 }
