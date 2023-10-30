@@ -81,7 +81,7 @@ describe('기능 구현 테스트', () => {
             yoo: 1,
             vin: 2,
         };
-        const result = app.printGameStatus(cars);
+        app.printGameStatus(cars);
         expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('yoo : -'));
     });
 
@@ -91,9 +91,9 @@ describe('기능 구현 테스트', () => {
             yoo: 1,
             vin: 2,
         };
-        const result = app.printWinner(cars);
+        app.printWinner(cars);
         expect(logSpy).toHaveBeenCalledWith(
-            result.stringContaining('최종 우승자 : vin')
+            expect.stringContaining('최종 우승자 : vin')
         );
     });
 
@@ -104,9 +104,9 @@ describe('기능 구현 테스트', () => {
             vin: 2,
             shim: 2,
         };
-        const result = app.printWinner(cars);
+        app.printWinner(cars);
         expect(logSpy).toHaveBeenCalledWith(
-            result.stringContaining('최종 우승자 : vin, shim')
+            expect.stringContaining('최종 우승자 : vin, shim')
         );
     });
 });
