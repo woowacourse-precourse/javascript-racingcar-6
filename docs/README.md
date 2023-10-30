@@ -18,9 +18,9 @@ constructor(name, forward) {
 
 ### 경주할 자동차 이름 입력 받기
 
-`MissionUtils.Console.readLineAsync()` 사용하여 경주할 자동차들의 이름 배열 입력 받기
+`MissionUtils.Console.readLineAsync()` 사용하여 경주할 자동차들의 이름 문자열 입력 받기(콤마로 구분)
 
-_ex) ['pobi', 'woni']_
+_ex) pobi,woni_
 
 ### 입력받은 자동차 이름 생성자에 저장
 
