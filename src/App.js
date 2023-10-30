@@ -41,7 +41,13 @@ class App {
     return carNames;
   };
 
-  checkRacingCountValidation = (el) => {
+  checkCountTypeValidation = (el) => {
+    if (isNaN(el)) {
+      throw new Error(ERRORS.gameCount.type);
+    }
+  };
+
+  checkCountRangeValidation = (el) => {
     if (!COUNTREGEX.test(el)) {
       throw new Error(ERRORS.gameCount.range);
     }
@@ -50,7 +56,9 @@ class App {
   getRacingCountInput = async () => {
     const input = await Console.readLineAsync(INPUT_MESSAGES.gameCount);
 
-    this.checkRacingCountValidation(input);
+    this.checkNullValidation(input);
+    this.checkCountTypeValidation(input);
+    this.checkCountRangeValidation(input);
 
     return input;
   };

@@ -16,7 +16,7 @@ export const ERRORS = Object.freeze({
   },
   gameCount: {
     type: '[ERROR] 입력이 숫자가 아닙니다.',
-    range: '[ERROR] 입력이 양수가 아닙니다.',
+    range: '[ERROR] 입력이 자연수가 아닙니다.',
   },
 });
 
