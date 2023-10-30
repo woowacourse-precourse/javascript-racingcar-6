@@ -1,5 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
 import CarError from "../errors/CarErrors.js";
+import TryErrors from "../errors/TryErrors.js";
 
 export async function inputCarNameHandler() {
   const carName = await Console.readLineAsync(
@@ -15,6 +16,10 @@ export async function inputCarNameHandler() {
 
 export async function inputTryNumberHandler() {
   const TryNumber = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+
+  TryErrors.checkInputNumber(TryNumber);
+  TryErrors.checkNagativeNumber(TryNumber);
+
   return TryNumber.trim();
 }
 
