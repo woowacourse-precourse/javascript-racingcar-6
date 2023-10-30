@@ -8,6 +8,7 @@
 ## class GameUtils
 
 - [x] getRandomNumberInRange // 범위 안에서 랜덤 숫자를 얻는 함수
+- [x] forEachApply // 배열과 함수를 받고, 해당 배열을 도는동안 함수를 실행시키는 함수
 
 ## class Car
 
@@ -24,8 +25,14 @@
 - [x] createCarObjectsFromNames // n대의 자동차 생성
 - [x] getTryCount // 사용자는 몇 번의 이동을 할 것인지를 입력할 수 있어야 한다
 - [x] validateTryCount // 몇 번의 이동이기 때문에 '1 이상'의 '숫자'이어야 한다.
+- [x] repeatMove // 자동차들과 횟수를 입력받고 Move를 반복하는 함수
 - [x] decideToMove // 전진하는 조건은 0에서 9 사이에서 무작위 값을 구한 후 무작위 값이 4 이상일 경우이다.
 - [x] displayCurrentProgress // 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
 - [x] getWinners // 우승자들 배열을 반환하는 함수
 - [x] displayResult // 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한 명 이상일 수 있다. 우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분한다.
-- [x] start // 게임 진행 로직
+
+## class RacingCarGameManager
+
+- [x] initializeGame // 게임 초기화
+- [x] runGame // 게임 시작
+- [x] displayResult // 게임 결과 출력
