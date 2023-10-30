@@ -35,7 +35,7 @@
 
 - [ ] Validation 객체 - feat(Validation Object):
 
-  - [ ] validateGoFoward - feat(Validate car can go foward): 랜덤으로 생성된 수를 확인하여 앞으로 갈 수 있는지 정지해야 하는지 확인하는 메서드
+  - [x] validateGoForward - feat(Validate car can go forward): 랜덤으로 생성된 수를 확인하여 앞으로 갈 수 있는지 정지해야 하는지 확인하는 메서드
   - [ ] validateRacingCarName - feat(Validate racing car name inputs): 유저가 입력한 레이싱카 이름 문자열을 검증하는 메서드
   - [ ] validateRacingRepeatNumber - feat(Validate racing repeat number): 유저가 입력한 레이싱 경기 반복 횟수를 검증하는 메서드
 
