@@ -1,6 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
 import { GAME_MESSEAGE } from "../constants/Messeage.js";
-import Exception from "../error/Exception.js";
+import Exception from "../exception/Exception.js";
 
 export const getPlayersName = async () => {
   const playersArray = await Console.readLineAsync(`${GAME_MESSEAGE.inputName}\n`);
