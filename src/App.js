@@ -38,6 +38,18 @@ class App {
     async getInputTryCount() {
         return parseInt(await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?\n'));
     }
+
+    /**
+     * @param {number} tryCount
+     */
+    tryCountValidate(tryCount) {
+        if (!(typeof tryCount === 'number' && tryCount !== NaN)) {
+            throw new Error('[ERROR] 숫자가 잘못된 형식입니다.');
+        }
+        if (tryCount < 1) {
+            throw new Error('[ERROR] 1 이상의 숫자를 입력해주세요.');
+        }
+    }
 }
 
 export default App;
