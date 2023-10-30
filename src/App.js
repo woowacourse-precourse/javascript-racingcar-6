@@ -1,4 +1,4 @@
-import { MissionUtils, Console, Random } from "@woowacourse/mission-utils";
+import { Console, Random } from "@woowacourse/mission-utils";
 
 class App {
   constructor() {
@@ -36,9 +36,20 @@ class App {
     return Random.pickNumberInRange(0, 9);
   }
 
+  playOneRound() {
+    let carInfo, score;
+    for (carInfo of this.cars) {
+      score = this.rollDice();
+      if (count > 4) {
+        carInfo.score += score;
+      }
+    }
+  }
+
   startRacing() {
-    let i = 0;
-    while (i < gameCount) {}
+    for (let i = 0; i < this.gameCount; ++i) {
+      this.playOneRound();
+    }
   }
 
   async play() {
