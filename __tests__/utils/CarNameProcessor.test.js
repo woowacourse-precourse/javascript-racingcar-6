@@ -1,4 +1,4 @@
-import { processCarNames } from '../../src/utils/CarNameProcessor';
+import processCarNames from '../../src/utils/CarNameProcessor';
 
 describe('CarNameProcessor 유틸리티', () => {
   describe('processCarNames 함수', () => {
