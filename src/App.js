@@ -21,6 +21,9 @@ class App {
       this.runOneCycle(carArr);
       this.printMsg('');
     };
+
+    const winnerStr = `최종 우승자 : ${this.findWinners(carArr)}`;
+    this.printMsg(winnerStr);
   }
 
   async receiveUserInput(guideMsg) {
@@ -41,6 +44,12 @@ class App {
       if(this.moveForward()) el.oneStepForward();
       this.printMsg(`${el.name}: ${'-'.repeat(el.step)}`);
     });
+  }
+
+  findWinners(carArr) {
+    const maxStep = Math.max(...carArr.map(car => car.step));
+    const winnerArr = carArr.filter(car => car.step == maxStep).map(el => el.name);
+    return winnerArr.join(', ');
   }
 
   seperateNames(names) {
