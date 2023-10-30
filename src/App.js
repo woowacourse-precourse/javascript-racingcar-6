@@ -8,7 +8,19 @@ import {
 import Car from './Car.js';
 
 class App {
-  checkRacingCarNameValidation = (el) => {
+  checkNullValidation = (el) => {
+    if (el === null || el === undefined || el === '') {
+      throw new Error(ERRORS.null);
+    }
+  };
+
+  checkCarNameDuplicateValidation = (el) => {
+    if (new Set(el).size !== el.length) {
+      throw new Error(ERRORS.carName.duplicate);
+    }
+  };
+
+  checkCarNameLengthValidation = (el) => {
     if (el.length > 5) {
       throw new Error(ERRORS.carName.length);
     }
@@ -17,10 +29,14 @@ class App {
   getRacingCarNameInput = async () => {
     const input = await Console.readLineAsync(INPUT_MESSAGES.carName);
 
+    this.checkNullValidation(input);
+
     const carNames = input.split(',').map((el) => {
-      this.checkRacingCarNameValidation(el);
+      this.checkCarNameLengthValidation(el);
       return el;
     });
+
+    this.checkCarNameDuplicateValidation(carNames);
 
     return carNames;
   };
