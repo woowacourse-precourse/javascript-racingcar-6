@@ -17,7 +17,6 @@ class App {
         Console.print(`${RESULT}\n`);
         CNT-=1
       }
-
     }else {
       throw new Error("[ERROR] 이름은 5글자 이하로 작성해주세요")
     }
@@ -70,5 +69,14 @@ class App {
     })
     return RESULT_ARRAY.join('\n');
   }
+  findKeysOfMaxValue(dict) {
+    const VALUES = Object.values(dict);
+    const MAX_VALUE = Math.max(...VALUES.map(value => value.length));
+    const KEYS_WITH_MAX_VALUE = Object.entries(dict)
+      .filter(([,value]) =>value.length === MAX_VALUE)
+      .map(([key]) => key);
+    return KEYS_WITH_MAX_VALUE;
+  }
+
 }
 export default App;
