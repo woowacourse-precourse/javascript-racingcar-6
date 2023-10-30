@@ -1,16 +1,7 @@
 import { Console, Random } from '@woowacourse/mission-utils';
 import RacingGame from '../src/racingcar/lib/classes/RacingGame';
-import RacingGameInputManager from '../src/racingcar/lib/classes/RacingGameInputManager';
 
-// 사용자 입력을 가로채기 위한 모의 함수를 만드는 함수
-const mockQuestions = (inputs) => {
-  Console.readLineAsync = jest.fn();
-
-  Console.readLineAsync.mockImplementation(() => {
-    const input = inputs.shift();
-    return Promise.resolve(input);
-  });
-};
+let spyConsolePrint;
 
 const mockRandoms = (numbers) => {
   Random.pickNumberInRange = jest.fn();
@@ -20,24 +11,55 @@ const mockRandoms = (numbers) => {
   );
 };
 
-describe('자동차 경주 게임', () => {
-  test('전진-정지', async () => {
-    // given
-    const inputs = ['pobi,woni,jena', '1'];
-    const randoms = [4, 3, 5];
+beforeEach(() => {
+  spyConsolePrint = jest.spyOn(Console, 'print');
+});
 
-    mockQuestions(inputs);
+afterEach(() => {
+  spyConsolePrint.mockRestore();
+});
+
+describe('자동차 경주 게임', () => {
+  test('countScore 함수 테스트', () => {
+    // given
+    const racingCars = [
+      { carName: 'pobi', score: 0 },
+      { carName: 'jun', score: 0 },
+      { carName: 'jena', score: 0 },
+    ];
+    const randoms = [3, 5, 3, 6, 9, 4, 3, 3, 5];
     mockRandoms(randoms);
+    const racingGame = new RacingGame({ racingCars, playCount: 3 });
 
     // when
-    const gameInputManager = new RacingGameInputManager();
-    const racingInfo = await gameInputManager.getRacingInfo();
-    const rasingGameInstance = new RacingGame(racingInfo);
-    rasingGameInstance.countScore();
+    for (let i = 0; i < racingGame.playCount; i += 1) {
+      racingGame.countScore();
+    }
 
     // then
-    expect(rasingGameInstance.racingCars[0].score).toBe(1);
-    expect(rasingGameInstance.racingCars[1].score).toBe(0);
-    expect(rasingGameInstance.racingCars[2].score).toBe(1);
+    expect(racingGame.racingCars[0].score).toBe(1);
+    expect(racingGame.racingCars[1].score).toBe(2);
+    expect(racingGame.racingCars[2].score).toBe(2);
+  });
+
+  test('printScore 함수 테스트', () => {
+    // given
+    const racingCars = [
+      { carName: 'pobi', score: 2 },
+      { carName: 'jun', score: 1 },
+      { carName: 'jena', score: 2 },
+    ];
+    const racingGame = new RacingGame({ racingCars, playCount: 5 });
+
+    // when
+    racingGame.printScore();
+
+    // then
+    expect(spyConsolePrint).toHaveBeenCalledTimes(4);
+
+    expect(spyConsolePrint).toHaveBeenNthCalledWith(1, 'pobi : --');
+    expect(spyConsolePrint).toHaveBeenNthCalledWith(2, 'jun : -');
+    expect(spyConsolePrint).toHaveBeenNthCalledWith(3, 'jena : --');
+    expect(spyConsolePrint).toHaveBeenNthCalledWith(4, '\n');
   });
 });
