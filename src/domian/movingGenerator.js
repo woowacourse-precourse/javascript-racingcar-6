@@ -10,7 +10,7 @@ export class MovingGenerator {
     return randomNumber >= 4;
   }
   move() {
-    if (this.canMove) {
+    if (this.canMove()) {
       this.progress += SYMBOL.MOVE
       return this.progress
     }

@@ -3,8 +3,11 @@
 // 각 자동차마다 레이스 당 전진 기록 저장 후 결과 반환
 // 이긴 자동차 반환
 
+import InputView from "../view/inputView";
+
 class Car {
   #cars;
+
   constructor(cars) {
     this.#cars = cars;
   }
@@ -13,7 +16,11 @@ class Car {
     return this.#cars;
   }
 
-  getWinner() {}
+  getCars() {
+    const cars = InputView.inputCarName;
+  }
+
+  compareCarsAndGetWinner() {}
 }
 
 export default Car;
