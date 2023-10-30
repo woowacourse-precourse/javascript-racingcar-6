@@ -108,7 +108,7 @@ describe('값 입력 테스트', () => {
 describe('시도 횟수 입력 테스트', () => {
   test('입력 문구 출력', async () => {
     // given
-    const expectedMessage = '시도할 회수는 몇회인가요?\n';
+    const expectedMessage = '시도할 횟수는 몇 회인가요?\n';
     Console.readLineAsync.mockResolvedValue('5');
 
     // when
