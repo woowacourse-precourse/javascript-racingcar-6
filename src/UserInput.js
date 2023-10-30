@@ -18,6 +18,7 @@ export default class User {
         });
         // console.log(this.cars)
         this.checkName(names)
+        this.userInputPlayNumber()
     }
 
     checkName(names) {
@@ -25,6 +26,13 @@ export default class User {
         } catch(e) {
           throw(e)
         }
-        console.log(names)
-    } // 여기서 받는 'names'은 유효성 검사를 통과하고 받은 값
+        // console.log(names)
+    }   // 여기서 받는 'names'은 유효성 검사를 통과하고 받은 값
+
+    async userInputPlayNumber() {
+        const inputPlayNumer = await MissionUtils.Console.readLineAsync(
+            '시도할 횟수는 몇 회인가요? \n'
+        )
+        console.log(inputPlayNumer)
+    } 
 }
