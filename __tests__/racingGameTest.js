@@ -51,4 +51,11 @@ describe("자동차 경주 게임", () => {
 
     expect(result).toEqual("a");
   });
+
+  test("substring 메서드로 특정 구간 값을 반환", () => {
+    const input = "(1,2)";
+    const result = input.substring(1, 4);
+
+    expect(result).toEqual("1,2");
+  });
 });
