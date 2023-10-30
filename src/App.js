@@ -9,16 +9,15 @@ class App {
       output: process.stdout,
     });
   }
+
   async play() {
-    await this.startGame();
-  }
-  async startGame() {
-    //차 이름 받기
-    const carName = await this.getCarName();
-    //시도 횟수 받기
-    const tryNum = await this.getTryNum();
-    //결과, 최종 우승자 받기
-    const result = this.result(carName, tryNum);
+    try {
+      const carName = await this.getCarName();
+      const tryNum = await this.getTryNum();
+      this.result(carName, tryNum);
+    } finally {
+      this.rl.close(); // readline 인터페이스를 닫아줍니다.
+    }
   }
   // 차 이름 받기 (유저 입력 받는 것 앞에는 비동기가 있어야 하나?)
   async getCarName() {
