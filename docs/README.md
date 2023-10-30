@@ -29,8 +29,8 @@
     - [x] 자동차의 이름을 쉼표로 구분한다. (CarNameSplitTest.js)
     - [x] 이름은 쉼표로 구분한다. (ApplicationTest.js의 2번째 테스트)
 
-- [ ] 몇 번 이동할 것인지 입력할 수 있다.
-    - [ ] 입력한 이동 수는 양수여야 한다.
+- [x] 몇 번 이동할 것인지 입력할 수 있다. (CarMoveNuberValidateTest.js 1번 테스트)
+    - [x] 입력한 이동 수는 양수여야 한다. (CarMoveNuberValidateTest.js 2~5번 테스트)
 
 - [x] n 개의 자동차가 이동하거나, 정지한다. 이를 출력한다.(ApplicationTest.js의 1번째 테스트)
     - [ ] 0~9의 숫자를 무작위로 생성해야 한다.

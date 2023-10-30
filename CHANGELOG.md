@@ -1,3 +1,8 @@
+- style(carCreater): modify code according to code conventsion
+- test: add carname input and split test
+- docs: add function test list
+- fix: make error message detaily
+- feat: add printwinner(s)
 - fix: limit trynumber zero
 - feat: add car move or stop, game result
 - feat: add try counter and try number validater
