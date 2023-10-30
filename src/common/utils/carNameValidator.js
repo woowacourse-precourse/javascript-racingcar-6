@@ -4,7 +4,7 @@ const isUniqueCarName = (input) => {
 };
 
 // TODO: 파라미터로 input.min & input.max 받고
-const isValidInputCarName = (input) => {
+const isValidCarName = (input) => {
   const carNames = input.split(',').map(name => name.trim().toUpperCase());
 
   return (
@@ -15,4 +15,4 @@ const isValidInputCarName = (input) => {
   );
 };
 
-export default isValidInputCarName;
+export default isValidCarName;
