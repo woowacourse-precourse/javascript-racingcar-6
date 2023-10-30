@@ -5,7 +5,7 @@ import { INPUT_MESSAGES, PRINT_MESSAGES } from '../constant/Constants.js';
 export async function getCarNameList() {
   const carName = await Console.readLineAsync(INPUT_MESSAGES.inputCarName);
   checkCarNameInput(carName);
-  return carName;
+  return carName.split(',');
 }
 
 export async function getTryNum() {

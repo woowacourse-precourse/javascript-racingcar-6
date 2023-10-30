@@ -8,11 +8,11 @@ import {
 
 export default class RaceGame {
   constructor(carNameList, tryNum) {
-    this.cars = carNameList.split(',').map((name) => new Car(name));
+    this.cars = carNameList.map((name) => new Car(name));
     this.tryNum = tryNum;
   }
 
-  #gameTry() {
+  gameTry() {
     let tries = this.tryNum;
     while (tries) {
       tries -= 1;
@@ -24,7 +24,7 @@ export default class RaceGame {
     }
   }
 
-  #checkWinner() {
+  checkWinner() {
     const winnerList = this.cars
       .sort((a, b) => b.progress - a.progress)
       .filter((car) => car.progress === this.cars[0].progress)
@@ -35,7 +35,7 @@ export default class RaceGame {
 
   async gameStart() {
     printProgressResult();
-    this.#gameTry();
-    this.#checkWinner();
+    this.gameTry();
+    this.checkWinner();
   }
 }

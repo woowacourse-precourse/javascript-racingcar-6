@@ -29,8 +29,8 @@ const checkTryNumZero = (tryNum) => {
 };
 
 export const checkTryNum = (tryNum) => {
-  checkTryNumType(tryNum);
-  checkTryNumZero(tryNum);
+  /* checkTryNumType(tryNum); */
+  /*  checkTryNumZero(tryNum); */
 };
 
 export const checkCarNameInput = (carName) => {
