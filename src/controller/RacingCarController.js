@@ -1,4 +1,4 @@
-import Car from "../domain/Car.js";
+import RacingCar from "../domain/RacingCar.js";
 import RandomNumberGenerator from "../utils/RandomNumberGenerator.js";
 import InputView from "../view/InputView.js";
 import OutputView from "../view/OutputView.js";
@@ -6,6 +6,8 @@ import { StaticNumber } from "../static/Static.js";
 
 class RacingCarController {
   #cars = [];
+  #finalDistance = [];
+  #winners = [];
 
   constructor() {}
 
@@ -26,7 +28,7 @@ class RacingCarController {
   }
 
   async setCars(cars) {
-    this.#cars = cars.split(",").map((name) => new Car(name));
+    this.#cars = cars.split(",").map((name) => new RacingCar(name));
     await this.inputTryTimes();
   }
 
@@ -51,16 +53,15 @@ class RacingCarController {
   }
 
   handleWinners() {
-    let finalDistance = [];
     this.#cars.map((car) => {
-      finalDistance.push(car.getCurrentDistance());
+      this.#finalDistance.push(car.getCurrentDistance());
     });
-    const maxDistance = Math.max(...finalDistance);
-    let winners = [];
+    const maxDistance = Math.max(...this.#finalDistance);
     this.#cars.map((car) => {
-      if (car.getCurrentDistance() === maxDistance) winners.push(car.getName());
+      if (car.getCurrentDistance() === maxDistance)
+        this.#winners.push(car.getName());
     });
-    OutputView.printWinnerMessage(winners);
+    OutputView.printWinnerMessage(this.#winners);
   }
 }
 
