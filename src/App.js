@@ -1,15 +1,21 @@
 import { readLineAsync, getValidInputNames, getValidInputNumber } from './utils';
 import { MESSAGE } from './constants';
+import CarRace from './CarRace';
 
 const { INPUT_NAME, INPUT_NUMBER } = MESSAGE;
 
 class App {
+  carRace;
+
   async play() {
     try {
       const inputNames = await readLineAsync(INPUT_NAME);
-      getValidInputNames(inputNames);
+      const carNames = getValidInputNames(inputNames);
       const inputNumber = await readLineAsync(INPUT_NUMBER);
-      getValidInputNumber(inputNumber);
+      const count = getValidInputNumber(inputNumber);
+
+      this.carRace = new CarRace(carNames, count);
+      
     } catch (error) {
       throw new Error(error);
     }
