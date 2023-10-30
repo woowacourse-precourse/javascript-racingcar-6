@@ -1,4 +1,4 @@
-import { Console, Random } from "@woowacourse/mission-utils";
+import { Console } from "@woowacourse/mission-utils";
 import { ERROR_MESSAGE, GAME_MESSAGE } from "./constants/index.js";
 import Car from "./Car.js";
 import Validation from "./Validation.js";
@@ -18,17 +18,11 @@ class RacingcarGame {
       let countForward = {};
 
       for (let i = 0; i < tryCount; i++) {
-          carsArray.map(car => {
-              if (Random.pickNumberInRange(0, 9) >= 4) {
-                  if (!countForward[car]) {
-                      countForward[car] = "-";
-                  } else {
-                      countForward[car] += "-";
-                  }
-              }
-              Console.print(`${car} : ${countForward[car] || ""}`);
-          });
-          Console.print("\n");
+        carsArray.map((car) => {
+          const racingCar = new Car(car);
+          racingCar.moveForward(countForward);
+        });
+        Console.print("\n");
       }
 
       // return cars;
