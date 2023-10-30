@@ -6,51 +6,51 @@ import { findWinner } from "./FindeWinner.js";
 import { GAME_MESSEAGE } from "../constants/Messeage.js";
 
 class RacingController {  
-  playersArray;
-  attemptNumber;
-  //레이싱 보드
-  scoreArray = [];
-  traceArray = [];
-  playTime = 0;
-  //
+  #playersArray;
+  #attemptNumber;
+  
+  #scoreArray = [];
+  #traceArray = [];
+  #playTime = 0;
+  
   constructor(playersArray, attemptNumber) {
-    this.playersArray = playersArray;
-    this.attemptNumber = attemptNumber;
+    this.#playersArray = playersArray;
+    this.#attemptNumber = attemptNumber;
   }
 
   startRacing() {
-    const driveArray = this.driveRandomArray();
-    this.scoreArray = Converter.scoreFilter(driveArray); 
-    this.traceArray = Converter.traceFilter(driveArray);
+    const randomRacingArray = this.#makeRandomArray();
+    this.#scoreArray = Converter.scoreFilter(randomRacingArray); 
+    this.#traceArray = Converter.traceFilter(randomRacingArray);
 
     Console.print(GAME_MESSEAGE.executeResult);
-    this.traceMaker();
+    this.#traceMaker();
   }
 
-  traceMaker() {                                          
-    this.traceArray.forEach((trace, index) => Console.print(this.playersArray[index] + ' : ' + trace));   
+  #traceMaker() {                                         
+    this.#traceArray.forEach((trace, index) => Console.print(this.#playersArray[index] + ' : ' + trace));   
     Console.print('');
 
-    this.playTime += 1;
-    if (this.playTime === this.attemptNumber) return this.showWinners();
+    this.#playTime += 1;
+    if (this.#playTime === this.#attemptNumber) return this.#showWinners();
 
-    this.updateRacingBoard(); 
+    this.#updateRacingBoard(); 
   }
 
-  updateRacingBoard() {       
-    const newdriveArray = this.driveRandomArray();                                   
-    this.scoreArray = scoreAccumulator(this.scoreArray, newdriveArray);
-    this.traceArray = traceAccumulator(this.traceArray, newdriveArray);
+  #updateRacingBoard() {       
+    const newRandomRaingArray = this.#makeRandomArray();                                   
+    this.#scoreArray = scoreAccumulator(this.#scoreArray, newRandomRaingArray);
+    this.#traceArray = traceAccumulator(this.#traceArray, newRandomRaingArray);
 
-    this.traceMaker(); 
+    this.#traceMaker(); 
   }
 
-  driveRandomArray() {
-    return randomArrayGenerator(this.playersArray.length);
+  #makeRandomArray() {
+    return randomArrayGenerator(this.#playersArray.length);
   }
   
-  showWinners() {
-    const winners = findWinner(this.playersArray, this.scoreArray);
+  #showWinners() {
+    const winners = findWinner(this.#playersArray, this.#scoreArray);
     Console.print(`${GAME_MESSEAGE.winner} : ${winners.join(', ')}`);
   }
 }
