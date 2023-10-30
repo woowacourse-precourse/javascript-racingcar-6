@@ -6,6 +6,8 @@ import {
   validateCarNameLength,
   validateCarNameInput,
   validateNumberType,
+  validateDuplicate,
+  validateNumberLength,
 } from "../Vaildation/index.js";
 
 class Controllers {
@@ -15,19 +17,19 @@ class Controllers {
   }
 
   async getUserInput(message) {
-    const input = await Console.readLineAsync(message);
+    let input = await Console.readLineAsync(message);
     validateNoWhiteSpace(input);
 
-    const result = input?.split(",");
+    input = input?.split(",");
+    validateDuplicate(input);
 
-    // 여기다가 함수 추가 할 거임
-
-    return result;
+    return input;
   }
 
   async getTryTimes(message) {
     const TIMES = await this.getUserInput(message);
     validateNumberType(TIMES);
+    validateNumberLength(...TIMES);
     return TIMES;
   }
 

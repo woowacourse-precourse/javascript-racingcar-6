@@ -1,5 +1,4 @@
 import { ERROR } from "../Constants/error.js";
-// export default function ValidateCheck() {
 export const validateCarNameLength = (cars, i) => {
   if (cars[i].length > 5) throw new Error(ERROR.LENGTH);
 };
@@ -17,9 +16,16 @@ export const validateNoWhiteSpace = (input) => {
 };
 
 export const validateNumberType = (input) => {
-  const regex = /^\d{1,2}$/;
+  const regex = /^\d+$/;
 
   if (!regex.test(input)) throw new Error(ERROR.NUMBER_TYPE);
 };
 
-// export const validateDuplicate
+export const validateNumberLength = (input) => {
+  if (input.length > 2) throw new Error(ERROR.NUMBER_LENGTH);
+};
+
+export const validateDuplicate = (input) => {
+  // 왜 옵셔널을 사용해야만 정상적으로 테스트가 되는 건지 ?
+  if (new Set(input).size !== input?.length) throw new Error(ERROR.DUPLICATE);
+};
