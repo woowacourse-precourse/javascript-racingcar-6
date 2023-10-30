@@ -20,7 +20,7 @@
   - [x] 멤버 변수
     - racingCars - `Array<Car>` / default: []
     - racingRepeatNumber - `number` / default: 0
-  - [ ] play - feat(App Class play method): 레이싱 게임을 시작하는 메서드
+  - [x] play - feat(App Class play method): 레이싱 게임을 시작하는 메서드
   - [ ] registerRacingCars - feat(App Class): 레이싱카 이름 등록 메서드
   - [ ] registerPlayRepeatNumber - feat(App Class): 경기 반복 횟수 등록 메서드
   - [ ] repeatRacing - feat(App Class): 레이싱 경기 반복 진행 메서드
