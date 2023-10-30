@@ -33,7 +33,6 @@ export const positionHandler = (carsArr) => {
     }
     carsInfo.position = position;
   });
-  console.log(carsArr);
   return carsArr;
 };
 
@@ -58,7 +57,6 @@ export const findWinner = (carsArr) => {
       winner.push(carsInfo.name);
     }
   });
-  console.log(winner);
   return winner;
 };
 
@@ -69,7 +67,6 @@ export const racingResultPrint = (carsArr) => {
     for (let i = 0; i < position; i++) {
       movingDistance += "-";
     }
-    console.log(`${carsInfo.name} : ${movingDistance}`);
     const resultMessage = `${carsInfo.name} : ${movingDistance}`;
     return MissionUtils.Console.print(resultMessage);
   });
