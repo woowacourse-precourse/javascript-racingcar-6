@@ -18,16 +18,16 @@ class Car {
     return this.#forwardDistance;
   }
 
-  #moveForward() {
-    this.#forwardDistance += 1;
-  }
-
   runRandomAction() {
     const randomNumber = pickRandomNumberInRange(0, 9);
 
     if (randomNumber >= 4) {
       this.#moveForward();
     }
+  }
+
+  #moveForward() {
+    this.#forwardDistance += 1;
   }
 }
 
