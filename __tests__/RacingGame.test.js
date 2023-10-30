@@ -10,26 +10,14 @@ const mockRandoms = (numbers) => {
   }, MissionUtils.Random.pickNumberInRange);
 };
 
+const STOP = NUMBER.MIN_FORWARD - 1;
+const MOVE = NUMBER.MIN_FORWARD;
+
 describe("경주 게임 테스트", () => {
   test.each([
-    [
-      "하나만 전진",
-      ["car", "bus"],
-      [NUMBER.MIN_FORWARD, NUMBER.MIN_FORWARD - 1],
-      [1, 0],
-    ],
-    [
-      "둘 다 전진",
-      ["car", "bus"],
-      [NUMBER.MIN_FORWARD, NUMBER.MIN_FORWARD],
-      [1, 1],
-    ],
-    [
-      "셋 다 멈춤",
-      ["car", "bus", "joo"],
-      [NUMBER.MIN_FORWARD - 1, NUMBER.MIN_FORWARD - 1, NUMBER.MIN_FORWARD - 1],
-      [0, 0, 0],
-    ],
+    ["하나만 전진", ["car", "bus", "joo"], [MOVE, STOP, STOP], [1, 0, 0]],
+    ["둘 다 전진", ["car", "bus"], [MOVE, MOVE], [1, 1]],
+    ["셋 다 멈춤", ["car", "bus", "joo"], [STOP, STOP, STOP], [0, 0, 0]],
   ])(
     "모든 자동차 전진 시도하기 - %s",
     (testName, carNameArray, randomNumberArray, expectedPositionArray) => {
