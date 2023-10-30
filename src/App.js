@@ -75,7 +75,7 @@ class App {
     if (!isNaN(moveCount)) {
       return moveCount;
     } else {
-      throw new Error(`${message.ERROR_INVALUD_MOVE_COUNT}`);
+      throw new Error(`${message.ERROR_INVALID_MOVE_COUNT}`);
     }
   }
 }
