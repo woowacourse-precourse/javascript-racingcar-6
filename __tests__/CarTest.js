@@ -24,7 +24,7 @@ describe('Car', () => {
     expect(car.position).toBe(0);
   });
 
-  test('getPosition : ', async () => {
+  test('getPosition : position만큼 "-" 출력', async () => {
     car.position = 3;
     const positionString = await car.getPosition();
     expect(positionString).toBe('---');

@@ -1,11 +1,13 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import { ERROR_MESSAGES, GAME_MESSAGES } from "../utils/Message.js";
-import { isValidCarName, isValidAttempts } from "../utils/Validation.js";
+import { ERROR_MESSAGES, GAME_MESSAGES } from "../utils/Message";
+import { isValidCarName, isValidAttempts } from "../utils/Validation";
 
 class InputView {
   static async getCarNames() {
     try {
-      const carNames = await MissionUtils.Console.readLineAsync(GAME_MESSAGES.CAR_NAME_INPUT_PROMPT);
+      const carNames = await MissionUtils.Console.readLineAsync(
+        GAME_MESSAGES.CAR_NAME_INPUT_PROMPT
+      );
       if (!isValidCarName(carNames)) {
         throw new Error(ERROR_MESSAGES.IS_NAME_LENGTH);
       }
@@ -17,7 +19,9 @@ class InputView {
 
   static async getAttempts() {
     try {
-      const attempts = await MissionUtils.Console.readLineAsync(GAME_MESSAGES.ATTEMPTS_INPUT_PROMPT);
+      const attempts = await MissionUtils.Console.readLineAsync(
+        GAME_MESSAGES.ATTEMPTS_INPUT_PROMPT
+      );
       if (!isValidAttempts(attempts)) {
         throw new Error(ERROR_MESSAGES.IS_NAME_LENGTH);
       }

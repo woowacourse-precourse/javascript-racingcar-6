@@ -1,4 +1,4 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
+import { MissionUtils } from '@woowacourse/mission-utils';
 
 class Car {
   constructor(name) {
@@ -9,7 +9,7 @@ class Car {
   async move() {
     const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
     if (randomNumber >= 4) {
-      this.position++;
+      this.position += 1;
     }
   }
 

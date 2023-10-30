@@ -1,5 +1,5 @@
 const isValidCarName = (carNames) => {
-  const names = carNames.split(",");
+  const names = carNames.split(',');
   const carNameSet = new Set(names);
   if ( carNameSet.size !== names.length || names.some((name) => name.length > 5)) {
     return false;

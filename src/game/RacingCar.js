@@ -1,9 +1,7 @@
-import Car from "./Car.js";
-import OutputView from "../view/OutputView.js";
+import Car from './Car';
+import OutputView from '../view/OutputView';
 
 class RacingGame {
-    cars
-
   constructor() {
     this.cars = [];
   }
@@ -15,11 +13,11 @@ class RacingGame {
 
   async startGame(attempts) {
     for (let i = 0; i < attempts; i++) {
-      for (const car of this.cars) {
-        await car.move();
-        const position = await car.getPosition();
-        await OutputView.printLine(car, position);
-      }
+        this.cars.forEach( async (car) => {
+            await car.move();
+            const position = await car.getPosition();
+            await OutputView.printLine(car, position);
+        })
       await OutputView.printBlankLine();
     }
   }
