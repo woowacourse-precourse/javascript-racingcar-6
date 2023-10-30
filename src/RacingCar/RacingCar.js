@@ -1,26 +1,39 @@
 import { Console, Random } from "@woowacourse/mission-utils";
 
-import { MESSAGE } from "../constants.js";
+import { ERROR_MESSAGE, MESSAGE } from "../constants.js";
 import Car from "./Car.js";
+import Message from "../Message.js";
 
 class RacingCar {
   async start() {
     const name = await Console.readLineAsync(MESSAGE.enterCarName);
-    const splitedName = this.splitName(name);
+    const splitedName = this.splitName(name.trim());
+
+    splitedName.forEach((name) => {
+      Message.logIf(name.length > 5, ERROR_MESSAGE.enterRightCarName);
+    });
+
     const cars = this.createCarArray(splitedName);
     const numOfRacing = await Console.readLineAsync(
       MESSAGE.enterNumberOfRacing
     );
 
+    Message.logIf(
+      !this.isValidNumber(numOfRacing),
+      ERROR_MESSAGE.enterNaturalNumber
+    );
+
     Console.print("\n실행 결과");
 
+    let result = "";
     for (let i = 0; i < parseInt(numOfRacing); i++) {
       cars.forEach((car) => {
         if (this.movingForward()) car.move();
-        Console.print(`${car.name} : ${car.distance}`);
+        result += `${car.name} : ${car.distance}\n`;
       });
-      Console.print("");
+      result += "\n";
     }
+    Console.print(result);
 
     const winners = this.pickWinner(cars);
     Console.print(`최종 우승자: ${winners.join(", ")}`);
@@ -51,6 +64,10 @@ class RacingCar {
       .map((car) => car.name);
 
     return winners;
+  }
+
+  isValidNumber(num) {
+    return /^[1-9]\d*$/.test(num);
   }
 }
 
