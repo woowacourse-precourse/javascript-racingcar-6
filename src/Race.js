@@ -1,4 +1,12 @@
 import Car from './Car';
+import { Console } from "@woowacourse/mission-utils";
+import { 
+    CAR_NAME_NULL_ERROR_MESSAGE,
+    CAR_NAME_INVALID_ERROR_MESSAGE,
+    RACE_RESULT_MESSAGE,
+    RACE_TIME_ERROR_MESSAGE,
+    CREATE_CAR_ERROR_MESSAGE,
+} from "./Define";
 
 export const VALIDATE_CAR_NAME = (CAR_NAME_INPUT) => {
     if (!CAR_NAME_INPUT) {
@@ -23,4 +31,13 @@ export const VALIDATE_RACE_TIME = (RACE_TIME_INPUT) =>  {
       throw new Error(RACE_TIME_ERROR_MESSAGE);
     }
     return RACE_TIME;
+}
+
+export const RACE_RUN = (CARS, RACE_TIMES) => {
+    Console.print(RACE_RESULT_MESSAGE);
+    for (let i = 0; i < RACE_TIMES; i++) {
+        CARS.forEach(CAR => CAR.move());
+        CARS.forEach(CAR => Console.print(CAR.toString()));
+        Console.print('');
+    }
 }
