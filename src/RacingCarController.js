@@ -5,10 +5,6 @@ import CONSTANTS from '../utils/Constants';
 import RacingCar from './RacingCar';
 
 class RacingCarController {
-  constructor() {
-    this.racingCar = new RacingCar();
-  }
-
   async play() {
     await this.readCarNames();
     this.readTrialCount();
@@ -20,7 +16,7 @@ class RacingCarController {
   }
   handleCarNames(carNamesArray) {
     Validator.validateCarNames(carNamesArray);
-    this.racingCar.generateCars(carNamesArray);
+    this.racingCar = new RacingCar(carNamesArray);
   }
   async readTrialCount() {
     const trialCount = Number(await InputView.readTrialCount());

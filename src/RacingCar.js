@@ -2,12 +2,9 @@ import Car from './Car';
 import MESSAGES from '../utils/Messages';
 
 class RacingCar {
-  constructor() {
-    this.cars = [];
+  constructor(carNamesArray) {
+    this.cars = carNamesArray.map((carName) => new Car(carName));
     this.totalProgressStatus = [];
-  }
-  generateCars(carNamesArray) {
-    carNamesArray.forEach((carName) => this.cars.push(new Car(carName)));
   }
   progressCars() {
     this.cars.forEach((car) => {
