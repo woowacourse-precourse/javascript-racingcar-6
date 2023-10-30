@@ -1,6 +1,7 @@
 import racingGameValidationMethods from '../src/game/game.error';
 
-const { checkUniqueElement, checkLengthInRange } = racingGameValidationMethods;
+const { checkUniqueElement, checkLengthInRange, validateMoveCount } =
+  racingGameValidationMethods;
 
 describe('자동차 이름 입력 유효성 검사', () => {
   test('checkLengthInRange 메서드 : min, max 범위에 포함되는 길이의 문자열인지 검사', () => {
@@ -26,6 +27,10 @@ describe('자동차 이름 입력 유효성 검사', () => {
   });
 });
 
-describe('시도할 횟수 입력에 대한 유효성 검사', () => {
-  test('시도할 횟수 입력에 대한 유효성 검사', () => {});
+test('시도할 횟수 입력에 대한 유효성 검사 메서드가 의도대로 동작하는지', () => {
+  const inputs = ['', 'abc', '-1'];
+
+  inputs.forEach((input) =>
+    expect(() => validateMoveCount(input)).toThrow('[ERROR]'),
+  );
 });
