@@ -61,4 +61,16 @@ describe("InputView 클래스 테스트", () => {
       `[ERROR] ${ERROR_MESSAGE.isNotNumber}`
     );
   });
+
+  test("총 라운드 수의 입력이 0보다 작은 정수라면 에러를 반환한다", async () => {
+    // given
+    const input = 0;
+    mockQuestions([input]);
+    const inputView = new InputView();
+
+    // when then
+    await expect(inputView.getTotalRoundUserInput()).rejects.toThrow(
+      `[ERROR] ${ERROR_MESSAGE.isNotOverZero}`
+    );
+  });
 });
