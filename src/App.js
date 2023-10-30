@@ -7,7 +7,7 @@ class App {
     const carObjects = carNames.map((carName) => new Car(carName));
     let moveCount = await this.getMoveCount();
 
-    Console.print("실행 경과");
+    Console.print("\n실행 경과");
 
     this.startRacing(carObjects, moveCount);
   }
@@ -48,12 +48,14 @@ class App {
     if (this.validationCarName(carNameArray)) {
       return carNameArray;
     } else {
-      throw Error("[ERROR] 자동차 이름을 5자 이하로 해야돼");
+      throw Error("[ERROR] 자동차 이름을 1~5자로 해야돼");
     }
   }
 
   validationCarName(carArray) {
-    return carArray.every((car) => car.length <= 5);
+    return carArray.every((car) => {
+      car.length <= 5 && car.length > 0;
+    });
   }
 
   async getMoveCount() {
