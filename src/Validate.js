@@ -1,7 +1,5 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
-import { INPUT_MESSAGE, OUTPUT_MESSAGE, ERROR_MESSAGE } from "./Message.js";
+import { ERROR_MESSAGE } from "./Message.js";
 
-//자동차 이름을 입력받는 함수
 const isUnderTwo = (carNames) => {
   return carNames.length < 2;
 };
