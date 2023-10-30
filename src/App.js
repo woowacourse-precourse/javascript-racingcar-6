@@ -44,6 +44,7 @@ class App {
     const winners = this.carList
       .filter((car) => car.totalMovementDashArray.length === maxMovementNum)
       .map((car) => car.name);
+    MissionUtils.Console.print(`최종 우승자 : ${winners}`);
   }
   async play() {
     await this.init();
