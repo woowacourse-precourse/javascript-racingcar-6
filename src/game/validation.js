@@ -2,7 +2,7 @@ const validate = {
   carName: (nameArray) => {
     const noSpace = /^\s*$/;
     nameArray.forEach((carName) => {
-      if (carName === undefined) throw new Error('[ERROR] 문자열을 입력해주세요.');
+      if (carName === undefined) throw new Error(`[ERROR] 문자열을 입력해주세요.`);
       if (carName === null) throw new Error('[ERROR] 문자열을 입력해주세요.');
       if (carName.length > 5) throw new Error('[ERROR] 입력은 최대 5자입니다.');
       if (carName.length === 0) throw new Error('[ERROR] 한자리 이상의 이름을 입력해주세요.');

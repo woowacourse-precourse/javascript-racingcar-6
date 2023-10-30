@@ -3,6 +3,7 @@ import computer from '../utils/console.js';
 
 const printResult = (finalRecord, lapLength) => {
   const winner = [];
+
   // 우승자 판단 로직
   finalRecord.forEach((record) => {
     const stepCount = record.lastIndexOf('-') - record.indexOf('-') + 1;
