@@ -27,6 +27,9 @@ class App {
 
         const uniqueNames = new Set();
 
+        if (userInputSplit.length === 1) {
+            throw new Error('[ERROR] 경주를 할 대상이 없습니다.');
+        }
         for (const name of userInputSplit) {
             if (name.length > 5) {
                 throw new Error('[ERROR] 이름은 5자 이하만 가능합니다.');
