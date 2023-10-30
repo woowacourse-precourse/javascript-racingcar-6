@@ -9,7 +9,7 @@ describe('RacingWinnerCalculator 테스트', () => {
         { carName: 'b', position: 8 },
         { carName: 'c', position: 0 },
       ],
-      output: 'a',
+      expected: 'a',
     },
     {
       input: [
@@ -18,7 +18,7 @@ describe('RacingWinnerCalculator 테스트', () => {
         { carName: 'b', position: 8 },
         { carName: 'c', position: 8 },
       ],
-      output: 'a, h',
+      expected: 'a, h',
     },
     {
       input: [
@@ -26,9 +26,9 @@ describe('RacingWinnerCalculator 테스트', () => {
         { carName: 'b', position: 5 },
         { carName: 'c', position: 5 },
       ],
-      output: 'a, b, c',
+      expected: 'a, b, c',
     },
-  ])('자동차 경주에서 우승자는 $output 이다.', ({ input, output }) => {
+  ])('자동차 경주에서 우승자는 $expected 이다.', ({ input, expected }) => {
     // given
     const calculator = new RacingWinnerCalculator(input);
 
@@ -36,6 +36,6 @@ describe('RacingWinnerCalculator 테스트', () => {
     const result = calculator.calculateRacingWinners();
 
     // then
-    expect(result).toBe(output);
+    expect(result).toBe(expected);
   });
 });
