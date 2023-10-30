@@ -14,7 +14,7 @@ class App {
       ValidateCarName(USER);
 
       const GAME_NUMBER = Number(
-        await MissionUtils.Console.readLineAsync(RACING_CAR_GAME.GET_NUMBER)
+        await MissionUtils.Console.readLineAsync(RACING_CAR_GAME.GET_NUMBER),
       );
       ValidateGameNumber(GAME_NUMBER);
 
