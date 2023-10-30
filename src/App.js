@@ -5,6 +5,7 @@ class App {
   async play() {
     const carsName = await this.receiveUserInput('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n');
     const cars = this.seperateNames(carsName);
+    this.isNotDuplicate(cars);
     const gamesNum = await this.receiveUserInput('시도할 횟수는 몇 회인가요?\n');
     const num = this.isValidGameNum(gamesNum);
     const carArr = [];
@@ -19,7 +20,7 @@ class App {
     for(let i = 0; i < num; i++){
       this.runOneCycle(carArr);
       this.printMsg('');
-    }
+    };
   }
 
   async receiveUserInput(guideMsg) {
@@ -63,6 +64,10 @@ class App {
 
   isValidLen(name) {
     if(name.length > 5) throw new Error('[ERROR] 자동차 이름의 길이는 5 이하입니다.');
+  }
+
+  isNotDuplicate(nameArr) {
+    if(new Set(nameArr).size !== nameArr.length) throw new Error('[ERROR] 자동차 이름은 중복될 수 없습니다.');
   }
 
   isValidGameNum(num) {
