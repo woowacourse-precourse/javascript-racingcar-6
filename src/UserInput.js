@@ -1,3 +1,6 @@
+import Messages from "./constants/Messages.js";
+import { Maximum, Minimum } from "./constants/Standard.js";
+
 class UserInput {
   async getCarNames() {
     // 사용자로부터 자동차의 이름을 입력받는다.
@@ -12,9 +15,28 @@ class UserInput {
     // isVaildTryNumber() 을 사용하여 정상적인 입력인지 확인한다.
   }
 
-  isVaildCarName(name) {
-    // 자동차 이름을 5글자 초과로 입력했을 경우 false
-    // 문자열(name)을 변수로 받아 검사한 후, 불린 값을 반환한다.
+  isVaildCarName(names) {
+    if (names.length < Minimum.CAR_NAME_NUMBER) {
+      return [false, Messages.ERROR.SHORT_CAR_NAME_NUMBER, null];
+    }
+    if (names.length > Maximum.CAR_NAME_NUMBER) {
+      return [false, Messages.ERROR.EXEED_CAR_NAME_NUMBER, null];
+    }
+    let carNames = {};
+    for (let name of names) {
+      if (carNames[name] === 0) {
+        return [false, Messages.ERROR.DUPLICATION_CAR_NAME, null];
+      }
+      if (name.length < Minimum.CAR_NAME_LETTER) {
+        return [false, Messages.ERROR.SHORT_CAR_NAME_LETTER, null];
+      }
+      if (name.length > Maximum.CAR_NAME_LETTER) {
+        return [false, Messages.ERROR.EXCEED_CAR_NAME_LETTER, null];
+      }
+      carNames[name] = 0;
+    }
+
+    return [true, "", carNames];
   }
 
   isVaildTryNumber(number) {
