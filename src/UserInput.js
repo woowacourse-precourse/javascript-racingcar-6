@@ -39,6 +39,6 @@ export default class User {
         } catch(e) {
           throw(e)
         }
-        console.log(inputPlayNumer)
+        // console.log(inputPlayNumer)
     } 
 }
