@@ -87,12 +87,9 @@ class App {
     const input = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
     const tries = parseInt(input, 10);
 
-    // 나중에 추가할 테스트 케이스
-    /*
     if (isNaN(tries) || tries <= 0) {
       throw new Error("[ERROR] 시도 횟수는 양의 정수여야 합니다.");
     }
-    */
 
     return tries;
   }
