@@ -7,8 +7,8 @@ describe('유효성 검사 테스트', () => {
       expect(() => validate.carName(nameArray)).toThrowError('[ERROR] 입력은 최대 5자입니다.');
     });
 
-    test('입력으로 1자리 이하일 경우 [ERROR]을 던진다', () => {
-      const nameArray = ['좋아합니다', '이번엔 진심이라구요', ''];
+    test('입력으로 빈문자가 들어올 경우 [ERROR]을 던진다', () => {
+      const nameArray = ['좋아합니다', ''];
       expect(() => validate.carName(nameArray)).toThrowError('[ERROR] 한자리 이상의 이름을 입력해주세요.');
     });
 
