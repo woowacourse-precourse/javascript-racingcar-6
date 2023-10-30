@@ -4,10 +4,10 @@
  *
  * @param {string} name
  */
-export function checkNameValid(name) {}
+export function assertNameValid(name) {}
 
 /**
  *
  * @param {number} amount
  */
-export function checkTryAmountValid(amount) {}
+export function assertTryAmountValid(amount) {}
