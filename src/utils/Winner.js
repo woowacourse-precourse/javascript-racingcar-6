@@ -1,5 +1,5 @@
 class Winner {
-  async whosWinner(obj) {
+  whosWinner(obj) {
     let maxValue = 0;
     let winners = [];
     for (const key in obj) {

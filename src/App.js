@@ -3,23 +3,22 @@ import Utility from "./utils/Utility.js";
 
 class App {
   async play() {
-    let util = new Utility();
+    const util = new Utility();
     console.log(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
     );
-    let carNamesInput = await Console.readLineAsync("");
-    let carNames = carNamesInput.replace(/\s/g, "").split(",");
-    let carNamesObj = await util.createToRightObj(carNames);
+    const carNamesInput = await Console.readLineAsync("");
+    const carNames = carNamesInput.replace(/\s/g, "").split(",");
+    const carNamesObj = util.createToRightObj(carNames);
     console.log("시도할 횟수는 몇 회인가요?");
-    let tryNumber = await Console.readLineAsync("");
+    const tryNumber = await Console.readLineAsync("");
 
-    // 앞으로 갈지말지 정해서 객체에 반영
-    for (let j = 0; j < tryNumber; j++) {
-      for (let i = 0; i < carNames.length; i++) {
-        let randomNumber = await util.getRandomNumber(0, 9);
-        let canMove = await util.isAbleToMove(randomNumber);
+    for (let currentTry = 0; currentTry < tryNumber; currentTry++) {
+      for (let idx = 0; idx < carNames.length; idx++) {
+        const randomNumber = await util.getRandomNumber(0, 9);
+        const canMove = util.isAbleToMove(randomNumber);
         if (canMove) {
-          carNamesObj[carNames[i]]++;
+          carNamesObj[carNames[idx]]++;
         }
       }
       await util.moveCurrent(carNamesObj);
