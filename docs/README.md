@@ -112,7 +112,7 @@
         woni : -
         jun : --
 
-### 🔴 5. 최종 우승자 출력
+### 🟢 5. 최종 우승자 출력
 
 - ✏️ 기능 설명
 
@@ -164,8 +164,8 @@
 <td>10월 30일 (월)</td>
 <td>기능 목록 5 구현 및 테스트</td>
 <td>2 Hours</td>
-<td style="text-align: center">🔴</td>
-<td>-</td>
+<td style="text-align: center">🟢</td>
+<td>5 Hours</td>
 </tr>
 <tr>
 <td>10월 31일 (화)</td>
