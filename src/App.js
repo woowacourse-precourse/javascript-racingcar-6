@@ -12,7 +12,14 @@ class App {
     return carsWithMaxForward;
   }
   roundInputCheck(round) {
-    return parseInt(round);
+    const intRound = pareInt(round);
+    if(isNaN(intRound)) {
+      throw new Error("[ERROR] 숫자를 입력해주세요.");
+    }
+    if(intRound<0) {
+      throw new Error("[ERROR} 양수를 입력해주세요.")
+    }
+    return intRound;
   }
   async play() {
     let players = await MissionUtils.Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
