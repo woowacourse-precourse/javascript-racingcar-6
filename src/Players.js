@@ -1,5 +1,3 @@
-import CheckError from './CheckError.js';
-
 class Players {
   #names;
   #gameResult;

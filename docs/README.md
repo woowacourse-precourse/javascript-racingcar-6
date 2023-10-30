@@ -29,6 +29,7 @@
   ┣ Constant.js
   ┣ Game.js
   ┣ index.js
+  ┣ Input.js
   ┗ Players.js
 ```
 
