@@ -19,7 +19,7 @@ export const OUTPUT_MESSAGE_METHOD = Object.freeze({
     return racingResult
       .map((turnResult) =>
         turnResult
-          .map((car) => `${car.carName} : ${moveRacingCar.repeat(car.position)}`)
+          .map(({ carName, position }) => `${carName} : ${moveRacingCar.repeat(position)}`)
           .join('\n'),
       )
       .join('\n\n');
