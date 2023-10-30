@@ -1,3 +1,4 @@
+import LIMIT from '../constant/limit';
 import Car from './car';
 import { Random } from '@woowacourse/mission-utils';
 
@@ -19,9 +20,7 @@ class RacingGame {
 
   #moveForwardRandomly() {
     this.#racingCars.forEach((car) => {
-      const canGoForward = Random.pickNumberInRange(0, 9) >= 4;
-
-      if (canGoForward) {
+      if (Random.pickNumberInRange(0, 9) >= LIMIT.FORWARD_THRESHOLD) {
         car.moveForward();
       }
     });
