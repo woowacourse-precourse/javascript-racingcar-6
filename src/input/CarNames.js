@@ -1,13 +1,13 @@
-import { MESSAGE } from '../constants';
-import { Input } from '../interface/Input';
-import { validate } from './validations';
+import { MESSAGE } from '../constants.js';
+import { Input } from '../interface/Input.js';
+import { validate } from './validations.js';
 
-export const getName = async () => {
+export const getCarNames = async () => {
   try {
     const names = await Input(MESSAGE.CAR_NAME.INPUT);
     validate.carNames(names);
 
-    return names;
+    return names.split(',');
   } catch (e) {
     return new Promise((_, reject) => {
       reject(e);
