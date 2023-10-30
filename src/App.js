@@ -1,7 +1,7 @@
 import RacingCarController from './controllers/RacingCarController.js';
 
 class App {
-  async play() {
+  play() {
     const racingCarController = new RacingCarController();
     racingCarController.startGame();
   }

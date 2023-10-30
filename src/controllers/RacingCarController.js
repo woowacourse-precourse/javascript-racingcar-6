@@ -28,7 +28,6 @@ class RacingCarController {
     }
 
     OutputView.printResultText();
-
     for (let count = 0; count < this.#moveCount; count += 1) {
       this.moveCars();
     }
@@ -56,10 +55,10 @@ class RacingCarController {
       }
     });
 
-    this.showResult();
+    this.showPositions();
   }
 
-  showResult() {
+  showPositions() {
     this.#cars.forEach(car => {
       OutputView.printCarPosition(car);
     });
