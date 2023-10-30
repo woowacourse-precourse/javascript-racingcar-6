@@ -11,7 +11,7 @@ class CarGame {
 
   getForwardCount(attempts) {
     let count = 0;
-    for (let i = 0; i < attempts; i++) {
+    for (let i = 0; i < attempts; i += 1) {
       count = this.getRandomNumber(count);
     }
     return count;

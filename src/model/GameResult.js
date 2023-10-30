@@ -26,8 +26,7 @@ class GameResult {
   }
 
   getWinner(carLog) {
-    const values = Array.from(carLog.values());
-    const maxValue = Math.max(...values);
+    const maxValue = Math.max(...carLog.values());
     const winners = [];
 
     carLog.forEach((value, carName) => {

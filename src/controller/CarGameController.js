@@ -25,7 +25,7 @@ class CarGameController {
     OutputView.printResultMessage();
     this.#gameResult = new GameResult();
 
-    for (let i = 0; i < attempts; i++) {
+    for (let i = 0; i < attempts; i += 1) {
       this.#carLog = this.#gameResult.getForwardResult(carPosition);
       OutputView.printGameProcess(this.#carLog);
       Console.print('\n');
