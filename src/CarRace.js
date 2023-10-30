@@ -1,6 +1,7 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import carHandler from "./utils/carHandler";
 import numberHandler from "./utils/numberHandler";
+import resultHandler from "./utils/resultHandler";
 
 class CarRace {
   #cars;
@@ -39,58 +40,14 @@ class CarRace {
   handleRaceResult() {
     MissionUtils.Console.print("실행 결과");
 
-    const STRINGTOPRINT = this.getResultString();
-    MissionUtils.Console.print(STRINGTOPRINT);
-
-    const WINNER = this.getWinner(this.#cars);
-    this.printWinner(WINNER);
-  }
-
-  getResultString() {
-    let stringToPrint = "";
-
-    for (let tryOrder = 0; tryOrder < this.#tryNumber; tryOrder += 1) {
-      let string = "";
-      this.#cars.forEach((carClass) => {
-        const RANDOM = this.getRandomeNumberInRange(0, 9);
-        if (RANDOM >= 4) carClass.setDistancePlusOne();
-        string += `${carClass.getName()} : ${carClass.getDistanceString()}\n`;
-      });
-      stringToPrint += string;
-      stringToPrint += "\n";
-    }
-
-    return stringToPrint;
-  }
-
-  getRandomeNumberInRange(min, max) {
-    return MissionUtils.Random.pickNumberInRange(min, max);
-  }
-
-  getWinner(cars) {
-    const CAR_OBJECTS = cars.map((carClass) => {
-      const CAR_OBJECT = {
-        name: carClass.getName(),
-        distance: carClass.getDistanceString().length,
-      };
-      return CAR_OBJECT;
+    const RESULT_STRING = resultHandler.getResultString({
+      tryNumber: this.#tryNumber,
+      cars: this.#cars,
     });
+    MissionUtils.Console.print(RESULT_STRING);
 
-    CAR_OBJECTS.sort(
-      (carObject1, carObject2) => carObject2.distance - carObject1.distance
-    );
-
-    const WIN_DISTANCE = CAR_OBJECTS[0].distance;
-    const winner = [];
-    CAR_OBJECTS.forEach(({ name, distance }) => {
-      if (distance === WIN_DISTANCE) winner.push(name);
-    });
-    return winner;
-  }
-
-  printWinner(winner) {
-    const WINNER_STRING = winner.join(", ");
-    MissionUtils.Console.print(`최종 우승자 : ${WINNER_STRING}`);
+    const WINNER = resultHandler.getWinner(this.#cars);
+    resultHandler.printWinner(WINNER);
   }
 }
 

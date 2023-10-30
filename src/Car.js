@@ -15,6 +15,10 @@ class Car {
     this.#distanceString += "-";
   }
 
+  getDistanceLength() {
+    return this.#distanceString.length;
+  }
+
   getDistanceString() {
     return this.#distanceString;
   }
