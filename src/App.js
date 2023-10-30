@@ -1,4 +1,4 @@
-import { Console } from '@woowacourse/mission-utils';
+import { Console, Random } from '@woowacourse/mission-utils';
 import validCarNames from './validation/validCarNames.js';
 import validTryCount from './validation/validTryCount.js';
 
@@ -23,6 +23,22 @@ class App {
 
     return validTryCount(tryCount);
   }
+
+  runRace(cars, tryCount) {
+    const progressList = new Array(cars.length).fill('');
+
+    for (let i = 0; i < tryCount; i += 1) {
+      cars.forEach((car, carIndex) => {
+        progressList[carIndex] += this.generateRandomProgress();
+        Console.print(`${car} : ${progressList[carIndex]}`);
+      });
+      Console.print('');
+    }
+  }
+
+  getRandomMove = () => Random.pickNumberInRange(0, 9);
+
+  generateRandomProgress = () => (this.getRandomMove() >= 4 ? '-' : '');
 }
 
 export default App;
