@@ -13,17 +13,16 @@ export default class Game {
     this.#racingCars = racingCars;
     this.#totalLab = attemptNumber;
     this.#currentLab = 0;
-
-    this.#startRace();
   }
 
-  #startRace() {
+  startRace() {
     do {
       this.#move();
       this.#getRacingCommentary();
       this.#currentLab += 1;
-      console.log(`실행결과 배열:\n${this.racingCommentary}`);
     } while (this.#currentLab < this.#totalLab);
+
+    return this.racingCommentary;
   }
 
   #move() {

@@ -13,9 +13,10 @@ export default class GameController {
   async start() {
     const racingCars = await this.#getRacingCars();
     const attemptNumber = await this.#getAttemptNumber();
-    console.log(`시도횟수: ${attemptNumber}`);
 
     this.#game = new Game({ racingCars, attemptNumber });
+    const result = this.#game.startRace();
+    View.printResult(result);
   }
 
   async #getRacingCars() {

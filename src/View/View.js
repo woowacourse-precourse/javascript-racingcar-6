@@ -2,6 +2,7 @@ import { Console } from '@woowacourse/mission-utils';
 import { InputView } from './InputView.js';
 import { MESSAGE } from '../constants/Message.js';
 
+// @TODO: 객체에서 클래스로 모듈화
 export const View = {
   async readCarNames() {
     return await InputView.inputLine(MESSAGE.NAME);
@@ -11,7 +12,13 @@ export const View = {
     return await InputView.inputLine(MESSAGE.ATTEMPT);
   },
 
-  printResultHeader() {
+  printResult(result) {
     Console.print(MESSAGE.RESULT);
+    result.forEach((round) => {
+      round.forEach(({ name, position }) => {
+        Console.print(`${name} : ${'-'.repeat(position)}`);
+      });
+      Console.print('');
+    });
   },
 };
