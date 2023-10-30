@@ -1,5 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
-import { MESSAGE } from "./Constant";
+import { MESSAGE } from "./Constant.js";
 
 const Output = {
   racingResult() {
@@ -10,4 +10,4 @@ const Output = {
   },
 }
 
-export default Output;
+export { Output };
