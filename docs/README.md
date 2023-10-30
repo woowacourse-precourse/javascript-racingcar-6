@@ -26,15 +26,29 @@
 
 ### 게임 로직 함수
 
-- `lap.printStage()`
+- `Lap.js`
 
-  - 차수별 진행 상황 출력 [v]
+  - `makeRecord` 
 
-- `printResult()`
+    - 자동차 이름을 넣은 출력 용 배열 생성 
+
+  - `recordCheck`[+]
+
+    - `goFoward` 메서드와 `printStage` 메서드를 외부에서 호출할 때 사용 
+
+  - `goFoward`[+]
+
+    - 참가한 자동차들의 전진 가능 여부 판단 로직
+
+  - `printStage`
+
+    - 위에서 생성된 배열을 요구사항에 맞게 출력
+
+- `printResult.js`
 
   - 최종 결과 배열에서 우승자 판단 후 출력 [v]
 
-- `validatate()`
+- `validatate.js`
 
   - 자동차 이름 입력 시 검증 항목 `carName`
 
