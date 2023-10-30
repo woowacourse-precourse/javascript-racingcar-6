@@ -14,6 +14,9 @@ class App {
     const name = await this.getCarName();
     const cars = this.saveCarConstructor(name);
     MissionUtils.Console.print(name);
+
+    const tryNum = await this.getNumberOfTry();
+    MissionUtils.Console.print(tryNum);
   }
 
   async getCarName() {
@@ -25,6 +28,12 @@ class App {
     const nameList = name.split(",");
     const cars = nameList.map((carName) => new App(carName, ""));
     return cars;
+  }
+
+  async getNumberOfTry() {
+    MissionUtils.Console.print("시도할 횟수는 몇 회인가요?");
+    const tryNum = await MissionUtils.Console.readLineAsync();
+    return tryNum;
   }
 }
 
