@@ -1,5 +1,5 @@
 import { Random } from '@woowacourse/mission-utils';
-import { GRANDPRIX_MAGICNUMBER } from '../constants/GrandPrixOption.js';
+import { GRANDPRIX_MOVE_OPTION } from '../constants/GrandPrixOption.js';
 
 export default class RandomNumberGenerator {
   /**
@@ -9,7 +9,7 @@ export default class RandomNumberGenerator {
    */
   static generate(amount) {
     return Array.from({ length: amount }, () =>
-      Random.pickNumberInRange(GRANDPRIX_MAGICNUMBER.min, GRANDPRIX_MAGICNUMBER.max),
+      Random.pickNumberInRange(GRANDPRIX_MOVE_OPTION.min, GRANDPRIX_MOVE_OPTION.max),
     );
   }
 }
