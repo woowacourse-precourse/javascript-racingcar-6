@@ -1,19 +1,19 @@
-import { Console } from "@woowacourse/mission-utils";
-import { MESSAGE } from "../constants/constants.js";
+import { Console } from '@woowacourse/mission-utils';
+import { MESSAGE } from '../constants/constants.js';
 
 const printRaceWinner = (raceResult) => {
-  const winner = [];
+  const winners = [];
   const maxLength = Math.max(
     ...Object.values(raceResult).map((path) => path.length)
   );
 
-  for (let [car, path] of Object.entries(raceResult)) {
+  Object.entries(raceResult).forEach(([car, path]) => {
     if (path.length === maxLength) {
-      winner.push(car);
+      winners.push(car);
     }
-  }
+  });
 
-  Console.print(`${MESSAGE.OUTPUT_WINNER} : ${winner.join(", ")}`);
+  Console.print(`${MESSAGE.OUTPUT_WINNER} : ${winners.join(', ')}`);
 };
 
 export default printRaceWinner;

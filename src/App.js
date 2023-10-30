@@ -1,6 +1,6 @@
-import { getRaceCars, getRaceCount } from "./functions/getRaceInput.js";
-import printRaceReult from "./functions/printRaceResult.js";
-import printRaceWinner from "./functions/printRaceWinner.js";
+import { getRaceCars, getRaceCount } from './functions/getRaceInput.js';
+import printRaceReult from './functions/printRaceResult.js';
+import printRaceWinner from './functions/printRaceWinner.js';
 
 class App {
   async play() {
