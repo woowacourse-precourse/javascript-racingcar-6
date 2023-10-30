@@ -1,10 +1,15 @@
+/* eslint-disable class-methods-use-this */
 import { Console } from '@woowacourse/mission-utils';
 import { INPUT_MESSAGE } from '../constants/message';
 
 class InputView {
-  // eslint-disable-next-line class-methods-use-this
   async readPlayerCars(){
     const input = await Console.readLineAsync(INPUT_MESSAGE.PLAYER_CARS);
+    return input;
+  }
+
+  async readMoveCounts(){
+    const input = await Console.readLineAsync(INPUT_MESSAGE.MOVE_COUNTS);
     return input;
   }
 }
