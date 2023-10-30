@@ -1,4 +1,5 @@
 import { Console, MissionUtils } from '@woowacourse/mission-utils';
+import { CheckLength } from './CheckLength.js';
 
 class App {
   async play() {
@@ -11,10 +12,15 @@ class App {
     
     const carList = cars.replace(/ /g, '').split(',').map(String); // 공백 제거 및 분리
     carList.map(car => {
-      if (car.length > 5) {
-        throw new Error('[ERROR] 자동차 이름이 5이상입니다.')
-      }
+      CheckLength(car)
     });
+    
+    // const carList = cars.replace(/ /g, '').split(',').map(String); // 공백 제거 및 분리
+    // carList.map(car => {
+    //   if (car.length > 5) {
+    //     throw new Error('[ERROR] 자동차 이름이 5이상입니다.')
+    //   }
+    // });
     
     let count = 0;
     let forwardCounts = [];
