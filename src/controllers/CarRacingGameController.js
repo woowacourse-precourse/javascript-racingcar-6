@@ -1,0 +1,21 @@
+import CarRacingGames from "../models/carRacingGame.js";
+import Validator from "../models/validator.js";
+
+import InputView from "../views/InputView.js";
+
+export default class CarRacingGamesControllers {
+  constructor() {
+    this.carListArr;
+  };
+
+  // 자동차 경주를 시작하는 메서드
+  async start() {
+    // 자동차 이름을 입력받는다.
+    const carListString = await InputView.inputCarNames();
+
+    // 자동차 이름의 유효성을 검사한 후 { name: @string, numberOfMovesForward: @number }[]로 값 저장 
+    if (Validator.validateInputCarNames()) {
+      this.carListArr = CarRacingGames.setupCarList(carListString);
+    };
+  };
+};
