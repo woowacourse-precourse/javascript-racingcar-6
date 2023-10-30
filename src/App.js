@@ -1,4 +1,4 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
+import { Console, Random } from "@woowacourse/mission-utils";
 
 class App {
   constructor() {
@@ -33,7 +33,7 @@ class App {
 
   makeRandomNumber(raceResult) {
     raceResult.forEach((element) => {
-      const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
+      const randomNumber = Random.pickNumberInRange(0, 9);
       element = this.goForward(element, randomNumber);
     });
     return raceResult;
@@ -47,9 +47,9 @@ class App {
 
   printResult(raceResult) {
     raceResult.forEach((e) => {
-      MissionUtils.Console.print(`${e.name} : ${e.result}\n`);
+      Console.print(`${e.name} : ${e.result}\n`);
     });
-    MissionUtils.Console.print("\n");
+    Console.print("\n");
   }
 
   findlength(raceResult) {
@@ -110,16 +110,16 @@ class App {
 
   printWinner(winnerName) {
     const winnerNameString = winnerName.join(", ");
-    MissionUtils.Console.print(`최종 우승자 : ${winnerNameString}`);
+    Console.print(`최종 우승자 : ${winnerNameString}`);
   }
 
   async play() {
-    const carNames = await MissionUtils.Console.readLineAsync(
+    const carNames = await Console.readLineAsync(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
     );
     const carNamesArray = this.getCarNamesArray(carNames);
     this.checkCarNames(carNamesArray);
-    const repeatNumber = await MissionUtils.Console.readLineAsync(
+    const repeatNumber = await Console.readLineAsync(
       "시도할 횟수는 몇 회인가요?\n"
     );
     this.checkRepeatNumber(repeatNumber);
