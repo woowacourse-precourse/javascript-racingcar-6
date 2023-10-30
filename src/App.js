@@ -2,7 +2,11 @@ import { Console } from '@woowacourse/mission-utils';
 import { PROGRESS_SIGN, THRESHOLD } from './lib/constants.js';
 import LOGS from './lib/logs.js';
 import { generateRandomArr } from './util.js';
-import Validator from './Validator.js';
+import {
+  validateDuplicate,
+  validateEachLength,
+  validateTryIsNumber,
+} from './Validator.js';
 
 class App {
   constructor() {
@@ -24,14 +28,14 @@ class App {
     const input = await Console.readLineAsync(LOGS.INPUT_PROMPT1);
     // 공백 제거, 연속된 쉼표 1개로 통일
     const inputArr = input.replace(/\s/g, '').replace(/,+/g, ',').split(',');
-    inputArr.forEach(str => Validator.validateEachLength(str));
-    Validator.validateDuplicate(inputArr);
+    inputArr.forEach(str => validateEachLength(str));
+    validateDuplicate(inputArr);
     this.cars = inputArr;
   }
 
   async inputTryWithValidate() {
     const input = await Console.readLineAsync(LOGS.INPUT_PROMPT2);
-    Validator.validateTryIsNumber(input);
+    validateTryIsNumber(input);
     this.tryNum = parseInt(input, 10);
   }
 
