@@ -1,4 +1,3 @@
-import App from '../src/App.js';
 import { MissionUtils } from '@woowacourse/mission-utils';
 
 const mockQuestions = (inputs) => {
@@ -93,6 +92,12 @@ describe('story5. 최종 우승자 출력', () => {
     const input = '산 : -----';
     const result = input.split(' ');
     const answer = ['산', ':', '-----'];
+    expect(result).toEqual(answer);
+  });
+  test("공백으로 나눈 배열에서 첫번째 원소를 반환한다.", () => {
+    const input = ['산', ':', '-----'];
+    const result = input[0];
+    const answer = '산';
     expect(result).toEqual(answer);
   });
 });
