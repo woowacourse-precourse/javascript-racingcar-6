@@ -60,4 +60,19 @@ describe('자동차 경주 게임', () => {
       await expect(app.play()).rejects.toThrow('[ERROR]');
     },
   );
+
+  test.each([[['']], [['hello']], [['-1']]])(
+    '시도할 횟수에 대한 예외 처리',
+    async (inputs) => {
+      // given
+      const mock = ['pobi,woni', ...inputs];
+      mockQuestions(mock);
+
+      // when
+      const app = new App();
+
+      // then
+      await expect(app.play()).rejects.toThrow('[ERROR]');
+    },
+  );
 });
