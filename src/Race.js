@@ -1,4 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
+import { Message } from './Message.js';
 class Race {
   constructor(cars) {
     this.cars = cars;
@@ -22,6 +23,30 @@ class Race {
       this.playRound();
       this.displayCars();
     }
+
+    this.printWinner(this.cars);
+  }
+
+  printWinner(finalResult) {
+    const sortResult = finalResult.sort((a, b) => b.position - a.position);
+    const winnerString = this.makeWinnerString(sortResult);
+
+    Console.print(`${Message.WINNER}${winnerString}`);
+  }
+
+  makeWinnerString(carList) {
+    const winner = [];
+    winner.push(carList[0].name);
+
+    for (let i = 0; i < carList.length - 1; i++) {
+      if (carList[i].position == carList[i + 1].position) {
+        winner.push(carList[i + 1].name);
+      } else {
+        break;
+      }
+    }
+
+    return winner.join(', ');
   }
 }
 export { Race };
