@@ -5,7 +5,9 @@ const isNumber = (count) => {
 
 const isLongerThan5 = (name) => name.length > 5;
 
-const isNameDuplicate = (name, cars) => cars.find((car) => car.isSameName(name)) !== undefined;
+const isNameDuplicate = (name, cars) =>
+  // eslint-disable-next-line implicit-arrow-linebreak
+  cars.find((car) => car.isSameName(name)) !== undefined;
 
 const isNumberAtLeast4 = (number) => number >= 4;
 
@@ -24,4 +26,11 @@ const validateCount = (count) => {
   }
 };
 
-export { isNumber, isLongerThan5, isNameDuplicate, isNumberAtLeast4, validateName, validateCount };
+export {
+  isNumber,
+  isLongerThan5,
+  isNameDuplicate,
+  isNumberAtLeast4,
+  validateName,
+  validateCount,
+};

@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 import { MissionUtils } from "@woowacourse/mission-utils";
 import Car from "./Car.js";
 import { isNumberAtLeast4, validateCount, validateName } from "./utils/validation.js";
@@ -17,15 +18,19 @@ class App {
   }
 
   async inputTryCount() {
-    const count = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+    const count = await MissionUtils.Console.readLineAsync(
+      "시도할 횟수는 몇 회인가요?\n",
+    );
 
     validateCount(count);
 
-    this.tryCount = parseInt(count);
+    this.tryCount = parseInt(count, 10);
   }
 
   async inputCarNames() {
-    return await MissionUtils.Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
+    return MissionUtils.Console.readLineAsync(
+      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n",
+    );
   }
 
   makeCarArray(names) {
@@ -39,7 +44,7 @@ class App {
   startRacing() {
     MissionUtils.Console.print("\n실행 결과");
 
-    for (let count = 0; count < this.tryCount; count++) {
+    for (let count = 0; count < this.tryCount; count += 1) {
       this.cars.forEach((car) => {
         this.moveForward(car);
         car.printState();
@@ -59,9 +64,11 @@ class App {
   getWinnersNames() {
     const maxForwardCount = Math.max.apply(
       null,
-      this.cars.map((car) => car.getForwardCount)
+      this.cars.map((car) => car.getForwardCount),
     );
-    return this.cars.filter((car) => car.isWinner(maxForwardCount)).map((car) => car.getName);
+    return this.cars
+      .filter((car) => car.isWinner(maxForwardCount))
+      .map((car) => car.getName);
   }
 
   printWinner() {

@@ -1,5 +1,11 @@
-import Car from "../src/Car";
-import { isLongerThan5, isNumber, isNumberAtLeast4, validateCount, validateName } from "../src/utils/validation";
+import Car from "../src/Car.js";
+import {
+  isLongerThan5,
+  isNumber,
+  isNumberAtLeast4,
+  validateCount,
+  validateName,
+} from "../src/utils/validation.js";
 
 describe("validation.js 테스트", () => {
   test("숫자 형식 여부 검사 - 숫자 입력", () => {

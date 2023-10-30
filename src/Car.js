@@ -2,6 +2,7 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 
 class Car {
   #name = "";
+
   #forwardCount = 0;
 
   constructor(name) {
