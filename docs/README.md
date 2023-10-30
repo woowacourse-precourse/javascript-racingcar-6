@@ -38,7 +38,7 @@
 - **game Progress Function**
   : 라운드 횟수 만큼 반복하면서 각 자동차 마다 이동한 횟수를 관리하는 함수
 
-  - **printCarNameStatus**
+  - **printCarNameStatus Function**
     : 각 자동차 마다 얼마나 이동했는지를 출력하는 함수
 
 ---
@@ -48,11 +48,11 @@
 
 ### 2. Car class
 
-- **getCarName**
+- **getCarName Function**
   : 차 이름과 관련된 데이터를 보여주는 함수 (UI 로직)
 
-- **getCarPosition**
+- **getCarPosition Function**
   : 차의 이동 거리와 관련된 데이터를 보여주는 함수(UI 로직)
 
-- **checkPosition**
+- **checkPosition Funtion**
   : 차의 이동 거리를 조건에 따라 누적해주는 함수 (비지니스 로직)
