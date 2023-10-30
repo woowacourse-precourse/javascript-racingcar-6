@@ -2,6 +2,7 @@ import Car from '../models/Car.js';
 import RaceManager from '../models/RaceManager.js';
 import CarRaceView from '../views/CarRaceView.js';
 import { repeatFunctionNTimes } from '../utils/repeatFunctionNTimes.js';
+import { createHyphenString } from '../utils/createHyphenString.js';
 import {
   validateCarNames,
   valiadateDuplicteName,
@@ -9,32 +10,38 @@ import {
 } from '../utils/validateValue.js';
 
 class CarRaceController {
+  raceManager;
+
   async initializeGame() {
     const carNames = await this.promptCarNames();
     const moveCount = await this.promptMoveCount();
     const carList = carNames.map(carName => new Car(carName));
-
     this.raceManager = new RaceManager(carList);
     this.raceManager._setMoveCount(moveCount);
   }
 
-  palyRace() {
+  _playRace() {
     this.raceManager.race();
     this.printRaceProgress();
   }
 
   printRaceProgress() {
-    const { printNewline, printProgress } = CarRaceView;
-    this.raceManager.carModels.forEach(carModel => {
-      const carName = carModel.carName;
-      const position = carModel.getPosition();
-      printProgress(carName, position);
-    });
+    const { printNewline } = CarRaceView;
+    this.raceManager.carModels.forEach(this.printCarProgress);
     printNewline();
   }
 
+  printCarProgress(carModel) {
+    const { printProgress } = CarRaceView;
+    const carName = carModel.carName;
+    const position = carModel.getPosition();
+    const progressStatus = createHyphenString(position);
+    printProgress(carName, progressStatus);
+    return { carName, progressStatus };
+  }
+
   playGame() {
-    repeatFunctionNTimes(this.raceManager.moveCount, this.palyRace.bind(this));
+    repeatFunctionNTimes(this.raceManager.moveCount, this._playRace.bind(this));
   }
 
   getGameResult() {
