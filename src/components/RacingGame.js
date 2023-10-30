@@ -1,11 +1,13 @@
 import { Console } from '@woowacourse/mission-utils';
 import { INPUT_MESSAGE, OUTPUT_MESSAGE, OTHERS } from '../utils/constants.js';
+import { Random } from '@woowacourse/mission-utils';
 
 class RacingGame {
   constructor() {
     this.userInputCarNameList = null;
     this.userInputCarCount = null;
     this.userInputTryCount = null;
+    this.randomNumberForRace = null;
   }
 
   // CONTROLLER
@@ -73,7 +75,13 @@ class RacingGame {
   }
 
   //MODEL
-  generateRandomNumber() {}
+  generateRandomNumber() {
+    this.randomNumberForRace = Array.from({ length: this.userInputTryCount }, () => {
+      return Array.from({ length: this.userInputCarCount }, () => {
+        return Random.pickNumberInRange(0, 9);
+      });
+    });
+  }
 
   // MODEL
   runRace() {}
