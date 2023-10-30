@@ -1,6 +1,6 @@
 /* eslint-disable max-lines-per-function */
-import isValidInputCarName from '../../src/common/middleware/carNameValidator';
-import isValidInputTryNumber from '../../src/common/middleware/tryNumberValidator';
+import isValidCarName from '../../src/common/utils/carNameValidator';
+import isValidTryNumber from '../../src/common/utils/tryNumberValidator';
 
 describe('자동차 이름 유효성 검사', () => {
   const validCarNames = ['Tesla,Volvo', '테슬라,메르세데스', '##,!@#$'];
@@ -10,31 +10,31 @@ describe('자동차 이름 유효성 검사', () => {
 
   test('중복 여부 확인', () => {
     validCarNames.forEach((carNames) => {
-      expect(isValidInputCarName(carNames)).toBe(true);
+      expect(isValidCarName(carNames)).toBe(true);
     });
 
     duplicatedCarNames.forEach((carNames) => {
-      expect(isValidInputCarName(carNames)).toBe(false);
+      expect(isValidCarName(carNames)).toBe(false);
     });
   });
 
   test('5자 이하 여부 확인', () => {
     validCarNames.forEach((carNames) => {
-      expect(isValidInputCarName(carNames)).toBe(true);
+      expect(isValidCarName(carNames)).toBe(true);
     });
 
     inValidLengthNames.forEach((carNames) => {
-      expect(isValidInputCarName(carNames)).toBe(false);
+      expect(isValidCarName(carNames)).toBe(false);
     });
   });
 
   test('쉼표로 구분 여부 확인', () => {
     validCarNames.forEach((carNames) => {
-      expect(isValidInputCarName(carNames)).toBe(true);
+      expect(isValidCarName(carNames)).toBe(true);
     });
 
     inValidNumberNames.forEach((carNames) => {
-      expect(isValidInputCarName(carNames)).toBe(false);
+      expect(isValidCarName(carNames)).toBe(false);
     });
   });
 });
@@ -45,11 +45,11 @@ describe('시도 횟수 유효성 검사', () => {
     const invalidTryNumbers = [-1, 10, 'abc', '@'];
 
     validTryNumbers.forEach((tryNumber) => {
-      expect(isValidInputTryNumber(tryNumber)).toBe(true);
+      expect(isValidTryNumber(tryNumber)).toBe(true);
     });
 
     invalidTryNumbers.forEach((tryNumber) => {
-      expect(isValidInputTryNumber(tryNumber)).toBe(false);
+      expect(isValidTryNumber(tryNumber)).toBe(false);
     });
   });
 });
