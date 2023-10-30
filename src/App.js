@@ -1,5 +1,5 @@
 import Game from './module/Game.js';
-import { validateCarName, validateMoveNum } from './validateFn.js';
+import { validateCarName, validateMoveNum } from './utils/validateFn.js';
 
 class App {
   async play() {
