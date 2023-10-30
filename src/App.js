@@ -44,6 +44,14 @@ class App {
       }
     });
   }
+
+  // 라운드 출력 형식
+  printRoundResult() {
+    for (const [player, result] of Object.entries(this.GAME_ROUND_RESULT)) {
+      Console.print(`${player} : ${result}`);
+    }
+    Console.print('\n');
+  }
 }
 
 export default App;
