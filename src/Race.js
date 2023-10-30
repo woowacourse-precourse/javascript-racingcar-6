@@ -8,6 +8,7 @@ import {
     CREATE_CAR_ERROR_MESSAGE,
     NOT_MOVE_WIN_ERROR_MESSAGE,
     RACE_WINNER_PRINT_MESSAGE,
+    NOT_FOUND_WINNER_ERROR_MESSAGE,
 } from "./Define";
 
 export const VALIDATE_CAR_NAME = (CAR_NAME_INPUT) => {
@@ -53,5 +54,8 @@ export const FIND_WINNERS = (CARS) => {
 }
 
 export const PRINT_WINNERS = (WINNERS) => {
+    if (WINNERS.length < 1) {
+        throw new Error(NOT_FOUND_WINNER_ERROR_MESSAGE);
+    }
     Console.print(`${RACE_WINNER_PRINT_MESSAGE}${WINNERS.join(', ')}`);
 }
