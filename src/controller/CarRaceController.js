@@ -1,15 +1,15 @@
-import { Console } from "@woowacourse/mission-utils";
 import Car from "../models/Car.js";
 import Race from "../models/Race.js";
 import InputView from "../views/InputView.js";
+import OutputView from "../views/OutputView.js";
 
-// TODO Validtaion처리 및 Input별도로 분리할 것
 class CarRaceController {
   constructor() {
     this.cars = [];
     this.race = null;
     this.totalRound = 0;
     this.InputView = new InputView();
+    this.OutputView = new OutputView();
   }
 
   async setup() {
@@ -22,28 +22,15 @@ class CarRaceController {
 
   startRace() {
     this.race = new Race(this.cars);
-    Console.print("실행 결과");
+    this.OutputView.printRoundResultInitMessage();
     for (let curRound = 0; curRound < this.totalRound; curRound++) {
       this.race.progressRound();
-      this.printRoundResult();
+      this.OutputView.printRoundStatus(this.race.getRoundResult());
     }
   }
 
   showResult() {
-    this.printWinners();
-  }
-
-  printRoundResult() {
-    const roundResult = this.race.getRoundResult();
-    roundResult.forEach((result) => {
-      Console.print(`${result.name} : ${"-".repeat(result.position)}`);
-    });
-    Console.print("\n");
-  }
-
-  printWinners() {
-    const winnerNames = this.race.getWinners();
-    Console.print(`Winner: ${winnerNames.join(", ")}`);
+    this.OutputView.printWinners(this.race.getWinners());
   }
 }
 
