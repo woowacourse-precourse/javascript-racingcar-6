@@ -24,9 +24,9 @@ test("이름 배열을 넘기면 각 이름을 가진 차 인스턴스 배열 �
 
 test("가장 멀리 간 자동차를 우승자로 선정", () => {
   const input = [
-    { name: "pobi", distance: 3 },
-    { name: "ann", distance: 1 },
-    { name: "sera", distance: 3 },
+    { name: "pobi", distance: "---" },
+    { name: "ann", distance: "-" },
+    { name: "sera", distance: "---" },
   ];
 
   const winners = racingCar.pickWinner(input);
