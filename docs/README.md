@@ -12,45 +12,55 @@
 
 app객체
 
-- [ ] 자동차에 이름을 부여할 수 있다. carName
-- [ ] 사용자가 횟수를 입력한다. gameLap
-- [ ] 입력값을 배열로 바꾼다. convertToArray();
-- [ ] 무작위 값이 4이상인지 확인한다. isGreaterThanFour()
+- [x] 자동차에 이름을 부여할 수 있다. carName
+- [x] 사용자가 횟수를 입력한다. gameLap
+- [x] 입력값을 배열로 바꾼다. convertToArray()
+- [x] 게임을 시작한다. play()
+- [x] 자동차 이름을 입력할 수 있다. enterCarName()
+- [x] 레이스 횟수를 입력할 수 있다. entreRaceLaps()
 
 Random 객체
 
-- [ ] 무작위 값을 구한다. getRandomNumber()
+- [x] 무작위 값이 4이상인지 확인한다. isGreaterThanFour()
+- [x] 무작위 값을 구한다. getRandomNumber()
 
 RacingCar 객체
 
-- 출전하는 자동차 명단을 만든다. createEntry()
-- 횟수만큼 자동차를 전진하고 멈출 수 있다. moveForwardCar()
+- [x] 출전하는 자동차 명단을 만든다. createEntry()
+- [x] 횟수만큼 자동차를 전진하고 멈출 수 있다. moveForwardCar()
 
 출력
 RaceOrganizer 객체
 
-- [ ] 전진하는 자동차를 출력할 땐 자동차 이름을 같이 출력한다. talkToCarMovingForward()
-- [ ] 자동차 경주 게임이 끝나고 누가 우승했는지를 알려준다. talkToWinner()
-  - [ ] 우승자가 여러 명일 경우 쉼표를 이용하여 구분한다. checkForTieWinners()
+- [x] 전진하는 자동차를 출력할 땐 자동차 이름을 같이 출력한다. talkToCarMovingForward()
+- [x] 자동차 경주 게임이 끝나고 누가 우승했는지를 알려준다. talkToWinner()
+  - [x] 우승자가 여러 명일 경우 쉼표를 이용하여 구분한다. getCandidates()
+- [x] 전진한 차의 lap을 변경한다. reportRaceStatus()
 
 예외사항
+
 CarNaming 객체
 
-- [ ] 예외
+handleException()
 
-- [ ] 자동차 이름이 1글자에서 5글자이하여야 한다. checkLength()
-- [ ] 자동차 이름에 공백이 포함되면 안된다. checkForSpaces()
-- [ ] 자동차 이름에 특수기호가 없어야 한다. checkAlphanumeric()
-- [ ] 이름이 중복이 되면 안된다. checkDuplicates()
+- [x] 자동차 이름이 1글자에서 5글자이하여야 한다.
+- [x] 자동차 이름에 공백이 포함되면 안된다.
+- [x] 자동차 이름에 특수기호가 없어야 한다.
+- [x] 자동차가 한 대면 게임을 실행할 수 없다.
+- [x] 한 경기에 최대 출전 자동자의 수가 20를 넘을 수 없다.
 
 Frequency 객체
 
-- [ ] 횟수가 0이상의 숫자여야 한다. checkNonNegativeNumber()
-- [ ] 숫자만 입력해야 한다. checkNumberValue()
+handleException()
+
+- [x] 횟수가 1이상의 숫자여야 한다.
+- [x] 숫자만 입력해야 한다.
 
 RaceStatus 객체
 
-- [ ] 출발한 사람이 없으면 에러 발생 noDepatedCar()
+reportTrackIssue()
+
+- [x] 출발한 사람이 없으면 에러 발생
 
 ## 기능 요구 사항
 
