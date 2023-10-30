@@ -1,16 +1,24 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 class App {
-  async play() {
-    let carNameInput  = await MissionUtils.Console.readLineAsync(
+  //자동차 이름 입력받기
+  async carName() {
+    let carNameInput = await MissionUtils.Console.readLineAsync(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
     );
+    const carNames = carNameInput.split(",");
+  }
 
-     // 쉼표(,)로 구분된 자동차 이름을 배열로 분리
-     const carNames = carNameInput.split(',');
+  //시도할 횟수 입력받기
+  async try() {
+    let tryInput = await MissionUtils.Console.readLineAsync(
+      "시도할 횟수는 몇 회인가요?\n"
+    );
+  }
 
-     // carNames 배열에 자동차 이름이 들어 있음
-     console.log(carNames);
+  async play() {
+    await this.carName();
+    await this.try();
   }
 }
 
