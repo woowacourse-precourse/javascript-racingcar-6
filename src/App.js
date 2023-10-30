@@ -1,4 +1,4 @@
-import {Console, MissionUtils} from "@woowacourse/mission-utils";
+import {Console, MissionUtils, Random} from "@woowacourse/mission-utils";
 
 class App {
 
@@ -16,6 +16,7 @@ class App {
         }
 
         let cnt_cars_go = [...new Array(CAR_CNT)].map((_, i) => 0);
+
         let try_cnt_input = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
 
         //숫자 형식 확인
@@ -23,6 +24,24 @@ class App {
             throw("[ERROR] 숫자가 잘못된 형식입니다.");
         }
         const TRY_CNT = Number(try_cnt_input);
+        Console.print("실행 결과");
+        let random_value;
+        for (let i = 0; i < TRY_CNT; i++) {
+            for (let j = 0; j < CAR_CNT; j++) {
+                random_value = Random.pickNumberInRange(0, 9)
+                if (random_value >= 4) {
+                    cnt_cars_go[j] += 1
+                }
+            }
+            for (let j=0;j<CAR_CNT;j++){
+                Console.print(CARS[j]+' : '+'-'.repeat(cnt_cars_go[j]))
+            }
+            Console.print("")
+        }
+
+
+
+
 
 
     }
