@@ -1,5 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-class Car {    
+export default class Car {    
     constructor(name) {
         this.name = name;
         this.forward = 0;
