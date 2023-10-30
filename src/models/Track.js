@@ -15,3 +15,5 @@ class Track {
     return !!(randomNumber < Track.LIMIT_NUMBER);
   }
 }
+
+export default Track;
