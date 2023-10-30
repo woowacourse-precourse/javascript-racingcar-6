@@ -20,10 +20,10 @@ const OutputView = {
 
   /**
    * 최종 우승자를 출력한다.
-   * @param {string[]} winnerList - 최종 우승자 리스트
+   * @param {string[]} winnerNameList - 최종 우승자 리스트
    */
-  printWinner: (winnerList) => {
-    Console.print(GAME_MESSAGE.OUTPUT_WINNER + winnerList.join(GAME_RULE.DELIMITER_FOR_WINNER))
+  printWinner: (winnerNameList) => {
+    Console.print(GAME_MESSAGE.OUTPUT_WINNER + winnerNameList.join(GAME_RULE.DELIMITER_FOR_WINNER))
   },
 
   /**
