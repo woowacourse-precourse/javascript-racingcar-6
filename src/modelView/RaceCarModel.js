@@ -1,4 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
+import { SETTING } from "../constants/gameConfig.js";
 
 const ModelView = {
   currentMovements: {},
@@ -19,7 +20,7 @@ const ModelView = {
   },
 
   calcMoveCount() {
-    const movementCount = MissionUtils.Random.pickNumberInRange(0, 9);
+    const movementCount = MissionUtils.Random.pickNumberInRange(SETTING.min, SETTING.max);
     return movementCount >= 4 ? "-" : "";
   },
 

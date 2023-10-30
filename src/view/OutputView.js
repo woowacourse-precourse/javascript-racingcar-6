@@ -1,4 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
+import { MESSAGE } from "../constants/gameConfig.js";
 
 const OutputView = {
   printRaceResult(name, movement) {
@@ -6,11 +7,11 @@ const OutputView = {
   },
 
   printResultMsg() {
-    MissionUtils.Console.print(`\n${"실행 결과"}`);
+    MissionUtils.Console.print(`\n${MESSAGE.game.result}`);
   },
 
   printWinners(winners) {
-    MissionUtils.Console.print(`최종 우승자 : ${winners.join(", ")}`);
+    MissionUtils.Console.print(`${MESSAGE.game.winners}${winners.join(", ")}`);
   },
 };
 
