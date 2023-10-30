@@ -16,3 +16,11 @@ export const CREATE_CARS = (CAR_NAMES) => {
     }
     return CAR_NAMES.map(CAR_NAME => new Car(CAR_NAME));
 }
+
+export const VALIDATE_RACE_TIME = (RACE_TIME_INPUT) =>  {
+    const RACE_TIME = parseInt(RACE_TIME_INPUT, 10);
+    if (isNaN(RACE_TIME) || RACE_TIME <= 0) {
+      throw new Error(RACE_TIME_ERROR_MESSAGE);
+    }
+    return RACE_TIME;
+}
