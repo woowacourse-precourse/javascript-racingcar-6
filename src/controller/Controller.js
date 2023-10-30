@@ -51,6 +51,3 @@ export default class Controller {
     OutputView.printWinner(maxMoveCars);
   }
 }
-
-const c = new Controller();
-console.log(await c.run());
