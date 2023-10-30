@@ -10,12 +10,12 @@ class App {
     this.handleCarName(carInput);
     const tryInput = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
     const tryNumber = this.handleTryNumber(tryInput);
-    this.race();
+    this.race(tryNumber);
   }
 
-  race() {
+  race(num) {
     MissionUtils.Console.print(`실행 결과`)
-    for(let i=0; i<tryInput; i++) {
+    for(let i=0; i<num; i++) {
       this.oneTurn();
     }
     const MVP = this.selectMVP();
@@ -26,7 +26,7 @@ class App {
   selectMVP() {
     let max = 0;
     let arr = [];
-    for(const key of this.carObj) {
+    for(const key in this.carObj) {
       if(this.carObj[key].length > max) {
         max = this.carObj[key].length;
         arr = [];
@@ -79,10 +79,6 @@ class App {
       throw error;      
     }
   }
-
-  
-
-  
 }
 
 export default App;
