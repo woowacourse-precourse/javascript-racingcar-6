@@ -1,10 +1,17 @@
+import { Console } from '@woowacourse/mission-utils';
+import { CONSTANTS } from '../constants.js';
+
 export default class RacingCar {
 	constructor(name) {
 		this.name = name;
-		this.distance = '';
+		this.distance = 0;
 	}
 
 	go() {
-		this.distance += '-';
+		this.distance += 1;
+	}
+
+	showCarPosition() {
+		Console.print(`${this.name} : ${CONSTANTS.DISTANCE_MARKER.repeat(this.distance)}`);
 	}
 }
