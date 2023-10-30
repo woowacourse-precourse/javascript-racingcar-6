@@ -1,13 +1,11 @@
-import RacingCar from "../domain/RacingCar.js";
-import RandomNumberGenerator from "../utils/RandomNumberGenerator.js";
+import RacingCars from "../domain/RacingCars.js";
 import InputView from "../view/InputView.js";
 import OutputView from "../view/OutputView.js";
-import { StaticNumber } from "../static/Static.js";
 
 class RacingCarController {
   #cars;
-  #finalDistance = [];
-  #winners = [];
+  #maxDistance;
+  #winners;
 
   constructor() {}
 
@@ -23,49 +21,30 @@ class RacingCarController {
 
   async inputTryTimes() {
     await InputView.readTryTimes((input) => {
-      this.handleMovement(input);
+      this.#cars.setRacingTimes(input);
     });
+    this.raceStart();
   }
 
   async setCars(cars) {
-    this.#cars = cars.split(",").map((name) => new RacingCar(name));
+    this.#cars = new RacingCars(cars);
     await this.inputTryTimes();
   }
 
-  handleMovement(times) {
+  raceStart() {
     OutputView.printResultMessage();
-    times = Number(times);
-    for (let i = 0; i < times; i++) {
-      this.calculateMovement();
+    for (let i = 0; i < this.#cars.getRacingTimes(); i++) {
+      this.#cars.setCarsMoving();
+      OutputView.printMoveMarking(this.#cars.getCarsMoving());
       OutputView.printSingleLine();
     }
-    this.handleWinners();
+    this.printWinners();
   }
 
-  handleWinners() {
-    this.#cars.map((car) => {
-      if (car.getCurrentDistance() === this.calculateMaxDistance())
-        this.#winners.push(car.getName());
-    });
+  printWinners() {
+    this.#maxDistance = this.#cars.getMaxDistance();
+    this.#winners = this.#cars.getWinners(this.#maxDistance);
     OutputView.printWinnerMessage(this.#winners);
-  }
-
-  calculateMovement() {
-    this.#cars.forEach((car) => {
-      const randomNumber = RandomNumberGenerator.generate();
-
-      if (randomNumber >= StaticNumber.CAN_MOVE_CONDITION) car.move();
-
-      OutputView.printMoveMarking(car.getName(), car.getCurrentDistance());
-    });
-  }
-
-  calculateMaxDistance() {
-    this.#cars.map((car) => {
-      this.#finalDistance.push(car.getCurrentDistance());
-    });
-
-    return Math.max(...this.#finalDistance);
   }
 }
 
