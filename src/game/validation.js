@@ -9,8 +9,7 @@ const validate = {
     if (nameArray.length > 9) throw new Error('[ERROR] 자동차는 9대까지 등록가능합니다.');
   },
   lapLength: (length) => {
-    if (length === undefined) throw new Error('[ERROR] 숫자를 정확히 입력해주세요.');
-    if (length === null) throw new Error('[ERROR] 숫자를 정확히 입력해주세요.');
+    if (!length) throw new Error('[ERROR] 숫자를 정확히 입력해주세요.');
     if (/[^1-9]/.test(length)) throw new Error('[ERROR] 1-9 사이에 숫자를 입력해주세요.');
     if (length > 99) throw new Error('[ERROR] 최대 2자리 수까지 입력이 가능합니다.');
   },
