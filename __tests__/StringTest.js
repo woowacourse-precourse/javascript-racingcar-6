@@ -31,6 +31,13 @@ const updateRaceResults = (participants, raceResults, determineMoveMock) => {
   return updatedRaceResults;
 };
 
+const runRace = (raceResults) => {
+  const maxScore = findMaxScore(raceResults);
+  const winnerNamesArray = findWinnerName(raceResults, maxScore);
+
+  MissionUtils.Console.print(`최종 우승자 : ${winnerNamesArray.join(', ')}\n`);
+}
+
 describe("문자열 테스트", () => {
   test("split 메서드로 주어진 값을 구분", () => {
     const input = "1,2";
@@ -190,3 +197,30 @@ describe('findWinnerName 테스트', () => {
     jest.restoreAllMocks();
   });
 })
+
+describe('runRace', () => {
+  it('레이스 실행 결과를 확인', () => {
+    const consoleSpy = jest.spyOn(MissionUtils.Console, 'print');
+    const raceResults = [
+      { 'car1': '-----', 'car2': '--', 'car3': '-----' },
+      { 'car1': '-----', 'car2': '-----', 'car3': '-----' },
+      { 'car1': '----', 'car2': '--', 'car3': '-----' },
+      { 'car1': '', 'car2': '', 'car3': '' },
+      { 'car1': '---', 'car2': '--', 'car3': '--' }
+    ];
+    const expectResults = [
+      '최종 우승자 : car1, car3\n',
+      '최종 우승자 : car1, car2, car3\n',
+      '최종 우승자 : car3\n',
+      '최종 우승자 : car1, car2, car3\n',
+      '최종 우승자 : car1\n',
+    ];
+
+    raceResults.forEach((_, idx) => {
+      runRace(raceResults[idx]);
+      expect(consoleSpy).toHaveBeenCalledWith(expectResults[idx]);
+    });
+
+    jest.restoreAllMocks();
+  });
+});
