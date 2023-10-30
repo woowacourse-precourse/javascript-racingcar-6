@@ -22,12 +22,42 @@ class App {
     const receivedTryNumber = await Console.readLineAsync(
       "시도할 횟수는 몇 회인가요?\n"
     );
+    //TODO 숫자가 아니거나 0 미만의 숫자를 입력했을 때 에러 반환
     this.tryNumber = Number(receivedTryNumber);
   }
 
   async play() {
     await this.getCarName();
     await this.getTryNumber();
+    Console.print("실행 결과");
+
+    while (this.tryNumber > 0) {
+      Object.keys(this.racingCounts).forEach((key) => {
+        if (this.isMovable(this.getRandomNumber())) {
+          this.racingCounts[key] = this.racingCounts[key] + 1;
+        }
+      });
+      Object.keys(this.racingCounts).forEach((key) => {
+        Console.print(`${key} : ${"-".repeat(this.racingCounts[key])}`);
+      });
+      Console.print("");
+      this.tryNumber = this.tryNumber - 1;
+    }
+
+    const { winner } = Object.entries(this.racingCounts).reduce(
+      ({ winner, maxRacingCount }, [key, value]) => {
+        if (maxRacingCount < value) {
+          return { winner: [key], maxRacingCount: value };
+        } else if (maxRacingCount === value) {
+          return { winner: [...winner, key], maxRacingCount };
+        } else {
+          return { winner, maxRacingCount };
+        }
+      },
+      { winner: [], maxRacingCount: -1 }
+    );
+
+    Console.print(`최종 우승자: ${winner.join(", ")}`);
   }
 
   getRandomNumber() {
