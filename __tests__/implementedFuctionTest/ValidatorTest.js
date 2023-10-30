@@ -62,3 +62,65 @@ describe('CarsNameValidator 테스트', () => {
 		await expect(app.play()).rejects.toThrow(errorMessage.DUPLICATED_NAME);		
 	});
 });
+
+describe('RoundsCountValidator 테스트', () => {
+	test('0이 입력되었을 때 error', async () => {
+		// given
+		const input = ['A', '0'];
+		await mockQuestions(input);
+
+		// when
+		const app = new App();
+
+		// then
+		await expect(app.play()).rejects.toThrow(errorMessage.WRONG_ROUNDS_COUNT);
+	});
+
+	test('음수가 입력되었을 때 error', async () => {
+		// given
+		const input = ['A', '-1'];
+		await mockQuestions(input);
+
+		// when
+		const app = new App();
+
+		// then
+		await expect(app.play()).rejects.toThrow(errorMessage.WRONG_ROUNDS_COUNT);
+	});
+
+	test('소수가 입력되었을 때 error', async () => {
+		// given
+		const input = ['A', '1.5'];
+		await mockQuestions(input);
+
+		// when
+		const app = new App();
+
+		// then
+		await expect(app.play()).rejects.toThrow(errorMessage.WRONG_ROUNDS_COUNT);
+	});
+
+	test('문자가 입력되었을 때 error', async () => {
+		// given
+		const input = ['A', 'A'];
+		await mockQuestions(input);
+
+		// when
+		const app = new App();
+
+		// then
+		await expect(app.play()).rejects.toThrow(errorMessage.WRONG_ROUNDS_COUNT);
+	});
+
+	test('올바른 경우', async () => {
+		// given
+		const input = ['A', '5'];
+		await mockQuestions(input);
+
+		// when
+		const app = new App();
+
+		// then
+		await expect(app.play()).resolves.not.toThrow();
+	});
+});
