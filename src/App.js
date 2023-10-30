@@ -1,7 +1,7 @@
 import { GameController } from "./controller/GameController";
 class App {
   async play() {
-    await GameController.racingGame();
+    await GameController.start();
   }
 }
 
