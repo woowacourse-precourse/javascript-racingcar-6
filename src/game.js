@@ -19,4 +19,12 @@ class Game {
     });
     Console.print(''); // 줄 바꿈
   }
+
+  getWinners() {
+    const maxPosition = Math.max(...this.cars.map((car) => car.position));
+    return this.cars
+      .filter((car) => car.position === maxPosition)
+      .map((car) => car.name)
+      .join(', ');
+  }
 }
