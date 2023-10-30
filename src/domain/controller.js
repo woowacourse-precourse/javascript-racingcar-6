@@ -9,6 +9,10 @@ export const makeRandomNumberAndJudge = async (tryNumber) => {
   return RANDOM_NUMBER_ARRAY;
 };
 
+export const makeRandomNumberAndJudgeTestModule = async (input) => {
+  input >= 4 ? 'go' : 'stop';
+};
+
 export const makeEmptyArray = (carNamesArray, array) => {
   for (let i = 0; i < carNamesArray.length; i++) {
     array.push([]);

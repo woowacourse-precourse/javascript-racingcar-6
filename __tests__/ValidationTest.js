@@ -5,6 +5,7 @@ import {
   userInputCarNameLengthError,
   userInputCarNameOverlapError,
 } from '../src/domain/Error.js';
+import { makeRandomNumberAndJudgeTestModule } from '../src/domain/controller.js';
 
 describe('userInputTryNumberError 함수 테스트', () => {
   test('0 이하인 경우 오류 throw', () => {
@@ -90,5 +91,12 @@ describe('getCarName 함수 테스트', () => {
   test('이름이 중복되지 않을 때 오류 throw', () => {
     expect(() => userInputCarNameOverlapError(['abcde', 'abcd', 'aaaaa'])).not.toThrowError();
     expect(() => userInputCarNameOverlapError(['bbb', 'abcd', 'abcde'])).not.toThrowError();
+  });
+});
+
+describe('controller number judge 테스트', () => {
+  test('숫자 4 이상인지 판단', () => {
+    expect(() => makeRandomNumberAndJudgeTestModule(4).toEqual('go'));
+    expect(() => makeRandomNumberAndJudgeTestModule(3).toEqual('stop'));
   });
 });
