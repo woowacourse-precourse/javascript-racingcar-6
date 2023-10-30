@@ -1,42 +1,45 @@
 # 미션 - 자동차 경주
 
-## 💡 구현 기능 목록
+## ✨ 구현 기능 목록
 
 - 경주할 자동차 이름 입력
 - 시도할 횟수 입력
 - 실행 결과 출력
 - 최종 우승자 출력
 
-**MVC 패턴**
+## 💡 MVC 패턴
 
-- Model
+**Model**
 
-  - 자동차 Car
-    - 자동차 이름
-    - 전진 횟수
-  - 경주 Race
-    - 횟수
-    - 최종 결과
+- `Car`
+  - 자동차 이름
+  - 전진 횟수
+- `Race`
+  - 횟수
+  - 최종 우승자
 
-- View
+**View**
 
-  - 시작 메시지 출력
-  - 횟수 입력 메시지 출력
-  - 횟수만큼 실행 결과 출력
-    - Car.getStraightCount
-  - 최종 우승자 출력
-    - Race.getWinner
+- `RaceStartView` : 시작 메시지 출력 및 이름 입력
+- `InputCountView` : 횟수 입력 메시지 출력 및 횟수 입력
+- `ResultOutputView` : 횟수만큼 실행 결과 출력
+  - Car.getStraightCount
+- `WinnerOutputView` : 최종 우승자 출력
+  - Race.getWinner
 
-- Controller
+**Controller**
 
-  - 경주할 자동차 이름 입력 Car.setName
-  - 경주 횟수 입력 Race.setCount
-  - 자동차 전진 여부 확인 함수
-    - 0~9 숫자 랜덤 생성
-    - 4 이상이면 전진 true 반환, 결과에 적용
-      Car.addStraightCount
-  - 최종 결과 계산 함수
-    - Race.setWinner
+- 경주할 자동차 이름 입력
+  - Car.setName
+  - `checkName` : 이름 글자수 체크 하여 에러 반환
+- 경주 횟수 입력
+  - Race.setCount
+- `makeRandomNumber` : 자동차 전진 여부 확인 함수
+  - 0~9 숫자 랜덤 생성
+  - 4 이상이면 전진 true 반환, 결과에 적용
+  - Car.addStraightCount
+- `selectFinalWinner` : 최종 결과 계산 함수
+  - Race.setWinner
 
 ## 🔍 진행 방식
 
