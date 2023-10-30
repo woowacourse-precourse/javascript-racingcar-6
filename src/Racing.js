@@ -24,3 +24,11 @@ export const checkMoving = () => {
     return (isStop = true);
   }
 };
+
+export const positionHandler = () => {
+  let position = 0;
+  if (checkMoving()) {
+    position += 1;
+  }
+  return position;
+};
