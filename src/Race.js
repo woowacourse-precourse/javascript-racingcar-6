@@ -1,3 +1,5 @@
+import Car from './Car';
+
 export const VALIDATE_CAR_NAME = (CAR_NAME_INPUT) => {
     if (!CAR_NAME_INPUT) {
         throw new Error(CAR_NAME_NULL_ERROR_MESSAGE);
@@ -6,4 +8,11 @@ export const VALIDATE_CAR_NAME = (CAR_NAME_INPUT) => {
     if (CAR_NAMES.some(CAR_NAME => CAR_NAME.trim().length > 5)) {
         throw new Error(CAR_NAME_INVALID_ERROR_MESSAGE);
     }
+}
+
+export const CREATE_CARS = (CAR_NAMES) => {
+    if (CAR_NAMES.length < 1) {
+        throw new Error(CREATE_CAR_ERROR_MESSAGE);
+    }
+    return CAR_NAMES.map(CAR_NAME => new Car(CAR_NAME));
 }
