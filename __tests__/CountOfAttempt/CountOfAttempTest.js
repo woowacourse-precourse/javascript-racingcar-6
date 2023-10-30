@@ -19,6 +19,14 @@ describe('시도 횟수 값을 담당하는 클래스', () => {
     }).toThrow(new AppError(ERROR_MESSAGES.not_a_number));
   });
 
+  test('중간에 공백을 포함할 경우 예외가 발생한다.', () => {
+    const attemps = '1 2';
+
+    expect(() => {
+      CountOfAttemp.fromInputString(attemps);
+    }).toThrow(new AppError(ERROR_MESSAGES.not_a_number));
+  });
+
   test('시도 횟수가 최소 횟수보다 작을 경우, 예외가 발생한다.', () => {
     const attemps = 0;
 
