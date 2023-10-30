@@ -1,5 +1,5 @@
 import { Console, Random } from "@woowacourse/mission-utils";
-import MSG from "./message.js"
+import { MSG } from "./message.js"
 
 function game(carNames, cnt) {
     Console.print(MSG.RESULT)

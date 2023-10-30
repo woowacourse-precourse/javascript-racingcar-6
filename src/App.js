@@ -1,5 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
-import MSG from "./message.js";
+import { MSG } from "./message.js";
 import {carValidation, countValidation} from "./validation.js";
 import game from "./game.js";
 

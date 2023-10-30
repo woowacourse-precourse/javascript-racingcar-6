@@ -1,18 +1,20 @@
+import { ERRMSG } from "./message.js"
+
 function carValidation(carNames) {
   const cars = new Set(carNames);
   const space = /\s/g;
   if (cars.size !== carNames.length) {
-    throw new Error ("[ERROR] 자동차의 이름을 중복되지 않게 입력해주세요.")
+    throw new Error (ERRMSG.DUPLICATION)
   }
   if (carNames.length < 2) {
-    throw new Error ("[ERROR] 최소한 두개 이상의 이름을 입력해주세요.")
+    throw new Error (ERRMSG.NOT_ENOUGH)
   }
   for (let i = 0; i < carNames.length; i++) {
     if (carNames[i].length > 5 || carNames[i].length < 1) {
-      throw new Error ("[ERROR] 1 ~ 5글자의 자동차 이름을 입력해주세요.")
+      throw new Error (ERRMSG.LENGTH)
     }
     if (carNames[i].match(space)) {
-      throw new Error ("[ERROR] 공백을 제외한 자동차의 이름을 입력해주세요.")
+      throw new Error (ERRMSG.CAR_EMPTY)
     }
   }
 }
@@ -20,11 +22,11 @@ function carValidation(carNames) {
 function countValidation(cnt) {
   const num = Number(cnt)
   if (isNaN(num)) {
-    throw new Error ("[ERROR] 횟수는 숫자만 입력해주세요.")
+    throw new Error (ERRMSG.STRING)
   }
 
   if (num < 1) {
-    throw new Error ("[ERROR 올바른 숫자를 입력해주세요.")
+    throw new Error (ERRMSG.COUNT_EMPTY)
   }
 }
 
