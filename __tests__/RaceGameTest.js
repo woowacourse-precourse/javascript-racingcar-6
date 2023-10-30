@@ -99,6 +99,18 @@ describe('유틸 기능 테스트', () => {
         expect(() => checkCarNameSpace(carName)).not.toThrow();
       });
     });
+    describe('checkCarNameLen 테스트', () => {
+      test('길이가 5보다 길면 에러 발생', () => {
+        const carName = 'LeeChan';
+        expect(() => checkCarNameLen(carName)).toThrowError(
+          ERROR_MESSAGES.errorNameLen,
+        );
+      });
+      test('길이가 5이하면 에러 발생하지 않음 ', () => {
+        const carName = 'chan';
+        expect(() => checkCarNameLen(carName)).not.toThrow();
+      });
+    });
   });
 });
 
@@ -112,5 +124,3 @@ describe('유틸 기능 테스트', () => {
     const carName = '';
     expect(() => checkCarNameEmpty(carName)).not.toThrow();
   }); */
-
-console.log('aa aa');
