@@ -66,6 +66,16 @@ describe("게임 진행 상황 출력 테스트", () => {
     });
   });
 
+  test("우승자 자동차 전진길이 구하는 테스트", () => {
+    const MoveArray = ["---", "----", "--", ""];
+
+    const app = new App();
+    app.carMoveArray = MoveArray;
+    const result = app.winnerMovelength();
+
+    expect(result).toBe(4);
+  });
+
   test("최종 우승자 선별 테스트", () => {
     const NameArray = ["sung", "soo"];
     const MoveArray = ["-", "--"];
