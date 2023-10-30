@@ -74,6 +74,7 @@
 - ‘실행 결과’ 출력(앞에 \n) - OutputView # printRacingStart
 - 자동차들의 이름과 움직인 상태를 출력 (이름 : - * moveCount 형식, 끝에 \n) - OutputView # printRoundResult
 - 우승자를 출력함 (최종 우승자 : name 형식, 여러대면 쉼표로 구분) - OutputView # printWinners
+- 빈줄을 출력(표시 형식을 맞추기 위해) - OutputView # printNewLine
 
 ### ⭐ Constants
 - 에러메시지들을 저장 - Constants # errorMessage

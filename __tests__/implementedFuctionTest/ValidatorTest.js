@@ -1,5 +1,3 @@
-import CarsNameValidator from '../../src/validator/CarsNameValidator.js';
-import RoundsCountValidator from '../../src/validator/RoundsCountValidator.js';
 import errorMessage from '../../src/constants/errorMessage.js';
 import { MissionUtils } from '@woowacourse/mission-utils';
 import App from '../../src/App.js';
@@ -23,7 +21,7 @@ describe('CarsNameValidator 테스트', () => {
 		const app = new App();
 
 		// then
-		await expect(app.play()).rejects.toThrow(errorMessage.EMPTY_STRING);		
+		await expect(app.play()).rejects.toThrow(errorMessage.EMPTY_STRING);
 	});
 
 	test('carsName의 콤마 안에 공백이 포함되면(이름이 지정되지 않으면) error', async () => {

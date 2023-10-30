@@ -1,5 +1,4 @@
 import RacingController from '../../src/racing/RacingController.js';
-import OutputView from '../../src/racing/view/OutputView.js';
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 const mockQuestions = (inputs) => {
