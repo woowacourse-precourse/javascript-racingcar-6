@@ -1,4 +1,14 @@
-import { CREATE_CARS } from '../src/Race';  
+import {
+    CREATE_CARS,
+    VALIDATE_CAR_NAME,
+    VALIDATE_RACE_TIME,
+} from '../src/Race';
+import {
+    CAR_NAME_NULL_ERROR_MESSAGE,
+    CAR_NAME_INVALID_ERROR_MESSAGE,
+    RACE_TIME_ERROR_MESSAGE,
+    CREATE_CAR_ERROR_MESSAGE,
+} from '../src/Define';
 import Car from '../src/Car';
 
 describe('Race 테스트', () => {
