@@ -32,6 +32,14 @@ class App {
     const playerCarName = this.toArray(playerInput);
     return playerCarName;
   }
+
+  async printNumberOfTimes() {
+    const playerInput = await Console.readLineAsync(
+      GAME_MESSAGE.INPUT_NUMBER_OF_TIMES,
+    );
+    const numberOfTimes = playerInput.split('').map(Number);
+    return numberOfTimes[0];
+  }
 }
 
 export default App;
