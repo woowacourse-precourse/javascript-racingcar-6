@@ -40,13 +40,12 @@ export const isValidInput = (inputName) => {
 };
 
 //입력받은 시도횟수의 유효성 검사
-export const isValidCount = (inputCount) => {
-    if (inputCount === null) {
+export const isValidCount = (count) => {
+    if (count === null) {
         throw new Error(NAME_ERROR.NULL_ERROR);
     }
 
-    const count = parseInt(inputCount);
-    if (isNaN(count) || count.toString() !== inputCount.toString()) {
+    if (isNaN(count) || count.toString() !== count.toString()) {
         throw new Error(NAME_ERROR.COUNT_ERROR);
     }
 
