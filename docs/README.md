@@ -28,10 +28,19 @@
 ## 클래스 구조
 > 데이터의 흐름을 깔끔하게 표현하기 위해 MVC 패턴을 적용.
 
+### Model
+- [X] 자동차 리스트를 저장하는 `cars` map 생성
+- [X] `getCars()`
+  > cars 변수의 getter
+- [X] `addCars(name)`
+  > 매개변수로 이름을 받아 key 값으로 map에 데이터 추가
+- [ ] `increaseMoveCntByName(name)`
+  > 매개변수로 이름을 받아 전진한 횟수 1 증가
+
 ### View
-- [ ] `printAdvanceResult(models)`
+- [X] `printAdvanceResult(models)`
   > Controller로부터 데이터를 받아 결과를 출력하는 함수
-- [ ] `formatResult({ name, moveCnt })`
-  > 전진 표기 문자열을 생성하는 함수 (ex, input: 3, output: '---')
-- [ ] `generateAdvanceString(moveCnt)`
-  > 전진 표기 문자열을 생성하는 함수 (ex, input: 3, output: '---')
+- [X] `formatResult({ name, moveCnt })`
+  > 포맷팅된 전진 결과를 반환하는 함수 (input: `{pobi, 3}` -> output: `'pobi : ---'`)
+- [X] `generateAdvanceString(moveCnt)`
+  > 전진 표기 문자열을 생성하는 함수 (input: `3` -> output: `'---'`)
