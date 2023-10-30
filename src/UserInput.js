@@ -1,6 +1,7 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import Save from './ValueSave.js'
 import Validation from "./Validation.js";
+import Score from "./Score.js"
 
 export default class User {
     async userInputCarName() {
@@ -40,5 +41,7 @@ export default class User {
           throw(e)
         }
         // console.log(inputPlayNumer)
+        let score = new Score
+        score.getScore(this.cars)
     } 
 }
