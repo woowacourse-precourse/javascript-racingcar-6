@@ -41,7 +41,6 @@ class App {
 
   checkCountValid(number) {
     if (isNaN(number)) {
-      console.log('여기');
       throw new Error(ERROR_MESSAGES.INVALID_NUMBER);
     } else if (!Number.isInteger(number) || number <= 0) {
       throw new Error(ERROR_MESSAGES.NO_INTEGER);
