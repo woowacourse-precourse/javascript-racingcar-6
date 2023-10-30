@@ -7,7 +7,7 @@ export const outputCurrentProgress = results => {
     let distance = '';
 
     for (let i = 0; i < distanceFromStart; i++) {
-      distance++;
+      distance += '-';
     }
 
     Console.print(`${name} : ${distance}`);
