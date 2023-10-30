@@ -1,5 +1,13 @@
+import { Console } from "@woowacourse/mission-utils";
+
+// 랜덤 숫자 모듈
 import RandomNumber from "./utils/RandomNumber.js";
+
+// 레이싱 경기 주최측 모듈
 import RaceOrganizer from "./view/RaceOrganizer.js";
+
+// 상수 모듈
+import { COMMENT, SPECIALCHARS, NUMBER } from "./utils/Constants.js";
 
 class RacingCar {
   createEntry(names) {
@@ -11,7 +19,7 @@ class RacingCar {
 
   #reportRaceStatus(value, key, map) {
     if (RandomNumber.isGreaterThanFour()) {
-      const currentValue = value + "-";
+      const currentValue = value + SPECIALCHARS.HYPHEN;
 
       map.set(key, currentValue);
       RaceOrganizer.talkToCarMovingForward(key, currentValue);
@@ -21,13 +29,21 @@ class RacingCar {
     RaceOrganizer.talkToCarMovingForward(key, value);
   }
 
-  moveFowardCar(entry, lap) {
-    const participant = new Map(entry);
-    let round = 1;
+  #printLineBreak() {
+    Console.print(SPECIALCHARS.LINE_BREAK);
+  }
 
+  moveFowardCar(entry, lap) {
+    this.#printLineBreak();
+    const participant = new Map(entry);
+    let round = NUMBER.ONE;
+
+    Console.print(COMMENT.GAME_RESULT);
     while (round <= lap) {
       participant.forEach(this.#reportRaceStatus);
-      round += 1;
+      this.#printLineBreak();
+
+      round += NUMBER.ONE;
     }
 
     return participant;
