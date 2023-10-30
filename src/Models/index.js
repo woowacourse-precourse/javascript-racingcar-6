@@ -8,6 +8,19 @@ class Model {
     return result;
   }
 
+  removeWhitespace(carName) {
+    const regex = /\s/g;
+    let result;
+
+    if (regex.test(carName)) {
+      result = carName.replace(regex, "");
+
+      return result;
+    }
+    // 공백 없을 시 값 그대로 리턴
+    return carName;
+  }
+
   calculateCarMovePoint(point) {
     const cars = Object.keys(point);
     cars.map((el) => {
@@ -19,9 +32,6 @@ class Model {
   }
 
   getHighestMovePoint(result) {
-    // result 값 undefined일 경우 예외처리
-    if (!result.cars || !result.moveResult) return;
-
     const cars = result?.cars;
     const ranking = cars?.sort(
       (a, b) => result?.moveResult[b] - result?.moveResult[a]

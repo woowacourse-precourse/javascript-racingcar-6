@@ -27,6 +27,7 @@ class Controllers {
     for (let i = 0; i < cars.length; i++) {
       validateCarNameLength(cars, i);
       validateCarNameInput(cars, i);
+      cars[i] = this.Model.removeWhitespace(cars[i]);
     }
 
     const initialMovePoint = this.Model.setInitialCarMovePoint(cars);
