@@ -5,10 +5,17 @@ export class RacingGame {
   constructor() {
     this.dice = new Dice();
   }
-  play() {
-    const scores = this.getScore({ a: 0, b: 0, c: 0 });
-    const result = this.validateScores(scores, { a: 0, b: 0, c: 0 });
+  play(gameCount, cars) {
+    const initializedCars = this.initializeScore(cars);
+    const scores = this.getScore(initializedCars);
+    const result = this.validateScores(scores, initializedCars);
     this.printScores(result);
+  }
+
+  initializeScore(cars) {
+    const initialized = {};
+    cars.forEach((car) => (initialized[car] = 0));
+    return initialized;
   }
 
   getScore(cars) {

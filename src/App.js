@@ -3,7 +3,7 @@ import { RacingGame } from './RacingGame.js';
 class App {
   async play() {
     const game = new RacingGame();
-    game.play();
+    game.play(5, ['pobi', 'woni', 'jun']);
   }
 }
 
