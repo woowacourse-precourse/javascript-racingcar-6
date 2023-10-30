@@ -58,8 +58,9 @@ describe("게임 진행 상황 출력 테스트", () => {
     const logSpy = jest.spyOn(MissionUtils.Console, "print");
 
     const app = new App();
+    app.carName = inputs;
     app.carMoveArray = ["", ""];
-    app.carMoveText(inputs);
+    app.carMoveText();
 
     outputs.forEach((output) => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
