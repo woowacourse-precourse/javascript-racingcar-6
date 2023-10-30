@@ -32,7 +32,7 @@ class App {
   async getNumAttempts() {
     const numAttempts = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
     if (numAttempts.length === 0) {
-      throw new Error("숫자를 입력하지 않았습니다.");
+      throw new Error("시도할 횟수를 입력하지 않았습니다.");
     }
 
     const changeInt = parseInt(numAttempts, 10);
@@ -53,14 +53,14 @@ class App {
         if (move >= 4) {
           car.state += '-';
         }
-        MissionUtils.Console.print(`${car.name} : ${car.state}`);
+        MissionUtils.Console.print(`${car.name} : ${car.state}\n`);
       });
     }
 
     const mostFastest = Math.max(...carList.map(car => car.state.length));
     const winners = carList.filter(car => car.state.length === mostFastest);
 
-    MissionUtils.Console.print("최종 우승자: " + winners.join(', '));
+    MissionUtils.Console.print("\n최종 우승자 : " + winners.join(', '));
   }
 }
 
