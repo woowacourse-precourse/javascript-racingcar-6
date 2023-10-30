@@ -12,7 +12,9 @@ class RacingGame {
     for (let i = 0; i < number; i++) {
       this.hyphenAdd(keyValue);
       this.gameInProgress(keyValue);
+      Console.print(SYMBOLS.emptyString);
     }
+    this.winner(keyValue);
   }
   nameToKeyValueConverter(name) {
     const nameKeyValues = [];
