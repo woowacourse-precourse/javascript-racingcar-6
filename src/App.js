@@ -1,7 +1,7 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import { INPUT_MESSAGE, OUTPUT_MESSAGE, ERROR_MESSAGE } from "./Message.js";
+import { INPUT_MESSAGE, OUTPUT_MESSAGE } from "./Message.js";
 import { validateCarNames, validateRound } from "./Validate.js";
-import { findWinner, positionHandleIterator } from "./Racing.js";
+import { positionHandleIterator } from "./Racing.js";
 class App {
   constructor() {
     this.carsArr = [];
@@ -15,7 +15,8 @@ class App {
     this.makeCarsInfo();
     await this.getRound();
     positionHandleIterator(this.carsArr, this.round);
-    findWinner(this.carsArr);
+    this.findWinner(this.carsArr);
+    this.printWinners(this.winner);
   }
 
   async getCarNames() {
@@ -38,6 +39,27 @@ class App {
     const input = await MissionUtils.Console.readLineAsync(INPUT_MESSAGE.TRYCOUNT);
     this.round = String(input);
     validateRound(this.round);
+  }
+
+  findWinner = (carsArr) => {
+    let winner = this.winner;
+    let maxPosition = 0;
+    carsArr.forEach((carsInfo) => {
+      if (carsInfo.position > maxPosition) {
+        maxPosition = carsInfo.position;
+      }
+    });
+    carsArr.forEach((carsInfo) => {
+      if (carsInfo.position === maxPosition) {
+        winner.push(carsInfo.name);
+      }
+    });
+    return winner;
+  };
+
+  printWinners(winner) {
+    const winners = winner.join(", ");
+    MissionUtils.Console.print(`${OUTPUT_MESSAGE.WINNER} : ${winners}`);
   }
 }
 
