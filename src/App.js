@@ -9,10 +9,11 @@ class App {
   async play() {
     const cars = await this.getCars();
     let rounds = await this.getRounds();
-    console.log(cars);
     while (rounds) {
       const roundsCars = this.randomNumberForwards(cars);
+      console.log(roundsCars)
       rounds--;
+
       // if (checkForward) doForward();
     }
     // printWinner();
@@ -38,17 +39,17 @@ class App {
     );
     return roundsInput;
   }
-  // randomNumberForwards(cars) {
-  //   const forwardCars = this.cars.map((car) => {
-  //     const random = MissionUtils.Random.pickNumberInRange(0, 9);
-  //     if (random >= 4) {
-  //       car.score = car.score + random - 4;
-  //     }
-  //     console.log(car);
-  //     return car;
-  //   });
-  //   return forwardCars;
-  // }
+  randomNumberForwards(cars) {
+    const forwardCars = cars.map((car) => {
+      const random = MissionUtils.Random.pickNumberInRange(0, 9);
+      console.log(random)
+      if (random >= 4) {
+        car.score = car.score + random - 4;
+      }
+      return car;
+    });
+    return forwardCars;
+  }
 }
 
 
