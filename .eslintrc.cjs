@@ -19,6 +19,7 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
   },
+  ignorePattenrs: ["__tests__/*.js"],
   rules: {
     semi: [2, "always"],
     "max-depth": ["error", 2],
