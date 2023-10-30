@@ -1,4 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
+import { INPUT_MESSAGE } from '../constants/messages';
 import ErrorHandler from './ErrorHandler';
 
 class RacingGameInputManager {
@@ -15,9 +16,7 @@ class RacingGameInputManager {
   }
 
   async getRacingCars() {
-    const carName = await Console.readLineAsync(
-      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)',
-    );
+    const carName = await Console.readLineAsync(INPUT_MESSAGE.INPUT_CAR_NAME);
     const carNameList = carName.split(',');
     ErrorHandler.validateRacingCarName(carNameList);
     return this.initializeRacingCars(carNameList);
@@ -31,7 +30,7 @@ class RacingGameInputManager {
   }
 
   async getPlayCount() {
-    this.playCount = await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
+    this.playCount = await Console.readLineAsync(INPUT_MESSAGE.INPUT_PLAY_NUM);
     ErrorHandler.validatePlayCount(this.playCount);
     return this.playCount;
   }

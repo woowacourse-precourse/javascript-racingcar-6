@@ -1,4 +1,5 @@
 import { Console, Random } from '@woowacourse/mission-utils';
+import { PRINT_MESSAGE } from '../constants/messages';
 
 class RacingGame {
   constructor({ racingCars, playCount }) {
@@ -7,7 +8,7 @@ class RacingGame {
   }
 
   startRacingGame() {
-    Console.print('실행 결과');
+    Console.print(PRINT_MESSAGE.NEW_LINE, PRINT_MESSAGE.PLAY_RESULT);
     let currentPlayCount = 0;
     while (this.playCount > currentPlayCount) {
       this.countScore();
@@ -28,15 +29,15 @@ class RacingGame {
 
   printScore() {
     this.racingCars.forEach((racingCar) => {
-      const score = '-'.repeat(racingCar.score);
-      Console.print(`${racingCar.carName} : ${score}`);
+      const score = PRINT_MESSAGE.SCORE_BAR.repeat(racingCar.score);
+      Console.print(PRINT_MESSAGE.formatCarInfo(racingCar.carName, score));
     });
-    Console.print('\n');
+    Console.print(PRINT_MESSAGE.NEW_LINE);
   }
 
   printWinner() {
     const winner = this.getWinnerList();
-    Console.print(`최종 우승자 : ${winner}`);
+    Console.print(PRINT_MESSAGE.formatWinners(winner));
   }
 
   getWinnerList() {
@@ -48,7 +49,7 @@ class RacingGame {
     winner = this.racingCars
       .filter((racingCar) => racingCar.score === mostScore)
       .map((car) => car.carName)
-      .join(', ');
+      .join(PRINT_MESSAGE.SEPARATOR);
     return winner;
   }
 }
