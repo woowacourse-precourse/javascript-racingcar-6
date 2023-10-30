@@ -20,7 +20,7 @@ class App {
   checkCarNames() {
     let carName;
     for (carName of this.cars) {
-      if (isValid(carName) === false) {
+      if (this.isValid(carName) === false) {
         throw new Error("[Error]: invalid carName");
       }
     }
@@ -34,6 +34,11 @@ class App {
 
   rollDice() {
     return Random.pickNumberInRange(0, 9);
+  }
+
+  startRacing() {
+    let i = 0;
+    while (i < gameCount) {}
   }
 
   async play() {
@@ -50,6 +55,8 @@ class App {
       );
       this.checkNumber(inputNumber);
       this.gameCount = inputNumber;
+
+      this.startRacing();
     } catch (error) {
       console.log(error);
     }
