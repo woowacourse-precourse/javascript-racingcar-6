@@ -13,7 +13,7 @@ class Car {
     if (randomNumber >= 4) {
       this.#position += 1;
     }
-    return this.#position;
+    return { position: this.#position, name: this.#name };
   }
 }
 
