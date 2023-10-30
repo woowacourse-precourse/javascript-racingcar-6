@@ -6,6 +6,7 @@ const Constant = {
   STANDARD_T0_GO: 4,
   COMMA_REPEATED_REGEX: /\,{2,}/g,
   POSITIVE_INT_REGEX: /^[1-9]\d*$/g,
+  ONE_STEP: "-",
 };
 
 export default Constant;

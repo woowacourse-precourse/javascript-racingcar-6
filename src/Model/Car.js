@@ -16,7 +16,7 @@ class Car {
     }
   }
 
-  getStep() {
+  get stepCount() {
     return this.#stepCount;
   }
 }

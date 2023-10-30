@@ -2,21 +2,20 @@ import { Console } from "@woowacourse/mission-utils";
 import Car from "./Model/Car.js";
 import Message from "./util/Message.js";
 import InputValidator from "./util/InputValidator.js";
-import GenerateStepStr from "./util/GenerateStep.js";
+import Constant from "./util/Constant.js";
 
 class App {
   constructor() {
-    this.executeCount = 0;
+    this.executionCount = 0;
     this.cars = [];
-    this.maxStep = 0;
   }
 
   async play() {
     const carNamesArr = await this.getValidCarNames(); // 자동차 이름 묻기
     this.createCars(carNamesArr); // 자동차 생성하기
-    await this.getValidExecuteCount(); // 실행횟수 묻기
+    await this.getValidExecutionCount(); // 실행횟수 묻기
     this.execute(); // 실행 결과 출력하기
-    this.showWinner(); // 우승자 출력
+    this.getWinner(); // 우승자 출력
   }
 
   async getValidCarNames() {
@@ -28,15 +27,15 @@ class App {
     this.cars = carNamesArr.map((carName) => new Car(carName));
   }
 
-  async getValidExecuteCount() {
+  async getValidExecutionCount() {
     const input = await Console.readLineAsync(Message.INFO.ASK_EXECUTE_COUNT);
-    this.executeCount = InputValidator.executeCount(input);
+    this.executionCount = InputValidator.executionCount(input);
   }
 
   execute() {
     Console.print(Message.INFO.SHOW_EXECUTE_RESULT);
-    for (let round = 0; round < this.executeCount; round += 1) {
-      this.executeOneRound(round);
+    for (let count = 0; count < this.executionCount; count += 1) {
+      this.executeOneRound(count);
       Console.print("\n");
     }
   }
@@ -45,24 +44,25 @@ class App {
     for (let index = 0; index < this.cars.length; index += 1) {
       const currentCar = this.cars[index];
       currentCar.decideGoOrStop(); // 해당 라운드 전진 혹은 정지 결정하기
-      const step = currentCar.getStep(); // 현재까지 최종 step 구하기
-      Console.print(`${currentCar.name} : ${GenerateStepStr(step)}`); // 현재까지 상태 출력하기
-      // 마지막 라운드일때 각 차량의 최종step수와 비교를 통해 1등의 step수 구하기
-      if (roundNum === this.executeCount - 1) {
-        this.maxStep = Math.max(this.maxStep, currentCar.getStep());
-      }
+      const step = currentCar.stepCount; // 현재까지 최종 step 구하기
+      Console.print(`${currentCar.name} : ${Constant.ONE_STEP.repeat(step)}`); // 현재까지 상태 출력하기
     }
   }
 
   getWinner() {
-    return this.cars
-      .filter((car) => car.getStep() === this.maxStep) // 최대step을 간 우승자목록을 리턴한다
-      .map((car) => car.name);
-  }
+    let maxStep = -1;
+    let winners = [];
 
-  showWinner() {
-    const winners = this.getWinner();
-    Console.print(`최종 우승자 : ${winners.join(", ")}`);
+    for (let i = 0; i < this.cars.length; i += 1) {
+      const car = this.cars[i];
+      if (car.stepCount > maxStep) {
+        maxStep = car.stepCount;
+        winners = [car.name];
+      } else if (car.stepCount === maxStep) {
+        winners.push(car.name);
+      }
+    }
+    Console.print(`${Message.INFO.FINAL_WINNER}${winners.join(", ")}`);
   }
 }
 
