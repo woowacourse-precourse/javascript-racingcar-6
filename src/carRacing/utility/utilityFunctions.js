@@ -7,8 +7,8 @@ const curry =
 export const map = curry((func, iterable) => {
   let result = [];
 
-  for (const a of iterable) {
-    result.push(func(a));
+  for (const arg of iterable) {
+    result.push(func(arg));
   }
 
   return result;
@@ -32,8 +32,8 @@ export const reduce = curry((func, accumulate, iterable) => {
     accumulate = iterable.next().value;
   }
 
-  for (const a of iterable) {
-    accumulate = func(accumulate, a);
+  for (const arg of iterable) {
+    accumulate = func(accumulate, arg);
   }
 
   return accumulate;

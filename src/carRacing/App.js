@@ -1,6 +1,6 @@
-import { Console } from "@woowacourse/mission-utils";
-import validateNameLength from "./validation/validateNameLength.js";
 import * as F from "./utility/utilityFunctions.js";
+import { Console } from "@woowacourse/mission-utils";
+import validateCarName from "./validation/validateCarName.js";
 
 class App {
   constructor() {}
@@ -15,14 +15,18 @@ class App {
 
   async enterCarNames() {
     try {
-      let carNamesList = [];
-
       const userInput = await Console.readLineAsync(
         "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n",
       );
 
-      carNamesList = userInput.split(",");
+      const carNames = userInput.split(",");
 
+      let carNamesList = F.go(
+        carNames,
+        F.filter((carName) => validateCarName(carName, 5)),
+      );
+
+      Console.print(carNamesList);
       return carNamesList;
     } catch (error) {
       throw new Error(`[ERROR] ${error}`);
