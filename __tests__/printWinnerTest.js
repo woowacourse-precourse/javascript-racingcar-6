@@ -12,19 +12,19 @@ const racingInfos = [
   {
     carList: ['one', 'two', 'three'],
     numberOfGame: 4,
-    runListArray: [
-      [true, true, true, false],
-      [true, false, true, true],
-      [false, false, false, true],
+    carPositionMatrix: [
+      [1, 2, 3, 3],
+      [1, 1, 2, 3],
+      [0, 0, 0, 1],
     ],
   },
   {
     carList: ['one', 'two', 'three'],
     numberOfGame: 5,
-    runListArray: [
-      [false, false, false, true, false],
-      [true, true, false, false, true],
-      [true, true, true, true, false],
+    carPositionMatrix: [
+      [0, 0, 0, 1, 0],
+      [1, 2, 2, 2, 3],
+      [1, 2, 3, 4, 4],
     ],
   },
 ];

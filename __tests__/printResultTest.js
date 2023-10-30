@@ -13,10 +13,10 @@ describe('실행 결과', () => {
     const racingInfo = {
       carList: ['one', 'two', 'three'],
       numberOfGame: 3,
-      runListArray: [
-        [true, true, true],
-        [true, false, true],
-        [false, false, false],
+      carPositionMatrix: [
+        [1, 2, 3],
+        [1, 1, 2],
+        [0, 0, 0],
       ],
     };
     const outputs = [

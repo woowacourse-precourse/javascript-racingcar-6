@@ -19,7 +19,7 @@ describe('객체 초기화', () => {
 
   const CAR_LIST_NAME = 'carList';
   const NUMBER_OF_GAME_NAME = 'numberOfGame';
-  const RUN_LIST_ARRAY_NAME = 'runListArray';
+  const CAR_POSITION_MATRIX_NAME = 'carPositionMatrix';
 
   test.each([
     [testInputs[0], ['cha', 'seung', 'ha']],
@@ -63,13 +63,13 @@ describe('객체 초기화', () => {
       const racingInfo = await Make.racingInfo();
 
       // then
-      expect(racingInfo).toHaveProperty(RUN_LIST_ARRAY_NAME);
-      expect(racingInfo[RUN_LIST_ARRAY_NAME]).toHaveLength(
+      expect(racingInfo).toHaveProperty(CAR_POSITION_MATRIX_NAME);
+      expect(racingInfo[CAR_POSITION_MATRIX_NAME]).toHaveLength(
         racingInfo[CAR_LIST_NAME].length
       );
-      racingInfo[RUN_LIST_ARRAY_NAME].forEach(runList => {
+      racingInfo[CAR_POSITION_MATRIX_NAME].forEach(runList => {
         expect(runList).toHaveLength(racingInfo[NUMBER_OF_GAME_NAME]);
-        runList.forEach(element => expect(typeof element).toBe('boolean'));
+        runList.forEach(element => expect(typeof element).toBe('number'));
       });
     }
   );

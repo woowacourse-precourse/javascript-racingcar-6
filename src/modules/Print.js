@@ -1,5 +1,4 @@
 import { Console } from '@woowacourse/mission-utils';
-import Get from './Get.js';
 const RESULT_FIRST_MESSAGE = '\n실행 결과';
 const WINNER_FROM_FIRST_MESSAGE = '최종 우승자 : ';
 const BLANK = '';
@@ -17,7 +16,7 @@ class Print {
     racingInfo.carList.forEach((name, index) => {
       Console.print(
         `${name} : ${'-'.repeat(
-          Get.positionWhen(racingInfo.runListArray[index], gameCount)
+          racingInfo.carPositionMatrix[index][gameCount]
         )}`
       );
     });

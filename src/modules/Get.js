@@ -1,19 +1,17 @@
 import Is from './Is.js';
 
 class Get {
-  static runListArray(numberOfCar, numberOfGame) {
-    return new Array(numberOfCar).fill(numberOfGame).map(Get.randomRunList);
+  static carPositionMatrix(numberOfCar, numberOfGame) {
+    return new Array(numberOfCar)
+      .fill(numberOfGame)
+      .map(Get.randomPositionList);
   }
 
-  static randomRunList(numberOfGame) {
-    return new Array(numberOfGame).fill(null).map(Is.running);
-  }
-
-  static positionWhen(runList, count) {
-    return runList.reduce((previous, running, index) => {
-      if (index <= count && running) return previous + 1;
-      else return previous;
-    }, 0);
+  static randomPositionList(numberOfGame) {
+    return new Array(numberOfGame).fill(0).map((position, index, callArray) => {
+      if (index === 0) return (callArray[0] = Is.running() ? 1 : 0);
+      return (callArray[index] = callArray[index - 1] + (Is.running() ? 1 : 0));
+    });
   }
 
   static winnerNameList(racingInfo) {
@@ -36,11 +34,9 @@ class Get {
   }
 
   static lastPositionList(racingInfo) {
-    const lastPositionList = [];
-    racingInfo.runListArray.forEach(list => {
-      lastPositionList.push(Get.positionWhen(list, racingInfo.numberOfGame));
-    });
-    return lastPositionList;
+    return racingInfo.carPositionMatrix.map(
+      carPosition => carPosition[carPosition.length - 1]
+    );
   }
 }
 

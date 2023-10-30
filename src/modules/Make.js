@@ -6,7 +6,7 @@ class Make {
     const info = {};
     info.carList = await ConvertInputTo.carList();
     info.numberOfGame = await ConvertInputTo.numberOfGame();
-    info.runListArray = Get.runListArray(
+    info.carPositionMatrix = Get.carPositionMatrix(
       info.carList.length,
       info.numberOfGame
     );
