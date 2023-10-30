@@ -36,9 +36,9 @@ class Racing {
   }
 
   #printScore(scoreStorage) {
-    scoreStorage[NAME].forEach((e, index) => {
+    scoreStorage[NAME].forEach((name, index) => {
       let distance = this.#showDistanceWithHyphen(scoreStorage[DISTANCE][index]);
-      MissionUtils.Console.print(`${e} : ${distance} `);
+      MissionUtils.Console.print(`${name} : ${distance} `);
     })
     MissionUtils.Console.print('');
   }
