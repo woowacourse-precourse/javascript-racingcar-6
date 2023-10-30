@@ -3,9 +3,9 @@
 예외 처리
 
 - [ ] 유저 입력 값 오류 - 레이싱카 이름
-  - [ ] 레이싱카 이름을 입력하지 않고 엔터를 입력한 경우 (입력 값 = undefined) ⇒ “[ERROR] 빈 값을 입력할 수 없습니다.”
-  - [ ] 레이싱카 이름이 5자를 넘어가는 경우 (반복 필요) ⇒ "[ERROR] 자동차 이름의 길이는 1에서 5까지의 자연수여야 합니다."
-  - [ ] 레이싱카 이름에 빈 칸이 들어가는 경우 (”,”으로 split을 진행함) ⇒ "[ERROR] 자동차 이름을 입력할 때에는 빈 칸이 들어가면 안됩니다.”
+  - [x] 레이싱카 이름을 입력하지 않고 엔터를 입력한 경우 (입력 값 = undefined) ⇒ “[ERROR] 빈 값을 입력할 수 없습니다.”
+  - [x] 레이싱카 이름이 5자를 넘어가는 경우 (반복 필요) ⇒ "[ERROR] 자동차 이름의 길이는 1에서 5까지의 자연수여야 합니다."
+  - [x] 레이싱카 이름에 빈 칸이 들어가는 경우 (”,”으로 split을 진행함) ⇒ "[ERROR] 자동차 이름을 입력할 때에는 빈 칸이 들어가면 안됩니다.”
 - [ ] 유저 입력 값 오류 - 경기 횟수
   - [ ] 경주 횟수를 입력하지 않고 엔터를 입력한 경우 (입력 값 = undefined) ⇒ “[ERROR] 빈 값을 입력할 수 없습니다.”
   - [ ] 경주 횟수를 숫자가 아닌 수로 입력하는 경우 (ex. “ac34”) ⇒ "[ERROR] 경주 시도 횟수는 숫자를 입력해야 합니다.”
@@ -36,7 +36,7 @@
 - [ ] Validation 객체 - feat(Validation Object):
 
   - [x] validateGoForward - feat(Validate car can go forward): 랜덤으로 생성된 수를 확인하여 앞으로 갈 수 있는지 정지해야 하는지 확인하는 메서드
-  - [ ] validateRacingCarName - feat(Validate racing car name inputs): 유저가 입력한 레이싱카 이름 문자열을 검증하는 메서드
+  - [x] validateRacingCarName - feat(Validate racing car name inputs): 유저가 입력한 레이싱카 이름 문자열을 검증하는 메서드
   - [ ] validateRacingRepeatNumber - feat(Validate racing repeat number): 유저가 입력한 레이싱 경기 반복 횟수를 검증하는 메서드
 
 - [x] Utility 함수 - feat(Utility Function):
