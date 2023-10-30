@@ -7,19 +7,20 @@ class App {
   async getRacecarNameInput() {
     const racecarNameInput = await Console.readLineAsync(message.ASK_RACECAR_NAMES);
 
-    const isValid = await this.checkRacecarNameValidity(racecarNameInput);
+    // split the inputs by "," and trim any possible whitespaces
+    const names = racecarNameInput.split(',').map((item) => item.trim());
+
+    const isValid = await this.checkRacecarNameValidity(names);
 
     if (isValid) {
-      return isValid;
+      return names;
     } else {
       throw new Error(error.NOT_VALID_NAME);
     }
   }
 
   // check validity of racecarNameInput & if valid, return them as items in an array
-  async checkRacecarNameValidity(racecarNameInput) {
-    const names = racecarNameInput.split(',').map((item) => item.trim());
-
+  async checkRacecarNameValidity(names) {
     const isProperLength = names.every((item) => item.length <= num.NAME_LENGTH_LIMIT);
 
     const isNotEmpty = names.every((item) => item.length > 0);
@@ -28,7 +29,7 @@ class App {
 
     const isWithoutRecurrences = names.length === [...new Set(names)].length;
 
-    return isProperLength && isNotEmpty && isWithoutSpaces && isWithoutRecurrences ? names : false;
+    return isProperLength && isNotEmpty && isWithoutSpaces && isWithoutRecurrences ? true : false;
   }
 
   async getAttemptInput() {
