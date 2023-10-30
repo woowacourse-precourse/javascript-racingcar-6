@@ -30,6 +30,20 @@ class App {
       throw error;
     }
   }
+
+  // 라운드 당 진행할 로직
+  makeGameRoundData() {
+    this.GAME_PLAYERS.forEach((player) => {
+      const PLAYER_NUM = Random.pickNumberInRange(0, 9);
+      if (PLAYER_NUM >= 4) {
+        if (this.GAME_ROUND_RESULT[player] === undefined) {
+          this.GAME_ROUND_RESULT[player] = '-';
+        } else {
+          this.GAME_ROUND_RESULT[player] += '-';
+        }
+      }
+    });
+  }
 }
 
 export default App;
