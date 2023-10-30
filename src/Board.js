@@ -1,6 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
 import Car from './Car.js';
 
+const MAX_NAME_LENGTH = 5;
 const POSITIVE_INTEGER_REGEX = /^\d+$/;
 
 class Board {
@@ -17,8 +18,20 @@ class Board {
   async setCars() {
     const carNames = await this.#inputCarNames();
     carNames.forEach((name) => {
+      this.#validateName(name);
       this.#cars.push(new Car(name));
     });
+  }
+
+  /**
+   * name의 길이가 5 이하인지 유효성검사를 수행한다.
+   * @param {String} name 
+   */
+  #validateName(name) {
+    if (name.length > MAX_NAME_LENGTH) {
+      // TODO: Error 메시지 변경
+      throw new Error("[ERROR]");
+    }
   }
 
   /**
