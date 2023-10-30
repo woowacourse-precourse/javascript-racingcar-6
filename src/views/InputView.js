@@ -5,9 +5,9 @@ import { validateCarNames, validateTryNumber } from '../utils/inputValidator.js'
 class InputView {
 
 	static async getCarNames() {
-		const carStr = await Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
-		validateCarNames(carStr);
-		const carNames = strToArrByComma(carStr);
+		const carInput = await Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
+		validateCarNames(carInput);
+		const carNames = strToArrByComma(carInput);
 		return carNames;
 	}
 

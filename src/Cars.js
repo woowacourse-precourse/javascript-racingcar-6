@@ -16,20 +16,12 @@ class Cars {
 
 	isMove() {
 		const number = MissionUtils.Random.pickNumberInRange(0, 9);
-		if (number >= 4)
-			return true;
-		else
-			return false;
+		return number >= 4;
 	};
 
 	getWinners() {
-		const winners = [];
 		const maxDistance = Math.max(...this.distances);
-
-		for (var i = 0; i < this.number; i++) {
-			if (this.distances[i] == maxDistance)
-				winners.push(this.names[i]);
-		}
+		const winners = this.names.filter((_, i) => this.distances[i] == maxDistance);
 
 		return winners;
 	}
