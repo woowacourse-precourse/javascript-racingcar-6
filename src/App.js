@@ -14,7 +14,7 @@ class Car {
   }
 
   move() {
-    this.position ++;
+    this.position++;
   }
 }
 
@@ -29,11 +29,13 @@ class App {
     try {
       await this.inputCarNames();
       await this.inputRounds();
+      MissionUtils.Console.print('\n실행 결과');
       await this.startRace();
-     } catch (error) {
-      console.error(error.message);
-      throw error;
-     }
+      this.printWinners();
+    } catch (error) {
+        console.error(error.message);
+        throw error;
+    }
   }
 
   async inputCarNames() {
@@ -46,14 +48,14 @@ class App {
   }
 
   async startRace() {
-    for (let i=0; i<this.rounds; i++) {
+    for (let i = 0; i < this.rounds; i++) {
       this.moveCars();
       this.printRaceResult();
     }
   }
 
   moveCars() {
-    this.cars.forEach (car => {
+    this.cars.forEach(car => {
       const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
       if (randomNumber >= 4) {
         car.move();
@@ -65,6 +67,17 @@ class App {
     this.cars.forEach(car => {
       MissionUtils.Console.print(`${car.name} : ${"-".repeat(car.position)}`);
     });
+    MissionUtils.Console.print('');
+  }
+
+  getWinners() {
+    const maxPosition = Math.max(...this.cars.map(car => car.position));
+    return this.cars.filter(car => car.position === maxPosition).map(car => car.name);
+  }
+
+  printWinners() {
+    const winners = this.getWinners();
+    MissionUtils.Console.print(`최종 우승자 : ${winners.join(', ')}`);
   }
 }
 
