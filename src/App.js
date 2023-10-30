@@ -13,6 +13,7 @@ class App {
     await this.getRound();
 
     this.showRaceProcess();
+    this.showRaceResult();
   }
 
   async getCarName() {
@@ -71,6 +72,24 @@ class App {
 
   getRandomNumber(){
     return Random.pickNumberInRange(0, 9);
+  }
+
+  showRaceResult(){
+    const result = this.findWinners();
+
+    Console.print(`${MESSAGE.WINNER}${result}`);
+  }
+
+  findWinners(){
+    const maxMove = this.findMaxCount();
+
+    return [...this.carName]
+    .filter((_,i) => ( this.carMoveCount[i] === maxMove ))
+    .join(', ');
+  }
+
+  findMaxCount(){
+    return Math.max(...this.carMoveCount)
   }
 }
 
