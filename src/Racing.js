@@ -71,6 +71,6 @@ export const racingResultPrint = (carsArr) => {
     }
     console.log(`${carsInfo.name} : ${movingDistance}`);
     const resultMessage = `${carsInfo.name} : ${movingDistance}`;
-    return resultMessage;
+    return MissionUtils.Console.print(resultMessage);
   });
 };
