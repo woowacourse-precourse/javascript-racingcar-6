@@ -1,3 +1,5 @@
+import racingGameValidationMethods from '../src/game/game.error';
+
 describe('문자열 테스트', () => {
   test('split 메서드로 주어진 값을 구분', () => {
     const input = '1,2';
@@ -26,5 +28,23 @@ describe('문자열 테스트', () => {
     const result = input.at(0);
 
     expect(result).toEqual('a');
+  });
+
+  test('validLength 메서드 : min, max 범위에 포함되는 길이의 문자열인지 검사', () => {
+    const MIN_LENGTH = 1;
+    const MAX_LENGTH = 5;
+    const passInput = ['hello', 'a', 'abc'];
+    const nonPassInput = ['', 'abcdef'];
+
+    passInput.forEach((text) =>
+      expect(
+        racingGameValidationMethods.validLength(text, MIN_LENGTH, MAX_LENGTH),
+      ).toBe(true),
+    );
+    nonPassInput.forEach((text) =>
+      expect(
+        racingGameValidationMethods.validLength(text, MIN_LENGTH, MAX_LENGTH),
+      ).toBe(false),
+    );
   });
 });
