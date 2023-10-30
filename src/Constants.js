@@ -3,6 +3,8 @@
 export const CAR = Object.freeze({
 	nameLength: 5,
 	StepsNumber: 4,
+	randomMin: 0,
+	randomMax: 9,
 });
 
 export const MESSAGE = Object.freeze({

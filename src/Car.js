@@ -25,7 +25,7 @@ class Car {
 	}
 
 	canMoveStep() {
-		const number = Random.pickNumberInRange(0, 9);
+		const number = Random.pickNumberInRange(CAR.randomMin, CAR.randomMax);
 		number >= CAR.StepsNumber && (this.#steps += "-");
 		return this;
 	}
