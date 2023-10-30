@@ -1,11 +1,13 @@
-import { NEW_LINE } from '../constants/constants.js';
-import formatCarMovementStrings from '../utils/formatCarMovementStrings.js';
+import { NEW_LINE, STICK } from '../constants/constants.js';
 
 export default class ResultModel {
   #allAttempsResult;
 
+  #displayedResults;
+
   constructor() {
     this.#allAttempsResult = [];
+    this.#displayedResults = [];
   }
 
   addAttempsResult(cars) {
@@ -21,13 +23,17 @@ export default class ResultModel {
   }
 
   makeTotalResult() {
-    const displayedResults = [];
     this.#allAttempsResult.forEach((attempResult) => {
-      attempResult.forEach(([carName, moveCount]) => {
-        displayedResults.push(formatCarMovementStrings(carName, moveCount));
-      });
-      displayedResults.push(NEW_LINE);
+      this.#formatCarMoveStrings(attempResult);
     });
-    return displayedResults.join('');
+    return this.#displayedResults.join('');
+  }
+
+  #formatCarMoveStrings(attempResult) {
+    attempResult.reduce((acc, [carName, moveCount]) => {
+      acc.push(`${carName} : ${STICK.repeat(moveCount)}${NEW_LINE}`);
+      return acc;
+    }, this.#displayedResults);
+    this.#displayedResults.push(NEW_LINE);
   }
 }
