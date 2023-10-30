@@ -31,9 +31,9 @@ class App {
   }
 
   async inputLapLength() {
-    const inputNum = await computer.ask(ABOUT.ASK_LAP);
-    validate.lapLength(inputNum);
-    this.#lapLength = inputNum;
+    const inputNumStr = await computer.ask(ABOUT.ASK_LAP);
+    validate.lapLength(inputNumStr);
+    this.#lapLength = Number(inputNumStr);
   }
 }
 
