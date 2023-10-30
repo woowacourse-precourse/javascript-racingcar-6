@@ -61,6 +61,13 @@ class App {
             move: 0,
         }));
     }
+
+    /**
+     * @returns {number}
+     */
+    getRandomNumberForRacing() {
+        return MissionUtils.Random.pickNumberInRange(0, 9);
+    }
 }
 
 export default App;
