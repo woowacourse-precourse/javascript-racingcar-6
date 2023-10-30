@@ -10,9 +10,9 @@ class RacingGame {
     Console.print(`${GAME_MESSAGE.result}`);
     for (let i = 0; i < number; i++) {
       this.hyphenAdd(keyValue);
+      this.gameInProgress(keyValue);
     }
   }
-
   nameToKeyValueConverter(name) {
     const nameKeyValues = [];
     name.forEach((value) => {
@@ -29,6 +29,13 @@ class RacingGame {
         randomNumber[name] += SYMBOLS.hyphen;
       }
     }
+  }
+  gameInProgress(keyValue) {
+    keyValue.forEach((value) => {
+      const name = Object.keys(value)[0];
+      const result = value[name];
+      Console.print(`${name} : ${result}`);
+    });
   }
 }
 export default RacingGame;
