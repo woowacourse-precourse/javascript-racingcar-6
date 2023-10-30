@@ -1,5 +1,10 @@
 import { Console } from '@woowacourse/mission-utils';
-import { getDistanceString, parseNames, parseNumber } from '../utils/common.js';
+import {
+  getDistanceString,
+  parseNames,
+  parseNumber,
+  getWinners,
+} from '../utils/common.js';
 import {
   validateNameShouldBeLessThan5,
   validateNumber,
@@ -32,6 +37,13 @@ class GameConsole {
     );
 
     this.printEmptyLine();
+  }
+
+  static printGameWinner(cars) {
+    const winners = getWinners(cars);
+
+    if (winners.length === 0) Console.print(`최종 우승자 : ${winners[0]}`);
+    else Console.print(`최종 우승자 : ${winners.join(', ')}`);
   }
 
   static printEmptyLine() {

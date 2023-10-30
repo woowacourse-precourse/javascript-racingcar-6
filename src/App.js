@@ -20,6 +20,8 @@ class App {
 
       GameConsole.printRoundResult(this.#cars);
     }
+
+    GameConsole.printGameWinner(this.#cars);
   }
 
   #moveCar(car) {

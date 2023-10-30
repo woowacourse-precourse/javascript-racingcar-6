@@ -19,3 +19,12 @@ export function getDistanceToMove(randomNumber) {
 export function getDistanceString(distanceNumber) {
   return '-'.repeat(distanceNumber);
 }
+
+export function getWinners(cars) {
+  const sortedCars = cars.slice().sort((a, b) => b.distance - a.distance);
+  const winners = sortedCars
+    .filter((car) => sortedCars[0].distance === car.distance)
+    .map((car) => car.name);
+
+  return winners;
+}
