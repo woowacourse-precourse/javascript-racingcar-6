@@ -1,4 +1,6 @@
+import { Random } from '@woowacourse/mission-utils';
 import RACING_GAME from '../constants/racingGame.js';
+import CAR from '../constants/car.js';
 
 class RacingGame {
   #cars;
@@ -21,7 +23,11 @@ class RacingGame {
 
   #moveCars() {
     this.#cars.forEach((car) => {
-      car.move();
+      const shouldMove =
+        Random.pickNumberInRange(CAR.movement.min, CAR.movement.max) >=
+        CAR.movement.threshold;
+
+      if (shouldMove) car.move();
     });
   }
 
