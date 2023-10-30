@@ -16,6 +16,13 @@ class Car {
   async printCarData() {
     await Console.print(`${this.name} : ${this.#currentState}`);
   }
+
+  getCarState() {
+    return {
+      carName: this.name,
+      currentStateLength: this.#currentState.length,
+    };
+  }
 }
 
 export default Car;
