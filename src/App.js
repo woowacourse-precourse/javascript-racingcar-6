@@ -84,6 +84,10 @@ class App {
     if(!num.match(regEx)) throw new Error('[ERROR] 시도 횟수는 올바른 숫자값으로 입력해 주세요.');
     return Number(num);
   }
+
+  makeErrorMsg(str){
+    return `[ERROR] ${str}`;
+  }
 }
 
 export default App;
