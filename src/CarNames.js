@@ -25,7 +25,9 @@ function validateCarNames(carNamesArray) {
 
   carNamesArray.forEach((carName) => {
     if (!pattern.test(carName)) {
-      throw new Error('[ERROR] 이름의 형식이 잘못됐습니다.');
+      throw new Error(
+        '[ERROR] 이름의 형식이 잘못됐습니다. 이름은 1글자 이상 5글자 이하의 영어 소문자만 가능합니다'
+      );
     }
   });
 
