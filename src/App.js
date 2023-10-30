@@ -12,12 +12,18 @@ class App {
 
         const numberOfGames = await this.getNumberOfGames();
         console.log(numberOfGames);
+
+        let round = 1;
+        while (round <= numberOfGames) {
+            const carStates = this.calculateAndStoreScore(numberOfGames);
+            Console.print(carStates);
+            round++;
+        }
     }
 
     async createCarNameArr() {
         const inputValue = await Console.readLineAsync().then((value) => value);
         const carNameArr = inputValue.split(",");
-
         this.checkCarFormat(inputValue, carNameArr);
 
         return carNameArr;
@@ -28,6 +34,7 @@ class App {
             (value) => value / 1 //문자형 숫자형으로 변환
         );
         this.checkNumberOfGamesFormat(numberOfGames);
+
         return numberOfGames;
     }
 
@@ -46,6 +53,17 @@ class App {
         if (numberOfGames === 0 || isNaN(numberOfGames)) {
             throw new Error("[ERROR] 시도 횟수가 잘못된 형식입니다.");
         }
+    }
+
+    calculateAndStoreScore(numberOfCars) {
+        const carStates = new Array(numberOfCars).fill("");
+        for (let i = 0; i < carStates.length; i++) {
+            let randomNumber = Random.pickNumberInRange(0, 9);
+            if (randomNumber >= 4) {
+                carStates[i] += "-";
+            }
+        }
+        return carStates;
     }
 }
 
