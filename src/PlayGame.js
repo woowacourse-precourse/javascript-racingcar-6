@@ -1,39 +1,34 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import UserInput from "./UserInput.js";
 
 class PlayGame {
-    constructor() {
-        this.UserInput = new UserInput();
-    }
-
     setRandomNumber() {
         return MissionUtils.Random.pickNumberInRange(1, 9);
     }
-
-    async getRandomNumber(CarNames, count) {
+    
+    //랜덤숫자를 받고 출력할 '-' 의 개수를 count하는 함수
+    async getStepForward(carNames, count) {
         let carRandom = new Array();
-        // 랜덤숫자 생성
-        for(let i=0;i<CarNames.length;i++) {
+        for (let i = 0; i < carNames.length; i++) {
             carRandom.push(this.setRandomNumber());
-            if(carRandom[i]>3) {
+            if (carRandom[i] > 3) {
                 count[i]++;
             }
         }
         return count;
     }
 
-    async displayResult(CarNames, count) {
-        for(let j=0;j<CarNames.length;j++) {
-            MissionUtils.Console.print(CarNames[j] + ' : ' + '-'.repeat(count[j]));
+    async displayResult(carNames, count) {
+        for (let j = 0; j < carNames.length; j++) {
+            MissionUtils.Console.print(carNames[j] + ' : ' + '-'.repeat(count[j]));
         }
     }
 
-    async pickWinner(CarNames, count) {
-        const max = Object.keys(count).reduce(function(m, k){ return count[k] > m ? count[k] : m }, -Infinity);
+    async pickWinner(carNames, count) {
+        const max = Object.keys(count).reduce(function (m, k) { return count[k] > m ? count[k] : m }, -Infinity);
         let winner = new Array();
-        for(let i=0;CarNames.length;i++){
-            if(count[i] === max) {
-                winner.push(CarNames[i]);
+        for (let i = 0; carNames.length; i++) {
+            if (count[i] === max) {
+                winner.push(carNames[i]);
             } else { break; }
         }
         return winner;
