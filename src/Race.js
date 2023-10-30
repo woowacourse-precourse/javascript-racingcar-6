@@ -9,6 +9,7 @@ import {
     NOT_MOVE_WIN_ERROR_MESSAGE,
     RACE_WINNER_PRINT_MESSAGE,
     NOT_FOUND_WINNER_ERROR_MESSAGE,
+    DUPLICATE_CAR_NAME_ERROR_MESSAGE,
 } from "./Define";
 
 export const VALIDATE_CAR_NAME = (CAR_NAME_INPUT) => {
@@ -18,6 +19,10 @@ export const VALIDATE_CAR_NAME = (CAR_NAME_INPUT) => {
     const CAR_NAMES = CAR_NAME_INPUT.split(',');
     if (CAR_NAMES.some(CAR_NAME => CAR_NAME.trim().length > 5)) {
         throw new Error(CAR_NAME_INVALID_ERROR_MESSAGE);
+    }
+    const DUPLICATE_CHECK_NAME = new Set(NAMES);
+    if (DUPLICATE_CHECK_NAME.size !== NAMES.length) {
+        throw new Error(DUPLICATE_CAR_NAME_ERROR_MESSAGE);
     }
 }
 
