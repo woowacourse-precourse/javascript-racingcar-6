@@ -67,7 +67,7 @@ describe('RacingGameController 테스트', () => {
     mockQuestions(inputs);
     mockRandoms(randoms);
 
-    await controller.initiate();
+    await controller.runRacingGame();
 
     expect(logSpy).toHaveBeenCalledWith(GAME_MESSAGES.resultHeader);
     expect(logSpy).toHaveBeenCalledWith('이의현 : -\n곽수수 : \n');

@@ -18,7 +18,7 @@ class App {
       racingGame,
       racingCarFactory,
     );
-    await racingGameController.initiate();
+    await racingGameController.runRacingGame();
   }
 }
 

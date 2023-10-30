@@ -11,7 +11,7 @@ class RacingGameController {
     this.#factory = factory;
   }
 
-  async initiate() {
+  async runRacingGame() {
     const { carNames, rounds } = await this.#getUserInputs();
     this.#setupCarsFromNames(carNames);
     this.#executeRacingRounds(rounds);
