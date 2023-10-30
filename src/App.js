@@ -1,4 +1,5 @@
 import * as MissionUtils from "@woowacourse/mission-utils";
+import Car from "./Car.js";
 
 class App {
   async inputName() {
@@ -11,14 +12,32 @@ class App {
     }
     return carNames;
   }
-  async inputRaceCount() {
+  async inputRaceRound() {
     const userInput = await MissionUtils.Console.readLineAsync(
       "시도할 횟수는 몇 회인가요?\n"
     );
     return userInput;
   }
 
-  async play() {}
+  async play() {
+    const carNames = await this.inputName();
+    const racingRound = await this.inputRaceRound();
+    const racingCars = [];
+    carNames.map((name) => {
+      const newCar = new Car(name);
+      racingCars.push(newCar);
+    });
+
+    console.log("실행 결과");
+
+    for (let i = 0; i < racingRound; i++) {
+      racingCars.map((car) => {
+        car.move();
+        car.print();
+      });
+      console.log("\n");
+    }
+  }
 }
 
 export default App;
