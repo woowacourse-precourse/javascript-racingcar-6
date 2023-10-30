@@ -44,5 +44,4 @@ class Participant {
     return this.input.length !== [...new Set(this.input)].length;
   }
 }
-
 export default Participant;
