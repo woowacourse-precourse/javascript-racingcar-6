@@ -1,9 +1,9 @@
 import { validCars } from "../validation/carsValidation.js";
 
-export function makeCarsArray(message){
-    const cars = message.split(',');
+export function makeCarsArray(message) {
+  const CARS = message.split(",");
 
-    validCars(cars);
+  validCars(CARS);
 
-    return cars;
+  return CARS;
 }

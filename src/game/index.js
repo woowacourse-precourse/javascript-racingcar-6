@@ -12,17 +12,17 @@ export class RacingGame {
   }
 
   async initCars() {
-    const name = await input(INPUT_MESSAGE.INPUT_NAME);
-    const cars = await makeCarsArray(name);
+    const NAME = await input(INPUT_MESSAGE.INPUT_NAME);
+    const CARS = await makeCarsArray(NAME);
 
-    cars.forEach((car) => {
+    CARS.forEach((car) => {
       this.cars[car] = 0;
     });
   }
 
   async initTryCount() {
-    const count = await input(INPUT_MESSAGE.TRY_COUNT);
-    const VAILD_COUNT = vaildTryCount(+count);
+    const COUNT = await input(INPUT_MESSAGE.TRY_COUNT);
+    const VAILD_COUNT = vaildTryCount(+COUNT);
     this.tryCount = VAILD_COUNT;
   }
 
@@ -49,8 +49,8 @@ export class RacingGame {
   }
 
   async moveCar(car) {
-    const move = await isMove();
-    if (move) {
+    const MOVE = await isMove();
+    if (MOVE) {
       this.cars[car] += 1;
     }
   }
