@@ -1,9 +1,9 @@
-import RacingCar from "./RacingCar/RacingCar.js";
+import Race from "./RacingCar/Race.js";
 
 class App {
   async play() {
-    const racingCar = new RacingCar();
-    await racingCar.start();
+    const race = new Race();
+    await race.start();
   }
 }
 

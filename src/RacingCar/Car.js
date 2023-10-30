@@ -1,3 +1,5 @@
+import { Random } from "@woowacourse/mission-utils";
+
 import Message from "../Message.js";
 import { ERROR_MESSAGE } from "../constants.js";
 
@@ -20,8 +22,23 @@ class Car {
     return value.length <= 5;
   }
 
+  race() {
+    if (this.movingForward()) this.move();
+  }
+
+  movingForward() {
+    const randomNum = Random.pickNumberInRange(0, 9);
+
+    if (randomNum >= 4) return true;
+    return false;
+  }
+
   move() {
     this.distance += "-";
+  }
+
+  printDistance() {
+    return `${this._name} : ${this.distance}`;
   }
 }
 
