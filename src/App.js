@@ -7,8 +7,20 @@ class App {
     this.nameValidation(carNames);
     const cnt = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?");
     MissionUtils.Console.print("실행 결과")
-    this.printResult(carNames, cnt)
+    const carDistance = this.printResult(carNames, cnt)
+    this.printWinner(carNames, carDistance)
 
+  }
+
+  printWinner(carNames, carDistance) {
+    const maxDistance = Math.max(...carDistance)
+    var winner = new Array()
+    for (let i = 0; i < carNames.length; i++) {
+      if (carDistance[i] === maxDistance) {
+        winner.push(carNames[i])
+      }
+    }
+    MissionUtils.Console.print(`최종 우승자 : ${winner.join(", ")}`)
   }
 
   printResult(carNames, cnt) {
@@ -20,6 +32,7 @@ class App {
       }
       MissionUtils.Console.print("")
     }
+    return carDistance
   }
 
   race(carNames, carDistance) {    
