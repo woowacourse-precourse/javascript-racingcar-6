@@ -2,7 +2,7 @@ import { MissionUtils } from '@woowacourse/mission-utils';
 import {
   printInputCarNames,
   printRaceResult,
-  printFinalWinner,
+  printWinners,
 } from '../src/utils/print';
 import Car from '../src/Car';
 
@@ -60,7 +60,7 @@ describe('출력 테스트', () => {
     const logSpy = getLogSpy();
 
     outputs.forEach((output, index) => {
-      printFinalWinner(inputs[index]);
+      printWinners(inputs[index]);
       expect(logSpy).toHaveBeenCalledWith(output);
     });
   });

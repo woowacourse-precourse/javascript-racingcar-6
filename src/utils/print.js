@@ -19,8 +19,7 @@ const getForwardDistanceString = (forwardDistance) => {
 const getOneCarResult = (car) => {
   const carName = car.getCarName();
   const forwardDistance = car.getForwardDistance();
-  const makeForwardDistanceString = getForwardDistanceString(forwardDistance);
-  const forwardDistanceString = makeForwardDistanceString();
+  const forwardDistanceString = getForwardDistanceString(forwardDistance)();
 
   return `${carName} : ${forwardDistanceString}`;
 };
@@ -34,6 +33,7 @@ const printInputAttemptNumber = () => {
 };
 
 const printStartRaceResult = () => {
+  print();
   print('실행 결과');
 };
 
@@ -44,7 +44,7 @@ const printRaceResult = (cars) => {
   print();
 };
 
-const printFinalWinner = (cars) => {
+const printWinners = (cars) => {
   print(`최종 우승자 : ${cars.join(', ')}`);
 };
 
@@ -53,5 +53,5 @@ export {
   printInputAttemptNumber,
   printStartRaceResult,
   printRaceResult,
-  printFinalWinner,
+  printWinners,
 };
