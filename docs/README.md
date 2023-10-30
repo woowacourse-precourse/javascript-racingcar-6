@@ -2,13 +2,13 @@
 
 ## ✔ 자동차 이름 입력받기
 
-- `@woowacourse/mission-utils`의 `Console.print()`를 이용해 메세지를 출력하고, `Console.readLineAsync()`를 이용해 자동차의 이름을 입력받는다.
-  - 메세지 : "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
+- `@woowacourse/mission-utils`의 `Console.readLineAsync()`를 이용해 메시지를 출력한 후 자동차의 이름을 입력받는다.
+  - 메시지 : "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
 
 ## ✔ 시도할 횟수 입력받기
 
-- `@woowacourse/mission-utils`의 `Console.print()`를 이용해 메세지를 출력하고, `Console.readLineAsync()`를 이용해 시도할 횟수를 입력받는다.
-  - 메세지 : "시도할 횟수는 몇 회인가요?"
+- `@woowacourse/mission-utils`의 `Console.readLineAsync()`를 이용해 메시지를 출력한 후 시도할 횟수를 입력받는다.
+  - 메시지 : "시도할 횟수는 몇 회인가요?"
 
 ## ✔ 무작위 값 구하기
 
