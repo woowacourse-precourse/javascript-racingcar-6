@@ -1,6 +1,7 @@
 import { Console } from "@woowacourse/mission-utils";
 import User from "./User.js";
 import CarMovementDecision from "./CarMovementDecision.js";
+import { RESULT_MESSAGE } from "./utils/constants.js";
 
 class RacingCarGame {
   #scoreBoard = {};
@@ -24,7 +25,7 @@ class RacingCarGame {
 
   playGame(totalAttempts) {
     const carMovementDecision = new CarMovementDecision();
-    Console.print("\n실행 결과");
+    Console.print(`\n${RESULT_MESSAGE.EXECUTION_RESULT}`);
     for (let attempt = 0; attempt < totalAttempts; attempt++) {
       this.updateScoreBoard(carMovementDecision);
       this.printRoundScores();
@@ -57,7 +58,7 @@ class RacingCarGame {
       (carName) => this.#scoreBoard[carName].length === maxDistance
     );
 
-    Console.print(`최종 우승자: ${winners.join(", ")}`);
+    Console.print(`${RESULT_MESSAGE.WINNER} : ${winners.join(", ")}`);
   }
 }
 

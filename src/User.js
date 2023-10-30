@@ -1,4 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
+import { USER_PROMPT } from "./utils/constants.js";
 
 class User {
   #carsName = [];
@@ -11,9 +12,7 @@ class User {
 
   async inputCarsName() {
     try {
-      const input = await Console.readLineAsync(
-        "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
-      );
+      const input = await Console.readLineAsync(`${USER_PROMPT.CAR_NAME}\n`);
       this.#carsName = input.split(",");
     } catch (error) {
       throw error;
@@ -22,7 +21,7 @@ class User {
 
   async inputNumberOfAttempts() {
     try {
-      const input = await Console.readLineAsync("시도할 회수는 몇 회인가요?\n");
+      const input = await Console.readLineAsync(`${USER_PROMPT.ATTEMPTS}\n`);
       this.#attempts = input;
     } catch (error) {
       throw error;
