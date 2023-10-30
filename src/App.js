@@ -1,5 +1,6 @@
 import { Console, Random } from "@woowacourse/mission-utils";
 import Car from "./Car.js";
+import * as message from "./Message.js";
 
 class App {
   async play() {
@@ -7,7 +8,7 @@ class App {
     const carObjects = carNames.map((carName) => new Car(carName));
     let moveCount = await this.getMoveCount();
 
-    Console.print("\n실행 결과");
+    Console.print(message.RACING_RESULT);
 
     this.startRacing(carObjects, moveCount);
     this.printWinner(carObjects);
@@ -19,7 +20,7 @@ class App {
       .filter((car) => car.position === maxPosition)
       .map((car) => car.name);
 
-    Console.print("최종 우승자 : " + winners.join(", "));
+    Console.print(message.FINAL_WINNER + winners.join(", "));
   }
 
   startRacing(cars, moveCount) {
@@ -56,14 +57,12 @@ class App {
   }
 
   async getCarName() {
-    const carNames = await Console.readLineAsync(
-      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분\n"
-    );
+    const carNames = await Console.readLineAsync(`${message.GET_CAR_NAME}`);
     const carNameArray = carNames.split(",");
     if (this.validationCarName(carNameArray)) {
       return carNameArray;
     } else {
-      throw Error("[ERROR] 자동차 이름을 1~5자로 해야돼");
+      throw Error(`${message.ERROR_INVALID_NAME}`);
     }
   }
 
@@ -72,13 +71,11 @@ class App {
   }
 
   async getMoveCount() {
-    const moveCount = await Console.readLineAsync(
-      "시도할 횟수는 몇 회인가요?\n"
-    );
+    const moveCount = await Console.readLineAsync(`${message.GET_MOVE_COUNT}`);
     if (!isNaN(moveCount)) {
       return moveCount;
     } else {
-      throw new Error("[ERROR] 숫자를 입력 해야돼");
+      throw new Error(`${message.ERROR_INVALUD_MOVE_COUNT}`);
     }
   }
 }
