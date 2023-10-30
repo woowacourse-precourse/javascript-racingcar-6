@@ -29,6 +29,18 @@ class App {
     }
   }
 
+  showRoundResult = (carNames, locations) => {
+    for(let carName of carNames) {
+      const location = locations.get(carName);
+      let result = "";
+      for(let i = 0; i < location; i++) {
+        result += "-";
+      }
+      MissionUtils.Console.print(carName + " : " + result);
+    }
+    MissionUtils.Console.print("");
+  }
+ 
   async play() {
     const input = await MissionUtils.Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
     const carNames = input.split(",");
@@ -36,9 +48,10 @@ class App {
 
     let tryCount = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
     let locations = this.initializeCarLocations(carNames);
+    MissionUtils.Console.print("\n실행 결과");
     while(tryCount > 0) {
       this.playRound(carNames, locations);
-      //MissionUtils.Console.print(locations);
+      this.showRoundResult(carNames, locations);
       tryCount--;
     }
   }
