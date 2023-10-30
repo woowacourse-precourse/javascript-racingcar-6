@@ -36,6 +36,7 @@
    - 2. [x] readCarsInput 자동차를 입력받는 메서드
       - (추가) [x]자동차 1개 입력시 경주X. 에러
    - 3. [x] readTryNumber 시도 횟수를 입력받는 메서드
+      - (추가) [x]시도 횟수를 제한한다 (1~100)
    - 4. [x] handleRaceResult 실행 결과를 출력하는 메서드
    - 5. [x] handleRaceResult 우승자를 출력하는 메서드
    - 6. [x] 참여한 자동차 배열, 시도횟수 변수
