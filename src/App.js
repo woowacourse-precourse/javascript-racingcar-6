@@ -2,6 +2,7 @@ import { Console, MissionUtils } from '@woowacourse/mission-utils';
 import { CheckLength } from './CheckLength.js';
 import { CheckRandomNum } from './CheckRandomNum.js';
 import { FindMax } from './FindMax.js';
+import { FindWinners } from './FindWinners.js';
 
 class App {
   async play() {
@@ -58,12 +59,12 @@ class App {
     //   };
     // };
 
-    const winners = [];
-    for (let i = 0; i < forwardCounts.length; i++) {
-      if (forwardCounts[i] === maxForward) {
-        winners.push(carList[i]);
-      };
-    };
+    const winners = FindWinners(forwardCounts, maxForward, carList);
+    // for (let i = 0; i < forwardCounts.length; i++) {
+    //   if (forwardCounts[i] === maxForward) {
+    //     winners.push(carList[i]);
+    //   };
+    // };
     
     Console.print('최종 우승자 : ' + winners);
   }
