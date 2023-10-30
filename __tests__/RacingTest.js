@@ -4,6 +4,9 @@ import {
     CREATE_CARS,
     VALIDATE_CAR_NAME,
     VALIDATE_RACE_TIME,
+    RACE_RUN,
+    FIND_WINNERS,
+    NOT_MOVE_WIN_ERROR_MESSAGE,
 } from '../src/Race';
 import {
     CAR_NAME_NULL_ERROR_MESSAGE,
@@ -76,6 +79,38 @@ describe('Race 테스트', () => {
             const RACE_TIMES = 3;
             RACE_RUN(CARS, RACE_TIMES);
             expect(Console.print).toHaveBeenCalledTimes(10);
+        });
+    });
+
+    describe('FIND_WINNERS 함수 테스트', () => {
+        test('우승자 찾기', () => {
+            const TEST_CAR_A = new Car('car1');
+            const TEST_CAR_B = new Car('car2');
+            TEST_CAR_A.position = 2;
+            TEST_CAR_B.position = 1;
+            const CARS = [TEST_CAR_A, TEST_CAR_B];
+            const WINNERS = FIND_WINNERS(CARS);
+            expect(WINNERS.length).toBe(1);
+            expect(WINNERS[0]).toBe('car1');
+        });
+
+        test('공동 우승자 찾기', () => {
+            const TEST_CAR_A = new Car('car1');
+            const TEST_CAR_B = new Car('car2');
+            TEST_CAR_A.position = 2;
+            TEST_CAR_B.position = 2;
+            const CARS = [TEST_CAR_A, TEST_CAR_B];
+            const WINNERS = FIND_WINNERS(CARS);
+            expect(WINNERS.length).toBe(2);
+            expect(WINNERS).toContain('car1');
+            expect(WINNERS).toContain('car2');
+        });
+
+        test('경주 후 시작점이 우승일 시 오류 반환', () => {
+            const TEST_CAR_A = new Car('car1');
+            const TEST_CAR_B = new Car('car2');
+            const CARS = [TEST_CAR_A, TEST_CAR_B];
+            expect(() => FIND_WINNERS(CARS)).toThrowError(NOT_MOVE_WIN_ERROR_MESSAGE);
         });
     });
 });
