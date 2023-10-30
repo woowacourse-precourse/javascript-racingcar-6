@@ -13,6 +13,10 @@ const OutputView = {
   printWinners(winners) {
     MissionUtils.Console.print(`${MESSAGE.game.winners}${winners.join(", ")}`);
   },
+
+  printBlankSpace() {
+    MissionUtils.Console.print(" ");
+  },
 };
 
 export default OutputView;

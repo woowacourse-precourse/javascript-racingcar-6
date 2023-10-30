@@ -1,4 +1,3 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
 import InputView from "./view/InputView.js";
 import OutputView from "./view/OutputView.js";
 import ModelView from "./modelView/RaceCarModel.js";
@@ -18,7 +17,7 @@ class App {
         OutputView.printRaceResult(name, raceResults[name]);
       });
 
-      MissionUtils.Console.print(" ");
+      OutputView.printBlankSpace();
     }
 
     const winners = ModelView.calculateWinners(names);
