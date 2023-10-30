@@ -17,7 +17,7 @@ async function gameStart() {
   const carDict = {};
   for (let i = 0; i < carName.length; i++) {
     const item = carName[i];
-    carDict[item] = 0;
+    carDict[i] = { name: item, score: 0 };
   }
   Console.print(carDict);
 
@@ -26,18 +26,19 @@ async function gameStart() {
 
 function gamePlay(inputNumber, carName) {
   Console.print("실행 결과");
-  let step;
-  for (step = 0; step < inputNumber; step++) {
+  for (let i = 0; i < inputNumber; i++) {
     randomNumber(carName)
   }
 
 }
 
 function randomNumber(carName) {
-  let step;
-  for (step = 0; step < carName.length; step++) {
+  for (let i = 0; i < carName.length; i++) {
     const pickNumber = Random.pickNumberInRange(0, 9);
     Console.print(pickNumber);
+    if (pickNumber >= 4) {
+
+    }
   }
 
 }
