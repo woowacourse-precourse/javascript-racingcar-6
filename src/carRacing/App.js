@@ -1,4 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
+import validateNameLength from "./validation/validateNameLength.js";
 
 class App {
   constructor() {
@@ -20,6 +21,8 @@ class App {
         "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n",
       );
       this.carNamesList = userInput.split(",");
+
+      validateNameLength(this.carNamesList, 5);
     } catch (error) {
       throw new Error(`[ERROR] ${error}`);
     }
