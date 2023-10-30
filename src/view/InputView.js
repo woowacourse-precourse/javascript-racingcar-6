@@ -7,7 +7,7 @@ const InputView = {
       const userInputRaceCarName = await MissionUtils.Console.readLineAsync(
         `${MESSAGE.game.getName}\n`,
       );
-      const RaceCarList = InputView.validateRaceCarNames(userInputRaceCarName);
+      const RaceCarList = this.validateRaceCarNames(userInputRaceCarName);
 
       return RaceCarList;
     } catch (e) {
