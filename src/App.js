@@ -2,12 +2,15 @@ import { Console, Random } from '@woowacourse/mission-utils';
 
 class App {
   constructor() {
-    this.carList = [];
+    this.carList = {};
     this.tryNum = 0;
   }
 
   async play() {
-    this.carList = await this.carInput();
+    const userInputCar = await this.carInput();
+    const splitInputCar = userInputCar.split(',');
+    this.racingCarList(splitInputCar);
+
     this.tryNum = await this.numInput();
   }
 
@@ -22,6 +25,12 @@ class App {
     const userInputNum =
       await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
     return userInputNum;
+  }
+
+  racingCarList(userInput) {
+    for (let i = 0; i < userInput.length; i++) {
+      this.carList[userInput[i]] = '';
+    }
   }
 }
 
