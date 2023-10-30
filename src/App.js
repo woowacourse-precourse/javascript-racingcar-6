@@ -1,11 +1,13 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import { randomNumber } from "./randomNumber.js";
 import getCarName from "./getCarName.js";
-
+import getCount from "./getCount.js";
 class App {
   async play() {
     const carName = await getCarName();
     MissionUtils.Console.print(carName);
+
+    const count = await getCount();
+    MissionUtils.Console.print(count);
   }
 }
 
