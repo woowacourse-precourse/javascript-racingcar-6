@@ -1,6 +1,7 @@
 import Validation from '../utils/Validation.js';
 import InputView from '../view/InputView.js';
 import Car from '../model/Car.js';
+import OutputView from '../view/OutputView.js';
 
 export default class Controller {
   constructor() {
@@ -13,6 +14,20 @@ export default class Controller {
     });
   }
 
+  singleTry() {
+    this.carList.forEach((car) => {
+      car.tryToMove();
+    });
+    OutputView.printSingleTryResult(this.carList);
+  }
+
+  moveCars(tryCount) {
+    OutputView.printTryResult();
+    for (let i = 0; i < tryCount; i += 1) {
+      this.singleTry();
+    }
+  }
+
   async run() {
     const carNames = await InputView.carName();
     const carNameList = carNames.split(',');
@@ -22,6 +37,8 @@ export default class Controller {
 
     const tryCount = await InputView.tryCount();
     Validation.tryCountInput(tryCount);
+    OutputView.printNewLine();
+    this.moveCars(tryCount);
   }
 }
 
