@@ -92,15 +92,9 @@ class App {
       distanceArray.push(car.distance.length);
     });
     let maxDistance = Math.max(...distanceArray);
-    let winnerCarArray = carArray.filter((car) => car.distance.length === maxDistance);
-    let winnerCar = '';
-    for (let i = 0; i < winnerCarArray.length; i++) {
-      winnerCar += winnerCarArray[i].name;
-      if (i !== winnerCarArray.length - 1) {
-        winnerCar += ', ';
-      }
-    }
-    MissionUtils.Console.print(`최종 우승자 : ${winnerCar}`);
+    let winnerCarsArray = carArray.filter((car) => car.distance.length === maxDistance);
+    let winnerCars = winnerCarsArray.map((winner) => winner.name).join(', ');
+    MissionUtils.Console.print(`최종 우승자 : ${winnerCars}`);
   }
   async play() {
     let carArray = await this.getCarName();
