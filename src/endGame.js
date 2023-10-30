@@ -2,31 +2,35 @@
 import { Console } from '@woowacourse/mission-utils';
 import { RESULT } from './constants';
 
-/**	@type {function(Object.<string,number>):void} */
+/**
+ * @param {Object.<string,number>} gameResult
+ */
 export default function endGame(gameResult) {
-  /** @type {string[]} */
-  const winnerArr = compareGameResult(gameResult);
-  reportWinner(winnerArr);
+	const winnerArr = compareGameResult(gameResult);
+	reportWinner(winnerArr);
 }
 
-/**	@type {function(Object.<string,number>):string[]} */
+/**
+ * @param {Object.<string,number>} gameResult
+ * @return {string[]}
+ */
 function compareGameResult(gameResult) {
-  /** @type {string[]} */
-  const winnerArr = [];
-  /** @type {number} */
-  let maxScore = 0;
-  for (let user in gameResult) {
-    winnerArr.push(user);
-    if (gameResult[user] >= maxScore) {
-      maxScore = gameResult[user];
-    } else {
-      winnerArr.pop();
-    }
-  }
-  return winnerArr;
+	const winnerArr = [];
+	let maxScore = 0;
+	for (let user in gameResult) {
+		winnerArr.push(user);
+		if (gameResult[user] >= maxScore) {
+			maxScore = gameResult[user];
+		} else {
+			winnerArr.pop();
+		}
+	}
+	return winnerArr;
 }
-/**	@type {function(string[]):void} */
+/**
+ * @param {string[]} winnerArr
+ */
 function reportWinner(winnerArr) {
-  const winner = winnerArr.join(', ');
-  Console.print(RESULT.FINAL_WINNER + winner);
+	const winner = winnerArr.join(', ');
+	Console.print(RESULT.FINAL_WINNER + winner);
 }

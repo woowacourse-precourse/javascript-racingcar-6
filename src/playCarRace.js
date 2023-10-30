@@ -3,7 +3,11 @@ import { Console } from '@woowacourse/mission-utils';
 import { RESULT } from './constants';
 import { getRandomNumber } from './getValue';
 
-/**	@type {function(string[],number):Object.<string,number>|{}} */
+/**
+ * @param {string[]} userNameArr
+ * @param {number} userTrialFrequency
+ * @return {Object.<string,number>|{}}}
+ */
 export default function playCarRace(userNameArr, userTrialFrequency) {
 	Console.print(RESULT.GAME_PROGRESS);
 	const playerScore = {};
@@ -15,20 +19,19 @@ export default function playCarRace(userNameArr, userTrialFrequency) {
 }
 /**	@type {function(string[],Object.<string,string>|{}):void} */
 function setPlayerScore(userNameArr, playerScore) {
-	userNameArr.forEach((userName) => {
+	userNameArr.forEach(userName => {
 		playerScore[userName] = '';
 	});
-
 }
 /**	@type {function(string[],number,Object.<string,string>|{}):void} */
 function repeatCycle(userNameArr, userTrialFrequency, playerScore) {
-	for (let i = 1; i <= userTrialFrequency; i+=1) {
+	for (let i = 1; i <= userTrialFrequency; i += 1) {
 		playOneCycle(userNameArr, playerScore);
 	}
 }
 /**	@type {function(string[],Object.<string,string>|{}):void} */
 function playOneCycle(userNameArr, playerScore) {
-	userNameArr.forEach((userName) => {
+	userNameArr.forEach(userName => {
 		const randomNumber = getRandomNumber();
 		if (moveForward(randomNumber)) {
 			playerScore[userName] += '-';
