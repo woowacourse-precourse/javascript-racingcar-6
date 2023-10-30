@@ -1,5 +1,9 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 
+/**
+ * @typedef {{ name: string, move: number}} CarObject
+ */
+
 class App {
     async play() {}
 
@@ -67,6 +71,16 @@ class App {
      */
     getRandomNumberForRacing() {
         return MissionUtils.Random.pickNumberInRange(0, 9);
+    }
+
+    /**
+     * @param {CarObject} carObj
+     * @param {number} randomNumber
+     */
+    moveCar(carObj, randomNumber) {
+        if (randomNumber >= 4) {
+            carObj.move++;
+        }
     }
 }
 
