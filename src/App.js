@@ -20,12 +20,11 @@ class App {
       Console.print('\n실행 결과');
       for (let i = 0; i < inputNumber; i++) {
         race.runRace(carArr, this.carDictionary);
-        // Console.print(this.carDictionary);
         race.printRace(this.carDictionary);
       }
 
-      Console.print('\n최종 결과 확인');
-      this.determineWinner();
+      const winners = this.determineWinner();
+      this.printWinner(winners);
     } catch (error) {
       console.error(error.message);
     }
@@ -50,8 +49,11 @@ class App {
       }
     });
 
-    Console.print(winners);
     return winners;
+  }
+
+  printWinner(winners) {
+    Console.print('최종 우승자 : ' + winners.join(', '));
   }
 }
 
