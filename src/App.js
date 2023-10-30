@@ -62,6 +62,7 @@ function race(cars, times) {
   MissionUtils.Console.print("실행 결과\n");
   for(let i = 0; i < times; i++) {
     checkProgression(cars);
+    printProgression(cars);
   }
 }
 
@@ -71,6 +72,17 @@ function checkProgression(cars) {
     let randomValue = MissionUtils.Random.pickNumberInRange(0, 9);
     cars[i].tryGoingForward(randomValue);
   }
+}
+
+function printProgression(cars) {
+  for (let i = 0; i < cars.length; i++) {
+    let car = cars[i];
+    let name = car.name;
+    let position = car.position;
+    let positionString = '-'.repeat(position);
+    MissionUtils.Console.print(`${name} : ${positionString}\n`);
+  }
+  MissionUtils.Console.print("\n");
 }
 
 export default App;
