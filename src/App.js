@@ -40,6 +40,18 @@ class App {
     Console.print(car.carName + " : " + dashString);
   }
 
+  getResult() {
+    Console.print("실행 결과");
+    while (
+      !this.advanceCount
+        .map((data) => data.advance === Number(this.movementCount))
+        .includes(true)
+    ) {
+      this.advanceCount.map((advance) => this.getRandomValue(advance));
+      Console.print("\n");
+    }
+  }
+
   async play() {
     this.carData = await this.start();
 
@@ -52,15 +64,7 @@ class App {
       this.advanceCount.push({ carName: name, advance: 0 })
     );
 
-    Console.print("실행 결과");
-    while (
-      !this.advanceCount
-        .map((data) => data.advance === Number(this.movementCount))
-        .includes(true)
-    ) {
-      this.advanceCount.map((advance) => this.getRandomValue(advance));
-      Console.print("\n");
-    }
+    this.getResult();
   }
 }
 
