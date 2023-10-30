@@ -1,5 +1,6 @@
 import { Random, Console } from '@woowacourse/mission-utils';
 import ERROR from './error.js';
+import { stat } from 'fs';
 
 class App {
 
@@ -66,11 +67,14 @@ class App {
 
     // 공동 우승 찾기
     const winner = [];
-    for (let i = 0; i < this.finalScore.length; i++) {
-      if (this.finalScore[i] === maxScore) {
-        winner.push(this.gameStatus[i].split(":")[0].trim());
+
+    // for문 지양 고차함수 지향 - > 변경 완료
+    this.finalScore.forEach((score,index) => {
+      if (score === maxScore){
+        console.log("score",score);
+        winner.push(this.gameStatus[index].split(":")[0].trim());
       }
-    }
+    })
 
     if (winner.length === 1) {
       Console.print(`최종 우승자 : ${winner[0]}`);
@@ -167,9 +171,11 @@ class App {
   // 게임 진행하는 동안 차들의 상태를 저장하기 위한 배열 생성 - 현재는 이름과 결과를 한번에 저장하려고함
   makeForCheckGameStatus(userinput) {
     this.gameStatus = Array.from({ length: userinput.length }, () => []);
-    for (let i = 0; i < this.gameStatus.length; i++) {
-      this.gameStatus[i].push(`${userinput[i]} : `);
-    }
+
+    this.gameStatus.forEach((status,index) => {
+      status.push(`${userinput[index]} : `);
+    })
+
     return this.gameStatus;
   }
   
