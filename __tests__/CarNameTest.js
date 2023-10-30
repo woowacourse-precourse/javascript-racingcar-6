@@ -1,4 +1,4 @@
-import App from '../src/App.js';
+import CarName from '../src/CarName';
 import { MissionUtils } from '@woowacourse/mission-utils';
 
 const mockQuestions = (inputs) => {
@@ -9,17 +9,52 @@ const mockQuestions = (inputs) => {
     return Promise.resolve(input);
   });
 };
+describe('자동차 입력 예외 처리 테스트', () => {
+  test('자동차 이름은 쉼표(,)로 구분하여 작성한다.', async () => {
+    mockQuestions(['KimLeePark']);
 
-test.each([[['LeeHanJun,Kim,Park']], [['KimLeePark']], [['Lee,Lee,Park']], [[' ']]])(
-  '이름 부여기능 예외 처리',
-  async (inputs) => {
-    // given
-    mockQuestions(inputs);
+    const carName = new CarName();
 
-    // when
-    const app = new App();
+    await expect(carName.start()).rejects.toThrow('[ERROR]');
+  });
 
-    // then
-    await expect(app.play()).rejects.toThrow('[ERROR]');
-  },
-);
+  test('자동차 이름은 다섯글자 이하로 작성한다.', async () => {
+    mockQuestions(['pobi,javaji']);
+
+    const carName = new CarName();
+
+    await expect(carName.start()).rejects.toThrow('[ERROR]');
+  });
+
+  test('자동차 이름은 빈공간이 없이 작성한다.', async () => {
+    mockQuestions([' ']);
+
+    const carName = new CarName();
+
+    await expect(carName.start()).rejects.toThrow('[ERROR]');
+  });
+
+  test('자동차 이름은 같은이름이 없이 작성한다.', async () => {
+    mockQuestions(['Lee', 'Lee', 'Park']);
+
+    const carName = new CarName();
+
+    await expect(carName.start()).rejects.toThrow('[ERROR]');
+  });
+
+  test('자동차 이름은 쉼표(,)를 두번이상 연속으로 작성하면 안된다.', async () => {
+    mockQuestions(['Kim,,Lee,Park']);
+
+    const carName = new CarName();
+
+    await expect(carName.start()).rejects.toThrow('[ERROR]');
+  });
+
+  test('자동차 이름은 쉼표(,)로 끝나거나 쉼표로 시작하면 안된다.', async () => {
+    mockQuestions(['Kim,,Lee,Park']);
+
+    const carName = new CarName();
+
+    await expect(carName.start()).rejects.toThrow('[ERROR]');
+  });
+});
