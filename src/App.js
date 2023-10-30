@@ -1,12 +1,13 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import { inputCarName } from "./InputCarName.js";
-import { vaildCarName } from "./ValidCarName.js";
+import { inputCarName } from "./input/InputCarName.js";
+import { vaildCarName } from "./validator/ValidCarName.js";
+import { validCount } from "./validator/ValidCount.js";
+import { inputCount } from "./input/InputCount.js";
+import { moveCar } from "./game/MoveCar.js";
+import { printCar } from "./game/PrintCar.js";
+import { result } from "./game/Result.js";
 import Car from "./Car.js";
-import { validCount } from "./ValidCount.js";
-import { inputCount } from "./InputCount.js";
-import { moveCar } from "./MoveCar.js";
-import { printCar } from "./printCar.js";
-import { result } from "./Result.js";
+
 class App {
   async play() {
     const carNames = await inputCarName();
@@ -36,8 +37,5 @@ class App {
     
   }
 }
-
-const app = new App();
-app.play();
 
 export default App;
