@@ -1,6 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
 import { INPUT_MESSAGE, OUTPUT_MESSAGE, OTHERS } from '../utils/constants.js';
-import GameCalculator from './GameCalculator.js';
 
 class RacingGame {
   constructor() {
@@ -57,13 +56,33 @@ class RacingGame {
     return IS_VALID;
   }
 
+  // VIEW
   showGameResult() {
-    const GAME_CALCULATOR = new GameCalculator(this.userInputCars, this.userInputTryCount);
-    const raceResult = GAME_CALCULATOR.calculate();
-    Console.print(OUTPUT_MESSAGE.result);
-    Console.print(raceResult[0]);
-    Console.print(`${OUTPUT_MESSAGE.winner}${raceResult[1]}`);
+    this.gameCalculate();
   }
+
+  // CONTROLLER
+  gameCalculate() {
+    this.generateRandomNumber();
+
+    this.runRace();
+
+    this.getRaceResultMessage();
+
+    this.getWinnerMessage();
+  }
+
+  //MODEL
+  generateRandomNumber() {}
+
+  // MODEL
+  runRace() {}
+
+  //MODEL
+  getRaceResultMessage() {}
+
+  //MODEL
+  getWinnerMessage() {}
 }
 
 export default RacingGame;
