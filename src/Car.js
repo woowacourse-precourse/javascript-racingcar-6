@@ -1,3 +1,5 @@
+import { Random } from "@woowacourse/mission-utils";
+
 class Car {
     constructor(name) {
         this.name = name;
@@ -6,5 +8,12 @@ class Car {
 
     getPosition() {
         return this.position;
+    }
+
+    move() {
+        const RANDOM_NUM = Random.pickNumberInRange(0, 9);
+        if (RANDOM_NUM >= 4) {
+            this.position += 1;
+        }
     }
 }
