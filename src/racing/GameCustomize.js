@@ -15,7 +15,7 @@ export const getAttemptNumber = async () => {
   const attemptNumber = await Console.readLineAsync(`${GAME_MESSEAGE.inputAttempt}\n`);
   
   const checkError = new Exception();
-  checkError.attempt(attemptNumber);
+  checkError.attemptNumber(attemptNumber);
   
   Console.print('');
 

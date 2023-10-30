@@ -9,7 +9,7 @@ class Exception extends SameName {
     this.showSameNameError(players);
   }
 
-  attempt(number) {
+  attemptNumber(number) {
     if(isNaN(number)) {
       throw new Error(ERROR_MESSEAGE.attempt);
     }
