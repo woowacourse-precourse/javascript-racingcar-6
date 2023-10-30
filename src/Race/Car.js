@@ -1,8 +1,4 @@
 import { Random } from "@woowacourse/mission-utils";
-import { Input } from "../IO/Input.js";
-import { Output } from "../IO/Output.js";
-import Constants from "../Misc/constatns.js";
-import { Verification } from "./Verification.js";
 
 export class Car {
   constructor(input) {
