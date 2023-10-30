@@ -21,9 +21,9 @@ class Race {
   }
 
   getWinners() {
-    return this.cars.filter(
-      (car) => car.getPosition() === this.getMaxPosition()
-    );
+    return this.cars
+      .filter((car) => car.getPosition() === this.getMaxPosition())
+      .map((car) => car.getName());
   }
 }
 
