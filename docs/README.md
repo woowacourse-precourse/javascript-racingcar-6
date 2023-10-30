@@ -16,8 +16,8 @@
 1. 사용자 입력
   a. 사용자가 자동차 이름 입력 - Console.readLineAsync
   b. 자동차 이름 구분 - String.split(',') 사용 / split(', ') vs split(',').trim() 고민
-  c. 자동차 이름 길이 체크 - Array.map()
-  d. 사용자가 이동할 횟수 입력 - Console.readLineAsync
+  c. [test]자동차 이름 길이 체크 - Array.map()
+  d. [test]사용자가 이동할 횟수 입력 - Console.readLineAsync
   e. 시도 횟수 체크 - 조건문
 2. 자동차 동작
   a. 전진한 횟수를 저장을 위한 2차원 배열 생성 - [[name, count]]
