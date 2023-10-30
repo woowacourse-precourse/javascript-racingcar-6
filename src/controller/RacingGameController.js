@@ -26,8 +26,14 @@ class RacingGameController {
       car.setCarName = carName;
       return car;
     });
-
     this.racingGame.setRacingCar = racingCars;
+
+    this.inputMoveCount();
+  }
+
+  /** 이동 횟수 입력 함수 */
+  async inputMoveCount() {
+    const count = await inputView.readMoveCount();
   }
 }
 
