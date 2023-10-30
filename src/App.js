@@ -48,7 +48,7 @@ class App {
     }
 
     const max = this.findMaxCount();
-    Console.print('\n최종 우승자' + ` : ${max.join(', ')}`);
+    Console.print(`\n최종 우승자 : ${max.join(', ')}`);
   }
 }
 
