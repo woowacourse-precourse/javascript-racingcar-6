@@ -30,12 +30,12 @@ class App {
 
     let curScore = this.forwardCar(carName);
 
-    MissionUtils.Console.print(this.viewCarInfo(carName, curScore));
+    MissionUtils.Console.print(`${this.viewCarInfo(carName, curScore)} \n`);
 
     for (let i = 0; i < numberOfRounds - 1; i++) {
       const roundScore = this.forwardCar(carName);
       curScore = roundScore.map((ele, index) => ele + curScore[index]);
-      MissionUtils.Console.print(this.viewCarInfo(carName, curScore));
+      MissionUtils.Console.print(`${this.viewCarInfo(carName, curScore)} \n`);
     }
 
     let highScore = 0;
@@ -54,7 +54,7 @@ class App {
       })
       .filter((ele) => ele);
 
-    MissionUtils.Console.print(`최종 우승자 : ${winner}`);
+    MissionUtils.Console.print(`최종 우승자 : ${winner.join(", ")}`);
   }
 
   viewCarInfo(carName, curScore) {
