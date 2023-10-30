@@ -8,6 +8,7 @@ class App {
 	async play() {
 		await this.getCarNamesFromUser();
 		await MissionUtils.Console.print("시도할 횟수는 몇 회인가요?");
+		await this.getAttemptsFromUser();
 	}
 
 	async getCarNamesFromUser() {
@@ -29,6 +30,14 @@ class App {
 		MissionUtils.Console.print(String(this.cars));
 
 		return this.cars;
+	}
+
+	async getAttemptsFromUser() {
+		this.attempts = await MissionUtils.Console.readLineAsync();
+
+		MissionUtils.Console.print(this.attempts);
+
+		return this.attempts;
 	}
 }
 
