@@ -5,9 +5,12 @@ class Car {
 
   #name;
 
+  #positionString;
+
   constructor(name) {
     this.#position = 0;
     this.#name = name;
+    this.#positionString = '';
   }
 
   getPosition() {
@@ -20,11 +23,14 @@ class Car {
 
   tryMove() {
     const randomNum = Random.pickNumberInRange(0, 9);
-    if (randomNum >= 4) this.#position += 1;
+    if (randomNum >= 4) {
+      this.#position += 1;
+      this.#positionString += '-';
+    }
   }
 
   printPosition() {
-    Console.print(`${this.#name} : ${'-'.repeat(this.#position)}`);
+    Console.print(`${this.#name} : ${this.#positionString}`);
   }
 }
 
