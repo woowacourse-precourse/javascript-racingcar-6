@@ -4,6 +4,7 @@ import { isInvalidTryNumber, getRandomNumber, isMovable } from "./util";
 const MAX_CAR_NAME_LENGTH = 5;
 const INITIAL_RACING_COUNT = 0;
 const INITIAL_TRY_NUMBER = 0;
+const RACING_SYMBOL = "-";
 class App {
   carNames = [];
   tryNumber = INITIAL_TRY_NUMBER;
@@ -80,7 +81,7 @@ class App {
   }
 
   getStatus(carName) {
-    return `${carName} : ${"-".repeat(this.racingCounts[carName])}`;
+    return `${carName} : ${RACING_SYMBOL.repeat(this.racingCounts[carName])}`;
   }
 
   getWinner() {
@@ -89,7 +90,6 @@ class App {
       .filter(([, racingCount]) => racingCount === maxRacingCount)
       .map(([carName]) => carName)
       .join(", ");
-
     return winner;
   }
 }
