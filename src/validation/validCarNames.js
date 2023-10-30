@@ -1,11 +1,15 @@
+import ERROR_MESSAGE, { MAX_NAME_LENGTH, MIN_NAME_LENGTH } from '../constants/constants';
+
 const isWrongCarName = (names) => {
-  const wrongCarName = names.some((name) => !(name.length > 0 && name.length <= 5));
-  if (wrongCarName) throw new Error('[ERROR] 잘못된 입력입니다.');
+  const wrongCarName = names.some(
+    (name) => !(name.length > MIN_NAME_LENGTH && name.length <= MAX_NAME_LENGTH),
+  );
+  if (wrongCarName) throw new Error(ERROR_MESSAGE.wrongInput);
 };
 
 const isDuplicateCarName = (names) => {
   const DuplicateCarName = new Set(names).size !== names.length;
-  if (DuplicateCarName) throw new Error('[ERROR] 중복된 이름입니다.');
+  if (DuplicateCarName) throw new Error(ERROR_MESSAGE.repeatCarName);
 };
 
 const validCarNames = (carNames) => {
