@@ -15,12 +15,16 @@ class App {
   }
 
   startGoOrStop() {
-    this.#cars.forEach((car) => {
+    const updatedCars = this.#cars.map((car) => {
+      const newCar = { ...car };
       if (Random.pickNumberInRange(0, 9) >= 4) {
-        car.count += 1;
+        newCar.count += 1;
       }
-      Console.print(`${car.name} : ${'-'.repeat(car.count)}`);
+      Console.print(`${newCar.name} : ${'-'.repeat(newCar.count)}`);
+      return newCar;
     });
+
+    this.#cars = updatedCars;
   }
 
   findMaxCount() {
