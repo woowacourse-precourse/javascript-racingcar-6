@@ -2,15 +2,13 @@
 
 ### 목차
 
-2. [Model](#모델)
+1. [Model](#모델)
    - [Car 클래스](#car-클래스)
    - [Race 클래스](#race-클래스)
-3. [View](#뷰)
+2. [View](#뷰)
    - [InputView 클래스](#inputview-클래스)
    - [OutputView 클래스](#outputview-클래스)
-4. [Controller](#컨트롤러)
-   - [RacingGameController 클래스](#racinggamecontroller-클래스)
-5. [Utils](#유틸)
+3. [Utils](#유틸)
    - [InputValidator 클래스](#inputvalidator-클래스)
    - [CarNameProcessor 유틸리티](#carnameprocessor-유틸리티)
 
@@ -47,23 +45,6 @@
 - **테스트 설명**:
   - `printRaceHeader` 메서드: 레이스의 헤더가 올바르게 출력되는지 검증합니다.
   - `printRoundResult` 메서드: 각 라운드의 결과가 올바르게 출력되는지 검증합니다.
-
-### 컨트롤러
-
-#### RacingGameController 클래스
-
-- **목적**:  
-  `RacingGameController` 클래스는 게임의 전체 로직을 제어합니다. 주된 엔트리 포인트는 `start` 메서드입니다.
-
-- **테스트 설명**:
-
-  - **`start` 메서드**:  
-    게임의 모든 단계를 실행하고, 모든 연관된 메서드와 클래스가 올바르게 호출되는지 검증합니다.
-    - `InputView.printCarNames`와 `InputView.printNumberOfRounds`가 호출되어 올바른 입력을 받아야 합니다.
-    - `InputValidator.validateNumberOfCars`와 `InputValidator.validateCarName`를 통해 입력 유효성을 검사해야 합니다.
-    - `Car`와 `Race` 클래스의 생성자를 통해 게임이 초기화되어야 합니다.
-    - `race.playRound`를 통해 레이스가 실행되어야 하며, 그 횟수는 입력받은 라운드 수와 일치해야 합니다.
-    - `OutputView.printRaceHeader`, `OutputView.printRoundResult`, `OutputView.printWinners`가 올바르게 호출되어야 합니다.
 
 ### 유틸
 
