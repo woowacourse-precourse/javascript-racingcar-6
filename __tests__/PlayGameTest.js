@@ -1,7 +1,7 @@
-import RacingGame from "../src/RacingGame.js";
 import RacingCar from "../src/domain/RacingCar.js";
 import GameUtils from "../src/utils/GameUtils.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
+import RacingStadium from './../src/RacingStadium';
 
 const mockRandoms = (numbers) => {
   MissionUtils.Random.pickNumberInRange = jest.fn();
@@ -20,15 +20,15 @@ describe('게임 진행에 관한 테스트입니다', () => {
   test('시도 횟수만큼 게임이 반복됩니다.', () => {
     // given
     const input = 3;
-    const racingGame = new RacingGame();
-    racingGame.generateRacingCars(['pobi', 'crong', 'rupee']);
-    GameUtils.tryOneAttempt = jest.fn();
+    const racingStadium = new RacingStadium();
+    racingStadium.setRacingCars(['pobi', 'crong', 'rupee']);
+    racingStadium.tryOneAttempt = jest.fn();
 
     // when
-    GameUtils.repeatRacing(input, racingGame);
+    racingStadium.repeatRacing(input);
 
     // then
-    expect(GameUtils.tryOneAttempt).toBeCalledTimes(input);
+    expect(racingStadium.tryOneAttempt).toBeCalledTimes(input);
   });
 
   test('0부터 9사이의 무작위의 값이 나온다.', () => {
@@ -67,7 +67,7 @@ describe('게임 진행에 관한 테스트입니다', () => {
 
     // when
     const pobiCar = new RacingCar('pobi');
-    GameUtils.proceedAttemptByRacingCar(pobiCar);
+    RacingStadium.proceedAttemptByRacingCar(pobiCar);
 
     // then
     expect(pobiCar.getAccumulatedForward()).toEqual(answer);
@@ -83,7 +83,7 @@ describe('게임 진행에 관한 테스트입니다', () => {
 
     // when
     const pobiCar = new RacingCar('pobi');
-    GameUtils.proceedAttemptByRacingCar(pobiCar);
+    RacingStadium.proceedAttemptByRacingCar(pobiCar);
 
     // then
     expect(pobiCar.getAccumulatedForward()).toEqual(answer);
