@@ -1,7 +1,7 @@
 import InputView from '../View/InputView.js';
 import Car from '../Model/Car.js';
 import OutputView from '../View/OutputView.js';
-import { getWinners } from '../Model/Result.js';
+import Result from '../Model/Result.js';
 import Validator from './Validator.js';
 
 const COMMA = ',';
@@ -11,6 +11,7 @@ export default class Controller {
     this.cars = [];
     this.winners = [];
     this.rounds = 0;
+    this.result = new Result();
   }
 
   static validate(input, validateFunction) {
@@ -46,7 +47,7 @@ export default class Controller {
 
   startRun() {
     this.iterateCarInRounds(this.rounds);
-    this.winners = getWinners(this.cars);
+    this.winners = this.result.getWinners(this.cars);
 
     OutputView.printWinners(this.winners);
   }

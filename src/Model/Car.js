@@ -12,7 +12,7 @@ export default class Car {
   }
 
   async attemptForward() {
-    if (this.isReady()) {
+    if (this.isReadyToRunForward()) {
       this.runForward();
     }
   }
@@ -21,21 +21,10 @@ export default class Car {
     this.distance += DISTANCE_CHARACTER;
   }
 
-  isReady() {
-    if (this.checkForwardCondition()) {
-      return true;
-    }
-
-    return false;
-  }
-
-  checkForwardCondition() {
+  isReadyToRunForward() {
     const randomNumber = Random.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
-    if (randomNumber >= FORWARD_CONDITION) {
-      return true;
-    }
 
-    return false;
+    return randomNumber >= FORWARD_CONDITION;
   }
 
   getName() {

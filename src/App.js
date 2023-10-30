@@ -4,7 +4,7 @@ class App {
   async play() {
     const controller = new Controller();
 
-    controller.startGame();
+    await controller.startGame();
   }
 }
 
