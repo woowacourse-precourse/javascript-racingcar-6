@@ -57,27 +57,31 @@ class App {
   async #getInput() {
     await this.#getInputCars();
     await this.#getInputGameCount();
-
-    Console.print(this.CARS_ARRAY);
-    Console.print(this.GAME_COUNT);
   }
 
-  // #makeArrayOfCars() {
-  //   this.TEMP_CARS.forEach((carName) => {
-  //     this.CARS_ARRAY.push(new Car(carName, 0));
-  //   });
-  // }
+  async #playGame() {
+    this.CARS_ARRAY.forEach((car, index) => {
+      const RANDOM_NUMBER = Random.pickNumberInRange(0, 9);
+      if(RANDOM_NUMBER >= 4) {
+        this.#moveForwardCar(index)
+      }
+    })
+    this.#printEachGameResult();
+  }
 
-  // async #getInputGameCount() {
-  //   this.GAME_COUNT =
-  //     await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+  async #moveForwardCar(carIndex) {
+    this.CARS_ARRAY[carIndex].forwardCar();
+  }
 
-  //   try {
-  //     this.#checkGameCountInput();
-  //   } catch (e) {
-  //     Console.print(e);
-  //   }
-  // }
+  async #printEachGameResult() {
+    this.CARS_ARRAY.forEach((car) => {
+      Console.print(`${car.carName} : ${'-'.repeat(car.forwardCount)}`);
+    })
+    Console.print('');
+  }
+
+
+
 
   // async #gameStart() {
   //   this.CARS_ARRAY.forEach((car, index) => {
@@ -138,6 +142,12 @@ class App {
 
   async play() {
     await this.#getInput();
+    Console.print(this.CARS_ARRAY);
+    Console.print(this.GAME_COUNT);
+
+    for(let i = 0; i < this.GAME_COUNT; i += 1) {
+      this.#playGame();
+    }
     //   try {
     //     await this.#getInputCars();
     //   } catch(e) {
