@@ -16,8 +16,13 @@ class App {
       const tryNumber = await MissionUtils.Console.readLineAsync(
         "시도할 횟수는 몇 회인가요?"
       );
+
+      // 레이싱 출력
+      MissionUtils.Console.print("실행 결과");
+      this.forwardRacingCar(cars, tryNumber);
     }
   }
+
   // + 이름 5자 이하. 쉼표로 구분.
   checkNameOfCarsLength(nameOfCars) {
     const cars = nameOfCars.split(",");
@@ -34,10 +39,32 @@ class App {
     return MissionUtils.Random.pickNumberInRange(0, 9);
   }
 
+  // "-" 생성 함수
+  forwardsymbol(count) {
+    return "-".repeat(count);
+  }
+
   //- 전진 하는지 안하는지 count 함수
   forwardCount() {
     const randomNumber = this.getRandomNumberForEachCar();
     return randomNumber >= 4;
+  }
+
+  // 전진 또는 정지 결과 출력
+  async forwardRacingCar(cars, tryNumber) {
+    let results = [];
+    for (let raceCount = 0; raceCount < tryNumber; raceCount++) {
+      for (
+        let racerWhoForward = 0;
+        racerWhoForward < cars.length;
+        racerWhoForward++
+      ) {
+        const isForward = this.forwardCount();
+        const dashes = isForward ? this.forwardsymbol(1) : "";
+        results.push(`${cars[racerWhoForward]} : ${dashes}`);
+      }
+      await MissionUtils.Console.print(results.join("\n"));
+    }
   }
 }
 
