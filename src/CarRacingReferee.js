@@ -5,6 +5,12 @@ const OutputView = require('./OutputView');
 const cars = new Cars();
 
 class CarRacingReferee {
+  #attemptCounts;
+
+  constructor() {
+    this.#attemptCounts = 0;
+  }
+
   async raceStart() {
     await this.getUserInputs();
     OutputView.printRacingResult();
@@ -12,7 +18,7 @@ class CarRacingReferee {
 
   async getUserInputs() {
     cars.names = await InputView.readCarNames();
-    cars.attemptCount = await InputView.readAttemptCounts();
+    this.#attemptCount = await InputView.readAttemptCounts();
   }
 }
 

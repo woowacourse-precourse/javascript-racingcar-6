@@ -1,10 +1,11 @@
 class Cars {
   #names;
   #attemptCount;
+  #forwardCounts;
 
   constructor() {
     this.#names = [];
-    this.#attemptCount = 0;
+    this.#moveCounts = [];
   }
 
   get names() {
@@ -15,12 +16,12 @@ class Cars {
     this.#names = answer;
   }
 
-  get attemptCount() {
-    return this.#attemptCount;
+  get forwardCounts() {
+    return this.#moveCounts;
   }
 
-  set attemptCount(count) {
-    this.#attemptCount = count;
+  set forwardCounts(index) {
+    this.#moveCounts[index] += 1;
   }
 }
 
