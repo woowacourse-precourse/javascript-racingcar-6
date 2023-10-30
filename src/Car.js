@@ -1,9 +1,14 @@
 import { MIN_MOVEMENT, MOVEMENT_FORWARD } from './constants/constants.js';
 
 class Car {
+  #movement = '';
+
   constructor(name) {
     this.name = name;
-    this.movement = '';
+  }
+
+  get movement() {
+    return this.#movement;
   }
 
   move(number) {
