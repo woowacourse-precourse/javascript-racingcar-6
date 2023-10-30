@@ -39,28 +39,30 @@ class App {
   }
 
   oneTurn() {
-    for(const car of this.carObj) {
-      oneTurnEachCar(car); //전역변수에 각 자동차 전진여부에 따라 - 붙임    
+    for(const car in this.carObj) {
+      this.oneTurnEachCar(car); //전역변수에 각 자동차 전진여부에 따라 - 붙임    
       MissionUtils.Console.print(`${car} : ${this.carObj[car]}`)
     }
     MissionUtils.Console.print(``);
+    console.log("2222", this.carObj)
   }
 
   oneTurnEachCar(car) {
     const carRandomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
     if(carRandomNumber >= 4) {
-      this.carObj[car].concat("-"); 
+      this.carObj[car] += "-";
     }
   }
 
   handleCarName(input) {
     try {
       const arr = input.split(",");
+      console.log("arr", arr)
       arr.forEach(e=>{
+        if(e.length>5) throw new Error("[ERROR] 자동차 이름은 5자 이하여야 합니다.")
         this.carObj[e] = ""; //객체 초기화
-        if(e.length>6) throw new Error("[ERROR] 자동차 이름은 5자 이하여야 합니다.")
       })
-      return arr;
+      console.log("1111", this.carObj)
     } catch(error) {
       console.error(error.message);
       throw error;      
