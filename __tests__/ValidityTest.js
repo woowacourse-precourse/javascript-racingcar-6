@@ -1,5 +1,8 @@
-import { InvalidPlayerNameError, TryAmountError } from "../src/utils/error";
-import { assertNameValid, assertTryAmountValid } from "../src/utils/validity";
+import { InvalidPlayerNameError, TryAmountError } from "../src/utils/error.js";
+import {
+  assertNameValid,
+  assertTryAmountValid,
+} from "../src/utils/validity.js";
 
 describe("검증 함수 테스트", () => {
   test("이름 검증", () => {
