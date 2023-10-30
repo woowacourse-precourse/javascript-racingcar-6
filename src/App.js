@@ -11,17 +11,24 @@ class App {
     ];
   }
   async play() {
-    Console.print(
-      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
-    );
+    this.gameplay();
+
     this.carNameList = await this.inputCarName();
-    this.isValidCarNames(this.carNameList);
+
+    const isInvalidCarNames = this.isValidCarNames();
+
+    if (isInvalidCarNames) {
+      throw new Error("[ERROR] 자동차 이름을 5자 이하로 입력해주세요");
+    }
+
     Console.print("시도할 횟수는 몇 회인가요?");
     this.attemptCount = await this.inputAttemptCount();
     this.isValidAttemptCount(this.attemptCount);
+
     Console.print("");
     Console.print("실행 결과");
     Console.print("");
+
     let currentCount = 1;
     while (currentCount <= this.attemptCount) {
       this.createRandomNumber();
@@ -35,6 +42,12 @@ class App {
       currentCount++;
     }
   }
+
+  gameplay() {
+    Console.print(
+      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
+    );
+  }
   async inputCarName() {
     const carNames = await Console.readLineAsync("");
 
@@ -42,11 +55,12 @@ class App {
   }
   isValidCarNames() {
     for (let i = 0; i < this.carNameList.length; i++) {
-      if (this.carNameList[i].length > 5 || this.carNameList[i].length === 0) {
-        throw new Error(this.errorMessage[0]);
-      }
+      const isInvalidCarName =
+        this.carNameList[i].length > 5 || this.carNameList[i].length === 0;
+      return isInvalidCarName;
     }
   }
+
   async inputAttemptCount() {
     const countValue = await Console.readLineAsync("");
     return parseInt(countValue);
