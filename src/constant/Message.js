@@ -4,7 +4,7 @@ export default class Message {
 
   static TRY = '시도할 횟수는 몇 회인가요?\n';
 
-  static RUN_RESULT = '실행 결과';
+  static TRY_RESULT = '실행 결과';
 
   static CAR_NAME_INPUT_ERROR = '[ERROR] 자동차 이름은 5자 이하만 가능합니다.';
 
