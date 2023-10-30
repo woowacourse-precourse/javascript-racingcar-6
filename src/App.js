@@ -1,4 +1,4 @@
-import RacingCarGameManager from './RacingCarGameManager';
+import RacingCarGameManager from './game/RacingCarGame/RacingCarGameManager';
 
 class App {
   #game;

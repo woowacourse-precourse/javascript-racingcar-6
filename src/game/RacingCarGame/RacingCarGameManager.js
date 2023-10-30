@@ -1,4 +1,4 @@
-import RacingCarGame from './RacingCarGame.js';
+import RacingCarGame from './logic/RacingCarGame.js';
 
 class RacingCarGameManager {
   #racingCarGame;

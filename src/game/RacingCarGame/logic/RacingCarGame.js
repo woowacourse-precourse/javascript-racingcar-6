@@ -1,10 +1,10 @@
-import IOManager from './IOManager.js';
-import GameUtils from './GameUtils.js';
+import IOManager from '../../../utils/IOManager.js';
+import GameUtils from '../../../utils/GameUtils.js';
 
-import MESSAGE from './message.js';
-import ERROR_MESSAGE from './errorMessage.js';
+import MESSAGE from '../common/message.js';
+import ERROR_MESSAGE from '../common/errorMessage.js';
 
-import Car from './Car.js';
+import Car from '../class/Car.js';
 
 class RacingCarGame {
   static #MESSAGE = MESSAGE;
