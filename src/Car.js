@@ -21,3 +21,5 @@ class Car {
         return `${this.name} : ${'-'.repeat(this.position)}`;
     }
 }
+
+export default Car;
