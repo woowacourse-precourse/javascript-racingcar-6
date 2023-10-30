@@ -1,4 +1,4 @@
-import { Random } from '@woowacourse/mission-utils';
+import { Random, Console } from '@woowacourse/mission-utils';
 
 export default class RacingCar {
   static RAND_START = 0;
@@ -17,5 +17,9 @@ export default class RacingCar {
     );
 
     if (randomNumber >= 4) this.distance += 1;
+  }
+
+  printDistance() {
+    Console.print(`${this.name} : ${'-'.repeat(this.distance)}`);
   }
 }

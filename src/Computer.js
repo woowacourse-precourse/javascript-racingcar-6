@@ -1,3 +1,4 @@
+import { Console } from '@woowacourse/mission-utils';
 import User from './User.js';
 import RacingCar from './RacingCar.js';
 
@@ -23,7 +24,12 @@ export default class Computer {
 
   tryToMoveCars(times) {
     for (let time = 0; time < times; time += 1) {
-      this.racingCars.forEach((car) => car.moveForward());
+      this.racingCars.forEach((car) => {
+        car.moveForward();
+        car.printDistance();
+      });
+
+      Console.print('');
     }
   }
 
