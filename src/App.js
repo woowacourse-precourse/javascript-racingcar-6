@@ -3,7 +3,7 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 const ERROR_MESSAGES = {
   CAR_NAME_OVER: "[ERROR] 차량 이름은 5자 이하로 입력해 주세요",
   CAR_NAME_ZERO: "[ERROR] 차량 이름은 공백을 사용할 수 없습니다.",
-  INPUT_ATTEMPT_ZERO: "[ERROR] 횟수는 0을 입력할 수 없습니다.",
+  INPUT_ATTEMPT_ZERO: "[ERROR] 횟수는 양의 정수만 입력할 수 있습니다.",
   INPUT_ATTEMPT_NOT_INTEGER: "[ERROR] 숫자만 입력해 주세요.",
 };
 
@@ -79,7 +79,11 @@ function checkCarName(CAR_ARRAY) {
 }
 
 function checkAttemptCount(attempt) {
-  if (isNaN(attempt) || !Number.isInteger(attempt)) {
+  if (
+    isNaN(attempt) ||
+    !Number.isInteger(attempt) ||
+    Math.sign(attempt) !== 1
+  ) {
     throw new Error(ERROR_MESSAGES.INPUT_ATTEMPT_NOT_INTEGER);
   }
   if (attempt === 0) {
