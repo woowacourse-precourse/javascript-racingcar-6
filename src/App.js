@@ -10,6 +10,7 @@ import {
   carNameLengthError,
   carNameDuplicateError,
   roundNumberTypeError,
+  roundNumberRangeError,
 } from "./Messages/Error";
 
 class App {
@@ -44,6 +45,9 @@ class App {
   checkValidType(inputNumber) {
     if (Number.isNaN(+inputNumber)) {
       roundNumberTypeError();
+    }
+    if (+inputNumber < 0) {
+      roundNumberRangeError();
     }
   }
 

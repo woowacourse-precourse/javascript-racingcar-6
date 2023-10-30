@@ -9,3 +9,7 @@ export const carNameDuplicateError = () => {
 export const roundNumberTypeError = () => {
   throw new Error("[ERROR] 반복 횟수는 숫자 형식으로 입력되어야 합니다.");
 };
+
+export const roundNumberRangeError = () => {
+  throw new Error("[ERROR] 반복 횟수는 0이상으로 입력되어야 합니다.");
+};
