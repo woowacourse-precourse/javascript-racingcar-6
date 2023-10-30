@@ -14,11 +14,11 @@ const readLineAsync = async (message) => {
  * 우승자 확인 기능
  * return : 우승자를 배열로 반환
  */
-const checkWinner = async (participants) =>{
+const checkWinner = async (participants, participantsDistance) =>{
   const winner = [];
   for(let i = 0; i < participants.length; i++){
     const name = participants[i];
-    winner.push([name, goStopCheck[name][1]]);
+    winner.push([name, participantsDistance[name][1]]);
   }
   const sortedWinner = winner.sort( (a,b) => b[1]-a[1]);
   const returnWinner = [];
@@ -33,6 +33,32 @@ const checkWinner = async (participants) =>{
 }
 
 
+const xxx = async (participants, participantsDistance) => { // 함수 명?
+  let index = 0 ;
+  // *** 리팩토링 하기 ***
+  while(index < participants.length){
+    participantsDistance = await changeDistance(participants, participantsDistance, index);
+    index ++;
+  }
+
+  return participantsDistance;
+}
+
+const changeDistance = async (participants, participantsDistance, index) => {
+  const randomNumber = Random.pickNumberInRange(0, 9);
+  await checkRandomNumber(randomNumber);
+  
+  const goStopCheck = participantsDistance;
+  const name = participants[index];
+
+  if(randomNumber >= 4) {
+    goStopCheck[name] = goStopCheck[name] ? [goStopCheck[name][0]+'-', goStopCheck[name][1]+1] : ['-',1];
+  } else {
+    goStopCheck[name] = goStopCheck[name] ? [...goStopCheck[name]] : ['',0];
+  }
+  return goStopCheck;
+}
+
 /**
  * @param {*} randomNumber : 참가자가 받는 값
  * 0~9사이 값이 아니거나 숫자가 아니면 ERROR
@@ -44,35 +70,15 @@ const checkRandomNumber = async (randomNumber) =>{
 
 /**
  * 매 게임 진행마다 참가자 진행 결과를 출력
- * return : 숫자로 반환
- * 주의 : 0 이하거나 숫자가 아니면 ERROR
  */
 // *** 리팩토링 하기 ***
-const goStopCheck = {}; // 이름 변경
-const showResult = async (participants) => {
-  let index = 0 ;
-  // *** 리팩토링 하기 ***
-  while(index < participants.length){
-    // 함수로 빼기 -> return이 최종 결과 객체 ex) goStopCheck
-    const randomNumber = Random.pickNumberInRange(0, 9);
-    await checkRandomNumber(randomNumber);
-    // 리팩토링하기 
-    const name = participants[index];
-    if(randomNumber >= 4) {
-      goStopCheck[name] = goStopCheck[name] ? [goStopCheck[name][0]+'-', goStopCheck[name][1]+1] : ['-',1];
-    } else {
-      goStopCheck[name] = goStopCheck[name] ? [...goStopCheck[name]] : ['',0];
-    }
-    index ++;
-    // 여기까지
-  }
-  
+// const goStopCheck = {}; // 이름 변경
+const showResult = async (participants, participantsDistance) => {
   // *** 리팩토링 하기, showResult 함수로 두기 *** 인자로 참가자 및 최종 진행 거리를 받고 출력만 함
   for(let i = 0; i < participants.length; i++){
-    const result = `${participants[i]} : ${goStopCheck[participants[i]][0]}` 
+    const result = `${participants[i]} : ${participantsDistance[participants[i]][0]}` 
     print(result);
   }
-
   // 매번 출력해야 함 => 보관 변수를 전역으로 지정
 }
 
@@ -129,6 +135,7 @@ class App {
 
   constructor() {
     this.count = 0;
+    this.distance = {}; // 참가자 거리 저장
   }
 
   async play() {
@@ -140,13 +147,14 @@ class App {
     // *** 리팩토링 할 때 함수로, 들여쓰기 오버 ***
     print('실행 결과');
     while(this.count < attempt){
-      await showResult(participants);
+      this.distance = await xxx(participants, this.distance);
+      await showResult(participants, this.distance);
       this.count += this.count+1;
     }
 
     // 게임 종료
     // *** 리팩토링 할 때 함수로***
-    const winner = await checkWinner(participants);
+    const winner = await checkWinner(participants, this.distance);
     print(`최종 우승자 : ${winner.join(', ')}`);
 
   }
