@@ -76,7 +76,7 @@ describe('자동차 경주 게임', () => {
     [['pobi,eastjun']], // #1.4 
     [['pobi,pobi']], // #1.5
     [['pobi,,,java']] // #1.6
-  ])('이름에 대한 예외 처리',
+  ])('이름에 대한 예외 처리 getCarName()',
     async (inputs) => {
       // given
       mockQuestions(inputs);
@@ -92,7 +92,7 @@ describe('자동차 경주 게임', () => {
     [['pobi,woni','']], // #2.1
     [['pobi,woni','pobi,woni']], // #2.2
     [['pobi,woni','0']], // #2.3
-  ])('횟수에 대한 예외 처리',
+  ])('횟수에 대한 예외 처리 getGameCount()',
   async(inputs)=>{
 
     mockQuestions(inputs);
