@@ -42,12 +42,17 @@ describe("story2. 실행횟수 입력", () => {
   });
 });
 
-// describe("story4. 차수별 진행상황 출력", () => {
-//   test("자동차 이름을 가지고, 기록용 배열을 만든다.", async () => {
-//     // given
-//     const array = '['산','바다','강','하늘'];
-//     const answer = ['산 : ','바다 : ','강: ','하늘: '];
+describe("story4. 차수별 진행상황 출력", () => {
+  test("자동차 이름을 가지고, 기록용 배열을 만든다.", async () => {
+    // given
+    const result = [];
+    const array = ['산', '바다', '강', '하늘'];
+    const answer = ['산 : ', '바다 : ', '강 : ', '하늘 : '];
 
-//     expect(result).toEqual(7);
-//   });
-// });
+    array.forEach((input) => {
+      result.push(`${input} : `);
+    });
+
+    expect(result).toEqual(answer);
+  });
+});
