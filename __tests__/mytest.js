@@ -1,5 +1,4 @@
 import App from "../src/App.js";
-import { MissionUtils } from "@woowacourse/mission-utils";
 
 describe("내가맘든 자동차 경주 게임 테스트", () => {
   test("이름 중복 테스트", () => {
