@@ -1,11 +1,11 @@
 class Car {
   constructor(name) {
     this.name = name;
-    this.distance = 0;
+    this.distance = "";
   }
 
   move() {
-    this.distance++;
+    this.distance += "-";
   }
 }
 

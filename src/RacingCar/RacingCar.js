@@ -17,9 +17,7 @@ class RacingCar {
     for (let i = 0; i < parseInt(numOfRacing); i++) {
       cars.forEach((car) => {
         if (this.movingForward()) car.move();
-
-        const strDistance = this.convertDistanceToString(car.distance);
-        Console.print(`${car.name} : ${strDistance}`);
+        Console.print(`${car.name} : ${car.distance}`);
       });
       Console.print("");
     }
@@ -44,15 +42,6 @@ class RacingCar {
 
     if (randomNum >= 4) return true;
     return false;
-  }
-
-  convertDistanceToString(distance) {
-    let str = "";
-    for (let j = 0; j < distance; j++) {
-      str += "-";
-    }
-
-    return str;
   }
 
   pickWinner(cars) {
