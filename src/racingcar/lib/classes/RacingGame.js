@@ -10,7 +10,8 @@ class RacingGame {
     Console.print('실행 결과');
     let currentPlayCount = 0;
     while (this.playCount > currentPlayCount) {
-      // 게임 로직
+      this.countScore();
+      this.playCount();
       currentPlayCount += 1;
     }
     // 우승자 출력
@@ -23,6 +24,14 @@ class RacingGame {
         this.racingCars[index].score += 1;
       }
     });
+  }
+
+  printScore() {
+    this.racingCars.forEach((racingCar) => {
+      const score = '-'.repeat(racingCar.score);
+      Console.print(`${racingCar.carName} : ${score}`);
+    });
+    Console.print('\n');
   }
 }
 export default RacingGame;
