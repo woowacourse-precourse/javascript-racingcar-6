@@ -1,11 +1,12 @@
 import { Console, Random } from "@woowacourse/mission-utils";
+import { GAME, MOVING_FOWARD } from "./Constant.js";
 import { validPlayerInput, validTryInput } from "./validInput.js";
 
 class RacingCar {
   async init() {
     try {
-      const playerInput = await Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
-      const tryInput = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+      const playerInput = await Console.readLineAsync(GAME.inputName);
+      const tryInput = await Console.readLineAsync(GAME.inputTry);
       const players = playerInput.replace(/\s/g, "").split(",");
 
       validPlayerInput(players);
@@ -22,7 +23,7 @@ class RacingCar {
     const playersResult = players.reduce((a, v) => ({ ...a, [v]: [] }), {});
     let time = 0;
 
-    Console.print("\n실행 결과");
+    Console.print(GAME.result);
 
     while (time < tryNumber) {
       this.racingResult(players, playersResult);
@@ -35,7 +36,7 @@ class RacingCar {
   end(playersResult) {
     const winners = this.getWinners(playersResult).join(", ");
 
-    Console.print(`최종 우승자 : ${winners}`);
+    Console.print(GAME.winners + winners);
   }
 
   getWinners(playersResult) {
@@ -56,7 +57,7 @@ class RacingCar {
     players.forEach((player, i) => {
       const randomNumber = Random.pickNumberInRange(0, 9);
 
-      randomNumber >= 4 ? playersResult[player].push("-") : "";
+      randomNumber >= MOVING_FOWARD ? playersResult[player].push("-") : "";
 
       Console.print(`${player} : ${playersResult[player].join("")}${i === players.length - 1 ? "\n" : ""}`);
     });
