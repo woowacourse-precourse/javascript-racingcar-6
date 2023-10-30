@@ -2,6 +2,7 @@ import { Console, Random } from "@woowacourse/mission-utils";
 import GAME_MESSAGE from "../Constants/gameMessage.js";
 import SYMBOLS from "../Constants/symbols.js";
 import NUMBERS from "../Constants/numbers.js";
+import Output from "../view/Output.js";
 
 class RacingGame {
   racing(nameSplit, number) {
@@ -33,8 +34,8 @@ class RacingGame {
   gameInProgress(keyValue) {
     keyValue.forEach((value) => {
       const name = Object.keys(value)[0];
-      const result = value[name];
-      Console.print(`${name} : ${result}`);
+      const hyphen = value[name];
+      Output.gameInProgressPrint(name, hyphen);
     });
   }
   winner(keyValue) {
@@ -53,9 +54,7 @@ class RacingGame {
         maxName.push(name);
       }
     }
-    Console.print(
-      `${GAME_MESSAGE.winner}${maxName.join(SYMBOLS.spaceAndComma)}`
-    );
+    Output.winnerPrint(maxName);
   }
 }
 export default RacingGame;
