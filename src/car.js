@@ -3,6 +3,15 @@ import { Console } from '@woowacourse/mission-utils';
 class Car {
   constructor(name) {
     this.name = name;
+    this.distance = 0;
+  }
+
+  move() {
+    this.distance++;
+  }
+
+  getDistanceString() {
+    return '-'.repeat(this.distance);
   }
 
   static async createCarsFromInput() {
