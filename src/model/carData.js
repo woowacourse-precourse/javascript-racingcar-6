@@ -12,6 +12,7 @@ class CarData {
 
   static moveOrNot() {
     const moveOrNot = Random.pickNumberInRange(0, 9);
+
     if (moveOrNot >= 4) return true;
     return false;
   }
