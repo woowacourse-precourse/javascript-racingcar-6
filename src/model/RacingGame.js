@@ -12,6 +12,7 @@ class RacingGame {
     return this.racingCar;
   }
 
+  /** @param {Array} racingCars  */
   set setRacingCar(racingCars) {
     racingCars.forEach((car) => this.racingCar.push(car));
   }
@@ -36,6 +37,7 @@ class RacingGame {
       .filter((car) => car.carPosition == maxPostion)
       .map((car) => car.carName)
       .join(', ');
+
     return win;
   }
 }
