@@ -70,6 +70,15 @@ class App {
     return movingList;
   }
 
+  /** 전진 결과 출력 */
+  getResult = (namesArray, resultArray) => {
+    Console.print(MOVING_RESULT);
+
+    for (let i = 0; i < namesArray.length; i++) {
+      Console.print(`${namesArray[i]} : ${MOVE.repeat(resultArray[i])}`);
+    }
+  }
+
 
   async play() {
     let [nameList, count] = await this.nameAndNumberInput();
