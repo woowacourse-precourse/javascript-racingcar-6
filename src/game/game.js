@@ -20,7 +20,7 @@ class Game {
             })
             MissionUtils.Console.print(NEWLINE);
         }
-        // this.showWinner();
+        this.showWinner();
     }
 
     racing() {
@@ -31,6 +31,17 @@ class Game {
             }
         })
 
+    }
+
+    getWinner() {
+        const maxDistance = Math.max(...this.carProgressive.map(progress => progress.length));
+        let winnerList = [];
+        this.carProgressive.map((progress, idx) => {
+            if (progress.length === maxDistance) {
+                winnerList.push(this.carsList[idx]);
+            }
+        })
+        return winnerList;
     }
 
     generateRandomNumber = () => {
