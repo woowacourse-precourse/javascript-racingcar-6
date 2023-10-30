@@ -1,4 +1,5 @@
 # 🚗레이싱카 
+
 ## 🔥구현할 기능 목록 정리
 
 1. 자동차 이름 입력
@@ -43,18 +44,20 @@
     - ','을 기준으로 분리한 이름으로 Car 객체를 생성한다.
 
 2. 자동차 이름 입력 값 유효성 검사
-    - isLessThanFive 함수: some 메서드를 통하여 입력으로 들어온 이름들의 길이가 하나라도 5보다 크다면 false를 반환하게끔 만든다.
-    - isDuplicated 함수: set을 이용하여 중복된 값이 있으면 false, 없다면 true를 반환하게끔 만든다.
+    - checkLessThanFive 함수: some 메서드를 통하여 입력으로 들어온 이름들의 길이가 하나라도 5보다 크다면 throw 에러처리
+    - checkDuplicated 함수: set을 이용하여 중복된 값이 throw 에러처리
+    - checkHasSpace 함수: 입력으로 받은 이름에 공백이 있으면 throw 에러처리
 
 3. 반복할 횟수 입력과 유효성 검사
-    - checkValidNumber: isNaN 메서드를 이용하여 숫자인지 확인 및 0보다 큰 숫자인지 확인
+    - checkValidNumber 함수: isNaN 메서드를 이용하여 숫자인지 확인 및 0보다 큰 숫자인지 확인
 
 4. 각 자동차를 전진 혹은 정지하도록 하는 함수 생성
-    - createNumber 함수: 랜덤 생성한 값이 4이상이면 객체의 distance 프로퍼티를 1증가 시킴으로 전진시킨다.
+
+    - determineMoveByRandom 메서드: **controller의 메서드**로, 랜덤 생성한 값이 4이상이면 객체의 distance 프로퍼티를 1증가 시킴으로 전진시킨다.
 
 5. 각 자동차가 전진한만큼 '-' 출력
-    - 각각의 car 객체 distance 프로퍼티만큼 '-'를 출력해줌으로써 얼마만큼 전진하였는지 보여준다.
+    - printCarResult 메서드: **view의 메서드**로, 각각의 car 객체 distance 프로퍼티만큼 '-'를 출력해줌으로써 얼마만큼 전진하였는지 보여준다.
 
 6. 최종 우승자를 선정하는 기능
-    - car 객체들 중 가장 큰 수를 변수에 저장한다.
-    - 저장한 가장 큰 수를 가지고 있는 car 객체의 이름을 출력한다.
+    - chooseWinner 메서드: **controller의 메서드**로, car 객체들 중 가장 큰 수를 변수에 저장한다.
+    - printWinners 메서드: **view의 메서드**로, 저장한 가장 큰 수를 가지고 있는 car 객체의 이름을 출력한다.
