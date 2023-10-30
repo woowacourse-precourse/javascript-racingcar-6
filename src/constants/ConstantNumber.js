@@ -1,0 +1,6 @@
+export const NUMBER = {
+  START_POSITION: 0,
+  PICK_NUMBER_MIN: 0,
+  PICK_NUMBER_MAX: 9,
+  FOWARD_CONDITION: 4,
+};
