@@ -1,10 +1,10 @@
 import { Console } from '@woowacourse/mission-utils';
-import { MOVEMENT_STATUS } from '../constants/messagesConstants.js';
+import { RACE_STATUS } from '../constants/messagesConstants.js';
 
 export function printLineBreak() {
   Console.print('');
 }
 
 export function printRaceStatusMessage() {
-  Console.print(MOVEMENT_STATUS);
+  Console.print(RACE_STATUS);
 }
