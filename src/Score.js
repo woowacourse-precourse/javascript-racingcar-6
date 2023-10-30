@@ -3,6 +3,7 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 
 export default class Score {
     playGames(count,names) {
+        MissionUtils.Console.print('\n실행결과')
         for(let i = 0 ; i < count ; i ++) {
             this.getScore(names)
         } console.log(count)

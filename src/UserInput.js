@@ -17,7 +17,6 @@ export default class User {
         names.map((element) => {
             this.cars.push(new Save(element))
         });
-        // console.log(this.cars)
         this.checkName(names)
         this.userInputPlayNumber()
     }
@@ -40,7 +39,6 @@ export default class User {
         } catch(e) {
           throw(e)
         }
-        // console.log(inputPlayNumer)
         let score = new Score
         score.playGames(inputPlayNumer,this.cars)
     } 
