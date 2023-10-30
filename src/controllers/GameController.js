@@ -32,7 +32,7 @@ class GameController {
     Console.print(PromptMessage.PRINT_RACESTART);
     let remainAttempt = attempt;
 
-    while (remainAttempt  > 0) {
+    while (remainAttempt > 0) {
       this.printCarForward(carModels);
       remainAttempt -= 1;
       Console.print(' ');
@@ -59,7 +59,7 @@ class GameController {
     }
 
     const winner = maxCountIndexArr.map((idx) => carModelsArr[idx]);
-    Console.print(`최종 우승자 : ${winner.join(', ')}`);
+    Console.print(PromptMessage.PRINT_WINNER(winner.join(', ')));
   }
 }
 
