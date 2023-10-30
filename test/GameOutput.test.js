@@ -1,9 +1,11 @@
 import { GAME, ERROR } from '../src/constants.js';
 import Output from '../src/view/output.js';
-import RacingCarName from '../src/racingcargame/RacingCarName.js';
-import RacingTryCount from '../src/racingcargame/RacingTryCount.js';
-import CarController from '../src/racingcargame/CarController.js';
-import GameWinner from '../src/racingcargame/GameWinner.js';
+import {
+  RacingCarName,
+  RacingTryCount,
+  CarController,
+  Winner,
+} from '../src/racingcargame/index.js';
 
 describe('게임 문구 출력', () => {
   test('경주할 자동차 이름을 입력하세요 메시지가 출력되는지 확인', async () => {
@@ -86,7 +88,7 @@ describe('경주 실행 결과 출력', () => {
 
 describe('게임 완료 후 우승자 안내 문구 출력', () => {
   test('최종 우승자 결과 확인(한 명 이상)', () => {
-    const winner = new GameWinner({ bmw: 2, benz: 3, tesla: 3, audi: 3 });
+    const winner = new Winner({ bmw: 2, benz: 3, tesla: 3, audi: 3 });
     winner.getKeysOfMaxValue(winner.findMaxValue());
     const result = GAME.WINNER + winner.printWinners();
 

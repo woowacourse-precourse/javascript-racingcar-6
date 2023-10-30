@@ -1,5 +1,5 @@
 import Input from '../src/view/input.js';
-import RacingCarName from '../src/racingcargame/RacingCarName.js';
+import { RacingCarName } from '../src/racingcargame/index.js';
 
 describe('게임 시작 문구', () => {
   test('경주할 자동차 이름을 입력하세요 메시지가 출력되는지 확인', async () => {
