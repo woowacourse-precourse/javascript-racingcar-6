@@ -2,33 +2,25 @@ import { Console, MissionUtils } from "@woowacourse/mission-utils";
 import RACING from "../constants/message";
 
 class RacingGameOutPut {
-    cars = []
-    count = 0
-
-    constructor(count, cars) {
-        this.gameMoveCount = count
-        this.cars = cars
-    }
-
-    startRacingGame() {
+    static startRacingGame(gameMoveCount, cars) {
         Console.print(RACING.GAME_RESULT)
 
-        for (let i = 0; i < this.gameMoveCount; i++) {
-            this.cars.forEach(car => {
+        for (let i = 0; i < gameMoveCount; i++) {
+            cars.forEach(car => {
                 const isMove = MissionUtils.Random.pickNumberInRange(0, 9) >= 4
                 car?.move(isMove)
             })
         }
 
-        let winnerArray = [this.cars[0]];
+        let winnerArray = [cars[0]];
 
-        for (let j = 1; j < this.cars.length; j++) {
-            if (winnerArray[0].getPosition() === this.cars[j].getPosition()) {
-                winnerArray.push(this.cars[j])
+        for (let j = 1; j < cars.length; j++) {
+            if (winnerArray[0].getPosition() === cars[j].getPosition()) {
+                winnerArray.push(cars[j])
             }
 
-            if (winnerArray[0].getPosition() < this.cars[j].getPosition()) {
-                winnerArray = [this.cars[j]]
+            if (winnerArray[0].getPosition() < cars[j].getPosition()) {
+                winnerArray = [cars[j]]
             }
         }
 
