@@ -6,6 +6,7 @@ class Racing {
     this.validateCarName();
     this.moveCount = await this.getMoveCount();
     this.validateMoveCount();
+    this.race();
   }
 
   async getCarsName() {
@@ -26,6 +27,11 @@ class Racing {
 
   validateMoveCount() {
     doValidateMoveCount(this.moveCount);
+  }
+
+  isCarMove() {
+    const number = Random.pickNumberInRange(0, 9);
+    return number >= 4;
   }
 }
 export default Racing;
