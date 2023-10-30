@@ -5,10 +5,6 @@ class Cars {
 
   #turns;
 
-  constructor(turns) {
-    this.#turns = turns;
-  }
-
   getCars() {
     return this.#cars;
   }
@@ -35,6 +31,14 @@ class Cars {
 
   getTurns() {
     return this.#turns;
+  }
+
+  /**
+   * 게임 진행 횟수를 저장합니다.
+   * @param {number} number
+   */
+  setTurns(number) {
+    this.#turns = number;
   }
 }
 
