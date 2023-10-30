@@ -17,24 +17,24 @@ export default class RacingGame {
     return this.#tryRound === 0;
   }
 
-  clearRound() {
+  _clearRound() {
     this.#tryRound -= 1;
   }
 
-  isMovalbe(number) {
+  _isMovalbe(number) {
     return number >= 4;
   }
 
   roundStart() {
     this.#carList.forEach((car) => {
       const carPickNumber = this.createRandomNumber();
-      const isMovable = this.isMovalbe(carPickNumber);
+      const isMovable = this._isMovalbe(carPickNumber);
 
       if (isMovable) {
         car.increasePosition();
       }
     });
-    this.clearRound();
+    this._clearRound();
   }
 
   getRoundResult() {
