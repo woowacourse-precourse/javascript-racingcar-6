@@ -21,8 +21,7 @@ describe("사용자 입력 테스트", () => {
   ])("유효한 자동차 이름 입력 - %s", async (input, expectedOutput) => {
     mockQuestions([input]);
 
-    const inputHandler = new InputHandler();
-    const result = await inputHandler.getCarNameArray();
+    const result = await InputHandler.getCarNameArray();
 
     expect(result).toEqual(expectedOutput);
     expect(MissionUtils.Console.readLineAsync).toHaveBeenCalledWith(
@@ -42,10 +41,8 @@ describe("사용자 입력 테스트", () => {
   ])("자동차 이름 입력 예외 처리 - %s", (input, expectedError) => {
     mockQuestions([input]);
 
-    const inputHandler = new InputHandler();
-
     expect(async () => {
-      await inputHandler.getCarNameArray();
+      await InputHandler.getCarNameArray();
     }).rejects.toThrow(expectedError);
     expect(MissionUtils.Console.readLineAsync).toHaveBeenCalledWith(
       MESSAGE.ENTER_CAR_NAMES
@@ -60,8 +57,7 @@ describe("사용자 입력 테스트", () => {
   ])("유효한 이동 시도 횟수 입력 - %s", async (input, expectedOutput) => {
     mockQuestions([input]);
 
-    const inputHandler = new InputHandler();
-    const result = await inputHandler.getMoveAttemptCount();
+    const result = await InputHandler.getMoveAttemptCount();
 
     expect(result).toBe(expectedOutput);
   });
@@ -75,10 +71,8 @@ describe("사용자 입력 테스트", () => {
   ])("이동 시도 횟수 입력 예외 처리 -%s", (input, expectedError) => {
     mockQuestions([input]);
 
-    const inputHandler = new InputHandler();
-
     expect(async () => {
-      await inputHandler.getMoveAttemptCount();
+      await InputHandler.getMoveAttemptCount();
     }).rejects.toThrow(expectedError);
   });
 });
