@@ -1,4 +1,4 @@
-import { STANDARD_NUMBER } from '../constants/controllers.js';
+import { ERROR_MESSAGE, STANDARD_NUMBER } from '../constants/controllers.js';
 import Car from '../models/Car.js';
 import InputValidator from '../utils/InputValidator.js';
 import NumberGenerator from '../utils/NumberGenerator.js';
@@ -38,10 +38,15 @@ class RacingCarController {
   }
 
   makeCars(names) {
+    const enterNames = [];
     names.forEach(name => {
+      if (enterNames.includes(name)) {
+        throw new Error(ERROR_MESSAGE.print(ERROR_MESSAGE.existName));
+      }
       if (InputValidator.checkCarName(name)) {
         const car = new Car(name);
         this.#cars.push(car);
+        enterNames.push(name);
       }
     });
   }
