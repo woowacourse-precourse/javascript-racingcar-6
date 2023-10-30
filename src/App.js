@@ -1,27 +1,38 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import { INPUT_MESSAGE, OUTPUT_MESSAGE, ERROR_MESSAGE } from "./Message.js";
 import { validateCarNames, validateRound } from "./InputOutput.js";
+import { checkMoving } from "./Racing.js";
 
 class App {
   constructor() {
-    this.carNames = [];
+    this.carsInfo = {
+      name: "",
+      position: 0,
+    };
+    this.inputCarNames = [];
     this.winner = [];
     this.round = 0;
   }
 
   async play() {
-    try {
-      await this.getCarNames();
-      await this.getRound();
-    } catch (error) {
-      throw new Error(error);
-    }
+    await this.getCarNames();
+    this.makeCarsInfo();
+    await this.getRound();
+    checkMoving();
   }
 
   async getCarNames() {
     const input = await MissionUtils.Console.readLineAsync(INPUT_MESSAGE.CARNAME);
-    this.carNames = input.split(",");
-    validateCarNames(this.carNames);
+    this.inputCarNames = input.split(",");
+    validateCarNames(this.inputCarNames);
+  }
+
+  makeCarsInfo() {
+    this.inputCarNames.forEach((carNames) => {
+      this.carsInfo.name = carNames;
+      this.carsInfo.position = 0;
+      console.log(this.carsInfo);
+    });
   }
 
   async getRound() {
