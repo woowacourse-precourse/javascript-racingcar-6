@@ -8,12 +8,12 @@ class Validator {
    * @param {string[]} carName 자동차 이름
    * @returns {{ isValid: boolean, reason: string }}
    */
-  static isValidCarName(carName) {
-    if (carName.some(UtilString.isOverMaxLength)) {
+  static isValidCarName(carNames) {
+    if (carNames.some(UtilString.isOverMaxLength)) {
       return { isValid: false, reason: ERROR_MESSAGE.tooLongCarName };
     }
 
-    if (UtilArray.hasDuplicated(carName)) {
+    if (UtilArray.hasDuplicated(carNames)) {
       return { isValid: false, reason: ERROR_MESSAGE.duplicateCarName };
     }
 
@@ -30,7 +30,7 @@ class Validator {
    */
   static isValidTrialCount(trialCount) {
     if (trialCount < 1) {
-      return { isValid: false, reason: ERROR_MESSAGE.tooSmallTrialCount };
+      return { isValid: false, reason: ERROR_MESSAGE.tooSmallNumber };
     }
     if (Number.isNaN(trialCount)) {
       return { isValid: false, reason: ERROR_MESSAGE.invalidInput };
