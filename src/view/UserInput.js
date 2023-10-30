@@ -19,6 +19,19 @@ class UserInput {
 			throw new Error(ERROR_MESSAGES.duplicate_car_name);
 	}
 
+	#checkIsNumber(userInput) {
+		if (isNaN(userInput)) throw new Error(ERROR_MESSAGES.value_is_not_a_number);
+	}
+
+	#checkIsNegative(userInput) {
+		if (userInput < 0) throw new Error(ERROR_MESSAGES.value_is_negative_number);
+	}
+
+	#checkAttemptExceedMaximum(userInput) {
+		if (userInput > CONDITIONS.value_maximum_length)
+			throw new Error(ERROR_MESSAGES.value_is_exceeds_maximum_length);
+	}
+
 	async inputRacingCarName(question = SYSTEM_MESSAGES.input_racingcar_name) {
 		const userInput = await Console.readLineAsync(question);
 		const racingCarNames = userInput.split(',').map((carName) => {
@@ -31,6 +44,16 @@ class UserInput {
 		this.#checkSameCarName(racingCarNames);
 
 		return racingCarNames;
+	}
+
+	async inputAttemptsNum(question = SYSTEM_MESSAGES.number_of_attempts) {
+		const userInput = await Console.readLineAsync(question);
+
+		this.#checkIsNumber(userInput);
+		this.#checkIsNegative(userInput);
+		this.#checkAttemptExceedMaximum(userInput);
+
+		return userInput;
 	}
 }
 
