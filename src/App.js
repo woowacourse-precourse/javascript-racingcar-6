@@ -4,7 +4,6 @@ class App {
   carData = "";
   inputArray = [];
   movementCount = 0;
-  carDetail = { carName: "", advance: 0 };
   advanceCount = [];
 
   async start() {
@@ -29,11 +28,16 @@ class App {
 
   getRandomValue(car) {
     const number = Random.pickNumberInRange(0, 9);
+    let dashString = "";
 
     number >= 4 &&
       this.advanceCount.filter(
         (data) => data.carName === car.carName && car.advance++
       );
+
+    for (let i = 0; i < car.advance; i++) dashString += "-";
+
+    Console.print(car.carName + " : " + dashString);
   }
 
   async play() {
@@ -48,12 +52,15 @@ class App {
       this.advanceCount.push({ carName: name, advance: 0 })
     );
 
+    Console.print("실행 결과");
     while (
       !this.advanceCount
         .map((data) => data.advance === Number(this.movementCount))
         .includes(true)
-    )
+    ) {
       this.advanceCount.map((advance) => this.getRandomValue(advance));
+      Console.print("\n");
+    }
   }
 }
 
