@@ -15,6 +15,7 @@ class App {
     this.makeCarsInfo();
     await this.getRound();
     positionHandleIterator(this.carsArr, this.round);
+    findWinner(this.carsArr);
   }
 
   async getCarNames() {
