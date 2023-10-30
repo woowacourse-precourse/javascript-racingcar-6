@@ -1,21 +1,16 @@
-import Car from './Car.js';
-import GameUtils from './GameUtils.js';
 import IOManager from './IOManager.js';
+import GameUtils from './GameUtils.js';
 
-import ERROR_MESSAGE from './errorMessage.js';
 import MESSAGE from './message.js';
+import ERROR_MESSAGE from './errorMessage.js';
+
+import Car from './Car.js';
 
 class RacingCarGame {
-  #cars;
-
   static #MESSAGE = MESSAGE;
   static #ERROR_MESSAGE = ERROR_MESSAGE;
 
-  constructor() {
-    this.#cars = [];
-  }
-
-  async #getCarNames() {
+  async getCarNames() {
     const carNames = await IOManager.input(
       RacingCarGame.#MESSAGE.GET_CAR_NAMES
     );
@@ -41,15 +36,12 @@ class RacingCarGame {
     });
   }
 
-  #createCarObjectsFromNames(carNames) {
+  createCarObjectsFromNames(carNames) {
     const carNameList = carNames.split(',');
-
-    carNameList.forEach((carName) => {
-      this.#cars.push(new Car(carName.trim()));
-    });
+    return carNameList.map((carName) => new Car(carName.trim()));
   }
 
-  async #getTryCount() {
+  async getTryCount() {
     const tryCount = await IOManager.input(
       RacingCarGame.#MESSAGE.GET_TRY_COUNT
     );
@@ -71,6 +63,15 @@ class RacingCarGame {
     }
   }
 
+  repeatMove(cars, tryCount) {
+    IOManager.output(RacingCarGame.#MESSAGE.RESULT);
+    for (let i = 0; i < tryCount; i++) {
+      GameUtils.forEachApply(cars, this.#decideToMove);
+      GameUtils.forEachApply(cars, this.#displayCurrentProgress);
+      IOManager.output(RacingCarGame.#MESSAGE.NEW_LINE);
+    }
+  }
+
   #decideToMove(car) {
     const randomNumber = GameUtils.getRandomNumberInRange(0, 9);
 
@@ -85,39 +86,17 @@ class RacingCarGame {
     );
   }
 
-  #getWinners() {
-    const maxStep = this.#cars.reduce((maxStep, car) => {
+  getWinners(cars) {
+    const maxStep = cars.reduce((maxStep, car) => {
       return Math.max(maxStep, car.step);
     }, 0);
 
-    return this.#cars.filter((car) => car.name === maxStep);
+    return cars.filter((car) => car.step === maxStep);
   }
 
-  #displayResult(winners) {
+  displayResult(winners) {
     const winnerNames = winners.map((winner) => winner.name).join(', ');
     IOManager.output(RacingCarGame.#MESSAGE.WINNER_ANNOUNCEMENT(winnerNames));
-  }
-
-  async start() {
-    try {
-      const carNames = await this.#getCarNames();
-      this.#createCarObjectsFromNames(carNames);
-      const tryCount = await this.#getTryCount();
-
-      IOManager.output(RacingCarGame.#MESSAGE.RESULT);
-      for (let i = 0; i < tryCount; i++) {
-        this.#cars.forEach((car) => {
-          this.#decideToMove(car);
-          this.#displayCurrentProgress(car);
-        });
-        IOManager.output(RacingCarGame.#MESSAGE.NEW_LINE);
-      }
-
-      const winners = this.#getWinners();
-      this.#displayResult(winners);
-    } catch (error) {
-      throw new Error(error.message);
-    }
   }
 }
 
