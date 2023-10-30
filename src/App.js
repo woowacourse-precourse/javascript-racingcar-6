@@ -44,7 +44,7 @@ class App {
   }
 
   async checkAttemptValidity(attemptInput) {
-    return /^\d+$/.test(attemptInput);
+    return /^[1-9]\d*$/.test(attemptInput);
   }
 
   generateResultTemplate(racecarNames) {
