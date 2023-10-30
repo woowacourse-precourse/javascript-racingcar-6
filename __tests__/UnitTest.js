@@ -1,4 +1,4 @@
-import { createRandomList } from '../src/utils/createRandomList';
+import { createRandomNumber } from '../src/utils/createRandomList';
 import { goStopCar } from '../src/utils/goStopCar';
 import { validateLength, validateIsNumber } from '../src/utils/validate';
 
@@ -18,13 +18,10 @@ describe('예외 테스트', () => {
 
 describe('유틸리티 함수', () => {
   test('무작위 숫자 생성', () => {
-    const moveCount = '5';
-    const randomList = createRandomList(moveCount);
+    const randomNumber = createRandomNumber();
 
-    randomList.forEach((number) => {
-      expect(number).toBeGreaterThanOrEqual(0);
-      expect(number).toBeLessThan(10);
-    });
+    expect(randomNumber).toBeGreaterThanOrEqual(0);
+    expect(randomNumber).toBeLessThan(10);
   });
 
   test('자동차 전진', () => {
