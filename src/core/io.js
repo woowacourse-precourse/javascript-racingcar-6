@@ -3,6 +3,7 @@
 import { Console } from "@woowacourse/mission-utils";
 import { ReadLineError } from "../utils/error.js";
 import { assertNameValid, assertTryAmountValid } from "../utils/validity.js";
+import { splitNamesFrom } from "../utils/parse.js";
 
 /**
  * @returns { Promise<string[]> }
@@ -54,5 +55,3 @@ function checkNamesAreValid(names) {
     assertNameValid(name);
   });
 }
-
-console.log(await askTryAmount());
