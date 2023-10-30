@@ -20,7 +20,7 @@ describe("playerRegistration 함수", () => {
 
   it("5자리를 초과하는 입력이 들어오면 에러를 던짐", async () => {
     // 모킹된 readLineAsync를 설정
-    MissionUtils.Console.readLineAsync.mockResolvedValue("123456,abcdefg");
+    MissionUtils.Console.readLineAsync.mockResolvedValue("12456,abcefg");
 
     try {
       await playerRegistration("Enter player names separated by comma");

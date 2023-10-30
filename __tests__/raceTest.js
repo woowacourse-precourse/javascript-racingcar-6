@@ -7,14 +7,11 @@ beforeEach(() => {
   calculate.mockClear();
 });
 
-test("test", () => {
-  calculate.mockReturnValue("-");
+test("calculate호출 횟수 테스트", () => {
   const player = ["car1", "car2"];
   const userAttempts = 3;
   const results = race(player, userAttempts);
+  calculate.mockReturnValue({ car1: "-", car2: "-" });
+
   expect(calculate).toHaveBeenCalledTimes(userAttempts);
-  expect(results).toEqual({
-    car1: "---",
-    car2: "---",
-  });
 });

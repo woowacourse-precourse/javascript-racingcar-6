@@ -1,5 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import calculate from "./calculate";
+import calculate from "./calculate.js";
 
 const race = (player, userAttempts) => {
   let results = {};
