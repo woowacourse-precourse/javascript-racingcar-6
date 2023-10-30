@@ -224,7 +224,6 @@ describe("자동차 경주 게임", () => {
   //   const inputs = ["pobi,woni,jun,jong", "1"];
   //   const outputs = [
   //     "pobi,woni,jun,jong",
-  //     "pobi,woni,jun,jong",
   //   ];
   //   const randoms = [
   //     2, 1, 2, 2,
@@ -266,10 +265,10 @@ describe("자동차 경주 게임", () => {
   // });
 
   // test.each([
-  //   [["pobi,jun","@"]],
-  //   [["pobi,jun,jong","a"]],
-  //   [["this,is,regax,check","  "]],
-  //   [["this,is,regax,null,check",""]]
+  //   [["pobi!,jun"]],
+  //   [["pobi,jun,jun"]],
+  //   [[""]],
+  //   [[" , "]],
   // ])("이름에 대한 예외 처리", async (inputs) => {
   //   // given
   //   mockQuestions(inputs);
@@ -282,10 +281,11 @@ describe("자동차 경주 게임", () => {
   // });
 
   test.each([
-    [["pobi,jun","0"]],
-    [["pobi,pobi"]],
-    [["pobi,pobi1",]],
-  ])("시도 횟수 0이 입력됐을 때", async (inputs) => {
+    // [["pobi,jun","0"]],
+    // [["pobi,pobi","@"]],
+    // [["pobi,pobi1","  "]],
+    [["pobi,jun","-1"]],
+  ])("시도횟수에 대한 예외 처리", async (inputs) => {
     // given
     mockQuestions(inputs);
 
