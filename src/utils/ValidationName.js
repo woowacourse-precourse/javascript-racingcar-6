@@ -29,4 +29,5 @@ const ValidationName = {
     });
   },
 };
+
 export default ValidationName;
