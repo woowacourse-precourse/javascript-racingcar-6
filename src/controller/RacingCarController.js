@@ -38,11 +38,14 @@ class RacingCarController {
   //게임 횟수만큼 랜덤값 생성
   async startRacing() {
     this.output.racingStartMessage();
+
     for (let i = 0; i < this.tryNumber; i++) {
-      this.countWinner(
-        await this.carMoving.playEachRound(this.carNames.length)
-      );
+      await this.playEachRace();
     }
+  }
+
+  async playEachRace() {
+    this.countWinner(await this.carMoving.playEachRound(this.carNames.length));
   }
 
   //승리자 개수 증가시키기
