@@ -12,9 +12,11 @@ describe('RacingResult 테스트', () => {
 
   test.each([
     {
-      carNames: ['carA', 'carB'],
-      moveCount: 3,
-      expectedResults: [
+      input: {
+        carNames: ['carA', 'carB'],
+        moveCount: 3,
+      },
+      expected: [
         [
           { carName: 'carA', position: 1 },
           { carName: 'carB', position: 1 },
@@ -30,9 +32,11 @@ describe('RacingResult 테스트', () => {
       ],
     },
     {
-      carNames: ['car1', 'car2', 'car3'],
-      moveCount: 1,
-      expectedResults: [
+      input: {
+        carNames: ['car1', 'car2', 'car3'],
+        moveCount: 1,
+      },
+      expected: [
         [
           { carName: 'car1', position: 1 },
           { carName: 'car2', position: 1 },
@@ -41,8 +45,8 @@ describe('RacingResult 테스트', () => {
       ],
     },
   ])(
-    '자동차 이름이 $carNames 이고 이동 횟수가 $moveCount 일 때, 예상 결과는 $expectedResults 이다.',
-    ({ carNames, moveCount, expectedResults }) => {
+    '자동차 이름이 $input.carNames 이고 이동 횟수가 $input.moveCount 일 때, 예상 대로 자동차 경주가 진행 된다.',
+    ({ input: { carNames, moveCount }, expected }) => {
       // given
       const racingGame = new RacingGame(carNames, moveCount);
 
@@ -50,7 +54,7 @@ describe('RacingResult 테스트', () => {
       const racingResult = racingGame.play();
 
       // then
-      expect(racingResult).toStrictEqual(expectedResults);
+      expect(racingResult).toStrictEqual(expected);
     },
   );
 });
