@@ -27,7 +27,10 @@ class App {
   }
 
   async getRaceRounds() {
-    const rounds = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    const user = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    const rounds = Number(user);
+    if (!Number.isInteger(rounds))
+      throw new Error('횟수는 정수만 입력 가능합니다.');
     return rounds;
   }
 }
