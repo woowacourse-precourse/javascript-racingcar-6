@@ -1,5 +1,6 @@
 import GameSettingInput from "./GameSettingInput.js";
 import GameProgress from "./GameProgress.js";
+import GameResult from "./GameResult.js";
 import { Console } from "@woowacourse/mission-utils";
 
 class App {
@@ -12,6 +13,9 @@ class App {
     for (let i = 0; i < gameSetting.trialCount; i++) {
       gameProgress.proceed();
     }
+    const advance = gameProgress.getAdvance();
+    const gameResult = new GameResult(advance);
+    gameResult.printWinners();
   }
 
   async setting() {

@@ -15,6 +15,10 @@ export default class GameProgress {
     this.printRoundResult();
   }
 
+  getAdvance() {
+    return this.advance;
+  }
+
   printRoundResult() {
     for (const carName in this.advance) {
       Console.print(`${carName} : ` + "-".repeat(this.advance[carName]));
