@@ -1,5 +1,6 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import { checkNames, checkRounds } from './modules/checkUserInput.js';
+import { startRound } from './modules/startRound.js';
 
 class App {
   async play() {
@@ -10,12 +11,12 @@ class App {
 
     // 점수를 저장할 객체
     const scoreObject = {};
-    namesArray.forEach((carName, index) => {
+    namesArray.forEach(carName => {
       scoreObject[`${carName}`] = 0;
     });
 
     for (let i = 0; i < rounds; i++) {
-      this.startRound(namesArray, scoreObject);
+      startRound(namesArray, scoreObject);
       this.printRoundResult(namesArray, scoreObject);
       MissionUtils.Console.print('\n');
     }
@@ -38,19 +39,9 @@ class App {
     return parseInt(roundsInput);
   }
 
-  startRound(namesArray, scoreObject) {
-    // 랜덤으로 점수 + 1
-    namesArray.forEach(carName => {
-      const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
-      if (randomNumber >= 4) {
-        scoreObject[`${carName}`] += 1;
-      }
-    });
-  }
-
-  printRoundResult(carsArray, scoreObject) {
+  printRoundResult(namesArray, scoreObject) {
     // 라운드에 대한 실행 결과 출력
-    carsArray.forEach((car, index) => {
+    namesArray.forEach((car, index) => {
       const scoreCount = '-'.repeat(scoreObject[`${car}`]);
       MissionUtils.Console.print(`${car} : ${scoreCount}`);
     });
