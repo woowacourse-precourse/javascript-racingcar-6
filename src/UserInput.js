@@ -22,7 +22,8 @@ export default class User {
     }
 
     checkName(names) {
-        try {Validation.carNameValidation(names)
+        try {
+            Validation.carNameValidation(names)
         } catch(e) {
           throw(e)
         }
@@ -33,6 +34,11 @@ export default class User {
         const inputPlayNumer = await MissionUtils.Console.readLineAsync(
             '시도할 횟수는 몇 회인가요? \n'
         )
+        try {
+            Validation.checkNumber(inputPlayNumer)
+        } catch(e) {
+          throw(e)
+        }
         console.log(inputPlayNumer)
     } 
 }

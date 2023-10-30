@@ -27,4 +27,10 @@ export default class Validation {
             throw new Error('[ERROR] 중복된 값이 있습니다.')
         } return true;
     }
+
+    static checkNumber(input) {
+        if (isNaN(Number(input))) {
+            throw new Error('[ERROR] 숫자만 입력 가능합니다.')
+        } return true;
+    }
 }
