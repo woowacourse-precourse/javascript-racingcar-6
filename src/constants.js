@@ -16,6 +16,7 @@ export const ERROR_MESSAGE = {
   invalidLength: (maxLength) =>
     `[ERROR] 자동차의 이름은 ${maxLength}자 이하만 가능합니다.`,
   isCarNameNull: "자동차의 이름은 필수입니다.",
+  isNotOverZero: "0보다 큰 정수를 입력해주세요",
 };
 
 export const MOVE_THRESHOLD = 4;

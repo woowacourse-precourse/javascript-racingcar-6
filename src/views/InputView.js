@@ -15,12 +15,19 @@ class InputView {
     );
     const userInputNumber = Number(userInput);
     this.validateIsNumber(userInputNumber);
+    this.validateIsOverZero(userInputNumber);
     return userInputNumber;
   }
 
   validateIsNumber(input) {
     if (Number.isNaN(input)) {
       throw new Error(`[ERROR] ${ERROR_MESSAGE.isNotNumber}`);
+    }
+  }
+
+  validateIsOverZero(input) {
+    if (input <= 0) {
+      throw new Error(`[ERROR] ${ERROR_MESSAGE.isNotOverZero}`);
     }
   }
 
