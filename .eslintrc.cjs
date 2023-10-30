@@ -21,6 +21,9 @@ module.exports = {
 
     // __tests__ 폴더 외에 다른 곳에 테스트 코드 존재롤 인해
     'import/export': 0,
+
+    // 실수 방지
+    'require-await': 'error',
   },
   overrides: [
     {
