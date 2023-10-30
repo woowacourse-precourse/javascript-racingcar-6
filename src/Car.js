@@ -6,7 +6,7 @@ class Car {
     this.moveCount = 0;
   }
 
-  moveFoward() {
+  moveForward() {
     const number = Random.pickNumberInRange(0, 9);
 
     if (number >= 4) {
