@@ -1,15 +1,18 @@
 import { Console } from '@woowacourse/mission-utils';
 import { Message } from './Message.js';
 import { Car } from './Car.js';
+import { Race } from './Race.js';
 
 class MainGame {
   start = async () => {
     Console.print(Message.INPUT_CAR_NAME);
     const carNameList = await this.inputCarName();
     const attemptsNumber = await this.inputAttemptsNumber();
-    await this.printExecutionResult();
+    this.printExecutionResult();
 
     const cars = carNameList.map((name) => new Car(name));
+    const race = new Race(cars);
+    race.start(attemptsNumber);
   };
 
   static isSplitComma = (carNameList) => {
