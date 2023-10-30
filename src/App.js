@@ -22,9 +22,8 @@ class App {
   }
 
   async process() {
-    console.log("실행 결과");
+    console.log("\n실행 결과");
     const roundResults = new Array(this.carNames.length).fill("");
-
     for (let i = 0; i < this.tryInput; i++) {
       for (let j = 0; j < this.carNames.length; j++) {
         const move = Math.floor(Math.random() * 10) >= 4 ? "-" : "";
@@ -34,6 +33,7 @@ class App {
       this.carNames.forEach((carName, j) => {
         console.log(`${carName} : ${roundResults[j]}`);
       });
+      console.log(""); // Add an empty line for separation between rounds
     }
     const maxDistance = Math.max(...roundResults.map((result) => result.length));
     const winners = this.carNames.filter((carName, index) => roundResults[index].length === maxDistance);
