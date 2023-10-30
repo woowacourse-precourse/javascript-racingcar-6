@@ -1,3 +1,12 @@
+import {Console, Random } from '@woowacourse/mission-utils';
+import {PLAYER_INPUT, RACE} from './Logs.js';
+import {
+  isPlayerCarNameValidated,
+  isPlayerTryNumberValidated,
+} from './Validation.js';
+import { CONSTANTS } from './Constants.js';
+
+
 class App {
   constructor() {
     this.playersData = [];
