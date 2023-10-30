@@ -1,9 +1,10 @@
 import { ERROR_MESSEAGE } from "../constants/Messeage.js";
 import Commas from "./Commas.js";
+import { GAME_RULE } from "../constants/Constants.js";
 
 class OverName extends Commas {
   isOverName(players) {
-    const carNameArray = players.split(',').filter((carName) => carName.length > 5);
+    const carNameArray = players.split(',').filter((carName) => carName.length > GAME_RULE.maxNameLength);
     
     if (carNameArray.length !== 0) {
       return true;
@@ -12,7 +13,7 @@ class OverName extends Commas {
   //이건 comma에러가 아닐때 고려한다.
   overNameArray(players) {
     if(this.isOverName(players)) {
-      return players.split(',').filter((carName) => carName.length > 5);
+      return players.split(',').filter((carName) => carName.length > GAME_RULE.maxNameLength);
     }
   }
 

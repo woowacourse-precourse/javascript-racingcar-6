@@ -1,10 +1,12 @@
+import { GAME_RULE } from "../constants/Constants.js";
+
 class Converter {
   static scoreRule(number) {
-    if (number < 4) {
-      return 0;
+    if (number < GAME_RULE.movingStandard) {
+      return GAME_RULE.stop;
     }
-    if (number >= 4) {
-      return 1;
+    if (number >= GAME_RULE.movingStandard) {
+      return GAME_RULE.movingForward;
     }
   }
   //[3,7,9] -> [0,1,1]
