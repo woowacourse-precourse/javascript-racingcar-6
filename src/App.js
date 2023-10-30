@@ -19,6 +19,11 @@ class App {
   const cars = this.validation(input);
 
   const times = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+  const errOne = isNaN(times);
+  const errTwo = times.trim().length === 0;
+  if (errOne || errTwo) {
+   throw new Error('[ERROR]');
+  }
  }
 }
 export default App;
