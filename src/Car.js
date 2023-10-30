@@ -1,4 +1,5 @@
 import { Random } from '@woowacourse/mission-utils';
+import Screen from './Screen.js';
 class Car {
   #name;
   #movingCount;
@@ -13,6 +14,10 @@ class Car {
     if (randomNumber >= 4) {
       this.#movingCount += 1;
     }
+  }
+
+  status() {
+    return `${this.#name} : ${Screen.makeDashString(this.#movingCount)}`;
   }
 }
 
