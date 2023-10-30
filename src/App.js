@@ -1,14 +1,15 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Console, Random } from "@woowacourse/mission-utils";
 
 export default class App {
   constructor() {
-    this.player = "";
-    this.race = "";
+    this.cars = [];
+    this.totalRound = "";
   }
 
   async play() {
     await this.getCarsName();
     await this.getTotalRound();
+    this.raceStart(this.cars, this.totalRound);
   }
 
   async getCarsName() {
@@ -16,13 +17,27 @@ export default class App {
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
     );
     const validCars = isValidCars(cars);
-    this.player = validCars;
+    this.cars = validCars;
   }
 
   async getTotalRound() {
     const round = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
     const validRound = isValidRound(round);
-    this.race = validRound;
+    this.totalRound = validRound;
+  }
+
+  raceStart(cars, totalRound) {
+    for (let i = 0; i < totalRound; i++) {
+      this.round(cars);
+      console.log(cars);
+    }
+  }
+  round(cars) {
+    for (const car of cars) {
+      if (isMove()) {
+        car.position++;
+      }
+    }
   }
 }
 
@@ -38,8 +53,8 @@ function isValidCars(cars) {
       throw new Error(
         "[ERROR] 자동차 이름은 쉼표(,)를 기준으로 구분하며 이름은 5자 이하만 가능합니다."
       );
-
-    underFiveDigitCars.push(trimmedCarName);
+    const validCars = { name: trimmedCarName, position: 0 };
+    underFiveDigitCars.push(validCars);
   }
 
   return underFiveDigitCars;
@@ -57,4 +72,8 @@ function isValidRound(round) {
   }
 
   return roundNumber;
+}
+
+function isMove() {
+  if (Random.pickNumberInRange(0, 9) > 3) return true;
 }
