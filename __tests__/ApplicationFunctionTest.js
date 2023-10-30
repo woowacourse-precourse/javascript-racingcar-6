@@ -22,7 +22,7 @@ const getLogSpy = () => {
   return logSpy;
 };
 
-describe("기능 테스트", () => {
+describe("기능목록 테스트", () => {
     test("경주 할 n대의 자동차의 이름을 입력받는 함수 테스트", async () => {
       const input = 'audi,benz,kia';
       
@@ -81,7 +81,7 @@ describe("기능 테스트", () => {
         const testParticipatingCars = ['audi','benz','kia'];
         const testNumberOfMoves = 3;
         const testRandomNumbers = [...[1,3,5],...[2,4,6],...[7,5,3]];
-        
+
         mockRandoms([...testRandomNumbers]);
 
         const app = new App();
