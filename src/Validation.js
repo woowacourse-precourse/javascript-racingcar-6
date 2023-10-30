@@ -1,22 +1,22 @@
 import { ERROR_MESSAGES, CustomError } from './Errors.js';
 
-export const isPlayerCarNameValidated = raceEntry => {
-  if (raceEntry.some(name => name.length > 5)) {
+export const isPlayerCarNameValidated = carNames => {
+  if (carNames.some(name => name.length > 5)) {
     throw new CustomError(
       'InvalidNameLength',
       ERROR_MESSAGES.INVALID_CARS_NAME_LENGTH,
     );
   }
 
-  if (raceEntry.some(name => !/^[A-Za-z]+$/.test(name))) {
+  if (carNames.some(name => !/^[A-Za-z]+$/.test(name))) {
     throw new CustomError(
       'InvalidNameCharacter',
       ERROR_MESSAGES.INVALID_CARS_NAME_STRING,
     );
   }
 
-  const uniqueNames = new Set(raceEntry);
-  if (uniqueNames.size !== raceEntry.length) {
+  const uniqueNames = new Set(carNames);
+  if (uniqueNames.size !== carNames.length) {
     throw new CustomError(
       'InvalidNameDuplicate',
       ERROR_MESSAGES.INVALID_CARS_NAME_DUPLICATE,
@@ -27,7 +27,7 @@ export const isPlayerCarNameValidated = raceEntry => {
 };
 
 export const isPlayerTryNumberValidated = tryNumber => {
-  if (isNaN(Number(tryNumber))) {
+  if (Number.isNaN(Number(tryNumber))) {
     throw new CustomError(
       'InvalidTryNumber',
       ERROR_MESSAGES.INVALID_TRY_NUMBER_STRING,
