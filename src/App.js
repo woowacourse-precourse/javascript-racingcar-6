@@ -19,6 +19,7 @@ class App {
     let times = await setRaceTimes();
     if (times == NaN || times == 0) throw new Error("[ERROR] 이동 횟수가 잘못된 형식입니다.\n");
     race(cars, times);
+    let winnerNames = getFinalWinners(cars);
   }
 }
 
@@ -83,6 +84,28 @@ function printProgression(cars) {
     MissionUtils.Console.print(`${name} : ${positionString}\n`);
   }
   MissionUtils.Console.print("\n");
+}
+
+function getFinalWinners(cars) {
+  let maxPosition = getMaxPosition(cars);
+  let winnerNames = [];
+  for (let i = 0; i < cars.length; i++) {
+    let car = cars[i];
+    let position = car.position;
+    let name = car.name;
+    if (position >= maxPosition) winnerNames.push(name); 
+  }
+  return winnerNames;
+}
+
+function getMaxPosition(cars) {
+  let maxPosition = 0;
+  for (let i = 0; i < cars.length; i++) {
+    let car = cars[i];
+    let position = car.position;
+    if ( position > maxPosition) maxPosition = position;
+  }
+  return maxPosition;
 }
 
 export default App;
