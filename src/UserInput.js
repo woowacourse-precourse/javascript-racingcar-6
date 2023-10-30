@@ -39,10 +39,20 @@ class UserInput {
     return [true, "", carNames];
   }
 
-  isVaildTryNumber(number) {
-    // 시도 횟수에 숫자가 아닌 글자를 입력했을 경우 false
-    // 문자열(number)을 변수로 받아 검사한 후, 불린 값을 반환한다.
-    // 숫자가 아닌 문자열인 이유는 Console.readLineAsync 으로 받은 값은 문자열이기 때문에..!
+  isVaildTryNumber(stringNumber) {
+    const number = Number(stringNumber);
+
+    if (number < Minimum.TRY_NUMBER) {
+      return [false, Messages.ERROR.SHORT_TRY_NUMBER, null];
+    }
+    if (!/^[0-9]+$/.test(stringNumber)) {
+      return [false, Messages.ERROR.WRONG_TRY_NUMBER, null];
+    }
+    if (number > 15) {
+      return [false, Messages.ERROR.EXCEED_TRY_NUMBER, null];
+    }
+
+    return [true, "", number];
   }
 }
 
