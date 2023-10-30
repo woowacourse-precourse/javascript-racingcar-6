@@ -5,14 +5,18 @@ import Validation from './Validation.js';
 class App {
   carNames;
 
+  GameCount;
+
   async play() {
     const inputCarNames = await Input.getCarNamesFromUser();
     Validation.validateCarName(inputCarNames);
     this.carNames = inputCarNames;
+
     const inputGameCount = await Input.getGameCountFromUser();
+    Validation.validateGameCountNaturalNumber(inputGameCount);
+    this.GameCount = inputGameCount;
   }
 }
-
 const app = new App();
 app.play();
 
