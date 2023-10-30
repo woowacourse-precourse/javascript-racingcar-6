@@ -11,15 +11,11 @@ export default class RacingCar {
   }
 
   moveForward() {
-    const randomNumber = RacingCar.getRandomNumber(
+    const randomNumber = Random.pickNumberInRange(
       RacingCar.RAND_START,
       RacingCar.RAND_END,
     );
 
     if (randomNumber >= 4) this.distance += 1;
-  }
-
-  static getRandomNumber(start, end) {
-    return Random.pickNumberInRange(start, end);
   }
 }
