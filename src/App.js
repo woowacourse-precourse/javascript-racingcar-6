@@ -1,25 +1,25 @@
-import { readUserRaceCarName, readAttemptsCount } from "./view/InputView.js";
-import { printResultMsg, printRaceResult, printWinners } from "./view/OutputView.js";
-import { playGame, calculateWinners } from "./modelview/Modelview.js";
+import InputView from "./view/InputView.js";
+import OutputView from "./view/OutputView.js";
+import ModelView from "./modelview/ModelView.js";
 
 class App {
   async play() {
-    const names = await readUserRaceCarName();
+    const names = await InputView.readUserRaceCarName();
 
-    const tryCount = await readAttemptsCount();
+    const tryCount = await InputView.readAttemptsCount();
 
-    printResultMsg();
+    OutputView.printResultMsg();
 
     for (let i = 0; i < tryCount; i++) {
-      const raceResults = playGame(names);
+      const raceResults = ModelView.playGame(names);
       for (const name in raceResults) {
-        printRaceResult(name, raceResults[name]);
+        OutputView.printRaceResult(name, raceResults[name]);
       }
     }
 
-    const winners = calculateWinners(names);
+    const winners = ModelView.calculateWinners(names);
 
-    printWinners(winners);
+    OutputView.printWinners(winners);
   }
 }
 
