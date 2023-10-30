@@ -13,8 +13,11 @@ class App {
 
       while (CNT>0) {
         const STEP = this.playGame(CAR_DICT);
+        const RESULT = this.resultToString(STEP)
+        Console.print(`${RESULT}\n`);
         CNT-=1
       }
+
     }else {
       throw new Error("[ERROR] 이름은 5글자 이하로 작성해주세요")
     }
@@ -56,9 +59,16 @@ class App {
   }
   moveCar(carDict, car) {
     carDict[car].push('-');
-    // console.log(car)
     return carDict;
   }
+  resultToString(result) {
+    const KEYS = Object.keys(result);
+    const VALUES = Object.values(result);
 
+    const RESULT_ARRAY = KEYS.map((key, index) => {
+      return `${key} : ${VALUES[index].join('')}`;
+    })
+    return RESULT_ARRAY.join('\n');
+  }
 }
 export default App;
