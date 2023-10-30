@@ -43,3 +43,4 @@ export const positionHandleIterator = (carsArr, round) => {
   }
   return carsArr;
 };
+
