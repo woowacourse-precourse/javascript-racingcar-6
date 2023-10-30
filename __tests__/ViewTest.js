@@ -68,7 +68,7 @@ describe('InputView 테스트', () => {
     mockQuestions(inputs);
 
     const view = new InputView();
-    expect(await view.getCarName()).toEqual(outputs);
+    expect(await view.getCarNames()).toEqual(outputs);
   });
 
   test.each([[['pobi, woni']], [['pobi,wo ni']], [['pobi,javajigi']]])(
@@ -77,7 +77,7 @@ describe('InputView 테스트', () => {
       mockQuestions(inputs);
 
       const view = new InputView();
-      await expect(view.getCarName()).rejects.toThrow('[ERROR]');
+      await expect(view.getCarNames()).rejects.toThrow('[ERROR]');
     },
   );
 

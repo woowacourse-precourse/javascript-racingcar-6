@@ -4,7 +4,7 @@ import { throwError } from '../utils/throwError';
 import { MESSAGES } from '../constants/messages';
 
 class InputView {
-  async getCarName() {
+  async getCarNames() {
     const carsNameInput = await Console.readLineAsync(MESSAGES.getCarName);
     const carNames = carsNameInput.split(',');
 

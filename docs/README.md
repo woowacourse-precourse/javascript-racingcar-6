@@ -54,11 +54,11 @@
 
 - GameController 클래스
   
-  - [ ] 플레이어로부터 입력 받기
-    - [ ] 자동차 이름 <- InputView
-    - [ ] 시도 횟수 <- InputView
-    - [ ] 위를 바탕으로 GameModel에 데이터 저장
-  - [ ] 라운드 진행
-    - [ ] GameModel.move()
+  - [X] 플레이어로부터 입력 받기
+    - [X] 자동차 이름 <- InputView
+    - [X] 시도 횟수 <- InputView
+    - [X] 위를 바탕으로 GameModel에 데이터 저장
+  - [X] 라운드 진행
+    - [X] GameModel.playRound()
     - [ ] GameModel.getResult()
   - [ ] OutputView를 통해 결과 출력
