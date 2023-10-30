@@ -6,8 +6,8 @@ export const printResult = () => {
   printMessage(LOG_MESSAGE.SHOW_RESULT);
 }
 
-export const printCar = (name, distance) => {
-  printMessage(`${name} : ${STRING.MOVE_FORWARD_DISTANCE.repeat(distance)}`);
+export const printCar = (name, position) => {
+  printMessage(`${name} : ${STRING.MOVE_FORWARD_POSITION.repeat(position)}`);
 }
 
 export const printWinner = (winner) => {

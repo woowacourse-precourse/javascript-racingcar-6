@@ -2,7 +2,7 @@ class Car {
 
   #name;
 
-  #distance = 0;
+  #position = 0;
 
 	constructor(name) {
 		this.#name = name;
@@ -12,12 +12,12 @@ class Car {
     return this.#name;
   }
 
-  getDistance() {
-    return this.#distance;
+  getPosition() {
+    return this.#position;
   }
 
   moveForward() {
-    this.#distance += 1;
+    this.#position += 1;
   }
 }
 

@@ -26,7 +26,7 @@ class GameController {
   // 전진하는 자동차가 출력될 경우, 자동차 이름 같이 출력
   printForwardCarName() {
     this.cars.forEach((car) => {
-      printCar(car.getName(), car.getDistance());
+      printCar(car.getName(), car.getPosition());
     });
     printMessage(STRING.BLANK_SPACE);
   }
@@ -42,9 +42,9 @@ class GameController {
 
   // 최종 우승자 연산 후 선정
   getWinner() {
-    const maxDistance = Math.max(...this.cars.map((car) => car.getDistance()));
+    const maxPosition = Math.max(...this.cars.map((car) => car.getPosition()));
     const winnerArray = this.cars
-      .filter((car) => car.getDistance() === maxDistance)
+      .filter((car) => car.getPosition() === maxPosition)
       .map((car) => car.getName());
     return winnerArray;
   }
