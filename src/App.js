@@ -23,6 +23,9 @@ class App {
         // Console.print(this.carDictionary);
         race.printRace(this.carDictionary);
       }
+
+      Console.print('\n최종 결과 확인');
+      this.determineWinner();
     } catch (error) {
       console.error(error.message);
     }
@@ -32,6 +35,23 @@ class App {
     carArr.forEach(name => {
       this.carDictionary[name] = 0;
     });
+  }
+
+  determineWinner() {
+    let maxScore = 0;
+    let winners = [];
+
+    Object.entries(this.carDictionary).forEach(([key, value]) => {
+      if (value > maxScore) {
+        maxScore = value;
+        winners = key;
+      } else if (key === maxScore) {
+        winners.push(key);
+      }
+    });
+
+    Console.print(winners);
+    return winners;
   }
 }
 
