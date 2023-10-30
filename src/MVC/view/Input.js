@@ -1,7 +1,7 @@
 import { Console } from "@woowacourse/mission-utils";
 import GAME_MESSAGE from "../Constants/gameMessage.js";
-import TryValid from "../controller/TryValid.js";
-import NameValid from "../controller/NameValid.js";
+import TryValid from "../controller/valid/TryValid.js";
+import NameValid from "../controller/valid/NameValid.js";
 import RacingGame from "../model/RacingGame.js"
 
 class Input {
@@ -18,6 +18,7 @@ class Input {
     } catch (error) {
       throw error;
     }
+    return;
   }
 
   async tryNumber(nameSplit) {

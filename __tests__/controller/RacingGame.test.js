@@ -1,6 +1,6 @@
-import App from "../src/App";
+import App from "../../src/App";
 import { Console, Random } from "@woowacourse/mission-utils";
-import NUMBERS from "../src/MVC/Constants/numbers";
+import NUMBERS from "../../src/MVC/Constants/numbers";
 
 const mockQuestions = (inputs) => {
   Console.readLineAsync = jest.fn();
@@ -50,4 +50,4 @@ describe("자동차 경주 게임", () => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
   });
-})
+});
