@@ -40,20 +40,24 @@ class App {
   }
 
   playGame(carNames, numberTimes) {
-    const result = []; 
-    let recordSave = Array(carNames.length).fill(0); 
-    for (let i = 0; i < numberTimes; i++) { 
-      const saveResult = carNames.map((carName, index) => { 
-        const randomValue = Random.pickNumberInRange(0, 9); 
-        const action = randomValue >= 4 ? '-' : ''; 
-        if (action === '-') { 
-          recordSave[index]++; 
-        }
-        return { carName, action:'-'.repeat(recordSave[index]) }; 
-      });
-      result.push(saveResult); 
+    const results = [];
+    let recordSave = Array(carNames.length).fill(0);
+    for (let i = 0; i < numberTimes; i++) {
+      const saveResults = this.calculateResults(carNames, recordSave);
+      results.push(saveResults);
     }
-    return result; 
+    return results;
+  }
+
+  calculateResults(carNames, recordSave) {
+    return carNames.map((carName, index) => {
+      const randomValue = Random.pickNumberInRange(0, 9);
+      const action = randomValue >= 4 ? '-' : '';
+      if (action === '-') {
+        recordSave[index]++;
+      }
+      return { carName, action: '-'.repeat(recordSave[index]) };
+    });
   }
 
   endGame(result) {
