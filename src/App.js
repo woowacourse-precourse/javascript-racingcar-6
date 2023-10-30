@@ -53,9 +53,7 @@ class App {
   }
 
   validationCarName(carArray) {
-    return carArray.every((car) => {
-      car.length <= 5 && car.length > 0;
-    });
+    return carArray.every((car) => car.length <= 5 && car.length > 0);
   }
 
   async getMoveCount() {
