@@ -20,6 +20,10 @@ class App {
       // 레이싱 출력
       MissionUtils.Console.print("실행 결과");
       this.forwardRacingCar(cars, tryNumber);
+
+      // 결과 출력
+      MissionUtils.Console.print(await this.consoleWhoIsTheWinner(cars));
+      this.gameStatus = false;
     }
   }
 
@@ -64,6 +68,18 @@ class App {
         results.push(`${cars[racerWhoForward]} : ${dashes}`);
       }
       await MissionUtils.Console.print(results.join("\n"));
+    }
+  }
+
+  // 최종 우승자 출력
+  async consoleWhoIsTheWinner(cars) {
+    const maxDashes = Math.max(...cars.map((car) => car.length));
+    const winners = cars.filter((car) => car.length === maxDashes);
+
+    if (winners.length === 1) {
+      MissionUtils.Console.print(`최종 우승자 : ${winners[0]}`);
+    } else {
+      MissionUtils.Console.print(`최종 우승자 : ${winners.join(", ")}`);
     }
   }
 }
