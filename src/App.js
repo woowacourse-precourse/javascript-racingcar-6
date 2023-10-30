@@ -53,16 +53,16 @@ class App {
     }
   }
 
-  carMoveText(carName) {
-    for(let i = 0; i < carName.length; i++) {
+  carMoveText() {
+    for(let i = 0; i < this.carName.length; i++) {
       const randomNumber = Random.pickNumberInRange(0, 9);
       this.carMoveArray[i] += this.carMoveQualification(randomNumber);
-      Console.print(carName[i] + " : " + this.carMoveArray[i]);
+      Console.print(this.carName[i] + " : " + this.carMoveArray[i]);
     }
   }
 
-  carMoveEmptyArray(carName) {
-    for(let i = 0; i < carName.length; i++) {
+  carMoveEmptyArray() {
+    for(let i = 0; i < this.carName.length; i++) {
       this.carMoveArray.push("");
     }
   }
