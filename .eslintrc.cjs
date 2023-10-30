@@ -9,8 +9,8 @@ module.exports = {
     ecmaVersion: 'latest',
   },
   rules: {
-    // 프리코스 프로그래밍 요구사항
-    'max-depth': ['error', 2],
+    // 프리코스 프로그래밍 요구사항 보다 -1 (함수 분리를 더 연습하기 위해)
+    'max-depth': ['error', 1],
 
     // ESM 사용으로 인한 파일 확장자 표기 의무화
     'import/extensions': ['error', 'always', { ignorePackages: true }],
