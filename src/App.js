@@ -2,8 +2,14 @@ import { Random, Console } from "@woowacourse/mission-utils";
 
 class App {
   async play() {
-    const carNameList = await this.inputCarNames();
-    const roundNumber = await this.inputRoundNumber();
+    try {
+      const carNameList = await this.inputCarNames();
+      this.checkNames(carNameList);
+      const roundNumber = await this.inputRoundNumber();
+      this.checkNumber(roundNumber);
+    } catch (error) {
+      throw error;
+    }
   }
 
   async inputCarNames() {
@@ -15,6 +21,20 @@ class App {
 
   async inputRoundNumber() {
     return Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+  }
+
+  checkNames(carNameList) {
+    for (let i = 0; i < carNameList.length; i++) {
+      if (carNameList[i].length > 5) {
+        throw new Error("[ERROR] 사용할 수 없는 이름입니다");
+      }
+    }
+  }
+
+  checkNumber(roundNumber) {
+    if (isNaN(roundNumber)) {
+      throw new Error("[ERROR] 숫자를 입력해주세요");
+    }
   }
 }
 
