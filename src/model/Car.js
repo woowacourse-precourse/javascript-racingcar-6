@@ -3,4 +3,8 @@ export default class Car {
     this.name = name;
     this.move = 0;
   }
+
+  getName() {
+    return this.name;
+  }
 }
