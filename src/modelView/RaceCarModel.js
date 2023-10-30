@@ -7,20 +7,21 @@ const ModelView = {
   playGame(validNames) {
     const raceResults = {};
 
-    for (const name of validNames) {
+    validNames.forEach((name) => {
       if (!this.currentMovements[name]) {
         this.currentMovements[name] = "";
       }
       const movement = this.calcMoveCount();
       this.currentMovements[name] += movement;
       raceResults[name] = this.currentMovements[name];
-    }
+    });
 
     return raceResults;
   },
 
   calcMoveCount() {
     const movementCount = MissionUtils.Random.pickNumberInRange(SETTING.min, SETTING.max);
+
     return movementCount >= 4 ? "-" : "";
   },
 
@@ -28,7 +29,7 @@ const ModelView = {
     const winners = [];
     let maxDashes = 0;
 
-    for (const name of names) {
+    names.forEach((name) => {
       const dashes = (this.currentMovements[name].match(/-/g) || []).length;
       if (dashes > maxDashes) {
         maxDashes = dashes;
@@ -37,7 +38,7 @@ const ModelView = {
       } else if (dashes === maxDashes) {
         winners.push(name);
       }
-    }
+    });
 
     return winners;
   },

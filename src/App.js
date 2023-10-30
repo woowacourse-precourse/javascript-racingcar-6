@@ -13,9 +13,11 @@ class App {
 
     for (let i = 0; i < tryCount; i++) {
       const raceResults = ModelView.playGame(names);
-      for (const name in raceResults) {
+
+      Object.keys(raceResults).forEach((name) => {
         OutputView.printRaceResult(name, raceResults[name]);
-      }
+      });
+
       MissionUtils.Console.print(" ");
     }
 
