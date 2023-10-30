@@ -48,6 +48,7 @@ export default class Controller {
     this.moveCars(tryCountNumber);
 
     const maxMoveCars = this.findMaxMoveCars();
+    OutputView.printWinner(maxMoveCars);
   }
 }
 
