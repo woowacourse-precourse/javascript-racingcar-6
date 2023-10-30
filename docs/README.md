@@ -184,4 +184,4 @@ jun : -----
 
 ## 🛣 6. 기능 플로우 차트
 
-<img src="../images/flowchart.svg" width="399" alt="기능 플로우 차트">
+<img src="../images/flowchart.svg" width="259" alt="기능 플로우 차트">
