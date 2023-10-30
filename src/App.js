@@ -1,10 +1,10 @@
-import { Car } from './features/car/Car.js';
+import { CarInput } from './userInput/car/CarInput';
 
 class App {
   async play() {
-    const car = new Car();
+    const carInput = new CarInput();
 
-    const carName = await car.getName();
+    const carNames = await carInput.getName();
   }
 }
 export default App;

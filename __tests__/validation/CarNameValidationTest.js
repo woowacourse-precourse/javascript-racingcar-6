@@ -1,5 +1,5 @@
 import { ERROR_PREFIX } from "../../src/constants";
-import { CarNameValidation } from "../../src/features/car/Validation"
+import { CarNameValidation } from "../../src/userInput/car/Validation";
 
 const limitExceededInput = "abcdef";
 

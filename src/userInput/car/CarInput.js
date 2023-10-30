@@ -2,7 +2,7 @@ import { MESSAGE } from '../../constants.js';
 import { Input } from '../../interface/Input.js';
 import { CarNameValidation } from './Validation.js';
 
-export class Car {
+export class CarInput {
   #name;
 
   async getName() {
@@ -18,6 +18,4 @@ export class Car {
       });
     }
   }
-
-  a;
 }
