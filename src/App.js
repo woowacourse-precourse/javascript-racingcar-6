@@ -1,6 +1,7 @@
 import { Console, Random } from '@woowacourse/mission-utils';
 import Validator from './utils/Validator.js';
 import { INFO_MESSAGE } from './constants/messages.js';
+import { MAGIC_NUM } from './constants/magicNum.js';
 
 class App {
   static getCarNamesInput() {
@@ -20,7 +21,12 @@ class App {
   }
 
   static isMinNumFour() {
-    return Random.pickNumberInRange(0, 9) >= 4;
+    return (
+      Random.pickNumberInRange(
+        MAGIC_NUM.MIN_RANDOM_NUM,
+        MAGIC_NUM.MAX_RANDOM_NUM,
+      ) >= MAGIC_NUM.THRESHOLD_NUM
+    );
   }
 
   static calculateRaceProgress(raceProgressGraph) {
