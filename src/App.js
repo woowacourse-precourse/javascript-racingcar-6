@@ -12,12 +12,19 @@ class App {
     );
 
     const name = await this.getCarName();
+    const cars = this.saveCarConstructor(name);
     MissionUtils.Console.print(name);
   }
 
   async getCarName() {
     const name = await MissionUtils.Console.readLineAsync();
     return name;
+  }
+
+  saveCarConstructor(name) {
+    const nameList = name.split(",");
+    const cars = nameList.map((carName) => new App(carName, ""));
+    return cars;
   }
 }
 
