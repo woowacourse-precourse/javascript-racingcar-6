@@ -9,7 +9,7 @@ export const ERROR_MESSAGE = {
   EMPTY_INPUT: '[ERROR] 값을 입력해주세요.',
   INVALID_INPUT: '[ERROR] 영대소문자, 한글, "," 로만 이루어져야 합니다.',
   LESS_TWO_NAME: '[ERROR] 자동차는 2대 이상이어야 합니다.',
-  OVER_LENGTH_NAME: `[ERROR] 자동차의 이름은 ${LIMIT.CAR_NAME_MAX_LENGTH}글자 이하여야 합니다.`,
+  OVER_LENGTH_NAME: `[ERROR] 자동차의 이름은 ${LIMIT.CAR_NAME_LENGTH}글자 이하여야 합니다.`,
   IS_NOT_NUMBER: '[ERROR] 숫자만 입력해주세요.',
   IS_NOT_INTEGER: '[ERROR] 정수만 입력해주세요',
   LESS_THAN_ONE: '[ERROR] 1보다 큰 수를 입력해주세요',
