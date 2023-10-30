@@ -63,7 +63,7 @@ class App {
   }
 
   isValidLen(name) {
-    if(name.length > 5) throw new Error('[ERROR] 자동차 이름의 길이는 5 이하입니다.');
+    if((name.length < 1) || (name.length > 5)) throw new Error('[ERROR] 자동차 이름의 길이는 1 이상, 5 이하입니다.');
   }
 
   isNotDuplicate(nameArr) {
