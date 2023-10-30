@@ -1,6 +1,6 @@
 import InputView from "./view/InputView.js";
 import OutputView from "./view/OutputView.js";
-import ModelView from "./modelview/ModelView.js";
+import ModelView from "./modelView/RaceCarModel.js";
 
 class App {
   async play() {
