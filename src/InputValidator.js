@@ -23,8 +23,17 @@ class InputValidator {
    * @returns {number}
    */
   static tryNumValidator(input) {
-    if (!/[0-9]/) throw new Error('[ERROR] 숫자를 입력해주세요.');
+    //* 앞자리가 0으로 시작하는 경우
+    if (input[0] == 0) throw new Error('[ERROR] 숫자를 입력해주세요.');
 
+    input = Number(input);
+    //* 숫자가 아닌 경우
+    if (!Number.isInteger(input))
+      throw new Error('[ERROR] 숫자를 입력해주세요.');
+    //* 양수가 아닌 경우
+    if (input <= 0) throw new Error('[ERROR] 양수를 입력해주세요.');
+    //if (/^[^0]\d*/) throw new Error('[ERROR] 숫자를 입력해주세요.');
+    //if (input.includes('-')) throw new Error('[ERROR] 양수를 입력해주세요.');
     return Number(input);
   }
 }
