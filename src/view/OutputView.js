@@ -6,7 +6,10 @@ const OutputView =  {
 	},
 	outputDistanceCars: (distanceimformation) => {
 		Console.print(distanceimformation);
-	}
+	},
+    outputErrorMessage: (errorMessage) => {
+        Console.print(errorMessage);
+    }
 }
 
 export default OutputView;

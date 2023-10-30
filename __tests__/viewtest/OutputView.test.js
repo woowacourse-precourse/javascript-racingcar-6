@@ -56,3 +56,28 @@ describe("OutputView outputDistanceCars", () => {
     });
   });
 });
+
+describe("OutputView outputErrorMessage", () => {
+  test("errorMessage은 Function type이다 ", () => {
+    expect(typeof OutputView.outputDistanceCars).toBe("function");
+  })
+  test("Console.print가 호출된다 ", () => {
+    MissionUtils.Console.print = jest.fn();
+    OutputView.outputErrorMessage();
+    expect(MissionUtils.Console.print).toHaveBeenCalled();
+  })
+  const testCases = [
+    { output: "pobi, woni", expected: "pobi, woni" },
+    { output: "alice, bob", expected: "alice, bob" },
+    { output: "123", expected: "123" },
+    { output: undefined, expected: undefined },
+    { output: "", expected: "" }
+  ];
+  test('outputView outputErrorMessage은 정상적으로 값을 출력한다. ', () => {
+    testCases.forEach (({output, expected}) => {
+      const logSpy = getLogSpy();
+      OutputView.outputErrorMessage(output);
+      expect(logSpy).toHaveBeenCalledWith(expected);
+    });
+  });
+});

@@ -59,9 +59,9 @@ N대의 자동차 중 가장 멀리 이동한 자동차가 우승하는 게임
 
 - [x] 우승자(들)를 출력한다. controller의 transOutputFormWinnerName에서 전달받는다.
 
-- [ ] 자동차들의 이동거리를 출력한다. controller의 transOutputFormDistance에서 전달받는다.
+- [x] 자동차들의 이동거리를 출력한다. controller의 transOutputFormDistance에서 전달받는다.
 
-- [ ] Error message를 출력한다. controller에서 throw으로 전달받는다.
+- [x] Error message를 출력한다. controller에서 throw으로 전달받는다.
 
 ## [model](#model)
 - `car` - 자동차 클래스<br>
