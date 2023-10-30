@@ -10,6 +10,23 @@ class App {
     Console.print("\n실행 결과");
 
     this.startRacing(carObjects, moveCount);
+    this.printWinner(carObjects);
+  }
+
+  printWinner(cars) {
+    let winMove = 0;
+    cars.forEach((car) => {
+      if (car.position > winMove) winMove = car.position;
+    });
+
+    let winner = [];
+    cars.forEach((car) => {
+      if (car.position == winMove) {
+        winner.push(car.name);
+      }
+    });
+
+    Console.print("최종 우승자 : " + winner.join(""));
   }
 
   startRacing(cars, moveCount) {
