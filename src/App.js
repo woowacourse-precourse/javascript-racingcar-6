@@ -98,6 +98,12 @@ class App {
     Console.print("최종 우승자 : " + winnerCarNames);
   }
 
+  async intro() {
+    await this.carNameInput();
+    await this.gameNumberInput();
+    Console.print("");
+  }
+
   async play() {
   }
 }
