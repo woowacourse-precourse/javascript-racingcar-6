@@ -9,7 +9,8 @@ class App {
     const judge = new Judge();
     const game = new RacingGame(dice, judge);
     const cars = await this.getRaceCars();
-    game.play(5, ['pobi', 'woni', 'jun']);
+    const round = await this.getRaceRounds();
+    game.play(round, cars);
   }
 
   async getRaceCars() {
@@ -23,6 +24,11 @@ class App {
         throw new Error('[ERROR] 자동차 이름은 5자 이하만 가능합니다.');
     });
     return cars;
+  }
+
+  async getRaceRounds() {
+    const rounds = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    return rounds;
   }
 }
 
