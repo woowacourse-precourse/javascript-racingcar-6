@@ -9,6 +9,12 @@ class RaceController {
     }
     return numberList;
   };
+
+  moveCar = (inputChance, carList) => {
+    for (let i = 0; i < inputChance; i++) {
+      console.log(this.createNumber(carList));
+    }
+  };
 }
 
 export default RaceController;
