@@ -5,7 +5,7 @@ import {
 import {
   ERROR_ATTEMPTS_NOT_NATURAL,
   ERROR_NAME_LENGTH,
-} from '../constants/messages.js';
+} from '../constants/messagesConstants.js';
 
 function isLengthInvalid(name) {
   return name.length < MIN_NAME_LENGTH || name.length > MAX_NAME_LENGTH;

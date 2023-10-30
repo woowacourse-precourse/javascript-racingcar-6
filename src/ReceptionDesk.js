@@ -1,6 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
 import Car from './Car.js';
-import { INPUT_CARS } from './constants/messages.js';
+import { INPUT_CARS } from './constants/messagesConstants.js';
 import { validateName } from './functions/validate.js';
 
 class ReceptionDesk {
