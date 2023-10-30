@@ -35,4 +35,14 @@ describe('자동차 경주 게임', () => {
       expect(canMove).toBe(result[index]);
     });
   });
+
+  test.each([
+    ['pobi,javaji', '[ERROR] : 이름이 다섯 글자를 초과합니다.'],
+    ['pobi,pobi', '[ERROR] : 중복된 이름이 있습니다.'],
+    ['pobi,po ', '[ERROR] : 이름에 공백이 있습니다.'],
+    ['pobi,po@', '[ERROR] : 이름에 특수문자가 있습니다.'],
+    ['pobi,', '[ERROR] : 빈 이름이 있습니다.'],
+  ])('validation 테스트', (input, message) => {
+    expect(() => validation(input.split(','))).toThrow(message);
+  });
 });
