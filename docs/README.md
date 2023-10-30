@@ -30,7 +30,8 @@ score.getScore(this.cars)
 (forEach 사용)
 - '-'을 저장할 공간 부여해서 저장하기
 (constructor {this.score}와 element.score += '-')
-
+- '이름: -' 형식 출력하기
+(constructor {this.name, this.score} 사용)
 3) 입력한 게임 횟수만큼 '자동차 전진' 반복
 
 6. 실행 결과로 우승자 출력

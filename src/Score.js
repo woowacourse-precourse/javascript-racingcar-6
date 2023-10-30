@@ -3,13 +3,12 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 
 export default class Score {
     getScore(names) {
-        console.log(names)
-
+        let currentScore = ''
         names.forEach((element) => {
             if (MissionUtils.Random.pickNumberInRange(1, 9) > 4) {
                 element.score += '-'
-            }
-        })
-        console.log(names)
+            } currentScore += `${element.name}: ${element.score} \n`
+        }) 
+        console.log(currentScore)
     } 
 }
