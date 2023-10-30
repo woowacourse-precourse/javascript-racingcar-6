@@ -6,7 +6,7 @@ class App {
   }
 
   async play() {
-    await this.Game.getCarNames();
+    await this.Game.startGame();
   }
 }
 
