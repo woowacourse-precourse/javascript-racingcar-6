@@ -1,5 +1,6 @@
 class Car {
   #name;
+
   #step;
 
   constructor(name) {
