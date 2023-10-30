@@ -38,15 +38,14 @@ function checkName(str) {
     return false;
   }
 }
-function checkNum(str){
+function checkNum(str) {
   const regExp = /[0-9]/g;
-  if(regExp.test(str)){
-      return true;
-  }else{
-      return false;
+  if (regExp.test(str)) {
+    return true;
+  } else {
+    return false;
   }
 }
-
 
 class App {
   async getCarName() {
@@ -89,10 +88,10 @@ class App {
       throw new Error('[ERROR] 입력값이 없습니다.');
     }
     // 2. 숫자가 아닌 값을 입력한 경우
-    if(Number.isNaN(Number(gameCount))){
-      throw new Error('[ERROR] 숫자를 입력해야 합니다.')
+    if (Number.isNaN(Number(gameCount)) || gameCount.search(/\s/) !== -1) {
+      throw new Error('[ERROR] 숫자를 입력해야 합니다.');
     }
-    
+
     return gameCount;
   }
   gameTrial(carArray, gameCount) {
