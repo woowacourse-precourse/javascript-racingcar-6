@@ -37,8 +37,7 @@ describe('기능 구현 테스트', () => {
     });
 
     test('입력받은 이름이 5글자가 넘으면 error 발생', async () => {
-        const result = await app.getUserInput();
-        await expect(result).rejects.toThrow('[ERROR]');
+        await expect(app.getUserInput()).rejects.toThrow('[ERROR]');
     });
 
     test('입력받은 이름으로 object를 생성한다.', () => {
@@ -56,13 +55,11 @@ describe('기능 구현 테스트', () => {
     });
 
     test('횟수가 0보다 작으면 error 발생', async () => {
-        const result = app.getTryCount();
-        await expect(result).rejects.toThrow('[ERROR]');
+        await expect(app.getTryCount()).rejects.toThrow('[ERROR]');
     });
 
     test('횟수가 숫자가 아니면 error 발생', async () => {
-        const result = app.getTryCount();
-        await expect(result).rejects.toThrow('[ERROR]');
+        await expect(app.getTryCount()).rejects.toThrow('[ERROR]');
     });
 
     test('경기를 진행한다.', () => {
