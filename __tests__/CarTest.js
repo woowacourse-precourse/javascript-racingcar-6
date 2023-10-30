@@ -9,12 +9,12 @@ const getLogSpy = () => {
 
 describe("Car 클래스 테스트", () => {
   test("자동차 객체 생성", () => {
-    const car = new Car("soyoung125");
+    const car = new Car("bong");
     const result = car.getName;
-    expect(result).toEqual("soyoung125");
+    expect(result).toEqual("bong");
   });
   test("자동차 전진", () => {
-    const car = new Car("soyoung125");
+    const car = new Car("bong");
 
     car.goForward();
 
@@ -22,21 +22,20 @@ describe("Car 클래스 테스트", () => {
     expect(result).toEqual(1);
   });
   test("자동차의 전진 상태 출력", () => {
-    const output = "soyoung125 : ---";
+    const output = "bong : ---";
+    const car = new Car("bong");
     const logSpy = getLogSpy();
-    const car = new Car("soyoung125");
 
     car.goForward();
     car.goForward();
     car.goForward();
 
     car.printState();
-
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
   });
   test("우승 여부 판별 - 우승", () => {
     const MaxCount = 3;
-    const car = new Car("soyoung125");
+    const car = new Car("bong");
 
     car.goForward();
     car.goForward();
@@ -47,7 +46,7 @@ describe("Car 클래스 테스트", () => {
   });
   test("우승 여부 판별 - 탈락", () => {
     const MaxCount = 3;
-    const car = new Car("soyoung125");
+    const car = new Car("bong");
 
     car.goForward();
 
@@ -55,15 +54,15 @@ describe("Car 클래스 테스트", () => {
     expect(result).toBeFalsy();
   });
   test("자동차 중복 이름 검사 - 중복", () => {
-    const newName = "soyoung125";
-    const car = new Car("soyoung125");
+    const newName = "bong";
+    const car = new Car("bong");
 
     const result = car.isSameName(newName);
     expect(result).toBeTruthy();
   });
   test("자동차 중복 이름 검사 - 미중복", () => {
     const newName = "labong";
-    const car = new Car("soyoung125");
+    const car = new Car("bong");
 
     const result = car.isSameName(newName);
     expect(result).toBeFalsy();
