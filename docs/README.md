@@ -3,18 +3,18 @@
 2. 함수별 테스트 작성
 
 ### 파일 구조
-📦src
- ┣ 📂game
- ┃ ┣ 📜Car.js
- ┃ ┗ 📜RacingCar.js
- ┣ 📂utils
- ┃ ┣ 📜Message.js
- ┃ ┗ 📜Validation.js
- ┣ 📂view
- ┃ ┣ 📜InputView.js
- ┃ ┗ 📜OutputView.js
- ┣ 📜App.js
- ┗ 📜index.js
+- 📦src
+-  ┣ 📂game
+-  ┃ ┣ 📜Car.js
+-  ┃ ┗ 📜RacingCar.js
+-  ┣ 📂utils
+-  ┃ ┣ 📜Message.js
+-  ┃ ┗ 📜Validation.js
+-  ┣ 📂view
+-  ┃ ┣ 📜InputView.js
+-  ┃ ┗ 📜OutputView.js
+-  ┣ 📜App.js
+-  ┗ 📜index.js
 
 ### 기능 요구 사항
 1. 게임시작
