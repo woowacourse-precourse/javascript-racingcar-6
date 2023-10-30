@@ -1,14 +1,8 @@
 import OutputView from "../src/view/OutputView.js";
 import { Console } from "@woowacourse/mission-utils";
 
-const getLogSpy = () => {
-  const logSpy = jest.spyOn(Console, "print");
-  logSpy.mockClear();
-  return logSpy;
-};
-
 describe("출력 값 테스트", () => {
-  const logSpy = getLogSpy();
+  const logSpy = jest.spyOn(Console, "print");
 
   test("이동 시 마크 출력 테스트", () => {
     const inputValues = [
@@ -18,8 +12,8 @@ describe("출력 값 테스트", () => {
     ];
     const expectedResults = ["pobi : ---", "june : ----", "wang : -----"];
 
-    inputValues.forEach(([name, distance], index) => {
-      OutputView.printMoveMarking(name, distance);
+    inputValues.forEach((_, index) => {
+      OutputView.printMoveMarking(inputValues);
       expect(logSpy).toHaveBeenCalledWith(expectedResults[index]);
     });
   });
