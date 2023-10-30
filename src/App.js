@@ -10,14 +10,29 @@ import { makeScoreboardByNames } from "./utils/parse.js";
 import { isFowardAllowed } from "./utils/prob.js";
 
 class App {
+  /** @type { number } */
+  tryAmount = 0;
+
+  /** @type { string[] } */
+  names = [];
+
+  /** @type { Record<string, number> } */
+  scoreboard = {};
+
   async play() {
     this.names = await askNames();
     this.tryAmount = await askTryAmount();
     this.scoreboard = makeScoreboardByNames(this.names);
 
     printResultTitle();
-    this.simulateOneTurn();
-    printResultUsingScoreBoard(this.scoreboard);
+    this.#loop();
+  }
+
+  #loop() {
+    while (this.tryAmount--) {
+      this.simulateOneTurn();
+      printResultUsingScoreBoard(this.scoreboard);
+    }
   }
 
   /**
