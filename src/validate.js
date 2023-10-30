@@ -2,10 +2,12 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 
 export async function roundValidate(round) {
   const numTest = round;
+
   if (/[^1-9]$/.test(numTest)) {
-    throw new Error("[ERROR] 잘못된 값을 입력하였습니다.");
+    throw new Error("[ERROR] 숫자를 입력하세요.");
   }
+
   if (numTest.includes(" ")) {
-    throw new Error("[ERROR] 공백을 입력하였습니다.");
+    throw new Error("[ERROR] 공백 없이 입력하세요.");
   }
 }

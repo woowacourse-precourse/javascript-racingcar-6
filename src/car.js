@@ -12,11 +12,10 @@ export async function carGenerate() {
     (nameLength) =>
       nameLength.trim().length <= 5 && nameLength.trim().length > 0
   );
+
   if (carLengthIsValid && spaceIsValid && charValid) {
     return carsList.map((name) => name.trim());
   } else {
-    throw new Error(
-      "[ERROR] 영어, 한글 알파벳 5글자 이내의 이름을 정확히 입력하세요."
-    );
+    throw new Error("[ERROR] 특수문자를 제외한 5글자 이내를 입력하세요.");
   }
 }

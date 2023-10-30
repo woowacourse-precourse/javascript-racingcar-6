@@ -5,6 +5,7 @@ import { roundValidate } from "./validate.js";
 export async function resultAlert() {
   MissionUtils.Console.print("\n실행 결과");
 }
+
 export async function userInputRound() {
   const roundNum = await MissionUtils.Console.readLineAsync(
     "시도할 횟수는 몇 회인가요?\n"
@@ -25,9 +26,11 @@ export async function generateCars() {
 export async function checkRandomNum(carList) {
   return carList.map((car) => {
     const randomNum = MissionUtils.Random.pickNumberInRange(0, 9);
+
     if (randomNum >= 4) {
       return { ...car, carDistance: car.carDistance + "-" };
     }
+
     return car;
   });
 }
@@ -36,6 +39,7 @@ export async function playRacing() {
   let cars = await generateCars();
   const round = await userInputRound();
   await resultAlert();
+
   for (let i = 0; i < round; i++) {
     cars = await checkRandomNum(cars);
     cars.forEach((car) => {
@@ -43,6 +47,7 @@ export async function playRacing() {
     });
     MissionUtils.Console.print("");
   }
+
   return cars;
 }
 
@@ -57,5 +62,6 @@ export async function winner() {
   MissionUtils.Console.print(
     "최종 우승자 : " + winners.map((result) => result.carName).join(", ")
   );
+
   return;
 }
