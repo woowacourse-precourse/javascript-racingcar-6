@@ -1,163 +1,25 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
-import { MESSAGE, ERROR_MESSAGE, NUMBER } from "./Constant/constant";
-const { Random } = MissionUtils;
-
-const print = (message) => {
-  Console.print(message);
-}
-
-const readLineAsync = async (message) => {
-  return await Console.readLineAsync(message);
-}
-
-/**
- * 우승자 확인 기능
- * return : 우승자를 배열로 반환
- */
-const checkWinner = async (participants, participantsDistance) =>{
-  const winner = [];
-  for (let i = 0; i < participants.length; i++) {
-    const name = participants[i];
-    winner.push([name, participantsDistance[name][1]]);
-  }
-  const sortedWinner = winner.sort( (a,b) => b[1]-a[1]);
-  const returnWinner = [];
-  let max = sortedWinner[0][1];
-  for (let i = 0; i < sortedWinner.length; i++) {
-    if (sortedWinner[i][1] < max){
-      break;
-    }
-    returnWinner.push(sortedWinner[i][0]);
-  }
-  return returnWinner;
-}
-
-
-const xxx = async (participants, participantsDistance) => { // 함수 명?
-  let index = 0 ;
-  // *** 리팩토링 하기 ***
-  while(index < participants.length){
-    participantsDistance = await changeDistance(participants, participantsDistance, index);
-    index ++;
-  }
-
-  return participantsDistance;
-}
-
-const changeDistance = async (participants, participantsDistance, index) => {
-  const randomNumber = Random.pickNumberInRange(NUMBER.MIN, NUMBER.MAX);
-  await checkRandomNumber(randomNumber);
-
-  const goStopCheck = participantsDistance;
-  const name = participants[index];
-
-  if(randomNumber >= NUMBER.STANDARD) {
-    goStopCheck[name] = goStopCheck[name] ? [goStopCheck[name][0]+'-', goStopCheck[name][1]+1] : ['-',1];
-  } else {
-    goStopCheck[name] = goStopCheck[name] ? [...goStopCheck[name]] : ['',0];
-  }
-  return goStopCheck;
-}
-
-/**
- * @param {*} randomNumber : 참가자가 받는 값
- * 0~9사이 값이 아니거나 숫자가 아니면 ERROR
- */
-const checkRandomNumber = async (randomNumber) =>{
-  if(!Number(randomNumber)) throw new Error(ERROR_MESSAGE.ERROR_NOT_NUMBER);
-  if(Number(randomNumber) <= NUMBER.MIN || Number(randomNumber) > NUMBER.MAX ) throw new Error(ERROR_MESSAGE.ERROR_OUT_OF_RANGE);
-}
-
-/**
- * 매 게임 진행마다 참가자 진행 결과를 출력
- */
-// *** 리팩토링 하기 ***
-// const goStopCheck = {}; // 이름 변경
-const showResult = async (participants, participantsDistance) => {
-  // *** 리팩토링 하기, showResult 함수로 두기 *** 인자로 참가자 및 최종 진행 거리를 받고 출력만 함
-  for (let i = 0; i < participants.length; i++) {
-    const result = `${participants[i]} : ${participantsDistance[participants[i]][0]}` 
-    print(result);
-  }
-  // 매번 출력해야 함 => 보관 변수를 전역으로 지정
-}
-
-/**
- * @param {*} participants : 진행 횟수 확인
- * 0보다 작거나 숫자가 아니면 ERROR
- */
-const checkAttempt = async (attempt) =>{
-  if(!Number(attempt)) throw new Error(ERROR_MESSAGE.ERROR_NOT_NUMBER);
-  if(Number(attempt) <= 0) throw new Error(ERROR_MESSAGE.ERROR_LESS_THAN_ZERO);
-}
-
-/**
- * 게임 진행 횟수를 입력받는 기능
- * return : 숫자로 반환
- * 주의 : 0 이하거나 숫자가 아니면 ERROR
- */
-const getAttempt = async () =>{
-  const attempt = await readLineAsync(MESSAGE.ATTEMPT);
-
-  await checkAttempt(attempt);
-
-  return Number(attempt);
-}
-
-/**
- * @param {*} participants : 참가자 명단 확인
- * 이름이 5글자 초과, 빈 칸, 영어가 아닌 경우 ERROR
- */
-const checkParticipants = async (participants) =>{
-  const english = /^[a-zA-Z]*$/; 
-  
-  for (let name of participants) {
-    if (!english.test(name)) throw new Error(ERROR_MESSAGE.ERROR_NAME_CONFIGURATION);
-    if (name.length > 5 || name.length === 0) throw new Error(ERROR_MESSAGE.ERROR_NAME_LENGTH);
-  }
-}
-
-/**
- * 게임 참가자 명단을 받는 기능
- * return : 참가자 명단은 배열로 반환
- * 주의 : 참가자 이름이 5글자 초과면 ERROR
- */
-const getParticipant = async () =>{
-  const participants = await readLineAsync(MESSAGE.START);
-  const participantsList = participants.split(',');
-
-  await checkParticipants(participantsList);
-
-  return participantsList;
-}
+import { getAttempt, getParticipant } from "./Game/Settings";
+import { progress } from "./Game/Progress";
+import { terminateGame } from "./Game/End";
 
 class App {
 
   constructor() {
-    this.count = 0;
     this.distance = {}; // 참가자 거리 저장
   }
 
   async play() {
     // 게임 세팅
-    const participants = await getParticipant()
+    const participants = await getParticipant();
     const attempt = await getAttempt();
     
     // 게임 진행
-    // *** 리팩토링 할 때 함수로, 들여쓰기 오버 ***
-    print(MESSAGE.RESULT);
-    while(this.count < attempt){
-      this.distance = await xxx(participants, this.distance);
-      await showResult(participants, this.distance);
-      this.count += this.count+1;
-    }
+    this.distance = await progress(attempt, participants, this.distance);
 
     // 게임 종료
-    // *** 리팩토링 할 때 함수로***
-    const winner = await checkWinner(participants, this.distance);
-    print(`${MESSAGE.END}${winner.join(', ')}`);
-
+    await terminateGame(participants, this.distance);
   }
+
 }
 
 export default App;
