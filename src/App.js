@@ -24,7 +24,6 @@ class App {
     if(isNaN(inputValue)) throw new Error('[ERROR] 숫자만 입력해주세요.')
     if(inputValue === '' || inputValue === 0) throw new Error('[ERROR] 시도할 횟수는 1회 이상이어야합니다.');
     this.numOfGame = inputValue;
-    MissionUtils.Console.print(`시도할 회수는 : ${this.numOfGame}회`);
     return this.getGameResult();
   }
 
@@ -44,7 +43,7 @@ class App {
 
   getGameResult() {
     let i = 0;  
-    let cnt = Array.from({length: this.numOfGame}, () => 0);
+    let cnt = Array.from({length: this.carName.length}, () => 0);
     let showResult;
     while(i < this.numOfGame) {
       MissionUtils.Console.print(`${i+1}회차`)
@@ -60,6 +59,22 @@ class App {
       i++;
       MissionUtils.Console.print('');
     }
+    return this.showWinner(cnt); 
+  }
+
+  showWinner(score) {
+    const winningScore = score.reduce( function (previous, current) { 
+      return previous > current ? previous:current;
+    });
+    const scoreobj = this.carName.reduce((acc, curr, idx) => {
+      acc[curr] = score[idx];
+      return acc;
+    }, new Object);
+    let scoreTable = Object.entries(scoreobj);
+    const winners = scoreTable.filter((car)=>{
+      return car[1] === winningScore;
+    }).map((car) => car[0])
+    MissionUtils.Console.print(`최종 우승자 : ${winners}`);
   }
 
   async play() {
