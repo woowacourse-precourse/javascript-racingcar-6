@@ -1,7 +1,4 @@
 import { Car } from '../src/Car';
-import { Random } from '@woowacourse/mission-utils';
-
-jest.mock('@woowacourse/mission-utils');
 
 describe('displayPosition 함수 테스트', () => {
   test('position에 맞게  - 가 출력되는지 [움직임 없을때]', () => {
