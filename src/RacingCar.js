@@ -1,5 +1,6 @@
 import Car from './Car';
 import MESSAGES from '../utils/Messages';
+import CONSTANTS from '../utils/Constants';
 
 class RacingCar {
   constructor(carNamesArray) {
@@ -27,6 +28,11 @@ class RacingCar {
   getTotalProgressStatus() {
     const totalProgressStatusString = this.totalProgressStatus.join(MESSAGES.lineBreak);
     return MESSAGES.result + totalProgressStatusString;
+  }
+  getWinner() {
+    const carsArray = this.cars
+      .map((car) => [car[CONSTANTS.nameKey], car[CONSTANTS.progressStatusKey]])
+      .sort((carA, carB) => carB[1] - carA[1]);
   }
 }
 
