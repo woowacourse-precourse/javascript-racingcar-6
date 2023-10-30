@@ -9,55 +9,51 @@ class App {
   }
 
   async gameStart() {
-    const separateCarName = await inputCarNames();
+    const carNames = await inputCarNames();
     const tryCount = await inputTryCount();
-    let saveGameProcess = new Array(separateCarName.length).fill("");
+    let gameProcess = new Array(carNames.length).fill("");
 
     MissionUtils.Console.print(gameResult);
 
-    const gameRound = this.getGameRound(separateCarName, saveGameProcess, tryCount);
+    const gameRound = this.runGame(carNames, gameProcess, tryCount);
     MissionUtils.Console.print(gameRound);
 
-    const gameWinner = this.getGameWinner(separateCarName, saveGameProcess);
+    const gameWinner = this.gameWinner(carNames, gameProcess);
     MissionUtils.Console.print(`최종 우숭자 : ${gameWinner}`);
   }
 
-  getGameRound(separateCarName, saveGameProcess, tryCount) {
+  runGame(carNames, gameProcess, tryCount) {
     let gameResult = "";
     for (let i = 0; i < tryCount; i++) {
-
-      gameResult = this.getGameResult(separateCarName, saveGameProcess, gameResult);
+      gameResult = this.playRound(carNames, gameProcess, gameResult);
     }
-
     return gameResult;
   }
 
-  getGameResult(separateCarName, saveGameProcess, gameResult) {
-    for (let i = 0; i < separateCarName.length; i++) {
+  playRound(carNames, gameProcess, gameResult) {
+    for (let i = 0; i < carNames.length; i++) {
       const randomNumber = this.generateRandomNumber();
       if (randomNumber >= 4) {
-        saveGameProcess[i] = saveGameProcess[i] + "-";
+        gameProcess[i] += "-";
       }
-
-      gameResult = gameResult + `${separateCarName[i]} : ${saveGameProcess[i]} \n`;
+      gameResult += `${carNames[i]} : ${gameProcess[i]} \n`;
     }
-
     return gameResult;
   }
 
-  getGameWinner(separateCarName, saveGameProcess) {
+  gameWinner(carNames, gameProcess) {
     let maxHyphenCount = 0;
     const winnerCars = [];
 
-    for (let i = 0; i < saveGameProcess.length; i++) {
-      const hyphenCount = (saveGameProcess[i].match(/-/g) || []).length;
+    for (let i = 0; i < gameProcess.length; i++) {
+      const hyphenCount = (gameProcess[i].match(/-/g) || []).length;
 
       if (hyphenCount > maxHyphenCount) {
         maxHyphenCount = hyphenCount;
       }
 
       if (hyphenCount === maxHyphenCount) {
-        winnerCars.push(separateCarName[i]);
+        winnerCars.push(carNames[i]);
       }
     }
 
