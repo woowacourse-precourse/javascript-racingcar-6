@@ -16,19 +16,30 @@ const underFour = (number) => {
 export const checkMoving = () => {
   let number = randomNumber();
   let isMoving = false;
-  let isStop = false;
   if (overFour(number)) {
     return (isMoving = true);
   }
   if (underFour(number)) {
-    return (isStop = true);
+    return (isMoving = false);
   }
 };
 
-export const positionHandler = () => {
-  let position = 0;
-  if (checkMoving()) {
-    position += 1;
+export const positionHandler = (carsArr) => {
+  carsArr.forEach((carsInfo) => {
+    let position = carsInfo.position;
+    let isMoving = checkMoving();
+    if (isMoving) {
+      position += 1;
+    }
+    carsInfo.position = position;
+  });
+  console.log(carsArr);
+  return carsArr;
+};
+
+export const positionHandleIterator = (carsArr, round) => {
+  for (let i = 0; i < round; i++) {
+    positionHandler(carsArr);
   }
-  return position;
+  return carsArr;
 };

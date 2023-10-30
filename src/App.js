@@ -1,8 +1,7 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import { INPUT_MESSAGE, OUTPUT_MESSAGE, ERROR_MESSAGE } from "./Message.js";
 import { validateCarNames, validateRound } from "./InputOutput.js";
-import { checkMoving } from "./Racing.js";
-
+import { positionHandleIterator, positionHandler } from "./Racing.js";
 class App {
   constructor() {
     this.carsArr = [];
@@ -15,7 +14,7 @@ class App {
     await this.getCarNames();
     this.makeCarsInfo();
     await this.getRound();
-    checkMoving();
+    positionHandleIterator(this.carsArr, this.round);
   }
 
   async getCarNames() {
