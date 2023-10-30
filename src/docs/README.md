@@ -75,6 +75,32 @@ src
 
 # ✨각 파일의 기능
 
+## App.js
+
+게임 실행( = 시동)
+
+## controller > RacingCarController.js
+
+레이싱 게임이 순서대로 진행되도록 컨트롤
+
+## model > CarMoving.js
+
+자동차의 움직임 계산
+
+## util > constants.js
+
+상수들의 집합
+
+## validate : 유효성 검사 관련 파일
+
+> CarListCheck.js : 자동차 이름 입력값의 유효성 검사 <br>
+> TryNumberCheck.js : 레이싱 횟수 입력값의 유효성 검사
+
+## view : 입력과 출력을 관리하는 파일
+
+> Input.js : 값을 입력받는 기능 <br>
+> Output.js : 값을 출력하는 기능
+
 <br><br>
 
 # 🚨 테스트 목록
