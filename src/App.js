@@ -3,6 +3,7 @@ import { Random, Console } from "@woowacourse/mission-utils";
 class App {
   carData = "";
   inputArray = [];
+  movementCount = 0;
 
   async start() {
     return Console.readLineAsync(
@@ -20,11 +21,17 @@ class App {
     }
   }
 
+  countAttempt() {
+    return Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+  }
+
   async play() {
     this.carData = await this.start();
 
     this.splitCarName();
     this.validate();
+
+    this.movementCount = await this.countAttempt();
   }
 }
 
