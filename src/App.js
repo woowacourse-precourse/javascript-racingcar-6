@@ -8,8 +8,6 @@ class App {
             '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n'
         );
 
-        console.log(userinput);
-
         const users = userinput.split(',').map((name) => name.trim());
         users.forEach((name) => {
             if (name.length > 5) {
@@ -21,16 +19,15 @@ class App {
             }
         });
 
-        console.log(users);
-
         return users;
     }
 
     createCars(names) {
-        return {
-            yoo: 0,
-            vin: 0,
-        };
+        const cars = {};
+        names.forEach((name) => {
+            cars[name] = 0;
+        });
+        return cars;
     }
 
     getTryCount() {
