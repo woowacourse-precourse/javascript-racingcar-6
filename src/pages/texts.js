@@ -1,5 +1,5 @@
 export const ERROR = {
-    COUNT: '[ERROR] 횟수는 숫자만 입력해주세요.',
+    COUNT: '[ERROR] 숫자만 입력해주세요.',
     NAME: '[ERROR] 이름은 문자만 입력해주세요.',
     LENGTH: '[ERROR] 이름은 5자 이하로 입력해주세요.',
     DOUBLE: '[ERROR] 서로 다른 이름을 입력해주세요.',
@@ -11,4 +11,5 @@ export const CAR = {
     COUNT: '시도할 횟수는 몇 회인가요?\n',
     RESULT: '실행 결과',
     WINNER: '최종 우승자 : ',
+    PROCESS_BAR: '-',
 };
