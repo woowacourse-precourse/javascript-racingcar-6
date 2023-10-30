@@ -89,4 +89,10 @@ describe('story5. 최종 우승자 출력', () => {
     const result = input.lastIndexOf('-') - input.indexOf('-') + 1;
     expect(result).toEqual(5);
   });
+  test("문자를 공백으로 나눈 배열을 반환한다.", () => {
+    const input = '산 : -----';
+    const result = input.split(' ');
+    const answer = ['산', ':', '-----'];
+    expect(result).toEqual(answer);
+  });
 });
