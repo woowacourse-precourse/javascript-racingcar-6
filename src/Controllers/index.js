@@ -1,7 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
 import Model from "../Models/index.js";
 import Views from "../Views/index.js";
-import { MESSAGE } from "../Constants/message.js";
 import {
   validateNoWhiteSpace,
   validateCarNameLength,
@@ -20,6 +19,8 @@ class Controllers {
     validateNoWhiteSpace(input);
 
     const result = input?.split(",");
+
+    // 여기다가 함수 추가 할 거임
 
     return result;
   }

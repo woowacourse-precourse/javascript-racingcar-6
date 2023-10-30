@@ -21,3 +21,5 @@ export const validateNumberType = (input) => {
 
   if (!regex.test(input)) throw new Error(ERROR.NUMBER_TYPE);
 };
+
+// export const validateDuplicate

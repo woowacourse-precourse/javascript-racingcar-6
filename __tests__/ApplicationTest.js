@@ -61,6 +61,8 @@ describe("자동차 경주 게임", () => {
   );
 
   // 여기부터 내 꺼
+  //
+  //
   test("특수기호 입력에 대한 예외처리", async () => {
     const input = ["#$@$@"];
 
@@ -86,7 +88,7 @@ describe("자동차 경주 게임", () => {
   });
 
   test.each([
-    ["song,seop", "3"],
+    ["song, seop", "3"],
     ["jin,mark", "abc"],
   ])("시도횟수에 숫자 이외의 값을 입력 시 예외 처리", async (inputs) => {
     const [car, times] = inputs;
@@ -102,5 +104,17 @@ describe("자동차 경주 게임", () => {
     //then
     if (isValid) await expect(app.play()).resolves.not.toThrow();
     if (!isValid) await expect(app.play()).rejects.toThrow("[ERROR]");
+  });
+
+  test("입력 값 중복 시 예외처리", async () => {
+    const input = ["song,song,kay", "3"];
+
+    mockQuestions(input);
+
+    //when
+    const app = new App();
+
+    //then
+    await expect(app.play()).rejects.toThrow("[ERROR]");
   });
 });
