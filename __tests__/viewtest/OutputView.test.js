@@ -8,10 +8,10 @@ const getLogSpy = () => {
 };
 
 describe("OutputView outputWinnerName", () => {
-	test("outputWinnerName은 Function type이다. ", () => {
+	test("outputWinnerName은 Function type이다 ", () => {
 		expect(typeof OutputView.outputWinnerName).toBe("function");
 	})
-	test("Console.print는 호출되었는가? ", () => {
+	test("Console.print가 호출된다 ", () => {
 		MissionUtils.Console.print = jest.fn();
 		OutputView.outputWinnerName();
 		expect(MissionUtils.Console.print).toHaveBeenCalled();
