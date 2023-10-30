@@ -44,3 +44,19 @@ export const positionHandleIterator = (carsArr, round) => {
   return carsArr;
 };
 
+export const findWinner = (carsArr) => {
+  let winner = [];
+  let maxPosition = 0;
+  carsArr.forEach((carsInfo) => {
+    if (carsInfo.position > maxPosition) {
+      maxPosition = carsInfo.position;
+    }
+  });
+  carsArr.forEach((carsInfo) => {
+    if (carsInfo.position === maxPosition) {
+      winner.push(carsInfo.name);
+    }
+  });
+  console.log(winner);
+  return winner;
+};
