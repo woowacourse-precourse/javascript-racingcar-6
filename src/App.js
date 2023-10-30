@@ -8,11 +8,7 @@ class App {
     const count = await this.inputCount();
     const carForwards = new Array(countCars).fill(0);
 
-    for (let i = 0; i < count; i++) {
-      this.moveCars(carForwards);
-      this.printCarStatus(carForwards, carNames);
-      Console.print("");
-    }
+    this.playRounds(count, carForwards, carNames);
     this.printWinner(carForwards, carNames);
   }
 
@@ -65,6 +61,14 @@ class App {
       const dashed = "-".repeat(car);
       Console.print(`${carNames[j]} : ${dashed}`);
     });
+  }
+
+  playRounds(count, carForwards, carNames) {
+    for (let i = 0; i < count; i++) {
+      this.moveCars(carForwards);
+      this.printCarStatus(carForwards, carNames);
+      Console.print("");
+    }
   }
 
   printWinner(carForwards, carNames) {
