@@ -4,6 +4,9 @@ import Car from "../Car";
 function validateCarsInput(input) {
   const CARS = input.split(",");
   const carsSet = new Set(CARS);
+  if (CARS.length < 2) {
+    throw new Error("[ERROR] 자동차 이름은 2개 이상 입력해주세요.");
+  }
   if (carsSet.size !== CARS.length) {
     throw new Error("[ERROR] 자동차 이름에 중복이 있습니다.");
   }

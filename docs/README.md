@@ -34,7 +34,7 @@
 2. [x] RaceGame 클래스 생성
    - 1. [x] handleRace 게임을 시작하는 메서드
    - 2. [x] readCarsInput 자동차를 입력받는 메서드
-      - (추가) [ ]자동차 1개 입력시 경주X. 에러
+      - (추가) [x]자동차 1개 입력시 경주X. 에러
    - 3. [x] readTryNumber 시도 횟수를 입력받는 메서드
    - 4. [x] handleRaceResult 실행 결과를 출력하는 메서드
    - 5. [x] handleRaceResult 우승자를 출력하는 메서드
