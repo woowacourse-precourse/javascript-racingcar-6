@@ -10,6 +10,9 @@ describe("InputView 클래스 테스트", () => {
   });
 
   test("getCarNameInput 메서드가 호출되면 MissionUtils.Console.readLineAsync가 호출되어야 한다.", async () => {
+    const carNameInput = "pobi,woni,jun";
+    const resolvedPromise = Promise.resolve(carNameInput);
+    MissionUtils.Console.readLineAsync.mockReturnValue(resolvedPromise);
     await InputView.getCarNameInput();
     expect(MissionUtils.Console.readLineAsync).toBeCalledWith(INPUT_MESSAGE.carName);
   });
