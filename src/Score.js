@@ -14,7 +14,7 @@ export default class Score {
         names.forEach((element) => {
             if (MissionUtils.Random.pickNumberInRange(1, 9) > 4) {
                 element.score += '-'
-            } currentScore += `${element.name}: ${element.score} \n`
+            } currentScore += `${element.name} : ${element.score} \n`
         }) 
         MissionUtils.Console.print(currentScore)
     } 
@@ -32,6 +32,6 @@ export default class Score {
                 winner.push(`${e.name}`);
             }
         })
-        console.log(winner)
+        MissionUtils.Console.print(`최종 우승자 : ${winner}`)
     }
 }

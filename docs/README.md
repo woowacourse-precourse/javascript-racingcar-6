@@ -53,3 +53,4 @@ score.getScore(this.cars)
 - 우승자 이름을 담는 새로운 array 만들기
 - 각 요소의 score 값과 최대값이 같으면(forEach 사용)
 새로 만든 array에 요소의 이름(this.name) 넣기(array.push)
+- 우승자 출력
