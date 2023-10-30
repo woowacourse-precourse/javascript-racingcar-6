@@ -113,6 +113,12 @@ class App {
     }
   }
 
+  end() {
+    this.winnerMovelength();
+    this.getWinnerArray();
+    this.resultText();
+  }
+
   async play() {
   }
 }
