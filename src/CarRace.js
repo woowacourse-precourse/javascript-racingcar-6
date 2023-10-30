@@ -3,15 +3,15 @@ import { MissionUtils } from '@woowacourse/mission-utils';
 import { SETTING, SCORE, MESSAGE } from './constants';
 
 export default class CarRace {
-  constructor(carNames, count) {
+  constructor(carNames, round) {
     /** @type Array<Car> */
-    this.carNames = carNames.map((name) => new Car(name));
+    this.cars = carNames.map((name) => new Car(name));
     /** @type number */
-    this.count = count;
+    this.round = round;
   }
 
   isPlaying() {
-    return this.count > 0;
+    return this.round > 0;
   }
 
   getRandomNumber() {
@@ -25,19 +25,19 @@ export default class CarRace {
   }
 
   calculateResult() {
-    this.carNames.forEach((car) => {
+    this.cars.forEach((car) => {
       const random = this.getRandomNumber();
       if (this.isforwardNumber(random)) {
         car.forward();
       }
     });
-    this.count -= 1;
+    this.round -= 1;
   }
   
   getResultMessage() {
     const message = [];
     const { FORWARD } = SCORE;
-    this.carNames.forEach((car) => {
+    this.cars.forEach((car) => {
       message.push(`${car.name} : ${FORWARD.repeat(car.position)}`);
     });
     message.push('\n');
@@ -45,8 +45,8 @@ export default class CarRace {
   }
 
   getWinner() {
-    const max = Math.max(...this.carNames.map(car => car.position));
-    const winners = this.carNames
+    const max = Math.max(...this.cars.map(car => car.position));
+    const winners = this.cars
       .filter((car) => car.position === max)
       .map((car) => car.name);
     return winners;

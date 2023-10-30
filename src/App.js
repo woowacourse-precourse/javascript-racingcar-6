@@ -12,9 +12,9 @@ class App {
       const inputNames = await readLineAsync(INPUT_NAME);
       const carNames = getValidInputNames(inputNames);
       const inputNumber = await readLineAsync(INPUT_NUMBER);
-      const count = getValidInputNumber(inputNumber);
+      const round = getValidInputNumber(inputNumber);
 
-      this.carRace = new CarRace(carNames, count);
+      this.carRace = new CarRace(carNames, round);
     } catch (error) {
       throw new Error(error);
     }
