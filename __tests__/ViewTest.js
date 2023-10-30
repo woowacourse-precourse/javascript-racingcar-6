@@ -1,5 +1,16 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import OutputView from '../src/views/OutputView';
+import InputView from '../src/views/InputView';
+import { MESSAGES } from '../src/constants/messages';
+
+const mockQuestions = (inputs) => {
+  MissionUtils.Console.readLineAsync = jest.fn();
+
+  MissionUtils.Console.readLineAsync.mockImplementation(() => {
+    const input = inputs.shift();
+    return Promise.resolve(input);
+  });
+};
 
 const getLogSpy = () => {
   const logSpy = jest.spyOn(MissionUtils.Console, 'print');
@@ -38,5 +49,31 @@ describe('OutputView 테스트', () => {
     const view = new OutputView();
 
     expect(view.generateAdvanceString(MOVE_CNT)).toBe('---');
+  });
+});
+
+describe('InputView 테스트', () => {
+  test('자동차 이름 입력 받기 - getCarName()', () => {
+    const inputs = ['pobi', 'woni'];
+    const outputs = ['pobi', 'woni'];
+
+    mockQuestions(inputs);
+
+    const view = new InputView();
+    outputs.forEach(async (output) => {
+      expect(await view.getAttemptNum(MESSAGES.getCarName)).toBe(output);
+    });
+  });
+
+  test('시도 횟수 입력 받기 - getAttemptNum()', () => {
+    const inputs = ['2', '3'];
+    const outputs = ['2', '3'];
+
+    mockQuestions(inputs);
+
+    const view = new InputView();
+    outputs.forEach(async (output) => {
+      expect(await view.getAttemptNum(MESSAGES.getAttemptNum)).toBe(output);
+    });
   });
 });
