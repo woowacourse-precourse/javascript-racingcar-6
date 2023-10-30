@@ -1,12 +1,5 @@
 class App {
-  async play() {
-    if (true) {
-      if (true) {
-        if (true) {
-        }
-      }
-    }
-  }
+  async play() {}
 }
 
 export default App;
