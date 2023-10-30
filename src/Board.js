@@ -1,10 +1,15 @@
 import { Console } from '@woowacourse/mission-utils';
-import Car from './Car.js'
+import Car from './Car.js';
+
+const POSITIVE_INTEGER_REGEX = /^\d+$/;
 
 class Board {
 
   /** @type {Array<Car>} */
   #cars = [];
+
+  /** @type {Number} */
+  #numTurns = null;
 
   /**
    * 사용자로부터 입력받은 이름의 레이싱카 객체를 생성한다.
@@ -24,13 +29,28 @@ class Board {
     return await Console.readLineAsync().split(',');
   }
 
-  setNumTurns() {
+  /**
+   * 사용자로부터 이동을 시도할 횟수를 입력받아 멤버로 저장한다.
+   */
+  async setNumTurns() {
+    const input = await Console.readLineAsync();
+    this.#validateNumTurns(input);
+    this.#numTurns = parseInt(input);
+  }
 
+  /**
+   * 양의 정수로 구성되어 있는지 유효성검사를 수행한다.
+   * @param {String} input 
+   */
+  #validateNumTurns(input) {
+    if (!POSITIVE_INTEGER_REGEX.test(input)) {
+      // TODO: Error 메시지 변경
+      throw new Error("[ERROR]");
+    }
   }
 
   getNumTurns() {
 
-    return 2;
   }
 
   executeTurn() {
