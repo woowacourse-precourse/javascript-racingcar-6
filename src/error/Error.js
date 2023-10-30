@@ -18,7 +18,11 @@ class Error {
       throw new Error("[ERROR] 이름이 잘못된 형식입니다.");
     }
   }
-  checkTryNumber(input) {}
+  checkTryNumber(input) {
+    if (isNaN(input) || input[0] == 0) {
+      throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
+    }
+  }
 }
 
 export default Error;
