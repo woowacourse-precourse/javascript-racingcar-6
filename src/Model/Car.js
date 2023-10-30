@@ -1,3 +1,5 @@
+import { NUMBER } from "../utils/Constant.js";
+
 class Car {
   name;
   #position;
@@ -11,7 +13,7 @@ class Car {
   }
 
   checkPosition(tryNumber) {
-    if (tryNumber >= 4) this.#position += 1;
+    if (tryNumber >= NUMBER.NEED_RANDOM_NUMBER) this.#position += 1;
   }
 
   getPosition() {
