@@ -13,6 +13,7 @@ const ERROR_MESSAGE = {
   notString: errorString("값이 문자열 타입이 아닙니다."),
   notNumber: errorString("값이 숫자 타입이 아닙니다."),
   notArray: errorString("값이 배열 타입이 아닙니다."),
+  includeString: errorString("숫자가 아닌 문자가 포함되어 있습니다."),
 
   notCars: errorString("배열에 Car 클래스의 인스턴스가 아닌 요소가 포함되어 있습니다."),
   duplicateNames: errorString("중복된 이름이 포함되어 있으면 안 됩니다."),
