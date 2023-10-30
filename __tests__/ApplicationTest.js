@@ -1,5 +1,5 @@
 import App from "../src/App.js";
-import { getLogSpy, mockQuestions, mockRandoms } from "./__utils__/utils.js";
+import { MissionUtils } from "@woowacourse/mission-utils";
 
 describe("자동차 경주 게임", () => {
   test("전진-정지", async () => {
