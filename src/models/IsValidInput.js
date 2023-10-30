@@ -13,20 +13,25 @@ export const isValidInput = (name) => {
     }
 
     const nameArray = name.split(',');
+
+    //3. 한개의 이름만 입력된 경우
+    if( nameArray.length === 1 ) {
+        throw new Error( NAME_ERROR.ONE_NAME_ERROR );
+    }
     
     for ( let i = 0; i < nameArray.length; i++ ) {
-        //3. 5글자 이상일 경우
+        //4. 5글자 이상일 경우
         if ( nameArray[i].length > 5 ) {
             throw new Error( NAME_ERROR.LENGTH_ERROR );
         }
 
-        //4. 잘못된 쉼표의 사용
+        //5. 잘못된 쉼표의 사용
         if ( nameArray[i] === "" || nameArray[i] === " " ) {
             throw new Error( NAME_ERROR.COMMA_ERROR );
         }
     }
         
-    //5. 중복된 이름이 있을 경우
+    //6. 중복된 이름이 있을 경우
     let nameSet = new Set(nameArray);
     if ( nameArray.length !== nameSet.length ) {
         throw new Error( NAME_ERROR.SAME_NAME_ERROR );
