@@ -1,4 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
+import { MESSAGE } from '../constant/message';
 
 class GameManager {
   static printStatus(racingCars) {
@@ -12,7 +13,7 @@ class GameManager {
       .filter((car) => car.howFar() === winnerFar)
       .map((car) => car.name);
 
-    Console.print(`최종 우승자 : ${winners.join(', ')}`);
+    Console.print(`${MESSAGE.WINNER}${winners.join(', ')}`);
   }
 }
 

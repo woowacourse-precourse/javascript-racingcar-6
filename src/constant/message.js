@@ -1,5 +1,9 @@
 import LIMIT from './limit';
 
+export const MESSAGE = {
+  WINNER: '최종 우승자 : '
+}
+
 export const PROMPT_MESSAGE = {
   INPUT_CARS_NAME: `경주할 자동차 이름을 입력하세요. 최대 ${LIMIT.MAXIMUM_CARS}대 까지 가능합니다. (이름은 쉼표(,) 기준으로 구분)`,
   INPUT_TRY_TIME: `시도할 횟수는 몇 회인가요? (최대 ${LIMIT.TRY_TIME}회까지 가능)`,
