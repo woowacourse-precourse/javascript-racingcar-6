@@ -1,21 +1,27 @@
 class GameResult {
-  getForwardResult(carPosition, prevLog) {
-    carPosition.forEach((value, carName) => {
-      this.updateCarLog(carPosition, prevLog, carName, value);
-    });
-    return prevLog;
+  #carLog;
+
+  constructor() {
+    this.#carLog = new Map();
   }
 
-  updateCarLog(carPosition, prevLog, carName, value) {
+  getForwardResult(carPosition) {
+    carPosition.forEach((value, carName) => {
+      this.updateCarLog(carPosition, carName, value);
+    });
+    return this.#carLog;
+  }
+
+  updateCarLog(carPosition, carName, value) {
     switch (true) {
       case value > 0:
         carPosition.set(carName, value - 1);
-        let log = prevLog.get(carName) || 0;
+        let log = this.#carLog.get(carName) || 0;
         log += 1;
-        prevLog.set(carName, log);
+        this.#carLog.set(carName, log);
         break;
       default:
-        prevLog.set(carName, prevLog.get(carName) || 0);
+        this.#carLog.set(carName, this.#carLog.get(carName) || 0);
     }
   }
 

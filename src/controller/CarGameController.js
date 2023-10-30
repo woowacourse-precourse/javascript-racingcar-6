@@ -23,11 +23,10 @@ class CarGameController {
 
   checkResultStage(carPosition, attempts) {
     OutputView.printResultMessage();
-    const prevLog = new Map();
     this.#gameResult = new GameResult();
 
     for (let i = 0; i < attempts; i++) {
-      this.#carLog = this.#gameResult.getForwardResult(carPosition, prevLog);
+      this.#carLog = this.#gameResult.getForwardResult(carPosition);
       OutputView.printGameProcess(this.#carLog);
       Console.print('\n');
     }
