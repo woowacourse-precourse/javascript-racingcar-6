@@ -18,4 +18,16 @@ const nameValidation = function (playerNames) {
   }
 };
 
-export { nameValidation };
+const repeatCountValidation = function (repeatCount) {
+  if (isNaN(repeatCount)) {
+    throw new CustomError(ERROR_MESSAGE.repeatCountNaN);
+  }
+  if (repeatCount === 0) {
+    throw new CustomError(ERROR_MESSAGE.repeatCountZero);
+  }
+  if (repeatCount > INPUT_LIMIT.repeatCount) {
+    throw new CustomError(ERROR_MESSAGE.repeatCountLimit);
+  }
+};
+
+export { nameValidation, repeatCountValidation };

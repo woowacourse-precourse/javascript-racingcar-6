@@ -1,6 +1,6 @@
 import { Console, Random } from "@woowacourse/mission-utils";
 import { MESSAGE, POSITION_MARK } from "./constants.js";
-import { nameValidation } from "./utils/validation.js";
+import { nameValidation, repeatCountValidation } from "./utils/validation.js";
 
 class App {
   #gameData = {};
@@ -18,6 +18,7 @@ class App {
   // 사용자로부터 이동 횟수를 입력받는다.
   async setRepeatCount() {
     const repeatCountInput = await Console.readLineAsync(MESSAGE.numberQuery);
+    repeatCountValidation(await repeatCountInput);
     this.#repeatCount = Number(await repeatCountInput);
   }
 
