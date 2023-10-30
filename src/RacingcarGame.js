@@ -4,7 +4,7 @@ import Car from "./Car.js";
 import Validation from "./Validation.js";
 
 class RacingcarGame {
-  async inputValue() {
+  async startGame() {
     try {
       const cars = await Console.readLineAsync(GAME_MESSAGE.START);
       const validation = new Validation();
