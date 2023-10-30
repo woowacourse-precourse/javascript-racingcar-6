@@ -5,4 +5,5 @@ test("차가 전진하면 distance가 증가", () => {
   car.move();
 
   expect(car.distance).toBe("-");
+  expect(car.distance.length).toBe(1);
 });
