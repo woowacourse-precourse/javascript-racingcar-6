@@ -4,34 +4,38 @@ import Car from '../models/Car.js';
 import createRandomNumber from '../utils/createRandomNumber.js';
 import MESSAGES from '../constants/messages.js';
 import throwError from '../utils/throwError.js';
+import RaceResult from '../models/RaceResult.js';
 
 class RaceController {
   #maxRound = 0;
 
   #currentRound = 0;
 
+  #raceResult = new RaceResult();
+
   async start() {
     const USER_INPUT_CAR_NAME = await RACE_CONSOLE_VIEW.getUserInputCarName();
     const CAR_NAME_LIST = USER_INPUT_CAR_NAME.split(',');
+
     RaceController.checkCarNameUserInput(CAR_NAME_LIST);
+
     const CAR_LIST = RaceController.createCarList(CAR_NAME_LIST);
     await this.setMaxRound();
 
-    const raceResults = [];
     while (this.#maxRound !== this.#currentRound) {
-      const roundResults = [];
+      const roundResult = [];
 
       CAR_LIST.forEach((car) => {
         createRandomNumber() >= CONFIG.MINIMUM_CAN_MOVE_FOWARD && car.move();
         // prettier-ignore
-        roundResults.push(`${car.name} : ${MESSAGES.ONE_STEP.repeat(car.getMoveCount())}`);
+        roundResult.push(`${car.name} : ${MESSAGES.ONE_STEP.repeat(car.getMoveCount())}`);
       });
 
-      raceResults.push(roundResults);
+      this.#raceResult.addRoundResult(roundResult);
       this.#currentRound += 1;
     }
 
-    RACE_CONSOLE_VIEW.raceResult(raceResults);
+    RACE_CONSOLE_VIEW.raceResult(this.#raceResult.getResult());
     RACE_CONSOLE_VIEW.winner(RaceController.findWinner(CAR_LIST));
   }
 
