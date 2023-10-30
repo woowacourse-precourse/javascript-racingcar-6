@@ -1,8 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
+import { MESSAGES } from '../constants/messages';
 
-class View {
-  static ADVANCE_CHAR = '-';
-
+class OutputView {
   printAdvanceResult(models) {
     models?.forEach((model) => {
       Console.print(this.formatResult(model));
@@ -14,8 +13,8 @@ class View {
   }
 
   generateAdvanceString(moveCnt) {
-    return View.ADVANCE_CHAR.repeat(moveCnt);
+    return MESSAGES.moveForward.repeat(moveCnt);
   }
 }
 
-export default View;
+export default OutputView;
