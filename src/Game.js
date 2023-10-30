@@ -9,12 +9,15 @@ class Game {
 
   #winningPosition;
 
+  #winners;
+
   #input;
 
   constructor() {
     this.#cars = [];
     this.#trialCount = 0;
     this.#winningPosition = 0;
+    this.#winners = [];
     this.#input = new Input();
   }
 
@@ -22,16 +25,22 @@ class Game {
     const names = await this.#input.getCarNames();
     this.#cars = names.map((name) => new Car(name));
 
-    this.#trialCount = await this.input.getTrialCount();
+    this.#trialCount = await this.#input.getTrialCount();
   }
 
-  run() {
-    this.#init();
-    this.#printResult();
+  async run() {
+    await this.#init();
   }
 
-  #printResult() {
-    Console.print('실행 결과\n');
+  #executeRound() {
+    this.#cars.forEach((car) => {
+      car.move();
+      car.print();
+      if (this.#winningPosition < car.getPosition()) this.#winningPosition = car.getPosition();
+    });
+    this.#winners = this.#cars.filter((car) => car.position === this.#winningPosition);
+
+    Console.print('\n');
   }
 }
 

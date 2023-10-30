@@ -26,7 +26,7 @@ class Car {
   }
 
   print() {
-    Console.print(`${this.name}: ${'-'.repeat(this.position)}`);
+    Console.print(`${this.name} : ${'-'.repeat(this.position)}`);
   }
 }
 
