@@ -5,6 +5,6 @@ export const MESSAGE = {
 };
 
 export const ERROR_MESSAGE = {
-  enterRightCarName: "[ERROR] 자동차 이름을 5자 이하로 입력해주세요. ",
+  enterRightCarName: "[ERROR] 자동차 이름을 5자 이하로 입력해주세요.",
   enterNaturalNumber: "[ERROR] 자연수를 입력해주세요.",
 };
