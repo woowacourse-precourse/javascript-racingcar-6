@@ -6,8 +6,8 @@ import Game from './game.js';
 
 class App {
   async play() {
-    const playerNames = await this.printGameMessage();
-    const times = await this.printNumberOfTimes();
+    const playerNames = await this.inputCarNames();
+    const times = await this.inputNumberOfTimes();
 
     const cars = playerNames.map((name) => new Car(name));
     const racingGame = new Game(cars);
@@ -27,7 +27,7 @@ class App {
     return input.includes(',');
   }
 
-  toArray(input) {
+  carnamesToArray(input) {
     this.input = input;
     if (!this.includeSemiColon(input)) {
       throw new Error(ERROR_MESSAGE.DIVISION_BY_SEMICOLON);
@@ -39,15 +39,15 @@ class App {
     return names;
   }
 
-  async printGameMessage() {
+  async inputCarNames() {
     const playerInput = await Console.readLineAsync(
       GAME_MESSAGE.INPUT_CAR_NAME,
     );
-    const playerCarName = this.toArray(playerInput);
+    const playerCarName = this.carnamesToArray(playerInput);
     return playerCarName;
   }
 
-  async printNumberOfTimes() {
+  async inputNumberOfTimes() {
     const playerInput = await Console.readLineAsync(
       GAME_MESSAGE.INPUT_NUMBER_OF_TIMES,
     );
