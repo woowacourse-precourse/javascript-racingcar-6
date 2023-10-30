@@ -1,3 +1,4 @@
+import { Console } from "@woowacourse/mission-utils";
 import Car from "../models/Car.js";
 import { generateRandomNumber } from "../utils/generateRandomNumber.js";
 
@@ -16,9 +17,17 @@ class RacingGame {
     });
   }
 
+  printCarProgress() {
+    this.carList.forEach((car) => {
+      Console.print(`${car.name} : ${car.printProgress()}`);
+    });
+    Console.print("");
+  }
+
   startGame() {
     for (let i = 0; i < this.tryNumber; i++) {
       this.moveCar();
+      this.printCarProgress();
     }
   }
 }
