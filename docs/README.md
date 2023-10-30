@@ -103,3 +103,9 @@
 - move : `자동차 위치 이동`
 - stop : `자동차 위치 정지`
 - record : `자동차 이름, 현재위치를 반환`
+
+# 테스트 커버리지
+
+- `명령어 : npx jest --coverage`
+
+- ![스크린샷 2023-10-30 오후 10 15 06](https://github.com/rlaclghks123/refactoring/assets/55423198/cfc75b9b-de27-4d3e-9227-69b3bf996833)
