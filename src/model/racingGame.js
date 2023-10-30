@@ -4,33 +4,24 @@ import moveSign from "../util/moveSign.js";
 let maxNumber = 0;
 
 export default function racingGame(carList, tryCount) {
-  const carObject = initializeCarObject(carList);
   consoleControl.printGameStart();
   for (let index = 0; index < tryCount; index++) {
-    carMove(carObject);
+    carMove(carList);
     consoleControl.printNewLine();
   }
-  printWinner(carObject);
+  printWinner(carList);
 }
 
-function carMove(carObject) {
-  for (let car in carObject) {
+function carMove(carList) {
+  for (let car in carList) {
     if (moveSign()) {
-      carObject[car]++;
-      consoleControl.printResult(car, moveCar(carObject[car]));
-      maxNumberCheck(carObject[car]);
+      carList[car]++;
+      consoleControl.printResult(car, moveCar(carList[car]));
+      maxNumberCheck(carList[car]);
     } else {
-      consoleControl.printResult(car, moveCar(carObject[car]));
+      consoleControl.printResult(car, moveCar(carList[car]));
     }
   }
-}
-function initializeCarObject(carList) {
-  const carObject = {};
-  for (let i = 0; i < carList.length; i++) {
-    carObject[carList[i]] = 0;
-  }
-
-  return carObject;
 }
 
 function moveCar(moveCount) {
@@ -38,16 +29,16 @@ function moveCar(moveCount) {
   return move.repeat(moveCount);
 }
 
-function maxNumberCheck(carObj) {
-  if (carObj > maxNumber) {
-    maxNumber = carObj;
+function maxNumberCheck(carList) {
+  if (carList > maxNumber) {
+    maxNumber = carList;
   }
 }
 
-function printWinner(carObject) {
+function printWinner(carList) {
   let winner = [];
-  for (let car in carObject) {
-    if (carObject[car] === maxNumber) {
+  for (let car in carList) {
+    if (carList[car] === maxNumber) {
       winner.push(" " + car);
     }
   }
