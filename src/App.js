@@ -1,10 +1,11 @@
 import { Console } from "@woowacourse/mission-utils";
 
-import RacingCar from "./RacingCar.js";
-import RaceOrganizer from "./view/RaceOrganizer.js";
+import RacingCar from "./RacingCar";
+import RaceOrganizer from "./view/RaceOrganizer";
 
-import BaseExceptionHandler from "./exception/Errorcase.js";
-import CarNaming from "./exception/CarNaming.js";
+import BaseExceptionHandler from "./exception/Errorcase";
+import CarNaming from "./exception/CarNaming";
+import Frequency from "./exception/Frequency";
 
 class App {
   #racingCar;
@@ -14,15 +15,22 @@ class App {
     this.#exceptionHandler = new BaseExceptionHandler();
   }
 
-  #convertToArray(string) {
-    return string.split(",");
-  }
-
   async play() {
     await this.enterValue();
   }
 
   async enterValue() {
+    try {
+      const carName = await this.enterCarName();
+      const gameLap = await this.enterRaceLaps();
+
+      this.#startRacingGame(carName, gameLap);
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+
+  async enterCarName() {
     try {
       const name = await Console.readLineAsync(
         "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)",
@@ -30,13 +38,25 @@ class App {
       const carName = this.#convertToArray(name);
       this.#exceptionHandler.checkAllException(new CarNaming(carName));
 
-      const gameLap = await Console.readLineAsync("시도할 횟수는 몇 회인가요?");
-      // 게임 횟수 예외사항 처리
-
-      this.#startRacingGame(carName, gameLap);
+      return carName;
     } catch (error) {
-      throw new Error(error);
+      throw new Error(error.message);
     }
+  }
+
+  async enterRaceLaps() {
+    try {
+      const gameLap = await Console.readLineAsync("시도할 횟수는 몇 회인가요?");
+      this.#exceptionHandler.checkAllException(new Frequency(gameLap));
+
+      return gameLap;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+
+  #convertToArray(string) {
+    return string.split(",");
   }
 
   #startRacingGame(carName, lap) {
@@ -46,8 +66,5 @@ class App {
     RaceOrganizer.talkToWinner(carMove);
   }
 }
-
-// const app = new App();
-// app.play();
 
 export default App;
