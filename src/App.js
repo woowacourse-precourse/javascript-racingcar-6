@@ -101,6 +101,20 @@ class App {
     Console.print(updated.join('\n'));
   }
 
+  async determineWinner(result) {
+    const winners = [];
+
+    const maxLength = Math.max(...result.map((item) => item.length));
+
+    result.filter((item) => {
+      if (item.length === maxLength) {
+        return winners.push(item);
+      }
+    });
+
+    return winners;
+  }
+
   async printFinalResult(finalWinner) {
     Console.print(`${message.FINAL_WINNER}${finalWinner.join(', ')}`);
   }
