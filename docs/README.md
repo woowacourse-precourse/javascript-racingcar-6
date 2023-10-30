@@ -25,17 +25,17 @@ N대의 자동차 중 가장 멀리 이동한 자동차가 우승하는 게임
 1. 이름이 5자 이하인지를 체크한다. 빈 문자열이나 5자 초과는 실패로 간주한다.
 2. 유효한 문자인지 체크한다. 출력이 불가능한 문자는 실패로 간주한다.<br>
 
-`성공 시` model(car) 로 데이터를 전달한다.
+    `성공 시` model(car) 로 데이터를 전달한다.
 
-`실패 시` Error를 throw한다.<br>
+    `실패 시` Error를 throw한다.<br>
 
 - [ ] view(inputView) 에서 전달 받은 이동 횟수의 유효성을 검증한다.<br>
 1. 숫자( int )인지를 체크한다. 숫자가 아닐 시 실패로 간주한다.
 2. 0에서 1000회 사이인지를 체크한다. 이외의 수는 실패로 간주한다.
 
-`성공 시` model(car) 로 데이터를 전달한다.
+    `성공 시` model(car) 로 데이터를 전달한다.
 
-`실패 시` Error를 throw한다.<br>
+    `실패 시` Error를 throw한다.<br>
 
 - `DataProcess` - 데이터를 가공해주는 객체
 
@@ -57,7 +57,7 @@ N대의 자동차 중 가장 멀리 이동한 자동차가 우승하는 게임
 
 - `outputView` : 화면에 출력하는 객체
 
-- [ ] 우승자(들)를 출력한다. controller의 transOutputFormWinnerName에서 전달받는다.
+- [x] 우승자(들)를 출력한다. controller의 transOutputFormWinnerName에서 전달받는다.
 
 - [ ] 자동차들의 이동거리를 출력한다. controller의 transOutputFormDistance에서 전달받는다.
 
