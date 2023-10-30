@@ -38,6 +38,15 @@ function checkName(str) {
     return false;
   }
 }
+function checkNum(str){
+  const regExp = /[0-9]/g;
+  if(regExp.test(str)){
+      return true;
+  }else{
+      return false;
+  }
+}
+
 
 class App {
   async getCarName() {
@@ -75,6 +84,11 @@ class App {
 
   async getGameCount() {
     let gameCount = await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    // 2. 숫자가 아닌 값을 입력한 경우
+    if(Number.isNaN(Number(gameCount))){
+      throw new Error('[ERROR] 숫자를 입력해야 합니다.')
+    }
+    
     return gameCount;
   }
   gameTrial(carArray, gameCount) {
@@ -110,6 +124,6 @@ class App {
     this.printWinner(carArray);
   }
 }
-// const app = new App();
-// await app.play();
+const app = new App();
+await app.play();
 export default App;
