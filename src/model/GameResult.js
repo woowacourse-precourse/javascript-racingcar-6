@@ -1,6 +1,8 @@
 /* eslint-disable lines-between-class-members */
 import randomNumGenerator from '../utils/randomNumGenerator';
-import { MOVE_STR } from '../constants/constants';
+import { calculateLongLen, findSameLenElement } from '../utils/gameResultCalculator';
+import { strArrTostr } from '../utils/typeConvertor';
+import { MOVE_NUM, MOVE_STR } from '../constants/constants';
 
 class GameResult {
   #result
@@ -15,9 +17,23 @@ class GameResult {
     this.#result = Array(num).fill('');
   }
 
-  moveResult(idx){
+  getResult(){
+    return this.#result;
+  }
+
+  setWinner(){
+    const longLen = calculateLongLen(this.#result);
+    const winnerArr = findSameLenElement(this.#result, longLen);
+    this.#winner = strArrTostr(winnerArr);
+  }
+
+  getWinner(){
+    return this.#winner;
+  }
+
+  moveCarsResult(idx){
     const randomNum = randomNumGenerator();
-    if(randomNum >= 4) this.#result[idx] += MOVE_STR;
+    if(randomNum >= MOVE_NUM) this.#result[idx] += MOVE_STR;
   }
 }
 

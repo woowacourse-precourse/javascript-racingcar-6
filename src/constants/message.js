@@ -5,6 +5,8 @@ export const INPUT_MESSAGE = Object.freeze({
 
 export const OUTPUT_MESSAGE = Object.freeze({
   START: '실행 결과',
+  RESULT: ' : ',
+  WINNER: '최종 우승자 : ',
 });
 
 export const ERROR_MESSAGE = Object.freeze({

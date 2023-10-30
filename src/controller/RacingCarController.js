@@ -1,18 +1,23 @@
 /* eslint-disable lines-between-class-members */
+import { Console } from '@woowacourse/mission-utils';
 import InputView from '../view/InputView';
+import OutputView from '../view/OutputView';
 import CarPlayers from '../model/CarPlayers';
 import MoveCount from '../model/MoveCount';
 import GameResult from '../model/GameResult';
 import { strToStrArr } from '../utils/typeConvertor';
 
+
 class RacingCarController {
   #inputView;
+  #outputView;
   #carPlayers;
   #moveCount;
   #gameResult;
 
   constructor(){
     this.#inputView = new InputView();
+    this.#outputView = new OutputView();
     this.#carPlayers = new CarPlayers();
     this.#moveCount = new MoveCount();
     this.#gameResult = new GameResult();
@@ -44,14 +49,21 @@ class RacingCarController {
   moveCars(){
     const totalMove = this.#moveCount.getCount();
     const players = this.#carPlayers.getPlayers();
-    // 프린트하고
+    const result = this.#gameResult.getResult();
+    this.#outputView.printGameStart();
     for(let i = 1; i <= totalMove; i+=1){
       players.forEach((player, idx) => {
-        this.#gameResult.moveResult(idx);
+        this.#gameResult.moveCarsResult(idx);
+        this.#outputView.printGameResult(player, result[idx]);
       })
-      // 프린트 하는 코드 여기
+      Console.print('\n');
     }
+  }
 
+  showWinner(){
+    this.#gameResult.setWinner();
+    const winner = this.#gameResult.getWinner();
+    this.#outputView.printWinner(winner);
   }
 }
 
