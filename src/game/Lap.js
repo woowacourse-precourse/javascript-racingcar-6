@@ -14,11 +14,19 @@ class Lap {
     });
   }
 
-  printStage() {
+  recordCheck() {
+    this.goFoward(this.record);
+    this.printStage(this.record);
+  }
+
+  goFoward(record) {
     for (let i = 0; i < this.entry.length; i += 1) {
-      if (Random.pickNumberInRange(0, 9) > 3) this.record[i] += '-';
+      if (Random.pickNumberInRange(0, 9) > 3) record[i] += '-';
     }
-    computer.tell(this.record.join('\n'));
+  }
+
+  printStage(record) {
+    computer.tell(record.join('\n'));
     computer.tell('');
   }
 }

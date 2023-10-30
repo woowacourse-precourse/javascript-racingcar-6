@@ -6,7 +6,6 @@ import ABOUT from './utils/constants.js';
 
 class App {
   #entry;
-
   #lapLength;
 
   constructor() {
@@ -17,9 +16,9 @@ class App {
   async play() {
     await this.inputEntry();
     await this.inputLapLength();
-    const lap = new Lap(this.#entry, this.#lapLength);
+    const lap = new Lap(this.#entry);
     computer.tell(ABOUT.RESULT_IS);
-    Array.from({ length: this.#lapLength }, () => lap.printStage());
+    Array.from({ length: this.#lapLength }, () => lap.recordCheck());
     printResult(lap.record, this.#lapLength);
   }
 
