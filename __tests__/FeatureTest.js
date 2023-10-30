@@ -30,3 +30,13 @@ describe("story1. 자동차 이름 입력", () => {
     expect(result).toContainEqual("산", "바다", "강", "하늘");
   });
 });
+
+describe("story2. 실행횟수 입력", () => {
+  test("입력을 받아서 숫자를 반환한다.", async () => {
+    // given
+    const input = '7';
+    const result = Number(input);
+
+    expect(result).toEqual(7);
+  });
+});
