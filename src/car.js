@@ -6,6 +6,13 @@ class Car {
     this.position = 0;
   }
 
+  move() {
+    const randomNumber = this.generateRandomNumbers();
+    if (this.moreThanFour(randomNumber)) {
+      this.position += 1;
+    }
+  }
+
   generateRandomNumbers() {
     return MissionUtils.Random.pickNumberInRange(0, 9);
   }
