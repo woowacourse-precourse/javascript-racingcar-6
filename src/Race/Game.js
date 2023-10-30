@@ -29,7 +29,8 @@ export class Game {
       throw new Error(this.constants.exceeded);
     if (this.verify.findDuplicates(arrayCars))
       throw new Error(this.constants.duplicates);
-    if (arrayCars.includes("")) throw new Error(this.constants.blank);
+    if (arrayCars.includes("") || arrayCars.includes(" "))
+      throw new Error(this.constants.blank);
     return arrayCars;
   }
 
