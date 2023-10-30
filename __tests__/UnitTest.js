@@ -1,6 +1,8 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import carHandler from "../src/utils/carHandler";
 import numberHandler from "../src/utils/numberHandler";
+import resultHandler from "../src/utils/resultHandler";
+import Car from "../src/Car";
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -9,6 +11,13 @@ const mockQuestions = (inputs) => {
     const input = inputs.shift();
     return Promise.resolve(input);
   });
+};
+
+const mockRandoms = (numbers) => {
+  MissionUtils.Random.pickNumberInRange = jest.fn();
+  numbers.reduce((acc, number) => {
+    return acc.mockReturnValueOnce(number);
+  }, MissionUtils.Random.pickNumberInRange);
 };
 
 describe("유닛 테스트", () => {
@@ -83,5 +92,46 @@ describe("유닛 테스트", () => {
     expect(output).toEqual(99);
   });
 
-  test("handleRaceResult 출력 테스트", () => {});
+  test("getResultString 출력 테스트", () => {
+    const CAR_NAMES = ["lurgi", "car1", "car2"];
+    const CARS = CAR_NAMES.map((carName) => new Car(carName));
+    const TRY_NUMBER = 3;
+
+    const MOVING_FORWARD = 4;
+    const STOP = 3;
+    const RANDOMS = [
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      STOP,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+    ];
+    mockRandoms(RANDOMS);
+
+    const EXPECT = [
+      "lurgi : -",
+      "car1 : -",
+      "car2 : -",
+      "",
+      "lurgi : --",
+      "car1 : -",
+      "car2 : --",
+      "",
+      "lurgi : ---",
+      "car1 : --",
+      "car2 : ---",
+      "",
+      "",
+    ];
+
+    const OUTPUT = resultHandler.getResultString({
+      tryNumber: TRY_NUMBER,
+      cars: CARS,
+    });
+    expect(OUTPUT.split("\n")).toStrictEqual(EXPECT);
+  });
 });

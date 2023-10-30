@@ -51,7 +51,7 @@
       - [x] 에러 [x] 통과
    - 2. readTryNumber 시도 횟수를 입력받는 메서드
       - [x] 에러 [x] 통과
-   - 3. handleRaceResult 실행 결과를 출력하는 메서드
-      - [ ] 통과
+   - 3. getResultString 실행 결과를 반환하는 메서드
+      - [x] 통과
    - 4. 우승자를 출력하는 메서드
       - [ ] 통과
