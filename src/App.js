@@ -20,6 +20,12 @@ class App {
       carData = createRandomNumber(carData);
 
       carData = goStopCar(carData);
+
+      carData.forEach((data) => {
+        Console.print(`${data.name} : ${data.result}`);
+      });
+
+      Console.print('\n');
     }
   }
 }
