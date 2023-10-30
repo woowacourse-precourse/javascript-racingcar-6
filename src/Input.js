@@ -10,7 +10,7 @@ class Input {
    */
   static async getJoinList() {
     const joinString = await Console.readLineAsync(PROMPT.joinList);
-    const joinList = joinString.split(',');
+    const joinList = joinString.split(',').map((string) => string.trim());
     joinList.forEach((joinItem) => Validate.checkJoinItem(joinItem));
 
     return joinList.map((name) => new Participant(name));
