@@ -16,8 +16,9 @@ class App {
 
     for (let i = 0; i < rounds; i++) {
       this.startRound(namesArray, scoreObject);
+      this.printRoundResult(namesArray, scoreObject);
+      MissionUtils.Console.print('\n');
     }
-    MissionUtils.Console.print(scoreObject);
   }
 
   async getCarNames() {
@@ -44,6 +45,14 @@ class App {
       if (randomNumber >= 4) {
         scoreObject[`${carName}`] += 1;
       }
+    });
+  }
+
+  printRoundResult(carsArray, scoreObject) {
+    // 라운드에 대한 실행 결과 출력
+    carsArray.forEach((car, index) => {
+      const scoreCount = '-'.repeat(scoreObject[`${car}`]);
+      MissionUtils.Console.print(`${car} : ${scoreCount}`);
     });
   }
 }
