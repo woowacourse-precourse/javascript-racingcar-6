@@ -11,6 +11,7 @@ export class Car {
 class App {
   async play() {
     let cars = await setRaceCars();
+    if (!checkCarNames(cars)) throw new Error("[ERROR] 자동차 이름이 잘못된 형식입니다.\n");
   }
 }
 
@@ -24,6 +25,24 @@ async function setRaceCars(){
     cars.push(car);
   }
   return cars
+}
+
+function checkCarNames(cars) {
+  let validName = true;
+  // 모든 자동차의 이름 길이가 규격에 맞는지 확인
+  for (let i = 0; i < cars.length; i++) {
+    validName = validName && checkNameLength(cars[i]);
+  }
+  return validName;
+}
+
+function checkNameLength(car) {
+  let underRequirements = true;
+  let name = car.name;
+  if (name.length > 5 || name.length == 0) {
+    underRequirements = false;
+  }
+  return underRequirements;
 }
 
 export default App;
