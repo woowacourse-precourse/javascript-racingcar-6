@@ -68,9 +68,10 @@ class App {
   }
 
   handleTryNumber(input) {
+    const parsedInput = Number(input);
+    console.log(typeof(parsedInput)) //
     try {
-      console.log(typeof(input)) //
-      if(typeof(input)==='number') {
+      if(typeof(parsedInput)==='number') {
         return Number(input)
       } else throw new Error("[ERROR] 횟수는 숫자여야 합니다. ")
     } catch(error) {
