@@ -1,20 +1,21 @@
 import * as MissionUtils from "@woowacourse/mission-utils";
 import Car from "./Car.js";
+import { ERROR, MESSAGE } from "./Constant.js";
 
 class App {
   async inputName() {
     const userInput = await MissionUtils.Console.readLineAsync(
-      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
+      MESSAGE.inputName
     );
     const carNames = userInput.split(",");
     if (carNames.some((name) => name.length > 5)) {
-      throw new Error("[ERROR] 자동차 이름은 5자 이하만 가능합니다.");
+      throw new Error(ERROR.nameLength);
     }
     return carNames;
   }
   async inputRaceRound() {
     const userInput = await MissionUtils.Console.readLineAsync(
-      "시도할 횟수는 몇 회인가요?\n"
+      MESSAGE.inputRound
     );
     return userInput;
   }
@@ -30,7 +31,7 @@ class App {
   }
 
   async runRace(racingCars, racingRound) {
-    MissionUtils.Console.print("실행 결과");
+    MissionUtils.Console.print(MESSAGE.result);
     for (let i = 0; i < racingRound; i++) {
       racingCars.map((car) => {
         car.move();
