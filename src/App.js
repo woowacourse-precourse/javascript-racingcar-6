@@ -19,20 +19,17 @@ class App {
 
     MissionUtils.Console.print('');
 
-    cars.forEach(car => {
-      car.move += moveCar();
-    });
+    for(let i=0; i<count; i++){
+      cars.forEach(car => {
+        car.move += moveCar();
+      });
+  
+      cars.forEach(car => {
+        printCar(car.name, car.move);
+      })
 
-    cars.forEach(car => {
-      printCar(car.name, car.move);
-    })
-
-    MissionUtils.Console.print('');
-    
-    
-
-
-
+      MissionUtils.Console.print('');
+    }
   }
 }
 
