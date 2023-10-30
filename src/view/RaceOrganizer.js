@@ -1,4 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
+import RaceStatus from "../exception/RaceStatus.js";
 
 class RaceOrganizer {
   static getCandidates(participant) {
@@ -7,6 +8,8 @@ class RaceOrganizer {
     );
 
     const maxLap = strongCandidate[0][1];
+    RaceStatus.reportTrackIssue(maxLap);
+
     const winner = strongCandidate.flatMap(([name, lap]) =>
       maxLap === lap ? name : [],
     );
