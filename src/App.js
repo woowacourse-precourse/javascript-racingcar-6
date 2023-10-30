@@ -9,7 +9,6 @@ class App {
     const cnt = await MissionUtils.Console.readLineAsync(MSG.INPUTCOUNT);
     MissionUtils.Console.print(MSG.RESULT)
     const carDistance = this.printResult(carNames, cnt)
-    this.printWinner(carNames, carDistance)
 
   }
 
@@ -33,7 +32,7 @@ class App {
       }
       MissionUtils.Console.print("")
     }
-    return carDistance
+    this.printWinner(carNames, carDistance)
   }
 
   race(carNames, carDistance) {    
