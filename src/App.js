@@ -33,8 +33,9 @@ class App {
   }
 
   async tryCounts() {
-    Console.print('시도할 횟수는 몇 회인가요?');
-    const counts = parseInt(await Console.readLineAsync(''));
+    const counts = parseInt(
+      await Console.readLineAsync('시도할 횟수는 몇 회인가요?'),
+    );
     if (isNaN(counts) || counts <= 0) {
       throw new Error('[ERROR] 올바른 값을 입력하세요');
     }
