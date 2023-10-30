@@ -5,4 +5,8 @@ export default class InputView {
   static carName() {
     return Console.readLineAsync(Message.RACE_START);
   }
+
+  static tryCount() {
+    return Console.readLineAsync(Message.TRY);
+  }
 }
