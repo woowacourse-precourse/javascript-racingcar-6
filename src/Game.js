@@ -77,5 +77,5 @@ class Game {
     MissionUtils.Console.print(`최종 우승자 : ${winnerCars}`);
   }
 }
-module.exports=Game;
+module.exports = Game;
 export default Game;

@@ -9,6 +9,5 @@ class App {
     game.printWinner(carArray);
   }
 }
-// const app = new App();
-// await app.play();
+
 export default App;
