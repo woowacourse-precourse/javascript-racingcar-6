@@ -19,11 +19,13 @@ class App {
     await this.inputLapLength();
     const lap = new Lap(this.#entry);
     computer.tell(ABOUT.RESULT_IS);
+    // 실행횟수만큼 차수별 진행상황 출력
     Array.from({ length: this.#lapLength }, () => lap.recordCheck());
     printResult(lap.getRecord(), this.#lapLength);
   }
 
   async inputEntry() {
+    // 자동차 이름 입력 받는 역할
     const inputName = await computer.ask(ABOUT.INPUT_NAME);
     const tmpEntry = inputName.split(',');
     validate.carName(tmpEntry);
@@ -31,6 +33,7 @@ class App {
   }
 
   async inputLapLength() {
+    // 실행횟수 입력 받는 역할
     const inputNumStr = await computer.ask(ABOUT.ASK_LAP);
     validate.lapLength(inputNumStr);
     this.#lapLength = Number(inputNumStr);
