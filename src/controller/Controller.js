@@ -19,5 +19,11 @@ export default class Controller {
 
     Validation.carNameInput(carNameList);
     this.createCar(carNameList);
+
+    const tryCount = await InputView.tryCount();
+    Validation.tryCountInput(tryCount);
   }
 }
+
+const c = new Controller();
+console.log(await c.run());
