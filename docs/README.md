@@ -63,12 +63,12 @@ bbbb# Lv1. 기능 분석
 > - `Board` `_board` : 게임보드
 > </br></br>
 > ### functions
-> - `play` `()` : 프로그램 실행
+> - `play()` : 프로그램 실행
 >   - `this._startGame()`
 >   - `this._playGame()`
 >   - `this._finishGame()`
 > </br></br>
-> - `_startGame` `()` : 게임 시작 (사용자 입력)
+> - `_startGame()` : 게임 시작 (사용자 입력)
 >   - `this.board = new Board()` : 게임보드 생성
 >   - `Strings.INPUT_CAR_NAMES`
 >   - `this._board.setCars()` : 레이싱카 셋팅
@@ -82,7 +82,7 @@ bbbb# Lv1. 기능 분석
 >     - `this._board.executeTurn()` : 하나의 턴 수행
 >     - `this._board.printMiddleResult()` : 중간 결과 출력
 > </br></br>
-> - `_finishGame` `()` : 게임 종료 (최종 우승자 출력)
+> - `_finishGame()` : 게임 종료 (최종 우승자 출력)
 >   - `this._board.pickOutWinner()` : 우승자 선별
 >   - `this._board.printFinalResult()` : 최종 결과 출력
 
@@ -96,37 +96,37 @@ bbbb# Lv1. 기능 분석
 > - `Array<Car>` `_winners` : 최종 우승자 리스트
 > </br></br>
 > ### Functions
-> - `setCars` `()` : 레이싱카 셋팅
+> - `setCars()` : 레이싱카 셋팅
 >   - `carNames = this._inputCarNames()`
 >   - `this._cars.push(new Car(carNames[i]))`
 > </br></br>
-> - `Array<String>` `_inputCarNames` `()` : 레이싱카 이름 입력
+> - `Array<String>` `_inputCarNames()` : 레이싱카 이름 입력
 > </br></br>
-> - `setNumTurns` `()` : 턴 수 입력
+> - `setNumTurns()` : 턴 수 입력
 >   - `this._numTurns`
 > </br></br>
-> - `executeTurn` `()` : 턴 수행
+> - `executeTurn()` : 턴 수행
 >   - `this._cars.forEach((car) => { })`
 >     - `this._getRandomDigit()`
 >     - `if (randomDigit >= 4)`
 >       - `car.move()`
 > </br></br>
-> - `Number` `_getRandomDigit` `()` : 0~9 사이 정수 랜덤 반환
+> - `Number` `_getRandomDigit()` : 0~9 사이 정수 랜덤 반환
 > </br></br>
-> - `printMiddleResult` `()` : 중간 결과 출력
+> - `printMiddleResult()` : 중간 결과 출력
 >   - `this._cars.forEach((car) => )`
 >   - `[car.getName(), Strings.COLON, Strings.DISTANCE.repeat(car.getDistance())].join(' ')`
 > </br></br>
-> - `pickOutWinner` `()` : 우승자 선별
+> - `pickOutWinner()` : 우승자 선별
 >   - `this._sortCarsByDistanceDescending()`
 > </br></br>
-> - `_sortCarsByDistanceDescending` `()` : Cars를 distance를 기준으로 내림차순 정렬
+> - `_sortCarsByDistanceDescending()` : Cars를 distance를 기준으로 내림차순 정렬
 >   - `this._cars.sort((a, b) => b.getDistance() - a.getDistance())`
 > </br></br>
-> - `printFinalResult` `()` : 최종 결과 출력
+> - `printFinalResult()` : 최종 결과 출력
 >   - `[Strings.FINAL_WINNER, Strings.COLON].concat(this._getWinnerNames().join(', ')).join(' ')`
 > </br></br>
-> - `Array<String>` `_getWinnerNames` `()` : 최종 우승자 이름 배열 반환
+> - `Array<String>` `_getWinnerNames()` : 최종 우승자 이름 배열 반환
 >   - `winnerNames.push(this._cars[i].getName())`
 
 </br>
@@ -141,12 +141,12 @@ bbbb# Lv1. 기능 분석
 > - `constructor` `(String name)` : 생성자
 >   - `this._name = name`
 > </br></br>
-> - `move` `()` : 1만큼 이동
+> - `move()` : 1만큼 이동
 >   - `this._distance++;`
 > </br></br>
-> - `String` `getName` `()` : 이름 반환
+> - `String` `getName()` : 이름 반환
 > </br></br>
-> - `Number` `getDistance` `()` : 이동 거리 반환
+> - `Number` `getDistance()` : 이동 거리 반환
 
 </br>
 
