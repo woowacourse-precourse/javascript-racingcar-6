@@ -7,7 +7,6 @@ class RacingCarGame {
 
   async game() {
     await this.setupGame();
-    this.printRoundScores();
   }
 
   async setupGame() {
@@ -24,8 +23,10 @@ class RacingCarGame {
 
   playGame(totalAttempts) {
     const carMovementDecision = new CarMovementDecision();
+    Console.print("\n실행 결과");
     for (let attempt = 0; attempt < totalAttempts; attempt++) {
       this.updateScoreBoard(carMovementDecision);
+      this.printRoundScores();
     }
   }
 
@@ -38,7 +39,10 @@ class RacingCarGame {
   }
 
   printRoundScores() {
-    Console.print(this.#scoreBoard);
+    Object.keys(this.#scoreBoard).forEach((carName) => {
+      Console.print(`${carName} : ${this.#scoreBoard[carName]}`);
+    });
+    Console.print("");
   }
 }
 
