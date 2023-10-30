@@ -9,8 +9,8 @@ class OutputView {
     Console.print(OUTPUT_MESSAGE.SHOW_RESULT);
   }
 
-  static printCarDistanceRecord(carDistanceRecord) {
-    OutputView.#getCarDistanceStrings(carDistanceRecord).forEach((infoString) => {
+  static printCarDistanceRecord(cars, carDistanceRecord) {
+    OutputView.#getCarDistanceStrings(cars, carDistanceRecord).forEach((infoString) => {
       Console.print(infoString);
     });
     OutputView.#printBlankLine();
@@ -20,16 +20,14 @@ class OutputView {
     Console.print(`최종 우승자 : ${cars.join(", ") || OutputView.#NO_WINNER}`);
   }
 
-  static #getCarDistanceStrings(carDistanceRecord) {
-    const result = [];
+  static #getCarDistanceStrings(cars, carDistanceRecord) {
+    const carNames = cars.getCarNames();
 
-    for (const carName in carDistanceRecord) {
-      const distanceCount = carDistanceRecord[carName];
+    return carNames.map((name) => {
+      const distanceCount = carDistanceRecord[name] || 0;
       const distances = new Array(distanceCount).fill(OutputView.#DISTANCE).join("");
-      result.push(`${carName} : ${distances}`);
-    }
-
-    return result;
+      return `${name} : ${distances}`;
+    });
   }
 
   static #printBlankLine() {

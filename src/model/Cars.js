@@ -20,6 +20,10 @@ class Cars {
     }, {});
   }
 
+  getCarNames() {
+    return this.#cars.map((car) => car.getName());
+  }
+
   getLength() {
     return this.#cars.length;
   }

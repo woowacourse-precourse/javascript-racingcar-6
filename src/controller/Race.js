@@ -94,7 +94,7 @@ class Race {
       if (isMoved) this.#increaseCarDistance(carName);
     }
 
-    OutputView.printCarDistanceRecord(this.#carDistanceRecord);
+    OutputView.printCarDistanceRecord(this.#racingCars, this.#carDistanceRecord);
   }
 
   #increaseCarDistance(carName) {
