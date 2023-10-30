@@ -1,5 +1,5 @@
 import Car from "../src/Car";
-import { isLongerThan5, isNumber, isNumberAtLeast4, validateName } from "../src/utils/validation"
+import { isLongerThan5, isNumber, isNumberAtLeast4, validateCount, validateName } from "../src/utils/validation"
 
 describe("validation.js 테스트", () => {
     test("숫자 형식 여부 검사 - 숫자 입력", () => {
@@ -48,7 +48,7 @@ describe("validation.js 테스트", () => {
         const name = "soyoung125";
         const cars = [];
 
-        expect(() => validateName(name, cars)).toThrow("[ERROR]");
+        expect(() => validateName(name, cars)).toThrow("[ERROR] 이름이 5자를 초과했습니다.");
     });
     test("이름 예외 처리 - 중복된 이름", () => {
         const name = "bong";
@@ -56,4 +56,8 @@ describe("validation.js 테스트", () => {
 
         expect(() => validateName(name, cars)).toThrow("[ERROR] 중복된 이름이 존재합니다.");
     });
+    test("시도 횟수 예외 처리", () => {
+        const count = "1qw!";
+        expect(() => validateCount(count)).toThrow("[ERROR] 숫자가 잘못된 형식입니다.")
+    })
 })
