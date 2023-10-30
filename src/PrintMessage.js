@@ -10,7 +10,7 @@ export function printForwardCar(carName, forwardCount) {
 }
 
 export function printWinner(forwardCarData) {
-  Object.entries(forwardCarData)
+  Object.entries(forwardCarData);
   const maxValue = Math.max(...Object.values(forwardCarData));
   const winner = Object.keys(forwardCarData).filter(key => forwardCarData[key] === maxValue).join(', ');
   MissionUtils.Console.print(`${WINNER_MESSAGE} : ${winner}`);
