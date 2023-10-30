@@ -11,6 +11,7 @@ class App {
 
 async getNameOfCar(){
   const getCarName = await MissionUtils.Console.readLineAsync(MESSAGE.NAME);
+  if (!getCarName.includes(",")){throw new Error(ERROR.REST);}
   const carName = getCarName.split(",");
   carName.forEach((elements) => {
     if(elements.length>5){throw new Error(ERROR.FIVE);}
