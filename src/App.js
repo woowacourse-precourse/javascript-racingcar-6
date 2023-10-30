@@ -1,4 +1,4 @@
-import Game from './Game.js';
+import Game from './module/Game.js';
 import { validateCarName, validateMoveNum } from './validateFn.js';
 
 class App {
