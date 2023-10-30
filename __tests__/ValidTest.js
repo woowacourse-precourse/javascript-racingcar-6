@@ -11,6 +11,7 @@ const mockQuestions = (inputs) => {
   };
 
 describe('사용자의 입력값에 대한 유효성 테스트', () => {
+    //자동차 이름 유효성 검사
     test('올바른 자동차 이름을 넣은 경우', async () => {
         const carInput = "pobi,crong,woong";
         const result = ["pobi","crong","woong"];
@@ -36,17 +37,23 @@ describe('사용자의 입력값에 대한 유효성 테스트', () => {
 
         // then
         const name = await getCarNames();
-        expect(() => isValidInput(name)).toThrow("[ERROR]");
+        expect(() => isValidInput(name)).toThrowError("[ERROR]");
     });
 
+    //시도횟수 유효성 검사
+    test('올바른 시도 횟수를 넣은 경우', async () => {
+        const carInput = '2';
+        const result = 2;
+
+        mockQuestions(carInput);
+
+        const count = await getTryCount();
+        const validatedCount = isValidCount(count);
+        expect(validatedCount).toEqual(result);
+    })
     test.each([
-        [[""]],
-        [["pobieastjun"]],
-        [["pobi"]],
-        [["pobi,eastjun"]],
-        [["pobi,,eastjun"]],
-        [["pobi, ,eastjun"]],
-        [["pobi,pobi"]]
+        [""],
+        ["a"]
     ])("유효하지 않은 시도 횟수에 대한 예외처리", async (inputs) => {
         // given
         mockQuestions(inputs);

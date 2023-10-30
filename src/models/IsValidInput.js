@@ -8,7 +8,7 @@ export const isValidInput = (name) => {
     }
 
     //2. ','로 구분되있지 않을 경우
-    if ( !name.inculdes(',') ) {
+    if ( !name.includes(',') ) {
         throw new Error( NAME_ERROR.ONE_NAME_ERROR );
     }
 
