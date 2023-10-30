@@ -1,17 +1,27 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
+import { Console } from "@woowacourse/mission-utils";
 import { Messages } from "./Constants/Messages.js";
 
 class App {
   async play() {
-    MissionUtils.Console.print(Messages.INPUT_CARNAME);
+    Console.print(Messages.INPUT_CARNAME);
 
-    const carNameInput = await MissionUtils.Console.readLineAsync('');
+    const carNameInput = await Console.readLineAsync('');
+
+    Console.print(Messages.INPUT_NUMBER_OF_MOVES);
+
+    const userInput = await Console.readLineAsync('');
+    
+    if (!Number(userInput)){
+      throw new Error(Messages.ERROR_NUMBER_OF_MOVES_INPUT_WORNG);
+    }
   }
 
   async carName(carNameInput) {
     const carNameArr = carNameInput.split(',');
     const setCollection = new Set(carNameArr);
     const isDuplicate = setCollection.size < carNameArr.length;
+
+    
 
     // 자동차 이름의 길이가 0 또는 5를 초과할 경우 ERROR
     for (let i = 0; i < carNameArr.length; i++){
