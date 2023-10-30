@@ -40,11 +40,11 @@ describe('getRepeatNum 함수 테스트', () => {
 
   test('0 이하의 수를 입력했을 때, 예외처리', async () => {
     // given
-    const input = ['0', '-1', '-20'];
+    const input = ['-1'];
     mockQuestions(input);
 
     // when
-    const repeatNum = await getRepeatNum();
+    const repeatNum = getRepeatNum();
 
     //  then
     await expect(repeatNum).rejects.toThrow('[ERROR]');

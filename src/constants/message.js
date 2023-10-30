@@ -8,5 +8,6 @@ export const MESSAGE = {
 export const ERROR_MESSAGE = {
   tooLongName: '[ERROR] 차 이름은 5자 이하로 입력해주세요.',
   tooShortName: '[ERROR] 차 이름은 1자 이상 입력해주세요.',
-  requireDigit: '[ERROR] 정수만 입력해주세요.',
+  requireDigit: '[ERROR] 숫자만 입력해주세요.',
+  requireNaturalNum: '[ERROR] 양의 정수만 입력해주세요.',
 };
