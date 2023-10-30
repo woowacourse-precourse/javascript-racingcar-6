@@ -1,6 +1,14 @@
 import Car from "../src/models/Car";
 import { MissionUtils } from "@woowacourse/mission-utils";
-import { ERROR_MESSAGE } from "../src/constants";
+import {
+  ERROR_MESSAGE,
+  MOVE_THRESHOLD,
+  MAX_CAR_NAME_LENGTH,
+} from "../src/constants";
+
+const MOVING_FORWARD = MOVE_THRESHOLD;
+const STOP = 1;
+
 const mockRandoms = (numbers) => {
   MissionUtils.Random.pickNumberInRange = jest.fn();
   numbers.reduce((acc, number) => {
@@ -9,9 +17,9 @@ const mockRandoms = (numbers) => {
 };
 
 describe("Car 클래스 테스트", () => {
-  test("5자 이하의 이름을 받으면 해당 이름을 가지는 자동차 객체를 생성한다", () => {
+  test(`${MAX_CAR_NAME_LENGTH}자 이하의 이름을 받으면 해당 이름을 가지는 자동차 객체를 생성한다`, () => {
     // given
-    const name = "test";
+    const name = "a".repeat(MAX_CAR_NAME_LENGTH);
 
     // when
     const car = new Car(name);
@@ -20,9 +28,9 @@ describe("Car 클래스 테스트", () => {
     expect(car.getName()).toEqual(name);
   });
 
-  test("5자를 초과하는 이름을 입력받으면 에러를 발생시킨다.", () => {
+  test(`${MAX_CAR_NAME_LENGTH}자를 초과하는 이름을 입력받으면 에러를 발생시킨다.`, () => {
     // given
-    const name = "testest";
+    const name = "a".repeat(MAX_CAR_NAME_LENGTH + 1);
 
     // when & then
     expect(() => new Car(name)).toThrow(
@@ -40,11 +48,10 @@ describe("Car 클래스 테스트", () => {
     );
   });
 
-  test("move메서드가 호출되었을 때 4이상의 값을 받으면 position을 1 증가시킨다.", () => {
+  test(`move메서드가 호출되었을 때 ${MOVE_THRESHOLD} 이상의 값을 받으면 position을 1 증가시킨다.`, () => {
     // given
     const car = new Car("test");
-    const random = 4;
-    mockRandoms([random]);
+    mockRandoms([MOVING_FORWARD]);
 
     // when
     car.move();
@@ -53,11 +60,12 @@ describe("Car 클래스 테스트", () => {
     expect(car.getPosition()).toEqual(1);
   });
 
-  test("move메서드가 호출되었을 때 3이하의 값을 받으면 이동하지 않는다.", () => {
+  test(`move메서드가 호출되었을 때 ${
+    MOVE_THRESHOLD - 1
+  }이하의 값을 받으면 이동하지 않는다.`, () => {
     // given
     const car = new Car("test");
-    const random = 3;
-    mockRandoms([random]);
+    mockRandoms([STOP]);
 
     // when
     car.move();
