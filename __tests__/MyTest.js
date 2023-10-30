@@ -50,7 +50,7 @@ describe('기능 구현 테스트', () => {
     });
 
     test('횟수를 입력받는다.', async () => {
-        const result = app.getTryCount();
+        const result = await app.getTryCount();
         expect(result).toEqual(5);
     });
 
