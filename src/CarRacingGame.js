@@ -6,6 +6,7 @@ class CarRacingGame {
   constructor() {
     this.cars = [];
     this.attempts = '';
+    this.raceResult = [];
   }
 
 
@@ -73,6 +74,13 @@ class CarRacingGame {
       return true;
     }
     return false;
+  }
+
+  printRaceProgress(car, index) {
+    if (car.decideCarAction()) {
+      this.raceResult[index] += 1;
+    }
+    Console.print(`${car.carName} : ${'-'.repeat(this.raceResult[index])}`);
   }
 
 }
