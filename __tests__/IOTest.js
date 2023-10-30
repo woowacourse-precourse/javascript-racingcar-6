@@ -1,4 +1,5 @@
 import { askNames } from "../src/core/io.js";
+import { InvalidPlayerNameError } from "../src/utils/error.js";
 import { mockQuestions } from "./ApplicationTest.js";
 
 describe("입출력 테스트", () => {
@@ -15,6 +16,18 @@ describe("입출력 테스트", () => {
     inputs.forEach(async (_, index) => {
       const names = await askNames();
       expect(names).toEqual(outputs[index]);
+    });
+  });
+
+  test("중복된 이름 발견 시 예외 처리", () => {
+    const inputs = ["a,a", "b,a,b", "a,a,b", "b,b,b"];
+
+    mockQuestions(inputs);
+
+    inputs.forEach(async () => {
+      await expect(askNames()).rejects.toThrowError(
+        new InvalidPlayerNameError(InvalidPlayerNameError.TYPE_DUPLICATED)
+      );
     });
   });
 });
