@@ -27,26 +27,30 @@ function goOrStay(carName, Go, carGoCount) {
   if (Go == true) carGoCount[carName] += 1; // 4이상이었다면 한칸 앞으로 가기
 }
 function printGoProgress(carGoCount, car) {
+  let carGoCountForPrint = [];
+  let winnerForPirnt = "";
   let max = 0;
   let winner = [];
-  car.map((e) => {
+  car.map((e, i) => {
+    //e는 차의 이름, i는 index
     if (max < carGoCount[e]) {
       max = carGoCount[e];
       winner[0] = e;
     }
-    Console.print(e);
-    Console.print(" : ");
-    for (let i = 0; i < carGoCount[e]; i++) Console.print("-");
+
+    carGoCountForPrint[i] = "";
+    for (let j = 0; j < carGoCount[e]; j++) carGoCountForPrint[i] += "-";
+    Console.print(`${e} : ${carGoCountForPrint[i]}`);
   });
   car.map((e) => {
     if (max == carGoCount[e] && winner[0] != e) winner.push(e);
   });
 
-  Console.print("최종 우승자 : ");
   winner.map((e, i) => {
-    if (i != 0) Console.print(", ");
-    Console.print(e);
+    if (i != 0) winnerForPirnt += ", ";
+    winnerForPirnt += e;
   });
+  Console.print(`최종 우승자 : ${winnerForPirnt}`);
 }
 
 function playGame(tryNum, carGoCount, car) {
@@ -69,6 +73,7 @@ class App {
     });
     Console.print("\n실행 결과");
     playGame(tryNum, carGoCount, car);
+    const a = ["-", "-", "-", "-"];
   }
 }
 
