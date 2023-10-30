@@ -17,6 +17,7 @@ class App {
   async getCarList() {
     const carInput = await Console.readLineAsync(GAME_MESSAGE.CAR_INPUT);
     const carList = [...carInput.split(",")];
+
     this.Error.validateCarInput(carList);
 
     return carList;
@@ -24,6 +25,7 @@ class App {
 
   async getTryCount() {
     const tryCount = await Console.readLineAsync(GAME_MESSAGE.COUNT_INPUT);
+
     this.Error.validateCountInput(tryCount);
 
     return tryCount;

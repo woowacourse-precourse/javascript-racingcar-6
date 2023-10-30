@@ -8,7 +8,6 @@ class InputError {
   }
 
   validateCarNameListLength(input) {
-    console.log(input);
     if (input.length > 5) {
       throw new Error(ERROR_MESSAGE.INPUT_CAR_NAME_LIST_LENGTH_ERROR);
     }
@@ -23,7 +22,7 @@ class InputError {
   }
 
   validateCountInputLength(input) {
-    if (input.length === 1) {
+    if (input.length !== 1) {
       throw new Error(ERROR_MESSAGE.INPUT_COUNT_LENGTH_ERROR);
     }
   }
@@ -40,7 +39,7 @@ class InputError {
     }
   }
 
-  validateCarNameInput(input) {
+  validateCarInput(input) {
     this.validateInputExist(input);
     this.validateCarNameListLength(input);
     this.validateCarNameLength(input);
