@@ -33,6 +33,22 @@ class App {
     }
   }
 
+  printMoveResult() {
+    this.cars.forEach((car) => {
+      print(`${car.name} : ${'-'.repeat(car.position)}`);
+    });
+
+    print();
+  }
+
+  printWinners() {
+    const winnerNames = this.winners.map((car) => {
+      return car.getName();
+    });
+
+    print(`최종 우승자 : ${winnerNames.join(', ')}`);
+  }
+
   async play() {}
 }
 
