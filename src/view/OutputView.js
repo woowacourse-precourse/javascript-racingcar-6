@@ -10,10 +10,10 @@ const OutputView = {
     Console.print(PrintMessage.RESULT_MESSAGE);
   },
 
-  printMoveMarking(name, distanceCount) {
-    Console.print(
-      `${name} : ${PrintMessage.MOVE_MARKING.repeat(distanceCount)}`
-    );
+  printMoveMarking(carMoveState) {
+    carMoveState.map((car) => {
+      Console.print(`${car[0]} : ${PrintMessage.MOVE_MARKING.repeat(car[1])}`);
+    });
   },
 
   printWinnerMessage(winnersArray) {
