@@ -14,6 +14,7 @@ export const ERROR_MESSAGE = {
 };
 
 export const CONFIG = {
+  nameMaxLength: 5,
   range: {
     minNumber: 0,
     maxNumber: 9,
