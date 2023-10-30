@@ -6,6 +6,28 @@
     <title>Document</title>
 </head>
 <body>
+
+  테스트코드: 에러 나오는 테스트와 시도를 나눠서 테스트 하기
+  에러 나오는 테스트:
+  ㅡ 시도에 0을 넣을 때 1이상 넣으라고 하기,
+  ㅡ 자동차 이름에 , 안 넣고 5자 이상일 때 5자 이하라고하기
+  
+  시도:
+  ㅡ 5번 시도하고 이름이 pobi,woosup,dragon,woni,jun 일 때 
+  각 시도의 숫자가 [1,4,3,4,5], [5,7,2,7,2],[9,5,2,7,3],[1,9,3,7,5],[8,7,6,5,4]이라면
+  제대로 출력되는지 확인
+  pobi : ---
+  woosup : -----
+  dragon : -
+  woni : -----
+  jun : ---
+최종우승자: woosup, woni 
+이렇게 나오는지
+
+  ㅡ 시도가 5번일때 그 시도가 잘되고 있는지 추적(spyOn)
+  ㅡ 이름이 입력받을 때 그 입력이 잘되고 있는지 추적
+  ㅡ 3번째 시도에서 pobi,woosup,woni만 -가 추가되었는지 확인
+
     <script>
     // let arrayCarName=['woosup','pobi'];
     // const objectCarName = new Object()

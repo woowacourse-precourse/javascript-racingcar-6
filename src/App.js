@@ -22,6 +22,7 @@ async attemptNumber(){
   const newNumber = parseInt(getNumber);
   if(isNaN(newNumber)){throw new Error(ERROR.NUMBER);}
   if(newNumber===0){throw new Error(ERROR.ZERO);}
+  if(newNumber !== parseFloat(getNumber)){throw new Error(ERROR.INTEGER)}
   return newNumber
 }
 
