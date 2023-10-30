@@ -34,4 +34,24 @@ describe("Car 클래스 테스트", () => {
 
         expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
+    test("우승 여부 판별 - 우승", () => {
+        const MaxCount = 3;
+        const car = new Car("soyoung125");
+
+        car.goForward();
+        car.goForward();
+        car.goForward();
+
+        const result = car.isWinner(MaxCount);
+        expect(result).toBeTruthy();
+    });
+    test("우승 여부 판별 - 탈락", () => {
+        const MaxCount = 3;
+        const car = new Car("soyoung125");
+
+        car.goForward();
+
+        const result = car.isWinner(MaxCount);
+        expect(result).toBeFalsy();
+    });
 })
