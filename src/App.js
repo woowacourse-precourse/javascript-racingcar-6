@@ -10,7 +10,6 @@ class App {
     const getTryNumber = new GetTryNumber();
     const tryNumber = await getTryNumber.getTryNumber();
 
-    // console.log(carsList, tryNumber);
     const game = new Game(carsList, tryNumber);
     game.gameStart();
   }

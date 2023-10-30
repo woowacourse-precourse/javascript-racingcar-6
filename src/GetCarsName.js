@@ -31,7 +31,7 @@ class GetCarsName {
 
   async getCarsNameList() {
     const carsString = await this.getCarsNameString();
-    const carsList = await this.stringToList(carsString);
+    const carsList = this.stringToList(carsString);
     this.validate(carsList);
 
     return this.#carsNameList;

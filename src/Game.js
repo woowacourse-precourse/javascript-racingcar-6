@@ -5,7 +5,6 @@ class Game {
     this.carsList = carsList;
     this.tryNumber = tryNumber;
     this.currentPoint = carsList.map(() => 0);
-    // this.currentRound = 0;
   }
 
   getRandomNumber() {
@@ -33,7 +32,7 @@ class Game {
   }
 
   roundStart() {
-    this.currentPoint = this.currentPoint.map((item, index) => {
+    this.currentPoint = this.currentPoint.map((item) => {
       if (this.getRandomNumber() >= 4) {
         return item + 1;
       } else {
@@ -53,8 +52,5 @@ class Game {
     this.printResult();
   }
 }
-
-// const g = new Game(['pobi', 'woni', 'jun'], 5);
-// g.gameStart();
 
 export default Game;

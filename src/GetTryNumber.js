@@ -17,8 +17,4 @@ class GetTryNumber {
   }
 }
 
-// const a = new GetTryNumber();
-// const n = await a.GetTryNumber();
-// console.log(n);
-
 export default GetTryNumber;
