@@ -1,5 +1,6 @@
 import { createRandomNumber } from '../src/utils/createRandomList';
 import { goStopCar } from '../src/utils/goStopCar';
+import { pickWinner } from '../src/utils/pickWinner';
 import { validateLength, validateIsNumber } from '../src/utils/validate';
 
 describe('예외 테스트', () => {
@@ -60,5 +61,27 @@ describe('유틸리티 함수', () => {
         result: '',
       },
     ]);
+  });
+
+  test('우승 자동차 선정', () => {
+    const car = [
+      {
+        name: 'pobi',
+        number: 5,
+        result: '----',
+      },
+      {
+        name: 'woni',
+        number: 4,
+        result: '--',
+      },
+      {
+        name: 'juru',
+        number: 1,
+        result: '----',
+      },
+    ];
+
+    expect(pickWinner(car)).toEqual(['pobi', 'juru']);
   });
 });
