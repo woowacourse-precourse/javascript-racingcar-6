@@ -8,11 +8,12 @@ class Game {
     this.race = new Race();
   }
 
-  async playGame() {
+  async startGame() {
     const carsName = await this.ioManager.getCarsName();
     const raceCount = await this.ioManager.getRaceCount();
 
-    Console.print('carsName: ' + carsName + ', raceCount: ' + raceCount);
+    Console.print('실행 결과');
+    return this.race.playRace(carsName, raceCount);
   }
 }
 
