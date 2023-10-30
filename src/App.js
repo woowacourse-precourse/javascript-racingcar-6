@@ -9,11 +9,11 @@ class App {
     const totalRacingCount = await racingGame.getRacingCount();
 
     for (let count = 0; count < totalRacingCount; count += 1) {
-      racingGame.playRacing(registeredCars);
-      racingGame.showGameStatus(registeredCars);
+      racingGame.playRacing();
+      racingGame.showGameStatus();
     }
 
-    const racingWinners = racingGame.findWinner(registeredCars);
+    const racingWinners = racingGame.findWinner();
     racingGame.announceWinner(racingWinners);
   }
 }
