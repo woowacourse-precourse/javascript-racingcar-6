@@ -13,8 +13,8 @@ class App {
       racingGame.showGameStatus();
     }
 
-    const racingWinners = racingGame.findWinner();
-    racingGame.announceWinner(racingWinners);
+    racingGame.findWinner();
+    racingGame.announceWinner();
   }
 }
 

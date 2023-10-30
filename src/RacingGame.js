@@ -5,6 +5,7 @@ import ErrorHandler from './ErrorHandler.js';
 class RacingGame {
   constructor(carsList) {
     this.carsList = carsList;
+    this.winnersList = null;
   }
 
   SETTINGS = {
@@ -58,11 +59,11 @@ class RacingGame {
       return [targetCar];
     }, initialWinnersArray);
 
-    return winnersArray;
+    this.winnersList = winnersArray;
   }
 
-  announceWinner(winnersArray) {
-    const winnersNames = winnersArray.map((winner) => winner.name);
+  announceWinner() {
+    const winnersNames = this.winnersList.map((winner) => winner.name);
     Console.print(`최종 우승자 : ${winnersNames.join(', ')}`);
   }
 }
