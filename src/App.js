@@ -1,7 +1,7 @@
 import { Console, Random } from "@woowacourse/mission-utils";
 class App {
   constructor() {
-    this.carNameArr = [];
+    this.carNameList = [];
     this.dashSymbol = [];
     this.randomNumArr = [];
     this.dash = "-";
@@ -14,9 +14,9 @@ class App {
     Console.print(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
     );
-    const carNameList = await this.inputCarName();
-    this.carNameArr = convertStrToArr(carNameList);
-    this.isValidCarNames(this.carNameArr);
+    this.carNameList = await this.inputCarName();
+    console.log(this.carNameList);
+    this.isValidCarNames(this.carNameList);
     Console.print("시도할 횟수는 몇 회인가요?");
     this.attemptCount = await this.inputAttemptCount();
     this.isValidAttemptCount(this.attemptCount);
@@ -30,11 +30,12 @@ class App {
 
   async inputCarName() {
     const carNames = await Console.readLineAsync("");
-    return carNames;
+
+    return carNames.split(",");
   }
   isValidCarNames() {
-    for (let i = 0; i < this.carNameArr.length; i++) {
-      if (this.carNameArr[i].length > 5) {
+    for (let i = 0; i < this.carNameList.length; i++) {
+      if (this.carNameList[i].length > 5 || this.carNameList[i].length === 0) {
         throw new Error(this.errorMessage[0]);
       }
     }
@@ -51,14 +52,14 @@ class App {
 
   createRandomNumber() {
     this.randomNumArr = [];
-    for (let i = 0; i < this.carNameArr.length; i++) {
+    for (let i = 0; i < this.carNameList.length; i++) {
       const randomNum = Random.pickNumberInRange(0, 9);
       this.randomNumArr.push(randomNum);
     }
   }
 
   updateCarPosition() {
-    for (let i = 0; i < this.carNameArr.length; i++) {
+    for (let i = 0; i < this.carNameList.length; i++) {
       if (!this.dashSymbol[i]) {
         this.dashSymbol[i] = "";
       }
@@ -73,21 +74,21 @@ class App {
       this.createRandomNumber();
       this.updateCarPosition();
 
-      for (let j = 0; j < this.carNameArr.length; j++) {
-        Console.print(`${this.carNameArr[j]} : ${this.dashSymbol[j]}`);
+      for (let j = 0; j < this.carNameList.length; j++) {
+        Console.print(`${this.carNameList[j]} : ${this.dashSymbol[j]}`);
       }
     }
   }
 
   getMaxValue() {
-    const maxName = [this.carNameArr[0]];
-    const maxDash = this.dashSymbol[0].length;
-    for (let i = 1; i < this.carNameArr.length; i++) {
+    let maxName = [this.carNameList[0]];
+    let maxDash = this.dashSymbol[0].length;
+    for (let i = 1; i < this.carNameList.length; i++) {
       if (this.dashSymbol[i].length > maxDash) {
-        maxName = [this.carNameArr[i]];
+        maxName = [this.carNameList[i]];
         maxDash = this.dashSymbol[i].length;
       } else if (this.dashSymbol[i].length === maxDash) {
-        maxName.push(this.carNameArr[i]);
+        maxName.push(this.carNameList[i]);
       }
     }
     return maxName;
@@ -98,10 +99,5 @@ class App {
     Console.print(`최종 우승자 : ${winners}`);
   }
 }
-
-const convertStrToArr = (nameList) => {
-  const splitName = nameList.split(",");
-  return splitName;
-};
 
 export default App;
