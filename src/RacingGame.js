@@ -16,9 +16,7 @@ class RacingGame {
   }
 
   gameStart() {
-    Array.from({ length: this.repeatNumber }).forEach(() =>
-      this.printEachProgress(),
-    );
+    Array.from({ length: this.repeatNumber }).forEach(() => this.printEachProgress());
 
     this.printWinner();
   }
