@@ -14,11 +14,11 @@
 
   - `lap`인스턴스에 자동차 이름 배열과, 실행횟수를 전달한다. [v]
 
-  - `lap`의 `printStage()`메서드를 실행횟수 만큼 실행한다. [v]
+  - `lap`의 `recordCheck()`메서드를 실행횟수 만큼 실행한다. [v]
 
   - `lap`의 `record`를 통해 우승자를 확인하고, 출력한다. [v]
 
-- `Lap(entry, labLength)`
+- `Lap(entry)`
 
   - 차수별 실행 결과를 출력한다. `printStage()`[v]
 
