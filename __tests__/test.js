@@ -35,4 +35,23 @@ describe("class App test", () => {
       expect(testMaxLength).toBe(9);
     });
   });
+
+  describe("method test : makeWinnerIndexArray()", () => {
+    test("maxLength가 5인 자동차 객체의 index를 넣은 배열[0, 2, 5]이 반환이 되는가 ?", () => {
+      const testParameter = [
+        { name: "equus", result: "-----" },
+        { name: "pony", result: "-" },
+        { name: "ray", result: "-----" },
+        { name: "SM5", result: "---" },
+        { name: "K7", result: "----" },
+        { name: "G80", result: "-----" },
+      ];
+      const testMaxLength = 5;
+      const testWinnerIndex = app.makeWinnerIndexArray(
+        testParameter,
+        testMaxLength
+      );
+      expect(testWinnerIndex).toEqual([0, 2, 5]);
+    });
+  });
 });

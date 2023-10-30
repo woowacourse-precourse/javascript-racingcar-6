@@ -70,6 +70,7 @@ class App {
   }
 
   makeWinnerIndexArray(raceResult, maxLength) {
+    // test code 완료
     let winnerIndex = [];
     raceResult.forEach((element, index) => {
       winnerIndex = this.getWinnerIndex(element, index, maxLength, winnerIndex);
@@ -78,6 +79,7 @@ class App {
   }
 
   findMaxLength(lengthArray) {
+    // test code 완료
     return Math.max(...lengthArray);
   }
 
