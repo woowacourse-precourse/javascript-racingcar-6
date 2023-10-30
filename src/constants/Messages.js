@@ -2,9 +2,11 @@ const MESSAGES = {
   REQUEST: {
     INPUT_VEHICLES:
       '경주할 자동차 이름을 입력하세요.\n(이름은 쉼표(,) 기준으로 구분합니다.)\n',
-    INPUT_ROUND: '시도할 횟수는 몇 회인가요? (1-99)\n',
+    INPUT_ROUND: '시도할 횟수는 몇 회인가요?\n',
   },
   ERROR: {
+    EMPTY_INPUT: '[ERROR] 입력 값이 없습니다.',
+
     INVALID_INPUT_CHARACTER_VEHICLES:
       '[ERROR] 자동차 목록은 공백 없이 영문자와 쉼표만 사용하여 입력해주세요.',
     INVALID_INPUT_FORMAT_VEHICLES:
@@ -16,8 +18,6 @@ const MESSAGES = {
     TOO_FEW_VEHICLES: '[ERROR] 두 개 이상의 자동차를 입력해주세요.',
 
     INVALID_INPUT_FORMAT_ROUND: '[ERROR] 시도할 횟수는 숫자로 입력해주세요.',
-    LEADING_ZERO_ROUND_NUM: '[ERROR] 0으로 시작하는 숫자는 입력할 수 없습니다.',
-    EXCEED_MAXIMUM_ROUND_NUM: '[ERROR] 입력 가능한 최대 횟수는 99회 입니다.',
   },
   GAME_RESULT: '실행 결과',
   GAME_WINNER: '최종 우승자 : ',

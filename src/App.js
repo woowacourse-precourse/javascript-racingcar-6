@@ -1,9 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
 import MESSAGES from './constants/Messages.js';
-import {
-  validateInputRound,
-  validateInputVehicles,
-} from './utils/validation.js';
+import { isValidInputRound, isValidInputVehicles } from './utils/validation.js';
 
 class App {
   constructor() {
@@ -16,7 +13,7 @@ class App {
       MESSAGES.REQUEST.INPUT_VEHICLES,
     );
 
-    validateInputVehicles(inputVehicles);
+    isValidInputVehicles(inputVehicles);
 
     this.vehicleList = inputVehicles.split(',');
   }
@@ -26,7 +23,7 @@ class App {
       MESSAGES.REQUEST.INPUT_ROUND,
     );
 
-    validateInputRound(inputRound);
+    isValidInputRound(inputRound);
 
     this.round = +inputRound;
   }

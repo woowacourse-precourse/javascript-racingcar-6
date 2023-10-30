@@ -7,8 +7,6 @@ const REGEXP = {
   },
   ROUND: {
     INPUT_FORMAT_CHECK_REGEXP: /^\d+$/,
-    FIRST_NUM_CHECK_REGEXP: /^[1-9]\d*$/,
-    MAXIMUM_ROUND_NUM_CHECK_REGEXP: /^[1-9]{1}\d{0,1}$/,
   },
 };
 
