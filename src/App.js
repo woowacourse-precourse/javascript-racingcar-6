@@ -32,16 +32,19 @@ class App {
     });
   }
 
-  async getPlayerInputRacingRounds() {
-    const ROUNDS =
+  async getAndValidateRacingRounds() {
+    const PLAYER_RACING_ROUNDS_INPUT =
       await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?');
-    const ROUNDSNUMBER = parseInt(ROUNDS, 10);
+    this.ROUNDS = this.validateRacingRounds(PLAYER_RACING_ROUNDS_INPUT);
+  }
 
-    if (isNaN(ROUNDSNUMBER)) {
+  validateRacingRounds(playerInput) {
+    const ROUNDS_NUMBER = parseInt(playerInput, 10);
+    if (isNaN(ROUNDS_NUMBER) || this.ROUNDS_NUMBER <= 0) {
       throw new Error('[ERROR] 숫자가 잘못된 형식입니다.');
     }
 
-    this.ROUNDS = ROUNDSNUMBER;
+    return ROUNDS_NUMBER;
   }
 
   findWinner() {
@@ -67,7 +70,7 @@ class App {
 
   async play() {
     await this.getAndValidatePlayerName();
-    await this.getPlayerInputRacingRounds();
+    await this.getAndValidateRacingRounds();
 
     MissionUtils.Console.print('\n실행결과');
     for (let i = 0; i < this.ROUNDS; i++) {
