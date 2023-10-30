@@ -61,6 +61,8 @@ N대의 자동차 중 가장 멀리 이동한 자동차가 우승하는 게임
 
 - [ ] 자동차들의 이동거리를 출력한다. controller의 transOutputFormDistance에서 전달받는다.
 
+- [ ] Error message를 출력한다. controller에서 throw으로 전달받는다.
+
 ## [model](#model)
 - `car` - 자동차 클래스<br>
 변수 : 이름, 누적 거리 값<br>
