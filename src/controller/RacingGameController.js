@@ -6,7 +6,7 @@ import { validateMoveCount } from '../validations/moveCountValidation.js';
 
 import { InputView, OutputView } from '../views/index.js';
 
-import RacingGameService from '../service/RacingCarGameService.js';
+import RacingGameService from '../service/RacingGameService.js';
 
 // TODO: 네이밍 고민해보기
 class RacingGameController {
