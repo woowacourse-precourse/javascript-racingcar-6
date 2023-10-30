@@ -8,26 +8,11 @@ class Input {
     this.times = 0;
   }
 
-  isValidNameFormat(names) {
-    return names.every((name) => name.length <= 5);
-  }
-
-  includeSemiColon(input) {
-    return input.includes(',');
-  }
-
   saveCarNames(input) {
     this.input = input;
     validation.isValidNameFormat(input);
     const names = input.split(',').map((name) => name.trim());
     validation.isValidNamesArray(names);
-    // if (!this.includeSemiColon(input)) {
-    //   throw new Error(ERROR_MESSAGE.DIVISION_BY_SEMICOLON);
-    // }
-    // const names = input.split(',').map((name) => name.trim());
-    // if (!this.isValidNameFormat(names)) {
-    //   throw new Error(ERROR_MESSAGE.LESS_THAN_FIVE);
-    // }
     return names;
   }
 
@@ -47,7 +32,5 @@ class Input {
     validation.isValidNumberOfTimesFormat(numberOfTimes);
     return numberOfTimes;
   }
-
-  saveNumberOfTimes() {}
 }
 export default Input;
