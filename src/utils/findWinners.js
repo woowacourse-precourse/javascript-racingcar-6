@@ -1,11 +1,7 @@
-const maxStepCallback = (max, car) => {
-  return car.getStep() > max ? car.getStep() : max;
-};
+const maxStepCallback = (max, car) =>
+  car.getStep() > max ? car.getStep() : max;
 
-const maxStep = (cars) => {
-  return cars.reduce(maxStepCallback, cars[0].getStep());
-};
+const maxStep = (cars) => cars.reduce(maxStepCallback, cars[0].getStep());
 
-export const findWinners = (cars) => {
-  return cars.filter((car) => car.getStep() === maxStep(cars));
-};
+export const findWinners = (cars) =>
+  cars.filter((car) => car.getStep() === maxStep(cars));
