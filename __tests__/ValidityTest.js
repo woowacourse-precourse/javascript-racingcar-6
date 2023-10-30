@@ -58,9 +58,9 @@ describe("검증 함수 테스트", () => {
     const inputs = [-1.1, -0.123456, 1.1, 0.123456, Infinity, -Infinity, NaN];
 
     inputs.forEach((amount) => {
-      expect(assertTryAmountValid(amount)).rejects.toThrowError(
-        new TryAmountError(TryAmountError.TYPE_NOT_INTEGER)
-      );
+      expect(() => {
+        assertTryAmountValid(amount);
+      }).toThrowError(new TryAmountError(TryAmountError.TYPE_NOT_INTEGER));
     });
   });
 
@@ -68,8 +68,10 @@ describe("검증 함수 테스트", () => {
     const inputs = [0, -1];
 
     inputs.forEach((amount) => {
-      expect(assertTryAmountValid(amount)).rejects.toThrowError(
-        new TryAmountError(TryAmountError.TYPE_NOT_INTEGER)
+      expect(() => {
+        assertTryAmountValid(amount);
+      }).toThrowError(
+        new TryAmountError(TryAmountError.TYPE_IS_SMALL_THAN_ONE)
       );
     });
   });
