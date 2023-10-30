@@ -62,4 +62,40 @@ describe('자동차 경주 게임', () => {
     expect(spyConsolePrint).toHaveBeenNthCalledWith(3, 'jena : --');
     expect(spyConsolePrint).toHaveBeenNthCalledWith(4, '\n');
   });
+
+  test('printWinner 함수 테스트', () => {
+    // given
+    const racingCars = [
+      [
+        { carName: 'pobi', score: 3 },
+        { carName: 'jun', score: 1 },
+        { carName: 'jena', score: 2 },
+      ],
+      [
+        { carName: 'pobi', score: 2 },
+        { carName: 'jun', score: 3 },
+        { carName: 'jena', score: 3 },
+      ],
+    ];
+    const racingGame1 = new RacingGame({
+      racingCars: racingCars[0],
+      playCount: 5,
+    });
+    const racingGame2 = new RacingGame({
+      racingCars: racingCars[1],
+      playCount: 5,
+    });
+
+    // when
+    racingGame1.printWinner();
+    racingGame2.printWinner();
+
+    // then
+    expect(spyConsolePrint).toHaveBeenCalledTimes(2);
+    expect(spyConsolePrint).toHaveBeenNthCalledWith(1, '최종 우승자 : pobi');
+    expect(spyConsolePrint).toHaveBeenNthCalledWith(
+      2,
+      '최종 우승자 : jun, jena',
+    );
+  });
 });
