@@ -1,10 +1,9 @@
 import { Console } from '@woowacourse/mission-utils';
+import { INPUT_MESSAGE_FUNCTION } from '../constants/Messages.js';
 
 const InputView = {
-  async readRacingVehicleName(vehicles) {
-    const racingVehicleName = await Console.readLineAsync(
-      `경주할 ${vehicles} 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분`,
-    );
+  async readRacingVehicleName(vehicle) {
+    const racingVehicleName = await Console.readLineAsync(INPUT_MESSAGE_FUNCTION.name(vehicle));
     return racingVehicleName;
   },
 };
