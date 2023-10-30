@@ -63,14 +63,16 @@ describe('잘못된 값을 입력하면 에러 문구 출력 - 자동차 이름'
 });
 
 describe('잘못된 값을 입력하면 에러 문구 출력 - 시도 횟수', () => {
-  test('유효하지 않은 형식일 경우', () => {
-    const names = ['', null, undefined];
+  test('숫자 형식에서 어긋날 경우', () => {
+    const names = ['', undefined, ' ', '@', '안녕', '6육'];
 
-    names.map((name) => expect(() => RacingTryCount.validate(name)).toThrow(ERROR.INVALID_COUNT));
+    names.map((name) =>
+      expect(() => RacingTryCount.validate(Number(name))).toThrow(ERROR.INVALID_COUNT),
+    );
   });
 
   test('시도 횟수가 0보다 큰 수가 아닐 경우', () => {
-    const names = ['0', '-1', ' ', '@', '안녕', '6육'];
+    const names = [0, -1];
 
     names.map((name) =>
       expect(() => RacingTryCount.validate(name)).toThrow(ERROR.MUST_ENTER_A_NUMBER_OVER_ZERO),
