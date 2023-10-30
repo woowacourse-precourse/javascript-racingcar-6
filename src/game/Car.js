@@ -12,7 +12,7 @@ class Car {
   }
 
   printCurrentPosition(carName, position) {
-    return Console.print(carName + ': ' + '-'.repeat(position))
+    return Console.print(carName + ' : ' + '-'.repeat(position))
   }
 }
 

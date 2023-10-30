@@ -19,7 +19,6 @@ class Race {
         carsPosition[j] += this.car.moveOrStop(carsName[j], randomNum);
         this.car.printCurrentPosition(carsName[j], carsPosition[j]);
       }
-      console.log();
     }
 
     return this.calculateWinner(carsName, carsPosition);
