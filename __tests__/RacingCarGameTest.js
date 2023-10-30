@@ -1,4 +1,4 @@
-import { Console, MissionUtils } from '@woowacourse/mission-utils';
+import { MissionUtils } from '@woowacourse/mission-utils';
 import { ERROR, MESSAGE } from '../src/Constant.js';
 import RacingCarGame from '../src/RacingCarGame.js';
 
@@ -49,14 +49,16 @@ describe('RacingCarGame 클래스 테스트', () => {
       ],
     },
   ])('게임이 정상 작동 하는지 테스트', async ({ inputs, randoms, outputs }) => {
-    const logSpy = getLogSpy();
-
+    // given
     mockQuestions(inputs);
     mockRandoms(randoms);
+    const logSpy = getLogSpy();
 
+    // when
     const racingCarGame = new RacingCarGame();
     await racingCarGame.startGame();
 
+    // then
     outputs.forEach((output) => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
@@ -64,14 +66,18 @@ describe('RacingCarGame 클래스 테스트', () => {
 
   test.each([
     { inputs: [''], output: ERROR.hasEmpty },
+    { inputs: ['  '], output: ERROR.hasEmpty },
     { inputs: [',pobi,'], output: ERROR.hasEmpty },
     { inputs: ['kimyuna'], output: ERROR.longerThanMaxLen },
     { inputs: ['pobi,yuna,pobi'], output: ERROR.hasDuplicate },
   ])('자동차 이름 입력값에 대한 예외처리 테스트', async ({ inputs, output }) => {
+    // given
     mockQuestions(inputs);
 
+    // when
     const racingCarGame = new RacingCarGame();
 
+    // then
     await expect(racingCarGame.startGame()).rejects.toThrow(output);
   });
 
@@ -81,10 +87,13 @@ describe('RacingCarGame 클래스 테스트', () => {
     { input: ['pobi', ''], output: ERROR.isNotNumber },
     { input: ['pobi', '0'], output: ERROR.notMoving },
   ])('시도 횟수 입력값에 대한 예외처리 테스트', async ({ input, output }) => {
+    // given
     mockQuestions(input);
 
+    // when
     const racingCarGame = new RacingCarGame();
 
+    // then
     await expect(racingCarGame.startGame()).rejects.toThrow(output);
   });
 });
