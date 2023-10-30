@@ -10,9 +10,9 @@ class MainGame {
     const attemptsNumber = await this.inputAttemptsNumber();
     this.printExecutionResult();
 
-    const cars = carNameList.map((name) => new Car(name));
-    const race = new Race(cars);
-    race.start(attemptsNumber);
+    const cars = await carNameList.map((name) => new Car(name));
+    const race = await new Race(cars);
+    await race.start(attemptsNumber);
   };
 
   static isSplitComma = (carNameList) => {
