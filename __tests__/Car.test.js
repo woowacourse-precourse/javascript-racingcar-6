@@ -48,19 +48,19 @@ describe("Car 클래스 테스트", () => {
     );
   });
 
-  test(`move메서드가 호출되었을 때 ${MOVE_THRESHOLD} 이상의 값을 받으면 position을 1 증가시킨다.`, () => {
+  test(`이동을 시도하는 메서드가 호출되었을 때 ${MOVE_THRESHOLD} 이상의 값을 받으면 position을 1 증가시킨다.`, () => {
     // given
     const car = new Car("test");
     mockRandoms([MOVING_FORWARD]);
 
     // when
-    car.move();
+    car.attemptMove();
 
     // then
     expect(car.getPosition()).toEqual(1);
   });
 
-  test(`move메서드가 호출되었을 때 ${
+  test(`이동을 시도하는 메서드가 호출되었을 때 ${
     MOVE_THRESHOLD - 1
   }이하의 값을 받으면 이동하지 않는다.`, () => {
     // given
@@ -68,7 +68,7 @@ describe("Car 클래스 테스트", () => {
     mockRandoms([STOP]);
 
     // when
-    car.move();
+    car.attemptMove();
 
     // then
     expect(car.getPosition()).toEqual(0);

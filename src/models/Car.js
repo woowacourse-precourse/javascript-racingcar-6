@@ -24,11 +24,15 @@ class Car {
     }
   }
 
-  move() {
+  attemptMove() {
     const randomValue = MissionUtils.Random.pickNumberInRange(0, 9);
     if (randomValue >= MOVE_THRESHOLD) {
-      this.position += 1;
+      this.move();
     }
+  }
+
+  move() {
+    this.position += 1;
   }
 
   getPosition() {

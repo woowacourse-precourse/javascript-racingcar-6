@@ -4,7 +4,7 @@ class Race {
   }
 
   progressRound() {
-    this.cars.forEach((car) => car.move());
+    this.cars.forEach((car) => car.attemptMove());
   }
 
   getRoundResult() {
