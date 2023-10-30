@@ -7,14 +7,7 @@ class App {
 		const { carList, tryNum } = await this.setInitialValue();
 		let carStepsList = [];
 
-		//레이싱 시작
-		Console.print("\n실행 결과"); //나중에 상수로 바꾸자
-		for (let i = 0; i < tryNum; i++) {
-			carList.forEach((car) => {
-				car.canMoveStep().printCarStpes;
-			});
-			Console.print("\n");
-		}
+		this.startRacing(carList, tryNum);
 
 		//얼마나 갔는지?
 		carList.forEach((car) => {
@@ -46,12 +39,21 @@ class App {
 		const tryNum = await Console.readLineAsync(MESSAGE.tryNum);
 		const cars = carNames.split(",");
 
-		//객체생성
 		cars.forEach((car) => {
 			carList.push(new Car(car));
 		});
 
 		return { carList, tryNum };
+	}
+
+	startRacing(carList, tryNum) {
+		Console.print(MESSAGE.result);
+		for (let i = 0; i < tryNum; i++) {
+			carList.forEach((car) => {
+				car.canMoveStep().printCarStpes;
+			});
+			Console.print(MESSAGE.newLine);
+		}
 	}
 }
 
