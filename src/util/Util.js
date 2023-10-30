@@ -1,4 +1,4 @@
-import { Random } from "@woowacourse/mission-utils";
+import { Random } from '@woowacourse/mission-utils';
 
 class Util {
 	static isForward() {
@@ -7,9 +7,11 @@ class Util {
 		}
 		return false;
 	}
+
 	static trimStringInArray(arr) {
 		return arr.map((str) => str.trim());
 	}
+	
 	static getWinners(carStateArray) {
 		let maxForwardCount = 0;
 		carStateArray.forEach((carState) => {
