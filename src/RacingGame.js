@@ -1,17 +1,10 @@
 import Messages from './Messages.js';
+import RacingCars from './RacingCars.js';
 import { MissionUtils } from '@woowacourse/mission-utils';
 
 class RacingGame {
   #TRY_NUMBER;
   #CARS_LIST = [];
-
-  getCarsList = () => {
-    return this.#CARS_LIST;
-  };
-
-  getTryNumber = () => {
-    return this.#TRY_NUMBER;
-  };
 
   shouldMoveForward = () => {
     let canMove = true;
@@ -89,18 +82,14 @@ class RacingGame {
       await this.setCarName();
       await this.setTryNumber();
 
-      let TRY_NUMBER = this.getTryNumber();
-      const CARS_LIST = this.getCarsList();
-      const CARS_STATUS = {};
-      CARS_LIST.forEach((key) => {
-        CARS_STATUS[key] = 0;
-      });
+      const cars = new RacingCars(this.#CARS_LIST);
+      const CARS_STATUS = cars.getStatus();
 
       MissionUtils.Console.print('\n' + Messages.PRINT_RACING_RESULT);
-      while (TRY_NUMBER--) {
-        for (let i = 0; i < CARS_LIST.length; i++) {
+      while (this.#TRY_NUMBER--) {
+        for (let car of this.#CARS_LIST) {
           if (this.shouldMoveForward()) {
-            CARS_STATUS[CARS_LIST[i]]++;
+            cars.increaseCarPosition(car);
           }
         }
         this.printCarPosition(CARS_STATUS);
