@@ -6,8 +6,7 @@ class Car {
     this.carName = carName;
   }
 
-  moveForward(tryCount) {
-    this.tryCount = tryCount;
+  moveForward() {
     const randomValue = Random.pickNumberInRange(0, 9);
     let countForward = [];
     if (randomValue > 4) {

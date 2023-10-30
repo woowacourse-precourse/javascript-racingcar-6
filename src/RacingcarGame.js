@@ -25,7 +25,7 @@ class RacingcarGame {
       for (let i = 0; i < tryCount; i++) {
         carsArray.map((car) => {
           const racingCar = new Car(car);
-          racingCar.moveForward(tryCount);
+          racingCar.moveForward();
         });
         Console.print("\n");
       }
