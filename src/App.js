@@ -1,12 +1,12 @@
-import InputView from './view/InputView.js';
+import GameController from './controller/GameController.js';
 
 class App {
   constructor() {
-    this.game = new InputView();
+    this.gameCotroller = new GameController();
   }
 
   async play() {
-    await this.game.startGame();
+    await this.gameCotroller.play();
   }
 }
 
