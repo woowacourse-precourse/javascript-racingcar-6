@@ -52,15 +52,8 @@ class RacingStadium {
     ConsoleOutput.output('');
   }
 
-  selectWinners() {
-    const racingCars = this.getRacingCars();
-
-    const highestScore = GameUtils.getHighestScore(racingCars);
-
-    const winners = GameUtils.findWinners(racingCars, highestScore);
-
-    const winnersName = winners.map((winner) => winner.getName());
-
+  getWinnersName() {
+    const winnersName = GameUtils.selectWinners(this.#racingCars);
     return winnersName;
   }
 }

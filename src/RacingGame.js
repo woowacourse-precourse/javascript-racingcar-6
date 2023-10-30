@@ -21,7 +21,7 @@ class RacingGame {
   }
 
   announceGameWinners() {
-    const winners = this.#racingStadium.selectWinners();
+    const winners = this.#racingStadium.getWinnersName();
     const isSoloWinner = winners.length <= 1;
 
     if (isSoloWinner) {
