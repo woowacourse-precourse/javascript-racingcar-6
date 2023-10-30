@@ -7,7 +7,7 @@ class RacingCars {
     this.#cars = Array.from(carNameList, (carName) => new Car(carName));
   }
 
-  getRacingCarsMovingLog() {
+  getMovingLog() {
     const movingLogs = this.#cars.map((car) => car.moveForward());
     return movingLogs.join('\n');
   }

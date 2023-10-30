@@ -20,7 +20,7 @@ class RacingCarGame {
     Console.print(`\n${MESSAGE.executeResult}`);
 
     for (let i = 0; i < attemptsCount; i += 1) {
-      const movingLog = this.#racingCars.getRacingCarsMovingLog();
+      const movingLog = this.#racingCars.getMovingLog();
       Console.print(`${movingLog}\n`);
     }
   }

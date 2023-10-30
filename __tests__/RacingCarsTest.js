@@ -19,7 +19,7 @@ describe('RacingCars 클래스 테스트', () => {
 
     // when
     const racingCars = new RacingCars(names);
-    const result = racingCars.getRacingCarsMovingLog();
+    const result = racingCars.getMovingLog();
 
     // then
     expect(result).toBe(output);
@@ -45,7 +45,7 @@ describe('RacingCars 클래스 테스트', () => {
     // given
     mockRandoms(randoms);
     const racingCars = new RacingCars(names);
-    racingCars.getRacingCarsMovingLog();
+    racingCars.getMovingLog();
 
     // when
     const result = racingCars.getWinners();

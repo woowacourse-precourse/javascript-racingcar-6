@@ -62,7 +62,7 @@
 
 
 - **RacingCarsTest**
-  - `getRacingCarsMovingLog` : 각 차수별 이동 결과를 제대로 반환하는지 테스트
+  - `getMovingLog` : 각 차수별 이동 결과를 제대로 반환하는지 테스트
   - `getWinners` : 이동 횟수를 비교해서 우승자를 가려내는 기능 테스트 
 
 
