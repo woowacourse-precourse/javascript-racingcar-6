@@ -1,7 +1,7 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 const { Console, Random } = MissionUtils;
 import Cars from "./Cras";
-import { nameValidation, naturalNumberRex } from "./Validations";
+import { nameValidation, naturalNumberRex, duplicateChecks } from "./Validations";
 class App {
 
   printCarMoves(cars) {
@@ -44,8 +44,10 @@ class App {
     const input = await Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
     const carNames = input.split(",");
     nameValidation(carNames);
+    duplicateChecks(carNames);
     const cars = new Cars(input);
     const repetitions = await Console.readLineAsync("시도할 횟수는 몇 회인가요?");
+    naturalNumberRex(repetitions);
     this.running_race(cars, repetitions);
   }
 }

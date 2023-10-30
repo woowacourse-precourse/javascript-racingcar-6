@@ -59,4 +59,30 @@ describe("자동차 경주 게임", () => {
     // then
     await expect(app.play()).rejects.toThrow("[ERROR]");
   });
+
+  test.each([
+    [["pobi,javai", "-1"]],
+  ])("시도 횟수에 대한 예외 처리", async (inputs) => {
+    // given
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow("[ERROR] 숫자가 잘못된 형식입니다");
+  });
+
+  test.each([
+    [["pobi,pobi"]],
+  ])("중복 이름에 대한 예외 처리", async (inputs) => {
+    // given
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow("[ERROR] 중복된 이름입니다.");
+  });
 });
