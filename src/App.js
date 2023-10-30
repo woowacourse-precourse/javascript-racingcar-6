@@ -32,6 +32,15 @@ class App {
       this.carList[userInput[i]] = '';
     }
   }
+
+  carMoving() {
+    for (const car in this.carList) {
+      const number = Random.pickNumberInRange(0, 9);
+      if (number >= 4) {
+        this.carList[car] += '-';
+      }
+    }
+  }
 }
 
 const app = new App();
