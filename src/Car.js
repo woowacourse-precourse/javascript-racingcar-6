@@ -13,10 +13,8 @@ class Car {
 
   move(number) {
     if (number >= MIN_MOVEMENT) {
-      this.movement += MOVEMENT_FORWARD;
-      return true;
+      this.#movement += MOVEMENT_FORWARD;
     }
-    return false;
   }
 }
 
