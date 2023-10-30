@@ -14,19 +14,12 @@ class App {
   }
 
   printWinner(cars) {
-    let winMove = 0;
-    cars.forEach((car) => {
-      if (car.position > winMove) winMove = car.position;
-    });
+    const maxPosition = Math.max(...cars.map((car) => car.position));
+    const winners = cars
+      .filter((car) => car.position === maxPosition)
+      .map((car) => car.name);
 
-    let winner = [];
-    cars.forEach((car) => {
-      if (car.position == winMove) {
-        winner.push(car.name);
-      }
-    });
-
-    Console.print("최종 우승자 : " + winner.join(""));
+    Console.print("최종 우승자 : " + winners.join(", "));
   }
 
   startRacing(cars, moveCount) {
