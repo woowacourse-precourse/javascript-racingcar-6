@@ -9,6 +9,7 @@ export default class Computer {
         '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
       COMMAND_INPUT_TRIAL_NUMBER: '시도할 횟수는 몇 회인가요?\n',
       ERROR_WRONG_INPUT: '[ERROR] 잘못된 입력입니다.',
+      FINAL_WINNER: '최종 우승자 : ',
     };
   }
 
@@ -20,6 +21,7 @@ export default class Computer {
     this.racingCars = await Computer.getCarNameArrayFromUserInput();
     const trialNum = await Computer.getTrialNumberFromUserInput();
     this.tryToMoveCars(trialNum);
+    this.printFinalWinnersName();
   }
 
   tryToMoveCars(times) {
@@ -31,6 +33,22 @@ export default class Computer {
 
       Console.print('');
     }
+  }
+
+  printFinalWinnersName() {
+    const winnersName = this.getFinalWinnersName().join(', ');
+    Console.print(`${Computer.MESSAGE.FINAL_WINNER}${winnersName}`);
+  }
+
+  getFinalWinnersName() {
+    const maxDistance = this.getMaxDistance();
+    return this.racingCars
+      .filter((car) => car.distance === maxDistance)
+      .map((car) => car.name);
+  }
+
+  getMaxDistance() {
+    return Math.max(...this.racingCars.map((car) => car.distance));
   }
 
   static async getCarNameArrayFromUserInput() {
