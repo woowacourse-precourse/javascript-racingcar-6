@@ -32,9 +32,8 @@ class UserInOutput{
 
     outputRacingMessage = (reacingCarResult) => {
         reacingCarResult.reduce((acc, cur, idx) => {
-            this.#outRacingData = this.#outRacingData.concat(cur+'\n');
-        }, "");
-        Console.print(this.#outRacingData);
+            Console.print(cur);
+        },  "");
         this.#outRacingData = '';
     }
 
