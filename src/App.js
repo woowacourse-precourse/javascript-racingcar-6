@@ -6,6 +6,7 @@ import {
 import {
     VALIDATE_CAR_NAME,
     CREATE_CARS,
+    RACE_RUN,
 } from './Race';
 
 class App {
@@ -13,6 +14,7 @@ class App {
         const CAR_NAMES_INPUT = await this.getCarNames();
         const CARS = CREATE_CARS(CAR_NAMES_INPUT);
         const RACE_TIME_INPUT = await this.getRaceTimes();
+        RACE_RUN(CARS, RACE_TIME_INPUT);
     }
 
     async getCarNames() {
