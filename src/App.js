@@ -32,7 +32,7 @@ class Car {
 // }
 function checkName(str) { 
   const regExp = /[ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z\,]/g;
-  if(regExp.test(str)) {
+  if(regExp.test(str) && str.search(/\s/)===-1) {
       return true;
   }else{
       return false;
