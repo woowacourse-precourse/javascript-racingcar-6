@@ -9,7 +9,7 @@ class Car {
   // TODO: Mission 3: 자동차 이동 로직 메서드입니다.
   move() {
     const randomValue = MissionUtils.Random.pickNumberInRange(0, 9);
-    if (randomValue >= 4) {
+    if (randomValue > 3) {
       this.position += 1;
     }
   }
