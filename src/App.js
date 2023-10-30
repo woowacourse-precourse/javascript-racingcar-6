@@ -9,7 +9,7 @@ class App {
       throw new Error('[ERROR] 잘못된 형식입니다.')
     };
     
-    const carList = cars.split(',').map(String);
+    const carList = cars.replace(/ /g, '').split(',').map(String); // 공백 제거 및 분리
     carList.map(car => {
       if (car.length > 5) {
         throw new Error('[ERROR] 자동차 이름이 5이상입니다.')
