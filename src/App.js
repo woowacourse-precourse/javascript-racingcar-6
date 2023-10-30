@@ -9,6 +9,7 @@ class App {
 		await this.getCarNamesFromUser();
 		await MissionUtils.Console.print("시도할 횟수는 몇 회인가요?");
 		await this.getAttemptsFromUser();
+		await this.getResults();
 	}
 
 	async getCarNamesFromUser() {
@@ -38,6 +39,25 @@ class App {
 		MissionUtils.Console.print(this.attempts);
 
 		return this.attempts;
+	}
+
+	async getResults() {
+		let results = [];
+
+		for (let i = 0; i < this.cars.length; i++) {
+			let steps = "";
+			for (let j = 0; j < this.attempts; j++) {
+				const move = MissionUtils.Random.pickNumberInRange(0, 9);
+				if (move >= 4) {
+					steps += "-";
+				}
+			}
+			results.push(this.cars[i] + " : " + steps);
+		}
+
+		for (const result of results) {
+			await MissionUtils.Console.print(result);
+		}
 	}
 }
 
