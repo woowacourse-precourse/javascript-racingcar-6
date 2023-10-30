@@ -1,5 +1,3 @@
-import { calculateLongestDistance } from './../utils/calculateLongestDistance.js';
-
 class RaceManager {
   _gameWinner;
 
@@ -27,7 +25,7 @@ class RaceManager {
 
   calculateLongestDistance() {
     const maxPosition = Math.max(
-      ...this.carModels.map(car => car.getPosition().length),
+      ...this.carModels.map(car => car.getPosition()),
     );
     return maxPosition;
   }
@@ -35,7 +33,7 @@ class RaceManager {
   calcultateWinner() {
     const maxPosition = this.calculateLongestDistance();
     const winners = this.carModels.filter(
-      carModel => carModel.getPosition().length === maxPosition,
+      carModel => carModel.getPosition() === maxPosition,
     );
 
     this._gameWinner = winners.map(winner => winner.carName).join(', ');

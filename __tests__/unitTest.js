@@ -1,5 +1,5 @@
 import { repeatFunctionNTimes } from '../src/utils/repeatFunctionNTimes.js';
-import { calculateLongestDistance } from './../src/utils/calculateLongestDistance.js';
+import { createHyphenString } from '../src/utils/createHyphenString.js';
 import {
   valiadateDuplicteName,
   hasDuplicate,
@@ -7,7 +7,8 @@ import {
   validateCarName,
 } from './../src/utils/validateValue.js';
 import { MissionUtils } from '@woowacourse/mission-utils';
-import Car from '../src/models/Car';
+import Car from '../src/models/Car.js';
+import RaceManager from '../src/models/RaceManager.js';
 
 //utils
 describe('repeatFunctionNTimes', () => {
@@ -24,13 +25,16 @@ describe('calculateLongestDistance', () => {
   test('가장 긴 길이를 구할 수 있어야 한다.', () => {
     //given
     const carModels = [
-      { carName: 'seorim', position: '---' },
-      { carName: 'eunjeong', position: '--' },
-      { carName: 'sukjoon', position: '-' },
+      new Car('seorim'),
+      new Car('eunjeong'),
+      new Car('sukjoon'),
     ];
-
-    const result = calculateLongestDistance(carModels);
-    expect(result).toBe(3);
+    MissionUtils.Random.pickNumberInRange = jest.fn();
+    MissionUtils.Random.pickNumberInRange.mockReturnValue(4);
+    carModels[0].move();
+    const raceManager = new RaceManager(carModels);
+    const result = raceManager.calculateLongestDistance();
+    expect(result).toBe(1);
   });
 });
 
@@ -60,7 +64,7 @@ describe('Car Model', () => {
     MissionUtils.Random.pickNumberInRange.mockReturnValue(4);
     const initialPosition = car.getPosition();
     car.move();
-    expect(car.getPosition()).toBe(initialPosition + '-');
+    expect(car.getPosition()).toBe(initialPosition + 1);
   });
 
   test('랜덤 숫자를 구한 후 그 값이 4 미만일 때 전진하지 않는다.', () => {
@@ -127,5 +131,14 @@ describe('Car Name의 에러를 검증한다.', () => {
     expect(() => validateCarName('123456')).toThrow(
       '[ERROR] car 이름은 5자 이하만 가능합니다.',
     );
+  });
+});
+
+describe('createHyphenString', () => {
+  test('지정된 길이에 따라 올바른 문자열을 반환해야 한다.', () => {
+    expect(createHyphenString(0)).toBe('');
+    expect(createHyphenString(1)).toBe('-');
+    expect(createHyphenString(5)).toBe('-----');
+    expect(createHyphenString(10)).toBe('----------');
   });
 });
