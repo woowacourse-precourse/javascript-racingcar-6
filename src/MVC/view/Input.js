@@ -24,7 +24,7 @@ class Input {
     try {
       const number = await Console.readLineAsync(`${GAME_MESSAGE.tryNumber}`);
       this.tryValid.tryIsValid(number);
-      this.racingGameController.racing(number, nameSplit);
+      this.racingGame.racing(nameSplit, number);
     } catch (error) {
       throw error;
     }
