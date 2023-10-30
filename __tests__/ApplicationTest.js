@@ -1,7 +1,7 @@
 import App from "../src/app/App.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 
-const mockQuestions = (inputs) => {
+const mockQuestions = (inputs) => { // ["pobi,woni", "1"]
   MissionUtils.Console.readLineAsync = jest.fn();
 
   MissionUtils.Console.readLineAsync.mockImplementation(() => {
@@ -26,9 +26,9 @@ const getLogSpy = () => {
 describe("자동차 경주 게임", () => {
   test("전진-정지", async () => {
     // given
-    const MOVING_FORWARD = 4;
-    const STOP = 3;
-    const inputs = ["pobi,woni", "1"];
+    const MOVING_FORWARD = 4; // 전진을 나타내는 숫자
+    const STOP = 3; // 정지를 나타내는 숫자
+    const inputs = ["pobi,woni", "1"]; // 포비는 4라서 전진, 워니는 3이라서 정지
     const outputs = ["pobi : -"];
     const randoms = [MOVING_FORWARD, STOP];
     const logSpy = getLogSpy();
@@ -48,7 +48,10 @@ describe("자동차 경주 게임", () => {
 
   test.each([
     [["pobi,javaji"]],
-    [["pobi,eastjun"]]
+    [["pobi,eastjun"]],
+    [["poby"]], // 자동차 1개 불가
+    [["p$by,poby"]], // 특수문자 불가
+    [["pobi,poby,"]] // 마지막 문자 쉼표 불가
   ])("이름에 대한 예외 처리", async (inputs) => {
     // given
     mockQuestions(inputs);
