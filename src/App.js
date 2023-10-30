@@ -1,4 +1,8 @@
 class App {
+  constructor() {
+    this.a = "hi";
+  }
+
   async play() {}
 }
 
