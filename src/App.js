@@ -8,6 +8,7 @@ class App {
     this.carName;
     this.carMoveArray = [];
     this.winnerCarArray = [];
+    this.winnerLength;
   }
 
   async carNameInput() {
@@ -74,17 +75,18 @@ class App {
 
   winnerMovelength() {
     const sortMoveArray = [...this.carMoveArray].sort((a, b) => b.length - a.length);
-    return sortMoveArray[0].length;
+    this.winnerLength = sortMoveArray[0].length;
+    return this.winnerLength;
   }
 
-  getWinnerArray(winnerLength) {
+  getWinnerArray() {
     this.carMoveArray.forEach((carMove, index) => {
-      this.winnerCar(carMove, winnerLength, index);
+      this.winnerCar(carMove, index);
     });
   }
 
-  winnerCar(carMove, winnerLength, index) {
-    if(carMove.length === winnerLength) {
+  winnerCar(carMove, index) {
+    if(carMove.length === this.winnerLength) {
       this.winnerCarArray.push(this.carName[index]);
     }
   }
