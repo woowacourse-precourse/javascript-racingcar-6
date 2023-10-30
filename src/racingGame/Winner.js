@@ -3,9 +3,8 @@ import { NAME, DISTANCE } from "../constants/scoreStorage.js"
 
 class Winner {
   async winnerPrint(scoreStorage) {
-    console.log("winnerPrint");
-    //const maxDistance = Math.max(...scoreStorage[DISTANCE]);
     const winners = this.#findWinnerName(scoreStorage, Math.max(...scoreStorage[DISTANCE]));
+    MissionUtils.Console.print(`최종 우승자 : ${winners.join(', ')}`);
   }
 
   #findWinnerName(scoreStorage, maxDistance) {
