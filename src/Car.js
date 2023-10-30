@@ -4,8 +4,8 @@ import MESSAGES from '../utils/Messages';
 
 class Car {
   constructor(name) {
-    this.name = name;
-    this.progressStatus = '';
+    this[CONSTANTS.nameKey] = name;
+    this[CONSTANTS.progressStatusKey] = '';
   }
   progressDependingOnValue() {
     const value = Random.pickNumberInRange(CONSTANTS.minimumValue, CONSTANTS.maximumValue);
