@@ -62,6 +62,11 @@ class RacingGameController {
     carList.forEach((car) => outputView.printRacing(car));
     outputView.printSpace();
   }
+
+  /** 최종 우승자 출력 함수 */
+  printWinner() {
+    outputView.printWinner(this.racingGame.winner());
+  }
 }
 
 export default RacingGameController;

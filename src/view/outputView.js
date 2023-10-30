@@ -17,6 +17,13 @@ const outputView = {
   printRacing({ carName, carPosition }) {
     Console.print(`${carName} : ${'-'.repeat(carPosition)}`);
   },
+  /**
+   * 승자 출력하는 함수
+   * @param {string} winner
+   */
+  printWinner(winner) {
+    Console.print(RACING_MESSAGE.WINNER + winner);
+  },
 };
 
 export default outputView;

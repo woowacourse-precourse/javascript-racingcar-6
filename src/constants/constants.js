@@ -4,6 +4,7 @@ export const RACING_MESSAGE = Object.freeze({
   READ_MOVE_COUNT: '시도할 횟수는 몇 회인가요? \n',
   RACING_RESULT: '\n실행 결과',
   SPACE: '',
+  WINNER: '최종 우승자 : ',
 });
 
 export const RACING_CAR = Object.freeze({
