@@ -61,13 +61,13 @@ class App {
   calculateWinner() {
     const result = this.movement.map((move, index) => move.length - this.car[index].length);
     const max = Math.max(...result);
-    const indexesOfMax = [];
+    const maxIndexes = [];
     result.forEach((value, index) => {
         if (value === max) {
-            indexesOfMax.push(index);
+            maxIndexes.push(index);
         }
     });
-    return indexesOfMax;
+    return maxIndexes;
   }
 
   // 출력
