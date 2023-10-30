@@ -54,6 +54,10 @@ class App {
       throw new Error('[ERROR] 입력값이 없습니다.');
     }
     let nameList = input.split(',');
+    // 5. 같은 이름를 입력한 경우 
+    if(new Set(nameList).size!==nameList.length){
+      throw new Error('[ERROR] 같은 이름이 입력되었습니다')
+    }
     console.log(nameList)
     let carArray = [];
     nameList.forEach((carName) => {
@@ -68,11 +72,11 @@ class App {
       // 4. 이름이 5자 이하가 아닌경우
       if(carName.length>5){
         throw new Error('[ERROR] 자동차의 이름이 5자 이상입니다');
-
       }
       let car = new Car(carName);
       carArray.push(car);
     });
+    
     return carArray;
   }
 
