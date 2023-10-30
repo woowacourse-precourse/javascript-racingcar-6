@@ -28,7 +28,7 @@ class App {
   async numberOfMoves(){
   let NumberOfmoves = await Console.readLineAsync('시도할 횟수는 몇 회인가요?')
   if(isNaN(NumberOfmoves)){
-    throw new Error('[ERROR] 올바른 형식으로 입력해주세요')
+    throw new Error('[ERROR] 숫자를 입력해주세요')
   }
 
   return Number(NumberOfmoves);
