@@ -39,10 +39,10 @@
   - [ ] validateRacingCarName - feat(Validate racing car name inputs): 유저가 입력한 레이싱카 이름 문자열을 검증하는 메서드
   - [ ] validateRacingRepeatNumber - feat(Validate racing repeat number): 유저가 입력한 레이싱 경기 반복 횟수를 검증하는 메서드
 
-- [ ] Utility 함수 - feat(Utility Function):
+- [x] Utility 함수 - feat(Utility Function):
 
-  - [ ] printConsole - 입력받은 메시지를 Console.print api에 넘겨 반환하는 함수
-  - [ ] generateRandomNumber - 0 ~ 9 사이의 숫자 중에서 랜덤한 숫자 하나를 생성하는 함수
+  - [x] printConsole - 입력받은 메시지를 Console.print api에 넘겨 반환하는 함수
+  - [x] generateRandomNumber - 0 ~ 9 사이의 숫자 중에서 랜덤한 숫자 하나를 생성하는 함수
 
 - [x] Constant 파일
   - [x] message - 경기에 사용될 메시지가 반영된 객체
