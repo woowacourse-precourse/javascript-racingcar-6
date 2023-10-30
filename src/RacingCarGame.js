@@ -7,6 +7,7 @@ class RacingCarGame {
 
   async game() {
     await this.setupGame();
+    this.printWinners();
   }
 
   async setupGame() {
@@ -43,6 +44,20 @@ class RacingCarGame {
       Console.print(`${carName} : ${this.#scoreBoard[carName]}`);
     });
     Console.print("");
+  }
+
+  printWinners() {
+    const carNames = Object.keys(this.#scoreBoard);
+
+    const maxDistance = Math.max(
+      ...carNames.map((carName) => this.#scoreBoard[carName].length)
+    );
+
+    const winners = carNames.filter(
+      (carName) => this.#scoreBoard[carName].length === maxDistance
+    );
+
+    Console.print(`최종 우승자: ${winners.join(", ")}`);
   }
 }
 
