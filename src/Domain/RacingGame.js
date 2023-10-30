@@ -13,13 +13,23 @@ class RacingGame {
     this.#cars = cars;
     this.#round = round;
     this.#currentRound = RACING_GAME.round.default;
-
-    this.#gameFlow();
   }
 
-  #gameFlow() {
-    this.#playGame();
-    this.#getWinners();
+  startRace() {
+    this.#race();
+
+    return this.#getRaceResult();
+  }
+
+  #race() {
+    while (!this.#gameEnd()) {
+      this.#moveCars();
+      this.#currentRound += RACING_GAME.round.unit;
+    }
+  }
+
+  #gameEnd() {
+    return this.#currentRound >= this.#round;
   }
 
   #moveCars() {
@@ -38,19 +48,19 @@ class RacingGame {
 
   #getWinners() {
     const maxPosition = Math.max(...this.#getCarPositions());
+    const cars = this.#cars.filter((car) => car.getPosition() === maxPosition);
 
-    return this.#cars.filter((car) => car.getPosition() === maxPosition);
+    return cars.map((car) => car.getName());
   }
 
-  #gameEnd() {
-    return this.#currentRound >= this.#round;
-  }
+  #getRaceResult() {
+    const winner = this.#getWinners();
+    const raceResult = this.#cars.map((car) => ({
+      name: car.getName(),
+      position: car.getPosition(),
+    }));
 
-  #playGame() {
-    while (!this.#gameEnd()) {
-      this.#moveCars();
-      this.#currentRound += RACING_GAME.round.unit;
-    }
+    return { winner, raceResult };
   }
 }
 

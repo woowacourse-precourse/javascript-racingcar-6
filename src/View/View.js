@@ -4,6 +4,7 @@ import Validator from '../utils/Validator.js';
 import MESSAGE from '../constants/message.js';
 import CAR from '../constants/car.js';
 import RACING_GAME from '../constants/racingGame.js';
+import MessageFormat from '../utils/messageFormat.js';
 
 class View {
   #inputView = InputView;
@@ -29,8 +30,8 @@ class View {
     return parseInt(userInput, RACING_GAME.round.radix);
   }
 
-  print(message) {
-    this.#outputView.print(message);
+  printWinners(winners) {
+    this.#outputView.print(MessageFormat.winners(winners));
   }
 }
 

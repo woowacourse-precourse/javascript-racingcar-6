@@ -8,16 +8,25 @@ class App {
   #game;
 
   async play() {
-    const carNames = await this.#view.readCarName();
-    const cars = carNames.map((name) => new Car(name));
+    await this.#setGameConfig();
+    const { winner } = this.#game.startRace();
 
-    const round = await this.#view.readRound();
+    this.#view.printWinners(winner);
+  }
+
+  async #setGameConfig() {
+    const { cars, round } = await this.#readGameConfig();
 
     this.#game = new RacingGame({ cars, round });
   }
-}
 
-const app = new App();
-app.play();
+  async #readGameConfig() {
+    const carNames = await this.#view.readCarName();
+    const cars = carNames.map((name) => new Car(name));
+    const round = await this.#view.readRound();
+
+    return { cars, round };
+  }
+}
 
 export default App;
