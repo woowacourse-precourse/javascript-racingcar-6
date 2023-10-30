@@ -16,18 +16,24 @@ class RaceController {
 
   async start() {
     const USER_INPUT_CAR_NAME = await RACE_CONSOLE_VIEW.getUserInputCarName();
-    const CAR_NAME_LIST = USER_INPUT_CAR_NAME.split(',');
+    const carNameList = USER_INPUT_CAR_NAME.split(',');
 
-    RaceController.checkCarNameUserInput(CAR_NAME_LIST);
+    RaceController.checkCarNameUserInput(carNameList);
 
-    const CAR_LIST = RaceController.createCarList(CAR_NAME_LIST);
-    await this.setMaxRound();
+    const carList = RaceController.createCarList(carNameList);
+
+    const TRY_NUMBER = +(await RACE_CONSOLE_VIEW.getUserInputMaxRound());
+
+    RaceController.checkUserInputTryNumber(TRY_NUMBER);
+
+    this.setMaxRound(TRY_NUMBER);
 
     while (this.#maxRound !== this.#currentRound) {
       const roundResult = [];
 
-      CAR_LIST.forEach((car) => {
-        createRandomNumber() >= CONFIG.MINIMUM_CAN_MOVE_FOWARD && car.move();
+      carList.forEach((car) => {
+        createRandomNumber(CONFIG.MIN_RANDOM_COUNT, CONFIG.MAX_RANDOM_COUNT) >=
+          CONFIG.MINIMUM_CAN_MOVE_FOWARD && car.move();
         // prettier-ignore
         roundResult.push(`${car.name} : ${MESSAGES.ONE_STEP.repeat(car.getMoveCount())}`);
       });
@@ -37,15 +43,15 @@ class RaceController {
     }
 
     RACE_CONSOLE_VIEW.raceResult(this.#raceResult.getResult());
-    RACE_CONSOLE_VIEW.winner(RaceController.findWinner(CAR_LIST));
+    RACE_CONSOLE_VIEW.winner(RaceController.findWinner(carList));
   }
 
   static createCarList(carNameList) {
     return carNameList.map((carName) => new Car(carName));
   }
 
-  async setMaxRound() {
-    this.#maxRound = +(await RACE_CONSOLE_VIEW.getUserInputMaxRound());
+  async setMaxRound(tryNumber) {
+    this.#maxRound = tryNumber;
   }
 
   static findWinner(carList) {
@@ -54,6 +60,10 @@ class RaceController {
     return carList
       .filter((car) => car.getMoveCount() === MAX_MOVE_COUNT)
       .map((car) => car.name);
+  }
+
+  static checkSpaceCarName(carNameList) {
+    return carNameList.filter((car) => car.match(/\s/g)).length > 0;
   }
 
   static checkSameCarName(carNameList) {
@@ -79,6 +89,8 @@ class RaceController {
       throwError('중복된 자동차 이름이 있습니다');
     } else if (RaceController.checkCarNameLength(carList)) {
       throwError(`자동차의 이름이 ${CONFIG.MAX_CAR_NAME_LENGTH} 보다 깁니다`);
+    } else if (RaceController.checkSpaceCarName(carList)) {
+      throwError('공백은 입력하실수 없습니다');
     } else if (RaceController.checkCarNameVoid(carList)) {
       throwError(`이름이 존재하지 않는 차가 있습니다`);
     }
@@ -89,7 +101,7 @@ class RaceController {
       throwError(
         '입력값이 잘못된 형식입니다. 정수로 이루어진 숫자만 입력해주세요'
       );
-    } else if (checkNumber.checkGreaterThan(userInput, 0)) {
+    } else if (!checkNumber.checkGreaterThan(userInput, 0)) {
       throwError('1 이상의 값을 입력해주세요');
     }
   }
