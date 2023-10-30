@@ -52,7 +52,7 @@ class App {
 
   moveForward(car) {
     if (MissionUtils.Random.pickNumberInRange(0, 9) >= 4) {
-      car.goForword();
+      car.goForward();
     }
   }
 
