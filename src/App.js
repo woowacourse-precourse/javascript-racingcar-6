@@ -6,6 +6,7 @@ import ABOUT from './utils/constants.js';
 
 class App {
   #entry;
+
   #lapLength;
 
   constructor() {
