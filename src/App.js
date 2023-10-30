@@ -20,6 +20,10 @@ class App {
       this.printRoundResult(namesArray, scoreObject);
       MissionUtils.Console.print('\n');
     }
+
+    const winnersArray = this.getWinners(namesArray, scoreObject);
+    const winnersString = winnersArray.join(', ');
+    MissionUtils.Console.print(`최종 우승자 : ${winnersString}`);
   }
 
   async getCarNames() {
@@ -46,9 +50,20 @@ class App {
       MissionUtils.Console.print(`${car} : ${scoreCount}`);
     });
   }
-}
 
-const a = new App();
-a.play();
+  getWinners(namesArray, scoreObject) {
+    let winners = [namesArray[0]];
+    for (let i = 0; i < namesArray.length - 1; i++) {
+      const oneCar = winners[0];
+      const oneScore = scoreObject[`${oneCar}`];
+      const anotherCar = namesArray[i + 1];
+      const anotherScore = scoreObject[`${anotherCar}`];
+
+      winners = anotherScore > oneScore ? [anotherCar] : winners;
+      winners = oneScore === anotherScore ? [...winners, anotherCar] : winners;
+    }
+    return winners;
+  }
+}
 
 export default App;
