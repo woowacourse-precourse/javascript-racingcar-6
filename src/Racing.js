@@ -10,6 +10,7 @@ const ERROR_MSG_INPUT = '[ERROR] 자동차 이름이 잘못된 형식입니다.'
 class Racing {
   constructor() {
     this.players = [];
+    this.numberOfGames = 0;
   }
 
   addPlayer(carName) {
@@ -27,6 +28,15 @@ class Racing {
     participants.split(',').forEach((carName) => {
       this.addPlayer(carName);
     });
+  }
+  async decideGameCount() {
+    const screen = new Screen();
+    const validation = new Validation();
+    const gameCount = await screen.getUserInput(MSG_TRY_TIME);
+    if (!validation.isProperTryTime(gameCount)) {
+      throw new Error(ERROR_MSG_INPUT);
+    }
+    this.numberOfGames = gameCount;
   }
   race() {}
   calculateWinner() {}
