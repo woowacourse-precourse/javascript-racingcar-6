@@ -48,7 +48,7 @@ describe("자동차 경주 게임", () => {
 
   test("inputCarName 함수 테스트", async () => {
     const inputs = ["pobi,woni"];
-    const expectedOutput = "pobi,woni";
+    const expectedOutput = ["pobi", "woni"];
     mockQuestions(inputs);
 
     const app = new App();
@@ -57,15 +57,26 @@ describe("자동차 경주 게임", () => {
     expect(result).toEqual(expectedOutput);
   });
 
-  test("inputAttemptCount 함수 테스트", async () => {
-    const inputs = ["3"];
-    const expectedOutput = "3";
+  test("getMaxValue 함수 테스트", async () => {
+    const app = new App();
+
+    app.carNameList = ["car1", "car2", "car3"];
+    app.dashSymbol = ["---", "---", "----"];
+
+    const result = app.getMaxValue();
+
+    expect(result).toEqual(["car3"]);
+  });
+
+  test("getFinalWinner 함수 테스트", async () => {
+    const inputs = ["pobi,woni"];
     mockQuestions(inputs);
 
     const app = new App();
-    const result = await app.inputAttemptCount();
+    const printSpy = jest.spyOn(MissionUtils.Console, "print");
+    app.getFinalWinner(["pobi", "woni"]);
 
-    expect(result).toEqual(expectedOutput);
+    expect(printSpy).toHaveBeenCalledWith("최종 우승자 : pobi, woni");
   });
 
   test.each([[["pobi,javaji"]], [["pobi,eastjun"]]])(
