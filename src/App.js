@@ -2,7 +2,19 @@ import { Console, Random } from '@woowacourse/mission-utils';
 import { message, error, num } from './Constants.js';
 
 class App {
-  async play() {}
+  async play() {
+    const racecarNames = await this.getRacecarNameInput();
+
+    const attempts = await this.getAttemptInput();
+
+    Console.print('\n' + message.RESULTS);
+
+    let template = this.generateResultTemplate(racecarNames);
+
+    await this.repeatProcess(attempts, template);
+
+    await this.printFinalResult(template);
+  }
 
   async getRacecarNameInput() {
     const racecarNameInput = await Console.readLineAsync(message.ASK_RACECAR_NAMES);
