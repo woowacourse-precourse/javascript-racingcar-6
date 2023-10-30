@@ -6,13 +6,15 @@ import {
     VALIDATE_RACE_TIME,
     RACE_RUN,
     FIND_WINNERS,
-    NOT_MOVE_WIN_ERROR_MESSAGE,
+    PRINT_WINNERS,
 } from '../src/Race';
 import {
     CAR_NAME_NULL_ERROR_MESSAGE,
     CAR_NAME_INVALID_ERROR_MESSAGE,
     RACE_TIME_ERROR_MESSAGE,
     CREATE_CAR_ERROR_MESSAGE,
+    NOT_MOVE_WIN_ERROR_MESSAGE,
+    NOT_FOUND_WINNER_ERROR_MESSAGE,
 } from '../src/Define';
 
 jest.mock('@woowacourse/mission-utils');
@@ -111,6 +113,23 @@ describe('Race 테스트', () => {
             const TEST_CAR_B = new Car('car2');
             const CARS = [TEST_CAR_A, TEST_CAR_B];
             expect(() => FIND_WINNERS(CARS)).toThrowError(NOT_MOVE_WIN_ERROR_MESSAGE);
+        });
+    });
+
+    describe('PRINT_WINNERS 함수 테스트', () => {
+        test('우승자 출력', () => {
+            const CARS = ['car1', 'car2'];
+            const SPY = jest.spyOn(Console, 'print');
+    
+            PRINT_WINNERS(CARS);
+            expect(SPY).toHaveBeenCalledWith("최종 우승자 : car1, car2");
+            SPY.mockRestore();
+        });
+
+        test('우승자가 빈 배열일 경우 오류 반환', () => {
+            const CARS = [];
+            
+            expect(() => PRINT_WINNERS(CARS).toThrowError(NOT_FOUND_WINNER_ERROR_MESSAGE));
         });
     });
 });
