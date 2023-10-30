@@ -31,6 +31,7 @@ class App {
     const rounds = Number(user);
     if (!Number.isInteger(rounds))
       throw new Error('횟수는 정수만 입력 가능합니다.');
+    if (rounds < 1) throw new Error('1회 부터 플레이 가능합니다.');
     return rounds;
   }
 }
