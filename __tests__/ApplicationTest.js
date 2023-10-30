@@ -23,6 +23,12 @@ const getLogSpy = () => {
   return logSpy;
 };
 
+const getCallSpy = (object, method) => {
+  const callSpy = jest.spyOn(object, method);
+  callSpy.mockClear();
+  return callSpy;
+};
+
 describe("자동차 경주 게임", () => {
   test("전진-정지", async () => {
     // given
@@ -44,6 +50,19 @@ describe("자동차 경주 게임", () => {
     outputs.forEach((output) => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
+  });
+
+  test.only("입력한 횟수만큼 라운드 결과 출력", async () => {
+    const ROUNDS = 5;
+    const inputs = ["pobi,woni", ROUNDS];
+    const app = new App();
+    const logSpy = getCallSpy(app, "printRoundResults");
+
+    mockQuestions(inputs);
+
+    await app.play();
+
+    expect(logSpy.mock.calls).toHaveLength(ROUNDS);
   });
 
   test.each([
