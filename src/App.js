@@ -43,6 +43,8 @@ class App {
 
 	async getResults() {
 		let results = [];
+		let maxHyphenCount = -1;
+		const winners = [];
 
 		for (let i = 0; i < this.cars.length; i++) {
 			let steps = "";
@@ -52,12 +54,24 @@ class App {
 					steps += "-";
 				}
 			}
+
+			const hyphenCount = (steps.match(/\-/g) || []).length;
 			results.push(this.cars[i] + " : " + steps);
+
+			if (hyphenCount > maxHyphenCount) {
+				maxHyphenCount = hyphenCount;
+				winners.length = 0;
+				winners.push(this.cars[i]);
+			} else if (hyphenCount === maxHyphenCount) {
+				winners.push(this.cars[i]);
+			}
 		}
 
 		for (const result of results) {
 			await MissionUtils.Console.print(result);
 		}
+
+		console.log("최종 우승자 : " + winners.join(", "));
 	}
 }
 
