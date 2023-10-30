@@ -26,14 +26,14 @@
   - [ ] repeatRacing - feat(App Class): 레이싱 경기 반복 진행 메서드
   - [ ] releaseWinner - feat(App Class): 레이싱 경기 우승자 발표 메서드
 
-- [ ] Car 클래스 - feat(Car Class):
+- [x] Car 클래스 - feat(Car Class):
 
-  - [ ] 멤버 변수
+  - [x] 멤버 변수
     - name - `string` / default: 생성자 입력값
     - moveCount - `number` / default: 0
-  - [ ] moveOrStop - feat(Car Class): 레이싱카의 이동 여부를 확인하는 메서드
+  - [x] moveOrStop - feat(Car Class): 레이싱카의 이동 여부를 확인하는 메서드
 
-- [ ] Validation 객체 - feat(Validation Object):
+- [x] Validation 객체 - feat(Validation Object):
 
   - [x] validateGoForward - feat(Validate car can go forward): 랜덤으로 생성된 수를 확인하여 앞으로 갈 수 있는지 정지해야 하는지 확인하는 메서드
   - [x] validateRacingCarName - feat(Validate racing car name inputs): 유저가 입력한 레이싱카 이름 문자열을 검증하는 메서드
