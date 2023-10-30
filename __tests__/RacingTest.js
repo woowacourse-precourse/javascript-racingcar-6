@@ -35,4 +35,22 @@ describe('Race 테스트', () => {
             expect(() => VALIDATE_CAR_NAME(INPUT)).not.toThrowError();
         });
     });
+
+    describe('VALIDATE_RACE_TIME 함수 테스트', () => {
+        test('입력된 시도 횟수가 숫자가 아니면 오류 발생', () => {
+            const INPUT = 'abc';
+            expect(() => VALIDATE_RACE_TIME(INPUT)).toThrowError(RACE_TIME_ERROR_MESSAGE);
+        });
+
+        test('입력된 시도 횟수가 1 미만이면 오류 발생', () => {
+            const INPUT = '0';
+            expect(() => VALIDATE_RACE_TIME(INPUT)).toThrowError(RACE_TIME_ERROR_MESSAGE);
+        });
+
+        test('올바른 시도 횟수가 입력되면 숫자로 변환되어 반환', () => {
+            const INPUT = '5';
+            const RESULT = VALIDATE_RACE_TIME(INPUT);
+            expect(RESULT).toBe(5);
+        });
+    });
 });
