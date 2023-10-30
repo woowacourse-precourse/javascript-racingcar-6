@@ -1,5 +1,5 @@
-import { Console } from '@woowacourse/mission-utils';
 import { INPUT_MESSAGE, OUTPUT_MESSAGE, OTHERS } from '../utils/constants.js';
+import { Console } from '@woowacourse/mission-utils';
 import { Random } from '@woowacourse/mission-utils';
 
 class RacingGame {
@@ -64,6 +64,10 @@ class RacingGame {
   // VIEW
   showGameResult() {
     this.gameCalculate();
+
+    Console.print(OUTPUT_MESSAGE.result);
+    Console.print(this.raceResultMessage);
+    Console.print(`${OUTPUT_MESSAGE.winner}${this.raceWinnerMessage}`);
   }
 
   // CONTROLLER
