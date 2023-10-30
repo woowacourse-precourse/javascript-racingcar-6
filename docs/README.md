@@ -11,10 +11,10 @@
     - [x]  숫자가 아닐 경우 예외 처리
     - [x]  정수가 아닐 경우 예외 처리
 
-- [ ]  0~9까지의 정수 중 한 개의 정수 선택해서 무작위 값 구하기
-    - [ ]  • `[@woowacourse/mission-utils](https://github.com/woowacourse-projects/javascript-mission-utils)` 라이브러리의 `Random.pickNumberInRange()` 사용
-    - [ ]  무작위 값이 4이상이면 전진
-    - [ ]  무작위 값이 3이하면 멈춤
+- [x]  0~9까지의 정수 중 한 개의 정수 선택해서 무작위 값 구하기
+    - [x]  • `[@woowacourse/mission-utils](https://github.com/woowacourse-projects/javascript-mission-utils)` 라이브러리의 `Random.pickNumberInRange()` 사용
+    - [x]  무작위 값이 4이상이면 전진
+    - [x]  무작위 값이 3이하면 멈춤
 
 - [ ]  각 차수별 결과 출력
     - [x]  한 번 전진을 ‘-’로 나타낸다.
