@@ -10,12 +10,7 @@ export default class CarRacingGame {
     });
     this.#carNameArray = CarRacingGame.carNamesToCarNameArray(carNames);
     let tryCount = await CarRacingGame.getTryCount()
-      .then((answer) => {
-        if (!CarRacingGame.isValidTryCount(answer)) {
-          throw new Error('[ERROR] 시도 횟수 이상');
-        }
-        return answer;
-      })
+      .then(CarRacingGame.checkValidTryCount)
       .catch((error) => {
         throw error;
       });
@@ -49,11 +44,11 @@ export default class CarRacingGame {
     return Random.pickNumberInRange(0, 9) >= 4;
   }
 
-  static isValidTryCount(tryCount = 0) {
+  static checkValidTryCount(tryCount = 0) {
     if (Number(tryCount) <= 0 || !Number.isInteger(Number(tryCount))) {
-      return false;
+      throw new Error('[ERROR] 시도 횟수 이상');
     }
-    return true;
+    return tryCount;
   }
 
   printEachResult() {
