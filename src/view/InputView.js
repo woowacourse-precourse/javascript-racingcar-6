@@ -4,21 +4,13 @@ import { INPUT_MESSAGE } from '../constants.js';
 
 const InputView = {
   async readCarNames() {
-    try {
-      const carNames = await Console.readLineAsync(INPUT_MESSAGE.carNames);
-      return carNames.split(',');
-    } catch (error) {
-      throw error;
-    }
+    const carNames = await Console.readLineAsync(INPUT_MESSAGE.carNames);
+    return carNames.split(',');
   },
 
   async readTryNumber() {
-    try {
-      const tryNumber = await Console.readLineAsync(INPUT_MESSAGE.tryNumber);
-      return Number(tryNumber);
-    } catch (error) {
-      throw error;
-    }
+    const tryNumber = await Console.readLineAsync(INPUT_MESSAGE.tryNumber);
+    return Number(tryNumber);
   },
 };
 
