@@ -1,101 +1,57 @@
-import { Console, Random } from '@woowacourse/mission-utils';
-import { PLAYER_INPUT, RACE } from './Logs.js';
-import {
-  isPlayerCarNameValidated,
-  isPlayerTryNumberValidated,
-} from './Validation.js';
-import { CONSTANTS } from './Constants.js';
+import { Console } from '@woowacourse/mission-utils';
+import { PLAYER_INPUT, RACE } from './Logs';
+import Validation from './Validation';
+import RaceUtils from './RaceUtils';
 
 class App {
   constructor() {
     this.playersData = [];
     this.winners = [];
+    this.raceEntry = [];
+    this.tryNumber = 0;
   }
 
   async play() {
-    const raceEntry = await this.getPlayerCarsInput();
-    this.createPlayerData(raceEntry);
-    const tryNumber = await this.getPlayerTryNumberInput();
-    this.startRace(tryNumber);
-    this.announceWinners();
+    await this.getPlayerCarsInput();
+    this.createPlayerData(this.raceEntry);
+    await this.getPlayerTryNumberInput();
+    this.startRace();
+    RaceUtils.announceWinners(this.winners);
   }
 
   async getPlayerCarsInput() {
-    const userInput = await Console.readLineAsync(
+    const CAR_NAMES_INPUT = await Console.readLineAsync(
       PLAYER_INPUT.CARS_NAME_PROMPT,
     );
-    const raceEntry = userInput.split(',');
+    const CAR_NAMES_INPUT_ARRAY = CAR_NAMES_INPUT.split(',');
 
-    if (isPlayerCarNameValidated(raceEntry)) {
-      return [...raceEntry];
+    if (Validation.isPlayerCarNameValidated(CAR_NAMES_INPUT_ARRAY)) {
+      this.raceEntry = [...CAR_NAMES_INPUT_ARRAY];
     }
   }
 
-  createPlayerData(raceEntry) {
-    raceEntry.forEach(playerName => {
+  createPlayerData() {
+    this.raceEntry.forEach(playerName => {
       this.playersData.push({ playerName, trackLocation: '' });
     });
   }
 
   async getPlayerTryNumberInput() {
-    const userInput = await Console.readLineAsync(
+    const TRY_NUMBER_INPUT = await Console.readLineAsync(
       PLAYER_INPUT.TRY_NUMBER_PROMPT,
     );
-    if (isPlayerTryNumberValidated(userInput)) {
-      return Number(userInput);
+    if (Validation.isPlayerTryNumberValidated(TRY_NUMBER_INPUT)) {
+      this.tryNumber = Number(TRY_NUMBER_INPUT);
     }
   }
 
-  shouldMoveForward() {
-    const pickedNumber = Random.pickNumberInRange(
-      CONSTANTS.MIN_NUM,
-      CONSTANTS.MAX_NUM,
-    );
-    return pickedNumber >= CONSTANTS.IS_FORWARD;
-  }
-
-  moveCarForward(player) {
-    player.trackLocation = player.trackLocation.concat(RACE.PROGRESS_BAR);
-  }
-
-  findWinners() {
-    const FARTHEST_TRACK_LOCATION = Math.max(
-      ...this.playersData.map(player => player.trackLocation.length),
-    );
-    this.winners.push(
-      ...this.playersData
-        .filter(
-          player => player.trackLocation.length === FARTHEST_TRACK_LOCATION,
-        )
-        .map(player => player.playerName),
-    );
-  }
-
-  announceWinners() {
-    Console.print(RACE.WINNERS + this.winners.join(', '));
-  }
-
-  startRace(tryNumber) {
+  startRace() {
     Console.print(RACE.START);
-    for (let i = 0; i < tryNumber; i++) {
-      this.proceedEachRaceTurn();
+    for (let i = 0; i < this.tryNumber; i += 1) {
+      this.playersData = RaceUtils.proceedEachRaceTurn(this.playersData);
+      RaceUtils.printRaceStatus(this.playersData);
     }
-    this.findWinners();
-  }
-
-  proceedEachRaceTurn() {
-    this.playersData.forEach(player => {
-      if (this.shouldMoveForward()) {
-        this.moveCarForward(player);
-      }
-    });
-    let raceStatus = '';
-    this.playersData.forEach(player => {
-      raceStatus = raceStatus.concat(
-        `${player.playerName} : ${player.trackLocation}\n`,
-      );
-    });
-    Console.print(raceStatus);
+    this.winners = RaceUtils.findWinners(this.playersData);
   }
 }
 
