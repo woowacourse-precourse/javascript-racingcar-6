@@ -20,6 +20,10 @@ export default class Car {
     return Random.pickNumberInRange(0, 9);
   }
 
+  toString() {
+    return `${this.#name} : ${"-".repeat(this.#distance)}`;
+  }
+
   get carName() {
     return this.#name;
   }

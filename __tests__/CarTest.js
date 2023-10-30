@@ -39,4 +39,17 @@ describe("Car 객체 Test", () => {
     //then
     expect(car.distance).not.toEqual(1);
   });
+  test("Car이 2번 움직이고 toString() 확인", () => {
+    //given
+    const car = new Car("test");
+    const MOVING_FORWARD = 4;
+
+    mockRandoms([MOVING_FORWARD, MOVING_FORWARD]);
+    //when
+    car.move();
+    car.move();
+
+    //then
+    expect(`${car}`).toEqual("test : --");
+  });
 });
