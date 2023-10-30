@@ -8,15 +8,18 @@ import {
 
 class App {
   #cars = new Map();
+
   #tryNumber = 0;
+
   #winner = [];
+
   #topScore = 0;
 
   async play() {
     await this.getCarName();
     await this.getTryNumber();
     this.startRacing();
-    this.insertWinner();
+    this.initWinner();
     this.printWinner();
   }
 
@@ -68,7 +71,7 @@ class App {
     Console.print(`${car} : ${result}`);
   }
 
-  insertWinner() {
+  initWinner() {
     this.initTopScore();
     this.insertWinner();
   }

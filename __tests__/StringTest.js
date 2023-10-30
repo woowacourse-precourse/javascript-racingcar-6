@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'jest';
 import { checkIsValidNumber, isUserInputValid, splitCarsInput } from '../src/utils';
 
 describe('차 입력 문자열 유효성 검증 함수 테스트', () => {
