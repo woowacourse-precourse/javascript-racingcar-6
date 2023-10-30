@@ -40,9 +40,14 @@ class App {
     for(let i=0; i<names.length; i++){  //[0,0,0]
       go_arr.push(0);
     }
+    
+    Console.print("");
+    Console.print("실행결과");
     for(let i=0; i<try_n; i++){
       this.go_stop();
     }
+
+    this.who_winner();
   }
 
   //n대의 자동차 전진 or 멈춤
@@ -61,7 +66,30 @@ class App {
     for(let i=0; i<names.length; i++){
       Console.print(names[i]+" : "+"-".repeat(go_arr[i]));
     }
+    Console.print("");
   }
+
+  //최종 우승자
+  async who_winner(){
+    let winner_index=[];
+    let most_score=Math.max(...go_arr)
+
+    //go_arr에서 most_score 값이 저장된 인덱스 값을 winner_index값에 저장
+    for(let i=0; i<go_arr.length; i++){
+      if(most_score==go_arr[i]){
+        winner_index.push(i);
+      }
+    }
+
+    let winner_name='';
+    for(let i=0; i<winner_index.length; i++){
+      winner_name=winner_name.concat(names[winner_index[i]]);
+      if(i!=winner_index.length-1){
+        winner_name.concat(", ");
+      }
+    }
+    Console.print("최종 우승자 : "+winner_name);
+    }
 }
 
 export default App;
