@@ -9,14 +9,6 @@ const mockQuestions = (inputs) => {
     return Promise.resolve(input);
   });
 };
-const mockNumbers = (inputs) => {
-  MissionUtils.Console.readLineAsync = jest.fn();
-
-  MissionUtils.Console.readLineAsync.mockImplementation(() => {
-    
-    return Promise.resolve(inputs[1]);
-  });
-};
 
 const mockRandoms = (numbers) => {
   MissionUtils.Random.pickNumberInRange = jest.fn();
