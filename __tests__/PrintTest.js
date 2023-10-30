@@ -58,47 +58,39 @@ describe('실행 결과와 우승자 가려내기', () => {
     expect(updatedCars).toStrictEqual(result);
   });
 
-  const doubleWinner = [
-    [
+  test('우승자 가려내기', () => {
+    // given
+    const doubleWinner = new Map([
       ['Fiat', 3],
       ['BMW', 1],
       ['Volvo', 3],
       ['Jeep', 2],
-    ],
-    'Fiat, Volvo',
-  ];
-  const allWinner = [
-    [
+    ]);
+    const allWinner = new Map([
       ['Fiat', 1],
       ['BMW', 1],
       ['Volvo', 1],
       ['Jeep', 1],
-    ],
-    'Fiat, BMW, Volvo, Jeep',
-  ];
-  const onlyWinner = [
-    [
+    ]);
+    const onlyWinner = new Map([
       ['Fiat', 2],
       ['BMW', 0],
       ['Volvo', 4],
       ['Jeep', 2],
-    ],
-    'Volvo',
-  ];
+    ]);
+    const inputs = [doubleWinner, allWinner, onlyWinner];
+    const outputs = ['Fiat, Volvo', 'Fiat, BMW, Volvo, Jeep', 'Volvo'];
+    const logSpy = getLogSpy();
 
-  test.each([doubleWinner, allWinner, onlyWinner])(
-    '우승자 가려내기',
-    (input, result) => {
-      // given
-      const cars = new Map(input);
-      const logSpy = getLogSpy();
+    // when
+    const { announceWinner } = Print;
 
-      // when
-      const { announceWinner } = Print;
-      announceWinner(cars);
-
-      // then
-      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(result));
-    },
-  );
+    // then
+    inputs.forEach((input, idx) => {
+      announceWinner(input);
+      expect(logSpy).toHaveBeenCalledWith(
+        expect.stringContaining(outputs[idx]),
+      );
+    });
+  });
 });
