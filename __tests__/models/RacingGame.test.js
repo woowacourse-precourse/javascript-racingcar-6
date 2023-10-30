@@ -1,9 +1,10 @@
 import { Random } from '@woowacourse/mission-utils';
 import RacingGame from '../../src/models/RacingGame.js';
+import RacingCar from '../../src/models/RacingCar.js';
 
 describe('RacingResult 테스트', () => {
   beforeAll(() => {
-    Random.pickNumberInRange = () => 4;
+    Random.pickNumberInRange = () => RacingCar.MOVE_THRESHOLD;
   });
 
   afterAll(() => {
