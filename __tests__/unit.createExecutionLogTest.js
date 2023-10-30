@@ -1,4 +1,4 @@
-import createExecutionLog from '../src/util/progress/createExecutionLog';
+import createExecutionLog from '../src/util/progress/createExecutionLog.js';
 
 describe('자동차 경주 게임의 전진 결과 값 테스트', () => {
   test('생성된 전진 결과 값에 따른 데이터 최신화 값 반환', async () => {

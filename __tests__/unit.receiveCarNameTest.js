@@ -1,6 +1,6 @@
-import { defaultErrorHandler } from '../src/util/error/errorhandler';
+import { defaultErrorHandler } from '../src/util/error/errorhandler.js';
 import { consolePrint } from '../src/util/libraryFeatures/MissionUtilsHandler.js';
-import { checkCarNameValid } from '../src/util/ready/checkInputValid';
+import { checkCarNameValid } from '../src/util/ready/checkInputValid.js';
 
 const mockReciveCarName = async (inputValue, text) => {
   try {

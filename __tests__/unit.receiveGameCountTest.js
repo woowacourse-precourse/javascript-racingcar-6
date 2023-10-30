@@ -1,7 +1,7 @@
-import { defaultErrorHandler } from '../src/util/error/errorhandler';
+import { defaultErrorHandler } from '../src/util/error/errorhandler.js';
 import { consolePrint } from '../src/util/libraryFeatures/MissionUtilsHandler.js';
-import { checkRaceCountValid } from '../src/util/ready/checkInputValid';
-import receiveGameCount from '../src/util/ready/receiveGameCount';
+import { checkRaceCountValid } from '../src/util/ready/checkInputValid.js';
+import receiveGameCount from '../src/util/ready/receiveGameCount.js';
 
 const mockReceiveGameCount = async (input, text) => {
   try {

@@ -1,4 +1,4 @@
-import { occuredErrorhandler } from '../src/util/error/errorhandler';
+import { occuredErrorhandler } from '../src/util/error/errorhandler.js';
 
 describe('에러 처리 test', () => {
   test('존재하는 에러코드에 대한 메세지 출력', () => {

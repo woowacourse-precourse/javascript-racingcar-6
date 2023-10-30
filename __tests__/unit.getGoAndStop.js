@@ -1,4 +1,4 @@
-import getGoAndStop from '../src/util/progress/getGoAndStop';
+import getGoAndStop from '../src/util/progress/getGoAndStop.js';
 
 describe('자동차 경주 게임의 전진 여부 테스트', () => {
   test('입력된 숫자의 길이와 자동차 갯수 만큼의 배열 생성 성공', async () => {
