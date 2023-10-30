@@ -12,3 +12,7 @@ export const CREATE_CAR_ERROR_MESSAGE = '생성할 자동차가 존재하지 않
 export const NOT_MOVE_WIN_ERROR_MESSAGE = '모든 자동차가 움직이지 않았습니다.';
 export const NOT_FOUND_WINNER_ERROR_MESSAGE = '출력할 우승 자동차가 존재하지 않습니다.';
 export const DUPLICATE_CAR_NAME_ERROR_MESSAGE = '중복된 이름이 있습니다.';
+
+export const RACE_POSITION_OUTPUT = '-';
+export const RACE_MOVE_LIMIT_DIGIT = 4;
+export const CAR_NAME_LIMIT_LENGTH = 5;
