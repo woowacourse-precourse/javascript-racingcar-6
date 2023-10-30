@@ -14,7 +14,9 @@ describe("검증 함수 테스트", () => {
     const inputs = ["123456", "1212321321asasdsad"];
 
     inputs.forEach((name) => {
-      expect(assertNameValid(name)).rejects.toThrowError(
+      expect(() => {
+        assertNameValid(name);
+      }).toThrowError(
         new InvalidPlayerNameError(InvalidPlayerNameError.TYPE_LENGTH)
       );
     });
@@ -24,7 +26,9 @@ describe("검증 함수 테스트", () => {
     const inputs = ["ab cd", " a  a"];
 
     inputs.forEach((name) => {
-      expect(assertNameValid(name)).rejects.toThrowError(
+      expect(() => {
+        assertNameValid(name);
+      }).toThrowError(
         new InvalidPlayerNameError(InvalidPlayerNameError.TYPE_SPACE_BETWEEN)
       );
     });
@@ -34,7 +38,9 @@ describe("검증 함수 테스트", () => {
     const inputs = ["_a_", "a!", "1!", "!@#", "-_-"];
 
     inputs.forEach((name) => {
-      expect(assertNameValid(name)).rejects.toThrowError(
+      expect(() => {
+        assertNameValid(name);
+      }).toThrowError(
         new InvalidPlayerNameError(InvalidPlayerNameError.TYPE_CONTAINS_SPECIAL)
       );
     });
@@ -52,7 +58,7 @@ describe("검증 함수 테스트", () => {
     const inputs = [-1.1, -0.123456, 1.1, 0.123456, Infinity, -Infinity, NaN];
 
     inputs.forEach((amount) => {
-      expect(assertNameValid(amount)).rejects.toThrowError(
+      expect(assertTryAmountValid(amount)).rejects.toThrowError(
         new TryAmountError(TryAmountError.TYPE_NOT_INTEGER)
       );
     });
@@ -62,7 +68,7 @@ describe("검증 함수 테스트", () => {
     const inputs = [0, -1];
 
     inputs.forEach((amount) => {
-      expect(assertNameValid(amount)).rejects.toThrowError(
+      expect(assertTryAmountValid(amount)).rejects.toThrowError(
         new TryAmountError(TryAmountError.TYPE_NOT_INTEGER)
       );
     });
