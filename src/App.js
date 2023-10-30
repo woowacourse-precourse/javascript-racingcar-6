@@ -1,10 +1,11 @@
-import GameUi from "./game/GameUi.js";
+import GameManager from "./controller/GameManager.js";
 class App {
   constructor() {
-    this.gameUi = new GameUi();
+    this.gameManager = new GameManager();
   }
   async play() {
-    this.gameUi.askCarName();
+    await this.gameManager.initGame();
+    await this.gameManager.startRace();
   }
 }
 

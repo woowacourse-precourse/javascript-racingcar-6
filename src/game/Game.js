@@ -14,19 +14,12 @@ class Game {
     });
   }
 
-  //시도할 횟수만큼 레이스 시작
-  runRaceGamesWithAttempts(ATTEMPT_COUNT) {
-    for (let index = 0; index < ATTEMPT_COUNT; index++) {
-      this.eachRaceGame();
-    }
-    console.log(CARS);
-  }
-
   //각각의 레이스 게임을 실행하는 메소드
   eachRaceGame() {
     for (let index in CARS) {
-      this.gameUtil.MovingForwardCar(index);
+      this.gameUtil.storeMovingForward(index);
     }
+    console.log(CARS);
   }
 }
 export default Game;
