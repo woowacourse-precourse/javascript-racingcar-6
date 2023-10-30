@@ -14,7 +14,14 @@ async function gameStart() {
   Console.print(carName.length);
   Console.print("시도할 횟수는 몇 회인가요?");
   const inputNumber = await Console.readLineAsync("");
-  gamePlay(inputNumber, carName);
+  const carDict = {};
+  for (let i = 0; i < carName.length; i++) {
+    const item = carName[i];
+    carDict[item] = 0;
+  }
+  Console.print(carDict);
+
+  // gamePlay(inputNumber, carName);
 }
 
 function gamePlay(inputNumber, carName) {
