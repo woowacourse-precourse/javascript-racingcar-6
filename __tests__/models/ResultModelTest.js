@@ -1,5 +1,5 @@
-import ResultModel from '../src/Model/ResultModel';
-import { NEW_LINE } from '../src/constants/constants';
+import ResultModel from '../../src/Model/ResultModel';
+import { NEW_LINE } from '../../src/constants/constants';
 
 describe('ResultModel Test', () => {
   let resultModel;

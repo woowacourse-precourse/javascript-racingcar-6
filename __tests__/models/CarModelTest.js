@@ -1,4 +1,4 @@
-import CarModel from '../src/Model/CarModel';
+import CarModel from '../../src/Model/CarModel';
 
 describe('CarModel Test', () => {
   let carModel;

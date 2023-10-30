@@ -1,5 +1,5 @@
 import { Random } from '@woowacourse/mission-utils';
-import isMove from '../src/utils/isMove';
+import isMove from '../../src/utils/isMove';
 
 const mockRandmos = (number) => {
   Random.pickNumberInRange = jest.fn();
