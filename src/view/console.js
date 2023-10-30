@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import { parseNames, parseNumber } from '../utils/common.js';
+import { getDistanceString, parseNames, parseNumber } from '../utils/common.js';
 import {
   validateNameShouldBeLessThan5,
   validateNumber,
@@ -24,6 +24,18 @@ class GameConsole {
     validateNumber(round);
 
     return input;
+  }
+
+  static printRoundResult(cars) {
+    cars.forEach((car) =>
+      Console.print(`${car.name} : ${getDistanceString(car.distance)}`)
+    );
+
+    this.printEmptyLine();
+  }
+
+  static printEmptyLine() {
+    Console.print('');
   }
 }
 

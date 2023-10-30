@@ -13,9 +13,12 @@ class App {
     });
 
     this.#round = await GameConsole.getRound();
+    GameConsole.printEmptyLine();
 
     for (let round = 0; round < this.#round; round++) {
       this.#cars.forEach(this.#moveCar);
+
+      GameConsole.printRoundResult(this.#cars);
     }
   }
 

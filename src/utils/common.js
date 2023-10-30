@@ -15,3 +15,7 @@ export function getDistanceToMove(randomNumber) {
 
   return 1;
 }
+
+export function getDistanceString(distanceNumber) {
+  return '-'.repeat(distanceNumber);
+}
