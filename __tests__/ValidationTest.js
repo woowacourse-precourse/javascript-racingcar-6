@@ -15,7 +15,7 @@ describe('자동차 이름 입력', () => {
 
     // then
     outputs.forEach((output, idx) => {
-      expect(getNamesOfCar(inputs[idx], LIMITED_LENGTH)).toEqual(output);
+      expect(getNamesOfCar(inputs[idx], LIMITED_LENGTH)).toStrictEqual(output);
     });
   });
 
