@@ -13,6 +13,12 @@ export default class Input {
 
     return carNames;
   }
+
+  async inputTryNum() {
+    const tryNum = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+    validateTryNum(tryNum);
+    return tryNum;
+  }
 }
 
 const validateCarName = (carName) => {
@@ -21,6 +27,14 @@ const validateCarName = (carName) => {
   }
   if (carName.length > 5) {
     throw new Error("[ERROR] 차 이름은 5글자 이하여야 합니다.");
+  }
+  return;
+};
+
+const validateTryNum = (tryNum) => {
+  const DIGIT_CHECK = /^[0-9]+$/;
+  if (!DIGIT_CHECK.test(tryNum)) {
+    throw new Error("[ERROR] 숫자가 아닌 다른 문자가 입력되었습니다.");
   }
   return;
 };

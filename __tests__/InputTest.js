@@ -26,7 +26,7 @@ describe("Input Test", () => {
     expect(strs).toContain("aa");
   });
 
-  test("이름이 공백인 경우 (입력하지 않은 경우) Error", async () => {
+  test("차 이름이 공백인 경우 (입력하지 않은 경우) Error", async () => {
     //given
     const INPUT_STRING = "abc, ,a";
 
@@ -38,7 +38,7 @@ describe("Input Test", () => {
     await expect(input.inputCarName()).rejects.toThrow("[ERROR]");
   });
 
-  test("5글자 이상인 경우 Error", async () => {
+  test("차 이름이 5글자 이상인 경우 Error", async () => {
     //given
     const INPUT_STRING = "abcaaa,aa,a";
 
@@ -48,5 +48,17 @@ describe("Input Test", () => {
 
     //then
     await expect(input.inputCarName()).rejects.toThrow("[ERROR]");
+  });
+
+  test("시도 횟수에 숫자가 아닌 다른 문자 입력했을 경우 ", async () => {
+    //given
+    const INPUT_STRING = "12kkk";
+
+    //when
+    const input = new Input();
+    mockQuestions([INPUT_STRING]);
+
+    //then
+    await expect(input.inputTryNum()).rejects.toThrow("[ERROR]");
   });
 });
