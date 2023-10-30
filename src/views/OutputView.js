@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils'
-import { GAME_MESSAGE, GAME_RULE } from '../constants'
+import { GAME_MESSAGE, GAME_RULE } from '../constants/index.js'
 
 const OutputView = {
   /**
@@ -24,6 +24,13 @@ const OutputView = {
    */
   printWinner: (winnerList) => {
     Console.print(GAME_MESSAGE.OUTPUT_WINNER + winnerList.join(GAME_RULE.DELIMITER_FOR_WINNER))
+  },
+
+  /**
+   * 줄바꿈을 한다.
+   */
+  printNewLine: () => {
+    Console.print('')
   },
 }
 

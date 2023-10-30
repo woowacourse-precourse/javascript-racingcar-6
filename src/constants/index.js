@@ -6,12 +6,12 @@ export const GAME_RULE = Object.freeze({
   FORWARD_STANDARD: 4,
   MIN_TRY_COUNT: 1,
   DELIMITER_FOR_FORWARD: '-',
-  DELIMITER_FOR_WINNER: ',',
+  DELIMITER_FOR_WINNER: ', ',
 })
 
 export const GAME_MESSAGE = Object.freeze({
-  INPUT_CAR_NAMES: `경주할 자동차 이름을 입력하세요.(이름은 쉼표(${GAME_RULE.DELIMITER_FOR_CAR_NAMES}) 기준으로 구분)`,
-  INPUT_TRY_COUNT: `시도할 횟수는 몇 회인가요?`,
+  INPUT_CAR_NAMES: `경주할 자동차 이름을 입력하세요.(이름은 쉼표(${GAME_RULE.DELIMITER_FOR_CAR_NAMES}) 기준으로 구분)\n`,
+  INPUT_TRY_COUNT: `시도할 횟수는 몇 회인가요?\n`,
   OUTPUT_RESULT: `실행 결과`,
   OUTPUT_WINNER: `최종 우승자 : `,
 })
