@@ -1,3 +1,5 @@
+import Car from '../src/Car';
+import { Console } from '@woowacourse/mission-utils';
 import {
     CREATE_CARS,
     VALIDATE_CAR_NAME,
@@ -9,8 +11,8 @@ import {
     RACE_TIME_ERROR_MESSAGE,
     CREATE_CAR_ERROR_MESSAGE,
 } from '../src/Define';
-import Car from '../src/Car';
 
+jest.mock('@woowacourse/mission-utils');
 describe('Race 테스트', () => {
     describe('CREATE_CARS 함수 테스트', () => {
         test('주어진 자동차 이름 배열로 Car 인스턴스 배열 생성', () => {
@@ -61,6 +63,19 @@ describe('Race 테스트', () => {
             const INPUT = '5';
             const RESULT = VALIDATE_RACE_TIME(INPUT);
             expect(RESULT).toBe(5);
+        });
+    });
+
+    describe('RACE_RUN 함수 테스트', () => {
+        beforeEach(() => {
+            Console.print.mockClear();
+        });
+  
+        test('RACE_RUN 실행 시 Console.print 호출 확인', () => {
+            const CARS = [new Car('car1'), new Car('car2')];
+            const RACE_TIMES = 3;
+            RACE_RUN(CARS, RACE_TIMES);
+            expect(Console.print).toHaveBeenCalledTimes(10);
         });
     });
 });
