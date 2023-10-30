@@ -25,6 +25,7 @@
 ```
 ┗ src
   ┣ App.js
+  ┣ CheckError.js
   ┣ Constant.js
   ┣ Game.js
   ┣ index.js
