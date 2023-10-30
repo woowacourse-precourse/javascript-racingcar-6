@@ -1,4 +1,4 @@
-import { inputConsoleAsync } from "./utils/index.js";
+import { inputConsoleAsync, printConsole } from "./utils/index.js";
 import { MESSAGES } from "./constant/message.js";
 import { Validation } from "./Validation.js";
 import { Car } from "./Car.js";
@@ -15,6 +15,11 @@ class App {
   async play() {
     await this.registerRacingCars();
     await this.registerRacingRepeatNumber();
+    while (this.racingRepeatNumber !== 0) {
+      this.racing();
+      printConsole("");
+      this.racingRepeatNumber -= 1;
+    }
   }
 
   async registerRacingCars() {
@@ -35,6 +40,13 @@ class App {
     if (number) {
       this.racingRepeatNumber = number;
     }
+  }
+
+  racing() {
+    this.racingCars.forEach((car) => {
+      car.moveOrStop();
+      printConsole(`${car.name} : ${Array(car.moveCount).fill("-").join("")}`);
+    });
   }
 }
 
