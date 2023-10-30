@@ -1,5 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import Save from './ValueSave.js'
+import Validation from "./Validation.js";
 
 export default class User {
     async userInputCarName() {
@@ -15,6 +16,11 @@ export default class User {
         names.map((element) => {
             this.cars.push(new Save(element))
         });
-        console.log(this.cars)
+        // console.log(this.cars)
+        this.checkName(names)
+    }
+
+    checkName(names) {
+
     }
 }
