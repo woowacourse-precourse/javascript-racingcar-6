@@ -17,11 +17,39 @@ export async function getRacingNumber(){
   return RacingNumber;
 }
 
+export async function goRacing(CarName,RacingNumber){
+  let Distance = Array(CarName.length).fill(0);   //이동 거리를 저장할 배열
+  let Road = new Array(CarName.length).fill().map(() => []);    //"-"문자를 이동 거리만큼 저장할 배열
+  while(Distance.every(Element=>Element<RacingNumber)){   //Distance의 원소중 하나라도 RacingNumber보다 커지면 반복문 종료
+    printDistance(CarName,Distance,Road);
+  }
+  return Distance;
+}
+
+export function printDistance(CarName,Distance,Road){
+  let i;
+  for(i=0;i<CarName.length;i++){    //각 자동차별 이름과 이동거리를 "-"문자로 출력
+    moveForward(Road,Distance,i);
+    MissionUtils.Console.print(CarName[i]+" : "+Road[i].join(''));   //Road 배열의 원소들을 스트링으로 출력
+  };
+  MissionUtils.Console.print("");
+}
+
+export function moveForward(Road,Distance,index){
+  let RandomNumber=MissionUtils.Random.pickNumberInRange(0, 9);
+  if(RandomNumber>3){   //랜덤 값이 4 이상일 때, 이동거리 증가 및 "-" 문자 저장
+    Distance[index]++;
+    Road[index].push("-");
+  };
+}
+
 class App {
   async play() {
     try{
      const CarName = await getCarName();
      const RacingNumber = await getRacingNumber();
+     MissionUtils.Console.print("\n실행결과");
+     const Distance = await goRacing(CarName,RacingNumber);
     } catch(error){throw error;}
   }
 }

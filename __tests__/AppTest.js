@@ -1,9 +1,9 @@
-import { getCarName } from "../src/App.js";
-import { getRacingNumber } from "../src/App.js";
+import { getCarName,getRacingNumber,goRacing,printDistance,moveForward } from "../src/App.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 const { Console } = MissionUtils; 
 
 describe("자동차 경주 기능 테스트", () => {
+
     test("자동차 이름 입력 받기", async () => {
         const input = "poni,woni,jun";
         const expectresult = ["poni", "woni", "jun"];
@@ -26,5 +26,15 @@ describe("자동차 경주 기능 테스트", () => {
         expect(result).toEqual(expectresult);
     });
 
+    test("게임 실행", async () => {
+        const CarName = ["poni","woni","jun"];
+        const RacingNumber = "3";
+        const expectresult = [3,3,3]
 
+        const result = await goRacing(CarName,RacingNumber);
+
+        for (let i = 0; i < result.length; i++) {
+            expect(result[i]).toBeLessThanOrEqual(expectresult[i]);
+        }
+    });
 });
