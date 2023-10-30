@@ -28,29 +28,54 @@ class App {
       );
     }
 
-    for (let i = 0; i < numberOfRounds; i++) {
-      const a = this.forwardCar(carName);
+    let curScore = this.forwardCar(carName);
 
-      console.log(a);
+    MissionUtils.Console.print(this.viewCarInfo(carName, curScore));
+
+    for (let i = 0; i < numberOfRounds - 1; i++) {
+      const roundScore = this.forwardCar(carName);
+      curScore = roundScore.map((ele, index) => ele + curScore[index]);
+      MissionUtils.Console.print(this.viewCarInfo(carName, curScore));
     }
+
+    let highScore = 0;
+
+    for (let i = 0; i < carName.length; i++) {
+      if (curScore[i].length > highScore) {
+        highScore = curScore[i].length;
+      }
+    }
+
+    let winner = curScore
+      .map((score, i) => {
+        if (score.length === highScore) {
+          return carName[i];
+        }
+      })
+      .filter((ele) => ele);
+
+    MissionUtils.Console.print(`최종 우승자 : ${winner}`);
+  }
+
+  viewCarInfo(carName, curScore) {
+    let curCarInfo = [];
+
+    for (let i = 0; i < curScore.length; i++) {
+      curCarInfo.push(`${carName[i]} : ${curScore[i]}`);
+    }
+    return curCarInfo;
   }
 
   forwardCar(carName) {
-    let curCarScore = [];
+    let score = new Array(carName.length).fill("");
 
     for (let i = 0; i < carName.length; i++) {
-      const car = {
-        name: carName[i],
-        score: "",
-      };
       const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
       if (randomNumber >= 4) {
-        car.score += "-";
+        score[i] += "-";
       }
-      curCarScore.push(car);
     }
-
-    return curCarScore;
+    return score;
   }
 }
 
