@@ -15,6 +15,7 @@ import {
     CREATE_CAR_ERROR_MESSAGE,
     NOT_MOVE_WIN_ERROR_MESSAGE,
     NOT_FOUND_WINNER_ERROR_MESSAGE,
+    DUPLICATE_CAR_NAME_ERROR_MESSAGE,
 } from '../src/Define';
 
 jest.mock('@woowacourse/mission-utils');
@@ -49,6 +50,12 @@ describe('Race 테스트', () => {
             const INPUT = 'car123,car2';
 
             expect(() => VALIDATE_CAR_NAME(INPUT)).toThrowError(CAR_NAME_INVALID_ERROR_MESSAGE);
+        });
+
+        test('중복된 자동차 이름이 입력되면 오류 발생', () => {
+            const INPUT = 'car1,car1';
+
+            expect(() => VALIDATE_CAR_NAME(INPUT)).toThrowError(DUPLICATE_CAR_NAME_ERROR_MESSAGE);
         });
 
         test('올바른 자동차 이름이 입력되면 오류가 발생하지 않음', () => {
