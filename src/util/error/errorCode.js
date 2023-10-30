@@ -1,4 +1,4 @@
-const errorData = [
+const ERROR_CODE = [
   ['noRacerName', '이름이 없는 자동차가 존재합니다.'],
   ['tooLongRacerName', '자동차의 이름이 너무 깁니다.'],
   ['hasDuplicateName', '중복된 자동차명이 존재합니다.'],
@@ -7,6 +7,6 @@ const errorData = [
   ['inputIsEmpty', '입력 값이 없습니다.'],
 ];
 
-const errorList = new Map(errorData);
+const errorList = new Map(ERROR_CODE);
 
 export default errorList;
