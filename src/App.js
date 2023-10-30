@@ -4,6 +4,8 @@ class App {
   carData = "";
   inputArray = [];
   movementCount = 0;
+  carDetail = { carName: "", advance: 0 };
+  advanceCount = [];
 
   async start() {
     return Console.readLineAsync(
@@ -25,6 +27,15 @@ class App {
     return Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
   }
 
+  getRandomValue(car) {
+    const number = Random.pickNumberInRange(0, 9);
+
+    number >= 4 &&
+      this.advanceCount.filter(
+        (data) => data.carName === car.carName && car.advance++
+      );
+  }
+
   async play() {
     this.carData = await this.start();
 
@@ -32,6 +43,17 @@ class App {
     this.validate();
 
     this.movementCount = await this.countAttempt();
+
+    this.inputArray.map((name) =>
+      this.advanceCount.push({ carName: name, advance: 0 })
+    );
+
+    while (
+      !this.advanceCount
+        .map((data) => data.advance === Number(this.movementCount))
+        .includes(true)
+    )
+      this.advanceCount.map((advance) => this.getRandomValue(advance));
   }
 }
 
