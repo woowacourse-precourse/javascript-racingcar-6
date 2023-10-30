@@ -14,8 +14,8 @@ describe('레이싱카 테스트', () => {
 
     const racingCar = new RacingCar('test')
 
-    racingCar.move()
-    racingCar.move()
+    racingCar.tryMove()
+    racingCar.tryMove()
 
     expect(racingCar.getDistance()).toBe(2)
   })
@@ -24,10 +24,10 @@ describe('레이싱카 테스트', () => {
 
     const racingCar = new RacingCar('test')
 
-    racingCar.move()
-    racingCar.move()
-    racingCar.move()
-    racingCar.move()
+    racingCar.tryMove()
+    racingCar.tryMove()
+    racingCar.tryMove()
+    racingCar.tryMove()
 
     expect(racingCar.getDistance()).toBe(2)
   })
