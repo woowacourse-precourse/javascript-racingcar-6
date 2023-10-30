@@ -19,7 +19,7 @@ class Play {
   raceStart(numberOfTimes, carList) {
     const inputNumber = !Number.isNaN(numberOfTimes);
     const inputString = isNaN(numberOfTimes);
-
+    const hasEmty = numberOfTimes.includes(' ');
     Console.print('\n실행결과');
 
     if (inputNumber) {
@@ -29,6 +29,10 @@ class Play {
     }
 
     if (inputString) {
+      throw new Error('[ERROR] 숫자를 입력하세요.');
+    }
+
+    if (hasEmty) {
       throw new Error('[ERROR] 숫자를 입력하세요.');
     }
   }
