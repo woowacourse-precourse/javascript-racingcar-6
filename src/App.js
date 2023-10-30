@@ -42,7 +42,7 @@ class App {
 
     Array.from({ length: this.#totalRounds }).forEach(() => {
       this.#refree.moveCars();
-      OutputView.printRoundResult(this.#refree.getRecordResultList());
+      OutputView.printResultPerRound(this.#refree.getRecordResultList());
     });
   }
 
