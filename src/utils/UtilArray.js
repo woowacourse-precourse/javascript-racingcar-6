@@ -1,13 +1,13 @@
-import CustomString from './CustomString';
+import UtilString from './UtilString.js';
 
-class CustomArray extends Array {
+class UtilArray extends Array {
   /**
    * returns if the array is empty or has space
    * @param {string[]} value
    * @returns {boolean}
    */
   static hasEmpty(value) {
-    return value.length === 0 || value.some((str) => CustomString.isEmptyString(str));
+    return value.length === 0 || value.some((str) => UtilString.isEmptyString(str));
   }
 
   /**
@@ -20,4 +20,4 @@ class CustomArray extends Array {
   }
 }
 
-export default CustomArray;
+export default UtilArray;

@@ -1,7 +1,7 @@
-import InputError from '../errors/InputError';
-import CustomString from './CustomString';
-import { ERROR_MESSAGE } from '../constants';
-import CustomArray from './CustomArray';
+import InputError from '../errors/InputError.js';
+import UtilString from './UtilString.js';
+import { ERROR_MESSAGE } from '../constants/index.js';
+import UtilArray from './UtilArray.js';
 
 class Parser {
   /**
@@ -14,7 +14,7 @@ class Parser {
   static stringToArray(value) {
     const splitted = this.splitByComma(value);
 
-    if (CustomArray.hasEmpty(splitted)) {
+    if (UtilArray.hasEmpty(splitted)) {
       throw new InputError(ERROR_MESSAGE.noInput);
     }
     return splitted;
@@ -26,7 +26,7 @@ class Parser {
    * @returns {number} 정수
    */
   static stringToNumber(value) {
-    if (CustomString.isEmptyString(value)) throw new InputError(ERROR_MESSAGE.noInput);
+    if (UtilString.isEmptyString(value)) throw new InputError(ERROR_MESSAGE.noInput);
 
     return Number(value);
   }
@@ -41,7 +41,7 @@ class Parser {
    * @returns {string[]}
    */
   static splitByComma(value) {
-    if (CustomString.isEmptyString(value)) throw new InputError(ERROR_MESSAGE.noInput);
+    if (UtilString.isEmptyString(value)) throw new InputError(ERROR_MESSAGE.noInput);
     return value.split(',').map((str) => str.trim());
   }
 }

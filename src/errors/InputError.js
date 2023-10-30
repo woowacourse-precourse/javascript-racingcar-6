@@ -1,4 +1,4 @@
-import { ERROR_HEADER } from '../constants/messages';
+import { ERROR_HEADER } from '../constants/messages.js';
 
 class InputError extends Error {
   /**

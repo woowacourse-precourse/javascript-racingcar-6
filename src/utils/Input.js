@@ -1,7 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
-import Parser from './Parser';
-import Validator from './Validator';
-import InputError from '../errors/InputError';
+import Parser from './Parser.js';
+import Validator from './Validator.js';
+import InputError from '../errors/InputError.js';
 
 class Input {
   #carNameInputQuery = '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n';

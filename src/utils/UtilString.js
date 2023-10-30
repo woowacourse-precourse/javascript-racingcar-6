@@ -1,6 +1,6 @@
-import { MAX_NAME_LENGTH } from '../constants';
+import { MAX_NAME_LENGTH } from '../constants/numeric.js';
 
-class CustomString extends String {
+class UtilString extends String {
   /**
    * returns if the length of value is over the length
    * @param {string} value
@@ -22,4 +22,4 @@ class CustomString extends String {
   }
 }
 
-export default CustomString;
+export default UtilString;

@@ -1,6 +1,6 @@
-import { ERROR_MESSAGE } from '../constants';
-import CustomArray from './CustomArray';
-import CustomString from './CustomString';
+import { ERROR_MESSAGE } from '../constants/index.js';
+import UtilArray from './UtilArray.js';
+import UtilString from './UtilString.js';
 
 class Validator {
   /**
@@ -9,11 +9,11 @@ class Validator {
    * @returns {{ isValid: boolean, reason: string }}
    */
   static isValidCarName(carName) {
-    if (carName.some(CustomString.isOverMaxLength)) {
+    if (carName.some(UtilString.isOverMaxLength)) {
       return { isValid: false, reason: ERROR_MESSAGE.tooLongCarName };
     }
 
-    if (CustomArray.hasDuplicated(carName)) {
+    if (UtilArray.hasDuplicated(carName)) {
       return { isValid: false, reason: ERROR_MESSAGE.duplicateCarName };
     }
 
