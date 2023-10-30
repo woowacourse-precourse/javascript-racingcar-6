@@ -13,6 +13,17 @@ class CarRacingGame {
   async start() {
     await this.getCarNames();
     await this.getNumberOfAttempts();
+
+    while (this.raceResult.length < this.cars.length) {
+      this.raceResult.push(0);
+    }
+
+    for (let i = 0; i < this.attempts; i++) {
+      for (let j = 0; j < this.cars.length; j++) {
+        this.printRaceProgress(this.cars[j], j);
+      }
+      Console.print('\n');
+    }
   }
 
 
