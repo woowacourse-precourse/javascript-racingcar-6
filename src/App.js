@@ -6,9 +6,24 @@ class App {
     this.gameCount = 0;
   }
 
-  addCars(carNames) {
-    this.cars = carNames.split(",");
+  addCars() {
     this.cars = this.cars.map((name) => ({ name, score: 0 }));
+  }
+
+  isValid(carName) {
+    if (carName.trim() === "" || carName.length > 5) {
+      return false;
+    }
+    return true;
+  }
+
+  checkCarNames() {
+    let carName;
+    for (carName of this.cars) {
+      if (isValid(carName) === false) {
+        throw new Error("[Error]: invalid carName");
+      }
+    }
   }
 
   checkNumber(input) {
@@ -24,9 +39,11 @@ class App {
   async play() {
     try {
       const inputCarNames = await Console.readLineAsync(
-        "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
+        "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
       );
-      this.addCars(inputCarNames);
+      this.cars = inputCarNames.split(",");
+      this.checkCarNames();
+      this.addCars();
 
       const inputNumber = await Console.readLineAsync(
         "시도할 횟수는 몇 회인가요?\n"
