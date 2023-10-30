@@ -1,6 +1,7 @@
 import { Console } from "@woowacourse/mission-utils";
 import { IN_GAME_MESSAGE } from "./Constants.js";
 import ValidationName from "./ValidationName.js";
+import ValidationTry from "./ValidatonTry.js";
 
 const User = {
   async getCarNames() {
@@ -15,6 +16,9 @@ const User = {
 
   async getTryCount() {
     const tryCount = (await Console.readLineAsync(IN_GAME_MESSAGE.getTryCount));
+
+    ValidationTry.isCorrectTryCount(tryCount);
+
     return tryCount;
   },
 };

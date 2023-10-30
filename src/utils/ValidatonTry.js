@@ -1,6 +1,12 @@
 import { TRY_INPUT_ERROR } from "./Constants.js";
 
 const ValidationTry = {
+  isCorrectTryCount(tryCount) {
+    this.isNull(tryCount);
+    this.isChar(tryCount);
+    this.isBlank(tryCount);
+  },
+
   isNull(tryCount) {
     if (tryCount.length === 0) {
       throw new Error(TRY_INPUT_ERROR.null);
