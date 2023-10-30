@@ -55,8 +55,11 @@ class App {
   }
 
   executeRacing(cars, count) {
+    Console.print('실행 결과');
     while (count > 0) {
       this.moveCarsRandomly(cars);
+      this.printCarsPosition(cars);
+      Console.print('\n');
       count--;
     }
     return cars;
@@ -70,6 +73,12 @@ class App {
       }
     }
     return cars;
+  }
+
+  printCarsPosition(cars) {
+    for (let car of cars) {
+      Console.print(`${car.name} : ${'-'.repeat(car.position)}`);
+    }
   }
 
   async play() {
