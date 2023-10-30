@@ -12,6 +12,7 @@ class App {
   async play() {
     let cars = await setRaceCars();
     if (!checkCarNames(cars)) throw new Error("[ERROR] 자동차 이름이 잘못된 형식입니다.\n");
+    let times = await setRaceTimes();
   }
 }
 
@@ -24,7 +25,7 @@ async function setRaceCars(){
     let car = new Car(name);
     cars.push(car);
   }
-  return cars
+  return cars;
 }
 
 function checkCarNames(cars) {
@@ -43,6 +44,12 @@ function checkNameLength(car) {
     underRequirements = false;
   }
   return underRequirements;
+}
+
+async function setRaceTimes() {
+  let times = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+  times = parseInt(times);
+  return times;
 }
 
 export default App;
