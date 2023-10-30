@@ -1,6 +1,9 @@
 import { Console } from '@woowacourse/mission-utils';
-import { parseNames } from '../utils/common.js';
-import { validateNameShouldBeLessThan5 } from '../utils/validation.js';
+import { parseNames, parseNumber } from '../utils/common.js';
+import {
+  validateNameShouldBeLessThan5,
+  validateNumber,
+} from '../utils/validation.js';
 
 class GameConsole {
   static async getCarNames() {
@@ -12,6 +15,15 @@ class GameConsole {
     validateNameShouldBeLessThan5(parsedNames);
 
     return parsedNames;
+  }
+
+  static async getRound() {
+    const input = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    const round = parseNumber(input);
+
+    validateNumber(round);
+
+    return input;
   }
 }
 
