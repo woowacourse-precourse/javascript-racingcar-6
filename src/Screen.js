@@ -46,7 +46,7 @@ class Screen {
   }
 
   static printResultMessage() {
-    Console.print(this.STRINGS.RACE_RESULT);
+    Console.print(`\n${this.STRINGS.RACE_RESULT}`);
   }
 
   static printResult(car) {
@@ -54,6 +54,10 @@ class Screen {
     Console.print(
       `${name} : ${this.STRINGS.CAR_MOVING_TOKEN.repeat(moveCount)}`,
     );
+  }
+
+  static printNewline() {
+    Console.print('\n');
   }
 }
 

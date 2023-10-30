@@ -16,6 +16,8 @@ class App {
         Screen.printResult(car);
       });
 
+      Screen.printNewline();
+
       count -= 1;
     }
   }
