@@ -1,10 +1,8 @@
-import Output from "../../view/Output.js";
 import SYMBOLS from "../../Constants/symbols.js";
 
 const winner = (keyValue) => {
   let maxName = [];
   let maxLength = 0;
-
   for (const item of keyValue) {
     const name = Object.keys(item)[0];
     const value = item[name];
@@ -17,7 +15,7 @@ const winner = (keyValue) => {
       maxName.push(name);
     }
   }
-  Output.winnerPrint(maxName);
+  return maxName;
 };
 
 export default winner;

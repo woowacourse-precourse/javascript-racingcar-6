@@ -3,6 +3,7 @@ import GAME_MESSAGE from "../Constants/gameMessage.js";
 import TryValid from "../controller/valid/TryValid.js";
 import NameValid from "../controller/valid/NameValid.js";
 import RacingGame from "../model/RacingGame.js"
+import Output from "./Output.js";
 
 class Input {
   constructor() {
@@ -25,7 +26,8 @@ class Input {
     try {
       const number = await Console.readLineAsync(`${GAME_MESSAGE.tryNumber}`);
       this.tryValid.tryIsValid(number);
-      this.racingGame.racing(nameSplit, number);
+      const result = this.racingGame.racing(nameSplit, number);
+      Output.winnerPrint(result);
     } catch (error) {
       throw error;
     }

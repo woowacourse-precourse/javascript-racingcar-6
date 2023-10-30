@@ -16,7 +16,7 @@ class RacingGame {
       gameInProgress(keyValue);
       Console.print(SYMBOLS.emptyString);
     }
-    winner(keyValue);
+    return winner(keyValue);
   }
 }
 export default RacingGame;
