@@ -16,10 +16,6 @@ class Car {
     return this.#cars;
   }
 
-  getCars() {
-    const cars = InputView.inputCarName;
-  }
-
   printProgress() {
     const progress = MovingGenerator.move();
   }

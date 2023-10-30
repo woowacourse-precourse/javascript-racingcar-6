@@ -11,8 +11,8 @@ export class MovingGenerator {
     this.progress = "";
   }
 
-  getAttempt() {
-    const attempt = InputView.inputAttempt;
+  get Attempt() {
+    return this.#attempt;
   }
 
   canMove() {
