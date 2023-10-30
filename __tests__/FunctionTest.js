@@ -17,6 +17,7 @@ describe("기능 테스트", () => {
         mockQuestions(input);
 
         const app = new App();
+
         await expect(await app.createCarNameArr()).toEqual(result);
     });
 
@@ -36,6 +37,7 @@ describe("기능 테스트", () => {
         async (value) => {
             const app = new App();
             const valueArr = value.split(",");
+
             await expect(() => app.checkCarFormat(value, valueArr)).toThrow(
                 "[ERROR] 자동차 이름이 잘못된 형식입니다."
             );
@@ -47,6 +49,7 @@ describe("기능 테스트", () => {
         async (value) => {
             const app = new App();
             const numberOfGames = value / 1;
+
             await expect(() =>
                 app.checkNumberOfGamesFormat(numberOfGames)
             ).toThrow("[ERROR] 시도 횟수가 잘못된 형식입니다.");
@@ -55,11 +58,25 @@ describe("기능 테스트", () => {
 
     test("자동차 점수계산기 테스트", async () => {
         const input = 4;
-        const result = ["-","-","-","-"];
+        const result = ["-", "-", "-", "-"];
+
         jest.spyOn(Random, "pickNumberInRange").mockImplementation(() => 4);
 
         const app = new App();
-        await expect(app.generateAndStoreRandomNumber(input)).toEqual(
+
+        await expect(app.calculateAndStoreScore(input)).toEqual(result);
+    });
+
+    test("자동차 점수 출력 테스트", async () => {
+        const carStates = ["-", "--", ""];
+        const carNameArr = ["치이카와", "하치와레", "우사기"];
+        const result = ["치이카와 : -", "하치와레 : --", "우사기 : "].join(
+            "\n"
+        );
+
+        const app = new App();
+
+        await expect(app.createRoundResult(carNameArr, carStates)).toEqual(
             result
         );
     });
