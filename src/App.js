@@ -1,11 +1,21 @@
 import { Console } from '@woowacourse/mission-utils';
 import Input from './Input.js';
 import Validation from './Validation.js';
+import Car from './Car.js';
 
 class App {
   carNames;
 
+  cars = [];
+
   GameCount;
+
+  makeCars(carNames) {
+    carNames.forEach((carName) => {
+      const car = new Car(carName);
+      this.cars.push(car);
+    });
+  }
 
   async play() {
     const inputCarNames = await Input.getCarNamesFromUser();
@@ -15,6 +25,8 @@ class App {
     const inputGameCount = await Input.getGameCountFromUser();
     Validation.validateGameCountNaturalNumber(inputGameCount);
     this.GameCount = inputGameCount;
+
+    this.makeCars(this.carNames);
   }
 }
 const app = new App();

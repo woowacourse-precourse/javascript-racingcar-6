@@ -5,7 +5,7 @@ class Car {
 
   constructor(name) {
     this.name = name;
-    movement = [];
+    this.movement = [];
   }
 
   getMovement() {
