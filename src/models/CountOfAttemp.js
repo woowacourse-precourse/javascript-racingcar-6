@@ -51,7 +51,7 @@ class CountOfAttemp {
    */
 
   static fromInputString(valueOfAttemps) {
-    return new CountOfAttemp(parseInt(valueOfAttemps, 10));
+    return new CountOfAttemp(Number(valueOfAttemps));
   }
 }
 
