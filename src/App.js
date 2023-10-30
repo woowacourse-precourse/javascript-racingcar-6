@@ -58,7 +58,7 @@ class App {
 
   printResults(carNames, carPositions) {
     carNames.forEach((name) => {
-      Console.print(`${name}: ${'-'.repeat(carPositions[name])}`);
+      Console.print(`${name} : ${'-'.repeat(carPositions[name])}`);
     });
   }
 
@@ -71,14 +71,13 @@ class App {
 
   printWinners(winner) {
     if (winner.length > 1) {
-      Console.print(`최종 우승자: ${winner.join(', ')}`);
+      Console.print(`최종 우승자 : ${winner.join(', ')}`);
     } else {
-      Console.print(`최종 우승자: ${winner[0]}`);
+      Console.print(`최종 우승자 : ${winner[0]}`);
     }
   }
 
   async play() {
-    this.start();
     const carNames = await this.getCarNames();
     const carPositions = {};
     for (const name of carNames) {
@@ -96,11 +95,12 @@ class App {
       //차수별 실행결과
       this.printResults(carNames, carPositions);
 
-      //우승자 찾기
       const jointWinner = this.findWinners(carPositions);
       this.printWinners(jointWinner);
     } catch (error) {
-      Console.print(error.message);
+      throw new Error('[ERROR] 올바른 값을 입력하세요');
     }
   }
 }
+
+export default App;
