@@ -9,6 +9,8 @@ const InputView = {
     const splittedNames = names.split(",");
     if (!nameValidator.checkLength(splittedNames))
       throw new Error(MESSAGE.INPUT_ERROR);
+    if (!nameValidator.checkDuplicateNames(splittedNames))
+      throw new Error(MESSAGE.INPUT_ERROR);
     return splittedNames;
   },
 
