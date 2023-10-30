@@ -1,4 +1,4 @@
-import { ERROR_MESSAGE } from '../constant/message';
+import { ERROR_MESSAGE } from '../constant/message.js';
 
 export const isWithinFourToNine = (number) => number >= 4 && number <= 9;
 
@@ -32,5 +32,11 @@ export const isDuplicateString = (string, array) => {
 export const isContainString = (string, seperator) => {
   if (!string.includes(seperator)) {
     throw new Error(ERROR_MESSAGE.wrongNameInput);
+  }
+};
+
+export const isEmptyString = (string, message) => {
+  if (string.trim() === '') {
+    throw new Error(message);
   }
 };
