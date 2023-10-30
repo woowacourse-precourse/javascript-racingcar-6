@@ -53,17 +53,25 @@ describe('OutputView 테스트', () => {
 });
 
 describe('InputView 테스트', () => {
-  test('자동차 이름 입력 받기 - getCarName()', () => {
-    const inputs = ['pobi', 'woni'];
+  test('자동차 이름 입력 받기 - 성공', async () => {
+    const inputs = ['pobi,woni'];
     const outputs = ['pobi', 'woni'];
 
     mockQuestions(inputs);
 
     const view = new InputView();
-    outputs.forEach(async (output) => {
-      expect(await view.getAttemptNum(MESSAGES.getCarName)).toBe(output);
-    });
+    expect(await view.getCarName()).toEqual(outputs);
   });
+
+  test.each([[['pobi, woni']], [['pobi,wo ni']], [['pobi,javajigi']]])(
+    '자동차 이름 입력 받기 - 실패',
+    async (inputs) => {
+      mockQuestions(inputs);
+
+      const view = new InputView();
+      await expect(view.getCarName()).rejects.toThrow('[ERROR]');
+    },
+  );
 
   test('시도 횟수 입력 받기 - getAttemptNum()', () => {
     const inputs = ['2', '3'];
