@@ -2,10 +2,10 @@ import { NEW_LINE } from '../constants/constants.js';
 import makeResultStringTemplate from '../utils/makeResultStringTemplate.js';
 
 export default class ResultModel {
-  #result;
+  #allAttempsResult;
 
   constructor() {
-    this.#result = [];
+    this.#allAttempsResult = [];
   }
 
   addAttempsResult(cars) {
@@ -13,21 +13,21 @@ export default class ResultModel {
     cars.forEach((car) => {
       attempResult.push(Object.values(car));
     });
-    this.#result.push(attempResult);
+    this.#allAttempsResult.push(attempResult);
   }
 
   getResult() {
-    return this.#result;
+    return this.#allAttempsResult;
   }
 
   makeTotalResult() {
-    const totalResult = [];
-    this.#result.forEach((attempResult) => {
+    const displayedResults = [];
+    this.#allAttempsResult.forEach((attempResult) => {
       attempResult.forEach(([carName, moveCount]) => {
-        totalResult.push(makeResultStringTemplate(carName, moveCount));
+        displayedResults.push(makeResultStringTemplate(carName, moveCount));
       });
-      totalResult.push(NEW_LINE);
+      displayedResults.push(NEW_LINE);
     });
-    return totalResult.join('');
+    return displayedResults.join('');
   }
 }
