@@ -10,4 +10,5 @@ export const MESSAGE = Object.freeze({
 	tryNum: "시도할 횟수는 몇 회인가요?\n",
 	result: "\n실행 결과",
 	newLine: "\n",
+	winner: "최종 우승자 : ",
 });
