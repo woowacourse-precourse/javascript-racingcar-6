@@ -1,6 +1,7 @@
 import { Console, MissionUtils } from '@woowacourse/mission-utils';
 import { CheckLength } from './CheckLength.js';
 import { CheckRandomNum } from './CheckRandomNum.js';
+import { FindMax } from './FindMax.js';
 
 class App {
   async play() {
@@ -49,10 +50,13 @@ class App {
     
     let maxForward = 0;
     for (let i = 0; i < carList.length; i++) {
-      if (maxForward < forwardCounts[i]) {
-        maxForward = forwardCounts[i];
-      };
+      maxForward = FindMax(maxForward, forwardCounts, i);
     };
+    // for (let i = 0; i < carList.length; i++) {
+    //   if (maxForward < forwardCounts[i]) {
+    //     maxForward = forwardCounts[i];
+    //   };
+    // };
 
     const winners = [];
     for (let i = 0; i < forwardCounts.length; i++) {
