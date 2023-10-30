@@ -13,6 +13,7 @@ class App {
     let cars = await setRaceCars();
     if (!checkCarNames(cars)) throw new Error("[ERROR] 자동차 이름이 잘못된 형식입니다.\n");
     let times = await setRaceTimes();
+    if (times == NaN || times == 0) throw new Error("[ERROR] 이동 횟수가 잘못된 형식입니다.\n");
   }
 }
 
