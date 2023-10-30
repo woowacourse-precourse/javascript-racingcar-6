@@ -5,9 +5,10 @@ class App {
   const cars = input.split(',');
   const carLength = cars.length < 2;
   const nameLength = cars.some((car) => car.length < 0 || car.length > 5);
-  const gap = cars.some((car) => /^[가-힣a-zA-Z0-9]+$/.test(car));
+  const gap = cars.some((car) => !/^[가-힣a-zA-Z0-9]+$/.test(car));
   const deduplicateObj = new Set(cars);
   const duplicate = deduplicateObj.size !== cars.length;
+  console.log(carLength, nameLength, gap, duplicate);
   if (carLength || nameLength || gap || duplicate) {
    throw new Error('[ERROR]');
   }
@@ -23,6 +24,14 @@ class App {
   const errTwo = times.trim().length === 0;
   if (errOne || errTwo) {
    throw new Error('[ERROR]');
+  }
+
+  Console.print('\n실행 결과');
+  for (let i = 0; i < times; i++) {
+   for (let car of cars) {
+    Console.print(`${car} : `);
+   }
+   Console.print(` `);
   }
  }
 }
