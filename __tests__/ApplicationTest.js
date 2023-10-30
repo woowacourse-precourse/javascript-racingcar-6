@@ -65,11 +65,8 @@ describe("자동차 경주 게임", () => {
     const MOVING_FORWARD = 4;
     const STOP = 3;
     const inputs = ["pobi,pobi", "100"]; // 중복된 이름 입력
-    const randoms = Array(200).fill([MOVING_FORWARD, STOP]).flat(); // 100번 게임
-    const logSpy = getLogSpy();
 
     mockQuestions(inputs);
-    mockRandoms(randoms);
 
     // when
     const app = new App();
