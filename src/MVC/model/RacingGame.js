@@ -37,5 +37,25 @@ class RacingGame {
       Console.print(`${name} : ${result}`);
     });
   }
+  winner(keyValue) {
+    let maxName = [];
+    let maxLength = 0;
+
+    for (const item of keyValue) {
+      const name = Object.keys(item)[0];
+      const value = item[name];
+      const hyphenLength = value.split(SYMBOLS.hyphen).length - 1;
+
+      if (hyphenLength > maxLength) {
+        maxLength = hyphenLength;
+        maxName = [name];
+      } else if (hyphenLength === maxLength) {
+        maxName.push(name);
+      }
+    }
+    Console.print(
+      `${GAME_MESSAGE.winner}${maxName.join(SYMBOLS.spaceAndComma)}`
+    );
+  }
 }
 export default RacingGame;
