@@ -58,9 +58,11 @@ class RacingCar {
   }
 
   pickWinner(cars) {
-    const maxDistance = Math.max(...cars.map((car) => car.distance));
+    const maxDistanceLength = Math.max(
+      ...cars.map((car) => car.distance.length)
+    );
     const winners = cars
-      .filter((car) => car.distance === maxDistance)
+      .filter((car) => car.distance.length === maxDistanceLength)
       .map((car) => car.name);
 
     return winners;
