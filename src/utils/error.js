@@ -1,8 +1,8 @@
 //@ts-check
 
-const DEFAULT_ERROR_MESSAGE = "[ERROR]";
+import { DEFAULT_ERROR_MESSAGE } from "./const";
 
-class InvalidPlayerNameError extends Error {
+export class InvalidPlayerNameError extends Error {
   static TYPE_LENGTH = 0;
   static TYPE_SPACE_BETWEEN = 1;
   static TYPE_CONTAINS_SPECIAL = 2;
