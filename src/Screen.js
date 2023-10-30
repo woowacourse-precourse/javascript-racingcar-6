@@ -11,6 +11,11 @@ class Screen {
     DUPLICATED_NAME_ERROR_MESSAGE: '[ERROR] 중복된 이름을 입력할 수 없습니다.',
   };
 
+  static STRINGS = {
+    RACE_RESULT: '실행 결과',
+    CAR_MOVING_TOKEN: '-',
+  };
+
   static async inputNames() {
     Console.print(this.MESSAGES.RACE_NAME_INPUT_MESSAGE);
     const nameInput = await Console.readLineAsync();
@@ -38,6 +43,17 @@ class Screen {
     }
 
     return count;
+  }
+
+  static printResultMessage() {
+    Console.print(this.STRINGS.RACE_RESULT);
+  }
+
+  static printResult(car) {
+    const { name, moveCount } = car;
+    Console.print(
+      `${name} : ${this.STRINGS.CAR_MOVING_TOKEN.repeat(moveCount)}`,
+    );
   }
 }
 

@@ -6,7 +6,18 @@ class App {
     const names = await Screen.inputNames();
     const cars = names.map((name) => new Car(name));
 
-    const count = await Screen.inputCount();
+    let count = await Screen.inputCount();
+
+    Screen.printResultMessage();
+
+    while (count > 0) {
+      cars.forEach((car) => {
+        car.moveForward();
+        Screen.printResult(car);
+      });
+
+      count -= 1;
+    }
   }
 }
 
