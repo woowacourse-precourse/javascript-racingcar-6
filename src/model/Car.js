@@ -1,11 +1,11 @@
 class Car {
-  constructor(name, point) {
+  constructor(name, moveCount) {
     this.name = name;
-    this.point = point;
+    this.moveCount = moveCount;
   }
 
   move() {
-    this.point += "-";
+    this.moveCount += 1;
   }
 }
 

@@ -1,11 +1,11 @@
 import MESSAGE from "../constants/message";
 import InputView from "../views/InputView";
 import OutputView from "../views/OutputView";
-import RacingCar from "../model/racingCar";
+import RacingApp from "../model/RacingApp";
 
 class AppController {
   constructor() {
-    this.racingCar = new RacingCar();
+    this.racingApp = new RacingApp();
   }
 
   async play() {
@@ -13,32 +13,29 @@ class AppController {
     const number = await InputView.readNumber();
 
     OutputView.printMessage(MESSAGE.RESULT);
-    this.runRace(names, number);
+    this.startRace(names, number);
 
-    this.selectWinner();
-    const winner = this.racingCar.getWinner();
-    OutputView.printMessage(winner);
+    const maxCount = this.racingApp.getMaxCount();
+    const winner = this.racingApp.getWinner(maxCount);
+    OutputView.printMessage(`${MESSAGE.WINNER} : ${winner.join(", ")}`);
   }
 
-  runRace(names, number) {
-    this.racingCar.setResult(names);
-    const result = this.racingCar.getResult();
+  startRace(names, number) {
+    this.racingApp.setCars(names);
+    const cars = this.racingApp.getCars();
 
     for (let i = 0; i < number; i++) {
-      this.racingCar.carMove();
-      this.displayResult(result);
+      this.racingApp.carMove();
+      this.displayResult(cars);
     }
   }
 
-  displayResult(result) {
-    result.forEach((car) => {
-      OutputView.printMessage(`${car.name} : ${car.point}`);
+  displayResult(cars) {
+    cars.forEach((car) => {
+      const { name } = car;
+      const count = MESSAGE.MOVE_SYMBOL.repeat(car.moveCount);
+      OutputView.printMessage(`${name} : ${count}`);
     });
-  }
-
-  selectWinner() {
-    const maxPoint = this.racingCar.getMaxPoint();
-    this.racingCar.calWinner(maxPoint);
   }
 }
 

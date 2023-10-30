@@ -4,6 +4,7 @@ const MESSAGE = {
   INPUT_ERROR: "[ERROR]",
   RESULT: "실행 결과",
   WINNER: "최종 우승자",
+  MOVE_SYMBOL: "-",
 };
 
 export default Object.freeze(MESSAGE);
