@@ -17,7 +17,7 @@ class View {
   }
 
   printCarResult(carName, distance) {
-    Console.print(`${carName} : ${Sign.DASH.repeat(distance)}`);
+    Console.print(Message.RESULT_DISTANCE(carName,distance));
   }
 
   printWinners(winnerList) {
