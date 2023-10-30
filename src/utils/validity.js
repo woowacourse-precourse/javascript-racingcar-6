@@ -1,7 +1,7 @@
 //@ts-check
 
 import { ALPHABET, NAME_LENGTH_LIMIT, NUMBERS } from "./const";
-import { InvalidPlayerNameError } from "./error";
+import { InvalidPlayerNameError, TryAmountError } from "./error";
 
 /**
  *
@@ -24,7 +24,14 @@ export function assertNameValid(name) {
  *
  * @param {number} amount
  */
-export function assertTryAmountValid(amount) {}
+export function assertTryAmountValid(amount) {
+  if (!isFinite(amount))
+    throw new TryAmountError(TryAmountError.TYPE_NOT_INTEGER);
+  if (!Number.isInteger(amount))
+    throw new TryAmountError(TryAmountError.TYPE_NOT_INTEGER);
+  if (amount < 1)
+    throw new TryAmountError(TryAmountError.TYPE_IS_SMALL_THAN_ONE);
+}
 
 /**
  *
