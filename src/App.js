@@ -2,4 +2,4 @@ class App {
   async play() {}
 }
 
-export default App;
+export default App
