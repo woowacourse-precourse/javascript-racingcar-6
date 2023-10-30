@@ -1,6 +1,7 @@
 import { Console } from "@woowacourse/mission-utils";
 let names;
 let err=0;
+let go_arr=[]
 
 class App {
   async play() {
@@ -33,10 +34,34 @@ class App {
   }
 
   //시도할 횟수 입력 받기
-    async try(){
-        const try_n= await Console.readLineAsync("시도할 횟수는 몇 회인가요? ");
-        Console.print(try_n)
+  async try(){
+    const try_n= await Console.readLineAsync("시도할 횟수는 몇 회인가요? ");
+
+    for(let i=0; i<names.length; i++){  //[0,0,0]
+      go_arr.push(0);
     }
+    for(let i=0; i<try_n; i++){
+      this.go_stop();
+    }
+  }
+
+  //n대의 자동차 전진 or 멈춤
+  async go_stop(){
+    for(let i=0; i<names.length; i++){  
+      let random=MissionUtils.Random.pickNumberInRange(0, 9);
+      if(random>=4){
+        go_arr[i]=go_arr[i]+1
+      }
+    }
+    Console.print(go_arr);  //테스트
+    this.go_stop_print();
+  }
+
+  async go_stop_print(){
+    for(let i=0; i<names.length; i++){
+      Console.print(names[i]+" : "+"-".repeat(go_arr[i]));
+    }
+  }
 }
 
 export default App;
