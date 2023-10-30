@@ -41,7 +41,7 @@ const calculateNextResult = result => {
   }
 
   const nextResult = result;
-  nextResult.numberOfAttempts++;
+  nextResult.distanceFromStart++;
 
   return nextResult;
 };
