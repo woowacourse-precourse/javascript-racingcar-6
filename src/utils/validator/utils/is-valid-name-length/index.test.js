@@ -1,3 +1,5 @@
+import isValidNameLength from './index.js';
+
 describe('isValidNameLength', () => {
   test('알맞은 이름의 길이(2~6자)일때 true 리턴', () => {
     // given
@@ -6,7 +8,7 @@ describe('isValidNameLength', () => {
     // when
     // then
     inputs.forEach((input) => {
-      expect(input).toBe(true);
+      expect(isValidNameLength(input)).toBe(true);
     });
   });
 
@@ -17,7 +19,7 @@ describe('isValidNameLength', () => {
     // when
     // then
     inputs.forEach((input) => {
-      expect(input).toBe(false);
+      expect(isValidNameLength(input)).toBe(false);
     });
   });
 });
