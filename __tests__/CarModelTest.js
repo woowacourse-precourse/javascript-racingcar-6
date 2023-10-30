@@ -8,12 +8,12 @@ describe("Car Model 테스트", () => {
 
     // when & then
     validNames.forEach((validName) => {
-      expect(new Car(validName)).not.toThrow();
+      expect(() => new Car(validName)).not.toThrow();
     });
     invalidNames.forEach((invalidNames) => {
-      expect(new Car(invalidNames)).toThrow();
+      expect(() => new Car(invalidNames)).toThrow();
     });
-    expect(new Car()).toThrow();
+    expect(() => new Car()).toThrow();
   });
 
   test("전달받은 값이 임계값(4) 이상일 경우에만 이동", () => {
