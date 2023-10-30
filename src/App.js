@@ -1,9 +1,15 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import { seperateCarNames, processTrialInput } from '../utils/inputHandling.js';
+import Car from '../classes/Car.js';
 
 class App {
   carNamesArray;
   #trialNum;
+  constructor() {
+    this.carNamesArray = [];
+    this.#trialNum = 0;
+  }
+
   async init() {
     this.carNamesArray = seperateCarNames(
       await MissionUtils.Console.readLineAsync(
@@ -14,12 +20,10 @@ class App {
       await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?\n'),
     );
   }
-  constructor() {
-    this.carNamesArray = [];
-    this.#trialNum = 0;
-  }
+
   async play() {
     await this.init();
+    const carList = this.carNamesArray.map((name) => new Car(name));
   }
 }
 
