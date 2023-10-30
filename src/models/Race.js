@@ -1,14 +1,15 @@
 import randomNumberGenerator from '../utils/randomNumberGenerator.js';
 import OutputView from '../views/OutputView.js';
-import { GUIDE_MESSAGES } from '../constants/messages.js';
+import SYMBOLS from '../constants/symbols.js';
 import OPTIONS from '../constants/options.js';
+import Score from './Score.js';
 
 class Race {
   #outputView;
 
-  #booster;
+  #fuel;
 
-  #gas;
+  #score = new Score();
 
   constructor() {
     this.#outputView = OutputView;
@@ -16,61 +17,48 @@ class Race {
 
   /**
    * 주어진 조건에 따라 레이싱을 진행한다.
-   * TODO: scoreBoard의 type 변경
-   * @param {{[x: string]: number}} scoreBoard
+   * @param {[string, number][]} scoreBoard
    * @param {number} laps
    * @returns {[string, number][]}
    */
   racing(scoreBoard, laps) {
-    const { whiteSpace } = GUIDE_MESSAGES;
-    const scoreBoards = Object.entries(scoreBoard);
-
     while (laps) {
-      this.#drive(scoreBoards);
-      this.#outputView.print(whiteSpace);
+      this.#drive(scoreBoard);
+      this.#outputView.print(SYMBOLS.whiteSpace);
       laps--;
     }
 
-    return scoreBoards.sort((a, b) => b[1] - a[1]);
-  }
-
-  #drive(scoreBoards) {
-    scoreBoards.forEach(scoreBoard => {
-      this.#gasStation();
-      this.#getBooster();
-
-      if (this.#booster) scoreBoard += OPTIONS.point;
-    });
-    this.#showScoreBoard(scoreBoards);
+    return this.#score.sortBoard(scoreBoard);
   }
 
   /**
-   * 무작위 가스 값을 설정한다.
+   * 스코어보드 내 참가자들을 순회하며, 라운드를 진행한다.
+   * @param {[string, number][]} scoreBoard
+   * @returns
+   */
+  #drive(scoreBoard) {
+    scoreBoard.forEach(score => {
+      this.#gasStation();
+      this.#getBooster(score);
+    });
+
+    return this.#score.showBoard(scoreBoard);
+  }
+
+  /**
+   * 무작위 연료 값을 설정한다.
    * @private
    */
   #gasStation() {
-    this.#gas = randomNumberGenerator();
+    this.#fuel = randomNumberGenerator();
   }
 
   /**
-   * 가스가 일정 값 이상일 때 부스터 활성 여부를 설정한다.
+   * 연료가 일정 값 (OPTIONS.refuel = 4) 이상이면 부스터(전진 점수)를 얻는다.
    * @private
    */
-  #getBooster() {
-    const { refuel } = OPTIONS;
-    this.#booster = this.#gas >= refuel;
-  }
-
-  /**
-   * 모든 레이싱 완료 후 스코어보드를 출력한다.
-   * @param {[string, number][]} scoreBoards
-   * @private
-   */
-  #showScoreBoard(scoreBoards) {
-    const { lapScore, dash } = GUIDE_MESSAGES;
-    scoreBoards.forEach(score => {
-      this.#outputView.print(lapScore(score[0], dash.repeat(score[1])));
-    });
+  #getBooster(score) {
+    if (this.#fuel >= OPTIONS.refuel) score[1] += OPTIONS.point;
   }
 }
 
