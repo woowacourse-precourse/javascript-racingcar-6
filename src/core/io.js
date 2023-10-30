@@ -2,6 +2,7 @@
 
 import { Console } from "@woowacourse/mission-utils";
 import { ReadLineError } from "../utils/error.js";
+import { assertNameValid } from "../utils/validity.js";
 
 /**
  * @returns { Promise<string[]> }
@@ -17,7 +18,11 @@ export async function askNames() {
     throw new ReadLineError();
   }
 
-  return splitNamesFrom(nameString);
+  const names = splitNamesFrom(nameString);
+
+  checkNamesAreValid(names);
+
+  return names;
 }
 
 /**
@@ -28,4 +33,14 @@ function splitNamesFrom(nameString) {
   let names = nameString.split(",");
   names = names.map((name) => name.trim());
   return names;
+}
+
+/**
+ *
+ * @param {string[]} names
+ */
+function checkNamesAreValid(names) {
+  names.forEach((name) => {
+    assertNameValid(name);
+  });
 }
