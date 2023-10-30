@@ -3,6 +3,10 @@ import Validation from './Validation.js';
 import ErrorHandler from './ErrorHandler.js';
 
 class RacingGame {
+  constructor(carsList) {
+    this.carsList = carsList;
+  }
+
   SETTINGS = {
     gameStatusMark: '-',
   };
@@ -20,13 +24,13 @@ class RacingGame {
     return racingCountNumber;
   }
 
-  playRacing(carsArray) {
-    carsArray.forEach((car) => car.move());
+  playRacing() {
+    this.carsList.forEach((car) => car.move());
   }
 
-  showGameStatus(carsArray) {
-    const lastStatusIndex = carsArray.length - 1;
-    carsArray.forEach((car, index) => {
+  showGameStatus() {
+    const lastStatusIndex = this.carsList.length - 1;
+    this.carsList.forEach((car, index) => {
       let statusString = `${car.name} : ${this.SETTINGS.gameStatusMark.repeat(
         car.location,
       )}`;
@@ -38,9 +42,9 @@ class RacingGame {
     });
   }
 
-  findWinner(carsArray) {
-    const initialWinnersArray = [carsArray[0]];
-    const targetCarsArray = carsArray.slice(1);
+  findWinner() {
+    const initialWinnersArray = [this.carsList[0]];
+    const targetCarsArray = this.carsList.slice(1);
     const winnersArray = targetCarsArray.reduce((fastestCars, targetCar) => {
       const targetFastestCar = fastestCars.pop();
       if (targetFastestCar.location > targetCar.location) {

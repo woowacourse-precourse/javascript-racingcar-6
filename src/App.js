@@ -6,7 +6,7 @@ class App {
     const settingCars = new SettingCars();
     const registeredCars = await settingCars.registerCars();
 
-    const racingGame = new RacingGame();
+    const racingGame = new RacingGame(registeredCars);
     const totalRacingCount = await racingGame.getRacingCount();
 
     for (let count = 0; count < totalRacingCount; count += 1) {
