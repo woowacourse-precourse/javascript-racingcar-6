@@ -8,7 +8,7 @@ export default class Validation {
     }
 
     static checkLength(input) {
-        if(input.every((input) => input.length > 5 )) {
+        if(input.some((input) => input.length > 5 )) {
             throw new Error('[ERROR] 이름은 5자 이하만 가능합니다.')
         } return true;
     }

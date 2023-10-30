@@ -21,6 +21,10 @@ export default class User {
     }
 
     checkName(names) {
-
-    }
+        try {Validation.carNameValidation(names)
+        } catch(e) {
+          throw(e)
+        }
+        console.log(names)
+    } 
 }
