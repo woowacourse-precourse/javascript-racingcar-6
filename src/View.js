@@ -1,9 +1,8 @@
-import { Console } from "@woowacourse/mission-utils"
-import { checkValidCarsName, checkValidNumber} from "./Validation.js";
-import { Message, Sign } from "./constants/constants.js";
+import { Console } from '@woowacourse/mission-utils';
+import { checkValidCarsName, checkValidNumber } from './Validation.js';
+import { Message, Sign } from './constants/constants.js';
 
 class View {
-
   async inputCarNames() {
     const input = await Console.readLineAsync(Message.NAME_INPUT);
     const inputList = input.split(Sign.DECIMAL);
@@ -25,6 +24,5 @@ class View {
     Console.print(Message.RESULT_WINNER(winnerList));
   }
 }
-
 
 export default View;

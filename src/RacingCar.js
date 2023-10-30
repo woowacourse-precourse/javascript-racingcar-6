@@ -1,11 +1,11 @@
-import { Console, Random } from "@woowacourse/mission-utils";
-import Car from "./Car.js";
-import View from "./View.js";
-import { Sign, Value } from "./constants/constants.js";
+import { Console, Random } from '@woowacourse/mission-utils';
+import Car from './Car.js';
+import View from './View.js';
+import { Sign, Value } from './constants/constants.js';
 
 class RacingCar {
-  #carList
-  #view
+  #carList;
+  #view;
 
   constructor() {
     this.#carList = [];
@@ -29,26 +29,29 @@ class RacingCar {
   }
 
   repeatMoveOrStop(input) {
-    for(let i = 0; i < input; i++){
+    for (let i = 0; i < input; i++) {
       this.determineMoveByRandom();
-      this.printAllCarsInfo();
+      this.printCarsDistance();
     }
     this.chooseWinner();
   }
 
   determineMoveByRandom() {
     this.#carList.forEach((car) => {
-      const randNum = Random.pickNumberInRange(Value.MIN_NUMBER, Value.MAX_NUMBER);
-      if(randNum >= Value.NEXT_MOVE_CONDITION){
+      const randNum = Random.pickNumberInRange(
+        Value.MIN_NUMBER,
+        Value.MAX_NUMBER,
+      );
+      if (randNum >= Value.NEXT_MOVE_CONDITION) {
         car.moveForward();
       }
-    })
+    });
   }
 
-  printAllCarsInfo() {
+  printCarsDistance() {
     this.#carList.forEach((car) => {
       this.#view.printCarResult(car.getName(), car.getDistance());
-    })
+    });
   }
 
   chooseWinner() {
@@ -57,10 +60,9 @@ class RacingCar {
     const winners = this.#carList
       .filter((car) => car.getDistance() === maxDistance)
       .map((car) => car.getName());
-    
+
     this.#view.printWinners(winners);
   }
-  
 }
 
 export default RacingCar;
