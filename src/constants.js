@@ -1,8 +1,9 @@
-export const CONSTANTS_NUMBER = Object.freeze({
+export const CONSTANTS = Object.freeze({
 	MAX_CAR_NAME_LENGTH: 5,
 	MIN_RANDOM_VALUE: 0,
 	MAX_RANDOM_VALUE: 9,
 	FORWARD_STANDARD_VALUE: 4,
+	DISTANCE_MARKER: '-',
 });
 
 export const ERROR_MESSAGE = Object.freeze({
