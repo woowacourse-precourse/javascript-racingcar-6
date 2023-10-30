@@ -10,55 +10,62 @@ export class Game {
     this.output = new Output();
     this.constants = new Constants();
     this.verify = new Verification();
+    this.cars = [];
   }
 
   async init() {
     try {
       const entryList = await this.entry();
-      this.getIn(entryList);
+      this.createCars(entryList);
+      const laps = await this.getLaps();
+      this.startRace(laps);
     } catch (error) {
       this.output.print(error);
       throw error;
     }
   }
 
-  async entry() {
-    const inputString = await this.input.get(this.constants.askNames);
+  async entry(inputString = null) {
+    if (!inputString)
+      inputString = await this.input.get(this.constants.askNames);
     const arrayCars = inputString.split(",");
-    if (this.verify.exceedLength(arrayCars))
-      throw new Error(this.constants.exceeded);
-    if (this.verify.findDuplicates(arrayCars))
-      throw new Error(this.constants.duplicates);
-    if (arrayCars.includes("") || arrayCars.includes(" "))
-      throw new Error(this.constants.blank);
+    this.validateNames(arrayCars);
     return arrayCars;
   }
 
-  getIn(array) {
-    const newArray = [];
-    array.forEach((name) => newArray.push(new Car(name)));
-    this.getHowManyLaps(newArray);
+  validateNames(name) {
+    if (this.verify.exceedLength(name))
+      throw new Error(this.constants.exceeded);
+    if (this.verify.findDuplicates(name))
+      throw new Error(this.constants.duplicates);
+    if (name.includes("") || name.includes(" "))
+      throw new Error(this.constants.blank);
   }
 
-  async getHowManyLaps(carsArray) {
+  createCars(array) {
+    this.cars = [];
+    array.forEach((name) => this.cars.push(new Car(name)));
+  }
+
+  async getLaps() {
     const laps = await this.input.get(this.constants.tries);
-    this.compete(carsArray, +laps);
+    return laps;
   }
 
-  compete(carsArray, laps) {
+  startRace(laps) {
     let longestDistance = 0;
     let round = 1;
 
     while (longestDistance < laps) {
-      carsArray.forEach((car) => {
+      this.cars.forEach((car) => {
         car.distance += car.didProceed();
         if (car.distance > longestDistance) longestDistance = car.distance;
       });
       this.output.print(`${round}라운드`);
-      this.render(carsArray);
+      this.render(this.cars);
       round++;
     }
-    this.whoDidWin(carsArray, laps);
+    this.whoDidWin(laps);
   }
 
   render(array) {
@@ -68,8 +75,9 @@ export class Game {
     this.output.print("\n");
   }
 
-  whoDidWin(cars, laps) {
-    const winners = cars.filter((car) => car.distance === laps);
+  whoDidWin(laps) {
+    const winners = this.cars.filter((car) => car.distance === parseInt(laps));
+    let winner;
 
     if (winners.length >= 2) {
       const winnersName = winners.map((car) => car.name);
@@ -77,7 +85,6 @@ export class Game {
       return;
     }
 
-    let winner;
     [winner] = winners;
     this.output.print(`최종 우승자 : ${winner.name}`);
   }
