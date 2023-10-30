@@ -12,4 +12,5 @@ export const ERROR_MESSAGE = Object.freeze({
   wrongNameInput:
     '[ERROR] 둘 이상의 자동차 이름을 입력해주세요.(이름은 쉼표(,) 기준으로 구분)',
   duplicateNameInput: '[ERROR] 중복된 이름 입력이 있습니다.',
+  wrongNameListLength: '[ERROR] 자동차 이름은 1000개까지 입력할 수 있습니다.',
 });
