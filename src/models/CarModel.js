@@ -1,4 +1,5 @@
 import { ERRORS } from '../constants/errors.js';
+import { throwError } from '../utils/throwError.js';
 
 class CarModel {
   constructor() {
@@ -13,7 +14,7 @@ class CarModel {
     if (!this.cars.has(name)) {
       return this.cars.set(name, 0);
     }
-    throw new Error(ERRORS.carAlreadyExists);
+    throwError(ERRORS.carAlreadyExists);
   }
 
   increaseMoveCntByName(name) {
@@ -21,7 +22,7 @@ class CarModel {
       const moveCnt = this.cars.get(name);
       return this.cars.set(name, moveCnt + 1);
     }
-    throw new Error(ERRORS.carNotFound);
+    throwError(ERRORS.carNotFound);
   }
 }
 
