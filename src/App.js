@@ -13,6 +13,7 @@ class App {
       this.printCarStatus(carForwards, carNames);
       Console.print("");
     }
+    this.printWinner(carForwards, carNames);
   }
 
   async inputCarNames() {
@@ -64,6 +65,12 @@ class App {
       const dashed = "-".repeat(car);
       Console.print(`${carNames[j]} : ${dashed}`);
     });
+  }
+
+  printWinner(carForwards, carNames) {
+    const maxValue = Math.max(...carForwards);
+    const winners = carNames.filter((_, j) => carForwards[j] === maxValue);
+    Console.print(`최종 우승자: ${winners.join(", ")}`);
   }
 }
 
