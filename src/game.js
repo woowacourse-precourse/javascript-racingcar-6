@@ -3,7 +3,7 @@ import Car from './car.js';
 
 class Game {
   constructor(carNames) {
-    this.carNames = carNames;
+    this.cars = carNames;
   }
 
   race(times) {

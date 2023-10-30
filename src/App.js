@@ -1,5 +1,5 @@
 import { Console, MissionUtils } from '@woowacourse/mission-utils';
-import GAME_MESSAGE from './constants/gameMessage.js';
+import GAME_MESSAGE from './constant/gameMessage.js';
 import ERROR_MESSAGE from './constant/errorMessage.js';
 import Car from './car.js';
 import Game from './game.js';
@@ -11,7 +11,7 @@ class App {
 
     const cars = playerNames.map((name) => new Car(name));
     const racingGame = new Game(cars);
-    Console.print('실행 결과');
+    Console.print(GAME_MESSAGE.GAME_RESULT);
 
     racingGame.race(times);
 
