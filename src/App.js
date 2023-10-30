@@ -14,7 +14,8 @@ class Car {
   }
 
   displayPosition() {
-    Console.print(`${this.name} : ${this.position}`);
+    let dashPosition = '-'.repeat(this.position);
+    Console.print(`${this.name} : ${dashPosition}`);
   }
 }
 
@@ -47,6 +48,20 @@ function isCarNameSame(carNameArr) {
   }
 }
 
+function getWinner(carArr) {
+  let winners = [];
+  let winnerPosition = 0;
+  carArr.forEach((car) => {
+    if (winnerPosition < car.position) {
+      winnerPosition = car.position;
+      winners = [car.name];
+    } else if (winnerPosition === car.position) {
+      winners.push(car.name);
+    }
+  });
+  return Console.print(`최종 우승자 : ${winners}`);
+}
+
 class App {
   async play() {
     let carNameArr = await this.getCarName();
@@ -57,7 +72,10 @@ class App {
     let racingRound = await this.getMoveCount();
 
     let carArr = makeCarArray(carNameArr);
+
+    Console.print('\n실행 결과');
     this.doRace(carArr, racingRound);
+    getWinner(carArr);
   }
 
   oneRound(carArr) {
@@ -70,24 +88,22 @@ class App {
   doRace(carArr, racingRound) {
     for (let i = 0; i < racingRound; i++) {
       this.oneRound(carArr);
+      Console.print('\n');
     }
   }
 
   async getCarName() {
     const carNames = await Console.readLineAsync(
-      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)',
+      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
     );
     const carNameArr = carNames.split(',');
     return carNameArr;
   }
 
   async getMoveCount() {
-    const moveCount = await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
+    const moveCount = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
     return moveCount;
   }
 }
 
 export default App;
-
-// const app = new App();
-// app.play();
