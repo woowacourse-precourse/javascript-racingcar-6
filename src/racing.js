@@ -1,16 +1,16 @@
 import { randomNumber } from "./randomNumber.js";
-import { printResult } from "./print.js";
-import findWinner from "./findWinner.js";
+import { printRacing } from "./print.js";
 
 function racing(carNames, count) {
   let racingObj = initRacing(carNames);
   for (let i = 0; i < count; i++) {
-    racingObj = calculateScore(racingObj);
-    printResult(racingObj);
+    racingObj = calculateMoving(racingObj);
+    printRacing(racingObj);
   }
-  findWinner(racingObj);
+  return racingObj;
 }
-function calculateScore(racingObj) {
+
+function calculateMoving(racingObj) {
   Object.keys(racingObj).forEach((key) => {
     if (isNumFour()) {
       racingObj[key]++;
@@ -18,6 +18,7 @@ function calculateScore(racingObj) {
   });
   return racingObj;
 }
+
 function initRacing(carNames) {
   let racingObj = {};
   carNames.forEach((name) => {
@@ -25,6 +26,7 @@ function initRacing(carNames) {
   });
   return racingObj;
 }
+
 function isNumFour() {
   return randomNumber() >= 4;
 }
