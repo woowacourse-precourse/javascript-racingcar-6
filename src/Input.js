@@ -5,14 +5,21 @@ class Input {
   static async readCarString() {
     const input = await Console.readLineAsync(InGameMessages.PRINT_INPUT_CARS);
     const splittedString = input.split(',');
-    this.checkInput(splittedString);
+    this.checkCarInput(splittedString);
     return splittedString;
   }
 
-  static checkInput(input) {
+  static checkCarInput(input) {
     input.map((str) => {
       if (str.length > 5) throw new Error(ErrorMessages.PRINT_TOO_LONG_NAME);
     });
+  }
+
+  static async readAttemptString() {
+    const input = await Console.readLineAsync(
+      InGameMessages.PRINT_INPUT_ATTEMPT,
+    );
+    return parseInt(input, 10);
   }
 }
 
