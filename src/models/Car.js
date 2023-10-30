@@ -6,3 +6,5 @@ class Car {
     this.#position = 0;
   }
 }
+
+export default Car;

@@ -1,5 +1,5 @@
 import { Random } from '@woowacourse/mission-utils';
-import Car from './Car';
+import Car from './Car.js';
 
 class Track {
   static LIMIT_NUMBER = 4;
@@ -11,6 +11,7 @@ class Track {
 
   async checkCarRun(car) {
     const randomNumber = await Random.pickNumberInRange(0, 9);
-    return randomNumber < Track.LIMIT_NUMBER ? true : false;
+
+    return !!(randomNumber < Track.LIMIT_NUMBER);
   }
 }
