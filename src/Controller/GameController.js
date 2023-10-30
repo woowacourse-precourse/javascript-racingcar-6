@@ -15,8 +15,10 @@ export default class GameController {
     const attemptNumber = await this.#getAttemptNumber();
 
     this.#game = new Game({ racingCars, attemptNumber });
-    const result = this.#game.startRace();
+    const { result, winner } = this.#game.startRace();
+
     View.printResult(result);
+    View.printWinner(winner);
   }
 
   async #getRacingCars() {

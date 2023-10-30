@@ -15,6 +15,7 @@ export default class Game {
     this.#currentLab = 0;
   }
 
+  // @TODO: 함수 이름 변경, 기능 분리
   startRace() {
     do {
       this.#move();
@@ -22,7 +23,8 @@ export default class Game {
       this.#currentLab += 1;
     } while (this.#currentLab < this.#totalLab);
 
-    return this.racingCommentary;
+    const winner = this.#getWinner();
+    return { result: this.racingCommentary, winner };
   }
 
   #move() {
@@ -38,5 +40,16 @@ export default class Game {
         position: car.getCarPosition(),
       })),
     );
+  }
+
+  #getWinner() {
+    const carPositions = this.#racingCars.map((car) => car.getCarPosition());
+    const maxValue = Math.max(...carPositions);
+
+    const winner = this.#racingCars.filter(
+      (car) => car.getCarPosition() === maxValue,
+    );
+
+    return winner.map((car) => car.getCarName());
   }
 }

@@ -21,4 +21,8 @@ export const View = {
       Console.print('');
     });
   },
+
+  printWinner(winner) {
+    Console.print(`${MESSAGE.WINNER}${winner}`);
+  },
 };
