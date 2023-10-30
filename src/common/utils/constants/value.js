@@ -5,6 +5,6 @@ export const NUMBER = Object.freeze ({
 });
 
 export const STRING = Object.freeze ({
-  EMPTY_STRING: ' ',
-  HYPHEN: '-'
+  MOVE_FORWARD_DISTANCE: '-',
+  BLANK_SPACE: ''
 });
