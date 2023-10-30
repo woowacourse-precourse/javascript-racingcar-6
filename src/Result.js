@@ -8,13 +8,15 @@ class Result {
   }
 
   findWinners() {
-    this.winners = this.cars.map(car => this.compareResult(car));
+    this.cars.forEach(car => {
+      this.compareResult(car);
+    });
 
     return this;
   }
 
   compareResult(car) {
-    const [name, finalResult] = car.getCarScore();
+    const [name, finalResult, count] = car.getCarScore();
 
     if (finalResult.length === this.max) {
       this.winners.push(name);

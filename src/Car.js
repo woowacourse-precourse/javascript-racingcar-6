@@ -15,6 +15,7 @@ class Car {
 
   move() {
     const randomizeNumber = this.getRandomNumber();
+    console.log(randomizeNumber);
 
     if (randomizeNumber >= MOVE.CONSTRAINT_NUM) {
       this.result += MOVE.SYMBOL;
