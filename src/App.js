@@ -67,6 +67,21 @@ class App {
     }
 
     /**
+     * @param {number} tryCnt
+     * @param {CarObject[]} carObjArr
+     */
+    runRacing(carObjArr, tryCnt) {
+        MissionUtils.Console.print('\n실행 결과');
+        [...Array(tryCnt)].forEach(() => {
+            carObjArr.forEach(carObj => {
+                this.moveCar(carObj, this.getRandomNumberForRacing());
+                this.printCarStatus(carObj);
+            });
+            MissionUtils.Console.print('');
+        });
+    }
+
+    /**
      * @returns {number}
      */
     getRandomNumberForRacing() {
