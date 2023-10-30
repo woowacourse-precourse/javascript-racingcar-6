@@ -6,6 +6,7 @@ import { validCount } from "./ValidCount.js";
 import { inputCount } from "./InputCount.js";
 import { moveCar } from "./MoveCar.js";
 import { printCar } from "./printCar.js";
+import { result } from "./Result.js";
 class App {
   async play() {
     const carNames = await inputCarName();
@@ -30,6 +31,9 @@ class App {
 
       MissionUtils.Console.print('');
     }
+    
+    result(cars);
+    
   }
 }
 
