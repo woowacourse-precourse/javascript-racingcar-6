@@ -30,6 +30,15 @@ class Game {
 
   async run() {
     await this.#init();
+    this.#printResult();
+  }
+
+  #printResult() {
+    Console.print('실행 결과\n');
+    for (let i = 0; i < this.#trialCount; i += 1) {
+      this.#executeRound();
+    }
+    Console.print(`최종 우승자 : ${this.#winners.join(', ')}`);
   }
 
   #executeRound() {
