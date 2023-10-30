@@ -1,4 +1,5 @@
 import { Console, Random } from '@woowacourse/mission-utils';
+import { MESSAGE } from '../../constants/message';
 
 const getCanMove = () => {
   const randomNumber = Random.pickNumberInRange(0, 9);
@@ -22,4 +23,8 @@ export const printRoundResult = carDistanceList => {
   carDistanceList.forEach(car => {
     Console.print(`${car.carName} : ${car.distance}`);
   });
+};
+
+export const printResultMessage = () => {
+  Console.print(MESSAGE.printResult);
 };
