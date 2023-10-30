@@ -45,8 +45,8 @@ describe('자동차 이름 입력 테스트', () => {
 describe('레이싱 횟수 입력 테스트', () => {
   const racingNumberValidate = new TryNumberValidate();
 
-  test('0이하 입력 또는 입력값 없는 경우', () => {
-    const input = [-2, 0, ''];
+  test('1이상의 정수가 아닌 경우 (실수, 음수, 0, 빈칸 등)', () => {
+    const input = [-2, 0, '', 1.2, 5.23];
     const result = ERROR.tryNumberZero;
 
     input.forEach((input) => {

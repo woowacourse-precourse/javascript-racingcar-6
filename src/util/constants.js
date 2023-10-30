@@ -9,7 +9,7 @@ const ERROR = {
   sameName: `[ERROR] 서로 다른 자동차 이름을 입력하세요.`,
   carNameLength: `[ERROR] 이름은 5자 이하로 작성하세요.`,
   noInputCarList: `[ERROR] 자동차를 입력하세요.`,
-  tryNumberZero: `[ERROR] 1 이상의 숫자를 입력하세요`,
+  tryNumberZero: `[ERROR] 1 이상의 정수를 입력하세요`,
   tryNumberIntType: `[ERROR] 숫자만 입력 가능합니다.`,
 };
 
