@@ -7,4 +7,12 @@ export default class Car {
   getName() {
     return this.name;
   }
+
+  oneStepForward() {
+    this.move += 1;
+  }
+
+  getMove() {
+    return this.move;
+  }
 }
