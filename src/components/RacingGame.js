@@ -10,6 +10,7 @@ class RacingGame {
     this.randomNumberForRace = null;
     this.allRaceForAllCar = [];
     this.raceResultMessage = OTHERS.empty;
+    this.raceWinnerMessage = null;
   }
 
   // CONTROLLER
@@ -120,7 +121,21 @@ class RacingGame {
   }
 
   //MODEL
-  getWinnerMessage() {}
+  getWinnerMessage() {
+    const objForLastRace = {};
+
+    this.allRaceForAllCar.forEach((racePerCar, index) => {
+      if (racePerCar[this.userInputTryCount - 1]) {
+        // = 주위에서 줄바꿈 X -> 나중에 소괄호로 묶기
+        objForLastRace[this.userInputCarNameList[index]] =
+          racePerCar[this.userInputTryCount - 1].length;
+      }
+    });
+
+    this.raceWinnerMessage = Object.keys(objForLastRace)
+      .filter((key) => objForLastRace[key] === Math.max(...Object.values(objForLastRace)))
+      .join(OTHERS.commaWithSpace);
+  }
 }
 
 export default RacingGame;
