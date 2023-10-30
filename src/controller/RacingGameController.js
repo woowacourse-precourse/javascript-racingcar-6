@@ -8,7 +8,6 @@ import { InputView, OutputView } from '../views/index.js';
 
 import RacingGameService from '../service/RacingGameService.js';
 
-// TODO: 네이밍 고민해보기
 class RacingGameController {
   #inputView = InputView;
 
@@ -20,42 +19,31 @@ class RacingGameController {
     await this.#processRacingGame();
   }
 
-  // TODO: 세부적으로 분리할 부분 찾아보기
   async #processRacingGame() {
-    const racingCarNames = await this.#requireRacingCarNames();
-    const moveCount = await this.#requireRacingCarMoveCount();
-    const { racingResult, racingWinners } = this.#racingGameService.calculateRacingGameResult(
-      racingCarNames,
-      moveCount,
-    );
+    const { racingResult, racingWinners } = await this.#requireRacingGameResult();
     this.#outputView.printRacingGameResult({ racingResult, racingWinners });
   }
 
+  async #requireRacingGameResult() {
+    const racingCarNames = await this.#requireRacingCarNames();
+    const moveCount = await this.#requireRacingCarMoveCount();
+    return this.#racingGameService.calculateRacingGameResult(racingCarNames, moveCount);
+  }
+
   async #requireRacingCarNames() {
-    const inputRacingCarNames = await this.#requireInputRacingCarNames();
-    const racingCars = inputRacingCarNames.split(SYMBOLS.comma);
+    const inputRacingCarNames = await this.#inputView.readRacingCarNames();
     validateCommon(inputRacingCarNames);
+    const racingCars = inputRacingCarNames.split(SYMBOLS.comma);
     validateCarNames(racingCars);
     return racingCars;
   }
 
-  // TODO: 추상화 레벨 줄이기
-  #requireInputRacingCarNames() {
-    return this.#inputView.readRacingCarNames();
-  }
-
-  // TODO: requireRacingCarNames와 함께 추상화 할 수 있는 방법 찾아보기
   async #requireRacingCarMoveCount() {
-    const inputMoveCount = await this.#requireInputRacingCarMoveCount();
-    const moveCount = Number(inputMoveCount);
+    const inputMoveCount = await this.#inputView.readRacingCarMoveCount();
     validateCommon(inputMoveCount);
+    const moveCount = Number(inputMoveCount);
     validateMoveCount(moveCount);
     return inputMoveCount;
-  }
-
-  // TODO: 추상화 레벨 줄이기
-  #requireInputRacingCarMoveCount() {
-    return this.#inputView.readRacingCarMoveCount();
   }
 }
 
