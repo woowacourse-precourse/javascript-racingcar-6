@@ -1,8 +1,9 @@
+/* eslint-disable lines-between-class-members */
 import { validateCarsName } from '../utils/carsNameValidator';
 import { strToStrArr } from '../utils/typeConvertor';
 
 class CarPlayers {
-  #players
+  #players;
   
   constructor(){
     this.#players = [];
@@ -11,6 +12,10 @@ class CarPlayers {
   setPlayers(input){
     validateCarsName(input);
     this.#players = strToStrArr(input);
+  }
+
+  getPlayers(){
+    return this.#players;
   }
 }
 

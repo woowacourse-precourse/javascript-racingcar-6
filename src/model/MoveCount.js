@@ -12,6 +12,10 @@ class MoveCount {
     validateMoveCount(input);
     this.#count = strToNum(input);
   }
+
+  getCount(){
+    return this.#count;
+  }
 }
 
 export default MoveCount;
