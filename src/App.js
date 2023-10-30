@@ -4,21 +4,21 @@ class App {
   constructor() {
     this.car = [];
     this.movement = [];
-    this.numberOfCars = 0;
+    this.carCount = 0;
   }
 
   async play() {
-    await this.playRacingGame();
+    await this.playGame();
   }
   
   // 입력
-  async inputCarNames() {
-    const carNames = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)');
-    const carName = carNames.split(',');
-    this.checkInputCarNames(carName);
-    this.numberOfCars = carName.length;
-    this.car = [...carName];
-    this.movement = carName.map(name => name + ' : ');
+  async inputRaceCars() {
+    const raceCars = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)');
+    const raceCar = raceCars.split(',');
+    this.checkInputRaceCars(raceCar);
+    this.carCount = raceCar.length;
+    this.car = [...raceCar];
+    this.movement = raceCar.map(name => name + ' : ');
   }
 
   async inputMoveCount() {
@@ -27,9 +27,9 @@ class App {
     return Number(moveCount);
   }
 
-  checkInputCarNames(carName) {
-    carName.forEach((player) => {
-      if (player.length > 5)
+  checkInputRaceCars(raceCars) {
+    raceCars.forEach((car) => {
+      if (car.length > 5)
         throw new Error("[ERROR] 자동차 이름의 문자가 5글자를 초과했습니다.");
     })
   }
@@ -44,57 +44,57 @@ class App {
   }
 
    // 기능
-  generateRandomNumber() {
+  makeRandomNumber() {
     const randomNumber = Random.pickNumberInRange(0, 9);
     return randomNumber;
   }
 
-  decideMovement() {
+  calculateMovement() {
     let index = 0;
-    while (index < this.numberOfCars) {
-      const randomNumber = this.generateRandomNumber();
+    while (index < this.carCount) {
+      const randomNumber = this.makeRandomNumber();
       if (randomNumber >= 4) this.movement[index] += '-';
       index += 1;
     }
   }
 
-  decideWinner() {
+  calculateWinner() {
     const result = this.movement.map((move, index) => move.length - this.car[index].length);
     const max = Math.max(...result);
     const indexesOfMax = [];
     result.forEach((value, index) => {
         if (value === max) {
-            result.push(index);
+            indexesOfMax.push(index);
         }
     });
     return indexesOfMax;
   }
 
   // 출력
-  printRacingProgress() {
+  printGameProgress() {
     this.movement.forEach(result => {
       Console.print(result);
     })
   }
 
-  printRacingWinner() {
-    const winnerIndexes = this.decideWinner();
+  printGameWinner() {
+    const winnerIndexes = this.calculateWinner();
     const winners = winnerIndexes.map(playerIndex => this.car[playerIndex]);
     const winnerMessage = winners.join(', ');
     Console.print(`최종 우승자 : ${winnerMessage}`);
   }
 
-  async playRacingGame() {
-    await this.inputCarNames();
+  async playGame() {
+    await this.inputRaceCars();
     let moveCount = await this.inputMoveCount();
     Console.print('실행 결과');
     while (moveCount > 0) {
-      this.decideMovement();
-      this.printRacingProgress();
+      this.calculateMovement();
+      this.printGameProgress();
       Console.print(' ');
       moveCount -= 1;
     }
-    this.printRacingWinner();
+    this.printGameWinner();
   }
 }
 
