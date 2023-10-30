@@ -43,7 +43,7 @@
 
   - [x] printConsole - 입력받은 메시지를 Console.print api에 넘겨 반환하는 함수
   - [x] generateRandomNumber - 0 ~ 9 사이의 숫자 중에서 랜덤한 숫자 하나를 생성하는 함수
-  - [ ] inputConsoleAsync - Console.readLineAsync api를 실행시켜 입력받은 값을 반환하는 비동기 함수
+  - [x] inputConsoleAsync - Console.readLineAsync api를 실행시켜 입력받은 값을 반환하는 비동기 함수
 
 - [x] Constant 파일
   - [x] message - 경기에 사용될 메시지가 반영된 객체
