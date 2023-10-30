@@ -1,22 +1,23 @@
 class RacingCar {
-  constructor(name, distance) {
-    this.name = name;
-    this.distance = distance;
+  #name;
+  #distance;
+
+  constructor(name) {
+    this.#name = name;
+    this.#distance = 0;
   }
 
-  get() {
-    return this._distance;
+  getName() {
+    return this.#name;
   }
-  set(value) {
-    this._distance = value;
+  
+  getDistance() {
+    return this.#distance;
   }
 
-  // 전진, 후진
-  goForward(number) {
-    if (number < 4 ) return false;
-    return true;
-  } 
-
+  move() {
+    this.#distance += 1;
+  }
 }
 
 export { RacingCar };
