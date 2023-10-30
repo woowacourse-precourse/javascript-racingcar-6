@@ -36,6 +36,11 @@ class App {
       throw new Error("[ERROR] 숫자를 입력해주세요");
     }
   }
+
+  randomNumber() {
+    const number = Random.pickNumberInRange(0, 9);
+    return number;
+  }
 }
 
 export default App;
