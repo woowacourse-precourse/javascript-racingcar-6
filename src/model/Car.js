@@ -1,5 +1,5 @@
 import { pickRandomSingleDigitNumber } from "../utils/random.js";
-import { typeValidator, validateLengthBelow } from "../utils/validators.js";
+import { typeValidator, validateLengthBelow, validateLengthAbove } from "../utils/validators.js";
 
 class Car {
   static #MIN_MOVE_VALUE = 4;
@@ -22,6 +22,8 @@ class Car {
 
   static #validateName(value) {
     typeValidator.isString(value);
+
+    validateLengthAbove(value, 0);
     validateLengthBelow(value, 6);
   }
 

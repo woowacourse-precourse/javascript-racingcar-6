@@ -20,8 +20,12 @@ const typeValidator = {
   },
 };
 
-const validateLengthBelow = (value, maxLength) => {
-  throwIfFalse(value.length < maxLength, ERROR_MESSAGE.overMaxLength(maxLength));
+const validateLengthBelow = (value, exclusiveMax) => {
+  throwIfFalse(value.length < exclusiveMax, ERROR_MESSAGE.overMaxLength(exclusiveMax));
 };
 
-export { typeValidator, validateLengthBelow };
+const validateLengthAbove = (value, exclusiveMin) => {
+  throwIfFalse(value.length > exclusiveMin, ERROR_MESSAGE.underMinLength(exclusiveMin));
+};
+
+export { typeValidator, validateLengthBelow, validateLengthAbove };

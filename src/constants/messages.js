@@ -26,7 +26,8 @@ const ERROR_MESSAGE = {
   moreThanMaxRound: (maxRoundNumber) =>
     errorString(`경주 라운드 수는 최대 ${maxRoundNumber} 이하여야 합니다.`),
 
-  overMaxLength: (maxLength) => errorString(`길이가 ${maxLength} 이하여야 합니다.`),
+  overMaxLength: (maxLength) => errorString(`길이가 ${maxLength} 미만이어야 합니다.`),
+  underMinLength: (minLength) => errorString(`길이가 ${minLength} 초과여야 합니다.`),
 };
 
 export { INPUT_QUERY, OUTPUT_MESSAGE, ERROR_MESSAGE };
