@@ -24,7 +24,7 @@ class RacingCar {
   }
 
   async getRepeatTime() {
-    const input = await this.#view.InputRepeatNumber();
+    const input = await this.#view.inputRepeatNumber();
     return input;
   }
 

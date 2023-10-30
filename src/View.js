@@ -11,7 +11,7 @@ class View {
     return inputList;
   }
 
-  async InputRepeatNumber() {
+  async inputRepeatNumber() {
     const input = await Console.readLineAsync(Message.NUMBER_INPUT);
     checkValidNumber(input);
     return Number(input);
@@ -22,7 +22,7 @@ class View {
   }
 
   printWinners(winnerList) {
-    Console.print(winnerList.join(Sign.DECIMAL + Sign.SPACE) + Message.RESULT_WINNER);
+    Console.print(Message.RESULT_WINNER(winnerList));
   }
 }
 
