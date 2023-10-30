@@ -20,6 +20,10 @@ class Cars {
     }, {});
   }
 
+  getLength() {
+    return this.#cars.length;
+  }
+
   static #validate(value) {
     typeValidator.isArray(value);
     Cars.#validateType(value);

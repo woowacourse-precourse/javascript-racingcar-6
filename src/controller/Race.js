@@ -57,7 +57,7 @@ class Race {
   }
 
   #setCars(cars) {
-    Race.#validateCarCounts(cars.length);
+    Race.#validateCarCounts(cars.getLength());
     this.#racingCars = cars;
   }
 
