@@ -16,7 +16,7 @@ export class RacingGame {
       this.printScores(result);
       totalScores = result;
     }
-    this.judge.decideWinner(totalScores);
+    const winners = this.judge.decideWinner(totalScores);
   }
 
   initializeScore(cars) {
