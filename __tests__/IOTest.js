@@ -1,6 +1,6 @@
 import { askNames } from "../src/core/io.js";
 import { InvalidPlayerNameError } from "../src/utils/error.js";
-import { mockQuestions } from "./ApplicationTest.js";
+import { mockQuestions } from "./utils.js";
 
 describe("입출력 테스트", () => {
   test("askNames가 이름을 제대로 분할하는지 테스트", () => {
