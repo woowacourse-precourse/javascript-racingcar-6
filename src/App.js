@@ -1,42 +1,29 @@
+import { isNameLengthUnderFive } from "./utils/validation.js";
+import inputHandler from "./utils/inputHandler.js";
+import gameController from "./utils/gameController.js";
 import { Console } from "@woowacourse/mission-utils";
-import selectWinner from "./utils/selectWinner.js";
-import moveWithRandomNum from "./utils/moveWithRandomNum.js";
-import {
-  hasSameName,
-  isIntegerNumber,
-  isNameLengthUnderFive,
-  isValidCountInput,
-  isValidNameInput,
-} from "./utils/validation.js";
-import inputFunc from "./utils/inputFunc.js";
 
 class App {
+  constructor() {
+    this.carArr = [];
+    this.round = 0;
+    this.carsWithMoveNum = {};
+  }
+
   async play() {
-    const carsArr = await inputFunc.getCarNames();
-    isValidNameInput(carsArr);
-    hasSameName(carsArr);
-
-    const carsWithMoveNum = {};
-    carsArr.forEach((car) => {
+    this.carArr = await inputHandler.getCarNamesAndCheck();
+    this.carArr.forEach((car) => {
       isNameLengthUnderFive(car);
-      carsWithMoveNum[car] = 0;
+      this.carsWithMoveNum[car] = 0;
     });
+    this.round = await inputHandler.getRoundAndCheck();
+    gameController.playAllRounds(this.round, this.carArr, this.carsWithMoveNum);
 
-    const count = await inputFunc.getCountNumber();
-    isValidCountInput(count);
-    isIntegerNumber(count);
-
-    const lastCount = count;
-    let currentCount = 0;
-
-    while (currentCount < lastCount) {
-      moveWithRandomNum(carsArr, carsWithMoveNum);
-      Console.print("");
-      currentCount++;
-    }
-
-    const winner = selectWinner(carsArr, carsWithMoveNum);
-    Console.print(`최종 우승자 : ${winner.join(", ")}`);
+    const winnersArr = gameController.selectWinner(
+      this.carArr,
+      this.carsWithMoveNum,
+    );
+    Console.print(`최종 우승자 : ${winnersArr.join(", ")}`);
   }
 }
 

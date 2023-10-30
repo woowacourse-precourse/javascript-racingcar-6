@@ -6,16 +6,11 @@ export const isNameLengthUnderFive = (name) => {
 };
 
 export const hasSameName = (carsArr) => {
-  // const carsArr = input.split(",");
   const uniqueNames = [...new Set(carsArr)];
   if (carsArr.length !== uniqueNames.length)
     throw new Error(ERROR_MESSAGE.HAVE_SAME_NAME);
 };
 export const isValidNameInput = (carsArr) => {
-  // if (!input) throw new Error(ERROR_MESSAGE.TOO_FEW_NAME(SETTING.MIN_NAME_NUM));
-  //
-  // const carsArr = input.split(",");
-
   if (carsArr.length > SETTING.MAX_NAME_NUM)
     throw new Error(ERROR_MESSAGE.TOO_MANY_NAMES(SETTING.MAX_NAME_NUM));
 
