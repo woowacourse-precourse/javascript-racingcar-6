@@ -13,12 +13,15 @@ class App {
         '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n'
       );
 
-      if (racingCarNames.indexOf(',') === -1) throw new Error();
+      if (racingCarNames.indexOf(',') === -1)
+        throw new Error('[ERROR] 자동차 이름 입력이 잘못되었습니다.');
 
-      racingCarNames.split(',').map((car, _, array) => {
-        if (array.length > 5) throw new Error();
+      racingCarNames.split(',').map((car) => {
+        if (car.length > 5)
+          throw new Error('[ERROR] 자동차 이름은 5자 이내로 작성해주세요.');
         this.racingCars[car] = 0;
-        if (car === '') throw new Error();
+        if (car === '')
+          throw new Error('[ERROR] 자동차 이름 입력이 잘못되었습니다.');
       });
 
       const racingTryNumbers = await Console.readLineAsync(
@@ -31,7 +34,7 @@ class App {
         racingTryNumbers === Infinity ||
         racingTryNumbers === -Infinity
       )
-        throw new Error();
+        throw new Error('[ERROR] 숫자 입력이 잘못된 형식입니다.');
 
       Console.print('\n실행 결과');
       for (let i = 0; i < racingTryNumbers; i++) {
@@ -54,7 +57,7 @@ class App {
 
       Console.print(`최종 우승자 : ${this.winner}`);
     } catch (error) {
-      throw new Error('[ERROR] 잘못된 형식입니다.');
+      throw Error(error);
     }
   }
 }
