@@ -11,7 +11,7 @@ const mockQuestions = (inputs) => {
   });
 };
 
-describe("세부 기능에 대한 테스트", () => {
+describe("세부 기능 테스트", () => {
   describe("자동차 이름 입력 기능에 대한 테스트", () => {
     test("6자 이상의 이름에 대해 예외 처리를 하는가", async () => {
       const app = new App();
@@ -34,13 +34,24 @@ describe("세부 기능에 대한 테스트", () => {
     test("등록하는 자동차가 2대 미만일 경우에 대해 예외 처리를 하는가", async () => {
       const app = new App();
 
-      // input이 정상일 경우 테스트 통과하는지 확인
       const correctInputs = ["자동차1, 자동차2", 2];
       mockQuestions(correctInputs);
       await expect(app.play()).resolves.not.toThrowError();
 
       const wrongInputs = ["자동차1", 2];
       mockQuestions(wrongInputs);
+      await expect(app.play()).rejects.toThrow("[ERROR]");
+    });
+  });
+
+  describe("시도 횟수 입력 기능에 대한 테스트", () => {
+    test("입력 값이 숫자가 아닌 경우에 대해 예외 처리를 하는가", async () => {
+      const app = new App();
+
+      const inputs = ["자동차1, 자동차2", "문자"];
+
+      mockQuestions(inputs);
+
       await expect(app.play()).rejects.toThrow("[ERROR]");
     });
   });
