@@ -44,5 +44,5 @@
   - [ ] printConsole - 입력받은 메시지를 Console.print api에 넘겨 반환하는 함수
   - [ ] generateRandomNumber - 0 ~ 9 사이의 숫자 중에서 랜덤한 숫자 하나를 생성하는 함수
 
-- [ ] Constant 파일
-  - [ ] message - 경기에 사용될 메시지가 반영된 객체
+- [x] Constant 파일
+  - [x] message - 경기에 사용될 메시지가 반영된 객체
