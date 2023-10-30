@@ -38,7 +38,7 @@ export const positionHandler = (carsArr) => {
 };
 
 export const positionHandleIterator = (carsArr, round) => {
-  for (let i = 0; i < round; i++) {
+  for (let i = 1; i <= round; i++) {
     positionHandler(carsArr);
     racingResultPrint(carsArr);
   }
