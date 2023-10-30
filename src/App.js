@@ -16,20 +16,23 @@ class App {
   }
 
   async totalGameLogic() {
+    await this.gameSetting();
+    this.gameMainLogic();
+  }
+
+  async gameSetting(){
     await this.getUserCarListInput();
     await this.makeForCheckGameStatus(this.carList);
     await this.getUserWantMoveCount();
-    this.mainLogic();
-    this.checkScore();
-    this.awards();
   }
 
   // 게임 메인 로직 - 전진할지 멈출지 판단하고 사용자가 원하는 횟수만큼 시도
-  mainLogic() {
+  gameMainLogic() {
     for (let i = 0; i < this.inputCount; i++) {
       this.decideMove();
-      Console.print("\n");
     }
+    this.checkScore();
+    this.awards();
   }
 
   // 전진할지 멈출지 판단하는 함수
@@ -114,6 +117,7 @@ class App {
       if (forCheckSpace.test(car.slice(0, 1))) {
         throw new ERROR(ERROR.INVALID_INPUT_FIRST)
       }
+
       if (forCheckSpace.test(car.slice(car.length - 1, car.length))) {
         throw new ERROR(ERROR.INVALID_INPUT_FINAL)
       }
@@ -178,7 +182,6 @@ class App {
 
     return this.gameStatus;
   }
-  
   
 }
 
