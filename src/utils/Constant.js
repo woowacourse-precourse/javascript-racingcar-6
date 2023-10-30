@@ -4,3 +4,9 @@ export const MESSAGE = {
   turn: '실행 결과',
   end: '최종 우승자',
 }
+
+export const EXCEPTION = {
+  null: '[ERROR] 값을 입력해주세요.',
+  length: '[ERROR] 각 입력값은 5자 이하만 가능합니다.',
+  integer: '[ERROR] 입력값이 정수가 아닙니다.'
+}
