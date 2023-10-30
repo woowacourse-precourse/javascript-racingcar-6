@@ -1,9 +1,18 @@
+import RacingCarController from './controller/RacingCarController';
+
 class App {
-  constructor() {
-    this.a = "hi";
+  #racingCarController
+
+  constructor(){
+    this.#racingCarController = new RacingCarController();
   }
 
-  async play() {}
+  async play() {
+    await this.#racingCarController.play();
+  }
 }
+
+const app = new App();
+app.play();
 
 export default App;
