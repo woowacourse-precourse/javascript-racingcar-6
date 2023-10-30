@@ -7,6 +7,10 @@ export class Car {
     this.name = name;
     this.position = 0;
   }
+
+  tryGoingForward(randomValue) {
+    if (randomValue >= 4) this.position += 1;
+  }
 }
 class App {
   async play() {
@@ -14,6 +18,7 @@ class App {
     if (!checkCarNames(cars)) throw new Error("[ERROR] 자동차 이름이 잘못된 형식입니다.\n");
     let times = await setRaceTimes();
     if (times == NaN || times == 0) throw new Error("[ERROR] 이동 횟수가 잘못된 형식입니다.\n");
+    race(cars, times);
   }
 }
 
@@ -51,6 +56,21 @@ async function setRaceTimes() {
   let times = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
   times = parseInt(times);
   return times;
+}
+
+function race(cars, times) {
+  MissionUtils.Console.print("실행 결과\n");
+  for(let i = 0; i < times; i++) {
+    checkProgression(cars);
+  }
+}
+
+function checkProgression(cars) {
+  // 모든 자동차가 랜덤값을 받고, 받은 값이 4 이상일 때 앞으로 이동
+  for (let i = 0; i < cars.length; i++) {
+    let randomValue = MissionUtils.Random.pickNumberInRange(0, 9);
+    cars[i].tryGoingForward(randomValue);
+  }
 }
 
 export default App;
