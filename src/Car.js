@@ -12,6 +12,11 @@ class Car {
       NUM_RANGE.car_end_range
     );
   }
+  moveOneStep() {
+    if (this.decision_number >= NUM_RANGE.move_minimum) {
+      this.move_times++;
+    }
+  }
 }
 
 export default Car;
