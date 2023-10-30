@@ -1,11 +1,17 @@
 import { Console } from "@woowacourse/mission-utils";
 
-import RacingCar from "./RacingCar";
-import RaceOrganizer from "./view/RaceOrganizer";
+// 자동차 경기 모듈
+import RacingCar from "./RacingCar.js";
+import RaceOrganizer from "./view/RaceOrganizer.js";
 
-import BaseExceptionHandler from "./exception/Errorcase";
-import CarNaming from "./exception/CarNaming";
-import Frequency from "./exception/Frequency";
+// 예외 사항 모듈
+import BaseExceptionHandler from "./exception/Errorcase.js";
+import CarNaming from "./exception/CarNaming.js";
+import Frequency from "./exception/Frequency.js";
+
+// 상수 모듈
+import { COMMENT } from "./utils/Constants.js";
+import { SPECIALCHARS } from "./utils/Constants.js";
 
 class App {
   #racingCar;
@@ -32,9 +38,7 @@ class App {
 
   async enterCarName() {
     try {
-      const name = await Console.readLineAsync(
-        "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)",
-      );
+      const name = await Console.readLineAsync(COMMENT.INPUT_NAME);
       const carName = this.#convertToArray(name);
       this.#exceptionHandler.checkAllException(new CarNaming(carName));
 
@@ -46,7 +50,7 @@ class App {
 
   async enterRaceLaps() {
     try {
-      const gameLap = await Console.readLineAsync("시도할 횟수는 몇 회인가요?");
+      const gameLap = await Console.readLineAsync(COMMENT.INPUT_LAPS);
       this.#exceptionHandler.checkAllException(new Frequency(gameLap));
 
       return gameLap;
@@ -56,7 +60,7 @@ class App {
   }
 
   #convertToArray(string) {
-    return string.split(",");
+    return string.split(SPECIALCHARS.COMMA);
   }
 
   #startRacingGame(carName, lap) {
