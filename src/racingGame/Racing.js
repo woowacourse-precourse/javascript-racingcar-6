@@ -5,10 +5,13 @@ const DISTANCE = 1;
 class Racing {
 
   async racingStart(carNameArray, racingNumber) {
+    await MissionUtils.Console.print('\n실행 결과');
+
     const scoreStorage = this.#makeScoreStorage(carNameArray); // 이름별 누적거리 저장을 위한 2차원배열 생성
+
     for (let i = 1; i <= racingNumber; i++) {
       this.#eachRacing(scoreStorage);  // 각 차수별 레이싱 진행
-      this.#printScore(scoreStorage) // 누적거리 출력메소드
+      this.#printScore(scoreStorage) // 누적거리 출력
     }
   }
 
@@ -33,10 +36,20 @@ class Racing {
   }
 
   #printScore(scoreStorage) {
-    console.log("scoreStorage", scoreStorage)
+    scoreStorage[NAME].forEach((e, index) => {
+      let distance = this.#showDistanceWithHyphen(scoreStorage[DISTANCE][index]);
+      MissionUtils.Console.print(`${e} : ${distance} `);
+    })
+    MissionUtils.Console.print('');
   }
 
-
+  #showDistanceWithHyphen(distanceNumber) {
+    let distance = "";
+    for (let i = 1; i <= distanceNumber; i++) {
+      distance += "-";
+    }
+    return distance;
+  }
 
 }
 export default Racing;
