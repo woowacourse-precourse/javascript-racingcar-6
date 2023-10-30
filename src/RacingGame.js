@@ -1,34 +1,27 @@
-import RacingCar from './domain/RacingCar.js';
+import RacingStadium from './RacingStadium.js';
 import GameUtils from './utils/GameUtils.js';
 
 class RacingGame {
-  #racingCars;
+  #racingStadium;
+
+  constructor() {
+    this.#racingStadium = new RacingStadium();
+  }
 
   start() {
     return this;
   }
 
-  generateRacingCars(cars) {
-    const racingCars = [];
-
-    cars.forEach((car) => {
-      const newCar = new RacingCar(car);
-      racingCars.push(newCar);
-    });
-
-    this.#racingCars = racingCars;
-  }
-
-  getRacingCars() {
-    return this.#racingCars;
+  prepareRacingCarsInStadium(cars) {
+    this.#racingStadium.setRacingCars(cars);
   }
 
   startRacing(attemptNumber) {
-    GameUtils.repeatRacing(attemptNumber, this);
+    this.#racingStadium.repeatRacing(attemptNumber);
   }
 
   announceGameWinners() {
-    const winners = GameUtils.selectWinners(this.#racingCars);
+    const winners = this.#racingStadium.selectWinners();
     const isSoloWinner = winners.length <= 1;
 
     if (isSoloWinner) {

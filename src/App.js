@@ -11,7 +11,7 @@ class App {
   async play() {
     this.#racingGame.start();
     const cars = await InputManager.inputRacingCarNames();
-    this.#racingGame.generateRacingCars(cars);
+    this.#racingGame.prepareRacingCarsInStadium(cars);
 
     const attemptNumber = await InputManager.inputGameAttemptNumber();
     this.#racingGame.startRacing(attemptNumber);
