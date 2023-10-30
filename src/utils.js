@@ -7,9 +7,7 @@ export const getCarArrFromInputValue = async () => {
   let carArr = [];
   while (1) {
     let commaIndex = inputCarNames.indexOf(',');
-    if (commaIndex > 5) {
-      throw new Error('[ERROR] 자동차 이름은 다섯 글자 이하로 입력해주세요.');
-    }
+
     if (commaIndex === -1) {
       carArr.push({ name: inputCarNames.substr(0), moveCnt: 0 });
       break;
@@ -23,6 +21,11 @@ export const getCarArrFromInputValue = async () => {
     inputCarNames = inputCarNames.substr(commaIndex + 1);
   }
 
+  for (let i = 0; i < carArr.length; i++) {
+    if (carArr[i].name.length > 5) {
+      throw new Error('[ERROR] 자동차 이름은 다섯 글자 이하로 입력해주세요.');
+    }
+  }
   return carArr;
 };
 
