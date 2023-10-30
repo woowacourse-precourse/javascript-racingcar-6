@@ -16,9 +16,13 @@ class InputView {
     return carNames;
   }
 
-  async getAttemptNum(msg) {
-    const attemptNum = await Console.readLineAsync(msg);
-    return attemptNum;
+  async getAttemptNum() {
+    const attemptNum = await Console.readLineAsync(MESSAGES.getAttemptNum);
+
+    if (!InputValidator.isValidAttemptNum(attemptNum))
+      throwError(`유효하지 않은 입력입니다: ${attemptNum}`);
+
+    return Number(attemptNum);
   }
 }
 

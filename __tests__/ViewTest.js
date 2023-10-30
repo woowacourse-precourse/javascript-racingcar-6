@@ -3,6 +3,14 @@ import OutputView from '../src/views/OutputView';
 import InputView from '../src/views/InputView';
 import { MESSAGES } from '../src/constants/messages';
 
+const mockQuestion = (input) => {
+  MissionUtils.Console.readLineAsync = jest.fn();
+
+  MissionUtils.Console.readLineAsync.mockImplementation(() => {
+    return Promise.resolve(input);
+  });
+};
+
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
 
@@ -73,15 +81,23 @@ describe('InputView 테스트', () => {
     },
   );
 
-  test('시도 횟수 입력 받기 - getAttemptNum()', () => {
-    const inputs = ['2', '3'];
-    const outputs = ['2', '3'];
+  test('시도 횟수 입력 받기 - 성공', async () => {
+    const input = '2';
+    const output = 2;
 
-    mockQuestions(inputs);
+    mockQuestion(input);
 
     const view = new InputView();
-    outputs.forEach(async (output) => {
-      expect(await view.getAttemptNum(MESSAGES.getAttemptNum)).toBe(output);
-    });
+    expect(await view.getAttemptNum()).toBe(output);
   });
+
+  test.each(['a2', '2a', '13.22', '', '-3'])(
+    '시도 횟수 입력 받기 - 실패',
+    async (input) => {
+      mockQuestion(input);
+
+      const view = new InputView();
+      await expect(view.getAttemptNum()).rejects.toThrow('[ERROR]');
+    },
+  );
 });
