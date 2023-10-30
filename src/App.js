@@ -5,7 +5,7 @@ import CarRace from './CarRace';
 const { INPUT_NAME, INPUT_NUMBER } = MESSAGE;
 
 class App {
-  carRace;
+  #carRace;
 
   async play() {
     try {
@@ -14,18 +14,18 @@ class App {
       const inputNumber = await readLineAsync(INPUT_NUMBER);
       const round = getValidInputNumber(inputNumber);
 
-      this.carRace = new CarRace(carNames, round);
+      this.#carRace = new CarRace(carNames, round);
     } catch (error) {
       throw new Error(error);
     }
 
-    while (this.carRace.isPlaying()) {
-      this.carRace.calculateResult();
-      const result = this.carRace.getResultMessage();
+    while (this.#carRace.isPlaying()) {
+      this.#carRace.calculateResult();
+      const result = this.#carRace.getResultMessage();
       printMessage(result);
     }
 
-    const winner = this.carRace.getWinnerMessage();
+    const winner = this.#carRace.getWinnerMessage();
     printMessage(winner);
   }
 }
