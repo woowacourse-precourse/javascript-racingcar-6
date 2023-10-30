@@ -24,7 +24,7 @@ class App {
       // 게임 횟수 입력받기
       this.GAME_ROUND = await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
       if (isNaN(this.GAME_ROUND)) {
-        throw new Error('숫자가 잘못된 형식입니다.');
+        throw new Error('[ERROR] 숫자가 잘못된 형식입니다.');
       }
     } catch (error) {
       throw error;
