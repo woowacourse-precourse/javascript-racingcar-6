@@ -4,6 +4,7 @@ export const RACE_TIME_INPUT_MESSAGE = '시도할 횟수는 몇 회인가요?: '
 export const RACE_WINNER_PRINT_MESSAGE = '최종 우승자 : ';
 export const RACE_RESULT_MESSAGE = '\n실행 결과';
 
+export const ERROR_HEAD_MESSAGE = '[ERROR]';
 export const RACE_TIME_ERROR_MESSAGE = '시도 횟수는 1 이상의 숫자여야 합니다.';
 export const CAR_NAME_NULL_ERROR_MESSAGE = '입력값이 비어있습니다.';
 export const CAR_NAME_INVALID_ERROR_MESSAGE = '자동차 이름은 5자 이하만 가능합니다.';
