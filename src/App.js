@@ -3,20 +3,16 @@ import { progress } from './Game/Progress';
 import { terminateGame } from './Game/End';
 
 class App {
-  constructor() {
-    this.distance = {}; // 참가자 거리 저장
-  }
-
   async play() {
     // 게임 세팅
     const participants = await getParticipant();
     const attempt = await getAttempt();
 
     // 게임 진행
-    this.distance = await progress(attempt, participants, this.distance);
+    const participantsDistance = await progress(attempt, participants);
 
     // 게임 종료
-    await terminateGame(participants, this.distance);
+    await terminateGame(participants, participantsDistance);
   }
 }
 
