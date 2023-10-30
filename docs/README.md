@@ -27,7 +27,7 @@
 ## 기능별 테스트 목록: 커밋한 순서대로 진행
 - [x] 각 자동차의 이름을 받는다. (CarNameSplitTest.js)
     - [x] 자동차의 이름을 쉼표로 구분한다. (CarNameSplitTest.js)
-    - [x] 이름은 쉼표로 구분한다. (ApplicationTest.js의 2번째 테스트)
+    - [x] 이름은 5자 이하만 가능하다. (ApplicationTest.js의 2번째 테스트)
 
 - [x] 몇 번 이동할 것인지 입력할 수 있다. (CarMoveNuberValidateTest.js 1번 테스트)
     - [x] 입력한 이동 수는 양수여야 한다. (CarMoveNuberValidateTest.js 2~5번 테스트)
