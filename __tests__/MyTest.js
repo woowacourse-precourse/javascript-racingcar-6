@@ -69,4 +69,29 @@ describe('기능 구현 테스트', () => {
         const result = app.getTryCount();
         await expect(result).rejects.toThrow('[ERROR]');
     });
+
+    test('경기를 진행한다.', () => {
+        const tryCount = 3;
+        const randoms = [4, 5, 3, 6, 2, 1];
+        mockRandoms([...randoms]);
+        const cars = {
+            yoo: 0,
+            vin: 0,
+        };
+        const result = app.playGame(tryCount, cars);
+        expect(result).toEqual({
+            yoo: 1,
+            vin: 2,
+        });
+    });
+
+    test('경기 현황을 출력한다.', () => {
+        const logSpy = getLogSpy();
+        const cars = {
+            yoo: 1,
+            vin: 2,
+        };
+        const result = app.printGameStatus(cars);
+        expect(logSpy).toHaveBeenCalledWith(result.stringContaining('yoo : -'));
+    });
 });
