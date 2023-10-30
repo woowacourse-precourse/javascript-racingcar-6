@@ -11,6 +11,3 @@ export const scoreAccumulator = (scoreArray, randomArray) => {
 
   return scoreArray.map((score, index) => score + newScoreArray[index]); 
 }
-
-
-

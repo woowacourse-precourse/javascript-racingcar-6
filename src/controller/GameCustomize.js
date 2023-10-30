@@ -21,6 +21,3 @@ export const getAttemptNumber = async () => {
 
   return Number(attemptNumber);
 }
-
-
-

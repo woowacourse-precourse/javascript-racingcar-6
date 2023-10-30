@@ -55,9 +55,4 @@ class RacingController {
   }
 }
 
-export default RacingController;
-
-/*
-const a  = new RacingController(['pobi','crong','woong'],20);
-a.startRacing([3,4,5]);
-*/
+export default RacingController

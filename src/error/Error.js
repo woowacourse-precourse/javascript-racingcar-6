@@ -18,4 +18,3 @@ class Error extends SingleName {
 }
 
 export default Error
-
