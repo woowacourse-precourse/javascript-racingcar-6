@@ -25,6 +25,21 @@ const getLogSpy = () => {
 
 describe('기능 구현 테스트', () => {
     const app = new App();
+
+    test('이름을 입력받는다.', async () => {
+        const inputs = ['yoo, vin'];
+        mockQuestions(inputs);
+        const result = app.getUserInput();
+        expect(result).toEqual(['yoo', 'vin']);
+    });
+
+    test('입력받은 이름이 5글자가 넘으면 error 발생', async () => {
+        const inputs = ['yoovin, vin'];
+        mockQuestions(inputs);
+        const result = app.getUserInput();
+        await expect(result).rejects.toThrow('[ERROR]');
+    });
+
     test('입력받은 이름으로 object를 생성한다.', () => {
         const names = ['yoo', 'vin'];
         const result = app.createCars(names);
