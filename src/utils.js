@@ -38,6 +38,6 @@ export const calculateMoveCntFromRandomNumber = (carArr) => {
   for (let i = 0; i < carArr.length; i++) {
     let random = MissionUtils.Random.pickNumberInRange(0, 9);
     if (random >= 4) carArr[i].moveCnt++;
-    console.log(i, random, carArr[i]);
+    // console.log(i, random, carArr);
   }
 };
