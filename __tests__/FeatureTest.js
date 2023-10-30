@@ -91,24 +91,23 @@ describe('story5. 최종 우승자 출력', () => {
     expect(result).toEqual(5);
   });
 
-  test("문자열에서 첫번째 공백을 찾는다.", () => {
+  test("결과 문자열에서 ':' 을 찾고, 그 앞에 인덱스를 반환한다.", () => {
     const input = '산 : -----';
-    const result = input.indexOf(' ');
+    const result = input.indexOf(':') - 1;
 
     expect(result).toEqual(1);
   });
 
-  // test("문자를 공백으로 나눈 배열을 반환한다.", () => {
-  //   const input = '산 : -----';
-  //   const result = input.split(' ');
-  //   const answer = ['산', ':', '-----'];
-  //   expect(result).toEqual(answer);
-  // });
+  test("자동차 이름을 찾아서 값을 리턴한다.", () => {
+    const input = ['산 : -----', '바 다 : ---', '  호랑이 : ----'];
+    const result = [];
+    const answer = ['산', '바 다', '  호랑이'];
 
-  // test("공백으로 나눈 배열에서 첫번째 원소를 반환한다.", () => {
-  //   const input = ['산', ':', '-----'];
-  //   const result = input[0];
-  //   const answer = '산';
-  //   expect(result).toEqual(answer);
-  // });
+    input.forEach((record) => {
+      const index = record.indexOf(':') - 1;
+      result.push(record.substring(0, index));
+    });
+
+    expect(result).toEqual(answer);
+  });
 });
