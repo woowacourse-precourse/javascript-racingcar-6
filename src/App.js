@@ -8,11 +8,13 @@ class App {
   async play() {
     const carNames = await inputCarName();
 
-    carNames.split(',').map(name => {
+    const car = carNames.split(',').map(name => {
       if(invaildCarName(name)){
-        // const car = new Car(name);
+        return new Car(name, 0);
       }
     })
+
+    // MissionUtils.Console.print(car);
 
     const count = await inputCount();
     if(invalidCount(count)){
