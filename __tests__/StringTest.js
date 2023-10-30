@@ -47,4 +47,14 @@ describe('문자열 테스트', () => {
       ).toBe(false),
     );
   });
+
+  test('validDuplication : 배열 안에 중복된 아이템이 존재하는지 검사', () => {
+    const passInput = ['a', 'b', 'c'];
+    const nonPassInput = ['a', 'a', 'b'];
+
+    expect(racingGameValidationMethods.validDuplication(passInput)).toBe(true);
+    expect(racingGameValidationMethods.validDuplication(nonPassInput)).toBe(
+      false,
+    );
+  });
 });
