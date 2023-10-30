@@ -124,4 +124,19 @@ describe('자동차 경주 게임', () => {
 
     expect(carRacingGame.getWinner()).toEqual(['kim', 'park']);
   });
+
+  test('전진 시도 후 결과 콜백 (CarRacingGame.goForward) 테스트', () => {
+    const randoms = [9, 9, 9, 9, 0, 9, 9, 9, 9];
+    const cars = ['kim', 'lee', 'park'];
+    const distances = [1, 1, 1, 2, 1, 2, 3, 2, 3];
+    mockRandoms([...randoms]);
+
+    const carRacingGame = new CarRacingGame();
+    carRacingGame.setCars(cars.map((car) => new Car(car)));
+    carRacingGame.goForward(3, (res) =>
+      expect(res).toEqual(
+        cars.map((name) => ({ distance: distances.shift(), name })),
+      ),
+    );
+  });
 });
