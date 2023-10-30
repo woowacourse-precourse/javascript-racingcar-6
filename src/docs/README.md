@@ -51,6 +51,54 @@
 
 # 📁 파일 구조
 
+<div align="center">
+  <table>
+    <tr>
+      <th align="center">Folder</th>
+      <th align="center">File</th>
+      <th align="center">Description</th>
+    </tr>
+    <tr>
+      <td><b>🕹&nbsp;&nbsp;controller</b></td>
+      <td><b>RacingCarController</b></td>
+      <td>레이싱 게임이 순서대로 진행되도록 컨트롤</td>
+    </tr>
+    <tr><td colspan="3"></td></tr>
+    <tr>
+      <td><b>💻&nbsp;&nbsp;model</b></td>
+      <td><b>CarMoving</b></td>
+      <td>자동차의 움직임 계산</td>
+    </tr>
+    <tr><td colspan="3"></td></tr>
+    <tr>
+      <td rowspan="2"><b>💬&nbsp;&nbsp;view</b></td>
+      <td><b>Input</b></td>
+      <td>사용자의 입력을 요청</td>
+    </tr>
+    <tr>
+        <td><b>Output</b></td>
+        <td>사용자에게 응답을 출력</td>
+    </tr>
+    <tr><td colspan="3"></td></tr>
+    <tr>
+      <td rowspan="2"><b>✅&nbsp;&nbsp;validate</b></td>
+      <td><b>CarListCheck</b></td>
+      <td>자동차 이름 입력값의 유효성 검사</td>
+    </tr>
+    <tr>
+        <td><b>TryNumberCheck</b></td>
+        <td>레이싱 횟수 입력값의 유효성 검사</td>
+    </tr>
+    <tr><td colspan="3"></td></tr>
+    <tr>
+      <td><b>📃&nbsp;&nbsp;util</b></td>
+      <td><b>constants</b></td>
+      <td>안내문과 에러 메시지에 관한 상수</td>
+    </tr>
+    <tr><td colspan="3"></td></tr>
+  </table>
+</div>
+
 ```
 src
 ┣ controller
@@ -70,36 +118,6 @@ src
 ┣ App.js
 ┗ index.js
 ```
-
-<br><br>
-
-# ✨각 파일의 기능
-
-## App.js
-
-게임 실행( = 시동)
-
-## controller > RacingCarController.js
-
-레이싱 게임이 순서대로 진행되도록 컨트롤
-
-## model > CarMoving.js
-
-자동차의 움직임 계산
-
-## util > constants.js
-
-상수들의 집합
-
-## validate : 유효성 검사 관련 파일
-
-> CarListCheck.js : 자동차 이름 입력값의 유효성 검사 <br>
-> TryNumberCheck.js : 레이싱 횟수 입력값의 유효성 검사
-
-## view : 입력과 출력을 관리하는 파일
-
-> Input.js : 값을 입력받는 기능 <br>
-> Output.js : 값을 출력하는 기능
 
 <br><br>
 
