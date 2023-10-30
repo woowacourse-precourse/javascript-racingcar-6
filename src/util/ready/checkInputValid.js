@@ -12,19 +12,22 @@ export async function checkCarNameValid(input) {
     const isNoName = noNameCheck.includes(false);
     const isHasDuplicateName = primaryArray.length !== duplicateCheck.size;
 
+    let errorCode = '';
+
     if (isNameTooLong) {
-      const errorKey = 'tooLongRacerName';
-      throw errorKey;
+      errorCode = 'tooLongRacerName';
     }
 
     if (isNoName) {
-      const errorKey = 'noRacerName';
-      throw errorKey;
+      errorCode = 'noRacerName';
     }
 
     if (isHasDuplicateName) {
-      const errorKey = 'hasDuplicateName';
-      throw errorKey;
+      errorCode = 'hasDuplicateName';
+    }
+
+    if (errorCode !== '') {
+      throw errorCode;
     }
 
     return primaryArray;
@@ -37,18 +40,28 @@ export async function checkCarNameValid(input) {
 export async function checkRaceCountValid(input) {
   try {
     const count = Number(input);
-    const isCountZero = count === 0;
+    const isInputEmpty = input === '';
+    const isCountZero = input !== '' && count === 0;
     const isCountNaN = Number.isNaN(count);
 
+    let errorCode = '';
+
+    if (isInputEmpty) {
+      errorCode = 'inputIsEmpty';
+    }
+
     if (isCountZero) {
-      const errorCode = 'inputIsZero';
-      throw errorCode;
+      errorCode = 'inputIsZero';
     }
 
     if (isCountNaN) {
-      const errorCode = 'inputIsNaN';
+      errorCode = 'inputIsNaN';
+    }
+
+    if (errorCode !== '') {
       throw errorCode;
     }
+
     return count;
   } catch (error) {
     const ERROR = occuredErrorhandler(error);

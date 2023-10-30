@@ -4,6 +4,7 @@ const errorData = [
   ['hasDuplicateName', '중복된 자동차명이 존재합니다.'],
   ['inputIsZero', '0은 입력할 수 없습니다.'],
   ['inputIsNaN', '숫자가 잘못된 형식입니다.'],
+  ['inputIsEmpty', '입력 값이 없습니다.'],
 ];
 
 const errorList = new Map(errorData);
