@@ -15,6 +15,7 @@ class InputManager {
   static async inputRacingCarNames() {
     const input = await ConsoleInput.input(MESSAGE.INPUT_RACING_CAR_NAMES);
     const cars = InputManager.getCarNames(input);
+
     InputManager.validateCarName(cars);
 
     return cars;
@@ -22,7 +23,8 @@ class InputManager {
 
   static async inputGameAttemptNumber() {
     const input = await ConsoleInput.input(MESSAGE.INPUT_GAME_ATTEMPT_NUMBER);
-    InputManager.#validateNaturalNumber(input);
+
+    InputManager.validateGameAttemptNumber(input);
 
     return input;
   }
@@ -33,6 +35,13 @@ class InputManager {
     InputManager.#validateNotIncludeDuplicateNames(cars);
 
     return cars;
+  }
+
+  static validateGameAttemptNumber(attemptNumber) {
+    InputManager.#validateIsNumber(attemptNumber);
+    InputManager.#validateNaturalNumber(attemptNumber);
+
+    return attemptNumber;
   }
 
   static #validateNotMoreThanFiveChar(cars) {
@@ -61,14 +70,16 @@ class InputManager {
     return cars.indexOf(car) !== cars.lastIndexOf(car);
   }
 
-  static #validateNaturalNumber(attemptNumber) {
+  static #validateIsNumber(attemptNumber) {
     const attemptNumberToNumberType = Number(attemptNumber);
 
     if (Number.isNaN(attemptNumberToNumberType)) {
-      throw Error(ERROR_MESSAGE.INPUT_NOT_NATURAL_NUMBER);
+      throw Error(ERROR_MESSAGE.INPUT_NOT_NUMBER);
     }
+  }
 
-    if (attemptNumberToNumberType < MIN_GAME_ATTEMPT_NUMBER) {
+  static #validateNaturalNumber(attemptNumber) {
+    if (Number(attemptNumber) < MIN_GAME_ATTEMPT_NUMBER) {
       throw Error(ERROR_MESSAGE.INPUT_NOT_NATURAL_NUMBER);
     }
   }
