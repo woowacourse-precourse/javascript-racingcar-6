@@ -3,6 +3,12 @@ import { CARS } from '../Constants.js';
 
 class GameUtil {
   constructor() {}
+  
+  // ','로 문자열 split하고, 각 자동차이름 검증
+  splitInput(input) {
+    const CAR_NAMES = input.split(',');
+    return CAR_NAMES;
+  }
 
   // 각 자동차의 전진횟수 저장하는 메소드(자동차 전진횟수 저장)
   storeMovingForward(index) {
