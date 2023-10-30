@@ -4,12 +4,15 @@ import { USER_INPUT , MESSAGE, ERROR_MESSAGE} from './constants.js';
 class App {
   constructor(){
     this.carName = [];
+    this.carMoveCount = [];
     this.round = 0;
   }
 
   async play() {
     await this.getCarName();
     await this.getRound();
+
+    this.showRaceProcess();
   }
 
   async getCarName() {
@@ -40,6 +43,34 @@ class App {
 
   checkRoundVaildity(input){
     if(isNaN(Number(input))) throw new Error(ERROR_MESSAGE.INPUT_CAR_MOVE_ERROR);
+  }
+
+  showRaceProcess(){
+    Console.print(MESSAGE.RESULT);
+
+    this.carMoveCount = new Array(this.round).fill(0);
+    
+    for (let i = 0; i < this.round; i++) {
+      this.updateMoveHistory();
+      this.showCarProcess();
+      Console.print('');
+    }
+  }
+
+  showCarProcess(){
+    for (let i = 0; i < this.carName.length; i++) {
+      Console.print(`${this.carName[i]} : ${'-'.repeat(this.carMoveCount[i])}`)
+    }
+  }
+
+  updateMoveHistory(){
+    for (let i = 0; i < this.carName.length; i++) {
+      if (this.getRandomNumber() >= 4) this.carMoveCount[i]++;
+    }
+  }
+
+  getRandomNumber(){
+    return Random.pickNumberInRange(0, 9);
   }
 }
 
