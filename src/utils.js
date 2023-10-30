@@ -38,6 +38,24 @@ export const calculateMoveCntFromRandomNumber = (carArr) => {
   for (let i = 0; i < carArr.length; i++) {
     let random = MissionUtils.Random.pickNumberInRange(0, 9);
     if (random >= 4) carArr[i].moveCnt++;
-    // console.log(i, random, carArr);
   }
+};
+
+export const winnerSelectFromMoveCnt = (carArr) => {
+  let finerWinner = '';
+  let maxMoveCnt = 0;
+  for (let i = 0; i < carArr.length; i++) {
+    if (carArr[i].moveCnt > maxMoveCnt) {
+      maxMoveCnt = carArr[i].moveCnt;
+    }
+  }
+  for (let i = 0; i < carArr.length; i++) {
+    if (carArr[i].moveCnt === maxMoveCnt) {
+      if (finerWinner) {
+        finerWinner += ', ';
+      }
+      finerWinner += carArr[i].name;
+    }
+  }
+  MissionUtils.Console.print(`최종 우승자 : ${finerWinner}`);
 };
