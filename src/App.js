@@ -1,4 +1,10 @@
 import { Random, Console } from '@woowacourse/mission-utils';
+import {
+  INPUT_MESSAGES,
+  OUTPUT_MESSAGES,
+  ERRORS,
+  COUNTREGEX,
+} from './Constants.js';
 import Car from './Car.js';
 
 class App {
@@ -7,13 +13,11 @@ class App {
   };
 
   getRacingCarNameInput = async () => {
-    const input = await Console.readLineAsync(
-      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n'
-    );
+    const input = await Console.readLineAsync(INPUT_MESSAGES.carName);
 
     const carNames = input.split(',').map((el) => {
       if (!this.checkRacingCarNameValidation(el)) {
-        throw new Error('[ERROR] 입력이 5자 이하가 아닙니다.');
+        throw new Error(ERRORS.carName.length);
       }
       return el;
     });
@@ -22,14 +26,14 @@ class App {
   };
 
   checkRacingCountValidation = (el) => {
-    return /^[1-9]\d*$/.test(el) ? true : false;
+    return COUNTREGEX.test(el) ? true : false;
   };
 
   getRacingCountInput = async () => {
-    const input = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    const input = await Console.readLineAsync(INPUT_MESSAGES.gameCount);
 
     if (!this.checkRacingCountValidation(input)) {
-      throw new Error('[ERROR] 입력이 양수인 숫자가 아닙니다.');
+      throw new Error(ERRORS.gameCount.range);
     }
 
     return input;
@@ -48,7 +52,7 @@ class App {
 
       const count = await this.getRacingCountInput();
 
-      Console.print('실행 결과');
+      Console.print(OUTPUT_MESSAGES.result);
 
       Array.from({ length: count }).forEach(() => {
         cars.forEach((car) => {
