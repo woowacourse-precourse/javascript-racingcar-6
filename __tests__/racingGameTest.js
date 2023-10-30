@@ -43,4 +43,12 @@ describe("자동차 경주 게임", () => {
 
     expect(result).toContainEqual("1");
   });
+
+  test("at 메서드로 특정 위치의 문자 찾기", () => {
+    const input = "abc";
+    mockReadLineAsync.mockResolvedValue(input);
+    const result = input.at(0);
+
+    expect(result).toEqual("a");
+  });
 });
