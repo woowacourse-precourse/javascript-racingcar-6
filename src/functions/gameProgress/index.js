@@ -8,7 +8,7 @@ const getCanMove = () => {
   return true;
 };
 
-export const playOneRound = carDistanceList => {
+const playOneRound = carDistanceList => {
   carDistanceList.forEach(car => {
     if (getCanMove) {
       const updateCar = car;
@@ -19,7 +19,7 @@ export const playOneRound = carDistanceList => {
   });
 };
 
-export const printRoundResult = carDistanceList => {
+const printRoundResult = carDistanceList => {
   carDistanceList.forEach(car => {
     Console.print(`${car.carName} : ${car.distance}`);
   });
@@ -27,4 +27,11 @@ export const printRoundResult = carDistanceList => {
 
 export const printResultMessage = () => {
   Console.print(MESSAGE.printResult);
+};
+
+export const playRounds = (carDistanceList, playNum) => {
+  for (let round = 0; round < playNum; round += 1) {
+    playOneRound(carDistanceList);
+    printRoundResult(carDistanceList);
+  }
 };
