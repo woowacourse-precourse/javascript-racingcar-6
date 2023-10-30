@@ -54,7 +54,7 @@ class App {
   }
 
   carMoveText() {
-    for(let i = 0; i < this.carName.length; i++) {
+    for (let i = 0; i < this.carName.length; i++) {
       const randomNumber = Random.pickNumberInRange(0, 9);
       this.carMoveArray[i] += this.carMoveQualification(randomNumber);
       Console.print(this.carName[i] + " : " + this.carMoveArray[i]);
@@ -62,21 +62,23 @@ class App {
   }
 
   carMoveEmptyArray() {
-    for(let i = 0; i < this.carName.length; i++) {
+    for (let i = 0; i < this.carName.length; i++) {
       this.carMoveArray.push("");
     }
   }
 
   carMoveQualification(randomNumber) {
-    if(randomNumber >= 4) {
+    if (randomNumber >= 4) {
       return "-";
-    }else {
+    } else {
       return "";
     }
   }
 
   winnerMovelength() {
-    const sortMoveArray = [...this.carMoveArray].sort((a, b) => b.length - a.length);
+    const sortMoveArray = [...this.carMoveArray].sort(
+      (a, b) => b.length - a.length
+    );
     this.winnerLength = sortMoveArray[0].length;
     return this.winnerLength;
   }
@@ -88,7 +90,7 @@ class App {
   }
 
   winnerCar(carMove, index) {
-    if(carMove.length === this.winnerLength) {
+    if (carMove.length === this.winnerLength) {
       this.winnerCarArray.push(this.carName[index]);
     }
   }
@@ -97,7 +99,7 @@ class App {
     const winnerCarNames = this.winnerCarArray.join(",");
     Console.print("최종 우승자 : " + winnerCarNames);
   }
-  
+
   async intro() {
     await this.carNameInput();
     await this.gameNumberInput();
@@ -107,7 +109,7 @@ class App {
   main() {
     Console.print("실행 결과");
     this.carMoveEmptyArray();
-    for(let i = 0; i < this.gameRound; i++) {
+    for (let i = 0; i < this.gameRound; i++) {
       this.carMoveText();
       Console.print("");
     }

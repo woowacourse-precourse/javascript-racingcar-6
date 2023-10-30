@@ -9,7 +9,7 @@ const mockReadLineAsync = (inputs) => {
   });
 };
 
-describe("자동차 이름 테스트", () =>{
+describe("자동차 이름 테스트", () => {
   test("사용자 입력 받는 함수", async () => {
     const inputs = ["hong,sung,soo"];
     mockReadLineAsync(inputs);
@@ -17,7 +17,7 @@ describe("자동차 이름 테스트", () =>{
     const result = await app.carNameInput();
     expect(result).toContainEqual("hong", "sung", "soo");
   });
-  
+
   test("사용자 입력 예외처리", async () => {
     const inputs = ["Hongsungsoo"];
     mockReadLineAsync(inputs);
@@ -30,7 +30,9 @@ describe("게임 라운드 수 테스트", () => {
   test("사용자 입력 받는 함수", async () => {
     const inputs = [1];
     MissionUtils.Console.readLineAsync = jest.fn();
-    MissionUtils.Console.readLineAsync.mockResolvedValue(Promise.resolve(inputs[0]));
+    MissionUtils.Console.readLineAsync.mockResolvedValue(
+      Promise.resolve(inputs[0])
+    );
     const app = new App();
     const result = await app.gameNumberInput();
     expect(result).toBe(1);
@@ -39,7 +41,9 @@ describe("게임 라운드 수 테스트", () => {
   test("사용자 입력 예외 처리", async () => {
     const inputs = ["a"];
     MissionUtils.Console.readLineAsync = jest.fn();
-    MissionUtils.Console.readLineAsync.mockResolvedValue(Promise.resolve(inputs[0]));
+    MissionUtils.Console.readLineAsync.mockResolvedValue(
+      Promise.resolve(inputs[0])
+    );
     const app = new App();
     expect(app.gameNumberInput()).rejects.toThrow("[ERROR]");
   });
@@ -92,7 +96,6 @@ describe("게임 진행 상황 출력 테스트", () => {
     app.winnerMovelength();
     app.getWinnerArray();
     app.resultText();
-    
 
     expect(logSpy).toHaveBeenCalledWith(outPut);
   });
