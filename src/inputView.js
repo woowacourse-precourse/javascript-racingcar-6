@@ -47,5 +47,7 @@ class Input {
     validation.isValidNumberOfTimesFormat(numberOfTimes);
     return numberOfTimes;
   }
+
+  saveNumberOfTimes() {}
 }
 export default Input;

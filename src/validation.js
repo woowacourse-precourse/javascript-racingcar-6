@@ -1,8 +1,9 @@
 import ERROR_MESSAGE from './constant/errorMessage.js';
 
+const regex = /[!@#$%^&*()_+{}/:;<>.?~-]/;
 export const validation = {
   isValidNameFormat: (inputNames) => {
-    if (inputNames.includes(' ')) {
+    if (regex.test(inputNames)) {
       throw new Error(ERROR_MESSAGE.DIVISION_BY_SEMICOLON);
     }
   },
