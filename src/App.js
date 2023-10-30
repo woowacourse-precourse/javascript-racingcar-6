@@ -99,6 +99,12 @@ class App {
       Console.print(`${key} : ${hyphenValue}`);
     });
   }
+
+  convertValueToHyphen(number) {
+    const HYPHEN = '-';
+
+    return HYPHEN.repeat(number);
+  }
 }
 
 export default App;
