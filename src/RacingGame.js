@@ -8,9 +8,8 @@ class RacingGame {
   };
 
   async getRacingCount() {
-    const racingCount = await Console.readLineAsync(
-      '시도할 횟수는 몇 회인가요?'
-    );
+    const racingCount =
+      await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
     const racingCountNumber = Number(racingCount);
     const validation = new Validation();
     const errorHandler = new ErrorHandler();
@@ -29,7 +28,7 @@ class RacingGame {
     const lastStatusIndex = carsArray.length - 1;
     carsArray.forEach((car, index) => {
       let statusString = `${car.name} : ${this.SETTINGS.gameStatusMark.repeat(
-        car.location
+        car.location,
       )}`;
       if (index === lastStatusIndex) {
         statusString += '\n';
