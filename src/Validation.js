@@ -9,7 +9,7 @@ const REG_NUMBER = /[^0-9]+/;
  * @param {string} carNames
  */
 export function checkCarNames(carNames) {
-  if (carNames === '') {
+  if (!carNames) {
     throw new Error(ERROR_MESSAGE.NO_CAR_NAME);
   }
 
@@ -31,7 +31,7 @@ export function checkCarNames(carNames) {
  * @param {string} number
  */
 export function checkTryNumber(number) {
-  if (number === '') {
+  if (!number) {
     throw new Error(ERROR_MESSAGE.NO_NUMBER);
   }
   if (REG_NUMBER.test(Number(number))) {
