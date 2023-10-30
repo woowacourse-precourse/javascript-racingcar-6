@@ -1,28 +1,17 @@
+import { MissionUtils } from '@woowacourse/mission-utils';
 import { ERRORS } from '../constants/errors.js';
 import { throwError } from '../utils/throwError.js';
 
 class CarModel {
-  constructor() {
-    this.cars = new Map();
+  constructor(name) {
+    this.name = name;
+    this.position = 0;
   }
 
-  getCars() {
-    return this.cars;
-  }
+  move() {
+    const randNum = MissionUtils.Random.pickNumberInRange(0, 9);
 
-  addCar(name) {
-    if (!this.cars.has(name)) {
-      return this.cars.set(name, 0);
-    }
-    throwError(ERRORS.carAlreadyExists);
-  }
-
-  increaseMoveCntByName(name) {
-    if (this.cars.has(name)) {
-      const moveCnt = this.cars.get(name);
-      return this.cars.set(name, moveCnt + 1);
-    }
-    throwError(ERRORS.carNotFound);
+    return randNum >= 4 && this.position++;
   }
 }
 
