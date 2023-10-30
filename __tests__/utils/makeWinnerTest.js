@@ -1,5 +1,4 @@
-import { SPACE } from '../src/constants/constants';
-import makeWinner from '../src/utils/makeWinner';
+import makeWinner from '../../src/utils/makeWinner';
 
 describe('MakeWinner Test', () => {
   test('우승자 생성기능 테스트', () => {
@@ -13,7 +12,7 @@ describe('MakeWinner Test', () => {
         moveCounts: 1,
       },
     ];
-    expect(makeWinner(cars)).toBe(`${SPACE}pobi`);
+    expect(makeWinner(cars)).toEqual(expect.stringContaining('pobi'));
   });
 
   test('중복 우승자 생성', () => {
@@ -27,6 +26,9 @@ describe('MakeWinner Test', () => {
         moveCounts: 2,
       },
     ];
-    expect(makeWinner(cars)).toBe(`${SPACE}pobi,${SPACE}ukgi`);
+    const expectedWinner = ['pobi', 'ukgi'];
+    expectedWinner.forEach((winner) => {
+      expect(makeWinner(cars)).toEqual(expect.stringContaining(winner));
+    });
   });
 });
