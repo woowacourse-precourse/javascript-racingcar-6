@@ -33,6 +33,11 @@ class Game {
       Console.print('');
     }
   }
+
+  async printWinner() {
+    const winner = await this.#carList.setWinner();
+    Console.print(`최종 우승자 : ${winner}`);
+  }
 }
 
 export default Game;
