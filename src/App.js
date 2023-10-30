@@ -1,4 +1,4 @@
-import { readLineAsync, getValidInputNames, getValidInputNumber } from './utils';
+import { printMessage, readLineAsync, getValidInputNames, getValidInputNumber } from './utils';
 import { MESSAGE } from './constants';
 import CarRace from './CarRace';
 
@@ -21,10 +21,12 @@ class App {
 
     while (this.carRace.isPlaying()) {
       this.carRace.calculateResult();
-      this.carRace.getResultMessage();
+      const result = this.carRace.getResultMessage();
+      printMessage(result);
     }
 
-    this.carRace.getWinnerMessage();
+    const winner = this.carRace.getWinnerMessage();
+    printMessage(winner);
   }
 }
 

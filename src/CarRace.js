@@ -1,7 +1,6 @@
 import Car from './Car';
 import { MissionUtils } from '@woowacourse/mission-utils';
 import { SETTING, SCORE, MESSAGE } from './constants';
-import { printMessage } from './utils';
 
 export default class CarRace {
   constructor(carNames, count) {
@@ -36,11 +35,13 @@ export default class CarRace {
   }
   
   getResultMessage() {
+    const message = [];
     const { FORWARD } = SCORE;
     this.carNames.forEach((car) => {
-      printMessage(`${car.name} : ${FORWARD.repeat(car.position)}`);
+      message.push(`${car.name} : ${FORWARD.repeat(car.position)}`);
     });
-    printMessage('\n');
+    message.push('\n');
+    return message.join('\n');
   }
 
   getWinner() {
@@ -52,8 +53,10 @@ export default class CarRace {
   }
 
   getWinnerMessage() {
+    const message = [];
     const { WINNER } = MESSAGE;
     const winners = this.getWinner().join(',');
-    printMessage(`${WINNER}${winners}`);
+    message.push(`${WINNER}${winners}`);
+    return message.join('');
   }
 }
