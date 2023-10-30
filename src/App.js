@@ -1,5 +1,6 @@
 import { Console, MissionUtils } from '@woowacourse/mission-utils';
 import GAME_MESSAGE from './constants/gameMessage.js';
+import ERROR_MESSAGE from './constant/errorMessage.js';
 
 class App {
   async play() {}
@@ -15,11 +16,11 @@ class App {
   toArray(input) {
     this.input = input;
     if (!this.includeSemiColon(input)) {
-      throw new Error('[ERROR] 이름은 쉼표로 구분되어야 합니다.');
+      throw new Error(ERROR_MESSAGE.DIVISION_BY_SEMICOLON);
     }
     const names = input.split(',').map((name) => name.trim());
     if (!this.isValidNameFormat(names)) {
-      throw new Error('[ERROR] 이름은 5자를 넘을 수 없습니다.');
+      throw new Error(ERROR_MESSAGE.LESS_THAN_FIVE);
     }
     return names;
   }
