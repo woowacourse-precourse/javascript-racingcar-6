@@ -1,5 +1,9 @@
 import { Console, Random } from "@woowacourse/mission-utils";
 
+const RANDOM_THRESHOLD = 4;
+const RANDOM_RANGE_MIN = 0;
+const RANDOM_RANGE_MAX = 9;
+const MAX_CAR_NAME_LENGTH = 5;
 class App {
   async play() {
     const carNames = await this.inputCarNames();
@@ -29,7 +33,7 @@ class App {
 
   checkCarNames(carNames) {
     carNames.forEach((car) => {
-      if (car.length > 5) {
+      if (car.length > MAX_CAR_NAME_LENGTH) {
         throw new Error("[ERROR] : 자동차 이름은 5자 이하만 입력 가능합니다.");
       }
     });
@@ -49,8 +53,11 @@ class App {
 
   moveCars(carForwards) {
     carForwards.forEach((_, j) => {
-      const forwardOrStop = Random.pickNumberInRange(0, 9);
-      if (forwardOrStop >= 4) {
+      const forwardOrStop = Random.pickNumberInRange(
+        RANDOM_RANGE_MIN,
+        RANDOM_RANGE_MAX
+      );
+      if (forwardOrStop >= RANDOM_THRESHOLD) {
         carForwards[j] += 1;
       }
     });
