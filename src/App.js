@@ -48,14 +48,27 @@ class App {
     }
 
     playGame(tryCount, cars) {
-        return {
-            yoo: 1,
-            vin: 2,
-        };
+        MissionUtils.Console.print('실행 결과');
+        for (let i = 0; i < tryCount; i++) {
+            Object.keys(cars).forEach((name) => {
+                const randomNumber = MissionUtils.Random.pickNumberInRange(
+                    0,
+                    9
+                );
+                if (randomNumber >= 4) {
+                    cars[name] += 1;
+                }
+            });
+
+            this.printGameStatus(cars);
+        }
+        return cars;
     }
 
     printGameStatus(cars) {
-        MissionUtils.Console.print('yoo : -');
+        Object.keys(cars).forEach((name) => {
+            MissionUtils.Console.print(`${name} : ${'-'.repeat(cars[name])}`);
+        });
     }
 
     printWinner(cars) {
