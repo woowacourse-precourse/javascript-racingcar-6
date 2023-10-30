@@ -48,7 +48,7 @@ class App {
   showRaceProcess(){
     Console.print(MESSAGE.RESULT);
 
-    this.carMoveCount = new Array(this.round).fill(0);
+    this.carMoveCount = new Array(this.carName.length).fill(0);
     
     for (let i = 0; i < this.round; i++) {
       this.updateMoveHistory();
