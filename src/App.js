@@ -1,5 +1,9 @@
+import getPlayInfo from "./getPlayInfo";
+
 class App {
-  async play() {}
+  async play() {
+    const [PARTICIPANTS, TRIALS] = await getPlayInfo();
+  }
 }
 
 export default App;
