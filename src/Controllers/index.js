@@ -1,8 +1,12 @@
 import { Console } from "@woowacourse/mission-utils";
 import Model from "../Models/index.js";
 import Views from "../Views/index.js";
-import ValidateCheck from "../Vaildation/index.js";
 import { MESSAGE } from "../Constants/message.js";
+import {
+  validateNoWhiteSpace,
+  validateCarNameLength,
+  validateCarNameInput,
+} from "../Vaildation/index.js";
 
 class Controllers {
   constructor() {
@@ -12,6 +16,8 @@ class Controllers {
 
   async getUserInput(message) {
     const input = await Console.readLineAsync(message);
+    validateNoWhiteSpace(input);
+
     const result = input?.split(",");
 
     return result;
@@ -24,8 +30,6 @@ class Controllers {
   }
 
   async carMoveCheck(cars, tryTime) {
-    const { validateCarNameInput, validateCarNameLength } = ValidateCheck();
-
     for (let i = 0; i < cars.length; i++) {
       validateCarNameLength(cars, i);
       validateCarNameInput(cars, i);

@@ -1,17 +1,17 @@
 import { ERROR } from "../Constants/error.js";
-export default function ValidateCheck() {
-  const validateCarNameLength = (cars, i) => {
-    if (cars[i].length > 5) throw new Error(ERROR.LENGTH);
-  };
+// export default function ValidateCheck() {
+export const validateCarNameLength = (cars, i) => {
+  if (cars[i].length > 5) throw new Error(ERROR.LENGTH);
+};
 
-  const validateCarNameInput = (cars, i) => {
-    const regex = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
-    if (regex.test(cars[i])) throw new Error(ERROR.INPUT);
-  };
+export const validateCarNameInput = (cars, i) => {
+  const regex = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
+  if (regex.test(cars[i])) throw new Error(ERROR.INPUT);
+};
 
-  // const validateNoWhiteSpace = (input) => {
+export const validateNoWhiteSpace = (input) => {
+  // 왜 옵셔널을 사용해야만 정상적으로 테스트가 되는 건지 ?
+  if (input?.trim() === "") throw new Error(ERROR.WHITESPACE);
 
-  // }
-
-  return { validateCarNameLength, validateCarNameInput };
-}
+  return input;
+};

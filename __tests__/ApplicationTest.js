@@ -74,7 +74,7 @@ describe("자동차 경주 게임", () => {
   });
 
   test("공백만 입력 시 예외 처리", async () => {
-    const input = "";
+    const input = [" "];
 
     mockQuestions(input);
 
