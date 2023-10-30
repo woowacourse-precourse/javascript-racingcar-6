@@ -1,5 +1,11 @@
+// 받아둔 함수를 내가 원하는 시점에 평가시키는 함수
+const curry =
+  (func) =>
+  (arg, ..._) =>
+    _.length ? func(arg, ..._) : (..._) => func(arg, ..._);
+
 // if문 대신 사용
-export const filter = (func, iterable) => {
+export const filter = curry((func, iterable) => {
   let result = [];
 
   for (const value of iterable) {
@@ -7,10 +13,10 @@ export const filter = (func, iterable) => {
   }
 
   return result;
-};
+});
 
 // 이터러블 값을 다른 값으로 축약해나가는 함수
-export const reduce = (func, accumulate, iterable) => {
+export const reduce = curry((func, accumulate, iterable) => {
   if (!iterable) {
     iterable = accumulate[Symbol.iterator]();
     accumulate = iterable.next().value;
@@ -21,7 +27,7 @@ export const reduce = (func, accumulate, iterable) => {
   }
 
   return accumulate;
-};
+});
 
 export const go = (...args) => {
   reduce((arg, func) => func(arg), args);
