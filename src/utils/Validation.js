@@ -1,14 +1,8 @@
-import { ErrorMessages } from "./constants.js"
+import { ErrorMessages, RACE_COUNT_MIN_NUM, RACE_COUNT_MAX_NUM, RACE_COUNT_CHECK_NEGATIVE } from "./constants.js"
 
 class Validation {
   static validateArrayEmpty(input) {
     if (input.includes('')) {
-      throw new Error(ErrorMessages.EMPTY_INPUT);
-    }
-  }
-
-  static validateInputEmpty(input) {
-    if (input === '') {
       throw new Error(ErrorMessages.EMPTY_INPUT);
     }
   }
@@ -22,14 +16,20 @@ class Validation {
 
   static validateInputLength(inputs) {
     inputs.forEach((input) => {
-      if (input.length < 1 || input.length > 5) {
+      if (input.length < RACE_COUNT_MIN_NUM || input.length > RACE_COUNT_MAX_NUM) {
         throw new Error(ErrorMessages.CAR_NAME_LENGTH_EXCEEDED);
       }
     })
   }
 
+  static validateInputEmpty(input) {
+    if (input === '') {
+      throw new Error(ErrorMessages.EMPTY_INPUT);
+    }
+  }
+
   static validateIsNegative(input) {
-    if (input < 0) {
+    if (input < RACE_COUNT_CHECK_NEGATIVE) {
       throw new Error(ErrorMessages.NEGATIVE_RACE_COUNT);
     }
   }
