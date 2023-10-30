@@ -4,7 +4,7 @@ import Car from './model/Car.js';
 import RandomNumber from './model/RandomNumber.js';
 
 import handleError from './utils/handleError.js';
-import { validateCarName, validateTryNumber } from './Validator.js';
+import { validateCarName, validateTryNumber } from './validateInput.js';
 import { findWinners } from './utils/findWinners.js';
 
 class App {
