@@ -12,6 +12,7 @@ class App {
     this.racingCarList(splitInputCar);
 
     this.tryNum = await this.numInput();
+    this.game();
   }
 
   async carInput() {
@@ -48,6 +49,15 @@ class App {
       Console.print(msg);
     }
     Console.print('');
+  }
+
+  game() {
+    Console.print('\n실행결과\n');
+    while (this.tryNum > 0) {
+      this.carMoving();
+      this.printMessage();
+      this.tryNum -= 1;
+    }
   }
 }
 
