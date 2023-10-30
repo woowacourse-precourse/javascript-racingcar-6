@@ -1,6 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
 import { GRANDPRIX_START_NOTIFICATION } from '../constants/GrandPrixMessage.js';
-import { LapNumberValidator, RacingCarNameValidator } from '../validator/index.js';
+import { validateLapNumber, validateRacingCarName } from '../validator/index.js';
 
 const InputView = Object.freeze({
   /**
@@ -12,7 +12,7 @@ const InputView = Object.freeze({
     const racingCarInput = await Console.readLineAsync(
       GRANDPRIX_START_NOTIFICATION.enterRacingCarName,
     );
-    RacingCarNameValidator.generate(racingCarInput).validateRacingCarName();
+    validateRacingCarName(racingCarInput);
     return racingCarInput;
   },
 
@@ -23,7 +23,7 @@ const InputView = Object.freeze({
    */
   async readLapNumber() {
     const lapNumberInput = await Console.readLineAsync(GRANDPRIX_START_NOTIFICATION.enterLapNumber);
-    LapNumberValidator.generate(lapNumberInput).validateLapNumber();
+    validateLapNumber(lapNumberInput);
     return lapNumberInput;
   },
 });
