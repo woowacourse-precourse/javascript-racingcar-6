@@ -1,16 +1,16 @@
 import App from "../src/App.js";
-import { MissionUtils } from "@woowacourse/mission-utils";
+import { Random, Console } from "@woowacourse/mission-utils";
 
 const mockQuestions = (input) => {
-    MissionUtils.Console.readLineAsync = jest.fn();
+    Console.readLineAsync = jest.fn();
 
-    MissionUtils.Console.readLineAsync.mockImplementation(() => {
+    Console.readLineAsync.mockImplementation(() => {
         return Promise.resolve(input);
     });
 };
 
 describe("기능 테스트", () => {
-    test("createCarNameArr함수 테스트", async () => {
+    test("자동차이름은 쉼표 기준으로 배열로 저장", async () => {
         const input = `치이카와, 우사기, 하치와레`;
         const result = input.split(",");
 
@@ -20,7 +20,7 @@ describe("기능 테스트", () => {
         await expect(await app.createCarNameArr()).toEqual(result);
     });
 
-    test("getNumberOfGames함수 테스트", async () => {
+    test("시도횟수 숫자형으로 바꿔서 저장", async () => {
         const input = "1";
         const result = 1;
 
@@ -32,7 +32,7 @@ describe("기능 테스트", () => {
     });
 
     test.each([``, `치이카와 우사기 하치와레`, `이름엄청길다,이름,이`])(
-        "checkCarFormat 함수 테스트",
+        "잘못된 자동차 이름 에러 처리 테스트",
         async (value) => {
             const app = new App();
             const valueArr = value.split(",");
@@ -43,7 +43,7 @@ describe("기능 테스트", () => {
     );
 
     test.each([``, `0`, `숫자`, `1,2`])(
-        "checkNumberOfGamesFormat함수 테스트",
+        "잘못된 시도횟수 에러 처리 테스트",
         async (value) => {
             const app = new App();
             const numberOfGames = value / 1;
@@ -52,4 +52,15 @@ describe("기능 테스트", () => {
             ).toThrow("[ERROR] 시도 횟수가 잘못된 형식입니다.");
         }
     );
+
+    test("자동차 점수계산기 테스트", async () => {
+        const input = 4;
+        const result = ["-","-","-","-"];
+        jest.spyOn(Random, "pickNumberInRange").mockImplementation(() => 4);
+
+        const app = new App();
+        await expect(app.generateAndStoreRandomNumber(input)).toEqual(
+            result
+        );
+    });
 });
