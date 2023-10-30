@@ -1,4 +1,4 @@
-import { runRace } from "./runRace";
+import { runByCount } from "./runRace";
 
 //입력받은 자동차의 이름에 대한 객체 생성
 export const setCars = (name, count) => {
@@ -9,5 +9,5 @@ export const setCars = (name, count) => {
         cars[name] = '';
     });
 
-    runRace(cars, count);
+    runByCount(cars, count);
 };
