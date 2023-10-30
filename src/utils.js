@@ -9,7 +9,7 @@ const readLineAsync = async (message) => {
   return Console.readLineAsync(message);
 }
 
-const isValidInputNames = (input) => {
+const getValidInputNames = (input) => {
   input = input.trim();
   const splittedInput = input.split(',');
 
@@ -31,7 +31,7 @@ const isValidInputNames = (input) => {
     throw new Error(`${NOT_UNIQUE}`);
   }
 
-  return true;
+  return splittedInput;
 }
 
 const getValidInputNumber = (input) => {
@@ -50,4 +50,4 @@ const getValidInputNumber = (input) => {
   return input;
 }
 
-export { printMessage, readLineAsync, isValidInputNames, getValidInputNumber };
+export { printMessage, readLineAsync, getValidInputNames, getValidInputNumber };
