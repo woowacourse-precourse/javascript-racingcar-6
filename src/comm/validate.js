@@ -1,4 +1,4 @@
-import { ERROR_MESSAGE } from "../constant/OutputMessage.js";
+import { ERROR_MESSAGE } from "../comm/outputMessage.js";
 
 class Validate{
     racingCarInputValidate = (carName) => {
