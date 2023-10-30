@@ -21,3 +21,4 @@ class Car {
     return randomNumber >= 4;
   }
 }
+export default Car;
