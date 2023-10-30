@@ -71,6 +71,14 @@ export function printResultTitle() {
 
 /**
  *
+ * @param {string[]} winners
+ */
+export function printWinners(winners) {
+  Console.log(`최종 우승자 : ${winners.join(", ")}`);
+}
+
+/**
+ *
  * @param {string[]} names
  */
 function checkNamesAreValid(names) {
