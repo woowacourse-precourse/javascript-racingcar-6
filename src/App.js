@@ -77,7 +77,7 @@ class App {
       this.#printEachGameResult();
     }
 
-    Console.print(this.CARS_ARRAY);
+    Console.print(this.#pickWinnerCar());
   }
 
   #moveForward(carIndex) {
@@ -92,12 +92,44 @@ class App {
     let resultBar = '';
 
     this.CARS_ARRAY.forEach((car) => {
-      for(let i = 0; i < car.forwardCount; i += 1) {
+      for (let i = 0; i < car.forwardCount; i += 1) {
         resultBar += '-';
       }
       Console.print(`${car.carName} : ${resultBar}`);
-    })
+    });
     Console.print(' ');
+  }
+
+  #pickWinnerCar() {
+    let winner = 0;
+
+    this.CARS_ARRAY.forEach((car) => {
+      winner = Math.max(winner, car.forwardCount);
+    });
+
+    const WINNER_CAR_ARRAY = this.CARS_ARRAY.filter(
+      (car) => car.forwardCount === winner,
+    );
+
+    let result = '최종 우승자 : ';
+    
+    if(WINNER_CAR_ARRAY.length > 1) {
+      WINNER_CAR_ARRAY.forEach((winnerCar, index) => {
+        if(index < WINNER_CAR_ARRAY.length - 1) {
+          result += `${winnerCar.carName}, `;
+        } else {
+          result += winnerCar.carName;
+        }
+      });
+    } else {
+      result += WINNER_CAR_ARRAY[0].carName;
+    }
+
+    //정승민은 보아라
+    //여러 명일 경우와 한 명일 경우 처리를 어떻게 할 것인지 생각하기
+    
+
+    return result;
   }
 
   async play() {
