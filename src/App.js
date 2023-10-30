@@ -7,13 +7,25 @@ class App {
 
     const carNameInput = await MissionUtils.Console.readLineAsync('');
   }
-  
+
   async carName(carNameInput) {
-    let carNameArr = carNameInput.split(',');
+    const carNameArr = carNameInput.split(',');
+    const setCollection = new Set(carNameArr);
+    const isDuplicate = setCollection.size < carNameArr.length;
+
+    // 자동차 이름의 길이가 0 또는 5를 초과할 경우 ERROR
+    for (let i = 0; i < carNameArr.length; i++){
+      if (carNameArr[i].length == 0 || carNameArr[i].length > 5){
+        throw new Error(Messages.ERROR_CARNAME_INPUT_WRONG);
+      }
+    }
+    // 중복된 이름이 있을 경우 ERROR
+    if (isDuplicate){
+      throw new Error(Messages.ERROR_CARNAME_INPUT_DUPLICATE_NAME);
+    }
 
     return carNameArr;
   }
-
 }
 
 const app = new App();
