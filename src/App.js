@@ -11,9 +11,11 @@ class App {
 
     let template = this.generateResultTemplate(racecarNames);
 
-    await this.repeatProcess(attempts, template);
+    const finalResult = await this.repeatProcess(attempts, template);
 
-    await this.printFinalResult(template);
+    const winners = await this.determineWinner(finalResult);
+
+    await this.printFinalResult(winners);
   }
 
   async getRacecarNameInput() {
@@ -77,6 +79,8 @@ class App {
 
       Console.print(template.join('\n') + '\n');
     }
+
+    return template;
   }
 
   generateAdvanceConditions(racecarNames) {
