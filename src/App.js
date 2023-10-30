@@ -3,13 +3,6 @@ import { progressGame } from './Game/Progress';
 import { terminateGame } from './Game/End';
 
 class App {
-
-  constructor () {
-    this.participants = [],
-    this.attempt = 0,
-    this.participantsDistance = {}
-  }
-
   async play() {
     // 게임 세팅
     const participants = await getParticipant();
