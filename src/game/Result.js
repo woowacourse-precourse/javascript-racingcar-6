@@ -13,5 +13,6 @@ export function result(cars){
     }
   }
 
+  // 쉼표로 묶어 출력
   MissionUtils.Console.print(maxCar.join(','));
 } 
