@@ -30,6 +30,7 @@ class RacingCar {
 
   repeatMoveOrStop(input) {
     for (let i = 0; i < input; i++) {
+      this.#view.printSpace();
       this.determineMoveByRandom();
       this.printCarsDistance();
     }

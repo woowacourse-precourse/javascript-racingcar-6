@@ -23,6 +23,10 @@ class View {
   printWinners(winnerList) {
     Console.print(MESSAGE.RESULT_WINNER(winnerList));
   }
+
+  printSpace() {
+    Console.print(SIGN.EMPTY_SPACE);
+  }
 }
 
 export default View;
