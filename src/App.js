@@ -4,24 +4,14 @@ class App {
   async play() {
     const names = await this.getCarNames();
     const count = await this.getPlayCount();
-    const nameToNumberMap = {};
+    const nameToNumberMap = Object.fromEntries(names.map(name => [name, 0]));
 
     Console.print('\n실행 결과');
     for (let i = 0; i < count; i++) {
-      for (let j = 0; j < names.length; j++) {
-        const name = names[j];
-        const randomNumber = this.randomIndex();
-        const number = nameToNumberMap[name] || randomNumber;
-        nameToNumberMap[name] = number + randomNumber;   
-        const dashes = number > 0 ? '-'.repeat(number) : '';
-
-        Console.print(`${name} : ${dashes} `);
-      }
-      Console.print('\n');
+      this.playRound(nameToNumberMap);
     }
-
-    const winners = this.findWinners(names, nameToNumberMap);
-    Console.print(`최종 우승자 : ${winners.join(', ')}`);
+  
+    this.printResults(nameToNumberMap);
   }
 
   async getCarNames() {
@@ -30,12 +20,10 @@ class App {
       .split(',')
       .map(item => item.trim());
 
-    if (carNames.some(name => name.length > 5)) {
-      throw new Error('[ERROR]이름은 5글자 이하로만 입력할 수 있습니다.');
-    }
+    this.validateCarNames(carNames);
 
     return carNames;
-  } 
+  }
 
   async getPlayCount() {
     const input = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
@@ -46,10 +34,31 @@ class App {
     return count;
   }
 
+  validateCarNames(carNames) {
+    if (carNames.some(name => name.length > 5)) {
+      throw new Error('[ERROR] 이름은 5글자 이하로만 입력할 수 있습니다.');
+    }
+  }
+
   validatePlayCount(count) {
     if (isNaN(count)) {
       throw new Error('[ERROR] 값이 잘 못 입력되었습니다.');
     }
+  }
+
+  playRound(nameToNumberMap) {
+    for (const [name, number] of Object.entries(nameToNumberMap)) {
+      const randomNumber = this.randomIndex();
+      const updatedNumber = number + randomNumber;
+      const dashes = '-'.repeat(updatedNumber);
+      Console.print(`${name} : ${dashes} `);
+    }
+    Console.print('\n');
+  }
+
+  printResults(nameToNumberMap) {
+    const winners = this.findWinners(nameToNumberMap);
+    Console.print(`최종 우승자 : ${winners.join(', ')}`);
   }
 
   randomIndex() {
@@ -57,20 +66,10 @@ class App {
     return randomNumber >= 4 ? 1 : 0;
   }
 
-  findWinners(names, nameToNumberMap) {
-    const winners = [];
-    let highestScore = -1;
-
-    for (const name of names) {
-      const number = nameToNumberMap[name];
-      if (number > highestScore) {
-        highestScore = number;
-        winners.length = 0;
-        winners.push(name);
-      } else if (number == highestScore) {
-        winners.push(name);
-      }
-    }
+  findWinners(nameToNumberMap) {
+    const highestScore = Math.max(...Object.values(nameToNumberMap));
+    const winners = Object.keys(nameToNumberMap)
+      .filter(name => nameToNumberMap[name] == highestScore);
 
     return winners;
   }
