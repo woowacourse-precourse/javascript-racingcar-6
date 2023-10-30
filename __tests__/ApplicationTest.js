@@ -28,7 +28,7 @@ describe("자동차 경주 게임", () => {
     // given
     const MOVING_FORWARD = 4;
     const STOP = 3;
-    const inputs = ["pobi,woni", "1"];
+    const inputs = ["pobi,hamji", "1"];
     const outputs = ["pobi : -"];
     const randoms = [MOVING_FORWARD, STOP];
     const logSpy = getLogSpy();
@@ -48,9 +48,109 @@ describe("자동차 경주 게임", () => {
 
   test.each([
     [["pobi,javaji"]],
-    [["pobi,eastjun"]]
+    [["pobi,eastjun"]],
+    [["  pobi  ,"]],
+    [["pobi,hamji, "]]
   ])("이름에 대한 예외 처리", async (inputs) => {
     // given
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow("[ERROR]");
+  });
+
+  test("시도 횟수에 대한 예외 처리", async () => {
+    // given
+    const inputs = ["pobi,woni", "invalid_input"];
+    const outputs = "[ERROR]";
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow(outputs);
+  });
+  test("음수 시도 횟수 입력", async () => {
+    // given
+    const inputs = ["pobi,woni", "-1"];
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow("[ERROR]");
+  });
+
+  test("0 시도 횟수 입력", async () => {
+    // given
+    const inputs = ["pobi,woni", "0"];
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow("[ERROR]");
+  });
+
+  test("시도 횟수 입력이 숫자가 아닌 경우", async () => {
+    // given
+    const inputs = ["pobi,woni", "abc"];
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow("[ERROR]");
+  });
+
+  test("자동차 이름에 아무것도 없는 경우", async () => {
+    // given
+    const inputs = [""];
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow("[ERROR]");
+  });
+
+  test("자동차 이름에 공백 입력한 경우", async () => {
+    // given
+    const inputs = ["  ,hamji"];
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow("[ERROR]");
+  });
+
+  test("자동차 이름 길이가 6 이상인 경우", async () => {
+    // given
+    const inputs = ["pobi,woni,verylongname"];
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow("[ERROR]");
+  });
+
+  test("자동차 이름이 중복인 경우", async () => {
+    // given
+    const inputs = ["pobi,hamji,hamji"];
     mockQuestions(inputs);
 
     // when
