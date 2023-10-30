@@ -1,6 +1,4 @@
-import { Random } from '@woowacourse/mission-utils';
 import RACING_GAME from '../constants/racingGame.js';
-import CAR from '../constants/car.js';
 
 class RacingGame {
   #cars;
@@ -14,35 +12,26 @@ class RacingGame {
     this.#round = round;
     this.#currentRound = RACING_GAME.round.default;
 
-    this.#play();
+    this.#gameFlow();
   }
 
-  moveCars() {
-    const shouldMove =
-      Random.pickNumberInRange(CAR.movement.min, CAR.movement.max) >=
-      CAR.movement.threshold;
+  #gameFlow() {
+    this.#playGame();
+  }
 
+  #moveCars() {
     this.#cars.forEach((car) => {
-      if (shouldMove) car.move();
+      car.move();
     });
   }
 
-  #getCarPositions() {
-    return this.#cars.map((car) => car.getPosition());
-  }
-
-  #getWinners() {
-    const maxPosition = Math.max(...this.getCarPositions());
-    return this.#cars.filter((car) => car.getPosition() === maxPosition);
-  }
-
-  #isEnd() {
+  #gameEnd() {
     return this.#currentRound >= this.#round;
   }
 
-  #play() {
-    while (!this.#isEnd()) {
-      this.moveCars();
+  #playGame() {
+    while (!this.#gameEnd()) {
+      this.#moveCars();
       this.#currentRound += RACING_GAME.round.unit;
     }
   }
