@@ -11,13 +11,31 @@ class App {
 
     // 쉼표로 이름 분리
     let enterCars = inputCars.split(",");
-    MissionUtils.Console.print(enterCars);
 
     // 시도 횟수 입력 받기
     const raceCount = await MissionUtils.Console.readLineAsync(
       PRINTOUT.ASK_COUNT
     );
     MissionUtils.Console.print(raceCount);
+
+    MissionUtils.Console.print(PRINTOUT.RACE_RESULT);
+    // 전진 구현
+    // 전진 조건은 0~9 사이 난수 >= 4 면 1칸 이동
+    // 전진 구현하면서 동시에 출력
+    // enterCars = enterCars.map((car) => (car += " : "));
+    let raceProgress = new Array(enterCars.length);
+    raceProgress.fill(0);
+    for (let i = 0; i < raceCount; i++) {
+      // 전진 과정 함수로 분리하기
+      for (let j = 0; j < enterCars.length; j++) {
+        if (MissionUtils.Random.pickNumberInRange(0, 9) >= 4) {
+          raceProgress[j]++;
+        }
+        const progress = "-".repeat(raceProgress[j]);
+        MissionUtils.Console.print(`${enterCars[j]} : ${progress}`);
+      }
+      MissionUtils.Console.print("");
+    }
   }
 }
 
