@@ -14,5 +14,14 @@ const Validation = {
       throw new Error(ERROR.CAR_NAME_TYPE);
     }
   },
+
+  validateCarNameDuplicate(userInput) {
+    const CarNames = userInput.split(',');
+    const uniqueCarNames = new Set(CarNames);
+
+    if (uniqueCarNames.size !== CarNames.length) {
+      throw new Error(ERROR.CAR_NAME_DUPLICATE);
+    }
+  },
 };
 export default Validation;
