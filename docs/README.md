@@ -14,7 +14,7 @@
 2.  입력받은 자동차 이름을 구분한다.
 
     - 입력받은 자동차 이름을 쉼표(,)로 구분한다. : `string[] splitName()`
-    - 자동차를 이름(`name`)과 거리(`distance = 0`)를 갖는 class로 생성한다. : `Car[] createCarArray()`
+    - 자동차를 이름(`name`)과 거리(`distance = ""`)를 갖는 class로 생성한다. : `Car[] createCarArray()`
     - 모든 자동차를 담은 배열을 생성한다.
 
 3.  사용자에게 시도할 횟수(n)를 입력받는다.
@@ -34,12 +34,12 @@
 
 7.  6번의 값이 4이상이면 전진한다. : `boolean movingForward()`
 
-    - 해당 자동차의 distance를 1 증가 : `Car.move()`
+    - 해당 자동차의 distance에 "-" 추가 : `Car.move()`
     - 4이상이 아니면 아무것도 하지 않는다.
 
-8.  한 번의 경주 결과를 출력한다. : `string convertDistanceToString()`
+8.  한 번의 경주 결과를 출력한다.
 
-    - `{name} : {distance 값만큼 '-'}`
+    - `{name} : {distance}`
 
     ```
     pobi : -
@@ -82,9 +82,9 @@
 
 2. 무작위 숫자가 4이상이면, 차가 전진한다.
 
-3. 차가 전진한다면, distance의 값이 증가한다.
+3. 차가 전진한다면, distance에 문자가 추가된다.
 
-4. distance가 가장 크면, 우승자로 선정된다.
+4. distance 길이가 가장 길면, 우승자로 선정된다.
 
 ### 라이브러리
 
