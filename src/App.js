@@ -7,7 +7,12 @@ const ERROR_MESSAGES = {
   INVALID_NUMBER: `${ERROR_MESSAGE} 숫자가 잘못된 형식입니다.`,
   NO_INTEGER: `${ERROR_MESSAGE} 1 이상의 정수를 입력해주세요.`,
 };
-
+class Car {
+  constructor(name) {
+    this.name = name;
+    this.position = 0;
+  }
+}
 class App {
   async getUserInput() {
     const userInput = await Console.readLineAsync(
@@ -43,11 +48,16 @@ class App {
     }
   }
 
+  createCars(names) {
+    return names.map(name => new Car(name));
+  }
+
   async play() {
     const names = await this.getUserInput();
     this.checkInputValid(names);
     const count = await this.getCounts();
     this.checkCountValid(count);
+    const cars = this.createCars(names);
   }
 }
 
