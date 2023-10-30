@@ -6,6 +6,7 @@ class Screen {
       '경주할 자동차 이름을 입력하세요.(이름은 쉼표 (,) 기준으로 구분)',
     INVALID_NAME_ERROR_MESSAGE:
       '[ERROR] 자동차 이름은 5자를 초과할 수 없습니다.',
+    DUPLICATED_NAME_ERROR_MESSAGE: '[ERROR] 중복된 이름을 입력할 수 없습니다.',
   };
 
   static async inputNames() {
@@ -18,6 +19,10 @@ class Screen {
         throw new Error(this.MESSAGES.INVALID_NAME_ERROR_MESSAGE);
       }
     });
+
+    if (names.length !== new Set(names).size) {
+      throw new Error(this.MESSAGES.DUPLICATED_NAME_ERROR_MESSAGE);
+    }
 
     return names;
   }
