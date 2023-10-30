@@ -25,7 +25,7 @@ class GameController {
   }
 
   createCar(carNames) {
-    const cars = carNames.map((name) => ({ name, position: 0 }));
+    const cars = carNames.map(name => ({ name, position: 0 }));
     this.car.init(cars);
   }
 
