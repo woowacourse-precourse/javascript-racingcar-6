@@ -89,14 +89,15 @@ describe("자동차 경주 게임", () => {
       await expect(app.play()).rejects.toThrow("[ERROR]");
     }
   );
-  test.each([[["car1,car2,0"]], [["car3,car4,a"]]])(
-    "횟수 입력에 대한 예외 처리",
-    async (inputs) => {
-      mockQuestions(inputs);
+  test.each([
+    [["car1,car2", "-1"]],
+    [["car3,car4", "0"]],
+    [["car5,car6", "a"]],
+  ])("횟수 입력에 대한 예외 처리", async (inputs) => {
+    mockQuestions(inputs);
 
-      const app = new App();
+    const app = new App();
 
-      await expect(app.play()).rejects.toThrow("[ERROR]");
-    }
-  );
+    await expect(app.play()).rejects.toThrow("[ERROR]");
+  });
 });
