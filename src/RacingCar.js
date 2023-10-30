@@ -1,9 +1,11 @@
 import { Console, Random } from '@woowacourse/mission-utils';
 import strings from './constants.js';
+import Referee from './Referee.js';
 class RacingCar {
   playRace(inputNumber, carArr) {
     const attemptNumber = this.wrongNumber(inputNumber);
     let round = 0;
+    const winner = new Referee();
 
     Console.print(attemptNumber);
 
@@ -17,6 +19,8 @@ class RacingCar {
       Console.print('\n');
       round += 1;
     }
+
+    Console.print(`${strings.FINAL_WINNER} : ${winner.compareWinner(carArr)}`);
   }
 
   wrongNumber(inputNumber) {

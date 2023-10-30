@@ -4,4 +4,4 @@ class Car {
         this.departureCount = '';
     }
 }
-export default Car
+export default Car;
