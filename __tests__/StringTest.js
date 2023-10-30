@@ -57,3 +57,14 @@ describe('validateParseNumber 테스트', () => {
     expect(() => validateParseNumber(inputs[0])).toThrowError('[ERROR]');
   });
 });
+
+describe('validateNames 테스트', () => {
+  test.each([
+    [["pobi,javaji"]],
+    [['      ,aqsd']]
+  ])("이름에 대한 예외 처리", (inputs) => {
+    mockQuestions(inputs);
+
+    expect(() => validateNames(inputs[0])).toThrowError('[ERROR]');
+  });
+});
