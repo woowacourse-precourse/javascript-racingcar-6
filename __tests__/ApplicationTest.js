@@ -1,7 +1,36 @@
 import App from "../src/App.js";
+import { makeScoreboardByNames } from "../src/utils/parse.js";
 import { getLogSpy, mockQuestions, mockRandoms } from "./utils.js";
 
 describe("자동차 경주 게임", () => {
+  test("점수 테스트", () => {
+    const scoringSequence = [
+      "a",
+      "b",
+      "a",
+      "a",
+      "a",
+      "c",
+      "b",
+      "a",
+      "d",
+      "d",
+      "d",
+      "d",
+      "D",
+    ];
+    const answer = { a: 5, b: 2, c: 1 };
+
+    const app = new App();
+    app.scoreboard = makeScoreboardByNames(["a", "b", "c"]);
+
+    scoringSequence.forEach((name) => {
+      app.giveScoreTo(name);
+    });
+
+    expect(app.scoreboard).toEqual(answer);
+  });
+
   test("전진-정지", async () => {
     // given
     const MOVING_FORWARD = 4;
