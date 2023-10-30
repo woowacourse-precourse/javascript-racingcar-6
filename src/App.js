@@ -30,8 +30,21 @@ class App {
         return cars;
     }
 
-    getTryCount() {
-        return 5;
+    async getTryCount() {
+        const userinput = await MissionUtils.Console.readLineAsync(
+            '시도할 횟수는 몇 회인가요?\n'
+        );
+        const tryCount = Number(userinput);
+
+        if (tryCount < 0) {
+            throw new Error('[ERROR] 0보다 작은 수는 입력할 수 없습니다.');
+        }
+
+        if (isNaN(tryCount)) {
+            throw new Error('[ERROR] 숫자가 아닙니다.');
+        }
+
+        return tryCount;
     }
 
     playGame(tryCount, cars) {
