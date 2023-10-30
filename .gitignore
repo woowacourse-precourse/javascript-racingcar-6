@@ -1,3 +1,15 @@
-node_modules
-package-lock.json
+### Wintersmith template
+contents/
+node_modules/
+templates/
+config.json
+package.json
+
+
+### Example user template template
+### Example user template
+
+# IntelliJ project files
 .idea
+out
+gen
