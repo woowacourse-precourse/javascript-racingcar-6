@@ -9,11 +9,6 @@ class RacingCar {
     this.carPosition = RACING_CAR.START_POSITION;
   }
 
-  /** @returns {string} */
-  get getCarName() {
-    return this.carName;
-  }
-
   /** @param {string} name */
   set setCarName(name) {
     validateCarName(name);
