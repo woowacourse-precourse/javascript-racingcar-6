@@ -22,19 +22,20 @@ describe("story1. 자동차 이름 입력", () => {
     const input = ['산,바다,강,하늘'];
     const answer = '산,바다,강,하늘';
 
+    // when
     mockQuestions(input);
     const result = await MissionUtils.Console.readLineAsync();
 
-    // when
+    // then
     expect(result).toEqual(answer);
   });
 
   test("문자열을 받아서 배열로 반환한다.", () => {
     const input = "산,바다,강,하늘";
     const result = input.split(",");
+    const answer = ['산', '바다', '강', '하늘'];
 
-    expect(result).toContain("산", "바다", "강", "하늘");
-    expect(result).toContainEqual("산", "바다", "강", "하늘");
+    expect(result).toEqual(answer);
   });
 });
 
@@ -88,12 +89,14 @@ describe('story5. 최종 우승자 출력', () => {
     const result = input.lastIndexOf('-') - input.indexOf('-') + 1;
     expect(result).toEqual(5);
   });
+
   test("문자를 공백으로 나눈 배열을 반환한다.", () => {
     const input = '산 : -----';
     const result = input.split(' ');
     const answer = ['산', ':', '-----'];
     expect(result).toEqual(answer);
   });
+
   test("공백으로 나눈 배열에서 첫번째 원소를 반환한다.", () => {
     const input = ['산', ':', '-----'];
     const result = input[0];
