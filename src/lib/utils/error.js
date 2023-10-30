@@ -23,7 +23,6 @@ class InputError {
   }
 
   validateCountInputLength(input) {
-    console.log("input", input);
     if (input.length === 1) {
       throw new Error(ERROR_MESSAGE.INPUT_COUNT_LENGTH_ERROR);
     }
