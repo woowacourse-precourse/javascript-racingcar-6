@@ -1,6 +1,7 @@
 import App from "../src/App.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 import CarNamesParser from "../src/parser/CarNamesParser.js";
+import OutputView from "../src/view/OutputView.js";
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -9,6 +10,12 @@ const mockQuestions = (inputs) => {
     const input = inputs.shift();
     return Promise.resolve(input);
   });
+};
+
+const getPrintRoundResultSpy = () => {
+  const printSpy = jest.spyOn(OutputView, "printCarDistanceRecord");
+  printSpy.mockClear();
+  return printSpy;
 };
 
 describe("세부 기능 테스트", () => {
@@ -73,6 +80,21 @@ describe("세부 기능 테스트", () => {
       mockQuestions(inputs);
 
       await expect(app.play()).rejects.toThrow("[ERROR]");
+    });
+  });
+
+  describe("자동차 이동 기능에 대한 테스트", () => {
+    test("시도 횟수만큼 자동차가 이동하는가(라운드 결과 출력 함수가 실행되는가)", async () => {
+      const printRoundResultSpy = getPrintRoundResultSpy();
+      const TRIAL_COUNT = 5;
+      const inputs = ["자동차1, 자동차2", TRIAL_COUNT];
+
+      mockQuestions(inputs);
+
+      const app = new App();
+      await app.play();
+
+      expect(printRoundResultSpy).toBeCalledTimes(TRIAL_COUNT);
     });
   });
 });
