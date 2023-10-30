@@ -2,6 +2,12 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 
 
 export default class Score {
+    playGames(count,names) {
+        for(let i = 0 ; i < count ; i ++) {
+            this.getScore(names)
+        } console.log(count)
+    }
+
     getScore(names) {
         let currentScore = ''
         names.forEach((element) => {

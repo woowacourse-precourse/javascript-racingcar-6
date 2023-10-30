@@ -24,7 +24,7 @@
 - 사용자가 입력한 값을 외부 파일의 함수로 보내려면 아래와 같이 불러와함
 let score = new Score
 score.getScore(this.cars)
-2) 자동차 전진
+2) 자동차 전진 (getScore())
 - 자동차 이름별로 0-9 사이에의 랜덤 값 부여하기
 - 차이름(array 요소)마다 부여한 랜덤값이 4인 경우 '-' 출력되게 하기
 (forEach 사용)
@@ -33,5 +33,6 @@ score.getScore(this.cars)
 - '이름: -' 형식 출력하기
 (constructor {this.name, this.score} 사용)
 3) 입력한 게임 횟수만큼 '자동차 전진' 반복
-
+- 입력한 게임횟수만큼 getScore()를 반복실행하는 playGame() 함수 만들기
+- UserInput.js 파일에서 입력값 받아오기()
 6. 실행 결과로 우승자 출력

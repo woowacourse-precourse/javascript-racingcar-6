@@ -42,6 +42,6 @@ export default class User {
         }
         // console.log(inputPlayNumer)
         let score = new Score
-        score.getScore(this.cars)
+        score.playGames(inputPlayNumer,this.cars)
     } 
 }
