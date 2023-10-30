@@ -17,7 +17,8 @@ class App {
       throw new Error("[ERROR] 올바른 숫자를 입력해주세요.");
     }
 
-    console.log(CAR_NAMES, ROUNDS);
+    this.ROUNDS = ROUNDS;
+
     const RACE = new Race(CAR_NAMES, ROUNDS);
     RACE.run();
   }
