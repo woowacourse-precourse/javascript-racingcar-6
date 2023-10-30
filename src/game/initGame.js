@@ -1,5 +1,5 @@
-import {validCarNames} from "../input/validCarNames";
-import {validRaceCount} from "../input/validRaceCount";
+import validCarNames from "../input/validCarNames";
+import validRaceCount from "../input/validRaceCount";
 import { Console } from "@woowacourse/mission-utils";
 
 export default async function initGame(){

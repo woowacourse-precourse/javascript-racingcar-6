@@ -1,4 +1,4 @@
-import { initGame } from "./initGame.js";
+import initGame from "./initGame.js";
 import { Console } from "@woowacourse/mission-utils";
 
 export default async function playGame(){
