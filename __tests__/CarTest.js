@@ -27,6 +27,7 @@ describe("Car 객체 Test", () => {
     //then
     expect(car.distance).toEqual(1);
   });
+
   test("Car 객체 move(), 난수 3일때 멈춤 Test", () => {
     //given
     const car = new Car("test");
@@ -39,6 +40,7 @@ describe("Car 객체 Test", () => {
     //then
     expect(car.distance).not.toEqual(1);
   });
+
   test("Car이 2번 움직이고 toString() 확인", () => {
     //given
     const car = new Car("test");
