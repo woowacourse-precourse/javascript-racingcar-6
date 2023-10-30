@@ -68,3 +68,20 @@ describe('validateNames 테스트', () => {
     expect(() => validateNames(inputs[0])).toThrowError('[ERROR]');
   });
 });
+
+describe('determineMove 테스트', () => {
+  test('4이상만 이동하는지 확인', () => {
+    const inputs = [1, 2, 3, 5, 0, 6, 4, 7, 8];
+    const results = [false, false, false, true, false, true, true, true, true];
+
+    const pickNumberSpy = jest.spyOn(MissionUtils.Random, 'pickNumberInRange');
+
+    inputs.forEach((input, index) => {
+      pickNumberSpy.mockReturnValueOnce(input);
+
+      expect(determineMove()).toBe(results[index]);
+    });
+
+    jest.restoreAllMocks();
+  });
+});
