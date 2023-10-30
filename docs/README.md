@@ -21,7 +21,7 @@
 
 ## MVC 패턴으로 나누기
 
-- model : setCarNamesAndDistances, getCarNamesAndDistances, moveOrStay
-- view : numToBar, printResult, printWinner
+- model : setNamesAndDistances, getNamesAndDistances, setTrialNumber, getTrialNumber, moveOrStay
+- view : numToBar, printResult, printWinner, printResultMessage, lineBreak
 - controller : inputCarName, inputTrialNumber, play
-- error : isValidCarName, isValidTrialNumber
+- validation : isValidCarName, isValidTrialNumber
