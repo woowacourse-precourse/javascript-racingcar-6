@@ -28,11 +28,18 @@ class Validator {
     });
   }
 
+  static overMaximumCars(names) {
+    if (names.split(',').length > LIMIT.MAXIMUM_CARS) {
+      throw new Error(ERROR_MESSAGE.OVER_MAXIMUM_CARS);
+    }
+  }
+
   static carsNameInput(names) {
     this.emptyInput(names);
     this.specialCharactor(names);
     this.overTwoNames(names);
     this.nameLength(names);
+    this.overMaximumCars(names);
   }
 
   static isNumber(input) {

@@ -17,4 +17,8 @@ describe('자동차 이름 입력값 유효성 테스트', () => {
   test('자동차 이름 길이 초과 테스트', () => {
     expect(() => Validator.nameLength('abcedfg,abc')).toThrow(new Error(ERROR_MESSAGE.OVER_LENGTH_NAME));
   });
+
+  test('최대 자동차 댓수 초과 테스트', () => {
+    expect(() => Validator.overMaximumCars('1,2,3,4,5,6,7,8,9')).toThrow(new Error(ERROR_MESSAGE.OVER_MAXIMUM_CARS));
+  });
 });
