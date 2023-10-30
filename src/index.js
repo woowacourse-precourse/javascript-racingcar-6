@@ -1,4 +1,4 @@
 import App from './App';
 
 const app = new App();
-app.play();
+await app.play();
