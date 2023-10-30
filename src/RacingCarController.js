@@ -29,7 +29,7 @@ class RacingCarController {
   }
 
   printResult() {
-    OutputView.printMessage(this.racingCar.getTotalProgressStatus());
+    OutputView.printMessage(this.racingCar.getFinalResult());
   }
 }
 

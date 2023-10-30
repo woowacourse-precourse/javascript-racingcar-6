@@ -33,6 +33,13 @@ class RacingCar {
     const carsArray = this.cars
       .map((car) => [car[CONSTANTS.nameKey], car[CONSTANTS.progressStatusKey]])
       .sort((carA, carB) => carB[1] - carA[1]);
+    const finalWinnerArray = carsArray
+      .filter((car) => car[1] === carsArray[0][1])
+      .map((car) => car[0]);
+    return MESSAGES.finalWinner + finalWinnerArray.join(MESSAGES.winnerDelimeter);
+  }
+  getFinalResult() {
+    return this.getTotalProgressStatus() + this.getWinner();
   }
 }
 
