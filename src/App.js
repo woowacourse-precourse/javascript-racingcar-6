@@ -16,6 +16,7 @@ class App {
       if(err==1){
         throw "ERROR";
       }
+      this.try();
     }
     catch(error){
       Console.print(error);
@@ -30,6 +31,12 @@ class App {
       }
     }
   }
+
+  //시도할 횟수 입력 받기
+    async try(){
+        const try_n= await Console.readLineAsync("시도할 횟수는 몇 회인가요? ");
+        Console.print(try_n)
+    }
 }
 
 export default App;
