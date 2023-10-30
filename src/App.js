@@ -21,23 +21,24 @@ async function gameStart() {
   }
   Console.print(carDict);
 
-  // gamePlay(inputNumber, carName);
+  gamePlay(inputNumber, carDict);
 }
 
-function gamePlay(inputNumber, carName) {
+function gamePlay(inputNumber, carDict) {
   Console.print("실행 결과");
   for (let i = 0; i < inputNumber; i++) {
-    randomNumber(carName)
+    randomNumber(carDict)
   }
 
 }
 
-function randomNumber(carName) {
-  for (let i = 0; i < carName.length; i++) {
+function randomNumber(carDict) {
+  for (let i = 0; i < Object.keys(carDict).length; i++) {
     const pickNumber = Random.pickNumberInRange(0, 9);
     Console.print(pickNumber);
     if (pickNumber >= 4) {
-
+      carDict[i]["score"] += 1
+      Console.print(carDict[i]);
     }
   }
 
