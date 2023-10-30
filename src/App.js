@@ -2,26 +2,33 @@ import { Console, Random } from '@woowacourse/mission-utils';
 import Input from './Input.js';
 
 class App {
+  constructor() {
+    this.carDictionary = {};
+  }
+
   async play() {
     try {
-      const input = new Input(); // Input 클래스의 인스턴스를 생성
+      const input = new Input();
       const carArr = await input.getCarName();
       const inputNumber = await input.getRepeatNumber();
 
-      const carDictionary = {};
-      carArr.forEach(name => {
-        carDictionary[name] = 0;
-      });
+      this.initializeCarDictionary(carArr);
 
       Console.print('\n실행 결과');
       for (let i = 0; i < inputNumber; i++) {
-        this.runRace(carArr, carDictionary);
+        this.runRace(carArr);
         // Console.print(carDictionary);
-        this.printRace(carDictionary);
+        this.printRace();
       }
     } catch (error) {
       console.error(error.message);
     }
+  }
+
+  initializeCarDictionary(carArr) {
+    carArr.forEach(name => {
+      this.carDictionary[name] = 0;
+    });
   }
 
   generateRandomNumber() {
@@ -29,22 +36,19 @@ class App {
     const endInclusive = 9;
     let randomNumber = Random.pickNumberInRange(startInclusive, endInclusive);
 
-    if (randomNumber >= 4) {
-      return true;
-    }
-    return false;
+    return randomNumber >= 4;
   }
 
-  runRace(carArr, carDictionary) {
+  runRace(carArr) {
     carArr.forEach(key => {
       if (this.generateRandomNumber()) {
-        carDictionary[key] += 1;
+        this.carDictionary[key] += 1;
       }
     });
   }
 
-  printRace(carDictionary) {
-    Object.entries(carDictionary).forEach(([key, value]) => {
+  printRace() {
+    Object.entries(this.carDictionary).forEach(([key, value]) => {
       console.log(`${key} : ${'-'.repeat(value)}`);
     });
     Console.print('');
