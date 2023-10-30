@@ -20,6 +20,7 @@ class App {
       printConsole("");
       this.racingRepeatNumber -= 1;
     }
+    this.releaseWinner();
   }
 
   async registerRacingCars() {
@@ -47,6 +48,17 @@ class App {
       car.moveOrStop();
       printConsole(`${car.name} : ${Array(car.moveCount).fill("-").join("")}`);
     });
+  }
+
+  releaseWinner() {
+    const topRankCarMoveCount = this.racingCars.sort(
+      (car1, car2) => car2.moveCount - car1.moveCount
+    )[0].moveCount;
+    const topRankCars = this.racingCars
+      .filter((car) => car.moveCount === topRankCarMoveCount)
+      .map((car) => car.name);
+
+    printConsole(`최종 우승자 : ${topRankCars.join(", ")}`);
   }
 }
 

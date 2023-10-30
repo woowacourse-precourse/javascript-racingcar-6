@@ -15,16 +15,16 @@
 
 기능 구현
 
-- [ ] App 클래스 - feat(App Class):
+- [x] App 클래스 - feat(App Class):
 
   - [x] 멤버 변수
     - racingCars - `Array<Car>` / default: []
     - racingRepeatNumber - `number` / default: 0
-  - [ ] play - feat(App Class play method): 레이싱 게임을 시작하는 메서드
+  - [x] play - feat(App Class play method): 레이싱 게임을 시작하는 메서드
   - [x] registerRacingCars - feat(App Class): 레이싱카 이름 등록 메서드
   - [x] registerRacingRepeatNumber - feat(App Class): 경기 반복 횟수 등록 메서드
   - [x] racing - feat(App Class): 레이싱 경기 반복 진행 메서드
-  - [ ] releaseWinner - feat(App Class): 레이싱 경기 우승자 발표 메서드
+  - [x] releaseWinner - feat(App Class): 레이싱 경기 우승자 발표 메서드
 
 - [x] Car 클래스 - feat(Car Class):
 
