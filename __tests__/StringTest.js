@@ -15,6 +15,22 @@ const mockQuestions = (inputs) => {
   });
 };
 
+const updateRaceResults = (participants, raceResults, determineMoveMock) => {
+  const updatedRaceResults = { ...raceResults };
+
+  participants.forEach((participant) => {
+    if (determineMoveMock()) {
+      updatedRaceResults[participant] += '-';
+    }
+
+    MissionUtils.Console.print(`${participant} : ${updatedRaceResults[participant]}\n`);
+  });
+
+  MissionUtils.Console.print('\n');
+
+  return updatedRaceResults;
+};
+
 describe("문자열 테스트", () => {
   test("split 메서드로 주어진 값을 구분", () => {
     const input = "1,2";
@@ -80,6 +96,43 @@ describe('determineMove 테스트', () => {
       pickNumberSpy.mockReturnValueOnce(input);
 
       expect(determineMove()).toBe(results[index]);
+    });
+
+    jest.restoreAllMocks();
+  });
+});
+
+describe('updateRaceResults 테스트', () => {
+  test('레이스 결과가 제대로 출력되는지 확인', () => {
+    const lastCall = jest.spyOn(MissionUtils.Console, 'print');
+
+    const participants = [
+      ['car1', 'car2', 'car3'],
+      ['1', '2', '3'],
+      ['나는', '지금', '배고파']];
+
+    const initialRaceResults = [
+      { car1: '-', car2: '-', car3: '-' },
+      { '1': '', '2': '-', '3': '' },
+      { '나는': '--', '지금': '', '배고파': '' }
+    ];
+
+    const expectResults = [
+      { car1: '-', car2: '--', car3: '--' },
+      { '1': '', '2': '--', '3': '-' },
+      { '나는': '--', '지금': '-', '배고파': '-' }
+    ];
+
+    participants.forEach((_, index) => {
+      const determineMoveMock = jest.fn();
+      determineMoveMock.mockReturnValueOnce(false);
+      determineMoveMock.mockReturnValueOnce(true);
+      determineMoveMock.mockReturnValueOnce(true);
+
+      const updatedRaceResults = updateRaceResults(participants[index], initialRaceResults[index], determineMoveMock);
+
+      expect(updatedRaceResults).toEqual(expectResults[index]);
+      expect(lastCall).toHaveBeenLastCalledWith('\n');
     });
 
     jest.restoreAllMocks();
