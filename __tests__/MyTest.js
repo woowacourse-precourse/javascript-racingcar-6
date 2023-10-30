@@ -48,4 +48,25 @@ describe('기능 구현 테스트', () => {
             vin: 0,
         });
     });
+
+    test('횟수를 입력받는다.', async () => {
+        const inputs = ['5'];
+        mockQuestions(inputs);
+        const result = app.getTryCount();
+        expect(result).toEqual(5);
+    });
+
+    test('횟수가 0보다 작으면 error 발생', async () => {
+        const inputs = ['-5'];
+        mockQuestions(inputs);
+        const result = app.getTryCount();
+        await expect(result).rejects.toThrow('[ERROR]');
+    });
+
+    test('횟수가 숫자가 아니면 error 발생', async () => {
+        const inputs = ['a'];
+        mockQuestions(inputs);
+        const result = app.getTryCount();
+        await expect(result).rejects.toThrow('[ERROR]');
+    });
 });
