@@ -7,7 +7,22 @@ export default class RacingCarController {
   constructor() {}
 
   async play() {
-    const carNames = await carNameInput();
-    const getPlayerInput = await playerInput();
+    this.initializeCar(await carNameInput());
+    this.test();
+    // const carNames = await carNameInput();
+    // const getPlayerInput = await playerInput();
+  }
+
+  initializeCar(input) {
+    const splitInput = input.split(",");
+    splitInput.forEach((carName) => {
+      this.#CarArr.push(new Car(carName));
+    });
+  }
+
+  test() {
+    for (let i = 0; i < this.#CarArr.length; i++) {
+      console.log(this.#CarArr[i].getCar());
+    }
   }
 }
