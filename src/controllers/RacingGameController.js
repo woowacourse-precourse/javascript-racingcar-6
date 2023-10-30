@@ -32,7 +32,7 @@ class RacingGameController {
 
   #executeRacingRounds(roundsNumber) {
     this.#outputView.printResultHeader();
-    for (let i = 0; i < roundsNumber; i += 1) {
+    for (let round = 0; round < roundsNumber; round += 1) {
       this.#racingGame.moveAllCars();
       const roundResult = this.#racingGame.getAllCarsMovementHistory();
       this.#outputView.printRoundResult(roundResult);
