@@ -1,7 +1,7 @@
 import { playRacingCars } from './racingCars/playGame.js';
-export class App {
-  constructor() {}
+class App {
   async play() {
     playRacingCars();
   }
 }
+export default App;
