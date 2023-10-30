@@ -1,5 +1,4 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-
 import InputView from '../../src/view/InputView';
 
 describe('InputView 클래스', () => {

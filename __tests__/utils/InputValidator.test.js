@@ -1,5 +1,4 @@
 import InputValidator from '../../src/utils/InputValidator';
-
 import { ErrorMessages } from '../../src/constants/ErrorMessages';
 
 describe('InputValidator 클래스', () => {

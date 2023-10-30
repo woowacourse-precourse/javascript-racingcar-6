@@ -6,11 +6,36 @@ describe('Race 클래스', () => {
 
   beforeEach(() => {
     mockCars = [
-      { name: 'pobi', move: jest.fn(), getCurrentPositionRepresentation: jest.fn(), position: 1 },
-      { name: 'wono', move: jest.fn(), getCurrentPositionRepresentation: jest.fn(), position: 2 },
-      { name: 'jun', move: jest.fn(), getCurrentPositionRepresentation: jest.fn(), position: 3 },
-      { name: 'huni', move: jest.fn(), getCurrentPositionRepresentation: jest.fn(), position: 2 },
-      { name: 'joe', move: jest.fn(), getCurrentPositionRepresentation: jest.fn(), position: 1 }
+      {
+        name: 'pobi',
+        move: jest.fn(),
+        getCurrentPositionRepresentation: jest.fn(),
+        position: 1
+      },
+      {
+        name: 'wono',
+        move: jest.fn(),
+        getCurrentPositionRepresentation: jest.fn(),
+        position: 2
+      },
+      {
+        name: 'jun',
+        move: jest.fn(),
+        getCurrentPositionRepresentation: jest.fn(),
+        position: 3
+      },
+      {
+        name: 'huni',
+        move: jest.fn(),
+        getCurrentPositionRepresentation: jest.fn(),
+        position: 2
+      },
+      {
+        name: 'joe',
+        move: jest.fn(),
+        getCurrentPositionRepresentation: jest.fn(),
+        position: 1
+      }
     ];
 
     race = new Race(mockCars, 5);

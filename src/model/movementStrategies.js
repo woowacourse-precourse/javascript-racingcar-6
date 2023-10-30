@@ -1,5 +1,4 @@
 import { Random } from '@woowacourse/mission-utils';
-
 import { GameSettings } from '../constants/GameSettings';
 
 export const randomMovementStrategy = {

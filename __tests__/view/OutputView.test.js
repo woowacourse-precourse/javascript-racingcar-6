@@ -1,7 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-
 import OutputView from '../../src/view/OutputView';
-
 import { MESSAGES } from '../../src/constants/Messages';
 
 describe('OutputView 클래스', () => {

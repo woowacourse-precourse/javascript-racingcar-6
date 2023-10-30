@@ -1,5 +1,6 @@
 export default class Race {
   #cars;
+
   #rounds;
 
   constructor(cars, rounds) {
@@ -12,9 +13,10 @@ export default class Race {
   }
 
   getRoundResults() {
-    return this.#cars.map((car) => {
-      return { name: car.name, representation: car.getCurrentPositionRepresentation() };
-    });
+    return this.#cars.map((car) => ({
+      name: car.name,
+      representation: car.getCurrentPositionRepresentation()
+    }));
   }
 
   getWinners() {

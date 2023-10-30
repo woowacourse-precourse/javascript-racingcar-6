@@ -16,6 +16,7 @@ export default class Car {
       this.position += 1;
     }
   }
+
   #shouldMoveBasedOnStrategy() {
     return this.carMovementStrategy.shouldMove();
   }
