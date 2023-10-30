@@ -9,4 +9,12 @@ describe('자동차 이름 입력 테스트', () => {
     expect(() => Validation.validCarNameLength(validInput)).not.toThrow();
     expect(() => Validation.validCarNameLength(errorInput)).toThrow(ERROR.CAR_NAME_LENGTH);
   });
+
+  test('문자열 외 입력 제한', () => {
+    const validInput = 'pobi,min';
+    const errorInput = 'pobi,3$#8';
+
+    expect(() => Validation.validateCarNameAlphabetic(validInput)).not.toThrow();
+    expect(() => Validation.validateCarNameAlphabetic(errorInput)).toThrow(ERROR.CAR_NAME_TYPE);
+  });
 });
