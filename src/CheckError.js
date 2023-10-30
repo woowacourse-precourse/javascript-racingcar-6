@@ -1,0 +1,13 @@
+import { MAX_NAME_LENGTH, ERROR } from './Constant.js';
+
+class CheckError {
+  static isLessThanMaxNameLength(name) {
+    if (trimmed > MAX_NAME_LENGTH) throw new Error(ERROR.MORE_THAN_MAX);
+  }
+
+  static isNumber(number) {
+    if (number === NaN) throw new Error(ERROR.WRONG_NUMBER);
+  }
+}
+
+export default CheckError;

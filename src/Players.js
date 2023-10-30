@@ -1,4 +1,4 @@
-import { MAX_NAME_LENGTH, ERROR } from './Constant.js';
+import CheckError from './CheckError.js';
 
 class Players {
   #names;
@@ -7,7 +7,7 @@ class Players {
   constructor(names) {
     this.#names = names.split(',').map((name) => {
       const trimmed = name.trim();
-      if (trimmed > MAX_NAME_LENGTH) throw new Error(ERROR.MORE_THAN_MAX);
+      CheckError.isLessThanMaxNameLength(trimmed);
       return trimmed;
     });
     this.#gameResult = [...this.#names].fill(0);

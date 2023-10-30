@@ -1,6 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
 import Players from './Players.js';
-import { MESSAGE, ERROR } from './Constant.js';
+import { MESSAGE } from './Constant.js';
+import CheckError from './CheckError.js';
 
 class Game {
   #players;
@@ -18,7 +19,7 @@ class Game {
   async setNumberOfGames() {
     const input = await Console.readLineAsync(MESSAGE.NUMBER_INPUT);
     const trimmed = Number(input.trim());
-    if (trimmed === NaN) throw new Error(ERROR.WRONG_NUMBER);
+    CheckError.isNumber(trimmed);
     this.#numberOfGames = trimmed;
   }
 }
