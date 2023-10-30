@@ -7,12 +7,12 @@ class Print {
   static racingResultFrom(racingInfo) {
     Console.print(RESULT_FIRST_MESSAGE);
     for (let gameCount = 0; gameCount < racingInfo.numberOfGame; gameCount++) {
-      Print.racingPerGame(racingInfo, gameCount);
+      Print.positionWhenGameCount(racingInfo, gameCount);
       Console.print(BLANK);
     }
   }
 
-  static racingPerGame(racingInfo, gameCount) {
+  static positionWhenGameCount(racingInfo, gameCount) {
     racingInfo.carList.forEach((name, index) => {
       Console.print(
         `${name} : ${'-'.repeat(
