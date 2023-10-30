@@ -16,7 +16,7 @@ class ConvertInputTo {
     const inputString = await Console.readLineAsync(
       NUMBER_OF_GAME_INPUT_MESSAGE
     );
-    ErrorCheck.isPositiveIntegerString(inputString);
+    ErrorCheck.positiveIntegerString(inputString);
     return Number(inputString);
   }
 }
