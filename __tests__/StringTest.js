@@ -1,3 +1,20 @@
+const {
+  determineMove,
+  findMaxScore,
+  findWinnerName
+} = require("../src/playing/runRace");
+const { validateNames, validateParseNumber } = require('../src/playing/checkList');
+const { MissionUtils } = require("@woowacourse/mission-utils");
+
+const mockQuestions = (inputs) => {
+  MissionUtils.Console.readLineAsync = jest.fn();
+
+  MissionUtils.Console.readLineAsync.mockImplementation(() => {
+    const input = inputs.shift();
+    return Promise.resolve(input);
+  });
+};
+
 describe("문자열 테스트", () => {
   test("split 메서드로 주어진 값을 구분", () => {
     const input = "1,2";
@@ -26,5 +43,17 @@ describe("문자열 테스트", () => {
     const result = input.at(0)
 
     expect(result).toEqual("a");
+  });
+});
+
+describe('validateParseNumber 테스트', () => {
+  test.each([
+    [['1ㄷㅁ']],
+    [['ㅇ3ㅎ']],
+    [['    ']]
+  ])("시도 횟수에 대한 예외 처리", (inputs) => {
+    mockQuestions(inputs);
+
+    expect(() => validateParseNumber(inputs[0])).toThrowError('[ERROR]');
   });
 });
