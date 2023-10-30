@@ -61,6 +61,10 @@ class App {
       if(!checkName(carName)){
         throw new Error('[ERROR] 입력값이 문자가 아닙니다.');
       }
+      // 3. 1대의 자동차 이름만 입력한경우
+      if(nameList.length===1){
+        throw new Error('[ERROR] 한대의 자동차만 입력되었습니다.');
+      }
       let car = new Car(carName);
       carArray.push(car);
     });
