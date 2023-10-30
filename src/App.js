@@ -1,13 +1,16 @@
 //@ts-check
 
-import { askNames, askTryAmount } from "./core/io";
-import { makeScoreboardByNames } from "./utils/parse";
+import { askNames, askTryAmount } from "./core/io.js";
+import { makeScoreboardByNames } from "./utils/parse.js";
+import { isFowardAllowed } from "./utils/prob.js";
 
 class App {
   async play() {
     this.names = await askNames();
     this.tryAmount = await askTryAmount();
     this.scoreboard = makeScoreboardByNames(this.names);
+
+    this.simulateOneTurn();
   }
 
   /**
@@ -19,6 +22,14 @@ class App {
     if (!this.scoreboard.hasOwnProperty(name)) return;
 
     this.scoreboard[name] += 1;
+  }
+
+  simulateOneTurn() {
+    if (!this.names) return;
+
+    this.names.forEach((name) => {
+      if (isFowardAllowed()) this.giveScoreTo(name);
+    });
   }
 }
 
