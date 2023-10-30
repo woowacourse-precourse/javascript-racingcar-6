@@ -20,7 +20,7 @@ const ValidationTry = {
   },
 
   isChar(tryCount) {
-    if (Number.isNaN(parseInt(tryCount, 10))) {
+    if (Number.isNaN(Number(tryCount))) {
       throw new Error(TRY_INPUT_ERROR.char);
     }
   },
