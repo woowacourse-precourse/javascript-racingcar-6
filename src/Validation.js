@@ -29,5 +29,13 @@ const Validation = {
       throw new Error(ERROR.CAR_NAME_DUPLICATE);
     }
   },
+
+  validateGameCountNaturalNumber(input) {
+    const naturalNumberRegex = /^[1-9]\d*$/; // 1 이상의 숫자만 허용
+
+    if (!naturalNumberRegex.test(input)) {
+      throw new Error(ERROR.GAME_COUNT_TYPE);
+    }
+  },
 };
 export default Validation;
