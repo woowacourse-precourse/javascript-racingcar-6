@@ -13,10 +13,10 @@ class CarRacing {
   }
 
   async startGame() {
-    await this.getCarName();
+    await this.readCarName();
   }
 
-  async getCarName() {
+  async readCarName() {
     let carName = await Console.readLineAsync(
       Messages.ENTER_RACING_CAR_NAME_MESSAGE
     );
@@ -31,10 +31,10 @@ class CarRacing {
     if (!validateCarNameArray(this.cars))
       throw new Error(ErrorMessage.RACING_CAR_DUPLICATE_ERROR_MESSAGE);
 
-    this.getGameCount();
+    this.readGameCount();
   }
 
-  async getGameCount() {
+  async readGameCount() {
     this.count = await Console.readLineAsync(Messages.ENTER_COUNT_MESSAGE);
     if (!validateGameCount(this.count))
       throw new Error(ErrorMessage.GAME_COUNT_ERROR_MESSAGE);
