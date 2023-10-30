@@ -32,7 +32,7 @@ describe('비동기 유저 입력값 유효성 및 오류 잡아내는지 테스
     await expect(getPlayersName()).resolves.toEqual(result);
   })
 
-  //이건 한단어만 테스트할 수 있음
+  //한 단어만 테스트
   test('플레이어 이름 오류났을때', async () => {
     const userInput = "pobi,";
     
@@ -50,7 +50,7 @@ describe('비동기 유저 입력값 유효성 및 오류 잡아내는지 테스
     await expect(getAttemptNumber()).resolves.toEqual(result);
   })
 
-  //mockQuestions 사용
+  //mockQuestions 사용, 여러 단어 테스트 
   test.each([
     [["pobi,"]],
     [["pobi,crong,,"]],
@@ -62,7 +62,7 @@ describe('비동기 유저 입력값 유효성 및 오류 잡아내는지 테스
 
     await expect(getPlayersName()).rejects.toThrow("[ERROR]");
   })
-  //mockQuestions2 사용
+  //mockQuestions2 사용, 여러 단어 테스트 without []
   test.each([
     ["pobi"],
     ["chanwoong,pobi"],

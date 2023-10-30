@@ -1,7 +1,7 @@
 import { ERROR_MESSEAGE } from "../constants/Messeage.js";
 import SameName from "./SameName.js";
 
-class Error extends SameName {
+class Exception extends SameName {
   name(players) {
     this.showCommaError(players);
     this.showSingleNameError(players);
@@ -16,4 +16,4 @@ class Error extends SameName {
   } 
 }
 
-export default Error;
+export default Exception;
