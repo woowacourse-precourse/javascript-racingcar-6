@@ -20,6 +20,17 @@ class App {
 
       count -= 1;
     }
+
+    const maxMoveCount = cars.reduce(
+      (currentMax, car) => Math.max(currentMax, car.moveCount),
+      0,
+    );
+
+    const winners = cars
+      .filter((car) => car.moveCount === maxMoveCount)
+      .map((car) => car.name);
+
+    Screen.printWinnersName(winners);
   }
 }
 

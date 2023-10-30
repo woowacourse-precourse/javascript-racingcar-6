@@ -13,6 +13,7 @@ class Screen {
 
   static STRINGS = {
     RACE_RESULT: '실행 결과',
+    RACE_WINNER: '최종 우승자',
     CAR_MOVING_TOKEN: '-',
   };
 
@@ -58,6 +59,10 @@ class Screen {
 
   static printNewline() {
     Console.print('\n');
+  }
+
+  static printWinnersName(winners) {
+    Console.print(`${this.STRINGS.RACE_WINNER} : ${winners.join(', ')}`);
   }
 }
 
