@@ -13,7 +13,7 @@ class OutputView {
   }
 
   printWinners(winnerNames) {
-    Console.print(`Winner: ${winnerNames.join(", ")}`);
+    Console.print(`최종 우승자: ${winnerNames.join(", ")}`);
   }
 }
 
