@@ -8,10 +8,11 @@ class Console {
   }(${this.#DELIMITER}) 기준으로 구분) `;
 
   static async askCarNames() {
-    const string = await MissionUtils.Console.readLineAsync(
+    const answer = await MissionUtils.Console.readLineAsync(
       this.#CAR_NAMES_QUERY,
     );
-    const array = string.split(this.#DELIMITER);
+    const stringWithoutSpaces = answer.replace(/ /g, '');
+    const array = stringWithoutSpaces.split(this.#DELIMITER);
     return array;
   }
 }
