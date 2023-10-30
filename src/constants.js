@@ -17,3 +17,7 @@ export const ERROR_MESSAGE = {
     `[ERROR] 자동차의 이름은 ${maxLength}자 이하만 가능합니다.`,
   isCarNameNull: "자동차의 이름은 필수입니다.",
 };
+
+export const MOVE_THRESHOLD = 4;
+
+export const MAX_CAR_NAME_LENGTH = 5;

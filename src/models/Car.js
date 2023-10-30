@@ -1,5 +1,10 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import { ERROR_MESSAGE } from "../constants";
+import {
+  ERROR_MESSAGE,
+  MOVE_THRESHOLD,
+  MAX_CAR_NAME_LENGTH,
+} from "../constants";
+
 class Car {
   constructor(name) {
     this.validateName(name);
@@ -8,8 +13,10 @@ class Car {
   }
 
   validateName(name) {
-    if (name.length > 5) {
-      throw new Error(`[ERROR] ${ERROR_MESSAGE.invalidLength(5)}`);
+    if (name.length > MAX_CAR_NAME_LENGTH) {
+      throw new Error(
+        `[ERROR] ${ERROR_MESSAGE.invalidLength(MAX_CAR_NAME_LENGTH)}`
+      );
     }
 
     if (name === "") {
@@ -19,7 +26,7 @@ class Car {
 
   move() {
     const randomValue = MissionUtils.Random.pickNumberInRange(0, 9);
-    if (randomValue >= 4) {
+    if (randomValue >= MOVE_THRESHOLD) {
       this.position += 1;
     }
   }
