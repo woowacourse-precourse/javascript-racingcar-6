@@ -20,6 +20,24 @@ class App {
     const COUNT = await Console.readLineAsync('');
     this.validateCountNumber(COUNT);
 
+    Console.print('');
+    Console.print('실행결과');
+
+    for (let i = 1; i <= COUNT; i++) {
+      this.addPointRaceAndScores(RACE, SCORES);
+    }
+
+
+  addPointRaceAndScores(race, scores) {
+    race.forEach((car, idx) => {
+      if (Random.pickNumberInRange(0, 9) >= 4) {
+        race[idx] = `${car}-`;
+        scores[idx] += 1;
+      }
+      Console.print(race[idx]);
+    });
+    Console.print('');
+  }
 
   validateCarNameLength(carList) {
     carList.forEach((car) => {
