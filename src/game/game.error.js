@@ -41,7 +41,7 @@ const racingGameValidationMethods = {
     }
 
     if (Number(count) < 0) {
-      throw new Error('ERROR] 음수는 입력할 수 없습니다');
+      throw new Error('[ERROR] 음수는 입력할 수 없습니다');
     }
   },
 };
