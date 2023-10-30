@@ -1,30 +1,8 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
 import carHandler from "../src/utils/carHandler";
 import numberHandler from "../src/utils/numberHandler";
 import resultHandler from "../src/utils/resultHandler";
 import Car from "../src/Car";
-
-const mockQuestions = (inputs) => {
-  MissionUtils.Console.readLineAsync = jest.fn();
-
-  MissionUtils.Console.readLineAsync.mockImplementation(() => {
-    const input = inputs.shift();
-    return Promise.resolve(input);
-  });
-};
-
-const mockRandoms = (numbers) => {
-  MissionUtils.Random.pickNumberInRange = jest.fn();
-  numbers.reduce((acc, number) => {
-    return acc.mockReturnValueOnce(number);
-  }, MissionUtils.Random.pickNumberInRange);
-};
-
-const getLogSpy = () => {
-  const logSpy = jest.spyOn(MissionUtils.Console, "print");
-  logSpy.mockClear();
-  return logSpy;
-};
+import { mockQuestions, mockRandoms, getLogSpy } from "../src/utils/testUtils";
 
 describe("유닛 테스트", () => {
   test("readCarsInput 공백 에러", async () => {
