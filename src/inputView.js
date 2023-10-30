@@ -16,7 +16,7 @@ class Input {
     return input.includes(',');
   }
 
-  carnamesToArray(input) {
+  saveCarNames(input) {
     this.input = input;
     validation.isValidNameFormat(input);
     const names = input.split(',').map((name) => name.trim());
@@ -35,7 +35,7 @@ class Input {
     const playerInput = await Console.readLineAsync(
       GAME_MESSAGE.INPUT_CAR_NAME,
     );
-    const playerCarName = this.carnamesToArray(playerInput);
+    const playerCarName = this.saveCarNames(playerInput);
     return playerCarName;
   }
 
@@ -43,8 +43,9 @@ class Input {
     const playerInput = await Console.readLineAsync(
       GAME_MESSAGE.INPUT_NUMBER_OF_TIMES,
     );
-    const numberOfTimes = playerInput.split('').map(Number);
-    return numberOfTimes[0];
+    const numberOfTimes = parseInt(playerInput, 10);
+    validation.isValidNumberOfTimesFormat(numberOfTimes);
+    return numberOfTimes;
   }
 }
 export default Input;
