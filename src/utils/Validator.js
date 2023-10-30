@@ -16,10 +16,10 @@ export const Validator = {
   },
 
   isNumber(value) {
-    return isNaN(value);
+    return !isNaN(value);
   },
 
   isNaturalNumber(value) {
-    return Number.isInteger(value) && value > 0;
+    return Number.isInteger(Number(value)) && Number(value) > 0;
   },
 };
