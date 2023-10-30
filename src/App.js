@@ -9,6 +9,7 @@ export default class App {
   async play() {
     await this.getCarsName();
     await this.getTotalRound();
+    Console.print("실행 결과");
     this.raceStart(this.cars, this.totalRound);
   }
 
@@ -29,7 +30,7 @@ export default class App {
   raceStart(cars, totalRound) {
     for (let i = 0; i < totalRound; i++) {
       this.round(cars);
-      console.log(cars);
+      this.printRoundResult(cars);
     }
   }
   round(cars) {
@@ -37,6 +38,12 @@ export default class App {
       if (isMove()) {
         car.position++;
       }
+    }
+  }
+  printRoundResult(cars) {
+    Console.print(" ");
+    for (const car of cars) {
+      Console.print(`${car.name} : ${"-".repeat(car.position)}`);
     }
   }
 }
