@@ -1,5 +1,4 @@
-import { Console, Random } from "@woowacourse/mission-utils";
-import { GAME_MESSAGE } from "./constants/index.js";
+import { Random } from "@woowacourse/mission-utils";
 
 class Car {
   constructor(carName) {
@@ -7,12 +6,12 @@ class Car {
   }
 
   moveForward() {
-    const randomValue = Random.pickNumberInRange(0, 9);
     let countForward = [];
+    const randomValue = Random.pickNumberInRange(0, 9);
     if (randomValue > 4) {
-      countForward.push('-')
+      countForward.push("-");
     }
-    Console.print(`${this.carName} : ${countForward.join("")}`)
+    return countForward;
   }
 }
 
