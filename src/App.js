@@ -104,6 +104,13 @@ class App {
     filterWonCar(carObjArr, maxMove) {
         return carObjArr.filter(({ move }) => move === maxMove);
     }
+
+    /**
+     * @param {CarObject[]} carObjArr
+     */
+    printWonCar(carObjArr) {
+        MissionUtils.Console.print('최종 우승자 : ' + carObjArr.map(({ name }) => name).join(', '));
+    }
 }
 
 export default App;
