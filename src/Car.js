@@ -6,12 +6,13 @@ class Car {
     this.distance = '';
   }
   goForward() {
-    const number = MissionUtils.Random.pickNumberInRange(1, 9);
+    const number = MissionUtils.Random.pickNumberInRange(0, 9);
     if (number > 3) {
       this.distance += '-';
     }
     MissionUtils.Console.print(`${this.name} : ${this.distance}`);
   }
+  
 }
 
 export default Car;
