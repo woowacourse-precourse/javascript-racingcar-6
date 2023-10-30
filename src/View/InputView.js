@@ -12,7 +12,7 @@ class InputView {
 
   static async getRaceCountInput() {
     const raceCount = await MissionUtils.Console.readLineAsync(INPUT_MESSAGE.RACE_COUNT);
-    return Number(raceCount);
+    return raceCount && Number(raceCount);
   }
 }
 
