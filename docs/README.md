@@ -39,7 +39,7 @@ N대의 자동차 중 가장 멀리 이동한 자동차가 우승하는 게임
 
 - `DataProcess` - 데이터를 가공해주는 객체
 
-- [ ] view(inputview) 에서 전달 받은 자동차 이름(들)을 `' , '` 단위로 나누어 각 문자열을 controller(validate) 로 전달한다.
+- [x] view(inputview) 에서 전달 받은 자동차 이름(들)을 `' , '` 단위로 나누어 각 문자열을 controller(validate) 로 전달한다.
 
 - [ ] model(car) 에서 전달받은 자동차 객체들의 `이름과 거리 값을 가공`하여 view(outputView) 로 전달한다.
 
