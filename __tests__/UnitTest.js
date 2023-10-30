@@ -20,6 +20,12 @@ const mockRandoms = (numbers) => {
   }, MissionUtils.Random.pickNumberInRange);
 };
 
+const getLogSpy = () => {
+  const logSpy = jest.spyOn(MissionUtils.Console, "print");
+  logSpy.mockClear();
+  return logSpy;
+};
+
 describe("유닛 테스트", () => {
   test("readCarsInput 공백 에러", async () => {
     const answer = [" car,car34,car1"];
@@ -133,5 +139,23 @@ describe("유닛 테스트", () => {
       cars: CARS,
     });
     expect(OUTPUT.split("\n")).toStrictEqual(EXPECT);
+  });
+  test("우승자 출력 테스트", () => {
+    const CAR_NAMES = ["lurgi", "car1", "car2"];
+    const MOVE_FORWARD = [3, 1, 3];
+    const CARS = CAR_NAMES.map((carName) => new Car(carName));
+    MOVE_FORWARD.forEach((number, index) => {
+      for (let i = 0; i < number; i += 1) {
+        CARS[index].setDistancePlusOne();
+      }
+    });
+
+    const logSpy = getLogSpy();
+    const OUTPUT = "최종 우승자 : lurgi, car2";
+
+    const WINNER = resultHandler.getWinner(CARS);
+    resultHandler.printWinner(WINNER);
+
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(OUTPUT));
   });
 });
