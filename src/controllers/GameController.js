@@ -30,9 +30,11 @@ class GameController {
 
   repeatRace(carModels, attempt) {
     Console.print(PromptMessage.PRINT_RACESTART);
-    while (attempt > 0) {
+    let remainAttempt = attempt;
+
+    while (remainAttempt  > 0) {
       this.printCarForward(carModels);
-      attempt -= 1;
+      remainAttempt -= 1;
       Console.print(' ');
     }
   }
