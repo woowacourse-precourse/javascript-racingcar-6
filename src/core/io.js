@@ -46,16 +46,6 @@ export async function askTryAmount() {
 }
 
 /**
- * @param {string} nameString
- * @returns {string[]}
- */
-function splitNamesFrom(nameString) {
-  let names = nameString.split(",");
-  names = names.map((name) => name.trim());
-  return names;
-}
-
-/**
  *
  * @param {string[]} names
  */
