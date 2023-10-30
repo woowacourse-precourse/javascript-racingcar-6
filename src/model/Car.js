@@ -1,9 +1,11 @@
+import { RANDOM_NUMBER_THRESHOLD } from "../utils/constants.js";
+
 class Car {
   moveOrStop(randomNum) {
-    if (randomNum >= 4) {
+    if (randomNum >= RANDOM_NUMBER_THRESHOLD) {
       return 1;
     }
-    if (randomNum < 4) {
+    if (randomNum < RANDOM_NUMBER_THRESHOLD) {
       return 0;
     }
   }

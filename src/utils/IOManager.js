@@ -1,5 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
 import { GameMessages } from "./constants.js";
+import InputValidator from "./InputValidator.js";
 
 class IOManager {
   async getUserInput(question) {
@@ -8,11 +9,15 @@ class IOManager {
 
   async getCarsName() {
     const cars = await this.getUserInput(GameMessages.INPUT_CARS_NAME);
-    return cars.split(',').map((name) => name.trim());
+    const carsName = cars.split(',').map((name) => name.trim());
+    InputValidator.validateRaceCarNameInput(carsName);
+    return carsName;
   }
 
   async getRaceCount() {
-    return await this.getUserInput(GameMessages.INPUT_RACE_COUNT);
+    const raceCount = await this.getUserInput(GameMessages.INPUT_RACE_COUNT);
+    InputValidator.validateRaceCountInput(raceCount);
+    return raceCount;
   }
 
   printExecuteMessage() {

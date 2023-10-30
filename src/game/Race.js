@@ -9,6 +9,7 @@ class Race {
     this.ioManager = new IOManager();
     this.gameResult = new GameResult();
   }
+
   createRandomNum() {
     return Random.pickNumberInRange(0, 9);
   }
