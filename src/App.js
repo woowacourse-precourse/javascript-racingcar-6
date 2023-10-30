@@ -15,19 +15,26 @@ class App {
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
     );
     this.carNameList = await this.inputCarName();
-    console.log(this.carNameList);
     this.isValidCarNames(this.carNameList);
     Console.print("시도할 횟수는 몇 회인가요?");
     this.attemptCount = await this.inputAttemptCount();
     this.isValidAttemptCount(this.attemptCount);
     Console.print("");
     Console.print("실행 결과");
-    this.displayCarPosition();
     Console.print("");
-    const maxValue = this.getMaxValue();
-    this.getFinalWinner(maxValue);
+    let currentCount = 1;
+    while (currentCount <= this.attemptCount) {
+      this.createRandomNumber();
+      this.updateCarPosition();
+      this.displayCarPosition();
+      Console.print("");
+      if (currentCount === this.attemptCount) {
+        const maxValue = this.getMaxValue();
+        this.getFinalWinner(maxValue);
+      }
+      currentCount++;
+    }
   }
-
   async inputCarName() {
     const carNames = await Console.readLineAsync("");
 
@@ -42,7 +49,7 @@ class App {
   }
   async inputAttemptCount() {
     const countValue = await Console.readLineAsync("");
-    return countValue;
+    return parseInt(countValue);
   }
   isValidAttemptCount(count) {
     if (isNaN(count)) {
@@ -69,14 +76,8 @@ class App {
   }
 
   displayCarPosition() {
-    for (let i = 0; i < this.attemptCount; i++) {
-      Console.print("");
-      this.createRandomNumber();
-      this.updateCarPosition();
-
-      for (let j = 0; j < this.carNameList.length; j++) {
-        Console.print(`${this.carNameList[j]} : ${this.dashSymbol[j]}`);
-      }
+    for (let j = 0; j < this.carNameList.length; j++) {
+      Console.print(`${this.carNameList[j]} : ${this.dashSymbol[j]}`);
     }
   }
 
@@ -95,6 +96,9 @@ class App {
   }
 
   getFinalWinner(maxName) {
+    if (!maxName) {
+      throw new Error("No winners specified.");
+    }
     const winners = maxName.join(", ");
     Console.print(`최종 우승자 : ${winners}`);
   }
