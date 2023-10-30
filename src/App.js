@@ -1,10 +1,23 @@
-import { Console } from '@woowacourse/mission-utils';
+import { Console, Random } from '@woowacourse/mission-utils';
 
 class App {
   async play() {
     const { car_list_input, play_time_input } = await setGame();
-    const carList = makeCars(car_list_input);
-    console.log(carList);
+    const car_List = makeCars(car_list_input);
+    playGame(car_List, play_time_input);
+  }
+}
+
+class Car {
+  constructor(name) {
+    this.name = name;
+    this.distance = 0;
+  }
+  move() {
+    this.distance += 1;
+  }
+  getDistance() {
+    return `${this.name} : ${'-'.repeat(this.distance)}`;
   }
 }
 
@@ -13,18 +26,18 @@ const setGame = async () => {
     '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n'
   );
   validateNameList(car_list_input);
-  const play_time_input = await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
+  const play_time_input = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
   return { car_list_input, play_time_input };
 };
 
 const makeCars = (list) => {
   const name_list = list.split(',');
   const car_list = [];
+
   name_list.forEach((name) => {
     const car = new Car(name);
     car_list.push(car);
   });
-
   return car_list;
 };
 
@@ -35,11 +48,25 @@ const validateNameList = (nameList) => {
   });
 };
 
-class Car {
-  constructor(name) {
-    this.name = name;
-    this.distance = 0;
+const playGame = (car_list, time) => {
+  Console.print('실행결과');
+
+  let cur_time = 0;
+  while (cur_time < time) {
+    moveOnce(car_list);
+    cur_time += 1;
   }
-}
+};
+
+const moveOnce = (car_list) => {
+  car_list.forEach((car) => {
+    const num = Random.pickNumberInRange(0, 9);
+    if (num >= 4) {
+      car.move();
+    }
+  });
+  const result = car_list.map((car) => car.getDistance()).join('\n');
+  Console.print(`${result}\n`);
+};
 
 export default App;
