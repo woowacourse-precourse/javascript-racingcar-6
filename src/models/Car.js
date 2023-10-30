@@ -3,7 +3,7 @@ import {
   ERROR_MESSAGE,
   MOVE_THRESHOLD,
   MAX_CAR_NAME_LENGTH,
-} from "../constants";
+} from "../constants.js";
 
 class Car {
   constructor(name) {

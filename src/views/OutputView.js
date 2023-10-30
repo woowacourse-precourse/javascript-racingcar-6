@@ -1,5 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
-import { RACE_GAME_OUTPUT_MESSAGE } from "../constants";
+import { RACE_GAME_OUTPUT_MESSAGE } from "../constants.js";
 
 class OutputView {
   printRoundResultInitMessage() {

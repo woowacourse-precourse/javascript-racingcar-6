@@ -1,5 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
-import { RACE_GAME_INPUT_MESSAGE, ERROR_MESSAGE } from "../constants";
+import { RACE_GAME_INPUT_MESSAGE, ERROR_MESSAGE } from "../constants.js";
 class InputView {
   async getCarNamesUserInput() {
     const userInput = await Console.readLineAsync(
