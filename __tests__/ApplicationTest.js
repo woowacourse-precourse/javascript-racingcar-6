@@ -59,4 +59,22 @@ describe("자동차 경주 게임", () => {
     // then
     await expect(app.play()).rejects.toThrow("[ERROR]");
   });
+
+  test.each([
+    ["a"],
+    ["-5"],
+    ["3.14"],
+    ["abc123"],
+    [" "],
+    ["1,2,3"]
+  ])("시도 횟수에 대한 예외 처리", async (input) => {
+    // given
+    mockQuestions([input]);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow("[ERROR]");
+  });
 });
