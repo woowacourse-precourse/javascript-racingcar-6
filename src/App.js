@@ -3,8 +3,7 @@ import RacingGame from './RacingGame.js';
 
 class App {
   async play() {
-    const settingCars = new SettingCars();
-    const registeredCars = await settingCars.registerCars();
+    const registeredCars = await SettingCars.registerCars();
 
     const racingGame = new RacingGame(registeredCars);
     const totalRacingCount = await racingGame.getRacingCount();
