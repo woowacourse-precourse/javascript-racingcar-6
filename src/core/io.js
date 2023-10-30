@@ -53,6 +53,20 @@ export async function askTryAmount() {
 
 /**
  *
+ * @param {Record<string, number>} scoreboard
+ */
+export function printResultUsingScoreBoard(scoreboard) {
+  const SCORE_UNIT = "-";
+
+  Object.entries(scoreboard).forEach(([name, score]) => {
+    Console.print(`${name} : ${SCORE_UNIT.repeat(score)}`);
+  });
+
+  Console.print("");
+}
+
+/**
+ *
  * @param {string[]} names
  */
 function checkNamesAreValid(names) {
