@@ -6,6 +6,8 @@ class App {
     const tryCount = await this.getTryCount();
 
     this.setGameResult(racingCars, tryCount);
+
+    const finalWinner = this.getFinalWinner(racingCars);
   }
 
   async getCarName() {
@@ -104,6 +106,26 @@ class App {
     const HYPHEN = '-';
 
     return HYPHEN.repeat(number);
+  }
+
+  getFinalWinner(result) {
+    const finalWinner = [];
+
+    let minNumber = 0;
+
+    Object.values(result).forEach((value) => {
+      if (value >= minNumber) {
+        minNumber = value;
+      }
+    });
+
+    Object.keys(result).forEach((key) => {
+      if (result[key] === minNumber) {
+        finalWinner.push(key);
+      }
+    });
+
+    return finalWinner.join('');
   }
 }
 
