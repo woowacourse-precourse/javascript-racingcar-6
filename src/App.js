@@ -89,6 +89,13 @@ class App {
     printCarStatus(carObj) {
         MissionUtils.Console.print(`${carObj.name} : ${'-'.repeat(carObj.move)}`);
     }
+
+    /**
+     * @param {CarObject[]} carObjArr
+     */
+    getMaxMoveCnt(carObjArr) {
+        return Math.max(...carObjArr.map(({ move }) => move));
+    }
 }
 
 export default App;
