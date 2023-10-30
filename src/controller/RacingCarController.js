@@ -5,8 +5,6 @@ import OutputView from '../view/OutputView';
 import CarPlayers from '../model/CarPlayers';
 import MoveCount from '../model/MoveCount';
 import GameResult from '../model/GameResult';
-import { strToStrArr } from '../utils/typeConvertor';
-
 
 class RacingCarController {
   #inputView;
@@ -25,16 +23,15 @@ class RacingCarController {
 
   async play(){
     await this.getCarsName();
+    this.setGameResult();
     await this.getMoveCount();
+    this.moveCars();
+    this.showWinner();
   }
 
   async getCarsName(){
     const carsNameInput = await this.#inputView.readPlayerCars();
     this.#carPlayers.setPlayers(carsNameInput);
-
-    const carsCount = strToStrArr(carsNameInput).length;
-    this.setGameResult(carsCount);
-    this.moveCars();
   }
 
   async getMoveCount(){
@@ -42,8 +39,9 @@ class RacingCarController {
     this.#moveCount.setCount(moveCountInput);
   }
 
-  setGameResult(num){
-    this.#gameResult.setResult(num);
+  setGameResult(){
+    const len = this.#carPlayers.getPlayers().length;
+    this.#gameResult.setResult(len);
   }
 
   moveCars(){

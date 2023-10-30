@@ -4,6 +4,6 @@ export const calculateLongLen = (strArr) => {
 }
 
 export const findSameLenElement = (strArr, len) => {
-  const result = strArr.filter(str => str.legth === len);
+  const result = strArr.filter(str => str.length === len);
   return result;
 }
