@@ -1,6 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
 
-const outputCurrentProgress = results => {
+export const outputCurrentProgress = results => {
   results.forEach(result => {
     const { name, distanceFromStart } = result;
 
@@ -16,7 +16,7 @@ const outputCurrentProgress = results => {
   Console.print('');
 };
 
-const outputFinalProgress = results => {
+export const outputFinalProgress = results => {
   const distances = results.map(result => result.distanceFromStart);
   const maxValue = Math.max(...distances);
 

@@ -1,5 +1,7 @@
 import { Random } from '@woowacourse/mission-utils';
+
 import CONSTANTS from './constants';
+import { outputCurrentProgress, outputFinalProgress } from './output';
 
 const executeRace = (names, numberOfAttempts) => {
   let results = names.map(name => {
@@ -8,7 +10,10 @@ const executeRace = (names, numberOfAttempts) => {
 
   for (let i = 0; i < numberOfAttempts; i++) {
     results = results.map(calculateNextResult);
+    outputCurrentProgress(results);
   }
+
+  outputFinalProgress(results);
 };
 
 const calculateNextResult = result => {
