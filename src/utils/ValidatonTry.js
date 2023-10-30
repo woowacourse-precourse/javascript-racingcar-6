@@ -6,6 +6,12 @@ const ValidationTry = {
       throw new Error(TRY_INPUT_ERROR.null);
     }
   },
+
+  isChar(tryCount) {
+    if (Number.isNaN(tryCount)) {
+      throw new Error(TRY_INPUT_ERROR.char);
+    }
+  },
 };
 
 export default ValidationTry;
