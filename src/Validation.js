@@ -20,4 +20,19 @@ export const Validation = {
 
     return carNames.split(",");
   },
+  validateRacingRepeatNumber: (repeatNumber) => {
+    if (!repeatNumber) {
+      throw new Error(MESSAGES.ERROR_NO_INPUT);
+    }
+
+    if (isNaN(Number(repeatNumber))) {
+      throw new Error(MESSAGES.ERROR_PLAY_REPEAT_NUMBER_TYPE);
+    }
+
+    if (Number(repeatNumber) <= 0 || Number(repeatNumber) % 1 !== 0) {
+      throw new Error(MESSAGES.ERROR_PLAY_REPEAT_NUMBER_SIZE);
+    }
+
+    return Number(repeatNumber);
+  },
 };
