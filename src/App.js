@@ -28,7 +28,7 @@ class App {
 
     let laps = Number(lapInput);
 
-    this.setCarsRecordBoard(allCars);
+    this.setCarsRecordBoard(allCars, this.carsRecordBoard);
 
     Console.print(`${"\n"}${NOW_RESULT}`);
 
@@ -74,9 +74,9 @@ class App {
     return Random.pickNumberInRange(start, end);
   }
 
-  setCarsRecordBoard(cars) {
+  setCarsRecordBoard(cars, board) {
     for (let car of cars) {
-      this.carsRecordBoard[car] = "";
+      board[car] = "";
     }
   }
 
