@@ -10,7 +10,7 @@ class App {
     this.handleCarName(carInput);
     const tryInput = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
     const tryNumber = this.handleTryNumber(tryInput);
-    
+    this.race();
   }
 
   race() {
@@ -18,7 +18,24 @@ class App {
     for(let i=0; i<tryInput; i++) {
       this.oneTurn();
     }
-    MissionUtils.Console.print(`\n최종 우승 : ${d}`) //
+    const MVP = this.selectMVP();
+    const resultString = MVP.join(", ");
+    MissionUtils.Console.print(`\n최종 우승 : ${resultString}`) 
+  }
+
+  selectMVP() {
+    let max = 0;
+    let arr = [];
+    for(const key of this.carObj) {
+      if(this.carObj[key].length > max) {
+        max = this.carObj[key].length;
+        arr = [];
+        arr.push(key);
+      } else if(this.carObj[key].length === max) {
+        arr.push(key);
+      }
+    }
+    return arr;
   }
 
   oneTurn() {
