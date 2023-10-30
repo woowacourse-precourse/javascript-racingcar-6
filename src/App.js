@@ -21,6 +21,8 @@ class App {
 
       printResult(carObjectArray);
     }
+    const winners = findWinner(carObjectArray);
+    printWinner(winners);
   }
 }
 
@@ -29,6 +31,19 @@ function printResult(carArray) {
     Console.print(`${car.name} : ${'-'.repeat(car.moveCount)}`);
   });
   Console.print('');
+}
+
+function findWinner(carArray) {
+  const maxMoveCount = Math.max(...carArray.map((car) => car.moveCount));
+  const winnerArray = carArray
+    .filter((car) => car.moveCount === maxMoveCount)
+    .map((car) => car.name);
+  return winnerArray;
+}
+
+function printWinner(winnerArray) {
+  const concatenatedName = winnerArray.join(', ');
+  Console.print(`최종 우승자 : ${concatenatedName}`);
 }
 
 export default App;
