@@ -9,7 +9,13 @@ class CarModel {
       CarModel.INPUT_CARNAME_MESSAGE,
     );
     this.carList = inputCarName.split(",");
+    console.log(this.carList);
+    return this.carList;
   }
+
+  getCarList = () => {
+    return this.carList;
+  };
 }
 
 export default CarModel;
