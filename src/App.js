@@ -3,10 +3,10 @@ import Car from './Car';
 
 class App {
   async play() {
-    const names = Screen.inputNames();
+    const names = await Screen.inputNames();
     const cars = names.map((name) => new Car(name));
 
-    const count = Screen.inputCount();
+    const count = await Screen.inputCount();
   }
 }
 
