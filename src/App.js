@@ -1,9 +1,9 @@
-import { CarInput } from './userInput/car/CarInput.js';
-import { getTry } from './userInput/try/Try.js';
+import { CarNames } from './input/CarNames.js';
+import { getTry } from './input/Try.js';
 
 class App {
   async play() {
-    const carInput = new CarInput();
+    const carInput = new CarNames();
     const carNames = await carInput.getName();
     const tryInput = await getTry();
   }
