@@ -30,11 +30,11 @@ const InputView = {
 
   validateRaceCarNames(userInputRaceCarName) {
     const validRaceCarName = userInputRaceCarName.split(",").map((raceCar) => raceCar.trim());
-    for (const raceCar of validRaceCarName) {
+    validRaceCarName.forEach((raceCar) => {
       if (raceCar.length > 5) {
         throw new Error();
       }
-    }
+    });
 
     return validRaceCarName;
   },
