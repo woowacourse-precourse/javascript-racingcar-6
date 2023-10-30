@@ -1,39 +1,58 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import Car from '../racingcar.js';
-import App from '../App.js';
+import Car from "../src/racingcar.js";
+import App from "../src/App.js";
 
-describe("App", () => {
+describe("App 클래스 테스트", () => {
   let app;
 
   beforeEach(() => {
     app = new App();
+    jest.spyOn(MissionUtils.Console, 'readLineAsync').mockImplementation((text) => {
+      if (text.includes('자동차 이름')) return Promise.resolve('Car1,Car2');
+      if (text.includes('횟수')) return Promise.resolve('5');
+    });
+    jest.spyOn(MissionUtils.Console, 'print');
   });
 
-  test("validateCarNames throws error when car name is invalid", () => {
-    const invalidCar = new Car("InvalidName");
-    app.cars.push(invalidCar);
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
 
-    // Mock the isValidName method to return false
+  test("getInput 메소드가 cars와 rounds를 올바르게 설정하는지 확인", async () => {
+    await app.getInput();
+
+    expect(app.cars.length).toBe(2);
+    expect(app.rounds).toBe(5);
+  });
+
+  test("validateCarNames 메소드가 유효하지 않은 자동차 이름에 대해 예외를 던지는지 확인", () => {
+    const invalidCar = new Car("InvalidName");
+
     invalidCar.isValidName = jest.fn().mockReturnValue(false);
+
+    app.cars.push(invalidCar);
 
     expect(() => app.validateCarNames()).toThrow(Error);
   });
 
-  test("playRound calls move method of each car", () => {
-    const car1 = new Car("car1");
-    const car2 = new Car("car2");
+  test("playRound 메소드가 각 자동차의 move 메소드를 호출하는지 확인", () => {
+    const 이재신 = new Car("이재신");
+    const 우테코 = new Car("우테코");
 
-    // Mock the move methods
-    car1.move = jest.fn();
-    car2.move = jest.fn();
+    jest.spyOn(이재신, 'move');
+    jest.spyOn(우테코, 'move');
 
-    app.cars.push(car1, car2);
+    app.cars.push(이재신, 우테코);
 
     app.playRound();
 
-    expect(car1.move).toHaveBeenCalled();
-    expect(car2.move).toHaveBeenCalled();
-  });
+    let 이재신MoveCalled = 이재신.move.mock.calls.length > 0;
+    let 우테코MoveCalled = 우테코.move.mock.calls.length > 0;
 
-  // Add more tests...
+    console.log(`이재신의 move 메소드가 호출되었는가? : ${이재신MoveCalled}`);
+    console.log(`우테코의 move 메소드가 호출되었는가? : ${우테코MoveCalled}`);
+
+    expect(이재신.move).toHaveBeenCalled();
+    expect(우테코.move).toHaveBeenCalled();
+  });
 });
