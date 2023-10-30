@@ -26,7 +26,7 @@ describe('레이싱게임 테스트', () => {
     const test3 = new RacingCar('test3')
     const racingGame = new RacingGame([test1, test2, test3])
 
-    racingGame.startGame(5)
+    Array.from({ length: 5 }, () => racingGame.tryOneTime())
 
     expect(racingGame.getWinner()).toEqual([test1])
   })
@@ -46,7 +46,7 @@ describe('레이싱게임 테스트', () => {
     const test3 = new RacingCar('test3')
     const racingGame = new RacingGame([test1, test2, test3])
 
-    racingGame.startGame(5)
+    Array.from({ length: 5 }, () => racingGame.tryOneTime())
 
     expect(racingGame.getWinner()).toEqual([test1, test2])
   })
