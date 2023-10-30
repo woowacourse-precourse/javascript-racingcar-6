@@ -1,6 +1,7 @@
 import { Console } from "@woowacourse/mission-utils";
 import Car from "../models/Car.js";
 import { generateRandomNumber } from "../utils/generateRandomNumber.js";
+import { calculateWinners } from "../utils/calculateWinners.js";
 
 class RacingGame {
   constructor(carNames, tryNumber) {
@@ -29,6 +30,7 @@ class RacingGame {
       this.moveCar();
       this.printCarProgress();
     }
+    Console.print(`최종 우승자 : ${calculateWinners(this.carList)}`);
   }
 }
 
