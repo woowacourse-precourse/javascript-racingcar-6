@@ -26,7 +26,6 @@ class App {
     if (rounds.length === 1 && rounds < 1 || rounds > 9) {
       throw new Error("[ERROR] 라운드는 1에서 9까지의 자연수만 허용합니다.");
     }
-
     this.rounds = Number(rounds);
   }
 
