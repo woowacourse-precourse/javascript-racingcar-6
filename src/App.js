@@ -24,6 +24,19 @@ class App {
     if (carName.length > 5)
       throw new Error('[ERROR] 자동차 이름은 5자리 이하여야 합니다.');
   }
+
+  // 경주횟수 입력받기
+  async getGameCount() {
+    const gameCount = await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
+    this.validateGameCount(gameCount);
+    return gameCount;
+  }
+
+  // 경주횟수 검증하기
+  validateGameCount(gameCount) {
+    if (!gameCount) throw new Error('[ERROR] 입력값이 없습니다.');
+    if (Number.isNaN(gameCount)) throw new Error('[ERROR] 숫자가 아닙니다.');
+  }
 }
 
 export default App;
