@@ -9,7 +9,20 @@ class Screen {
     return userInput;
   }
 
-  printCarStatus(carList) {}
+  printCarStatus([...carList]) {
+    carList.forEach((car) => {
+      Console.print(`${car.name} : ${this.makeDashString(car.movingCount)}`);
+    });
+  }
+
+  makeDashString(moveCount) {
+    let str = '';
+    for (let i = 0; i < moveCount; i++) {
+      str += '-';
+    }
+    return str;
+  }
+
   printWinner(winnerList) {}
 }
 export default Screen;
