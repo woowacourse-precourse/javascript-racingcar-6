@@ -1,7 +1,13 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 
 class App {
-    async play() {}
+    async play() {
+        const users = await this.getUserInput();
+        const cars = this.createCars(users);
+        const tryCount = await this.getTryCount();
+        const result = this.playGame(tryCount, cars);
+        this.printWinner(result);
+    }
 
     async getUserInput() {
         const userinput = await MissionUtils.Console.readLineAsync(
