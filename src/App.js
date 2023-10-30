@@ -7,6 +7,10 @@ class App {
   isValidNameFormat(names) {
     return names.every((name) => name.length <= 5);
   }
+
+  includeSemiColon(input) {
+    return input.includes(',');
+  }
 }
 
 export default App;
