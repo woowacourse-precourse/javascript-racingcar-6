@@ -1,4 +1,4 @@
-export function invaildCarName(name){
+export function vaildCarName(name){
   const nameLen = name.length;
 
   if(nameLen < 1 || nameLen > 5) {

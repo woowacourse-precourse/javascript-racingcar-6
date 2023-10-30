@@ -9,15 +9,11 @@ class App {
     const carNames = await inputCarName();
 
     const car = carNames.split(',').map(name => {
-      if(vaildCarName(name)){
-        return new Car(name, 0);
-      }
+      if(vaildCarName(name)) return new Car(name, 0);
     })
 
-    const count = await inputCount();
-    if(validCount(count)){
-      
-    }
+    let count = await inputCount();
+    if(validCount(count)) count = Number(count);
   }
 }
 
