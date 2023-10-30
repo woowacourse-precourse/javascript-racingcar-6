@@ -97,11 +97,20 @@ class App {
     const winnerCarNames = this.winnerCarArray.join(",");
     Console.print("최종 우승자 : " + winnerCarNames);
   }
-
+  
   async intro() {
     await this.carNameInput();
     await this.gameNumberInput();
     Console.print("");
+  }
+
+  main() {
+    Console.print("실행 결과");
+    this.carMoveEmptyArray();
+    for(let i = 0; i < this.gameRound; i++) {
+      this.carMoveText();
+      Console.print("");
+    }
   }
 
   async play() {
