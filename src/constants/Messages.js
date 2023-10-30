@@ -9,7 +9,7 @@ const Messages = Object.freeze({
   WINNER: "최종 우승자 : ",
   ERROR: Object.freeze({
     EXCEED_CAR_NAME_LETTER: `[ERROR] 자동차 이름은 ${Maximum.CAR_NAME_LETTER}자 이하로 작성해주세요`,
-    SHORT_CAR_NAME_LETTER: `자동차 이름은 ${Minimum.CAR_NAME_LETTER}자 이상으로 작성해주세요`,
+    SHORT_CAR_NAME_LETTER: `[ERROR] 자동차 이름은 ${Minimum.CAR_NAME_LETTER}자 이상으로 작성해주세요`,
     EXEED_CAR_NAME_NUMBER: `[ERROR] 자동차는 최대 ${Maximum.CAR_NAME_NUMBER}대까지 입력할 수 있습니다`,
     SHORT_CAR_NAME_NUMBER: `[ERROR] 자동차는 최소 ${Minimum.CAR_NAME_NUMBER}대 이상 입력해주세요`,
     DUPLICATION_CAR_NAME: `[ERROR] 자동차 이름을 중복되지 않게 작성해주세요`,
