@@ -8,6 +8,7 @@ class RacingGame {
     this.userInputCarCount = null;
     this.userInputTryCount = null;
     this.randomNumberForRace = null;
+    this.allRaceForAllCar = [];
   }
 
   // CONTROLLER
@@ -84,7 +85,25 @@ class RacingGame {
   }
 
   // MODEL
-  runRace() {}
+  runRace() {
+    function moveCar(randomNumberForMove) {
+      return randomNumberForMove > OTHERS.baseNum ? true : false;
+    }
+
+    for (let i = 0; i < this.userInputCarCount; i++) {
+      let eachRacePerCar = OTHERS.empty;
+      const allRacePerCar = [];
+
+      for (let j = 0; j < this.userInputTryCount; j++) {
+        moveCar(this.randomNumberForRace[j][i])
+          ? (eachRacePerCar += OTHERS.dash)
+          : (eachRacePerCar += OTHERS.empty);
+        allRacePerCar.push(eachRacePerCar);
+      }
+
+      this.allRaceForAllCar.push(allRacePerCar);
+    }
+  }
 
   //MODEL
   getRaceResultMessage() {}
