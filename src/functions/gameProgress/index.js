@@ -1,4 +1,4 @@
-import { Random } from '@woowacourse/mission-utils';
+import { Console, Random } from '@woowacourse/mission-utils';
 
 const getCanMove = () => {
   const randomNumber = Random.pickNumberInRange(0, 9);
@@ -7,7 +7,7 @@ const getCanMove = () => {
   return true;
 };
 
-const playOneRound = carDistanceList => {
+export const playOneRound = carDistanceList => {
   carDistanceList.forEach(car => {
     if (getCanMove) {
       const updateCar = car;
@@ -18,4 +18,8 @@ const playOneRound = carDistanceList => {
   });
 };
 
-export default playOneRound;
+export const printRoundResult = carDistanceList => {
+  carDistanceList.forEach(car => {
+    Console.print(`${car.carName} : ${car.distance}`);
+  });
+};
