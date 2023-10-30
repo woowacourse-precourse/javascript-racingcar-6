@@ -3,7 +3,7 @@ import {
   getNameBlankErrorMessage,
   getNotIntegerErrorMessage,
   getWhiteSpacesErrorMessage,
-} from '../constants/errorMessages.js';
+} from '../constants/errorMessages';
 
 const removeWhiteSpaces = (string) => string.split(' ').join('');
 
