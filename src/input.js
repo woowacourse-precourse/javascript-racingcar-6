@@ -1,6 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
-import ERROR_MESSAGE from './constant/errorMessage.js';
 import GAME_MESSAGE from './constant/gameMessage.js';
+import validation from './validation.js';
 
 class Input {
   constructor() {
@@ -18,13 +18,16 @@ class Input {
 
   carnamesToArray(input) {
     this.input = input;
-    if (!this.includeSemiColon(input)) {
-      throw new Error(ERROR_MESSAGE.DIVISION_BY_SEMICOLON);
-    }
+    validation.isValidNameFormat(input);
     const names = input.split(',').map((name) => name.trim());
-    if (!this.isValidNameFormat(names)) {
-      throw new Error(ERROR_MESSAGE.LESS_THAN_FIVE);
-    }
+    validation.isValidNamesArray(names);
+    // if (!this.includeSemiColon(input)) {
+    //   throw new Error(ERROR_MESSAGE.DIVISION_BY_SEMICOLON);
+    // }
+    // const names = input.split(',').map((name) => name.trim());
+    // if (!this.isValidNameFormat(names)) {
+    //   throw new Error(ERROR_MESSAGE.LESS_THAN_FIVE);
+    // }
     return names;
   }
 
