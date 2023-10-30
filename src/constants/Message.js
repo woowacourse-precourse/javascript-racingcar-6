@@ -7,4 +7,6 @@ const ERROR_PREFIX = "[ERROR]";
 
 export const MESSAGE_ERROR = Object.freeze({
   errorIsNumber: `${ERROR_PREFIX} 숫자만 입력해주세요.`,
+  errorCarNameLength: `${ERROR_PREFIX} 자동차 이름은 5자 이하만 가능합니다.`,
+  errorCarNameDuplicate: `${ERROR_PREFIX} 중복된 이름이 존재합니다.`,
 });

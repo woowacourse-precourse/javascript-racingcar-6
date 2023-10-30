@@ -1,5 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
-import { isValidPlayerInput } from "../utils/Validation.js";
+import { isValidCarName, isValidPlayerInput } from "../utils/Validation.js";
 import { MESSAGE_NOTIFICATION } from "../constants/Message.js";
 
 export async function playerInput() {
@@ -10,5 +10,6 @@ export async function playerInput() {
 
 export async function carNameInput() {
   const inputValue = await Console.readLineAsync(MESSAGE_NOTIFICATION.playerCarName);
+  isValidCarName(inputValue);
   return inputValue;
 }
