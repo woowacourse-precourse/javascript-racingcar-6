@@ -1,22 +1,25 @@
 import { ERROR_MESSAGE } from "../constants/message.js";
 
+const isOverFive = (namesOfCars) => namesOfCars.some((name) => name.length > 5);
+
+const isExistDuplicateName = (namesOfCars) =>
+	namesOfCars.some(
+		(name, _, array) =>
+			array.filter((compareName) => compareName === name).length > 1,
+	);
+
 /**
  *
  * @param {string[]} namesOfCars
  */
 const validateNamesOfCars = (namesOfCars) => {
 	// 5자 초과
-	const isOverFive = namesOfCars.some((name) => name.length > 5);
-	if (isOverFive) {
+	if (isOverFive(namesOfCars)) {
 		throw new Error(ERROR_MESSAGE.lengthOfNameOverFive);
 	}
 
 	// 중복 존재
-	const isExistDuplicateName = namesOfCars.some(
-		(name, _, array) =>
-			array.filter((compareName) => compareName === name).length > 1,
-	);
-	if (isExistDuplicateName) {
+	if (isExistDuplicateName(namesOfCars)) {
 		throw new Error(ERROR_MESSAGE.existDuplicateName);
 	}
 };
