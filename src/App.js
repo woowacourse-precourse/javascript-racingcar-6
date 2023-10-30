@@ -1,4 +1,4 @@
-import { Console } from '@woowacourse/mission-utils';
+import { Random, Console } from '@woowacourse/mission-utils';
 import Vehicle from './Vehicle.js';
 import MESSAGES from './constants/Messages.js';
 import { isValidInputRound, isValidInputVehicles } from './utils/validation.js';
@@ -31,9 +31,23 @@ class App {
     this.round = +inputRound;
   }
 
+  processRound() {
+    let count = 0;
+
+    while (this.round > count) {
+      this.vehicles.forEach(item => {
+        const randomNumber = Random.pickNumberInRange(0, 9);
+        if (randomNumber >= 4) item.move();
+      });
+
+      count += 1;
+    }
+  }
+
   async play() {
     await this.setVehicles();
     await this.setRound();
+    this.processRound();
   }
 }
 
