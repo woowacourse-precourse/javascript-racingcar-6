@@ -1,8 +1,9 @@
-import { playerInput } from "./view/View.js";
+import RacingCarController from "./controller/RacingCarController.js";
 
 class App {
   async play() {
-    playerInput();
+    this.game = await new RacingCarController();
+    await this.game.play();
   }
 }
 

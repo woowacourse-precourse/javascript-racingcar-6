@@ -7,3 +7,8 @@ export async function playerInput() {
   isValidPlayerInput(inputValue);
   return inputValue;
 }
+
+export async function carNameInput() {
+  const inputValue = await Console.readLineAsync(MESSAGE_NOTIFICATION.playerCarName);
+  return inputValue;
+}
