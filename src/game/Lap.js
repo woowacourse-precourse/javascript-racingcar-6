@@ -24,12 +24,13 @@ class Lap {
 
   goFoward(record) {
     // 전진 여부 확인 로직
+    const recordBoard = record;
     for (let i = 0; i < this.entry.length; i += 1) {
-      if (Random.pickNumberInRange(0, 9) > 3) record[i] += '-';
+      if (Random.pickNumberInRange(0, 9) > 3) recordBoard[i] += '-';
     }
   }
 
-  printStage(record) {
+  static printStage(record) {
     computer.tell(record.join('\n'));
     computer.tell('');
   }
