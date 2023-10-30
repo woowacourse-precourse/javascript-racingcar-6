@@ -6,7 +6,7 @@ class App {
        const CARS = await this.participatingCar()
        const NUMBEROFCARS = await this.numberOfMoves()
        const result = this.startRacing(CARS, NUMBEROFCARS) 
-       Console.print(result)
+       Console.print("최종 우승자 : "+result)
     } catch (err) {
       throw new Error(err);
     }
@@ -18,7 +18,7 @@ class App {
   
   cars.forEach(el => { 
     if(el.length > 5){
-      throw new Error('[ERROR] 올바른 형식으로 입력해주세요')
+      throw new Error('[ERROR] 자동차 이름은 5글자 이하로 입력해주세요')
     }
   });
 
