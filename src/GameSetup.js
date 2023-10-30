@@ -27,6 +27,7 @@ class GameSetup {
     const TRY_NUMBER_INPUT = await Console.readLineAsync(
       PLAYER_INPUT.TRY_NUMBER_PROMPT,
     );
+
     if (Validation.isPlayerTryNumberValidated(TRY_NUMBER_INPUT)) {
       return Number(TRY_NUMBER_INPUT);
     }
