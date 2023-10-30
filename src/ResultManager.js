@@ -17,6 +17,15 @@ class ResultManager {
     }
     return trueCount;
   }
+
+  selectFinalRound(roundNumber, racingCarMembers, isMovingForward) {
+    const finalRoundResults = [];
+    for (let i = 0; i < racingCarMembers.length; i++) {
+      const result = this.countOneMemberResults(roundNumber, isMovingForward[i]);
+      finalRoundResults.push(result);
+    }
+    return finalRoundResults;
+  }
 }
 
 export default ResultManager;

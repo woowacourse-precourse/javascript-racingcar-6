@@ -6,7 +6,7 @@ class App {
   constructor() {
     this.racingCarMembers = [];
     this.roundNumber = 0;
-    this.isMovingForward = [];
+    this.racingResults = [];
   }
 
   async play() {
@@ -49,23 +49,38 @@ class App {
       throw new Error("[ERROR] 시도 횟수는 1 이상 20 미만이어야 합니다.");
     }
 
-    this.isMovingForward = new Array(this.racingCarMembers.length).fill(0).map(() => new Array());
+    this.racingResults = new Array(this.racingCarMembers.length).fill(0).map(() => new Array());
 
     const numberGenerator = new NumberGenerator();
 
     for (let i = 0; i < this.roundNumber; i++) {
-      this.racingCarMembers.forEach((number, index) => {
-        this.isMovingForward[index].push(numberGenerator.createRandomNumbers());
+      this.racingCarMembers.forEach((_, index) => {
+        this.racingResults[index].push(numberGenerator.createRandomNumbers());
       });
     }
-
     const resultManager = new ResultManager();
 
     Console.print("\n실행 결과");
-    for (let i = 0; i <= this.roundNumber; i++) {
-      resultManager.printOneRoundResults(i, this.racingCarMembers, this.isMovingForward);
+    for (let i = 0; i < this.roundNumber; i++) {
+      resultManager.printOneRoundResults(i, this.racingCarMembers, this.racingResults);
       Console.print("\n");
     }
+
+    const finalRoundResults = resultManager.selectFinalRound(
+      this.roundNumber,
+      this.racingCarMembers,
+      this.racingResults
+    );
+    const maxCount = Math.max(...finalRoundResults);
+    const winner = [];
+
+    finalRoundResults.forEach((result, index) => {
+      if (result == maxCount) {
+        winner.push(this.racingCarMembers[index]);
+      }
+    });
+
+    Console.print(`최종 우승자 : ${winner.join()}`);
   }
 }
 
