@@ -1,13 +1,20 @@
 import Messages from "./constants/Messages.js";
 import { Maximum, Minimum } from "./constants/Standard.js";
+import { Console } from "@woowacourse/mission-utils";
 
 class UserInput {
   async getCarNames() {
-    // 사용자로부터 자동차의 이름을 입력받는다.
-    // 입력받은 자동차 이름을 쉼표를 기준으로 split 매서드를 이용하여 나눈다.
-    // isVaildCarName() 을 사용하여 정상적인 이름인지 확인한다.
-    // 모두 정상일경우 자동차 이름이 담긴 배열을 반환한다.
-    // 정상이 아닐 경우 에러를 반환한다.
+    try {
+      const carNames = await Console.readLineAsync(Messages.GET_CAR_NAMES);
+      const carNamesArr = carNames.split(",");
+      const [isVaild, message, result] = this.isVaildCarName(carNamesArr);
+      if (!isVaild) {
+        throw new Error(message);
+      }
+      return result;
+    } catch (error) {
+      throw error;
+    }
   }
 
   async getTryNumber() {
