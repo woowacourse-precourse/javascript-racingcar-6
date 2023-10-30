@@ -7,10 +7,10 @@ export const MESSAGE = Object.freeze({
 });
 
 export const ERROR_MESSAGE = Object.freeze({
+  CAR_NAME_ERROR: '[ERROR] ,를 먼저 입력하면은 안됩니다.',
   CAR_NAME_LENGTH: '[ERROR] 자동차의 이름은 1자 이상 5자 이하만 가능합니다.',
   CAR_NAME_DUPLICATED: '[ERROR] 자동차 이름은 중복되어서는 안됩니다.',
-  CAR_NAME_ONLY_ENGLISH: '[ERROR] 차량 이름은 영문만 가능합니다.',
+  CAR_NAME_ONLY_ENGLISH_NUMBER: '[ERROR] 차량 이름은 영문, 숫자만 가능합니다.',
   CAR_COUNTING: '[ERROR] 최소 2대 최대 100대의 차량 이름을 입력하세요',
-  NOT_COMMA: '[ERROR] 차량 구분을 위해서 쉼표를 사용해주세요',
   TURN_ERROR: '[ERROR] 레이싱 게임 진행을 위해 1 ~ 100 사이의 자연수를 입력해주세요',
 });
