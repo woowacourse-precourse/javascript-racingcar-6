@@ -6,6 +6,11 @@ const Input = {
     const userInput = await Console.readLineAsync(MESSAGE.INPUT_CAR_NAME);
     return userInput;
   },
+
+  async getCarNamesFromUser() {
+    const userInput = await Console.readLineAsync(MESSAGE.INPUT_GAME_COUNT);
+    return userInput;
+  },
 };
 
 export default Input;
