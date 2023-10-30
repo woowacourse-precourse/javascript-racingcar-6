@@ -7,7 +7,7 @@ export const gaemProgress = (carsNames, carsNumber) => {
     if (carsNumber[index] > 4) {
       el[carsName] += "-";
     }
-
+    
     Console.print(`${carsName} : ${el[carsName]}`);
   });
 };
