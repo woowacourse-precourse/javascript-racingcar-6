@@ -24,7 +24,7 @@ class RacingGameController {
   async #processRacingGame() {
     const racingCarNames = await this.#requireRacingCarNames();
     const moveCount = await this.#requireRacingCarMoveCount();
-    const { racingResult, racingWinners } = this.#racingGameService.calculateRacingCarGameResult(
+    const { racingResult, racingWinners } = this.#racingGameService.calculateRacingGameResult(
       racingCarNames,
       moveCount,
     );
