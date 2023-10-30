@@ -23,12 +23,18 @@ class Model {
 
   calculateCarMovePoint(point) {
     const cars = Object.keys(point);
-    cars.map((el) => {
+    cars.forEach((el) => {
       const number = Random.pickNumberInRange(0, 9);
       if (number >= 4) point[el] += 1;
     });
 
     return point;
+  }
+
+  repeatMessage(message, times) {
+    const result = message.repeat(times);
+
+    return result;
   }
 
   getHighestMovePoint(result) {

@@ -1,4 +1,5 @@
 export const ERROR = Object.freeze({
-  Length: "[ERROR] 이름은 5자 이하로 입력해주세요.",
-  Input: "[ERROR] 이름이 잘못된 형식입니다.",
+  LENGTH: "[ERROR] 이름은 5자 이하로 입력해주세요.",
+  INPUT: "[ERROR] 이름이 잘못된 형식입니다.",
+  WHITESPACE: "[ERROR] 빈 공백은 입력할 수 없습니다.",
 });

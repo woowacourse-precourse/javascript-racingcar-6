@@ -39,12 +39,13 @@ class Controllers {
   }
 
   repeatCarRacing(init, cars, tryTime) {
-    let moveResult;
+    let moveResult = init;
 
     for (let i = 0; i < tryTime; i++) {
-      moveResult = this.Model.calculateCarMovePoint(init);
+      moveResult = this.Model.calculateCarMovePoint(moveResult);
+
       cars?.forEach((el) => {
-        const moved = this.Views.printRepeatedMessage("-", moveResult[el]);
+        const moved = this.Model.repeatMessage("-", moveResult[el]);
         this.Views.printRacingResult({ el, moved });
       });
 

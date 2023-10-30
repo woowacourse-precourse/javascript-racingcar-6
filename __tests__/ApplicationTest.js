@@ -72,4 +72,33 @@ describe("자동차 경주 게임", () => {
     //then
     await expect(app.play()).rejects.toThrow("[ERROR]");
   });
+
+  test("공백만 입력 시 예외 처리", async () => {
+    const input = "";
+
+    mockQuestions(input);
+
+    //when
+    const app = new App();
+
+    //then
+    await expect(app.play()).rejects.toThrow("[ERROR]");
+  });
+
+  test.each([["song,seop", "3"], ["jin,mark", "abc"], ["jeny,kai"]])(
+    "시도횟수에 숫자 이외의 값을 입력 시 예외 처리",
+    async (inputs) => {
+      mockQuestions(inputs);
+
+      const regex = /^\d{1,2}$/;
+      const isValid = regex.test(inputs[1]);
+
+      //when
+      const app = new App();
+
+      //then
+      if (isValid) await expect(app.play()).resolves.not.toThrow();
+      if (!isValid) await expect(app.play()).rejects.toThrow("[ERROR]");
+    }
+  );
 });
