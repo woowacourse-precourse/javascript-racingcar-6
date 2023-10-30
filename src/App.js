@@ -7,7 +7,7 @@ class App {
       const carNames = await this.getCarNames();
       const numAttempts = await this.getNumAttempts();
 
-      const cars = carNames.split(",").map((name) => ({ name, position: "-" }));
+      const cars = carNames.split(",").map((name) => ({ name, position: "" }));
 
       for (let attempt = 0; attempt < numAttempts; attempt++) {
         cars.forEach((car) => {
@@ -58,8 +58,8 @@ class App {
   }
 
   findWinners(cars) {
-    const maxPosition = Math.max(...cars.map((car) => car.position.length - 1));
-    return cars.filter((car) => car.position.length - 1 === maxPosition);
+    const maxPosition = Math.max(...cars.map((car) => car.position.length));
+    return cars.filter((car) => car.position.length === maxPosition);
   }
 
   displayWinners(winners) {
