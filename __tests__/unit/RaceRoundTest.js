@@ -1,12 +1,9 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import RaceRound from "../../src/RaceRound";
 
-const mockRandoms = (inputs) => {
+const mockRandoms = (numbers) => {
   RaceRound.createRandomNum = jest.fn();
-  RaceRound.createRandomNum.mockImplementation(() => {
-    const input = inputs.shift();
-    return input;
-  });
+  numbers.reduce((acc, number) => acc.mockReturnValueOnce(number), RaceRound.createRandomNum);
 };
 
 const getRandomSpy = () => {
@@ -43,5 +40,19 @@ describe('경기가 진행되는 라운드는', () => {
 
     raceRound.proceedRound();
     expect(movingForwardSpy).toBeCalledTimes(1);
+  });
+
+  test('종료 시 최종 우승자를 판별하는가?', () => {
+    const names = ['pobi', 'nori'];
+    const MOVING_FORWARD = 4;
+    const STOP = 0;
+    const randoms = [MOVING_FORWARD, STOP];
+    const raceRound = new RaceRound(names);
+
+    mockRandoms([...randoms]);
+
+    raceRound.proceedRound();
+    const winner = raceRound.announceGameResult();
+    expect(winner).toContainEqual('pobi');
   });
 });

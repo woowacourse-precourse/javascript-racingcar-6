@@ -1,5 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import Cars from './Cars';
+import Cars from './Cars.js';
 
 class RaceRound extends Cars {
   constructor(names) {
@@ -8,8 +8,8 @@ class RaceRound extends Cars {
   }
 
   proceedRound() {
-    let totalRound = this.getTotalRound();
-    const names = super.getNames;
+    let totalRound = this.getTotalRound;
+    const names = this.getAllNames;
     while (totalRound > 0) {
       names.forEach((name) => {
         const randomNum = RaceRound.createRandomNum();
@@ -21,8 +21,26 @@ class RaceRound extends Cars {
     }
   }
 
-  getTotalRound() {
-    return this.getNames.length;
+  get getTotalRound() {
+    return this.getAllNames.length;
+  }
+
+  announceGameResult() {
+    let maxDistance = Number.MIN_SAFE_INTEGER;
+    let winners = [];
+    const carsInfo = this.getAllCarsInfo;
+
+    carsInfo.forEach(([name, { distance }]) => {
+      const distanceRange = distance.length;
+      if (distanceRange >= maxDistance) {
+        winners = distanceRange === maxDistance
+          ? [...winners, name]
+          : [name];
+        maxDistance = Math.max(distanceRange, maxDistance);
+      }
+    });
+
+    return winners;
   }
 
   static createRandomNum() {

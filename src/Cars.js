@@ -12,8 +12,12 @@ class Cars {
     }));
   }
 
-  get getNames() {
+  get getAllNames() {
     return [...this.#INFO.keys()];
+  }
+
+  get getAllCarsInfo() {
+    return [...this.#INFO.entries()];
   }
 
   getDistanceByName(name) {
