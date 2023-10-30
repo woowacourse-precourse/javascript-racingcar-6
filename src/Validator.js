@@ -27,37 +27,25 @@ function isInvalidType(input) {
 
 const Validator = {
   length(input) {
-    if (!input.every(isBelowNameLength)) {
-      throw new Error(ERROR_MESSAGE.length);
-    }
+    if (!input.every(isBelowNameLength)) throw ERROR_MESSAGE.length;
   },
 
   blank(input) {
-    if (input.some(isBlank)) {
-      throw new Error(ERROR_MESSAGE.blank);
-    }
+    if (input.some(isBlank)) throw ERROR_MESSAGE.blank;
   },
 
   duplication(input) {
-    if (new Set(input).size !== input.length) {
-      throw new Error(ERROR_MESSAGE.duplicaiton);
-    }
+    if (new Set(input).size !== input.length) throw ERROR_MESSAGE.duplication;
   },
 
   invalidType(input) {
-    if (input.some(isInvalidType)) {
-      throw new Error(ERROR_MESSAGE.invalidType);
-    }
+    if (input.some(isInvalidType)) throw ERROR_MESSAGE.invalidType;
   },
 
   numberType(input) {
-    if (Number.isNaN(input)) {
-      throw new Error(ERROR_MESSAGE.numberType);
-    }
+    if (Number.isNaN(input)) throw ERROR_MESSAGE.numberType;
 
-    if (input <= 0 || input % 1 !== 0) {
-      throw new Error(ERROR_MESSAGE.integerType);
-    }
+    if (input <= 0 || input % 1 !== 0) throw ERROR_MESSAGE.integerType;
   },
 };
 
