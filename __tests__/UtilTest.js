@@ -1,15 +1,28 @@
-import checkName from "../src/util/check";
+import RACING from "../src/constants/message";
+import { checkName, checkNumber } from "../src/util/check";
 
 describe("util 함수 테스트", () => {
-    test("전달 받은 문자열이 정상적으로 판단이 될 경우", () => {
+    test("전달 받은 문자열이 정상적으로 판단이 될 경우", async () => {
         const input = ["pobi", "zero"];
-        const result = checkName(input)
+        const result = await checkName(input)
 
         expect(result).toBeUndefined();
     });
 
     test("전달 받은 문자열이 비정상적으로 판단이 될 경우", async () => {
         const input = ["pobi", "zerozero"];
-        await expect(checkName(input)).rejects.toThrow("[ERROR]");
+        await expect(checkName(input)).rejects.toThrow(RACING.NAMING_ERROR);
+    });
+
+    test("전달 받은 숫자가 정상적으로 판단이 될 경우", async () => {
+        const input = 5;
+        const result = await checkNumber(input)
+
+        expect(result).toBeUndefined();
+    });
+
+    test("전달 받은 숫자가 비정상적으로 판단이 될 경우", async () => {
+        const input = "zero";
+        await expect(checkNumber(input)).rejects.toThrow(RACING.NUMBER_ERROR);
     });
 });
