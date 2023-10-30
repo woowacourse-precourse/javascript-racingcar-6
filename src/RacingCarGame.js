@@ -20,7 +20,6 @@ class RacingCarGame {
   }
 
   #car(cars) {
-    Validator.checkNameLength(cars);
     cars.forEach((car) => this.#cars.push(new RacingCar(car)));
   }
   
