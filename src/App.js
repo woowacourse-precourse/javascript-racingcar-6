@@ -8,6 +8,7 @@ import {
     CREATE_CARS,
     RACE_RUN,
     FIND_WINNERS,
+    PRINT_WINNERS,
 } from './Race';
 
 class App {
@@ -17,6 +18,7 @@ class App {
         const RACE_TIME_INPUT = await this.getRaceTimes();
         RACE_RUN(CARS, RACE_TIME_INPUT);
         const WINNERS = FIND_WINNERS(CARS);
+        PRINT_WINNERS(WINNERS);
     }
 
     async getCarNames() {

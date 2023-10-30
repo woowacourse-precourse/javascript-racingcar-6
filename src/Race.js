@@ -7,6 +7,7 @@ import {
     RACE_TIME_ERROR_MESSAGE,
     CREATE_CAR_ERROR_MESSAGE,
     NOT_MOVE_WIN_ERROR_MESSAGE,
+    RACE_WINNER_PRINT_MESSAGE,
 } from "./Define";
 
 export const VALIDATE_CAR_NAME = (CAR_NAME_INPUT) => {
@@ -49,4 +50,8 @@ export const FIND_WINNERS = (CARS) => {
         throw new Error(NOT_MOVE_WIN_ERROR_MESSAGE);
     }
     return CARS.filter(CAR => CAR.getPosition() === WIN_POSITION).map(CAR => CAR.name);
+}
+
+export const PRINT_WINNERS = (WINNERS) => {
+    Console.print(`${RACE_WINNER_PRINT_MESSAGE}${WINNERS.join(', ')}`);
 }
