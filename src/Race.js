@@ -1,4 +1,4 @@
-import { Console, Random } from '@woowacourse/mission-utils';
+import { Console } from '@woowacourse/mission-utils';
 
 import { MOVE, RESULT_MESSAGE, FINAL_WINNER } from './constants/constants.js';
 
@@ -19,14 +19,8 @@ class Race {
 
   playRound() {
     this.cars.forEach((car) => {
-      if (this.canMove()) {
-        car.move();
-      }
+      car.move();
     });
-  }
-
-  canMove() {
-    return Random.pickNumberInRange(0, 9) >= 4;
   }
 
   printRoundResult() {
