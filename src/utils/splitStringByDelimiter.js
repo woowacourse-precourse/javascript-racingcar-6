@@ -4,6 +4,7 @@
  * @param {string} delimiter
  * @returns {string[]}
  */
-const splitStringByDelimiter = (inputString, delimiter) => inputString.split(delimiter)
+const splitStringByDelimiter = (inputString, delimiter) =>
+  inputString.split(delimiter).map((string) => string.trim())
 
 export default splitStringByDelimiter
