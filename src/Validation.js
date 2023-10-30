@@ -1,4 +1,4 @@
-import { ERROR_MESSAGES, CustomError } from './Errors.js';
+import { ERROR_MESSAGES, CustomError } from './Error.js';
 
 export const isPlayerCarNameValidated = raceEntry => {
     if (raceEntry.some(name => name.length > 5)) {
