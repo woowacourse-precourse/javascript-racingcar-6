@@ -1,4 +1,4 @@
-import { INPUT_MESSAGE, OUTPUT_MESSAGE, OTHERS } from '../utils/constants.js';
+import { INPUT_MESSAGE, OUTPUT_MESSAGE, ERROR_MESSAGE, OTHERS } from '../utils/constants.js';
 import { Console } from '@woowacourse/mission-utils';
 import { Random } from '@woowacourse/mission-utils';
 
