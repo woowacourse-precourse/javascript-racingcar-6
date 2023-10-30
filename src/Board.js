@@ -1,44 +1,50 @@
+import Car from './Car.js'
+
 class Board {
 
-  constructor() {
-    // TEST:
-    console.log('Board > constructor');
-  }
+  /** @type {Array<Car>} */
+  #cars = [];
 
   setCars() {
-    // TEST:
-    console.log('Board > setCars');
+    const carNames = this.#inputCarNames();
+    carNames.forEach((name) => {
+      this.#cars.push(new Car(name));
+    });
+
+    this.#cars.forEach((car) => {
+      console.log(car.name);
+    })
+  }
+
+  #inputCarNames() {
+    // TEST: 임시 이름 배열을 carNames 전달
+    const carNames = ['car1', 'car2'];
+    return carNames;
   }
 
   setNumTurns() {
-    // TEST:
-    console.log('Board > setNumTurns');
+
   }
 
   getNumTurns() {
-    // TEST:
-    console.log('Board > getNumTurns');
+
     return 2;
   }
 
   executeTurn() {
-    // TEST:
-    console.log('Board > executeTurn');
+
   }
 
   printMiddleResult() {
-    // TEST:
-    console.log('Board > printMiddleResult');
+
   }
 
   pickOutWinner() {
-    // TEST:
-    console.log('Board > pickOutWinner');
+
   }
 
   printFinalResult() {
-    // TEST:
-    console.log('Board > printFinalResult');
+
   }
 }
 
