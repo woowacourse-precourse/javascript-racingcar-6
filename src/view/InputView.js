@@ -1,13 +1,27 @@
 import { Console } from '@woowacourse/mission-utils';
-import { INPUT_MSG } from '../utils/constants';
+import { INPUT_MESSAGE } from '../utils/constants';
+import { validateNames, validateTryCount } from '../utils/validateInput';
+
+const inputFormat = async (userInput, validate) => {
+  const input = await userInput();
+  validate(input);
+  return input;
+};
 
 const InputView = {
-  async inputCarNames(callback) {
-    return await Console.readLine(INPUT_MSG.INPUT_CAR_NAMES, callback);
+  carNames: async () => {
+    const names = await inputFormat(
+      async () => Console.readLineAsync(INPUT_MESSAGE.NAMES),
+      validateNames,
+    );
+    return names.split(',');
   },
-
-  async inputTryCount(callback) {
-    return await Console.readLine(INPUT_MSG.INPUT_TRY_COUNT, callback);
+  tryCount: async () => {
+    const tryCount = await inputFormat(
+      async () => Console.readLineAsync(INPUT_MESSAGE.TRY_COUNT),
+      validateTryCount,
+    );
+    return Number(tryCount);
   },
 };
 
