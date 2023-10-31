@@ -1,5 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import User from '../src/User.js';
+import { inputParticipantCarName } from '../src/User.js';
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -15,8 +15,7 @@ describe('문자열 테스트', () => {
     const inputs = 'obi,hi';
 
     mockQuestions(inputs);
-    const user = new User();
-    const result = await user.inputParticipantCarName();
+    const result = await inputParticipantCarName();
     await expect(result).toEqual(['obi', 'hi']);
   });
 
@@ -24,8 +23,7 @@ describe('문자열 테스트', () => {
     const inputs = 'pobi, ahi';
 
     mockQuestions(inputs);
-    const user = new User();
-    const result = await user.inputParticipantCarName();
+    const result = await inputParticipantCarName();
     await expect(result).toEqual(['pobi', 'ahi']);
   });
 });
