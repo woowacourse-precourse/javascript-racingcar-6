@@ -17,9 +17,9 @@ const validateNames = names => {
 };
 
 const validateTryCount = tryCount => {
-  if (Number(tryCount).toString() !== tryCount)
+  if (Number.isNaN(tryCount))
     throw new Error(ERROR_MESSAGE.INVALID_TRY_COUNT_TYPE);
-  if (Number(tryCount) < 1)
+  if (Number(tryCount) < VALID_LEN.MIN_RACE)
     throw new Error(ERROR_MESSAGE.INVALID_TRY_COUNT_NUM);
 };
 
