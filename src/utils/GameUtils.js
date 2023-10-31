@@ -25,9 +25,7 @@ class GameUtils {
 
   static selectWinners(racingCars) {
     const highestScore = GameUtils.getHighestScore(racingCars);
-
     const winners = GameUtils.findWinners(racingCars, highestScore);
-
     const winnersName = winners.map((winner) => winner.getName());
 
     return winnersName;

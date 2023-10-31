@@ -10,6 +10,7 @@ class App {
 
   async play() {
     this.#racingGame.start();
+
     const cars = await InputManager.inputRacingCarNames();
     this.#racingGame.prepareRacingCarsInStadium(cars);
 

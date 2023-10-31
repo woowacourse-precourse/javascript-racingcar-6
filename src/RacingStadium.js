@@ -44,7 +44,6 @@ class RacingStadium {
     );
 
     const isMovingForwardBoolean = GameUtils.isMovingForward(randomNumber);
-
     if (isMovingForwardBoolean) {
       racingCar.moveForward();
     }
