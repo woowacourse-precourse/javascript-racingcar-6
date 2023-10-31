@@ -39,18 +39,18 @@ describe("자동차 이름 입력 테스트", () => {
     }
   );
 
-  test.each([["hyuri,hyu,yu,hyu "], ["hyuri,ri,hri, hri"]])(
-    "처음과 마지막 공백을 제외할 경우 중복된 이름이 있는 경우",
-    async (inputs) => {
-      //given
-      const nameValid = new NameValid();
+  // test.each([["hyuri,hyu,yu,hyu "], ["hyuri,ri,hri, hri"]])(
+  //   "처음과 마지막 공백을 제외할 경우 중복된 이름이 있는 경우",
+  //   async (inputs) => {
+  //     //given
+  //     const nameValid = new NameValid();
 
-      //when, then
-      await expect(() => nameValid.nameIsValid(inputs)).toThrow(
-        `${NAME_ERROR_MESSAGE.duplicateError}`
-      );
-    }
-  );
+  //     //when, then
+  //     await expect(() => nameValid.nameIsValid(inputs)).toThrow(
+  //       `${NAME_ERROR_MESSAGE.duplicateError}`
+  //     );
+  //   }
+  // );
 
   test.each([[""]])("하나의 공백만 입력된 경우", async (inputs) => {
     //given

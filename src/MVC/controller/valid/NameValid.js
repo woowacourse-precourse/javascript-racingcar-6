@@ -18,9 +18,9 @@ class NameValid {
     if (cleanedNames.includes(SYMBOLS.emptyString)) {
       throw new Error(`${NAME_ERROR_MESSAGE.emptyIncludesError}`);
     }
-    if (new Set(cleanedNames).size !== nameSplit.length) {
-      throw new Error(`${NAME_ERROR_MESSAGE.duplicateError}`);
-    }
+    // if (new Set(cleanedNames).size !== nameSplit.length) {
+    //   throw new Error(`${NAME_ERROR_MESSAGE.duplicateError}`);
+    // }
     return nameSplit;
   }
 }
