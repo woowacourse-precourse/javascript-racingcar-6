@@ -35,16 +35,12 @@ export default class RacingGame {
 
   async #makeCar() {
     const answer = await Input.readCarName();
-    if (isValidateCarName(answer)) {
-      this.#carModel.makeCar(answer);
-    }
+    if (isValidateCarName(answer)) this.#carModel.makeCar(answer);
   }
 
   #racing() {
     const cars = this.#carModel.getCar();
-    cars.forEach(({ name }) => {
-      this.#carModel.updateMove(name, isMove());
-    });
+    cars.forEach(({ name }) => this.#carModel.updateMove(name, isMove()));
     this.#resultModel.addAttempsResult(cars);
     this.#attemps -= RACING.minusCount;
 
