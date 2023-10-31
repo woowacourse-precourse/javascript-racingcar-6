@@ -1,7 +1,8 @@
 // RacingGame.js
 import { Console } from '@woowacourse/mission-utils';
 import Car from './Car';
-import { DITANCE_SYMBOL } from './constants';
+
+const DITANCE_SYMBOL = '-';
 
 class RacingGame {
   constructor(carNames, totalAttempts) {

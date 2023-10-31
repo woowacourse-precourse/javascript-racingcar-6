@@ -1,17 +1,45 @@
 import { Console } from '@woowacourse/mission-utils';
+import CustomError from './CustomError';
+
+const PATTERN = Object.freeze({
+  only_en_ko: /^[a-zA-Z가-힣ㄱ-ㅎ]+$/,
+  only_number: /^\d+$/,
+});
 
 
 class App {
   async play() {
-    const carNames = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n');
-    const totalAttempts = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    try {
+      const carNames = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n');
+      const totalAttempts = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
 
-    if (!this.isValidCarNames(carNames)) {
-      throw new CustomError(',로 구분하여 2인 이상 이름을 입력해주세요');
+      if (!this.isValidCarNames(carNames)) {
+        throw new CustomError('[ERROR] ,로 구분하여 2인 이상 이름을 입력해주세요');
+      }
+      if (!this.isValidTotalAttempts(totalAttempts)) {
+        throw new CustomError('[ERROR] 1회 이상 100회 이하의 횟수만 가능합니다');
+      }
+
+      const racingGame = new RacingGame(carNames, totalAttempts);
+      racingGame.playGame();
+    } catch (error) {
+      throw new CustomError(`[ERROR] ${error.message}`);
     }
-    if (!this.isValidTotalAttempts(totalAttempts)) {
-      throw new CustomError('1회 이상 100회 이하의 횟수만 가능합니다');
+  }
+
+  isValidCarNames(carNames) {
+    const names = carNames.split(',');
+    if (names.length < 2) {
+      throw new CustomError('[ERROR] ,로 구분하여 2인 이상 이름을 입력해주세요');
     }
+    return names.every((name) => name.length <= 5 && PATTERN.only_en_ko.test(name));
+  }
+
+  isValidTotalAttempts(totalAttempts) {
+    if (!PATTERN.only_number.test(totalAttempts) || totalAttempts < 1 || totalAttempts > 100) {
+      throw new CustomError('[ERROR] 1회 이상 100회 이하의 횟수만 가능합니다');
+    }
+    return true;
   }
 }
 
