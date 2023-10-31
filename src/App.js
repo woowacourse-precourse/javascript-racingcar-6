@@ -3,9 +3,10 @@ import { MissionUtils } from '@woowacourse/mission-utils';
 class App {
   constructor() {
     this.carNameArr = [];
+    this.numberOfAttempts = 0;
   }
 
-  async inputCarName() {
+  async getCarName() {
     const carName = await MissionUtils.Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n');
     this.carNameArr = carName.split(',');
 
@@ -24,8 +25,16 @@ class App {
     return this.carNameArr;
   }
 
+  async getNumberOfAttempts() {
+    const numberOfAttempts = await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    this.numberOfAttempts = numberOfAttempts;
+
+    return numberOfAttempts;
+  }
+
   async play() {
-    this.inputCarName();
+    await this.getCarName();
+    await this.getNumberOfAttempts();
   }
 }
 
