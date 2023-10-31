@@ -2,6 +2,7 @@ import { isNameLengthUnderFive } from "./utils/validation.js";
 import { Console } from "@woowacourse/mission-utils";
 import InputHandler from "./utils/InputHandler.js";
 import GameController from "./utils/GameController.js";
+import { GAME_MESSAGE } from "./constants/message.js";
 
 class App {
   constructor() {
@@ -23,7 +24,7 @@ class App {
     gameController.playAllRounds(this.round, this.carArr);
 
     const winnersArr = gameController.selectWinner(this.carArr);
-    Console.print(`GAME_MESSAGE.PRINT_WINNER(${winnersArr.join(", ")})`);
+    Console.print(GAME_MESSAGE.PRINT_WINNER(`${winnersArr.join(", ")}`));
   }
 }
 

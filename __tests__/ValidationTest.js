@@ -1,7 +1,7 @@
 import { mockQuestions } from "../src/testUtils/testUtil.js";
 import App from "../src/App.js";
 
-describe("inputValidationTest", () => {
+describe("NamesValidationTest", () => {
   test("이름이 빈값일 때 예외 처리", async () => {
     mockQuestions([""]);
 
@@ -32,7 +32,43 @@ describe("inputValidationTest", () => {
       "[ERROR]10개 이하로 입력해주세요.",
     );
   });
+  test("이름 마지막에 ,가 포함되었을 때 예외 처리", async () => {
+    const input = ["a,b,", "10"];
+    mockQuestions(input);
 
+    const app = new App();
+
+    await expect(app.play()).resolves.not.toThrow();
+  });
+
+  test.each([[["pobi,javaji"]], [["pobi,eastjun"]]])(
+    "이름 길이에 대한 예외 처리",
+    async (inputs) => {
+      mockQuestions(inputs);
+
+      const app = new App();
+
+      await expect(app.play()).rejects.toThrow(
+        "[ERROR]이름은 5자 이내여야 합니다.",
+      );
+    },
+  );
+
+  test.each([[["pobi,pobi"]], [["pobi,rin,pobi,jun"]]])(
+    "이름 중복에 대한 예외 처리",
+    async (inputs) => {
+      mockQuestions(inputs);
+
+      const app = new App();
+
+      await expect(app.play()).rejects.toThrow(
+        "[ERROR]중복되는 이름이 있습니다.",
+      );
+    },
+  );
+});
+
+describe("RoundValidationTest", () => {
   test("횟수 입력하지 않았을 때 예외 처리", async () => {
     mockQuestions(["pobi,rin", ""]);
 
@@ -63,32 +99,6 @@ describe("inputValidationTest", () => {
 
       await expect(app.play()).rejects.toThrow(
         "[ERROR]1이상의 정수를 입력해 주세요.",
-      );
-    },
-  );
-
-  test.each([[["pobi,javaji"]], [["pobi,eastjun"]]])(
-    "이름 길이에 대한 예외 처리",
-    async (inputs) => {
-      mockQuestions(inputs);
-
-      const app = new App();
-
-      await expect(app.play()).rejects.toThrow(
-        "[ERROR]이름은 5자 이내여야 합니다.",
-      );
-    },
-  );
-
-  test.each([[["pobi,pobi"]], [["pobi,rin,pobi,jun"]]])(
-    "이름 중복에 대한 예외 처리",
-    async (inputs) => {
-      mockQuestions(inputs);
-
-      const app = new App();
-
-      await expect(app.play()).rejects.toThrow(
-        "[ERROR]중복되는 이름이 있습니다.",
       );
     },
   );

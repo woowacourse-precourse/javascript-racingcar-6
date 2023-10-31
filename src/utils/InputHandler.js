@@ -12,10 +12,20 @@ class InputHandler {
   async getCarNamesAndCheck() {
     const carsInput = await Console.readLineAsync(GAME_MESSAGE.ASK_CARS_NAME);
     await isNoInput(carsInput);
+    this.removeLastComma(carsInput);
     const carArr = carsInput.split(",").map((name) => name.trim());
+
     isValidNameInput(carArr);
     hasSameName(carArr);
     return carArr;
+  }
+
+  //인풋 마지막에 ,를 넣으면 자동 삭제
+  removeLastComma(carsInput) {
+    if (carsInput.endsWith(",")) {
+      return carsInput.slice(0, -1);
+    }
+    return carsInput;
   }
 
   async getRoundAndCheck() {

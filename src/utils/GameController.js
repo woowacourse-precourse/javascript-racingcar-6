@@ -41,7 +41,9 @@ class GameController {
         this.carsWithMoveNum[winnersArr] === this.carsWithMoveNum[car]
       ) {
         winnersArr.push(car);
-      } else if (this.carsWithMoveNum[winnersArr] < this.carsWithMoveNum[car]) {
+      } else if (
+        this.carsWithMoveNum[winnersArr[0]] < this.carsWithMoveNum[car]
+      ) {
         winnersArr.length = 0;
         winnersArr.push(car);
       } else {
