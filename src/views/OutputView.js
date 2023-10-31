@@ -2,18 +2,19 @@ import { Console } from '@woowacourse/mission-utils';
 import { MESSAGES } from '../constants/messages.js';
 
 class OutputView {
-  printAdvanceResult(models) {
-    models?.forEach((model) => {
-      Console.print(this.formatResult(model));
+  printAdvanceResult(cars) {
+    cars?.forEach((car) => {
+      Console.print(this.formatAdvanceResult(car));
     });
+    Console.print('\n');
   }
 
-  formatResult({ name, moveCnt }) {
-    return `${name} : ${this.generateAdvanceString(moveCnt)}`;
+  formatAdvanceResult({ name, position }) {
+    return `${name} : ${this.generateAdvanceString(position)}`;
   }
 
-  generateAdvanceString(moveCnt) {
-    return MESSAGES.moveForward.repeat(moveCnt);
+  generateAdvanceString(position) {
+    return MESSAGES.moveForward.repeat(position);
   }
 }
 

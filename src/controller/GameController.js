@@ -1,6 +1,8 @@
+import { Console } from '@woowacourse/mission-utils';
 import CarModel from '../models/CarModel.js';
 import GameModel from '../models/GameModel.js';
 import InputView from '../views/InputView.js';
+import { MESSAGES } from '../constants/messages.js';
 
 class GameController {
   constructor() {
@@ -9,14 +11,19 @@ class GameController {
   }
 
   async startGame() {
+    await this.initGame();
+
+    Console.print(MESSAGES.startRound);
+    while (!this.gameModel.isGameOver()) {
+      this.gameModel.playRound();
+    }
+  }
+
+  async initGame() {
     const cars = await this.inputCars();
     const attemptNum = await this.inputAttemptNum();
 
     this.gameModel = new GameModel(attemptNum, cars);
-
-    while (!this.gameModel.isGameOver()) {
-      this.gameModel.playRound();
-    }
   }
 
   async inputCars() {

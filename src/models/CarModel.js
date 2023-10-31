@@ -6,6 +6,10 @@ class CarModel {
     this.position = 0;
   }
 
+  getCarModel() {
+    return { name: this.name, position: this.position };
+  }
+
   move() {
     const randNum = MissionUtils.Random.pickNumberInRange(0, 9);
 
