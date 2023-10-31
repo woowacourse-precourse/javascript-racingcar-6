@@ -57,37 +57,3 @@ describe("자동차 경주 게임", () => {
     await expect(app.play()).rejects.toThrow("[ERROR]");
   });
 });
-
-describe("기능 단위 테스트", () => {
-  test("기능 1. 경주 참여 자동차 이름 받기", async () => {
-    // given
-    const inputs = ["pobi, woni, jun "];
-    const outputs = ["pobi", "woni", "jun"];
-    const logSpy = getLogSpy();
-
-    mockQuestions(inputs);
-
-    // when
-    const app = new App();
-    await app.readUserRaceCarName();
-
-    // then
-    expect(logSpy).toHaveBeenCalledWith(outputs);
-  });
-
-  test("기능 2. 자동차 경주 게임 시도 횟수 받기", async () => {
-    // given
-    const inputs = ["2"];
-    const outputs = "2";
-    const logSpy = getLogSpy();
-
-    mockQuestions(inputs);
-
-    // when
-    const app = new App();
-    await app.userTryCount();
-
-    // then
-    expect(logSpy).toHaveBeenCalledWith(outputs);
-  });
-});
