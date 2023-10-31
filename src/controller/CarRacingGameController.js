@@ -9,15 +9,30 @@ class CarRacingGameController {
   #carRacingGame;
 
   async startGame() {
-    const carNames = await InputView.getCarNames();
-    InputValidator.validateCarNames(carNames);
+    const carNames = await this.#requireCarNames();
 
-    const round = await InputView.getRound();
-    InputValidator.validateRound(round);
+    const round = await this.#requireRound();
 
     this.#carRacingGame = new CarRacingGame(carNames, round);
 
     return this.currentRacing();
+  }
+
+  async #requireCarNames() {
+    const inputCarNames = await InputView.getCarNames();
+    const carNames = inputCarNames.split(',').map((name) => name.trim());
+
+    InputValidator.validateCarNames(carNames);
+
+    return carNames;
+  }
+
+  async #requireRound() {
+    const round = await InputView.getRound();
+
+    InputValidator.validateRound(round);
+
+    return round;
   }
 
   currentRacing() {

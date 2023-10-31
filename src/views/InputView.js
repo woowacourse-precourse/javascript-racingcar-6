@@ -3,9 +3,7 @@ import { MESSAGE } from '../constants/messages';
 
 const InputView = {
   async getCarNames() {
-    const carNames = await Console.readLineAsync(MESSAGE.carsNameInputGuide);
-
-    return carNames.split(',').map((name) => name.trim());
+    return await Console.readLineAsync(MESSAGE.carsNameInputGuide);
   },
 
   async getRound() {
