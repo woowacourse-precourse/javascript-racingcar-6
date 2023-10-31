@@ -17,11 +17,13 @@ class View {
   }
 
   printCarResult(carName, distance) {
-    Console.print(MESSAGE.RESULT_DISTANCE(carName, distance));
+    Console.print(`${carName} : ${SIGN.DASH.repeat(distance)}`);
   }
 
   printWinners(winnerList) {
-    Console.print(MESSAGE.RESULT_WINNER(winnerList));
+    Console.print(
+      winnerList.join(SIGN.DECIMAL + SIGN.SPACE) + MESSAGE.RESULT_WINNER,
+    );
   }
 
   printSpace() {
