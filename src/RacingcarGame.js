@@ -1,3 +1,5 @@
+import Car from "./Car.js";
+
 class RacingcarGame {
   racingCar = {};
   async start() {
@@ -8,10 +10,16 @@ class RacingcarGame {
     // 시도 횟수가 종료되면 printWinner()로 우승자를 출력하고 종료한다.
   }
 
-  race(carNames) {
-    // carNames를 순환하며 Car.chooseGoOrStop() 으로 전진 혹은 정지를 결정한다.
-    // 전진할 경우 racingCar[자동차이름]++
-    // printRacingResult()로 실행 결과를 출력한다.
+  race() {
+    const car = new Car();
+
+    for (let carName in this.racingCar) {
+      if (car.chooseGoOrStop()) {
+        this.racingCar[carName]++;
+      }
+    }
+
+    this.printRacingResult();
   }
 
   printRacingResult() {
