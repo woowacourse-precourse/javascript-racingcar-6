@@ -71,6 +71,15 @@ describe("자동차 경주 게임 테스트", () => {
 
   test("우승자를 출력한다", () => {
     // printWinner() 테스트
+    const logSpy = getLogSpy();
+    const output = "l, o, v, e";
+
+    const game = new RacingcarGame();
+    game.racingCar = { l: 4, m: 2, n: 3, o: 4, p: 3, v: 4, e: 4 };
+
+    game.printWinner();
+
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
   });
 
   test("시도 횟수만큼 경주를 실행하고, 실행 결과를 출력한다", () => {
