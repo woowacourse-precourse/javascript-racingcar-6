@@ -2,15 +2,15 @@ import { SYMBOL } from "../constants/constants";
 import InputView from "../view/inputView";
 
 class Car {
-  #cars;
+  #car;
 
   constructor(cars) {
-    this.#cars = cars;
+    this.#car = car;
     this.progress = 0;
   }
 
-  get cars() {
-    return this.#cars;
+  get car() {
+    return this.#car;
   }
   get progress() {
     return this.progress;
