@@ -6,10 +6,14 @@ import { isNumber } from './utils/validationUtils.js';
 class App {
   constructor(){
     this.carList = [];
+    this.gameCount;
   }
   async play() {
-    this.getCarNames();
-    const playCount = getPlayCount();
+    await this.getCarNames();
+    await this.getPlayCount();
+    
+    // 2. 게임 진행
+    this.gameStart();
   }
   async getCarNames(){
     // 1-1. 자동차 이름을 입력받기
@@ -25,11 +29,18 @@ class App {
     })
   }
   async getPlayCount(){
+    // 1-2. 몇 번 이동을 진행할지 입력받기
     const playCountInput = await Console.readLineAsync(MESSAGES.GET_PLAY_COUNT);
     if(!this.isValidPlayCountInput(playCountInput)){
       throw new Error(ERRORS.INVALID_INPUT);
     }
-    return playCountInput;
+    this.gameCount = playCountInput;
+  }
+  gameStart(){
+    // 3. 자동차 이동
+    this.carList.forEach((car) => {
+      car.move();
+    })
   }
   isValidCarName(carName){
     // 이름에 없는 경우 ex) ,,tom,elice
