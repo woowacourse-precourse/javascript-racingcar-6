@@ -10,19 +10,6 @@ const mockQuestions = (inputs) => {
   });
 };
 
-const mockRandoms = (numbers) => {
-  MissionUtils.Random.pickNumberInRange = jest.fn();
-  numbers.reduce((acc, number) => {
-    return acc.mockReturnValueOnce(number);
-  }, MissionUtils.Random.pickNumberInRange);
-};
-
-const getLogSpy = () => {
-  const logSpy = jest.spyOn(MissionUtils.Console, 'print');
-  logSpy.mockClear();
-  return logSpy;
-};
-
 describe('getAndValidatePlayerName', () => {
   test('사용자 이름 입력 및 유효성 검사', async () => {
     const inputs = ['john', 'manu,max', 'jeong'];
