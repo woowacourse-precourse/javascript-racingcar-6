@@ -1,13 +1,13 @@
 import {
-  inputCarNameHandler,
-  inputTryNumberHandler,
-} from "./utils/inputHandler.js";
+  handleCarNameInput,
+  handleTryNumberInput,
+} from "./utils/handleInput.js";
 import RacingGame from "./racingGame/RacingGame.js";
 
 class App {
   async play() {
-    const carNameList = await inputCarNameHandler();
-    const tryNumber = await inputTryNumberHandler();
+    const carNameList = await handleCarNameInput();
+    const tryNumber = await handleTryNumberInput();
 
     const racingGame = new RacingGame(carNameList, tryNumber);
     racingGame.startGame();
