@@ -5,7 +5,10 @@ describe('자동차 이름 입력', () => {
 
   test('자동차 이름 입력값을 Map으로 반환', () => {
     // given
-    const inputs = ['람보르기니,롤스로이스,스피라', 'Fiat,BMW,Jeep,Ford,Volvo'];
+    const inputs = [
+      '람보르기니,롤스로이스,스피라1',
+      'Fiat,BMW,Jeep,Ford,Volvo',
+    ];
     const outputs = inputs.map(
       (input) => new Map(input.split(',').map((car) => [car, 0])),
     );
@@ -19,7 +22,7 @@ describe('자동차 이름 입력', () => {
     });
   });
 
-  test.each([['KIA,Honda,BMW!'], ['Honda,Jaguar'], ['Honda,Honda']])(
+  test.each([['KIA,Honda,BMW!'], ['Honda,Jaguar'], ['Honda,Honda'], ['BMW']])(
     '이름에 대한 예외 처리',
     (input) => {
       // when
