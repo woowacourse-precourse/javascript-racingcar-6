@@ -6,7 +6,7 @@
 
 </br>
 
-## getCarname()
+## getCarName()
 
 ---
 
@@ -52,7 +52,7 @@ readLineAsync로 입력 받은 값을 숫자형으로 형변환 한다.
 </br>
 </br>
 
-## perfomrRace(cars)
+## performRace(cars)
 
 ---
 
