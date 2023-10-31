@@ -1,49 +1,56 @@
 import { Console, Random } from "@woowacourse/mission-utils";
+
 class App {
   constructor() {
     this.carNameList = [];
     this.dashSymbol = [];
     this.randomNumArr = [];
-    this.dash = "-";
-    this.errorMessage = [
+
+    this.ERROR_MESSAGE = [
       "[ERROR] 자동차 이름은 5자 이하로 입력해주세요.",
       "[ERROR] 숫자가 잘못된 형식입니다.",
     ];
   }
+
   async play() {
-    this.gameplay();
+    this.gamePlay();
 
     this.carNameList = await this.inputCarName();
 
-    const isInvalidCarNames = this.isValidCarNames();
-
-    if (isInvalidCarNames) {
+    if (!this.isValidCarNames()) {
       throw new Error("[ERROR] 자동차 이름을 5자 이하로 입력해주세요");
     }
 
+    this.carNameList.forEach(() => {
+      this.dashSymbol.push("");
+    });
+
     Console.print("시도할 횟수는 몇 회인가요?");
     this.attemptCount = await this.inputAttemptCount();
-    this.isValidAttemptCount(this.attemptCount);
+    this.validateAttemptCount(this.attemptCount);
 
     Console.print("");
     Console.print("실행 결과");
     Console.print("");
 
     let currentCount = 1;
-    while (currentCount <= this.attemptCount) {
-      this.createRandomNumber();
+    while (true) {
+      this.randomNumArr = this.createRandomNumberArr(this.carNameList.length);
+
       this.updateCarPosition();
       this.displayCarPosition();
       Console.print("");
+
       if (currentCount === this.attemptCount) {
         const maxValue = this.getMaxValue();
         this.getFinalWinner(maxValue);
+        break;
       }
       currentCount++;
     }
   }
 
-  gameplay() {
+  gamePlay() {
     Console.print(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
     );
@@ -55,44 +62,45 @@ class App {
   }
   isValidCarNames() {
     for (let i = 0; i < this.carNameList.length; i++) {
-      const isInvalidCarName =
-        this.carNameList[i].length > 5 || this.carNameList[i].length === 0;
-      return isInvalidCarName;
+      const isValidCarName = !(
+        this.carNameList[i].length > 5 || this.carNameList[i].length === 0
+      );
+
+      if (!isValidCarName) {
+        return false;
+      }
     }
+    return true;
   }
 
   async inputAttemptCount() {
     const countValue = await Console.readLineAsync("");
     return parseInt(countValue);
   }
-  isValidAttemptCount(count) {
+
+  validateAttemptCount(count) {
     if (isNaN(count)) {
-      throw new Error(this.errorMessage[1]);
+      throw new Error(this.ERROR_MESSAGE[1]);
     }
   }
 
-  createRandomNumber() {
-    this.randomNumArr = [];
-    for (let i = 0; i < this.carNameList.length; i++) {
-      const randomNum = Random.pickNumberInRange(0, 9);
-      this.randomNumArr.push(randomNum);
-    }
+  createRandomNumberArr(len) {
+    return Array.from({ length: len }).map(() =>
+      Random.pickNumberInRange(0, 9)
+    );
   }
 
   updateCarPosition() {
-    for (let i = 0; i < this.carNameList.length; i++) {
-      if (!this.dashSymbol[i]) {
-        this.dashSymbol[i] = "";
-      }
-      const dashes = "-".repeat(this.randomNumArr[i] >= 4 ? 1 : 0);
-      this.dashSymbol[i] += dashes;
-    }
+    this.carNameList.forEach((_, index) => {
+      const dashes = "-".repeat(this.randomNumArr[index] >= 4 ? 1 : 0);
+      this.dashSymbol[index] += dashes;
+    });
   }
 
   displayCarPosition() {
-    for (let j = 0; j < this.carNameList.length; j++) {
-      Console.print(`${this.carNameList[j]} : ${this.dashSymbol[j]}`);
-    }
+    this.carNameList.forEach((value, index) => {
+      Console.print(`${value} : ${this.dashSymbol[index]}`);
+    });
   }
 
   getMaxValue() {
