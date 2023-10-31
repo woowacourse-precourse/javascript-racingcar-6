@@ -32,7 +32,11 @@ const outputResultsEveryIteration = racers => {
     .concat('\n');
   Console.print(result);
 };
-const outputWinner = winners => {
+const outputWinner = racers => {
+  const winners = racers
+    .sort((a, b) => b.move - a.move)
+    .filter(racer => racer.move === racers[0].move)
+    .map(racer => racer.carName);
   Console.print(MESSAGE.OUTPUT_WINNER(winners));
 };
 
