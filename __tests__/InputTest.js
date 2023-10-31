@@ -1,0 +1,65 @@
+import InputView from "../src/view/InputView.js";
+import { MissionUtils } from "@woowacourse/mission-utils";
+
+const mockQuestions = (inputs) => { // ["pobi,woni", "1"]
+    MissionUtils.Console.readLineAsync = jest.fn();
+
+    MissionUtils.Console.readLineAsync.mockImplementation(() => {
+        const input = inputs.shift();
+        return Promise.resolve(input);
+    });
+};
+
+// 사용자로부터 자동차 이름을 입력받는 기능 테스트
+describe("자동차 이름", () => {
+    test("유효한 자동차 이름", async () => {
+        // given
+        const input = ["안녕, p0by,반가wo"];
+        const output = ["안녕", "p0by", "반가wo"];
+
+        mockQuestions(input); // 사용자가 입력한 것처럼 테스트
+
+        const carNames = await InputView.getCarNames();
+
+        expect(carNames).toEqual(output);
+    })
+
+    test.each([
+        [[""]], // 빈 값 불가
+        [["pobi,okxooxoo"]], // 5글자 초과 불가
+        [["poby"]], // 자동차 1개 불가
+        [["p$by,poby"]], // 특수문자 불가
+        [["pobi,poby,"]], // 마지막 문자 쉼표 불가
+    ])("자동차 이름에 대한 예외 처리", async (input) => {
+        mockQuestions(input);
+
+        await expect(InputView.getCarNames()).rejects.toThrow("[ERROR] 자동차 이름이 잘못된 형식입니다.");
+    });
+});
+
+// 사용자로부터 시도할 횟수를 입력받는 기능 테스트
+describe("시도할 횟수", () => {
+    test("시도할 횟수는 1 이상의 정수", async () => {
+        // given
+        const input = ["1"];
+        const output = 1;
+
+        mockQuestions(input); // 사용자가 입력한 것처럼 테스트
+
+        // when
+        const tryNumber = await InputView.getTryNumber();
+
+        // then
+        expect(tryNumber).toEqual(output);
+    });
+
+    test.each([
+        [["0"]],
+        [["-1"]],
+        [["ok"]]
+    ])("시도할 횟수에 대한 예외 처리", async (input) => {
+        mockQuestions(input);
+
+        await expect(InputView.getTryNumber()).rejects.toThrow("[ERROR] 시도할 횟수는 1 이상의 정수입니다.");
+    });
+});
