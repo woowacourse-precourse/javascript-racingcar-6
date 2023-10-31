@@ -1,7 +1,7 @@
 import InputView from './view/InputView.js';
 import OutputView from './view/OutputView.js';
 import Car from './model/Car.js';
-import RandomNumber from './model/RandomNumber.js';
+import RandomNumber from './RandomNumber.js';
 
 import handleError from './utils/handleError.js';
 import { validateCarName, validateTryNumber } from './validateInput.js';
@@ -14,8 +14,8 @@ class App {
 
   constructor() {
     this.cars = [];
-    this.randomNumber = new RandomNumber();
     this.#currentRound = 0;
+    this.#lastRound = 0;
   }
 
   async play() {
@@ -75,7 +75,7 @@ class App {
   }
 
   run(car) {
-    car.run(this.randomNumber.create());
+    car.run(RandomNumber.create());
   }
 
   printStep() {

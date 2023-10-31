@@ -1,10 +1,10 @@
 import { Random } from '@woowacourse/mission-utils';
-import { MIN_NUMBER, MAX_NUMBER } from '../constants.js';
+import { MIN_NUMBER, MAX_NUMBER } from './constants.js';
 
-class RandomNumber {
+const RandomNumber = {
   create() {
     return Random.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
-  }
-}
+  },
+};
 
 export default RandomNumber;
