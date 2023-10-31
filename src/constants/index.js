@@ -15,7 +15,7 @@ export const ERROR_MESSAGES = Object.freeze({
 
 export const REGEX_PATTERNS = Object.freeze({
   ALPHABETIC: /^[a-zA-Z]{1,5}$/,
-  NUMERICL: /^[1-9]\d*$/,
+  NUMERICL: /^(?:[1-9]|[1-9][0-9]|100)$/,
 });
 
 /** 전진 여부를 결정하는 최소값 */
