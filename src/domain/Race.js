@@ -25,6 +25,11 @@ class Race {
     }
     this.referee.showResults();
   }
+
+  showWinners() {
+    const winners = this.referee.findWinners();
+    View.printWinners(winners);
+  }
 }
 
 export default Race;

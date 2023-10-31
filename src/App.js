@@ -5,6 +5,7 @@ class App {
     const race = new Race();
     await race.prepare();
     race.race();
+    race.showWinners();
   }
 }
 

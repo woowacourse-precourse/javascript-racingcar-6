@@ -7,6 +7,7 @@ class View {
   static #NUMBER_OF_ROUNDS_QUERY = '시도할 횟수는 몇 회인가요? ';
   static #RESULT = '실행 결과';
   static #FORWARD_MARK = '-';
+  static #WINNER = '최종 우승자';
 
   static async askCarNames() {
     const answer = await Console.readLineAsync(this.#CAR_NAMES_QUERY);
@@ -36,6 +37,15 @@ class View {
 
   static printResults(results) {
     const message = this.writeResultMessage(results);
+    Console.print(message);
+  }
+
+  static writeWinnerMessage(winners) {
+    return `${this.#WINNER} : ${winners.join(`${this.#DELIMITER} `)}`;
+  }
+
+  static printWinners(winners) {
+    const message = this.writeWinnerMessage(winners);
     Console.print(message);
   }
 }
