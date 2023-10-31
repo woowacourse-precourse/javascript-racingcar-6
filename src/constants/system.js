@@ -2,4 +2,5 @@
 // eslint-disable-next-line import/prefer-default-export
 export const SYSTEM_CONFIG = Object.freeze({
   separator: ',',
+  winnerSeparator: ',',
 });

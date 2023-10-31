@@ -7,7 +7,7 @@ const MESSAGES = {
     return `${name} : ${skid}`;
   },
   winners(names) {
-    return `\n최종 우승자 : ${names.join(',')}`;
+    return `\n최종 우승자 : ${names.join(SYSTEM_CONFIG.winnerSeparator)}`;
   },
 };
 
