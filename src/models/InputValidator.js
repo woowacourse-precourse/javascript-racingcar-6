@@ -1,6 +1,14 @@
 import { hasWhiteSpace, isInteger, isNumber } from '../utils/StringUtils.js';
 
+/**
+ * 입력 유효성 검사 모델
+ */
 export const InputValidator = {
+  /**
+   * 자동차 이름 입력 유효성 검사
+   * @param {string} carName 자동차 이름
+   * @returns {boolean} 유효성 여부
+   */
   isValidCarName: (carName) => {
     // 공백 문자가 입력됐을 때
     if (carName === '') return false;
@@ -14,6 +22,11 @@ export const InputValidator = {
     return true;
   },
 
+  /**
+   * 시도 횟수 입력 유효성 검사
+   * @param {string} num 시도 횟수
+   * @returns {boolean} 유효성 여부
+   */
   isValidAttemptNum: (num) => {
     // 공백 문자가 입력됐을 때
     if (num === '') return false;
