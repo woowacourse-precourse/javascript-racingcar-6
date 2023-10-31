@@ -10,12 +10,6 @@ const mockQuestions = (inputs) => {
   });
 };
 
-const getLogSpy = () => {
-  const logSpy = jest.spyOn(MissionUtils.Console, 'print');
-  logSpy.mockClear();
-  return logSpy;
-};
-
 describe('게임 횟수 입력 테스트', () => {
   test('올바른 게임 횟수 입력 테스트', async () => {
     // given

@@ -10,12 +10,6 @@ const mockQuestions = (inputs) => {
   });
 };
 
-const getLogSpy = () => {
-  const logSpy = jest.spyOn(MissionUtils.Console, 'print');
-  logSpy.mockClear();
-  return logSpy;
-};
-
 describe('게임 유저이름 입력 테스트', () => {
   test('올바른 한 대 이름 입력 확인', async () => {
     // given
