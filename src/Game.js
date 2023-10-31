@@ -1,5 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
-import Car from "./Car";
+import Car from "./Car.js";
 
 class Game {
   constructor(count, carNames) {
