@@ -18,7 +18,7 @@ describe('자동차 이름 입력 유효성 테스트', () => {
     const app = new App();
     mockQuestions(input);
 
-    const result = await app.getRacingCarNameInput();
+    const result = await app.getRacingCarNames();
 
     expect(JSON.stringify(result)).toEqual(
       JSON.stringify([new Car('aria'), new Car('evan')])
@@ -31,7 +31,7 @@ describe('자동차 이름 입력 유효성 테스트', () => {
     const app = new App();
     mockQuestions(input);
 
-    const result = await app.getRacingCarNameInput();
+    const result = await app.getRacingCarNames();
 
     expect(JSON.stringify(result)).toEqual(JSON.stringify([new Car('aria')]));
   });
@@ -42,7 +42,7 @@ describe('자동차 이름 입력 유효성 테스트', () => {
     const app = new App();
     mockQuestions(input);
 
-    await expect(async () => await app.getRacingCarNameInput()).rejects.toThrow(
+    await expect(async () => await app.getRacingCarNames()).rejects.toThrow(
       '[ERROR]'
     );
   });
@@ -53,7 +53,7 @@ describe('자동차 이름 입력 유효성 테스트', () => {
     const app = new App();
     mockQuestions(input);
 
-    await expect(async () => await app.getRacingCarNameInput()).rejects.toThrow(
+    await expect(async () => await app.getRacingCarNames()).rejects.toThrow(
       '[ERROR]'
     );
   });
@@ -64,7 +64,7 @@ describe('자동차 이름 입력 유효성 테스트', () => {
     const app = new App();
     mockQuestions(input);
 
-    await expect(async () => await app.getRacingCarNameInput()).rejects.toThrow(
+    await expect(async () => await app.getRacingCarNames()).rejects.toThrow(
       '[ERROR]'
     );
   });
@@ -77,7 +77,7 @@ describe('자동차 경주 횟수 입력 유효성 테스트', () => {
     const app = new App();
     mockQuestions(input);
 
-    const result = await app.getRacingCountInput();
+    const result = await app.getRacingGameCount();
 
     expect(result).toEqual('3');
   });
@@ -88,7 +88,7 @@ describe('자동차 경주 횟수 입력 유효성 테스트', () => {
     const app = new App();
     mockQuestions(input);
 
-    await expect(async () => await app.getRacingCountInput()).rejects.toThrow(
+    await expect(async () => await app.getRacingGameCount()).rejects.toThrow(
       '[ERROR]'
     );
   });
@@ -99,7 +99,7 @@ describe('자동차 경주 횟수 입력 유효성 테스트', () => {
     const app = new App();
     mockQuestions(input);
 
-    await expect(async () => await app.getRacingCountInput()).rejects.toThrow(
+    await expect(async () => await app.getRacingGameCount()).rejects.toThrow(
       '[ERROR]'
     );
   });
@@ -110,7 +110,7 @@ describe('자동차 경주 횟수 입력 유효성 테스트', () => {
     const app = new App();
     mockQuestions(input);
 
-    await expect(async () => await app.getRacingCountInput()).rejects.toThrow(
+    await expect(async () => await app.getRacingGameCount()).rejects.toThrow(
       '[ERROR]'
     );
   });
@@ -121,7 +121,7 @@ describe('자동차 경주 횟수 입력 유효성 테스트', () => {
     const app = new App();
     mockQuestions(input);
 
-    await expect(async () => await app.getRacingCountInput()).rejects.toThrow(
+    await expect(async () => await app.getRacingGameCount()).rejects.toThrow(
       '[ERROR]'
     );
   });
@@ -132,7 +132,7 @@ describe('자동차 경주 횟수 입력 유효성 테스트', () => {
     const app = new App();
     mockQuestions(input);
 
-    await expect(async () => await app.getRacingCountInput()).rejects.toThrow(
+    await expect(async () => await app.getRacingGameCount()).rejects.toThrow(
       '[ERROR]'
     );
   });

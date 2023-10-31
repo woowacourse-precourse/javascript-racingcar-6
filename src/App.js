@@ -1,44 +1,44 @@
 import { Random, Console } from '@woowacourse/mission-utils';
 import { INPUT_MESSAGES, OUTPUT_MESSAGES } from './Constants.js';
 import {
-  checkNullValidation,
-  checkCarNameLengthValidation,
-  checkCarNameDuplicateValidation,
-  checkCountTypeValidation,
-  checkCountRangeValidation,
+  validateInputEmpty,
+  validateCarNameUnique,
+  validateCarNameLength,
+  validateGameCountType,
+  validateGameCountRange,
 } from './utils/validation.js';
 import Car from './Car.js';
 
 class App {
-  getRacingCarNameInput = async () => {
+  getRacingCarNames = async () => {
     const input = await Console.readLineAsync(INPUT_MESSAGES.carName);
 
-    checkNullValidation(input);
+    validateInputEmpty(input);
 
-    const carNames = input.split(',').map((el) => {
-      checkCarNameLengthValidation(el);
-      return el;
+    const carNames = input.split(',').map((carName) => {
+      validateCarNameLength(carName);
+      return carName;
     });
 
-    checkCarNameDuplicateValidation(carNames);
+    validateCarNameUnique(carNames);
 
-    return carNames.map((el) => new Car(el));
+    return carNames.map((carName) => new Car(carName));
   };
 
-  getRacingCountInput = async () => {
+  getRacingGameCount = async () => {
     const input = await Console.readLineAsync(INPUT_MESSAGES.gameCount);
 
-    checkNullValidation(input);
-    checkCountTypeValidation(input);
-    checkCountRangeValidation(input);
+    validateInputEmpty(input);
+    validateGameCountType(input);
+    validateGameCountRange(input);
 
     return input;
   };
 
   calculateFinalWinner = (cars) => {
-    const maxStep = Math.max(...cars.map((el) => el.step));
+    const maxStep = Math.max(...cars.map((car) => car.step));
 
-    return cars.filter((el) => el.step === maxStep);
+    return cars.filter((car) => car.step === maxStep);
   };
 
   printAllRacingResult = (cars, count) => {
@@ -64,8 +64,8 @@ class App {
 
   async play() {
     try {
-      const cars = await this.getRacingCarNameInput();
-      const count = await this.getRacingCountInput();
+      const cars = await this.getRacingCarNames();
+      const count = await this.getRacingGameCount();
 
       this.printAllRacingResult(cars, count);
 
