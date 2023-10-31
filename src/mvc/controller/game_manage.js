@@ -1,3 +1,5 @@
+import CalculateAdvance from '../model/calculate_advance.js';
+import GameWinner from '../model/game_winner.js';
 import CarNameError from '../../utils/error/car_name_error.js';
 import RacingCntError from '../../utils/error/racing_cnt_error.js';
 import InputQuestion from '../../ui/input_question.js';
@@ -35,7 +37,14 @@ class GameManage {
     const ERROR = new RacingCntError(this.RACING_CNT);
     if (!ERROR.racingCntNotExist()
         && !ERROR.racingCntNotNum()
-        && !ERROR.racingCntNotPositiveNum()) {}
+        && !ERROR.racingCntNotPositiveNum()) {
+      this.gameResult();
+    }
+  }
+
+  gameResult() {
+    const RESULT = new CalculateAdvance(this.RACING_CAR, this.RACING_CNT).gameResult();
+    const WINNER = new GameWinner(RESULT).findWinner();
   }
 }
 
