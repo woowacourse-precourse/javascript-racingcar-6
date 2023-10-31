@@ -93,15 +93,18 @@ describe('Track 테스트', () => {
   });
 
   it('`getCurrentLapResult()`는 현재 랩의 결과를 반환합니다.', () => {
+    // given
     const lap = 3;
     const users = [User.of('레이서'), User.of('레이서2')];
     const track = Track.of(users, lap);
     mockRandoms([5, 2, 5, 3, 1, 2]);
 
+    // when
     for (let i = 0; i < lap; i += 1) {
       track.processLap();
     }
 
+    // then
     expect(track.getCurrentLapResult()).toEqual({
       레이서: '--',
       레이서2: '',
@@ -112,15 +115,18 @@ describe('Track 테스트', () => {
     { randoms: [5, 2, 5, 3], winners: ['레이서1'] },
     { randoms: [5, 2, 2, 4], winners: ['레이서1', '레이서2'] },
   ])('`getCurrentWinners()`는 현재 랩의 선두주자들을 반환합니다.', ({ randoms, winners }) => {
+    // given
     const lap = 2;
     const users = [User.of('레이서1'), User.of('레이서2')];
     const track = Track.of(users, lap);
     mockRandoms(randoms);
 
+    // when
     for (let i = 0; i < lap; i += 1) {
       track.processLap();
     }
 
+    // then
     expect(track.getCurrentWinners()).toEqual(winners);
   });
 });
