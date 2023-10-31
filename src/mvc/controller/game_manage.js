@@ -20,7 +20,13 @@ class GameManage {
         && !ERROR.carNameNotString()
         && !ERROR.carNameLenOverFive()
         && !ERROR.carNameBlank()
-        && !ERROR.carNameDuplication()) {}
+        && !ERROR.carNameDuplication()) {
+      await this.inputRacingCnt();
+    }
+  }
+
+  async inputRacingCnt() {
+    this.RACING_CNT = await userInput(InputQuestion.racingCnt());
   }
 }
 
