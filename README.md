@@ -38,6 +38,21 @@ npm run test
 ┗ 📜Referee.js : 자동차들의 전진 횟수를 비교해 우승자 선정
 ```
 
+## 테스트 코드 작성
+
+```
+📦__tests__
+ ┣ 📜ApplicationTest.js
+ ┣ 📜CarTest.js : Car 클래스 기능에 대한 테스트
+ ┣ 📜GameRoundTest.js : 사용자가 입력한 이동 횟수에 따른 게임 진행 테스트
+ ┣ 📜GameTest.js : Game 클래스 기능에 대한 테스트
+ ┣ 📜MessageTest.js : 게임 진행 시 출력되는 메세지에 대한 테스트
+ ┣ 📜RefereeTest.js : 자동차 전진 횟수 점수 비교 및 우승자 판별에 대한 테스트
+ ┣ 📜StringTest.js
+ ┣ 📜ValidateTest.js : 입력값의 유효성 검사에 대한 테스트
+ ┗ 📜WinnerTest.js : 단일,복수 우증자 판별 및 결과 출력에 대한 테스트
+```
+
 ## 공부
 
 ### 의미 있는 커밋 메세지
