@@ -1,6 +1,7 @@
 import { MissionUtils } from '@woowacourse/mission-utils'
 import Input from '../View/Input'
 import Car from '../Model/Car'
+import { LOGS } from '../libs/LOGS';
 
 class Race{
     count;
@@ -21,7 +22,7 @@ class Race{
         this.saveCarInfo(carNames)
 
         this.count = await Input.getCount()
-        MissionUtils.Console.print('')
+        MissionUtils.Console.print(LOGS.PRINT_ENTER)
     }
 
     saveCarInfo(carNames){
@@ -32,10 +33,10 @@ class Race{
     }
 
     playGame(){
-        MissionUtils.Console.print('실행 결과')
+        MissionUtils.Console.print(LOGS.PRINT_RESULT)
         for(let i=0; i<this.count; i++){
             this.moveCars()
-            MissionUtils.Console.print('')
+            MissionUtils.Console.print(LOGS.PRINT_ENTER)
         }
 
         const winner = this.getWinner()
@@ -68,7 +69,7 @@ class Race{
     }
 
     printWinner(winner){
-        MissionUtils.Console.print(`최종 우승자 : ${winner}`)
+        MissionUtils.Console.print(`${LOGS.PRINT_WINNER}${winner}`)
     }
 }
 
