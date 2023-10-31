@@ -1,7 +1,7 @@
 import InputView from "./view/InputView.js";
 import OutputView from './view/OutputView.js';
 
-import RacingManager from './RacingManager.js';
+import Racing from './Racing.js';
 import Data from './Data.js';
 import ErrorHandler from './ErrorHandler.js';
 
@@ -17,9 +17,9 @@ class App {
     ErrorHandler.countType(count);
   
     const refinedCarNames = this.data.carNamesTypeConversion(carNames);
-    const manager = new RacingManager(refinedCarNames, count, this.data);
+    const manager = new Racing(refinedCarNames, count, this.data);
   
-    OutputView.racingProgress(refinedCarNames, manager.racingResult());
+    OutputView.racingProgress(refinedCarNames, manager.result());
     OutputView.printWinner(manager.determineWinner());
   }
   

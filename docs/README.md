@@ -45,7 +45,7 @@
   - OutputView.js
     - 게임진행의 전체적인 결과 출력부분
 
-- RacingManager.js
+- Racing.js
 
   - 게임의 중요 계산 로직을 관리하는 역할
 
