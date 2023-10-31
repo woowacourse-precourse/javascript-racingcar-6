@@ -31,15 +31,29 @@ class App {
     CARS_ARRAY.forEach((name) => {
       const car = new Car(name);
       CARS.push(car);
-      // MissionUtils.Console.print(CARS);
     });
 
     return CARS;
   }
 
+  async inputCountNumber() {
+    await MissionUtils.Console.print("시도할 횟수는 몇 회인가요?");
+
+    const COUNT_NUMBER = parseFloat(
+      await MissionUtils.Console.readLineAsync("")
+    );
+
+    if (!Number.isInteger(COUNT_NUMBER) || COUNT_NUMBER <= 0) {
+      throw new Error("1 이상의 정수를 입력해주세요.");
+    }
+
+    return COUNT_NUMBER;
+  }
+
   async play() {
     const CARS_ARRAY = await this.inputCarName();
     await this.saveCarName(CARS_ARRAY);
+    // MissionUtils.Console.print(await this.inputCountNumber());
   }
 }
 
