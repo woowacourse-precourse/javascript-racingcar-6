@@ -58,7 +58,7 @@ class App {
         break;
       }
       case "finish": {
-        const winners = this.#findWinner();
+        const winners = this.#findWinners();
         print(`최종 우승자 : ${winners.map((winner) => winner.getName()).join(", ")}`);
         break;
       }
@@ -72,19 +72,9 @@ class App {
     return this.#cars.reduce((acc, car) => acc.concat(`${car.getName()} : ${"-".repeat(car.getMileage())}\n`), "");
   }
 
-  #findWinner() {
-    return this.#cars.reduce((acc, car) => {
-      const maxMileage = acc[0] ? acc[0].getMileage() : 0;
-      const currentMileage = car.getMileage();
-
-      if (currentMileage === maxMileage) {
-        return [...acc, car];
-      }
-      if (currentMileage > maxMileage) {
-        return [car];
-      }
-      return acc;
-    }, []);
+  #findWinners() {
+    const maxMileage = Math.max(this.#cars.map((car) => car.getMileage()));
+    return this.#cars.filter((car) => car.getMileage() < maxMileage);
   }
 }
 
