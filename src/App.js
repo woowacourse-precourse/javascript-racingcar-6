@@ -6,7 +6,12 @@ class App {
     this.GAME_ROUND = 0;
     this.GAME_ROUND_RESULT = {};
   }
-  async play() {}
+  async play() {
+    await this.gameStart();
+    this.makePlayerInfo();
+    this.playGame();
+    this.printGameResult();
+  }
 
   async gameStart() {
     try {
@@ -32,24 +37,28 @@ class App {
     }
   }
 
-  // 라운드 당 진행할 로직
+  // 게임 플레이어 초기세팅
+  makePlayerInfo() {
+    this.GAME_PLAYERS.forEach(player => {
+      this.GAME_ROUND_RESULT[player] = 0;
+    })
+  }
+
+  // 라운드 당 진행할 게임 로직
   makeGameRoundData() {
-    this.GAME_PLAYERS.forEach((player) => {
+    for (let [player, result] of Object.entries(this.GAME_ROUND_RESULT)) {
       const PLAYER_NUM = Random.pickNumberInRange(0, 9);
       if (PLAYER_NUM >= 4) {
-        if (this.GAME_ROUND_RESULT[player] === undefined) {
-          this.GAME_ROUND_RESULT[player] = '-';
-        } else {
-          this.GAME_ROUND_RESULT[player] += '-';
-        }
+        result += 1;
+        this.GAME_ROUND_RESULT[player] = result;
       }
-    });
+    }
   }
 
   // 라운드 출력 형식
   printRoundResult() {
     for (const [player, result] of Object.entries(this.GAME_ROUND_RESULT)) {
-      Console.print(`${player} : ${result}`);
+      Console.print(`${player} : ${"-".repeat(result)}`);
     }
     Console.print('\n');
   }
@@ -66,14 +75,14 @@ class App {
 
   // 게임 결과
   printGameResult() {
-    let maxResult = 0;
+    let maxScore = 0;
     let winnerList = [];
     const GAME_TOTAL_RESULT = Object.entries(this.GAME_ROUND_RESULT);
 
-    maxResult = Math.max(...Object.values(this.GAME_ROUND_RESULT));
+    maxScore = Math.max(...Object.values(this.GAME_ROUND_RESULT));
 
     GAME_TOTAL_RESULT.forEach((gameResult) => {
-      if (gameResult[1].length === maxResult) {
+      if (gameResult[1] === maxScore) {
         winnerList.push(gameResult[0]);
       }
     });
