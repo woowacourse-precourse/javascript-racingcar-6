@@ -4,14 +4,14 @@ import { Console } from "@woowacourse/mission-utils";
 import Messages from "./constants/Messages.js";
 
 class RacingcarGame {
-  racingCar;
+  participant;
   tryNumber;
   raceCount;
 
   async start() {
     try {
       const user = new UserInput();
-      this.racingCar = await user.getCarNames();
+      this.participant = await user.getCarNames();
       this.tryNumber = await user.getTryNumber();
       this.raceCount = this.tryNumber;
 
@@ -29,9 +29,9 @@ class RacingcarGame {
   race() {
     const car = new Car();
 
-    for (let carName in this.racingCar) {
+    for (let carName in this.participant) {
       if (car.chooseGoOrStop()) {
-        this.racingCar[carName]++;
+        this.participant[carName]++;
       }
     }
 
@@ -43,9 +43,9 @@ class RacingcarGame {
       Console.print(Messages.RACE_RESULT);
     }
 
-    for (let carName in this.racingCar) {
+    for (let carName in this.participant) {
       Console.print(
-        `${carName} : ${Messages.RACE_MARK.repeat(this.racingCar[carName])}`
+        `${carName} : ${Messages.RACE_MARK.repeat(this.participant[carName])}`
       );
     }
     Console.print(`\n`);
@@ -59,11 +59,11 @@ class RacingcarGame {
   getWinner() {
     let max = 0;
     let winner = [];
-    for (let carName in this.racingCar) {
-      if (this.racingCar[carName] > max) {
-        max = this.racingCar[carName];
+    for (let carName in this.participant) {
+      if (this.participant[carName] > max) {
+        max = this.participant[carName];
         winner = [carName];
-      } else if (this.racingCar[carName] === max) {
+      } else if (this.participant[carName] === max) {
         winner.push(carName);
       }
     }

@@ -40,10 +40,10 @@ describe("자동차 경주 게임 테스트", () => {
     const game = new RacingcarGame();
     const user = new UserInput();
 
-    game.racingCar = await user.getCarNames();
+    game.participant = await user.getCarNames();
     game.race();
 
-    await expect(game.racingCar).toEqual(result);
+    await expect(game.participant).toEqual(result);
   });
 
   test("경주 실행 결과를 자동차 이름과 함께 출력한다", () => {
@@ -52,7 +52,7 @@ describe("자동차 경주 게임 테스트", () => {
     const outputs = ["e : -", "f : ", "g : -"];
 
     const game = new RacingcarGame();
-    game.racingCar = { e: 1, f: 0, g: 1 };
+    game.participant = { e: 1, f: 0, g: 1 };
 
     game.printRacingResult();
 
@@ -64,7 +64,7 @@ describe("자동차 경주 게임 테스트", () => {
   test("경주 실행 결과를 보고 우승자를 선정한다", () => {
     // getWinner() 테스트
     const game = new RacingcarGame();
-    game.racingCar = { h: 1, i: 3, j: 2, k: 3 };
+    game.participant = { h: 1, i: 3, j: 2, k: 3 };
 
     expect(game.getWinner()).toEqual(["i", "k"]);
   });
@@ -75,7 +75,7 @@ describe("자동차 경주 게임 테스트", () => {
     const output = "l, o, v, e";
 
     const game = new RacingcarGame();
-    game.racingCar = { l: 4, m: 2, n: 3, o: 4, p: 3, v: 4, e: 4 };
+    game.participant = { l: 4, m: 2, n: 3, o: 4, p: 3, v: 4, e: 4 };
 
     game.printWinner();
 
