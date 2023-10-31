@@ -1,6 +1,4 @@
-import { Console, MissionUtils } from "@woowacourse/mission-utils";
+import App from './App.js';
 
-const GameManager = require("./GameManager");
-
-const gameManger = new GameManager();
-gameManger.play();
+const app = new App();
+app.play();
