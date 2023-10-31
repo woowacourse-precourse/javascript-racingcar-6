@@ -1,5 +1,8 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import App from '../src/App.js';
+import RacingCar from '../src/RacingCar.js';
+import RacingGame from '../src/RacingGame.js';
+import OutputView from '../src/OutputView.js';
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -59,6 +62,54 @@ describe('RacingGame', () => {
 
     await app.play();
 
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
+});
+
+describe('OutputView 테스트', () => {
+  test('OutputView가 차량 위치를 올바르게 포맷하는지 확인', () => {
+    // given
+    const outputs = ['car1 : \n', 'car2 : -\n', 'car3 : -'];
+    const logSpy = getLogSpy();
+    const car1 = new RacingCar('car1');
+    const car2 = new RacingCar('car2');
+    const car3 = new RacingCar('car3');
+    car1.move(1);
+    car2.move(4);
+    car3.move(8);
+
+    // when
+    OutputView.printRoundResults([car1, car2, car3]);
+
+    // then
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
+
+  test('1명의 우승자가 올바르게 출력되는지 확인', () => {
+    const winners = ['car1'];
+    const outputs = ['최종 우승자: car1'];
+    const logSpy = getLogSpy();
+
+    OutputView.printFinalResult(winners);
+
+    // then
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
+
+  test('다수 우승자가 올바르게 출력되는지 확인', () => {
+    const winners = ['car1', 'car2', 'car3'];
+    const outputs = ['최종 우승자: car1, car2, car3'];
+    const logSpy = getLogSpy();
+
+    OutputView.printFinalResult(winners);
+
+    // then
     outputs.forEach((output) => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
