@@ -23,6 +23,23 @@ const getLogSpy = () => {
   return logSpy;
 };
 
+describe('getAndValidatePlayerName', () => {
+  test('사용자 이름 입력 및 유효성 검사', async () => {
+    const inputs = ['john', 'manu,max', 'jeong'];
+    mockQuestions([inputs]);
+
+    const app = new App();
+    await app.getAndValidatePlayerName();
+
+    expect(app.players).toEqual([
+      { name: 'john', moveAttempts: 0 },
+      { name: 'manu', moveAttempts: 0 },
+      { name: 'max', moveAttempts: 0 },
+      { name: 'jeong', moveAttempts: 0 },
+    ]);
+  });
+});
+
 describe('getPlayerInput', () => {
   test('사용자 이름 입력', async () => {
     // given
@@ -39,7 +56,7 @@ describe('getPlayerInput', () => {
 });
 
 describe('getAndValidateRacingRounds', () => {
-  test('사용자 입력 레이싱 라운드 숫자', async () => {
+  test('사용자 입력 레이싱 라운드 숫자 및 유효성 검사', async () => {
     // given
     const inputs = ['7'];
     mockQuestions(inputs);
