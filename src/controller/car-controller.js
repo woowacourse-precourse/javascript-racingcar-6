@@ -28,7 +28,13 @@ class CarController {
     return name.length > 0;
   }
 
-  #checkDuplicatedName(carNames) {
+  checkAllNamesEmpty(carNames) {
+    const emptyCarNames = carNames.filter((name) => !this.#filterCarName(name));
+
+    return emptyCarNames.length === carNames.length;
+  }
+
+  checkDuplicatedName(carNames) {
     const uniqueCarNames = [...new Set(carNames)];
 
     return carNames.length !== uniqueCarNames.length;
@@ -42,15 +48,17 @@ class CarController {
 
   async init() {
     const name = await this.carNameInputView.getCarNames();
-    const carNames = this
+    let carNames = this
       .#seperateCarNames(name)
-      .map(this.#trimCarName)
-      .filter(this.#filterCarName);
+      .map(this.#trimCarName);
 
     if (carNames.length === 0) {
       throw new Error(messages.carNameEmptyError);
     }
-    if (this.#checkDuplicatedName(carNames)) {
+
+    carNames = carNames.filter(this.#filterCarName);
+
+    if (this.checkDuplicatedName(carNames)) {
       throw new Error(messages.duplicatedCarName);
     }
 
