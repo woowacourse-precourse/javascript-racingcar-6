@@ -1,6 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
 import { INPUT_CARS_NAME, INPUT_COUNT } from '../constants/InputString.js';
 import {
+  ERROR_CARS_EMPTY,
   ERROR_CARS_LENGTH,
   ERROR_CARS_SPLIT,
   ERROR_COUNT_NOT_NUMBER,
@@ -26,6 +27,7 @@ const InputView = {
   validateCarsInput: inputCars => {
     const inputCarsArray = inputCars.split(',').map(inputCar => inputCar.trim());
 
+    if (inputCars.length === 0) throw new Error(ERROR_CARS_EMPTY);
     inputCarsArray.map(inputCar => {
       if (inputCar.length > 5) throw new Error(ERROR_CARS_LENGTH);
     });
