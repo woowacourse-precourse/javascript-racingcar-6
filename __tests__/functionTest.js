@@ -144,3 +144,17 @@ describe('입력 에러 처리', () => {
       expect(result).toEqual(['jacy']); // 'car3' has the longest track
     });
   });
+
+  describe('승자 출력', () => {
+    test('printWinner', () => {
+      // given
+      const consoleLogSpy = jest
+        .spyOn(MissionUtils.Console, 'print')
+        .mockImplementation();
+      const input = ['jacy'];
+      // when
+      const app = new App();
+      app.printWinner(input);
+      expect(consoleLogSpy).toHaveBeenCalledWith('최종 우승자 : jacy');
+    });
+  });
