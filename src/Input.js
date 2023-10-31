@@ -10,6 +10,7 @@ export default class Input {
     carNames.forEach((v) => {
       validateCarName(v);
     });
+    validateCarNames(carNames);
 
     return carNames;
   }
@@ -20,6 +21,14 @@ export default class Input {
     return tryNum;
   }
 }
+
+const validateCarNames = (carNames) => {
+  carNames.forEach((carName, idx) => {
+    if (carNames.indexOf(carName) !== idx) {
+      throw new Error("[ERROR] 중복된 자동차 이름");
+    }
+  });
+};
 
 const validateCarName = (carName) => {
   if (carName.length <= 0) {

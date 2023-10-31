@@ -61,4 +61,16 @@ describe("Input Test", () => {
     //then
     await expect(input.inputTryNum()).rejects.toThrow("[ERROR]");
   });
+
+  test("자동차 이름이 중복되는 경우", async () => {
+    //given
+    const INPUT_STRING = "kyu,kyu,ky";
+
+    //when
+    const input = new Input();
+    mockQuestions([INPUT_STRING]);
+
+    //then
+    await expect(input.inputTryNum()).rejects.toThrow("[ERROR]");
+  });
 });
