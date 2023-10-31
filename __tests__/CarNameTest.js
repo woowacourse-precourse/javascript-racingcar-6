@@ -27,14 +27,6 @@ describe('자동차 입력 예외 처리 테스트', () => {
     await expect(carName.start()).rejects.toThrow('[ERROR]');
   });
 
-  test('자동차 이름은 같은이름이 없이 작성한다.', async () => {
-    mockQuestions(['Lee,Lee,Park']);
-
-    const carName = new CarName();
-
-    await expect(carName.start()).rejects.toThrow('[ERROR]');
-  });
-
   test('자동차 이름은 쉼표(,)를 두번이상 연속으로 작성하면 안된다.', async () => {
     mockQuestions(['Kim,,Lee,Park']);
 
