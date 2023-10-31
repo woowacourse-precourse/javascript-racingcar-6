@@ -253,4 +253,32 @@ describe("Model 기능 테스트", () => {
     //then
     await expect(result).toEqual(answer);
   });
+
+  describe("가장 높은 점수를 가진 자동차 이름 반환", () => {
+    test("가장 높은 점수가 중복되지 않을 경우", async () => {
+      const cars = ["car1", "car2", "car3"];
+
+      const moveResult = { car1: 3, car2: 1, car3: 5 };
+      const answer = "car3";
+
+      //when
+      const result = model.getHighestMovePoint({ cars, moveResult });
+
+      //then
+      await expect(result).toEqual(answer);
+    });
+
+    test("가장 높은 점수가 중복 될 경우", async () => {
+      const cars = ["car1", "car2", "car3"];
+
+      const moveResult = { car1: 5, car2: 3, car3: 5 };
+      const answer = "car1, car3";
+
+      //when
+      const result = model.getHighestMovePoint({ cars, moveResult });
+
+      //then
+      await expect(result).toEqual(answer);
+    });
+  });
 });
