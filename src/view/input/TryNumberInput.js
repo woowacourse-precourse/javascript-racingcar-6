@@ -11,7 +11,7 @@ class TryNumberInput {
   async tryNumber(nameSplit) {
     let number;
     try {
-      number = await Console.readLineAsync(`${GAME_MESSAGE.tryNumber}`);
+      number = await Console.readLineAsync(`${GAME_MESSAGE.tryNumber}\n`);
       this.tryValid.tryIsValid(number);
     } catch (error) {
       throw error;
