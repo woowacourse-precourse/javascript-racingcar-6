@@ -7,5 +7,7 @@ export const InGameMessages = {
 };
 
 export const ErrorMessages = {
-  PRINT_TOO_LONG_NAME: '[ERROR] 입력된 이름이 5자 이상입니다.',
+  ERROR_TOO_LONG_NAME: '[ERROR] 입력된 이름이 5자 이상입니다.',
+  ERROR_SAME_NAME_EXIST: '[ERROR] 동일한 이름이 입력되었습니다.',
+  ERROR_NOT_A_NUMBER: '[ERROR} 입력이 숫자가 아닙니다.',
 };
