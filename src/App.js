@@ -15,17 +15,14 @@ class App {
     cars.forEach(car => {
       car.position = '';
     });
-    MissionUtils.Console.print(cars);
     const raceCount = await MissionUtils.Console.readLineAsync(
       '시도할 횟수는 몇 회인가요?\n');
     if ( isNaN(raceCount) || raceCount === 0 ) {
       throw new Error("[ERROR] 숫자가 잘못된 형식입니다. 게임 종료");
     }
     MissionUtils.Console.print("\n실행 결과");
-    MissionUtils.Console.print(raceCount);
     const racingGame = new RacingGame();
     for (let i = 0; i < raceCount; i++){
-      MissionUtils.Console.print(i);
       racingGame.race(cars);
       cars.forEach(car => {
         MissionUtils.Console.print(car.name + ' : ' + car.position);
