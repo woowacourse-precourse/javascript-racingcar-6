@@ -58,22 +58,27 @@ class App {
     }
   }
 
-  printGameWinner() {
+  getWinners() {
     const gameResult = this.vehicles.map(result => Object.values(result));
     const farthestPosition = Math.max(...gameResult.map(result => result[1]));
-    const winnerList = gameResult
+    const winners = gameResult
       .filter(result => result[1] === farthestPosition)
       .map(result => result[0]);
 
-    const printWinnerText = `${MESSAGES.GAME_WINNER} : ${winnerList.join(',')}`;
-    Console.print(printWinnerText);
+    return winners;
+  }
+
+  printWinners() {
+    const winners = this.getWinners();
+    const printWinnerMessage = `${MESSAGES.GAME_WINNER} : ${winners.join(',')}`;
+    Console.print(printWinnerMessage);
   }
 
   async play() {
     await this.setVehicles();
     await this.setRound();
     this.processRound();
-    this.printGameWinner();
+    this.printWinners();
   }
 }
 
