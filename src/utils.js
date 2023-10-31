@@ -1,4 +1,4 @@
-import { Console } from '@woowacourse/mission-utils';
+import { Console, MissionUtils } from '@woowacourse/mission-utils';
 import { SETTING, ERROR_MESSAGE } from './constants';
 
 const printMessage = (message) => {
@@ -57,4 +57,14 @@ const getValidInputNumber = (input) => {
   return input;
 }
 
-export { printMessage, readLineAsync, getValidInputNames, getValidInputNumber };
+const getRandomNumber = () => {
+  const { MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER } = SETTING;
+  return MissionUtils.Random.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
+}
+
+const isforwardNumber = (num) => {
+  const { TARGET_FORWARD_NUMBER } = SETTING;
+  return num >= TARGET_FORWARD_NUMBER;
+}
+
+export { printMessage, readLineAsync, getValidInputNames, getValidInputNumber, getRandomNumber, isforwardNumber };

@@ -1,6 +1,6 @@
 import Car from './Car';
-import { MissionUtils } from '@woowacourse/mission-utils';
-import { SETTING, SCORE, MESSAGE } from './constants';
+import { SCORE, MESSAGE } from './constants';
+import { getRandomNumber, isforwardNumber } from './utils';
 
 export default class CarRace {
   #cars;
@@ -17,20 +17,10 @@ export default class CarRace {
     return this.#round > 0;
   }
 
-  getRandomNumber() {
-    const { MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER } = SETTING;
-    return MissionUtils.Random.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
-  }
-  
-  isforwardNumber(num) {
-    const { TARGET_FORWARD_NUMBER } = SETTING;
-    return num >= TARGET_FORWARD_NUMBER;
-  }
-
   calculateResult() {
     this.#cars.forEach((car) => {
-      const random = this.getRandomNumber();
-      if (this.isforwardNumber(random)) {
+      const random = getRandomNumber();
+      if (isforwardNumber(random)) {
         car.forward();
       }
     });
