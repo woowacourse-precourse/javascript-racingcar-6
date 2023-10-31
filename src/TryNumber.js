@@ -1,4 +1,4 @@
-//기능2.
+//기능2. 시도할 횟수
 export function trynumber(input) {
   if (parseInt(input) > 0) {
     // 0보다 큰 정수형
