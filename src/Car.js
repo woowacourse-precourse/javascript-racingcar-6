@@ -1,13 +1,15 @@
-import { Random } from '@woowacourse/mission-utils';
-import { MOVE_CONDITION_MINIMUM_VALUE, RANDOM_NUMBER_RANGE } from './constants.js';
+import { MOVE_CONDITION_MINIMUM_VALUE } from './constants.js';
 
 export class Car {
   #position = 0;
 
   #name;
 
-  constructor(name) {
+  #randomGenerator;
+
+  constructor(name, randomGenerator) {
     this.#name = name;
+    this.#randomGenerator = randomGenerator;
   }
 
   getPosition() {
@@ -19,7 +21,7 @@ export class Car {
   }
 
   randomNumber() {
-    return Random.pickNumberInRange(RANDOM_NUMBER_RANGE.MIN, RANDOM_NUMBER_RANGE.MAX);
+    return this.#randomGenerator.generate();
   }
 
   movable() {
