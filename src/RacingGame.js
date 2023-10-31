@@ -11,8 +11,8 @@ class RacingGame {
       const randomNum = this.getRandomNumber();
 
       if (randomNum >= RACE_NUMBER.drive) {
-        const temp = car;
-        temp.forward += 1;
+        const driveCar = car;
+        driveCar.forward += 1;
       }
     });
     return racingCar;
