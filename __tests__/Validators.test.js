@@ -23,4 +23,18 @@ describe('Validators test', () => {
       }).toThrow();
     });
   });
+
+  describe('checkRacingCount', () => {
+    test.each([[1], [9]])('%s을 입력하였을 때 에러가 발생하지 않는다.', (input) => {
+      expect(() => {
+        Validators.checkRacingCount(input);
+      }).not.toThrow();
+    });
+
+    test.each([[0], [10]])('%s을 입력하였을 때 에러가 발생한다.', (input) => {
+      expect(() => {
+        Validators.checkRacingCount(input);
+      }).toThrow();
+    });
+  });
 });
