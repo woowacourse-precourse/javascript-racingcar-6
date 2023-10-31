@@ -2,13 +2,14 @@
 
 - [ X ] 게임 시작.
 - [ X ] 사용자 입력 받기.
-  - [ X ] 자동차 이름 입력. - getCarNames()
-  - [ X ] 시도 횟수 입력. - getTryNumber()
+  - [ X ] 자동차 이름 입력.
+  - [ X ] 시도 횟수 입력.
   - [ X ] 사용자 입력 유효성 검사.
-    - [ X ] 자동차의 이름이 쉼표를 기준으로 5자 이하인지. - checkCarNameIsValid()
-    - [ ] 자동차의 이름으로 공백이 들어오는지.
+    - [ X ] 자동차의 이름이 쉼표를 기준으로 5자 이하인지.
+    - [ X ] 자동차의 이름이 공백인지.
+    - [ X ] 자동차의 이름이 중복 됐는지.
+    - [ X ] 자동차의 이름에 공백(스페이스)가 포함됐는지.
     - [ X ] 시도할 횟수가 숫자인지.
-    - [ X ] 시도할 횟수의 입력의 길이가 1인지.
 - [ X ] 스코어보드판 만들기.
 - [ X ] 무작위 값 생성.
 - [ X ] 무작위 생성값이 4 이상인지 확인.
@@ -17,19 +18,17 @@
 - [ X ] 게임 결과 출력.
   - [ X ] 우승자 판단.
 
-## MVC 패턴
-
-- Model : computer의 랜덤숫자 3자리. 사용자의 입력 2가지.
-- View : console을 이용해 출력되는 모든것.
-- Controller : Model에서 처리되어 View로 전달할 데이터 전송.
+---
 
 ## 모듈화
 
 - userInput : 사용자 입력 담당. getCarNames, getTryNumber
 - inputValidation : 사용자 입력 유효성 검사. checkCarNamesAreValid, checkTryNumberIsValid
 - scoreBoard : 자동차 게임 점수 관련. createScoreBoard, calcurateScore, printScore
-- gameResult : 자동차 게임 결과 관련. printGameResult
-- utils : 유틸리티 함수. createRandomNumber, checkCanMove
+- gameResult : 자동차 게임 결과 관련. printGameResult, findWhoIsWinner
+- utils : 유틸리티 함수. createRandomNumber, checkCanMove, 사용자 입력 유효성 검사 함수.
+
+---
 
 ## 기능요구사항
 
