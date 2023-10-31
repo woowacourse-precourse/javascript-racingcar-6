@@ -35,7 +35,7 @@ class App {
   }
 
   getRandomNumber() {
-    return Random.pickNumberInRange(1, 9);
+    return Random.pickNumberInRange(0, 9);
   }
 
   racing(carList, tryCount) {
@@ -50,8 +50,6 @@ class App {
         if (this.getRandomNumber() >= 4) {
           roundResult[carList[i]] += 1;
         }
-      }
-      for (let i = 0; i < carList.length; i++) {
         Console.print(`${carList[i]} : ${'-'.repeat(roundResult[carList[i]])}`);
       }
       Console.print('');
