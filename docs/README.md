@@ -60,10 +60,12 @@
   - [x] 각 이름이 5자 이하인지 -(isUnderFive())-
   - [x] 두 명 이상인지
   - [x] 숫자인지 isNumber (JS함수 혹은 정규표현식 사용)
-- [ ] 경주 시작 (Race)
-  - [ ] 0 - 9의 랜덤 숫자 구하기 (NumberGenerator.getRandomNumber())
-  - [ ] 숫자에 따라 전진 혹은 유지 구분하기 (isSuccess())
-  - [ ] 전진 기능 구현 (moveForwards())
+- [x] 경주 시작 (Race)
+  - [x] 0 - 9의 랜덤 숫자 구하기 (NumberGenerator.getRandomNumber())
+  - [x] 숫자에 따라 전진 혹은 유지 구분하기 (isSuccess())
+  - [x] 전진 기능 구현 (moveForwards())
+  - [x] players 수만큼 반복 (printResult())
+  - [x] 입력한 횟수만큼 반복 (compete())
 - [ ] 경주 끝 (Award) 
   - [ ] 우승자 구하기 (getWinner())
   - [ ] 여러명일 경우 쉼표로 나누기
