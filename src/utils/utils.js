@@ -5,7 +5,7 @@ const utils = {
     return numberRegExp.test(str);
   },
   isNumberExcludeZero: str => {
-    const numberRegExp = /^[1-9]+$/g;
+    const numberRegExp = /^[1-9]\d*$/g;
     return numberRegExp.test(str);
   },
   isSmallLetter: str => {
