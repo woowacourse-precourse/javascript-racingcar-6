@@ -13,10 +13,9 @@ async function getCarNames() {
 
 async function getGameCount() {
   const input = await Console.readLineAsync(INPUT_COUNT);
-  const count = Number(input);
-  validateGameCount(count);
+  validateGameCount(input);
 
-  return count;
+  return Number(input);
 }
 
 export { getCarNames, getGameCount };
