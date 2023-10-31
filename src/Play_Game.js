@@ -13,5 +13,4 @@ const PLAY_GAME = (NAME, FORWARD_ARR) => {
     MissionUtils.Console.print(outString);
     return FORWARD_ARR;
 };
-PLAY_GAME(["san", "seo", "wow"], [0, 0, 0]);
 export default PLAY_GAME;
