@@ -1,5 +1,7 @@
+/* eslint-disable max-lines-per-function */
 import { MissionUtils } from '@woowacourse/mission-utils';
 import App from '../src/App.js';
+import Car from '../src/model/Car.js';
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -60,4 +62,20 @@ describe('자동차 경주 게임', () => {
       await expect(app.play()).rejects.toThrow('[ERROR]');
     },
   );
+
+  describe('Car', () => {
+    test('getName() test', () => {
+      // given
+      const carNames = ['kim', 'park', 'choi'];
+      const carList = carNames.map((carName) => new Car(carName));
+
+      // when
+      const resultList = carList.map((car) => car.getName());
+
+      // then
+      carList.forEach((car, idx) => {
+        expect(car.getName()).toBe(resultList[idx]);
+      });
+    });
+  });
 });
