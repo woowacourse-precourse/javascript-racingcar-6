@@ -27,4 +27,7 @@ export const ERROR_MESSAGE_FUNCTION = Object.freeze({
   quantity(min, max) {
     return `자동차 대수는 ${min}대부터 ${max}까지 가능합니다.`;
   },
+  racingCOunt(min, max) {
+    return `레이싱 횟수는 ${min}~${max}사이의 숫자만 가능합니다.`;
+  },
 });
