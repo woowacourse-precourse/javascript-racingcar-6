@@ -35,6 +35,7 @@ class App {
     }
     return cars;
   }
+
   async executePlay() {
     let players = await MissionUtils.Console.readLineAsync(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n",
@@ -61,11 +62,7 @@ class App {
   }
 
   async play() {
-    try {
-      await this.executePlay();
-    } catch (error) {
-      await MissionUtils.Console.print(error.message);
-    }
+    await this.executePlay();
   }
 }
 
