@@ -56,4 +56,29 @@ describe("RacingCar 테스트", () => {
       }
     );
   });
+
+  describe("promptTotalRounds 테스트", () => {
+    it("all correct case 테스트", async () => {
+      const rule = new NormalRacingRule();
+      const game = RacingCarGame.createGame(rule);
+
+      const inputs = [5];
+
+      mockQuestions(inputs);
+
+      await game.promptTotalRounds();
+    });
+
+    test.each([[["hello"]], [[0.1]], [[-1]], [[""]]])(
+      "incorrect case 테스트",
+      async (inputs) => {
+        const rule = new NormalRacingRule();
+        const game = RacingCarGame.createGame(rule);
+
+        mockQuestions(inputs);
+
+        await expect(game.promptTotalRounds()).rejects.toThrow("[ERROR]");
+      }
+    );
+  });
 });
