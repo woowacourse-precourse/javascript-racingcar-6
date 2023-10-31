@@ -6,4 +6,5 @@ export const GUIDE_MESSAGES = Object.freeze({
 export const ERROR_MESSAGES = Object.freeze({
   EMPTY_INPUT: '[ERROR] 아무것도 입력하지 않았습니다.',
   NOT_VALID_CARNAME_LENGTH: '[ERROR] 올바른 차 이름의 길이가 아닙니다.',
+  INCLUDE_NON_NUMERIC_VALUES: '[ERROR] 입력값에 숫자 이외의 값이 포함되어 있습니다.',
 });

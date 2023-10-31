@@ -9,6 +9,7 @@ export const isValidCarNames = (carNames) => {
 
 export const isValidTryNum = (input) => {
   if (!isNotEmptyTryNum(input)) throw new Error(ERROR_MESSAGES.EMPTY_INPUT);
+  if (!isNumber(input)) throw new Error(ERROR_MESSAGES.INCLUDE_NON_NUMERIC_VALUES);
 };
 
 const isNotEmptyCarNames = (input) => {
@@ -21,4 +22,8 @@ const isValidCarNameLength = (carName) => {
 
 const isNotEmptyTryNum = (input) => {
   return input.length !== 0;
+};
+
+const isNumber = (input) => {
+  return !input.includes(' ') && Number.isNaN(Number(input));
 };
