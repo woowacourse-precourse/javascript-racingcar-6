@@ -20,6 +20,14 @@ describe('모든 자동차 입력값을 담당하는 클래스에 대한 테스�
     }).toThrow(new AppError(ERROR_MESSAGES.have_duplication));
   });
 
+  test('중복된 자동차 이름이 들어갔을 때 예외가 발생한다(2).', () => {
+    const inputString = 'pobi,POBI,jun';
+
+    expect(() => {
+      AllNamesOfCars.fromInputString(inputString);
+    }).toThrow(new AppError(ERROR_MESSAGES.have_duplication));
+  });
+
   test('참가 자동차가 1대일때 예외가 발생한다.', () => {
     const inputString = 'pobi';
 
