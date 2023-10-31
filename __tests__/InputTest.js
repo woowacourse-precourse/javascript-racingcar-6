@@ -35,6 +35,16 @@ describe("Input 테스트", () => {
     await expect(carInput).rejects.toThrow(GameMessage.ERROR.CAR_NOT_INPUTED);
   });
 
+  test("이름이 중복될 경우 에러", async () => {
+    // given
+    const inputs = ["na,na"];
+    mockQuestions(inputs);
+    const carInput = InputCarName();
+
+    // when & then
+    await expect(carInput).rejects.toThrow(GameMessage.ERROR.CAR_NAME_DUPLICATED);
+  });
+
   test("경주 횟수를 입력해서 숫자로 반환", async () => {
     // given
     const inputs = ["5"];

@@ -18,7 +18,7 @@ async function checkCarNames(carNames) {
     }
   });
 
-  const carNameSet = new Set(carList);
+  const carNameSet = await new Set(carList);
   if (carNameSet.size !== carList.length) {
     throw new Error(GameMessage.ERROR.CAR_NAME_DUPLICATED);
   }
