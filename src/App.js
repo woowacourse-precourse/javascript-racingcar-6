@@ -29,6 +29,13 @@ class App {
     return carNames.every((name) => name.length <= 5);
   }
 
+  initializeCars(carNames) {
+    return carNames.reduce((acc, name) => {
+      acc[name] = "";
+      return acc;
+    }, {});
+  }
+
 }
 
 export default App;
