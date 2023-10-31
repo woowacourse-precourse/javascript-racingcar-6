@@ -22,7 +22,7 @@ class Players {
       Array.from({ length: this.#scores[index] }).forEach(() => {
         output.push('-');
       });
-      Console.print(output);
+      Console.print(output.join(''));
     });
     Console.print();
   }
