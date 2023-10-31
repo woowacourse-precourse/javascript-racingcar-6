@@ -4,7 +4,6 @@ import OutputView from "../view/OutputView.js";
 
 class RacingCarController {
   #cars;
-  #maxDistance;
   #winners;
 
   constructor() {}
@@ -42,8 +41,7 @@ class RacingCarController {
   }
 
   raceResult() {
-    this.#maxDistance = this.#cars.getMaxDistance();
-    this.#winners = this.#cars.getWinners(this.#maxDistance);
+    this.#winners = this.#cars.getWinners();
     OutputView.printWinnerMessage(this.#winners);
   }
 }

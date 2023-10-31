@@ -38,9 +38,10 @@ class RacingCars {
     return Math.max(...this.#finalDistance);
   }
 
-  getWinners(maxDistance) {
+  getWinners() {
     this.#cars.map((car) => {
-      if (car.getDistance() === maxDistance) this.#winners.push(car.getName());
+      if (car.getDistance() === this.getMaxDistance())
+        this.#winners.push(car.getName());
     });
     return this.#winners;
   }
