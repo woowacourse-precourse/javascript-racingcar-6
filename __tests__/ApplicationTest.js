@@ -46,17 +46,62 @@ describe("자동차 경주 게임", () => {
     });
   });
 
+  test.each([[["pobi,javaji"]], [["pobi,eastjun"]], [["pobi,anna,eastjun"]]])(
+    "이름에 대한 예외 처리",
+    async (inputs) => {
+      // given
+      mockQuestions(inputs);
+
+      // when
+      const app = new App();
+
+      // then
+      await expect(app.play()).rejects.toThrow("[ERROR]");
+    }
+  );
+
   test.each([
-    [["pobi,javaji"]],
-    [["pobi,eastjun"]]
-  ])("이름에 대한 예외 처리", async (inputs) => {
+    [["car1/car2/car3"]],
+    [["car1.car2.car3"]],
+    [["car1 car2 car3"]],
+    [["car1;car2;car3"]],
+    [["car1,car2 car3"]],
+    [[""]],
+  ])("올바르지 않은 입력 테스트", async (inputs) => {
     // given
     mockQuestions(inputs);
 
-    // when
     const app = new App();
 
-    // then
     await expect(app.play()).rejects.toThrow("[ERROR]");
+  });
+
+  test.each([
+    [["car1,car2,car3"]],
+    [["car1, car2, car3"]],
+    [["car1 , car2 , car3"]],
+    [["car1 ,car2 , car3 "]],
+  ])("자동차 쉼표(,) 구분 테스트", async (inputs) => {
+    const expectCarName = ["car1", "car2", "car3"];
+
+    mockQuestions(inputs);
+
+    const app = new App();
+    const cars = await app.initializeCars();
+
+    expect(cars).toEqual(expectCarName);
+  });
+
+  test("setCars 함수 테스트", async () => {
+    const input = ["anna", "joy", "yeri", "kemi"];
+
+    const app = new App();
+    const cars = app.setCars(input);
+
+    await expect(cars).toHaveLength(input.length);
+
+    cars.forEach((car, index) => {
+      expect(car.name).toBe(input[index]);
+    });
   });
 });
