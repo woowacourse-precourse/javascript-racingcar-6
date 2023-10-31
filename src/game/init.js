@@ -5,7 +5,6 @@ import {carNameValidator, carsListValidator, carStringValidator, playCountValida
 import Game from "./game.js";
 
 class Init {
-
     async getUserInput() {
         const carNames = await this.inputCarNames();
         const carsList = this.makeCarsList(carNames);
