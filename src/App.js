@@ -9,6 +9,7 @@ class App {
     await this.initializeCars();
     const rounds = await this.getRounds();
     this.playRounds(rounds);
+    this.determineWinners();
   }
   
   async initializeCars() {
@@ -63,6 +64,25 @@ class App {
 
   generateCarResultString(car) {
     return `${car.name} : ${'-'.repeat(car.moveCount)}`;
+  }
+
+  determineWinners() {
+    const sortedCars = this.sortMoveCount();
+    const maxMoveCount = sortedCars[0].moveCount;
+    const winners = this.findWinners(sortedCars, maxMoveCount);
+    const winnerNames = this.extractWinnerNames(winners);
+  }
+
+  sortMoveCount() {
+    return [...this.cars].sort((a, b) => b.moveCount - a.moveCount);
+  }
+
+  findWinners(cars, maxMoveCount) {
+    return cars.filter((car) => car.moveCount === maxMoveCount);
+  }
+
+  extractWinnerNames(winners) {
+    return winners.map((winner) => winner.name);
   }
 }
 
