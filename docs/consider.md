@@ -140,6 +140,9 @@ class RacingCarController {
 }
 ```
 
+- Reference
+- [의존관계 주입 쉽게 이해하기](https://tecoble.techcourse.co.kr/post/2021-04-27-dependency-injection/)
+
 ## 5. 불필요한 의존성 제거
 
 처음에는 `SYSTEM`에 대한 의존성이 있었고 2차구현 처음에는 `split(SYSTEM.delimiter)`가 거의 모든 `validator` 에서 사용되기에 아예 `util`로 만들었습니다. 하지만 모든 `validator` 파일마다 끌어다 사용하면 전부 의존성이 생겨서 혹시나 다른 메서드나 필요가 없어지면 전체 파일을 찾아다니면서 수정해야합니다.
