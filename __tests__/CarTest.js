@@ -6,8 +6,8 @@ const mockQuestions = (inputs) => {
 
   MissionUtils.Console.readLineAsync.mockImplementation(() => {
     const input = inputs.shift();
-    console.log(Promise.resolve(input));
     // input에 전달받은 배열의 첫번째 값들이 들어가는구조
+    // play() 메소드에서 두번 값을 입력받기때문에 두번 순환
     return Promise.resolve(input);
   });
 };
