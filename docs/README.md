@@ -1,6 +1,6 @@
 ## 기능 목록
 
-- [x] 자동차를 움직이기 위한 0-9 사이의 무작위 값 생성 기능 구현 - RandomNumber#createCarMoveCount()
+- [x] 자동차를 움직이기 위한 0-9 사이의 무작위 값 생성 기능 구현 - randomNumber#createCarMoveCount()
 
   - [x] 0-9 사이의 무작위 값 중 4 이상이 나오면 전진하는 기능 구현
 
@@ -8,11 +8,11 @@
 
   - [x] 자동차에 이름을 부여하고 ( `pobi`,`woni`,`jun` ) 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력하는 기능 구현 - startRacing()
 
-- [x] 사용자가 몇 번의 이동을 할것인지 입력하는 기능 구현 - GameStart#inputCarMoveCount()
+- [x] 사용자가 몇 번의 이동을 할것인지 입력하는 기능 구현 - gameStart#inputCarMoveCount()
 
   - [x] 자동차 이름을 쉼표(,) 기준으로 구분하며 5자 이하만 입력되는 기능 구현
 
-- [x] 게임 완료 후 우승자를 출력하는 기능 구현 - resultGame()
+- [x] 게임 완료 후 우승자를 출력하는 기능 구현 - moveCar#resultGame()
 
   - [x] 우승자는 한 명 이상도 가능하게 구현
 
