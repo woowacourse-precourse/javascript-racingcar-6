@@ -11,7 +11,7 @@ class App {
 
 async getNameOfCar(){
   const getCarName = await MissionUtils.Console.readLineAsync(MESSAGE.NAME);
-  if (!getCarName.includes(",")){throw new Error(ERROR.COMMA);}
+  if (!getCarName.includes(",")){throw new Error(ERROR.COMMAS);}
   if (getCarName.includes(" ")){throw new Error(ERROR.SPACE);}
   const carName = getCarName.split(",");
   carName.forEach((elements) => {
