@@ -32,12 +32,12 @@
 
 ## ✅ Details Check List
 
-- [ ] Airbnb-Style Code Convention 확인
+- [x] Airbnb-Style Code Convention 확인
   - Eslint / Prettier 작동 확인
-- [ ] `max-depth` 확인
+- [x] `max-depth` 확인
   - depth가 2를 초과하지 않도록 할 것
   - `eslintrc.cjs` 파일에 설정 추가할 것
-- [ ] Jest 활용하여 테스트 코드 작성 및 정상 동작 확인
+- [x] Jest 활용하여 테스트 코드 작성 및 정상 동작 확인
   - `__tests__/StringTest.js` 참고
 
 ---
