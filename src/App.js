@@ -39,34 +39,10 @@ class App {
     this.#cars = carClass.getCars();
   }
 
-  checkValidCarName (carNameArr) {
-    for (let i = 0; i < carNameArr.length; i++) {
-      const carName = carNameArr[i];
-      if (carName.length > 5) {
-        messagePrinter.errorPrint(ERROR_MESSAGE.more_than_five_letters);
-      } else if (carName.length === 0) {
-        messagePrinter.errorPrint(ERROR_MESSAGE.no_letters);
-      }
-    }
-    if (carNameArr.length !== new Set([...carNameArr]).size) {
-      messagePrinter.errorPrint(ERROR_MESSAGE.duplicated_car_names);
-    }
-  }
-
   async getTrialNumInput () {
     const trialNum = await messagePrinter.inputPrint(GAME_MESSAGE.get_trial_num);
     const trialNumClass = new TrialNum(trialNum);
     this.#trials = trialNumClass.getTrials();
-  }
-
-  checkValidTrialNum (trialNum) {
-    if (Number.isNaN(trialNum)) {
-      messagePrinter.errorPrint(ERROR_MESSAGE.not_number);
-    } else if (trialNum < 1) {
-      messagePrinter.errorPrint(ERROR_MESSAGE.less_than_one_trial);
-    } else if (typeof trialNum === 'string' && trialNum.includes(' ')) {
-      messagePrinter.errorPrint(ERROR_MESSAGE.has_space);
-    }
   }
 
   async raceStart (carNameArr) {
