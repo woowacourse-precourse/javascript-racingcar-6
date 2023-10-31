@@ -1,4 +1,4 @@
-class ParamTypeError extends Error {
+class ParamTypeError extends TypeError {
   #TEMPLETE = '[ERROR]';
   #type;
 
