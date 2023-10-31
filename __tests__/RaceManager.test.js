@@ -1,6 +1,6 @@
 import { Console, Random } from '@woowacourse/mission-utils';
 import RaceManager from '../src/RaceManager';
-import { validateAttempts } from '../src/functions/validate';
+import validateAttempts from '../src/functions/validateAttempts';
 
 describe('시도 횟수 입력', () => {
   test('시도 횟수 입력 시 입력한 숫자를 반환한다', async () => {
