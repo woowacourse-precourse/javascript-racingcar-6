@@ -1,10 +1,12 @@
 import { LANGUAGE_OPTION, SYSTEM } from '../../constants/System.js';
 import Converter from '../StringConvertor.js';
-import isDuplication from './utils/is-duplication/index.js';
-import isValidLanguage from './utils/is-valid-Language/index.js';
-import isValidDelimiter from './utils/is-valid-delimiter/index.js';
-import isValidNameLength from './utils/is-valid-name-length/index.js';
-import isValidQuantity from './utils/is-valid-quantity/index.js';
+import {
+  isDuplication,
+  isValidDelimiter,
+  isValidLanguage,
+  isValidNameLength,
+  isValidQuantity,
+} from './utils/index.js';
 
 const Validators = {
   checkRacingVehicleName(input) {
