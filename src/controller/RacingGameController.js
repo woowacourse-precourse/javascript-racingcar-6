@@ -8,22 +8,27 @@ import processCarNames from '../utils/CarNameProcessor';
 import { GameSettings } from '../constants/GameSettings';
 
 export default class RacingGameController {
-  async start() {
-    const carNames = await this.#createCarNames();
-    const rounds = await this.#createRounds();
-    const race = this.#initializeRace(carNames);
+  #race;
 
-    this.#runRace(race, rounds);
-    this.#displayWinners(race);
+  #rounds;
+
+  async start() {
+    await this.#initializeGame();
+    this.#runRace();
+    this.#displayWinners();
+  }
+
+  async #initializeGame() {
+    const carNames = await this.#createCarNames();
+    this.#rounds = await this.#createRounds();
+    this.#race = this.#initializeRace(carNames);
   }
 
   async #createCarNames() {
     const carNamesInput = await InputView.printCarNames();
     const processedNames = processCarNames(carNamesInput);
-
     InputValidator.validateNumberOfCars(processedNames.length);
     processedNames.forEach((name) => InputValidator.validateCarName(name));
-
     return processedNames;
   }
 
@@ -38,28 +43,28 @@ export default class RacingGameController {
     return new Race(cars);
   }
 
-  #runRace(race, rounds) {
+  #runRace() {
     OutputView.printRaceHeader();
-    this.#executeRounds(race, rounds);
+    this.#executeRounds();
   }
 
-  #executeRounds(race, rounds) {
-    Array.from({ length: rounds }).forEach(() => {
-      race.playRound();
-      const roundResults = this.#createRoundResults(race);
+  #executeRounds() {
+    Array.from({ length: this.#rounds }).forEach(() => {
+      this.#race.playRound();
+      const roundResults = this.#createRoundResults();
       OutputView.printRoundResult(roundResults);
     });
   }
 
-  #createRoundResults(race) {
-    return race.getRoundResults().map((result) => ({
+  #createRoundResults() {
+    return this.#race.getRoundResults().map((result) => ({
       name: result.name,
       representation: GameSettings.FORWARD_MOVE_REPRESENTATION.repeat(result.position),
     }));
   }
 
-  #displayWinners(race) {
-    const winnersString = race.getWinnersString();
+  #displayWinners() {
+    const winnersString = this.#race.getWinnersString();
     OutputView.printWinners(winnersString);
   }
 }
