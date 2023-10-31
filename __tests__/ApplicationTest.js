@@ -59,4 +59,26 @@ describe("자동차 경주 게임", () => {
     // then
     await expect(app.play()).rejects.toThrow("[ERROR]");
   });
+
+
+  test("이름공백 유효성 검사", async() => {
+    const inputs = [""];
+    mockQuestions(inputs);
+
+    const app = new App();
+    
+    //then
+    await expect(app.play()).rejects.toThrow("[ERROR] 이름을 입력해주세요.");
+  })
+
+
+  test("게임횟수 문자열 검사", async() => {
+    const inputs = ['pobi', 'ㄱ']
+    mockQuestions(inputs);
+
+    const app = new App();
+    
+    //then
+    await expect(app.play()).rejects.toThrow("[ERROR] 숫자만 입력 가능합니다.");
+  })
 });
