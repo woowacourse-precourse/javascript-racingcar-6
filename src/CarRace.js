@@ -1,7 +1,7 @@
 import carHandler from "./handler/carHandler";
 import numberHandler from "./handler/numberHandler";
 import resultHandler from "./handler/resultHandler";
-import { printOutput } from "./utils/MissionUtils";
+import { printOutput } from "./utils/missionUtils";
 
 class CarRace {
   #cars;
@@ -30,8 +30,6 @@ class CarRace {
   }
 
   handleRaceResult() {
-    printOutput("실행 결과");
-
     const [RESULT_STRING, NEW_CARS] = resultHandler.getResultString({
       tryNumber: this.#tryNumber,
       cars: this.#cars,

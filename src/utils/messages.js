@@ -18,3 +18,10 @@ export const NUMBER_MESSAGES = {
     MUST_UNDER_100: "[ERROR] 시도 횟수는 100 미만이어야 합니다.",
   },
 };
+
+export const RESULT_MESSAGES = {
+  OUTPUT: {
+    RESULT: "실행 결과",
+    WINNER: "최종 우승자 :",
+  },
+};

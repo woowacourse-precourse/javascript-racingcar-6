@@ -1,4 +1,5 @@
 import { getRandomeNumberInRange, printOutput } from "../utils/missionUtils";
+import { RESULT_MESSAGES } from "../utils/messages";
 
 function getResultStringOneLine(cars) {
   let string = "";
@@ -13,7 +14,7 @@ function getResultStringOneLine(cars) {
 
 const resultHandler = {
   getResultString: ({ tryNumber, cars }) => {
-    let stringToPrint = "";
+    let stringToPrint = `${RESULT_MESSAGES.OUTPUT.RESULT}\n`;
     let currentCars = cars;
     for (let tryOrder = 0; tryOrder < tryNumber; tryOrder += 1) {
       const [STRING_ONE_LINE, NEW_CARS] = getResultStringOneLine(currentCars);
@@ -38,7 +39,7 @@ const resultHandler = {
 
   printWinner: (winner) => {
     const WINNER_STRING = winner.join(", ");
-    printOutput(`최종 우승자 : ${WINNER_STRING}`);
+    printOutput(`${RESULT_MESSAGES.OUTPUT.WINNER} ${WINNER_STRING}`);
   },
 };
 

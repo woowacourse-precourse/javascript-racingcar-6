@@ -45,6 +45,7 @@ describe("ResultHandler 테스트", () => {
         MOVING_FORWARD,
       ],
       [
+        "실행 결과",
         "lurgi : -",
         "car1 : -",
         "car2 : -",
@@ -64,7 +65,16 @@ describe("ResultHandler 테스트", () => {
       ["lurgi", "jeong"],
       2,
       [MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD],
-      ["lurgi : -", "jeong : -", "", "lurgi : --", "jeong : --", "", ""],
+      [
+        "실행 결과",
+        "lurgi : -",
+        "jeong : -",
+        "",
+        "lurgi : --",
+        "jeong : --",
+        "",
+        "",
+      ],
     ],
   ];
   test.each(STRING_TEST_CASES)(
