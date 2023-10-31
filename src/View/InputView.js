@@ -3,9 +3,9 @@ const {
   READ_RACING_CAR_NAMES,
   ERROR_MORE_THAN_TWO_CARS,
   ERROR_NOT_MORE_THAN_FIVE_CHARACTERS,
-  READ_NUMBER_OF_ATTEMPTS,
-  ERROR_ATTEMPT_COUNT,
-} = require('./Constant');
+  READ_NUMBER_OF_TRYS,
+  ERROR_TRY_COUNT,
+} = require('../Constant');
 
 const InputView = {
   async readCarNames() {
@@ -21,7 +21,7 @@ const InputView = {
       throw new Error(ERROR_MORE_THAN_TWO_CARS);
     }
 
-    names.map(item => {
+    names.forEach(item => {
       if (item.length === 0) {
         throw new Error(ERROR_MORE_THAN_TWO_CARS);
       }
@@ -32,17 +32,17 @@ const InputView = {
     });
   },
 
-  async readAttemptCounts() {
-    const answer = await Console.readLineAsync(READ_NUMBER_OF_ATTEMPTS);
+  async readTryCounts() {
+    const answer = await Console.readLineAsync(READ_NUMBER_OF_TRYS);
     const answerNumber = Number(answer);
-    this.validatorAttemptCount(answerNumber);
+    this.validatorTryCount(answerNumber);
 
     return answerNumber;
   },
 
-  validatorAttemptCount(count) {
+  validatorTryCount(count) {
     if (isNaN(count) || count < 0 || count === 0) {
-      throw new Error(ERROR_ATTEMPT_COUNT);
+      throw new Error(ERROR_TRY_COUNT);
     }
   },
 };

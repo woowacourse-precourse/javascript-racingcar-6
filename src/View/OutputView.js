@@ -1,4 +1,4 @@
-const { Console, RACING_RESULT, RACING_FINAL_WINNER } = require('./Constant');
+const { Console, RACING_RESULT, RACING_FINAL_WINNER } = require('../Constant');
 
 const OutputView = {
   printRacingResult() {

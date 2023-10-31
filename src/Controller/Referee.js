@@ -1,15 +1,15 @@
-const InputView = require('./InputView');
-const OutputView = require('./OutputView');
+const InputView = require('../View/InputView');
+const OutputView = require('../View/OutputView');
 
-const Car = require('./Car');
+const Car = require('../Model/Car');
 const car = new Car();
 
 class Referee {
-  attemptCounts;
+  tryCounts;
   #cars;
 
   constructor() {
-    this.attemptCounts = 0;
+    this.tryCounts = 0;
     this.#cars = [];
   }
 
@@ -22,11 +22,11 @@ class Referee {
   async getUserInputs() {
     this.#cars = [];
     const carNames = await InputView.readCarNames();
-    this.saveCarNames(carNames);
-    this.attemptCounts = await InputView.readAttemptCounts();
+    this.saveCarsInfo(carNames);
+    this.tryCounts = await InputView.readTryCounts();
   }
 
-  saveCarNames(carNames) {
+  saveCarsInfo(carNames) {
     carNames.forEach(name => {
       const car = new Car(name);
       this.#cars.push(car);
@@ -34,9 +34,9 @@ class Referee {
   }
 
   racingGame() {
-    while (this.attemptCounts > 0) {
+    while (this.tryCounts > 0) {
       this.moveCars();
-      this.attemptCounts -= 1;
+      this.tryCounts -= 1;
     }
     const winners = this.getWinners();
     OutputView.printWinners(winners);

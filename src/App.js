@@ -1,4 +1,4 @@
-import Referee from './Referee';
+import Referee from './Controller/Referee';
 const referee = new Referee();
 
 class App {

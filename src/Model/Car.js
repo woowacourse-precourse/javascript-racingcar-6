@@ -1,4 +1,4 @@
-const { Random } = require('./Constant');
+const { Random } = require('../Constant');
 
 class Car {
   #name;
