@@ -95,4 +95,13 @@ describe("class App test", () => {
       }).toThrowError(ERROR_MESSAGE.GAP);
     });
   });
+
+  describe("method test : checkCarNames()", () => {
+    test("자동차 이름이 5자 초과일 때 에러 처리", () => {
+      const longCarNames = "Grandeur";
+      expect(() => {
+        app.checkCarNames(longCarNames);
+      }).toThrowError(ERROR_MESSAGE.LENGTH);
+    });
+  });
 });
