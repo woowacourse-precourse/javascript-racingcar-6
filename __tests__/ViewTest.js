@@ -54,4 +54,15 @@ jun : -----
 `;
     expect(View.writeResultMessage(results)).toBe(message);
   });
+
+  describe('writeWinnerMessage', () => {
+    test('단독 우승자 안내 문구', () => {
+      expect(View.writeWinnerMessage(['pobi'])).toBe('최종 우승자 : pobi');
+    });
+    test('공동 우승자 안내 문구', () => {
+      expect(View.writeWinnerMessage(['pobi', 'jun'])).toBe(
+        '최종 우승자 : pobi, jun',
+      );
+    });
+  });
 });
