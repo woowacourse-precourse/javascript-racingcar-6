@@ -70,8 +70,10 @@ const printGameStatus = (userNames, racingCars) => {
   })
 }
 
-const gameStart = (userNames, racingCars, gameRep)=> {
+const gameStart = (userNames, gameRep)=> {
+  let racingCars = generateRacingCar(userNames.length);
   let count = 0;
+
   while(count < gameRep) {
     racingCars = updateRacingCarLocation(racingCars);
     
@@ -79,7 +81,37 @@ const gameStart = (userNames, racingCars, gameRep)=> {
 
     count++;
   }
+
+  return racingCars;
 }
+
+
+const getWinner = (gameResult, userNames) => {
+  let maxScore = 0;
+
+  gameResult.forEach((score) => {
+    if(score > maxScore) maxScore = score;
+  })
+
+  const winners = [];
+
+  gameResult.forEach((score, index) => {
+    if(score == maxScore) {
+      winners.push(userNames[index]);
+    }
+  })
+
+  return winners;
+}
+
+const printWinner = (winners) => {
+  const winnerString = winners.join(', ');
+  const winnerText = `최종 우승자 : ${winnerString}`;
+
+  MissionUtils.Console.print(winnerText);
+}
+
+
 
 
 
@@ -95,14 +127,19 @@ class App {
 
       checkNameLength(userNames);
 
-      const userInputgameRep = await getUserInput('시도할 횟수는 몇 회인가요?');
+      const userInputGameRep = await getUserInput('시도할 횟수는 몇 회인가요?');
 
-      const gameRep = stringToNaturalNumber(userInputgameRep);
-      let racingCars = generateRacingCar(userNames.length);
+      const gameRep = stringToNaturalNumber(userInputGameRep);
 
-      gameStart(userNames, racingCars, gameRep);
+      const gameResult = gameStart(userNames, gameRep);
 
-      
+      const winners = getWinner(gameResult, userNames);
+
+      printWinner(winners);
+
+
+
+
 
     } catch(err) {
       console.log(err.msg);
