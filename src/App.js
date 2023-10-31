@@ -58,13 +58,32 @@ class App {
         Console.print(`${carName} : ${gameProgress[carName]}`);
       });
     }
-    // 우승자 가리기
+    this.chooseWinner(gameProgress);
   }
 
   // 자동차 이동
   moveOrStop() {
     const number = Random.pickNumberInRange(0, 9);
     return number >= 4 ? '-' : '';
+  }
+
+  // 최종 우승자 도출하기
+  chooseWinner(gameProgress) {
+    let maxMove = 0;
+    let winnerArr = [];
+
+    Object.keys(gameProgress).forEach(([key, value]) => {
+      const currentMove = value.length;
+
+      if (currentMove > maxMove) {
+        maxMove = currentMove;
+        winnerArr = [key];
+      } else if (currentMove === maxMove) {
+        winnerArr.push(key);
+      }
+    });
+
+    Console.print(`최종우승자 : ${winnerArr.join(', ')}`);
   }
 }
 
