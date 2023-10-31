@@ -131,3 +131,27 @@ describe("inputNumberOfMovesAsync", () => {
   });
 });
 
+describe("startRace", () => {
+  test("자동차를 횟수만큼 이동시키기", () => {
+    const app = new App();
+    app.cars = [
+      { name: "car1", position: 0 },
+      { name: "car2", position: 0 },
+      { name: "car3", position: 0 },
+    ];
+    const numberOfMoves = 5; // 예를 들어 5번의 이동을 테스트
+
+    const mockPickNumberInRange = jest.fn();
+    MissionUtils.Random.pickNumberInRange = mockPickNumberInRange;
+
+    mockPickNumberInRange.mockImplementation(() => 4);
+
+    app.startRace(numberOfMoves);
+
+    app.cars.forEach(car => {
+      expect(car.position).toBe(numberOfMoves);
+    });
+  });
+});
+
+
