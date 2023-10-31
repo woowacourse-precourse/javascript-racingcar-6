@@ -4,6 +4,7 @@ import { initializeCarNameObj } from './initializeObj.js';
 import { promptCarNames, promptPlayCount } from './Output.js';
 import { runRaces } from './Race.js';
 import { getWinner } from './Winner.js';
+import { myConstants } from '../constants/constants.js';
 
 export async function startRacing() {
 	const carNames = await promptCarNames();
@@ -12,7 +13,7 @@ export async function startRacing() {
 	const playCount = await promptPlayCount();
 	const numPlayCount = await getPlayCount(playCount);
 
-	Console.print(`실행 결과`);
+	Console.print(`${myConstants.RESULT}`);
 
 	await runRaces(carNamesList, carNameObj, numPlayCount);
 	getWinner(carNameObj);

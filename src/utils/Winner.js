@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-
+import { myConstants } from '../constants/constants';
 export function getWinner(carNameObj) {
 	const max = findMaxValue(carNameObj);
 	const maxKeys = findMaxKeys(carNameObj, max);
@@ -17,10 +17,10 @@ export function findMaxKeys(carNameObj, max) {
 
 export function printWinner(maxKeys) {
 	if (maxKeys.length > 1) {
-		Console.print(`최종 우승자 : ${maxKeys.join(', ')}`);
+		Console.print(`${myConstants.WINNER} : ${maxKeys.join(', ')}`);
 	}
 
 	if (maxKeys.length <= 1) {
-		Console.print(`최종 우승자 : ${maxKeys[0]}`);
+		Console.print(`${myConstants.WINNER} : ${maxKeys[0]}`);
 	}
 }
