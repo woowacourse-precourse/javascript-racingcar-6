@@ -3,6 +3,7 @@ import Race from '../Model/Race'
 import ScoreBoard from '../Model/ScoreBoard';
 import { MissionUtils } from '@woowacourse/mission-utils';
 import { GUIDE_MESSAGE } from '../constants/constants';
+import Output from '../View/Output'
 
 export default class Controller {
 	constructor() {
@@ -11,6 +12,7 @@ export default class Controller {
 		this.user = new User();
 		this.race = new Race();
 		this.board = new ScoreBoard();
+		this.output = new Output();
 	}
 
 	async readyGame() {
@@ -20,6 +22,8 @@ export default class Controller {
 
 	startGame() {
 		let isPlaying = Number(this.attempts);
+
+		this.output.printStartGame()
 
 		while (isPlaying > 0) {
 			this.race.rollDiceAndGoForward(this.carsObj);
@@ -34,7 +38,7 @@ export default class Controller {
 		const CHAMPIONS = Object.keys(this.carsObj).filter(
 			(name) => this.carsObj[name] >= MAX_VALUE
 		);
-		MissionUtils.Console.print(
+		this.output.print(
 			`${GUIDE_MESSAGE.winners} ${CHAMPIONS.join(', ')}`
 		);
 	}
