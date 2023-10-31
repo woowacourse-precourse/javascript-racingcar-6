@@ -17,6 +17,12 @@ class OutputHandler {
   static generateHyphens(number) {
     return "-".repeat(number);
   }
+
+  static printWinner(winnerNameArray) {
+    Console.print(
+      MESSAGE.WINNER_INTRO + winnerNameArray.join(MESSAGE.WINNER_SEPARATOR)
+    );
+  }
 }
 
 export default OutputHandler;
