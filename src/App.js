@@ -26,6 +26,11 @@ class App {
 
   checkCountInput(count) {
     if(isNaN(count)) throw new Error(MESSAGES.numberError);
+  }   
+  
+  createRandomNumber() {
+    const RANDOM_NUMBER = Random.pickNumberInRange(0, 9);
+    return RANDOM_NUMBER;
   }
 }
 
