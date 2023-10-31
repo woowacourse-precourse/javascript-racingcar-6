@@ -1,9 +1,15 @@
+import { CONFIG } from '../constants/constants';
+
 export default class Utils {
   static createCarData(carNameList) {
     const carData = [];
 
     carNameList.forEach((carName) => {
-      carData.push({ name: carName, number: 0, result: '' });
+      carData.push({
+        name: carName,
+        number: CONFIG.initNumber,
+        result: CONFIG.initResult,
+      });
     });
 
     return carData;
@@ -11,7 +17,8 @@ export default class Utils {
 
   static goStopCar(carData) {
     carData.forEach((data) => {
-      if (data.number >= 4) data.result = data.result + '-';
+      if (data.number >= CONFIG.goNumber)
+        data.result = data.result + CONFIG.goString;
     });
 
     return carData;

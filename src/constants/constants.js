@@ -15,6 +15,11 @@ export const ERROR_MESSAGE = Object.freeze({
 
 export const CONFIG = Object.freeze({
   nameMaxLength: 5,
+  initNumber: 0,
+  initResult: '',
+  goNumber: 4,
+  goString: '-',
+
   range: {
     minNumber: 0,
     maxNumber: 9,
