@@ -6,6 +6,7 @@ class App {
       '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
     );
     this.nameValidation(nameInputValue);
+    const carDistanceMap = this.createMap(nameInputValue);
   }
 
   async userInput(message) {
@@ -29,6 +30,18 @@ class App {
           throw new Error('[ERROR]');
       });
     }
+  }
+
+  createMap(inputValue) {
+    const carDistanceMap = new Map();
+    if (inputValue.includes(',')) {
+      const nameArr = inputValue.split(',');
+      nameArr.forEach((name) => {
+        carDistanceMap.set(name, '');
+      });
+    }
+    if (!inputValue.includes(',')) carDistanceMap.set(inputValue, '');
+    return carDistanceMap;
   }
 }
 
