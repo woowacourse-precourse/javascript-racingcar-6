@@ -33,17 +33,26 @@ class App {
     }
   }
 
-  async getShift(attemptTimes) {
-    const shift = 0;
-    for (let i = 0; i < attemptTimes; i++) {
-      shift += await MissionUtils.Random.pickNumberInRange(0, 9);
+  async printShifts(carArr, attemptTimes) {
+    async function getShift(attemptTimes) {
+      let shift = 0;
+
+      for (let i = 0; i < attemptTimes; i++) {
+        if ((await MissionUtils.Random.pickNumberInRange(0, 9)) >= 4) shift++;
+      }
+      return shift;
     }
-    return shift;
+
+    for (let i = 0; i < carArr.length; i++) {
+      const shift = await getShift(attemptTimes);
+      MissionUtils.Console.print(`${carArr[i]} : ${'-'.repeat(shift)}`);
+    }
   }
 
   async play() {
     const carNameArr = await this.getCarNameArr();
     const attemptTimes = await this.getAttemptTimes();
+    await this.printShifts(carNameArr, attemptTimes);
   }
 }
 
