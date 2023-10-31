@@ -50,9 +50,9 @@ await App.play();
 import { ConvertInputTo } from 'AppModulesSource'
 ```
 
-## Make
+## ConvertInputTo
 
-특정한 객체를 반환하는 함수들
+사용자로부터 입력을 받아 특정한 값으로 반환하는 함수들
 
 ### `async racingInfo()`
 
@@ -61,7 +61,7 @@ import { ConvertInputTo } from 'AppModulesSource'
 - 게임 수는 양의 정수를 입력받는다
 
 ```jsx
-const racingInfo=await Make.racingInfo()
+const racingInfo=await ConvertInputTo.racingInfo()
 ```
 
 **반환하는 객체의 속성**
@@ -95,6 +95,41 @@ racingInfo.carPositionMatrix[3][5];
 자동차 목록을 입력받는 과정에서 `','`로 구분된 문자열의 길이가 utf-16 기준 5자 초과이면 예외를 던짐
 
 시행 횟수를 입력받는 과정에서 양의 정수가 들어오지 않으면 예외를 던짐
+
+
+
+### `async carList()`
+
+- 사용자로부터 `','` 로 구분되고, 각 구분된 문자열이 utf-16 기준 5자 이하인 문자열을 받아 그 문자열들을 담은 배열을 반환
+- ,로 구분된 문자열의 길이가 utf-16 기준 5자 초과이면 예외를 던짐
+
+```jsx
+await ConvertInputTo.carList(); // 입력: car,list
+
+// 반환값 : [ 'car', 'list' ]
+
+await ConvertInputTo.carList(); // 입력: hyundai,benz
+
+//예외 : [ERROR] 이름 길이 제한을 초과했습니다.
+```
+
+### `async numberOfGame()`
+
+- 사용자로부터 양의 정수를 받아, 문자열에 해당하는 `Number` 형으로 반환
+- 양의 정수가 들어오지 않으면 예외를 던짐
+
+```jsx
+await ConvertInputTo.numberOfGame(); // 입력: 12
+
+// 반환값 : 12
+
+await ConvertInputTo.numberOfGame(); // 입력: 1.3
+await ConvertInputTo.numberOfGame(); // 입력: 0
+await ConvertInputTo.numberOfGame(); // 입력: 1회
+
+//위의 세 줄의 코드는 모두 다음과 같은 예외를 던짐
+//[ERROR] 양의 정수가 들어오지 않았습니다.
+```
 
 
 ## Get
@@ -292,44 +327,6 @@ Print.racingResultFrom(racingInfo,1);
 Print.winnerFrom(['ss','0526']); // 최종 우승자 : ss, 0526
 Print.winnerFrom(['cha']); // 최종 우승자 : cha
 
-```
-
-## ConvertInputTo
-
-사용자로부터 입력을 받아 특정한 값으로 반환하는 함수들
-
-
-### `async carList()`
-
-- 사용자로부터 `','` 로 구분되고, 각 구분된 문자열이 utf-16 기준 5자 이하인 문자열을 받아 그 문자열들을 담은 배열을 반환
-- ,로 구분된 문자열의 길이가 utf-16 기준 5자 초과이면 예외를 던짐
-
-```jsx
-await ConvertInputTo.carList(); // 입력: car,list
-
-// 반환값 : [ 'car', 'list' ]
-
-await ConvertInputTo.carList(); // 입력: hyundai,benz
-
-//예외 : [ERROR] 이름 길이 제한을 초과했습니다.
-```
-
-### `async numberOfGame()`
-
-- 사용자로부터 양의 정수를 받아, 문자열에 해당하는 `Number` 형으로 반환
-- 양의 정수가 들어오지 않으면 예외를 던짐
-
-```jsx
-await ConvertInputTo.numberOfGame(); // 입력: 12
-
-// 반환값 : 12
-
-await ConvertInputTo.numberOfGame(); // 입력: 1.3
-await ConvertInputTo.numberOfGame(); // 입력: 0
-await ConvertInputTo.numberOfGame(); // 입력: 1회
-
-//위의 세 줄의 코드는 모두 다음과 같은 예외를 던짐
-//[ERROR] 양의 정수가 들어오지 않았습니다.
 ```
 
 ## Is

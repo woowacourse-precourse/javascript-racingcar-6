@@ -1,5 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import Make from '../src/modules/Make.js';
+import ConvertInputTo from '../src/modules/ConvertInputTo.js';
 
 const mockQuestions = inputs => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -30,7 +30,7 @@ describe('객체 초기화', () => {
       // given
       mockQuestions(inputs);
       // when
-      const racingInfo = await Make.racingInfo();
+      const racingInfo = await ConvertInputTo.racingInfo();
 
       // then
       expect(racingInfo).toHaveProperty(CAR_LIST_NAME, expectedValue);
@@ -46,7 +46,7 @@ describe('객체 초기화', () => {
     mockQuestions(inputs);
 
     // when
-    const racingInfo = await Make.racingInfo();
+    const racingInfo = await ConvertInputTo.racingInfo();
 
     // then
     expect(racingInfo).toHaveProperty(NUMBER_OF_GAME_NAME, expectedValue);
@@ -60,7 +60,7 @@ describe('객체 초기화', () => {
       mockQuestions(inputs);
 
       // when
-      const racingInfo = await Make.racingInfo();
+      const racingInfo = await ConvertInputTo.racingInfo();
 
       // then
       expect(racingInfo).toHaveProperty(CAR_POSITION_MATRIX_NAME);
