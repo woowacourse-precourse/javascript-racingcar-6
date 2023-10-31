@@ -10,7 +10,7 @@ export default class Car {
   }
 
   get name() {
-    return this.#name.trim();
+    return this.#name;
   }
 
   get position() {
