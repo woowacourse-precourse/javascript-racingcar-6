@@ -1,19 +1,13 @@
-import {
-  Console,
-  Random,
-} from "@woowacourse/mission-utils";
-
-import isValidName from "./isValidName.js"
 import getCarName from "./getCarName.js"
+import getAttemptsNumber from "./getAttemptsNumber.js";
 
 class App {
   async play() {
 
-    const userInput = await getCarName();
+    const carNameArray = await getCarName();
 
-    const carNameArray = isValidName(userInput);
+    const attemptsNumber = await getAttemptsNumber();
 
-    Console.print(carNameArray)
   }
 }
 
