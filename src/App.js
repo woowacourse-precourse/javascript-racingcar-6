@@ -28,119 +28,47 @@ class App {
       throw new Error("[ERROR] 실행횟수는 1이상의 숫자만 입력 가능합니다.");
     }
 
-    const [CAR1, CAR2, CAR3] = CARS;
+    const RACE_RESULT = [];
 
-    const RACE_RESULT = {
-      car1: {
-        name: CAR1,
-        forwardingCount: 0,
-      },
-      car2: {
-        name: CAR2,
-        forwardingCount: 0,
-      },
-      car3: {
-        name: CAR3,
-        forwardingCount: 0,
-      },
-    };
+    for (let i = 0; i < CARS.length; i++) {
+      RACE_RESULT.push({ name: CARS[i], forwardingCount: 0 });
+    }
 
     Console.print("실행 결과");
 
     for (let i = 1; i <= PLAYTIME; i++) {
-      let random_number = Random.pickNumberInRange(1, 9);
-      if (random_number >= 4) {
-        RACE_RESULT["car1"]["forwardingCount"]++;
-      }
-      random_number = Random.pickNumberInRange(1, 9);
-      if (random_number >= 4) {
-        RACE_RESULT["car2"]["forwardingCount"]++;
-      }
-      random_number = Random.pickNumberInRange(1, 9);
-      if (random_number >= 4) {
-        RACE_RESULT["car3"]["forwardingCount"]++;
+      for (let j = 0; j < CARS.length; j++) {
+        let random_number = Random.pickNumberInRange(1, 9);
+        if (random_number >= 4) {
+          RACE_RESULT[j]["forwardingCount"]++;
+        }
       }
 
-      Console.print(
-        `${RACE_RESULT["car1"]["name"]} : ${"-".repeat(
-          RACE_RESULT["car1"]["forwardingCount"]
-        )}`
-      );
-      Console.print(
-        `${RACE_RESULT["car2"]["name"]} : ${"-".repeat(
-          RACE_RESULT["car2"]["forwardingCount"]
-        )}`
-      );
-      Console.print(
-        `${RACE_RESULT["car3"]["name"]} : ${"-".repeat(
-          RACE_RESULT["car3"]["forwardingCount"]
-        )}`
-      );
+      for (let j = 0; j < CARS.length; j++) {
+        Console.print(
+          `${RACE_RESULT[j]["name"]} : ${"-".repeat(
+            RACE_RESULT[j]["forwardingCount"]
+          )}`
+        );
+      }
+
       Console.print("");
     }
 
-    let winner;
-    if (
-      RACE_RESULT["car1"]["forwardingCount"] -
-        RACE_RESULT["car2"]["forwardingCount"] >
-      0
-    ) {
-      if (
-        RACE_RESULT["car1"]["forwardingCount"] -
-          RACE_RESULT["car3"]["forwardingCount"] >
-        0
-      ) {
-        winner = RACE_RESULT["car1"]["name"];
-      } else if (
-        RACE_RESULT["car1"]["forwardingCount"] -
-          RACE_RESULT["car3"]["forwardingCount"] ===
-        0
-      ) {
-        winner = `${RACE_RESULT["car1"]["name"]}, ${RACE_RESULT["car3"]["name"]}`;
-      } else {
-        winner = RACE_RESULT["car3"]["name"];
-      }
-    } else if (
-      RACE_RESULT["car1"]["forwardingCount"] -
-        RACE_RESULT["car2"]["forwardingCount"] ===
-      0
-    ) {
-      if (
-        RACE_RESULT["car1"]["forwardingCount"] -
-          RACE_RESULT["car3"]["forwardingCount"] >
-        0
-      ) {
-        winner = `${RACE_RESULT["car1"]["name"]}, ${RACE_RESULT["car2"]["name"]}`;
-      } else if (
-        RACE_RESULT["car1"]["forwardingCount"] -
-          RACE_RESULT["car3"]["forwardingCount"] ===
-        0
-      ) {
-        winner = `${RACE_RESULT["car1"]["name"]}, ${RACE_RESULT["car2"]["name"]}, ${RACE_RESULT["car3"]["name"]}`;
-      } else {
-        winner = RACE_RESULT["car3"]["name"];
-      }
-    } else {
-      if (
-        RACE_RESULT["car2"]["forwardingCount"] -
-          RACE_RESULT["car3"]["forwardingCount"] >
-        0
-      ) {
-        winner = RACE_RESULT["car2"]["name"];
-      } else if (
-        RACE_RESULT["car2"]["forwardingCount"] -
-          RACE_RESULT["car3"]["forwardingCount"] ===
-        0
-      ) {
-        winner = `${RACE_RESULT["car2"]["name"]}, ${RACE_RESULT["car3"]["name"]}`;
-      } else {
-        winner = RACE_RESULT["car3"]["name"];
+    let winner = RACE_RESULT[0]["name"];
+    let max = RACE_RESULT[0]["forwardingCount"];
+
+    for (let i = 0; i < CARS.length; i++) {
+      if (RACE_RESULT[i]["forwardingCount"] > max) {
+        max = RACE_RESULT[i]["forwardingCount"];
+        winner = RACE_RESULT[i]["name"];
+      } else if (i !== 0 && RACE_RESULT[i]["forwardingCount"] === max) {
+        winner = `${winner}, ${RACE_RESULT[i]["name"]}`;
       }
     }
+
     Console.print(`최종 우승자 : ${winner}`);
   }
 }
 
 export default App;
-
-new App().play();
