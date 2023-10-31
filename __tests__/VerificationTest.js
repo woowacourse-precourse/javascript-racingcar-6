@@ -43,4 +43,21 @@ describe("함수별 기능 테스트", () => {
       expect(car[0].randomNumber >= 0 && car[0].randomNumber < 10).toBeTruthy();
     } 
   });
+
+  test("부여받은 랜덤수를 토대로 각 경주차가 전진하는지 여부를 판단하는 함수에 대한 테스트", () => {
+    const app = new App();
+    for (let i = 0; i < 10; i += 1) {
+      const car = app.makeCars(["a"]);
+      car[0].randomNumber = i;
+      app.getEachCarsMove(car);
+      if (car[0].randomNumber >= 4) {
+        expect(car[0].move).toContain("-");
+        expect(car[0].moveNumber).toEqual(1);
+      } 
+      else if (car[0].randomNumber < 4) {
+        expect(car[0].move).toEqual("");
+        expect(car[0].moveNumber).toEqual(0);
+      } 
+    }
+  });
 })
