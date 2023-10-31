@@ -1,7 +1,10 @@
 # 📋 구현 기능 리스트
 
 <img src="https://github.com/cho-hyeonjin/javascript-racingcar-6/assets/78816754/594966dc-f30e-44cc-ad32-6c48f365f691" >
-<img src="https://github.com/cho-hyeonjin/javascript-racingcar-6/assets/78816754/39008773-f2e2-4496-8d20-22d9b959a2e7" >
+
+<!-- <img src="https://github.com/cho-hyeonjin/javascript-racingcar-6/assets/78816754/39008773-f2e2-4496-8d20-22d9b959a2e7" > -->
+
+<img width="1751" src="https://github.com/cho-hyeonjin/javascript-racingcar-6/assets/78816754/fdad795d-6b9b-46a1-8fad-2464987d6968">
 
 ## 👩🏻‍💻 User
 
@@ -45,7 +48,9 @@
 
 ☑️ 회차마다 User가 입력한 플레이 횟수동안 User가 입력한 자동차들의 전진 횟수를 print한다.
 
-ㅤㅤ☑️ print 문구는 `User가 입력한 자동차 : 전진횟수 \n` 형식을 띄도록 한다.
+ㅤㅤ☑️ 횟수는 `-` 의 개수로 표현한다.
+
+ㅤㅤ☑️ print 문구는 `User가 입력한 자동차 : ` + `-` x 전진 횟수 `\n` 형식을 띄도록 한다.
 
 ☑️ 마지막 회차가 마무리 되면 최종 우승 자동차들을 print한다.
 
