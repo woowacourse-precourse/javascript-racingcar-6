@@ -31,7 +31,7 @@ class Car {
     if (typeof input !== 'boolean') {
       throw new Error('[ERROR] Boolean 값이 아님');
     }
-    if (input) this.#goingCount++;
+    if (input) this.#goingCount += 1;
   }
 
   print() {
