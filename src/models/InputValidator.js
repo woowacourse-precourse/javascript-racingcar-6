@@ -25,7 +25,7 @@ export const InputValidator = {
     if (!isInteger(num)) return false;
 
     // 0 이하의 정수가 입력됐을 때
-    if (Number(num) < 0) return false;
+    if (Number(num) <= 0) return false;
 
     return true;
   },

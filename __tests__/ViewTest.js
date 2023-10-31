@@ -29,8 +29,8 @@ const getLogSpy = () => {
 describe('OutputView 테스트', () => {
   test('전진 결과 출력 - printAdvanceResult(models)', () => {
     const models = [
-      { name: 'pobi', moveCnt: 1 },
-      { name: 'java', moveCnt: 0 },
+      { name: 'pobi', position: 1 },
+      { name: 'java', position: 0 },
     ];
     const outputs = ['pobi : -', 'java : '];
     const logSpy = getLogSpy();
@@ -44,11 +44,11 @@ describe('OutputView 테스트', () => {
   });
 
   test('결과 포맷 - formatResult(model)', () => {
-    const model = { name: 'pobi', moveCnt: 3 };
+    const model = { name: 'pobi', position: 3 };
 
     const view = new OutputView();
 
-    expect(view.formatResult(model)).toBe('pobi : ---');
+    expect(view.formatAdvanceResult(model)).toBe('pobi : ---');
   });
 
   test('전진 문구 - generateAdvanceString(moveCnt)', () => {
@@ -81,17 +81,14 @@ describe('InputView 테스트', () => {
     },
   );
 
-  test('시도 횟수 입력 받기 - 성공', async () => {
-    const input = '2';
-    const output = 2;
-
+  test.each(['2'])('시도 횟수 입력 받기 - 성공', async (input) => {
     mockQuestion(input);
 
     const view = new InputView();
-    expect(await view.getAttemptNum()).toBe(output);
+    expect(await view.getAttemptNum()).toBe(Number(input));
   });
 
-  test.each(['a2', '2a', '13.22', '', '-3'])(
+  test.each(['a2', '2a', '13.22', '', '-3', '0', '12 23'])(
     '시도 횟수 입력 받기 - 실패',
     async (input) => {
       mockQuestion(input);
