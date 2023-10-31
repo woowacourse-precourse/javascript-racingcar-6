@@ -23,7 +23,8 @@ const mockSettingCars = (carsNamesInput) => {
   const carsNamesArray = carsNamesInput.split(',');
   const registeredCars = carsNamesArray.map((name) => new Car(name));
 
-  SettingCars.registerCars = jest.fn().mockReturnValue(registeredCars);
+  SettingCars.registerCars = jest.fn()
+  SettingCars.registerCars.mockReturnValue(registeredCars);
 
   return registeredCars;
 };
