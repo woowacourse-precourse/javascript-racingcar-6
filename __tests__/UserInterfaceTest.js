@@ -1,3 +1,4 @@
+import { Console } from "@woowacourse/mission-utils";
 import UserInterface from "../src/UserInterface";
 
 describe("UserInterface 클래스 테스트", () => {
@@ -49,6 +50,36 @@ describe("UserInterface 클래스 테스트", () => {
 
     test("양의 정수를 입력했을 때 정수 반환", () => {
       expect(UserInterface.validateRounds("5")).toBe(5);
+    });
+  });
+
+  let consoleSpy;
+
+  beforeAll(() => {
+    consoleSpy = jest.spyOn(Console, "print");
+  });
+
+  afterEach(() => {
+    consoleSpy.mockClear();
+  });
+
+  afterAll(() => {
+    consoleSpy.mockRestore();
+  });
+
+  describe("printRoundResults 함수", () => {
+    test("반환받은 전진 횟수 출력", async () => {
+      const carStatuses = [
+        { carName: "pobi", distance: 2 },
+        { carName: "woni", distance: 0 },
+      ];
+      const expectedOutputs = ["pobi : --", "woni : "];
+
+      UserInterface.printRoundResults(carStatuses);
+
+      expectedOutputs.forEach((output, index) => {
+        expect(consoleSpy).toHaveBeenNthCalledWith(index + 1, output);
+      });
     });
   });
 });
