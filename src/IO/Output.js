@@ -1,7 +1,7 @@
 import { Console } from "@woowacourse/mission-utils";
 
-export class Output {
-  print(input) {
+export default class Output {
+  static print(input) {
     Console.print(input);
   }
 }

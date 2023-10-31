@@ -1,15 +1,12 @@
-import { Input } from "../IO/Input.js";
-import { Output } from "../IO/Output.js";
+import Input from "../IO/Input.js";
+import Output from "../IO/Output.js";
 import Constants from "../Misc/Constatns.js";
-import { Verification } from "./Verification.js";
-import { Car } from "./Car.js";
+import Verification from "./Verification.js";
+import Car from "./Car.js";
 
-export class Game {
+export default class Game {
   constructor() {
     this.input = new Input();
-    this.output = new Output();
-    this.constants = new Constants();
-    this.verify = new Verification();
     this.cars = [];
   }
 
@@ -20,26 +17,25 @@ export class Game {
       const laps = await this.getLaps();
       this.startRace(laps);
     } catch (error) {
-      this.output.print(error);
+      Output.print(error);
       throw error;
     }
   }
 
   async entry(inputString = null) {
-    if (!inputString)
-      inputString = await this.input.get(this.constants.askNames);
+    if (!inputString) inputString = await this.input.get(Constants.askNames);
     const arrayCars = inputString.split(",");
     this.validateNames(arrayCars);
     return arrayCars;
   }
 
   validateNames(name) {
-    if (this.verify.exceedLength(name))
-      throw new Error(this.constants.exceeded);
-    if (this.verify.findDuplicates(name))
-      throw new Error(this.constants.duplicates);
+    // if (this.verify.exceedLength(name))
+    if (Verification.exceedLength(name)) throw new Error(Constants.exceeded);
+    if (Verification.findDuplicates(name))
+      throw new Error(Constants.duplicates);
     if (name.includes("") || name.includes(" "))
-      throw new Error(this.constants.blank);
+      throw new Error(Constants.blank);
   }
 
   createCars(array) {
@@ -48,8 +44,8 @@ export class Game {
   }
 
   async getLaps() {
-    const laps = await this.input.get(this.constants.tries);
-    return parseInt(laps);
+    const laps = await this.input.get(Constants.tries);
+    return parseInt(laps, 10);
   }
 
   startRace(laps) {
@@ -61,18 +57,18 @@ export class Game {
         car.distance += car.didProceed();
         if (car.distance > longestDistance) longestDistance = car.distance;
       });
-      this.output.print(`${round}라운드`);
+      Output.print(`${round}라운드`);
       this.render(this.cars);
-      round++;
+      round += 1;
     }
     this.whoDidWin(laps);
   }
 
   render(array) {
     array.forEach((car) => {
-      this.output.print(`${car.name} : ${car.showTrail(car.distance)}`);
+      Output.print(`${car.name} : ${car.showTrail(car.distance)}`);
     });
-    this.output.print("\n");
+    Output.print("\n");
   }
 
   whoDidWin(laps) {
@@ -81,11 +77,11 @@ export class Game {
 
     if (winners.length >= 2) {
       const winnersName = winners.map((car) => car.name);
-      this.output.print(`최종 우승자 : ${winnersName.join(", ")}`);
+      Output.print(`최종 우승자 : ${winnersName.join(", ")}`);
       return;
     }
 
     [winner] = winners;
-    this.output.print(`최종 우승자 : ${winner.name}`);
+    Output.print(`최종 우승자 : ${winner.name}`);
   }
 }

@@ -1,6 +1,6 @@
 import { Random } from "@woowacourse/mission-utils";
 
-export class Car {
+export default class Car {
   constructor(input) {
     (this.name = input), (this.distance = 0);
   }
