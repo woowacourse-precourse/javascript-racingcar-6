@@ -1,6 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
 import { validCarInput, validNumberiNPUT } from "./ValidInput";
-import cars from "./Cars";
 import move from "./Move";
 import result from "./Result";
 import winner from "./Winner";
@@ -13,8 +12,6 @@ class App {
     Console.print(MESSAGE.INPUT_NUMBER)
     let TRYS = await validNumberiNPUT()
     Console.print(TRYS)
-
-    const SET_BASE = cars(CARS)
 
     while(TRYS > 0){
       CARS.forEach((car)=>{
