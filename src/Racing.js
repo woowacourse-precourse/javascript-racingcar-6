@@ -11,6 +11,7 @@ class Racing {
     this.moveCount = await this.getMoveCount();
     this.validateMoveCount();
     this.race();
+    this.getWinner();
   }
 
   async getCarsName() {
@@ -57,6 +58,18 @@ class Racing {
       result.push(`${car} : ${this.result[car]}`);
     });
     Console.print(`${result.join('\n')}\n`);
+  }
+
+  getWinner() {
+    let max = -1;
+    let winner = '';
+    this.cars.forEach((car) => {
+      if (max < this.result[car].length) {
+        winner = car;
+        max = this.result[car].length;
+      } else if (max === this.result[car].length) winner += `, ${car}`;
+    });
+    Console.print(`최종 우승자 : ${winner}`);
   }
 }
 export default Racing;
