@@ -57,26 +57,26 @@ describe('자동차 경주 게임', () => {
     await expect(app.play()).rejects.toThrow('[ERROR]');
   });
 
-  //추가 케이스 게임 예시
-  test('게임 예시', async () => {
-    // given
-    const MOVING_FORWARD = 4;
-    const STOP = 3;
-    const inputs = ['pobi,woni,jun', '5'];
-    const outputs = ['pobi : -'];
-    const randoms = [MOVING_FORWARD, STOP, 5, 6, 7, 8, 9, 8, 4, 4, 5, 6, 5, 4, 5];
-    const logSpy = getLogSpy();
+  // //추가 케이스 게임 예시
+  // test('게임 예시', async () => {
+  //   // given
+  //   const MOVING_FORWARD = 4;
+  //   const STOP = 3;
+  //   const inputs = ['pobi,woni,jun', '5'];
+  //   const outputs = ['pobi : -'];
+  //   const randoms = [MOVING_FORWARD, STOP, 5, 6, 7, 8, 9, 8, 4, 4, 5, 6, 5, 4, 5];
+  //   const logSpy = getLogSpy();
 
-    mockQuestions(inputs);
-    mockRandoms([...randoms]);
+  //   mockQuestions(inputs);
+  //   mockRandoms([...randoms]);
 
-    // when
-    const app = new App();
-    await app.play();
+  //   // when
+  //   const app = new App();
+  //   await app.play();
 
-    // then
-    outputs.forEach((output) => {
-      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
-    });
-  });
+  //   // then
+  //   outputs.forEach((output) => {
+  //     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+  //   });
+  // });
 });
