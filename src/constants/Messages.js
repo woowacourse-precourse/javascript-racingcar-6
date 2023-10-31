@@ -30,4 +30,7 @@ export const ERROR_MESSAGE_FUNCTION = Object.freeze({
   racingCount(min, max) {
     return `레이싱 횟수는 ${min}~${max}사이의 숫자만 가능합니다.`;
   },
+  randomNumber(min, max) {
+    return `생성된 숫자가 ${min}~${max}사이가 아닙니다. 인수 또는 패키지를 확인해 주세요`;
+  },
 });
