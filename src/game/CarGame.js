@@ -15,3 +15,15 @@ const moveCar = (carNames, carsPosition, randomNum) => {
     printRace(name, carsPosition[name]);
   });
 };
+
+// tryCount 만큼 레이싱
+const runRace = (tryCount, carNames, carsPosition) => {
+  let cnt = 0;
+  const randomNum = generateRandomNum();
+
+  while (cnt < tryCount) {
+    moveCar(carNames, carsPosition, randomNum);
+    cnt++;
+    Console.print('');
+  }
+};
