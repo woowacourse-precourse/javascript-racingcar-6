@@ -9,6 +9,7 @@ class RacingCar {
   constructor(name) {
     this.#name = name;
     this.#moveCount = 0;
+    this.movableNumber = new MovableNumber();
   }
 
   getName() {
@@ -17,6 +18,12 @@ class RacingCar {
 
   getMoveCount() {
     return this.#moveCount;
+  }
+
+  move() {
+    if (this.movableNumber.isMovable()) {
+      this.#moveCount += 1;
+    }
   }
 }
 export default RacingCar;
