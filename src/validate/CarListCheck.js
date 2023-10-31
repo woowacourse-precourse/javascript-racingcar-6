@@ -1,4 +1,4 @@
-import { ERROR } from '../util/constants.js';
+import { ERROR, RANGE_NUMBER } from '../util/constants.js';
 
 class CarListCheck {
   validate(inputCarList) {
@@ -31,7 +31,7 @@ class CarListCheck {
   }
 
   checkNameLength(carName) {
-    if (carName.length > 5) {
+    if (carName.length > RANGE_NUMBER.carNameLength) {
       throw ERROR.carNameLength;
     }
   }

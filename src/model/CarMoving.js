@@ -1,4 +1,5 @@
 import { Random } from '@woowacourse/mission-utils';
+import { RANGE_NUMBER } from '../util/constants.js';
 
 class CarMoving {
   async playEachRound(carCount) {
@@ -10,11 +11,13 @@ class CarMoving {
   }
 
   async generateRandomNumber() {
-    return this.checkRandomNumber(await Random.pickNumberInRange(0, 9));
+    return this.checkRandomNumber(
+      await Random.pickNumberInRange(RANGE_NUMBER.randomMinNumber, RANGE_NUMBER.randomMaxNumber),
+    );
   }
 
   checkRandomNumber(randomRacingNumber) {
-    if (randomRacingNumber >= 4) {
+    if (randomRacingNumber >= RANGE_NUMBER.movableNumber) {
       return randomRacingNumber;
     }
     return 0;
