@@ -10,7 +10,7 @@ const mockQuestions = (inputs) => {
   };
   
 describe("에러 테스트", () => {
-    test("이름이 다섯글자가 넘을때 ERROR", async () => {
+    test("이름이 다섯 글자가 넘을때 ERROR", async () => {
         const tryOverFive = ["woosup,pobi"];
         mockQuestions(tryOverFive);
         const app = new App();

@@ -23,7 +23,7 @@ const getLogSpy = () => {
   return logSpy;
 };
 
-describe("시도하기",()=>{
+describe("시도해 보기",()=>{
   test("임의의 시도",async()=>{
       const goArray = [1,4,3];
       const logSpy = getLogSpy();
