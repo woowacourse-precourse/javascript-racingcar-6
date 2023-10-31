@@ -5,6 +5,7 @@ describe('Car 클래스 테스트', () => {
     const car = new Car();
 
     car.name = 'aaaaa';
+
     expect(car.name).toEqual('aaaaa');
     expect(() => {
       car.name = 'bbbbbb';
@@ -15,6 +16,7 @@ describe('Car 클래스 테스트', () => {
     const car = new Car();
 
     car.goingCount = true;
+
     expect(car.goingCount).toEqual(1);
     expect(() => {
       car.goingCount = 1;
