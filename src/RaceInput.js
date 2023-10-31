@@ -4,9 +4,10 @@ import { checkCarName, checkRaceCount } from './Validation.js';
 
 export async function readCarName() {
 	const carNameInput = await MissionUtils.Console.readLineAsync(CAR_NAME_INPUT_MESSAGE + "\n");
-	checkCarName(carNameInput);
+	const lastCommaRemovedName = carNameInput.replace(/,$/, "");
+	checkCarName(lastCommaRemovedName);
 
-	return carNameInput;
+	return lastCommaRemovedName;
 };
 
 export async function readRaceCount() {
