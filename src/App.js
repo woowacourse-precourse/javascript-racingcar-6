@@ -14,6 +14,7 @@ class App {
     await this.inputCarNamesAsync();
     const numberOfMoves = await this.inputNumberOfMovesAsync();
     this.startRace(numberOfMoves);
+    this.printRaceResult();
   }
 
     /* 
@@ -58,6 +59,18 @@ class App {
         });
       }
     }
+
+  /*
+    * 이 메서드는 경주 결과를 출력합니다.
+    * 각 자동차의 현재 위치를 기반으로 "-" 문자를 사용하여 경주 상황을 시각적으로 표시
+    **/
+  printRaceResult() {
+    this.cars.forEach(car => {
+      const dash = '-'.repeat(car.position);
+      Console.print(`${car.name} : ${dash}`);
+    });
+  }
+
 }
 
 export default App;
