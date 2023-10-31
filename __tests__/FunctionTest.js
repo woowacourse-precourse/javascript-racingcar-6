@@ -57,12 +57,12 @@ describe("기능 테스트", () => {
     const calculatedPositions = [0, 0, 1, 1];
     const result = [];
 
-    randomValues.map((randomValue) => {
+    for (const randomValue of randomValues) {
       const car = new Car();
       Car.generateRandomValue = jest.fn().mockReturnValue(randomValue);
       car.calculatePosition();
       result.push(car.position);
-    });
+    }
     expect(result).toEqual(calculatedPositions);
   });
 });
