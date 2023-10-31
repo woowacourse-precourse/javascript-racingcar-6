@@ -38,6 +38,7 @@ class Controller {
       });
       this.printProgress();
     }
+    this.printResult();
   }
 
   printProgress() {
@@ -47,6 +48,27 @@ class Controller {
 
       OutputView.printMove(car.getName(), distanceString, isLast);
     });
+  }
+
+  printResult() {
+    const winner = this.findWinner();
+    OutputView.printWinner(winner);
+  }
+
+  findWinner() {
+    let winners = [];
+    let maxDistance = 0;
+
+    this.#cars.forEach((car) => {
+      if (car.getDistance() === maxDistance) {
+        winners.push(car.getName());
+      }
+      if (car.getDistance() > maxDistance) {
+        winners = [car.getName()];
+        maxDistance = car.getDistance();
+      }
+    });
+    return winners;
   }
 }
 
