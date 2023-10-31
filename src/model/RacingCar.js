@@ -18,6 +18,14 @@ class RacingCar {
     }
   }
 
+  getName() {
+    return this.#name;
+  }
+
+  getDisplacement() {
+    return this.#displacement;
+  }
+
   getState() {
     let stringDisplacement = '-'.repeat(this.#displacement)
     const state = `${this.#name} : ${stringDisplacement}`;

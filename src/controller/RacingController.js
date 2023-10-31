@@ -22,10 +22,13 @@ class RacingController {
     await this.#createRacingCars()
     await this.#setRetryCount();
     await this.#outputView.outputRetryResult();
-    for (let counter = 0; counter < this.#retryCount ; counter++) {
+
+    for (let counter = 0; counter < this.#retryCount; counter++) {
       this.#advanceRacingCars();
       this.#getDisplacements();
     }
+
+    this.#getWinner();
   }
 
   async #createRacingCars() {
@@ -59,6 +62,19 @@ class RacingController {
       this.#outputView.printRacingCarState(car);
     })
     this.#outputView.printNewLine();
+  }
+
+  async #getWinner() {
+    const winnerArray = [];
+    const maxDisplacement = Math.max.apply(null, this.#racingCarArray.map(car => {return car.getDisplacement();}));
+
+    this.#racingCarArray.forEach(car => {
+      if(car.getDisplacement() === maxDisplacement) {
+        winnerArray.push(car.getName());
+      }
+    });
+
+    this.#outputView.outputFinalResult(winnerArray.join(', '));
   }
 }
 

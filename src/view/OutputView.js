@@ -2,20 +2,28 @@ import { Console } from '@woowacourse/mission-utils';
 import { CONSOLE_MESSAGE } from '../constants/consoleMessages.js';
 
 class OutputView {
+  printQuery(query) {
+    Console.print(query);
+  }
+
   retryInputRacingCarNames() {
-    Console.print(CONSOLE_MESSAGE.outputRetryInputNames);
+    this.printQuery(CONSOLE_MESSAGE.outputRetryInputNames);
   }
 
   printRacingCarState(car) {
-    Console.print(car.getState());
+    this.printQuery(car.getState());
   }
 
   outputRetryResult() {
-    Console.print(CONSOLE_MESSAGE.outputRetryResult);
+    this.printQuery(CONSOLE_MESSAGE.outputRetryResult);
   }
 
   printNewLine() {
-    Console.print(CONSOLE_MESSAGE.newLine);
+    this.printQuery(CONSOLE_MESSAGE.newLine);
+  }
+
+  outputFinalResult(names) {
+    this.printQuery(`${CONSOLE_MESSAGE.outputFinalResult} : ${names}`);
   }
 }
 
