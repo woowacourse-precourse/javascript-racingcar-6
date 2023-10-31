@@ -1,4 +1,4 @@
-import isValidQuantity from '.';
+import isValidQuantity from './index.js';
 
 describe('isValidQuantity', () => {
   test.each([
