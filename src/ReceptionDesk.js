@@ -1,7 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
 import Car from './Car.js';
 import { INPUT_CARS } from './constants/messagesConstants.js';
-import { validateNames } from './functions/validate.js';
+import validateNames from './functions/validateNames.js';
 
 class ReceptionDesk {
   static async registerRacingCars() {

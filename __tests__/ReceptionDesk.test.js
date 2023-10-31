@@ -1,6 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
 import ReceptionDesk from '../src/ReceptionDesk.js';
-import { validateName } from '../src/functions/validate.js';
+import validateNames from '../src/functions/validateNames.js';
 
 describe('이름 입력 처리 테스트', () => {
   test('이름 입력 시, Console.readLineAsync를 사용한다', async () => {
@@ -25,7 +25,7 @@ describe('이름 입력 예외 테스트', () => {
   test.each([[['pobi', 'javaji']], [['']]])(
     '이름이 5자 이내가 아니면 에러를 발생시킨다 (입력된 이름들: %s)',
     (inputs) => {
-      expect(() => validateName(inputs)).toThrow('[ERROR]');
+      expect(() => validateNames(inputs)).toThrow('[ERROR]');
     },
   );
 });
