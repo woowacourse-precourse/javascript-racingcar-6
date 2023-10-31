@@ -93,12 +93,12 @@ classDiagram
 - [x] (setter) name : 사용자가 입력한 이름이 1자 이상 5자 이하인지 검증하고, 맞을 시 이름을 설정하고, 아닐 시 "[ERROR] 1자 이상 5자 이하의 문자가 입력되지 않음."이라는 예외를 발생시킨다.
 - [x] (getter) count : 움직여야하는 횟수(goingCount)를 반환한다.
 - [x] (setter) count : boolean으로 들어온 값이 true이면 goingCount를 1 증가시키고, false면 아무런 동작도 하지 않는다.
-- [ ] print : "<자동차이름> : <goingCount만큼의 ->" 를 출력한다.
+- [x] print : "<자동차이름> : <goingCount만큼의 ->" 를 출력한다.
 
 ### 🎯 Computer Class
 
     carList는 경기에 등록된 모든 자동차 리스트이고, round는 시도할 횟수이다.
-- [ ] (setter) round : 시도할 횟수(round)를 설정한다. 이때, 입력하는 수가 0보다 큰 정수가 아니면 "[ERROR] 숫자가 잘못된 형식입니다."는 예외를 발생시킨다.
+- [x] (setter) round : 시도할 횟수(round)를 설정한다. 이때, 입력하는 수가 0보다 큰 정수가 아니면 "[ERROR] 숫자가 잘못된 형식입니다."는 예외를 발생시킨다.
 - [ ] pushCarList : 사용자의 입력을 받아서 쉼표를 바탕으로 분류한 뒤, 이를 순서대로 자동차 객체 생성하고, 이름을 할당한 뒤 자동차 리스트(carList)에 할당한다.
 - [ ] start : 게임의 시작 부분으로, 경주할 자동차와 시도할 횟수를 입력받아 내부에서 setRound, setCarList를 실행시킨다.
 - [ ] rollDice : 0에서 9 사이에서 무작위 값을 구한다. 이때, 무작위 값이 4 이상일 경우 true를 리턴하고, 아니면 false를 리턴한다.
