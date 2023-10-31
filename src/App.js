@@ -7,6 +7,8 @@ class App {
     // const userInput = await this.getUserInput();
     // this.printMessage(msg)
     // const array = this.splitStringToArrayByComma(string)
+    const testingArray = ['fake', 'test', 'testing']
+    checkIsAllElementsFitCondition(testingArray)
   }
 }
 
@@ -25,7 +27,7 @@ function splitStringToArrayByComma(string) {
 }
 
 function checkIsAllElementsFitCondition(array) {
-  array.map(element => checkStringLengthBelow5(string))
+  array.map(element => checkStringLengthBelow5(element))
 }
 
 function checkStringLengthBelow5(string) {
