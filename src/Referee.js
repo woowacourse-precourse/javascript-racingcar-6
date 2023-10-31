@@ -7,10 +7,16 @@ function getWinners(cars, maxMovementCount) {
 }
 
 class Referee {
+  static isRaceValid(maxMovementCount) {
+    return Boolean(maxMovementCount);
+  }
+
   static checkWinners(cars) {
     const maxMovementCount = getMaxMovementCount(cars);
-    const winners = getWinners(cars, maxMovementCount);
-    return winners;
+    if (this.isRaceValid(maxMovementCount)) {
+      return getWinners(cars, maxMovementCount);
+    }
+    return null;
   }
 }
 
