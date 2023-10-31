@@ -11,6 +11,13 @@ const mockQuestions = (inputs) => {
   });
 };
 
+const getLogSpy = () => {
+  const logSpy = jest.spyOn(MissionUtils.Console, "print");
+  logSpy.mockClear();
+
+  return logSpy;
+};
+
 describe("경기 기록", () => {
   test("자동차 경주 기록 보드 세팅", () => {
     // given
@@ -86,6 +93,52 @@ describe("사용자의 입력 값 가져오기", () => {
 
       // then
       expect(result).toBe(output);
+    });
+  });
+});
+
+describe("경기 진행 정도에 따른 결과 출력 확인하기", () => {
+  test("최종 우승자 출력", () => {
+    // given
+    const WINNER_MESSAGE = "최종 우승자 : ";
+    const inputs = [["omin"], ["oms", "omin"]];
+    const outputs = [[`${WINNER_MESSAGE}omin`], [`${WINNER_MESSAGE}oms, omin`]];
+    const logSpy = getLogSpy();
+
+    // when
+    const app = new App();
+
+    inputs.forEach((input) => {
+      app.printFinalResult(input);
+
+      const output = outputs.shift().toString();
+
+      // then
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
+
+  test("중간 결과 출력", () => {
+    //given
+    const cars = ["omin", "oms", "sbk"];
+    const carsRecordBoard = {
+      omin: "--",
+      oms: "-",
+      sbk: "----",
+    };
+    const outputs = ["omin : --", "oms : -", "sbk : ---"];
+    const logSpy = getLogSpy();
+
+    // when
+    const app = new App();
+
+    cars.forEach((car) => {
+      app.printCurrentResult(car, carsRecordBoard);
+
+      const output = outputs.shift();
+
+      // then
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
   });
 });
