@@ -79,7 +79,7 @@ describe('자동차 경주 게임', () => {
     },
   );
 
-  test.each([[['pobi,jun', 'wooteco']], [['pobi,woni', '1o']]])(
+  test.each([[['pobi,jun', 'wooteco']], [['pobi,woni', '1.2']]])(
     '정수외의 횟수 입력에 대한 예외 처리',
     async (inputs) => {
       // given
@@ -91,6 +91,22 @@ describe('자동차 경주 게임', () => {
       // then
       await expect(app.play()).rejects.toThrow(
         '[ERROR] 횟수는 정수만 입력 가능합니다.',
+      );
+    },
+  );
+
+  test.each([[['p', '-1']], [['jun,woni', '0']]])(
+    '0보다 작은 횟수 입력에 대한 예외 처리',
+    async (inputs) => {
+      // given
+      mockQuestions(inputs);
+
+      // when
+      const app = new App();
+
+      // then
+      await expect(app.play()).rejects.toThrow(
+        '[ERROR] 1회 부터 플레이 가능합니다.',
       );
     },
   );
