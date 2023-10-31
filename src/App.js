@@ -7,12 +7,16 @@ class App {
     );
     // TODO: , 로 구분해서 저장
     const carNames = InputCarNames.split(",");
+
     // TODO: 유효처리 - 이름이 5자 이하인지
     this.checkCarNameLength(carNames);
+
     // TODO: 시도할 횟수 입력 받기
     const InputTryCount = await Console.readLineAsync(
       "시도할 횟수는 몇회인가요?\n"
     );
+    const tryCount = this.checkInputNumber(InputTryCount);
+
     // TODO: 입력받은 횟수만큼 모든 차에 전진 or 멈춤 게임 진행
     // TODO: 전진할 경우 - 랜덤 숫자 생성 후 4이상일 경우 전진
     // TODO: 멈출 경우 - 랜덤 숫자 생성 후 3이하일 경우 멈춤
@@ -27,6 +31,13 @@ class App {
       }
     });
     return;
+  }
+
+  checkInputNumber(InputTryCount) {
+    if (isNaN(InputTryCount)) {
+      throw new Error("[ERROR] 숫자만 입력 가능합니다.");
+    }
+    return Number(InputTryCount);
   }
 }
 
