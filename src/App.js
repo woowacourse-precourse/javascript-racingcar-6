@@ -7,7 +7,11 @@ class App {
     );
 
     const carArray = carName.split(",");
-    MissionUtils.Console.print(carArray);
+    const carAndDistance = {};
+
+    carArray.forEach((car) => {
+      carAndDistance[car] = 0;
+    });
   }
 }
 
