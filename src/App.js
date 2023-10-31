@@ -10,6 +10,8 @@ class App {
     output: OutputView,
   };
 
+  #service = RacingService;
+
   async play() {
     await this.#startGame();
   }
@@ -17,7 +19,7 @@ class App {
   async #startGame() {
     const userNames = await this.#readUserNames();
     const lap = await this.#readTrackLap();
-    const { records, winners } = RacingService.getResult(userNames, lap);
+    const { records, winners } = this.#service.getResult(userNames, lap);
 
     this.#printRecords(records);
     this.#printWinners(winners);
