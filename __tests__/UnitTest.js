@@ -1,3 +1,4 @@
+import App from '../src/App.js';
 import Car from '../src/model/Car.js';
 
 describe('자동차 경주 게임', () => {
@@ -5,7 +6,7 @@ describe('자동차 경주 게임', () => {
     '랜덤값이 4 이상 9 이하인 경우 자동차는 1칸 전진한다',
     (input) => {
       // given
-      let randomNumber = input;
+      const randomNumber = input;
 
       // when
       const car = new Car();
@@ -20,7 +21,7 @@ describe('자동차 경주 게임', () => {
     '랜덤값이 0 이상 3 이하인 경우 자동차는 전진하지 않는다',
     (input) => {
       // given
-      let randomNumber = input;
+      const randomNumber = input;
 
       // when
       const car = new Car();
@@ -28,6 +29,21 @@ describe('자동차 경주 게임', () => {
 
       // then
       expect(car.getStep()).toEqual(0);
+    },
+  );
+
+  test.each([['sujin,yujin'], ['jina,kayla,lily'], ['smuel,andy,scarl']])(
+    '입력받은 이름으로 자동차 이름이 생성된다',
+    (inputs) => {
+      // given
+      const names = inputs.split(',');
+
+      // when
+      const app = new App();
+      app.setCars(names);
+
+      // then
+      app.cars.forEach((car, i) => expect(car.getName()).toEqual(names[i]));
     },
   );
 });
