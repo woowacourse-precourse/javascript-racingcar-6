@@ -37,7 +37,7 @@ const validationName = async (nameArr) => {
     throw new Error(`${ERROR.NAME_COMMA}`);
   } else {
     nameArr.forEach((el, index) => {
-      if (el.length >= 5 || el.length <= 1) {
+      if (el.length >= 5 || el.length < 1) {
         throw new Error(
           `${ERROR.NAME_LENGTH} ${index + 1}번째요소에 대한 에러`
         );
