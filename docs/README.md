@@ -42,7 +42,7 @@
 
 # ✏️프로젝트 설계 과정
 
-![스크린샷 2023-10-30 오후 9 03 41](https://github.com/rlaclghks123/refactoring/assets/55423198/8be7bf57-bda1-4b8c-bd82-b8b06c1fc4a2)
+![프로젝트 설계 과정 Image](https://github.com/rlaclghks123/refactoring/assets/55423198/8be7bf57-bda1-4b8c-bd82-b8b06c1fc4a2)
 
 - 사전 지식
 
@@ -76,7 +76,7 @@
 
 # 📚프로젝트 구조 및 역할
 
-![스크린샷 2023-10-30 오후 9 22 10](https://github.com/rlaclghks123/refactoring/assets/55423198/b90e3122-1091-4d99-9d84-87e829240e33)
+![프로젝트 구조 및 역할 Image](https://github.com/rlaclghks123/refactoring/assets/55423198/b90e3122-1091-4d99-9d84-87e829240e33)
 
 - App 클래스
 
@@ -118,4 +118,4 @@
 
 - `명령어 : npx jest --coverage`
 
-![스크린샷 2023-10-30 오후 10 15 06](https://github.com/rlaclghks123/refactoring/assets/55423198/cfc75b9b-de27-4d3e-9227-69b3bf996833)
+![테스트 커버리지 Image](https://github.com/rlaclghks123/refactoring/assets/55423198/6221d693-5e6c-4f40-b436-8cee936de949)
