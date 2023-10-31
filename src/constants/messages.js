@@ -1,11 +1,12 @@
 import { CAR_NAMES, CARS, RACING } from "../constants/carRacing.js";
 
 export const INPUT_MESSAGE = Object.freeze({
-  INPUT_CAR_NAMES: '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)',
-  INPUT_NUMBERS_OF_MOVES: '시도할 횟수는 몇 회인가요?',
+  INPUT_CAR_NAMES:
+    "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)",
+  INPUT_NUMBERS_OF_MOVES: "시도할 횟수는 몇 회인가요?",
 });
 
-const ERROR_MESSAGE_PREFIX = '[ERROR]';
+const ERROR_MESSAGE_PREFIX = "[ERROR]";
 
 export const ERROR_MESSAGE = Object.freeze({
   // 자동차 이름 입력에 대한 에러를 처리한다.

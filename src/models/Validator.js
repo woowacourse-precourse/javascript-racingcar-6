@@ -2,7 +2,7 @@ import { CAR_NAMES, CARS, RACING } from "../constants/carRacing.js";
 import { ERROR_MESSAGE } from "../constants/messages.js";
 
 export default class Validator {
-  constructor() {};
+  constructor() {}
 
   /**
    * 사용자가 입력한 자동차 이름에 유효성을 검사한다.
@@ -12,10 +12,10 @@ export default class Validator {
    */
   static validateInputCarNames(carListString) {
     const carListArr = carListString
-      .split(',')
-      .map(carName => carName.trim());
+      .split(",")
+      .map((carName) => carName.trim());
 
-    carListArr.forEach(carNames => {
+    carListArr.forEach((carNames) => {
       // 자동차 이름의 길이가 최소 길이보다 작은 경우 에러를 발생시킨다.
       if (carNames.length < CAR_NAMES.MIN_LENGTH) {
         throw new Error(ERROR_MESSAGE.INPUT_CAR_NAMES_TOO_SHORT);
@@ -38,7 +38,7 @@ export default class Validator {
     }
 
     return true;
-  };
+  }
 
   static validateInputNumbersOfMoves(numberOfMoves) {
     const numberOfMoves = Number(numberOfMoves);
@@ -60,5 +60,5 @@ export default class Validator {
     }
 
     return true;
-  };
-};
+  }
+}
