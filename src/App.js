@@ -1,17 +1,24 @@
-import { Console } from '@woowacourse/mission-utils';
+import Racer from './Racer.js';
+import {
+  inputCarNames,
+  inputTryCount,
+  outputResultsEveryIteration,
+} from './View.js';
 
-const MESSAGE = {
-  INPUT_TRY_COUNT: '시도할 횟수는 몇 회인가요?',
-  INPUT_CAR_NAMES:
-    '경주할 자동차 이름을 입력하세요(이름은 쉼표(,) 기준으로 구분)',
-};
 class App {
   async play() {
-    const carNames = (await Console.readLineAsync(MESSAGE.INPUT_CAR_NAMES))
-      .trim()
-      .split(',')
-      .map(carName => carName.trim());
-    const tryCount = await Console.readLineAsync(MESSAGE.INPUT_TRY_COUNT);
+    const carNames = await inputCarNames();
+    const tryCount = await inputTryCount();
+    const racers = this.runRace(carNames, tryCount);
+  }
+
+  runRace(carNames, tryCount) {
+    const racers = carNames.map(carName => new Racer(carName));
+    for (let i = 0; i < tryCount; i += 1) {
+      racers.forEach(racer => racer.moveForward());
+      outputResultsEveryIteration(racers);
+    }
+    return racers;
   }
 }
 
