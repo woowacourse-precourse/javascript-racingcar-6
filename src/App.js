@@ -10,6 +10,7 @@ class App {
 
   async play() {
     await this.inputCarNamesAsync();
+    const numberOfMoves = await this.inputNumberOfMovesAsync();
   }
 
     /* 
@@ -26,6 +27,18 @@ class App {
 
       this.cars = carNames.map(name => ({ name, position: 0 }));
     }
+
+      /*
+    * 이 메서드는 사용자로부터 시도할 횟수를 입력받습니다.
+    * 입력값이 숫자인지 확인하고, 정수로 변환하여 반환
+    **/
+  async inputNumberOfMovesAsync() {
+    const numberOfMoves = await Console.readLineAsync("시도할 횟수를 입력하세요:");
+    if (isNaN(numberOfMoves)) {
+      throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
+    }
+    return parseInt(numberOfMoves, 10);
+  }
 }
 
 export default App;
