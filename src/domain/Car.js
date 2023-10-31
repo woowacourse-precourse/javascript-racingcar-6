@@ -4,7 +4,7 @@ import ERROR_MESSAGE from '../constants/error.js';
 
 class Car {
   /**
-   * Car의 move 판별 기준 (power가 이 값 미만이면 하지 않는다)
+   * Car의 move 판별 기준 (power가 이 값 미만이면 전진하지 않는다)
    * @type {4}
    */
   static DEAD_ZONE = 4;
