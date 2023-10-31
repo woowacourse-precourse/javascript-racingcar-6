@@ -20,4 +20,7 @@ export const ERRORS = Object.freeze({
   },
 });
 
-export const COUNTREGEX = /^[1-9]\d*$/;
+export const COUNT_REGEX = /^[1-9]\d*$/;
+
+export const SPLIT_LETTER = ',';
+export const RESULT_LETTER = '-';

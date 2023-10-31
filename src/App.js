@@ -1,5 +1,10 @@
 import { Random, Console } from '@woowacourse/mission-utils';
-import { INPUT_MESSAGES, OUTPUT_MESSAGES } from './Constants.js';
+import {
+  INPUT_MESSAGES,
+  OUTPUT_MESSAGES,
+  SPLIT_LETTER,
+  RESULT_LETTER,
+} from './Constants.js';
 import {
   validateInputEmpty,
   validateCarNameUnique,
@@ -15,7 +20,7 @@ class App {
 
     validateInputEmpty(input);
 
-    const carNames = input.split(',').map((carName) => {
+    const carNames = input.split(SPLIT_LETTER).map((carName) => {
       validateCarNameLength(carName);
       return carName;
     });
@@ -52,7 +57,7 @@ class App {
   printOneRacingResult = (cars) => {
     cars.forEach((car) => {
       car.makeStepForwardOrStop();
-      Console.print(car.name + ' : ' + '-'.repeat(car.step));
+      Console.print(car.name + ' : ' + RESULT_LETTER.repeat(car.step));
     });
   };
 

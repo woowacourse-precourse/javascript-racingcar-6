@@ -1,4 +1,4 @@
-import { ERRORS, COUNTREGEX } from '../Constants';
+import { ERRORS, COUNT_REGEX } from '../Constants.js';
 
 export const validateInputEmpty = (input) => {
   if (input === null || input === undefined || input === '') {
@@ -25,7 +25,7 @@ export const validateGameCountType = (input) => {
 };
 
 export const validateGameCountRange = (input) => {
-  if (!COUNTREGEX.test(input)) {
+  if (!COUNT_REGEX.test(input)) {
     throw new Error(ERRORS.gameCount.range);
   }
 };
