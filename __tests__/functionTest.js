@@ -102,3 +102,29 @@ describe('입력 에러 처리', () => {
       expect(app.carList.frank).toContain('-');
     });
   });
+
+  describe('레이싱 출력', () => {
+    it('printMessage', () => {
+      // given
+      const consoleLogSpy = jest
+        .spyOn(MissionUtils.Console, 'print')
+        .mockImplementation();
+      const input = {
+        pobi: '---',
+        jake: '--',
+        jacy: '----',
+      };
+      // when
+      const app = new App();
+      app.carList = input;
+      app.printMessage();
+      // then
+      for (const car in input) {
+        expect(consoleLogSpy).toHaveBeenCalledWith(`${car} : ${input[car]}`);
+      }
+      expect(consoleLogSpy).toHaveBeenCalledWith('');
+  
+      // Restore the original Console.print
+      consoleLogSpy.mockRestore();
+    });
+  });
