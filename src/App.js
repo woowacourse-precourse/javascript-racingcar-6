@@ -7,17 +7,22 @@ class App {
   async play() {
     const userInput = await getUserInput(message.notifyStarting)
     const carNameArray = processInput(userInput)
-    const racingRounds = await getUserInput(message.askRounds)
-    const racingCars = buildRacingCarsArray(carNameArray,CONDITION)        
+    let racingRounds = await getUserInput(message.askRounds)
+    const racingCars = buildRacingCarsArray(carNameArray, CONDITION)        
+    printMessage(message.progress)
     while (racingRounds--) {
-      racingCars.forEach(racingCar => racingCar.tryMoveForward())
-      // 결과 출력 로직
+      racingCars.forEach(racingCar => {
+        racingCar.tryMoveForward()
+        racingCar.showProgress()
+      })
+      printMessage("")
     }
     // 우승 로직
   }
 
 
 }
+
 
 function buildRacingCarsArray(carNameArray,condition) {
   return carNameArray.map(element => new RacingCar(element,condition))
@@ -66,15 +71,21 @@ class RacingCar {
     this.condition = condition
     this.progress = 0
   }
+
   tryMoveForward() {
-    const {low,high,criteria} = this.condition
-    (this.getRandomNumber({ low, high }) > criteria) && (this.progress += 1)
+    const { low, high, criteria } = this.condition;
+    (this.getRandomNumber(low, high) > criteria) && (this.progress += 1);
   }
 
-  getRandomNumber({ low,high }) {
+  getRandomNumber(low, high) {
     return Random.pickNumberInRange(low, high);
   }
+  
+  showProgress() {
+    printMessage(`${this.carName} : ${'-'.repeat(this.progress)}`);
+  }
 }
+
 
 function printMessage(message) {
   Console.print(message)
