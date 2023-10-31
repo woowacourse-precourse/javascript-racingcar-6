@@ -30,4 +30,22 @@ describe("Car Model 테스트", () => {
       expect(car.getLocation()).toBe(location);
     });
   });
+
+  test("현재 자동차의 location 비교", () => {
+    // given
+    const carName = "test";
+    const randoms = [4, 4];
+    const locations = [1, 2, 3];
+    const results = [1, 0, -1];
+
+    // when
+    const car = new Car(carName);
+    randoms.forEach((random) => {
+      car.move(random);
+    });
+
+    // then
+    const answers = locations.map((location) => car.compareLocation(location));
+    expect(answers).toEqual(results);
+  });
 });
