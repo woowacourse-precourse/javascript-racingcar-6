@@ -47,15 +47,15 @@ class App {
 
     for (let i = 1; i <= PLAYTIME; i++) {
       let random_number = Random.pickNumberInRange(1, 9);
-      if (random_number > 4) {
+      if (random_number >= 4) {
         RACE_RESULT["car1"]["forwardingCount"]++;
       }
       random_number = Random.pickNumberInRange(1, 9);
-      if (random_number > 4) {
+      if (random_number >= 4) {
         RACE_RESULT["car2"]["forwardingCount"]++;
       }
       random_number = Random.pickNumberInRange(1, 9);
-      if (random_number > 4) {
+      if (random_number >= 4) {
         RACE_RESULT["car3"]["forwardingCount"]++;
       }
 
