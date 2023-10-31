@@ -128,3 +128,19 @@ describe('입력 에러 처리', () => {
       consoleLogSpy.mockRestore();
     });
   });
+
+  describe('승자 골라내기', () => {
+    test('winner', () => {
+      const app = new App();
+      app.carList = {
+        james: '---',
+        pobi: '--',
+        jacy: '----',
+      };
+  
+      const result = app.winner();
+  
+      // Check that the winners are determined correctly
+      expect(result).toEqual(['jacy']); // 'car3' has the longest track
+    });
+  });
