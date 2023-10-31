@@ -58,6 +58,16 @@ const updateRacingCarLocation = (racingCars) => {
       return value;
     }
   })
+
+  return updatedRacingCarLocation;
+}
+
+const printGameStatus = (userNames, racingCars) => {
+  userNames.forEach((userName, index) => {
+    const userStatus = `${userName} : `;
+    const locationStatus = '-'.repeat(racingCars[index]);
+    MissionUtils.Console.print(userStatus + locationStatus);
+  })
 }
 
 
@@ -76,11 +86,15 @@ class App {
 
       const gameRep = stringToNaturalNumber(userInputgameRep);
 
-      const racingCars = generateRacingCar(userNames.length);
+      let racingCars = generateRacingCar(userNames.length);
 
-      racingCars.forEach((value) => {
-        console.log(value);
-      })
+      printGameStatus(userNames, racingCars);
+
+      racingCars = updateRacingCarLocation(racingCars);
+
+      printGameStatus(userNames, racingCars);
+
+      
 
     } catch(err) {
       console.log(err.msg);
