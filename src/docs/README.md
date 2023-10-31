@@ -89,5 +89,50 @@ graph TD;
 ## 🗂️ 폴더 구조
 
 ```
+javascript-racingcar-6
+├─ .eslintrc.cjs
+├─ .gitignore
+├─ .npmrc
+├─ .prettierrc
+├─ package.json
+├─ README.md
+├─ 📂 src
+│  ├─ App.js
+│  ├─ 📂 constants
+│  │  ├─ GrandPrixError.js
+│  │  ├─ GrandPrixMessage.js
+│  │  ├─ GrandPrixOption.js
+│  │  └─ Symbols.js
+│  ├─ 📂 controller
+│  │  └─ GrandPrix.js
+│  ├─ 📂 docs
+│  │  └─ README.md
+│  ├─ 📂 error
+│  │  ├─ DefaultError.js
+│  │  └─ ValidationError.js
+│  ├─ index.js
+│  ├─ 📂 model
+│  │  ├─ RacingCarGrid.js
+│  │  └─ RandomNumberGenerator.js
+│  ├─ 📂 validator
+│  │  ├─ CommonValidator.js
+│  │  ├─ index.js
+│  │  ├─ LapNumberValidator.js
+│  │  └─ RacingCarNameValidator.js
+│  └─ 📂 view
+│     ├─ index.js
+│     ├─ InputView.js
+│     └─ OutputView.js
+└─ 📂 __tests__
+   ├─ ApplicationTest.js
+   ├─ 📂 error
+   │  └─ ValidationErrorTest.js
+   ├─ 📂 model
+   │  └─ RacingCarGridTest.js
+   ├─ StringTest.js
+   └─ 📂 validator
+      ├─ CommonValidatorTest.js
+      ├─ LapNumberValidatorTest.js
+      └─ RacingCarNameValidatorTest.js
 
 ```
