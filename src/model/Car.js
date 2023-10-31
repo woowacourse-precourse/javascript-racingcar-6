@@ -6,6 +6,10 @@ export default class Car {
     this.move = 0;
   }
 
+  /**
+   * 자동차의 이름을 반환합니다.
+   * @returns {string} [자동차 이름]
+   */
   getName() {
     return this.name;
   }
@@ -14,6 +18,10 @@ export default class Car {
     this.move += 1;
   }
 
+  /**
+   * 움직인 거리를 반환합니다.
+   * @returns {number} [움직인 거리]
+   */
   getMove() {
     return this.move;
   }
