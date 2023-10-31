@@ -2,8 +2,8 @@ import { Console, Random } from "@woowacourse/mission-utils";
 
 const INPUT_NUMBER_ERR_MSG = "[ERROR] 숫자가 잘못된 형식입니다."
 const PLAYER_NUMBER_ERR_MSG = "[ERROR] 최소 2명 이상 입력하세요"
-const PLAYER_NAME_ASK_MSG="경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
-const ATTEMPT_NUM_ASK_MSG = "시도할 횟수는 몇 회인가요?"
+const PLAYER_NAME_ASK_MSG="경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
+const ATTEMPT_NUM_ASK_MSG = "시도할 횟수는 몇 회인가요?\n"
 const FINAL_WINNER_MSG= "최종 우승자"
 const RESULT_MSG="실행 결과"
 
@@ -91,7 +91,7 @@ class App {
     const numberAttempts = Number(await Console.readLineAsync(ATTEMPT_NUM_ASK_MSG));
     this.numberCheck(numberAttempts);
 
-    Console.print(RESULT_MSG);
+    Console.print("\n"+RESULT_MSG);
 
     this.gamePlay(players, numberAttempts,playersKeyList);
     this.findWinner(players, playersKeyList);
