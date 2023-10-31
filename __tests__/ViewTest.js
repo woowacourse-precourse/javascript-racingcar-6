@@ -27,6 +27,7 @@ const getLogSpy = () => {
 };
 
 describe('OutputView 테스트', () => {
+  // 전진 결과 출력 테스트
   test('전진 결과 출력 - printAdvanceResult(models)', () => {
     const models = [
       { name: 'pobi', position: 1 },
@@ -43,12 +44,13 @@ describe('OutputView 테스트', () => {
     });
   });
 
-  test('결과 포맷 - formatResult(model)', () => {
+  test('결과 포맷 - formatAdvanceResult(model)', () => {
     const model = { name: 'pobi', position: 3 };
+    const output = 'pobi : ---';
 
     const view = new OutputView();
 
-    expect(view.formatAdvanceResult(model)).toBe('pobi : ---');
+    expect(view.formatAdvanceResult(model)).toBe(output);
   });
 
   test('전진 문구 - generateAdvanceString(moveCnt)', () => {
@@ -57,6 +59,18 @@ describe('OutputView 테스트', () => {
     const view = new OutputView();
 
     expect(view.generateAdvanceString(MOVE_CNT)).toBe('---');
+  });
+
+  // 우승자 출력 테스트
+  test('우승자 출력 - printWinner(winners)', () => {
+    const winners = ['pobi', 'woni'];
+    const output = '최종 우승자 : pobi, woni';
+    const logSpy = getLogSpy();
+
+    const view = new OutputView();
+    view.printWinner(winners);
+
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
   });
 });
 
