@@ -1,41 +1,52 @@
+import { ERROR_MESSAGE } from '../consts/errorMessage.js';
+const { CAR, MOVECOUNT } = ERROR_MESSAGE;
+const {
+  NOT_A_NUMBER,
+  NOT_AN_INTEGER,
+  NEGATIVE_NUMBER,
+  ZERO_NUMBER,
+  EMPTY_COUNT,
+} = MOVECOUNT;
+const { EMPTY_NAME, NAME_TOO_LONG, DUPLICATE_NAME } = CAR;
+
 export function validateCountNumber(moveCount) {
   const inputValueNumber = Number(moveCount);
 
   if (isNaN(inputValueNumber)) {
-    throw new Error('[ERROR] 숫자를 입력해주세요.');
+    throw new Error(NOT_A_NUMBER);
   }
 
   if (inputValueNumber % 1 !== 0) {
-    throw new Error('[ERROR] 정수를 입력해주세요.');
+    throw new Error(NOT_AN_INTEGER);
   }
 
   if (inputValueNumber < 0) {
-    throw new Error('[ERROR] 음수를 입력할 수 없습니다.');
+    throw new Error(NEGATIVE_NUMBER);
   }
 
   if (inputValueNumber === 0) {
-    throw new Error('[ERROR] 1이상의 숫자를 입력해주세요.');
+    throw new Error(ZERO_NUMBER);
   }
 
   if (inputValueNumber === '') {
-    throw new Error('[ERROR] 횟수를 비워둘 수 없습니다.');
+    throw new Error(EMPTY_COUNT);
   }
 }
 
 export function validateCarName(carName) {
   if (carName === '') {
-    throw new Error('[ERROR] car 이름은 비워 둘 수 없습니다.');
+    throw new Error(EMPTY_NAME);
   }
 
   if (carName.length > 5) {
-    throw new Error('[ERROR] car 이름은 5자 이하만 가능합니다.');
+    throw new Error(NAME_TOO_LONG);
   }
 }
 
 export function valiadateDuplicteName(list) {
   const isDuplicte = hasDuplicate(list);
   if (isDuplicte) {
-    throw new Error('[ERROR] car 이름은 중복이 불가합니다.');
+    throw new Error(DUPLICATE_NAME);
   }
 }
 

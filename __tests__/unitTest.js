@@ -9,6 +9,12 @@ import {
 import { MissionUtils } from '@woowacourse/mission-utils';
 import Car from '../src/models/Car.js';
 import RaceManager from '../src/models/RaceManager.js';
+import { ERROR_MESSAGE } from '../src/consts/errorMessage.js';
+
+const { CAR, MOVECOUNT } = ERROR_MESSAGE;
+const { NOT_A_NUMBER, NOT_AN_INTEGER, NEGATIVE_NUMBER, ZERO_NUMBER } =
+  MOVECOUNT;
+const { EMPTY_NAME, NAME_TOO_LONG, DUPLICATE_NAME } = CAR;
 
 //utils
 describe('repeatFunctionNTimes', () => {
@@ -79,9 +85,7 @@ describe('Car Model', () => {
 describe('valiadateDuplicteName', () => {
   test('car 이름은 중복이 불가하다.', () => {
     const carList = ['car1', 'car2', 'car1'];
-    expect(() => valiadateDuplicteName(carList)).toThrow(
-      '[ERROR] car 이름은 중복이 불가합니다.',
-    );
+    expect(() => valiadateDuplicteName(carList)).toThrow(DUPLICATE_NAME);
   });
 
   test('중복이 없는 car 이름이면 테스트를 통과한다.', () => {
@@ -92,27 +96,19 @@ describe('valiadateDuplicteName', () => {
 
 describe('validateCountNumber', () => {
   test('정수가 아닌 입력에 대해 에러를 던진다.', () => {
-    expect(() => validateCountNumber('2.5')).toThrow(
-      '[ERROR] 정수를 입력해주세요.',
-    );
+    expect(() => validateCountNumber('2.5')).toThrow(NOT_AN_INTEGER);
   });
 
   test('음수 입력에 대해 에러를 던져야 한다.', () => {
-    expect(() => validateCountNumber(-2)).toThrow(
-      '[ERROR] 음수를 입력할 수 없습니다.',
-    );
+    expect(() => validateCountNumber(-2)).toThrow(NEGATIVE_NUMBER);
   });
 
   test('숫자가 아닌 입력에 대해 에러를 던져야 한다.', () => {
-    expect(() => validateCountNumber('abc')).toThrowError(
-      '[ERROR] 숫자를 입력해주세요.',
-    );
+    expect(() => validateCountNumber('abc')).toThrowError(NOT_A_NUMBER);
   });
 
   test('0 입력에 대해 에러를 던져야 한다.', () => {
-    expect(() => validateCountNumber(0)).toThrow(
-      '[ERROR] 1이상의 숫자를 입력해주세요.',
-    );
+    expect(() => validateCountNumber(0)).toThrow(ZERO_NUMBER);
   });
 
   test('유효한 입력에 대해 에러를 던지지 않는다.', () => {
@@ -123,14 +119,10 @@ describe('validateCountNumber', () => {
 // Error Unit Test : CarList
 describe('Car Name의 에러를 검증한다.', () => {
   test('빈 값을 입력했을때 에러를 던져야한다.', () => {
-    expect(() => validateCarName('')).toThrow(
-      '[ERROR] car 이름은 비워 둘 수 없습니다.',
-    );
+    expect(() => validateCarName('')).toThrow(EMPTY_NAME);
   });
   test('5자 초과의 이름이 있을때 에러를 던져야한다.', () => {
-    expect(() => validateCarName('123456')).toThrow(
-      '[ERROR] car 이름은 5자 이하만 가능합니다.',
-    );
+    expect(() => validateCarName('123456')).toThrow(NAME_TOO_LONG);
   });
 });
 
