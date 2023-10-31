@@ -69,4 +69,12 @@ describe("class App test", () => {
       expect(WinnerName).toEqual(["equus", "ray", "G80"]);
     });
   });
+
+  describe("method test : getCarNamesArray()", () => {
+    test("우승자 이름을 쉼표를 기준으로 나눌 수 있는가 ?", () => {
+      const testNames = "equus,pony,ray,SM5";
+      const carNamesArray = app.getCarNamesArray(testNames);
+      expect(carNamesArray).toEqual(["equus", "pony", "ray", "SM5"]);
+    });
+  });
 });
