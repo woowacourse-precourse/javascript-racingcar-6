@@ -32,11 +32,16 @@ const checkCarsDifferName = (carsNameArray) => {
     throw new Error(SAME_NAME_USER_INPUT_ERROR);
 };
 
+const convertStringToNumber = (userInputString) => {
+  return Number(userInputString);
+};
+
 export const checkInputNumberType = (userInputString) => {
   if (isNaN(userInputString)) throw new Error(NOT_NUMBER_TYPE_USER_INPUT_ERROR);
   if (!userInputString.length) {
     throw new Error(NOT_NUMBER_TYPE_USER_INPUT_ERROR);
   }
+  const userInputNumber = convertStringToNumber(userInputString);
 };
 
 export const userInputCarsName = async () => {
