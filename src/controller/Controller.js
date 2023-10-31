@@ -38,7 +38,6 @@ export default class Controller {
     this.createCar(carNameList);
 
     const tryCount = await InputView.getTryCount();
-    OutputView.printNewLine();
     this.moveCars(tryCount);
 
     const maxMoveCars = this.findMaxMoveCars();
