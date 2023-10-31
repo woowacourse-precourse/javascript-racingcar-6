@@ -3,6 +3,7 @@ import GAME_MESSAGE from "../../constants/gameMessage.js";
 import NameValid from "../../controller/valid/NameValid.js";
 import TryNumberInput from "./TryNumberInput.js";
 import resultOutput from "../output/ResultOutput.js";
+import SYMBOLS from "../../constants/symbols.js";
 
 class CarNameInput {
   constructor() {
@@ -12,7 +13,7 @@ class CarNameInput {
   async carName() {
     let nameSplit;
     try {
-      const userName = await Console.readLineAsync(`${GAME_MESSAGE.carName}`);
+      const userName = await Console.readLineAsync(`${GAME_MESSAGE.carName}\n`);
       nameSplit = this.nameValid.nameIsValid(userName);
     } catch (error) {
       throw error;
