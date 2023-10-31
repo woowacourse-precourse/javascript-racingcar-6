@@ -1,23 +1,17 @@
-import { Console } from '@woowacourse/mission-utils';
-import validate from './Validate.js';
-import race from './Race.js';
+import GameController from './controller/GameController.js';
 
 class App {
   async play() {
-    const inputCarName = await Console.readLineAsync(
-      '경주할 자동차 이름을 입력하세요 (이름은 쉼표(,)기준으로 구분)\n',
-    );
-    validate.carName(inputCarName);
+    await this.racingGame();
+  }
 
-    const inputPlayCount = await Console.readLineAsync(
-      '시도할 횟수는 몇 회인가요?\n',
-    );
-    validate.playCount(inputPlayCount);
+  async racingGame() {
+    const { settingGameFromUserInput, playRaceGame, printGameWinner } =
+      GameController;
 
-    const cars = race.createRaceCars(inputCarName);
-    race.playRace(cars, inputPlayCount);
-
-    Console.print(`최종 우승자 : ${race.winner(cars)}`);
+    const { cars, playCount } = await settingGameFromUserInput();
+    const winner = playRaceGame(cars, playCount);
+    printGameWinner(winner);
   }
 }
 

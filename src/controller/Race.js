@@ -1,6 +1,6 @@
 import { Console, Random } from '@woowacourse/mission-utils';
-import SETTING from './constant/Setting';
-import car from './Car';
+import SETTING from '../constant/Setting.js';
+import car from '../model/Car.js';
 
 const createRaceCars = userInput => {
   const names = userInput.split(',');

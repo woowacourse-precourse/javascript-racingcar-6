@@ -1,4 +1,4 @@
-import ERROR_MESSAGE from '../constant/ErrorMessage';
+import ERROR_MESSAGE from '../constant/ErrorMessage.js';
 
 const carName = userInput => {
   const cars = userInput.split(',');
