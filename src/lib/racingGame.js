@@ -70,10 +70,13 @@ export default class RacingGame {
     await this.readCarNames();
     await this.readGameCount();
 
+    MissionUtils.Console.print('');
+
     MissionUtils.Console.print('실행 결과');
     for (let i = 0; i < this.gameCount; i++) {
       await this.playOneTurn();
       await this.printRacingStatus();
+      MissionUtils.Console.print('');
     }
     this.printWinner();
   }
