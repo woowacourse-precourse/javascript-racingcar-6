@@ -27,10 +27,7 @@ class App {
 
     while (count !== counts) {
       count++;
-      carList.map((car, idx) => {
-        forwardCounts = CheckRandomNum(forwardCounts, idx)
-        Console.print(car + ' : ' + '-'.repeat(forwardCounts[idx]));
-      })
+      forwardCounts = CheckRandomNum(carList, forwardCounts);
       Console.print('');
     }
     
