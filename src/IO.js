@@ -66,4 +66,7 @@ export const output = {
     const winnerNames = winningRacers.map(racer => racer.carName);
     Console.print(MESSAGE.OUTPUT.WINNER(winnerNames));
   },
+  executionResult() {
+    Console.print(MESSAGE.OUTPUT.EXECUTION_RESULT);
+  },
 };
