@@ -6,10 +6,12 @@ import {
   checkInputRaceNumber,
 } from './Validate.js';
 import Car from './Car.js';
+
 class App {
   constructor() {
     this.cars = [];
   }
+
   initCarList(carNameArray) {
     carNameArray.forEach((carName) => {
       this.cars.push(new Car(carName));
@@ -38,15 +40,17 @@ class App {
 
   makeCarMove() {
     this.cars.forEach((car) => {
-      let randomNumber = this.pickRandomNumber();
+      const randomNumber = this.pickRandomNumber();
       if (randomNumber >= 4) {
         car.advance();
       }
     });
   }
+
   pickRandomNumber() {
     return Random.pickNumberInRange(0, 9);
   }
+
   startRace(raceNumber) {
     for (let i = 0; i < raceNumber; i++) {
       this.makeCarMove();
@@ -66,10 +70,12 @@ class App {
     const winnersList = this.cars.filter((car) => car.move === maxAdvance);
     this.printWinners(winnersList);
   }
+
   printWinners(winnersList) {
     const winnersName = winnersList.map((winner) => winner.name);
     Console.print(`${MESSAGE.WINNER} : ${winnersName.join(', ')}`);
   }
+
   async play() {
     await this.getCarName();
     const raceNumber = await this.getRaceNumber();
