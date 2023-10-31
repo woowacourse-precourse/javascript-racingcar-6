@@ -22,7 +22,7 @@ const RacingService = {
      *  }[]}
      */
     const records = [];
-    const users = Array.from(names, (name) => User.of(name));
+    const users = Array.from(names, User.of);
     const track = Track.of(users, lap);
 
     while (!track.isEnd()) {
