@@ -67,4 +67,24 @@ describe("자동차 경주 게임", () => {
     // then
     await expect(app.play()).rejects.toThrow("[ERROR]");
   });
+
+  test.each([
+    // 1 미만의 시도 횟수
+    [[0]],
+    [[-1]],
+    // 숫자가 아닌 string
+    [["abc"]],
+    // 소수점이 있는 실수를 입력
+    [[0.1]],
+    [[1.1]]
+  ])("시도할 횟수에 대한 예외처리", async (inputs) => {
+    // given
+    mockQuestions(["pobi,hobin", ...inputs]);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow("[ERROR]");
+  });
 });
