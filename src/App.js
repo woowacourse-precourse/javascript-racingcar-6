@@ -12,8 +12,9 @@ class App {
     }
 
     async getCarsName() {
-        const CAR_NAME_INPUT = await Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
-        const CARS = CAR_NAME_INPUT.split(",");
+        let carNameInput = await Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
+        let carNameTemp = carNameInput.replace(/ /g, '');
+        const CARS = carNameTemp.split(",");
         try {
             this.checkCarName(CARS);
         } catch (e) {
@@ -32,13 +33,13 @@ class App {
     }
 
     async getTryCNT() {
-        let tryCntInput = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+        let tryCNTInput = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
         try {
-            this.checkTryCNT(tryCntInput);
+            this.checkTryCNT(tryCNTInput);
         } catch (e) {
             throw e;
         }
-        return Number(tryCntInput);
+        return Number(tryCNTInput);
     }
 
     checkTryCNT(tryCntInput) {
@@ -55,15 +56,16 @@ class App {
 
         for (let i = 0; i < TRY_CNT; i++) {
             carGoCNT = this.carGoFromRandom(CAR_CNT, carGoCNT);
-            this.printEachGameState(CARS, CAR_CNT, carGoCNT);
+            this.printEachGameState(CARS, carGoCNT);
             Console.print("");
         }
 
         return carGoCNT;
     }
-    carGoFromRandom(carCNT, carGoCNT) {
+
+    carGoFromRandom(CAR_CNT, carGoCNT) {
         let randomValue;
-        for (let j = 0; j < carCNT; j++) {
+        for (let j = 0; j < CAR_CNT; j++) {
             randomValue = Random.pickNumberInRange(0, 9);
             if (randomValue >= 4) {
                 carGoCNT[j] += 1;
@@ -71,8 +73,9 @@ class App {
         }
         return carGoCNT;
     }
-    printEachGameState(CARS, CAR_CNT, carGoCNT) {
-        for (let j = 0; j < CAR_CNT; j++) {
+
+    printEachGameState(CARS, carGoCNT) {
+        for (let j = 0; j < CARS.length; j++) {
             Console.print(CARS[j] + ' : ' + '-'.repeat(carGoCNT[j]));
         }
     }
@@ -80,7 +83,7 @@ class App {
     printGameResult(carGoCNT, CARS) {
         const WINNER_VALUE = Math.max.apply(Math, carGoCNT);
 
-        let winnerIndex ;
+        let winnerIndex;
         let winnerSentence = "최종 우승자 : ";
         let winners = new Array();
 
@@ -92,10 +95,9 @@ class App {
             winnerIndex = carGoCNT.indexOf(WINNER_VALUE);
         }
 
-        if(winners.length===1){
+        if (winners.length === 1) {
             winnerSentence = winnerSentence + CARS[winners[0]]
-        }
-        else if (winners.length > 1) {
+        } else if (winners.length > 1) {
             winnerSentence = winnerSentence + winners.map((winner) => CARS[winner]).join(', ');
         }
 
