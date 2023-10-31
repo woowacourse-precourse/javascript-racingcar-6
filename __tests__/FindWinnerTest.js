@@ -6,4 +6,4 @@ test('점수 배열, 플레이어이름 배열을 이용해 우승자 추출기 
   const result = ['카마인','루페온','프로키온'];
 
   expect(findWinner(playersArray, scoreArray)).toEqual(result);
-})
+});

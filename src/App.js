@@ -7,7 +7,7 @@ class App {
     const attemptNumber = await getAttemptNumber();
 
     const racingGame = new RacingController(playersArray,attemptNumber);
-    racingGame.startRacing()
+    racingGame.startRacing();
   }
 }
 

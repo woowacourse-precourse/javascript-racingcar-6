@@ -3,7 +3,7 @@ export const GAME_MESSEAGE = Object.freeze({
   inputAttempt : '시도할 횟수는 몆 회인가요?',
   executeResult : '실행 결과',
   winner : '최종 우승자',
-})
+});
 
 export const ERROR_MESSEAGE = Object.freeze({
   nameLength : '[ERROR] 자동차 이름은 최대 5글자까지 가능합니다.',

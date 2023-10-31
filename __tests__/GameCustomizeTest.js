@@ -30,7 +30,7 @@ describe('비동기 유저 입력값 유효성 및 오류 잡아내는지 테스
     mockQuestions2(userInput);
     
     await expect(getPlayersName()).resolves.toEqual(result);
-  })
+  });
 
   //한 단어만 테스트
   test('플레이어 이름 오류났을때', async () => {
@@ -39,7 +39,7 @@ describe('비동기 유저 입력값 유효성 및 오류 잡아내는지 테스
     mockQuestions2(userInput);
 
     await expect(getPlayersName()).rejects.toThrow('[ERROR]');
-  })
+  });
 
   test('올바른 게임 시도 횟수 넣었을때', async () => {
     const userInput = '1004';
@@ -48,7 +48,7 @@ describe('비동기 유저 입력값 유효성 및 오류 잡아내는지 테스
     mockQuestions2(userInput);
 
     await expect(getAttemptNumber()).resolves.toEqual(result);
-  })
+  });
 
   //mockQuestions 사용, 여러 단어 테스트 
   test.each([
@@ -75,6 +75,5 @@ describe('비동기 유저 입력값 유효성 및 오류 잡아내는지 테스
     mockQuestions2(inputs);
     
     await expect(getPlayersName()).rejects.toThrow("[ERROR]");
-  })
-
-})
+  });
+});

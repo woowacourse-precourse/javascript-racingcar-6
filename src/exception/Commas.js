@@ -20,4 +20,4 @@ class Commas {
   }
 }
 
-export default Commas
+export default Commas;

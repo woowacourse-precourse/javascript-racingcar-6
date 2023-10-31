@@ -30,6 +30,7 @@ test('레이싱 게임 컨트롤러 2사이클 테스트', () => {
   outputs.forEach((output) => {
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
   });
-})
+});
+
 
 

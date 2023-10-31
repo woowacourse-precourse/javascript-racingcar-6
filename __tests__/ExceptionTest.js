@@ -12,7 +12,7 @@ describe('예외 발생 모든 경우의 수 살펴보기', () => {
     const check = new Exception();
   
     expect(() => check.name(inputs)).toThrow("[ERROR]");
-  })
+  });
 
   test.each([
     "pobi,,crong,jaju",
@@ -30,5 +30,6 @@ describe('예외 발생 모든 경우의 수 살펴보기', () => {
     
     expect(() => check.name(inputs)).toThrow(errorMesseage[index]);
     index += 1;  
-  })
-})
+  });
+});
+
