@@ -7,31 +7,58 @@ class App {
     const input = new Input();
     // CarName 입력 -> Car 배열 생성
     const carNames = await input.inputCarName();
-    const cars = [];
-    carNames.forEach((carName) => cars.push(new Car(carName)));
+    this.cars = [];
+    carNames.forEach((carName) => this.cars.push(new Car(carName)));
     // 시도 횟수 입력
-    const tryNum = await input.inputTryNum();
+    this.tryNum = await input.inputTryNum();
 
-    this.roundStart(cars, tryNum);
+    this.roundStart();
   }
 
-  roundStart(cars, tryNum) {
+  roundStart() {
     let round = 1;
     Console.print("실행 결과");
-    while (round++ <= tryNum) {
-      this.gameRound(cars);
+    while (round++ <= this.tryNum) {
+      this.gameRound();
     }
+    this.gameFinished();
   }
 
-  gameRound(cars) {
-    cars.forEach((car) => {
+  gameRound() {
+    this.cars.forEach((car) => {
       car.move();
       Console.print(car + "");
     });
     Console.print("\n");
   }
 
-  async gameFinished() {}
+  getWinners() {
+    const maxDistance = Math.max.apply(
+      null,
+      this.cars.map((car) => car.distance)
+    );
+    return this.cars.filter((car) => car.distance === maxDistance);
+  }
+
+  gameFinished() {
+    const winners = this.getWinners();
+    let winnerText = "최종 우승자 : ";
+    // 우승자 1명인 경우
+    if (winners.length === 1) {
+      winnerText += winners[0].carName;
+      Console.print(winnerText);
+      return;
+    }
+    // 우승자 여러명일 경우
+    winners.forEach((car, idx) => {
+      if (idx < winners.length - 1) {
+        winnerText += car.carName + ", ";
+        return;
+      }
+      winnerText += car.carName;
+    });
+    Console.print(winnerText);
+  }
 
   async play() {
     await this.initGame();
@@ -39,6 +66,3 @@ class App {
 }
 
 export default App;
-
-const a = new App();
-a.play();
