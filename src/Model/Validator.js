@@ -75,7 +75,6 @@ export default class Validator {
 		}
 
 		if (!/^\d+$/.test(attempts)) {
-			// isNaN(attempts)
 			throw new Error(ERROR_MESSAGE.invalid_attempts_pattern);
 		}
 

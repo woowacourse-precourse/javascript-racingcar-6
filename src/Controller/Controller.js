@@ -1,9 +1,8 @@
 import User from '../Model/User'
 import Race from '../Model/Race'
 import ScoreBoard from '../Model/ScoreBoard';
-import { MissionUtils } from '@woowacourse/mission-utils';
-import { GUIDE_MESSAGE } from '../constants/constants';
 import Output from '../View/Output'
+import { GUIDE_MESSAGE } from '../constants/constants';
 
 export default class Controller {
 	constructor() {

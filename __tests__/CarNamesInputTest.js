@@ -1,6 +1,6 @@
-import App from '../src/App.js';
 import { MissionUtils } from '@woowacourse/mission-utils';
-import { ERROR_MESSAGE } from '../src/constants/constants.js';
+import App from '../src/App';
+import { ERROR_MESSAGE } from '../src/constants/constants';
 
 // @note - 테스트 케이스
 

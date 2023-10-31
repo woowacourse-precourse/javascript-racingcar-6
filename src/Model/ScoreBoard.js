@@ -1,4 +1,3 @@
-import { MissionUtils } from '@woowacourse/mission-utils';
 import Output from '../View/Output';
 
 export default class ScoreBoard {

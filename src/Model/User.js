@@ -1,8 +1,7 @@
-import { MissionUtils } from '@woowacourse/mission-utils';
-import { GUIDE_MESSAGE } from '../constants/constants';
 import Validator from './Validator';
 import Input from '../View/Input';
 import Output from '../View/Output';
+import { GUIDE_MESSAGE } from '../constants/constants';
 
 export default class User {
 	constructor() {
