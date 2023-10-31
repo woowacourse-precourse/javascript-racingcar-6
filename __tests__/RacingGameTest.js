@@ -92,4 +92,16 @@ describe('레이싱 게임 플레이와 관련된 함수 테스트', () => {
       ]),
     );
   });
+
+  // announceWinner 함수 테스트
+  test('게임 우승자 출력 테스트', () => {
+    const gameWinners = '최종 우승자 : 테스트1, 테스트3';
+    const getAnnounceWinnerPrintSpy = jest.spyOn(Console, 'print');
+
+    racingGame.announceWinner();
+
+    expect(getAnnounceWinnerPrintSpy).toHaveBeenCalledWith(
+      expect.stringContaining(gameWinners),
+    );
+  });
 });
