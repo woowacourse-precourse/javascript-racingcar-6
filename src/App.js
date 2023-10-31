@@ -13,12 +13,9 @@ class App {
     Console.print(NAME_PROMPT);
     let nameInput = await Console.readLineAsync();
 
-
     // 횟수 입력
     Console.print(NUMBER_PROMPT);
     let numberInput = await Console.readLineAsync();
-
-    Console.print(`숫자 입력값 : ${numberInput}`);
 
     // 입력값 검증
     if (this.hasDuplicateName(nameInput) || !this.isNumeric(numberInput)) throw new Error(ERROR_PROMPT);
@@ -34,8 +31,6 @@ class App {
     const result = input.split(",").map(name => name.trim());
     const uniqueNames = new Set(result);
 
-    Console.print(`이름 목록: ${result} / set 목록: ${uniqueNames}`);
-
     return result.length !== uniqueNames.size;
   }
 
@@ -46,22 +41,6 @@ class App {
     return !isNaN(input) && !isNaN(parseFloat(input));
   }
 
-  /** 입력값 테스트 */
-  // isValidInput = (stringInput, numInput) => {
-  //   const input = stringInput;
-  //   const count = numInput;
-
-  //   describe("문자열 테스트", () => {
-  //     test("이름 입력값의 쉼표(,) 구분 및 중복값 확인", async () => {
-  //       await expect(this.hasDuplicateName(input)).toBe(True);
-  //     })
-
-  //     test("횟수 입력값 확인", async () => {
-  //       await expect(this.isNumeric(count)).toBe(True);
-  //     });
-  //   });
-  // };
-
   /** 무작위 값을 생성해 전진 여부 확인 */
   isMoveForward = (namesArray) => {
     let movingList = [];
@@ -70,8 +49,10 @@ class App {
       let randomNum = Random.pickNumberInRange(0, 9);
       // 랜덤값이 적절한지 검증하는 코드 추가
 
-      if (randomNum >= 4) movingList[i] = true;
-      if (randomNum < 4) movingList[i] = false;
+      // if (randomNum >= 4) movingList[i] = true;
+      // if (randomNum < 4) movingList[i] = false;
+
+      randomNum >= 4 ? movingList[i] = true : movingList[i] = false;
     }
 
     return movingList;
