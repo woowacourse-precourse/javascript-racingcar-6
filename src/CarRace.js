@@ -1,21 +1,20 @@
-import { Car } from './CarInfo.js';
 import { MissionUtils } from '@woowacourse/mission-utils';
+import { Car } from './CarInfo.js';
 
 export class Race {
     constructor(carNames) {
         this.cars = carNames.map(name => new Car(name));
     }
 
-    startRound() {
+    gameRound() {
         this.cars.forEach(car => {
             const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
-            //console.log(randomNumber);
-            car.move(randomNumber);
+            car.goFoward(randomNumber);
         });
     }
 
     getWinners() {
-        const maxPosition = Math.max(...this.cars.map(car => car.position));
-        return this.cars.filter(car => car.position === maxPosition).map(car => car.name);
+        const maxFoward = Math.max(...this.cars.map(car => car.foward));
+        return this.cars.filter(car => car.foward === maxFoward).map(car => car.name);
     }
 }

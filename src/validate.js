@@ -1,4 +1,4 @@
-function isvalidCarNames(carNames) {
+function isValidCarNames(carNames) {
   if (carNames.length < 2) {
     throw new Error('[ERROR] 자동차는 2대 이상이어야 합니다.');
   }
@@ -10,10 +10,10 @@ function isvalidCarNames(carNames) {
   }
 }
 
-function isvalidAttempt(attempt) {
+function isValidAttempt(attempt) {
   if (isNaN(attempt) || attempt <= 0) {
     throw new Error('[ERROR] 시도할 횟수는 1 이상의 숫자이어야 합니다.');
   }
 }
 
-export {isvalidCarNames, isvalidAttempt};
+export {isValidCarNames, isValidAttempt};

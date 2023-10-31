@@ -1,12 +1,12 @@
 export class Car {
     constructor(name) {
         this.name = name;
-        this.position = 0;
+        this.foward = 0;
     }
 
-    move(randomNumber) {
+    goFoward(randomNumber) {
         if (randomNumber >= 4) {
-            this.position++;
+            this.foward++;
         }
     }
 }

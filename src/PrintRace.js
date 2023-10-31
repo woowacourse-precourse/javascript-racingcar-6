@@ -1,8 +1,8 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 
-export class ConsoleView {
-    static printRace(car) {
-        MissionUtils.Console.print(`${car.name} : ${'-'.repeat(car.position)}`);
+export class PrintRace {
+    static printFoward(car) {
+        MissionUtils.Console.print(`${car.name} : ${'-'.repeat(car.foward)}`);
     }
 
     static printEmptyLine() {
