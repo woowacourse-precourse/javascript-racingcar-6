@@ -21,7 +21,7 @@ function makeCarsByNames(carNames) {
  * @returns {list<RacingCar>}
  */
 
-export default async function getCarNames() {
+export default async function getRacingCars() {
   const userInput = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n');
   const carNamesWithoutSpace = String(userInput).replace(/(\s*)/g, '');
   const carNames = carNamesWithoutSpace.split(",");
