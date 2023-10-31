@@ -9,6 +9,10 @@ class App {
     const CAR_NAME_ARRAY = CAR_NAME.split(",");
 
     this.carNameValidity(CAR_NAME_ARRAY);
+
+    const NUMBER_OF_TRY = await MissionUtils.Console.readLineAsync(
+      "시도할 횟수는 몇 회인가요?\n"
+    );
   }
 
   carNameValidity(inputCarNameArray) {
