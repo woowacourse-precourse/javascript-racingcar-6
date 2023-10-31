@@ -26,5 +26,5 @@ const isNotEmptyTryNum = (input) => {
 };
 
 const isNumber = (input) => {
-  return !input.includes(' ') && Number.isNaN(Number(input));
+  return !input.includes(' ') && !Number.isNaN(Number(input));
 };
