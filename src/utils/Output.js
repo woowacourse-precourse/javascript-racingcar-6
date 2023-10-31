@@ -1,4 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
+import { OUTPUT } from '../constants/MESSAGE';
 
 // 레이싱 결과 출력
 const printRace = (name, position) => {
@@ -9,10 +10,10 @@ const printRace = (name, position) => {
 const printWinner = (winner) => {
   if (winner.length <= 1) {
     // 단독 우승
-    Console.print(`최종 우승자 : ${winner[0]}`);
+    Console.print(`${OUTPUT.WINNER} : ${winner[0]}`);
   } else {
     // 공동 우승
-    Console.print(`최종 우승자 : ${winner.join(', ')}`);
+    Console.print(`${OUTPUT.WINNER} : ${winner.join(', ')}`);
   }
 };
 
