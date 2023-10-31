@@ -50,24 +50,19 @@ class App {
 		const winners = [];
 
 		for (let i = 0; i < cars.length; i++) {
-			let steps = "";
+			let steps = 0;
 			for (let j = 0; j < attempts; j++) {
 				const move = MissionUtils.Random.pickNumberInRange(0, 9);
-				if (move >= 4) {
-					steps += "-";
-				}
+				if (move >= 4) steps += 1;
 			}
 
-			const hyphenCount = (steps.match(/\-/g) || []).length;
-			results.push(cars[i] + " : " + steps);
+			results.push(cars[i] + " : " + "-".repeat(steps));
 
-			if (hyphenCount > maxHyphenCount) {
-				maxHyphenCount = hyphenCount;
+			if (steps > maxHyphenCount) {
+				maxHyphenCount = steps;
 				winners.length = 0;
 				winners.push(cars[i]);
-			} else if (hyphenCount === maxHyphenCount) {
-				winners.push(cars[i]);
-			}
+			} else if (steps === maxHyphenCount) winners.push(cars[i]);
 		}
 
 		for (const result of results) {
