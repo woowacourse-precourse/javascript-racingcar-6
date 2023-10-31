@@ -5,6 +5,8 @@ const MOVE_OR_STOP = 4;
 
 class App {
   constructor() {
+    // this.carNames = null;
+    // this.carPositions = null;
     this.roundCount = null;
   }
 
@@ -25,6 +27,8 @@ class App {
       this.getRoundResults(carNames, carPositions);
       this.roundCount--;
     }
+    const winner = this.setWinner(carNames, carPositions);
+    this.getWinner(winner);
   }
   
   validateCarNames(carNames) {
@@ -64,6 +68,39 @@ class App {
       Console.print(carName + " : " + result);
     }
     Console.print("");
+  };
+
+  setWinner(carNames, carPositions) {
+    let maxLocation = this.findMaxLocation(carPositions);
+    let winner = [];
+    let index = 0;
+    for (let carName of carNames) {
+      const position = carPositions.get(carName);
+      if (position == maxLocation) {
+        winner[index] = carName;
+        index++;
+      }
+    }
+    return winner;
+  };
+
+  findMaxLocation(carPositions) {
+    let max = -1;
+    for (let position of carPositions.values()) {
+      if (position > max) {
+        max = position;
+      }
+    }
+    return max;
+  };
+
+  getWinner(winners) {
+    let result = "";
+    for (let winner of winners) {
+      result += winner + ", ";
+    }
+    result = result.substring(0, result.length - 2);
+    Console.print("최종 우승자 : " + result);
   };
 }
 
