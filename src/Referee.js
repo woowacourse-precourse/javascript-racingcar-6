@@ -19,6 +19,7 @@ class Referee {
   async getUserInputs() {
     const carNames = await InputView.readCarNames();
     this.saveCarNames(carNames);
+    this.attemptCounts = await InputView.readAttemptCounts();
   }
 
   saveCarNames(carNames) {
