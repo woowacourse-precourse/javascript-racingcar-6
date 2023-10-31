@@ -14,7 +14,7 @@ class Race {
     });
   }
 
-  raceResults() {
+  roundResults() {
     this.POSITIONS.forEach((POSITION, i) => {
       const CAR_NAME = this.CAR_NAMES[i];
       const ROUND_RESULT = "-".repeat(POSITION);
@@ -36,7 +36,7 @@ class Race {
 
     for (let i = 0; i < this.ROUNDS; i++) {
       this.moveCars();
-      this.raceResults();
+      this.roundResults();
       Console.print(""); // 라운드 구분을 위한 빈 줄
     }
 
