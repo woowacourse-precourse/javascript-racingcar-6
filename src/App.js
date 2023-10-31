@@ -35,7 +35,9 @@ class App {
 
   printMoveResult() {
     this.cars.forEach((car) => {
-      print(`${car.name} : ${'-'.repeat(car.position)}`);
+      const moveResult = `${car.name} : ${'-'.repeat(car.position)}`;
+
+      print(moveResult);
     });
 
     print();
@@ -43,8 +45,9 @@ class App {
 
   printWinners() {
     const winnerNames = this.winners.map((car) => car.getName());
+    const winners = `${PROMPT.FINAL_WINNER} : ${winnerNames.join(`${CHAR.SEPARATOR} `)}`;
 
-    print(`${PROMPT.FINAL_WINNER} : ${winnerNames.join(`${CHAR.SEPARATOR} `)}`);
+    print(winners);
   }
 
   async play() {
