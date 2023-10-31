@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import Computer from './Computer.js';
+import MESSAGE from './Constant.js';
 
 export default class User {
   static async inputQuery(query) {
@@ -8,15 +8,13 @@ export default class User {
   }
 
   static async inputCarName() {
-    const input = await User.inputQuery(
-      Computer.MESSAGE.COMMAND_INPUT_CAR_NAME,
-    );
+    const input = await Console.readLineAsync(MESSAGE.COMMAND_INPUT_CAR_NAME);
     return input;
   }
 
   static async inputTrialNumber() {
-    const input = await User.inputQuery(
-      Computer.MESSAGE.COMMAND_INPUT_TRIAL_NUMBER,
+    const input = await Console.readLineAsync(
+      MESSAGE.COMMAND_INPUT_TRIAL_NUMBER,
     );
     return input;
   }
