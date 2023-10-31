@@ -29,14 +29,14 @@ describe("자동차 이름 입력", () => {
 
   test("정상적인 값 입력 시", async () => {
     const input = ["woon,toon"];
-
+    const answer = ["woon", "toon"];
     mockQuestions(input);
 
     // when
     const result = await controllers.getUserInput(...input);
 
     // then
-    expect(result).toEqual(["woon", "toon"]);
+    expect(result).toEqual(answer);
   });
 
   test("빈 공백 입력 시 예외처리", async () => {
@@ -67,6 +67,7 @@ describe("자동차 이름 입력", () => {
 describe("게임 시도 횟수 입력", () => {
   test("정상적인 값 입력 시", async () => {
     const input = ["5"];
+    const answer = [...input];
 
     mockQuestions(input);
 
@@ -75,7 +76,7 @@ describe("게임 시도 횟수 입력", () => {
     const result = await controllers.getTryTimes();
 
     //then
-    expect(result).toEqual(["5"]);
+    expect(result).toEqual(answer);
   });
 
   test("숫자가 아닌 값을 입력 시", async () => {
@@ -99,6 +100,7 @@ describe("시도횟수 만큼 반복한 각 자동차의 이동 거리 계산", 
   test("정상적으로 계산이 이루어졌을 때", async () => {
     const cars = ["caro", "cari"];
     const tryTime = 3;
+    const answer = { cars, moveResult: { caro: 3, cari: 0 } };
 
     mockRandoms([5, 3, 5, 2, 6, 2]);
 
@@ -114,7 +116,7 @@ describe("시도횟수 만큼 반복한 각 자동차의 이동 거리 계산", 
     const result = await controllers.carMoveCheck(cars, tryTime);
 
     //then
-    expect(result).toEqual({ cars, moveResult: { caro: 3, cari: 0 } });
+    expect(result).toEqual(answer);
   });
 
   test("자동차 이름이 5글자 이상일 시 예외처리", async () => {
@@ -147,6 +149,7 @@ test("입력한 시도횟수 만큼 게임 반복", async () => {
   const cars = ["carl", "kay"];
   const tryTime = 3;
   const move = { carl: 0, kay: 0 };
+  const answer = { carl: 3, kay: 3 };
   const logSpy = getLogSpy();
 
   mockRandoms([6, 6, 6, 6, 6, 6]);
@@ -159,7 +162,7 @@ test("입력한 시도횟수 만큼 게임 반복", async () => {
   const result = await controllers.repeatCarRacing(move, cars, tryTime);
 
   //then
-  expect(result).toEqual({ carl: 3, kay: 3 });
+  expect(result).toEqual(answer);
   expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("kay : ---"));
 });
 
@@ -202,13 +205,13 @@ describe("Model 기능 테스트", () => {
 
   test("자동차 위치 초기값 설정", async () => {
     const cars = ["abc", "ccc", "ded"];
-    const data = { abc: 0, ccc: 0, ded: 0 };
+    const answer = { abc: 0, ccc: 0, ded: 0 };
 
     //when
     const result = model.setInitialCarMovePoint(cars);
 
     //then
-    expect(result).toEqual(data);
+    expect(result).toEqual(answer);
   });
 
   test("입력값 공백 제거", async () => {
@@ -222,5 +225,20 @@ describe("Model 기능 테스트", () => {
       //then
       expect(result).toEqual(answer[idx]);
     });
+  });
+
+  test("자동차 움직인 거리 계산", async () => {
+    const movePoint = { aaa: 0, bbb: 0, ccc: 0 };
+    const random = [6, 2, 7];
+
+    const answer = { aaa: 1, bbb: 0, ccc: 1 };
+
+    mockRandoms(random);
+
+    //when
+    const result = model.calculateCarMovePoint(movePoint);
+
+    //then
+    await expect(result).toEqual(answer);
   });
 });
