@@ -9,9 +9,7 @@ describe("기능 테스트", () => {
     const game = new Game();
     const result = game.carList;
 
-    Console.readLineAsync = jest
-      .fn()
-      .mockImplementation(() => Promise.resolve(input));
+    Console.readLineAsync = jest.fn().mockResolvedValue(input);
     await game.inputCarName();
     expect(result).toEqual([new Car("pobi"), new Car("woni"), new Car("jun")]);
   });
@@ -20,9 +18,7 @@ describe("기능 테스트", () => {
     const input = "yujin, yuuujin";
     const game = new Game();
 
-    Console.readLineAsync = jest
-      .fn()
-      .mockImplementation(() => Promise.resolve(input));
+    Console.readLineAsync = jest.fn().mockResolvedValue(input);
     expect(game.inputCarName()).rejects.toThrow(
       "[ERROR] 이름이 5자 초과입니다."
     );
@@ -33,9 +29,7 @@ describe("기능 테스트", () => {
     const input = 5;
     const game = new Game();
 
-    Console.readLineAsync = jest
-      .fn()
-      .mockImplementation(() => Promise.resolve(input));
+    Console.readLineAsync = jest.fn().mockResolvedValue(input);
     await game.inputAttemptNumber();
     expect(game.attemptNumber).toBe(5);
   });
@@ -44,9 +38,7 @@ describe("기능 테스트", () => {
     const input = "56ab9";
     const game = new Game();
 
-    Console.readLineAsync = jest
-      .fn()
-      .mockImplementation(() => Promise.resolve(input));
+    Console.readLineAsync = jest.fn().mockResolvedValue(input);
     expect(game.inputAttemptNumber()).rejects.toThrow(
       "[ERROR] 숫자를 입력해주세요."
     );
