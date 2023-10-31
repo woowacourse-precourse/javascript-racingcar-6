@@ -31,15 +31,17 @@ class RacingGame {
 		this.#moves();
 	}
 
+	#move() {
+		this.#tryCounter.singleTry();
+
+		const currentLocations = this.#racingTrack.allMoves();
+		Io.printAllLocations(currentLocations);
+	}
+
 	#moves() {
 		Io.printResultHeader();
 
-		while (!this.#tryCounter.isEnd()) {
-			this.#tryCounter.singleTry();
-
-			const currentLocations = this.#racingTrack.allMoves();
-			Io.printAllLocations(currentLocations);
-		}
+		while (!this.#tryCounter.isEnd()) this.#move();
 
 		this.#printWinnerNames();
 	}
