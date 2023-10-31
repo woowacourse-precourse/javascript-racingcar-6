@@ -20,14 +20,12 @@ describe('자동차 경주 게임 세부 메서드 테스트', () => {
   test('checkForwardCondition: 전진 조건에 해당하는지', () => {
     // given
     const number = 5;
-    const min = 4;
-    const max = 9;
 
     // when
     const racingMethod = new RacingCarGame();
 
     // then
-    const result = racingMethod.checkForwardCondition(number, { min, max });
+    const result = racingMethod.checkForwardCondition(number);
     expect(result).toBe(true);
   });
 

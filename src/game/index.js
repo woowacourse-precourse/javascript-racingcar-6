@@ -27,8 +27,11 @@ class RacingCarGame {
     return carNameArray.map((name) => ({ name, forwardCount: 0 }));
   }
 
-  checkForwardCondition(number, { min, max }) {
-    return number >= min && number <= max;
+  checkForwardCondition(number) {
+    return (
+      number >= VALIDATION_CONDITION.randomNumberRange.min &&
+      number <= VALIDATION_CONDITION.randomNumberRange.max
+    );
   }
 
   increaseForwardCountRandomly(carStatusArray) {
@@ -41,12 +44,7 @@ class RacingCarGame {
         VALIDATION_CONDITION.randomNumberRange,
       );
 
-      if (
-        this.checkForwardCondition(
-          randomNumber,
-          VALIDATION_CONDITION.forwardNumberRange,
-        )
-      ) {
+      if (this.checkForwardCondition(randomNumber)) {
         return {
           ...car,
           forwardCount: car.forwardCount + 1,
