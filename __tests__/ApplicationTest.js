@@ -108,5 +108,25 @@ describe('자동차 경주 게임', () => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
   });
+
+  test('모든 차량의 움직임이 0인 경우', async () => {
+    // given
+    const inputs = ['jun, yeon, hyo, nari', '2'];
+    const outputs = ['최종 우승자 : jun, yeon, hyo, nari'];
+    const randoms = [STOP, STOP, STOP, STOP, STOP, STOP, STOP, STOP];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    // when
+    const app = new App();
+    await app.play();
+
+    // then
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
 });
 
