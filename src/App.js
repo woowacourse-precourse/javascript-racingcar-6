@@ -1,22 +1,25 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 class App {
-  constructor() {
-    this.rounds = 0;
-    this.cars = [];
-    this.userInputCars = "";
-  }
-
   async play() {
     const cars = await this.getCars();
     let rounds = await this.getRounds();
-    while (rounds) {
-      const roundsCars = this.randomNumberForwards(cars);
-      console.log(roundsCars)
-      rounds--;
-
-      // if (checkForward) doForward();
+    const racingGame = await this.racingRounds(cars, rounds);
+    await this.printWinner(racingGame);
+  }
+  async racingRounds(cars, rounds) {
+    let roundsCars = [];
+    while (rounds--) {
+      const initCars = await this.initCars(cars);
+      roundsCars = await this.randomNumberRoundForwards(initCars);
+      await this.afterPrint();
     }
-    // printWinner();
+    return roundsCars;
+  }
+  initCars(cars) {
+    return cars.map((car) => {
+      car.forward = false;
+      return car;
+    });
   }
   async getCars() {
     const carsInput = await MissionUtils.Console.readLineAsync(
@@ -37,20 +40,43 @@ class App {
     const roundsInput = await MissionUtils.Console.readLineAsync(
       "시도할 횟수는 몇 회인가요?\n"
     );
+    await this.beforePrint();
     return roundsInput;
   }
-  randomNumberForwards(cars) {
+  randomNumberRoundForwards(cars) {
     const forwardCars = cars.map((car) => {
       const random = MissionUtils.Random.pickNumberInRange(0, 9);
-      console.log(random)
       if (random >= 4) {
         car.score = car.score + random - 4;
+        this.printRoundscore(car, random);
       }
       return car;
     });
     return forwardCars;
   }
+  beforePrint() {
+    MissionUtils.Console.print("\n실행결과");
+  }
+  afterPrint() {
+    MissionUtils.Console.print("");
+  }
+  printRoundscore(car, random) {
+    const scorePrint = [car.name, " : ", this.repeatPrint(random - 4)].join("");
+    MissionUtils.Console.print(scorePrint);
+  }
+  repeatPrint(n) {
+    const scorePrint = ["-"].map((a) => a.repeat(n)).join("");
+    return scorePrint;
+  }
+  async printWinner(racingCars) {
+    const scoreList = await racingCars.map((car) => car.score);
+    const winners = await racingCars.filter(
+      (cars) => cars.score === Math.max(...scoreList)
+    );
+    await MissionUtils.Console.print(
+      "최종 우승자 : " + winners.map((car) => car.name).join(", ")
+    );
+  }
 }
-
 
 export default App;
