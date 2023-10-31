@@ -4,6 +4,7 @@ import Converter from '../StringConvertor.js';
 import ValidationError from '../error/ValidationError.js';
 import {
   isDuplication,
+  isValidCount,
   isValidDelimiter,
   isValidLanguage,
   isValidNameLength,
@@ -26,6 +27,14 @@ const Validators = {
       throw new ValidationError(language(LANGUAGE_OPTION));
     if (!isValidQuantity(namesArray)) throw new ValidationError(quantity(quantityMin, quantityMax));
     if (isDuplication(namesArray)) throw new ValidationError(ERROR_MESSAGE.duplication);
+  },
+
+  checkRacingCount(input) {
+    if (!isValidCount(input)) {
+      throw new ValidationError(
+        ERROR_MESSAGE_FUNCTION.racingCount(SYSTEM.racingCountMin, SYSTEM.racingCountMax),
+      );
+    }
   },
 };
 
