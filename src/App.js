@@ -5,6 +5,7 @@ class App {
     const carRacing = new CarRacing();
     await carRacing.prepare();
     carRacing.race();
+    carRacing.showResults();
     carRacing.showWinners();
   }
 }

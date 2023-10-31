@@ -1,5 +1,3 @@
-import View from '../View.js';
-
 class Referee {
   #results;
 
@@ -11,8 +9,8 @@ class Referee {
     this.#results[round].set(name, moveCount);
   }
 
-  showResults() {
-    View.printResults(this.#results);
+  get results() {
+    return this.#results;
   }
 
   findWinners() {

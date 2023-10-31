@@ -23,7 +23,10 @@ class CarRacing {
         car.showResultTo(this.referee, round);
       });
     }
-    this.referee.showResults();
+  }
+
+  showResults() {
+    View.printResults(this.referee.results);
   }
 
   showWinners() {
