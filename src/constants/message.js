@@ -15,6 +15,6 @@ export const ERROR_MESSAGE = Object.freeze({
   DUPLICATED_NAME: "중복된 이름이 존재합니다.",
   ONE_NAME: "최소 두 대의 자동차가 필요합니다.",
   NOT_NUMBER: "숫자가 입력되지 않았습니다.",
-  NOT_POSITIVE_NUMBER: "양수가 입력되지 않았습니다.",
+  INVALID_MIN_NUMBER: "1이상의 수가 입력되지 않았습니다.",
   NOT_INTEGER: "정수 값이 입력되지 않았습니다.",
 });

@@ -17,6 +17,6 @@ export class OneNameError extends CustomError {}
 
 export class NotNumberError extends CustomError {}
 
-export class NotPositiveNumberError extends CustomError {}
+export class InvalidMinNumberError extends CustomError {}
 
 export class NotIntegerError extends CustomError {}

@@ -4,7 +4,7 @@ import {
   DuplicatedNameError,
   OneNameError,
   NotNumberError,
-  NotPositiveNumberError,
+  InvalidMinNumberError,
   NotIntegerError,
 } from "../../src/utils/Error";
 import Validator from "../../src/utils/Validator";
@@ -48,14 +48,14 @@ describe("Validator 클래스 테스트", () => {
     expect(() => Validator.validateRaceCount(notNumberRaceCount)).toThrow(NotNumberError);
   });
 
-  test("시도 횟수가 0이라면 NotPositiveNumberError를 호출해야 한다.", () => {
+  test("시도 횟수가 0이라면 InvalidMinNumberError를 호출해야 한다.", () => {
     const zeroRaceCount = 0;
-    expect(() => Validator.validateRaceCount(zeroRaceCount)).toThrow(NotPositiveNumberError);
+    expect(() => Validator.validateRaceCount(zeroRaceCount)).toThrow(InvalidMinNumberError);
   });
 
-  test("시도 횟수가 음수라면 NotPositiveNumberError를 호출해야 한다.", () => {
-    const notPositiveNumberRaceCount = -1;
-    expect(() => Validator.validateRaceCount(notPositiveNumberRaceCount)).toThrow(NotPositiveNumberError);
+  test("시도 횟수가 1보다 작다면 InvalidMinNumberError를 호출해야 한다.", () => {
+    const invalidMinNumberRaceCount = -1;
+    expect(() => Validator.validateRaceCount(invalidMinNumberRaceCount)).toThrow(InvalidMinNumberError);
   });
 
   test("시도 횟수에 정수가 입력되지 않는다면 NotIntegerError를 throw 해야 한다.", () => {

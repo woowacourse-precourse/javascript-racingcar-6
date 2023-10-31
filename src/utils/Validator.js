@@ -4,7 +4,7 @@ import {
   DuplicatedNameError,
   OneNameError,
   NotNumberError,
-  NotPositiveNumberError,
+  InvalidMinNumberError,
   NotIntegerError,
 } from "./Error.js";
 import { ERROR_MESSAGE } from "../constants/message.js";
@@ -20,7 +20,7 @@ class Validator {
   static validateRaceCount(raceCount) {
     if (raceCount === "") throw new NoInputError(ERROR_MESSAGE.NO_INPUT);
     if (isNaN(raceCount)) throw new NotNumberError(ERROR_MESSAGE.NOT_NUMBER);
-    if (raceCount <= 0) throw new NotPositiveNumberError(ERROR_MESSAGE.NOT_POSITIVE_NUMBER);
+    if (raceCount < 1) throw new InvalidMinNumberError(ERROR_MESSAGE.INVALID_MIN_NUMBER);
     if (!Number.isInteger(raceCount)) throw new NotIntegerError(ERROR_MESSAGE.NOT_INTEGER);
   }
 }
