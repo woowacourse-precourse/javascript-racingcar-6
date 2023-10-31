@@ -20,7 +20,7 @@ export default class Game {
     const carNameStr = await MissionUtils.Console.readLineAsync('');
     const carList = carNameStr.split(',');
 
-    if (carList.filter((item) => item.length > 5 || item.length < 1).length) {
+    if (carList.filter((name) => name.length > 5 || name.length < 1).length) {
       throw new Error('[ERROR] 자동차 이름은 최소 1자, 최대 5자만 가능합니다.');
     }
 
@@ -43,13 +43,15 @@ export default class Game {
   progressGame() {
     const car = new Car();
 
-    this.carInfoList = this.carNameList.map((item) => car.setCarInfo(item));
+    this.carInfoList = this.carNameList.map((carName) =>
+      car.setCarInfo(carName)
+    );
 
     MissionUtils.Console.print('\n실행 결과');
 
     let currentRound = 0;
     while (currentRound < this.round) {
-      this.carNameList.map((item) => car.moveCar(item, this.carInfoList));
+      this.carNameList.map((carName) => car.moveCar(carName, this.carInfoList));
       this.printResult();
       currentRound += 1;
     }
@@ -66,21 +68,21 @@ export default class Game {
   }
 
   printResult() {
-    this.carInfoList.map((item) => {
+    this.carInfoList.map((carInfo) => {
       MissionUtils.Console.print(
-        item.name + ' : ' + this.getForwardBar(item.forwardCount)
+        carInfo.name + ' : ' + this.getForwardBar(carInfo.forwardCount)
       );
     });
     MissionUtils.Console.print('');
   }
 
   getWinner() {
-    const finalCount = this.carInfoList.map((item) => item.forwardCount);
+    const finalCount = this.carInfoList.map((carInfo) => carInfo.forwardCount);
     const max = Math.max(...finalCount);
     const winnerObjectList = this.carInfoList.filter(
       (car) => car.forwardCount === max
     );
-    const winnerNameList = winnerObjectList.map((item) => item.name);
+    const winnerNameList = winnerObjectList.map((winner) => winner.name);
     return winnerNameList;
   }
 
