@@ -73,11 +73,31 @@ class App {
     }
   }
 
+  announceTheWinner(CARS) {
+    let winner = [];
+
+    CARS.sort((a, b) => b.position - a.position);
+
+    for (let i = 0; i < CARS.length; i++) {
+      winner.push(CARS[i].name);
+      if (CARS[i].position > CARS[i + 1].position) {
+        break;
+      }
+    }
+
+    if (winner.length === 1) {
+      MissionUtils.Console.print(`최종 우승자 : ${winner[0]}`);
+    } else {
+      MissionUtils.Console.print(`최종 우승자 : ${winner.join(", ")}`);
+    }
+  }
+
   async play() {
     const CARS_ARRAY = await this.inputCarName();
     const CARS = await this.saveCarName(CARS_ARRAY);
     const COUNT_NUMBER = await this.inputCountNumber();
     this.printResult(COUNT_NUMBER, CARS);
+    this.announceTheWinner(CARS);
   }
 }
 
