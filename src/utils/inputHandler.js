@@ -8,9 +8,7 @@ export async function inputCarNameHandler() {
   const carName = await Console.readLineAsync(COMMAND.START_MESSAGE);
   CommonError.checkEmpty(carName);
 
-  const carList = carName.split(",");
-  CarErrors.checkInputLength(carList);
-
+  const carList = generateUniqueCarListAndValidate(carName);
   return generateTrimmedArray(carList);
 }
 
@@ -27,4 +25,13 @@ export async function inputTryNumberHandler() {
 function generateTrimmedArray(inputList) {
   const trimmedArray = inputList.map((element) => element.trim());
   return trimmedArray;
+}
+
+function generateUniqueCarListAndValidate(carName) {
+  const carList = carName.split(",");
+  const carListSet = new Set(carList);
+  const nonDuplicateCarList = [...carListSet];
+
+  CarErrors.checkInputLength(nonDuplicateCarList);
+  return nonDuplicateCarList;
 }
