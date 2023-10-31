@@ -17,7 +17,8 @@ class App {
       })
       printMessage("")
     }
-    showWinner(racingCars);
+    const winners = pickWinner(racingCars);
+    printMessage(`최종 우승자 : ${winners}`)
   }
 }
 
@@ -28,9 +29,6 @@ function showWinner(racingCars) {
     .filter(racingCar => racingCar.progress === maxProgress)
     .map(racingCar => racingCar.carName)
     .join(', ');
-  
-  printMessage(`최종 우승자 : ${winners}`)
-
 }
 
 function buildRacingCarsArray(carNameArray,condition) {
