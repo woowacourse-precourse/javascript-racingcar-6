@@ -1,11 +1,14 @@
-import { ERROR_MESSAGES } from "../constant.js";
+import { MissionUtils } from "@woowacourse/mission-utils";
+import { ERROR_MESSAGES, INFO_MESSAGES } from "../constant.js";
 import Car from "../model/Car.js";
 import InputView from "../view/InputView.js";
+import OutputView from "../view/outputView.js";
 
 export default class RaceController {
   constructor() {
     this.cars = [];
     this.inputView = new InputView();
+    this.outputView = new OutputView();
   }
 
   init() {
@@ -19,6 +22,8 @@ export default class RaceController {
     // 시도 횟수
     this.numOfTry = await this.inputView.readNumberOfTry();
     this.checkNumOfTryError(this.numOfTry);
+
+    this.moveForward();
   }
 
   getCarNames(carNames) {
@@ -55,5 +60,24 @@ export default class RaceController {
     if (REGEX.test(number) || number == 0) {
       throw new Error(ERROR_MESSAGES.OUT_OF_RANGE);
     }
+  }
+
+  moveForward() {
+    this.outputView.printMessage(`\n${INFO_MESSAGES.RACE_RESULT}\n`);
+    for (let i = 0; i < this.numOfTry; i++) {
+      this.getPoints();
+    }
+    // 경주 완료 출력
+  }
+
+  getPoints() {
+    let stepMessage = '';
+    this.cars.forEach((car) => {
+      if (MissionUtils.Random.pickNumberInRange(0, 9) >= 4) {
+        car.point += 1;
+      }
+      stepMessage += `${car.name}: ${'-'.repeat(car.point)}\n`
+    });
+    this.outputView.printMessage(`${stepMessage}`);
   }
 }

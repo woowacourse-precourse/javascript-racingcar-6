@@ -16,7 +16,5 @@ export default class InputView {
         } catch (error) {
             MissionUtils.Console.print(error)
         }
-    }
-
-    
+    }    
 }
