@@ -4,6 +4,7 @@ const INPUT = Object.freeze({
 });
 
 const OUTPUT = Object.freeze({
+  NO_WINNER: '승자없음!🏎️',
   WINNER: '최종 우승자',
   RACE_RESULT: '실행결과',
 });

@@ -1,7 +1,15 @@
 import { printWinner } from '../utils/Output.js';
 
 const selectWinner = (carsPosition) => {
-  let maxPosition = Math.max(...Object.values(carsPosition));
+  const nonZeroPositions = Object.values(carsPosition).filter(
+    (position) => position !== 0
+  );
+  if (nonZeroPositions.length === 0) {
+    printWinner([]);
+    return;
+  }
+
+  let maxPosition = Math.max(...nonZeroPositions);
   let winner = Object.keys(carsPosition).filter(
     (car) => carsPosition[car] === maxPosition
   );
