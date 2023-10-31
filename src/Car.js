@@ -11,6 +11,10 @@ class Car {
     }
     return totalMoves;
   }
+
+  moveForward() {
+    this.moves += 1;
+  }
 }
 
 export default Car;

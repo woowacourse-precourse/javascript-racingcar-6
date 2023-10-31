@@ -52,7 +52,7 @@ class App {
     for (let i = 0; i < players.length; i += 1) {
       const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
 
-      if (randomNumber >= MOVE_REQUIREMENT) players[i].moves += 1;
+      if (randomNumber >= MOVE_REQUIREMENT) players[i].moveForward();
     }
   }
 
