@@ -1,5 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import Car from "./Car.js";
+import { CAR, CAR_ARRAY, CAR_NAME } from "../constants/car.js";
 
 class CarRace {
   #cars = [];
@@ -21,7 +22,7 @@ class CarRace {
     const raceResult = Array.from({ length: this.#raceCount }).map(() => {
       return this.#moveCars();
     });
-    this.#finalResult = raceResult.at(-1);
+    this.#finalResult = raceResult.at(CAR_ARRAY.LAST_INDEX);
     return raceResult;
   }
 
@@ -31,17 +32,17 @@ class CarRace {
 
   determineWinner() {
     const winners = [];
-    let winnerPosition = 0;
+    let winnerPosition = CAR.INITIAL_WINNER_POSITION;
     this.#finalResult.forEach(({ position, name }) => {
       if (position > winnerPosition) {
-        winners.length = 0;
+        winners.length = CAR_ARRAY.RESET;
         winners.push(name);
         winnerPosition = position;
       } else if (position === winnerPosition) {
         winners.push(name);
       }
     });
-    return winners.join(", ");
+    return winners.join(CAR_NAME.JOIN_SEPARATOR);
   }
 }
 

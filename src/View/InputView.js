@@ -1,13 +1,14 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import { INPUT_MESSAGE } from "../constants/message.js";
+import { CAR_NAME } from "../constants/car.js";
 
 class InputView {
   static async getCarNameInput() {
     const carNameList = await MissionUtils.Console.readLineAsync(INPUT_MESSAGE.CAR_NAME);
     return carNameList
-      .split(",")
+      .split(CAR_NAME.INPUT_SEPARATOR)
       .map((name) => name.trim())
-      .filter((name) => name !== "");
+      .filter((name) => name !== CAR_NAME.NO_INPUT_STRING);
   }
 
   static async getRaceCountInput() {
