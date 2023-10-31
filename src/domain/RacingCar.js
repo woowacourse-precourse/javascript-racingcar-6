@@ -5,9 +5,15 @@ class RacingCar {
   #END_INCLUSIVE = 9;
   #STANDARD_NUMBER = 4;
 
+  #name;
+  #moveCount;
   constructor(name) {
-    this.name = name;
-    this.moveCount = 0;
+    this.#name = name;
+    this.#moveCount = 0;
+  }
+
+  showResultTo(recorder) {
+    recorder.record(this.#name, this.#moveCount);
   }
 
   tryToMoveForward() {
@@ -23,7 +29,7 @@ class RacingCar {
   }
 
   #moveForward() {
-    this.moveCount += 1;
+    this.#moveCount += 1;
   }
 }
 

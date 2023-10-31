@@ -24,6 +24,10 @@ class Console {
     Validator.validateAttemptCount(number);
     return number;
   }
+
+  static print(result) {
+    MissionUtils.Console.print(result);
+  }
 }
 
 export default Console;
