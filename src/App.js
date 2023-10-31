@@ -4,8 +4,10 @@ class App {
   play() {
     const [carName, cnt] = userInput();
     const carLength = carName.length;
+    let carForward = Array.from({ carLength }, () => 0);
     while(cnt -= 1) {
       const randomNumber = generateRandomNumber(carLength);
+      carForward = carForward.map((value, idx) => (randomNumber[idx] >= 4 ? value + 1 : value));
     }
   }
 
