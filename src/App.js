@@ -6,9 +6,8 @@ class App {
   async play() {
     // const userInput = await this.getUserInput();
     // this.printMessage(msg)
-    const string = 'car, test, fake'
-    const array = this.splitStringToArrayByComma(string)
-    console.log(array)
+    // const array = this.splitStringToArrayByComma(string)
+
   }
   
   async getUserInput() {
@@ -25,6 +24,13 @@ class App {
     return array
   }
 
+  checkIsStringBelow5(string) {
+    if (string.length > 5) {
+      throw console.error(message.InputValidationError);
+    } else {
+      string
+    }
+  }
 
 }
 
