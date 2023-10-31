@@ -9,7 +9,7 @@ class App {
     const gameCount = await Console.readLineAsync(
       "시도할 횟수는 몇 회인가요?\n"
     );
-    this.validateGameCount(gameCount)
+    this.validateGameCount(gameCount);
   }
   validateCarList(carList) {
     if (carList.length === 0) {
@@ -18,15 +18,15 @@ class App {
       );
     }
 
-    const carNames = carList.split(",").map((name) => name.trim());
+    const carNames = carList.split(",");
 
-    if (carNames.some((name) => name.length > 5)) {
-      throw new Error("[ERROR] 이름은 5자 이하만 가능합니다.");
+    if (carNames.some((name) => name.length > 5 || name.includes(" "))) {
+      throw new Error("[ERROR] 이름은 공백없이 5자 이하만 가능합니다.");
     }
   }
   validateGameCount(gameCount) {
-    if (isNaN(gameCount)){
-      throw new Error("[ERROR] 입력받은 횟수가 숫자가 아닙니다.")
+    if (isNaN(gameCount)) {
+      throw new Error("[ERROR] 입력받은 숫자가 잘못된 형식입니다.");
     }
   }
 }
