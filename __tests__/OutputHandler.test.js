@@ -40,4 +40,13 @@ describe("메시지 출력", () => {
       expect(logSpy).toHaveBeenNthCalledWith(index + 1, result)
     );
   });
+
+  test.each([
+    [["joo"], "joo"],
+    [["joo", "won"], "joo, won"],
+  ])("최종 우승자 출력 - %s", (winnerNameArray, expectedString) => {
+    const logSpy = getLogSpy();
+    OutputHandler.printWinner(winnerNameArray);
+    expect(logSpy).toHaveBeenCalledWith(MESSAGE.WINNER_INTRO + expectedString);
+  });
 });
