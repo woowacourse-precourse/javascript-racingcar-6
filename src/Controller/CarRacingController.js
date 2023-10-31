@@ -11,7 +11,7 @@ class CarRacingController {
     this.carRacingView = new CarRacingView();
   }
   async race() {
-    await this.inputCar();
+    await this.inputCarName();
     await this.inputTrialNumber();
     this.carRacingView.printResultMessage();
 
@@ -26,7 +26,7 @@ class CarRacingController {
     this.carRacingView.printWinner(carData);
   }
 
-  async inputCar() {
+  async inputCarName() {
     let carNameString = await Console.readLineAsync(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
     );

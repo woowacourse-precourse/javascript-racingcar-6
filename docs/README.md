@@ -13,7 +13,7 @@
 ## 추가로 고려할 사항
 
 - 상수 쓰기
-- 함수명 명확하게
+- 변수, 함수명 명확하게
 - MVC패턴 적용해보기
 - for 대신 forEach 사용하기
 - 함수별로 테스트 작성해보기
@@ -22,7 +22,7 @@
 
 ## MVC 패턴으로 나누기
 
-- model : setNamesAndDistances, getNamesAndDistances, setTrialNumber, getTrialNumber, moveOrStay
-- view : numToBar, printResult, printWinner, printResultMessage, lineBreak
-- controller : inputCarName, inputTrialNumber, play
+- model : setCarData, getCarData, setTrialNumber, getTrialNumber, moveOrStay
+- view : printResult, printWinner, printResultMessage, lineBreak
+- controller : inputCarName, inputTrialNumber, race
 - validation : isValidCarName, isValidTrialNumber
