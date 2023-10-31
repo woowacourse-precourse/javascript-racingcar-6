@@ -1,6 +1,7 @@
 import InputView from '../view/inputView';
 import checkValidation from '../utils/validation';
 import Car from '../model/car';
+import makeRandomNumber from '../utils/makeRandomNumber';
 
 class Controller {
   #cars = [];
@@ -24,6 +25,15 @@ class Controller {
     const playerInput = await InputView.readAttemptNumber();
     checkValidation.attemptInput(playerInput);
     this.#attempt = playerInput;
+  }
+
+  startRace() {
+    for (let count = 0; count < this.#attempt; count++) {
+      const randomNumber = makeRandomNumber();
+      this.#cars.forEach((car) => {
+        car.move(randomNumber);
+      });
+    }
   }
 }
 
