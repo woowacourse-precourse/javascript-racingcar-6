@@ -108,3 +108,5 @@ App.js를 실행해주는 기본 파일
   - [x] 자연수 외 입력 제한
 
 - [x] 자동차 생성자 생성시 이름 저장이 잘 됐는지 확인하는 테스트 코드 작성(RacingCarGameTest.js)
+
+- [x] 자동차 전진 배열 저장 여부 확인하는 테스트 코드 작성(RacingCarGameTest.js)

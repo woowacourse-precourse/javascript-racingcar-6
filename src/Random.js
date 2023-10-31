@@ -1,6 +1,8 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 
 const Random = {
+  setMovement() {},
+
   setRandomNumbers(gameCount) {
     const computer = [];
     while (computer.length < gameCount) {
