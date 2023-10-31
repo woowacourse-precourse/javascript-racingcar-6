@@ -4,7 +4,7 @@ const CAR_NAME_LENGTH = Object.freeze({
 });
 
 const RANDOM_NUMBER_RANGE = Object.freeze({
-  MIN: 1,
+  MIN: 0,
   MAX: 9,
 });
 
