@@ -1,5 +1,5 @@
 import { Console, Random } from '@woowacourse/mission-utils';
-import GameController from '../src/racingcar/lib/classes/GameController.js';
+import GameController from '../src/lib/classes/GameController.js';
 
 let spyConsolePrint;
 
