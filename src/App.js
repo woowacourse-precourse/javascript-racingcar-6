@@ -1,10 +1,10 @@
-import ERROR_MESSAGE from './constant/errorMessage.js';
 import GAME_MESSAGE from './constant/gameMessage.js';
-import Car from './model/Car.js';
 import AllCars from './model/AllCars.js';
 import TrialNum from './model/TrialNum.js';
-import randomNumGenerator from './utils/RandomNumGenerator.js';
 import messagePrinter from './utils/messagePrinter.js';
+import eachRaceStart from './utils/eachRaceStart.js';
+import printCurrentStatus from './utils/printCurrentStatus.js';
+import printWinners from './utils/printWinners.js';
 class App {
   #cars;
 
@@ -16,7 +16,7 @@ class App {
     await this.getCarNameInput();
     await this.getTrialNumInput();
     await this.raceStart();
-    this.printWinners(this.#cars, this.#moveStatus);
+    printWinners(this.#cars, this.#moveStatus);
   }
 
   async getCarNameInput() {
@@ -40,46 +40,11 @@ class App {
 
     let i = 0;
     while (i < this.#trials) {
-      const moveForwardArr = this.eachRaceStart(this.#cars);
+      const moveForwardArr = eachRaceStart(this.#cars);
       this.#moveStatus = this.#moveStatus.map((value, index) => value + moveForwardArr[index]);
-      await this.printCurCarMove(this.#cars, this.#moveStatus);
+      printCurrentStatus(this.#cars, this.#moveStatus);
       i += 1;
     }
-  }
-
-  eachRaceStart(carNameArr) {
-    const carNum = carNameArr.length;
-    const moveForwardArr = new Array(carNum).fill(0);
-    for (let i = 0; i < carNum; i++) {
-      const randomNum = randomNumGenerator();
-      if (randomNum >= 4) {
-        moveForwardArr[i] = 1;
-      }
-    }
-    return moveForwardArr;
-  }
-
-  async printCurCarMove(carNameArr, curMoveForwardArr) {
-    for (let i = 0; i < carNameArr.length; i++) {
-      const carName = carNameArr[i];
-      const curMoveForward = curMoveForwardArr[i];
-      await messagePrinter.outputPrint(GAME_MESSAGE.print_move_status(carName, curMoveForward));
-    }
-    await messagePrinter.outputPrint(GAME_MESSAGE.line_break);
-  }
-
-  printWinners(carNameArr, curMoveForwardArr) {
-    const maxMove = Math.max(...curMoveForwardArr);
-
-    const winners = [];
-
-    for (let i = 0; i < carNameArr.length; i++) {
-      if (maxMove === curMoveForwardArr[i]) {
-        winners.push(carNameArr[i]);
-      }
-    }
-
-    messagePrinter.outputPrint(GAME_MESSAGE.print_winners(winners));
   }
 }
 
