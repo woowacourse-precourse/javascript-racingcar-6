@@ -1,27 +1,31 @@
-import { Console } from '@woowacourse/mission-utils';
+import { Console, MissionUtils } from '@woowacourse/mission-utils';
 
-class App {    
+class App {
   constructor() {
     this.cars = [];
   }
 
   async play() {
-    await this.initializeCars();
-    const rounds = await this.getRounds();
-    this.validateRounds(rounds);
-    this.playRounds(rounds);
-    this.determineWinners();
-  }
-  
-  async initializeCars() {
-    const carNamesInput = await Console.readLineAsync('경주할 자동차이름을입력하세요.(이름은 쉼표(,) 기준으로 구분)\n');
+    const carNamesInput = await this.getCarNames();
     const carNames = this.parseCarNamesInput(carNamesInput);
     this.validateCarNames(carNames);
     this.cars = this.createCars(carNames);
+    
+    const roundsInput = await this.getRounds();
+    this.validateRounds(roundsInput);
+    this.playRounds(roundsInput);
+    this.determineWinners();
+  }
+
+  async getCarNames() {
+    return await Console.readLineAsync('경주할 자동차이름을입력하세요.(이름은 쉼표(,) 기준으로 구분)\n');
   }
 
   parseCarNamesInput(input) {
-    return input.trim().split(',').map((name) => name.trim());
+    return input
+      .trim()
+      .split(',')
+      .map((name) => name.trim());
   }
 
   validateCarNames(names) {
@@ -79,7 +83,7 @@ class App {
   isMovable() {
     const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
     return randomNumber >= 4;
-  } 
+  }
 
   printRoundResult() {
     this.cars.forEach((car) => {
