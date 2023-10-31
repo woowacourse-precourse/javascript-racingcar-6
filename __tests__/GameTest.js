@@ -44,4 +44,14 @@ describe('App 테스트', () => {
 		expect(consoleSpy).toHaveBeenCalledTimes(3);
 		consoleSpy.mockRestore();
 	});
+
+	test('최종 우승자 출력 테스트', () => {
+		const carNames = ['Car1', 'Car2', 'Car3'];
+		const carStatus = [3, 2, 4]; // Car3가 우승
+		const consoleSpy = jest.spyOn(MissionUtils.Console, 'print').mockImplementation(() => { });
+		app.showWinners(carNames, carStatus);
+		const expectedOutput = '최종 우승자: Car3';
+		expect(consoleSpy.mock.calls[0][0].trim()).toBe(expectedOutput);
+		consoleSpy.mockRestore();
+	});
 });

@@ -15,6 +15,8 @@ class App {
       this.simulateCarRace(carNames, carStatus);
       await MissionUtils.Console.print();
     }
+
+    this.showWinners(carNames, carStatus);
   }
 
   async getCarNameInput() {
@@ -68,6 +70,13 @@ class App {
       const carPosition = this.showCarPosition(carStatus[index]);
       this.showRaceProgress(carNames[index], carPosition);
     }
+  }
+
+  showWinners(carNames, carStatus) {
+    const firstPosition = Math.max(...carStatus);
+    const winners = carNames.filter((car, index) => carStatus[index] === firstPosition);
+    MissionUtils.Console.print(`\n최종 우승자: ${winners.join(", ")}`);
+    return winners;
   }
 }
 
