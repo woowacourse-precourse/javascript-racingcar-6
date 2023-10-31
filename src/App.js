@@ -38,7 +38,7 @@ class Controll {
   makeRandomNumber() {
     for (let i = 0; i < this.carNames.length; i++) {
       let randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
-      if (4 < randomNumber) {
+      if (4 <= randomNumber) {
         this.checkGoOrStop(i);
       };
     }
