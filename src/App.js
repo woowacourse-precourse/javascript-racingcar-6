@@ -19,7 +19,7 @@ class App {
     const refinedCarNames = this.data.carNamesTypeConversion(carNames);
     const manager = new Racing(refinedCarNames, count, this.data);
   
-    OutputView.racingProgress(refinedCarNames, manager.result());
+    OutputView.printProgress(refinedCarNames, manager.result());
     OutputView.printWinner(manager.determineWinner());
   }
   

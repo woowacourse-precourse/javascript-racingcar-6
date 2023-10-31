@@ -1,14 +1,15 @@
 import { Console } from '@woowacourse/mission-utils';
 
 const OutputView = {
-  racingProgress(cars, result) {
-    Console.print('\n실행결과')
-    result.map((round) => {
-      cars.map((car, idx) => {
-        Console.print(`${car} : ${'-'.repeat(round[idx])}`);
-      })
-      console.log('-'.repeat('\n'));
-    })
+  printProgress(carNames, result) {
+    Console.print('\n실행결과');
+
+    result.map((state) => {
+      carNames.map((carName, idx) => {
+        Console.print(`${carName} : ${'-'.repeat(state[idx])}`);
+      });
+      Console.print('-'.repeat('\n'));
+    });
   },
 
   printWinner(winner) {
