@@ -1,16 +1,20 @@
-import { INPUT_MESSAGE } from "./constants/constant.js";
-import { isMove } from "./util/Random.js";
+import { Random } from "@woowacourse/mission-utils";
 import { input } from "./util/input.js";
-import { makeCarsArray } from "./util/message.js";
 import { print } from "./util/output.js";
-import { vaildTryCount } from "./validation/tryValidation.js";
+import {validCars} from './validation/carsValidation.js';
+import {vaildTryCount} from './validation/tryValidation.js';
+import {getRandomNumber, isMove} from './util/random.js';
+// import {makeCarsArray} from './util/message.js';
 
+function makeCarsArray(message) {
+  const CARS = message.split(",");
 
-class RacingGame {
-  
+  validCars(CARS);
+
+  return CARS;
 }
 
-class App {
+class RacingGame {
   constructor() {
     this.cars = {};
   }
@@ -80,9 +84,13 @@ class App {
 
     print(`최종 우승자 : ${winner.join(", ")}`);
   }
+}
 
+class App {
   async play() {
-    await this.start();
+    const racing = new RacingGame();
+
+    await racing.start();
   }
 }
 
