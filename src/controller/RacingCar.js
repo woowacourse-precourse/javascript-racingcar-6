@@ -14,24 +14,24 @@ class RacingCar {
 
   async start() {
     await this.setCarList();
-    const times = await this.getRepeatTime();
-    this.repeatMoveOrStop(times);
+    const repeat = await this.getRepeatTime();
+    this.repeatMoveOrStop(repeat);
     this.chooseWinner();
   }
 
   async setCarList() {
-    const carArr = await this.#view.inputCarNames();
-    this.#carList = carArr.map((car) => new Car(car, VALUE.INITIAL_DISTANCE));
+    const nameList = await this.#view.inputCarNames();
+    this.#carList = nameList.map((car) => new Car(car, VALUE.INITIAL_DISTANCE));
   }
 
   async getRepeatTime() {
-    const input = await this.#view.inputRepeatNumber();
-    return input;
+    const repeat = await this.#view.inputRepeatNumber();
+    return repeat;
   }
 
-  repeatMoveOrStop(input) {
+  repeatMoveOrStop(repeat) {
     let cnt = 0;
-    while (cnt < input) {
+    while (cnt < repeat) {
       this.#view.printSpace();
       this.determineMoveByRandom();
       this.printCarsDistance();
