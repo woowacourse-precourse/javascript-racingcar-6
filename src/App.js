@@ -35,8 +35,13 @@ class App {
 
     const checkNumberSet = new Set(carNamesArray);
 
+    if (carNamesArray.length > 20)
+      throw new Error(
+        '[ERROR] 자동차 이름 입력이 잘못되었습니다. 20대 이하의 자동차만 출전 가능합니다.'
+      );
+
     if (carNamesArray.length !== checkNumberSet.size)
-      throw new Error('[ERROR] 자동차 이름 입력이 잘못되었습니다.');
+      throw new Error('[ERROR] 자동차 이름이 중복 사용되었습니다.');
 
     carNamesArray.map((car) => {
       if (car.length > 5)
@@ -51,10 +56,13 @@ class App {
     if (
       isNaN(+TryNumbers) ||
       TryNumbers < 1 ||
+      TryNumbers > 1000 ||
       TryNumbers === Infinity ||
       TryNumbers === -Infinity
     )
-      throw new Error('[ERROR] 숫자 입력이 잘못된 형식입니다.');
+      throw new Error(
+        '[ERROR] 숫자 입력이 잘못된 형식입니다. 1 이상 1000 이하의 정수로 입력해주세요.'
+      );
   }
 
   racingProgress(racingNumber) {
