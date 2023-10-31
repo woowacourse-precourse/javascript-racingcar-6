@@ -79,6 +79,10 @@ class App {
     return this.racingArray[carIndex];
   }
 
+  showCarAndRacingLength(carIndex) {
+    Console.print(`${this.carArr[carIndex]} : ${this.racingArray[carIndex]}`);
+  }
+
 }
 
 export default App;
