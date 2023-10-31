@@ -1,4 +1,4 @@
-import { MESSAGE } from '../src/constants/messages';
+import { ERROR_MESSAGE, MESSAGE } from '../src/constants/messages';
 import GameController from '../src/controller/GameController';
 
 describe('✨ [GameController] 클래스 메서드 테스트 ', () => {
@@ -55,5 +55,35 @@ describe('✨ [GameController] 클래스 메서드 테스트 ', () => {
     const result = await controller.getPlayers();
 
     expect(result).toEqual(expectedPlayers);
+  });
+
+  describe('✨ 예외처리 테스트', () => {
+    test('[checkValidatePlayer] player가 2명 미만인 경우 에러를 발생한다.', () => {
+      const player = ['Reason'];
+
+      expect(() => controller.checkValidatePlayer(player)).toThrow(
+        ERROR_MESSAGE.PLAYER_COUNT,
+      );
+    });
+
+    test('[checkValidatePlayer] player가 10명을 초과한 경우 에러를 발생한다.', () => {
+      const player = [
+        'Reason',
+        'Reason2',
+        'R2ASON',
+        'LEEYU',
+        'YOU',
+        'YU',
+        'YUTO',
+        'LEEYOU',
+        'REASONS',
+        'REASONZ',
+        'nyang',
+      ];
+
+      expect(() => controller.checkValidatePlayer(player)).toThrow(
+        ERROR_MESSAGE.PLAYER_COUNT,
+      );
+    });
   });
 });
