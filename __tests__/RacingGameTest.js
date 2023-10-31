@@ -68,3 +68,41 @@ describe('실행 결과 출력 기능 테스트', () => {
     });
   });
 });
+
+describe('최종 우승자 출력 기능 테스트', () => {
+  test('단독 우승자인 경우 그대로 안내 문구 출력', () => {
+    const carA = new Car('aria');
+    const carB = new Car('evan');
+    const cars = [carA, carB];
+    const output = '최종 우승자 : aria';
+    const logSpy = getLogSpy();
+
+    carA.step = 3;
+    carB.step = 2;
+
+    const app = new App();
+    const winners = app.calculateFinalWinner(cars);
+    app.printFinalWinner(winners);
+
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+  });
+
+  test('공동 우승자인 경우 쉼표로 구분하여 안내 문구 출력', () => {
+    const carA = new Car('aria');
+    const carB = new Car('evan');
+    const carC = new Car('jack');
+    const cars = [carA, carB, carC];
+    const output = '최종 우승자 : aria,jack';
+    const logSpy = getLogSpy();
+
+    carA.step = 3;
+    carB.step = 2;
+    carC.step = 3;
+
+    const app = new App();
+    const winners = app.calculateFinalWinner(cars);
+    app.printFinalWinner(winners);
+
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+  });
+});
