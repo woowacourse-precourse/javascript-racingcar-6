@@ -7,6 +7,10 @@ class InputManager {
     const input = (await Console.readLineAsync(GUIDE_MESSAGES.ENTER_CARNAMES)).split(',');
     return isValidCarNames(input) && input;
   }
+
+  async enterTryNum() {
+    const input = await Console.readLineAsync(GUIDE_MESSAGES.ENTER_TRYNUM);
+  }
 }
 
 export default InputManager;
