@@ -13,10 +13,22 @@ class App {
 
   carNameValidity(inputCarNameArray) {
     this.numberOfCarValidity(inputCarNameArray);
+
+    for (const INPUT_CAR_NAME of inputCarNameArray) {
+      this.carNameLengthValidity(INPUT_CAR_NAME);
+    }
   }
 
   numberOfCarValidity(inputCarNameArray) {
     if (inputCarNameArray.length < 2) {
+      throw new Error(
+        "[ERROR]: 5글자 이하의 경주할 자동차 이름을 ,로 구분하여 입력하시오"
+      );
+    }
+  }
+
+  carNameLengthValidity(inputCarName) {
+    if (inputCarName.length > 5) {
       throw new Error(
         "[ERROR]: 5글자 이하의 경주할 자동차 이름을 ,로 구분하여 입력하시오"
       );
