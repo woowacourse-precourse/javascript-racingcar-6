@@ -1,5 +1,8 @@
 import { Random } from '@woowacourse/mission-utils';
+import { RANDOM_NUMBERS } from './constants/randomNumber.js';
+
 import Car from './Car.js';
+import { CAR_MOVE } from './constants/racingGame.js';
 
 class Refree {
   #carRegistry = new Map();
@@ -10,9 +13,9 @@ class Refree {
 
   moveCars() {
     this.#carRegistry.forEach((carInstance) => {
-      const randomNumber = Random.pickNumberInRange(0, 9);
-      if (randomNumber >= 4) carInstance.move(1);
-      if (randomNumber < 4) carInstance.stop();
+      const randomNumber = Random.pickNumberInRange(RANDOM_NUMBERS.MIN, RANDOM_NUMBERS.MAX);
+      if (randomNumber >= CAR_MOVE.CONDITION) carInstance.move(CAR_MOVE.DISTANCE);
+      if (randomNumber < CAR_MOVE.CONDITION) carInstance.stop();
     });
   }
 

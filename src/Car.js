@@ -1,3 +1,4 @@
+import { ERROR_MESSAGE } from './constants/message.js';
 import { KOREAN_BAD_WORD } from './db/badWordDB.js';
 
 class Car {
@@ -13,7 +14,7 @@ class Car {
   #checkBadWord(carName) {
     const isBadWord = KOREAN_BAD_WORD.some((badWord) => carName.includes(badWord));
     if (isBadWord) {
-      throw new Error(`[ERROR] 자동차 이름에 ${carName}을 사용할 수 없습니다.`);
+      throw new Error(`${ERROR_MESSAGE.CAR_NAME_INCLUDE_BAD_WORD} ${carName}`);
     }
   }
 

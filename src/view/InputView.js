@@ -1,11 +1,11 @@
 import { Console } from '@woowacourse/mission-utils';
+import { INPUT_MESSAGE } from '../constants/message.js';
 
 const InputView = {
   async getCarNames() {
     try {
-      return await Console.readLineAsync(
-        '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n'
-      );
+      const carNameString = await Console.readLineAsync(INPUT_MESSAGE.CAR_NAMES);
+      return carNameString;
     } catch (error) {
       throw error;
     }
@@ -13,7 +13,8 @@ const InputView = {
 
   async getTotalRounds() {
     try {
-      return await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+      const totalRoundsString = await Console.readLineAsync(INPUT_MESSAGE.TOTAL_ROUNDS);
+      return totalRoundsString;
     } catch (error) {
       throw error;
     }

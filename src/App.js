@@ -1,8 +1,9 @@
-import Refree from './Refree.js';
-import Validation from './util/Validation.js';
-
 import InputView from './view/InputView.js';
 import OutputView from './view/OutputView.js';
+
+import Refree from './Refree.js';
+import Validation from './util/Validation.js';
+import { CAR_NAME } from './constants/racingGame.js';
 
 class App {
   #refree;
@@ -25,7 +26,7 @@ class App {
 
   async #setUpCars() {
     const carNameString = await InputView.getCarNames();
-    const carNames = carNameString.split(',');
+    const carNames = carNameString.split(CAR_NAME.SEPARATOR);
     Validation.validateCarNames(carNames);
 
     this.#refree.registerCars(carNames);
@@ -34,6 +35,7 @@ class App {
   async #setUpTotalRounds() {
     const totalRoundsString = await InputView.getTotalRounds();
     Validation.validateTotalRounds(totalRoundsString);
+
     this.#totalRounds = Number(totalRoundsString);
   }
 
