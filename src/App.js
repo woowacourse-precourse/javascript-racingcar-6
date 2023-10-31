@@ -10,16 +10,13 @@ class App {
         nameObj[arr[i]] = 0;
       };
       for (let i = 0; i < count; i++) {
-        for (const j of arr) {
-          let randomNum = Random.pickNumberInRange(1, 9);
-          if (randomNum >= 4) {
-            nameObj[j] += 1;
-          }
-        }
-        for (const k of arr) {
-          const dashes = '-'.repeat(nameObj[k]);
-          Console.print(`${k} : ${dashes}`);
-        }
+        arr.forEach((num) => {
+          nameObj[num] += 1;
+        });
+        arr.forEach((j) => {
+          const dashes = '-'.repeat(nameObj[j]);
+          Console.print(`${j} : ${dashes}`);
+        });
       }
       
     }
@@ -41,12 +38,8 @@ class App {
     const nameList = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n');
     const runCount = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
     const nameArr = nameList.split(',');
-    error(nameArr, nameList, runCount);
-
-    // 배열을 오브젝트로 변경
-    
-
-    game(nameArr, runCount);
+    const errorCheck = (error(nameArr, nameList, runCount));
+    const startGame = (game(nameArr, runCount));
     
   }
 }
