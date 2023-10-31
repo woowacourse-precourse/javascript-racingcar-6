@@ -23,6 +23,12 @@ export const splitAndTrim = (inputString) => {
 };
 
 export const validateCarNames = (carNameArray) => {
+  const uniqueCarNames = Array.from(new Set(carNameArray));
+
+  if (uniqueCarNames.length !== carNameArray.length) {
+    throw new Error(CAR_NAME_ERRORS.DUPLICATE_NAME);
+  }
+
   if (carNameArray.length === 1) {
     throw new Error(CAR_NAME_ERRORS.MIN_COUNT);
   }
