@@ -81,4 +81,4 @@ class App {
   }
 }
 
-export default App;
+export { Car, App as default };
