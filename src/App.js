@@ -1,5 +1,5 @@
-import {Console, Random } from '@woowacourse/mission-utils';
-import {PLAYER_INPUT, RACE} from './Logs.js';
+import { Console, Random } from '@woowacourse/mission-utils';
+import { PLAYER_INPUT, RACE } from './Logs.js';
 import {
   isPlayerCarNameValidated,
   isPlayerTryNumberValidated,
@@ -20,7 +20,7 @@ class App {
     this.announceWinners();
   }
   async getPlayerCarsInput() {
-    const userInput = await console.readLineAsync(
+    const userInput = await Console.readLineAsync(
       PLAYER_INPUT.CARS_NAME_PROMPT,
     );
     const raceEntry = userInput.split(',');
@@ -35,7 +35,7 @@ class App {
     });
   }
   async getPlayerTryNumberInput() {
-    const userInput = await console.readLineAsync(
+    const userInput = await Console.readLineAsync(
       PLAYER_INPUT.TRY_NUMBER_PROMPT,
     );
     if (isPlayerTryNumberValidated(userInput)) {
@@ -63,10 +63,11 @@ class App {
   }
 
   announceWinners() {
-    console.print(RACE.WINNERS + this.winners.join(', '));
+    Console.print(RACE.WINNERS + this.winners.join(', '));
   }
+
   startRace(tryNumber) {
-    console.print(RACE.START);
+    Console.print(RACE.START);
     for(let i = 0; i < tryNumber; i++) {
       this.proceedEachRaceTurn();
     }
@@ -84,7 +85,7 @@ class App {
         '$(player.playerName) : $(player.trackLocation}\n',
       );
     });
-    console.print(raceStatus);
+    Console.print(raceStatus);
   }
 
 
