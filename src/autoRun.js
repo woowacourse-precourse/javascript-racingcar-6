@@ -19,6 +19,10 @@ childProcess.stdout.on('data', (data) => {
   console.log(data.toString());
 });
 
+childProcess.stderr.on('data', (data) => {
+    console.error(data.toString()); // 출력된 에러 메시지를 콘솔에 표시
+  });
+
 childProcess.on('error', (err) => {
   console.error('오류 발생:', err);
 });
