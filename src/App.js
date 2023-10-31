@@ -1,6 +1,7 @@
 import { Console, Random } from '@woowacourse/mission-utils';
 import Input from './Input.js';
 import ERROR from './constants/Error.js';
+import MESSAGE from './constants/Message.js';
 
 class App {
   #cars;
@@ -45,15 +46,18 @@ class App {
     });
 
     this.#times = await Input.getRepeatTimes();
+    Console.print('');
+
+    Console.print(MESSAGE.result);
 
     while (this.#num < this.#times) {
-      Console.print('\n실행 결과');
       this.startGoOrStop();
+      Console.print('');
       this.#num += 1;
     }
 
     const max = this.findMaxCount();
-    Console.print(`\n최종 우승자 : ${max.join(', ')}`);
+    Console.print(`${MESSAGE.winner}${max.join(', ')}`);
   }
 }
 
