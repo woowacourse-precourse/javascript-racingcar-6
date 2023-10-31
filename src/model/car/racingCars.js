@@ -33,4 +33,13 @@ class RacingCars {
       }
     }
   }
+
+  carNamesValidation(inputNamesString) {
+    this.checkInputNull(inputNamesString);
+    const carNames = this.parseCarNames(inputNamesString);
+    this.checkNameBlank(carNames);
+    this.checkDuplicateNames(carNames);
+    this.checkNameLength(carNames);
+    return carNames;
+  }
 }
