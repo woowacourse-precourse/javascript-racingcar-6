@@ -9,9 +9,9 @@ export default class GameProgress {
   }
 
   proceed() {
-    for (const carName in this.advance) {
-      if (this.canMoveForward()) this.advance[carName]++;
-    }
+    Object.keys(this.advance).forEach((carName) => {
+      this.canMoveForward() && this.advance[carName]++;
+    });
     this.printRoundResult();
   }
 
@@ -20,9 +20,9 @@ export default class GameProgress {
   }
 
   printRoundResult() {
-    for (const carName in this.advance) {
-      Console.print(`${carName} : ` + "-".repeat(this.advance[carName]));
-    }
+    Object.entries(this.advance).forEach(([carName, advance]) => {
+      Console.print(`${carName} : ` + "-".repeat(advance));
+    });
     Console.print("");
   }
 
