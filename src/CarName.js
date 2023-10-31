@@ -1,6 +1,6 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import Car from './Car.js';
-import Play from './PlayRace.js';
+import Play from './Play.js';
 
 class CarName {
   checkNumberDigits(carNames) {
