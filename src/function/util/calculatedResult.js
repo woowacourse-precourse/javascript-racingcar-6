@@ -1,4 +1,4 @@
-import { transformKeysValue } from "../transformKeyValue";
+import { transformKeysValue } from "../transformKeyValue.js";
 
 export const calculatedResult = (resultArr) => {
   const carCount = [];
@@ -6,16 +6,17 @@ export const calculatedResult = (resultArr) => {
 
   resultArr.forEach((el) => {
     const carName = transformKeysValue(el);
+
     carCount.push(el[carName].length);
   });
 
   const winnerCount = Math.max(...carCount);
 
   resultArr.forEach((el) => {
-    const carName = transformKeysValue(el);
-
+    const carName = transformKeysValue(el).join("");
+ 
     if (winnerCount === el[carName].length) {
-      result.push(carName.join(""));
+      result.push(carName);
     }
   });
 

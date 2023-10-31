@@ -1,5 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
-import { transformKeysValue } from "../transformKeyValue";
+import { transformKeysValue } from "../transformKeyValue.js";
 
 export const gaemProgress = (carsNames, carsNumber) => {
   const carsNameArray = [...carsNames]
