@@ -4,6 +4,7 @@ import Car from "../models/car.js";
 
 const messages = {
   duplicatedCarName: "[ERROR] 중복된 자동차 이름이 있습니다.",
+  carNameEmptyError: "[ERROR] 등록할 수 있는 차량이 없습니다.",
 };
 
 const MIN_RANDOM = 0;
@@ -46,6 +47,9 @@ class CarController {
       .map(this.#trimCarName)
       .filter(this.#filterCarName);
 
+    if (carNames.length === 0) {
+      throw new Error(messages.carNameEmptyError);
+    }
     if (this.#checkDuplicatedName(carNames)) {
       throw new Error(messages.duplicatedCarName);
     }
