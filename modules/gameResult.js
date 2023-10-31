@@ -1,5 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
 import { MESSAGE } from './constant';
+
 const findWhoIsWinner = (calcuratedScoreBoard) => {
   const winner = [];
 
@@ -17,7 +18,6 @@ const findWhoIsWinner = (calcuratedScoreBoard) => {
     }
     if (car.score.length === winnerLastIndex) {
       winner.push(car);
-      return;
     }
   });
 
