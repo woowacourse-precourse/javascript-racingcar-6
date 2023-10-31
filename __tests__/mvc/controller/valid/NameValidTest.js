@@ -1,5 +1,5 @@
-import NAME_ERROR_MESSAGE from "../../../../src/mvc/constants/nameErrorMessage.js";
-import NameValid from "../../../../src/mvc/controller/valid/NameValid.js";
+import NAME_ERROR_MESSAGE from "../../../../src/constants/nameErrorMessage.js";
+import NameValid from "../../../../src/controller/valid/NameValid.js";
 
 describe("자동차 이름 입력 테스트", () => {
   test("이름 길이가 6자 이상인 경우", async () => {

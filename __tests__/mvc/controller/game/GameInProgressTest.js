@@ -1,6 +1,6 @@
-import GameInProgress from "../../../../src/mvc/controller/game/gameInProgress";
-import ProgressOutput from "../../../../src/mvc/view/output/progressOutput";
-import testName from "../../../../src/mvc/constants/testName";
+import GameInProgress from "../../../../src/controller/game/gameInProgress";
+import ProgressOutput from "../../../../src/view/output/progressOutput";
+import testName from "../../../../src/constants/testName";
 
 describe("RacingGame gameInProgress 테스트", () => {
   test("각 자동차의 결과가 출력 되어야 함.", () => {

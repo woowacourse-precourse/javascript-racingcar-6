@@ -1,6 +1,6 @@
-import NameToKeyValueConverter from "../../../../src/mvc/controller/game/nameToKeyValueConverter";
-import NUMBERS from "../../../../src/mvc/constants/numbers";
-import testName from "../../../../src/mvc/constants/testName";
+import NameToKeyValueConverter from "../../../../src/controller/game/nameToKeyValueConverter";
+import NUMBERS from "../../../../src/constants/numbers";
+import testName from "../../../../src/constants/testName";
 
 describe("정상 진행 테스트", () => {
   test("key : value 값이 정상적으로 분리 되어야 함.", async () => {

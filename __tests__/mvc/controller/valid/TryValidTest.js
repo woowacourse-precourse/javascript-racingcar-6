@@ -1,5 +1,5 @@
-import TRY_ERROR_MESSAGE from "../../../../src/mvc/constants/tryErrorMessage.js";
-import TryValid from "../../../../src/mvc/controller/valid/TryValid.js";
+import TRY_ERROR_MESSAGE from "../../../../src/constants/tryErrorMessage.js";
+import TryValid from "../../../../src/controller/valid/TryValid.js";
 
 describe("시도 횟수 입력 테스트", () => {
   test("문자가 입력된 경우", async () => {

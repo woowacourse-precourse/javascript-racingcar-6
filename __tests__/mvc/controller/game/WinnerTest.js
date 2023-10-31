@@ -1,5 +1,5 @@
-import testName from "../../../../src/mvc/constants/testName";
-import Winner from "../../../../src/mvc/controller/game/Winner";
+import testName from "../../../../src/constants/testName";
+import Winner from "../../../../src/controller/game/Winner";
 
 describe("winner 함수 테스트", () => {
   test("가장 많은 하이픈을 가진 자동차가 1대인 경우", () => {

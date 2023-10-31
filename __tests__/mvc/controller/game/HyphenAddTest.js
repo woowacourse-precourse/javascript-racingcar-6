@@ -1,7 +1,7 @@
 import { Random } from "@woowacourse/mission-utils";
-import NUMBERS from "../../../../src/mvc/constants/numbers.js";
-import HyphenAdd from "../../../../src/mvc/controller/game/HyphenAdd.js";
-import testName from "../../../../src/mvc/constants/testName";
+import NUMBERS from "../../../../src/constants/numbers.js";
+import HyphenAdd from "../../../../src/controller/game/HyphenAdd.js";
+import testName from "../../../../src/constants/testName";
 
 const mockRandoms = (numbers) => {
   Random.pickNumberInRange = jest.fn();
