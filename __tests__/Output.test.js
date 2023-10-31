@@ -3,8 +3,13 @@ import Output from '../src/Output';
 import { MESSAGE } from '../src/constant.js';
 
 describe('Output 클래스 테스트', () => {
-  test('prinProgress 함수 테스트', () => {
-    const logSpy = jest.spyOn(Console, 'print');
+  let logSpy;
+
+  beforeEach(() => {
+    logSpy = jest.spyOn(Console, 'print');
+  });
+
+  test('printProgress 함수 테스트', () => {
     const NAME = 'taeyoon';
     const PROGRESS = '---';
 
@@ -14,15 +19,12 @@ describe('Output 클래스 테스트', () => {
   });
 
   test('printEmptyLine 함수 테스트', () => {
-    const logSpy = jest.spyOn(Console, 'print');
-
     Output.printEmptyLine();
 
     expect(logSpy).toHaveBeenCalledWith(MESSAGE.progressDivider);
   });
 
   test('printWinner 함수 테스트', () => {
-    const logSpy = jest.spyOn(Console, 'print');
     const WINNER = 'a, b, c';
 
     Output.printWinner(WINNER);
