@@ -9,7 +9,7 @@ export default class OutputView {
   static #ONE_STEP = "-";
 
   static printResultMessage() {
-    Console.print(OUTPUTVIEW_MESSAGE.executionResult);
+    Console.print(`\n${OUTPUTVIEW_MESSAGE.executionResult}\n`);
   }
 
   static printOneRound(carsStatus) {
