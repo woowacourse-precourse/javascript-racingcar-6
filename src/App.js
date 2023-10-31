@@ -4,10 +4,19 @@ class App {
   async play() {
     const carNameInput = await Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
     const carNameArray = carNameInput.split(",");
-   
-
+    // 이름 예외처리
+    for (const name of carNameArray) {
+      if (name.length >= 5) {
+        throw new Error("[ERROR] 이름이 5자 이상입니다.");
+      }
+    }
+    // 라운드 예외처리
+    let playRound = await Console.readLineAsync("시도할 횟수는 몇 회인가요?");
+     playRound = parseInt(playRound);
+     if (isNaN(playRound)) {
+       throw new Error("[ERROR] 올바른 숫자를 입력하세요.");
+     }
     const carProgress = new Array(carNameArray.length).fill(0);
-    const playRound = await Console.readLineAsync("시도할 횟수는 몇 회인가요?");
     const result = playRacing(playRound, carProgress, carNameArray);
   }
 }
