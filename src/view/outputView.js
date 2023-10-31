@@ -1,5 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
 import { OUTPUT_MSG } from '../constants/messages.js';
+import { MOVE_OUTPUT_CHAR } from '../constants/constants.js';
 
 const outputView = {
   raceResultTitle() {
@@ -7,7 +8,7 @@ const outputView = {
   },
 
   raceResult(name, count) {
-    const movingRecord = '-'.repeat(count);
+    const movingRecord = MOVE_OUTPUT_CHAR.repeat(count);
     Console.print(`${name} : ${movingRecord}`);
   },
 

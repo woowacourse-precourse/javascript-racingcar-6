@@ -2,6 +2,7 @@ import CarData from '../model/CarData.js';
 import inputView from '../view/inputView.js';
 import outputView from '../view/outputView.js';
 import validation from '../utils/validation.js';
+import { SPLIT_SEPARATOR } from '../constants/constants.js';
 
 class CarRacing {
   #CarData;
@@ -9,7 +10,7 @@ class CarRacing {
   #moveCount;
 
   static carNameTrim(input) {
-    const carList = input.split(',');
+    const carList = input.split(SPLIT_SEPARATOR);
     const splitInput = carList.map((car) => car.trim());
     return splitInput;
   }

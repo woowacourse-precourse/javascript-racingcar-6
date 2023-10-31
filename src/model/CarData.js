@@ -1,4 +1,5 @@
 import { Random } from '@woowacourse/mission-utils';
+import { RANDOM, NUM } from '../constants/constants.js';
 
 class CarData {
   #maxMove;
@@ -11,9 +12,9 @@ class CarData {
   }
 
   static moveOrNot() {
-    const moveOrNot = Random.pickNumberInRange(0, 9);
+    const moveOrNot = Random.pickNumberInRange(RANDOM.MIN, RANDOM.MAX);
 
-    if (moveOrNot >= 4) return true;
+    if (moveOrNot >= NUM.MOVE_FLAG_NUM) return true;
     return false;
   }
 
