@@ -1,25 +1,19 @@
-import { Console, Random } from '@woowacourse/mission-utils';
+import { Console } from "@woowacourse/mission-utils";
 
 class App {
   async play() {
-    try{
-      Console.print('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)');
-      const carNamesInput = await Console.readLineAsync();
-      const carNames = carNamesInput.split(',');
+    const carNamesInput = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)');
+    const carNames = carNamesInput.split(',');
+    this.checkCarNames(carNames);
+    
+    const tryCountInput = await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
+    const tryCount = parseInt(tryCountInput);
+  }
 
-      Console.print('시도할 횟수는 몇 회인가요?');
-      const tryCountInput = await Console.readLineAsync();
-      const tryCount = parseInt(tryCountInput);
-
-      if (isNaN(tryCount)) {
-        throw new Error('[ERROR] 숫자가 잘못된 형식입니다.');
-      }
-
+  checkCarNames = (carNames) => {
+    for (const carName of carNames){
+      if(carName.length > 5){ throw new Error('[ERROR] 자동차 이름은 5자 이하여야 합니다.')}
     }
-    catch (error) {
-      Console.print(error.message);
-    }
-
   }
 }
 
