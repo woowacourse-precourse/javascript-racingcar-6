@@ -1,12 +1,17 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Console, Random} from "@woowacourse/mission-utils";
 import message from "./util/Message.js"
 
 
 class App {
   async play() {
-    const userInput = await getUserInput(message.starting)
+    const userInput = await getUserInput(message.notifyStarting)
     const carNameArray = processInput(userInput)
-    console.log(carNameArray) 
+    const racingRounds = await getUserInput(message.askRounds)
+    
+    const condition = { low:0, high:9, criteria:4};
+    // racing car 생성
+    
+    // const testRacingCar = new RacingCars('name',condition)
   }
 }
 
@@ -43,6 +48,24 @@ class UserInput{
     if (string.length > condition) {
       throw console.error(message.inputValidationError);
     }
+  }
+}
+
+
+class RacingCars {
+  constructor(carName, condition) {
+    this.carName = carName
+    this.condition = condition
+  }
+  checkIsMoveForward() {
+    const {low,high,criteria} = this.condition
+    return this.getRandomNumber({ low, high }) > criteria
+      ? true
+      : false
+  }
+
+  getRandomNumber({ low,high }) {
+    return Random.pickNumberInRange(low, high);
   }
 }
 
