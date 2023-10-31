@@ -28,6 +28,10 @@ class Track {
       car.moveForward();
     });
   }
+
+  getCars() {
+    return this.#cars;
+  }
 }
 
 export default Track;
