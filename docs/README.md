@@ -46,22 +46,28 @@
 
    - 잘못된 입력일 경우, '**Invalid number of attemps input**'을 포함한 에러 메시지를 출력하고 App을 종료
 
+     - 아무것도 입력하지 않은 경우:
+
+     ```
+     [ERROR] Invalid number of attemps input: 시도할 횟수를 입력하지 않았습니다. 시도할 횟수를 입력하세요.
+     ```
+
      - 0을 입력한 경우:
 
      ```
      [ERROR] Invalid number of attemps input: 시도할 횟수에 0을 입력하였습니다. 시도할 횟수는 1이상 입력하세요.
      ```
 
+     - 음수를 입력한 경우:
+
+     ```
+     [ERROR] Invalid number of attemps input: 시도할 횟수에 음수를 입력하였습니다. 시도할 횟수는 1이상의 수를 입력하세요.
+     ```
+
      - 문자를 포함하여 입력한 경우:
 
      ```
      [ERROR] Invalid number of attemps input: 시도할 횟수에 문자를 입력하였습니다. 시도할 횟수는 숫자만 입력하세요.
-     ```
-
-     - 아무것도 입력하지 않은 경우:
-
-     ```
-     [ERROR] Invalid number of attemps input: 시도할 횟수를 입력하지 않았습니다. 시도할 횟수를 입력하세요.
      ```
 
 ## 🚥 자동차 경주 기능
