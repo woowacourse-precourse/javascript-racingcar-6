@@ -5,7 +5,7 @@ import checkAttemptValidity from '../validation/checkAttemptValidity';
 async function getAttemptInput() {
   const attemptInput = await Console.readLineAsync(message.ASK_ATTEMPT_NUMBER);
 
-  const isValid = await checkAttemptValidity(attemptInput);
+  const isValid = checkAttemptValidity(attemptInput);
 
   if (isValid) {
     return Number(attemptInput);
