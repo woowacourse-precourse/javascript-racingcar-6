@@ -1,4 +1,4 @@
-import Console from '../Console.js';
+import View from '../View.js';
 
 class Recorder {
   #results;
@@ -12,7 +12,7 @@ class Recorder {
   }
 
   showResults() {
-    Console.printResults(this.#results);
+    View.printResults(this.#results);
   }
 }
 

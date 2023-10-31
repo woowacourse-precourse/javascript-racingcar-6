@@ -1,7 +1,7 @@
-import { MissionUtils } from '@woowacourse/mission-utils';
+import { Console } from '@woowacourse/mission-utils';
 import Validator from './Validator.js';
 
-class Console {
+class View {
   static #DELIMITER = ',';
   static #CAR_NAMES_QUERY = `경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분) `;
   static #NUMBER_OF_ROUNDS_QUERY = '시도할 횟수는 몇 회인가요? ';
@@ -9,9 +9,7 @@ class Console {
   static #FORWARD_MARK = '-';
 
   static async askCarNames() {
-    const answer = await MissionUtils.Console.readLineAsync(
-      this.#CAR_NAMES_QUERY,
-    );
+    const answer = await Console.readLineAsync(this.#CAR_NAMES_QUERY);
     const stringWithoutSpaces = answer.replace(/ /g, '');
     const array = stringWithoutSpaces.split(this.#DELIMITER);
     Validator.validateCarNames(array);
@@ -19,9 +17,7 @@ class Console {
   }
 
   static async askNumberOfRounds() {
-    const answer = await MissionUtils.Console.readLineAsync(
-      this.#NUMBER_OF_ROUNDS_QUERY,
-    );
+    const answer = await Console.readLineAsync(this.#NUMBER_OF_ROUNDS_QUERY);
     const number = Number(answer);
     Validator.validateNumberOfRound(number);
     return number;
@@ -40,8 +36,8 @@ class Console {
 
   static printResults(results) {
     const message = this.writeResultMessage(results);
-    MissionUtils.Console.print(message);
+    Console.print(message);
   }
 }
 
-export default Console;
+export default View;

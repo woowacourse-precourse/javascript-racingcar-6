@@ -1,4 +1,4 @@
-import Console from '../Console.js';
+import View from '../View.js';
 import RacingCar from './RacingCar.js';
 import Recorder from './Recorder.js';
 
@@ -8,11 +8,11 @@ class Race {
   recorder = new Recorder();
 
   async prepare() {
-    const carNames = await Console.askCarNames();
+    const carNames = await View.askCarNames();
     carNames.forEach((name) => {
       this.cars.push(new RacingCar(name));
     });
-    this.numberOfRounds = await Console.askNumberOfRounds();
+    this.numberOfRounds = await View.askNumberOfRounds();
     this.recorder.recordNumberOfRound(this.numberOfRounds);
   }
 
