@@ -3,6 +3,7 @@ import {
   NAME_MIN,
   IS_EMPTY_ERROR,
   VALIDATE_CAR_NAME_ERROR,
+  VALIDATE_GAME_ROUND_ERROR,
 } from '../Utils/Define';
 
 export const isEmpty = (input) => {
@@ -15,6 +16,13 @@ export const isEmpty = (input) => {
 export const validateCarName = (input) => {
   if (input.length < NAME_MIN || input.length > NAME_MAX) {
     return VALIDATE_CAR_NAME_ERROR;
+  }
+  return null;
+};
+
+export const validateGameRound = (input) => {
+  if (Number.isNaN(Number(input))) {
+    return VALIDATE_GAME_ROUND_ERROR;
   }
   return null;
 };
