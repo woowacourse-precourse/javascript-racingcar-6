@@ -8,3 +8,7 @@ export const randomAndJudge = async (trynumber) => {
   }
   return RANDOM_NUMBER_ARRAY;
 };
+
+export const makeRandomNumberTest = async (input) => {
+  input >= 4 ? "Go" : "Stop";
+};
