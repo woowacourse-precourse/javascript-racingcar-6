@@ -32,12 +32,13 @@
 - [예외] 숫자를 입력해주세요.
 - [예외] 양의 정수를 입력해주세요.
 
-#### 전진하는 조건 로직
+#### 전진하는 조건 로직 (MoveForward)
 
 ---
 
-- 0~9사이의 무작위 값 뽑기 **(RandomNumber)**
-- 만약, 값이 4이상 일 경우 전진(-) **(moveForward)**
+- 0~9사이의 무작위 값 뽑기  
+  `Random.pickNumberInRange(0, 9)`
+- 만약, 값이 4이상 일 경우 전진(-)
 
 #### 실행 결과 출력 (OutputResult.js / executionResult)
 
