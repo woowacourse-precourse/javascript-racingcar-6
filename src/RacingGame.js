@@ -3,7 +3,11 @@ import InputView from './InputView.js';
 import OutputView from './OutputView.js';
 import RacingCar from './RacingCar.js';
 import { GAME_MESSAGES, NUMBER_RANGE } from './constants.js';
-import { generateRandomNumber } from './utils.js';
+import {
+  generateRandomNumber,
+  validateCarNames,
+  validateNumberInput,
+} from './utils.js';
 
 class RacingGame {
   #cars;
@@ -16,9 +20,14 @@ class RacingGame {
 
   async setupGame() {
     const carNames = await InputView.inputGetCarNames();
-    carNames.forEach((name) => this.addCar(name));
+    if (validateCarNames(carNames)) {
+      carNames.forEach((name) => this.addCar(name));
+    }
 
-    this.#tryCount = await InputView.inputgetTryCount();
+    const tryCount = await InputView.inputgetTryCount();
+    if (validateNumberInput(tryCount)) {
+      this.#tryCount = tryCount;
+    }
   }
 
   addCar(name) {
