@@ -44,5 +44,5 @@ describe('시도 횟수에 대한 테스트입니다.', () => {
 
     // when & then
     await expect(InputManager.inputGameAttemptNumber()).rejects.toThrow(ERROR_MESSAGE.INPUT_NOT_NUMBER);
-  })
-})
+  });
+});

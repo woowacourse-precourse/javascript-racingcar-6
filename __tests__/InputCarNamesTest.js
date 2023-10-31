@@ -72,5 +72,5 @@ describe('자동차 입력을 테스트합니다.', () => {
     // then
     const readyCars = racingStadium.getRacingCars();
     expect(answers).toEqual(expect.arrayContaining(readyCars));
-  })
+  });
 });

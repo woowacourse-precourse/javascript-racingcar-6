@@ -88,5 +88,5 @@ describe('게임 진행에 관한 테스트입니다', () => {
 
     // then
     expect(pobiCar.getAccumulatedForward()).toEqual(answer);
-  })
-})
+  });
+});

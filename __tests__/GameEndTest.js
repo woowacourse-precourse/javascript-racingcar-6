@@ -30,5 +30,5 @@ describe('게임이 정상종료 되는지를 검증합니다.', () => {
 
     // then
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(expected));
-  })
+  });
 })

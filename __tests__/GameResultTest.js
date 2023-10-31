@@ -103,5 +103,5 @@ describe('게임 결과에 대한 테스트입니다.', () => {
 
     // then
     expect(logSpy).toHaveBeenCalledWith(expect.stringMatching(answer));
-  })
-})
+  });
+});
