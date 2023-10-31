@@ -22,6 +22,14 @@ class RacingGame {
 
 		await this.#readTryCount();
 	}
+
+	async #readTryCount() {
+		const tryCount = await Io.readTryCount();
+
+		this.#tryCounter.initTryCount(tryCount);
+
+		this.#moves();
+	}
 }
 
 export default RacingGame;
