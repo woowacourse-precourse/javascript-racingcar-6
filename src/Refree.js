@@ -5,7 +5,7 @@ class Refree {
   #carRegistry = new Map();
 
   registerCars(carNames) {
-    carNames.forEach((car) => this.#carRegistry.set(car, new Car(car)));
+    carNames.forEach((carName) => this.#carRegistry.set(carName, new Car(carName)));
   }
 
   moveCars() {
