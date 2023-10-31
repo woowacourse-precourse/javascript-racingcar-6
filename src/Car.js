@@ -9,4 +9,9 @@ export default class Car {
   getCarName() {
     return this.#carName;
   }
+
+  setMoveCount() {
+    this.#count += 1;
+  }
+
 }
