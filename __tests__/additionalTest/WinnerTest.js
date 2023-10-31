@@ -1,7 +1,7 @@
-import selectWinner from '../src/game/Winner.js';
-import { printWinner } from '../src/utils/Output.js';
+import selectWinner from '../../src/game/Winner.js';
+import { printWinner } from '../../src/utils/Output.js';
 
-jest.mock('../src/utils/Output.js', () => ({
+jest.mock('../../src/utils/Output.js', () => ({
   printWinner: jest.fn(),
 }));
 
