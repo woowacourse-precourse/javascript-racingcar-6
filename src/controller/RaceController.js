@@ -8,26 +8,28 @@ export default class RaceController {
   constructor() {
     this.cars = [];
     this.winners = [];
+    this.carNames = [];
+    this.numOfTry = 0;
     this.inputView = new InputView();
     this.outputView = new OutputView();
   }
 
   async gameStart() {
-    this.carNames = await this.inputView.readCarNames();
-    this.getCarNames(this.carNames);
-
-    this.numOfTry = await this.inputView.readNumberOfTry();
-    this.checkNumOfTryError(this.numOfTry);
+    await this.getCarNames();
+    await this.getNumOfTry();
 
     this.moveForward();
   }
 
-  getCarNames(carNames) {
-    this.carNamesArray = carNames.split(",");
-    this.carNamesArray.forEach((element) => {
-      this.cars.push(new Car(element));
+  async getCarNames() {
+    const carNamesString = await this.inputView.readCarNames();
+
+    this.carNames = carNamesString.split(",");
+    this.carNames.forEach((carName) => {
+      this.cars.push(new Car(carName));
     });
-    this.checkCarNamesError(this.carNamesArray);
+
+    this.checkCarNamesError();
   }
 
   hasDuplicateNumber(array, arrayLength) {
@@ -35,22 +37,28 @@ export default class RaceController {
     return numberSet.size != arrayLength;
   }
 
-  checkCarNamesError(names) {
-    names.forEach((name) => {
+  checkCarNamesError() {
+    this.carNames.forEach((name) => {
       if (name.length > 5) {
         throw new Error(ERROR_MESSAGES.NUM_OF_CHARACTER_EXCEED);
       } else if (name.trim() === '') {
         throw new Error(ERROR_MESSAGES.BLANK_NAME);
       } 
     });
-    if (this.hasDuplicateNumber(names, names.length)) {
+    if (this.hasDuplicateNumber(this.carNames, this.carNames.length)) {
       throw new Error(ERROR_MESSAGES.DUPLICATE_NAME);
     }
   }
 
-  checkNumOfTryError(number) {
+  async getNumOfTry() {
+    this.numOfTry = await this.inputView.readNumberOfTry();
+    
+    this.checkNumOfTryError();
+  }
+
+  checkNumOfTryError() {
     const REGEX = /[^0-9]/;
-    if (REGEX.test(number) || number == 0) {
+    if (REGEX.test(this.numOfTry) || this.numOfTry == 0) {
       throw new Error(ERROR_MESSAGES.OUT_OF_RANGE);
     }
   }
@@ -76,8 +84,7 @@ export default class RaceController {
 
   getWinners() {
     let maxPoint = 0;
-    this.winners = [];
-
+    
     this.cars.forEach((car) => {
       if (maxPoint === car.point) {
         this.winners.push(car.name);
