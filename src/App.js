@@ -9,6 +9,7 @@ class App {
     const cars = Computer.generateCars(this.carNameList);
 
     Computer.runRace(cars, this.attempts);
+    Computer.printRaceResult(cars);
   }
 }
 

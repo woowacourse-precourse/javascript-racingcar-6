@@ -1,11 +1,13 @@
+import { GAME_SETTING } from "./constant.js";
+
 class Car {
   constructor(name) {
     this.name = name;
-    this.location = 0;
+    this.position = GAME_SETTING.START_POINT;
   }
 
   forward() {
-    this.location += 1;
+    this.position += GAME_SETTING.STEP;
   }
 }
 

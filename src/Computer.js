@@ -44,9 +44,45 @@ class Computer {
 
   static printCurrentStatus(cars) {
     cars.forEach((car) => {
-      const currentStatus = `${car.name} : `.concat("-".repeat(car.location));
+      const currentStatus = `${car.name} : `.concat("-".repeat(car.position));
       Console.print(currentStatus);
     });
+  }
+
+  static printRaceResult(cars) {
+    const winnerArray = Computer.findWinner(cars);
+    const winnerName = Computer.makeWinnerString(winnerArray);
+    const finalMessage = MESSAGE.FINAL_WINNER_MESSAGE.concat(winnerName);
+    Console.print(finalMessage);
+  }
+
+  static findWinner(cars) {
+    let winnerArray = [cars[0].name];
+    let maxPositionValue = cars[0].position;
+
+    for (let i = 1; i < cars.length; i += 1) {
+      if (cars[i].position > maxPositionValue) {
+        maxPositionValue = cars[i].position;
+        winnerArray = [cars[i].name];
+      } else if (cars[i].position === maxPositionValue) {
+        winnerArray.push(cars[i].name);
+      }
+    }
+    return winnerArray;
+  }
+
+  static makeWinnerString(winnerArray) {
+    if (winnerArray.length > 1) {
+      const winnerString = winnerArray.join(", ");
+      return winnerString;
+    }
+
+    if (winnerArray.length === 1) {
+      const winnerString = winnerArray[0];
+      return winnerString;
+    }
+
+    return null;
   }
 }
 
