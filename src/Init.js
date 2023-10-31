@@ -8,7 +8,7 @@ class Init {
       const numberOfTries = await this.getNumberOfTries();
 
       const RacingGame = new Race();
-      RacingGame.start(carsArray, numberOfTries);
+      await RacingGame.start(carsArray, numberOfTries);
     } catch (error) {
       Console.print(`[ERROR] ${error.message}`);
     }

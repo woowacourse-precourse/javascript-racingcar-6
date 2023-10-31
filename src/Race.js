@@ -1,4 +1,5 @@
 import { Console, Random } from "@woowacourse/mission-utils";
+import Result from "./Result";
 
 class Race {
   async start(carsArray, numberOfTries) {
@@ -8,6 +9,9 @@ class Race {
     for (let i = 0; i < numberOfTries; i += 1) {
       this.carMoveForward(carsArray);
     }
+
+    const RacingResult = new Result();
+    await RacingResult.start(carsArray);
   }
 
   carMoveForward(carsArray) {
