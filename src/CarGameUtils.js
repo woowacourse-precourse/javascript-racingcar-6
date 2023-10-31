@@ -21,22 +21,20 @@ export const inputTryNum = async () => {
 };
 
 export const isValidCarNames = carNames => {
-  if (carNames[carNames.length - 1] === ',' || carNames[0] === ',') {
-    return false;
-  }
-  if (
-    carNames[carNames.length - 2] === ',' &&
-    carNames[carNames.length - 1] === ' '
-  ) {
-    return false;
-  }
-  return true;
+  const carNameArr = Array.from(carNames.replace(/ +$/, ''));
+  const lengthError = carNameArr.length === 0 ? false : true;
+  const commaError =
+    carNameArr[0] === ',' || carNameArr[carNameArr.length - 1] === ','
+      ? false
+      : true;
+
+  return lengthError && commaError;
 };
 
 export const isValidTryNum = tryNum => {
-  const regex = /[^0-9]/; //입력값이 숫자로만 이루어져있는지 체크
   //Q. 시도횟수에 대한 제한은? ex) n < 10000 조건을 넣어야 할지 말지고민
-  return !regex.test(tryNum);
+  const regex = /^\d+$/;
+  return regex.test(tryNum);
 };
 
 export const isValidCarName = carName => {
@@ -54,7 +52,7 @@ export const tryCarGame = carList => {
 
 export const printTryResult = carList => {
   carList.forEach(car => {
-    Console.print(`${car.name} : ` + '-'.repeat(car.position + '\n'));
+    Console.print(`${car.name} : ` + '-'.repeat(car.position));
   });
   Console.print('');
 };
