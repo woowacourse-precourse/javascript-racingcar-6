@@ -1,14 +1,14 @@
 class RaceManager {
-  _gameWinner;
-
+  #gameWinner;
+  #moveCount;
   /**
    * @constructor
    * @param {string[]} carModels - 차량 모델의 배열
    */
   constructor(carModels) {
     this.carModels = carModels;
-    this.moveCount = 0;
-    this._gameWinner = '';
+    this.#moveCount = 0;
+    this.#gameWinner = '';
   }
 
   race() {
@@ -19,8 +19,8 @@ class RaceManager {
    * 이동 횟수를 지정된 값으로 설정
    * @param {number} moveCount - 설정할 새로운 이동 횟수
    */
-  _setMoveCount(moveCount) {
-    this.moveCount = moveCount;
+  setMoveCount(moveCount) {
+    this.#moveCount = moveCount;
   }
 
   calculateLongestDistance() {
@@ -36,11 +36,15 @@ class RaceManager {
       carModel => carModel.getPosition() === maxPosition,
     );
 
-    this._gameWinner = winners.map(winner => winner.carName).join(', ');
+    this.#gameWinner = winners.map(winner => winner.carName).join(', ');
+  }
+
+  getMoveCount() {
+    return this.#moveCount;
   }
 
   getGameWinner() {
-    return this._gameWinner;
+    return this.#gameWinner;
   }
 }
 

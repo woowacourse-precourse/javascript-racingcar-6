@@ -17,15 +17,17 @@ class CarRaceController {
     const moveCount = await this.promptMoveCount();
     const carList = carNames.map(carName => new Car(carName));
     this.raceManager = new RaceManager(carList);
-    this.raceManager._setMoveCount(moveCount);
+    this.raceManager.setMoveCount(moveCount);
   }
 
-  _playRace() {
+  playRace() {
+    console.log('ㅇㅇ');
     this.raceManager.race();
     this.printRaceProgress();
   }
 
   printRaceProgress() {
+    console.log('printRaceProgress');
     const { printNewline } = CarRaceView;
     this.raceManager.carModels.forEach(this.printCarProgress);
     printNewline();
@@ -41,7 +43,8 @@ class CarRaceController {
   }
 
   playGame() {
-    repeatFunctionNTimes(this.raceManager.moveCount, this._playRace.bind(this));
+    const moveCount = this.raceManager.getMoveCount();
+    repeatFunctionNTimes(moveCount, this.playRace.bind(this));
   }
 
   getGameResult() {
