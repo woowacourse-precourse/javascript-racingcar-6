@@ -1,7 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
 import Car from './Car.js';
 import * as utils from './CarGameUtils.js';
-import { isValidCarNames } from './CarGameUtils.js';
+
 class App {
   async play() {
     const carList = [];
