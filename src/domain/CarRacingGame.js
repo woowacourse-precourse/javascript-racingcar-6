@@ -1,4 +1,5 @@
 import Car from './Car.js';
+import { GAME_CONDITION } from '../constants/constants.js';
 
 class CarRacingGame {
   #cars;
@@ -13,7 +14,7 @@ class CarRacingGame {
     this.#cars.forEach((car) => {
       const randomNumber = randomNumberGenerator();
 
-      if (randomNumber >= 4) car.move();
+      if (randomNumber >= GAME_CONDITION.passNumber) car.move();
     });
 
     this.#round -= 1;
@@ -31,6 +32,7 @@ class CarRacingGame {
   getWinners() {
     const highProgress = Math.max(...this.#cars.map((car) => car.getProgress()));
     const winners = this.#cars.filter((car) => car.getProgress() === highProgress);
+
     return winners.map((car) => car.getName());
   }
 
