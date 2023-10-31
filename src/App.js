@@ -18,7 +18,7 @@ class App {
       const carStatus = {};
       carNameArray.forEach((car, idx) => {
         const forwardCount =
-          this.generateRandomNumbersByAttempts(attemptForwardCount);
+          this.generateForwardCountByAttempts(attemptForwardCount);
         carStatus[carNameArray[idx]] = forwardCount;
       });
       Console.print(carStatus);
@@ -35,13 +35,18 @@ class App {
   async getUsetInputForwardCount() {
     return await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
   }
-  generateRandomNumbersByAttempts(number) {
-    const randomNumberArray = Array(number)
+  generateForwardCountByAttempts(number) {
+    const randomNumberArray = this.makeRandomNumberArray(number);
+    const forwardCount = this.countNumberOverFour(randomNumberArray);
+    return forwardCount;
+  }
+  makeRandomNumberArray(number) {
+    return Array(number)
       .fill(0)
       .map((value) => value + Random.pickNumberInRange(0, 9));
-
-    const forwardCount = randomNumberArray.filter((value) => value >= 4).length;
-    return forwardCount;
+  }
+  countNumberOverFour(array) {
+    return array.filter((value) => value >= 4).length;
   }
 }
 
