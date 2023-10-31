@@ -10,7 +10,7 @@ class Exception extends SameName {
   }
 
   attemptNumber(number) {
-    if(isNaN(number)) {
+    if (isNaN(number)) {
       throw new Error(ERROR_MESSEAGE.attempt);
     }
   } 
