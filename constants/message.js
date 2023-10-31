@@ -1,7 +1,9 @@
 export const MESSAGE = {
   inputNameMessage:
-    '경주할 자동차 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분)',
-  inputRoundMessage: '시도할 횟수는 몇 회인가요?',
+    '경주할 자동차 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분)\n',
+  inputRoundMessage: '시도할 횟수는 몇 회인가요?\n',
+  resultMessage: '실행 결과',
+  winnerMessage: '최종 우승자 : ',
 };
 export const ERROR_MESSAGE = {
   racerNameLengthError: '[ERROR] 이름은 1자 이상 5자 이하만 가능합니다.',
