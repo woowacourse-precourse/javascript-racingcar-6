@@ -38,12 +38,22 @@ const checkCarNamesAreValid = (userInput) => {
   return input;
 };
 
-const checkTryNumberIsValid = (userInput) => {
-  if (userInput.length != 1) {
-    throw new Error('[ERROR] 입력이 올바른 형식이 아닙니다.');
-  }
+const checkTryNumberWithBlank = (userInput) => {
+  const inputHaveBlank = userInput.includes(' ');
+  return inputHaveBlank ? true : false;
+};
 
-  if (Number.isNaN(Number(userInput)) || Number(userInput) === 0) {
+const checkTryNumberIsCharacter = (userInput) => {
+  return Number.isNaN(Number(userInput)) || Number(userInput) === 0
+    ? true
+    : false;
+};
+
+const checkTryNumberIsValid = (userInput) => {
+  const inputHaveBlank = checkTryNumberWithBlank(userInput);
+  const inputIsCharacter = checkTryNumberIsCharacter(userInput);
+
+  if (inputHaveBlank || inputIsCharacter) {
     throw new Error('[ERROR] 입력이 올바른 형식이 아닙니다.');
   }
 };
