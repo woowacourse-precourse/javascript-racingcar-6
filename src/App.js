@@ -52,6 +52,13 @@ class App {
     return userInputNum;
   }
 
+  checkNumInput() {
+    const numRegex = /^[0-9]*$/;
+    if (!numRegex.test(this.tryNum)) {
+      throw new Error('[ERROR] 숫자가 잘못된 형식입니다.');
+    }
+  }
+
   racingCarList(userInput) {
     for (let i = 0; i < userInput.length; i++) {
       this.carList[userInput[i]] = '';
