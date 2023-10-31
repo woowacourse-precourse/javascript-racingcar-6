@@ -4,7 +4,7 @@ class App {
   #carRacingController = new CarRacingController();
 
   async play() {
-    await this.#carRacingController.inputCars();
+    await this.#carRacingController.startCarRacing();
   }
 }
 

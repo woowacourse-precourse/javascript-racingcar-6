@@ -9,22 +9,32 @@ import Car from '../model/Car.js';
 class CarRacingController {
   #carInstances;
 
+  startCarRacing = async () => {
+    await this.inputCars();
+  };
+
   inputCars = async () => {
     const cars = await readCarsInput();
 
-    this.inputCount(cars);
+    this.createCarInstances(cars);
+    this.inputCount();
   };
 
-  inputCount = async cars => {
-    const count = await readCountInput();
-
-    this.printRacingResult(cars, count);
-  };
-
-  printRacingResult = (cars, count) => {
-    printResultStartString();
+  createCarInstances = cars => {
     const carsArray = cars.split(',').map(car => car.trim());
     this.#carInstances = carsArray.map(car => (car = new Car(car)));
+
+    return this.#carInstances;
+  };
+
+  inputCount = async () => {
+    const count = await readCountInput();
+
+    this.printRacingResult(count);
+  };
+
+  printRacingResult = count => {
+    printResultStartString();
     printResulString(this.#carInstances, count);
 
     this.printRacingWinners();
