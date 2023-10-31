@@ -10,7 +10,7 @@ class Referee {
   }
 
   get results() {
-    return this.#results;
+    return this.#results.slice();
   }
 
   findWinners() {
