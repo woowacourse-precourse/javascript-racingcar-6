@@ -8,46 +8,66 @@ import {
 
 class App {
   async play() {
+    const cars = await this.getCars();
+    const retry = await this.getRetry();
+
+    const distances = this.startRace(cars, retry);
+
+    const winners = this.getWinners(distances);
+
+    Console.print(`최종 우승자 : ${winners.join(', ')}`);
+  }
+
+  async getCars() {
     Console.print('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)');
-    const carInput = (await Console.readLineAsync('')).trim();
-    if (!validate(carInput, CAR_INPUT_PATTERN)) {
+    const input = (await Console.readLineAsync('')).trim();
+    if (!validate(input, CAR_INPUT_PATTERN)) {
       throw new Error('[ERROR] 입력이 잘못된 형식입니다.');
     }
-    if (validate(carInput, CAR_INPUT_DUPLICATE_PATTERN)) {
+    if (validate(input, CAR_INPUT_DUPLICATE_PATTERN)) {
       throw new Error('[ERROR] 중복된 입력값입니다.');
     }
-    const cars = carInput.split(',');
+    const cars = input.split(',');
+    return cars;
+  }
 
+  async getRetry() {
     Console.print('시도할 횟수는 몇 회인가요?');
-    const retryInput = (await Console.readLineAsync('')).trim();
-    if (!validate(retryInput, RETRY_INPUT_PATTERN)) {
+    const input = (await Console.readLineAsync('')).trim();
+    if (!validate(input, RETRY_INPUT_PATTERN)) {
       throw new Error('[ERROR] 입력이 잘못된 형식입니다.');
     }
-    const retry = Number(retryInput);
+    const retry = Number(input);
+    return retry;
+  }
 
+  startRace(cars, retry) {
     Console.print('실행 결과');
-    const carsProgress = Object.fromEntries(cars.map((k) => [k, 0]));
+    const distances = Object.fromEntries(cars.map((k) => [k, 0]));
     for (let i = 0; i < retry; i += 1) {
       cars.forEach((car) => {
-        carsProgress[car] += Random.pickNumberInRange(0, 9) >= 4;
-        Console.print(`${car} : ${'-'.repeat(carsProgress[car])}`);
+        distances[car] += Random.pickNumberInRange(0, 9) >= 4;
+        Console.print(`${car} : ${'-'.repeat(distances[car])}`);
       });
       Console.print('');
     }
+    return distances;
+  }
 
-    const winners = cars.reduce((acc, car) => {
-      if (!acc.length) {
+  getWinners(distances) {
+    const winners = Object.keys(distances).reduce((acc, car) => {
+      if (acc.length === 0) {
         return [car];
       }
-      if (carsProgress[car] > carsProgress[acc[0]]) {
+      if (distances[car] > distances[acc[0]]) {
         return [car];
       }
-      if (carsProgress[car] === carsProgress[acc[0]]) {
+      if (distances[car] === distances[acc[0]]) {
         return [...acc, car];
       }
       return acc;
     }, []);
-    Console.print(`최종 우승자 : ${winners.join(', ')}`);
+    return winners;
   }
 }
 
