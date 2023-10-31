@@ -1,6 +1,6 @@
 import { Random, Console } from '@woowacourse/mission-utils';
 import {
-  MOVE_GAME_RECORD,
+  CAR,
   REQUEST_MESSAGE,
   VALIDATION_ERRORS_MESSAGE,
 } from './Constants.js';
@@ -59,7 +59,7 @@ class App {
 
   moveOrStop() {
     const number = Random.pickNumberInRange(0, 9);
-    return number >= 4 ? MOVE_GAME_RECORD.FORWARD : MOVE_GAME_RECORD.STOP;
+    return number >= 4 ? CAR.MOVING_FORWARD : CAR.STOP;
   }
 
   chooseWinner(gameProgress) {

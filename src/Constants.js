@@ -1,5 +1,5 @@
-export const MOVE_GAME_RECORD = {
-  FORWARD: '-',
+export const CAR = {
+  MOVING_FORWARD: '-',
   STOP: '',
 };
 
