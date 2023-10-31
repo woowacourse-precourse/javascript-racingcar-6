@@ -1,12 +1,14 @@
-class RaceCar {
+export default class RaceCar {
   constructor(name) {
     this.name = name;
     this.distance = 0;
   }
 
-  moveFoward() {
-    this.distance += 1;
+  move() {
+    this.distance++;
+  }
+
+  isWinner(maxDistance) {
+    return this.distance === maxDistance;
   }
 }
-
-export default RaceCar;
