@@ -5,11 +5,13 @@ class App {
   constructor() {
     this._carArr = [];
     this._tryNumber = 0;
+    this.racingArray = [];
   }
 
   async play() {
     await this.getInputCar();
     await this.getInputTry();
+    await this.createRacingArray();
   }
 
   async getInputCar() {
@@ -64,6 +66,12 @@ class App {
 
   goForward() {
     return this.forwardOrStop() ? "-" : "";
+  }
+
+  createRacingArray() {
+    const carCount = this.carArr.length;
+    this.racingArray = Array.from({ length: carCount }, () => "");
+    return this.racingArray;
   }
 
 }
