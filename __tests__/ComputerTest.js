@@ -87,13 +87,16 @@ describe('Computer 클래스 테스트', () => {
     const testNumbers = [7, 6, 5, 4, 3];
 
     mockRandom(testNumbers);
+
     for (let i = 0; i < 4; i += 1) expect(computer.judgeRandomNumber()).toBeTruthy();
+
     expect(computer.judgeRandomNumber()).toBeFalsy();
   });
 
   test('printResult 메서드 테스트', () => {
     const computer = new Computer();
     const logSpy = getLogSpy();
+    const testPrint = ['pobi : -', 'woni : --', 'jun : ---', ''];
 
     computer.pushCarList('pobi,woni,jun');
 
@@ -105,10 +108,30 @@ describe('Computer 클래스 테스트', () => {
 
     computer.printResult();
 
-    expect(logSpy).toHaveBeenNthCalledWith(1, 'pobi : -');
-    expect(logSpy).toHaveBeenNthCalledWith(2, 'woni : --');
-    expect(logSpy).toHaveBeenNthCalledWith(3, 'jun : ---');
-    expect(logSpy).toHaveBeenNthCalledWith(4, '');
+    for (let i = 0; i < 3; i += 1) {
+      expect(logSpy).toHaveBeenNthCalledWith(i + 1, testPrint[i]);
+    }
 
+    expect(logSpy).toHaveBeenNthCalledWith(4, '');
+  });
+
+  test('playRound 메서드 테스트', () => {
+    const computer = new Computer();
+    const logSpy = getLogSpy();
+    const testNumbers = [4, 2, 7];
+    const testPrint = ['pobi : -', 'woni : ', 'jun : -', ''];
+
+    mockRandom(testNumbers);
+    computer.pushCarList('pobi,woni,jun');
+    computer.playRound();
+
+    for (let i = 0; i < 3; i += 1) {
+      const data = (i + 1) % 2;
+
+      expect(computer.carList[i].goingCount).toEqual(data);
+      expect(logSpy).toHaveBeenNthCalledWith(i + 1, testPrint[i]);
+    }
+
+    expect(logSpy).toHaveBeenNthCalledWith(4, '');
   });
 });
