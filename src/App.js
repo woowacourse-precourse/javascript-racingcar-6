@@ -1,5 +1,5 @@
 import { Console, Random } from "@woowacourse/mission-utils";
-import { GAME_MESSAGE, ERROR_MESSAGE } from "./Message";
+import { GAME_MESSAGE, ERROR_MESSAGE, CONSTANT } from "./Message";
 
 class App {
   constructor() {
@@ -13,7 +13,8 @@ class App {
 
   checkCarNames(carNamesArray) {
     carNamesArray.forEach((element) => {
-      if (element.length > 5) throw new Error(ERROR_MESSAGE.LENGTH);
+      if (element.length > CONSTANT.NAME_LENGTH_LIMIT)
+        throw new Error(ERROR_MESSAGE.LENGTH);
     });
   }
 
@@ -40,14 +41,14 @@ class App {
   }
 
   goForward(element, randomNumber) {
-    if (randomNumber >= 4) {
+    if (randomNumber >= CONSTANT.GOFORWARD_NUMBER) {
       element.result = element.result.concat("-");
     }
   }
 
   printResult(raceResult) {
     raceResult.forEach((e) => {
-      Console.print(GAME_MESSAGE.RESULT);
+      Console.print(GAME_MESSAGE.RESULT(e));
     });
     Console.print("\n");
   }
@@ -68,7 +69,7 @@ class App {
     return winnerIndex;
   }
 
-  makeWingameUtilnerIndexArray(raceResult, maxLength) {
+  makeWinnerIndexArray(raceResult, maxLength) {
     // test code 완료
     let winnerIndex = [];
     raceResult.forEach((element, index) => {
