@@ -1,4 +1,6 @@
+import { Console } from '@woowacourse/mission-utils';
 import generateRandomNum from './RandomNum.js';
+import { printRace } from '../utils/Output.js';
 
 // 자동차 위치 초기화 객체
 const initializeCarsPosition = (carNames) => {

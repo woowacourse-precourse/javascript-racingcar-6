@@ -5,7 +5,7 @@ import selectWinner from './Winner.js';
 
 const startGame = async () => {
   const carNames = await getCarNames();
-  const tryCount = getTryCount();
+  const tryCount = await getTryCount();
   const carsPosition = initializeCarsPosition(carNames);
 
   Console.print('실행결과');
