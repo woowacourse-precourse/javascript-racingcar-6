@@ -1,6 +1,7 @@
 export const CONSTANT = Object.freeze({
-  fail: '',
+  emptySpace: '',
   complete: '-',
+  comma: ',',
 });
 
 export const SETTING = Object.freeze({
