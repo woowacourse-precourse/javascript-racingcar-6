@@ -22,13 +22,15 @@ class App {
   }
 }
 
-function showWinner(racingCars) {
+function pickWinner(racingCars) {
   const maxProgress = Math.max(...racingCars.map(racingCar => racingCar.progress));
 
   const winners = racingCars
     .filter(racingCar => racingCar.progress === maxProgress)
     .map(racingCar => racingCar.carName)
     .join(', ');
+  
+  return winners
 }
 
 function buildRacingCarsArray(carNameArray,condition) {
