@@ -32,7 +32,8 @@ class App {
     });
 
     for (let i = 1; i <= COUNT; i++) {
-      this.addPointRaceAndScores(RACE, SCORES);
+      race = this.addPointRace(race);
+
     }
 
     const MAX_SCORE = Math.max(...race.map((car) => car.score));
@@ -42,15 +43,20 @@ class App {
     Console.print(`최종 우승자 : ${RESULT.join(', ')}`);
   }
 
-  addPointRaceAndScores(race, scores) {
-    race.forEach((car, idx) => {
+  addPointRace(race) {
+    const UPDATE_RACE = race.map((car) => {
+      let updateName = car.name;
+      let updateScore = car.score;
+
       if (Random.pickNumberInRange(0, 9) >= 4) {
-        race[idx] = `${car}-`;
-        scores[idx] += 1;
+        updateName += '-';
+        updateScore += 1;
       }
-      Console.print(race[idx]);
+
+      return { name: updateName, score: updateScore };
     });
-    Console.print('');
+
+    return UPDATE_RACE;
   }
 
   validateCarNameLength(carList) {
