@@ -1,6 +1,6 @@
 import CONSTANTS from "../Constants/Constants.js";
 class Validation {
-  isValidCarName(carNameString) {
+  static isValidCarName(carNameString) {
     const carNames = carNameString.split(",");
     let isNameTooLong = false;
 
@@ -15,7 +15,7 @@ class Validation {
     }
   }
 
-  isSameCarName(carNameString) {
+  static isSameCarName(carNameString) {
     const carNames = carNameString.split(",");
     const carNameNum = carNames.length;
     const isSameName = carNameNum !== new Set(carNames).size;
@@ -25,7 +25,7 @@ class Validation {
     }
   }
 
-  isValidTrialNumber(trialNumber) {
+  static isValidTrialNumber(trialNumber) {
     let isNumber = isNaN(Number(trialNumber));
     let isNotPositive = Number(trialNumber) <= 0 ? true : false;
     if (isNumber) {
