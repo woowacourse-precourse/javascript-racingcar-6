@@ -32,7 +32,7 @@ class App {
     if (names.length < 2) {
       throw new CustomError('[ERROR] ,로 구분하여 2인 이상 이름을 입력해주세요');
     }
-    return names.every((name) => name.length <= 5 && PATTERN.word.test(name));
+    return names.every((name) => name.length <= 5 && name.length > 0 && PATTERN.word.test(name));
   }
 
   isValidTotalAttempts(totalAttempts) {
