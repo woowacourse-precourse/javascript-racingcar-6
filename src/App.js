@@ -1,5 +1,6 @@
 /* eslint-disable import/extensions */
 import Settings from './Settings.js';
+import Game from './Game.js';
 
 class App {
   constructor() {
@@ -8,8 +9,8 @@ class App {
 
   async play() {
     this.settings = new Settings();
-    await this.settings.inputCarName();
-    await this.settings.inputTry();
+    this.game = new Game();
+    await this.game.racing();
   }
 }
 

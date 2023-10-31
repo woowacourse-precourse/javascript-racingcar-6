@@ -32,6 +32,7 @@ export default class Settings {
     } catch (error) {
       throw new Error(error);
     }
+    return this.CAR_NAME;
   }
 
   async inputTry() {
@@ -44,5 +45,6 @@ export default class Settings {
       // inputTry()에서 발생한 에러 처리
       throw new Error(error);
     }
+    return this.INPUT_NUM;
   }
 }
