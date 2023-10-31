@@ -10,7 +10,7 @@
    경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)
    ```
 
-   - 잘못된 입력일 경우, '**INVALID RACING CAR INPUT**'을 포함한 에러 메시지를 출력하고 App을 종료
+   - 잘못된 입력일 경우, '**Invalid racing car input**'을 포함한 에러 메시지를 출력하고 App을 종료
 
      - 경주할 자동차 이름을 하나 이하 입력한 경우:
 
@@ -44,7 +44,7 @@
    시도할 횟수는 몇 회인가요?
    ```
 
-   - 잘못된 입력일 경우, '**INVALID NUMBER OF ATTEMPS INPUT**'을 포함한 에러 메시지를 출력하고 App을 종료
+   - 잘못된 입력일 경우, '**Invalid number of attemps input**'을 포함한 에러 메시지를 출력하고 App을 종료
 
      - 0을 입력한 경우:
 
