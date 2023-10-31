@@ -12,7 +12,7 @@ function racing(carNames, count) {
 
 function calculateMoving(racingObj) {
   Object.keys(racingObj).forEach((key) => {
-    if (isNumFour()) {
+    if (isNumFour(randomNumber())) {
       racingObj[key]++;
     }
   });
@@ -27,7 +27,7 @@ function initRacing(carNames) {
   return racingObj;
 }
 
-function isNumFour() {
-  return randomNumber() >= 4;
+export function isNumFour(num) {
+  return num >= 4;
 }
 export default racing;
