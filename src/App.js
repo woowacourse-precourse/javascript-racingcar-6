@@ -69,9 +69,9 @@ class App {
 
   moveForward(key, value, racingCars) {
     const MINIMUM_FORWARD_VALUE = 4;
-    let randomNum = this.getRandomNumber();
+    const randomNumber = this.getRandomNumber();
 
-    if (randomNum >= MINIMUM_FORWARD_VALUE) {
+    if (randomNumber >= MINIMUM_FORWARD_VALUE) {
       racingCars[key] = value += 1;
     }
   }
