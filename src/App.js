@@ -1,15 +1,23 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 export class Car {
-  name;
-  position;
+  #name;
+  #position;
   constructor(name) {
-    this.name = name;
-    this.position = 0;
+    this.#name = name;
+    this.#position = 0;
   }
 
   tryGoingForward(randomValue) {
-    if (randomValue >= 4) this.position += 1;
+    if (randomValue >= 4) this.#position += 1;
+  }
+
+  getName() {
+    return this.#name;
+  }
+
+  getPosition() {
+    return this.#position;
   }
 }
 class App {
@@ -47,7 +55,7 @@ function checkCarNames(cars) {
 
 function checkNameLength(car) {
   let underRequirements = true;
-  let name = car.name;
+  let name = car.getName();
   if (name.length > 5 || name.length == 0) {
     underRequirements = false;
   }
@@ -79,8 +87,8 @@ function checkProgression(cars) {
 function printProgression(cars) {
   for (let i = 0; i < cars.length; i++) {
     let car = cars[i];
-    let name = car.name;
-    let position = car.position;
+    let name = car.getName();
+    let position = car.getPosition();
     let positionString = '-'.repeat(position);
     MissionUtils.Console.print(`${name} : ${positionString}\n`);
   }
@@ -92,8 +100,8 @@ function getFinalWinners(cars) {
   let winnerNames = [];
   for (let i = 0; i < cars.length; i++) {
     let car = cars[i];
-    let position = car.position;
-    let name = car.name;
+    let position = car.getPosition();
+    let name = car.getName();
     if (position >= maxPosition) winnerNames.push(name); 
   }
   return winnerNames;
@@ -103,7 +111,7 @@ function getMaxPosition(cars) {
   let maxPosition = 0;
   for (let i = 0; i < cars.length; i++) {
     let car = cars[i];
-    let position = car.position;
+    let position = car.getPosition();
     if ( position > maxPosition) maxPosition = position;
   }
   return maxPosition;
