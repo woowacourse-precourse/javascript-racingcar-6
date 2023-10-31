@@ -10,15 +10,15 @@ import { GRANDPRIX_GAME_OPTION } from '../constants/GrandPrixOption.js';
  */
 const checkInvalidNameLength = (input) => {
   const splitInput = input.split(SYMBOLS.comma);
-  const inValidInput = splitInput.filter(
-    (name) =>
-      name.length > GRANDPRIX_GAME_OPTION.maxInputLength ||
-      name.length < GRANDPRIX_GAME_OPTION.minInputLength,
-  );
 
-  if (inValidInput.length > 0) {
-    throw new ValidationError(GRANDPRIX_ERROR_NOTIFICATION.invalidNameLength);
-  }
+  splitInput.forEach((name) => {
+    if (
+      name.length > GRANDPRIX_GAME_OPTION.maxInputLength ||
+      name.length < GRANDPRIX_GAME_OPTION.minInputLength
+    ) {
+      throw new ValidationError(GRANDPRIX_ERROR_NOTIFICATION.invalidNameLength);
+    }
+  });
 };
 
 /**
