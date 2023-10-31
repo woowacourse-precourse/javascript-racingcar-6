@@ -139,12 +139,26 @@ describe("class App test", () => {
       ];
 
       app.printResult(raceResult);
-
       raceResult.forEach((e) => {
         expect(mockConsolePrint).toHaveBeenCalledWith(GAME_MESSAGE.RESULT(e));
       });
-
       expect(mockConsolePrint).toHaveBeenCalledWith("\n");
+    });
+  });
+
+  describe("method test : printWinner()", () => {
+    test("자동차 경주 우승자 출력 확인", () => {
+      const mockConsolePrint = jest
+        .spyOn(Console, "print")
+        .mockImplementation(() => {});
+
+      const winnerResult = ["equus", "pony", "ray"];
+      const winnerResultString = winnerResult.join(", ");
+
+      app.printWinner(winnerResult);
+      expect(mockConsolePrint).toHaveBeenCalledWith(
+        GAME_MESSAGE.WINNER(winnerResultString)
+      );
     });
   });
 });
