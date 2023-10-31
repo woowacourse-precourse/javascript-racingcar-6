@@ -1,4 +1,5 @@
-import { MAX_CARNAME_LENGTH, NO_LENGTH } from '../constants/constants.js';
+import { MAX_CARNAME_LENGTH } from '../constants/conditions.js';
+import { NO_LENGTH } from '../constants/constants.js';
 import { ERROR_MESSAGE } from '../constants/messages.js';
 
 function removeSpace(answer) {

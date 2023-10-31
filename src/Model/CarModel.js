@@ -1,4 +1,4 @@
-import { PLUS_MOVE_COUNT, INIT_MOVE_COUNT } from '../constants/racing.js';
+import RACING from '../constants/racing.js';
 
 export default class CarModel {
   #cars;
@@ -10,7 +10,7 @@ export default class CarModel {
   makeCar(carNameList) {
     this.#cars = carNameList.split(',').map((name) => ({
       name,
-      moveCounts: INIT_MOVE_COUNT,
+      moveCounts: RACING.initMove,
     }));
   }
 
@@ -21,7 +21,7 @@ export default class CarModel {
   updateMove(carName, isMove) {
     const carToUpdate = this.#cars.find((car) => car.name === carName);
     if (isMove) {
-      carToUpdate.moveCounts += PLUS_MOVE_COUNT;
+      carToUpdate.moveCounts += RACING.plusMove;
     }
   }
 }

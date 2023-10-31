@@ -2,7 +2,7 @@ import { isValidateCarName, isValidateAttemps } from '../utils/validator.js';
 import Input from '../view/Input.js';
 import Output from '../view/Output.js';
 import isMove from '../utils/isMove.js';
-import { DECREASE_RACING_COUNT, RACING_END } from '../constants/racing.js';
+import RACING from '../constants/racing.js';
 
 export default class RacingGame {
   #carModel;
@@ -46,8 +46,8 @@ export default class RacingGame {
       this.#carModel.updateMove(name, isMove());
     });
     this.#resultModel.addAttempsResult(cars);
-    this.#attemps -= DECREASE_RACING_COUNT;
+    this.#attemps -= RACING.minusCount;
 
-    return this.#attemps === RACING_END ? this.#printResult() : this.#racing();
+    return this.#attemps === RACING.end ? this.#printResult() : this.#racing();
   }
 }

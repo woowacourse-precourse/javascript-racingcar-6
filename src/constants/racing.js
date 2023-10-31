@@ -1,6 +1,8 @@
-const INIT_MOVE_COUNT = 0;
-const PLUS_MOVE_COUNT = 1;
-const RACING_END = 0;
-const DECREASE_RACING_COUNT = 1;
+const RACING = Object.freeze({
+  initMove: 0,
+  plusMove: 1,
+  end: 0,
+  minusCount: 1,
+});
 
-export { INIT_MOVE_COUNT, PLUS_MOVE_COUNT, RACING_END, DECREASE_RACING_COUNT };
+export default RACING;
