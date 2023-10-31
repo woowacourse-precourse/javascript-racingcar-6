@@ -1,5 +1,5 @@
 import { print, readLineAsync } from "../utils/missionUtils.js";
-import { READ_LINE_QUERY } from "../constants/message.js";
+import { PRINT, READ_LINE_QUERY } from "../constants/message.js";
 import validateNamesOfCars from "../validates/validateNamesOfCars.js";
 import validateNumberOfAttempts from "../validates/validateNumberOfAttempts.js";
 import Car from "./Car.js";
@@ -18,8 +18,11 @@ class RacingcarGame {
 	async gameStart() {
 		this.cars = (await this.getNamesOfCars()).map((name) => new Car(name));
 		this.numberOfAttempts = await this.getNumberOfAttempts();
+
 		this.raceStart();
+
 		this.printResult();
+
 		this.printWinners(this.judgeWinners());
 	}
 
@@ -28,25 +31,28 @@ class RacingcarGame {
 			",",
 		);
 		validateNamesOfCars(result);
+
 		return result;
 	}
 
 	async getNumberOfAttempts() {
 		const answer = await readLineAsync(READ_LINE_QUERY.numberOfAttempts);
 		validateNumberOfAttempts(answer);
+
 		return parseInt(answer, 10);
 	}
 
 	raceStart() {
 		for (let round = 0; round < this.numberOfAttempts; round += 1) {
-			this.goCars(round);
+			this.#goCars(round);
 		}
 	}
 
 	printResult() {
-		print("\n실행 결과");
+		print(PRINT.result);
+
 		for (let round = 0; round < this.numberOfAttempts; round += 1) {
-			this.printCars(round);
+			this.#printCars(round);
 		}
 	}
 
@@ -76,14 +82,18 @@ class RacingcarGame {
 	 * @param {{ name:string, finalMovingDistance: number }[]} winners
 	 */
 	printWinners(winners) {
-		print(`최종 우승자 : ${winners.map((winner) => winner.name).join(", ")}`);
+		const names = winners
+			.map((winner) => winner.name)
+			.join(PRINT.winnersSeparate);
+
+		print(`${PRINT.winners} : ${names}`);
 	}
 
 	/**
 	 *
 	 * @param {number} round 몇 라운드인지
 	 */
-	goCars(round) {
+	#goCars(round) {
 		this.cars.forEach((car) => {
 			car.move(round);
 		});
@@ -93,9 +103,10 @@ class RacingcarGame {
 	 *
 	 * @param {number} round 몇 라운드인지
 	 */
-	printCars(round) {
-		this.cars.forEach((car) => this.printCar(round, car));
-		print("");
+	#printCars(round) {
+		this.cars.forEach((car) => this.#printCar(round, car));
+
+		print(PRINT.empty);
 	}
 
 	/**
@@ -103,10 +114,11 @@ class RacingcarGame {
 	 * @param {number} round 몇 라운드인지
 	 * @param {Car} car
 	 */
-	printCar(round, car) {
+	#printCar(round, car) {
 		const name = car.getName();
 		const movingDistance = car.getMovingDistance(round);
-		print(`${name} : ${"-".repeat(movingDistance)}`);
+
+		print(`${name} : ${PRINT.movingDistance.repeat(movingDistance)}`);
 	}
 }
 
