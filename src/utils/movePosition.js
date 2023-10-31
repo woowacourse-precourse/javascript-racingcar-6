@@ -1,12 +1,12 @@
 import { Random } from '@woowacourse/mission-utils';
-import { CONSTANT, SETTING } from '../Constant/CONSTANT.js';
+import { MOVESET, RANDOMSET } from '../Constant/SETTING.js';
 
 export default function movePosition() {
-  const number = Random.pickNumberInRange(SETTING.startNum, SETTING.endNum);
-  if (number < SETTING.middleNum) {
-    return CONSTANT.emptySpace;
+  const number = Random.pickNumberInRange(RANDOMSET.startNum, RANDOMSET.endNum);
+  if (number < RANDOMSET.middleNum) {
+    return MOVESET.stay;
   }
-  if (number >= SETTING.middleNum) {
-    return CONSTANT.complete;
+  if (number >= RANDOMSET.middleNum) {
+    return MOVESET.move;
   }
 }

@@ -1,5 +1,6 @@
 import movePosition from '../utils/movePosition.js';
-import { CONSTANT } from '../Constant/CONSTANT.js';
+import CONSTANT from '../Constant/CONSTANT.js';
+import { MOVESET } from '../Constant/SETTING.js';
 
 export default class Car {
   /**
@@ -9,7 +10,7 @@ export default class Car {
   #carsPosition;
 
   setCarsPosition(input) {
-    this.#carsPosition = input.split(CONSTANT.comma).map(name => ({ name, position: CONSTANT.emptySpace }));
+    this.#carsPosition = input.split(CONSTANT.splitCode).map(name => ({ name, position: MOVESET.stay }));
   }
 
   setCarsRelocation() {

@@ -1,12 +1,7 @@
-export const CONSTANT = Object.freeze({
-  emptySpace: '',
-  complete: '-',
-  comma: ',',
-  commaSpace: ', ',
+const CONSTANT = Object.freeze({
+  splitCode: ',',
+  inputNull: '',
+  splitWinnerCode: ', ',
 });
 
-export const SETTING = Object.freeze({
-  startNum: 0,
-  middleNum: 4,
-  endNum: 9,
-});
+export default CONSTANT;
