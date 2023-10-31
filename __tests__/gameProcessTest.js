@@ -55,4 +55,18 @@ describe('playerMoveCount', () => {
     // then
     expect(player.moveAttempts).toBe(1);
   });
+
+  describe('playerStatus', () => {
+    test('플레이어 이름과 이동 횟수 표시', () => {
+      // given
+      const player = { name: 'jeong', moveAttempts: 5 };
+
+      // when
+      const app = new App();
+      const STATUS = app.playerStatus(player);
+
+      // then
+      expect(STATUS).toBe('jeong : -----');
+    });
+  });
 });
