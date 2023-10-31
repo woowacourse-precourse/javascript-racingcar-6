@@ -7,3 +7,9 @@ export const userInputDuplicatedError = (carNameArray) => {
     }
   }
 };
+
+export const userInputCarNameFormEror = (carNameString) => {
+  if (carNameString.split("").includes(" ")) {
+    throw new Error(ERROR.ERROR_SPACE);
+  }
+};
