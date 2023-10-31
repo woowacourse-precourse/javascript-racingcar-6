@@ -1,3 +1,5 @@
+- fix: winnerarray initialization by functional unit
+- style(App): modify code according to code conventsion
 - test: add winner(s) test
 - docs: fix spelling
 - style(tryCounter): modify code according to code convetsion

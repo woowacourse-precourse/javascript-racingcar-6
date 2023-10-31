@@ -26,9 +26,7 @@ function printWinner() {
 }
   
 function printWinners() {
-    var winners = winnerarray[0]
-    for (let i = 1; i < winnerarray.length; i++) {
-      winners += `, ${winnerarray[i]}`
-    }
-    MissionUtils.Console.print(`최종 우승자 : ${winners}`);
+    const winners = winnerarray
+    const winnersPrint = winners.map((member) => member).join(', ');
+    MissionUtils.Console.print(`최종 우승자 : ${winnersPrint}`);
 }
