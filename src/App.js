@@ -3,7 +3,8 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 class App {
 
   async racingCarNameInput(){
-     const carNameInput = await MissionUtils.Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
+     await MissionUtils.Console.print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+     const carNameInput = await MissionUtils.Console.readLineAsync("");
      if(!this.checkCarNameValidation(carNameInput))
      {
       throw new Error("[ERROR] 이름은 5자 이하만 가능합니다.");
@@ -14,8 +15,21 @@ class App {
     const carNames = carNameInput.split(',');
     return carNames.every( (carName)=> carName.length < 6)
   }
+  async racingTryInput(){
+    await MissionUtils.Console.print("시도할 횟수는 몇 회인가요?");
+    const carTryInput = await MissionUtils.Console.readLineAsync("");
+    if(this.checkCarTryValidation(carTryInput))
+    {
+      throw new Error("[ERROR] 횟수는 숫자만 입력 가능합니다.");
+    }
+  }
+  checkCarTryValidation(carTryInput){
+    return isNaN(parseInt(carTryInput));
+  }
+
   async play() {
-    this.racingCarNameInput();
+    await this.racingCarNameInput();
+    this.racingTryInput();
   }
 }
 
