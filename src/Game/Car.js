@@ -22,7 +22,7 @@ class Car {
     }
 
     getDistance() {
-        return this.distance.length;
+        return this.distance.length ? this.distance.length : 0;
     }
 
     toStringResult() {

@@ -13,7 +13,6 @@ class GameController {
     async inputCars() {
         const input = await readLineAsync(MESSAGES.QUEST_CAR_NAME);
         this.validate.validateCarName(input);
-        // Racing 클래스의 car 멤버변수에 배열을 집어넣을 예정
         this.racing.registCar(input);
     }
     async inputTryMoveCount() {
@@ -22,6 +21,7 @@ class GameController {
         this.count = input;
         print("");
     }
+
     start() {
         const racing = this.racing;
         print(`${MESSAGES.PROGRESS_RESULT}`);

@@ -29,7 +29,7 @@ class Racing {
         const distanceArr = cars.map(car=> car.getDistance());
         const maxDistance = distanceArr.reduce((max,current) => {
             return current > max ? current : max
-        },distanceArr[0]);
+        },0);
 
         return maxDistance;
     }
