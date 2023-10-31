@@ -1,24 +1,21 @@
-import { FORWARD_THRESHOLD } from "../constants/setting.js";
-import generateRandomNumber from "../util/generator.js";
-import OutputView from "../view/output.js";
+import { FORWARD_THRESHOLD } from '../constants/setting.js';
+import generateRandomNumber from '../util/generator.js';
+import OutputView from '../view/output.js';
 
 class RacingController {
-  // key: 자동차의 이름, value: 전진 거리
-  racingBoard = {};
-  attemptCount = 0;
-  maxDistance = 0;
-
   /**
    * 레이싱 보드에 자동차들의 이름을 추가하고 시도 횟수를 저장하는 생성자
    * @param {string[]} racingCarNames 자동차들의 이름
    * @param {number} attemptCount 시도 횟수
    */
   constructor(racingCarNames, attemptCount) {
-    racingCarNames.forEach((racingCarName) => {
-      this.racingBoard[racingCarName] = 0;
-    });
+    // key: 자동차의 이름, value: 전진 거리
+    this.racingBoard = racingCarNames.reduce((acc, carName) => {
+      return { ...acc, [carName]: 0 };
+    }, {});
 
     this.attemptCount = attemptCount;
+    this.maxDistance = 0;
   }
 
   /**
@@ -27,7 +24,7 @@ class RacingController {
   start() {
     OutputView.printRacingStart();
 
-    for (let i = 0; i < this.attemptCount; i++) {
+    for (let i = 0; i < this.attemptCount; i += 1) {
       this.playRound();
     }
   }
@@ -72,8 +69,8 @@ class RacingController {
    */
   end() {
     const winners = Object.keys(this.racingBoard)
-      .filter((carName) => this.racingBoard[carName] === this.maxDistance)
-      .join(", ");
+      .filter(carName => this.racingBoard[carName] === this.maxDistance)
+      .join(', ');
 
     OutputView.printRacingFinalWinners(winners);
   }
