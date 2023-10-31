@@ -27,7 +27,7 @@ class App {
 
   validateCarNames(carNames) {
     if (carNames.some(name => name.length > 5)) {
-      MissionUtils.Console.readLineAsync("[ERROR] 자동차 이름은 5자 이하여야 합니다.");
+      throw new Error("[ERROR] 자동차 이름은 5자 이하여야 합니다.");
     }
     return true;
   }
@@ -40,7 +40,7 @@ class App {
 
   validateAttemptCount(attemptCount) {
     if (isNaN(attemptCount) || attemptCount <= 0) {
-      MissionUtils.Console.readLineAsync("[ERROR] 올바른 시도 횟수를 입력하세요.");
+      throw new Error("[ERROR] 올바른 시도 횟수를 입력하세요.");
     }
     return true;
   }

@@ -15,13 +15,13 @@ describe('App 테스트', () => {
 
 	test('자동차 입력 유효성 검사 테스트', () => {
 		const input = 'abcdefg,hijklmnop';
-		expect(() => app.validateCarNames(input.split(',')));
+		expect(() => app.validateCarNames(input.split(','))).toThrow(Error);
 	});
 
 	test('시도 횟수 유효성 검사 테스트', () => {
 		const invalidAttempts = ['abc', '-1', '0'];
 		invalidAttempts.forEach(attempt => {
-			expect(() => app.validateAttemptCount(parseInt(attempt)));
+			expect(() => app.validateAttemptCount(parseInt(attempt)).toThrow(Error));
 		});
 	});
 });
