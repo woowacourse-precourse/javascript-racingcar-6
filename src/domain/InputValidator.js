@@ -1,47 +1,38 @@
+import { MESSAGE } from '../constants/messages';
+import { GAME_CONDITION } from '../constants/constants';
+
 const InputValidator = {
   isNumeric(input) {
     const numberRegExp = /^\d+$/;
     return numberRegExp.test(input);
   },
 
-  isValidCountCars(count) {
-    return this.isNumeric(count) && count >= 2;
+  isValidMinCars(count) {
+    return this.isNumeric(count) && count >= GAME_CONDITION.minCars;
   },
 
-  isValidCarName(name) {
-    return name.length >= 1 && name.length <= 5;
+  isValidLengthName(name) {
+    return name.length >= GAME_CONDITION.minLength && name.length <= GAME_CONDITION.maxLength;
   },
 
-  isValidUniqueName(names) {
-    return new Set(names).size === names.length;
+  isValidUniqueName(carNames) {
+    return new Set(carNames).size === carNames.length;
   },
 
-  isValidRoundNumber(round) {
-    return this.isNumeric(round) && round >= 1;
+  isValidMinRound(round) {
+    return this.isNumeric(round) && round >= GAME_CONDITION.minRound;
   },
 
-  hasValidCarNames(carNames) {
-    if (!this.isValidUniqueName(carNames)) {
-      throw new Error('[ERROR] 중복되는 이름이 존재합니다.');
-    }
+  validateCarNames(carNames) {
+    if (!this.isValidUniqueName(carNames)) throw new Error(MESSAGE.uniqueName);
 
-    if (carNames.some((name) => !this.isValidCarName(name))) {
-      throw new Error('[ERROR] 이름은 1글자 이상 5자 이하여야 합니다.');
-    }
+    if (carNames.some((name) => !this.isValidLengthName(name))) throw new Error(MESSAGE.lengthName);
 
-    if (!this.isValidCountCars(carNames.length)) {
-      throw new Error('[ERROR] 최소 2개 이상의 이름이 필요합니다.');
-    }
-
-    return carNames;
+    if (!this.isValidMinCars(carNames.length)) throw new Error(MESSAGE.minCars);
   },
 
-  hasValidRound(round) {
-    if (!this.isValidRoundNumber(round)) {
-      throw new Error('[ERROR] 최소 1이상의 숫자여야 합니다.');
-    }
-
-    return round;
+  validateRound(round) {
+    if (!this.isValidMinRound(round)) throw new Error(MESSAGE.minRound);
   },
 };
 
