@@ -1,14 +1,16 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
+import { INPUT_MESSAGE } from '../constants/ErrorMessage.js';
 
 export const getCarNames = async () => {
-  let name = await MissionUtils.Console.readLineAsync(
-    '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)',
+  const inputName = await MissionUtils.Console.readLineAsync(
+    INPUT_MESSAGE.INPUT_CAR_NAME,
   );
-  return name;
+  return inputName; 
 };
 
 export const getRoundCount = async () => {
-  let round =
-    await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?');
+  const round = await MissionUtils.Console.readLineAsync(
+    INPUT_MESSAGE.TRY_ROUND_COUNT,
+  );
   return round;
 };
