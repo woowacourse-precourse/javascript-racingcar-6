@@ -73,7 +73,8 @@ describe('validateParseNumber 테스트', () => {
   test.each([
     [['1ㄷㅁ']],
     [['ㅇ3ㅎ']],
-    [['    ']]
+    [['    ']],
+    [['0000100']]
   ])("시도 횟수에 대한 예외 처리", (inputs) => {
     mockQuestions(inputs);
 
