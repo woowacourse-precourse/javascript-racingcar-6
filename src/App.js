@@ -18,17 +18,24 @@ class App {
 }
 // 1. n개의 자동차 생성
 const makeCar = async () => {
+  let name = "";
+
   let nameArr = [];
   try {
-    let name = await Console.readLineAsync(`${MESSAGE.GAME_START}`);
-    nameArr = name
-      .trim()
-      .split(",")
-      .map((name) => [name.trim(), ""]);
+    name = await Console.readLineAsync(`${MESSAGE.GAME_START}`);
   } catch (error) {
     return console.error(error.message);
   }
   // 유효성 검사
+
+  if (!name) {
+    throw new Error(`${ERROR.NAME_NULL}`);
+  }
+  nameArr = name
+    .trim()
+    .split(",")
+    .map((name) => [name.trim(), ""]);
+
   let validName = await validationName(nameArr);
   if (validName) {
     return nameArr;

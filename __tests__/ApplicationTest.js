@@ -100,8 +100,8 @@ describe("자동차 경주 게임", () => {
 
   test("이동값은 숫자만 가능하도록 예외 처리", async () => {
     const invalidMoveNum = "삼";
-    const inputs = [invalidMoveNum];
-    mockRandoms(inputs);
+    const inputs = ["pobi,woni", invalidMoveNum];
+    mockQuestions(inputs);
 
     // when
     const app = new App();

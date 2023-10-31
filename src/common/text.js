@@ -6,6 +6,7 @@ export const MESSAGE = {
 };
 
 export const ERROR = {
+  NAME_NULL: "[ERROR] 이름은 입력하지 않았습니다. 게임이 종료됩니다.",
   NAME_COMMA: "[ERROR] 이름은 쉼표로 구분해야합니다. 게임이 종료됩니다.",
   NAME_LENGTH: "[ERROR] 이름의 글자 수는 5자 이하입니다. 게임이 종료됩니다.",
   COUNT: "[ERROR] 이동횟수는 숫자로만 입력해야합니다. 게임이 종료합니다.",
