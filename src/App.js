@@ -6,6 +6,7 @@ class App {
   async play() {
     const carsStringNameArray = await userInputCarsName();
     const cars = getCarsClassArray(carsStringNameArray);
+    const trialCountNumber = await userInputTrialCount();
   }
 }
 
