@@ -15,6 +15,10 @@ class CarModel {
 
     return randNum >= 4 && this.position++;
   }
+
+  isWinner(winnerPos) {
+    return this.position === winnerPos;
+  }
 }
 
 export default CarModel;
