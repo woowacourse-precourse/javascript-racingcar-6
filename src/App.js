@@ -8,16 +8,20 @@ class App {
         "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
       );
 
-      isValidateName(carNameString);
+      this.isValidateName(carNameString);
       carNameArray = carNameString.split(",");
       return carNameArray;
     }
     //자동차 이름 오류 확인
     function isValidateName(userInput) {
+      userInputArray = userInput.split(",");
       if (userInput.includes(" ")) {
         throw new Error("[ERROR] 띄워쓰기를 하지 마세요.");
-      } else if (userInput.length > 6) {
-        throw new Error("[ERROR] 5글자 이하로 적어주세요.");
+      }
+      for (let element of userInputArray) {
+        if (element.length > 6) {
+          throw new Error("[ERROR] 5글자 이하로 적어주세요.");
+        }
       }
     }
 
@@ -26,7 +30,7 @@ class App {
         "시도할 횟수는 몇 회인가요?"
       );
 
-      isValidateNum(raceCount);
+      this.isValidateNum(raceCount);
       return raceCount;
     }
     //반복 횟수 오류 확인
