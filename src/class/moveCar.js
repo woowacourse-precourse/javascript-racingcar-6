@@ -1,5 +1,6 @@
 import { Random, Console } from '@woowacourse/mission-utils';
 import { CONDITION_POINT, PLAY_GAME } from '../Constants.js'
+import CreateCarMoveCount from './randomNumber.js';
 
 class MoveCar {
   constructor(carNames) {
@@ -8,7 +9,8 @@ class MoveCar {
   }
 
   carMoveCompare() {
-    const getMovePoint = Random.pickNumberInRange(0, 9);
+    const createRandomNumber = new CreateCarMoveCount();
+    const getMovePoint = createRandomNumber.createRandomNumber();
     return getMovePoint >= CONDITION_POINT.MOVE_MIN_POINT;
   }
 
