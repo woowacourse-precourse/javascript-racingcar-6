@@ -10,7 +10,7 @@ describe('User 예외 테스트', () => {
         new User(name);
 
         // then
-      }).toThrow(ERROR_MESSAGE.user.blankName);
+      }).toThrow(ERROR_MESSAGE.user.isBlankName);
     },
   );
 
@@ -27,7 +27,7 @@ describe('User 예외 테스트', () => {
       new User(name);
 
       // then
-    }).toThrow(ERROR_MESSAGE.user.notStringName);
+    }).toThrow(ERROR_MESSAGE.user.isNotStringName);
   });
 
   it.each([{ name: 'jackson' }, { name: 'cooper' }])(
@@ -38,7 +38,7 @@ describe('User 예외 테스트', () => {
         new User(name);
 
         // then
-      }).toThrow(ERROR_MESSAGE.user.overMaxLengthName);
+      }).toThrow(ERROR_MESSAGE.user.isOverMaxLengthName);
     },
   );
 });

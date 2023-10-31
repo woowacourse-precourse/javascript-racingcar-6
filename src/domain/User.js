@@ -22,13 +22,13 @@ class User {
 
   #validate(name) {
     if (typeof name !== 'string') {
-      throw new ApplicationError(ERROR_MESSAGE.user.notStringName);
+      throw new ApplicationError(ERROR_MESSAGE.user.isNotStringName);
     }
     if (name.trim().length === 0) {
-      throw new ApplicationError(ERROR_MESSAGE.user.blankName);
+      throw new ApplicationError(ERROR_MESSAGE.user.isBlankName);
     }
     if (name.length > User.MAX_NAME_LENGTH) {
-      throw new ApplicationError(ERROR_MESSAGE.user.overMaxLengthName);
+      throw new ApplicationError(ERROR_MESSAGE.user.isOverMaxLengthName);
     }
   }
 
