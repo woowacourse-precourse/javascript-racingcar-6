@@ -48,20 +48,7 @@ class App {
       Console.print("");
     }
   }
-
-  async play() {
-
-
-    const playerList = await this.playerInfoInput();
-    const {players, playersKeyList}= this.playerSetting(playerList);
-
-    //시도횟수 입력
-    const numberAttempts = Number(await Console.readLineAsync("시도할 횟수는 몇 회인가요?"));
-    this.numberCheck(numberAttempts);
-   
-    Console.print("실행 결과");
-    this.gamePlay(players, numberAttempts,playersKeyList);
-
+  findWinner(players,playersKeyList){
     //최대값찾기
     let max=0;
     const winnerList= [];
@@ -81,7 +68,22 @@ class App {
     //최종 우승자 출력
     const output=winnerList.join(", ");
     Console.print(`최종 우승자 : ${output}`);
+  }
 
+  
+  async play() {
+
+
+    const playerList = await this.playerInfoInput();
+    const {players, playersKeyList}= this.playerSetting(playerList);
+
+    //시도횟수 입력
+    const numberAttempts = Number(await Console.readLineAsync("시도할 횟수는 몇 회인가요?"));
+    this.numberCheck(numberAttempts);
+   
+    Console.print("실행 결과");
+    this.gamePlay(players, numberAttempts,playersKeyList);
+    this.findWinner(players, playersKeyList);
   }
 }
 
