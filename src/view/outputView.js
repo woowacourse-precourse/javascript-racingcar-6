@@ -1,7 +1,7 @@
 // @ts-check
 import { Console } from "@woowacourse/mission-utils";
 import { SYMBOL, MESSAGE } from "../constants/constants";
-import { CarsDto } from "../domian/dto/carsDto";
+import { CarsDto } from "../domain/dto/carsDto";
 
 class OutputView {
   /**
