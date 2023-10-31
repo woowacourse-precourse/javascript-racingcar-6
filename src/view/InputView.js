@@ -1,6 +1,10 @@
 import { Console } from '@woowacourse/mission-utils';
 import { INPUT_CARS_NAME, INPUT_COUNT } from '../constants/InputString.js';
-import { ERROR_CARS_LENGTH, ERROR_CARS_SPLIT } from '../constants/ErrorString.js';
+import {
+  ERROR_CARS_LENGTH,
+  ERROR_CARS_SPLIT,
+  ERROR_COUNT_NOT_NUMBER,
+} from '../constants/ErrorString.js';
 
 const InputView = {
   readCarsInput: async () => {
@@ -14,6 +18,8 @@ const InputView = {
   readCountInput: async () => {
     const inputCount = await Console.readLineAsync(INPUT_COUNT);
 
+    validateCountInput(inputCount);
+
     return inputCount;
   },
 
@@ -25,6 +31,10 @@ const InputView = {
     });
     if (inputCarsArray.includes('')) throw new Error(ERROR_CARS_SPLIT);
   },
+
+  validateCountInput: inputCount => {
+    if (!Number(inputCount)) throw new Error(ERROR_COUNT_NOT_NUMBER);
+  },
 };
 
-export const { readCarsInput, readCountInput, validateCarsInput } = InputView;
+export const { readCarsInput, readCountInput, validateCarsInput, validateCountInput } = InputView;
