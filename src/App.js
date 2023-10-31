@@ -4,25 +4,8 @@ import { print } from "./util/output.js";
 import {validCars} from './validation/carsValidation.js';
 import {vaildTryCount} from './validation/tryValidation.js';
 import {ERROR_MESSAGE,INPUT_MESSAGE,NUMBER_RANGE,OUTPUT_MESSAGE} from './constants/constant.js';
-
-
-function makeCarsArray(message) {
-  const CARS = message.split(",");
-
-  validCars(CARS);
-
-  return CARS;
-}
-
-
-export async function getRandomNumber() {
-  return Random.pickNumberInRange(NUMBER_RANGE.MIN, NUMBER_RANGE.MAX);
-}
-
-export async function isMove() {
-  const RANDOM = await getRandomNumber();
-  return RANDOM >= 4 ? true : false;
-}
+import {makeCarsArray} from './util/message.js';
+import {getRandomNumber, isMove} from './util/random.js';;
 
 class RacingGame {
   constructor() {
