@@ -5,6 +5,7 @@ import {
   ERROR_CARS_LENGTH,
   ERROR_CARS_SPLIT,
   ERROR_CARS_DUPLICATED,
+  ERROR_COUNT_EMPTY,
   ERROR_COUNT_NOT_NUMBER,
 } from '../constants/ErrorString.js';
 
@@ -38,6 +39,7 @@ const InputView = {
   },
 
   validateCountInput: inputCount => {
+    if (!inputCount) throw new Error(ERROR_COUNT_EMPTY);
     if (!Number(inputCount)) throw new Error(ERROR_COUNT_NOT_NUMBER);
   },
 };
