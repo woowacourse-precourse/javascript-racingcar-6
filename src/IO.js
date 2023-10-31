@@ -1,6 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
 
-export const MESSAGE = {
+const MESSAGE = {
   INPUT: {
     TRY_COUNT: '시도할 횟수는 몇 회인가요?\n',
     CAR_NAMES:
