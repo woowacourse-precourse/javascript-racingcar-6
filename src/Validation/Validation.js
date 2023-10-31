@@ -15,6 +15,16 @@ class Validation {
     }
   }
 
+  isSameCarName(carNameString) {
+    const carNames = carNameString.split(",");
+    const carNameNum = carNames.length;
+    const isSameName = carNameNum !== new Set(carNames).size;
+
+    if (isSameName) {
+      throw new Error(CONSTANTS.ERROR.SAMECARNAME);
+    }
+  }
+
   isValidTrialNumber(trialNumber) {
     let isNumber = isNaN(trialNumber);
     if (isNumber) {

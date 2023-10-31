@@ -11,6 +11,7 @@ const CONSTANTS = {
   ERROR: {
     MAXNAMELENGTH: 5,
     NAMETOOLONG: "[ERROR] 자동차 이름은 5자 이하여야 합니다.",
+    SAMECARNAME: "[ERROR] 자동차 이름이 중복되었습니다.",
     ISNUMBER: "[ERROR] 숫자가 잘못된 형식입니다.",
   },
 };
