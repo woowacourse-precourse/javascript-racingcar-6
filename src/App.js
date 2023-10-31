@@ -1,9 +1,11 @@
 import { Console, Random } from '@woowacourse/mission-utils';
 import InputCarName from './InputCarName.js';
+import InputAttempt from './InputAttempt.js';
 
 class App {
 	async play() {
-		InputCarName();
+		// const carList = InputCarName();
+		InputAttempt();
 	}
 }
 
