@@ -3,7 +3,7 @@ const findWinners = cars => {
   const winners = [];
 
   cars.map(car => carsStatus.push(car.getStatus().length));
-  cars.map(car => {
+  cars.forEach(car => {
     if (Math.max(...carsStatus) === car.getStatus().length) winners.push(car.getName());
   });
 

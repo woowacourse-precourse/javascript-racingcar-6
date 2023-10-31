@@ -13,7 +13,7 @@ const InputView = {
   readCarsInput: async () => {
     const inputCars = await Console.readLineAsync(INPUT_CARS_NAME);
 
-    validateCarsInput(inputCars);
+    InputView.validateCarsInput(inputCars);
 
     return inputCars;
   },
@@ -21,7 +21,7 @@ const InputView = {
   readCountInput: async () => {
     const inputCount = await Console.readLineAsync(INPUT_COUNT);
 
-    validateCountInput(inputCount);
+    InputView.validateCountInput(inputCount);
 
     return inputCount;
   },
@@ -29,8 +29,8 @@ const InputView = {
   validateCarsInput: inputCars => {
     const inputCarsArray = inputCars.split(',').map(inputCar => inputCar.trim());
 
-    if (inputCars.length === 0) throw new Error(ERROR_CARS_EMPTY);
-    inputCarsArray.map(inputCar => {
+    if (inputCarsArray.length === 0) throw new Error(ERROR_CARS_EMPTY);
+    inputCarsArray.forEach(inputCar => {
       if (inputCar.length > 5) throw new Error(ERROR_CARS_LENGTH);
     });
     if (inputCarsArray.includes('')) throw new Error(ERROR_CARS_SPLIT);

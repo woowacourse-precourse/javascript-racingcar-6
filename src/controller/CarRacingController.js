@@ -22,7 +22,7 @@ class CarRacingController {
 
   createCarInstances = cars => {
     const carsArray = cars.split(',').map(car => car.trim());
-    this.#carInstances = carsArray.map(car => (car = new Car(car)));
+    this.#carInstances = carsArray.map(car => new Car(car));
 
     return this.#carInstances;
   };
