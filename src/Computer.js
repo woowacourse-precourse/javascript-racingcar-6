@@ -7,17 +7,26 @@ import MESSAGE from './Constant.js';
 export default class Computer {
   constructor() {
     this.racingCars = [];
+    this.trialNumber = 0;
   }
 
   async playGame() {
-    this.racingCars = await Computer.getCarNameArrayFromUserInput();
-    const trialNum = await Computer.getTrialNumberFromUserInput();
-    this.tryToMoveCars(trialNum);
+    this.setRacingCarArray(await User.getCarNameArray());
+    this.setTrialNumber(await User.getTrialNumber());
+    this.tryToMoveCarsForTrialNumber();
     this.printFinalWinnersName();
   }
 
-  tryToMoveCars(times) {
-    for (let time = 0; time < times; time += 1) {
+  setRacingCarArray(carNameArray) {
+    this.racingCars = carNameArray.map((carName) => new RacingCar(carName));
+  }
+
+  setTrialNumber(trialNum) {
+    this.trialNumber = trialNum;
+  }
+
+  tryToMoveCarsForTrialNumber() {
+    for (let time = 0; time < this.trialNumber; time += 1) {
       this.racingCars.forEach((car) => {
         car.moveForward();
         car.printDistance();
@@ -28,11 +37,11 @@ export default class Computer {
   }
 
   printFinalWinnersName() {
-    const winnersName = this.getFinalWinnersName().join(', ');
+    const winnersName = this.getFinalWinnersNameArray().join(', ');
     Console.print(`${MESSAGE.FINAL_WINNER}${winnersName}`);
   }
 
-  getFinalWinnersName() {
+  getFinalWinnersNameArray() {
     const maxDistance = this.getMaxDistance();
     return this.racingCars
       .filter((car) => car.distance === maxDistance)
@@ -41,29 +50,5 @@ export default class Computer {
 
   getMaxDistance() {
     return Math.max(...this.racingCars.map((car) => car.distance));
-  }
-
-  static async getCarNameArrayFromUserInput() {
-    const userInput = await User.inputCarName();
-    const carNameArr = this.getCarNameArrayFromString(userInput);
-    return carNameArr.map((carName) => new RacingCar(carName));
-  }
-
-  static getCarNameArrayFromString(str) {
-    const carNameArr = str.split(',').map((name) => name.trim());
-    if (carNameArr.some((carName) => carName.length > 5 || carName === ''))
-      throw new Error(MESSAGE.ERROR_WRONG_INPUT);
-    return carNameArr;
-  }
-
-  static async getTrialNumberFromUserInput() {
-    const userInput = await User.inputTrialNumber();
-    const trialNum = this.getTrialNumberFromString(userInput);
-    return trialNum;
-  }
-
-  static getTrialNumberFromString(str) {
-    if (Number.isNaN(Number(str))) throw new Error(MESSAGE.ERROR_WRONG_INPUT);
-    return Number(str);
   }
 }

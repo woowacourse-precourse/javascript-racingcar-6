@@ -2,20 +2,24 @@ import { Console } from '@woowacourse/mission-utils';
 import MESSAGE from './Constant.js';
 
 export default class User {
-  static async inputQuery(query) {
-    const input = await Console.readLineAsync(query);
-    return input;
-  }
-
-  static async inputCarName() {
+  static async getCarNameArray() {
     const input = await Console.readLineAsync(MESSAGE.COMMAND_INPUT_CAR_NAME);
-    return input;
+
+    const carNameArr = input.split(',').map((name) => name.trim());
+
+    if (carNameArr.some((carName) => carName.length > 5 || carName === ''))
+      throw new Error(MESSAGE.ERROR_WRONG_INPUT);
+
+    return carNameArr;
   }
 
-  static async inputTrialNumber() {
+  static async getTrialNumber() {
     const input = await Console.readLineAsync(
       MESSAGE.COMMAND_INPUT_TRIAL_NUMBER,
     );
-    return input;
+
+    if (Number.isNaN(Number(input))) throw new Error(MESSAGE.ERROR_WRONG_INPUT);
+
+    return Number(input);
   }
 }
