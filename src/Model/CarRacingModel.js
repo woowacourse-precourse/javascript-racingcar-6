@@ -18,13 +18,13 @@ class CarRacingModel {
     return this.trialNumber;
   }
 
-  moveOrStay(car) {
-    for (let i = 0; i < car.length; i++) {
+  moveOrStay(namesAndDistances) {
+    namesAndDistances.forEach((nameAndDistance) => {
       let isMove = Random.pickNumberInRange(0, 9) < 5 ? true : false;
       if (isMove) {
-        car[i][1] += 1;
+        nameAndDistance[1] += 1;
       }
-    }
+    });
   }
 }
 export default CarRacingModel;

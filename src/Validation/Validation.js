@@ -1,13 +1,14 @@
 class Validation {
   isValidCarName(car) {
-    let carName = car.split(",");
+    const carNames = car.split(",");
     let isNameTooLong = false;
-    for (let name of carName) {
+
+    carNames.forEach((name) => {
       if (name.length > 5) {
         isNameTooLong = true;
-        break;
       }
-    }
+    });
+
     if (isNameTooLong) {
       throw new Error("[ERROR] 자동차 이름은 5자 이하여야 합니다.");
     }

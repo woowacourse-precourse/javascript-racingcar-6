@@ -14,16 +14,16 @@ class CarRacingController {
     await this.inputCar();
     await this.inputTrialNumber();
     this.carRacingView.printResultMessage();
-    for (let i = 0; i < this.carRacingModel.getTrialNumber(); i++) {
-      this.carRacingModel.moveOrStay(
-        this.carRacingModel.getNamesAndDistances()
-      );
-      this.carRacingView.printResult(
-        this.carRacingModel.getNamesAndDistances()
-      );
+
+    const namesAndDistances = this.carRacingModel.getNamesAndDistances();
+
+    namesAndDistances.forEach(() => {
+      this.carRacingModel.moveOrStay(namesAndDistances);
+      this.carRacingView.printResult(namesAndDistances);
       this.carRacingView.lineBreak();
-    }
-    this.carRacingView.printWinner(this.carRacingModel.getNamesAndDistances());
+    });
+
+    this.carRacingView.printWinner(namesAndDistances);
   }
 
   async inputCar() {
