@@ -13,3 +13,11 @@ export async function carNameInput() {
   isValidCarName(inputValue);
   return inputValue;
 }
+
+export function printStartResult() {
+  Console.print(MESSAGE_NOTIFICATION.startResult);
+}
+
+export function printMoveResult(name, advance) {
+  Console.print(`${name}: ${"-".repeat(advance)}`);
+}
