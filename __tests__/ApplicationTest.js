@@ -77,27 +77,57 @@ describe("inputCarNamesAsync", () => {
   });
 
   test("5자 이상인 이름은 오류 발생 시키기", async () => {
-    // 주어진
     const invalidInput = "pobi,verylongname";
     const app = new App();
     const mockReadLineAsync = jest.fn(() => Promise.resolve(invalidInput));
     MissionUtils.Console.readLineAsync = mockReadLineAsync;
 
-    // 실행 및 확인
     await expect(app.inputCarNamesAsync()).rejects.toThrow("[ERROR] 자동차 이름은 5자 이하만 가능합니다.");
   });
 
   test("이름 내의 공백을 처리하기", async () => {
-    // 주어진
     const inputWithWhitespace = "  pobi , woni  ";
     const app = new App();
     const mockReadLineAsync = jest.fn(() => Promise.resolve(inputWithWhitespace));
     MissionUtils.Console.readLineAsync = mockReadLineAsync;
 
-    // 실행
     await app.inputCarNamesAsync();
 
-    // 당연히
     expect(app.cars).toEqual([{ name: "pobi", position: 0 }, { name: "woni", position: 0 }]);
   });
 });
+
+describe("inputNumberOfMovesAsync", () => {
+  test("횟수 입력받기", async () => {
+    const validInput = "5";
+    const app = new App();
+    const mockReadLineAsync = jest.fn(() => Promise.resolve(validInput));
+    MissionUtils.Console.readLineAsync = mockReadLineAsync;
+
+    const result = await app.inputNumberOfMovesAsync();
+
+    expect(mockReadLineAsync).toHaveBeenCalledWith("시도할 횟수를 입력하세요:");
+    expect(result).toBe(5);
+  });
+
+  test("잘못된 형식 오류 처리하기", async () => {
+    const invalidInput = "invalid";
+    const app = new App();
+    const mockReadLineAsync = jest.fn(() => Promise.resolve(invalidInput));
+    MissionUtils.Console.readLineAsync = mockReadLineAsync;
+
+    await expect(app.inputNumberOfMovesAsync()).rejects.toThrow("[ERROR] 숫자가 잘못된 형식입니다.");
+  });
+
+  test("입력된 숫자 10진수로 파싱하기", async () => {
+    const input = "15";
+    const app = new App();
+    const mockReadLineAsync = jest.fn(() => Promise.resolve(input));
+    MissionUtils.Console.readLineAsync = mockReadLineAsync;
+
+    const result = await app.inputNumberOfMovesAsync();
+
+    expect(result).toBe(15);
+  });
+});
+
