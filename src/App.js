@@ -17,6 +17,8 @@ class App {
     this.numberOfTryValidity(NUMBER_OF_TRY);
 
     const FINAL_COUNT_ARRAY = this.racing(NUMBER_OF_TRY, CAR_NAME_ARRAY);
+
+    this.printResult(FINAL_COUNT_ARRAY, CAR_NAME_ARRAY);
   }
 
   carNameValidity(inputCarNameArray) {
@@ -66,7 +68,7 @@ class App {
   }
 
   isNaturalNumberValidity(numberOfTry) {
-    if(numberOfTry < 1) {
+    if (numberOfTry < 1) {
       throw new Error("[ERROR]: 1이상의 숫자를 입력하시오.");
     }
   }
@@ -94,6 +96,18 @@ class App {
     }
 
     return count;
+  }
+
+  printResult(finalCountArray, carNameArray) {
+    const MAX = Math.max(...finalCountArray);
+    const FINAL_WINNER = [];
+    for (let i = 0; i < finalCountArray.length; i++) {
+      if (finalCountArray[i] === MAX) {
+        FINAL_WINNER.push(carNameArray[i]);
+      }
+    }
+    MissionUtils.Console.print(`최종 우승자 : ${FINAL_WINNER}`);
+    return `최종 우승자 : ${FINAL_WINNER}`;
   }
 }
 
