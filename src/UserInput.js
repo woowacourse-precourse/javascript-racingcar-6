@@ -6,8 +6,9 @@ class UserInput {
   async getCarNames() {
     try {
       const carNames = await Console.readLineAsync(Messages.GET_CAR_NAMES);
-      const carNamesArr = carNames.split(",");
-      const [isVaild, message, result] = this.isVaildCarName(carNamesArr);
+      const [isVaild, message, result] = this.isVaildCarName(
+        carNames.split(",")
+      );
       if (!isVaild) {
         throw new Error(message);
       }
