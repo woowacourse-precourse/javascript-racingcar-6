@@ -24,7 +24,7 @@ class App {
     checkValidRounds(rounds);
 
     //2. 경주
-    MissionUtils.Console.print("실행 결과\n");
+    //MissionUtils.Console.print("실행 결과\n");
     while (rounds--) {
       //각 자동차에 대해 0~9 무작위 값 구하기
       playRandomForwardMove(CARS_MAP);
