@@ -34,7 +34,7 @@ export default class Controller {
   }
 
   async run() {
-    const carNameList = await InputView.getCarName();
+    const carNameList = await InputView.getCarNameList();
     this.createCar(carNameList);
 
     const tryCount = await InputView.getTryCount();

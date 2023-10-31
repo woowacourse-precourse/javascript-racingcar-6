@@ -3,7 +3,7 @@ import Message from '../constant/Message.js';
 import Validation from '../utils/Validation.js';
 
 export default class InputView {
-  static async getCarName() {
+  static async getCarNameList() {
     const carNames = await Console.readLineAsync(Message.RACE_START);
     const carNameList = carNames.split(',');
     Validation.carNameInput(carNameList);
