@@ -23,8 +23,18 @@ class App {
     this.initCarList(carNameArray);
   }
 
+  async getRaceNumber() {
+    const inputRaceNumber = await Console.readLineAsync(
+      MESSAGE.INPUT_RACE_NUMBER
+    );
+    // if (!checkInputRaceNumber)
+    //   throw new Error('[ERROR] 올바른 게임 횟수를 입력해주세요');
+    return inputRaceNumber;
+  }
+
   async play() {
     await this.getCarName();
+    const raceNumber = await this.getRaceNumber();
     console.log(this.cars);
   }
 }
