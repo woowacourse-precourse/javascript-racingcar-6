@@ -1,7 +1,7 @@
 import { Random } from "@woowacourse/mission-utils";
 import { FORWARD_CRITERIA } from "./Constants.js";
 
-const Car = {
+const CarList = {
   getMoveForwards(carNames) {
     return new Array(carNames.length).fill(0);
   },
@@ -23,4 +23,4 @@ const Car = {
   },
 };
 
-export default Car;
+export default CarList;

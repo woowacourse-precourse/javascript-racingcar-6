@@ -1,17 +1,17 @@
 import { Console } from "@woowacourse/mission-utils";
 import { IN_GAME_MESSAGE } from "./Constants.js";
-import Car from "./Car.js";
+import CarList from "./CarList.js";
 import User from "./User.js";
 
 const CarRacing = {
   async playCarRacing() {
     const carNameList = await User.getCarNames();
     const tryCount = await User.getTryCount();
-    let carMoveForwardList = Car.getMoveForwards(carNameList);
+    let carMoveForwardList = CarList.getMoveForwards(carNameList);
 
     for (let count = 0; count < tryCount; count += 1) {
-      const carMovesList = Car.createCarMoves(carNameList.length);
-      carMoveForwardList = Car.countMoveForward(
+      const carMovesList = CarList.createCarMoves(carNameList.length);
+      carMoveForwardList = CarList.countMoveForward(
         carMoveForwardList,
         carMovesList
       );
