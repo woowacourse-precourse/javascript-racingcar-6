@@ -16,8 +16,7 @@ class Input {
   static async enterTryingCount() {
     try {
       let tryingCount = await Interface.requestValueforContent('시도할 횟수');
-      tryingCount = parseInt(tryingCount, 10);
-      Validator.evaluateTryinCount(tryingCount);
+      tryingCount = Validator.evaluateTryinCount(tryingCount);
       return tryingCount;
     } catch (errorCode) {
       throw new InputException(errorCode);

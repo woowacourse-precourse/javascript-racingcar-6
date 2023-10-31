@@ -1,41 +1,32 @@
-const NAEMS_ERROR_CODE = [
-  'EMPTY_NAME',
-  'WRONG_RANGE_NAME',
-  'INCLUDE_SPECIAL_CHARATER',
-  'NOT_INCLUDE_COMMA',
-];
+function isIncludedValidRange(name) {
+  return (name.length <= 0 || name.length > 5);
+}
 
-const TRYING_ERROR_CODE = [
-  'UNDER_ZERO',
-  'NOT_NUMBER',
-];
+function isCharacterOnlyIncluded(name) {
+  const regex = /^[\p{L}]{1,5}$/u;
+  return regex.test(name);
+}
+
+function isNotInteger(tryingCount) {
+  return !Number.isInteger(tryingCount);
+}
 
 class Validator {
   static evaluateCarNames(carNames) {
     const splitedNames = carNames.split(',');
     splitedNames.forEach((name) => {
-      if (name.length === 0) {
-        throw NAEMS_ERROR_CODE[0];
-      } else if (name.length > 5) {
-        throw NAEMS_ERROR_CODE[1];
-      } else if (!Validator.checkCharacterOnlyInclude(name)) {
-        throw NAEMS_ERROR_CODE[2];
-      }
+      if (isIncludedValidRange(name)) throw String('WRONG_RANGE_NAME');
+      if (!isCharacterOnlyIncluded(name)) throw String('SPECIAL_CHARATER');
     });
+
     return splitedNames;
   }
 
-  static checkCharacterOnlyInclude(name) {
-    const regex = /^[\p{L}]{1,5}$/u;
-    return regex.test(name);
-  }
-
   static evaluateTryinCount(tryingCount) {
-    if (tryingCount < 0) {
-      throw TRYING_ERROR_CODE[0];
-    } else if (!Number.isInteger(Number(tryingCount))) {
-      throw TRYING_ERROR_CODE[1];
-    }
+    const numericTryingCount = parseInt(tryingCount, 10);
+    if (numericTryingCount < 0) throw String('UNDER_ZERO');
+    if (isNotInteger(numericTryingCount)) throw String('NOT_NUMBER');
+    return numericTryingCount;
   }
 }
 
