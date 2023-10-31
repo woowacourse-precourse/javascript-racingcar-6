@@ -20,8 +20,7 @@ export class GameController {
 
   async startGame() {
     const { carNames, tryNumber } = await this.getInputValue();
-    this.validateName(carNames);
-    this.validateNumber(tryNumber);
+
     this.setMoveCount(carNames);
     this.printMoveCount(carNames, tryNumber);
     this.printWinnersNames(this.moveCount);
@@ -30,9 +29,11 @@ export class GameController {
   async getInputValue() {
     Console.print(MESSAGE.START);
     const carNames = (await Console.readLineAsync("")).split(",");
+    this.validateName(carNames);
 
     Console.print(MESSAGE.INPUT);
     const tryNumber = await Console.readLineAsync("");
+    this.validateNumber(tryNumber);
 
     return { carNames, tryNumber };
   }
@@ -54,7 +55,7 @@ export class GameController {
   }
 
   validateNumber(tryNumber) {
-    if (!(tryNumber > 0 && Number.isInteger(tryNumber)))
+    if (tryNumber > 0 && Number.isInteger(tryNumber))
       throw new Error(ERROR_MESSAGE.INVALID_NUMBER);
   }
 
