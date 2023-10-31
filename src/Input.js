@@ -9,6 +9,7 @@ const Input = {
     );
 
     Validate.checkNameExist(names);
+    Validate.checkIncludeComma(names);
 
     return names;
   },

@@ -17,5 +17,10 @@ const Validate = {
       throw new Error(ERROR.attemptNum);
     }
   },
+  checkIncludeComma(names) {
+    if (!names.includes(',')) {
+      throw new Error(ERROR.includeComma);
+    }
+  },
 };
 export default Validate;
