@@ -57,6 +57,18 @@ describe("자동차 경주 게임", () => {
     const app = new App();
 
     // then
-    await expect(app.play()).rejects.toThrow("[ERROR]");
+    await expect(app.play()).rejects.toThrow("[ERROR] 자동차 이름은 5자 이하만 가능합니다.");
+  });
+
+  test("시도 횟수에 대한 예외 처리", async () => {
+    // given
+    const invalidTriesInput = ["pobi,0,-1"];
+    mockQuestions(invalidTriesInput);  // NaN 입력
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.getTries()).rejects.toThrow("[ERROR] 시도 횟수는 양의 정수여야 합니다.");
   });
 });
