@@ -1,5 +1,5 @@
 import {MissionUtils} from "@woowacourse/mission-utils";
-import Play_Game from "./Play_Game.js";
+import Play_Game from "./On_Game.js";
 import CHECK_WINNER from "./Check_Winner.js";
 import {RESULT_MESSAGE} from "./Constants.js";
 
