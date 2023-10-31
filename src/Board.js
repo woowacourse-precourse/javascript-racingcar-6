@@ -33,9 +33,8 @@ class Board {
    * @returns {Array<String>} carNames
    */
   async #inputCarNames() {
-    // TEST:
-    return '마세라티,제네시스,아이오닉'.split(',');
-    // return await Console.readLineAsync().split(',');
+    const input = await Console.readLineAsync();
+    return input.split(',');
   }
 
   /**
@@ -52,10 +51,7 @@ class Board {
    * 사용자로부터 이동을 시도할 횟수를 입력받아 멤버로 저장한다.
    */
   async setNumTurns() {
-    // TEST:
-    const input = '5';
-    // const input = await Console.readLineAsync();
-
+    const input = await Console.readLineAsync();
     this.#validateNumTurns(input);
     this.#numTurns = parseInt(input);
   }
@@ -82,18 +78,11 @@ class Board {
    * cars의 모든 Car에 대하여, 한 자리 난수를 발생시켜 MOVE_MIN_DIGIT 이상일 경우 1만큼 이동시킨다.
    */
   executeTurn() {
-    // TEST:
     this.#cars.forEach((car) => {
-      const randomDigit = this.#getRandomDigit();
-      if (randomDigit >= MOVE_MIN_DIGIT) {
+      if (this.#getRandomDigit() >= MOVE_MIN_DIGIT) {
         car.move();
       }
-    })
-    // this.#cars.forEach((car) => {
-    //   if (this.#getRandomDigit() >= MOVE_MIN_DIGIT) {
-    //     car.move();
-    //   }
-    // });
+    });
   }
 
   /**
@@ -109,7 +98,7 @@ class Board {
    */
   printMiddleResult() {
     this.#cars.forEach((car) => {
-      const middleResult = [car.getName(), Strings.COLON, Strings.DISTANCE.repeat(car.getDistance())].join(' ');
+      const middleResult = [car.getName(), Strings.IS, Strings.DISTANCE.repeat(car.getDistance())].join(' ');
       Console.print(middleResult);
     })
     Console.print(Strings.NULL);
@@ -137,7 +126,7 @@ class Board {
   printFinalResult() {
     // TODO: 최종 결과 출력 포맷 작성
     const winnerNames = this.#getWinnerNames();
-    const finalResult = '최종 우승자 : ' + winnerNames.join(', ');
+    const finalResult = [Strings.FINAL_WINNER, Strings.IS, winnerNames.join(', ')].join(' ');
     console.log(finalResult);
   }
 
