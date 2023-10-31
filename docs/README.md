@@ -2,7 +2,7 @@
 
 ## MVC 모델 아키텍처
 
-<img src="https://github.com/jungjunhyung99/javascript-racingcar-6/assets/55770796/ce0a593a-9472-4510-8dde-bf3e2f2b4b47" width="700" height="370">
+<img src="https://github.com/jungjunhyung99/javascript-racingcar-6/assets/55770796/ce0a593a-9472-4510-8dde-bf3e2f2b4b47" width="600" height="370">
 
 ## 🔥구현할 기능 목록 정리
 
@@ -68,16 +68,16 @@
 
 ## 📁 폴더구조
 
-📦src
- ┣ 📂constants
- ┃ ┗ 📜constants.js
- ┣ 📂controller
- ┃ ┗ 📜RacingCar.js
- ┣ 📂model
- ┃ ┗ 📜Car.js
- ┣ 📂utils
- ┃ ┗ 📜Validation.js
- ┣ 📂view
- ┃ ┗ 📜View.js
- ┣ 📜App.js
- ┗ 📜index.js
+    📦src
+    ┣ 📂constants
+    ┃ ┗ 📜constants.js
+    ┣ 📂controller
+    ┃ ┗ 📜RacingCar.js
+    ┣ 📂model
+    ┃ ┗ 📜Car.js
+    ┣ 📂utils
+    ┃ ┗ 📜Validation.js
+    ┣ 📂view
+    ┃ ┗ 📜View.js
+    ┣ 📜App.js
+    ┗ 📜index.js
