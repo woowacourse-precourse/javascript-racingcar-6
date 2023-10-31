@@ -22,10 +22,10 @@ export const inputTryNum = async () => {
 
 export const isValidCarNames = carNames => {
   const carNameArr = Array.from(carNames.replace(/ +$/, ''));
-  if (carNameArr.length === 0) return false;
-  if (carNameArr[0] === ',' || carNameArr[carNameArr.length - 1] === ',')
-    return false;
-  return true;
+  const lengthErr = carNameArr.length === 0;
+  const commaErrFirstIndex = carNameArr[0] === ',';
+  const commaErrLastIndex = carNameArr[carNameArr.length - 1] === ',';
+  return !lengthErr && !commaErrFirstIndex && !commaErrLastIndex;
 };
 
 export const isValidTryNum = tryNum => {
@@ -35,8 +35,8 @@ export const isValidTryNum = tryNum => {
 };
 
 export const isValidCarName = carName => {
-  if (carName.length > 5) return false;
-  return true;
+  const lengthErr = carName.length > 5;
+  return !lengthErr;
 };
 
 export const tryCarGame = carList => {
