@@ -27,7 +27,7 @@ describe('CarNames.js 테스트', () => {
     mockQuestions(inputs);
 
     await expect(getAndValidateCarNames(inputs)).rejects.toThrowError(
-      '[ERROR] 이름의 형식이 잘못됐습니다.'
+      '[ERROR] 이름의 형식이 잘못됐습니다. 이름은 1글자 이상 5글자 이하의 영어 소문자만 가능합니다.'
     );
   });
 
@@ -37,7 +37,7 @@ describe('CarNames.js 테스트', () => {
     mockQuestions(inputs);
 
     await expect(getAndValidateCarNames(inputs)).rejects.toThrowError(
-      '[ERROR] 이름의 형식이 잘못됐습니다.'
+      '[ERROR] 이름의 형식이 잘못됐습니다. 이름은 1글자 이상 5글자 이하의 영어 소문자만 가능합니다.'
     );
   });
 
@@ -47,7 +47,7 @@ describe('CarNames.js 테스트', () => {
     mockQuestions(inputs);
 
     await expect(getAndValidateCarNames(inputs)).rejects.toThrowError(
-      '[ERROR] 이름의 형식이 잘못됐습니다.'
+      '[ERROR] 이름의 형식이 잘못됐습니다. 이름은 1글자 이상 5글자 이하의 영어 소문자만 가능합니다.'
     );
   });
 
