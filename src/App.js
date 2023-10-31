@@ -12,7 +12,7 @@ class Car {
   }
 
   carPosition() {
-    return `${this.name}: ${"-".repeat(this.position)}`;
+    return `${this.name} : ${"-".repeat(this.position)}`;
   }
 }
 
