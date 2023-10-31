@@ -6,6 +6,7 @@ import MESSAGES from '../constants/messages.js';
 import throwError from '../utils/throwError.js';
 import RaceResult from '../models/RaceResult.js';
 import checkNumber from '../utils/checkNumber.js';
+import checkString from '../utils/checkString.js';
 
 class RaceController {
   #maxRound = 0;
@@ -62,36 +63,16 @@ class RaceController {
       .map((car) => car.name);
   }
 
-  static checkSpaceCarName(carNameList) {
-    return carNameList.filter((car) => car.match(/\s/g)).length > 0;
-  }
-
-  static checkSameCarName(carNameList) {
-    return (
-      Array.from(new Set(carNameList.map((car) => car))).length !==
-      carNameList.length
-    );
-  }
-
-  static checkCarNameLength(carNameList) {
-    return (
-      carNameList.filter((car) => car.length > CONFIG.MAX_CAR_NAME_LENGTH)
-        .length > 0
-    );
-  }
-
-  static checkCarNameVoid(carNameList) {
-    return carNameList.filter((car) => car === '').length > 0;
-  }
-
   static checkCarNameUserInput(carList) {
-    if (RaceController.checkSameCarName(carList)) {
+    if (checkString.checkListSameValue(carList)) {
       throwError('중복된 자동차 이름이 있습니다');
-    } else if (RaceController.checkCarNameLength(carList)) {
+    } else if (
+      checkString.checkListItemLongerThan(carList, CONFIG.MAX_CAR_NAME_LENGTH)
+    ) {
       throwError(`자동차의 이름이 ${CONFIG.MAX_CAR_NAME_LENGTH} 보다 깁니다`);
-    } else if (RaceController.checkSpaceCarName(carList)) {
+    } else if (checkString.checkListValueHasSpace(carList)) {
       throwError('공백은 입력하실수 없습니다');
-    } else if (RaceController.checkCarNameVoid(carList)) {
+    } else if (checkString.checkListHasVoid(carList)) {
       throwError(`이름이 존재하지 않는 차가 있습니다`);
     }
   }
