@@ -46,6 +46,26 @@ describe("자동차 경주 게임", () => {
     });
   });
 
+  test("최종 우승자", async () => {
+    // given
+    const MOVING_FORWARD = 9;
+    const STOP = 9;
+    const inputs = ["pobi,woni", "1"];
+    const randoms = [MOVING_FORWARD, STOP];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    // when
+    const app = new App();
+    await app.play();
+
+    expect(logSpy).toHaveBeenCalledWith(
+      expect.stringContaining("최종 우승자 : pobi, woni")
+    );
+  });
+
   test.each([[["pobi,javaji"]], [["pobi,eastjun"]]])(
     "이름에 대한 예외 처리",
     async (inputs) => {
