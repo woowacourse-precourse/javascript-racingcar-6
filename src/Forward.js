@@ -12,7 +12,7 @@ class Forward {
     this.racingArray = [];
   }
 
-  forwardOrStop() {
+  #forwardOrStop() {
     return this.randomNumber.getRandomNumber() > 3
       ? GAME_HELP.FORWARD
       : GAME_HELP.STOP;
@@ -24,11 +24,11 @@ class Forward {
     return this.racingArray;
   }
 
-  racingUpdate(carIndex) {
-    return (this.racingArray[carIndex] += this.forwardOrStop());
+  #racingUpdate(carIndex) {
+    return (this.racingArray[carIndex] += this.#forwardOrStop());
   }
 
-  showCarAndRacing(carIndex) {
+  #showCarAndRacing(carIndex) {
     Console.print(
       `${this.car.carNameList[carIndex]} : ${this.racingArray[carIndex]}`
     );
@@ -37,8 +37,8 @@ class Forward {
   async oneCycleRacing() {
     const carCount = this.car.carNameList.length;
     for (let i = 0; i < carCount; i++) {
-      await this.racingUpdate(i);
-      await this.showCarAndRacing(i);
+      await this.#racingUpdate(i);
+      await this.#showCarAndRacing(i);
     }
     Console.print(" ");
   }
