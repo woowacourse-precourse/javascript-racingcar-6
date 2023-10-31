@@ -13,6 +13,8 @@ class App {
 
     this.tryNum = await this.numInput();
     this.game();
+    const winnerList = this.winner();
+    this.printWinner(winnerList);
   }
 
   async carInput() {
@@ -74,6 +76,18 @@ class App {
       }
     }
     return winners;
+  }
+
+  printWinner(winnerList) {
+    let msg = `최종 우승자 : `;
+    for (let i = 0; i < winnerList.length; i++) {
+      if (i === winnerList.length - 1) {
+        msg += `${winnerList[i]}`;
+      } else if (i !== winnerList.length - 1) {
+        msg += `${winnerList[i]}, `;
+      }
+    }
+    Console.print(msg);
   }
 }
 
