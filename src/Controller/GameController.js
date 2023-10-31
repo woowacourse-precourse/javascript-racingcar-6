@@ -1,12 +1,12 @@
 import Game from '../Model/Game.js';
 import Car from '../Model/Car.js';
-
-import { View } from '../View/View.js';
-
+import View from '../View/View.js';
 import Validator from '../utils/Validator.js';
 
 export default class GameController {
   #validate = Validator;
+
+  #view = new View();
 
   #game;
 
@@ -17,19 +17,19 @@ export default class GameController {
     this.#game = new Game({ racingCars, attemptNumber });
     const { result, winner } = this.#game.startRace();
 
-    View.printResult(result);
-    View.printWinner(winner);
+    this.#view.printResult(result);
+    this.#view.printWinner(winner);
   }
 
   async #getRacingCars() {
-    const carNames = await View.readCarNames();
+    const carNames = await this.#view.readCarNames();
     this.#validate.validateRacingCars(carNames);
 
     return carNames.split(',').map((car) => new Car(car));
   }
 
   async #getAttemptNumber() {
-    const inputValue = await View.readAttempt();
+    const inputValue = await this.#view.readAttempt();
     this.#validate.validateAttemptNumber(inputValue);
 
     return inputValue;

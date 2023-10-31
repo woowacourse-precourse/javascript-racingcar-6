@@ -1,28 +1,32 @@
 import { Console } from '@woowacourse/mission-utils';
 import { InputView } from './InputView.js';
+import { OutputView } from './OutputView.js';
 import { MESSAGE } from '../constants/Message.js';
 
-// @TODO: 객체에서 클래스로 모듈화
-export const View = {
+export default class View {
+  #outputView = OutputView;
+
+  #inputView = InputView;
+
   async readCarNames() {
-    return await InputView.inputLine(MESSAGE.NAME);
-  },
+    return await this.#inputView.inputLine(MESSAGE.NAME);
+  }
 
   async readAttempt() {
-    return await InputView.inputLine(MESSAGE.ATTEMPT);
-  },
+    return await this.#inputView.inputLine(MESSAGE.ATTEMPT);
+  }
 
   printResult(result) {
-    Console.print(MESSAGE.RESULT);
+    this.#outputView.printLine(MESSAGE.RESULT);
     result.forEach((round) => {
       round.forEach(({ name, position }) => {
         Console.print(`${name} : ${'-'.repeat(position)}`);
       });
       Console.print('');
     });
-  },
+  }
 
   printWinner(winner) {
-    Console.print(`${MESSAGE.WINNER}${winner}`);
-  },
-};
+    this.#outputView.printLine(`${MESSAGE.WINNER}${winner}`);
+  }
+}
