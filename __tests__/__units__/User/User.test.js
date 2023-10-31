@@ -22,7 +22,7 @@ describe('User 테스트', () => {
 
   it('`accelerate()`를 호출 시 인자가 난수를 기반으로 이상이면 `car`를 `move` 합니다.', () => {
     // given
-    const user = new User();
+    const user = new User('이름');
     const moveSpy = jest.spyOn(user.getCar(), 'move');
 
     // when
