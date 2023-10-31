@@ -18,9 +18,20 @@ class App {
         racingCar.set(name, 0);
       });
 
-      this.checkRacingCarNameInputError(racingCar);
+      await this.checkRacingCarNameInputError(racingCar);
+      await this.getTryCount();
+    } catch (error) {
+      throw error;
+    }
+  }
 
-      console.log(racingCar);
+  async getTryCount() {
+    try {
+      const tryCnt = await Console.readLineAsync(
+        '시도할 횟수는 몇 회인가요?\n'
+      );
+
+      await this.checkTryCountError(parseInt(tryCnt, 10));
     } catch (error) {
       throw error;
     }
@@ -28,9 +39,18 @@ class App {
 
   async checkRacingCarNameInputError(racingCar) {
     racingCar.forEach((value, key) => {
-      if (key === '') throw Error(error.INPUT_NULL_ERROR_MESSAGE);
-      if (key.length > 5) throw Error(error.INPUT_OVER_LENGTH_ERROR_MESSAGE);
+      if (key === '') throw Error(error.INPUT_CAR_NULL_ERROR_MESSAGE);
+      if (key.length > 5)
+        throw Error(error.INPUT_CAR_OVER_LENGTH_ERROR_MESSAGE);
     });
+  }
+
+  async checkTryCountError(tryCnt) {
+    if (tryCnt === '' || tryCnt === null)
+      throw Error(error.INPUT_CNT_NULL_ERROR_MESSAGE);
+    if (tryCnt === 0) throw Error(error.INPUT_CNT_ZERO_ERROR_MESSAGE);
+    if (!/[1-9]/.test(tryCnt))
+      throw Error(error.INPUT_CNT_NOT_NUMBER_ERROR_MESSAGE);
   }
 }
 
