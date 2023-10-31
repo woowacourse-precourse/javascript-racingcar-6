@@ -4,7 +4,7 @@ import { pickRandomNumbInRange } from '../utils/random.js';
 class Car {
   #position = 0;
 
-  static #randomNumbRange = Object.freeze({
+  static randomNumbRange = Object.freeze({
     from: 0,
     to: 9,
   });
@@ -26,7 +26,7 @@ class Car {
   }
 
   static shouldCarMove() {
-    const { from, to } = Car.#randomNumbRange;
+    const { from, to } = Car.randomNumbRange;
     return pickRandomNumbInRange(from, to) >= CONSTANTS.FORWARD_THRESHOLD;
   }
 }
