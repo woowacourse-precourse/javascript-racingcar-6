@@ -24,3 +24,4 @@ export const PRINT = {
 };
 
 export const SET_MOVE_CONDITION = 4;
+export const SET_MAXIMUM_CAR_LENGTH = 4;
