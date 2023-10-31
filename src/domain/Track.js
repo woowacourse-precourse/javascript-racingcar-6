@@ -1,5 +1,6 @@
 import ERROR_MESSAGE from '../constants/error';
 import ApplicationError from '../exceptions/ApplicationError';
+import { invalidInstanceElement, isDuplicated } from '../utils/validator';
 import User from './User';
 
 class Track {
@@ -22,11 +23,11 @@ class Track {
     if (!Array.isArray(users)) {
       throw new ApplicationError(ERROR_MESSAGE.track.isNotArrayUsers);
     }
-    if (users.some((user) => !(user instanceof User))) {
+    if (invalidInstanceElement(users, User)) {
       throw new ApplicationError(ERROR_MESSAGE.track.isExistNotUserInstance);
     }
-    const uniqueNames = users.reduce((names, user) => names.add(user.getName()), new Set());
-    if (uniqueNames.size !== users.length) {
+    const userNames = Array.from(users, (user) => user.getName());
+    if (isDuplicated(userNames)) {
       throw new ApplicationError(ERROR_MESSAGE.track.isDuplicatedUserName);
     }
   }
