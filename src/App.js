@@ -24,7 +24,7 @@ class Car {
 
 class App {
   async play() {
-    this.#controller();
+    await this.#controller();
   }
 
   async #controller() {
@@ -36,11 +36,13 @@ class App {
 
   async #readCarNames() {
     const cars = await MissionUtils.Console.readLineAsync(CAR_NAME_MESSAGE);
-    return cars.split(",");
+    return cars.trim().split(",");
   }
 
   async #readAttempCount() {
-    return MissionUtils.Console.readLineAsync(ATTEMP_COUNT_MESSAGE);
+    const result =
+      await MissionUtils.Console.readLineAsync(ATTEMP_COUNT_MESSAGE);
+    return result.trim();
   }
 
   #race(cars, attemptCount) {
