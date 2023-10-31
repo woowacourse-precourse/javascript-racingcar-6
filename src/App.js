@@ -27,23 +27,20 @@ function createCarArray(carNameArr) {
   return carArr;
 }
 
-function isCarNameOverFiveLetters(carNameArr) {
-  for (const name of carNameArr) {
-    if (name.length > 5) {
-      throw new Error('[ERROR] 자동차 이름은 5자 이하여야 합니다.');
-    }
-  }
-}
-
-function isCarNameEmpty(carNameArr) {
-  if (carNameArr.length === 0) {
-    throw new Error('[ERROR] 자동차 이름을 입력해주세요.');
-  }
-}
-
-function isCarNameSame(carNameArr) {
+function isCarNameValid(carNameArr) {
   const carNameSet = new Set(carNameArr);
-  if (carNameSet.size !== carNameArr.length) {
+  const carNameCount = carNameArr.length;
+
+  if (carNameArr.some((name) => name.length > 5)) {
+    throw new Error('[ERROR] 자동차 이름은 5자 이하여야 합니다.');
+  }
+  if (carNameArr.some((name) => name.length < 1)) {
+    throw new Error('[ERROR] 자동차 이름은 1자 이상이여야 합니다.');
+  }
+  if (carNameCount < 2) {
+    throw new Error('[ERROR] 자동차는 2대 이상이여야 합니다.');
+  }
+  if (carNameSet.size !== carNameCount) {
     throw new Error('[ERROR] 자동차 이름은 중복되지 않아야 합니다.');
   }
 }
@@ -65,16 +62,14 @@ function getWinner(carArr) {
 class App {
   async play() {
     let carNameArr = await this.getCarName();
-    isCarNameEmpty(carNameArr);
-    isCarNameOverFiveLetters(carNameArr);
-    isCarNameSame(carNameArr);
+    isCarNameValid(carNameArr);
 
-    let racingRound = await this.getRoundCount();
+    let roundCount = await this.getRoundCount();
 
     let carArr = createCarArray(carNameArr);
 
     Console.print('\n실행 결과');
-    this.runRace(carArr, racingRound);
+    this.runRace(carArr, roundCount);
     let winners = getWinner(carArr);
     Console.print(`최종 우승자 : ${winners}`);
   }
@@ -86,8 +81,8 @@ class App {
     });
   }
 
-  runRace(carArr, racingRound) {
-    for (let i = 0; i < racingRound; i++) {
+  runRace(carArr, roundCount) {
+    for (let i = 0; i < roundCount; i++) {
       this.oneRound(carArr);
       Console.print('\n');
     }
@@ -108,3 +103,6 @@ class App {
 }
 
 export default App;
+
+const app = new App();
+await app.play();
