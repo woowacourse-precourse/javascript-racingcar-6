@@ -23,7 +23,7 @@ class RoundManager {
     Object.entries(this.carPositions).forEach(([carName, position]) => {
       Console.print(`${carName} : ${position}`);
     });
-    Console.print(); // 각 라운드 별 빈줄 표시
+    Console.print(""); // 각 라운드 별 빈줄 표시
   }
 }
 
