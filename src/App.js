@@ -13,10 +13,10 @@ class App {
   async play() {
     const answer = await Console.readLineAsync(MESSAGE.start);
     this.cars = answer.split(',');
-    if (this.CheckCarsName()) {
+    if (this.isCarListValid()) {
       const playTimes = await Console.readLineAsync(MESSAGE.roundsToPlay);
       this.playTimes = playTimes;
-      if (this.CheckPlayTimes()) {
+      if (this.isRacingAttemptsValid()) {
         return this.StartRacing();
       }
       throw new Error(MESSAGE.notValidPlaytimes);
@@ -24,25 +24,34 @@ class App {
     throw new Error(MESSAGE.notValidCarsName);
   }
 
-  CheckCarsName() {
-    if (this.cars.length > 10 || this.cars.length < 2) return false;
-
-    const hasNotSpace = car => !car.includes(' ');
-    const isNotSpace = car => car.length !== 0;
-    const checkFive = car => car.length <= 5;
-
-    const isValidate = this.cars.every(
-      car => hasNotSpace(car) && isNotSpace(car) && checkFive(car),
-    );
-
-    return isValidate;
+  HasNoSpace(value) {
+    return !value.includes(' ');
   }
 
-  CheckPlayTimes() {
-    const hasNotSpace = number => !number.includes(' ');
+  isCarListValid() {
+    const maxCarListLength = 10;
+    const minCarListLength = 2;
+    const maxCarnameLength = 5;
+
+    const isNotEmpty = car => car.length !== 0;
+    const checkLength = car => car.length <= maxCarnameLength;
+
+    if (
+      this.cars.length > maxCarListLength
+      || this.cars.length < minCarListLength
+    ) {
+      return false;
+    }
+
+    return this.cars.every(
+      car => this.HasNoSpace(car) && isNotEmpty(car) && checkLength(car),
+    );
+  }
+
+  isRacingAttemptsValid() {
     const checkUnderTen = /^(10|[1-9])$/;
 
-    if (checkUnderTen.test(this.playTimes) && hasNotSpace(this.playTimes)) {
+    if (checkUnderTen.test(this.playTimes) && this.HasNoSpace(this.playTimes)) {
       return true;
     }
     return false;
