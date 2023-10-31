@@ -70,7 +70,7 @@ src
 ### errorHandler.js / errorCode.js
 
 목적: 반복되는 코드의 최소화, 담당 기능의 구체화  
-기능: 예외처리된 error 혹은 예상치 못한 error를 Promise.reject()로 반환
+기능: 예외처리된 error 혹은 예상치 못한 error를 throw
 
 > 1.  예외 처리 지점에서 오류 코드를 받는다
 > 2.  오류 코드가 정의되어 있을 경우 해당 메시지를 반환한다
