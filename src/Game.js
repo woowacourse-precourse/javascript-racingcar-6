@@ -33,6 +33,13 @@ class Game {
     return this.carsMap;
   }
 
+  printRound() {
+    const roundEndResult = this.goStop();
+    roundEndResult.forEach((value, key) => {
+      MissionUtils.Console.print(`${key}: ${value}`);
+    });
+  }
+
   mostMoved() {
     this.printRound();
     const mostMoved = [];
