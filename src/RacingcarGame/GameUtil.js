@@ -1,4 +1,3 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
 import { ErrorMessage } from "../Message";
 
 class GameUtil {
@@ -10,11 +9,9 @@ class GameUtil {
 
   attemptsValidator(attempts) {
     if (attempts <= 0) {
-      MissionUtils.Console.print(ErrorMessage.ATTEMPTS_VALID_NUM);
       throw new Error(ErrorMessage.ATTEMPTS_VALID_NUM);
     }
     if (/\D/.test(attempts)) {
-      MissionUtils.Console.print(ErrorMessage.ATTEMPTS_TYPE);
       throw new Error(ErrorMessage.ATTEMPTS_TYPE);
     }
   }
