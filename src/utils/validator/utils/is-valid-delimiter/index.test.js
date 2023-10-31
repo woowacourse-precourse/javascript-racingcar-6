@@ -1,4 +1,4 @@
-import SYSTEM from '../../../../constants/System.js';
+import { SYSTEM } from '../../../../constants/System.js';
 import isValidDelimiter from './index.js';
 
 describe('is-valid-delimiter', () => {
