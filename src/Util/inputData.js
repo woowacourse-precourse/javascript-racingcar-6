@@ -9,10 +9,12 @@ const getPlayNumber = async () => {
   return inputNumber;
 };
 
-const getCarName = async (carName) => {
+const getCarName = async () => {
   const inputNameArr = (await Console.readLineAsync(INFO_MESSAGE.carName)).split(',').map((name) => name.trim());
   checkErrorInputName(inputNameArr);
+  const carName = new Map();
   inputNameArr.forEach((name) => carName.set(name, ''));
+  return carName;
 };
 
 export { getPlayNumber, getCarName };
