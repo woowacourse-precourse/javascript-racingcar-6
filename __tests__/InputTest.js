@@ -1,6 +1,7 @@
 import validateUserInput from '../src/Utils/Validator';
 import { IS_EMPTY_ERROR, VALIDATE_CAR_NAME_ERROR } from '../src/Utils/Define';
 import InputView from '../src/view/InputView';
+import userInput from '../src/view/View';
 // eslint-disable-next-line import/order
 import { Console } from '@woowacourse/mission-utils';
 
@@ -46,6 +47,16 @@ describe('유저 입력 테스트', () => {
 
     expect(result).toContain('Car1');
   });
+});
+
+test('유저 전체 입력 확인 (userInput)', async () => {
+  const testInputs = ['Car1,Car2,Car3', '3'];
+  mockReadLineAsync(testInputs);
+
+  const result = await userInput();
+
+  expect(result).toContain('Car1');
+  expect(result).toContain('3');
 });
 
 afterEach(() => {
