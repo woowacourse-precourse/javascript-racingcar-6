@@ -2,6 +2,7 @@ export const DEFAULT = {
   MIN_RANGE: 0,
   MAX_RANGE: 9,
   CARS_MIN_LENGTH: 2,
+  NAME_MIN_LENGTH: 1,
   NAME_MAX_LENGTH: 5,
   MOVABLE_MIN: 4,
 };
