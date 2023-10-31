@@ -56,12 +56,7 @@ class App {
 
   raceCars(carStatus, moveTimes) {
     for (let i = 0; i < moveTimes; i++) {
-      for (const [name, moves] of Object.entries(carStatus)) {
-        if (MissionUtils.Random.pickNumberInRange(0, 9) >= 4) {
-          carStatus[name] += "-";
-        }
-        MissionUtils.Console.print(`${name} : ${carStatus[name]}`);
-      }
+      this.raceOneRound(carStatus);
     }
     this.declareWinners(carStatus);
   }
