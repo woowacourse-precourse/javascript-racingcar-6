@@ -134,4 +134,21 @@ describe('Computer 클래스 테스트', () => {
 
     expect(logSpy).toHaveBeenNthCalledWith(4, '');
   });
+
+  test('judgeWinner 메서드 테스트', () => {
+    const computer = new Computer();
+    const logspy = getLogSpy();
+    const testNumber = [4,2,5,7,7];
+
+    computer.pushCarList('pobi,john,jay,mike,aaaaa');
+
+    for (let i = 0; i < 5; i += 1) {
+      for (let j = 0; j < testNumber[i]; j+= 1) {
+        computer.carList[i].goingCount = true;
+      }
+    }
+
+    computer.judgeWinner();
+    expect(logspy).toHaveBeenNthCalledWith(1, '최종 우승자 : mike, aaaaa');
+  })
 });
