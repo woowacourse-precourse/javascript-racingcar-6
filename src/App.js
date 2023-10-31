@@ -2,8 +2,10 @@ import { Random, Console } from '@woowacourse/mission-utils';
 class App {
   async play() {
     try {
-      const players = await this.userInput(1);
+      let players = await this.userInput(1);
       this.validateInputPlayers(players);
+      players = players = players.split(',');
+      console.log(players);
       const games = await this.userInput(2);
       this.validateGames(games);
     } catch (e) {
@@ -28,6 +30,7 @@ class App {
     }
     players.map((player) => this.validatePlayer(player));
     console.log('올바른 입력입니다.');
+    return players;
   }
   validatePlayer(player) {
     console.log(player);
@@ -46,7 +49,27 @@ class App {
   Exceptionoccurred() {
     throw new Error('[ERROR] 잘못된 입력입니다.');
   }
+  startGame(players, games) {
+    let playersMove = new Array(players.length);
+    playersMove.fill(0);
+    for (let i = 0; i < Number(games); i++) {
+      playersMove = this.moveOrWait(players, playersMove);
+      console.log(playersMove);
+    }
+  }
+  moveOrWait(players, playersMove) {
+    for (let i = 0; i < players.length; i++) {
+      if (this.createRandomNumber() >= 4) {
+        playersMove[i]++;
+      }
+    }
+    return playersMove;
+  }
+  createRandomNumber() {
+    const randomNumber = Random.pickNumberInRange(0, 9);
+    return randomNumber;
+  }
 }
 const app = new App();
-app.play();
+app.startGame(['pobi', 'woni', 'jun'], '5');
 export default App;
