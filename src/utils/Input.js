@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import { validateCarNames } from './Validation.js';
+import { validateCarNames, validateTryCount } from './Validation.js';
 
 //자동차 이름 입력받기
 const getCarNames = async () => {
@@ -15,8 +15,9 @@ const getCarNames = async () => {
 //시도 횟수 입력받기
 const getTryCount = async () => {
   const tryCount = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+  validateTryCount(tryCount);
   Console.print('');
-  return Number(playCount);
+  return Number(tryCount);
 };
 
 export { getCarNames, getTryCount };
