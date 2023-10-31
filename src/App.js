@@ -8,7 +8,6 @@ class App {
     const CAR = await Console.readLineAsync('');
     const CAR_LIST = CAR.split(',');
 
-    this.validateContinuousComma(CAR);
     this.validateCarNameLength(CAR_LIST);
 
     Console.print('시도할 횟수는 몇 회인가요?');
@@ -58,11 +57,11 @@ class App {
   validateCarNameLength(carList) {
     carList.forEach((car) => {
       if (car.length === 0) {
-        throw new Error('[ERROR] 자동차 이름을 입력해 주세요');
+        throw new Error('[ERROR] 자동차 이름을 한 글자 이상 입력해 주세요.');
       }
 
       if (car.length > 5) {
-        throw new Error('[ERROR] 자동차 이름은 5자 이하로 입력해 주세요.');
+        throw new Error('[ERROR] 자동차 이름을 5자 이하로 입력해 주세요.');
       }
     });
   }
@@ -73,19 +72,11 @@ class App {
     }
 
     if (count === '0') {
-      throw new Error('[ERROR] 시도할 횟수는 1회 이상 입력해 주세요');
+      throw new Error('[ERROR] 시도할 횟수를 1회 이상 입력해 주세요');
     }
 
     if (/[^1-9]/.test(count)) {
       throw new Error('[ERROR] 숫자만 입력 가능합니다.');
-    }
-  }
-
-  validateContinuousComma(word) {
-    if (/,,+/.test(word)) {
-      throw new Error(
-        '[ERROR] 쉼표(,)는 자동차 이름 사이에 한번만 입력해 주세요'
-      );
     }
   }
 
