@@ -16,15 +16,16 @@ class CarRacingController {
     await this.inputTrialNumber();
     this.carRacingView.printResultMessage();
 
+    const trialNumber = this.carRacingModel.getTrialNumber();
     const carData = this.carRacingModel.getCarData();
 
-    carData.forEach(() => {
+    for (let i = 0; i < trialNumber; i++) {
       this.carRacingModel.moveOrStay(carData);
       this.carRacingView.printResult(carData);
       this.carRacingView.lineBreak();
-    });
+    }
 
-    this.carRacingView.printWinner(carData);
+    this.carRacingView.printWinner(this.carRacingModel.getCarData());
   }
 
   async inputCarName() {
