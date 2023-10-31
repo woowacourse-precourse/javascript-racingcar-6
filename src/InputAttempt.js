@@ -15,5 +15,6 @@ export default async function InputAttempt() {
 		return Number(answer);
 	} catch (error) {
 		Console.print(`${error.message}`);
+		throw error;
 	}
 }
