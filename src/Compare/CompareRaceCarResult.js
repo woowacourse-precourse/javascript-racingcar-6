@@ -1,4 +1,4 @@
-import { Console } from "@woowacourse/mission-utils";
+import CarRaceCondition from "../Condition/CarRaceCondition";
 
 class CompareRaceCarResult {
   #raceCars;
