@@ -1,22 +1,15 @@
 import { Console } from '@woowacourse/mission-utils';
-import Decision from './Decision.js';
+import UpdatedInfo from './UpdatedInfo.js';
 import MESSAGE from '../constants/message.js';
 
 class Print {
   static executeProcess(cars, numberOfTimes) {
     Console.print(MESSAGE.result.execution);
-    const updatedCars = new Map([...cars]);
+    let updatedCars = new Map([...cars]);
     for (let i = 1; i <= numberOfTimes; i += 1) {
-      const result = [];
-      updatedCars.forEach((value, key) => {
-        let moveNum = value;
-        if (Decision.moveForward()) {
-          moveNum += 1;
-          updatedCars.set(key, moveNum);
-        }
-        result.push(`${key} : ${MESSAGE.result.distance.repeat(moveNum)}\n`);
-      });
-      Console.print(result.join(''));
+      const [message, info] = UpdatedInfo.getCurrentCarInfo(updatedCars);
+      Console.print(message);
+      updatedCars = info;
     }
     return updatedCars;
   }
