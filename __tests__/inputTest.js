@@ -43,11 +43,12 @@ describe('getAndValidateRacingRounds', () => {
     // given
     const inputs = ['7'];
     mockQuestions(inputs);
+
     // when
     const app = new App();
     await app.getAndValidateRacingRounds();
-    // then
 
+    // then
     expect(app.ROUNDS).toBe(7);
   });
 });

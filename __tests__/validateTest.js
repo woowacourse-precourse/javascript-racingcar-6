@@ -52,3 +52,16 @@ describe('validatePlayerName', () => {
     ]);
   });
 });
+
+describe('validateRacingRounds', () => {
+  test('사용자 입력 레이싱 라운드 숫자 유효성 검사 - 무효한 입력', () => {
+    // given
+    const inputs = 'abc';
+
+    // when
+    const app = new App();
+
+    // then
+    expect(() => app.validateRacingRounds(inputs)).toThrow('[ERROR]');
+  });
+});
