@@ -14,6 +14,13 @@ export function validateCarName(carName) {
   }
 }
 
+export function validateNameDuplicate(carList) {
+  const carSet = new Set(carList);
+  if (carSet.size !== carList.length) {
+    throw new Error(RACING_ERROR.NAME_DUPLICATE);
+  }
+}
+
 /**
  * 이동 횟수 유효성 검사 함수
  * @param {number} count

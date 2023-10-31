@@ -1,6 +1,6 @@
 import RacingCar from '../model/RacingCar.js';
 import RacingGame from '../model/RacingGame.js';
-import { validateMoveCount } from '../utils/validate.js';
+import { validateMoveCount, validateNameDuplicate } from '../utils/validate.js';
 import inputView from '../view/inputView.js';
 import outputView from '../view/outputView.js';
 
@@ -33,6 +33,8 @@ class RacingGameController {
    * @param {string[]} carList
    */
   createNewCars(carList) {
+    validateNameDuplicate(carList);
+
     return carList.map((carName) => {
       const car = new RacingCar();
       car.setCarName = carName;

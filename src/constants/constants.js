@@ -22,6 +22,7 @@ export const RACING_ERROR = Object.freeze({
   MAX_CAR_NAME: 5,
   NAME_LENGTH_ERROR: '[ERROR] 자동차 이름은 5자 이하만 가능합니다.',
   NAME_EMPTY_ERROR: '[ERROR] 자동차 이름이 비었습니다.',
+  NAME_DUPLICATE: '[ERROR] 자동차 이름이 중복되었습니다.',
   MOVE_COUNT_ONLY_NUMBER: '[ERROR] 숫자만 입력해야 합니다.',
   MOVE_COUNT_POSITIVE_NUMBER:
     '[ERROR] 이동 횟수는 오직 양의 정수만 입력해야 합니다.',
