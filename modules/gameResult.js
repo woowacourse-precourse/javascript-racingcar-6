@@ -1,15 +1,4 @@
 import { Console } from '@woowacourse/mission-utils';
-
-const printGameResult = (calcuratedScoreBoard) => {
-  const winner = findWhoIsWinner(calcuratedScoreBoard);
-  const winningString = winner.reduce(
-    (acc, cur) => (acc += `${cur.name}, `),
-    '최종 우승자 : '
-  );
-
-  Console.print(winningString.substring(0, winningString.length - 2));
-};
-
 const findWhoIsWinner = (calcuratedScoreBoard) => {
   const winner = [];
 
@@ -34,4 +23,14 @@ const findWhoIsWinner = (calcuratedScoreBoard) => {
   return winner;
 };
 
-export { printGameResult };
+const printGameResult = (calcuratedScoreBoard) => {
+  const winner = findWhoIsWinner(calcuratedScoreBoard);
+  const winningString = winner.reduce(
+    (acc, cur) => (acc += `${cur.name}, `),
+    '최종 우승자 : '
+  );
+
+  Console.print(winningString.substring(0, winningString.length - 2));
+};
+
+export { printGameResult, findWhoIsWinner };
