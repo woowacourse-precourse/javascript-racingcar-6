@@ -2,7 +2,7 @@ import { Console, Random } from '@woowacourse/mission-utils';
 import { PRINT_MESSAGE } from '../constants/messages';
 import OPTIONS from '../constants/options';
 
-class RacingGame {
+class GameController {
   constructor({ racingCars, playCount }) {
     this.racingCars = racingCars;
     this.playCount = playCount;
@@ -57,4 +57,5 @@ class RacingGame {
     return winner;
   }
 }
-export default RacingGame;
+
+export default GameController;

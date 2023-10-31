@@ -2,7 +2,7 @@ import { Console } from '@woowacourse/mission-utils';
 import { INPUT_MESSAGE } from '../constants/messages';
 import ErrorHandler from './ErrorHandler';
 
-class RacingGameInputManager {
+class GameInputManager {
   constructor() {
     this.racingInfo = { racingCars: [], playCount: 0 };
     this.racingCars = [];
@@ -37,4 +37,4 @@ class RacingGameInputManager {
   }
 }
 
-export default RacingGameInputManager;
+export default GameInputManager;

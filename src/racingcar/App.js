@@ -1,13 +1,12 @@
-import RacingGame from './lib/classes/RacingGame';
-import RacingGameInputManager from './lib/classes/RacingGameInputManager';
+import GameController from './lib/classes/GameController';
+import GameInputManager from './lib/classes/GameInputManager';
 
 class App {
   async play() {
-    const racingGameInputManager = new RacingGameInputManager();
-    const { racingCars, playCount } =
-      await racingGameInputManager.getRacingInfo();
-    const racingGame = new RacingGame({ racingCars, playCount });
-    racingGame.startRacingGame();
+    const gameInputManager = new GameInputManager();
+    const { racingCars, playCount } = await gameInputManager.getRacingInfo();
+    const gameController = new GameController({ racingCars, playCount });
+    gameController.startRacingGame();
   }
 }
 
