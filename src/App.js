@@ -18,6 +18,8 @@ class App {
     Console.print('');
 
     await this.executionResult(userInput);
+
+    await this.finalWinner();
     
   }
 
@@ -86,6 +88,16 @@ class App {
     }
   }
 
+  finalWinner() {
+    const fowardMax = Math.max.apply(null, this.#countFowardMovesForEachCar);
+    const winnerArr = [];
+    for (let i = 0; i < this.#carNames.length; i++){
+      if (fowardMax === this.#countFowardMovesForEachCar[i]) {
+        winnerArr.push(this.#carNames[i]);
+      }
+    }
+    return Console.print(Messages.FINAL_WINNER + winnerArr.join(', '));
+  }  
 }
 
 const app = new App();
