@@ -21,7 +21,7 @@ class Model {
     return this;
   }
 
-  get cars() {
+  getCars() {
     return this.cars;
   }
 }
