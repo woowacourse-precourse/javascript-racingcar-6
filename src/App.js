@@ -15,7 +15,7 @@ class App {
     this.makeCarsInfo();
     await this.getRound();
     positionHandleIterator(this.carsArr, this.round);
-    this.findWinner(this.carsArr);
+    this.findWinners(this.carsArr);
     this.printWinners(this.winner);
   }
 
@@ -42,7 +42,7 @@ class App {
     validateRound(this.round);
   }
 
-  findWinner = (carsArr) => {
+  findWinners = (carsArr) => {
     let winner = this.winner;
     let maxPosition = 0;
     carsArr.forEach((carsInfo) => {

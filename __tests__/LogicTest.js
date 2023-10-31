@@ -14,7 +14,7 @@ describe("로직 테스트", () => {
       { name: "dong", position: 2 },
       { name: "wan", position: 1 },
     ];
-    const result = app.findWinner(carsArr);
+    const result = app.findWinners(carsArr);
     expect(result).toContain("dong");
   });
 
@@ -24,7 +24,7 @@ describe("로직 테스트", () => {
       { name: "dong", position: 2 },
       { name: "wan", position: 2 },
     ];
-    const result = app.findWinner(carsArr);
+    const result = app.findWinners(carsArr);
     expect(result).toContain("dong", "wan");
   });
 });
