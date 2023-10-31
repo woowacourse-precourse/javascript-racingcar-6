@@ -3,6 +3,7 @@ import { MissionUtils } from '@woowacourse/mission-utils';
 import Check from '../src/module/Check.js';
 import initializeCarData from '../src/module/InitializeCarData.js';
 import printFinish from '../src/module/Result.js';
+import getUserInput from '../src/module/Start.js';
 
 const mockQuestions = inputs => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -63,26 +64,43 @@ describe('자동차 경주 게임', () => {
     },
   );
 
+  test('유효한 자동차 이름과 횟수 입력', async () => {
+    const readLineAsyncMock = jest.spyOn(MissionUtils.Console, 'readLineAsync');
+    readLineAsyncMock.mockReturnValueOnce('가,나,다');
+    readLineAsyncMock.mockReturnValueOnce('5');
+    const userInput = await getUserInput();
+    expect(userInput).toEqual({
+      userCount: 5,
+      carNames: ['가', '나', '다'],
+    });
+  });
+
   test('이름에 대한 예외 처리 추가', async () => {
-    const app = new App();
-    app.carNames = ['', '   ', '123456'];
-    expect(Check.isValidCar(app.carNames)).toBe(false);
+    const readLineAsyncMock = jest.spyOn(MissionUtils.Console, 'readLineAsync');
+    readLineAsyncMock.mockReturnValueOnce(',   ,123456');
+    readLineAsyncMock.mockReturnValueOnce('5');
+    await expect(getUserInput()).rejects.toThrow('[ERROR] 자동차 이름을 잘못 입력했습니다.');
   });
 
   test('횟수가 음수일 때 예외 처리', async () => {
-    expect(Check.isValidNumber(-1)).toBe(false);
+    const readLineAsyncMock = jest.spyOn(MissionUtils.Console, 'readLineAsync');
+    readLineAsyncMock.mockReturnValueOnce('가,나,다');
+    readLineAsyncMock.mockReturnValueOnce('-1');
+    await expect(getUserInput()).rejects.toThrow('[ERROR] 시도 횟수를 잘못 입력했습니다.');
   });
 
   test('횟수가 undefined일 때 예외 처리', async () => {
-    expect(Check.isValidNumber(undefined)).toBe(false);
+    const readLineAsyncMock = jest.spyOn(MissionUtils.Console, 'readLineAsync');
+    readLineAsyncMock.mockReturnValueOnce('가,나,다');
+    readLineAsyncMock.mockReturnValueOnce(undefined);
+    await expect(getUserInput()).rejects.toThrow('[ERROR] 시도 횟수를 잘못 입력했습니다.');
   });
 
   test('횟수가 문자일 때 예외 처리', async () => {
-    expect(Check.isValidNumber('test')).toBe(false);
-  });
-
-  test('횟수가 숫자일 때 예외 처리', async () => {
-    expect(Check.isValidNumber(9)).toBe(true);
+    const readLineAsyncMock = jest.spyOn(MissionUtils.Console, 'readLineAsync');
+    readLineAsyncMock.mockReturnValueOnce('가,나,다');
+    readLineAsyncMock.mockReturnValueOnce('abc');
+    await expect(getUserInput()).rejects.toThrow('[ERROR] 시도 횟수를 잘못 입력했습니다.');
   });
 
   test('차 이름 목록 객체 value 초기화', () => {
