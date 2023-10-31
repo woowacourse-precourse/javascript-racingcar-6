@@ -1,4 +1,4 @@
-import { Console } from '@woowacourse/mission-utils';
+import { MissionUtils } from '@woowacourse/mission-utils';
 
 class Result {
   FinalResult(carList) {
@@ -13,7 +13,7 @@ class Result {
         maxPositionCars.push(car.name);
       }
     });
-    Console.print(`최종 우승자 : ${maxPositionCars}`);
+    MissionUtils.Console.print(`최종 우승자 : ${maxPositionCars.join(', ')}`);
   }
 }
 
