@@ -16,6 +16,7 @@ class RacingCar {
     await this.setCarList();
     const times = await this.getRepeatTime();
     this.repeatMoveOrStop(times);
+    this.chooseWinner();
   }
 
   async setCarList() {
@@ -34,7 +35,6 @@ class RacingCar {
       this.determineMoveByRandom();
       this.printCarsDistance();
     }
-    this.chooseWinner();
   }
 
   determineMoveByRandom() {
