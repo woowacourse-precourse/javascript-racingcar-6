@@ -6,7 +6,7 @@ export class App {
     this.getInputValue();
   }
 
-  startGame(params) {}
+  startGame() {}
 
   async getInputValue() {
     Console.print(MESSAGE.START);
@@ -15,17 +15,6 @@ export class App {
     const tryNumber = await Console.readLineAsync("");
 
     return { carNames, tryNumber };
-  }
-
-  gameStart(tryNumber) {
-    Console.print("실행 결과");
-    for (let i = 0; i < tryNumber; i++) {
-      this.resultResult;
-    }
-  }
-
-  resultOutput(...carNames) {
-    carNames.forEach((name) => Console.print(`${name} : `));
   }
 }
 
