@@ -20,6 +20,7 @@ class Referee {
   }
 
   async getUserInputs() {
+    this.#cars = [];
     const carNames = await InputView.readCarNames();
     this.saveCarNames(carNames);
     this.attemptCounts = await InputView.readAttemptCounts();
@@ -37,6 +38,8 @@ class Referee {
       this.moveCars();
       this.attemptCounts -= 1;
     }
+    const winners = this.getWinners();
+    OutputView.printWinners(winners);
   }
 
   moveCars() {
@@ -44,6 +47,12 @@ class Referee {
       car.move();
       OutputView.printMoveCar(car);
     });
+  }
+
+  getWinners() {
+    const maxPosition = Math.max(...this.#cars.map(car => car.position));
+    const cars = this.#cars.filter(car => car.position === maxPosition);
+    return cars.map(car => car.name);
   }
 }
 

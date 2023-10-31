@@ -1,4 +1,4 @@
-const { Console, RACING_RESULT } = require('./Constant');
+const { Console, RACING_RESULT, RACING_FINAL_WINNER } = require('./Constant');
 
 const OutputView = {
   printRacingResult() {
@@ -11,6 +11,14 @@ const OutputView = {
 
   printMoveCar(carInfo) {
     Console.print(`${carInfo.name} : ${'-'.repeat(carInfo.position)}`);
+  },
+
+  printWinners(winners) {
+    if (winners.length > 1) {
+      Console.print(`${RACING_FINAL_WINNER}${winners.join(', ')}`);
+    } else {
+      Console.print(`${RACING_FINAL_WINNER}${winners}`);
+    }
   },
 };
 
