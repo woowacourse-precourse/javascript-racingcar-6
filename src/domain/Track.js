@@ -1,8 +1,8 @@
-import ERROR_MESSAGE from '../constants/error';
-import ApplicationError from '../exceptions/ApplicationError';
-import { invalidInstanceElement, isDuplicated } from '../utils/validator';
-import Car from './Car';
-import User from './User';
+import ERROR_MESSAGE from '../constants/error.js';
+import ApplicationError from '../exceptions/ApplicationError.js';
+import { invalidInstanceElement, isDuplicated } from '../utils/validator.js';
+import Car from './Car.js';
+import User from './User.js';
 
 class Track {
   static MIN_LAP_COUNT = 1;

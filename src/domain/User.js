@@ -1,7 +1,7 @@
 import { Random } from '@woowacourse/mission-utils';
-import Car from './Car';
-import ApplicationError from '../exceptions/ApplicationError';
-import ERROR_MESSAGE from '../constants/error';
+import Car from './Car.js';
+import ApplicationError from '../exceptions/ApplicationError.js';
+import ERROR_MESSAGE from '../constants/error.js';
 
 class User {
   static MAX_NAME_LENGTH = 5;

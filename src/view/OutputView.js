@@ -4,6 +4,10 @@ const OutputView = Object.freeze({
   print(message) {
     Console.print(message);
   },
+
+  lineBrake() {
+    OutputView.print('\n');
+  },
 });
 
 export default OutputView;
