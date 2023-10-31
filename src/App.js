@@ -71,6 +71,7 @@ class App {
     const maxMoveCount = sortedCars[0].moveCount;
     const winners = this.findWinners(sortedCars, maxMoveCount);
     const winnerNames = this.extractWinnerNames(winners);
+    Console.print(this.generateWinnerResultString(winnerNames));
   }
 
   sortMoveCount() {
@@ -83,6 +84,10 @@ class App {
 
   extractWinnerNames(winners) {
     return winners.map((winner) => winner.name);
+  }
+
+  generateWinnerResultString(winners) {
+    return `최종 우승자 : ${winners.join(', ')}`;
   }
 }
 
