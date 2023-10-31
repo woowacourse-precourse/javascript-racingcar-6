@@ -5,21 +5,34 @@ class Input {
   static async readCarString() {
     const input = await Console.readLineAsync(InGameMessages.PRINT_INPUT_CARS);
     const splittedString = input.split(',');
-    this.checkCarInput(splittedString);
+    Input.checkCarInput(splittedString);
     return splittedString;
   }
 
   static checkCarInput(input) {
-    input.map((str) => {
-      if (str.length > 5) throw new Error(ErrorMessages.PRINT_TOO_LONG_NAME);
+    const set = new Set();
+
+    input.forEach((str) => {
+      if (str.length > 5) throw new Error(ErrorMessages.ERROR_TOO_LONG_NAME);
+      set.add(str);
     });
+
+    if (set.size !== input.length)
+      throw new Error(ErrorMessages.ERROR_SAME_NAME_EXIST);
   }
 
   static async readAttemptString() {
     const input = await Console.readLineAsync(
       InGameMessages.PRINT_INPUT_ATTEMPT,
     );
-    return parseInt(input, 10);
+    return Input.checkAttemptInput(input);
+  }
+
+  static checkAttemptInput(input) {
+    const parsedResult = parseInt(input, 10);
+    if (Number.isNaN(parsedResult))
+      throw new Error(ErrorMessages.ERROR_NOT_A_NUMBER);
+    return parsedResult;
   }
 }
 
