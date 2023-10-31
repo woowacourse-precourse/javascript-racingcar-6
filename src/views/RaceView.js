@@ -1,4 +1,4 @@
-import { MESSAGES, ERROR_MESSAGES } from "../constants.js";
+import { MESSAGES, ERROR_MESSAGES } from "../constants/Messages.js";
 import { Console } from "@woowacourse/mission-utils";
 
 export default class RaceView {
