@@ -1,4 +1,4 @@
-import Validator from '../src/util/Validator.js';
+import Validator from '../src/utils/Validator.js';
 
 describe('Validator', () => {
   test('자동차 이름 유효성 검사', () => {

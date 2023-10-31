@@ -1,19 +1,19 @@
-import Validator from '../util/Validator.js';
+import Validator from '../utils/Validator.js';
 
 class Car {
   convertStringToMap(carNames) {
     Validator.validateCarNames(carNames);
 
-    const carList = carNames
+    const cars = carNames
       .split(',')
       .map(string => string.trim())
       .filter(string => string !== '');
-    const carMap = new Map();
+    const startLine = new Map();
 
-    carList.forEach(carName => {
-      carMap.set(carName, 0);
+    cars.forEach(carName => {
+      startLine.set(carName, 0);
     });
-    return carMap;
+    return startLine;
   }
 }
 
