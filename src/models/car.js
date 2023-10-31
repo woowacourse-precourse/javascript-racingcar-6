@@ -4,4 +4,3 @@ export class Car {
     this.trackStatus = "";
   }
 }
-
