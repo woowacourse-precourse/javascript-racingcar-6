@@ -1,5 +1,5 @@
-import RacingInput from "./RacingInput";
-import RacingScore from "./RacingScore";
+import RacingInput from "./RacingCar/RacingInput";
+import RacingScore from "./RacingCar/RacingScore";
 
 class App {
   async play() {
