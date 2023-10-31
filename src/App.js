@@ -102,7 +102,7 @@ class App {
   async play() {
     const car = await getCar();
     const tryNum = await getTryNum();
-    let carGoCount = {}; // 차 이름 : 전진 수
+    let carGoCount = {}; // {차 이름 : 전진 수}
     car.map((e) => {
       carGoCount[e] = 0;
     });
@@ -112,6 +112,3 @@ class App {
 }
 
 export default App;
-
-const app = new App();
-app.play();
