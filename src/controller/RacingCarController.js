@@ -1,5 +1,4 @@
 /* eslint-disable lines-between-class-members */
-import { Console } from '@woowacourse/mission-utils';
 import InputView from '../view/InputView';
 import OutputView from '../view/OutputView';
 import CarPlayers from '../model/CarPlayers';
@@ -21,11 +20,11 @@ class RacingCarController {
     this.#gameResult = new GameResult();
   }
 
-  async play(){
+  async start(){
     await this.getCarsName();
     this.setGameResult();
     await this.getMoveCount();
-    this.moveCars();
+    this.playCountGames();
     this.showWinner();
   }
 
@@ -44,22 +43,28 @@ class RacingCarController {
     this.#gameResult.setResult(len);
   }
 
-  moveCars(){
-    const totalMove = this.#moveCount.getCount();
-    const players = this.#carPlayers.getPlayers();
-    const result = this.#gameResult.getResult();
+  playCountGames(){
+    let totalMove = this.#moveCount.getCount();
     this.#outputView.printGameStart();
-    for(let i = 1; i <= totalMove; i+=1){
-      players.forEach((player, idx) => {
-        this.#gameResult.moveCarsResult(idx);
-        this.#outputView.printGameResult(player, result[idx]);
-      })
-      Console.print('\n');
+    while(totalMove > 0){
+      this.moveEachCars();
+      totalMove -= 1;
     }
   }
 
+  moveEachCars(){
+    const players = this.#carPlayers.getPlayers();
+    const result = this.#gameResult.getResult();
+    players.forEach((player, idx) => {
+      this.#gameResult.moveCarsResult(idx);
+      this.#outputView.printGameResult(player, result[idx]);
+    })
+    this.#outputView.printLineBreak();
+  }
+
   showWinner(){
-    this.#gameResult.setWinner();
+    const players = this.#carPlayers.getPlayers();
+    this.#gameResult.setWinner(players);
     const winner = this.#gameResult.getWinner();
     this.#outputView.printWinner(winner);
   }

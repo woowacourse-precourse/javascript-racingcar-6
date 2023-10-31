@@ -16,8 +16,8 @@ export const isLenFive = (strArr) => {
 }
 
 export const isUnique = (strArr) => {
-  const uniqueArr = [...new Set(strArr)];
-  const result = strArr.length === uniqueArr.length;
+  const uniqueArr = new Set(strArr);
+  const result = strArr.length === uniqueArr.size;
   if(!result) throw new Error(ERROR_MESSAGE.UNIQUE);
 }
 

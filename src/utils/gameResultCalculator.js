@@ -3,7 +3,10 @@ export const calculateLongLen = (strArr) => {
   return Math.max(...lenArr);
 }
 
-export const findSameLenElement = (strArr, len) => {
-  const result = strArr.filter(str => str.length === len);
+export const findSameLenPlayer = (strArr, players, len) => {
+  const result = [];
+  strArr.forEach((str, idx)=> {
+    if(str.length === len) result.push(players[idx]);
+  })
   return result;
 }

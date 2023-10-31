@@ -1,4 +1,3 @@
-/* eslint-disable class-methods-use-this */
 import { Console } from '@woowacourse/mission-utils';
 import { INPUT_MESSAGE } from '../constants/message';
 

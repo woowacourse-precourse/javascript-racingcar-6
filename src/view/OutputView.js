@@ -1,4 +1,3 @@
-/* eslint-disable class-methods-use-this */
 import { Console } from '@woowacourse/mission-utils';
 import { OUTPUT_MESSAGE } from '../constants/message';
 
@@ -13,6 +12,10 @@ class OutputView {
 
   printWinner(winner){
     Console.print(OUTPUT_MESSAGE.WINNER + winner);
+  }
+
+  printLineBreak(){
+    Console.print('\n');
   }
 }
 

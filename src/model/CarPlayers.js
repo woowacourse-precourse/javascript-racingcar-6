@@ -1,4 +1,3 @@
-/* eslint-disable lines-between-class-members */
 import { validateCarsName } from '../utils/carsNameValidator';
 import { strToStrArr } from '../utils/typeConvertor';
 

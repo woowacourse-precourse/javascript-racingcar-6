@@ -23,5 +23,6 @@ module.exports = {
     'operator-linebreak': ['error', 'before'],
     // 함수의 길이 제한 
     'max-lines-per-function': ['error', { max: 15 }],
+    'class-methods-use-this': 'warn',
   },
 };

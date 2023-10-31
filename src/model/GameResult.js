@@ -1,6 +1,6 @@
 /* eslint-disable lines-between-class-members */
 import randomNumGenerator from '../utils/randomNumGenerator';
-import { calculateLongLen, findSameLenElement } from '../utils/gameResultCalculator';
+import { calculateLongLen, findSameLenPlayer } from '../utils/gameResultCalculator';
 import { strArrTostr } from '../utils/typeConvertor';
 import { MOVE_NUM, MOVE_STR } from '../constants/constants';
 
@@ -21,9 +21,9 @@ class GameResult {
     return this.#result;
   }
 
-  setWinner(){
+  setWinner(players){
     const longLen = calculateLongLen(this.#result);
-    const winnerArr = findSameLenElement(this.#result, longLen);
+    const winnerArr = findSameLenPlayer(this.#result, players, longLen);
     this.#winner = strArrTostr(winnerArr);
   }
 
