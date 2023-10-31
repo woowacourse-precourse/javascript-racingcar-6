@@ -11,7 +11,9 @@ class CarRaceGameController {
   }
 
   async InputRaceCarNumberOfAttempts() {
-    await Input.readInputRaceCarNumberOfAttempts((input) => {});
+    await Input.readInputRaceCarNumberOfAttempts((input) => {
+      this.#raceCars.setAttempts(input);
+    });
   }
 
   async setRaceCars(racecars) {
