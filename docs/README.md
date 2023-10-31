@@ -96,6 +96,7 @@ members.map((member) => member).join(','); // "east,west,south"
   - 쉼표가 맨 앞이나 맨 뒤에 입력된경우 Error 를 throw 한다.
   - 이름안에 공백이 포함되는 경우엔 Error를 throw 한다.
   - 이름에 숫자, 영문, 한글이 아닌 다른 문자가 들어 갈 경우 Error를 throw 한다.
+  - 자동차는 최소 2대 이상이어야하며, 1대만 입력했을시 Error를 throw 한다.
 
 ## 2. 이동 할 횟수를 입력 받는다.
 
