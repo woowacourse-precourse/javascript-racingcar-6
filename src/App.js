@@ -1,4 +1,4 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Console, MissionUtils } from "@woowacourse/mission-utils";
 class App {
   constructor() {
     this.name = "";
@@ -26,11 +26,15 @@ class App {
       throw new Error("[ERROR] 차의 이름은 5자 이하만 가능합니다.");
     }
   }
-
+  getRandomNumber() {
+    const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
+    return randomNumber;
+  }
   async play() {
     await this.readUserRacingCars();
     await this.readUserRacingTry();
     this.splitRacingCarBy(",");
+    this.getRandomNumber();
   }
 }
 const app = new App();
