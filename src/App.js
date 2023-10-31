@@ -24,44 +24,41 @@ class App {
     ).then((input) => {
       const carNames = input.split(',');
       this.#cars = carNames.map((name) => ({ name, move: 0, total: 0 }));
-      console.log(this.#cars);
     });
   }
 
   async inputNumber() {
     this.#number = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
-    console.log(this.#number);
     this.startRace();
   }
 
   async startRace() {
-    Console.print('실행 결과\n');
+    Console.print('\n실행 결과');
     for (let i = 0; i < this.#number; i++) {
-      await this.advanceCar();
+      this.advanceCar();
+      this.printRaceResult();
     }
-
-    this.#cars.forEach((car) => {
-      console.log(`${car.name} : ${car.move}`);
-    });
-
-    console.log(this.#cars);
   }
 
   async advanceCar() {
-    return new Promise((resolve) => {
-      this.#cars.forEach((car) => {
-        const randomNumber = Random.pickNumberInRange(0, 9);
-        if (randomNumber >= 4) {
-          this.move(car);
-          console.log(`${car.name} : ${randomNumber}`);
-        }
-      });
-      setTimeout(resolve, 1000);
+    this.#cars.forEach((car) => {
+      const randomNumber = Random.pickNumberInRange(0, 9);
+      if (randomNumber >= 4) {
+        this.move(car);
+      }
     });
   }
 
   move(car) {
     car.move += 1;
+  }
+
+  printRaceResult() {
+    this.#cars.forEach((car) => {
+      const dashLine = '-'.repeat(car.move);
+      Console.print(`${car.name} : ${dashLine}`);
+    });
+    Console.print(' ');
   }
 }
 
