@@ -8,6 +8,12 @@ const mockRandoms = (numbers) => {
   }, MissionUtils.Random.pickNumberInRange);
 };
 
+const getLogSpy = () => {
+  const logSpy = jest.spyOn(MissionUtils.Console, 'print');
+  logSpy.mockClear();
+  return logSpy;
+};
+
 describe('Race.js 테스트', () => {
   test('작동 테스트', async () => {
     const MOVING_FORWARD = 4;
@@ -16,14 +22,18 @@ describe('Race.js 테스트', () => {
     const inputTryCount = 1;
     const outputArray = ['-', '-', ''];
     const randoms = [MOVING_FORWARD, MOVING_FORWARD, STOP];
-    const outputConsole = 'sk : -';
-    const spy = jest.spyOn(MissionUtils.Console, 'print');
+    const outputConsoles = ['\n실행결과', 'sk : -', 'lg : -', 'kia :'];
+    const logSpy = getLogSpy();
 
     mockRandoms([...randoms]);
 
     const result = await race(inputArray, inputTryCount);
 
-    expect(spy).toHaveBeenCalledWith(outputConsole);
+    outputConsoles.forEach((outputConsole) => {
+      expect(logSpy).toHaveBeenCalledWith(
+        expect.stringContaining(outputConsole)
+      );
+    });
     expect(result).toEqual(outputArray);
   });
 });
