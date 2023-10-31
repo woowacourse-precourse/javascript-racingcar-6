@@ -1,28 +1,30 @@
 import message from "./message.js";
 import { Console, Random } from "@woowacourse/mission-utils";
 
-export const validateCarNames = (cars) => {
-  cars.map((el) => {
-    if (el.length > 5 || el.length <= 0) {
-      throw new Error(message.INPUT_CARNAME_ERROR);
-    }
-  });
+export const validateInputRacecar = (racecar) => {
+  const regex = /^[a-z]+$/;
+
+  if (racecar.trim() === "") {
+    throw new Error(message.INPUT_SPACE_ERROR);
+  }
+
+  if (!regex.test(racecar)) {
+    throw new Error(message.INPUT_LETTERS_ERROR);
+  }
+
+  if (racecar.length === 0 || racecar.length > 5) {
+    throw new Error(message.INPUT_CARNAME_ERROR);
+  }
 };
 
-export const validateAndDisplayResult = (racecars, racecarScores) => {
-  racecars.map((car, index) => {
-    const SCORE = Random.pickNumberInRange(0, 9);
-    //
-    if (SCORE <= 4) {
-      const dashes = "-".repeat(SCORE);
-      return Console.print(`${car} : ${dashes}`);
-    } else if (SCORE > 4) {
-      Console.print(`${car} : ${SCORE}`);
-      racecarScores[index] += SCORE;
-    } else {
-      throw new Error("[ERROR]");
-    }
-  });
+export const validateCarScore = (score, car, index, racecarScores) => {
+  if (score <= 4) {
+    const dashes = "-".repeat(score);
+    return Console.print(`${car} : ${dashes}`);
+  } else if (score > 4) {
+    Console.print(`${car} : ${score}`);
+    racecarScores[index] += score;
+  }
 };
 
 export const validateDisplayWinner = (racecarScores, cars) => {
@@ -31,10 +33,16 @@ export const validateDisplayWinner = (racecarScores, cars) => {
     (_, carIndex) => racecarScores[carIndex] === highestScore
   );
 
-  Console.print(
-    "최종 우승자 : " +
-      (highestScoringCars.length === 1
-        ? highestScoringCars
-        : highestScoringCars.join(", "))
-  );
+  let resultMessage = "최종 우승자 : ";
+  if (highestScoringCars.length === 1) {
+    resultMessage += highestScoringCars[0];
+  } else {
+    Console.print(`우승자 : 없음`);
+    return Console.readLineAsync(message.START_MESSAGE);
+  }
+
+  if (highestScoringCars.length > 1) {
+    resultMessage += highestScoringCars.join(", ");
+  }
+  Console.print(resultMessage);
 };
