@@ -60,6 +60,18 @@ class App {
       Console.print(`${car} : ${"-".repeat(towardState[i])}`);
     });
   }
+  winner(cars, finalResult) {
+    const maxScore = Math.max(...finalResult);
+    const winners = [];
+    for (let i = 0; i < cars.length; i++) {
+      if (finalResult[i] === maxScore) {
+        winners.push(cars[i]);
+      }
+    }
+
+    const winner = winners.length > 1 ? winners.join(", ") : winners[0];
+    Console.print(`최종 우승자 : ${winner}`);
+  }
 }
 
 export default App;
