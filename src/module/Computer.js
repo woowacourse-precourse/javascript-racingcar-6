@@ -62,6 +62,18 @@ class Computer {
 
     MissionUtils.Console.print('');
   }
+
+  playRound() {
+    const carAmount = this.#carList.length;
+
+    for (let i = 0; i < carAmount; i += 1) {
+      this.#carList[i].goingCount = this.judgeRandomNumber();
+    }
+
+    this.printResult();
+  }
+
+
 }
 
 export default Computer;
