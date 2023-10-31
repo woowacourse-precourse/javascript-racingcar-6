@@ -1,6 +1,6 @@
-import CarModel from '../models/CarModel';
-import GameModel from '../models/GameModel';
-import InputView from '../views/InputView';
+import CarModel from '../models/CarModel.js';
+import GameModel from '../models/GameModel.js';
+import InputView from '../views/InputView.js';
 
 class GameController {
   constructor() {

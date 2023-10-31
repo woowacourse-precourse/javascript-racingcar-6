@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import { MESSAGES } from '../constants/messages';
+import { MESSAGES } from '../constants/messages.js';
 
 class OutputView {
   printAdvanceResult(models) {

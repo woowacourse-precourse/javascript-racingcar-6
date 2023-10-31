@@ -1,4 +1,4 @@
-import { hasWhiteSpace, isInteger, isNumber } from '../utils/StringUtils';
+import { hasWhiteSpace, isInteger, isNumber } from '../utils/StringUtils.js';
 
 export const InputValidator = {
   isValidCarName: (carName) => {

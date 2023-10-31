@@ -1,6 +1,4 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import { ERRORS } from '../constants/errors.js';
-import { throwError } from '../utils/throwError.js';
 
 class CarModel {
   constructor(name) {

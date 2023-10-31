@@ -1,7 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
-import { InputValidator } from '../models/InputValidator';
-import { throwError } from '../utils/throwError';
-import { MESSAGES } from '../constants/messages';
+import { InputValidator } from '../models/InputValidator.js';
+import { throwError } from '../utils/throwError.js';
+import { MESSAGES } from '../constants/messages.js';
 
 class InputView {
   async getCarNames() {
