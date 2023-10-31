@@ -46,7 +46,11 @@ class App {
 
   // TODO: 전진할 경우 - 랜덤 숫자 생성 후 4이상일 경우 전진
   // TODO: 멈출 경우 - 랜덤 숫자 생성 후 3이하일 경우 멈춤
-  GoOrStop(cars) {}
+  GoOrStop(cars) {
+    cars.forEach((car) => {
+      const randomNum = Random.pickNumberInRange(0, 9);
+    });
+  }
 }
 
 export default App;
