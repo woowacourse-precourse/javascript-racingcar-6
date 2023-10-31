@@ -6,6 +6,15 @@ class App {
   carNumberOfMove = [];
   tryCount = 0;
 
+  racing() {
+    Console.print("실행 결과");
+    for (let i = 0; i < this.tryCount; i++) {
+      this.moveForwardOrStop();
+      this.printRacingState();
+      Console.print("");
+    }
+  }
+
   printRacingState() {
     for (let i = 0; i < this.carNames.length; i++) {
       Console.print(
