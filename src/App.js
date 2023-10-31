@@ -30,6 +30,19 @@ class App {
   async getInputTry() {
     this.tryNumber = await Console.readLineAsync(GAME_INFO.INPUT_TRY);
   }
+
+  set tryNumber(tryValue) {
+    tryValue = Number(tryValue);
+    if (tryValue === 0) {
+      throw new Error("[ERROR] 1회 이상 시도해야 합니다.");
+    }
+
+    if (isNaN(tryValue)) {
+      throw new Error("[ERROR] 시도 횟수는 숫자여야 합니다.");
+    }
+
+    this._tryNumber = tryValue;
+  }
 }
 
 export default App;
