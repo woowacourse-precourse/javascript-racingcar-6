@@ -34,6 +34,10 @@ class App {
     }
     return true;
   }
+
+  generateRandomNumber() {
+    return MissionUtils.Random.pickNumberInRange(0, 9);
+  }
 }
 
 export default App;
