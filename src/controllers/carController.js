@@ -47,7 +47,9 @@ class AppController {
     }
 
     const maxScore = Math.max(...carList.map((car) => car.score));
-    const winners = carList.filter((car) => car.score === maxScore);
+    const winners = carList.map((car) => {
+      if (car.score === maxScore) return car.name;
+    });
 
     ConsoleView.print(`${GAME_MESSAGE.WINNER} : ${winners.join(", ")}`);
   }
