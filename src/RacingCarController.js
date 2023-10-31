@@ -29,11 +29,7 @@ class RacingCarController {
   handleTrialCount(trialCount) {
     Validator.validateTrialCount(trialCount);
     this.racingCar.tryProgress(trialCount);
-    this.printResult();
-  }
-
-  printResult() {
-    OutputView.printMessage(this.racingCar.getFinalResult());
+    OutputView.printResult(this.racingCar);
   }
 }
 

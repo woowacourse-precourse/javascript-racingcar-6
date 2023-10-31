@@ -22,28 +22,19 @@ class RacingCar {
   }
 
   pushEachProgressStatus() {
-    const eachProgressStatus =
-      this.cars.map((car) => car.getProgressStatus()).join(MESSAGES.lineBreak) + MESSAGES.lineBreak;
+    const eachProgressStatus = this.cars.map((car) => car.getProgressStatus());
     this.totalProgressStatus.push(eachProgressStatus);
   }
 
   getTotalProgressStatus() {
-    const totalProgressStatusString = this.totalProgressStatus.join(MESSAGES.lineBreak);
-    return MESSAGES.result + totalProgressStatusString;
+    return this.totalProgressStatus;
   }
 
   getWinner() {
     const carsArray = this.cars
       .map((car) => [car[CONSTANTS.nameKey], car[CONSTANTS.progressStatusKey]])
       .sort((carA, carB) => carB[1] - carA[1]);
-    const finalWinnerArray = carsArray
-      .filter((car) => car[1] === carsArray[0][1])
-      .map((car) => car[0]);
-    return MESSAGES.finalWinner + finalWinnerArray.join(MESSAGES.winnerDelimeter);
-  }
-
-  getFinalResult() {
-    return this.getTotalProgressStatus() + this.getWinner();
+    return carsArray.filter((car) => car[1] === carsArray[0][1]).map((car) => car[0]);
   }
 }
 
