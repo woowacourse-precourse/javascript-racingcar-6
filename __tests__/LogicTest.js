@@ -8,7 +8,7 @@ describe("로직 테스트", () => {
     expect(app.inputCarNames).toContain("dong", "wan");
   });
 
-  test("우승자를 출력 테스트", () => {
+  test("우승자 출력 테스트", () => {
     const app = new App();
     const carsArr = [
       { name: "dong", position: 2 },
@@ -18,7 +18,7 @@ describe("로직 테스트", () => {
     expect(result).toContain("dong");
   });
 
-  test("두 명 이상의 우승자일 경우 출력 테스트", () => {
+  test("두 명 이상이 우승자일 경우 출력 테스트", () => {
     const app = new App();
     const carsArr = [
       { name: "dong", position: 2 },
