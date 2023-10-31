@@ -10,6 +10,10 @@
 
 **\- 쉽표로 구분** : .split(',')로 구분
 
+```JavaScript
+const car = input.split(',').map((v) => v.trim());
+```
+
 ### _- 예외처리_
 
 **\- 5글자 이하** : 1~5글자 사이
@@ -19,7 +23,14 @@
 **\- 같은 이름 방지** : 출력시 이름이 같으면 구분하기 힘드니, 이름은 모두 다르게 설정
 
 ```JavaScript
-코드
+if (
+    //filter는 for~if의 기능+새로운 배열에 저장
+    car.filter((v) => v.length > 5).length !== 0 || //요소의 길이가 5이상이면 배열이 1개이상 만들어지니 배열의 길이가 0이 아님(식 성립)
+    car.filter((v) => v === '').length > 0 || //아예 빈값(그냥 위의 trim만 쓰면 빈칸을 ''로 인식)(식 성립)
+    [...new Set(car)].length !== car.length //Set()의 길이와 원래 입력의 길이가 다를때(식 성립)
+  ) {
+    throw new Error('[ERROR] 올바른 이름을 입력해주세요');
+  }
 ```
 
 ## 기능2.
@@ -31,7 +42,12 @@
 **\- 숫자입력** : 정수형으로 입력해야함
 
 ```JavaScript
-코드
+if (parseInt(input) > 0) {
+    // 0보다 큰 정수형
+    return parseInt(input);
+  } else {
+    throw new Error('[ERROR] 올바른 숫자를 입력해주세요');
+  }
 ```
 
 ## 기능3.
@@ -42,6 +58,13 @@
 
 **\- 0에서 9사이 값** : 0~9사이값이 주어짐
 
+```JavaScript
+for (let i = 0; i < name.length; i++) {
+    //배열마다 랜덤받기
+    computer.push(MissionUtils.Random.pickNumberInRange(0, 9));
+  }
+```
+
 #### _- 실행 조건_
 
 **1) 랜덤값이 4보다 작을때** : 정지 => '-'이 임력되지않음
@@ -49,20 +72,18 @@
 **2) 랜덤값이 4보다 크거나 같을때** : 전진 => '-'이 1개 입력
 
 ```JavaScript
-코드
+for (let i = 0; i < count; i++) {
+    let output = random(name);
+    temp = repeat(name, move, output); //기능4를 받아옴
+    Console.print(``); // 공백 나옴
+  }
 ```
 
 ## 기능4.
 
 ### 횟수만큼 반복
 
-#### _- 실행 조건_
-
-**1) 1회** : 랜덤값을 받아 자동차 이동 기능 1회 실행
-
-<blockquote> 횟수가 3이면, 자동차1은 총 3번 랜덤값을 받고 이동함</blockquote>
-
-**2) 누적** : 값이 쌓일때 이전의 '-'갯수 유지
+**\_누적** : 값이 쌓일때 이전의 '-'갯수 유지
 
 <blockquote>
 
@@ -73,10 +94,29 @@
 3회=> 자동차1: -- (전진:랜덤값이 4이상)</blockquote>
 
 ```JavaScript
-코드
+for (let v = 0; v < name.length; v++) {
+    forward(output, move, v); // 기능5를 받아옴
+    Console.print(`${name[v]} : ${'-'.repeat(move[v])}`);
+  }
 ```
 
 ## 기능5.
+
+### 전진조건
+
+#### _- 실행 조건_
+
+**\_ 전진** : 랜덤값을 받아 자동차 이동 기능 1회 실행
+
+<blockquote> 횟수가 3이면, 자동차1은 총 3번 랜덤값을 받고 이동함</blockquote>
+
+```JavaScript
+if (output[v] >= 4) {
+    move[v] += 1;
+  }
+```
+
+## 기능6.
 
 ### 우승자 정하기
 
@@ -87,5 +127,7 @@
 **2) 공동우승** : 가장 높은 값 n개 출력
 
 ```JavaScript
-코드
+if (output[v] >= 4) {
+    move[v] += 1;
+  }
 ```
