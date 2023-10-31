@@ -1,4 +1,4 @@
-import { CheckNameLength, isNotNumber } from "../constant/inputMessage";
+import { CheckNameLength, isNotNumber } from "../constant/errorMessage";
 
 export function isValidName(names) {
     for (const carName of names) {
