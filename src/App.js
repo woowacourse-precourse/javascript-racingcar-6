@@ -42,16 +42,24 @@ class App {
     const raceCount = new Array(cars.length).fill(0);
     for (let i = 0; i < howManyTry; i++) {
       race(cars, raceCount);
-      
+      printRound(cars, raceCount);
     }
   }
 
+  /** 한 라운드 진행 */
   race(cars, raceCount) {
     for (let i = 0; i < cars.length; i++) {
       const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
       if (randomNumber > 3) {
         raceCount[i]++;
       }
+    }
+  }
+
+  /** 한 라운드 출력 */
+  printRound(cars, raceCount) {
+    for (let i = 0; i < cars.length; i++) {
+      MissionUtils.Console.print(`${cars[i]} : ${"-".repeat(raceCount[i])}\n`)
     }
   }
 
