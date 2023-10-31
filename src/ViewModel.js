@@ -1,7 +1,8 @@
 import {
-  getGameStage, setGameStage,  getCarNames, setCarNames, 
-   askForCarNamesView, askForGameCntView,
-   errorMessage,
+  getGameStage, setGameStage, getCarNames, setCarNames,
+  getGameCnt, setGameCnt,
+  askForCarNamesView, askForGameCntView,
+  errorMessage,
 } from './Model.js';
 
 const selectView = function selectTextForView() {
@@ -18,13 +19,21 @@ const selectView = function selectTextForView() {
 };
 
 const saveCarName = function splitAndSaveCarNames(carNames) {
-  const carNamesArr = String(carNames).split(",");
-  carNamesArr.forEach(element => {
+  const carNamesArr = String(carNames).split(',');
+  carNamesArr.forEach((element) => {
     if (element.length >= 6) {
-        throw errorMessage;
+      throw errorMessage;
     }
-});
+  });
   setCarNames(carNamesArr);
 };
 
-export { selectView, saveCarName };
+const saveGameCnt = (gameCnt) => {
+  const gameCntInt = parseInt(gameCnt, 10);
+  if (Number.isNaN(gameCntInt)) {
+    throw errorMessage;
+  }
+  setGameCnt(gameCntInt);
+};
+
+export { selectView, saveCarName, saveGameCnt };
