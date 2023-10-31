@@ -23,6 +23,7 @@ class App {
     for (let i = 0; i < tryCount; i++) {
       this.GoOrStop(cars);
       // TODO: 한번 진행할 때마다 현재 상태 출력
+      this.CurrentStatus(cars);
     }
 
     // TODO: 게임 종료 후 우승자 출력
@@ -45,7 +46,6 @@ class App {
   }
 
   // TODO: 전진할 경우 - 랜덤 숫자 생성 후 4이상일 경우 전진
-  // TODO: 멈출 경우 - 랜덤 숫자 생성 후 3이하일 경우 멈춤
   GoOrStop(cars) {
     cars.forEach((car) => {
       const randomNum = Random.pickNumberInRange(0, 9);
@@ -53,6 +53,13 @@ class App {
         car.position += 1;
       }
     });
+  }
+
+  CurrentStatus(cars) {
+    cars.forEach((car) => {
+      Console.print(`${car.name} : ${"-".repeat(car.position)}`);
+    });
+    Console.print("\n");
   }
 }
 
