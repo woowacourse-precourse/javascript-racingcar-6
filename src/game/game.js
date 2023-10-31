@@ -4,67 +4,67 @@ import {
     MIN_RANDOM_RANGE,
     MOVE_FORWARD_NUMBER,
     NEWLINE,
-    SHOW_EXECUTION_TITLE,
+    SHOW_PROGRESS_TITLE,
     SHOW_WINNER_TITLE,
 } from "./constants.js";
 
 class Game {
     constructor() {
         this.carsList = [];
-        this.carProgressive = [];
+        this.carProgresses = [];
+    }
+
+    initializeGame(carsList) {
+        this.carsList = carsList;
+        this.carProgresses = new Array(carsList.length).fill("");
     }
 
     startRacing(carsList, playCount) {
         this.initializeGame(carsList);
 
-        MissionUtils.Console.print(SHOW_EXECUTION_TITLE);
+        MissionUtils.Console.print(SHOW_PROGRESS_TITLE);
 
-        for (let i = 0; i < playCount; i++) {
+        for (let turn = 0; turn < playCount; turn++) {
             this.racing();
             this.printGameProgress();
         }
 
         this.showWinner();
     }
-
-    initializeGame(carsList) {
-        this.carsList = carsList;
-        this.carProgressive = new Array(carsList.length).fill("");
-    }
-
+    
     racing() {
         this.carsList.forEach((car, idx) => {
             const carRandomNumber = this.generateRandomNumber();
 
             if (carRandomNumber >= MOVE_FORWARD_NUMBER) {
-                this.carProgressive[idx] += "-";
+                this.carProgresses[idx] += "-";
             }
         });
     }
 
     getWinner() {
-        const maxDistance = Math.max(...this.carProgressive.map((progress) => progress.length));
-        const winnerList = this.carsList.filter((_, idx) => this.carProgressive[idx].length === maxDistance);
+        const maxDistance = Math.max(...this.carProgresses.map((progress) => progress.length));
+        const winnerList = this.carsList.filter((_, idx) => this.carProgresses[idx].length === maxDistance);
         return winnerList;
     }
 
     showWinner() {
         const winnerList = this.getWinner();
         const winnerString = winnerList.join(",");
-        
+
         MissionUtils.Console.print(SHOW_WINNER_TITLE + winnerString);
 
     }
 
     printGameProgress() {
         this.carsList.forEach((car, idx) => {
-            MissionUtils.Console.print(car + " : " + this.carProgressive[idx]);
+            MissionUtils.Console.print(car + " : " + this.carProgresses[idx]);
         });
 
         MissionUtils.Console.print(NEWLINE);
     }
 
-    generateRandomNumber = () => {
+    generateRandomNumber() {
         return MissionUtils.Random.pickNumberInRange(MIN_RANDOM_RANGE, MAX_RANDOM_RANGE);
     }
 }

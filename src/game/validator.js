@@ -15,6 +15,6 @@ export const carNameValidator = (carName) => {
     return carName.length <= CAR_NAME_LENGTH && carName.length > 0;
 }
 
-export const carListValidator = (carList) => {
-    return hasUniqueCars(carList);
+export const carsListValidator = (carsList) => {
+    return hasUniqueCars(carsList);
 }
