@@ -61,6 +61,25 @@ class App {
   }
 
   
+  Find_Winner(racingcar) {
+    
+    let Max_Distance = 0;
+    const winner = [];
+
+    for (let [key, value] of racingcar) {
+      if (Max_Distance < value.length) {
+        Max_Distance = value.length;
+      }
+    }
+
+    for (let [key, value] of racingcar) {
+      if (Max_Distance === value.length) {
+        winner.push(key);
+      }
+    }
+
+    return winner;
+  }
 
 }
 
