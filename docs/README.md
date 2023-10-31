@@ -40,51 +40,65 @@
 ## 파일 설명
 
 - src/App.js
-  App 클래스의 play 메서드는 비동기적으로 게임을 실행하며, RacingCarGame의 start 메서드를 호출하여 게임을 시작합니다.
+
+App 클래스의 play 메서드는 비동기적으로 게임을 실행하며, RacingCarGame의 start 메서드를 호출하여 게임을 시작합니다.
 
 - src/constants.js
-  constants.js 파일에는 상수들을 정의하고 있습니다.
-  RANDOM 객체(랜덤 숫자 생성에 사용되는 최소(0) 및 최대(9) 값으로 구성)
-  GAME 객체(자동차 게임 관련한 메시지)
-  ERROR 객체(여러 오류 메시지들을 저장)
+
+constants.js 파일에는 상수들을 정의하고 있습니다.
+RANDOM 객체(랜덤 숫자 생성에 사용되는 최소(0) 및 최대(9) 값으로 구성)
+GAME 객체(자동차 게임 관련한 메시지)
+ERROR 객체(여러 오류 메시지들을 저장)
 
 - src/RacingCarGame.js
-  자동차 경주 게임의 흐름을 관리하는 RacingCarGame 클래스를 정의합니다. start() 메서드로 게임을 시작하고, 자동차 이름과 시도 횟수를 입력받아 검증합니다. 그 후 CarController를 이용하여 자동차를 생성하고 경주를 시작합니다.
+
+자동차 경주 게임의 흐름을 관리하는 RacingCarGame 클래스를 정의합니다. start() 메서드로 게임을 시작하고, 자동차 이름과 시도 횟수를 입력받아 검증합니다. 그 후 CarController를 이용하여 자동차를 생성하고 경주를 시작합니다.
 
 - racingcargame/CarController.js
-  CarController 클래스에서 자동차 이름을 받아 해당 이름으로 RacingCar 인스턴스를 생성하고, 자동차들을 관리합니다. 또한, 각 자동차들이 전진하도록 playAdvance 메서드를 통해 무작위 숫자를 생성하여 전진하도록 합니다. advanceResult 메서드는 전진 결과를 출력하고, racingResult 메서드는 각 자동차의 이름과 전진 거리를 객체 형태로 반환합니다.
+
+CarController 클래스에서 자동차 이름을 받아 해당 이름으로 RacingCar 인스턴스를 생성하고, 자동차들을 관리합니다. 또한, 각 자동차들이 전진하도록 playAdvance 메서드를 통해 무작위 숫자를 생성하여 전진하도록 합니다. advanceResult 메서드는 전진 결과를 출력하고, racingResult 메서드는 각 자동차의 이름과 전진 거리를 객체 형태로 반환합니다.
 
 - racingcargame/GameWinner.js
-  GameWinner 클래스에서 자동차 객체와 해당 자동차의 진행 상황을 가지고 최종 우승자를 결정합니다. findMaxValue 메서드는 객체 값 중 최대값을 찾고, getKeysOfMaxValue 메서드는 최대값과 일치하는 키를 찾아 리스트에 추가합니다. 마지막으로 printWinners 메서드는 우승자들의 이름을 쉼표로 구분하여 반환합니다.
+
+GameWinner 클래스에서 자동차 객체와 해당 자동차의 진행 상황을 가지고 최종 우승자를 결정합니다. findMaxValue 메서드는 객체 값 중 최대값을 찾고, getKeysOfMaxValue 메서드는 최대값과 일치하는 키를 찾아 리스트에 추가합니다. 마지막으로 printWinners 메서드는 우승자들의 이름을 쉼표로 구분하여 반환합니다.
 
 - racingcargame/MakeRandomNumber.js
-  makeRandomNumber()를 통해 0에서 9사이에 랜덤값을 추출합니다.
+
+makeRandomNumber()를 통해 0에서 9사이에 랜덤값을 추출합니다.
 
 - racingcargame/RacingCar.js
-  RacingCar 클래스에서 자동차 이름과 전진 상태를 가지고 있으며, 여러 메서드를 통해 전진 상태를 변경하고 출력하는 등의 기능을 수행합니다.
+
+RacingCar 클래스에서 자동차 이름과 전진 상태를 가지고 있으며, 여러 메서드를 통해 전진 상태를 변경하고 출력하는 등의 기능을 수행합니다.
 
 - racingcargame/RacingCarName.js
-  RacingCarName 클래스에서 주어진 이름에 대한 여러 유효성 검사를 수행하고, 각각의 조건에 맞지 않으면 해당하는 에러를 발생시킵니다.
+
+RacingCarName 클래스에서 주어진 이름에 대한 여러 유효성 검사를 수행하고, 각각의 조건에 맞지 않으면 해당하는 에러를 발생시킵니다.
 
 - racingcargame/RachingTryCount.js
-  RacingTryCount 클래스에서 시도 횟수에 대한 유효성 검사를 수행하며, 해당 횟수가 유효하지 않거나 0보다 작거나 정수가 아닌 경우에 대해 예외를 발생시킵니다.
+
+RacingTryCount 클래스에서 시도 횟수에 대한 유효성 검사를 수행하며, 해당 횟수가 유효하지 않거나 0보다 작거나 정수가 아닌 경우에 대해 예외를 발생시킵니다.
 
 - racingcargame/index.js
-  각각 CarController, Winner, MakeRandomNumber, RacingCar, RacingCarName, RacingTryCount 모듈들을 내보내서 다른 파일에서 가져와 사용할 수 있게 적용했습니다.
+
+각각 CarController, Winner, MakeRandomNumber, RacingCar, RacingCarName, RacingTryCount 모듈들을 내보내서 다른 파일에서 가져와 사용할 수 있게 적용했습니다.
 
 - validation/CarNameValidation.js
-  CarNameValidation 클래스에서 자동차 이름에 대한 유효성 검사를 수행합니다.
-  이름이 비어있는지, 유효한 형식인지, 중복된 이름이 존재하는지, 길이가 5 이하인지 확인합니다.
+
+CarNameValidation 클래스에서 자동차 이름에 대한 유효성 검사를 수행합니다.
+이름이 비어있는지, 유효한 형식인지, 중복된 이름이 존재하는지, 길이가 5 이하인지 확인합니다.
 
 - validation/TryCountValidation.js
-  TryCountValidation 클래스에서 시도 횟수에 대한 유효성을 검사하는데 사용됩니다.
-  시도 횟수가 유효한지, 0보다 큰 정수인지 확인합니다.
+
+TryCountValidation 클래스에서 시도 횟수에 대한 유효성을 검사하는데 사용됩니다.
+시도 횟수가 유효한지, 0보다 큰 정수인지 확인합니다.
 
 - view/input.js
-  주어진 메시지를 출력하고 사용자로부터 텍스트 입력을 받습니다.
+
+주어진 메시지를 출력하고 사용자로부터 텍스트 입력을 받습니다.
 
 - view/output.js
-  주어진 메시지를 출력합니다.
+
+주어진 메시지를 출력합니다.
 
 ## 1주차 공동 피드백(커밋할 때마다 지켰는지 확인하기!)
 
