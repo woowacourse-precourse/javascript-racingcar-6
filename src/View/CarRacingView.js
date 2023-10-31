@@ -1,5 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
-import CONSTANTS from "../Constants/Constants";
+import CONSTANTS from "../Constants/Constants.js";
 
 class CarRacingView {
   printResult(carData) {

@@ -30,6 +30,7 @@ class CarRacingController {
   async inputCarName() {
     let carNameString = await Console.readLineAsync(CONSTANTS.INPUT.CARNAMES);
     validation.isValidCarName(carNameString);
+    validation.isSameCarName(carNameString);
     this.carRacingModel.setCarData(carNameString);
   }
 

@@ -1,4 +1,4 @@
-import CONSTANTS from "../Constants/Constants";
+import CONSTANTS from "../Constants/Constants.js";
 class Validation {
   isValidCarName(carNameString) {
     const carNames = carNameString.split(",");

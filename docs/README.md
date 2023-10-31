@@ -5,8 +5,8 @@
 - 실행 결과 출력
 - 우승자 안내 문구를 출력
 - 무작위로 각 자동차가 전진하거나 멈추도록 하는 함수
-- 사용자가 잘못된 값을 입력했을 때 예외 처리 (6자 이상의 이름, 숫자가 아닌 시도횟수)
-- 입력받은 숫자 만큼을 '-' 문자열로 바꾸는 함수
+- 사용자가 잘못된 값을 입력했을 때 예외 처리 (6자 이상의 이름, 숫자가 아닌 시도횟수, 중복된 이름)
+- 실행
 
 ---
 
@@ -25,4 +25,4 @@
 - model : setCarData, getCarData, setTrialNumber, getTrialNumber, moveOrStay
 - view : printResult, printWinner, printResultMessage, lineBreak
 - controller : inputCarName, inputTrialNumber, race
-- validation : isValidCarName, isValidTrialNumber
+- validation : isValidCarName, isValidTrialNumber, isSameCarName
