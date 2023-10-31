@@ -1,4 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
+import CarNameValidator from '../models/CarNameValidator';
 
 class InputView {
   async setCarNames() {
@@ -7,7 +8,7 @@ class InputView {
     );
     const carNames = userInput.split(',').map((carName) => carName.trim());
 
-    InputValidator(carNames);
+    CarNameValidator.validateCarName(carNames);
 
     return carNames;
   }
