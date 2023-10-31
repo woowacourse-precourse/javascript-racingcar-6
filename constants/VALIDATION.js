@@ -1,5 +1,6 @@
 export const CAR_VALIDATION = {
   LENGTH: "[ERROR] 자동차 이름은 5자 이하만 가능합니다.",
+  BLANK: "[ERROR] 이름은 공백일 수 없습니다.",
 };
 
 export const TRY_COUNT_VALIDATION = {

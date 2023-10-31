@@ -15,9 +15,13 @@ class Car {
 
   set carNameList(car) {
     car = car.map((carName) => carName.replace(/\s/g, ""));
-
+    console.log(car);
     if (car.some((carName) => carName.length > CAR_NAME_MAX_LENGTH + 1)) {
       throw new Error(CAR_VALIDATION.LENGTH);
+    }
+
+    if (car.some((x) => x === "")) {
+      throw new Error(CAR_VALIDATION.BLANK);
     }
 
     this._carNameList = car;
