@@ -14,13 +14,14 @@ class RoundManager {
         Console.print(FORWARD_DASH);
       }
     });
+    this.printRoundResult();
   }
 
   printRoundResult() {
     Object.entries(this.carPositions).forEach(([carName, position]) => {
       Console.print(`${carName} : ${position}`);
     });
-    Console.print();
+    Console.print(); // 각 라운드 별 빈줄 표시
   }
 }
 
