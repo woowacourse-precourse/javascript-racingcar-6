@@ -1,4 +1,4 @@
-import RACING from '../constants/racing.js';
+import RACING from '../constants/racing';
 
 export default class CarModel {
   #cars;

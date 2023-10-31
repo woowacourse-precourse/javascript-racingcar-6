@@ -18,7 +18,9 @@ describe('MakeWinner Test', () => {
       },
     ];
 
-    expect(winnerModel.makeWinner(completedRaceCars)).toEqual(expect.stringContaining('pobi'));
+    expect(winnerModel.makeWinner(completedRaceCars)).toEqual(
+      expect.stringContaining('pobi'),
+    );
   });
 
   test('중복 우승자 생성', () => {
@@ -35,7 +37,9 @@ describe('MakeWinner Test', () => {
     const expectedWinner = ['pobi', 'ukgi'];
 
     expectedWinner.forEach((winner) => {
-      expect(winnerModel.makeWinner(completedRaceCars)).toEqual(expect.stringContaining(winner));
+      expect(winnerModel.makeWinner(completedRaceCars)).toEqual(
+        expect.stringContaining(winner),
+      );
     });
   });
 });

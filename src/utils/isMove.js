@@ -3,7 +3,7 @@ import {
   MAX_RANGE_NUMBER,
   MIN_MOVE_NUMBER,
   MIN_RANGE_NUMBER,
-} from '../constants/conditions.js';
+} from '../constants/conditions';
 
 export default function isMove() {
   return (

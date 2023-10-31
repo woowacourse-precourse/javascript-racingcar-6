@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import { OUTPUT_MESSAGE } from '../constants/messages.js';
+import { OUTPUT_MESSAGE } from '../constants/messages';
 
 export default class Output {
   static printTotalResult(totalResult) {

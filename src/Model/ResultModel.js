@@ -1,4 +1,4 @@
-import { NEW_LINE, STICK } from '../constants/constants.js';
+import { NEW_LINE, STICK } from '../constants/constants';
 
 export default class ResultModel {
   #allAttempsResult;
@@ -24,6 +24,7 @@ export default class ResultModel {
     this.#allAttempsResult.forEach((attempResult) =>
       this.#formatCarMoveStrings(attempResult),
     );
+
     return this.#consoleOutput.join('');
   }
 

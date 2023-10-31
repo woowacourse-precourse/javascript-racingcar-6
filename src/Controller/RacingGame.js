@@ -1,8 +1,8 @@
-import { isValidateCarName, isValidateAttemps } from '../utils/validator.js';
-import Input from '../View/Input.js';
-import Output from '../View/Output.js';
-import isMove from '../utils/isMove.js';
-import RACING from '../constants/racing.js';
+import { isValidateCarName, isValidateAttemps } from '../utils/validator';
+import Input from '../View/Input';
+import Output from '../View/Output';
+import isMove from '../utils/isMove';
+import RACING from '../constants/racing';
 
 export default class RacingGame {
   #carModel;

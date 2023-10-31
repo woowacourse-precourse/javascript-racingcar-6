@@ -1,4 +1,4 @@
-import { SPACE } from '../constants/constants.js';
+import { SPACE } from '../constants/constants';
 
 export default class WinnerModel {
   #winners;
@@ -14,6 +14,7 @@ export default class WinnerModel {
     const maxMove = Math.max(
       ...this.#completedRaceCars.map(({ moveCounts }) => moveCounts),
     );
+
     return this.#makeWinnerStringTemplate(maxMove);
   }
 
@@ -21,6 +22,7 @@ export default class WinnerModel {
     this.#completedRaceCars.forEach(({ name, moveCounts }) => {
       if (moveCounts === maxMove) this.#winners.push(`${SPACE}${name}`);
     });
+
     return this.#winners.join(',');
   }
 }
