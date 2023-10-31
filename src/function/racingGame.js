@@ -1,6 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
-import { carsName } from "./carsName.js";
-import { gaemProgress } from "./gameProgress.js";
+import { carsName } from "./user/carsName.js";
+import { gaemProgress } from "./util/gameProgress.js";
 import { playCount } from "./user/playCount.js";
 import { randomCarsNumber } from "./randomCarsNumber.js";
 import { calculatedResult } from "./util/calculatedResult.js";

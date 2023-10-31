@@ -1,5 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
-import { transformKeysValue } from "./transformKeyValue";
+import { transformKeysValue } from "../transformKeyValue";
 
 export const carsName = async () => {
   const userInputValue = await Console.readLineAsync(
