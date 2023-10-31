@@ -1,5 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import { RACING_GAME_MESSAGE } from '../constants/index.js';
+import { RACING_GAME_MESSAGE, ERROR_MESSAGE } from '../constants/index.js';
 
 export default class RacingGame {
   cars = [];
@@ -8,16 +8,16 @@ export default class RacingGame {
   constructor() {}
   async readCarNames() {
     const input = await MissionUtils.Console.readLineAsync(
-      RACING_GAME_MESSAGE.READ_CAR_NAMES + '\n'
+      RACING_GAME_MESSAGE.READ_CAR_NAMES + '\n',
     );
     //validate inputs
     const carNames = input.split(',');
-    const isInvalid = carNames.some((carName) => carName.length > 4);
+    const isInvalid = carNames.some(carName => carName.length > 5);
     if (isInvalid) {
-      throw new Error('[ERROR] CAR NAMES READ ERROR');
+      throw new Error(ERROR_MESSAGE.CAR_NAME_LENGTH_ERROR);
     }
 
-    carNames.forEach((carName) => {
+    carNames.forEach(carName => {
       const car = new Car(carName);
       this.cars.push(car);
     });
@@ -26,21 +26,24 @@ export default class RacingGame {
   }
   async readGameCount() {
     const gameCount = await MissionUtils.Console.readLineAsync(
-      RACING_GAME_MESSAGE.READ_GAME_COUNT + '\n'
+      RACING_GAME_MESSAGE.READ_GAME_COUNT + '\n',
     );
     // validate input
+    if (isNaN(gameCount)) {
+      throw new Error(ERROR_MESSAGE.NOT_A_NUMBER);
+    }
     this.gameCount = gameCount;
     return gameCount;
   }
 
   playOneTurn() {
-    this.cars.forEach((car) => {
+    this.cars.forEach(car => {
       car.play();
     });
   }
 
   printRacingStatus() {
-    this.cars.forEach((car) => {
+    this.cars.forEach(car => {
       car.printStatus();
     });
   }
@@ -59,7 +62,7 @@ export default class RacingGame {
     return winners;
   }
   printWinner() {
-    const winnerNames = this.getWinners().map((winner) => winner.name);
+    const winnerNames = this.getWinners().map(winner => winner.name);
     MissionUtils.Console.print(`최종 우승자 : ${winnerNames.join(',')}`);
   }
 
