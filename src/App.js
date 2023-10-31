@@ -48,7 +48,6 @@ export default class App {
     this.repeatCountValidation(this.repeatCount);
   }
 
-  /* eslint-disable class-methods-use-this */
   repeatCountValidation(repeatCount) {
     const numberRegex = /^[0-9]+$/;
     const numberValidate = numberRegex.test(repeatCount);

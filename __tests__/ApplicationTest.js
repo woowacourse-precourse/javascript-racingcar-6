@@ -97,3 +97,25 @@ test.each([[['1e3']], [['hello']], [['12 3']]])('반복 횟수 예외 처리', a
   // then
   await expect(app.getRepeatCountInput()).rejects.toThrow('[ERROR]');
 });
+
+test('우승자 출력', async () => {
+  // given
+  const MOVING_FORWARD = 4;
+  const STOP = 3;
+  const inputs = ['suzin,myeon,tom', '1'];
+  const outputs = ['최종 우승자 : suzin, myeon'];
+  const randoms = [MOVING_FORWARD, MOVING_FORWARD, STOP];
+  const logSpy = getLogSpy();
+
+  mockQuestions(inputs);
+  mockRandoms([...randoms]);
+
+  // when
+  const app = new App();
+  await app.play();
+
+  // then
+  outputs.forEach((output) => {
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+  });
+});
