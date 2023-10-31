@@ -10,6 +10,7 @@ export const racingGame = async () => {
   const gamePlayCount = await playCount();
 
   Console.print(`실행 결과`);
+
   for (let i = 1; i <= gamePlayCount; i++) {
     const carsRandomArray = randomCarsNumber(carsNameArray.length);
 
@@ -20,7 +21,7 @@ export const racingGame = async () => {
 
   const result = calculatedResult(carsNameArray);
 
-  return `최종 우승자 : ${
-    result.length !== 1 ? result.join(", ") : result.join("")
-  }`;
+  Console.print(
+    `최종 우승자 : ${result.length !== 1 ? result.join(", ") : result.join("")}`
+  );
 };
