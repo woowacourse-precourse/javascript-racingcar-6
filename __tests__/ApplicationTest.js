@@ -1,5 +1,8 @@
 import App from '../src/App.js';
 import { MissionUtils } from '@woowacourse/mission-utils';
+import Check from '../src/module/Check.js';
+import initializeCarData from '../src/module/InitializeCarData.js';
+import printFinish from '../src/module/Result.js';
 
 const mockQuestions = inputs => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -63,42 +66,43 @@ describe('자동차 경주 게임', () => {
   test('이름에 대한 예외 처리 추가', async () => {
     const app = new App();
     app.carNames = ['', '   ', '123456'];
-    expect(App.isValidCar(app.carNames)).toBe(false);
+    expect(Check.isValidCar(app.carNames)).toBe(false);
   });
 
   test('횟수가 음수일 때 예외 처리', async () => {
-    expect(App.isValidNumber(-1)).toBe(false);
+    expect(Check.isValidNumber(-1)).toBe(false);
   });
 
   test('횟수가 undefined일 때 예외 처리', async () => {
-    expect(App.isValidNumber(undefined)).toBe(false);
+    expect(Check.isValidNumber(undefined)).toBe(false);
   });
 
   test('횟수가 문자일 때 예외 처리', async () => {
-    expect(App.isValidNumber('test')).toBe(false);
+    expect(Check.isValidNumber('test')).toBe(false);
   });
 
   test('횟수가 숫자일 때 예외 처리', async () => {
-    expect(App.isValidNumber(9)).toBe(true);
+    expect(Check.isValidNumber(9)).toBe(true);
   });
 
   test('차 이름 목록 객체 value 초기화', () => {
-    const app = new App();
-    app.initializeCarData(['가', '나', '다']);
-    expect(app.carData).toEqual({ 가: '', 나: '', 다: '' });
+    const initializeData = initializeCarData(['가', '나', '다']);
+    expect(initializeData).toEqual({ 가: '', 나: '', 다: '' });
   });
 
   test('단독 우승자 안내', () => {
-    const app = new App();
-    app.carData = { '가': '---', '나': '--', '다': '----' };
-    app.printFinish();
+    const carData = { 가: '---', 나: '--', 다: '----' };
+    const USER_COUNT = 3;
+    printFinish(carData, USER_COUNT);
     expect(MissionUtils.Console.print).toHaveBeenCalledWith('최종 우승자 : 다');
   });
 
   test('공동 우승자 안내', () => {
-    const app = new App();
-    app.carData = { '가': '----', '나': '--', '다': '----' };
-    app.printFinish();
-    expect(MissionUtils.Console.print).toHaveBeenCalledWith('최종 우승자 : 가, 다');
+    const carData = { 가: '----', 나: '--', 다: '----' };
+    const USER_COUNT = 3;
+    printFinish(carData, USER_COUNT);
+    expect(MissionUtils.Console.print).toHaveBeenCalledWith(
+      '최종 우승자 : 가, 다',
+    );
   });
 });
