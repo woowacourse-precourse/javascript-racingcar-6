@@ -50,10 +50,14 @@ class App {
 
   async startRacingCarGame(racingCarList, gameCount) {
     Console.print('\n실행 결과');
+
     for (let i = 0; i < gameCount; i++) {
       await this.moveRacingCarRandomDistance(racingCarList);
       await this.printRacingCarGameResult(racingCarList, gameCount);
     }
+    const racingCarWinner = this.getRacingCarWinner(racingCarList);
+
+    Console.print(`최종 우승자 : ${racingCarWinner}`);
   }
 
   async moveRacingCarRandomDistance(racingCarList) {
@@ -70,6 +74,23 @@ class App {
       await Console.print(`${racingCar} : ${distance}`);
     }
     Console.print('');
+  }
+
+  getRacingCarWinner(racingCarList) {
+    const longestDistance = [...racingCarList.values()].reduce(
+      (longestDistance, currentDistance) =>
+        longestDistance.length > currentDistance.length
+          ? longestDistance
+          : currentDistance
+    );
+
+    const racingCarWinner = [...racingCarList.keys()].filter(
+      (car) => racingCarList.get(car) === longestDistance
+    );
+
+    return racingCarWinner.length > 1
+      ? racingCarWinner.join(', ')
+      : racingCarWinner.join('');
   }
 
   isValidCarNamesInput(carNameList) {
