@@ -1,5 +1,9 @@
 import { RACING_ERROR } from '../src/constants/constants.js';
-import { validateCarName, validateMoveCount } from '../src/utils/validate.js';
+import {
+  validateCarName,
+  validateMoveCount,
+  validateNameDuplicate,
+} from '../src/utils/validate.js';
 
 describe('자동차 이름 유효성 검사', () => {
   test('자동차 이름이 5자를 초과하면 에러', () => {
@@ -14,6 +18,14 @@ describe('자동차 이름 유효성 검사', () => {
     const input = '';
 
     expect(() => validateCarName(input)).toThrow(RACING_ERROR.NAME_EMPTY_ERROR);
+  });
+
+  test('자동차 이름이 중복이면 에러', () => {
+    const input = ['pobi', 'pobi'];
+
+    expect(() => validateNameDuplicate(input)).toThrow(
+      RACING_ERROR.NAME_DUPLICATE,
+    );
   });
 });
 
