@@ -5,6 +5,8 @@ export const SYSTEM = Object.freeze({
   nameLengthMin: 2,
   quantityMin: 2,
   quantityMax: 6,
+  racingCountMin: 1,
+  racingCountMax: 9,
 });
 
 export const LANGUAGE_OPTION = Object.freeze({
