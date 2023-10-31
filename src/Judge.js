@@ -4,6 +4,7 @@ export default class Judge {
   printWinner(winners) {
     const winner = winners.join(', ');
     Console.print(`최종우승자 : ${winner}`);
+    return winner;
   }
 
   decideWinner(totalScores) {
