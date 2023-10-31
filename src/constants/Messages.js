@@ -11,4 +11,4 @@ const ERROR_MESSAGES = Object.freeze({
   CARNAME_ERROR: "[ERROR] 올바른 이름 형식으로 입력해 주세요",
 });
 
-export default { MESSAGES, ERROR_MESSAGES };
+export { MESSAGES, ERROR_MESSAGES };
