@@ -15,7 +15,7 @@ describe('ResultModel Test', () => {
 
   test('회차마다 레이싱 결과를 만든다.', () => {
     resultModel.addAttempsResult(cars);
-    expect(resultModel.getResult()).toEqual([
+    expect(resultModel.getAllRacingResult()).toEqual([
       [
         ['pobi', 1],
         ['ukgi', 0],
@@ -28,7 +28,7 @@ describe('ResultModel Test', () => {
     const expectedTemplate = ['pobi : -', 'ukgi :'];
 
     expectedTemplate.forEach((template) => {
-      expect(resultModel.makeTotalResult()).toEqual(
+      expect(resultModel.makeConsoleOutputTemplete()).toEqual(
         expect.stringContaining(template),
       );
     });

@@ -29,7 +29,7 @@ export default class RacingGame {
   }
 
   #printResult() {
-    Output.printTotalResult(this.#resultModel.makeTotalResult());
+    Output.printTotalResult(this.#resultModel.makeConsoleOutputTemplete());
     Output.printWinners(this.#winnerModel.makeWinner(this.#carModel.getCar()));
   }
 

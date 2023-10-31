@@ -3,11 +3,11 @@ import { NEW_LINE, STICK } from '../constants/constants.js';
 export default class ResultModel {
   #allAttempsResult;
 
-  #displayedResults;
+  #consoleOutput;
 
   constructor() {
     this.#allAttempsResult = [];
-    this.#displayedResults = [];
+    this.#consoleOutput = [];
   }
 
   addAttempsResult(cars) {
@@ -18,22 +18,22 @@ export default class ResultModel {
     this.#allAttempsResult.push(attempResult);
   }
 
-  getResult() {
+  getAllRacingResult() {
     return this.#allAttempsResult;
   }
 
-  makeTotalResult() {
+  makeConsoleOutputTemplete() {
     this.#allAttempsResult.forEach((attempResult) => {
       this.#formatCarMoveStrings(attempResult);
     });
-    return this.#displayedResults.join('');
+    return this.#consoleOutput.join('');
   }
 
   #formatCarMoveStrings(attempResult) {
     attempResult.reduce((acc, [carName, moveCount]) => {
       acc.push(`${carName} : ${STICK.repeat(moveCount)}${NEW_LINE}`);
       return acc;
-    }, this.#displayedResults);
-    this.#displayedResults.push(NEW_LINE);
+    }, this.#consoleOutput);
+    this.#consoleOutput.push(NEW_LINE);
   }
 }
