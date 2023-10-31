@@ -12,7 +12,6 @@ export const getCarArrFromInputValue = async () => {
       carArr.push({ name: inputCarNames.substr(0), moveCnt: 0 });
       break;
     }
-
     carArr.push({
       name: inputCarNames.substr(0, commaIndex),
       moveCnt: 0,
@@ -33,6 +32,9 @@ export const getTryNumber = async () => {
     '시도할 횟수는 몇 회인가요?\n'
   );
 
+  if (isNaN(Number(inputTryNumber))) {
+    throw new Error('[ERROR] 숫자만 입력해주세요.');
+  }
   return Number(inputTryNumber);
 };
 
