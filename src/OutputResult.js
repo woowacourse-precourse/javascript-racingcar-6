@@ -1,12 +1,13 @@
 import { Console } from '@woowacourse/mission-utils';
 import MoveForward from './MoveForward.js';
 
-export const executionResult = function forwardRunResultsOutput(carList) {
+export const executionResult = function forwardRunResultsOutput(carList, forwardCount) {
 	const FORWARD = true;
 	carList.forEach((car, idx) => {
 		const forwardResult = MoveForward();
 		if (forwardResult === FORWARD) {
 			carList[idx] += '-';
+			forwardCount[idx] += 1;
 		}
 		Console.print(carList[idx]);
 	});
