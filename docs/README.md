@@ -2,6 +2,32 @@
 
 주어진 횟수 동안 n대의 자동차가 전진하여 우승한 자동차 이름을 출력하는 게임이다.
 
+## 📦 폴더 구조
+
+📦javascript-racingcar-6  
+┣ 📂`__tests__`  
+┃ ┣ 📜ApplicationTest.js  
+┃ ┣ 📜StringTest.js  
+┃ ┗ 📜UnitTest.js  
+┣ 📂docs  
+┃ ┗ 📜README.md  
+┣ 📂src  
+┃ ┣ 📂constants  
+┃ ┃ ┗ 📜constants.js  
+┃ ┣ 📂utils  
+┃ ┃ ┣ 📜createRandomNumber.js  
+┃ ┃ ┣ 📜Utils.js  
+┃ ┃ ┗ 📜validate.js  
+┃ ┣ 📜App.js  
+┃ ┗ 📜index.js  
+┣ 📜.eslintrc.cjs  
+┣ 📜.gitignore  
+┣ 📜.npmrc  
+┣ 📜.prettierrc  
+┣ 📜package-lock.json  
+┣ 📜package.json  
+┗ 📜README.md
+
 ## 🚩 진행 순서
 
 1. 사용자는 쉼표(,)를 기준으로 구분하여 `자동차 이름`을 입력한다.
