@@ -2,7 +2,7 @@ import { MissionUtils } from '@woowacourse/mission-utils';
 
 const RANDOM_NUMBER_THRESHOLD = 4;
 
-class CarRacing {
+export class CarRacing {
   static pickNumberInRange(startInclusive, endInclusive) {
     return MissionUtils.Random.pickNumberInRange(startInclusive, endInclusive);
   }
@@ -42,5 +42,3 @@ export class RaceSimulator {
     return this.raceResults;
   }
 }
-
-export default CarRacing;
