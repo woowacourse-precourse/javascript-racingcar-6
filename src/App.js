@@ -26,6 +26,10 @@ class Car {
 }
 
 class App {
+  constructor() {
+    this.carInstance = [];
+  }
+
   validationInput(carList) {
     //MissionUtils.Console.print(carList);
     if (!carList.every((car) => car.length < 5)) {
@@ -42,6 +46,10 @@ class App {
     );
     carList = carList.split(",").map((car) => car.trim());
     this.validationInput(carList);
+
+    for (const name of carList) {
+      this.carInstance.push(new Car(name));
+    }
   }
 }
 
