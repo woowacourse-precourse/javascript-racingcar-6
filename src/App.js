@@ -33,13 +33,21 @@ class App {
 
   processRound() {
     let count = 0;
+    const positionCharacter = '-';
+
+    Console.print(`\n${MESSAGES.GAME_RESULT}`);
 
     while (this.round > count) {
       this.vehicles.forEach(item => {
         const randomNumber = Random.pickNumberInRange(0, 9);
         if (randomNumber >= 4) item.move();
+
+        Console.print(
+          `${item.name} : ${positionCharacter.repeat(item.position)}`,
+        );
       });
 
+      Console.print('');
       count += 1;
     }
   }
