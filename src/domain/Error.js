@@ -13,3 +13,11 @@ export const userInputCarNameFormEror = (carNameString) => {
     throw new Error(ERROR.ERROR_SPACE);
   }
 };
+export const userInputTryNumberError = (tryNumber) => {
+  if (tryNumber <= 0) {
+    throw new Error(ERROR.ERROR_TYPE);
+  }
+  if (tryNumber % 1 !== 0 || isNaN(tryNumber)) {
+    throw new Error(ERROR.ERROR_TYPE);
+  }
+};
