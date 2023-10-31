@@ -10,6 +10,7 @@ class App {
     while (count > 0) {
       const movedCars = this.moveCars(CARS);
       currentCars = {...currentCars, ...this.addMovedCars(currentCars, movedCars)};
+      this.printCurrent(currentCars);
       count -= 1;
     }
   }
@@ -51,14 +52,20 @@ class App {
     const RANDOM_NUMBER = Random.pickNumberInRange(0, 9);
     return RANDOM_NUMBER;
   }
-  
+
   addMovedCars(currentCars, movedCars) {
     Object.keys(movedCars).forEach((car) => {
       currentCars[car] += movedCars[car]
     });
     return currentCars;
   }
-  
+
+  printCurrent(currentCars) {
+    Object.keys(currentCars).forEach((car) => {
+      Console.print(`${car} : ${'-'.repeat(currentCars[car])}`);
+    })
+    Console.print('\n');
+  }
 }
 
 export default App;
