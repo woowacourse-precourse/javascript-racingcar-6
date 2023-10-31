@@ -36,9 +36,13 @@ class App {
 	async getAttemptsFromUser() {
 		this.attempts = await MissionUtils.Console.readLineAsync();
 
-		MissionUtils.Console.print(this.attempts);
+		if (!isNaN(this.attempts)) {
+			MissionUtils.Console.print(Number(this.attempts));
+		} else {
+			throw new Error("[ERROR]");
+		}
 
-		return this.attempts;
+		return Number(this.attempts);
 	}
 
 	async getResults() {
