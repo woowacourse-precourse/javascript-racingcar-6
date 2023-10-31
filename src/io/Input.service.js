@@ -7,6 +7,6 @@ export class InputService {
   }
 
   async readCarTries() {
-    return await Console.readLineAsync(QUERY_MESSAGE.try);
+    return Console.readLineAsync(QUERY_MESSAGE.try);
   }
 }
