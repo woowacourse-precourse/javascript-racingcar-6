@@ -30,14 +30,19 @@ class App {
   }
 
   playRounds(rounds) {
+    Console.print(`\n실행 결과`);
     for (let i = 0; i < rounds; i++) {
       this.cars.forEach((car) => {
         if (this.isMovable()) {
           car.moveCount += 1;
         }
       });
+      this.cars.forEach((car) => {
+        Console.print(`${car.name} : ${'-'.repeat(car.moveCount)}`);
+      });
+      Console.print('');
     }
-  }
+  }  
 
   isMovable() {
     const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
