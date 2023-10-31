@@ -3,18 +3,22 @@ class Car {
   #carName;
 
   /** @type {number} */
-  #position;
+  #distance;
 
   /**
    * @param {string} carName
    */
   constructor(carName) {
     this.#carName = carName;
-    this.#position = 0;
+    this.#distance = 0;
   }
 
   getCarName() {
     return this.#carName;
+  }
+
+  getCarDistance() {
+    return this.#distance;
   }
 }
 
