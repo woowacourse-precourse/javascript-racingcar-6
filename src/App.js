@@ -1,5 +1,5 @@
 import { MissionUtils, Console } from "@woowacourse/mission-utils";
-import { GAME_INFO } from "./constant.js";
+import { GAME_HELP } from "../constant/gameHelp.js";
 
 class App {
   constructor() {
@@ -16,7 +16,7 @@ class App {
   }
 
   async getInputCar() {
-    const carName = await Console.readLineAsync(GAME_INFO.INPUT_CAR);
+    const carName = await Console.readLineAsync(GAME_HELP.INPUT_CAR);
     this.carArr = carName.split(",");
   }
 
@@ -35,7 +35,7 @@ class App {
   }
 
   async getInputTry() {
-    this.tryNumber = await Console.readLineAsync(GAME_INFO.INPUT_TRY);
+    this.tryNumber = await Console.readLineAsync(GAME_HELP.INPUT_TRY);
   }
 
   set tryNumber(tryValue) {
@@ -93,7 +93,7 @@ class App {
   }
 
   async playRacing() {
-    Console.print(GAME_INFO.GAME_RESULT);
+    Console.print(GAME_HELP.GAME_RESULT);
     for (let i = 0; i < this.tryNumber; i++) {
       await this.oneCycleRacing();
     }
