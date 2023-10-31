@@ -1,6 +1,11 @@
+// @ts-check
+
 // 정적 배열 - 크기 변경 불가
 // 동적 배열 - 크기 변경 가능(push 등), 자바스크립트는 기본적으로 동적 배열
 // List
+
+import Car from "./car";
+import { CarsDto } from "./dto/carsDto";
 
 // ADT(abstract data type, 추상 자료형(자료구조 공부)
 // 할 수 있는 일을 명확하게 제약을 두기
@@ -12,12 +17,25 @@
 
 //Cars는 도메인 객체 - 비즈니스 로직만 갖고있음, 출력할때 쓰는 건 따로 dto로 빼줌
 export class Cars {
+  /**
+   * @type {Car[]}
+   */
   #carList; // Car[]
 
+  /**
+   *
+   * @param {string[]} carNames
+   */
+
   constructor(carNames) {
-    // carNames를 돌면서 Cars 만들기
-    this.#carList = carNames.map((carNames) => new Cars(carNames));
+    // carNames를 돌면서 Car만들기
+    // [new Car('a'), new Car('b'), ...]
+    this.#carList = carNames.map((carName) => new Car(carName));
   }
+
+  /**
+   * @return {void}
+   */
 
   // 모든 차를 움직이는 매서드
   // 자기 객체의 데이터는 되도록 자기 안에서 쓰기
@@ -26,7 +44,17 @@ export class Cars {
       car.move();
     });
   }
+  /**
+   *
+   * @returns {CarsDto}
+   */
 
   // 결과는 도메인 객체에서 dto로 만들기
-  makeCarsDto() {}
+  makeCarsDto() {
+    // this.#carList는 [Car, Car, ..]
+    // 그것을 [CarDto,CarDto,CarDto, ... ]로 만들어야 한다
+    // Car에 돌려서 만든 carDtoList를 CarsDto로 보내준다.
+    const carDtoList = this.#carList.map((car) => car.makeCarDto());
+    return new CarsDto(carDtoList);
+  }
 }
