@@ -4,6 +4,7 @@ class App {
   constructor() {
     this.gameMain = new GameMain();
   }
+
   async play() {
     return this.gameMain.userCarName();
   }
