@@ -57,12 +57,31 @@ class App {
       throw new Error('[ERROR] 숫자 입력이 잘못된 형식입니다.');
   }
 
+  racingProgress(racingNumber) {
+    Console.print('실행 결과');
+    for (let i = 0; i < racingNumber; i++) {
+      this.racing(this.racingCars);
+      Console.print('');
+    }
+  }
+
   racing(cars) {
     Object.keys(cars).map((car) => {
       const number = Random.pickNumberInRange(1, 9);
       if (number > 4) cars[car] += '-';
       Console.print(`${car} : ${cars[car]}`);
     });
+  }
+
+  findWinner() {
+    Object.values(this.racingCars).map((score) =>
+      this.winnerScore < score.length ? (this.winnerScore = score.length) : ''
+    );
+
+    for (const car in this.racingCars) {
+      if (this.racingCars[car].length === this.winnerScore)
+        this.winner.push(car);
+    }
   }
 
   async play() {
@@ -77,20 +96,9 @@ class App {
       );
       this.validateTryNumbers(racingTryNumbers);
 
-      Console.print('\n실행 결과');
-      for (let i = 0; i < racingTryNumbers; i++) {
-        this.racing(this.racingCars);
-        Console.print(`\n`);
-      }
+      this.racingProgress(racingTryNumbers);
 
-      Object.values(this.racingCars).map((score) =>
-        this.winnerScore < score.length ? (this.winnerScore = score.length) : ''
-      );
-
-      for (const car in this.racingCars) {
-        if (this.racingCars[car].length === this.winnerScore)
-          this.winner.push(car);
-      }
+      this.findWinner();
 
       Console.print(`최종 우승자 : ${this.winner}`);
     } catch (error) {
