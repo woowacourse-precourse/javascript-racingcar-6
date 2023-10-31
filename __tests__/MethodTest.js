@@ -1,5 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import Car from "../src/racingcar.js";
+import Car from "../src/ViewResult.js";
 import App from "../src/App.js";
 
 describe("App 클래스 테스트", () => {
@@ -19,10 +19,10 @@ describe("App 클래스 테스트", () => {
   });
 
   test("getInput 메소드가 cars와 rounds를 올바르게 설정하는지 확인", async () => {
-    await app.getInput();
+    await app.play();
 
-    expect(app.cars.length).toBe(2);
-    expect(app.rounds).toBe(5);
+    expect(app.model.cars.length).toBe(2);
+    expect(app.model.rounds).toBe(5);
   });
 
   test("validateCarNames 메소드가 유효하지 않은 자동차 이름에 대해 예외를 던지는지 확인", () => {
@@ -30,9 +30,9 @@ describe("App 클래스 테스트", () => {
 
     invalidCar.isValidName = jest.fn().mockReturnValue(false);
 
-    app.cars.push(invalidCar);
+    app.model.cars.push(invalidCar);
 
-    expect(() => app.validateCarNames()).toThrow(Error);
+    expect(() => app.model.validateCarNames()).toThrow(Error);
   });
 
   test("playRound 메소드가 각 자동차의 move 메소드를 호출하는지 확인", () => {
@@ -42,9 +42,11 @@ describe("App 클래스 테스트", () => {
     jest.spyOn(이재신, 'move');
     jest.spyOn(우테코, 'move');
 
-    app.cars.push(이재신, 우테코);
+    app.model.cars.push(이재신, 우테코);
 
-    app.playRound();
+    app.model.playRound();
+
+    expect(이재신.move).toHaveBeenCalled();
 
     let 이재신MoveCalled = 이재신.move.mock.calls.length > 0;
     let 우테코MoveCalled = 우테코.move.mock.calls.length > 0;
