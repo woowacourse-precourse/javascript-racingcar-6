@@ -1,6 +1,6 @@
 import Race from "../src/Race";
 
-describe("Race class의 getWinners 메서드 테스트", () => {
+describe("Race class의 decideWinners 메서드 테스트", () => {
   let race;
 
   beforeEach(() => {
