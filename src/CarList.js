@@ -4,6 +4,7 @@ import MESSAGE from "./constants/message.js";
 
 class CarList {
   cars = [];
+  maxScore = -1;
 
   async setCarList(carInput) {
     const carInputArray = carInput.split(",");
@@ -27,9 +28,8 @@ class CarList {
   }
 
   printFinalResult() {
-    let maxScore = -1;
-    this.cars.map((data) => (maxScore = Math.max(maxScore, data.score)));
-    const result = this.cars.filter((data) => maxScore === data.score);
+    this.cars.map((data) => (this.maxScore = Math.max(this.maxScore, data.score)));
+    const result = this.cars.filter((data) => this.maxScore === data.score);
     const lastWinner = result.map((data) => data.name).join(", ");
     Console.print(`최종 우승자 : ${lastWinner}`);
   }
