@@ -1,4 +1,4 @@
-import Car from "../model/Car.js";
+import Car from '../model/Car.js';
 import {
   playerInput,
   carNameInput,
@@ -6,9 +6,9 @@ import {
   printMoveResult,
   printLine,
   printRacingResult,
-} from "../view/View.js";
-import RandomInRange from "../utils/RandomInRange.js";
-import CheckWinner from "../utils/CheckWinner.js";
+} from '../view/View.js';
+import RandomInRange from '../utils/RandomInRange.js';
+import CheckWinner from '../utils/CheckWinner.js';
 
 export default class RacingCarController {
   #CarArr = [];
@@ -19,7 +19,7 @@ export default class RacingCarController {
   }
 
   getCarNameInput(input) {
-    const splitInput = input.split(",");
+    const splitInput = input.split(',');
     splitInput.forEach((carName) => {
       this.#CarArr.push(new Car(carName));
     });
@@ -55,7 +55,7 @@ export default class RacingCarController {
   }
 
   getWinner() {
-    const winner = CheckWinner(this.#CarArr).join(", ");
+    const winner = CheckWinner(this.#CarArr).join(', ');
     printRacingResult(winner);
   }
 }

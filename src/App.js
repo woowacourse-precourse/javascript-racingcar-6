@@ -1,4 +1,4 @@
-import RacingCarController from "./controller/RacingCarController.js";
+import RacingCarController from './controller/RacingCarController.js';
 
 class App {
   async play() {

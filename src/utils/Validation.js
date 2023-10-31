@@ -1,5 +1,5 @@
-import { GAME_CAR_NAME_LENGTH } from "../constants/GameSetting.js";
-import { MESSAGE_ERROR } from "../constants/Message.js";
+import { GAME_CAR_NAME_LENGTH } from '../constants/GameSetting.js';
+import { MESSAGE_ERROR } from '../constants/Message.js';
 
 const isNumber = (input) => {
   const regExp = /^[0-9]+$/;
@@ -18,7 +18,7 @@ const isCarName = (inputArr) => {
     if (carName.length > GAME_CAR_NAME_LENGTH) {
       throw new Error(MESSAGE_ERROR.errorCarNameLength);
     }
-    if (carName === "" || carName === " ") {
+    if (carName === '' || carName === ' ') {
       throw new Error(MESSAGE_ERROR.errorCarNotValid);
     }
   });
@@ -32,7 +32,7 @@ const isCarDuplicate = (inputArr) => {
 };
 
 export function isValidCarName(input) {
-  const inputArr = input.split(",");
+  const inputArr = input.split(',');
 
   isCarName(inputArr);
   isCarDuplicate(inputArr);

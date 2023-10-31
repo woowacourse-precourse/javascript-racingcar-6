@@ -1,4 +1,4 @@
-import { CAR_DEFAULT, GAME_FORWARD_CONDITION } from "../constants/GameSetting.js";
+import { CAR_DEFAULT, GAME_FORWARD_CONDITION } from '../constants/GameSetting.js';
 
 export default class Car {
   #Car = {
