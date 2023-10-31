@@ -9,8 +9,14 @@ const gameSetting = (cars, loser)=>{
     return acc;
   }, {})
   Object.values(obj).forEach(function(arr) {
+<<<<<<< HEAD
     if (arr.length == 1) loser.push(arr[0]);
     else {
+=======
+    if (arr.length == 1) {
+      loser.push(arr[0]);
+    }else {
+>>>>>>> 50ccfde922b4411a40ca042db9bf87687c5c5a98
       for (let i = 0; i < arr.length; i++) {
         arr[i] += "(" + i + ")";
         loser.push(arr[i])
