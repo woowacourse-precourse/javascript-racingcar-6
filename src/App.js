@@ -2,32 +2,25 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 class App {
   async play() {
     const cars = await this.getCars();
-    let rounds = await this.getRounds();
+    const rounds = await this.getRounds();
     const racingGame = await this.racingRounds(cars, rounds);
     await this.printWinner(racingGame);
   }
+
   async racingRounds(cars, rounds) {
-    let roundsCars = [];
-    while (rounds) {
-      const initCars = await this.initCars(cars);
-      roundsCars = await this.randomNumberRoundForwards(initCars);
+    const roundsCars = [...cars];
+    Array.from({ length: rounds }).map(async () => {
+      await this.randomNumberRoundForwards(roundsCars);
       await this.afterPrint();
-      await rounds--;
-    }
+    });
     return roundsCars;
   }
-  initCars(cars) {
-    return cars.map((car) => {
-      car.forward = false;
-      return car;
-    });
-  }
+
   async getCars() {
     const carsInput = await MissionUtils.Console.readLineAsync(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
     );
-    const carsList = this.carsCheck(carsInput);
-    return carsList;
+    return this.carsCheck(carsInput);
   }
 
   carsCheck(carsInput) {
@@ -42,10 +35,11 @@ class App {
     const roundsInput = await MissionUtils.Console.readLineAsync(
       "시도할 횟수는 몇 회인가요?\n"
     );
-    if (NUMBER_CHECK.test(roundsInput)) {
-      await this.beforePrint();
-      return roundsInput;
-    } else throw Error("[ERROR] 숫자가 잘못된 형식입니다.");
+    if (!NUMBER_CHECK.test(roundsInput))
+      throw Error("[ERROR] 숫자가 잘못된 형식입니다.");
+
+    await this.beforePrint();
+    return roundsInput;
   }
   randomNumberRoundForwards(cars) {
     const forwardCars = cars.map((car) => {
@@ -59,23 +53,23 @@ class App {
     });
     return forwardCars;
   }
-  beforePrint() {
-    MissionUtils.Console.print("\n실행결과");
+  async beforePrint() {
+    await MissionUtils.Console.print("\n실행결과");
   }
-  afterPrint() {
-    MissionUtils.Console.print("");
+  async afterPrint() {
+    await MissionUtils.Console.print("");
   }
   printRoundscore(car, forward) {
-    const scorePrint = [car.name, " : ", this.repeatPrint(forward)].join("");
+    const scorePrint = `${car.name} : ${this.repeatPrint("-", forward)}`;
     MissionUtils.Console.print(scorePrint);
   }
-  repeatPrint(n) {
-    const scorePrint = ["-"].map((a) => a.repeat(n)).join("");
-    return scorePrint;
+  repeatPrint(keyword, n) {
+    return keyword.repeat(n);
   }
   async printWinner(racingCars) {
-    const scoreList = await racingCars.map((car) => car.score);
-    const winners = await racingCars.filter(
+    if (!racingCars.length) return;
+    const scoreList = racingCars.map((car) => car.score);
+    const winners = racingCars.filter(
       (cars) => cars.score === Math.max(...scoreList)
     );
     await MissionUtils.Console.print(
