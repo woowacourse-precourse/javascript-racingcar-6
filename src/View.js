@@ -5,5 +5,6 @@ import carMessages from './messages/Car.js';
 export const getCarName = async () => {
   const carName = await Console.readLineAsync(carMessages.INPUT);
   const carNames = carName.split(',');
+  carValidate(carNames);
   return carNames;
 };
