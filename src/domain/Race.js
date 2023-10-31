@@ -9,7 +9,8 @@ class Race {
     carNames.forEach((name) => {
       this.cars.push(new RacingCar(name));
     });
-    console.log(this.cars);
+    const attemptCount = await Console.askAttemptCount();
+    console.log(attemptCount);
   }
 }
 
