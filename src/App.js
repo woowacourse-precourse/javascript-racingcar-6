@@ -13,6 +13,11 @@ class App {
     const isNameUpper5 = carNames.every((carName) => carName.length() > 5);
 
     //5자 이상이면 예외 처리
+
+    //시도할 횟수 입력받기
+    const tryNumber = await MissionUtils.Console.readLineAsync(
+      "시도할 횟수는 몇 회인가요?"
+    );
   }
 }
 
