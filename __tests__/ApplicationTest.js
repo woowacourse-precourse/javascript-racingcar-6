@@ -24,8 +24,8 @@ const getLogSpy = () => {
 };
 
 describe('자동차 경주 게임', () => {
-  test('5글자 이상 이름 테스트', async () => {
-    const inputs = ['1234,12345', '1'];
+  test('6글자 이상 이름 테스트', async () => {
+    const inputs = ['12345,123456', '1'];
     mockQuestions(inputs);
     const app = new App();
     await expect(app.play()).rejects.toThrow('[ERROR]');
