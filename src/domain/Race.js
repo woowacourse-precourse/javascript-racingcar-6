@@ -1,11 +1,11 @@
 import View from '../View.js';
 import RacingCar from './RacingCar.js';
-import Recorder from './Recorder.js';
+import Referee from './Referee.js';
 
 class Race {
   cars = [];
   numberOfRounds = 0;
-  recorder = new Recorder();
+  referee = new Referee();
 
   async prepare() {
     const carNames = await View.askCarNames();
@@ -13,17 +13,17 @@ class Race {
       this.cars.push(new RacingCar(name));
     });
     this.numberOfRounds = await View.askNumberOfRounds();
-    this.recorder.recordNumberOfRound(this.numberOfRounds);
+    this.referee.recordNumberOfRound(this.numberOfRounds);
   }
 
   race() {
     for (let round = 0; round < this.numberOfRounds; round += 1) {
       this.cars.forEach((car) => {
         car.tryToMoveForward();
-        car.showResultTo(this.recorder, round);
+        car.showResultTo(this.referee, round);
       });
     }
-    this.recorder.showResults();
+    this.referee.showResults();
   }
 }
 

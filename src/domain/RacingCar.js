@@ -12,8 +12,8 @@ class RacingCar {
     this.#moveCount = 0;
   }
 
-  showResultTo(recorder, round) {
-    recorder.recordResult(this.#name, this.#moveCount, round);
+  showResultTo(referee, round) {
+    referee.recordResult(this.#name, this.#moveCount, round);
   }
 
   tryToMoveForward() {
