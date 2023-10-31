@@ -12,3 +12,7 @@ export const checkCarsNameCount = (carNamesString) => {
   if (!carNamesString.includes(","))
     throw new Error(NOT_INCLUDED_COMMA_USER_INPUT_ERROR);
 };
+
+export const splitCarsArray = (carsNameString) => {
+  return carsNameString.split(",");
+};
