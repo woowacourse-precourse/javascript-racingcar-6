@@ -34,7 +34,6 @@ class App {
 
   numberValidity(input) {
     const validNumberError = !/^[0-9]+$/.test(input);
-
     return validNumberError;
   }
 
@@ -54,7 +53,6 @@ class App {
       const action = randomValue >= 4 ? '-' : '';
       if (action === '-') {
         recordSave[index] += 1;
-
       }
       return { carName, action: '-'.repeat(recordSave[index]) };
     });
