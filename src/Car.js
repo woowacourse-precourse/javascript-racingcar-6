@@ -1,5 +1,5 @@
-import { constants } from './constants';
-import { Console } from '@woowacourse/mission-utils';
+import constants from './constants';
+import { Random, Console } from '@woowacourse/mission-utils';
 
 export default class Car {
   constructor(name) {
@@ -7,18 +7,24 @@ export default class Car {
     this.movingCount = 0;
   }
 
-  doForward(random) {
-    if (random >= constants.JUDGE_NUMBER) {
-      forward();
-      printForward();
+  doForward(count) {
+    let judgeGoSTOP = 0;
+  
+    for (let i = 0; i < count; i++) {
+      judgeGoSTOP = Random.pickNumberInRange(
+        constants.NUMBER_RANGE_MIN,
+        constants.NUMBER_RANGE_MAX
+      );
+      if (judgeGoSTOP >= constants.JUDGE_NUMBER) {
+        this.movingCount++;
+      }
+      Console.print(this.printResult(this.movingCount));
     }
   }
 
-  forward() {
-    this.movingCount = this.movingCount + 1;
-  }
-
-  printForward() {
-    Console.print('-');
+  printResult(movingCount) {
+    return `${this.name} : ${'-'.repeat(movingCount)}`;
   }
 }
+
+export { Car }
