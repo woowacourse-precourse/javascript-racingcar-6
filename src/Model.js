@@ -45,11 +45,16 @@ const addGameRoundView = (nextCar) => {
 };
 const getGameResultView = () => gameResultView;
 
+const NEW_LINE = '\n';
+const addFinalGameResult = (winners) => {
+  gameResultView = `${gameResultView}${NEW_LINE}${'최종 우승자 : '}${winners.join(', ')}`;
+};
+
 export {
   CUT_OFF_NUM,
   getGameStage, setGameStage, getCarNames, setCarNames,
   getGameCnt, setGameCnt, setCarRace, getCarRace, getCarNum,
-  addGameRoundView, getGameResultView,
+  addGameRoundView, getGameResultView, addFinalGameResult,
   askForCarNamesView, askForGameCntView,
   errorMessage,
 };

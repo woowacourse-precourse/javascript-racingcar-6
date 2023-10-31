@@ -4,7 +4,7 @@ import {
   getGameStage, setGameStage, getCarNames, setCarNames,
   getGameCnt, setGameCnt, setCarRace, getCarRace, getCarNum,
   askForCarNamesView, askForGameCntView, addGameRoundView, getGameResultView,
-  errorMessage,
+  errorMessage, addFinalGameResult,
 } from './Model.js';
 
 const saveCarName = function splitAndSaveCarNames(carNames) {
@@ -57,6 +57,21 @@ const gameRound = (size) => {
   roundView(size);
 };
 
+const checkGameResult = (size) => {
+  const resultArr = getCarRace();
+  const carNames = getCarNames();
+  let winners = [];
+  let max = -1;
+  for (let i = 0; i < size; i += 1) {
+    if (resultArr[i].length > max) {
+      max = resultArr[i];
+      winners = [];
+      winners.push(carNames[i]);
+    }
+  }
+  addFinalGameResult(winners);
+};
+
 const gamePlay = () => {
   let gameCnt = getGameCnt();
   const numOfCars = getCarNum();
@@ -64,6 +79,7 @@ const gamePlay = () => {
     gameRound(numOfCars);
     gameCnt -= 1;
   }
+  checkGameResult(numOfCars);
 };
 
 const selectView = function selectTextForView() {
