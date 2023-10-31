@@ -40,7 +40,7 @@ describe("story1. 자동차 이름 입력", () => {
 });
 
 describe("story2. 실행횟수 입력", () => {
-  test("입력을 받아서 숫자를 반환한다.", async () => {
+  test("입력을 받아서 숫자를 반환한다.", () => {
     // given
     const input = '7';
     const result = Number(input);
@@ -50,7 +50,7 @@ describe("story2. 실행횟수 입력", () => {
 });
 
 describe("story4. 차수별 진행상황 출력", () => {
-  test("자동차 이름을 가지고, 기록용 배열을 만든다.", async () => {
+  test("자동차 이름을 가지고, 기록용 배열을 만든다.", () => {
     // given
     const result = [];
     const array = ['산', '바다', '강', '하늘'];
@@ -65,7 +65,7 @@ describe("story4. 차수별 진행상황 출력", () => {
 });
 
 describe("story4. 숫자가 4이상일 경우 record 배열에 '-' 추가", () => {
-  test("자동차 이름을 가지고, 기록용 배열을 만든다.", async () => {
+  test("자동차 이름을 가지고, 기록용 배열을 만든다.", () => {
     // given
     const randoms = [9, 3, 2, 8];
     const result = ['산 : ', '바다 : ', '강 : ', '하늘 : '];
