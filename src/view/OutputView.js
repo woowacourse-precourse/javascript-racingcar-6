@@ -13,7 +13,7 @@ const OutputView = Object.freeze({
 
   /**
    * @public
-   * @param {{name: string, status: number}} racingGrid
+   * @param {{name: string, status: number}[]} racingGrid
    * @returns {void}
    */
   printRacingGrid(racingGrid) {
