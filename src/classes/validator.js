@@ -9,6 +9,7 @@ class Validator {
   }
 
   static specialCharactor(names) {
+    // 영 대,소문자 / 한글 / 숫자 / 콤마 / 공백만 입력되었는지 확인하는 정규표현식
     if (!/^[a-zA-Z가-힣0-9, ]*$/.test(names)) {
       throw new Error(ERROR_MESSAGE.INVALID_INPUT);
     }
@@ -55,6 +56,7 @@ class Validator {
   }
 
   static isInteger(input) {
+    // 입력이 정수인지 소수점을 버린 수와 숫자로 변환한 수를 비교
     if (Math.floor(input) !== Number(input)) {
       throw new Error(ERROR_MESSAGE.IS_NOT_INTEGER);
     }
