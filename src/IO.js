@@ -32,14 +32,22 @@ export const input = {
     return Number(tryCountInput);
   },
   validateCarName(carName) {
+    if (carName.length === 0) {
+      throw new Error(MESSAGE.ERROR('자동차 이름을 입력해주세요'));
+    }
     if (carName.length > 5) {
       throw new Error(MESSAGE.ERROR('자동차 이름은 5자 이하만 가능합니다.'));
     }
   },
   validateTryCount(tryCount) {
-    const regex = /^[0-9]*$/;
-    if (!regex.test(tryCount)) {
+    if (tryCount.length === 0) {
+      throw new Error(MESSAGE.ERROR('시도 횟수를 입력해주세요.'));
+    }
+    if (Number.isNaN(tryCount)) {
       throw new Error(MESSAGE.ERROR('시도 횟수는 숫자만 가능합니다.'));
+    }
+    if (tryCount < 1) {
+      throw new Error(MESSAGE.ERROR('시도 횟수는 1 이상이어야 합니다.'));
     }
   },
 };
