@@ -1,6 +1,15 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
+import RandomNumberGenerator from "./RandomNumberGenerator.js";
+import MovementManager from "./MovementManager.js";
 
 class App {
+  movementManager;
+
+  constructor() {
+    const randomNumberGenerator = new RandomNumberGenerator();
+    this.movementManager = new MovementManager(randomNumberGenerator);
+  }
+
   validateCarNames = (carNames) => {
     for (let carName of carNames) {
       if (carName.length > 5) {
@@ -19,12 +28,8 @@ class App {
 
   playRound = (carNames, locations) => {
     for (let carName of carNames) {
-      const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
-      let move = 0;
-      if (randomNumber >= 4) {
-        move = 1;
-      }
-      locations.set(carName, locations.get(carName) + move);
+      const movement = this.movementManager.getMovement();
+      locations.set(carName, locations.get(carName) + movement);
     }
   };
 
