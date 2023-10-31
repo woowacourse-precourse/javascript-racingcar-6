@@ -15,7 +15,7 @@ test('경주가 끝난 후, 가장 많이 전진한 자동차(들)을 반환한�
   const inputs = [pobi, woni, jun];
   const expected = [woni, jun];
 
-  const outputs = Referee.checkWinners(inputs);
+  const outputs = Referee.decideWinners(inputs);
 
   expect(outputs).toStrictEqual(expected);
 });

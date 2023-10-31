@@ -37,7 +37,7 @@ class App {
     printRaceStatusMessage();
     race(cars, attempts);
 
-    const winners = Referee.checkWinners(cars);
+    const winners = Referee.decideWinners(cars);
     printWinners(winners);
   }
 }

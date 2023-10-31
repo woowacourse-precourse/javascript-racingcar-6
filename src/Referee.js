@@ -11,7 +11,7 @@ class Referee {
     return Boolean(bestRecord);
   }
 
-  static checkWinners(cars) {
+  static decideWinners(cars) {
     const bestRecord = getBestMovementRecord(cars);
     if (this.isRaceValid(bestRecord)) {
       return getWinners(cars, bestRecord);
