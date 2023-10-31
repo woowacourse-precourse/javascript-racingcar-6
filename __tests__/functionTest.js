@@ -1,5 +1,6 @@
 import App from '../src/App';
 import { MissionUtils } from '@woowacourse/mission-utils';
+import { ERROR_MESSAGE } from '../src/Message.js';
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -17,7 +18,25 @@ const mockRandoms = (numbers) => {
     }, MissionUtils.Random.pickNumberInRange);
   };
 
+const getLogSpy = () => {
+  const logSpy = jest.spyOn(MissionUtils.Console, "print");
+  logSpy.mockClear();
+  return logSpy;
+};
+
 describe('내 기능 테스트', () => {
+  test('자동차 이름을 입력하지 않았을때 예외 발생', () => {
+    // given
+    const input = [];
+
+    // when
+    const app = new App();
+    const fn = () => app.validateCarNames(input)
+
+    // then
+    expect(fn).toThrowError(ERROR_MESSAGE.NOCARNAMES_ERROR);
+  }),
+
   test('자동차 이름 목록에서 하나라도 5자가 초과되면 예외 발생', () => {
     // given
     const input = [ 'pobi', 'test', 'Jwirang' ];
@@ -27,7 +46,7 @@ describe('내 기능 테스트', () => {
     const fn = () => app.validateCarNames(input)
 
     // then
-    expect(fn).toThrowError('[ERROR] 이름은 5글자 이하로만 입력할 수 있습니다.');
+    expect(fn).toThrowError(ERROR_MESSAGE.VALIDATECARNAME_ERROR);
   }),
 
   test('자동차 이름들을 입력받아 , 단위로 잘라 배열로 반환', async () => {
@@ -52,7 +71,7 @@ describe('내 기능 테스트', () => {
     const app = new App();
 
     // then
-    await expect(app.getPlayCount()).rejects.toThrowError('[ERROR] 값이 잘 못 입력되었습니다.');
+    await expect(app.getPlayCount()).rejects.toThrowError(ERROR_MESSAGE.VALIDATEPLAYCOUNT_ERROR);
   });
 
   test('랜덤값이 4이상일 경우 1 반환', () => {
@@ -79,22 +98,26 @@ describe('내 기능 테스트', () => {
     expect(result).toEqual(0);
   }),
 
-  test('상태 업데이트', () => {
+  test('라운드 실행', () => {
     //given
-    const nameToNumberMap = {
-      'pobi': 3,
-      'test': 2,
-      'hi': 4,
-    };
-  
+    const carInfo = {
+      pobi: 1,
+      test: 2,
+    }
+    const outputs = [
+      'pobi : -',
+      'test : --',
+    ];
+    const logSpy = getLogSpy();
+
     // when
     const app = new App();
-    app.playRound(nameToNumberMap);
+    app.playRound(carInfo);
   
-    //the
-    expect(nameToNumberMap['pobi']).toBeGreaterThanOrEqual(3);
-    expect(nameToNumberMap['test']).toBeGreaterThanOrEqual(2);
-    expect(nameToNumberMap['hi']).toBeGreaterThanOrEqual(4);
+    //then
+    outputs.forEach((outputs) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(outputs));
+    });
   });
 
   test('우승자 추려내기', () => {
