@@ -11,6 +11,10 @@ const Random = {
     }
     return computer;
   },
+
+  sortArrayAscending(gameMovement) {
+    return gameMovement.slice().sort((a, b) => a - b);
+  },
 };
 
 export default Random;
