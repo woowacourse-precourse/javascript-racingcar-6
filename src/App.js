@@ -16,8 +16,7 @@ class App {
   }
 
   inputCarName(carlist) {
-    const CAR_LIST = carlist.split(',');
-    for (let CAR_NAME of CAR_LIST) {
+    for (let CAR_NAME of carlist) {
       this.setCarList(CAR_NAME, 0);
     }
   }
@@ -26,8 +25,8 @@ class App {
     const CAR_STRING = await Console.readLineAsync(
       '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분) : ',
     );
-    this.validateString(CAR_STRING);
-    return CAR_STRING;
+
+    return this.validateString(CAR_STRING);
   }
 
   validateString(carstring) {
@@ -46,7 +45,7 @@ class App {
         set.add(CAR);
       }
     }
-    return true;
+    return CAR_SPLIT;
   }
 }
 
