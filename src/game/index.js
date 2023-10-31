@@ -10,14 +10,13 @@ import { Console } from "@woowacourse/mission-utils";
 export class RacingGame {
   constructor() {
     this.cars = {};
-    this.tryCount = 0;
   }
 
   async initCars() {
     const NAME = await input(INPUT_MESSAGE.INPUT_NAME);
-    const CARS = await makeCarsArray(NAME);
+    const CARS_ARRAY = await makeCarsArray(NAME);
 
-    CARS.forEach((car) => {
+    CARS_ARRAY.forEach((car) => {
       this.cars[car] = 0;
     });
   }
@@ -25,12 +24,12 @@ export class RacingGame {
   async initTryCount() {
     const COUNT = await input(INPUT_MESSAGE.TRY_COUNT);
     const VAILD_COUNT = vaildTryCount(+COUNT);
-    this.tryCount = VAILD_COUNT;
+    return VAILD_COUNT;
   }
 
-  async go() {
+  async go(TRY_COUNT) {
     let num = 0;
-    while(this.tryCount > num) {
+    while(TRY_COUNT > num) {
       await this.moveCars();
       await Console.print("");
       num++;
@@ -38,9 +37,9 @@ export class RacingGame {
   }
   async start() {
     await this.initCars();
-    await this.initTryCount();
+    const TRY_COUNT = await this.initTryCount();
 
-    await this.go(1);
+    await this.go(TRY_COUNT);
 
     await this.printWinner();
   }
