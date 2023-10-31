@@ -20,5 +20,11 @@ describe("UserInterface 클래스 테스트", () => {
         "car2",
       ]);
     });
+
+    test("자동차 이름에 공백이 있을 시 에러 반환", () => {
+      expect(() => {
+        UserInterface.validateCarNames("car,,car2");
+      }).toThrow("[ERROR] 자동차 이름은 공백일 수 없습니다.");
+    });
   });
 });
