@@ -86,4 +86,13 @@ describe("class App test", () => {
       }).toThrowError(ERROR_MESSAGE.NUMBER);
     });
   });
+
+  describe("method test : checkRepeatNumber()", () => {
+    test("시도할 횟수에 공백을 포함해 입력했을 때 에러 처리", () => {
+      const testRepeatString = "1 2";
+      expect(() => {
+        app.checkRepeatNumber(testRepeatString);
+      }).toThrowError(ERROR_MESSAGE.GAP);
+    });
+  });
 });
