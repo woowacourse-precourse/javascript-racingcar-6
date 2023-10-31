@@ -8,9 +8,7 @@ class App {
     const userInput = await getUserInput(message.notifyStarting)
     const carNameArray = processInput(userInput)
     const racingRounds = await getUserInput(message.askRounds)
-    
-    const racingCars = arrayToRacingCarsArrayBuilder(carNameArray,CONDITION)        
-    console.log(racingCars)
+    const racingCars = buildRacingCarsArray(carNameArray,CONDITION)        
     while (racingRounds--) {
       racingCars.forEach(racingCar => racingCar.tryMoveForward())
       // 결과 출력 로직
@@ -21,7 +19,7 @@ class App {
 
 }
 
-function arrayToRacingCarsArrayBuilder(carNameArray,condition) {
+function buildRacingCarsArray(carNameArray,condition) {
   return carNameArray.map(element => new RacingCar(element,condition))
 }
 
