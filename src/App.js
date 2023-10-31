@@ -20,19 +20,19 @@ class App {
     const input = await Console.readLineAsync(USER_INPUT.CAR_NAME);
     const carNames = input.split(',');
     
-    carNames.forEach(carName => {
+    carNames.forEach((carName) => {
       this.checkCarNameVaildity(carName);
       this.carName.push(carName);
     })
   }
 
-  checkCarNameVaildity(carName){
+  checkCarNameVaildity(carName) {
     if (carName.length > 5) throw new Error(ERROR_MESSAGE.INPUT_CAR_NAME_ERROR);
     if (carName === '') throw new Error(ERROR_MESSAGE.INPUT_CAR_NAME_EMPTY_ERROR);
     if (this.carName.includes(carName)) throw new Error(ERROR_MESSAGE.INPUT_CAR_NAME_DUPLICATE_ERROR);
   }
 
-  async getRound(){
+  async getRound() {
     const input = await Console.readLineAsync(USER_INPUT.ROUND);
     const round = Number(input);
 
@@ -40,12 +40,12 @@ class App {
     this.round = round;
   }
 
-  checkRoundVaildity(round){
-    if(isNaN(round)) throw new Error(ERROR_MESSAGE.INPUT_CAR_ROUND_ERROR);
-    if(round === 0) throw new Error(ERROR_MESSAGE.INPUT_CAR_ROUND_ZERO_ERROR);
+  checkRoundVaildity(round) {
+    if (isNaN(round)) throw new Error(ERROR_MESSAGE.INPUT_CAR_ROUND_ERROR);
+    if (round === 0) throw new Error(ERROR_MESSAGE.INPUT_CAR_ROUND_ZERO_ERROR);
   }
 
-  showRaceProcess(){
+  showRaceProcess() {
     Console.print(MESSAGE.RESULT);
 
     this.carMoveCount = new Array(this.carName.length).fill(0);
@@ -57,7 +57,7 @@ class App {
     }
   }
 
-  updateCarMoveCount(){
+  updateCarMoveCount() {
     this.carMoveCount = [...this.carMoveCount].map((count) => {
       if (this.getRandomNumber() >= 4) count++
 
@@ -65,22 +65,22 @@ class App {
     })
   }
 
-  showCarProcess(){
+  showCarProcess() {
     this.carName.forEach((carName,i) => {
       Console.print(`${carName} : ${'-'.repeat(this.carMoveCount[i])}`)
     })
   }
 
-  getRandomNumber(){
+  getRandomNumber() {
     return Random.pickNumberInRange(0, 9);
   }
 
-  showRaceResult(){
+  showRaceResult() {
     const result = this.findWinners();
     Console.print(`${MESSAGE.WINNER + result}`);
   }
 
-  findWinners(){
+  findWinners() {
     const maxMove = this.findMaxCount();
 
     return [...this.carName]
@@ -88,7 +88,7 @@ class App {
     .join(', ');
   }
 
-  findMaxCount(){
+  findMaxCount() {
     return Math.max(...this.carMoveCount)
   }
 }
