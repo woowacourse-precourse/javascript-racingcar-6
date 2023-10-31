@@ -1,4 +1,4 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Console, Random } from "@woowacourse/mission-utils";
 
 class App {
   constructor() {}
@@ -7,12 +7,14 @@ class App {
       const setGameOfUser = await this.setGameOfUser();
       if (setGameOfUser === false)
         throw new Error("[ERROR] 입력값이 잘못되었습니다.");
-      console.log("setGameOfUser");
-      console.log(setGameOfUser);
 
-      // startGame(setGameOfUser.carList, setGameOfUser.gameNumber);
+      const result = this.startGame(
+        setGameOfUser.carList,
+        setGameOfUser.gameNumber
+      );
+      console.log(result);
+      this.endGame(result);
     } catch (error) {
-      console.log("에러발생");
       throw new Error("[ERROR] 입력값이 잘못되었습니다.");
     }
   }
@@ -65,11 +67,38 @@ class App {
     return gameNumber;
   }
 
-  startGame() {}
-  startGame_racing() {}
-  startGame_printIntermediateResult() {}
+  startGame(carList, gameNumber) {
+    const process = carList.map((element) => ({ name: element, location: 0 }));
 
-  endGame() {}
+    Console.print("실행결과");
+    for (let valid = 1; ; ) {
+      process.forEach((element) => {
+        if (Random.pickNumberInRange(1, 10) >= 4) element.location += 1;
+      });
+
+      const processToBar = process.map((element) => {
+        element.location = "-".repeat(element.location);
+        return element;
+      });
+
+      //[
+      //   {name:"foo", location:"-"}
+      // ]
+
+      let message = "";
+      processToBar.forEach((e) => {
+        message = message + `${e.name} : ${e.location} \n`;
+      });
+
+      Console.print(message);
+
+      if (valid >= gameNumber) break;
+      valid++;
+    }
+    return process;
+  }
+
+  endGame(result) {}
 }
 
 export default App;
