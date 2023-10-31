@@ -52,6 +52,10 @@ class App {
       .filter((car) => car.position === finalPosition)
       .map((car) => car.name);
   }
+
+  printWinner(winners) {
+    MissionUtils.Console.print(`최종 우승자 : ${winners.join(",")}`);
+  }
 }
 
 export default App;
