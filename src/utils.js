@@ -10,8 +10,7 @@ const readLineAsync = async (message) => {
 }
 
 const getValidInputNames = (input) => {
-  input = input.trim();
-  const splittedInput = input.split(',');
+  const splittedInput = input.split(',').map(name => name.trim());
 
   const set = new Set(splittedInput);
   const { MIN_NAME_NUMBER, MIN_NAME_LENGTH, MAX_NAME_LENGTH } = SETTING;
