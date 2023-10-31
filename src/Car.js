@@ -1,5 +1,5 @@
 import { Random } from '@woowacourse/mission-utils';
-import { CONSTANT, RANDOM_NUMBER, SYMBOL } from './Constant.js';
+import { CONSTANT, RANDOM_NUMBER, SYMBOL } from './constants/Constant.js';
 
 class Car {
   #name;

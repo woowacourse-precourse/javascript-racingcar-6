@@ -1,6 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
-import { MESSAGE } from './Constant.js';
-import Validator from './Validator.js';
+import { MESSAGE } from './constants/Constant.js';
+import Validator from './utils/Validator.js';
 import RacingCars from './RacingCars.js';
 
 class RacingCarGame {

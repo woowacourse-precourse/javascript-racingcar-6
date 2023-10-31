@@ -1,6 +1,6 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import Car from '../src/Car.js';
-import { CONSTANT } from '../src/Constant.js';
+import { CONSTANT } from '../src/constants/Constant.js';
 
 const mockRandoms = (numbers) => {
   MissionUtils.Random.pickNumberInRange = jest.fn();

@@ -1,5 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import { ERROR, MESSAGE } from '../src/Constant.js';
+import { ERROR, MESSAGE } from '../src/constants/Constant.js';
 import RacingCarGame from '../src/RacingCarGame.js';
 
 const mockQuestions = (inputs) => {

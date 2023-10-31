@@ -1,6 +1,6 @@
-import Validator from '../src/Validator.js';
-import ValidationError from '../src/ValidationError.js';
-import { ERROR } from '../src/Constant.js';
+import Validator from '../src/utils/Validator.js';
+import ValidationError from '../src/utils/ValidationError.js';
+import { ERROR } from '../src/constants/Constant.js';
 
 describe('입력값 검증 테스트', () => {
   test('에러 발생시 메세지는 [ERROR] 접두사를 가져야한다.', () => {

@@ -1,4 +1,4 @@
-import { CONSTANT, ERROR } from './Constant.js';
+import { CONSTANT, ERROR } from '../constants/Constant.js';
 import ValidationError from './ValidationError.js';
 
 class Validator {

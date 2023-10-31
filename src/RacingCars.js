@@ -1,4 +1,5 @@
 import Car from './Car.js';
+import { MESSAGE } from './constants/Constant.js';
 
 class RacingCars {
   #cars;
