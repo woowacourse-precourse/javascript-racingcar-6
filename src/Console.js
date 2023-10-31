@@ -21,6 +21,7 @@ class Console {
       this.#ATTEMPT_COUNT_QUERY,
     );
     const number = Number(answer);
+    Validator.validateAttemptCount(number);
     return number;
   }
 }
