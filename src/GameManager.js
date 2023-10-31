@@ -1,3 +1,5 @@
+import { Console } from '@woowacourse/mission-utils';
+import Strings from './resources/Strings.js'
 import Board from "./Board.js";
 
 class GameManager {
@@ -13,15 +15,15 @@ class GameManager {
 
   async #startGame() {
     this.#board = new Board();
-    // TODO: 안내메시지 출력 (Strings.INPUT_CAR_NAMES)
+    Console.print(Strings.INPUT_CAR_NAMES);
     await this.#board.setCars()
-    // TODO: 안내메시지 출력 (Strings.INPUT_NUM_TURNS)
+    Console.print(Strings.INPUT_NUM_TURNS);
     this.#board.setNumTurns()
   }
 
   #playGame() {
     const numTurns = this.#board.getNumTurns()
-    // TODO: 안내메시지 출력 (Strings.GAME_RESULT)
+    Console.print(Strings.GAME_RESULT);
     for (let i = 0; i < numTurns; i++) {
       this.#board.executeTurn();
       this.#board.printMiddleResult();

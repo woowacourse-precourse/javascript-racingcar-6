@@ -1,4 +1,5 @@
 import { Console, Random } from '@woowacourse/mission-utils';
+import Strings from './resources/Strings.js'
 import Car from './Car.js';
 
 const MOVE_MIN_DIGIT = 4;
@@ -43,8 +44,7 @@ class Board {
    */
   #validateName(name) {
     if (name.length > MAX_NAME_LENGTH) {
-      // TODO: Error 메시지 변경
-      throw new Error("[ERROR]");
+      throw new Error(Strings.ERROR_NAME_LENGTH);
     }
   }
 
@@ -66,8 +66,7 @@ class Board {
    */
   #validateNumTurns(input) {
     if (!POSITIVE_INTEGER_REGEX.test(input)) {
-      // TODO: Error 메시지 변경
-      throw new Error("[ERROR]");
+      throw new Error(Strings.ERROR_NON_POSITIVE_INTEGER);
     }
   }
 
@@ -109,12 +108,11 @@ class Board {
    * 레이싱카들의 현재 이동 거리를 출력한다.
    */
   printMiddleResult() {
-    // TODO: 중간 출력 포맷 작성
     this.#cars.forEach((car) => {
-      const middleResult = [car.getName(), ':', '-'.repeat(car.getDistance())].join(' ');
-      console.log(middleResult);
+      const middleResult = [car.getName(), Strings.COLON, Strings.DISTANCE.repeat(car.getDistance())].join(' ');
+      Console.print(middleResult);
     })
-    console.log();
+    Console.print(Strings.NULL);
   }
 
   /**
@@ -123,10 +121,10 @@ class Board {
   pickOutWinner() {
     this.#winners = this.#cars.reduce((candidates, car) => {
       if (!candidates.length || car.getDistance() > candidates[0].getDistance()) {
-          return [car];
+        return [car];
       }
       if (car.getDistance() === candidates[0].getDistance()) {
-          candidates.push(car);
+        candidates.push(car);
       }
       return candidates;
     }, []);
