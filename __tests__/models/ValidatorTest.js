@@ -1,4 +1,3 @@
-import { CAR_NAMES, CARS, RACING } from "../../src/constants/carRacing";
 import { ERROR_MESSAGE } from "../../src/constants/messages";
 import Validator from "../../src/models/validator";
 
@@ -68,4 +67,4 @@ describe("시도할 횟수 입력 유효성 테스트", () => {
       Validator.validateInputNumbersOfMoves(numberOfMoves).toThrow(ERROR_MESSAGE.MORE_THAN_MAX);
     })
   });
-})
+});
