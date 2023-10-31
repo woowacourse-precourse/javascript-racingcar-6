@@ -1,6 +1,7 @@
+import { PRINT, SET_MAXIMUM_CAR_LENGTH } from "./constants.js";
 /**
  * input 값이 다음 조건인지 확인후 null 혹은 숫자를 반환
- *  1. 숫자인지 확인
+ *  1. 숫자로 이루어졌는지 확인
  *  2. 유효한 범위의 숫자인지 확인
  *
  * @param {string} input 사용자가 입력한 문자열
@@ -21,19 +22,24 @@ const isNumericString = (value) => {
 };
 
 /**
- * input 값이 separator로 구분된 올바른 값인지 확인 후 null 혹은 문자열 배열을 반환
- * 1. 올바른 구분자로 구분이 되
+ * input 값이 다음 내용 조건에 맞는지 확인 후 null 혹은 문자열 배열을 반환
+ *  1. name의 길이가 {SET_MAXIMUM_CAR_LENGTH} 이하인지 확인
+ *  2. 연속된 {separator}로 이루어져 있지 않은지 확인
+ *  3. {separator}로 시작하거나, 끝나는지 확인
+ *
  * @param {string} inputCarNames
  * @param {string} separator
  * @returns
  */
-export function parseValidCarNames(input, separator) {
+export async function parseValidCarNames(input, separator) {
   let carNameList = input.trim().split(separator);
   for (let i = 0; i < carNameList.length; i++) {
     carNameList[i] = carNameList[i].trim();
     if (carNameList[i] === "") return null;
-    if (5 < carNameList[i].length) return null;
+
+    if (SET_MAXIMUM_CAR_LENGTH < carNameList[i].length) return null;
   }
-  if (carNameList.length <= 1) return null;
+  if (carNameList.length < 1) return null;
+
   return carNameList;
 }
