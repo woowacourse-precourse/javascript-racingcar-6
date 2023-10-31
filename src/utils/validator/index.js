@@ -10,6 +10,7 @@ import {
   isValidNameLength,
   isValidQuantity,
 } from './utils/index.js';
+import isValidMinMax from './utils/is-valid-min-max/index.js';
 
 const Validators = {
   checkRacingVehicleName(input) {
@@ -34,6 +35,12 @@ const Validators = {
       throw new ValidationError(
         ERROR_MESSAGE_FUNCTION.racingCount(SYSTEM.racingCountMin, SYSTEM.racingCountMax),
       );
+    }
+  },
+
+  checkRandomNumber(input, min, max) {
+    if (!isValidMinMax(input, min, max)) {
+      throw new ValidationError(ERROR_MESSAGE_FUNCTION.randomNumber(min, max));
     }
   },
 };
