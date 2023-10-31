@@ -11,6 +11,7 @@ class UserInputRound {
     const userInput = await Console.readLineAsync();
     const rounds = parseInt(userInput, 10);
 
+    Console.print(rounds);
     this.setRounds(rounds);
   }
 
