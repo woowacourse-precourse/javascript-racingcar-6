@@ -6,14 +6,6 @@ export default class OutputView {
         MissionUtils.Console.print(`${message}`);
     }
 
-    printRaceResultMessage() {
-        MissionUtils.Console.print(`${INFO_MESSAGES.RACE_RESULT}`);
-    }
-
-    printPoints(message) {
-        MissionUtils.Console.print(`${message}`);
-    }
-
     printWinners(winnerMessage) {
         MissionUtils.Console.print(`${INFO_MESSAGES.WINNER} ${winnerMessage}`);
     }
