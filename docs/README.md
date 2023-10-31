@@ -50,7 +50,7 @@ src
 
 ### MissionUtilsHandler.js
 
-목적: 반복되는 라이브러리의 import 최소화
+목적: 반복되는 라이브러리의 import 최소화  
 기능: 'MissionUtils' 라이브러리의 기능을 반환
 
 - consoleInput()
@@ -104,6 +104,9 @@ src
 목적: 유효한 자동차의 데이터를 파싱  
 기능: 자동차의 입력값의 배열을 Map 자료구조로 파싱해서 반환
 
+> Map의 순서를 가지는 특성을 사용하기 위해  
+> Object보다는 Map을 선택
+
 ---
 
 ### receiveCarName / receiveGameCount
@@ -144,6 +147,9 @@ receiveCarName(), receiveGameCount(), parseArrayToMap()
 기능:  
 모듈화된 게임 시작에 해당하는 input의 기능을 담당하는 함수를 호출,
 생성된 데이터를 Object 형태로 반환
+
+> 반환 값  
+> {carData: Map ... , gameCount: number };
 
 ---
 
