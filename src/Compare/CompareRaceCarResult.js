@@ -4,6 +4,7 @@ import CarForwardRandomNumberGenerator from "../utils/CarForwardRandomNumberGene
 class CompareRaceCarResult {
   #raceCars;
   #attempts;
+  #finalForwardDistance = [];
 
   constructor(racecarNames) {
     this.#raceCars = racecarNames
@@ -32,6 +33,13 @@ class CompareRaceCarResult {
       raceCar.getRaceCarName(),
       raceCar.getRaceCarForwardDistance(),
     ]);
+  }
+
+  getMaxForwardDistance() {
+    this.#raceCars.map((raceCar) => {
+      this.#finalForwardDistance.push(raceCar.getRaceCarForwardDistance());
+    });
+    return Math.max(...this.#finalForwardDistance);
   }
 }
 
