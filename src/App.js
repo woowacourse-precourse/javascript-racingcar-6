@@ -2,6 +2,7 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 import checkCarNameLength from "./checkCarNameLength";
 import checkValidRounds from "./checkValidRounds";
 import setArrayToMap from "./setArrayToMap";
+import playRandomForwardMove from "./playRandomForwardMove";
 
 class App {
   async play() {
