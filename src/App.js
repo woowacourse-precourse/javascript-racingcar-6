@@ -7,6 +7,8 @@ class App {
     this.countMessage = '시도할 횟수는 몇 회인가요?\n';
     this.resultMessage = '실행 결과';
     this.carData = {};
+    this.finishMessage = '최종 우승자 : ';
+    this.distanceArray = [];
   }
 
   async play() {
@@ -24,10 +26,14 @@ class App {
     carNames.forEach(name => {
       this.carData[name] = '';
     });
-    for (let i = 0; i < userCount; i++) {
+    MissionUtils.Console.print('');
+    MissionUtils.Console.print(this.resultMessage);
+    for (let i = 0; i < userCount; i += 1) {
       this.moveCar();
       this.printResult();
+      MissionUtils.Console.print('');
     }
+    this.printFinish();
   }
 
   static isValidCar(carNames) {
@@ -52,10 +58,21 @@ class App {
   }
 
   printResult() {
-    MissionUtils.Console.print(this.resultMessage);
     Object.keys(this.carData).forEach(name => {
       MissionUtils.Console.print(`${name} : ${this.carData[name]}`);
     });
+  }
+
+  printFinish() {
+    Object.values(this.carData).forEach(value => {
+      this.distanceArray.push(value.length);
+    });
+    const maxDistance = Math.max(...this.distanceArray);
+    const winners = Object.keys(this.carData).filter(
+      name => this.carData[name].length === maxDistance,
+    );
+    const winnerString = winners.join(', ');
+    MissionUtils.Console.print(this.finishMessage + winnerString);
   }
 }
 
