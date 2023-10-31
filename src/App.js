@@ -32,6 +32,12 @@ class App {
       if (name.length > 5) {
         throw new Error("[ERROR] 5자 이하로 입력해주세요.");
       }
+      if (nameArray.length < 2) {
+        throw new Error("[ERROR] 2명이상으로 입력해주세요.");
+      }
+      if (nameArray.some((name) => name === "")) {
+        throw new Error("[ERROR] 올바른 이름을 입력해주세요.");
+      }
     });
   }
 
