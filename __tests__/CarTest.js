@@ -9,12 +9,6 @@ const mockRandoms = (numbers) => {
   );
 };
 
-const getLogSpy = () => {
-  const logSpy = jest.spyOn(MissionUtils.Console, 'print');
-  logSpy.mockClear();
-  return logSpy;
-};
-
 describe('class Car test', () => {
   const car = new Car('Goonco');
 
@@ -34,9 +28,9 @@ describe('class Car test', () => {
 
   test('[Method Test] printPosition', () => {
     const printResult = 'Goonco : --';
-    const logSpy = getLogSpy();
+    MissionUtils.Console.print = jest.fn();
 
     car.printPosition();
-    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(printResult));
+    expect(MissionUtils.Console.print).toHaveBeenCalledWith(printResult);
   });
 });
