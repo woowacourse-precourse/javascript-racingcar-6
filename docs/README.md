@@ -11,7 +11,7 @@
 **2.View**
 
 - 2-1. InputView
-- 2-2. OutView
+- 2-2. OutputView
 
 **3.Controller**
 
@@ -20,8 +20,9 @@
 **4.utils**
 
 - 4-1. constants
-- 4-2. getRandomNumber
-- 4-3. validateInput
+- 4-2. validateInput
+- 4-3. getRandomNumber
+- 4-4. getForwardData
 
 
 ### 기능 정리
