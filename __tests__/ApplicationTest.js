@@ -77,5 +77,18 @@ describe('자동차 경주 게임', () => {
         expect(car.getName()).toBe(resultList[idx]);
       });
     });
+
+    test('oneStepForward() test', () => {
+      // given
+      const car = new Car('kim');
+
+      // when
+      car.oneStepForward();
+      car.oneStepForward();
+      car.oneStepForward();
+
+      // then
+      expect(car.getMove()).toBe(3);
+    });
   });
 });
