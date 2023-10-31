@@ -7,10 +7,8 @@ export default class Winner {
     this.#winners = [];
   }
 
-  setWinners(carsName, carsPosition) {
-    assessWinner(carsPosition).forEach(winnerIdx => {
-      this.#winners.push(carsName[winnerIdx]);
-    });
+  setWinners(cars) {
+    this.#winners = assessWinner(cars);
   }
 
   getWinner() {

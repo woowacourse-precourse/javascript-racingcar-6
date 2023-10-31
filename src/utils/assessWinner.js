@@ -1,16 +1,16 @@
-export default function assessWinner(positions) {
+export default function assessWinner(cars) {
   let winnerScore = 0;
-  let winnerIndex = [];
+  let winner = [];
 
-  positions.forEach((position, i) => {
-    if (position.length === winnerScore) {
-      winnerIndex.push(i);
+  cars.forEach(car => {
+    if (car.position.length === winnerScore) {
+      winner.push(car.name);
     }
-    if (position.length > winnerScore) {
-      winnerScore = position.length;
-      winnerIndex = [];
-      winnerIndex.push(i);
+    if (car.position.length > winnerScore) {
+      winnerScore = car.position.length;
+      winner = [];
+      winner.push(car.name);
     }
   });
-  return winnerIndex;
+  return winner;
 }

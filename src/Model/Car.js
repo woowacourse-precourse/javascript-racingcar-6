@@ -1,28 +1,16 @@
 import movePosition from '../utils/movePosition.js';
 
 export default class Car {
-  #carsName;
-
   #carsPosition;
 
-  setCarsName(input) {
-    this.#carsName = input.split(',');
-
-    return this.setCarsPostion();
-  }
-
-  setCarsPostion() {
-    this.#carsPosition = new Array(this.#carsName.length).fill('');
+  setCarsPosition(input) {
+    this.#carsPosition = input.split(',').map(name => ({ name, position: '' }));
   }
 
   setCarsRelocation() {
     this.#carsPosition.forEach((prePosition, i) => {
-      this.#carsPosition[i] = prePosition + movePosition();
+      this.#carsPosition[i].position = prePosition.position + movePosition();
     });
-  }
-
-  getCarsName() {
-    return this.#carsName;
   }
 
   getCarsPosition() {

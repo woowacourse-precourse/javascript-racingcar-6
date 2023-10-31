@@ -7,9 +7,9 @@ const outputView = {
     Console.print(MESSAGE.result);
   },
 
-  printTrack(carsName, carsPosition) {
-    carsName.forEach((carName, i) => {
-      Console.print(`${carName} : ${carsPosition[i]}`);
+  printTrack(cars) {
+    cars.forEach(car => {
+      Console.print(`${car.name} : ${car.position}`);
     });
     Console.print(MESSAGE.newline);
   },

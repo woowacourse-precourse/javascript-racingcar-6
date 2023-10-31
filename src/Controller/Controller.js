@@ -28,7 +28,7 @@ export default class Controller {
   async handleCarsName() {
     const input = await inputView.readCarName();
 
-    return this.#car.setCarsName(input);
+    return this.#car.setCarsPosition(input);
   }
 
   async handleFinalTrackCount() {
@@ -51,14 +51,14 @@ export default class Controller {
   }
 
   handleStatusOutput() {
-    outputView.printTrack(this.#car.getCarsName(), this.#car.getCarsPosition());
+    outputView.printTrack(this.#car.getCarsPosition());
     this.#track.plusCurrentTrackCount();
 
     return this.startRace();
   }
 
   handleWinner() {
-    this.#winner.setWinners(this.#car.getCarsName(), this.#car.getCarsPosition());
+    this.#winner.setWinners(this.#car.getCarsPosition());
 
     return outputView.printWinners(this.#winner.getWinner());
   }
