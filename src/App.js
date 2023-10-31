@@ -56,6 +56,16 @@ class App {
     const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
     return randomNumber;
   }
+
+  forwardOrStop() {
+    const isForward = this.getRandomNumber() > 3;
+    return isForward;
+  }
+
+  goForward() {
+    return this.forwardOrStop() ? "-" : "";
+  }
+
 }
 
 export default App;
