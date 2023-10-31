@@ -54,4 +54,19 @@ describe("class App test", () => {
       expect(testWinnerIndex).toEqual([0, 2, 5]);
     });
   });
+
+  describe("method test : checkWinner()", () => {
+    test("경주 결과 배열을 보내면 우승자 이름을 반환하는가 ?", () => {
+      const testParameter = [
+        { name: "equus", result: "-----" },
+        { name: "pony", result: "-" },
+        { name: "ray", result: "-----" },
+        { name: "SM5", result: "---" },
+        { name: "K7", result: "----" },
+        { name: "G80", result: "-----" },
+      ];
+      const WinnerName = app.checkWinner(testParameter);
+      expect(WinnerName).toEqual(["equus", "ray", "G80"]);
+    });
+  });
 });
