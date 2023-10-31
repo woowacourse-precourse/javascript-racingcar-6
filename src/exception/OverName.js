@@ -8,7 +8,7 @@ class OverName extends Commas {
     
     if (carNameArray.length !== 0) {
       return true;
-    } 
+    }
   }
   
   overNameArray(players) {
