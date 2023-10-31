@@ -1,14 +1,11 @@
 import CarRacingGamesControllers from "./controllers/CarRacingGameController.js";
 
 class App {
-  #gameController;
-
-  constructor() {
-    this.#gameController = new CarRacingGamesControllers();
-  }
+  constructor() {}
 
   async play() {
-    await this.#gameController.play();
+    this.gameController = new CarRacingGamesControllers();
+    await this.gameController.play();
   }
 }
 
