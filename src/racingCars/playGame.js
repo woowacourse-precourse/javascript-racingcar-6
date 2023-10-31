@@ -9,8 +9,9 @@ import {
 
 export async function playRacingCars() {
   const carList = await inputCars();
-  //Console.print('pobi : -'); x
-  const attemptCount = await inputCount();
+  const attemptCount = await inputCount().catch((error) => {
+    console.error('예외 처리: ', error.message);
+  });
 
   if (carList && attemptCount) {
     printResult(carList, attemptCount);
@@ -18,42 +19,23 @@ export async function playRacingCars() {
 }
 
 export async function inputCars() {
-  try {
-    const cars = await Console.readLineAsync(MESSAGE.inputCarList);
-
-    validateInputCars(cars);
-    const carList = makeHash(cars);
-    //Console.print('pobi : -'); //0
-    return carList;
-  } catch (error) {
-    console.log(error);
-    // 종료
-    if (error instanceof InputError) {
-      throw error;
-    }
+  const cars = await Console.readLineAsync(MESSAGE.inputCarList);
+  const { isValid, reason } = validateInputCars(cars);
+  if (!isValid) {
+    throw new Error(`[ERROR] ${reason}`);
   }
+  const carList = makeHash(cars);
+  return carList;
 }
-// export async function inputCount() {
-//   try {
-//     const count = await Console.readLineAsync(MESSAGE.inputCount);
-//     return validateInputCount(count);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
 export async function inputCount() {
-  try {
-    Console.print('pobi : -');
-    const count = await Console.readLineAsync(MESSAGE.inputCount);
-    const { isValid, reason } = validateInputCount(count);
-    if (!isValid) {
-      throw new InputError(reason);
-    }
-    return parseInt(count);
-  } catch (error) {
-    console.log(error);
+  const count = await Console.readLineAsync(MESSAGE.inputCount);
+  const { isValid, reason, value } = validateInputCount(count);
+  if (!isValid) {
+    throw new Error(`[ERROR] ${reason}`);
   }
+  return value;
 }
+
 export function printResult(carList, attemptCount) {
   Console.print(MESSAGE.executionResult);
   let progressCount = 1;
