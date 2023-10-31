@@ -9,8 +9,8 @@ const ERROR_MESSAGE = {
   duplication: '[ERROR] 중복된 자동차 이름이 존재합니다.',
   empty: '[ERROR] 자동차 이름이 입력되지 않은 부분이 있습니다.',
   over: '[ERROR] 자동차 이름이 5자를 초과했습니다.',
-  number: '[ERROR] 숫자가 아닙니다.',
-  integar: '[ERROR] 정수가 아닙니다.',
+  notNumber: '[ERROR] 숫자가 아닙니다.',
+  notIntegar: '[ERROR] 정수가 아닙니다.',
   small: '[ERROR] 1 미만의 숫자입니다.',
 };
 
@@ -20,4 +20,12 @@ const RESULT_STATUS = {
   winner: '최종 우승자 : ',
 };
 
-export { INPUT_MESSAGE, ERROR_MESSAGE, RESULT_STATUS };
+const RACE_NUMBER = {
+  minArrLength: 2,
+  maxNameLength: 5,
+  minRandom: 0,
+  maxRandom: 9,
+  drive: 4,
+};
+
+export { INPUT_MESSAGE, ERROR_MESSAGE, RESULT_STATUS, RACE_NUMBER };

@@ -1,4 +1,4 @@
-import { ERROR_MESSAGE } from './Constant.js';
+import { ERROR_MESSAGE, RACE_NUMBER } from './Constant.js';
 
 class Validation {
   static checkCarName(arr) {
@@ -6,11 +6,11 @@ class Validation {
       throw new Error(ERROR_MESSAGE.nothing);
     }
 
-    if (arr.length < 2) {
+    if (arr.length < RACE_NUMBER.minArrLength) {
       throw new Error(ERROR_MESSAGE.deficiency);
     }
 
-    if (new Set(arr).size !== arr.length) {
+    if (arr.length !== new Set(arr).size) {
       throw new Error(ERROR_MESSAGE.duplication);
     }
 
@@ -19,7 +19,7 @@ class Validation {
         throw new Error(ERROR_MESSAGE.empty);
       }
 
-      if (car.length > 5) {
+      if (car.length > RACE_NUMBER.maxNameLength) {
         throw new Error(ERROR_MESSAGE.over);
       }
     });
@@ -31,11 +31,11 @@ class Validation {
     }
 
     if (Number.isNaN(Number(input))) {
-      throw new Error(ERROR_MESSAGE.number);
+      throw new Error(ERROR_MESSAGE.notNumber);
     }
 
     if (!Number.isInteger(Number(input))) {
-      throw new Error(ERROR_MESSAGE.integar);
+      throw new Error(ERROR_MESSAGE.notIntegar);
     }
 
     if (Number(input) < 1) {

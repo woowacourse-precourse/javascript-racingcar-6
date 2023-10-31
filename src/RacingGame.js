@@ -1,15 +1,16 @@
 import { Random } from '@woowacourse/mission-utils';
+import { RACE_NUMBER } from './Constant.js';
 
 class RacingGame {
   static getRandomNumber() {
-    return Random.pickNumberInRange(0, 9);
+    return Random.pickNumberInRange(RACE_NUMBER.minRandom, RACE_NUMBER.maxRandom);
   }
 
   static moveCar(racingCar) {
     racingCar.forEach((car) => {
       const randomNum = this.getRandomNumber();
 
-      if (randomNum >= 4) {
+      if (randomNum >= RACE_NUMBER.drive) {
         const temp = car;
         temp.forward += 1;
       }
