@@ -43,6 +43,19 @@ class RacingGame {
 
 		this.#printWinnerNames();
 	}
+
+	#printWinnerNames() {
+		const finalLocations = this.#racingTrack.getFinalLocations();
+		const winnerNames = this.#racingJudge.getWinnerNames(finalLocations);
+
+		Io.printWinnerNames(winnerNames);
+
+		this.#finish();
+	}
+
+	#finish() {
+		//끗
+	}
 }
 
 export default RacingGame;
