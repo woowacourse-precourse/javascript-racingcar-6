@@ -10,6 +10,9 @@ export function validName(name) {
       throw new Error(ERROR.NAME_LENGTH);
     }
   }
+  if (new Set(carNames).size !== carNames.length) {
+    throw new Error(ERROR.NAME_DUPLICATE);
+  }
 }
 
 export function validTryCount(tryCount) {
