@@ -1,7 +1,7 @@
 class Cars {
   #cars;
 
-  #movings = [];
+  #movings;
 
   #turns;
 
@@ -23,7 +23,7 @@ class Cars {
 
   /**
    *
-   * @returns {{[key: string]: number}[]} movings
+   * @returns {{[key: string]: number}} movings
    */
   getMovings() {
     return this.#movings;
@@ -34,7 +34,7 @@ class Cars {
    * @param {{[key: string]: number}} moving
    */
   setMovings(moving) {
-    this.#movings.push(moving);
+    this.#movings = moving;
   }
 
   /**

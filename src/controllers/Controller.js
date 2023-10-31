@@ -11,14 +11,14 @@ class Controller {
   async startGame() {
     this.#cars = new Cars();
 
-    await this.controlCarOutput();
-    await this.controlTurnsOutput();
+    await this.#controlCarOutput();
+    await this.#controlTurnsOutput();
 
-    this.calculateRacingGame(this.#cars.getTurns());
+    this.#calculateRacingGame(this.#cars.getTurns());
   }
 
   // 차량 입력 값 변환 및 validation
-  async controlCarOutput() {
+  async #controlCarOutput() {
     const carString = await View.writeRaingGameCarNames();
     Controller.#checkValidateCar(carString.trim());
     this.#cars.setCars(Controller.#makeCarsArray(carString));
@@ -46,7 +46,7 @@ class Controller {
   }
 
   // 레이싱 게임 턴 입력 및 validation
-  async controlTurnsOutput() {
+  async #controlTurnsOutput() {
     const output = await View.writeRacingGameCounts();
     Controller.#checkValidateTurns(output.trim());
     this.#cars.setTurns(Number(output));
@@ -59,59 +59,53 @@ class Controller {
   }
 
   // 게임 진행
-  calculateRacingGame(turns) {
+  #calculateRacingGame(turns) {
     const carsNameList = this.#cars.getCars();
     View.printRacingGameStart();
 
+    const carsTurnObj = Controller.#initMovingsDataset(carsNameList);
+    this.#cars.setMovings(carsTurnObj);
+
     for (let i = 0; i < turns; i += 1) {
-      const carsTurnObj = Controller.#calculateMovingsDataset(carsNameList);
-      this.#cars.setMovings(carsTurnObj);
-      View.printRacingGameRound(carsTurnObj);
+      this.#calculateMovingsDataset(carsNameList);
+      View.printRacingGameRound(this.#cars.getMovings());
     }
 
     this.#calculateWinner();
   }
 
   /**
-   * 각 자동차 움직인 거리를 구하기 위한 객체 생성
+   * 각 자동차 움직인 거리 초기화
    * @param {string[]} carsNameList
    * @returns {{[carName:string] : number}} movings dataFrame
    */
-  static #calculateMovingsDataset(carsNameList) {
+  static #initMovingsDataset(carsNameList) {
     const data = {};
     carsNameList.forEach((name) => {
-      data[name] = Controller.#pickEachCarMoving();
+      data[name] = '';
     });
     return data;
   }
 
+  #calculateMovingsDataset(carsNameList) {
+    const movingObject = this.#cars.getMovings();
+    carsNameList.forEach((name) => {
+      movingObject[name] += Controller.#pickEachCarMoving();
+    });
+  }
+
   static #pickEachCarMoving() {
     const moving = Random.pickNumberInRange(0, 9);
-    if (moving < 4) return 0;
-    return moving - 3;
+    if (moving < 4) return '';
+    return '-';
   }
 
   // 승자 계산하기
   #calculateWinner() {
     const movings = this.#cars.getMovings();
-    const totalMovingObj = {};
-
-    movings.forEach((moving) => {
-      const movinList = Object.entries(moving);
-      Controller.#sumCarMoving(movinList, totalMovingObj);
-    });
-
-    const maxScore = Math.max(...Object.values(totalMovingObj));
-    const winners = Object.keys(totalMovingObj).filter((key) => totalMovingObj[key] === maxScore);
+    const maxScore = Math.max(...Object.values(movings).map((item) => item.length));
+    const winners = Object.keys(movings).filter((key) => movings[key].length === maxScore);
     View.printRacingGameWinners(winners.join(', '));
-  }
-
-  static #sumCarMoving(movinList, totalMovingObj) {
-    const obj = totalMovingObj;
-    movinList.forEach(([name, number]) => {
-      if (totalMovingObj[name]) obj[name] += number;
-      else obj[name] = number;
-    });
   }
 }
 
