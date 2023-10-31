@@ -92,7 +92,29 @@ describe('자동차 경주 게임', () => {
 
         // then
         outputs.forEach((output) => {
-          expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+          expect(logSpy).toHaveBeenCalledWith(expect.stringMatching(output));
+        });
+      },
+    );
+
+    test.each([[[4, 4]], [[5, 5]], [[8, 8]]])(
+      '최종 우승자가 두명일 때',
+      async (randoms) => {
+        // given
+        const inputs = ['pobi,woni', '1'];
+        const outputs = ['최종 우승자 : pobi, woni'];
+        const logSpy = getLogSpy();
+
+        mockQuestions(inputs);
+        mockRandoms([...randoms]);
+
+        // when
+        const app = new App();
+        await app.play();
+
+        // then
+        outputs.forEach((output) => {
+          expect(logSpy).toHaveBeenCalledWith(expect.stringMatching(output));
         });
       },
     );
