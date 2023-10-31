@@ -1,128 +1,36 @@
-import { MissionUtils, Console } from "@woowacourse/mission-utils";
-import { GAME_HELP } from "../constant/gameHelp.js";
-import {
-  CAR_VALIDATION,
-  TRY_COUNT_VALIDATION,
-} from "../constant/validation.js";
+import { Console } from "@woowacourse/mission-utils";
+import { GAME_HELP } from "../constants/GAME_HELP.js";
+import Car from "./Car.js";
+import TryCount from "./TryCount.js";
+import RandomNumber from "./RandomNumber.js";
+import Forward from "./Forward.js";
+import Winner from "./Winner.js";
 
 class App {
   constructor() {
-    this._carArr = [];
-    this._tryNumber = 0;
-    this.racingArray = [];
+    this.car = new Car();
+    this.tryCount = new TryCount();
+    this.randomNumber = new RandomNumber();
+    this.forward = new Forward(this.car, this.tryCount, this.randomNumber);
+    this.winner = new Winner(this.car, this.forward);
   }
 
   async play() {
-    await this.getInputCar();
-    await this.getInputTry();
-    await this.createRacingArray();
+    await this.car.getInputCar();
+    await this.tryCount.getInputTry();
     await this.playRacing();
-  }
-
-  async getInputCar() {
-    const carName = await Console.readLineAsync(GAME_HELP.INPUT_CAR);
-    this.carArr = carName.split(",");
-  }
-
-  set carArr(car) {
-    car = car.map((carName) => carName.replace(/\s/g, ""));
-
-    if (car.some((carName) => carName.length > 6)) {
-      throw new Error(CAR_VALIDATION.LENGTH);
-    }
-
-    this._carArr = car;
-  }
-
-  get carArr() {
-    return this._carArr;
-  }
-
-  async getInputTry() {
-    this.tryNumber = await Console.readLineAsync(GAME_HELP.INPUT_TRY);
-  }
-
-  set tryNumber(tryValue) {
-    tryValue = Number(tryValue);
-    if (tryValue === 0) {
-      throw new Error(TRY_COUNT_VALIDATION.NOT_ZERO);
-    }
-
-    if (isNaN(tryValue)) {
-      throw new Error(TRY_COUNT_VALIDATION.IS_NAN);
-    }
-
-    this._tryNumber = tryValue;
-  }
-
-  get tryNumber() {
-    return this._tryNumber;
-  }
-
-  getRandomNumber() {
-    const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
-    return randomNumber;
-  }
-
-  forwardOrStop() {
-    const isForward = this.getRandomNumber() > 3;
-    return isForward;
-  }
-
-  goForward() {
-    return this.forwardOrStop() ? "-" : "";
-  }
-
-  createRacingArray() {
-    const carCount = this.carArr.length;
-    this.racingArray = Array.from({ length: carCount }, () => "");
-    return this.racingArray;
-  }
-
-  racingSituationArray(carIndex) {
-    this.racingArray[carIndex] += this.goForward();
-    return this.racingArray[carIndex];
-  }
-
-  showCarAndRacingLength(carIndex) {
-    Console.print(`${this.carArr[carIndex]} : ${this.racingArray[carIndex]}`);
-  }
-
-  async oneCycleRacing() {
-    for (let i = 0; i < this.carArr.length; i++) {
-      await this.racingSituationArray(i);
-      await this.showCarAndRacingLength(i);
-    }
-    Console.print(" ");
   }
 
   async playRacing() {
     Console.print(GAME_HELP.GAME_RESULT);
-    for (let i = 0; i < this.tryNumber; i++) {
-      await this.oneCycleRacing();
+
+    await this.forward.createRacingArray();
+
+    for (let i = 0; i < this.tryCount.tryNumber; i++) {
+      await this.forward.oneCycleRacing();
     }
-    await this.showWinner();
-  }
 
-  getWinner() {
-    this.racingArray = this.racingArray.map((x) => x.length);
-    const maxRacingLength = Math.max(...this.racingArray);
-
-    const winnerRacers = [];
-    this.racingArray.forEach((length, index) => {
-      if (length === maxRacingLength) {
-        winnerRacers.push(index);
-      }
-    });
-
-    const winnerRacersName = [
-      ...winnerRacers.map((index) => this.carArr[index]),
-    ];
-    return winnerRacersName.join(", ");
-  }
-
-  showWinner() {
-    Console.print(`최종 우승자 : ${this.getWinner()}`);
+    await this.winner.showWinner();
   }
 }
 
