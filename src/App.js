@@ -26,6 +26,13 @@ class App {
       }
     });
   }
+
+  printCurrentStatus(cars) {
+    cars.forEach((car) => {
+      const positionOfCar = "-".repeat(car.position);
+      MissionUtils.Console.print(`${car.name} : ${positionOfCar}`);
+    });
+  }
 }
 
 export default App;
