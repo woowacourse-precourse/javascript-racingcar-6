@@ -1,12 +1,19 @@
 import { Console, Random } from '@woowacourse/mission-utils';
 import InputCarName from './InputCarName.js';
 import InputAttempt from './InputAttempt.js';
+import MoveForward from './MoveForward.js';
+import { executionResult } from './OutputResult.js';
 
 class App {
 	async play() {
-		const carList = InputCarName();
+		const carList = await InputCarName();
 		// const carList = ['pobi', 'woni', 'jun'];
-		// InputAttempt()
+		const attemptNumber = await InputAttempt();
+		Console.print('\n실행 결과');
+		for (let i = 0; i < attemptNumber; i++) {
+			executionResult(carList);
+		}
+		console.log('result', carList);
 	}
 }
 
