@@ -17,7 +17,7 @@ function isNumberValid(userInput) {
         throw new Error(`[ERROR] 시도 횟수는 숫자 형식이어야 합니다.`);
     }
 
-    if(Number.isInteger(userInput)){
+    if(!Number.isInteger(userInput)){
         throw new Error(`[ERROR] 시도 횟수는 정수형이어야 합니다.`);
     }
 
