@@ -9,7 +9,7 @@ class App {
     this.WINNER_CAR_NAME = [];
   }
 
-  async #getInputCars() {
+  async getInputCars() {
     const CAR_INPUT = await Console.readLineAsync(
       '경주할 자동차 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분)\n',
     );
@@ -17,7 +17,7 @@ class App {
     this.CARS_NAME_ARRAY = CAR_INPUT.split(',');
 
     this.CARS_NAME_ARRAY.forEach((carName) => {
-      if (!this.#checkCarName(carName)) {
+      if (!this.checkCarName(carName)) {
         throw new Error('[ERROR] 자동차 이름이 올바르지 않습니다.');
       } else {
         this.CARS_ARRAY.push(new Car(carName, 0));
@@ -25,22 +25,22 @@ class App {
     });
   }
 
-  #checkCarName(carName) {
+  checkCarName(carName) {
     return carName.length >= 1 && carName.length <= 5;
   }
 
-  async #getInputGameCount() {
+  async getInputGameCount() {
     const GAME_COUNT_INPUT =
       await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
 
       try{
-        this.#checkGameCountInput(GAME_COUNT_INPUT);
+        this.checkGameCountInput(GAME_COUNT_INPUT);
       } catch(e) {
         throw new Error(e);
       }
   }
 
-  #checkGameCountInput(gameCount) {
+  checkGameCountInput(gameCount) {
     if(!Number.isNaN(parseInt(gameCount, 10))) {
       this.GAME_COUNT = gameCount;
     } else {
@@ -48,33 +48,33 @@ class App {
     }
   }
 
-  async #getInput() {
-    await this.#getInputCars();
-    await this.#getInputGameCount();
+  async getInput() {
+    await this.getInputCars();
+    await this.getInputGameCount();
   }
 
-  #playGame() {
+  playGame() {
     this.CARS_ARRAY.forEach((car, index) => {
       const RANDOM_NUMBER = Random.pickNumberInRange(0, 9);
       if (RANDOM_NUMBER >= 4) {
-        this.#moveForwardCar(index);
+        this.moveForwardCar(index);
       }
     });
-    this.#printEachGameResult();
+    this.printEachGameResult();
   }
 
-  #moveForwardCar(carIndex) {
+  moveForwardCar(carIndex) {
     this.CARS_ARRAY[carIndex].forwardCar();
   }
 
-  #printEachGameResult() {
+  printEachGameResult() {
     this.CARS_ARRAY.forEach((car) => {
       Console.print(`${car.carName} : ${'-'.repeat(car.forwardCount)}`);
     });
     Console.print('');
   }
 
-  #pickWinnerOfGame() {
+  pickWinnerOfGame() {
     let maxForward = 0;
 
     this.CARS_ARRAY.forEach((car) => {
@@ -87,18 +87,18 @@ class App {
       }
     });
 
-    this.#printWinner();
+    this.printWinner();
   }
 
-  #printWinner() {
+  printWinner() {
     if (this.WINNER_CAR_NAME.length > 1) {
-      this.#makeWinnerArray();
+      this.makeWinnerArray();
     } else {
       Console.print(`최종 우승자 : ${this.WINNER_CAR_NAME[0]}`);
     }
   }
 
-  #makeWinnerArray() {
+  makeWinnerArray() {
     let carNames = '';
 
     for (let i = 0; i < this.WINNER_CAR_NAME.length; i += 1) {
@@ -114,18 +114,22 @@ class App {
 
   async play() {
     try{
-      await this.#getInput();
+      await this.getInput();
       Console.print('\n실행 결과');
 
       for(let i = 0; i < this.GAME_COUNT; i+= 1) {
-        this.#playGame();
+        this.playGame();
       }
 
-      this.#pickWinnerOfGame();
+      this.pickWinnerOfGame();
     } catch(e) {
       throw new Error(e);      
     }
 
+  }
+
+  async testTest() {
+    return "test";
   }
 }
 
