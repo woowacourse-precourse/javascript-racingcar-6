@@ -27,6 +27,19 @@ class App {
       });
       MissionUtils.Console.print(``);
     }
+
+    let winners = [];
+    let maxDistance = -1;
+    carArray.forEach((car) => {
+      if (car.distance >= maxDistance) {
+        maxDistance = car.distance;
+      }
+    });
+    winners = carArray.filter((car) => car.distance === maxDistance);
+
+    const WinnerResultText = winners.map((car) => car.name).join(", ");
+
+    MissionUtils.Console.print(`최종 우승자 : ${WinnerResultText}`);
   }
 }
 
