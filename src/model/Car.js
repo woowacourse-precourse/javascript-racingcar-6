@@ -1,5 +1,4 @@
 import { FORWARD } from '../utils/constants';
-import getRandomNumber from '../utils/getRandomNumber';
 
 class Car {
   constructor(name) {
@@ -8,19 +7,7 @@ class Car {
   }
 
   forward() {
-    const randomNumber = getRandomNumber();
-    if (randomNumber >= FORWARD.CONDITION_NUM) {
-      this.moveCount += FORWARD.TRUE;
-    }
-  }
-
-  getMoveCount() {
-    return this.moveCount;
-  }
-
-  getCarName() {
-    return this.name;
+    this.moveCount += FORWARD.TRUE;
   }
 }
-
 export default Car;
