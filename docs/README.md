@@ -35,13 +35,34 @@
 
 ### ♻️ 리팩토링    
 
-- [ ] 불필요한 공백 삭제 및 변수명, 상수명 등 정리.   
+- [x] 불필요한 공백 삭제 및 변수명, 상수명 등 정리.   
 
 - [ ] 모듈화를 통해서 기능 분리    
   - 하나의 파일 (App.js) 에 모든 메서드가 들어있게 되어, 재사용성(?)이 좋지않다.       
   - [ ] 각각의 메서드를 모듈화.   
   - [ ] 메서드말고 다른 상수 모음 등등을 모듈화.   
 
+  ```
+  root
+  |---src
+      |--- App.js
+      |--- index.js
+      |--- input
+            |--- car-name.js
+            |--- play-number.js
+            |___ index.js
+      |--- validate
+            |--- car-name.js
+            |--- play-number.js
+            |___ index.js
+      |___ game
+            |--- game-play.js
+            |--- result-game.js
+            |___ index.js
+  ```   
+
+  - 각 디렉토리마다 `index.js`를 모두 넣은 이유는 가독성을 위해서이다.   
+  *filepath를 간소화하기 위함.*   
 
 
 
