@@ -27,13 +27,10 @@ const getLogSpy = () => {
 };
 
 describe('자동차 경주 게임', () => {
-  test('전진-정지', async () => {
+  test.each([[[4, 3]], [[5, 2]], [[8, 3]]])('전진-정지', async (randoms) => {
     // given
-    const MOVING_FORWARD = 4;
-    const STOP = 3;
     const inputs = ['pobi,woni', '1'];
     const outputs = ['pobi : -'];
-    const randoms = [MOVING_FORWARD, STOP];
     const logSpy = getLogSpy();
 
     mockQuestions(inputs);
