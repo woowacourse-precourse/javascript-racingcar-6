@@ -73,7 +73,7 @@ class RacingController {
   end() {
     const winners = Object.keys(this.racingBoard)
       .filter((carName) => this.racingBoard[carName] === this.maxDistance)
-      .join(",");
+      .join(", ");
 
     OutputView.printRacingFinalWinners(winners);
   }

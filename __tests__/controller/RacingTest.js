@@ -69,6 +69,6 @@ describe("RacingController의 기능들에 대한 테스트", () => {
     const finalWinnersSpy = jest.spyOn(OutputView, "printRacingFinalWinners");
     racingController.end();
 
-    expect(finalWinnersSpy).toBeCalledWith("pobi,woony");
+    expect(finalWinnersSpy).toBeCalledWith("pobi, woony");
   });
 });
