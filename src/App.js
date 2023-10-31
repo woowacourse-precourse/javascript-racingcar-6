@@ -1,7 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
 import userInput from './userInput.js';
 import moveCar from './moveCar.js';
-
+import printCarStatus from './printCarStatus.js';
 
 class App {
   async play() {
@@ -20,6 +20,7 @@ class App {
 
     for (let i = 0; i < round; i += 1) {
       moveCar(carCount);
+      printCarStatus(nameList, carCount);
     }
 
   }
