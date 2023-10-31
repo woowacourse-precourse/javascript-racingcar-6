@@ -11,6 +11,10 @@ class Validator {
     }
   }
 
+  static validateAttemptCount() {
+    throw new Error(ErrorMessage.ONE_TO_HUNDRED);
+  }
+
   static #isEmpty(value) {
     return value === '';
   }

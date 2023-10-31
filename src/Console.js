@@ -20,7 +20,8 @@ class Console {
     const answer = await MissionUtils.Console.readLineAsync(
       this.#ATTEMPT_COUNT_QUERY,
     );
-    return answer;
+    const number = Number(answer);
+    return number;
   }
 }
 
