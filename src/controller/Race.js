@@ -47,7 +47,7 @@ class Race {
   #startGame() {
     OutputView.printShowResult();
     for (let i = 0; i < this.#roundNumber; i++) {
-      this.#processRound();
+      this.#moveCarsAndAnnounceResult();
     }
   }
 
@@ -86,7 +86,7 @@ class Race {
     }
   }
 
-  #processRound() {
+  #moveCarsAndAnnounceResult() {
     const roundResult = this.#racingCars.moveAll();
 
     for (const carName in roundResult) {
