@@ -80,4 +80,16 @@ describe('레이싱 게임 플레이와 관련된 함수 테스트', () => {
       );
     });
   });
+
+  // findWinner 함수 테스트
+  test('게임 우승자 반환 테스트', () => {
+    racingGame.findWinner();
+
+    expect(racingGame.winnersList).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ name: '테스트1' }),
+        expect.objectContaining({ name: '테스트3' }),
+      ]),
+    );
+  });
 });
