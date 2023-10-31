@@ -2,7 +2,7 @@ import { MAX_NAME_LENGTH, ERROR } from './Constant.js';
 
 class CheckError {
   static isLessThanMaxNameLength(name) {
-    if (trimmed > MAX_NAME_LENGTH) throw new Error(ERROR.MORE_THAN_MAX);
+    if (name.length > MAX_NAME_LENGTH) throw new Error(ERROR.MORE_THAN_MAX);
   }
 
   static isNumber(number) {
