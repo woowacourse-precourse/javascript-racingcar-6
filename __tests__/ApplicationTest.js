@@ -87,4 +87,32 @@ describe("자동차 경주 게임", () => {
     // then
     await expect(app.play()).rejects.toThrow("[ERROR]");
   });
+
+  test("경기중 스냅샷 테스트", async () => {
+    // given
+    const POBI_MOVING_FORWARD = 4;
+    const WONI_MOVING_FORWARD = 4; 
+    const WONI_STOP = 3;
+    const inputs = ["pobi,woni", "2"];
+    const outputs = ["실행 결과", "pobi : -\nwoni : -\n", "pobi : --\nwoni : -\n"];
+    const randoms = [
+      POBI_MOVING_FORWARD, 
+      WONI_MOVING_FORWARD, 
+      POBI_MOVING_FORWARD, 
+      WONI_STOP
+    ];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    // when
+    const app = new App();
+    await app.play();
+
+    // then
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
 });
