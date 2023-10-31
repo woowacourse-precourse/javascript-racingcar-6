@@ -19,6 +19,7 @@ class App {
       this.print(roundResult);
       roundCount += 1;
     }
+    const distanceCarMap = this.swapMap(carDistanceMap);
   }
 
   async userInput(message) {
@@ -77,6 +78,21 @@ class App {
 
   print(message) {
     MissionUtils.Console.print(message);
+  }
+
+  swapMap(carDistanceMap) {
+    const distanceCarMap = new Map();
+    carDistanceMap.forEach((value, key) => {
+      if (distanceCarMap.has(value.length)) {
+        distanceCarMap.set(value.length, [
+          ...distanceCarMap.get(value.length),
+          key,
+        ]);
+      } else {
+        distanceCarMap.set(value.length, [key]);
+      }
+    });
+    return distanceCarMap;
   }
 }
 
