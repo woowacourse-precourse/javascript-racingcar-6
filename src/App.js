@@ -11,7 +11,13 @@ class App {
     const carNames = await MissionUtils.Console.readLineAsync(
       INPUT_CAR_NAMES_MSG
     );
+
     const carNameArr = carNames.split(',');
+
+    carNameArr.forEach((carName) => {
+      if (carName.length > 5) throw new Error(INPUT_ERROR_MSG);
+    });
+
     return carNameArr;
   }
 
@@ -20,7 +26,7 @@ class App {
       await MissionUtils.Console.readLineAsync(INPUT_ATTEMPT_TIMES_MSG)
     );
     if (Number.isNaN(attemptTimes)) {
-      throw new Error(INPUT_ERROR_MSG, error);
+      throw new Error(INPUT_ERROR_MSG);
     }
     return attemptTimes;
   }
