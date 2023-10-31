@@ -12,5 +12,5 @@ export function checkCarNameLength(carNameArray) {
 
 export function checkInputRaceNumber(inputRaceNumber) {
   const numberValue = Number(inputRaceNumber);
-  return !isNaN(numberValue) && numberValue > 0;
+  return !Number.isNaN(numberValue) && numberValue > 0;
 }
