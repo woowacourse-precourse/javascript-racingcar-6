@@ -4,7 +4,6 @@ import { input } from "../util/input.js";
 import { makeCarsArray } from "../util/message.js";
 import { print } from "../util/output.js";
 import { vaildTryCount } from "../validation/tryValidation.js";
-import { Console } from "@woowacourse/mission-utils";
 
 
 export class RacingGame {
@@ -29,9 +28,9 @@ export class RacingGame {
 
   async go(TRY_COUNT) {
     let num = 0;
-    while(TRY_COUNT > num) {
+    while (TRY_COUNT > num) {
       await this.moveCars();
-      await Console.print("");
+      await print("");
       num++;
     }
   }
@@ -64,7 +63,7 @@ export class RacingGame {
       progress += "-";
     }
 
-    if (progress !== "") await Console.print(`${car} : ${progress}`);
+    if (progress !== "") await print(`${car} : ${progress}`);
   }
 
   async printWinner() {
@@ -75,6 +74,6 @@ export class RacingGame {
       if (this.cars[car] === HIGHEST_SCORE) winner.push(car);
     }
 
-    Console.print(`최종 우승자 : ${winner.join(", ")}`);
+    print(`최종 우승자 : ${winner.join(", ")}`);
   }
 }
