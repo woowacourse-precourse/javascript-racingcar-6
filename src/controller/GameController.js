@@ -24,7 +24,7 @@ class GameController {
       this.outputView.printAdvanceResult(carModels);
     }
 
-    const winners = this.gameModel.getWinners();
+    const winners = this.gameModel.getWinnersName();
     this.outputView.printWinner(winners);
   }
 

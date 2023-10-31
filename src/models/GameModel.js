@@ -23,10 +23,10 @@ class GameModel {
     this.curRound++;
   }
 
-  getWinners() {
+  getWinnersName() {
     const maxPos = this.getMaxPosition();
 
-    return this.cars.filter((car) => {
+    return this.cars.map((car) => {
       if (car.isWinner(maxPos)) {
         return car.name;
       }

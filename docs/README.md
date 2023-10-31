@@ -48,7 +48,7 @@
     - [X] 위를 바탕으로 GameModel에 데이터 저장
   - [X] 라운드 진행
     - [X] GameModel.playRound()
-    - [X] GameModel.getWinners()
+    - [X] GameModel.getWinnersName()
   - [X] OutputView를 통해 결과 출력
 
 <br/>
