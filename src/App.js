@@ -7,15 +7,12 @@ class App {
     const carNamesInput = await Console.readLineAsync(TEXT.CAR_NAMES);
     const carNames = carNamesInput.split(',');
     this.checkCarNames(carNames);
-    //Console.print(carNames);
 
     const tryCountInput = await Console.readLineAsync(TEXT.ATTEMPTS_NUMBER);
     const tryCount = parseInt(tryCountInput);
     if (isNaN(tryCount)) { throw new Error(ERROR.MAX_LENGTH); }
-    //Console.print(tryCountInput);
 
     const cars = carNames.map((name) => new Car(name));
-    //Console.print(cars);
 
     Console.print("\n실행결과");
     this.carMoves(tryCount, cars);
