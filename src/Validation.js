@@ -1,16 +1,16 @@
 import { ERROR } from './constants/Error.js';
 
-export function validName(name) {
-  if (name === '') {
-    throw new Error(ERROR.NAME_NULL);
-  }
-  const carNames = name.split(',').map((name) => name.trim());
-  for (const carName of carNames) {
-    if (carName.length > 5) {
+export function validName(names) {
+  for (const name of names) {
+    if (name === '') {
+      throw new Error(ERROR.NAME_NULL);
+    }
+
+    if (name.length > 5) {
       throw new Error(ERROR.NAME_LENGTH);
     }
   }
-  if (new Set(carNames).size !== carNames.length) {
+  if (new Set(names).size !== names.length) {
     throw new Error(ERROR.NAME_DUPLICATE);
   }
 }

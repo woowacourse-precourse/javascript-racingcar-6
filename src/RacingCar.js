@@ -1,12 +1,12 @@
 import { Console, Random } from '@woowacourse/mission-utils';
-import { validName, validTryCount } from './Validation';
+import { validName, validTryCount } from './Validation.js';
 import { INPUT_MESSAGE, OUTPUT_MESSAGE } from './constants/Message.js';
 import { NUMBER } from './constants/ConstantNumber.js';
 
 export async function getCarName() {
   const carName = await Console.readLineAsync(INPUT_MESSAGE.CAR_NAME);
-  validName(carName);
   const carNames = carName.split(',').map((name) => name.trim());
+  validName(carNames);
   const carObjects = carNames.map((name) => ({
     name,
     position: NUMBER.START_POSITION,
