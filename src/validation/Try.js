@@ -16,6 +16,10 @@ const tryValidate = (tryCount) => {
   if (tryCountNumber < 0) {
     throw new Error(Messages.ERROR_INPUT_TRY);
   }
+
+  if (tryCountNumber % 1 !== 0) {
+    throw new Error(Messages.ERROR_INPUT_TRY);
+  }
 };
 
 export default tryValidate;
