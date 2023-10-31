@@ -25,4 +25,12 @@ class RacingCars {
       }
     }
   }
+
+  checkNameLength(carNames) {
+    for (let i = 0; i < carNames.length; i += 1) {
+      if (carNames[i].length > 5) {
+        throw new Error("[ERROR] 5글자 이하의 이름을 입력해주세요.");
+      }
+    }
+  }
 }
