@@ -47,6 +47,11 @@ class App {
 
     this._tryNumber = tryValue;
   }
+
+  get tryNumber() {
+    return this._tryNumber;
+  }
+
 }
 
 export default App;
