@@ -1,7 +1,13 @@
-import { Console } from '@woowacourse/mission-utils';
+import { Random, Console } from '@woowacourse/mission-utils';
 
 class App {
-  async play() {}
+  async play() {
+    const carNames = await this.getCarNames();
+    const gameCount = await this.getGameCount();
+
+    Console.print('실행결과');
+    this.raceGame(carNames, gameCount);
+  }
 
   // 자동차 이름 입력받기
   async getCarNames() {
@@ -36,6 +42,12 @@ class App {
   validateGameCount(gameCount) {
     if (!gameCount) throw new Error('[ERROR] 입력값이 없습니다.');
     if (Number.isNaN(gameCount)) throw new Error('[ERROR] 숫자가 아닙니다.');
+  }
+
+  // 자동차 이동
+  moveOrStop() {
+    const number = Random.pickNumberInRange(0, 9);
+    return number >= 4 ? '-' : '';
   }
 }
 
