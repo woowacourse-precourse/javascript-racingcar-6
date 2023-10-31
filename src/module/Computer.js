@@ -52,6 +52,16 @@ class Computer {
 
     return randomNumber >= 4 ? true : false;
   }
+
+  printResult() {
+    const carAmount = this.#carList.length;
+
+    for (let i = 0; i < carAmount; i += 1) {
+      this.#carList[i].print();
+    }
+
+    MissionUtils.Console.print('');
+  }
 }
 
 export default Computer;
