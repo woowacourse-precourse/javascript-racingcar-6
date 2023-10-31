@@ -63,6 +63,9 @@ classDiagram
         private Car carList[*]
         private int round
         setter : round(int) void
+        getter: round() int round
+        setter: carList(String) void
+        getter: carList() Car[] carList
         pushCarList(String) void
         start() void
         rollDice() boolean
@@ -99,6 +102,9 @@ classDiagram
 
     carList는 경기에 등록된 모든 자동차 리스트이고, round는 시도할 횟수이다.
 - [x] (setter) round : 시도할 횟수(round)를 설정한다. 이때, 입력하는 수가 0보다 큰 정수가 아니면 "[ERROR] 숫자가 잘못된 형식입니다."는 예외를 발생시킨다.
+- [x] (getter) round : 시도할 횟수(round)를 반환한다.
+- [x] (setter) carList : carList 배열에 car 객체를 넣는다.
+- [x] (getter) carList : carList 배열을 반환한다.
 - [ ] pushCarList : 사용자의 입력을 받아서 쉼표를 바탕으로 분류한 뒤, 이를 순서대로 자동차 객체 생성하고, 이름을 할당한 뒤 자동차 리스트(carList)에 할당한다.
 - [ ] start : 게임의 시작 부분으로, 경주할 자동차와 시도할 횟수를 입력받아 내부에서 setRound, setCarList를 실행시킨다.
 - [ ] rollDice : 0에서 9 사이에서 무작위 값을 구한다. 이때, 무작위 값이 4 이상일 경우 true를 리턴하고, 아니면 false를 리턴한다.
