@@ -17,12 +17,21 @@ class App {
       })
       printMessage("")
     }
-    // 우승 로직
+    showWinner(racingCars);
   }
-
-
 }
 
+function showWinner(racingCars) {
+  const maxProgress = Math.max(...racingCars.map(racingCar => racingCar.progress));
+
+  const winners = racingCars
+    .filter(racingCar => racingCar.progress === maxProgress)
+    .map(racingCar => racingCar.carName)
+    .join(', ');
+  
+  printMessage(`최종 우승자 : ${winners}`)
+
+}
 
 function buildRacingCarsArray(carNameArray,condition) {
   return carNameArray.map(element => new RacingCar(element,condition))
