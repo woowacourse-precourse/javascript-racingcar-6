@@ -54,3 +54,17 @@ score.getScore(this.cars)
 - 각 요소의 score 값과 최대값이 같으면(forEach 사용)
 새로 만든 array에 요소의 이름(this.name) 넣기(array.push)
 - 우승자 출력
+
+7. 테스트 오류 수정
+1) await 함수로 선언된 함수를 사용하려면, 그 함수를 사용하는 상위함수가 async 함수여야함
+UserInput.js 내부
+- userInputPlayNumber()의 상위함수인 getCarNames() 함수를 async 함수로 만들기, await this.userInputPlayNumber() (await 붙이기)
+- getCarNames() 함수를 호출하는 userInputCarName() 함수는 이미 async 함수, getCarNames() 앞에 await
+App.js 내부
+- userInputCarName() 함수를 호출하는 play() 함수는 이미 async 함수, userInputCarName() 앞에 await
+
+2) 전진하는 조건은 0에서 9 사이에서 무작위 값을 구한 후 무작위 값이 4 이상일 경우
+Score.js 
+getScore() 함수 내용 중
+if (MissionUtils.Random.pickNumberInRange(1, 9) >= 4) ㄴ으로 수정
+

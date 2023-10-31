@@ -8,17 +8,17 @@ export default class User {
         const inputCarName = await MissionUtils.Console.readLineAsync(
             '경주할 자동차 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분) : \n'
         );
-        this.getCarNames(inputCarName);
+        await this.getCarNames(inputCarName);
     }
 
-    getCarNames(userInput) {
+    async getCarNames(userInput) {
         this.cars = [];
         let names = userInput.split(',');
         names.map((element) => {
             this.cars.push(new Save(element))
         });
         this.checkName(names)
-        this.userInputPlayNumber()
+        await this.userInputPlayNumber()
     }
 
     checkName(names) {
@@ -39,6 +39,7 @@ export default class User {
         } catch(e) {
           throw(e)
         }
+
         let score = new Score
         score.playGames(inputPlayNumer,this.cars)
     } 
