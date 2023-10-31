@@ -28,4 +28,14 @@ describe("RacingGame 클래스", () => {
       expect(racingGame.generateRandomNumber()).toBe(2);
     });
   });
+
+  describe("checkCarCanMove 함수", () => {
+    test("랜덤값이 4 이상이면 true 반환", () => {
+      const racingGame = new RacingGame(["car1", "car2"], 5);
+
+      expect(racingGame.checkCarCanMove(0)).toBe(false);
+      expect(racingGame.checkCarCanMove(4)).toBe(true);
+      expect(racingGame.checkCarCanMove(5)).toBe(true);
+    });
+  });
 });
