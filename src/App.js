@@ -3,6 +3,7 @@ import { Console } from '@woowacourse/mission-utils';
 class App {
   constructor() {
     this.cars = [];
+    this.input = 0;
   }
 
   getCarName = async () => {
@@ -16,8 +17,9 @@ class App {
   };
 
   getAttempts = async () => {
-    const input = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
-    return input;
+    this.input = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    this.isValidAttempt();
+    return this.input;
   };
 
   isValidLength = () => {
@@ -41,6 +43,15 @@ class App {
 
     if (!this.isValidString()) throw new Error('[ERROR] 영문으로 이루어진 이름만 입력 가능합니다.');
     if (!this.isValidDuplication()) throw new Error('[ERROR] 중복되는 이름은 입력할 수 없습니다.');
+  };
+
+  isValidNumber = () => {
+    const ATTEMPT_REGEX = /^[0-9]$/.test(this.input);
+    return ATTEMPT_REGEX;
+  };
+
+  isValidAttempt = () => {
+    if (!this.isValidNumber()) throw new Error('[ERROR] 숫자만 입력 가능합니다.');
   };
 
   async play() {
