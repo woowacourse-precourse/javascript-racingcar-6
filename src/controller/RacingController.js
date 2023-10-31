@@ -4,7 +4,7 @@ import { validateMoveCount, validateNameDuplicate } from '../utils/validate.js';
 import inputView from '../view/inputView.js';
 import outputView from '../view/outputView.js';
 
-class RacingGameController {
+class RacingController {
   constructor() {
     this.racingGame = new RacingGame();
   }
@@ -21,8 +21,8 @@ class RacingGameController {
    * @param {string[]} carList
    */
   registerRacingCar(carList) {
-    /** @type {RacingCar[]} */
-    this.racingGame.setRacingCar = this.createRacingCars(carList);
+    const racingCars = this.createRacingCars(carList);
+    this.racingGame.setRacingCar(racingCars);
     this.inputMoveCount();
   }
 
@@ -61,7 +61,7 @@ class RacingGameController {
 
   /** 레이싱 결과 출력 함수 */
   printRacingResult() {
-    const carList = this.racingGame.getRacingCar;
+    const carList = this.racingGame.getRacingCar();
     carList.forEach((car) => outputView.printRacing(car));
     outputView.printSpace();
   }
@@ -72,4 +72,4 @@ class RacingGameController {
   }
 }
 
-export default RacingGameController;
+export default RacingController;
