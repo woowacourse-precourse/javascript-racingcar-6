@@ -14,9 +14,17 @@ class App {
       (input) => (this.turn = input)
     );
   }
+
   splitRacingCarBy(ch) {
     const racingCars = this.name.split(ch);
-    console.log(racingCars);
+    this.name = racingCars;
+  }
+
+  validateUserRacingCars(input = this.name) {
+    const length = input.length;
+    if (length > 5) {
+      throw new Error("[ERROR] 차의 이름은 5자 이하만 가능합니다.");
+    }
   }
 
   async play() {
