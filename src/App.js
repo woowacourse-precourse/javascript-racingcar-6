@@ -10,6 +10,11 @@ class App {
 
     const carStatus = new Array(carNames.length).fill(0);
     await MissionUtils.Console.print("\n실행 결과:");
+
+    for (let i = 0; i < attemptCount; i++) {
+      this.simulateCarRace(carNames, carStatus);
+      await MissionUtils.Console.print();
+    }
   }
 
   async getCarNameInput() {
@@ -55,6 +60,14 @@ class App {
 
   showRaceProgress(carName, carPosition) {
     MissionUtils.Console.print(`${carName} : ${carPosition}`);
+  }
+
+  simulateCarRace(carNames, carStatus) {
+    for (let index = 0; index < carNames.length; index++) {
+      this.updateCarStatus(carStatus, index);
+      const carPosition = this.showCarPosition(carStatus[index]);
+      this.showRaceProgress(carNames[index], carPosition);
+    }
   }
 }
 

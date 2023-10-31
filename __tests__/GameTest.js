@@ -35,4 +35,13 @@ describe('App 테스트', () => {
 		expect(consoleSpy).toHaveBeenCalledWith('Car1 : ---');
 		consoleSpy.mockRestore();
 	});
+
+	test('경주 진행 테스트', () => {
+		const carNames = ['Car1', 'Car2', 'Car3'];
+		const carStatus = [0, 0, 0];
+		const consoleSpy = jest.spyOn(MissionUtils.Console, 'print').mockImplementation(() => { });
+		app.simulateCarRace(carNames, carStatus);
+		expect(consoleSpy).toHaveBeenCalledTimes(3);
+		consoleSpy.mockRestore();
+	});
 });
