@@ -5,6 +5,7 @@ import { isValidCarNames, isValidTryNum } from './Validation.js';
 class InputManager {
   async enterCarNameList() {
     const input = (await Console.readLineAsync(GUIDE_MESSAGES.ENTER_CARNAMES)).split(',');
+    if (input.at(-1) === '') input.pop();
     return isValidCarNames(input) && input;
   }
 
