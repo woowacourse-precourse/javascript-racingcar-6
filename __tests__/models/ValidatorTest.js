@@ -7,7 +7,7 @@ describe("자동차 이름 입력 유효성 테스트", () => {
     const carNames = "pobi,";
 
     expect(() => {
-      Validator.validateInputCarNames(carNames).toThorw(ERROR_MESSAGE.INPUT_CAR_NAMES_TOO_SHORT);
+      Validator.validateInputCarNames(carNames).toThrow(ERROR_MESSAGE.INPUT_CAR_NAMES_TOO_SHORT);
     })
   });
 
@@ -15,7 +15,7 @@ describe("자동차 이름 입력 유효성 테스트", () => {
     const carNames = `pobi,jiwoos`;
 
     expect(() => {
-      Validator.validateInputCarNames(carNames).toThorw(ERROR_MESSAGE.INPUT_CAR_NAMES_TOO_LONG);
+      Validator.validateInputCarNames(carNames).toThrow(ERROR_MESSAGE.INPUT_CAR_NAMES_TOO_LONG);
     })
   });
 
@@ -23,7 +23,7 @@ describe("자동차 이름 입력 유효성 테스트", () => {
     const carNames = `jiwoo,jiwoo`;
 
     expect(() => {
-      Validator.validateInputCarNames(carNames).toThorw(ERROR_MESSAGE.INPUT_CAR_NAME_IS_DUPLICATED);
+      Validator.validateInputCarNames(carNames).toThrow(ERROR_MESSAGE.INPUT_CAR_NAME_IS_DUPLICATED);
     })
   });
 
@@ -31,7 +31,41 @@ describe("자동차 이름 입력 유효성 테스트", () => {
     const carNames = `pobi`;
 
     expect(() => {
-      Validator.validateInputCarNames(carNames).toThorw(ERROR_MESSAGE.INPUT_CARS_LESS_THAN_TWO);
+      Validator.validateInputCarNames(carNames).toThrow(ERROR_MESSAGE.INPUT_CARS_LESS_THAN_TWO);
     })
   });
 });
+
+describe("시도할 횟수 입력 유효성 테스트", () => {
+  test("숫자 외의 값을 입력한 경우 에러 출력", () => {
+    const numberOfMoves = "a";
+
+    expect(() => {
+      Validator.validateInputNumbersOfMoves(numberOfMoves).toThrow(ERROR_MESSAGE.IS_NAN);
+    })
+  });
+
+  test("정수가 아닌 값을 입력한 경우 에러 출력", () => {
+    const numberOfMoves = 0.1;
+
+    expect(() => {
+      Validator.validateInputNumbersOfMoves(numberOfMoves).toThrow(ERROR_MESSAGE.IS_INTEGER);
+    })
+  });
+
+  test("횟수를 최소값보다 작게 입력한 경우 에러 출력", () => {
+    const numberOfMoves = 0;
+
+    expect(() => {
+      Validator.validateInputNumbersOfMoves(numberOfMoves).toThrow(ERROR_MESSAGE.LESS_THAN_MIN);
+    })
+  });
+
+  test("횟수를 최대값보다 크게 입력한 경우 에러 출력", () => {
+    const numberOfMoves = 1001;
+
+    expect(() => {
+      Validator.validateInputNumbersOfMoves(numberOfMoves).toThrow(ERROR_MESSAGE.MORE_THAN_MAX);
+    })
+  });
+})
