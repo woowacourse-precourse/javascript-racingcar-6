@@ -1,12 +1,13 @@
-import { INPUT_MESSAGE } from "../constants/constant.js";
-import { isMove } from "../util/Random.js";
+import { Random } from "@woowacourse/mission-utils";
 import { input } from "../util/input.js";
-import { makeCarsArray } from "../util/message.js";
 import { print } from "../util/output.js";
-import { vaildTryCount } from "../validation/tryValidation.js";
+import {validCars} from '../validation/carsValidation.js';
+import {vaildTryCount} from '../validation/tryValidation.js';
+import {ERROR_MESSAGE,INPUT_MESSAGE,NUMBER_RANGE,OUTPUT_MESSAGE} from '../constants/constant.js';
+import {makeCarsArray} from '../util/message.js';
+import {getRandomNumber, isMove} from '../util/random.js';
 
-
-export default class RacingGame {
+export class RacingGame {
   constructor() {
     this.cars = {};
   }
