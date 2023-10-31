@@ -51,6 +51,22 @@ class App {
       this.gameCount--;
     }
     
+    this.printWinner();
+  }
+  async printWinner(){
+    const winnerLength = await this.getWinnerLength();
+    const winner = await this.getWinner(winnerLength);
+    
+    Console.print(`${MESSAGES.WINNER} ${winner.join(', ')}`)
+  }
+  getWinnerLength(){
+    const maxMovingLength = this.carList.reduce((max, car) => {
+      return car.getMovingLength() > max ? car.getMovingLength() : max;
+    }, -Infinity);
+    return maxMovingLength;
+  }
+  getWinner(winnerLength){
+    return this.carList.filter(car => car.getMovingLength() === winnerLength).map(car => car.getName());
   }
   isValidCarName(carName){
     // 이름에 없는 경우 ex) ,,tom,elice
