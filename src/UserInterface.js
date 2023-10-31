@@ -53,6 +53,16 @@ class UserInterface {
       Console.print(`${carStatus.carName} : ${forwardText}`);
     }
   }
+
+  static printWinners(winners) {
+    if (winners.length === 0) {
+      Console.print("우승자가 없습니다.");
+      return;
+    }
+
+    const winnerText = winners.join(", ");
+    Console.print(`최종 우승자 : ${winnerText}`);
+  }
 }
 
 export default UserInterface;
