@@ -38,7 +38,7 @@ describe("자동차 경주 게임", () => {
 
     // when
     const app = new App();
-    await app.start();
+    await app.play();
 
     // then
     outputs.forEach((output) => {
@@ -57,7 +57,7 @@ describe("자동차 경주 게임", () => {
     const app = new App();
 
     // then
-    await expect(app.start()).rejects.toThrow("[ERROR] 자동차 이름은 5자 이하만 가능합니다.");
+    await expect(app.play()).rejects.toThrow("[ERROR] 자동차 이름은 5자 이하만 가능합니다.");
   });
 
   test("시도 횟수에 대한 예외 처리", async () => {

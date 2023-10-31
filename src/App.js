@@ -55,7 +55,7 @@ class Race {
 // ** App 클래스: 애플리케이션의 메인 로직 담당 **
 class App {
   // 사용자로부터 입력을 받고 경주를 진행
-  async start() {
+  async play() {
     try {
       const cars = await this.getCars();
       const tries = await this.getTries();
@@ -97,7 +97,7 @@ class App {
 // ** 애플리케이션의 시작점: App 인스턴스를 생성하고 게임을 시작시키기 **
 async function main() {
   const app = new App();
-  await app.start();
+  await app.play();
 }
 
 main();
