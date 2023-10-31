@@ -9,14 +9,13 @@
 
 #### RacingGameController 클래스
 
-- [x] `start()`: 게임을 시작합니다. `initializeGame`, `runRace`, `displayWinners` 메서드를 차례로 호출합니다.
-- [x] `async initializeGame()`: 게임을 초기화합니다. `createCarNames`와 `createRounds` 메서드를 호출하여 게임을 설정합니다.
-- [x] `async createCarNames()`: 사용자로부터 자동차 이름을 입력받아 처리하고, 유효성을 검사합니다.
-- [x] `async createRounds()`: 사용자로부터 라운드 수를 입력받아 유효성을 검사합니다.
-- [x] `initializeRace()`: 입력받은 자동차 이름을 바탕으로 `Car` 객체를 생성하고, 이를 이용해 `Race` 객체를 초기화합니다.
-- [x] `runRace()`: 실제로 경주를 수행합니다. `executeRounds` 메서드를 호출하여 각 라운드의 결과를 출력합니다.
-- [x] `executeRounds()`: 설정된 라운드 수에 따라 경주를 실행하고, 각 라운드의 결과를 출력합니다.
-- [x] `displayWinners()`: 경주가 끝난 후 우승자를 출력합니다.
+- [x] `start()`: 게임을 시작합니다. `#initializeRaceGame`, `#runRace`, `#displayWinners` 메서드를 순차적으로 호출합니다.
+- [x] `#initializeRaceGame()`: 게임을 초기화합니다. `#createCarNames`와 `#createRounds` 메서드를 호출하여 설정합니다.
+- [x] `#createCarNames()`: 사용자로부터 자동차 이름을 입력받아 처리하고 유효성을 검사합니다.
+- [x] `#createRounds()`: 사용자로부터 라운드 수를 입력받아 유효성을 검사합니다.
+- [x] `#runRace()`: 경주를 실행합니다. `#executeRounds` 메서드를 호출하여 각 라운드의 결과를 출력합니다.
+- [x] `#executeRounds()`: 설정된 라운드 수에 따라 경주를 실행하고 각 라운드의 결과를 출력합니다.
+- [x] `#displayWinners()`: 경주가 끝난 후 우승자를 출력합니다.
 
 ### 모델
 
