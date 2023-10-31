@@ -11,7 +11,7 @@ class Controll {
   }
   tryNumberValidate() {
     if (isNaN(this.tryNumber)) {
-      throw new Error("[ERROR]")
+      throw new Error("[ERROR] 시도할 횟수는 숫자로만 입력해주세요!")
     }
   }
   carNameValidate() {
@@ -39,6 +39,16 @@ class Controll {
       i -= 1;
     }
   }
+  printCase() {
+    this.carNames.map((value, key) => {
+      let printData = "";
+      for (let i = 0; i < this.carScores[key]; i++) {
+        printData += "-"
+      }
+      Console.print(`${value}:${printData}`)
+    })
+    Console.print('\n');
+  }
 }
 class App {
   constructor() {
@@ -52,7 +62,10 @@ class App {
       this.controll.carNameValidate();
       this.controll.tryNumberValidate();
       this.controll.initialCarScore();
-      this.controll.makeRandomNumber();
+      for (let i = 0; i < this.controll.tryNumber; i++) {
+        this.controll.makeRandomNumber();
+        this.controll.printCase();
+      }
     } catch (error) {
       throw new Error(error)
     }
