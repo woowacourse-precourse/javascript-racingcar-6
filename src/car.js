@@ -8,19 +8,27 @@ class Car{
             this.far.push(0)
         }
     }
-    playgame(){
-        for(let i = 0; i<this.name.length;i++){
-            this.randomRacing(i)
+    playgame(playTime){
+        MissionUtils.Console.print('실행 결과')
+        for(let i = 0; i<playTime; i++){
+            for(let i = 0; i<this.name.length;i++){
+                this.randomRacing(i)
+            }
+            MissionUtils.Console.print(' ')
         }
+
     }
-    printResult(){
-      MissionUtils.Console.print(`${this.name} : ${this.far}`)
-    }
+
     randomRacing(i){
-      randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
-      if(randomNumber >=4 ){
-        far[i] = far[i] + 1
+      let randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
+      if(randomNumber >= 4 ){
+        this.far[i] = this.far[i] + 1
       }
+      let mark = ''
+      for(let i = 0; i<this.far[i];i++){
+        mark = mark+'-'
+      }
+      MissionUtils.Console.print(`${this.name[i]} : ${mark}`)
     }
   }
 
