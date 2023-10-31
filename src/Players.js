@@ -1,3 +1,5 @@
+import { Random } from '@woowacourse/mission-utils';
+
 class Players {
   #names;
   #gameResult;
@@ -8,10 +10,12 @@ class Players {
   }
 
   race() {
-
+    this.#gameResult.forEach((player) => {
+      if (Random.pickNumberInRange(0, 9) > 3) player = player + 1;
+    });
   }
 
-  printResult() {
+  print() {
 
   }
 }
