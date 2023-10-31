@@ -142,3 +142,28 @@ describe("경기 진행 정도에 따른 결과 출력 확인하기", () => {
     });
   });
 });
+
+describe("자동차 동작", () => {
+  test("이동 및 정지", () => {
+    // given
+    const car = "oms";
+    const carsRecordBoard = { oms: "" };
+    const CAN_MOVE = 4;
+    const STOP = 3;
+    const flags = [CAN_MOVE, STOP];
+    const outputs = ["-", ""];
+
+    // when
+    const app = new App();
+
+    flags.forEach((flag) => {
+      carsRecordBoard[car] = "";
+      app.moveCar(car, carsRecordBoard, app.checkCanMove(flag));
+
+      const output = outputs.shift();
+
+      // then
+      expect(carsRecordBoard[car]).toEqual(output);
+    });
+  });
+});
