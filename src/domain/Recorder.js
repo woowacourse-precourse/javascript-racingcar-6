@@ -1,18 +1,18 @@
 import Console from '../Console.js';
 
 class Recorder {
-  #result = '\n실행 결과\n';
+  #results;
 
-  record(name, moveCount) {
-    this.#result += `${name} : ${'-'.repeat(moveCount)}\n`;
+  recordNumberOfRound(number) {
+    this.#results = Array.from({ length: number }, () => new Map());
   }
 
-  recordNextRound() {
-    this.#result += '\n';
+  recordResult(name, moveCount, round) {
+    this.#results[round].set(name, moveCount);
   }
 
-  showResult() {
-    Console.print(this.#result);
+  showResults() {
+    Console.printResults(this.#results);
   }
 }
 

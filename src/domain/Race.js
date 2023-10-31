@@ -13,18 +13,17 @@ class Race {
       this.cars.push(new RacingCar(name));
     });
     this.numberOfRounds = await Console.askNumberOfRounds();
+    this.recorder.recordNumberOfRound(this.numberOfRounds);
   }
 
   race() {
-    while (this.numberOfRounds > 0) {
+    for (let round = 0; round < this.numberOfRounds; round += 1) {
       this.cars.forEach((car) => {
         car.tryToMoveForward();
-        car.showResultTo(this.recorder);
+        car.showResultTo(this.recorder, round);
       });
-      this.recorder.recordNextRound();
-      this.numberOfRounds -= 1;
     }
-    this.recorder.showResult();
+    this.recorder.showResults();
   }
 }
 
