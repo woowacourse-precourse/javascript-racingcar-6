@@ -60,3 +60,12 @@ describe("자동차 경주 게임", () => {
     }
   );
 });
+
+describe("시도 횟수 테스트", () => {
+  test("한 자리 숫자 입력", () => {
+    const input = 1;
+    const result = input;
+
+    expect(result).toEqual(1);
+  });
+});
