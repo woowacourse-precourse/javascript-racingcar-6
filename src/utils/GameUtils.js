@@ -1,6 +1,4 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import MESSAGE from '../constants/Message.js';
-import ConsoleOutput from '../io/ConsoleOutput.js';
 import {
   MIN_NUMBER_TO_MOVING_FORWARD,
   RANDOM_MIN_NUM,
@@ -13,10 +11,6 @@ class GameUtils {
     return Number(
       MissionUtils.Random.pickNumberInRange(RANDOM_MIN_NUM, RANDOM_MAX_NUM),
     );
-  }
-
-  static printCarNameAndRandomNumber(carName, randomNumber) {
-    ConsoleOutput.output(`${carName} : ${GameUtils.getDash(randomNumber)}`);
   }
 
   static getDash(randomNumber) {
@@ -53,14 +47,6 @@ class GameUtils {
     );
 
     return winners;
-  }
-
-  static printFinalWinner(winner) {
-    ConsoleOutput.output(`${MESSAGE.FINAL_WINNERS} : ${winner}`);
-  }
-
-  static printFinalWinners(winners) {
-    ConsoleOutput.output(`${MESSAGE.FINAL_WINNERS} : ${winners.join(', ')}`);
   }
 }
 

@@ -1,7 +1,6 @@
-import MESSAGE from './constants/Message.js';
 import RacingCar from './domain/RacingCar.js';
-import ConsoleOutput from './io/ConsoleOutput.js';
 import GameUtils from './utils/GameUtils.js';
+import RacingGameOutput from './view/RacingGameOutput.js';
 
 class RacingStadium {
   #racingCars;
@@ -22,7 +21,7 @@ class RacingStadium {
   }
 
   repeatRacing(attemptNumber) {
-    ConsoleOutput.output(MESSAGE.GAME_RESULT);
+    RacingGameOutput.printGameResult();
 
     Array.from({ length: attemptNumber }, () => this.tryOneAttempt());
   }
@@ -39,7 +38,10 @@ class RacingStadium {
 
   static proceedAttemptByRacingCar(racingCar) {
     const randomNumber = GameUtils.generateRandomNumberFromZeroToNine();
-    GameUtils.printCarNameAndRandomNumber(racingCar.getName(), randomNumber);
+    RacingGameOutput.printCarNameAndRandomNumber(
+      racingCar.getName(),
+      randomNumber,
+    );
 
     const isMovingForwardBoolean = GameUtils.isMovingForward(randomNumber);
 
@@ -49,7 +51,7 @@ class RacingStadium {
   }
 
   static proceedNextAttempt() {
-    ConsoleOutput.output('');
+    RacingGameOutput.printNextLine();
   }
 
   getWinnersName() {

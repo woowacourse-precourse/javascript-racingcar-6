@@ -1,5 +1,5 @@
 import RacingStadium from './RacingStadium.js';
-import GameUtils from './utils/GameUtils.js';
+import RacingGameOutput from './view/RacingGameOutput.js';
 
 class RacingGame {
   #racingStadium;
@@ -25,11 +25,11 @@ class RacingGame {
     const isSoloWinner = winners.length <= 1;
 
     if (isSoloWinner) {
-      GameUtils.printFinalWinner(winners);
+      RacingGameOutput.printFinalWinner(winners);
       return;
     }
 
-    GameUtils.printFinalWinners(winners);
+    RacingGameOutput.printFinalWinners(winners);
   }
 
   end() {

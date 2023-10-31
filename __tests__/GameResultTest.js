@@ -2,6 +2,7 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 import RacingCar from "../src/domain/RacingCar";
 import GameUtils from "../src/utils/GameUtils";
 import MESSAGE from "../src/constants/Message";
+import RacingGameOutput from "../src/view/RacingGameOutput";
 
 const getLogSpy = () => {
   const logSpy = jest.spyOn(MissionUtils.Console, "print");
@@ -73,7 +74,7 @@ describe('게임 결과에 대한 테스트입니다.', () => {
 
     // when
     const winner = GameUtils.selectWinners([pobiCar, crongCar]);
-    GameUtils.printFinalWinner(winner);
+    RacingGameOutput.printFinalWinner(winner);
 
     // then
     expect(logSpy).toHaveBeenCalledWith(expect.stringMatching(answer));
@@ -98,7 +99,7 @@ describe('게임 결과에 대한 테스트입니다.', () => {
 
     // when
     const winner = GameUtils.selectWinners([pobiCar, crongCar]);
-    GameUtils.printFinalWinners(winner);
+    RacingGameOutput.printFinalWinners(winner);
 
     // then
     expect(logSpy).toHaveBeenCalledWith(expect.stringMatching(answer));

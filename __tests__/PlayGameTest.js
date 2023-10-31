@@ -2,6 +2,7 @@ import RacingCar from "../src/domain/RacingCar.js";
 import GameUtils from "../src/utils/GameUtils.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 import RacingStadium from './../src/RacingStadium';
+import RacingGameOutput from "../src/view/RacingGameOutput.js";
 
 const mockRandoms = (numbers) => {
   MissionUtils.Random.pickNumberInRange = jest.fn();
@@ -51,7 +52,7 @@ describe('게임 진행에 관한 테스트입니다', () => {
 
     // when
     const pobiNumber = GameUtils.generateRandomNumberFromZeroToNine();
-    GameUtils.printCarNameAndRandomNumber('pobi', pobiNumber);
+    RacingGameOutput.printCarNameAndRandomNumber('pobi', pobiNumber);
     
     // then
     expect(logSpy).toHaveBeenCalledWith(expect.stringMatching(answer));
