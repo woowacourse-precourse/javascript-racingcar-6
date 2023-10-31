@@ -4,6 +4,10 @@ class Car {
     this.name = name;
     this.position = 0;
   }
+
+  randomNumber() {
+    MissionUtils.Random.pickNumberInRange(0, 9);
+  }
 }
 
 class App {
@@ -53,7 +57,7 @@ class App {
   async play() {
     const CARS_ARRAY = await this.inputCarName();
     await this.saveCarName(CARS_ARRAY);
-    // MissionUtils.Console.print(await this.inputCountNumber());
+    MissionUtils.Console.print(await this.inputCountNumber());
   }
 }
 
