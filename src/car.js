@@ -17,7 +17,10 @@ class Car{
       MissionUtils.Console.print(`${this.name} : ${this.far}`)
     }
     randomRacing(i){
-
+      randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
+      if(randomNumber >=4 ){
+        far[i] = far[i] + 1
+      }
     }
   }
 
