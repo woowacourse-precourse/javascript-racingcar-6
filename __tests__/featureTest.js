@@ -70,8 +70,8 @@ describe("기능1 - 경주 참여 자동차 이름 받기", () => {
 });
 
 describe("기능2 - 자동차 경주 게임 시도 횟수 받기", () => {
-  test.each([[["열번 실행해주세요"]], [["10번"]]])(
-    "자동차 경주 게임 시도 횟수 입력값이 Number타입 아닐 시 에러 반환",
+  test.each([[["열번 실행해주세요"]], [["10번"]], [["0"]]])(
+    "자동차 경주 게임 시도 횟수 입력값이 Number타입 아닐 시, 0입력시 에러 반환",
     async () => {
       await expect(InputView.readAttemptsCount()).rejects.toThrow("[ERROR]");
     },
