@@ -9,36 +9,34 @@ class App {
     this.carData = {};
     this.finishMessage = '최종 우승자 : ';
     this.distanceArray = [];
+    this.carNames = [];
+    this.userCount = 0;
   }
 
   async play() {
-    const userCar = await MissionUtils.Console.readLineAsync(this.startMessage);
-    const userCount = await MissionUtils.Console.readLineAsync(
-      this.countMessage,
-    );
-    const carNames = userCar.split(',');
-    if (!App.isValidCar(carNames)) {
-      throw new Error('[ERROR] 자동차 이름을 잘못 입력했습니다.');
-    }
-    if (!App.isValidNumber(userCount)) {
-      throw new Error('[ERROR] 시도 횟수를 잘못 입력했습니다.');
-    }
-    carNames.forEach(name => {
-      this.carData[name] = '';
-    });
-    MissionUtils.Console.print('');
-    MissionUtils.Console.print(this.resultMessage);
-    for (let i = 0; i < userCount; i += 1) {
-      this.moveCar();
-      this.printResult();
-      MissionUtils.Console.print('');
-    }
+    await this.getUserInput();
+    this.initializeCarData(this.carNames);
     this.printFinish();
   }
 
+  async getUserInput() {
+    const userCar = await MissionUtils.Console.readLineAsync(this.startMessage);
+    this.userCount = await MissionUtils.Console.readLineAsync(
+      this.countMessage,
+    );
+    this.carNames = await userCar.split(',');
+    if (!App.isValidCar(this.carNames)) {
+      throw new Error('[ERROR] 자동차 이름을 잘못 입력했습니다.');
+    }
+    if (!App.isValidNumber(this.userCount)) {
+      throw new Error('[ERROR] 시도 횟수를 잘못 입력했습니다.');
+    }
+  }
+
   static isValidCar(carNames) {
-    if (carNames.every(name => name.length > 5)) return false;
-    if (carNames.some(name => name.trim().length === 0)) return false;
+    if (carNames.some(name => name.length > 5)) return false;
+    if (carNames.some(name => name.replace(/\s/g, '').length === 0))
+      return false;
     return true;
   }
 
@@ -46,6 +44,12 @@ class App {
     if (Number.isNaN(Number(userCount))) return false;
     if (userCount <= 0) return false;
     return true;
+  }
+
+  initializeCarData(carNames) {
+    carNames.forEach(name => {
+      this.carData[name] = '';
+    });
   }
 
   moveCar() {
@@ -58,16 +62,22 @@ class App {
   }
 
   printResult() {
-    Object.keys(this.carData).forEach(name => {
-      MissionUtils.Console.print(`${name} : ${this.carData[name]}`);
+    Object.entries(this.carData).forEach(([name, distance]) => {
+      MissionUtils.Console.print(`${name} : ${distance}`);
     });
   }
 
   printFinish() {
-    Object.values(this.carData).forEach(value => {
-      this.distanceArray.push(value.length);
-    });
-    const maxDistance = Math.max(...this.distanceArray);
+    MissionUtils.Console.print('');
+    MissionUtils.Console.print(this.resultMessage);
+    for (let i = 0; i < this.userCount; i += 1) {
+      this.moveCar();
+      this.printResult();
+      MissionUtils.Console.print('');
+    }
+    const maxDistance = Math.max(
+      ...Object.values(this.carData).map(distance => distance.length),
+    );
     const winners = Object.keys(this.carData).filter(
       name => this.carData[name].length === maxDistance,
     );
