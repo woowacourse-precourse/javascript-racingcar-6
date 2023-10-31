@@ -83,3 +83,28 @@ describe('사용자 자동차 이름 입력값 정상 동작 테스트', () => {
 		await runSuccessTest(input, expectedValue);
 	});
 });
+
+describe('사용자의 자동차 경주 시도 횟수 입력값 에러처리 테스트', () => {
+	const runErrorTest = async (input, errorMsg) => {
+		mockQuestions(input);
+
+		const userInput = new UserInput();
+		const inputVal = userInput.inputAttemptsNum();
+
+		await expect(inputVal).rejects.toThrow(errorMsg);
+	};
+
+	test.each(['asd', 'woni'])('시도 횟수 입력값이 숫자가 아닌 경우', async (input) => {
+		await runErrorTest(input, ERROR_MESSAGES.value_is_not_a_number);
+	});
+
+	test.each([-1, -50])('시도 횟수 입력값이 음수인 경우', async (input) => {
+		await runErrorTest(input, ERROR_MESSAGES.value_is_negative_number);
+	});
+
+	test('시도 횟수 입력값이 최대 횟수를 넘는 경우', async () => {
+		const input = 1001;
+
+		await runErrorTest(1001, ERROR_MESSAGES.value_is_exceeds_maximum_length);
+	});
+});
