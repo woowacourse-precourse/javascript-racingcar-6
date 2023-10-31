@@ -3,6 +3,7 @@ import checkCarNameLength from "./checkCarNameLength";
 import checkValidRounds from "./checkValidRounds";
 import setArrayToMap from "./setArrayToMap";
 import playRandomForwardMove from "./playRandomForwardMove";
+import printFinalResult from "./printFinalResult";
 
 class App {
   async play() {
@@ -28,6 +29,9 @@ class App {
       //각 자동차에 대해 0~9 무작위 값 구하기
       playRandomForwardMove(CARS_MAP);
     }
+
+    //3. 종료
+    printFinalResult(CARS_MAP);
   }
 }
 
