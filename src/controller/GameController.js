@@ -29,7 +29,7 @@ export class GameController {
   async start() {
     // 자동차 이름과 시도 횟수 받아오기
     const cars = await this.#inputView.inputCars();
-    await this._race(cars);
+    await this.#race(cars);
   }
   /**
    *
@@ -37,7 +37,7 @@ export class GameController {
    * @returns {Promise<void>}
    */
 
-  // 시도 횟수를 받아와서 _race를 호출
+  // 시도 횟수를 받아와서 #_race를 호출
   async #race(cars) {
     //처음 한번 실행
     //attemptCount가 조건 변수인 것 -> 조건 인자를 가져오는 것을 한번 감싸주는 것이다
