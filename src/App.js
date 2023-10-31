@@ -1,9 +1,8 @@
-import User from './User.js';
+import { inputParticipantCarName } from './User.js';
 
 class App {
   async play() {
-    const user = new User();
-    const userList = await user.inputParticipantCarName();
+    const userList = await inputParticipantCarName();
     console.log(userList);
   }
 }
