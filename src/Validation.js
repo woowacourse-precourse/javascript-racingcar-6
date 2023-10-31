@@ -1,5 +1,4 @@
 import { ERROR_MESSAGE } from './Constants.js';
-import { Console } from '@woowacourse/mission-utils';
 
 class Validation {
   static inputCarName(inputcars) {
@@ -20,6 +19,15 @@ class Validation {
     }
     if (cars.length === 1) {
       throw new Error(ERROR_MESSAGE.singleError);
+    }
+  }
+
+  static inputTryCount(count) {
+    if (isNaN(count)) {
+      throw new Error(ERROR_MESSAGE.typeError);
+    }
+    if (count.trim() === '') {
+      throw new Error(ERROR_MESSAGE.inputError);
     }
   }
 }

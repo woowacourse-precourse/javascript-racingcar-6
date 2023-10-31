@@ -17,6 +17,8 @@ class User {
     Console.print(GAME_MESSAGE.inputTry);
     const tryCount = await Console.readLineAsync('');
 
+    Validation.inputTryCount(tryCount);
+
     return tryCount;
   }
 }
