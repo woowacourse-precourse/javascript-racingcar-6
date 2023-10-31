@@ -10,12 +10,6 @@ const mockRandoms = (numbers) => {
   }, MissionUtils.Random.pickNumberInRange);
 };
 
-const getLogSpy = () => {
-  const logSpy = jest.spyOn(MissionUtils.Console, 'print');
-  logSpy.mockClear();
-  return logSpy;
-};
-
 describe('자동차 경주 게임 진행 테스트', () => {
   test('입력한 게임 횟수만큼 게임을 진행', () => {
     const cars = [new Car('sso'), new Car('cow')];
@@ -48,7 +42,8 @@ describe('자동차 경주 게임 진행 테스트', () => {
   test('게임 차수별로 각 자동차의 실행 결과 출력', () => {
     const cars = [new Car('sso'), new Car('cow')];
     const race = new Race(cars, 1);
-    const logSpy = getLogSpy();
+    const logSpy = jest.spyOn(MissionUtils.Console, 'print');
+
     const randoms = [2, 5];
     const outputs = ['sso : ', 'cow : -'];
 
