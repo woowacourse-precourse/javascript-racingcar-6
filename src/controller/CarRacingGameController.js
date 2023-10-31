@@ -3,32 +3,37 @@ import InputValidator from '../domain/InputValidator.js';
 import randomNumberGenerator from '../utils/RandomNumberGenerator.js';
 import InputView from '../views/InputView.js';
 import OutputView from '../views/OutputView.js';
+import { MESSAGE } from '../constants/messages.js';
 
 class CarRacingGameController {
   #carRacingGame;
 
   async startGame() {
     const carNames = await InputView.getCarNames();
-    const validCarNames = InputValidator.hasValidCarNames(carNames);
+    InputValidator.validateCarNames(carNames);
 
     const round = await InputView.getRound();
-    const validRound = InputValidator.hasValidRound(round);
+    InputValidator.validateRound(round);
 
-    this.#carRacingGame = new CarRacingGame(validCarNames, validRound);
-    this.currentRacing();
+    this.#carRacingGame = new CarRacingGame(carNames, round);
+
+    return this.currentRacing();
   }
 
   currentRacing() {
-    OutputView.printStaticMessage('\n실행 결과');
+    OutputView.printStaticMessage(MESSAGE.playResult);
+
     while (this.#carRacingGame.isPlaying()) {
       this.#carRacingGame.race(randomNumberGenerator);
 
       const currentResult = this.#carRacingGame.getRoundResult();
+
       OutputView.printCurrentResult(currentResult);
     }
 
     const winners = this.#carRacingGame.getWinners();
-    this.endGame(winners);
+
+    return this.endGame(winners);
   }
 
   endGame(winners) {
