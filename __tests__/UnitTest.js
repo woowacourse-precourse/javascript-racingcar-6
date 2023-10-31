@@ -1,4 +1,12 @@
 import App from '../src/App';
+import { Random } from '@woowacourse/mission-utils';
+
+const mockRandoms = numbers => {
+  Random.pickNumberInRange = jest.fn();
+  numbers.reduce((acc, number) => {
+    return acc.mockReturnValueOnce(number);
+  }, Random.pickNumberInRange);
+};
 
 describe('단일 함수 테스트', () => {
   const app = new App();
@@ -16,6 +24,8 @@ describe('단일 함수 테스트', () => {
     const inputs = { pobi: '', java: '' };
     const outputs = 'pobi : -\njava : \n';
     const randoms = [MOVING_FORWARD, STOP];
+
+    mockRandoms([...randoms]);
 
     expect(app.moveCar(inputs)).toStrictEqual(outputs);
   });
