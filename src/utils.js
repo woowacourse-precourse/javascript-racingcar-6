@@ -19,6 +19,17 @@ export const getCarArrFromInputValue = async () => {
     }
   });
 
+  let carArrToStr = carArr.map((carInfo) => JSON.stringify(carInfo));
+
+  let isDuplicated = carArrToStr.some(
+    (carInfoStr) =>
+      carArrToStr.indexOf(carInfoStr) !== carArrToStr.lastIndexOf(carInfoStr)
+  );
+
+  if (isDuplicated) {
+    throw new Error('[ERROR] 중복된 이름이 있습니다.');
+  }
+
   return carArr;
 };
 
