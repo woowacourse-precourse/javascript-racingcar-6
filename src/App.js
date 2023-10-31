@@ -1,10 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import Cars from "./Cars";
-import {
-  nameValidation,
-  naturalNumberRex,
-  duplicateChecks,
-} from "./Validations";
+import { naturalNumberRex } from "./Validations";
 import {
   GAME_START,
   REPETATION_STR,
@@ -15,7 +11,7 @@ import {
 const { Console, Random } = MissionUtils;
 
 class App {
-  printCarMoves(cars) {
+  static printCarMoves(cars) {
     let runningResult = "";
     Object.keys(cars.obj).forEach((item) => {
       runningResult += MOVE_CAR_STR(item, cars.obj[item]);
@@ -23,23 +19,25 @@ class App {
     Console.print(runningResult);
   }
 
-  getMoveArr(cars) {
+  static getMoveArr(cars) {
     const moves = [];
-    for (let i = 0; i < cars.len; i += 1) {
+    let i = 0;
+    while (i < cars.len) {
       moves.push(Random.pickNumberInRange(1, 9));
+      i += 1;
     }
     return moves;
   }
 
   running_race(cars, repetitions) {
-    for (let i = 0; i < repetitions; i += 1) {
+    let i = 0;
+    while (i < repetitions) {
       cars.move_cars(this.getMoveArr(cars));
       this.printCarMoves(cars);
+      i += 1;
     }
     WINNER_STR(cars);
   }
-
-
 
   async play() {
     const input = await Console.readLineAsync(GAME_START);
