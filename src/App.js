@@ -8,34 +8,36 @@ class App {
         "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
       );
 
-      this.isValidateName(carNameString);
       carNameArray = carNameString.split(",");
+      isValidateName(carNameArray);
       return carNameArray;
     }
     //자동차 이름 오류 확인
     function isValidateName(userInput) {
-      userInputArray = userInput.split(",");
       if (userInput.includes(" ")) {
         throw new Error("[ERROR] 띄워쓰기를 하지 마세요.");
       }
-      for (let element of userInputArray) {
-        if (element.length > 6) {
+      for (let element of userInput) {
+        if (userInput.includes(" ")) {
+          throw new Error("[ERROR] 띄워쓰기를 하지 마세요.");
+        } else if (element.length > 6) {
           throw new Error("[ERROR] 5글자 이하로 적어주세요.");
         }
       }
     }
 
     async function getRaceCount() {
-      let raceCount = await MissionUtils.Console.readLineAsync(
+      let raceCountString = await MissionUtils.Console.readLineAsync(
         "시도할 횟수는 몇 회인가요?"
       );
+      let raceCount = parseInt(raceCountString);
 
-      this.isValidateNum(raceCount);
+      isValidateNum(raceCount);
       return raceCount;
     }
     //반복 횟수 오류 확인
     function isValidateNum(userInput) {
-      if (isNaN(userInput)) {
+      if (!isNaN(userInput)) {
         throw new Error("[ERROR] 숫자를 입력해주세요");
       } else if (userInput < 0) {
         throw new Error("[ERROR] 1 보다 높은 숫자를 입력해주세요.");
