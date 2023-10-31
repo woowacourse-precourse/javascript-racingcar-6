@@ -23,6 +23,10 @@ class App {
       printCarStatus(nameList, carCount);
     }
 
+    const maxCount = Math.max(...carCount);
+    const winners = nameList.filter((_, idx) => carCount[idx] === maxCount);
+
+    Console.print(`최종우승자 : ${winners.join(', ')}`);
   }
 }
 
