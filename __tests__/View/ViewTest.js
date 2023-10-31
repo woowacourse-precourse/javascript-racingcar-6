@@ -177,4 +177,39 @@ describe('View 테스트', () => {
       });
     });
   });
+
+  describe.only('우승자를 출력한다.', () => {
+    beforeEach(() => {
+      jest.spyOn(OutputView, 'print');
+    });
+
+    const mockRaceResult = [
+      {
+        raceResult: [
+          [
+            { name: 'pobi', position: 1 },
+            { name: 'crong', position: 0 },
+            { name: 'honux', position: 1 },
+          ],
+          [
+            { name: 'pobi', position: 2 },
+            { name: 'crong', position: 1 },
+            { name: 'honux', position: 2 },
+          ],
+        ],
+        winner: ['pobi', 'honux'],
+        expected: '최종 우승자 : pobi, honux',
+      },
+    ];
+
+    mockRaceResult.forEach(({ raceResult, winner, expected }) => {
+      test(`우승자를 출력한다. (${winner.length}명)`, () => {
+        // when
+        view.printRaceResult({ winner, raceResult });
+
+        // then
+        expect(OutputView.print).toHaveBeenCalledWith(expected);
+      });
+    });
+  });
 });
