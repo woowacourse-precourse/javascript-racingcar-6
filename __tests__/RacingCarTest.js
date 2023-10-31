@@ -31,7 +31,7 @@ describe('RacingGame test', () => {
       { carName: 'pobi', carPosition: 0 },
       { carName: 'woni', carPosition: 0 },
     ];
-    const car = racingController.createNewCars(input);
+    const car = racingController.createRacingCars(input);
     racingGame.setRacingCar = car;
     const result = racingGame.getRacingCar;
 
