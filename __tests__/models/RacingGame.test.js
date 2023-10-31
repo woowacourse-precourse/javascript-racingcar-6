@@ -52,7 +52,7 @@ describe('RacingResult 테스트', () => {
       const racingGame = new RacingGame(carNames, moveCount);
 
       // when
-      const racingResult = racingGame.play();
+      const racingResult = racingGame.runRace();
 
       // then
       expect(racingResult).toStrictEqual(expected);

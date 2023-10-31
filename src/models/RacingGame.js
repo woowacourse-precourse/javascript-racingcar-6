@@ -23,16 +23,16 @@ class RacingGame {
     return this.#carNames.map((carName) => ({ carName, position: 0 }));
   }
 
-  #updateRacingResult() {
+  #updateRacingStatus() {
     const { minNumber, maxNumber } = RANDOM_NUMBER_RANGE;
     this.#racingStatus = this.#racingStatus.map((currentRacingCarInfo) =>
       RacingCar.from(currentRacingCarInfo).move(pickRandomNumberInRange(minNumber, maxNumber)),
     );
   }
 
-  play() {
+  runRace() {
     return Array.from({ length: this.#moveCount }, () => {
-      this.#updateRacingResult();
+      this.#updateRacingStatus();
       return [...this.#racingStatus];
     });
   }
