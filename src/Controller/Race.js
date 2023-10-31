@@ -38,12 +38,14 @@ class Race{
             MissionUtils.Console.print('')
         }
 
-        this.getWinner()
+        const winner = this.getWinner()
+        this.printWinner(winner)
     }
 
     moveCars(){
         this.cars.forEach((car) => {
             car.move()
+            car.printMovingCount()
         })
     }
 
@@ -55,10 +57,6 @@ class Race{
         })
         const maxCount = Math.max(...movingCount)
 
-        this.printWinner(maxCount)
-    }
-
-    printWinner(maxCount){
         const winnerArray = []
 
         this.cars.forEach((car)=>{
@@ -66,7 +64,10 @@ class Race{
             winnerArray.push(car.getName())
         })
         const winner = winnerArray.join(', ')
+        return winner
+    }
 
+    printWinner(winner){
         MissionUtils.Console.print(`최종 우승자 : ${winner}`)
     }
 }

@@ -20,8 +20,6 @@ class Car{
     move(){
         const randNum = MissionUtils.Random.pickNumberInRange(0, 9)
         if(randNum >= 4) this.movingCount += 1
-
-        this.printMovingCount()
     }
 
     printMovingCount(){
