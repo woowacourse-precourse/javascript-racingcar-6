@@ -1,6 +1,6 @@
 import RacingCar from "./RacingCar.js";
 import RandomNumberGenerator from "../utils/RandomNumberGenerator.js";
-import { StaticNumber } from "../static/Static.js";
+import { STATIC_NUMBER } from "../static/Static.js";
 
 class RacingCars {
   #cars;
@@ -12,18 +12,18 @@ class RacingCars {
     this.#cars = inputNames.split(",").map((name) => new RacingCar(name));
   }
 
-  setRacingTries(inputTries) {
+  setTries(inputTries) {
     this.#tries = Number(inputTries);
   }
 
-  getRacingTries() {
+  getTries() {
     return this.#tries;
   }
 
-  setMoveOrStay() {
+  setMoveCondition() {
     this.#cars.map((car) => {
       const randomNumber = RandomNumberGenerator.generate();
-      if (randomNumber >= StaticNumber.CAN_MOVE_CONDITION) car.move();
+      if (randomNumber >= STATIC_NUMBER.canMoveCondition) car.move();
     });
   }
 

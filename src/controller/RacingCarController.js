@@ -19,22 +19,22 @@ class RacingCarController {
     });
   }
 
-  async inputTryTimes() {
-    await InputView.readTryTimes((input) => {
-      this.#cars.setRacingTries(input);
+  async inputTries() {
+    await InputView.readTries((input) => {
+      this.#cars.setTries(input);
     });
     this.raceStart();
   }
 
   async setCars(cars) {
     this.#cars = new RacingCars(cars);
-    await this.inputTryTimes();
+    await this.inputTries();
   }
 
   raceStart() {
     OutputView.printResultMessage();
-    for (let i = 0; i < this.#cars.getRacingTries(); i++) {
-      this.#cars.setMoveOrStay();
+    for (let i = 0; i < this.#cars.getTries(); i++) {
+      this.#cars.setMoveCondition();
       OutputView.printMoveMarking(this.#cars.getCurrentPosition());
       OutputView.printSingleLine();
     }

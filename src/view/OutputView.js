@@ -1,4 +1,4 @@
-import { PrintMessage } from "../static/Static.js";
+import { PRINT_MESSAGE } from "../static/Static.js";
 import { Console } from "@woowacourse/mission-utils";
 
 const OutputView = {
@@ -7,18 +7,18 @@ const OutputView = {
   },
 
   printResultMessage() {
-    Console.print(PrintMessage.RESULT_MESSAGE);
+    Console.print(PRINT_MESSAGE.resultMessage);
   },
 
   printMoveMarking(carMoveState) {
     carMoveState.map((car) => {
-      Console.print(`${car[0]} : ${PrintMessage.MOVE_MARKING.repeat(car[1])}`);
+      Console.print(`${car[0]} : ${PRINT_MESSAGE.moveMarking.repeat(car[1])}`);
     });
   },
 
   printWinnerMessage(winnersArray) {
     const winners = winnersArray.join(", ");
-    Console.print(`${PrintMessage.WINNER_MESSAGE} : ${winners}`);
+    Console.print(`${PRINT_MESSAGE.winnerMessage} : ${winners}`);
   },
 };
 

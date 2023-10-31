@@ -28,9 +28,9 @@ describe("입력값 유효성 검사 테스트", () => {
   });
 
   test("횟수에 숫자가 아닌 경우를 확인", () => {
-    const timesInput = ["12d", ".+", "string"];
+    const triesInput = ["12d", ".+", "string"];
 
-    timesInput.forEach((times) => {
+    triesInput.forEach((times) => {
       expect(() => {
         InputValidator.validateTimesNumber(times);
       }).toThrow();
@@ -38,9 +38,9 @@ describe("입력값 유효성 검사 테스트", () => {
   });
 
   test("횟수에 0이 입력된 경우를 확인", () => {
-    const timesInput = ["0", ""];
+    const triesInput = ["0", ""];
 
-    timesInput.forEach((times) => {
+    triesInput.forEach((times) => {
       expect(() => {
         InputValidator.validateTimesNumber(times);
       }).toThrow();
