@@ -21,3 +21,8 @@ const checkNameLength = (carName) => {
   if (carName.length < 1 || carName.length > 5)
     throw new Error(CARS_NAME_LENGTH_USER_INPUT_ERROR);
 };
+
+export const checkCarsArray = (carsNameArray) => {
+  carsNameArray.forEach((carName) => checkNameLength(carName));
+};
+
