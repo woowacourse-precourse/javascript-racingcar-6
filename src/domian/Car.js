@@ -1,28 +1,34 @@
+import { SYMBOL } from "../constants/constants";
 import InputView from "../view/inputView";
 
 class Car {
-  constructor(car) {
-    this.car = car;
-    this.moveCount = 0;
+  #cars;
+
+  constructor(cars) {
+    this.#cars = cars;
+    this.progress = 0;
   }
 
-  // 자동차 이름 하나 가져오기 -> '콩순이'
-  get car() {
-    return this.car;
+  get cars() {
+    return this.#cars;
+  }
+  get progress() {
+    return this.progress;
   }
 
-  // 이동 여부 판단
-  canMove() {
+  set progress(progress) {
+    this.progress.push(MESSAGE.move);
+  }
+
+  // 이동 여부 판단 후 이동 결과 출력
+  MoveGenerator() {
     const randomNumber = Random.pickNumberInRange(1, 9);
-    return randomNumber >= 4;
-  }
-  // 이동하고 총 몇번 이동했는지 세놓기
-  move() {
-    if (this.canMove()) {
-      this.moveCount++;
+
+    if (randomNumber > 4) {
+      this.progress++;
     }
-    const totalMove = this.moveCount;
-    return totalMove;
+    const result = `${this.car} : ${SYMBOL.MOVE.repeat(this.progress)}`;
+    return result;
   }
 }
 
