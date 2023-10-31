@@ -5,7 +5,6 @@ import {
   parseNumber,
   getWinners,
 } from '../utils/common.js';
-import { validateNumber } from '../utils/validation.js';
 
 class GameConsole {
   static async getCarNames() {
