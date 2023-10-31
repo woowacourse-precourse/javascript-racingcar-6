@@ -44,6 +44,10 @@ class App {
       race(cars, raceCount);
       printRound(cars, raceCount);
     }
+    const winners = this.getWinnerIndex(raceCount);
+    const winnerNames = winners.map(index => cars[index]).join(', ');
+    // 우승자가 2명 이상인 경우에만 join으로 연결
+    MissionUtils.Console.print(`최종 우승자 : ${winnerNames}`);
   }
 
   /** 한 라운드 진행 */
@@ -63,6 +67,26 @@ class App {
     }
   }
 
+  /** raceCount[]의 최대값 인덱스를 winnerIndex[]에 저장 */
+  getWinnerIndex(raceCount) {
+    let maxVal = -Infinity;
+    const winnerIndex = [];
+
+    raceCount.forEach((value, index) => {
+        // 현재 값 > 최대값; winnerIndex 초기화 후 push
+        if (value > maxVal) {
+            maxVal = value;
+            winnerIndex.length = 0;
+            winnerIndex.push(index);
+        } 
+        // 현재 값 === 최대 값; winnerIndex에 push
+        else if (value === maxVal) {
+            winnerIndex.push(index);
+        }
+    });
+
+    return winnerIndex;
+  }
 }
 
 export default App;
