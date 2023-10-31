@@ -6,7 +6,7 @@
 
   - [x] 0-9 사이의 무작위 값 중 3 이하가 나오면 멈추는 기능 구현
 
-  - [x] 자동차에 이름을 부여하고 ( `pobi`,`woni`,`jun` ) 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력하는 기능 구현 - startRacing()
+  - [x] 자동차에 이름을 부여하고 ( `pobi`,`woni`,`jun` ) 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력하는 기능 구현 - moveCar#startRacing()
 
 - [x] 사용자가 몇 번의 이동을 할것인지 입력하는 기능 구현 - gameStart#inputCarMoveCount()
 
