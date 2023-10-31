@@ -5,28 +5,24 @@ class App {
   async play() {
     try {
       const setGameOfUser = await this.setGameOfUser();
-      if (setGameOfUser === false)
-        throw new Error("[ERROR] 입력값이 잘못되었습니다.");
-
       const result = this.startGame(
         setGameOfUser.carList,
         setGameOfUser.gameNumber
       );
-      console.log(result);
       this.endGame(result);
     } catch (error) {
-      throw new Error("[ERROR] 입력값이 잘못되었습니다.");
+      throw new Error(`[ERROR] ${error.message}`);
     }
   }
 
   async setGameOfUser() {
-    const setName = await this.setGameOfUser_setName();
-    if (setName === false) return false;
-
-    const setGameNum = await this.setGameOfUser_setGameNum();
-    if (setGameNum === false) return false;
-
-    return { carList: setName, gameNumber: setGameNum };
+    try {
+      const setName = await this.setGameOfUser_setName();
+      const setGameNum = await this.setGameOfUser_setGameNum();
+      return { carList: setName, gameNumber: setGameNum };
+    } catch (error) {
+      throw new Error(error.message);
+    }
   }
   async setGameOfUser_setName() {
     try {
@@ -38,22 +34,27 @@ class App {
       );
 
       carList = carList.split(",").map((element) => element.trim());
-      if (this.setGameOfUser_validationName(carList) === false) return false;
+
+      this.setGameOfUser_validationName(carList);
       return carList;
     } catch (error) {
-      Console.print(error.message);
-      return false;
+      throw new Error(error.message);
+      // Console.print(error.message);
+      // return false;
     }
   }
   setGameOfUser_validationName(carListArr) {
-    let invalid = false;
-    if (carListArr.length < 2) invalid = true;
-    carListArr.forEach((element) => {
-      if (element.length > 5) invalid = true;
-    });
+    if (carListArr.length < 2)
+      throw new Error("차 리스트가 1개 이하입니다. 2개 이상을 입력해주세요.");
 
-    if (invalid === true) return false;
-    return true;
+    const carListArrCallback = (element) => {
+      if (element.length > 5)
+        throw new Error(
+          "차 이름이 너무 깁니다. 각 이름은 5자 이하로 해주세요."
+        );
+    };
+    carListArr.forEach(carListArrCallback);
+    return;
   }
   async setGameOfUser_setGameNum() {
     Console.print("시도할 횟수는 몇 회인가요?(1~10회로 제한)");
@@ -61,15 +62,21 @@ class App {
       "시도할 횟수는 몇 회인가요?(1~10회로 제한)"
     );
     gameNumber = Number(gameNumber);
-    if (isNaN(gameNumber)) return false;
-    if (gameNumber > 10 && gameNumber < 1) return false;
-    if (gameNumber % 1 !== 0) return false;
+    // if (isNaN(gameNumber)) return false;
+    // if (gameNumber > 10 && gameNumber < 1) return false;
+    // if (gameNumber % 1 !== 0) return false;
+    if (
+      isNaN(gameNumber) ||
+      gameNumber > 10 ||
+      gameNumber < 1 ||
+      gameNumber % 1 !== 0
+    )
+      throw new Error("게임 횟수는 숫자이며 2와 9 사이의 정수이어야 합니다.");
     return gameNumber;
   }
 
   startGame(carList, gameNumber) {
     const process = carList.map((element) => ({ name: element, location: 0 }));
-
     Console.print("실행결과");
     for (let valid = 1; ; ) {
       process.forEach((element) => {
@@ -80,10 +87,6 @@ class App {
         element.location = "-".repeat(element.location);
         return element;
       });
-
-      //[
-      //   {name:"foo", location:"-"}
-      // ]
 
       let message = "";
       processToBar.forEach((e) => {
