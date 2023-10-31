@@ -11,33 +11,35 @@ class App {
 
     const tryCountInput = await Console.readLineAsync(TEXT.ATTEMPTS_NUMBER);
     const tryCount = parseInt(tryCountInput);
-    if (isNaN(tryCount)) {
-      throw new Error(ERROR.MAX_LENGTH);
-    }
+    if (isNaN(tryCount)) { throw new Error(ERROR.MAX_LENGTH); }
     //Console.print(tryCountInput);
 
     const cars = carNames.map((name) => new Car(name));
     //Console.print(cars);
+
     Console.print("\n실행결과");
+    this.carMoves(tryCount, cars);
+
+    const maxPosition = Math.max(...cars.map((car) => car.position));
+    const winners = cars.filter((car) => car.position === maxPosition).map((car) => car.name);
+    Console.print(`최종 우승자 : ${winners.join(', ')}`);
+    
+  }
+
+  checkCarNames(carNames){
+    for (const carName of carNames){
+      if(carName.length > 5){ throw new Error(ERROR.NAN)}
+    }
+  }
+
+  carMoves(tryCount, cars){ 
     for (let i = 0; i < tryCount; i++) {
       for (const car of cars) {
         car.move();
       }
       this.printCarPositions(cars);
     }
-
-    const maxPosition = Math.max(...cars.map((car) => car.position));
-    const winners = cars.filter((car) => car.position === maxPosition).map((car) => car.name);
-
-    Console.print(`최종 우승자 : ${winners.join(', ')}`);
-    
-  }
-
-  checkCarNames = (carNames) => {
-    for (const carName of carNames){
-      if(carName.length > 5){ throw new Error(ERROR.NAN)}
-    }
-  }
+  } 
 
   printCarPositions(cars) {
     for (const car of cars) {
