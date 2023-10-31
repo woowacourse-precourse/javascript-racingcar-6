@@ -75,6 +75,61 @@ describe("자동차 경주 게임", () => {
     });
   });
 
+  test("결과 출력(우승자 한 명)", async () => {
+    // given
+    const MOVING_FORWARD = 4;
+    const STOP = 3;
+    const inputs = ["pobi,woni,jun", "3"];
+    const outputs = ["pobi : ---", "woni : --", "jun : --"];
+    const randoms = [
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      STOP,
+      MOVING_FORWARD,
+      STOP,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+    ];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    // when
+    const app = new App();
+    await app.play();
+
+    // then
+    const logCalls = logSpy.mock.calls;
+    const lastLogCall = logCalls[logCalls.length - 1][0];
+
+    expect(lastLogCall).toContain("최종 우승자 : pobi");
+  });
+
+  test("결과 출력(우승자 여러 명)", async () => {
+    // given
+    const MOVING_FORWARD = 4;
+    const inputs = ["pobi,woni,jun", "7"];
+    const randoms = Array(28).fill(MOVING_FORWARD);
+
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    // when
+    const app = new App();
+    await app.play();
+
+    // then
+    const logCalls = logSpy.mock.calls;
+    const lastLogCall = logCalls[logCalls.length - 1][0];
+
+    expect(lastLogCall).toContain("최종 우승자 : pobi, woni, jun");
+  });
+
   test.each([
     [["pobi,javaji"]],
     [["pobi,eastjun"]],
