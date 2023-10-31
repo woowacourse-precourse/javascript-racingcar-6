@@ -1,6 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
-const carNameMaxLen = (carName) =>{
+const carNameMaxLen = (carName) => {
     let nameLenArray = carName.map(x => x.length);
     let maxLenName = Math.max(...nameLenArray);
     if (maxLenName > 6) {
@@ -9,7 +9,7 @@ const carNameMaxLen = (carName) =>{
     }
 };
 
-const carNameValidation = (carName) =>{
+const carNameValidation = (carName) => {
     carNameMaxLen(carName);
 };
 
