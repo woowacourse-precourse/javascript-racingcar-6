@@ -5,9 +5,18 @@ export const GameRule = {
   MinRound: 1,
 };
 
+export const MoveForwardJudgment = {
+  MinNumber: 0,
+  MaxNumber: 9,
+  Condition: 4,
+};
+
 export const GameMessage = {
   InputCarName: '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)',
   InputRound: '시도할 횟수는 몇 회인가요?',
+  RunResult: '실행 결과',
+  MovementSign: '-',
+  FinalWinner: '최종 우승자 : ',
 };
 
 export const ErrorMessage = {

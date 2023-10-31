@@ -1,4 +1,5 @@
 import Round from '../../src/racingcar/round.js';
+import RacingStateService from '../../src/services/racing.state.service.js';
 
 describe('경기 횟수를 입력받는다.', () => {
   test('1이상의 수는 허용한다.', () => {
@@ -6,7 +7,7 @@ describe('경기 횟수를 입력받는다.', () => {
     const input = '1';
 
     // when
-    const round = new Round();
+    const round = new Round(new RacingStateService());
     const result = round.isValidValue(input);
 
     // then

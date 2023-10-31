@@ -1,6 +1,12 @@
 import { GameRule } from '../models/const.js';
 
 export default class Round {
+  #racingState;
+
+  constructor(racingState) {
+    this.#racingState = racingState;
+  }
+
   isValidValue(value) {
     if (this.#isNoValue(value)) {
       return false;
@@ -9,6 +15,8 @@ export default class Round {
     if (this.#isInvalidRange(value)) {
       return false;
     }
+
+    this.#racingState.round = Number(value);
 
     return true;
   }
@@ -20,5 +28,9 @@ export default class Round {
   #isInvalidRange(value) {
     const convertedNumber = Number(value);
     return !Number.isInteger(convertedNumber) || GameRule.MinRound > convertedNumber;
+  }
+
+  minusOneRound() {
+    this.#racingState.round = this.#racingState.currentState.round - 1;
   }
 }

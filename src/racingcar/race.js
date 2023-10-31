@@ -4,17 +4,21 @@ import Round from './round.js';
 import Util from '../utils/util.js';
 
 export default class Race {
+  #racingState;
   #car;
   #round;
 
-  constructor() {
-    this.#car = new Car();
-    this.#round = new Round();
+  constructor(racingState) {
+    this.#racingState = racingState;
+    this.#car = new Car(racingState);
+    this.#round = new Round(racingState);
+    this.#racingState.subscribe(this.#printResultByRound);
   }
 
   async start() {
     await this.#requestCarName();
     await this.#requestRound();
+    this.#checkResultByRound();
   }
 
   async #requestCarName() {
@@ -31,5 +35,29 @@ export default class Race {
     if (!this.#round.isValidValue(round)) {
       throw new Error(ErrorMessage.Round);
     }
+  }
+
+  #checkResultByRound() {
+    Util.printConsole(GameMessage.RunResult);
+    let loopCondition = true;
+
+    while (loopCondition) {
+      this.#car.moveForwardOrStop();
+      this.#round.minusOneRound();
+
+      if (!this.#racingState.currentState.round) {
+        loopCondition = false;
+      }
+    }
+  }
+
+  #printResultByRound = ({ cars }) => {
+    const messages = cars.map(({ name, progress }) => this.#getResultMessage(name, progress));
+
+    Util.printConsole(`${messages.join('\n')}\n`);
+  };
+
+  #getResultMessage(name, progress) {
+    return `${name} : ${GameMessage.MovementSign.repeat(progress)}`;
   }
 }
