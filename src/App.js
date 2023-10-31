@@ -18,15 +18,16 @@ class Controll {
     this.carNames = [];
     this.carScores = [];
     this.tryNumber = 0;
+    this.players = new Array();
+    this.winner = new Array();
   }
   async input(Question) {
     const inputString = await Console.readLineAsync(Question);
     return inputString;
   }
-  tryNumberValidate() {
-    if (isNaN(this.tryNumber)) {
-      throw new Error("[ERROR] 시도할 횟수는 숫자로만 입력해주세요!")
-    }
+  checkGoOrStop(carScoreIndex) {
+    this.players[carScoreIndex].score += 1;
+    this.carScores[carScoreIndex] += 1;
   }
   makePlayerObject() {
     for (let i = 0; i < this.carNames.length; i++) {
@@ -36,8 +37,14 @@ class Controll {
       this.players.push(player);
     }
   }
-  checkGoOrStop(carScoreIndex) {
-    this.carScores[carScoreIndex] += 1;
+
+  findWinners() {
+    const winner = this.players.filter((player, index, target) => {
+      const maxOfScore = Math.max(...target.map(player => player.score));
+      return player.score === maxOfScore;
+    })
+    winner.map((item) => { this.winner.push(item.name) });
+    return this.winner.map(winner => winner).join(', ')
   }
   makeRandomNumber() {
     for (let i = 0; i < this.carNames.length; i++) {
@@ -60,7 +67,7 @@ class Controll {
       for (let i = 0; i < this.carScores[key]; i++) {
         printData += "-"
       }
-      Console.print(`${value}:${printData}`)
+      Console.print(`${value} : ${printData}`)
     })
     Console.print('\n');
   }
@@ -83,6 +90,8 @@ class App {
         this.controll.makeRandomNumber();
         this.controll.printCase();
       }
+      // Console.print(this.controll.players);
+      Console.print("최종 우승자 : " + this.controll.findWinners());
     } catch (error) {
       throw new Error(error)
     }
