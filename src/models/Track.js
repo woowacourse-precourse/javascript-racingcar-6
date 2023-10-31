@@ -4,15 +4,29 @@ import Car from './Car.js';
 class Track {
   static LIMIT_NUMBER = 4;
 
+  /** @type {Car[]} */
   #cars;
+
+  /**
+   * Car 배열을 받는다.
+   * @param {Car[]} cars
+   */
   constructor(cars) {
     this.#cars = cars;
   }
 
-  async checkCarRun(car) {
+  async checkCarMove(car) {
     const randomNumber = await Random.pickNumberInRange(0, 9);
 
     return !!(randomNumber < Track.LIMIT_NUMBER);
+  }
+
+  moveCarsCheckCondition() {
+    this.#cars.forEach((car) => {
+      if (!this.checkCarMove(car)) return;
+
+      car.moveForward();
+    });
   }
 }
 
