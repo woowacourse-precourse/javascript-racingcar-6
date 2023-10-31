@@ -1,4 +1,5 @@
 import App from "../src/App.js";
+import { ERROR_MESSAGE } from "../src/Message";
 
 describe("class App test", () => {
   let app;
@@ -74,6 +75,15 @@ describe("class App test", () => {
       const testNames = "equus,pony,ray,SM5";
       const carNamesArray = app.getCarNamesArray(testNames);
       expect(carNamesArray).toEqual(["equus", "pony", "ray", "SM5"]);
+    });
+  });
+
+  describe("method test : checkRepeatNumber()", () => {
+    test("시도할 횟수를 숫자가 아닌 문자로 입력했을 때 에러 처리", () => {
+      const testRepeatString = "abc";
+      expect(() => {
+        app.checkRepeatNumber(testRepeatString);
+      }).toThrowError(ERROR_MESSAGE.NUMBER);
     });
   });
 });
