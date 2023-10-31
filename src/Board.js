@@ -10,6 +10,9 @@ class Board {
   /** @type {Array<Car>} */
   #cars = [];
 
+  /** @type {Array<Car>} */
+  #winners = [];
+
   /** @type {Number} */
   #numTurns = null;
 
@@ -114,8 +117,19 @@ class Board {
     console.log();
   }
 
+  /**
+   * 레이싱카들의 이동거리를 기준으로 우승자들을 winners에 저장한다.
+   */
   pickOutWinner() {
-
+    this.#winners = this.#cars.reduce((candidates, car) => {
+      if (!candidates.length || car.getDistance() > candidates[0].getDistance()) {
+          return [car];
+      }
+      if (car.getDistance() === candidates[0].getDistance()) {
+          candidates.push(car);
+      }
+      return candidates;
+    }, []);
   }
 
   printFinalResult() {
