@@ -73,14 +73,16 @@ class App {
     }
   }
 
-  announceTheWinner(CARS) {
+  async announceTheWinner(CARS) {
     let winner = [];
 
-    CARS.sort((a, b) => b.position - a.position);
+    await CARS.sort((a, b) => b.position - a.position);
 
     for (let i = 0; i < CARS.length; i++) {
       winner.push(CARS[i].name);
-      if (CARS[i].position > CARS[i + 1].position) {
+      if (CARS.length === 1) {
+        break;
+      } else if (CARS[i].position > CARS[i + 1].position) {
         break;
       }
     }
