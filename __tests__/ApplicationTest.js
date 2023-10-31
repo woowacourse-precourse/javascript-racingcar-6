@@ -71,6 +71,7 @@ describe("자동차 경주 게임", () => {
     [() => {}],
     [undefined],
     [["this", "is", "array"]],
+    [-1],
   ])("유효하지 않은 숫자에 대한 예외 처리", async (inputs) => {
     const validation = new Validation();
     await expect(() => validation.isValidTrialNumber(inputs)).toThrow(

@@ -26,8 +26,12 @@ class Validation {
   }
 
   isValidTrialNumber(trialNumber) {
-    let isNumber = isNaN(trialNumber);
+    let isNumber = isNaN(Number(trialNumber));
+    let isNotPositive = Number(trialNumber) <= 0 ? true : false;
     if (isNumber) {
+      throw new Error(CONSTANTS.ERROR.ISNUMBER);
+    }
+    if (isNotPositive) {
       throw new Error(CONSTANTS.ERROR.ISNUMBER);
     }
   }
