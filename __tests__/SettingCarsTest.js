@@ -1,7 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
 import SettingCars from '../src/SettingCars.js';
 import Car from '../src/Car.js';
-import ErrorHandler from '../src/ErrorHandler.js';
 
 const mockCarsNamesInput = (carsNamesInput) => {
   Console.readLineAsync = jest.fn();
@@ -29,4 +28,14 @@ describe('게임에 참여할 자동차를 설정하는 테스트', () => {
       ]),
     );
   });
+
+  test.each([['5글자 이상 자동차1,자동차2'], ['']])(
+    '유효하지 않는 자동차 이름에 대한 예외 처리 테스트',
+    async (inputs) => {
+      const carsNamesInput = inputs;
+      mockCarsNamesInput(carsNamesInput);
+
+      await expect(SettingCars.registerCars()).rejects.toThrow('[ERROR]');
+    },
+  );
 });
