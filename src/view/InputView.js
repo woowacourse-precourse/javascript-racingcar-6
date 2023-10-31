@@ -1,6 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
 import { INPUT_CARS_NAME, INPUT_COUNT } from '../constants/InputString.js';
-import { ERROR_CARS_LENGTH } from '../constants/ErrorString.js';
+import { ERROR_CARS_LENGTH, ERROR_CARS_SPLIT } from '../constants/ErrorString.js';
 
 const InputView = {
   readCarsInput: async () => {
@@ -23,6 +23,7 @@ const InputView = {
     inputCarsArray.map(inputCar => {
       if (inputCar.length > 5) throw new Error(ERROR_CARS_LENGTH);
     });
+    if (inputCarsArray.includes('')) throw new Error(ERROR_CARS_SPLIT);
   },
 };
 
