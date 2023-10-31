@@ -8,6 +8,9 @@ class App {
 
   async play() {
     const userInputCar = await this.carInput();
+
+    //유효성 검사
+    this.checkCarInput(userInputCar);
     const splitInputCar = userInputCar.split(',');
     this.racingCarList(splitInputCar);
 
@@ -22,6 +25,13 @@ class App {
       '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
     );
     return userInputCar;
+  }
+
+  checkCarInput(userInput) {
+    const carRegex = /^[a-zA-Z]{1,5}(,[a-zA-Z]{1,5})*$/;
+    if (carRegex.test(userInput) === false) {
+      throw new Error('[ERROR] 입력이 잘못된 형식입니다.');
+    }
   }
 
   async numInput() {
