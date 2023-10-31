@@ -10,6 +10,9 @@ export default class User {
     if (carNameArr.some((carName) => carName.length > 5 || carName === ''))
       throw new Error(MESSAGE.ERROR_WRONG_INPUT);
 
+    if (carNameArr.length !== new Set([...carNameArr]).size)
+      throw new Error(MESSAGE.ERROR_WRONG_INPUT);
+
     return carNameArr;
   }
 
