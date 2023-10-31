@@ -38,4 +38,16 @@ describe("RacingGame 클래스", () => {
       expect(racingGame.checkCarCanMove(5)).toBe(true);
     });
   });
+
+  describe("start 함수", () => {
+    test("라운드 수 만큼 게임 진행", () => {
+      const racingGame = new RacingGame(["car1", "car2"], 5);
+      mockRandoms([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+
+      racingGame.start();
+
+      expect(racingGame.cars[0].distance).toBe(3); // 1,3,5,7,9
+      expect(racingGame.cars[1].distance).toBe(4); // 2,4,6,8,10
+    });
+  });
 });
