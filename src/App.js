@@ -4,10 +4,12 @@ import { GAME_INFO } from "./constant.js";
 class App {
   constructor() {
     this._carArr = [];
+    this._tryNumber = 0;
   }
 
   async play() {
-    this.getInputCar();
+    await this.getInputCar();
+    await this.getInputTry();
   }
 
   async getInputCar() {
@@ -23,6 +25,10 @@ class App {
     }
 
     this._carArr = car;
+  }
+
+  async getInputTry() {
+    this.tryNumber = await Console.readLineAsync(GAME_INFO.INPUT_TRY);
   }
 }
 
