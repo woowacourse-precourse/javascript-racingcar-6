@@ -1,7 +1,8 @@
 # 🚗레이싱카 
 
 ## MVC 모델 아키텍처
-![Frame 1](https://github.com/jungjunhyung99/javascript-racingcar-6/assets/55770796/ce0a593a-9472-4510-8dde-bf3e2f2b4b47)
+
+<img src="https://github.com/jungjunhyung99/javascript-racingcar-6/assets/55770796/ce0a593a-9472-4510-8dde-bf3e2f2b4b47" width="700" height="370">
 
 ## 🔥구현할 기능 목록 정리
 
@@ -64,3 +65,19 @@
 6. 최종 우승자를 선정하는 기능
     - chooseWinner 메서드: **controller의 메서드**로, car 객체들 중 가장 큰 수를 변수에 저장한다.
     - printWinners 메서드: **view의 메서드**로, 저장한 가장 큰 수를 가지고 있는 car 객체의 이름을 출력한다.
+
+## 📁 폴더구조
+
+📦src
+ ┣ 📂constants
+ ┃ ┗ 📜constants.js
+ ┣ 📂controller
+ ┃ ┗ 📜RacingCar.js
+ ┣ 📂model
+ ┃ ┗ 📜Car.js
+ ┣ 📂utils
+ ┃ ┗ 📜Validation.js
+ ┣ 📂view
+ ┃ ┗ 📜View.js
+ ┣ 📜App.js
+ ┗ 📜index.js
