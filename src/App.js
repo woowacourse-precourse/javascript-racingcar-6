@@ -1,9 +1,10 @@
-import { Console } from '@woowacourse/mission-utils';
+import { Console, Random } from '@woowacourse/mission-utils';
 
 class App {
   constructor() {
     this.cars = [];
     this.input = 0;
+    this.forward = new Map();
   }
 
   getCarName = async () => {
@@ -54,9 +55,45 @@ class App {
     if (!this.isValidNumber()) throw new Error('[ERROR] 숫자만 입력 가능합니다.');
   };
 
+  race = (car) => {
+    const randomNumber = Random.pickNumberInRange(0, 9);
+    if (randomNumber >= 4) {
+      this.moveCar(car);
+    } else {
+      this.stopCar(car);
+    }
+  };
+
+  moveCar = (car) => {
+    if (this.forward.has(car)) {
+      this.forward.set(car, this.forward.get(car) + '-');
+    } else {
+      this.forward.set(car, '-');
+    }
+  };
+
+  stopCar = (car) => {
+    if (this.forward.get(car) === undefined) {
+      this.forward.set(car, '');
+    }
+  };
+
+  getRaceResult = () => {
+    Console.print('\n실행 결과');
+
+    for (let i = 0; i < this.input; i++) {
+      this.cars.forEach((car) => {
+        this.race(car);
+        Console.print(`${car} : ${this.forward.get(car)}`);
+      });
+      Console.print('\n');
+    }
+  };
+
   async play() {
-    const car = await this.getCarName();
-    const attempt = await this.getAttempts();
+    await this.getCarName();
+    await this.getAttempts();
+    this.getRaceResult();
   }
 }
 
