@@ -61,15 +61,19 @@ describe("자동차 경주 게임 테스트", () => {
     });
   });
 
-  test("시도 횟수만큼 경주를 실행하고, 실행 결과를 출력한다", () => {
-    // start() 테스트
-  });
-
   test("경주 실행 결과를 보고 우승자를 선정한다", () => {
     // getWinner() 테스트
+    const game = new RacingcarGame();
+    game.racingCar = { h: 1, i: 3, j: 2, k: 3 };
+
+    expect(game.getWinner()).toEqual(["i", "k"]);
   });
 
   test("우승자를 출력한다", () => {
     // printWinner() 테스트
+  });
+
+  test("시도 횟수만큼 경주를 실행하고, 실행 결과를 출력한다", () => {
+    // start() 테스트
   });
 });
