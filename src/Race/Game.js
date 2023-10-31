@@ -1,6 +1,6 @@
 import { Input } from "../IO/Input.js";
 import { Output } from "../IO/Output.js";
-import Constants from "../Misc/constatns.js";
+import Constants from "../Misc/Constatns.js";
 import { Verification } from "./Verification.js";
 import { Car } from "./Car.js";
 
