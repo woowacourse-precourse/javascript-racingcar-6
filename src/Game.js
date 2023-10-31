@@ -8,6 +8,14 @@ class Game {
   #maxDistance = 0;
   constructor() {}
 
+  async start() {
+    await this.#interface();
+    for (let i = 0; i < this.#moveCount; i++) {
+      await this.#race();
+    }
+    await this.#printResult();
+  }
+
   async #initializeCars(arrayCar) {
     if (!arrayCar || !Array.isArray(arrayCar))
       throw new Error(PRINT.ERROR.INPUT);
