@@ -38,8 +38,8 @@ class App {
 
   validationInput(carList) {
     //MissionUtils.Console.print(carList);
-    if (!carList.every((car) => car.length < 5)) {
-      throw new Error("[ERROR] 자동차 이름은 4자 이하만 가능 합니다");
+    if (!carList.every((car) => car.length <= 5)) {
+      throw new Error("[ERROR] 자동차 이름은 5자 이하만 가능 합니다");
     }
     if (carList.length !== [...new Set(carList)].length) {
       throw new Error("[ERROR] 중복된 자동차 이름이 존재합니다");
