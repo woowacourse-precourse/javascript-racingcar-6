@@ -28,6 +28,7 @@ class Car {
 class App {
   constructor() {
     this.carInstance = [];
+    this.resultDictionary = {};
   }
 
   canMove() {
@@ -64,6 +65,10 @@ class App {
       this.carInstance
         .filter(this.canMove)
         .forEach((car) => Car.addDistance(car));
+
+      this.resultDictionary = {
+        ...Car.reportDistance(...this.carInstance),
+      };
     }
   }
 }
