@@ -1,5 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
 import { RACE } from './Logs.js';
+import RaceUtils from './RaceUtils.js';
+import GameSetup from './GameSetup.js';
 
 
 class App {
