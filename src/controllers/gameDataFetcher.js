@@ -1,5 +1,5 @@
-import { GameOutputMsg } from "../constants/gameConstants";
-import { Validator } from "../validators/validator";
+import { GameOutputMsg } from "../constants/gameConstants.js";
+import { Validator } from "../validators/validator.js";
 import { Converter } from "../utils/converter.js";
 import { Prompt } from "../prompt/prompt.js";
 
