@@ -1,6 +1,6 @@
 import { ERROR_MESSAGE } from '../constants/index.js';
 
-class CarNameValidator {
+class InputValidator {
   static validateCarName(carNames) {
     if (carNames.length === 0) {
       throw new Error(ERROR_MESSAGE.emptyName);
@@ -21,6 +21,15 @@ class CarNameValidator {
       uniqueCarNames.add(carName);
     });
   }
+
+  static validateLaps(laps) {
+    if (!laps) {
+      throw new Error('[ERROR] 시도 횟수는 0보다 커야 합니다.');
+    }
+    if (Number.isNaN(laps)) {
+      throw new Error('[ERROR] 시도 횟수는 숫자여야 합니다.');
+    }
+  }
 }
 
-export default CarNameValidator;
+export default InputValidator;

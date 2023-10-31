@@ -6,6 +6,7 @@ class App {
 
   async play() {
     const carNames = await InputView.setCarNames();
+    const laps = await InputView.setLaps();
     this.#result = Result.setGameBoard(carNames.length);
   }
 }
