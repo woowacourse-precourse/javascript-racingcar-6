@@ -1,3 +1,5 @@
+import { Random } from "@woowacourse/mission-utils";
+
 export default class RaceCar {
   constructor(name) {
     this.name = name;
