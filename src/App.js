@@ -1,8 +1,19 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-const { Console, Random } = MissionUtils;
 import Cars from "./Cars";
-import { nameValidation, naturalNumberRex, duplicateChecks } from "./Validations";
-import {GAME_START, REPETATION_STR, MOVE_CAR_STR, WINNER_STR} from "./PrintStrings";
+import {
+  nameValidation,
+  naturalNumberRex,
+  duplicateChecks,
+} from "./Validations";
+import {
+  GAME_START,
+  REPETATION_STR,
+  MOVE_CAR_STR,
+  WINNER_STR,
+} from "./PrintStrings";
+
+const { Console, Random } = MissionUtils;
+
 class App {
   printCarMoves(cars) {
     let runningResult = "";
@@ -14,14 +25,14 @@ class App {
 
   getMoveArr(cars) {
     const moves = [];
-    for(let i=0;i<cars.len;i++) {
-      moves.push(Random.pickNumberInRange(1, 9))
+    for (let i = 0; i < cars.len; i += 1) {
+      moves.push(Random.pickNumberInRange(1, 9));
     }
     return moves;
   }
 
   running_race(cars, repetitions) {
-    for(let i =0 ;i<repetitions;i++) {
+    for (let i = 0; i < repetitions; i += 1) {
       cars.move_cars(this.getMoveArr(cars));
       this.printCarMoves(cars);
     }
