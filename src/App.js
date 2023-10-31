@@ -44,6 +44,23 @@ class App {
     if (Number.isNaN(gameCount)) throw new Error('[ERROR] 숫자가 아닙니다.');
   }
 
+  // 경주 진행하기
+  raceGame(carNames, gameCount) {
+    const gameProgress = {};
+    // 각 차량을 초기 위치로 설정
+    carNames.forEach((carName) => {
+      gameProgress[carName] = '';
+    });
+
+    for (let i = 0; i < gameCount; i++) {
+      carNames.forEach((carName) => {
+        gameProgress[carName] += this.moveOrStop();
+        Console.print(`${carName} : ${gameProgress[carName]}`);
+      });
+    }
+    // 우승자 가리기
+  }
+
   // 자동차 이동
   moveOrStop() {
     const number = Random.pickNumberInRange(0, 9);
