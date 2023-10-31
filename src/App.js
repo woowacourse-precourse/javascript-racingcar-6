@@ -45,7 +45,7 @@ class App {
         this.goTimes[key] = this.goTimes[key] + 1;
       }
       
-      this.raceResults += `${key} : ${'-'.repeat(this.goTimes[key])}\n`;
+      this.raceResults = this.raceResults + `${key} : ${'-'.repeat(this.goTimes[key])}\n`;
     });
 
     this.raceResults = this.raceResults + '\n';
