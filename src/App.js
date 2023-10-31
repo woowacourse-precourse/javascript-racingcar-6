@@ -20,6 +20,7 @@ class App {
     this.showWinner(CAR_OBJECT_ARRAY);
   }
 
+  //횟수별로 각 경주의 결과를 보여주는 메서드
   showRaceResults(car_object_array, attempt_count) {
     for (let i = 0; i < attempt_count; i++) {
       car_object_array.forEach((car) => {
@@ -34,6 +35,7 @@ class App {
     }
   }
 
+  //value 값이 가장 높은 car Object의 이름을 출력하는 메서드
   showWinner(car_object_array) {
     const MAX_VALUE = car_object_array.reduce(
       (max, current) => Math.max(max, current.value),
@@ -51,6 +53,7 @@ class App {
     return CAR_OBJECT_ARRAY;
   }
 
+  //차량 이름에 대한 입력을 받고 배열의 형태로 반환하는 메서드
   async inputCarNames() {
     const CARS = await MissionUtils.Console.readLineAsync(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
@@ -59,12 +62,14 @@ class App {
     return CAR_ARRAY;
   }
 
+  //시도 횟수에 대한 입력을 받고 반환하는 메서드
   inputAttempt() {
     const ATTEMPT_COUNT =
       MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
     return ATTEMPT_COUNT;
   }
 
+  //입력된 차량의 이름을 확인하고, 이상이 있다면 에러를 발생시키는 메서드
   checkCarName(CAR_ARRAY) {
     CAR_ARRAY.forEach((car) => {
       if (car.length > 5) {
@@ -77,6 +82,7 @@ class App {
     return CAR_ARRAY;
   }
 
+  //입력된 횟수를 확인하고, 이상이 있다면 에러를 발생시키는 메서드
   checkAttemptCount(attempt) {
     if (
       isNaN(attempt) ||
