@@ -15,8 +15,8 @@
 > `@woowacourse/mission-utils` 의 `Console` API를 사용하여 구현해야 한다.
 > `MissionUtils.Console.readLineAsync()` 함수를 사용하여 입력 받고,
 > 이름의 길이가 5가 넘어가면 에러를 발생 시켜야 한다.
->
-> </br>
+
+ </br>
 
 ### 기능 설명
 
@@ -35,8 +35,8 @@
 > `@woowacourse/mission-utils` 의 `Console` API를 사용하여 구현해야 한다.
 > `MissionUtils.Console.readLineAsync()` 함수를 사용하여 입력 받고,
 > 올바른 입력인지 확인한다.
->
-> </br>
+
+ </br>
 
 ### 기능 설명
 
@@ -59,13 +59,31 @@ readLineAsync로 입력 받은 값을 숫자형으로 형변환 한다.
 </br>
 
 > 각각의 자동차는 0에서 9 사이의 수 중 랜덤으로 선정된 값이 4 이상일 경우, 앞으로 전진한다.
->
-> </br>
+
+</br>
 
 ### 기능 설명
 
 위의 요구에 맞추어 각각의 자동차 별로 랜덤값을 추출한 후, 4 이상일 경우, car의 position 값을 +1 한다.
 position 값은 각각의 자동차가 전진한 횟수를 나타내는 변수이다.
+
+</br>
+</br>
+
+## printCurrentStatus(cars)
+
+---
+
+</br>
+
+> 자동차들의 전진 현황을 '-' 문자를 이용하여 출력한다.
+
+</br>
+
+### 기능 설명
+
+자동차 각각의 position 값을 가지고 온 후, 전진 정도를 표현하기 위한 '-' 문자를 position 값만큼 반복하여 저장한다.
+각 자동차의 이름과 함께 해당 자동차의 전진 정도를 출력한다.
 
 </br>
 </br>
