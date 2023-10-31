@@ -1,4 +1,4 @@
-import { Console, Random } from '@woowacourse/mission-utils';
+import { Console } from '@woowacourse/mission-utils';
 import { handleInputName, handleInputRound } from './utils/HandleInput';
 
 class App {

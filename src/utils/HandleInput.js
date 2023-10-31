@@ -38,7 +38,7 @@ const validateNumber = (roundnumber) => {
   if (roundnumber.match(/\D/)) {
     throw new Error('[ERROR] : 숫자를 입력해주세요.');
   }
-  if (TO_NUMBER < 0) {
+  if (TO_NUMBER <= 0) {
     throw new Error('[ERROR] : 1 이상의 숫자를 입력해주세요.');
   }
   return TO_NUMBER;
