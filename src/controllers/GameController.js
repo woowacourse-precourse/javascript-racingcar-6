@@ -26,7 +26,7 @@ class GameController {
   printCarForward(carModels) {
     Object.keys(carModels).forEach((car) => {
       const forwardCount = this.getForwardCount(carModels, car);
-      Console.print(`${car} : ${forwardCount}`);
+      Console.print(PromptMessage.PRINT_FORWARD(car, forwardCount));
     });
   }
 

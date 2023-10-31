@@ -9,6 +9,10 @@ class PromptMessage {
   static PRINT_WINNER(winner) {
     return `최종 우승자 : ${winner}`;
   }
+
+  static PRINT_FORWARD(car, forwardCount) {
+    return `${car} : ${forwardCount}`;
+  }
 }
 
 export default PromptMessage;
