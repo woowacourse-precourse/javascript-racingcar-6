@@ -13,10 +13,14 @@ class App {
 
       this.createObject(carNameList, carsInfo);
 
+      Console.print("\n실행 결과");
+
       for (let n = 0; n < roundNumber; n++) {
         this.oneRoundGame(carsInfo);
         Console.print("\n");
       }
+
+      this.printResult(carsInfo);
     } catch (error) {
       throw error;
     }
@@ -71,6 +75,26 @@ class App {
       const score = carsInfo[carName].score;
       Console.print(`${carName} : ${"-".repeat(score)}`);
     });
+  }
+
+  printResult(carsInfo) {
+    let winners = [];
+    let maxScore = 0;
+
+    const carNames = Object.keys(carsInfo);
+
+    carNames.forEach((carName) => {
+      const score = carsInfo[carName].score;
+
+      if (score > maxScore) {
+        maxScore = score;
+        winners = [carName];
+      } else if (score === maxScore) {
+        winners.push(carName);
+      }
+    });
+
+    Console.print("최종 우승자 : " + winners.join(", "));
   }
 }
 
