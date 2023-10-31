@@ -52,11 +52,11 @@ title: 자동차 경주 구현
 classDiagram
     class Car{
         private String name
-        private int goCount
+        private int goingCount
         getter: name() String name
         setter: name(String) void
-        getter: goCount() int goCount
-        setter: goCount(boolean) void
+        getter: goingCount() int goingCount
+        setter: goingCount(boolean) void
         print() void
     }
     class Computer{
@@ -88,12 +88,12 @@ classDiagram
 
 ### 🎯 Car Class
 
-    name은 자동차의 이름, goCount는 움직여야하는 횟수이다.
+    name은 자동차의 이름, goingCount는 움직여야하는 횟수이다.
 - [x] (getter) name : 자동차의 이름(name)을 반환한다.
 - [x] (setter) name : 사용자가 입력한 이름이 1자 이상 5자 이하인지 검증하고, 맞을 시 이름을 설정하고, 아닐 시 "[ERROR] 1자 이상 5자 이하의 문자가 입력되지 않음."이라는 예외를 발생시킨다.
-- [ ] (getter) count : 움직여야하는 횟수(goCount)를 반환한다.
-- [ ] (setter) count : boolean으로 들어온 값이 true이면 goCount를 1 증가시키고, false면 아무런 동작도 하지 않는다.
-- [ ] print : "<자동차이름> : <goCount만큼의 ->" 를 출력한다.
+- [x] (getter) count : 움직여야하는 횟수(goingCount)를 반환한다.
+- [x] (setter) count : boolean으로 들어온 값이 true이면 goingCount를 1 증가시키고, false면 아무런 동작도 하지 않는다.
+- [ ] print : "<자동차이름> : <goingCount만큼의 ->" 를 출력한다.
 
 ### 🎯 Computer Class
 
