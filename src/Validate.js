@@ -12,7 +12,7 @@ const Validate = {
     }
   },
   checkNaturalNum(times) {
-    const pattern = /^[1-9]d*$/;
+    const pattern = /^[0-9]\d*$/;
     if (!pattern.test(times)) {
       throw new Error(ERROR.attemptNum);
     }
