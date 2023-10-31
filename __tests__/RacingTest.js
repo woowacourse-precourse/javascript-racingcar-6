@@ -1,5 +1,5 @@
+import RacingController from '../src/controller/RacingController.js';
 import RacingCar from '../src/model/RacingCar.js';
-import RacingGameController from '../src/controller/RacingGameController.js';
 import RacingGame from '../src/model/RacingGame.js';
 
 describe('RacingCar test', () => {
@@ -7,22 +7,22 @@ describe('RacingCar test', () => {
   const input = 'pobi';
 
   test('자동차 이름 생성 테스트', () => {
-    car.setCarName = input;
-    const result = car.getCarName;
+    car.setCarName(input);
+    const result = car.getCarName();
 
     expect(result).toEqual('pobi');
   });
 
   test('자동차 이동 테스트', () => {
     car.move();
-    const result = car.getCarPosition;
+    const result = car.getCarPosition();
 
     expect(result).toEqual(1);
   });
 });
 
 describe('RacingGame test', () => {
-  const racingController = new RacingGameController();
+  const racingController = new RacingController();
   const racingGame = new RacingGame();
 
   test('자동차 등록 테스트', () => {
@@ -32,8 +32,8 @@ describe('RacingGame test', () => {
       { carName: 'woni', carPosition: 0 },
     ];
     const car = racingController.createRacingCars(input);
-    racingGame.setRacingCar = car;
-    const result = racingGame.getRacingCar;
+    racingGame.setRacingCar(car);
+    const result = racingGame.getRacingCar();
 
     expect(result).toEqual(ouput);
   });
