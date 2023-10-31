@@ -7,10 +7,12 @@ export default class InitGame  {
         this.gameCount = 0
     }
 
-    async initCarListAndGameCount() {
+    async init() {
+
         this.carList =  this.validateCarList(await Console.readLineAsync(
             "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
         ));
+
         this.gameCount= this.validateGameCount(
             await Console.readLineAsync(
                 "시도할 횟수는 몇 회인가요?\n"
@@ -18,7 +20,7 @@ export default class InitGame  {
     }
 
     validateCarList(carList) {
-        
+
         if (carList.length === 0) {
           throw new Error(
             "[ERROR] 자동차 이름은 쉼표(,)를 기준으로 구분하며 이름은 5자 이하만 가능합니다."
@@ -30,7 +32,9 @@ export default class InitGame  {
         if (carList.some((car) => car.length > 5 || car.includes(" "))) {
           throw new Error("[ERROR] 이름은 공백없이 5자 이하만 가능합니다.");
         }
+
         return carList
+
       }
      validateGameCount(gameCount) {
 
@@ -39,5 +43,6 @@ export default class InitGame  {
         }
 
         return gameCount
+
       }
 }

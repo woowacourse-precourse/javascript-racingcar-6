@@ -1,7 +1,8 @@
 import { Console,MissionUtils } from "@woowacourse/mission-utils";
 
 export default class PlayGame {
-  gamePlay(carList, gameCount) {
+    
+  progress(carList, gameCount) {
     const carMovingCountList = this.makeCarMovingCountList(carList);
     return this.repeatCount(gameCount, carMovingCountList);
   }
@@ -10,7 +11,6 @@ export default class PlayGame {
     return '-'.repeat(count);
   }
   
-
   makeCarMovingCountList(carList) {
     Console.print("\n실행 결과");
     return carList.map((e) => [e, 0]);
@@ -26,8 +26,7 @@ export default class PlayGame {
 
   moveCar(carMovingCountList) {
     carMovingCountList.forEach((car) => {
-      const number = MissionUtils.Random.pickNumberInRange(0, 9);
-      if (number >= 4) car[1]++;
+    car[1] += MissionUtils.Random.pickNumberInRange(0, 9) >= 4 ? 1 : 0;
       Console.print(car[0] + " : " + this.showCount(car[1]));
     });
     Console.print("\n");
