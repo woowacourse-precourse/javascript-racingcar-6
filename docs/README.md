@@ -24,7 +24,7 @@
     - [ ] 기능별 test case 구현
         - [v] CarTest.js
         - [v] RaceTest.js
-        - [ ] AwardTest.js
+        - [v] AwardTest.js
 
 
 ```
