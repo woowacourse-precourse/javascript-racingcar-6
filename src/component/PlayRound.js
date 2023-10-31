@@ -6,7 +6,7 @@ export default class PlayRound {
       cars.forEach((car) => car.carMove())
     }
     
-    this.cars.forEach((car) => {
+    cars.forEach((car) => {
       const movement = '-'.repeat(car.getMovement());
       MissionUtils.Console.print(`${car.getName()} : ${movement}`);
     });

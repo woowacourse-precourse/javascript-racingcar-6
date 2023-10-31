@@ -1,3 +1,5 @@
+import { MissionUtils } from "@woowacourse/mission-utils";
+
 export default class Car {
   constructor(name) {
     this.name = name;
@@ -5,7 +7,7 @@ export default class Car {
   }
 
   carMove() {
-    if(MissionUtils.Random.pickNumberInRange(0, 9) > 3) {
+    if(MissionUtils.Random.pickNumberInRange(0, 9) >= 4) {
       this.movement += 1;
     }
   }
@@ -14,7 +16,7 @@ export default class Car {
     return this.name;
   }
 
-  getmovement() {
+  getMovement() {
     return this.movement;
   }
 }
