@@ -14,7 +14,7 @@ export default class OutputView {
         MissionUtils.Console.print(`${message}`);
     }
 
-    printResult() {
-        // 경주 완료 출력
+    printWinners(winnerMessage) {
+        MissionUtils.Console.print(`${INFO_MESSAGES.WINNER} ${winnerMessage}`);
     }
 }

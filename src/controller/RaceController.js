@@ -2,11 +2,12 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 import { ERROR_MESSAGES, INFO_MESSAGES } from "../constant.js";
 import Car from "../model/Car.js";
 import InputView from "../view/InputView.js";
-import OutputView from "../view/outputView.js";
+import OutputView from "../view/OutputView.js";
 
 export default class RaceController {
   constructor() {
     this.cars = [];
+    this.winners = [];
     this.inputView = new InputView();
     this.outputView = new OutputView();
   }
@@ -16,10 +17,9 @@ export default class RaceController {
   }
 
   async gameStart() {
-    // 자동차 이름
     this.carNames = await this.inputView.readCarNames();
     this.getCarNames(this.carNames);
-    // 시도 횟수
+
     this.numOfTry = await this.inputView.readNumberOfTry();
     this.checkNumOfTryError(this.numOfTry);
 
@@ -67,7 +67,7 @@ export default class RaceController {
     for (let i = 0; i < this.numOfTry; i++) {
       this.getPoints();
     }
-    // 경주 완료 출력
+    this.getWinners();
   }
 
   getPoints() {
@@ -79,5 +79,22 @@ export default class RaceController {
       stepMessage += `${car.name}: ${'-'.repeat(car.point)}\n`
     });
     this.outputView.printMessage(`${stepMessage}`);
+  }
+
+  getWinners() {
+    let maxPoint = 0;
+    this.winners = [];
+
+    this.cars.forEach((car) => {
+      if (maxPoint === car.point) {
+        this.winners.push(car.name);
+      } else if (maxPoint <= car.point) {
+        this.winners = [];
+        this.winners.push(car.name);
+        maxPoint = car.point;
+      }
+    });
+    
+    this.outputView.printWinners(this.winners.map((winner) => winner).join(','));
   }
 }
