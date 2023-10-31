@@ -33,11 +33,11 @@ class App {
       if (name.length < 1 || name.length > 5) {
         throw new Error("[ERROR] 자동차 이름은 5글자 이하로 입력해야 합니다.");
       }
-
-      if (CARS_ARRAY.length !== SET_CAR.size) {
-        throw new Error("[ERROR] 중복된 이름이 존재합니다.");
-      }
     });
+
+    if (CARS_ARRAY.length !== SET_CAR.size) {
+      throw new Error("[ERROR] 중복된 이름이 존재합니다.");
+    }
 
     return await CARS_ARRAY;
   }
