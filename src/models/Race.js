@@ -1,5 +1,5 @@
 import Car from './Car.js';
-import PrinterView from './helpers/PrinterView.js';
+import PrinterView from '../helpers/PrinterView.js';
 
 class Race {
   constructor(carNames, attempts) {
