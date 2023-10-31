@@ -1,4 +1,5 @@
 import RacingCar from '../src/model/RacingCar.js';
+import RacingGameController from '../src/controller/RacingGameController.js';
 
 describe('RacingCar test', () => {
   const car = new RacingCar();
@@ -16,5 +17,23 @@ describe('RacingCar test', () => {
     const result = car.getCarPosition;
 
     expect(result).toEqual(1);
+  });
+});
+
+describe('RacingGame test', () => {
+  const racingController = new RacingGameController();
+  const racingGame = new RacingGame();
+
+  test('자동차 등록 테스트', () => {
+    const input = ['pobi', 'woni'];
+    const ouput = [
+      { carName: 'pobi', carPosition: 0 },
+      { carName: 'woni', carPosition: 0 },
+    ];
+    const car = racingController.createNewCar(input);
+    racingGame.setRacingCar = car;
+    const result = racingGame.getRacingCar;
+
+    expect(result).toEqual(ouput);
   });
 });
