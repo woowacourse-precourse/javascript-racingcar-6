@@ -34,6 +34,9 @@ const checkCarsDifferName = (carsNameArray) => {
 
 export const checkInputNumberType = (userInputString) => {
   if (isNaN(userInputString)) throw new Error(NOT_NUMBER_TYPE_USER_INPUT_ERROR);
+  if (!userInputString.length) {
+    throw new Error(NOT_NUMBER_TYPE_USER_INPUT_ERROR);
+  }
 };
 
 export const userInputCarsName = async () => {
