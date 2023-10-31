@@ -18,7 +18,9 @@ class Result {
   }
 
   printWinner(winners) {
-    Console.print('최종 우승자 : ' + winners.join(', '));
+    Console.print(
+      '최종 우승자 : ' + winners.join(', ').trim().replace(/\n|\r/g, ''),
+    );
   }
 }
 

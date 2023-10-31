@@ -4,7 +4,7 @@ class Input {
   async getCarName() {
     try {
       const userInput = await Console.readLineAsync(
-        '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분) : ',
+        '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
       );
       const carArr = userInput.split(',').map(carName => carName.trim());
       this.validateGetCarName(carArr);
@@ -28,7 +28,7 @@ class Input {
   async getRepeatNumber() {
     try {
       const inputNumber =
-        await Console.readLineAsync('시도할 횟수는 몇 회인가요? ');
+        await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
       this.validateGetRepeatNumber(inputNumber);
       return inputNumber;
     } catch (error) {

@@ -19,7 +19,7 @@ class Race {
 
   printRace(carDictionary) {
     Object.entries(carDictionary).forEach(([key, value]) => {
-      console.log(`${key} : ${'-'.repeat(value)}`);
+      Console.print(`${key} : ${'-'.repeat(value)}`);
     });
     Console.print('');
   }
