@@ -49,7 +49,7 @@ class App {
       laps--;
     }
 
-    this.findWinner(allCars);
+    this.findWinner(allCars, this.carsRecordBoard, this.winner);
 
     this.printFinalResult();
   }
@@ -98,16 +98,16 @@ class App {
     Console.print(`${car} : ${this.carsRecordBoard[car]}`);
   }
 
-  findWinner(cars) {
+  findWinner(cars, carsRecordBoard, winner) {
     let winnerCount = 0;
 
     for (let car of cars) {
-      winnerCount = Math.max(winnerCount, this.carsRecordBoard[car].length);
+      winnerCount = Math.max(winnerCount, carsRecordBoard[car].length);
     }
 
     for (let car of cars) {
-      if (this.carsRecordBoard[car].length === winnerCount) {
-        this.winner.push(car);
+      if (carsRecordBoard[car].length === winnerCount) {
+        winner.push(car);
       }
     }
   }
