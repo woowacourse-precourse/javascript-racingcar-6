@@ -8,21 +8,37 @@ class GameModel {
     this.cars = cars;
   }
 
-  playRound() {
-    const curCarPositions = this.cars.map((car) => {
-      car.move();
-      return car.getCarModel();
-    });
-    this.outputView.printAdvanceResult(curCarPositions);
-
-    this.curRound++;
-  }
-
   isGameOver() {
     return this.curRound === this.rounds;
   }
 
-  getWinners() {}
+  getCarModels() {
+    return this.cars.map((car) => car.getCarModel());
+  }
+
+  playRound() {
+    this.cars.forEach((car) => {
+      car.move();
+    });
+    this.curRound++;
+  }
+
+  getWinners() {
+    const maxPos = this.getMaxPosition();
+
+    return this.cars.filter((car) => {
+      if (car.isWinner(maxPos)) {
+        return car.name;
+      }
+    });
+  }
+
+  getMaxPosition() {
+    const carModels = this.getCarModels();
+    const positions = carModels.map(({ _, position }) => position);
+
+    return Math.max(positions);
+  }
 }
 
 export default GameModel;
