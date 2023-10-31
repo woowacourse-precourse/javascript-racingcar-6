@@ -1,5 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
 import MESSAGE from '../Constant/MESSAGE.js';
+import { CONSTANT } from '../Constant/CONSTANT.js';
 
 const outputView = {
   printResult() {
@@ -15,7 +16,7 @@ const outputView = {
   },
 
   printWinners(winners) {
-    Console.print(`${MESSAGE.winner} ${winners.join(', ')}`);
+    Console.print(`${MESSAGE.winner} ${winners.join(CONSTANT.commaSpace)}`);
   },
 };
 
