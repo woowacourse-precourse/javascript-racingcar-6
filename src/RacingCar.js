@@ -59,13 +59,13 @@ class RacingCar {
 
     printResult() {
         for (const car of this.carNameList)
-            MissionUtils.Console.print(`${car.getName()} : ${car.getPosition()}`);
+            MissionUtils.Console.print(`${car.getCarName()} : ${car.getPosition()}`);
     }
 
     findTheWinner() {
         const maxPosition = Math.max(...this.carNameList.map(car => car.getPosition().length));
         for (const car of this.carNameList)
-            if (car.getPosition().length === maxPosition) this.winner.push(car.getName());
+            if (car.getPosition().length === maxPosition) this.winner.push(car.getCarName());
     
     }
 

@@ -18,7 +18,7 @@ class Car {
     return this.position;
   }
 
-  getName() {
+  getCarName() {
     return this.carName;
   }
 }
