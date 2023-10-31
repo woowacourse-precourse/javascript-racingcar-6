@@ -6,6 +6,14 @@ class App {
   carNumberOfMove = [];
   tryCount = 0;
 
+  getFinalWinner() {
+    const max = Math.max(...this.carNumberOfMove);
+    const winners = this.carNames.filter(
+      (name, index) => this.carNumberOfMove[index] === max
+    );
+    return winners.join(", ");
+  }
+
   racing() {
     Console.print("실행 결과");
     for (let i = 0; i < this.tryCount; i++) {
@@ -13,6 +21,7 @@ class App {
       this.printRacingState();
       Console.print("");
     }
+    Console.print(`최종 우승자 : ${this.getFinalWinner()}`);
   }
 
   printRacingState() {
