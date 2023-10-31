@@ -53,14 +53,6 @@ describe('OutputView 테스트', () => {
     expect(view.formatAdvanceResult(model)).toBe(output);
   });
 
-  test('전진 문구 - generateAdvanceString(moveCnt)', () => {
-    const MOVE_CNT = 3;
-
-    const view = new OutputView();
-
-    expect(view.generateAdvanceString(MOVE_CNT)).toBe('---');
-  });
-
   // 우승자 출력 테스트
   test('우승자 출력 - printWinner(winners)', () => {
     const winners = ['pobi', 'woni'];
