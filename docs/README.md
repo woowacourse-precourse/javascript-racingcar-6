@@ -160,6 +160,7 @@ app.play();
   - isNaN이 아닌 Number.isNaN() 사용하기
   - 스프레드 문법 사용해보기
   - 화살표 함수 사용해보기
+- Git Commit Message Conventions에 맞춰서 최대한 작성하기.
 
 # 디렉토리
 ```
