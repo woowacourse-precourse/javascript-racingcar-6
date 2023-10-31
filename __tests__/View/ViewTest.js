@@ -2,6 +2,8 @@ import { MissionUtils } from '@woowacourse/mission-utils';
 import View from '../../src/View/View';
 import ERROR from '../../src/constants/error';
 import InputView from '../../src/View/InputView';
+import mockRaceResult from '../mock/raceResult';
+import OutputView from '../../src/View/OutputView';
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -20,6 +22,9 @@ describe('View 테스트', () => {
     view = new View();
   });
 
+  /**
+   * InputView 테스트
+   */
   describe('사용자로부터 입력값을 받는다.', () => {
     test('InputView는 비어있는 문자열에 대해 예외 처리를 진행한다.', async () => {
       // given
@@ -101,6 +106,25 @@ describe('View 테스트', () => {
       await expect(view.readRound()).rejects.toThrow(
         `[ERROR] ${ERROR.message.invalidRound}`,
       );
+    });
+  });
+
+  /**
+   * OutputView 테스트
+   */
+  describe('각 라운드별로 자동차 이름과 위치를 출력한다.', () => {
+    beforeEach(() => {
+      jest.spyOn(OutputView, 'print');
+    });
+
+    mockRaceResult.forEach(({ raceResult, winner, expected }) => {
+      test(`자동차 이름과 위치를 출력한다. (${raceResult.length} 라운드)`, () => {
+        // when
+        view.printRaceResult({ winner, raceResult });
+
+        // then
+        expect(OutputView.print).toHaveBeenCalledWith(expected);
+      });
     });
   });
 });
