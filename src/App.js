@@ -14,12 +14,12 @@ class App {
       carList.push(new Car(carName));
     });
 
-    const tryNum = await utils.inputTryNum();
-    if (!utils.isValidTryNum(tryNum))
+    const TRY_NUM = await utils.inputTryNum();
+    if (!utils.isValidTryNum(TRY_NUM))
       throw new Error('[ERROR] 숫자가 잘못된 형식입니다.\n');
 
     Console.print('\n실행 결과');
-    for (let i = 0; i < tryNum; i++) {
+    for (let i = 0; i < TRY_NUM; i++) {
       utils.tryCarGame(carList);
       utils.printTryResult(carList);
     }
