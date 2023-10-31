@@ -1,5 +1,6 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import Car from './Car.js';
+import { validateCarNames, validateRoundCount } from './utils.js';
 
 class App {
   async play() {
@@ -19,43 +20,14 @@ class App {
     const input = await MissionUtils.Console.readLineAsync(
       '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
     );
-    const carNames = this.validateCarNames(input);
+    const carNames = validateCarNames(input);
     return carNames;
   }
 
   async getNumberOfRounds() {
     const input = await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
-    const rounds = this.validateRoundCount(input);
+    const rounds = validateRoundCount(input);
     return rounds;
-  }
-
-  validateCarNames(input) {
-    this.checkNameFormat(input);
-
-    const carNames = input.split(',');
-
-    if (carNames.includes(''))
-      throw new Error('[ERROR] 자동차는 이름이 있어야 합니다.');
-    carNames.forEach(this.checkNameLength);
-
-    return carNames;
-  }
-
-  validateRoundCount(input) {
-    if (!Number(input)) throw new Error('[ERROR] 숫자가 아닙니다.');
-    if (!Number.isInteger(Number(input)))
-      throw new Error('[ERROR] 정수가 아닙니다.');
-    return Number(input);
-  }
-
-  checkNameFormat(string) {
-    if (!string.includes(','))
-      throw new Error('[ERROR] 이름 형식이 맞지 않습니다.');
-  }
-
-  checkNameLength(name) {
-    if (name.length > 5)
-      throw new Error('[ERROR] 자동차 이름은 5자 이하여야 합니다.');
   }
 
   createPlayers(carNames) {
@@ -74,21 +46,13 @@ class App {
     }
   }
 
-  getRandomNumber() {
-    return MissionUtils.Random.pickNumberInRange(0, 9);
-  }
-
-  canMove(number) {
-    if (number < 4) return false;
-    return true;
-  }
-
   getPlayerMoves(players) {
-    for (let i = 0; i < players.length; i += 1) {
-      const randomNumber = this.getRandomNumber();
-      const canMove = this.canMove(randomNumber);
+    const MOVE_REQUIREMENT = 4;
 
-      if (canMove) players[i].moves += 1;
+    for (let i = 0; i < players.length; i += 1) {
+      const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
+
+      if (randomNumber >= MOVE_REQUIREMENT) players[i].moves += 1;
     }
   }
 
