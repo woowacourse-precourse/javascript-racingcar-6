@@ -30,3 +30,7 @@ export const printResultCar = (cars) => {
   });
   Console.print('');
 };
+
+export const printResultWinner = (winners) => {
+  Console.print(`${resultMessage.WINNER}${winners.join(', ')}`);
+};

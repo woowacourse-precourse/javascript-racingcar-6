@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import { getCarName, getTryCount, printResultCar, printResultHeader } from './View.js';
+import { getCarName, getTryCount, printResultCar, printResultHeader, printResultWinner } from './View.js';
 import Model from './Model/Model.js';
 
 class App {
@@ -18,6 +18,8 @@ class App {
     for (i = 0; i < tryCount; i += 1) {
       printResultCar(this.model.goCars().getCars());
     }
+
+    printResultWinner(this.model.getWinners().map((car) => car.getName()));
 
     return this;
   }

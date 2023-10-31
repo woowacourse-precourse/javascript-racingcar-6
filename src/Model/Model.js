@@ -24,6 +24,11 @@ class Model {
   getCars() {
     return this.cars;
   }
+
+  getWinners() {
+    const maxDistance = Math.max(...this.cars.map((car) => car.getDistance()));
+    return this.cars.filter((car) => car.getDistance() === maxDistance);
+  }
 }
 
 export default Model;
