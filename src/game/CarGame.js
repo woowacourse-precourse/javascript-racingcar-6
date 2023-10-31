@@ -18,7 +18,7 @@ const moveCar = (carNames, carsPosition) => {
 };
 
 // tryCount 만큼 레이싱
-const runRace = (tryCount, carNames, carsPosition) => {
+const runRace = (carNames, tryCount, carsPosition) => {
   let cnt = 0;
 
   while (cnt < tryCount) {
@@ -27,3 +27,5 @@ const runRace = (tryCount, carNames, carsPosition) => {
     Console.print('');
   }
 };
+
+export { initializeCarsPosition, runRace };
