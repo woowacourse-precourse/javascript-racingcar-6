@@ -1,15 +1,25 @@
 import { Random, Console } from '@woowacourse/mission-utils';
+import {
+  QUERY_MESSAGE,
+  ERROR_MESSAGE,
+  RESULT_MESSAGE,
+  CAR_NAME_LENGTH,
+  RANDOM_RANGE,
+  THRESHOLD,
+  MOVE,
+  MINIMUM_TRIES,
+} from './constants.js';
 
 export default class RacingCarService {
   async racingCarQuery() {
     const RACING_CAR_NAME_QUERY_INPUT = await Console.readLineAsync(
-      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n'
+      QUERY_MESSAGE.carName
     );
     this.validateRacingCarNameQueryInput(
       RACING_CAR_NAME_QUERY_INPUT.split(',')
     );
     const RACING_CAR_TRY_QUERY_INPUT = await Console.readLineAsync(
-      '시도할 횟수는 몇 회인가요?\n'
+      QUERY_MESSAGE.try
     );
     this.validateRacingCarTryQueryInput(RACING_CAR_TRY_QUERY_INPUT);
     this.play(
@@ -20,35 +30,42 @@ export default class RacingCarService {
 
   validateRacingCarNameQueryInput(cars) {
     cars.forEach((car) => {
-      if (car.length >= 5 || car.length === 0) {
-        throw new Error('[ERROR] 이름은 1글자 이상 5글자 이하여야 합니다.');
+      if (
+        car.length > CAR_NAME_LENGTH.max ||
+        car.length < CAR_NAME_LENGTH.min
+      ) {
+        throw new Error(ERROR_MESSAGE.length);
       }
     });
     cars.forEach((car, index) => {
       if (cars.indexOf(car) !== index) {
-        throw new Error('[ERROR] 이름은 유일해야 합니다.');
+        throw new Error(ERROR_MESSAGE.unique);
       }
     });
   }
 
   validateRacingCarTryQueryInput(tries) {
     if (Number.isNaN(+tries)) {
-      throw new Error('[ERROR] 숫자를 입력하세요.');
+      throw new Error(ERROR_MESSAGE.nan);
     }
-    if (+tries < 1) {
-      throw new Error('[ERROR] 1 이상의 숫자를 입력하세요.');
+    if (+tries < MINIMUM_TRIES) {
+      throw new Error(ERROR_MESSAGE.range);
     }
   }
 
   play(cars, tries) {
-    Console.print('\n실행 결과');
-    const result = {};
-    cars.forEach((car) => {
-      result[car] = '';
-    });
+    Console.print(RESULT_MESSAGE.intro);
+    const result = cars.reduce((acc, car) => {
+      acc[car] = '';
+      return acc;
+    }, {});
     for (let i = 0; i < tries; ++i) {
       cars.forEach((car) => {
-        result[car] += Random.pickNumberInRange(1, 9) >= 4 ? '-' : '';
+        result[car] +=
+          Random.pickNumberInRange(RANDOM_RANGE.min, RANDOM_RANGE.max) >=
+          THRESHOLD
+            ? MOVE
+            : '';
         Console.print(`${car} : ${result[car]}`);
       });
       Console.print('');
@@ -59,7 +76,7 @@ export default class RacingCarService {
   printResult(result) {
     let max = 0;
     for (const [key, value] of Object.entries(result)) {
-      max = Math.max(value.length);
+      max = Math.max(value.length, max);
     }
     const winners = [];
     for (const [key, value] of Object.entries(result)) {
@@ -67,6 +84,6 @@ export default class RacingCarService {
         winners.push(key);
       }
     }
-    Console.print(`최종 우승자 : ${winners.join(', ')}`);
+    Console.print(RESULT_MESSAGE.winners + `${winners.join(', ')}`);
   }
 }
