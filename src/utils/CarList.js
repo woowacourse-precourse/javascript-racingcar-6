@@ -13,8 +13,6 @@ class CarList {
       this.move(numbers);
       this.printPositions();
     }
-
-    return this.positions;
   }
 
   printPositions() {

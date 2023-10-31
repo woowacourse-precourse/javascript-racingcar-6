@@ -6,10 +6,11 @@ import User from "./User.js";
 const CarRacing = {
   async playGame() {
     const [names, tryCount] = await User.beReady();
-    const carList = new CarList(names);
-    const moves = carList.race(tryCount);
 
-    this.showResult(names, moves);
+    const carList = new CarList(names);
+    carList.race(tryCount);
+
+    this.showResult(names, carList.positions);
   },
 
   showResult(nameList, moveList) {
