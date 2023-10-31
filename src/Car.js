@@ -1,5 +1,5 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
-import { MIN_RANGE, MAX_RANGE, MOVEMENT } from "./constants.js";
+import { MissionUtils } from '@woowacourse/mission-utils';
+import { MIN_RANGE, MAX_RANGE, MOVEMENT } from './constants.js';
 
 class Car {
   constructor(carName) {

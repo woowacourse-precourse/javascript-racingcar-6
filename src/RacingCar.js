@@ -1,7 +1,7 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
-import { INPUT_ROUND, INPUT_CAR_NAME } from "./constants";
+import { MissionUtils } from '@woowacourse/mission-utils';
+import { INPUT_ROUND, INPUT_CAR_NAME, GAME_RESULT } from './constants';
 import App from './App';
-import Car from "./Car";
+import Car from './Car';
 
 class RacingCar {
     constructor() {
@@ -15,6 +15,7 @@ class RacingCar {
 
     async start() {
         await this.getInput();
+        MissionUtils.Console.print(GAME_RESULT);
         for (let i = 0; i < this.round; i++) {
             this.playRacingGame();
             this.printResult();
@@ -41,14 +42,14 @@ class RacingCar {
 
         carNames.forEach(carName => {
             if (carName.length === 0 || carName.length > 5)
-                throw new Error("[ERROR] 자동차 이름은 1자 이상, 5자 이하가 되야 합니다.");
+                throw new Error('[ERROR] 자동차 이름은 1자 이상, 5자 이하가 되야 합니다.');
             this.carNameList.push(new Car(carName));
         });
     }
 
     isValidRound(round) {
         if (isNaN(round)) {
-            throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
+            throw new Error('[ERROR] 숫자가 잘못된 형식입니다.');
         }
     }
 
@@ -70,7 +71,7 @@ class RacingCar {
 
     printwinner() {
         this.findTheWinner();
-        MissionUtils.Console.print(`최종 우승자: ${this.winner.join(", ")}`);
+        MissionUtils.Console.print(`최종 우승자 : ${this.winner.join(", ")}`);
     }
     
 }
