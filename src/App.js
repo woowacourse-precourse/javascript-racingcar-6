@@ -6,15 +6,29 @@ class App {
     const moves = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
     let moveResult = Object.fromEntries(carNames.split(",").map(name=>[name,""]))
 
+    MissionUtils.Console.print("")
+    MissionUtils.Console.print("실행 결과")
+
     for (let i=0; i<moves; i++){
       Object.keys(moveResult).map((key) => moveResult[key]+=this.moveCar())
+      Object.entries(moveResult).map((value)=>MissionUtils.Console.print(`${value[0]} : ${value[1]}`))
+      MissionUtils.Console.print("")
     }
+    
+    MissionUtils.Console.print(`최종 우승자 : ${this.getWinners(moveResult).join(', ')}`)
+    
   }
 
   moveCar(){
     const result = MissionUtils.Random.pickNumberInRange(0, 9);
     if (result>=4) return "-"
     else return ""
+  }
+
+  getWinners(resultObj){
+    const winningDistance = Math.max(...Object.values(resultObj).map(element=>element.length))
+    const winners = Object.keys(resultObj).filter(key=>resultObj[key].length==winningDistance)
+    return winners
   }
 }
 
