@@ -111,14 +111,6 @@ const printWinner = (winners) => {
   MissionUtils.Console.print(winnerText);
 }
 
-
-
-
-
-
-
-
-
 class App {
   async play() {
     try {
@@ -128,21 +120,12 @@ class App {
       checkNameLength(userNames);
 
       const userInputGameRep = await getUserInput('시도할 횟수는 몇 회인가요?');
-
       const gameRep = stringToNaturalNumber(userInputGameRep);
-
       const gameResult = gameStart(userNames, gameRep);
-
       const winners = getWinner(gameResult, userNames);
 
       printWinner(winners);
-
-
-
-
-
     } catch(err) {
-      console.log(err.msg);
       return Promise.reject(err);
     }
   }
