@@ -4,6 +4,7 @@ import Car from '../model/car';
 
 class Controller {
   #cars = [];
+  #attempt;
 
   async start() {
     await this.getCarName();
@@ -22,6 +23,7 @@ class Controller {
   async getAttemptNumber() {
     const playerInput = await InputView.readAttemptNumber();
     checkValidation.attemptInput(playerInput);
+    this.#attempt = playerInput;
   }
 }
 
