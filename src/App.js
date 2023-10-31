@@ -47,7 +47,7 @@ class App {
 
   printResult(raceResult) {
     raceResult.forEach((e) => {
-      Console.print(`${e.name} : ${e.result}\n`);
+      Console.print(GAME_MESSAGE.RESULT);
     });
     Console.print("\n");
   }
@@ -68,7 +68,7 @@ class App {
     return winnerIndex;
   }
 
-  makeWinnerIndexArray(raceResult, maxLength) {
+  makeWingameUtilnerIndexArray(raceResult, maxLength) {
     // test code 완료
     let winnerIndex = [];
     raceResult.forEach((element, index) => {
