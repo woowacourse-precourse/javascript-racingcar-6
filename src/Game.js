@@ -11,6 +11,7 @@ class Game {
     await this.setNumberOfGames();
     Console.print('\n실행 결과');
     this.race();
+    this.printResult();
   }
 
   async setPlayerNames() {
@@ -29,7 +30,11 @@ class Game {
   }
 
   printResult() {
-
+    const output = [];
+    this.#players.winners().forEach((winner) => {
+      output.push(winner);
+    });
+    Console.print(`최종 우승자 : ${output.join(', ')}`);
   }
 }
 

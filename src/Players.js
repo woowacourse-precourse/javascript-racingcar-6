@@ -24,7 +24,12 @@ class Players {
       });
       Console.print(output.join(''));
     });
-    Console.print();
+    Console.print('');
+  }
+
+  winners() {
+    const max = Math.max(...this.#scores);
+    return this.#names.filter((name, index) => this.#scores[index] === max);
   }
 }
 
