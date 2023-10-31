@@ -22,8 +22,8 @@ class App {
     const USER_INPUT_PLAYTIME = await Console.readLineAsync("");
     const PLAYTIME = +USER_INPUT_PLAYTIME;
 
-    if (Number.isNaN(PLAYTIME)) {
-      throw new Error("[ERROR] 실행횟수는 숫자만 입력 가능합니다.");
+    if (Number.isNaN(PLAYTIME) || PLAYTIME === 0) {
+      throw new Error("[ERROR] 실행횟수는 1이상의 숫자만 입력 가능합니다.");
     }
   }
 }
