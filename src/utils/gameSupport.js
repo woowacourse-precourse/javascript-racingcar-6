@@ -26,3 +26,7 @@ export const getMatchResult = (cars, trialCountNumber) => {
     printCarsCurrentPosition(cars);
   }
 };
+
+const getBestRecord = (cars) => {
+  return Math.max(...cars.map((car) => car.getCount()));
+};
