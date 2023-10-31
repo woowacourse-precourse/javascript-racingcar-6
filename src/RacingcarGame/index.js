@@ -1,4 +1,4 @@
-import { readLineAsync } from "../utils/missionUtils.js";
+import { print, readLineAsync } from "../utils/missionUtils.js";
 import { READ_LINE_QUERY } from "../constants/message.js";
 import validateNamesOfCars from "../validates/validateNamesOfCars.js";
 import validateNumberOfAttempts from "../validates/validateNumberOfAttempts.js";
@@ -19,6 +19,7 @@ class RacingcarGame {
 		this.cars = (await this.getNamesOfCars()).map((name) => new Car(name));
 		this.numberOfAttempts = await this.getNumberOfAttempts();
 		this.raceStart();
+		this.printResult();
 	}
 
 	async getNamesOfCars() {
@@ -49,6 +50,33 @@ class RacingcarGame {
 		this.cars.forEach((car) => {
 			car.move(round);
 		});
+	}
+
+	printResult() {
+		print("\n실행 결과");
+		for (let round = 0; round < this.numberOfAttempts; round += 1) {
+			this.printCars(round);
+		}
+	}
+
+	/**
+	 *
+	 * @param {number} round 몇 라운드인지
+	 */
+	printCars(round) {
+		this.cars.forEach((car) => this.printCar(round, car));
+		print("");
+	}
+
+	/**
+	 *
+	 * @param {number} round 몇 라운드인지
+	 * @param {Car} car 자동차 객체
+	 */
+	printCar(round, car) {
+		const name = car.getName();
+		const movingDistance = car.getMovingDistance(round);
+		print(`${name} : ${"-".repeat(movingDistance)}`);
 	}
 }
 
