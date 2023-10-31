@@ -16,3 +16,8 @@ export const checkCarsNameCount = (carNamesString) => {
 export const splitCarsArray = (carsNameString) => {
   return carsNameString.split(",");
 };
+
+const checkNameLength = (carName) => {
+  if (carName.length < 1 || carName.length > 5)
+    throw new Error(CARS_NAME_LENGTH_USER_INPUT_ERROR);
+};
