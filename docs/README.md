@@ -162,7 +162,7 @@ app.play();
   - 화살표 함수 사용해보기
 
 # 디렉토리
-
+```
 📦javascript-racingcar-6
  ┣ 📂__tests__
  ┃ ┣ 📂controller
@@ -176,43 +176,21 @@ app.play();
  ┃ ┃ ┗ 📂valid
  ┃ ┃ ┃ ┣ 📜NameValidator.test.js
  ┃ ┃ ┃ ┗ 📜TryValidator.test.js
- ┃ ┣ 📜.DS_Store
- ┃ ┣ 📜ApplicationTest.js
- ┃ ┗ 📜StringTest.js
  ┣ 📂docs
  ┃ ┗ 📜README.md
  ┣ 📂src
- ┃ ┣ 📂MVC
- ┃ ┃ ┣ 📂Constants
- ┃ ┃ ┃ ┣ 📜gameMessage.js
- ┃ ┃ ┃ ┣ 📜nameErrorMessage.js
- ┃ ┃ ┃ ┣ 📜numbers.js
- ┃ ┃ ┃ ┣ 📜symbols.js
- ┃ ┃ ┃ ┣ 📜testName.js
- ┃ ┃ ┃ ┗ 📜tryErrorMessage.js
- ┃ ┃ ┣ 📂controller
- ┃ ┃ ┃ ┣ 📂game
- ┃ ┃ ┃ ┃ ┣ 📜gameInProgress.js
- ┃ ┃ ┃ ┃ ┣ 📜hyphenAdd.js
- ┃ ┃ ┃ ┃ ┣ 📜nameToKeyValueConverter.js
- ┃ ┃ ┃ ┃ ┗ 📜winner.js
- ┃ ┃ ┃ ┗ 📂valid
- ┃ ┃ ┃ ┃ ┣ 📜nameValid.js
- ┃ ┃ ┃ ┃ ┗ 📜tryValid.js
- ┃ ┃ ┣ 📂model
- ┃ ┃ ┃ ┣ 📜.DS_Store
- ┃ ┃ ┃ ┗ 📜racingGame.js
- ┃ ┃ ┣ 📂view
- ┃ ┃ ┃ ┣ 📂input
- ┃ ┃ ┃ ┃ ┣ 📜carNameInput.js
- ┃ ┃ ┃ ┃ ┗ 📜tryNumberInput.js
- ┃ ┃ ┃ ┗ 📂output
- ┃ ┃ ┃ ┃ ┣ 📜progressOutput.js
- ┃ ┃ ┃ ┃ ┗ 📜resultOutput.js
- ┃ ┃ ┗ 📜.DS_Store
- ┃ ┣ 📜.DS_Store
- ┃ ┣ 📜App.js
- ┃ ┗ 📜index.js
- ┣ 📜.DS_Store
+ ┃ ┣ 📂constants
+ ┃ ┣ 📂controller
+ ┃ ┃ ┣ 📂game
+ ┃ ┃ ┣ 📂valid
+ ┃ ┣ 📂model
+ ┃ ┃ ┣ 📂game
+ ┃ ┃ ┗ 📜racingGame.js
+ ┃ ┣ 📂view
+ ┃ ┃ ┣ 📂input
+ ┃ ┃ ┗ 📂output
+ ┃ ┃ ┃ ┣ 📜progressOutput.js
+ ┃ ┃ ┃ ┗ 📜resultOutput.js
  ┣ 📜.gitignore
  ┗ 📜.npmrc
+ ```
