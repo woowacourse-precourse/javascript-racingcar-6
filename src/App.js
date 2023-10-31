@@ -90,10 +90,8 @@ class App {
     }
   }
 
-  printGameRound(result) {
-    const resultArr = Object.entries(result);
-
-    resultArr.forEach(([key, value]) => {
+  printGameRound(gameRound) {
+    Object.entries(gameRound).forEach(([key, value]) => {
       const hyphenValue = this.convertValueToHyphen(value);
 
       Console.print(`${key} : ${hyphenValue}`);
