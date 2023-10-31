@@ -13,7 +13,6 @@ class RacingController {
     try {
       await this.makeCarsArray();
       this.tryNumber = parseInt(await this.input.inputTryNumber());
-      console.log(`시도횟수: ${this.tryNumber}`);
       MissionUtils.Console.print("실행 결과\n");
       while (this.tryNumber > 0) {
         this.moveCars();
