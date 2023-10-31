@@ -1,21 +1,22 @@
 import { Console, MissionUtils } from '@woowacourse/mission-utils';
+import { MESSAGE, ERROR_MESSAGE } from './Message.js';
 
 class App {
   async play() {
     const names = await this.getCarNames();
     const count = await this.getPlayCount();
-    const nameToNumberMap = Object.fromEntries(names.map(name => [name, 0]));
+    const carInfo = Object.fromEntries(names.map(name => [name, 0]));
 
-    Console.print('\n실행 결과');
+    Console.print(MESSAGE.RESULT);
     for (let i = 0; i < count; i++) {
-      this.playRound(nameToNumberMap);
+      this.playRound(carInfo);
     }
   
-    this.printResults(nameToNumberMap);
+    this.printResults(carInfo);
   }
 
   async getCarNames() {
-    const carNamesInput = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n');
+    const carNamesInput = await Console.readLineAsync(MESSAGE.GETCARNAMES);
     const carNames = carNamesInput
       .split(',')
       .map(item => item.trim());
@@ -26,7 +27,7 @@ class App {
   }
 
   async getPlayCount() {
-    const input = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    const input = await Console.readLineAsync(MESSAGE.GETPLAYCOUNT);
     const count = parseInt(input, 10);
 
     this.validatePlayCount(count);
@@ -35,29 +36,37 @@ class App {
   }
 
   validateCarNames(carNames) {
-    if (carNames.some(name => name.length > 5)) {
-      throw new Error('[ERROR] 이름은 5글자 이하로만 입력할 수 있습니다.');
+    const filteredNames = carNames.filter(name => name.trim() !== '');
+    if (filteredNames.length == 0) {
+      throw new Error(ERROR_MESSAGE.NOCARNAMES_ERROR);
+    }
+
+    if (filteredNames.some(name => name.length > 5)) {
+      throw new Error(ERROR_MESSAGE.VALIDATECARNAME_ERROR);
     }
   }
 
   validatePlayCount(count) {
     if (isNaN(count)) {
-      throw new Error('[ERROR] 값이 잘 못 입력되었습니다.');
+      throw new Error(ERROR_MESSAGE.VALIDATEPLAYCOUNT_ERROR);
     }
   }
 
-  playRound(nameToNumberMap) {
-    for (const [name, number] of Object.entries(nameToNumberMap)) {
+  playRound(carInfo) {
+    Object.entries(carInfo).forEach(([name, number]) => {
       const randomNumber = this.randomIndex();
       const updatedNumber = number + randomNumber;
+      carInfo[name] = updatedNumber;
+  
       const dashes = '-'.repeat(updatedNumber);
-      Console.print(`${name} : ${dashes} `);
-    }
-    Console.print('\n');
+      Console.print(`${name} : ${dashes}`);
+    });
+     
+    Console.print('');
   }
 
-  printResults(nameToNumberMap) {
-    const winners = this.findWinners(nameToNumberMap);
+  printResults(carInfo) {
+    const winners = this.findWinners(carInfo);
     Console.print(`최종 우승자 : ${winners.join(', ')}`);
   }
 
@@ -66,10 +75,10 @@ class App {
     return randomNumber >= 4 ? 1 : 0;
   }
 
-  findWinners(nameToNumberMap) {
-    const highestScore = Math.max(...Object.values(nameToNumberMap));
-    const winners = Object.keys(nameToNumberMap)
-      .filter(name => nameToNumberMap[name] == highestScore);
+  findWinners(carInfo) {
+    const highestScore = Math.max(...Object.values(carInfo));
+    const winners = Object.keys(carInfo)
+      .filter(name => carInfo[name] == highestScore);
 
     return winners;
   }
