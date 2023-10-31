@@ -2,6 +2,7 @@ export const CAR_VALIDATION = {
   LENGTH: "[ERROR] 자동차 이름은 5자 이하만 가능합니다.",
   BLANK: "[ERROR] 자동차 이름은 공백일 수 없습니다.",
   SPECIAL_SYMBOL: "[ERROR] 쉼표 외에 다른 특수문자는 입력할 수 없습니다.",
+  DUPLICATE: "[ERROR] 서로 중복된 자동차 이름은 사용할 수 없습니다.",
 };
 
 export const TRY_COUNT_VALIDATION = {
