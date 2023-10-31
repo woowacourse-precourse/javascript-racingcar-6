@@ -46,10 +46,31 @@ describe("자동차 경주 게임", () => {
     });
   });
 
+  test("공동 우승", async () => {
+    // given
+    const inputs = ["pobi,woni,curry", "3"];
+    const outputs = ["pobi : ","woni : ","curry : ", "pobi : -","woni : ","curry : -", "pobi : --","woni : ","curry : --"];
+    const randoms = [1,2,3,4,0,4,9,1,8];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    // when
+    const app = new App();
+    await app.play();
+
+    // then
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
+
+
   test.each([
-    [["pobi,javaji"]],
-    [["pobi,eastjun"]]
-  ])("이름에 대한 예외 처리", async (inputs) => {
+    [["pojjjjjjjbi,javaji"]],
+    [["ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ,ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ"]]
+  ])("이름이 길어", async (inputs) => {
     // given
     mockQuestions(inputs);
 
@@ -59,4 +80,22 @@ describe("자동차 경주 게임", () => {
     // then
     await expect(app.play()).rejects.toThrow("[ERROR]");
   });
+
+
+  test.each([
+    [["pobi,,javaji"]],
+    [["ㅁ,ㅁ,ㅁ,jun,,"]]
+  ])("공백 검사", async (inputs) => {
+    // given
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow("[ERROR]");
+  });
+
+
+
 });
