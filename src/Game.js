@@ -24,6 +24,9 @@ class Game {
     const attemptNumber = await Console.readLineAsync(
       "시도할 횟수는 몇 회인가요?\n"
     );
+    if (isNaN(attemptNumber)) {
+      throw new Error("[ERROR] 숫자를 입력해주세요.");
+    }
     this.attemptNumber = attemptNumber;
   }
 
