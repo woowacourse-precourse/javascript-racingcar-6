@@ -3,19 +3,19 @@ import { typeValidator } from "../utils/validators.js";
 
 class IntParser {
   static parse(value) {
-    IntParser.#validateBeforeParsing(value);
+    IntParser.#validateOnlyInt(value);
     const parsed = parseInt(value, 10);
-    IntParser.#validateAfterParsing(parsed);
+    IntParser.#validateIsNumber(parsed);
     return parsed;
   }
 
-  static #validateBeforeParsing(value) {
+  static #validateOnlyInt(value) {
     if (/[^0-9]/.test(value)) {
-      throw new Error(ERROR_MESSAGE.includeString);
+      throw new Error(ERROR_MESSAGE.includeNotInt);
     }
   }
 
-  static #validateAfterParsing(value) {
+  static #validateIsNumber(value) {
     typeValidator.isNumber(value);
   }
 }
