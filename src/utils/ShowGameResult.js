@@ -1,24 +1,21 @@
-import { GAME_RESULT, WINNER } from "../const/Messages";
+import { WINNER } from "../const/Messages";
 import { Console } from "@woowacourse/mission-utils";
 
-class showGameResult {
+class ShowGameResult {
   constructor(carPositions) {
     this.carPositions = carPositions;
   }
 
-  findWinner() {
-    const maxPosition = Math.max(...Object.values(this.carPositions).map((pos) => pos.length));
+  findWinner(rounds) {
     return Object.entries(this.carPositions)
-      .filter(([_, position]) => position.length === maxPosition)
+      .filter(([_, position]) => position.length === rounds)
       .map(([carName, _]) => carName);
   }
 
-  printGameResult(carGame) {
-    Console.print(GAME_RESULT);
-    carGame.printRoundResult();
-    const winners = this.findWinner();
+  printGameResult(rounds) {
+    const winners = this.findWinner(rounds);
     Console.print(`${WINNER} : ${winners.join(", ")}`);
   }
 }
 
-export default showGameResult;
+export default ShowGameResult;
