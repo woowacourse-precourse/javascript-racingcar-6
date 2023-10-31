@@ -20,4 +20,13 @@ describe('class Input test', () => {
       ErrorMessages.ERROR_TOO_LONG_NAME,
     );
   });
+
+  test('[Exception Test] 동일한 이름이 존재하는 경우', async () => {
+    const input = ['12345,12345'];
+    mockQuestions(input);
+
+    await expect(Input.readCarString()).rejects.toThrow(
+      ErrorMessages.ERROR_SAME_NAME_EXIST,
+    );
+  });
 });
