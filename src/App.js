@@ -11,6 +11,9 @@ class App {
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
     );
     const carNames = carNamesInput.split(',').map(name => name.trim());
+    if ( carNames.some(name => name === null || name === undefined || name.length > 5)) {
+      throw new Error("[ERROR] 이름이 잘못된 형식입니다. 게임 종료");
+    }
     const cars = carNames.map(name => new Car(name));
     cars.forEach(car => {
       car.position = '';
