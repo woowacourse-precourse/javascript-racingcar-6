@@ -1,3 +1,5 @@
+- test: add winner(s) test
+- docs: fix spelling
 - style(tryCounter): modify code according to code convetsion
 - docs: revise test function list
 - test: add carmove number input and validate test

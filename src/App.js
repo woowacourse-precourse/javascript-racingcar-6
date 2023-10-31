@@ -2,19 +2,16 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 
 class App {
   async play() {
-    const CAR_NAME_SPLIT = await carCreater();
-    const VALIDATED_TRY_NUMBER = await tryCounter();
-    carMoveResult(CAR_NAME_SPLIT, VALIDATED_TRY_NUMBER);
-    winner(CAR_NAME_SPLIT);
+    const carNameSplit = await carCreater();
+    const validatedTryNumber = await tryCounter();
+    carMoveResult(carNameSplit, validatedTryNumber);
+    winner(carNameSplit);
   }
 }
 
 export default App;
 
-const CAR_MOVE_STORAGE = {
-
-}
-
+const carMoveStorage = {}
 let winnerarray = [];
 
 async function carCreater() {
@@ -36,7 +33,7 @@ function validationNameLength(names) {
 
 function carNameSave(carnames) {
   for (let i = 0; i < carnames.length; i++) {
-    CAR_MOVE_STORAGE[carnames[i]] = "";
+    carMoveStorage[carnames[i]] = "";
   }
 }
 
@@ -71,21 +68,21 @@ function carMover(carnames) {
 }
 
 function carMoveOrStop(carname) {
-  const RANDOM_NUMBER = MissionUtils.Random.pickNumberInRange(0, 9);
-  if (RANDOM_NUMBER >= 4) {
-    CAR_MOVE_STORAGE[carname] += "-";
+  const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
+  if (randomNumber >= 4) {
+    carMoveStorage[carname] += "-";
   }
-  MissionUtils.Console.print(`${carname} : ${CAR_MOVE_STORAGE[carname]}`);
+  MissionUtils.Console.print(`${carname} : ${carMoveStorage[carname]}`);
 }
 
 function winner(carnames) {
   var maxmoves = 0;
   for (let i = 0; i < carnames.length; i++) {
-    maxmoves = Math.max(CAR_MOVE_STORAGE[carnames[i]].length,maxmoves);
+    maxmoves = Math.max(carMoveStorage[carnames[i]].length,maxmoves);
   }
   for (let i = 0; i < carnames.length; i++) {
-    const MOVE = CAR_MOVE_STORAGE[carnames[i]].length
-    if (MOVE === maxmoves) {
+    const move = carMoveStorage[carnames[i]].length
+    if (move === maxmoves) {
       winnerarray.push(carnames[i]); 
     }
   }
