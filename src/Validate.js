@@ -8,7 +8,9 @@ const isLogngName = (carNames) => {
   return carNames.some((carName) => carName.length > 5);
 };
 
-const isDuplicate = (carNames) => {};
+const isDuplicate = (carNames) => {
+  return new Set(carNames).size !== carNames.length;
+};
 
 export const validateCarNames = (carNames) => {
   if (isUnderTwo(carNames)) {
@@ -16,6 +18,9 @@ export const validateCarNames = (carNames) => {
   }
   if (isLogngName(carNames)) {
     throw new Error(ERROR_MESSAGE.LONG_CARNAME);
+  }
+  if (isDuplicate(carNames)) {
+    throw new Error(ERROR_MESSAGE.DUPLICATE_CARNAME);
   }
   return carNames;
 };
