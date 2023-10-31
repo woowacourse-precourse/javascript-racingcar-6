@@ -1,6 +1,7 @@
 import { Console } from "@woowacourse/mission-utils";
 import Game from "../src/Game.js";
 import Car from "../src/Car.js";
+import App from "../src/App.js";
 
 describe("기능 테스트", () => {
   // 자동차 이름 입력받기 기능 테스트
@@ -64,5 +65,28 @@ describe("기능 테스트", () => {
       result.push(car.position);
     }
     expect(result).toEqual(calculatedPositions);
+  });
+
+  // 실행 결과 출력하기 기능 테스트
+  test("실행 결과 출력하기", () => {
+    const carList = [new Car("a"), new Car("b"), new Car("c")];
+    const randomValuesList = [
+      [1, 3, 5],
+      [2, 4, 6],
+    ];
+    const resultMessage = [
+      ["a : ", "b : ", "c : -"],
+      ["a : ", "b : -", "c : --"],
+    ];
+    for (let i = 0; i < 2; i++) {
+      for (let j = 0; j < 3; j++) {
+        const spyFn = jest.spyOn(Console, "print");
+        const randomValue = randomValuesList[i][j];
+        Car.generateRandomValue = jest.fn().mockReturnValue(randomValue);
+        carList[j].calculatePosition();
+        App.printResultMessage(carList[j]);
+        expect(spyFn).toHaveBeenCalledWith(resultMessage[i][j]);
+      }
+    }
   });
 });
