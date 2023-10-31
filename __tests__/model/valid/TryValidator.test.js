@@ -47,9 +47,7 @@ describe("시도 횟수 입력 테스트", () => {
 
       //when, then
       await expect(() =>
-        tryValid
-          .tryIsValid(input)
-          .toThrow(`${TRY_ERROR_MESSAGE.oneAboveError}`)
+        tryValid.tryIsValid(input).toThrow(`${TRY_ERROR_MESSAGE.oneAboveError}`)
       );
     }
   );
@@ -62,9 +60,7 @@ describe("시도 횟수 입력 테스트", () => {
 
       //when, then
       await expect(() =>
-        tryValid
-          .tryIsValid(input)
-          .toThrow(`${TRY_ERROR_MESSAGE.oneAboveError}`)
+        tryValid.tryIsValid(input).toThrow(`${TRY_ERROR_MESSAGE.oneAboveError}`)
       );
     }
   );
@@ -75,9 +71,7 @@ describe("시도 횟수 입력 테스트", () => {
 
     //when, then
     await expect(() =>
-      tryValid
-        .tryIsValid(input)
-        .toThrow(`${TRY_ERROR_MESSAGE.spaceError}`)
+      tryValid.tryIsValid(input).toThrow(`${TRY_ERROR_MESSAGE.spaceError}`)
     );
   });
 

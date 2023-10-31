@@ -1,9 +1,9 @@
-import Input from "./MVC/View/Input.js";
+import carNameInput from "./MVC/view/Input/carNameInput.js";
 
 class App {
   async play() {
-    const input = new Input();
-    await input.carName();
+    const carnameinput = new carNameInput();
+    await carnameinput.carName();
   }
 }
 

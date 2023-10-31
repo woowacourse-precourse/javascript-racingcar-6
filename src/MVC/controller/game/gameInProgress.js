@@ -1,10 +1,10 @@
-import Output from "../../view/Output.js";
+import progressOutput from "../../view/output/progressOutput.js";
 
 const gameInProgress = (keyValue) => {
   keyValue.forEach((value) => {
     const name = Object.keys(value)[0];
     const hyphen = value[name];
-    Output.gameInProgressPrint(name, hyphen);
+    progressOutput.gameInProgressPrint(name, hyphen);
   });
 };
 

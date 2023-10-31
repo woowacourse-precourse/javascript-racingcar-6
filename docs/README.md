@@ -5,6 +5,7 @@
 5. [기능 구현 목록](#기능-구현-목록)
 6. [테스트 코드](#테스트-코드)
 7. [나만의 미션 목표](#나만의-미션-목표)
+8. [디렉토리](#디렉토리)
 
 
 ## 🚀 기능 요구 사항
@@ -158,3 +159,60 @@ app.play();
   - 리팩토링
   - isNaN이 아닌 Number.isNaN() 사용하기
   - 스프레드 문법 사용해보기
+  - 화살표 함수 사용해보기
+
+# 디렉토리
+
+📦javascript-racingcar-6
+ ┣ 📂__tests__
+ ┃ ┣ 📂controller
+ ┃ ┃ ┗ 📜RacingGame.test.js
+ ┃ ┣ 📂model
+ ┃ ┃ ┣ 📂game
+ ┃ ┃ ┃ ┣ 📜GameInProgress.test.js
+ ┃ ┃ ┃ ┣ 📜HyphenAdd.test.js
+ ┃ ┃ ┃ ┣ 📜KeyValueConverter.test.js
+ ┃ ┃ ┃ ┗ 📜Winner.test.js
+ ┃ ┃ ┗ 📂valid
+ ┃ ┃ ┃ ┣ 📜NameValidator.test.js
+ ┃ ┃ ┃ ┗ 📜TryValidator.test.js
+ ┃ ┣ 📜.DS_Store
+ ┃ ┣ 📜ApplicationTest.js
+ ┃ ┗ 📜StringTest.js
+ ┣ 📂docs
+ ┃ ┗ 📜README.md
+ ┣ 📂src
+ ┃ ┣ 📂MVC
+ ┃ ┃ ┣ 📂Constants
+ ┃ ┃ ┃ ┣ 📜gameMessage.js
+ ┃ ┃ ┃ ┣ 📜nameErrorMessage.js
+ ┃ ┃ ┃ ┣ 📜numbers.js
+ ┃ ┃ ┃ ┣ 📜symbols.js
+ ┃ ┃ ┃ ┣ 📜testName.js
+ ┃ ┃ ┃ ┗ 📜tryErrorMessage.js
+ ┃ ┃ ┣ 📂controller
+ ┃ ┃ ┃ ┣ 📂game
+ ┃ ┃ ┃ ┃ ┣ 📜gameInProgress.js
+ ┃ ┃ ┃ ┃ ┣ 📜hyphenAdd.js
+ ┃ ┃ ┃ ┃ ┣ 📜nameToKeyValueConverter.js
+ ┃ ┃ ┃ ┃ ┗ 📜winner.js
+ ┃ ┃ ┃ ┗ 📂valid
+ ┃ ┃ ┃ ┃ ┣ 📜nameValid.js
+ ┃ ┃ ┃ ┃ ┗ 📜tryValid.js
+ ┃ ┃ ┣ 📂model
+ ┃ ┃ ┃ ┣ 📜.DS_Store
+ ┃ ┃ ┃ ┗ 📜racingGame.js
+ ┃ ┃ ┣ 📂view
+ ┃ ┃ ┃ ┣ 📂input
+ ┃ ┃ ┃ ┃ ┣ 📜carNameInput.js
+ ┃ ┃ ┃ ┃ ┗ 📜tryNumberInput.js
+ ┃ ┃ ┃ ┗ 📂output
+ ┃ ┃ ┃ ┃ ┣ 📜progressOutput.js
+ ┃ ┃ ┃ ┃ ┗ 📜resultOutput.js
+ ┃ ┃ ┗ 📜.DS_Store
+ ┃ ┣ 📜.DS_Store
+ ┃ ┣ 📜App.js
+ ┃ ┗ 📜index.js
+ ┣ 📜.DS_Store
+ ┣ 📜.gitignore
+ ┗ 📜.npmrc
