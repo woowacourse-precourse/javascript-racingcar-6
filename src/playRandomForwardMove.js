@@ -13,7 +13,7 @@ export default function playRandomForwardMove(map) {
 
 function printRoundResult(map) {
   for (const [key, value] of map) {
-    MissionUtils.Console.print(`${key} : ${value}`);
+    MissionUtils.Console.print(`${key} : ` + "-".repeat(value));
   }
   //MissionUtils.Console.print("\n");
 }
