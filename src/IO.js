@@ -9,7 +9,11 @@ export const MESSAGE = {
   OUTPUT: {
     EXECUTION_RESULT: '\n실행 결과',
     WINNER: winners => `${winners.join(', ')}가 최종 우승했습니다.\n`,
-    RACING_STATUS: racer => `${racer.carName} : ${'-'.repeat(racer.move)}\n`,
+    RACING_STATUS: racers =>
+      racers
+        .map(racer => `${racer.carName} : ${'-'.repeat(racer.move)}\n`)
+        .join('\n')
+        .concat('\n'),
   },
   ERROR: message => new Error(`[ERROR] ${message}`),
 };
@@ -54,12 +58,7 @@ export const input = {
 
 export const output = {
   statesEveryIteration(racers) {
-    const result = racers
-      .map(racer => MESSAGE.OUTPUT.RACING_STATUS(racer))
-      .join('\n')
-      .concat('\n');
-
-    Console.print(result);
+    Console.print(MESSAGE.OUTPUT.RACING_STATUS(racers));
   },
   winners(racers) {
     const maxMove = Math.max(...racers.map(racer => racer.move));
