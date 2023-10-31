@@ -1,4 +1,3 @@
-import Validation from '../utils/Validation.js';
 import InputView from '../view/InputView.js';
 import Car from '../model/Car.js';
 import OutputView from '../view/OutputView.js';
@@ -35,17 +34,12 @@ export default class Controller {
   }
 
   async run() {
-    const carNames = await InputView.carName();
-    const carNameList = carNames.split(',');
-
-    Validation.carNameInput(carNameList);
+    const carNameList = await InputView.getCarName();
     this.createCar(carNameList);
 
-    const tryCount = await InputView.tryCount();
-    const tryCountNumber = Number(tryCount);
-    Validation.tryCountInput(tryCountNumber);
+    const tryCount = await InputView.getTryCount();
     OutputView.printNewLine();
-    this.moveCars(tryCountNumber);
+    this.moveCars(tryCount);
 
     const maxMoveCars = this.findMaxMoveCars();
     OutputView.printWinner(maxMoveCars);
