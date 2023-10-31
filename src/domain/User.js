@@ -17,7 +17,11 @@ class User {
   constructor(name) {
     this.#validate(name);
     this.#name = name;
-    this.#car = new Car();
+    this.#car = Car.of();
+  }
+
+  static of(name) {
+    return new User(name);
   }
 
   #validate(name) {

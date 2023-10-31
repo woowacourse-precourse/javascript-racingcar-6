@@ -1,11 +1,15 @@
 import { Car } from '../../../src/domain/index.js';
 
 describe('Car 테스트', () => {
-  it('초기값으로 `distance`에 `0`을 가진다.', () => {
-    // given & when
-    const car = new Car();
+  let car;
 
-    // then
+  beforeEach(() => {
+    // given
+    car = Car.of();
+  });
+
+  it('초기값으로 `distance`에 `0`을 가진다.', () => {
+    // when & then
     expect(car.getDistance()).toBe(0);
   });
 
@@ -21,9 +25,6 @@ describe('Car 테스트', () => {
   ])(
     `move(power)를 호출 시 인자가 ${Car.DEAD_ZONE} 이상이면 distance가 ${Car.SPEED} 증가합니다.`,
     ({ power, delta }) => {
-      // given
-      const car = new Car();
-
       // when
       car.move(power);
 

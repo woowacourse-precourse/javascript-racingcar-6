@@ -19,6 +19,10 @@ class Track {
     this.#finalLap = lap;
   }
 
+  static of(users, lap) {
+    return new Track(users, lap);
+  }
+
   #validateUsers(users) {
     if (!Array.isArray(users)) {
       throw new ApplicationError(ERROR_MESSAGE.track.isNotArrayUsers);

@@ -7,7 +7,7 @@ describe('User 예외 테스트', () => {
     ({ name }) => {
       expect(() => {
         // given & when
-        new User(name);
+        User.of(name);
 
         // then
       }).toThrow(ERROR_MESSAGE.user.isBlankName);
@@ -24,7 +24,7 @@ describe('User 예외 테스트', () => {
   ])('입력받은 값이 문자열이 아닐 경우 에러를 발생시킨다. (input: $input)', ({ name }) => {
     expect(() => {
       // given & when
-      new User(name);
+      User.of(name);
 
       // then
     }).toThrow(ERROR_MESSAGE.user.isNotStringName);
@@ -35,7 +35,7 @@ describe('User 예외 테스트', () => {
     ({ name }) => {
       expect(() => {
         // given & when
-        new User(name);
+        User.of(name);
 
         // then
       }).toThrow(ERROR_MESSAGE.user.isOverMaxLengthName);

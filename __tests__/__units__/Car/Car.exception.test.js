@@ -11,7 +11,7 @@ describe('Car 예외 테스트', () => {
     { power: undefined },
   ])('`move(power)`의 인자가 숫자가 아닐 경우 에러를 발생시킨다. (power: $power)', ({ power }) => {
     // given
-    const car = new Car();
+    const car = Car.of();
 
     expect(() => {
       // when

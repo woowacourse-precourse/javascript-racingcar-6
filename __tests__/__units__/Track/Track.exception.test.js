@@ -3,7 +3,7 @@ import { Car, Track, User } from '../../../src/domain/index.js';
 
 describe('Track 예외 테스트', () => {
   it.each([
-    { users: new User('레이서') },
+    { users: User.of('레이서') },
     { users: true },
     { users: {} },
     { users: 1 },
@@ -11,23 +11,23 @@ describe('Track 예외 테스트', () => {
   ])('입력받은 `users`가 배열이 아닐 경우 에러를 발생시킨다.', ({ users }) => {
     expect(() => {
       // given & when
-      new Track(users, 5);
+      Track.of(users, 5);
 
       // then
     }).toThrow(ERROR_MESSAGE.track.isNotArrayUsers);
   });
 
   it.each([
-    { users: [new User('레이서'), '레이서2'] },
-    { users: [new User('레이서'), 234] },
+    { users: [User.of('레이서'), '레이서2'] },
+    { users: [User.of('레이서'), 234] },
     { users: ['레이서'] },
-    { users: [{ name: '레이서', car: new Car() }] },
+    { users: [{ name: '레이서', car: Car.of() }] },
   ])(
     '입력받은 `users`에 `User`의 인스턴스가 아닌 요소가 존재할 경우 에러를 발생시킨다.',
     ({ users }) => {
       expect(() => {
         // given & when
-        new Track(users, 5);
+        Track.of(users, 5);
 
         // then
       }).toThrow(ERROR_MESSAGE.track.isExistNotUserInstance);
@@ -37,8 +37,8 @@ describe('Track 예외 테스트', () => {
   it('입력받은 `users`에 동일한 이름을 가진 요소가 존재할 경우 에러를 발생시킨다.', () => {
     expect(() => {
       // given & when
-      const users = [new User('레이서'), new User('레이서2'), new User('레이서')];
-      new Track(users, 5);
+      const users = [User.of('레이서'), User.of('레이서2'), User.of('레이서')];
+      Track.of(users, 5);
 
       // then
     }).toThrow(ERROR_MESSAGE.track.isDuplicatedUserName);
@@ -49,8 +49,8 @@ describe('Track 예외 테스트', () => {
     ({ lap }) => {
       expect(() => {
         // given & when
-        const users = [new User('레이서')];
-        new Track(users, lap);
+        const users = [User.of('레이서')];
+        Track.of(users, lap);
 
         // then
       }).toThrow(ERROR_MESSAGE.track.isNotNumberLap);
@@ -62,8 +62,8 @@ describe('Track 예외 테스트', () => {
     ({ lap }) => {
       expect(() => {
         // given & when
-        const users = [new User('레이서')];
-        new Track(users, lap);
+        const users = [User.of('레이서')];
+        Track.of(users, lap);
 
         // then
       }).toThrow(ERROR_MESSAGE.track.isUnderMinLap);
@@ -75,8 +75,8 @@ describe('Track 예외 테스트', () => {
     ({ lap }) => {
       expect(() => {
         // given & when
-        const users = [new User('레이서')];
-        new Track(users, lap);
+        const users = [User.of('레이서')];
+        Track.of(users, lap);
 
         // then
       }).toThrow(ERROR_MESSAGE.track.isNotIntegerLap);
@@ -85,8 +85,8 @@ describe('Track 예외 테스트', () => {
 
   it('`processLap()`을 호출시 종료된 경기일 경우 에러를 에러를 발생시킨다.', () => {
     // given
-    const users = [new User('레이서')];
-    const track = new Track(users, 1);
+    const users = [User.of('레이서')];
+    const track = Track.of(users, 1);
     track.processLap();
 
     expect(() => {

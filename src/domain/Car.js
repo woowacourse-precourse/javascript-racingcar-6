@@ -8,6 +8,10 @@ class Car {
 
   #distance = 0;
 
+  static of() {
+    return new Car();
+  }
+
   getDistance() {
     return this.#distance;
   }
