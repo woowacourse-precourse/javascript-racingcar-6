@@ -3,7 +3,7 @@ contents/
 node_modules/
 templates/
 config.json
-package.json
+package-lock.json
 
 
 ### Example user template template
