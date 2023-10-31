@@ -3,6 +3,7 @@ const CAR = {
   rangeEndNumber: 9,
   baseNumber: 4,
   goMark: '-',
+  separateMark: ',',
 };
 
 export default CAR;

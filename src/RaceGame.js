@@ -1,7 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
 import Car from './Car.js';
 import User from './User.js';
-import MESSAGE from './constants/message.js';
+import { MESSAGE } from './constants/message.js';
 
 class RaceGame {
   constructor() {
@@ -35,7 +35,10 @@ class RaceGame {
 
   racingResult(racingCarList) {
     const winnerCar = racingCarList
-      .sort((prevCar, curCar) => curCar.score.length - prevCar.score.length)
+      .sort(
+        (previousCar, currentCar) =>
+          currentCar.score.length - previousCar.score.length,
+      )
       .filter(car => car.score.length === racingCarList[0].score.length)
       .map(car => car.name)
       .join(', ');
