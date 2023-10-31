@@ -1,4 +1,5 @@
 import { Console, Random } from "@woowacourse/mission-utils";
+import { getValidRound, getValidCars } from "./utils/getValidValue.js";
 
 export default class App {
   constructor() {
@@ -20,13 +21,13 @@ export default class App {
     const cars = await Console.readLineAsync(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
     );
-    const validCars = isValidCars(cars);
+    const validCars = getValidCars(cars);
     this.cars = validCars;
   }
 
   async getTotalRound() {
     const round = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
-    const validRound = isValidRound(round);
+    const validRound = getValidRound(round);
     this.totalRound = validRound;
   }
 
@@ -44,8 +45,9 @@ export default class App {
     }
   }
   printRoundResult(cars) {
+    Console.print("\n");
     for (const car of cars) {
-      Console.print(`\n${car.name} : ${"-".repeat(car.position)}`);
+      Console.print(`${car.name} : ${"-".repeat(car.position)}`);
     }
   }
   findWinners(cars, winner) {
@@ -65,39 +67,6 @@ export default class App {
     const winnerNumbers = winners.map((_, index) => index + 1).join(", ");
     Console.print(`\n최종 우승자 : ${winnerNumbers}`);
   }
-}
-
-function isValidCars(cars) {
-  const carList = cars.split(",");
-
-  const underFiveDigitCars = [];
-
-  for (const car of carList) {
-    const trimmedCarName = car.trim();
-
-    if (trimmedCarName.length > 5)
-      throw new Error(
-        "[ERROR] 자동차 이름은 쉼표(,)를 기준으로 구분하며 이름은 5자 이하만 가능합니다."
-      );
-    const validCars = { name: trimmedCarName, position: 0 };
-    underFiveDigitCars.push(validCars);
-  }
-
-  return underFiveDigitCars;
-}
-
-function isValidRound(round) {
-  const roundNumber = Number(round);
-
-  if (isNaN(round)) {
-    throw new Error("[ERROR] 시도할 횟수는 숫자만 가능합니다.");
-  }
-
-  if (!Number.isInteger(roundNumber)) {
-    throw new Error("[ERROR] 시도할 횟수는 자연수만 가능합니다.");
-  }
-
-  return roundNumber;
 }
 
 function isMove() {
