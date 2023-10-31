@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import App from "../src/App.js";
 import ERROR_MESSAGE from "../src/constant/errorMessage.js";
 import messagePrinter from "../src/utils/messagePrinter.js";

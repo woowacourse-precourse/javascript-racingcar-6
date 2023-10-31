@@ -13,7 +13,7 @@ class App {
     this.#cars = await this.getCarNameInput();
     this.checkValidCarName(this.#cars);
     this.#trials = await this.getTrialNumInput();
-    await this.checkValidTrialNum(this.#trials);
+    this.checkValidTrialNum(this.#trials);
 
     await messagePrinter.outputPrint(GAME_MESSAGE.line_break);
     await messagePrinter.outputPrint(GAME_MESSAGE.print_start_result);
@@ -55,12 +55,12 @@ class App {
     return trialNum;
   }
 
-  async checkValidTrialNum (trialNum) {
+  checkValidTrialNum (trialNum) {
     if (Number.isNaN(trialNum)) {
       messagePrinter.errorPrint(ERROR_MESSAGE.not_number);
     } else if (trialNum < 1) {
       messagePrinter.errorPrint(ERROR_MESSAGE.less_than_one_trial);
-    } else if (trialNum.includes(' ')) {
+    } else if (trialNum.toString().includes(' ')) {
       messagePrinter.errorPrint(ERROR_MESSAGE.has_space);
     }
   }
