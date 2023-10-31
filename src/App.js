@@ -65,6 +65,13 @@ class App {
     });
   }
 
+  async printRacingCarGameResult(racingCarList) {
+    for (const [racingCar, distance] of racingCarList.entries()) {
+      await Console.print(`${racingCar} : ${distance}`);
+    }
+    Console.print('');
+  }
+
   isValidCarNamesInput(carNameList) {
     if (carNameList.length === 1) return false;
 
