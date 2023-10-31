@@ -12,7 +12,6 @@ class App {
   async play() {
     await this.setupGame();
     await this.playRound();
-    this.showResult();
   }
 
   async setupGame() {
@@ -27,10 +26,16 @@ class App {
     for (let i = 0; i < this.rounds; i++) {
       await this.roundLog.printAllRoundLog();
     }
+    this.showResult();
+    this.endGame();
   }
 
   showResult() {
     this.gameResult.printGameResult();
+  }
+
+  endGame() {
+    return;
   }
 }
 
