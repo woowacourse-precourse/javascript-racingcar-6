@@ -46,6 +46,12 @@ class Computer {
     this.#round = gameRound;
     this.pushCarList(carNames);
   }
+
+  judgeRandomNumber() {
+    const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
+
+    return randomNumber >= 4 ? true : false;
+  }
 }
 
 export default Computer;
