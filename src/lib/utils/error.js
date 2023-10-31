@@ -7,12 +7,6 @@ class InputError {
     }
   }
 
-  validateCarNameListLength(input) {
-    if (input.length > 5) {
-      throw new Error(ERROR_MESSAGE.INPUT_CAR_NAME_LIST_LENGTH_ERROR);
-    }
-  }
-
   validateCarNameLength(input) {
     input.map((value) => {
       if ([...value.split("")].length > 5) {
@@ -41,7 +35,6 @@ class InputError {
 
   validateCarInput(input) {
     this.validateInputExist(input);
-    this.validateCarNameListLength(input);
     this.validateCarNameLength(input);
   }
 
