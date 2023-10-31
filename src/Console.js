@@ -1,4 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
+import Validator from './Validator.js';
 
 class Console {
   static #DELIMITER = ',';
@@ -13,6 +14,7 @@ class Console {
     );
     const stringWithoutSpaces = answer.replace(/ /g, '');
     const array = stringWithoutSpaces.split(this.#DELIMITER);
+    Validator.validateCarNames(array);
     return array;
   }
 }
