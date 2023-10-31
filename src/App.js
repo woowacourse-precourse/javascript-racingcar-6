@@ -11,6 +11,10 @@ class App {
     const CARS_ARRAY = USER_INPUT_STRING.split(",");
     //예외처리
     checkCarNameLength(CARS_ARRAY);
+    //시도할 횟수
+    const ROUNDS = await MissionUtils.Console.readLineAsync(
+      "시도할 횟수는 몇 회인가요?"
+    );
   }
 }
 
