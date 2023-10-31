@@ -7,7 +7,7 @@ class Car {
   #distance;
 
   /**
-   * @consturctor
+   * @constructor
    * @param {string} name
    */
   constructor(name) {
