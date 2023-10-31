@@ -6,7 +6,7 @@ class Car {
     this.moveCount = 0;
   }
 
-  async executeCycle() {
+  async move() {
     const randomNumber = await this.generateRandomNumber();
     Console.print(randomNumber);
     if (this.getIsCanMove(randomNumber)) this.updateMoveCount();
@@ -16,11 +16,11 @@ class Car {
     return await Random.pickNumberInRange(0, 9);
   }
 
-  async getIsCanMove(randomNumber) {
+  getIsCanMove(randomNumber) {
     return randomNumber >= MOVE_FORWARD_CRITERIA;
   }
 
-  async updateMoveCount() {
+  updateMoveCount() {
     this.moveCount += 1;
   }
 }
