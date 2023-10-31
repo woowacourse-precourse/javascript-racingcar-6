@@ -2,6 +2,7 @@ import { Console } from '@woowacourse/mission-utils';
 import carValidate from './validation/Car.js';
 import carMessages from './messages/Car.js';
 
+import tryValidate from './validation/Try.js';
 import tryMessage from './messages/Try.js';
 
 export const getCarName = async () => {
@@ -13,5 +14,6 @@ export const getCarName = async () => {
 
 export const getTryCount = async () => {
   const tryCount = await Console.readLineAsync(tryMessage.INPUT);
+  tryValidate(tryCount);
   return tryCount;
 };
