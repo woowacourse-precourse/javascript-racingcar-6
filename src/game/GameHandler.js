@@ -4,11 +4,11 @@ import { initializeCarsPosition, runRace } from './CarGame.js';
 import selectWinner from './Winner.js';
 
 const startGame = async () => {
-  const carNames = getCarNames();
+  const carNames = await getCarNames();
   const tryCount = getTryCount();
   const carsPosition = initializeCarsPosition(carNames);
 
-  Console.log('실행결과');
+  Console.print('실행결과');
   await runRace(carNames, tryCount, carsPosition);
   selectWinner(carsPosition);
 };
