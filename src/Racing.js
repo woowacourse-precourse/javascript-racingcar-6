@@ -1,3 +1,5 @@
+import { RACING_GAME } from './Constant';
+
 class Racing {
   constructor(carNames, count, data) {
     this.carNames = carNames;
@@ -9,7 +11,7 @@ class Racing {
   validAdvance() {
     const moving = this.data.generateRandomNumbers();
 
-    if (moving >= 4) return true;
+    if (moving >= RACING_GAME.forwardConditionNumber) return true;
   }
 
   advance() {

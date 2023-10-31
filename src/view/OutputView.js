@@ -1,19 +1,20 @@
 import { Console } from '@woowacourse/mission-utils';
+import { MESSAGE } from '../Constant.js';
 
 const OutputView = {
   printProgress(carNames, result) {
-    Console.print('\n실행결과');
+    Console.print(MESSAGE.result);
 
     result.map((state) => {
       carNames.map((carName, idx) => {
-        Console.print(`${carName} : ${'-'.repeat(state[idx])}`);
+        Console.print(`${carName} : ${MESSAGE.advance.repeat(state[idx])}`);
       });
-      Console.print('-'.repeat('\n'));
+      Console.print(MESSAGE.advance.repeat('\n'));
     });
   },
 
   printWinner(winner) {
-    Console.print(`최종 우승자 : ${winner.join(', ')}`);
+    Console.print(`${MESSAGE.winner}${winner.join(MESSAGE.winnerType)}`);
   }
 }
 
