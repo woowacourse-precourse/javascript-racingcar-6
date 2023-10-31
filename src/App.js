@@ -11,25 +11,27 @@ class App {
   }
 
   async play() {
-    const answer = await Console.readLineAsync(MESSAGE.start);
+    const answer = await Console.readLineAsync(MESSAGE.ENTER_CAR_NAME);
     this.cars = answer.split(',');
 
-    if (this.isCarListValid()) {
-      const playTimes = await Console.readLineAsync(MESSAGE.roundsToPlay);
+    if (this.IsCarListValid()) {
+      const playTimes = await Console.readLineAsync(
+        MESSAGE.ENTER_NUMBER_TO_TRY,
+      );
       this.playTimes = playTimes;
-      if (this.isRacingAttemptsValid()) {
+      if (this.IsRacingAttemptsValid()) {
         return this.StartRacing();
       }
-      throw new Error(MESSAGE.notValidPlaytimes);
+      throw new Error(MESSAGE.NOT_VALID_NUMBER);
     }
-    throw new Error(MESSAGE.notValidCarsName);
+    throw new Error(MESSAGE.NOT_VALID_CARS_NAME);
   }
 
   HasNoSpace(value) {
     return !value.includes(' ');
   }
 
-  isCarListValid() {
+  IsCarListValid() {
     const maxCarListLength = 10;
     const minCarListLength = 2;
     const maxCarnameLength = 5;
@@ -38,8 +40,8 @@ class App {
     const checkLength = car => car.length <= maxCarnameLength;
 
     if (
-      this.cars.length > maxCarListLength
-      || this.cars.length < minCarListLength
+      this.cars.length > maxCarListLength ||
+      this.cars.length < minCarListLength
     ) {
       return false;
     }
@@ -49,7 +51,7 @@ class App {
     );
   }
 
-  isRacingAttemptsValid() {
+  IsRacingAttemptsValid() {
     const checkUnderTen = /^(10|[1-9])$/;
 
     if (checkUnderTen.test(this.playTimes) && this.HasNoSpace(this.playTimes)) {
@@ -66,7 +68,7 @@ class App {
       return acc;
     }, {});
 
-    Console.print(MESSAGE.result);
+    Console.print(MESSAGE.EXECUTION_RESULT);
 
     while (count < this.playTimes) {
       this.cars.map(car => {
@@ -107,7 +109,7 @@ class App {
       }
     });
 
-    Console.print(`${MESSAGE.winner} ${winner}`);
+    Console.print(`${MESSAGE.WINNER} ${winner}`);
   }
 }
 
