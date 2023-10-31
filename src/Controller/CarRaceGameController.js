@@ -1,18 +1,22 @@
-import { Console } from "@woowacourse/mission-utils";
 import Input from "../Input/Input";
+import CompareRaceCarResult from "../Compare/CompareRaceCarResult";
 
 class CarRaceGameController {
+  #raceCars;
+
   async InputRaceCarName() {
     await Input.readInputRaceCarName((input) => {
-      Console.print(input);
-      this.InputRaceCarNumberOfAttempts();
+      this.setRaceCars(input);
     });
   }
 
   async InputRaceCarNumberOfAttempts() {
-    await Input.readInputRaceCarNumberOfAttempts((input) => {
-      Console.print(input);
-    });
+    await Input.readInputRaceCarNumberOfAttempts((input) => {});
+  }
+
+  async setRaceCars(racecars) {
+    this.#raceCars = new CompareRaceCarResult(racecars);
+    await this.InputRaceCarNumberOfAttempts();
   }
 }
 
