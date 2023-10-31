@@ -12,6 +12,11 @@ class App {
       this.checkNumber(roundNumber);
 
       this.createObject(carNameList, carsInfo);
+
+      for (let n = 0; n < roundNumber; n++) {
+        this.oneRoundGame(carsInfo);
+        Console.print("\n");
+      }
     } catch (error) {
       throw error;
     }
@@ -51,6 +56,21 @@ class App {
     for (let j = 0; j < carNameList.length; j++) {
       carsInfo[carNameList[j]] = { score: 0 };
     }
+  }
+
+  oneRoundGame(carsInfo) {
+    const carNames = Object.keys(carsInfo);
+    for (let k = 0; k < carNames.length; k++) {
+      const number = this.randomNumber();
+      if (number >= 4) {
+        carsInfo[carNames[k]].score += 1;
+      }
+    }
+
+    carNames.forEach((carName) => {
+      const score = carsInfo[carName].score;
+      Console.print(`${carName} : ${"-".repeat(score)}`);
+    });
   }
 }
 
