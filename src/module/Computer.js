@@ -73,7 +73,28 @@ class Computer {
     this.printResult();
   }
 
+  judgeWinner() {
+    const carAmount = this.#carList.length;
+    const winnerList = [];
+    let maxDistance = 0;
+    let goingCount = 0;
+    let name = '';
 
+    for (let i = 0; i < carAmount; i += 1) {
+      goingCount = this.#carList[i].goingCount;
+      name = this.#carList[i].name;
+
+      if (maxDistance < goingCount) {
+        winnerList.splice(0);
+        maxDistance = goingCount;
+        winnerList.push(name);
+      } else if (maxDistance === goingCount) {
+        winnerList.push(name);
+      }
+    }
+
+    MissionUtils.Console.print(`최종 우승자 : ${winnerList.join(', ')}`);
+  }
 }
 
 export default Computer;
