@@ -4,6 +4,7 @@ class App {
   constructor() {
     this.carNames = [];
     this.tryCount = 0;
+    this.roundResult = {};
   }
 
   validateCarNames(input) {
@@ -32,6 +33,31 @@ class App {
     this.tryCount = tryCount;
   }
 
+  getRandomNumber() {
+    return Random.pickNumberInRange(1, 9);
+  }
+
+  racing(carList, count) {
+    const roundResult = carList.reduce((a, c) => {
+      a[c] = 0;
+      return a;
+    }, {});
+
+    Console.print('실행결과');
+    for (let round = 1; round <= count; round++) {
+      for (let i = 0; i < carList.length; i++) {
+        if (this.getRandomNumber() >= 4) {
+          roundResult[carList[i]] += 1;
+        }
+      }
+      for (let i = 0; i < carList.length; i++) {
+        Console.print(`${carList[i]} : ${'-'.repeat(roundResult[carList[i]])}`);
+      }
+      Console.print('');
+    }
+    this.roundResult = roundResult;
+  }
+
   async play() {
     const userInputCarNames = await Console.readLineAsync(
       '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)'
@@ -41,8 +67,8 @@ class App {
     const userInputRoundCount = await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
     this.validateRoundCount(userInputRoundCount);
 
-    // this.racing(userInputCarNames, userInputRoundCount);
-    // this.winner(result);
+    this.racing(this.carNames, this.tryCount);
+    this.winner(this.roundResult);
   }
 }
 
