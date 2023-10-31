@@ -1,5 +1,6 @@
 import { ERROR_MESSAGE } from "../constants/message.js";
-import SETTING from "../constants/setting.js"; //이름 검사
+import SETTING from "../constants/setting.js";
+
 //이름 검사
 export const isNameLengthUnderFive = (name) => {
   if (name.length > 5) throw new Error(ERROR_MESSAGE.INVALID_NAME_LENGTH);
@@ -17,9 +18,6 @@ export const isValidNameInput = (carsArr) => {
   if (carsArr.length < 2) throw new Error(ERROR_MESSAGE.TOO_FEW_NAME);
 };
 
-export const isNoInput = (input) => {
-  if (!input) throw new Error(ERROR_MESSAGE.NO_INPUT);
-};
 //횟수 검사
 export const isValidRoundInput = (round) => {
   if (round < 1 || isNaN(round))
@@ -33,4 +31,9 @@ export const isIntegerNumber = (round) => {
   const regex = /^\d+$/;
   if (!regex.test(round) || !Number.isInteger(round))
     throw new Error(ERROR_MESSAGE.INVALID_ROUND_RANGE);
+};
+
+//공통
+export const isNoInput = (input) => {
+  if (!input) throw new Error(ERROR_MESSAGE.NO_INPUT);
 };

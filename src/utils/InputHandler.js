@@ -11,7 +11,7 @@ import {
 class InputHandler {
   async getCarNamesAndCheck() {
     const carsInput = await Console.readLineAsync(GAME_MESSAGE.ASK_CARS_NAME);
-    await isNoInput(carsInput);
+    isNoInput(carsInput);
     this.removeLastComma(carsInput);
     const carArr = carsInput.split(",").map((name) => name.trim());
 
@@ -32,7 +32,7 @@ class InputHandler {
     const roundInput = await Console.readLineAsync(
       GAME_MESSAGE.ASK_COUNT_NUMBER
     );
-    await isNoInput(roundInput);
+    isNoInput(roundInput);
     const round = parseFloat(roundInput);
     isValidRoundInput(round);
     isIntegerNumber(round);
