@@ -24,4 +24,8 @@ const inputTryCount = async () => {
   return tryCount;
 };
 
-export { inputCarNames, inputTryCount };
+const outputWinner = winners => {
+  Console.print(MESSAGE.OUTPUT_WINNER(winners));
+};
+
+export { inputCarNames, inputTryCount, outputWinner };
