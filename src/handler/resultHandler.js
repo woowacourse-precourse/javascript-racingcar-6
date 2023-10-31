@@ -3,26 +3,24 @@ import { RESULT_MESSAGES } from "../utils/messages";
 
 function getResultStringOneLine(cars) {
   let string = "";
-  const NEW_CARS = cars.map((carClass) => {
+  cars.forEach((carClass) => {
     const RANDOM = getRandomeNumberInRange(0, 9);
     if (RANDOM >= 4) carClass.setDistancePlusOne();
     string += `${carClass.getName()} : ${carClass.getDistanceString()}\n`;
-    return carClass;
   });
-  return [string, NEW_CARS];
+  return string;
 }
 
 const resultHandler = {
   getResultString: ({ tryNumber, cars }) => {
     let stringToPrint = `${RESULT_MESSAGES.OUTPUT.RESULT}\n`;
-    let currentCars = cars;
+    const CURRENT_CARS = [...cars];
     for (let tryOrder = 0; tryOrder < tryNumber; tryOrder += 1) {
-      const [STRING_ONE_LINE, NEW_CARS] = getResultStringOneLine(currentCars);
+      const STRING_ONE_LINE = getResultStringOneLine(CURRENT_CARS);
       stringToPrint += STRING_ONE_LINE;
       stringToPrint += "\n";
-      currentCars = NEW_CARS;
     }
-    return [stringToPrint, currentCars];
+    return [stringToPrint, CURRENT_CARS];
   },
 
   getWinner: (cars) => {
