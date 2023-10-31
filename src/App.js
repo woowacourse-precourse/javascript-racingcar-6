@@ -7,6 +7,9 @@ class App {
     );
     this.nameValidation(nameInputValue);
     const carDistanceMap = this.createMap(nameInputValue);
+    const roundInputValue = await this.userInput(
+      '시도할 횟수는 몇 회인가요?\n',
+    );
   }
 
   async userInput(message) {
