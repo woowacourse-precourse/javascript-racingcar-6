@@ -19,6 +19,12 @@ describe('시도 횟수 입력 예외', () => {
       expect(() => validateAttempts(input)).toThrow('[ERROR]');
     },
   );
+
+  test('시도 횟수가 30 초과 시, 에러를 발생시킨다', () => {
+    const input = 31;
+    Console.readLineAsync = jest.fn().mockResolvedValue(input);
+    expect(() => validateAttempts(input)).toThrow('[ERROR]');
+  });
 });
 
 describe('랜덤 숫자 생성', () => {
