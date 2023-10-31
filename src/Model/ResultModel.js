@@ -12,9 +12,7 @@ export default class ResultModel {
 
   addAttempsResult(cars) {
     const attempResult = [];
-    cars.forEach((car) => {
-      attempResult.push(Object.values(car));
-    });
+    cars.forEach((car) => attempResult.push(Object.values(car)));
     this.#allAttempsResult.push(attempResult);
   }
 
@@ -23,9 +21,9 @@ export default class ResultModel {
   }
 
   makeConsoleOutputTemplete() {
-    this.#allAttempsResult.forEach((attempResult) => {
-      this.#formatCarMoveStrings(attempResult);
-    });
+    this.#allAttempsResult.forEach((attempResult) =>
+      this.#formatCarMoveStrings(attempResult),
+    );
     return this.#consoleOutput.join('');
   }
 
