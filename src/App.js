@@ -15,11 +15,19 @@ class App {
     playerNames.forEach((name) => (this.#gameData[name] = { position: 0 }));
   }
 
+  getGameData() {
+    return this.#gameData;
+  }
+
   // 사용자로부터 이동 횟수를 입력받는다.
   async setRepeatCount() {
     const repeatCountInput = await Console.readLineAsync(MESSAGE.numberQuery);
     repeatCountValidation(await repeatCountInput);
     this.#repeatCount = Number(await repeatCountInput);
+  }
+
+  getRepeatCount() {
+    return this.#repeatCount;
   }
 
   isGoing() {

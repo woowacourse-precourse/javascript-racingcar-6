@@ -7,12 +7,13 @@ const MESSAGE = {
 
 const INPUT_LIMIT = {
   playerName: 5,
-  playerNumber: 100,
-  repeatCount: 1000,
+  playerNumber: 10,
+  repeatCount: 100,
 };
 
 const ERROR_MESSAGE = {
   playerNameLengthLimit: `${INPUT_LIMIT.playerName}자 이하의 이름만 가능합니다.`,
+  onePlayerOnly: "플레이어가 한 명입니다.",
   playerNameEmpty: "빈 이름이 있습니다.",
   playerNameDuplicated: "중복된 이름이 있습니다.",
   playerNumberLimit: `${INPUT_LIMIT.playerNumber}명 이하의 플레이어만 참여 가능합니다.`,
