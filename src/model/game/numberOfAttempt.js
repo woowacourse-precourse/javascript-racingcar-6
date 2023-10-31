@@ -19,5 +19,9 @@ class NumberOfAttempt {
     }
     return false;
   }
+
+  decrease() {
+    this.NumberOfAttempt -= 1;
+  }
 }
 export default NumberOfAttempt;
