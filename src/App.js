@@ -58,18 +58,21 @@ class App {
   startRace() {
     MissionUtils.Console.print(EXECUTION_ENDS);
     for (let i = 0; i < this.attempts; i++) {
-      this.arrCarName.map((name, index) => {
-        const result = MissionUtils.Random.pickNumberInRange(0, 9);
-        if (result >= 4) {
-          this.race[index][1]++;
-        }
-
-        MissionUtils.Console.print(
-          `${name} : ${RACE_RESULT.repeat(this.race[index][1])}`
-        );
-      });
+      this.goOrStop();
       MissionUtils.Console.print(RACE_RESULT_GAP);
     }
+  }
+
+  goOrStop() {
+    this.arrCarName.map((name, index) => {
+      const result = MissionUtils.Random.pickNumberInRange(0, 9);
+      if (result >= 4) {
+        this.race[index][1]++;
+      }
+      MissionUtils.Console.print(
+        `${name} : ${RACE_RESULT.repeat(this.race[index][1])}`
+      );
+    });
   }
 
   sortResult() {
