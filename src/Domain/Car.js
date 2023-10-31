@@ -10,7 +10,7 @@ class Car {
     Validator.validateCarName(name);
 
     this.#name = name;
-    this.#position = CAR.position.min;
+    this.#position = CAR.position.default;
   }
 
   move() {

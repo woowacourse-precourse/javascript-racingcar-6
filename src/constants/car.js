@@ -12,8 +12,7 @@ const name = Object.freeze({
 });
 
 const position = Object.freeze({
-  min: 0,
-  max: 6,
+  default: 0,
 });
 
 const CAR = Object.freeze({
