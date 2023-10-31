@@ -7,6 +7,8 @@ export const SYSTEM = Object.freeze({
   quantityMax: 6,
   racingCountMin: 1,
   racingCountMax: 9,
+  randomNumberMin: 0,
+  randomNumberMax: 9,
 });
 
 export const LANGUAGE_OPTION = Object.freeze({
