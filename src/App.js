@@ -35,11 +35,6 @@ async function getInput() {
   }
 }
 
-// 1. 입력받은 횟수만큼 경주를 반복한다.
-// 2. 경주할 자동차들을 담을 배열을 생성한다.
-// 3. updateCars 함수를 호출하여 자동차 배열을 갱신시킨다.
-// 4. printCars 함수를 호출하여 업데이트한 배열을 출력한다.
-
 function playGame(chance, carNameList) {
   let runningCars = new Array(carNameList.length).fill(0);
   updateCars(runningCars);
@@ -47,7 +42,13 @@ function playGame(chance, carNameList) {
 }
 
 function updateCars(runningCars) {
-
+  for (let i = 0; i < runningCars.length; i++) {
+    let number = Random.pickNumberInRange(1, 9);
+    Console.print(number);
+    if(number >= 4) {
+      runningCars[i] += 1;   
+    }
+  }
 }
 
 function printCars(runningCars, carNameList) {
