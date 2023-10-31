@@ -28,6 +28,8 @@ class App {
 
   checkCarNameVaildity(carName){
     if (carName.length > 5) throw new Error(ERROR_MESSAGE.INPUT_CAR_NAME_ERROR);
+    if (carName === '') throw new Error(ERROR_MESSAGE.INPUT_CAR_NAME_EMPTY_ERROR);
+    if (this.carName.includes(carName)) throw new Error(ERROR_MESSAGE.INPUT_CAR_NAME_DUPLICATE_ERROR);
   }
 
   async getRound(){
@@ -39,7 +41,8 @@ class App {
   }
 
   checkRoundVaildity(round){
-    if(isNaN(round)) throw new Error(ERROR_MESSAGE.INPUT_CAR_MOVE_ERROR);
+    if(isNaN(round)) throw new Error(ERROR_MESSAGE.INPUT_CAR_ROUND_ERROR);
+    if(round === 0) throw new Error(ERROR_MESSAGE.INPUT_CAR_ROUND_ZERO_ERROR);
   }
 
   showRaceProcess(){
@@ -57,7 +60,7 @@ class App {
   updateCarMoveCount(){
     this.carMoveCount = [...this.carMoveCount].map((count) => {
       if (this.getRandomNumber() >= 4) count++
-         
+
       return count
     })
   }

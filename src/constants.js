@@ -9,6 +9,9 @@ export const MESSAGE = {
 }
 
 export const ERROR_MESSAGE = {
-  INPUT_CAR_NAME_ERROR : '[ERROR] 자동차 이름은 5글자 이하여야 합니다.',
-  INPUT_CAR_MOVE_ERROR : '[ERROR] 이동횟수는 숫자가 입력되어야 합니다.',
+  INPUT_CAR_NAME_ERROR: '[ERROR] 자동차 이름은 5글자 이하여야 합니다.',
+  INPUT_CAR_NAME_DUPLICATE_ERROR: '[ERROR] 자동차 이름은 중복되지 않아야 합니다.',
+  INPUT_CAR_NAME_EMPTY_ERROR: '[ERROR] 자동차 이름을 찾을 수 없습니다.',
+  INPUT_CAR_ROUND_ERROR: '[ERROR] 이동횟수는 숫자가 입력되어야 합니다.',
+  INPUT_CAR_ROUND_ZERO_ERROR: '[ERROR] 이동횟수는 0회 이상이어야 합니다.' 
 }
