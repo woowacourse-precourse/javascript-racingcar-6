@@ -14,7 +14,8 @@ class Car {
       else this.countForward[this.carName] += "-";
     }
     Console.print(`${this.carName} : ${this.countForward[this.carName] || ""}`);
-    // return countForward;
+
+    return this.countForward;
   }
 }
 
