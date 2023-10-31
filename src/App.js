@@ -16,6 +16,7 @@ class App {
       const car = new Car(carName);
       this.cars.push(car);
     });
+    return this.cars;
   }
 
   async play() {
@@ -30,7 +31,5 @@ class App {
     this.makeCars(this.carNames);
   }
 }
-const app = new App();
-app.play();
 
 export default App;
