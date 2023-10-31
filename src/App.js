@@ -32,22 +32,38 @@ class App {
   playRounds(rounds) {
     Console.print(`\n실행 결과`);
     for (let i = 0; i < rounds; i++) {
-      this.cars.forEach((car) => {
-        if (this.isMovable()) {
-          car.moveCount += 1;
-        }
-      });
-      this.cars.forEach((car) => {
-        Console.print(`${car.name} : ${'-'.repeat(car.moveCount)}`);
-      });
-      Console.print('');
+      this.playRound();
     }
-  }  
+  }
+
+  playRound() {
+    this.moveCarsRandomly();
+    this.printRoundResult();
+  }
+
+  moveCarsRandomly() {
+    this.cars.forEach((car) => {
+      if (this.isMovable()) {
+        car.moveCount += 1;
+      }
+    });
+  }
 
   isMovable() {
     const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
     return randomNumber >= 4;
   } 
+
+  printRoundResult() {
+    this.cars.forEach((car) => {
+      Console.print(this.generateCarResultString(car));
+    });
+    Console.print('');
+  }
+
+  generateCarResultString(car) {
+    return `${car.name} : ${'-'.repeat(car.moveCount)}`;
+  }
 }
 
 export default App;
