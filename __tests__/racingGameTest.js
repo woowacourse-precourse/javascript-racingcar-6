@@ -25,7 +25,6 @@ const getLogSpy = () => {
 
 describe("racingGame() 테스트", () => {
   test("전진-정지가 올바르게 이뤄지는지 테스트", async () => {
-    // given
     const MOVING_FORWARD = 7;
     const STOP = 3;
     const inputs = ["pobi,오정환", "4"];
