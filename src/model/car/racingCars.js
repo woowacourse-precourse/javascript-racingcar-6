@@ -1,3 +1,5 @@
+import RacingCar from "./racingCar.js";
+
 class RacingCars {
   #cars = [];
 
