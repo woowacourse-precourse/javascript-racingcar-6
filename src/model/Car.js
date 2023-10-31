@@ -4,3 +4,5 @@ class Car {
     this.location = 0;
   }
 }
+
+export default Car;

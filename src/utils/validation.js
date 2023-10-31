@@ -6,7 +6,7 @@ const checkValidation = {
       }
     });
     const set = new Set(input);
-    if (input.length !== set.size()) {
+    if (input.length !== set.size) {
       throw new Error('[ERROR] 자동차 이름이 중복되었습니다.');
     }
   },

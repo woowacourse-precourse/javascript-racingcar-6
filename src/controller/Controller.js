@@ -1,5 +1,6 @@
 import InputView from '../view/inputView';
 import checkValidation from '../utils/validation';
+import Car from '../model/car';
 
 class Controller {
   #cars = [];
