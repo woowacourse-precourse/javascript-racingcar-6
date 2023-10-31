@@ -1,18 +1,18 @@
-import Data from "./Data.js";
+import { MESSAGE, inputData } from "./Data.js";
 import Controller from "./Controller.js";
 import { Console } from "@woowacourse/mission-utils";
 
 class App {
     async play() {
-        Data.input.player = await Controller.setPlayer();
-        Data.input.number = await Controller.setNumber();
+        inputData.player = await Controller.setPlayer();
+        inputData.number = await Controller.setNumber();
 
-        Console.print(Data.MESSAGE.PROGRESS_RESULT);
-        for (let i = 0; i < Data.input.number; i++) {
-            Controller.raceProgress(Data.input.player);
-            Console.print(Controller.getRaceResultText(Data.input.player));
+        Console.print(MESSAGE.PROGRESS_RESULT);
+        for (let i = 0; i < inputData.number; i++) {
+            Controller.raceProgress(inputData.player);
+            Console.print(Controller.getRaceResultText(inputData.player));
         }
-        Console.print(Controller.getWinnerText(Data.input.player));
+        Console.print(Controller.getWinnerText(inputData.player));
     }
 }
 

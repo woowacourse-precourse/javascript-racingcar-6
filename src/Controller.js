@@ -1,11 +1,11 @@
 import { Console, Random } from "@woowacourse/mission-utils";
-import Data from "./Data.js";
+import { MESSAGE } from "./Data.js";
 
 class Controller {
     // 참가자 객체 반환 함수
     static async setPlayer() {
         try {
-            let player = await Console.readLineAsync(Data.MESSAGE.GET_PLAYER);
+            let player = await Console.readLineAsync(MESSAGE.GET_PLAYER);
 
             player = player.split(",").map((value) => {
                 return value.trim();
@@ -14,7 +14,7 @@ class Controller {
             // 예외처리
             player.forEach((value) => {
                 if (value.includes(" ") || !isNaN(value))
-                    throw new Error(Data.MESSAGE.ERROR);
+                    throw new Error(MESSAGE.ERROR);
             });
 
             const PLAYER_OBJ = player.reduce((accumulator, value) => {
@@ -30,10 +30,10 @@ class Controller {
     // 반복 횟수 반환 함수
     static async setNumber() {
         try {
-            const NUMBER = await Console.readLineAsync(Data.MESSAGE.GET_NUMBER);
+            const NUMBER = await Console.readLineAsync(MESSAGE.GET_NUMBER);
 
             //예외처리
-            if (isNaN(NUMBER)) throw new Error(Data.MESSAGE.ERROR);
+            if (isNaN(NUMBER)) throw new Error(MESSAGE.ERROR);
 
             return Number(NUMBER);
         } catch (e) {
@@ -69,7 +69,7 @@ class Controller {
             if (obj[key] === WINNER_VALUE) return key;
         });
         // 문자열화
-        return `${Data.MESSAGE.WINNER}${WINNER_ARRAY.join(", ")}`;
+        return `${MESSAGE.WINNER}${WINNER_ARRAY.join(", ")}`;
     }
 }
 
