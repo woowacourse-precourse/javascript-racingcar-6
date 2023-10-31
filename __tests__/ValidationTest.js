@@ -25,4 +25,18 @@ describe('자동차 이름 입력 테스트', () => {
       expect(inputNames).toStrictEqual(outputs);
     },
   );
+
+  test.each([[['abcdefg,h']], [['a,']], [['   ,a']]])(
+    '이름의 글자 수 예외 처리',
+    async (inputs) => {
+      // given
+      mockQuestions(inputs);
+
+      // when
+      const inputNames = Screen.inputNames();
+
+      // then
+      await expect(inputNames).rejects.toThrow('[ERROR]');
+    },
+  );
 });
