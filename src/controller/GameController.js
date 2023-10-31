@@ -20,7 +20,6 @@ export class GameController {
 
   async startGame() {
     const { carNames, tryNumber } = await this.getInputValue();
-
     this.setMoveCount(carNames);
     this.printMoveCount(carNames, tryNumber);
     this.printWinnersNames(this.moveCount);
@@ -32,7 +31,7 @@ export class GameController {
     this.validateName(carNames);
 
     Console.print(MESSAGE.INPUT);
-    const tryNumber = await Console.readLineAsync("");
+    const tryNumber = Number(await Console.readLineAsync(""));
     this.validateNumber(tryNumber);
 
     return { carNames, tryNumber };
@@ -44,10 +43,10 @@ export class GameController {
   }
 
   performMoves(carNames, tryNumber) {
-    for (let i = 0; i < tryNumber; i++) {
+    Array.from({ length: tryNumber }).forEach(() => {
       this.logic.addMoveCount(carNames, this.moveCount);
       this.view.printGameScore(this.moveCount);
-    }
+    });
   }
 
   printWinnersNames(moveCount) {
@@ -62,8 +61,8 @@ export class GameController {
   }
 
   validateNumber(tryNumber) {
-    if (tryNumber > 0 && Number.isInteger(tryNumber))
-      throw new Error(ERROR_MESSAGE.INVALID_NUMBER);
+    this.checkPositiveNumber(tryNumber);
+    this.checkIsInteger(tryNumber);
   }
 
   checkEceededNameLength(carNames) {
@@ -75,5 +74,15 @@ export class GameController {
   checkDuplicatedName(carNames) {
     if (carNames.length != new Set(carNames).size)
       throw new Error(ERROR_MESSAGE.DUPLICATED_NAME);
+  }
+
+  checkPositiveNumber(tryNumber) {
+    if (tryNumber < 0) throw new Error(ERROR_MESSAGE.INVALID_NUMBER);
+  }
+
+  checkIsInteger(tryNumber) {
+    if (!Number.isInteger(tryNumber)) {
+      throw new Error(ERROR_MESSAGE.INVALID_NUMBER);
+    }
   }
 }

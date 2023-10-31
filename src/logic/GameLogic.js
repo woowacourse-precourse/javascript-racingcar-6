@@ -1,4 +1,3 @@
-import { MESSAGE } from "../constants/messages.js";
 import { RANGE } from "../constants/range.js";
 import { Random } from "@woowacourse/mission-utils";
 
