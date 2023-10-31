@@ -13,12 +13,12 @@
 
 ### 입출력
 
-- inputCars
+- inputCarsWithValidate
 
   - 쉼표여러개가 연속적으로 작성된 경우 하나로 치환
   - 이름을 쉼표로 구분하여 나열
 
-- inputTryNumber
+- inputTryWithValidate
 
   - 시도횟수 입력
   - number로 변환
@@ -33,9 +33,12 @@
 
 ### 진행
 
-- inputTryNumber 까지 완료 되면 initialization
-- n번 반복하여 진행
-- 매 회차 이름별 진행도 갱신 (4이상의 수가 나오면 +1) 및 출력
+- inputTryNumber 까지 완료 되면 `init`
+- n번 반복하여 진행 (재귀로 구현) `run`
+  - 매 회차마다 임의값 배열 생성 및 그에 따른 진행도 계산 `computeScore`
+  - 매 회차 이름별 진행도 갱신 (4이상의 수가 나오면 +1) `evaluateEachIsForward`
+  - 계산 후 출력 `printEachProgress`
+- 마무리 `printWinners`
 
 ### 마무리
 
@@ -55,6 +58,7 @@
   - 중복된 이름이 없는지 체크
 
 - validateTryNumber
+
   - 시도 횟수 : 자연수
 
 <hr>
