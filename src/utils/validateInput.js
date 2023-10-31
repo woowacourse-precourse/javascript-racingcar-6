@@ -1,25 +1,26 @@
-const validName = name => name.length > 0 && name.length <= 5;
-const validNameList = nameList => nameList.length > 1;
-const validNumber = input => {
-  const inputNum = Number(input);
-  return String(inputNum) === input && input > 0;
-};
-const validtryCount = tryCount => {
-  if (!validNumber(tryCount))
-    throw new Error('[ERROR] 시도 횟수는 숫자여야 합니다.');
+import { ERROR_MESSAGE, VALID_LEN } from './constants';
+
+const validateNames = names => {
+  const parsedNames = names.split(',');
+  const duplicateCheck = new Set();
+
+  if (parsedNames.length < VALID_LEN.MIN_CAR_NAME)
+    throw new Error(ERROR_MESSAGE.INVALID_CAR_LENGTH);
+
+  parsedNames.forEach(name => {
+    if (name.length < VALID_LEN.MIN_NAME || name.length > VALID_LEN.MAX_NAME)
+      throw new Error(ERROR_MESSAGE.NAME_LENGTH);
+
+    if (duplicateCheck.has(name)) throw new Error(ERROR_MESSAGE.NAME_DUPLICATE);
+    duplicateCheck.add(name);
+  });
 };
 
-const validCarName = names => {
-  const validCarNames = names.replace(/(\s*)/g, '').split(',');
-  const carNameArray = validCarNames.every(validName);
-  if (!validNameList(carNameArray))
-    throw new Error(
-      '[ERROR] 자동차 이름은 쉼표(,)로 구분하여 입력해야 합니다.',
-    );
-  if (!carNameArray)
-    throw new Error(
-      '[ERROR] 자동차 이름은 1글자 이상 5글자 이하만 가능합니다.',
-    );
+const validateTryCount = tryCount => {
+  if (Number(tryCount).toString() !== tryCount)
+    throw new Error(ERROR_MESSAGE.INVALID_TRY_COUNT_TYPE);
+  if (Number(tryCount) < 1)
+    throw new Error(ERROR_MESSAGE.INVALID_TRY_COUNT_NUM);
 };
 
-export { validName, validNameList, validNumber, validtryCount, validCarName };
+export { validateNames, validateTryCount };
