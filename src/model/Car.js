@@ -1,12 +1,12 @@
 class Car {
 
   #name;
-
+  
   #position = 0;
 
-	constructor(name) {
-		this.#name = name;
-	}
+  constructor(name) {
+    this.#name = name;
+  }
 
   getName() {
     return this.#name;
