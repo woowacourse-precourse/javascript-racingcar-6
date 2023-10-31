@@ -3,10 +3,12 @@ import CarModel from '../models/CarModel.js';
 import GameModel from '../models/GameModel.js';
 import InputView from '../views/InputView.js';
 import { MESSAGES } from '../constants/messages.js';
+import OutputView from '../views/OutputView.js';
 
 class GameController {
   constructor() {
     this.inputView = new InputView();
+    this.outputView = new OutputView();
     this.gameModel = null;
   }
 
@@ -14,9 +16,16 @@ class GameController {
     await this.initGame();
 
     Console.print(MESSAGES.startRound);
+
     while (!this.gameModel.isGameOver()) {
       this.gameModel.playRound();
+
+      const carModels = await this.gameModel.getCarModels();
+      this.outputView.printAdvanceResult(carModels);
     }
+
+    const winners = this.gameModel.getWinners();
+    this.outputView.printWinner(winners);
   }
 
   async initGame() {
