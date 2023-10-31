@@ -3,15 +3,11 @@ import Race from "./Race";
 
 class Init {
   async start() {
-    try {
-      const carsArray = await this.getCarNames();
-      const numberOfTries = await this.getNumberOfTries();
+    const carsArray = await this.getCarNames();
+    const numberOfTries = await this.getNumberOfTries();
 
-      const RacingGame = new Race();
-      await RacingGame.start(carsArray, numberOfTries);
-    } catch (error) {
-      Console.print(`[ERROR] ${error.message}`);
-    }
+    const RacingGame = new Race();
+    await RacingGame.start(carsArray, numberOfTries);
   }
 
   async getCarNames() {
@@ -22,7 +18,8 @@ class Init {
 
     const carNameList = name.split(",").map((item) => item.trim());
     if (!this.isValidCarNames(carNameList)) {
-      throw new Error("자동차의 이름 형식이 올바르지 않습니다.");
+      Console.print("[ERROR] 자동차의 이름 형식이 올바르지 않습니다.");
+      throw new Error("[ERROR]");
     }
 
     return this.createCarArray(carNameList);
@@ -42,7 +39,8 @@ class Init {
     Console.print(tryNum);
 
     if (!this.isValidNumberOfTries(tryNum)) {
-      throw new Error("숫자가 잘못된 형식입니다.");
+      Console.print("[ERROR] 숫자가 잘못된 형식입니다.");
+      throw new Error("[ERROR]");
     }
     return tryNum;
   }
