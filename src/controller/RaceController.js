@@ -12,10 +12,6 @@ export default class RaceController {
     this.outputView = new OutputView();
   }
 
-  init() {
-    this.gameStart();
-  }
-
   async gameStart() {
     this.carNames = await this.inputView.readCarNames();
     this.getCarNames(this.carNames);
@@ -63,7 +59,7 @@ export default class RaceController {
   }
 
   moveForward() {
-    this.outputView.printMessage(`\n${INFO_MESSAGES.RACE_RESULT}\n`);
+    this.outputView.printMessage(`\n${INFO_MESSAGES.RACE_RESULT}`);
     for (let i = 0; i < this.numOfTry; i++) {
       this.getPoints();
     }
@@ -76,7 +72,7 @@ export default class RaceController {
       if (MissionUtils.Random.pickNumberInRange(0, 9) >= 4) {
         car.point += 1;
       }
-      stepMessage += `${car.name}: ${'-'.repeat(car.point)}\n`
+      stepMessage += `${car.name} : ${'-'.repeat(car.point)}\n`
     });
     this.outputView.printMessage(`${stepMessage}`);
   }
