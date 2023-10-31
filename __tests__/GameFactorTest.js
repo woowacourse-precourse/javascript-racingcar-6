@@ -11,8 +11,8 @@ const getLogSpy = () => {
 describe('최종 우승자 출력', () => {
     test('최종 우승자 출력', () => {
         const logSpy = getLogSpy();
-        const maxRate = 2;
-        const racingCars = new Map ([["pobi", 2], ['loopy', 1]]);
+        const maxRate = 5;
+        const racingCars = new Map ([["pobi", 5], ['loopy', 3]]);
         //when
         printWinner(maxRate, racingCars);
         //then
