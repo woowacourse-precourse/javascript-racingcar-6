@@ -127,3 +127,26 @@ describe("시도횟수 만큼 반복한 각 자동차의 이동 거리 계산", 
     await expect(result).rejects.toThrow("[ERROR]");
   });
 });
+
+test("입력한 시도횟수 만큼 게임 반복", async () => {
+  const model = new Model();
+  const controllers = new Controllers();
+
+  const cars = ["carl", "kay"];
+  const tryTime = 3;
+  const move = { carl: 0, kay: 0 };
+  const logSpy = getLogSpy();
+
+  mockRandoms([6, 6, 6, 6, 6, 6]);
+
+  model.repeatMessage = jest.fn(() => {
+    return "---";
+  });
+
+  //when
+  const result = await controllers.repeatCarRacing(move, cars, tryTime);
+
+  //then
+  expect(result).toEqual({ carl: 3, kay: 3 });
+  expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("kay : ---"));
+});
