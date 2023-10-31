@@ -10,20 +10,21 @@ class Players {
   }
 
   race() {
-    this.#scores.forEach((player) => {
-      if (Random.pickNumberInRange(0, 9) > 3) player = player + 1;
-    });
+    this.#scores = this.#scores.map((num, index) => {
+      return (Random.pickNumberInRange(0, 9) > 3) ? num + 1 : num;
+  });
   }
 
   print() {
     this.#names.forEach((player, index) => {
-      Console.print(`${player} : `);
+      const output = [];
+      output.push(`${player} : `);
       Array.from({ length: this.#scores[index] }).forEach(() => {
-        Console.print('-');
+        output.push('-');
       });
-      Console.print('\n');
+      Console.print(output);
     });
-    Console.print('\n');
+    Console.print();
   }
 }
 

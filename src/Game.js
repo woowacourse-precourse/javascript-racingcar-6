@@ -9,7 +9,7 @@ class Game {
   async play() {
     await this.setPlayerNames();
     await this.setNumberOfGames();
-    Console.print('\n실행 결과\n');
+    Console.print('\n실행 결과');
     this.race();
   }
 
@@ -22,7 +22,7 @@ class Game {
   }
 
   race() {
-    Array.from({ length: this.#numberofGames }).forEach(() => {
+    Array.from({ length: this.#numberOfGames }).forEach(() => {
       this.#players.race();
       this.#players.print();
     });
