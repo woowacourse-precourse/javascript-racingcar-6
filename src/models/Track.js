@@ -23,18 +23,13 @@ class Track {
 
   async moveCarsCheckCondition() {
     const movePromises = this.#cars.map((car) => this.checkCarMove(car));
-
     const results = await Promise.all(movePromises);
 
-    for (let i = 0; i < this.#cars.length; i++) {
-      let canCarMove = results[i];
-      let car = this.#cars[i];
-
-      console.log(canCarMove);
+    results.forEach((canCarMove, index) => {
       if (!canCarMove) return;
 
-      car.moveForward();
-    }
+      this.#cars[index].moveForward();
+    });
   }
 
   getCars() {
