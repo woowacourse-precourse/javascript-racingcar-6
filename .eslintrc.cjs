@@ -12,6 +12,7 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
+    'import/extensions': ['error', 'ignorePackages'],
     'max-depth': ['error', 2],
     'no-unused-vars': 'error',
     'no-console': 'error',
