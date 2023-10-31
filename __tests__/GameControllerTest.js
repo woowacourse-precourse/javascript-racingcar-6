@@ -59,15 +59,15 @@ describe('✨ [GameController] 클래스 메서드 테스트 ', () => {
 
   describe('✨ 예외처리 테스트', () => {
     test('[checkValidatePlayer] player가 2명 미만인 경우 에러를 발생한다.', () => {
-      const player = ['Reason'];
+      const players = ['Reason'];
 
-      expect(() => controller.checkValidatePlayer(player)).toThrow(
+      expect(() => controller.checkValidatePlayer(players)).toThrow(
         ERROR_MESSAGE.PLAYER_COUNT,
       );
     });
 
     test('[checkValidatePlayer] player가 10명을 초과한 경우 에러를 발생한다.', () => {
-      const player = [
+      const players = [
         'Reason',
         'Reason2',
         'R2ASON',
@@ -81,8 +81,16 @@ describe('✨ [GameController] 클래스 메서드 테스트 ', () => {
         'nyang',
       ];
 
-      expect(() => controller.checkValidatePlayer(player)).toThrow(
+      expect(() => controller.checkValidatePlayer(players)).toThrow(
         ERROR_MESSAGE.PLAYER_COUNT,
+      );
+    });
+
+    test('[checkValidatePlayer] player의 이름이 중복된 경우 에러를 발생한다.', () => {
+      const players = ['REASON', 'REASON'];
+
+      expect(() => controller.checkValidatePlayer(players)).toThrow(
+        ERROR_MESSAGE.DUPLICATION,
       );
     });
   });
