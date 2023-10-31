@@ -2,6 +2,8 @@ import { MESSAGES, ERROR_MESSAGES } from "../constants/Messages.js";
 import { Console } from "@woowacourse/mission-utils";
 
 export default class RaceView {
+  static isResultMessagePrinted = false;
+
   static displayCarNamesInput() {
     Console.print(MESSAGES.INPUT_CARNAME);
   }
@@ -11,10 +13,16 @@ export default class RaceView {
   }
 
   static displayRaceResult(cars) {
-    Console.print(MESSAGES.RESULT);
+    if (!RaceView.isResultMessagePrinted) {
+      Console.print(MESSAGES.RESULT);
+      RaceView.isResultMessagePrinted = true;
+    }
+
     cars.forEach((car) => {
       Console.print(`${car.name}: ${"-".repeat(car.distance)}`);
     });
+
+    Console.print("");
   }
 
   static displayWinners(winners) {
@@ -22,6 +30,6 @@ export default class RaceView {
   }
 
   static displayError(error) {
-    Console.print(`${ERROR_MESSAGES[error]} or [ERROR] ${error}`);
+    Console.print(`${ERROR_MESSAGES[error]}`);
   }
 }

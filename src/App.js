@@ -1,5 +1,5 @@
 // App.js
-import RaceController from "./src/controllers/RaceController.js";
+import RaceController from "./controllers/RaceController.js";
 class App {
   constructor() {
     this.raceController = new RaceController();
