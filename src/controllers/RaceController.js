@@ -3,16 +3,16 @@ class RaceController {
   static RESULT_NOTIFICATION = "실행 결과";
 
   createNumber = (carList) => {
-    const numberList = [];
-    for (let i = 0; i < carList.length; i++) {
-      numberList.push(Random.pickNumberInRange(0, 9));
+    for (const car in carList) {
+      const moveNum = Random.pickNumberInRange(0, 9);
+      carList[car] = moveNum;
     }
-    return numberList;
+    return carList;
   };
 
   moveCar = (inputChance, carList) => {
     for (let i = 0; i < inputChance; i++) {
-      console.log(this.createNumber(carList));
+      const number = this.createNumber(carList);
     }
   };
 }

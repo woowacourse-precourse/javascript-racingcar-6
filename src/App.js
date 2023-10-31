@@ -8,7 +8,6 @@ class App {
     const raceController = new RaceController();
     const carList = await carModel.startGame();
     const inputChance = await playerModel.inputChance();
-    console.log(inputChance);
     raceController.moveCar(inputChance, carList);
   }
 }

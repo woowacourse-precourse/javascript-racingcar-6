@@ -8,14 +8,14 @@ class CarModel {
     const inputCarName = await Console.readLineAsync(
       CarModel.INPUT_CARNAME_MESSAGE,
     );
-    this.carList = inputCarName.split(",");
-    console.log(this.carList);
-    return this.carList;
+    const carNames = inputCarName.split(",");
+    const carList = {};
+    carNames.forEach((name) => {
+      carList[name] = 0;
+    });
+    console.log(carList);
+    return carList;
   }
-
-  getCarList = () => {
-    return this.carList;
-  };
 }
 
 export default CarModel;
