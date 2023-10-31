@@ -1,5 +1,5 @@
 import { random } from "../util/RandomNum";
-import { racingOutput } from "../views/OutputView";
+import { printWinner, racingOutput } from "../views/OutputView";
 
 //입력받은 count에 따라 반복
 export const runByCount = (cars, count) => {
@@ -19,6 +19,21 @@ export const runRace = (cars) => {
   carNames.forEach((carName, index) => {
     cars[carName] += randomNums[index] >= 4 ? '-' : '';
   });
+  findWinner(cars);
 
   return cars;
+};
+
+const findWinner = (cars) => {
+  let maxDistance = -1;
+  let winner = '';
+
+  Object.entries(cars).forEach(([carName, distance], index) => {
+    const dashCount = distance.length;
+    if (dashCount > maxDistance) {
+      maxDistance = dashCount;
+      winner = carName;
+    }
+  });
+  printWinner(winner);
 };
