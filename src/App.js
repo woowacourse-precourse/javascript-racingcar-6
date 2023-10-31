@@ -5,18 +5,11 @@ class App {
   async play() {
     try {
       const carNamesString = await this.getUserInputCarNames();
+      const validationErrorMessage = CarNameValidator.validate(carNamesString);
+      if (validationErrorMessage) {
+        throw new Error(validationErrorMessage);
+      }
 
-      const isCarNameLengthValid =
-        CarNameValidator.isValidLength(carNamesString);
-      const isCarNameUnique = CarNameValidator.isUnique(carNamesString);
-      if (!isCarNameLengthValid) {
-        throw new Error(
-          '[ERROR] 자동차 이름은 1자 이상 5자 이하만 가능합니다.'
-        );
-      }
-      if (!isCarNameUnique) {
-        throw new Error('[ERROR] 자동차 이름은 중복이 없어야 합니다.');
-      }
       const attemptForwardCount = await this.getUsetInputForwardCount();
       Console.print(attemptForwardCount);
     } catch (error) {
