@@ -140,11 +140,18 @@ class Track {
    * @returns {string[]} 우승자 이름 목록
    */
   getCurrentWinners() {
-    const distances = Array.from(this.#users, (user) => user.getCar().getDistance());
-    const winningDistance = Math.max(...distances);
-    const winners = this.#users.filter((user) => user.getCar().getDistance() === winningDistance);
+    let winningDistance = 0;
 
-    return Array.from(winners, (winner) => winner.getName());
+    const result = this.#users.reduce((winners, user) => {
+      const userDistance = user.getCar().getDistance();
+      if (userDistance > winningDistance) {
+        winningDistance = userDistance;
+        return [user.getName()];
+      }
+      return userDistance === winningDistance ? [...winners, user.getName()] : winners;
+    }, []);
+
+    return result;
   }
 
   /**
