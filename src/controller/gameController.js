@@ -20,7 +20,7 @@ class GameController {
 
     const inputNumber = await this.input.getNumberOfAttempt();
     const numberOfAttempt = new NumberOfAttempt(inputNumber);
-
+    this.output.printGameResult();
     while (!numberOfAttempt.isFinished()) {
       this.racingcars.moveAllCars();
       this.output.printCarStatusResult(this.racingcars.getCars());
