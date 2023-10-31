@@ -10,6 +10,9 @@ class App {
     MissionUtils.Console.print(`${RESULT_MESSAGE}`);
     getMatchResult(cars, trialCountNumber);
     const winners = getWinnerArray(cars);
+    MissionUtils.Console.print(
+      `${FINAL_WINNER_MESSAGE} ${COLON} ${winners.join(", ")}`
+    );
   }
 }
 
