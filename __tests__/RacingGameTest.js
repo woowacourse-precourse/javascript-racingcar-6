@@ -29,9 +29,7 @@ const mockSettingCars = (carsNamesInput) => {
 };
 
 describe('레이싱 게임 플레이와 관련된 함수 테스트', () => {
-  const racingGame = new RacingGame(
-    mockSettingCars('테스트1, 테스트2, 테스트3'),
-  );
+  const racingGame = new RacingGame(mockSettingCars('테스트1,테스트2,테스트3'));
 
   // getRacingCount 함수 테스트
   test('게임 시도 횟수를 숫자로 변환하여 반환하는지 테스트', async () => {
@@ -55,7 +53,7 @@ describe('레이싱 게임 플레이와 관련된 함수 테스트', () => {
   test('자동차 전진(이동) 테스트', () => {
     const MOVE_NUMBER = 5;
     const STAY_NUMBER = 1;
-    const controlRandoms = [MOVE_NUMBER, STAY_NUMBER];
+    const controlRandoms = [MOVE_NUMBER, STAY_NUMBER, MOVE_NUMBER];
 
     mockRandoms([...controlRandoms]);
     racingGame.playRacing();
@@ -63,9 +61,9 @@ describe('레이싱 게임 플레이와 관련된 함수 테스트', () => {
     racingGame.carsList.forEach((car, index) => {
       if (controlRandoms[index] === MOVE_NUMBER) {
         expect(car.location).toBe(1);
+      } else {
+        expect(car.location).toBe(0);
       }
-
-      expect(car.location).toBe(0);
     });
   });
 });
