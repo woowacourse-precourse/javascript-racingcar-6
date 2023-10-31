@@ -1,9 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
-import carValidate from './validation/Car.js';
-import carMessages from './messages/Car.js';
-
-import tryValidate from './validation/Try.js';
-import tryMessage from './messages/Try.js';
+import { carMessages, tryMessage } from './Messages';
+import { carValidate, tryValidate } from './Validation';
 
 export const getCarName = async () => {
   const carName = await Console.readLineAsync(carMessages.INPUT);

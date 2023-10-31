@@ -1,4 +1,5 @@
 import App from "../src/App.js";
+import { carMessages } from "../src/Messages.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 const mockQuestions = (inputs) => {
@@ -17,7 +18,7 @@ describe("자동차 경주 게임 자동차 입력 테스트", () => {
 
     const app = new App();
 
-    await expect(app.play()).rejects.toThrow('[ERROR] 이름은 5글자 이하만 가능합니다.');
+    await expect(app.play()).rejects.toThrow(carMessages.ERROR_FIVE_CHARACTERS);
   });
 
   test("중복 이름 입력", async () => {
@@ -26,7 +27,7 @@ describe("자동차 경주 게임 자동차 입력 테스트", () => {
 
     const app = new App();
 
-    await expect(app.play()).rejects.toThrow('[ERROR] 중복된 이름이 존재합니다.');
+    await expect(app.play()).rejects.toThrow(carMessages.ERROR_DUPLICATE);
   });
 
   test("입력 없음", async () => {
@@ -35,6 +36,6 @@ describe("자동차 경주 게임 자동차 입력 테스트", () => {
 
     const app = new App();
 
-    await expect(app.play()).rejects.toThrow('[ERROR] 공백은 입력할 수 없습니다.');
+    await expect(app.play()).rejects.toThrow(carMessages.ERROR_BLANK_NAME);
   });
 });
