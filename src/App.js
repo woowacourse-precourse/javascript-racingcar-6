@@ -1,18 +1,20 @@
 import printMsg from '../utils/printMsg';
-import racingCarGame from './game';
+import RacingCarGame from './game';
 import MESSAGE from './game/game.message';
 
 class App {
   constructor() {
     this.moveCount = 0;
     this.carStatusArray = [];
+    this.racingMethod = new RacingCarGame();
   }
 
   async ready() {
     const { carNameArray, moveCount } =
-      await racingCarGame.promptToRacingObject();
+      await this.racingMethod.promptToRacingObject();
     this.moveCount = moveCount;
-    this.carStatusArray = racingCarGame.makeCarsWithForwardCount(carNameArray);
+    this.carStatusArray =
+      this.racingMethod.makeCarsWithForwardCount(carNameArray);
   }
 
   async play() {
@@ -20,7 +22,7 @@ class App {
 
     printMsg(MESSAGE.start);
     for (let turn = 0; turn < this.moveCount; turn += 1) {
-      const turnResult = racingCarGame.runRacingTurn(this.carStatusArray);
+      const turnResult = this.racingMethod.runRacingTurn(this.carStatusArray);
       this.carStatusArray = turnResult;
     }
 
@@ -28,7 +30,7 @@ class App {
   }
 
   finish() {
-    racingCarGame.printWinner(this.carStatusArray);
+    this.racingMethod.printWinner(this.carStatusArray);
   }
 }
 

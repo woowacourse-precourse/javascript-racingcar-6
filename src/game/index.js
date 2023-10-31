@@ -7,7 +7,7 @@ import PROMPT_PHASE from './game.promptPhase';
 import gameUtils from './game.utils';
 import VALIDATION_CONDITION from './game.validation';
 
-const racingCarGame = {
+class RacingCarGame {
   async promptToRacingObject() {
     const carNameArray = (await prompt(PROMPT_PHASE.carName))
       .replace(REGEX.space, '')
@@ -18,18 +18,18 @@ const racingCarGame = {
     racingGameValidationMethods.validateMoveCount(moveCount);
 
     return { carNameArray, moveCount: Number(moveCount) };
-  },
+  }
 
   makeCarsWithForwardCount(carNameArray) {
     if (!Array.isArray(carNameArray)) {
       throw new Error('[ERROR] 인자는 배열이여야 합니다.');
     }
     return carNameArray.map((name) => ({ name, forwardCount: 0 }));
-  },
+  }
 
   checkForwardCondition(number, { min, max }) {
     return number >= min && number <= max;
-  },
+  }
 
   increaseForwardCountRandomly(carStatusArray) {
     if (!Array.isArray(carStatusArray)) {
@@ -54,7 +54,7 @@ const racingCarGame = {
       }
       return car;
     });
-  },
+  }
 
   printRacingTurn(carStatusArray) {
     let racingTurnResult = '';
@@ -64,14 +64,14 @@ const racingCarGame = {
       )}\n`;
     });
     printMsg(racingTurnResult);
-  },
+  }
 
   runRacingTurn(carStatusArray) {
     const turnResultStatus = this.increaseForwardCountRandomly(carStatusArray);
     this.printRacingTurn(turnResultStatus);
 
     return turnResultStatus;
-  },
+  }
 
   getWinner(carStatusArray) {
     const winnerArray = [];
@@ -84,10 +84,10 @@ const racingCarGame = {
       if (car.forwardCount === maxCount) winnerArray.push(car.name);
     });
     return winnerArray;
-  },
+  }
 
   printWinner(carStatusArray) {
     printMsg(`${MESSAGE.result} ${this.getWinner(carStatusArray).join(', ')}`);
-  },
-};
-export default racingCarGame;
+  }
+}
+export default RacingCarGame;
