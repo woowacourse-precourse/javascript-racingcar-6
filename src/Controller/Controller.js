@@ -1,5 +1,6 @@
 import Car from '../Model/Car.js';
 import Track from '../Model/Track.js';
+import Winner from '../Model/Winners.js';
 import inputView from '../view/inputView.js';
 import outputView from '../view/outputView.js';
 
@@ -8,9 +9,12 @@ export default class Controller {
 
   #track;
 
+  #winner;
+
   constructor() {
     this.#car = new Car();
     this.#track = new Track();
+    this.#winner = new Winner();
   }
 
   async preRace() {
@@ -40,6 +44,8 @@ export default class Controller {
       return this.handleStatusOutput();
     }
     if (!this.#track.compareTrackCount()) {
+      this.handleWinner();
+
       return 0;
     }
   }
@@ -49,5 +55,11 @@ export default class Controller {
     this.#track.plusCurrentTrackCount();
 
     return this.startRace();
+  }
+
+  handleWinner() {
+    this.#winner.setWinners(this.#car.getCarsName(), this.#car.getCarsPosition());
+
+    return outputView.printWinners(this.#winner.getWinner());
   }
 }

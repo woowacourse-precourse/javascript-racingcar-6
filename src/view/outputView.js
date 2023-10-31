@@ -13,6 +13,10 @@ const outputView = {
     });
     Console.print(MESSAGE.newline);
   },
+
+  printWinners(winners) {
+    Console.print(`${MESSAGE.winner} ${winners.join(', ')}`);
+  },
 };
 
 export default outputView;
