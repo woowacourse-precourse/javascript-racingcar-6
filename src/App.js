@@ -36,6 +36,36 @@ class App {
     }, {});
   }
 
+  moveCar(name, moves) {
+    if (MissionUtils.Random.pickNumberInRange(0, 9) >= 4) {
+      return moves + "-";
+    }
+    return moves;
+  }
+  
+  printCarStatus(name, moves) {
+    MissionUtils.Console.print(`${name} : ${moves}`);
+  }
+  
+  raceOneRound(carStatus) {
+    for (const [name, moves] of Object.entries(carStatus)) {
+      carStatus[name] = this.moveCar(name, moves);
+      this.printCarStatus(name, carStatus[name]);
+    }
+  }
+
+  raceCars(carStatus, moveTimes) {
+    for (let i = 0; i < moveTimes; i++) {
+      for (const [name, moves] of Object.entries(carStatus)) {
+        if (MissionUtils.Random.pickNumberInRange(0, 9) >= 4) {
+          carStatus[name] += "-";
+        }
+        MissionUtils.Console.print(`${name} : ${carStatus[name]}`);
+      }
+    }
+    this.declareWinners(carStatus);
+  }
+
 }
 
 export default App;
