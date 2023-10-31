@@ -13,7 +13,25 @@ export class RaceGameController {
   /**
    * 레이싱 게임을 실행하는 메소드
    */
-  async game() {}
+  async game() {
+    const CAR_INPUT = await this.#view.get_car_input();
+    this.#set_race_cars(CAR_INPUT);
+
+    const TRY_INPUT = await this.#view.get_try_input();
+    this.#set_try(TRY_INPUT);
+
+    this.#view.print_string("실행 결과");
+
+    for (let i = 0; i < this.#model.get_try(); ++i) {
+      this.#race();
+      this.#view.print_racing(this.#model.get_race_cars());
+    }
+
+    this.#set_winners(this.#model.get_race_cars());
+
+    const WINNER_STR = this.#get_winners_str(this.#model.get_winners());
+    this.#view.print_race_result(WINNER_STR);
+  }
 
   /**
    * try 문자열에 대해 검증하는 메소드
