@@ -29,8 +29,8 @@ describe('자동차 경주 게임', () => {
     // given
     const CAR_NAMES = 'pobi,woni';
     const MOVE_COUNT = '1';
-    MissionUtils.Console.readLineAsync = jest.fn();
-    MissionUtils.Console.readLineAsync
+    MissionUtils.Console.readLineAsync = jest
+      .fn()
       .mockReturnValueOnce(CAR_NAMES) // 경주할 자동차 이름
       .mockReturnValueOnce(MOVE_COUNT); // 시도할 횟수
 
