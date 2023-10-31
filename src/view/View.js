@@ -15,17 +15,17 @@ export async function carNameInput() {
 }
 
 export function printStartResult() {
-  Console.print(MESSAGE_NOTIFICATION.startResult);
+  return Console.print(MESSAGE_NOTIFICATION.startResult);
 }
 
 export function printMoveResult(name, advance) {
-  Console.print(`${name} : ${"-".repeat(advance)}`);
+  return Console.print(`${name} : ${"-".repeat(advance)}`);
 }
 
 export function printLine() {
-  Console.print("");
+  return Console.print("");
 }
 
 export function printRacingResult(winner) {
-  Console.print(`${MESSAGE_NOTIFICATION.racingResult}${winner}`);
+  return Console.print(`${MESSAGE_NOTIFICATION.racingResult}${winner}`);
 }
