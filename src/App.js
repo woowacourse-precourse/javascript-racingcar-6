@@ -1,26 +1,29 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
+const GET_ATTEMPT_MESSAGE = "시도할 횟수는 몇 회인가요?";
+const GET_CARS_MESSAGE = "경주할 자동차 이름을 입력하세요 (5자 이하): ";
+const CARNAME_ERROR =
+	"[ERROR] 자동차 이름이 잘못된 형식입니다. (5자 이하만 가능)";
+const ATTEMPT_NUMBER_ERROR = "[ERROR] 숫자 형식이 아닙니다.";
+const WINNER_IS = "최종 우승자 : ";
+
 class App {
 	async play() {
 		const cars = await this.getCarNamesFromUser();
-		await MissionUtils.Console.print("시도할 횟수는 몇 회인가요?");
+		await MissionUtils.Console.print(GET_ATTEMPT_MESSAGE);
 		const attempts = await this.getAttemptsFromUser();
 		await this.getResults(cars, attempts);
 	}
 
 	async getCarNamesFromUser() {
 		const userInputCar = await MissionUtils.Console.readLineAsync();
-		await MissionUtils.Console.print(
-			"경주할 자동차 이름을 입력하세요 (5자 이하): "
-		);
+		await MissionUtils.Console.print(GET_CARS_MESSAGE);
 		const cars = userInputCar.split(",");
 
 		cars.map((carName) => {
 			if (carName.length > 5) {
 				MissionUtils.Console.print(String(cars));
-				throw new Error(
-					"[ERROR] 자동차 이름이 잘못된 형식입니다. (5자 이하만 가능)"
-				);
+				throw new Error(CARNAME_ERROR);
 			}
 		});
 
@@ -35,7 +38,7 @@ class App {
 		if (!isNaN(attempts)) {
 			MissionUtils.Console.print(Number(attempts));
 		} else {
-			throw new Error("[ERROR]");
+			throw new Error(ATTEMPT_NUMBER_ERROR);
 		}
 
 		return Number(attempts);
@@ -71,7 +74,7 @@ class App {
 			await MissionUtils.Console.print(result);
 		}
 
-		console.log("최종 우승자 : " + winners.join(", "));
+		console.log(WINNER_IS + winners.join(", "));
 	}
 }
 
