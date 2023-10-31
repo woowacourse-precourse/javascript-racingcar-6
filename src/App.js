@@ -7,17 +7,17 @@ import {
   FINAL_WINNER_MSG,
   RESULT_MSG,
   FORWARD_CONDITIONS,
-  MIN_PLAYER_NUMBER
+  MIN_PLAYER_NUMBER,
 } from './constant.js';
 
 class App {
-  numberCheck(input) {
+  static numberCheck(input) {
     if (isNaN(input)) {
       throw new Error(INPUT_NUMBER_ERR_MSG);
     }
   }
 
-  playerNumberCheck(array) {
+  static playerNumberCheck(array) {
     if (array.length < MIN_PLAYER_NUMBER) {
       throw new Error(PLAYER_NUMBER_ERR_MSG);
     }
@@ -26,7 +26,7 @@ class App {
   async playerInfoInput() {
     const inputName = await Console.readLineAsync(PLAYER_NAME_ASK_MSG);
     const playerList = inputName.split(',').map(str => str.trim());
-    this.playerNumberCheck(playerList);
+    App.playerNumberCheck(playerList);
 
     return playerList;
   }
@@ -42,12 +42,13 @@ class App {
     return { playerObject, objectKeyList };
   }
 
+  // 게임 시작 및 출력
   gamePlay(playerObject, tryNum, objectKeyList) {
-    for (let i = 0; i < tryNum; i++) {
+    for (let i = 0; i < tryNum; i += 1) {
       objectKeyList.forEach(item => {
         const goForward = Random.pickNumberInRange(0, 9);
         if (goForward >= FORWARD_CONDITIONS) {
-          playerObject[item]++;
+          playerObject[item] += 1;
         }
         Console.print(`${item} : ${'-'.repeat(playerObject[item])}`);
       });
@@ -55,24 +56,13 @@ class App {
     }
   }
 
+  // 우승자 찾기
   findWinner(playerObject, playersKeyList) {
-    let max = 0;
-    const winnerList = [];
+    const scores = playersKeyList.map(player => playerObject[player]);
+    const maxScore = Math.max(...scores);
+    const winners = playersKeyList.filter(player => playerObject[player] === maxScore);
 
-    playersKeyList.forEach(item => {
-      if (playerObject[item] > max) {
-        max = playerObject[item];
-      }
-    });
-
-    playersKeyList.forEach(item => {
-      if (playerObject[item] === max) {
-        winnerList.push(item);
-      }
-    });
-
-    const output = winnerList.join(', ');
-    Console.print(`${FINAL_WINNER_MSG} : ${output}`);
+    Console.print(`${FINAL_WINNER_MSG} : ${winners.join(', ')}`);
   }
 
   async play() {
@@ -81,7 +71,7 @@ class App {
 
     // 시도 횟수 입력
     const numberOfAttempts = Number(await Console.readLineAsync(ATTEMPT_NUM_ASK_MSG));
-    this.numberCheck(numberOfAttempts);
+    App.numberCheck(numberOfAttempts);
 
     Console.print(`\n${RESULT_MSG}`);
 
