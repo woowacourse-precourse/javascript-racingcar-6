@@ -11,9 +11,9 @@ export default class RacingGame {
     let totalScores = initializedCars;
     Console.print('\n실행 결과');
     for (let i = 0; i < rounds; i += 1) {
-      const scores = this.getScore(cars);
-      const result = this.validateScores(scores, totalScores);
-      totalScores = result;
+      const currentScores = this.getDiceScore(cars);
+      const updatedScores = this.validateScores(currentScores, totalScores);
+      totalScores = updatedScores;
       this.printScores(totalScores);
     }
     return this.judge.decideWinner(totalScores);
@@ -27,7 +27,7 @@ export default class RacingGame {
     return initialized;
   }
 
-  getScore(cars) {
+  getDiceScore(cars) {
     const scores = {};
     cars.forEach((car) => {
       scores[car] = Dice.roll();
@@ -35,10 +35,10 @@ export default class RacingGame {
     return scores;
   }
 
-  validateScores(scores, totalScores) {
+  validateScores(currentScores, totalScores) {
     const newScores = { ...totalScores };
-    Object.keys(scores).forEach((car) => {
-      const score = scores[car];
+    Object.keys(currentScores).forEach((car) => {
+      const score = currentScores[car];
       if (score >= 4) newScores[car] += 1;
     });
     return newScores;

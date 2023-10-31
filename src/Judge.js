@@ -8,7 +8,7 @@ export default class Judge {
   }
 
   decideWinner(totalScores) {
-    const max = this.compareScores(totalScores);
+    const max = this.getHigestScore(totalScores);
     const winner = Object.keys(totalScores).filter((player) => {
       const score = totalScores[player];
       return score === max;
@@ -16,7 +16,7 @@ export default class Judge {
     return this.printWinner(winner);
   }
 
-  compareScores(totalScores) {
+  getHigestScore(totalScores) {
     let max = 0;
     Object.keys(totalScores).forEach((player) => {
       const score = totalScores[player];

@@ -10,7 +10,7 @@ export default class User {
     cars.forEach((car) => {
       const carStr = car.toString();
       if (carStr.length > User.MIN_CAR_NAME_LENGTH)
-        throw new Error(ERROR_MESSAGE.CHAR_LENGTH_LIMIT);
+        throw new Error(ERROR_MESSAGE.NAME_LENGTH_LIMIT);
     });
     return cars;
   }
