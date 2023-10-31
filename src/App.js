@@ -8,11 +8,6 @@ import {
 import Car from './Car.js';
 
 class App {
-  constructor() {
-    this.cars = [];
-    this.count = 0;
-  }
-
   checkNullValidation = (el) => {
     if (el === null || el === undefined || el === '') {
       throw new Error(ERRORS.null);
@@ -74,25 +69,36 @@ class App {
     return cars.filter((el) => el.step === maxStep);
   };
 
+  printAllRacingResult = (cars, count) => {
+    Console.print(OUTPUT_MESSAGES.result);
+
+    Array.from({ length: count }).forEach(() => {
+      this.printEachRacingResult(cars);
+    });
+  };
+
+  printOneRacingResult = (cars) => {
+    cars.forEach((car) => {
+      car.makeStepForwardOrStop();
+      Console.print(car.name + ' : ' + '-'.repeat(car.step));
+    });
+  };
+
+  printFinalWinner = (winners) => {
+    Console.print(
+      '최종 우승자 : ' + winners.map((winner) => winner.name).join()
+    );
+  };
+
   async play() {
     try {
-      this.cars = await this.getRacingCarNameInput();
-      this.count = await this.getRacingCountInput();
+      const cars = await this.getRacingCarNameInput();
+      const count = await this.getRacingCountInput();
 
-      Console.print(OUTPUT_MESSAGES.result);
+      this.printRacingResultAll(cars, count);
 
-      Array.from({ length: this.count }).forEach(() => {
-        this.cars.forEach((car) => {
-          car.makeStepForwardOrStop();
-          Console.print(car.name + ' : ' + '-'.repeat(car.step));
-        });
-      });
-
-      const winners = this.calculateFinalWinner(this.cars);
-
-      Console.print(
-        '최종 우승자 : ' + winners.map((winner) => winner.name).join()
-      );
+      const winners = this.calculateFinalWinner(cars);
+      this.printFinalWinner(winners);
     } catch (err) {
       Console.print(err.message);
       throw err;
