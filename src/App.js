@@ -53,8 +53,7 @@ class App {
       game.playGame();
       MissionUtils.Console.print(game.getWinners());
     } catch (error) {
-      console.error(`[ERROR] ${error.message}`);
-      throw error;
+      throw new Error(`[ERROR] ${error.message}`);
     }
   }
 
