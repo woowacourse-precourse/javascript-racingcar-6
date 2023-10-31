@@ -21,4 +21,8 @@ const printCarsCurrentPosition = (cars) => {
 };
 
 export const getMatchResult = (cars, trialCountNumber) => {
+  for (let i = 0; i < trialCountNumber; i += 1) {
+    setCarsMoveCount(cars);
+    printCarsCurrentPosition(cars);
   }
+};
