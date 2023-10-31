@@ -2,6 +2,8 @@
 
 ## 🕹 기능 요구 사항(구현할 기능 목록)
 
+- [x] 게임에 사용되는 message 작성
+
 ### ⌨️ 사용자 입력 받기
 
 - [ ] 경주할 자동차 이름 받기(쉼표(,) 기준으로 구분, 5자 이하)
@@ -26,7 +28,7 @@
 - [ ] `ApplicationTest` 의 모든 테스트 성공
 - [ ] indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현
 - [ ] Jest를 이용하여 내가 정리한 기능 목록이 정상 동작함을 테스트 코드로 확인
-- [ ] `@woowacourse/mission-utils`에서 제공하는 `Random` 및 `Console API`를 사용하여 구현
+- [ ] `@woowacourse/mission-utils`에서 제공하는 `Random` 및 `Console` API를 사용하여 구현
 
 ## 📓 과제 진행 요구 사항
 
