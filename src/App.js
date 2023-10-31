@@ -41,7 +41,7 @@ class App {
 
         this.moveCar(car, this.checkCanMove(randomNumber));
 
-        this.printCurrentResult(car);
+        this.printCurrentResult(car, this.carsRecordBoard);
       }
 
       Console.print("");
@@ -94,8 +94,8 @@ class App {
     }
   }
 
-  printCurrentResult(car) {
-    Console.print(`${car} : ${this.carsRecordBoard[car]}`);
+  printCurrentResult(car, carsRecordBoard) {
+    Console.print(`${car} : ${carsRecordBoard[car]}`);
   }
 
   findWinner(cars, carsRecordBoard, winner) {
