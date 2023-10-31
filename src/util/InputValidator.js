@@ -1,8 +1,8 @@
 import Constant from "./Constant.js";
 import Message from "./Message.js";
 
-const InputValidator = {
-  CarNames(input) {
+class InputValidator {
+  static CarNames(input) {
     // 이름을 , 로 구분 안 한 경우 (미입력)
     if (!input.includes(Constant.COMMA)) {
       throw new Error(Message.ERROR.NAME_SHOULD_SPLIT_BY_COMMA);
@@ -19,14 +19,14 @@ const InputValidator = {
       throw new Error(Message.ERROR.NAME_HAS_REDUNDANCY);
     }
     return carNames;
-  },
-  executionCount(input) {
+  }
+  static executionCount(input) {
     // 실행 횟수를 숫자가 아닌 입력을 한 경우 (미입력)
     if (!Constant.POSITIVE_INT_REGEX.test(input)) {
       throw new Error(Message.ERROR.EXECUTE_COUNT_SHOULD_BE_POSITIVE_INT);
     }
     return Number(input);
-  },
-};
+  }
+}
 
 export default InputValidator;
