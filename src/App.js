@@ -25,7 +25,7 @@ class App {
   }
 
   async inputEntry() {
-    // 자동차 이름 입력 받는 역할
+    // 자동차 이름 입력 받기
     const inputName = await computer.ask(ABOUT.INPUT_NAME);
     const tmpEntry = inputName.split(',');
     validate.carName(tmpEntry);
@@ -33,7 +33,7 @@ class App {
   }
 
   async inputLapLength() {
-    // 실행횟수 입력 받는 역할
+    // 실행횟수 입력 받기
     const inputNumStr = await computer.ask(ABOUT.ASK_LAP);
     validate.lapLength(inputNumStr);
     this.#lapLength = Number(inputNumStr);
