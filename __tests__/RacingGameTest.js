@@ -1,6 +1,5 @@
 import { Console, Random } from '@woowacourse/mission-utils';
 import RacingGame from '../src/RacingGame.js';
-import Validation from '../src/Validation.js';
 import Car from '../src/Car.js';
 import SettingCars from '../src/SettingCars.js';
 
@@ -34,6 +33,7 @@ describe('레이싱 게임 플레이와 관련된 함수 테스트', () => {
     mockSettingCars('테스트1, 테스트2, 테스트3'),
   );
 
+  // getRacingCount 함수 테스트
   test('게임 시도 횟수를 숫자로 변환하여 반환하는지 테스트', async () => {
     const racingCountInput = '5';
     mockRacingCountInput(racingCountInput);
@@ -51,6 +51,7 @@ describe('레이싱 게임 플레이와 관련된 함수 테스트', () => {
     await expect(racingGame.getRacingCount()).rejects.toThrow('[ERROR]');
   });
 
+  // playRacing 함수 테스트
   test('자동차 전진(이동) 테스트', () => {
     const MOVE_NUMBER = 5;
     const STAY_NUMBER = 1;
@@ -63,7 +64,7 @@ describe('레이싱 게임 플레이와 관련된 함수 테스트', () => {
       if (controlRandoms[index] === MOVE_NUMBER) {
         expect(car.location).toBe(1);
       }
-      
+
       expect(car.location).toBe(0);
     });
   });
