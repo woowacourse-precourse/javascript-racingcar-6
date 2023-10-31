@@ -41,3 +41,18 @@ describe('findWinner', () => {
     expect(WINNER).toBe('최종 우승자 : jin, max');
   });
 });
+
+describe('playerMoveCount', () => {
+  test('생성된 Random number가 4 이상이라면, moveAttempts를 증가시킨다.', () => {
+    // given
+    mockRandoms([4]);
+    const player = { name: 'jeong', moveAttempts: 0 };
+
+    // when
+    const app = new App();
+    app.playerMoveCount(player);
+
+    // then
+    expect(player.moveAttempts).toBe(1);
+  });
+});
