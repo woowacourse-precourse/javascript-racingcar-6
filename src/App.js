@@ -1,6 +1,10 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import Car from "./Car.js";
-import { validateCarName, validateCarNumber } from "./validator.js";
+import {
+  validateCarName,
+  validateCarNumber,
+  validateRoundNum,
+} from "./validator.js";
 
 class App {
   async play() {
@@ -19,6 +23,7 @@ class App {
     const roundNum = await MissionUtils.Console.readLineAsync(
       "시도할 횟수는 몇 회인가요?\n"
     );
+    validateRoundNum(roundNum);
 
     MissionUtils.Console.print(`\n실행 결과`);
     for (let i = 0; i < roundNum; i += 1) {

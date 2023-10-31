@@ -1,3 +1,5 @@
+import { Console, MissionUtils } from "@woowacourse/mission-utils";
+
 export const validateCarNumber = (carArray) => {
   if (carArray.length < 2) {
     throw new Error("[ERROR] 자동차 2대 이상부터 경주를 할 수 있습니다.");
@@ -18,5 +20,17 @@ export const validateCarName = (carArray) => {
       );
     }
   });
+  return true;
+};
+
+export const validateRoundNum = (roundNum) => {
+  let round = Number(roundNum);
+  MissionUtils, Console.print(round);
+  if (isNaN(round)) {
+    throw new Error("[ERROR] 시도할 횟수는 숫자여야 합니다.");
+  }
+  if (round <= 0 || round > 9) {
+    throw new Error("[ERROR] 시도할 횟수는 1~9 사이의 정수여야 합니다.");
+  }
   return true;
 };
