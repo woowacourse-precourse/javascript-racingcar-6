@@ -19,14 +19,14 @@
     (`validateRacingCount` 함수로 입력받은 문자열을 검증한다.)
     (`ErrorMessage` 클래스로 custom error를 발생시킨다.)
     
-## [ ] 기능 3: 자동차 경주 실행
+## [✅] 기능 3: 자동차 경주 실행
 - 기능 2번에서 입력받은 횟수 동안 각 자동차들은 전진 또는 멈출 수 있다.
 - 전진하는 조건은 0에서 9 사이에서 무작위 값을 구한 후 무작위 값이 4 이상일 경우이다.
   - Random 값 추출은 [@woowacourse/mission-utils](https://github.com/woowacourse-projects/javascript-mission-utils#mission-utils)의 `Random.pickNumberInRange()`를 활용한다.
   (`RacingCar` 클래스에서 전진 기능을 구현하고 전진한 정도를 저장한다.)
 
 
-## [ ] 기능 4: 각 차수별 실행 결과 출력
+## [✅] 기능 4: 각 차수별 실행 결과 출력
 - 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
 (`RacingCar` 클래스에 할당되어 있는 이름을 출력한다.)
 - 한 칸을 전진했을 때, 하이픈(-)으로 전진한 횟수를 출력한다.
@@ -42,7 +42,7 @@
 - 가장 많이 전진한 자동차가 우승자이다.
   - 우승자는 단독/공동 우승자 경우로 구분되어야 한다.
   - 공동 우승자일 경우, 쉼표(,)를 이용하여 구분한다.
-  (`getWinner` 함수로 입력받은 car 중 우승자를 출력한다.)
+  (`displayWinner` 함수로 입력받은 car 중 우승자를 출력한다.)
 
 # **프로그래밍 요구사항 목록**
 
