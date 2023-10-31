@@ -22,6 +22,12 @@ function race(cars, attempts) {
   }
 }
 
+function printWinners(winners) {
+  return winners
+    ? ScoreBoard.announceWinners(winners)
+    : ScoreBoard.announceRaceInvalidated();
+}
+
 class App {
   async play() {
     const cars = await ReceptionDesk.registerRacingCars();
@@ -30,8 +36,9 @@ class App {
 
     printRaceStatusMessage();
     race(cars, attempts);
+
     const winners = Referee.checkWinners(cars);
-    ScoreBoard.announceWinners(winners);
+    printWinners(winners);
   }
 }
 
