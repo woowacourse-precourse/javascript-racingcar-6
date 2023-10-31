@@ -13,7 +13,12 @@ class App {
     );
     const carNames = input.split(",");
     this.validateCarNames(carNames);
-    }
+
+    this.roundCount = await Console.readLineAsync(
+      "시도할 횟수는 몇 회인가요?\n"
+    );
+    let carPositions = this.resetCarPositions(carNames);
+  }
   
   validateCarNames(carNames) {
     for (let carName of carNames) {
@@ -22,5 +27,14 @@ class App {
       }
     }
   };
+
+  resetCarPositions(carNames) {
+    let carPositions = new Map();
+    for (let carName of carNames) {
+      carPositions.set(carName, 0);
+    }
+    return carPositions;
+  };
 }
+
 export default App;
