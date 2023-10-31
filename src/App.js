@@ -59,11 +59,19 @@ class App {
   }
 
   validateCountNumber(count) {
+    if (count.length === 0) {
+      throw new Error('[ERROR] 시도할 횟수를 입력해 주세요');
+    }
+
     if (count === '0') {
       throw new Error('[ERROR] 시도할 횟수는 1회 이상 입력해 주세요');
     }
 
     if (/[^1-9]/.test(count)) {
+      throw new Error('[ERROR] 숫자만 입력 가능합니다.');
+    }
+  }
+
   validateContinuousComma(word) {
     if (/,,+/.test(word)) {
       throw new Error(
