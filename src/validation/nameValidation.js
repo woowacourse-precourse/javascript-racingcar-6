@@ -38,8 +38,7 @@ export const validateDisplayWinner = (racecarScores, cars) => {
   if (highestScoringCars.length === 1) {
     resultMessage += highestScoringCars[0];
   } else {
-    Console.print(`우승자 : 없음`);
-    return Console.readLineAsync(message.START_MESSAGE);
+    return Console.print(`우승자 : 없음`);
   }
 
   if (highestScoringCars.length > 1) {
