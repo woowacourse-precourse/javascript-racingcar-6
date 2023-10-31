@@ -1,4 +1,5 @@
 import Car from '../src/model/Car';
+import CarRace from '../src/model/CarRace';
 
 describe('ClassTest', () => {
   describe('자동차 클래스(Car) 테스트', () => {
@@ -25,6 +26,22 @@ describe('ClassTest', () => {
         car.moveCount = num;
         car.forward();
         expect(car.moveCount).toBe(num + 1);
+      });
+    });
+  });
+  describe('자동차 경주 클래스(CarRace) 테스트', () => {
+    test('자동차 경주 인스턴스 생성 테스트', () => {
+      const carRace = new CarRace(['test1', 'test2', 'test3']);
+      expect(carRace.cars.length).toBe(3);
+      expect(carRace.cars[0].name).toBe('test1');
+      expect(carRace.cars[1].name).toBe('test2');
+      expect(carRace.cars[2].name).toBe('test3');
+    });
+    test('자동차 경주 메소드 자동차 이름에 따른 차량 생성 테스트', () => {
+      const carNames = ['test1', 'test2', 'test3', 'test4', 'test5'];
+      const carRace = new CarRace(carNames);
+      carRace.cars.forEach((car, index) => {
+        expect(car.name).toEqual(carNames[index]);
       });
     });
   });
