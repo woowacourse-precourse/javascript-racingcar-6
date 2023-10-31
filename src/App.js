@@ -17,7 +17,6 @@ class App {
     const cars = race.createRaceCars(inputCarName);
     race.playRace(cars, inputPlayCount);
 
-    Console.print(cars);
     Console.print(`최종 우승자 : ${race.winner(cars)}`);
   }
 }
