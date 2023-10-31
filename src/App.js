@@ -6,13 +6,13 @@ class App {
   }
   async play() {
     while (this.gameStatus) {
-      // 1. 이름 입력하세요 콘솔
+      // 이름 입력
       const nameOfCars = await MissionUtils.Console.readLineAsync(
         "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
       );
       let cars = this.checkNameOfCarsLength(nameOfCars);
 
-      // 2. 시도할 횟수는 몇 회인가요 콘솔
+      // 시도할 횟수
       const tryNumber = await MissionUtils.Console.readLineAsync(
         "시도할 횟수는 몇 회인가요?"
       );
@@ -28,7 +28,6 @@ class App {
     }
   }
 
-  // + 이름 5자 이하. 쉼표로 구분.
   checkNameOfCarsLength(nameOfCars) {
     const cars = nameOfCars.split(",");
     for (let i = 0; i < cars.length; i++) {
@@ -48,27 +47,22 @@ class App {
     if (tryNumber === null) {
       throw Error("[ERROR] 시도 횟수를 입력해주세요");
     }
-    if (typeof tryNumber !== "number") {
-      throw Error("[ERROR] 숫자를 입력해주세요");
-    }
   }
-  // 무작위 값 각 이름마다 생성
+
   getRandomNumberForEachCar() {
     return MissionUtils.Random.pickNumberInRange(0, 9);
   }
 
-  // "-" 생성 함수
   forwardsymbol(count) {
     return "-".repeat(count);
   }
 
-  //- 전진 하는지 안하는지 count 함수
   forwardCount() {
     const randomNumber = this.getRandomNumberForEachCar();
     return randomNumber >= 4;
   }
 
-  // 전진 또는 정지 결과 출력
+  // 전진-정지
   async forwardRacingCar(cars, tryNumber) {
     let results = [];
     for (let raceCount = 0; raceCount < tryNumber; raceCount++) {
@@ -85,7 +79,6 @@ class App {
     }
   }
 
-  // 최종 우승자 출력
   async consoleWhoIsTheWinner(cars) {
     const maxDashes = Math.max(...cars.map((car) => car.length));
     const winners = cars.filter((car) => car.length === maxDashes);
