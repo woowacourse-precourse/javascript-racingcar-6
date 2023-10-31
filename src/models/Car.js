@@ -23,7 +23,6 @@ class Car {
 
   moveForward() {
     this.#distance += 1;
-    console.log(this.#distance);
   }
 }
 

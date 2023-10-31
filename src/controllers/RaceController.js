@@ -2,6 +2,7 @@ import { Console } from '@woowacourse/mission-utils';
 import Car from '../models/Car.js';
 import Track from '../models/Track.js';
 import DisplayView from '../views/DisplayView.js';
+import { Messages } from '../constants/Messages.js';
 class RaceController {
   /** @type {Track} */
   #race;
@@ -10,9 +11,7 @@ class RaceController {
   #round;
 
   async startLine() {
-    const carNamesInput = await Console.readLineAsync(
-      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
-    );
+    const carNamesInput = await Console.readLineAsync(Messages.INPUT_CAR_NAMES);
     const carNames = carNamesInput.split(',');
     const cars = carNames.map((carName) => new Car(carName));
     this.#race = new Track(cars);
