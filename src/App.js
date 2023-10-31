@@ -12,6 +12,7 @@ class App {
   async play() {
     await this.setupGame();
     await this.playRound();
+    this.showResult();
   }
 
   async setupGame() {
@@ -23,6 +24,10 @@ class App {
 
   async playRound() {
     await this.roundLog.printAllRoundLog();
+  }
+
+  showResult() {
+    this.gameResult.printGameResult();
   }
 }
 
