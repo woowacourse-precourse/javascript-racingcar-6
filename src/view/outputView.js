@@ -1,13 +1,12 @@
-import printMessage from '../common/utils/messagePrinter.js';
-import { LOG_MESSAGE, ERROR_MESSAGE } from '../common/utils/constants/message.js';
-import { STRING } from '../common/utils/constants/value.js';
+import { printMessage } from '../common/utils.js';
+import { GAME_SETTING, LOG_MESSAGE, ERROR_MESSAGE } from '../common/constants.js';
 
 export const printResult = () => {
   printMessage(LOG_MESSAGE.SHOW_RESULT);
 }
 
 export const printCar = (name, position) => {
-  printMessage(`${name} : ${STRING.MOVE_FORWARD_POSITION.repeat(position)}`);
+  printMessage(`${name} : ${GAME_SETTING.MOVE_FORWARD_POSITION.repeat(position)}`);
 }
 
 export const printWinner = (winner) => {

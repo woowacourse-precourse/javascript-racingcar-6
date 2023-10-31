@@ -1,7 +1,6 @@
 /* eslint-disable max-lines-per-function */
 import { Console } from '@woowacourse/mission-utils';
-import printMessage from '../../src/common/utils/messagePrinter.js';
-import throwError from '../../src/common/utils/errorHandler.js';
+import { printMessage, throwError } from '../../src/common/utils';
 
 describe('메시지 출력 테스트', () => {
   test('메시지 출력 가능 여부', () => {
