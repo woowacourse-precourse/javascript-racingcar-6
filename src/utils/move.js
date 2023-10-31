@@ -8,3 +8,7 @@ const checkNumber = (number) => {
   return number >= 4;
 };
 
+export const moveCount = () => {
+  const number = getNumber();
+  return checkNumber(number);
+};
