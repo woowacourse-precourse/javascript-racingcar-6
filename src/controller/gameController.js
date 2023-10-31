@@ -17,7 +17,7 @@ class GameController {
 
     while (!numberOfAttempt.isFinished()) {
       this.racingcars.moveAllCars();
-      this.racingcars.forEach((car) => {
+      this.racingcars.getCars().forEach((car) => {
         Console.print(`${car.getName()} : ${"-".repeat(car.getMoveCount())}`);
       });
       numberOfAttempt.decrease();
