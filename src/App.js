@@ -13,7 +13,7 @@ class App {
     await this.getPlayCount();
     
     // 2. 게임 진행
-    this.gameStart();
+    await this.gameStart();
   }
   async getCarNames(){
     // 1-1. 자동차 이름을 입력받기
@@ -36,11 +36,12 @@ class App {
     }
     this.gameCount = playCountInput;
   }
-  gameStart(){
+  async gameStart() {
     // 3. 자동차 이동
-    this.carList.forEach((car) => {
-      car.move();
-    })
+    for (const car of this.carList) {
+      await car.move();
+    }
+    
   }
   isValidCarName(carName){
     // 이름에 없는 경우 ex) ,,tom,elice
