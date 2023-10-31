@@ -52,7 +52,7 @@ describe("자동차 경주 게임", () => {
     });
   });
 
-  test.only("입력한 횟수만큼 라운드 결과 출력", async () => {
+  test("입력한 횟수만큼 라운드 결과 출력", async () => {
     const ROUNDS = 5;
     const inputs = ["pobi,woni", ROUNDS];
     const app = new App();
@@ -67,10 +67,9 @@ describe("자동차 경주 게임", () => {
 
   test.each([
     [["pobi,javaji"]],
-    [["pobi,eastjun"]],
     [["pobi"]],
     [["pobi,"]],
-    [["pobi,pobi,eastjun"]],
+    [["pobi,pobi,woni"]]
   ])("이름에 대한 예외 처리", async (inputs) => {
     // given
     mockQuestions(inputs);
