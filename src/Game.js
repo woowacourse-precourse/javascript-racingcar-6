@@ -41,7 +41,6 @@ class Game {
   }
 
   mostMoved() {
-    this.printRound();
     const mostMoved = [];
     let maxLength = 0;
 
@@ -52,12 +51,26 @@ class Game {
       }
       if (valueLength > maxLength) {
         maxLength = valueLength;
-        mostMoved.length = 0;
+        mostMoved.splice(0, mostMoved.length);
         mostMoved.push(key);
       }
     });
 
     return mostMoved;
+  }
+
+  playGame() {
+    let mostMovedCars = new Set();
+
+    for (let i = 0; i < this.count; i += 1) {
+      MissionUtils.Console.print('\n');
+      this.printRound();
+
+      mostMovedCars = this.mostMoved();
+    }
+
+    const finalWinners = [...mostMovedCars].join(', ');
+    MissionUtils.Console.print(`\n최종 우승자: ${finalWinners}`);
   }
 }
 

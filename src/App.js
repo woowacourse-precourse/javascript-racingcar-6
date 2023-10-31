@@ -15,8 +15,9 @@ class App {
       const carNames = await cars.getCarsNames();
       const count = await playCount.getPlayCount();
       const game = new Game(carNames, count);
-      const result = game.mostMoved();
-      MissionUtils.Console.print(result);
+      // const result = game.mostMoved();
+      // MissionUtils.Console.print(result);
+      game.playGame();
     } catch (error) {
       throw new Error(error);
     }
