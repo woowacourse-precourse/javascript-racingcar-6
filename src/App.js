@@ -1,5 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import checkCarNameLength from "./checkCarNameLength";
+import checkValidRounds from "./checkValidRounds";
 
 class App {
   async play() {
@@ -15,6 +16,7 @@ class App {
     const ROUNDS = await MissionUtils.Console.readLineAsync(
       "시도할 횟수는 몇 회인가요?"
     );
+    checkValidRounds(ROUNDS);
   }
 }
 
