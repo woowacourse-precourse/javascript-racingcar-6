@@ -10,7 +10,7 @@ export default async function getTryNumberAndCheck() {
 }
 
 function inputValidation(input) {
-  if (!RegExp.test(input) || input < 0) {
+  if (!RegExp.test(input)) {
     throw new Error(ERROR_MESSAGE.NUMBER);
   }
 }

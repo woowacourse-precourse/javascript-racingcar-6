@@ -9,9 +9,10 @@ export default async function getCarNameAndCheck() {
 
   return carList;
 }
+
 function inputValidation(carList) {
   for (const carName in carList) {
-    const name = carList[carName];
+    const name = carName;
     if (name.length > 5 || name.length === 0) {
       throw new Error(ERROR_MESSAGE.CAR_LENGTH);
     }

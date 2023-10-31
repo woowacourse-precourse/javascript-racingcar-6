@@ -39,8 +39,8 @@ function printWinner(carList) {
   let winner = [];
   for (let car in carList) {
     if (carList[car] === maxNumber) {
-      winner.push(" " + car);
+      winner.push(car);
     }
   }
-  consoleControl.printWinner(winner);
+  consoleControl.printWinner(winner.join(", "));
 }
