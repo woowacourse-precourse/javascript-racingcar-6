@@ -46,11 +46,26 @@ describe("자동차 경주 게임", () => {
     });
   });
 
-  test.each([
-    [["pobi,javaji"]],
-    [["pobi,eastjun"]]
-  ])("이름에 대한 예외 처리", async (inputs) => {
+  test.each([[["pobi,javaji"]], [["pobi,eastjun"]]])(
+    "이름에 대한 예외 처리",
+    async (inputs) => {
+      // given
+      mockQuestions(inputs);
+
+      // when
+      const app = new App();
+
+      // then
+      await expect(app.play()).rejects.toThrow("[ERROR]");
+    }
+  );
+
+  test("중복된 이름 입력 시 예외 처리", async () => {
     // given
+    const MOVING_FORWARD = 4;
+    const STOP = 3;
+    const inputs = ["pobi,pobi", "100"]; // 중복된 이름 입력
+
     mockQuestions(inputs);
 
     // when
