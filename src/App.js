@@ -1,7 +1,12 @@
-import RaceController from "./controllers/RaceController.js";
+// App.js
+import RaceController from "./src/controllers/RaceController.js";
 class App {
+  constructor() {
+    this.raceController = new RaceController();
+  }
+
   async play() {
-    await RaceController.startRace();
+    await this.raceController.initRace();
   }
 }
 
