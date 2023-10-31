@@ -9,6 +9,7 @@ const ERROR_MESSAGE = {
   IS_LENGTH: "[ERROR] 5자 이하로 입력해주세요.",
   IS_COMMA: "[ERROR] 쉼표로 구분해주세요.",
   IS_NUMBER: "[ERROR] 숫자로 입력해주세요.",
+  IS_ZERO: "[ERROR] 0이상의 숫자를 입력해주세요"
 };
 
 export { GAME_MESSAGE, ERROR_MESSAGE };
