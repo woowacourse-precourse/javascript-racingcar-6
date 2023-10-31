@@ -13,6 +13,8 @@ class App {
     const NUMBER_OF_TRY = await MissionUtils.Console.readLineAsync(
       "시도할 횟수는 몇 회인가요?\n"
     );
+
+    this.numberOfTryValidity(NUMBER_OF_TRY);
   }
 
   carNameValidity(inputCarNameArray) {
@@ -46,6 +48,16 @@ class App {
 
     if (inputCarNameArray.length !== SET.size) {
       throw new Error("[ERROR]: 서로 다른 이름을 입력하시오.");
+    }
+  }
+
+  numberOfTryValidity(numberOfTry) {
+    this.isNaNNumberOfTryValidity(numberOfTry);
+  }
+
+  isNaNNumberOfTryValidity(numberOfTry) {
+    if (isNaN(numberOfTry)) {
+      throw new Error("[ERROR]: 숫자를 입력하시오.");
     }
   }
 }
