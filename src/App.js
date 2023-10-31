@@ -8,6 +8,7 @@ class App {
   async play() {
     await this.initializeCars();
     const rounds = await this.getRounds();
+    this.validateRounds(rounds);
     this.playRounds(rounds);
     this.determineWinners();
   }
@@ -47,6 +48,12 @@ class App {
 
   async getRounds() {
     return await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');  
+  }
+
+  validateRounds(rounds) {
+    if (!rounds || isNaN(rounds) || rounds <= 0) {
+      throw new Error('[ERROR] 숫자가 잘못된 형식입니다.');
+    }
   }
 
   playRounds(rounds) {
