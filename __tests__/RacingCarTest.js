@@ -35,4 +35,12 @@ describe('RacingCar클래스 테스트', () => {
 
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(expectedResult));
   });
+
+  test('우승한 자동차를 출력하는 기능 테스트', () => {
+    const expectedWinner = '최종 우승자 : car1';
+    const logSpy = getLogSpy();
+    OutputView.printWinner(racingCar);
+
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(expectedWinner));
+  });
 });
