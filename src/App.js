@@ -1,4 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
+import checkCarNameLength from "./checkCarNameLength";
 
 class App {
   async play() {
@@ -8,6 +9,8 @@ class App {
     );
     //자동차 쉼표로 분리해서 저장
     const CARS_ARRAY = USER_INPUT_STRING.split(",");
+    //예외처리
+    checkCarNameLength(CARS_ARRAY);
   }
 }
 
