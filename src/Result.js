@@ -14,17 +14,17 @@ class Result {
 
     return this;
   }
-
   compareResult(car) {
     const [name, finalResult] = car.getCarScore();
-
-    if (finalResult.length === this.max) {
-      this.winners.push(name);
-    }
 
     if (finalResult.length > this.max) {
       this.max = finalResult.length;
       this.winners = [name];
+    } else if (
+      finalResult.length === this.max &&
+      !this.winners.includes(name)
+    ) {
+      this.winners.push(name);
     }
   }
 
