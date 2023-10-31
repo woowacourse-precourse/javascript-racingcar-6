@@ -1,24 +1,20 @@
 import { Random, Console } from "@woowacourse/mission-utils";
 
 class App {
-  carData = "";
-  inputArray = [];
+  carData = [];
   movementCount = 0;
   advanceCount = [];
   winnerList = [];
 
-  start() {
-    return Console.readLineAsync(
+  async start() {
+    const carNames = await Console.readLineAsync(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
     );
-  }
-
-  splitCarName() {
-    this.inputArray = this.carData.split(",");
+    this.carData = carNames.split(",");
   }
 
   validate() {
-    if (this.inputArray.map((data) => data.length > 5).includes(true)) {
+    if (this.carData.map((data) => data.length > 5).includes(true)) {
       throw new Error("[ERROR] 잘못된 값을 입력하였습니다.");
     }
 
@@ -66,15 +62,13 @@ class App {
   }
 
   async play() {
-    this.carData = await this.start();
-
-    this.splitCarName();
+    await this.start();
     this.validate();
 
     this.movementCount = Number(await this.getCount());
     this.validate();
 
-    this.inputArray.map((name) =>
+    this.carData.map((name) =>
       this.advanceCount.push({ carName: name, advance: 0 })
     );
 
