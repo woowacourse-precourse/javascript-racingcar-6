@@ -37,6 +37,29 @@ const getRandomNumber = () => {
   return MissionUtils.Random.pickNumberInRange(0,9);
 }
 
+const generateRacingCar = (NumberOfUsers) => {
+  const racingCars = [];
+  let count = 0;
+  while(count < NumberOfUsers) {
+    racingCars.push(0);
+    count++;
+  }
+
+  return racingCars;
+}
+
+const updateRacingCarLocation = (racingCars) => {
+  const updatedRacingCarLocation = racingCars.map((value) => {
+    const randomNumber = getRandomNumber();
+
+    if(randomNumber >= 4) {
+      return value + 1;
+    } else {
+      return value;
+    }
+  })
+}
+
 
 
 
@@ -53,9 +76,11 @@ class App {
 
       const gameRep = stringToNaturalNumber(userInputgameRep);
 
-      const randomNumber = getRandomNumber();
+      const racingCars = generateRacingCar(userNames.length);
 
-      console.log(randomNumber);
+      racingCars.forEach((value) => {
+        console.log(value);
+      })
 
     } catch(err) {
       console.log(err.msg);
