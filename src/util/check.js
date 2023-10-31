@@ -9,7 +9,7 @@ import RACING from "../constants/message"
 export const checkName = async (nameArray) => {
     nameArray.forEach(name => {
         if (name.length > 5 || name.trim() === 0) throw new Error(RACING.NAMING_ERROR)
-        if (nameArray.filter(value => name === value).length > 2) throw new Error(RACING.NAMING_ERROR)
+        if (nameArray.filter(value => name === value).length >= 2) throw new Error(RACING.NAMING_ERROR)
     })
 }
 
