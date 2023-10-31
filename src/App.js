@@ -4,9 +4,11 @@ import message from "./util/Message.js"
 
 class App {
   async play() {
-    const userInput = await this.getUserInput();
-    const msg =  'test'
-    this.printMessage(msg)
+    // const userInput = await this.getUserInput();
+    // this.printMessage(msg)
+    const string = 'car, test, fake'
+    const array = this.splitStringToArrayByComma(string)
+    console.log(array)
   }
   
   async getUserInput() {
@@ -17,6 +19,13 @@ class App {
   printMessage(message) {
     Console.print(message)
   }
+
+  splitStringToArrayByComma(string) {
+    const array = string.split(',')
+    return array
+  }
+
+
 }
 
 
