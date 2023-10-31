@@ -94,8 +94,8 @@
   - [ ] Inspector.js
     - [ ] isSplitable(string)
     - [ ] isNumber(num)
-  - [ ] NumberGenerator.js
-    - [ ] getRandomNumber()
+  - [x] NumberGenerator.js
+    - [x] getRandomNumber()
   - [ ] Prompter.js
     - [ ] getUserInput()
   - [ ] Race.js
