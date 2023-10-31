@@ -10,9 +10,7 @@ class RacingcarGame {
       const validation = new Validation();
       const carsArray = validation.validate(cars);
       const tryCount = await Console.readLineAsync(GAME_MESSAGE.TRY_COUNT);
-      if (isNaN(tryCount)) {
-        throw new Error(ERROR_MESSAGE.IS_NUMBER);
-      }
+      if (isNaN(tryCount)) throw new Error(ERROR_MESSAGE.IS_NUMBER);
 
       Console.print(GAME_MESSAGE.RESULT);
       let countForward = {};

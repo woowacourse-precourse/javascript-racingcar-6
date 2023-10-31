@@ -9,11 +9,9 @@ class Car {
     const randomValue = Random.pickNumberInRange(0, 9);
     this.countForward = countForward;
     if (randomValue >= 4) {
-      if (!this.countForward[this.carName]) {
+      if (!this.countForward[this.carName])
         this.countForward[this.carName] = "-";
-      } else {
-        this.countForward[this.carName] += "-";
-      }
+      else this.countForward[this.carName] += "-";
     }
     Console.print(`${this.carName} : ${this.countForward[this.carName] || ""}`);
     // return countForward;
