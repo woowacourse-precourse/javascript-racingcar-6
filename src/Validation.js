@@ -6,9 +6,10 @@ class Validation {
   };
 
   isValidCarName(carName) {
+    const trimmedCarName = carName.trim();
     if (
-      carName.length <= this.STANDARD.maximumNameLength
-      && carName.length >= this.STANDARD.minimumNameLength
+      trimmedCarName.length <= this.STANDARD.maximumNameLength
+      && trimmedCarName.length >= this.STANDARD.minimumNameLength
     ) {
       return true;
     }

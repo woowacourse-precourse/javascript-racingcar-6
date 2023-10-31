@@ -13,8 +13,7 @@ class SettingCars {
     const validation = new Validation();
     const errorHandler = new ErrorHandler();
     const registeredCars = carNameArray.map((carName) => {
-      const trimmedCarName = carName.trim();
-      if (!validation.isValidCarName(trimmedCarName)) {
+      if (!validation.isValidCarName(carName)) {
         errorHandler.throwInvalidCarNameError();
       }
 
