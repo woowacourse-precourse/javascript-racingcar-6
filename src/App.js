@@ -22,6 +22,11 @@ class App {
   async getRounds() {
     return await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');  
   }
+
+  isMovable() {
+    const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
+    return randomNumber >= 4;
+  }
 }
 
 export default App;
