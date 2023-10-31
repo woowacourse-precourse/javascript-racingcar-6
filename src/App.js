@@ -1,6 +1,7 @@
-import { Console, Random } from "@woowacourse/mission-utils";
+import { Console } from "@woowacourse/mission-utils";
 import Car from "./Car.js";
 import * as message from "./Message.js";
+import startRacing from "./Racing.js";
 
 class App {
   async play() {
@@ -10,7 +11,7 @@ class App {
 
     Console.print(message.RACING_RESULT);
 
-    this.startRacing(carObjects, moveCount);
+    startRacing(carObjects, moveCount);
     this.printWinner(carObjects);
   }
 
@@ -21,39 +22,6 @@ class App {
       .map((car) => car.name);
 
     Console.print(message.FINAL_WINNER + winners.join(", "));
-  }
-
-  startRacing(cars, moveCount) {
-    if (moveCount > 0) {
-      cars.forEach((car) => {
-        this.racing(car);
-      });
-      this.displayRacingResults(cars);
-
-      this.startRacing(cars, moveCount - 1);
-    }
-  }
-
-  racing(car) {
-    const number = Random.pickNumberInRange(0, 9);
-    if (number >= 4) {
-      car.move();
-    }
-  }
-
-  printResult(car) {
-    const score = [];
-    for (let i of Array.from({ length: car.position }, (_, index) => index)) {
-      score.push("-");
-    }
-    Console.print(car.name + " : " + score.join(""));
-  }
-
-  displayRacingResults(cars) {
-    cars.forEach((car) => {
-      this.printResult(car);
-    });
-    Console.print("");
   }
 
   async getCarName() {
