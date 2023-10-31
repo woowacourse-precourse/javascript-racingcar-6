@@ -1,5 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
 import { validateCarNames } from "./ValidateCarNames";
+import { addCarNames } from "./AddCarNames";
 
 class App {
   constructor() {
