@@ -7,6 +7,7 @@ class RacingInput {
     );
     const racingArr = racingCars.split(",");
     const scoreArr = new Array(racingArr.length).fill(0);
+
     return { racingArr, scoreArr };
   }
 
@@ -14,6 +15,7 @@ class RacingInput {
     const attemptNum = await Console.readLineAsync(
       "시도할 횟수는 몇 회인가요?"
     );
+
     return Number(attemptNum);
   }
 }

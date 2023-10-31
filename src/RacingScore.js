@@ -1,15 +1,11 @@
-import { Random, Console } from "@woowacourse/mission-utils";
+import RacingOutput from "./RacingOutput";
 
 class RacingScore {
   randomScore(attemptNum, racingArr, scoreArr) {
+    const racingOutput = new RacingOutput();
+
     for (let i = 0; i < attemptNum; i++) {
-      for (let j = 0; j < racingArr.length; j++) {
-        const random = Random.pickNumberInRange(0, 9);
-        if (random >= 4) {
-          scoreArr[j]++;
-        }
-        Console.print(`${racingArr[j]} : ${"-".repeat(scoreArr[j])}`);
-      }
+      racingOutput.printScore(racingArr, scoreArr);
     }
   }
 }
