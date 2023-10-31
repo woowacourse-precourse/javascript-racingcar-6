@@ -11,7 +11,6 @@ const mockFn = (numbers) => {
 
 // 플레이어 이름 포맷 출력
 test("플레이어 이름 출력 확인", () => {
-  // const spyFn = getLogSpy();
   const players = new Players(['jason', 'kyle']);
   players.print();
   expect(spyFn).toHaveBeenCalledWith(expect.stringContaining('jason : '));
