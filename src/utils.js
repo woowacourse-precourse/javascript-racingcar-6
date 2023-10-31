@@ -36,7 +36,7 @@ const getValidInputNames = (input) => {
 const getValidInputNumber = (input) => {
   input = Number(input.trim());
   const { MIN_INPUT_NUMBER } = SETTING;
-  const { NOT_NUMBER, NOT_RANGE } = ERROR_MESSAGE;
+  const { NOT_NUMBER, NOT_RANGE, NOT_NATURAL_NUMBER, NOT_SAFE_INTEGER } = ERROR_MESSAGE;
 
   if (isNaN(input)) {
     throw new Error(`${NOT_NUMBER}`);
@@ -44,6 +44,14 @@ const getValidInputNumber = (input) => {
 
   if (input < MIN_INPUT_NUMBER) {
     throw new Error(`${NOT_RANGE}`);
+  }
+
+  if (input % 1 !== 0) {
+    throw new Error(`${NOT_NATURAL_NUMBER}`);
+  }
+
+  if (input > Number.MAX_SAFE_INTEGER) {
+    throw new Error(`${NOT_SAFE_INTEGER}`);
   }
 
   return input;

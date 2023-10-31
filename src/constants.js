@@ -24,7 +24,9 @@ const ERROR_MESSAGE = Object.freeze({
   NOT_NAME_LENGTH: `[ERROR] ${SETTING.MIN_NAME_LENGTH}자 이상 ${SETTING.MAX_NAME_LENGTH}자 이하의 이름을 입력하세요.`,
   NOT_UNIQUE: '[ERROR] 중복된 이름이 있습니다.',
   NOT_NUMBER: '[ERROR] 숫자가 아닙니다.',
-  NOT_RANGE: `[ERROR] ${SETTING.MIN_INPUT_NUMBER} 이상의 숫자를 입력하세요.`
+  NOT_RANGE: `[ERROR] ${SETTING.MIN_INPUT_NUMBER} 이상의 숫자를 입력하세요.`,
+  NOT_NATURAL_NUMBER: '[ERROR] 자연수가 아닙니다.',
+  NOT_SAFE_INTEGER: `[ERROR] 숫자가 너무 큽니다.`,
 });
 
 export { SETTING, SCORE, MESSAGE, ERROR_MESSAGE };
