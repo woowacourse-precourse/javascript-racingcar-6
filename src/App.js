@@ -1,4 +1,5 @@
 import { Console, Random } from '@woowacourse/mission-utils';
+import MESSAGES from './constants/message.js';
 
 class App {
   constructor() {
@@ -37,14 +38,14 @@ class App {
     return Random.pickNumberInRange(1, 9);
   }
 
-  racing(carList, count) {
+  racing(carList, tryCount) {
     const roundResult = carList.reduce((a, c) => {
       a[c] = 0;
       return a;
     }, {});
 
-    Console.print('실행결과');
-    for (let round = 1; round <= count; round++) {
+    Console.print(MESSAGES.RESULT_VIEW);
+    for (let round = 1; round <= tryCount; round++) {
       for (let i = 0; i < carList.length; i++) {
         if (this.getRandomNumber() >= 4) {
           roundResult[carList[i]] += 1;
@@ -58,6 +59,14 @@ class App {
     this.roundResult = roundResult;
   }
 
+  getRaceResult(result) {
+    const max = Math.max(...Object.values(result));
+    const winner = Object.entries(result)
+      .filter(v => v[1] === max)
+      .map(v => v[0]);
+    Console.print(`최종 우승자 : ${winner}`);
+  }
+
   async play() {
     const userInputCarNames = await Console.readLineAsync(
       '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)'
@@ -68,7 +77,7 @@ class App {
     this.validateRoundCount(userInputRoundCount);
 
     this.racing(this.carNames, this.tryCount);
-    this.winner(this.roundResult);
+    this.getRaceResult(this.roundResult);
   }
 }
 
