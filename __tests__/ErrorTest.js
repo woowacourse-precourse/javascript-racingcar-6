@@ -16,4 +16,12 @@ describe("[ERROR] 동작 테스트", () => {
       "[ERROR] 문자로 입력해주세요"
     );
   });
+
+  test("입력받은 이름이 공백일 경우", () => {
+    const app = new App();
+    const nameOfCarsInput = null;
+    expect(() => app.checkNameOfCarsLength(nameOfCarsInput)).toThrowError(
+      "[ERROR] 경주할 자동차 이름을 입력해주세요"
+    );
+  });
 });
