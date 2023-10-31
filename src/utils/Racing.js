@@ -4,6 +4,7 @@ import { getCarsName, getWinner } from './DataProcessing';
 import { MESSAGE } from './Constants';
 import getCarsNumber from './Random';
 
+// 경주 시작
 const startRacing = async (cars) => {
 	const tryCount = await Console.readLineAsync(MESSAGE.race);
 
@@ -19,7 +20,8 @@ const startRacing = async (cars) => {
 	getWinner(cars);
 };
 
-export const addReps = (cars, carsNumber) => {
+// 점수증가 판단
+const addReps = (cars, carsNumber) => {
 	cars.map((car, index) => {
 		if (carsNumber[index] >= 4) car.count += '-';
 	});

@@ -16,6 +16,7 @@ export const getCarsName = (input) => {
 	return carList;
 };
 
+// 승자 목록 추출 및 출력
 export const getWinner = (cars) => {
 	const winnerScore = Math.max(
 		...cars.map((element) => {
