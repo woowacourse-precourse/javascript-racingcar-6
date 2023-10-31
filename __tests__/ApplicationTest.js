@@ -59,4 +59,13 @@ describe("자동차 경주 게임", () => {
       await expect(app.play()).rejects.toThrow("[ERROR]");
     }
   );
+
+  test.each([[["tony,julia"], "a"]])(
+    "실행 횟수롤 숫자가 아닌 값 입력시 오류",
+    async (inputs) => {
+      mockQuestions(inputs);
+      const app = new App();
+      await expect(app.play()).rejects.toThrow("[ERROR]");
+    }
+  );
 });
