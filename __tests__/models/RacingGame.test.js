@@ -2,7 +2,7 @@ import { Random } from '@woowacourse/mission-utils';
 import RacingGame from '../../src/models/RacingGame.js';
 import RacingCar from '../../src/models/RacingCar.js';
 
-describe('RacingResult 테스트', () => {
+describe('RacingGame 테스트', () => {
   beforeAll(() => {
     Random.pickNumberInRange = () => RacingCar.MOVE_THRESHOLD;
   });
