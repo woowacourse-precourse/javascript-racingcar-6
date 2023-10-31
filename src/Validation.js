@@ -22,4 +22,7 @@ export function validTryCount(tryCount) {
   if (isNaN(tryCount)) {
     throw new Error(ERROR.TRY_COUNT_NAN);
   }
+  if (tryCount < 0) {
+    throw new Error(ERROR.TRY_COUNT_MIN);
+  }
 }
