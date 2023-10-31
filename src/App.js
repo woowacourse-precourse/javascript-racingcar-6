@@ -7,6 +7,7 @@ class App {
 
   async play() {
     await this.initializeCars();
+    const rounds = await this.getRounds();
   }
   
   async initializeCars() {
@@ -16,6 +17,10 @@ class App {
 
   parseCarNamesInput(input) {
     return input.trim().split(',').map((name) => name.trim());
+  }
+
+  async getRounds() {
+    return await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');  
   }
 }
 
