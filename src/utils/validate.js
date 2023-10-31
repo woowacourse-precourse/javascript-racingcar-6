@@ -14,6 +14,11 @@ export function validateCarName(carName) {
   }
 }
 
+/**
+ * 자동차 이름 중복 검사 함수
+ * @param {Array} carList
+ * @throws [ERROR] 메시지
+ */
 export function validateNameDuplicate(carList) {
   const carSet = new Set(carList);
   if (carSet.size !== carList.length) {
