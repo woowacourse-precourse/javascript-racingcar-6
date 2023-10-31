@@ -30,4 +30,10 @@ export default class Controller {
 
     return this.#track.setFinalTrackCount(input);
   }
+
+  startRace() {
+    this.#car.setCarsRelocation();
+
+    return console.log(this.#car.getCarsPosition());
+  }
 }

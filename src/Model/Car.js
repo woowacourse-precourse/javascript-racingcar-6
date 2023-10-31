@@ -1,22 +1,23 @@
+import movePosition from '../utils/movePosition.js';
+
 export default class Car {
   #carsName;
 
   #carsPosition;
 
-  constructor() {
-    this.#carsName = [];
-    this.#carsPosition = {};
-  }
-
-  async setCarsName(input) {
-    this.#carsName = await input.split(',');
+  setCarsName(input) {
+    this.#carsName = input.split(',');
 
     return this.setCarsPostion();
   }
 
   setCarsPostion() {
-    this.#carsName.forEach(carName => {
-      this.#carsPosition[carName] = '';
+    this.#carsPosition = new Array(this.#carsName.length).fill('');
+  }
+
+  setCarsRelocation() {
+    this.#carsPosition.forEach((prePosition, i) => {
+      this.#carsPosition[i] = prePosition + movePosition();
     });
   }
 
