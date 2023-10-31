@@ -15,6 +15,9 @@ class Validation {
         info.set(str, 0);
       }
     });
+    if (info.size <= 1) {
+      throw new Error(MESSAGE.error.carNameNumber);
+    }
     return info;
   }
 
