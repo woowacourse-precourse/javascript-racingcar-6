@@ -41,10 +41,8 @@ export class RacingCarGame {
     }
   }
 
-  displayWinners() {
-    const winners = this.#getWinners();
-    const winnerNames = winners.map((winner) => winner.name).join(", ");
-
+  printWinnerNames() {
+    const winnerNames = this.#getWinnerNames();
     console(MESSAGES.WINNER(winnerNames));
   }
 
@@ -114,12 +112,13 @@ export class RacingCarGame {
     return result;
   }
 
-  #getWinners() {
+  #getWinnerNames() {
     const maxOffset = Math.max(...this.#cars.getCarOffsets());
     const winners = this.#cars.getCars().filter((car) => {
       return car.horizontalOffset === maxOffset;
     });
+    const winnerNames = winners.map((winner) => winner.name).join(", ");
 
-    return winners;
+    return winnerNames;
   }
 }
