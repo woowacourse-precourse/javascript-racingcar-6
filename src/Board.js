@@ -30,7 +30,7 @@ class Board {
    */
   async #inputCarNames() {
     // TEST:
-    return '마세라티,제네시스,페라리'.split(',');
+    return '마세라티,제네시스,아이오닉'.split(',');
     // return await Console.readLineAsync().split(',');
   }
 
@@ -83,7 +83,6 @@ class Board {
     // TEST:
     this.#cars.forEach((car) => {
       const randomDigit = this.#getRandomDigit();
-      console.log(`\tRandomDigit : ${randomDigit}`);
       if (randomDigit >= MOVE_MIN_DIGIT) {
         car.move();
       }
@@ -103,8 +102,16 @@ class Board {
     return Random.pickNumberInRange(0, 9);
   }
 
+  /**
+   * 레이싱카들의 현재 이동 거리를 출력한다.
+   */
   printMiddleResult() {
-
+    // TODO: 중간 출력 포맷 작성
+    this.#cars.forEach((car) => {
+      const middleResult = [car.getName(), ':', '-'.repeat(car.getDistance())].join(' ');
+      console.log(middleResult);
+    })
+    console.log();
   }
 
   pickOutWinner() {

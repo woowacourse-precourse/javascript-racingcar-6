@@ -18,7 +18,22 @@ class Car {
    */
   move() {
     this.#distance++;
-    console.log(`\t\t${this.#name} : ${this.#distance}`);
+  }
+
+  /**
+   * 레이싱카의 이름을 반환한다.
+   * @returns {String} name
+   */
+  getName() {
+    return this.#name;
+  }
+
+  /**
+   * 레이싱카의 이동 거리를 반환한다.
+   * @returns {Number} distance
+   */
+  getDistance() {
+    return this.#distance;
   }
 }
 
