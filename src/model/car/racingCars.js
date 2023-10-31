@@ -65,3 +65,5 @@ class RacingCars {
     this.#cars.forEach((car) => car.move());
   }
 }
+
+export default RacingCars;
