@@ -69,11 +69,11 @@ jun : ---`
 
 ### checkRacingCarNameInputError()
 
-- racingCar 입력값 에러 판단하는 역할
+- racingCar 입력값 에러 판별하는 역할
 
 ### checkTryCountError()
 
-- 시도횟수 입력값 에러 판단하는 역할
+- 시도횟수 입력값 에러 판별하는 역할
 
 <br>
 
