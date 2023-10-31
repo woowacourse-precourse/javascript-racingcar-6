@@ -18,9 +18,9 @@ class App {
 
 	findWinner(carList, forwardCount) {
 		const winnerList = [];
-		const MAXCOUNT = Math.max(...forwardCount);
+		const MAX_COUNT = Math.max(...forwardCount);
 		forwardCount.forEach((count, idx) => {
-			if (count === MAXCOUNT) {
+			if (count === MAX_COUNT) {
 				const winnerCarName = carList[idx].substr(0, carList[idx].indexOf(' '));
 				winnerList.push(winnerCarName);
 			}

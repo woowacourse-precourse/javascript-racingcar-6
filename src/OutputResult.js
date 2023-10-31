@@ -15,8 +15,8 @@ export const racingResult = function forwardRunResultsOutput(carList, forwardCou
 };
 
 export const winnerResult = function printWinner(winner) {
-	const winnerNumber = winner.length;
-	if (winnerNumber > 1) {
+	const WINNER_NUMBER = winner.length;
+	if (WINNER_NUMBER > 1) {
 		Console.print(`최종 우승자 : ${winner.join(', ')}`);
 	} else {
 		Console.print(`최종 우승자 : ${winner[0]}`);
