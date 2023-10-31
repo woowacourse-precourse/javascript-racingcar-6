@@ -19,7 +19,7 @@ class CarRacingGame {
   racing() {
     Console.print('\n실행 결과');
     const returnRacingProgress = new RunRace().runRace(this.cars, this.tryCount);
-    this.racingResult(returnRacingProgress);
+    this.racingResult(this.cars, returnRacingProgress);
   }
 
   racingResult(returnRacingProgress) {

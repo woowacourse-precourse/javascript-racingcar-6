@@ -17,7 +17,8 @@ class ReturnWinner {
   }
 
   printWinners() {
-    Console.print(`최종 우승자 : ${this.findWinners().join(', ')}`);
+    const winners = this.findWinners();
+    Console.print(`최종 우승자 : ${winners.join(', ')}`);
   }
 }
 
