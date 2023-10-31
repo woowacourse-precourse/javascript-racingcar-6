@@ -8,5 +8,5 @@ export const printMessages = {
 
 export const printErrorMessages = {
   CAR_NAME_LENGTH_ERROR: "[ERROR] 자동차 이름은 5자 이하만 가능합니다.",
-  TRY_NUMBERS_ERROR: "[ERROR] 숫자가 잘못된 형식입니다.",
+  TRY_NUMBER_ERROR: "[ERROR] 숫자가 잘못된 형식입니다.",
 };
