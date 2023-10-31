@@ -11,13 +11,16 @@ class RacingCar {
         // 입력받은 횟수만큼 경주를 반복
         MissionUtils.Console.print("실행 결과");
         for (let i = 0; i < this.PLAYTIME_RESPONSE; i++) {
-            this.CARNAMES.forEach(car => car.decideMotion());
-            this.RoundResult();
-            MissionUtils.Console.print('');
+            this.executeSingleRace();
         }
-
         // 최종 우승자를 출력
         this.Winner();
+    }
+
+    executeSingleRace() {
+        this.CARNAMES.forEach(car => car.decideMotion());
+        this.RoundResult();
+        MissionUtils.Console.print('');
     }
 
     RoundResult() {
