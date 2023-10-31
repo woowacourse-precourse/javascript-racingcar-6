@@ -14,6 +14,19 @@ class App {
     const roundNum = await MissionUtils.Console.readLineAsync(
       "시도할 횟수는 몇 회인가요?\n"
     );
+
+    MissionUtils.Console.print(`\n실행 결과`);
+    for (let i = 0; i < roundNum; i += 1) {
+      carArray.forEach((car) => {
+        let randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
+        if (randomNumber >= 4) {
+          car.distance += 1;
+        }
+        const hyphen = "-".repeat(car.distance);
+        MissionUtils.Console.print(`${car.name} : ${hyphen}`);
+      });
+      MissionUtils.Console.print(``);
+    }
   }
 }
 
