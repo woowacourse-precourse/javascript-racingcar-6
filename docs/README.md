@@ -21,6 +21,10 @@
         - [v] Racing의 결과를 비교하기
         - [v] 결과를 출력하기 (우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분)
 
+    - [ ] 기능별 test case 구현
+        - [v] CarTest.js
+        - [v] RaceTest.js
+        - [ ] AwardTest.js
 
 
 ```
