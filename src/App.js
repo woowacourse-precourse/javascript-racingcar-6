@@ -1,17 +1,19 @@
 import { Console } from '@woowacourse/mission-utils';
-import ProcessInput from './utils/ProcessInput';
+import processInput from './utils/processInput';
 import Test from './utils/Test';
-import PrintWinner from './utils/PrintWinner';
+import printWinner from './utils/printWinner';
+import { GAME_MESSAGE } from './constants/messages';
 
 class App {
   async play() {
-    const { carNameArr, testNum } = await ProcessInput(); 
+    const { carNameArr, testNum } = await processInput(); 
 
-    Console.print('실행 결과');
+    Console.print(GAME_MESSAGE.gameResult);
+
     const test = new Test(carNameArr);
     for (let i = 0; i < testNum; i++) await test.testing(carNameArr);
 
-    await PrintWinner(carNameArr, test.moveCount);
+    await printWinner(carNameArr, [...test.moveCounts]);
   }
 }
 
