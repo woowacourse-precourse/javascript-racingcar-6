@@ -1,6 +1,19 @@
+import { MissionUtils } from '@woowacourse/mission-utils';
 import { Track, User } from '../../../src/domain/index.js';
 
+const mockRandoms = (numbers) => {
+  MissionUtils.Random.pickNumberInRange = jest.fn();
+  numbers.reduce(
+    (acc, number) => acc.mockReturnValueOnce(number),
+    MissionUtils.Random.pickNumberInRange,
+  );
+};
+
 describe('Track 테스트', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('`currentLap`의 초기값은 `1`이다.', () => {
     // given
     const users = [User.of('레이서'), User.of('레이서2')];
@@ -65,15 +78,48 @@ describe('Track 테스트', () => {
 
   it('`isEnd()`는 `currentLap`가 `finalLap` 보다 크면 `true`를 반환한다.', () => {
     // given
+    const lap = 2;
     const users = [User.of('레이서'), User.of('레이서2')];
-    const track = Track.of(users, 5);
+    const track = Track.of(users, lap);
 
     // when
-    for (let i = 0; i < 5; i += 1) {
+    for (let i = 0; i < lap; i += 1) {
       track.processLap();
     }
 
     // then
     expect(track.isEnd()).toBeTruthy();
+  });
+
+  it('`getCurrentLapResult()`는 현재 랩의 결과를 반환합니다.', () => {
+    const lap = 3;
+    const users = [User.of('레이서'), User.of('레이서2')];
+    const track = Track.of(users, lap);
+    mockRandoms([5, 2, 5, 3, 1, 2]);
+
+    for (let i = 0; i < lap; i += 1) {
+      track.processLap();
+    }
+
+    expect(track.getCurrentLapResult()).toEqual({
+      레이서: '--',
+      레이서2: '',
+    });
+  });
+
+  it.each([
+    { randoms: [5, 2, 5, 3], winners: ['레이서1'] },
+    { randoms: [5, 2, 2, 4], winners: ['레이서1', '레이서2'] },
+  ])('`getCurrentWinners()`는 현재 랩의 선두주자들을 반환합니다.', ({ randoms, winners }) => {
+    const lap = 2;
+    const users = [User.of('레이서1'), User.of('레이서2')];
+    const track = Track.of(users, lap);
+    mockRandoms(randoms);
+
+    for (let i = 0; i < lap; i += 1) {
+      track.processLap();
+    }
+
+    expect(track.getCurrentWinners()).toEqual(winners);
   });
 });

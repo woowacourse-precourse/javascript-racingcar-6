@@ -6,6 +6,8 @@ class Car {
 
   static SPEED = 1;
 
+  static SKID_MARK = '-';
+
   #distance = 0;
 
   static of() {
@@ -24,7 +26,7 @@ class Car {
   }
 
   #validateMove(power) {
-    if (!Number.isInteger(power)) {
+    if (typeof power !== 'number') {
       throw new ApplicationError(ERROR_MESSAGE.car.isNotNumberMoveArg);
     }
   }

@@ -1,6 +1,7 @@
 import ERROR_MESSAGE from '../constants/error';
 import ApplicationError from '../exceptions/ApplicationError';
 import { invalidInstanceElement, isDuplicated } from '../utils/validator';
+import Car from './Car';
 import User from './User';
 
 class Track {
@@ -72,6 +73,24 @@ class Track {
     if (this.isEnd()) {
       throw new ApplicationError(ERROR_MESSAGE.track.isEndedTrack);
     }
+  }
+
+  getCurrentLapResult() {
+    const result = {};
+    this.#users.forEach((user) => {
+      const distance = user.getCar().getDistance();
+      result[user.getName()] = Car.SKID_MARK.repeat(distance);
+    });
+
+    return result;
+  }
+
+  getCurrentWinners() {
+    const distances = Array.from(this.#users, (user) => user.getCar().getDistance());
+    const winningDistance = Math.max(...distances);
+    const winners = this.#users.filter((user) => user.getCar().getDistance() === winningDistance);
+
+    return Array.from(winners, (winner) => winner.getName());
   }
 
   isEnd() {
