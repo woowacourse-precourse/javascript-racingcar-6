@@ -12,6 +12,11 @@ export default class RacingGame {
     );
     //validate inputs
     const carNames = input.split(',');
+    const isInvalid = carNames.some((carName) => carName.length > 4);
+    if (isInvalid) {
+      throw new Error('[ERROR] CAR NAMES READ ERROR');
+    }
+
     carNames.forEach((carName) => {
       const car = new Car(carName);
       this.cars.push(car);
@@ -55,18 +60,17 @@ export default class RacingGame {
   }
   printWinner() {
     const winnerNames = this.getWinners().map((winner) => winner.name);
-    console.log(`최종 우승자 : ${winnerNames.join(',')}`);
+    MissionUtils.Console.print(`최종 우승자 : ${winnerNames.join(',')}`);
   }
 
   async play() {
     await this.readCarNames();
     await this.readGameCount();
-    console.log('');
-    console.log('실행 결과');
+
+    MissionUtils.Console.print('실행 결과');
     for (let i = 0; i < this.gameCount; i++) {
       await this.playOneTurn();
       await this.printRacingStatus();
-      console.log('');
     }
     this.printWinner();
   }
@@ -88,7 +92,7 @@ class Car {
   }
 
   printStatus() {
-    console.log(`${this.name} : ${this.getMoveLog()}`);
+    MissionUtils.Console.print(`${this.name} : ${this.getMoveLog()}`);
   }
 
   getMoveLog() {
