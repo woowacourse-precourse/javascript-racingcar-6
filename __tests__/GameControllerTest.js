@@ -1,5 +1,5 @@
 import { Console, Random } from '@woowacourse/mission-utils';
-import RacingGame from '../src/racingcar/lib/classes/RacingGame';
+import GameController from '../src/racingcar/lib/classes/GameController';
 
 let spyConsolePrint;
 
@@ -29,7 +29,7 @@ describe('자동차 경주 게임', () => {
     ];
     const randoms = [3, 5, 3, 6, 9, 4, 3, 3, 5];
     mockRandoms(randoms);
-    const racingGame = new RacingGame({ racingCars, playCount: 3 });
+    const racingGame = new GameController({ racingCars, playCount: 3 });
 
     // when
     for (let i = 0; i < racingGame.playCount; i += 1) {
@@ -49,7 +49,7 @@ describe('자동차 경주 게임', () => {
       { carName: 'jun', score: 1 },
       { carName: 'jena', score: 2 },
     ];
-    const racingGame = new RacingGame({ racingCars, playCount: 5 });
+    const racingGame = new GameController({ racingCars, playCount: 5 });
 
     // when
     racingGame.printScore();
@@ -77,11 +77,11 @@ describe('자동차 경주 게임', () => {
         { carName: 'jena', score: 3 },
       ],
     ];
-    const racingGame1 = new RacingGame({
+    const racingGame1 = new GameController({
       racingCars: racingCars[0],
       playCount: 5,
     });
-    const racingGame2 = new RacingGame({
+    const racingGame2 = new GameController({
       racingCars: racingCars[1],
       playCount: 5,
     });

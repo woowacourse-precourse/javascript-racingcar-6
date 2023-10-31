@@ -1,17 +1,22 @@
 import { Console } from '@woowacourse/mission-utils';
-import RacingGameInputManager from '../src/racingcar/lib/classes/RacingGameInputManager';
+import GameInputManager from '../src/racingcar/lib/classes/GameInputManager';
 
 let inputManager;
 
-// beforeEach: 각 테스트 실행 전 공통적으로 호출되는 함수
 beforeEach(() => {
-  inputManager = new RacingGameInputManager();
+  inputManager = new GameInputManager();
   Console.readLineAsync = jest.fn();
 });
 
 describe('자동차 경주 게임', () => {
   const validNameList = ['pobi,woni', 'pobi,woni,jun,zxxng'];
-  const invalidNameList = ['pobi,eastjun', 'zxxng', '123,233,233'];
+  const invalidNameList = [
+    'jun z,xxng',
+    'pobi#,jun',
+    'pobi,eastjun',
+    'zxxng',
+    '123,233,233',
+  ];
 
   test.each(validNameList)('유효한 이름 목록', async (input) => {
     Console.readLineAsync.mockResolvedValueOnce(input);
@@ -24,7 +29,7 @@ describe('자동차 경주 게임', () => {
   });
 
   const validNumberList = ['1', '3'];
-  const invalidNumberList = ['0', '-2', '2번', 'two'];
+  const invalidNumberList = [' ', ' #', '-2', '2번', 'two'];
 
   test.each(validNumberList)('유효한 숫자 목록', async (input) => {
     Console.readLineAsync.mockResolvedValueOnce(input);
