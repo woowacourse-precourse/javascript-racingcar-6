@@ -20,9 +20,10 @@ export default async function racingGame() {
   for (let trialCount = 0; trialCount < racingCount; trialCount++) {
     racingOneRound(racingCars);
     displayRoundResult(racingCars);
+    Console.print('');
   }
 
-  displayWinner();
+  displayWinner(racingCars);
 }
 
-racingGame();
+// racingGame();

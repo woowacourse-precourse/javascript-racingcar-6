@@ -6,5 +6,4 @@ export default function displayRoundResult(racingCars) {
     const movingDistance = racingCar.movingDistance;
     Console.print(`${name} : ${movingDistance}`);
   })
-  Console.print('\n');
 }
