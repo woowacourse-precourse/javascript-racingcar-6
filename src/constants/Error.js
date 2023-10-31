@@ -1,4 +1,4 @@
-export const ERROR = Object.freeze({
+const ERROR = Object.freeze({
   PREFIX: '[ERROR] ',
   TRY_AGAIN: ' 다시 입력해주세요.',
 
@@ -11,3 +11,5 @@ export const ERROR = Object.freeze({
   NOT_NUMBER: '시도 횟수는 숫자만 입력 가능합니다.',
   NOT_NATURAL_NUMBER: '시도 횟수는 자연수만 입력 가능합니다.',
 });
+
+export default ERROR;

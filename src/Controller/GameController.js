@@ -3,7 +3,7 @@ import Car from '../Model/Car.js';
 import View from '../View/View.js';
 import Validator from '../utils/Validator.js';
 
-export default class GameController {
+class GameController {
   #validate = Validator;
 
   #view = new View();
@@ -35,3 +35,5 @@ export default class GameController {
     return inputValue;
   }
 }
+
+export default GameController;

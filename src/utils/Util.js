@@ -1,13 +1,13 @@
-import { ERROR } from '../constants/Error.js';
+import ERROR from '../constants/Error.js';
 
-export function throwError(message, condition) {
+function throwError(message, condition) {
   if (condition) {
     return;
   }
-  throw new Error(`${ERROR.PREFIX}` + message + `${ERROR.TRY_AGAIN}`);
+  throw new Error(`${ERROR.PREFIX}${message}${ERROR.TRY_AGAIN}`);
 }
 
-export const Conditions = {
+const Conditions = {
   isPresent(value) {
     return value !== '';
   },
@@ -36,3 +36,5 @@ export const Conditions = {
     return Number.isInteger(Number(value)) && Number(value) > 0;
   },
 };
+
+export { throwError, Conditions };

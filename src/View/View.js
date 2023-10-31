@@ -1,9 +1,9 @@
 import { Console } from '@woowacourse/mission-utils';
-import { InputView } from './InputView.js';
-import { OutputView } from './OutputView.js';
-import { MESSAGE } from '../constants/Message.js';
+import InputView from './InputView.js';
+import OutputView from './OutputView.js';
+import MESSAGE from '../constants/Message.js';
 
-export default class View {
+class View {
   #outputView = OutputView;
 
   #inputView = InputView;
@@ -30,3 +30,5 @@ export default class View {
     this.#outputView.printLine(`${MESSAGE.WINNER}${winner}`);
   }
 }
+
+export default View;

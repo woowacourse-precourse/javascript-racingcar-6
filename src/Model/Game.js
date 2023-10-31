@@ -1,6 +1,6 @@
 import { Random } from '@woowacourse/mission-utils';
 
-export default class Game {
+class Game {
   #racingCars;
 
   #totalLab;
@@ -53,3 +53,5 @@ export default class Game {
     return winner.map((car) => car.getCarName());
   }
 }
+
+export default Game;

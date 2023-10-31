@@ -1,4 +1,4 @@
-export default class Car {
+class Car {
   #name;
 
   #position;
@@ -20,3 +20,5 @@ export default class Car {
     this.#position += 1;
   }
 }
+
+export default Car;
