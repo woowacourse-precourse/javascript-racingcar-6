@@ -1,64 +1,36 @@
 import { Random, Console } from '@woowacourse/mission-utils';
+import { INPUT_MESSAGES, OUTPUT_MESSAGES } from './Constants.js';
 import {
-  INPUT_MESSAGES,
-  OUTPUT_MESSAGES,
-  ERRORS,
-  COUNTREGEX,
-} from './Constants.js';
+  checkNullValidation,
+  checkCarNameLengthValidation,
+  checkCarNameDuplicateValidation,
+  checkCountTypeValidation,
+  checkCountRangeValidation,
+} from './utils/validation.js';
 import Car from './Car.js';
 
 class App {
-  checkNullValidation = (el) => {
-    if (el === null || el === undefined || el === '') {
-      throw new Error(ERRORS.null);
-    }
-  };
-
-  checkCarNameDuplicateValidation = (el) => {
-    if (new Set(el).size !== el.length) {
-      throw new Error(ERRORS.carName.duplicate);
-    }
-  };
-
-  checkCarNameLengthValidation = (el) => {
-    if (el.length > 5) {
-      throw new Error(ERRORS.carName.length);
-    }
-  };
-
   getRacingCarNameInput = async () => {
     const input = await Console.readLineAsync(INPUT_MESSAGES.carName);
 
-    this.checkNullValidation(input);
+    checkNullValidation(input);
 
     const carNames = input.split(',').map((el) => {
-      this.checkCarNameLengthValidation(el);
+      checkCarNameLengthValidation(el);
       return el;
     });
 
-    this.checkCarNameDuplicateValidation(carNames);
+    checkCarNameDuplicateValidation(carNames);
 
     return carNames.map((el) => new Car(el));
-  };
-
-  checkCountTypeValidation = (el) => {
-    if (isNaN(el)) {
-      throw new Error(ERRORS.gameCount.type);
-    }
-  };
-
-  checkCountRangeValidation = (el) => {
-    if (!COUNTREGEX.test(el)) {
-      throw new Error(ERRORS.gameCount.range);
-    }
   };
 
   getRacingCountInput = async () => {
     const input = await Console.readLineAsync(INPUT_MESSAGES.gameCount);
 
-    this.checkNullValidation(input);
-    this.checkCountTypeValidation(input);
-    this.checkCountRangeValidation(input);
+    checkNullValidation(input);
+    checkCountTypeValidation(input);
+    checkCountRangeValidation(input);
 
     return input;
   };
@@ -73,7 +45,7 @@ class App {
     Console.print(OUTPUT_MESSAGES.result);
 
     Array.from({ length: count }).forEach(() => {
-      this.printEachRacingResult(cars);
+      this.printOneRacingResult(cars);
     });
   };
 
@@ -95,7 +67,7 @@ class App {
       const cars = await this.getRacingCarNameInput();
       const count = await this.getRacingCountInput();
 
-      this.printRacingResultAll(cars, count);
+      this.printAllRacingResult(cars, count);
 
       const winners = this.calculateFinalWinner(cars);
       this.printFinalWinner(winners);
