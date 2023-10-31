@@ -1,6 +1,7 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import checkCarNameLength from "./checkCarNameLength";
 import checkValidRounds from "./checkValidRounds";
+import setArrayToMap from "./setArrayToMap";
 
 class App {
   async play() {
@@ -12,11 +13,20 @@ class App {
     const CARS_ARRAY = USER_INPUT_STRING.split(",");
     //예외처리
     checkCarNameLength(CARS_ARRAY);
+    //맵으로 만들기
+    const CARS_MAP = setArrayToMap(CARS_ARRAY);
     //시도할 횟수
     const ROUNDS = await MissionUtils.Console.readLineAsync(
       "시도할 횟수는 몇 회인가요?"
     );
     checkValidRounds(ROUNDS);
+
+    //2. 경주
+    let resultArray;
+    while (ROUNDS--) {
+      //각 자동차에 대해 0~9 무작위 값 구하기
+      getRandomForwardMove();
+    }
   }
 }
 
