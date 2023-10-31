@@ -36,7 +36,7 @@ class Game {
   printRound() {
     const roundEndResult = this.goStop();
     roundEndResult.forEach((value, key) => {
-      MissionUtils.Console.print(`${key}: ${value}`);
+      MissionUtils.Console.print(`${key} : ${value}`);
     });
   }
 
@@ -70,7 +70,7 @@ class Game {
     }
 
     const finalWinners = [...mostMovedCars].join(', ');
-    MissionUtils.Console.print(`\n최종 우승자: ${finalWinners}`);
+    MissionUtils.Console.print(`\n최종 우승자 : ${finalWinners}`);
   }
 }
 
