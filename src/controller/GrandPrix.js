@@ -2,8 +2,16 @@ import { InputView, OutputView } from '../view/index.js';
 import RacingCarGrid from '../model/RacingCarGrid.js';
 
 export default class GrandPrix {
+  /**
+   * @private
+   * @type { RacingCarGrid }
+   */
   #racingCarGrid;
 
+  /**
+   * @private
+   * @type {number}
+   */
   #lapNumber;
 
   /**
