@@ -6,7 +6,7 @@ class App {
   }
 
   async play() {
-    this.RaceController.runRace();
+    await this.RaceController.insertInput();
   }
 }
 
