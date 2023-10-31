@@ -8,7 +8,7 @@ class App {
   }
 
   async play() {
-    this.#CarRaceGameController.ConsoleName();
+    await this.#CarRaceGameController.InputRaceCarName();
   }
 }
 

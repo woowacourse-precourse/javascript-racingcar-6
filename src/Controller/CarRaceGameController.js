@@ -1,8 +1,11 @@
 import { Console } from "@woowacourse/mission-utils";
+import Input from "../Input/Input";
 
 class CarRaceGameController {
-  ConsoleName() {
-    Console.print("테스트 중");
+  async InputRaceCarName() {
+    await Input.readInputRaceCarName((input) => {
+      Console.print(input);
+    });
   }
 }
 
