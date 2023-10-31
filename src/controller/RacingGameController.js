@@ -23,14 +23,22 @@ class RacingGameController {
    */
   registerRacingCar(carList) {
     /** @type {RacingCar[]} */
-    const racingCars = carList.map((carName) => {
+    const racingCars = this.createNewCar(carList);
+    this.racingGame.setRacingCar = racingCars;
+
+    this.inputMoveCount();
+  }
+
+  /**
+   * 경주에 참여할 자동차 생성 함수
+   * @param {string[]} carList
+   */
+  createNewCar(carList) {
+    return carList.map((carName) => {
       const car = new RacingCar();
       car.setCarName = carName;
       return car;
     });
-    this.racingGame.setRacingCar = racingCars;
-
-    this.inputMoveCount();
   }
 
   /** 이동 횟수 입력 함수 */
