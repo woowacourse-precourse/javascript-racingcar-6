@@ -15,14 +15,15 @@
         - 우승자 이름 배열 리턴받기 : getWinners 
     - printWinners : 우승자 출력
 ### 1. inputCarNames() - 자동차 이름 입력받기
-### 2. isValidCarName(carName) - 자동차 이름 유효성 검사
-### 3. inputTryNum() - 시도할 횟수 입력받기
-### 4. isValidTryNum(tryNum) - 시도 횟수 유효성 검사
-### 5. tryCarGame(carList) - 경주 게임 시도(1회)
-### 6. printTryResult(carList) - 실행 결과 출력(1회)
-### 7. getRandomNumber() - 랜덤값 리턴하는 함수
-### 8. getWinners(carList) - 우승자 배열 리턴 함수
-### 9. printWinners(winnerList) - 우승자 출력
+### 2. isValidCarNames(carNames) - 자동차 이름 입력값 유효성 검사
+### 3. isValidCarName(carName) - 자동차 이름 유효성 검사
+### 4. inputTryNum() - 시도할 횟수 입력받기
+### 5. isValidTryNum(tryNum) - 시도 횟수 유효성 검사
+### 6. tryCarGame(carList) - 경주 게임 시도(1회)
+### 7. printTryResult(carList) - 실행 결과 출력(1회)
+### 8. getRandomNumber() - 랜덤값 리턴하는 함수
+### 9. getWinners(carList) - 우승자 배열 리턴 함수
+### 10. printWinners(winnerList) - 우승자 출력
 
 ## Car 클래스 
 
