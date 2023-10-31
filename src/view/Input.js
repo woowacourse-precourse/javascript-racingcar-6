@@ -1,6 +1,7 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import {
   checkCarNameOver,
+  checkCarNameSame,
   checkCarNameWrong,
   checkTryNumber,
 } from "../error/Validation.js";
@@ -15,6 +16,7 @@ class Input {
       );
       checkCarNameOver(carInput);
       checkCarNameWrong(carInput);
+      checkCarNameSame(carInput);
       return carInput.split(",").map((name) => name.trim());
     } catch (error) {
       throw error;
