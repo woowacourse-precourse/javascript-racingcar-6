@@ -30,23 +30,20 @@ export default class RaceController {
     this.checkCarNamesError(this.carNamesArray);
   }
 
-  exceedArrayMaxLength(array) {
-    for (let i = 0; i < array.length; i++) {
-      if (array[i].length > 5) {
-        return true;
-      }
-    }
-  }
-
   hasDuplicateNumber(array, arrayLength) {
     const numberSet = new Set(array);
     return numberSet.size != arrayLength;
   }
 
-  checkCarNamesError(array) {
-    if (this.exceedArrayMaxLength(array)) {
-      throw new Error(ERROR_MESSAGES.NUM_OF_CHARACTER_EXCEED);
-    } else if (this.hasDuplicateNumber(array, array.length)) {
+  checkCarNamesError(names) {
+    names.forEach((name) => {
+      if (name.length > 5) {
+        throw new Error(ERROR_MESSAGES.NUM_OF_CHARACTER_EXCEED);
+      } else if (name.trim() === '') {
+        throw new Error(ERROR_MESSAGES.BLANK_NAME);
+      } 
+    });
+    if (this.hasDuplicateNumber(names, names.length)) {
       throw new Error(ERROR_MESSAGES.DUPLICATE_NAME);
     }
   }
@@ -90,7 +87,6 @@ export default class RaceController {
         maxPoint = car.point;
       }
     });
-    
     this.outputView.printWinners(this.winners.map((winner) => winner).join(','));
   }
 }
