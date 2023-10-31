@@ -134,11 +134,11 @@
 >   - `this.#cars.forEach((car) => )`
 >   - `[car.getName(), Strings.COLON, Strings.DISTANCE.repeat(car.getDistance())].join(' ')`
 > </br></br>
-> - `pickOutWinner()` : 우승자 선별
->   - `this.#sortCarsByDistanceDescending()`
-> </br></br>
-> - `#sortCarsByDistanceDescending()` : Cars를 distance를 기준으로 내림차순 정렬
->   - `this.#cars.sort((a, b) => b.getDistance() - a.getDistance())`
+> - `pickOutWinner()` : 우승자 선별 (reduce로 배열 탐색)
+>   - `this.#winners = this.#cars.reduce((candidates, car) => { })`
+>     - `if (!candidates.length || car.getDistance() > candidates[0].getDistance())) return [car]`
+>     - `if (car.getDistance() === candidates[0].getDistance()) candidates.push(car)`
+>     - `return cadidates`
 > </br></br>
 > - `printFinalResult()` : 최종 결과 출력
 >   - `[Strings.FINAL_WINNER, Strings.COLON].concat(this.#getWinnerNames().join(', ')).join(' ')`
