@@ -4,6 +4,7 @@ import Output from "../Output/Output";
 
 class CarRaceGameController {
   #raceCars;
+  #winners;
 
   async InputRaceCarName() {
     await Input.readInputRaceCarName((input) => {
@@ -30,6 +31,12 @@ class CarRaceGameController {
       Output.printMoveMarking(this.#raceCars.getCurrentPosition());
       Output.printSingleLine();
     });
+    this.raceResult();
+  }
+
+  raceResult() {
+    this.#winners = this.#raceCars.getWinners();
+    Output.printWinnerMessage(this.#winners);
   }
 }
 
