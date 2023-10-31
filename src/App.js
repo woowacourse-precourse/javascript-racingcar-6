@@ -1,6 +1,14 @@
 import { Console, Random } from '@woowacourse/mission-utils';
 import Car from './Car.js';
-import { ERROR_MESSAGES, MESSAGES } from './constant.js';
+import {
+  ERROR_MESSAGES,
+  MAX_NAME_LENGTH,
+  MESSAGES,
+  MIN_RACE_COUNT,
+  MOVE_THRESHOLD,
+  RANDOM_MAX,
+  RANDOM_MIN,
+} from './constant.js';
 
 class App {
   async getUserInput() {
@@ -10,7 +18,7 @@ class App {
 
   checkInputValid(array) {
     for (let name of array) {
-      if (name.length > 5) {
+      if (name.length > MAX_NAME_LENGTH) {
         throw new Error(ERROR_MESSAGES.OVER_MAX_NAME);
       } else if (name.length === 0) {
         throw new Error(ERROR_MESSAGES.NO_NAME);
@@ -25,7 +33,7 @@ class App {
   checkCountValid(number) {
     if (isNaN(number)) {
       throw new Error(ERROR_MESSAGES.INVALID_NUMBER);
-    } else if (!Number.isInteger(number) || number <= 0) {
+    } else if (!Number.isInteger(number) || number < MIN_RACE_COUNT) {
       throw new Error(ERROR_MESSAGES.NO_INTEGER);
     } else {
       return number;
@@ -49,8 +57,8 @@ class App {
 
   moveCarsRandomly(cars) {
     for (let car of cars) {
-      let randomNumber = Random.pickNumberInRange(0, 9);
-      if (randomNumber >= 4) {
+      let randomNumber = Random.pickNumberInRange(RANDOM_MIN, RANDOM_MAX);
+      if (randomNumber >= MOVE_THRESHOLD) {
         car.position++;
       }
     }

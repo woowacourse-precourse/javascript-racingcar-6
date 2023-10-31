@@ -12,3 +12,9 @@ export const MESSAGES = {
     '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
   INPUT_RACING_COUNT: '시도할 횟수는 몇 회인가요?\n',
 };
+
+export const MAX_NAME_LENGTH = 5;
+export const RANDOM_MIN = 0;
+export const RANDOM_MAX = 9;
+export const MOVE_THRESHOLD = 4;
+export const MIN_RACE_COUNT = 1;
