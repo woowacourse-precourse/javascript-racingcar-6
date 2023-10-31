@@ -1,10 +1,14 @@
-import { isEmpty, validateCarName } from '../Errors/InputErrors';
+import {
+  isEmpty,
+  validateCarName,
+  validateGameRound,
+} from '../Errors/InputErrors';
 
-const validateUserInput = (carName) => {
-  const validatorsUserInput = [isEmpty, validateCarName];
+const validatorCarName = (carName) => {
+  const CarNameErrors = [isEmpty, validateCarName];
   let error = null;
 
-  validatorsUserInput.some((validator) => {
+  CarNameErrors.some((validator) => {
     error = validator(carName);
     return error !== null;
   });
@@ -12,4 +16,20 @@ const validateUserInput = (carName) => {
     throw new Error(error);
   }
 };
-export default validateUserInput;
+
+const validatorGameRound = (gameRound) => {
+  const GameRoundErrors = [validateGameRound, isEmpty,];
+  let error = null;
+
+  GameRoundErrors.some((validator) => {
+    error = validator(gameRound);
+    return error !== null;
+  });
+  if (error !== null) {
+    throw new Error(error);
+  }
+};
+
+export { validatorCarName, validatorGameRound };
+
+

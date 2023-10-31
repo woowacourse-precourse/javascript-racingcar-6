@@ -8,3 +8,5 @@ export const IS_EMPTY_ERROR =
   '[ERROR] 입력이 잘못되었습니다. 입력값이 공백입니다.';
 export const VALIDATE_CAR_NAME_ERROR =
   '[ERROR] 입력이 잘못되었습니다. 자동차의 이름은 1자리이상, 5자리 이하입니다.';
+export const VALIDATE_GAME_ROUND_ERROR =
+  '[ERROR] 입력이 잘못되었습니다. 시도 횟수는 숫자여야합니다.';
