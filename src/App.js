@@ -77,6 +77,7 @@ function carMoveOrStop(carname) {
 
 function winner(carnames) {
   var maxmoves = 0;
+  winnerarray = [];
   for (let i = 0; i < carnames.length; i++) {
     maxmoves = Math.max(carMoveStorage[carnames[i]].length,maxmoves);
   }
