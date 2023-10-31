@@ -8,7 +8,7 @@ export class DataFetcher {
     const USER_INPUT = await Prompt.getString(GameOutputMsg.gameStartMessage); // 사용자로부터 자동차 이름 입력 받기
     const CAR_NAME_LIST = USER_INPUT.split(","); // 입력값을 , 기준으로 분리
     Validator.validateString(CAR_NAME_LIST); // 이름 유효성 검사
-    const CARS = Converter.createCarsFromNames(CAR_NAME_LIST); // 이름을 기반으로 자동차 객체 생성
+    const CARS = Converter.createCars(CAR_NAME_LIST); // 이름을 기반으로 자동차 객체 생성
     return CARS;
   }
 
