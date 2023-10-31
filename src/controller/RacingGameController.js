@@ -1,10 +1,8 @@
-import Game from "../model/Game.js";
+import RacingGameInPut from "../view/RacingGameInput.js";
 import RacingGameOutput from "../view/RacingGameOutput.js";
 
 const RacingGameController = async () => {
-    const cars = await Game.setRacingCars()
-    const count = await Game.setGameMoveCount()
-
+    const { count, cars } = await RacingGameInPut.setRacingGame()
     RacingGameOutput.startRacingGame(count, cars)
 }
 
