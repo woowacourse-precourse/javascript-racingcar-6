@@ -71,3 +71,20 @@ describe('입력 에러 처리', () => {
       }).toThrowError('[ERROR] 숫자가 잘못된 형식입니다.');
     });
   });
+
+  describe('자동차 목록', () => {
+    test('racingCarList', () => {
+      // given
+      const input = ['july', 'james', 'frank'];
+      const answer = {
+        july: '',
+        james: '',
+        frank: '',
+      };
+      // when
+      const app = new App();
+      app.racingCarList(input);
+      // then
+      expect(app.carList).toEqual(answer);
+    });
+  });
