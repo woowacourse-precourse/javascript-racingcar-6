@@ -1,6 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
-export const randomNumber = () => {
+export const randomNumberSelector = () => {
   const number = MissionUtils.Random.pickNumberInRange(0, 9);
   return number;
 };
@@ -14,7 +14,7 @@ const underFour = (number) => {
 };
 
 export const checkMoving = () => {
-  let number = randomNumber();
+  let number = randomNumberSelector();
   let isMoving = false;
   if (overFour(number)) {
     return (isMoving = true);
