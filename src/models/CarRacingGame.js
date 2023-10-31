@@ -1,3 +1,6 @@
+import { getRandomNumberInRange } from "../utils/getRandomNumberInRange";
+import { RACING } from "../constants/carRacing";
+
 export default class CarRacingGames {
   constructor() {}
 
@@ -16,5 +19,17 @@ export default class CarRacingGames {
     }));
 
     return carListArr;
+  }
+
+  static decideWheterToMoveForward(carListArr) {
+    carListArr.forEach((car) => {
+      const randomNumber = getRandomNumberInRange(
+        RACING.MIN_NUMBER_OF_RANDOM_RANGE,
+        RACING.MAX_NUMBER_OF_ATTEMPTS,
+      );
+      if (randomNumber >= RACING.MIN_NUMBER_TO_MOVE_FORWARD) {
+        car.numberOfMovesForward += 1;
+      }
+    });
   }
 }

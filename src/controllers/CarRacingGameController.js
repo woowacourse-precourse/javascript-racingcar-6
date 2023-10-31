@@ -2,6 +2,7 @@ import CarRacingGames from "../models/carRacingGame.js";
 import Validator from "../models/validator.js";
 
 import InputView from "../views/InputView.js";
+import OutputView from "../views/OutputView.js";
 
 export default class CarRacingGamesControllers {
   constructor() {
@@ -9,8 +10,13 @@ export default class CarRacingGamesControllers {
     this.numberOfMoves;
   }
 
-  // 자동차 경주를 시작하는 메서드
-  async start() {
+  async play() {
+    await this.prepareSettings();
+    this.executeForward();
+  }
+
+  // 자동차 경주를 준비하는 메서드
+  async prepareSettings() {
     // 자동차 이름을 입력받는다.
     const carListString = await InputView.inputCarNames();
 
@@ -25,6 +31,17 @@ export default class CarRacingGamesControllers {
     // 시도할 횟수 입력의 유효성을 검사한다.
     if (Validator.validateInputNumbersOfMoves()) {
       this.numberOfMoves = parseInt(numberOfMoves, 10);
+    }
+  }
+
+  // 경주를 시작하고, 차수별 실행 결과를 출력하는 메서드
+  executeForward() {
+    OutputView.printNoticeOfExecutionResult();
+
+    while (this.numberOfMoves > 0) {
+      CarRacingGames.decideWheterToMoveForward(this.carListArr);
+      OutputView.printExecutionResult(this.carListArr);
+      this.numberOfMoves -= 1;
     }
   }
 }

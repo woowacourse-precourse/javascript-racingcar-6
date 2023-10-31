@@ -1,18 +1,18 @@
 import { readLineAsync } from "../utils/console/readLineAsync.js";
-import { INPUT_MESSAGE } from "../constants/messages.js";
+import { GUIDE_MESSAGE } from "../constants/messages.js";
 
 export default class InputView {
   constructor() {}
 
   // 자동차 이름을 입력받는다.
   static async inputCarNames() {
-    const input = readLineAsync(INPUT_MESSAGE.INPUT_CAR_NAMES);
+    const input = readLineAsync(GUIDE_MESSAGE.INPUT_CAR_NAMES);
     return input;
   }
 
   // 시도할 횟수를 입력받는다.
   static async inputNumbersOfMoves() {
-    const input = readLineAsync(INPUT_MESSAGE.INPUT_NUMBERS_OF_MOVES);
+    const input = readLineAsync(GUIDE_MESSAGE.INPUT_NUMBERS_OF_MOVES);
     return input;
   }
 }
