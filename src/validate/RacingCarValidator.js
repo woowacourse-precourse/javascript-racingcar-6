@@ -1,14 +1,25 @@
-class RacingCarValidator {
+import { RacingCarNameError } from "../error/CustomErrors.js";
+import { RetryCountError } from "../error/CustomErrors.js";
 
+class RacingCarValidator {
   #isValidName(str) {
 
-    // racingCar 이름의 타입에 대한 기능 요구사항이 없었지만, 영문 대소문자로 한정
+    // RacingCar 이름의 타입에 대한 기능 요구사항이 없었지만, 영문 대소문자로 한정
     const regExp = /^[a-zA-Z]{1,5}$/
     return regExp.test(str);
   }
 
   isValidNameArray(nameArray) {
-    return nameArray.every(this.#isValidName);
+    if (!nameArray.every(this.#isValidName)) {
+      throw new RacingCarNameError();
+    }
+  }
+
+  isValidCount(str) {
+
+    if (isNaN(str) || str === '0') {
+      throw new RetryCountError()
+    }
   }
 }
 

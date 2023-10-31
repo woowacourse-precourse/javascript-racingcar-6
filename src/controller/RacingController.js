@@ -1,4 +1,4 @@
-import RacingCarValidatorValidator from "../validate/RacingCarValidator.js";
+import RacingCarValidator from "../validate/RacingCarValidator.js";
 import RacingCar from "../model/RacingCar.js";
 import InputView from "../view/inputView.js";
 import OutputView from "../view/OutputView.js";
@@ -13,7 +13,7 @@ class RacingController {
   constructor() {
     this.#inputView = new InputView();
     this.#outputView = new OutputView();
-    this.#racingCarValidator = new RacingCarValidatorValidator();
+    this.#racingCarValidator = new RacingCarValidator();
     this.#racingCarArray = [];
     this.#retryCount = 0;
   }
@@ -21,7 +21,7 @@ class RacingController {
   async run() {
     await this.#createRacingCars()
     await this.#setRetryCount();
-    await this.#outputView.outputRetryResult();
+    this.#outputView.outputRetryResult();
 
     for (let counter = 0; counter < this.#retryCount; counter++) {
       this.#advanceRacingCars();
@@ -32,23 +32,18 @@ class RacingController {
   }
 
   async #createRacingCars() {
-    while (true) {
-      const racingCarNameArray = await this.#inputView.readRacingCarNames();
+    const racingCarNameArray = await this.#inputView.readRacingCarNames();
+    this.#racingCarValidator.isValidNameArray(racingCarNameArray);
 
-      if (this.#racingCarValidator.isValidNameArray(racingCarNameArray)) {
-        racingCarNameArray.forEach(element => {
-          this.#racingCarArray.push(new RacingCar(element));
-        });
-
-        break
-      } else {
-        this.#outputView.retryInputRacingCarNames();
-      }
-    }
+    racingCarNameArray.forEach(element => {
+      this.#racingCarArray.push(new RacingCar(element))
+    });
   }
 
   async #setRetryCount() {
-    this.#retryCount = await this.#inputView.readRetryCount();
+    const retryCount = await this.#inputView.readRetryCount();
+    this.#racingCarValidator.isValidCount(retryCount);
+    this.#retryCount = retryCount;
   }
 
   #advanceRacingCars() {
@@ -66,10 +61,10 @@ class RacingController {
 
   async #getWinner() {
     const winnerArray = [];
-    const maxDisplacement = Math.max.apply(null, this.#racingCarArray.map(car => {return car.getDisplacement();}));
+    const maxDisplacement = Math.max.apply(null, this.#racingCarArray.map(car => { return car.getDisplacement(); }));
 
     this.#racingCarArray.forEach(car => {
-      if(car.getDisplacement() === maxDisplacement) {
+      if (car.getDisplacement() === maxDisplacement) {
         winnerArray.push(car.getName());
       }
     });
