@@ -15,11 +15,25 @@ class App {
       Console.print(attemptForwardCount);
       Console.print(carNameArray);
 
-      const carStatusObject = this.generateCarStatusObject(
-        carNameArray,
-        attemptForwardCount
-      );
-      Console.print(carStatusObject);
+      let carStatus = carNameArray.map((name) => {
+        return { name, status: '' };
+      });
+      Console.print(carStatus);
+
+      for (let i = 0; i < parseInt(attemptForwardCount); i++) {
+        carStatus = carStatus.map((car) => {
+          return {
+            name: car.name,
+            status: this.attepmtMove(car.status),
+          };
+        });
+        Console.print(carStatus);
+      }
+      // const carStatusObject = this.generateCarStatusObject(
+      //   carNameArray,
+      //   attemptForwardCount
+      // );
+      // Console.print(carStatusObject);
     } catch (error) {
       console.error(error);
     }
@@ -33,28 +47,12 @@ class App {
   async getUsetInputForwardCount() {
     return await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
   }
-  generateForwardCountByAttempts(number) {
-    const randomNumberArray = this.makeRandomNumberArray(number);
-    const forwardCount = this.countNumberOverFour(randomNumberArray);
-    return forwardCount;
-  }
-  makeRandomNumberArray(number) {
-    return Array(number)
-      .fill(0)
-      .map((value) => value + Random.pickNumberInRange(0, 9));
-  }
-  countNumberOverFour(array) {
-    return array.filter((value) => value >= 4).length;
-  }
-  generateCarStatusObject(array, number) {
-    const carStatusObject = {};
-    array.forEach((car, idx) => {
-      const forwardCount = this.generateForwardCountByAttempts(
-        parseInt(number)
-      );
-      carStatusObject[array[idx]] = forwardCount;
-    });
-    return carStatusObject;
+  attepmtMove(status) {
+    const randomNumber = Random.pickNumberInRange(0, 9);
+    if (randomNumber >= 4) {
+      return status + '-';
+    }
+    return status;
   }
 }
 
