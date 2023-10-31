@@ -31,7 +31,7 @@ class App {
     if (carNames.indexOf(',') === -1)
       throw new Error('[ERROR] 자동차 이름 입력이 잘못되었습니다.');
 
-    const carNamesArray = carNames.split(',');
+    const carNamesArray = carNames.trim().split(',');
 
     const checkNumberSet = new Set(carNamesArray);
 
