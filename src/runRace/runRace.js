@@ -2,10 +2,6 @@ import { Console, Random } from '@woowacourse/mission-utils';
 import { MOVE_NUMBER } from '../constants/constants.js';
 
 class RunRace {
-  constructor() {
-    this.progressList = [];
-  }
-
   getRandomMove() {
     return Random.pickNumberInRange(0, 9);
   }
@@ -14,27 +10,19 @@ class RunRace {
     return this.getRandomMove() >= MOVE_NUMBER ? '-' : '';
   }
 
-  printCarProgress(car, carIndex) {
-    return Console.print(`${car} : ${this.progressList[carIndex]}`);
-  }
-
-  runRaceRound(cars) {
-    cars.forEach((_, carIndex) => {
-      this.progressList[carIndex] += this.getRandomProgress();
-      this.printCarProgress(cars[carIndex], carIndex);
-    });
-
-    Console.print('');
-  }
-
   runRace(cars, tryCount) {
-    this.progressList = new Array(cars.length).fill('');
+    const progressList = new Array(cars.length).fill('');
 
-    for (let tryNumber = 0; tryNumber < tryCount; tryNumber += 1) {
-      this.runRaceRound(cars);
+    for (let i = 0; i < tryCount; i += 1) {
+      cars.forEach((car, carIndex) => {
+        progressList[carIndex] += this.getRandomProgress();
+        Console.print(`${car} : ${progressList[carIndex]}`);
+      });
+
+      Console.print('');
     }
 
-    this.printWinners(cars, this.progressList);
+    this.printWinners(cars, progressList);
   }
 
   findWinners = (cars, progressList) =>
