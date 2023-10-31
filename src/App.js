@@ -74,6 +74,7 @@ class App {
           RACE_RESULT["car3"]["forwardingCount"]
         )}`
       );
+      Console.print("");
     }
 
     let winner;
