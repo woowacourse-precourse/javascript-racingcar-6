@@ -1,14 +1,15 @@
-import { Car } from "../domian/car";
+import { Cars } from "../domian/cars";
 
 export class InputConverter {
-  convertFromInputToList(input) {
+  convertToCars(input) {
     // 'asd,qwe,zxc' -> ['asd','qwe','zxc']
-    const carsList = input.split(","); //['asd','qwe','zxc']
-    return new Car(carsList);
+    const carNames = input.split(","); //['asd','qwe','zxc']
+    // 이름 리스트로 Cars를 만든다
+    return new Cars(carNames);
   }
 
-  convertFromInputToNumber(input) {
-    const attempt = Number(input);
-    return new Racing(attempt);
+  convertToAttemptCount(input) {
+    const attemptCount = Number(input);
+    return attemptCount;
   }
 }
