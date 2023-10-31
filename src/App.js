@@ -63,6 +63,23 @@ class App {
       this.GAME_ROUND -= 1;
     }
   }
+
+  // 게임 결과
+  printGameResult() {
+    let maxResult = 0;
+    let winnerList = [];
+    const GAME_TOTAL_RESULT = Object.entries(this.GAME_ROUND_RESULT);
+
+    maxResult = Math.max(...Object.values(this.GAME_ROUND_RESULT));
+
+    GAME_TOTAL_RESULT.forEach((gameResult) => {
+      if (gameResult[1].length === maxResult) {
+        winnerList.push(gameResult[0]);
+      }
+    });
+
+    Console.print(`최종 우승자 : ${winnerList.join(', ')}`);
+  }
 }
 
 export default App;
