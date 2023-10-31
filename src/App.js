@@ -26,10 +26,16 @@ class App {
       throw new Error("[ERROR] 차의 이름은 5자 이하만 가능합니다.");
     }
   }
-  getRandomNumber() {
-    const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
-    return randomNumber;
+  get getRandomNumber() {
+    return MissionUtils.Random.pickNumberInRange(0, 9);
   }
+  isMoveForward() {
+    if (this.getRandomNumber >= 4) {
+      return 1;
+    }
+    return 0;
+  }
+  moveForward() {}
   async play() {
     await this.readUserRacingCars();
     await this.readUserRacingTry();
