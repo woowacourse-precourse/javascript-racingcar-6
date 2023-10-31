@@ -55,6 +55,22 @@ describe("class App test", () => {
     });
   });
 
+  describe("method test : makeWinnerArray()", () => {
+    test("maxLength가 5인 자동차 객체의 index를 넣은 배열[0, 2, 5]이 반환이 되는가 ?", () => {
+      const testParameter = [
+        { name: "equus", result: "-----" },
+        { name: "pony", result: "-" },
+        { name: "ray", result: "-----" },
+        { name: "SM5", result: "---" },
+        { name: "K7", result: "----" },
+        { name: "G80", result: "-----" },
+      ];
+      const testWinnerIndex = [0, 2, 5];
+      const winnerNames = app.makeWinnerArray(testParameter, testWinnerIndex);
+      expect(winnerNames).toEqual(["equus", "ray", "G80"]);
+    });
+  });
+
   describe("method test : checkWinner()", () => {
     test("경주 결과 배열을 보내면 우승자 이름을 반환하는가 ?", () => {
       const testParameter = [
