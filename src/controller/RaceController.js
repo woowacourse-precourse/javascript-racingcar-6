@@ -1,47 +1,35 @@
-import { Console } from '@woowacourse/mission-utils';
-import CarRace from '../model/CarRace';
 import InputView from '../view/InputView';
+import OutputView from '../view/OutputView';
+import CarRace from '../model/CarRace';
+import { ERROR_MESSAGE } from '../utils/constants';
+import getForwardData from '../utils/getForwardData';
 
 class RaceController {
-  constructor() {
-    this.carRace = new CarRace();
+  async insertInput() {
+    try {
+      const carNames = await InputView.carNames();
+      const tryCount = await InputView.tryCount();
+      const carRace = new CarRace(carNames);
+      const winners = await this.runRace(carRace, tryCount);
+      OutputView.printMessage();
+      OutputView.winnerResult(winners);
+    } catch (err) {
+      throw new Error(ERROR_MESSAGE.INVALID_INPUT);
+    }
   }
 
-  runRace() {
-    this.insertCarNames();
+  async runRace(carRace, tryCount) {
+    for (let i = 0; i < tryCount; i += 1) {
+      carRace.getRaceRound();
+      OutputView.roundResult(carRace.cars);
+    }
+
+    return this.getWinners(carRace.cars);
   }
 
-  insertCarNames() {
-    InputView.inputCarNames(carNames => {
-      try {
-        this.carRace.makeCarList(carNames);
-        this.insertTryCount();
-      } catch (error) {
-        Console.print(
-          '[ERROR] 유효하지 않은 자동차 이름입니다. 다시 입력해주세요.',
-        );
-        this.insertCarNames();
-      }
-    });
-  }
-
-  insertTryCount() {
-    InputView.inputTryCount(tryCount => {
-      try {
-        this.carRace.setTryCount(tryCount);
-        const result = this.carRace
-          .makeCarList()
-          .getRace()
-          .getWinners()
-          .getResult();
-        Console.print(result);
-      } catch (error) {
-        Console.print(
-          '[ERROR] 유효하지 않은 시도 횟수입니다. 다시 입력해주세요.',
-        );
-        this.insertTryCount();
-      }
-    });
+  async getWinners(cars) {
+    const winners = await getForwardData(cars);
+    return winners;
   }
 }
 
