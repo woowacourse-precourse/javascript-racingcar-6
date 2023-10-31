@@ -20,7 +20,10 @@ class App {
     async inputCarNamesAsync() {
       const carNamesInput = await Console.readLineAsync("경주할 자동차 이름을 입력하세요 (이름은 쉼표(,)로 구분):");
       const carNames = carNamesInput.split(',').map(name => name.trim());
-  
+      if (carNames.some(name => name.length > 5)) {
+        throw new Error("[ERROR] 자동차 이름은 5자 이하만 가능합니다.");
+      }
+
       this.cars = carNames.map(name => ({ name, position: 0 }));
     }
 }
