@@ -1,5 +1,6 @@
 import App from '../src/App.js';
 import Car from '../src/model/Car.js';
+import RandomNumber from '../src/RandomNumber.js';
 
 describe('자동차 경주 게임', () => {
   test.each([[4], [5], [6], [7], [8], [9]])(
@@ -46,4 +47,13 @@ describe('자동차 경주 게임', () => {
       app.cars.forEach((car, i) => expect(car.getName()).toEqual(names[i]));
     },
   );
+
+  test('랜덤숫자는 0 이상 9 이하로만 생성된다', () => {
+    // when
+    const randomNumber = RandomNumber.create();
+
+    // then
+    expect(randomNumber).toBeGreaterThanOrEqual(0);
+    expect(randomNumber).toBeLessThanOrEqual(9);
+  });
 });
