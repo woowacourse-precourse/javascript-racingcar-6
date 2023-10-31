@@ -62,8 +62,8 @@ describe('자동차 경주 게임', () => {
     expect(result).toContain(output);
   });
 
-  test.each([[['pobi,javaji']], [['pobi,eastjun']]])(
-    '이름에 대한 예외 처리',
+  test.each([[['pobi,javaji']], [['pobi,eastjun']], [['pobi,']]])(
+    '이름의 길이에 대한 예외 처리',
     async (inputs) => {
       // given
       mockQuestions(inputs);
@@ -77,6 +77,19 @@ describe('자동차 경주 게임', () => {
       );
     },
   );
+
+  test.each([[['pobi']]])('자동차 갯수에 대한 예외 처리', async (inputs) => {
+    // given
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow(
+      '[ERROR] 자동차는 최소 2대 이상 입력해야합니다.',
+    );
+  });
 
   test.each([[['pobi,jun', 'wooteco']], [['pobi,woni', '1.2']]])(
     '정수외의 횟수 입력에 대한 예외 처리',
@@ -94,7 +107,7 @@ describe('자동차 경주 게임', () => {
     },
   );
 
-  test.each([[['p', '-1']], [['jun,woni', '0']]])(
+  test.each([[['pobi,woni', '-1']], [['jun,woni', '0']]])(
     '0보다 작은 횟수 입력에 대한 예외 처리',
     async (inputs) => {
       // given
