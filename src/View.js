@@ -6,6 +6,7 @@ const MESSAGE = {
     '경주할 자동차 이름을 입력하세요(이름은 쉼표(,) 기준으로 구분)\n',
   OUTPUT_WINNER: winners => `${winners.join(', ')}가 최종 우승했습니다.`,
   OUTPUT_ERROR: '[ERROR] 자동차 이름은 5자 이하만 가능합니다.',
+  OUTPUT_RACING_STATUS: racer => `${racer.carName} : ${'-'.repeat(racer.move)}`,
 };
 const inputCarNames = async () => {
   const carNames = (await Console.readLineAsync(MESSAGE.INPUT_CAR_NAMES))
@@ -24,6 +25,13 @@ const inputTryCount = async () => {
   return tryCount;
 };
 
+const outputResultsEveryIteration = racers => {
+  const result = racers
+    .map(racer => `${racer.carName} : ${'-'.repeat(racer.move)}`)
+    .join('\n')
+    .concat('\n');
+  Console.print(result);
+};
 const outputWinner = winners => {
   Console.print(MESSAGE.OUTPUT_WINNER(winners));
 };
