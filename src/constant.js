@@ -6,8 +6,9 @@ const INFO_MESSAGES = Object.freeze({
 });
 
 const ERROR_MESSAGES = Object.freeze({
-    NUM_OF_CHARACTER_EXCEED: '[ERROR] 자동차 이름은 5자 이하로 입력해주세요.',
-    DUPLICATE_NAME: '[ERROR] 서로 다른 자동차 이름을 입력해주세요.',
+    NUM_OF_CHARACTER_EXCEED: '[ERROR] 자동차 이름이 5자를 초과하였습니다. 5자 이하로 입력해주세요.',
+    BLANK_NAME: '[ERROR] 비어있거나 공백으로만 이루어진 자동차 이름이 있습니다.',
+    DUPLICATE_NAME: '[ERROR] 중복된 자동차 이름이 있습니다. 서로 다른 이름을 입력해주세요.',
     OUT_OF_RANGE: '[ERROR] 시도 횟수는 양의 정수로 입력해주세요.'
 });
 
