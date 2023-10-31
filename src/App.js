@@ -23,22 +23,46 @@ class App {
     this.#printWinners(winners);
   }
 
+  /**
+   * 경기에 참가할 User의 이름 목록을 읽어옵니다.
+   * @async
+   * @private
+   * @returns {Promise<string[]>} 사용자 이름 배열
+   */
   async #readUserNames() {
     const userNames = await this.#view.input.readLine(MESSAGES.start);
 
     return userNames.split(SYSTEM_CONFIG.separator);
   }
 
+  /**
+   * Track의 랩 수를 읽어옵니다.
+   * @async
+   * @private
+   * @returns {Promise<number>} 트랙 랩 수
+   */
   async #readTrackLap() {
     const trackLap = await this.#view.input.readLine(MESSAGES.lap);
 
     return Number(trackLap);
   }
 
+  /**
+   * @private
+   * @param {{
+   *  [key: string]: string
+   * }[]} records 트랙 경기 기록 목록
+   */
   #printRecords(records) {
     records.forEach((record) => this.#printRecord(record));
   }
 
+  /**
+   * @private
+   * @param {{
+   *  [key: string]: string
+   * }} record 트랙 경기 기록
+   */
   #printRecord(record) {
     this.#view.output.lineBrake();
     Object.entries(record).forEach(([name, skid]) => {
@@ -46,6 +70,10 @@ class App {
     });
   }
 
+  /**
+   * @private
+   * @param {string[]} winners 트랙 우승자 목록
+   */
   #printWinners(winners) {
     this.#view.output.print(MESSAGES.winners(winners));
   }
