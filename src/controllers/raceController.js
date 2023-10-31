@@ -1,5 +1,5 @@
-import { GameOutputMsg } from "../constants/gameConstants";
-import { ResultHandler } from "../handler/resultHandler";
+import { GameOutputMsg } from "../constants/gameConstants.js";
+import { ResultHandler } from "../handler/resultHandler.js";
 import { RaceUtils } from "../utils/raceUtils.js";
 import { Prompt } from "../prompt/prompt.js";
 
