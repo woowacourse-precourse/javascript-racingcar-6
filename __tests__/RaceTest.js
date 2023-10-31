@@ -7,7 +7,6 @@ describe("Race class의 decideWinners 메서드 테스트", () => {
     const arrCarName = ["pobi", "woni", "djun"];
     race = new Race(arrCarName);
 
-    // 각 차의 거리를 수동으로 설정
     race.cars[0].distance = 5; // pobi
     race.cars[1].distance = 4; // woni
     race.cars[2].distance = 5; // jun

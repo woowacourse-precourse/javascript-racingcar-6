@@ -1,21 +1,23 @@
 import { Console } from "@woowacourse/mission-utils";
 import Race from "./Race.js";
+const MIN_NAME = 0;
+const MAX_NAME = 5;
+const MIN_ROUND = 0;
+const MAX_ROUND = 9;
 
 class App {
   async play() {
-    const arrCarName = await this.getCarNames();
+    const carNames = await this.getCarNames();
     const totalRound = await this.getTotalRound();
-    const race = new Race(arrCarName);
+    const race = new Race(carNames);
 
-    this.validateInput(arrCarName, totalRound);
-    
+    this.validateInput(carNames, totalRound);
+
     for (let i = 0; i < totalRound; i++) {
       race.startRound();
-      // race.stateOfRace() == [{name1 : '이름', distance : '---'}, {name2 : '이름2', distance : '--'} ...]
       this.displayRaceStateOfRound(race.stateOfRace());
     }
 
-    // winners == ['우승자1', '우승자2']
     const winners = race.decideWinners();
     this.displayWinners(winners);
   }
@@ -43,12 +45,16 @@ class App {
     Console.print(`최종 우승자 : ${winners.join(", ")}`);
   }
 
-  validateInput(arrCarNames, totalRound) {
-    if (arrCarNames.some((name) => name.length === 0 || name.length > 5)) {
+  validateInput(carNames, totalRound) {
+    if (
+      carNames.some(
+        (name) => name.length === MIN_NAME || name.length > MAX_NAME
+      )
+    ) {
       throw new Error("[ERROR] 이름은 1자 이상, 5자 이하만 가능합니다.");
     }
 
-    if (isNaN(totalRound) || totalRound < 0 || totalRound > 9) {
+    if (isNaN(totalRound) || totalRound < MIN_ROUND || totalRound > MAX_ROUND) {
       throw new Error("[ERROR] 0과 9사이의 자연수만 입력 가능합니다.");
     }
   }

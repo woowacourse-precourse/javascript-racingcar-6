@@ -1,16 +1,17 @@
 import { Random } from "@woowacourse/mission-utils";
 import Car from "./Car.js";
 const MIN_TO_MOVE = 4;
+const MIN_RANDOM = 0;
+const MAX_RANDOM = 9;
 
 class Race {
-  constructor(arrCarName) {
-    // 각각의 자동차 이름들로 Car 인스턴스를 생성하여 배열에 담음.
-    this.cars = arrCarName.map((cars) => new Car(cars));
+  constructor(carNames) {
+    this.cars = carNames.map((cars) => new Car(cars));
   }
 
   startRound() {
     this.cars.forEach((car) => {
-      if (Random.pickNumberInRange(0, 9) >= MIN_TO_MOVE) {
+      if (Random.pickNumberInRange(MIN_RANDOM, MAX_RANDOM) >= MIN_TO_MOVE) {
         car.moveForward();
       }
     });
