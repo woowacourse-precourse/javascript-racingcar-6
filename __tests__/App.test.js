@@ -1,5 +1,6 @@
 import App from "../src/App.js";
-import { ERROR_MESSAGE } from "../src/Message";
+import { Console } from "@woowacourse/mission-utils";
+import { ERROR_MESSAGE, GAME_MESSAGE } from "../src/Message";
 
 describe("class App test", () => {
   let app;
@@ -7,6 +8,12 @@ describe("class App test", () => {
   beforeEach(() => {
     app = new App();
   });
+
+  const getPrintSpy = () => {
+    const logSpy = jest.spyOn(Console, "print");
+    logSpy.mockClear();
+    return logSpy;
+  };
 
   describe("method test : makeObject()", () => {
     test("makeObject()의 인수 carName이 equus이라면 ?", () => {
@@ -56,7 +63,7 @@ describe("class App test", () => {
   });
 
   describe("method test : makeWinnerArray()", () => {
-    test("maxLength가 5인 자동차 객체의 index를 넣은 배열[0, 2, 5]이 반환이 되는가 ?", () => {
+    test("경주 결과랑 우승자 index 배열을 주면 우승자 이름 배열을 반환하는가 ?", () => {
       const testParameter = [
         { name: "equus", result: "-----" },
         { name: "pony", result: "-" },
@@ -116,6 +123,28 @@ describe("class App test", () => {
       expect(() => {
         app.checkCarNames(longCarNames);
       }).toThrowError(ERROR_MESSAGE.LENGTH);
+    });
+  });
+
+  describe("method test : printResult()", () => {
+    test("자동차 경주 결과 출력 확인", () => {
+      const mockConsolePrint = jest
+        .spyOn(Console, "print")
+        .mockImplementation(() => {});
+
+      const raceResult = [
+        { name: "equus", result: "-----" },
+        { name: "pony", result: "-" },
+        { name: "ray", result: "-----" },
+      ];
+
+      app.printResult(raceResult);
+
+      raceResult.forEach((e) => {
+        expect(mockConsolePrint).toHaveBeenCalledWith(GAME_MESSAGE.RESULT(e));
+      });
+
+      expect(mockConsolePrint).toHaveBeenCalledWith("\n");
     });
   });
 });
