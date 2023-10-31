@@ -19,9 +19,13 @@ export function printStartResult() {
 }
 
 export function printMoveResult(name, advance) {
-  Console.print(`${name}: ${"-".repeat(advance)}`);
+  Console.print(`${name} : ${"-".repeat(advance)}`);
 }
 
 export function printLine() {
   Console.print("");
+}
+
+export function printRacingResult(winner) {
+  Console.print(`${MESSAGE_NOTIFICATION.racingResult}${winner}`);
 }

@@ -5,6 +5,7 @@ import {
   printStartResult,
   printMoveResult,
   printLine,
+  printRacingResult,
 } from "../view/View.js";
 import RandomInRange from "../utils/RandomNum.js";
 
@@ -14,7 +15,6 @@ export default class RacingCarController {
   async play() {
     this.getCarNameInput(await carNameInput());
     this.getPlayerInput(await playerInput());
-    this.test();
   }
 
   getCarNameInput(input) {
@@ -25,25 +25,26 @@ export default class RacingCarController {
   }
 
   getPlayerInput(input) {
-    this.startRacing(input);
+    this.racingStart(input);
   }
 
-  startRacing(count) {
+  racingStart(count) {
     printStartResult();
 
     for (let i = 0; i < count; i++) {
-      this.moveOnce();
+      this.racingMoveOnce();
     }
+    this.getWinner();
   }
 
-  moveOnce() {
+  racingMoveOnce() {
     this.#CarArr.forEach((car) => {
       car.setAdvance(RandomInRange());
     });
-    this.printMoveOnce();
+    this.racingPrintMoveOnce();
   }
 
-  printMoveOnce() {
+  racingPrintMoveOnce() {
     this.#CarArr.forEach((car) => {
       const name = car.getName();
       const advance = car.getAdvance();
@@ -52,10 +53,29 @@ export default class RacingCarController {
     printLine();
   }
 
-  test() {
-    console.log("test 시작");
-    for (let i = 0; i < this.#CarArr.length; i++) {
-      console.log(this.#CarArr[i].getCar());
-    }
+  getWinner() {
+    const winner = this.checkWinner(this.#CarArr).join(", ");
+    printRacingResult(winner);
+  }
+
+  checkWinner(carArr) {
+    const winnerList = [];
+    let max = 0;
+
+    carArr.forEach((car) => {
+      const carAdvance = car.getAdvance();
+      if (carAdvance > max) {
+        max = carAdvance;
+      }
+    });
+
+    carArr.forEach((car) => {
+      const carAdvance = car.getAdvance();
+      if (carAdvance === max) {
+        winnerList.push(car.getName());
+      }
+    });
+
+    return winnerList;
   }
 }

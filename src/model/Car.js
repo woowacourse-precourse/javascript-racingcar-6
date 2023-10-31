@@ -16,10 +16,6 @@ export default class Car {
     }
   }
 
-  getCar() {
-    return this.#Car;
-  }
-
   getName() {
     return this.#Car.name;
   }
