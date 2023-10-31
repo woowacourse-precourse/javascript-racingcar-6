@@ -1,8 +1,9 @@
+import { MESSAGES } from "../Constants.js";
 class CarName {
   createToRightObj(names) {
     let namesObj = {};
     names.forEach((name) => {
-      if (name.length > 5) throw new Error("[ERROR] 이름이 잘못된 형식입니다.");
+      if (name.length > 5) throw new Error(MESSAGES.ERROR_WRONG_NAME);
       namesObj[name] = 0;
     });
     return namesObj;
