@@ -53,7 +53,7 @@ export default class GameController {
   async setTryCount() {
     const tryCount = await this.getTryCount();
     this.#validateTryCount(tryCount);
-    this.model.setTryCount(Number(tryCount));
+    this.model.setTryCount(tryCount);
   }
 
   printResult() {

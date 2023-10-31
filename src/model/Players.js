@@ -10,7 +10,7 @@ export default class Players {
   }
 
   setTryCount(tryCount) {
-    this.#tryCount = tryCount;
+    this.#tryCount = Number(tryCount);
   }
 
   getTryCount() {
