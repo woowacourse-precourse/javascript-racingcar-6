@@ -1,5 +1,7 @@
 import Car from "./Car.js";
 import UserInput from "./UserInput.js";
+import { Console } from "@woowacourse/mission-utils";
+import Messages from "./constants/Messages.js";
 
 class RacingcarGame {
   racingCar;
@@ -50,9 +52,8 @@ class RacingcarGame {
   }
 
   printWinner() {
-    // getWinner()로 우승자를 확인한다.
-    // 반환된 값의 길이가 1이라면 우승자는 1명이므로 "최종 우승자 : 자동차이름" 출력한다.
-    // 반환된 값의 길이가 2이상이면 우승자는 여러 명이므로 join 매서드 사용하여 "최종 우승자 : 자동차1, 자동차2" 출력한다.
+    const winner = this.getWinner();
+    Console.print(`${Messages.WINNER}${winner.join(", ")}`);
   }
 
   getWinner() {
