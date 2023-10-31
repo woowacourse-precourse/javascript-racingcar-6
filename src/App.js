@@ -1,5 +1,5 @@
-import { Console, Random } from "@woowacourse/mission-utils";
-import { GAME_MESSAGE, ERROR_MESSAGE, CONSTANT } from "./Message";
+import { Console, Random } from '@woowacourse/mission-utils';
+import { GAME_MESSAGE, ERROR_MESSAGE, CONSTANT } from './Message';
 
 class App {
   constructor() {
@@ -9,7 +9,7 @@ class App {
 
   getCarNamesArray(carNames) {
     // test code 완료
-    return carNames.split(",");
+    return carNames.split(',');
   }
 
   checkCarNames(element) {
@@ -20,7 +20,7 @@ class App {
 
   checkRepeatNumber(repeatNumber) {
     // test code 완료
-    if (repeatNumber.includes(" ")) throw new Error(ERROR_MESSAGE.GAP);
+    if (repeatNumber.includes(' ')) throw new Error(ERROR_MESSAGE.GAP);
     if (isNaN(repeatNumber)) throw new Error(ERROR_MESSAGE.NUMBER);
   }
 
@@ -28,7 +28,7 @@ class App {
     // test code 완료
     const carObject = {
       name: carName,
-      result: "",
+      result: '',
     };
     return carObject;
   }
@@ -43,7 +43,7 @@ class App {
 
   goForward(element, randomNumber) {
     if (randomNumber >= CONSTANT.GOFORWARD_NUMBER) {
-      element.result = element.result.concat("-");
+      element.result = element.result.concat('-');
     }
   }
 
@@ -52,7 +52,7 @@ class App {
     raceResult.forEach((e) => {
       Console.print(GAME_MESSAGE.RESULT(e));
     });
-    Console.print("\n");
+    Console.print('\n');
   }
 
   findLength(raceResult) {
@@ -119,7 +119,7 @@ class App {
 
   printWinner(winnerName) {
     // test code 완료
-    const winnerNameString = winnerName.join(", ");
+    const winnerNameString = winnerName.join(', ');
     Console.print(GAME_MESSAGE.WINNER(winnerNameString));
   }
 
