@@ -4,13 +4,12 @@ import { Console } from "@woowacourse/mission-utils";
 
 class App {
     async play() {
-        inputData.player = await Controller.setPlayer(
+        inputData.player = Controller.setPlayer(
             await Console.readLineAsync(MESSAGE.GET_PLAYER)
         );
-        inputData.number = await Controller.setNumber(
+        inputData.number = Controller.setNumber(
             await Console.readLineAsync(MESSAGE.GET_NUMBER)
         );
-
         Console.print(MESSAGE.PROGRESS_RESULT);
         for (let i = 0; i < inputData.number; i++) {
             Controller.raceProgress(inputData.player);

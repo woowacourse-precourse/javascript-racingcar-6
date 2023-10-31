@@ -1,9 +1,9 @@
-import { Console, Random } from "@woowacourse/mission-utils";
+import { Random } from "@woowacourse/mission-utils";
 import { MESSAGE } from "./Data.js";
 
 class Controller {
     // 참가자 객체 반환 함수
-    static async setPlayer(player) {
+    static setPlayer(player) {
         try {
             player = player.split(",").map((value) => {
                 return value.trim();
@@ -26,7 +26,7 @@ class Controller {
     }
 
     // 반복 횟수 반환 함수
-    static async setNumber(number) {
+    static setNumber(number) {
         try {
             //예외처리
             if (isNaN(number)) throw new Error(MESSAGE.ERROR);
