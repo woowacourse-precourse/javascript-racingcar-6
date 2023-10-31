@@ -13,5 +13,9 @@ export const MAX_RANDOM_RANGE = 9;
 export const MOVE_FORWARD_NUMBER = 4;
 
 // 예외처리 관련 상수
-export const ERROR_HEAD = "[ERROR]";
+export const ERROR_HEAD = "[ERROR] ";
+export const ERROR_WITHOUT_SPLIT_MARK = "자동차 이름을 쉼표로 구분하여 입력해주세요.";
+export const ERROR_INVALID_PLAY_COUNT = "횟수는 1이상의 정수로 입력해주세요.";
+export const ERROR_INVALID_CAR_NAME = "자동차 이름은 1자 이상, 5자 이하로 입력해주세요.";
+export const ERROR_DUPLICATED_CARS = "중복된 자동차가 있습니다. 서로 다른 자동차들을 입력해주세요.";
 
