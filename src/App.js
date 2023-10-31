@@ -15,11 +15,30 @@ class App {
   async initializeCars() {
     const carNamesInput = await Console.readLineAsync('경주할 자동차이름을입력하세요.(이름은 쉼표(,) 기준으로 구분)\n');
     const carNames = this.parseCarNamesInput(carNamesInput);
+    this.validateCarNames(carNames);
     this.cars = this.createCars(carNames);
   }
 
   parseCarNamesInput(input) {
     return input.trim().split(',').map((name) => name.trim());
+  }
+
+  validateCarNames(names) {
+    if (names.length === 0) {
+      throw new Error('[ERROR] 이름이 잘못된 형식입니다.');
+    }
+    if (new Set(names).size !== names.length) {
+      throw new Error('[ERROR] 이름이 잘못된 형식입니다.');
+    }
+    names.forEach((name) => {
+      if (name.length === 0) {
+        throw new Error('[ERROR] 이름이 잘못된 형식입니다.');
+      }
+      if (name.length > 5) {
+        throw new Error('[ERROR] 이름이 잘못된 형식입니다.');
+      }
+    });
+    return true;
   }
 
   createCars(names) {
