@@ -3,22 +3,29 @@ import GAME_MESSAGE from './constant/gameMessage';
 import randomNumGenerator from './utils/RandomNumGenerator';
 import messagePrinter from './utils/messagePrinter';
 class App {
-  async play() {
-    const carNameArr = await this.getCarNameInput();
-    await this.checkValidCarName(carNameArr);
-    const trialNum = await this.getTrialNumInput();
-    await this.checkValidTrialNum(trialNum);
+  #cars;
 
-    let curMoveForwardArr = new Array(carNameArr.length).fill(0);
+  #trials;
+
+  #moveStatus;
+
+  async play() {
+    this.#cars = await this.getCarNameInput();
+    await this.checkValidCarName(this.#cars);
+    this.#trials = await this.getTrialNumInput();
+    await this.checkValidTrialNum(this.#trials);
+
+    this.#moveStatus = new Array(this.#cars.length).fill(0);
+
     let i = 0;
-    while (i < trialNum) {
-      const moveForwardArr = await this.raceStart(carNameArr);
-      curMoveForwardArr = curMoveForwardArr.map((value, index) => value + moveForwardArr[index]);
-      await this.printCurCarMove(carNameArr, curMoveForwardArr);
+    while (i < this.#trials) {
+      const moveForwardArr = await this.raceStart(this.#cars);
+      this.#moveStatus = this.#moveStatus.map((value, index) => value + moveForwardArr[index]);
+      await this.printCurCarMove(this.#cars, this.#moveStatus);
       i += 1;
     }
 
-    await this.printWinners(carNameArr, curMoveForwardArr);
+    await this.printWinners(this.#cars, this.#moveStatus);
   }
 
   async getCarNameInput() {
@@ -28,9 +35,15 @@ class App {
 
   async checkValidCarName (carNameArr) {
     for (let i = 0; i < carNameArr.length; i++) {
-      if (carNameArr[i].length > 5 || carNameArr[i].length === 0) {
+      const carName = carNameArr[i];
+      if (carName.length > 5) {
         messagePrinter.errorPrint(ERROR_MESSAGE.more_than_five_letters);
+      } else if (carName.length === 0) {
+        messagePrinter.errorPrint(ERROR_MESSAGE.no_letters);
       }
+    }
+    if (carNameArr.length !== new Set([...carNameArr]).size) {
+      messagePrinter.errorPrint(ERROR_MESSAGE.duplicated_car_names);
     }
   }
 
