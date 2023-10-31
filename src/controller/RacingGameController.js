@@ -13,7 +13,6 @@ class RacingGameController {
   async start() {
     /** @type {string} 자동차 이름 */
     const carNames = await inputView.readCarNames();
-
     this.registerRacingCar(carNames.split(','));
   }
 
@@ -24,7 +23,6 @@ class RacingGameController {
   registerRacingCar(carList) {
     /** @type {RacingCar[]} */
     this.racingGame.setRacingCar = this.createRacingCars(carList);
-
     this.inputMoveCount();
   }
 
@@ -34,7 +32,6 @@ class RacingGameController {
    */
   createRacingCars(carList) {
     validateNameDuplicate(carList);
-
     return carList.map((carName) => {
       const car = new RacingCar();
       car.setCarName = carName;
@@ -46,7 +43,6 @@ class RacingGameController {
   async inputMoveCount() {
     const count = await inputView.readMoveCount();
     validateMoveCount(Number(count));
-
     this.moveCars(Number(count));
   }
 
@@ -56,12 +52,10 @@ class RacingGameController {
    */
   moveCars(count) {
     outputView.printRacingComment();
-
     while (count--) {
       this.racingGame.checkMove();
       this.printRacingResult();
     }
-
     this.printWinner();
   }
 
