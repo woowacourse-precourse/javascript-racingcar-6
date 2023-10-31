@@ -18,3 +18,10 @@ const inputCarNames = async () => {
     });
   return carNames;
 };
+
+const inputTryCount = async () => {
+  const tryCount = await Console.readLineAsync(MESSAGE.INPUT_TRY_COUNT);
+  return tryCount;
+};
+
+export { inputCarNames, inputTryCount };
