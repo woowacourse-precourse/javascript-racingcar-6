@@ -1,10 +1,7 @@
-import App from '../src/App';
 import { checkCarNames, checkTryNumber } from '../src/Validation';
 import { ERROR_MESSAGE } from '../src/Message';
 
 describe('예외 테스트', () => {
-  const app = new App();
-
   test.each(['', ' '])('자동차 이름을 공백 또는 입력하지 않았을 때', inputs => {
     expect(() => checkCarNames(inputs)).toThrow(ERROR_MESSAGE.NO_CAR_NAME);
   });
