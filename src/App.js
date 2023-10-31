@@ -49,6 +49,9 @@ class App {
   GoOrStop(cars) {
     cars.forEach((car) => {
       const randomNum = Random.pickNumberInRange(0, 9);
+      if (randomNum >= 4) {
+        car.position += 1;
+      }
     });
   }
 }
