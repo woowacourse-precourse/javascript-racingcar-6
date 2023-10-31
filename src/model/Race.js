@@ -1,11 +1,8 @@
 export default class Race {
   #cars;
 
-  #rounds;
-
-  constructor(cars, rounds) {
+  constructor(cars) {
     this.#cars = cars;
-    this.#rounds = rounds;
   }
 
   playRound() {
@@ -13,15 +10,20 @@ export default class Race {
   }
 
   getRoundResults() {
-    return this.#cars.map((car) => ({
-      name: car.name,
-      representation: car.getCurrentPositionRepresentation()
-    }));
+    return this.#cars.map((car) => {
+      const { name, position } = car.getCarInformation();
+      return {
+        name,
+        position,
+      };
+    });
   }
 
   getWinners() {
-    const maxPosition = Math.max(...this.#cars.map((car) => car.position));
-    return this.#cars.filter((car) => car.position === maxPosition).map((car) => car.name);
+    const maxPosition = Math.max(...this.#cars.map((car) => car.getCarInformation().position));
+    return this.#cars
+      .filter((car) => car.getCarInformation().position === maxPosition)
+      .map((car) => car.getCarInformation().name);
   }
 
   getWinnersString() {
