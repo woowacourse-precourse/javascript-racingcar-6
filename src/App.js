@@ -18,7 +18,7 @@ class App {
     const carNameList = carNames.split(',');
     const trimmedCarNames = carNameList.map((carName) => carName.trim());
 
-    if (!this.isValidCarNames(trimmedCarNames)) {
+    if (!this.isValidCarNamesInput(trimmedCarNames)) {
       throw new Error('[ERROR] 잘못된 입력값입니다.');
     }
 
@@ -32,7 +32,7 @@ class App {
     return gameCount;
   }
 
-  isValidCarNames(carNameList) {
+  isValidCarNamesInput(carNameList) {
     if (carNameList.length === 1) return false;
 
     for (let carName of carNameList) {
