@@ -10,7 +10,7 @@ const InputView = {
 
   readCountInput: async () => {
     const inputCount = await Console.readLineAsync(INPUT_COUNT);
-    
+
     return inputCount;
   },
 };

@@ -1,5 +1,5 @@
-import { Console } from '@woowacourse/mission-utils';
 import { readCarsInput, readCountInput } from '../view/InputView.js';
+import { printResultStartString } from '../view/OutputView.js';
 
 class CarRacingController {
   inputCars = async () => {
@@ -11,7 +11,11 @@ class CarRacingController {
   inputCount = async () => {
     const count = await readCountInput();
 
-    Console.print(count);
+    this.printRacingResult();
+  };
+
+  printRacingResult = () => {
+    printResultStartString();
   };
 }
 
