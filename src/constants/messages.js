@@ -13,3 +13,10 @@ export const MESSAGE = Object.freeze({
   },
   getWinnersNames: (winnersNames) => `최종 우승자 : ${winnersNames.join(", ")}`,
 });
+
+const ERROR_PREFIX = "[ERROR]";
+export const ERROR_MESSAGE = Object.freeze({
+  DUPLICATED_NAME: `${ERROR_PREFIX} 이름이 중복 되었습니다`,
+  EXCEEDED_LENGTH: `${ERROR_PREFIX} 이름은 5자리 이하만 가능합니다`,
+  INVALID_NUMBER: `${ERROR_PREFIX} 숫자가 잘못된 형식입니다`,
+});
