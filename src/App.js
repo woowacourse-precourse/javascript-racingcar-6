@@ -27,6 +27,7 @@ class App {
     }
 
     // TODO: 게임 종료 후 우승자 출력
+    const winner = this.getWinner(cars);
   }
 
   checkCarNameLength(carNames) {
@@ -60,6 +61,21 @@ class App {
       Console.print(`${car.name} : ${"-".repeat(car.position)}`);
     });
     Console.print("\n");
+  }
+
+  getWinner(cars) {
+    let max = 0;
+    let winner = [];
+    cars.forEach((car) => {
+      if (car.position > max) {
+        max = car.position;
+        winner = [car.name];
+      } else if (car.position === max) {
+        winner.push(car.name);
+      }
+    });
+
+    Console.print(`최종 우승자 : ${winner.join(", ")}`);
   }
 }
 
