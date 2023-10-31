@@ -1,13 +1,14 @@
 import { Console } from '@woowacourse/mission-utils';
 import { myConstants } from '../constants/constants';
-export async function promptCarNames() {
+
+export const promptCarNames = async () => {
 	return await Console.readLineAsync(`${myConstants.START}\n`);
-}
+};
 
-export async function promptPlayCount() {
+export const promptPlayCount = async () => {
 	return await Console.readLineAsync(`${myConstants.COUNT}?\n`);
-}
+};
 
-export function printCarPosition(name, position) {
+export const printCarPosition = (name, position) => {
 	Console.print(`${name} : ${'-'.repeat(position)}`);
-}
+};

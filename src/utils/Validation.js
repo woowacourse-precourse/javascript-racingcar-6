@@ -1,35 +1,32 @@
+import { myConstants } from '../constants/constants';
 export function validateCarNameLength(name) {
 	if (name.length > 5) {
-		throw new Error('[ERROR] 특정 자동차의 이름이 5자를 초과하였습니다.');
+		throw new Error(`${myConstants.CARNAME_ERROR}`);
 	}
 }
 
-export function validateNames(names) {
+export const validateNames = (names) => {
 	names.forEach((name) => {
 		validateCarNameLength(name);
 	});
-}
+};
 
-export function validatePlayCount(str) {
+export const validatePlayCount = (str) => {
 	const checkStyle = /\d/;
 	if (!checkStyle.test(str)) {
-		throw new Error('[ERROR] 입력해주신 시도할 횟수가 숫자가 아닙니다.');
+		throw new Error(`${myConstants.PLAYCOUNT_ERROR}`);
 	}
-}
+};
 
-export function validateRandomNum(num) {
+export const validateRandomNum = (num) => {
 	if (typeof num !== 'number') {
-		throw new Error(
-			'[ERROR] 차의 전진 유무를 판단하는 무작위 값이 숫자가 아닙니다.'
-		);
+		throw new Error(`${myConstants.RANDOMNUM_ERROR_TYPE}`);
 	}
 	if (num < 0 || num > 9) {
-		throw new Error(
-			'[ERROR] 차의 전진 유무를 판단하는 무작위 값이 0보다 작거나 9보다 큽니다.'
-		);
+		throw new Error(`${myConstants.RANDOMNUM_ERROR_NUM}`);
 	}
-}
+};
 
-export function validateForMove(num) {
+export const validateForMove = (num) => {
 	return num > 3;
-}
+};

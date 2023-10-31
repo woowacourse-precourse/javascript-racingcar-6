@@ -6,7 +6,7 @@ import { runRaces } from './Race.js';
 import { getWinner } from './Winner.js';
 import { myConstants } from '../constants/constants.js';
 
-export async function startRacing() {
+export const startRacing = async () => {
 	const carNames = await promptCarNames();
 	const carNamesList = await getCarNamesList(carNames);
 	const carNameObj = initializeCarNameObj(carNamesList);
@@ -17,4 +17,4 @@ export async function startRacing() {
 
 	await runRaces(carNamesList, carNameObj, numPlayCount);
 	getWinner(carNameObj);
-}
+};
