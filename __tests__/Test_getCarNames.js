@@ -9,7 +9,7 @@ const mockQuestions = (inputs) => {
   });
 };
 
-describe("getCarNames 함수", () => {
+describe("getCarNames 메서드 테스트", () => {
   beforeAll(() => {
     MissionUtils.Console.readLineAsync = jest.fn();
   });
@@ -30,21 +30,7 @@ describe("getCarNames 함수", () => {
   test("이름을 2개 이상 입력하지 않은 경우(예외)", async () => {
     MissionUtils.Console.readLineAsync.mockResolvedValue("car1");
     const app = new App();
-    try {
-      await app.getCarNames();
-    } catch (error) {
-      expect(error).toThrowError("이름은 2개 이상 입력해야 합니다.");
-    }
-  });
-
-  test("이름을 ,(콤마)로 구분하지 않은 경우(예외)", async () => {
-    MissionUtils.Console.readLineAsync.mockResolvedValue("car1&car2&car3");
-    const app = new App();
-    try {
-      await app.getCarNames();
-    } catch (error) {
-      expect(error).toThrowError("이름은 ,(콤마)로 구분합니다.");
-    }
+    await expect(app.getCarNames()).rejects.toThrow("이름은 2개 이상 입력해야 합니다.");
   });
 
   test.each([

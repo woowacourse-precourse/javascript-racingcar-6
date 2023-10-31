@@ -15,14 +15,12 @@ class App {
     const carNames = await MissionUtils.Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
     if (carNames.length === 0) {
       throw new Error("이름을 입력하지 않았습니다.");
-    } else if (carNames.length === 1) {
+    } else if (!carNames.includes(",")) {
       throw new Error("이름은 2개 이상 입력해야 합니다.");
     }
 
-    const splitNames = carNames.split(',').map(name => name.trim());
-    if (carNames.split(',').length !== splitNames.length) {
-      throw new Error("이름은 ,(콤마)로 구분합니다.");
-    } else if (splitNames.some(name => name.length > 5)) {
+    const splitNames = carNames.split(",").map(name => name.trim());
+    if (splitNames.some(name => name.length > 5)) {
       throw new Error("이름은 5자 이하만 가능합니다.");
     } else {
       return splitNames;
