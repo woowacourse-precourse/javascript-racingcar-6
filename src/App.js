@@ -18,32 +18,28 @@ class App {
 
   async getCarName() {
     const input = await Console.readLineAsync(USER_INPUT.CAR_NAME);
+    const carNames = input.split(',');
     
-    this.validateCarName(input);
-    this.carName = input.split(',');
-  }
-
-  validateCarName(input){
-    input = input.split(',');
-
-    input.forEach(carName => {
-      this.checkCarName(carName);
+    carNames.forEach(carName => {
+      this.checkCarNameVaildity(carName);
+      this.carName.push(carName);
     })
   }
 
-  checkCarName(carName){
-    if(carName.length > 5) throw new Error(ERROR_MESSAGE.INPUT_CAR_NAME_ERROR);
+  checkCarNameVaildity(carName){
+    if (carName.length > 5) throw new Error(ERROR_MESSAGE.INPUT_CAR_NAME_ERROR);
   }
 
   async getRound(){
     const input = await Console.readLineAsync(USER_INPUT.ROUND);
+    const round = Number(input);
 
-    this.checkRoundVaildity(input);
-    this.round = Number(input);
+    this.checkRoundVaildity(round);
+    this.round = round;
   }
 
-  checkRoundVaildity(input){
-    if(isNaN(Number(input))) throw new Error(ERROR_MESSAGE.INPUT_CAR_MOVE_ERROR);
+  checkRoundVaildity(round){
+    if(isNaN(round)) throw new Error(ERROR_MESSAGE.INPUT_CAR_MOVE_ERROR);
   }
 
   showRaceProcess(){
@@ -52,22 +48,24 @@ class App {
     this.carMoveCount = new Array(this.carName.length).fill(0);
     
     for (let i = 0; i < this.round; i++) {
-      this.updateMoveHistory();
+      this.updateCarMoveCount();
       this.showCarProcess();
       Console.print('');
     }
   }
 
-  showCarProcess(){
-    for (let i = 0; i < this.carName.length; i++) {
-      Console.print(`${this.carName[i]} : ${'-'.repeat(this.carMoveCount[i])}`)
-    }
+  updateCarMoveCount(){
+    this.carMoveCount = [...this.carMoveCount].map((count) => {
+      if (this.getRandomNumber() >= 4) count++
+         
+      return count
+    })
   }
 
-  updateMoveHistory(){
-    for (let i = 0; i < this.carName.length; i++) {
-      if (this.getRandomNumber() >= 4) this.carMoveCount[i]++;
-    }
+  showCarProcess(){
+    this.carName.forEach((carName,i) => {
+      Console.print(`${carName} : ${'-'.repeat(this.carMoveCount[i])}`)
+    })
   }
 
   getRandomNumber(){
@@ -76,8 +74,7 @@ class App {
 
   showRaceResult(){
     const result = this.findWinners();
-
-    Console.print(`${MESSAGE.WINNER}${result}`);
+    Console.print(`${MESSAGE.WINNER + result}`);
   }
 
   findWinners(){
