@@ -78,7 +78,7 @@ describe('게임 로직 테스트', () => {
 
     const judge = new Judge();
 
-    const consoleSpy = jest.spyOn(MissionUtils.Console, 'print');
+    const consoleSpy = jest.spyOn(console, 'log');
     judge.printResultInStep(gameResultInStep);
 
     expect(consoleSpy).toHaveBeenCalledWith(result);
@@ -103,7 +103,7 @@ describe('게임 로직 테스트', () => {
 
     const judge = new Judge();
 
-    const consoleSpy = jest.spyOn(MissionUtils.Console, 'print');
+    const consoleSpy = jest.spyOn(console, 'log');
     judge.printWinner(gameResultInStep);
 
     expect(consoleSpy).toHaveBeenCalledWith(result);
@@ -128,7 +128,7 @@ describe('게임 로직 테스트', () => {
 
     const judge = new Judge();
 
-    const consoleSpy = jest.spyOn(MissionUtils.Console, 'print');
+    const consoleSpy = jest.spyOn(console, 'log');
     judge.printWinner(gameResultInStep);
 
     expect(consoleSpy).toHaveBeenCalledWith(result);

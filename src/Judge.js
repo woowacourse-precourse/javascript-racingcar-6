@@ -15,7 +15,7 @@ class Judge {
       if (this.checkMoveCondition(randomNum)) {
         player.moveNum++;
       }
-    });
+    })
   }
 
   printResultInStep(gameResultInStep) {
@@ -27,7 +27,7 @@ class Judge {
       }
 
       result += `${player.name} : ${moveMark}\n`;
-    });
+    })
 
     Console.print(result);
   }
