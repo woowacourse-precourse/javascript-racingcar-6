@@ -2,7 +2,7 @@ import { nameValidation, duplicateChecks } from "./Validations";
 
 export default class Cars {
   constructor(arr) {
-    this.validations(arr);
+    Cars.validations(arr);
     this.obj = {};
     arr.forEach((v) => {
       this.obj[v] = 0;
@@ -16,7 +16,7 @@ export default class Cars {
     });
   }
 
-  static validArr = (arr) => {
+  static validations(arr) {
     nameValidation(arr);
     duplicateChecks(arr);
   };
