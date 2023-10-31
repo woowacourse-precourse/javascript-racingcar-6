@@ -24,6 +24,19 @@ class Car {
     this.#distance = distance;
   }
 
+  static playGame(cars, movementCount) {
+    Console.print("\n실행 결과");
+
+    Array.from({ length: movementCount }, () => {
+      cars.forEach((car) => {
+        car.playRound();
+      });
+      Console.print("");
+    });
+
+    this.printWinners(cars);
+  }
+
   playRound() {
     this.#moveOrStop();
     this.#printRoundResult();
