@@ -2,7 +2,8 @@ import InputManager from './InputManager.js';
 
 class RacingGame {
   async playRacing() {
-    new InputManager();
+    const inputManager = new InputManager();
+    inputManager.getCarNames();
   }
 }
 
