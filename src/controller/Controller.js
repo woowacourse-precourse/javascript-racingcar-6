@@ -2,6 +2,8 @@ import InputView from '../view/inputView';
 import checkValidation from '../utils/validation';
 import Car from '../model/car';
 import makeRandomNumber from '../utils/makeRandomNumber';
+import OutputView from '../view/OutputView';
+import makeDistanceString from '../utils/makeDistanceString';
 
 class Controller {
   #cars = [];
@@ -25,6 +27,7 @@ class Controller {
     const playerInput = await InputView.readAttemptNumber();
     checkValidation.attemptInput(playerInput);
     this.#attempt = playerInput;
+    this.startRace();
   }
 
   startRace() {
@@ -33,7 +36,17 @@ class Controller {
       this.#cars.forEach((car) => {
         car.move(randomNumber);
       });
+      this.printProgress();
     }
+  }
+
+  printProgress() {
+    this.#cars.forEach((car, index) => {
+      const distanceString = makeDistanceString(car.getDistance());
+      const isLast = index === this.#cars.length - 1 ? true : false;
+
+      OutputView.printMove(car.getName(), distanceString, isLast);
+    });
   }
 }
 
