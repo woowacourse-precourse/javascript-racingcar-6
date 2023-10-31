@@ -21,6 +21,7 @@ class Car {
 
   move(power) {
     this.#validateMove(power);
+
     if (power >= Car.DEAD_ZONE) {
       this.#distance += Car.SPEED;
     }

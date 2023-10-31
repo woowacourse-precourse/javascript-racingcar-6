@@ -19,6 +19,7 @@ class User {
 
   constructor(name) {
     this.#validate(name);
+
     this.#name = name;
     this.#car = Car.of();
   }

@@ -25,12 +25,13 @@ class App {
 
   async #readUserNames() {
     const userNames = await this.#view.input.readLine(MESSAGES.start);
+
     return userNames.split(SYSTEM_CONFIG.separator);
   }
 
   async #readTrackLap() {
-    this.#view.output.lineBrake();
     const trackLap = await this.#view.input.readLine(MESSAGES.lap);
+
     return Number(trackLap);
   }
 
@@ -46,7 +47,6 @@ class App {
   }
 
   #printWinners(winners) {
-    this.#view.output.lineBrake();
     this.#view.output.print(MESSAGES.winners(winners));
   }
 }

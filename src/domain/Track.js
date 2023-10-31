@@ -19,6 +19,7 @@ class Track {
   constructor(users, lap) {
     this.#validateUsers(users);
     this.#validateLap(lap);
+
     this.#users = users;
     this.#finalLap = lap;
   }
@@ -66,6 +67,7 @@ class Track {
 
   processLap() {
     this.#validateProcessLap();
+
     this.#users.forEach((user) => {
       user.accelerate();
     });
@@ -80,6 +82,7 @@ class Track {
 
   getCurrentLapResult() {
     const result = {};
+
     this.#users.forEach((user) => {
       const distance = user.getCar().getDistance();
       result[user.getName()] = Car.SKID_MARK.repeat(distance);
