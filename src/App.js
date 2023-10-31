@@ -1,5 +1,6 @@
-import { Console } from '@woowacourse/mission-utils';
+import { Console, Random } from '@woowacourse/mission-utils';
 import { handleInputName, handleInputRound } from './utils/HandleInput';
+import { pickRandomtoGo } from './utils/CalLogic';
 
 class App {
   async play() {
@@ -8,7 +9,7 @@ class App {
     this.inputCarName(CAR_LIST);
     const GAME_ROUND = await handleInputRound();
     for (let i = 0; i < GAME_ROUND; i++) {
-      console.log(GAME_ROUND);
+      this.Runround();
     }
   }
 
@@ -20,9 +21,21 @@ class App {
     this.CAR_LISTMAP.set(name, distance);
   }
 
+  goForward(name) {
+    this.CAR_LISTMAP.set(name, this.CAR_LISTMAP.get(name) + 1);
+  }
+
   inputCarName(carlist) {
     for (let CAR_NAME of carlist) {
       this.setCarList(CAR_NAME, 0);
+    }
+  }
+
+  Runround() {
+    for (const [key, value] of this.CAR_LISTMAP) {
+      if (pickRandomtoGo()) {
+        this.goForward(key);
+      }
     }
   }
 }
