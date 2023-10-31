@@ -30,3 +30,14 @@ export const getMatchResult = (cars, trialCountNumber) => {
 const getBestRecord = (cars) => {
   return Math.max(...cars.map((car) => car.getCount()));
 };
+
+export const getWinnerArray = (cars) => {
+  const maxCount = getBestRecord(cars);
+  return cars.reduce((acc, car) => {
+    const carName = car.getCarName();
+    const moveCount = car.getCount();
+
+    if (maxCount === moveCount) acc.push(carName);
+    return acc;
+  }, []);
+};
