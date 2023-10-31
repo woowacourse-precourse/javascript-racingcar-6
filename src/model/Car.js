@@ -8,6 +8,12 @@ export default class Car {
     this.#Car.name = name;
   }
 
+  setAdvance(move) {
+    if (move >= 4) {
+      this.#Car.advance++;
+    }
+  }
+
   getCar() {
     return this.#Car;
   }

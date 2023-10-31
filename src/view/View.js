@@ -21,3 +21,7 @@ export function printStartResult() {
 export function printMoveResult(name, advance) {
   Console.print(`${name}: ${"-".repeat(advance)}`);
 }
+
+export function printLine() {
+  Console.print("");
+}
