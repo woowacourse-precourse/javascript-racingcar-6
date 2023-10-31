@@ -1,4 +1,4 @@
-import MainController from './Controller/MainController.js';
+import MainController from './Controller/Controller.js';
 
 class App {
   async play() {
