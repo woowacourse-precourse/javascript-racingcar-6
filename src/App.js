@@ -2,6 +2,7 @@ import { Console } from "@woowacourse/mission-utils";
 import { validateCarNames } from "./ValidateCarNames";
 import { addCarNames } from "./AddCarNames";
 import { validateTrialNumbers } from "./ValidateTrialNumbers";
+import { playGame } from "./PlayGame";
 
 class App {
   constructor() {
