@@ -31,12 +31,12 @@ const racingCarGame = {
     return number >= min && number <= max;
   },
 
-  increaseForwardCountRandomly(racingStatus) {
-    if (!Array.isArray(racingStatus)) {
+  increaseForwardCountRandomly(carStatusArray) {
+    if (!Array.isArray(carStatusArray)) {
       throw new Error('[ERROR] 인자는 각 자동차의 상태가 담긴 배열입니다');
     }
 
-    return racingStatus.map((car) => {
+    return carStatusArray.map((car) => {
       const randomNumber = gameUtils.getRandomNumber(
         VALIDATION_CONDITION.randomNumberRange,
       );
@@ -56,9 +56,9 @@ const racingCarGame = {
     });
   },
 
-  printRacingTurn(racingStatus) {
+  printRacingTurn(carStatusArray) {
     let racingTurnResult = '';
-    racingStatus.forEach(({ name, forwardCount }) => {
+    carStatusArray.forEach(({ name, forwardCount }) => {
       racingTurnResult += `${name} : ${gameUtils.getNumberToDash(
         forwardCount,
       )}\n`;
@@ -66,28 +66,28 @@ const racingCarGame = {
     printMsg(racingTurnResult);
   },
 
-  runRacingTurn(racingStatus) {
-    const turnResultStatus = this.increaseForwardCountRandomly(racingStatus);
+  runRacingTurn(carStatusArray) {
+    const turnResultStatus = this.increaseForwardCountRandomly(carStatusArray);
     this.printRacingTurn(turnResultStatus);
 
     return turnResultStatus;
   },
 
-  getWinner(racingStatus) {
+  getWinner(carStatusArray) {
     const winnerArray = [];
 
     // forwardCount 기준 내림차순 정렬
-    racingStatus.sort((a, b) => b.forwardCount - a.forwardCount);
-    const maxCount = racingStatus[0].forwardCount;
+    carStatusArray.sort((a, b) => b.forwardCount - a.forwardCount);
+    const maxCount = carStatusArray[0].forwardCount;
 
-    racingStatus.forEach((car) => {
+    carStatusArray.forEach((car) => {
       if (car.forwardCount === maxCount) winnerArray.push(car.name);
     });
     return winnerArray;
   },
 
-  printWinner(racingStatus) {
-    printMsg(`${MESSAGE.result} ${this.getWinner(racingStatus).join(', ')}`);
+  printWinner(carStatusArray) {
+    printMsg(`${MESSAGE.result} ${this.getWinner(carStatusArray).join(', ')}`);
   },
 };
 export default racingCarGame;
