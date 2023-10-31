@@ -1,6 +1,5 @@
 export function validateNumber(arg) {
-  if (typeof arg !== 'number')
-    throw new Error('[ERROR] 인자는 숫자여야 합니다.');
+  if (Number.isNaN(arg)) throw new Error('[ERROR] 인자는 숫자여야 합니다.');
 }
 
 export function validateBetweenOneAndNine(number) {

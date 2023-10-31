@@ -14,8 +14,10 @@ export function parseNames(str) {
   return nameArr;
 }
 
-export function parseNumber(args) {
-  const number = Number(args);
+export function parseNumber(str) {
+  validateNoneZeroLengthInput(str);
+
+  const number = Number(str);
   validateNumber(number);
 
   return number;
