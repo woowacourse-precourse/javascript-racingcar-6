@@ -7,6 +7,7 @@ class App {
       LENGTH: "[ERROR] 이름은 5자 이하로 작성해주세요.",
       INCORRECT_FORMAT: "[ERROR] 이름을 쉼표(,)로 구분해주세요.",
       INCORRECT_TPYE: "[ERROR] 잘못된 형식입니다. 숫자를 입력해주세요.",
+      EMPTY_INPUT: "[ERROR] 이름을 입력하지 않았습니다.",
     };
   }
 
@@ -63,15 +64,31 @@ class App {
     MissionUtils.Console.print(`최종 우승자 : ${winners.join(", ")}`);
   }
 
-  async initializeCars() {
-    const pattern = /[.\/-]/;
-    const carNames = await this.getCarName();
-    const readyCarNames = carNames.split(",");
-    const isCorrectName = readyCarNames.every((value) => value.length < 6);
+  async checkValidCarNames(carNames) {
+    const pattern = /[.\/-\s;]/;
+    const readyCarNames = await carNames
+      .split(",")
+      .map((carName) => carName.trim());
+    const isCorrectName = await readyCarNames.every(
+      (value) => value.length < 6
+    );
 
-    if (pattern.test(carNames))
+    if (pattern.test(readyCarNames))
       this.printErrorMessage(this.ERROR.INCORRECT_FORMAT);
+
     if (!isCorrectName) this.printErrorMessage(this.ERROR.LENGTH);
+
+    return readyCarNames;
+  }
+
+  async initializeCars() {
+    const carNames = await this.getCarName();
+
+    if (!carNames) {
+      this.printErrorMessage(this.ERROR.EMPTY_INPUT);
+    }
+
+    const readyCarNames = this.checkValidCarNames(carNames);
 
     return readyCarNames;
   }
