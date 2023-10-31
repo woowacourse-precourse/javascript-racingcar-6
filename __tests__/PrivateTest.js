@@ -63,7 +63,6 @@ describe('게임 로직 테스트', () => {
     expect(judge.checkMoveCondition(5)).toBeTruthy();
   });
 
-
   test('차수별 실행 결과 출력', () => {
     const gameResultInStep = [
       {
