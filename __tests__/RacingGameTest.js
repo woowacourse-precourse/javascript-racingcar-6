@@ -62,8 +62,10 @@ describe('게임 진행 테스트', () => {
 
 		await app.play();
 
-		outputs.forEach((output) => {
-			expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(...output));
-		});
+		for (let i = 0; i < Number(inputs[1]); i += 1) {
+			outputs.forEach((output) => {
+				expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(...output));
+			});
+		}
 	});
 });
