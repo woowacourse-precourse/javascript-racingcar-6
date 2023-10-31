@@ -21,7 +21,7 @@ class App {
 
     const racingCarNames = inputCarName.replaceAll(' ', '').split(',');
 
-    this.validateCarName(racingCarNames);
+    this.validateCarNames(racingCarNames);
 
     const racingCars = racingCarNames.reduce((acc, value) => {
       acc[value] = 0;
@@ -31,16 +31,16 @@ class App {
     return racingCars;
   }
 
-  validateCarName(inputValue) {
+  validateCarNames(carNames) {
     const MAX_LENGTH = 5;
 
-    inputValue.forEach((name) => {
-      if (name.length > MAX_LENGTH) {
-        throw new Error('[ERROR] 자동차 이름은 5자 이하만 가능합니다.');
-      }
-
+    carNames.forEach((name) => {
       if (name === '') {
         throw new Error('[ERROR] 입력값이 잘못된 형식입니다.');
+      }
+
+      if (name.length > MAX_LENGTH) {
+        throw new Error('[ERROR] 자동차 이름은 5자 이하만 가능합니다.');
       }
     });
   }
