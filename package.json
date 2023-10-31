@@ -11,6 +11,8 @@
     "@babel/preset-env": "^7.22.20",
     "babel-jest": "^29.7.0",
     "jest": "29.6.0"
+    "jest": "29.6.0",
+    "@jest/globals": "^29.7.0"
   },
   "scripts": {
     "test": "jest --detectOpenHandles"
@@ -22,7 +24,8 @@
   "jest": {
     "transform": {
       "\\.js$": "babel-jest"
-    }
+    },
+    "setupFiles": ["./test-utils.js"]
   },
   "babel": {
     "presets": [
