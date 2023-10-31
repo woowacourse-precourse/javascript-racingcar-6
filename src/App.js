@@ -12,6 +12,8 @@ class App {
     const finalWinner = this.getFinalWinner(racingCars);
 
     Console.print(`최종 우승자 : ${finalWinner}`);
+
+    return;
   }
 
   async getCarName() {
@@ -76,17 +78,17 @@ class App {
     }
   }
 
-  setGameResult(racingCars, count) {
-    let number = 0;
+  setGameResult(racingCars, tryCount) {
+    let round = 0;
 
-    while (number < count) {
+    while (round < tryCount) {
       Object.entries(racingCars).forEach(([key, value]) => {
         this.moveForward(key, value, racingCars);
       });
 
       this.printGameRound(racingCars);
 
-      number += 1;
+      round += 1;
     }
   }
 
