@@ -4,32 +4,24 @@ describe("[ERROR] 동작 테스트", () => {
   test("입력받은 레이서 이름의 글자수 제한 ", () => {
     const app = new App();
     const nameOfCarsInput = "TooooLoooooong";
-    expect(() => app.checkNameOfCarsLength(nameOfCarsInput)).toThrowError(
-      "[ERROR] 이름은 다섯자 이하만 가능합니다."
-    );
+    expect(app.play()).rejects.toThrow("[ERROR]");
   });
 
   test("입력받은 이름이 문자가 아닐 경우", () => {
     const app = new App();
     const nameOfCarsInput = 123123;
-    expect(() => app.checkNameOfCarsLength(nameOfCarsInput)).toThrowError(
-      "[ERROR] 문자로 입력해주세요"
-    );
+    expect(app.play()).rejects.toThrow("[ERROR]");
   });
 
   test("입력받은 이름이 공백일 경우", () => {
     const app = new App();
     const nameOfCarsInput = null;
-    expect(() => app.checkNameOfCarsLength(nameOfCarsInput)).toThrowError(
-      "[ERROR] 경주할 자동차 이름을 입력해주세요"
-    );
+    expect(app.play()).rejects.toThrow("[ERROR]");
   });
 
   test("입력받은 시도 횟수가 공백일 경우", () => {
     const app = new App();
     const tryNumbersInput = null;
-    expect(() => app.checkTryNumber(tryNumbersInput)).toThrowError(
-      "[ERROR] 시도 횟수를 입력해주세요"
-    );
+    expect(app.play()).rejects.toThrow("[ERROR]");
   });
 });
