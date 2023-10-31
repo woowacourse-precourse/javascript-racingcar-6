@@ -1,18 +1,20 @@
+import Data from './Data.js';
+
 const ErrorHandler = {
-  carNamesType(cars) {
-    if (cars.indexOf(',') === -1 || cars.indexOf(',') === cars.length - 1) {
+  carNamesType(carNames) {
+    if (carNames.indexOf(',') === -1 || carNames.indexOf(',') === carNames.length - 1) {
       throw new Error('[ERROR] 쉼표(,)를 기준으로 구분해야 합니다.');
     }
 
-    const namesTypeConversion = cars.split(',');
+    const refinedCarNames = new Data().carNamesTypeConversion(carNames);
 
-    if (namesTypeConversion.some((car) => car.trim() === "")) {
+    if (refinedCarNames.some((car) => car.trim() === "")) {
       throw new Error('[ERROR] 각 이름은 공백을 제외한 1자 이상이여야 합니다.');
     }
-    if (namesTypeConversion.some((car) => car.length >= 5)) {
+    if (refinedCarNames.some((car) => car.length >= 5)) {
       throw new Error('[ERROR] 각 이름은 5자 이하여야 합니다.');
     }
-    if (new Set(namesTypeConversion).size !== namesTypeConversion.length) {
+    if (new Set(refinedCarNames).size !== refinedCarNames.length) {
       throw new Error('[ERROR] 중복된 이름을 입력하셨습니다.');
     }
   },
