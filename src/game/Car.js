@@ -14,7 +14,7 @@ class Car {
   }
 
   async getPosition() {
-    return "-".repeat(this.position);
+    return '-'.repeat(this.position);
   }
 }
 
