@@ -1,4 +1,5 @@
 import { Console, Random } from "@woowacourse/mission-utils";
+import { GAME_MESSAGE, ERROR_MESSAGE } from "./Message";
 
 class App {
   constructor() {
@@ -12,15 +13,13 @@ class App {
 
   checkCarNames(carNamesArray) {
     carNamesArray.forEach((element) => {
-      if (element.length > 5)
-        throw new Error("[ERROR] 자동차 이름은 5자 이하로 작성해주세요.");
+      if (element.length > 5) throw new Error(ERROR_MESSAGE.LENGTH);
     });
   }
 
   checkRepeatNumber(repeatNumber) {
-    if (isNaN(repeatNumber)) throw new Error("[ERROR] 숫자를 입력해주세요.");
-    if (repeatNumber.includes(" "))
-      throw new Error("[ERROR] 공백은 넣지 말아주세요.");
+    if (isNaN(repeatNumber)) throw new Error(ERROR_MESSAGE.NUMBER);
+    if (repeatNumber.includes(" ")) throw new Error(ERROR_MESSAGE.GAP);
   }
 
   makeObject(carName) {
@@ -114,17 +113,15 @@ class App {
 
   printWinner(winnerName) {
     const winnerNameString = winnerName.join(", ");
-    Console.print(`최종 우승자 : ${winnerNameString}`);
+    Console.print(GAME_MESSAGE.WINNER(winnerNameString));
   }
 
   async play() {
-    const carNames = await Console.readLineAsync(
-      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
-    );
+    const carNames = await Console.readLineAsync(GAME_MESSAGE.INPUT_CARNAMES);
     const carNamesArray = this.getCarNamesArray(carNames);
     this.checkCarNames(carNamesArray);
     const repeatNumber = await Console.readLineAsync(
-      "시도할 횟수는 몇 회인가요?\n"
+      GAME_MESSAGE.INPUT_TRYNUMBER
     );
     this.checkRepeatNumber(repeatNumber);
     carNamesArray.forEach((element) => {
