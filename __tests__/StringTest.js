@@ -104,7 +104,7 @@ describe("문자열 테스트", () => {
     test.each([
         [["1 2"]],
         [["dannysir"]]
-    ])("예외처리 - 횟수 입력 예외 처", async (inputs) => {
+    ])("예외처리 - 횟수 입력 예외 처리", async (inputs) => {
         mockRandoms(inputs);
         await expect(Input_Second()).rejects.toThrow("[ERROR]");
     });
