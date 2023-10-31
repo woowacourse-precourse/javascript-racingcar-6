@@ -15,9 +15,11 @@ const validateNames = (humanInputName) => {
 
 const validateParseNumber = (racingTrackInput) => {
   const trimmedRacingTrackInput = racingTrackInput.trim();
+  const parsedNumber = parseInt(trimmedRacingTrackInput, 10);
 
-  if (trimmedRacingTrackInput === '') throw new Error('[ERROR] 숫자를 입력해 주세요.')
-  if (Number.isNaN(Number(trimmedRacingTrackInput))) throw new Error('[ERROR] 숫자만 입력해 주세요.')
+  if (trimmedRacingTrackInput === '') throw new Error('[ERROR] 숫자를 입력해 주세요.');
+  if (Number.isNaN(Number(trimmedRacingTrackInput))) throw new Error('[ERROR] 숫자만 입력해 주세요.');
+  if (parsedNumber.toString() !== trimmedRacingTrackInput) throw new Error('[ERROR] 10진수를 입력해주세요.');
 
   return parseInt(racingTrackInput, 10);
 }
