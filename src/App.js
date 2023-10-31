@@ -13,13 +13,13 @@ class Car {
     }
   }
 
-  displayPosition() {
+  showPosition() {
     let dashPosition = '-'.repeat(this.position);
     Console.print(`${this.name} : ${dashPosition}`);
   }
 }
 
-function makeCarArray(carNameArr) {
+function createCarArray(carNameArr) {
   let carArr = [];
   carNameArr.forEach((element) => {
     carArr.push(new Car(element));
@@ -59,7 +59,7 @@ function getWinner(carArr) {
       winners.push(car.name);
     }
   });
-  return Console.print(`최종 우승자 : ${winners}`);
+  return winners;
 }
 
 class App {
@@ -69,23 +69,24 @@ class App {
     isCarNameOverFiveLetters(carNameArr);
     isCarNameSame(carNameArr);
 
-    let racingRound = await this.getMoveCount();
+    let racingRound = await this.getRoundCount();
 
-    let carArr = makeCarArray(carNameArr);
+    let carArr = createCarArray(carNameArr);
 
     Console.print('\n실행 결과');
-    this.doRace(carArr, racingRound);
-    getWinner(carArr);
+    this.runRace(carArr, racingRound);
+    let winners = getWinner(carArr);
+    Console.print(`최종 우승자 : ${winners}`);
   }
 
   oneRound(carArr) {
     carArr.forEach((car) => {
       car.goForward();
-      car.displayPosition();
+      car.showPosition();
     });
   }
 
-  doRace(carArr, racingRound) {
+  runRace(carArr, racingRound) {
     for (let i = 0; i < racingRound; i++) {
       this.oneRound(carArr);
       Console.print('\n');
@@ -100,9 +101,9 @@ class App {
     return carNameArr;
   }
 
-  async getMoveCount() {
-    const moveCount = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
-    return moveCount;
+  async getRoundCount() {
+    const roundCount = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    return roundCount;
   }
 }
 
