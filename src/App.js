@@ -70,6 +70,19 @@ const printGameStatus = (userNames, racingCars) => {
   })
 }
 
+const gameStart = (userNames, racingCars, gameRep)=> {
+  let count = 0;
+  while(count < gameRep) {
+    racingCars = updateRacingCarLocation(racingCars);
+    
+    printGameStatus(userNames, racingCars);
+
+    count++;
+  }
+}
+
+
+
 
 
 
@@ -85,14 +98,9 @@ class App {
       const userInputgameRep = await getUserInput('시도할 횟수는 몇 회인가요?');
 
       const gameRep = stringToNaturalNumber(userInputgameRep);
-
       let racingCars = generateRacingCar(userNames.length);
 
-      printGameStatus(userNames, racingCars);
-
-      racingCars = updateRacingCarLocation(racingCars);
-
-      printGameStatus(userNames, racingCars);
+      gameStart(userNames, racingCars, gameRep);
 
       
 
