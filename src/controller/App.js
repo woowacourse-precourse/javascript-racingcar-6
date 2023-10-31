@@ -24,6 +24,21 @@ class App {
 			this.#racingCars.map((racingCar) => racingCar.forward());
 			this.#printConsole.showMessage(''); // 출력시 각 시도마다 보기좋게 구분을 위한 한줄 공백 추가
 		}
+
+		const racingWinner = this.#racingCars.reduce(
+			(acc, cur) => {
+				if (acc.distance < cur.distance) {
+					acc = { name: [cur.name], distance: cur.distance };
+				} else if (acc.distance === cur.distance) {
+					acc.name.push(cur.name);
+				}
+
+				return acc;
+			},
+			{ name: [], distance: 0 }
+		);
+
+		this.#printConsole.showGameResult(racingWinner.name);
 	}
 }
 
