@@ -9,4 +9,12 @@ export default class Distance {
       carObject.distance += GO;
     }
   }
+  async addDistancePrintArray(attempts, carArray) {
+    for (let i = 0; i < attempts; i++) {
+      carArray?.map((carObject) => {
+        this.isGoStop(carObject);
+        //distance -로 바꿔서 차수별로 전부 출력하기
+      });
+    }
+  }
 }
