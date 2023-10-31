@@ -57,8 +57,17 @@ class RacingcarGame {
   }
 
   getWinner() {
-    // racingCar를 순회하며 가장 높은 값을 가진 자동차 이름을 찾는다.
-    // 자동차 이름이 담긴 배열을 반환한다.
+    let max = 0;
+    let winner = [];
+    for (let carName in this.racingCar) {
+      if (this.racingCar[carName] > max) {
+        max = this.racingCar[carName];
+        winner = [carName];
+      } else if (this.racingCar[carName] === max) {
+        winner.push(carName);
+      }
+    }
+    return winner;
   }
 }
 
