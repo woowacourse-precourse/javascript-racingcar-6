@@ -8,14 +8,16 @@ import { MESSAGE } from '../constants/messages.js';
 class CarRacingGameController {
   #carRacingGame;
 
-  async startGame() {
+  async initGame() {
     const carNames = await this.#requireCarNames();
-
     const round = await this.#requireRound();
 
     this.#carRacingGame = new CarRacingGame(carNames, round);
+  }
 
-    return this.currentRacing();
+  startGame() {
+    this.#currentRacing();
+    this.#endGame();
   }
 
   async #requireCarNames() {
@@ -35,7 +37,7 @@ class CarRacingGameController {
     return round;
   }
 
-  currentRacing() {
+  #currentRacing() {
     OutputView.printStaticMessage(MESSAGE.playResult);
 
     while (this.#carRacingGame.isPlaying()) {
@@ -43,15 +45,13 @@ class CarRacingGameController {
 
       const currentResult = this.#carRacingGame.getRoundResult();
 
-      OutputView.printCurrentResult(currentResult);
+      return OutputView.printCurrentResult(currentResult);
     }
-
-    const winners = this.#carRacingGame.getWinners();
-
-    return this.endGame(winners);
   }
 
-  endGame(winners) {
+  #endGame() {
+    const winners = this.#carRacingGame.getWinners();
+
     return OutputView.printFinalWinner(winners);
   }
 }
