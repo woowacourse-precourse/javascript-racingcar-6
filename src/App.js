@@ -15,6 +15,9 @@ class App {
     this.#trials = await this.getTrialNumInput();
     await this.checkValidTrialNum(this.#trials);
 
+    await messagePrinter.outputPrint(GAME_MESSAGE.line_break);
+    await messagePrinter.outputPrint(GAME_MESSAGE.print_start_result);
+
     this.#moveStatus = new Array(this.#cars.length).fill(0);
 
     let i = 0;
