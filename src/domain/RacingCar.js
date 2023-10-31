@@ -4,20 +4,25 @@ class RacingCar {
   #START_INCLUSIVE = 0;
   #END_INCLUSIVE = 9;
   #STANDARD_NUMBER = 4;
+
   constructor(name) {
     this.name = name;
     this.moveCount = 0;
   }
 
   tryToMoveForward() {
+    if (this.#isQualifiedForMovingForward()) this.#moveForward();
+  }
+
+  #isQualifiedForMovingForward() {
     const randomNumber = Random.pickNumberInRange(
       this.#START_INCLUSIVE,
       this.#END_INCLUSIVE,
     );
-    if (this.#STANDARD_NUMBER <= randomNumber) this.moveForward();
+    return this.#STANDARD_NUMBER <= randomNumber;
   }
 
-  moveForward() {
+  #moveForward() {
     this.moveCount += 1;
   }
 }
