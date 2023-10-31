@@ -57,16 +57,10 @@ class App {
     return parsedNumberCount;
   }
 
-  validateInputCount(inputValue) {
-    if (Number.isNaN(inputValue)) {
+  validateInputCount(inputCount) {
+    if (!inputCount || Number.isNaN(inputCount)) {
       throw new Error('[ERROR] 숫자가 잘못된 형식입니다.');
     }
-
-    if (!!inputValue) {
-      return;
-    }
-
-    throw new Error('[ERROR] 숫자가 잘못된 형식입니다.');
   }
 
   getRandomNumber() {
