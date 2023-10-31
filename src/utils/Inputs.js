@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import Validation from './Validation';
+import Validation from './Validation.js';
 
 class Inputs {
   async returnCarNames() {
