@@ -1,6 +1,6 @@
 const MessageFormat = {
   error: (message) => `[ERROR] ${message}`,
-  winner: (winners) => `최종 우승자: ${winners.join(', ')}`,
+  winner: (winners) => `최종 우승자 : ${winners.join(', ')}`,
   carPosition: (car) => `${car.name} : ${'-'.repeat(car.position)}`,
   roundResult: (round) => round.map(MessageFormat.carPosition).join('\n'),
   raceResult: (raceResult) => {

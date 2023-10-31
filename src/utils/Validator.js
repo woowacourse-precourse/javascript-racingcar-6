@@ -14,6 +14,12 @@ const Validator = {
     );
   },
 
+  isDuplicateCarName(carNames) {
+    const carNameSet = new Set(carNames);
+    if (carNames.length !== carNameSet.size)
+      throw CustomError.InputView(ERROR.message.duplicateCarName);
+  },
+
   validateUserInput(name) {
     if (this.isEmptyString(name)) {
       throw CustomError.InputView(ERROR.message.emptyString);

@@ -17,6 +17,7 @@ class View {
     const userInput = await this.#inputView.readLineAsync(MESSAGE.read.carName);
     const carNames = userInput.split(CAR.name.separator);
 
+    this.#validator.isDuplicateCarName(carNames);
     carNames.forEach(this.#validator.validateCarName.bind(this.#validator));
 
     return carNames;
