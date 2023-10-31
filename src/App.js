@@ -9,12 +9,12 @@ class App {
     const CARS = USER_INPUT_CARS_NAME.split(",");
 
     if (CARS.length !== 3) {
-      throw new Error("[Error] 경주할 자동차는 총 3대입니다.");
+      throw new Error("[ERROR] 경주할 자동차는 총 3대입니다.");
     }
 
     for (let car of CARS) {
       if (car.length > 5) {
-        throw new Error("[Error] 각 자동차의 이름은 5글자 이하여야 합니다.");
+        throw new Error("[ERROR] 각 자동차의 이름은 5글자 이하여야 합니다.");
       }
     }
 
