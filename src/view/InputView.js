@@ -29,7 +29,7 @@ const InputView = {
   validateCarsInput: inputCars => {
     const inputCarsArray = inputCars.split(',').map(inputCar => inputCar.trim());
 
-    if (inputCarsArray.length === 0) throw new Error(ERROR_CARS_EMPTY);
+    if (inputCars.length === 0) throw new Error(ERROR_CARS_EMPTY);
     inputCarsArray.forEach(inputCar => {
       if (inputCar.length > 5) throw new Error(ERROR_CARS_LENGTH);
     });
