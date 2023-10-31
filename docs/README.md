@@ -9,22 +9,24 @@
 
 #### RacingGameController 클래스
 
-- [x] `start()`: 게임을 시작. 자동차 이름과 라운드 수를 받아 경주를 실행하고 결과를 출력.
-- [x] `createCarNames()`: 사용자로부터 자동차 이름과 갯수를 입력받아 처리하고 유효성 검사.
-- [x] `createRounds()`: 사용자로부터 라운드 수를 입력받아 유효성 검사.
-- [x] `initializeRace()`: `Car` 객체와 `Race` 객체를 초기화.
-- [x] `runRace()`: 실제 경주를 실행하며 각 라운드의 결과를 출력.
-- [x] `displayWinners()`: 경주가 끝난 후 우승자를 출력.
+- [x] `start()`: 게임을 시작합니다. `initializeGame`, `runRace`, `displayWinners` 메서드를 차례로 호출합니다.
+- [x] `async initializeGame()`: 게임을 초기화합니다. `createCarNames`와 `createRounds` 메서드를 호출하여 게임을 설정합니다.
+- [x] `async createCarNames()`: 사용자로부터 자동차 이름을 입력받아 처리하고, 유효성을 검사합니다.
+- [x] `async createRounds()`: 사용자로부터 라운드 수를 입력받아 유효성을 검사합니다.
+- [x] `initializeRace()`: 입력받은 자동차 이름을 바탕으로 `Car` 객체를 생성하고, 이를 이용해 `Race` 객체를 초기화합니다.
+- [x] `runRace()`: 실제로 경주를 수행합니다. `executeRounds` 메서드를 호출하여 각 라운드의 결과를 출력합니다.
+- [x] `executeRounds()`: 설정된 라운드 수에 따라 경주를 실행하고, 각 라운드의 결과를 출력합니다.
+- [x] `displayWinners()`: 경주가 끝난 후 우승자를 출력합니다.
 
 ### 모델
 
 #### Car 클래스
 
-`Car` 객체를 초기화. 이름과 움직임 전략을 인자로 받는다.
+`Car` 객체는 초기화될 때 이름과 움직임 전략을 인자로 받습니다.
 
-- [x] `getCurrentPositionRepresentation()`: 현재 자동차의 위치를 문자열로 반환. 게임에서 자동차의 위치를 나타내기 위해 사용된다.
-- [x] `move()`: 자동차를 움직이는 메서드. 내부적으로 `#shouldMoveBasedOnStrategy()` 메서드를 사용하여 실제로 움직일지 결정한다.
-- [x] `#shouldMoveBasedOnStrategy()`: 전략에 따라 자동차가 움직일지 말지를 결정한다.
+- [x] `getCarInformation()`: 현재 자동차의 이름과 위치 정보를 객체로 반환합니다.
+- [x] `move()`: 자동차를 움직이는 메서드입니다. 내부적으로 `#shouldMoveBasedOnStrategy()` 메서드를 사용하여 실제로 움직일지 여부를 결정합니다.
+- [x] `#shouldMoveBasedOnStrategy()`: 주입된 전략(`carMovementStrategy`)에 따라 자동차가 움직일지 말지를 결정합니다.
 
 #### movementStrategies (전략 객체)
 
@@ -33,12 +35,12 @@
 
 #### Race 클래스
 
-`Race` 객체를 초기화. 참여하는 자동차들과 라운드 수를 인자로 받는다.
+`Race` 객체는 초기화될 때 참여하는 자동차들을 인자로 받습니다.
 
-- [x] `playRound()`: 모든 자동차에 대해 움직임을 시도한다.
-- [x] `getRoundResults()`: 현재 라운드에서의 모든 자동차의 상태를 반환한다.
-- [x] `getWinners()`: 현재까지의 경주에서 가장 멀리 이동한 자동차의 이름을 배열로 반환한다.
-- [x] `getWinnersString()`: 우승자의 이름을 쉼표로 구분한 문자열로 반환한다.
+- [x] `playRound()`: 모든 자동차의 `move()` 메서드를 호출하여 움직임을 시도합니다.
+- [x] `getRoundResults()`: 현재까지의 라운드에서 모든 자동차의 이름과 위치 정보를 배열로 반환합니다.
+- [x] `getWinners()`: 현재까지의 경주에서 가장 멀리 이동한 자동차들의 이름을 배열로 반환합니다.
+- [x] `getWinnersString()`: 가장 멀리 이동한 자동차들의 이름을 쉼표로 구분한 문자열로 반환합니다.
 
 ### 뷰
 
