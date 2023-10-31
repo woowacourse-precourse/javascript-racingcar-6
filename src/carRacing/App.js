@@ -1,6 +1,7 @@
 import * as F from "./utility/utilityFunctions.js";
 import { Console } from "@woowacourse/mission-utils";
 import validateCarName from "./validation/validateCarName.js";
+import validateRoundCount from "./validation/validateRountCount.js";
 
 class App {
   constructor() {}
@@ -10,9 +11,8 @@ class App {
   }
 
   async enterGameBaseSetting() {
-    const enteredCarNames = await this.enterCarNames();
-
-    Console.print(enteredCarNames);
+    const CarNames = await this.enterCarNames();
+    const RoundCount = await this.enterRoundCount();
   }
 
   async enterCarNames() {
@@ -34,7 +34,23 @@ class App {
     }
   }
 
-  enterRoundCount() {}
+  async enterRoundCount() {
+    try {
+      const userInput =
+        await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+
+      const filteredRoundCount = F.go(
+        [...userInput],
+        F.filter((countElement) => validateRoundCount(countElement)),
+        F.join(""),
+        Number,
+      );
+
+      return filteredRoundCount;
+    } catch (error) {
+      throw new Error(`[ERROR] ${error}`);
+    }
+  }
 
   printRaceStatus() {}
 

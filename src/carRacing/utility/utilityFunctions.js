@@ -42,3 +42,7 @@ export const reduce = curry((func, accumulate, iterable) => {
 export const go = (...args) => {
   return reduce((arg, func) => func(arg), args);
 };
+
+export const join = curry((separator = ",", iterable) => {
+  return reduce((a, b) => `${a}${separator}${b}`, iterable);
+});
