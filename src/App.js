@@ -1,6 +1,5 @@
 import { Console, Random } from '@woowacourse/mission-utils';
 import Inputs from './input/Inputs.js';
-import ReturnWinner from './runRace/ReturnWinner.js';
 
 // class App {
 //   constructor() {
@@ -44,8 +43,6 @@ class App {
       Console.print('');
     }
 
-    // const winnerPrinter = new ReturnWinner(cars, progressList);
-    // winnerPrinter.printWinners();
     this.printWinners(cars, progressList);
   }
 
