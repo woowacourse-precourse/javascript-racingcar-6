@@ -1,4 +1,4 @@
-import { RacingCarNameError } from "../error/CustomErrors.js";
+import { DuplicatedError, RacingCarNameError } from "../error/CustomErrors.js";
 import { RetryCountError } from "../error/CustomErrors.js";
 
 class RacingCarValidator {
@@ -12,6 +12,10 @@ class RacingCarValidator {
   isValidNameArray(nameArray) {
     if (!nameArray.every(this.#isValidName)) {
       throw new RacingCarNameError(nameArray);
+    }
+
+    if (new Set(nameArray).size !== nameArray.length) {
+      throw new DuplicatedError(nameArray);
     }
   }
 

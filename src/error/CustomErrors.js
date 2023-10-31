@@ -8,6 +8,12 @@ export class RacingCarNameError extends Error {
   }
 }
 
+export class DuplicatedError extends Error {
+  constructor(input) {
+    super(errorMessage(ERROR_MESSAGE.namesDuplicated, input));
+  }
+}
+
 export class RetryCountError extends Error {
   constructor(input) {
     super(errorMessage(ERROR_MESSAGE.retryCountFormat, input));
