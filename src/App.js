@@ -1,7 +1,20 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 class App {
-  async play() {}
+  async play() {
+    const carNames = await this.getCarName();
+    const attempts = await this.getNumOfAttepmts();
+
+    const cars = carNames.split(",").map((name) => ({ name, position: 0 }));
+
+    for (let i = 0; i < attempts; i++) {
+      this.performRace(cars);
+      this.printCurrentStatus(cars);
+    }
+
+    const winners = this.getWinner(cars);
+    this.printWinner(winners);
+  }
 
   async getCarName() {
     const carNames = await MissionUtils.Console.readLineAsync(
