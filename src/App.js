@@ -31,16 +31,20 @@ class App {
     this.round = +inputRound;
   }
 
-  moveVehicle(vehicle) {
-    const randomNumber = Random.pickNumberInRange(0, 9);
-    const moveCondition = randomNumber >= 4;
-    if (moveCondition) vehicle.move();
+  moveVehicles() {
+    this.vehicles.forEach(vehicle => {
+      const randomNumber = Random.pickNumberInRange(0, 9);
+      const moveCondition = randomNumber >= 4;
+      if (moveCondition) vehicle.move();
+    });
   }
 
-  printRoundResult(vehicle) {
-    const [vehicleName, vehiclePosition] = vehicle.getStatus();
-    const resultMessage = `${vehicleName} : ${'-'.repeat(vehiclePosition)}`;
-    Console.print(resultMessage);
+  printRoundResults() {
+    this.vehicles.forEach(vehicle => {
+      const [vehicleName, vehiclePosition] = vehicle.getStatus();
+      const resultMessage = `${vehicleName} : ${'-'.repeat(vehiclePosition)}`;
+      Console.print(resultMessage);
+    });
   }
 
   processRound() {
@@ -48,10 +52,8 @@ class App {
     Console.print(`\n${MESSAGES.GAME_RESULT}`);
 
     while (this.round > roundCount) {
-      this.vehicles.forEach(vehicle => {
-        this.moveVehicle(vehicle);
-        this.printRoundResult(vehicle);
-      });
+      this.moveVehicles();
+      this.printRoundResults();
 
       Console.print('');
       roundCount += 1;
