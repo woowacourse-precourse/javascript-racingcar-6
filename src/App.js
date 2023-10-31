@@ -1,5 +1,5 @@
 import {Input_First, Input_Second} from "./InputScreen.js";
-import {GAME_RESULT} from "./OutScreen.js";
+import GAME_RESULT from "./OutScreen.js";
 
 class App {
     async play() {

@@ -1,5 +1,5 @@
 import App from "../src/App.js";
-import {makeAndFilter} from "../src/Random.js";
+import makeAndFilter from "../src/Random.js";
 import {MissionUtils} from "@woowacourse/mission-utils";
 import {Input_First, Input_Second} from "../src/InputScreen.js";
 import {GAME_RESULT} from "../src/OutScreen.js";
@@ -79,9 +79,9 @@ describe("문자열 테스트", () => {
         expect(MissionUtils.Console.print).toHaveBeenCalledWith("\n실행 결과");
     });
 
-    test("주어진 사이즈만큼의 랜덤 값을 넣은 배열을 만든 후 4 이상만", () => {
+    test("주어진 사이즈의 배열만 ", () => {
         const input = 4;
-        expect(makeAndFilter(input).length).toBeLessThanOrEqual(input);
+        expect(makeAndFilter(input).length).toBe(input);
     });
 
     test.each([
