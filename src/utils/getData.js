@@ -18,7 +18,7 @@ const getRoundData = cars => {
 };
 
 const getWinnerData = winners => {
-  return `${OUTPUT_MESSAGE.WINNERS} ${winners.join(', ')}\n`;
+  return `${OUTPUT_MESSAGE.WINNERS} ${winners.join(', ')}`;
 };
 
 export default { getMaxForwardData, getRoundData, getWinnerData };

@@ -12,7 +12,7 @@ const INPUT_MESSAGE = Object.freeze({
 
 const OUTPUT_MESSAGE = Object.freeze({
   RESULT: '실행 결과',
-  WINNERS: '최종 우승자:',
+  WINNERS: '최종 우승자 :',
 });
 
 const VALID_LEN = Object.freeze({
