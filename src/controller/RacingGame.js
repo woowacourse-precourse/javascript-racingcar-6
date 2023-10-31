@@ -30,6 +30,19 @@ class RacingGame {
 
 		this.#moves();
 	}
+
+	#moves() {
+		Io.printResultHeader();
+
+		while (!this.#tryCounter.isEnd()) {
+			this.#tryCounter.singleTry();
+
+			const currentLocations = this.#racingTrack.allMoves();
+			Io.printAllLocations(currentLocations);
+		}
+
+		this.#printWinnerNames();
+	}
 }
 
 export default RacingGame;
