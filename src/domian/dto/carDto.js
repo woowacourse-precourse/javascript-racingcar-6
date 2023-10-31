@@ -1,6 +1,18 @@
+// @ts-check
 export class CarDto {
+  /**
+   * @type {string}
+   */
   #name;
+  /**
+   * @type {number}
+   */
   #distance;
+  /**
+   *
+   * @param {string} name
+   * @param {number} distance
+   */
   constructor(name, distance) {
     this.#name = name;
     this.#distance = distance;

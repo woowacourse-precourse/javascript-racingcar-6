@@ -1,4 +1,9 @@
+// @ts-check
 export class Racing {
+  /**
+   * @property {string} #attempt
+   * @property {string} #cars
+   */
   constructor() {
     this.attempt = attempt;
     this.cars = cars;
