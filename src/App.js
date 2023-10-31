@@ -4,6 +4,7 @@ class App {
   constructor() {
     this.GAME_PLAYERS = [];
     this.GAME_ROUND = 0;
+    this.GAME_ROUND_RESULT = {};
   }
   async play() {}
 
