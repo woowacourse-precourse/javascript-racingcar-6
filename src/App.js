@@ -17,13 +17,16 @@ class App {
 
   async setupGame() {
     this.carPositions = await this.carManager.setupCarPositions();
-    this.rounds = await this.roundManager.inputRounds();
+    this.userRounds = await this.roundManager.inputRounds();
+    this.rounds = await this.roundManager.getRounds();
     this.gameResult = new ShowGameResult(this.carPositions);
     this.roundLog = new ShowRoundLog(this.carPositions);
   }
 
   async playRound() {
-    await this.roundLog.printAllRoundLog();
+    for (let i = 0; i < this.rounds; i++) {
+      await this.roundLog.printAllRoundLog();
+    }
   }
 
   showResult() {
