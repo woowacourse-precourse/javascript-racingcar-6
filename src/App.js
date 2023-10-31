@@ -1,9 +1,6 @@
-import { Console, Random } from "@woowacourse/mission-utils";
-import {input} from './util/input.js';
-
-function print(message) {
-  Console.print(message);
-}
+import { Random } from "@woowacourse/mission-utils";
+import { input } from "./util/input.js";
+import { print } from "./util/output.js";
 
 function makeCarsArray(message) {
   const CARS = message.split(",");
@@ -13,19 +10,18 @@ function makeCarsArray(message) {
   return CARS;
 }
 
-
 export function validCars(carsArray) {
   const CARS_SET = new Set(carsArray);
-  if(carsArray?.length !== CARS_SET?.size) throw new Error(`[ERROR] ${ERROR_MESSAGE.OVERLAP_NAME}`);
+  if (carsArray?.length !== CARS_SET?.size)
+    throw new Error(`[ERROR] ${ERROR_MESSAGE.OVERLAP_NAME}`);
 
   CARS_SET.forEach((car) => {
     if (car === "") throw new Error(`[ERROR] ${ERROR_MESSAGE.EMPTY_NAME}`);
-
-    else if (car?.length > 5) throw new Error(`[ERROR] ${ERROR_MESSAGE.MORE5_NAME}`);
-
-    else if (car.trim() !== car) throw new Error(`[ERROR] ${ERROR_MESSAGE.TRIM_EMPTY_NAME}`);
+    else if (car?.length > 5)
+      throw new Error(`[ERROR] ${ERROR_MESSAGE.MORE5_NAME}`);
+    else if (car.trim() !== car)
+      throw new Error(`[ERROR] ${ERROR_MESSAGE.TRIM_EMPTY_NAME}`);
   });
-
 }
 export const NUMBER_RANGE = {
   MIN: 0,
@@ -51,10 +47,9 @@ export const ERROR_MESSAGE = {
   DOWN1_COUNT: "1이상 숫자를 입력해주세요.",
 };
 
-
-export function vaildTryCount(count){
-  if(isNaN(count)) throw new Error(`[ERROR] ${ERROR_MESSAGE.NOT_NUMBER}`);
-  if(count <= 0) throw new Error(`[ERROR] ${ERROR_MESSAGE.DOWN1_COUNT}`);
+export function vaildTryCount(count) {
+  if (isNaN(count)) throw new Error(`[ERROR] ${ERROR_MESSAGE.NOT_NUMBER}`);
+  if (count <= 0) throw new Error(`[ERROR] ${ERROR_MESSAGE.DOWN1_COUNT}`);
   return count;
 }
 
@@ -89,9 +84,9 @@ class RacingGame {
 
   async go(TRY_COUNT) {
     let num = 0;
-    while(TRY_COUNT > num) {
+    while (TRY_COUNT > num) {
       await this.moveCars();
-      await Console.print("");
+      await print("");
       num++;
     }
   }
@@ -124,7 +119,7 @@ class RacingGame {
       progress += "-";
     }
 
-    if (progress !== "") await Console.print(`${car} : ${progress}`);
+    if (progress !== "") await print(`${car} : ${progress}`);
   }
 
   async printWinner() {
@@ -135,10 +130,9 @@ class RacingGame {
       if (this.cars[car] === HIGHEST_SCORE) winner.push(car);
     }
 
-    Console.print(`최종 우승자 : ${winner.join(", ")}`);
+    print(`최종 우승자 : ${winner.join(", ")}`);
   }
 }
-
 
 class App {
   async play() {
