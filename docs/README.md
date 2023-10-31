@@ -10,13 +10,13 @@
 
 ## 무작위 값 구하기
 
-- [ ] 0에서 9까지의 정수 중 한 개의 정수를 선택하여 무작위 값 구하기
+- [x] 0에서 9까지의 정수 중 한 개의 정수를 선택하여 무작위 값 구하기
   - [`@woowacourse/mission-utils`](https://github.com/woowacourse-projects/javascript-mission-utils) 라이브러리의 `Random.pickNumberInRange()` 활용
 
 ## 자동차 전진/멈추기
 
-- [ ] 구한 무작위 값이 4 이상이면 전진하기
-- [ ] 구한 무작위 값이 3 이하면 멈추기
+- [x] 구한 무작위 값이 4 이상이면 전진하기
+- [x] 구한 무작위 값이 3 이하면 멈추기
 
 ## 각 차수별 실행 결과 출력
 
