@@ -34,6 +34,10 @@ class App {
     for (let i = 1; i <= COUNT; i++) {
       race = this.addPointRace(race);
 
+      race.forEach((car) => {
+        Console.print(car.name);
+      });
+      Console.print('');
     }
 
     const MAX_SCORE = Math.max(...race.map((car) => car.score));
