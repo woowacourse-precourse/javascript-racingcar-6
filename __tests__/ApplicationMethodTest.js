@@ -29,26 +29,15 @@ describe('자동차 경주 게임 세부 메서드 테스트', () => {
     expect(result).toBe(true);
   });
 
-  test('increaseForwardCountRandomly: 랜덤한 값을 기준 전진이 올바르게 되는지', () => {
+  test('checkIncreaseForwardCountRandomly: 랜덤한 값을 생성하고 전진 조건에 부합하는지 검사', () => {
     // given
-    const carStatusArray = [
-      { name: 'car1', forwardCount: 0 },
-      { name: 'car2', forwardCount: 1 },
-    ];
     gameUtils.getRandomNumber = jest.fn().mockReturnValue(5);
 
     // when
     const racingMethod = new RacingCarGame();
-    // 항상 5를 반환해서 전진할 수 있도록
 
     // then
-    const result = racingMethod.increaseForwardCountRandomly(carStatusArray);
-    result.forEach((carStatus, index) => {
-      expect(carStatus).toEqual({
-        name: `car${index + 1}`,
-        forwardCount: carStatusArray[index].forwardCount + 1,
-      });
-    });
+    expect(racingMethod.checkIncreaseForwardCountRandomly()).toBe(true);
   });
 
   test('printRacingTurn: 자동차 정보를 통해 dash로 해당 정보를 의도대로 문자열로 출력하는지', () => {
@@ -66,6 +55,28 @@ describe('자동차 경주 게임 세부 메서드 테스트', () => {
     // then
     const result = 'car1 : --\ncar2 : ---\n';
     expect(Console.print).toHaveBeenCalledWith(result);
+  });
+
+  test('updateCarStatusForCondition: 조건에 부합하는 자동차의 전진 상태를 업데이트', () => {
+    // given
+    const carStatusArray = [
+      { name: 'car1', forwardCount: 2 },
+      { name: 'car2', forwardCount: 3 },
+    ];
+
+    // when
+    const racingMethod = new RacingCarGame();
+    racingMethod.checkIncreaseForwardCountRandomly = jest
+      .fn()
+      .mockReturnValue(true);
+
+    // then
+    const result = racingMethod.updateCarStatusForCondition(carStatusArray);
+    const expectedResult = [
+      { name: 'car1', forwardCount: 3 },
+      { name: 'car2', forwardCount: 4 },
+    ];
+    expect(result).toEqual(expectedResult);
   });
 
   test('getWinner: 우승자를 반환', () => {
