@@ -21,33 +21,22 @@ export class RacingCarGame {
   }
 
   async promptCarNames() {
-    const carNamesInput = await readLine(MESSAGES.PLACEHOLDER.CAR.NAME);
-    const carNames = carNamesInput.split(",");
-
-    carNames.forEach((carName) => {
-      this.#validateCarNames(carName);
-    });
-
+    const carNames = await this.#getCarNamesFromUser();
+    this.#validateCarNames(carNames);
     this.#setCars(carNames);
   }
 
   async promptTotalRounds() {
-    const totalRoundsInput = +(await readLine(MESSAGES.PLACEHOLDER.ROUND));
-
+    const totalRoundsInput = await this.#getTotalRoundsFromUser();
     this.#validateTotalRounds(totalRoundsInput);
-
     this.#totalRounds = totalRoundsInput;
   }
 
   startRacing() {
     console(MESSAGES.RESULT);
     while (this.#currentRound < this.#totalRounds) {
-      this.#cars.getCars().forEach((car) => {
-        if (this.#rule.shouldRun()) car.run();
-      });
-
-      console(this.#getRoundResult());
-
+      this.#proceedRound();
+      this.#printRoundResult();
       this.#currentRound += 1;
     }
   }
@@ -59,18 +48,30 @@ export class RacingCarGame {
     console(MESSAGES.WINNER(winnerNames));
   }
 
+  async #getCarNamesFromUser() {
+    const carNamesInput = await readLine(MESSAGES.PLACEHOLDER.CAR.NAME);
+    const carNames = carNamesInput.split(",");
+
+    return carNames;
+  }
+
+  async #getTotalRoundsFromUser() {
+    return +(await readLine(MESSAGES.PLACEHOLDER.ROUND));
+  }
+
   #setCars(carNames) {
     this.#cars = new Cars(carNames);
   }
 
-  #validateCarNames(carName) {
-    if (carName === "") throw new CustomError(MESSAGES.ERROR.CAR.NAME.EMPTY);
+  #validateCarNames(carNames) {
+    carNames.forEach((carName) => {
+      if (carName === "") throw new CustomError(MESSAGES.ERROR.CAR.NAME.EMPTY);
 
-    if (carName.length > CAR_NAME_LENGTH_LIMIT)
-      throw new CustomError(
-        MESSAGES.ERROR.CAR.NAME.LENGTH(CAR_NAME_LENGTH_LIMIT)
-      );
-
+      if (carName.length > CAR_NAME_LENGTH_LIMIT)
+        throw new CustomError(
+          MESSAGES.ERROR.CAR.NAME.LENGTH(CAR_NAME_LENGTH_LIMIT)
+        );
+    });
     return true;
   }
 
@@ -86,6 +87,16 @@ export class RacingCarGame {
 
     if (!Number.isInteger(totalRounds))
       throw new CustomError(MESSAGES.ERROR.TOTAL_ROUNDS.NOT_INTEGER);
+  }
+
+  #proceedRound() {
+    this.#cars.getCars().forEach((car) => {
+      if (this.#rule.shouldRun()) car.run();
+    });
+  }
+
+  #printRoundResult() {
+    console(this.#getRoundResult());
   }
 
   #getRoundResult() {
