@@ -1,7 +1,12 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 
+import VALIDATION_CONDITION from './game.validation';
+
 const gameUtils = {
-  getRandomNumber({ min, max }) {
+  getRandomNumber(
+    min = VALIDATION_CONDITION.randomNumberRange.min,
+    max = VALIDATION_CONDITION.randomNumberRange.max,
+  ) {
     return MissionUtils.Random.pickNumberInRange(min, max);
   },
 

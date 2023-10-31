@@ -34,24 +34,10 @@ class RacingCarGame {
     );
   }
 
-  increaseForwardCountRandomly(carStatusArray) {
-    if (!Array.isArray(carStatusArray)) {
-      throw new Error('[ERROR] 인자는 각 자동차의 상태가 담긴 배열입니다');
-    }
-
-    return carStatusArray.map((car) => {
-      const randomNumber = gameUtils.getRandomNumber(
-        VALIDATION_CONDITION.randomNumberRange,
-      );
-
-      if (this.checkForwardCondition(randomNumber)) {
-        return {
-          ...car,
-          forwardCount: car.forwardCount + 1,
-        };
-      }
-      return car;
-    });
+  checkIncreaseForwardCountRandomly() {
+    const randomNumber = gameUtils.getRandomNumber();
+    const isForward = this.checkForwardCondition(randomNumber);
+    return isForward;
   }
 
   printRacingTurn(carStatusArray) {
@@ -64,11 +50,15 @@ class RacingCarGame {
     printMsg(racingTurnResult);
   }
 
-  runRacingTurn(carStatusArray) {
-    const turnResultStatus = this.increaseForwardCountRandomly(carStatusArray);
-    this.printRacingTurn(turnResultStatus);
+  updateCarStatusForCondition(carStatusArray) {
+    const afterCarStatusArray = [...carStatusArray];
 
-    return turnResultStatus;
+    carStatusArray.forEach((_, index) => {
+      if (this.checkIncreaseForwardCountRandomly()) {
+        afterCarStatusArray[index].forwardCount += 1;
+      }
+    });
+    return afterCarStatusArray;
   }
 
   getWinner(carStatusArray) {

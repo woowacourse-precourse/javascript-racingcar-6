@@ -22,7 +22,10 @@ class App {
 
     printMsg(MESSAGE.start);
     for (let turn = 0; turn < this.moveCount; turn += 1) {
-      const turnResult = this.racingMethod.runRacingTurn(this.carStatusArray);
+      const turnResult = this.racingMethod.updateCarStatusForCondition(
+        this.carStatusArray,
+      );
+      this.racingMethod.printRacingTurn(turnResult);
       this.carStatusArray = turnResult;
     }
 
