@@ -27,7 +27,7 @@ const inputTryCount = async () => {
 
 const outputResultsEveryIteration = racers => {
   const result = racers
-    .map(racer => `${racer.carName} : ${'-'.repeat(racer.move)}`)
+    .map(racer => MESSAGE.OUTPUT_RACING_STATUS(racer))
     .join('\n')
     .concat('\n');
   Console.print(result);
@@ -36,4 +36,9 @@ const outputWinner = winners => {
   Console.print(MESSAGE.OUTPUT_WINNER(winners));
 };
 
-export { inputCarNames, inputTryCount, outputWinner };
+export {
+  inputCarNames,
+  inputTryCount,
+  outputWinner,
+  outputResultsEveryIteration,
+};
