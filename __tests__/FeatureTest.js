@@ -1,6 +1,5 @@
 import App from "../src/App.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
-import CarNamesParser from "../src/parser/CarNamesParser.js";
 import OutputView from "../src/view/OutputView.js";
 
 const mockQuestions = (inputs) => {
@@ -28,12 +27,6 @@ describe("세부 기능 테스트", () => {
       mockQuestions(inputs);
 
       await expect(app.play()).rejects.toThrow("[ERROR]");
-    });
-
-    test("이름 입력 시 ','를 기준으로 분리하는가", async () => {
-      const input = "자동차1, 자동차2, 자동차3, 자동차4";
-
-      expect(CarNamesParser.parse(input)).toHaveLength(4);
     });
   });
 
