@@ -13,6 +13,7 @@ class App {
 
     Console.print(`${MESSAGE.GAME_PRINT}`);
     repeatPrint(move, carArr);
+    finalPrint(carArr);
   }
 }
 // 1. n개의 자동차 생성
@@ -111,6 +112,15 @@ const repeatPrint = (move, carArr) => {
 };
 
 // 8. 최종결과 출력
+const finalPrint = (carArr) => {
+  let highestNum = Math.max(...carArr.map((car) => car[1].length));
+
+  const carNames = carArr
+    .filter((car) => car[1].length === highestNum)
+    .map((car) => car[0])
+    .join(", ");
+  Console.print(`${MESSAGE.FINAL_RESULT} ${carNames}\n`);
+};
 
 export default App;
 
