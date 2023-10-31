@@ -19,22 +19,29 @@ class RaceController {
     this.#round = Number(roundInput);
   }
 
-  startRace() {
+  async startRace() {
     Console.print('');
     Console.print('실행 결과');
 
-    Array.from({ length: this.#round }).forEach(() => {
-      this.#race.moveCarsCheckCondition();
+    const roundPromises = Array.from({ length: this.#round }).map(() => this.runRound());
 
-      const roundResults = this.#race.getCars().map((car) => {
-        const currentStage = '-'.repeat(car.getCarDistance());
-        return `${car.getCarName()} : ${currentStage}`;
-      });
+    await Promise.all(roundPromises);
+  }
 
-      roundResults.forEach((result) => Console.print(result));
+  async runRound() {
+    await this.#race.moveCarsCheckCondition();
 
-      Console.print('');
-    });
+    const cars = this.#race.getCars();
+    const roundResults = [];
+
+    for (const car of cars) {
+      console.log('car.getCarDistance()', car.getCarDistance());
+      const currentStage = '-'.repeat(car.getCarDistance());
+      roundResults.push(`${car.getCarName()} : ${currentStage}`);
+    }
+
+    roundResults.forEach((result) => Console.print(result));
+    Console.print('');
   }
 
   finishLine() {

@@ -2,7 +2,7 @@ import { Random } from '@woowacourse/mission-utils';
 import Car from './Car.js';
 
 class Track {
-  static LIMIT_NUMBER = 4;
+  static limitNumber = 4;
 
   /** @type {Car[]} */
   #cars;
@@ -18,15 +18,23 @@ class Track {
   async checkCarMove(car) {
     const randomNumber = await Random.pickNumberInRange(0, 9);
 
-    return !!(randomNumber < Track.LIMIT_NUMBER);
+    return !!(randomNumber < Track.limitNumber);
   }
 
-  moveCarsCheckCondition() {
-    this.#cars.forEach((car) => {
-      if (!this.checkCarMove(car)) return;
+  async moveCarsCheckCondition() {
+    const movePromises = this.#cars.map((car) => this.checkCarMove(car));
+
+    const results = await Promise.all(movePromises);
+
+    for (let i = 0; i < this.#cars.length; i++) {
+      let canCarMove = results[i];
+      let car = this.#cars[i];
+
+      console.log(canCarMove);
+      if (!canCarMove) return;
 
       car.moveForward();
-    });
+    }
   }
 
   getCars() {
