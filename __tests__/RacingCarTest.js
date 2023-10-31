@@ -1,5 +1,6 @@
 import RacingCar from '../src/model/RacingCar.js';
 import RacingGameController from '../src/controller/RacingGameController.js';
+import RacingGame from '../src/model/RacingGame.js';
 
 describe('RacingCar test', () => {
   const car = new RacingCar();
