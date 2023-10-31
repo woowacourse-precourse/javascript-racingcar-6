@@ -1,4 +1,6 @@
-import { NUM_RANGE } from "./constants/Number";
+import { NUM_RANGE } from "./constants/Number.js";
+import { MissionUtils } from "@woowacourse/mission-utils";
+
 class Car {
   constructor(name) {
     this.name = name;
@@ -7,10 +9,7 @@ class Car {
     this.dash = "-";
   }
   pickRandomNumber() {
-    this.decision_number = Random.pickNumberInRange(
-      NUM_RANGE.car_start_range,
-      NUM_RANGE.car_end_range
-    );
+    this.decision_number = MissionUtils.Random.pickNumberInRange(0, 9);
   }
   moveOneStep() {
     if (this.decision_number >= NUM_RANGE.move_minimum) {

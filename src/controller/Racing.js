@@ -1,6 +1,7 @@
-import Car from "../Car";
-import Input from "./../view/Input";
-import Output from "./../view/Output";
+import Car from "../Car.js";
+import Input from "./../view/Input.js";
+import Output from "./../view/Output.js";
+import { MissionUtils } from "@woowacourse/mission-utils";
 class RacingController {
   constructor() {
     this.input = new Input();
@@ -9,31 +10,37 @@ class RacingController {
     this.cars = [];
   }
   async run() {
-    this.makeCarsArray();
-    this.tryNumber = parseInt(await this.input.inputTryNumber());
-
-    Console.print("실행 결과\n");
-    while (tryNumber > 0) {
-      this.moveCars();
-      tryNumber--;
+    try {
+      await this.makeCarsArray();
+      this.tryNumber = parseInt(await this.input.inputTryNumber());
+      console.log(`시도횟수: ${this.tryNumber}`);
+      MissionUtils.Console.print("실행 결과\n");
+      while (this.tryNumber > 0) {
+        this.moveCars();
+        this.tryNumber--;
+      }
+      this.output.printWinners(this.cars);
+    } catch (error) {
+      throw error;
     }
-
-    this.output.printWinners(this.cars);
   }
   async makeCarsArray() {
-    const car_name_list = await this.input.inputCarNames();
-    // [a,b,c]가 입력이 됐다. 객체 3개를 만들어야한다.
-    car_name_list.forEach((name) => {
-      const car = new Car(name);
-      this.cars.push(car);
-    });
+    try {
+      const car_name_list = await this.input.inputCarNames();
+      car_name_list.forEach((name) => {
+        const car = new Car(name);
+        this.cars.push(car);
+      });
+    } catch (error) {
+      throw error;
+    }
   }
-  async moveCars() {
+  moveCars() {
     this.cars.forEach((car) => {
       car.pickRandomNumber();
       car.moveOneStep();
     });
-    output.printResult(this.cars);
+    this.output.printResult(this.cars);
   }
 }
 
