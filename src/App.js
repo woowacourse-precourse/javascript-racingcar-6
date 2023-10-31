@@ -13,14 +13,14 @@ import Inputs from './input/Inputs';
 
 class App {
   constructor() {
-    // this.cars = [];
-    // this.tryCount = 0;
+    this.cars = [];
+    this.tryCount = 0;
     this.inputs = new Inputs();
   }
 
   async play() {
-    const cars = await this.inputs.returnCarNames();
-    const tryCount = await this.inputs.getTryCount();
+    this.cars = await this.inputs.returnCarNames();
+    this.tryCount = await this.inputs.getTryCount();
     Console.print('\n실행 결과');
     this.runRace(cars, tryCount);
   }
