@@ -7,6 +7,8 @@ class App {
 
     this.askGameCount();
     const gameCount = await this.inputGameCount();
+
+    this.startRacingCarGame(racingCarList, gameCount);
   }
 
   askCarNames() {
@@ -44,6 +46,14 @@ class App {
     }
 
     return parseInt(trimmedGameCount);
+  }
+
+  async startRacingCarGame(racingCarList, gameCount) {
+    Console.print('\n실행 결과');
+    for (let i = 0; i < gameCount; i++) {
+      await this.moveRacingCarRandomDistance(racingCarList);
+      await this.printRacingCarGameResult(racingCarList, gameCount);
+    }
   }
 
   isValidCarNamesInput(carNameList) {
