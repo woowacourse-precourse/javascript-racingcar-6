@@ -16,7 +16,6 @@ const gameSetting = (cars, loser)=>{
         loser.push(arr[i])
       }
     }
-    console.log("arr test "+arr);
   })
   for (let i = 0; i < loser.length; i++) {
     if(users[i].length>5) throw new Error(message.error.NAME_CREATION_ERROR);
