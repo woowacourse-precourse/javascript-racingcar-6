@@ -60,6 +60,8 @@ class App {
       messagePrinter.errorPrint(ERROR_MESSAGE.not_number);
     } else if (trialNum < 1) {
       messagePrinter.errorPrint(ERROR_MESSAGE.less_than_one_trial);
+    } else if (trialNum.includes(' ')) {
+      messagePrinter.errorPrint(ERROR_MESSAGE.has_space);
     }
   }
 
