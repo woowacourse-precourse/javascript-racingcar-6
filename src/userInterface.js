@@ -1,4 +1,12 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
+import {
+  START_GAME_MESSAGE,
+  TRIAL_COUNT_MESSAGE,
+  NOT_INCLUDED_COMMA_USER_INPUT_ERROR,
+  CARS_NAME_LENGTH_USER_INPUT_ERROR,
+  NOT_NUMBER_TYPE_USER_INPUT_ERROR,
+  SAME_NAME_USER_INPUT_ERROR,
+} from "./constants/messages.js";
 
 const getUserInput = async (command) => {
   try {
@@ -58,4 +66,9 @@ export const userInputCarsName = async () => {
   checkCarsArray(carsNameArray);
   checkCarsDifferName(carsNameArray);
   return carsNameArray;
+};
+
+export const userInputTrialCount = async () => {
+  const trialCount = await getUserInput(TRIAL_COUNT_MESSAGE);
+  return checkInputNumberType(trialCount);
 };
