@@ -87,4 +87,18 @@ describe('자동차 경주 게임', () => {
       await expect(app.play()).rejects.toThrow('[ERROR]');
     }
   );
+
+  test.each([[['java', 'java']], [['pobi', 'pobi', 'java']]])(
+    '반복되는 이름에 대한 예외 처리',
+    async (inputs) => {
+      // given
+      mockQuestions(inputs);
+
+      // when
+      const app = new App();
+
+      // then
+      await expect(app.play()).rejects.toThrow('[ERROR]');
+    }
+  );
 });
