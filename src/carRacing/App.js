@@ -11,6 +11,8 @@ class App {
 
   async enterGameBaseSetting() {
     const enteredCarNames = await this.enterCarNames();
+
+    Console.print(enteredCarNames);
   }
 
   async enterCarNames() {
@@ -19,15 +21,14 @@ class App {
         "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n",
       );
 
-      const carNames = userInput.split(",");
+      const carNamesList = userInput.split(",");
 
-      let carNamesList = F.go(
-        carNames,
+      const filteredCarNames = F.go(
+        carNamesList,
         F.filter((carName) => validateCarName(carName, 5)),
       );
 
-      Console.print(carNamesList);
-      return carNamesList;
+      return filteredCarNames;
     } catch (error) {
       throw new Error(`[ERROR] ${error}`);
     }

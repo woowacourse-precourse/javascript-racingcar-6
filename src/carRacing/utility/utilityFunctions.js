@@ -40,5 +40,5 @@ export const reduce = curry((func, accumulate, iterable) => {
 });
 
 export const go = (...args) => {
-  reduce((arg, func) => func(arg), args);
+  return reduce((arg, func) => func(arg), args);
 };
