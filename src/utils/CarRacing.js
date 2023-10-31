@@ -4,7 +4,7 @@ import CarList from "./CarList.js";
 import User from "./User.js";
 
 const CarRacing = {
-  async playCarRacing() {
+  async playGame() {
     const carNameList = await User.getCarNames();
     const tryCount = await User.getTryCount();
     let carMoveForwardList = CarList.getMoveForwards(carNameList);
