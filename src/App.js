@@ -1,4 +1,4 @@
-import { Console, MissionUtils } from '@woowacourse/mission-utils';
+import { Console } from '@woowacourse/mission-utils';
 import { CheckLength } from './CheckLength.js';
 import { CheckRandomNum } from './CheckRandomNum.js';
 import { FindMax } from './FindMax.js';
