@@ -52,17 +52,4 @@ describe("Car 기능 테스트", () => {
     // then
     expect(car.totalDistance).toEqual(0);
   });
-
-  test("getStatus : Car의 name,totalDistance 구하기", () => {
-    // given
-    const name = "젠";
-    const output = { name: name, totalDistance: 0 };
-
-    // when
-    const car = new Car("젠");
-    const carStatus = car.getStatus();
-
-    // then
-    expect(carStatus).toEqual(output);
-  });
 });

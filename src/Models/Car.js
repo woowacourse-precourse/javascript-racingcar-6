@@ -12,8 +12,11 @@ export default class Car {
     this.totalDistance = 0;
     this.name = new Name(name).name;
   }
-  getStatus() {
-    return { name: this.name, totalDistance: this.totalDistance };
+
+  race() {
+    const randomDistance = this.#getRandomDistance();
+    if (randomDistance >= CAR_SETTINGS.move_threshold)
+      this.totalDistance += randomDistance;
   }
 
   #getRandomDistance() {
@@ -21,11 +24,5 @@ export default class Car {
       CAR_SETTINGS.min_random_value,
       CAR_SETTINGS.max_random_value
     );
-  }
-
-  race() {
-    const randomDistance = this.#getRandomDistance();
-    if (randomDistance >= CAR_SETTINGS.move_threshold)
-      this.totalDistance += randomDistance;
   }
 }
