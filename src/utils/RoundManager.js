@@ -13,7 +13,6 @@ class RoundManager {
     Object.keys(this.carPositions).forEach((carName) => {
       if (movingForwardCase()) {
         this.carPositions[carName] += FORWARD_DASH;
-        Console.print(FORWARD_DASH);
       }
     });
     this.printRoundResult();
