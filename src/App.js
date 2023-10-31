@@ -12,9 +12,11 @@ class App {
     //유효성 검사
     this.checkCarInput(userInputCar);
     const splitInputCar = userInputCar.split(',');
-    this.racingCarList(splitInputCar);
+    this.checkDupliCar(splitInputCar);
 
     this.tryNum = await this.numInput();
+    
+    this.racingCarList(splitInputCar);
     this.game();
     const winnerList = this.winner();
     this.printWinner(winnerList);
@@ -32,6 +34,16 @@ class App {
     if (carRegex.test(userInput) === false) {
       throw new Error('[ERROR] 입력이 잘못된 형식입니다.');
     }
+  }
+
+  checkDupliCar(carList) {
+    const check = [];
+    carList.forEach((car) => {
+      if (check.includes(car)) {
+        throw new Error('[ERROR] 중복된 이름이 있습니다.');
+      }
+      check.push(car);
+    });
   }
 
   async numInput() {
