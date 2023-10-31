@@ -2,6 +2,7 @@
 import { Console } from "@woowacourse/mission-utils";
 import { SYMBOL, MESSAGE } from "../constants/constants";
 import { CarsDto } from "../domain/dto/carsDto";
+import { WinnersDto } from "../domain/dto/winnersDto";
 
 class OutputView {
   /**
@@ -23,9 +24,16 @@ class OutputView {
     Console.print("");
   }
 
-  printWinner() {
-    // const winners = cars.join(",");
-    // Console.print(MESSAGE.GAME_RESULT + `${winners}`);
+  /**
+   *
+   * @param {WinnersDto} WinnersDto
+   * @returns {void}
+   */
+
+  printWinner(WinnersDto) {
+    WinnersDto.winners.forEach(({ name }) => {
+      Console.print(MESSAGE.GAME_RESULT + name);
+    });
   }
   /**
    * @returns {void}

@@ -16,7 +16,7 @@ export class WinnersDto {
   /**
    * @returns {WinnerDto[]}
    */
-  get cars() {
+  get winners() {
     return this.#winners;
   }
 }
