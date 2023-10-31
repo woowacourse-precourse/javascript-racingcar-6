@@ -49,6 +49,25 @@ class App {
       });
       MissionUtils.Console.print("");
     }
+
+    //우승자 출력하기
+    const winner = [];
+    let winnerLength = 0;
+
+    for (const car in carScoreObj) {
+      if (carScoreObj[car].length >= winnerLength) {
+        winnerLength = carScoreObj[car].length;
+        winner.push([car, winnerLength]);
+      }
+    }
+
+    const finalWinner = winner[winner.length - 1];
+    const winners = winner.filter((person) => person[1] === finalWinner[1]);
+    const answer = [];
+
+    winners.forEach((person) => answer.push(person[0]));
+
+    MissionUtils.Console.print(`최종 우승자 : ${answer.join(", ")}`);
   }
 }
 
