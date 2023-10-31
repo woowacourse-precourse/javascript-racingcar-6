@@ -1,3 +1,4 @@
+import { GAME_CAR_NAME_LENGTH } from "../constants/GameSetting.js";
 import { MESSAGE_ERROR } from "../constants/Message.js";
 
 // 사용자 입력 유효성 검사
@@ -18,7 +19,7 @@ export const isValidCarName = (input) => {
   const splitInput = input.split(",");
 
   splitInput.forEach((carName) => {
-    if (carName.length > 5) {
+    if (carName.length > GAME_CAR_NAME_LENGTH) {
       throw new Error(MESSAGE_ERROR.errorCarNameLength);
     }
     if (carName === "" || carName === " ") {

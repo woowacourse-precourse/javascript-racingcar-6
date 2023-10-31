@@ -1,3 +1,5 @@
+import { GAME_FORWARD_CONDITION } from "../constants/GameSetting.js";
+
 export default class Car {
   #Car = {
     name: null,
@@ -9,7 +11,7 @@ export default class Car {
   }
 
   setAdvance(move) {
-    if (move >= 4) {
+    if (move >= GAME_FORWARD_CONDITION) {
       this.#Car.advance++;
     }
   }
