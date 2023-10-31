@@ -63,16 +63,15 @@ class App {
   }
 
   isValidCarNames() {
-    this.carNameList.map((_, index) => {
-      const isValidCarName = !(
-        this.carNameList[index].length > 5 ||
-        this.carNameList[index].trim().length === 0
-      );
-      if (!isValidCarName) {
-        return false;
+    let isValid = true;
+
+    this.carNameList.forEach((name) => {
+      if (name.length > 5 || name.trim().length === 0) {
+        isValid = false;
       }
     });
-    return true;
+
+    return isValid;
   }
 
   async inputAttemptCount() {
@@ -120,9 +119,6 @@ class App {
   }
 
   getFinalWinner(topPerformingCarNames) {
-    if (!topPerformingCarNames) {
-      throw new Error("No winners specified.");
-    }
     const winners = topPerformingCarNames.join(", ");
     Console.print(`최종 우승자 : ${winners}`);
   }
