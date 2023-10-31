@@ -25,15 +25,11 @@ class App {
     print(PROMPT.RACE_START);
 
     while (this.winners.length === 0) {
-      this.cars.forEach((car) => {
-        car.move();
-      });
+      this.cars.forEach((car) => car.move());
 
       this.printMoveResult();
 
-      this.winners = this.cars.filter((car) => {
-        return car.getPosition() === Number(attemp);
-      });
+      this.winners = this.cars.filter((car) => car.getPosition() === Number(attemp));
     }
   }
 
@@ -46,9 +42,7 @@ class App {
   }
 
   printWinners() {
-    const winnerNames = this.winners.map((car) => {
-      return car.getName();
-    });
+    const winnerNames = this.winners.map((car) => car.getName());
 
     print(`${PROMPT.FINAL_WINNER} : ${winnerNames.join(`${CHAR.SEPARATOR} `)}`);
   }
