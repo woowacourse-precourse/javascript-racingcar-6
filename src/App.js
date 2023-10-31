@@ -1,15 +1,20 @@
+import { Console } from '@woowacourse/mission-utils';
+
 import Racer from './Racer.js';
 import {
   inputCarNames,
   inputTryCount,
   outputResultsEveryIteration,
+  outputWinner,
 } from './View.js';
 
 class App {
   async play() {
     const carNames = await inputCarNames();
     const tryCount = await inputTryCount();
+    Console.print('\n실행 결과');
     const racers = this.runRace(carNames, tryCount);
+    outputWinner(racers);
   }
 
   runRace(carNames, tryCount) {
