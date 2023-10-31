@@ -1,5 +1,6 @@
-import App from '../src/App.js';
+import App from '../src/App';
 import { MissionUtils } from '@woowacourse/mission-utils';
+import { checkCarNames, checkTryNumber } from '../src/Validation';
 
 const mockQuestions = inputs => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -23,14 +24,14 @@ const getLogSpy = () => {
   return logSpy;
 };
 
-describe('자동차 경주 게임', () => {
-  test('전진-정지', async () => {
+describe('자동차 경주 테스트', () => {
+  test('우승자가 2명', async () => {
     // given
     const MOVING_FORWARD = 4;
     const STOP = 3;
-    const inputs = ['pobi,woni', '1'];
-    const outputs = ['pobi : -'];
-    const randoms = [MOVING_FORWARD, STOP];
+    const inputs = ['a,b,c', '1'];
+    const outputs = ['최종 우승자 : a,c'];
+    const randoms = [MOVING_FORWARD, STOP, MOVING_FORWARD];
     const logSpy = getLogSpy();
 
     mockQuestions(inputs);
@@ -45,18 +46,4 @@ describe('자동차 경주 게임', () => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
   });
-
-  test.each([[['pobi,javaji']], [['pobi,eastjun']]])(
-    '이름에 대한 예외 처리',
-    async inputs => {
-      // given
-      mockQuestions(inputs);
-
-      // when
-      const app = new App();
-
-      // then
-      await expect(app.play()).rejects.toThrow('[ERROR]');
-    },
-  );
 });
