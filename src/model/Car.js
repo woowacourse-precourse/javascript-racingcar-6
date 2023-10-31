@@ -1,3 +1,5 @@
+import { MOVABLE_NUMBER } from '../constants.js';
+
 class Car {
   #name;
 
@@ -16,8 +18,12 @@ class Car {
     return this.#step;
   }
 
-  run(canMove) {
-    if (canMove) this.#step += 1;
+  static canMove(number) {
+    return number >= MOVABLE_NUMBER;
+  }
+
+  run(number) {
+    if (Car.canMove(number)) this.#step += 1;
   }
 }
 

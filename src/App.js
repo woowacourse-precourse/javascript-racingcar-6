@@ -75,8 +75,7 @@ class App {
   }
 
   run(car) {
-    this.randomNumber.create();
-    car.run(this.randomNumber.canMove());
+    car.run(this.randomNumber.create());
   }
 
   printStep() {
