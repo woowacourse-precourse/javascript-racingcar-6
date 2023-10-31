@@ -18,8 +18,7 @@ class App {
     Console.print(message.game.PROCESS_RESULT);
     for(let j = 1; j<=numberOfAttempts;j++){
       await fowardConditions(carsScores,numberOfAttempts,winner);
-      await Console.print('');
-    }
+      await Console.print('');}
     await Console.print(message.game.RESULT_WINNER_PRINT+winner.join(', '));
     await Console.print(message.game.RESULT_LOSER_PRINT+await loserResult(winner,loser).join(', '));
     Console.print(message.game.CONTINUE_OR_STOP_QUESTION);

@@ -1,4 +1,4 @@
-const loserResult = (winner,loser) => {
+const loserResult = (winner,loser) =>{
     loser = loser.filter(x => !winner.includes(x));
     return loser;
 }
