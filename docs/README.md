@@ -24,10 +24,9 @@ const car = input.split(',').map((v) => v.trim());
 
 ```JavaScript
 if (
-    //filter는 for~if의 기능+새로운 배열에 저장
-    car.filter((v) => v.length > 5).length !== 0 || //요소의 길이가 5이상이면 배열이 1개이상 만들어지니 배열의 길이가 0이 아님(식 성립)
-    car.filter((v) => v === '').length > 0 || //아예 빈값(그냥 위의 trim만 쓰면 빈칸을 ''로 인식)(식 성립)
-    [...new Set(car)].length !== car.length //Set()의 길이와 원래 입력의 길이가 다를때(식 성립)
+    car.filter((v) => v.length > 5).length !== 0 ||
+    car.filter((v) => v === '').length > 0 ||
+    [...new Set(car)].length !== car.length
   ) {
     throw new Error('[ERROR] 올바른 이름을 입력해주세요');
   }
@@ -43,7 +42,6 @@ if (
 
 ```JavaScript
 if (parseInt(input) > 0) {
-    // 0보다 큰 정수형
     return parseInt(input);
   } else {
     throw new Error('[ERROR] 올바른 숫자를 입력해주세요');
@@ -60,7 +58,6 @@ if (parseInt(input) > 0) {
 
 ```JavaScript
 for (let i = 0; i < name.length; i++) {
-    //배열마다 랜덤받기
     computer.push(MissionUtils.Random.pickNumberInRange(0, 9));
   }
 ```
@@ -74,8 +71,8 @@ for (let i = 0; i < name.length; i++) {
 ```JavaScript
 for (let i = 0; i < count; i++) {
     let output = random(name);
-    temp = repeat(name, move, output); //기능4를 받아옴
-    Console.print(``); // 공백 나옴
+    temp = repeat(name, move, output);
+    Console.print(``);
   }
 ```
 
@@ -95,7 +92,7 @@ for (let i = 0; i < count; i++) {
 
 ```JavaScript
 for (let v = 0; v < name.length; v++) {
-    forward(output, move, v); // 기능5를 받아옴
+    forward(output, move, v);
     Console.print(`${name[v]} : ${'-'.repeat(move[v])}`);
   }
 ```
