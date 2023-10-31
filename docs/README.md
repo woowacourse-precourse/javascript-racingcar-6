@@ -10,26 +10,13 @@
 
 ### :clipboard:구현 기능 목록
 
-[입력값 설정]
-- 자동차 이름 입력받기
-    - [조건] 이름은 쉼표를 기준으로 구분, 5자 이하여햐 한다.
-- 시도 횟수 입력받기 
-    - [조건] 입력은 0 이상의 숫자여야 한다.
-
-[로직 구현]
-- 각 자동차별 전진 기능 구현
-    - 0~9 사이의 무작위 값을 구한 후, 해당 값이 4 이상일 경우에 전진.
-- 최종 우승자 판별 기능 구현
-    - 최종 전진 결과를 판단하여 우승자를 출력한다.
-        - [조건] 우승자가 여러 명인 경우 쉼표로 구분한다.
-
-[출력 함수]
+**[출력 함수]**
 - printMessage
     - `@wooacourse/mission-utils`  의 `Console.print` 사용
 - printErrorMessage
     - `throw new Error` 에 대한 함수화
 
-[사용자 입력 처리 및 검증 함수]
+**[사용자 입력 처리 및 검증 함수]**
 - getUserInput
     - 자동차 이름과 시도 횟수 입력받기
 - validateNameInput
@@ -40,16 +27,33 @@
         - 숫자가 아닌 입력이 있는 경우
         - 0 이하의 숫자를 입력받은 경우
 
+**[자동차 경주 진행 함수]**
+- playSingleRound
+    - 한 라운드를 진행하는 함수
+    - 각 자동차에 대해 랜덤값 생성 후, 4보다 큰 값일 경우 한칸 전진
+        - `@wooacourse/mission-utils` 의 `Random.pickNumberInRange` 사용
+    - 각 라운드 별 진행도를 숫자 배열로 반환
+- printeachRoundResult
+    - 각 라운드 별 진행상황을 문자로 출력
+- getWinners 
+    - 최종 결과를 통해 우승자를 문자 배열로 반환
+        - 우승자가 여러명일 경우 쉼표 (',') 로 구분
+- playRacingGame
+    - 위의 함수들을 아울러 전체적인 자동차 경주를 진행
+
+
 ---
 
 ### :page_facing_up: 파일 구조도
 
 - src
   - utils
+    - messages.js
   - App.js
   - index.js
-  - constants.js
-    - 상수값 처리
+  - getUserInput.js
+  - playRacingGame.js
+
 
 ---
 
