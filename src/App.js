@@ -1,25 +1,36 @@
 import { Console, Random } from '@woowacourse/mission-utils';
-import MESSAGE from './constants/constants.js';
+import { MESSAGE, SIZE_LIMITS } from './constants/constants.js';
+import {
+  isCarListValid,
+  isRacingAttemptsValid,
+  canMoveForward,
+} from './utils/validator.js';
 
 class App {
   constructor() {
-    this.cars = [];
-    this.playTimes = 0;
+    this.carList = [];
+    this.attemptTimes = 0;
     this.winner = [];
-    this.randomNumber = 0;
     this.racingCars = {};
   }
 
   async play() {
     const answer = await Console.readLineAsync(MESSAGE.ENTER_CAR_NAME);
-    this.cars = answer.split(',');
+    this.carList = answer.split(',');
 
-    if (this.IsCarListValid()) {
-      const playTimes = await Console.readLineAsync(
-        MESSAGE.ENTER_NUMBER_TO_TRY,
+    if (
+      isCarListValid(
+        this.carList,
+        SIZE_LIMITS.MAX_CARLIST_LENGTH,
+        SIZE_LIMITS.MIN_CARLIST_LENGTH,
+        SIZE_LIMITS.MAX_CAR_NAME_LENGTH,
+      )
+    ) {
+      const attemptTimes = await Console.readLineAsync(
+        MESSAGE.ENTER_NUMBER_TO_ATTEMPT,
       );
-      this.playTimes = playTimes;
-      if (this.IsRacingAttemptsValid()) {
+      this.attemptTimes = attemptTimes;
+      if (isRacingAttemptsValid(this.attemptTimes)) {
         return this.StartRacing();
       }
       throw new Error(MESSAGE.NOT_VALID_NUMBER);
@@ -27,52 +38,19 @@ class App {
     throw new Error(MESSAGE.NOT_VALID_CARS_NAME);
   }
 
-  HasNoSpace(value) {
-    return !value.includes(' ');
-  }
-
-  IsCarListValid() {
-    const maxCarListLength = 10;
-    const minCarListLength = 2;
-    const maxCarnameLength = 5;
-
-    const isNotEmpty = car => car.length !== 0;
-    const checkLength = car => car.length <= maxCarnameLength;
-
-    if (
-      this.cars.length > maxCarListLength ||
-      this.cars.length < minCarListLength
-    ) {
-      return false;
-    }
-
-    return this.cars.every(
-      car => this.HasNoSpace(car) && isNotEmpty(car) && checkLength(car),
-    );
-  }
-
-  IsRacingAttemptsValid() {
-    const checkUnderTen = /^(10|[1-9])$/;
-
-    if (checkUnderTen.test(this.playTimes) && this.HasNoSpace(this.playTimes)) {
-      return true;
-    }
-    return false;
-  }
-
   StartRacing() {
     let count = 0;
 
-    this.racingCars = this.cars.reduce((acc, cur) => {
+    this.racingCars = this.carList.reduce((acc, cur) => {
       acc[cur] = '';
       return acc;
     }, {});
 
     Console.print(MESSAGE.EXECUTION_RESULT);
 
-    while (count < this.playTimes) {
-      this.cars.map(car => {
-        if (this.CanMoveForward()) {
+    while (count < this.attemptTimes) {
+      this.carList.map(car => {
+        if (canMoveForward()) {
           this.racingCars[car] += '-';
         }
         return Console.print(`${car} : ${this.racingCars[car]}`);
@@ -82,15 +60,6 @@ class App {
     }
 
     this.WhoIsWinner();
-  }
-
-  CanMoveForward() {
-    this.randomNumber = Random.pickNumberInRange(0, 9);
-
-    if (this.randomNumber >= 4) {
-      return true;
-    }
-    return false;
   }
 
   WhoIsWinner() {
