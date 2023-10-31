@@ -25,6 +25,31 @@ class App {
     return cycle;
   }
 
+  async forward() {
+    const number = await MissionUtils.Random.pickNumberInRange(0, 9);
+
+    if (parseInt(number) >= 4) return true;
+    else return false;
+  }
+
+  async runOneCycle() {
+    for (let j = 0; j < this.participant.length; j++) {
+      if (await this.forward()) {
+        this.count[j] += 1;
+      }
+      await MissionUtils.Console.print(
+        `${this.participant[j]} : ${"-".repeat(this.count[j])}`
+      );
+    }
+  }
+
+  async depart(cycle) {
+    for (let i = 0; i < cycle; i++) {
+      await this.runOneCycle();
+      MissionUtils.Console.print("\n");
+    }
+  }
+
   async play() {
     await this.participate();
 
