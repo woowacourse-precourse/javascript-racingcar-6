@@ -1,5 +1,9 @@
+import RaceGame from "./controller/RaceGame.js";
+
 class App {
-  async play() {}
+  async play() {
+    await RaceGame();
+  }
 }
 
 export default App;
