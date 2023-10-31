@@ -1,5 +1,9 @@
+import game from "./controller/game";
+
 class App {
-  async play() {}
+  async play() {
+    await game();
+  }
 }
 
 export default App;
