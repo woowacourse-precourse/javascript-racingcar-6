@@ -5,7 +5,8 @@ import InputAttempt from './InputAttempt.js';
 class App {
 	async play() {
 		// const carList = InputCarName();
-		InputAttempt();
+		// InputAttempt();
+		Random.pickNumberInRange(0, 9);
 	}
 }
 
