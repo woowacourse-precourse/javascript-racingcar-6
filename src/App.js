@@ -40,7 +40,16 @@ class App {
         winners.push(names[i]);
       }
     }
-    
+
+    let dap = '최종 우승자 : '
+    for (let i = 0; i < winners.length; i++){
+      if (i == winners.length - 1) {
+        dap += winners[i];
+      } else{
+        dap += winners[i] + ', ';
+      }
+    }
+    MissionUtils.Console.print(dap);
   }
   
 }
