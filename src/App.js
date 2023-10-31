@@ -37,11 +37,11 @@ class App {
 
   async play() {
     const names = await Input.getCarNames();
-    names.split(',').forEach((element) => {
-      if (element.length > 5) {
+    names.split(',').forEach((name) => {
+      if (name.length > 5 || name.length < 1) {
         throw new Error(ERROR.nameLength);
       }
-      this.#cars.push({ name: element, count: 0 });
+      this.#cars.push({ name, count: 0 });
     });
 
     this.#times = await Input.getRepeatTimes();
