@@ -4,8 +4,8 @@ export default class EndGame {
         let winnerList = [];
         carList.sort((a, b) => b[1] - a[1]);
         carList.forEach((car) => {
-          if (car[1] != carList[0][1]) return winnerList;
-          winnerList.push(car[0]);
+          if (car.count != carList[0].count) return winnerList;
+          winnerList.push(car.name);
         });
         Console.print("최종 우승자 : " + winnerList.join(", "));
       }
