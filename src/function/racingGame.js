@@ -22,6 +22,6 @@ export const racingGame = async () => {
   const result = calculatedResult(carsNameArray);
 
   Console.print(
-    `최종 우승자 : ${result.length !== 1 ? result.join(", ") : result.join("")}`
+    `최종 우승자 : ${result.length !== 1 ? result.join(", ") : result[0]}`
   );
 };
