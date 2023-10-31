@@ -15,6 +15,8 @@ class App {
     );
 
     this.numberOfTryValidity(NUMBER_OF_TRY);
+
+    const FINAL_COUNT_ARRAY = this.racing(NUMBER_OF_TRY, CAR_NAME_ARRAY);
   }
 
   carNameValidity(inputCarNameArray) {
@@ -67,6 +69,31 @@ class App {
     if(numberOfTry < 1) {
       throw new Error("[ERROR]: 1이상의 숫자를 입력하시오.");
     }
+  }
+
+  racing(inputNumberOfTry, inputCarNameArray) {
+    const COUNT = Array.from({ length: inputCarNameArray.length }, () => 0);
+    MissionUtils.Console.print("\n실행 결과");
+    for (let i = 0; i < inputNumberOfTry; i++) {
+      this.racingCountIncrement(inputCarNameArray, COUNT);
+      MissionUtils.Console.print("");
+    }
+
+    return COUNT;
+  }
+
+  racingCountIncrement(inputCarNameArray, count) {
+    for (let j = 0; j < inputCarNameArray.length; j++) {
+      const NUMBER = MissionUtils.Random.pickNumberInRange(0, 9);
+      if (NUMBER >= 4) {
+        count[j]++;
+      }
+      MissionUtils.Console.print(
+        `${inputCarNameArray[j]} : ${"-".repeat(count[j])}`
+      );
+    }
+
+    return count;
   }
 }
 
