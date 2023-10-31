@@ -1,4 +1,7 @@
 import { Console, Random } from "@woowacourse/mission-utils";
+import Car from './Car.js';
+
+const headway = "-";
 
 async function getInput(text) {  // 사용자로부터 입력받는 함수
   try {
@@ -7,6 +10,16 @@ async function getInput(text) {  // 사용자로부터 입력받는 함수
   } catch (error) { 
     throw new Error("[ERROR] 잘못 된 형식의 입력입니다 !!");
   }
+}
+
+function makeCarList(carName) {
+  let carList = [];
+
+  carName.forEach(element => {
+    carList.push(new Car(element));
+  });
+  
+  return carList;
 }
 
 function isCarNameValid(carName) {  // carName 배열을 받아 배열의 문자열들이 5자 이하인지 확인
@@ -25,6 +38,47 @@ function isIntValid(num) {  // 정수인지 판별
   return true;
 }
 
+function runCarRace(carList, moveCount) {  // 자동차 이름과 주어진 횟수를 이용해 자동차 경주
+
+  Console.print("실행 결과\n");
+
+  for (var i = 0; i < moveCount; i++){
+    for(var value of carList) {  // 자동차마다 경주 시작
+      getRandomHead(value);
+      Console.print(value.getCarName() + " : " + headway.repeat(value.getHeadCount()));
+    }
+    Console.print("");
+  }
+}
+
+function getRandomHead(car) {
+  if (Random.pickNumberInRange(0, 9) >= 4){  // 랜덤값이 4 이상이면 전진 표시 ("-")
+    car.addHeadCount();
+    return;
+  }
+}
+
+function printWinner(carList) {
+  var winnerCount = 0;
+  var winner = [];
+
+  for(var value of carList) {  // 가장 headCount가 높은 자동차 찾기
+    if(value.getHeadCount() >= winnerCount){
+      winner.push(value.getCarName());
+      winnerCount = value.getHeadCount();
+    }
+  }
+
+  for(var value of carList) {
+    if(value.getHeadCount() >= winnerCount){
+      winner.push(value.getCarName());
+      winnerCount = value.getHeadCount();
+    }
+  }
+
+  return winner;
+}
+
 class App { 
   async play() {
     
@@ -32,9 +86,13 @@ class App {
     var carNameStr = await getInput("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
     carName = carNameStr.split(',');
     isCarNameValid(carName);
+    var carList = makeCarList(carName);  // 자동차 이름 배열과 Car 클래스를 이용해 객체를 리스트로 생성
 
     var moveCount = await getInput("시도할 횟수는 몇 회인가요?\n");
     isIntValid(moveCount);
+
+    runCarRace(carList, moveCount);
+    Console.print("최종 우승자 : " + printWinner(carList));
   }
 }
 
