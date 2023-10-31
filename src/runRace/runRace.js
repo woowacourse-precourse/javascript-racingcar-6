@@ -34,8 +34,18 @@ class RunRace {
       this.runRaceRound(cars);
     }
 
-    return this.progressList;
+    this.printWinners(cars, this.progressList);
   }
+
+  findWinners = (cars, progressList) =>
+    cars.filter(
+      (car, carIndex) => progressList[carIndex].length === this.maxProgress(progressList),
+    );
+
+  printWinners = (cars, progressList) =>
+    Console.print(`최종 우승자 : ${this.findWinners(cars, progressList).join(', ')}`);
+
+  maxProgress = (progressList) => Math.max(...progressList.map((progress) => progress.length));
 }
 
 export default RunRace;
