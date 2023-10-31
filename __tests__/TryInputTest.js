@@ -1,15 +1,6 @@
 import App from '../src/App.js';
 import { tryMessage } from '../src/Messages.js';
-import { MissionUtils } from '@woowacourse/mission-utils';
-
-const mockQuestions = (inputs) => {
-  MissionUtils.Console.readLineAsync = jest.fn();
-
-  MissionUtils.Console.readLineAsync.mockImplementation(() => {
-    const input = inputs.shift();
-    return Promise.resolve(input);
-  });
-};
+import { mockQuestions } from './module/modules.js';
 
 describe('자동차 경주 게임 시도 횟수 입력 테스트', () => {
   test('문자열 입력', async () => {
