@@ -6,4 +6,9 @@ const MESSAGES = Object.freeze({
   WINNER: "최종 우승자 : ",
 });
 
-export default MESSAGES;
+const ERROR_MESSAGES = Object.freeze({
+  NUMBER_ERROR: "[ERROR] 올바른 숫자 형식으로 입력해 주세요",
+  CARNAME_ERROR: "[ERROR] 올바른 이름 형식으로 입력해 주세요",
+});
+
+export default { MESSAGES, ERROR_MESSAGES };
