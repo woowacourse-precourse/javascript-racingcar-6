@@ -1,6 +1,6 @@
-import { printMessage } from "../utils/console/printMessage";
-import { GUIDE_MESSAGE } from "../constants/messages";
-import { RACING } from "../constants/carRacing";
+import { printMessage } from "../utils/console/printMessage.js";
+import { GUIDE_MESSAGE } from "../constants/messages.js";
+import { RACING } from "../constants/carRacing.js";
 
 export default class OutputView {
   constructor() {}
@@ -21,5 +21,15 @@ export default class OutputView {
     });
 
     printMessage(result);
+  }
+
+  // 게임 최종 결과를 출력
+  static printFinalWinner(carListArr) {
+    let winnerNameArr = carListArr.map((car) => car.name);
+    let finalResult = `${
+      GUIDE_MESSAGE.OUTPUT_FINAL_WINNER
+    } ${winnerNameArr.join(", ")}`;
+
+    printMessage(finalResult);
   }
 }

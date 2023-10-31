@@ -1,5 +1,5 @@
-import { getRandomNumberInRange } from "../utils/getRandomNumberInRange";
-import { RACING } from "../constants/carRacing";
+import { getRandomNumberInRange } from "../utils/getRandomNumberInRange.js";
+import { RACING } from "../constants/carRacing.js";
 
 export default class CarRacingGames {
   constructor() {}
@@ -31,5 +31,16 @@ export default class CarRacingGames {
         car.numberOfMovesForward += 1;
       }
     });
+  }
+
+  static getFinalWinner(carListArr) {
+    const maxNumberOfMovesForward = Math.max(
+      ...carListArr.map((car) => car.numberOfMovesForward),
+    );
+    const winnerArr = carListArr.filter(
+      (car) => car.numberOfMovesForward === maxNumberOfMovesForward,
+    );
+
+    return winnerArr;
   }
 }

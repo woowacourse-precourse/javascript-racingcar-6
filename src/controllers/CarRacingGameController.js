@@ -13,6 +13,7 @@ export default class CarRacingGamesControllers {
   async play() {
     await this.prepareSettings();
     this.executeForward();
+    this.outputFinalResult();
   }
 
   // 자동차 경주를 준비하는 메서드
@@ -43,5 +44,10 @@ export default class CarRacingGamesControllers {
       OutputView.printExecutionResult(this.carListArr);
       this.numberOfMoves -= 1;
     }
+  }
+
+  outputFinalResult() {
+    const winnerArr = CarRacingGames.getFinalWinner(this.carListArr);
+    OutputView.printFinalWinner(winnerArr);
   }
 }
