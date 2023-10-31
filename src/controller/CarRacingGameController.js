@@ -20,6 +20,10 @@ class CarRacingGameController {
     this.#endGame();
   }
 
+  /**
+   * 조건에 유효한 자동차 이름들을 배열로 반환한다.
+   * @returns {String[]}
+   */
   async #requireCarNames() {
     const inputCarNames = await InputView.getCarNames();
     const carNames = inputCarNames.split(',').map((name) => name.trim());
@@ -30,13 +34,17 @@ class CarRacingGameController {
   }
 
   async #requireRound() {
-    const round = await InputView.getRound();
+    const inputRound = await InputView.getRound();
+    const round = parseInt(inputRound, 10);
 
     InputValidator.validateRound(round);
 
     return round;
   }
 
+  /**
+   * 각 라운드의 진행상황을 출력한다. [{ name, progress }] 객체배열의 값을 문자로 출력
+   */
   #currentRacing() {
     OutputView.printStaticMessage(MESSAGE.playResult);
 

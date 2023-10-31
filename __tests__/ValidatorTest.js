@@ -1,5 +1,5 @@
-import InputValidator from '../src/domain/InputValidator';
-import { MESSAGE } from '../src/constants/messages';
+import InputValidator from '../src/domain/InputValidator.js';
+import { MESSAGE } from '../src/constants/messages.js';
 
 describe('InputValidator', () => {
   const invalidInputs = {

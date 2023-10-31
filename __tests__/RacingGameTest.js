@@ -1,4 +1,4 @@
-import CarRacingGame from '../src/domain/CarRacingGame';
+import CarRacingGame from '../src/domain/CarRacingGame.js';
 
 describe('CarRacingGame', () => {
   let carRacingGame;

@@ -1,4 +1,4 @@
-import { GAME_CONDITION } from './constants';
+import { GAME_CONDITION } from './constants.js';
 
 const MESSAGE = Object.freeze({
   carsNameInputGuide: '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
@@ -9,6 +9,8 @@ const MESSAGE = Object.freeze({
   lengthName: `[ERROR] 이름은 ${GAME_CONDITION.minLength}글자 이상 ${GAME_CONDITION.maxLength}자 이하여야 합니다.`,
   minCars: `[ERROR] 최소 ${GAME_CONDITION.minCars}개 이상의 이름이 필요합니다.`,
   minRound: `[ERROR] 최소 ${GAME_CONDITION.minRound}이상의 숫자여야 합니다.`,
+  commaSpace: ', ',
+  progress: '-',
 });
 
 export { MESSAGE };

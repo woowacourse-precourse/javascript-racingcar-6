@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import { MESSAGE } from '../constants/messages';
+import { MESSAGE } from '../constants/messages.js';
 
 const InputView = {
   async getCarNames() {

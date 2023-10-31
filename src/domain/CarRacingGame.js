@@ -10,6 +10,9 @@ class CarRacingGame {
     this.#round = round;
   }
 
+  /**
+   * 자동차의 각 랜덤 값이 조건에 충족할때, 해당 자동차는 1칸 이동한다.
+   */
   race(randomNumberGenerator) {
     this.#cars.forEach((car) => {
       const randomNumber = randomNumberGenerator();
@@ -29,6 +32,10 @@ class CarRacingGame {
     });
   }
 
+  /**
+   * 가장 높은 전진값을 가진 자동차의 이름들을 반환한다.
+   * @returns {[string]} 문자배열
+   */
   getWinners() {
     const highProgress = Math.max(...this.#cars.map((car) => car.getProgress()));
     const winners = this.#cars.filter((car) => car.getProgress() === highProgress);
