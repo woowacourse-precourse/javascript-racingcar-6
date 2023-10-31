@@ -1,8 +1,6 @@
 import App from "../src/App.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 
-// jest.mock("../src/App.js");
-
 const mockQuestions = (inputs) => {
     MissionUtils.Console.readLineAsync = jest.fn();
     MissionUtils.Console.readLineAsync.mockImplementation(() => {

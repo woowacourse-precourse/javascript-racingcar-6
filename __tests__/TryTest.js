@@ -41,8 +41,6 @@ describe("시도하기",()=>{
 
   test("시도 횟수 5번", async () => {
     // given
-    // const MOVING_FORWARD = 4;
-    // const STOP = 3;
     const inputs = ["pobi,woosu,drago", "5"];
     const outputs = [
       'pobi : ','woosu : -','drago : ',
