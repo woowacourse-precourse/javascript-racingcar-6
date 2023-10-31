@@ -16,5 +16,14 @@ const RESULT_MESSAGE = '\n실행 결과';
 const FINAL_WINNER = '최종 우승자 : ';
 
 const MOVE = '-';
+const CAN_MOVE_NUMBER = 4;
 
-export { INPUT_NAME, INPUT_COUNT, ERROR, MOVE, RESULT_MESSAGE, FINAL_WINNER };
+export {
+  INPUT_NAME,
+  INPUT_COUNT,
+  ERROR,
+  MOVE,
+  RESULT_MESSAGE,
+  FINAL_WINNER,
+  CAN_MOVE_NUMBER,
+};

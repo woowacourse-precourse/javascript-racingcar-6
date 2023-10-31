@@ -1,5 +1,7 @@
 import { Random } from '@woowacourse/mission-utils';
 
+import { CAN_MOVE_NUMBER } from './constants/constants';
+
 class Car {
   constructor(name) {
     this.name = name;
@@ -15,7 +17,7 @@ class Car {
   }
 
   move() {
-    if (Random.pickNumberInRange(0, 9) >= 4) {
+    if (Random.pickNumberInRange(0, 9) >= CAN_MOVE_NUMBER) {
       this.moveCount += 1;
     }
   }
