@@ -1,13 +1,13 @@
 import { Console } from '@woowacourse/mission-utils';
 import { OUTPUT_MESSAGES } from './constants/index.js';
-import Race from './Race.js';
+import Race from './models/Race.js';
 import ReaderView from './helpers/ReaderView.js';
 
 class App {
-  #raceCars = [];
+  #raceCars;
 
   constructor() {
-    this.#raceCars = null;
+    this.#raceCars = [];
   }
 
   async play() {
@@ -27,7 +27,7 @@ class App {
   }
 
   announceWinner() {
-    const winnerNames = this.#raceCars.findWinner();
+    const winnerNames = this.#raceCars?.findWinner();
     Console.print(`${OUTPUT_MESSAGES.WINNER_PREFIX}${winnerNames}`);
   }
 }
