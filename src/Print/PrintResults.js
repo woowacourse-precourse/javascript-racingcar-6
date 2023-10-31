@@ -1,25 +1,20 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 
-const PrintResults = (user, gameNumber) => {
-  const RACING_CAR = new Map();
+const PrintResults = (user, racingCar) => {
+  for (const CAR of user) {
+    if (!racingCar.has(CAR)) racingCar.set(CAR, '');
 
-  for (let index = 0; index < gameNumber; index += 1) {
-    for (const CAR of user) {
-      if (!RACING_CAR.has(CAR)) RACING_CAR.set(CAR, '');
+    const RANDOM_NUMBER = MissionUtils.Random.pickNumberInRange(0, 9);
 
-      const RANDOM_NUMBER = MissionUtils.Random.pickNumberInRange(0, 9);
-
-      if (RANDOM_NUMBER >= 4) {
-        RACING_CAR.set(CAR, RACING_CAR.get(CAR) + '-');
-      }
-
-      MissionUtils.Console.print(`${CAR} : ${RACING_CAR.get(CAR)}`);
+    if (RANDOM_NUMBER >= 4) {
+      racingCar.set(CAR, racingCar.get(CAR) + '-');
     }
 
-    MissionUtils.Console.print('\n');
+    MissionUtils.Console.print(`${CAR} : ${racingCar.get(CAR)}`);
   }
+  MissionUtils.Console.print('');
 
-  return RACING_CAR;
+  return racingCar;
 };
 
 export default PrintResults;

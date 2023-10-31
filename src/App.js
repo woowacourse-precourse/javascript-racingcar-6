@@ -20,9 +20,13 @@ class App {
 
       MissionUtils.Console.print(RACING_CAR_GAME.RESULT);
 
-      const RACING_CAR = PrintResults(USER, GAME_NUMBER);
+      let racingCar = new Map();
 
-      PrintWinner(RACING_CAR);
+      for (let round = 0; round < GAME_NUMBER; round++) {
+        racingCar = PrintResults(USER, racingCar);
+      }
+
+      PrintWinner(racingCar);
     } catch (error) {
       throw new Error(error);
     }
