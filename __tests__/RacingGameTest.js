@@ -66,4 +66,18 @@ describe('레이싱 게임 플레이와 관련된 함수 테스트', () => {
       }
     });
   });
+
+  // showGameStatus 함수 테스트
+  test('게임 현황 출력 테스트', () => {
+    const gameStatus = ['테스트1 : -', '테스트2 : ', '테스트3 : -'];
+    const getGameStatusPrintSpy = jest.spyOn(Console, 'print');
+
+    racingGame.showGameStatus();
+
+    gameStatus.forEach((eachStatus) => {
+      expect(getGameStatusPrintSpy).toHaveBeenCalledWith(
+        expect.stringContaining(eachStatus),
+      );
+    });
+  });
 });
