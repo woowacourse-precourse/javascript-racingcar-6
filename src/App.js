@@ -27,7 +27,7 @@ class App {
     if (!checkCarNames(cars)) throw new Error('[ERROR] 자동차 이름이 잘못된 형식입니다.\n');
 
     let times = await setRaceTimes();
-    if (times === NaN || times === 0) throw new Error('[ERROR] 이동 횟수가 잘못된 형식입니다.\n');
+    if (Number.isNaN(times) || times === 0) throw new Error('[ERROR] 이동 횟수가 잘못된 형식입니다.\n');
 
     race(cars, times);
 
@@ -74,7 +74,7 @@ function checkNameLength(car) {
 
 async function setRaceTimes() {
   let times = await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
-  times = parseInt(times);
+  times = parseInt(times, 10);
   return times;
 }
 
