@@ -10,8 +10,9 @@ class App {
 
   GameCount;
 
-  makeCars(carNames) {
-    carNames.forEach((carName) => {
+  makeCars(carNamesString) {
+    const carNamesArr = carNamesString.split(',');
+    carNamesArr.forEach((carName) => {
       const car = new Car(carName);
       this.cars.push(car);
     });
