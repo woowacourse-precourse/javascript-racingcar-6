@@ -1,7 +1,10 @@
-import MESSAGE from '../constants/constant';
+import MESSAGE from '../constants/constant.js';
 
 const validator = {
   validateCarName(carNames) {
+    if (new Set(carNames).size !== carNames.length) {
+      throw new Error(MESSAGE.ERROR.CARNAME.DUPLICATE_ERROR);
+    }
     carNames.forEach((carName) => {
       if (carName.length > 5) {
         throw new Error(MESSAGE.ERROR.CARNAME.LENGTH_ERROR);
@@ -21,6 +24,9 @@ const validator = {
     }
     if (number === '') {
       throw new Error(MESSAGE.ERROR.CHANCE.NULL_ERROR);
+    }
+    if (number % 1 !== 0) {
+      throw new Error('[ERROR]');
     }
   },
 };

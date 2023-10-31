@@ -12,8 +12,8 @@ class GameController {
   }
 
   async startGame() {
-    this.inputCarName().then(() => {
-      this.inputNumber().then(() => {
+    await this.inputCarName().then(async () => {
+      await this.inputNumber().then(() => {
         this.startRace();
       });
     });
@@ -35,7 +35,7 @@ class GameController {
     this.race = new Race(this.cars);
     Console.print(MESSAGE.GAME.RESULT);
     for (let i = 0; i < this.chance; i++) {
-      this.race.advanceCar();
+      this.race.advance();
       this.race.printRaceResult();
     }
     this.printResult();

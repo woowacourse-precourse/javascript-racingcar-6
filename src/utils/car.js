@@ -6,7 +6,7 @@ class Car {
     this.move = 0;
   }
 
-  async advanceCar() {
+  advanceCar() {
     const randomNumber = Random.pickNumberInRange(0, 9);
     if (randomNumber >= 4) {
       this.moveCar();

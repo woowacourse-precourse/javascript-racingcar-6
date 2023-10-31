@@ -7,6 +7,7 @@ const MESSAGE = {
   },
   ERROR: {
     CARNAME: {
+      DUPLICATE_ERROR: '[ERROR] 중복된 이름은 입력할 수 없습니다.',
       LENGTH_ERROR: '[ERROR] 자동차 이름은 각 5자 이하만 가능합니다.',
       NULL_ERROR: '[ERROR] 자동차 이름은 1자 이상 5자 이상 입력가능합니다.',
     },

@@ -1,28 +1,28 @@
 import { Console } from '@woowacourse/mission-utils';
-import MESSAGE from '../constants/constant';
+import MESSAGE from '../constants/constant.js';
 
 class Race {
   constructor(cars) {
     this.cars = cars;
   }
 
-  advanceCar() {
+  advance() {
     this.cars.forEach((car) => car.advanceCar());
   }
 
   printRaceResult() {
     this.cars.forEach((car) => {
-      const dashLine = '-'.repeat(car.move);
+      const dashLine = '-'.repeat(car.getMove());
       Console.print(`${car.name} : ${dashLine}`);
     });
     Console.print(' ');
   }
 
   getWinner() {
-    const maxAdvanced = Math.max(...this.cars.map((car) => car.move));
+    const maxAdvanced = Math.max(...this.cars.map((car) => car.getMove()));
     const winners = this.cars
-      .filter((car) => car.move === maxAdvanced)
-      .map((car) => car.name);
+      .filter((car) => car.getMove() === maxAdvanced)
+      .map((car) => car.getName());
     return winners;
   }
 
