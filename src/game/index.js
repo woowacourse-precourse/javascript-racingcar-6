@@ -20,11 +20,11 @@ const racingCarGame = {
     return { carNameArray, moveCount: Number(moveCount) };
   },
 
-  makeCarsWithForwardCount(validateCarNamesArray) {
-    if (!Array.isArray(validateCarNamesArray)) {
+  makeCarsWithForwardCount(carNameArray) {
+    if (!Array.isArray(carNameArray)) {
       throw new Error('[ERROR] 인자는 배열이여야 합니다.');
     }
-    return validateCarNamesArray.map((name) => ({ name, forwardCount: 0 }));
+    return carNameArray.map((name) => ({ name, forwardCount: 0 }));
   },
 
   checkForwardCondition(number, { min, max }) {
