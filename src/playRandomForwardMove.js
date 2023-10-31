@@ -8,6 +8,13 @@ export default function playRandomForwardMove(map) {
       map.set(key, value + 1);
     }
   }
+  printRoundResult(map);
+}
+
+function printRoundResult(map) {
+  for (const [key, value] of map) {
+    MissionUtils.Console.print(`${key} : ${value}`);
+  }
 }
 
 function getRandomNum() {
