@@ -21,6 +21,7 @@ class GameController {
 
   playAllRounds(round, carArr) {
     let currentRound = 0;
+    Console.print(`\n실행 결과`);
     while (currentRound < round) {
       carArr.forEach((car, index) => {
         const randomNum = this.makeRandomNum();
