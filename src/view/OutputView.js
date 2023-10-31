@@ -11,8 +11,10 @@ const OutputView = {
   },
 
   printMoveMarking(carMoveState) {
-    carMoveState.map((car) => {
-      Console.print(`${car[0]} : ${PRINT_MESSAGE.moveMarking.repeat(car[1])}`);
+    carMoveState.forEach(([carName, currentPosition]) => {
+      Console.print(
+        `${carName} : ${PRINT_MESSAGE.moveMarking.repeat(currentPosition)}`
+      );
     });
   },
 
