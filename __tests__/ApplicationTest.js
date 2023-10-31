@@ -68,9 +68,9 @@ describe("자동차 경주 게임", () => {
 
 
   test.each([
-    [["pobi,javaji"]],
-    [["pobi,eastjun"]]
-  ])("이름에 대한 예외 처리", async (inputs) => {
+    [["pojjjjjjjbi,javaji"]],
+    [["ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ,ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ"]]
+  ])("이름이 길어", async (inputs) => {
     // given
     mockQuestions(inputs);
 
@@ -80,4 +80,22 @@ describe("자동차 경주 게임", () => {
     // then
     await expect(app.play()).rejects.toThrow("[ERROR]");
   });
+
+
+  test.each([
+    [["pobi,,javaji"]],
+    [["ㅁ,ㅁ,ㅁ,jun,,"]]
+  ])("공백 검사", async (inputs) => {
+    // given
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow("[ERROR]");
+  });
+
+
+
 });

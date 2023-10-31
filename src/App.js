@@ -5,6 +5,9 @@ class App {
   parsingInput(input, array) {
     const names = input.split(',');
     for (let name = 0; name < names.length; name++) {
+      if(names[name] === ' '){
+        throw new Error("[ERROR]");
+      }
       array.push(new Car(names[name]));
     }
   }
@@ -13,6 +16,14 @@ class App {
     if (/^\D+$/.test(input) 
         || Number(input) <= 0) {
       throw new Error("[ERROR]");
+    }
+  }
+
+  checkInput(cars){
+    for(let i=0; i<cars.leng; i++){
+      if(cars[i].name.length > 5){
+        throw new Error("[ERROR]")
+      }
     }
   }
 
@@ -44,6 +55,7 @@ class App {
     const CARS = [];
     const USERINPUT = await MissionUtils.Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
     this.parsingInput(USERINPUT, CARS);
+    this.checkInput(CARS);
 
     const ROUNDS = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?");
     this.checkRound(ROUNDS);
