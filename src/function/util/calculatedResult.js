@@ -1,4 +1,4 @@
-import { transformKeysValue } from "./transformKeyValue";
+import { transformKeysValue } from "../transformKeyValue";
 
 export const calculatedResult = (resultArr) => {
   const carCount = [];
