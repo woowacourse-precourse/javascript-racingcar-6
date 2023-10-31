@@ -1,6 +1,7 @@
-import { getAttempt, getParticipant } from './Game/Settings';
-import { progressGame } from './Game/Progress';
-import { terminateGame } from './Game/End';
+import { getAttempt } from './Game/getAttempt';
+import { getParticipant } from './Game/getParticipant';
+import { progressGame } from './Game/progressGame';
+import { terminateGame } from './Game/terminateGame';
 
 class App {
   async play() {
@@ -11,7 +12,7 @@ class App {
     // 게임 진행
     const participantsDistance = await progressGame(attempt, participants);
 
-    // 게임 종료
+    // 우승자 확인
     await terminateGame(participants, participantsDistance);
   }
 }

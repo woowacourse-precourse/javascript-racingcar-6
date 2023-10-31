@@ -1,28 +1,34 @@
-import { ERROR_MESSAGE, NUMBER } from './Constant/constant';
+import { NUMBER } from './Constant/NUMBER';
+import { ERROR_MESSAGE } from './Constant/ERROR_MESSAGE';
 
 /**
- * @param {*} participants : 진행 횟수 확인
- * 0보다 작거나 숫자가 아니면 ERROR
+ * ERROR
+ * - 0보다 작은 경우
+ * - 숫자가 아닌 경우
  */
-export const checkAttempt = async (attempt) => {
+export const verifyAttempt = async (attempt) => {
   if (!Number(attempt)) throw new Error(ERROR_MESSAGE.ERROR_NOT_NUMBER);
   if (Number(attempt) <= 0) throw new Error(ERROR_MESSAGE.ERROR_LESS_THAN_ZERO);
 };
 
 /**
- * @param {*} randomNumber : 참가자가 받는 값
- * 0~9사이 값이 아니거나 숫자가 아니면 ERROR
+ * ERROR
+ * - 0 ~ 9 범위를 벗어난 경우
+ * - 숫자가 아닌 경우
  */
-export const checkRandomNumber = async (randomNumber) => {
+export const verifyRandomNumber = async (randomNumber) => {
   if (!Number(randomNumber)) throw new Error(ERROR_MESSAGE.ERROR_NOT_NUMBER);
   if (Number(randomNumber) <= NUMBER.MIN || Number(randomNumber) > NUMBER.MAX) throw new Error(ERROR_MESSAGE.ERROR_OUT_OF_RANGE);
 };
 
 /**
- * @param {*} participants : 참가자 명단 확인
- * 이름이 5글자 초과, 빈 칸, 영어가 아닌 경우 ERROR
+ * ERROR
+ * - 이름이 1 ~ 5 글자가 아닌 경우
+ * - 빈 칸이 입력된 경우
+ * - 이름에 공백이 포함된 경우
+ * - 이름에 영어가 아닌 다른 문자가 입력된 경우
  */
-export const checkParticipants = async (participants) => {
+export const verifyParticipants = async (participants) => {
   const english = /^[a-zA-Z]*$/;
   for (let name of participants) {
     if (name.length !== name.trim().length) throw new Error(ERROR_MESSAGE.ERROR_NAME_HAVE_GAP);
@@ -30,3 +36,4 @@ export const checkParticipants = async (participants) => {
     if (!english.test(name)) throw new Error(ERROR_MESSAGE.ERROR_NAME_CONFIGURATION);
   }
 };
+

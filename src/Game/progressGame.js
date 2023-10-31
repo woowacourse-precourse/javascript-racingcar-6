@@ -1,15 +1,12 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import { MESSAGE, NUMBER } from "../Constant/constant";
-import { print } from "../Utils/Utils";
-import { checkRandomNumber } from "../Validates";
+import { NUMBER } from "../Constant/NUMBER";
+import { MESSAGE } from "../Constant/MESSAGE";
+import { print } from "../Utils/print";
+import { verifyRandomNumber } from "../verify";
 
 const { Random } = MissionUtils;
 const participantsDistance = {};
 
-/**
- * 참가자의 진행 여부를 판단하기위해 현재 참가자 순서를 보내줌
- * @param {*} participants : 참가자 명단
- */
 const changeParticipantsData = async (participants) => {
   let index = 0;
   while (index < participants.length) {
@@ -18,14 +15,9 @@ const changeParticipantsData = async (participants) => {
   }
 };
 
-/**
- * 각 참가자 진행여부를 판단하고 수정, 진행거리를 숫자로 보관해 우승자 비교시 사용
- * @param {*} participants : 참가자 명단
- * @param {*} index : 순서
- */
 const changeDistance = async (participants, index) => {
   const randomNumber = Random.pickNumberInRange(NUMBER.MIN, NUMBER.MAX);
-  await checkRandomNumber(randomNumber);
+  await verifyRandomNumber(randomNumber);
 
   const name = participants[index];
   if (randomNumber >= NUMBER.STANDARD) {
@@ -35,25 +27,14 @@ const changeDistance = async (participants, index) => {
   }
 };
 
-/**
- * 매 게임 진행마다 참가자 진행 결과를 출력
- * @param {*} participants : 참가자 명단
- */
+
 const printResult = async (participants) => {
   for (let i = 0; i < participants.length; i++) {
-    const result = `${participants[i]} : ${
-      participantsDistance[participants[i]][0]
-    }`;
+    const result = `${participants[i]} : ${participantsDistance[participants[i]][0]}`;
     print(result);
   }
 };
 
-/**
- * 실제 게임 진행 부분
- * @param {*} attempt : 총 실행 횟수
- * @param {*} participants : 참가자 명단
- * @returns 최종 참가자 거리를 반환
- */
 export const progressGame = async (attempt, participants) => {
   print(MESSAGE.RESULT);
   for (let i = 0; i < attempt; i++) {
