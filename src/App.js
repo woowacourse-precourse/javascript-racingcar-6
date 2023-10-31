@@ -45,6 +45,18 @@ function isCarNameValid(carNameArr) {
   }
 }
 
+function isRoundCountValid(roundCount) {
+  if (isNaN(roundCount)) {
+    throw new Error('[ERROR] 시도횟수는 숫자만 입력하세요.');
+  }
+  if (roundCount < 0) {
+    throw new Error('[ERROR] 0 이상의 숫자를 입력하세요.');
+  }
+  if (!Number.isInteger(roundCount)) {
+    throw new Error('[ERROR] 정수를 입력하세요.');
+  }
+}
+
 function getWinner(carArr) {
   let winners = [];
   let winnerPosition = 0;
@@ -65,6 +77,8 @@ class App {
     isCarNameValid(carNameArr);
 
     let roundCount = await this.getRoundCount();
+    console.log(roundCount);
+    isRoundCountValid(roundCount);
 
     let carArr = createCarArray(carNameArr);
 
@@ -103,6 +117,3 @@ class App {
 }
 
 export default App;
-
-const app = new App();
-await app.play();
