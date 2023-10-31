@@ -1,4 +1,5 @@
 import { Console, Random } from '@woowacourse/mission-utils';
+import Car from './Car.js';
 
 const ERROR_MESSAGE = '[ERROR]';
 const ERROR_MESSAGES = {
@@ -7,13 +8,6 @@ const ERROR_MESSAGES = {
   INVALID_NUMBER: `${ERROR_MESSAGE} 숫자가 잘못된 형식입니다.`,
   NO_INTEGER: `${ERROR_MESSAGE} 1 이상의 정수를 입력해주세요.`,
 };
-
-class Car {
-  constructor(name) {
-    this.name = name;
-    this.position = 0;
-  }
-}
 
 class App {
   async getUserInput() {
