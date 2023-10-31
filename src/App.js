@@ -1,3 +1,4 @@
+import { MissionUtils } from "@woowacourse/mission-utils";
 class Car {
   constructor(name) {
     this.name = name;
@@ -5,14 +6,14 @@ class Car {
   }
 
   move() {
-    const randomNum = Math.floor(Math.random() * 10);
+    const randomNum = MissionUtils.Random.pickNumberInRange(0, 9);
     if (randomNum >= 4) {
       this.position += 1;
     }
   }
 
   toString() {
-    return `${this.name} : ${"-".repeat(this.position)}`;
+    return `${this.name} : ${"-".repeat(this.position + 1)}`;
   }
 }
 
@@ -30,6 +31,7 @@ class RacingGame {
   playGame() {
     for (let i = 0; i < this.rounds; i++) {
       this.playRound();
+      this.cars.forEach((car) => MissionUtils.Console.print(car.toString()));
     }
   }
 
@@ -49,9 +51,10 @@ class App {
       const rounds = await this.getRounds();
       const game = new RacingGame(names, rounds);
       game.playGame();
-      console.log(game.getWinners());
+      MissionUtils.Console.print(game.getWinners());
     } catch (error) {
       console.error(`[ERROR] ${error.message}`);
+      throw error;
     }
   }
 
@@ -76,7 +79,7 @@ class App {
     return rounds;
   }
 
-  readLineAsync(message) {
+  async readLineAsync(message) {
     return new Promise((resolve) => {
       const readline = require("readline");
       const rl = readline.createInterface({
