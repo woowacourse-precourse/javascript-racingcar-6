@@ -11,7 +11,7 @@ class RoundResultView {
 
   #toCarLocationString({ name, location }) {
     const LOCATION_CHARACTER = "-";
-    const locationString = location * LOCATION_CHARACTER;
+    const locationString = LOCATION_CHARACTER.repeat(location);
     const carLocationString = `${name} : ${locationString}`;
 
     return carLocationString;
