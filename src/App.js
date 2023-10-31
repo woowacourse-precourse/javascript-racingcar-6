@@ -5,19 +5,11 @@ class App {
     Console.print(
       '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)'
     );
-
     const CAR = await Console.readLineAsync('');
     const CAR_LIST = CAR.split(',');
 
     this.validateContinuousComma(CAR);
-    const CAR_LIST = CAR.split(',');
     this.validateCarNameLength(CAR_LIST);
-
-    const SCORES = [];
-    const RACE = CAR_LIST.map((car) => {
-      SCORES.push(0);
-      return `${car} : `;
-    });
 
     Console.print('시도할 횟수는 몇 회인가요?');
     const COUNT = await Console.readLineAsync('');
