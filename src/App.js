@@ -44,8 +44,9 @@ class App {
       Console.print('');
     }
 
-    const winnerPrinter = new ReturnWinner(cars, progressList);
-    winnerPrinter.printWinners();
+    // const winnerPrinter = new ReturnWinner(cars, progressList);
+    // winnerPrinter.printWinners();
+    this.printWinners(cars, progressList);
   }
 
   printWinners = (cars, progressList) =>
