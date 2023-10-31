@@ -30,6 +30,46 @@
 
 ## 🗃️ 클래스 다이어그램
 
+```mermaid
+classDiagram
+    GrandPrix <|-- InputView
+    GrandPrix --|> OutputView
+    GrandPrix <|-- RacingCarGrid
+    GrandPrix --|> RacingCarGrid
+    
+    namespace Controller {
+        class GrandPrix {
+            #racingCarGrid : RacingCarGrid
+            #lapNumber : number
+            initialize() void
+            #race() void
+            #podium() void
+        }
+    }
+
+    namespace Model {
+        class RacingCarGrid {
+            #racingCarList : Object
+            setRacingGrid() void
+            getRacingGrid() Object
+            getPodium() string
+        }
+    }
+    
+    namespace View {
+        class InputView {
+            readRacingCarNames() string
+            readLapNumber() string
+        }
+        
+        class OutputView {
+            printLapResult() void
+            printRacingGrid(racingGrid: Object) void
+            printRaceWinner(winner: string) void
+        }
+    }
+```
+
 ## 🌊 플로우차트
 
 ```mermaid
