@@ -1,7 +1,7 @@
 export default class Car {
   #carName = "";
   #count = 0;
-  
+
   constructor(carName) {
     this.#carName = carName;
   }
@@ -14,4 +14,7 @@ export default class Car {
     this.#count += 1;
   }
 
+  getCount() {
+    return this.#count;
+  }
 }
