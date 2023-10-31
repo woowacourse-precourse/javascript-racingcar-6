@@ -10,10 +10,6 @@ class Car {
       this.position += 1;
     }
   }
-
-  carPosition() {
-    return `${this.name} : ${"-".repeat(this.position)}`;
-  }
 }
 
 class App {
@@ -74,7 +70,8 @@ class App {
     for (let count = 1; count <= COUNT_NUMBER; count++) {
       CARS.forEach((car) => {
         car.progress();
-        MissionUtils.Console.print(car.carPosition());
+
+        MissionUtils.Console.print(car.name + " : " + "-".repeat(car.position));
       });
       MissionUtils.Console.print("\n");
     }
