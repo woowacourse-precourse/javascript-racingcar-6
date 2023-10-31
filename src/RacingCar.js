@@ -7,8 +7,10 @@ class RacingCar {
     constructor() {
         this.app = new App();
         this.car = new Car();
+
         this.carNameList = [];
-        this.round = 0; // 시도 횟수   
+        this.round = 0;
+        this.winner = [];
     }
 
     async start() {
@@ -22,7 +24,7 @@ class RacingCar {
 
     async getInput() {
         const carName = await MissionUtils.Console.readLineAsync(INPUT_CAR_NAME);
-        const round = await MissionUtils.Console.readLineAsync(INPUT_ROUND); // 문자로 입력받음
+        const round = await MissionUtils.Console.readLineAsync(INPUT_ROUND);
 
         this.isValidRound(round);
         this.isValidCarName(carName);
@@ -39,7 +41,7 @@ class RacingCar {
 
         carNames.forEach(carName => {
             if (carName.length === 0 || carName.length > 5)
-                throw Error("[ERROR] 자동차 이름은 1자 이상, 5자 이하가 되야 합니다.");
+                throw new Error("[ERROR] 자동차 이름은 1자 이상, 5자 이하가 되야 합니다.");
             this.carNameList.push(new Car(carName));
         });
     }
@@ -59,12 +61,16 @@ class RacingCar {
             MissionUtils.Console.print(`${car.getName()} : ${car.getPosition()}`);
     }
 
-    printwinner() {
+    findTheWinner() {
         const maxPosition = Math.max(...this.carNameList.map(car => car.getPosition().length));
-        const winner = [];
         for (const car of this.carNameList)
-            if (car.getPosition().length === maxPosition) winner.push(car.getName());
-        MissionUtils.Console.print(`최종 우승자: ${winner.join(", ")}`);
+            if (car.getPosition().length === maxPosition) this.winner.push(car.getName());
+    
+    }
+
+    printwinner() {
+        this.findTheWinner();
+        MissionUtils.Console.print(`최종 우승자: ${this.winner.join(", ")}`);
     }
     
 }
