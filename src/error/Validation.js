@@ -20,7 +20,7 @@ export const checkCarNameSame = (input) => {
   }
 };
 export const checkTryNumber = (input) => {
-  if (isNaN(input)) {
-    throw new Error("[ERROR] 이동횟수가 숫자가 아닙니다");
+  if (!/^[1-9]\d*$/.test(input)) {
+    throw new Error("[ERROR] 이동횟수가 1~9까지 자연수가 아닙니다");
   }
 };
