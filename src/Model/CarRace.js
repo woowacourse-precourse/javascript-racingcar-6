@@ -18,10 +18,9 @@ class CarRace {
   }
 
   doRace() {
-    const raceResult = [];
-    for (let i = 0; i < this.#raceCount; i += 1) {
-      raceResult.push(this.#moveCars());
-    }
+    const raceResult = Array.from({ length: this.#raceCount }).map(() => {
+      return this.#moveCars();
+    });
     this.#finalResult = raceResult.at(-1);
     return raceResult;
   }
