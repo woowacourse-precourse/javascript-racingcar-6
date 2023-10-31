@@ -1,3 +1,5 @@
+import { Console } from '@woowacourse/mission-utils';
+
 const MESSAGE = {
   INPUT_TRY_COUNT: '시도할 횟수는 몇 회인가요?\n',
   INPUT_CAR_NAMES:
@@ -5,4 +7,14 @@ const MESSAGE = {
   OUTPUT_WINNER: winners => `${winners.join(', ')}가 최종 우승했습니다.`,
   OUTPUT_ERROR: '[ERROR] 자동차 이름은 5자 이하만 가능합니다.',
 };
-export default class View {}
+const inputCarNames = async () => {
+  const carNames = (await Console.readLineAsync(MESSAGE.INPUT_CAR_NAMES))
+    .split(',')
+    .map(carName => {
+      if (carName.length > 5) {
+        throw new Error(MESSAGE.OUTPUT_ERROR);
+      }
+      return carName;
+    });
+  return carNames;
+};
