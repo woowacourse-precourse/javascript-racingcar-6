@@ -1,6 +1,7 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import Car from './car.js';
 import RacingGame from "./race.js";
+import Victory from "./award.js";
 
 
 
@@ -32,6 +33,8 @@ class App {
       // MissionUtils.Console.print(cars.map(car => `${car.name} : ${car.position}`));
       MissionUtils.Console.print('\n');
     }
+    const victory = new Victory();
+    victory.compare(cars);
   }    
 }
 
