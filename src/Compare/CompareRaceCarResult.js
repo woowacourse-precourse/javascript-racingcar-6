@@ -1,5 +1,6 @@
 import CarRaceCondition from "../Condition/CarRaceCondition";
 import CarForwardRandomNumberGenerator from "../utils/CarForwardRandomNumberGenerator";
+import { STATIC_NUMBER } from "../Constant/constant";
 
 class CompareRaceCarResult {
   #raceCars;
@@ -25,7 +26,8 @@ class CompareRaceCarResult {
     this.#raceCars.map((raceCar) => {
       const randomNumber =
         CarForwardRandomNumberGenerator.RandomNumberGenerator();
-      if (randomNumber >= 4) raceCar.moveForward();
+      if (randomNumber >= STATIC_NUMBER.canMoveForwardCondition)
+        raceCar.moveForward();
     });
   }
 
