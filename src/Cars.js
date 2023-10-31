@@ -1,6 +1,6 @@
 export default class Cars {
+  obj = {};
   constructor(input) {
-    this.obj = {};
     input.split(",").forEach(v=>this.obj[v]= 0);
     this.len = input.split(",").length;
   }
