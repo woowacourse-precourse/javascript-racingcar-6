@@ -14,13 +14,19 @@ class Referee {
   }
 
   findWinners() {
-    const finalResult = this.#results[this.#results.length - 1];
-    const maxMoveCount = Math.max(...finalResult.values());
     const winners = [];
-    finalResult.forEach((moveCount, name) => {
-      if (maxMoveCount === moveCount) winners.push(name);
+    this.#finalResult.forEach((moveCount, name) => {
+      if (this.#maxMoveCount === moveCount) winners.push(name);
     });
     return winners;
+  }
+
+  get #finalResult() {
+    return this.#results[this.#results.length - 1];
+  }
+
+  get #maxMoveCount() {
+    return Math.max(...this.#finalResult.values());
   }
 }
 
