@@ -48,16 +48,12 @@ class InputManager {
     if (cars.find((car) => car.length > NAME_MAX_LENGTH) !== undefined) {
       throw Error(ERROR_MESSAGE.INCLUDE_MORE_THAN_FIVE_CHAR);
     }
-
-    return cars;
   }
 
   static #validateNotLessThanOneChar(cars) {
     if (cars.find((car) => car.length < NAME_MIN_LENGTH) !== undefined) {
       throw Error(ERROR_MESSAGE.INCLUDE_LESS_THEN_ONE_CHAR);
     }
-
-    return cars;
   }
 
   static #validateNotIncludeDuplicateNames(cars) {
