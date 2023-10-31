@@ -12,6 +12,7 @@
 
 // 자동차 이름 예외 처리
 const carNameInput = document.querySelector('#carName');
+const carName = [];
 
 function carNameCheckEvent() {
   const carName = carNameInput.value.split(",");
@@ -55,4 +56,5 @@ function carNameCheckEvent() {
     }
   }
 }
+
 
