@@ -1,5 +1,5 @@
-import REGEXS from '../constants/regexs';
-import { ERROR_MESSAGE } from '../constants/messages';
+import REGEXS from '../constants/regexs.js';
+import { ERROR_MESSAGE } from '../constants/messages.js';
 
 class ErrorHandler {
   static validateInput(inputStr) {

@@ -1,6 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
-import { INPUT_MESSAGE } from '../constants/messages';
-import ErrorHandler from './ErrorHandler';
+import { INPUT_MESSAGE } from '../constants/messages.js';
+import ErrorHandler from './ErrorHandler.js';
 
 class GameInputManager {
   constructor() {

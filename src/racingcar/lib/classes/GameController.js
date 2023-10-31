@@ -1,6 +1,6 @@
 import { Console, Random } from '@woowacourse/mission-utils';
-import { PRINT_MESSAGE } from '../constants/messages';
-import OPTIONS from '../constants/options';
+import { PRINT_MESSAGE } from '../constants/messages.js';
+import OPTIONS from '../constants/options.js';
 
 class GameController {
   constructor({ racingCars, playCount }) {

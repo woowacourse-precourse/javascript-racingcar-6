@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import GameInputManager from '../src/racingcar/lib/classes/GameInputManager';
+import GameInputManager from '../src/racingcar/lib/classes/GameInputManager.js';
 
 let inputManager;
 

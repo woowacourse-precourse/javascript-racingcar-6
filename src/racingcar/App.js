@@ -1,5 +1,5 @@
-import GameController from './lib/classes/GameController';
-import GameInputManager from './lib/classes/GameInputManager';
+import GameController from './lib/classes/GameController.js';
+import GameInputManager from './lib/classes/GameInputManager.js';
 
 class App {
   async play() {
