@@ -22,7 +22,7 @@ class Awards {
    * @param {[string, number][]} scoreBoard
    */
   #getHighestScore(scoreBoard) {
-    const [[_, winnerScore], ...rest] = scoreBoard;
+    const [[, winnerScore]] = scoreBoard;
     this.#highestScore = winnerScore;
   }
 
@@ -33,7 +33,7 @@ class Awards {
   #setWinners(scoreBoard) {
     this.winners = scoreBoard
       .filter(([, score]) => this.#highestScore === score)
-      .map(([name, _]) => name)
+      .map(([name]) => name)
       .join(', ');
   }
 }

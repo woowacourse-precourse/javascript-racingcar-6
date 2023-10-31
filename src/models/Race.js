@@ -5,9 +5,9 @@ import OPTIONS from '../constants/options.js';
 import Score from './Score.js';
 
 class Race {
-  #outputView;
-
   #fuel;
+
+  #outputView;
 
   #score = new Score();
 
@@ -28,7 +28,7 @@ class Race {
       laps--;
     }
 
-    return this.#score.sortBoard(scoreBoard);
+    return Score.sortBoard(scoreBoard);
   }
 
   /**

@@ -1,52 +1,62 @@
-import InputValidator from '../src/models/InputValidator.js';
+import CarNamesValidator from '../src/models/CarNamesValidator';
 import { ERROR_MESSAGES } from '../src/constants/messages.js';
 
 describe('자동차 이름 유효성 테스트', () => {
-  it('자동차 이름이 5자 초과', () => {
-    const carNames = ['Tesla', 'Hyundai'];
+  const carNamesValidator = new CarNamesValidator();
+
+  test('자동차 이름이 5자 초과', () => {
+    const carNames = ['pobi', 'javaji'];
 
     expect(() => {
-      InputValidator.carNames(carNames);
+      carNamesValidator.isValid(carNames);
     }).toThrow(ERROR_MESSAGES.exceedName);
   });
 
-  it('자동차 이름을 의도적으로 입력하지 않음', () => {
+  test('자동차 이름을 의도적으로 입력하지 않음', () => {
     const carNames = ['Audi', ''];
 
     expect(() => {
-      InputValidator.carNames(carNames);
+      carNamesValidator.isValid(carNames);
     }).toThrow(ERROR_MESSAGES.emptyName);
   });
 
-  it('글자 사이의 의도된 공백', () => {
+  test('글자 사이의 의도된 공백', () => {
     const carNames = ['be    nz'];
 
     expect(() => {
-      InputValidator.carNames(carNames);
+      carNamesValidator.isValid(carNames);
     }).toThrow(ERROR_MESSAGES.exceedName);
   });
 
-  it('특수문자 사용', () => {
+  test('특수문자 사용', () => {
     const carNames = ['K!A'];
 
     expect(() => {
-      InputValidator.carNames(carNames);
+      carNamesValidator.isValid(carNames);
     }).toThrow(ERROR_MESSAGES.noSpecialChar);
   });
 
-  it('중복된 자동차 이름 입력', () => {
+  test('중복된 자동차 이름 입력', () => {
     const carNames = ['volvo', 'volvo'];
 
     expect(() => {
-      InputValidator.carNames(carNames);
+      carNamesValidator.isValid(carNames);
     }).toThrow(ERROR_MESSAGES.duplicatedName);
   });
 
-  it('다수의 유효한 자동차 이름 입력', () => {
+  test('하나의 자동차 이름 입력', () => {
+    const carNames = ['SM7'];
+
+    expect(() => {
+      carNamesValidator.isValid(carNames);
+    }).toThrow(ERROR_MESSAGES.minNameCount);
+  });
+
+  test('다수의 유효한 자동차 이름 입력', () => {
     const carNames = ['GV70', 'G80', 'G90'];
 
     expect(() => {
-      InputValidator.carNames(carNames);
+      carNamesValidator.isValid(carNames);
     }).not.toThrow();
   });
 });

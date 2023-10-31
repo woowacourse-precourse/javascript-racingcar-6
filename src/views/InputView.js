@@ -1,27 +1,41 @@
 import { Console } from '@woowacourse/mission-utils';
 import { GUIDE_MESSAGES } from '../constants/messages.js';
-import InputValidator from '../models/InputValidator.js';
 import SYMBOLS from '../constants/symbols.js';
+import CarNamesValidator from '../models/CarNamesValidator.js';
+import LapsValidator from '../models/LapsValidator.js';
+import removeWhiteSpace from '../utils/removeWhiteSpace.js';
 
 class InputView {
-  static async getCarNames() {
-    const { comma } = SYMBOLS;
-    const carNames = (await Console.readLineAsync(GUIDE_MESSAGES.carNames))
-      .split(comma)
-      .map(carName => carName.trim());
+  constructor() {
+    this.carNamesValidator = new CarNamesValidator();
+    this.lapsValidator = new LapsValidator();
+  }
 
-    InputValidator.carNames(carNames);
+  /**
+   * 경주에 참가할 자동차 이름들을 input으로 받는 메소드
+   * @returns {string[]}
+   */
+  async getCarNames() {
+    const { comma } = SYMBOLS;
+    const input = await Console.readLineAsync(GUIDE_MESSAGES.carNames);
+    const carNames = input.split(comma).map(carName => carName.trim());
+
+    this.carNamesValidator.isValid(carNames);
 
     return carNames;
   }
 
-  // TODO: 입력 값이 숫자인 지에 대한 유효성 검증 필요. 정규표현식 추가해야한다.
-  static async getLaps() {
-    const laps = await Console.readLineAsync(GUIDE_MESSAGES.laps);
+  /**
+   * 자동차 경주를 시도할 횟수를 input으로 받는 메소드
+   * @returns {number}
+   */
+  async getLaps() {
+    const input = await Console.readLineAsync(GUIDE_MESSAGES.laps);
+    const laps = removeWhiteSpace(input);
 
-    InputValidator.laps(laps);
+    this.lapsValidator.isValid(laps);
 
-    return laps;
+    return parseInt(laps, 10);
   }
 }
 

@@ -2,6 +2,7 @@ import { GUIDE_MESSAGES } from '../constants/messages.js';
 import OPTIONS from '../constants/options.js';
 import SYMBOLS from '../constants/symbols.js';
 import OutputView from '../views/OutputView.js';
+
 class Score {
   #outputView = OutputView;
 
@@ -32,7 +33,7 @@ class Score {
    * @param {[string, number][]} scoreBoard
    * @returns {[string, number][]}
    */
-  sortBoard(scoreBoard) {
+  static sortBoard(scoreBoard) {
     return scoreBoard.sort((first, second) => second[1] - first[1]);
   }
 }

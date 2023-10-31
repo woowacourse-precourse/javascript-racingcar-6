@@ -1,6 +1,6 @@
 const REGEXS = Object.freeze({
-  rSpecialChar: /[!@#$%^&*()_+{}[\]<>.?~\\=]/g,
-  rWhiteSpace: /\s/,
+  rWhiteSpace: /\s/g,
+  rPositiveInt: /^\d+$/,
 });
 
 export default REGEXS;

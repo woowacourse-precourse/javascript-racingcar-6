@@ -8,11 +8,11 @@ import Awards from '../models/Awards.js';
 class GameController {
   #outputView = OutputView;
 
-  #inputView = InputView;
+  #inputView = new InputView();
 
-  #race;
+  #race = new Race();
 
-  #awards;
+  #awards = new Awards();
 
   #winners;
 
@@ -22,8 +22,6 @@ class GameController {
    * @param {number} laps 시도할 횟수
    */
   constructor(scoreBoard, laps) {
-    this.#race = new Race();
-    this.#awards = new Awards();
     this.scoreBoard = scoreBoard;
     this.laps = laps;
   }
