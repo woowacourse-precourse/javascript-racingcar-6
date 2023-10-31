@@ -1,6 +1,6 @@
 import { InputService } from './Input.service.js';
 import { OutputService } from './Output.service.js';
-import { ValidationController } from '../validation/validation.controller.js';
+import { ValidationController } from '../validation/Validation.controller.js';
 
 export class IOController {
   #inputService;
