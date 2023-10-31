@@ -1,7 +1,7 @@
 import App from '../src/App.js';
 import { MissionUtils } from '@woowacourse/mission-utils';
 
-const mockQuestions = inputs => {
+const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
 
   MissionUtils.Console.readLineAsync.mockImplementation(() => {
@@ -10,7 +10,7 @@ const mockQuestions = inputs => {
   });
 };
 
-const mockRandoms = numbers => {
+const mockRandoms = (numbers) => {
   MissionUtils.Random.pickNumberInRange = jest.fn();
   numbers.reduce((acc, number) => {
     return acc.mockReturnValueOnce(number);
@@ -47,13 +47,14 @@ describe('자동차 경주 게임', () => {
     await app.play();
 
     // then
-    outputs.forEach(output => {
+    outputs.forEach((output) => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
   });
 
   test('자동차 이름 입력 기능 확인', async () => {
     // given
+    const PROMPT = '경주할 자동차 이름을 입력하세요.'
     const inputs = ['pobi,woni'];
 
     mockQuestions(inputs);
@@ -63,13 +64,12 @@ describe('자동차 경주 게임', () => {
     await app.getCarNames();
 
     // then
-    expect(MissionUtils.Console.readLineAsync).toHaveBeenCalledWith(
-      expect.stringContaining('경주할 자동차 이름을 입력하세요.'),
-    );
+    expect(MissionUtils.Console.readLineAsync).toHaveBeenCalledWith(expect.stringContaining(PROMPT));
   });
 
   test('라운드 횟수 입력 기능 확인', async () => {
     // given
+    const PROMPT = '시도할 횟수는 몇 회인가요?';
     const inputs = ['2'];
 
     mockQuestions(inputs);
@@ -79,9 +79,25 @@ describe('자동차 경주 게임', () => {
     await app.getNumberOfRounds();
 
     // then
-    expect(MissionUtils.Console.readLineAsync).toHaveBeenCalledWith(
-      expect.stringContaining('시도할 횟수는 몇 회인가요?'),
-    );
+    expect(MissionUtils.Console.readLineAsync).toHaveBeenCalledWith(expect.stringContaining(PROMPT));
+  });
+
+  test('각 자동차별 Car 객체 생성 확인', () => {
+    // given
+    const PLAYER_NAMES = ['pobi', 'woni', 'woowa'];
+    const NUMBER_OF_PLAYERS = PLAYER_NAMES.length;
+    const STARTING_MOVES = 0;
+
+    // when
+    const app = new App();
+    const players = app.createPlayers(PLAYER_NAMES);
+
+    // then
+    expect(players.length).toBe(NUMBER_OF_PLAYERS);
+    players.forEach((player, i) => {
+      expect(player.name).toBe(PLAYER_NAMES[i]);
+      expect(player.moves).toBe(STARTING_MOVES);
+    });
   });
 
   test('입력한 횟수만큼 라운드 결과 출력', async () => {
@@ -100,9 +116,29 @@ describe('자동차 경주 게임', () => {
     expect(logSpy.mock.calls).toHaveLength(ROUNDS);
   });
 
-  test.each([[['pobi,javaji']], [['pobi']], [['pobi,']], [['pobi,pobi,woni']]])(
-    '이름에 대한 예외 처리',
-    async inputs => {
+  test('우승자 추출', () => {
+    // given
+    const inputs = [
+      [{ name: 'pobi', moves: 5 }, { name: 'woni', moves: 2 }, { name: 'woowa', moves: 2 }],
+      [{ name: 'pobi', moves: 5 }, { name: 'woni', moves: 5 }, { name: 'woowa', moves: 5 }]
+    ];
+    const outputs = ['pobi', 'pobi, woni, woowa'];
+
+    // when
+    const app = new App();
+
+    // then
+    inputs.forEach((input, i) => {
+      expect(app.getWinner(input)).toBe(outputs[i]);
+    });
+  });
+
+  test.each([
+    [['pobi,javaji']],
+    [['pobi']],
+    [['pobi,']],
+    [['pobi,pobi,woni']]
+  ])('이름에 대한 예외 처리', async (inputs) => {
       // given
       mockQuestions(inputs);
 
@@ -113,4 +149,19 @@ describe('자동차 경주 게임', () => {
       await expect(app.play()).rejects.toThrow('[ERROR]');
     },
   );
+
+  test.each([
+    [['abc']],
+    [['4.5']],
+    [['']]
+  ])('라운드 횟수에 대한 예외 처리', async (inputs) => {
+    // given
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.getNumberOfRounds()).rejects.toThrow('[ERROR]');
+  });
 });
