@@ -4,6 +4,7 @@
   cars : string[]
   carsNum : number
   carsProgress : number[]
+  tryNum : number
 ```
 
 <hr>
@@ -66,6 +67,9 @@ src
     logs.js
     constants.js
   App.js
+  index.js
+  util.js
+  Validator.js
 ```
 
 <hr>
