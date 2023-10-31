@@ -29,7 +29,7 @@ const Validator = {
   },
 
   validateRounds: (round) => {
-    validateEmpty(round);
+    validateEmptyRound(round);
     validateNumeric(round);
     validateInteger(round);
     validateCorrectNumber(round);
@@ -43,15 +43,21 @@ const validateNameCounts = (names) => {
 }
 
 const validateName = (name) => {
-  validateEmpty(name);
+  validateEmptyName(name);
   validateConatinsNumber(name);
   validateInvalidCharacter(name);
   validateLength(name);
 }
 
-const validateEmpty = (string) => {
+const validateEmptyName = (string) => {
   if (isEmpty(string)) {
     throw NAME_ERROR_MESSAGE.EMPTY_NAME;
+  }
+}
+
+const validateEmptyRound = (string) => {
+  if (isEmpty(string)) {
+    throw ROUND_ERROR_MESSAGE.EMPTY_VALUE;
   }
 }
 
