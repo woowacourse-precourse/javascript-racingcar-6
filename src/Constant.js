@@ -14,4 +14,11 @@ const ERROR_MESSAGE = {
   small: '[ERROR] 1 미만의 숫자입니다.',
 };
 
-export { INPUT_MESSAGE, ERROR_MESSAGE };
+const RESULT_STATUS = {
+  enter: '',
+  progress: '실행 결과',
+  sign: '-',
+  winner: '최종 우승자 :',
+};
+
+export { INPUT_MESSAGE, ERROR_MESSAGE, RESULT_STATUS };
