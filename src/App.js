@@ -15,6 +15,7 @@ class App {
     this.checkDupliCar(splitInputCar);
 
     this.tryNum = await this.numInput();
+    this.checkDupliCar(splitInputCar);
     
     this.racingCarList(splitInputCar);
     this.game();
