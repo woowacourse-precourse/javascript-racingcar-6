@@ -25,16 +25,21 @@ class RacingGame {
     });
   }
 
-  /** 가장 멀리간 position값 찾기 함수 */
+  /**
+   * 가장 멀리간 position값 찾기 함수
+   * @returns {number} 가장 멀리간 position 값
+   */
   findMaxPosition() {
     return this.racingCar.reduce((acc, cur) => {
       return Math.max(acc, cur.carPosition);
     }, 0);
   }
 
-  /** 레이싱 승자 찾기 함수 */
+  /**
+   * 레이싱 승자 찾기 함수
+   * @returns {string} 레이싱 승자
+   */
   winner() {
-    /** @type {number} 가장 멀리간 position 값 */
     const maxPosition = this.findMaxPosition();
 
     /** @type {string} 레이싱 승자 (,로 연결한 문자열) */
