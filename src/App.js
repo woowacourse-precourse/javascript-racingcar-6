@@ -1,16 +1,31 @@
-import { MissionUtils } from '@woowacourse/mission-utils';
+import {MissionUtils} from '@woowacourse/mission-utils';
 
 class App {
   constructor() {
-    this.randomNumbers = this.generateRandomNumbers();
+    this.randomNumber = this.generateRandomNumbers();
   }
 
   generateRandomNumbers() {
-    const NUMBERS = [];
-    const NUMBER = MissionUtils.Random.pickNumberInRange(0, 9);
-    // if ( number >= 4 이면 전진하는 함수 호출) {
-    //
-    // }
+    return MissionUtils.Random.pickNumberInRange(0, 9);
+  }
+
+  moveForward() {
+
+  }
+
+  stayInPlace() {
+
+  }
+
+  decideMotion() {
+    if (this.randomNumber >= 4) {
+      this.moveForward();
+      console.log(this.randomNumber+'++');
+    }
+    else {
+      this.stayInPlace();
+      console.log(this.randomNumber+'--');
+    }
   }
 
   async play() {
@@ -25,8 +40,9 @@ class App {
       throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
     }
 
-    MissionUtils.Console.print("실행 결과");
-    MissionUtils.Console.print(this.generateRandomNumbers());
+    MissionUtils.Console.print("최종 우승자");
+    MissionUtils.Console.print(this.randomNumber);
+    MissionUtils.Console.print(this.decideMotion());
   }
 }
 
