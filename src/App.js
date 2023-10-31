@@ -28,8 +28,12 @@ class Controll {
       throw new Error("[ERROR] 시도할 횟수는 숫자로만 입력해주세요!")
     }
   }
-  carNameValidate() {
+  makePlayerObject() {
     for (let i = 0; i < this.carNames.length; i++) {
+      let player = new Object();
+      player.name = this.carNames[i];
+      player.score = 0;
+      this.players.push(player);
     }
   }
   checkGoOrStop(carScoreIndex) {
@@ -64,11 +68,13 @@ class Controll {
 class App {
   constructor() {
     this.controll = new Controll();
+    this.validate = new Validate();
   }
   async play() {
     try {
       this.controll.carNames = await this.controll.input("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
       this.controll.carNames = this.controll.carNames.split(',');
+      this.controll.makePlayerObject();
       this.controll.tryNumber = Number(await this.controll.input("시도할 횟수는 몇 회인가요?\n"));
       this.validate.carName(this.controll.carNames);
       this.validate.tryNumber(this.controll.tryNumber);
