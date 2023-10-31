@@ -60,4 +60,8 @@ class RacingCars {
     const car = new RacingCar(carName);
     this.#cars.push(car);
   }
+
+  moveAllCars() {
+    this.#cars.forEach((car) => car.move());
+  }
 }
