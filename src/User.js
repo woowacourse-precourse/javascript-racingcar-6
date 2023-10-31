@@ -22,6 +22,7 @@ export default class User {
     );
 
     if (Number.isNaN(Number(input))) throw new Error(MESSAGE.ERROR_WRONG_INPUT);
+    if (Number(input) <= 0) throw new Error(MESSAGE.ERROR_WRONG_INPUT);
 
     return Number(input);
   }
