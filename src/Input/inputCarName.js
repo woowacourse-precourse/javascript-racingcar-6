@@ -1,16 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import GameMessage from "../Message/gameMessage.js";
 
-async function InputCarName() {
-  const carInput = await MissionUtils.Console.readLineAsync(GameMessage.INPUT_CAR_NAME);
-
-  if (checkCarNameEmpty(carInput) === false) {
-    return await checkCarNames(carInput);
-  }
-
-  return false;
-}
-
 function checkCarNameEmpty(carNames) {
   if (carNames.length === 0) {
     throw new Error(GameMessage.ERROR.CAR_NOT_INPUTED);
@@ -18,19 +8,13 @@ function checkCarNameEmpty(carNames) {
   return false;
 }
 
-function divideCarNames(carNames) {
-  if (carNames.includes(",")) {
-    return carNames.split(",");
-  }
+async function checkCarNames(carNames) {
+  const carList = carNames.split(",").map((name) => name.trim());
 
-  return [carNames];
-}
-
-function checkCarNames(carNames) {
-  const carList = divideCarNames(carNames);
-  carList.forEach((element) => {
+  await carList.forEach((element) => {
     if (element.length > 5 || element.length <= 0) {
       throw new Error(GameMessage.ERROR.CAR_NAME_INVALID);
+      //throw new Error(element);
     }
   });
 
@@ -40,6 +24,16 @@ function checkCarNames(carNames) {
   }
 
   return carList;
+}
+
+async function InputCarName() {
+  const carInput = await MissionUtils.Console.readLineAsync(GameMessage.INPUT_CAR_NAME);
+
+  if (checkCarNameEmpty(carInput) === false) {
+    return await checkCarNames(carInput);
+  }
+
+  return false;
 }
 
 export default InputCarName;
