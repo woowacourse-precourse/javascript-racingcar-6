@@ -1,20 +1,20 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 
-const PrintResults = (user, racingCar) => {
+const PrintResults = (user, advanceByRound) => {
   for (const CAR of user) {
-    if (!racingCar.has(CAR)) racingCar.set(CAR, '');
+    if (!advanceByRound.has(CAR)) advanceByRound.set(CAR, '');
 
     const RANDOM_NUMBER = MissionUtils.Random.pickNumberInRange(0, 9);
 
     if (RANDOM_NUMBER >= 4) {
-      racingCar.set(CAR, racingCar.get(CAR) + '-');
+      advanceByRound.set(CAR, advanceByRound.get(CAR) + '-');
     }
 
-    MissionUtils.Console.print(`${CAR} : ${racingCar.get(CAR)}`);
+    MissionUtils.Console.print(`${CAR} : ${advanceByRound.get(CAR)}`);
   }
   MissionUtils.Console.print('');
 
-  return racingCar;
+  return advanceByRound;
 };
 
 export default PrintResults;
