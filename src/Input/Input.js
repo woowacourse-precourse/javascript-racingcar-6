@@ -13,6 +13,15 @@ const Input = {
       throw new Error(error);
     }
   },
+
+  async readInputRaceCarNumberOfAttempts(callback) {
+    try {
+      const input = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+      callback(input);
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
 };
 
 export default Input;

@@ -5,6 +5,13 @@ class CarRaceGameController {
   async InputRaceCarName() {
     await Input.readInputRaceCarName((input) => {
       Console.print(input);
+      this.InputRaceCarNumberOfAttempts();
+    });
+  }
+
+  async InputRaceCarNumberOfAttempts() {
+    await Input.readInputRaceCarNumberOfAttempts((input) => {
+      Console.print(input);
     });
   }
 }
