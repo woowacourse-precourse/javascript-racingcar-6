@@ -137,18 +137,42 @@ describe('Computer 클래스 테스트', () => {
 
   test('judgeWinner 메서드 테스트', () => {
     const computer = new Computer();
-    const logspy = getLogSpy();
-    const testNumber = [4,2,5,7,7];
+    const logSpy = getLogSpy();
+    const testNumber = [4, 2, 5, 7, 7];
 
     computer.pushCarList('pobi,john,jay,mike,aaaaa');
 
     for (let i = 0; i < 5; i += 1) {
-      for (let j = 0; j < testNumber[i]; j+= 1) {
+      for (let j = 0; j < testNumber[i]; j += 1) {
         computer.carList[i].goingCount = true;
       }
     }
 
     computer.judgeWinner();
-    expect(logspy).toHaveBeenNthCalledWith(1, '최종 우승자 : mike, aaaaa');
-  })
+    expect(logSpy).toHaveBeenNthCalledWith(1, '최종 우승자 : mike, aaaaa');
+  });
+
+  test('finish 메서드 테스트', () => {
+    const computer = new Computer();
+    const logSpy = getLogSpy();
+    const testNumbers = [2, 4, 5, 1, 0, 8, 9, 9, 1];
+    const testPrint = ['pobi : ', 'woni : -', 'jun : -', 'pobi : ', 'woni : -', 'jun : --', 'pobi : -', 'woni : --', 'jun : --'];
+
+    mockRandom(testNumbers);
+
+    computer.pushCarList('pobi,woni,jun');
+    computer.round = 3;
+
+    computer.finish();
+
+    expect(logSpy).toHaveBeenNthCalledWith(1, '');
+    expect(logSpy).toHaveBeenNthCalledWith(2, '실행 결과');
+    for (let i = 0; i < 3; i += 1) expect(logSpy).toHaveBeenNthCalledWith(i + 3, testPrint[i]);
+    expect(logSpy).toHaveBeenNthCalledWith(6, '');
+    for (let i = 3; i < 6; i += 1) expect(logSpy).toHaveBeenNthCalledWith(i + 4, testPrint[i]);
+    expect(logSpy).toHaveBeenNthCalledWith(10, '');
+    for (let i = 6; i < 9; i += 1) expect(logSpy).toHaveBeenNthCalledWith(i + 5, testPrint[i]);
+    expect(logSpy).toHaveBeenNthCalledWith(14, '');
+    expect(logSpy).toHaveBeenNthCalledWith(15, '최종 우승자 : woni, jun');
+  });
 });
