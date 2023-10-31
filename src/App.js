@@ -13,6 +13,7 @@ class App {
   async play() {
     const answer = await Console.readLineAsync(MESSAGE.start);
     this.cars = answer.split(',');
+
     if (this.isCarListValid()) {
       const playTimes = await Console.readLineAsync(MESSAGE.roundsToPlay);
       this.playTimes = playTimes;
@@ -59,11 +60,14 @@ class App {
 
   StartRacing() {
     let count = 0;
+
     this.racingCars = this.cars.reduce((acc, cur) => {
       acc[cur] = '';
       return acc;
     }, {});
+
     Console.print(MESSAGE.result);
+
     while (count < this.playTimes) {
       this.cars.map(car => {
         if (this.CanMoveForward()) {
@@ -74,11 +78,13 @@ class App {
       Console.print('\n');
       count += 1;
     }
+
     this.WhoIsWinner();
   }
 
   CanMoveForward() {
     this.randomNumber = Random.pickNumberInRange(0, 9);
+
     if (this.randomNumber >= 4) {
       return true;
     }
@@ -91,6 +97,7 @@ class App {
 
     let maxNumber = 0;
     let winner = '';
+
     scores.forEach((score, index) => {
       if (score.length > maxNumber) {
         winner = cars[index];
@@ -99,6 +106,7 @@ class App {
         winner += `,${cars[index]}`;
       }
     });
+
     Console.print(`${MESSAGE.winner} ${winner}`);
   }
 }
