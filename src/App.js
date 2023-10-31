@@ -1,4 +1,4 @@
-import { Random, Console } from '@woowacourse/mission-utils';
+import { Console } from '@woowacourse/mission-utils';
 import {
   INPUT_MESSAGES,
   OUTPUT_MESSAGES,
@@ -42,7 +42,6 @@ class App {
 
   calculateFinalWinner = (cars) => {
     const maxStep = Math.max(...cars.map((car) => car.step));
-
     return cars.filter((car) => car.step === maxStep);
   };
 
@@ -57,13 +56,15 @@ class App {
   printOneRacingResult = (cars) => {
     cars.forEach((car) => {
       car.makeStepForwardOrStop();
-      Console.print(car.name + ' : ' + RESULT_LETTER.repeat(car.step));
+      Console.print(`${car.name} : ${RESULT_LETTER.repeat(car.step)}`);
     });
   };
 
   printFinalWinner = (winners) => {
     Console.print(
-      '최종 우승자 : ' + winners.map((winner) => winner.name).join()
+      `${OUTPUT_MESSAGES.winner} : ${winners
+        .map((winner) => winner.name)
+        .join()}`
     );
   };
 

@@ -19,7 +19,7 @@ export const validateCarNameLength = (input) => {
 };
 
 export const validateGameCountType = (input) => {
-  if (isNaN(input)) {
+  if (Number.isNaN(Number(input))) {
     throw new Error(ERRORS.gameCount.type);
   }
 };
