@@ -1,6 +1,6 @@
 import { isNameLengthUnderFive } from "./utils/validation.js";
 import { Console } from "@woowacourse/mission-utils";
-import InputHandler from "./utils/inputHandler.js";
+import { getCarNamesAndCheck, getRoundAndCheck } from "./utils/inputHandler.js";
 import GameController from "./utils/GameController.js";
 import { GAME_MESSAGE } from "./constants/message.js";
 
@@ -11,16 +11,15 @@ class App {
   }
 
   async play() {
-    const inputHandler = new InputHandler();
     const gameController = new GameController();
 
-    this.carArr = await inputHandler.getCarNamesAndCheck();
+    this.carArr = await getCarNamesAndCheck();
     this.carArr.forEach((car) => {
       isNameLengthUnderFive(car);
     });
     gameController.makeCarsObjWithNum(this.carArr);
 
-    this.round = await inputHandler.getRoundAndCheck();
+    this.round = await getRoundAndCheck();
     gameController.playAllRounds(this.round, this.carArr);
 
     const winnersArr = gameController.selectWinner(this.carArr);

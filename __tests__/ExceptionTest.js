@@ -1,6 +1,15 @@
-import { mockQuestions } from "../src/testUtils/testUtil.js";
 import App from "../src/App.js";
 import { ERROR_MESSAGE } from "../src/constants/message.js";
+import { MissionUtils } from "@woowacourse/mission-utils";
+
+const mockQuestions = (inputs) => {
+  MissionUtils.Console.readLineAsync = jest.fn();
+
+  MissionUtils.Console.readLineAsync.mockImplementation(() => {
+    const input = inputs.shift();
+    return Promise.resolve(input);
+  });
+};
 
 describe("이름 예외 테스트", () => {
   test("이름이 빈값일 때 예외 처리", async () => {
@@ -44,9 +53,9 @@ describe("이름 예외 테스트", () => {
       const app = new App();
 
       await expect(app.play()).rejects.toThrow(
-        ERROR_MESSAGE.INVALID_NAME_LENGTH
+        ERROR_MESSAGE.INVALID_NAME_LENGTH,
       );
-    }
+    },
   );
 
   test.each([[["pobi,pobi"]], [["pobi,rin,pobi,jun"]]])(
@@ -57,7 +66,7 @@ describe("이름 예외 테스트", () => {
       const app = new App();
 
       await expect(app.play()).rejects.toThrow(ERROR_MESSAGE.HAVE_SAME_NAME);
-    }
+    },
   );
 });
 
@@ -87,8 +96,8 @@ describe("라운드 예외 테스트", () => {
       const app = new App();
 
       await expect(app.play()).rejects.toThrow(
-        ERROR_MESSAGE.INVALID_ROUND_RANGE
+        ERROR_MESSAGE.INVALID_ROUND_RANGE,
       );
-    }
+    },
   );
 });
