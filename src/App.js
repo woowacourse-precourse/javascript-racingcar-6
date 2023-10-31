@@ -37,15 +37,20 @@ class App {
     this.gameCount = playCountInput;
   }
   async gameStart() {
-    // 3. 자동차 이동
-    for (const car of this.carList) {
-      await car.move();
+    while(this.gameCount > 0){
+      // 3. 자동차 이동
+      for (const car of this.carList) {
+        await car.move();
+      }
+      
+      // 4. 횟수 별 결과 출력
+      for (const car of this.carList) {
+        Console.print(`${car.getName()} : ${'-'.repeat(car.getMovingLength())}`);
+      }
+      Console.print('');
+      this.gameCount--;
     }
     
-    // 4. 횟수 별 결과 출력
-    for (const car of this.carList) {
-      Console.print(`${car.getName()} : ${'-'.repeat(car.getMovingLength())}`);
-    }
   }
   isValidCarName(carName){
     // 이름에 없는 경우 ex) ,,tom,elice
