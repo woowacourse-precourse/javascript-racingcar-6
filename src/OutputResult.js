@@ -18,6 +18,7 @@ export const winnerResult = function printWinner(winner) {
 	const winnerNumber = winner.length;
 	if (winnerNumber > 1) {
 		Console.print(`최종 우승자 : ${winner.join(', ')}`);
+	} else {
+		Console.print(`최종 우승자 : ${winner[0]}`);
 	}
-	Console.print(`최종 우승자 : ${winner[0]}`);
 };

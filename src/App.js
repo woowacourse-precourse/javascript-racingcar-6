@@ -18,10 +18,21 @@ class App {
 		}
 		// console.log('ㅎㅇ', forwardCount);
 		// console.log('result', carList);
-		const winner = this.findWinner(carList);
-		winnerResult();
+		const winner = this.findWinner(carList, forwardCount);
+		console.log(winner);
+		winnerResult(winner);
 	}
-	findWinner(carList) {}
+	findWinner(carList, forwardCount) {
+		const winnerList = [];
+		const MAXCOUNT = Math.max(...forwardCount);
+		forwardCount.forEach((count, idx) => {
+			if (count === MAXCOUNT) {
+				const winnerCarName = carList[idx].substr(0, carList[idx].indexOf(' '));
+				winnerList.push(winnerCarName);
+			}
+		});
+		return winnerList;
+	}
 }
 
 export default App;
