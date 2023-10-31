@@ -1,4 +1,4 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Random,Console } from "@woowacourse/mission-utils";
 
 class App {
   async play() {
@@ -30,13 +30,7 @@ class App {
 // 레이싱 시작 함수
 function playRacing(playRound, carProgress, carNameArray) {
   for (let round = 0; round < playRound; round++) {
-    for (let i = 0; i < carProgress.length; i++) {
-      const value = randomValue();
-      if (value >= 4) {
-        carProgress[i]++;
-      }
-    }
-
+    tryForward(carProgress);
     printResults(carNameArray, carProgress);
   }
 
@@ -48,8 +42,17 @@ function playRacing(playRound, carProgress, carNameArray) {
   return carProgress;
 }
 
+function tryForward(carProgress) {
+  for (let i = 0; i < carProgress.length; i++) {
+    const value = randomValue();
+    if (value >= 4) {
+      carProgress[i]++;
+    }
+  }
+}
+
 function randomValue() {
-  return Math.floor(Math.random() * 10);
+  return Random.pickNumberInRange(0,9);
 }
 
 function printResults(names, progress) {
@@ -57,6 +60,7 @@ function printResults(names, progress) {
     let progressString = "-".repeat(progress[i]);
     Console.print(`${names[i]} : ${progressString}`);
   }
+  Console.print("\n");
 }
 
 function finalWinner(name, progress) {
@@ -76,8 +80,8 @@ function printWinner(winners) {
   const maxProgress = winners[0].progress;
   const result = winners.filter((winner) => winner.progress === maxProgress);
   const resultString = result.map((winner) => `${winner.name}`).join(", ");
-  Console.print(`최종 우승자:${resultString}`);
+  Console.print(`최종 우승자 : ${resultString}`);
 }
 
-export { playRacing, finalWinner,printWinner };
+export { playRacing, finalWinner,printWinner,printResults,tryForward };
 export default App;
