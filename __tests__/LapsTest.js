@@ -1,5 +1,6 @@
 import { describe } from 'node:test';
 import InputValidator from '../src/models/InputValidator';
+import { ERROR_MESSAGE } from '../src/constants';
 
 describe('시도 횟수 유효성 테스트', () => {
   it('시도 횟수가 0보다 작은 경우', () => {
@@ -7,7 +8,7 @@ describe('시도 횟수 유효성 테스트', () => {
 
     expect(() => {
       InputValidator.validateLaps(laps);
-    }).toThrow('[ERROR] 시도 횟수는 0보다 커야 합니다.');
+    }).toThrow(ERROR_MESSAGE.positive);
   });
 
   it('시도 횟수가 숫자가 아닌 경우', () => {
@@ -15,7 +16,7 @@ describe('시도 횟수 유효성 테스트', () => {
 
     expect(() => {
       InputValidator.validateLaps(laps);
-    }).toThrow('[ERROR] 시도 횟수는 숫자여야 합니다.');
+    }).toThrow(ERROR_MESSAGE.number);
   });
 
   it('시도 횟수가 정상적일 경우', () => {

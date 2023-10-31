@@ -13,7 +13,7 @@ class InputView {
   }
 
   static async setLaps() {
-    const laps = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    const laps = await Console.readLineAsync(GUIDE_MESSAGE.laps);
 
     InputValidator.validateLaps(parseInt(laps, 10));
 

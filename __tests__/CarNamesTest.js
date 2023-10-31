@@ -1,5 +1,6 @@
 import { describe } from 'node:test';
 import InputValidator from '../src/models/InputValidator';
+import { ERROR_MESSAGE } from '../src/constants';
 
 describe('자동차 이름 유효성 테스트', () => {
   it('자동차 이름 5자 초과', () => {
@@ -7,7 +8,7 @@ describe('자동차 이름 유효성 테스트', () => {
 
     expect(() => {
       InputValidator.validateCarName(carNames);
-    }).toThrow('[ERROR] 자동차 이름은 5자 이하로 입력해주세요.');
+    }).toThrow(ERROR_MESSAGE.tooLongName);
   });
 
   it('자동차 이름을 입력하지 않음', () => {
@@ -15,7 +16,7 @@ describe('자동차 이름 유효성 테스트', () => {
 
     expect(() => {
       InputValidator.validateCarName(carNames);
-    }).toThrow('[ERROR] 자동차 이름을 입력해주세요.');
+    }).toThrow(ERROR_MESSAGE.emptyName);
   });
 
   it('자동차 이름을 아무것도 입력하지 않음', () => {
@@ -23,7 +24,7 @@ describe('자동차 이름 유효성 테스트', () => {
 
     expect(() => {
       InputValidator.validateCarName(carNames);
-    }).toThrow('[ERROR] 자동차 이름을 입력해주세요.');
+    }).toThrow(ERROR_MESSAGE.emptyName);
   });
 
   it('한 개의 유효한 입력', () => {

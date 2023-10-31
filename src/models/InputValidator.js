@@ -24,10 +24,10 @@ class InputValidator {
 
   static validateLaps(laps) {
     if (!laps) {
-      throw new Error('[ERROR] 시도 횟수는 0보다 커야 합니다.');
+      throw new Error(ERROR_MESSAGE.positive);
     }
     if (Number.isNaN(laps)) {
-      throw new Error('[ERROR] 시도 횟수는 숫자여야 합니다.');
+      throw new Error(ERROR_MESSAGE.number);
     }
   }
 }
