@@ -1,4 +1,4 @@
-import { Console } from '@woowacourse/mission-utils';
+import { Console, Random } from '@woowacourse/mission-utils';
 import RacingGame from '../src/RacingGame.js';
 import Validation from '../src/Validation.js';
 import Car from '../src/Car.js';
@@ -13,12 +13,12 @@ const mockRacingCountInput = (racingCount) => {
 };
 
 const mockSettingCars = (carsNamesInput) => {
-  SettingCars.registerCars = jest.fn();
+  const carsNamesArray = carsNamesInput.split(',');
+  const registeredCars = carsNamesArray.map((name) => new Car(name));
 
-  SettingCars.registerCars.mockImplementation(() => {
-    const carsNamesArray = carsNamesInput.split(',');
-    return carsNamesArray.forEach((name) => new Car(name));
-  });
+  SettingCars.registerCars = jest.fn().mockReturnValue(registeredCars);
+
+  return registeredCars;
 };
 
 describe('레이싱 게임 플레이와 관련된 함수 테스트', () => {
