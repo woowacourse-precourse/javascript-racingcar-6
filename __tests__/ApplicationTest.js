@@ -74,6 +74,30 @@ describe('자동차 경주 게임', () => {
     },
   );
 
+  describe('최종 우승자 출력', () => {
+    test.each([[[4, 3]], [[5, 2]], [[8, 3]]])(
+      '우승자가 한명일 때',
+      async (randoms) => {
+        // given
+        const inputs = ['pobi,woni', '1'];
+        const outputs = ['최종 우승자 : pobi'];
+        const logSpy = getLogSpy();
+
+        mockQuestions(inputs);
+        mockRandoms([...randoms]);
+
+        // when
+        const app = new App();
+        await app.play();
+
+        // then
+        outputs.forEach((output) => {
+          expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+        });
+      },
+    );
+  });
+
   describe('Car', () => {
     test('getName() test', () => {
       // given
