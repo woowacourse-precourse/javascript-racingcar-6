@@ -15,6 +15,7 @@ class App {
     const numberOfMoves = await this.inputNumberOfMovesAsync();
     this.startRace(numberOfMoves);
     this.printRaceResult();
+    this.printWinner();
   }
 
     /* 
@@ -71,6 +72,19 @@ class App {
     });
   }
 
+  /**
+   * 이 메서드는 경주에서 우승한 자동차를 출력합니다.
+   * 가장 멀리 이동한 자동차(가장 높은 position 값을 가진 자동차)를 찾고,
+   * 찾은 자동차를 우승자로 선정하여 출력
+   */
+  printWinner() {
+    const maxPosition = Math.max(...this.cars.map(car => car.position));
+    const winners = this.cars
+      .filter(car => car.position === maxPosition)
+      .map(car => car.name);
+
+    Console.print(`최종 우승자: ${winners.join(', ')}`);
+  }
 }
 
 export default App;
