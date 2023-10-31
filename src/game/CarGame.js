@@ -12,5 +12,6 @@ const initializeCarsPosition = (carNames) => {
 const moveCar = (carNames, carsPosition, randomNum) => {
   carNames.map((name) => {
     if (randomNum >= 4) carsPosition[name] += 1;
+    printRace(name, carsPosition[name]);
   });
 };
