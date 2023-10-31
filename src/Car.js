@@ -14,7 +14,7 @@ class Car {
     const number = this.createRandomNumber();
 
     if (number > 3) {
-      this.step += number;
+      this.step += 1;
     }
   };
 }
