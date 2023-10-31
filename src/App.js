@@ -8,6 +8,11 @@ import {
 import Car from './Car.js';
 
 class App {
+  constructor() {
+    this.cars = [];
+    this.count = 0;
+  }
+
   checkNullValidation = (el) => {
     if (el === null || el === undefined || el === '') {
       throw new Error(ERRORS.null);
@@ -38,7 +43,7 @@ class App {
 
     this.checkCarNameDuplicateValidation(carNames);
 
-    return carNames;
+    return carNames.map((el) => new Car(el));
   };
 
   checkCountTypeValidation = (el) => {
@@ -71,21 +76,19 @@ class App {
 
   async play() {
     try {
-      const carNames = await this.getRacingCarNameInput();
-      const cars = carNames.map((el) => new Car(el));
-
-      const count = await this.getRacingCountInput();
+      this.cars = await this.getRacingCarNameInput();
+      this.count = await this.getRacingCountInput();
 
       Console.print(OUTPUT_MESSAGES.result);
 
-      Array.from({ length: count }).forEach(() => {
-        cars.forEach((car) => {
+      Array.from({ length: this.count }).forEach(() => {
+        this.cars.forEach((car) => {
           car.makeStepForwardOrStop();
           Console.print(car.name + ' : ' + '-'.repeat(car.step));
         });
       });
 
-      const winners = this.calculateFinalWinner(cars);
+      const winners = this.calculateFinalWinner(this.cars);
 
       Console.print(
         '최종 우승자 : ' + winners.map((winner) => winner.name).join()

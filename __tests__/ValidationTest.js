@@ -1,4 +1,5 @@
 import App from '../src/App.js';
+import Car from '../src/Car.js';
 import { MissionUtils } from '@woowacourse/mission-utils';
 
 const mockQuestions = (inputs) => {
@@ -19,7 +20,9 @@ describe('자동차 이름 입력 유효성 테스트', () => {
 
     const result = await app.getRacingCarNameInput();
 
-    expect(result).toEqual(['aria', 'evan']);
+    expect(JSON.stringify(result)).toEqual(
+      JSON.stringify([new Car('aria'), new Car('evan')])
+    );
   });
 
   test('자동차 이름이 하나만 입력된 경우', async () => {
@@ -30,7 +33,7 @@ describe('자동차 이름 입력 유효성 테스트', () => {
 
     const result = await app.getRacingCarNameInput();
 
-    expect(result).toEqual(['aria']);
+    expect(JSON.stringify(result)).toEqual(JSON.stringify([new Car('aria')]));
   });
 
   test('자동차 이름이 입력되지 않은 경우', async () => {
