@@ -4,12 +4,14 @@ import {Random, Console} from "@woowacourse/mission-utils";
 class App {
   async play() {
     const carName = await getCarInput();
+    const carPositions = {};//setting cars' position 
     console.log(carName);
     let carNames = parsing(carName);
     console.log(carNames[0]);
     const tryNum = await getTryNumInput();
     console.log(tryNum);
-
+    
+    
   }
 }
 
@@ -48,9 +50,17 @@ function validate(carName){
 
 
 function getRandom(){
-
+  let dice = Random.pickNumberInrange(0,9);
+  return dice;
 }
 
-function getCheck(){
+function getCheck(dice){
+  if (dice < 4){
+    return 0;
+  }
+  else return 1;
+}
 
+function updateCarPos(carName, carPositions, dice){
+  carPositions[carName]+=getCheck(dice);
 }
