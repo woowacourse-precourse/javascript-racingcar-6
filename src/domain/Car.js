@@ -1,5 +1,6 @@
-import ERROR_MESSAGE from '../constants/error.js';
 import ApplicationError from '../exceptions/ApplicationError.js';
+
+import ERROR_MESSAGE from '../constants/error.js';
 
 class Car {
   static DEAD_ZONE = 4;

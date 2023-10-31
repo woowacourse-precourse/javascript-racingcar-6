@@ -1,6 +1,9 @@
 import { Random } from '@woowacourse/mission-utils';
+
 import Car from './Car.js';
+
 import ApplicationError from '../exceptions/ApplicationError.js';
+
 import ERROR_MESSAGE from '../constants/error.js';
 
 class User {

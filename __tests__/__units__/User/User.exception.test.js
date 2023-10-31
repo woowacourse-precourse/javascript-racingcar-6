@@ -1,5 +1,7 @@
+import { User } from '../../../src/domain/index.js';
+
 import ERROR_MESSAGE from '../../../src/constants/error.js';
-import User from '../../../src/domain/User.js';
+
 import DUMMY_INPUTS from '../../constants/dummy.js';
 
 describe('User 예외 테스트', () => {

@@ -1,7 +1,8 @@
-import MESSAGES from './constants/message.js';
-import { SYSTEM_CONFIG } from './constants/system.js';
 import RacingService from './service/RacingService.js';
 import { InputView, OutputView } from './view/index.js';
+
+import MESSAGES from './constants/message.js';
+import { SYSTEM_CONFIG } from './constants/system.js';
 
 class App {
   #view = {

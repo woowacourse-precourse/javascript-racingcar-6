@@ -1,4 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
+
 import { Track, User } from '../../../src/domain/index.js';
 
 const mockRandoms = (numbers) => {

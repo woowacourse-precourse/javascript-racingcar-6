@@ -1,5 +1,7 @@
-import ERROR_MESSAGE from '../../../src/constants/error.js';
 import { Car } from '../../../src/domain/index.js';
+
+import ERROR_MESSAGE from '../../../src/constants/error.js';
+
 import DUMMY_INPUTS from '../../constants/dummy.js';
 
 describe('Car 예외 테스트', () => {

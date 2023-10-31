@@ -1,4 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
+
 import RacingService from '../../src/service/RacingService';
 
 const mockRandoms = (numbers) => {
