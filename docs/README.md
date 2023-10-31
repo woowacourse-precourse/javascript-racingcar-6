@@ -1,9 +1,9 @@
 # 구현할 기능 목록
 ## 1. Constants
 
- - []MIN_DISTANCE = 0;
- - []MAX_DISTANCE = 9;
- - []MIN_MOVE_VALUE = 4;
+ - [X]MIN_DISTANCE = 0;
+ - [X]MAX_DISTANCE = 9;
+ - [X]MIN_MOVE_VALUE = 4;
 
 ## 2. Car (자동차 로직을 나타내는 클래스)
  - []컨스트럭터:
