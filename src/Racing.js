@@ -51,6 +51,19 @@ class Racing {
       screen.printEmptyLine();
     }
   }
-  calculateWinner() {}
+
+  calculateWinner() {
+    const screen = new Screen();
+    const max = this.players.reduce((prev, current) => {
+      if (prev > current.getMovingCount()) {
+        return prev;
+      }
+      return current.getMovingCount();
+    }, 0);
+    const winnerList = this.players.filter((car) => {
+      return max === car.getMovingCount();
+    });
+    screen.printWinner(winnerList.map((car) => car.getCarName()));
+  }
 }
 export default Racing;

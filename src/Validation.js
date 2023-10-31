@@ -15,6 +15,7 @@ class Validation {
     );
     return regex.test(car);
   }
+
   isProperTryTime(tryTime) {
     const regex = /^[1-9]\d*$/;
     return regex.test(tryTime);

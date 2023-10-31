@@ -19,6 +19,14 @@ class Car {
   status() {
     return `${this.#name} : ${Screen.makeDashString(this.#movingCount)}`;
   }
+
+  getMovingCount() {
+    return this.#movingCount;
+  }
+
+  getCarName() {
+    return this.#name;
+  }
 }
 
 export default Car;
