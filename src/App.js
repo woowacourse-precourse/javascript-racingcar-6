@@ -1,5 +1,8 @@
 import ERROR_MESSAGE from './constant/errorMessage.js';
 import GAME_MESSAGE from './constant/gameMessage.js';
+import Car from './model/Car.js';
+import allCars from './model/allCars.js';
+import TrialNum from './model/trialNum.js';
 import randomNumGenerator from './utils/RandomNumGenerator.js';
 import messagePrinter from './utils/messagePrinter.js';
 class App {
@@ -10,10 +13,8 @@ class App {
   #moveStatus;
 
   async play() {
-    this.#cars = await this.getCarNameInput();
-    this.checkValidCarName(this.#cars);
-    this.#trials = await this.getTrialNumInput();
-    this.checkValidTrialNum(this.#trials);
+    await this.getCarNameInput();
+    await this.getTrialNumInput();
 
     await messagePrinter.outputPrint(GAME_MESSAGE.line_break);
     await messagePrinter.outputPrint(GAME_MESSAGE.print_start_result);
@@ -33,7 +34,9 @@ class App {
 
   async getCarNameInput() {
     const carName = await messagePrinter.inputPrint(GAME_MESSAGE.get_car_name);
-    return carName.split(',');
+    const carNameArray = carName.split(',');
+    const carClass = new allCars(carNameArray);
+    this.#cars = carClass.getCars();
   }
 
   checkValidCarName (carNameArr) {
@@ -52,7 +55,8 @@ class App {
 
   async getTrialNumInput () {
     const trialNum = await messagePrinter.inputPrint(GAME_MESSAGE.get_trial_num);
-    return trialNum;
+    const trialNumClass = new TrialNum(trialNum);
+    this.#trials = trialNumClass.getTrials();
   }
 
   checkValidTrialNum (trialNum) {
@@ -60,7 +64,7 @@ class App {
       messagePrinter.errorPrint(ERROR_MESSAGE.not_number);
     } else if (trialNum < 1) {
       messagePrinter.errorPrint(ERROR_MESSAGE.less_than_one_trial);
-    } else if (trialNum.toString().includes(' ')) {
+    } else if (typeof trialNum === 'string' && trialNum.includes(' ')) {
       messagePrinter.errorPrint(ERROR_MESSAGE.has_space);
     }
   }
