@@ -1,11 +1,19 @@
 import App from "../src/App.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 
-const mockQuestions = (inputs) => {
-  MissionUtils.Console.readLineAsync = jest.fn();
+jest.mock("@woowacourse/mission-utils", () => ({
+  ...jest.requireActual("@woowacourse/mission-utils"),
+  Console: {
+    ...jest.requireActual("@woowacourse/mission-utils").Console,
+    readLineAsync: jest.fn(),
+  },
+}));
 
-  MissionUtils.Console.readLineAsync.mockImplementation(() => {
+const mockQuestions = (inputs) => {
+  jest.spyOn(App.prototype, "readLineAsync").mockImplementation(async () => {
     const input = inputs.shift();
+    console.log("readLineAsync가 호출되었습니다. 남은 입력:", inputs);
+    console.log("readLineAsync의 결과:", input);
     return Promise.resolve(input);
   });
 };
@@ -18,8 +26,9 @@ const mockRandoms = (numbers) => {
 };
 
 const getLogSpy = () => {
-  const logSpy = jest.spyOn(MissionUtils.Console, "print");
-  logSpy.mockClear();
+  const logSpy = jest
+    .spyOn(MissionUtils.Console, "print")
+    .mockImplementation(() => {});
   return logSpy;
 };
 
@@ -46,17 +55,19 @@ describe("자동차 경주 게임", () => {
     });
   });
 
-  test.each([
-    [["pobi,javaji"]],
-    [["pobi,eastjun"]]
-  ])("이름에 대한 예외 처리", async (inputs) => {
-    // given
-    mockQuestions(inputs);
+  test.each([[["pobi,javaji"]], [["pobi,eastjun"]]])(
+    "이름에 대한 예외 처리",
+    async (inputs) => {
+      // given
+      mockQuestions(inputs);
 
-    // when
-    const app = new App();
+      // when
+      const app = new App();
 
-    // then
-    await expect(app.play()).rejects.toThrow("[ERROR]");
-  });
+      // then
+      await expect(app.play()).rejects.toThrow(
+        "자동차 이름은 5자 이하만 가능합니다."
+      );
+    }
+  );
 });
