@@ -1,3 +1,4 @@
+import { MissionUtils } from "@woowacourse/mission-utils";
 class App {
   async play() {}
 
@@ -23,12 +24,25 @@ class App {
     );
     const cars = input.split(",");
     this.validateCar(cars);
+    let car = this.carCreate(cars);
+    // if(this.validateCar(cars)) this.racingGame(cars, car);
   }
 
   async attempts() {
     const input = await MissionUtils.Console.readLineAsync(
       "시도할 횟수는 몇 회인가요?\n"
     );
+  }
+
+  racingGame(cars, car) {
+    for (carName of cars) {
+      const moveNumber = MissionUtils.Random.pickNumberInRange(0, 9);
+      let move = 0;
+      if (moveNumber >= 4) {
+        move = 1;
+      }
+      car.set(cars, car.get(cars) + move);
+    }
   }
 }
 
