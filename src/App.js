@@ -43,6 +43,9 @@ class App {
     if (isNaN(input)) {
       this.ExceptionOccurred('type');
     }
+    if (Number(input) < 1) {
+      this.ExceptionOccurred('number_of_games');
+    }
   }
   ExceptionOccurred(type) {
     if (type === 'common') {
@@ -53,6 +56,8 @@ class App {
       throw new Error(ERROR_MESSAGE.TYPE);
     } else if ((type = 'number_of_players')) {
       throw new Error(ERROR_MESSAGE.NUMBER_OF_PLAYERS);
+    } else if ((type = 'number_of_games')) {
+      throw new Error(ERROR_MESSAGE.NUMBER_OF_GAMES);
     }
   }
   startGame(players, games) {
