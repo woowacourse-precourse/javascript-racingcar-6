@@ -6,6 +6,9 @@ class Car{
         this.far = [];
         for( let i = 0; i < this.name.length; i++){
             this.far.push(0)
+            if(this.name[i].length < 6){
+                throw new Error('[ERROR] 이름은 5자 이하만 가능합니다')
+            }
         }
     }
     playgame(playTime){
@@ -16,7 +19,6 @@ class Car{
             }
             MissionUtils.Console.print(' ')
         }
-
     }
 
     randomRacing(i){
