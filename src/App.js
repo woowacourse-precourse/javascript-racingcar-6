@@ -5,6 +5,8 @@ class App {
     if (!this.validateCarNames(carNames)) return;
 
     const attemptCount = await this.getAttemptCount();
+
+    if (!this.validateAttemptCount(attemptCount)) return;
   }
 
   async getCarNameInput() {
@@ -24,6 +26,13 @@ class App {
     const attemptCountInput = await MissionUtils.Console.readLineAsync("시도할 횟수를 입력하세요:");
     const attemptCount = parseInt(attemptCountInput);
     return attemptCount;
+  }
+
+  validateAttemptCount(attemptCount) {
+    if (isNaN(attemptCount) || attemptCount <= 0) {
+      MissionUtils.Console.readLineAsync("[ERROR] 올바른 시도 횟수를 입력하세요.");
+    }
+    return true;
   }
 }
 

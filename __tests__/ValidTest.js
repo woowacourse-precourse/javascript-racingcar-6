@@ -17,4 +17,11 @@ describe('App 테스트', () => {
 		const input = 'abcdefg,hijklmnop';
 		expect(() => app.validateCarNames(input.split(',')));
 	});
+
+	test('시도 횟수 유효성 검사 테스트', () => {
+		const invalidAttempts = ['abc', '-1', '0'];
+		invalidAttempts.forEach(attempt => {
+			expect(() => app.validateAttemptCount(parseInt(attempt)));
+		});
+	});
 });
