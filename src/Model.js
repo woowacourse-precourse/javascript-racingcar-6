@@ -7,7 +7,18 @@ const setGameStage = function AddOneForGameStage() {
 const getGameStage = function getGameStageNumber() {
   return gameStage;
 };
+let carNames = [];
+const setCarNames = function setCarNamesArr(carNamesInput) {
+  carNames = carNamesInput;
+}
+const getCarNames = function getCarNamesArr() {
+  return carNames;
+}
+
+const errorMessage = '[Error] 잘못된 입력입니다.';
 
 export {
-  getGameStage, setGameStage, askForCarNamesView, askForGameCntView,
+  getGameStage, setGameStage, getCarNames, setCarNames,
+   askForCarNamesView, askForGameCntView,
+   errorMessage,
 };

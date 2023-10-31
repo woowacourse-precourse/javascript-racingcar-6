@@ -1,5 +1,7 @@
 import {
-  getGameStage, setGameStage, askForCarNamesView, askForGameCntView,
+  getGameStage, setGameStage,  getCarNames, setCarNames, 
+   askForCarNamesView, askForGameCntView,
+   errorMessage,
 } from './Model.js';
 
 const selectView = function selectTextForView() {
@@ -15,8 +17,16 @@ const selectView = function selectTextForView() {
   }
 };
 
-const saveCarName = function splitAndSaveCarNames() {
-  'tmp';
+const saveCarName = function splitAndSaveCarNames(carNames) {
+  const carNamesArr = String(carNames).split(",");
+  carNamesArr.forEach(element => {
+    if (element.length >= 6) {
+        throw new Error('[ERROR] ');
+    }
+});
+
+
+  setCarNames(carNamesArr);
 };
 
 export { selectView, saveCarName };
