@@ -1,6 +1,5 @@
 import { MESSAGE } from "../constants/messages.js";
-import { RANGE } from "../constants/range.js";
-import { Console, Random } from "@woowacourse/mission-utils";
+import { Console } from "@woowacourse/mission-utils";
 export class GameController {
   constructor(logic, view) {
     this.logic = logic;
@@ -21,7 +20,7 @@ export class GameController {
     const { carNames, tryNumber } = await this.getInputValue();
     this.setMoveCount(carNames);
     this.printMoveCount(carNames, tryNumber);
-    this.printWinnerNames(this.moveCount);
+    this.printWinnersNames(this.moveCount);
   }
 
   async getInputValue() {
@@ -39,9 +38,9 @@ export class GameController {
     this.logic.performMoves(carNames, tryNumber, this.moveCount);
   }
 
-  printWinnerNames(moveCount) {
+  printWinnersNames(moveCount) {
     const maxMoveCount = this.logic.getMaxMoveCount(moveCount);
-    const winnerNames = this.logic.getWinnerNames(moveCount, maxMoveCount);
-    this.view.printEndMessages(winnerNames);
+    const winnersNames = this.logic.getWinnerNames(moveCount, maxMoveCount);
+    this.view.printEndMessages(winnersNames);
   }
 }

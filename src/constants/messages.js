@@ -11,5 +11,5 @@ export const MESSAGE = Object.freeze({
     }
     Console.print("");
   },
-  getWinnersName: (winnerNames) => names.join(","),
+  getWinnersNames: (winnersNames) => `최종 우승자 : ${winnersNames.join(", ")}`,
 });

@@ -1,6 +1,6 @@
 import { MESSAGE } from "../constants/messages.js";
 import { RANGE } from "../constants/range.js";
-import { Console, Random } from "@woowacourse/mission-utils";
+import { Random } from "@woowacourse/mission-utils";
 
 export class GameLogic {
   addMoveCount(carNames, moveCount) {
