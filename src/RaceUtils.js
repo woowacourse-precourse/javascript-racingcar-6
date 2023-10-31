@@ -1,5 +1,6 @@
 import { CONSTANTS } from "./Constants";
 import { RACE } from "./Logs";
+import { Random, Console } from "@woowacourse/mission-utils";
 
 class RaceUtils {
     static shouldMoveForward() {
