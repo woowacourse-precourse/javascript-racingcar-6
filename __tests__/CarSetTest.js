@@ -43,4 +43,9 @@ describe('class CarSet test', () => {
       count += 1;
     });
   });
+
+  test('[Method Test] findWinners', () => {
+    const winners = ['A2'];
+    expect(carSet.findWinners()).toEqual(winners);
+  });
 });
