@@ -1,5 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
-import { Messages } from '../constants/Messages.js';
+import { Messages, ErrorMessages } from '../constants/Messages.js';
+import AppError from '../errors/AppError.js';
 
 const InputView = {
   async inputCarNames() {
@@ -16,7 +17,7 @@ const InputView = {
     const isAllCarNamesValid = carNames.every((carName) => carName.length <= 5);
 
     if (!isAllCarNamesValid) {
-      throw new Error('자동차의 이름은 5글자 이하여야 합니다.');
+      throw new AppError(ErrorMessages.CAR_NAME_LENGTH_LIMIT);
     }
   },
 
@@ -31,10 +32,10 @@ const InputView = {
 
   validateRaceRound(round) {
     if (!Number.isInteger(round)) {
-      throw new Error('정수값을 입력해주세요.');
+      throw new AppError(ErrorMessages.RACE_ROUND_INTEGER);
     }
     if (round <= 0) {
-      throw new Error('0보다 큰 숫자를 입력해주세요.');
+      throw new AppError(ErrorMessages.RACE_ROUND_POSITIVE);
     }
   },
 };
