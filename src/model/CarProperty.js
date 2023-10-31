@@ -4,6 +4,13 @@ export default class CarProperty {
   }
 
   async makeCarArray(carNames) {
-    const removeSpaceCommaNames = carNames.replaceAll(" ", "").split(",");
+    const removeSpaceCommaNames = this.removeSpaceComma(carNames);
+    removeSpaceCommaNames.map((carName) => {
+      this.carArray.push({ name: carName, distance: 0 });
+    });
+  }
+
+  removeSpaceComma(carNames) {
+    return carNames.replaceAll(" ", "").split(",");
   }
 }
