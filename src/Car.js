@@ -7,10 +7,12 @@ class Car {
     this[CONSTANTS.nameKey] = name;
     this[CONSTANTS.progressStatusKey] = '';
   }
+
   progressDependingOnValue() {
     const value = Random.pickNumberInRange(CONSTANTS.minimumValue, CONSTANTS.maximumValue);
     if (value >= CONSTANTS.progressValue) this.progressStatus += MESSAGES.progressBar;
   }
+
   getProgressStatus() {
     return this.name + MESSAGES.resultDelimeter + this.progressStatus;
   }

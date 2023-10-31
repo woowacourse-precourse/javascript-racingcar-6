@@ -7,6 +7,7 @@ class RacingCar {
     this.cars = carNamesArray.map((carName) => new Car(carName));
     this.totalProgressStatus = [];
   }
+
   tryProgress(trialCount) {
     for (let i = 1; i <= trialCount; i += 1) {
       this.progressCars();
@@ -25,10 +26,12 @@ class RacingCar {
       this.cars.map((car) => car.getProgressStatus()).join(MESSAGES.lineBreak) + MESSAGES.lineBreak;
     this.totalProgressStatus.push(eachProgressStatus);
   }
+
   getTotalProgressStatus() {
     const totalProgressStatusString = this.totalProgressStatus.join(MESSAGES.lineBreak);
     return MESSAGES.result + totalProgressStatusString;
   }
+
   getWinner() {
     const carsArray = this.cars
       .map((car) => [car[CONSTANTS.nameKey], car[CONSTANTS.progressStatusKey]])
@@ -38,6 +41,7 @@ class RacingCar {
       .map((car) => car[0]);
     return MESSAGES.finalWinner + finalWinnerArray.join(MESSAGES.winnerDelimeter);
   }
+
   getFinalResult() {
     return this.getTotalProgressStatus() + this.getWinner();
   }

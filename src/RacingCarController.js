@@ -9,19 +9,23 @@ class RacingCarController {
     await this.readCarNames();
     this.readTrialCount();
   }
+
   async readCarNames() {
     const carNames = await InputView.readCarNames();
     const carNamesArray = carNames.split(CONSTANTS.delimiter);
     this.handleCarNames(carNamesArray);
   }
+
   handleCarNames(carNamesArray) {
     Validator.validateCarNames(carNamesArray);
     this.racingCar = new RacingCar(carNamesArray);
   }
+
   async readTrialCount() {
     const trialCount = Number(await InputView.readTrialCount());
     this.handleTrialCount(trialCount);
   }
+
   handleTrialCount(trialCount) {
     Validator.validateTrialCount(trialCount);
     this.racingCar.tryProgress(trialCount);
