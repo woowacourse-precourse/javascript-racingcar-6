@@ -12,15 +12,13 @@ function getResultStringOneLine(cars) {
 }
 
 const resultHandler = {
-  getResultString: ({ tryNumber, cars }) => {
-    let stringToPrint = `${RESULT_MESSAGES.OUTPUT.RESULT}\n`;
+  printResultString: ({ tryNumber, cars }) => {
+    printOutput(RESULT_MESSAGES.OUTPUT.RESULT);
     const CURRENT_CARS = [...cars];
     for (let tryOrder = 0; tryOrder < tryNumber; tryOrder += 1) {
       const STRING_ONE_LINE = getResultStringOneLine(CURRENT_CARS);
-      stringToPrint += STRING_ONE_LINE;
-      stringToPrint += "\n";
+      printOutput(STRING_ONE_LINE);
     }
-    return [stringToPrint, CURRENT_CARS];
   },
 
   getWinner: (cars) => {

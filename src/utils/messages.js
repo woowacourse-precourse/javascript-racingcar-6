@@ -1,5 +1,5 @@
 export const CAR_MESSAGES = {
-  INPUT: "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)",
+  INPUT: "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n",
   ERROR: {
     NOT_SPACE: "[ERROR] 자동차 이름의 앞 뒤에는 공백이 있어선 안됩니다.",
     NOT_OVER_5: "[ERROR] 자동차 이름의 길이는 5를 넘어선 안됩니다.",
@@ -10,7 +10,7 @@ export const CAR_MESSAGES = {
 };
 
 export const NUMBER_MESSAGES = {
-  INPUT: "시도할 횟수는 몇 회인가요?",
+  INPUT: "시도할 횟수는 몇 회인가요?\n",
   ERROR: {
     MUST_NUMBER: "[ERROR] 시도 횟수는 숫자 값만 입력해주세요.",
     NOT_BLANK: "[ERROR] 시도 횟수를 입력하지 않으셨습니다.",
@@ -21,7 +21,7 @@ export const NUMBER_MESSAGES = {
 
 export const RESULT_MESSAGES = {
   OUTPUT: {
-    RESULT: "실행 결과",
+    RESULT: "\n실행 결과",
     WINNER: "최종 우승자 :",
   },
 };

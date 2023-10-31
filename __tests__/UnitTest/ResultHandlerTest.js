@@ -2,14 +2,17 @@ import { mockRandoms, getLogSpy } from "../../src/utils/testUtils";
 import resultHandler from "../../src/handler/resultHandler";
 import Car from "../../src/Car";
 
-function getResultStringTest({ randoms, carNames, tryNumber, result }) {
+function printResultStringTest({ randoms, carNames, tryNumber, results }) {
   mockRandoms(randoms);
   const CARS = carNames.map((carName) => new Car(carName));
-  const OUTPUT = resultHandler.getResultString({
+  const logSpy = getLogSpy();
+  resultHandler.printResultString({
     tryNumber,
     cars: CARS,
-  })[0];
-  expect(OUTPUT.split("\n")).toStrictEqual(result);
+  });
+  results.forEach((result) => {
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(result));
+  });
 }
 
 function winnerResultTest(carNames, moveForwards, output) {
@@ -58,7 +61,6 @@ describe("ResultHandler 테스트", () => {
         "car1 : --",
         "car2 : ---",
         "",
-        "",
       ],
     ],
     [
@@ -73,18 +75,17 @@ describe("ResultHandler 테스트", () => {
         "lurgi : --",
         "jeong : --",
         "",
-        "",
       ],
     ],
   ];
   test.each(STRING_TEST_CASES)(
     "getResultString 출력 테스트",
-    (carNames, tryNumber, randoms, result) => {
-      getResultStringTest({
+    (carNames, tryNumber, randoms, results) => {
+      printResultStringTest({
         randoms,
         carNames,
         tryNumber,
-        result,
+        results,
       });
     }
   );
