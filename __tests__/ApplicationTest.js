@@ -59,4 +59,18 @@ describe("자동차 경주 게임", () => {
     // then
     await expect(app.play()).rejects.toThrow("[ERROR]");
   });
+
+  test.each([ //매치 횟수 입력 시 숫자가 아닌 경우 예외처리 테스트
+    [["pobi,java"],'a'],
+    [["pobi,east"],'b']
+  ])("매치 횟수에 대한 예외 처리", async (inputs) => {
+    // given
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow("[ERROR]");
+  });
 });
