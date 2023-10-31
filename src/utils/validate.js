@@ -5,6 +5,7 @@ function validateCarName(names) {
 
   names.forEach((carName) => {
     validateNameLength(carName);
+    validateTypeOfName(carName);
   });
 
   validateDuplicateName(names);
@@ -34,6 +35,13 @@ function validateDuplicateName(names) {
   }
 }
 
+function validateTypeOfName(name) {
+  const specialCharacterRegExp = /[^ㄱ-ㅎ가-힣a-zA-Z0-9]/;
+  if (specialCharacterRegExp.test(name)) {
+    throw new Error(ERROR.invalidNameType);
+  }
+}
+
 function validateRangeOfCount(count) {
   if (count < 1) {
     throw new Error(ERROR.invalidCountRange);
@@ -41,8 +49,8 @@ function validateRangeOfCount(count) {
 }
 
 function validateTypeOfCount(count) {
-  const NumberRegExp = /^[0-9]+$/;
-  if (!NumberRegExp.test(count)) {
+  const numberRegExp = /^[0-9]+$/;
+  if (!numberRegExp.test(count)) {
     throw new Error(ERROR.invalidCountType);
   }
 }

@@ -6,6 +6,7 @@
     - [x] 하나의 이름만 입력하면 예외를 발생시킨다. - validateNumberOfNames()
     - [x] 중복된 이름을 입력하면 예외를 발생시킨다. - validateDuplicateName()
     - [x] 이름이 5자를 초과하거나 1자 미만이면 예외를 발생시킨다. - validateNameLength()
+    - [x] 이름에 특수문자가 포함되어 있으면 예외를 발생시킨다. - validateTypeOfName()
 
 - [x] 시도할 횟수(몇 번의 이동을 할 것인지)를 입력받는다. - getGameCount()
 

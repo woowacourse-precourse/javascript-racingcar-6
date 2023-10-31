@@ -6,6 +6,7 @@ const ERROR_PREFIX = '[ERROR]';
 const ERROR = {
   invalidNameLength: `${ERROR_PREFIX} 자동차 이름은 1자 이상, 5자 이하만 가능합니다.`,
   invalidNumberOfNames: `${ERROR_PREFIX} 자동차 이름은 2개 이상 입력해야 합니다.`,
+  invalidNameType: `${ERROR_PREFIX} 자동차 이름에 특수문자가 포함될 수 없습니다.`,
   nameDuplicated: `${ERROR_PREFIX} 자동차 이름은 중복될 수 없습니다.`,
   invalidCountType: `${ERROR_PREFIX} 숫자만 입력 가능합니다.`,
   invalidCountRange: `${ERROR_PREFIX} 1 이상의 숫자만 입력 가능합니다.`,
