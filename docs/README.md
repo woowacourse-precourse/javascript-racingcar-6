@@ -23,5 +23,5 @@
   - [ ] 입력된 값이 잘못됐는지 확인한다. - checkCountInput()
 - [ ] 횟수마다 각 자동차 별로 0 ~ 9 사이의 랜덤 값을 생성한다. - createRandomNumber()
   - [ ] 랜덤 값이 4 이상인 경우 자동차를 한 칸 앞으로 이동시킨다. - moveCars()
-  - [ ] 각 자동차의 현재 이동 거리를 출력한다. - printCurrent()
+- [ ] 각 자동차의 현재 이동 거리를 출력한다. - printCurrent()
 - [ ] 각 자동차의 최종 이동 거리를 비교하여 우승자를 출력한다. - judgeWinner()
