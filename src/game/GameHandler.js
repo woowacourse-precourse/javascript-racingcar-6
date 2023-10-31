@@ -3,7 +3,7 @@ import { getCarNames, getTryCount } from '../utils/Input.js';
 import { initializeCarsPosition, runRace } from './CarGame.js';
 import selectWinner from './Winner.js';
 
-const gameStart = async () => {
+const startGame = async () => {
   const carNames = getCarNames();
   const tryCount = getTryCount();
   const carsPosition = initializeCarsPosition(carNames);
@@ -13,4 +13,4 @@ const gameStart = async () => {
   selectWinner(carsPosition);
 };
 
-export default gameStart;
+export default startGame;
