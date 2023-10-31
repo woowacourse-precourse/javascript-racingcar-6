@@ -29,4 +29,23 @@ describe('class RacingGame Test', () => {
       expect(isValidRange).toBe(true);
     });
   });
+
+  describe('메서드 test : isFinish() 테스트', () => {
+    test('TRY_COUNT 만큼 round를 진행했을때 finish가 true로 반환되는지 확인', () => {
+      Array.from({ length: TRY_COUNT }, () => {
+        racingGame.roundStart();
+      });
+      const isFinish = racingGame.isFinish();
+
+      expect(isFinish).toBe(true);
+    });
+    test('TRY_COUNT 만큼 round를 진행 안했을때 finish가 false로 반환되는지 확인', () => {
+      Array.from({ length: TRY_COUNT - 1 }, () => {
+        racingGame.roundStart();
+      });
+      const isFinish = racingGame.isFinish();
+
+      expect(isFinish).toBe(false);
+    });
+  });
 });
