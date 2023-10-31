@@ -66,7 +66,7 @@ class Car {
    *
    * @returns {CarDto}
    */
-  //여기사 carDto를 만들어준다
+  //📍 여기서 carDto를 만들어준다
   makeCarDto() {
     return new CarDto(this.#name, this.#distance);
   }
