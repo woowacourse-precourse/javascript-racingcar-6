@@ -22,9 +22,4 @@ const PROMPT = {
   FINAL_WINNER: '최종 우승자',
 };
 
-export default {
-  NUMBER,
-  CHAR,
-  ERROR_MESSAGE,
-  PROMPT,
-};
+export { NUMBER, CHAR, ERROR_MESSAGE, PROMPT };
