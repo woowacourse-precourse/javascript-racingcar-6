@@ -1,4 +1,5 @@
 import { Random } from "@woowacourse/mission-utils";
+import GameOutput from "../view/GameOutput.js";
 
 const GO = 1;
 
@@ -10,11 +11,13 @@ export default class Distance {
     }
   }
   async addDistancePrintArray(attempts, carArray) {
+    GameOutput.printResult();
     for (let i = 0; i < attempts; i++) {
       carArray?.map((carObject) => {
         this.isGoStop(carObject);
-        //distance -로 바꿔서 차수별로 전부 출력하기
+        GameOutput.printDistance(carObject);
       });
+      GameOutput.printEnter();
     }
   }
 }
