@@ -39,7 +39,11 @@ class App {
           RANGE.END_NUM
         );
 
-        this.moveCar(car, this.checkCanMove(randomNumber));
+        this.moveCar(
+          car,
+          this.carsRecordBoard,
+          this.checkCanMove(randomNumber)
+        );
 
         this.printCurrentResult(car, this.carsRecordBoard);
       }
@@ -88,9 +92,9 @@ class App {
     }
   }
 
-  moveCar(car, flag) {
+  moveCar(car, carsRecordBoard, flag) {
     if (flag) {
-      this.carsRecordBoard[car] += "-";
+      carsRecordBoard[car] += "-";
     }
   }
 
