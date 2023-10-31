@@ -1,7 +1,7 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import { inputPrintConstants, errorConstants} from '../utils/index.js';
 
-class PlayNumber {
+export default class PlayNumber {
   static async inputPlayNumber() {
     const playNumber = await MissionUtils.Console.readLineAsync(inputPrintConstants.INPUT_TRY_NUMBER);
     return playNumber;
@@ -14,5 +14,3 @@ class PlayNumber {
 
   
 }
-
-export default PlayNumber;
