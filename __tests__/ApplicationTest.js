@@ -45,4 +45,18 @@ describe("자동차 경주 게임", () => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
   });
+
+  test.each([
+    [["pobi,javaji"]],
+    [["pobi,eastjun"]]
+  ])("이름에 대한 예외 처리", async (inputs) => {
+    // given
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow("[ERROR]");
+  });
 });
