@@ -30,6 +30,19 @@ class Car{
       }
       MissionUtils.Console.print(`${this.name[i]} : ${mark}`)
     }
+
+    pritnResult(){
+        let winner = ''
+        let maxfar = 0
+        for(let i = 0; i<this.far.length; i++){
+            if(this.far[i] > maxfar){
+                winner = this.name[i]
+            }else if(this.far[i] == maxfar){
+                winner = winner +', '+this.name[i]
+            }
+        }
+        MissionUtils.Console.print(`최종우승자 : ${winner}`)
+    }
   }
 
   export default Car
