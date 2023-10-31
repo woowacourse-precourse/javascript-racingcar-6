@@ -20,12 +20,11 @@ export const getCarArrFromInputValue = async () => {
 
     inputCarNames = inputCarNames.substr(commaIndex + 1);
   }
-
-  for (let i = 0; i < carArr.length; i++) {
-    if (carArr[i].name.length > 5) {
+  carArr.forEach((carInfo) => {
+    if (carInfo.name.length > 5)
       throw new Error('[ERROR] 자동차 이름은 다섯 글자 이하로 입력해주세요.');
-    }
-  }
+  });
+
   return carArr;
 };
 
@@ -38,27 +37,29 @@ export const getTryNumber = async () => {
 };
 
 export const calculateMoveCntFromRandomNumber = (carArr) => {
-  for (let i = 0; i < carArr.length; i++) {
+  carArr.forEach((carInfo) => {
     let random = MissionUtils.Random.pickNumberInRange(0, 9);
-    if (random >= 4) carArr[i].moveCnt++;
-  }
+    if (random >= 4) carInfo.moveCnt++;
+  });
 };
 
 export const winnerSelectFromMoveCnt = (carArr) => {
   let finerWinner = '';
   let maxMoveCnt = 0;
-  for (let i = 0; i < carArr.length; i++) {
-    if (carArr[i].moveCnt > maxMoveCnt) {
-      maxMoveCnt = carArr[i].moveCnt;
+
+  carArr.forEach((carInfo) => {
+    if (carInfo.moveCnt > maxMoveCnt) {
+      maxMoveCnt = carInfo.moveCnt;
     }
-  }
-  for (let i = 0; i < carArr.length; i++) {
-    if (carArr[i].moveCnt === maxMoveCnt) {
+  });
+
+  carArr.forEach((carInfo) => {
+    if (carInfo.moveCnt === maxMoveCnt) {
       if (finerWinner) {
         finerWinner += ', ';
       }
-      finerWinner += carArr[i].name;
+      finerWinner += carInfo.name;
     }
-  }
+  });
   MissionUtils.Console.print(`최종 우승자 : ${finerWinner}`);
 };

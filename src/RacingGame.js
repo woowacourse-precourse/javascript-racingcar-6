@@ -10,12 +10,13 @@ const RacingGame = (carArr, tryNum) => {
   MissionUtils.Console.print('\n실행결과');
   while (tryNum--) {
     calculateMoveCntFromRandomNumber(carArr);
-    for (let i = 0; i < carArr.length; i++) {
-      let progressStat = '';
-      progressStat += PROGRESS_BAR.repeat(carArr[i].moveCnt);
 
-      MissionUtils.Console.print(`${carArr[i].name} : ${progressStat}`);
-    }
+    carArr.forEach((carInfo) => {
+      let progressStat = '';
+      progressStat += PROGRESS_BAR.repeat(carInfo.moveCnt);
+
+      MissionUtils.Console.print(`${carInfo.name} : ${progressStat}`);
+    });
     MissionUtils.Console.print('\n');
   }
   winnerSelectFromMoveCnt(carArr);
