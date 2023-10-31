@@ -11,7 +11,7 @@ const InputView = {
    */
   async readCarNames() {
     const carNames = await Console.readLineAsync(GAME_MESSAGE.INPUT_CAR_NAMES)
-    const carNameList = splitStringByDelimiter(carNames, ',')
+    const carNameList = splitStringByDelimiter(carNames, GAME_RULE.DELIMITER_FOR_CAR_NAMES)
 
     if (Validator.isDuplicateNameByNameList(carNameList)) {
       throw new ValidationError(ERROR_MESSAGE.DUPLICATE_NAME)
