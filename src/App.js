@@ -92,16 +92,16 @@ class App {
 
   printGameRound(gameRound) {
     Object.entries(gameRound).forEach(([key, value]) => {
-      const hyphenValue = this.convertValueToHyphen(value);
+      const hyphenValue = this.getHyphensByNumber(value);
 
       Console.print(`${key} : ${hyphenValue}`);
     });
   }
 
-  convertValueToHyphen(number) {
+  getHyphensByNumber(score) {
     const HYPHEN = '-';
 
-    return HYPHEN.repeat(number);
+    return HYPHEN.repeat(score);
   }
 
   getFinalWinner(result) {
