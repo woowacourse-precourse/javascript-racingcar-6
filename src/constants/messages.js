@@ -12,7 +12,7 @@ const EXECUTION_RESULT = '\n실행결과';
 
 const WINNER = '최종 우승자 : ';
 
-export const MESSAGE = {
+const MESSAGES = {
   ENTER_CAR_NAME,
   ENTER_NUMBER_TO_ATTEMPT,
   NOT_VALID_CARS_NAME,
@@ -21,17 +21,4 @@ export const MESSAGE = {
   WINNER,
 };
 
-const MAX_CARLIST_LENGTH = 10;
-
-const MIN_CARLIST_LENGTH = 2;
-
-const MAX_CAR_NAME_LENGTH = 5;
-
-const MIN_FOWARD_NUMBER = 4;
-
-export const SIZE_LIMITS = {
-  MAX_CARLIST_LENGTH,
-  MIN_CARLIST_LENGTH,
-  MAX_CAR_NAME_LENGTH,
-  MIN_FOWARD_NUMBER,
-};
+export default MESSAGES;
