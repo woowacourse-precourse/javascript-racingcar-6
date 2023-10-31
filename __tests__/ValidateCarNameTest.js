@@ -36,4 +36,11 @@ describe('자동차 이름 입력값 검증 테스트', () => {
 
     expect(result).toThrow(ERROR.invalidNameLength);
   });
+
+  test('이름에 특수문자가 포함되어 있는 경우 예외 발생', () => {
+    const carNames = ['so!', '#tuna', 'bori*'];
+    const result = () => validateCarName(carNames);
+
+    expect(result).toThrow(ERROR.invalidNameType);
+  });
 });
