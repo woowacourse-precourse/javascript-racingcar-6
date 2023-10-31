@@ -1,7 +1,11 @@
 /* eslint-disable class-methods-use-this */
 import { MissionUtils } from "@woowacourse/mission-utils";
 import Car from "./Car.js";
-import { isNumberAtLeast4, validateCount, validateName } from "./utils/validation.js";
+import {
+  isNumberAtLeast4,
+  validateCount,
+  validateName,
+} from "./utils/validation.js";
 
 class App {
   constructor() {
@@ -62,9 +66,8 @@ class App {
   }
 
   getWinnersNames() {
-    const maxForwardCount = Math.max.apply(
-      null,
-      this.cars.map((car) => car.getForwardCount),
+    const maxForwardCount = Math.max(
+      ...this.cars.map((car) => car.getForwardCount),
     );
     return this.cars
       .filter((car) => car.isWinner(maxForwardCount))
