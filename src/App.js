@@ -9,7 +9,6 @@ class App {
     const racingCar = await InputValue.carName();
     const moveCount = await InputValue.numberOfMoves();
 
-    Console.print(RESULT_STATUS.enter);
     Console.print(RESULT_STATUS.progress);
 
     for (let i = 0; i < moveCount; i++) {

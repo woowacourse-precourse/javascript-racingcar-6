@@ -7,7 +7,7 @@ class RaceResult {
       const track = RESULT_STATUS.sign.repeat(car.forward);
       Console.print(`${car.carName} : ${track}`);
     });
-    Console.print(RESULT_STATUS.enter);
+    Console.print('');
   }
 
   static findWinner(racingCar) {

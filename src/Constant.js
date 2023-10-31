@@ -15,8 +15,7 @@ const ERROR_MESSAGE = {
 };
 
 const RESULT_STATUS = {
-  enter: '',
-  progress: '실행 결과',
+  progress: '\n실행 결과',
   sign: '-',
   winner: '최종 우승자 : ',
 };
