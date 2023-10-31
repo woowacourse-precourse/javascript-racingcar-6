@@ -33,6 +33,14 @@ class App {
     }
   }
 
+  async getShift(attemptTimes) {
+    const shift = 0;
+    for (let i = 0; i < attemptTimes; i++) {
+      shift += await MissionUtils.Random.pickNumberInRange(0, 9);
+    }
+    return shift;
+  }
+
   async play() {
     const carNameArr = await this.getCarNameArr();
     const attemptTimes = await this.getAttemptTimes();
