@@ -5,4 +5,8 @@ export default class Car {
   constructor(carName) {
     this.#carName = carName;
   }
+
+  getCarName() {
+    return this.#carName;
+  }
 }
