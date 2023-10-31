@@ -31,14 +31,14 @@ export const output = {
     WINNER: winners => `${winners.join(', ')}가 최종 우승했습니다.\n`,
     RACING_STATUS: racer => `${racer.carName} : ${'-'.repeat(racer.move)}`,
   },
-  outputResultsEveryIteration: racers => {
+  statesEveryIteration: racers => {
     const result = racers
       .map(racer => this.MESSAGE.RACING_STATUS(racer))
       .join('\n')
       .concat('\n');
     Console.print(result);
   },
-  outputWinner: racers => {
+  winners: racers => {
     const winners = racers
       .sort((a, b) => b.move - a.move)
       .filter(racer => racer.move === racers[0].move)
