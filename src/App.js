@@ -48,6 +48,10 @@ class App {
 
   validateCarNameLength(carList) {
     carList.forEach((car) => {
+      if (car.length === 0) {
+        throw new Error('[ERROR] 자동차 이름을 입력해 주세요');
+      }
+
       if (car.length > 5) {
         throw new Error('[ERROR] 자동차 이름은 5자 이하로 입력해 주세요.');
       }
