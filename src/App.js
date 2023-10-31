@@ -1,9 +1,12 @@
-import GameController from './Controller/gameController.js';
+import GameController from './controller/gameController.js';
 
 class App {
+  constructor() {
+    this.gameController = new GameController();
+  }
+
   async play() {
-    const gameController = new GameController();
-    await gameController.startGame();
+    await this.gameController.startGame();
   }
 }
 

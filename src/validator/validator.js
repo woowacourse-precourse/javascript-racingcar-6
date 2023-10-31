@@ -5,7 +5,7 @@ const validator = {
     if (new Set(carNames).size !== carNames.length) {
       throw new Error(MESSAGE.ERROR.CARNAME.DUPLICATE_ERROR);
     }
-    carNames.forEach((carName) => {
+    carNames.forEach(carName => {
       if (carName.length > 5) {
         throw new Error(MESSAGE.ERROR.CARNAME.LENGTH_ERROR);
       }

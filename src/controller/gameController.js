@@ -1,4 +1,4 @@
-import { Console, Random } from '@woowacourse/mission-utils';
+import { Console } from '@woowacourse/mission-utils';
 import Car from '../utils/car.js';
 import Race from '../utils/race.js';
 import validator from '../validator/validator.js';
@@ -8,7 +8,7 @@ class GameController {
   constructor() {
     this.cars = [];
     this.chance = 0;
-    this.race;
+    this.race = null;
   }
 
   async startGame() {
@@ -20,8 +20,8 @@ class GameController {
   }
 
   async inputCarName() {
-    await Console.readLineAsync(MESSAGE.GAME.START).then((input) => {
-      this.cars = input.split(',').map((carName) => new Car(carName));
+    await Console.readLineAsync(MESSAGE.GAME.START).then(input => {
+      this.cars = input.split(',').map(carName => new Car(carName));
       validator.validateCarName(this.cars);
     });
   }

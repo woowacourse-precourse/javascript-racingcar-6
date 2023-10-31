@@ -7,11 +7,11 @@ class Race {
   }
 
   advance() {
-    this.cars.forEach((car) => car.advanceCar());
+    this.cars.forEach(car => car.advanceCar());
   }
 
   printRaceResult() {
-    this.cars.forEach((car) => {
+    this.cars.forEach(car => {
       const dashLine = '-'.repeat(car.getMove());
       Console.print(`${car.name} : ${dashLine}`);
     });
@@ -19,10 +19,10 @@ class Race {
   }
 
   getWinner() {
-    const maxAdvanced = Math.max(...this.cars.map((car) => car.getMove()));
+    const maxAdvanced = Math.max(...this.cars.map(car => car.getMove()));
     const winners = this.cars
-      .filter((car) => car.getMove() === maxAdvanced)
-      .map((car) => car.getName());
+      .filter(car => car.getMove() === maxAdvanced)
+      .map(car => car.getName());
     return winners;
   }
 
