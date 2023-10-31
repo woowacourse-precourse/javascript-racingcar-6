@@ -25,13 +25,14 @@ const getLogSpy = () => {
 };
 
 describe("자동차 이름 입력", () => {
+  const controllers = new Controllers();
+
   test("정상적인 값 입력 시", async () => {
     const input = ["woon,toon"];
 
     mockQuestions(input);
 
     // when
-    const controllers = new Controllers();
     const result = await controllers.getUserInput(...input);
 
     // then
@@ -44,7 +45,18 @@ describe("자동차 이름 입력", () => {
     mockQuestions(input);
 
     // when
-    const controllers = new Controllers();
+    const result = controllers.getUserInput(...input);
+
+    //then
+    await expect(result).rejects.toThrow("[ERROR]");
+  });
+
+  test("중복된 값이 있을 시 예외처리", async () => {
+    const input = ["song,song,kay"];
+
+    mockQuestions(input);
+
+    // when
     const result = controllers.getUserInput(...input);
 
     //then
@@ -152,7 +164,6 @@ test("입력한 시도횟수 만큼 게임 반복", async () => {
 });
 
 describe("우승자를 선택해서 출력", () => {
-  const model = new Model();
   const controller = new Controllers();
 
   test("우승자가 1명일 때", async () => {
@@ -183,5 +194,20 @@ describe("우승자를 선택해서 출력", () => {
     expectItem.forEach((str) => {
       expect(logspy).toHaveBeenCalledWith(expect.stringContaining(str));
     });
+  });
+});
+
+describe("Model 기능 테스트", () => {
+  const model = new Model();
+
+  test("자동차 위치 초기값 설정", async () => {
+    const cars = ["abc", "ccc", "ded"];
+    const data = { abc: 0, ccc: 0, ded: 0 };
+
+    //when
+    const result = model.setInitialCarMovePoint(cars);
+
+    //then
+    expect(result).toEqual(data);
   });
 });

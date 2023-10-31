@@ -23,6 +23,7 @@ class Model {
 
   calculateCarMovePoint(point) {
     const cars = Object.keys(point);
+
     cars.forEach((el) => {
       const number = Random.pickNumberInRange(0, 9);
       if (number >= 4) point[el] += 1;
