@@ -1,7 +1,7 @@
 import { Console } from "@woowacourse/mission-utils";
 
 class ProgressOutput {
-  static gameInProgressPrint(name, hyphen) {
+  gameInProgressPrint(name, hyphen) {
     Console.print(`${name} : ${hyphen}`);
   }
 }
