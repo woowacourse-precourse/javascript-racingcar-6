@@ -44,7 +44,7 @@
   >     -(볼, 스트라이크 개수 구하는 메서드 - Judge.compare() 안에 Judgement.isRightNumber() + Judgement.isRightPlace()를 조합하여 볼과 스트라이크 개수 구하기)
 - [x] 기능 목록 작성  
 - [ ] ESlint 설치 및 사용법 공부
-- [ ] EOL 확인
+- [x] [EOL 확인](https://avocado12-note.tistory.com/11)
 
 <br />
  
@@ -85,15 +85,15 @@
 <br />
  
 ## 2.3 구현 후에 확인 할 것
-- 작동 확인 
-- 테스트 코드 작성
-- 디버깅용 console.log 삭제하기 
-- EOL확인하기 (End of line) 
-- 컨벤션 확인
-  - 변수, 함수 네이밍에 공들일 것 (연속된 숫자, Info, Data, a, an, the 사용 x, 축약 x)
-  - 공백  
-    - for, if, while 문 사이 한 칸 씩 띄우기
-    - 문맥을 분리하는 부분에 한 줄씩 띄우기
+- [x] 작동 확인 
+- [ ] 테스트 코드 작성
+- [x] 디버깅용 console.log 삭제하기 
+- [x] EOL확인하기 (End of line) 
+- [x] 컨벤션 확인
+  - [x] 변수, 함수 네이밍에 공들일 것 (연속된 숫자, Info, Data, a, an, the 사용 x, 축약 x)
+  - [x] 공백  
+    - [x] for, if, while 문 사이 한 칸 씩 띄우기
+    - [x] 문맥을 분리하는 부분에 한 줄씩 띄우기
 
 ## 99. 커밋 컨벤션
 | ✨ feat | 기능 추가, 삭제, 변경 |

@@ -3,44 +3,42 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 
 export default class Race {
   constructor (players) {
-    this.cars = players.map( playerName => {
+    this.cars = players.map(playerName => {
       const car = new Car(playerName);
       return car;
-    })
+    });
   }
 
+  // 경기 시작
   async compete (moveNumber) {
-    console.log('실행결과');
-
-    for(let i = 0; i < moveNumber; i++){
+    MissionUtils.Console.print('실행결과');
+    for (let i = 0; i < moveNumber; i++) {
       let tempResult = await this.printResult();
       await MissionUtils.Console.print('\n');
     }
   }
-
+  async printResult () {
+    await this.cars.forEach(car => this.handleMoveForwards(car));
+  }
   async handleMoveForwards (car) {
     return await car.moveForwards();
   }
 
-  async printResult () {
-    await this.cars.forEach( car => this.handleMoveForwards(car));
-  }
-
   // 경기 종료
-  async awardsWinner () {
-    this.cars.sort((a,b)=>{
+  async getWinner () {
+    this.cars.sort((a,b) => {
       return b.distance - a.distance;
     })
 
     const winner = this.cars[0]
-    const commonWinner = this.cars.filter(car=>{
+    const commonWinner = this.cars.filter(car => {
       return winner.distance == car.distance;
     })
 
-    if(commonWinner.length==1){
+    if (commonWinner.length==1) {
       return winner.name;
-    }else{
-      return commonWinner.map(v=>v.name). join(', ');
+    } else {
+      return commonWinner.map(v => v.name). join(', ');
     }
   }
 }
