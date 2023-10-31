@@ -6,10 +6,14 @@ const CONDITION = { low:0, high:9, criteria:4};
 class App {
   async play() {
     const userInput = await getUserInput(message.notifyStarting)
+
     const carNameArray = processInput(userInput)
+    const racingCars = carNameArray.map(element => new RacingCar(element, CONDITION));       
+
     let racingRounds = await getUserInput(message.askRounds)
-    const racingCars = buildRacingCarsArray(carNameArray, CONDITION)        
+
     printMessage(message.progress)
+
     while (racingRounds--) {
       racingCars.forEach(racingCar => {
         racingCar.tryMoveForward()
@@ -17,26 +21,11 @@ class App {
       })
       printMessage("")
     }
+    
     const winners = pickWinner(racingCars);
     printMessage(`최종 우승자 : ${winners}`)
   }
 }
-
-function pickWinner(racingCars) {
-  const maxProgress = Math.max(...racingCars.map(racingCar => racingCar.progress));
-
-  const winners = racingCars
-    .filter(racingCar => racingCar.progress === maxProgress)
-    .map(racingCar => racingCar.carName)
-    .join(', ');
-  
-  return winners
-}
-
-function buildRacingCarsArray(carNameArray,condition) {
-  return carNameArray.map(element => new RacingCar(element,condition))
-}
-
 async function getUserInput(message) {
   const input = await Console.readLineAsync(message)
   return input
@@ -48,7 +37,6 @@ function processInput(input) {
     .checkIsAllElementsFitCondition(5);
   return userInput.array
 }
-
 
 class UserInput{
   constructor(input) {
@@ -73,6 +61,17 @@ class UserInput{
   }
 }
 
+function pickWinner(racingCars) {
+  const maxProgress = Math.max(...racingCars.map(racingCar => racingCar.progress));
+
+  const winners = racingCars
+    .filter(racingCar => racingCar.progress === maxProgress)
+    .map(racingCar => racingCar.carName)
+    .join(', ');
+  
+  return winners
+}
+
 
 class RacingCar {
   constructor(carName, condition) {
@@ -94,7 +93,6 @@ class RacingCar {
     printMessage(`${this.carName} : ${'-'.repeat(this.progress)}`);
   }
 }
-
 
 function printMessage(message) {
   Console.print(message)
