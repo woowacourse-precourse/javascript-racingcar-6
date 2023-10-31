@@ -1,6 +1,7 @@
-import inputView from '../view/inputView.js';
 import Car from '../Model/Car.js';
 import Track from '../Model/Track.js';
+import inputView from '../view/inputView.js';
+import outputView from '../view/outputView.js';
 
 export default class Controller {
   #car;
@@ -15,6 +16,7 @@ export default class Controller {
   async preRace() {
     await this.handleCarsName();
     await this.handleFinalTrackCount();
+    outputView.printResult();
 
     return this.startRace();
   }
@@ -43,7 +45,7 @@ export default class Controller {
   }
 
   handleStatusOutput() {
-    console.log(this.#car.getCarsPosition());
+    outputView.printTrack(this.#car.getCarsName(), this.#car.getCarsPosition());
     this.#track.plusCurrentTrackCount();
 
     return this.startRace();
