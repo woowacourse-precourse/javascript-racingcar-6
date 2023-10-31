@@ -21,9 +21,9 @@ class App {
           carNamesObj[carNames[idx]]++;
         }
       }
-      await util.moveCurrent(carNamesObj);
+      util.moveCurrent(carNamesObj);
     }
-    let winnerStr = await util.whosWinner(carNamesObj);
+    let winnerStr = util.whosWinner(carNamesObj);
     Console.print(`최종 우승자 : ${winnerStr}`);
   }
 }
