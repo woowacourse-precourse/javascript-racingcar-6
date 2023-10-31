@@ -10,6 +10,7 @@ class App {
     const roundInputValue = await this.userInput(
       '시도할 횟수는 몇 회인가요?\n',
     );
+    this.roundValidation(roundInputValue);
   }
 
   async userInput(message) {
@@ -43,8 +44,16 @@ class App {
         carDistanceMap.set(name, '');
       });
     }
+
     if (!inputValue.includes(',')) carDistanceMap.set(inputValue, '');
     return carDistanceMap;
+  }
+
+  roundValidation(inputValue) {
+    const stringToNumber = Number(inputValue);
+    if (isNaN(stringToNumber)) throw new Error('[ERROR]');
+
+    if (stringToNumber < 1) throw new Error('[ERROR]');
   }
 }
 
