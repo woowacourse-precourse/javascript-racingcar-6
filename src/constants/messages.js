@@ -5,12 +5,7 @@ export const MESSAGE = Object.freeze({
   INPUT: "시도할 횟수는 몇 회인가요?",
   RESULT: "실행 결과",
   END: "최종 우승자 : ",
-  getGameScore: (moveCount) => {
-    for (let car in moveCount) {
-      Console.print(`${car} : ${moveCount[car]}`);
-    }
-    Console.print("");
-  },
+
   getWinnersNames: (winnersNames) => `최종 우승자 : ${winnersNames.join(", ")}`,
 });
 

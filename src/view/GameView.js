@@ -6,7 +6,12 @@ export class GameView {
     Console.print("");
     Console.print(MESSAGE.RESULT);
   }
-
+  printGameScore(moveCount) {
+    for (let car in moveCount) {
+      Console.print(`${car} : ${moveCount[car]}`);
+    }
+    Console.print("");
+  }
   printEndMessages(winnersNames) {
     Console.print(MESSAGE.getWinnersNames(winnersNames));
   }

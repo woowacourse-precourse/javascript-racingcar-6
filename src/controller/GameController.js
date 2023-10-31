@@ -40,7 +40,14 @@ export class GameController {
 
   printMoveCount(carNames, tryNumber) {
     this.view.printInitialMessages();
-    this.logic.performMoves(carNames, tryNumber, this.moveCount);
+    this.performMoves(carNames, tryNumber, this.moveCount);
+  }
+
+  performMoves(carNames, tryNumber) {
+    for (let i = 0; i < tryNumber; i++) {
+      this.logic.addMoveCount(carNames, this.moveCount);
+      this.view.printGameScore(this.moveCount);
+    }
   }
 
   printWinnersNames(moveCount) {

@@ -13,13 +13,6 @@ export class GameLogic {
     });
   }
 
-  performMoves(carNames, tryNumber, moveCount) {
-    for (let i = 0; i < tryNumber; i++) {
-      this.addMoveCount(carNames, moveCount);
-      MESSAGE.getGameScore(moveCount);
-    }
-  }
-
   getMaxMoveCount(moveCount) {
     const sortedMoveCount = Object.entries(moveCount).sort(
       (a, b) => b[1].length - a[1].length
