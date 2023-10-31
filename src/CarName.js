@@ -40,17 +40,10 @@ class CarName {
     const hasComma = carNames.includes(',');
     const hasEmty = carNames.includes(' ');
 
-    if (hasComma) {
-      this.checkNumberDigits(carNames);
-    }
-
-    if (!hasComma) {
-      throw new Error('[ERROR] 쉼표(,)를 사용해 이름을 구분 하세요.');
-    }
-
     if (hasEmty) {
       throw new Error('[ERROR] 빈공간이 없이 작성해주세요.');
     }
+    this.checkNumberDigits(carNames);
   }
 
   async start() {
