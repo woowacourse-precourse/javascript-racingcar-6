@@ -12,8 +12,15 @@ export const checkCarNameWrong = (input) => {
     throw new Error("[ERROR] 자동차 이름 잘못된 입력");
   }
 };
+export const checkCarNameSame = (input) => {
+  const name_arr = input.split(",");
+  const uniqueNames = new Set(name_arr);
+  if (name_arr.length !== uniqueNames.size) {
+    throw new Error("[ERROR] 자동차 이름 중복 입력");
+  }
+};
 export const checkTryNumber = (input) => {
-  if (isNaN(input) || input[0] == 0) {
-    throw new Error("[ERROR] 이동횟수 잘못된 입력");
+  if (isNaN(input)) {
+    throw new Error("[ERROR] 이동횟수가 숫자가 아닙니다");
   }
 };
