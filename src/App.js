@@ -16,14 +16,14 @@ class App {
     //맵으로 만들기
     const CARS_MAP = setArrayToMap(CARS_ARRAY);
     //시도할 횟수
-    const ROUNDS = await MissionUtils.Console.readLineAsync(
+    let rounds = await MissionUtils.Console.readLineAsync(
       "시도할 횟수는 몇 회인가요?"
     );
-    checkValidRounds(ROUNDS);
+    checkValidRounds(rounds);
 
     //2. 경주
     let resultArray;
-    while (ROUNDS--) {
+    while (rounds--) {
       //각 자동차에 대해 0~9 무작위 값 구하기
       playRandomForwardMove(CARS_MAP);
     }
