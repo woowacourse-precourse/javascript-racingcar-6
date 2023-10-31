@@ -1,10 +1,10 @@
 class Validation {
-  isValidCarName(car) {
-    const carNames = car.split(",");
+  isValidCarName(carNameString) {
+    const carNames = carNameString.split(",");
     let isNameTooLong = false;
 
-    carNames.forEach((name) => {
-      if (name.length > 5) {
+    carNames.forEach((carName) => {
+      if (carName.length > 5) {
         isNameTooLong = true;
       }
     });

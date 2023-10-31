@@ -15,23 +15,23 @@ class CarRacingController {
     await this.inputTrialNumber();
     this.carRacingView.printResultMessage();
 
-    const namesAndDistances = this.carRacingModel.getNamesAndDistances();
+    const carData = this.carRacingModel.getCarData();
 
-    namesAndDistances.forEach(() => {
-      this.carRacingModel.moveOrStay(namesAndDistances);
-      this.carRacingView.printResult(namesAndDistances);
+    carData.forEach(() => {
+      this.carRacingModel.moveOrStay(carData);
+      this.carRacingView.printResult(carData);
       this.carRacingView.lineBreak();
     });
 
-    this.carRacingView.printWinner(namesAndDistances);
+    this.carRacingView.printWinner(carData);
   }
 
   async inputCar() {
-    let carNames = await Console.readLineAsync(
+    let carNameString = await Console.readLineAsync(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
     );
-    validation.isValidCarName(carNames);
-    this.carRacingModel.setNamesAndDistances(carNames);
+    validation.isValidCarName(carNameString);
+    this.carRacingModel.setCarData(carNameString);
   }
 
   async inputTrialNumber() {

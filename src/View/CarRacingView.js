@@ -1,18 +1,18 @@
 import { Console } from "@woowacourse/mission-utils";
 class CarRacingView {
-  printResult(namesAndDistances) {
-    namesAndDistances.forEach((car) => {
-      Console.print(car[0] + " : " + "-".repeat(car[1]));
+  printResult(carData) {
+    carData.forEach((carData) => {
+      Console.print(carData[0] + " : " + "-".repeat(carData[1]));
     });
   }
 
-  printWinner(namesAndDistances) {
-    let winnerCount = Math.max(...namesAndDistances.map((car) => car[1]));
+  printWinner(carData) {
+    let winnerCount = Math.max(...carData.map((carData) => carData[1]));
     let winners = [];
 
-    namesAndDistances.forEach((car) => {
-      if (car[1] === winnerCount) {
-        winners.push(car[0]);
+    carData.forEach((carData) => {
+      if (carData[1] === winnerCount) {
+        winners.push(carData[0]);
       }
     });
 

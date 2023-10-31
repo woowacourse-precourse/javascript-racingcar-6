@@ -2,14 +2,14 @@ import { Random } from "@woowacourse/mission-utils";
 
 class CarRacingModel {
   constructor() {
-    this.namesAndDistances = [];
+    this.carData = [];
     this.trialNumber = 0;
   }
-  setNamesAndDistances(carNameString) {
-    this.nameAndDistances = carNameString.split(",").map((name) => [name, 0]);
+  setCarData(carNames) {
+    this.carData = carNames.split(",").map((name) => [name, 0]);
   }
-  getNamesAndDistances() {
-    return this.nameAndDistances;
+  getCarData() {
+    return this.carData;
   }
   setTrialNumber(num) {
     this.trialNumber = num;
@@ -18,11 +18,11 @@ class CarRacingModel {
     return this.trialNumber;
   }
 
-  moveOrStay(namesAndDistances) {
-    namesAndDistances.forEach((nameAndDistance) => {
+  moveOrStay(carData) {
+    carData.forEach((carData) => {
       let isMove = Random.pickNumberInRange(0, 9) < 5 ? true : false;
       if (isMove) {
-        nameAndDistance[1] += 1;
+        carData[1] += 1;
       }
     });
   }
