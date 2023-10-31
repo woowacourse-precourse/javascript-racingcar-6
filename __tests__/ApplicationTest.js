@@ -63,10 +63,13 @@ describe('자동차 경주 게임', () => {
   test.each([[['']], [['sujin,']], [['suji,jun,']]])(
     '이름이 공백인 경우 예외 처리',
     async (inputs) => {
+      // given
       mockQuestions(inputs);
 
+      // when
       const app = new App();
 
+      // then
       await expect(app.play()).rejects.toThrow('[ERROR] 공백을 입력했습니다.');
     },
   );
@@ -74,10 +77,13 @@ describe('자동차 경주 게임', () => {
   test.each([[['pobi,pobi']], [['수진,수진']]])(
     '중복된 이름에 대한 예외 처리',
     async (inputs) => {
+      // given
       mockQuestions(inputs);
 
+      // when
       const app = new App();
 
+      // then
       await expect(app.play()).rejects.toThrow(
         '[ERROR] 동일한 이름을 중복하여 입력했습니다.',
       );
@@ -96,10 +102,13 @@ describe('자동차 경주 게임', () => {
   ])(
     '공백, 특수문자, 이모티콘이 포함된 이름에 대한 예외 처리',
     async (inputs) => {
+      // given
       mockQuestions(inputs);
 
+      // when
       const app = new App();
 
+      // then
       await expect(app.play()).rejects.toThrow(
         '[ERROR] 이름에 공백, 특수문자, 이모티콘을 포함하지 마세요.',
       );
@@ -112,10 +121,13 @@ describe('자동차 경주 게임', () => {
     [['sujin,jinsu', '!']],
     [['sujin,jinsu', 'l']],
   ])('시도 횟수가 숫자 형식이 아닌 경우 예외 처리', async (inputs) => {
+    // given
     mockQuestions(inputs);
 
+    // when
     const app = new App();
 
+    // then
     await expect(app.play()).rejects.toThrow(
       '[ERROR] 숫자 형식으로만 입력해야 합니다.',
     );
@@ -128,10 +140,13 @@ describe('자동차 경주 게임', () => {
     [['sujin,jinsu', '+2.5']],
     [['sujin,jinsu', '-6.8']],
   ])('시도 횟수가 양의 정수가 아닌 경우 예외 처리', async (inputs) => {
+    // given
     mockQuestions(inputs);
 
+    // when
     const app = new App();
 
+    // then
     await expect(app.play()).rejects.toThrow(
       '[ERROR] 양의 정수만 입력해야 합니다.',
     );
