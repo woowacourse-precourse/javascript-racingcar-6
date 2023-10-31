@@ -17,6 +17,14 @@ const mockRandoms = (numbers) => {
   }, MissionUtils.Random.pickNumberInRange);
 };
 
+const mockQuestion = (inputs) => {
+  MissionUtils.Console.readLineAsync = jest.fn();
+
+  MissionUtils.Console.readLineAsync.mockImplementation(() => {
+    return Promise.resolve(inputs);
+  });
+};
+
 const getLogSpy = () => {
   const logSpy = jest.spyOn(MissionUtils.Console, "print");
   logSpy.mockClear();
@@ -60,4 +68,18 @@ describe("자동차 경주 게임", () => {
     // then
     await expect(app.play()).rejects.toThrow("[ERROR]");
   });
+
+  test.each(["0", "-1", "javascript", ""])(
+    "시도 횟수에 대한 예외 처리",
+    async (inputs) => {
+      // given
+      mockQuestion(inputs);
+
+      // when
+      const app = new App();
+
+      // then
+      await expect(app.tryCount()).rejects.toThrow("[ERROR]");
+    }
+  );
 });
