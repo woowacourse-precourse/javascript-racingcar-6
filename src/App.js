@@ -10,8 +10,6 @@ class App {
     const CAR_MOVE_DECIDE = GameStart.carMoveDecide;
     const CAR_MOVE_TRY_RESULT = GameStart.carMoveTryResult;
 
-    let carNamesLength = CAR_NAMES.length;
-
     for (let i = 0; i < CYCLE_SIZE; i++) {
       CAR_MOVE_TRY_RESULT(CAR_NAMES);
       CAR_MOVE_DECIDE(CAR_NAMES);
