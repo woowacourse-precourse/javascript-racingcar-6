@@ -3,13 +3,7 @@ import print from './utils/print';
 import getUserInput from './utils/getUserInput';
 import isValidCarNameString from './modules/isValidCarNameString';
 import isValidAttempNumber from './modules/isValidAttempNumber';
-
-const prompt = {
-  CAR_NAMES: `경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)
-`,
-  ATTEMP_NUMBER: `시도할 횟수는 몇 회인가요?
-`,
-};
+import { PROMPT, CHAR } from './constant/constants';
 
 class App {
   constructor() {
@@ -18,7 +12,7 @@ class App {
   }
 
   createCar(nameString) {
-    const nameArr = nameString.split(',');
+    const nameArr = nameString.split(CHAR.SEPARATOR);
 
     nameArr.forEach((name) => {
       const newCar = new Car(name);
@@ -28,7 +22,7 @@ class App {
 
   startRace(attemp) {
     print();
-    print('실행 결과');
+    print(PROMPT.RACE_START);
 
     while (this.winners.length === 0) {
       this.cars.forEach((car) => {
@@ -56,12 +50,12 @@ class App {
       return car.getName();
     });
 
-    print(`최종 우승자 : ${winnerNames.join(', ')}`);
+    print(`${PROMPT.FINAL_WINNER} : ${winnerNames.join(`${CHAR.SEPARATOR} `)}`);
   }
 
   async play() {
-    const carNames = await getUserInput(prompt.CAR_NAMES, isValidCarNameString);
-    const apttempNumber = await getUserInput(prompt.ATTEMP_NUMBER, isValidAttempNumber);
+    const carNames = await getUserInput(PROMPT.CAR_NAMES, isValidCarNameString);
+    const apttempNumber = await getUserInput(PROMPT.ATTEMP_NUMBER, isValidAttempNumber);
 
     this.createCar(carNames);
     this.startRace(apttempNumber);
