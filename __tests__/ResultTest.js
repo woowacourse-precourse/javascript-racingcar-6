@@ -1,6 +1,6 @@
-import App from "../src/App.js";
-import { resultMessage } from "../src/Messages.js";
-import { MissionUtils } from "@woowacourse/mission-utils";
+import App from '../src/App.js';
+import { resultMessage } from '../src/Messages.js';
+import { MissionUtils } from '@woowacourse/mission-utils';
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -19,25 +19,25 @@ const mockRandoms = (numbers) => {
 };
 
 const getLogSpy = () => {
-  const logSpy = jest.spyOn(MissionUtils.Console, "print");
+  const logSpy = jest.spyOn(MissionUtils.Console, 'print');
   logSpy.mockClear();
   return logSpy;
 };
 
-describe("각 시도별 결과 출력", () => {
-  test("예제 입력 테스트", async () => {
+describe('각 시도별 결과 출력', () => {
+  test('예제 입력 테스트', async () => {
     const MOVING_FORWARD = 4;
     const STOP = 3;
-    const inputs = ["pobi,woni", "4"];
+    const inputs = ['pobi,woni', '4'];
     const outputs = [
-      "pobi : -",
-      "woni : ",
-      "pobi : --",
-      "woni : -",
-      "pobi : ---",
-      "woni : --",
-      "pobi : ----",
-      "woni : ---",
+      'pobi : -',
+      'woni : ',
+      'pobi : --',
+      'woni : -',
+      'pobi : ---',
+      'woni : --',
+      'pobi : ----',
+      'woni : ---',
     ];
 
     const randoms = [MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD,
@@ -56,11 +56,11 @@ describe("각 시도별 결과 출력", () => {
     });
   });
 
-  test("우승자 한명 테스트", async () => {
+  test('우승자 한명 테스트', async () => {
     const MOVING_FORWARD = 4;
     const STOP = 3;
-    const inputs = ["pobi,woni", "4"];
-    const outputs = ["최종 우승자 : pobi"];
+    const inputs = ['pobi,woni', '4'];
+    const outputs = ['최종 우승자 : pobi'];
 
     const randoms = [MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD,
       MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD];
@@ -78,11 +78,11 @@ describe("각 시도별 결과 출력", () => {
     });
   });
 
-  test("우승자 여러명 테스트", async () => {
+  test('우승자 여러명 테스트', async () => {
     const MOVING_FORWARD = 4;
     const STOP = 3;
-    const inputs = ["pobi,woni", "4"];
-    const outputs = ["최종 우승자 : pobi, woni"];
+    const inputs = ['pobi,woni', '4'];
+    const outputs = ['최종 우승자 : pobi, woni'];
 
     const randoms = [MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD,
       MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD];
