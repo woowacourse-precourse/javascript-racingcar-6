@@ -241,4 +241,16 @@ describe("Model 기능 테스트", () => {
     //then
     await expect(result).toEqual(answer);
   });
+
+  test("문자열 반복 생성", async () => {
+    const string = "A";
+    const times = 5;
+    const answer = "AAAAA";
+
+    //when
+    const result = model.repeatMessage(string, times);
+
+    //then
+    await expect(result).toEqual(answer);
+  });
 });
