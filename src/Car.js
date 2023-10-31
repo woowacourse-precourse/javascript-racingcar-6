@@ -6,12 +6,12 @@ class Car {
     this.position = 0;
   }
 
-  generateRandomValue() {
+  static generateRandomValue() {
     return Random.pickNumberInRange(0, 9);
   }
 
   calculatePosition() {
-    const randomValue = this.generateRandomValue();
+    const randomValue = Car.generateRandomValue();
     if (randomValue >= 4) {
       this.position++;
     }
