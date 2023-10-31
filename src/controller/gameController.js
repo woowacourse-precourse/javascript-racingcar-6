@@ -3,9 +3,12 @@ import RacingCars from "../model/car/racingCars.js";
 import NumberOfAttempt from "../model/game/numberOfAttempt.js";
 import { Console } from "@woowacourse/mission-utils";
 import Referee from "../model/game/referee.js";
+import Output from "../gameView/output.js";
 
 class GameController {
   input = new Input();
+
+  output = new Output();
 
   racingcars = new RacingCars();
 
@@ -20,13 +23,11 @@ class GameController {
 
     while (!numberOfAttempt.isFinished()) {
       this.racingcars.moveAllCars();
-      this.racingcars.getCars().forEach((car) => {
-        Console.print(`${car.getName()} : ${"-".repeat(car.getMoveCount())}`);
-      });
+      this.output.printCarStatusResult(this.racingcars.getCars());
       numberOfAttempt.decrease();
     }
     const winners = this.referee.compareCars(this.racingcars.getCars());
-    Console.print(winners);
+    this.output.printWinners(winners);
   }
 }
 export default GameController;
