@@ -1,4 +1,5 @@
-import { paramType } from '../src/utils/paramType.js';
+import { ReferenceTypeError } from '../../src/errors/ParamTypeError';
+import { paramType } from '../../src/utils/paramType.js';
 
 describe('function paramType Test', () => {
   class WooTeCo {
@@ -126,14 +127,14 @@ describe('function paramType Test', () => {
     const foo = (param, _0 = paramType(param, WooTeCo)) => {};
     const subInstance = new FreeCourse();
 
-    expect(() => foo(subInstance)).not.toThrow();
+    expect(() => foo(subInstance)).not.toThrow(ReferenceTypeError);
   });
 
   test('parameter의 타입이 super class인데 sub Class로 검사했을때 throw Error', () => {
     const foo = (param, _0 = paramType(param, FreeCourse)) => {};
     const superInstance = new WooTeCo();
 
-    expect(() => foo(superInstance)).toThrow();
+    expect(() => foo(superInstance)).toThrow(ReferenceTypeError);
   });
 
   test.failing(
@@ -141,7 +142,7 @@ describe('function paramType Test', () => {
     () => {
       const foo = (param, _0 = paramType(param, FreeCourse)) => {};
 
-      expect(() => foo(wooTeCoInstance)).not.toThrow();
+      expect(() => foo(wooTeCoInstance)).not.toThrow(ReferenceTypeError);
     }
   );
 });
