@@ -1,4 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
+import SYSTEM_MESSAGES from '../constants/SystemMessages.js';
 
 class PrintConsole {
 	showRacingResult(carName, distance) {
@@ -7,7 +8,7 @@ class PrintConsole {
 	}
 
 	showGameResult(carNames) {
-		this.showMessage(carNames.join(', '));
+		this.showMessage(SYSTEM_MESSAGES.final_winner + carNames.join(', '));
 	}
 
 	showMessage(message) {
