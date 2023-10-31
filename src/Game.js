@@ -1,9 +1,16 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
+import Car from './Car.js';
 
 export default class Game {
+  constructor() {
+    this.carNameList = [];
+    this.round = 0;
+    this.carInfoList = [];
+  }
+
   async start() {
-    await this.enterCarNames();
-    await this.enterNumberOfAttempts();
+    this.carNameList = await this.enterCarNames();
+    this.round = await this.enterGameRound();
   }
 
   async enterCarNames() {
@@ -20,14 +27,50 @@ export default class Game {
     return carList;
   }
 
-  async enterNumberOfAttempts() {
+  async enterGameRound() {
     MissionUtils.Console.print('시도할 횟수는 몇 회인가요?');
-    const count = await MissionUtils.Console.readLineAsync('');
+    const round = await MissionUtils.Console.readLineAsync('');
 
-    if (/[^1-9]/.test(count)) {
+    if (/\D/.test(round) || round === '') {
       throw new Error('[ERROR] 횟수는 숫자 형식만 입력 가능합니다.');
+    } else if (round === '0') {
+      throw new Error('[ERROR] 횟수는 1회 이상 입력 가능합니다.');
     }
 
-    return count;
+    return round;
+  }
+
+  progressGame() {
+    const car = new Car();
+
+    this.carInfoList = this.carNameList.map((item) => car.setCarInfo(item));
+
+    MissionUtils.Console.print('\n실행 결과');
+
+    let currentRound = 0;
+    while (currentRound < this.round) {
+      this.carNameList.map((item) => car.moveCar(item, this.carInfoList));
+      this.printResult();
+      currentRound += 1;
+    }
+  }
+
+  getForwardBar(forwardCount) {
+    let i = 0;
+    let forwardBar = '';
+    while (i < forwardCount) {
+      forwardBar += '-';
+      i++;
+    }
+    return forwardBar;
+  }
+
+  printResult() {
+    this.carInfoList.map((item) => {
+      MissionUtils.Console.print(
+        item.name + ' : ' + this.getForwardBar(item.forwardCount)
+      );
+    });
+    MissionUtils.Console.print('');
   }
 }
