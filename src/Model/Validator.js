@@ -50,14 +50,35 @@ export default class Validator {
 		}
 
 		this.names = userInput.split(',');
-    this.checkSpace();
+		this.checkSpace();
 		this.checkInvalidPattern();
-    this.checkInvalidLength();
+		this.checkInvalidLength();
 
 		if (this.checkDuplicatedNames()) {
 			throw new Error(ERROR_MESSAGE.duplicate_name_found);
 		}
 
 		return this.board.getScoreBoard(this.names);
+	}
+
+	checkAttemptsValid(attempts) {
+		if (!attempts) {
+			throw new Error(ERROR_MESSAGE.no_input);
+		}
+
+		if (/\s/.test(attempts)) {
+			throw new Error(ERROR_MESSAGE.invalid_attempts_pattern);
+		}
+
+		if (Number(attempts) === 0) {
+			throw new Error(ERROR_MESSAGE.number_under_zero);
+		}
+
+		if (!/^\d+$/.test(attempts)) {
+			// isNaN(attempts)
+			throw new Error(ERROR_MESSAGE.invalid_attempts_pattern);
+		}
+
+		return attempts;
 	}
 }
