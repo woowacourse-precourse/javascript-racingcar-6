@@ -1,7 +1,7 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 class Car {
-  constructor(name) {
+  constructor() {
     this.name = name;
     this.distance = 0;
   }
@@ -24,8 +24,6 @@ class App {
   }
 
   validateCarNames(carNames) {
-    const overlapCarNames = new Set(carNames);
-
     for (let i = 0; i < carNames.length; i++) {
       if (carNames[i].length === 0 || carNames[i].length > 5) {
         throw new Error(
@@ -43,27 +41,18 @@ class App {
 
   async play() {
     const input = await MissionUtils.Console.readLineAsync(
-      "경주 할 자동차 이름(이름은 쉼표(,) 기준으로 구분\n"
+      "경주 할 자동차 이름(이름은 쉼표(,) 기준으로 구분"
     );
-    const carNames = input.split(","); // 배열로 변환
+    const carNames = input.split(",");
     this.validateCarNames(carNames);
     this.cars = carNames.map((name) => new Car(name));
 
     this.numberOfAttempts = Number(
-      await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?\n")
+      await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요")
     );
     if (isNaN(this.numberOfAttempts) || this.numberOfAttempts <= 0) {
       throw new Error("[ERROR] 올바른 횟수를 입력하세요.");
     }
-
-    MissionUtils.Console.print("\n실행결과");
-    // 시도횟수만큼 돌려서 "-"를 통해 차 전진하는 for문
-    for (let i = 0; i < this.numberOfAttempts; i++) {
-      this.moveCars();
-      this.moveCarsResult();
-    }
-
-    this.winner();
   }
 
   getCarNames() {
@@ -90,32 +79,4 @@ class App {
       MissionUtils.Console.print(`${car.name} : ${car.getDistance()}`);
     }
   }
-
-  getWinners() {
-    let maxPosition = 0;
-    for (let i = 0; i < this.cars.length; i++) {
-      // 특정 차 전진 거리가 최대 전진 거리보다 많으면 maxPosition 값 교체
-      if (this.cars[i].distance > maxPosition) {
-        maxPosition = this.cars[i].distance;
-      }
-    }
-
-    let winners = [];
-    for (let i = 0; i < this.cars.length; i++) {
-      // 최대전진거리와 같으면 winners 배열에 추가
-      if (this.cars[i].distance === maxPosition) {
-        winners.push(this.cars[i].name);
-      }
-    }
-
-    return winners;
-  }
-
-  winner() {
-    // 최종 우승자 출력 함수
-    const winner = this.getWinners();
-    MissionUtils.Console.print(`최종 우승자 : ${winner.join(",")}`);
-  }
 }
-
-export default App;
