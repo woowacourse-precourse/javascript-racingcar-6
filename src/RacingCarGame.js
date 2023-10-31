@@ -13,7 +13,7 @@ class RacingCarGame {
     this.#racingCars = new RacingCars(carNameList);
     this.#repeatMovement(attemptCount);
 
-    Console.print(this.#makeFinalWinnerString());
+    Console.print(this.#racingCars.getWinners());
   }
 
   #repeatMovement(attemptsCount) {

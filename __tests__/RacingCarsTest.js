@@ -1,5 +1,6 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import RacingCars from '../src/RacingCars.js';
+import { MESSAGE } from '../src/constants/Constant.js';
 
 const mockRandoms = (numbers) => {
   MissionUtils.Random.pickNumberInRange = jest.fn();
@@ -29,17 +30,17 @@ describe('RacingCars 클래스 테스트', () => {
     {
       names: ['pobi'],
       randoms: [4],
-      outputs: ['pobi'],
+      outputs: `${MESSAGE.finalWinner} pobi`,
     },
     {
       names: ['pobi', 'yuna', 'lisa'],
       randoms: [1, 9, 2],
-      outputs: ['yuna'],
+      outputs: `${MESSAGE.finalWinner} yuna`,
     },
     {
       names: ['pobi', 'yuna', 'lisa'],
       randoms: [8, 9, 2],
-      outputs: ['pobi', 'yuna'],
+      outputs: `${MESSAGE.finalWinner} pobi, yuna`,
     },
   ])('이동 횟수를 비교해서 우승자를 가려내는 기능 테스트', ({ names, randoms, outputs }) => {
     // given
