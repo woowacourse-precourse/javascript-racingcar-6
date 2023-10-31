@@ -1,3 +1,4 @@
+import App from "../src/App.js";
 import InputView from "../src/view/InputView.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 
@@ -8,6 +9,19 @@ const mockQuestions = (inputs) => {
     const input = inputs.shift();
     return Promise.resolve(input);
   });
+};
+
+const mockRandoms = (numbers) => {
+  MissionUtils.Random.pickNumberInRange = jest.fn();
+  numbers.reduce((acc, number) => {
+    return acc.mockReturnValueOnce(number);
+  }, MissionUtils.Random.pickNumberInRange);
+};
+
+const getLogSpy = () => {
+  const logSpy = jest.spyOn(MissionUtils.Console, "print");
+  logSpy.mockClear();
+  return logSpy;
 };
 
 describe("기능1 - 경주 참여 자동차 이름 받기", () => {
@@ -61,4 +75,35 @@ describe("기능2 - 자동차 경주 게임 시도 횟수 받기", () => {
       await expect(InputView.readAttemptsCount()).rejects.toThrow("[ERROR]");
     },
   );
+});
+
+describe("기능4 - 게임 결과", () => {
+  test("우승자가 여러명일 경우 그대로 출력", async () => {
+    const MOVING_FORWARD = 4;
+    const inputs = ["pobi,woni", "1"];
+    const randoms = [MOVING_FORWARD, MOVING_FORWARD];
+    const winners = "최종 우승자 : pobi, woni";
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    const app = new App();
+    await app.play();
+
+    expect(logSpy).toHaveBeenCalledWith(winners);
+  });
+
+  test("우승자가 1명일 경우 그대로 출력", async () => {
+    const inputs = ["pobi,woni", "1"];
+    const winner = ["pobi"];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+
+    const app = new App();
+    await app.play();
+
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(winner[0]));
+  });
 });
