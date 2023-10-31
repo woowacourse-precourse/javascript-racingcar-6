@@ -1,13 +1,14 @@
 import { Random, Console } from '@woowacourse/mission-utils';
+import { INPUT_MESSAGE, ERROR_MESSAGE, RESULT_MESSAGE } from './Message';
 class App {
   async play() {
     try {
       let players = await this.userInput(1);
       this.validateInputPlayers(players);
       players = players = players.split(',');
-      console.log(players);
       const games = await this.userInput(2);
       this.validateGames(games);
+      this.startGame(players, games);
     } catch (e) {
       return Promise.reject(e);
     }
@@ -15,51 +16,56 @@ class App {
   userInput(type) {
     let input;
     if (type === 1) {
-      input = Console.readLineAsync(
-        '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)'
-      );
+      input = Console.readLineAsync(INPUT_MESSAGE.PLAYERS);
     } else if (type === 2) {
-      input = Console.readLineAsync('시도할 횟수는 몇 회인가요?');
+      input = Console.readLineAsync(INPUT_MESSAGE.GAMES);
     }
     return input;
   }
   validateInputPlayers(input) {
     const players = input.split(',');
     if (players.length < 2) {
-      throw new Error('플레이어는 1명 이상입력해주세요');
+      this.ExceptionOccurred('number_of_players');
     }
     players.map((player) => this.validatePlayer(player));
-    // console.log('올바른 입력입니다.');
     return players;
   }
   validatePlayer(player) {
     console.log(player);
     if (player.trim() === '') {
-      this.ExceptionOccurred();
+      this.ExceptionOccurred('common');
     }
     if (player.length > 5) {
-      this.ExceptionOccurred();
+      this.ExceptionOccurred('length');
     }
   }
   validateGames(input) {
     if (isNaN(input)) {
-      this.ExceptionOccurred();
+      this.ExceptionOccurred('type');
     }
   }
-  ExceptionOccurred() {
-    throw new Error('[ERROR] 잘못된 입력입니다.');
+  ExceptionOccurred(type) {
+    if (type === 'common') {
+      throw new Error(ERROR_MESSAGE.COMMON);
+    } else if (type === 'length') {
+      throw new Error(ERROR_MESSAGE.LENGTH);
+    } else if (type === 'type') {
+      throw new Error(ERROR_MESSAGE.TYPE);
+    } else if ((type = 'number_of_players')) {
+      throw new Error(ERROR_MESSAGE.NUMBER_OF_PLAYERS);
+    }
   }
   startGame(players, games) {
     let playersMove = new Array(players.length);
     playersMove.fill(0);
-    Console.print('실행 결과');
+    Console.print(RESULT_MESSAGE.ROUND);
     for (let i = 0; i < Number(games); i++) {
       playersMove = this.moveOrWait(players, playersMove);
       this.printRound(players, playersMove);
       Console.print(' ');
     }
     const winner = this.printWinner(players, playersMove);
-    Console.print('최종우승자 : ' + winner.join(', '));
+    Console.print(RESULT_MESSAGE.WINNERS + winner.join(', '));
   }
   moveOrWait(players, playersMove) {
     for (let i = 0; i < players.length; i++) {
@@ -86,7 +92,7 @@ class App {
   }
   printWinner(players, playersMove) {
     const maxMove = Math.max(...playersMove);
-    console.log(maxMove);
+    // console.log(maxMove);
     let winner = [];
     for (let i = 0; i < players.length; i++) {
       if (playersMove[i] === maxMove) winner.push(players[i]);
@@ -95,5 +101,5 @@ class App {
   }
 }
 const app = new App();
-app.startGame(['pobi', 'woni', 'jun'], '5');
+app.play();
 export default App;
