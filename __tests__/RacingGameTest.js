@@ -50,4 +50,27 @@ describe("RacingGame 클래스", () => {
       expect(racingGame.cars[1].distance).toBe(4); // 2,4,6,8,10
     });
   });
+
+  describe("getWinners 함수", () => {
+    test("우승자 이름 배열 반환", () => {
+      const racingGame = new RacingGame(["car1", "car2", "car3"], 5);
+      racingGame.cars[0].distance = 5;
+      racingGame.cars[1].distance = 3;
+      racingGame.cars[2].distance = 5;
+
+      const winners = racingGame.getWinners();
+
+      expect(winners).toEqual(["car1", "car3"]);
+    });
+    test("우승자가 없는 경우 빈 배열 반환", () => {
+      const racingGame = new RacingGame(["car1", "car2", "car3"], 5);
+      racingGame.cars[0].distance = 0;
+      racingGame.cars[1].distance = 0;
+      racingGame.cars[2].distance = 0;
+
+      const winners = racingGame.getWinners();
+
+      expect(winners).toEqual([]);
+    });
+  });
 });
