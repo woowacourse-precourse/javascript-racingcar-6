@@ -14,7 +14,7 @@ class Validator {
     }
   }
 
-  static validateAttemptCount(value) {
+  static validateNumberOfRound(value) {
     if (!this.#isBetween(value)) throw new Error(ErrorMessage.ONE_TO_HUNDRED);
   }
 

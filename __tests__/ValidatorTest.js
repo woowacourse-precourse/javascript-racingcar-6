@@ -24,16 +24,16 @@ describe('ValidatorTest', () => {
   });
 
   test('시도할 횟수가 1에서 100 사이의 숫자가 아닌 경우 ONE_TO_HUNDRED 에러 발생', () => {
-    expect(() => Validator.validateAttemptCount(NaN)).toThrow(
+    expect(() => Validator.validateNumberOfRound(NaN)).toThrow(
       ErrorMessage.ONE_TO_HUNDRED,
     );
-    expect(() => Validator.validateAttemptCount(0)).toThrow(
+    expect(() => Validator.validateNumberOfRound(0)).toThrow(
       ErrorMessage.ONE_TO_HUNDRED,
     );
   });
   test('시도할 횟수가 1에서 100 사이의 숫자인 경우 에러 발생하지 않음', () => {
-    expect(() => Validator.validateAttemptCount(1)).not.toThrow();
-    expect(() => Validator.validateAttemptCount(100)).not.toThrow();
-    expect(() => Validator.validateAttemptCount(40)).not.toThrow();
+    expect(() => Validator.validateNumberOfRound(1)).not.toThrow();
+    expect(() => Validator.validateNumberOfRound(100)).not.toThrow();
+    expect(() => Validator.validateNumberOfRound(40)).not.toThrow();
   });
 });
