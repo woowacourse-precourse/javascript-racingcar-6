@@ -3,7 +3,7 @@ const checkLength = (name) => {
     throw new Error("[ERROR]");
   }
 
-  return true;
+  return;
 };
 
 const checkSeparator = (inpuut) => {
@@ -14,4 +14,12 @@ const checkSeparator = (inpuut) => {
   return false;
 };
 
-export { checkLength, checkSeparator };
+const checkIsNumber = (number) => {
+  if (isNaN(number)) {
+    throw new Error("[ERROR] 잘못된 숫자형식입니다.");
+  }
+
+  return;
+};
+
+export { checkLength, checkSeparator, checkIsNumber };

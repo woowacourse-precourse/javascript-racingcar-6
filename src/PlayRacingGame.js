@@ -1,10 +1,11 @@
-import { Console } from "@woowacourse/mission-utils";
-import { checkLength, checkSeparator } from "./validation.js";
+import { Console, Random } from "@woowacourse/mission-utils";
+import { checkLength, checkSeparator, checkIsNumber } from "./validation.js";
 
 class PlayRacingGame {
   play() {
     this.getName();
   }
+
   async getName() {
     const input = await Console.readLineAsync("경주 할 자동차 이름(이름은 쉼표(,) 기준으로 구분)\n");
 
@@ -12,11 +13,44 @@ class PlayRacingGame {
       const names = input.split(",");
 
       names.map((ele) => {
-        checkLength(ele);
+        try {
+          checkLength(ele);
+        } catch (e) {
+          console.error(e);
+        }
       });
+
+      this.racing(names);
     } else {
       checkLength(input);
     }
+  }
+
+  async getNumber() {
+    const num = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+
+    checkIsNumber(num);
+
+    return Number(num);
+  }
+
+  async racing(names) {
+    const number = await this.getNumber();
+    const cnt = new Array(names.length).fill(0);
+
+    for (let i = 0; i < number; i++) {
+      for (let j = 0; j < names.length; j++) {
+        let randomNumber = this.makeRandomNumber();
+
+        if (randomNumber >= 4) {
+          cnt[j] += 1;
+        }
+      }
+    }
+  }
+
+  makeRandomNumber() {
+    return Random.pickNumberInRange(0, 9);
   }
 }
 
