@@ -1,17 +1,19 @@
-import { parse } from "@babel/core";
 import {Random, Console} from "@woowacourse/mission-utils";
 
 class App {
   async play() {
-    const carName = await getCarInput();
+    const carNamesBeforeParsing = await getCarInput();
     const carPositions = {};//setting cars' position 
-    console.log(carName);
-    let carNames = parsing(carName);
+    console.log(carNamesBeforeParsing);
+    let carNames = parsing(carNamesBeforeParsing);
     console.log(carNames[0]);
     const tryNum = await getTryNumInput();
     console.log(tryNum);
-    
-    
+
+    for(let i=0; i<tryNum; i++){
+      positionLoop(carNames, carPositions);
+    }
+    console.log(carPositions);
   }
 }
 
@@ -50,7 +52,7 @@ function validate(carName){
 
 
 function getRandom(){
-  let dice = Random.pickNumberInrange(0,9);
+  let dice = Random.pickNumberInRange(0,9);
   return dice;
 }
 
@@ -62,5 +64,17 @@ function getCheck(dice){
 }
 
 function updateCarPos(carName, carPositions, dice){
+  if (!carPositions[carName]) {
+    carPositions[carName] = 0;
+  }
   carPositions[carName]+=getCheck(dice);
+  console.log(getCheck(dice));
+}
+
+function positionLoop(carNames, carPositions){
+  for(let i=0; i<carNames.length; i++){
+    const dice = getRandom();
+    console.log(dice);
+    updateCarPos(carNames[i], carPositions, dice);
+  }
 }
