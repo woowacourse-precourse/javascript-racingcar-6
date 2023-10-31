@@ -7,24 +7,24 @@ export class GameController {
   constructor({ inputView, outputView, car, attempt }) {
     this.#inputView = inputView;
     this.#car = car;
-    this.#attempt = attempt;
     this.#outputView = outputView;
   }
 
   async start() {
     // 자동차 이름과 시도 횟수 받아오기
-    const carsList = await this.#inputView.getCarNameFromInput();
-    const attempt = await this.#inputView.getAttemptFromInput();
+    const cars = await this.#inputView.getCarsNameFromInput();
+    const attemptCount = await this.#inputView.getAttemptFromInput();
+    for (let i = 0; i < attemptCount; i++) {
+      this.race(cars);
+    }
     // 결과 전달
-    const winners = this.race(carsList, attempt);
+    const winners = this.race(carsList, attemptCount);
     this.#outputView.printWinner(winners);
   }
 
   // 시도 횟수만큼 반복
-  async race() {
-    for (let i = 0; i < this.#attempt; i++) {
-      const result = carsList.moveGenerator(carsList);
-      this.#outputView.printGameResult(result);
-    }
+  async race(cars) {
+    cars.moveAll(); // cars가 도메인 객체라 비즈니스 로직 실행
+    this.#outputView.printGameResult(result);
   }
 }

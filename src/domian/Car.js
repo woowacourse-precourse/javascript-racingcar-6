@@ -2,21 +2,27 @@ import { SYMBOL } from "../constants/constants";
 import InputView from "../view/inputView";
 
 class Car {
-  #car;
+  #name;
+  #distance;
 
-  constructor(car) {
-    this.#car = car;
-    this.progress = 0;
+  constructor(carName) {
+    this.#name = carName;
+    this.#distance = 0;
   }
 
   // 이동 여부 판단 후 이동 결과 반환
-  // ✅ carsList 안을 돌면서 한 자동차마다 결과 반환
-  MoveGenerator(carsList) {
+  // 자동차 한대
+  move() {
     const randomNumber = Random.pickNumberInRange(1, 9);
     if (randomNumber > 4) {
-      this.progress++;
+      this.distance++;
     }
-    return progress;
+    return this.distance;
+  }
+  //getter: name을 밖으로 빼서 쓸 수 있게, 외부에서 읽기만 가능하게(읽기 전용)
+  // 함수지만 프로퍼티로
+  get name() {
+    return this.#name;
   }
 }
 
