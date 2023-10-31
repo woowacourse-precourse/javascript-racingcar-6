@@ -1,21 +1,19 @@
 import ERROR_MESSAGE from '../../../src/constants/error.js';
 import { Car, Track, User } from '../../../src/domain/index.js';
+import DUMMY_INPUTS from '../../constants/dummy.js';
 
 describe('Track 예외 테스트', () => {
-  it.each([
-    { users: User.of('레이서') },
-    { users: true },
-    { users: {} },
-    { users: 1 },
-    { users: '문자열' },
-  ])('입력받은 `users`가 배열이 아닐 경우 에러를 발생시킨다.', ({ users }) => {
-    expect(() => {
-      // given & when
-      Track.of(users, 5);
+  it.each(DUMMY_INPUTS.withoutArray)(
+    '입력받은 `users`가 배열이 아닐 경우 에러를 발생시킨다.',
+    ({ input }) => {
+      expect(() => {
+        // given & when
+        Track.of(input, 5);
 
-      // then
-    }).toThrow(ERROR_MESSAGE.track.isNotArrayUsers);
-  });
+        // then
+      }).toThrow(ERROR_MESSAGE.track.isNotArrayUsers);
+    },
+  );
 
   it.each([
     { users: [User.of('레이서'), '레이서2'] },
@@ -44,13 +42,13 @@ describe('Track 예외 테스트', () => {
     }).toThrow(ERROR_MESSAGE.track.isDuplicatedUserName);
   });
 
-  it.each([{ lap: '1' }, { lap: {} }, { lap: [] }, { lap: undefined }, { lap: true }])(
+  it.each(DUMMY_INPUTS.withoutNumber)(
     '입력받은 `lap`이 숫자가 아닐 경우 에러를 발생시킨다.',
-    ({ lap }) => {
+    ({ input }) => {
       expect(() => {
         // given & when
         const users = [User.of('레이서')];
-        Track.of(users, lap);
+        Track.of(users, input);
 
         // then
       }).toThrow(ERROR_MESSAGE.track.isNotNumberLap);

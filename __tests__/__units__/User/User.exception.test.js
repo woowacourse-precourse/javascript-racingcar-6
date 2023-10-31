@@ -1,5 +1,6 @@
 import ERROR_MESSAGE from '../../../src/constants/error.js';
 import User from '../../../src/domain/User.js';
+import DUMMY_INPUTS from '../../constants/dummy.js';
 
 describe('User 예외 테스트', () => {
   it.each([{ name: '' }, { name: ' ' }, { name: '   ' }])(
@@ -14,21 +15,17 @@ describe('User 예외 테스트', () => {
     },
   );
 
-  it.each([
-    { name: 12 },
-    { name: true },
-    { name: null },
-    { name: {} },
-    { name: [] },
-    { name: undefined },
-  ])('입력받은 값이 문자열이 아닐 경우 에러를 발생시킨다. (input: $input)', ({ name }) => {
-    expect(() => {
-      // given & when
-      User.of(name);
+  it.each(DUMMY_INPUTS.withoutString)(
+    '입력받은 값이 문자열이 아닐 경우 에러를 발생시킨다. (input: $input)',
+    ({ input }) => {
+      expect(() => {
+        // given & when
+        User.of(input);
 
-      // then
-    }).toThrow(ERROR_MESSAGE.user.isNotStringName);
-  });
+        // then
+      }).toThrow(ERROR_MESSAGE.user.isNotStringName);
+    },
+  );
 
   it.each([{ name: 'jackson' }, { name: 'cooper' }])(
     '입력받은 값이 5자 이상일 경우 에러를 발생시킨다.',
