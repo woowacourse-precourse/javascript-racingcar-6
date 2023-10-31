@@ -12,6 +12,11 @@ export const RACING_CAR = Object.freeze({
   MOVE_NUMBER: 4,
 });
 
+export const RANDOM_NUMBER = Object.freeze({
+  START: 0,
+  END: 9,
+});
+
 export const RACING_ERROR = Object.freeze({
   MIN_CAR_NAME: 1,
   MAX_CAR_NAME: 5,
