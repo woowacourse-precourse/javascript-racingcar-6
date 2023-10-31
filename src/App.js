@@ -14,10 +14,15 @@ class App {
       (input) => (this.turn = input)
     );
   }
+  splitRacingCarBy(ch) {
+    const racingCars = this.name.split(ch);
+    console.log(racingCars);
+  }
 
   async play() {
     await this.readUserRacingCars();
     await this.readUserRacingTry();
+    this.splitRacingCarBy(",");
   }
 }
 const app = new App();
