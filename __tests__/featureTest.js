@@ -1,5 +1,6 @@
 import App from "../src/App.js";
 import InputView from "../src/view/InputView.js";
+import ModelView from "../src/modelView/RaceCarModel.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 const mockQuestions = (inputs) => {
@@ -75,6 +76,24 @@ describe("기능2 - 자동차 경주 게임 시도 횟수 받기", () => {
       await expect(InputView.readAttemptsCount()).rejects.toThrow("[ERROR]");
     },
   );
+});
+
+describe("기능3 - 게임 진행", () => {
+  test("랜덤값이 4이상일 경우 '-'반환", async () => {
+    const input = ["6"];
+
+    mockRandoms(input);
+
+    expect(ModelView.calcMovementCount()).toBe("-");
+  });
+
+  test("랜덤값이 3이하일 경우 ''반환", async () => {
+    const input = ["3"];
+
+    mockRandoms(input);
+
+    expect(ModelView.calcMovementCount()).toBe("");
+  });
 });
 
 describe("기능4 - 게임 결과", () => {
