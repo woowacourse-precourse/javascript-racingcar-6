@@ -2,6 +2,15 @@ import REGEXS from '../constants/regexs';
 import { ERROR_MESSAGE } from '../constants/messages';
 
 class ErrorHandler {
+  static validateInput(inputStr) {
+    if (REGEXS.WHITE_SPACE.test(inputStr)) {
+      throw new Error(ERROR_MESSAGE.NO_WHITE_SPACE);
+    }
+    if (REGEXS.SPECIAL_CHARACTER.test(inputStr)) {
+      throw new Error(ERROR_MESSAGE.NO_SPECIAL_CHARACTER);
+    }
+  }
+
   static validateRacingCarName(carNameList) {
     if (carNameList.length === 1) {
       throw new Error(ERROR_MESSAGE.CAR_LIST_MINIMUM);
@@ -17,6 +26,7 @@ class ErrorHandler {
   }
 
   static validatePlayCount(playCount) {
+    this.validateInput(playCount);
     if (!REGEXS.NUMBER.test(playCount)) {
       throw new Error(ERROR_MESSAGE.NO_NUMERIC);
     }

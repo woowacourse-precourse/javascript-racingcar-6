@@ -1,5 +1,6 @@
 import { Console, Random } from '@woowacourse/mission-utils';
 import { PRINT_MESSAGE } from '../constants/messages';
+import OPTIONS from '../constants/options';
 
 class RacingGame {
   constructor({ racingCars, playCount }) {
@@ -20,8 +21,11 @@ class RacingGame {
 
   countScore() {
     this.racingCars.forEach((_, index) => {
-      const randomNumber = Random.pickNumberInRange(0, 9);
-      if (randomNumber >= 4) {
+      const randomNumber = Random.pickNumberInRange(
+        OPTIONS.MIN_NUM,
+        OPTIONS.MAX_NUM,
+      );
+      if (randomNumber >= OPTIONS.FORWARD_MINIMUM) {
         this.racingCars[index].score += 1;
       }
     });
@@ -30,14 +34,14 @@ class RacingGame {
   printScore() {
     this.racingCars.forEach((racingCar) => {
       const score = PRINT_MESSAGE.SCORE_BAR.repeat(racingCar.score);
-      Console.print(PRINT_MESSAGE.formatCarInfo(racingCar.carName, score));
+      Console.print(PRINT_MESSAGE.formatCarScore(racingCar.carName, score));
     });
     Console.print(PRINT_MESSAGE.NEW_LINE);
   }
 
   printWinner() {
     const winner = this.getWinnerList();
-    Console.print(PRINT_MESSAGE.formatWinners(winner));
+    Console.print(PRINT_MESSAGE.winnerList(winner));
   }
 
   getWinnerList() {

@@ -17,6 +17,7 @@ class RacingGameInputManager {
 
   async getRacingCars() {
     const carName = await Console.readLineAsync(INPUT_MESSAGE.INPUT_CAR_NAME);
+    ErrorHandler.validateInput(carName);
     const carNameList = carName.split(',');
     ErrorHandler.validateRacingCarName(carNameList);
     return this.initializeRacingCars(carNameList);
