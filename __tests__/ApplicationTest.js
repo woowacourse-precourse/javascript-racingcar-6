@@ -1,4 +1,4 @@
-import App from "../src/App.js";
+import App ,{ Car } from "../src/App.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 const mockQuestions = (inputs) => {
@@ -59,4 +59,22 @@ describe("자동차 경주 게임", () => {
     // then
     await expect(app.play()).rejects.toThrow("[ERROR]");
   });
+
+  test("시도할 횟수가 숫자가 아닐 경우의 예외 처리", async () => {
+    const app = new App();
+    const notNumber = "abc";
+    MissionUtils.Console.readLineAsync.mockResolvedValue(notNumber);
+
+    await expect(app.getCycleCountInput()).rejects.toThrow("[ERROR]");
+  });
+
+  test("carValidator의 Car Class 생성",()=>{
+    const app = new App();
+    const cars = '멍멍이,다람쥐,고양이'
+    app.carValidator(cars)
+
+    app.carArray.forEach((car)=>{
+      expect(car).toBeInstanceOf(Car)
+    })
+  })
 });
