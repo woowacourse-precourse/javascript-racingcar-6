@@ -32,7 +32,7 @@ function checkDuplication(carNames) {
  * @throws 사용자가 잘못된 값을 입력했을 경우 throw Error
  */
 export default function validateCarNames(carNamesInput) {
-  const carNamesWithoutSpace = carNamesInput.replace(/(\s*)/g, '');
+  const carNamesWithoutSpace = String(carNamesInput).replace(/(\s*)/g, '');
   const carNames = carNamesWithoutSpace.split(",");
 
   checkDuplication(carNames);
