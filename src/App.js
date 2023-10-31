@@ -1,4 +1,4 @@
-import { Console } from '@woowacourse/mission-utils';
+import { Console, MissionUtils } from '@woowacourse/mission-utils';
 import * as error from './Error.js';
 
 class App {
@@ -19,19 +19,18 @@ class App {
       });
 
       await this.checkRacingCarNameInputError(racingCar);
-      await this.getTryCount();
+      await this.getTryCount(racingCar);
     } catch (error) {
       throw error;
     }
   }
 
-  async getTryCount() {
+  async getTryCount(racingCar) {
     try {
-      const tryCnt = await Console.readLineAsync(
-        '시도할 횟수는 몇 회인가요?\n'
-      );
+      let tryCnt = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
 
       await this.checkTryCountError(parseInt(tryCnt, 10));
+      await this.playRacingCarGame(racingCar, parseInt(tryCnt, 10));
     } catch (error) {
       throw error;
     }
@@ -51,6 +50,44 @@ class App {
     if (tryCnt === 0) throw Error(error.INPUT_CNT_ZERO_ERROR_MESSAGE);
     if (!/[1-9]/.test(tryCnt))
       throw Error(error.INPUT_CNT_NOT_NUMBER_ERROR_MESSAGE);
+  }
+
+  async playRacingCarGame(racingCar, tryCnt) {
+    Console.print('실행 결과');
+
+    while (tryCnt--) {
+      racingCar.forEach((value, key) => {
+        this.printForwardSign(racingCar, key);
+      });
+      Console.print('\n');
+    }
+    await this.chooseWinner(racingCar);
+  }
+
+  printForwardSign(racingCar, key) {
+    let forwardSign = '';
+    let randomForwardVal = MissionUtils.Random.pickNumberInRange(0, 9);
+
+    for (let i = 0; i < randomForwardVal; i++) {
+      forwardSign += '-';
+    }
+    Console.print(`${key} : ${forwardSign}`);
+
+    if (randomForwardVal >= 4)
+      racingCar.set(key, racingCar.get(key) + randomForwardVal);
+  }
+
+  async chooseWinner(racingCar) {
+    let winnerList = [...racingCar.entries()].reduce((prev, current) =>
+      prev[1] > current[1] ? prev : current
+    )[0];
+
+    racingCar.forEach((value, key) => {
+      if (racingCar.get(winnerList) === value && winnerList !== key)
+        winnerList += `, ${key}`;
+    });
+
+    Console.print('최종 우승자 : ' + winnerList);
   }
 }
 
