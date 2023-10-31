@@ -1,6 +1,5 @@
 /* eslint-disable max-lines-per-function */
-import isValidCarName from '../../src/common/utils/carNameValidator';
-import isValidTryNumber from '../../src/common/utils/tryNumberValidator';
+import { isValidCarName, isValidTryCount } from '../../src/common/validator.js';
 
 describe('자동차 이름 유효성 검사', () => {
   const validCarNames = ['Tesla,Volvo', '테슬라,메르세데스', '##,!@#$'];
@@ -41,15 +40,15 @@ describe('자동차 이름 유효성 검사', () => {
 
 describe('시도 횟수 유효성 검사', () => {
   test('0부터 9까지 1자리의 숫자로만 입력', () => {
-    const validTryNumbers = [0, 5, 9];
-    const invalidTryNumbers = [-1, 10, 'abc', '@'];
+    const validTryCounts = [0, 5, 9];
+    const invalidTryCounts = [-1, 10, 'abc', '@'];
 
-    validTryNumbers.forEach((tryNumber) => {
-      expect(isValidTryNumber(tryNumber)).toBe(true);
+    validTryCounts.forEach((tryCount) => {
+      expect(isValidTryCount(tryCount)).toBe(true);
     });
 
-    invalidTryNumbers.forEach((tryNumber) => {
-      expect(isValidTryNumber(tryNumber)).toBe(false);
+    invalidTryCounts.forEach((tryCount) => {
+      expect(isValidTryCount(tryCount)).toBe(false);
     });
   });
 });

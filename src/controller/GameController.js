@@ -1,13 +1,10 @@
 import Car from '../model/Car.js';
-import generateRandomNumber from '../common/utils/randomGenerator.js';
-import { getUserInputCarName, getUserInputTryNumber } from '../view/inputView.js'
+import generateRandomNumber from '../common/generator.js';
+import { getUserInputCarName, getUserInputTryCount } from '../view/inputView.js'
 import { printResult, printCar, printWinner } from '../view/outputView.js';
-import throwError from '../common/utils/errorHandler.js';
-import isValidCarName from '../common/utils/carNameValidator.js';
-import isValidTryNumber from '../common/utils/tryNumberValidator.js';
-import { ERROR_MESSAGE } from '../common/utils/constants/message.js';
-import { STRING, NUMBER } from '../common/utils/constants/value.js';
-import printMessage from '../common/utils/messagePrinter.js';
+import { isValidCarName, isValidTryCount } from '../common/validator.js';
+import { GAME_SETTING, ERROR_MESSAGE } from '../common/constants.js';
+import { printMessage, throwError } from '../common/utils.js';
 
 class GameController {
 
@@ -16,7 +13,7 @@ class GameController {
   moveCarForwardOrStop() {
     this.cars.forEach((car) => {
       const randomNumber = generateRandomNumber();
-      if (randomNumber >= NUMBER.MOVE_FORWARD_REQUIREMENT) {
+      if (randomNumber >= GAME_SETTING.MOVE_FORWARD_REQUIREMENT) {
         car.moveForward();
       }
     });
@@ -26,12 +23,12 @@ class GameController {
     this.cars.forEach((car) => {
       printCar(car.getName(), car.getPosition());
     });
-    printMessage(STRING.BLANK_SPACE);
+    printMessage(GAME_SETTING.BLANK_SPACE);
   }
 
-  raceCar(tryNumber) {
+  raceCar(tryCount) {
     printResult();
-    for (let i = 0; i < tryNumber; i += 1) {
+    for (let i = 0; i < tryCount; i += 1) {
       this.moveCarForwardOrStop();
       this.printForwardCarName();
     }
@@ -45,13 +42,13 @@ class GameController {
     return winnerArray;
   }
 
-  async handleTryNumber() {
-    const tryNumber = await getUserInputTryNumber();
-    if (!isValidTryNumber(tryNumber)) {
+  async handleTryCount() {
+    const tryCount = await getUserInputTryCount();
+    if (!isValidTryCount(tryCount)) {
       throwError(ERROR_MESSAGE.INCORRECT_TRY_NUMBER);
-      return this.handleTryNumber();
+      return this.handleTryCount();
     }
-    return tryNumber;
+    return tryCount;
   }
 
   async setCars() {
@@ -67,8 +64,8 @@ class GameController {
 
   async play() {
     await this.setCars();
-    const tryNumber = await this.handleTryNumber();
-    this.raceCar(tryNumber);
+    const tryCount = await this.handleTryCount();
+    this.raceCar(tryCount);
     const winner = this.getWinner();
     printWinner(winner);
   }
