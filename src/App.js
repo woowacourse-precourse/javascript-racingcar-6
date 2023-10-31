@@ -6,6 +6,14 @@ class App {
   carNumberOfMove = [];
   tryCount = 0;
 
+  printRacingState() {
+    for (let i = 0; i < this.carNames.length; i++) {
+      Console.print(
+        `${this.carNames[i]} : ${"-".repeat(this.carNumberOfMove[i])}`
+      );
+    }
+  }
+
   moveForwardOrStop() {
     for (let i = 0; i < this.carNames.length; i++) {
       const number = Random.pickNumberInRange(0, 9);
@@ -38,15 +46,13 @@ class App {
     this.carNames = await this.inputCarNames();
     this.tryCount = await this.inputTryCount();
   }
-  async startRace() {
+  async start() {
     await this.input();
     this.resetToZero();
-    this.moveForwardOrStop();
-
-    console.log(this.carNumberOfMove);
+    this.racing();
   }
   async play() {
-    this.startRace();
+    this.start();
   }
 }
 
