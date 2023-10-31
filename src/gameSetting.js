@@ -19,4 +19,25 @@ const setRacer = async () => {
   racerList.forEach(racer => racerMap.set(racer, 0));
   return racerMap;
 };
-await setRacer();
+
+const checkRound = round => {
+  const numberRound = Number(round);
+  if (Number.isNaN(numberRound)) throw new Error(ERROR_MESSAGE.roundTypeError);
+  if (round <= 0) throw new Error(ERROR_MESSAGE.roundRangeError);
+  if (numberRound !== parseInt(numberRound, 10))
+    throw new Error(ERROR_MESSAGE.roundIntegerError);
+  return true;
+};
+const setRound = async () => {
+  const round = await Console.readLineAsync(MESSAGE.inputRoundMessage);
+  checkRound(round);
+  return round;
+};
+
+const gameSetting = async () => {
+  const racerMap = await setRacer();
+  const round = await setRound();
+  return { racerMap, round };
+};
+
+export default gameSetting;
