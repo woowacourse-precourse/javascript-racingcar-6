@@ -6,6 +6,7 @@ class App {
   }
   async play() {
     await this.carnameinput.carName();
+    return;
   }
 }
 
