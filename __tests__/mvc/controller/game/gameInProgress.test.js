@@ -1,5 +1,5 @@
-import gameInProgress from "../../../../src/mvc/controller/game/gameInProgress";
-import ProgressOutput from "../../../../src/mvc/view/output/ProgressOutput";
+import GameInProgress from "../../../../src/mvc/controller/game/gameInProgress";
+import ProgressOutput from "../../../../src/mvc/view/output/progressOutput";
 import testName from "../../../../src/mvc/constants/testName";
 
 describe("RacingGame gameInProgress 테스트", () => {
@@ -8,7 +8,8 @@ describe("RacingGame gameInProgress 테스트", () => {
     const keyValue = [{ [testName.carOne]: "-", [testName.carTwo]: "", [testName.carThree]: "--" }];
     ProgressOutput.gameInProgressPrint = jest.fn();
     // when
-    gameInProgress(keyValue);
+    const gameInProgress = new GameInProgress();
+    gameInProgress.progress(keyValue);
     // then
     keyValue.forEach((value) => {
       const name = Object.keys(value)[0];

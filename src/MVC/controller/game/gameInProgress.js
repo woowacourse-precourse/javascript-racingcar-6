@@ -1,11 +1,12 @@
-import ProgressOutput from "../../view/output/ProgressOutput.js";
+import progressOutput from "../../view/output/progressOutput.js";
 
-const gameInProgress = (keyValue) => {
-  keyValue.forEach((value) => {
-    const name = Object.keys(value)[0];
-    const hyphen = value[name];
-    ProgressOutput.gameInProgressPrint(name, hyphen);
-  });
-};
-
-export default gameInProgress;
+class GameInProgress { 
+  progress(keyValue) {
+    keyValue.forEach((value) => {
+      const name = Object.keys(value)[0];
+      const hyphen = value[name];
+      progressOutput.gameInProgressPrint(name, hyphen);
+    });
+  }
+}
+export default GameInProgress;

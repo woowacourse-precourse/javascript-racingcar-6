@@ -1,24 +1,26 @@
 import { Console } from "@woowacourse/mission-utils";
 import GAME_MESSAGE from "../Constants/gameMessage.js";
 import SYMBOLS from "../Constants/symbols.js";
-import nameToKeyValueConverter from "../controller/game/nameToKeyValueConverter.js";
-import HyphenAdd from "../controller/game/HyphenAdd.js";
-import gameInProgress from "../controller/game/gameInProgress.js";
-import Winner from "../controller/game/Winner.js";
+import NameToKeyValueConverter from "../controller/game/nameToKeyValueConverter.js";
+import HyphenAdd from "../controller/game/hyphenAdd.js";
+import GameInProgress from "../controller/game/gameInProgress.js";
+import Winner from "../controller/game/winner.js";
 
 class RacingGame {
   constructor() {
+    this.nameToKeyValueConverter = new NameToKeyValueConverter();
     this.hyphenAdd = new HyphenAdd();
+    this.gameInProgress = new GameInProgress();
     this.winner = new Winner();
   }
 
   racing(nameSplit, number) {
     Console.print(`${SYMBOLS.emptyString}`);
-    const keyValue = nameToKeyValueConverter(nameSplit);
+    const keyValue = this.nameToKeyValueConverter.converter(nameSplit);
     Console.print(`${GAME_MESSAGE.result}`);
     for (let i = 0; i < number; i++) {
       this.hyphenAdd.Add(keyValue);
-      gameInProgress(keyValue);
+      this.gameInProgress.progress(keyValue);
       Console.print(SYMBOLS.emptyString);
     }
     return this.winner.whoWinner(keyValue);
