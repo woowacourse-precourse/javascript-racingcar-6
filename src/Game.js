@@ -33,5 +33,22 @@ class Game {
 
     this.#moveCount = inputCount;
   }
+
+  // 각 차들을 조회해서 4이상이면 go 아니면 멈춤
+  async #race() {
+    // 출력
+    for (let [name, distance] of this.#cars) {
+      const isMoving = SET_MOVE_CONDITION <= Random.pickNumberInRange(0, 9);
+      if (isMoving) {
+        this.#cars.set(name, distance + 1);
+        if (this.#maxDistance < this.#cars.get(name)) {
+          this.#maxDistance = this.#cars.get(name);
+        }
+      }
+
+      Console.print(PRINT.MESSAGE.EXECUTION_RESULT(name, this.#cars.get(name)));
+    }
+    Console.print("\n");
+  }
 }
 export default Game;
