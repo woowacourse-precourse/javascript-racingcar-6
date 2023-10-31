@@ -8,30 +8,21 @@ const OUTPUT_WINNERS_MSG = '최종 우승자 : ';
 
 class App {
   async getCarNameArr() {
-    try {
-      const carNames = await MissionUtils.Console.readLineAsync(
-        INPUT_CAR_NAMES_MSG
-      );
-      const carNameArr = carNames.split(',');
-      return carNameArr;
-    } catch (error) {
-      MissionUtils.Console.print(INPUT_ERROR_MSG, error);
-      return [];
-    }
+    const carNames = await MissionUtils.Console.readLineAsync(
+      INPUT_CAR_NAMES_MSG
+    );
+    const carNameArr = carNames.split(',');
+    return carNameArr;
   }
 
   async getAttemptTimes() {
-    try {
-      const attemptTimes = Number(
-        await MissionUtils.Console.readLineAsync(INPUT_ATTEMPT_TIMES_MSG)
-      );
-      if (Number.isNaN(attemptTimes)) {
-        throw new Error(INPUT_ERROR_MSG, error);
-      }
-      return attemptTimes;
-    } catch (error) {
+    const attemptTimes = Number(
+      await MissionUtils.Console.readLineAsync(INPUT_ATTEMPT_TIMES_MSG)
+    );
+    if (Number.isNaN(attemptTimes)) {
       throw new Error(INPUT_ERROR_MSG, error);
     }
+    return attemptTimes;
   }
 
   async printShifts(carArr, attemptTimes) {
