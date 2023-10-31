@@ -11,6 +11,7 @@ class UserInputCarName {
     const userInput = await Console.readLineAsync();
     const carNames = userInput.split(",").map((name) => name.trim());
 
+    Console.print(carNames.join(","));
     this.setCarNames(carNames);
   }
 
