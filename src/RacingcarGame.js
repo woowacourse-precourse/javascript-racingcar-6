@@ -5,6 +5,7 @@ class RacingcarGame {
   racingCar;
   tryNumber;
   raceCount;
+
   async start() {
     try {
       const user = new UserInput();
@@ -36,10 +37,16 @@ class RacingcarGame {
   }
 
   printRacingResult() {
-    // 첫번째 실행결과 출력일때만 '실행 결과' 문구를 출력한다.
-    // racingCar 를 순회하며 자동차이름 : 결과를 출력한다.
-    // 결과를 출력할 땐, "-".repeat(number) 을 사용할 수 있다.
-    // 맨 마지막 공백 줄이 있어야 한다.
+    if (this.raceCount === this.tryNumber) {
+      Console.print(Messages.RACE_RESULT);
+    }
+
+    for (let carName in this.racingCar) {
+      Console.print(
+        `${carName} : ${Messages.RACE_MARK.repeat(this.racingCar[carName])}`
+      );
+    }
+    Console.print(`\n`);
   }
 
   printWinner() {
