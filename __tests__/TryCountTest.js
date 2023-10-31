@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import App from '../src/App.js';
+import Inputs from '../src/input/Inputs.js';
 
 const mockInputs = (input) => {
   Console.readLineAsync = jest.fn();
@@ -9,7 +9,7 @@ const mockInputs = (input) => {
 describe('시도할 횟수 입력 테스트', () => {
   const createRacingcarGame = (input) => {
     mockInputs(input);
-    return new App();
+    return new Inputs();
   };
 
   const testInvalidInput = async (input, errorMessage) => {

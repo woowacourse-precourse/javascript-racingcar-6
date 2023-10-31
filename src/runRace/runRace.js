@@ -1,14 +1,17 @@
 import { Console, Random } from '@woowacourse/mission-utils';
-import ReturnWinner from './ReturnWinner.js';
 
 class RunRace {
   constructor() {
     this.progressList = [];
   }
 
-  getRandomMove = () => Random.pickNumberInRange(0, 9);
+  getRandomMove() {
+    return Random.pickNumberInRange(0, 9);
+  }
 
-  getRandomProgress = () => (this.getRandomMove() >= 4 ? '-' : '');
+  getRandomProgress() {
+    return this.getRandomMove() >= 4 ? '-' : '';
+  }
 
   printCarProgress(car, carIndex) {
     return Console.print(`${car} : ${this.progressList[carIndex]}`);
@@ -30,7 +33,7 @@ class RunRace {
       this.runRaceRound(cars);
     }
 
-    new ReturnWinner(cars).printWinners(this.progressList);
+    return this.progressList;
   }
 }
 
