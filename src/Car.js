@@ -1,4 +1,4 @@
-import { Random } from '@woowacourse/mission-utils';
+import { Console, Random } from '@woowacourse/mission-utils';
 import { MOVE_FORWARD_CRITERIA } from './constants.js';
 class Car {
   constructor(name) {
@@ -6,13 +6,22 @@ class Car {
     this.moveCount = 0;
   }
 
+  async executeCycle() {
+    const randomNumber = await this.generateRandomNumber();
+    Console.print(randomNumber);
+    if (this.getIsCanMove(randomNumber)) this.updateMoveCount();
+  }
+
   async generateRandomNumber() {
     return await Random.pickNumberInRange(0, 9);
   }
 
-  async getIsCanMove() {
-    const randomNumber = await this.generateRandomNumber();
+  async getIsCanMove(randomNumber) {
     return randomNumber >= MOVE_FORWARD_CRITERIA;
+  }
+
+  async updateMoveCount() {
+    this.moveCount += 1;
   }
 }
 
