@@ -9,36 +9,36 @@ describe('Race 클래스', () => {
       {
         name: 'pobi',
         move: jest.fn(),
-        getCurrentPositionRepresentation: jest.fn(),
-        position: 1
+        position: 1,
+        getCarInformation: jest.fn().mockReturnValue({ name: 'pobi', position: 1 }),
       },
       {
         name: 'wono',
         move: jest.fn(),
-        getCurrentPositionRepresentation: jest.fn(),
-        position: 2
+        position: 2,
+        getCarInformation: jest.fn().mockReturnValue({ name: 'wono', position: 2 }),
       },
       {
         name: 'jun',
         move: jest.fn(),
-        getCurrentPositionRepresentation: jest.fn(),
-        position: 3
+        position: 3,
+        getCarInformation: jest.fn().mockReturnValue({ name: 'jun', position: 3 }),
       },
       {
         name: 'huni',
         move: jest.fn(),
-        getCurrentPositionRepresentation: jest.fn(),
-        position: 2
+        position: 2,
+        getCarInformation: jest.fn().mockReturnValue({ name: 'huni', position: 2 }),
       },
       {
         name: 'joe',
         move: jest.fn(),
-        getCurrentPositionRepresentation: jest.fn(),
-        position: 1
-      }
+        position: 1,
+        getCarInformation: jest.fn().mockReturnValue({ name: 'joe', position: 1 }),
+      },
     ];
 
-    race = new Race(mockCars, 5);
+    race = new Race(mockCars);
   });
 
   describe('playRound 메서드', () => {
@@ -55,7 +55,7 @@ describe('Race 클래스', () => {
       const results = race.getRoundResults();
       results.forEach((result, index) => {
         expect(result.name).toBe(mockCars[index].name);
-        expect(result.representation).toBe(mockCars[index].getCurrentPositionRepresentation());
+        expect(result.position).toBe(mockCars[index].position);
       });
     });
   });
