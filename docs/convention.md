@@ -1,8 +1,8 @@
 ## 프로그래밍 요구 사항 
-- [O] Node.js 18.17.1 버전에서 실행 가능해야 합니다. 
-- [O] 외부라이브러리를 사용하지 않습니다. 
-- [O] 프로그램 종료시 `process.exit()`를 호출하지 않습니다.
-- [O] indent는 2 까지만 허용합니다. [eslint max-depth](https://eslint.org/docs/latest/rules/max-depth)
+- [x] Node.js 18.17.1 버전에서 실행 가능해야 합니다. 
+- [x] 외부라이브러리를 사용하지 않습니다. 
+- [x] 프로그램 종료시 `process.exit()`를 호출하지 않습니다.
+- [x] indent는 2 까지만 허용합니다. [eslint max-depth](https://eslint.org/docs/latest/rules/max-depth)
       ```json
       {
         "rules" : {
@@ -12,8 +12,8 @@
       ```
 
 ## 외부 환경 설정하기 
-- [O] vscode setting을 통해 줄끝을 LF로 통일합니다. 
-- [O] ESlint, Prettier을 설정합니다. ESLint에서 air-bnb convention을 설정합니다. 
+- [x] vscode setting을 통해 줄끝을 LF로 통일합니다. 
+- [x] ESlint, Prettier을 설정합니다. ESLint에서 air-bnb convention을 설정합니다. 
 
 ## 기본 규칙 
 - 상수명은 SNAKE_CASE를 사용합니다. 
