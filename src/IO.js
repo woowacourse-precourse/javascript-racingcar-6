@@ -11,7 +11,7 @@ const MESSAGE = {
     WINNER: winners => `${winners.join(', ')}가 최종 우승했습니다.\n`,
     RACING_STATUS: racers =>
       racers
-        .map(racer => `${racer.carName} : ${'-'.repeat(racer.move)}\n`)
+        .map(racer => `${racer.carName} : ${'-'.repeat(racer.move)}`)
         .join('\n')
         .concat('\n'),
   },
