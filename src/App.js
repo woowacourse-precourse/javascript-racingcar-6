@@ -12,6 +12,7 @@ class App {
     await this.getInputCar();
     await this.getInputTry();
     await this.createRacingArray();
+    await this.playRacing();
   }
 
   async getInputCar() {
