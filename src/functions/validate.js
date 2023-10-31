@@ -4,7 +4,6 @@ import {
   MIN_NAME_LENGTH,
 } from '../constants/carNameConstants.js';
 import {
-  ERROR_ATTEMPTS_NOT_NATURAL,
   ERROR_ATTEMPTS,
   ERROR_NAME_LENGTH,
 } from '../constants/messagesConstants.js';
@@ -32,7 +31,8 @@ function isTooBig(number) {
 
 export function validateAttempts(attempts) {
   if (!isNaturalNumber(attempts)) {
-    throw new Error(ERROR_ATTEMPTS_NOT_NATURAL);
+    throw new Error(ERROR_ATTEMPTS);
+  }
 
   if (isTooBig(attempts)) {
     throw new Error(ERROR_ATTEMPTS);

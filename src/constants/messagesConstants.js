@@ -9,6 +9,4 @@ export const RACE_INVALIDATED =
 
 // error messages
 export const ERROR_NAME_LENGTH = '[ERROR] 이름은 5자 이내여야 합니다.';
-export const ERROR_ATTEMPTS_NOT_NATURAL =
-  '[ERROR] 입력 값이 올바르지 않습니다.';
 export const ERROR_ATTEMPTS = `[ERROR] 시도 횟수는 1~${MAX_VALUE_OF_ATTEMPTS} 사이의 숫자여야 합니다.`;
