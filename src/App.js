@@ -10,6 +10,10 @@ class Car {
       this.position += 1;
     }
   }
+
+  carPosition() {
+    return `${this.name}: ${"-".repeat(this.position)}`;
+  }
 }
 
 class App {
@@ -56,10 +60,24 @@ class App {
     return COUNT_NUMBER;
   }
 
+  printResult(COUNT_NUMBER, CARS) {
+    MissionUtils.Console.print("\n");
+    MissionUtils.Console.print("실행 결과");
+
+    for (let count = 1; count <= COUNT_NUMBER; count++) {
+      CARS.forEach((car) => {
+        car.prograss();
+        MissionUtils.Console.print(car.carPosition());
+      });
+      MissionUtils.Console.print("\n");
+    }
+  }
+
   async play() {
     const CARS_ARRAY = await this.inputCarName();
-    await this.saveCarName(CARS_ARRAY);
-    MissionUtils.Console.print(await this.inputCountNumber());
+    const CARS = await this.saveCarName(CARS_ARRAY);
+    const COUNT_NUMBER = await this.inputCountNumber();
+    this.printResult(COUNT_NUMBER, CARS);
   }
 }
 
