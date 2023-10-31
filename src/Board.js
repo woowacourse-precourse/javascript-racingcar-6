@@ -132,8 +132,27 @@ class Board {
     }, []);
   }
 
-  printFinalResult() {
 
+  /**
+   * 최종 우승한 레이싱카의 이름을 출력한다.
+   */
+  printFinalResult() {
+    // TODO: 최종 결과 출력 포맷 작성
+    const winnerNames = this.#getWinnerNames();
+    const finalResult = '최종 우승자 : ' + winnerNames.join(', ');
+    console.log(finalResult);
+  }
+
+  /**
+   * 최종 우승한 레이싱카의 이름을 배열로 반환한다.
+   * @returns {Array<String>} winnerNames
+   */
+  #getWinnerNames() {
+    let winnerNames = []
+    this.#winners.forEach((car) => {
+      winnerNames.push(car.getName());
+    });
+    return winnerNames;
   }
 }
 
