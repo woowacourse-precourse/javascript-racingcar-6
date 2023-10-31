@@ -1,10 +1,11 @@
 import CarNameInput from "./view/input/CarNameInput.js";
 
 class App {
+  constructor() {
+    this.carnameinput = new CarNameInput();
+  }
   async play() {
-    const carnameinput = new CarNameInput();
-    await carnameinput.carName();
-    return;
+    await this.carnameinput.carName();
   }
 }
 
