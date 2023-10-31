@@ -1,4 +1,4 @@
-import { SPACE_ERROR_MESSAGE } from "../constants/error-message.js";
+import { SPACE_ERROR_MESSAGE } from "../constants/message/error.js";
 import InputError from "./InputError.js";
 
 const spacePattern = /\s/g;

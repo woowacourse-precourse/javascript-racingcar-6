@@ -1,7 +1,7 @@
 import {
   ATTEMPT_ERROR_MESSAGE,
   ERROR_PREFIX,
-} from "../../src/constants/error-message";
+} from "../../src/constants/message/error";
 import validateAttemptCount from "../../src/validator/attempt-validator";
 
 describe("시도 횟수에 문제가 없는 경우", () => {

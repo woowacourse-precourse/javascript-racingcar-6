@@ -1,4 +1,4 @@
-import { CAR_NAME_LENGTH } from "./setting.js";
+import { CAR_NAME_LENGTH } from "../setting.js";
 
 const ERROR_PREFIX = "[ERROR] ";
 

@@ -1,7 +1,7 @@
 import {
   ERROR_PREFIX,
   SPACE_ERROR_MESSAGE,
-} from "../../src/constants/error-message";
+} from "../../src/constants/message/error";
 import checkSpace from "../../src/validator/common-validator";
 
 describe("공통으로 사용되는 공백 체크 검증 함수를 확인", () => {

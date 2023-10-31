@@ -1,4 +1,4 @@
-import { CAR_ERROR_MESSAGE } from "../constants/error-message.js";
+import { CAR_ERROR_MESSAGE } from "../constants/message/error.js";
 import { CAR_NAME_LENGTH } from "../constants/setting.js";
 import InputError from "./InputError.js";
 import checkSpace from "./common-validator.js";

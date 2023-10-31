@@ -1,4 +1,4 @@
-import { ATTEMPT_ERROR_MESSAGE } from "../constants/error-message.js";
+import { ATTEMPT_ERROR_MESSAGE } from "../constants/message/error.js";
 import InputError from "./InputError.js";
 import checkSpace from "./common-validator.js";
 

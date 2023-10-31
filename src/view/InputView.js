@@ -1,6 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
 
-import { INPUT_MESSAGE } from "../constants/io-message.js";
+import { INPUT_MESSAGE } from "../constants/message/io.js";
 import validateRacingCarNames from "../validator/car-validator.js";
 import validateAttemptCount from "../validator/attempt-validator.js";
 

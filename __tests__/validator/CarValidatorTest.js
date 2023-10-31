@@ -1,7 +1,7 @@
 import {
   CAR_ERROR_MESSAGE,
   ERROR_PREFIX,
-} from "../../src/constants/error-message";
+} from "../../src/constants/message/error";
 import validateRacingCarNames from "../../src/validator/car-validator";
 
 describe("자동차 이름에 문제가 없는 경우", () => {
