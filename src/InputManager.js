@@ -11,7 +11,7 @@ class InputManager {
 
   async enterTryNum() {
     const input = await Console.readLineAsync(GUIDE_MESSAGES.ENTER_TRYNUM);
-    isValidTryNum(input);
+    return isValidTryNum(input) && Number(input);
   }
 }
 
