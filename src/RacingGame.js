@@ -10,6 +10,10 @@ class RacingGame {
   generateRandomNumber() {
     return MissionUtils.Random.pickNumberInRange(0, 9);
   }
+
+  checkCarCanMove(randomNumber) {
+    return randomNumber >= 4;
+  }
 }
 
 export default RacingGame;
