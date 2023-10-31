@@ -9,11 +9,17 @@ class App {
     const carNameUserInput = await MissionUtils.Console.readLineAsync("");
     //쉼표 기준 분리
     const carNames = carNameUserInput.split(",");
+    console.log(carNames);
 
     //5자 이하인지 확인하기
-    const isNameUpper5 = carNames.every((carName) => carName.length > 5);
+    function isNameLowerThan5(element, index, array) {
+      return element.length <= 5;
+    }
 
     //5자 이상이면 예외 처리
+    if (carNames.every(isNameLowerThan5) === false) {
+      throw new Error("[ERROR] 이름은 5글자 이하여야 합니다.");
+    }
 
     //시도할 횟수 입력받기
     MissionUtils.Console.print("시도할 횟수는 몇 회인가요?");
