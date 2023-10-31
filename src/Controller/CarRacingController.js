@@ -27,14 +27,14 @@ class CarRacingController {
   }
 
   async inputCarName() {
-    let carNameString = await Console.readLineAsync(CONSTANTS.INPUT.CARNAMES);
+    let carNameString = await Console.readLineAsync(CONSTANTS.INPUT.CAR_NAMES);
     Validation.isValidCarName(carNameString);
     Validation.isSameCarName(carNameString);
     this.carRacingModel.setCarData(carNameString);
   }
 
   async inputTrialNumber() {
-    let trialNumber = await Console.readLineAsync(CONSTANTS.INPUT.TRIALNUMBER);
+    let trialNumber = await Console.readLineAsync(CONSTANTS.INPUT.TRIAL_NUMBER);
     Validation.isValidTrialNumber(trialNumber);
     this.carRacingModel.setTrialNumber(trialNumber);
   }

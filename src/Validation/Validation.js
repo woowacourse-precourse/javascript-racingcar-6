@@ -5,13 +5,13 @@ class Validation {
     let isNameTooLong = false;
 
     carNames.forEach((carName) => {
-      if (carName.length > CONSTANTS.ERROR.MAXNAMELENGTH) {
+      if (carName.length > CONSTANTS.ERROR.MAX_NAME_LENGTH) {
         isNameTooLong = true;
       }
     });
 
     if (isNameTooLong) {
-      throw new Error(CONSTANTS.ERROR.NAMETOOLONG);
+      throw new Error(CONSTANTS.ERROR.NAME_TOO_LONG);
     }
   }
 
@@ -21,7 +21,7 @@ class Validation {
     const isSameName = carNameNum !== new Set(carNames).size;
 
     if (isSameName) {
-      throw new Error(CONSTANTS.ERROR.SAMECARNAME);
+      throw new Error(CONSTANTS.ERROR.SAME_CAR_NAME);
     }
   }
 
@@ -29,10 +29,10 @@ class Validation {
     let isNumber = isNaN(Number(trialNumber));
     let isNotPositive = Number(trialNumber) <= 0 ? true : false;
     if (isNumber) {
-      throw new Error(CONSTANTS.ERROR.ISNUMBER);
+      throw new Error(CONSTANTS.ERROR.IS_NUMBER);
     }
     if (isNotPositive) {
-      throw new Error(CONSTANTS.ERROR.ISNUMBER);
+      throw new Error(CONSTANTS.ERROR.IS_NUMBER);
     }
   }
 }

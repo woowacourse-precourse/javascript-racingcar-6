@@ -73,7 +73,7 @@ describe("자동차 경주 게임", () => {
     [-1],
   ])("유효하지 않은 숫자에 대한 예외 처리", async (inputs) => {
     await expect(() => Validation.isValidTrialNumber(inputs)).toThrow(
-      CONSTANTS.ERROR.ISNUMBER
+      CONSTANTS.ERROR.IS_NUMBER
     );
   });
 
