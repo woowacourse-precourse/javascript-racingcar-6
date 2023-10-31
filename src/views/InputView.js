@@ -1,7 +1,7 @@
 import { readLineAsync } from "../utils/console/readLineAsync.js";
 import { GUIDE_MESSAGE } from "../constants/messages.js";
 
-export default class InputView {
+class InputView {
   constructor() {}
 
   // 자동차 이름을 입력받는다.
@@ -16,3 +16,5 @@ export default class InputView {
     return input;
   }
 }
+
+export default InputView;

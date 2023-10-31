@@ -4,7 +4,7 @@ import Validator from "../models/validator.js";
 import InputView from "../views/InputView.js";
 import OutputView from "../views/OutputView.js";
 
-export default class CarRacingGamesControllers {
+class CarRacingGamesControllers {
   constructor() {
     this.carListArr;
     this.numberOfMoves;
@@ -51,3 +51,5 @@ export default class CarRacingGamesControllers {
     OutputView.printFinalWinner(winnerArr);
   }
 }
+
+export default CarRacingGamesControllers;

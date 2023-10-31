@@ -2,7 +2,7 @@ import { printMessage } from "../utils/console/printMessage.js";
 import { GUIDE_MESSAGE } from "../constants/messages.js";
 import { RACING } from "../constants/carRacing.js";
 
-export default class OutputView {
+class OutputView {
   constructor() {}
 
   // 게임 실행 결과를 출력하기 전 안내 문구 출력
@@ -33,3 +33,5 @@ export default class OutputView {
     printMessage(finalResult);
   }
 }
+
+export default OutputView;

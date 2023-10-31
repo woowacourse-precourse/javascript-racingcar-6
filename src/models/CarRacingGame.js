@@ -1,7 +1,7 @@
 import { getRandomNumberInRange } from "../utils/getRandomNumberInRange.js";
 import { RACING } from "../constants/carRacing.js";
 
-export default class CarRacingGames {
+class CarRacingGames {
   constructor() {}
 
   /**
@@ -44,3 +44,5 @@ export default class CarRacingGames {
     return winnerArr;
   }
 }
+
+export default CarRacingGames;

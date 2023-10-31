@@ -1,7 +1,7 @@
 import { CAR_NAMES, CARS, RACING } from "../constants/carRacing.js";
 import { ERROR_MESSAGE } from "../constants/messages.js";
 
-export default class Validator {
+class Validator {
   constructor() {}
 
   /**
@@ -62,3 +62,5 @@ export default class Validator {
     return true;
   }
 }
+
+export default Validator;
