@@ -1,3 +1,5 @@
+import {MissionUtils} from '@woowacourse/mission-utils';
+
 class Car {
   #name;
   #goingCount;
@@ -27,9 +29,13 @@ class Car {
 
   set goingCount(input) {
     if (typeof input !== 'boolean') {
-      throw new Error('[ERROR] Boolean 값이 아님')
+      throw new Error('[ERROR] Boolean 값이 아님');
     }
     if (input) this.#goingCount++;
+  }
+
+  print() {
+    MissionUtils.Console.print(`${this.#name} : ${'-'.repeat(this.#goingCount)}`);
   }
 }
 
