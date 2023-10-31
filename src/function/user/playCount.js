@@ -5,7 +5,7 @@ export const playCount = async () => {
     "시도할 횟수는 몇 회인가요?"
   );
 
-  if (isNaN(userInputValue)) {
+  if (isNaN(userInputValue) || userInputValue <= 0) {
     throw new Error("[ERROR] 잘못된 입력입니다. 숫자를 입력해주세요");
   }
 
