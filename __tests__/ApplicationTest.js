@@ -93,7 +93,7 @@ describe("자동차 경주 게임", () => {
     expect(car.path).toEqual([]);
   });
 
-  test("정지 테스트", async () => {
+  test("board 프린트 테스트", async () => {
     // given
     const MOVING_FORWARD = 4;
     const STOP = 3;
