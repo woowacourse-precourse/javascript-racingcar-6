@@ -1,3 +1,4 @@
+import CONSTANTS from '../constants/index.js';
 import {
   validateBetweenOneAndNine,
   validateName,
@@ -26,9 +27,9 @@ export function parseNumber(str) {
 export function getDistanceToMove(randomNumber) {
   validateBetweenOneAndNine(randomNumber);
 
-  if (randomNumber <= 3) return 0;
+  if (randomNumber <= CONSTANTS.TRESHOLD) return CONSTANTS.STOP;
 
-  return 1;
+  return CONSTANTS.MOVE;
 }
 
 export function getDistanceString(distanceNumber) {
