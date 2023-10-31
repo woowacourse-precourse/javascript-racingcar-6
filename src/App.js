@@ -21,6 +21,10 @@ class App {
     if (this.inputArray.map((data) => data.length > 5).includes(true)) {
       throw new Error("[ERROR] 잘못된 값을 입력하였습니다.");
     }
+
+    if (isNaN(this.movementCount)) {
+      throw new Error("[ERROR] 잘못된 값을 입력하였습니다.");
+    }
   }
 
   getCount() {
@@ -68,6 +72,7 @@ class App {
     this.validate();
 
     this.movementCount = Number(await this.getCount());
+    this.validate();
 
     this.inputArray.map((name) =>
       this.advanceCount.push({ carName: name, advance: 0 })
