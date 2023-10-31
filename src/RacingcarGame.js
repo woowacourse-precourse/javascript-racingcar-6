@@ -1,13 +1,26 @@
 import Car from "./Car.js";
+import UserInput from "./UserInput.js";
 
 class RacingcarGame {
-  racingCar = {};
+  racingCar;
+  tryNumber;
+  raceCount;
   async start() {
-    //UserInput.getCarNames() 으로 자동차 이름을 입력받는다.
-    //UserInput.getTryNumber() 으로 시도 횟수를 입력받는다.
-    // 자동차 이름을 키로, 값을 0으로 갖는 객체 racingCar 를 만든다.
-    // 시도 횟수만큼 반복하여 race()를 호출한다.
-    // 시도 횟수가 종료되면 printWinner()로 우승자를 출력하고 종료한다.
+    try {
+      const user = new UserInput();
+      this.racingCar = await user.getCarNames();
+      this.tryNumber = await user.getTryNumber();
+      this.raceCount = this.tryNumber;
+
+      while (this.raceCount > 0) {
+        this.race();
+        this.raceCount--;
+      }
+
+      this.printWinner();
+    } catch (error) {
+      throw error;
+    }
   }
 
   race() {
