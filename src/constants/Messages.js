@@ -4,6 +4,10 @@ export const INPUT_MESSAGE_FUNCTION = Object.freeze({
   },
 });
 
+export const OUTPUT_MESSAGE = {
+  count: '\n시도할 횟수는 몇 회인가요?',
+};
+
 export const ERROR_MESSAGE = Object.freeze({
   prefix: '[ERROR]',
   duplication: '중복되는 이름은 사용할 수 없습니다.',
