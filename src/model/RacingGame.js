@@ -8,12 +8,12 @@ class RacingGame {
   }
 
   /** @returns {Array} */
-  get getRacingCar() {
+  getRacingCar() {
     return this.racingCar;
   }
 
   /** @param {Array} racingCars  */
-  set setRacingCar(racingCars) {
+  setRacingCar(racingCars) {
     racingCars.forEach((car) => this.racingCar.push(car));
   }
 
