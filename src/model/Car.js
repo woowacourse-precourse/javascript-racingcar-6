@@ -3,7 +3,7 @@ import { Random } from '@woowacourse/mission-utils';
 export default class Car {
   constructor(name) {
     this.name = name;
-    this.move = 0;
+    this.distance = 0;
   }
 
   /**
@@ -15,15 +15,15 @@ export default class Car {
   }
 
   oneStepForward() {
-    this.move += 1;
+    this.distance += 1;
   }
 
   /**
    * 움직인 거리를 반환합니다.
    * @returns {number} [움직인 거리]
    */
-  getMove() {
-    return this.move;
+  getDistance() {
+    return this.distance;
   }
 
   tryToMove() {

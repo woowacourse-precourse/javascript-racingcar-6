@@ -12,7 +12,7 @@ export default class OutputView {
    */
   static printSingleTryResult(carList) {
     carList.forEach((car) => {
-      Console.print(`${car.getName()} : ${'-'.repeat(car.getMove())}`);
+      Console.print(`${car.getName()} : ${'-'.repeat(car.getDistance())}`);
     });
     Console.print('');
   }

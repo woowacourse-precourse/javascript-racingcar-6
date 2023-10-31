@@ -145,7 +145,7 @@ describe('자동차 경주 게임', () => {
       car.oneStepForward();
 
       // then
-      expect(car.getMove()).toBe(3);
+      expect(car.getDistance()).toBe(3);
     });
   });
 });

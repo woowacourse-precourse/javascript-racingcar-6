@@ -21,7 +21,7 @@ export default class Controller {
   singleTry() {
     this.carList.forEach((car) => {
       car.tryToMove();
-      this.MAX_MOVE = Math.max(this.MAX_MOVE, car.getMove());
+      this.MAX_MOVE = Math.max(this.MAX_MOVE, car.getDistance());
     });
     OutputView.printSingleTryResult(this.carList);
   }
@@ -38,7 +38,7 @@ export default class Controller {
   }
 
   findMaxMoveCars() {
-    return this.carList.filter((car) => this.MAX_MOVE === car.getMove());
+    return this.carList.filter((car) => this.MAX_MOVE === car.getDistance());
   }
 
   async run() {
