@@ -1,7 +1,7 @@
-import App from "../src/App.js";
-import { MissionUtils } from "@woowacourse/mission-utils";
+import App from '../src/App.js';
+import { MissionUtils } from '@woowacourse/mission-utils';
 
-const mockQuestions = (inputs) => {
+const mockQuestions = inputs => {
   MissionUtils.Console.readLineAsync = jest.fn();
 
   MissionUtils.Console.readLineAsync.mockImplementation(() => {
@@ -10,7 +10,7 @@ const mockQuestions = (inputs) => {
   });
 };
 
-const mockRandoms = (numbers) => {
+const mockRandoms = numbers => {
   MissionUtils.Random.pickNumberInRange = jest.fn();
   numbers.reduce((acc, number) => {
     return acc.mockReturnValueOnce(number);
@@ -18,18 +18,18 @@ const mockRandoms = (numbers) => {
 };
 
 const getLogSpy = () => {
-  const logSpy = jest.spyOn(MissionUtils.Console, "print");
+  const logSpy = jest.spyOn(MissionUtils.Console, 'print');
   logSpy.mockClear();
   return logSpy;
 };
 
-describe("자동차 경주 게임", () => {
-  test("전진-정지", async () => {
+describe('자동차 경주 게임', () => {
+  test('전진-정지', async () => {
     // given
     const MOVING_FORWARD = 4;
     const STOP = 3;
-    const inputs = ["pobi,woni", "1"];
-    const outputs = ["pobi : -"];
+    const inputs = ['pobi,woni', '1'];
+    const outputs = ['pobi : -'];
     const randoms = [MOVING_FORWARD, STOP];
     const logSpy = getLogSpy();
 
@@ -41,22 +41,64 @@ describe("자동차 경주 게임", () => {
     await app.play();
 
     // then
-    outputs.forEach((output) => {
+    outputs.forEach(output => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
   });
 
-  test.each([
-    [["pobi,javaji"]],
-    [["pobi,eastjun"]]
-  ])("이름에 대한 예외 처리", async (inputs) => {
-    // given
-    mockQuestions(inputs);
+  test.each([[['pobi,javaji']], [['pobi,eastjun']]])(
+    '이름에 대한 예외 처리',
+    async inputs => {
+      // given
+      mockQuestions(inputs);
 
-    // when
+      // when
+      const app = new App();
+
+      // then
+      await expect(app.play()).rejects.toThrow('[ERROR]');
+    },
+  );
+
+  test('이름에 대한 예외 처리 추가', async () => {
     const app = new App();
+    app.carNames = ['', '   ', '123456'];
+    expect(App.isValidCar(app.carNames)).toBe(false);
+  });
 
-    // then
-    await expect(app.play()).rejects.toThrow("[ERROR]");
+  test('횟수가 음수일 때 예외 처리', async () => {
+    expect(App.isValidNumber(-1)).toBe(false);
+  });
+
+  test('횟수가 undefined일 때 예외 처리', async () => {
+    expect(App.isValidNumber(undefined)).toBe(false);
+  });
+
+  test('횟수가 문자일 때 예외 처리', async () => {
+    expect(App.isValidNumber('test')).toBe(false);
+  });
+
+  test('횟수가 숫자일 때 예외 처리', async () => {
+    expect(App.isValidNumber(9)).toBe(true);
+  });
+
+  test('차 이름 목록 객체 value 초기화', () => {
+    const app = new App();
+    app.initializeCarData(['가', '나', '다']);
+    expect(app.carData).toEqual({ 가: '', 나: '', 다: '' });
+  });
+
+  test('단독 우승자 안내', () => {
+    const app = new App();
+    app.carData = { '가': '---', '나': '--', '다': '----' };
+    app.printFinish();
+    expect(MissionUtils.Console.print).toHaveBeenCalledWith('최종 우승자 : 다');
+  });
+
+  test('공동 우승자 안내', () => {
+    const app = new App();
+    app.carData = { '가': '----', '나': '--', '다': '----' };
+    app.printFinish();
+    expect(MissionUtils.Console.print).toHaveBeenCalledWith('최종 우승자 : 가, 다');
   });
 });
