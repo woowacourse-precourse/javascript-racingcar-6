@@ -4,10 +4,6 @@ export class Racing {
     this.cars = cars;
   }
 
-  get Attempt() {
-    return this.attempt;
-  }
-
   // 각 car마다 1회 레이스 실행
   race() {
     this.cars.forEach((car) => {

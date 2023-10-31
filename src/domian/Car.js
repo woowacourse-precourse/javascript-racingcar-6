@@ -4,20 +4,9 @@ import InputView from "../view/inputView";
 class Car {
   #car;
 
-  constructor(cars) {
+  constructor(car) {
     this.#car = car;
     this.progress = 0;
-  }
-
-  get car() {
-    return this.#car;
-  }
-  get progress() {
-    return this.progress;
-  }
-
-  set progress(progress) {
-    this.progress.push(MESSAGE.move);
   }
 
   // 이동 여부 판단 후 이동 결과 출력
@@ -27,8 +16,8 @@ class Car {
     if (randomNumber > 4) {
       this.progress++;
     }
-    const result = `${this.car} : ${SYMBOL.MOVE.repeat(this.progress)}`;
-    return result;
+
+    return progress;
   }
 }
 

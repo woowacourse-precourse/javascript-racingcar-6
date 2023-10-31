@@ -13,15 +13,15 @@ export class GameController {
 
   async start() {
     // 자동차 이름과 시도 횟수 받아오기
-    const cars = await this.#inputView.inputCarName();
-    const attempt = await this.#inputView.inputAttempt();
+    const cars = await this.#inputView.getCarNameFromInput();
+    const attempt = await this.#inputView.getAttemptFromInput();
     // 결과 전달
     const winners = this.race(cars, attempt);
     this.#outputView.printWinner(winners);
   }
 
   // 시도 횟수만큼 반복
-  async race(cars, attempt) {
+  async race() {
     for (let i = 0; i < this.#attempt; i++) {
       const result = cars.move();
       this.#outputView.printGameResult(result);

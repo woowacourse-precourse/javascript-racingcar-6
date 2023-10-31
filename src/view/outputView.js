@@ -2,8 +2,8 @@ import { Console } from "@woowacourse/mission-utils";
 import { MESSAGE } from "../constants/constants";
 
 class OutputView {
-  printGameResult({ car, progress }) {
-    const result = `${car} : ${progress}`;
+  printGameResult(car, progress) {
+    const result = `${car} : ${SYMBOL.MOVE.repeat(progress)}`;
     Console.print(result);
   }
   printWinner() {
