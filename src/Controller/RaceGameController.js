@@ -81,12 +81,21 @@ export class RaceGameController {
    * 이동 거리를 랜덤하게 리턴하는 메소드
    * @returns {number}
    */
-  #get_distance() {}
+  #get_distance() {
+    return Random.pickNumberInRange(0, 9) >= FORWARD_BOUND ? 1 : 0;
+  }
 
   /**
    * 자동차 레이스를 1회 실행한 후 그 결과에 대한 자동차 배열을 model에 반영하는 메소드
    */
-  #race() {}
+  #race() {
+    const NEW_RACE_CARS = this.#model.get_race_cars().map((car) => ({
+      name: car.name,
+      distance: car.distance + this.#get_distance(),
+    }));
+
+    this.#model.set_race_cars(NEW_RACE_CARS);
+  }
 
   /**
    * 최종 우승자를 계산하고, 최종 우승자 명단 배열을 model에 저장하는 메소드
@@ -111,5 +120,7 @@ export class RaceGameController {
    * @param {string[]} winners
    * @returns {string}
    */
-  #get_winners_str(winners) {}
+  #get_winners_str(winners) {
+    return winners.join(", ");
+  }
 }
