@@ -5,6 +5,7 @@ const mockRandmos = (number) => {
   Random.pickNumberInRange = jest.fn();
   Random.pickNumberInRange.mockReturnValueOnce(number);
 };
+
 describe('isMove Test', () => {
   test('4이상이면 전진(true)', () => {
     const move = 4;

@@ -1,10 +1,8 @@
 import ResultModel from '../../src/Model/ResultModel';
-import { NEW_LINE } from '../../src/constants/constants';
 
 describe('ResultModel Test', () => {
   let resultModel;
   let cars;
-
   beforeEach(() => {
     resultModel = new ResultModel();
     cars = [
@@ -15,6 +13,7 @@ describe('ResultModel Test', () => {
 
   test('회차마다 레이싱 결과를 만든다.', () => {
     resultModel.addAttempsResult(cars);
+
     expect(resultModel.getAllRacingResult()).toEqual([
       [
         ['pobi', 1],
