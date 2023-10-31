@@ -7,6 +7,7 @@ const getLogSpy = () => {
   logSpy.mockClear();
   return logSpy;
 };
+
 const car1 = new Car('kwani');
 const car2 = new Car('pobi');
 const carArray = [car1, car2];

@@ -1,5 +1,6 @@
 const Game = require('../src/Game');
 const game = new Game();
+
 describe(' 영문, 한글 , 쉼표만 허용하는 함수 checkName()', () => {
   const ENG_KOR_COMMA = 'aㅓ,dk';
   const NUM_SPECIAL = '$115^&';

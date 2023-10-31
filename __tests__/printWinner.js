@@ -13,11 +13,13 @@ describe(' 우승자를 출력하는 함수 printWinner()', () => {
     logSpy.mockClear();
     return logSpy;
   };
+
   test('단독 우승', async () => {
     const logSpy = getLogSpy();
     game.printWinner([car1]);
     expect(logSpy).toHaveBeenCalledWith('최종 우승자 : kwani');
   });
+  
   test('공동 우승', async () => {
     const logSpy = getLogSpy();
     game.printWinner(carArray);

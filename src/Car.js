@@ -5,6 +5,7 @@ class Car {
     this.name = name;
     this.distance = '';
   }
+
   goForward() {
     const STOP = 3;
     const number = MissionUtils.Random.pickNumberInRange(0, 9);
