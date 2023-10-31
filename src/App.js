@@ -28,16 +28,17 @@ class App {
     this.print(`최종 우승자 : ${winner}`);
   }
 
-  async userInput(message) {
+  static async userInput(message) {
     const inputValue = await MissionUtils.Console.readLineAsync(message);
     return inputValue;
   }
 
-  nameValidation(inputValue) {
+  static nameValidation(inputValue) {
     if (inputValue === '') throw new Error('[ERROR]');
 
-    if (!inputValue.includes(',') && inputValue.length > 5)
+    if (!inputValue.includes(',') && inputValue.length > 5) {
       throw new Error('[ERROR]');
+    }
 
     if (inputValue.includes(',')) {
       const nameArr = inputValue.split(',');
@@ -45,13 +46,14 @@ class App {
       if (nameArr.length !== uniqueNameSet.size) throw new Error('[ERROR]');
 
       nameArr.forEach((element) => {
-        if (element.length < 1 || element.length > 5)
+        if (element.length < 1 || element.length > 5) {
           throw new Error('[ERROR]');
+        }
       });
     }
   }
 
-  createMap(inputValue) {
+  static createMap(inputValue) {
     const carDistanceMap = new Map();
     if (inputValue.includes(',')) {
       const nameArr = inputValue.split(',');
@@ -64,26 +66,27 @@ class App {
     return carDistanceMap;
   }
 
-  roundValidation(inputValue) {
+  static roundValidation(inputValue) {
     const stringToNumber = Number(inputValue);
-    if (isNaN(stringToNumber)) throw new Error('[ERROR]');
+    if (Number.isNaN(stringToNumber)) throw new Error('[ERROR]');
 
     if (stringToNumber < 1) throw new Error('[ERROR]');
   }
 
-  racing(carDistanceMap) {
+  static racing(carDistanceMap) {
     carDistanceMap.forEach((value, key) => {
       const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
-      if (randomNumber >= 4)
-        carDistanceMap.set(key, carDistanceMap.get(key) + '-');
+      if (randomNumber >= 4) {
+        carDistanceMap.set(key, `${carDistanceMap.get(key)}-`);
+      }
     });
   }
 
-  print(message) {
+  static print(message) {
     MissionUtils.Console.print(message);
   }
 
-  swapMap(carDistanceMap) {
+  static swapMap(carDistanceMap) {
     const distanceCarMap = new Map();
     carDistanceMap.forEach((value, key) => {
       if (distanceCarMap.has(value.length)) {
@@ -98,7 +101,7 @@ class App {
     return distanceCarMap;
   }
 
-  findWinner(distanceCarMap) {
+  static findWinner(distanceCarMap) {
     const winnerArr = [...distanceCarMap].sort((a, b) => b[0] - a[0])[0];
     const winner = winnerArr[1].join(', ');
     return winner;
