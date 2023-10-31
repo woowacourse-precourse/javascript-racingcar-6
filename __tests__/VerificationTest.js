@@ -84,4 +84,19 @@ describe("함수별 기능 테스트", () => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     })
   });
+
+  test.each`
+  a          | b          | expected
+  ${[5,2,7]} | ${[2,2,5]} | ${"a"}
+  ${[1,5,8]} | ${[6,0,4]} | ${"a, b"}
+  `("최종 우승자 출력하는 함수에 대한 테스트", ({a, b, expected}) => {
+    const app = new App();
+    const cars = app.makeCars(["a","b"]);
+    for (let i = 0; i < 3; i += 1) {
+      cars[0].randomNumber = a[i];
+      cars[1].randomNumber = b[i];
+      app.getEachCarsMove(cars);
+    }
+    expect(app.exportWinner(cars)).toBe(expected);
+  });
 })
