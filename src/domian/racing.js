@@ -7,7 +7,7 @@ export class Racing {
   // 각 car마다 1회 레이스 실행
   race() {
     this.cars.forEach((car) => {
-      car.move();
+      car.MoveGenerator();
     });
   }
 
@@ -19,7 +19,7 @@ export class Racing {
   getMaxProgress() {
     let maxProgress = 0;
     this.cars.forEach((car) => {
-      car.move();
+      car.MoveGenerator();
       maxProgress = Math.max(maxProgress, car.move());
     });
     return maxProgress;

@@ -23,7 +23,7 @@ export class GameController {
   // 시도 횟수만큼 반복
   async race() {
     for (let i = 0; i < this.#attempt; i++) {
-      const result = carsList.moveGenerator();
+      const result = carsList.moveGenerator(carsList);
       this.#outputView.printGameResult(result);
     }
   }

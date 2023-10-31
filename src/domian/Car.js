@@ -10,7 +10,8 @@ class Car {
   }
 
   // 이동 여부 판단 후 이동 결과 반환
-  MoveGenerator() {
+  // ✅ carsList 안을 돌면서 한 자동차마다 결과 반환
+  MoveGenerator(carsList) {
     const randomNumber = Random.pickNumberInRange(1, 9);
     if (randomNumber > 4) {
       this.progress++;
