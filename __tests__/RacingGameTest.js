@@ -1,3 +1,4 @@
+import App from '../src/App.js';
 import Car from '../src/Car.js';
 import { MissionUtils } from '@woowacourse/mission-utils';
 
@@ -6,6 +7,12 @@ const mockRandoms = (numbers) => {
   numbers.reduce((acc, number) => {
     return acc.mockReturnValueOnce(number);
   }, MissionUtils.Random.pickNumberInRange);
+};
+
+const getLogSpy = () => {
+  const logSpy = jest.spyOn(MissionUtils.Console, 'print');
+  logSpy.mockClear();
+  return logSpy;
 };
 
 describe('랜덤 숫자 생성 기능 테스트', () => {
@@ -41,5 +48,23 @@ describe('자동차 전진 또는 정지 기능 테스트', () => {
     const result = car.step;
 
     expect(result).toEqual(0);
+  });
+});
+
+describe('실행 결과 출력 기능 테스트', () => {
+  test('각 자동차 전진 결과에 대한 실행 결과 출력', async () => {
+    const cars = [new Car('aria'), new Car('evan')];
+    const randoms = [4, 3];
+    const outputs = ['aria : -', 'evan :'];
+    const logSpy = getLogSpy();
+
+    mockRandoms([...randoms]);
+
+    const app = new App();
+    app.printOneRacingResult(cars);
+
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
   });
 });
