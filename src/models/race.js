@@ -1,5 +1,5 @@
 const MIN_TOTAL_ROUND = 0;
-const START_ROUND = 0
+const START_ROUND = 0;
 
 class Race {
 	constructor() {
