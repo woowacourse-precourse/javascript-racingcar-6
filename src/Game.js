@@ -1,3 +1,4 @@
+import { Console } from '@woowacourse/mission-utils';
 import Players from './Players.js';
 import Input from './Input.js';
 
@@ -8,6 +9,7 @@ class Game {
   async play() {
     await this.setPlayerNames();
     await this.setNumberOfGames();
+    Console.print('\n실행 결과\n');
     this.race();
   }
 
