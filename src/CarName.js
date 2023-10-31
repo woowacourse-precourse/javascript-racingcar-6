@@ -1,12 +1,10 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import Car from './Car.js';
-import Play from './Play.js';
+import Play from './PlayRace.js';
 
 class CarName {
   checkNumberDigits(carNames) {
     const carNamesInArray = carNames.split(',');
-    const deleteSameNameInArray = new Set(carNamesInArray);
-    const sameNameCheck = deleteSameNameInArray.size !== carNamesInArray.length;
     const hasConsecutiveCommas = /,,/.test(carNames);
     const startCommaOrEndComma = /^,|,$/.test(carNames);
 
