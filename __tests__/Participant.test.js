@@ -3,10 +3,12 @@ import Util from '../src/Util';
 import { MESSAGE } from '../src/constant';
 
 describe('Participant 클래스 테스트', () => {
-  test('Participant 클래스 생성 테스트', () => {
-    const NAME = 'taeyoon';
-    const participant = new Participant(NAME);
+  const NAME = 'taeyoon';
+  let participant;
 
+  beforeEach(() => (participant = new Participant(NAME)));
+
+  test('Participant 클래스 생성 테스트', () => {
     expect(participant.name).toEqual(NAME);
     expect(participant.progress).toEqual('');
   });
@@ -14,7 +16,6 @@ describe('Participant 클래스 테스트', () => {
   test('Participant.moveOrNot매서드 getRandomBoolean true일 경우 테스트', () => {
     jest.spyOn(Util, 'getRandomBoolean').mockReturnValue(true);
 
-    const participant = new Participant('taeyoon');
     const init = participant.progress;
     participant.moveOrNot();
 
@@ -24,7 +25,6 @@ describe('Participant 클래스 테스트', () => {
   test('Participant.moveOrNot매서드 getRandomBoolean false일 경우 테스트', () => {
     jest.spyOn(Util, 'getRandomBoolean').mockReturnValue(false);
 
-    const participant = new Participant('taeyoon');
     const init = participant.progress;
     participant.moveOrNot();
 
