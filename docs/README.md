@@ -1,28 +1,47 @@
 ## 자동차 경주 기능 목록 정리
 
 ### MVC 패턴에 따른 클래스, 함수 정리
-<!-- 설명 추가 예정 -->
+
 
 **1. Model**
 
-- 1-1. Car
-- 1-2. CarRace
+- 1-1. `Car` : 자동차 한 개의 이름, 전진 표시 관리 클래스 
+  - 생성자 : 자동차의 이름, 자동차의 전진 횟수 카운트
+  - 자동차 전진을 의미 `forward`
+
+- 1-2. `CarRace` : 경기 한 턴 관리 클래스
+  - 생성자 : 자동차 이름을 받아 개수 만큼 자동차 객체 생성
+  - 각 자동차가 무작위로 생성된 숫자를 기반으로 전진 또는 정지 결정 `getRaceRound`
 
 **2.View**
 
-- 2-1. InputView
-- 2-2. OutputView
+- 2-1. `InputView` : 레이싱에 필요한 인풋 데이터를 입력받는 함수
+  - 입력받는 함수 형태 정의 `inputFormat`
+  - 자동차 이름을 입력받아 유효성 검사 진행 `carNames`
+  - 시도 횟수를 입력받아 유효성 검사 진행 `tryCount`
+
+- 2-2. `OutputView` : 레이싱 결과를 출력하는 함수
+  - 입력 안내 메세지 `printMessage`
+  - 매 라운드 결과 출력 `roundResult`
+  - 최종 우승자 결과 출력 `winnerResult`
 
 **3.Controller**
 
-- 3-1. RaceController
+- 3-1. `RaceController` : 전체 자동차 레이스 및 결과 데이터 처리 관리
+  - 생성자 : 레이스 한 턴에 대한 객체 생성 전 멤버 변수 초기화
+  - 자동차 경주 시작, 레이스 한 턴 객체 생성 `makeRace`
+  - 사용자로부터 입력을 받아 경주 시작, 경주 결과 출력 호출 `insertInput`
+  - 경주 결과, 최종 우승자 결과 출력 `printRace`
 
 **4.utils**
 
-- 4-1. constants
-- 4-2. validateInput
-- 4-3. getRandomNumber
-- 4-4. getForwardData
+- 4-1. constants : 사용되는 매직넘버, 에러메세지 등 상수 정의
+- 4-2. validateInput : 사용자 입력에 대한 유효성 검사
+- 4-3. getRandomNumber : 경주에 필요한 난수 생성
+- 4-4. getData : 형식에 맞게 출력하기 위해 결과 데이터 가공
+  - `getMaxForwardData` : 가장 많이 전진한 자동차 반환
+  - `getRoundData` : 경주 라운드 결과를 문자열 형태로 변환
+  - `getWinnerData` : 최종 우승자 이름 및 출력 메세지를 조합하여 결과 출력 문자열 반환
 
 
 ### 기능 정리
