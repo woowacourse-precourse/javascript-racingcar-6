@@ -33,7 +33,7 @@ const executeRace = (names, numberOfAttempts) => {
   outputFinalProgress(results);
 };
 
-const calculateNextResult = result => {
+export const calculateNextResult = result => {
   const randomInt = Random.pickNumberInRange(0, 9);
 
   if (randomInt < CONSTANTS.NUMBERS.MOVE_FORWARD) {
