@@ -18,7 +18,7 @@ const RESULT_STATUS = {
   enter: '',
   progress: '실행 결과',
   sign: '-',
-  winner: '최종 우승자 :',
+  winner: '최종 우승자 : ',
 };
 
 export { INPUT_MESSAGE, ERROR_MESSAGE, RESULT_STATUS };

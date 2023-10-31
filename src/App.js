@@ -16,6 +16,8 @@ class App {
       RacingGame.moveCar(racingCar);
       RaceResult.progress(racingCar);
     }
+
+    RaceResult.findWinner(racingCar);
   }
 }
 
