@@ -1,5 +1,6 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
-import Car from "./Car";
+import { Console, MissionUtils } from "@woowacourse/mission-utils";
+import Car from "./Car.js";
+import UserInterface from "./UserInterface.js";
 
 class RacingGame {
   constructor(carNames, raceRounds) {
@@ -16,6 +17,7 @@ class RacingGame {
   }
 
   start() {
+    Console.print("\n실행 결과");
     for (let i = 0; i < this.rounds; i++) {
       this.cars.forEach((car) => {
         const randomNumber = this.generateRandomNumber();
@@ -23,6 +25,11 @@ class RacingGame {
           car.move();
         }
       });
+      const carStatuses = this.cars.map((car) => ({
+        carName: car.name,
+        distance: car.distance,
+      }));
+      UserInterface.printRoundResults(carStatuses);
     }
   }
 
