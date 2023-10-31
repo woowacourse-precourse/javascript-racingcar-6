@@ -104,19 +104,13 @@ class App {
     return HYPHEN.repeat(score);
   }
 
-  getFinalWinner(result) {
+  getFinalWinner(finalScore) {
     const finalWinner = [];
 
-    let minNumber = 0;
+    const maximumNumber = Math.max(...Object.values(finalScore));
 
-    Object.values(result).forEach((value) => {
-      if (value >= minNumber) {
-        minNumber = value;
-      }
-    });
-
-    Object.keys(result).forEach((key) => {
-      if (result[key] === minNumber) {
+    Object.entries(finalScore).forEach(([key, value]) => {
+      if (value === maximumNumber) {
         finalWinner.push(key);
       }
     });
