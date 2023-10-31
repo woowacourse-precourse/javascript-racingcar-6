@@ -16,7 +16,7 @@ class Result {
   }
 
   compareResult(car) {
-    const [name, finalResult, count] = car.getCarScore();
+    const [name, finalResult] = car.getCarScore();
 
     if (finalResult.length === this.max) {
       this.winners.push(name);

@@ -4,7 +4,6 @@ import { RANDOM_NUMBER, MOVE } from './constants/constants';
 class Car {
   constructor(name, count) {
     this.name = name;
-    this.count = count;
     this.result = '';
   }
 
@@ -15,17 +14,17 @@ class Car {
 
   move() {
     const randomizeNumber = this.getRandomNumber();
-    console.log(randomizeNumber);
 
     if (randomizeNumber >= MOVE.CONSTRAINT_NUM) {
       this.result += MOVE.SYMBOL;
+      console.log(this.result);
     }
 
     return this;
   }
 
   getCarScore() {
-    return [this.name, this.result];
+    return [this.name, this.result.trim()];
   }
 }
 
