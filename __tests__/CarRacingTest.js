@@ -3,6 +3,11 @@ import CarRacingController from '../src/controller/CarRacingController.js';
 import driveAndStopCars from '../src/utils/driveAndStopCars.js';
 import findWinners from '../src/utils/findWinners.js';
 
+const mockRandoms = numbers => {
+  Random.pickNumberInRange = jest.fn();
+  numbers.map(number => Random.pickNumberInRange.mockReturnValueOnce(number));
+};
+
 describe('레이싱 게임 테스트', () => {
   test('자동차 입력에 따른 Car 클래스 인스턴스 생성', () => {
     const input = 'pobi, kang';
@@ -21,13 +26,8 @@ describe('레이싱 게임 테스트', () => {
   });
 
   test('사용자가 입력한 횟수만큼 자동차의 전진상태를 출력하는 기능', () => {
-    Random.pickNumberInRange = jest.fn();
-    Random.pickNumberInRange.mockReturnValueOnce(1);
-    Random.pickNumberInRange.mockReturnValueOnce(5);
-    Random.pickNumberInRange.mockReturnValueOnce(2);
-    Random.pickNumberInRange.mockReturnValueOnce(7);
-    Random.pickNumberInRange.mockReturnValueOnce(3);
-    Random.pickNumberInRange.mockReturnValueOnce(1);
+    const randoms = [1, 5, 2, 7, 3, 1];
+    mockRandoms(randoms);
 
     const input = 'pobi, kang';
     const count = 3;
@@ -45,13 +45,8 @@ describe('레이싱 게임 테스트', () => {
   });
 
   test('최종 우승자를 가려내는 기능', () => {
-    Random.pickNumberInRange = jest.fn();
-    Random.pickNumberInRange.mockReturnValueOnce(1);
-    Random.pickNumberInRange.mockReturnValueOnce(5);
-    Random.pickNumberInRange.mockReturnValueOnce(2);
-    Random.pickNumberInRange.mockReturnValueOnce(7);
-    Random.pickNumberInRange.mockReturnValueOnce(3);
-    Random.pickNumberInRange.mockReturnValueOnce(1);
+    const randoms = [1, 5, 2, 7, 3, 1];
+    mockRandoms(randoms);
 
     const input = 'pobi, kang';
     const count = 3;
