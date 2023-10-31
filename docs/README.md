@@ -25,13 +25,13 @@
 
 ## 기능 목록
 
-- [ ] n 대의 자동차의 서로 다른 이름을 입력받는다.
+- [x] n 대의 자동차의 서로 다른 이름을 입력받는다. CarController#setNames()
 
-  - [ ] 이름을 , 로 구분할 수 있다.
-  - [ ] 이름의 글자수를 제한할 수 있다.
+  - [x] 이름을 , 로 구분할 수 있다. CarController#parseNames()
+  - [x] 이름의 글자수를 제한할 수 있다. CarController#validateNameLength()
 
-- [ ] 사용자는 몇번 이동할 것인지 시도할 횟수를 입력받는다.
-- [ ] n 대의 자동차는 각각 0 ~ 9 사이의 무작위 값을 생성한다.
+- [ ] 사용자는 몇번 이동할 것인지 시도할 횟수를 입력받는다. Player#getAttemptIterations()
+- [ ] n 대의 자동차는 각각 0 ~ 9 사이의 무작위 값을 생성한다. - NumberGenerator#createRandomNumber()
 
   - [ ] 무작위 값이 4 이상이면 전진이다.
 
