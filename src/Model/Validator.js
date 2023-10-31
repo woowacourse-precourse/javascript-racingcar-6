@@ -1,8 +1,10 @@
 import { CAR_NAME_MIN_LENGTH, ERROR_MESSAGE } from '../constants/constants';
+import ScoreBoard from './ScoreBoard';
 
 export default class Validator {
 	constructor() {
 		this.names = [];
+		this.board = new ScoreBoard();
 	}
 
 	checkDuplicatedNames() {
@@ -56,6 +58,6 @@ export default class Validator {
 			throw new Error(ERROR_MESSAGE.duplicate_name_found);
 		}
 
-		return this.names;
+		return this.board.getScoreBoard(this.names);
 	}
 }
