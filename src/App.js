@@ -75,7 +75,7 @@ class App {
     let val = Object.keys(this.resultDictionary).filter((a) => {
       return this.resultDictionary[a] === highestVal;
     });
-    MissionUtils.Console.print(`최종우승자 : ${val}`);
+    MissionUtils.Console.print(`최종우승자 : ${val.join(",")}`);
   }
 }
 
