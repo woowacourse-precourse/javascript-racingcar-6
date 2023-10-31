@@ -50,4 +50,19 @@ describe("기능 테스트", () => {
     expect(result).toBeGreaterThanOrEqual(0);
     expect(result).toBeLessThanOrEqual(9);
   });
+
+  // 자동차 위치 계산하기 기능 테스트
+  test("자동차 위치 계산하기", () => {
+    const randomValues = [0, 3, 4, 5];
+    const calculatedPositions = [0, 0, 1, 1];
+    const result = [];
+
+    randomValues.map((randomValue) => {
+      const car = new Car();
+      Car.generateRandomValue = jest.fn().mockReturnValue(randomValue);
+      car.calculatePosition();
+      result.push(car.position);
+    });
+    expect(result).toEqual(calculatedPositions);
+  });
 });
