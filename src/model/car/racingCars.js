@@ -55,4 +55,9 @@ class RacingCars {
       this.createCar(carNames[i]);
     }
   }
+
+  createCar(carName) {
+    const car = new RacingCar(carName);
+    this.#cars.push(car);
+  }
 }
