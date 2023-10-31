@@ -70,6 +70,17 @@ describe('View 테스트', () => {
         `[ERROR] ${ERROR.message.invalidCarNameLength}`,
       );
     });
+
+    test('자동차 이름이 중복되는 경우 예외 처리를 진행한다.', async () => {
+      // given
+      const duplicateCarNames = 'pobi,pobi,cron';
+      mockQuestions([duplicateCarNames]);
+
+      // then
+      await expect(view.readCarName()).rejects.toThrow(
+        `[ERROR] ${ERROR.message.duplicateCarName}`,
+      );
+    });
   });
 
   describe('사용자로부터 라운드를 입력받는다.', () => {
@@ -178,7 +189,7 @@ describe('View 테스트', () => {
     });
   });
 
-  describe.only('우승자를 출력한다.', () => {
+  describe('우승자를 출력한다.', () => {
     beforeEach(() => {
       jest.spyOn(OutputView, 'print');
     });
