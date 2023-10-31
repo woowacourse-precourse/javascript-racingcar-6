@@ -23,7 +23,7 @@ class App {
     }
   }
 
-  countAttempt() {
+  getCount() {
     return Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
   }
 
@@ -67,7 +67,7 @@ class App {
     this.splitCarName();
     this.validate();
 
-    this.movementCount = Number(await this.countAttempt());
+    this.movementCount = Number(await this.getCount());
 
     this.inputArray.map((name) =>
       this.advanceCount.push({ carName: name, advance: 0 })
