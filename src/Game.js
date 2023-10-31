@@ -50,5 +50,15 @@ class Game {
     }
     Console.print("\n");
   }
+
+  async #printResult() {
+    const winner = [];
+    for (let [name, distance] of this.#cars) {
+      if (distance === this.#maxDistance) {
+        winner.push(name);
+      }
+    }
+    Console.print(PRINT.MESSAGE.WINNER(winner.join(", ")));
+  }
 }
 export default Game;
