@@ -4,8 +4,9 @@ class CompareRaceCarResult {
   #raceCars;
 
   constructor(racecarNames) {
-    this.#raceCars = racecarNames;
-    Console.print(racecarNames);
+    this.#raceCars = racecarNames
+      .split(",")
+      .map((racecarname) => new CarRaceCondition(racecarname));
   }
 }
 
