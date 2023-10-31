@@ -12,5 +12,11 @@ describe("문자열 테스트", () => {
     const app = new App();
     expect(() => app.carNameLengthValidity(CAR_NAME)).toThrow("[ERROR]");
   });
+
+  test("중복된 자동차 이름이 있는지 테스트", () => {
+    const ARRAY = ["sim", "sim"];
+    const app = new App();
+    expect(() => app.carNameDuplicateValidity(ARRAY)).toThrow("[ERROR]");
+  });
 });
 

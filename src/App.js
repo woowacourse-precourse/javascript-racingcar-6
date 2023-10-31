@@ -17,6 +17,8 @@ class App {
     for (const INPUT_CAR_NAME of inputCarNameArray) {
       this.carNameLengthValidity(INPUT_CAR_NAME);
     }
+
+    this.carNameDuplicateValidity(inputCarNameArray);
   }
 
   numberOfCarValidity(inputCarNameArray) {
@@ -32,6 +34,14 @@ class App {
       throw new Error(
         "[ERROR]: 5글자 이하의 경주할 자동차 이름을 ,로 구분하여 입력하시오"
       );
+    }
+  }
+
+  carNameDuplicateValidity(inputCarNameArray) {
+    const SET = new Set(inputCarNameArray);
+
+    if (inputCarNameArray.length !== SET.size) {
+      throw new Error("[ERROR]: 서로 다른 이름을 입력하시오.");
     }
   }
 }
