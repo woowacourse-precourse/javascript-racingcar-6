@@ -4,7 +4,7 @@ import { NUMBER, SYMBOLS, RANDOM } from '../constants/index.js';
 class Car {
   constructor(name = '') {
     this.name = name;
-    this.postion = '';
+    this.position = '';
   }
 
   getName() {
@@ -17,16 +17,16 @@ class Car {
 
   move() {
     if (this.canMove()) {
-      this.postion += SYMBOLS.move;
+      this.position += SYMBOLS.move;
     }
   }
 
   countMove() {
-    return this.postion.length;
+    return this.position.length;
   }
 
-  toStringPosition() {
-    return `${this.name}${SYMBOLS.colon}${this.postion}${SYMBOLS.lineBreak}`;
+  formatPosition() {
+    return `${this.name}${SYMBOLS.colon}${this.position}${SYMBOLS.lineBreak}`;
   }
 }
 
