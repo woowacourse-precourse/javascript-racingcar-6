@@ -7,12 +7,17 @@ export default class User {
   static async getRaceCars() {
     const user = await Console.readLineAsync(CONSOLE_MESSAGE.NAME_OF_CARS);
     const cars = user.split(',');
+    User.validateNames(cars);
+    return cars;
+  }
+
+  static validateNames(cars) {
+    if (cars.length < 2) throw new Error(ERROR_MESSAGE.NOT_ENOUGH_CARS);
     cars.forEach((car) => {
       const carStr = car.toString();
-      if (carStr.length > User.MIN_CAR_NAME_LENGTH || !carStr)
+      if (!carStr || carStr.length > User.MIN_CAR_NAME_LENGTH)
         throw new Error(ERROR_MESSAGE.NAME_LENGTH_LIMIT);
     });
-    return cars;
   }
 
   static async getRaceRounds() {
