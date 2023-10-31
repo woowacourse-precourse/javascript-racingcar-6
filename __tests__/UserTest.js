@@ -15,6 +15,17 @@ describe('User', () => {
       expect(mockReadLineAsync).toHaveBeenCalledWith(MESSAGES.CAR_NAMES_INPUT);
     });
 
+    test('[예외사항] 자동차 이름이 작성되지 않을 경우', async () => {
+      const mockReadLineAsync = jest.fn().mockResolvedValue('pobi,');
+      MissionUtils.Console.readLineAsync = mockReadLineAsync;
+
+      const user = new User();
+
+      await expect(user.getCarNames()).rejects.toThrowError(
+        MESSAGES.ERROR_USER_INPUT_EMPTY_INPUT_WRONG,
+      );
+    });
+
     test('[예외사항] 자동차 이름이 5글자 이상일 경우', async () => {
       const mockReadLineAsync = jest.fn().mockResolvedValue('pobijun');
       MissionUtils.Console.readLineAsync = mockReadLineAsync;
