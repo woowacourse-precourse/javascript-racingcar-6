@@ -3,10 +3,15 @@ import { Random, Console } from "@woowacourse/mission-utils";
 class App {
   async play() {
     try {
+      let carsInfo = {};
+
       const carNameList = await this.inputCarNames();
       this.checkNames(carNameList);
+
       const roundNumber = await this.inputRoundNumber();
       this.checkNumber(roundNumber);
+
+      this.createObject(carNameList, carsInfo);
     } catch (error) {
       throw error;
     }
@@ -40,6 +45,12 @@ class App {
   randomNumber() {
     const number = Random.pickNumberInRange(0, 9);
     return number;
+  }
+
+  createObject(carNameList, carsInfo) {
+    for (let j = 0; j < carNameList.length; j++) {
+      carsInfo[carNameList[j]] = { score: 0 };
+    }
   }
 }
 
