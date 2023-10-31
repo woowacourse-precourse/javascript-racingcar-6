@@ -7,6 +7,8 @@ class App {
     );
 
     const CAR = await Console.readLineAsync('');
+    const CAR_LIST = CAR.split(',');
+
     this.validateContinuousComma(CAR);
     const CAR_LIST = CAR.split(',');
     this.validateCarNameLength(CAR_LIST);
@@ -19,18 +21,23 @@ class App {
 
     Console.print('시도할 횟수는 몇 회인가요?');
     const COUNT = await Console.readLineAsync('');
+
     this.validateCountNumber(COUNT);
 
     Console.print('');
     Console.print('실행결과');
 
+    let race = CAR_LIST.map((car) => {
+      return { name: `${car} : `, score: 0 };
+    });
+
     for (let i = 1; i <= COUNT; i++) {
       this.addPointRaceAndScores(RACE, SCORES);
     }
 
-    const MAX_SCORE = Math.max(...SCORES);
+    const MAX_SCORE = Math.max(...race.map((car) => car.score));
 
-    const RESULT = this.calculateMaxScoreCarList(CAR_LIST, SCORES, MAX_SCORE);
+    const RESULT = this.calculateMaxScoreCarList(CAR_LIST, race, MAX_SCORE);
 
     Console.print(`최종 우승자 : ${RESULT.join(', ')}`);
   }
@@ -80,8 +87,8 @@ class App {
     }
   }
 
-  calculateMaxScoreCarList(carList, scores, maxScore) {
-    const result = carList.filter((car, idx) => scores[idx] === maxScore);
+  calculateMaxScoreCarList(carList, race, maxScore) {
+    const result = carList.filter((car, idx) => race[idx].score === maxScore);
     return result;
   }
 }
