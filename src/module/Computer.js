@@ -36,6 +36,16 @@ class Computer {
       this.#carList.push(car);
     });
   }
+
+  async start() {
+    const carNames = await MissionUtils.Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)');
+    const gameRound = await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?');
+
+    MissionUtils.Console.print('\n실행 결과');
+
+    this.#round = gameRound;
+    this.pushCarList(carNames);
+  }
 }
 
 export default Computer;
