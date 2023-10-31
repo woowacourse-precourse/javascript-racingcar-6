@@ -1,5 +1,9 @@
+import { startRacing } from './utils/Main.js';
+
 class App {
-  async play() {}
+	async play() {
+		await startRacing();
+	}
 }
 
 export default App;
