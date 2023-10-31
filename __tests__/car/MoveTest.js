@@ -1,6 +1,6 @@
 import { Random } from "@woowacourse/mission-utils";
 import { Car } from "../../src/Car"
-import { GO_CONDITION_MINIMUM_VALUE, RANDOM_NUMBER_RANGE } from "../../src/constants";
+import { MOVE_CONDITION_MINIMUM_VALUE, RANDOM_NUMBER_RANGE } from "../../src/constants";
 
 let car;
 
@@ -22,7 +22,7 @@ describe("자동차 전진", ()=> {
     })
 
     test("무작위 값 이 4 이상일 경우 전진 조건 달성", ()=> {
-        if(car.randomNumber >= GO_CONDITION_MINIMUM_VALUE){
+        if(car.randomNumber >= MOVE_CONDITION_MINIMUM_VALUE){
             expect(car.movable()).toBe(true)
         }
     })
@@ -31,7 +31,7 @@ describe("자동차 전진", ()=> {
         const prevPosition = car.getPosition();
 
         car.moveOrStop();
-        
+
         const nextPosition = car.getPosition();
 
         if(car.movable()){

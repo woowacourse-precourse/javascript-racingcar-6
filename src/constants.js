@@ -21,3 +21,8 @@ export const MESSAGE = Object.freeze({
 
 export const CAR_NAME_LIMIT = 5;
 export const DIVIDER = ',';
+export const MOVE_CONDITION_MINIMUM_VALUE = 4;
+export const RANDOM_NUMBER_RANGE = {
+  MIN: 0,
+  MAX: 9,
+};

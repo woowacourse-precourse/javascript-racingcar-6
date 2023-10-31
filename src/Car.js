@@ -1,5 +1,5 @@
 import { Random } from '@woowacourse/mission-utils';
-import { GO_CONDITION_MINIMUM_VALUE, RANDOM_NUMBER_RANGE } from './constants.js';
+import { MOVE_CONDITION_MINIMUM_VALUE, RANDOM_NUMBER_RANGE } from './constants.js';
 
 export class Car {
   #position = 0;
@@ -21,7 +21,7 @@ export class Car {
   }
 
   movable() {
-    return this.randomNumber >= GO_CONDITION_MINIMUM_VALUE;
+    return this.randomNumber >= MOVE_CONDITION_MINIMUM_VALUE;
   }
 
   moveOrStop() {
