@@ -7,13 +7,9 @@ export default class PlayGame {
   }
 
   showCount(count) {
-    let temp_count = "";
-    while (count > 0) {
-      temp_count += "-";
-      count--;
-    }
-    return temp_count;
+    return '-'.repeat(count);
   }
+  
 
   makeCarMovingCountList(carList) {
     Console.print("\n실행 결과");
