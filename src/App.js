@@ -1,5 +1,10 @@
+import CarName from "./CarName.js";
+
 class App {
-  async play() {}
+  async play() {
+    const carName = new CarName();
+    await carName.start();
+  }
 }
 
 export default App;
