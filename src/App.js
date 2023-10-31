@@ -1,18 +1,12 @@
 import { Console } from '@woowacourse/mission-utils';
+
 import MESSAGES from './constants/messages.js';
 import NUMBERS from './constants/numbers.js';
-import { isCarListValid, isRacingAttemptsValid } from './utils/validator.js';
 
+import { isCarListValid, isRacingAttemptsValid } from './utils/validator.js';
 import startRacing from './functions/startRacing.js';
 
 class App {
-  constructor() {
-    this.carList = [];
-    this.attemptTimes = 0;
-    this.winner = [];
-    this.racingCars = {};
-  }
-
   async play() {
     const answer = await Console.readLineAsync(MESSAGES.ENTER_CAR_NAME);
     this.carList = answer.split(',');
