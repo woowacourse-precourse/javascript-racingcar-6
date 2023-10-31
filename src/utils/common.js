@@ -2,6 +2,7 @@ import {
   validateBetweenOneAndNine,
   validateName,
   validateNoneZeroLengthInput,
+  validateNumber,
 } from './validation.js';
 
 export function parseNames(str) {
@@ -14,7 +15,10 @@ export function parseNames(str) {
 }
 
 export function parseNumber(args) {
-  return Number(args);
+  const number = Number(args);
+  validateNumber(number);
+
+  return number;
 }
 
 export function getDistanceToMove(randomNumber) {
