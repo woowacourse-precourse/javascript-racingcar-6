@@ -11,6 +11,10 @@ class App {
     return this._racingCars;
   }
 
+  set racingCars(cars) {
+    this._racingCars = cars;
+  }
+
   get winnerScore() {
     return this._winnerScore;
   }
