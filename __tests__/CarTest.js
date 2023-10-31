@@ -16,6 +16,6 @@ describe('Car클래스 테스트', () => {
     mockRandoms([...randoms]);
 
     randoms.forEach((_) => car.progressDependingOnValue());
-    expect(car.progressStatus).toEqual('-');
+    expect(car.getProgressStatus()).toEqual('test : -');
   });
 });
