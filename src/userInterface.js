@@ -7,3 +7,8 @@ const getUserInput = async (command) => {
     throw new Error(error);
   }
 };
+
+export const checkCarsNameCount = (carNamesString) => {
+  if (!carNamesString.includes(","))
+    throw new Error(NOT_INCLUDED_COMMA_USER_INPUT_ERROR);
+};
