@@ -21,11 +21,6 @@ class Car{
         const randNum = MissionUtils.Random.pickNumberInRange(0, 9)
         if(randNum >= 4) this.movingCount += 1
     }
-
-    printMovingCount(){
-        const dash = '-'.repeat(this.movingCount)
-        MissionUtils.Console.print(`${this.name} : ${dash}`)
-    }
 }
 
 module.exports = Car
