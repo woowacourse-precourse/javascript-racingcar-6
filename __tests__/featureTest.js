@@ -97,7 +97,7 @@ describe("기능3 - 게임 진행", () => {
 });
 
 describe("기능4 - 게임 결과", () => {
-  test("우승자가 여러명일 경우 그대로 출력", async () => {
+  test("우승자가 여러명일 경우 구분 후 출력", async () => {
     const MOVING_FORWARD = 4;
     const inputs = ["pobi,woni", "1"];
     const randoms = [MOVING_FORWARD, MOVING_FORWARD];
