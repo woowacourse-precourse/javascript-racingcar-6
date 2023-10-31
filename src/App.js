@@ -1,7 +1,7 @@
 import Validation from "./Validation";
 import CarRacingGame from "./CarRacingGame";
 import Car from "./Car";
-import { Console } from "console";
+import { Console } from "@woowacourse/mission-utils";
 
 class App {
   /**@constructor */

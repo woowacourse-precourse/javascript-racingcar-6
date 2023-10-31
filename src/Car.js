@@ -20,7 +20,7 @@ class Car {
   }
   /**@returns {number} */
   moveForward() {
-    if (Random.pickNumberInRange([...0, 9]) >= 4) {
+    if (Random.pickNumberInRange(...[0, 9]) >= 4) {
       this.#distance += 1;
     }
     return this.#distance;
