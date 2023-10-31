@@ -6,7 +6,7 @@ import {
   checkCarNamesAreDuplicated,
   checkTryNumberWithBlank,
   checkTryNumberIsCharacter,
-} from '../modules/utils';
+} from '../modules/utils/validationUtils';
 
 const checkCarNamesAreValid = (userInput) => {
   const input = userInput.split(',');
