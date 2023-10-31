@@ -1,11 +1,11 @@
-//기능3의 랜덤값
+//MoveMent에서 사용하는 랜덤값
 import { MissionUtils } from '@woowacourse/mission-utils';
 
-export function random() {
+export function random(name) {
   const computer = [];
-  while (computer.length < 3) {
-    const number = MissionUtils.Random.pickNumberInRange(0, 9);
-    computer.push(number);
+  for (let i = 0; i < name.length; i++) {
+    //배열마다 랜덤받기
+    computer.push(MissionUtils.Random.pickNumberInRange(0, 9));
   }
   return computer;
 }
