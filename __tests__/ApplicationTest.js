@@ -57,13 +57,13 @@ describe("자동차 경주 게임", () => {
     expect(result).toEqual(expectedOutput);
   });
 
-  test("getMaxValue 함수 테스트", async () => {
+  test("getLeadingCarNames 함수 테스트", async () => {
     const app = new App();
 
     app.carNameList = ["car1", "car2", "car3"];
     app.dashSymbol = ["---", "---", "----"];
 
-    const result = app.getMaxValue();
+    const result = app.getLeadingCarNames();
 
     expect(result).toEqual(["car3"]);
   });
