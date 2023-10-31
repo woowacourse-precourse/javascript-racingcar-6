@@ -1,7 +1,6 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable import/extensions */
-import { MissionUtils } from '@woowacourse/mission-utils';
 import Cars from './Cars.js';
 import PlayCount from './PlayCount.js';
 import Game from './Game.js';
@@ -15,8 +14,6 @@ class App {
       const carNames = await cars.getCarsNames();
       const count = await playCount.getPlayCount();
       const game = new Game(carNames, count);
-      // const result = game.mostMoved();
-      // MissionUtils.Console.print(result);
       game.playGame();
     } catch (error) {
       throw new Error(error);
