@@ -64,7 +64,7 @@ describe('자동차 경주 게임', () => {
   );
 });
 
-describe('Model - Car', () => {
+describe('MODEL - Car', () => {
   test("getCarModels() - 입력받은 문자열이 ','로 구분된 후 배열로 반환", async () => {
     // given
     const inputs = ['pobi,woni,jun'];
@@ -82,7 +82,7 @@ describe('Model - Car', () => {
     });
   });
 
-  describe('validateCarModels - 자동차 이름에 대한 예외 처리', () => {
+  describe('validateCarModels - 자동차 이름에 대한 예외 발생', () => {
     test('Case 1: 이름이 5글자를 초과하면 안됨', async () => {
       // given
       const inputs = ['pobi,potter'];
@@ -92,7 +92,7 @@ describe('Model - Car', () => {
       const app = new App();
 
       // then
-      await expect(app.play()).rejects.toThrow('[ERROR]');
+      await expect(app.play()).rejects.toThrow('[ERROR] 이름은 5자');
     });
     test('Case 2: 이름이 공백이면 안됨', async () => {
       // given
@@ -103,7 +103,7 @@ describe('Model - Car', () => {
       const app = new App();
 
       // then
-      await expect(app.play()).rejects.toThrow('[ERROR]');
+      await expect(app.play()).rejects.toThrow('[ERROR] 이름은 공백');
     });
     test('Case 3: 이름이 중복이면 안됨', async () => {
       // given
@@ -114,12 +114,12 @@ describe('Model - Car', () => {
       const app = new App();
 
       // then
-      await expect(app.play()).rejects.toThrow('[ERROR]');
+      await expect(app.play()).rejects.toThrow('[ERROR] 이름은 중복');
     });
   });
 });
 
-describe('Model - Attempt', () => {
+describe('MODEL - Attempt', () => {
   test('getRaceAttempt() - 입력이 숫자여야 함', async () => {
     // given
     const inputs = ['pobi', 'a'];
@@ -133,7 +133,7 @@ describe('Model - Attempt', () => {
   });
 });
 
-describe('Controller', () => {
+describe('CONTROLLER - GameController', () => {
   test('getRandomValue() - 0~9 범위의 조건값 무작위로 생성 ', async () => {
     // given
     const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -148,7 +148,7 @@ describe('Controller', () => {
     expect(rand).toBeLessThanOrEqual(9);
   });
 
-  describe('getForwardCount() - ', () => {
+  describe('getForwardCount() - 조건값에 따라 전진여부 결정', () => {
     test('Case 1: 조건값이 4 이상일 경우 전진', async () => {
       // given
       const carModels = {
