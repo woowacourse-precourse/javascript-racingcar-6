@@ -1,4 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
+import { INPUT, ERROR } from "./constants.js";
 import { validateCarName, validateNumber } from "./validation.js";
 
 class App {
@@ -7,14 +8,13 @@ class App {
 
   async participate() {
     const carNameInput = await MissionUtils.Console.readLineAsync(
-      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
+      INPUT.CAR_NAME
     );
 
     const carList = carNameInput.split(",");
 
     for (let i = 0; i < carList.length; i++) {
-      if (!validateCarName(carList[i]))
-        throw new Error("[ERROR]: 자동차 이름은 5자 이하여야합니다.");
+      if (!validateCarName(carList[i])) throw new Error(ERROR.NAME_LENGTH);
     }
 
     this.participant = carList;
@@ -22,12 +22,9 @@ class App {
   }
 
   async getCycleCount() {
-    const cycle = await MissionUtils.Console.readLineAsync(
-      "시도할 횟수는 몇 회인가요?"
-    );
+    const cycle = await MissionUtils.Console.readLineAsync(INPUT.CYCLE_COUNT);
 
-    if (!validateNumber(cycle))
-      throw new Error("[ERROR]: 시도 횟수는 숫자를 입력해야 합니다.");
+    if (!validateNumber(cycle)) throw new Error(ERROR.CYCLE_COUNT_NUMBER);
 
     return cycle;
   }
