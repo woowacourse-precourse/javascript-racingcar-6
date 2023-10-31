@@ -1,29 +1,29 @@
 import { isNameLengthUnderFive } from "./utils/validation.js";
-import inputHandler from "./utils/inputHandler.js";
-import gameController from "./utils/gameController.js";
 import { Console } from "@woowacourse/mission-utils";
+import InputHandler from "./utils/InputHandler.js";
+import GameController from "./utils/GameController.js";
 
 class App {
   constructor() {
     this.carArr = [];
     this.round = 0;
-    this.carsWithMoveNum = {};
   }
 
   async play() {
+    const inputHandler = new InputHandler();
+    const gameController = new GameController();
+
     this.carArr = await inputHandler.getCarNamesAndCheck();
     this.carArr.forEach((car) => {
       isNameLengthUnderFive(car);
-      this.carsWithMoveNum[car] = 0;
     });
-    this.round = await inputHandler.getRoundAndCheck();
-    gameController.playAllRounds(this.round, this.carArr, this.carsWithMoveNum);
+    gameController.makeCarsObjWithNum(this.carArr);
 
-    const winnersArr = gameController.selectWinner(
-      this.carArr,
-      this.carsWithMoveNum,
-    );
-    Console.print(`최종 우승자 : ${winnersArr.join(", ")}`);
+    this.round = await inputHandler.getRoundAndCheck();
+    gameController.playAllRounds(this.round, this.carArr);
+
+    const winnersArr = gameController.selectWinner(this.carArr);
+    Console.print(`GAME_MESSAGE.PRINT_WINNER(${winnersArr.join(", ")})`);
   }
 }
 
