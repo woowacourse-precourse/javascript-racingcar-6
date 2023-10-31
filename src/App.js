@@ -21,6 +21,17 @@ class App {
     }
   }
 
+  async getTrialNumbers() {
+    Console.print("시도할 횟수는 몇 회인가요?");
+    const INPUT = await Console.readLineAsync("");
+    const IS_VALID = validateTrialNumbers(INPUT);
+
+    if (IS_VALID) {
+      playGame(this.trialNumbers, INPUT, this.carNames);
+      this.printWinner();
+    }
+  }
+
   async play() {
     await this.getCarNames();
   }
