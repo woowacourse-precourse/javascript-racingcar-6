@@ -24,6 +24,8 @@ class App {
     // 게임 시작
     const race = new Race(players);
     await race.compete(moveNumber);
+    const winner = await race.awardsWinner();
+    console.log('최종 우승자 : ', winner);
   }
 }
 

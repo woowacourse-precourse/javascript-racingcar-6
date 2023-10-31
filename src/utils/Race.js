@@ -25,5 +25,22 @@ export default class Race {
   async printResult () {
     await this.cars.forEach( car => this.handleMoveForwards(car));
   }
-}
 
+  // 경기 종료
+  async awardsWinner () {
+    this.cars.sort((a,b)=>{
+      return b.distance - a.distance;
+    })
+
+    const winner = this.cars[0]
+    const commonWinner = this.cars.filter(car=>{
+      return winner.distance == car.distance;
+    })
+
+    if(commonWinner.length==1){
+      return winner.name;
+    }else{
+      return commonWinner.map(v=>v.name). join(', ');
+    }
+  }
+}

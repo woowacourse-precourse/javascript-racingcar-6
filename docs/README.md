@@ -66,9 +66,9 @@
   - [x] 전진 기능 구현 (moveForwards())
   - [x] players 수만큼 반복 (printResult())
   - [x] 입력한 횟수만큼 반복 (compete())
-- [ ] 경주 끝 (Award) 
-  - [ ] 우승자 구하기 (getWinner())
-  - [ ] 여러명일 경우 쉼표로 나누기
+- [x] 경주 끝 (Award) 
+  - [x] 우승자 구하기 (getWinner())
+  - [x] 여러명일 경우 쉼표로 나누기
 
 <br />
  
