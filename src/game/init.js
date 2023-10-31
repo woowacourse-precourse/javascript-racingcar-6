@@ -1,43 +1,55 @@
 import {MissionUtils} from "@woowacourse/mission-utils";
 import {ERROR_HEAD, INPUT_CARS_STRING, INPUT_PLAY_COUNT_STRING, NEWLINE, SPLIT_MARK} from "./constants.js";
 
-import {carListValidator, carNameValidator, carStringValidator, playCountValidator} from "./validator.js";
+import {carNameValidator, carsListValidator, carStringValidator, playCountValidator} from "./validator.js";
 import Game from "./game.js";
 
 class Init {
 
     async getUserInput() {
-        let carsList = new Array(String);
+        const carNames = await this.inputCarNames();
+        const carsList = this.makeCarsList(carNames);
 
+        const playCount = await this.inputPlayCount();
+
+        this.startGame(carsList, playCount);
+    }
+
+    async inputCarNames() {
         MissionUtils.Console.print(INPUT_CARS_STRING);
-        const carsString = await MissionUtils.Console.readLineAsync('');
+        const carNames = await MissionUtils.Console.readLineAsync('');
 
-        if (carStringValidator(carsString)) {
-            carsList = this.makeCarsList(carsString);
-        } else {
+        if (!carStringValidator(carNames)) {
             throw new Error(ERROR_HEAD);
         }
 
+        return carNames;
+    }
+
+    async inputPlayCount() {
         MissionUtils.Console.print(INPUT_PLAY_COUNT_STRING);
         const playCount = await MissionUtils.Console.readLineAsync('');
 
-        MissionUtils.Console.print(NEWLINE);
-
-        if (playCountValidator(playCount)) {
-            const game = new Game();
-            return game.startRacing(carsList, playCount);
-        } else {
+        if (!playCountValidator(playCount)) {
             throw new Error(ERROR_HEAD);
         }
+
+        return playCount;
     }
 
-    makeCarsList(carsString) {
-        const carsList = carsString.split(SPLIT_MARK).map(carName => carName.trim());
+    startGame(carsList, playCount) {
+        MissionUtils.Console.print(NEWLINE);
+        const game = new Game();
+        return game.startRacing(carsList, playCount);
+    }
+
+    makeCarsList(carNames) {
+        const carsList = carNames.split(SPLIT_MARK).map(carName => carName.trim());
 
         const isCarNameValid = carsList.every(carName => carNameValidator(carName));
-        const isCarListValid = carListValidator(carsList)
+        const isCarsListValid = carsListValidator(carsList)
 
-        if (!isCarNameValid || !isCarListValid) {
+        if (!isCarNameValid || !isCarsListValid) {
             throw new Error(ERROR_HEAD);
         }
 
