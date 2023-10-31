@@ -86,9 +86,13 @@ class CarController {
     let furthestCars = [];
 
     this.cars.forEach((car) => {
-      if (car.getLocation() < furthestLocation) return;
-      
-      if (car.getLocation() === furthestLocation) {
+      const comparison = car.compareLocation(furthestLocation);
+
+      const SMALLER = -1;
+      const SAME = 0
+
+      if (comparison === SMALLER) return;
+      if (comparison === SAME) {
         furthestCars.push(car);
         return;
       }

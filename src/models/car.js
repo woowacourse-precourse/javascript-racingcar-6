@@ -61,6 +61,16 @@ class Car {
   getLocation() {
     return this.location;
   }
+
+  compareLocation(location) {
+    if (this.location > location) {
+      return 1;
+    } else if (this.location === location) {
+      return 0;
+    }
+
+    return -1;
+  }
 }
 
 export default Car;
