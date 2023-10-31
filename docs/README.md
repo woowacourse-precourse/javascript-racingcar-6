@@ -39,6 +39,7 @@
 - 0~9사이의 무작위 값 뽑기  
   `Random.pickNumberInRange(0, 9)`
 - 만약, 값이 4이상 일 경우 전진(-)
+- 전진할 경우, 전진한 횟수만을 저장하는 배열에 1씩 값 증가
 
 #### 실행 결과 출력 (OutputResult.js / executionResult)
 
