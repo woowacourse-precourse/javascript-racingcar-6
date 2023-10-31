@@ -1,10 +1,10 @@
-import message from "../src/message";
+import message from "../src/variables/message";
 import {
   validateInputRacecar,
   validateRepeatedName,
-} from "../src/validation.js";
+} from "../src/validation/nameValidation.js";
 
-describe("validateInputRacecar", () => {
+describe("경주할 자동차 이름 검사", () => {
   it("빈 자동차 이름에 대한 오류를 던져야 합니다", () => {
     expect(() => validateInputRacecar(" ")).toThrowError(
       message.INPUT_SPACE_ERROR
@@ -37,7 +37,7 @@ describe("validateInputRacecar", () => {
   it("중복된 자동차 이름에 대한 오류를 던져야 합니다", () => {
     const carNames = ["car", "van", "car"];
 
-    expect(() => validateRepeatedName(carNames.join(","))).toThrowError(
+    expect(() => validateRepeatedName(carNames)).toThrowError(
       message.UNIQUE_NAMES_ERROR
     );
   });
