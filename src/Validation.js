@@ -1,11 +1,11 @@
 class Validation {
   STANDARD = {
-    minimumNameLength: 5,
+    maximumNameLength: 5,
     minimumRacingCount: 1,
   };
 
   isValidCarName(carName) {
-    return carName.length <= this.STANDARD.minimumNameLength;
+    return carName.length <= this.STANDARD.maximumNameLength;
   }
 
   isValidRacingCount(racingCount) {
