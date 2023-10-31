@@ -1,18 +1,22 @@
 import { Console, Random } from '@woowacourse/mission-utils';
+import SETTING from './constant/Setting';
+import car from './Car';
 
 const createRaceCars = userInput => {
-  const cars = [];
-  userInput
-    .split(',')
-    .forEach(car => cars.push({ name: car, result: [], textResult: '' }));
+  const names = userInput.split(',');
+  const cars = names.map(name => car(name));
+
   return cars;
 };
 
-const playRace = (cars, inputPlayCount) => {
-  let count = 1;
-  while (count <= inputPlayCount) {
+const playRace = (cars, playCount) => {
+  let count = 0;
+  while (count < playCount) {
     cars.forEach(car => {
-      const random = Random.pickNumberInRange(0, 9);
+      const random = Random.pickNumberInRange(
+        SETTING.MIN_RANGE,
+        SETTING.MAX_RANGE,
+      );
       car.result.push(random);
       printTextResult(random, car);
     });
