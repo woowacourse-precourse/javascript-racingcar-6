@@ -2,6 +2,8 @@ import Observer from "../core/Observer.js";
 import { STATE_KEY } from "../utils/constants.js";
 
 class GameModel extends Observer {
+  name = STATE_KEY.GAME;
+
   constructor() {
     super();
   }
