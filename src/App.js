@@ -32,8 +32,8 @@ class App {
   running_race(cars, repetitions) {
     let i = 0;
     while (i < repetitions) {
-      cars.move_cars(this.getMoveArr(cars));
-      this.printCarMoves(cars);
+      cars.move_cars(App.getMoveArr(cars));
+      App.printCarMoves(cars);
       i += 1;
     }
     WINNER_STR(cars);
