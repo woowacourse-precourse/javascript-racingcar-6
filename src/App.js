@@ -2,7 +2,7 @@ import Racing from './Racing.js';
 
 class App {
   async play() {
-    let racing = new Racing();
+    const racing = new Racing();
     await racing.start();
   }
 }
