@@ -1,20 +1,14 @@
 import { Console } from "@woowacourse/mission-utils";
 import getRacingCars from "./input/getRacingCars.js";
 import getRacingCount from "./input/getRacingCount.js";
+import displayRoundResult from "./display/displayRoundResult.js";
+import displayWinner from "./display/displayWinner.js";
+
 
 function racingOneRound(racingCars) {
   racingCars.forEach(racingCar => {
     racingCar.tryRacing();
   });
-}
-
-function displayRoundResult(racingCars) {
-  racingCars.forEach(racingCar => {
-    const name = racingCar.name;
-    const movingDistance = racingCar.movingDistance;
-    Console.print(`${name} : ${movingDistance}`);
-  })
-  Console.print('\n');
 }
 
 export default async function racingGame() {
@@ -28,6 +22,7 @@ export default async function racingGame() {
     displayRoundResult(racingCars);
   }
 
+  displayWinner();
 }
 
 racingGame();
