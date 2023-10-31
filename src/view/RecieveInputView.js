@@ -21,4 +21,16 @@ export default class RecieveInputView {
       }
     });
   }
+
+  // playNumber 입력받기
+  async recievePlayNumber() {
+    this.playNumber = await Console.readLineAsync('시도할 횟수를 입력하세요.');
+    if (this.playNumber <= 0) {
+      throw new Error('[ERROR] 시도할 횟수에는 1이상의 값을 입력해야 합니다.');
+    }
+    if (typeof this.playNumber !== 'number') {
+      throw new Error('[ERROR] 시도할 횟수에는 숫자만 입력할 수 있습니다.');
+    }
+    return this.playNumber;
+  }
 }
