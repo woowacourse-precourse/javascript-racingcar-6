@@ -4,36 +4,45 @@ import message from "./util/Message.js"
 
 class App {
   async play() {
-    // const userInput = await this.getUserInput();
-    // this.printMessage(msg)
-    // const array = this.splitStringToArrayByComma(string)
-    const testingArray = ['fake', 'test', 'testing']
-    checkIsAllElementsFitCondition(testingArray)
+    const userInput = await getUserInput()
+    console.log(userInput)
   }
 }
 
 async function getUserInput() {
   const input = await Console.readLineAsync(message.starting)
-  return input
+  const userInput = new UserInput(input)
+    .splitStringToArrayBy(',')
+    .checkIsAllElementsFitCondition(5);
+  return userInput.array
+}
+
+class UserInput{
+  constructor(input) {
+    this.input = input
+    this.array = []
+  }
+  
+  splitStringToArrayBy(splitter) {
+    this.array = this.input.split(splitter)
+    return this
+  }
+
+  checkIsAllElementsFitCondition(condition) {
+    this.array.map(element => this.checkStringLengthBelow(condition,element))
+    return this
+  }
+  
+  checkStringLengthBelow(condition, string) {
+    if (string.length > condition) {
+      throw console.error(message.inputValidationError);
+    }
+  }
 }
 
 function printMessage(message) {
   Console.print(message)
 }
 
-function splitStringToArrayByComma(string) {
-  const array = string.split(',')
-  return array
-}
-
-function checkIsAllElementsFitCondition(array) {
-  array.map(element => checkStringLengthBelow5(element))
-}
-
-function checkStringLengthBelow5(string) {
-  if (string.length < 5) {
-    throw console.error(message.inputValidationError);
-  }
-}
 
 export default App;
