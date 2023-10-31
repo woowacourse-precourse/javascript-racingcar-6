@@ -11,6 +11,14 @@ class InputView {
 
     return carNames;
   }
+
+  static async setLaps() {
+    const laps = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+
+    CarNameValidator.validateLaps(parseInt(laps, 10));
+
+    return parseInt(laps, 10);
+  }
 }
 
 export default InputView;
