@@ -52,6 +52,14 @@ class RacingGame {
     }
     Console.print(result);
   }
+
+  getWinners() {
+    const maxMoveCount = Math.max(...this.cars.map((car) => car.moveCount));
+    const winners = this.cars
+      .filter((car) => car.moveCount === maxMoveCount)
+      .map((car) => car.name);
+    return winners;
+  }
 }
 
 export default RacingGame;
