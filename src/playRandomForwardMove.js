@@ -15,6 +15,7 @@ function printRoundResult(map) {
   for (const [key, value] of map) {
     MissionUtils.Console.print(`${key} : ${value}`);
   }
+  MissionUtils.Console.print("\n");
 }
 
 function getRandomNum() {
