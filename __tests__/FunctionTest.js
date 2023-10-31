@@ -3,7 +3,7 @@ import Game from "../src/Game.js";
 import Car from "../src/Car.js";
 
 describe("기능 테스트", () => {
-  //자동차 이름 입력받기 기능 테스트
+  // 자동차 이름 입력받기 기능 테스트
   test("자동차 이름 입력받기", async () => {
     const input = "pobi,woni,jun";
     const game = new Game();
@@ -24,7 +24,7 @@ describe("기능 테스트", () => {
     );
   });
 
-  //시도할 횟수 입력받기 기능 테스트
+  // 시도할 횟수 입력받기 기능 테스트
   test("시도할 횟수 입력받기", async () => {
     const input = 5;
     const game = new Game();
@@ -42,5 +42,12 @@ describe("기능 테스트", () => {
     expect(game.inputAttemptNumber()).rejects.toThrow(
       "[ERROR] 숫자를 입력해주세요."
     );
+  });
+
+  // 무작위 값 구하기 기능 테스트
+  test("무작위 값 구하기", () => {
+    const result = Car.generateRandomValue();
+    expect(result).toBeGreaterThanOrEqual(0);
+    expect(result).toBeLessThanOrEqual(9);
   });
 });
