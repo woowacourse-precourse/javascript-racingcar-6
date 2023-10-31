@@ -46,17 +46,50 @@ describe("자동차 경주 게임", () => {
     });
   });
 
-  test.each([
-    [["pobi,javaji"]],
-    [["pobi,eastjun"]]
-  ])("이름에 대한 예외 처리", async (inputs) => {
-    // given
+  test.each([[["pobi,javaji"]], [["pobi,eastjun"]]])(
+    "이름에 대한 예외 처리",
+    async (inputs) => {
+      // given
+      mockQuestions(inputs);
+
+      // when
+      const app = new App();
+
+      // then
+      await expect(app.play()).rejects.toThrow("[ERROR]");
+    }
+  );
+
+  /** 추가 테스트  ------------------------------------ */
+  test("다수의 우승자 출력", async () => {
+    const randNum = [5, 5, 4, 5, 6, 7, 8, 9];
+    const inputs = ["BENZ,BMW,KIA,FORD", "2"];
+    const output = "최종 우승자 : BENZ, BMW, KIA, FORD";
+    const logSpy = getLogSpy();
+
+    //given
     mockQuestions(inputs);
+    mockRandoms([...randNum]);
 
-    // when
+    //when
     const app = new App();
+    await app.play();
 
-    // then
-    await expect(app.play()).rejects.toThrow("[ERROR]");
+    //then
+    expect(logSpy).toHaveBeenLastCalledWith(expect.stringContaining(output));
   });
+
+  test.each([[["Car1", "Car2", " "]], [["Car1", "Car2", "ddd"]]])(
+    "게임 횟수 입력 예외 처리",
+    async (inputs) => {
+      // given
+      mockQuestions(inputs);
+
+      // when
+      const app = new App();
+
+      // then
+      await expect(app.play()).rejects.toThrow("[ERROR]");
+    }
+  );
 });
