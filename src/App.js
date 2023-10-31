@@ -7,6 +7,7 @@ class App {
     );
 
     const CAR = await Console.readLineAsync('');
+    this.validateContinuousComma(CAR);
     const CAR_LIST = CAR.split(',');
     this.validateCarNameLength(CAR_LIST);
 
@@ -59,7 +60,11 @@ class App {
     }
 
     if (/[^1-9]/.test(count)) {
-      throw new Error('[ERROR] 숫자만 입력이 가능합니다.');
+  validateContinuousComma(word) {
+    if (/,,+/.test(word)) {
+      throw new Error(
+        '[ERROR] 쉼표(,)는 자동차 이름 사이에 한번만 입력해 주세요'
+      );
     }
   }
 
