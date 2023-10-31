@@ -13,12 +13,12 @@
   ㅡ 자동차 이름에 , 안 넣고 5자 이상일 때 5자 이하라고하기
   
   시도:
-  ㅡ 5번 시도하고 이름이 pobi,woosup,dragon,woni,jun 일 때 
+  ㅡ 5번 시도하고 이름이 pobi,woosu,drago,woni,jun 일 때 
   각 시도의 숫자가 [1,4,3,4,5], [5,7,2,7,2],[9,5,2,7,3],[1,9,3,7,5],[8,7,6,5,4]이라면
   제대로 출력되는지 확인
   pobi : ---
-  woosup : -----
-  dragon : -
+  woosu : -----
+  drago : -
   woni : -----
   jun : ---
 최종우승자: woosup, woni 
@@ -45,6 +45,12 @@
 //     console.log(Object.values(objectCarName)[i])
 //   }
 
+// [STOP,MOVING_FORWARD,STOP,MOVING_FORWARD,MOVING_FORWARD],
+//       [MOVING_FORWARD,MOVING_FORWARD,STOP,MOVING_FORWARD,STOP],
+//       [MOVING_FORWARD,MOVING_FORWARD,STOP,MOVING_FORWARD,STOP],
+//       [STOP,MOVING_FORWARD,STOP,MOVING_FORWARD,MOVING_FORWARD],
+//       [MOVING_FORWARD,MOVING_FORWARD,MOVING_FORWARD,MOVING_FORWARD,MOVING_FORWARD]
+    
 var randNum =  Math.floor(Math.random() * 10) + 1
 
 
