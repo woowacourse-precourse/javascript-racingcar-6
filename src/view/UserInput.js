@@ -19,6 +19,11 @@ class UserInput {
 			throw new Error(ERROR_MESSAGES.duplicate_car_name);
 	}
 
+	#checkMaximumCarNumber(racingCarNames) {
+		if (racingCarNames.length > CONDITIONS.car_maximum_number)
+			throw new Error(ERROR_MESSAGES.exceed_maximum_car_number);
+	}
+
 	#checkIsNumber(userInput) {
 		if (isNaN(userInput)) throw new Error(ERROR_MESSAGES.value_is_not_a_number);
 	}
@@ -42,6 +47,7 @@ class UserInput {
 		});
 
 		this.#checkSameCarName(racingCarNames);
+		this.#checkMaximumCarNumber(racingCarNames);
 
 		return racingCarNames;
 	}
