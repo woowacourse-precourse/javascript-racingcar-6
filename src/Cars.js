@@ -1,15 +1,26 @@
+import {
+  nameValidation,
+  duplicateChecks,
+} from "./Validations";
+
 export default class Cars {
-  constructor(input) {
+  constructor(arr) {
+    this.validations(arr);
     this.obj = {};
-    input.split(",").forEach((v) => {
+    arr.forEach((v) => {
       this.obj[v] = 0;
     });
-    this.len = input.split(",").length;
+    this.len = arr.length;
   }
 
   move_cars(moves) {
     Object.keys(this.obj).forEach((item, i) => {
       if (moves[i] >= 4) this.obj[item] += 1;
     });
+  }
+
+  validations(arr) {
+    nameValidation(arr);
+    duplicateChecks(arr);
   }
 }

@@ -39,12 +39,12 @@ class App {
     WINNER_STR(cars);
   }
 
+
+
   async play() {
     const input = await Console.readLineAsync(GAME_START);
     const carNames = input.split(",");
-    nameValidation(carNames);
-    duplicateChecks(carNames);
-    const cars = new Cars(input);
+    const cars = new Cars(carNames);
     const repetitions = await Console.readLineAsync(REPETATION_STR);
     naturalNumberRex(repetitions);
     this.running_race(cars, repetitions);
