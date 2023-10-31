@@ -1,4 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
+import { CAR_NAME_ERRORS, NUMBER_INPUT_ERRORS } from './constants';
 
 export const generateRandomNumber = (min, max) => {
   return MissionUtils.Random.pickNumberInRange(min, max);
@@ -18,16 +19,16 @@ export const removeSpaces = (carNames) => {
 
 export const validateCarNames = (carNameArray) => {
   if (carNameArray.length === 1) {
-    throw new Error('[ERROR] 자동차 이름은 최소 2개 이상 입력되어야 합니다.');
+    throw new Error(CAR_NAME_ERRORS.MIN_COUNT);
   }
 
   for (const name of carNameArray) {
     if (name.length === 0) {
-      throw new Error('[ERROR] 자동차 이름은 빈 문자열일 수 없습니다.');
+      throw new Error(CAR_NAME_ERRORS.EMPTY_STRING);
     }
 
     if (name.length > 5) {
-      throw new Error('[ERROR] 자동차 이름은 5자 이하이어야 합니다.');
+      throw new Error(CAR_NAME_ERRORS.MAX_LENGTH);
     }
   }
 
@@ -36,23 +37,23 @@ export const validateCarNames = (carNameArray) => {
 
 export const validateNumberInput = (input) => {
   if (isNaN(input)) {
-    throw new Error('[ERROR] 시도할 횟수는 숫자여야 합니다.');
+    throw new Error(NUMBER_INPUT_ERRORS.NOT_A_NUMBER);
   }
 
   if (parseInt(input) === 0) {
-    throw new Error('[ERROR] 시도 횟수는 0일 수 없습니다.');
+    throw new Error(NUMBER_INPUT_ERRORS.ZERO_TRIES);
   }
 
   if (parseInt(input) < 0) {
-    throw new Error('[ERROR] 시도 횟수는 음수일 수 없습니다.');
+    throw new Error(NUMBER_INPUT_ERRORS.NEGATIVE_TRIES);
   }
 
   if (!Number.isInteger(Number(input))) {
-    throw new Error('[ERROR] 시도 횟수는 정수여야 합니다.');
+    throw new Error(NUMBER_INPUT_ERRORS.NOT_AN_INTEGER);
   }
 
   if (input === '') {
-    throw new Error('[ERROR] 시도 횟수는 빈 문자열일 수 없습니다.');
+    throw new Error(NUMBER_INPUT_ERRORS.EMPTY_STRING);
   }
 
   return true;
