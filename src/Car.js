@@ -24,6 +24,7 @@ class Car {
       Console.print(`${newCar.name} : ${'-'.repeat(newCar.count)}`);
       return newCar;
     });
+    Console.print('');
 
     this.#cars = updatedCars;
   }

@@ -17,6 +17,7 @@ const Input = {
 
   async getRepeatTimes() {
     const times = await Console.readLineAsync(MESSAGE.attemptNum);
+    Console.print('');
 
     const pattern = /^[1-9]d*$/;
     if (!pattern.test(times)) {

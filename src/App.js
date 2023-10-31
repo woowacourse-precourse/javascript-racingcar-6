@@ -18,12 +18,10 @@ class App {
     const car = new Car(cars);
 
     this.#times = await Input.getRepeatTimes();
-    Console.print('');
-
     Console.print(MESSAGE.result);
     while (this.#num < this.#times) {
       car.startGoOrStop();
-      Console.print('');
+
       this.#num += 1;
     }
 
