@@ -9,4 +9,12 @@ export const CAR_MESSAGES = {
   },
 };
 
-export const NUMBER_ERROR_MESSAGES = {};
+export const NUMBER_MESSAGES = {
+  INPUT: "시도할 횟수는 몇 회인가요?",
+  ERROR: {
+    MUST_NUMBER: "[ERROR] 시도 횟수는 숫자 값만 입력해주세요.",
+    NOT_BLANK: "[ERROR] 시도 횟수를 입력하지 않으셨습니다.",
+    MUST_OVER_1: "[ERROR] 시도 횟수는 1 이상이어야 합니다.",
+    MUST_UNDER_100: "[ERROR] 시도 횟수는 100 미만이어야 합니다.",
+  },
+};
