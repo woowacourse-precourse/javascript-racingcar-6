@@ -47,8 +47,16 @@ describe("자동차 경주 게임", () => {
   });
 
   test.each([
+    // 잘못된 인풋
+    [[""]],
+    [[","]],
+    [[",pobi"]],
+    [["pobi,"]],
+    // 이름 사이에 잘못된 이름이 들어갔을 경우
+    [["pobi,,hobin"]],
+    // 5자를 넘어가는 이름이 있을 경우
     [["pobi,javaji"]],
-    [["pobi,eastjun"]]
+    [["pobi,eastjun"]],
   ])("이름에 대한 예외 처리", async (inputs) => {
     // given
     mockQuestions(inputs);
