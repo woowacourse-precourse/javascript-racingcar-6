@@ -1,6 +1,6 @@
 import CarRacingGame from '../domain/CarRacingGame.js';
 import InputValidator from '../domain/InputValidator.js';
-import randomNumberGenerator from '../utils/RandomNumberGenerator.js';
+import randomNumberGenerator from '../utils/randomNumberGenerator.js';
 import InputView from '../views/InputView.js';
 import OutputView from '../views/OutputView.js';
 import { MESSAGE } from '../constants/messages.js';
