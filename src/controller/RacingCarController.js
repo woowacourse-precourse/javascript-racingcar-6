@@ -33,11 +33,11 @@ class RacingCarController {
 
   raceStart() {
     OutputView.printResultMessage();
-    for (let i = 0; i < this.#cars.getTries(); i++) {
+    Array.from({ length: this.#cars.getTries() }).forEach(() => {
       this.#cars.setMoveCondition();
       OutputView.printMoveMarking(this.#cars.getCurrentPosition());
       OutputView.printSingleLine();
-    }
+    });
     this.raceResult();
   }
 
