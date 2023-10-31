@@ -1,7 +1,7 @@
 import InputManager from './InputManager.js';
 import Car from './Car.js';
 import { Console } from '@woowacourse/mission-utils';
-import { RACING_RESULT } from './constants.js';
+import { RACING_RESULT, WINNER_RESULT } from './constants.js';
 class RacingGame {
   constructor() {
     this.cars = [];
@@ -19,6 +19,14 @@ class RacingGame {
       await this.executeCycle();
       this.printResult();
     }
+    this.printWinner();
+  }
+
+  genearteCarObjects(carNameList) {
+    carNameList.forEach((carName) => {
+      const car = new Car(carName);
+      this.cars.push(car);
+    });
   }
 
   getCarNameList(inputManager) {
@@ -29,11 +37,12 @@ class RacingGame {
     return inputManager.enterTryNum(inputManager);
   }
 
-  genearteCarObjects(carNameList) {
-    carNameList.forEach((carName) => {
-      const car = new Car(carName);
-      this.cars.push(car);
-    });
+  getWinners() {
+    const maxMoveCount = Math.max(...this.cars.map((car) => car.moveCount));
+    const winners = this.cars
+      .filter((car) => car.moveCount === maxMoveCount)
+      .map((car) => car.name);
+    return winners;
   }
 
   async executeCycle() {
@@ -53,12 +62,9 @@ class RacingGame {
     Console.print(result);
   }
 
-  getWinners() {
-    const maxMoveCount = Math.max(...this.cars.map((car) => car.moveCount));
-    const winners = this.cars
-      .filter((car) => car.moveCount === maxMoveCount)
-      .map((car) => car.name);
-    return winners;
+  printWinner() {
+    const winners = this.getWinners();
+    Console.print(`${WINNER_RESULT} ${winners.join(', ')}`);
   }
 }
 

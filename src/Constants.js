@@ -11,3 +11,4 @@ export const ERROR_MESSAGES = Object.freeze({
 
 export const MOVE_FORWARD_CRITERIA = 4;
 export const RACING_RESULT = '\n실행결과';
+export const WINNER_RESULT = '최종 우승자 :';
