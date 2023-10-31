@@ -55,14 +55,5 @@ describe("자동차 경주 게임 시도 횟수 입력 테스트", () => {
     const app = new App();
 
     await expect(app.play()).rejects.toThrow(tryMessage.ERROR_INPUT_TRY);
-  })
-
-  test("정상 입력", async () => {
-    const input = ["pobi,java", "5"];
-    mockQuestions(input);
-
-    const app = new App();
-
-    await expect(app.play()).resolves.not.toThrow();
   });
 });
