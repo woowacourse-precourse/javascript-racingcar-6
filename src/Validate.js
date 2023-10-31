@@ -1,0 +1,11 @@
+export function checkCarNameDuplicate(carNameArray) {
+  const carNameSet = new Set();
+  carNameArray.forEach((carName) => carNameSet.add(carName));
+  return carNameSet.size === carNameArray.length;
+}
+
+export function checkCarNameLength(carNameArray) {
+  return carNameArray.every(
+    (carName) => carName.length <= 5 && carName.length > 0
+  );
+}
