@@ -26,3 +26,8 @@ export const checkCarsArray = (carsNameArray) => {
   carsNameArray.forEach((carName) => checkNameLength(carName));
 };
 
+const checkCarsDifferName = (carsNameArray) => {
+  const nameSet = new Set(carsNameArray);
+  if (nameSet.size !== carsNameArray.length)
+    throw new Error(SAME_NAME_USER_INPUT_ERROR);
+};
