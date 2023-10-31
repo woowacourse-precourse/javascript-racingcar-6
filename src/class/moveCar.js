@@ -1,4 +1,5 @@
 import { Random, Console } from '@woowacourse/mission-utils';
+import { CONDITION_POINT, PLAY_GAME } from '../Constants.js'
 
 class MoveCar {
   constructor(carNames) {
@@ -8,11 +9,11 @@ class MoveCar {
 
   carMoveCompare() {
     const getMovePoint = Random.pickNumberInRange(0, 9);
-    return getMovePoint >= 4;
+    return getMovePoint >= CONDITION_POINT.MOVE_MIN_POINT;
   }
 
   startRacing(tryCount) {
-    Console.print('\n실행 결과');
+    Console.print(PLAY_GAME.RESULT);
     for (let i = 0; i < tryCount; i++) {
 
       const moveResults = this.carNames.map((carName, index) => {
@@ -29,7 +30,7 @@ class MoveCar {
       Console.print('\n');
     }
     const winners = this.resultGame();
-    Console.print('최종 우승자 : ' + winners.join(', '));
+    Console.print(PLAY_GAME.WINNER + winners.join(', '));
   }
 
   resultGame() {
