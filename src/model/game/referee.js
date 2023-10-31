@@ -1,7 +1,7 @@
 class Referee {
   #winners = [];
 
-  compareCars(racingCars) {
+  determineWinner(racingCars) {
     const cars = Object.values(racingCars);
     const maxMoveCount = Math.max(...cars.map((car) => car.getMoveCount()));
     this.#winners = cars.filter((car) => car.getMoveCount() === maxMoveCount);

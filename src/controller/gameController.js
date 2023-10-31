@@ -26,7 +26,7 @@ class GameController {
       this.output.printCarStatusResult(this.racingcars.getCars());
       numberOfAttempt.decrease();
     }
-    const winners = this.referee.compareCars(this.racingcars.getCars());
+    const winners = this.referee.determineWinner(this.racingcars.getCars());
     this.output.printWinners(winners);
   }
 }
