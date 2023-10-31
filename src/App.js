@@ -5,6 +5,46 @@ class Car {
     this.name = name;
     this.position = 0;
   }
+
+  move() {
+    this.position += 1;
+  }
+
+  shouldMove() {
+    return Random.pickNumberInRange(0, 9) >= 4;
+  }
+
+  getPosition() {
+    return "-".repeat(this.position);
+  }
+}
+
+class Race {
+  constructor(cars) {
+    this.cars = cars;
+  }
+
+  runRound() {
+    this.cars.forEach((car) => {
+      if (car.shouldMove()) {
+        car.move();
+      }
+    });
+  }
+
+  run(times) {
+    for (let i = 0; i < times; i++) {
+      this.runRound();
+      this.printRoundResult();
+      Console.print("");
+    }
+  }
+
+  printRoundResult() {
+    this.cars.forEach((car) => {
+      Console.print(`${car.name} : ${car.getPosition()}`);
+    });
+  }
 }
 
 class App {
@@ -18,6 +58,8 @@ class App {
       await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n")
     );
     const cars = carNames.map((name) => new Car(name));
+    const race = new Race(cars);
+    race.run(times);
   }
 }
 
