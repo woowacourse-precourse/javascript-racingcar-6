@@ -30,6 +30,7 @@ const checkRound = round => {
 };
 const setRound = async () => {
   const round = await Console.readLineAsync(MESSAGE.inputRoundMessage);
+  Console.print('');
   checkRound(round);
   return round;
 };
