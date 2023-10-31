@@ -1,4 +1,5 @@
-const initializeCarData = (carNames, carData) => {
+const initializeCarData = (carNames) => {
+  const carData = {};
   carNames.forEach(name => {
     carData[name] = '';
   });

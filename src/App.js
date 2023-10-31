@@ -15,7 +15,7 @@ class App {
     const userInput = await getUserInput();
     this.userCount = userInput.userCount;
     this.carNames = userInput.carNames;
-    initializeCarData(this.carNames, this.carData);
+    this.carData = initializeCarData(this.carNames);
     printFinish(this.carData, this.userCount);
   }
 }
