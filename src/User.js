@@ -1,12 +1,8 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 
 class User {
-  constructor() {
-    this.name = '';
-  }
-
-  set setName(name) {
-    this.name = name;
+  constructor(nameList) {
+    this.nameList = nameList;
   }
 }
 
