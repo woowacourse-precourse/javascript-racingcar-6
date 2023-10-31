@@ -1,3 +1,5 @@
+import { MissionUtils } from "@woowacourse/mission-utils";
+
 class App {
   async play() {
     const carNames = await this.getCarNameInput();
@@ -26,7 +28,7 @@ class App {
   }
 
   validateCarNames(carNames) {
-    if (carNames.some(name => name.length > 5)) {
+    if (carNames.some((name) => name.length > 5)) {
       throw new Error("[ERROR] 자동차 이름은 5자 이하여야 합니다.");
     }
     return true;
