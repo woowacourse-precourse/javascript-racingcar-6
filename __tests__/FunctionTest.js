@@ -38,6 +38,7 @@ describe("기능: 이름 입력", () => {
     expect(gameData).toHaveProperty("amy.position", 0);
   });
   test.each([
+    ["빈 입력일 떄", [""]],
     ["이름이 1개일 때", ["amy"]],
     ["5자를 초과하는 이름일 떄", ["chungha, park"]],
     ["빈 이름일 떄", [", hello"]],
@@ -70,6 +71,7 @@ describe("기능: 이동 횟수 입력", () => {
     expect(app.getRepeatCount()).toBe(5);
   });
   test.each([
+    ["빈 입력일 때", [""]],
     ["횟수가 0일 때", [0]],
     ["횟수가 100번 초과일 때", [101]],
     ["입력이 숫자가 아닐 때", ["a9"]],
