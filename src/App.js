@@ -37,7 +37,7 @@ class App {
     const roundResults = new Array(this.carNames.length).fill("");
     for (let i = 0; i < this.tryInput; i++) {
       for (let j = 0; j < this.carNames.length; j++) {
-        const move = Math.floor(Math.random() * 10) >= 4 ? "-" : "";
+        const move = MissionUtils.Random.pickNumberInRange(0, 9) >= 4 ? "-" : "";
         roundResults[j] += move;
       }
 
@@ -49,10 +49,6 @@ class App {
     const maxDistance = Math.max(...roundResults.map((result) => result.length));
     const winners = this.carNames.filter((carName, index) => roundResults[index].length === maxDistance);
     console.log(`최종 우승자 : ${winners.join(", ")}`);
-  }
-
-  async error(){
-
   }
 
   async play() {
@@ -67,6 +63,3 @@ class App {
 }
 
 export default App;
-
-const app = new App();
-app.play();
