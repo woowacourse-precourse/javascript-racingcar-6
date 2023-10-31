@@ -22,6 +22,7 @@ export class App {
   async startGame() {
     const { carNames, tryNumber } = await this.getInputValue();
     this.setMoveCount(carNames);
+    this.addMoveCount(carNames);
     MESSAGE.getGameScore(this.moveCount);
   }
 
@@ -33,6 +34,12 @@ export class App {
     const tryNumber = await Console.readLineAsync("");
 
     return { carNames, tryNumber };
+  }
+
+  addMoveCount(carNames) {
+    carNames.forEach((name) => {
+      if (Random.pickNumberInRange(0, 9) >= 4) this.moveCount[name] += "-";
+    });
   }
 }
 
