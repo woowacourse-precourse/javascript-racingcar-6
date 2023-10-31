@@ -11,11 +11,9 @@ class App {
     return carNames.split(",");
   }
 
-  checkCarNames(carNamesArray) {
-    carNamesArray.forEach((element) => {
-      if (element.length > CONSTANT.NAME_LENGTH_LIMIT)
-        throw new Error(ERROR_MESSAGE.LENGTH);
-    });
+  checkCarNames(element) {
+    if (element.length > CONSTANT.NAME_LENGTH_LIMIT)
+      throw new Error(ERROR_MESSAGE.LENGTH);
   }
 
   checkRepeatNumber(repeatNumber) {
@@ -120,7 +118,9 @@ class App {
   async play() {
     const carNames = await Console.readLineAsync(GAME_MESSAGE.INPUT_CARNAMES);
     const carNamesArray = this.getCarNamesArray(carNames);
-    this.checkCarNames(carNamesArray);
+    carNamesArray.forEach((element) => {
+      this.checkCarNames(element);
+    });
     const repeatNumber = await Console.readLineAsync(
       GAME_MESSAGE.INPUT_TRYNUMBER
     );
