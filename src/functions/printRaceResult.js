@@ -36,4 +36,4 @@ const printRaceResult = (raceCars, raceCount) => {
   return raceResult;
 };
 
-export default printRaceResult;
+export { updateRaceResult, printRaceResult };
