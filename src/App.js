@@ -3,7 +3,7 @@ import Racing from './Racing.js';
 class App {
   async play() {
     let racing = new Racing();
-    racing.start();
+    await racing.start();
   }
 }
 
