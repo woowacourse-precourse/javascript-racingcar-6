@@ -5,12 +5,12 @@ import { validateCarNames, validateRoundCount } from './utils.js';
 class App {
   async play() {
     const carNames = await this.getCarNames();
-    const playRounds = await this.getNumberOfRounds();
+    const rounds = await this.getNumberOfRounds();
     const players = this.createPlayers(carNames);
 
     MissionUtils.Console.print('\n실행 결과');
 
-    this.playGame(players, playRounds);
+    this.playGame(players, rounds);
     const winner = this.getWinner(players);
 
     MissionUtils.Console.print(`최종 우승자 : ${winner}`);
@@ -41,12 +41,12 @@ class App {
 
   playGame(players, rounds) {
     for (let i = 0; i < rounds; i += 1) {
-      this.getPlayerMoves(players);
+      this.movePlayers(players);
       this.printRoundResults(players);
     }
   }
 
-  getPlayerMoves(players) {
+  movePlayers(players) {
     const MOVE_REQUIREMENT = 4;
 
     for (let i = 0; i < players.length; i += 1) {
