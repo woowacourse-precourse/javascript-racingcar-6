@@ -1,6 +1,7 @@
 import Car from '../models/Car.js';
 import CarGame from '../models/CarRace.js';
 import GameResult from '../models/RaceProcess.js';
+import RandomNumberGenerator from '../utils/RandomNumberGenerator.js';
 import InputView from '../views/InputView.js';
 import OutputView from '../views/OutputView.js';
 import { Console } from '@woowacourse/mission-utils';
@@ -18,7 +19,8 @@ class CarRaceController {
 
   async playGameStage(startLine) {
     const attempts = await InputView.readAttempts();
-    this.#race = new CarGame();
+    const randomGenerator = RandomNumberGenerator;
+    this.#race = new CarGame(randomGenerator);
     const forwards = this.#race.checkPosition(startLine, attempts);
     this.checkProcessStage(forwards, Number(attempts));
   }

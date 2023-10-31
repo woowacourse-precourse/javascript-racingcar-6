@@ -1,7 +1,11 @@
-import { Random } from '@woowacourse/mission-utils';
 import { NUMBER } from '../utils/Constant.js';
 
 class CarRace {
+  #randomGenerator;
+  constructor(generator) {
+    this.#randomGenerator = generator;
+  }
+
   checkPosition(carPosition, attempts) {
     carPosition.forEach((_, carName) => {
       carPosition.set(carName, this.getForwardCount(Number(attempts)));
@@ -18,7 +22,7 @@ class CarRace {
   }
 
   gainPower(count) {
-    const power = Random.pickNumberInRange(NUMBER.MIN, NUMBER.MAX);
+    const power = this.#randomGenerator.generate();
     if (power >= NUMBER.RANDOM) {
       count += 1;
     }
