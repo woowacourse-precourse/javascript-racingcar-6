@@ -13,6 +13,10 @@ class CarList {
     carInputArray.map((carName) => this.cars.push(new Car(carName)));
   }
 
+  getCarList() {
+    return this.cars;
+  }
+
   printCarListScore(tryNumber) {
     Array.from({ length: tryNumber }).map(() => {
       this.cars.map((car) => {
