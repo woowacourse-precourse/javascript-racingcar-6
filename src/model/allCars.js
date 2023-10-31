@@ -2,7 +2,7 @@ import ERROR_MESSAGE from "../constant/errorMessage";
 import messagePrinter from "../utils/messagePrinter";
 import Car from "./Car";
 
-class allCars {
+class AllCars {
   #cars;
 
   constructor(cars) {
@@ -35,4 +35,4 @@ class allCars {
   }
 }
 
-export default allCars;
+export default AllCars;

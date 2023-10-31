@@ -1,6 +1,6 @@
 import App from "../src/App.js";
 import ERROR_MESSAGE from "../src/constant/errorMessage.js";
-import allCars from "../src/model/allCars.js";
+import AllCars from "../src/model/AllCars.js";
 import messagePrinter from "../src/utils/messagePrinter.js";
 
 describe('차 이름 유효성 테스트', () => {
@@ -8,7 +8,7 @@ describe('차 이름 유효성 테스트', () => {
     const input = ['pobi', 'woni', 'jun'];
 
     expect(() => {
-      const cars = new allCars(input);
+      const cars = new AllCars(input);
       cars.validate();
     }).not.toThrow();
   });
@@ -17,7 +17,7 @@ describe('차 이름 유효성 테스트', () => {
     const input = ['pobi', 'pobi', 'woni', 'jun'];
 
     expect(() => {
-      const cars = new allCars(input);
+      const cars = new AllCars(input);
       cars.validate();
     }).toThrow(ERROR_MESSAGE.duplicated_car_names);
   });
@@ -26,7 +26,7 @@ describe('차 이름 유효성 테스트', () => {
     const input = ['pobi123', 'woni', 'jun'];
 
     expect(() => {
-      const cars = new allCars(input);
+      const cars = new AllCars(input);
       cars.validate();
     }).toThrow(ERROR_MESSAGE.more_than_five_letters);
   });
@@ -35,7 +35,7 @@ describe('차 이름 유효성 테스트', () => {
     const input = ['', 'woni', 'jun'];
 
     expect(() => {
-      const cars = new allCars(input);
+      const cars = new AllCars(input);
       cars.validate();
     }).toThrow(ERROR_MESSAGE.no_letters);
   });
