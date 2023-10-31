@@ -9,9 +9,9 @@ class Car {
 
   move() {
     const randomNumber = getRandomNumber();
-    const isMoved = randomNumber >= NUMBER.MOVING_FORWARD;
+    const canMove = randomNumber >= NUMBER.MOVING_FORWARD;
 
-    if (isMoved) {
+    if (canMove) {
       this.position += 1;
     }
   }
