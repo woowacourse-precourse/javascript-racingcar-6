@@ -33,4 +33,20 @@ class CarRacingGame {
       );
     }
   }
+
+  /**@returns {string[]} */
+  getWinner() {
+    const max = this.#cars.reduce(
+      (result, car) => Math.max(result, car.getDistance()),
+      0
+    );
+    const result = this.#cars.reduce((winner, car) => {
+      if (car.getDistance() === max) {
+        winner.push(car.getName());
+      }
+      return winner;
+    }, []);
+    return result;
+  }
 }
+export default CarRacingGame;
