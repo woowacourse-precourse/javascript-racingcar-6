@@ -1,4 +1,4 @@
-import Is from './Is';
+import Is from './Is.js';
 
 const EXCEEDED_NAME_LENGTH_ERROR_MSG = '[ERROR] 이름 길이 제한을 초과했습니다.';
 const NOT_POSITIVE_INTEGER_ERROR_MSG =
