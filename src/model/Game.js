@@ -1,7 +1,7 @@
 import { Console } from "@woowacourse/mission-utils";
-import { checkName, checkNumber } from "../util/check";
-import Car from "./Car";
-import RACING from "../constants/message";
+import { checkName, checkNumber } from "../util/check.js";
+import Car from "./Car.js";
+import RACING from "../constants/message.js";
 
 class Game {
     static async setRacingCars() {

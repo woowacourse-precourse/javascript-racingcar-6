@@ -1,4 +1,4 @@
-import RACING from "../constants/message"
+import RACING from "../constants/message.js"
 
 /**
  * 
