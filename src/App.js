@@ -11,7 +11,7 @@ class App {
 
   async play() {
     this.#cars = await this.getCarNameInput();
-    await this.checkValidCarName(this.#cars);
+    this.checkValidCarName(this.#cars);
     this.#trials = await this.getTrialNumInput();
     await this.checkValidTrialNum(this.#trials);
 
@@ -36,7 +36,7 @@ class App {
     return carName.split(',');
   }
 
-  async checkValidCarName (carNameArr) {
+  checkValidCarName (carNameArr) {
     for (let i = 0; i < carNameArr.length; i++) {
       const carName = carNameArr[i];
       if (carName.length > 5) {
