@@ -47,4 +47,30 @@ export const validate = {
       );
     }
   },
+  tryRound(tryRound) {
+    const spaceRegExp = /\s/g;
+    const numberTryRound = Number(tryRound);
+    const rangeExpReg = /^(100|[1-9][0-9]|[1-9])$/g;
+
+    if (Number.isNaN(numberTryRound)) {
+      throw new TryRoundError('시도할 횟수는 숫자만 입력해 주세요 !');
+    }
+    if (spaceRegExp.test(tryRound)) {
+      throw new TryRoundError(
+        '시도할 횟수에 공백이 들어있습니다. 숫자만 입력해 주세요 !'
+      );
+    }
+    if (numberTryRound === 0) {
+      throw new TryRoundError('시도할 횟수는 최소한 1이상이여야 합니다 !');
+    }
+    if (tryRound.length > 1 && tryRound[0] === '0') {
+      throw new TryRoundError('앞자리의 불필요한 0 은 빼주세요 !');
+    }
+    if (tryRound[0] === '+' || tryRound[0] === '-') {
+      throw new TryRoundError('부호를 제외한 정수만 입력해주세요 !');
+    }
+    if (!rangeExpReg.test(tryRound)) {
+      throw new TryRoundError('1~100 사이의 숫자만 입력해주세요');
+    }
+  },
 };

@@ -1,4 +1,7 @@
-import { CarNamesError } from '../../src/errors/UserInputErrors.js';
+import {
+  CarNamesError,
+  TryRoundError,
+} from '../../src/errors/UserInputErrors.js';
 import { validate } from '../../src/utils/validate.js';
 
 describe('validate 객체의 methods Test', () => {
@@ -82,6 +85,88 @@ describe('validate 객체의 methods Test', () => {
       expect(() => validate.carNames(userInput)).toThrow(
         '대소문자를 입력할 수는 있지만 같은 문자일 경우 동일한 이름으로 간주합니다 ! 중복을 피해주세요'
       );
+    });
+  });
+
+  describe('메서드 테스트 : tryRound()', () => {
+    test('입력값에 숫자 이외의 값이 들어왔을때 TryRoundError를 던짐', () => {
+      const userInput = 'a3';
+      const userInput2 = '#1';
+
+      expect(() => {
+        validate.tryRound(userInput);
+      }).toThrow(TryRoundError);
+      expect(() => {
+        validate.tryRound(userInput);
+      }).toThrow('시도할 횟수는 숫자만 입력해 주세요 !');
+      expect(() => {
+        validate.tryRound(userInput2);
+      }).toThrow(TryRoundError);
+      expect(() => {
+        validate.tryRound(userInput2);
+      }).toThrow('시도할 횟수는 숫자만 입력해 주세요 !');
+    });
+
+    test('입력값에 공백이 있을때 TryRoundError를 던짐', () => {
+      const userInput = ' 5';
+
+      expect(() => {
+        validate.tryRound(userInput);
+      }).toThrow(TryRoundError);
+      expect(() => {
+        validate.tryRound(userInput);
+      }).toThrow('시도할 횟수에 공백이 들어있습니다. 숫자만 입력해 주세요 !');
+    });
+
+    test('입력값이 0일때 TryRoundError를 던짐', () => {
+      const userInput = ' 5';
+
+      expect(() => {
+        validate.tryRound(userInput);
+      }).toThrow(TryRoundError);
+      expect(() => {
+        validate.tryRound(userInput);
+      }).toThrow('시도할 횟수에 공백이 들어있습니다. 숫자만 입력해 주세요 !');
+    });
+
+    test('입력값의 시작이 0일때 TryRoundError를 던짐', () => {
+      const userInput = '015';
+
+      expect(() => {
+        validate.tryRound(userInput);
+      }).toThrow(TryRoundError);
+      expect(() => {
+        validate.tryRound(userInput);
+      }).toThrow('앞자리의 불필요한 0 은 빼주세요 !');
+    });
+
+    test('입력값의 시작에 부호(+,-)가 넣었을때 TryRoundError를 던짐', () => {
+      const userInput = '+1';
+      const userInput2 = '-1';
+
+      expect(() => {
+        validate.tryRound(userInput);
+      }).toThrow(TryRoundError);
+      expect(() => {
+        validate.tryRound(userInput);
+      }).toThrow('부호를 제외한 정수만 입력해주세요 !');
+      expect(() => {
+        validate.tryRound(userInput2);
+      }).toThrow(TryRoundError);
+      expect(() => {
+        validate.tryRound(userInput2);
+      }).toThrow('부호를 제외한 정수만 입력해주세요 !');
+    });
+
+    test('입력값에 음수(-)나 입력가능한 숫자 범위를 벗어났을때 TryRoundError를 던짐', () => {
+      const overRangeInput = '130';
+
+      expect(() => {
+        validate.tryRound(overRangeInput);
+      }).toThrow(TryRoundError);
+      expect(() => {
+        validate.tryRound(overRangeInput);
+      }).toThrow('1~100 사이의 숫자만 입력해주세요');
     });
   });
 });
