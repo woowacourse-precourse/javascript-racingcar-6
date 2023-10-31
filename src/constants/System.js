@@ -9,6 +9,7 @@ export const SYSTEM = Object.freeze({
   racingCountMax: 9,
   randomNumberMin: 0,
   randomNumberMax: 9,
+  canMoveNumber: 4,
 });
 
 export const LANGUAGE_OPTION = Object.freeze({
