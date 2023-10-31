@@ -7,11 +7,18 @@ class App {
     }
   }
 
+  playerNumebrCheck(array){
+    if (array.length <2){
+      throw new Error("[ERROR] 최소 2명 이상 입력하세요");
+    }
+  }
+  
   async play() {
     //사용자 입력, 분리
+    
     const playerNameInput = await Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
     const playerList= playerNameInput.split(",").map(String);
-
+    this.playerNumebrCheck(playerList);
     const players= {};
 
     //사용자 객체생성
