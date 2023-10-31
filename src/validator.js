@@ -7,3 +7,11 @@ export class CarNameLengthValidator {
     return carNames.length === filteredCarNames.length;
   }
 }
+
+export class CarNameDuplicateValidator {
+  static isValid(string) {
+    const carNames = string.split(',');
+    const uniqueCarNames = new Set(carNames);
+    return carNames.length === uniqueCarNames.size;
+  }
+}
