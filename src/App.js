@@ -5,6 +5,8 @@ class App {
     const { car_list_input, play_time_input } = await setGame();
     const car_List = makeCars(car_list_input);
     playGame(car_List, play_time_input);
+    const winner = getResult(car_List);
+    Console.print(`최종 우승자 : ${winner}`);
   }
 }
 
@@ -56,6 +58,18 @@ const playGame = (car_list, time) => {
     moveOnce(car_list);
     cur_time += 1;
   }
+};
+
+const getResult = (car_list) => {
+  let winner = [];
+  car_list.forEach((car, idx) => {
+    if (idx === 0 || winner[0].distance < car.distance) {
+      winner = [car];
+    } else if (winner[0].distance === car.distance) {
+      winner.push(car);
+    }
+  });
+  return winner.map((car) => car.name).join(',');
 };
 
 const moveOnce = (car_list) => {
