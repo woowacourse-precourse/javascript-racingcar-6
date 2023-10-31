@@ -49,7 +49,7 @@ export class Game {
 
   async getLaps() {
     const laps = await this.input.get(this.constants.tries);
-    return laps;
+    return parseInt(laps);
   }
 
   startRace(laps) {
@@ -76,7 +76,7 @@ export class Game {
   }
 
   whoDidWin(laps) {
-    const winners = this.cars.filter((car) => car.distance === parseInt(laps));
+    const winners = this.cars.filter((car) => car.distance === laps);
     let winner;
 
     if (winners.length >= 2) {
