@@ -27,6 +27,10 @@ class App {
     this._carArr = car;
   }
 
+  get carArr() {
+    return this._carArr;
+  }
+
   async getInputTry() {
     this.tryNumber = await Console.readLineAsync(GAME_INFO.INPUT_TRY);
   }
