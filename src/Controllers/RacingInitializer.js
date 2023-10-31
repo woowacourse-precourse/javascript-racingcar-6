@@ -1,4 +1,4 @@
-import { Car } from "../Models/index.js";
+import { Car, RaceRound } from "../Models/index.js";
 import { InputView } from "../Views/index.js";
 
 export default class RacingInitializer {
@@ -15,7 +15,8 @@ export default class RacingInitializer {
   }
 
   static async #initializeRaceRound() {
-    const raceround = await InputView.promptRaceRound();
+    const raceround = new RaceRound(await InputView.promptRaceRound())
+      .raceRound;
     return raceround;
   }
 }
