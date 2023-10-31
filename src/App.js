@@ -1,5 +1,7 @@
 class App {
-  async play() {}
+  async play() {
+    await getCarName();
+  }
 }
 
 export default App;
