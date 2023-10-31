@@ -9,7 +9,6 @@
 // export default App;
 
 import { Console, Random } from '@woowacourse/mission-utils';
-import ReturnWinner from './runRace/ReturnWinner';
 
 class App {
   async play() {
@@ -53,12 +52,22 @@ class App {
       Console.print('');
     }
 
-    new ReturnWinner(cars).printWinners(progressList);
+    this.printWinners(cars, progressList);
   }
+
+  printWinners = (cars, progressList) =>
+    Console.print(`최종 우승자 : ${this.findWinners(cars, progressList).join(', ')}`);
 
   getRandomMove = () => Random.pickNumberInRange(0, 9);
 
   generateRandomProgress = () => (this.getRandomMove() >= 4 ? '-' : '');
+
+  findWinners = (cars, progressList) =>
+    cars.filter(
+      (car, carIndex) => progressList[carIndex].length === this.maxProgress(progressList),
+    );
+
+  maxProgress = (progressList) => Math.max(...progressList.map((progress) => progress.length));
 }
 
 export default App;
