@@ -20,7 +20,12 @@ export class RaceGameController {
    * @param {string} input_try
    * @returns {boolean}
    */
-  #is_valid_try(input_try) {}
+  #is_valid_try(input_try) {
+    if (isNaN(input_try) || parseInt(input_try) < 0) {
+      return false;
+    }
+    return true;
+  }
 
   /**
    * try 문자열에 대해 검증하고 이를 갱신하는 메소드
@@ -35,7 +40,15 @@ export class RaceGameController {
    * @param {string[]} car_names
    * @returns {boolean}
    */
-  #is_valid_car_name(car_names) {}
+  #is_valid_car_name(car_names) {
+    // 길이 검사
+    car_names.forEach((value) => {
+      if (value.length > MAX_LENGTH_OF_NAME) {
+        return false;
+      }
+    });
+    return true;
+  }
 
   /**
    * cars 문자열에 대해 검증하고 이를 갱신하는 메소드
