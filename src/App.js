@@ -1,12 +1,4 @@
 import { Console, Random } from "@woowacourse/mission-utils";
-//코드 스타일 수정사항 
-// 7.11(함수 시그니처 공백) / 수정완료
-// 7.15 / 수정완료
-// 8.4 (화살표함수) /수정완료
-// 11.1 (iterator 사용하지 말것) / 수정중
-//13.6 /수정완료
-//21.1 / 수정완료
-//22.1 / 수정완료
 
 class App {
   async play() {
