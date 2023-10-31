@@ -13,6 +13,10 @@ class UserInput {
 		if (carName.includes('\\')) throw new Error(ERROR_MESSAGES.use_escape_sequence);
 	}
 
+	#checkHasCarName(carName) {
+		if (carName.length === 0) throw new Error(ERROR_MESSAGES.car_has_no_name);
+	}
+
 	#checkSameCarName(racingCarNames) {
 		const uniqueNames = new Set(racingCarNames);
 		if (uniqueNames.size !== racingCarNames.length)
@@ -42,6 +46,7 @@ class UserInput {
 		const racingCarNames = userInput.split(',').map((carName) => {
 			this.#checkExceedMaximumDigits(carName.trim());
 			this.#checkIncludeEscapeSequence(carName.trim());
+			this.#checkHasCarName(carName.trim());
 
 			return carName.trim();
 		});
