@@ -34,6 +34,16 @@ class App {
     }
   }
 
+  printWinner() {
+    const SCORE_LIST = this.carNames.map((el) => el.score);
+    const MAX_SCORE = Math.max(...SCORE_LIST);
+    const MAX_SCORE_LIST = this.carNames.filter((el) => el.score === MAX_SCORE);
+
+    Console.print(
+      `최송 우승자 : ${MAX_SCORE_LIST.map((el) => el.name).join(", ")}`
+    );
+  }
+
   async play() {
     await this.getCarNames();
   }
