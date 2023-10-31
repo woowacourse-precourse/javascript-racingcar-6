@@ -1,19 +1,19 @@
 import { Console } from '@woowacourse/mission-utils';
 import { RacingCar } from './RacingCar.js';
+import { CONSOLE_MESSAGE, ERROR_MESSAGE } from './constants.js';
 
 class App {
   async play() {
-    const carNames = await Console.readLineAsync(
-      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n'
-    );
+    const carNames = await Console.readLineAsync(CONSOLE_MESSAGE.CAR_NAMES);
     const carNameArray = makeNameArray(carNames);
     const carObjectArray = carNameArray.map((name) => new RacingCar(name));
 
-    const chanceInput =
-      await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    const chanceInput = await Console.readLineAsync(
+      CONSOLE_MESSAGE.GAME_CHANCES
+    );
     const gameChance = parseInt(chanceInput, 10);
 
-    Console.print('\n실행결과');
+    Console.print(CONSOLE_MESSAGE.EXECUTION_RESULT);
     for (let i = 0; i < gameChance; i++) {
       carObjectArray.forEach((car) => {
         car.moveOrStay();
@@ -31,9 +31,8 @@ function makeNameArray(names) {
 
   for (const name of splittedNames) {
     if (name.trim().length !== name.length)
-      throw new Error('[ERROR] 이름에 공백이 있습니다.');
-    if (name.length > 5)
-      throw new Error('[ERROR] 이름은 5 글자를 초과할 수 없습니다.');
+      throw new Error(ERROR_MESSAGE.BLANK_EXISTS);
+    if (name.length > 5) throw new Error(ERROR_MESSAGE.TOO_LONG);
   }
   return splittedNames;
 }
@@ -55,7 +54,7 @@ function findWinner(carArray) {
 
 function printWinner(winnerArray) {
   const concatenatedName = winnerArray.join(', ');
-  Console.print(`최종 우승자 : ${concatenatedName}`);
+  Console.print(`${CONSOLE_MESSAGE.FINAL_WINNER} : ${concatenatedName}`);
 }
 
 export default App;
