@@ -14,7 +14,6 @@ export const getCarArrFromInputValue = async () => {
   carArr.forEach((carInfo) => {
     if (carInfo.name.length > MAX_CAR_NAME)
       throw new Error('[ERROR] 자동차 이름은 다섯 글자 이하로 입력해주세요.');
-
     if (!/^[a-zA-Z]+$/.test(carInfo.name)) {
       throw new Error('[ERROR] 자동차의 이름은 알파벳만 가능합니다.');
     }
