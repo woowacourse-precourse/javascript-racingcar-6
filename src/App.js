@@ -9,6 +9,7 @@ class App {
     const trialCountNumber = await userInputTrialCount();
     MissionUtils.Console.print(`${RESULT_MESSAGE}`);
     getMatchResult(cars, trialCountNumber);
+    const winners = getWinnerArray(cars);
   }
 }
 
