@@ -1,5 +1,6 @@
 import RacingCar from '../src/RacingCar';
 import {MissionUtils} from '@woowacourse/mission-utils';
+import OutputView from '../src/Views/OutputView';
 
 const mockRandoms = (numbers) => {
   MissionUtils.Random.pickNumberInRange = jest.fn();
@@ -7,6 +8,13 @@ const mockRandoms = (numbers) => {
     return acc.mockReturnValueOnce(number);
   }, MissionUtils.Random.pickNumberInRange);
 };
+
+const getLogSpy = () => {
+  const logSpy = jest.spyOn(MissionUtils.Console, 'print');
+  logSpy.mockClear();
+  return logSpy;
+};
+
 const carNamesArray = ['car1', 'car2', 'car3', 'car4'];
 const racingCar = new RacingCar(carNamesArray);
 
@@ -18,9 +26,13 @@ describe('RacingCar클래스 테스트', () => {
     const randoms = [4, 4, 4, 4, 4, 3, 3, 3];
     const expectedResult =
       '\n실행 결과\ncar1 : -\ncar2 : -\ncar3 : -\ncar4 : -\n\ncar1 : --\ncar2 : -\ncar3 : -\ncar4 : -\n';
-    mockRandoms([...randoms]);
-    racingCar.tryProgress(2);
+    const logSpy = getLogSpy();
 
-    expect(racingCar.getTotalProgressStatus()).toEqual(expectedResult);
+    mockRandoms([...randoms]);
+
+    racingCar.tryProgress(2);
+    OutputView.printProgressStatus(racingCar);
+
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(expectedResult));
   });
 });
