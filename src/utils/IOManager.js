@@ -29,7 +29,7 @@ class IOManager {
   }
 
   printWinner(winnerCarName) {
-    return Console.print(GameMessages.FINAL_WINNER + winnerCarName);
+    return Console.print(GameMessages.FINAL_WINNER + winnerCarName.map((carName) => carName).join(', '));
   }
 }
 

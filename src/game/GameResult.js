@@ -6,8 +6,9 @@ class GameResult {
   }
   
   calculateWinner(carsName, carsPosition) {
-    let winnerPosition = Math.max(...carsPosition);
-    return this.ioManager.printWinner(carsName[carsPosition.indexOf(winnerPosition)]);
+    const winnerPosition = Math.max(...carsPosition);
+    const winnerNames = carsName.filter((_, index) => carsPosition[index] === winnerPosition);
+    return this.ioManager.printWinner(winnerNames);
   }
 }
 
