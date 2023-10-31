@@ -15,6 +15,20 @@ class App {
       }
       result.push('');
     }
+
+    MissionUtils.Console.print('\n실행 결과')
+    for(let i = 0; i < tryNum; i++){
+      for(let n = 0; n < names.length; n++){
+        let randNum = MissionUtils.Random.pickNumberInRange(0, 9);
+        if(randNum >= 4){
+          result[n] += '-';
+        }
+      }
+      for(let n = 0; n < names.length; n++){
+        MissionUtils.Console.print(names[n] + ' : ' + result[n]);
+      }
+      MissionUtils.Console.print('');
+    }
   }
   
 }
