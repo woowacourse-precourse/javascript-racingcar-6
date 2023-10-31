@@ -4,10 +4,19 @@ import inputCarNames from "./user/inputCarNames";
 import inputTryCount from "./user/inputTryCount";
 
 class App {
+  /**
+   * 게임 플레이
+   */
   async play() {
     await this.gameStart();
   }
 
+  /**
+   * 게임 시작
+   * 게임에 필요한 값 입력
+   * 입력한 값으로 라운드 진행
+   * 결과 출력
+   */
   async gameStart() {
     const carNames = await inputCarNames();
     const tryCount = await inputTryCount();
@@ -22,6 +31,13 @@ class App {
     MissionUtils.Console.print(`최종 우숭자 : ${gameWinner}`);
   }
 
+  /**
+   * 게임 동작
+   * @param {*} carNames , 단위로 전달받은 자동차 이름 배열
+   * @param {*} gameProcess 게임 진행 값을 저장하기 위한 배열
+   * @param {*} tryCount 게임 시도 횟수
+   * @returns 게임 진행이 저장된 배열 반환
+   */
   runGame(carNames, gameProcess, tryCount) {
     let gameResult = "";
     for (let i = 0; i < tryCount; i++) {
@@ -30,6 +46,13 @@ class App {
     return gameResult;
   }
 
+  /**
+   * 게임 라운드 진행
+   * @param {*} carNames , 단위로 전달받은 자동차 이름 배열
+   * @param {*} gameProcess 게임 진행 값을 저장하기 위한 배열
+   * @param {*} gameResult 라운드마다 게임 결과를 담는 문자열
+   * @returns 전체 라운드 게임 결과 값 반환
+   */
   playRound(carNames, gameProcess, gameResult) {
     for (let i = 0; i < carNames.length; i++) {
       const randomNumber = this.generateRandomNumber();
@@ -41,6 +64,12 @@ class App {
     return gameResult;
   }
 
+  /**
+   * 게임 우승자
+   * @param {*} carNames , 단위로 전달받은 자동차 이름 배열
+   * @param {*} gameProcess 게임 진행 값을 저장하기 위한 배열
+   * @returns 하이픈이 가장 많은 순위로 우승자 이름 문자열로 반환
+   */
   gameWinner(carNames, gameProcess) {
     let maxHyphenCount = 0;
     const winnerCars = [];
@@ -60,6 +89,10 @@ class App {
     return winnerCars.join(", ");
   }
 
+  /**
+   * 랜덤 숫자 생성
+   * @returns 랜덤 숫자 반환
+   */
   generateRandomNumber() {
     return MissionUtils.Random.pickNumberInRange(0, 9);
   }
