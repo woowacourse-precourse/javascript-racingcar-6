@@ -1,3 +1,5 @@
+import { Car } from '../../../src/domain/index.js';
+
 describe('Car 테스트', () => {
   it('초기값으로 `distance`에 `0`을 가진다.', () => {
     // given & when
