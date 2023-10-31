@@ -39,10 +39,17 @@ const getCarNum = function getNumOfCars() {
   return numOfCars;
 };
 
+let gameResultView = '\n실행결과\n';
+const addGameRoundView = (nextCar) => {
+  gameResultView += nextCar;
+};
+const getGameResultView = () => gameResultView;
+
 export {
   CUT_OFF_NUM,
   getGameStage, setGameStage, getCarNames, setCarNames,
   getGameCnt, setGameCnt, setCarRace, getCarRace, getCarNum,
+  addGameRoundView, getGameResultView,
   askForCarNamesView, askForGameCntView,
   errorMessage,
 };

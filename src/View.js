@@ -4,7 +4,7 @@ import { selectView, saveCarName, saveGameCnt } from './ViewModel.js';
 const CarNameView = async function InputCarNameView() {
   const textView = selectView();
   const carName = await MissionUtils.Console.readLineAsync(textView);
-  saveCarName(carName);
+  await saveCarName(carName);
 };
 
 const GameCntView = async function InputGameCntView() {
@@ -13,8 +13,9 @@ const GameCntView = async function InputGameCntView() {
   saveGameCnt(gameCnt);
 };
 
-const GameView = function GamePlayView() {
-  const textView = selectView();
+const GameView = async function GamePlayView() {
+  const textView = await selectView();
+  MissionUtils.Console.print(textView);
 };
 
 const ResultView = function GameResultView() {
@@ -24,8 +25,8 @@ const ResultView = function GameResultView() {
 const ViewDefault = async function AllViewControlModule() {
   await CarNameView();
   await GameCntView();
-  GameView();
-  ResultView();
+  await GameView();
+  await ResultView();
 };
 
 export default ViewDefault;

@@ -3,7 +3,7 @@ import {
   CUT_OFF_NUM,
   getGameStage, setGameStage, getCarNames, setCarNames,
   getGameCnt, setGameCnt, setCarRace, getCarRace, getCarNum,
-  askForCarNamesView, askForGameCntView,
+  askForCarNamesView, askForGameCntView, addGameRoundView, getGameResultView,
   errorMessage,
 } from './Model.js';
 
@@ -27,16 +27,34 @@ const saveGameCnt = (gameCnt) => {
 
 const eachCarPlay = function randomNumPlayForEachCar(idx) {
   const num = MissionUtils.Random.pickNumberInRange(0, 9);
-  if (num < CUT_OFF_NUM + 1) {
+  if (num < CUT_OFF_NUM) {
     return;
   }
   setCarRace(idx);
+};
+
+const eachCarResult = function makeEachCarResult(idx) {
+  let result = getCarNames()[idx];
+  result += ' : ';
+  result += getCarRace()[idx];
+  result += '\n';
+  return result;
+};
+
+const roundView = function makeViewForEachRound(size) {
+  let roundResult = '';
+  for (let i = 0; i < size; i += 1) {
+    roundResult += eachCarResult(i);
+  }
+  roundResult += '\n';
+  addGameRoundView(roundResult);
 };
 
 const gameRound = (size) => {
   for (let i = 0; i < size; i += 1) {
     eachCarPlay(i);
   }
+  roundView(size);
 };
 
 const gamePlay = () => {
@@ -44,7 +62,6 @@ const gamePlay = () => {
   const numOfCars = getCarNum();
   while (gameCnt !== 0) {
     gameRound(numOfCars);
-    console.log(getCarRace());
     gameCnt -= 1;
   }
 };
@@ -52,6 +69,7 @@ const gamePlay = () => {
 const selectView = function selectTextForView() {
   setGameStage();
   const gameStage = getGameStage();
+  let gameResult = '';
   switch (gameStage) {
     case 1:
       return askForCarNamesView;
@@ -59,7 +77,8 @@ const selectView = function selectTextForView() {
       return askForGameCntView;
     default:
       gamePlay();
-      return 'tmp';
+      gameResult = getGameResultView();
+      return gameResult;
   }
 };
 
