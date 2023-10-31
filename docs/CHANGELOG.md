@@ -1,3 +1,4 @@
+- test: add carmove number validate test about exponential and binary number
 - chore: revise winners print using javascript api
 - fix: winnerarray initialization by functional unit
 - style(App): modify code according to code conventsion
