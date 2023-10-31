@@ -74,6 +74,11 @@ class App {
     return this.racingArray;
   }
 
+  racingSituationArray(carIndex) {
+    this.racingArray[carIndex] += this.goForward();
+    return this.racingArray[carIndex];
+  }
+
 }
 
 export default App;
