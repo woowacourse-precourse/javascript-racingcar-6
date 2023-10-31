@@ -66,8 +66,8 @@ describe('자동차 경주 게임', () => {
   describe('Car', () => {
     test('getName() test', () => {
       // given
-      const carNames = ['kim', 'park', 'choi'];
-      const carList = carNames.map((carName) => new Car(carName));
+      const carNameList = ['kim', 'park', 'choi'];
+      const carList = carNameList.map((carName) => new Car(carName));
 
       // when
       const resultList = carList.map((car) => car.getName());
