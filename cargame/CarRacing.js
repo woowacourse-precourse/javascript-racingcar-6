@@ -1,5 +1,7 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 
+const RANDOM_NUMBER_THRESHOLD = 4;
+
 class CarRacing {
   static pickNumberInRange(startInclusive, endInclusive) {
     return MissionUtils.Random.pickNumberInRange(startInclusive, endInclusive);
@@ -9,24 +11,31 @@ class CarRacing {
 export class RaceSimulator {
   constructor(carNames) {
     this.carNames = carNames;
-    this.cars = this.carNames.map((name) => ({ name, position: '' }));
+    this.cars = carNames.map((name) => ({ name, position: '' }));
     this.raceResults = [];
   }
 
   simulateRace(tryNumber) {
     for (let i = 0; i < tryNumber; i++) {
       this.cars.forEach((car) => {
-        const randomNumber = CarRacing.pickNumberInRange(0, 9);
-        if (randomNumber >= 4) {
-          car.position += '-';
-        }
+        this.moveCar(car);
       });
-
-      const raceState = this.cars
-        .map((car) => `${car.name} : ${car.position}`)
-        .join('\n');
-      this.raceResults.push(raceState);
+      this.generateRaceResults();
     }
+  }
+
+  moveCar(car) {
+    const randomNumber = CarRacing.pickNumberInRange(0, 9);
+    if (randomNumber >= RANDOM_NUMBER_THRESHOLD) {
+      car.position += '-';
+    }
+  }
+
+  generateRaceResults() {
+    const raceState = this.cars
+      .map((car) => `${car.name} : ${car.position}`)
+      .join('\n');
+    this.raceResults.push(raceState);
   }
 
   getRaceResults() {
