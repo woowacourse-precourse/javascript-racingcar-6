@@ -24,7 +24,6 @@ class RacingGame {
 
   async racing({ gameTryCount, carList }) {
     MissionUtils.Console.print("실행 결과\n");
-    MissionUtils.Console.print(carList);
     MissionUtils.Console.print(gameTryCount);
     for (let i = 0; i < gameTryCount; i++) {
       carList.forEach((carElement) => {
@@ -35,6 +34,7 @@ class RacingGame {
 
         MissionUtils.Console.print(`${carElement.name} : ${"-".repeat(carElement.count)}`);
       });
+      MissionUtils.Console.print("\n");
     }
 
     const winner = await FindWinner(carList);
@@ -43,22 +43,6 @@ class RacingGame {
     await MissionUtils.Console.print(`최종 우승자 : ${result}`);
     return false;
   }
-
-  // printWinner({ carList }) {
-  //   let winner = [];
-  //   let winnerCount = 0;
-
-  //   carList.forEach((winCarElement) => {
-  //     if (winnerCount < winCarElement.count) {
-  //       winnerCount = winCarElement.count;
-  //       winner = [winCarElement.name];
-  //     } else if (winnerCount === winCarElement.count) {
-  //       winner.push(winCarElement.name);
-  //     }
-  //   });
-
-  //   return winner;
-  // }
 }
 
 export default RacingGame;
