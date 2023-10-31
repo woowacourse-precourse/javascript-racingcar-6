@@ -4,8 +4,10 @@ import isValidNameLength from './utils/is-valid-name-length/index.js';
 
 const Validators = {
   checkRacingVehicleName(input) {
+    const namesArray = Converter.splitStringToArrayByDelimiter(input, SYSTEM.delimiter);
+
     isValidDelimiter(input, SYSTEM.delimiter);
-    isValidNameLength(input);
+    isValidNameLength(namesArray);
   },
 };
 
