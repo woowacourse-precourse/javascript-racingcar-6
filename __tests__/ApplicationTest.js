@@ -59,4 +59,40 @@ describe("자동차 경주 게임", () => {
       await expect(app.play()).rejects.toThrow("[ERROR]");
     }
   );
+
+  test.each([[["pobi,aji", "hello"]], [["pobi,easn", "hi"]]])(
+    "사용자의 이동 관련 입력에 대한 에러",
+    async (inputs) => {
+      // given
+      mockQuestions(inputs);
+
+      // when
+      const app = new App();
+
+      // then
+      await expect(app.play()).rejects.toThrow("[ERROR]");
+    }
+  );
+
+  test("우승자가 여러명인 경우 test", async () => {
+    // given
+    const pobi = 4;
+    const woni = 4;
+    const inputs = ["pobi,woni", "1"];
+    const outputs = ["pobi : -", "woni : -", "최종우승자 : pobi, woni"];
+    const randoms = [pobi, woni];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    // when
+    const app = new App();
+    await app.play();
+
+    // then
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
 });

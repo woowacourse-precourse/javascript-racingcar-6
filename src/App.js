@@ -69,7 +69,7 @@ class App {
   }
 
   printWinner(winnerList) {
-    const winnerStr = winnerList.join(",");
+    const winnerStr = winnerList.join(", ");
     MissionUtils.Console.print(`최종우승자 : ${winnerStr}`);
   }
 
