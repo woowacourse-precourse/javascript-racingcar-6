@@ -34,7 +34,7 @@ class RacingGameController {
     validateNameDuplicate(carList);
     return carList.map((carName) => {
       const car = new RacingCar();
-      car.setCarName = carName;
+      car.setCarName(carName);
       return car;
     });
   }
