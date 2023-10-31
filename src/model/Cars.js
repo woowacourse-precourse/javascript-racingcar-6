@@ -18,14 +18,6 @@ class Cars {
   setTimes(times) {
     this.times = times;
   }
-
-  getList() {
-    return this.list;
-  }
-
-  getTimes() {
-    return this.times;
-  }
 }
 
 export default Cars;

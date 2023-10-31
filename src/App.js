@@ -26,7 +26,7 @@ class App {
   }
 
   updateAsTimes() {
-    const list = this.cars.getList();
+    const { list } = this.cars;
     for (let i = 0; i < this.cars.times; i += 1) {
       this.createObjectDistance();
       this.view.printCarListAsTimes(list);
