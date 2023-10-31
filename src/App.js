@@ -62,9 +62,7 @@ class App {
       "시도할 횟수는 몇 회인가요?(1~10회로 제한)"
     );
     gameNumber = Number(gameNumber);
-    // if (isNaN(gameNumber)) return false;
-    // if (gameNumber > 10 && gameNumber < 1) return false;
-    // if (gameNumber % 1 !== 0) return false;
+
     if (
       isNaN(gameNumber) ||
       gameNumber > 10 ||
