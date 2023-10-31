@@ -21,6 +21,7 @@ class Validation {
   static validateAttemptCountInput(input) {
     this.isemptyInput(input);
     this.isNotNumber(input);
+    this.isNotPositiveInteger(input);
   }
 
   // 입력값에 ','가 있는지 검증
@@ -62,6 +63,13 @@ class Validation {
   static isNotNumber(input) {
     if (isNaN(input)) {
       throw new Error(ERROR_MESSAGE.NO_NUMBER);
+    }
+  }
+  
+  //양의 정수를 입력하지 않았을 때 에러 발생
+  static isNotPositiveInteger(input) {
+    if (input%1!==0 || input<1) {
+      throw new Error(ERROR_MESSAGE.NOT_POSITIVE_INTEGER);
     }
   }
 }
