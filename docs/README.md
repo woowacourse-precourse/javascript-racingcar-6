@@ -52,11 +52,11 @@ or
 ```
 
 ### 5. 요구 사항 확인
-- [ ] `Node.js 18.17.1` 버전에서 실행 가능한가?
-- [ ] indent(인덴트, 들여쓰기) depth를 `3`이 넘지 않도록 구현했는가?
-- [ ] Jest를 이용해 구현한 기능이 정상 작동하는지 테스트 코드로 확인했는가?
-- [ ] `@woowacourse/mission-utils`에서 제공하는 `Random` 및 `Console` API를 사용하여 구현했는가?
-- [ ] 앵귤러JS `커밋 컨벤션`을 지켰는가?
-- [ ] airbnb `JS 컨벤션`을 지켰는가?
-- [ ] 불필요한 `console.log`를 제거했는가?
-- [ ] `npm run test`를 전부 통과했는가?
+- [x] `Node.js 18.17.1` 버전에서 실행 가능한가?
+- [x] indent(인덴트, 들여쓰기) depth를 `3`이 넘지 않도록 구현했는가?
+- [x] Jest를 이용해 구현한 기능이 정상 작동하는지 테스트 코드로 확인했는가?
+- [x] `@woowacourse/mission-utils`에서 제공하는 `Random` 및 `Console` API를 사용하여 구현했는가?
+- [x] 앵귤러JS `커밋 컨벤션`을 지켰는가?
+- [x] airbnb `JS 컨벤션`을 지켰는가?
+- [x] 불필요한 `console.log`를 제거했는가?
+- [x] `npm run test`를 전부 통과했는가?
