@@ -1,13 +1,6 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
+import UpdatedInfo from '../src/modules/UpdatedInfo.js';
 import Print from '../src/modules/Print.js';
-
-const mockRandoms = (numbers) => {
-  MissionUtils.Random.pickNumberInRange = jest.fn();
-  numbers.reduce(
-    (acc, number) => acc.mockReturnValueOnce(number),
-    MissionUtils.Random.pickNumberInRange,
-  );
-};
 
 const getLogSpy = () => {
   const logSpy = jest.spyOn(MissionUtils.Console, 'print');
@@ -15,38 +8,54 @@ const getLogSpy = () => {
   return logSpy;
 };
 
+const mockCurrentCarInfo = (msgAndInfo) => {
+  UpdatedInfo.getCurrentCarInfo = jest.fn();
+  msgAndInfo.reduce(
+    (acc, cur) => acc.mockReturnValueOnce(cur),
+    UpdatedInfo.getCurrentCarInfo,
+  );
+};
+
 describe('실행 결과와 우승자 가려내기', () => {
   test('실행 결과를 출력 및 반환', () => {
     // given
-    const MOVING_FORWARD = 4;
-    const STOP = 3;
     const NUMBER_OF_TIMES = 3;
-    const randoms = [
-      MOVING_FORWARD,
-      STOP,
-      STOP,
-      MOVING_FORWARD,
-      MOVING_FORWARD,
-      STOP,
-      STOP,
-      STOP,
-      MOVING_FORWARD,
-    ];
     const EXECUTION_MESSAGE = '실행 결과';
     const input = new Map([
       ['Fiat', 0],
       ['BMW', 0],
       ['Volvo', 0],
     ]);
-    const result = new Map([
-      ['Fiat', 2],
-      ['BMW', 1],
-      ['Volvo', 1],
-    ]);
-    const outputs = ['Fiat : -', 'Fiat : --', 'Fiat : --'];
+    const firstTry = [
+      'Fiat : -\nBMW :\nVolvo :\n',
+      new Map([
+        ['Fiat', 1],
+        ['BMW', 0],
+        ['Volvo', 0],
+      ]),
+    ];
+    const secondTry = [
+      'Fiat : --\nBMW : -\nVolvo :\n',
+      new Map([
+        ['Fiat', 2],
+        ['BMW', 1],
+        ['Volvo', 0],
+      ]),
+    ];
+    const thirdTry = [
+      'Fiat : --\nBMW : -\nVolvo : -\n',
+      new Map([
+        ['Fiat', 2],
+        ['BMW', 1],
+        ['Volvo', 1],
+      ]),
+    ];
+    const msgAndInfo = [firstTry, secondTry, thirdTry];
+    const messages = [firstTry.at(0), secondTry.at(0), thirdTry.at(0)];
+    const output = thirdTry.at(1);
     const logSpy = getLogSpy();
 
-    mockRandoms([...randoms]);
+    mockCurrentCarInfo([...msgAndInfo]);
 
     // when
     const { executeProcess } = Print;
@@ -56,10 +65,10 @@ describe('실행 결과와 우승자 가려내기', () => {
     expect(logSpy).toHaveBeenCalledWith(
       expect.stringContaining(EXECUTION_MESSAGE),
     );
-    outputs.forEach((output) => {
-      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    messages.forEach((message) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(message));
     });
-    expect(updatedCars).toStrictEqual(result);
+    expect(updatedCars).toStrictEqual(output);
   });
 
   test('우승자 가려내기', () => {
