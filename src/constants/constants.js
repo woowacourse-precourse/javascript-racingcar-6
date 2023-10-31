@@ -34,4 +34,5 @@ export const VALUE = Object.freeze({
   MAX_NUMBER: 9,
   NEXT_MOVE_CONDITION: 4,
   LIMIT_LEETER_LEN: 5,
+  MIN_REPEAT_NUMBER: 0,
 });

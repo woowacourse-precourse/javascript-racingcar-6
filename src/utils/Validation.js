@@ -29,7 +29,7 @@ export const checkValidCarsName = (list) => {
 };
 
 export const checkValidNumber = (num) => {
-  if (isNaN(num) || num <= '0') {
+  if (isNaN(num) || Number(num) <= SIGN.MIN_REPEAT_NUMBER) {
     throw new Error(ERRMSG.NOT_VALID_NUMBER);
   }
 };
