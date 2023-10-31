@@ -12,12 +12,16 @@ function isLengthInvalid(name) {
   return name.length < MIN_NAME_LENGTH || name.length > MAX_NAME_LENGTH;
 }
 
-export function validateName(names) {
+function validateLengthOfNames(names) {
   names.forEach((name) => {
     if (isLengthInvalid(name)) {
       throw new Error(ERROR_NAME_LENGTH);
     }
   });
+}
+
+export function validateNames(names) {
+  validateLengthOfNames(names);
 }
 
 function isNaturalNumber(number) {
