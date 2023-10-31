@@ -1,13 +1,13 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 const { Console, Random } = MissionUtils;
-import Cars from "./Cras";
+import Cars from "./Cars";
 import { nameValidation, naturalNumberRex, duplicateChecks } from "./Validations";
+import {GAME_START, REPETATION_STR, MOVE_CAR_STR, WINNER_STR} from "./PrintStrings";
 class App {
-
   printCarMoves(cars) {
     let runningResult = "";
     Object.keys(cars.obj).forEach((item) => {
-      runningResult += `${item} : `+"-".repeat(cars.obj[item])+"\n";
+      runningResult += MOVE_CAR_STR(item, cars.obj[item]);
     });
     Console.print(runningResult);
   }
@@ -20,33 +20,21 @@ class App {
     return moves;
   }
 
-  printWinner(cars) {
-    let winners = "", max= 0;
-    Object.keys(cars.obj).forEach((item) => {
-      if(max < cars.obj[item]) {
-        winners = item;
-        max = cars.obj[item];
-      }
-      else if(max === cars.obj[item]) winners += `, ${item}`;
-    });
-    Console.print(winners);
-  }
-
   running_race(cars, repetitions) {
     for(let i =0 ;i<repetitions;i++) {
       cars.move_cars(this.getMoveArr(cars));
       this.printCarMoves(cars);
     }
-    this.printWinner(cars);
+    WINNER_STR(cars);
   }
-  
+
   async play() {
-    const input = await Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+    const input = await Console.readLineAsync(GAME_START);
     const carNames = input.split(",");
     nameValidation(carNames);
     duplicateChecks(carNames);
     const cars = new Cars(input);
-    const repetitions = await Console.readLineAsync("시도할 횟수는 몇 회인가요?");
+    const repetitions = await Console.readLineAsync(REPETATION_STR);
     naturalNumberRex(repetitions);
     this.running_race(cars, repetitions);
   }
