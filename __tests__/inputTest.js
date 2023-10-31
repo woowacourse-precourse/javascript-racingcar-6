@@ -23,19 +23,31 @@ const getLogSpy = () => {
   return logSpy;
 };
 
-describe('App Class test', () => {
-  describe('getPlayerInput', () => {
-    test('사용자 이름 입력', async () => {
-      // given
-      const inputs = ['pobi', 'manu,max', 'jeong'];
-      mockQuestions([inputs]);
+describe('getPlayerInput', () => {
+  test('사용자 이름 입력', async () => {
+    // given
+    const inputs = ['pobi', 'manu,max', 'jeong'];
+    mockQuestions([inputs]);
 
-      // when
-      const app = new App();
+    // when
+    const app = new App();
 
-      // then
-      const PLAYER_NAME = await app.getPlayerName();
-      expect(PLAYER_NAME).toBe(inputs);
-    });
+    // then
+    const PLAYER_NAME = await app.getPlayerName();
+    expect(PLAYER_NAME).toBe(inputs);
+  });
+});
+
+describe('getAndValidateRacingRounds', () => {
+  test('사용자 입력 레이싱 라운드 숫자', async () => {
+    // given
+    const inputs = ['7'];
+    mockQuestions(inputs);
+    // when
+    const app = new App();
+    await app.getAndValidateRacingRounds();
+    // then
+
+    expect(app.ROUNDS).toBe(7);
   });
 });

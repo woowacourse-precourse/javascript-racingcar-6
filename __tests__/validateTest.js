@@ -23,34 +23,32 @@ const getLogSpy = () => {
   return logSpy;
 };
 
-describe('App Class test', () => {
-  describe('validatePlayerName', () => {
-    test('사용자 이름 입력 유효성 테스트 - 무효한 입력', () => {
-      //given
-      const inputs = ['longName'];
+describe('validatePlayerName', () => {
+  test('사용자 이름 입력 유효성 테스트 - 무효한 입력', () => {
+    //given
+    const inputs = ['longName'];
 
-      // when
-      const app = new App();
+    // when
+    const app = new App();
 
-      // then
-      expect(() => app.validatePlayerName(inputs)).toThrow('[ERROR]');
-    });
+    // then
+    expect(() => app.validatePlayerName(inputs)).toThrow('[ERROR]');
+  });
 
-    test('사용자 이름 입력 유효성 테스트 - 유효한 입력', () => {
-      // given
-      const inputs = ['jeong', 'yeung,jin', 'test'];
+  test('사용자 이름 입력 유효성 테스트 - 유효한 입력', () => {
+    // given
+    const inputs = ['jeong', 'yeung,jin', 'test'];
 
-      // when
-      const app = new App();
-      app.validatePlayerName([inputs]);
+    // when
+    const app = new App();
+    app.validatePlayerName([inputs]);
 
-      // then
-      expect(app.players).toEqual([
-        { name: 'jeong', moveAttempts: 0 },
-        { name: 'yeung', moveAttempts: 0 },
-        { name: 'jin', moveAttempts: 0 },
-        { name: 'test', moveAttempts: 0 },
-      ]);
-    });
+    // then
+    expect(app.players).toEqual([
+      { name: 'jeong', moveAttempts: 0 },
+      { name: 'yeung', moveAttempts: 0 },
+      { name: 'jin', moveAttempts: 0 },
+      { name: 'test', moveAttempts: 0 },
+    ]);
   });
 });
