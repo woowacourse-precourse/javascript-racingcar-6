@@ -89,7 +89,7 @@ members.map((member) => member).join(','); // "east,west,south"
 
 - **예외상황**
 
-  - 자동차 이름 목록안에 중복되는 이름이 있을 경우 Error 를 throw 한다.
+  - 자동차 이름 목록안에 중복(대,소문자 비교까지)되는 이름이 있을 경우 Error 를 throw 한다.
   - 자동차 이름이 존재하지 않을 때 Error 를 throw 한다.
   - 자동차 이름 중에 5자를 넘어가는 자동차가 있다면 Error 를 throw 한다.
   - 쉼표가 연속적으로 입력 된 경우 Error 를 throw 한다.
