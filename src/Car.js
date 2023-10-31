@@ -13,7 +13,7 @@ class Car {
     });
   }
 
-  updateCarCount(car) {
+  static updateCarCount(car) {
     const newCar = { ...car };
     if (Random.pickNumberInRange(0, 9) >= 4) {
       newCar.count += 1;
@@ -23,7 +23,7 @@ class Car {
   }
 
   moveCar() {
-    const updatedCars = this.#cars.map((car) => this.updateCarCount(car));
+    const updatedCars = this.#cars.map((car) => Car.updateCarCount(car));
     Console.print('');
 
     this.#cars = updatedCars;
