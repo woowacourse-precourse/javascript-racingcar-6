@@ -30,6 +30,6 @@ describe('최종결과 출력 테스트', () => {
       { name: 'Park', position: 6 },
     ]);
 
-    expect(logSpy).toHaveBeenCalledWith('최종 우승자 : Kim,Park');
+    expect(logSpy).toHaveBeenCalledWith('최종 우승자 : Kim, Park');
   });
 });
