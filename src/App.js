@@ -8,6 +8,7 @@ class App {
 	async play() {
 		await this.control.readyGame();
 		this.control.startGame();
+		this.control.endGame();
 	}
 }
 
