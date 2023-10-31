@@ -17,8 +17,8 @@ class App {
   }
 
   checkRepeatNumber(repeatNumber) {
-    if (isNaN(repeatNumber)) throw new Error(ERROR_MESSAGE.NUMBER);
     if (repeatNumber.includes(" ")) throw new Error(ERROR_MESSAGE.GAP);
+    if (isNaN(repeatNumber)) throw new Error(ERROR_MESSAGE.NUMBER);
   }
 
   makeObject(carName) {
