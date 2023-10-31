@@ -1,4 +1,4 @@
-import RacingResult from './PlayRacingCar.js';
+import RacingCar from './RacingCar.js';
 import MakeRandomNumber from './MakeRandomNumber.js';
 
 class CarController {
@@ -10,7 +10,7 @@ class CarController {
   }
 
   createObject() {
-    this.names.map((name) => this.cars.push(new RacingResult(name)));
+    this.names.map((name) => this.cars.push(new RacingCar(name.trim())));
   }
 
   playAdvance() {
@@ -22,8 +22,12 @@ class CarController {
     return this.printCars;
   }
 
-  return() {
-    return this.cars;
+  racingResult() {
+    const carsData = {};
+    this.cars.forEach((car) => {
+      carsData[car.name] = car.advance;
+    });
+    return carsData;
   }
 }
 export default CarController;
