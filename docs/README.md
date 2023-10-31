@@ -74,8 +74,6 @@ classDiagram
         finish() void
     }
     class App{
-        private Computer computer
-        constructor()
         play()
     }
     App "1"-- "1"Computer
@@ -106,13 +104,12 @@ classDiagram
 - [x] pushCarList : 사용자의 입력을 받아서 쉼표를 바탕으로 분류한 뒤, 이를 순서대로 자동차 객체 생성하고, 이름을 할당한 뒤 자동차 리스트(carList)에 할당한다.
 - [x] start : 게임의 시작 부분으로, 경주할 자동차와 시도할 횟수를 입력받아 내부에서 round, pushCarList를 실행시킨다.
 - [x] judgeRandomNumber : 0에서 9 사이에서 무작위 값을 구한다. 이때, 무작위 값이 4 이상일 경우 true를 리턴하고, 아니면 false를 리턴한다.
-- [ ] printResult : 호출되는 시점까지의 자동차들의 이동 거리를 출력한다.이는 자동차 각각의 print() 를 실행시킨 것과 같다.
-- [ ] playRound : 자동차 각각에 대해 judgeRandomNumber()를 수행하고, 그 결과를 자동차 각각의 setCount를 호출해 전달한다. 그리고 모든 객체에 대해 순회가 끝나면 printResult를 출력한다.
-- [ ] judgeWinner : 최종 우승자를 판별해 출력한다.
-- [ ] finish : "실행 결과" 를 출력하고, playRounds(), judgeWinner()를 실행한다.
+- [x] printResult : 호출되는 시점까지의 자동차들의 이동 거리를 출력한다.이는 자동차 각각의 print() 를 실행시킨 것과 같다.
+- [x] playRound : 자동차 각각에 대해 judgeRandomNumber()를 수행하고, 그 결과를 자동차 각각의 goingCount를 호출해 전달한다. 그리고 모든 객체에 대해 순회가 끝나면 printResult를 출력한다.
+- [x] judgeWinner : 최종 우승자를 판별해 출력한다.
+- [x] finish : "실행 결과" 를 출력하고, playRound(), judgeWinner()를 실행한다.
 
 ### 🎯 App Class
 
     computer는 컴퓨터 객체로 단 하나의 객체만을 갖는다.
-- [ ] constructor : 새로운 Computer 객체를 생성해 computer에 할당한다.
-- [ ] play : computer.start(), computer.finish()를 실행한다.
+- [x] play : Computer객체인 computer를 생성한 뒤, computer.start(), computer.finish()를 실행한다.
