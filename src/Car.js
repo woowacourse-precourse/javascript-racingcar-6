@@ -14,7 +14,7 @@ class Car {
   }
 
   getProgressStatus() {
-    return this.name + MESSAGES.resultDelimeter + this.progressStatus;
+    return this[CONSTANTS.nameKey] + MESSAGES.resultDelimeter + this[CONSTANTS.progressStatusKey];
   }
 }
 
