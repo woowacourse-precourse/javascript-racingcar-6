@@ -29,6 +29,18 @@ class App {
       }
       MissionUtils.Console.print('');
     }
+
+    let maxNum = -1;
+    let winners = [];
+    for (let i = 0; i < result.length; i++){
+      if (maxNum < result[i].length){
+        maxNum = result[i].length;
+        winners = [names[i]];
+      } else if (maxNum == result[i].length){
+        winners.push(names[i]);
+      }
+    }
+    
   }
   
 }
