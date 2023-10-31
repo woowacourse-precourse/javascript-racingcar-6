@@ -11,7 +11,7 @@ export const MESSAGE = {
     WINNER: winners => `${winners.join(', ')}가 최종 우승했습니다.\n`,
     RACING_STATUS: racer => `${racer.carName} : ${'-'.repeat(racer.move)}\n`,
   },
-  ERROR: message => `[ERROR] ${message}`,
+  ERROR: message => new Error(`[ERROR] ${message}`),
 };
 
 export const input = {
@@ -33,21 +33,21 @@ export const input = {
   },
   validateCarName(carName) {
     if (carName.length === 0) {
-      throw new Error(MESSAGE.ERROR('자동차 이름을 입력해주세요'));
+      throw MESSAGE.ERROR('자동차 이름을 입력해주세요');
     }
     if (carName.length > 5) {
-      throw new Error(MESSAGE.ERROR('자동차 이름은 5자 이하만 가능합니다.'));
+      throw MESSAGE.ERROR('자동차 이름은 5자 이하만 가능합니다.');
     }
   },
   validateTryCount(tryCount) {
     if (tryCount.length === 0) {
-      throw new Error(MESSAGE.ERROR('시도 횟수를 입력해주세요.'));
+      throw MESSAGE.ERROR('시도 횟수를 입력해주세요.');
     }
     if (Number.isNaN(tryCount)) {
-      throw new Error(MESSAGE.ERROR('시도 횟수는 숫자만 가능합니다.'));
+      throw MESSAGE.ERROR('시도 횟수는 숫자만 가능합니다.');
     }
     if (tryCount < 1) {
-      throw new Error(MESSAGE.ERROR('시도 횟수는 1 이상이어야 합니다.'));
+      throw MESSAGE.ERROR('시도 횟수는 1 이상이어야 합니다.');
     }
   },
 };
