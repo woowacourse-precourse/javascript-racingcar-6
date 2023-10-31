@@ -6,7 +6,7 @@ import { print } from "../util/output.js";
 import { vaildTryCount } from "../validation/tryValidation.js";
 
 
-export class RacingGame {
+export default class RacingGame {
   constructor() {
     this.cars = {};
   }
@@ -34,7 +34,7 @@ export class RacingGame {
       num++;
     }
   }
-  start = async () => {
+  async start() {
     await this.initCars();
     const TRY_COUNT = await this.initTryCount();
 
