@@ -25,4 +25,17 @@ export async function validParticipantCarName(carNameList) {
   }
 }
 
+export async function inputNumberOfAttempts() {
+  const userInput = await MissionUtils.Console.readLineAsync(
+    '시도할 횟수는 몇 회인가요?(1~20 숫자를 입력해주세요)\n'
+  );
+  return userInput;
+}
+
+export async function validNumberOfAttempts(userInput) {
+  if (userInput < 1 || userInput > 20) {
+    throw new Error('[ERROR] 시도 횟수는 1 ~ 20 사이로 입력해주세요');
+  }
+}
+
 export default User;
