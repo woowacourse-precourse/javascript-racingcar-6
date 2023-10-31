@@ -24,7 +24,7 @@ export default class Car {
   canMove() {
     this.CAN_MOVE_FORWARD = 4;
     this.GET_RANDOM = this.generateRandomNum();
-    if (this.GET_RANDOM > this.CAN_MOVE_FORWARD) {
+    if (this.GET_RANDOM >= this.CAN_MOVE_FORWARD) {
       this.move += 1;
       this.POSITION += '-';
     }

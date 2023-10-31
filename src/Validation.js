@@ -26,7 +26,6 @@ const VALIDATION = {
       ) {
         return true;
       }
-      return false;
     };
     if (splitCar.some((empty) => isEmpty(empty))) {
       // true면 empty
