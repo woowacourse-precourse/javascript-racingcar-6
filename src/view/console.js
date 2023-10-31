@@ -5,10 +5,7 @@ import {
   parseNumber,
   getWinners,
 } from '../utils/common.js';
-import {
-  validateNameShouldBeLessThan5,
-  validateNumber,
-} from '../utils/validation.js';
+import { validateNumber } from '../utils/validation.js';
 
 class GameConsole {
   static async getCarNames() {
@@ -16,8 +13,6 @@ class GameConsole {
       '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n'
     );
     const parsedNames = parseNames(input);
-
-    validateNameShouldBeLessThan5(parsedNames);
 
     return parsedNames;
   }

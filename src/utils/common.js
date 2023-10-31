@@ -1,7 +1,16 @@
-import { validateBetweenOneAndNine } from './validation.js';
+import {
+  validateBetweenOneAndNine,
+  validateName,
+  validateNoneZeroLengthInput,
+} from './validation.js';
 
 export function parseNames(str) {
-  return str.split(',');
+  validateNoneZeroLengthInput(str);
+
+  const nameArr = str.split(',');
+  nameArr.forEach(validateName);
+
+  return nameArr;
 }
 
 export function parseNumber(args) {
