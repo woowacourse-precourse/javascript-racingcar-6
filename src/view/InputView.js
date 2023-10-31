@@ -1,12 +1,18 @@
 import { Console } from '@woowacourse/mission-utils';
 
-export default class RecieveInputView {
+export default class InputView {
+  constructor() {
+    this.userInputCarList = [];
+    this.userInputPlayNumber = 0;
+  }
+
   async recieveCarName() {
+    constructor();
     // carName 입력 받기
     const carNameString = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)');
     const carNameArray = carNameString.split(',');
-    // 예외 처리 후 리턴
-    return carNameArray.forEach(carName => {
+    // 예외 처리 후 this.userInputCarList에 재할당
+    this.userInputCarList = carNameArray.forEach(carName => {
       if (carNameArray.length > 5) {
         throw new Error('[ERROR] 자동차 이름은 5 글자를 초과할 수 없습니다.');
       }
@@ -31,6 +37,7 @@ export default class RecieveInputView {
     if (typeof this.playNumber !== 'number') {
       throw new Error('[ERROR] 시도할 횟수에는 숫자만 입력할 수 있습니다.');
     }
-    return this.playNumber;
+    // this.userInputPlayNumber에 재할당
+    this.userInputPlayNumber = this.playNumber;
   }
 }
