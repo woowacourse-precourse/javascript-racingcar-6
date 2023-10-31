@@ -38,6 +38,14 @@ class App {
     MissionUtils.Console.print('');
   }
 
+  printWinner(cars) {
+    const MAX_COUNT = Math.max(...cars.map((car) => car.count));
+    const winners = cars.filter((car) => car.count === MAX_COUNT).map((car) => car.name);
+    const winner_text = winners.length > 1 ? `최종 우승자 : ${winners.join(', ')}` : `최종 우승자 : ${winners[0]}`
+    
+    MissionUtils.Console.print(winner_text);
+  }
+
   playGame(car_name, num) {
     let cars = [];
     car_name.forEach((elem) => {
@@ -57,18 +65,17 @@ class App {
       })
 
       this.printResult(cars);
-      
       num -= 1;
     }
     
-    //우승자 출력
+    this.printWinner(cars);
   }
 
   async play() {
     const car_name = await this.getCarName();
     const num = await this.getNum();
     
-    await this.playGame(car_name, num);
+    this.playGame(car_name, num);
   }
 }
 
