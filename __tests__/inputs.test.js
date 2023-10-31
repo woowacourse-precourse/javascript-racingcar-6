@@ -1,11 +1,10 @@
 import { inputRacingCars, inputAttemps } from '../src/inputs';
 import { MissionUtils } from '@woowacourse/mission-utils';
 
-const mockQuestions = (inputs) => {
+const mockQuestions = (input) => {
   MissionUtils.Console.readLineAsync = jest.fn();
 
   MissionUtils.Console.readLineAsync.mockImplementation(() => {
-    const input = inputs.shift();
     return Promise.resolve(input);
   });
 };
@@ -13,7 +12,7 @@ const mockQuestions = (inputs) => {
 describe('경주할 자동차 이름 입력', () => {
   test("inputRacingCars 메서드에 'pobi,woni'를 입력하고 'pobi,woni'를 반환", async () => {
     //given
-    const inputs = ['pobi,woni'];
+    const inputs = 'pobi,woni';
     mockQuestions(inputs);
 
     //when
@@ -33,22 +32,21 @@ describe('경주할 자동차 이름 입력', () => {
       'pobi,woni,',
       'pobi,woni,junnnn',
     ];
-    mockQuestions(inputs);
 
     // when & then
-    for (const input of inputs) {
-      mockQuestions([input]);
+    inputs.forEach(async (input) => {
+      mockQuestions(input);
       await expect(inputRacingCars()).rejects.toThrow(
         '[ERROR] Invalid racing car input'
       );
-    }
+    });
   });
 });
 
 describe('시도 횟수 입력', () => {
   test('inputAttemps 메서드에 1을 입력하고, 1을 반환', async () => {
     //given
-    const inputs = ['1'];
+    const inputs = '1';
     mockQuestions(inputs);
 
     //when
@@ -61,14 +59,14 @@ describe('시도 횟수 입력', () => {
   test('시도 횟수 입력 예외 테스트', async () => {
     // given
     const inputs = ['0', '', '-1', 'one', '1a2'];
-    mockQuestions(inputs);
+    // mockQuestions(inputs);
 
     // when & then
-    for (const input of inputs) {
-      mockQuestions([input]);
+    inputs.forEach(async (input) => {
+      mockQuestions(input);
       await expect(inputAttemps()).rejects.toThrow(
         '[ERROR] Invalid number of attemps input'
       );
-    }
+    });
   });
 });
