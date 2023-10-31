@@ -1,15 +1,14 @@
-const MAX_NAME_LENGTH = 5;
-const ZERO = 0;
+import { NUMBER, CHAR } from '../constant/constants';
 
 const carNameSet = new Set();
 
 const hasNotBlank = (string) => {
-  return !string.includes(' ');
+  return !string.includes(CHAR.BLANK);
 };
 
 const isValidLength = (string) => {
-  const greaterThanZero = string.length > ZERO;
-  const maxLengthOrLess = string.length <= MAX_NAME_LENGTH;
+  const greaterThanZero = string.length > NUMBER.ZERO;
+  const maxLengthOrLess = string.length <= NUMBER.MAX_NAME_LENGTH;
   const isValid = greaterThanZero && maxLengthOrLess;
 
   return isValid;
@@ -32,7 +31,7 @@ const isValidCarName = (string) => {
 };
 
 const isValidCarNameString = (string) => {
-  const splitArray = string.split(',');
+  const splitArray = string.split(CHAR.SEPARATOR);
   const isValid = splitArray.every(isValidCarName);
 
   return isValid;
