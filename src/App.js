@@ -12,39 +12,45 @@ class App {
   }
 
   createCar(nameString) {
-    const nameArr = nameString.split(CHAR.SEPARATOR);
-
-    nameArr.forEach((name) => {
+    const pushNewCar = (name) => {
       const newCar = new Car(name);
       this.cars.push(newCar);
-    });
+    };
+
+    const nameArr = nameString.split(CHAR.SEPARATOR);
+    nameArr.forEach(pushNewCar);
   }
 
   startRace(attemp) {
+    const moveCar = (car) => car.move();
+    const getWinner = (car) => car.getPosition() === Number(attemp);
+
     print();
     print(PROMPT.RACE_START);
 
     while (this.winners.length === 0) {
-      this.cars.forEach((car) => car.move());
+      this.cars.forEach(moveCar);
 
       this.printMoveResult();
 
-      this.winners = this.cars.filter((car) => car.getPosition() === Number(attemp));
+      this.winners = this.cars.filter(getWinner);
     }
   }
 
   printMoveResult() {
-    this.cars.forEach((car) => {
+    const printMoveResult = (car) => {
       const moveResult = `${car.name} : ${'-'.repeat(car.position)}`;
-
       print(moveResult);
-    });
+    };
+
+    this.cars.forEach(printMoveResult);
 
     print();
   }
 
   printWinners() {
-    const winnerNames = this.winners.map((car) => car.getName());
+    const getCarName = (car) => car.getName();
+    const winnerNames = this.winners.map(getCarName);
     const winners = `${PROMPT.FINAL_WINNER} : ${winnerNames.join(`${CHAR.SEPARATOR} `)}`;
 
     print(winners);
