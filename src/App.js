@@ -1,3 +1,5 @@
+import {Random, Console} from '@woowacourse/mission-utils';
+
 class App {
     /* 
     * 클래스의 생성자 메서드
@@ -11,6 +13,7 @@ class App {
   async play() {
     await this.inputCarNamesAsync();
     const numberOfMoves = await this.inputNumberOfMovesAsync();
+    this.startRace(numberOfMoves);
   }
 
     /* 
@@ -39,6 +42,22 @@ class App {
     }
     return parseInt(numberOfMoves, 10);
   }
+
+    /*
+    * 이 메서드는 경주를 시작합니다.
+    * 주어진 numberOfMoves 횟수만큼 반복하면서 각 자동차에 대해 무작위로 숫자를 생성하고, 
+    * 생성된 숫자가 4 이상인 경우에만 자동차의 위치를 1씩 증가시킵니다.
+    **/
+    startRace(numberOfMoves) {
+      for (let i = 0; i < numberOfMoves; i++) {
+        this.cars.forEach(car => {
+          const randomValue = Random.pickNumberInRange(0, 9);
+          if (randomValue >= 4) {
+            car.position += 1;
+          }
+        });
+      }
+    }
 }
 
 export default App;
