@@ -1,3 +1,4 @@
+import { Console } from "@woowacourse/mission-utils";
 import UserInputCarName from "./utils/UserInputCarName";
 import ShowGameResult from "./utils/ShowGameResult";
 import ShowRoundLog from "./utils/ShowRoundLog";
@@ -10,8 +11,14 @@ class App {
   }
 
   async play() {
-    await this.setupGame();
-    await this.playRound();
+    try {
+      await this.setupGame();
+      await this.playRound();
+    } catch (error) {
+      this.endGame();
+      Console.print(error.message);
+      return Promise.reject(error);
+    }
   }
 
   async setupGame() {
