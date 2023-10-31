@@ -52,6 +52,10 @@ class App {
     return this._tryNumber;
   }
 
+  getRandomNumber() {
+    const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
+    return randomNumber;
+  }
 }
 
 export default App;
