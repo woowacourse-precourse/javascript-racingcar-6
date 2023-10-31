@@ -12,6 +12,7 @@ function mockInput(inputs) {
   });
 };
 
+// 테스트를 위한 이름 값이 초기화된 Car 객체 생성해주는 함수
 function generateObject(input) {
   const car = new Car();
 
@@ -30,6 +31,14 @@ function mockRandom(inputs) {
   });
 }
 
+function getLogSpy() {
+  const logSpy = jest.spyOn(MissionUtils.Console, "print");
+
+  logSpy.mockClear();
+
+  return logSpy;
+};
+
 describe('Computer 클래스 테스트', () => {
   test('round의 getter, setter 테스트', () => {
     const computer = new Computer();
@@ -46,7 +55,7 @@ describe('Computer 클래스 테스트', () => {
     const computer = new Computer();
     const testArray = [];
 
-    for (let i = 1; i < 6; i++) {
+    for (let i = 1; i < 6; i += 1) {
       testArray.push(generateObject(i.toString()));
     }
 
@@ -65,7 +74,7 @@ describe('Computer 클래스 테스트', () => {
     mockInput(testCase);
     await computer.start();
 
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 3; i += 1) {
       testArray.push(generateObject(testText[i]));
     }
 
@@ -78,7 +87,28 @@ describe('Computer 클래스 테스트', () => {
     const testNumbers = [7, 6, 5, 4, 3];
 
     mockRandom(testNumbers);
-    for (let i = 0; i < 4; i++) expect(computer.judgeRandomNumber()).toBeTruthy();
+    for (let i = 0; i < 4; i += 1) expect(computer.judgeRandomNumber()).toBeTruthy();
     expect(computer.judgeRandomNumber()).toBeFalsy();
+  });
+
+  test('printResult 메서드 테스트', () => {
+    const computer = new Computer();
+    const logSpy = getLogSpy();
+
+    computer.pushCarList('pobi,woni,jun');
+
+    for (let j = 0; j < 3; j += 1) {
+      for (let i = j; i < 3; i += 1) {
+        computer.carList[i].goingCount = true;
+      }
+    }
+
+    computer.printResult();
+
+    expect(logSpy).toHaveBeenNthCalledWith(1, 'pobi : -');
+    expect(logSpy).toHaveBeenNthCalledWith(2, 'woni : --');
+    expect(logSpy).toHaveBeenNthCalledWith(3, 'jun : ---');
+    expect(logSpy).toHaveBeenNthCalledWith(4, '');
+
   });
 });
