@@ -13,8 +13,8 @@ class GameController {
     this.#carService = new CarService();
   }
 
-  run() {
-    this.getCarNames();
+  async run() {
+    await this.getCarNames();
   }
 
   async getCarNames() {
