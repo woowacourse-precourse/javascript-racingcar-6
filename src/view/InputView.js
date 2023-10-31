@@ -40,7 +40,7 @@ const InputView = {
   },
 
   validateAttemptsCount(userInputAttemptsCount) {
-    if (isNaN(userInputAttemptsCount)) {
+    if (isNaN(userInputAttemptsCount) || userInputAttemptsCount === "0") {
       throw new Error();
     }
 
