@@ -1,5 +1,16 @@
+import inputCarName from './data/inputCarName.js';
+import inputCount from './data/inputCount.js';
+import playGame from './game/playGame.js';
+
 class App {
-  async play() {}
+  async play() {
+    const carArr = await inputCarName();
+    const count = await inputCount();
+    playGame(carArr, count);
+  }
 }
+
+const app = new App();
+app.play();
 
 export default App;
