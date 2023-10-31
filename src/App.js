@@ -53,11 +53,19 @@ class App {
 
   numberOfTryValidity(numberOfTry) {
     this.isNaNNumberOfTryValidity(numberOfTry);
+
+    this.isNaturalNumberValidity(numberOfTry);
   }
 
   isNaNNumberOfTryValidity(numberOfTry) {
     if (isNaN(numberOfTry)) {
       throw new Error("[ERROR]: 숫자를 입력하시오.");
+    }
+  }
+
+  isNaturalNumberValidity(numberOfTry) {
+    if(numberOfTry < 1) {
+      throw new Error("[ERROR]: 1이상의 숫자를 입력하시오.");
     }
   }
 }
