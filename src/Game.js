@@ -16,6 +16,26 @@ class Game {
     }
     return randomNumbers;
   }
+
+  createCarsObject() {
+    const carsObject = {};
+    for (const name of this.carNames) {
+      carsObject[name] = '';
+    }
+    return carsObject;
+  }
+
+  goStop() {
+    const carsObject = this.createCarsObject();
+    const randomNumbers = this.randomNumbers();
+    for (let i = 0; i < randomNumbers.length; i += 1) {
+      if (randomNumbers[i] >= 4) {
+        const carName = this.carNames[i];
+        carsObject[carName] += '-';
+      }
+    }
+    return carsObject;
+  }
 }
 
 export default Game;

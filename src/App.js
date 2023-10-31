@@ -15,8 +15,8 @@ class App {
       const carNames = await cars.getCarsNames();
       const count = await playCount.getPlayCount();
       const game = new Game(carNames, count);
-      const randomNumbers = game.randomNumbers();
-      MissionUtils.Console.print(randomNumbers);
+      const carsGoStopObject = game.goStop();
+      MissionUtils.Console.print(carsGoStopObject);
     } catch (error) {
       throw new Error(error);
     }
