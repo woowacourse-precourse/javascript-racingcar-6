@@ -3,6 +3,7 @@ import Car from '../models/Car.js';
 import Track from '../models/Track.js';
 import DisplayView from '../views/DisplayView.js';
 import { Messages } from '../constants/Messages.js';
+import InputView from '../views/InputView.js';
 class RaceController {
   /** @type {Track} */
   #race;
@@ -11,12 +12,13 @@ class RaceController {
   #round;
 
   async startLine() {
-    const carNamesInput = await Console.readLineAsync(Messages.INPUT_CAR_NAMES);
-    const carNames = carNamesInput.split(',');
+    const carNames = await InputView.inputCarNames();
+
     const cars = carNames.map((carName) => new Car(carName));
+
     this.#race = new Track(cars);
-    const roundInput = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
-    this.#round = Number(roundInput);
+
+    this.#round = await InputView.inputRaceRounds();
   }
 
   async startRace() {
