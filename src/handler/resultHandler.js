@@ -1,8 +1,4 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
-
-function getRandomeNumberInRange(min, max) {
-  return MissionUtils.Random.pickNumberInRange(min, max);
-}
+import { getRandomeNumberInRange, printOutput } from "../utils/missionUtils";
 
 function getResultStringOneLine(cars) {
   let string = "";
@@ -42,7 +38,7 @@ const resultHandler = {
 
   printWinner: (winner) => {
     const WINNER_STRING = winner.join(", ");
-    MissionUtils.Console.print(`최종 우승자 : ${WINNER_STRING}`);
+    printOutput(`최종 우승자 : ${WINNER_STRING}`);
   },
 };
 

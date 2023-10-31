@@ -1,6 +1,6 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
 import Car from "../Car";
 import { CAR_MESSAGES } from "../utils/messages";
+import { readInput } from "../utils/missionUtils";
 
 function validateCarsInput(input) {
   const CARS = input.split(",");
@@ -20,7 +20,7 @@ function validateCarsInput(input) {
 
 const carHandler = {
   readCarsInput: async () => {
-    const INPUT = await MissionUtils.Console.readLineAsync(CAR_MESSAGES.INPUT);
+    const INPUT = await readInput(CAR_MESSAGES.INPUT);
     validateCarsInput(INPUT);
     return INPUT;
   },

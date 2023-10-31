@@ -1,5 +1,5 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
 import { NUMBER_MESSAGES } from "../utils/messages";
+import { readInput } from "../utils/missionUtils";
 
 const validTryNumber = (input) => {
   const trimInput = input.trim();
@@ -12,9 +12,7 @@ const validTryNumber = (input) => {
 
 const numberHandler = {
   readTryNumber: async () => {
-    const INPUT = await MissionUtils.Console.readLineAsync(
-      NUMBER_MESSAGES.INPUT
-    );
+    const INPUT = await readInput(NUMBER_MESSAGES.INPUT);
 
     validTryNumber(INPUT);
     return Number(INPUT);
