@@ -26,11 +26,13 @@ export class RacingGame {
     this.tryCount = VAILD_COUNT;
   }
 
-  async go(num) {
-    await this.moveCars();
-    await print("");
-
-    if (num < this.tryCount) await this.go(num + 1);
+  async go() {
+    let num = 0;
+    do{
+      await this.moveCars();
+      await print("");
+      num++;
+    }while(this.tryCount >= num)
   }
   async start() {
     await this.initCars();

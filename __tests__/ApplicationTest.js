@@ -28,8 +28,8 @@ describe("자동차 경주 게임", () => {
     // given
     const MOVING_FORWARD = 4;
     const STOP = 3;
-    const inputs = ["a,b", "1"];
-    const outputs = ["a : -"];
+    const inputs = ["pobi,woni", "1"];
+    const outputs = ["pobi : -"];
     const randoms = [MOVING_FORWARD, STOP];
     const logSpy = getLogSpy();
 
