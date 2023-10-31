@@ -1,5 +1,9 @@
 import { MissionUtils, Console } from "@woowacourse/mission-utils";
 import { GAME_HELP } from "../constant/gameHelp.js";
+import {
+  CAR_VALIDATION,
+  TRY_COUNT_VALIDATION,
+} from "../constant/validation.js";
 
 class App {
   constructor() {
@@ -24,7 +28,7 @@ class App {
     car = car.map((carName) => carName.replace(/\s/g, ""));
 
     if (car.some((carName) => carName.length > 6)) {
-      throw new Error("[ERROR] 자동차 이름은 5자 이하만 가능합니다.");
+      throw new Error(CAR_VALIDATION.LENGTH);
     }
 
     this._carArr = car;
@@ -41,11 +45,11 @@ class App {
   set tryNumber(tryValue) {
     tryValue = Number(tryValue);
     if (tryValue === 0) {
-      throw new Error("[ERROR] 1회 이상 시도해야 합니다.");
+      throw new Error(TRY_COUNT_VALIDATION.NOT_ZERO);
     }
 
     if (isNaN(tryValue)) {
-      throw new Error("[ERROR] 시도 횟수는 숫자여야 합니다.");
+      throw new Error(TRY_COUNT_VALIDATION.IS_NAN);
     }
 
     this._tryNumber = tryValue;
