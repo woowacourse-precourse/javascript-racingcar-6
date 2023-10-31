@@ -4,7 +4,7 @@ describe('isValidNameLength', () => {
   test('알맞은 이름의 길이(2~6자)일때 true 리턴', () => {
     // given
     const inputs = [
-      ['도레', '레미파', '솔라시도레미'],
+      ['도레', '레미파', '솔라시도레'],
       ['aa', 'bbb', 'ccc', 'dddd', 'eeee'],
     ];
 
