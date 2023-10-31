@@ -1,29 +1,35 @@
 import { Random, Console } from "@woowacourse/mission-utils";
 import message from "./message.js";
 import {
-  validateAndDisplayResult,
+  validateAndDisplayScores,
   validateCarNames,
   validateDisplayWinner,
 } from "./validation.js";
 
 class App {
   async play() {
+    await this.userInputRacecar();
+  }
+
+  async userInputRacecar() {
     const playerRacecar = await Console.readLineAsync(message.START_MESSAGE);
     const allRacecars = playerRacecar.trim().split(",");
-    let carScores = new Array(allRacecars.length).fill(0);
-
-    // racecar 유효성 검사
     validateCarNames(allRacecars);
+    await this.userInputLaps(allRacecars);
+  }
 
-    // 참여자 점수 iteration, 출력
-    const ROTATION = await Console.readLineAsync(message.INPUT_ROTATION);
+  async userInputLaps(racecars) {
+    const NUMBER_OF_LAPS = await Console.readLineAsync(message.INPUT_ROTATION);
+    let SCORES = new Array(racecars.length).fill(0);
     Console.print(message.DISPLAYING_RESULTS_MSG);
-    for (let i = 0; i < ROTATION; i++) {
-      validateAndDisplayResult(allRacecars, carScores);
+    for (let i = 0; i < NUMBER_OF_LAPS; i++) {
+      validateAndDisplayScores(racecars, SCORES);
     }
+    await this.displayWinners(SCORES, racecars);
+  }
 
-    // 최종 우승자 출력 함수
-    validateDisplayWinner(carScores, allRacecars);
+  async displayWinners(scores, winners) {
+    validateDisplayWinner(scores, winners);
   }
 }
 
