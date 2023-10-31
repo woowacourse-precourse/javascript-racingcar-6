@@ -3,11 +3,9 @@ import strings from './constants.js';
 import Referee from './Referee.js';
 class RacingCar {
   playRace(inputNumber, carArr) {
-    const attemptNumber = this.wrongNumber(inputNumber);
     let round = 0;
     const winner = new Referee();
-
-    Console.print(attemptNumber);
+    const attemptNumber = this.wrongNumber(inputNumber);
 
     Console.print('\n' + strings.RESULT);
 
@@ -35,6 +33,8 @@ class RacingCar {
     if (/[^0-9]/.test(inputNumber)) {
       throw new Error('[ERROR] 숫자를 입력해주세요.');
     }
+
+    Console.print(inputNumber);
 
     return Number(inputNumber);
   }
