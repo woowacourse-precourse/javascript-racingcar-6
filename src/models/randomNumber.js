@@ -1,13 +1,11 @@
 import { Random } from '@woowacourse/mission-utils';
 
-const random = (carsLength) => {
+export const random = (carsLength) => {
   const randomNumber = [];
 
   while (randomNumber.length < carsLength) {
-    randomNumber.push(Random.pickNumberInRange(1, 9));
+    randomNumber.push(Random.pickNumberInRange(0, 9));
   }
 
   return randomNumber;
 };
-
-export default random;
