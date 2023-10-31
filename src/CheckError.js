@@ -6,7 +6,7 @@ class CheckError {
   }
 
   static isNumber(number) {
-    if (number === NaN) throw new Error(ERROR.WRONG_NUMBER);
+    if (!number) throw new Error(ERROR.WRONG_NUMBER);
   }
 }
 
