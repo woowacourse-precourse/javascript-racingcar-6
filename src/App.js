@@ -50,10 +50,25 @@ class App {
     }
   }
 
+  setWinner() {
+    const max = Math.max(...this.count);
+    const winner = [];
+
+    for (let i = 0; i < this.participant.length; i++) {
+      if (max === this.count[i]) winner.push(this.participant[i]);
+    }
+
+    MissionUtils.Console.print(`최종 우승자 : ${winner.join(", ")}`);
+  }
+
   async play() {
     await this.participate();
 
     const cycle = await this.getCycleCount();
+
+    await this.depart(cycle);
+
+    this.setWinner();
   }
 }
 
