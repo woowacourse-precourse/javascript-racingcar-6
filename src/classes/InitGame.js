@@ -18,6 +18,7 @@ export default class InitGame  {
     }
 
     validateCarList(carList) {
+        
         if (carList.length === 0) {
           throw new Error(
             "[ERROR] 자동차 이름은 쉼표(,)를 기준으로 구분하며 이름은 5자 이하만 가능합니다."

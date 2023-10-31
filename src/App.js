@@ -1,39 +1,14 @@
 import { Console, MissionUtils } from "@woowacourse/mission-utils";
-import InitGame from "./classes/initGame.js";
+import InitGame from "./classes/InitGame.js";
+import PlayGame from "./classes/PlayGame.js";
 
 class App {
+  
   async play() {
     const game = new InitGame();
+    const playGame = new PlayGame();
     await game.initCarListAndGameCount();
-    this.findWinner(this.gamePlay(game.carList, game.gameCount));
-  }
-
-  showCount(count) {
-    let temp_count = "";
-    while (count > 0) {
-      temp_count += "-";
-      count--;
-    }
-    return temp_count;
-  }
-  gamePlay(carList, gameCount) {
-    let carMovingCountList = carList.map((e) => [e, 0]);
-    Console.print("\n실행 결과");
-    while (gameCount > 0) {
-      carMovingCountList = this.moveCar(carMovingCountList);
-      gameCount--;
-    }
-    return carMovingCountList;
-  }
-
-  moveCar(carMovingCountList) {
-    carMovingCountList.forEach((car) => {
-      const number = MissionUtils.Random.pickNumberInRange(0, 9);
-      if (number >= 4) car[1]++;
-      Console.print(car[0] + " : " + this.showCount(car[1]));
-    });
-    Console.print("\n");
-    return carMovingCountList;
+    this.findWinner(playGame.gamePlay(game.carList, game.gameCount));
   }
 
   findWinner(carList) {
