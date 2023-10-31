@@ -6,14 +6,16 @@ class ShowGameResult {
     this.carPositions = carPositions;
   }
 
-  findWinner(rounds) {
-    return Object.entries(this.carPositions)
-      .filter(([_, position]) => position.length === rounds)
+  findWinner() {
+    const maxPosition = Math.max(...Object.values(this.carPositions).map((pos) => pos.length));
+    const winners = Object.entries(this.carPositions)
+      .filter(([_, position]) => position.length === maxPosition)
       .map(([carName, _]) => carName);
+    return winners;
   }
 
-  printGameResult(rounds) {
-    const winners = this.findWinner(rounds);
+  printGameResult() {
+    const winners = this.findWinner();
     Console.print(`${WINNER} : ${winners.join(", ")}`);
   }
 }
