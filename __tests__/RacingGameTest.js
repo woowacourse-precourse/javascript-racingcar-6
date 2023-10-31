@@ -25,7 +25,7 @@ const mockSettingCars = (carsNamesInput) => {
   const registeredCars = carsNamesArray.map((name) => new Car(name));
 
   SettingCars.registerCars = jest.fn().mockReturnValue(registeredCars);
-  
+
   return registeredCars;
 };
 
@@ -59,8 +59,12 @@ describe('레이싱 게임 플레이와 관련된 함수 테스트', () => {
     mockRandoms([...controlRandoms]);
     racingGame.playRacing();
 
-    racingGame.carsList.forEach((car) => {
-      expect(car.location).toBe(1);
+    racingGame.carsList.forEach((car, index) => {
+      if (controlRandoms[index] === MOVE_NUMBER) {
+        expect(car.location).toBe(1);
+      }
+      
+      expect(car.location).toBe(0);
     });
   });
 });
