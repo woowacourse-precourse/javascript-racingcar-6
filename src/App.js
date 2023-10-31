@@ -11,6 +11,8 @@ class App {
     const chanceInput = await Console.readLineAsync(
       CONSOLE_MESSAGE.GAME_CHANCES
     );
+    if (Number.isNaN(Number(chanceInput)))
+      throw new Error(ERROR_MESSAGE.NOT_A_NUMBER);
     const gameChance = parseInt(chanceInput, 10);
 
     Console.print(CONSOLE_MESSAGE.EXECUTION_RESULT);
@@ -28,6 +30,9 @@ class App {
 
 function makeNameArray(names) {
   const splittedNames = names.split(',');
+  const uniqueNamesSet = new Set(splittedNames);
+  if (splittedNames.length !== uniqueNamesSet.size)
+    throw new Error(ERROR_MESSAGE.DUPLICATED_NAME);
 
   for (const name of splittedNames) {
     if (name.trim().length !== name.length)
