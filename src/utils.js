@@ -2,6 +2,7 @@ import { MissionUtils } from '@woowacourse/mission-utils';
 
 const MAX_CAR_NAME = 5;
 const MOVE_RANDOM_NUM = 4;
+
 export const getCarArrFromInputValue = async () => {
   let inputCarNames = await MissionUtils.Console.readLineAsync(
     '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n'
