@@ -1,4 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
+import MESSAGE from '../constants/constant';
 
 class Race {
   constructor(cars) {
@@ -26,7 +27,7 @@ class Race {
   }
 
   printWinner() {
-    Console.print(`최종 우승자 : ${this.getWinner().join(', ')}`);
+    Console.print(`${MESSAGE.GAME.WINNER} ${this.getWinner().join(', ')}`);
   }
 }
 

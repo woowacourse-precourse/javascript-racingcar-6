@@ -1,26 +1,26 @@
+import MESSAGE from '../constants/constant';
+
 const validator = {
   validateCarName(carNames) {
     carNames.forEach((carName) => {
       if (carName.length > 5) {
-        console.log('오류');
-        throw new Error('[ERROR] 자동차 이름은 각 5자 이하만 가능합니다.');
+        throw new Error(MESSAGE.ERROR.CARNAME.LENGTH_ERROR);
       }
       if (carName === '') {
-        throw new Error(
-          '[ERROR] 자동차 이름은 1자 이상 5자 이상 입력가능합니다.'
-        );
+        throw new Error(MESSAGE.ERROR.CARNAME.NULL_ERROR);
       }
     });
   },
+
   validateChance(number) {
     if (Number.isNaN(number)) {
-      throw new Error('[ERROR] 횟수는 숫자로만 입력가능합니다.');
+      throw new Error(MESSAGE.ERROR.CHANCE.NUMBER_ERROR);
     }
     if (number <= 0) {
-      throw new Error('[ERROR] 횟수는 1 이상의 숫자로 입력가능합니다.');
+      throw new Error(MESSAGE.ERROR.CHANCE.OVER_ZERO_ERROR);
     }
     if (number === '') {
-      throw new Error('[ERROR] 횟수는 1 이상의 숫자로 입력가능합니다.');
+      throw new Error(MESSAGE.ERROR.CHANCE.NULL_ERROR);
     }
   },
 };
