@@ -12,7 +12,7 @@ function isValidName(userInput) {
 
 function checkNameLength(name) {
     if (name.length > 5) {
-        throw new Error(`[ERROR] "${name}"은 5글자를 초과합니다.`);
+        throw new Error(`[ERROR] 각 자동차의 이름은 5자를 넘을 수 없습니다.`);
     }
     return name;
 }
