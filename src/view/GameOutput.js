@@ -10,4 +10,7 @@ export class GameOutput {
   static printEnter() {
     Console.print(` `);
   }
+  static printWinner(winnerNameArray) {
+    Console.print(`최종 우승자 : ${winnerNameArray.join(", ")}`);
+  }
 }
