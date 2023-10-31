@@ -1,6 +1,6 @@
 import Car from '../models/Car.js';
 import CarGame from '../models/CarRace.js';
-import GameResult from '../models/RaceProcess.js';
+import RaceProcess from '../models/RaceProcess.js';
 import RandomNumberGenerator from '../utils/RandomNumberGenerator.js';
 import InputView from '../views/InputView.js';
 import OutputView from '../views/OutputView.js';
@@ -9,7 +9,6 @@ import { Console } from '@woowacourse/mission-utils';
 class CarRaceController {
   #records;
   #race;
-  #process;
 
   async startRace() {
     const carNames = await InputView.readCarNames();
@@ -27,10 +26,10 @@ class CarRaceController {
 
   checkProcessStage(forwards, attempts) {
     OutputView.printResultMessage();
-    this.#process = new GameResult();
+    const process = new RaceProcess();
 
     for (let i = 0; i <= attempts; i += 1) {
-      this.#records = this.#process.getForwardProcess(forwards);
+      this.#records = process.getForwardProcess(forwards);
       OutputView.printRaceProcess(this.#records);
       Console.print('\n');
     }
@@ -38,7 +37,7 @@ class CarRaceController {
   }
 
   determineWinnerStage(forwards) {
-    const winners = this.#process.getWinner(forwards);
+    const winners = this.#race.getWinner(forwards);
     OutputView.printWinner(winners);
   }
 }

@@ -1,8 +1,10 @@
-import CarRace from '../src/models/RaceProcess.js';
+import CarRace from '../src/models/CarRace.js';
+import RandomNumberForTest from '../src/utils/RandomNumberForTest.js';
 
 describe('Winner', () => {
   test('단독 또는 공동 우승자 출력', () => {
-    const race = new CarRace();
+    const randomTestGenerator = RandomNumberForTest.generate();
+    const race = new CarRace(randomTestGenerator);
 
     const soloCase = new Map();
     soloCase.set('a', 2);

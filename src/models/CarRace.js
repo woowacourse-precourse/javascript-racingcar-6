@@ -28,6 +28,18 @@ class CarRace {
     }
     return count;
   }
+
+  getWinner(forwards) {
+    const maxValue = Math.max(...forwards.values());
+    const winners = [];
+
+    forwards.forEach((value, carName) => {
+      if (value === maxValue) {
+        winners.push(carName);
+      }
+    });
+    return winners.join(', ');
+  }
 }
 
 export default CarRace;

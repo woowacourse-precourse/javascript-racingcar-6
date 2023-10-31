@@ -24,18 +24,6 @@ class RaceProcess {
         this.#records.set(carName, this.#records.get(carName) || 0);
     }
   }
-
-  getWinner(forwards) {
-    const maxValue = Math.max(...forwards.values());
-    const winners = [];
-
-    forwards.forEach((value, carName) => {
-      if (value === maxValue) {
-        winners.push(carName);
-      }
-    });
-    return winners.join(', ');
-  }
 }
 
 export default RaceProcess;
