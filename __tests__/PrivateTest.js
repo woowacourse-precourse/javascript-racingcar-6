@@ -133,4 +133,4 @@ describe('게임 로직 테스트', () => {
 
     expect(consoleSpy).toHaveBeenCalledWith(result);
   });
-})
+});
