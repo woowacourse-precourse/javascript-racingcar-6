@@ -12,13 +12,13 @@ class CarRacingGamesControllers {
 
   // 자동차 경주 게임을 실행하는 메서드
   async play() {
-    await this.#prepareSettings();
-    this.#executeForward();
-    this.#outputFinalResult();
+    await this.prepareSettings();
+    this.executeForward();
+    this.outputFinalResult();
   }
 
   // 자동차 경주를 준비하는 메서드
-  async #prepareSettings() {
+  async prepareSettings() {
     // 자동차 이름을 입력받는다.
     const carListString = await InputView.inputCarNames();
 
@@ -37,7 +37,7 @@ class CarRacingGamesControllers {
   }
 
   // 경주를 시작하고, 차수별 실행 결과를 출력하는 메서드
-  #executeForward() {
+  executeForward() {
     OutputView.printNoticeOfExecutionResult();
 
     while (this.numberOfMoves > 0) {
@@ -47,7 +47,7 @@ class CarRacingGamesControllers {
     }
   }
 
-  #outputFinalResult() {
+  outputFinalResult() {
     const winnerArr = CarRacingGames.getFinalWinner(this.carListArr);
     OutputView.printFinalWinner(winnerArr);
   }
