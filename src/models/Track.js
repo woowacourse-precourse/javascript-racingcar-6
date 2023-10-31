@@ -32,6 +32,12 @@ class Track {
   getCars() {
     return this.#cars;
   }
+
+  getChampions() {
+    const maxDistance = Math.max(...this.#cars.map((car) => car.getCarDistance()));
+    const champions = this.#cars.filter((car) => car.getCarDistance() === maxDistance);
+    return champions;
+  }
 }
 
 export default Track;
