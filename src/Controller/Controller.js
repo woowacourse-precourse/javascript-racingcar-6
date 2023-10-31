@@ -2,7 +2,7 @@ import inputView from '../view/inputView.js';
 import Car from '../Model/Car.js';
 import Track from '../Model/Track.js';
 
-export default class MainController {
+export default class Controller {
   #car;
 
   #track;
@@ -16,7 +16,7 @@ export default class MainController {
     await this.handleCarsName();
     await this.handleFinalTrackCount();
 
-    return console.log(this.#car.getCarsPosition(), this.#track.getFinalTrackCount());
+    return this.startRace();
   }
 
   async handleCarsName() {
