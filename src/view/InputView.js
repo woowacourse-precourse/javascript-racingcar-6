@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import { INPUT_CARS_NAME } from '../constants/InputString.js';
+import { INPUT_CARS_NAME, INPUT_COUNT } from '../constants/InputString.js';
 
 const InputView = {
   readCarsInput: async () => {
@@ -7,6 +7,12 @@ const InputView = {
 
     return inputCars;
   },
+
+  readCountInput: async () => {
+    const inputCount = await Console.readLineAsync(INPUT_COUNT);
+    
+    return inputCount;
+  },
 };
 
-export const { readCarsInput } = InputView;
+export const { readCarsInput, readCountInput } = InputView;
