@@ -43,19 +43,21 @@ class App {
 
   getResult() {
     Console.print("\n실행 결과");
-    while (
-      !this.advanceCount
-        .map((data) => data.advance === Number(this.movementCount))
-        .includes(true)
-    ) {
+    while (this.movementCount > 0) {
       this.advanceCount.map((advance) => this.getRandomValue(advance));
       Console.print("\n");
+
+      this.movementCount--;
     }
   }
 
   getWinner() {
+    const highestScore = Math.max(
+      ...this.advanceCount.map((data) => data.advance)
+    );
+
     this.winnerList = this.advanceCount.filter(
-      (data) => data.advance === Number(this.movementCount)
+      (data) => data.advance === highestScore
     );
   }
 
@@ -65,7 +67,7 @@ class App {
     this.splitCarName();
     this.validate();
 
-    this.movementCount = await this.countAttempt();
+    this.movementCount = Number(await this.countAttempt());
 
     this.inputArray.map((name) =>
       this.advanceCount.push({ carName: name, advance: 0 })
