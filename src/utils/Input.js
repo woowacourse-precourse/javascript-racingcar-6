@@ -12,4 +12,11 @@ const getCarNames = async () => {
   return carNames;
 };
 
-export { getCarNames };
+//시도 횟수 입력받기
+const getTryCount = async () => {
+  const tryCount = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+  Console.print('');
+  return Number(playCount);
+};
+
+export { getCarNames, getTryCount };
