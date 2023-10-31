@@ -1,5 +1,5 @@
-import RacingGame from "./RacingGame.js";
-import UserInterface from "./UserInterface.js";
+import RacingGame from './RacingGame.js';
+import UserInterface from './UserInterface.js';
 
 class App {
   async play() {

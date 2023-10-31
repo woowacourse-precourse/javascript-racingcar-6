@@ -1,5 +1,5 @@
-import { Console } from "@woowacourse/mission-utils";
-import MESSAGES from "./Messages.js";
+import { Console } from '@woowacourse/mission-utils';
+import MESSAGES from './Messages.js';
 
 class UserInterface {
   static async getCarNames() {
@@ -9,7 +9,7 @@ class UserInterface {
   }
 
   static validateCarNames(names) {
-    const carNames = names.split(",").map((name) => name.trim());
+    const carNames = names.split(',').map((name) => name.trim());
 
     const uniqueCarNames = new Set(carNames);
     if (carNames.length === 1) {
@@ -24,11 +24,11 @@ class UserInterface {
       throw new Error(MESSAGES.ERROR_BLANK_CAR_NAME);
     }
 
-    for (const carName of carNames) {
+    carNames.forEach((carName) => {
       if (carName.length > 5) {
         throw new Error(MESSAGES.ERROR_CAR_NAME_LENGTH);
       }
-    }
+    });
     return carNames;
   }
 
@@ -39,11 +39,11 @@ class UserInterface {
   }
 
   static validateRounds(rounds) {
-    const parsedRounds = parseInt(rounds);
+    const parsedRounds = parseInt(rounds, 10);
     if (
-      Number.isNaN(parsedRounds) ||
-      parsedRounds <= 0 ||
-      parsedRounds.toString() !== rounds
+      Number.isNaN(parsedRounds)
+      || parsedRounds <= 0
+      || parsedRounds.toString() !== rounds
     ) {
       throw new Error(MESSAGES.ERROR_INVALID_ROUNDS);
     }
@@ -51,11 +51,11 @@ class UserInterface {
   }
 
   static printRoundResults(carStatuses) {
-    for (const carStatus of carStatuses) {
-      const forwardText = "-".repeat(carStatus.distance);
+    carStatuses.forEach((carStatus) => {
+      const forwardText = '-'.repeat(carStatus.distance);
       Console.print(`${carStatus.carName} : ${forwardText}`);
-    }
-    Console.print("");
+    });
+    Console.print('');
   }
 
   static printWinners(winners) {
@@ -64,7 +64,7 @@ class UserInterface {
       return;
     }
 
-    const winnerText = winners.join(", ");
+    const winnerText = winners.join(', ');
     Console.print(MESSAGES.FINAL_WINNERS + winnerText);
   }
 }

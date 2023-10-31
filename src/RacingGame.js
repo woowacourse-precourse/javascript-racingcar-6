@@ -1,7 +1,7 @@
-import { Console, MissionUtils } from "@woowacourse/mission-utils";
-import Car from "./Car.js";
-import UserInterface from "./UserInterface.js";
-import MESSAGES from "./Messages.js";
+import { Console, MissionUtils } from '@woowacourse/mission-utils';
+import Car from './Car.js';
+import UserInterface from './UserInterface.js';
+import MESSAGES from './Messages.js';
 
 class RacingGame {
   constructor(carNames, raceRounds) {
@@ -19,7 +19,7 @@ class RacingGame {
 
   start() {
     Console.print(MESSAGES.RACING_RESULT);
-    for (let i = 0; i < this.rounds; i++) {
+    for (let i = 0; i < this.rounds; i += 1) {
       this.cars.forEach((car) => {
         const randomNumber = this.generateRandomNumber();
         if (this.checkCarCanMove(randomNumber)) {
