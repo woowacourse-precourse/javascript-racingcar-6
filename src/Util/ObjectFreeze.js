@@ -7,9 +7,7 @@ export function getCarNewObject(paramCarName, paramMoveCount) {
 
 export function convertObjectListFreeze(objectList) {
   return Object.freeze(
-    objectList.map(carObject =>
-      getCarNewObject(carObject.carName, carObject.moveCount),
-    ),
+    objectList.map(carObject => getCarNewObject(carObject.carName, carObject.moveCount)),
   );
 }
 

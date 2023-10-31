@@ -1,10 +1,6 @@
 /* eslint-disable import/extensions */
 import { MissionUtils } from '@woowacourse/mission-utils';
-import {
-  randomMinNumber,
-  randomMaxNumber,
-  moveLimitNumber,
-} from '../Util/Constants.js';
+import { randomMinNumber, randomMaxNumber, moveLimitNumber } from '../Util/Constants.js';
 import {
   convertObjectListFreeze,
   convertListFreeze,
@@ -12,10 +8,7 @@ import {
 } from '../Util/ObjectFreeze.js';
 
 function generateRandomNumber() {
-  return MissionUtils.Random.pickNumberInRange(
-    randomMinNumber,
-    randomMaxNumber,
-  );
+  return MissionUtils.Random.pickNumberInRange(randomMinNumber, randomMaxNumber);
 }
 
 function decideMoveOrStop() {
@@ -23,12 +16,10 @@ function decideMoveOrStop() {
 }
 
 function getTurnOverResult(racingCarList) {
-  const newRacingCarList = racingCarList.map(carObject =>
-    decideMoveOrStop()
-      ? getCarNewObject(carObject.carName, carObject.moveCount + 1)
-      : carObject,
+  const turnOverRacingCarList = racingCarList.map(carObject =>
+    decideMoveOrStop() ? getCarNewObject(carObject.carName, carObject.moveCount + 1) : carObject,
   );
-  return convertObjectListFreeze(newRacingCarList);
+  return convertObjectListFreeze(turnOverRacingCarList);
 }
 
 function getMaxMoveCount(racingCarList) {

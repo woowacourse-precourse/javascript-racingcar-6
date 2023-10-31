@@ -13,8 +13,8 @@ function getRacingCarList(racingCarName) {
 async function inputRacingCarName(message) {
   const racingCarName = await Console.readLineAsync(message);
   checkRacingCarName(racingCarName);
-  const racingCarList = getRacingCarList(racingCarName);
-  return convertObjectListFreeze(racingCarList);
+  const initialRacingCarList = getRacingCarList(racingCarName);
+  return convertObjectListFreeze(initialRacingCarList);
 }
 
 async function inputGameCount(message) {

@@ -4,9 +4,7 @@ import { GAME_MESSAGE } from '../Util/Message.js';
 
 function printRacingCar(racingCarList) {
   racingCarList.forEach(carObject => {
-    Console.print(
-      GAME_MESSAGE.OUTPUT_CARRACING(carObject.carName, carObject.moveCount),
-    );
+    Console.print(GAME_MESSAGE.OUTPUT_CARRACING_MOVE(carObject.carName, carObject.moveCount));
   });
   Console.print('');
 }
