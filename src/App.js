@@ -10,7 +10,7 @@ class App {
   }
 }
 
-const myApp = new App(); // App 클래스의 인스턴스 생성
-myApp.play(); // play 메소드 실행
+// const myApp = new App(); // App 클래스의 인스턴스 생성
+// myApp.play(); // play 메소드 실행
 
 export default App;
