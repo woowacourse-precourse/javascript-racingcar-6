@@ -9,7 +9,7 @@ const isMove = () => {
 };
 const printRoundResult = racerMap => {
   racerMap.forEach((score, racer) => {
-    Console.print(`${racer}: ${'-'.repeat(score)}`);
+    Console.print(`${racer} : ${'-'.repeat(score)}`);
   });
   Console.print('');
 };
