@@ -150,3 +150,38 @@ test("입력한 시도횟수 만큼 게임 반복", async () => {
   expect(result).toEqual({ carl: 3, kay: 3 });
   expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("kay : ---"));
 });
+
+describe("우승자를 선택해서 출력", () => {
+  const model = new Model();
+  const controller = new Controllers();
+
+  test("우승자가 1명일 때", async () => {
+    const cars = ["aaa", "bbb", "ccc"];
+    const moveResult = { aaa: 3, bbb: 1, ccc: 1 };
+    const data = { cars, moveResult };
+    const logspy = getLogSpy();
+
+    //when
+    await controller.selectWinner(data);
+
+    //then
+    expect(logspy).toHaveBeenCalledWith(expect.stringContaining("aaa"));
+  });
+
+  test("우승자가 여러 명일 때", async () => {
+    const cars = ["aaa", "bbb", "ccc", "ddd", "eee"];
+    const moveResult = { aaa: 5, bbb: 5, ccc: 1, ddd: 1, eee: 5 };
+    const data = { cars, moveResult };
+    const logspy = getLogSpy();
+
+    //when
+    await controller.selectWinner(data);
+
+    //then
+    const expectItem = ["aaa", "bbb", "eee"];
+
+    expectItem.forEach((str) => {
+      expect(logspy).toHaveBeenCalledWith(expect.stringContaining(str));
+    });
+  });
+});
