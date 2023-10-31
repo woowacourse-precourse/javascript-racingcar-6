@@ -25,7 +25,59 @@ class App {
     if (Number.isNaN(PLAYTIME) || PLAYTIME === 0) {
       throw new Error("[ERROR] 실행횟수는 1이상의 숫자만 입력 가능합니다.");
     }
+
+    const [CAR1, CAR2, CAR3] = CARS;
+
+    const RACE_RESULT = {
+      car1: {
+        name: CAR1,
+        forwardingCount: 0,
+      },
+      car2: {
+        name: CAR2,
+        forwardingCount: 0,
+      },
+      car3: {
+        name: CAR3,
+        forwardingCount: 0,
+      },
+    };
+
+    Console.print("실행 결과");
+
+    for (let i = 1; i <= PLAYTIME; i++) {
+      let random_number = Random.pickNumberInRange(1, 9);
+      if (random_number > 4) {
+        RACE_RESULT["car1"]["forwardingCount"]++;
+      }
+      random_number = Random.pickNumberInRange(1, 9);
+      if (random_number > 4) {
+        RACE_RESULT["car2"]["forwardingCount"]++;
+      }
+      random_number = Random.pickNumberInRange(1, 9);
+      if (random_number > 4) {
+        RACE_RESULT["car3"]["forwardingCount"]++;
+      }
+
+      Console.print(
+        `${RACE_RESULT["car1"]["name"]} : ${"-".repeat(
+          RACE_RESULT["car1"]["forwardingCount"]
+        )}`
+      );
+      Console.print(
+        `${RACE_RESULT["car2"]["name"]} : ${"-".repeat(
+          RACE_RESULT["car2"]["forwardingCount"]
+        )}`
+      );
+      Console.print(
+        `${RACE_RESULT["car3"]["name"]} : ${"-".repeat(
+          RACE_RESULT["car3"]["forwardingCount"]
+        )}`
+      );
+    }
   }
 }
 
 export default App;
+
+new App().play();
