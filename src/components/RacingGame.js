@@ -48,11 +48,11 @@ class RacingGame {
 
   // MODEL
   validateUserInputTryCount() {
-    // '=' 주위에서 줄바꿈 X -> 나중에 소괄호로 묶기
-    const IS_VALID =
+    const IS_VALID = (
       typeof this.userInputTryCount === OTHERS.number &&
       this.userInputTryCount >= 0 &&
-      Math.floor(this.userInputTryCount) === this.userInputTryCount;
+      Math.floor(this.userInputTryCount) === this.userInputTryCount
+    );
 
     if (!IS_VALID) {
       throw new Error(ERROR_MESSAGE.input);
@@ -130,9 +130,9 @@ class RacingGame {
 
     this.allRaceForAllCar.forEach((racePerCar, index) => {
       if (racePerCar[this.userInputTryCount - 1]) {
-        // '=' 주위에서 줄바꿈 X -> 나중에 소괄호로 묶기
-        objForLastRace[this.userInputCarNameList[index]] =
-          racePerCar[this.userInputTryCount - 1].length;
+        objForLastRace[this.userInputCarNameList[index]] = (
+          racePerCar[this.userInputTryCount - 1].length
+        );
       }
     });
 
