@@ -24,8 +24,8 @@ const makeCar = async () => {
   } catch (error) {
     return console.error(error.message);
   }
+  // 유효성 검사
   let validName = await validationName(nameArr);
-
   if (validName) {
     return nameArr;
   } else if (validName === "length") {
@@ -58,15 +58,15 @@ const inputMoveCount = async () => {
   try {
     let count = await Console.readLineAsync(`${MESSAGE.MOVE_COUNT}`);
     // let nameArr = name.trim().split(",");
-
-    let validCount = await validationCount(count);
-    if (validCount) {
-      return true;
-    } else {
-      throw new Error(`${ERROR.COUNT}`);
-    }
   } catch (error) {
     console.error(error.message);
+  }
+  // 유효성 검사
+  let validCount = await validationCount(count);
+  if (validCount) {
+    return true;
+  } else {
+    throw new Error(`${ERROR.COUNT}`);
   }
 };
 // 4. 이동 입력값 유효성 검토
