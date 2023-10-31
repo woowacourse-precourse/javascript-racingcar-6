@@ -1,13 +1,12 @@
-import getCarNames from '../view/inputView.js';
-import InputValid from "../models/InputValid.js"
+import { getCarNames, getRoundCount } from '../view/inputView.js';
+import { InputValid, RoundValid } from '../models/InputValid.js';
 
-const startGame = () =>{
-   let name = getCarNames();
-   InputValid(name);
+const startGame = async () => {
+  let inputName = await getCarNames();
+  InputValid(inputName);
 
-   let round =getRoundCount();
-   InputValid(round);
- 
-}
+  let round = await getRoundCount();
+  RoundValid(round);
+};
 
 export default startGame;

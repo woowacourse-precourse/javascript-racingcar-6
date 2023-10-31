@@ -1,4 +1,4 @@
-import startGame from "./controller/GameController.js"
+import startGame from './controller/GameController.js';
 
 class App {
   // eslint-disable-next-line class-methods-use-this
@@ -8,6 +8,6 @@ class App {
 }
 
 const app = new App();
-app.play()
+app.play();
 
 export default App;
