@@ -24,13 +24,25 @@
 ### 1.4. 폴더 구조
 
 ```
+__tests__
+ ┣ ApplicationTest.js
+ ┣ CarRaceTest.js
+ ┣ CarTest.js
+ ┣ InputTest.js
+ ┣ StringTest.js
+ ┗ UtilTest.js
 src
-	- App.js
-	- constants.js
-    - Car.js
-	- CarRace.js
-	- index.js
-	- utils.js
+ ┣ domain
+ ┃ ┣ Car.js
+ ┃ ┗ CarRace.js
+ ┣ utils
+ ┃ ┣ consoleOperations.js
+ ┃ ┣ index.js
+ ┃ ┣ numberOperations.js
+ ┃ ┗ validation.js
+ ┣ App.js
+ ┣ constants.js
+ ┗ index.js
 ```
 
 ## 2. 구현 기능 목록
@@ -80,7 +92,7 @@ src
 ### 3.2. 게임 진행
 
 - 랜덤값이 4이상이면 전진
-    - 4이상이 나오면 true를 반환해야 한다. `CarRaceTest`
+    - 4이상이 나오면 true를 반환해야 한다. `UtilTest`
     - forward 메서드가 실행되면 Car 객체의 position이 1 증가해야 한다. `CarTest`
 - 시도할 횟수만큼 반복
     - 시도할 횟수가 0 미만이면 false를 반환해야 한다. `CarRaceTest`
