@@ -13,7 +13,6 @@ class GameController {
 
   cars = [];
 
-  // 무작위 값을 인수로 넣어 4이상일 경우 전진
   moveCarForwardOrStop() {
     this.cars.forEach((car) => {
       const randomNumber = generateRandomNumber();
@@ -23,7 +22,6 @@ class GameController {
     });
   }
 
-  // 전진하는 자동차가 출력될 경우, 자동차 이름 같이 출력
   printForwardCarName() {
     this.cars.forEach((car) => {
       printCar(car.getName(), car.getPosition());
@@ -31,16 +29,14 @@ class GameController {
     printMessage(STRING.BLANK_SPACE);
   }
 
-  // 시도 횟수만큼 레이스 진행
   raceCar(tryNumber) {
     printResult();
     for (let i = 0; i < tryNumber; i += 1) {
-      this.moveCarForwardOrStop(generateRandomNumber());
+      this.moveCarForwardOrStop();
       this.printForwardCarName();
     }
   }
 
-  // 최종 우승자 연산 후 선정
   getWinner() {
     const maxPosition = Math.max(...this.cars.map((car) => car.getPosition()));
     const winnerArray = this.cars
@@ -49,7 +45,6 @@ class GameController {
     return winnerArray;
   }
 
-  // 시도 횟수를 다루는 함수
   async handleTryNumber() {
     const tryNumber = await getUserInputTryNumber();
     if (!isValidTryNumber(tryNumber)) {
@@ -59,7 +54,6 @@ class GameController {
     return tryNumber;
   }
 
-  // 자동차 이름들을 다루는 함수
   async setCars() {
     const names = await getUserInputCarName();
     if (!isValidCarName(names)) {
