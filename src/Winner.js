@@ -9,7 +9,7 @@ class Winner {
     this.forward = forward;
   }
 
-  getWinner() {
+  #getWinner() {
     const racingScore = this.forward.racingArray.map((x) => x.length);
     const maxRacingScore = Math.max(...racingScore);
     const winnerRacers = [];
@@ -28,7 +28,7 @@ class Winner {
   }
 
   showWinner() {
-    Console.print(`${GAME_HELP.WINNER}${this.getWinner()}`);
+    Console.print(`${GAME_HELP.WINNER}${this.#getWinner()}`);
   }
 }
 
