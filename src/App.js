@@ -12,12 +12,23 @@ class App {
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
     );
     this.carNames = carNameInput.split(",");
+
+    for (const carName of this.carNames) {
+      if (carName.length >= 6) {
+        throw new Error("[ERROR] 자동차 이름은 5글자 이하여야 합니다.");
+      }
+    }
   }
 
   async try() {
     let tryInput = await MissionUtils.Console.readLineAsync(
       "시도할 횟수는 몇 회인가요?\n"
     );
+
+    if (!/^\d+$/.test(tryInput)) {
+      throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
+    }
+
     this.tryInput = parseInt(tryInput, 10);
   }
 
@@ -33,17 +44,25 @@ class App {
       this.carNames.forEach((carName, j) => {
         console.log(`${carName} : ${roundResults[j]}`);
       });
-      console.log(""); // Add an empty line for separation between rounds
+      console.log("");
     }
     const maxDistance = Math.max(...roundResults.map((result) => result.length));
     const winners = this.carNames.filter((carName, index) => roundResults[index].length === maxDistance);
     console.log(`최종 우승자 : ${winners.join(", ")}`);
   }
 
+  async error(){
+
+  }
+
   async play() {
-    await this.carName();
-    await this.try();
-    await this.process();
+    try {
+      await this.carName();
+      await this.try();
+      await this.process();
+    } catch (error) {
+      console.error(error.message);
+    }
   }
 }
 
