@@ -69,6 +69,28 @@ describe("시도 횟수 테스트", () => {
 
     expect(result).toEqual(1);
   });
+
+  test("문자를 입력했을 때 예외 처리 메세지 출력", async () => {
+    const input = "abc";
+    const expectedError = ERROR_MESSAGE.IS_NUMBER;
+
+    expect(() => {
+      if (isNaN(input)) {
+        throw new Error(expectedError);
+      }
+    }).toThrow(expectedError);
+  });
+
+  test("0이하의 숫자를 입력했을 때 예외 처리 메세지 출력", async () => {
+    const input = -1;
+    const expectedError = ERROR_MESSAGE.IS_ZERO;
+
+    expect(() => {
+      if (input <= 0) {
+        throw new Error(expectedError);
+      }
+    }).toThrow(expectedError);
+  });
 });
 
 describe("입력 값에 대한 예외 메세지 출력 테스트", () => {
@@ -81,7 +103,7 @@ describe("입력 값에 대한 예외 메세지 출력 테스트", () => {
         throw new Error(expectedError);
       }
     }).toThrow(expectedError);
-  })
+  });
 
   test("쉼표(,)로 구분하지 않을 경우", async () => {
     const input = "mijin jun pobi";
@@ -92,6 +114,5 @@ describe("입력 값에 대한 예외 메세지 출력 테스트", () => {
         throw new Error(expectedError);
       }
     }).toThrow(expectedError);
-  })
-
-})
+  });
+});

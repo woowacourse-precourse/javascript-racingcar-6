@@ -1,5 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
-import { ERROR_MESSAGE, GAME_MESSAGE } from "./constants/index.js";
+import { GAME_MESSAGE } from "./constants/index.js";
 import Car from "./Car.js";
 import Validation from "./Validation.js";
 
@@ -11,7 +11,7 @@ class RacingcarGame {
       const carsArray = validation.validateCar(cars);
 
       const tryCount = await Console.readLineAsync(GAME_MESSAGE.TRY_COUNT);
-      validation.validateTryCount(tryCount)
+      validation.validateTryCount(tryCount);
 
       Console.print(GAME_MESSAGE.RESULT);
       let countForward = {};
