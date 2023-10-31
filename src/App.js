@@ -1,6 +1,12 @@
 import { Console, Random } from "@woowacourse/mission-utils";
 class App {
 
+  numberCheck(input){
+    if (isNaN(input)){
+      throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
+    }
+  }
+
   async play() {
     //사용자 입력, 분리
     const playerNameInput = await Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -17,8 +23,8 @@ class App {
     //사용자 객체 키 리스트
     const playersKeyList=Object.keys(players);
     //시도횟수 입력
-    const trynumber = await Console.readLineAsync("시도할 횟수는 몇 회인가요?");
-
+    const trynumber = Number(await Console.readLineAsync("시도할 횟수는 몇 회인가요?"));
+    this.numberCheck(trynumber);
     Console.print("실행 결과");
 
     //게임 시작 및 출력
