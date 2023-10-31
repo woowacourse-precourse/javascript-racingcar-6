@@ -93,5 +93,21 @@ describe('✨ [GameController] 클래스 메서드 테스트 ', () => {
         ERROR_MESSAGE.DUPLICATION,
       );
     });
+
+    test('[checkValidateName] player의 이름이 영문이 아닌 경우 에러를 발생한다.', () => {
+      const playerName = '이유';
+
+      expect(() => controller.checkValidateName(playerName)).toThrow(
+        ERROR_MESSAGE.INVALID_NAME,
+      );
+    });
+
+    test('[checkValidateName] player의 이름이 5글자 이상인 경우 에러를 발생한다.', () => {
+      const playerName = 'IamSinRoeEYo';
+
+      expect(() => controller.checkValidateName(playerName)).toThrow(
+        ERROR_MESSAGE.NUMBER_OF_CHARACTERS,
+      );
+    });
   });
 });
