@@ -1,12 +1,5 @@
 import Car from "../src/Car";
-import { MissionUtils } from "@woowacourse/mission-utils";
-
-const mockRandoms = (numbers) => {
-  MissionUtils.Random.pickNumberInRange = jest.fn();
-  numbers.reduce((acc, number) => {
-    return acc.mockReturnValueOnce(number);
-  }, MissionUtils.Random.pickNumberInRange);
-};
+import { mockRandoms } from "../test-utils.js";
 
 describe("Car 테스트", () => {
   test("전진-정지-전진", async () => {
