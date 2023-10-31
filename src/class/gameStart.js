@@ -8,20 +8,24 @@ class InputCarMoveCount {
 
   async userInput() {
     Console.print(PLAY_GAME.input);
-    const input = await Console.readLineAsync('');
-    const carNames = input.split(',').map(name => name.trim());
-    console.log(carNames);
+    const inputCarName = await Console.readLineAsync('');
+    const carNames = inputCarName.split(',').map(name => name.trim());
 
     if (carNames.some(name => name.length > 5)) {
       throw new Error(ERROR_MESSAGE);
     }
-    this.cars = carNames.map(name => ({ name, distance: 0 }));
+    this.cars = carNames;
+  }
 
-
+  async countInput() {
     Console.print(PLAY_GAME.tryCount);
-    await Console.readLineAsync('');
+    const inputCount = await Console.readLineAsync('');
+    const tryCount = parseInt(inputCount);
 
-    Console.print(PLAY_GAME.result);
+    if (isNaN(tryCount) || tryCount <= 0) {
+      throw new Error(ERROR_MESSAGE);
+    }
+    return tryCount;
   }
 }
 

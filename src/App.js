@@ -4,11 +4,16 @@ import InputCarMoveCount from './class/gameStart.js';
 
 class App {
   async play() {
-    const inputCarMoveCount = new InputCarMoveCount();
-    await inputCarMoveCount.userInput();
+    try {
+      const inputCarMoveCount = new InputCarMoveCount();
+      await inputCarMoveCount.userInput();
+      const tryCount = await inputCarMoveCount.countInput();
 
-    const moveCar = new MoveCar();
-    moveCar.carMoveCompare();
+      const moveCar = new MoveCar(inputCarMoveCount.cars);
+      moveCar.startRacing(tryCount);
+    } catch (error) {
+      Console.print(error.message);
+    }
   }
 }
 
