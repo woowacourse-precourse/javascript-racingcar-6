@@ -1,5 +1,11 @@
+import {Console} from '@woowacourse/mission-utils'
+import { Car } from './models/CarModel.js';
 class App {
-  async play() {}
+  constructor(){
+    this.carList = [];
+  }
+  async play() {
+  }
 }
 
 export default App;
