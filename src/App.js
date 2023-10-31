@@ -5,6 +5,7 @@ class App {
     this.cars = [];
   }
 
+  // 게임 실행
   async play() {
     try {
       const CAR_NAMES = await this.getInputCarName();
@@ -32,36 +33,36 @@ class App {
     );
     const CARS = INPUT_CAR_NAME.split(',');
 
-    const trimmedCarNames = CARS.map((name) => name.trim());
+    const TRIMMEND_CAR_NAMES = CARS.map((name) => name.trim());
 
-    const uniqueCarNames = Array.from(new Set(trimmedCarNames));
+    const UNIQUE_CAR_NAMES = Array.from(new Set(TRIMMEND_CAR_NAMES));
 
-    if (uniqueCarNames.length !== trimmedCarNames.length) {
+    if (UNIQUE_CAR_NAMES.length !== TRIMMEND_CAR_NAMES.length) {
       throw new Error('[ERROR] 중복된 이름이 있습니다.');
     }
 
-    for (const name of trimmedCarNames) {
-      if (name.length === 0 || name.length > 5) {
+    for (const NAME of TRIMMEND_CAR_NAMES) {
+      if (NAME.length === 0 || NAME.length > 5) {
         throw new Error('[ERROR] 이름은 1자 이상, 5자 이하로 입력해야 합니다.');
       }
     }
 
-    return trimmedCarNames;
+    return TRIMMEND_CAR_NAMES;
   }
 
   // 시도 횟수 입력
   async getAttemptCount() {
-    const attemptCount = await MissionUtils.Console.readLineAsync(
+    const ATTEMPT_COUNT = await MissionUtils.Console.readLineAsync(
       '시도할 횟수는 몇 회인가요?'
     );
 
-    const numAttemptCount = Number(attemptCount);
+    const NUM_ATTEMPT_COUNT = Number(ATTEMPT_COUNT);
 
-    if (isNaN(numAttemptCount) || numAttemptCount <= 0) {
+    if (isNaN(NUM_ATTEMPT_COUNT) || NUM_ATTEMPT_COUNT <= 0) {
       throw new Error('[ERROR] 시도 횟수는 0보다 큰 양수여야 합니다.');
     }
 
-    return numAttemptCount;
+    return NUM_ATTEMPT_COUNT;
   }
 
   // 랜덤 숫자 생성
@@ -72,8 +73,8 @@ class App {
   // 게임 1회를 진행하는 메서드
   playGame() {
     return this.cars.map((car) => {
-      const randomNumber = this.getRandomNumber();
-      if (randomNumber >= 4) {
+      const RANDOM_NUMBER = this.getRandomNumber();
+      if (RANDOM_NUMBER >= 4) {
         return { name: car.name, score: car.score + '-' };
       } else {
         return { name: car.name, score: car.score };
@@ -98,8 +99,8 @@ class App {
 
   // 우승자 출력
   printWinner() {
-    const winners = this.getWinners();
-    MissionUtils.Console.print(`최종 우승자 : ${winners.join(', ')}
+    const WINNERS = this.getWinners();
+    MissionUtils.Console.print(`최종 우승자 : ${WINNERS.join(', ')}
 `);
   }
 }
