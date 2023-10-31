@@ -20,4 +20,10 @@ describe('App 테스트', () => {
 		expect(carStatus[0]).toBeGreaterThanOrEqual(0);
 		expect(carStatus[0]).toBeLessThanOrEqual(1);
 	});
+
+	test('자동차 위치 문자열 생성 테스트', () => {
+		const carStatus = 3;
+		const carPosition = app.showCarPosition(carStatus);
+		expect(carPosition).toBe('---');
+	});
 });

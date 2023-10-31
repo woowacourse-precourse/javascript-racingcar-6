@@ -48,6 +48,10 @@ class App {
       carStatus[index]++;
     }
   }
+
+  showCarPosition(carStatus) {
+    return '-'.repeat(carStatus);
+  }
 }
 
 export default App;
