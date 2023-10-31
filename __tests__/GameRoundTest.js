@@ -1,5 +1,5 @@
-import App from "../src/App.js";
-import { MissionUtils } from "@woowacourse/mission-utils";
+import { MissionUtils } from '@woowacourse/mission-utils';
+import App from '../src/App';
 
 const getLogSpy = () => {
   const logSpy = jest.spyOn(MissionUtils.Console, 'print');
@@ -24,26 +24,32 @@ const mockQuestions = (inputs) => {
   });
 };
 
-describe("자동차 경주 게임: 이동 횟수", () => {
-  test("입력한 이동 횟수만큼 게임 진행", async () => {
-    const round ="3";
+describe('자동차 경주 게임: 이동 횟수', () => {
+  test('입력한 이동 횟수만큼 게임 진행', async () => {
+    const round = '3';
     const MOVING_FORWARD = 4;
     const STOP = 3;
-    const inputs = ["pobi,woni", round];
-    const outputs = [ 
-      "pobi : -" ,"woni : ", 
-      "pobi : --", "woni : ", 
-      "pobi : ---", "woni : -"
+    const inputs = ['pobi,woni', round];
+    const outputs = [
+      'pobi : -',
+      'woni : ',
+      'pobi : --',
+      'woni : ',
+      'pobi : ---',
+      'woni : -',
     ];
     const randoms = [
-      MOVING_FORWARD, STOP ,  
-      MOVING_FORWARD, STOP,
-      MOVING_FORWARD,MOVING_FORWARD
+      MOVING_FORWARD,
+      STOP,
+      MOVING_FORWARD,
+      STOP,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
     ];
     const logSpy = getLogSpy(jest);
 
-    mockQuestions( inputs);
-    mockRandoms( [...randoms]);
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
 
     const app = new App();
     await app.play();
@@ -52,10 +58,10 @@ describe("자동차 경주 게임: 이동 횟수", () => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
   });
-  
-  test("이동 횟수 0일때 진행결과", async()=>{
-    const inputs=["pobi,woni","0"];
-    const outputs =["pobi : ", "woni : ", "최종 우승자 : pobi, woni"];
+
+  test('이동 횟수 0일때 진행결과', async () => {
+    const inputs = ['pobi,woni', '0'];
+    const outputs = ['pobi : ', 'woni : ', '최종 우승자 : pobi, woni'];
     const logSpy = getLogSpy(jest);
 
     mockQuestions(inputs);
@@ -63,8 +69,8 @@ describe("자동차 경주 게임: 이동 횟수", () => {
     const app = new App();
     await app.play();
 
-    outputs.forEach((output)=>{
-      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output))
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
   });
 });
