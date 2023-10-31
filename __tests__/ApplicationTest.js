@@ -85,11 +85,8 @@ describe('자동차 경주 게임', () => {
 
     mockQuestions(inputs);
 
-    // when
+    // when&then
     const app = new App();
-    await app.play();
-
-    // then
     await expect(app.play()).rejects.toThrow('[ERROR]');
   });
 });
