@@ -1,4 +1,4 @@
-export async function carNames() {
+export async function carNames() {}
 //     const carNames = await getCarNames();
 
 //     if (carNames === null) {
