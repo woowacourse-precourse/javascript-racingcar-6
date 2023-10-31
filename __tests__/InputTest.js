@@ -29,4 +29,13 @@ describe('class Input test', () => {
       ErrorMessages.ERROR_SAME_NAME_EXIST,
     );
   });
+
+  test('[Exception Test] 시도 횟수가 숫자가 아닌 경우', async () => {
+    const input = ['Not A Number'];
+    mockQuestions(input);
+
+    await expect(Input.readAttemptString()).rejects.toThrow(
+      ErrorMessages.ERROR_NOT_A_NUMBER,
+    );
+  });
 });
