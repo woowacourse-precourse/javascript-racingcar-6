@@ -1,5 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import Message from "../constants/constants";
+import Message from "../constants/Message";
 
 async function GetCarNamesFromUser() {
 	const userInputCar = await MissionUtils.Console.readLineAsync();

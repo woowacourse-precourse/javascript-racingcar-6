@@ -1,5 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import Message from "../constants/constants";
+import Message from "../constants/Message";
 
 async function GetAttemptsFromUser() {
 	const attempts = await MissionUtils.Console.readLineAsync();

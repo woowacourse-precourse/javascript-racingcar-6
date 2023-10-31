@@ -2,7 +2,7 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 import GetCarNamesFromUser from "./getCarNames/GetCarNamesFromUser";
 import GetAttemptsFromUser from "./getAttempts/GetAttemptsFromUser";
 import GetResults from "./getResults/GetResults";
-import Message from "./constants/constants";
+import Message from "./constants/Message";
 
 class App {
 	async play() {
