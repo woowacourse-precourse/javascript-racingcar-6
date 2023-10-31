@@ -6,9 +6,12 @@ export default class Car {
   }
 
   didProceed() {
-    const random = Random.pickNumberInRange(0, 9);
-    if (random >= 4) return 1;
-    return 0;
+    const FORWARD = 1;
+    const STOP = 0;
+    const allow = 4;
+    const proceed = Random.pickNumberInRange(0, 9);
+    if (proceed >= allow) return FORWARD;
+    return STOP;
   }
 
   showTrail(distance) {
@@ -16,7 +19,8 @@ export default class Car {
     const mark = "-";
     if (distance > 0) {
       trail = "-";
-      for (let i = 0; i < distance - 1; i++) {
+      const INITIAL_DISTANCE = 1;
+      for (let i = 0; i < distance - INITIAL_DISTANCE; i++) {
         trail += mark;
       }
     } else {
