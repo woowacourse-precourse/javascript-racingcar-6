@@ -11,7 +11,7 @@ describe("class App test", () => {
     test("makeObject()의 인수 carName이 equus이라면 ?", () => {
       const testResult = { name: "equus", result: "" };
       let testObject = app.makeObject("equus");
-      expect(testObject).toMatchObject(testResult);
+      expect(testObject).toEqual(testResult);
     });
   });
 
