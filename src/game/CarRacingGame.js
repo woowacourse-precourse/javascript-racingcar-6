@@ -1,7 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
-import Car from './game/Car.js';
-import Inputs from './utils/Inputs.js';
-import ReturnWinner from './game/ReturnWinner.js';
+import Car from './Car.js';
+import Inputs from '../utils/Inputs.js';
+import ReturnWinner from './ReturnWinner.js';
 
 class CarRacingGame {
   constructor() {
