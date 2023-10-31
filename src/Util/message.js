@@ -6,6 +6,7 @@ const INFO_MESSAGE = Object.freeze({
 });
 
 const ERROR_MESSAGE = Object.freeze({
+  empty: '[ERROR] 이름을 입력해야 합니다.',
   length: '[ERROR] 이름은 5자 이하로 입력해야 합니다.',
   duplicate: '[ERROR] 중복되지 않은 이름을 입력해야 합니다.',
   type: '[ERROR] 숫자를 입력해야 합니다.',
