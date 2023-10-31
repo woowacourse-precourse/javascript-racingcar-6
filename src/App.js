@@ -7,6 +7,9 @@ class App {
     const attemptCount = await this.getAttemptCount();
 
     if (!this.validateAttemptCount(attemptCount)) return;
+
+    const carStatus = new Array(carNames.length).fill(0);
+    await MissionUtils.Console.print("\n실행 결과:");
   }
 
   async getCarNameInput() {
@@ -37,6 +40,13 @@ class App {
 
   generateRandomNumber() {
     return MissionUtils.Random.pickNumberInRange(0, 9);
+  }
+
+  updateCarStatus(carStatus, index) {
+    const randomNumber = this.generateRandomNumber();
+    if (randomNumber >= 4) {
+      carStatus[index]++;
+    }
   }
 }
 
