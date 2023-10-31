@@ -45,6 +45,13 @@ class App {
       MissionUtils.Console.print(`${car.name} : ${positionOfCar}`);
     });
   }
+
+  getWinner(cars) {
+    const finalPosition = Math.max(...cars.map((car) => car.position));
+    return cars
+      .filter((car) => car.position === finalPosition)
+      .map((car) => car.name);
+  }
 }
 
 export default App;
