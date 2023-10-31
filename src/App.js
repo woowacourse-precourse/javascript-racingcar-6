@@ -59,6 +59,22 @@ class App {
       this.tryNum -= 1;
     }
   }
+
+  winner() {
+    let maxValue = -Infinity;
+    let winners = [];
+    for (const key in this.carList) {
+      const value = this.carList[key].length;
+
+      if (value > maxValue) {
+        maxValue = value;
+        winners = [key];
+      } else if (value === maxValue) {
+        winners.push(key);
+      }
+    }
+    return winners;
+  }
 }
 
 const app = new App();
