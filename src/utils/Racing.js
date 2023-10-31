@@ -19,7 +19,7 @@ const startRacing = async (cars) => {
 	getWinner(cars);
 };
 
-const addReps = (cars, carsNumber) => {
+export const addReps = (cars, carsNumber) => {
 	cars.map((car, index) => {
 		if (carsNumber[index] >= 4) car.count += '-';
 	});
