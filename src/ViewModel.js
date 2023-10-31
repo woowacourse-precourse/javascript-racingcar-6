@@ -2,7 +2,7 @@ import { MissionUtils } from '@woowacourse/mission-utils';
 import {
   CUT_OFF_NUM,
   getGameStage, setGameStage, getCarNames, setCarNames,
-  getGameCnt, setGameCnt, setCarRace, getCarRace,
+  getGameCnt, setGameCnt, setCarRace, getCarRace, getCarNum,
   askForCarNamesView, askForGameCntView,
   errorMessage,
 } from './Model.js';
@@ -25,22 +25,28 @@ const saveGameCnt = (gameCnt) => {
   setGameCnt(gameCntInt);
 };
 
-const gamePlay = () => {
-  let gameCnt = getGameCnt();
-  while (gameCnt !== 0) {
-    gameCnt -= 1;
-  }
-};
-
-const gameRound = () => {
-};
-
 const eachCarPlay = function randomNumPlayForEachCar(idx) {
   const num = MissionUtils.Random.pickNumberInRange(0, 9);
   if (num < CUT_OFF_NUM + 1) {
     return;
   }
   setCarRace(idx);
+};
+
+const gameRound = (size) => {
+  for (let i = 0; i < size; i += 1) {
+    eachCarPlay(i);
+  }
+};
+
+const gamePlay = () => {
+  let gameCnt = getGameCnt();
+  const numOfCars = getCarNum();
+  while (gameCnt !== 0) {
+    gameRound(numOfCars);
+    console.log(getCarRace());
+    gameCnt -= 1;
+  }
 };
 
 const selectView = function selectTextForView() {

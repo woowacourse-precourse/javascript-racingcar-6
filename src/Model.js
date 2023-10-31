@@ -19,23 +19,30 @@ const setGameCnt = function setGameCnt(gameCntInput) {
 const getGameCnt = () => gameCnt;
 
 let carNames = [];
+let carRace = [];
+let numOfCars = 0;
 const setCarNames = function setCarNamesArr(carNamesInput) {
   carNames = carNamesInput;
+  carRace = Array.from({ length: carNames.length }, () => '');
+  numOfCars = carRace.length;
 };
 const getCarNames = function getCarNamesArr() {
   return carNames;
 };
 
-const carRace = [];
 const setCarRace = (idx) => {
-  carRace[idx] += 1;
+  carRace[idx] += '-';
 };
 const getCarRace = () => carRace;
+
+const getCarNum = function getNumOfCars() {
+  return numOfCars;
+};
 
 export {
   CUT_OFF_NUM,
   getGameStage, setGameStage, getCarNames, setCarNames,
-  getGameCnt, setGameCnt, setCarRace, getCarRace,
+  getGameCnt, setGameCnt, setCarRace, getCarRace, getCarNum,
   askForCarNamesView, askForGameCntView,
   errorMessage,
 };

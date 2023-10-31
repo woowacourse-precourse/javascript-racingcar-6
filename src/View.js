@@ -14,7 +14,7 @@ const GameCntView = async function InputGameCntView() {
 };
 
 const GameView = function GamePlayView() {
-
+  const textView = selectView();
 };
 
 const ResultView = function GameResultView() {
