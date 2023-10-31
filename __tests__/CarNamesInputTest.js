@@ -2,8 +2,6 @@ import { MissionUtils } from '@woowacourse/mission-utils';
 import App from '../src/App';
 import { ERROR_MESSAGE } from '../src/constants/constants';
 
-// @note - 테스트 케이스
-
 const carNameValidTestCases = [
 	{
 		name: '빈 문자열 입력에 대한 테스트',
@@ -32,16 +30,12 @@ const carNameValidTestCases = [
 	},
 ];
 
-// @note - 입력값을 받아올 수 있는 mockQuestions
-
 const mockQuestions = (inputs) => {
 	MissionUtils.Console.readLineAsync = jest.fn().mockImplementation(() => {
 		const input = inputs.shift();
 		return Promise.resolve(input);
 	});
 };
-
-// @note - 테스트
 
 describe('자동차 이름 테스트', () => {
 	let app;
