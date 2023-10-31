@@ -1,12 +1,9 @@
 import getCarName from "./getCarName.js"
 import getAttemptsNumber from "./getAttemptsNumber.js"
+import printSteps from "./printSteps.js"
 import Cars from "./Cars.js"
-import Car from "./Car.js"
+import printWinner from "./printWinner.js"
 
-import { 
-  Console,
- }
-  from "@woowacourse/mission-utils";
 class App {
   async play() {
 
@@ -16,15 +13,9 @@ class App {
 
     const attemptsNumber = await getAttemptsNumber();
 
-    Console.print(`\n실행 결과\n`);
+    printSteps(cars, attemptsNumber);
 
-    for(var i = 0; i < attemptsNumber; i++){
-      cars.moveAllCars();
-      cars.printEachStep();
-      Console.print(``);
-    }
-    cars.findWinner();
-    Console.print(`최종 우승자 : ${cars.getWinnerString()}`);
+    printWinner(cars);
   }
 }
 
