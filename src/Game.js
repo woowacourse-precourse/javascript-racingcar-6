@@ -73,4 +73,19 @@ export default class Game {
     });
     MissionUtils.Console.print('');
   }
+
+  getWinner() {
+    const finalCount = this.carInfoList.map((item) => item.forwardCount);
+    const max = Math.max(...finalCount);
+    const winnerObjectList = this.carInfoList.filter(
+      (car) => car.forwardCount === max
+    );
+    const winnerNameList = winnerObjectList.map((item) => item.name);
+    return winnerNameList;
+  }
+
+  printWinner() {
+    const winner = this.getWinner().join(', ');
+    MissionUtils.Console.print('최종 우승자 : ' + winner);
+  }
 }

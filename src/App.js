@@ -4,6 +4,7 @@ class App {
     const game = new Game();
     await game.start();
     game.progressGame();
+    game.printWinner();
   }
 }
 
