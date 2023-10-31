@@ -2,7 +2,7 @@ import {
   ATTEMPT_ERROR_MESSAGE,
   ERROR_PREFIX,
 } from "../../src/constants/message/error";
-import validateAttemptCount from "../../src/validator/attempt-validator";
+import validateAttemptCount from "../../src/validator/attempt";
 
 describe("시도 횟수에 문제가 없는 경우", () => {
   test("시도 횟수에 문제가 없는 경우 에러를 반환하지 않는다.", () => {

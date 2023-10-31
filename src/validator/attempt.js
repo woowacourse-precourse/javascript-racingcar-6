@@ -1,6 +1,6 @@
 import { ATTEMPT_ERROR_MESSAGE } from "../constants/message/error.js";
 import InputError from "./InputError.js";
-import checkSpace from "./common-validator.js";
+import checkSpace from "./common.js";
 
 /**
  * 시도 횟수가 숫자인지 검증하는 함수

@@ -1,8 +1,8 @@
 import { Console } from "@woowacourse/mission-utils";
 
 import { INPUT_MESSAGE } from "../constants/message/io.js";
-import validateRacingCarNames from "../validator/car-validator.js";
-import validateAttemptCount from "../validator/attempt-validator.js";
+import validateRacingCarNames from "../validator/car.js";
+import validateAttemptCount from "../validator/attempt.js";
 
 const InputView = {
   /**
