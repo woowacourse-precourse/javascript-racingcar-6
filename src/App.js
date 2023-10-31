@@ -50,14 +50,14 @@ class App {
       '시도할 횟수는 몇 회인가요?'
     );
 
-    const parsedNumberCount = Number(inputTryCount);
+    const parsedTryCount = Number(inputTryCount);
 
-    this.validateInputCount(parsedNumberCount);
+    this.validateTryCount(parsedTryCount);
 
-    return parsedNumberCount;
+    return parsedTryCount;
   }
 
-  validateInputCount(inputCount) {
+  validateTryCount(inputCount) {
     if (!inputCount || Number.isNaN(inputCount)) {
       throw new Error('[ERROR] 숫자가 잘못된 형식입니다.');
     }
