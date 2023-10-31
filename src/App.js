@@ -5,7 +5,7 @@ class App {
   #number;
 
   constructor() {
-    this.#cars = { name: '', move: 0, total: 0 };
+    this.#cars = { name: '', move: 0 };
   }
 
   async play() {
@@ -23,7 +23,7 @@ class App {
       '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n'
     ).then((input) => {
       const carNames = input.split(',');
-      this.#cars = carNames.map((name) => ({ name, move: 0, total: 0 }));
+      this.#cars = carNames.map((name) => ({ name, move: 0 }));
     });
   }
 
