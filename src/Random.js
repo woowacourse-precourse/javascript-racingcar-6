@@ -15,6 +15,17 @@ const Random = {
   sortArrayAscending(gameMovement) {
     return gameMovement.slice().sort((a, b) => a - b);
   },
+
+  convertToHyphenOrSpace(gameMovement) {
+    return gameMovement.map((number) => {
+      if (number >= 4 && number <= 9) {
+        return '-';
+      }
+      if (number >= 0 && number <= 3) {
+        return ' ';
+      }
+    });
+  },
 };
 
 export default Random;
