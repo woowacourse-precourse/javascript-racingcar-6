@@ -81,6 +81,12 @@ class App {
     return winner;
   }
 
+  Print_Winner(member) {
+    
+    const winner = member;
+    Console.print('최종 우승자 : ' + winner.map((winners) => winners).join(','));
+  }
+
 }
 
 const app = new App();
