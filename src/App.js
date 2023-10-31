@@ -1,10 +1,5 @@
-// import { RacingGame } from "./game/index.js";
-
 import { Console, Random } from "@woowacourse/mission-utils";
-
-async function input(message) {
-  return Console.readLineAsync(message);
-}
+import {input} from './util/input.js';
 
 function print(message) {
   Console.print(message);
@@ -28,7 +23,7 @@ export function validCars(carsArray) {
 
     else if (car?.length > 5) throw new Error(`[ERROR] ${ERROR_MESSAGE.MORE5_NAME}`);
 
-    // else if (car.trim() !== car) throw new Error(`[ERROR] ${ERROR_MESSAGE.TRIM_EMPTY_NAME}`);
+    else if (car.trim() !== car) throw new Error(`[ERROR] ${ERROR_MESSAGE.TRIM_EMPTY_NAME}`);
   });
 
 }
