@@ -51,7 +51,7 @@ class App {
 
     this.findWinner(allCars, this.carsRecordBoard, this.winner);
 
-    this.printFinalResult();
+    this.printFinalResult(this.winner);
   }
 
   async getUserInput(purpose) {
@@ -112,11 +112,11 @@ class App {
     }
   }
 
-  printFinalResult() {
-    if (this.winner.length === 1) {
-      Console.print(`${FINAL_RESULT} : ${this.winner.toString()}`);
+  printFinalResult(winner) {
+    if (winner.length === 1) {
+      Console.print(`${FINAL_RESULT} : ${winner.toString()}`);
     } else {
-      Console.print(`${FINAL_RESULT} : ${this.winner.join(", ")}`);
+      Console.print(`${FINAL_RESULT} : ${winner.join(", ")}`);
     }
   }
 
