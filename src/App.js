@@ -4,18 +4,24 @@ import message from "./util/Message.js"
 
 class App {
   async play() {
-    const userInput = await getUserInput()
-    console.log(userInput)
+    const userInput = await getUserInput(message.starting)
+    const carNameArray = processInput(userInput)
+    console.log(carNameArray) 
   }
 }
 
-async function getUserInput() {
-  const input = await Console.readLineAsync(message.starting)
+async function getUserInput(message) {
+  const input = await Console.readLineAsync(message)
+  return input
+}
+
+function processInput(input) {
   const userInput = new UserInput(input)
     .splitStringToArrayBy(',')
     .checkIsAllElementsFitCondition(5);
   return userInput.array
 }
+
 
 class UserInput{
   constructor(input) {
