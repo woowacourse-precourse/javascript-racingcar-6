@@ -70,6 +70,12 @@ class App {
         ...Car.reportDistance(...this.carInstance),
       };
     }
+
+    let highestVal = Math.max.apply(null, Object.values(this.resultDictionary));
+    let val = Object.keys(this.resultDictionary).filter((a) => {
+      return this.resultDictionary[a] === highestVal;
+    });
+    MissionUtils.Console.print(`최종우승자 : ${val}`);
   }
 }
 
