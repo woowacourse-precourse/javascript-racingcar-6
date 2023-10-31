@@ -8,6 +8,7 @@ class Game {
   async play() {
     await this.setPlayerNames();
     await this.setNumberOfGames();
+    this.race();
   }
 
   async setPlayerNames() {
@@ -16,6 +17,17 @@ class Game {
 
   async setNumberOfGames() {
     this.#numberOfGames = await Input.returnNumberOfGames();
+  }
+
+  race() {
+    Array.from({ length: this.#numberofGames }).forEach(() => {
+      this.#players.race();
+      this.#players.print();
+    });
+  }
+
+  printResult() {
+
   }
 }
 
