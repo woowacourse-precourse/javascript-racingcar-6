@@ -1,6 +1,6 @@
-import ERROR_MESSAGE from "../constant/errorMessage";
-import messagePrinter from "../utils/messagePrinter";
-import Car from "./Car";
+import ERROR_MESSAGE from '../constant/errorMessage';
+import messagePrinter from '../utils/messagePrinter';
+import Car from './Car';
 
 class AllCars {
   #cars;

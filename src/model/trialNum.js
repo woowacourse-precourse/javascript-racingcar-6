@@ -1,5 +1,5 @@
-import ERROR_MESSAGE from "../constant/errorMessage";
-import messagePrinter from "../utils/messagePrinter";
+import ERROR_MESSAGE from '../constant/errorMessage';
+import messagePrinter from '../utils/messagePrinter';
 
 class TrialNum {
   #trials;
