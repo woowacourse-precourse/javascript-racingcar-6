@@ -18,6 +18,6 @@ describe('Car 예외 테스트', () => {
       // when
       car.move(power);
       // then
-    }).toThrow(ERROR_MESSAGE.common.notInteger);
+    }).toThrow(ERROR_MESSAGE.car.moveArgNotInteger);
   });
 });

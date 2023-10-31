@@ -21,7 +21,7 @@ class Car {
 
   #validateMove(power) {
     if (!Number.isInteger(power)) {
-      throw new ApplicationError(ERROR_MESSAGE.common.moveArgNotInteger);
+      throw new ApplicationError(ERROR_MESSAGE.car.moveArgNotInteger);
     }
   }
 }

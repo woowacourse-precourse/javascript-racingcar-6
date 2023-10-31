@@ -1,6 +1,6 @@
 const ERROR_MESSAGE = Object.freeze({
   car: Object.freeze({
-    moveArgNotInteger: '정수를 입력해주세요!',
+    moveArgNotInteger: 'move의 인자에 정수를 입력해주세요!',
   }),
 });
 
