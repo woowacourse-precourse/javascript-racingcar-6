@@ -8,10 +8,20 @@ class App {
     }
   };
 
+  validationCarName = (cars) => {
+    try {
+      this.validateCar(cars);
+    } catch (error) {
+      MissionUtils.Console.print("에러");
+      return false;
+    }
+    return true;
+  };
+
   carCreate = (cars) => {
     let car = new Map();
-    for (let carName of car) {
-      cars.set(carName, 0);
+    for (let carName of cars) {
+      car.set(carName, 0);
     }
     return car;
   };
@@ -23,7 +33,7 @@ class App {
     const cars = input.split(",");
     this.validateCar(cars);
     let car = this.carCreate(cars);
-    if (this.validateCar(cars)) this.attempts(cars, car);
+    this.attempts(cars, car);
   }
 
   async attempts(cars, car) {
@@ -34,18 +44,19 @@ class App {
     while (input > 0) {
       this.racingGame(cars, car);
       this.racingResult(cars, car);
-      input--;
+      input -= 1;
     }
   }
 
   racingGame(cars, car) {
-    for (carName of cars) {
+    console.log(cars);
+    for (let carName of cars) {
       const moveNumber = MissionUtils.Random.pickNumberInRange(0, 9);
       let move = 0;
       if (moveNumber >= 4) {
         move = 1;
       }
-      car.set(cars, car.get(cars) + move);
+      car.set(carName, car.get(carName) + move);
     }
   }
 
@@ -62,7 +73,7 @@ class App {
   }
 
   async play() {
-    createCarName();
+    this.createCarName();
   }
 }
 
