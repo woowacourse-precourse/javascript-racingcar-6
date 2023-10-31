@@ -52,7 +52,7 @@ class Race {
   }
 
   #AnnounceWinners() {
-    const winners = Race.#getWinners(this.#carDistanceRecord);
+    const winners = Race.#getWinners(this.#racingCars, this.#carDistanceRecord);
     OutputView.printWinners(winners);
   }
 
@@ -107,11 +107,11 @@ class Race {
     this.#carDistanceRecord = updatedRecord;
   }
 
-  static #getWinners(record) {
+  static #getWinners(racingCars, record) {
     const distanceCounts = Object.values(record);
     const maxCount = Math.max(...distanceCounts);
 
-    const carNames = Object.keys(record);
+    const carNames = racingCars.getCarNames();
     const winners = carNames.filter((name) => record[name] === maxCount);
     return winners;
   }
