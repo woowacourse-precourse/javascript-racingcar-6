@@ -1,6 +1,8 @@
 import { Random } from "@woowacourse/mission-utils";
 import { input } from "./util/input.js";
 import { print } from "./util/output.js";
+import {validCars} from './validation/carsValidation.js';
+import {vaildTryCount} from './validation/tryValidation.js';
 
 function makeCarsArray(message) {
   const CARS = message.split(",");
@@ -10,19 +12,7 @@ function makeCarsArray(message) {
   return CARS;
 }
 
-export function validCars(carsArray) {
-  const CARS_SET = new Set(carsArray);
-  if (carsArray?.length !== CARS_SET?.size)
-    throw new Error(`[ERROR] ${ERROR_MESSAGE.OVERLAP_NAME}`);
 
-  CARS_SET.forEach((car) => {
-    if (car === "") throw new Error(`[ERROR] ${ERROR_MESSAGE.EMPTY_NAME}`);
-    else if (car?.length > 5)
-      throw new Error(`[ERROR] ${ERROR_MESSAGE.MORE5_NAME}`);
-    else if (car.trim() !== car)
-      throw new Error(`[ERROR] ${ERROR_MESSAGE.TRIM_EMPTY_NAME}`);
-  });
-}
 export const NUMBER_RANGE = {
   MIN: 0,
   MAX: 9,
@@ -46,12 +36,6 @@ export const ERROR_MESSAGE = {
   OVERLAP_NAME: "중복되는 차 이름이 존재합니다.",
   DOWN1_COUNT: "1이상 숫자를 입력해주세요.",
 };
-
-export function vaildTryCount(count) {
-  if (isNaN(count)) throw new Error(`[ERROR] ${ERROR_MESSAGE.NOT_NUMBER}`);
-  if (count <= 0) throw new Error(`[ERROR] ${ERROR_MESSAGE.DOWN1_COUNT}`);
-  return count;
-}
 
 export async function getRandomNumber() {
   return Random.pickNumberInRange(NUMBER_RANGE.MIN, NUMBER_RANGE.MAX);

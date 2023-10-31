@@ -1,6 +1,6 @@
 import { ERROR_MESSAGE } from "../constants/constant.js";
 
-export function validCars(carsArray) {
+export const validCars = (carsArray) => {
   const CARS_SET = new Set(carsArray);
   if(carsArray?.length !== CARS_SET?.size) throw new Error(`[ERROR] ${ERROR_MESSAGE.OVERLAP_NAME}`);
 
