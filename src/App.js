@@ -18,6 +18,7 @@ class App {
 
   validatePlayerName(playerNameInput) {
     const PLAYER_NAME_SPLIT = playerNameInput
+      .toString()
       .split(',')
       .map((name) => name.trim());
 
