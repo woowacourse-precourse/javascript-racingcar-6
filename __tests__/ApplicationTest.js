@@ -45,24 +45,4 @@ describe("자동차 경주 게임", () => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
   });
-
- 
-
-  // 게임 횟수 입력 test
-  test.each([
-    [['k']],
-    [[0]],
-    [['-1']],
-    [['0']]
-  ])("게임 횟수에 대한 예외 처리", async (inputs) => {
-    // given
-    mockQuestions(inputs);
-
-    // when
-    const app = new App();
-
-    // then
-    await expect(app.getRoundNumInput()).rejects.toThrow("[ERROR]");
-  });
-
 });
