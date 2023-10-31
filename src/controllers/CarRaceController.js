@@ -21,13 +21,11 @@ class CarRaceController {
   }
 
   playRace() {
-    console.log('ㅇㅇ');
     this.raceManager.race();
     this.printRaceProgress();
   }
 
   printRaceProgress() {
-    console.log('printRaceProgress');
     const { printNewline } = CarRaceView;
     this.raceManager.carModels.forEach(this.printCarProgress);
     printNewline();
