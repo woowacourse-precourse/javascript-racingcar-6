@@ -8,7 +8,7 @@ class RoundInputView {
   async getTotalRound() {
     const totalRound = await MissionUtils.Console.readLineAsync(message.totalRoundQuestion);
 
-    return totalRound
+    return totalRound;
   }
 }
 
