@@ -1,4 +1,4 @@
-import message from "./message.js";
+import message from "../variables/message.js";
 import { Console, Random } from "@woowacourse/mission-utils";
 
 export const validateInputRacecar = (racecar) => {
@@ -26,16 +26,6 @@ export const validateRepeatedName = (racecars) => {
 
     uniqueCarNames.add(racecar);
   });
-};
-
-export const validateCarScore = (score, car, index, racecarScores) => {
-  if (score <= 4) {
-    const dashes = "-".repeat(score);
-    return Console.print(`${car} : ${dashes}`);
-  } else if (score > 4) {
-    Console.print(`${car} : ${score}`);
-    racecarScores[index] += score;
-  }
 };
 
 export const validateDisplayWinner = (racecarScores, cars) => {

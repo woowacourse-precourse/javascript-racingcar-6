@@ -1,11 +1,11 @@
 import { Random, Console } from "@woowacourse/mission-utils";
-import message from "./message.js";
+import message from "./variables/message.js";
 import {
-  validateCarScore,
   validateRepeatedName,
   validateDisplayWinner,
   validateInputRacecar,
-} from "./validation.js";
+} from "./validation/nameValidation.js";
+import { validateCarScore } from "./validation/scoreValidation.js";
 
 class App {
   async play() {
@@ -43,10 +43,6 @@ class App {
 
   async displayWinners(scores, winners) {
     validateDisplayWinner(scores, winners);
-  }
-
-  async restartGame() {
-    await this.userInputRacecar();
   }
 }
 
