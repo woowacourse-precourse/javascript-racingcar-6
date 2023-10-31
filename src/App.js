@@ -30,6 +30,8 @@ class App {
     names.forEach(name => {
       if (name.length > 5) {
         throw new Error(Messages.ERROR_CARS);
+      } else if (name.length === 0 || name.trim().length === 0) {
+        throw new Error(Messages.ERROR_CARS);
       }
     });
   }
