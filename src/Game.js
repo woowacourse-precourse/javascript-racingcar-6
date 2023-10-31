@@ -1,29 +1,19 @@
 import { Console } from '@woowacourse/mission-utils';
-import { enterCarNames, enterAttempts } from './UserInput.js';
-import { printResultTitle, printEachResult, printWinner } from './PrintOutput.js';
-import { RandomNumbers } from './RandomNumber.js';
+import { DeterimineMoving, printWinner } from './GameFactors.js';
 
 
-
-function Game() {
-    let racingCars = new Map();
-    let carNames = enterCarNames();
-    let attempt = enterAttempts();
-    printResultTitle(); 
-    for (let i = 0; i < attempt; i++) {
-        printEachResult(carNames, racingCars);
+function Game(carNames, attempts, racingCars) {
+    Console.print('실행 결과');
+    for (let i = 0; i < attempts; i++) {
+        carNames.forEach((name) => {
+            DeterimineMoving(racingCars, name)
+            Console.print(`${name} : ${'-'.repeat(racingCars.get(name))}`);
+        })
         Console.print('\n');
     }
     const maxRate = Array.from(racingCars.values()).reduce((a, b) => Math.max(a, b));
-    console.log(racingCars);
     printWinner(maxRate, racingCars);
 }
 
-function DeterimineMoving(racingCars, name) {
-    if (RandomNumbers() > 3) {
-        if (racingCars.has(name)) racingCars.set(name, 1 + racingCars.get(name));
-        else racingCars.set(name, 1);
-    }
-}
 
-export { Game, DeterimineMoving };
+export default Game;
