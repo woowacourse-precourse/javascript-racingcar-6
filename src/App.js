@@ -30,9 +30,7 @@ class App {
     const cars = await this.inputs.returnCarNames();
     const tryCount = await this.inputs.getTryCount();
     Console.print('\n실행 결과');
-    const progressList = this.runRace(cars, tryCount);
-    const winnerPrinter = new ReturnWinner(cars, progressList);
-    winnerPrinter.printWinners();
+    this.runRace(cars, tryCount);
   }
 
   runRace(cars, tryCount) {
@@ -46,7 +44,8 @@ class App {
       Console.print('');
     }
 
-    return progressList;
+    const winnerPrinter = new ReturnWinner(cars, progressList);
+    winnerPrinter.printWinners();
   }
 
   printWinners = (cars, progressList) =>
