@@ -1,4 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
+
 class ConsoleView {
   static MOVE_LINE = "-";
 
