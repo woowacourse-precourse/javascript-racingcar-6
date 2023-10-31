@@ -1,4 +1,5 @@
 import { Console, MissionUtils } from "@woowacourse/mission-utils";
+
 async function input(script) {
   const inputValue = await Console.readLineAsync(script);
   return inputValue;
@@ -22,7 +23,7 @@ async function getCar() {
     "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
   );
   if (value.includes(",") == false)
-    throw Error("[ERROR] 자동차를 2대 이상 입력해 주십시오.");
+    throw Error("[ERROR] 2대 이상의 차를 입력해주세요");
   value = value.split(",");
   value.map((e) => {
     if (e.length > 5) throw Error("[ERROR] 차 이름의 길이가 5 초과입니다.");
@@ -34,7 +35,7 @@ async function getTryNum() {
   // 시도횟수 입력
   const value = await input("시도할 횟수는 몇 회인가요?\n");
   if (isNaN(value) === true) throw Error("[ERROR] 숫자를 입력해 주십시오.");
-  if (value <= 0) throw Error("[ERROR] 0보다 큰 숫자를 입력해 주십시오.");
+  else if (value <= 0) throw Error("[ERROR] 0보다 큰 숫자를 입력해 주십시오.");
   return value;
 }
 function getRandomNum() {
@@ -92,3 +93,6 @@ class App {
 }
 
 export default App;
+
+const app = new App();
+app.play();
