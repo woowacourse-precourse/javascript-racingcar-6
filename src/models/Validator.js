@@ -40,8 +40,8 @@ export default class Validator {
     return true;
   }
 
-  static validateInputNumbersOfMoves(numberOfMoves) {
-    const numberOfMoves = Number(numberOfMoves);
+  static validateInputNumbersOfMoves(numberOfMovesString) {
+    const numberOfMoves = Number(numberOfMovesString);
 
     if (Number.isNaN(numberOfMoves)) {
       throw new Error(ERROR_MESSAGE.IS_NAN);

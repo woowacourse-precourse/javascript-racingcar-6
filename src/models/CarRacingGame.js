@@ -12,7 +12,7 @@ export default class CarRacingGames {
    *  numberOfMovesForward: {number},
    * }]
    */
-  static async setupCarList(carListString) {
+  static setupCarList(carListString) {
     const carListArr = carListString.split(",").map((carName) => ({
       name: carName.trim(),
       numberOfMovesForward: 0,

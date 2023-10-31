@@ -22,7 +22,7 @@ export default class CarRacingGamesControllers {
     const carListString = await InputView.inputCarNames();
 
     // 자동차 이름의 유효성을 검사한 후 { name: @string, numberOfMovesForward: @number }[]로 값 저장
-    if (Validator.validateInputCarNames()) {
+    if (Validator.validateInputCarNames(carListString)) {
       this.carListArr = CarRacingGames.setupCarList(carListString);
     }
 
@@ -30,7 +30,7 @@ export default class CarRacingGamesControllers {
     const numberOfMoves = await InputView.inputNumbersOfMoves();
 
     // 시도할 횟수 입력의 유효성을 검사한다.
-    if (Validator.validateInputNumbersOfMoves()) {
+    if (Validator.validateInputNumbersOfMoves(numberOfMoves)) {
       this.numberOfMoves = parseInt(numberOfMoves, 10);
     }
   }
