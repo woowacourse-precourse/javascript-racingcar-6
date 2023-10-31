@@ -73,8 +73,8 @@ class App {
   }
 
   #findWinners() {
-    const maxMileage = Math.max(this.#cars.map((car) => car.getMileage()));
-    return this.#cars.filter((car) => car.getMileage() < maxMileage);
+    const maxMileage = Math.max(...this.#cars.map((car) => car.getMileage()));
+    return this.#cars.filter((car) => car.getMileage() >= maxMileage);
   }
 }
 
