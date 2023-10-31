@@ -8,18 +8,18 @@ export const input = {
     ERROR: '[ERROR] 자동차 이름은 5자 이하만 가능합니다.',
   },
   carNames: async () => {
-    const carNames = (await Console.readLineAsync(this.MESSAGE.CAR_NAMES))
+    const carNames = (await Console.readLineAsync(input.MESSAGE.CAR_NAMES))
       .split(',')
       .map(carName => {
         if (carName.length > 5) {
-          throw new Error(this.MESSAGE.ERROR);
+          throw new Error(input.MESSAGE.ERROR);
         }
         return carName;
       });
     return carNames;
   },
   tryCount: async () => {
-    const tryCount = await Console.readLineAsync(this.MESSAGE.TRY_COUNT);
+    const tryCount = await Console.readLineAsync(input.MESSAGE.TRY_COUNT);
     return tryCount;
   },
 };
@@ -33,7 +33,7 @@ export const output = {
   },
   statesEveryIteration: racers => {
     const result = racers
-      .map(racer => this.MESSAGE.RACING_STATUS(racer))
+      .map(racer => output.MESSAGE.RACING_STATUS(racer))
       .join('\n')
       .concat('\n');
     Console.print(result);
@@ -43,6 +43,6 @@ export const output = {
       .sort((a, b) => b.move - a.move)
       .filter(racer => racer.move === racers[0].move)
       .map(racer => racer.carName);
-    Console.print(this.MESSAGE.WINNER(winners));
+    Console.print(output.MESSAGE.WINNER(winners));
   },
 };
