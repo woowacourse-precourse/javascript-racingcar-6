@@ -1,29 +1,30 @@
-import fowardConditions from "./Game/FowardCondition.js";
 import { Console } from "@woowacourse/mission-utils";
+import continueOrEnd from "./Game/ContinueOrEnd.js";
+import fowardConditions from "./Game/FowardCondition.js";
 import gameSetting from "./Game/GameSetting.js";
 import message from "./Message.js";
+import loserResult from "./Game/LoserResult.js";
 
 class App {
   async play() {
     await Console.print(message.game.START_MESSAGE);
     const cars = await Console.readLineAsync('');
-    const users = cars.split(',');
-    let carsScores = [];
     let winner = [];
-    carsScores = await gameSetting(users,carsScores);
+    const loser = [];
+    let carsScores = await gameSetting(cars, loser);
     await Console.print(message.game.ATTEMPTS_NUMBER_QUESTION);
     const numberOfAttempts = await Console.readLineAsync('');
-    if(typeof(numberOfAttempts) != "number") await Console.print(message.error.NOT_A_NUMBER_ERROR);
+    if(isNaN(numberOfAttempts) == true) throw Error(message.error.NOT_A_NUMBER_ERROR);
     Console.print(message.game.PROCESS_RESULT);
     for(let j = 1; j<=numberOfAttempts;j++){
       await fowardConditions(carsScores,numberOfAttempts,winner);
       await Console.print('');
     }
-    await Console.print(message.game.RESULT_PRINT+winner.join(','));
-
-    const status = await Console.readLineAsync(message.game.CONTINUE_OR_STOP_QUESTION);
-    if(status == 1) this.play();
-    else if(status == 2) await Console.print(message.game.END_MESSAGE);
+    await Console.print(message.game.RESULT_WINNER_PRINT+winner.join(', '));
+    await Console.print(message.game.RESULT_LOSER_PRINT+await loserResult(winner,loser).join(', '));
+    Console.print(message.game.CONTINUE_OR_STOP_QUESTION);
+    const status = await Console.readLineAsync('');
+    await continueOrEnd(status,this);
   }
 }
 export default App;
