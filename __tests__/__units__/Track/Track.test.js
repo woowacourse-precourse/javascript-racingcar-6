@@ -54,7 +54,7 @@ describe('Track 테스트', () => {
     userAccelerateSpy.forEach((spy) => expect(spy).toHaveBeenCalled());
   });
 
-  it('`isEnd()`는 `currentLap`가 `finalLap` 보다 작으면 `false`를 반환한다.', () => {
+  it('`isEnd()`는 `currentLap`가 `finalLap` 보다 작거나 동일하면 `false`를 반환한다.', () => {
     // given
     const users = [new User('레이서'), new User('레이서2')];
     const track = new Track(users, 5);
@@ -63,13 +63,13 @@ describe('Track 테스트', () => {
     expect(track.isEnd()).toBeFalsy();
   });
 
-  it('`isEnd()`는 `currentLap`가 `finalLap` 보다 작으면 `true`를 반환한다.', () => {
+  it('`isEnd()`는 `currentLap`가 `finalLap` 보다 크면 `true`를 반환한다.', () => {
     // given
     const users = [new User('레이서'), new User('레이서2')];
     const track = new Track(users, 5);
 
     // when
-    for (let i = 0; i < 4; i += 1) {
+    for (let i = 0; i < 5; i += 1) {
       track.processLap();
     }
 

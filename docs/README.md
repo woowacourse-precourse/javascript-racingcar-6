@@ -135,7 +135,7 @@
     <td>`Users`의 `Car`의 `distance`를 기반으로 현재 우승자를 반환합니다.</td>
   </tr>
   <tr>
-    <td>isEnd()</td>
+    <td>isLastLap()</td>
     <td>`currentLap`과 `finalLap`를 비교하여 트랙의 종료 여부를 반환합니다.</td>
   </tr>
 </table>
@@ -197,7 +197,7 @@
   - [x] 인자로 입력받은 유저 목록을 `users`에 가진다.
   - [x] `processLap()`을 호출시 `currentLap`는 `1` 증가한다.
   - [x] `processLap()`을 호출시 `users`의 `user`들은 `accelerate`를 호출한다.
-  - [x] `isEnd()`는 `currentLap`가 `finalLap`과 같은지 반환한다.
+  - [x] `isLastLap()`는 `currentLap`가 `finalLap`과 같은지 반환한다.
 
 - [x] Track 예외 처리
 
@@ -207,6 +207,7 @@
   - [x] 입력받은 `lap`이 숫자가 아닐 경우 에러를 발생시킨다.
   - [x] 입력받은 `lap`이 1 미만의 수일 경우 에러를 발생시킨다.
   - [x] 입력받은 `lap`이 정수가 아닐 경우 에러를 발생시킨다.
+  - [ ] `processLap()`을 호출시 종료된 경기일 경우 에러를 에러를 발생시킨다.
 
 ## Service 구현
 

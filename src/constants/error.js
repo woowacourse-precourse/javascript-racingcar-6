@@ -47,6 +47,8 @@ const ERROR_MESSAGE = Object.freeze({
     isUnderMinLap: ERROR_MESSAGE_GENERATOR.isUnderMinNumber('Track의 lap', 1),
     isNotNumberLap: ERROR_MESSAGE_GENERATOR.isNotNumber('Track의 lap'),
     isNotIntegerLap: ERROR_MESSAGE_GENERATOR.isNotInteger('Track의 lap'),
+
+    isEndedTrack: '이미 종료된 트랙입니다!',
   }),
 });
 

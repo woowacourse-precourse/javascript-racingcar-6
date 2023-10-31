@@ -57,14 +57,21 @@ class Track {
   }
 
   processLap() {
+    this.#validateProcessLap();
     this.#users.forEach((user) => {
       user.accelerate();
     });
     this.#currentLap += 1;
   }
 
+  #validateProcessLap() {
+    if (this.isEnd()) {
+      throw new ApplicationError(ERROR_MESSAGE.track.isEndedTrack);
+    }
+  }
+
   isEnd() {
-    return this.#currentLap === this.#finalLap;
+    return this.#currentLap > this.#finalLap;
   }
 }
 

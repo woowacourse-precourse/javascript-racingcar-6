@@ -82,4 +82,17 @@ describe('Track 예외 테스트', () => {
       }).toThrow(ERROR_MESSAGE.track.isNotIntegerLap);
     },
   );
+
+  it('`processLap()`을 호출시 종료된 경기일 경우 에러를 에러를 발생시킨다.', () => {
+    // given
+    const users = [new User('레이서')];
+    const track = new Track(users, 1);
+    track.processLap();
+
+    expect(() => {
+      // when
+      track.processLap();
+      // then
+    }).toThrow(ERROR_MESSAGE.track.isEndedTrack);
+  });
 });
