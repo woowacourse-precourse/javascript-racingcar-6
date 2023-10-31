@@ -16,6 +16,12 @@ class App {
     MissionUtils.Console.print(name);
 
     const tryNum = await this.getNumberOfTry();
+
+    MissionUtils.Console.print("실행 결과");
+
+    for (let i = 0; i < tryNum; i += 1) {
+      this.carMoveForward(cars);
+    }
   }
 
   async getCarName() {
@@ -44,6 +50,19 @@ class App {
       MissionUtils.Console.print("");
       return tryNum;
     }
+  }
+
+  carMoveForward(cars) {
+    cars.forEach((car) => {
+      const randomNum = MissionUtils.Random.pickNumberInRange(0, 9);
+      if (randomNum >= 4) {
+        // 전진
+        MissionUtils.Console.print(`${car.carName}전진`);
+      } else {
+        // 전진 X
+        MissionUtils.Console.print(`${car.carName}전진X`);
+      }
+    });
   }
 }
 
