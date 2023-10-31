@@ -52,3 +52,19 @@ describe('자동차 이름 입력 테스트', () => {
     await expect(inputNames).rejects.toThrow('[ERROR]');
   });
 });
+
+describe('시도할 횟수 입력 테스트', () => {
+  test.each([[['5번']], [['-5']], [['0']]])(
+    '숫자나 양의 정수가 아닌 경우 예외 처리',
+    async (inputs) => {
+      // given
+      mockQuestions(inputs);
+
+      // when
+      const inputCount = Screen.inputCount();
+
+      // then
+      await expect(inputCount).rejects.toThrow('[ERROR]');
+    },
+  );
+});
