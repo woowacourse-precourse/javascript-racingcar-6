@@ -22,8 +22,6 @@ const gameSetting = (cars, loser)=>{
     if(users[i].length>5) throw new Error(message.error.NAME_CREATION_ERROR);
     else carsScores.push([loser[i],0]);
   }
-  console.log(loser);
-  console.log(carsScores);
   return carsScores;
 }
 export default gameSetting;
