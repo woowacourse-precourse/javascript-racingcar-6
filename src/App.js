@@ -57,8 +57,8 @@ class App {
     return parsedTryCount;
   }
 
-  validateTryCount(inputCount) {
-    if (!inputCount || Number.isNaN(inputCount)) {
+  validateTryCount(tryCount) {
+    if (!tryCount || Number.isNaN(tryCount)) {
       throw new Error('[ERROR] 숫자가 잘못된 형식입니다.');
     }
   }
