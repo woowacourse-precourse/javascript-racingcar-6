@@ -27,7 +27,6 @@ export default class User {
         } catch(e) {
           throw(e)
         }
-        // console.log(names)
     }   // 여기서 받는 'names'은 유효성 검사를 통과하고 받은 값
 
     async userInputPlayNumber() {

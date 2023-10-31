@@ -63,8 +63,14 @@ UserInput.js 내부
 App.js 내부
 - userInputCarName() 함수를 호출하는 play() 함수는 이미 async 함수, userInputCarName() 앞에 await
 
-2) 전진하는 조건은 0에서 9 사이에서 무작위 값을 구한 후 무작위 값이 4 이상일 경우
-Score.js 
-getScore() 함수 내용 중
-if (MissionUtils.Random.pickNumberInRange(1, 9) >= 4) ㄴ으로 수정
+2) 랜덤값 조건 지정 오류 
+: 전진하는 조건은 0에서 9 사이에서 무작위 값을 구한 후 무작위 값이 4 이상일 경우
+: Score.js - getScore() 함수 내용 중
+if (MissionUtils.Random.pickNumberInRange(1, 9) >= 4) 으로 수정 ( '> 4' 에서 '>= 4'로 수정)
 
+
+8. 테스트 코드 추가
+1) '이름공백 유효성 검사'
+- 자동차 이름 입력시 공백값이 있는 경우 오류 발생
+2) '게임횟수 문자열 검사'
+- 게임횟수 입력시 숫자만 입력 가능. 숫자가 아닐 경우 오류 발생

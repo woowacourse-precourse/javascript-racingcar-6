@@ -26,12 +26,12 @@ export default class Score {
         })
 
         let max_val = checkScore.map(e => e.score).reduce((max, curr) => max < curr ? curr : max)
-        let winner = []
+        let winners = []
         checkScore.forEach((e)=> {
             if(max_val === e.score) {
-                winner.push(`${e.name}`);
+                winners.push(`${e.name}`);
             }
         })
-        MissionUtils.Console.print(`최종 우승자 : ${winner}`)
+        MissionUtils.Console.print(`최종 우승자 : ${winners}`)
     }
 }
