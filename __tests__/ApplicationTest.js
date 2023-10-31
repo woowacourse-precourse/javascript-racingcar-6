@@ -130,6 +130,38 @@ describe("자동차 경주 게임", () => {
     expect(lastLogCall).toContain("최종 우승자 : pobi, woni, jun");
   });
 
+  test("결과 출력(자동차 이름 중복 입력 시)", async () => {
+    // given
+    const MOVING_FORWARD = 4;
+    const STOP = 3;
+    const inputs = ["pobi,woni,pobi,woni,jun", "3"];
+    const randoms = [
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      STOP,
+      MOVING_FORWARD,
+      STOP,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+    ];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    // when
+    const app = new App();
+    await app.play();
+
+    // then
+    const logCalls = logSpy.mock.calls;
+    const lastLogCall = logCalls[logCalls.length - 1][0];
+
+    expect(lastLogCall).toContain("최종 우승자 : pobi");
+  });
+
   test.each([
     [["pobi,javaji"]],
     [["pobi,eastjun"]],
