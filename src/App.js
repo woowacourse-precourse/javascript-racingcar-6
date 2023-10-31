@@ -26,7 +26,7 @@ class App {
     if (!carName) throw new Error(VALIDATION_ERRORS_MESSAGE.EMPTY_INPUT);
     if (!/^[A-Za-z]+$/.test(carName))
       throw new Error(VALIDATION_ERRORS_MESSAGE.NOT_ONLY_STRING);
-    if (carName.length > 5)
+    if (carName.length >= 5)
       throw new Error(VALIDATION_ERRORS_MESSAGE.OVER_THE_RANGE);
   }
 
