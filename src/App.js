@@ -6,6 +6,20 @@ class App {
   constructor() {
     this.racingCar = new Map();
   }
+
+  async play() {
+
+    await this.Usercar_input();
+
+    let racingMap = this.racingCar;
+
+    for (let i = await this.NumberOfAttempts(); i > 0; i--) {
+      this.Update_Distance(racingMap);
+      this.Print_Distance(racingMap);
+    }
+    
+    const member = this.Find_Winner(racingMap);
+    this.Print_Winner(member);
   }
 
   async Usercar_input() {
