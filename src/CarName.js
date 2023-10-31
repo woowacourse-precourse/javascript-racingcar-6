@@ -1,4 +1,4 @@
-//기능1.
+//기능1. 자동차 이름
 export function carname(input) {
   //입력조건
   // map은 for의 기능 : v를 반복하여 공백을 다 제외
@@ -12,4 +12,5 @@ export function carname(input) {
   ) {
     throw new Error('[ERROR] 올바른 이름을 입력해주세요');
   }
+  return car;
 }
