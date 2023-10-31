@@ -18,5 +18,12 @@ export class Race {
       count += 1;
       this.#cars.move();
     }
+
+    const winners = this.getWinners();
+  }
+
+  getWinners() {
+    const greatestPosition = getGreatestNumber(this.#cars.getPositions());
+    return this.#cars.getList().filter((car) => car.getPosition() === greatestPosition);
   }
 }
