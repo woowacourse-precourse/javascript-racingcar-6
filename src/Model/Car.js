@@ -1,6 +1,6 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
-import { RANDOM } from "../constants/random";
-import { CAR } from "../constants/car";
+import { Random } from "@woowacourse/mission-utils";
+import { RANDOM } from "../constants/random.js";
+import { CAR } from "../constants/car.js";
 
 class Car {
   #position = CAR.INITIAL_POSITION;
@@ -11,7 +11,7 @@ class Car {
   }
 
   move() {
-    const randomNumber = MissionUtils.Random.pickNumberInRange(RANDOM.MIN_VALUE, RANDOM.MAX_VALUE);
+    const randomNumber = Random.pickNumberInRange(RANDOM.MIN_VALUE, RANDOM.MAX_VALUE);
     if (randomNumber >= CAR.MOVE_THRESHOLD) {
       this.#position += CAR.POSITION_INCREMENT;
     }

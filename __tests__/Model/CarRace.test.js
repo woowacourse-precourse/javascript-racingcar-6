@@ -1,5 +1,5 @@
-import Car from "../../src/Model/Car";
-import CarRace from "../../src/Model/CarRace";
+import CarRace from "../../src/Model/CarRace.js";
+import Car from "../../src/Model/Car.js";
 
 jest.mock("../../src/Model/Car");
 

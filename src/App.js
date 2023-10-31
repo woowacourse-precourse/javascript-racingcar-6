@@ -1,8 +1,7 @@
+import Validator from "./utils/Validator.js";
+import CarRace from "./Model/CarRace.js";
 import InputView from "./View/InputView.js";
 import OutputView from "./View/OutputView.js";
-import CarRace from "./Model/CarRace.js";
-import Validator from "./utils/Validator.js";
-import { MissionUtils } from "@woowacourse/mission-utils";
 
 class App {
   #carRace;

@@ -1,4 +1,3 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
 import Car from "./Car.js";
 import { CAR, CAR_ARRAY, CAR_NAME } from "../constants/car.js";
 

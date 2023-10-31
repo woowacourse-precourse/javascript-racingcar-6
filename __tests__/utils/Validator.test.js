@@ -6,8 +6,8 @@ import {
   NotNumberError,
   InvalidMinNumberError,
   NotIntegerError,
-} from "../../src/utils/Error";
-import Validator from "../../src/utils/Validator";
+} from "../../src/utils/Error.js";
+import Validator from "../../src/utils/Validator.js";
 
 describe("Validator 클래스 테스트", () => {
   test("validateCarName 메서드를 가지고 있어야 한다.", () => {
