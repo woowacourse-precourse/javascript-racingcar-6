@@ -12,3 +12,11 @@ export const executionResult = function forwardRunResultsOutput(carList) {
 	});
 	Console.print('');
 };
+
+export const winnerResult = function printWinner(winner) {
+	const winnerNumber = winner.length;
+	if (winnerNumber > 1) {
+		Console.print(`최종 우승자 : ${winner.join(', ')}`);
+	}
+	Console.print(`최종 우승자 : ${winner[0]}`);
+};
