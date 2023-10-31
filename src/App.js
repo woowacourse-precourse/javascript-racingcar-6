@@ -37,8 +37,8 @@ async function setRaceCars(){
   let carStrings = carInput.split(',');
   let cars = [];
   for (let i = 0; i < carStrings.length; i++){
-    let name = carStrings[i];
-    let car = new Car(name);
+    const name = carStrings[i];
+    const car = new Car(name);
     cars.push(car);
   }
   return cars;
@@ -55,7 +55,7 @@ function checkCarNames(cars) {
 
 function checkNameLength(car) {
   let underRequirements = true;
-  let name = car.getName();
+  const name = car.getName();
   if (name.length > 5 || name.length == 0) {
     underRequirements = false;
   }
@@ -86,9 +86,9 @@ function checkProgression(cars) {
 
 function printProgression(cars) {
   for (let i = 0; i < cars.length; i++) {
-    let car = cars[i];
-    let name = car.getName();
-    let position = car.getPosition();
+    const car = cars[i];
+    const name = car.getName();
+    const position = car.getPosition();
     let positionString = '-'.repeat(position);
     MissionUtils.Console.print(`${name} : ${positionString}\n`);
   }
@@ -99,9 +99,9 @@ function getFinalWinners(cars) {
   let maxPosition = getMaxPosition(cars);
   let winnerNames = [];
   for (let i = 0; i < cars.length; i++) {
-    let car = cars[i];
-    let position = car.getPosition();
-    let name = car.getName();
+    const car = cars[i];
+    const position = car.getPosition();
+    const name = car.getName();
     if (position >= maxPosition) winnerNames.push(name); 
   }
   return winnerNames;
@@ -110,8 +110,8 @@ function getFinalWinners(cars) {
 function getMaxPosition(cars) {
   let maxPosition = 0;
   for (let i = 0; i < cars.length; i++) {
-    let car = cars[i];
-    let position = car.getPosition();
+    const car = cars[i];
+    const position = car.getPosition();
     if ( position > maxPosition) maxPosition = position;
   }
   return maxPosition;
