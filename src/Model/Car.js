@@ -1,6 +1,10 @@
 import movePosition from '../utils/movePosition.js';
 
 export default class Car {
+  /**
+   * @private
+   * @type { Array<{ name: string, status: number }> }
+   */
   #carsPosition;
 
   setCarsPosition(input) {
@@ -8,8 +12,8 @@ export default class Car {
   }
 
   setCarsRelocation() {
-    this.#carsPosition.forEach((prePosition, i) => {
-      this.#carsPosition[i].position = prePosition.position + movePosition();
+    this.#carsPosition.forEach(prePosition => {
+      prePosition.position += movePosition();
     });
   }
 
