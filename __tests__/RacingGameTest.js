@@ -61,7 +61,7 @@ describe('레이싱 게임 테스트', () => {
 
       // when
       const racingGame = new RacingGame();
-      const result = await racingGame.readMoveCount();
+      const result = await racingGame.readGameCount();
 
       // then
       expect(result).toEqual(outputs);
@@ -74,7 +74,7 @@ describe('레이싱 게임 테스트', () => {
 
       // when
       const racingGame = new RacingGame();
-      const result = await racingGame.readMoveCount();
+      const result = await racingGame.readGameCount();
 
       // then
       expect(result).rejects.toThrow(ERROR_MESSAGE);
