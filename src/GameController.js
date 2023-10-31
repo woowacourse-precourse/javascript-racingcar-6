@@ -20,6 +20,8 @@ export class GameController {
       this.startRace();
       this.printRaceResult();
     }
+    const winners = this.judgeWinner();
+    this.printWinner(winners);
   }
 
   startRace() {
@@ -40,5 +42,22 @@ export class GameController {
       Console.print(`${car.name} : ${distance.join("")}`);
     });
     Console.print("");
+  }
+
+  judgeWinner() {
+    const winners = [];
+    const distances = this.carList.map((car) => car.distance);
+    const bestRecord = Math.max(...distances);
+    this.carList.forEach((car) => {
+      if (car.distance === bestRecord) {
+        winners.push(car.name);
+      }
+    });
+    return winners;
+  }
+
+  printWinner(winners) {
+    const result = winners.join(", ");
+    Console.print(`${m.WINNER_MESSAGE}${result}`);
   }
 }
