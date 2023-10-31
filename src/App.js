@@ -1,6 +1,6 @@
 import { printMessage, readLineAsync, getValidInputNames, getValidInputNumber } from './utils';
 import { MESSAGE } from './constants';
-import CarRace from './CarRace';
+import CarRace from './domain/CarRace';
 
 const { INPUT_NAME, INPUT_NUMBER, RESULT } = MESSAGE;
 

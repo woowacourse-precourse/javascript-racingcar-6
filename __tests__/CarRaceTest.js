@@ -1,4 +1,4 @@
-import CarRace from '../src/CarRace';
+import CarRace from '../src/domain/CarRace';
 import { mockRandoms } from './ApplicationTest';
 
 describe('자동차 경주 테스트', () => {

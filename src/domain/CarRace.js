@@ -1,6 +1,6 @@
 import Car from './Car';
-import { SCORE, MESSAGE } from './constants';
-import { getRandomNumber, isforwardNumber } from './utils';
+import { SCORE, MESSAGE } from '../constants';
+import { getRandomNumber, isforwardNumber } from '../utils';
 
 export default class CarRace {
   #cars;

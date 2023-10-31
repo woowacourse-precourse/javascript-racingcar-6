@@ -1,15 +1,6 @@
-import { Console, MissionUtils } from '@woowacourse/mission-utils';
-import { SETTING, ERROR_MESSAGE } from './constants';
+import { SETTING, ERROR_MESSAGE } from '../constants';
 
-const printMessage = (message) => {
-  return Console.print(message);
-}
-
-const readLineAsync = async (message) => {
-  return Console.readLineAsync(message);
-}
-
-const getValidInputNames = (input) => {
+export const getValidInputNames = (input) => {
   const splittedInput = input.split(',').map(name => name.trim());
 
   const set = new Set(splittedInput);
@@ -33,7 +24,7 @@ const getValidInputNames = (input) => {
   return splittedInput;
 }
 
-const getValidInputNumber = (input) => {
+export const getValidInputNumber = (input) => {
   input = Number(input.trim());
   const { MIN_INPUT_NUMBER } = SETTING;
   const { NOT_NUMBER, NOT_RANGE, NOT_NATURAL_NUMBER, NOT_SAFE_INTEGER } = ERROR_MESSAGE;
@@ -56,15 +47,3 @@ const getValidInputNumber = (input) => {
 
   return input;
 }
-
-const getRandomNumber = () => {
-  const { MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER } = SETTING;
-  return MissionUtils.Random.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
-}
-
-const isforwardNumber = (num) => {
-  const { TARGET_FORWARD_NUMBER } = SETTING;
-  return num >= TARGET_FORWARD_NUMBER;
-}
-
-export { printMessage, readLineAsync, getValidInputNames, getValidInputNumber, getRandomNumber, isforwardNumber };
