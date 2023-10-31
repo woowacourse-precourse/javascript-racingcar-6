@@ -1,4 +1,4 @@
-import InputView from "./view/inputView.js";
+import InputView from "./view/input.js";
 import RacingController from "./controller/RacingController.js";
 
 class App {

@@ -1,6 +1,6 @@
 import { FORWARD_THRESHOLD } from "../constants/setting.js";
 import generateRandomNumber from "../util/generator.js";
-import OutputView from "../view/OutputView.js";
+import OutputView from "../view/output.js";
 
 class RacingController {
   // key: 자동차의 이름, value: 전진 거리
