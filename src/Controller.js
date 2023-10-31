@@ -3,10 +3,8 @@ import { MESSAGE } from "./Data.js";
 
 class Controller {
     // 참가자 객체 반환 함수
-    static async setPlayer() {
+    static async setPlayer(player) {
         try {
-            let player = await Console.readLineAsync(MESSAGE.GET_PLAYER);
-
             player = player.split(",").map((value) => {
                 return value.trim();
             }); // 앞뒤 공백 제거 및 배열로 분리
@@ -28,14 +26,12 @@ class Controller {
     }
 
     // 반복 횟수 반환 함수
-    static async setNumber() {
+    static async setNumber(number) {
         try {
-            const NUMBER = await Console.readLineAsync(MESSAGE.GET_NUMBER);
-
             //예외처리
-            if (isNaN(NUMBER)) throw new Error(MESSAGE.ERROR);
+            if (isNaN(number)) throw new Error(MESSAGE.ERROR);
 
-            return Number(NUMBER);
+            return Number(number);
         } catch (e) {
             throw new Error(e.message);
         }
