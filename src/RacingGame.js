@@ -1,6 +1,6 @@
 import InputManager from './InputManager.js';
 import Car from './Car.js';
-
+import { Console } from '@woowacourse/mission-utils';
 class RacingGame {
   constructor() {
     this.cars = [];
@@ -9,23 +9,32 @@ class RacingGame {
   async playRacing() {
     const inputManager = new InputManager();
     const carNameList = await this.getCarNameList(inputManager);
+
     this.genearteCarObjects(carNameList);
     this.tryNum = await this.getTryNum(inputManager);
+
+    for (let i = 0; i < this.tryNum; i++) await this.executeCycle();
   }
 
-  async getCarNameList(inputManager) {
+  getCarNameList(inputManager) {
     return inputManager.enterCarNameList();
   }
 
-  async getTryNum(inputManager) {
+  getTryNum(inputManager) {
     return inputManager.enterTryNum(inputManager);
   }
 
-  async genearteCarObjects(carNameList) {
+  genearteCarObjects(carNameList) {
     carNameList.forEach((carName) => {
       const car = new Car(carName);
       this.cars.push(car);
     });
+  }
+
+  async executeCycle() {
+    for (let j = 0; j < this.cars.length; j++) {
+      await this.cars[j].move();
+    }
   }
 }
 

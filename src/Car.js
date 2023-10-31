@@ -8,7 +8,6 @@ class Car {
 
   async move() {
     const randomNumber = await this.generateRandomNumber();
-    Console.print(randomNumber);
     if (this.getIsCanMove(randomNumber)) this.updateMoveCount();
   }
 
