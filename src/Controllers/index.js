@@ -23,6 +23,7 @@ class Controllers {
     const TIMES = await this.getUserInput(message);
     validate.validateNumberType(TIMES);
     validate.validateNumberLength(...TIMES);
+
     return TIMES;
   }
 

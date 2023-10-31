@@ -26,7 +26,6 @@ const getLogSpy = () => {
 describe("자동차 이름 입력", () => {
   test("정상적인 값 입력 시", async () => {
     const input = ["woon,toon"];
-    const logSpy = getLogSpy();
 
     mockQuestions(input);
 
@@ -46,6 +45,34 @@ describe("자동차 이름 입력", () => {
     // when
     const controllers = new Controllers();
     const result = controllers.getUserInput(...input);
+
+    //then
+    await expect(result).rejects.toThrow("[ERROR]");
+  });
+});
+
+describe("게임 시도 횟수 입력", () => {
+  test("정상적인 값 입력 시", async () => {
+    const input = ["5"];
+
+    mockQuestions(input);
+
+    // when
+    const controllers = new Controllers();
+    const result = await controllers.getTryTimes();
+
+    //then
+    expect(result).toEqual(["5"]);
+  });
+
+  test("숫자가 아닌 값을 입력 시", async () => {
+    const input = ["XX"];
+
+    mockQuestions(input);
+
+    // when
+    const controllers = new Controllers();
+    const result = controllers.getTryTimes();
 
     //then
     await expect(result).rejects.toThrow("[ERROR]");
