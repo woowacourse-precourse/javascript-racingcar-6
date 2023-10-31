@@ -32,23 +32,21 @@ class App {
   }
 
   processRound() {
-    let count = 0;
-    const positionCharacter = '-';
+    let roundCount = 0;
 
     Console.print(`\n${MESSAGES.GAME_RESULT}`);
 
-    while (this.round > count) {
+    while (this.round > roundCount) {
       this.vehicles.forEach(item => {
         const randomNumber = Random.pickNumberInRange(0, 9);
-        if (randomNumber >= 4) item.move();
+        const conditionMovement = randomNumber >= 4;
 
-        Console.print(
-          `${item.name} : ${positionCharacter.repeat(item.position)}`,
-        );
+        if (conditionMovement) item.move();
+        item.printPosition();
       });
 
       Console.print('');
-      count += 1;
+      roundCount += 1;
     }
   }
 
