@@ -7,6 +7,20 @@ class App {
     );
 
     const CAR_NAME_ARRAY = CAR_NAME.split(",");
+
+    this.carNameValidity(CAR_NAME_ARRAY);
+  }
+
+  carNameValidity(inputCarNameArray) {
+    this.numberOfCarValidity(inputCarNameArray);
+  }
+
+  numberOfCarValidity(inputCarNameArray) {
+    if (inputCarNameArray.length < 2) {
+      throw new Error(
+        "[ERROR]: 5글자 이하의 경주할 자동차 이름을 ,로 구분하여 입력하시오"
+      );
+    }
   }
 }
 
