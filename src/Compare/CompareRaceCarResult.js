@@ -5,6 +5,7 @@ class CompareRaceCarResult {
   #raceCars;
   #attempts;
   #finalForwardDistance = [];
+  #winners = [];
 
   constructor(racecarNames) {
     this.#raceCars = racecarNames
@@ -40,6 +41,14 @@ class CompareRaceCarResult {
       this.#finalForwardDistance.push(raceCar.getRaceCarForwardDistance());
     });
     return Math.max(...this.#finalForwardDistance);
+  }
+
+  getWinners() {
+    this.#raceCars.map((raceCar) => {
+      if (raceCar.getRaceCarForwardDistance() === this.getMaxForwardDistance())
+        this.#winners.push(raceCar.getRaceCarName());
+    });
+    return this.#winners;
   }
 }
 
