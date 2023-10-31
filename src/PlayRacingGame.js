@@ -36,8 +36,10 @@ class PlayRacingGame {
 
   async racing(names) {
     const number = await this.getNumber();
+    Console.print("\n");
     const cnt = new Array(names.length).fill(0);
 
+    Console.print("실행 결과");
     for (let i = 0; i < number; i++) {
       for (let j = 0; j < names.length; j++) {
         let randomNumber = this.makeRandomNumber();
@@ -46,11 +48,20 @@ class PlayRacingGame {
           cnt[j] += 1;
         }
       }
+      this.printCnt(names, cnt);
     }
   }
 
   makeRandomNumber() {
     return Random.pickNumberInRange(0, 9);
+  }
+
+  printCnt(names, cnt) {
+    for (let i = 0; i < names.length; i++) {
+      Console.print(`${names[i]} : ${"-".repeat(cnt[i])}`);
+    }
+
+    Console.print("\n");
   }
 }
 
