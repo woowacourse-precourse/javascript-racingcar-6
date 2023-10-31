@@ -57,4 +57,20 @@ class App {
     this.validateCarNames(carNames);
     this.carNames = input.split(",");
   }
+
+  moveCars() {
+    // 0에서 9사이 랜덤숫자를 생성해 자동차 이동하는 함수
+    for (let i = 0; i < this.cars.length; i++) {
+      const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
+      this.cars[i].move(randomNumber);
+    }
+  }
+
+  moveCarsResult() {
+    // 차 이동 결과 함수
+    for (let i = 0; i < this.cars.length; i++) {
+      const car = this.cars[i];
+      MissionUtils.Console.print(`${car.name} : ${car.getDistance()}`);
+    }
+  }
 }
