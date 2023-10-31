@@ -63,14 +63,15 @@ class App {
   }
 
   isValidCarNames() {
-    for (let i = 0; i < this.carNameList.length; i++) {
+    this.carNameList.map((_, index) => {
       const isValidCarName = !(
-        this.carNameList[i].length > 5 || this.carNameList[i].length === 0
+        this.carNameList[index].length > 5 ||
+        this.carNameList[index].trim().length === 0
       );
       if (!isValidCarName) {
         return false;
       }
-    }
+    });
     return true;
   }
 
