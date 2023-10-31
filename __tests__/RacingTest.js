@@ -1,4 +1,4 @@
-import race from '../src/Race';
+import race from '../src/controller/Race';
 import { Random } from '@woowacourse/mission-utils';
 describe('레이스 게임 테스트', () => {
   test('입력값에 따른 car 객체 생성', () => {
