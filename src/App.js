@@ -10,7 +10,8 @@ class App {
   }
 
   checkRound(input) {
-    if (/^\D+$/.test(input)) {
+    if (/^\D+$/.test(input) 
+        || Number(input) <= 0) {
       throw new Error("[ERROR]");
     }
   }
