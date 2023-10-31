@@ -18,16 +18,21 @@ class RacingGame {
     this.#tryCount = 0;
   }
 
-  async setupGame() {
+  async setupInputCarNames() {
     const carNames = await InputView.inputGetCarNames();
     if (validateCarNames(carNames)) {
       carNames.forEach((name) => this.addCar(name));
     }
 
+    this.setupInputTryCount();
+  }
+
+  async setupInputTryCount() {
     const tryCount = await InputView.inputgetTryCount();
     if (validateNumberInput(tryCount)) {
       this.#tryCount = tryCount;
     }
+    this.play();
   }
 
   addCar(name) {
@@ -45,8 +50,20 @@ class RacingGame {
       });
       OutputView.printRoundResults(this.#cars);
     }
+    this.findWinners();
+  }
 
-    OutputView.printFinalResult(this.#cars);
+  findWinners() {
+    const maxPosition = Math.max(...this.#cars.map((car) => car.getPosition()));
+    const winners = this.#cars
+      .filter((car) => car.getPosition() === maxPosition)
+      .map((car) => car.getName());
+
+    this.showWinners(winners);
+  }
+
+  showWinners(winners) {
+    OutputView.printFinalResult(winners);
   }
 }
 

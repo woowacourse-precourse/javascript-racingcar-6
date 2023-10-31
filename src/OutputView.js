@@ -15,12 +15,7 @@ const OutputView = {
     MissionUtils.Console.print('');
   },
 
-  printFinalResult(cars) {
-    const maxPosition = Math.max(...cars.map((car) => car.getPosition()));
-    const winners = cars
-      .filter((car) => car.getPosition() === maxPosition)
-      .map((car) => car.getName());
-
+  printFinalResult(winners) {
     MissionUtils.Console.print(GAME_MESSAGES.FINAL_WINNER + winners.join(', '));
   },
 };
