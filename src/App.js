@@ -1,5 +1,17 @@
+import RacingCarGameManager from './game/RacingCarGame/RacingCarGameManager';
+
 class App {
-  async play() {}
+  #game;
+
+  constructor(game = new RacingCarGameManager()) {
+    this.#game = game;
+  }
+
+  async play() {
+    await this.#game.initializeGame();
+    this.#game.runGame();
+    this.#game.displayResult();
+  }
 }
 
 export default App;
