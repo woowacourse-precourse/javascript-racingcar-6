@@ -17,16 +17,15 @@ class App {
 
   async inputCarNames() {
     const carNames = await Console.readLineAsync('');
-    const carNameList = carNames.split(',');
-    const trimmedCarNames = carNameList.map((carName) => carName.trim());
+    const carNameList = carNames.split(',').map((carName) => carName.trim());
 
-    if (!this.isValidCarNamesInput(trimmedCarNames)) {
+    if (!this.isValidCarNamesInput(carNameList)) {
       throw new Error('[ERROR] 잘못된 입력값입니다.');
     }
 
     const racingCarList = new Map();
     carNameList.forEach((racingCar) => {
-      racingCarList.set(racingCar);
+      racingCarList.set(racingCar, '');
     });
 
     return racingCarList;
