@@ -12,12 +12,20 @@ const mockRacingCountInput = (racingCount) => {
   });
 };
 
+const mockRandoms = (numbers) => {
+  Random.pickNumberInRange = jest.fn();
+
+  numbers.reduce((acc, number) => {
+    return acc.mockReturnValueOnce(number);
+  }, Random.pickNumberInRange);
+};
+
 const mockSettingCars = (carsNamesInput) => {
   const carsNamesArray = carsNamesInput.split(',');
   const registeredCars = carsNamesArray.map((name) => new Car(name));
 
   SettingCars.registerCars = jest.fn().mockReturnValue(registeredCars);
-
+  
   return registeredCars;
 };
 
@@ -41,5 +49,18 @@ describe('레이싱 게임 플레이와 관련된 함수 테스트', () => {
     mockRacingCountInput(inputs);
 
     await expect(racingGame.getRacingCount()).rejects.toThrow('[ERROR]');
+  });
+
+  test('자동차 전진(이동) 테스트', () => {
+    const MOVE_NUMBER = 5;
+    const STAY_NUMBER = 1;
+    const controlRandoms = [MOVE_NUMBER, STAY_NUMBER];
+
+    mockRandoms([...controlRandoms]);
+    racingGame.playRacing();
+
+    racingGame.carsList.forEach((car) => {
+      expect(car.location).toBe(1);
+    });
   });
 });
