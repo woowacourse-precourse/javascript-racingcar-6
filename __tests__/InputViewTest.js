@@ -40,6 +40,12 @@ describe('자동차 경주 입력 문구 출력 테스트', () => {
 })
 
 describe('자동차 이름 입력 예외 테스트', () => {
+  test('공백은 입력될 수 없습니다.', async () => {
+    const app = new App();
+    mockConsoleFn('daeun, james');
+    await expect(()=> app.play()).rejects.toThrow(ERROR_MESSAGE.BLANK);
+  })
+
   test('자동차는 소문자 영어만 입력가능합니다.', async () => {
     const app = new App();
     mockConsoleFn('Daeun,James');
