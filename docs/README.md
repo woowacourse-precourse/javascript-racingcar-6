@@ -39,41 +39,41 @@
 
 ## 프로그래밍 요구 사항
 
-- [ ] Node.js 18.17.1 버전에서 실행 가능해야 한다.
-- [ ] 프로그램 실행의 시작점은 App.js의 play 메서드이다.
-- [ ] package.json을 변경할 수 없고 외부 라이브러리(jQuery, Lodash 등)를 사용하지 않는다.
-- [ ] JavaScript 코드 컨벤션을 지키면서 프로그래밍 한다.
-- [ ] process.exit()를 호출하지 않는다.
-- [ ] ApplicationTest의 모든 테스트가 성공해야 한다.
-- [ ] 프로그래밍 요구 사항에서 달리 명시하지 않는 한 파일, 패키지 이름을 수정하거나 이동하지 않는다.
-- [ ] indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다.
-- [ ] Jest를 이용하여 본인이 정리한 기능 목록이 정상 동작함을 테스트 코드로 확인한다.
-- [ ] @woowacourse/mission-utils에서 제공하는 Random 및 Console API를 사용하여 구현해야 한다.
-  - [ ] Random 값 추출은 Random.pickNumberInRange()를 활용한다.
-  - [ ] 사용자의 값을 입력 받고 출력하기 위해서는 Console.readLineAsync, Console.print를 활용한다.
-- [ ] 요구 사항에 명시된 출력값 형식을 지킨다.
+- [x] Node.js 18.17.1 버전에서 실행 가능해야 한다.
+- [x] 프로그램 실행의 시작점은 App.js의 play 메서드이다.
+- [x] package.json을 변경할 수 없고 외부 라이브러리(jQuery, Lodash 등)를 사용하지 않는다.
+- [x] JavaScript 코드 컨벤션을 지키면서 프로그래밍 한다.
+- [x] process.exit()를 호출하지 않는다.
+- [x] ApplicationTest의 모든 테스트가 성공해야 한다.
+- [x] 프로그래밍 요구 사항에서 달리 명시하지 않는 한 파일, 패키지 이름을 수정하거나 이동하지 않는다.
+- [x] indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다.
+- [x] Jest를 이용하여 본인이 정리한 기능 목록이 정상 동작함을 테스트 코드로 확인한다.
+- [x] @woowacourse/mission-utils에서 제공하는 Random 및 Console API를 사용하여 구현해야 한다.
+  - [x] Random 값 추출은 Random.pickNumberInRange()를 활용한다.
+  - [x] 사용자의 값을 입력 받고 출력하기 위해서는 Console.readLineAsync, Console.print를 활용한다.
+- [x] 요구 사항에 명시된 출력값 형식을 지킨다.
 
 ## 과제 진행 요구 사항
 
 - [x] 미션은 javascript-racingcar-6 저장소를 Fork & Clone해 시작한다.
 - [x] 기능을 구현하기 전 docs/README.md에 구현할 기능 목록을 정리해 추가한다.
-- [ ] Git의 커밋 단위는 앞 단계에서 docs/README.md에 정리한 기능 목록 단위로 추가한다.
-- [ ] 커밋 메시지 컨벤션 가이드를 참고해 커밋 메시지를 작성한다.
+- [x] Git의 커밋 단위는 앞 단계에서 docs/README.md에 정리한 기능 목록 단위로 추가한다.
+- [x] 커밋 메시지 컨벤션 가이드를 참고해 커밋 메시지를 작성한다.
 
 ## 공통 피드백
 
-- [ ] 요구사항을 정확히 준수한다.
-- [ ] 커밋 메시지를 의미 있게 작성한다.
-- [ ] git을 통해 관리할 자원에 대해서도 고려한다.
-- [ ] Pull Request를 보내기 전 브랜치를 확인한다.
-- [ ] PR을 한 번 작성했다면 닫지 말고 추가 커밋을 한다.
-- [ ] 이름을 통해 의도를 드러낸다.
-- [ ] 축약하지 않는다.
-- [ ] 공백도 코딩 컨벤션이다.
-- [ ] 공백 라인을 의미 있게 사용한다.
-- [ ] space와 tab을 혼용하지 않는다.
-- [ ] 의미 없는 주석을 달지 않는다.
-- [ ] linter와 Code Formatter의 기능을 활용한다.
-- [ ] EOL(End Of Line)을 확인한다.
-- [ ] 불필요한 console.log를 남기지 않는다.
-- [ ] JavaScript에서 제공하는 API를 적극 활용한다.
+- [x] 요구사항을 정확히 준수한다.
+- [x] 커밋 메시지를 의미 있게 작성한다.
+- [x] git을 통해 관리할 자원에 대해서도 고려한다.
+- [x] Pull Request를 보내기 전 브랜치를 확인한다.
+- [x] PR을 한 번 작성했다면 닫지 말고 추가 커밋을 한다.
+- [x] 이름을 통해 의도를 드러낸다.
+- [x] 축약하지 않는다.
+- [x] 공백도 코딩 컨벤션이다.
+- [x] 공백 라인을 의미 있게 사용한다.
+- [x] space와 tab을 혼용하지 않는다.
+- [x] 의미 없는 주석을 달지 않는다.
+- [x] linter와 Code Formatter의 기능을 활용한다.
+- [x] EOL(End Of Line)을 확인한다.
+- [x] 불필요한 console.log를 남기지 않는다.
+- [x] JavaScript에서 제공하는 API를 적극 활용한다.
