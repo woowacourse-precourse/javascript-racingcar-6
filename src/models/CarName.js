@@ -3,3 +3,5 @@ class CarName {
     this.carname = carname;
   }
 }
+
+export default CarName;
