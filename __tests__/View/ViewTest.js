@@ -2,7 +2,6 @@ import { MissionUtils } from '@woowacourse/mission-utils';
 import View from '../../src/View/View';
 import ERROR from '../../src/constants/error';
 import InputView from '../../src/View/InputView';
-import mockRaceResult from '../mock/raceResult';
 import OutputView from '../../src/View/OutputView';
 
 const mockQuestions = (inputs) => {
@@ -116,6 +115,57 @@ describe('View 테스트', () => {
     beforeEach(() => {
       jest.spyOn(OutputView, 'print');
     });
+
+    const mockRaceResult = [
+      {
+        raceResult: [
+          [
+            { name: 'pobi', position: 0 },
+            { name: 'crong', position: 0 },
+            { name: 'honux', position: 1 },
+          ],
+        ],
+        winner: ['honux'],
+        expected: `\n실행 결과\npobi : \ncrong : \nhonux : -\n`,
+      },
+      {
+        raceResult: [
+          [
+            { name: 'pobi', position: 1 },
+            { name: 'crong', position: 1 },
+            { name: 'honux', position: 1 },
+          ],
+          [
+            { name: 'pobi', position: 1 },
+            { name: 'crong', position: 2 },
+            { name: 'honux', position: 1 },
+          ],
+        ],
+        winner: ['crong'],
+        expected: `\n실행 결과\npobi : -\ncrong : -\nhonux : -\n\npobi : -\ncrong : --\nhonux : -\n`,
+      },
+      {
+        raceResult: [
+          [
+            { name: 'pobi', position: 0 },
+            { name: 'crong', position: 1 },
+            { name: 'honux', position: 0 },
+          ],
+          [
+            { name: 'pobi', position: 1 },
+            { name: 'crong', position: 2 },
+            { name: 'honux', position: 0 },
+          ],
+          [
+            { name: 'pobi', position: 2 },
+            { name: 'crong', position: 3 },
+            { name: 'honux', position: 1 },
+          ],
+        ],
+        winner: ['crong'],
+        expected: `\n실행 결과\npobi : \ncrong : -\nhonux : \n\npobi : -\ncrong : --\nhonux : \n\npobi : --\ncrong : ---\nhonux : -\n`,
+      },
+    ];
 
     mockRaceResult.forEach(({ raceResult, winner, expected }) => {
       test(`자동차 이름과 위치를 출력한다. (${raceResult.length} 라운드)`, () => {
