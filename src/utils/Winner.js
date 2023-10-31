@@ -7,15 +7,15 @@ export function getWinner(carNameObj) {
 	printWinner(maxKeys);
 }
 
-function findMaxValue(carNameObj) {
+export function findMaxValue(carNameObj) {
 	return Math.max(...Object.values(carNameObj));
 }
 
-function findMaxKeys(carNameObj, max) {
+export function findMaxKeys(carNameObj, max) {
 	return Object.keys(carNameObj).filter((key) => carNameObj[key] === max);
 }
 
-function printWinner(maxKeys) {
+export function printWinner(maxKeys) {
 	if (maxKeys.length > 1) {
 		Console.print(`최종 우승자 : ${maxKeys.join(', ')}`);
 	}

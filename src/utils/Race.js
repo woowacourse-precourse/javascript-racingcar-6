@@ -5,9 +5,7 @@ import { printCarPosition } from './Output.js';
 
 // 자동차의 전진 현황을 나타내줌
 
-function isGoForward(name, carNameObj) {
-	const randomNum = createRandomNum();
-
+function isGoForward(name, carNameObj, randomNum) {
 	if (validateForMove(randomNum)) {
 		carNameObj[name] += 1;
 	}
@@ -15,17 +13,18 @@ function isGoForward(name, carNameObj) {
 	printCarPosition(name, carNameObj[name]);
 }
 
-function carMove(carNames, carNameObj) {
+export function carMove(carNames, carNameObj, randomNum) {
 	carNames.map((name) => {
-		isGoForward(name, carNameObj);
+		isGoForward(name, carNameObj, randomNum);
 	});
 }
 
 export async function runRaces(carNames, carNameObj, playCount) {
 	let count = 0;
+	const randomNum = createRandomNum();
 
 	while (count < playCount) {
-		carMove(carNames, carNameObj);
+		carMove(carNames, carNameObj, randomNum);
 		count += 1;
 		Console.print('');
 	}

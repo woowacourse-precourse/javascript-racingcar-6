@@ -2,8 +2,7 @@ import { Console } from '@woowacourse/mission-utils';
 import { validateNames, validatePlayCount } from './Validation.js';
 import { promptCarNames, promptPlayCount } from './Output.js';
 
-export async function getCarNamesList() {
-	const carNames = await promptCarNames();
+export async function getCarNamesList(carNames) {
 	const carNamesList = carNames.split(',');
 
 	validateNames(carNamesList);
@@ -11,9 +10,7 @@ export async function getCarNamesList() {
 	return carNamesList;
 }
 
-export async function getPlayCount() {
-	const playCount = await promptPlayCount();
-
+export async function getPlayCount(playCount) {
 	validatePlayCount(playCount);
 
 	Console.print('');
