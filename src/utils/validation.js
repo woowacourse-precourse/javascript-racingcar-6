@@ -16,15 +16,9 @@ const validation = {
     return 0;
   },
 
-  isValidType(inputArr) {
-    // NOTE 특수문자, 숫자, 한글, 등 더 처리할 예외가 있을까?
-    // 공백을 어떻게 처리할지 고민 필요
-  },
-
   carNameValidCheck(splitInput) {
     this.isValidLength(splitInput);
     this.isDuplicated(splitInput);
-    this.isValidType(splitInput);
   },
 
   isNumber(input) {

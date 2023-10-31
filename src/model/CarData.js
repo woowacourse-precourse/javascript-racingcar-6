@@ -22,11 +22,12 @@ class CarData {
   }
 
   moveCar() {
-    this.#carList.forEach((car) => {
+    this.#carList = this.#carList.map((car) => {
       if (CarData.moveOrNot()) {
-        car.move += 1;
-        this.updateMaxMove(car.move);
+        this.updateMaxMove(car.move + 1);
+        return { ...car, move: car.move + 1 };
       }
+      return car;
     });
     return this.#carList;
   }
