@@ -1,6 +1,6 @@
-import { Random } from '@woowacourse/mission-utils';
 import Cars from '../models/Cars.js';
 import View from '../views/View.js';
+import caculateEachTurnMoving from '../util/calculateEachTurnMoving.js';
 import { ERROR_MESSAGE } from '../constants/message.js';
 import { carsValidationLengthAndChar, TURN_VALIDATE } from '../util/validation.js';
 
@@ -95,9 +95,7 @@ class Controller {
   }
 
   static #pickEachCarMoving() {
-    const moving = Random.pickNumberInRange(0, 9);
-    if (moving < 4) return '';
-    return '-';
+    return caculateEachTurnMoving();
   }
 
   // 승자 계산하기
