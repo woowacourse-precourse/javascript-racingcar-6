@@ -1,4 +1,5 @@
 import { Console, Random } from '@woowacourse/mission-utils';
+import returnWinners from './returnWinner.js';
 
 const getRandomMove = () => Random.pickNumberInRange(0, 9);
 
@@ -14,6 +15,8 @@ const runRace = (cars, tryCount) => {
     });
     Console.print('');
   }
+
+  returnWinners(cars, progressList);
 };
 
 export default runRace;
