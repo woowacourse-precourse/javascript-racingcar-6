@@ -91,6 +91,14 @@ class App {
     Console.print(" ");
   }
 
+  async playRacing() {
+    Console.print(GAME_INFO.GAME_RESULT);
+    for (let i = 0; i < this.tryNumber; i++) {
+      await this.oneCycleRacing();
+    }
+    await this.showWinner();
+  }
+
 }
 
 export default App;
