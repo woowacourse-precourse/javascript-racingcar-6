@@ -61,7 +61,7 @@ describe('Track 테스트', () => {
     const track = Track.of(users, 5);
 
     // when
-    const userAccelerateSpy = track.getUsers().map((user) => jest.spyOn(user, 'accelerate'));
+    const userAccelerateSpy = Array.from(users, (user) => jest.spyOn(user, 'accelerate'));
     track.processLap();
 
     // then
