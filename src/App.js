@@ -98,7 +98,23 @@ class App {
     return process;
   }
 
-  endGame(result) {}
+  endGame(result) {
+    const reducerCallback = (a, b) => {
+      if (a.location.length >= b.location.length) {
+        return a;
+      } else {
+        return b;
+      }
+    };
+    let maxlocation = result.reduce((a, b) => reducerCallback(a, b));
+    let winner = result
+      .filter((element) =>
+        element.location === maxlocation.location ? true : false
+      )
+      .map((element) => element.name)
+      .join(", ");
+    Console.print(`최종우승자 : ${winner}`);
+  }
 }
 
 export default App;
