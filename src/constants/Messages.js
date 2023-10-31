@@ -20,7 +20,7 @@ const MESSAGES = {
     INVALID_INPUT_FORMAT_ROUND: '[ERROR] 시도할 횟수는 숫자로 입력해주세요.',
   },
   GAME_RESULT: '실행 결과',
-  GAME_WINNER: '최종 우승자 : ',
+  GAME_WINNER: '최종 우승자',
 };
 
 export default MESSAGES;

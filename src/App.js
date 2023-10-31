@@ -50,10 +50,22 @@ class App {
     }
   }
 
+  printGameWinner() {
+    const gameResult = this.vehicles.map(item => Object.values(item));
+    const farthestPosition = Math.max(...gameResult.map(item => item[1]));
+    const winnerList = gameResult
+      .filter(item => item[1] === farthestPosition)
+      .map(item => item[0]);
+
+    const printWinnerText = `${MESSAGES.GAME_WINNER} : ${winnerList.join(',')}`;
+    Console.print(printWinnerText);
+  }
+
   async play() {
     await this.setVehicles();
     await this.setRound();
     this.processRound();
+    this.printGameWinner();
   }
 }
 
