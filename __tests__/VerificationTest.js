@@ -11,6 +11,12 @@ const mockQuestions = (inputs) => {
   });
 };
 
+const getLogSpy = () => {
+  const logSpy = jest.spyOn(Console, "print");
+  logSpy.mockClear();
+  return logSpy;
+};
+
 describe("함수별 기능 테스트", () => {
   test("경주차 생성자 만드는 함수에 대한 테스트", () => {
     const input = ["abc","def","ghi"];
@@ -59,5 +65,23 @@ describe("함수별 기능 테스트", () => {
         expect(car[0].moveNumber).toEqual(0);
       } 
     }
+  });
+
+  test("각 라운드마다 경주차 전진 정도를 출력하는 함수에 대한 테스트", () => {
+    const app = new App();
+    const cars = app.makeCars(["a","b"]);
+    const random1 = [5,2,7];
+    const random2 = [2,2,5];
+    const logSpy = getLogSpy();
+    const outputs = ["a : -","b :","a : -","b : -","a : --","b : -"];
+    for (let i = 0; i < 3; i += 1) {
+      cars[0].randomNumber = random1[i];
+      cars[1].randomNumber = random2[i];
+      app.getEachCarsMove(cars);
+      app.exportEachRoundResults(cars);
+    }
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    })
   });
 })
