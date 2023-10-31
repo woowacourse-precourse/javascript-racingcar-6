@@ -9,3 +9,5 @@ export const GAME_RULL = Object.freeze({
   END_PICK_NUMBER: 9,
   MOVE_CONDITION_COUNT: 4,
 });
+
+export const STEP_SYMBOL = '-';

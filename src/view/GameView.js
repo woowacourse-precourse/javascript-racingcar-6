@@ -1,9 +1,8 @@
 import { Console } from '@woowacourse/mission-utils';
 import { MESSAGE } from '../constants/messages.js';
+import { STEP_SYMBOL } from '../constants/gameRules.js';
 
 export default class GameView {
-  #stepSymbol = '-';
-
   print(message = '') {
     Console.print(message);
   }
@@ -13,7 +12,7 @@ export default class GameView {
   }
 
   printResult({ name, count }) {
-    Console.print(`${name} : ${this.#stepSymbol.repeat(count)}`);
+    Console.print(`${name} : ${STEP_SYMBOL.repeat(count)}`);
   }
 
   printWinner(winners) {
