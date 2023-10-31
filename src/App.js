@@ -47,8 +47,8 @@ function parsing(carNames){
 }
 
 function validate(carName){
-  if (carName === '' || !/^[a-zA-Z]+$/.test(carName)){
-    throw new Error("[Error] 문자열 오류")
+  if (carName === '' || !/^[a-zA-Z]+$/.test(carName)||carName.length>5 ){
+    throw new Error("[ERROR]")
   }
 }
 
