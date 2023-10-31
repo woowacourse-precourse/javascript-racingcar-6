@@ -1,9 +1,9 @@
-import CarRacingReferee from './CarRacingReferee';
-const carRacingReferee = new CarRacingReferee();
+import Referee from './Referee';
+const referee = new Referee();
 
 class App {
   async play() {
-    await carRacingReferee.raceStart();
+    await referee.raceStart();
   }
 }
 
