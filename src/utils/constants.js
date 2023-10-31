@@ -1,23 +1,34 @@
 const FORWARD = Object.freeze({
-  CONDITION_NUM: 4,
+  CONDITION: 4,
   TRUE: 1,
+  EXPRESSION: '-',
 });
 
-const INPUT_MSG = Object.freeze({
-  INPUT_CAR_NAMES:
+const INPUT_MESSAGE = Object.freeze({
+  NAMES:
     '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분합니다.)\n',
-  INPUT_TRY_COUNT: '시도할 횟수는 몇회인가요?\n',
+  TRY_COUNT: '시도할 횟수는 몇 회인가요?\n',
 });
 
-const OUTPUT_MSG = Object.freeze({
+const OUTPUT_MESSAGE = Object.freeze({
   RESULT: '실행 결과',
-  WINNERS: winners => `${winners}(이)가 최종 우승했습니다.`,
+  WINNERS: '최종 우승자:',
 });
 
-const ERROR_MSG = Object.freeze({
-  CAR_NAME_LENGTH: '[ERROR] 자동차 이름은 5자 이하만 가능합니다.',
-  CAR_NAME_DUPLICATE: '[ERROR] 자동차 이름은 중복될 수 없습니다.',
-  TRY_COUNT: '[ERROR] 시도 횟수는 1 이상의 자연수를 입력해야 합니다.',
+const VALID_LEN = Object.freeze({
+  MIN_NAME: 1,
+  MAX_NAME: 5,
+  MIN_RACE: 1,
+  MIN_CAR_NAME: 2,
 });
 
-export { FORWARD, INPUT_MSG, OUTPUT_MSG, ERROR_MSG };
+const ERROR_MESSAGE = Object.freeze({
+  INVALID_INPUT: `[ERROR] 잘못된 입력입니다.`,
+  NAME_DUPLICATE: `[ERROR] 자동차 이름은 중복되지 않아야 합니다.`,
+  NAME_LENGTH: `[ERROR] 이름은 1글자 이상, 5글자 이하만 가능합니다.`,
+  INVALID_CAR_LENGTH: `[ERROR] 최소 2대 이상의 자동차 이름을 입력해야 합니다.`,
+  INVALID_TRY_COUNT_TYPE: `[ERROR] 시도 횟수는 자연수만 가능합니다.`,
+  INVALID_TRY_COUNT_NUM: `[ERROR] 시도 횟수는 1 이상의 숫자만 가능합니다.`,
+});
+
+export { FORWARD, INPUT_MESSAGE, OUTPUT_MESSAGE, VALID_LEN, ERROR_MESSAGE };
