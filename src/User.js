@@ -18,4 +18,15 @@ export async function inputParticipantCarName() {
   return userList;
 }
 
+export async function validParticipantCarName(carNameList) {
+  carNameList.forEach((name) => {
+    if (name.length > 5 || name.length < 1) {
+      throw new Error('[ERROR] 자동차 이름은 1자 ~ 5자 사이를 입력해주세요');
+    }
+  });
+  if (carNameList.length > 5 || carNameList < 1) {
+    throw new Error('[ERROR] 참가자는 1팀 ~ 5팀이 있어야 진행이 가능합니다');
+  }
+}
+
 export default User;
