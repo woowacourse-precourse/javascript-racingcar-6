@@ -1,7 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 class App {
-  async play() {}
-
   validateCar = (cars) => {
     for (let car of cars) {
       if (car.length > 5) {
@@ -25,13 +23,19 @@ class App {
     const cars = input.split(",");
     this.validateCar(cars);
     let car = this.carCreate(cars);
-    // if(this.validateCar(cars)) this.racingGame(cars, car);
+    if (this.validateCar(cars)) this.attempts(cars, car);
   }
 
-  async attempts() {
+  async attempts(cars, car) {
     const input = await MissionUtils.Console.readLineAsync(
       "시도할 횟수는 몇 회인가요?\n"
     );
+
+    while (input > 0) {
+      this.racingGame(cars, car);
+      this.racingResult(cars, car);
+      input--;
+    }
   }
 
   racingGame(cars, car) {
@@ -47,14 +51,18 @@ class App {
 
   racingResult(cars, car) {
     for (let carName of cars) {
-      const location = car.get(carName);
+      const score = car.get(carName);
       let result = "";
-      for (let i = 0; i < location; i++) {
+      for (let i = 0; i < score; i++) {
         result += "-";
       }
       MissionUtils.Console.print(carName + " : " + result);
     }
     MissionUtils.Console.print("");
+  }
+
+  async play() {
+    createCarName();
   }
 }
 
