@@ -1,4 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
+import { transformKeysValue } from "./transformKeyValue";
 
 export const carsName = async () => {
   const userInputValue = await Console.readLineAsync(
@@ -10,7 +11,9 @@ export const carsName = async () => {
   });
 
   result.forEach((name) => {
-    if (Object.keys(name)[0].length > 5) {
+    const carName = transformKeysValue(name);
+
+    if (carName[0].length > 5) {
       throw new Error(
         "[ERROR] 자동차 이름의 길이는 5자 이하입니다. 게임을 다시 시작해주세요"
       );
