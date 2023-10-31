@@ -1,9 +1,12 @@
-import Game from "./Game.js";
+import Game from './Game';
 
 class App {
+  constructor() {
+    this.game = new Game();
+  }
+
   async play() {
-    const game = new Game();
-    await game.start();
+    await this.game.start();
   }
 }
 

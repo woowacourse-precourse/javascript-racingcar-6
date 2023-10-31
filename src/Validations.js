@@ -1,4 +1,7 @@
-import { PRINT, SET_MAXIMUM_CAR_LENGTH } from "./constants.js";
+import { SET_MAXIMUM_CAR_LENGTH } from './constants';
+
+const isNumericString = (value) => /^[0-9]+$/.test(value);
+
 /**
  * input 값이 다음 조건인지 확인후 null 혹은 숫자를 반환
  *  1. 숫자로 이루어졌는지 확인
@@ -11,15 +14,12 @@ export function parseValidNumber(input) {
   if (!isNumericString(input)) {
     return null;
   }
-  const inputToNumber = parseInt(input);
-  if (0 === inputToNumber || Number.MAX_SAFE_INTEGER < inputToNumber) {
+  const inputToNumber = parseInt(input, 10);
+  if (inputToNumber === 0 || Number.MAX_SAFE_INTEGER < inputToNumber) {
     return null;
   }
   return inputToNumber;
 }
-const isNumericString = (value) => {
-  return /^[0-9]+$/.test(value);
-};
 
 /**
  * input 값이 다음 내용 조건에 맞는지 확인 후 null 혹은 문자열 배열을 반환
@@ -32,10 +32,10 @@ const isNumericString = (value) => {
  * @returns
  */
 export async function parseValidCarNames(input, separator) {
-  let carNameList = input.trim().split(separator);
-  for (let i = 0; i < carNameList.length; i++) {
+  const carNameList = input.trim().split(separator);
+  for (let i = 0; i < carNameList.length; i += 1) {
     carNameList[i] = carNameList[i].trim();
-    if (carNameList[i] === "") return null;
+    if (carNameList[i] === '') return null;
 
     if (SET_MAXIMUM_CAR_LENGTH < carNameList[i].length) return null;
   }
