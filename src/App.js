@@ -1,26 +1,26 @@
 import { Console, Random } from '@woowacourse/mission-utils';
 import {
+  CAR_INPUT_PATTERN,
+  CAR_INPUT_DUPLICATE_PATTERN,
+  RETRY_INPUT_PATTERN,
   validate,
-  inputCarRegex,
-  inputCarDuplicateRegex,
-  inputNumberRegex,
 } from './validate.js';
 
 class App {
   async play() {
     Console.print('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)');
     const carInput = (await Console.readLineAsync('')).trim();
-    if (!validate(carInput, inputCarRegex)) {
+    if (!validate(carInput, CAR_INPUT_PATTERN)) {
       throw new Error('[ERROR] 입력이 잘못된 형식입니다.');
     }
-    if (validate(carInput, inputCarDuplicateRegex)) {
+    if (validate(carInput, CAR_INPUT_DUPLICATE_PATTERN)) {
       throw new Error('[ERROR] 중복된 입력값입니다.');
     }
     const cars = carInput.split(',');
 
     Console.print('시도할 횟수는 몇 회인가요?');
     const retryInput = (await Console.readLineAsync('')).trim();
-    if (!validate(retryInput, inputNumberRegex)) {
+    if (!validate(retryInput, RETRY_INPUT_PATTERN)) {
       throw new Error('[ERROR] 입력이 잘못된 형식입니다.');
     }
     const retry = Number(retryInput);
