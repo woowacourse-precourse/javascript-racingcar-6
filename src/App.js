@@ -82,11 +82,12 @@ class App {
 
     await CARS.sort((a, b) => b.position - a.position);
 
-    for (let i = 0; i < CARS.length; i++) {
-      winner.push(CARS[i].name);
-      if (CARS.length === 1) {
-        break;
-      } else if (CARS[i].position > CARS[i + 1].position) {
+    winner.push(CARS[0].name);
+
+    for (let i = 1; i < CARS.length; i++) {
+      if (CARS[0].position === CARS[i].position) {
+        winner.push(CARS[i].name);
+      } else {
         break;
       }
     }
