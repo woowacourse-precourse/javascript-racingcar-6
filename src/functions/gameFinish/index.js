@@ -1,4 +1,6 @@
-const checkDistanceResult = carDistanceList => {
+import { MESSAGE } from '../../constants/message';
+
+export const checkDistanceResult = carDistanceList => {
   let winnerList = [];
 
   carDistanceList.reduce((maxDistance, currentCar) => {
@@ -16,4 +18,16 @@ const checkDistanceResult = carDistanceList => {
   return winnerList;
 };
 
-export default checkDistanceResult;
+export const printWinner = winnerList => {
+  let winnerMessage = MESSAGE.printWinner;
+
+  winnerList.forEach((winner, index) => {
+    if (index === 0) {
+      winnerMessage += winner;
+    } else {
+      winnerMessage += `, ${winner}`;
+    }
+  });
+
+  return winnerMessage;
+};
