@@ -13,9 +13,9 @@ class App {
 
     const splitInputs = input.split(",");
     splitInputs.map((car) => {
-      if (car.length <= 5 && car.length > 0) this.cars.push(new Car(car, 0));
-      else if (car.length === 0) throw new Error("[ERROR] 이름이 없을 수 없습니다.");
-      else throw new Error("[ERROR] 이름이 5자리 이상입니다.");
+      const carName = car.trim();
+      if (carName.length <= 5 && carName.length > 0) this.cars.push(new Car(carName, 0));
+      else throw new Error("[ERROR] 이름이 없을 수 없습니다.");
     });
   }
 

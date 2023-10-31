@@ -29,6 +29,13 @@ describe("InputCars() 테스트", () => {
     await expect(app.inputCars()).rejects.toThrow("[ERROR]");
   });
 
+  test("이름이 길이만 존재하는 공백인 경우", async () => {
+    mockQuestions(["pobi,    ,gabozago"]);
+    const app = new App();
+
+    await expect(app.inputCars()).rejects.toThrow("[ERROR]");
+  });
+
   test.each([[["pobi,,gabozago"]], [["gabozago,pobli,"]]])("이름의 길이가 0인 경우", async (inputs) => {
     mockQuestions(inputs);
 
