@@ -68,7 +68,7 @@ class UserInput{
   
   checkStringLengthBelow(condition, string) {
     if (string.length > condition) {
-      throw console.error(message.inputValidationError);
+      throw new Error (message.inputValidationError);
     }
   }
 }
@@ -83,7 +83,7 @@ class RacingCar {
 
   tryMoveForward() {
     const { low, high, criteria } = this.condition;
-    (this.getRandomNumber(low, high) > criteria) && (this.progress += 1);
+    (this.getRandomNumber(low, high) >= criteria) && (this.progress += 1);
   }
 
   getRandomNumber(low, high) {
