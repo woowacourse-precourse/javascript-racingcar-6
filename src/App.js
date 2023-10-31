@@ -8,11 +8,14 @@ class App {
     let carNames = parsing(carNamesBeforeParsing);
     
     const tryNum = await getTryNumInput();
-    
+
+    Console.print("");
+    Console.print("실행 결과");
     for(let i=0; i<tryNum; i++){
       positionLoop(carNames, carPositions);
+      printPositions(carPositions);
     }
-    console.log(findWinners(carPositions));
+    Console.print(`최종 우승자 : ${findWinners(carPositions).join(', ')}`);
   }
 }
 
@@ -45,7 +48,7 @@ function parsing(carNames){
 
 function validate(carName){
   if (carName === '' || !/^[a-zA-Z]+$/.test(carName)){
-    throw Error("[Error] ")
+    throw new Error("[Error] 문자열 오류")
   }
 }
 
@@ -72,7 +75,6 @@ function updateCarPos(carName, carPositions, dice){
 function positionLoop(carNames, carPositions){
   for(let i=0; i<carNames.length; i++){
     const dice = getRandom();
-    console.log(dice);
     updateCarPos(carNames[i], carPositions, dice);
   }
 }
@@ -93,4 +95,11 @@ function findWinners(carPositions){
     }
   }
   return winners;
+}
+
+function printPositions(carPositions) {
+  for (const car in carPositions) {
+    Console.print(`${car} : ${'-'.repeat(carPositions[car])}`);
+  }
+  Console.print("");
 }
