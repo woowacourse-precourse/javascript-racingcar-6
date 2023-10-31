@@ -63,6 +63,7 @@ class App {
       saveResult.forEach(({ carName, action }) => {
         Console.print(`${carName} : ${action}`);
       })
+      Console.print('');
     })
     let maxDistance = 0;
     const winners = [];
