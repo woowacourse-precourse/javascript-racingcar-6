@@ -19,4 +19,12 @@ describe('모든 자동차 입력값을 담당하는 클래스에 대한 테스�
       AllNamesOfCars.fromInputString(inputString);
     }).toThrow(new AppError(ERROR_MESSAGES.have_duplication));
   });
+
+  test('참가 자동차가 1대일때 예외가 발생한다.', () => {
+    const inputString = 'pobi';
+
+    expect(() => {
+      AllNamesOfCars.fromInputString(inputString);
+    }).toThrow(new AppError(ERROR_MESSAGES.out_of_range_of_cars));
+  });
 });
