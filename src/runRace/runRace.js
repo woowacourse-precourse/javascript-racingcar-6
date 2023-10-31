@@ -1,4 +1,5 @@
 import { Console, Random } from '@woowacourse/mission-utils';
+import { MOVE_NUMBER } from '../constants/constants.js';
 
 class RunRace {
   constructor() {
@@ -10,7 +11,7 @@ class RunRace {
   }
 
   getRandomProgress() {
-    return this.getRandomMove() >= 4 ? '-' : '';
+    return this.getRandomMove() >= MOVE_NUMBER ? '-' : '';
   }
 
   printCarProgress(car, carIndex) {
