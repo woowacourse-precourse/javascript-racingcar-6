@@ -26,7 +26,9 @@ async function GetResults(cars, attempts) {
 		await MissionUtils.Console.print(result);
 	}
 
-	MissionUtils.Console.print(Message.WINNER_IS + winners.join(", "));
+	await MissionUtils.Console.print(Message.WINNER_IS + winners.join(", "));
+
+	return results;
 }
 
 export default GetResults;
