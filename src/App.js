@@ -1,6 +1,7 @@
 import { Console, Random} from "@woowacourse/mission-utils";
 import message from "./util/Message.js"
 
+const CONDITION = { low:0, high:9, criteria:4};
 
 class App {
   async play() {
@@ -8,11 +9,20 @@ class App {
     const carNameArray = processInput(userInput)
     const racingRounds = await getUserInput(message.askRounds)
     
-    const condition = { low:0, high:9, criteria:4};
-    // racing car 생성
-    
-    // const testRacingCar = new RacingCars('name',condition)
+    const racingCars = arrayToRacingCarsArrayBuilder(carNameArray,CONDITION)        
+    console.log(racingCars)
+    while (racingRounds--) {
+      racingCars.forEach(racingCar => racingCar.tryMoveForward())
+      // 결과 출력 로직
+    }
+    // 우승 로직
   }
+
+
+}
+
+function arrayToRacingCarsArrayBuilder(carNameArray,condition) {
+  return carNameArray.map(element => new RacingCar(element,condition))
 }
 
 async function getUserInput(message) {
@@ -52,16 +62,15 @@ class UserInput{
 }
 
 
-class RacingCars {
+class RacingCar {
   constructor(carName, condition) {
     this.carName = carName
     this.condition = condition
+    this.progress = 0
   }
-  checkIsMoveForward() {
+  tryMoveForward() {
     const {low,high,criteria} = this.condition
-    return this.getRandomNumber({ low, high }) > criteria
-      ? true
-      : false
+    (this.getRandomNumber({ low, high }) > criteria) && (this.progress += 1)
   }
 
   getRandomNumber({ low,high }) {
