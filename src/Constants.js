@@ -1,3 +1,7 @@
 export const GUIDE_MESSAGES = Object.freeze({
   ENTER_CARNAMES: '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
 });
+
+export const ERROR_MESSAGES = Object.freeze({
+  EMPTY_INPUT: '[ERROR] 아무것도 입력하지 않았습니다.',
+});
