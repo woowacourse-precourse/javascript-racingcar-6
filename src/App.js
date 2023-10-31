@@ -103,14 +103,14 @@ class App {
   }
 
   findWinner(cars, carsRecordBoard, winner) {
-    let winnerCount = 0;
+    let winnerScore = 0;
 
     for (let car of cars) {
-      winnerCount = Math.max(winnerCount, carsRecordBoard[car].length);
+      winnerScore = Math.max(winnerScore, carsRecordBoard[car].length);
     }
 
     for (let car of cars) {
-      if (carsRecordBoard[car].length === winnerCount) {
+      if (carsRecordBoard[car].length === winnerScore) {
         winner.push(car);
       }
     }
