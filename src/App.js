@@ -30,7 +30,6 @@ class App {
       cars.forEach(car => {
         MissionUtils.Console.print(car.name + ' : ' + car.position);
       });
-      // MissionUtils.Console.print(cars.map(car => `${car.name} : ${car.position}`));
       MissionUtils.Console.print('\n');
     }
     const victory = new Victory();
