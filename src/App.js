@@ -1,6 +1,7 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import Car from './Car.js';
 import { validateCarNames, validateRoundCount } from './utils.js';
+import { MOVE_REQUIREMENT } from './constants.js';
 
 class App {
   async play() {
@@ -47,11 +48,8 @@ class App {
   }
 
   movePlayers(players) {
-    const MOVE_REQUIREMENT = 4;
-
     for (let i = 0; i < players.length; i += 1) {
       const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
-
       if (randomNumber >= MOVE_REQUIREMENT) players[i].moveForward();
     }
   }
