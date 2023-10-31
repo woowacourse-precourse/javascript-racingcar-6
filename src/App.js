@@ -73,8 +73,12 @@ class App {
   }
 
   startRacing(participatingCar, numberOfMoves){
-    let moveOfCars = new Array(participatingCar.length).fill('')
-    let roundRandomNumber = new Array(participatingCar.length)
+    let moveOfCars = []
+    let roundRandomNumber = []
+
+    for(let i=0; i<participatingCar.length; i++){
+      moveOfCars.push('')
+    }
 
     for(let i=0; i<numberOfMoves; i++){  
       roundRandomNumber = this.createRoundRandomNumbers(participatingCar.length)
