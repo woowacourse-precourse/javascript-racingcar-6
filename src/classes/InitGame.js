@@ -1,48 +1,52 @@
 import { Console } from "@woowacourse/mission-utils";
-import App from "../App.js";
+import {
+  ERROR_CAR_NAMES,
+  ERROR_GAME_COUNT_FORMAT,
+  ERROR_NAME_FORMAT,
+  PROMPT_CAR_NAMES,
+  PROMPT_GAME_COUNT,
+} from "../utills/Constants.js";
 
-export default class InitGame  {
-    constructor(){
-        this.carList = []
-        this.gameCount = 0
+export default class InitGame {
+  constructor() {
+    this.carList = [];
+    this.gameCount = 0;
+  }
+
+  async init() {
+    this.carList = this.validateCarList(
+      await Console.readLineAsync(PROMPT_CAR_NAMES)
+    );
+
+    this.gameCount = this.validateGameCount(
+      await Console.readLineAsync(PROMPT_GAME_COUNT)
+    );
+  }
+
+  validateCarList(carList) {
+    carList = carList.split(",");
+    const isLengthZero = carList.length === 0;
+    const isLengthOverOrHasBlank = carList.some(
+      (car) => car.length > 5 || car.includes(" ")
+    );
+
+    if (isLengthZero) {
+      throw new Error(ERROR_CAR_NAMES);
     }
 
-    async init() {
-
-        this.carList =  this.validateCarList(await Console.readLineAsync(
-            "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
-        ));
-
-        this.gameCount= this.validateGameCount(
-            await Console.readLineAsync(
-                "시도할 횟수는 몇 회인가요?\n"
-        ))     
+    if (isLengthOverOrHasBlank) {
+      throw new Error(ERROR_NAME_FORMAT);
     }
 
-    validateCarList(carList) {
+    return carList;
+  }
+  validateGameCount(gameCount) {
+    const IsCountNotNumber = isNaN(gameCount);
 
-        if (carList.length === 0) {
-          throw new Error(
-            "[ERROR] 자동차 이름은 쉼표(,)를 기준으로 구분하며 이름은 5자 이하만 가능합니다."
-          );
-        }
-    
-        carList = carList.split(",");
-    
-        if (carList.some((car) => car.length > 5 || car.includes(" "))) {
-          throw new Error("[ERROR] 이름은 공백없이 5자 이하만 가능합니다.");
-        }
+    if (IsCountNotNumber) {
+      throw new Error(ERROR_GAME_COUNT_FORMAT);
+    }
 
-        return carList
-
-      }
-     validateGameCount(gameCount) {
-
-        if (isNaN(gameCount)) {
-          throw new Error("[ERROR] 입력받은 숫자가 잘못된 형식입니다.");
-        }
-
-        return gameCount
-
-      }
+    return gameCount;
+  }
 }
