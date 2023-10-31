@@ -1,2 +1,4 @@
 node_modules/
 .vscode/
+__tests__/ApplicationTest.js
+__tests__/StringTest.js
