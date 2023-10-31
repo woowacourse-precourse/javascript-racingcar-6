@@ -7,6 +7,7 @@ class App {
     const carsStringNameArray = await userInputCarsName();
     const cars = getCarsClassArray(carsStringNameArray);
     const trialCountNumber = await userInputTrialCount();
+    MissionUtils.Console.print(`${RESULT_MESSAGE}`);
   }
 }
 
