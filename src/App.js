@@ -2,8 +2,7 @@ import {Console} from '@woowacourse/mission-utils'
 import { Car } from './models/CarModel.js';
 import { MESSAGES } from './constants/messages.js';
 import { ERRORS } from './constants/errors.js';
-import { isNumber } from './utils/validationUtils.js';
-import { InputValidator } from './validation/inputValidator.js';
+import { InputValidator } from './validation/InputValidator.js';
 class App {
   constructor(){
     this.carList = [];
