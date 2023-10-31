@@ -9,6 +9,7 @@ export const MESSAGE = Object.freeze({
     for (let car in moveCount) {
       Console.print(`${car} : ${moveCount[car]}`);
     }
+    Console.print("");
   },
   getWinnersName: (winnerNames) => names.join(","),
 });
