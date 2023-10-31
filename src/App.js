@@ -1,4 +1,5 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Console, Random } from "@woowacourse/mission-utils";
+import Game from "./Game.js";
 
 class App {
   async getUserInput() {
@@ -23,11 +24,14 @@ class App {
       throw new Error("[ERROR] 0이상의 숫자만 입력 가능합니다");
     }
   }
+
   async play() {
     const carNames = await this.getUserInput();
     this.validateCarName(carNames);
+
     const gameRound = await this.getPlayRound();
     this.validateGameRound(gameRound);
+    const game = new Game(carNames);
   }
 }
 
