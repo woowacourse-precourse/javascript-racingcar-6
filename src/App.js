@@ -56,6 +56,15 @@ class App {
     }
   }
 
+  async moveRacingCarRandomDistance(racingCarList) {
+    [...racingCarList.keys()].forEach((racingCar) => {
+      const randomDistance = Random.pickNumberInRange(0, 9);
+      if (randomDistance >= 4) {
+        racingCarList.set(racingCar, racingCarList.get(racingCar) + '-');
+      }
+    });
+  }
+
   isValidCarNamesInput(carNameList) {
     if (carNameList.length === 1) return false;
 
