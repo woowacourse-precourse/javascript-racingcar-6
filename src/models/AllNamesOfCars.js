@@ -12,10 +12,16 @@ class AllNamesOfCars {
   static MIN_CAR_LENGTH = 2;
 
   /**
-   * @type { string[] }
+   * @type { string[] } 유효성 검사를 위해 대문자로 다 바꿔주어서 판단할 필드
    */
 
   #cars;
+
+  /**
+   * @type { string[] } 원본 자동차들을 담을 필드
+   */
+
+  #originalCars;
 
   /**
    *
@@ -23,7 +29,8 @@ class AllNamesOfCars {
    */
 
   constructor(cars) {
-    this.#cars = cars;
+    this.#originalCars = [...cars];
+    this.#cars = cars.map((car) => car.toUpperCase());
     this.validate();
     this.initializeCars();
   }
@@ -46,7 +53,7 @@ class AllNamesOfCars {
   }
 
   initializeCars() {
-    const carArray = this.#cars.map((carName) => {
+    const carArray = this.#originalCars.map((carName) => {
       const car = new Car(carName);
       return car.getCar();
     });
