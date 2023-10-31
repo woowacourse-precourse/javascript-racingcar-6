@@ -13,6 +13,8 @@ class App {
       this.printCurrent(currentCars);
       count -= 1;
     }
+
+    this.judgeWinner(currentCars);
   }
 
   async getNameInput() {
@@ -65,6 +67,16 @@ class App {
       Console.print(`${car} : ${'-'.repeat(currentCars[car])}`);
     })
     Console.print('\n');
+  }
+
+  judgeWinner(currentCars) {
+    const highestScore = Math.max(...Object.values(currentCars));
+    let winner = Object.keys(currentCars).filter((car) => currentCars[car] === highestScore).join(', ');
+    this.printWinner(winner);
+  }
+
+  printWinner(winner) {
+    Console.print(`${MESSAGES.finalWinner}${winner}`);
   }
 }
 
