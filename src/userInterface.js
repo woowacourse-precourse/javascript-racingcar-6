@@ -31,3 +31,12 @@ const checkCarsDifferName = (carsNameArray) => {
   if (nameSet.size !== carsNameArray.length)
     throw new Error(SAME_NAME_USER_INPUT_ERROR);
 };
+
+export const userInputCarsName = async () => {
+  const carsNameString = await getUserInput(START_GAME_MESSAGE);
+  checkCarsNameCount(carsNameString);
+  const carsNameArray = splitCarsArray(carsNameString);
+  checkCarsArray(carsNameArray);
+  checkCarsDifferName(carsNameArray);
+  return carsNameArray;
+};
