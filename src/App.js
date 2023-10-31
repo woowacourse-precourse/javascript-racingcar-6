@@ -13,9 +13,21 @@ class App {
     const gameRound = Number(input);
     return gameRound;
   }
+  validateCarName(carNames) {
+    if (carNames.some((name) => name.length > 5)) {
+      throw Error("[ERROR] 자동차 이름은 5자 이하여하여 합니다.");
+    }
+  }
+  validateGameRound(gameRound) {
+    if (isNaN(gameRound) || gameRound < 0) {
+      throw new Error("[ERROR] 0이상의 숫자만 입력 가능합니다");
+    }
+  }
   async play() {
     const carNames = await this.getUserInput();
+    this.validateCarName(carNames);
     const gameRound = await this.getPlayRound();
+    this.validateGameRound(gameRound);
   }
 }
 
