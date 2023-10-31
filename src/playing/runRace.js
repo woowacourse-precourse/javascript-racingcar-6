@@ -30,6 +30,7 @@ const findMaxScore = (raceResults) => {
 
   Object.keys(raceResults).forEach((participant) => {
     const participantScore = raceResults[participant].length;
+
     if (participantScore >= maxScore) {
       maxScore = participantScore;
     }
@@ -54,6 +55,7 @@ const findWinnerName = (raceResults, targetScore) => {
 
 const runRace = (totalRaces, participants) => {
   let raceResults = {};
+
   participants.forEach((participant) => {
     raceResults[participant] = '';
   })
