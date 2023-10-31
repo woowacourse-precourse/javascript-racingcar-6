@@ -1,36 +1,26 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import Car from "../Car";
+import { CAR_MESSAGES } from "../utils/messages";
 
 function validateCarsInput(input) {
   const CARS = input.split(",");
   const carsSet = new Set(CARS);
-  if (CARS.length < 2) {
-    throw new Error("[ERROR] 자동차 이름은 2개 이상 입력해주세요.");
-  }
-  if (carsSet.size !== CARS.length) {
-    throw new Error("[ERROR] 자동차 이름에 중복이 있습니다.");
-  }
+
+  if (CARS.length < 2) throw new Error(CAR_MESSAGES.ERROR.MUST_OVER_2);
+  if (carsSet.size !== CARS.length)
+    throw new Error(CAR_MESSAGES.ERROR.NOT_DUPLICATION);
+
   CARS.forEach((CAR) => {
-    const trimCarName = CAR.trim();
-    if (CAR.length > 5) {
-      throw new Error("[ERROR] 자동차 이름의 길이는 5를 넘어선 안됩니다.");
-    }
-    if (trimCarName !== CAR) {
-      throw new Error(
-        "[ERROR] 자동차 이름의 앞 뒤에는 공백이 있어선 안됩니다."
-      );
-    }
+    const TRIM_CAR_NAME = CAR.trim();
+    if (CAR.length > 5) throw new Error(CAR_MESSAGES.ERROR.NOT_OVER_5);
+    if (TRIM_CAR_NAME !== CAR) throw new Error(CAR_MESSAGES.ERROR.NOT_SPACE);
+    if (TRIM_CAR_NAME === "") throw new Error(CAR_MESSAGES.ERROR.MUST_INPUT);
   });
 }
 
 const carHandler = {
   readCarsInput: async () => {
-    const INPUT = await MissionUtils.Console.readLineAsync(
-      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
-    );
-    if (INPUT === "")
-      throw new Error("[ERROR] 자동차 이름을 입력하지 않으셨습니다.");
-
+    const INPUT = await MissionUtils.Console.readLineAsync(CAR_MESSAGES.INPUT);
     validateCarsInput(INPUT);
     return INPUT;
   },
