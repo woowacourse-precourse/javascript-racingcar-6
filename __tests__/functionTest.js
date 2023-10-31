@@ -88,3 +88,17 @@ describe('입력 에러 처리', () => {
       expect(app.carList).toEqual(answer);
     });
   });
+
+  describe('자동차 움직임', () => {
+    test('carMoving', () => {
+      // given
+      MissionUtils.Random.pickNumberInRange = jest.fn(() => 4);
+      // when
+      const app = new App();
+      app.racingCarList(['james', 'frank']);
+      app.carMoving();
+      // then
+      expect(app.carList.james).toContain('-');
+      expect(app.carList.frank).toContain('-');
+    });
+  });
