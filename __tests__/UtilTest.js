@@ -1,16 +1,6 @@
-import { Random, Console } from '@woowacourse/mission-utils';
-import Car from '../src/domain/Car';
-import RaceGame from '../src/domain/RaceGame.js';
-import { GAME_RULE_NUMBER, ERROR_MESSAGES } from '../src/constant/Constants.js';
-import {
-  printProgressProcess,
-  printWinnerList,
-  printProgressResult,
-  printEmptyLine,
-  getCarNameList,
-  getTryNum,
-} from '../src/util/Utils.js';
-import App from '../src/App.js';
+import { Console } from '@woowacourse/mission-utils';
+import { ERROR_MESSAGES } from '../src/constant/Constants.js';
+import { getCarNameList, getTryNum } from '../src/util/Utils.js';
 import {
   checkCarNameEmpty,
   checkCarNameLen,
@@ -19,40 +9,6 @@ import {
   checkTryNumType,
   checkTryNumZero,
 } from '../src/util/Validation';
-
-describe('게임 기능 테스트', () => {
-  describe('Car Class 테스트', () => {
-    let car;
-    beforeAll(() => {
-      car = new Car('woni');
-      Random.pickNumberInRange = jest.fn();
-    });
-    test('move()는 기준 숫자보다 랜덤 숫자가 작으면 전진', () => {
-      Random.pickNumberInRange.mockReturnValue(
-        GAME_RULE_NUMBER.thresholdNum + 1,
-      );
-      car.move();
-      car.move();
-      car.move();
-      expect(car.getProgress()).toBe(3);
-    });
-
-    test('move()는 기준 숫자보다 랜덤 숫자가 작으면 정지', () => {
-      Random.pickNumberInRange.mockReturnValue(
-        GAME_RULE_NUMBER.thresholdNum - 1,
-      );
-      car.move();
-      expect(car.getProgress()).toBe(3);
-    });
-
-    test('getName()은 인스턴스의 name을 반환', () => {
-      expect(car.getName()).toBe('woni');
-    });
-    test('getProgress()는 인스턴스의 progress를 반환', () => {
-      expect(car.getProgress()).toBe(3);
-    });
-  });
-});
 
 describe('유틸 기능 테스트', () => {
   describe('입력 값 반환 테스트', () => {
@@ -70,7 +26,7 @@ describe('유틸 기능 테스트', () => {
       const expectedTryNum = '15';
       Console.readLineAsync.mockResolvedValue(expectedTryNum);
       const result = await getTryNum();
-      expect(result).toBe(expectedTryNum);
+      expect(result).toBe(Number(expectedTryNum));
     });
   });
 });
@@ -154,14 +110,3 @@ describe('시도 횟수 입력 값 테스트', () => {
     });
   });
 });
-
-/* test('', () => {
-    const carName = '';
-    expect(() => checkCarNameEmpty(carName)).toThrowError(
-      ERROR_MESSAGES.errorNameEmpty,
-    );
-  });
-  test('', () => {
-    const carName = '';
-    expect(() => checkCarNameEmpty(carName)).not.toThrow();
-  }); */

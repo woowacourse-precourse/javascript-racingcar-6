@@ -11,7 +11,7 @@ export async function getCarNameList() {
 export async function getTryNum() {
   const tryNum = await Console.readLineAsync(INPUT_MESSAGES.inputTryNum);
   checkTryNum(tryNum);
-  return tryNum;
+  return Number(tryNum);
 }
 
 export const printProgressProcess = (name, progress) => {
