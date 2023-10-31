@@ -55,9 +55,9 @@ class RacingGameController {
    */
   moveCars(count) {
     outputView.printRacingComment();
-    for (let i = 0; i < count; i++) {
-      this.racingGame.checkMove();
 
+    while (count--) {
+      this.racingGame.checkMove();
       this.printRacingResult();
     }
 
