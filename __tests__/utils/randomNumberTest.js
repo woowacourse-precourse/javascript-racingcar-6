@@ -8,4 +8,4 @@ describe("0~9 사이에서 무작위 값을 구하는 함수 확인", () => {
     expect(randomNumber).toBeGreaterThanOrEqual(RACING.MIN_NUMBER_OF_RANDOM_RANGE);
     expect(randomNumber).toBeLessThanOrEqual(RACING.MAX_NUMBER_OF_RANDOM_RANGE);
   })
-})
+});
