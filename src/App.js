@@ -37,6 +37,38 @@ class App {
     const maxPosition = Math.max(...this.cars.map((car) => car.position));
     return this.cars.filter((car) => car.position === maxPosition);
   }
+  validateTryCount(tryCount) {
+    if (tryCount <= 0) {
+      // 시도 횟수가 0보다 큰지 확인
+      throw new Error(ERROR_MESSAGE.INVALID_TRYCOUNT);
+    }
+    if (tryCount === "") {
+      // 시도 횟수에 빈 값이 있는지 확인
+      throw new Error(ERROR_MESSAGE.EMPTY_TRYCOUNT);
+    }
+    if (isNaN(tryCount)) {
+      // 시도 횟수가 숫자인지 확인
+      throw new Error(ERROR_MESSAGE.NOT_NUMBER_TRYCOUNT);
+    }
+  }
+  validateNameInput(nameInput) {
+    if (nameInput === "") {
+      // 차 이름에 빈 값이 있는지 확인
+      throw new Error(ERROR_MESSAGE.EMPTY_NAME);
+    }
+    if (nameInput.split(",").length !== new Set(nameInput.split(",")).size) {
+      // 차 이름에 중복된 값이 있는지 확인
+      throw new Error(ERROR_MESSAGE.DUPLICATE_NAME);
+    }
+    if (nameInput.split(",").some((name) => name.length > 5)) {
+      // 차 이름이 5글자를 초과하는지 확인
+      throw new Error(ERROR_MESSAGE.OVER_LENGTH_NAME);
+    }
+    if (nameInput.split(",").some((name) => name === "")) {
+      // 차 이름에 빈 값이 있는지 확인
+      throw new Error(ERROR_MESSAGE.EMPTY_NAME);
+    }
+  }
 }
 
 export default App;
