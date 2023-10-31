@@ -16,7 +16,7 @@ describe('RacingService 테스트', () => {
 
     expect(result).toEqual({
       winners: ['james'],
-      record: [
+      records: [
         {
           james: '-',
           john: '',
