@@ -52,6 +52,16 @@ class App {
     }
     Console.print('\n');
   }
+
+  // 게임 진행
+  playGame() {
+    Console.print('실행 결과');
+    while (this.GAME_ROUND) {
+      this.makeGameRoundData();
+      this.printRoundResult();
+      this.GAME_ROUND -= 1;
+    }
+  }
 }
 
 export default App;
