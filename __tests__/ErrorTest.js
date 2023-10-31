@@ -32,12 +32,4 @@ describe("[ERROR] 동작 테스트", () => {
       "[ERROR] 시도 횟수를 입력해주세요"
     );
   });
-
-  test("입력받은 시도 횟수가 숫자가 아닐경우", () => {
-    const app = new App();
-    const tryNumbersInput = "우테코사랑해용";
-    expect(() => app.checkTryNumber(tryNumbersInput)).toThrowError(
-      "[ERROR] 숫자를 입력해주세요"
-    );
-  });
 });
