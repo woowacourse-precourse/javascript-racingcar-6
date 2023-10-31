@@ -1,13 +1,13 @@
 import { Console } from "@woowacourse/mission-utils";
 import GAME_MESSAGE from "../../Constants/gameMessage.js";
 import nameValid from "../../controller/valid/nameValid.js";
-import tryNumberInput from "./tryNumberInput.js";
-import Output from "../output/resultOutput.js";
+import TryNumberInput from "./tryNumberInput.js";
+import resultOutput from "../output/resultOutput.js";
 
-class Input {
+class CarNameInput {
   constructor() {
     this.nameValid = new nameValid();
-    this.tryNumberInput = new tryNumberInput();
+    this.tryNumberInput = new TryNumberInput();
   }
   async carName() {
     let nameSplit;
@@ -18,9 +18,8 @@ class Input {
       throw error;
     }
     const result = await this.tryNumberInput.tryNumber(nameSplit);
-    Output.winnerPrint(result);
-    return;
+    resultOutput.winnerPrint(result);
   }
 }
 
-export default Input;
+export default CarNameInput;

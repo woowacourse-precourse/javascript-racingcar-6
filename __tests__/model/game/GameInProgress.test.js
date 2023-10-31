@@ -1,5 +1,5 @@
 import gameInProgress from "../../../src/MVC/controller/game/gameInProgress";
-import progressOutput from "../../../src/MVC/view/Output/progressOutput";
+import progressOutput from "../../../src/MVC/view/output/progressOutput";
 import testName from "../../../src/MVC/Constants/testName";
 
 describe("RacingGame gameInProgress 테스트", () => {

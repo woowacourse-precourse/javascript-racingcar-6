@@ -3,7 +3,7 @@ import GAME_MESSAGE from "../../Constants/gameMessage.js";
 import TryValid from "../../controller/valid/tryValid.js";
 import RacingGame from "../../model/racingGame.js";
 
-class Input {
+class TryNumberInput {
   constructor() {
     this.tryValid = new TryValid();
     this.racingGame = new RacingGame();
@@ -20,4 +20,4 @@ class Input {
   }
 }
 
-export default Input;
+export default TryNumberInput;
