@@ -11,8 +11,7 @@ class App {
     const ARRAY_CARS = CAR_NAMES.split(',');
     const SPACING = /\s/;
     for(let i = 0; i < ARRAY_CARS.length; i++){
-      //console.log(ARRAY_CARS[i]);
-      if(typeof ARRAY_CARS[i] !== 'string' || ARRAY_CARS[i].length > 5 ){//|| SPACING.text(ARRAY_CARS[i])){
+      if(typeof ARRAY_CARS[i] !== 'string' || ARRAY_CARS[i].length > 5 ){
         throw new Error("[ERROR] 자동차 이름이 잘못된 형식입니다.");
       }
     }
