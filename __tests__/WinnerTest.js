@@ -26,9 +26,7 @@ describe("최종 우승자", () => {
             expect(logSpy).toHaveBeenCalledWith(output);
         });
     })
-});
 
-describe("최종 우승자", () => {
     test("공동 우승자", async () => {
         const names = ["poby", "seoro"];
         const distances = [2, 2];
