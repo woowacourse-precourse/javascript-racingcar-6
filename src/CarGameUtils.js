@@ -20,13 +20,23 @@ export const inputTryNum = async () => {
   }
 };
 
-export const isValidTryNum = tryNum => {
-  const regex = /[^0-9]/; //입력값이 숫자로만 이루어져있는지 체크
-  //Q. 시도횟수에 대한 제한은? ex) n < 10000 조건을 넣어야 할지 말지고민
-  if (regex.test(tryNum)) {
+export const isValidCarNames = carNames => {
+  if (carNames[carNames.length - 1] === ',' || carNames[0] === ',') {
+    return false;
+  }
+  if (
+    carNames[carNames.length - 2] === ',' &&
+    carNames[carNames.length - 1] === ' '
+  ) {
     return false;
   }
   return true;
+};
+
+export const isValidTryNum = tryNum => {
+  const regex = /[^0-9]/; //입력값이 숫자로만 이루어져있는지 체크
+  //Q. 시도횟수에 대한 제한은? ex) n < 10000 조건을 넣어야 할지 말지고민
+  return !regex.test(tryNum);
 };
 
 export const isValidCarName = carName => {

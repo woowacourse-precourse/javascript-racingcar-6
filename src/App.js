@@ -1,11 +1,14 @@
 import { Console } from '@woowacourse/mission-utils';
 import Car from './Car.js';
 import * as utils from './CarGameUtils.js';
+import { isValidCarNames } from './CarGameUtils.js';
 class App {
   async play() {
     const carList = [];
 
     const carNames = await utils.inputCarNames();
+    if (!utils.isValidCarNames(carNames))
+      throw new Error('[ERROR] 자동차 이름이 잘못된 형식입니다.\n');
     const carNameList = carNames.split(',');
 
     carNameList.forEach(carName => {

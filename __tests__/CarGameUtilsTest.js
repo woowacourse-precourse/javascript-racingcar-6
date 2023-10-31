@@ -41,6 +41,29 @@ test굳이 안해도 되는지? - 입력받는 함수 ,프린트하는 함수
   });
 });
 describe('유효성 검사 테스트', () => {
+  test('자동차 이름 입력값 유효성 검사 확인', () => {
+    expect(utils.isValidCarNames(',')).toBeFalsy();
+  });
+  test('자동차 이름 입력값 유효성 검사 확인', () => {
+    expect(utils.isValidCarNames(', ')).toBeFalsy();
+  });
+  test('자동차 이름 입력값 유효성 검사 확인', () => {
+    expect(utils.isValidCarNames('pobi')).toBeTruthy();
+  });
+  test('자동차 이름 입력값 유효성 검사 확인', () => {
+    expect(utils.isValidCarNames('pobi,')).toBeFalsy();
+  });
+  test('자동차 이름 입력값 유효성 검사 확인', () => {
+    expect(utils.isValidCarNames('pobi, ')).toBeFalsy();
+  });
+  test('자동차 이름 입력값 유효성 검사 확인', () => {
+    expect(utils.isValidCarNames('pobi,sjj')).toBeTruthy();
+  });
+
+  test('자동차 이름 입력값 유효성 검사 확인', () => {
+    expect(utils.isValidCarNames('0123')).toBeTruthy();
+  });
+
   test('자동차 이름 유효성 검사 확인', () => {
     expect(utils.isValidCarName('0123')).toBeTruthy();
   });
