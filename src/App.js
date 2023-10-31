@@ -31,11 +31,44 @@ class App {
     return num;
   }
 
-  async play() {
-    const car = await this.getCarName();
-    const num = await this.getNum();
-    MissionUtils.Console.print(car);
+  printResult(cars) {
+    cars.forEach((car) => {
+      MissionUtils.Console.print(`${car.name} : ${'-'.repeat(car.count)}`);
+    })
+    MissionUtils.Console.print('');
+  }
+
+  playGame(car_name, num) {
+    let cars = [];
+    car_name.forEach((elem) => {
+      let car = {};
+      car.name = elem;
+      car.count = 0;
+      cars.push(car);
+    });
+
+    MissionUtils.Console.print('실행 결과');
+    while(num > 0) {
+      cars.forEach((car) => {
+        const random_num = MissionUtils.Random.pickNumberInRange(0, 9);
+        if(random_num >= 4) {
+          car.count += 1;
+        }
+      })
+
+      this.printResult(cars);
+      
+      num -= 1;
+    }
     
+    //우승자 출력
+  }
+
+  async play() {
+    const car_name = await this.getCarName();
+    const num = await this.getNum();
+    
+    await this.playGame(car_name, num);
   }
 }
 
