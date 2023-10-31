@@ -28,12 +28,11 @@ class App {
           };
         });
         Console.print(carStatus);
+        carStatus.forEach((car) => {
+          Console.print(`${car.name} : ${car.status}`);
+        });
+        Console.print('\n');
       }
-      // const carStatusObject = this.generateCarStatusObject(
-      //   carNameArray,
-      //   attemptForwardCount
-      // );
-      // Console.print(carStatusObject);
     } catch (error) {
       console.error(error);
     }
