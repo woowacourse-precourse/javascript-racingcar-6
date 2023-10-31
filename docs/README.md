@@ -34,9 +34,9 @@
 >     - [x] 유효성 검사 (예외처리)
 > </br></br>
 > - [ ] 게임 진행
->   - [ ] 시도 횟수만큼 반복
->   - [ ] 각 자동차 이동/정지 (0~9 사이 난수가 4 이상일 경우 이동)
->   - [ ] 각 자동차 위치 저장
+>   - [x] 시도 횟수만큼 반복
+>   - [x] 각 자동차 이동/정지 (0~9 사이 난수가 4 이상일 경우 이동)
+>   - [x] 각 자동차 위치 저장
 >   - [ ] "실행 결과" 및 차수 별 실행 결과 출력
 > </br></br>
 > - [ ] 게임 종료
@@ -91,6 +91,8 @@
 ## 🎮 Board
 게임의 진행 상태를 담당하는 클래스
 > ### Const
+> - `MOVE_MIN_DIGIT = 4` : 이동하는 최솟값
+> - `MAX_NAME_LENGTH = 5` : 이름 길이 최댓값
 > - `POSITIVE_INTEGER_REGEX = /^\d+$/` : 양의 정수 패턴식
 > ### Members
 > - `Number` `#numTurns` : 턴 수
@@ -111,17 +113,19 @@
 > - `Array<String>` `#inputCarNames()` : 레이싱카 이름 입력
 > </br></br>
 > - `setNumTurns()` : 턴 수 입력
->   - `this.#validatePositiveInteger(input)`
+>   - `this.#validateNumTurns(input)`
 >   - `this.#numTurns`
 > </br></br>
-> - `#validatePositiveInteger` `(String input)` : 유효성 검사
+> - `#validateNumTurns` `(String input)` : 유효성 검사
 >   - `POSITIVE_INTEGER_REGEX.test(input)`
 >   - `Strings.ERROR_NON_POSITIVE_INTEGER` : 에러 발생
+> </br></br>
+> - `getNumTurns()` :턴 수 반환
 > </br></br>
 > - `executeTurn()` : 턴 수행
 >   - `this.#cars.forEach((car) => { })`
 >     - `this.#getRandomDigit()`
->     - `if (randomDigit >= 4)`
+>     - `if (randomDigit >= MOVE_MIN_DIGIT)`
 >       - `car.move()`
 > </br></br>
 > - `Number` `#getRandomDigit()` : 0~9 사이 정수 랜덤 반환
