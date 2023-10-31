@@ -1,20 +1,25 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import { CAR_NAME_ERRORS, NUMBER_INPUT_ERRORS } from './constants';
+import {
+  CAR_NAME_ERRORS,
+  ERROR_EMPTY_INPUT,
+  NUMBER_INPUT_ERRORS,
+} from './constants.js';
 
 export const generateRandomNumber = (min, max) => {
   return MissionUtils.Random.pickNumberInRange(min, max);
 };
 
-export const removeSpaces = (carNames) => {
-  const carNameArray = carNames.split(',');
+export const splitAndTrim = (inputString) => {
+  if (inputString === '') {
+    throw new Error(ERROR_EMPTY_INPUT);
+  }
+  const items = inputString.split(',');
 
-  for (let i = 0; i < carNameArray.length; i++) {
-    const trimmedName = carNameArray[i].trim();
-
-    carNameArray[i] = trimmedName;
+  for (let i = 0; i < items.length; i++) {
+    items[i] = items[i].trim();
   }
 
-  return carNameArray;
+  return items;
 };
 
 export const validateCarNames = (carNameArray) => {
@@ -50,10 +55,6 @@ export const validateNumberInput = (input) => {
 
   if (!Number.isInteger(Number(input))) {
     throw new Error(NUMBER_INPUT_ERRORS.NOT_AN_INTEGER);
-  }
-
-  if (input === '') {
-    throw new Error(NUMBER_INPUT_ERRORS.EMPTY_STRING);
   }
 
   return true;
