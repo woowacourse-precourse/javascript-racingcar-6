@@ -33,7 +33,15 @@ export class RacingGame {
 	}
 
 	racingStart(tryNumber, readyCars) {
-		for (let round = 0; round < tryNumber; round++) {}
+		Console.print(MESSAGE.STARTING_TITLE);
+		for (let round = 0; round < tryNumber; round++) {
+			for (let car of readyCars) {
+				const random = this.getRandomNumber();
+				RULE.RUN_LIMIT <= random ? car.run() : '';
+				car.state();
+			}
+			Console.print('');
+		}
 	}
 
 	async start() {
