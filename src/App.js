@@ -1,5 +1,5 @@
-import { Console, Random } from "@woowacourse/mission-utils";
-import MESSAGE from "./constants/constants.js";
+import { Console, Random } from '@woowacourse/mission-utils';
+import MESSAGE from './constants/constants.js';
 
 class App {
   constructor() {
@@ -12,7 +12,7 @@ class App {
 
   async play() {
     const answer = await Console.readLineAsync(MESSAGE.start);
-    this.cars = answer.split(",");
+    this.cars = answer.split(',');
     if (this.CheckCarsName()) {
       const playTimes = await Console.readLineAsync(MESSAGE.roundsToPlay);
       this.playTimes = playTimes;
@@ -20,50 +20,49 @@ class App {
         return this.StartRacing();
       }
       throw new Error(MESSAGE.notValidPlaytimes);
-    } else {
-      throw new Error(MESSAGE.notValidCarsName);
     }
+    throw new Error(MESSAGE.notValidCarsName);
   }
 
   CheckCarsName() {
     if (this.cars.length > 10 || this.cars.length < 2) return false;
 
-    const hasNotSpace = (car) => !car.includes(" ");
-    const isNotSpace = (car) => car.length !== 0;
-    const checkFive = (car) => car.length <= 5;
+    const hasNotSpace = car => !car.includes(' ');
+    const isNotSpace = car => car.length !== 0;
+    const checkFive = car => car.length <= 5;
 
     const isValidate = this.cars.every(
-      (car) => hasNotSpace(car) && isNotSpace(car) && checkFive(car),
+      car => hasNotSpace(car) && isNotSpace(car) && checkFive(car),
     );
 
     return isValidate;
   }
 
   CheckPlayTimes() {
-    const hasNotSpace = (number) => !number.includes(" ");
+    const hasNotSpace = number => !number.includes(' ');
     const checkUnderTen = /^(10|[1-9])$/;
 
-    if (!checkUnderTen.test(this.playTimes) || !hasNotSpace(this.playTimes)) {
-      return false;
+    if (checkUnderTen.test(this.playTimes) && hasNotSpace(this.playTimes)) {
+      return true;
     }
-    return true;
+    return false;
   }
 
   StartRacing() {
-    let count = 1;
+    let count = 0;
     this.racingCars = this.cars.reduce((acc, cur) => {
-      acc[cur] = "";
+      acc[cur] = '';
       return acc;
     }, {});
     Console.print(MESSAGE.result);
-    while (count <= this.playTimes) {
-      this.cars.map((car) => {
+    while (count < this.playTimes) {
+      this.cars.map(car => {
         if (this.CanMoveForward()) {
-          this.racingCars[car] += "-";
+          this.racingCars[car] += '-';
         }
         return Console.print(`${car} : ${this.racingCars[car]}`);
       });
-      Console.print("\n");
+      Console.print('\n');
       count += 1;
     }
     this.WhoIsWinner();
@@ -80,14 +79,14 @@ class App {
   WhoIsWinner() {
     const scores = Object.values(this.racingCars);
     const cars = Object.keys(this.racingCars);
-    const scoreNumbers = scores.map((score) => score.length);
+
     let maxNumber = 0;
-    let winner = "";
-    scoreNumbers.forEach((scoreNumber, index) => {
-      if (scoreNumber > maxNumber) {
+    let winner = '';
+    scores.forEach((score, index) => {
+      if (score.length > maxNumber) {
         winner = cars[index];
-        maxNumber = scoreNumber;
-      } else if (scoreNumber === maxNumber) {
+        maxNumber = score.length;
+      } else if (score.length === maxNumber) {
         winner += `,${cars[index]}`;
       }
     });
