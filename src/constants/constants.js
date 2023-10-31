@@ -1,4 +1,5 @@
-export const REGEXP = /^[a-z]+$/;
+export const REGEXP_A_Z = /^[a-z]+$/;
+export const REGEXP_BLANK = /\s/g;
 export const CARNAME_LENGTH = 5;
 
 export const SPLIT_STANDARD = ',';

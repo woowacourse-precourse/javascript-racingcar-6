@@ -10,6 +10,7 @@ export const OUTPUT_MESSAGE = Object.freeze({
 });
 
 export const ERROR_MESSAGE = Object.freeze({
+  BLANK: '[ERROR] 공백대신 , 쉼표를 통해 사용자를 구분해야합니다.',
   LOWERCASE: '[ERROR] 차 이름은 소문자영어로만 이뤄져야합니다.',
   LENFIVE: '[ERROR] 차 이름은 5글자 이하여야만 합니다.',
   UNIQUE: '[ERROR] 차 이름은 중복될 수 없습니다.',
