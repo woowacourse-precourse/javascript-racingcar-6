@@ -17,7 +17,15 @@ class App {
 
     const cars = carNames.map((name) => new Car(name));
     //Console.print(cars);
- 
+    Console.print("\n실행결과");
+    for (let i = 0; i < tryCount; i++) {
+      for (const car of cars) {
+        car.move();
+      }
+      this.printCarPositions(cars);
+    }
+
+
     
   }
 
@@ -27,7 +35,13 @@ class App {
     }
   }
 
- 
+  printCarPositions(cars) {
+    for (const car of cars) {
+      let carPositionString = '-'.repeat(car.position);
+      Console.print(`${car.name} : ${carPositionString}`);
+    }
+    Console.print('\n');
+  }
 }
 
 export default App;
