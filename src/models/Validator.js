@@ -1,4 +1,4 @@
-import { CAR_NAMES, CARS } from "../constants/carRacing.js";
+import { CAR_NAMES, CARS, RACING } from "../constants/carRacing.js";
 import { ERROR_MESSAGE } from "../constants/messages.js";
 
 export default class Validator {
@@ -36,6 +36,28 @@ export default class Validator {
     if (carListArr.length < 2) {
       throw new Error(ERROR_MESSAGE.INPUT_CARS_LESS_THAN_TWO);
     };
+
+    return true;
+  };
+
+  static validateInputNumbersOfMoves(numberOfMoves) {
+    const numberOfMoves = Number(numberOfMoves);
+
+    if (Number.isNaN(numberOfMoves)) {
+      throw new Error(ERROR_MESSAGE.IS_NAN);
+    }
+
+    if (numberOfMoves !== parseInt(numberOfMoves, 10)) {
+      throw new Error(ERROR_MESSAGE.IS_INTEGER);
+    }
+
+    if (numberOfMoves < RACING.MIN_NUMBER_OF_ATTEMPTS) {
+      throw new Error(ERROR_MESSAGE.LESS_THAN_MIN);
+    }
+
+    if (numberOfMoves > RACING.MAX_NUMBER_OF_ATTEMPTS) {
+      throw new ERROR(ERROR_MESSAGE.MORE_THAN_MAX);
+    }
 
     return true;
   };

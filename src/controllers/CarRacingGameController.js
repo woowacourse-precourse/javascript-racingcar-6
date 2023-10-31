@@ -6,6 +6,7 @@ import InputView from "../views/InputView.js";
 export default class CarRacingGamesControllers {
   constructor() {
     this.carListArr;
+    this.numberOfMoves;
   };
 
   // 자동차 경주를 시작하는 메서드
@@ -17,5 +18,13 @@ export default class CarRacingGamesControllers {
     if (Validator.validateInputCarNames()) {
       this.carListArr = CarRacingGames.setupCarList(carListString);
     };
+
+    // 시도할 횟수를 입력받는다.
+    const numberOfMoves = await InputView.inputNumbersOfMoves();
+
+    // 시도할 횟수 입력의 유효성을 검사한다.
+    if (Validator.validateInputNumbersOfMoves()) {
+      this.numberOfMoves = parseInt(numberOfMoves, 10);
+    }
   };
 };
