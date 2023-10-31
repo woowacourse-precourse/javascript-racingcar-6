@@ -44,9 +44,21 @@ describe("자동차 경주 출력 테스트", () => {
     expect(logSpy).toHaveBeenCalledWith("park : -");
   });
 
-  test("우승자가 여러 명이면, 쉼표를 통해 출력", () => {
+  test("우승자가 여러 명이면, 쉼표를 통해 출력", async () => {
     //given
+    const tryNumber = 1;
+    const inputList = [new Car("kim", 0), new Car("park", 0), new Car("lee", 0)];
+    const randomNum = [3, 4, 4];
+    const logSpy = getLogSpy();
+    const Racing = new RacingGame();
+
+    mockQuestions(inputList);
+    mockRandoms([...randomNum]);
+
     //when
+    await Racing.racing({ gameTryCount: tryNumber, carList: inputList });
+
     //then
+    expect(logSpy).toHaveBeenCalledWith("최종 우승자 : park, lee");
   });
 });
