@@ -30,6 +30,11 @@ class App {
     this.carInstance = [];
   }
 
+  canMove() {
+    let move = MissionUtils.Random.pickNumberInRange(0, 9) >= 4;
+    return move;
+  }
+
   validationInput(carList) {
     //MissionUtils.Console.print(carList);
     if (!carList.every((car) => car.length < 5)) {
@@ -49,6 +54,16 @@ class App {
 
     for (const name of carList) {
       this.carInstance.push(new Car(name));
+    }
+
+    let tryCnt = await MissionUtils.Console.readLineAsync(
+      "시도할 횟수는 몇 회인가요?\n"
+    );
+    MissionUtils.Console.print("실행결과");
+    for (let i = 0; i < Number(tryCnt); i++) {
+      this.carInstance
+        .filter(this.canMove)
+        .forEach((car) => Car.addDistance(car));
     }
   }
 }
