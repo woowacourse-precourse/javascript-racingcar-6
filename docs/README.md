@@ -3,6 +3,17 @@
 ## 기능 목록
 
 ### 0. play()
+    - 자동차 배열 : carList
+        - 자동차 이름 입력 받고 이름 배열 - carNameList
+        - 자동차 이름 유효성 테스트 -> 통과? carList 배열에 넣기
+    - 시도 횟수 : TRY_NUM
+        - 시도 횟수 입력 받고 유효성 테스트
+    - TRY_NUM 값 만큼 반복
+        - tryCarGame 
+        - printTryResult
+    - 우승자 이름 배열 : winners    
+        - 우승자 이름 배열 리턴받기 : getWinners 
+    - printWinners : 우승자 출력
 ### 1. inputCarNames() - 자동차 이름 입력받기
 ### 2. isValidCarName(carName) - 자동차 이름 유효성 검사
 ### 3. inputTryNum() - 시도할 횟수 입력받기
