@@ -28,9 +28,41 @@ describe("자동차 경주 게임", () => {
     // given
     const MOVING_FORWARD = 4;
     const STOP = 3;
-    const inputs = ["pobi,woni", "1"];
-    const outputs = ["pobi : -"];
-    const randoms = [MOVING_FORWARD, STOP];
+    const inputs = ["pobi,woni,jun", "5"];
+    const outputs = [
+      "pobi : -",
+      "woni :",
+      "jun : -",
+      "pobi : --",
+      "woni : -",
+      "jun : --",
+      "pobi : ---",
+      "woni : --",
+      "jun : ---",
+      "pobi : ----",
+      "woni : ---",
+      "jun : ----",
+      "pobi : -----",
+      "woni : ----",
+      "jun : -----",
+    ];
+    const randoms = [
+      MOVING_FORWARD,
+      STOP,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+    ];
     const logSpy = getLogSpy();
 
     mockQuestions(inputs);
@@ -46,17 +78,17 @@ describe("자동차 경주 게임", () => {
     });
   });
 
-  test.each([
-    [["pobi,javaji"]],
-    [["pobi,eastjun"]]
-  ])("이름에 대한 예외 처리", async (inputs) => {
-    // given
-    mockQuestions(inputs);
+  test.each([[["pobi,javaji"]], [["pobi,eastjun"]], [["pobi, junnn"]]])(
+    "이름에 대한 예외 처리",
+    async (inputs) => {
+      // given
+      mockQuestions(inputs);
 
-    // when
-    const app = new App();
+      // when
+      const app = new App();
 
-    // then
-    await expect(app.play()).rejects.toThrow("[ERROR]");
-  });
+      // then
+      await expect(app.play()).rejects.toThrow("[ERROR]");
+    }
+  );
 });
