@@ -116,6 +116,9 @@ class App {
     return winnerRacersName.join(", ");
   }
 
+  showWinner() {
+    Console.print(`최종 우승자 : ${this.getWinner()}`);
+  }
 }
 
 export default App;
