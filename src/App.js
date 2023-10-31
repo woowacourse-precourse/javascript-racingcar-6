@@ -15,13 +15,11 @@ class App {
       Console.print(attemptForwardCount);
       Console.print(carNameArray);
 
-      const carStatus = {};
-      carNameArray.forEach((car, idx) => {
-        const forwardCount =
-          this.generateForwardCountByAttempts(attemptForwardCount);
-        carStatus[carNameArray[idx]] = forwardCount;
-      });
-      Console.print(carStatus);
+      const carStatusObject = this.generateCarStatusObject(
+        carNameArray,
+        attemptForwardCount
+      );
+      Console.print(carStatusObject);
     } catch (error) {
       console.error(error);
     }
@@ -47,6 +45,16 @@ class App {
   }
   countNumberOverFour(array) {
     return array.filter((value) => value >= 4).length;
+  }
+  generateCarStatusObject(array, number) {
+    const carStatusObject = {};
+    array.forEach((car, idx) => {
+      const forwardCount = this.generateForwardCountByAttempts(
+        parseInt(number)
+      );
+      carStatusObject[array[idx]] = forwardCount;
+    });
+    return carStatusObject;
   }
 }
 
