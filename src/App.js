@@ -65,7 +65,7 @@ class App {
 
   #startRacingGame(carName, lap) {
     const entry = this.#racingCar.createEntry(carName);
-    const carMove = this.#racingCar.moveFowardCar(entry, lap);
+    const carMove = this.#racingCar.moveForwardCar(entry, lap);
 
     RaceOrganizer.talkToWinner(carMove);
   }

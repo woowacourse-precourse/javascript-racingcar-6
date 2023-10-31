@@ -33,7 +33,7 @@ class RacingCar {
     Console.print(SPECIALCHARS.LINE_BREAK);
   }
 
-  moveFowardCar(entry, lap) {
+  moveForwardCar(entry, lap) {
     this.#printLineBreak();
     const participant = new Map(entry);
     let round = NUMBER.ONE;
