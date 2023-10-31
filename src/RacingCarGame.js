@@ -54,11 +54,6 @@ class RacingCarGame {
     Validator.checkIsNotNumber(attempt);
     Validator.checkIsNotMoving(attempt);
   }
-
-  #makeFinalWinnerString() {
-    const finalWinners = this.#racingCars.getWinners();
-    return `${MESSAGE.finalWinner} ${finalWinners.join(', ')}`;
-  }
 }
 
 export default RacingCarGame;
