@@ -41,12 +41,12 @@
         <th>구현할 기능</th>
     </tr>
     <tr>
-        <td><input type="checkBox" disabled></td>
+        <td><input type="checkBox" checked></td>
         <td>인터페이스 컴포넌트</td>
         <td>게임 시작 문구 출력</td>
     </tr>
     <tr>
-        <td><input type="checkBox" disabled></td>
+        <td><input type="checkBox" checked></td>
         <td rowsp>인터페이스 컴포넌트</td>
         <td>사용자 입력</td>
     </tr>
@@ -95,7 +95,7 @@
         <td>자동차 이름은 5자 이하로 제한</td>
     </tr>
     <tr>
-        <td><input type="checkBox" disabled></td>
+        <td><input type="checkBox" checked></td>
         <td>시도 횟수 입력 기능</td>
     </tr>
 </table>
