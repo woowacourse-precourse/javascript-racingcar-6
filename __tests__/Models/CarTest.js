@@ -35,7 +35,7 @@ describe("Car 기능 테스트", () => {
     car.race();
 
     // then
-    expect(car.totalDistance).toEqual(MOVING_FORWARD);
+    expect(car.totalDistance).toEqual(1);
   });
 
   test("랜덤값이 3 이하인 경우 정지함", () => {

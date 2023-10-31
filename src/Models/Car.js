@@ -15,8 +15,7 @@ export default class Car {
 
   race() {
     const randomDistance = this.#getRandomDistance();
-    if (randomDistance >= CAR_SETTINGS.move_threshold)
-      this.totalDistance += randomDistance;
+    if (randomDistance >= CAR_SETTINGS.move_threshold) this.totalDistance += 1;
   }
 
   #getRandomDistance() {
