@@ -152,7 +152,7 @@ test("입력한 시도횟수 만큼 게임 반복", async () => {
   const answer = { carl: 3, kay: 3 };
   const logSpy = getLogSpy();
 
-  mockRandoms([6, 6, 6, 6, 6, 6]);
+  mockRandoms([7, 7, 7, 7, 7, 7]);
 
   model.repeatMessage = jest.fn(() => {
     return "---";
