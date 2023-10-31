@@ -1,7 +1,4 @@
-import {
-  nameValidation,
-  duplicateChecks,
-} from "./Validations";
+import { nameValidation, duplicateChecks } from "./Validations";
 
 export default class Cars {
   constructor(arr) {
@@ -19,8 +16,8 @@ export default class Cars {
     });
   }
 
-  validations(arr) {
+  static validArr = (arr) => {
     nameValidation(arr);
     duplicateChecks(arr);
-  }
+  };
 }
