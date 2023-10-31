@@ -59,4 +59,100 @@ describe('자동차 경주 게임', () => {
       await expect(app.play()).rejects.toThrow('[ERROR]');
     }
   );
+
+  test('유효하지 않은 시도 횟수 입력', async () => {
+    // given
+    const inputs = ['pobi,woni', '0'];
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow('[ERROR]');
+  });
+
+  test('시도 횟수가 문자열인 경우', async () => {
+    // given
+    const inputs = ['pobi,woni', 'abc'];
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow('[ERROR]');
+  });
+
+  test('빈 문자열 이름', async () => {
+    // given
+    const inputs = [',woni'];
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow('[ERROR]');
+  });
+
+  test('모든 자동차가 움직이지 않는 경우', async () => {
+    // given
+    const inputs = ['pobi,woni', '1'];
+    const outputs = ['pobi : ', 'woni : '];
+    const randoms = [2, 3];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    // when
+    const app = new App();
+    await app.play();
+
+    // then
+    outputs.forEach(output => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
+
+  test('모든 자동차가 움직이는 경우', async () => {
+    // given
+    const inputs = ['pobi,woni', '1'];
+    const outputs = ['pobi : -', 'woni : -'];
+    const randoms = [4, 5];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    // when
+    const app = new App();
+    await app.play();
+
+    // then
+    outputs.forEach(output => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
+
+  test('우승자 계산', async () => {
+    // given
+    const inputs = ['pobi,woni', '1'];
+    const outputs = ['최종 우승자 : pobi'];
+    const randoms = [4, 3];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    // when
+    const app = new App();
+    await app.play();
+
+    // then
+    outputs.forEach(output => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
 });
