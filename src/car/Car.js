@@ -1,6 +1,5 @@
 import getRandomNumber from '../utils/getRandomNumber';
-
-const MOVING_FORWARD = 4;
+import { NUMBER } from '../constant/constants';
 
 class Car {
   constructor(name) {
@@ -10,7 +9,7 @@ class Car {
 
   move() {
     const randomNumber = getRandomNumber();
-    const isMoved = randomNumber >= MOVING_FORWARD;
+    const isMoved = randomNumber >= NUMBER.MOVING_FORWARD;
 
     if (isMoved) {
       this.position += 1;
