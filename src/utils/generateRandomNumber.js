@@ -1,5 +1,5 @@
 import { Random } from '@woowacourse/mission-utils';
-import { RANDOM_NUMBER } from '../constants/constants';
+import { RANDOM_NUMBER } from '../constants/constants.js';
 
 /** 랜덤 숫자 반환하는 함수 */
 export default function generateRandomNumber() {
