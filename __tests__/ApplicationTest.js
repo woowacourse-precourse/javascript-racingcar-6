@@ -49,7 +49,7 @@ describe('자동차 경주 게임', () => {
     });
   });
 
-  test('공동 우승', async () => {
+  test('점수가 같을시, 공동 우승', async () => {
     // given
     const SAME_NUMBER = 4;
     const input = { pobi: SAME_NUMBER, woni: SAME_NUMBER, jun: SAME_NUMBER };
@@ -73,7 +73,25 @@ describe('자동차 경주 게임', () => {
       const app = new App();
 
       // then
-      await expect(app.play()).rejects.toThrow('[ERROR]');
+      await expect(app.play()).rejects.toThrow(
+        '[ERROR] 자동차 이름은 5자 이하만 가능합니다',
+      );
+    },
+  );
+
+  test.each([[['pobi,jun', 'wooteco']], [['pobi,woni', '1o']]])(
+    '정수외의 횟수 입력에 대한 예외 처리',
+    async (inputs) => {
+      // given
+      mockQuestions(inputs);
+
+      // when
+      const app = new App();
+
+      // then
+      await expect(app.play()).rejects.toThrow(
+        '[ERROR] 횟수는 정수만 입력 가능합니다.',
+      );
     },
   );
 });
