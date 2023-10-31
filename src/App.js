@@ -16,7 +16,8 @@ const splitUserInputByComma = (userInput) => {
 
 const checkNameLength = (userNames) => {
   userNames.forEach((val) => {
-    if(val.length > 5) throw new Error("[ERROR] : 이름은 다섯자 이하입니다.");
+    if(val.length < 1) throw new Error('[ERROR] : 이름은 한글자 이상입니다.');
+    if(val.length > 5) throw new Error('[ERROR] : 이름은 다섯자 이하입니다.');
   })
 }
 
@@ -32,6 +33,12 @@ const stringToNaturalNumber = (userInputNumber) => {
   return number;
 }
 
+const getRandomNumber = () => {
+  return MissionUtils.Random.pickNumberInRange(0,9);
+}
+
+
+
 
 
 class App {
@@ -46,7 +53,9 @@ class App {
 
       const gameRep = stringToNaturalNumber(userInputgameRep);
 
-      MissionUtils.Console.print(gameRep);
+      const randomNumber = getRandomNumber();
+
+      console.log(randomNumber);
 
     } catch(err) {
       console.log(err.msg);
