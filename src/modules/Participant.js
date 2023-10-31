@@ -1,10 +1,12 @@
+import { GAME_ERROR } from "./constant.js";
+
 class Participant {
   constructor(input) {
     this.input = input.split(",");
   }
 
   validate() {
-    if (this.errorCheck()) throw new Error("[ERROR]");
+    if (this.errorCheck()) throw new Error(GAME_ERROR.ERROR_NAME);
     return true;
   }
 
