@@ -1,2 +1,2 @@
 export { default as gamePlay } from './game-play.js';
-export * from './result-game';
+export { default as resultGame }from './result-game.js';
