@@ -1,3 +1,5 @@
+const { Random } = require('./Constant');
+
 class Car {
   #name;
   #position;
@@ -10,7 +12,7 @@ class Car {
   move() {
     const randomValue = this.getRandomNumber();
     if (randomValue >= 4) {
-      this.#position++;
+      this.#position += 1;
     }
   }
 

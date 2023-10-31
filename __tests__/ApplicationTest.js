@@ -38,9 +38,17 @@ describe('자동차 경주 게임', () => {
     // given
     const MOVING_FORWARD = 4;
     const STOP = 3;
-    const inputs = ['pobi,woni', '1'];
-    const outputs = ['pobi : -'];
-    const randoms = [MOVING_FORWARD, STOP];
+    const inputs = ['pobi,woni', '3'];
+    const outputs = [
+      'pobi : -',
+      'woni : ',
+      'pobi : -',
+      'woni : -',
+      'pobi : --',
+      'woni : -',
+      '최종 우승자 : pobi',
+    ];
+    const randoms = [MOVING_FORWARD, STOP, STOP, MOVING_FORWARD, MOVING_FORWARD, STOP];
     const logSpy = getLogSpy();
 
     mockNamesQuestions(inputs);
