@@ -1,4 +1,4 @@
-import gameInterface from "./components/ui/interface";
+import gameInterface from "./components/ui/game_interface.js";
 
 class App {
   async play() {
