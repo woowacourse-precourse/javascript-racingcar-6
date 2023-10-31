@@ -20,7 +20,7 @@ class Play {
     const inputNumber = !Number.isNaN(numberOfTimes);
     const inputString = isNaN(numberOfTimes);
     const hasEmty = numberOfTimes.length == 0 || numberOfTimes.includes(' ');
-    MissionUtils.Console.print('\n실행결과');
+    MissionUtils.Console.print('\n실행 결과');
 
     if (inputNumber) {
       for (let i = 1; i <= numberOfTimes; i++) {
