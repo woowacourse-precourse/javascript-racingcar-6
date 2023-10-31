@@ -26,6 +26,7 @@ class App {
     });
 
     //각 자동차 별 무작위 수 구하기
+    MissionUtils.Console.print(`실행 결과`);
     for (let i = 0; i < tryNumber; i++) {
       const movingCars = [];
 
@@ -36,6 +37,16 @@ class App {
           movingCars.push(car);
         }
       });
+
+      //횟수마다 이동 결과 출력
+
+      carNames.forEach((car) => {
+        if (movingCars.includes(car)) {
+          carScoreObj[car] += "-";
+        }
+        MissionUtils.Console.print(`${car} : ${carScoreObj[car]}`);
+      });
+      MissionUtils.Console.print("");
     }
   }
 }
