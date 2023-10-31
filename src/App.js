@@ -10,8 +10,7 @@ class App {
   }
 
   async carNameInput() {
-    Console.print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-    const carUserInput = await Console.readLineAsync("");
+    const carUserInput = await Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분) \n");
     const carName = carUserInput.split(",");
     if (this.nameValidity(carName)) {
       throw new Error("[ERROR] 이름이 잘못된 형식입니다.");
@@ -20,8 +19,7 @@ class App {
   }
 
   async numberTimesInput() {
-    Console.print("시도할 횟수는 몇 회인가요?");
-    const numberUserInput = await Console.readLineAsync("");
+    const numberUserInput = await Console.readLineAsync("시도할 횟수는 몇 회인가요? \n");
     if (this.numberValidity(numberUserInput)) {
       throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
     };
@@ -35,7 +33,8 @@ class App {
   }
 
   numberValidity(input) {
-    const validNumberError = !/^[0-9]+$/.test(input)
+    const validNumberError = !/^[0-9]+$/.test(input);
+
     return validNumberError;
   }
 
@@ -54,22 +53,23 @@ class App {
       const randomValue = Random.pickNumberInRange(0, 9);
       const action = randomValue >= 4 ? '-' : '';
       if (action === '-') {
-        recordSave[index]++;
+        recordSave[index] += 1;
+
       }
       return { carName, action: '-'.repeat(recordSave[index]) };
     });
   }
 
   endGame(result) {
-    for (const saveResult of result) {
-      for (const { carName, action } of saveResult) { 
-        Console.print(`${carName} : ${action}`);  
-      }
-    }
+    result.forEach((saveResult) => {
+      saveResult.forEach(({ carName, action }) => {
+        Console.print(`${carName} : ${action}`);
+      })
+    })
     let maxDistance = 0;
     const winners = [];
     const lastRound = result[result.length - 1];
-    for (const { action, carName } of lastRound) {
+    lastRound.forEach(({ action, carName }) => {
       if (action.length > maxDistance) {
         maxDistance = action.length;
         winners.length = 0;
@@ -77,7 +77,7 @@ class App {
       } else if (action.length === maxDistance) {
         winners.push(carName);
       }
-    }
+    })
     Console.print(`최종 우승자: ${winners.join(', ')}`); 
   }
 }
