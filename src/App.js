@@ -34,11 +34,7 @@ class App {
       Console.print('');
     }
     
-    let maxForward = 0;
-    for (let i = 0; i < carList.length; i++) {
-      maxForward = FindMax(maxForward, forwardCounts, i);
-    };
-
+    const maxForward = FindMax(carList, forwardCounts);
     const winners = FindWinners(forwardCounts, maxForward, carList);
     Console.print('최종 우승자 : ' + winners);
   }
