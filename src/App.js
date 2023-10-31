@@ -47,7 +47,7 @@ class App {
   };
 
   isValidNumber = () => {
-    const ATTEMPT_REGEX = /^[0-9]$/.test(this.input);
+    const ATTEMPT_REGEX = /^[0-9]+$/.test(this.input);
     return ATTEMPT_REGEX;
   };
 
