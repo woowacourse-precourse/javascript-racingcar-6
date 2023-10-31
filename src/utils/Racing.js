@@ -1,7 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
 import { checkTryCount } from './CheckInput';
-import { getCarsName, getWinner } from './DataProcessing';
-import { MESSAGE } from './Constants';
+import { getWinner } from './DataProcessing';
+import { MESSAGE, ADVANCE_STANDARD } from './Constants';
 import getCarsNumber from './Random';
 
 // 경주 시작
@@ -10,10 +10,13 @@ const startRacing = async (cars) => {
 
 	checkTryCount(tryCount);
 
-	Console.print('실행 결과');
+	Console.print(MESSAGE.result);
+
 	for (let i = 0; i < tryCount; i++) {
 		const carsNumber = getCarsNumber(cars.length);
+
 		addReps(cars, carsNumber);
+
 		printCars(cars);
 	}
 
@@ -23,16 +26,18 @@ const startRacing = async (cars) => {
 // 점수증가 판단
 const addReps = (cars, carsNumber) => {
 	cars.map((car, index) => {
-		if (carsNumber[index] >= 4) car.count += '-';
+		if (carsNumber[index] >= ADVANCE_STANDARD) car.count += '-';
 	});
 };
 
 //단계별 진행상황 출력
 const printCars = (cars) => {
 	let result = '';
+
 	cars.forEach((element) => {
 		result += `${element.name} : ${element.count}\n`;
 	});
+
 	Console.print(result);
 };
 

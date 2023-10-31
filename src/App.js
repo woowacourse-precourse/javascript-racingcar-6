@@ -1,6 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
 import { MESSAGE } from './utils/Constants';
-import { getCarsName, getWinner } from './utils/DataProcessing';
+import { getCarsName } from './utils/DataProcessing';
 import startRacing from './utils/Racing';
 
 class App {
@@ -9,8 +9,6 @@ class App {
 		const cars = getCarsName(inputCars);
 
 		startRacing(cars);
-
-		getWinner(cars);
 	}
 }
 
