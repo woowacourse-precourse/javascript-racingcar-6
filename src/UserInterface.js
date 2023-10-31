@@ -46,6 +46,13 @@ class UserInterface {
     }
     return parsedRounds;
   }
+
+  static printRoundResults(carStatuses) {
+    for (const carStatus of carStatuses) {
+      const forwardText = "-".repeat(carStatus.distance);
+      Console.print(`${carStatus.carName} : ${forwardText}`);
+    }
+  }
 }
 
 export default UserInterface;
