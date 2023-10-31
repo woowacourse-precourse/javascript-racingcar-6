@@ -10,7 +10,7 @@ const mockQuestions = (inputs) => {
   });
 };
 
-describe("시도할 횟수 입력 테스트", () => {
+describe("InputNumber 테스트", () => {
   test("음수인 경우", async () => {
     mockQuestions(["-273"]);
     const app = new App();
@@ -20,6 +20,13 @@ describe("시도할 횟수 입력 테스트", () => {
 
   test("0인 경우", async () => {
     mockQuestions(["0"]);
+    const app = new App();
+
+    await expect(app.inputNumber()).rejects.toThrow("[ERROR]");
+  });
+
+  test("값이 없는 경우", async () => {
+    mockQuestions([""]);
     const app = new App();
 
     await expect(app.inputNumber()).rejects.toThrow("[ERROR]");
