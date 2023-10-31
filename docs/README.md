@@ -16,9 +16,9 @@
 - [ ] 공백 라인을 의미있게 사용하기
 - [ ] space 와 tab 을 혼용하지 않기
 - [ ] 의미 없는 주석 달지 않기
-- [ ] linter , code formatter 기능 활용
-- [ ] EOL 확인
-- [ ] 불필요한 console.log 지양
+- [x] linter , code formatter 기능 활용
+- [x] EOL 확인
+- [x] 불필요한 console.log 지양
 - [ ] JavaScript 의 API 적극 활용
 
 # 자동차 경주
