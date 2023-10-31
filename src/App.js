@@ -1,4 +1,5 @@
 import { Console, Random } from '@woowacourse/mission-utils';
+import validator from './validator/validator.js';
 
 class App {
   #cars = [];
@@ -24,11 +25,13 @@ class App {
     ).then((input) => {
       const carNames = input.split(',');
       this.#cars = carNames.map((name) => ({ name, move: 0 }));
+      validator.validateCarName(carNames);
     });
   }
 
   async inputNumber() {
     this.#number = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    validator.validateChance(this.#number);
     this.startRace();
   }
 
