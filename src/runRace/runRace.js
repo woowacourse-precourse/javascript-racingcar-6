@@ -1,26 +1,37 @@
 import { Console, Random } from '@woowacourse/mission-utils';
-import returnWinners from './returnWinner.js';
+import ReturnWinner from './ReturnWinner.js';
 
-const getRandomMove = () => Random.pickNumberInRange(0, 9);
+class RunRace {
+  constructor() {
+    this.progressList = [];
+  }
 
-const getRandomProgress = () => (getRandomMove() >= 4 ? '-' : '');
+  getRandomMove = () => Random.pickNumberInRange(0, 9);
 
-const printCarProgress = (car, progressList, carIndex) =>
-  Console.print(`${car} : ${progressList[carIndex]}`);
+  getRandomProgress = () => (this.getRandomMove() >= 4 ? '-' : '');
 
-const runRace = (cars, tryCount) => {
-  const progressList = new Array(cars.length).fill('');
+  printCarProgress(car, carIndex) {
+    return Console.print(`${car} : ${this.progressList[carIndex]}`);
+  }
 
-  for (let tryNumber = 0; tryNumber < tryCount; tryNumber += 1) {
-    cars.forEach((car, carIndex) => {
-      progressList[carIndex] += getRandomProgress();
-      printCarProgress(car, progressList, carIndex);
+  runRaceRound(cars) {
+    cars.forEach((_, carIndex) => {
+      this.progressList[carIndex] += this.getRandomProgress();
+      this.printCarProgress(cars[carIndex], carIndex);
     });
 
     Console.print('');
   }
 
-  returnWinners(cars, progressList);
-};
+  runRace(cars, tryCount) {
+    this.progressList = new Array(cars.length).fill('');
 
-export default runRace;
+    for (let tryNumber = 0; tryNumber < tryCount; tryNumber += 1) {
+      this.runRaceRound(cars);
+    }
+
+    ReturnWinner(cars, this.progressList);
+  }
+}
+
+export default RunRace;

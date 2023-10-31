@@ -1,14 +1,14 @@
 import { Console } from '@woowacourse/mission-utils';
 import validCarNames from './validation/validCarNames.js';
 import validTryCount from './validation/validTryCount.js';
-import runRace from './runRace/runRace.js';
+import RunRace from './runRace/RunRace.js';
 
 class App {
   async play() {
     const cars = await this.returnCarNames();
     const tryCount = await this.getTryCount();
     Console.print('\n실행 결과');
-    runRace(cars, tryCount);
+    new RunRace().runRace(cars, tryCount);
   }
 
   async returnCarNames() {
