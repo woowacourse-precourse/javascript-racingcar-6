@@ -1,4 +1,5 @@
 // @ts-check
+
 import { INPUT_REQUEST } from './constants';
 import { Random, Console } from '@woowacourse/mission-utils';
 import { validateName, validateNumber } from './validateInput';

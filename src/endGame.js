@@ -1,4 +1,5 @@
 // @ts-check
+
 import { Console } from '@woowacourse/mission-utils';
 import { RESULT } from './constants';
 
