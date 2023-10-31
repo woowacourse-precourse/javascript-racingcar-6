@@ -1,9 +1,11 @@
 export class Car {
   #name;
+  #speed;
   #horizontalOffset = 0;
 
-  constructor(name) {
+  constructor(name, speed = 1) {
     this.#name = name;
+    this.#speed = speed;
   }
 
   get name() {
@@ -15,6 +17,6 @@ export class Car {
   }
 
   run() {
-    this.#horizontalOffset += 1;
+    this.#horizontalOffset += this.#speed;
   }
 }
