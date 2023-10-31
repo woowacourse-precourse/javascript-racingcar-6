@@ -45,6 +45,13 @@ class Race {
       Console.print(`${car.name} : ${car.getPosition()}`);
     });
   }
+
+  getWinners() {
+    const maxPosition = Math.max(...this.cars.map((car) => car.position));
+    return this.cars
+      .filter((car) => car.position === maxPosition)
+      .map((car) => car.name);
+  }
 }
 
 class App {
@@ -60,6 +67,8 @@ class App {
     const cars = carNames.map((name) => new Car(name));
     const race = new Race(cars);
     race.run(times);
+    const winners = race.getWinners();
+    Console.print(`최종 우승자 : ${winners.join(", ")}`);
   }
 }
 
