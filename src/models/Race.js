@@ -1,4 +1,4 @@
-import RaceCar from "./RaceCar";
+import RaceCar from "./RaceCar.js";
 export default class Race {
   constructor(carNames) {
     this.cars = carNames.map((name) => new RaceCar(name));
