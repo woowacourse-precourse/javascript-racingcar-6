@@ -20,7 +20,6 @@ class RacingCar {
   /** @param {string} name */
   set setCarName(name) {
     validateCarName(name);
-
     this.carName = name;
   }
 
