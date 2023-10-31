@@ -13,15 +13,15 @@ export default class RacingGameController {
   #rounds;
 
   async start() {
-    await this.#initializeGame();
+    await this.#initializeRaceGame();
     this.#runRace();
     this.#displayWinners();
   }
 
-  async #initializeGame() {
+  async #initializeRaceGame() {
     const carNames = await this.#createCarNames();
     this.#rounds = await this.#createRounds();
-    this.#race = this.#initializeRace(carNames);
+    this.#race = new Race(carNames.map((name) => new Car(name, randomMovementStrategy)));
   }
 
   async #createCarNames() {
@@ -36,11 +36,6 @@ export default class RacingGameController {
     const rounds = await InputView.printNumberOfRounds();
     InputValidator.validateNumberOfRounds(rounds);
     return rounds;
-  }
-
-  #initializeRace(carNames) {
-    const cars = carNames.map((name) => new Car(name, randomMovementStrategy));
-    return new Race(cars);
   }
 
   #runRace() {
