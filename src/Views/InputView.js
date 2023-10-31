@@ -16,7 +16,7 @@ export default class InputView {
 
   static async promptRaceRound() {
     const input = await Console.readLineAsync(
-      `${INPUTVEIW_MESSAGE.promptRaceRound_message}\n`
+      `${INPUTVIEW_MESSAGE.promptRaceRound_message}\n`
     );
     console.log(isNaN(input));
     return input;
