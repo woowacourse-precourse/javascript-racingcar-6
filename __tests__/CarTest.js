@@ -42,7 +42,7 @@ describe("Car 클래스 테스트", () => {
     car.goForward();
 
     const result = car.isWinner(MaxCount);
-    expect(result).toBeTruthy();
+    expect(result).toBe(true);
   });
   test("우승 여부 판별 - 탈락", () => {
     const MaxCount = 3;
@@ -51,20 +51,20 @@ describe("Car 클래스 테스트", () => {
     car.goForward();
 
     const result = car.isWinner(MaxCount);
-    expect(result).toBeFalsy();
+    expect(result).toBe(false);
   });
   test("자동차 중복 이름 검사 - 중복", () => {
     const newName = "bong";
     const car = new Car("bong");
 
     const result = car.isSameName(newName);
-    expect(result).toBeTruthy();
+    expect(result).toBe(true);
   });
   test("자동차 중복 이름 검사 - 미중복", () => {
     const newName = "labong";
     const car = new Car("bong");
 
     const result = car.isSameName(newName);
-    expect(result).toBeFalsy();
+    expect(result).toBe(false);
   });
 });
