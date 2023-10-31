@@ -1,6 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
 import RacingCar from './RacingCar.js';
-import AppView from './appVIew.js';
+import AppView from './AppView.js';
 import message from './message.js';
 
 export default class App {
