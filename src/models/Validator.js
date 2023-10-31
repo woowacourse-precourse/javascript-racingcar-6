@@ -33,7 +33,7 @@ export default class Validator {
     };
 
     // 자동차의 대수를 최소 대수 미만으로 입력한 경우
-    if (carListArr.length < 2) {
+    if (carListArr.length < CARS.MIN_NUMBER_OF_CARS) {
       throw new Error(ERROR_MESSAGE.INPUT_CARS_LESS_THAN_TWO);
     };
 
