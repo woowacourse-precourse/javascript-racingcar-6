@@ -1,7 +1,6 @@
 import GAME from '../constants/Game.js';
 import randomNumberGenerator from '../utils/randomNumberGenerator.js';
 import driverNamesValidation from '../utils/validation/driverNamesValidation.js';
-import tryCountValidation from '../utils/validation/tryCountValidation.js';
 
 class RacingTrack {
 	#drivers; // {name1: currentLocation, name2: ...}
@@ -11,7 +10,6 @@ class RacingTrack {
 	}
 
 	initDrivers(drivers) {
-		// TODO: 유효성 검사 필요
 		const driverArr = drivers.split(GAME.inputNameDelimiter);
 
 		driverNamesValidation(driverArr);
@@ -20,7 +18,6 @@ class RacingTrack {
 	}
 
 	#move() {
-		// 커런트 자체를 증가시켜야하나?
 		Object.entries(this.#drivers).forEach(([name, _]) => {
 			const moveProbability = randomNumberGenerator();
 
@@ -28,7 +25,7 @@ class RacingTrack {
 		});
 	}
 
-	allDriversSingleMoveLocation() {
+	allMoves() {
 		this.#move();
 
 		return this.#drivers;
