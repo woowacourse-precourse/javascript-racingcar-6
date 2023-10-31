@@ -2,7 +2,7 @@ import Interface from './Interface.js';
 
 class Message {
   static roundResults(carsInfo) {
-    [...carsInfo.entries()].forEach(([name, { distance }]) => {
+    carsInfo.forEach(([name, { distance }]) => {
       const message = `${name} : ${distance}`;
       Interface.printMessage(message);
     });

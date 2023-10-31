@@ -22,11 +22,11 @@ class Validator {
     return splitedNames;
   }
 
-  static evaluateTryinCount(tryingCount) {
-    const numericTryingCount = parseInt(tryingCount, 10);
-    if (numericTryingCount < 0) throw String('UNDER_ZERO');
-    if (isNotInteger(numericTryingCount)) throw String('NOT_NUMBER');
-    return numericTryingCount;
+  static evaluateTotalRound(totalRound) {
+    const numericTotalRound = parseInt(totalRound, 10);
+    if (numericTotalRound < 0) throw String('UNDER_ZERO');
+    if (isNotInteger(numericTotalRound)) throw String('NOT_NUMBER');
+    return numericTotalRound;
   }
 }
 

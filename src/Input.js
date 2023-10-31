@@ -13,11 +13,11 @@ class Input {
     }
   }
 
-  static async enterTryingCount() {
+  static async enterTotalRound() {
     try {
-      let tryingCount = await Interface.requestValueforContent('시도할 횟수');
-      tryingCount = Validator.evaluateTryinCount(tryingCount);
-      return tryingCount;
+      let totalRound = await Interface.requestValueforContent('시도할 횟수');
+      totalRound = Validator.evaluateTotalRound(totalRound);
+      return totalRound;
     } catch (errorCode) {
       throw new InputException(errorCode);
     }

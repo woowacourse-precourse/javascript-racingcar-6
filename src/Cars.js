@@ -1,34 +1,29 @@
 class Cars {
   #INFO;
 
-  initializeCarNames(names) {
-    this.#INFO = new Map(names.map((name) => {
-      const distance = '';
-      return [
-        name, {
-          distance,
-        },
-      ];
-    }));
+  constructor(names) {
+    this.#INFO = Cars.initializeCarNames(names);
   }
 
-  get getAllNames() {
-    return [...this.#INFO.keys()];
+  static initializeCarNames(names) {
+    return new Map(names.map((name) => [name, { distance: '' }]));
   }
 
-  get getAllCarsInfo() {
-    return [...this.#INFO.entries()];
+  get names() {
+    return Array.from([...this.#INFO.keys()]);
   }
 
-  get getCarsInfo() {
-    return this.#INFO;
+  get ascendingSortedInfo() {
+    const shallowCopy = Array.from([...this.#INFO.entries()]);
+    return shallowCopy.sort((a, b) => b[1].length - a[1].length);
   }
 
-  getDistanceByName(name) {
-    return this.#INFO.get(name);
+  movingDistanceOfName(name) {
+    const { distance } = this.#INFO.get(name);
+    return distance;
   }
 
-  movingForwardByName(name) {
+  movingForwardSpecificName(name) {
     const { distance } = this.#INFO.get(name);
     this.#INFO.set(name, { distance: `${distance}-` });
   }

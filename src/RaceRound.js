@@ -1,62 +1,52 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import Cars from './Cars.js';
 import Message from './Message.js';
-import Interface from './Interface.js';
 
-class RaceRound extends Cars {
+const MIN_MOVING_FORWARD_NUM = 4;
+
+class RaceRound {
   #TOTAL_ROUND;
 
-  constructor(names, totalRound) {
-    super();
-    this.initializeCarNames(names);
+  constructor(cars, totalRound) {
+    this.cars = cars;
     this.#TOTAL_ROUND = totalRound;
-  }
-
-  proceedRound() {
-    Interface.printMessage('');
-    Interface.printMessage('실행 결과');
-    let totalRound = this.getTotalRound;
-    const names = this.getAllNames;
-    while (totalRound > 0) {
-      names.forEach((name) => {
-        const randomNum = RaceRound.createRandomNum();
-        if (randomNum >= 4) {
-          this.movingForwardByName(name);
-        }
-      });
-      Message.roundResults(this.getCarsInfo);
-      totalRound -= 1;
-    }
-
-    this.announceGameResult();
-  }
-
-  announceGameResult() {
-    let maxDistance = Number.MIN_SAFE_INTEGER;
-    let winners = [];
-    const carsInfo = this.getAllCarsInfo;
-
-    carsInfo.forEach(([name, { distance }]) => {
-      const distanceRange = distance.length;
-      if (distanceRange >= maxDistance) {
-        winners = distanceRange === maxDistance
-          ? [...winners, name]
-          : [name];
-        maxDistance = Math.max(distanceRange, maxDistance);
-      }
-    });
-
-    Message.announceWinners(winners);
-    return winners;
-  }
-
-  get getTotalRound() {
-    return this.#TOTAL_ROUND;
   }
 
   static createRandomNum() {
     const randomNum = MissionUtils.Random.pickNumberInRange(0, 9);
     return randomNum;
+  }
+
+  proceedRound() {
+    let totalRound = this.#TOTAL_ROUND;
+    while (totalRound > 0) {
+      this.namedCarsDecideGoStop(this.cars.names);
+      Message.roundResults(this.cars.ascendingSortedInfo);
+      totalRound -= 1;
+    }
+  }
+
+  namedCarsDecideGoStop(names) {
+    names.forEach((name) => {
+      const randomNum = RaceRound.createRandomNum();
+      if (randomNum >= MIN_MOVING_FORWARD_NUM) {
+        this.cars.movingForwardSpecificName(name);
+      }
+    });
+  }
+
+  announceGameResult() {
+    const winners = this.makeOutWinners();
+    Message.announceWinners(winners);
+  }
+
+  makeOutWinners() {
+    const carsInfo = this.cars.ascendingSortedInfo;
+
+    const [winners, max] = [[], carsInfo[0][1].distance.length];
+    carsInfo.forEach(([name, { distance }]) => {
+      if (distance.length === max) winners.push(name);
+    });
+    return winners;
   }
 }
 

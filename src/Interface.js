@@ -2,8 +2,8 @@ import { Console } from '@woowacourse/mission-utils';
 
 class Interface {
   static requestValueforContent(content) {
-    const INPUT_VALUE = Console.readLineAsync(content);
-    return INPUT_VALUE;
+    const inputValue = Console.readLineAsync(content);
+    return inputValue;
   }
 
   static printMessage(message) {
