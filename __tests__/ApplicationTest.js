@@ -46,6 +46,28 @@ describe("자동차 경주 게임", () => {
     });
   });
 
+  test("전진-정지2", async () => {
+    // given
+    const MOVING_FORWARD = 4;
+    const STOP = 3;
+    const inputs = ["pobi,woni", "3"];
+    const outputs = ["pobi : ---",'woni : -'];
+    const randoms = [MOVING_FORWARD, STOP,MOVING_FORWARD, MOVING_FORWARD,MOVING_FORWARD, STOP];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    // when
+    const app = new App();
+    await app.play();
+
+    // then
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
+
   test.each([
     [["pobi,javaji"]],
     [["pobi,eastjun"]]
