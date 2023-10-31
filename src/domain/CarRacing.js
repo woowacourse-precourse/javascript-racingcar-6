@@ -2,7 +2,7 @@ import View from '../View.js';
 import RacingCar from './RacingCar.js';
 import Referee from './Referee.js';
 
-class Race {
+class CarRacing {
   cars = [];
   numberOfRounds = 0;
   referee = new Referee();
@@ -32,4 +32,4 @@ class Race {
   }
 }
 
-export default Race;
+export default CarRacing;

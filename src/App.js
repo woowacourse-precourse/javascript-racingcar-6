@@ -1,11 +1,11 @@
-import Race from './domain/Race.js';
+import CarRacing from './domain/CarRacing.js';
 
 class App {
   async play() {
-    const race = new Race();
-    await race.prepare();
-    race.race();
-    race.showWinners();
+    const carRacing = new CarRacing();
+    await carRacing.prepare();
+    carRacing.race();
+    carRacing.showWinners();
   }
 }
 
