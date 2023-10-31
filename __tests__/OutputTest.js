@@ -1,7 +1,6 @@
-import App from "../src/App.js";
-import { MissionUtils } from "@woowacourse/mission-utils";
+import App from '../src/App.js';
 
-describe("자동차 경주 실행 결과 출력 테스트", () => {
+describe('자동차 경주 실행 결과 출력 테스트', () => {
   test('최종 결과를 정상적으로 출력하는지 확인', () => {
     const app = new App();
     app.cars = ['Alley', 'Tami', 'Yuna'];

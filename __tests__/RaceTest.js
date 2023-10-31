@@ -1,5 +1,5 @@
-import App from "../src/App.js";
-import { MissionUtils } from "@woowacourse/mission-utils";
+import App from '../src/App.js';
+import { MissionUtils } from '@woowacourse/mission-utils';
 
 describe('자동차 경주 실행 테스트', () => {
   test('자동차 경주 횟수만큼 반복 실행하는지 확인', () => {
@@ -36,6 +36,6 @@ describe('자동차 경주 실행 테스트', () => {
     app.goStop(randomNumbers);
   
     expect(app.goTimes).toEqual({ 'Alley': 1, 'Tami': 0, 'Yuna': 1 });
-    expect(app.raceResults).toBe("Alley : -\nTami : \nYuna : -\n\n");
+    expect(app.raceResults).toBe('Alley : -\nTami : \nYuna : -\n\n');
   });
 });

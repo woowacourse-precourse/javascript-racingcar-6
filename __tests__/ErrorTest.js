@@ -1,5 +1,4 @@
-import App from "../src/App.js";
-import { MissionUtils } from "@woowacourse/mission-utils";
+import App from '../src/App.js';
 
 describe('에러 반환 테스트', () => {
   test('자동차 이름이 두 대 미만인 경우 에러 반환', () => {
