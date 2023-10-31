@@ -52,6 +52,10 @@ class App {
   showCarPosition(carStatus) {
     return '-'.repeat(carStatus);
   }
+
+  showRaceProgress(carName, carPosition) {
+    MissionUtils.Console.print(`${carName} : ${carPosition}`);
+  }
 }
 
 export default App;

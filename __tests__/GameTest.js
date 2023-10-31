@@ -26,4 +26,13 @@ describe('App 테스트', () => {
 		const carPosition = app.showCarPosition(carStatus);
 		expect(carPosition).toBe('---');
 	});
+
+	test('자동차 이름 위치 출력 테스트', () => {
+		const carName = 'Car1';
+		const carPosition = '---';
+		const consoleSpy = jest.spyOn(MissionUtils.Console, 'print').mockImplementation(() => { });
+		app.showRaceProgress(carName, carPosition);
+		expect(consoleSpy).toHaveBeenCalledWith('Car1 : ---');
+		consoleSpy.mockRestore();
+	});
 });
