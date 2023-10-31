@@ -14,19 +14,26 @@ class TryCount {
   set tryNumber(tryValue) {
     tryValue = Number(tryValue);
 
-    if (tryValue === 0) {
-      throw new Error(TRY_COUNT_VALIDATION.NOT_ZERO);
-    }
-
-    if (isNaN(tryValue)) {
-      throw new Error(TRY_COUNT_VALIDATION.IS_NAN);
-    }
+    this.notZero(tryValue);
+    this.isNumber(tryValue);
 
     this._tryNumber = tryValue;
   }
 
   get tryNumber() {
     return this._tryNumber;
+  }
+
+  notZero(tryValue) {
+    if (tryValue === 0) {
+      throw new Error(TRY_COUNT_VALIDATION.NOT_ZERO);
+    }
+  }
+
+  isNumber(tryValue) {
+    if (isNaN(tryValue)) {
+      throw new Error(TRY_COUNT_VALIDATION.IS_NAN);
+    }
   }
 }
 
