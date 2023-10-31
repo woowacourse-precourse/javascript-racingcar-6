@@ -1,4 +1,9 @@
 import { Random, Console } from '@woowacourse/mission-utils';
+import {
+  MOVE_GAME_RECORD,
+  REQUEST_MESSAGE,
+  VALIDATION_ERRORS_MESSAGE,
+} from './Constants.js';
 
 class App {
   async play() {
@@ -9,45 +14,36 @@ class App {
     this.raceGame(carNames, gameCount);
   }
 
-  // 자동차 이름 입력받기
   async getCarNames() {
-    const carNames = await Console.readLineAsync(
-      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)',
-    );
+    const carNames = await Console.readLineAsync(REQUEST_MESSAGE.CAR_NAMES);
     const carNamesArr = carNames.split(',');
     carNamesArr.forEach((carName) => this.validateCarName(carName));
 
     return carNamesArr;
   }
 
-  // 자동차 이름 검증하기
   validateCarName(carName) {
-    if (!carName) throw new Error('[ERROR] 입력값이 없습니다.');
+    if (!carName) throw new Error(VALIDATION_ERRORS_MESSAGE.EMPTY_INPUT);
     if (!/^[A-Za-z]+$/.test(carName))
-      throw new Error(
-        '[ERROR] 자동차 이름은 공백없이 알파벳 문자만 포함해야 합니다.',
-      );
+      throw new Error(VALIDATION_ERRORS_MESSAGE.NOT_ONLY_STRING);
     if (carName.length > 5)
-      throw new Error('[ERROR] 자동차 이름은 5자리 이하여야 합니다.');
+      throw new Error(VALIDATION_ERRORS_MESSAGE.OVER_THE_RANGE);
   }
 
-  // 경주횟수 입력받기
   async getGameCount() {
-    const gameCount = await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
+    const gameCount = await Console.readLineAsync(REQUEST_MESSAGE.GAME_COUNT);
     this.validateGameCount(gameCount);
     return gameCount;
   }
 
-  // 경주횟수 검증하기
   validateGameCount(gameCount) {
-    if (!gameCount) throw new Error('[ERROR] 입력값이 없습니다.');
-    if (Number.isNaN(gameCount)) throw new Error('[ERROR] 숫자가 아닙니다.');
+    if (!gameCount) throw new Error(VALIDATION_ERRORS_MESSAGE.EMPTY_INPUT);
+    if (Number.isNaN(gameCount))
+      throw new Error(VALIDATION_ERRORS_MESSAGE.NOT_NUMBER);
   }
 
-  // 경주 진행하기
   raceGame(carNames, gameCount) {
     const gameProgress = {};
-    // 각 차량을 초기 위치로 설정
     carNames.forEach((carName) => {
       gameProgress[carName] = '';
     });
@@ -61,13 +57,11 @@ class App {
     this.chooseWinner(gameProgress);
   }
 
-  // 자동차 이동
   moveOrStop() {
     const number = Random.pickNumberInRange(0, 9);
-    return number >= 4 ? '-' : '';
+    return number >= 4 ? MOVE_GAME_RECORD.FORWARD : MOVE_GAME_RECORD.STOP;
   }
 
-  // 최종 우승자 도출하기
   chooseWinner(gameProgress) {
     let maxMove = 0;
     let winnerArr = [];
