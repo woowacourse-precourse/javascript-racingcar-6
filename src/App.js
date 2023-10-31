@@ -1,4 +1,4 @@
-import { MissionUtils, Console } from "@woowacourse/mission-utils";
+import { Random, Console } from "@woowacourse/mission-utils";
 
 class App {
   async play() {
@@ -11,7 +11,7 @@ class App {
       };
       for (let i = 0; i < count; i++) {
         for (const j of arr) {
-          let randomNum = MissionUtils.Random.pickNumberInRange(1, 9);
+          let randomNum = Random.pickNumberInRange(1, 9);
           if (randomNum >= 4) {
             nameObj[j] += 1;
           }
