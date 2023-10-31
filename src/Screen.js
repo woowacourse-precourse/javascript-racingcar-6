@@ -6,7 +6,7 @@ class Screen {
       '경주할 자동차 이름을 입력하세요.(이름은 쉼표 (,) 기준으로 구분)',
     RACE_COUNT_INPUT_MESSAGE: '시도할 횟수는 몇 회인가요?',
     INVALID_NAME_ERROR_MESSAGE:
-      '[ERROR] 자동차 이름은 5자를 초과할 수 없습니다.',
+      '[ERROR] 자동차 이름은 1자 이상 5자 이하만 가능합니다.',
     INVALID_COUNT_ERROR_MESSAGE: '[ERROR] 숫자가 잘못된 형식입니다.',
     DUPLICATED_NAME_ERROR_MESSAGE: '[ERROR] 중복된 이름을 입력할 수 없습니다.',
   };
@@ -23,7 +23,7 @@ class Screen {
     const names = nameInput.split(',').map((name) => name.trim());
 
     names.forEach((name) => {
-      if (name.length > 5) {
+      if (name.length === 0 || name.length > 5) {
         throw new Error(this.MESSAGES.INVALID_NAME_ERROR_MESSAGE);
       }
     });
