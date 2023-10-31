@@ -3,6 +3,8 @@ class App {
     const carNames = await this.getCarNameInput();
 
     if (!this.validateCarNames(carNames)) return;
+
+    const attemptCount = await this.getAttemptCount();
   }
 
   async getCarNameInput() {
@@ -16,6 +18,12 @@ class App {
       MissionUtils.Console.readLineAsync("[ERROR] 자동차 이름은 5자 이하여야 합니다.");
     }
     return true;
+  }
+
+  async getAttemptCount() {
+    const attemptCountInput = await MissionUtils.Console.readLineAsync("시도할 횟수를 입력하세요:");
+    const attemptCount = parseInt(attemptCountInput);
+    return attemptCount;
   }
 }
 
