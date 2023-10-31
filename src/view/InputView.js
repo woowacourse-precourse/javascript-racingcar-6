@@ -11,6 +11,7 @@ const InputView = {
 
   async readRacingCount() {
     const racingCount = await Console.readLineAsync(OUTPUT_MESSAGE.count);
+    Validators.checkRacingCount(racingCount);
     return racingCount;
   },
 };
