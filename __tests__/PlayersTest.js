@@ -13,4 +13,10 @@ describe('✨ [Players] 클래스 메서드 테스트', () => {
 
     expect(players.getPlayers()).toEqual([{ name: 'reason', count: 0 }]);
   });
+
+  test('[setTryCount] 트라이 카운트를 인자로 받아 세팅한다.', () => {
+    players.setTryCount(1);
+
+    expect(players.getTryCount()).toBe(1);
+  });
 });
