@@ -10,9 +10,9 @@ class Validator {
 		}
 	}
 
-	// 전달받은 인자가 숫자인지 확인
+	// 전달받은 인자가 유효한 숫자인지 확인
 	static isNumber(number) {
-		if (Number.isNaN(number)) {
+		if (Number.isNaN(number) && number > 0) {
 			throw new Error(ERROR_MESSAGE.IS_NOT_NUMBER);
 		}
 	}
