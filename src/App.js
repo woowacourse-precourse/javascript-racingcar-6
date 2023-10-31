@@ -42,8 +42,8 @@ class App {
       Console.print("");
 
       if (currentCount === this.attemptCount) {
-        const maxValue = this.getMaxValue();
-        this.getFinalWinner(maxValue);
+        const topPerformingCarNames = this.getLeadingCarNames();
+        this.getFinalWinner(topPerformingCarNames);
         break;
       }
       currentCount++;
@@ -103,25 +103,25 @@ class App {
     });
   }
 
-  getMaxValue() {
-    let maxName = [this.carNameList[0]];
-    let maxDash = this.dashSymbol[0].length;
+  getLeadingCarNames() {
+    let topPerformingCarNames = [this.carNameList[0]];
+    let topPerformingCarValue = this.dashSymbol[0].length;
     for (let i = 1; i < this.carNameList.length; i++) {
-      if (this.dashSymbol[i].length > maxDash) {
-        maxName = [this.carNameList[i]];
-        maxDash = this.dashSymbol[i].length;
-      } else if (this.dashSymbol[i].length === maxDash) {
-        maxName.push(this.carNameList[i]);
+      if (this.dashSymbol[i].length > topPerformingCarValue) {
+        topPerformingCarNames = [this.carNameList[i]];
+        topPerformingCarValue = this.dashSymbol[i].length;
+      } else if (this.dashSymbol[i].length === topPerformingCarValue) {
+        topPerformingCarNames.push(this.carNameList[i]);
       }
     }
-    return maxName;
+    return topPerformingCarNames;
   }
 
-  getFinalWinner(maxName) {
-    if (!maxName) {
+  getFinalWinner(topPerformingCarNames) {
+    if (!topPerformingCarNames) {
       throw new Error("No winners specified.");
     }
-    const winners = maxName.join(", ");
+    const winners = topPerformingCarNames.join(", ");
     Console.print(`최종 우승자 : ${winners}`);
   }
 }
