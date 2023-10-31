@@ -1,5 +1,7 @@
+import { Random } from "@woowacourse/mission-utils";
 import { RaceGameModel } from "../Model/RaceGameModel";
 import { RaceGameView } from "../View/RaceGameView";
+import { FORWARD_BOUND, MAX_LENGTH_OF_NAME } from "../constants";
 
 export class RaceGameController {
   #model;
