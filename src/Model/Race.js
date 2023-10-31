@@ -8,15 +8,15 @@ export default class Race {
 
   rollDiceAndGoForward(carsObj) {
 		const NAMES = Object.keys(carsObj);
-		const OBJECT = carsObj
+		const CARS_FOR_GOING_FORWARD = carsObj
 
 		for (let i = 0; i < NAMES.length; i += 1) {
 			const RANDOM_NUMBER = this.getRandomNumber();
 			if (RANDOM_NUMBER >= MOVING_FORWARD) {
-				OBJECT[NAMES[i]] += 1;
+				CARS_FOR_GOING_FORWARD[NAMES[i]] += 1;
 			}
 		}
 
-		return OBJECT;
+		return CARS_FOR_GOING_FORWARD;
 	}
 }

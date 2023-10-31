@@ -33,9 +33,11 @@ export default class Controller {
 	}
 
 	endGame() {
-		const MAX_VALUE = Math.max(...Object.values(this.carsObj));
-		const CHAMPIONS = Object.keys(this.carsObj).filter(
-			(name) => this.carsObj[name] >= MAX_VALUE
+		const CARS_FOR_RESULT = this.carsObj
+
+		const MAX_VALUE = Math.max(...Object.values(CARS_FOR_RESULT));
+		const CHAMPIONS = Object.keys(CARS_FOR_RESULT).filter(
+			(name) => CARS_FOR_RESULT[name] >= MAX_VALUE
 		);
 		this.output.print(
 			`${GUIDE_MESSAGE.winners} ${CHAMPIONS.join(', ')}`
