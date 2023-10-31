@@ -4,3 +4,11 @@ export const GAME_MESSAGE = {
   result: '실행 결과',
   winner: '최종 우승자 : ',
 };
+
+export const ERROR_MESSAGE = {
+  commaError: '[ERROR] 쉼표로 구분해 주세요.',
+  spaceError: '[ERROR] 공백이 포함되어 있습니다.',
+  lengthError: '[ERROR] 5자 이하로 입력해 주세요',
+  duplicationError: '[ERROR] 중복된 이름이 있습니다.',
+  singleError: '[ERROR] 자동차 이름을 추가해 주세요.',
+};

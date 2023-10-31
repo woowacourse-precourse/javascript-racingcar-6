@@ -1,12 +1,16 @@
 import { Console } from '@woowacourse/mission-utils';
 import { GAME_MESSAGE } from './Constants.js';
+import Validation from './Validation.js';
 
 class User {
   async inputCarName() {
     Console.print(GAME_MESSAGE.start);
-    const cars = await Console.readLineAsync('');
+    const inputcars = await Console.readLineAsync('');
+    const cars = inputcars.split(',');
 
-    return cars.split(',').map(String);
+    Validation.inputCarName(inputcars);
+
+    return cars;
   }
 
   async inputTryCount() {
