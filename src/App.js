@@ -61,7 +61,7 @@ class App {
       });
       Console.print('\n');
     }
-    await this.chooseWinner(racingCar);
+    Console.print('최종 우승자 : ' + this.chooseWinner(racingCar));
   }
 
   printForwardSign(racingCar, key) {
@@ -77,7 +77,7 @@ class App {
       racingCar.set(key, racingCar.get(key) + randomForwardVal);
   }
 
-  async chooseWinner(racingCar) {
+  chooseWinner(racingCar) {
     let winnerList = [...racingCar.entries()].reduce((prev, current) =>
       prev[1] > current[1] ? prev : current
     )[0];
@@ -87,7 +87,7 @@ class App {
         winnerList += `, ${key}`;
     });
 
-    Console.print('최종 우승자 : ' + winnerList);
+    return winnerList;
   }
 }
 
