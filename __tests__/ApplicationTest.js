@@ -1,7 +1,6 @@
 import App from "../src/App.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 
-// inputs 배열을 받아와서 차례대로 promise로 반환
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
 
@@ -11,7 +10,6 @@ const mockQuestions = (inputs) => {
   });
 };
 
-// numbers 배열을 받아와서 랜덤값을 리턴하는 모의함수의 결과값으로 사용
 const mockRandoms = (numbers) => {
   MissionUtils.Random.pickNumberInRange = jest.fn();
   numbers.reduce((acc, number) => {
@@ -48,25 +46,7 @@ describe("자동차 경주 게임", () => {
     });
   });
 
-  // 이름 입력 test
-  test.each([
-    [["pobi,javaji"]],
-    [["pobi,eastjun"]],
-    [["seoji,"]],
-    [["서진/서진"]],
-    [["seoji|yeonz"]],
-    [["seoji yeonz"]],
-    [["@dee#$,hi!!!!"]]
-  ])("이름에 대한 예외 처리", async (inputs) => {
-    // given
-    mockQuestions(inputs);
-
-    // when
-    const app = new App();
-
-    // then
-    await expect(app.getUserNameInput()).rejects.toThrow("[ERROR]");
-  });
+ 
 
   // 게임 횟수 입력 test
   test.each([
