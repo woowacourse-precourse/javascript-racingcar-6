@@ -1,7 +1,7 @@
 import { Console } from "@woowacourse/mission-utils";
-import GAME_MESSAGE from "../../Constants/gameMessage.js";
+import GAME_MESSAGE from "../../constants/gameMessage.js";
 import TryValid from "../../controller/valid/tryValid.js";
-import RacingGame from "../../model/racingGame.js";
+import RacingGame from "../../model/RacingGame.js";
 
 class TryNumberInput {
   constructor() {

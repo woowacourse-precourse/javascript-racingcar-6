@@ -166,47 +166,58 @@ app.play();
 ```
 📦javascript-racingcar-6
  ┣ 📂__tests__
- ┃ ┣ 📂controller
- ┃ ┃ ┗ 📜RacingGame.test.js
- ┃ ┣ 📂model
- ┃ ┃ ┣ 📂game
- ┃ ┃ ┃ ┣ 📜GameInProgress.test.js
- ┃ ┃ ┃ ┣ 📜HyphenAdd.test.js
- ┃ ┃ ┃ ┣ 📜KeyValueConverter.test.js
- ┃ ┃ ┃ ┗ 📜Winner.test.js
- ┃ ┃ ┗ 📂valid
- ┃ ┃ ┃ ┣ 📜NameValidator.test.js
- ┃ ┃ ┃ ┗ 📜TryValidator.test.js
+ ┃ ┣ 📂mvc
+ ┃ ┃ ┣ 📂controller
+ ┃ ┃ ┃ ┣ 📂game
+ ┃ ┃ ┃ ┃ ┣ 📜gameInProgress.test.js
+ ┃ ┃ ┃ ┃ ┣ 📜hyphenAdd.test.js
+ ┃ ┃ ┃ ┃ ┣ 📜nameKeyValueConverter.test.js
+ ┃ ┃ ┃ ┃ ┗ 📜winner.test.js
+ ┃ ┃ ┃ ┣ 📂valid
+ ┃ ┃ ┃ ┃ ┣ 📜NameValid.test.js
+ ┃ ┃ ┃ ┃ ┗ 📜TryValid.test.js
+ ┃ ┃ ┃ ┗ 📜.DS_Store
+ ┃ ┃ ┗ 📜.DS_Store
+ ┃ ┣ 📜.DS_Store
+ ┃ ┣ 📜App.test.js
+ ┃ ┣ 📜ApplicationTest.js
+ ┃ ┗ 📜StringTest.js
  ┣ 📂docs
  ┃ ┗ 📜README.md
- ┗ 📂src
-   ┣ 📂MVC
-   ┃ ┣ 📂Constants
-   ┃ ┃ ┣ 📜gameMessage.js
-   ┃ ┃ ┣ 📜nameErrorMessage.js
-   ┃ ┃ ┣ 📜numbers.js
-   ┃ ┃ ┣ 📜symbols.js
-   ┃ ┃ ┣ 📜testName.js
-   ┃ ┃ ┗ 📜tryErrorMessage.js
-   ┃ ┣ 📂controller
-   ┃ ┃ ┣ 📂game
-   ┃ ┃ ┃ ┣ 📜gameInProgress.js
-   ┃ ┃ ┃ ┣ 📜hyphenAdd.js
-   ┃ ┃ ┃ ┣ 📜nameToKeyValueConverter.js
-   ┃ ┃ ┃ ┗ 📜winner.js
-   ┃ ┃ ┗ 📂valid
-   ┃ ┃ ┃ ┣ 📜nameValid.js
-   ┃ ┃ ┃ ┗ 📜tryValid.js
-   ┃ ┣ 📂model
-   ┃ ┃ ┗ 📜racingGame.js
-   ┃ ┣ 📂view
-   ┃ ┃ ┣ 📂input
-   ┃ ┃ ┃ ┣ 📜carNameInput.js
-   ┃ ┃ ┃ ┗ 📜tryNumberInput.js
-   ┃ ┃ ┗ 📂output
-   ┃ ┃ ┃ ┣ 📜progressOutput.js
-   ┃ ┃ ┃ ┗ 📜resultOutput.js
-   ┣ 📜App.js
-   ┗ 📜index.js
+ ┣ 📂src
+ ┃ ┣ 📂mvc
+ ┃ ┃ ┣ 📂constants
+ ┃ ┃ ┃ ┣ 📜gameMessage.js
+ ┃ ┃ ┃ ┣ 📜nameErrorMessage.js
+ ┃ ┃ ┃ ┣ 📜numbers.js
+ ┃ ┃ ┃ ┣ 📜symbols.js
+ ┃ ┃ ┃ ┣ 📜testName.js
+ ┃ ┃ ┃ ┗ 📜tryErrorMessage.js
+ ┃ ┃ ┣ 📂controller
+ ┃ ┃ ┃ ┣ 📂game
+ ┃ ┃ ┃ ┃ ┣ 📜HyphenAdd.js
+ ┃ ┃ ┃ ┃ ┣ 📜Winner.js
+ ┃ ┃ ┃ ┃ ┣ 📜gameInProgress.js
+ ┃ ┃ ┃ ┃ ┗ 📜nameToKeyValueConverter.js
+ ┃ ┃ ┃ ┣ 📂valid
+ ┃ ┃ ┃ ┃ ┣ 📜NameValid.js
+ ┃ ┃ ┃ ┃ ┗ 📜TryValid.js
+ ┃ ┃ ┃ ┗ 📜.DS_Store
+ ┃ ┃ ┣ 📂model
+ ┃ ┃ ┃ ┣ 📜.DS_Store
+ ┃ ┃ ┃ ┗ 📜RacingGame.js
+ ┃ ┃ ┣ 📂view
+ ┃ ┃ ┃ ┣ 📂input
+ ┃ ┃ ┃ ┃ ┣ 📜CarNameInput.js
+ ┃ ┃ ┃ ┃ ┗ 📜TryNumberInput.js
+ ┃ ┃ ┃ ┣ 📂output
+ ┃ ┃ ┃ ┃ ┣ 📜ProgressOutput.js
+ ┃ ┃ ┃ ┃ ┗ 📜ResultOutput.js
+ ┃ ┃ ┃ ┗ 📜.DS_Store
+ ┃ ┃ ┗ 📜.DS_Store
+ ┃ ┣ 📜.DS_Store
+ ┃ ┣ 📜App.js
+ ┃ ┗ 📜index.js
+ ┗ 📜.DS_Store
  ```
  

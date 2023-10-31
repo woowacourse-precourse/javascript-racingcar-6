@@ -1,6 +1,6 @@
-import App from "../../../src/App.js";
+import App from "../../../../src/App.js";
 import { Console } from "@woowacourse/mission-utils";
-import NAME_ERROR_MESSAGE from "../../../src/MVC/Constants/nameErrorMessage.js";
+import NAME_ERROR_MESSAGE from "../../../../src/mvc/constants/nameErrorMessage.js";
 
 const mockQuestions = (inputs) => {
   Console.readLineAsync = jest.fn();

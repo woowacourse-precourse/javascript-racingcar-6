@@ -1,12 +1,12 @@
 import { Console } from "@woowacourse/mission-utils";
-import GAME_MESSAGE from "../../Constants/gameMessage.js";
-import nameValid from "../../controller/valid/nameValid.js";
-import TryNumberInput from "./tryNumberInput.js";
-import resultOutput from "../output/resultOutput.js";
+import GAME_MESSAGE from "../../constants/gameMessage.js";
+import NameValid from "../../controller/valid/NameValid.js";
+import TryNumberInput from "./TryNumberInput.js";
+import resultOutput from "../output/ResultOutput.js";
 
 class CarNameInput {
   constructor() {
-    this.nameValid = new nameValid();
+    this.nameValid = new NameValid();
     this.tryNumberInput = new TryNumberInput();
   }
   async carName() {

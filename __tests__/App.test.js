@@ -1,6 +1,6 @@
-import App from "../../src/App";
+import App from "../src/App";
 import { Console, Random } from "@woowacourse/mission-utils";
-import NUMBERS from "../../src/MVC/Constants/numbers";
+import NUMBERS from "../src/mvc/constants/numbers";
 
 const mockQuestions = (inputs) => {
   Console.readLineAsync = jest.fn();

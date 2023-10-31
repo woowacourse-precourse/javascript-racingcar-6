@@ -1,5 +1,5 @@
-import NAME_ERROR_MESSAGE from "../../Constants/nameErrorMessage.js";
-import SYMBOLS from "../../Constants/symbols.js";
+import NAME_ERROR_MESSAGE from "../../constants/nameErrorMessage.js";
+import SYMBOLS from "../../constants/symbols.js";
 
 class NameValid {
   // 이름 유효 검증

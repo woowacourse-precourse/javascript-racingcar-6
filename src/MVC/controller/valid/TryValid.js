@@ -1,5 +1,5 @@
-import TRY_ERROR_MESSAGE from "../../Constants/tryErrorMessage.js";
-import SYMBOLS from "../../Constants/symbols.js";
+import TRY_ERROR_MESSAGE from "../../constants/tryErrorMessage.js";
+import SYMBOLS from "../../constants/symbols.js";
 
 class TryValid {
   // 시도 횟 수 유효값 검증

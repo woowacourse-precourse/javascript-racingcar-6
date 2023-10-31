@@ -1,7 +1,7 @@
 import { Random } from "@woowacourse/mission-utils";
-import NUMBERS from "../../../src/MVC/Constants/numbers.js";
-import hyphenAdd from "../../../src/MVC/controller/game/hyphenAdd.js";
-import testName from "../../../src/MVC/Constants/testName";
+import NUMBERS from "../../../../src/mvc/constants/numbers.js";
+import HyphenAdd from "../../../../src/mvc/controller/game/HyphenAdd.js";
+import testName from "../../../../src/mvc/constants/testName";
 
 const mockRandoms = (numbers) => {
   Random.pickNumberInRange = jest.fn();
@@ -19,7 +19,8 @@ describe("RacingGame hyphenAdd 테스트", () => {
     const randoms = [MOVING, STOP, MOVING];
     mockRandoms([...randoms]);
     // when
-    hyphenAdd(keyValue);
+    const hyphenAdd = new HyphenAdd();
+    hyphenAdd.Add(keyValue);
 
     // then
     expect(keyValue).toEqual([{ [testName.carOne]: "-" }, { [testName.carTwo]: "" }, { [testName.carThree]: "-" }]);
@@ -32,7 +33,8 @@ describe("RacingGame hyphenAdd 테스트", () => {
     const randoms = [STOP, STOP, STOP];
     mockRandoms([...randoms]);
     // when
-    hyphenAdd(keyValue);
+    const hyphenAdd = new HyphenAdd();
+    hyphenAdd.Add(keyValue);
     // then
     expect(keyValue).toEqual([{ [testName.carOne]: "" }, { [testName.carTwo]: "" }, { [testName.carThree]: "" }]);
   });
@@ -44,7 +46,8 @@ describe("RacingGame hyphenAdd 테스트", () => {
     const randoms = [MOVING, MOVING, MOVING];
     mockRandoms([...randoms]);
     // when
-    hyphenAdd(keyValue);
+    const hyphenAdd = new HyphenAdd();
+    hyphenAdd.Add(keyValue);
     // then
     expect(keyValue).toEqual([{ [testName.carTwo]: "--" }, { [testName.carFive]: "-" }, { [testName.carSix]: "----" }]);
   })

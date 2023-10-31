@@ -1,22 +1,27 @@
-import { Console, Random } from "@woowacourse/mission-utils";
+import { Console } from "@woowacourse/mission-utils";
 import GAME_MESSAGE from "../Constants/gameMessage.js";
 import SYMBOLS from "../Constants/symbols.js";
 import nameToKeyValueConverter from "../controller/game/nameToKeyValueConverter.js";
-import hyphenAdd from "../controller/game/hyphenAdd.js";
+import HyphenAdd from "../controller/game/HyphenAdd.js";
 import gameInProgress from "../controller/game/gameInProgress.js";
-import winner from "../controller/game/winner.js";
+import Winner from "../controller/game/Winner.js";
 
 class RacingGame {
+  constructor() {
+    this.hyphenAdd = new HyphenAdd();
+    this.winner = new Winner();
+  }
+
   racing(nameSplit, number) {
     Console.print(`${SYMBOLS.emptyString}`);
     const keyValue = nameToKeyValueConverter(nameSplit);
     Console.print(`${GAME_MESSAGE.result}`);
     for (let i = 0; i < number; i++) {
-      hyphenAdd(keyValue);
+      this.hyphenAdd.Add(keyValue);
       gameInProgress(keyValue);
       Console.print(SYMBOLS.emptyString);
     }
-    return winner(keyValue);
+    return this.winner.whoWinner(keyValue);
   }
 }
 export default RacingGame;

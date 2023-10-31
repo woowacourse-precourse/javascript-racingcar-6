@@ -1,4 +1,4 @@
-import CarNameInput from "./MVC/view/input/carNameInput.js";
+import CarNameInput from "./mvc/view/input/CarNameInput.js";
 
 class App {
   async play() {
