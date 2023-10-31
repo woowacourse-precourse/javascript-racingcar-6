@@ -1,23 +1,5 @@
-import { Console, Random } from '@woowacourse/mission-utils'
-
-class Car {
-	constructor(name) {
-		this.name = name;
-		this.message = [];
-		this.maxDash = 0;
-	}
-
-	updateDash() {
-		const raceCarNumber = Random.pickNumberInRange(0, 9);
-		if (raceCarNumber >= 4) {
-			this.message.push('-');
-		}
-		const dashCount = this.message.filter((message) => message === '-').length;
-		if (dashCount > this.maxDash) {
-			this.maxDash = dashCount;
-		}
-	}
-}
+import { Console } from '@woowacourse/mission-utils'
+import Car from './Car.js'
 
 class App {
 	async play() {
@@ -36,6 +18,7 @@ class App {
 
 	async inputvalidName() {
 		const carNameInput = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n');
+
 		if (!carNameInput.trim()) {
 			throw new Error('\x1b[31m[ERROR] 자동차 이름을 입력해야 합니다.\x1b[37m');
 		}
@@ -45,10 +28,10 @@ class App {
 		const carNames = carNameInput.split(',').map((carNameInput) => carNameInput.trim());
 
 		const duplicateNames = carNames.filter((name, index) => carNames.indexOf(name) !== index);
+
 		if (duplicateNames.length > 0) {
 			throw new Error('\x1b[31m[ERROR] 중복된 자동차 이름이 있습니다.\x1b[37m');
 		}
-
 		if (carNames < 2) {
 			throw new Error('\x1b[31m[ERROR] 2명 이상의 이름을 입력해야합니다.\x1b[37m');
 		}
