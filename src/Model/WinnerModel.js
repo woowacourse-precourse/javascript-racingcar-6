@@ -14,14 +14,12 @@ export default class WinnerModel {
     const maxMove = Math.max(
       ...this.#completedRaceCars.map(({ moveCounts }) => moveCounts),
     );
-    return this.makeWinnerTemplate(maxMove);
+    return this.#makeWinnerStringTemplate(maxMove);
   }
 
-  makeWinnerTemplate(maxMove) {
+  #makeWinnerStringTemplate(maxMove) {
     this.#completedRaceCars.forEach(({ name, moveCounts }) => {
-      if (moveCounts === maxMove) {
-        this.#winners.push(`${SPACE}${name}`);
-      }
+      if (moveCounts === maxMove) this.#winners.push(`${SPACE}${name}`);
     });
     return this.#winners.join(',');
   }
