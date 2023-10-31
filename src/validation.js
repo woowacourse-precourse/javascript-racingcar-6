@@ -19,7 +19,7 @@ export const validateInputRacecar = (racecar) => {
 
 export const validateRepeatedName = (racecars) => {
   const uniqueCarNames = new Set();
-  racecars.map((racecar) => {
+  racecars.forEach((racecar) => {
     if (uniqueCarNames.has(racecar)) {
       throw new Error(`${message.UNIQUE_NAMES_ERROR}`);
     }
