@@ -4,7 +4,6 @@ import { SYMBOLS } from '../constants/index.js';
 class Race {
   constructor() {
     this.cars = [];
-    this.lapLogs = [];
     this.lapCount = 0;
   }
 
@@ -21,8 +20,7 @@ class Race {
   }
 
   logLap() {
-    const lapLog = this.cars.map((car) => car.toStringPosition()).join('');
-    this.lapLogs.push(lapLog);
+    return this.cars.map((car) => car.formatPosition()).join('');
   }
 
   lap() {
@@ -32,11 +30,10 @@ class Race {
   }
 
   formatResult() {
-    for (let i = 0; i < this.lapCount; i += 1) {
+    return Array.from({ length: this.lapCount }, () => {
       this.lap();
-      this.logLap();
-    }
-    return this.lapLogs.join(SYMBOLS.lineBreak);
+      return this.logLap();
+    }).join(SYMBOLS.lineBreak);
   }
 
   calMaxMove() {
