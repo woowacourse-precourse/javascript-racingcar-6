@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import { MESSAGE } from './constant.js';
+import { MESSAGE } from './constant';
 
 const getCarNames = async () => {
   const carNames = await Console.readLineAsync(MESSAGE.enterCarNames);

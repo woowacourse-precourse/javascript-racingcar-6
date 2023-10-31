@@ -27,7 +27,7 @@ const findWhoIsWinner = (calcuratedScoreBoard) => {
 const printGameResult = (calcuratedScoreBoard) => {
   const winner = findWhoIsWinner(calcuratedScoreBoard);
   const winningString = winner.reduce(
-    (acc, cur) => (acc += `${cur.name}, `),
+    (acc, cur) => `${acc}${cur.name}, `,
     MESSAGE.finalWinner
   );
 

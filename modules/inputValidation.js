@@ -1,26 +1,25 @@
 import { MESSAGE, RANGE_NUMBER } from './constant';
 
-const checkCarNamesHaveBlank = (carNames) => {
-  return carNames.includes('') || carNames.includes(' ') ? true : false;
-};
+const checkCarNamesHaveBlank = (carNames) =>
+  carNames.includes('') || carNames.includes(' ');
 
 const checkCarNameIsOverFive = (carNames) => {
   const inputHaveOverFive = carNames.find(
     (carName) => carName.length > RANGE_NUMBER.carName
   );
-  return inputHaveOverFive ? true : false;
+  return inputHaveOverFive;
 };
 
 const checkCarNameWithBlank = (carNames) => {
   const inputWithBlank = carNames.filter((car) => car.includes(' '));
-  return inputWithBlank.length !== 0 ? true : false;
+  return inputWithBlank.length !== 0;
 };
 
 const checkCarNamesAreDuplicated = (carNames) => {
   const carNumber = carNames.length;
   const nonDuplicatedCarNames = [...new Set(carNames)];
 
-  return carNumber !== nonDuplicatedCarNames.length ? true : false;
+  return carNumber !== nonDuplicatedCarNames.length;
 };
 
 const checkCarNamesAreValid = (userInput) => {
@@ -44,14 +43,11 @@ const checkCarNamesAreValid = (userInput) => {
 
 const checkTryNumberWithBlank = (userInput) => {
   const inputHaveBlank = userInput.includes(' ');
-  return inputHaveBlank ? true : false;
+  return inputHaveBlank;
 };
 
-const checkTryNumberIsCharacter = (userInput) => {
-  return Number.isNaN(Number(userInput)) || Number(userInput) === 0
-    ? true
-    : false;
-};
+const checkTryNumberIsCharacter = (userInput) =>
+  Number.isNaN(Number(userInput)) || Number(userInput) === 0;
 
 const checkTryNumberIsValid = (userInput) => {
   const inputHaveBlank = checkTryNumberWithBlank(userInput);

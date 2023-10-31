@@ -10,8 +10,6 @@ const createRandomNumber = () => {
   return randomNumber;
 };
 
-const checkCanMove = () => {
-  return createRandomNumber() >= RANGE_NUMBER.canMove ? true : false;
-};
+const checkCanMove = () => createRandomNumber() >= RANGE_NUMBER.canMove;
 
 export { createRandomNumber, checkCanMove };
