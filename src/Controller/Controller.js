@@ -32,8 +32,20 @@ export default class Controller {
   }
 
   startRace() {
-    this.#car.setCarsRelocation();
+    if (this.#track.compareTrackCount()) {
+      this.#car.setCarsRelocation();
 
-    return console.log(this.#car.getCarsPosition());
+      return this.handleStatusOutput();
+    }
+    if (!this.#track.compareTrackCount()) {
+      return 0;
+    }
+  }
+
+  handleStatusOutput() {
+    console.log(this.#car.getCarsPosition());
+    this.#track.plusCurrentTrackCount();
+
+    return this.startRace();
   }
 }

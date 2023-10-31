@@ -12,7 +12,16 @@ export default class Track {
     this.#finalTrackCount = Number(input);
   }
 
-  getFinalTrackCount() {
-    return this.#finalTrackCount;
+  plusCurrentTrackCount() {
+    this.#currentTrackCount += 1;
+  }
+
+  compareTrackCount() {
+    if (this.#currentTrackCount < this.#finalTrackCount) {
+      return true;
+    }
+    if (this.#currentTrackCount === this.#finalTrackCount) {
+      return false;
+    }
   }
 }
