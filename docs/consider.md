@@ -128,6 +128,7 @@ class RacingCarController {
 }
 ```
 
+> 지금 곰곰이 생각해 보니 model을 생성자에서 직접 생성하는 것보다 생성자 인수로 전달해주는 것이 더 좋다고 생각했습니다. 왜냐하면 테스트 또는 확장성 측면에서 더 유리하기 때문입니다.  
 > after
 
 ```js
@@ -138,3 +139,83 @@ class RacingCarController {
   // ...
 }
 ```
+
+## 5. 불필요한 의존성 제거
+
+처음에는 `SYSTEM`에 대한 의존성이 있었고 2차구현 처음에는 `split(SYSTEM.delimiter)`가 거의 모든 `validator` 에서 사용되기에 아예 `util`로 만들었습니다. 하지만 모든 `validator` 파일마다 끌어다 사용하면 전부 의존성이 생겨서 혹시나 다른 메서드나 필요가 없어지면 전체 파일을 찾아다니면서 수정해야합니다.
+
+> 1차 구현 코드
+
+```js
+import { SYSTEM } from '../../../constants/System.js';
+
+export const isLanguageValid = (input) => {
+  return input.split(SYSTEM.delimiter).every((name) => {
+    const pattern = new RegExp(`[^${SYSTEM.koreanPattern}${SYSTEM.englishPattern}]+`, 'g');
+    return !pattern.test(name);
+  });
+};
+```
+
+> 2차 구현 코드 처음
+
+```js
+import { SYSTEM } from '../../../../constants/System.js';
+import Converter from '../../../StringConvertor.js';
+
+export default function isValidLanguage(input, languageOption) {
+  const names = Converter.splitStringToArrayByDelimiter(input, SYSTEM.delimiter);
+  const { korean, english } = languageOption;
+  const pattern = new RegExp(`[^${korean}${english}]+`, 'g');
+
+  return names.every((name) => {
+    return !pattern.test(name);
+  });
+}
+```
+
+따라서 아래와 같이 의존성을 전부 제거하고 한 단계 위 계층에서 사용한 뒤 인수로 넘겨주록 설계를 바꾸었습니다.
+
+의존 관계를 분리하여 주입을 받는 방법으로 구현하면 아래와 같은 장점이 있습니다.
+
+1. 의존성이 줄어든다.
+
+- 의존한다는 것은 그 의존대상의 변화에 취약합니다.
+
+2. 재사용성이 높은 코드가 된다.
+
+- 다른 곳에서 사용이 가능하다.
+
+3. 테스트하기 좋은 코드가 된다.
+
+> 2차 구현 개선
+
+```js
+export default function isValidLanguage(input, languageOption) {
+  const { korean, english } = languageOption;
+  const pattern = new RegExp(`[^${korean}${english}]+`, 'g');
+
+  return input.every((name) => {
+    return !pattern.test(name);
+  });
+}
+```
+
+```js
+import { SYSTEM } from '../../constants/System.js';
+import Converter from '../StringConvertor.js';
+import isValidDelimiter from './utils/is-valid-delimiter/index.js';
+import isValidNameLength from './utils/is-valid-name-length/index.js';
+
+const Validators = {
+  checkRacingVehicleName(input) {
+    const namesArray = Converter.splitStringToArrayByDelimiter(input, SYSTEM.delimiter);
+
+    isValidDelimiter(input, SYSTEM.delimiter);
+    isValidNameLength(namesArray);
+  },
+};
+```
+
+- Reference
+  - [의존관계 주입 쉽게 이해하기](https://tecoble.techcourse.co.kr/post/2021-04-27-dependency-injection/)
