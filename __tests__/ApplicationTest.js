@@ -33,14 +33,11 @@ describe('자동차 경주 게임', () => {
     const outputs = ['pobi : -'];
     const randoms = [MOVING_FORWARD, STOP];
     const logSpy = getLogSpy();
-
     mockQuestions(inputs);
     mockRandoms([...randoms]);
-
     // when
     const app = new App();
     await app.play();
-
     // then
     outputs.forEach((output) => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
@@ -52,10 +49,8 @@ describe('자동차 경주 게임', () => {
     async (inputs) => {
       // given
       mockQuestions(inputs);
-
       // when
       const app = new App();
-
       // then
       await expect(app.play()).rejects.toThrow('[ERROR]');
     },

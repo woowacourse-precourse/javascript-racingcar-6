@@ -1,6 +1,7 @@
 import validateUserInput from '../src/Utils/Validator';
 import { IS_EMPTY_ERROR, VALIDATE_CAR_NAME_ERROR } from '../src/Utils/Define';
 import InputView from '../src/view/InputView';
+// eslint-disable-next-line import/order
 import { Console } from '@woowacourse/mission-utils';
 
 const mockReadLineAsync = (inputs) => {
