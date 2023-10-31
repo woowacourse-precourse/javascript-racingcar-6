@@ -46,7 +46,7 @@ describe("자동차 경주 게임 테스트", () => {
     await expect(game.racingCar).toEqual(result);
   });
 
-  test("경주 실행 결과를 자동차 이름과 함께 출력한다", async () => {
+  test("경주 실행 결과를 자동차 이름과 함께 출력한다", () => {
     // printRacingResult() 테스트
     const logSpy = getLogSpy();
     const outputs = ["e : -", "f : ", "g : -"];
@@ -82,7 +82,33 @@ describe("자동차 경주 게임 테스트", () => {
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
   });
 
-  test("시도 횟수만큼 경주를 실행하고, 실행 결과를 출력한다", () => {
+  test("시도 횟수만큼 경주를 실행하고, 실행 결과 및 우승자를 출력한다", async () => {
     // start() 테스트
+    const inputs = ["s,t,u", "3"];
+    const outputs = [
+      "실행 결과",
+      "s : -",
+      "t : ",
+      "u : -",
+      "s : --",
+      "t : -",
+      "u : --",
+      "s : ---",
+      "t : -",
+      "u : ---",
+      "최종 우승자 : s, u",
+    ];
+    const randoms = [GO, STOP, GO, GO, GO, GO, GO, STOP, GO];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    const game = new RacingcarGame();
+    await game.start();
+
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
   });
 });
