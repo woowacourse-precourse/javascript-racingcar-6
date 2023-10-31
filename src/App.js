@@ -2,7 +2,7 @@ import { Random, Console } from "@woowacourse/mission-utils";
 import message from "./message.js";
 import {
   validateCarScore,
-  // validateCarLength,
+  validateRepeatedName,
   validateDisplayWinner,
   validateInputRacecar,
 } from "./validation.js";
@@ -15,6 +15,7 @@ class App {
   async userInputRacecar() {
     const playerRacecar = await Console.readLineAsync(message.START_MESSAGE);
     const allRacecars = playerRacecar.split(",");
+    validateRepeatedName(allRacecars);
     // const allRacecars = playerRacecar.trim().split(",");
 
     allRacecars.map((car) => {

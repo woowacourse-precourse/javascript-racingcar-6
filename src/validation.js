@@ -17,6 +17,17 @@ export const validateInputRacecar = (racecar) => {
   }
 };
 
+export const validateRepeatedName = (racecars) => {
+  const uniqueCarNames = new Set();
+  racecars.map((racecar) => {
+    if (uniqueCarNames.has(racecar)) {
+      throw new Error(`${message.UNIQUE_NAMES_ERROR}`);
+    }
+
+    uniqueCarNames.add(racecar);
+  });
+};
+
 export const validateCarScore = (score, car, index, racecarScores) => {
   if (score <= 4) {
     const dashes = "-".repeat(score);
