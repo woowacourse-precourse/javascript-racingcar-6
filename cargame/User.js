@@ -1,6 +1,7 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import { MESSAGES } from '../constants/message.js';
 import {
+  validateUserInputEmpty,
   validateCarNameLength,
   validateCarNameDuplication,
   validateCarNameCount,
@@ -17,6 +18,8 @@ class User {
     const userInput = await MissionUtils.Console.readLineAsync(
       MESSAGES.CAR_NAMES_INPUT,
     );
+    validateUserInputEmpty(userInput);
+
     const carNames = userInput.split(',').map((name) => name.trim());
 
     validateCarNameLength(carNames);

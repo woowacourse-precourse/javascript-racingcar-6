@@ -5,6 +5,7 @@ export const MESSAGES = Object.freeze({
   WINNER_LABEL: '최종 우승자 : ',
   RESULT_TITLE: '\n실행 결과',
 
+  ERROR_USER_INPUT_EMPTY_INPUT_WRONG: '[ERROR] 자동차 이름을 작성해야합니다.',
   ERROR_CAR_NAME_LENGTH_INPUT_WRONG:
     '[ERROR] 자동차 이름은 5자 이하만 가능합니다.',
   ERROR_CAR_NAMES_DUPLICATION_INPUT_WRONG:
