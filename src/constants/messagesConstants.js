@@ -1,4 +1,8 @@
 import { MAX_VALUE_OF_ATTEMPTS } from './attemptsConstants.js';
+import {
+  MAX_NUMBER_OF_PLAYERS,
+  MIN_NUMBER_OF_PLAYERS,
+} from './carNameConstants.js';
 
 export const INPUT_ATTEMPTS = '시도할 횟수를 입력하세요. : ';
 export const INPUT_CARS =
@@ -9,4 +13,5 @@ export const RACE_INVALIDATED =
 
 // error messages
 export const ERROR_NAME_LENGTH = '[ERROR] 이름은 5자 이내여야 합니다.';
+export const ERROR_NUMBEOR_OF_PLAYERS = `[ERROR] 경주에 참여하는 인원은 ${MIN_NUMBER_OF_PLAYERS}~${MAX_NUMBER_OF_PLAYERS}명이어야 합니다.`;
 export const ERROR_ATTEMPTS = `[ERROR] 시도 횟수는 1~${MAX_VALUE_OF_ATTEMPTS} 사이의 숫자여야 합니다.`;
