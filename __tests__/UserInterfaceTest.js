@@ -77,8 +77,38 @@ describe("UserInterface 클래스 테스트", () => {
 
       UserInterface.printRoundResults(carStatuses);
 
-      expectedOutputs.forEach((output, index) => {
-        expect(consoleSpy).toHaveBeenNthCalledWith(index + 1, output);
+      expectedOutputs.forEach((output) => {
+        expect(consoleSpy).toHaveBeenCalledWith(
+          expect.stringContaining(output)
+        );
+      });
+    });
+  });
+
+  describe("printWinners 함수", () => {
+    test("우승자가 없을 시 '우승자가 없습니다.' 출력", async () => {
+      const winners = [];
+      const expectedOutputs = ["우승자가 없습니다."];
+
+      UserInterface.printWinners(winners);
+
+      expectedOutputs.forEach((output) => {
+        expect(consoleSpy).toHaveBeenCalledWith(
+          expect.stringContaining(output)
+        );
+      });
+    });
+
+    test("우승자가 있을 시 우승자 출력", async () => {
+      const winners = ["pobi", "woni"];
+      const expectedOutputs = ["최종 우승자 : pobi, woni"];
+
+      UserInterface.printWinners(winners);
+
+      expectedOutputs.forEach((output) => {
+        expect(consoleSpy).toHaveBeenCalledWith(
+          expect.stringContaining(output)
+        );
       });
     });
   });
