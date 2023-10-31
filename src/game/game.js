@@ -4,8 +4,10 @@ import {
     MIN_RANDOM_RANGE,
     MOVE_FORWARD_NUMBER,
     NEWLINE,
+    PROGRESS_MARK,
     SHOW_PROGRESS_TITLE,
     SHOW_WINNER_TITLE,
+    SPLIT_MARK,
 } from "./constants.js";
 
 class Game {
@@ -31,13 +33,13 @@ class Game {
 
         this.showWinner();
     }
-    
+
     racing() {
         this.carsList.forEach((car, idx) => {
             const carRandomNumber = this.generateRandomNumber();
 
             if (carRandomNumber >= MOVE_FORWARD_NUMBER) {
-                this.carProgresses[idx] += "-";
+                this.carProgresses[idx] += PROGRESS_MARK;
             }
         });
     }
@@ -50,7 +52,7 @@ class Game {
 
     showWinner() {
         const winnerList = this.getWinner();
-        const winnerString = winnerList.join(",");
+        const winnerString = winnerList.join(SPLIT_MARK);
 
         MissionUtils.Console.print(SHOW_WINNER_TITLE + winnerString);
 

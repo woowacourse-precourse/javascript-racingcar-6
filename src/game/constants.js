@@ -4,6 +4,7 @@ export const INPUT_PLAY_COUNT_STRING = "시도할 횟수는 몇 회인가요?";
 export const SHOW_PROGRESS_TITLE = "실행 결과";
 export const SHOW_WINNER_TITLE = "최종 우승자 : ";
 export const SPLIT_MARK = ",";
+export const PROGRESS_MARK = "-";
 export const NEWLINE = "";
 
 // 숫자 관련 상수
