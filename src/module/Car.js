@@ -1,10 +1,10 @@
 class Car {
   #name;
-  #goCount;
+  #goingCount;
 
   constructor() {
     this.#name = "";
-    this.#goCount = 0;
+    this.#goingCount = 0;
   }
 
   get name() {
@@ -19,6 +19,17 @@ class Car {
     } else {
       throw new Error('[ERROR] 1자 이상 5자 이하의 문자가 입력되지 않음');
     }
+  }
+
+  get goingCount() {
+    return this.#goingCount;
+  }
+
+  set goingCount(input) {
+    if (typeof input !== 'boolean') {
+      throw new Error('[ERROR] Boolean 값이 아님')
+    }
+    if (input) this.#goingCount++;
   }
 }
 
