@@ -9,11 +9,9 @@ export default async function InputCarName() {
 		if (filterName.length !== nameList.length) {
 			throw new Error('[ERROR] 공백없이 5글자 이하의 영어 및 한글만 입력해주세요.');
 		}
-		// console.log('1', nameList);
 		nameList.forEach((car, idx) => {
 			nameList[idx] = `${car} : `;
 		});
-		// console.log('2', nameList);
 		return nameList;
 	} catch (error) {
 		Console.print(`${error.message}`);
