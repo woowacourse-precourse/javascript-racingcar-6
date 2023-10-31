@@ -1,11 +1,16 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import Car from "./Car.js";
+import { validateCarNumber } from "./validater.js";
 
 class App {
   async play() {
     const carNames = await MissionUtils.Console.readLineAsync(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
     );
+
+    if (validateCarNumber) {
+      throw new Error("[ERROR] 자동차 2대 이상부터 경주를 할 수 있습니다.");
+    }
 
     let carArray = carNames.split(",");
 
