@@ -6,7 +6,7 @@ const createRandomNumber = () => {
     CONDITIONS.RANGE.MIN,
     CONDITIONS.RANGE.MAX
   );
-  return carNumber;
+  return Number(carNumber);
 };
 
 export default createRandomNumber;
