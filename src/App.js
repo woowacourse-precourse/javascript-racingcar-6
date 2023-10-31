@@ -44,6 +44,18 @@ class App {
       car.set(cars, car.get(cars) + move);
     }
   }
+
+  racingResult(cars, car) {
+    for (let carName of cars) {
+      const location = car.get(carName);
+      let result = "";
+      for (let i = 0; i < location; i++) {
+        result += "-";
+      }
+      MissionUtils.Console.print(carName + " : " + result);
+    }
+    MissionUtils.Console.print("");
+  }
 }
 
 export default App;
