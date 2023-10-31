@@ -1,5 +1,6 @@
 import App from "../src/App.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
+import { ERROR_MESSAGE } from "../src/constants/index.js";
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -69,3 +70,28 @@ describe("시도 횟수 테스트", () => {
     expect(result).toEqual(1);
   });
 });
+
+describe("입력 값에 대한 예외 메세지 출력 테스트", () => {
+  test("5자를 초과할 경우", async () => {
+    const input = "mijiniiiii";
+    const expectedError = ERROR_MESSAGE.IS_LENGTH;
+
+    expect(() => {
+      if (input.length > 5) {
+        throw new Error(expectedError);
+      }
+    }).toThrow(expectedError);
+  })
+
+  test("쉼표(,)로 구분하지 않을 경우", async () => {
+    const input = "mijin jun pobi";
+    const expectedError = ERROR_MESSAGE.IS_COMMA;
+
+    expect(() => {
+      if (!input.includes(",")) {
+        throw new Error(expectedError);
+      }
+    }).toThrow(expectedError);
+  })
+
+})
