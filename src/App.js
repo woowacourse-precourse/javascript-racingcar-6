@@ -8,10 +8,11 @@ class App {
   }
   async racingRounds(cars, rounds) {
     let roundsCars = [];
-    while (rounds--) {
+    while (rounds) {
       const initCars = await this.initCars(cars);
       roundsCars = await this.randomNumberRoundForwards(initCars);
       await this.afterPrint();
+      await rounds--;
     }
     return roundsCars;
   }
@@ -46,9 +47,10 @@ class App {
   randomNumberRoundForwards(cars) {
     const forwardCars = cars.map((car) => {
       const random = MissionUtils.Random.pickNumberInRange(0, 9);
-      if (random >= 4) {
-        car.score = car.score + random - 4;
-        this.printRoundscore(car, random);
+      if (random > 3) {
+        const forward = random - 3;
+        car.score = car.score + forward;
+        this.printRoundscore(car, forward);
       }
       return car;
     });
@@ -60,8 +62,8 @@ class App {
   afterPrint() {
     MissionUtils.Console.print("");
   }
-  printRoundscore(car, random) {
-    const scorePrint = [car.name, " : ", this.repeatPrint(random - 4)].join("");
+  printRoundscore(car, forward) {
+    const scorePrint = [car.name, " : ", this.repeatPrint(forward)].join("");
     MissionUtils.Console.print(scorePrint);
   }
   repeatPrint(n) {
