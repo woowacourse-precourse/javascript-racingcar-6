@@ -8,7 +8,7 @@ const mockRandoms = (numbers) => {
   }, MissionUtils.Random.pickNumberInRange);
 };
 
-describe('Model 테스트', () => {
+describe('CarModel 테스트', () => {
   test('getCarModel() 테스트', () => {
     const name = 'pobi';
     const output = { name: 'pobi', position: 0 };

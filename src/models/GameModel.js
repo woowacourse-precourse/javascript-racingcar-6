@@ -4,7 +4,7 @@ class GameModel {
   constructor(rounds, cars) {
     this.outputView = new OutputView();
     this.rounds = rounds;
-    this.curRound = 1;
+    this.curRound = 0;
     this.cars = cars;
   }
 
