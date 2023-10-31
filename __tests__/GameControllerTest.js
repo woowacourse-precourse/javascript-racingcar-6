@@ -9,13 +9,31 @@ const mockQuestion = (input) => {
     MissionUtils.Console.readLineAsync = mockFn;
     return mockFn.mockImplementation(() => Promise.resolve(input));
 }
+const mockRandoms = (numbers) => {
+    MissionUtils.Random.pickNumberInRange = jest.fn();
+    numbers.reduce((acc, number) => {
+        return acc.mockReturnValueOnce(number);
+    }, MissionUtils.Random.pickNumberInRange);
+};
+
+const getLogSpy = () => {
+    const logSpy = jest.spyOn(MissionUtils.Console, "print");
+    logSpy.mockClear();
+    return logSpy;
+};
 
 
 describe("GameController 클래스 테스트", () => {
-    let gameController;
-    beforeEach(() => {
-        gameController = new GameController();
-    })
+    const gameController = new GameController();
+
+    const mockFn1 = jest.fn();
+    const mockFn2 = jest.fn();
+    const mockFn3 = jest.fn();
+
+    gameController.racing.moveCycle = mockFn1;
+    gameController.racing.oneMoveCycleResult = mockFn2;
+    gameController.racing.getWinner = mockFn3;
+
     test("inputCars() 테스트 ", async () => {
         const input = "car1,car2,car3"
         const answer = [
@@ -36,6 +54,30 @@ describe("GameController 클래스 테스트", () => {
         const result = gameController.count;
         expect(result).toEqual(input);
     });
-    
+
+    test("start() 테스트", () => {
+        const logSpy = getLogSpy();
+
+        const count = Number(gameController.count);
+
+        gameController.start();
+
+        expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(MESSAGES.PROGRESS_RESULT));
+        expect(mockFn1).toHaveBeenCalledTimes(count);
+        expect(mockFn2).toHaveBeenCalledTimes(count);
+
+
+    })
+
+    test("result() 테스트", () => {
+
+        const logSpy = getLogSpy();
+
+        gameController.result();
+        
+        expect(mockFn3).toHaveBeenCalledTimes(1);
+        expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(`${MESSAGES.WINNER}`))
+
+    })
 
 });

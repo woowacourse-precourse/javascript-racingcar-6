@@ -1,73 +1,68 @@
 
 import Car from "../src/Game/Car.js";
+import Racing from "../src/Game/Racing.js";
+import { MissionUtils } from "@woowacourse/mission-utils";
 
+const mockRandoms = (numbers) => {
+    MissionUtils.Random.pickNumberInRange = jest.fn();
+    numbers.reduce((acc, number) => {
+        return acc.mockReturnValueOnce(number);
+    }, MissionUtils.Random.pickNumberInRange);
+};
+
+const getLogSpy = () => {
+    const logSpy = jest.spyOn(MissionUtils.Console, "print");
+    logSpy.mockClear();
+    return logSpy;
+};
 
 describe("Racing 클래스 테스트", () => {
-    
+    let racing;
+    racing = new Racing();
     test("registCar() 테스트", () => {
-        const names = "hong,se u ng,ta  e k";
-        const removeBlank = names.replace(/\s/g, '');
-        const splitCars = removeBlank.split(',');
-        const cars = splitCars.map(car => new Car(car));
+        racing.registCar('Car1,Car2,Car3');
+
         const answer = [
-            { name: 'hong', distance: '' },
-            { name: 'seung', distance: '' },
-            { name: 'taek', distance: '' },
+            { name: 'Car1', distance: '' },
+            { name: 'Car2', distance: '' },
+            { name: 'Car3', distance: '' },
         ]
-        expect(cars).toEqual(answer);
+        expect(racing.cars).toEqual(answer);
     });
 
     test("moveCycle() 테스트", () => {
+        const MOVE_FORWARD = 4;
+        const STOP = 3;
+        const randoms = [
+            STOP, STOP, MOVE_FORWARD,
+        ]
+        mockRandoms(randoms);
+        racing.moveCycle();
         const cars = [
-            { name: 'hong', distance: '' },
-            { name: 'seung', distance: '' },
-            { name: 'taek', distance: '' },
-        ];
-        const cars2 = [
-            { name: 'hong', distance: '' },
-            { name: 'seung', distance: '' },
-            { name: 'taek', distance: '' },
+            { name: 'Car1', distance: '' },
+            { name: 'Car2', distance: '' },
+            { name: 'Car3', distance: '-' },
         ];
 
-        cars.forEach(car => {
-            car.distance += '-';
-        });
-
-        expect(cars).not.toEqual(cars2);
+        expect(racing.cars).toEqual(cars);
     })
     test("oneMoveCycleResult() 테스트", () => {
-        const cars = [
-            { name: 'hong', distance: '-' },
-            { name: 'seung', distance: '--' },
-            { name: 'taek', distance: '---' },
-        ];
-        const print = cars.map(car => {
-            return `${car.name} : ${car.distance}`;
-        });
-        expect(print).toEqual([
-            "hong : -",
-            "seung : --",
-            "taek : ---",
-        ])
+        const logSpy = getLogSpy();
+        const outputs = ["Car1 : ", "Car2 : ", "Car3 : -"];
+        racing.oneMoveCycleResult();
+        outputs.forEach((output) => {
+            expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+          });
     })
 
 
     test("getMaxDistance() 테스트", () => {
-        const cars = [
-            { name: 'hong', distance: '-' },
-            { name: 'seung', distance: '-' },
-            { name: 'taek', distance: '--' },
-            { name: 'hyo', distance: '--' },
-            { name: 'jin', distance: '---' }
-        ];
-
-        const distanceArr = cars.map(car=> car.distance.length);
-        
-        const maxDistance = distanceArr.reduce((max,current) => {
-            return current > max ? current : max
-        },distanceArr[0]);
-        
-        expect(maxDistance).toEqual(3);
+        const maxDistance = racing.getMaxDistance();
+        expect(maxDistance).toEqual(1);
     });
-    
+
+    test("getWinner() 테스트", () => {
+        const winner = racing.getWinner();
+        expect(winner).toBe("Car3");
+    })
 })
