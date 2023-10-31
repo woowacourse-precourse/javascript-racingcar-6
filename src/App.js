@@ -11,7 +11,7 @@ class App {
   async Usercar_input() {
 
     const User_input = await Console.readLineAsync('경주할 자동차 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분) \n');
-    
+    this.ValidNameLength(User_input);
     const Car = User_input.split(',');
 
     for (let i in Car) {
@@ -26,7 +26,7 @@ class App {
   async NumberOfAttempts() {
 
     const attempts = await Console.readLineAsync('시도할 횟수는 몇 회인가요? \n');
-
+    this.ValidInputDataType(attempts);
     return Number(attempts);
   }
 
@@ -85,9 +85,27 @@ class App {
     
     const winner = member;
     Console.print('최종 우승자 : ' + winner.map((winners) => winners).join(','));
+  ValidInputExist(input) {
+    if (!input) {
+      throw new Error("[ERROR] 입력값이 없습니다.");
+    }
   }
 
-}
+  ValidNameLength(input) {
+    const length = input.split(",").map((value) => value);
+
+    length.forEach(element => {
+      if (element.length > 5) {
+        throw new Error("[ERROR] 5자 이하로 이름을 지어주세요.");
+      }
+    });
+  }
+
+  ValidInputDataType(input) {
+    if (isNaN(input)) {
+      throw new Error("[ERROR] 숫자를 입력해주세요.");
+    }
+  }
 
 const app = new App();
 
