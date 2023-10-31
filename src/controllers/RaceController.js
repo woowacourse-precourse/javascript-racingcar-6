@@ -21,6 +21,7 @@ class RaceController {
 
   async startRace() {
     Console.print('');
+
     Console.print('실행 결과');
 
     for (let i = 0; i < this.#round; i++) {

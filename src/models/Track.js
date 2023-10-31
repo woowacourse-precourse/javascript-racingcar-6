@@ -17,8 +17,8 @@ class Track {
 
   async checkCarMove(car) {
     const randomNumber = await Random.pickNumberInRange(0, 9);
-
-    return !!(randomNumber < Track.limitNumber);
+    console.log(randomNumber);
+    return !!(randomNumber >= Track.limitNumber);
   }
 
   async moveCarsCheckCondition() {
