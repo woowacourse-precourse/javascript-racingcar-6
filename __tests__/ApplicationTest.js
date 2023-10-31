@@ -46,6 +46,29 @@ describe("자동차 경주 게임", () => {
     });
   });
 
+  test("우승자 두명 이상일 경우 최종 결과 출력", () => {
+    // given
+    const carArr = [
+      ["pobi", "---"],
+      ["woni", "---"],
+      ["brown", "-"],
+    ];
+    const expectedOutput = "최종 우승자 : pobi, woni";
+
+    // when
+    const logSpy = getLogSpy();
+
+    const moveCounts = carArr.map((car) => car[1].length);
+    const highestMoveCount = Math.max(...moveCounts);
+    const winners = carArr
+      .filter((car) => car[1].length === highestMoveCount)
+      .map((car) => car[0]);
+    MissionUtils.Console.print(`최종 우승자 : ${winners.join(", ")}`);
+
+    // then
+    expect(logSpy).toHaveBeenCalledWith(expectedOutput);
+  });
+
   test.each([[["pobi,javaji"]], [["pobi,eastjun"]]])(
     "이름에 대한 예외 처리",
     async (inputs) => {
