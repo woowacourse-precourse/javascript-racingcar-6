@@ -31,6 +31,9 @@ class RacingGame {
 		this.#moves();
 	}
 
+	/**
+	 * 모든 차량이 한번 움직인다.
+	 */
 	#move() {
 		this.#tryCounter.singleTry();
 
@@ -38,6 +41,9 @@ class RacingGame {
 		Io.printAllLocations(currentLocations);
 	}
 
+	/**
+	 * 주어진 시도 횟수만큼 움직인다.
+	 */
 	#moves() {
 		Io.printResultHeader();
 
