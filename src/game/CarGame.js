@@ -9,8 +9,9 @@ const initializeCarsPosition = (carNames) => {
 };
 
 // 무작위 수 조건에 따라 전진
-const moveCar = (carNames, carsPosition, randomNum) => {
+const moveCar = (carNames, carsPosition) => {
   carNames.map((name) => {
+    const randomNum = generateRandomNum();
     if (randomNum >= 4) carsPosition[name] += 1;
     printRace(name, carsPosition[name]);
   });
@@ -19,10 +20,9 @@ const moveCar = (carNames, carsPosition, randomNum) => {
 // tryCount 만큼 레이싱
 const runRace = (tryCount, carNames, carsPosition) => {
   let cnt = 0;
-  const randomNum = generateRandomNum();
 
   while (cnt < tryCount) {
-    moveCar(carNames, carsPosition, randomNum);
+    moveCar(carNames, carsPosition);
     cnt++;
     Console.print('');
   }
