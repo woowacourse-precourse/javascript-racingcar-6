@@ -1,8 +1,8 @@
+import Car from './Car.js';
+import User from './User.js';
 import { Console } from '@woowacourse/mission-utils';
 import { MESSAGE } from './constants/message.js';
 import { RACE } from './constants/constants.js';
-import Car from './Car.js';
-import User from './User.js';
 
 class RaceGame {
   constructor() {
