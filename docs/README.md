@@ -37,10 +37,12 @@
 
 - [x] 불필요한 공백 삭제 및 변수명, 상수명 등 정리.   
 
-- [ ] 모듈화를 통해서 기능 분리    
+- [x] 모듈화를 통해서 기능 분리    
   - 하나의 파일 (App.js) 에 모든 메서드가 들어있게 되어, 재사용성(?)이 좋지않다.       
-  - [ ] 각각의 메서드를 모듈화.   
-  - [ ] 메서드말고 다른 상수 모음 등등을 모듈화.   
+  - 각각의 메서드 모듈화.   
+    - [x] 입출력 기능 모듈화.   
+    - [x] 게임 진행 기능 모듈화.   
+    - [x] 메서드말고 다른 상수 모음 등등을 모듈화.   
 
   ```
   root
@@ -51,13 +53,14 @@
             |--- car-name.js
             |--- play-number.js
             |___ index.js
-      |--- validate
-            |--- car-name.js
-            |--- play-number.js
-            |___ index.js
-      |___ game
+      |--- game
             |--- game-play.js
             |--- result-game.js
+            |___ index.js
+      |___ utils
+            |--- error.js
+            |--- input-print.js
+            |--- regexp.js
             |___ index.js
   ```   
 
