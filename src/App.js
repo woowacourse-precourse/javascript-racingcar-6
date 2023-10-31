@@ -61,6 +61,13 @@ class App {
     this.declareWinners(carStatus);
   }
 
+  declareWinners(carStatus) {
+    const maxMoves = Math.max(...Object.values(carStatus).map((moves) => moves.length));
+    const winners = Object.keys(carStatus).filter((name) => carStatus[name].length === maxMoves);
+
+    MissionUtils.Console.print(`최종 우승자 : ${winners.join(", ")}`);
+  }
+
 }
 
 export default App;
