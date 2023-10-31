@@ -3,7 +3,7 @@ import { Console, Random } from '@woowacourse/mission-utils';
 class App {
   async play() {
     this.askCarNames();
-    const carNameList = await this.inputCarNames();
+    const racingCarList = await this.inputCarNames();
 
     this.askGameCount();
     const gameCount = await this.inputGameCount();
@@ -24,7 +24,12 @@ class App {
       throw new Error('[ERROR] 잘못된 입력값입니다.');
     }
 
-    return trimmedCarNames;
+    const racingCarList = new Map();
+    carNameList.forEach((racingCar) => {
+      racingCarList.set(racingCar);
+    });
+
+    return racingCarList;
   }
 
   askGameCount() {
