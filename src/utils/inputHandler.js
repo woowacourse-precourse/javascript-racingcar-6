@@ -2,11 +2,10 @@ import { Console } from "@woowacourse/mission-utils";
 import CarErrors from "../errors/CarErrors.js";
 import TryErrors from "../errors/TryErrors.js";
 import CommonError from "../errors/CommonError.js";
+import { COMMAND } from "./constants.js";
 
 export async function inputCarNameHandler() {
-  const carName = await Console.readLineAsync(
-    "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
-  );
+  const carName = await Console.readLineAsync(COMMAND.START_MESSAGE);
   CommonError.checkEmpty(carName);
 
   const carList = carName.split(",");
@@ -16,7 +15,7 @@ export async function inputCarNameHandler() {
 }
 
 export async function inputTryNumberHandler() {
-  const TryNumber = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+  const TryNumber = await Console.readLineAsync(COMMAND.TRY_NUMBER_QUESTION);
 
   CommonError.checkEmpty(TryNumber);
   TryErrors.checkInputNumber(TryNumber);

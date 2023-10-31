@@ -2,6 +2,8 @@ import { Console } from "@woowacourse/mission-utils";
 import Car from "../models/Car.js";
 import { generateRandomNumber } from "../utils/generateRandomNumber.js";
 import { calculateWinners } from "../utils/calculateWinners.js";
+import { COMMAND } from "../utils/constants.js";
+import { GAME_RULE } from "../utils/constants.js";
 
 class RacingGame {
   constructor(carNames, tryNumber) {
@@ -12,7 +14,7 @@ class RacingGame {
   moveCar() {
     this.carList.forEach((car) => {
       const randomNumber = generateRandomNumber();
-      if (randomNumber >= 4) {
+      if (randomNumber >= GAME_RULE.FORWARD_STANDARD) {
         car.moveForward();
       }
     });
@@ -30,7 +32,7 @@ class RacingGame {
       this.moveCar();
       this.printCarProgress();
     }
-    Console.print(`최종 우승자 : ${calculateWinners(this.carList)}`);
+    Console.print(`${COMMAND.RESULT_MESSAGE}${calculateWinners(this.carList)}`);
   }
 }
 

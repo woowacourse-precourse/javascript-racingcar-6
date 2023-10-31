@@ -1,7 +1,9 @@
+import { ERRORS } from "../utils/constants.js";
+
 class CommonError {
   static checkEmpty(inputList) {
     if (inputList.trim() === "") {
-      throw new Error("[ERROR] 입력값이 비어 있습니다.");
+      throw new Error(`${ERRORS.ERROR} ${ERRORS.EMPTY_INPUT_ERROR}`);
     }
   }
 }

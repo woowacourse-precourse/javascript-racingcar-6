@@ -1,7 +1,9 @@
+import { ERRORS } from "../utils/constants.js";
+
 class TryErrors {
   static checkInputNumber(input) {
     if (isNaN(input)) {
-      throw new Error("[ERROR] 숫자가 아닌 값이 입력되었습니다.");
+      throw new Error(`${ERRORS.ERROR} ${ERRORS.IS_NAN_ERROR}`);
     }
 
     const numberOfAttempts = parseInt(input, 10);
@@ -12,7 +14,7 @@ class TryErrors {
     const number = parseInt(input, 10);
 
     if (number < 0) {
-      throw new Error("[ERROR] 시도 횟수는 음수가 될 수 없습니다.");
+      throw new Error(`${ERRORS.ERROR} ${ERRORS.NEGATIVE_NUMBER_ERROR}`);
     }
 
     return number;
