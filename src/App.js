@@ -11,16 +11,16 @@ class App {
     for (let i = 0; i < game.attemptNumber; i++) {
       for (const car of game.carList) {
         car.calculatePosition();
-        this.printResultMessage(car);
+        App.printResultMessage(car);
       }
       Console.print(""); // 개행해줌
     }
     // 최종 우승자 결정 후 출력
     game.decideFinalWinner();
-    this.printFinalResultMessage(game.finalWinnerList);
+    App.printFinalResultMessage(game.finalWinnerList);
   }
 
-  printResultMessage(car) {
+  static printResultMessage(car) {
     let resultMessage = car.name + " : ";
     for (let i = 0; i < car.position; i++) {
       resultMessage += "-";
@@ -28,7 +28,7 @@ class App {
     Console.print(resultMessage);
   }
 
-  printFinalResultMessage(finalWinnerList) {
+  static printFinalResultMessage(finalWinnerList) {
     let finalResultMessage = "최종 우승자 : ";
     for (const finalWinner of finalWinnerList) {
       finalResultMessage += finalWinner + ", ";
