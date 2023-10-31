@@ -9,13 +9,15 @@ class Car{
         }
     }
     playgame(){
-      randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
-      if(randomNumber >=4 ){
-        far = far + 1
-      }
+        for(let i = 0; i<this.name.length;i++){
+            this.randomRacing(i)
+        }
     }
     printResult(){
       MissionUtils.Console.print(`${this.name} : ${this.far}`)
+    }
+    randomRacing(i){
+
     }
   }
 
