@@ -1,6 +1,10 @@
 import { Console, Random } from '@woowacourse/mission-utils';
 import MESSAGE from './Constant.js';
-import { checkCarNameDuplicate, checkCarNameLength } from './Validate.js';
+import {
+  checkCarNameDuplicate,
+  checkCarNameLength,
+  checkInputRaceNumber,
+} from './Validate.js';
 import Car from './Car.js';
 class App {
   constructor() {
@@ -19,7 +23,7 @@ class App {
       !checkCarNameDuplicate(carNameArray) ||
       !checkCarNameLength(carNameArray)
     )
-      throw new Error('[ERROR] 자동차 이름을 다시 확인해주세요');
+      throw new Error(MESSAGE.ERROR_CAR_NAME);
     this.initCarList(carNameArray);
   }
 
@@ -27,8 +31,8 @@ class App {
     const inputRaceNumber = await Console.readLineAsync(
       MESSAGE.INPUT_RACE_NUMBER
     );
-    // if (!checkInputRaceNumber)
-    //   throw new Error('[ERROR] 올바른 게임 횟수를 입력해주세요');
+    if (!checkInputRaceNumber(inputRaceNumber))
+      throw new Error(MESSAGE.ERROR_RACE_NUMBER);
     return inputRaceNumber;
   }
 
