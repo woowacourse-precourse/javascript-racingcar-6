@@ -14,7 +14,7 @@ export const RACING = Object.freeze({
 
   // 랜덤으로 생성할 숫자의 범위
   MIN_NUMBER_OF_RANDOM_RANGE: 0,
-  NAX_NUMBER_OF_RANDOM_RANGE: 9,
+  MAX_NUMBER_OF_RANDOM_RANGE: 9,
 
   // 전진하기 위한 숫자의 최소값
   MIN_NUMBER_TO_MOVE_FORWARD: 4,
