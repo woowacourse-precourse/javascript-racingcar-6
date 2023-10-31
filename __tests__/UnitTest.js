@@ -210,4 +210,17 @@ describe("Model 기능 테스트", () => {
     //then
     expect(result).toEqual(data);
   });
+
+  test("입력값 공백 제거", async () => {
+    const cars = [" car ", "n e w"];
+    const answer = ["car", "new"];
+
+    cars.forEach((input, idx) => {
+      //when
+      const result = model.removeWhitespace(input);
+
+      //then
+      expect(result).toEqual(answer[idx]);
+    });
+  });
 });
