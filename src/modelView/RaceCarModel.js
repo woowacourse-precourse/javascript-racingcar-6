@@ -7,25 +7,25 @@ const ModelView = {
   playGame(validNames) {
     const raceResults = {};
 
-    validNames.forEach((name) => {
-      if (!this.currentMovements[name]) {
-        this.currentMovements[name] = "";
+    validNames.forEach((raceCarName) => {
+      if (!this.currentMovements[raceCarName]) {
+        this.currentMovements[raceCarName] = "";
       }
-      const movement = this.calcMoveCount();
-      this.currentMovements[name] += movement;
-      raceResults[name] = this.currentMovements[name];
+      const movement = this.calcMovementCount();
+      this.currentMovements[raceCarName] += movement;
+      raceResults[raceCarName] = this.currentMovements[raceCarName];
     });
 
     return raceResults;
   },
 
-  calcMoveCount() {
+  calcMovementCount() {
     const movementCount = MissionUtils.Random.pickNumberInRange(SETTING.min, SETTING.max);
 
     return movementCount >= 4 ? "-" : "";
   },
 
-  calculateWinners(names) {
+  calcWinners(names) {
     const winners = [];
     let maxDashes = 0;
 

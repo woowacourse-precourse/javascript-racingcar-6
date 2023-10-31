@@ -20,7 +20,7 @@ class App {
       OutputView.printBlankSpace();
     }
 
-    const winners = ModelView.calculateWinners(names);
+    const winners = ModelView.calcWinners(names);
 
     OutputView.printWinners(winners);
   }
