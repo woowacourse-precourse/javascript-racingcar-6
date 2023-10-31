@@ -10,7 +10,7 @@ const OutputView = {
 
   printResulString: (cars, count) => {
     for (let i = 0; i < count; i += 1) {
-      cars.map(car => driveAndStopCars(car));
+      Console.print(cars.map(car => driveAndStopCars(car)).join('\n'));
       Console.print('\n');
     }
   },
