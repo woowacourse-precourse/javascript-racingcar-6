@@ -1,7 +1,7 @@
-import ERROR_MESSAGE from './constant/errorMessage';
-import GAME_MESSAGE from './constant/gameMessage';
-import randomNumGenerator from './utils/RandomNumGenerator';
-import messagePrinter from './utils/messagePrinter';
+import ERROR_MESSAGE from './constant/errorMessage.js';
+import GAME_MESSAGE from './constant/gameMessage.js';
+import randomNumGenerator from './utils/RandomNumGenerator.js';
+import messagePrinter from './utils/messagePrinter.js';
 class App {
   #cars;
 
@@ -55,6 +55,8 @@ class App {
   async checkValidTrialNum (trialNum) {
     if (Number.isNaN(trialNum)) {
       messagePrinter.errorPrint(ERROR_MESSAGE.not_number);
+    } else if (trialNum < 1) {
+      messagePrinter.errorPrint(ERROR_MESSAGE.less_than_one_trial);
     }
   }
 
