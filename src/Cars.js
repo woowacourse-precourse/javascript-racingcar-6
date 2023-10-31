@@ -26,6 +26,9 @@ class Cars {
   // 입력 시 유효성 검사 - 쉼표O, 공백X 유효성 검사
   // 유효성 통과 -> 자동차 배열 반환
   splitCarsNames(carsNames) {
+    if (!carsNames.includes(',') && carsNames.length < 6) {
+      throw new Error('[ERROR] 최소 2대 이상의 자동차를 입력해 주세요.');
+    }
     if (!carsNames.includes(',')) {
       throw new Error('[ERROR] 쉼표로 자동차의 이름을 구분해 주세요.');
     }

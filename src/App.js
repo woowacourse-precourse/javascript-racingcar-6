@@ -4,12 +4,18 @@
 
 // import { MissionUtils } from '@woowacourse/mission-utils';
 // import { MissionUtils } from '@woowacourse/mission-utils';
+import { MissionUtils } from '@woowacourse/mission-utils';
 import Cars from './Cars.js';
+import PlayCount from './PlayCount.js';
 
 class App {
   async play() {
     const cars = new Cars();
-    cars.getCarsNames();
+    const playCount = new PlayCount();
+
+    cars.getCarsNames().then(() => {
+      playCount.getPlayCount();
+    });
   }
 }
 
