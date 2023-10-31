@@ -1,4 +1,16 @@
-import App from "./App.js";
+import { getCarsName, getTimes } from './input.js';
 
-const app = new App();
-app.play();
+export default function RacingCarGame() {
+  const namesSubmitButton = document.getElementById('car-names-submit');
+  const timesSubmitButton = document.getElementById('racing-count-submit');
+
+  if (namesSubmitButton) {
+    namesSubmitButton.addEventListener('click', getCarsName);
+  }
+
+  if (timesSubmitButton) {
+    timesSubmitButton.addEventListener('click', getTimes);
+  }
+}
+
+new RacingCarGame();
