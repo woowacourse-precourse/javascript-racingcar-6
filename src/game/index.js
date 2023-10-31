@@ -34,7 +34,7 @@ export class RacingGame {
       num++;
     }
   }
-  async start() {
+  start = async () => {
     await this.initCars();
     const TRY_COUNT = await this.initTryCount();
 
