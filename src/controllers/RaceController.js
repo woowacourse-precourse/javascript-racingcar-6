@@ -18,6 +18,24 @@ class RaceController {
     const roundInput = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
     this.#round = Number(roundInput);
   }
+
+  startRace() {
+    Console.print('');
+    Console.print('실행 결과');
+
+    Array.from({ length: this.#round }).forEach(() => {
+      this.#race.moveCarsCheckCondition();
+
+      const roundResults = this.#race.getCars().map((car) => {
+        const currentStage = '-'.repeat(car.getCarDistance());
+        return `${car.getCarName()} : ${currentStage}`;
+      });
+
+      roundResults.forEach((result) => Console.print(result));
+
+      Console.print('');
+    });
+  }
 }
 
 export default RaceController;
