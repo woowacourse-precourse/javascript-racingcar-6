@@ -1,4 +1,4 @@
-import SYSTEM from '../constants/System.js';
+import { SYSTEM } from '../constants/System.js';
 import InputView from '../view/InputView.js';
 
 class RacingController {
