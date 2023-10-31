@@ -37,12 +37,12 @@ class CarName {
   }
 
   checkComma(carNames) {
-    const hasComma = carNames.includes(',');
-    const hasEmty = carNames.includes(' ');
+    const hasEmty = carNames.includes(' ') || carNames.length === 0;
 
     if (hasEmty) {
       throw new Error('[ERROR] 빈공간이 없이 작성해주세요.');
     }
+
     this.checkNumberDigits(carNames);
   }
 
