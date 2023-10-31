@@ -38,6 +38,7 @@ class App {
       this.advanceCar();
       this.printRaceResult();
     }
+    this.printWinner(this.getWinner());
   }
 
   async advanceCar() {
@@ -59,6 +60,18 @@ class App {
       Console.print(`${car.name} : ${dashLine}`);
     });
     Console.print(' ');
+  }
+
+  getWinner() {
+    const maxAdvanced = Math.max(...this.#cars.map((car) => car.move));
+    const winners = this.#cars
+      .filter((car) => car.move === maxAdvanced)
+      .map((car) => car.name);
+    return winners;
+  }
+
+  printWinner(winner) {
+    Console.print(`최종 우승자 : ${winner.join(', ')}`);
   }
 }
 
