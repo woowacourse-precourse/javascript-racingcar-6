@@ -120,4 +120,20 @@ describe("자동차 경주 게임", () => {
 
     await expect(app.play()).rejects.toThrow("[ERROR]");
   });
+
+  test("자동차 이름 앞에 공백이 있는 경우에 대한 예외 처리", async () => {
+    const input = ["     pobi"];
+    mockQuestions(input);
+
+    const app = new App();
+    await expect(app.play()).rejects.toThrow("[ERROR]");
+  });
+
+  test("자동차 이름이 공백으로만 있는 경우", async () => {
+    const input = ["     "];
+    mockQuestions(input);
+
+    const app = new App();
+    await expect(app.play()).rejects.toThrow("[ERROR]");
+  });
 });
