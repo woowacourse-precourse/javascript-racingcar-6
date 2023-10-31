@@ -19,13 +19,16 @@
 - 사용자 입력값이 5자 초과일 경우 ERROR
 - 사용자 입력값이 공백일 경우 ERROR
 
-
+5. jest 테스트
+- 우승자가 한명일 떄 테스트
+- 우승자가 다수일 때 테스트
+- 경기 횟수 테스트
+- 잘못된 입력값 예외처리 테스트
 
 ## :file_folder: 패키지 구조 및 파일명
 - src
   - comm
   - - Validate.js
-  - constant
   - - OutputMessage.js
   - controller
   - - RacingcarController.js
