@@ -8,6 +8,7 @@ import {
   RACE_RESULT_GAP,
   RACE_WINNER,
 } from "./constants/notices";
+import { MAX_CAR_NAME_LENGTH, MIN_ATTEMPT_NUMBER, MIN_CAR_NAME_LENGTH, MIN_MOVE_NUMBER } from "./constants/standard";
 
 class App {
   constructor() {
@@ -36,7 +37,7 @@ class App {
   checkCarName() {
     this.arrCarName = this.strCarName.split(CAR_NAME_STANDARD);
     this.arrCarName.map((name) => {
-      if (name.trim().length > 5 || name.trim().length < 1) {
+      if (name.trim().length > MAX_CAR_NAME_LENGTH || name.trim().length < MIN_CAR_NAME_LENGTH) {
         throw new Error(ERROR_CAR_NAME);
       }
     });
@@ -45,7 +46,7 @@ class App {
     this.attempts = await MissionUtils.Console.readLineAsync(ATTEMPTS_NUMBER);
   }
   checkAttemptNumber() {
-    if (this.attempts < 0 || isNaN(this.attempts) == true) {
+    if (this.attempts < MIN_ATTEMPT_NUMBER || isNaN(this.attempts) == true) {
       throw new Error(ERROR_ATTEMPTS_NUMBER);
     }
   }
@@ -66,7 +67,7 @@ class App {
   goOrStop() {
     this.arrCarName.map((name, index) => {
       const result = MissionUtils.Random.pickNumberInRange(0, 9);
-      if (result >= 4) {
+      if (result >= MIN_MOVE_NUMBER) {
         this.race[index][1]++;
       }
       MissionUtils.Console.print(
