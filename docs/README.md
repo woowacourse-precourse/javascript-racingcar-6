@@ -27,6 +27,7 @@
 src
 	- App.js
 	- constants.js
+    - Car.js
 	- CarRace.js
 	- index.js
 	- utils.js
