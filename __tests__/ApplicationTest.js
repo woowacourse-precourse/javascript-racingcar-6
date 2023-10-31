@@ -57,6 +57,15 @@ describe("자동차 경주 게임", () => {
     expect(result).toEqual(expectedOutput);
   });
 
+  test("isValidCarNames 함수 테스트", () => {
+    const app = new App();
+    app.carNameList = ["pobi", "woni", "jun", "nam", "kona", "   "];
+
+    const result = app.isValidCarNames();
+
+    expect(result).toBe(false);
+  });
+
   test("getLeadingCarNames 함수 테스트", async () => {
     const app = new App();
 
