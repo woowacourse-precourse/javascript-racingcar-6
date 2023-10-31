@@ -1,0 +1,8 @@
+.eslintrc.json
+.prettier.json
+package.json
+*.md
+.gitignore
+package-lock.json
+.husky
+__tests__
