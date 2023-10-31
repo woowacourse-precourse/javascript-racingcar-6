@@ -15,11 +15,17 @@ class App {
     this.print('\n실행 결과');
     let roundCount = 1;
     while (roundCount <= roundNumber) {
-      const roundResult = this.racing(carDistanceMap);
+      let roundResult = '';
+      this.racing(carDistanceMap);
+      carDistanceMap.forEach((value, key) => {
+        roundResult += `${key} : ${value}\n`;
+      });
       this.print(roundResult);
       roundCount += 1;
     }
     const distanceCarMap = this.swapMap(carDistanceMap);
+    const winner = this.findWinner(distanceCarMap);
+    this.print(`최종 우승자 : ${winner}`);
   }
 
   async userInput(message) {
@@ -66,14 +72,11 @@ class App {
   }
 
   racing(carDistanceMap) {
-    let roundResult = '';
     carDistanceMap.forEach((value, key) => {
       const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
       if (randomNumber >= 4)
         carDistanceMap.set(key, carDistanceMap.get(key) + '-');
-      roundResult += `${key} : ${value}\n`;
     });
-    return roundResult;
   }
 
   print(message) {
@@ -93,6 +96,12 @@ class App {
       }
     });
     return distanceCarMap;
+  }
+
+  findWinner(distanceCarMap) {
+    const winnerArr = [...distanceCarMap].sort((a, b) => b[0] - a[0])[0];
+    const winner = winnerArr[1].join(', ');
+    return winner;
   }
 }
 
