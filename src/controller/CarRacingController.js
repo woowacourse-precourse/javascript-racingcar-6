@@ -1,8 +1,10 @@
 import { readCarsInput, readCountInput } from '../view/InputView.js';
-import { printResulString, printResultStartString } from '../view/OutputView.js';
+import {
+  printResulString,
+  printResultStartString,
+  printWinnersString,
+} from '../view/OutputView.js';
 import Car from '../model/Car.js';
-import { Console } from '@woowacourse/mission-utils';
-import findWinners from '../utils/findWinners.js';
 
 class CarRacingController {
   #carInstances;
@@ -29,7 +31,7 @@ class CarRacingController {
   };
 
   printRacingWinners = () => {
-    Console.print(findWinners(this.#carInstances));
+    printWinnersString(this.#carInstances);
   };
 }
 
