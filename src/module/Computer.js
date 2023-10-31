@@ -1,4 +1,5 @@
 import {MissionUtils} from '@woowacourse/mission-utils';
+import Car from './Car.js';
 
 class Computer {
   #carList;
@@ -19,6 +20,21 @@ class Computer {
 
   get round() {
     return this.#round;
+  }
+
+  get carList() {
+    return this.#carList;
+  }
+
+  pushCarList(input) {
+    const data = input.split(',');
+
+    data.forEach((e) => {
+      let car = new Car();
+
+      car.name = e;
+      this.#carList.push(car);
+    });
   }
 }
 
