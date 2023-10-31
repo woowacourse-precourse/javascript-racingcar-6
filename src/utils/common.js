@@ -26,7 +26,7 @@ export function parseNumber(str) {
 export function getDistanceToMove(randomNumber) {
   validateBetweenOneAndNine(randomNumber);
 
-  if (randomNumber < 3) return 0;
+  if (randomNumber <= 3) return 0;
 
   return 1;
 }
