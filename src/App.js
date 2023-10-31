@@ -1,6 +1,6 @@
 import { isNameLengthUnderFive } from "./utils/validation.js";
 import { Console } from "@woowacourse/mission-utils";
-import InputHandler from "./utils/InputHandler.js";
+import InputHandler from "./utils/inputHandler.js";
 import GameController from "./utils/GameController.js";
 import { GAME_MESSAGE } from "./constants/message.js";
 

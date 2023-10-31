@@ -1,4 +1,4 @@
-import {ERROR_MESSAGE} from "../constants/message.js";
+import { ERROR_MESSAGE } from "../constants/message.js";
 import SETTING from "../constants/setting.js"; //이름 검사
 //이름 검사
 export const isNameLengthUnderFive = (name) => {
@@ -14,24 +14,23 @@ export const isValidNameInput = (carsArr) => {
   if (carsArr.length > SETTING.MAX_NAME_NUM)
     throw new Error(ERROR_MESSAGE.TOO_MANY_NAMES(SETTING.MAX_NAME_NUM));
 
-  if (carsArr.length < SETTING.MIN_NAME_NUM)
-    throw new Error(ERROR_MESSAGE.TOO_FEW_NAME(SETTING.MIN_NAME_NUM));
+  if (carsArr.length < 2) throw new Error(ERROR_MESSAGE.TOO_FEW_NAME);
 };
 
 export const isNoInput = (input) => {
   if (!input) throw new Error(ERROR_MESSAGE.NO_INPUT);
 };
 //횟수 검사
-export const isValidCountInput = (count) => {
-  if (count < SETTING.MIN_COUNT_NUM || isNaN(count))
-    throw new Error(ERROR_MESSAGE.INVALID_COUNT_RANGE);
+export const isValidRoundInput = (round) => {
+  if (round < 1 || isNaN(round))
+    throw new Error(ERROR_MESSAGE.INVALID_ROUND_RANGE);
 
-  if (count > 30)
-    throw new Error(ERROR_MESSAGE.TOO_MANY_COUNT(SETTING.MAX_COUNT_NUM));
+  if (round > 30)
+    throw new Error(ERROR_MESSAGE.TOO_MANY_ROUND(SETTING.MAX_COUNT_NUM));
 };
 
-export const isIntegerNumber = (count) => {
+export const isIntegerNumber = (round) => {
   const regex = /^\d+$/;
-  if (!regex.test(count) || !Number.isInteger(count))
-    throw new Error(ERROR_MESSAGE.INVALID_COUNT_RANGE);
+  if (!regex.test(round) || !Number.isInteger(round))
+    throw new Error(ERROR_MESSAGE.INVALID_ROUND_RANGE);
 };

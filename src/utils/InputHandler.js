@@ -4,8 +4,8 @@ import {
   hasSameName,
   isIntegerNumber,
   isNoInput,
-  isValidCountInput,
   isValidNameInput,
+  isValidRoundInput,
 } from "./validation.js";
 
 class InputHandler {
@@ -30,11 +30,11 @@ class InputHandler {
 
   async getRoundAndCheck() {
     const roundInput = await Console.readLineAsync(
-      GAME_MESSAGE.ASK_COUNT_NUMBER,
+      GAME_MESSAGE.ASK_COUNT_NUMBER
     );
     await isNoInput(roundInput);
     const round = parseFloat(roundInput);
-    isValidCountInput(round);
+    isValidRoundInput(round);
     isIntegerNumber(round);
     return round;
   }

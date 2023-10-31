@@ -11,8 +11,10 @@ class GameController {
     });
   }
 
-  moveAndMakeResult(car) {
-    const randomNum = Random.pickNumberInRange(0, 9);
+  makeRandomNum() {
+    return Random.pickNumberInRange(0, 9);
+  }
+  makeResultByNum(car, randomNum) {
     randomNum >= 4 ? this.carsWithMoveNum[car]++ : null;
     return "-".repeat(this.carsWithMoveNum[car]);
   }
@@ -21,10 +23,8 @@ class GameController {
     let currentRound = 0;
     while (currentRound < round) {
       carArr.forEach((car, index) => {
-        const printLineByMove = this.moveAndMakeResult(
-          car,
-          this.carsWithMoveNum,
-        );
+        const randomNum = this.makeRandomNum();
+        const printLineByMove = this.makeResultByNum(car, randomNum);
         Console.print(`${carArr[index]} : ${printLineByMove}`);
       });
       Console.print("");
@@ -32,9 +32,9 @@ class GameController {
     }
   }
 
-  selectWinner(cars) {
+  selectWinner(carArr) {
     let winnersArr = [];
-    cars.forEach((car) => {
+    carArr.forEach((car) => {
       if (!winnersArr.length) {
         winnersArr.push(car);
       } else if (

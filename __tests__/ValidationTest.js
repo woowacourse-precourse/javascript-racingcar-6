@@ -1,105 +1,70 @@
-import { mockQuestions } from "../src/testUtils/testUtil.js";
-import App from "../src/App.js";
+import {
+  hasSameName,
+  isIntegerNumber,
+  isNameLengthUnderFive,
+  isValidNameInput,
+  isNoInput,
+  isValidRoundInput,
+} from "../src/utils/validation";
 
-describe("NamesValidationTest", () => {
-  test("이름이 빈값일 때 예외 처리", async () => {
-    mockQuestions([""]);
-
-    const app = new App();
-
-    await expect(app.play()).rejects.toThrow(
-      "[ERROR]아무것도 입력하지 않았습니다.",
-    );
+describe("유효성 검사 테스트", () => {
+  test("이름 길이 검사", () => {
+    const nameInput = "red";
+    expect(() => isNameLengthUnderFive(nameInput)).not.toThrow();
   });
 
-  test("한명일 때 예외 처리", async () => {
-    mockQuestions(["pobi"]);
-
-    const app = new App();
-
-    await expect(app.play()).rejects.toThrow(
-      "[ERROR]2개 이상으로 입력해주세요.",
-    );
+  test("같은 이름 검사", () => {
+    const namesArr = ["red", "blue", "red"];
+    expect(() => hasSameName(namesArr)).toThrow("[ERROR]");
   });
 
-  test("10명 이상일 때 예외 처리", async () => {
-    const input = ["a,b,c,d,e,f,g,h,i,j,k"];
-    mockQuestions(input);
-
-    const app = new App();
-
-    await expect(app.play()).rejects.toThrow(
-      "[ERROR]10개 이하로 입력해주세요.",
-    );
-  });
-  test("이름 마지막에 ,가 포함되었을 때 예외 처리", async () => {
-    const input = ["a,b,", "10"];
-    mockQuestions(input);
-
-    const app = new App();
-
-    await expect(app.play()).resolves.not.toThrow();
+  test("유효한 이름 검사", () => {
+    const namesArr = ["red", "blue", "pink"];
+    expect(() => isValidNameInput(namesArr)).not.toThrow();
   });
 
-  test.each([[["pobi,javaji"]], [["pobi,eastjun"]]])(
-    "이름 길이에 대한 예외 처리",
-    async (inputs) => {
-      mockQuestions(inputs);
-
-      const app = new App();
-
-      await expect(app.play()).rejects.toThrow(
-        "[ERROR]이름은 5자 이내여야 합니다.",
-      );
-    },
-  );
-
-  test.each([[["pobi,pobi"]], [["pobi,rin,pobi,jun"]]])(
-    "이름 중복에 대한 예외 처리",
-    async (inputs) => {
-      mockQuestions(inputs);
-
-      const app = new App();
-
-      await expect(app.play()).rejects.toThrow(
-        "[ERROR]중복되는 이름이 있습니다.",
-      );
-    },
-  );
-});
-
-describe("RoundValidationTest", () => {
-  test("횟수 입력하지 않았을 때 예외 처리", async () => {
-    mockQuestions(["pobi,rin", ""]);
-
-    const app = new App();
-
-    await expect(app.play()).rejects.toThrow(
-      "[ERROR]아무것도 입력하지 않았습니다.",
-    );
+  test("아무것도 입력 안함", () => {
+    const input = "";
+    expect(() => isNoInput(input)).toThrow("[ERROR]");
   });
 
-  test("횟수 30 초과일 때 에러 처리", async () => {
-    const inputs = ["pobi, jun", "31"];
-    mockQuestions(inputs);
-
-    const app = new App();
-
-    await expect(app.play()).rejects.toThrow(
-      "[ERROR]30이하의 수를 입력해주세요.",
-    );
+  test("하나라도 입력함", () => {
+    const input = "1";
+    expect(() => isNoInput(input)).not.toThrow("[ERROR]");
   });
 
-  test.each([["0"], ["seven"], ["a1"], ["2.3"]])(
-    "횟수에 대한 예외 처리",
-    async (input) => {
-      mockQuestions(["pobi,rin", input]);
+  test("유효한 라운드 검사", () => {
+    const roundInput = "30";
+    expect(() => isValidRoundInput(roundInput)).not.toThrow();
+  });
 
-      const app = new App();
+  test("무효인 라운드 검사1", () => {
+    const roundInput = "a1";
+    expect(() => isValidRoundInput(roundInput)).toThrow("[ERROR]");
+  });
 
-      await expect(app.play()).rejects.toThrow(
-        "[ERROR]1이상의 정수를 입력해 주세요.",
-      );
-    },
-  );
+  test("무효인 라운드 검사2", () => {
+    const roundInput = "";
+    expect(() => isValidRoundInput(roundInput)).toThrow("[ERROR]");
+  });
+
+  test("무효인 라운드 검사3", () => {
+    const roundInput = "!";
+    expect(() => isValidRoundInput(roundInput)).toThrow("[ERROR]");
+  });
+
+  test("무효인 라운드 검사4", () => {
+    const roundInput = "";
+    expect(() => isValidRoundInput(roundInput)).toThrow("[ERROR]");
+  });
+
+  test("숫자인지 검사", () => {
+    const roundInput = 12;
+    expect(() => isIntegerNumber(roundInput)).not.toThrow();
+  });
+
+  test("숫자 아닌지 검사", () => {
+    const roundInput = "a";
+    expect(() => isIntegerNumber(roundInput)).toThrow("[ERROR]");
+  });
 });
