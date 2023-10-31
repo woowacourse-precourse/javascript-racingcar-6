@@ -40,7 +40,10 @@ function isValidMoveChanceCount(moveChanceCountString) {
     throw new Error(ERROR.NOT_NUMBER);
   }
 
-  if (Number.isInteger(moveChanceCountNumber) === false) {
+  if (
+    Number.isInteger(moveChanceCountNumber) === false ||
+    moveChanceCountString.includes('e')
+  ) {
     throw new Error(ERROR.NOT_INTEGER);
   }
 
