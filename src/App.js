@@ -9,7 +9,7 @@ class App {
       this.game(cars, howManyTry);
     }
     catch (error) {
-      throw new Error("[ERROR]")
+      throw error;
     }
   }
 
@@ -41,8 +41,8 @@ class App {
   game(cars, howManyTry) {
     const raceCount = new Array(cars.length).fill(0);
     for (let i = 0; i < howManyTry; i++) {
-      race(cars, raceCount);
-      printRound(cars, raceCount);
+      this.race(cars, raceCount);
+      this.printRound(cars, raceCount);
     }
     const winners = this.getWinnerIndex(raceCount);
     const winnerNames = winners.map(index => cars[index]).join(', ');
