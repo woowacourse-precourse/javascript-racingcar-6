@@ -13,4 +13,11 @@ export default class User {
 		);
 		return this.validator.checkCarNamesValid(String(INPUT));
 	}
+
+	async getNumberOfAttempts() {
+		const INPUT = await MissionUtils.Console.readLineAsync(
+			GUIDE_MESSAGE.enter_number_of_attempts
+		);
+		return String(INPUT)
+	}
 }

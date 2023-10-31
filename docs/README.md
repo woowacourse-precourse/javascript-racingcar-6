@@ -8,7 +8,7 @@
 
 - [x] 자동차 이름 입력 : 자동차 이름(들)을 입력한 후 저장 `getCarNames`
 
-- [ ] 경주를 시도할 횟수 입력 : 경주를 시도할 횟수를 입력한 후 저장 `getNumberOfAttempts`<br /><br />
+- [x] 경주를 시도할 횟수 입력 : 경주를 시도할 횟수를 입력한 후 저장 `getNumberOfAttempts`<br /><br />
 
 ### 2. 입력값에 대한 유효성 검사 기능 -> (`Validator`)
 
