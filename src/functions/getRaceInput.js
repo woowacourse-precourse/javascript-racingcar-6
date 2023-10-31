@@ -1,15 +1,17 @@
 import { Console } from '@woowacourse/mission-utils';
 import { ERROR, MESSAGE } from '../constants/constants.js';
+import { isCarNameValidLength, isRaceCountValidNumber } from './validation.js';
 
 const getRaceCars = async () => {
   const cars = [];
-  const raceCars = await Console.readLineAsync(`${MESSAGE.INPUT_CARS} \n`);
+  const raceCars = await Console.readLineAsync(`${MESSAGE.INPUT_CARS}\n`);
 
   raceCars.split(',').forEach((car) => {
-    if (car.length > 5) {
-      throw new Error(ERROR.CAR_NAME_LENGTH);
-    } else {
+    const isValid = isCarNameValidLength(car);
+    if (isValid) {
       cars.push(car);
+    } else {
+      throw new Error(ERROR.CAR_NAME_LENGTH);
     }
   });
 
@@ -17,9 +19,10 @@ const getRaceCars = async () => {
 };
 
 const getRaceCount = async () => {
-  const raceCount = await Console.readLineAsync(`${MESSAGE.INPUT_COUNT} \n`);
+  const raceCount = await Console.readLineAsync(`${MESSAGE.INPUT_COUNT}\n`);
+  const isValid = isRaceCountValidNumber(raceCount);
 
-  if (Number.isNaN(raceCount)) {
+  if (!isValid) {
     throw new Error(ERROR.COUNT_FORMAT);
   }
 
