@@ -25,14 +25,14 @@
 
 ### 입력
 
-- [ ]  경주 할 자동차 이름(이름은 쉼표(,) 기준으로 구분)
+- [x]  경주 할 자동차 이름(이름은 쉼표(,) 기준으로 구분)
 
 ```
 pobi,woni,jun
 
 ```
 
-- [ ]  시도할 횟수
+- [x]  시도할 횟수
 
 ```
 5
@@ -41,7 +41,7 @@ pobi,woni,jun
 
 ### 출력
 
-- [ ]  각 차수별 실행 결과
+- [x]  각 차수별 실행 결과
 
 ```
 pobi : --
@@ -50,14 +50,14 @@ jun : ---
 
 ```
 
-- [ ]  단독 우승자 안내 문구
+- [x]  단독 우승자 안내 문구
 
 ```
 최종 우승자 : pobi
 
 ```
 
-- [ ]  공동 우승자 안내 문구
+- [x]  공동 우승자 안내 문구
 
 ```
 최종 우승자 : pobi, jun
@@ -68,8 +68,8 @@ jun : ---
 
 ## 🎯 프로그래밍 요구 사항
 
-- [ ]  Node.js 18.17.1 버전에서 실행 가능해야 한다. **Node.js 18.17.1에서 정상적으로 동작하지 않을 경우 0점 처리한다.**
-- [ ]  프로그램 실행의 시작점은 `App.js`의 `play` 메서드이다. 아래와 같이 프로그램을 실행시킬 수 있어야 한다.
+- [x]  Node.js 18.17.1 버전에서 실행 가능해야 한다. **Node.js 18.17.1에서 정상적으로 동작하지 않을 경우 0점 처리한다.**
+- [x]  프로그램 실행의 시작점은 `App.js`의 `play` 메서드이다. 아래와 같이 프로그램을 실행시킬 수 있어야 한다.
 
 **예시**
 
@@ -79,11 +79,11 @@ app.play();
 
 ```
 
-- [ ]  `package.json`을 변경할 수 없고 외부 라이브러리(jQuery, Lodash 등)를 사용하지 않는다. 순수 Vanilla JS로만 구현한다.
+- [x]  `package.json`을 변경할 수 없고 외부 라이브러리(jQuery, Lodash 등)를 사용하지 않는다. 순수 Vanilla JS로만 구현한다.
 - [ ]  [JavaScript 코드 컨벤션](https://github.com/woowacourse/woowacourse-docs/tree/main/styleguide/javascript)을 지키면서 프로그래밍 한다
-- [ ]  프로그램 종료 시 `process.exit()`를 호출하지 않는다.
+- [x]  프로그램 종료 시 `process.exit()`를 호출하지 않는다.
 - [ ]  프로그램 구현이 완료되면 `ApplicationTest`의 모든 테스트가 성공해야 한다. **테스트가 실패할 경우 0점 처리한다.**
-- [ ]  프로그래밍 요구 사항에서 달리 명시하지 않는 한 파일, 패키지 이름을 수정하거나 이동하지 않는다.
+- [x]  프로그래밍 요구 사항에서 달리 명시하지 않는 한 파일, 패키지 이름을 수정하거나 이동하지 않는다.
 
 ### 추가된 요구 사항
 
@@ -95,8 +95,8 @@ app.play();
 
 ## ✏️ 과제 진행 요구 사항
 
-- [ ]  미션은 [javascript-racingcar-6](https://github.com/woowacourse-precourse/javascript-racingcar-6) 저장소를 Fork & Clone해 시작한다.
-- [ ]  **기능을 구현하기 전 `docs/README.md`에 구현할 기능 목록을 정리**해 추가한다.
+- [x]  미션은 [javascript-racingcar-6](https://github.com/woowacourse-precourse/javascript-racingcar-6) 저장소를 Fork & Clone해 시작한다.
+- [x]  **기능을 구현하기 전 `docs/README.md`에 구현할 기능 목록을 정리**해 추가한다.
 - [ ]  **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
     - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - [ ]  과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
