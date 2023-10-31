@@ -32,6 +32,9 @@ const checkCarsDifferName = (carsNameArray) => {
     throw new Error(SAME_NAME_USER_INPUT_ERROR);
 };
 
+export const checkInputNumberType = (userInputString) => {
+};
+
 export const userInputCarsName = async () => {
   const carsNameString = await getUserInput(START_GAME_MESSAGE);
   checkCarsNameCount(carsNameString);
