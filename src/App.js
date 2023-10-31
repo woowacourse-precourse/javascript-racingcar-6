@@ -30,24 +30,34 @@ class App {
     const progress = {};
     const cars = await Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)").then((names) => names.split(","));
     cars.forEach((name) => checkNameValidation(name));
+
     initProgress(progress, cars);
 
     const inputCount = await Console.readLineAsync("시도할 횟수:");
     checkInputCount(inputCount);
     const attemptCount = Number(inputCount);
+
     Console.print("실행 결과");
-    for (let count = 1; count <= attemptCount; count++) {
-      for (let car of cars) {
-        const randomNumber = Random.pickNumberInRange(0, 9);
-        if (randomNumber >= 4) progress[car]++;
-      }
-      printProgress(progress);
-    }
+
+    startRace(cars, attemptCount, progress);
+
     checkWinner(progress);
   }
 }
 
 export default App;
+
+const startRace = (cars, attemptCount, progress) => {
+  for (let count = 1; count <= attemptCount; count++) {
+    cars.forEach((car) => countProgress(progress, car));
+    printProgress(progress);
+  }
+};
+
+const countProgress = (progress, car) => {
+  const randomNumber = Random.pickNumberInRange(0, 9);
+  if (randomNumber >= 4) progress[car]++;
+};
 
 const initProgress = (progress, carNames) => {
   for (let car of carNames) {
