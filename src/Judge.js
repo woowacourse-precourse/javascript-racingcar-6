@@ -1,10 +1,9 @@
 import { Console } from '@woowacourse/mission-utils';
 
-export class Judge {
+export default class Judge {
   printWinner(winners) {
     const winner = winners.join(', ');
     Console.print(`최종우승자 : ${winner}`);
-    return;
   }
 
   decideWinner(totalScores) {
@@ -18,7 +17,7 @@ export class Judge {
 
   compareScores(totalScores) {
     let max = 0;
-    Object.keys(totalScores).map((player) => {
+    Object.keys(totalScores).forEach((player) => {
       const score = totalScores[player];
       if (score > max) max = score;
     });

@@ -1,21 +1,21 @@
 import { Console } from '@woowacourse/mission-utils';
 import { CONSOLE_MESSAGE, ERROR_MESSAGE } from './Messages.js';
 
-export class User {
+export default class User {
   static MIN_CAR_NAME_LENGTH = 5;
 
-  async getRaceCars() {
+  static async getRaceCars() {
     const user = await Console.readLineAsync(CONSOLE_MESSAGE.NAME_OF_CARS);
     const cars = user.split(',');
     cars.forEach((car) => {
-      car = car.toString();
-      if (car.length > User.MIN_CAR_NAME_LENGTH)
+      const carStr = car.toString();
+      if (carStr.length > User.MIN_CAR_NAME_LENGTH)
         throw new Error(ERROR_MESSAGE.CHAR_LENGTH_LIMIT);
     });
     return cars;
   }
 
-  async getRaceRounds() {
+  static async getRaceRounds() {
     const user = await Console.readLineAsync(CONSOLE_MESSAGE.NUMBER_OF_ROUNDS);
     const rounds = Number(user);
     if (!Number.isInteger(rounds)) throw new Error(ERROR_MESSAGE.INTEGER_ONLY);

@@ -1,42 +1,47 @@
 import { Console } from '@woowacourse/mission-utils';
+import Dice from './Dice.js';
 
-export class RacingGame {
-  constructor(dice, judge) {
-    this.dice = dice;
+export default class RacingGame {
+  constructor(judge) {
     this.judge = judge;
   }
 
-  play(gameCount, cars) {
+  play(rounds, cars) {
     const initializedCars = this.initializeScore(cars);
     let totalScores = initializedCars;
-    Console.print('실행 결과');
-    for (let i = 0; i < gameCount; i++) {
+    Console.print('\n실행 결과');
+    for (let i = 0; i < rounds; i += 1) {
       const scores = this.getScore(cars);
       const result = this.validateScores(scores, totalScores);
       totalScores = result;
       this.printScores(totalScores);
     }
-    this.judge.decideWinner(totalScores);
+    return this.judge.decideWinner(totalScores);
   }
 
   initializeScore(cars) {
     const initialized = {};
-    cars.forEach((car) => (initialized[car] = 0));
+    cars.forEach((car) => {
+      initialized[car] = 0;
+    });
     return initialized;
   }
 
   getScore(cars) {
     const scores = {};
-    cars.forEach((car) => (scores[car] = this.dice.roll()));
+    cars.forEach((car) => {
+      scores[car] = Dice.roll();
+    });
     return scores;
   }
 
   validateScores(scores, totalScores) {
+    const newScores = { ...totalScores };
     Object.keys(scores).forEach((car) => {
       const score = scores[car];
-      if (score >= 4) totalScores[car] += 1;
+      if (score >= 4) newScores[car] += 1;
     });
-    return totalScores;
+    return newScores;
   }
 
   printScores(result) {
