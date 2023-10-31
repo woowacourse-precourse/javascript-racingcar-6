@@ -1,6 +1,3 @@
-import { Console, Random } from '@woowacourse/mission-utils';
-import Inputs from './input/Inputs.js';
-
 // class App {
 //   constructor() {
 //     // this.cars = [];
@@ -18,47 +15,45 @@ import Inputs from './input/Inputs.js';
 
 // export default App;
 
+import { Console } from '@woowacourse/mission-utils';
+import Car from './Car.js'; // Car 클래스 import
+import ReturnWinner from './ReturnWinner.js'; // ReturnWinner 클래스 import
+import Inputs from './input/Inputs.js';
+
 class App {
   constructor() {
-    // this.cars = [];
-    // this.tryCount = 0;
+    this.cars = [];
     this.inputs = new Inputs();
   }
 
   async play() {
-    const cars = await this.inputs.returnCarNames();
-    const tryCount = await this.inputs.getTryCount();
-    Console.print('\n실행 결과');
-    this.runRace(cars, tryCount);
-  }
+    const carNames = await this.inputs.returnCarNames();
+    this.cars = carNames.map((name) => new Car(name));
 
-  runRace(cars, tryCount) {
-    const progressList = new Array(cars.length).fill('');
+    const tryCount = await this.inputs.getTryCount();
+
+    Console.print('\n실행 결과');
 
     for (let i = 0; i < tryCount; i += 1) {
-      cars.forEach((car, carIndex) => {
-        progressList[carIndex] += this.generateRandomProgress();
-        Console.print(`${car} : ${progressList[carIndex]}`);
-      });
-      Console.print('');
+      this.runRaceRound();
     }
 
-    this.printWinners(cars, progressList);
+    this.printWinners();
   }
 
-  printWinners = (cars, progressList) =>
-    Console.print(`최종 우승자 : ${this.findWinners(cars, progressList).join(', ')}`);
+  runRaceRound() {
+    this.cars.forEach((car) => {
+      car.move();
+      Console.print(`${car.getName()} : ${'-'.repeat(car.getPosition())}`);
+    });
+    Console.print('');
+  }
 
-  getRandomMove = () => Random.pickNumberInRange(0, 9);
-
-  generateRandomProgress = () => (this.getRandomMove() >= 4 ? '-' : '');
-
-  findWinners = (cars, progressList) =>
-    cars.filter(
-      (car, carIndex) => progressList[carIndex].length === this.maxProgress(progressList),
-    );
-
-  maxProgress = (progressList) => Math.max(...progressList.map((progress) => progress.length));
+  printWinners() {
+    const returnWinner = new ReturnWinner();
+    const winners = returnWinner.findWinners(this.cars);
+    returnWinner.printWinners(winners);
+  }
 }
 
 export default App;
