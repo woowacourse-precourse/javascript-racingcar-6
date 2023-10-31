@@ -6,7 +6,7 @@ class App {
       const input = await MissionUtils.Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
       const cars = this.inputValidation(input);
       const howManyTry = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
-      await this.game(cars, howManyTry);
+      this.game(cars, howManyTry);
     }
     catch (error) {
       throw new Error("[ERROR]")
@@ -19,8 +19,7 @@ class App {
       throw new Error("[ERROR] 잘못된 형식의 이름입니다.")
     } else {
       const cars = input.split(',');
-      const howManyCars = cars.length();
-      for (let i = 0; i < howManyCars; i++) {
+      for (let i = 0; i < cars.length; i++) {
         this.eachInputValidaion(cars[i]);
       }
       return cars;
@@ -37,6 +36,25 @@ class App {
       return 0;
     }
   }
+
+  /** 경기 진행 */
+  game(cars, howManyTry) {
+    const raceCount = new Array(cars.length).fill(0);
+    for (let i = 0; i < howManyTry; i++) {
+      race(cars, raceCount);
+      
+    }
+  }
+
+  race(cars, raceCount) {
+    for (let i = 0; i < cars.length; i++) {
+      const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
+      if (randomNumber > 3) {
+        raceCount[i]++;
+      }
+    }
+  }
+
 }
 
 export default App;
