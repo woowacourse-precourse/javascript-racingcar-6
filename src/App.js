@@ -1,3 +1,6 @@
+import { MissionUtils } from "@woowacourse/mission-utils";
+import { validateCarName, validateNumber } from "./validation.js";
+
 class App {
   participant = [];
   count = [];
@@ -9,7 +12,10 @@ class App {
 
     const carList = carNameInput.split(",");
 
-    // TODO 자동차 이름의 길이 예외처리
+    for (let i = 0; i < carList.length; i++) {
+      if (!validateCarName(carList[i]))
+        throw new Error("[ERROR]: 자동차 이름은 5자 이하여야합니다.");
+    }
 
     this.participant = carList;
     this.count = Array(this.participant.length).fill(0);
@@ -20,7 +26,8 @@ class App {
       "시도할 횟수는 몇 회인가요?"
     );
 
-    // TODO cycle의 입력값이 숫자인지 예외처리
+    if (!validateNumber(cycle))
+      throw new Error("[ERROR]: 시도 횟수는 숫자를 입력해야 합니다.");
 
     return cycle;
   }
