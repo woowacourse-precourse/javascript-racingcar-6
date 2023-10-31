@@ -14,13 +14,13 @@ describe('Message 모듈 테스트', () => {
             { carName: 'carB', position: 2 },
           ],
         ],
-        output: 'carA : -\ncarB : -\n\ncarA : --\ncarB : --',
+        expected: 'carA : -\ncarB : -\n\ncarA : --\ncarB : --',
       },
-    ])('input에 대한 레이싱 결과는 $output"으로 출력 된다.', ({ input, output }) => {
+    ])('input에 대한 레이싱 결과는 $expected"으로 출력 된다.', ({ input, expected }) => {
       // given - when
       const result = OUTPUT_MESSAGE_METHOD.racingResult(input);
       // then
-      expect(result).toBe(output);
+      expect(result).toBe(expected);
     });
   });
 
