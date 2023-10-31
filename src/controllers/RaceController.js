@@ -8,7 +8,7 @@ class RaceController {
   /**  @type {number} */
   #round;
 
-  async raceSet() {
+  async startLine() {
     const carNamesInput = await Console.readLineAsync(
       '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
     );
@@ -35,6 +35,15 @@ class RaceController {
 
       Console.print('');
     });
+  }
+
+  finishLine() {
+    const champions = this.#race
+      .getChampions()
+      .map((car) => car.getCarName())
+      .join(', ');
+
+    Console.print(`최종 우승자 : ${champions}`);
   }
 }
 
