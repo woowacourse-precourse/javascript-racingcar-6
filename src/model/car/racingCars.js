@@ -1,4 +1,10 @@
 class RacingCars {
+  #cars = [];
+
+  getCars() {
+    return this.#cars;
+  }
+
   checkInputNull(inputNamesString) {
     if (!inputNamesString) {
       throw new Error("[ERROR] 이름을 입력해 주세요.");
@@ -41,5 +47,12 @@ class RacingCars {
     this.checkDuplicateNames(carNames);
     this.checkNameLength(carNames);
     return carNames;
+  }
+
+  createCars(inputNamesString) {
+    const carNames = this.carNamesValidation(inputNamesString);
+    for (let i = 0; i < carNames.length; i += 1) {
+      this.createCar(carNames[i]);
+    }
   }
 }
