@@ -9,7 +9,6 @@ const CarNameView = async function InputCarNameView() {
 
 const GameCntView = async function InputGameCntView() {
   const textView = selectView();
-  console.log(`test ${textView}`);
   const gameCnt = await MissionUtils.Console.readLineAsync(textView);
   saveGameCnt(gameCnt);
 };
