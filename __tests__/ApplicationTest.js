@@ -48,8 +48,26 @@ describe("자동차 경주 게임", () => {
 
   test.each([
     [["pobi,javaji"]],
-    [["pobi,eastjun"]]
-  ])("이름에 대한 예외 처리", async (inputs) => {
+    [["pobi,eastjun"]],
+    [[",pobi"]],
+    [["pobi,"]],
+  ])("이름 길이에 대한 예외 처리", async (inputs) => {
+    // given
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow("[ERROR]");
+  });
+
+  test.each([
+    [["pobi,pobi"]],
+    [["a,1,c"]],
+    [["a,$,c"]],
+    [["a,j&b,c"]],
+  ])("이름 유효성에 대한 예외 처리", async (inputs) => {
     // given
     mockQuestions(inputs);
 
