@@ -8,14 +8,18 @@ describe('사용자 입력값의 유효성을 검사하는 함수 테스트', ()
     ['벤츠', true],
     ['5글자 이상', false],
     ['', false],
-    [' ', false],
+    [' ', false]
   ])('자동차 이름 유효성 검사 함수 테스트', (inputs, expected) => {
     const isValidOutput = validation.isValidCarName(inputs);
 
     expect(isValidOutput).toBe(expected);
   });
 
-  test.each([[5], [1], [100]])(
+  test.each([
+    [[5]],
+    [[1]],
+    [[100]]
+  ])(
     '게임 시도 횟수 유효성 검사 함수 테스트 (true)',
     (inputs) => {
       const isValidOutput = validation.isValidRacingCount(inputs);
@@ -31,7 +35,7 @@ describe('사용자 입력값의 유효성을 검사하는 함수 테스트', ()
     [NaN],
     [undefined],
     [null],
-    [true],
+    [true]
   ])('게임 시도 횟수 유효성 검사 함수 테스트 (false)', (inputs) => {
     const isValidOutput = validation.isValidRacingCount(inputs);
 
