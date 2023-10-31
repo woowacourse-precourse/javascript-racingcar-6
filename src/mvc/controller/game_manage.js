@@ -1,4 +1,5 @@
 import CarNameError from '../../utils/error/car_name_error.js';
+import RacingCntError from '../../utils/error/racing_cnt_error.js';
 import InputQuestion from '../../ui/input_question.js';
 import userInput from '../../utils/user_input.js';
 
@@ -27,6 +28,14 @@ class GameManage {
 
   async inputRacingCnt() {
     this.RACING_CNT = await userInput(InputQuestion.racingCnt());
+    this.checkRacingCnt();
+  }
+
+  checkRacingCnt() {
+    const ERROR = new RacingCntError(this.RACING_CNT);
+    if (!ERROR.racingCntNotExist()
+        && !ERROR.racingCntNotNum()
+        && !ERROR.racingCntNotPositiveNum()) {}
   }
 }
 
