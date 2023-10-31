@@ -29,7 +29,7 @@ const Conditions = {
   },
 
   isNumber(value) {
-    return !isNaN(value);
+    return !Number.isNaN(value);
   },
 
   isNaturalNumber(value) {
