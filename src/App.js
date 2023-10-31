@@ -5,6 +5,10 @@ import {
   calcurateScore,
   printScore,
 } from '../modules/scoreBoard';
+import {
+  checkCarNamesAreValid,
+  checkTryNumberIsValid,
+} from '../modules/inputValidation';
 
 const MESSAGE = {
   ENTER_CAR_NAME:
@@ -14,8 +18,12 @@ const MESSAGE = {
 };
 
 const playRacingGame = async () => {
-  const carNames = await getCarNames();
+  let carNames = await getCarNames();
+  carNames = checkCarNamesAreValid(carNames);
+
   let tryNumber = await getTryNumber();
+  checkTryNumberIsValid(tryNumber);
+
   let scoreBoard = createScoreBoard(carNames);
 
   while (tryNumber !== 0) {
