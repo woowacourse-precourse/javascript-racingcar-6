@@ -26,3 +26,17 @@
 ### 결과 출력
 
 - 게임 종료 후, 우승자 출력<br>
+
+📦src
+┣ 📂constants
+┃ ┗ 📜Number.js
+┣ 📂controller
+┃ ┗ 📜Racing.js
+┣ 📂error
+┃ ┗ 📜Error.js
+┣ 📂view
+┃ ┣ 📜Input.js
+┃ ┗ 📜Output.js
+┣ 📜App.js
+┣ 📜Car.js
+┗ 📜index.js
