@@ -1,9 +1,9 @@
 import { Console } from '@woowacourse/mission-utils';
 
 class ReturnWinner {
-  constructor(cars) {
+  constructor(cars, progressList) {
     this.cars = cars;
-    this.progressList = new Array(cars.length).fill('');
+    this.progressList = progressList;
   }
 
   getMaxProgress() {
@@ -12,13 +12,13 @@ class ReturnWinner {
 
   findWinners() {
     return this.cars.filter(
-      (_, carIndex) => this.progressList[carIndex].length === this.getMaxProgress(),
+      (car, carIndex) =>
+        this.progressList[carIndex].length === this.getMaxProgress(this.progressList),
     );
   }
 
   printWinners() {
-    const winners = this.findWinners();
-    Console.print(`최종 우승자 : ${winners.join(', ')}`);
+    Console.print(`최종 우승자 : ${this.findWinners(this.cars, this.progressList).join(', ')}`);
   }
 }
 
