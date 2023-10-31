@@ -16,6 +16,7 @@ class App {
       const tryNumber = await MissionUtils.Console.readLineAsync(
         "시도할 횟수는 몇 회인가요?"
       );
+      this.checkTryNumber(tryNumber);
 
       // 레이싱 출력
       MissionUtils.Console.print("실행 결과");
@@ -34,9 +35,22 @@ class App {
       const carName = cars[i].trim();
       if (carName.length > 5) {
         throw Error("[ERROR] 이름은 다섯자 이하만 가능합니다.");
+      } else if (typeof carName !== "string") {
+        throw Error("[ERROR] 문자로 입력해주세요");
+      } else if (carName === null) {
+        throw Error("[ERROR] 경주할 자동차 이름을 입력해주세요");
       }
     }
     return cars;
+  }
+
+  checkTryNumber(tryNumber) {
+    if (tryNumber === null) {
+      throw Error("[ERROR] 시도 횟수를 입력해주세요");
+    }
+    if (typeof tryNumber !== "number") {
+      throw Error("[ERROR] 숫자를 입력해주세요");
+    }
   }
   // 무작위 값 각 이름마다 생성
   getRandomNumberForEachCar() {
