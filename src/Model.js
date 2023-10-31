@@ -15,7 +15,7 @@ const getCarNames = function getCarNamesArr() {
   return carNames;
 }
 
-const errorMessage = '[Error] 잘못된 입력입니다.';
+const errorMessage = new Error('[ERROR] 잘못된 입력입니다.');
 
 export {
   getGameStage, setGameStage, getCarNames, setCarNames,

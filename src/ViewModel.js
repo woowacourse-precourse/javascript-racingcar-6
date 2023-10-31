@@ -21,11 +21,9 @@ const saveCarName = function splitAndSaveCarNames(carNames) {
   const carNamesArr = String(carNames).split(",");
   carNamesArr.forEach(element => {
     if (element.length >= 6) {
-        throw new Error('[ERROR] ');
+        throw errorMessage;
     }
 });
-
-
   setCarNames(carNamesArr);
 };
 
