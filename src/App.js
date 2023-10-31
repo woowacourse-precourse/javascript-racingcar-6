@@ -75,6 +75,66 @@ class App {
         )}`
       );
     }
+
+    let winner;
+    if (
+      RACE_RESULT["car1"]["forwardingCount"] -
+        RACE_RESULT["car2"]["forwardingCount"] >
+      0
+    ) {
+      if (
+        RACE_RESULT["car1"]["forwardingCount"] -
+          RACE_RESULT["car3"]["forwardingCount"] >
+        0
+      ) {
+        winner = RACE_RESULT["car1"]["name"];
+      } else if (
+        RACE_RESULT["car1"]["forwardingCount"] -
+          RACE_RESULT["car3"]["forwardingCount"] ===
+        0
+      ) {
+        winner = `${RACE_RESULT["car1"]["name"]}, ${RACE_RESULT["car3"]["name"]}`;
+      } else {
+        winner = RACE_RESULT["car3"]["name"];
+      }
+    } else if (
+      RACE_RESULT["car1"]["forwardingCount"] -
+        RACE_RESULT["car2"]["forwardingCount"] ===
+      0
+    ) {
+      if (
+        RACE_RESULT["car1"]["forwardingCount"] -
+          RACE_RESULT["car3"]["forwardingCount"] >
+        0
+      ) {
+        winner = `${RACE_RESULT["car1"]["name"]}, ${RACE_RESULT["car2"]["name"]}`;
+      } else if (
+        RACE_RESULT["car1"]["forwardingCount"] -
+          RACE_RESULT["car3"]["forwardingCount"] ===
+        0
+      ) {
+        winner = `${RACE_RESULT["car1"]["name"]}, ${RACE_RESULT["car2"]["name"]}, ${RACE_RESULT["car3"]["name"]}`;
+      } else {
+        winner = RACE_RESULT["car3"]["name"];
+      }
+    } else {
+      if (
+        RACE_RESULT["car2"]["forwardingCount"] -
+          RACE_RESULT["car3"]["forwardingCount"] >
+        0
+      ) {
+        winner = RACE_RESULT["car2"]["name"];
+      } else if (
+        RACE_RESULT["car2"]["forwardingCount"] -
+          RACE_RESULT["car3"]["forwardingCount"] ===
+        0
+      ) {
+        winner = `${RACE_RESULT["car2"]["name"]}, ${RACE_RESULT["car3"]["name"]}`;
+      } else {
+        winner = RACE_RESULT["car3"]["name"];
+      }
+    }
+    Console.print(`최종 우승자 : ${winner}`);
   }
 }
 
