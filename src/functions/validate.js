@@ -1,9 +1,11 @@
+import { MAX_VALUE_OF_ATTEMPTS } from '../constants/attemptsConstants.js';
 import {
   MAX_NAME_LENGTH,
   MIN_NAME_LENGTH,
 } from '../constants/carNameConstants.js';
 import {
   ERROR_ATTEMPTS_NOT_NATURAL,
+  ERROR_ATTEMPTS,
   ERROR_NAME_LENGTH,
 } from '../constants/messagesConstants.js';
 
@@ -24,8 +26,15 @@ function isNaturalNumber(number) {
   return pattern.test(number);
 }
 
+function isTooBig(number) {
+  return number > MAX_VALUE_OF_ATTEMPTS;
+}
+
 export function validateAttempts(attempts) {
   if (!isNaturalNumber(attempts)) {
     throw new Error(ERROR_ATTEMPTS_NOT_NATURAL);
+
+  if (isTooBig(attempts)) {
+    throw new Error(ERROR_ATTEMPTS);
   }
 }
