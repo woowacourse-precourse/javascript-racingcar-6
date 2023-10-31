@@ -43,12 +43,12 @@ class RacingGame {
     this.#totalCount = count;
 
     // totalCount 만큼 게임 진행
-    this.#gameLogs.push(RacingGameMessage.resultTitle());
+    this.addGameLog(RacingGameMessage.resultTitle());
     while (this.run());
 
     // 우승자 출력
     const winners = this.getWinners();
-    this.#gameLogs.push(RacingGameMessage.winner(winners.join(", ")));
+    this.addGameLog(RacingGameMessage.winner(winners.join(", ")));
 
     // 모아둔 게임 로그 전부 출력
     this.#gameLogs.flush();
@@ -69,10 +69,10 @@ class RacingGame {
 
       // 현재 결과 출력
       const log = racingCar.getLog();
-      this.#gameLogs.push(log);
+      this.addGameLog(log);
     });
     // 한 줄 띄어쓰기
-    this.#gameLogs.push("");
+    this.addGameLog("");
 
     // count 횟수 증가 시키고 진행 가능 여부 리턴
     return ++this.#currentCount < this.#totalCount;
@@ -86,8 +86,9 @@ class RacingGame {
       .map((racingCar) => racingCar.getName());
   }
 
+  // 게임 로그 추가
   addGameLog(msg) {
-    this.#gameLogs;
+    this.#gameLogs.push(msg);
   }
 }
 
