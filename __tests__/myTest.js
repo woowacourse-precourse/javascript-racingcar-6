@@ -20,10 +20,9 @@ const getLogSpy = () => {
   logSpy.mockClear();
   return logSpy;
 };
-
+const MOVING_FORWARD = 4;
+const STOP = 3;
 describe('입력 테스트', () => {
-  const MOVING_FORWARD = 4;
-  const STOP = 3;
   // Car Name
   test('자동차 이름 5자 이하, 구분자는 ","만 - 통과', async () => {
     const randoms = [MOVING_FORWARD, STOP];
@@ -77,4 +76,22 @@ describe('입력 테스트', () => {
       await expect(app.play()).rejects.toThrow('[ERROR]');
     },
   );
+});
+
+describe('출력 테스트', () => {
+  test('우승자가 혼자일 때', async () => {
+    const randoms = [MOVING_FORWARD, STOP];
+    const inputs = ['one,two', '1'];
+    const outputs = ['최종 우승자 : one'];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+    const app = new App();
+
+    await app.play();
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
 });
