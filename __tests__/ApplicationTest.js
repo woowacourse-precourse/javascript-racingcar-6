@@ -46,17 +46,38 @@ describe("자동차 경주 게임", () => {
     });
   });
 
-  test.each([
-    [["pobi,javaji"]],
-    [["pobi,eastjun"]]
-  ])("이름에 대한 예외 처리", async (inputs) => {
+  test.each([[["pobi,javaji"]], [["pobi,eastjun"]]])(
+    "이름에 대한 예외 처리",
+    async (inputs) => {
+      // given
+      mockQuestions(inputs);
+
+      // when
+      const app = new App();
+
+      // then
+      await expect(app.play()).rejects.toThrow("[ERROR]");
+    }
+  );
+
+  test("우승자 여러명인 경우 처리", async () => {
     // given
+    const MOVING_FORWARD = 4;
+    const inputs = ["pobi,woni,kyu", "3"];
+    const outputs = ["pobi, woni, kyu"];
+    const randoms = new Array(9).fill(MOVING_FORWARD);
+    const logSpy = getLogSpy();
+
     mockQuestions(inputs);
+    mockRandoms([...randoms]);
 
     // when
     const app = new App();
+    await app.play();
 
     // then
-    await expect(app.play()).rejects.toThrow("[ERROR]");
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
   });
 });
