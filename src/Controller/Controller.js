@@ -1,5 +1,6 @@
 import User from '../Model/User'
 import Race from '../Model/Race'
+import ScoreBoard from '../Model/ScoreBoard';
 
 export default class Controller {
 	constructor() {
@@ -7,6 +8,7 @@ export default class Controller {
 		this.attempts = '';
 		this.user = new User();
 		this.race = new Race();
+		this.board = new ScoreBoard();
 	}
 
 	async readyGame() {
@@ -19,6 +21,7 @@ export default class Controller {
 
 		while (isPlaying > 0) {
 			this.race.rollDiceAndGoForward(this.carsObj);
+			this.board.showCurrentRace(this.carsObj)
 
 			isPlaying -= 1;
 		}

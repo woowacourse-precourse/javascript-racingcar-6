@@ -28,7 +28,7 @@
 ### 3. 스코어보드 기능 -> (`ScoreBoard`)
 
 - [x] 자동차 이름을 스코어보드에 추가 `getScoreBoard`
-- [ ] 현재 경주 상태를 출력 `showCurrentRace`<br /><br />
+- [x] 현재 경주 상태를 출력 `showCurrentRace`<br /><br />
 
 ### 4. 게임 관련 기능 -> `(Race`)
 

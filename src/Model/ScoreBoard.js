@@ -1,3 +1,5 @@
+import { MissionUtils } from '@woowacourse/mission-utils';
+
 export default class ScoreBoard {
 	getScoreBoard(CARS) {
 		const carsObj = {};
@@ -7,5 +9,12 @@ export default class ScoreBoard {
 		});
 
 		return carsObj;
+	}
+
+	showCurrentRace(carsObj) {
+		Object.keys(carsObj).forEach((name) => {
+			const DISTANCE = '-'.repeat(carsObj[name]);
+			MissionUtils.Console.print(`${name} : ${DISTANCE}`);
+		});
 	}
 }
