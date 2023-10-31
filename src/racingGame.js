@@ -3,6 +3,7 @@ import InputCarName from "./Input/inputCarName.js";
 import InputTryAmount from "./Input/inputTryAmount.js";
 import MakeRandomNum from "./RandomNum/makeRandomNum.js";
 import createCarList from "./Car/createCarList.js";
+import CarRacing from "./Process/carRacing.js";
 import FindWinner from "./Process/findWinner.js";
 
 class RacingGame {
@@ -24,19 +25,10 @@ class RacingGame {
 
   async racing({ gameTryCount, carList }) {
     MissionUtils.Console.print("실행 결과\n");
-    MissionUtils.Console.print(gameTryCount);
     for (let i = 0; i < gameTryCount; i++) {
-      carList.forEach((carElement) => {
-        let randomNumber = MakeRandomNum();
-        if (randomNumber >= 4) {
-          carElement.plusCount();
-        }
-
-        MissionUtils.Console.print(`${carElement.name} : ${"-".repeat(carElement.count)}`);
-      });
+      CarRacing(carList);
       MissionUtils.Console.print("\n");
     }
-
     const winner = await FindWinner(carList);
 
     const result = [...winner].join(", ");
