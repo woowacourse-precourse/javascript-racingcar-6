@@ -9,7 +9,7 @@ class App {
     await this.#game.promptCarNames();
     await this.#game.promptTotalRounds();
     this.#game.startRacing();
-    this.#game.displayWinners();
+    this.#game.printWinnerNames();
   }
 }
 
