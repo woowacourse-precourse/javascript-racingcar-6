@@ -1,5 +1,5 @@
 export const ERROR_MESSAGE = Object.freeze({
-  NAME_LENGTH_LIMIT: '[ERROR] 자동차 이름은 5자 이하만 가능합니다.',
+  NAME_LENGTH_LIMIT: '[ERROR] 자동차 이름은 1~5자 이내로 설정할 수 있습니다.',
   INTEGER_ONLY: '[ERROR] 횟수는 정수만 입력 가능합니다.',
   MORE_THAN_ONE_ROUND: '[ERROR] 1회 부터 플레이 가능합니다.',
 });

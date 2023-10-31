@@ -73,7 +73,7 @@ describe('자동차 경주 게임', () => {
 
       // then
       await expect(app.play()).rejects.toThrow(
-        '[ERROR] 자동차 이름은 5자 이하만 가능합니다',
+        '[ERROR] 자동차 이름은 1~5자 이내로 설정할 수 있습니다.',
       );
     },
   );

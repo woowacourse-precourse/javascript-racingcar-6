@@ -9,7 +9,7 @@ export default class User {
     const cars = user.split(',');
     cars.forEach((car) => {
       const carStr = car.toString();
-      if (carStr.length > User.MIN_CAR_NAME_LENGTH)
+      if (carStr.length > User.MIN_CAR_NAME_LENGTH || !carStr)
         throw new Error(ERROR_MESSAGE.NAME_LENGTH_LIMIT);
     });
     return cars;
