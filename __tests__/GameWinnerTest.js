@@ -33,7 +33,7 @@ describe('우승자 출력 테스트', () => {
 
 	test('단독 우승 테스트', async () => {
 		const inputs = ['crong,eddy', '1'];
-		const outputs = ['eddy : -'];
+		const outputs = ['최종 우승자 : eddy'];
 		const randoms = [1, 8];
 
 		mockQuestions(inputs);
@@ -48,21 +48,16 @@ describe('우승자 출력 테스트', () => {
 
 	test('공동 우승 테스트', async () => {
 		const inputs = ['crong,eddy', '2'];
-		const outputs = [['crong : -'], ['eddy : -']];
-		const randoms = [
-			[3, 4],
-			[8, 1],
-		];
+		const outputs = ['최종 우승자 : crong, eddy'];
+		const randoms = [3, 4, 8, 1];
 
 		mockQuestions(inputs);
 		mockRandoms([...randoms]);
 
 		await app.play();
 
-		for (let i = 0; i < Number(inputs[1]); i += 1) {
-			outputs.forEach((output) => {
-				expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(...output));
-			});
-		}
+		outputs.forEach((output) => {
+			expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(...output));
+		});
 	});
 });

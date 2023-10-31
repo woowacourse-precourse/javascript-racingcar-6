@@ -51,21 +51,15 @@ describe('게임 진행 테스트', () => {
 	test('자동차 전진 테스트 - 2회 이상', async () => {
 		const inputs = ['crong,eddy,loopy', '3'];
 		const outputs = [['crong : --'], ['eddy : ---'], ['loopy : -']];
-		const randoms = [
-			[4, 7, 2],
-			[1, 5, 3],
-			[6, 9, 6],
-		];
+		const randoms = [4, 7, 2, 1, 5, 3, 6, 9, 6];
 
 		mockQuestions(inputs);
 		mockRandoms([...randoms]);
 
 		await app.play();
 
-		for (let i = 0; i < Number(inputs[1]); i += 1) {
-			outputs.forEach((output) => {
-				expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(...output));
-			});
-		}
+		outputs.forEach((output) => {
+			expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(...output));
+		});
 	});
 });
