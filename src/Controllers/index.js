@@ -28,11 +28,11 @@ class Controllers {
   }
 
   async carMoveCheck(cars, tryTime) {
-    for (let i = 0; i < cars.length; i++) {
-      validate.validateCarNameLength(cars, i);
-      validate.validateCarNameInput(cars, i);
-      cars[i] = this.Model.removeWhitespace(cars[i]);
-    }
+    cars.forEach((_, idx) => {
+      validate.validateCarNameLength(cars, idx);
+      validate.validateCarNameInput(cars, idx);
+      cars[idx] = this.Model.removeWhitespace(cars[idx]);
+    });
 
     const initialMovePoint = this.Model.setInitialCarMovePoint(cars);
     const moveResult = this.repeatCarRacing(initialMovePoint, cars, tryTime);
@@ -50,10 +50,9 @@ class Controllers {
         const moved = this.Model.repeatMessage("-", moveResult[el]);
         this.Views.printRacingResult({ el, moved });
       });
-
-      // 각 레이싱 반복 마다 구간 구별을 위한 출력
-      this.Views.printCustomMessage("");
+      this.Views.printCustomMessage(""); // 각 레이싱 반복 마다 구간 구별을 위한 출력
     }
+
     return moveResult;
   }
 
