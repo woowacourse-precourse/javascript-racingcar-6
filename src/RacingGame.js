@@ -1,6 +1,7 @@
 import { Console, MissionUtils } from "@woowacourse/mission-utils";
 import Car from "./Car.js";
 import UserInterface from "./UserInterface.js";
+import MESSAGES from "./Messages.js";
 
 class RacingGame {
   constructor(carNames, raceRounds) {
@@ -17,7 +18,7 @@ class RacingGame {
   }
 
   start() {
-    Console.print("\n실행 결과");
+    Console.print(MESSAGES.RACING_RESULT);
     for (let i = 0; i < this.rounds; i++) {
       this.cars.forEach((car) => {
         const randomNumber = this.generateRandomNumber();

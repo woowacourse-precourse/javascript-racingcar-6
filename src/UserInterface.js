@@ -1,10 +1,9 @@
 import { Console } from "@woowacourse/mission-utils";
+import MESSAGES from "./Messages.js";
 
 class UserInterface {
   static async getCarNames() {
-    const input = await Console.readLineAsync(
-      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
-    );
+    const input = await Console.readLineAsync(MESSAGES.INPUT_CAR_NAMES);
     const carNames = UserInterface.validateCarNames(input);
     return carNames;
   }
@@ -14,23 +13,23 @@ class UserInterface {
 
     const uniqueCarNames = new Set(carNames);
     if (uniqueCarNames.size !== carNames.length) {
-      throw new Error("[ERROR] 자동차 이름이 중복됩니다.");
+      throw new Error(MESSAGES.ERROR_DUPLICATE_CAR_NAME);
     }
 
     if (carNames.some((name) => name.length === 0)) {
-      throw new Error("[ERROR] 자동차 이름은 공백일 수 없습니다.");
+      throw new Error(MESSAGES.ERROR_BLANK_CAR_NAME);
     }
 
     for (const carName of carNames) {
       if (carName.length > 5) {
-        throw new Error("[ERROR] 자동차 이름은 5자 이하만 가능합니다.");
+        throw new Error(MESSAGES.ERROR_CAR_NAME_LENGTH);
       }
     }
     return carNames;
   }
 
   static async getRaceRounds() {
-    const input = await Console.readLineAsync("시도할 회수는 몇 회인가요?\n");
+    const input = await Console.readLineAsync(MESSAGES.INPUT_RACE_ROUNDS);
     const rounds = UserInterface.validateRounds(input);
     return rounds;
   }
@@ -42,7 +41,7 @@ class UserInterface {
       parsedRounds <= 0 ||
       parsedRounds.toString() !== rounds
     ) {
-      throw new Error("[ERROR] 시도 횟수는 양의 정수만 가능합니다.");
+      throw new Error(MESSAGES.ERROR_INVALID_ROUNDS);
     }
     return parsedRounds;
   }
@@ -57,12 +56,12 @@ class UserInterface {
 
   static printWinners(winners) {
     if (winners.length === 0) {
-      Console.print("우승자가 없습니다.");
+      Console.print(MESSAGES.NO_WINNERS);
       return;
     }
 
     const winnerText = winners.join(", ");
-    Console.print(`최종 우승자 : ${winnerText}`);
+    Console.print(MESSAGES.FINAL_WINNERS + winnerText);
   }
 }
 
