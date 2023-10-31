@@ -1,5 +1,5 @@
 import Car from "../../src/Car";
-import { getLogSpy } from "../test-utils";
+import { getLogSpy } from "../../test-utils";
 
 describe("우승자 출력 테스트", () => {
   test("단독 우승", () => {

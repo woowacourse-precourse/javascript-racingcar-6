@@ -1,6 +1,6 @@
 import { InputError } from "../../src/errors";
 import inputCarNames, { ERROR_MESSAGES } from "../../src/helpers/inputCarNames";
-import { mockQuestions } from "../test-utils";
+import { mockQuestions } from "../../test-utils";
 
 describe("자동차 이름 입력 예외 테스트", () => {
   test("빈 값", async () => {

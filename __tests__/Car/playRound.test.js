@@ -1,5 +1,5 @@
 import Car from "../../src/Car";
-import { getLogSpy, mockRandoms } from "../test-utils";
+import { getLogSpy, mockRandoms } from "../../test-utils";
 
 describe("자동차 경주 한 라운드 진행 테스트", () => {
   test("전진(0~9중 4이상)", async () => {
