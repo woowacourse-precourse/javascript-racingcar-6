@@ -8,7 +8,7 @@ import {
 } from "./utils/validation.js";
 
 class User {
-  #carsNames = [];
+  #carNames = [];
   #attempts;
 
   async inputCarNamesAndAttempts() {
@@ -22,7 +22,7 @@ class User {
       const carNames = input.split(",");
       this.validateCars(carNames);
 
-      this.#carsNames = carNames;
+      this.#carNames = carNames;
     } catch (error) {
       throw error;
     }
@@ -58,7 +58,7 @@ class User {
   }
 
   getCarNames() {
-    return this.#carsNames;
+    return this.#carNames;
   }
 
   getAttempts() {
