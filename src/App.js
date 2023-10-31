@@ -9,7 +9,7 @@ class App {
       const carNames = carNameInput.split(',');
      if(!this.checkCarNameValidation(carNames))
      {
-      throw new Error("[ERROR] 이름은 5자 이하만 가능합니다.");
+      throw new Error("[ERROR] 이름은 5자 이하, 맨끝에 쉼표(,)가 올 수 없습니다.");
      }
      this.initializeCarList(carNames)
   }
@@ -23,7 +23,7 @@ class App {
   }
   checkCarNameValidation(carNames)
   {
-    return carNames.every( (carName)=> carName.length < 6)
+    return carNames.every( (carName)=> carName.length < 6 && carName !=='')
   }
   async racingTryInput(){
     await MissionUtils.Console.print("시도할 횟수는 몇 회인가요?");
@@ -36,26 +36,37 @@ class App {
   checkCarTryValidation(carTryInput){
     return isNaN(parseInt(carTryInput));
   }
-  async doRace(){
+  async doRaceStart(){
     await MissionUtils.Console.print("실행결과");
     for(let i=0;i<this.#TRY_COUNT;i++)
     {
-
+      this.doRace();
+      this.getCarState();
+      await MissionUtils.Console.print('');
     }
   }
-  raceStart(){
-    this.#RACING_CAR_LIST.forEach(element => {
-
-    });
+  doRace()
+  {
+    this.#RACING_CAR_LIST.forEach( (Car)=>{
+      this.moveCar(Car)
+    })
   }
-  moveCar(){
-
+  moveCar(Car){
+    if(MissionUtils.Random.pickNumberInRange(0, 9) >=4)
+    {
+      Car.state += '-';
+    }
+  }
+  getCarState(){
+    this.#RACING_CAR_LIST.forEach( async(Car)=>{
+      await MissionUtils.Console.print(`${Car.carName} : ${Car.state}`);      
+    } )
   }
 
   async play() {
     await this.racingCarNameInput();
     await this.racingTryInput();
-    // this.raceStart();
+    this.doRaceStart();
   }
 }
 
