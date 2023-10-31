@@ -23,8 +23,7 @@ class RacingGameController {
    */
   registerRacingCar(carList) {
     /** @type {RacingCar[]} */
-    const racingCars = this.createNewCars(carList);
-    this.racingGame.setRacingCar = racingCars;
+    this.racingGame.setRacingCar = this.createNewCars(carList);
 
     this.inputMoveCount();
   }
