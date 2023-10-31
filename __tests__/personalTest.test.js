@@ -37,4 +37,28 @@ describe("Controller 테스트", () => {
             expect(() => Controller.setNumber("a")).toThrow(MESSAGE.ERROR);
         });
     });
+
+    describe("getRaceResultText 테스트", () => {
+        test("텍스트로 경기 진행 상황 반환", () => {
+            const result = Controller.getRaceResultText({
+                kim: 5,
+                lee: 5,
+                park: 3,
+            });
+
+            expect(result).toBe("kim : -----\nlee : -----\npark : ---\n");
+        });
+    });
+
+    describe("getWinnerText 테스트", () => {
+        test("텍스트로 우승자(들) 반환", () => {
+            const result = Controller.getWinnerText({
+                kim: 5,
+                lee: 5,
+                park: 3,
+            });
+
+            expect(result).toBe("최종 우승자 : kim, lee");
+        });
+    });
 });
