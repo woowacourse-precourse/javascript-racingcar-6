@@ -3,10 +3,10 @@ import { Console } from '@woowacourse/mission-utils';
 
 export class InputService {
   async readCarName() {
-    return Console.readLineAsync(QUERY_MESSAGE.carName);
+    return await Console.readLineAsync(QUERY_MESSAGE.carName);
   }
 
   async readCarTries() {
-    return Console.readLineAsync(QUERY_MESSAGE.try);
+    return await Console.readLineAsync(QUERY_MESSAGE.try);
   }
 }
