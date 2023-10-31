@@ -8,15 +8,18 @@ class App {
   }
 
   getCarNamesArray(carNames) {
+    // test code 완료
     return carNames.split(",");
   }
 
   checkCarNames(element) {
+    // test code 완료
     if (element.length > CONSTANT.NAME_LENGTH_LIMIT)
       throw new Error(ERROR_MESSAGE.LENGTH);
   }
 
   checkRepeatNumber(repeatNumber) {
+    // test code 완료
     if (repeatNumber.includes(" ")) throw new Error(ERROR_MESSAGE.GAP);
     if (isNaN(repeatNumber)) throw new Error(ERROR_MESSAGE.NUMBER);
   }
@@ -45,6 +48,7 @@ class App {
   }
 
   printResult(raceResult) {
+    // test code 완료
     raceResult.forEach((e) => {
       Console.print(GAME_MESSAGE.RESULT(e));
     });
@@ -61,6 +65,7 @@ class App {
   }
 
   getWinnerIndex(element, index, maxLength, winnerIndex) {
+    // test code 완료
     if (maxLength === element.result.length) {
       winnerIndex.push(index);
     }
@@ -82,6 +87,7 @@ class App {
   }
 
   pushWinnerName(element, index, winnerIndexArray, winnerName) {
+    // test code 완료
     if (winnerIndexArray.includes(index)) {
       winnerName.push(element.name);
     }
@@ -89,6 +95,7 @@ class App {
   }
 
   makeWinnerArray(raceResult, winnerIndexArray) {
+    // test code 완료
     let winnerName = [];
     raceResult.forEach((element, index) => {
       winnerName = this.pushWinnerName(
@@ -111,6 +118,7 @@ class App {
   }
 
   printWinner(winnerName) {
+    // test code 완료
     const winnerNameString = winnerName.join(", ");
     Console.print(GAME_MESSAGE.WINNER(winnerNameString));
   }
@@ -121,18 +129,22 @@ class App {
     carNamesArray.forEach((element) => {
       this.checkCarNames(element);
     });
+
     const repeatNumber = await Console.readLineAsync(
       GAME_MESSAGE.INPUT_TRYNUMBER
     );
     this.checkRepeatNumber(repeatNumber);
+
     carNamesArray.forEach((element) => {
       this.raceResult.push(this.makeObject(element));
     });
+
     while (this.countRepeat < repeatNumber) {
       this.raceResult = this.makeRandomNumber(this.raceResult);
       this.printResult(this.raceResult);
       this.countRepeat++;
     }
+
     const winnerName = this.checkWinner(this.raceResult);
     this.printWinner(winnerName);
   }
