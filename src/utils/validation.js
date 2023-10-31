@@ -1,14 +1,16 @@
+import MSG from './message.js';
+
 const Validation = {
   strSize(names) {
     names.forEach((name) => {
       if (name.length > 5) {
-        throw Error('[ERROR] 이름은 5글자 이하로 입력해주세요.');
+        throw new Error(MSG.ERROR_NAME_UP_TO_5_LETTERS);
       }
     });
   },
   isItNumber(num) {
     if (Number.isNaN(Number(num))) {
-      throw Error('[ERROR] 횟수는 숫자로 입력해주세요.');
+      throw new Error(MSG.ERROR_TYPE_IS_ONLY_NUMBER);
     }
   },
 };

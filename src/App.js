@@ -1,76 +1,65 @@
 import { Random, Console } from '@woowacourse/mission-utils';
-import Validation from './validation.js';
+import Cars from './model/Cars.js';
+import View from './view/View.js';
 
 class App {
   constructor() {
-    this.carList = [];
-    this.times = 0;
+    this.cars = new Cars();
+    this.view = new View();
+    this.winnerList = [];
   }
 
-  async userInputCarAndTimes() {
-    const inputCar = await Console.readLineAsync(
-      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
-    );
-    const inputCarList = inputCar.split(',');
-    Validation.strSize(inputCarList);
-    const inputTimes = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
-    Validation.isItNumber(inputTimes);
-    inputCarList.forEach((element) => {
-      this.carList.push({
-        name: element,
-        distance: 0,
-        going: '-',
-      });
-    });
-    this.times = inputTimes;
+  async receiveUserInputAndSave() {
+    const carList = await this.view.userInputCar();
+    this.cars.setList(carList);
+    const times = await this.view.userInputTimes();
+    this.cars.setTimes(times);
   }
 
-  updateObjectDistance() {
-    this.carList.forEach((element) => {
+  createObjectDistance() {
+    this.cars.list.forEach((car) => {
       const RandomNum = Random.pickNumberInRange(0, 9);
       if (RandomNum >= 4) {
-        element.distance += RandomNum;
-        element.going += '-';
+        car.distance += '-';
       }
     });
   }
 
   updateAsTimes() {
-    for (let i = 0; i < this.times; i += 1) {
-      this.updateObjectDistance();
-      this.printCarListAsTimes();
+    const list = this.cars.getList();
+    for (let i = 0; i < this.cars.times; i += 1) {
+      this.createObjectDistance();
+      this.view.printCarListAsTimes(list);
     }
   }
 
-  printCarListAsTimes() {
-    this.carList.forEach((element) => {
-      Console.print(`${element.name} : ${element.going}`);
+  findMaxDistance() {
+    let max = 0;
+    this.cars.list.forEach((car) => {
+      if (max < car.distance.length) {
+        max = car.distance.length;
+      }
     });
-    Console.print('');
+    return max;
   }
 
-  printWinner() {
-    const winner = [];
-    let maxDistance = 0;
-    this.carList.forEach((element) => {
-      if (maxDistance < element.distance) {
-        maxDistance = element.distance;
+  whoIsWinner() {
+    const max = this.findMaxDistance();
+    this.cars.list.forEach((car) => {
+      if (car.distance.length === max) {
+        this.winnerList.push(car.name);
       }
     });
-    this.carList.forEach((element) => {
-      if (element.distance === maxDistance) {
-        winner.push(element.name);
-      }
-    });
-    Console.print(`최종 우승자 : ${winner.join(', ')}`);
+    return this.winnerList;
   }
 
   async play() {
-    await this.userInputCarAndTimes();
+    await this.receiveUserInputAndSave();
     Console.print('');
     Console.print('실행 결과');
     this.updateAsTimes();
-    this.printWinner();
+    this.whoIsWinner();
+    this.view.printWinner(this.winnerList);
   }
 }
 
