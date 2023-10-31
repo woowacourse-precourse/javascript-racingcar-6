@@ -7,6 +7,10 @@ import { vaildTryCount } from "./validation/tryValidation.js";
 
 
 class RacingGame {
+  
+}
+
+class App {
   constructor() {
     this.cars = {};
   }
@@ -76,13 +80,9 @@ class RacingGame {
 
     print(`최종 우승자 : ${winner.join(", ")}`);
   }
-}
 
-class App {
   async play() {
-    const racing = new RacingGame();
-
-    await racing.start();
+    await this.start();
   }
 }
 
