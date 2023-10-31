@@ -8,10 +8,18 @@ class CarRacing {
 
   #moveCount;
 
+  static carNameTrim(input) {
+    const carList = input.split(',');
+    const splitInput = carList.map(car => car.trim());
+    return splitInput;
+  }
+
   async setCarList() {
     const input = await inputView.CarList();
-    validation.carNameValidCheck(input);
-    this.#CarData = new CarData(input.split(','));
+    const splitInput = CarRacing.carNameTrim(input);
+
+    validation.carNameValidCheck(splitInput);
+    this.#CarData = new CarData(splitInput);
   }
 
   async setMoveCount() {
@@ -24,7 +32,7 @@ class CarRacing {
     outputView.raceResultTitle();
     for (let i = 0; i < this.#moveCount; i += 1) {
       const result = this.#CarData.moveCar();
-      result.forEach((car) => outputView.raceResult(car.name, car.move));
+      result.forEach(car => outputView.raceResult(car.name, car.move));
       outputView.raceResultNewLine();
     }
   }
