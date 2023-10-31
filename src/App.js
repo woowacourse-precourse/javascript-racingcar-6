@@ -83,6 +83,14 @@ class App {
     Console.print(`${this.carArr[carIndex]} : ${this.racingArray[carIndex]}`);
   }
 
+  async oneCycleRacing() {
+    for (let i = 0; i < this.carArr.length; i++) {
+      await this.racingSituationArray(i);
+      await this.showCarAndRacingLength(i);
+    }
+    Console.print(" ");
+  }
+
 }
 
 export default App;
