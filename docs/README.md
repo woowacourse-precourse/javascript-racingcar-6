@@ -190,13 +190,14 @@
   - [x] 입력받은 값이 문자열이 아닐 경우 에러를 발생시킨다.
   - [x] 입력받은 값이 5자 이상일 경우 에러를 발생시킨다.
 
-- [ ] Track
+- [x] Track
 
-  - [ ] `currentLap`의 초기값은 `1`이다.
-  - [ ] 인자로 입력받은 랩을 `finalLap`에 가진다.
-  - [ ] 인자로 입력받은 유저 목록을 `users`에 가진다.
-  - [ ] `processLap()`을 호출시 `currentLap`는 `1` 증가한다.
-  - [ ] `isEnd()`는 `currentLap`가 `finalLap`과 같은지 반환한다.
+  - [x] `currentLap`의 초기값은 `1`이다.
+  - [x] 인자로 입력받은 랩을 `finalLap`에 가진다.
+  - [x] 인자로 입력받은 유저 목록을 `users`에 가진다.
+  - [x] `processLap()`을 호출시 `currentLap`는 `1` 증가한다.
+  - [x] `processLap()`을 호출시 `users`의 `user`들은 `accelerate`를 호출한다.
+  - [x] `isEnd()`는 `currentLap`가 `finalLap`과 같은지 반환한다.
 
 - [ ] Track 예외 처리
 
