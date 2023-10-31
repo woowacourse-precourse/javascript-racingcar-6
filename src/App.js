@@ -9,6 +9,25 @@ function findError(){
   }
 }
 
+function getRandom(carNum,moveArray){
+  for(let i = 0; i<carNum;i++){
+    const number = MissionUtils.Random.pickNumberInRange(0,9);
+    if(number>3){
+      moveArray[i] += 1;
+    }
+  }
+}
+
+function printResult(nameArray, moveArray){
+  for(let i =0; i<nameArray.length; i++){
+    process.stdout.write(nameArray[i] + " : ");
+    for(let j =0;j<moveArray[i];j++){
+      process.stdout.write("-");
+    }
+    process.stdout.write("\n");
+  }
+}
+
 class App {
   async play() {
     const userInput = await MissionUtils.Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
@@ -27,6 +46,12 @@ class App {
     while(move.length < carName.length){
       move.push(0);
     } // 배열 초기화
+
+    for(let i=0; i<userNum;i++){
+      getRandom(carName.length, move);
+      printResult(carName,move);
+      process.stdout.write("\n");
+    }
   }
 }
 
