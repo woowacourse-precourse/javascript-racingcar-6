@@ -1,16 +1,14 @@
 import { Console } from '@woowacourse/mission-utils';
-import {
-  CarNameLengthValidator,
-  CarNameDuplicateValidator,
-} from './validator.js';
+import { CarNameValidator } from './validator.js';
+
 class App {
   async play() {
     try {
       const carNamesString = await this.getUserInputCarNames();
 
       const isCarNameLengthValid =
-        CarNameLengthValidator.isValid(carNamesString);
-      const isCarNameUnique = CarNameDuplicateValidator.isValid(carNamesString);
+        CarNameValidator.isValidLength(carNamesString);
+      const isCarNameUnique = CarNameValidator.isUnique(carNamesString);
       if (!isCarNameLengthValid) {
         throw new Error(
           '[ERROR] 자동차 이름은 1자 이상 5자 이하만 가능합니다.'
