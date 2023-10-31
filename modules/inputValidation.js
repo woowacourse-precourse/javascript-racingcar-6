@@ -1,9 +1,13 @@
+import { MESSAGE, RANGE_NUMBER } from './constant';
+
 const checkCarNamesHaveBlank = (carNames) => {
   return carNames.includes('') || carNames.includes(' ') ? true : false;
 };
 
 const checkCarNameIsOverFive = (carNames) => {
-  const inputHaveOverFive = carNames.find((carName) => carName.length > 5);
+  const inputHaveOverFive = carNames.find(
+    (carName) => carName.length > RANGE_NUMBER.carName
+  );
   return inputHaveOverFive ? true : false;
 };
 
@@ -33,7 +37,7 @@ const checkCarNamesAreValid = (userInput) => {
     inputWithBlank ||
     inputsAreDuplicated
   ) {
-    throw new Error('[ERROR] 입력이 올바른 형식이 아닙니다.');
+    throw new Error(MESSAGE.error);
   }
   return input;
 };
@@ -54,7 +58,7 @@ const checkTryNumberIsValid = (userInput) => {
   const inputIsCharacter = checkTryNumberIsCharacter(userInput);
 
   if (inputHaveBlank || inputIsCharacter) {
-    throw new Error('[ERROR] 입력이 올바른 형식이 아닙니다.');
+    throw new Error(MESSAGE.error);
   }
 };
 

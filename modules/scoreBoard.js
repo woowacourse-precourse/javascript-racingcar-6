@@ -1,5 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
 import { checkCanMove } from './utils';
+import { MESSAGE } from './constant';
 
 const createScoreBoard = (userInput) => {
   const scoreBoard = [];
@@ -14,7 +15,7 @@ const calcurateScore = (scoreBoard) => {
   const calcuratedScoreBoard = [...scoreBoard];
   calcuratedScoreBoard.forEach((car) => {
     if (checkCanMove()) {
-      car.score += '-';
+      car.score += MESSAGE.score;
     }
   });
   return calcuratedScoreBoard;
