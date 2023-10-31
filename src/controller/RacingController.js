@@ -36,7 +36,7 @@ class RacingController {
     this.#racingCarValidator.isValidNameArray(racingCarNameArray);
 
     racingCarNameArray.forEach(element => {
-      this.#racingCarArray.push(new RacingCar(element))
+      this.#racingCarArray.push(new RacingCar(element));
     });
   }
 
@@ -48,12 +48,14 @@ class RacingController {
 
   #advanceRacingCars() {
     this.#racingCarArray.forEach((car) => {
+      // console.log(`${car.getName()} 전진중`);
       car.advance();
     })
   }
 
   #getDisplacements() {
     this.#racingCarArray.forEach((car) => {
+      // console.log(`${car.getName()} 출력중`);
       this.#outputView.printRacingCarState(car);
     })
     this.#outputView.printNewLine();

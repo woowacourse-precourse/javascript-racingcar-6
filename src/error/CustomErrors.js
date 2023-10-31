@@ -1,15 +1,15 @@
 import { ERROR_MESSAGE } from "../constants/errorMessages.js";
 
-const errorMessage = (message) => `[ERROR] ${message}`;
+const errorMessage = (message, input) => `[ERROR] ${message} 입력값 : ${input}`;
 
 export class RacingCarNameError extends Error {
-  constructor() {
-    super(errorMessage(ERROR_MESSAGE.namesFormat));
+  constructor(input) {
+    super(errorMessage(ERROR_MESSAGE.namesFormat, input));
   }
 }
 
 export class RetryCountError extends Error {
-  constructor() {
-    super(errorMessage(ERROR_MESSAGE.retryCountFormat));
+  constructor(input) {
+    super(errorMessage(ERROR_MESSAGE.retryCountFormat, input));
   }
 }

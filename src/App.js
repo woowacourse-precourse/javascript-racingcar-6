@@ -4,11 +4,11 @@ class App {
   #racingController;
 
   constructor() {
-    this.#racingController = new RacingController()
+    this.#racingController = new RacingController();
   }
 
   async play() {
-    this.#racingController.run();
+    await this.#racingController.run();
   }
 }
 

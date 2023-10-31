@@ -11,14 +11,14 @@ class RacingCarValidator {
 
   isValidNameArray(nameArray) {
     if (!nameArray.every(this.#isValidName)) {
-      throw new RacingCarNameError();
+      throw new RacingCarNameError(nameArray);
     }
   }
 
   isValidCount(str) {
 
     if (isNaN(str) || str === '0') {
-      throw new RetryCountError()
+      throw new RetryCountError(str);
     }
   }
 }
