@@ -18,9 +18,9 @@
 
 - **목적**: `Car` 클래스는 자동차의 상태와 로직을 관리합니다.
 - **테스트 설명**:
-  - `constructor` 메서드: 객체가 생성될 때 이름과 위치가 올바르게 설정되는지 검증합니다.
-  - `getCurrentPositionRepresentation` 메서드: 현재 위치가 문자열로 올바르게 반환되는지 검증합니다.
-  - `move` 메서드: `shouldMove` 전략이 `true`일 때 위치가 증가하고, `false`일 때는 그대로인지 검증합니다.
+- `constructor` 메서드: `Car` 객체가 올바르게 초기화되는지 검증합니다.
+- `getCarInformation` 메서드: 현재 자동차의 이름과 위치 정보를 올바르게 반환하는지 검증합니다.
+- `move` 메서드: `shouldMove` 전략에 따라 자동차의 위치가 올바르게 변경되는지 검증합니다.
 
 #### Race 클래스
 
