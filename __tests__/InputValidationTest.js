@@ -1,6 +1,6 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import { ERROR_MESSAGE } from '../src/Constants.js';
-import GameUi from '../src/view/GameUi.js';
+import InputView from '../src/view/InputView.js';
 import App from '../src/App.js';
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -11,7 +11,7 @@ const mockQuestions = (inputs) => {
   });
 };
 
-describe('차이름 입력 테스트', () => {
+describe('차이름 입력값 테스트', () => {
   test('아무것도 입력하지 않았을 때', async () => {
     // given
     mockQuestions(['']);
@@ -87,8 +87,6 @@ describe('차이름 입력 테스트', () => {
 });
 
 describe('시도할 횟수 입력값 테스트', () => {
-  let gameManager;
-
   beforeEach(() => {
     jest.resetAllMocks();
   });
@@ -99,10 +97,10 @@ describe('시도할 횟수 입력값 테스트', () => {
       mockQuestions([inputs]);
 
       // when
-      const gameUi = new GameUi();
+      const inputView = new InputView();
 
       // then
-      await expect(gameUi.askAttemptCount()).rejects.toThrow(
+      await expect(inputView.askAttemptCount()).rejects.toThrow(
         ERROR_MESSAGE.NO_NUMBER
       );
     }
@@ -114,10 +112,10 @@ describe('시도할 횟수 입력값 테스트', () => {
       mockQuestions([inputs]);
 
       // when
-      const gameUi = new GameUi();
+      const inputView = new InputView();
 
       // then
-      await expect(gameUi.askAttemptCount()).rejects.toThrow(
+      await expect(inputView.askAttemptCount()).rejects.toThrow(
         ERROR_MESSAGE.NOT_POSITIVE_INTEGER
       );
     }
