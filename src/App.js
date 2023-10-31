@@ -1,6 +1,6 @@
 import { Console, Random } from '@woowacourse/mission-utils';
 import InputView from './view/inputView';
-// import { InputView } from './view/InputView.js';
+
 function checkValidation(input) {
   input.forEach((element) => {
     if (element.length < 1 || element.length > 5) {
@@ -26,6 +26,11 @@ class App {
   async getCarName() {
     const playerInput = await InputView.readCarName();
     checkValidation(playerInput.split(','));
+    await this.getAttemptNumber();
+  }
+
+  async getAttemptNumber() {
+    const playerInput = await InputView.readAttemptNumber();
   }
 }
 
