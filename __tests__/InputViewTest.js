@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import InputView from '../src/views/inputView';
+import InputView from '../src/views/InputView';
 
 Console.readLineAsync = jest.fn();
 

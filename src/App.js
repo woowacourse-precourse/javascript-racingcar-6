@@ -2,8 +2,8 @@ import RacingGameController from './controllers/RacingGameController.js';
 import RacingCarFactory from './models/RacingCarFactory.js';
 import RacingGame from './models/RacingGame.js';
 import InputValidator from './utils/InputValidator.js';
-import InputView from './views/inputView.js';
-import OutputView from './views/outputView.js';
+import InputView from './views/InputView.js';
+import OutputView from './views/OutputView.js';
 
 class App {
   async play() {
@@ -16,7 +16,7 @@ class App {
       inputView,
       outputView,
       racingGame,
-      racingCarFactory,
+      racingCarFactory
     );
     await racingGameController.runRacingGame();
   }
