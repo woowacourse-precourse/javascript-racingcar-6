@@ -28,9 +28,7 @@ class RacingGame {
   /** 레이싱 승자 찾기 함수 */
   winner() {
     /** @type {number} 가장 멀리간 position 값 */
-    const maxPosition = this.racingCar.reduce((acc, cur) => {
-      return Math.max(acc, cur.carPosition);
-    }, 0);
+    const maxPosition = this.findMaxPosition();
 
     /** @type {string} 레이싱 승자 (,로 연결한 문자열) */
     const win = this.racingCar
@@ -39,6 +37,13 @@ class RacingGame {
       .join(', ');
 
     return win;
+  }
+
+  /** 가장 멀리간 position값 찾기 함수 */
+  findMaxPosition() {
+    return this.racingCar.reduce((acc, cur) => {
+      return Math.max(acc, cur.carPosition);
+    }, 0);
   }
 }
 
