@@ -1,5 +1,6 @@
 import CalculateAdvance from '../model/calculate_advance.js';
 import GameWinner from '../model/game_winner.js';
+import PrintGameResult from '../view/print_game_result.js';
 import CarNameError from '../../utils/error/car_name_error.js';
 import RacingCntError from '../../utils/error/racing_cnt_error.js';
 import InputQuestion from '../../ui/input_question.js';
@@ -45,6 +46,11 @@ class GameManage {
   gameResult() {
     const RESULT = new CalculateAdvance(this.RACING_CAR, this.RACING_CNT).gameResult();
     const WINNER = new GameWinner(RESULT).findWinner();
+    this.printGameResult(RESULT, WINNER);
+  }
+
+  printGameResult(RESULT, WINNER) {
+    new PrintGameResult(this.RACING_CNT, RESULT, WINNER).printGameResult();
   }
 }
 
