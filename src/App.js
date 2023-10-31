@@ -62,11 +62,29 @@ class App {
       await MissionUtils.Console.print(`${Car.carName} : ${Car.state}`);      
     } )
   }
-
+  getMax()
+  {
+    return this.#RACING_CAR_LIST.reduce( (max,Car)=>{
+      return Car.state.length > max ? Car.state.length : max;
+    },this.#RACING_CAR_LIST[0].state.length)
+  }
+  getWinnder(){
+    const max = this.getMax();
+    return this.#RACING_CAR_LIST.reduce( (Winnder,Car)=>{
+      return max === Car.state.length ? Winnder.concat(Car.carName) : Winnder
+    },[])
+  }
+  async printWinnder()
+  {
+    const Winner = this.getWinnder();
+    const result = Winner.join(', ');
+    await MissionUtils.Console.print(`최종 우승자 : ${result}`);   
+  }
   async play() {
     await this.racingCarNameInput();
     await this.racingTryInput();
-    this.doRaceStart();
+    await this.doRaceStart();
+    await this.printWinnder();
   }
 }
 
