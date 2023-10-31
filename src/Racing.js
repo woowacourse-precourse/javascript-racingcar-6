@@ -1,9 +1,13 @@
-import { Console } from '@woowacourse/mission-utils';
+import { Console, Random } from '@woowacourse/mission-utils';
 import { doValidateCarName, doValidateMoveCount } from './Validate.js';
 class Racing {
   async start() {
+    this.result = {};
     this.cars = await this.getCarsName();
     this.validateCarName();
+    this.cars.forEach((car) => {
+      this.result[car] = '';
+    });
     this.moveCount = await this.getMoveCount();
     this.validateMoveCount();
     this.race();
@@ -32,6 +36,27 @@ class Racing {
   isCarMove() {
     const number = Random.pickNumberInRange(0, 9);
     return number >= 4;
+  }
+
+  race() {
+    for (let i = 0; i < this.moveCount; i++) {
+      this.getResult();
+    }
+  }
+
+  getResult() {
+    this.cars.forEach((car) => {
+      if (this.isCarMove()) this.result[car] += '-';
+    });
+    this.printResult();
+  }
+
+  printResult() {
+    let result = [];
+    this.cars.forEach((car) => {
+      result.push(`${car} : ${this.result[car]}`);
+    });
+    Console.print(`${result.join('\n')}\n`);
   }
 }
 export default Racing;
