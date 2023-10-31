@@ -25,16 +25,8 @@ class Car {
     return this.#name;
   }
 
-  set name(carName) {
-    this.#name = carName;
-  }
-
   get position() {
     return this.#position;
-  }
-
-  set position(moveNumber) {
-    this.#position = moveNumber;
   }
 }
 
