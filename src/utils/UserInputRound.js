@@ -1,5 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
-import { QUESTION_GOAL_COUNT, ERROR_WRONG_ROUND } from "../const/Messages";
+import { QUESTION_ROUND_NUMBER, ERROR_WRONG_ROUND } from "../const/Messages";
 
 class UserInputRound {
   constructor() {
@@ -7,7 +7,7 @@ class UserInputRound {
   }
 
   async inputRounds() {
-    Console.print(QUESTION_GOAL_COUNT);
+    Console.print(QUESTION_ROUND_NUMBER);
     const userInput = await Console.readLineAsync();
     const rounds = parseInt(userInput, 10);
 
