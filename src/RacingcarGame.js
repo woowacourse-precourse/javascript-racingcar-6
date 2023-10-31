@@ -15,8 +15,6 @@ class RacingcarGame {
 
       Console.print(GAME_MESSAGE.RESULT);
       let countForward = {};
-      let winner = [];
-      let winnerValue = 0;
 
       for (let i = 0; i < tryCount; i++) {
         carsArray.map((car) => {
@@ -26,19 +24,27 @@ class RacingcarGame {
         Console.print("\n");
       }
 
-      for (const car in countForward) {
-        if (countForward[car].length > winnerValue) {
-          winner = [car];
-          winnerValue = countForward[car].length;
-        } else if (countForward[car].length === winnerValue) {
-          winner.push(car);
-        }
-      }
-
-      Console.print(`${GAME_MESSAGE.WINNER}${winner.map((key) => key)}`);
+      this.printWinner(countForward);
     } catch (error) {
       throw error;
     }
+  }
+
+  printWinner(countForward) {
+    let winner = [];
+    let winnerValue = 0;
+
+    this.countForward = countForward;
+    for (const car in this.countForward) {
+      if (this.countForward[car].length > winnerValue) {
+        winner = [car];
+        winnerValue = this.countForward[car].length;
+      } else if (this.countForward[car].length === winnerValue) {
+        winner.push(car);
+      }
+    }
+
+    Console.print(`${GAME_MESSAGE.WINNER}${winner.map((key) => key)}`);
   }
 }
 
