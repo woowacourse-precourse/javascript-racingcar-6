@@ -45,4 +45,26 @@ describe("경주 게임 테스트", () => {
       expect(game.resultArray).toHaveLength(attemptCount);
     }
   );
+
+  test.each([
+    [
+      "bus 우승",
+      [
+        { name: "car", position: 3 },
+        { name: "bus", position: 5 },
+      ],
+      ["bus"],
+    ],
+    [
+      "car, bus 공동 우승",
+      [
+        { name: "car", position: 5 },
+        { name: "bus", position: 5 },
+      ],
+      ["car", "bus"],
+    ],
+  ])("우승자 이름 배열 반환 - %s", (testName, carArray, expectedArray) => {
+    const game = new RacingGame(carArray);
+    expect(game.getWinnerNameArray()).toEqual(expectedArray);
+  });
 });
