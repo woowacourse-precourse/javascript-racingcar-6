@@ -30,6 +30,4 @@ class App {
   }
 }
 
-new App().play();
-
 export default App;
