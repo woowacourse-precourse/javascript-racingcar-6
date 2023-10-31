@@ -54,7 +54,7 @@ class App {
     playersMove.fill(0);
     for (let i = 0; i < Number(games); i++) {
       playersMove = this.moveOrWait(players, playersMove);
-      console.log(playersMove);
+      this.printRound(players, playersMove);
     }
   }
   moveOrWait(players, playersMove) {
@@ -68,6 +68,20 @@ class App {
   createRandomNumber() {
     const randomNumber = Random.pickNumberInRange(0, 9);
     return randomNumber;
+  }
+  printRound(players, playersMove) {
+    console.log('실행 경과');
+    for (let i = 0; i < players.length; i++) {
+      const moveBar = this.createBar(playersMove[i]);
+      console.log(players[i] + ' : ' + moveBar);
+    }
+  }
+  createBar(playersMove) {
+    let bar = '';
+    for (let i = 0; i < playersMove; i++) {
+      bar += '-';
+    }
+    return bar;
   }
 }
 const app = new App();
