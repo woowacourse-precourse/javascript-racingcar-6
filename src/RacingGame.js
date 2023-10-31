@@ -28,6 +28,15 @@ class RacingGame {
   get resultArray() {
     return this.#resultArray;
   }
+
+  getWinnerNameArray() {
+    const maxPosition = Math.max(
+      ...this.#carArray.map((entry) => entry.position)
+    );
+    return this.#carArray
+      .filter((entry) => entry.position === maxPosition)
+      .map((entry) => entry.name);
+  }
 }
 
 export default RacingGame;
