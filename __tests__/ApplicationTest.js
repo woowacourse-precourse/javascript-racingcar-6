@@ -46,6 +46,31 @@ describe('자동차 경주 게임', () => {
     });
   });
 
+  test('전진-정지, 최종 우승자', async () => {
+    // given
+    const inputs = ['jina,lilly,samel', '3'];
+    const outputs = [
+      'jina : --',
+      'lilly : -',
+      'samel : -',
+      '최종 우승자 : jina',
+    ];
+    const randoms = [6, 5, 2, 4, 1, 9, 3, 3, 0];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    // when
+    const app = new App();
+    await app.play();
+
+    // then
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
+
   test.each([[['pobi,javaji']], [['pobi,eastjun']]])(
     '이름의 길이에 대한 예외 처리',
     async (inputs) => {
@@ -134,6 +159,7 @@ describe('자동차 경주 게임', () => {
   });
 
   test.each([
+    [['sujin,jinsu', '']],
     [['sujin,jinsu', '0']],
     [['sujin,jinsu', '-1']],
     [['sujin,jinsu', '3.14']],
