@@ -2,7 +2,7 @@ import Computer from '../src/module/Computer.js';
 import Car from '../src/module/Car.js';
 import {MissionUtils} from "@woowacourse/mission-utils";
 
-const mockInput = (inputs) => {
+function mockInput(inputs) {
   MissionUtils.Console.readLineAsync = jest.fn();
 
   MissionUtils.Console.readLineAsync.mockImplementation(() => {
@@ -18,6 +18,16 @@ function generateObject(input) {
   car.name = input;
 
   return car;
+}
+
+function mockRandom(inputs) {
+  MissionUtils.Random.pickNumberInRange = jest.fn();
+
+  MissionUtils.Random.pickNumberInRange.mockImplementation(() => {
+    const input = inputs.shift();
+
+    return input;
+  });
 }
 
 describe('Computer 클래스 테스트', () => {
@@ -47,7 +57,7 @@ describe('Computer 클래스 테스트', () => {
 
   test('start 메서드 테스트', async () => {
     const testCase = ['pobi,woni,jun', 5];
-    const testText = ['pobi','woni','jun'];
+    const testText = ['pobi', 'woni', 'jun'];
     const computer = new Computer();
     const testArray = [];
     const testValue = 5;
@@ -61,5 +71,14 @@ describe('Computer 클래스 테스트', () => {
 
     expect(computer.carList).toStrictEqual(testArray);
     expect(computer.round).toEqual(testValue);
+  });
+
+  test('judgeRandomNumber 메서드 테스트', () => {
+    const computer = new Computer();
+    const testNumbers = [7, 6, 5, 4, 3];
+
+    mockRandom(testNumbers);
+    for (let i = 0; i < 4; i++) expect(computer.judgeRandomNumber()).toBeTruthy();
+    expect(computer.judgeRandomNumber()).toBeFalsy();
   });
 });
