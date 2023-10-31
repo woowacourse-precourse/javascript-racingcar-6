@@ -1,26 +1,47 @@
-import { Random } from "@woowacourse/mission-utils";
+import { Console, Random } from "@woowacourse/mission-utils";
 import { FORWARD_CRITERIA } from "./Constants.js";
 
-const CarList = {
-  getMoveForwards(carNames) {
-    return new Array(carNames.length).fill(0);
-  },
+class CarList {
+  constructor(nameList) {
+    this.names = nameList;
+    this.positions = new Array(nameList.length).fill(0);
+  }
 
-  createCarMoves(length) {
-    const carMoves = Array.from({ length }, () =>
+  race(tryCount) {
+    for (let count = 0; count < tryCount; count += 1) {
+      const numbers = this.generateRandomNumbers();
+      this.move(numbers);
+      this.printPositions();
+    }
+
+    return this.positions;
+  }
+
+  printPositions() {
+    Console.print("\n");
+
+    const moveSign = this.positions.map((move) => "-".repeat(move));
+    this.names.forEach((name, index) => {
+      Console.print(`${name} : ${moveSign[index]}`);
+    });
+  }
+
+  generateRandomNumbers() {
+    const carMoves = Array.from({ length: this.names.length }, () =>
       Random.pickNumberInRange(0, 9)
     );
-    return carMoves;
-  },
 
-  countMoveForward(carMoveForwards, carMoves) {
-    return carMoveForwards.map((forward, index) => {
-      if (carMoves[index] >= FORWARD_CRITERIA) {
-        return forward + 1;
+    return carMoves;
+  }
+
+  move(numberList) {
+    this.positions = this.positions.map((position, index) => {
+      if (numberList[index] >= FORWARD_CRITERIA) {
+        return position + 1;
       }
-      return forward;
+      return position;
     });
-  },
-};
+  }
+}
 
 export default CarList;

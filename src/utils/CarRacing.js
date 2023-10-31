@@ -5,46 +5,35 @@ import User from "./User.js";
 
 const CarRacing = {
   async playGame() {
-    const carNameList = await User.getCarNames();
-    const tryCount = await User.getTryCount();
-    let carMoveForwardList = CarList.getMoveForwards(carNameList);
+    const [names, tryCount] = await User.beReady();
+    const carList = new CarList(names);
+    const moves = carList.race(tryCount);
 
-    for (let count = 0; count < tryCount; count += 1) {
-      const carMovesList = CarList.createCarMoves(carNameList.length);
-      carMoveForwardList = CarList.countMoveForward(
-        carMoveForwardList,
-        carMovesList
-      );
-      this.showMoveResult(carNameList, carMoveForwardList);
-    }
-
-    const winners = this.decideWinner(carNameList, carMoveForwardList);
-    this.printWinner(winners);
+    this.showResult(names, moves);
   },
 
-  showMoveResult(carNames, carMoves) {
-    Console.print("\n");
-    const moveSign = carMoves.map((moves) => "-".repeat(moves));
-    carNames.forEach((name, index) => {
-      Console.print(`${name} : ${moveSign[index]}`);
-    });
+  showResult(nameList, moveList) {
+    const winners = this.decideWinners(nameList, moveList);
+
+    this.printWinners(winners);
   },
 
-  decideWinner(carNameList, carMoveForwardList) {
-    const winnerList = [];
-    const maxMoveForwardCount = Math.max(...carMoveForwardList);
+  decideWinners(nameList, moveList) {
+    const winners = [];
+    const maxForward = Math.max(...moveList);
 
-    carMoveForwardList.forEach((forward, index) => {
-      if (forward === maxMoveForwardCount) {
-        winnerList.push(carNameList[index]);
+    moveList.forEach((forward, index) => {
+      if (forward === maxForward) {
+        winners.push(nameList[index]);
       }
     });
 
-    return winnerList;
+    return winners;
   },
 
-  printWinner(winners) {
-    const finalWinners = winners.map((winner) => winner).join(", ");
+  printWinners(winnerList) {
+    const finalWinners = winnerList.map((winner) => winner).join(", ");
+
     Console.print(`\n${IN_GAME_MESSAGE.finalWinner} ${finalWinners}`);
   },
 };
