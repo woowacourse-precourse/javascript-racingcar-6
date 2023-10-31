@@ -28,4 +28,9 @@ describe('이름 입력 예외 테스트', () => {
       expect(() => validateNames(inputs)).toThrow('[ERROR]');
     },
   );
+
+  test('이름의 개수가 1~10이 아니면 에러를 발생시킨다', () => {
+    const input = new Array(11);
+    expect(() => validateNames(input)).toThrow('[ERROR]');
+  });
 });
