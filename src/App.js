@@ -1,14 +1,15 @@
 import { getCarName, getPlayNumber } from './Util/inputData.js';
 
 import playGame from './playGame.js';
-import printWinner from './View/printWinner.js';
+import winner from './winner.js';
+import { Console } from '@woowacourse/mission-utils';
 
 class App {
   async play() {
     const carName = await getCarName();
     const playNumber = await getPlayNumber();
     await playGame(playNumber, carName);
-    printWinner(carName);
+    Console.print(winner(carName));
   }
 }
 
