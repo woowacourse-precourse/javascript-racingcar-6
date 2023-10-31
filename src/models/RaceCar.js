@@ -4,8 +4,10 @@ export default class RaceCar {
     this.distance = 0;
   }
 
-  move() {
-    this.distance++;
+  go() {
+    if (Random.pickNumberInRange(0, 9) >= 4) {
+      this.distance++;
+    }
   }
 
   isWinner(maxDistance) {
