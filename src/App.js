@@ -1,3 +1,4 @@
+import { playRounds, printResultMessage } from './functions/gameProgress';
 import {
   getCarName,
   getPlayNum,
@@ -16,8 +17,14 @@ class App {
     this.carDistanceList = setInitialDistance(carList);
   }
 
+  progress() {
+    printResultMessage();
+    playRounds(this.carDistanceList, this.playNum);
+  }
+
   async play() {
     this.start();
+    this.progress();
   }
 }
 
