@@ -1,5 +1,3 @@
-import { Console } from '@woowacourse/mission-utils';
-
 class Vehicle {
   constructor(name) {
     this.name = name;
@@ -10,8 +8,16 @@ class Vehicle {
     this.position += 1;
   }
 
-  printPosition() {
-    Console.print(`${this.name} : ${'-'.repeat(this.position)}`);
+  getName() {
+    return this.name;
+  }
+
+  getPosition() {
+    return this.position;
+  }
+
+  getStatus() {
+    return [this.name, this.position];
   }
 }
 

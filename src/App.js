@@ -31,18 +31,26 @@ class App {
     this.round = +inputRound;
   }
 
+  moveVehicle(vehicle) {
+    const randomNumber = Random.pickNumberInRange(0, 9);
+    const moveCondition = randomNumber >= 4;
+    if (moveCondition) vehicle.move();
+  }
+
+  printRoundResult(vehicle) {
+    const [vehicleName, vehiclePosition] = vehicle.getStatus();
+    const resultMessage = `${vehicleName} : ${'-'.repeat(vehiclePosition)}`;
+    Console.print(resultMessage);
+  }
+
   processRound() {
     let roundCount = 0;
-
     Console.print(`\n${MESSAGES.GAME_RESULT}`);
 
     while (this.round > roundCount) {
-      this.vehicles.forEach(item => {
-        const randomNumber = Random.pickNumberInRange(0, 9);
-        const conditionMovement = randomNumber >= 4;
-
-        if (conditionMovement) item.move();
-        item.printPosition();
+      this.vehicles.forEach(vehicle => {
+        this.moveVehicle(vehicle);
+        this.printRoundResult(vehicle);
       });
 
       Console.print('');
@@ -51,11 +59,11 @@ class App {
   }
 
   printGameWinner() {
-    const gameResult = this.vehicles.map(item => Object.values(item));
-    const farthestPosition = Math.max(...gameResult.map(item => item[1]));
+    const gameResult = this.vehicles.map(result => Object.values(result));
+    const farthestPosition = Math.max(...gameResult.map(result => result[1]));
     const winnerList = gameResult
-      .filter(item => item[1] === farthestPosition)
-      .map(item => item[0]);
+      .filter(result => result[1] === farthestPosition)
+      .map(result => result[0]);
 
     const printWinnerText = `${MESSAGES.GAME_WINNER} : ${winnerList.join(',')}`;
     Console.print(printWinnerText);
