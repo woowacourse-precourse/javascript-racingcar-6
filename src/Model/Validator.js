@@ -10,14 +10,13 @@ export default class Validator {
 	checkDuplicatedNames() {
 		const STACK = [];
 
-		for (let i = 0; i < this.names.length; i += 1) {
-			if (!STACK.includes(this.names[i])) {
-				STACK.push(this.names[i]);
+		this.names.forEach((name) => {
+			if (!STACK.includes(name)) {
+				STACK.push(name);
 			} else {
-				return true;
+				throw new Error(ERROR_MESSAGE.duplicate_name_found);
 			}
-		}
-		return false;
+		});
 	}
 
 	checkSpace() {
@@ -50,13 +49,11 @@ export default class Validator {
 		}
 
 		this.names = userInput.split(',');
+
 		this.checkSpace();
 		this.checkInvalidPattern();
 		this.checkInvalidLength();
-
-		if (this.checkDuplicatedNames()) {
-			throw new Error(ERROR_MESSAGE.duplicate_name_found);
-		}
+		this.checkDuplicatedNames();
 
 		return this.board.getScoreBoard(this.names);
 	}
