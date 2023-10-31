@@ -1,5 +1,5 @@
 import { ERROR_MESSAGE } from '../../src/constants/messages';
-import { isValidateCarName, isValidateAttemps } from '../../src/utils/Validator';
+import { isValidateCarName, isValidateAttemps } from '../../src/utils/validator';
 
 describe('Validator Test', () => {
   test.each(['', ' ', 'pobi,', 'pobi, ', 'pobi,javajigi'])(

@@ -1,4 +1,4 @@
-import { isValidateCarName, isValidateAttemps } from '../utils/Validator.js';
+import { isValidateCarName, isValidateAttemps } from '../utils/validator.js';
 import Input from '../View/Input.js';
 import Output from '../View/Output.js';
 import isMove from '../utils/isMove.js';
