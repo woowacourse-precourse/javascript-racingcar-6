@@ -24,4 +24,12 @@ describe("[ERROR] 동작 테스트", () => {
       "[ERROR] 경주할 자동차 이름을 입력해주세요"
     );
   });
+
+  test("입력받은 시도 횟수가 공백일 경우", () => {
+    const app = new App();
+    const tryNumbersInput = null;
+    expect(() => app.checkTryNumber(tryNumbersInput)).toThrowError(
+      "[ERROR] 시도 횟수를 입력해주세요"
+    );
+  });
 });
