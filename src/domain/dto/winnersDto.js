@@ -20,3 +20,12 @@ export class WinnersDto {
     return this.#winners;
   }
 }
+
+//구조
+// WinnersDto {
+//   winners: [
+//     WinnerDto{name:'a'},
+//     WinnerDto{name:'b'},
+//     ...
+//   ]
+// }

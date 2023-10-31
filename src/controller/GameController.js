@@ -62,14 +62,5 @@ export class GameController {
     this.#_race(cars, currentAttemptCount - 1);
   }
 
-  #printWinners(cars) {
-    //winnersDto만들기(winner,winners모두 만들기)
-    // WinnerDto {
-    //   winners: [
-    //     WinnerDto{name:'a'},
-    //     WinnerDto{name:'b'},
-    // ...
-    //   ]
-    // }
-  }
+  #printWinners(cars) {}
 }
