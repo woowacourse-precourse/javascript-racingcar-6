@@ -1,15 +1,16 @@
-const isNumber = (count) => {
-  const numberRegex = /^[0-9]+$/;
-  return numberRegex.test(count);
-};
+const MAXNAMELENGTH = 5;
+const MAXRADOMENUMBER = 4;
+const NUMBERREGEX = /^[0-9]+$/;
 
-const isLongerThan5 = (name) => name.length > 5;
+const isNumber = (count) => NUMBERREGEX.test(count);
+
+const isLongerThan5 = (name) => name.length > MAXNAMELENGTH;
 
 const isNameDuplicate = (name, cars) =>
   // eslint-disable-next-line implicit-arrow-linebreak
   cars.find((car) => car.isSameName(name)) !== undefined;
 
-const isNumberAtLeast4 = (number) => number >= 4;
+const isNumberAtLeast4 = (number) => number >= MAXRADOMENUMBER;
 
 const validateName = (name, cars) => {
   if (isLongerThan5(name)) {
