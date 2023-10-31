@@ -17,11 +17,14 @@ class App {
       if (!this.areCarNamesUnique(carName)) {
         throw new Error("[ERROR] 중복된 자동차 이름이 존재합니다.")
       }
-      const carLength = carName.length;
+      const cnt = await MissionUtils.Console.readLineAsync(
+        "시도할 횟수는 몇 회인가요?\n"
+      );
     } catch(error) {
       MissionUtils.Console.print(error.message);
       return;
     }
+    return carName, cnt;
   }
 
   areElementsFiveCharactersOrLess(carName) {
