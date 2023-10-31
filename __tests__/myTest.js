@@ -109,4 +109,19 @@ describe('출력 테스트', () => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
   });
+  test('우승자가 여럿일 때 콤마 확인', async () => {
+    const randoms = [MOVING_FORWARD, MOVING_FORWARD];
+    const inputs = ['one,two', '0'];
+    const outputs = ['최종 우승자 : one, two'];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+    const app = new App();
+
+    await app.play();
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
 });
