@@ -1,5 +1,3 @@
-import { Random, Console } from '@woowacourse/mission-utils';
-
 class App {
   constructor() {
     this.carDataList = []; // [{name:string, distance:number},]
