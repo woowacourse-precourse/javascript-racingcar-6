@@ -12,8 +12,8 @@ const mockQuestions = (input) => {
 describe('경주할 자동차 이름 입력', () => {
   test("inputRacingCars 메서드에 'pobi,woni'를 입력하고 'pobi,woni'를 반환", async () => {
     //given
-    const inputs = 'pobi,woni';
-    mockQuestions(inputs);
+    const input = 'pobi,woni';
+    mockQuestions(input);
 
     //when
     const result = await inputRacingCars();
@@ -46,8 +46,8 @@ describe('경주할 자동차 이름 입력', () => {
 describe('시도 횟수 입력', () => {
   test('inputAttemps 메서드에 1을 입력하고, 1을 반환', async () => {
     //given
-    const inputs = '1';
-    mockQuestions(inputs);
+    const input = '1';
+    mockQuestions(input);
 
     //when
     const result = await inputAttemps();
