@@ -57,3 +57,29 @@ describe('사용자의 자동차 이름 입력값 에러처리 테스트', () =>
 		await runErrorTest(input, ERROR_MESSAGES.exceed_maximum_car_number);
 	});
 });
+
+describe('사용자 자동차 이름 입력값 정상 동작 테스트', () => {
+	const runSuccessTest = async (input, expectedValue) => {
+		mockQuestions(input);
+
+		const userInput = new UserInput();
+		const inputVal = userInput.inputRacingCarName();
+
+		await expect(inputVal).resolves.toEqual([expectedValue]);
+	};
+
+	test.each([
+		['      tobi', 'tobi'],
+		['  woni  ', 'woni'],
+	])('이름 양 옆에 공백이 있는 경우', async (input, expectedValue) => {
+		await runSuccessTest(input, expectedValue);
+	});
+
+	test.each([
+		['토비', '토비'],
+		['   우니   ', '우니'],
+		['아이스크림', '아이스크림'],
+	])('한글로 된 자동차 이름인 경우', async (input, expectedValue) => {
+		await runSuccessTest(input, expectedValue);
+	});
+});
