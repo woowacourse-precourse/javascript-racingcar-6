@@ -167,3 +167,37 @@ describe("자동차 동작", () => {
     });
   });
 });
+
+describe("사용자의 입력값 예외처리 확인하기", () => {
+  test("자동차 이름", () => {
+    // given
+    const inputs = ["oomsss,omin", "oms,,omin", "o ms,omin", "omsomin"];
+    const MODE = "carName";
+
+    // when
+    const app = new App();
+
+    // then
+    inputs.forEach((input) => {
+      expect(() => {
+        app.validation(MODE, input);
+      }).toThrow("[ERROR]");
+    });
+  });
+
+  test("이동 횟수", async () => {
+    // given
+    const inputs = [".1", "1 2", "1.2", "0", "asd", "#3"];
+    const MODE = "lapTime";
+
+    // when
+    const app = new App();
+
+    // then
+    inputs.forEach((input) => {
+      expect(() => {
+        app.validation(MODE, input);
+      }).toThrow("[ERROR]");
+    });
+  });
+});
