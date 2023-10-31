@@ -3,10 +3,6 @@ import RACING from '../constants/racing.js';
 export default class CarModel {
   #cars;
 
-  constructor() {
-    this.#cars = [];
-  }
-
   makeCar(carNameList) {
     this.#cars = carNameList.split(',').map((name) => ({
       name,
@@ -20,8 +16,6 @@ export default class CarModel {
 
   updateMove(carName, isMove) {
     const carToUpdate = this.#cars.find((car) => car.name === carName);
-    if (isMove) {
-      carToUpdate.moveCounts += RACING.plusMove;
-    }
+    if (isMove) carToUpdate.moveCounts += RACING.plusMove;
   }
 }
