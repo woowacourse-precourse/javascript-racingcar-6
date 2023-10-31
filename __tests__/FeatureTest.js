@@ -62,10 +62,8 @@ describe("story4. 차수별 진행상황 출력", () => {
 
     expect(result).toEqual(answer);
   });
-});
 
-describe("story4. 숫자가 4이상일 경우 record 배열에 '-' 추가", () => {
-  test("자동차 이름을 가지고, 기록용 배열을 만든다.", () => {
+  test("숫자가 4이상일 경우 record 배열에 '-' 추가", () => {
     // given
     const randoms = [9, 3, 2, 8];
     const result = ['산 : ', '바다 : ', '강 : ', '하늘 : '];
