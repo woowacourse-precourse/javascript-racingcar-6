@@ -1,7 +1,10 @@
 import { Console, Random } from '@woowacourse/mission-utils';
 
 class App {
-  constructor() {}
+  constructor() {
+    this.carNames = [];
+    this.tryCount = 0;
+  }
 
   validateCarNames(input) {
     const carNames = input.split(',');
@@ -17,6 +20,16 @@ class App {
     if (carNames.length < 2) {
       throw new Error('[ERROR] 최소 2대 이상의 자동차 이름을 입력해야 합니다.');
     }
+
+    this.carNames = carNames;
+  }
+
+  validateRoundCount(input) {
+    const tryCount = +input;
+    if (Number.isNaN(tryCount) || tryCount <= 0) {
+      throw new Error('[ERROR] 올바른 횟수를 입력하세요.');
+    }
+    this.tryCount = tryCount;
   }
 
   async play() {
@@ -24,8 +37,9 @@ class App {
       '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)'
     );
     this.validateCarNames(userInputCarNames);
-    // const userInputRoundCount = await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
-    // this.validateRoundCount(userInputRoundCount);
+
+    const userInputRoundCount = await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
+    this.validateRoundCount(userInputRoundCount);
 
     // this.racing(userInputCarNames, userInputRoundCount);
     // this.winner(result);
