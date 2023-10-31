@@ -14,6 +14,17 @@ class RacingGame {
   checkCarCanMove(randomNumber) {
     return randomNumber >= 4;
   }
+
+  start() {
+    for (let i = 0; i < this.rounds; i++) {
+      this.cars.forEach((car) => {
+        const randomNumber = this.generateRandomNumber();
+        if (this.checkCarCanMove(randomNumber)) {
+          car.move();
+        }
+      });
+    }
+  }
 }
 
 export default RacingGame;
