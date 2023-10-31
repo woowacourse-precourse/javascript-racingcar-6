@@ -29,7 +29,7 @@ describe("자동차 경주 게임", () => {
     const MOVING_FORWARD = 4;
     const STOP = 3;
     const inputs = ["pobi,woni", "1"];
-    const outputs = ["pobi : -"];
+    const outputs = ["pobi : -","최종 우승자 : pobi"];
     const randoms = [MOVING_FORWARD, STOP];
     const logSpy = getLogSpy();
 
@@ -46,10 +46,70 @@ describe("자동차 경주 게임", () => {
     });
   });
 
+  test("공동 우승자", async () => {
+    // given
+    const MOVING_FORWARD = 4;
+    const STOP = 3;
+    const inputs = ["pobi,woni", "2"];
+    const outputs = ["pobi : -","woni :","pobi : -","woni : -","최종 우승자 : pobi, woni"];
+    const randoms = [MOVING_FORWARD, STOP,STOP,MOVING_FORWARD];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    // when
+    const app = new App();
+    await app.play();
+
+    // then
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
+
+  test("우승자 없음", async () => {
+    // given
+    const STOP = 3;
+    const inputs = ["pobi,woni", "2"];
+    const outputs = ["pobi : ","woni :","pobi : ","woni : ","최종 우승자 : 없음"];
+    const randoms = [STOP, STOP,STOP,STOP];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    // when
+    const app = new App();
+    await app.play();
+
+    // then
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
+
+
   test.each([
     [["pobi,javaji"]],
-    [["pobi,eastjun"]]
+    [["pobi,eastjun"]],
+    [["pobi,ea.s"]]
   ])("이름에 대한 예외 처리", async (inputs) => {
+    // given
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow("[ERROR]");
+  });
+
+  test.each([
+    [["pobi,java","a"]],
+    [["pobi,jun,afe",""]],
+    [["pobi,jun,afe","0"]]
+  ])("시도횟수에 대한 예외 처리", async (inputs) => {
     // given
     mockQuestions(inputs);
 
