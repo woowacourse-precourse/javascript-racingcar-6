@@ -38,6 +38,7 @@ class App {
       result += `${carName} : ${dashes}\n`;
     }
     MissionUtils.Console.print(result);
+    return result;
   }
   // 전진하는 조건
   MOVE_CAR(car) {
