@@ -1,20 +1,20 @@
-function getMaxMovementCount(cars) {
+function getBestMovementRecord(cars) {
   return cars.reduce((max, car) => Math.max(max, car.movement.length), 0);
 }
 
-function getWinners(cars, maxMovementCount) {
-  return cars.filter((car) => car.movement.length === maxMovementCount);
+function getWinners(cars, bestRecord) {
+  return cars.filter((car) => car.movement.length === bestRecord);
 }
 
 class Referee {
-  static isRaceValid(maxMovementCount) {
-    return Boolean(maxMovementCount);
+  static isRaceValid(bestRecord) {
+    return Boolean(bestRecord);
   }
 
   static checkWinners(cars) {
-    const maxMovementCount = getMaxMovementCount(cars);
-    if (this.isRaceValid(maxMovementCount)) {
-      return getWinners(cars, maxMovementCount);
+    const bestRecord = getBestMovementRecord(cars);
+    if (this.isRaceValid(bestRecord)) {
+      return getWinners(cars, bestRecord);
     }
     return null;
   }
