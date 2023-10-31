@@ -176,5 +176,40 @@ describe("printRaceResult", () => {
   });
 });
 
+describe("printWinner", () => {
+  test("한 명의 우승자가 있을 때는 그 한명 출력 시키기", () => {
+    const app = new App();
+    app.cars = [
+      { name: "car1", position: 3 },
+      { name: "car2", position: 5 },
+      { name: "car3", position: 2 },
+    ];
+
+    const mockPrint = jest.fn();
+    MissionUtils.Console.print = mockPrint;
+
+    app.printWinner();
+
+    expect(mockPrint).toHaveBeenCalledTimes(1); // Console.print가 한 번 호출되어야 함
+    expect(mockPrint).toHaveBeenCalledWith("최종 우승자: car2");
+  });
+
+  test("여러 명의 우승자가 있을 때는 여러명의 우승자를 출력시키기", () => {
+    const app = new App();
+    app.cars = [
+      { name: "car1", position: 5 },
+      { name: "car2", position: 2 },
+      { name: "car3", position: 5 },
+    ];
+
+    const mockPrint = jest.fn();
+    MissionUtils.Console.print = mockPrint;
+
+    app.printWinner();
+
+    expect(mockPrint).toHaveBeenCalledTimes(1); // Console.print가 한 번 호출되어야 함
+    expect(mockPrint).toHaveBeenCalledWith("최종 우승자: car1, car3");
+  });
+});
 
 
