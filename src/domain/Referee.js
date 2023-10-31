@@ -16,7 +16,13 @@ class Referee {
   }
 
   findWinners() {
-    return ['jerry'];
+    const finalResult = this.#results[this.#results.length - 1];
+    const maxMoveCount = Math.max(...finalResult.values());
+    const winners = [];
+    finalResult.forEach((moveCount, name) => {
+      if (maxMoveCount === moveCount) winners.push(name);
+    });
+    return winners;
   }
 }
 
