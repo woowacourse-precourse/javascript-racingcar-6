@@ -2,17 +2,25 @@ import * as F from "./utility/utilityFunctions.js";
 import { Console } from "@woowacourse/mission-utils";
 import validateCarName from "./validation/validateCarName.js";
 import validateRoundCount from "./validation/validateRountCount.js";
+import Car from "./Car.js";
 
 class App {
   constructor() {}
 
   async play() {
-    await this.enterGameBaseSetting();
+    const { carNames, roundCount } = await this.enterGameBaseSetting();
+
+    const carObjects = this.generateCarObjects(carNames);
   }
 
   async enterGameBaseSetting() {
-    const CarNames = await this.enterCarNames();
-    const RoundCount = await this.enterRoundCount();
+    const carNames = await this.enterCarNames();
+    const roundCount = await this.enterRoundCount();
+
+    return {
+      carNames,
+      roundCount,
+    };
   }
 
   async enterCarNames() {
@@ -50,6 +58,15 @@ class App {
     } catch (error) {
       throw new Error(`[ERROR] ${error}`);
     }
+  }
+
+  generateCarObjects(carNamesList) {
+    const carObjects = F.go(
+      carNamesList,
+      F.map((name) => new Car(name)),
+    );
+
+    return carObjects;
   }
 
   printRaceStatus() {}
