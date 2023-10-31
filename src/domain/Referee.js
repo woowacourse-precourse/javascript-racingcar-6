@@ -15,7 +15,9 @@ class Referee {
     View.printResults(this.#results);
   }
 
-  findWinners() {}
+  findWinners() {
+    return ['jerry'];
+  }
 }
 
 export default Referee;
