@@ -56,7 +56,7 @@ class App {
   }
 
   printWinners = (cars, progressList) =>
-    Console.print(`최종 우승자 : ${this.findWinners(cars, progressList).join(' ')}`);
+    Console.print(`최종 우승자 : ${this.findWinners(cars, progressList).join(', ')}`);
 
   getRandomMove = () => Random.pickNumberInRange(0, 9);
 
