@@ -45,6 +45,9 @@ export const checkInputNumberType = (userInputString) => {
   if (userInputNumber < 1) {
     throw new Error(NOT_NUMBER_TYPE_USER_INPUT_ERROR);
   }
+  if (!Number.isInteger(userInputNumber)) {
+    throw new Error(NOT_NUMBER_TYPE_USER_INPUT_ERROR);
+  }
 };
 
 export const userInputCarsName = async () => {
