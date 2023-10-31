@@ -40,6 +40,18 @@ class App {
     }
     return 0;
   }
+  moveForward(racingCar) {
+    if (this.isMoveForward) {
+      this.cars[racingCar] += "-";
+    }
+  }
+  race() {
+    const racingCars = Object.keys(this.cars);
+    for (let i = 0; i < racingCars.length; i++) {
+      const racingCar = racingCars[i];
+      this.moveForward(racingCar);
+    }
+  }
 
   async play() {
     await this.readUserRacingCars();
