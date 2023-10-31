@@ -11,7 +11,7 @@ const mockQuestions = (inputs) => {
 };
 
 describe("입력값 유효성 검사", () => {
-  test.each([["jak,jak", "1"], ["jay, key, "], ["jak"], ["jaksdff,jak"]])("유저 닉네임에 같은 이름이 있을 때 예외 처리 한다.", async (input) => {
+  test.each([["jak,jak"], ["jay, key, "], ["jak"], ["jaksdff,jak"]])("유저 닉네임에 같은 이름이 있을 때 예외 처리 한다.", async (input) => {
     // given
     mockQuestions([input]);
 
@@ -22,10 +22,13 @@ describe("입력값 유효성 검사", () => {
     await expect(racingCar.init()).rejects.toThrow("[ERROR]");
   });
 
-  test.each([["jak,jaka k"], ["jak,jaka 1.2"], ["jak,jaka -1"]])("횟수 인풋에 0보다 작거나 소수 또는 숫자가 아니면 예외 처리 한다.", async (input) => {
+  test.each([
+    { a: "jak,jaka", b: "k" },
+    { a: "jak,jaka", b: "1.2" },
+    { a: "jak,jaka", b: "-1" },
+  ])("횟수 인풋에 0보다 작거나 소수 또는 숫자가 아니면 예외 처리 한다.", async ({ a, b }) => {
     // given
-    const inputArray = input.split(" ");
-    mockQuestions(inputArray);
+    mockQuestions([a, b]);
 
     // when
     const racingCar = new RacingCar();
