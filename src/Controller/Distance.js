@@ -1,5 +1,5 @@
 import { Random } from "@woowacourse/mission-utils";
-import GameOutput from "../view/GameOutput.js";
+import { GameOutput } from "../view/GameOutput.js";
 
 const GO = 1;
 
