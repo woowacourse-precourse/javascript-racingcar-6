@@ -22,10 +22,17 @@ const checkHasSpace = (list) => {
   }
 };
 
+const checkNullName = (list) => {
+  if(list.some((carName) => !carName.length)){
+    throw new Error('[ERROR]');
+  }
+};
+
 export const checkValidCarsName = (list) => {
   checkDuplicated(list);
   checkLessThanFive(list);
   checkHasSpace(list);
+  checkNullName(list);
 };
 
 export const checkValidNumber = (num) => {
