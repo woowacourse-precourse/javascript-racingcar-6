@@ -27,8 +27,6 @@
 
   -[] 사용자가 잘못된 값을 입력한 경우 throw문을 사용해 예외를 발생시킨후 애플리케이션은 종료되어야 한다.
 
-  -[] 게임이 끝난 경우 재시작/종료를 구분하는 1과 2 중 하나의 수
-
   -[] 프로그램 종료 시 process.exit()를 호출하지 않는다.
 
   -[] 프로그램 구현이 완료되면 ApplicationTest의 모든 테스트가 성공해야 한다. 테스트가 실패할 경우 0점 처리한다.
@@ -39,25 +37,29 @@
 
     2. 사용자의 값을 입력 받고 출력하기 위해서는 Console.readLineAsync, Console.print를 활용한다.
 
+  -[] package.json을 변경할 수 없고 외부 라이브러리(jQuery, Lodash 등)를 사용하지 않는다. 순수 Vanilla JS로만 구현한다.
+  
+  -[] JavaScript 코드 컨벤션을 지키면서 프로그래밍 한다
+
   -[] indent(인덴트, 들여쓰기) depth가 3이 넘지 않도록 구현한다.(2까지만 허용한다.)
 
-    1. 예를 들어 while문 안에 if문이 있으면 들여쓰기는 2이다.
+    1. 예를 들어 while문 안에 if문이 있으면 들여쓰기는 2이다.	
     2. 메소드를 분리하면 좋다.
 
   -[] jest를 이용하여 본인이 정리한 기능 목록이 정상 동작함을 테스트 코드로 확인한다.
 
-##### 파일 분류
+##### 파일 분류(괄호에는 변경 여부 표시)
   1. src
-    1. App.js :
-    2. index.js :
-    3. RacingCarView.js :
-    4. RacingCarModel.js : 
-    5. ViewResult.js :
+    1. App.js : RacingCarModel과 RacingCarView를 조합하여 자동차 경주 게임을 실행(o)
+    2. index.js : -(x)
+    3. RacingCarView.js : 자동차 경주 게임의 사용자 인터페이스(UI)를 담당(o)
+    4. RacingCarModel.js : 자동차 경주 게임의 데이터와 비즈니스 로직을 관리(o)
+    5. ViewResult.js : 자동차 경주 게임의 결과를 시각적으로 표출하는 역할을 수행하는 파일(o)
   
   2. test
-    1. ApplicationTest.js : 
-    2. MethodTest.js :
-    3. StringTest.js :
+    1. ApplicationTest.js : 우테코에서 지정해준 npm test파일(x)
+    2. StringTest.js : 우테코에서 지정해준 npm test파일(x)
+    3. MethodTest.js : App 클래스의 메소드를 테스트하는 코드를 포함하는 파일.(o)
 
 ###### 기능 추가 목록
   -[] 라운드 입력 시 숫자가 아닌 값이 들어오면 에러를 반환하고 프로그램이 종료되는 기능 추가
