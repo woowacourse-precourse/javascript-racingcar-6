@@ -10,7 +10,7 @@ const ERROR_MSG = {
     PLAY_TIME_ERROR : '[ERROR] 잘못된 시도 횟수를 입력하셨습니다.',
     PLAY_TIME_REGAX_ERROR : '[ERROR] 특수문자 및 공백은 사용할 수 없습니다.',
     PLAY_TIME_NOT_NULL_ERROR : '[ERROR] 시도 횟수를 입력해주세요.',
-    PLAY_TIME_NOT_NULL_ERROR : '[ERROR] 시도 횟수는 0보다 큰 값을 입력해주세요.',
+    PLAY_TIME_NOT_ZERO_ERROR : '[ERROR] 시도 횟수는 0보다 큰 값을 입력해주세요.',
     NAME_DUPLICATION_ERROR : '[ERROR] 자동차 이름이 중복되었습니다.'
 };
 

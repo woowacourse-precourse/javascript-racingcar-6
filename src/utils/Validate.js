@@ -23,7 +23,7 @@ class Validate {
     }
 
     playTimeValidate(playTime) {
-        if (Number(playTime) <= 0) throw new Error(ERROR_MSG.PLAY_TIME_NOT_NULL_ERROR);
+        if (Number(playTime) <= 0) throw new Error(ERROR_MSG.PLAY_TIME_NOT_ZERO_ERROR);
         if (!Number.isSafeInteger(playTime)) throw new Error(ERROR_MSG.PLAY_TIME_ERROR);
     }
 
