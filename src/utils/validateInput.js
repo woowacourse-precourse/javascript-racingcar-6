@@ -17,10 +17,12 @@ const validateNames = names => {
 };
 
 const validateTryCount = tryCount => {
-  if (Number.isNaN(tryCount))
+  if (Number(tryCount).toString() !== tryCount)
     throw new Error(ERROR_MESSAGE.INVALID_TRY_COUNT_TYPE);
   if (Number(tryCount) < VALID_LEN.MIN_RACE)
     throw new Error(ERROR_MESSAGE.INVALID_TRY_COUNT_NUM);
+  if (!Number.isInteger(Number(tryCount)))
+    throw new Error(ERROR_MESSAGE.INVALID_TRY_COUNT_TYPE);
 };
 
 export { validateNames, validateTryCount };
