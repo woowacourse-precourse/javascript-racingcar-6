@@ -1,6 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
-class CarRace {
+class Car {
   constructor(name) {
     this.name = name;
     this.track = "";
@@ -9,7 +9,7 @@ class CarRace {
   move() {
     const randomNum = MissionUtils.Random.pickNumberInRange(0, 9);
     if (randomNum >= 4) {
-      this.track += 1;
+      this.track += "-";
     }
   }
 }

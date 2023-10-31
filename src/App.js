@@ -16,6 +16,7 @@ class App {
       carRace.showResult();
       MissionUtils.Console.print("");
     }
+    carRace.showWinner();
   }
 }
 
