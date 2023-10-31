@@ -32,6 +32,7 @@ class App {
     const gameRound = await this.getPlayRound();
     this.validateGameRound(gameRound);
     const game = new Game(carNames);
+    const roundResult = game.raceRound(gameRound);
   }
 }
 

@@ -1,3 +1,5 @@
+import { Console } from "@woowacourse/mission-utils";
+
 class Car {
   constructor(name) {
     this.name = name;
@@ -5,6 +7,10 @@ class Car {
   }
   moveForward() {
     this.carPosition += 1;
+  }
+  printPosition() {
+    const dashes = "-".repeat(this.carPosition);
+    Console.print(`${this.name} : ${dashes}`);
   }
 }
 
