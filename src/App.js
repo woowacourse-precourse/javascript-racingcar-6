@@ -5,7 +5,7 @@ class Car {
     this.position = 0;
   }
 
-  prograss() {
+  progress() {
     if (MissionUtils.Random.pickNumberInRange(0, 9) >= 4) {
       this.position += 1;
     }
@@ -66,7 +66,7 @@ class App {
 
     for (let count = 1; count <= COUNT_NUMBER; count++) {
       CARS.forEach((car) => {
-        car.prograss();
+        car.progress();
         MissionUtils.Console.print(car.carPosition());
       });
       MissionUtils.Console.print("\n");
