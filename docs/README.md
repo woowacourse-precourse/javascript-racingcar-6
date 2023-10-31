@@ -67,6 +67,10 @@ jun : ---`
 - playRacingCarGame()에서 반환한 object를 돌며 max 값을 구하여 자동차 이름 출력하는 역할
 - max 값이 여러 개인 경우, 쉼표로 구분하여 출력
 
+### printForwardSign()
+
+- 각 자동차 별로 랜덤 값을 생성해 전진 값을 출력하는 역할
+
 ### checkRacingCarNameInputError()
 
 - racingCar 입력값 에러 판별하는 역할
