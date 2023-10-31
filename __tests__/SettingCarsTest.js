@@ -1,6 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
 import SettingCars from '../src/SettingCars.js';
-import Validation from '../src/Validation.js';
+import Car from '../src/Car.js';
 import ErrorHandler from '../src/ErrorHandler.js';
 
 const mockCarsNamesInput = (carsNamesInput) => {
@@ -12,17 +12,21 @@ const mockCarsNamesInput = (carsNamesInput) => {
 };
 
 describe('게임에 참여할 자동차를 설정하는 테스트', () => {
-  const validation = new Validation();
-
-  test('자동차 이름 유효성 검사 여부 테스트', async () => {
-    const isValidCarNameSpy = jest.spyOn(validation, 'isValidCarName');
-
+  test('Car 인스턴스 배열 반환 여부 테스트', async () => {
     const carsNamesInput = '제네시스,벤츠';
     mockCarsNamesInput(carsNamesInput);
 
-    await SettingCars.registerCars();
+    const registerCarsOutput = await SettingCars.registerCars();
 
-    expect(isValidCarNameSpy).toHaveBeenCalledWith('제네시스');
-    expect(isValidCarNameSpy).toHaveBeenCalledWith('벤츠');
+    registerCarsOutput.forEach((car) => {
+      expect(car).toBeInstanceOf(Car);
+    });
+
+    expect(registerCarsOutput).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ name: '제네시스' }),
+        expect.objectContaining({ name: '벤츠' }),
+      ]),
+    );
   });
 });
