@@ -1,5 +1,5 @@
 import { Console, Random } from '@woowacourse/mission-utils';
-import CAR from './constants/car.js';
+import { CAR } from './constants/constants.js';
 
 class Car {
   constructor(name) {

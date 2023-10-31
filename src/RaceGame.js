@@ -1,7 +1,8 @@
 import { Console } from '@woowacourse/mission-utils';
+import { MESSAGE } from './constants/message.js';
+import { RACE } from './constants/constants.js';
 import Car from './Car.js';
 import User from './User.js';
-import { MESSAGE } from './constants/message.js';
 
 class RaceGame {
   constructor() {
@@ -19,29 +20,28 @@ class RaceGame {
 
   async racingStart() {
     const { carList, raceNumber } = await this.racePreparation();
-    let i = 1;
     Console.print(MESSAGE.raceResult);
-    while (i <= raceNumber) {
+
+    for (let i = 1; i <= raceNumber; i += 1) {
       carList.forEach(racingCar => {
         racingCar.randomGoAndStop();
         racingCar.getCurrentScore();
       });
-      Console.print('\n');
-      i += 1;
+      Console.print(RACE.newLineMark);
     }
 
     this.racingResult(carList);
   }
 
-  racingResult(racingCarList) {
-    const winnerCar = racingCarList
+  racingResult(carList) {
+    const winnerCar = carList
       .sort(
         (previousCar, currentCar) =>
           currentCar.score.length - previousCar.score.length,
       )
-      .filter(car => car.score.length === racingCarList[0].score.length)
+      .filter(car => car.score.length === carList[0].score.length)
       .map(car => car.name)
-      .join(', ');
+      .join(RACE.winnerSeparateMark);
 
     Console.print(MESSAGE.raceWinner + winnerCar);
   }

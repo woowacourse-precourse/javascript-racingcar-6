@@ -1,8 +1,8 @@
 import { Console } from '@woowacourse/mission-utils';
 import { MESSAGE, ERROR } from './constants/message.js';
+import { RACE } from './constants/constants.js';
 import ValidationError from './error/ValidationError.js';
 import utils from './utils/utils.js';
-import CAR from './constants/car.js';
 
 class User {
   async getRacingCarList() {
@@ -11,7 +11,7 @@ class User {
     if (!isCarListValidate) {
       throw new ValidationError(ERROR.carListValidate);
     }
-    return racingCarList.split(CAR.separateMark);
+    return racingCarList.split(RACE.separateMark);
   }
 
   async getRaceNumber() {
