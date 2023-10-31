@@ -3,6 +3,7 @@ class App {
   constructor() {
     this.name = "";
     this.turn = 0;
+    this.cars = {};
   }
   async readUserRacingCars() {
     await Console.readLineAsync(
@@ -17,10 +18,14 @@ class App {
 
   splitRacingCarBy(ch) {
     const racingCars = this.name.split(ch);
-    this.name = racingCars;
+    for (let i = 0; i < racingCars.length; i++) {
+      const name = racingCars[i];
+      this.validateUserRacingCars(name);
+      this.cars[name] = "";
+    }
   }
 
-  validateUserRacingCars(input = this.name) {
+  validateUserRacingCars(input) {
     const length = input.length;
     if (length > 5) {
       throw new Error("[ERROR] 차의 이름은 5자 이하만 가능합니다.");
@@ -29,18 +34,18 @@ class App {
   get getRandomNumber() {
     return MissionUtils.Random.pickNumberInRange(0, 9);
   }
-  isMoveForward() {
+  get isMoveForward() {
     if (this.getRandomNumber >= 4) {
       return 1;
     }
     return 0;
   }
-  moveForward() {}
+
   async play() {
     await this.readUserRacingCars();
     await this.readUserRacingTry();
     this.splitRacingCarBy(",");
-    this.getRandomNumber();
+    console.log(this.cars);
   }
 }
 const app = new App();
