@@ -67,7 +67,7 @@ classDiagram
         start() void
         rollDice() boolean
         printResult() void
-        playRounds() void
+        playRound() void
         judgeWinner() void
         finish() void
     }
@@ -103,7 +103,7 @@ classDiagram
 - [ ] start : 게임의 시작 부분으로, 경주할 자동차와 시도할 횟수를 입력받아 내부에서 setRound, setCarList를 실행시킨다.
 - [ ] rollDice : 0에서 9 사이에서 무작위 값을 구한다. 이때, 무작위 값이 4 이상일 경우 true를 리턴하고, 아니면 false를 리턴한다.
 - [ ] printResult : 호출되는 시점까지의 자동차들의 이동 거리를 출력한다.이는 자동차 각각의 print() 를 실행시킨 것과 같다.
-- [ ] playRounds : 자동차 각각에 대해 rollDice()를 수행하고, 그 결과를 자동차 각각의 setCount를 호출해 전달한다. 그리고 하나의 회차 순회가 끝나면 printResult를 출력한다. 이를 시도할 횟수만큼 반복한다.
+- [ ] playRound : 자동차 각각에 대해 rollDice()를 수행하고, 그 결과를 자동차 각각의 setCount를 호출해 전달한다. 그리고 모든 객체에 대해 순회가 끝나면 printResult를 출력한다.
 - [ ] judgeWinner : 최종 우승자를 판별해 출력한다.
 - [ ] finish : "실행 결과" 를 출력하고, playRounds(), judgeWinner()를 실행한다.
 
