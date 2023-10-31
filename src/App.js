@@ -71,12 +71,12 @@ class App {
   };
 
   setWinner(carNames, carPositions) {
-    let maxLocation = this.findMaxLocation(carPositions);
+    let maxPosition = this.findMaxPosition(carPositions);
     let winner = [];
     let index = 0;
     for (let carName of carNames) {
       const position = carPositions.get(carName);
-      if (position == maxLocation) {
+      if (position == maxPosition) {
         winner[index] = carName;
         index++;
       }
@@ -84,7 +84,7 @@ class App {
     return winner;
   };
 
-  findMaxLocation(carPositions) {
+  findMaxPosition(carPositions) {
     let max = -1;
     for (let position of carPositions.values()) {
       if (position > max) {
