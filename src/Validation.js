@@ -7,10 +7,18 @@ export const isValidCarNames = (carNames) => {
   return true;
 };
 
+export const isValidTryNum = (input) => {
+  if (!isNotEmptyTryNum(input)) throw new Error(ERROR_MESSAGES.EMPTY_INPUT);
+};
+
 const isNotEmptyCarNames = (input) => {
   return input.length !== 1 || input[0] !== '';
 };
 
 const isValidCarNameLength = (carName) => {
   return carName.length !== 0 && carName.length <= 5;
+};
+
+const isNotEmptyTryNum = (input) => {
+  return input.length !== 0;
 };

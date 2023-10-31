@@ -9,7 +9,8 @@ class RacingGame {
   async playRacing() {
     const inputManager = new InputManager();
     const carNameList = await this.getCarNameList(inputManager);
-    await this.genearteCarObjects(carNameList);
+    this.genearteCarObjects(carNameList);
+    inputManager.enterTryNum();
   }
 
   async getCarNameList(inputManager) {
