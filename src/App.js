@@ -13,6 +13,21 @@ class App {
     }
   }
   
+  //게임 시작 및 출력
+  gamePlay(playerObject,tryNum,keyList,) {
+
+    for(let i =0; i<tryNum;i++){
+      for (let item of keyList){
+        const goForward=Random.pickNumberInRange(0,9);
+        if(goForward>=4){
+          playerObject[item]++;
+        }
+        Console.print(`${item} : `+"-".repeat(playerObject[item]));
+      }
+      Console.print("");
+    }
+  }
+
   async play() {
     //사용자 입력, 분리
     
@@ -30,26 +45,12 @@ class App {
     //사용자 객체 키 리스트
     const playersKeyList=Object.keys(players);
     //시도횟수 입력
-    const trynumber = Number(await Console.readLineAsync("시도할 횟수는 몇 회인가요?"));
-    this.numberCheck(trynumber);
+    const numberAttempts = Number(await Console.readLineAsync("시도할 횟수는 몇 회인가요?"));
+    this.numberCheck(numberAttempts);
     Console.print("실행 결과");
+      
+    this.gamePlay(players, numberAttempts,playersKeyList);
 
-    //게임 시작 및 출력
-    for(let i =0; i<trynumber;i++){
-      for (let item of playersKeyList){
-        const goForward=Random.pickNumberInRange(0,9);
-        if(goForward>=4){
-          players[item]++;
-        }
-        Console.print(`${item} : `+"-".repeat(players[item]));
-      }
-      Console.print("");
-    }
-
-
-
-    
-    
     //최대값찾기
     let max=0;
     const winnerList= [];
