@@ -7,7 +7,7 @@ class Validator {
   static validateCarNames(array) {
     if (this.#isEmpty(array[0])) throw new Error(ErrorMessage.EMPTY);
     if (!array.every((string) => this.#isLength(string))) {
-      throw new Error(ErrorMessage.MAX_LENGTH);
+      throw new Error(ErrorMessage.LENGTH);
     }
   }
 
