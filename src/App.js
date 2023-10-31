@@ -99,6 +99,23 @@ class App {
     await this.showWinner();
   }
 
+  getWinner() {
+    this.racingArray = this.racingArray.map((x) => x.length);
+    const maxRacingLength = Math.max(...this.racingArray);
+
+    const winnerRacers = [];
+    this.racingArray.forEach((length, index) => {
+      if (length === maxRacingLength) {
+        winnerRacers.push(index);
+      }
+    });
+
+    const winnerRacersName = [
+      ...winnerRacers.map((index) => this.carArr[index]),
+    ];
+    return winnerRacersName.join(", ");
+  }
+
 }
 
 export default App;
