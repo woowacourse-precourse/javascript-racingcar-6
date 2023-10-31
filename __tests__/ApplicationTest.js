@@ -154,4 +154,27 @@ describe("startRace", () => {
   });
 });
 
+describe("printRaceResult", () => {
+  test("각 자동차에 대한 경주 결과를 출력시키기", () => {
+    const app = new App();
+    app.cars = [
+      { name: "car1", position: 3 },
+      { name: "car2", position: 2 },
+      { name: "car3", position: 5 },
+    ];
+
+    const mockPrint = jest.fn();
+    MissionUtils.Console.print = mockPrint;
+
+    app.printRaceResult();
+
+    expect(mockPrint).toHaveBeenCalledTimes(3); // 각 자동차에 대해 Console.print가 호출되어야 함
+
+    expect(mockPrint).toHaveBeenCalledWith("car1 : ---");
+    expect(mockPrint).toHaveBeenCalledWith("car2 : --");
+    expect(mockPrint).toHaveBeenCalledWith("car3 : -----");
+  });
+});
+
+
 
