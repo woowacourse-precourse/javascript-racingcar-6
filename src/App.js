@@ -23,7 +23,7 @@ class App {
       let advanceByRound = new Map();
 
       for (let round = 0; round < GAME_NUMBER; round++) {
-        advanceByRound = PrintResults(USER, racingCar);
+        advanceByRound = PrintResults(USER, advanceByRound);
       }
 
       PrintWinner(advanceByRound);
