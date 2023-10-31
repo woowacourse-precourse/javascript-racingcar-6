@@ -39,7 +39,7 @@ class RacingGame {
   }
 
   #joinWinners(winners) {
-    return winners.map((car) => car.name).join(", ");
+    return winners.map((car) => car.name).join(', ');
   }
 }
 
