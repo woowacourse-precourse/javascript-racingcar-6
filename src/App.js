@@ -1,5 +1,9 @@
+import ViewDefault from './View.js';
+
 class App {
-  async play() {}
+  async play() {
+    await ViewDefault();
+  }
 }
 
 export default App;
