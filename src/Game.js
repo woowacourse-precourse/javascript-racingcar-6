@@ -68,13 +68,10 @@ class Game {
     }
   }
   async printWinner(carArray) {
-    let distanceArray = [];
-    carArray.forEach((car) => {
-      distanceArray.push(car.distance.length);
-    });
-    let maxDistance = Math.max(...distanceArray);
-    let winnerCarsArray = carArray.filter((car) => car.distance.length === maxDistance);
-    let winnerCars = winnerCarsArray.map((winner) => winner.name).join(', ');
+    const distanceArray = carArray.map((car) => car.distance.length);
+    const maxDistance = Math.max(...distanceArray);
+    const winnerCarsArray = carArray.filter((car) => car.distance.length === maxDistance);
+    const winnerCars = winnerCarsArray.map((winner) => winner.name).join(', ');
     MissionUtils.Console.print(`최종 우승자 : ${winnerCars}`);
   }
 }
