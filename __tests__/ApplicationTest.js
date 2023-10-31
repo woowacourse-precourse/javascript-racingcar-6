@@ -1,6 +1,7 @@
 import App from "../src/App.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 import Validation from "../src/Validation/Validation.js";
+import CONSTANTS from "../src/Constants/Constants.js";
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -60,20 +61,17 @@ describe("자동차 경주 게임", () => {
       await expect(app.play()).rejects.toThrow("[ERROR]");
     }
   );
-});
-describe("isValidTrialNumber 함수", () => {
-  test("유효한 숫자인 경우", () => {
-    const validTrialNumber = 5;
-    const validation = new Validation();
-    const testFunction = () => validation.isValidTrialNumber(validTrialNumber);
-    expect(testFunction).not.toThrow();
-  });
 
-  test("유효하지 않은 숫자일 경우", () => {
-    const invalidTrialNumber = "invalid";
+  test.each([
+    ["string"],
+    [{ key: "value" }],
+    [() => {}],
+    [undefined],
+    [["this", "is", "array"]],
+  ])("유효하지 않은 숫자에 대한 예외 처리", (inputs) => {
     const validation = new Validation();
-    const testFunction = () =>
-      validation.isValidTrialNumber(invalidTrialNumber);
-    expect(testFunction).toThrowError("[ERROR]");
+    expect(() => validation.isValidTrialNumber(inputs)).toThrow(
+      CONSTANTS.ERROR.ISNUMBER
+    );
   });
 });
