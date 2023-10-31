@@ -26,7 +26,6 @@ export default class Car {
     this.GET_RANDOM = this.generateRandomNum();
     if (this.GET_RANDOM >= this.CAN_MOVE_FORWARD) {
       this.move += 1;
-      this.POSITION += '-';
     }
   }
 

@@ -8,6 +8,8 @@ export default class Game {
     this.SET_CARNAME = '';
     this.SET_TRYNUM = '';
     this.NEXT_TRACK = '\n';
+    this.MAX_MOVE = '';
+    this.WINNERS = '';
   }
 
   async racing() {
@@ -26,5 +28,16 @@ export default class Game {
       });
       Console.print(this.NEXT_TRACK);
     }
+    return this.pickWinner(carGroup);
+  }
+
+  pickWinner(carGroup) {
+    this.MAX_MOVE = Math.max(...carGroup.map((player) => player.move));
+
+    this.WINNERS = carGroup
+      .filter((player) => player.move === this.MAX_MOVE)
+      .map((player) => player.name);
+    // Console.print(this.WINNERS);
+    // return this.winnerOutput(this.WINNERS);
   }
 }
