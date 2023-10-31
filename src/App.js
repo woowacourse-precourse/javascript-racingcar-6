@@ -40,7 +40,7 @@ function isIntValid(num) {  // 정수인지 판별
 
 function runCarRace(carList, moveCount) {  // 자동차 이름과 주어진 횟수를 이용해 자동차 경주
 
-  Console.print("실행 결과\n");
+  Console.print("\n실행 결과");
 
   for (var i = 0; i < moveCount; i++){
     for(var value of carList) {  // 자동차마다 경주 시작
@@ -62,17 +62,15 @@ function printWinner(carList) {
   var winnerCount = 0;
   var winner = [];
 
-  for(var value of carList) {  // 가장 headCount가 높은 자동차 찾기
+  for(var value of carList) {  // 가장 높은 headCount 찾기
     if(value.getHeadCount() >= winnerCount){
-      winner.push(value.getCarName());
       winnerCount = value.getHeadCount();
     }
   }
 
   for(var value of carList) {
-    if(value.getHeadCount() >= winnerCount){
+    if(value.getHeadCount() === winnerCount){  // 가장 높은 headCount를 가진 자동차들 찾기
       winner.push(value.getCarName());
-      winnerCount = value.getHeadCount();
     }
   }
 
