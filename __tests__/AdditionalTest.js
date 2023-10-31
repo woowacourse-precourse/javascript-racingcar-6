@@ -27,4 +27,15 @@ describe('우승자 선정', () => {
     selectWinner(carsPosition);
     expect(printWinner).toHaveBeenCalledWith(['car1', 'car3']);
   });
+
+  test('위치가 모두 0일 때 승자가 없어야 합니다', () => {
+    carsPosition = {
+      car1: 0,
+      car2: 0,
+      car3: 0,
+      car4: 0,
+    };
+    selectWinner(carsPosition);
+    expect(printWinner).toHaveBeenCalledWith([]);
+  });
 });
