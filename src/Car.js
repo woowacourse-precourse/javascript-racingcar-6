@@ -6,8 +6,6 @@ export class Car {
 
   #name;
 
-  randomNumber = Random.pickNumberInRange(RANDOM_NUMBER_RANGE.MIN, RANDOM_NUMBER_RANGE.MAX);
-
   constructor(name) {
     this.#name = name;
   }
@@ -20,8 +18,12 @@ export class Car {
     return this.#name;
   }
 
+  randomNumber() {
+    return Random.pickNumberInRange(RANDOM_NUMBER_RANGE.MIN, RANDOM_NUMBER_RANGE.MAX);
+  }
+
   movable() {
-    return this.randomNumber >= MOVE_CONDITION_MINIMUM_VALUE;
+    return this.randomNumber() >= MOVE_CONDITION_MINIMUM_VALUE;
   }
 
   moveOrStop() {
