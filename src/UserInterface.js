@@ -12,6 +12,10 @@ class UserInterface {
     const carNames = names.split(",").map((name) => name.trim());
 
     const uniqueCarNames = new Set(carNames);
+    if (carNames.length === 1) {
+      throw new Error(MESSAGES.ERROR_CAR_COUNT);
+    }
+
     if (uniqueCarNames.size !== carNames.length) {
       throw new Error(MESSAGES.ERROR_DUPLICATE_CAR_NAME);
     }

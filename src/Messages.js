@@ -6,6 +6,7 @@ const MESSAGES = Object.freeze({
   ERROR_BLANK_CAR_NAME: "[ERROR] 자동차 이름은 공백일 수 없습니다.",
   ERROR_CAR_NAME_LENGTH: "[ERROR] 자동차 이름은 5자 이하만 가능합니다.",
   ERROR_INVALID_ROUNDS: "[ERROR] 시도 횟수는 양의 정수만 가능합니다.",
+  ERROR_CAR_COUNT: "[ERROR] 자동차는 한 대 이상 입력해야 합니다.",
   NO_WINNERS: "우승자가 없습니다.",
   FINAL_WINNERS: "최종 우승자 : ",
   RACING_RESULT: "\n실행 결과",
