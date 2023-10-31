@@ -22,4 +22,13 @@ export default class Validation {
         car.length <= Constraints.MAX_LENGTH,
     );
   }
+
+  isCheckNumber() {
+    return !Number.isNaN(this.#tryNumber);
+  }
+
+  isCheckNatural() {
+    const number = parseFloat(this.#tryNumber);
+    return Number.isInteger(number) && number > 0;
+  }
 }
