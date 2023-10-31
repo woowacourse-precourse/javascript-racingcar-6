@@ -66,6 +66,7 @@ class App {
     );
     const cars = carNames.map((name) => new Car(name));
     const race = new Race(cars);
+    Console.print("\n실행 결과");
     race.run(times);
     const winners = race.getWinners();
     Console.print(`최종 우승자 : ${winners.join(", ")}`);
