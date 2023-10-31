@@ -1,6 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
 import { movingForwardCase } from "./MovingForwardCase";
-import { FORWARD_DASH } from "../const/Messages";
+import { FORWARD_DASH, PLAY_LOG } from "../const/Messages";
 
 class RoundManager {
   constructor(carPositions) {
@@ -8,6 +8,8 @@ class RoundManager {
   }
 
   playRound() {
+    Console.print(PLAY_LOG);
+
     Object.keys(this.carPositions).forEach((carName) => {
       if (movingForwardCase()) {
         this.carPositions[carName] += FORWARD_DASH;
