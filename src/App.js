@@ -8,11 +8,17 @@ class App {
       MESSAGE.inputName
     );
     const carNames = userInput.split(",");
-    if (carNames.some((name) => name.length > 5)) {
+
+    if (
+      carNames.some((name) => name.trim().length > 5 || name.trim().length == 0)
+    ) {
       throw new Error(ERROR.nameLength);
+    } else if (new Set(carNames).size < 2) {
+      throw new Error(ERROR.minimumCarCount);
     }
     return carNames;
   }
+
   async inputRaceRound() {
     const userInput = await MissionUtils.Console.readLineAsync(
       MESSAGE.inputRound
