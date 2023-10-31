@@ -25,7 +25,7 @@ class App {
     let resultArray;
     while (ROUNDS--) {
       //각 자동차에 대해 0~9 무작위 값 구하기
-      getRandomForwardMove();
+      playRandomForwardMove(CARS_MAP);
     }
   }
 }
