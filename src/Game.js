@@ -34,7 +34,7 @@ class Game {
     await this.#initializeCars(arrayCars);
 
     // set #moveCount
-    const inputCount = await parseValidNumber(
+    const inputCount = parseValidNumber(
       await Console.readLineAsync(PRINT.MESSAGE.INPUT_NUMBER)
     );
     if (!inputCount) throw new Error(PRINT.ERROR.INPUT);
@@ -43,28 +43,26 @@ class Game {
   }
 
   // 각 차들을 조회해서 4이상이면 go 아니면 멈춤
-  async #race() {
+  #race() {
     // 출력
     for (let [name, distance] of this.#cars) {
       const isMoving = SET_MOVE_CONDITION <= Random.pickNumberInRange(0, 9);
-      if (isMoving) {
-        this.#cars.set(name, distance + 1);
-        if (this.#maxDistance < this.#cars.get(name)) {
-          this.#maxDistance = this.#cars.get(name);
-        }
-      }
-
+      if (isMoving) this.#moveForward(name, distance + 1);
       Console.print(PRINT.MESSAGE.EXECUTION_RESULT(name, this.#cars.get(name)));
     }
     Console.print("\n");
   }
 
-  async #printResult() {
+  #moveForward = (name, distance) => {
+    this.#cars.set(name, distance + 1);
+    if (this.#maxDistance < this.#cars.get(name))
+      this.#maxDistance = this.#cars.get(name);
+  };
+
+  #printResult() {
     const winner = [];
     for (let [name, distance] of this.#cars) {
-      if (distance === this.#maxDistance) {
-        winner.push(name);
-      }
+      if (distance === this.#maxDistance) winner.push(name);
     }
     Console.print(PRINT.MESSAGE.WINNER(winner.join(", ")));
   }
