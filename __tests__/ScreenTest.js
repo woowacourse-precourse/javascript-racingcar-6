@@ -39,4 +39,16 @@ describe('자동차 이름 입력 테스트', () => {
       await expect(inputNames).rejects.toThrow('[ERROR]');
     },
   );
+
+  test('중복된 이름 예외 처리', async () => {
+    // given
+    const inputs = ['abc,abc'];
+    mockQuestions(inputs);
+
+    // when
+    const inputNames = Screen.inputNames();
+
+    // then
+    await expect(inputNames).rejects.toThrow('[ERROR]');
+  });
 });
