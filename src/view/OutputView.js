@@ -13,7 +13,7 @@ const OutputView = {
   },
 
   printWinner(result) {
-    if (result.length) Console.print(`최종 우승자 : ${result.join(', ')}`);
+    Console.print(`최종 우승자 : ${result.join(', ')}`);
   },
 };
 
