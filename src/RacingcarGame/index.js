@@ -20,7 +20,7 @@ class RacingcarGame {
 		this.numberOfAttempts = await this.getNumberOfAttempts();
 		this.raceStart();
 		this.printResult();
-		this.judgeWinners();
+		this.printWinners(this.judgeWinners());
 	}
 
 	async getNamesOfCars() {
@@ -50,6 +50,10 @@ class RacingcarGame {
 		}
 	}
 
+	/**
+	 *
+	 * @returns {{ name:string, finalMovingDistance: number }[]}
+	 */
 	judgeWinners() {
 		const finalInfos = this.cars.map((car) => ({
 			name: car.getName(),
@@ -65,6 +69,14 @@ class RacingcarGame {
 		);
 
 		return winners;
+	}
+
+	/**
+	 *
+	 * @param {{ name:string, finalMovingDistance: number }[]} winners
+	 */
+	printWinners(winners) {
+		print(`최종 우승자 : ${winners.map((winner) => winner.name).join(", ")}`);
 	}
 
 	/**
@@ -89,7 +101,7 @@ class RacingcarGame {
 	/**
 	 *
 	 * @param {number} round 몇 라운드인지
-	 * @param {Car} car 자동차 객체
+	 * @param {Car} car
 	 */
 	printCar(round, car) {
 		const name = car.getName();
