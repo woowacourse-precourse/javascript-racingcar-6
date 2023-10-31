@@ -95,4 +95,29 @@ describe("자동차 경주 게임", () => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
   });
+
+  test.each([[["pobi,aji,aji"]], [["pobi,easn,easn"]]])(
+    "자동차 이름 중복을 감지하는 테스트 코드",
+    async (inputs) => {
+      // given
+      mockQuestions(inputs);
+
+      // when
+      const app = new App();
+
+      // then
+      await expect(app.play()).rejects.toThrow("[ERROR]");
+    }
+  );
+
+  test.each([[[""]]])("자동차 입력이 없는 경우", async (inputs) => {
+    // given
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow("[ERROR]");
+  });
 });
