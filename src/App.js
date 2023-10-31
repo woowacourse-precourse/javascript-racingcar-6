@@ -1,5 +1,4 @@
 import {MissionUtils} from '@woowacourse/mission-utils';
-import AboutCar from "./AboutCar.js";
 import RacingCar from "./RacingCar.js";
 
 class App {
@@ -11,16 +10,17 @@ class App {
       }
       return name.trim()
     });
-    console.log(CARNAMES);
 
     const PLAYTIME_RESPONSE = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+    MissionUtils.Console.print("");
     const PLAYTIME = parseInt(PLAYTIME_RESPONSE);
 
     if ( isNaN(PLAYTIME) || PLAYTIME < 0 ) {
       throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
     }
 
-    MissionUtils.Console.print(`최종 우승자 : ${CARNAMES}`);
+    const racingCar = new RacingCar(CARNAMES, PLAYTIME);
+    racingCar.runRace();
   }
 }
 
