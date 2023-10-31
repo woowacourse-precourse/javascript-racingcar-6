@@ -1,10 +1,12 @@
 import { Random } from '@woowacourse/mission-utils';
-import { GO_CONDITION_MINIMUM_VALUE } from './constants.js';
+import { GO_CONDITION_MINIMUM_VALUE, RANDOM_NUMBER_RANGE } from './constants.js';
 
 export class Car {
   #position = 0;
 
   #name;
+
+  randomNumber = Random.pickNumberInRange(RANDOM_NUMBER_RANGE.MIN, RANDOM_NUMBER_RANGE.MAX);
 
   constructor(name) {
     this.#name = name;
@@ -18,18 +20,13 @@ export class Car {
     return this.#name;
   }
 
-  randomNumber() {
-    return Random.pickNumberInRange(0, 9);
+  movable() {
+    return this.randomNumber >= GO_CONDITION_MINIMUM_VALUE;
   }
 
-  canGo() {
-    return this.randomNumber() >= GO_CONDITION_MINIMUM_VALUE;
-  }
-
-  goOrStop() {
-    if (this.canGo()) {
+  moveOrStop() {
+    if (this.movable()) {
       this.#increasePosition();
-      return;
     }
   }
 
