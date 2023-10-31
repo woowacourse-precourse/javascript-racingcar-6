@@ -30,8 +30,8 @@ class RacingGame {
    * @returns {number} 레이싱 승자 position 값
    */
   findWinnerPosition() {
-    return this.racingCar.reduce((acc, cur) => {
-      return Math.max(acc, cur.carPosition);
+    return this.racingCar.reduce((win, cur) => {
+      return Math.max(win, cur.carPosition);
     }, 0);
   }
 
