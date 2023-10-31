@@ -6,13 +6,13 @@ export default class ScoreBoard {
 	}
 
 	getScoreBoard(CARS) {
-		const carsObj = {};
+		const CARS_OBJ = {};
 
 		CARS.forEach((car) => {
-			carsObj[car] = 0;
+			CARS_OBJ[car] = 0;
 		});
 
-		return carsObj;
+		return CARS_OBJ;
 	}
 
 	showCurrentRace(carsObj) {
