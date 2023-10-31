@@ -4,7 +4,9 @@ class App {
   async play() {
     this.askCarNames();
     const carNameList = await this.inputCarNames();
-    const gameCount = await this.askGameCount();
+
+    this.askGameCount();
+    const gameCount = await this.inputGameCount();
   }
 
   askCarNames() {
@@ -25,11 +27,19 @@ class App {
     return trimmedCarNames;
   }
 
-  async askGameCount() {
-    const gameCount = await Console.readLineAsync(
-      '시도할 횟수는 몇 회인가요? \n'
-    );
-    return gameCount;
+  askGameCount() {
+    Console.print('시도할 횟수는 몇 회인가요?');
+  }
+
+  async inputGameCount() {
+    const gameCount = await Console.readLineAsync('');
+    const trimmedGameCount = gameCount.trim();
+
+    if (!this.isValidGameCountInput(trimmedGameCount)) {
+      throw new Error('[ERROR] 숫자가 잘못된 형식입니다.');
+    }
+
+    return parseInt(trimmedGameCount);
   }
 
   isValidCarNamesInput(carNameList) {
@@ -38,6 +48,12 @@ class App {
     for (let carName of carNameList) {
       if (carName.length === 0 || carName.length > 5) return false;
     }
+
+    return true;
+  }
+
+  isValidGameCountInput(gameCount) {
+    if (isNaN(gameCount) || gameCount <= 0) return false;
 
     return true;
   }
