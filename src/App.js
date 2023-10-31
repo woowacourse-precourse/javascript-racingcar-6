@@ -1,8 +1,12 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 class App {
-  async play() {
-    userInput();
+  play() {
+    const [carName, cnt] = userInput();
+    const carLength = carName.length;
+    while(cnt -= 1) {
+      const randomNumber = generateRandomNumber(carLength);
+    }
   }
 
   async userInput() {
@@ -34,6 +38,15 @@ class App {
   areCarNamesUnique(carName) {
     const uniqueElements = new Set(carName);
     return uniqueElements.size === carName.length;
+  }
+
+  generateRandomNumber(len) {
+    const random = [];
+    while (random.length < len) {
+      const number = MissionUtils.Random.pickNumberInRange(0, 9);
+      random.push(number);
+    }
+    return random;
   }
 }
 
