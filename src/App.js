@@ -38,11 +38,14 @@ class App {
     return cars;
   }
   async getRounds() {
+    const NUMBER_CHECK = /[0-9]$/g;
     const roundsInput = await MissionUtils.Console.readLineAsync(
       "시도할 횟수는 몇 회인가요?\n"
     );
-    await this.beforePrint();
-    return roundsInput;
+    if (NUMBER_CHECK.test(roundsInput)) {
+      await this.beforePrint();
+      return roundsInput;
+    } else throw Error("[ERROR] 숫자가 잘못된 형식입니다.");
   }
   randomNumberRoundForwards(cars) {
     const forwardCars = cars.map((car) => {
