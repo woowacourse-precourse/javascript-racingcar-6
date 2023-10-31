@@ -23,9 +23,9 @@ export class Car {
 class App {
   async play() {
     let cars = await setRaceCars();
-    if (!checkCarNames(cars)) throw new Error("[ERROR] 자동차 이름이 잘못된 형식입니다.\n");
+    if (!checkCarNames(cars)) throw new Error('[ERROR] 자동차 이름이 잘못된 형식입니다.\n');
     let times = await setRaceTimes();
-    if (times == NaN || times == 0) throw new Error("[ERROR] 이동 횟수가 잘못된 형식입니다.\n");
+    if (times == NaN || times == 0) throw new Error('[ERROR] 이동 횟수가 잘못된 형식입니다.\n');
     race(cars, times);
     let winnerNames = getFinalWinners(cars);
     printFinalWinners(winnerNames);
@@ -33,7 +33,7 @@ class App {
 }
 
 async function setRaceCars(){
-  let carInput = await MissionUtils.Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
+  let carInput = await MissionUtils.Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n');
   let carStrings = carInput.split(',');
   let cars = [];
   for (let i = 0; i < carStrings.length; i++){
@@ -63,13 +63,13 @@ function checkNameLength(car) {
 }
 
 async function setRaceTimes() {
-  let times = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+  let times = await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
   times = parseInt(times);
   return times;
 }
 
 function race(cars, times) {
-  MissionUtils.Console.print("실행 결과\n");
+  MissionUtils.Console.print('실행 결과\n');
   for(let i = 0; i < times; i++) {
     checkProgression(cars);
     printProgression(cars);
@@ -92,7 +92,7 @@ function printProgression(cars) {
     let positionString = '-'.repeat(position);
     MissionUtils.Console.print(`${name} : ${positionString}\n`);
   }
-  MissionUtils.Console.print("\n");
+  MissionUtils.Console.print('\n');
 }
 
 function getFinalWinners(cars) {
