@@ -9,12 +9,6 @@ describe("class App test", () => {
     app = new App();
   });
 
-  const getPrintSpy = () => {
-    const logSpy = jest.spyOn(Console, "print");
-    logSpy.mockClear();
-    return logSpy;
-  };
-
   describe("method test : makeObject()", () => {
     test("makeObject()의 인수 carName이 equus이라면 ?", () => {
       const testResult = { name: "equus", result: "" };
