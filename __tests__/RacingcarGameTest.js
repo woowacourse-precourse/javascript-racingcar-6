@@ -32,11 +32,10 @@ describe("자동차 경주 게임 테스트", () => {
     // race() 테스트
     const inputs = ["a,b,c,d", "1"];
     const randoms = [GO, STOP, GO, STOP];
+    const result = { a: 1, b: 0, c: 1, d: 0 };
 
     mockQuestions(inputs);
     mockRandoms([...randoms]);
-
-    const result = { a: 1, b: 0, c: 1, d: 0 };
 
     const game = new RacingcarGame();
     const user = new UserInput();
@@ -47,8 +46,19 @@ describe("자동차 경주 게임 테스트", () => {
     await expect(game.racingCar).toEqual(result);
   });
 
-  test("경주 실행 결과를 자동차 이름과 함께 출력한다", () => {
+  test("경주 실행 결과를 자동차 이름과 함께 출력한다", async () => {
     // printRacingResult() 테스트
+    const logSpy = getLogSpy();
+    const outputs = ["e : -", "f : ", "g : -"];
+
+    const game = new RacingcarGame();
+    game.racingCar = { e: 1, f: 0, g: 1 };
+
+    game.printRacingResult();
+
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
   });
 
   test("시도 횟수만큼 경주를 실행하고, 실행 결과를 출력한다", () => {
