@@ -1,23 +1,24 @@
+import CONSTANTS from "../Constants/Constants";
 class Validation {
   isValidCarName(carNameString) {
     const carNames = carNameString.split(",");
     let isNameTooLong = false;
 
     carNames.forEach((carName) => {
-      if (carName.length > 5) {
+      if (carName.length > CONSTANTS.ERROR.MAXNAMELENGTH) {
         isNameTooLong = true;
       }
     });
 
     if (isNameTooLong) {
-      throw new Error("[ERROR] 자동차 이름은 5자 이하여야 합니다.");
+      throw new Error(CONSTANTS.ERROR.NAMETOOLONG);
     }
   }
 
   isValidTrialNumber(trialNumber) {
     let isNumber = isNaN(trialNumber);
     if (isNumber) {
-      throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
+      throw new Error(CONSTANTS.ERROR.ISNUMBER);
     }
   }
 }

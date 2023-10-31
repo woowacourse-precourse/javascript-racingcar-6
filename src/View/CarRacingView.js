@@ -1,4 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
+import CONSTANTS from "../Constants/Constants";
+
 class CarRacingView {
   printResult(carData) {
     carData.forEach((carData) => {
@@ -17,14 +19,14 @@ class CarRacingView {
     });
 
     if (winners.length === 1) {
-      Console.print("최종 우승자 : " + winners[0]);
+      Console.print(CONSTANTS.RESULT.WINNER + winners[0]);
     } else {
-      Console.print("최종 우승자 : " + winners.join(", "));
+      Console.print(CONSTANTS.RESULT.WINNER + winners.join(", "));
     }
   }
 
   printResultMessage() {
-    Console.print("\n실행 결과");
+    Console.print(CONSTANTS.RESULT.RESULTMESSAGE);
   }
 
   lineBreak() {

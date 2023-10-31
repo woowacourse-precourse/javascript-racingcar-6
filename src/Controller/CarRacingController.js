@@ -1,6 +1,7 @@
 import CarRacingModel from "../Model/CarRacingModel.js";
 import CarRacingView from "../View/CarRacingView.js";
 import Validation from "../Validation/Validation.js";
+import CONSTANTS from "../Constants/Constants.js";
 import { Console } from "@woowacourse/mission-utils";
 
 const validation = new Validation();
@@ -27,17 +28,13 @@ class CarRacingController {
   }
 
   async inputCarName() {
-    let carNameString = await Console.readLineAsync(
-      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
-    );
+    let carNameString = await Console.readLineAsync(CONSTANTS.INPUT.CARNAMES);
     validation.isValidCarName(carNameString);
     this.carRacingModel.setCarData(carNameString);
   }
 
   async inputTrialNumber() {
-    let trialNumber = await Console.readLineAsync(
-      "시도할 횟수는 몇 회인가요?\n"
-    );
+    let trialNumber = await Console.readLineAsync(CONSTANTS.INPUT.TRIALNUMBER);
     validation.isValidTrialNumber(trialNumber);
     this.carRacingModel.setTrialNumber(trialNumber);
   }
