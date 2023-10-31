@@ -1,6 +1,6 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Console } from '@woowacourse/mission-utils';
 
-import { OUTPUT_MESSAGE } from "../constants/message/io.js";
+import { OUTPUT_MESSAGE } from '../constants/message/io.js';
 
 const OutputView = {
   /**
@@ -16,21 +16,21 @@ const OutputView = {
    * @param {number} carDistance 자동차의 전진 거리
    */
   printCurrentRacingCar: (carName, carDistance) => {
-    Console.print(`${carName} : ${"-".repeat(carDistance)}`);
+    Console.print(`${carName} : ${'-'.repeat(carDistance)}`);
   },
 
   /**
    * 줄띄움 함수
    */
   printSpacing: () => {
-    Console.print("");
+    Console.print('');
   },
 
   /**
    * 우승자들을 출력하는 함수
    * @param {string[]} winners 우승자들의 이름이 담긴 배열
    */
-  printRacingFinalWinners: (winners) => {
+  printRacingFinalWinners: winners => {
     Console.print(`${OUTPUT_MESSAGE.FINAL_WINNERS} : ${winners}`);
   },
 };

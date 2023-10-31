@@ -1,8 +1,8 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Console } from '@woowacourse/mission-utils';
 
-import { INPUT_MESSAGE } from "../constants/message/io.js";
-import validateRacingCarNames from "../validator/car.js";
-import validateAttemptCount from "../validator/attempt.js";
+import { INPUT_MESSAGE } from '../constants/message/io.js';
+import validateRacingCarNames from '../validator/car.js';
+import validateAttemptCount from '../validator/attempt.js';
 
 const InputView = {
   /**
@@ -11,9 +11,9 @@ const InputView = {
    */
   readRacingCarNames: async () => {
     const inputRacingCarNames = await Console.readLineAsync(
-      INPUT_MESSAGE.RACING_CARS
+      INPUT_MESSAGE.RACING_CARS,
     );
-    const racingCarNames = inputRacingCarNames.split(",");
+    const racingCarNames = inputRacingCarNames.split(',');
     validateRacingCarNames(racingCarNames);
 
     return racingCarNames;
@@ -25,7 +25,7 @@ const InputView = {
    */
   readAttemptCount: async () => {
     const inputAttemptCount = await Console.readLineAsync(
-      INPUT_MESSAGE.ATTEMPT_COUNT
+      INPUT_MESSAGE.ATTEMPT_COUNT,
     );
     validateAttemptCount(inputAttemptCount);
 

@@ -1,6 +1,6 @@
-import { ATTEMPT_ERROR_MESSAGE } from "../constants/message/error.js";
-import InputError from "./InputError.js";
-import checkSpace from "./common.js";
+import { ATTEMPT_ERROR_MESSAGE } from '../constants/message/error.js';
+import InputError from './InputError.js';
+import checkSpace from './common.js';
 
 /**
  * 시도 횟수가 숫자인지 검증하는 함수
@@ -8,8 +8,8 @@ import checkSpace from "./common.js";
  * @throws 시도 횟수가 숫자가 아니라면 에러를 던진다.
  */
 function checkNumeric(inputAttemptCount) {
-  for (let i = 0; i < inputAttemptCount.length; i++) {
-    if (inputAttemptCount[i] < "0" || inputAttemptCount[i] > "9") {
+  for (let i = 0; i < inputAttemptCount.length; i += 1) {
+    if (inputAttemptCount[i] < '0' || inputAttemptCount[i] > '9') {
       throw new InputError(ATTEMPT_ERROR_MESSAGE.NOT_NUMERIC);
     }
   }
@@ -21,7 +21,7 @@ function checkNumeric(inputAttemptCount) {
  * @throws 시도 횟수가 1이상이 아니라면 에러를 던진다.
  */
 function checkPositiveNumber(inputAttemptCount) {
-  if (parseInt(inputAttemptCount) < 1) {
+  if (parseInt(inputAttemptCount, 10) < 1) {
     throw new InputError(ATTEMPT_ERROR_MESSAGE.NOT_POSITIVE);
   }
 }

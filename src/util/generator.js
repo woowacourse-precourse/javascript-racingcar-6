@@ -1,5 +1,5 @@
-import { Random } from "@woowacourse/mission-utils";
-import { RANDOM_NUMBER_RANGE } from "../constants/setting.js";
+import { Random } from '@woowacourse/mission-utils';
+import { RANDOM_NUMBER_RANGE } from '../constants/setting.js';
 
 /**
  * RANDOM_NUMBER_RANGE.MIN = 0
@@ -10,7 +10,7 @@ import { RANDOM_NUMBER_RANGE } from "../constants/setting.js";
 function generateRandomNumber() {
   return Random.pickNumberInRange(
     RANDOM_NUMBER_RANGE.MIN,
-    RANDOM_NUMBER_RANGE.MAX
+    RANDOM_NUMBER_RANGE.MAX,
   );
 }
 

@@ -1,5 +1,5 @@
-import InputView from "./view/input.js";
-import RacingController from "./controller/RacingController.js";
+import InputView from './view/input.js';
+import RacingController from './controller/RacingController.js';
 
 class App {
   async play() {

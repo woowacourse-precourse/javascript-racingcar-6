@@ -1,7 +1,7 @@
-import { CAR_ERROR_MESSAGE } from "../constants/message/error.js";
-import { CAR_NAME_LENGTH } from "../constants/setting.js";
-import InputError from "./InputError.js";
-import checkSpace from "./common.js";
+import { CAR_ERROR_MESSAGE } from '../constants/message/error.js';
+import { CAR_NAME_LENGTH } from '../constants/setting.js';
+import InputError from './InputError.js';
+import checkSpace from './common.js';
 
 /**
  * 자동차 이름의 길이를 검증하기 위한 함수
@@ -34,7 +34,7 @@ function checkDuplication(racingCarNames) {
  * @param {string[]} racingCarNames 자동차들의 이름
  */
 function validateRacingCarNames(racingCarNames) {
-  racingCarNames.forEach((racingCarName) => {
+  racingCarNames.forEach(racingCarName => {
     checkSpace(racingCarName);
     checkLength(racingCarName);
   });
