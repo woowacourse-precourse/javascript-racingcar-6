@@ -1,14 +1,7 @@
-# 기능 설계
-
-태그: 2주차
-
-- 목차
-
 # 📢 커밋 컨벤션 정의
 
-- 모든 커밋은 기능단위로 커밋 ( 필요한 기능 목록에 맞게)
-
-![Untitled](%E1%84%80%E1%85%B5%E1%84%82%E1%85%B3%E1%86%BC%20%E1%84%89%E1%85%A5%E1%86%AF%E1%84%80%E1%85%A8%2076035af259d74d35a01664eff15907e9/Untitled.png)
+- 모든 커밋은 기능단위로 커밋 (필요한 기능 목록에 맞게)
+<img width="564" alt="image" src="https://github.com/won0104/javascript-racingcar-6/assets/98508955/287de4fc-2d1c-4f0a-b3de-217907bc97f1">
 
 # ⚠️ 추가된 요구사항
 
