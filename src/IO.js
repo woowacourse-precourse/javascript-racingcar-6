@@ -1,49 +1,62 @@
 import { Console } from '@woowacourse/mission-utils';
 
-export const input = {
-  MESSAGE: {
+export const MESSAGE = {
+  INPUT: {
     TRY_COUNT: '시도할 횟수는 몇 회인가요?\n',
     CAR_NAMES:
       '경주할 자동차 이름을 입력하세요(이름은 쉼표(,) 기준으로 구분)\n',
-    ERROR: '[ERROR] 자동차 이름은 5자 이하만 가능합니다.',
   },
+  OUTPUT: {
+    EXECUTION_RESULT: '\n실행 결과',
+    WINNER: winners => `${winners.join(', ')}가 최종 우승했습니다.\n`,
+    RACING_STATUS: racer => `${racer.carName} : ${'-'.repeat(racer.move)}\n`,
+  },
+  ERROR: message => `[ERROR] ${message}`,
+};
+
+export const input = {
   async carNames() {
-    const carNames = (await Console.readLineAsync(this.MESSAGE.CAR_NAMES))
-      .split(',')
-      .map(carName => {
-        this.validateCarName(carName);
-        return carName;
-      });
+    const carNamesInput = await Console.readLineAsync(MESSAGE.INPUT.CAR_NAMES);
+    const carNames = carNamesInput.split(',').map(carName => carName.trim());
+
+    carNames.forEach(this.validateCarName);
+
     return carNames;
   },
   async tryCount() {
-    const tryCount = await Console.readLineAsync(this.MESSAGE.TRY_COUNT);
-    return tryCount;
+    const tryCountInput = await Console.readLineAsync(MESSAGE.INPUT.TRY_COUNT);
+    const tryCount = tryCountInput.trim();
+
+    this.validateTryCount(tryCount);
+
+    return Number(tryCountInput);
   },
   validateCarName(carName) {
     if (carName.length > 5) {
-      throw new Error(this.MESSAGE.ERROR);
+      throw new Error(MESSAGE.ERROR('자동차 이름은 5자 이하만 가능합니다.'));
+    }
+  },
+  validateTryCount(tryCount) {
+    const regex = /^[0-9]*$/;
+    if (!regex.test(tryCount)) {
+      throw new Error(MESSAGE.ERROR('시도 횟수는 숫자만 가능합니다.'));
     }
   },
 };
 
 export const output = {
-  MESSAGE: {
-    EXECUTION_RESULT: '\n실행 결과',
-    WINNER: winners => `${winners.join(', ')}가 최종 우승했습니다.\n`,
-    RACING_STATUS: racer => `${racer.carName} : ${'-'.repeat(racer.move)}`,
-  },
   statesEveryIteration(racers) {
     const result = racers
-      .map(racer => this.MESSAGE.RACING_STATUS(racer))
+      .map(racer => MESSAGE.OUTPUT.RACING_STATUS(racer))
       .join('\n')
       .concat('\n');
+
     Console.print(result);
   },
   winners(racers) {
     const maxMove = Math.max(...racers.map(racer => racer.move));
     const winningRacers = racers.filter(racer => racer.move === maxMove);
     const winnerNames = winningRacers.map(racer => racer.carName);
-    Console.print(this.MESSAGE.WINNER(winnerNames));
+    Console.print(MESSAGE.OUTPUT.WINNER(winnerNames));
   },
 };
