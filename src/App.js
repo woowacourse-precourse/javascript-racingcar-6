@@ -32,6 +32,18 @@ class App {
     return inputRaceNumber;
   }
 
+  makeCarMove() {
+    this.cars.forEach((car) => {
+      const randomNumber = this.pickRandomNumber();
+      if (randomNumber >= 4) {
+        car.advance();
+      }
+    });
+  }
+  pickRandomNumber() {
+    return Random.pickNumberInRange(0, 9);
+  }
+
   async play() {
     await this.getCarName();
     const raceNumber = await this.getRaceNumber();
