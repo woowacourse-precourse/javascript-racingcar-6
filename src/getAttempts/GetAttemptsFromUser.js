@@ -1,5 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import { ATTEMPT_NUMBER_ERROR } from "./constants";
+import Message from "../constants/constants";
 
 async function GetAttemptsFromUser() {
 	const attempts = await MissionUtils.Console.readLineAsync();
@@ -7,7 +7,7 @@ async function GetAttemptsFromUser() {
 	if (!isNaN(attempts)) {
 		MissionUtils.Console.print(Number(attempts));
 	} else {
-		throw new Error(ATTEMPT_NUMBER_ERROR);
+		throw new Error(Message.ATTEMPT_NUMBER_ERROR);
 	}
 
 	return Number(attempts);

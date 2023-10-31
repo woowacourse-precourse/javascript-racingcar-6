@@ -1,5 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import { WINNER_IS } from "./constants.js";
+import Message from "../constants/constants";
 
 async function GetResults(cars, attempts) {
 	let results = [];
@@ -26,7 +26,7 @@ async function GetResults(cars, attempts) {
 		await MissionUtils.Console.print(result);
 	}
 
-	MissionUtils.Console.print(WINNER_IS + winners.join(", "));
+	MissionUtils.Console.print(Message.WINNER_IS + winners.join(", "));
 }
 
 export default GetResults;
