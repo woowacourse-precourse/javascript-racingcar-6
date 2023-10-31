@@ -15,8 +15,20 @@ class App {
     this.count = Array(this.participant.length).fill(0);
   }
 
+  async getCycleCount() {
+    const cycle = await MissionUtils.Console.readLineAsync(
+      "시도할 횟수는 몇 회인가요?"
+    );
+
+    // TODO cycle의 입력값이 숫자인지 예외처리
+
+    return cycle;
+  }
+
   async play() {
     await this.participate();
+
+    const cycle = await this.getCycleCount();
   }
 }
 
