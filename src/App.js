@@ -26,13 +26,13 @@ class App {
     
   }
 
-  checkCarNames(carNames){
+  checkCarNames(carNames){// 자동차 이름 입력 검증
     for (const carName of carNames){
       if(carName.length > 5){ throw new Error(ERROR.NAN)}
     }
   }
 
-  carMoves(tryCount, cars){ 
+  carMoves(tryCount, cars){ // 레이싱 실행
     for (let i = 0; i < tryCount; i++) {
       for (const car of cars) {
         car.move();
@@ -41,7 +41,7 @@ class App {
     }
   } 
 
-  printCarPositions(cars) {
+  printCarPositions(cars) { // 게임 진행 상황 출력
     for (const car of cars) {
       let carPositionString = '-'.repeat(car.position);
       Console.print(`${car.name} : ${carPositionString}`);
