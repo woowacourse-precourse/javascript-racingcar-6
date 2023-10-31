@@ -138,10 +138,10 @@ class App {
   }
 
   // 정규 표현식을 사용한 글자 체크 마지막 자리를 제외한 문자열에 숫자가 포함되어 있다면 오류 ex sm5 k6 
-  checkLastName(inputCarList){
+  checkLastName(inputCarList) {
     const forisInvalidInput = /\d/;
     inputCarList.forEach(car => {
-      if (forisInvalidInput.test(car.slice(0,car.length - 1))) {
+      if (forisInvalidInput.test(car.slice(0, car.length - 1))) {
         throw new Error(ERROR.INVALID_CAR_NAME);
       }
     });
@@ -182,7 +182,6 @@ class App {
 
     return this.gameStatus;
   }
-  
 }
 
 export default App;
