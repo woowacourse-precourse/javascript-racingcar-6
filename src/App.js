@@ -5,8 +5,10 @@ class Car {
     this.position = 0;
   }
 
-  randomNumber() {
-    MissionUtils.Random.pickNumberInRange(0, 9);
+  prograss() {
+    if (MissionUtils.Random.pickNumberInRange(0, 9) >= 4) {
+      this.position += 1;
+    }
   }
 }
 
