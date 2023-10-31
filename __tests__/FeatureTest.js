@@ -1,3 +1,5 @@
+import printResult from '../src/game/printResult.js';
+import Lap from '../src/game/Lap.js';
 import { MissionUtils } from '@woowacourse/mission-utils';
 
 const mockQuestions = (inputs) => {
@@ -14,6 +16,12 @@ const mockRandoms = (numbers) => {
   numbers.reduce((acc, number) => {
     return acc.mockReturnValueOnce(number);
   }, MissionUtils.Random.pickNumberInRange);
+};
+
+const getLogSpy = () => {
+  const logSpy = jest.spyOn(MissionUtils.Console, 'print');
+  logSpy.mockClear();
+  return logSpy;
 };
 
 describe("story1. 자동차 이름 입력", () => {
@@ -35,6 +43,7 @@ describe("story1. 자동차 이름 입력", () => {
     const result = input.split(",");
     const answer = ['산', '바다', '강', '하늘'];
 
+    // then
     expect(result).toEqual(answer);
   });
 });
@@ -45,6 +54,7 @@ describe("story2. 실행횟수 입력", () => {
     const input = '7';
     const result = Number(input);
 
+    // then
     expect(result).toEqual(7);
   });
 });
@@ -56,10 +66,12 @@ describe("story4. 차수별 진행상황 출력", () => {
     const array = ['산', '바다', '강', '하늘'];
     const answer = ['산 : ', '바다 : ', '강 : ', '하늘 : '];
 
+    // when
     array.forEach((input) => {
       result.push(`${input} : `);
     });
 
+    // then
     expect(result).toEqual(answer);
   });
 
@@ -77,35 +89,72 @@ describe("story4. 차수별 진행상황 출력", () => {
       if (randomNum > 3) result[i] += '-';
     }
 
+    // then
     expect(result).toEqual(answer);
+  });
+
+  test("goForward 메서드 테스트, 4이상이면 해당 자동차를 전진시킨다.", () => {
+    // given
+    const randoms = [9, 3, 2, 8];
+    const array = ['산 : ', '바다 : ', '강 : ', '하늘 : '];
+    const answer = ['산 : -', '바다 : ', '강 : ', '하늘 : -'];
+
+    mockRandoms(randoms);
+
+    // when
+    const lap = new Lap(array);
+    lap.goForward(array);
+
+    // then
+    expect(array).toEqual(answer);
   });
 });
 
 describe('story5. 최종 우승자 출력', () => {
   test("'-'의 인덱스 값 확인", () => {
+    // given
     const input = '산 : -----';
     const result = input.lastIndexOf('-') - input.indexOf('-') + 1;
 
+    // then
     expect(result).toEqual(5);
   });
 
   test("결과 문자열에서 ':' 을 찾고, 그 앞에 인덱스를 반환한다.", () => {
+    // given
     const input = '산 : -----';
     const result = input.indexOf(':') - 1;
 
+    // then
     expect(result).toEqual(1);
   });
 
   test("자동차 이름을 찾아서 값을 리턴한다.", () => {
+    // gven
     const input = ['산 : -----', '바 다 : ---', '  호랑이 : ----'];
     const result = [];
     const answer = ['산', '바 다', '  호랑이'];
 
+    // when
     input.forEach((record) => {
       const index = record.indexOf(':') - 1;
       result.push(record.substring(0, index));
     });
 
+    // then
     expect(result).toEqual(answer);
+  });
+
+  test("printResult 메서드 테스트, 우승자를 찾고 출력한다.", () => {
+    // given
+    const input = ['산 : -----', '바 다 : ---', '  호랑이 : ----'];
+    const answer = '최종 우승자 : 산';
+    const logSpy = getLogSpy();
+
+    // when
+    printResult(input, 5);
+
+    // then
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(answer));
   });
 });
