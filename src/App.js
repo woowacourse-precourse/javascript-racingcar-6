@@ -34,7 +34,7 @@ class App {
 
   makeCarMove() {
     this.cars.forEach((car) => {
-      const randomNumber = this.pickRandomNumber();
+      let randomNumber = this.pickRandomNumber();
       if (randomNumber >= 4) {
         car.advance();
       }
@@ -43,11 +43,35 @@ class App {
   pickRandomNumber() {
     return Random.pickNumberInRange(0, 9);
   }
+  startRace(raceNumber) {
+    for (let i = 0; i < raceNumber; i++) {
+      this.makeCarMove();
+      this.printResult();
+    }
+  }
 
+  printResult() {
+    this.cars.forEach((car) =>
+      Console.print(`${car.name} : ${car.printMove()}`)
+    );
+    Console.print('');
+  }
+
+  checkWinners() {
+    const maxAdvance = Math.max(...this.cars.map((car) => car.move));
+    const winnersList = this.cars.filter((car) => car.move === maxAdvance);
+    this.printWinners(winnersList);
+  }
+  printWinners(winnersList) {
+    const winnersName = winnersList.map((winner) => winner.name);
+    Console.print(`${MESSAGE.WINNER} : ${winnersName.join(', ')}`);
+  }
   async play() {
     await this.getCarName();
     const raceNumber = await this.getRaceNumber();
-    console.log(this.cars);
+    Console.print(MESSAGE.RESULT);
+    this.startRace(raceNumber);
+    this.checkWinners();
   }
 }
 
