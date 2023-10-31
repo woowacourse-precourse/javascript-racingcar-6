@@ -11,6 +11,7 @@
 <div>
 <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white"/>
 <img src="https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=node.js&logoColor=white"/>
+<img src="https://img.shields.io/badge/jest-C21325?style=for-the-badge&logo=jest&logoColor=white"/>
 </div>
 
 <br>
@@ -19,6 +20,27 @@
 또한 `Node.js` 버전 `18.17.1` 이상의 실행환경이 필요합니다 😏
 
 </div>
+
+<br>
+
+## :three:차 구현
+
+```
+🎯 Jest를 이용하여 테스트 코드를 구현하고 추가적인 예외를 처리한다.
+```
+
+<br>
+
+1. 각 클래스의 메소드 테스트를 진행한다. :white_check_mark:<br><br>
+   ✦ class Car의 `tryMove`, `printPosition`<br>
+   ✦ class CarSet의 `race`, `findWinners`<br>
+   ✦ `play`에 대한 통합 테스트<br>
+
+<br>
+
+2. 추가적인 예외 처리를 진행하고 이에 대해 테스트한다. :test_tube:<br><br>
+   ✦ 이름이 5자 이상인 경우에 대한 처리 및 테스트<br>
+   ✦ 똑같은 이름이 존재하는 경우에 대한 처리 및 테스트<br>
 
 <br>
 
