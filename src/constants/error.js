@@ -23,6 +23,9 @@ const ERROR_MESSAGE_GENERATOR = Object.freeze({
   isBlank(target) {
     return `${target}에 공백이 아닌 값을 입력해주세요!`;
   },
+  isNotInteger(target) {
+    return `${target}에 정수를 입력해주세요!`;
+  },
 });
 
 const ERROR_MESSAGE = Object.freeze({
@@ -41,8 +44,9 @@ const ERROR_MESSAGE = Object.freeze({
     isExistNotUserInstance: 'Track의 users에 User 인스턴스가 아닌 값이 존재합니다!',
     isDuplicatedUserName: 'Track의 users에 중복된 name을 가진 User가 존재합니다!',
 
-    isNotPositiveLap: ERROR_MESSAGE_GENERATOR.isUnderMinNumber('Track의 lap', 1),
+    isUnderMinLap: ERROR_MESSAGE_GENERATOR.isUnderMinNumber('Track의 lap', 1),
     isNotNumberLap: ERROR_MESSAGE_GENERATOR.isNotNumber('Track의 lap'),
+    isNotIntegerLap: ERROR_MESSAGE_GENERATOR.isNotInteger('Track의 lap'),
   }),
 });
 
