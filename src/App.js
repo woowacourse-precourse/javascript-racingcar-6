@@ -8,13 +8,15 @@ class App {
     const USER_INPUT_CARS_NAME = await Console.readLineAsync("");
     const CARS = USER_INPUT_CARS_NAME.split(",");
 
-    if (CARS.length !== 3) {
-      throw new Error("[ERROR] 경주할 자동차는 총 3대입니다.");
+    if (CARS.length <= 1) {
+      throw new Error("[ERROR] 경주할 자동차는 2대 이상이어야 합니다.");
     }
 
     for (let car of CARS) {
-      if (car.length > 5) {
-        throw new Error("[ERROR] 각 자동차의 이름은 5글자 이하여야 합니다.");
+      if (car.length > 5 || car.length < 1) {
+        throw new Error(
+          "[ERROR] 각 자동차의 이름은 1글자 이상 5글자 이하여야 합니다."
+        );
       }
     }
 
