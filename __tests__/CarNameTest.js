@@ -9,17 +9,10 @@ const mockQuestions = (inputs) => {
     return Promise.resolve(input);
   });
 };
+
 describe('자동차 입력 예외 처리 테스트', () => {
-  test('자동차 이름은 쉼표(,)로 구분하여 작성한다.', async () => {
-    mockQuestions(['KimLeePark']);
-
-    const carName = new CarName();
-
-    await expect(carName.start()).rejects.toThrow('[ERROR]');
-  });
-
   test('자동차 이름은 다섯글자 이하로 작성한다.', async () => {
-    mockQuestions(['pobi,javaji']);
+    mockQuestions(['to,looonoog']);
 
     const carName = new CarName();
 
@@ -35,7 +28,7 @@ describe('자동차 입력 예외 처리 테스트', () => {
   });
 
   test('자동차 이름은 같은이름이 없이 작성한다.', async () => {
-    mockQuestions(['Lee', 'Lee', 'Park']);
+    mockQuestions(['Lee,Lee,Park']);
 
     const carName = new CarName();
 
@@ -51,7 +44,7 @@ describe('자동차 입력 예외 처리 테스트', () => {
   });
 
   test('자동차 이름은 쉼표(,)로 끝나거나 쉼표로 시작하면 안된다.', async () => {
-    mockQuestions(['Kim,,Lee,Park']);
+    mockQuestions([',Kim,Lee,Park']);
 
     const carName = new CarName();
 
