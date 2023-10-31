@@ -1,6 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
-import ERROR from './constants/Error.js';
 import MESSAGE from './constants/Message.js';
+import Validate from './Validate.js';
 
 const Input = {
   async getCarNames() {
@@ -8,9 +8,7 @@ const Input = {
       MESSAGE.carName,
     );
 
-    if (!names) {
-      throw new Error(ERROR.carName);
-    }
+    Validate.checkNameExist(names);
 
     return names;
   },
@@ -19,10 +17,8 @@ const Input = {
     const times = await Console.readLineAsync(MESSAGE.attemptNum);
     Console.print('');
 
-    const pattern = /^[1-9]d*$/;
-    if (!pattern.test(times)) {
-      throw new Error(ERROR.attemptNum);
-    }
+    Validate.checkNaturalNum(times);
+
     return times;
   },
 

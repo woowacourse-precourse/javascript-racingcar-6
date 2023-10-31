@@ -1,5 +1,5 @@
 import { Console, Random } from '@woowacourse/mission-utils';
-import ERROR from './constants/Error.js';
+import Validate from './Validate.js';
 
 class Car {
   #cars;
@@ -8,22 +8,22 @@ class Car {
     this.#cars = [];
 
     names.split(',').forEach((name) => {
-      if (name.length > 5 || name.length < 1) {
-        throw new Error(ERROR.nameLength);
-      }
+      Validate.checkNameLength(name);
       this.#cars.push({ name, count: 0 });
     });
   }
 
-  startGoOrStop() {
-    const updatedCars = this.#cars.map((car) => {
-      const newCar = { ...car };
-      if (Random.pickNumberInRange(0, 9) >= 4) {
-        newCar.count += 1;
-      }
-      Console.print(`${newCar.name} : ${'-'.repeat(newCar.count)}`);
-      return newCar;
-    });
+  updateCarCount(car) {
+    const newCar = { ...car };
+    if (Random.pickNumberInRange(0, 9) >= 4) {
+      newCar.count += 1;
+    }
+    Console.print(`${newCar.name} : ${'-'.repeat(newCar.count)}`);
+    return newCar;
+  }
+
+  moveCar() {
+    const updatedCars = this.#cars.map((car) => this.updateCarCount(car));
     Console.print('');
 
     this.#cars = updatedCars;

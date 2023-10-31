@@ -20,7 +20,7 @@ class App {
     this.#times = await Input.getRepeatTimes();
     Console.print(MESSAGE.result);
     while (this.#num < this.#times) {
-      car.startGoOrStop();
+      car.moveCar();
 
       this.#num += 1;
     }
