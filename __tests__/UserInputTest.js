@@ -1,5 +1,9 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import User, { inputParticipantCarName } from '../src/User.js';
+import User, {
+  inputNumberOfAttempts,
+  inputParticipantCarName,
+  validNumberOfAttempts,
+} from '../src/User.js';
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -34,6 +38,31 @@ describe('사용자 입력 테스트', () => {
     const inputUserList = await inputParticipantCarName();
     const userList = new User(inputUserList);
     await expect(userList).toEqual({ nameList: ['pobi', 'hi'] });
+  });
+
+  test('시도할 횟수 사용자 입력 테스트', async () => {
+    const inputs = 20;
+
+    mockQuestions(inputs);
+    const userInput = await inputNumberOfAttempts();
+    await expect(userInput).toEqual(20);
+  });
+
+  test('시도할 횟수 사용자 입력 테스트', async () => {
+    const inputs = 20;
+
+    mockQuestions(inputs);
+    const userInput = await inputNumberOfAttempts();
+    await expect(userInput).toEqual(20);
+  });
+
+  test('시도할 횟수 사용자 입력 테스트 예외처리', async () => {
+    const inputs = 21;
+
+    mockQuestions(inputs);
+    const userInput = await inputNumberOfAttempts();
+
+    await expect(validNumberOfAttempts(userInput)).rejects.toThrow('[ERROR]');
   });
 });
 
