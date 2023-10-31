@@ -7,16 +7,16 @@ class App {
       const numberTimes = parseInt(userNumber);
       const result = this.playGame(carNames, numberTimes);
       this.endGame(result);
-  }
+  };
 
   async carNameInput() {
     const carUserInput = await Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분) \n");
     const carName = carUserInput.split(",");
     if (this.nameValidity(carName)) {
       throw new Error("[ERROR] 이름이 잘못된 형식입니다.");
-    }
+    };
     return carName; 
-  }
+  };
 
   async numberTimesInput() {
     const numberUserInput = await Console.readLineAsync("시도할 횟수는 몇 회인가요? \n");
@@ -24,18 +24,18 @@ class App {
       throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
     };
     return numberUserInput; 
-  }
+  };
 
   nameValidity(carName) {
     const spaceError = carName.some(name => name.trim() === "");
     const countError = carName.some(name => name.length > 5 || name.length < 1);
     return spaceError || countError;
-  }
+  };
 
   numberValidity(input) {
     const validNumberError = !/^[0-9]+$/.test(input);
     return validNumberError;
-  }
+  };
 
   playGame(carNames, numberTimes) {
     const results = [];
@@ -43,9 +43,9 @@ class App {
     for (let i = 0; i < numberTimes; i++) {
       const saveResults = this.calculateResults(carNames, recordSave);
       results.push(saveResults);
-    }
+    };
     return results;
-  }
+  };
 
   calculateResults(carNames, recordSave) {
     return carNames.map((carName, index) => {
@@ -56,7 +56,7 @@ class App {
       }
       return { carName, action: '-'.repeat(recordSave[index]) };
     });
-  }
+  };
 
   endGame(result) {
     result.forEach((saveResult) => {
@@ -75,10 +75,10 @@ class App {
         winners.push(carName);
       } else if (action.length === maxDistance) {
         winners.push(carName);
-      }
-    })
+      };
+    });
     Console.print(`최종 우승자: ${winners.join(', ')}`); 
-  }
+  };
 }
 
 export default App;
