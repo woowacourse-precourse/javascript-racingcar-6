@@ -19,6 +19,18 @@ class App {
     return carNames;
   }
 
+  async getNumOfAttepmts() {
+    const numOfAttempts = await MissionUtils.Console.readLineAsync(
+      "시도할 횟수는 몇 회인가요?"
+    );
+    const attempts = parseInt(numOfAttempts);
+    if (isNaN(attempts) || attempts <= 0) {
+      throw new Error("[ERROR] 올바른 시도 횟수를 입력해주세요.");
+    }
+
+    return attempts;
+  }
+
   performRace(cars) {
     cars.forEach((car) => {
       if (MissionUtils.Random.pickNumberInRange(0, 9) >= 4) {
