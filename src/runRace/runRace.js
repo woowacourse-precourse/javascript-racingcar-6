@@ -30,7 +30,7 @@ class RunRace {
       this.runRaceRound(cars);
     }
 
-    ReturnWinner(cars, this.progressList);
+    new ReturnWinner(cars).printWinners(this.progressList);
   }
 }
 

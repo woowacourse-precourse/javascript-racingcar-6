@@ -1,11 +1,24 @@
 import { Console } from '@woowacourse/mission-utils';
 
-const maxProgress = (progressList) => Math.max(...progressList.map((progress) => progress.length));
+class ReturnWinner {
+  constructor(cars) {
+    this.cars = cars;
+    this.progressList = new Array(cars.length).fill('');
+  }
 
-const findWinners = (cars, progressList) =>
-  cars.filter((car, carIndex) => progressList[carIndex].length === maxProgress(progressList));
+  getMaxProgress() {
+    return Math.max(...this.progressList.map((progress) => progress.length));
+  }
 
-const returnWinners = (cars, progressList) =>
-  Console.print(`최종 우승자 : ${findWinners(cars, progressList).join(' ')}`);
+  findWinners() {
+    return this.cars.filter(
+      (_, carIndex) => this.progressList[carIndex].length === this.getMaxProgress(),
+    );
+  }
 
-export default returnWinners;
+  printWinners() {
+    Console.print(`최종 우승자 : ${this.findWinners().join(', ')}`);
+  }
+}
+
+export default ReturnWinner;
