@@ -7,21 +7,22 @@ class Exception {
   TRY_COUNT_ERROR = "[ERROR] 시도할 횟수를 1회 이상 입력해주세요.";
 
   carNameInputException(userInput) {
-    if(userInput.length <= 1) {
+    const USER_INPUT = userInput;
+    console.log(USER_INPUT);
+    const USER_INPUT_SPLIT = USER_INPUT.split(',');
+    if(USER_INPUT_SPLIT.length <= 1) {
       throw new Error(this.CAR_NAME_COUNT_ERROR);
     }
-    else if(userInput == '' || userInput[userInput.length-1] == '') {
+    else if(USER_INPUT_SPLIT == '' || USER_INPUT_SPLIT[USER_INPUT_SPLIT.length-1] == '') {
       throw new Error(this.CAR_NAME_BLANK_ERROR);
     }
-    else if(userInput.some(name => name.length >= 5)) {
+    else if(USER_INPUT_SPLIT.some(name => name.length >= 5)) {
       throw new Error(this.CAR_NAME_LENGTH_ERROR);
     }
-    else if(userInput.length != [...new Set(userInput)].length) {
+    else if(USER_INPUT_SPLIT.length != [...new Set(USER_INPUT_SPLIT)].length) {
       throw new Error(this.CAR_NAME_DUPLICATE_ERROR);
     }
-    else {
-      return userInput;
-    }
+    return USER_INPUT_SPLIT;
   }
   numberInputException(userInput) {
     if(!Number(userInput)) {
