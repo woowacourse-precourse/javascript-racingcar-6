@@ -1,15 +1,15 @@
 class RacingGame {
   #carArray;
-  #attemptCount;
+  #roundCount;
   #resultArray = [];
 
-  constructor(carArray, attemptCount) {
+  constructor(carArray, roundCount) {
     this.#carArray = carArray;
-    this.#attemptCount = attemptCount;
+    this.#roundCount = roundCount;
   }
 
   play() {
-    for (let i = 0; i < this.#attemptCount; i++) {
+    for (let i = 0; i < this.#roundCount; i++) {
       this.#moveCars();
     }
   }
