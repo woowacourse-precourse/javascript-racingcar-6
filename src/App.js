@@ -6,12 +6,12 @@ class App {
     const userInput = await getUserInput(message.notifyStarting);
     const carNameArray = processInput(userInput);
 
-    const CONDITION = { low: 0, high: 9, criteria: 4 }
+    const CONDITION = { low: 0, high: 9, operator: 'more', criteria: 4 }
     const racingCars = carNameArray.map(element => new RacingCar(element, CONDITION));     
     
     let racingRounds = await getUserInput(message.askRounds);
     printMessage(message.progress);
-    while (racingRounds--) {
+    while (racingRounds --) {
       racingCars.forEach(racingCar => {
         racingCar.tryMoveForward();
         racingCar.showProgress();
@@ -82,12 +82,22 @@ class RacingCar {
   }
 
   tryMoveForward() {
-    const rangeOfNumber = {
-    }
-    
-    const { low, high, criteria, range } = this.condition;
+    this.checkIsMoveForward() && (this.progress ++)
+  }
 
-    (this.getRandomNumber(low, high) >= criteria) && (this.progress += 1);
+  checkIsMoveForward() {
+    const { low, high, criteria, operator } = this.condition;
+    const randomNumber = this.getRandomNumber(low, high)
+    switch (operator) {
+      case 'below': 
+        return randomNumber <= criteria;
+      case 'more': 
+        return randomNumber >= criteria
+      case 'over': 
+        return randomNumber > criteria
+      case 'under': 
+        return randomNumber < criteria
+    }
   }
 
   getRandomNumber(low, high) {
