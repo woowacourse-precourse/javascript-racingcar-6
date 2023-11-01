@@ -13,9 +13,9 @@ class App {
   }
 
   async start() {
-    const carList = await getCarName();
+    const carNameList = await getCarName();
     this.playCount = await getPlayNum();
-    this.racingResult = setInitialDistance(carList);
+    this.racingResult = setInitialDistance(carNameList);
   }
 
   progress() {

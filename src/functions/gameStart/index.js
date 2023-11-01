@@ -1,16 +1,16 @@
 import { Console } from '@woowacourse/mission-utils';
 import { ERROR_MESSAGE, MESSAGE } from '../../constants/message';
 
-const invalidCarName = carList => {
-  if (carList.length === 1 && carList[0] === '')
+const invalidCarName = carNameList => {
+  if (carNameList.length === 1 && carNameList[0] === '')
     throw Error(ERROR_MESSAGE.carName.noInput);
 
-  carList.forEach(car => {
+  carNameList.forEach(car => {
     if (car.length > 5) throw Error(ERROR_MESSAGE.carName.tooLong);
     if (car === '') throw Error(ERROR_MESSAGE.carName.noname);
   });
 
-  if (carList.length > new Set(carList).size)
+  if (carNameList.length > new Set(carNameList).size)
     throw Error(ERROR_MESSAGE.carName.duplicate);
 };
 
@@ -25,11 +25,11 @@ const invalidPlayNum = (inputPlayNum, playCount) => {
 
 export const getCarName = async () => {
   const inputCarName = await Console.readLineAsync(MESSAGE.getCarName);
-  const carList = inputCarName.split(',');
+  const carNameList = inputCarName.split(',');
 
-  invalidCarName(carList);
+  invalidCarName(carNameList);
 
-  return carList;
+  return carNameList;
 };
 
 export const getPlayNum = async () => {
@@ -41,10 +41,10 @@ export const getPlayNum = async () => {
   return playCount;
 };
 
-export const setInitialDistance = carList => {
+export const setInitialDistance = carNameList => {
   const racingResult = [];
 
-  carList.forEach(car => racingResult.push({ carName: car, distance: '' }));
+  carNameList.forEach(car => racingResult.push({ carName: car, distance: '' }));
 
   return racingResult;
 };
