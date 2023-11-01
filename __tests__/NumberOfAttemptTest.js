@@ -1,6 +1,6 @@
 import NumberOfAttempt from "../src/model/game/numberOfAttempt";
 
-describe("시도 횟수 Validator 테스트", () => {
+describe("시도 횟수 클래스 테스트", () => {
   test("숫자가 정수가 아닌 경우", () => {
     expect(() => {
       const numberOfAttempt1 = new NumberOfAttempt("1.5");
