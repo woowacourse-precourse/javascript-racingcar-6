@@ -19,4 +19,12 @@ describe('✨ [Players] 클래스 메서드 테스트', () => {
 
     expect(players.getTryCount()).toBe(1);
   });
+
+  test('[checkMoveCountNotZero] 인자로 받은 값이 0보다 크면 true를 반환한다.', () => {
+    const valueList = [1, 2, 5, 10, 100];
+
+    valueList.forEach((value) => {
+      expect(players.checkMoveCountNotZero(value)).toBeTruthy();
+    });
+  });
 });
