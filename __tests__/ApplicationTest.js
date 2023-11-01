@@ -1,5 +1,6 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import App from '../src/App.js';
+import { initializeGame } from '../src/gameExport.js';
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -18,6 +19,20 @@ const mockRandoms = (numbers) => {
   );
 };
 
+const mockInputCarName = (names) => {
+  MissionUtils.Console.readLineAsync = jest.fn();
+  MissionUtils.Console.readLineAsync.mockReturnValueOnce(
+    Promise.resolve(names.join(',')),
+  );
+};
+
+const mockGameCount = (count) => {
+  MissionUtils.Console.readLineAsync = jest.fn();
+  MissionUtils.Console.readLineAsync.mockReturnValueOnce(
+    Promise.resolve(count.toString()),
+  );
+};
+
 const getLogSpy = () => {
   const logSpy = jest.spyOn(MissionUtils.Console, 'print');
   logSpy.mockClear();
@@ -25,6 +40,12 @@ const getLogSpy = () => {
 };
 
 describe('자동차 경주 게임', () => {
+  // 테스트 전에 항상 실행할 작업
+  beforeEach(() => {
+    // 각 테스트 시작 전에 모킹을 초기화합니다.
+    jest.resetAllMocks();
+  });
+
   test('전진-정지', async () => {
     // given
     const MOVING_FORWARD = 4;
@@ -62,5 +83,10 @@ describe('자동차 경주 게임', () => {
 
     // then
     await expect(app.play()).rejects.toThrow('[ERROR]');
+  });
+
+  test('initializeGame 함수에서 예외 발생하는 경우', async () => {
+    mockInputCarName(['pobi', 'pobi']);
+    await expect(initializeGame()).rejects.toThrow('[ERROR] ');
   });
 });
