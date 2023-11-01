@@ -29,6 +29,7 @@ describe('이름 입력값 유효성 테스트', () => {
 		});
 	});
 });
+
 describe('숫자 입력값 유효성 테스트', () => {
 	test('입력값이 없을 때', () => {
 		const input = '';
@@ -44,6 +45,12 @@ describe('숫자 입력값 유효성 테스트', () => {
 	});
 	test('입력값에 string이 포함됐을 경우', () => {
 		const input = 'jj';
+		expect(() => {
+			validateNumber(input);
+		}).toThrow();
+	});
+	test('입력값이 0 일 때', () => {
+		const input = '0';
 		expect(() => {
 			validateNumber(input);
 		}).toThrow();

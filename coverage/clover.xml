@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1698849890117" clover="3.2.0">
+  <project timestamp="1698849890117" name="All files">
+    <metrics statements="75" coveredstatements="74" conditionals="20" coveredconditionals="19" methods="20" coveredmethods="20" elements="115" coveredelements="113" complexity="0" loc="75" ncloc="75" packages="1" files="7" classes="7"/>
+    <file name="App.js" path="/Users/kye/Library/Mobile Documents/com~apple~CloudDocs/Desktop/Projects/-javascript-racingcar-6/src/App.js">
+      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <line num="10" count="3" type="stmt"/>
+      <line num="11" count="1" type="stmt"/>
+      <line num="13" count="1" type="stmt"/>
+      <line num="14" count="1" type="stmt"/>
+      <line num="16" count="1" type="stmt"/>
+      <line num="17" count="1" type="stmt"/>
+    </file>
+    <file name="CustomError.js" path="/Users/kye/Library/Mobile Documents/com~apple~CloudDocs/Desktop/Projects/-javascript-racingcar-6/src/CustomError.js">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <line num="3" count="7" type="stmt"/>
+      <line num="4" count="7" type="stmt"/>
+      <line num="5" count="7" type="stmt"/>
+    </file>
+    <file name="constants.js" path="/Users/kye/Library/Mobile Documents/com~apple~CloudDocs/Desktop/Projects/-javascript-racingcar-6/src/constants.js">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <line num="1" count="2" type="stmt"/>
+      <line num="6" count="2" type="stmt"/>
+      <line num="11" count="2" type="stmt"/>
+    </file>
+    <file name="endGame.js" path="/Users/kye/Library/Mobile Documents/com~apple~CloudDocs/Desktop/Projects/-javascript-racingcar-6/src/endGame.js">
+      <metrics statements="12" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+      <line num="9" count="1" type="stmt"/>
+      <line num="10" count="1" type="stmt"/>
+      <line num="18" count="1" type="stmt"/>
+      <line num="19" count="1" type="stmt"/>
+      <line num="20" count="1" type="stmt"/>
+      <line num="21" count="2" type="stmt"/>
+      <line num="22" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="23" count="1" type="stmt"/>
+      <line num="25" count="1" type="stmt"/>
+      <line num="28" count="1" type="stmt"/>
+      <line num="34" count="1" type="stmt"/>
+      <line num="35" count="1" type="stmt"/>
+    </file>
+    <file name="getValue.js" path="/Users/kye/Library/Mobile Documents/com~apple~CloudDocs/Desktop/Projects/-javascript-racingcar-6/src/getValue.js">
+      <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <line num="8" count="3" type="stmt"/>
+      <line num="9" count="3" type="stmt"/>
+      <line num="10" count="3" type="stmt"/>
+      <line num="11" count="3" type="stmt"/>
+      <line num="12" count="1" type="stmt"/>
+      <line num="16" count="1" type="stmt"/>
+      <line num="17" count="1" type="stmt"/>
+      <line num="18" count="1" type="stmt"/>
+      <line num="19" count="1" type="stmt"/>
+      <line num="23" count="2" type="stmt"/>
+      <line num="24" count="2" type="stmt"/>
+    </file>
+    <file name="playCarRace.js" path="/Users/kye/Library/Mobile Documents/com~apple~CloudDocs/Desktop/Projects/-javascript-racingcar-6/src/playCarRace.js">
+      <metrics statements="21" coveredstatements="21" conditionals="4" coveredconditionals="4" methods="8" coveredmethods="8"/>
+      <line num="12" count="1" type="stmt"/>
+      <line num="13" count="1" type="stmt"/>
+      <line num="14" count="1" type="stmt"/>
+      <line num="15" count="1" type="stmt"/>
+      <line num="16" count="1" type="stmt"/>
+      <line num="17" count="1" type="stmt"/>
+      <line num="18" count="1" type="stmt"/>
+      <line num="22" count="1" type="stmt"/>
+      <line num="23" count="2" type="stmt"/>
+      <line num="28" count="1" type="stmt"/>
+      <line num="29" count="1" type="stmt"/>
+      <line num="34" count="1" type="stmt"/>
+      <line num="35" count="2" type="stmt"/>
+      <line num="36" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="37" count="1" type="stmt"/>
+      <line num="39" count="2" type="stmt"/>
+      <line num="44" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="45" count="1" type="stmt"/>
+      <line num="47" count="1" type="stmt"/>
+      <line num="51" count="1" type="stmt"/>
+      <line num="52" count="2" type="stmt"/>
+    </file>
+    <file name="validateInput.js" path="/Users/kye/Library/Mobile Documents/com~apple~CloudDocs/Desktop/Projects/-javascript-racingcar-6/src/validateInput.js">
+      <metrics statements="19" coveredstatements="18" conditionals="14" coveredconditionals="13" methods="4" coveredmethods="4"/>
+      <line num="10" count="4" type="cond" truecount="2" falsecount="0"/>
+      <line num="11" count="1" type="cond" truecount="1" falsecount="1"/>
+      <line num="12" count="1" type="stmt"/>
+      <line num="14" count="0" type="stmt"/>
+      <line num="16" count="3" type="stmt"/>
+      <line num="17" count="6" type="cond" truecount="2" falsecount="0"/>
+      <line num="18" count="2" type="stmt"/>
+      <line num="20" count="4" type="stmt"/>
+      <line num="23" count="1" type="stmt"/>
+      <line num="31" count="3" type="cond" truecount="2" falsecount="0"/>
+      <line num="32" count="2" type="stmt"/>
+      <line num="34" count="1" type="stmt"/>
+      <line num="40" count="5" type="cond" truecount="2" falsecount="0"/>
+      <line num="41" count="1" type="stmt"/>
+      <line num="43" count="4" type="cond" truecount="2" falsecount="0"/>
+      <line num="44" count="1" type="stmt"/>
+      <line num="46" count="3" type="cond" truecount="2" falsecount="0"/>
+      <line num="47" count="2" type="stmt"/>
+      <line num="49" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>
