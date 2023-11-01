@@ -74,9 +74,10 @@
 <br>
 
 - [x] `validateCarNames(names)`
-  1. 각 이름이 5글자 이하인지 검사합니다.
-  2. 이름을 입력하지 않은 경우를 검사합니다.
-- [x] `validateLapCount(number)`: 시도 횟수가 `2^53` 이하의 안전한 자연수인지 확인합니다.
+  - [x] `validateNameLength(carNames)` 메서드를 사용하여 각 이름의 길이를 검사합니다.
+  - [x] `validateCarNameDuplication(carNames)` 메서드를 사용하여 중복된 이름을 검사합니다.
+- [x] `validateLapCount(number)`
+  - [x] `validateSafeInteger(number)` 메서드를 사용하여 시도 횟수가 `2^53` 이하의 안전한 자연수인지 확인합니다.
 
 <br/>
 
@@ -100,6 +101,7 @@
 - [x] 자동차 이름 입력 간 공백이 있는 경우 공백을 모두 제거 후 진행
 - [x] 시도 횟수는 `2^53` 이하의 자연수인지
 - [x] `'[ERROR]'`로 시작하는 에러 메시지
+- [x] 중복된 자동차 이름이 있는 경우
 
 <br/>
 

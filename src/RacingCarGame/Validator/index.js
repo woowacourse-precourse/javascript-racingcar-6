@@ -2,6 +2,12 @@ import ValidationError from './ValidationError/index.js';
 import { NUMBER, SYMBOLS, ERROR } from '../constants/index.js';
 
 class Validator {
+  static validateCarNameDuplication(carNames) {
+    if (new Set(carNames).size !== carNames.length) {
+      throw new ValidationError(ERROR.invalidNameLength);
+    }
+  }
+
   static validateNameLength(carNames) {
     if (!carNames.length) {
       throw new ValidationError(ERROR.invalidNameLength);
@@ -27,6 +33,7 @@ class Validator {
       .filter(Boolean);
 
     this.validateNameLength(carNames);
+    this.validateCarNameDuplication(carNames);
   }
 
   static validateLapCount(number) {
