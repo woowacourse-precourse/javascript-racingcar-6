@@ -24,14 +24,18 @@ class App {
         count = 0;
         continue;
       }
-      if (count > 5) return false;
+      if (count > 5) return true;
     }
-    return true;
+    return false;
   }
 
   isNumber(string) {
     if (isNaN(string)) return false;
     return true;
+  }
+
+  validDuplication(arr) {
+    return arr.length !== new Set(arr).size;
   }
 
   async inputGameInfo(number) {
@@ -41,8 +45,10 @@ class App {
         input = await Console.readLineAsync(
           '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n'
         );
-        if (!this.validNameConvention(input))
+        if (this.validNameConvention(input))
           throw new Error('[ERROR] invalid name convention.');
+        if (this.validDuplication(input.split(',')))
+          throw new Error('[ERROR] exist duplicate names.');
         return input.split(',');
 
       case GAME_INPUT_TRY_NUMBER:

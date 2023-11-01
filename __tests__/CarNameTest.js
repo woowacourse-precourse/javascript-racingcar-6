@@ -11,6 +11,10 @@ const validNameConvention = (string) => {
   return true;
 };
 
+const validDuplication = (arr) => {
+  return arr.length !== new Set(arr).size;
+};
+
 const isNumber = (string) => {
   if (isNaN(string)) return false;
   return true;
@@ -39,5 +43,11 @@ describe('자동차 입력 이름 테스트', () => {
     const input = '     acd';
 
     expect(validNameConvention(input)).toBe(false);
+  });
+
+  test('중복 이름을 가진 입력', () => {
+    const input = ['pobi', 'woni', 'pobi'];
+
+    expect(validDuplication(input)).toBe(true);
   });
 });
