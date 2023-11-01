@@ -51,6 +51,22 @@ test('myTest : 값에 따른 자동차 전진 기능 테스트', async () => {
   });
 });
 
+test('myTest : 우승자 선정 테스트', async () => {
+  const input = ['cat,dog,bird', '1'];
+  const random = [4, 4, 3];
+  const output = ['최종 우승자 : cat,dog'];
+  const logSpy = getLogSpy();
+  Mockfn(input);
+  mockRandoms([...random]);
+
+  const app = new App();
+  await app.play();
+
+  output.forEach((element) => {
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(element));
+  });
+});
+
 test.each([[['cat,catcat']], [['cat,cat']], [['cat,']], [['cat, cat ']]])(
   'myTest : 이름에 대한 예외처리',
   async (inputs) => {
