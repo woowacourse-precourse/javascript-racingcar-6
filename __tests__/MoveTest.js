@@ -1,4 +1,4 @@
-import App from "../src/App.js";
+import Computer from "../src/RacingCar/Computer.js";
 import { Random, Console } from "@woowacourse/mission-utils";
 
 const mockRandoms = (number) => {
@@ -13,9 +13,9 @@ const getLogSpy = () => {
 };
 
 describe("자동차 이동 테스트", () => {
-  let app;
+  let computer;
   beforeEach(() => {
-    app = new App;
+    computer = new Computer();
   })
 
   test("랜덤 값이 4 이상인 경우 앞으로 이동", () => {
@@ -24,7 +24,7 @@ describe("자동차 이동 테스트", () => {
 
     mockRandoms(MOVING);
 
-    const currentCars = app.moveCars(arg);
+    const currentCars = computer.moveCars(arg);
 
     expect(currentCars).toHaveProperty("bin", 1);
   });
@@ -34,7 +34,7 @@ describe("자동차 이동 테스트", () => {
     const output = "bin : ---";
     const logSpy = getLogSpy();
 
-    app.printCurrent(arg);
+    computer.printCurrent(arg);
 
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
   });
