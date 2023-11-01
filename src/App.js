@@ -69,7 +69,7 @@ function gameResult(carDict) {
 
 function carNameValidation(carName) {
   for (let i = 0; i < carName.length; i++) {
-    if (carName[i].length > 5) {
+    if (carName[i].length > 5 || !carName[i].trim()) {
       throw new Error("[ERROR] 자동차의 이름은 5자리 이하여야 합니다.");
     }
   }
