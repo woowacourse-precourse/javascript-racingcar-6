@@ -69,6 +69,9 @@ class Car {
   get name() {
     return this.#name;
   }
+  /**
+   * @returns {number}
+   */
   get distance() {
     return this.#distance;
   }
