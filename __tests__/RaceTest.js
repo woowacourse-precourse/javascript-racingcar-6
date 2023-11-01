@@ -30,7 +30,7 @@ describe('레이스별 결과 ', () => {
     test('전진했을때 값이 1증가.', () => {
         const car = new Car('CAR1');
         car.move();
-        expect(car.moves).toBe(1);
+        expect(car.movesNum).toBe(1);
     });
 
     test('숫자가 3초과면 '-' 한칸 출력', async () => {
@@ -67,7 +67,7 @@ describe('최종결과 출력 테스트', () => {
             { name: 'doh1', position: 1 },
         ]);
 
-        expect(logSpy).toHaveBeenCalledWith('결과 : doh, dohy');
+        expect(logSpy).toHaveBeenCalledWith('최종 우승자 : doh, dohy');
     });
 });
 describe('자동차 동작 및 이름 생성 테스트', () => {
