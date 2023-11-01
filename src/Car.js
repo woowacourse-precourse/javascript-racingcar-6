@@ -1,5 +1,10 @@
 import { Random } from '@woowacourse/mission-utils';
 import Screen from './Screen.js';
+
+const RANDOM_NUMBER_RANGE_FROM = 0;
+const RANDOM_NUMBER_RANGE_TO = 9;
+const CAR_MOVE_POINT = 4;
+
 class Car {
   #name;
   #movingCount;
@@ -10,8 +15,11 @@ class Car {
   }
 
   move() {
-    const randomNumber = Random.pickNumberInRange(0, 9);
-    if (randomNumber >= 4) {
+    const randomNumber = Random.pickNumberInRange(
+      RANDOM_NUMBER_RANGE_FROM,
+      RANDOM_NUMBER_RANGE_TO
+    );
+    if (randomNumber >= CAR_MOVE_POINT) {
       this.#movingCount += 1;
     }
   }
