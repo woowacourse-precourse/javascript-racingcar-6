@@ -38,12 +38,22 @@ describe('출력 test', () => {
 
   test('우승자 출력', () => {
     // given
-    const winnerName = ['hojkim77', 'ghwndrla'];
-    const outputs = ['최종 우승자 : hojkim77, ghwndrla'];
+    const GO = 4;
+    const STOP = 3;
+    const randoms = [GO, GO, GO, STOP];
+    const outputs = ['최종 우승자 : KHJ'];
     const logSpy = getLogSpy();
 
     // when
-    Output.printWinners(winnerName);
+    const winner = new Car('KHJ');
+    const loser = new Car('WHO');
+
+    winner.addDistance();
+    loser.addDistance();
+    winner.addDistance();
+    loser.addDistance();
+
+    Output.printWinners([winner, loser]);
 
     //then
     outputs.forEach((output) => {
