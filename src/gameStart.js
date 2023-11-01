@@ -14,7 +14,7 @@ const getCarName = async () => {
   // 1-4. 게임 진행자에 대한 배열 생성
   const players = [];
   names.forEach((name) => {
-    players.push({ name: name, move: 0 });
+    players.push({ name: name, random: 0, move: "" });
   });
   return players;
 };
