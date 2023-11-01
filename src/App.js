@@ -3,7 +3,7 @@ import GameMain from "./modules/GameMain.js";
 class App {
   async play() {
     this.gameMain = new GameMain();
-    return this.gameMain.userCarName();
+    await this.gameMain.userCarName();
   }
 }
 
