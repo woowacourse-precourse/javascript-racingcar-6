@@ -19,12 +19,12 @@ class App {
   constructor() {
     this.cars = [];
   }
+
   validateCarName = (carName) => {
     if (carName.length > 5) {
       throw new Error(ERROR.CAR_NAME);
     }
   };
-
   validateNumber = (attemptNumber) => {
     if (isNaN(attemptNumber) || attemptNumber <= 0) {
       throw new Error(ERROR.ATTEMPT_COUNT);
@@ -49,6 +49,7 @@ class App {
   };
 
   moveAllCars = () => {
+    Console.print(GAME.PRINT_EXECUTION_RESULT);
     this.cars.forEach((car) => {
       car.moveForward();
       Console.print(`${car.name} : ${"-".repeat(car.position)}`);
@@ -63,12 +64,7 @@ class App {
     return winnerCars.map((car) => car.name);
   };
 
-  racingGame = () => {
-    const attemptCount = this.getAttemptCount();
-    while (attemptCount > 0) {
-      this.moveAllCars();
-      attemptCount -= 1;
-    }
+  printWinners = () => {
     const winners = this.selectWinnerByRace();
     if (winners.length > 1) {
       Console.print(`${GAME.WINNER}${winners.join(", ")}`);
@@ -77,11 +73,18 @@ class App {
     }
   };
 
+  racingGame = (attemptCount) => {
+    while (attemptCount > 0) {
+      this.moveAllCars();
+      attemptCount -= 1;
+    }
+    this.printWinners();
+  };
+
   async play() {
     await this.getCarsName();
-    await this.getAttemptCount();
-    Console.print(GAME.PRINT_EXECUTION_RESULT);
-    this.racingGame();
+    const attemptCount = await this.getAttemptCount();
+    this.racingGame(attemptCount);
   }
 }
 
