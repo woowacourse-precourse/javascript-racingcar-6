@@ -10,7 +10,7 @@ const carDataInit = (carName) =>{
 };
 
 const getCarData = () => {
-    return carData
+    return carData;
 };
 
 const setCarData = () => {
