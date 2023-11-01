@@ -1,6 +1,6 @@
 import { Console, Random } from '@woowacourse/mission-utils';
 import { MESSAGE, RULE } from '../constants/constants.js';
-import { SetRacingCar } from './RacingCar.js';
+import { SetRacingCar } from './SetRacingCar.js';
 import validation from './validation.js';
 
 export class RacingGame {
@@ -26,7 +26,6 @@ export class RacingGame {
 			const setCar = new SetRacingCar(car);
 			readyCars.push(setCar);
 		});
-
 		return readyCars;
 	}
 
