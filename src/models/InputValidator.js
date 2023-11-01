@@ -23,10 +23,10 @@ class InputValidator {
   }
 
   static validateLaps(laps) {
-    if (!laps) {
+    if (laps <= 0) {
       throw new Error(ERROR_MESSAGE.positive);
     }
-    if (Number.isNaN(laps)) {
+    if (isNaN(laps)) {
       throw new Error(ERROR_MESSAGE.number);
     }
   }
