@@ -45,15 +45,15 @@ describe("CarList 메소드 테스트", () => {
   });
 
   it("1번 실행 후 최종 우승자 출력", async () => {
-    const inputs = ["park,gyu", "1"];
     const random = [3, 4];
     const output = ["최종 우승자 : gyu"];
     const logSpy = getLogSpy();
-    mockQuestions(inputs);
     mockRandoms([...random]);
 
-    const app = new App();
-    await app.play();
+    const carList = new CarList();
+    carList.setCarList("park,gyu");
+    carList.printCarListScore(1);
+    carList.printFinalResult();
 
     output.forEach((element) => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(element));
