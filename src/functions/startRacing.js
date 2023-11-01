@@ -1,7 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
 import MESSAGES from '../constants/messages.js';
 import NUMBERS from '../constants/numbers.js';
-import { canMoveForward } from '../utils/validator.js';
+import canMoveForward from './canMoveFoward.js';
 import whoIsWinner from './whoIsWinner.js';
 
 const startRacing = (attemptTimes, carList) => {
