@@ -104,4 +104,13 @@ describe("자동차 경주 게임", () => {
       expect(car.name).toBe(input[index]);
     });
   });
+
+  test("중복된 자동차 이름 테스트", async () => {
+    const input = ["car1, car2, car1"];
+    mockQuestions(input);
+
+    const app = new App();
+
+    await expect(app.play()).rejects.toThrow("[ERROR]");
+  });
 });
