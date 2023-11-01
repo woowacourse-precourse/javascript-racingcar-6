@@ -9,8 +9,7 @@ class GetInput {
   async getCarNameInput() {
     try {
       const USER_INPUT = await Console.readLineAsync(MESSAGE.GET_CAR_NAME_MESSAGE);
-      const USER_INPUT_SPLIT = USER_INPUT.split(',');
-      this.carName = exception.carNameInputException(USER_INPUT_SPLIT);
+      this.carName = exception.carNameInputException(USER_INPUT);
       return this.carName;
     }catch(error) {
       throw new Error(error.message);
