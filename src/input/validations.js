@@ -44,6 +44,10 @@ export const validate = {
     if (isNotNumber(input)) throw new Error(MESSAGE.TRY.ERROR.IS_NOT_NUMBER);
 
     if (isMinus(input)) throw new Error(MESSAGE.TRY.ERROR.IS_MINUS);
+
+    if (Number(input) > 5000) {
+      throw new Error('[ERROR] 입력 값은 5000을 넘길 수 없습니다');
+    }
   },
 
   /**
