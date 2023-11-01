@@ -34,7 +34,7 @@ export class Cars {
 
   move() {
     this.#list.forEach((car) => {
-      car.moveOrStop();
+      car.move();
     });
   }
 }

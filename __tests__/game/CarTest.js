@@ -18,11 +18,11 @@ describe("자동차 테스트", ()=>{
         expect(movableCar.movable()).toBe(true);
     })
 
-    test("moveOrStop", ()=>{
+    test("move", ()=>{
         const movableRandomNumberGenerator=  new RandomGenerator(4,9);
         const movableCar = new Car(carName, movableRandomNumberGenerator);
 
-        movableCar.moveOrStop()
+        movableCar.move()
 
         expect(movableCar.getPosition()).toBeGreaterThan(0);
     })

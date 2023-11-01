@@ -28,7 +28,7 @@ export class Car {
     return this.randomNumber() >= MOVE_CONDITION_MINIMUM_VALUE;
   }
 
-  moveOrStop() {
+  move() {
     if (this.movable()) {
       this.#increasePosition();
     }
