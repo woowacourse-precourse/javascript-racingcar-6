@@ -23,5 +23,7 @@ module.exports = {
   rules: {
     'max-depth': ['error', 2],
     'import/extensions': ['off'],
+    'implicit-arrow-linebreak': ['warn'],
+    'operator-linebreak': ['warn'],
   },
 };
