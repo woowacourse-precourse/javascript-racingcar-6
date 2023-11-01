@@ -233,3 +233,69 @@
   - 0o - 8진수로 간주
   - 나머지 경우 - 기본적으로 10진수로 간주
   - 하지만 예상치 못한 결과를 방지하기 위해 radix 값을 항상 제공하는 것이 좋다
+
+<br>
+
+### T-2-1. 시도 횟수 입력 메세지 출력 테스트
+
+- `toHaveBeen 관련 matcher`
+  - toHaveBeen으로 시작하는 matcher들은 특히 mock함수의 호출과 관련된 검증에 사용된다
+- `toHaveBeenCalled`
+  - mock 함수가 호출되었는지 확인한다
+- `toHaveBeenCalledTimes`
+  - mock 함수가 특정 횟수만큼 호출되었는지 확인한다
+
+    ``` javascript
+    expect(mockFunc).toHaveBeenCalledTimes(3);  
+    // mockFunc이 3번 호출되었는지 확인
+    ```
+
+- `toHaveBeenCalledWith`
+  - mock 함수가 특정 인수로 호출되었는지 확인한다
+
+    ``` javascript
+    expect(mockFunc).toHaveBeenCalledWith(arg1, arg2);  
+    // mockFunc이 arg1, arg2로 호출되었는지 확인
+    ```
+
+- `toHaveBeenLastCalledWith`
+  - mock 함수가 마지막으로 호출될 때 주어진 인수로 호출되었는지 확인한다
+
+    ``` javascript
+    expect(mockFunc).toHaveBeenLastCalledWith(arg1, arg2);  
+    // mockFunc이 마지막으로 arg1, arg2로 호출되었는지 확인
+     ```
+
+- `toHaveBeenNthCalledWith`
+  - mock 함수가 n번째로 호출될 때 특정 인수로 호출되었는지 확인한다
+
+    ``` javascript
+    expect(mockFunc).toHaveBeenNthCalledWith(1, arg1, arg2);  
+    // mockFunc이 첫 번째로 arg1, arg2로 호출되었는지 확인
+    ```
+
+- `toHaveReturned`
+  - mock 함수가 값을 반환했는지 확인한다
+- `toHaveReturnedWith`
+  - mock 함수가 특정 값을 반환했는지 확인한다
+
+    ``` javascript
+    expect(mockFunc).toHaveReturnedWith(returnValue);  
+    // mockFunc이 returnValue를 반환했는지 확인
+    ```
+
+- `toHaveBeenLastReturnedWith`
+  - mock 함수가 마지막 호출에서 특정 값을 반환했는지 확인한다
+
+    ``` javascript
+    expect(mockFunc).toHaveBeenLastReturnedWith(returnValue);  
+    // mockFunc의 마지막 호출에서 returnValue를 반환했는지 확인
+    ```
+
+- `toHaveNthReturnedWith`
+  - mock 함수의 n번째 호출에서 특정 값을 반환했는지 확인한다
+
+    ``` javascript
+    expect(mockFunc).toHaveNthReturnedWith(1, returnValue);  
+    // mockFunc의 첫 번째 호출에서 returnValue를 반환했는지 확인
+    ```
