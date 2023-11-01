@@ -1,4 +1,4 @@
-import { ERROR_MESSAGE, REGEXP } from '../constants/Constants';
+import { ERROR_MESSAGE, REGEXP } from '../Constants/Constants.js';
 
 class ValidateAttempt {
   isValidNumber = (attempt) => {

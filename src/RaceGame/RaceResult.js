@@ -1,7 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
-import { OUTPUT_MESSAGE } from '../constants/Constants';
-import MoveCar from '../RaceGame/MoveCar';
-import Winner from '../RaceGame/Winner';
+import { OUTPUT_MESSAGE } from '../Constants/Constants.js';
+import MoveCar from '../RaceGame/MoveCar.js';
+import Winner from '../RaceGame/Winner.js';
 
 class RaceResult {
   constructor() {

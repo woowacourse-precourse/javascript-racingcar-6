@@ -1,7 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
-import { INPUT_MESSAGE, SYMBOL } from '../constants/Constants';
-import ValidateAttempt from '../Validator/ValidateAttempt';
-import ValidateCarName from '../Validator/ValidateCarName';
+import { INPUT_MESSAGE, SYMBOL } from '../Constants/Constants.js';
+import ValidateAttempt from '../Validator/ValidateAttempt.js';
+import ValidateCarName from '../Validator/ValidateCarName.js';
 
 class UserInput {
   constructor() {

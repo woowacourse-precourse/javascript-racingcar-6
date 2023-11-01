@@ -1,5 +1,5 @@
 import { Random } from '@woowacourse/mission-utils';
-import { SYMBOL, MAGIC_NUMBER } from '../constants/Constants';
+import { SYMBOL, MAGIC_NUMBER } from '../Constants/Constants.js';
 
 class MoveCar {
   constructor(forwardStatus) {

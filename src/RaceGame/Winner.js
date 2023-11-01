@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import { OUTPUT_MESSAGE, SYMBOL } from '../constants/Constants';
+import { OUTPUT_MESSAGE, SYMBOL } from '../Constants/Constants.js';
 
 class Winner {
   constructor(forwardStatus) {

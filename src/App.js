@@ -1,5 +1,5 @@
-import UserInput from '../src/Input/UserInput';
-import RaceResult from '../src/RaceGame/RaceResult';
+import UserInput from '../src/Input/UserInput.js';
+import RaceResult from '../src/RaceGame/RaceResult.js';
 
 class App {
   constructor() {

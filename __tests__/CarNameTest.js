@@ -1,4 +1,4 @@
-import ValidateCarName from '../src/Validator/ValidateCarName';
+import ValidateCarName from '../src/Validator/ValidateCarName.js';
 
 describe('자동차 이름 검증 테스트', () => {
   let validator;
