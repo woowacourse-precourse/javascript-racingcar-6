@@ -14,6 +14,14 @@ class RacingModel {
     const randomNumber = RandomNumberGenerator.run();
     return randomNumber >= SYSTEM.canMoveNumber;
   }
+
+  racing() {
+    const vehicleData = this.#vehicle.getData();
+    vehicleData.forEach((progress, vehicle) => {
+      if (!this.#canMove()) return;
+      vehicleData.set(vehicle, `${progress}${SYSTEM.move}`);
+    });
+  }
 }
 
 export default RacingModel;
