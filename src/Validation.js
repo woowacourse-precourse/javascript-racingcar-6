@@ -5,7 +5,7 @@ const Validation = {
     if (
       carNames
         .split(",")
-        .filter((carName) => carName.length >= 1 || carName.length <= 5)
+        .filter((carName) => carName.length >= 1 && carName.length <= 5)
         .length != carNames.split(",").length
     ) {
       throw new Error(ERROR_MESSEAGE.CAR_NAME_LENGTH);
