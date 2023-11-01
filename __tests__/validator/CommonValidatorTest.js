@@ -6,12 +6,14 @@ describe('공통 유효성 검증 테스트', () => {
     emptyInput: GRANDPRIX_ERROR_NOTIFICATION.emptyInput,
   });
 
+  // given
   test.each([
     { input: '', expectError: expectErrorMessage.emptyInput },
     { input: '  ', expectError: expectErrorMessage.emptyInput },
     { input: '   ', expectError: expectErrorMessage.emptyInput },
     { input: '    ', expectError: expectErrorMessage.emptyInput },
   ])('공백 입력 테스트', ({ input, expectError }) => {
+    // when & then
     expect(() => validateCommon(input)).toThrow(expectError);
   });
 });

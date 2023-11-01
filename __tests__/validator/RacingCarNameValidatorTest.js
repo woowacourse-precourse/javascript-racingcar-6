@@ -7,6 +7,7 @@ describe('레이싱카 이름 유효성 검증 테스트', () => {
     duplicationName: GRANDPRIX_ERROR_NOTIFICATION.duplicatedName,
   });
 
+  // given
   test.each([
     { input: 'abcdef,ghi', expectError: expectErrorMessage.invalidLength },
     { input: ',def,ghijkl', expectError: expectErrorMessage.invalidLength },
@@ -17,6 +18,7 @@ describe('레이싱카 이름 유효성 검증 테스트', () => {
     { input: 'woote,woote', expectError: expectErrorMessage.duplicationName },
     { input: 'preco,preco', expectError: expectErrorMessage.duplicationName },
   ])('에러 테스트', ({ input, expectError }) => {
+    // when & then
     expect(() => validateRacingCarName(input)).toThrow(expectError);
   });
 });

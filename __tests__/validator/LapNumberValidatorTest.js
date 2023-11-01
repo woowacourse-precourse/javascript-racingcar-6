@@ -8,6 +8,7 @@ describe('시행 횟수 유효성 검증 테스트', () => {
     invalidInteger: GRANDPRIX_ERROR_NOTIFICATION.invalidInteger,
   });
 
+  // given
   test.each([
     { input: 'abc', expectError: expectErrorMessage.invalidCharactor },
     { input: 'abc def', expectError: expectErrorMessage.invalidCharactor },
@@ -18,6 +19,7 @@ describe('시행 횟수 유효성 검증 테스트', () => {
     { input: '-19', expectError: expectErrorMessage.invalidInteger },
     { input: '-21', expectError: expectErrorMessage.invalidInteger },
   ])('문자 입력 테스트', ({ input, expectError }) => {
+    // when & then
     expect(() => validateLapNumber(input)).toThrow(expectError);
   });
 });
