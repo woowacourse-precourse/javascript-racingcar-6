@@ -14,9 +14,7 @@ export const moveCarsByDistance = (carDataList, distanceList) => {
   return newDataList;
 };
 
-const generateRandomNumber = () => {
-  Random.pickNumberInRange(0, 9);
-};
+const generateRandomNumber = () => Random.pickNumberInRange(0, 9);
 
 const calcDistance = (randomNumber) => {
   const isCarMove = checkIsCarMove(randomNumber);
