@@ -1,10 +1,16 @@
 import { Random } from "@woowacourse/mission-utils";
+import { MIN_FORWARD_VALUE, MOVING_FORWARD, RANGE_OF_RANDOM_NUMBER } from "./Constants/constant";
+
+function makeRandomNumber() {
+  const randomNumber = Random.pickNumberInRange(RANGE_OF_RANDOM_NUMBER.min, RANGE_OF_RANDOM_NUMBER.max);
+  return randomNumber;
+}
 
 function calculateMovement(movement) {
   let index = 0;
   while (index < movement.length) {
     const randomNumber = makeRandomNumber();
-    if (randomNumber >= 4) movement[index] += '-';
+    if (randomNumber >= MIN_FORWARD_VALUE) movement[index] += MOVING_FORWARD;
     index += 1;
   }
 }
@@ -19,11 +25,6 @@ function calculateWinner(movement, car) {
       }
   });
   return maxIndexes;
-}
-
-function makeRandomNumber() {
-  const randomNumber = Random.pickNumberInRange(0, 9);
-  return randomNumber;
 }
 
 export { calculateMovement, calculateWinner };
