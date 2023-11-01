@@ -7,7 +7,7 @@ class App {
   async play() {
     const carName = await getCarName();
     const playNumber = await getPlayNumber();
-    await playGame(playNumber, carName);
+    playGame(playNumber, carName);
     printWinner(carName);
   }
 }
