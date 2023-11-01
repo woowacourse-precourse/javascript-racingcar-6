@@ -1,5 +1,5 @@
 import InputError from "../errors/InputError.js";
-import { ERROR_MSG } from "../constants/Constants";
+import { ERROR_MSG } from "../constants/Constants.js";
 
 export default class InputValidator {
   static validateCarNames(carNames) {
