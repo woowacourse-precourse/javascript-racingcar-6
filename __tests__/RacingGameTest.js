@@ -31,6 +31,7 @@ describe('RacingGame class', () => {
     test('전진 조건에 따라 자동차가 이동하는지 확인', () => {
       const game = new RacingGame('a,b', 1);
       const isMovingForwardSpy = jest.spyOn(game, 'isMovingForward');
+
       isMovingForwardSpy.mockReturnValueOnce(true);
       isMovingForwardSpy.mockReturnValueOnce(false);
 
@@ -51,7 +52,6 @@ describe('RacingGame class', () => {
       isMovingForwardSpy.mockReturnValueOnce(true);
       isMovingForwardSpy.mockReturnValueOnce(true);
       game.start();
-      console.log(game.carPosition);
       outputs.forEach((output) => {
         expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
       });
@@ -62,9 +62,11 @@ describe('RacingGame class', () => {
       const game = new RacingGame('a,b,c', 3);
       game.movingCarPosition();
       expect(game.carPosition).toEqual({ a: 1, b: 1, c: 1 });
+
       MissionUtils.Random.pickNumberInRange = jest.fn(() => 0); // 모든 자동차가 멈춤
       game.movingCarPosition();
       expect(game.carPosition).toEqual({ a: 1, b: 1, c: 1 });
+
       MissionUtils.Random.pickNumberInRange = jest.fn(() => 9); // 모든 자동차가 전진
       game.movingCarPosition();
       expect(game.carPosition).toEqual({ a: 2, b: 2, c: 2 });
@@ -75,7 +77,6 @@ describe('RacingGame class', () => {
     test('우승자 판정 winner를 제대로 구하는지 확인 : winner 1명 ', () => {
       const game = new RacingGame('a,b,c', 5);
 
-      // Set the #carPosition to specific values.
       game.carPosition = {
         a: 2,
         b: 4,
@@ -86,6 +87,7 @@ describe('RacingGame class', () => {
 
       expect(game.winner).toEqual(['b']);
     });
+
     test('우승자 판정 winner를 제대로 구하는지 확인 : winner 1명 이상 ', () => {
       const game = new RacingGame('a,b,c', 5);
 
@@ -109,12 +111,11 @@ describe('RacingGame class', () => {
       game.winner = ['a'];
       game.printWinner();
       expect(logSpy).toHaveBeenCalledWith('최종 우승자 : a');
+
       logSpy.mockClear();
       game.winner = ['a', 'b', 'c'];
       game.printWinner();
       expect(logSpy).toHaveBeenCalledWith('최종 우승자 : a, b, c');
-
-      // expect(game.carPosition).toEqual({ a: 1, b: 0 });
     });
   });
 });
