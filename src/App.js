@@ -14,8 +14,9 @@ class App {
   makeCars(carNamesString) {
     const carNamesArr = carNamesString.split(',');
     carNamesArr.forEach((carName) => {
-      const car = new Car(carName);
       this.cars.push(car);
+      const car = new Car(carName);
+
       return this.cars;
     });
   }
@@ -24,6 +25,17 @@ class App {
     this.cars.forEach((car) => {
       car.setMovement(this.GameCount);
     });
+  }
+
+  findLongestMovementLength() {
+    // forEach돌리며 cars 하나씩 빼오기
+    const movementLengthsArr = [];
+    this.cars.forEach((car) => {
+      const movementLength = car.getMovementLength();
+      movementLengthsArr.push(movementLength);
+    });
+
+    return Math.max(...movementLengthsArr);
   }
 
   async play() {
@@ -40,6 +52,8 @@ class App {
     this.setCarsMovements();
 
     Output.printGameResult(this.cars, this.GameCount);
+
+    const longestMovementLength = this.findLongestMovementLength();
   }
 }
 
