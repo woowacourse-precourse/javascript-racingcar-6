@@ -4,14 +4,14 @@ import { nameValidation, repeatCountValidation } from "./validation.js";
 
 const enterCarName = async () => {
   const carNameInput = await Console.readLineAsync(MESSAGE.nameQuery);
-  const carNames = await carNameInput.split(",").map((name) => name.trim());
-  nameValidation(carNames);
+  const carNames = carNameInput.split(",").map((name) => name.trim());
+  await nameValidation(carNames);
   return carNames;
 };
 
 const enterMoveCount = async () => {
   const moveCountInput = await Console.readLineAsync(MESSAGE.numberQuery);
-  repeatCountValidation(await moveCountInput);
+  await repeatCountValidation(Number(moveCountInput));
   return moveCountInput;
 };
 
