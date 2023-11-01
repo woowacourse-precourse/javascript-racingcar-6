@@ -12,7 +12,6 @@ const INPUT_MESSAGE = {
 
 const OUTPUT_MESSAGE = {
   PROGRESS_RESULT: '실행결과',
-  FINAL_WINNER: '최종 우승자',
   PROGRESS: (name, distance) => `${name} : ${distance}`,
   WINNER: (winner) => `최종우승자: ${winner}`,
 };
