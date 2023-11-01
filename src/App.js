@@ -17,18 +17,13 @@ class App {
   }
 
   generateCars(carNames) {
-    this.cars = [];
-    carNames.forEach(carName => {
-      const car = new Car(carName, "");
-      this.cars.push(car)
-    });
+    return carNames.map(carName => new Car(carName, ""));
   }
 
   async receiveGameCount() {
     const gameCountInput = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
     this.validateGameCountInput(gameCountInput)
-    const gameCount = parseInt(gameCountInput, 10);
-    return gameCount;
+    return parseInt(gameCountInput, 10);
   }
 
   validateGameCountInput(gameCountInput) {
@@ -39,10 +34,7 @@ class App {
 
   shouldUpdateDistanceOnAdvance() {
     const randomNumber = Random.pickNumberInRange(0, 9);
-    if (randomNumber >= 4) {
-      return true;
-    }
-    return false;
+    return randomNumber >= 4;
   }
 
   updateDistancePerRound() {
@@ -69,37 +61,25 @@ class App {
   }
 
   getFinalWinnerDistance() {
-    let maxDistance = '';
-    this.cars.forEach(car => {
-      if (maxDistance.length < car.distance.length){
-        maxDistance = car.distance;
-      }
-    });
-    return maxDistance
+    return this.cars.reduce((maxDistance, car) => {
+      return maxDistance.length < car.distance.length ? car.distance : maxDistance;
+    }, '');
   }
 
   displayFinalWinner() {
-    let maxDistance = this.getFinalWinnerDistance();
-    this.winners = [];
-    this.cars.forEach(car => {
-      if (maxDistance === car.distance) {
-        this.winners.push(car.name);
-      }
-    });
+    const maxDistance = this.getFinalWinnerDistance();
+    this.winners = this.cars.filter(car => car.distance === maxDistance).map(car => car.name);
     Console.print(`최종 우승자 : ${this.winners.join(', ')}`);
   }
 
   async play() {
     const carNames = await this.receiveCarNames();
-    this.validateCarNames(carNames)
-    this.generateCars(carNames);
+    this.validateCarNames(carNames);
+    this.cars = this.generateCars(carNames);
     const gameCount = await this.receiveGameCount();
     this.displayGameResultsForRounds(gameCount);
     this.displayFinalWinner();
   }
 }
-
-const app = new App();
-app.play();
 
 export default App;
