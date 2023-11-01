@@ -1,16 +1,23 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
-class Car {
-  racingCars;
+class RacingGame {
+  #racingCars = {};
   #attempt;
 
   constructor(cars) {
-    this.racingCars = {};
-    cars.split(",").forEach((key) => (this.racingCars[key] = ""));
+    cars.split(",").forEach((key) => (this.#racingCars[key] = ""));
   }
 
   setRacingAttempt(attempt) {
     this.#attempt = attempt;
+  }
+
+  get getRacingCarsName() {
+    return Object.keys(this.#racingCars);
+  }
+
+  get getRacingAttempt() {
+    return this.#attempt;
   }
 
   get getRandomNumber() {
@@ -26,20 +33,18 @@ class Car {
 
   move(car) {
     if (this.isMove) {
-      this.racingCars[car] += "-";
+      this.#racingCars[car] += "-";
     }
-    return this.racingCars[car].length;
+    return this.#racingCars[car].length;
   }
 
   get raceScore() {
     const score = [];
-    Object.keys(this.racingCars).forEach((car) => {
+    Object.keys(this.#racingCars).forEach((car) => {
       score.push([car, this.move(car)]);
     });
     return score;
   }
 }
 
-const car = new Car();
-
-export default Car;
+export default RacingGame;

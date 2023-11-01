@@ -9,6 +9,10 @@ const OutputView = {
     Console.print(`${name} : ${"-".repeat(score)}`);
   },
 
+  printNewRound() {
+    Console.print("");
+  },
+
   printGameWinnerMessage(winners) {
     Console.print(`최종 우승자 : ${winners.join(", ")}`);
   },
