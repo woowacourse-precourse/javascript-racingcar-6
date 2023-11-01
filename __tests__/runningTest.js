@@ -28,9 +28,10 @@ describe("자동차 경주 게임", () => {
     // given
     const MOVING_FORWARD = 4;
     const STOP = 3;
-    const inputs = ["pobi,woni", "1"];
-    const outputs = ["pobi : -"];
-    const randoms = [MOVING_FORWARD, STOP];
+    const inputs = ["pobi,woni", "2"];
+    const outputs = ["woni : -", "woni : --"];
+    //const outputs = ["pobi : ", "woni : -", "pobi : ", "woni : --"];
+    const randoms = [STOP, MOVING_FORWARD, STOP, MOVING_FORWARD];
     const logSpy = getLogSpy();
 
     mockQuestions(inputs);
