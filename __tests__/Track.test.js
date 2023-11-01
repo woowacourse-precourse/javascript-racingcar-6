@@ -11,7 +11,7 @@ const mockRandoms = (numbers) => {
 describe('Track method test', () => {
   test('4이상 값을 넣었을 때 true가 반환 되는지', async () => {
     // when
-    const moreThan4 = [9, 8];
+    const moreThan4 = [9, 4];
     const resultTrue = mockRandoms([...moreThan4]);
 
     const track = new Track();

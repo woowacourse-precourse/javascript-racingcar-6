@@ -15,14 +15,14 @@ class Track {
     this.#cars = cars;
   }
 
-  async checkCarMove(car) {
+  async checkCarMove() {
     const randomNumber = await Random.pickNumberInRange(0, 9);
 
     return !!(randomNumber >= Track.limitNumber);
   }
 
   async moveCarsCheckCondition() {
-    const movePromises = this.#cars.map((car) => this.checkCarMove(car));
+    const movePromises = this.#cars.map(() => this.checkCarMove());
     const results = await Promise.all(movePromises);
 
     results.forEach((canCarMove, index) => {
@@ -39,6 +39,7 @@ class Track {
   getChampions() {
     const maxDistance = Math.max(...this.#cars.map((car) => car.getCarDistance()));
     const champions = this.#cars.filter((car) => car.getCarDistance() === maxDistance);
+
     return champions;
   }
 }

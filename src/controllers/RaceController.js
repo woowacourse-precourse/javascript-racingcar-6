@@ -34,12 +34,7 @@ class RaceController {
   }
 
   finishLine() {
-    const champions = this.#race
-      .getChampions()
-      .map((car) => car.getCarName())
-      .join(', ');
-
-    Console.print(`최종 우승자 : ${champions}`);
+    DisplayView.printChampions(this.#race.getChampions());
   }
 }
 
