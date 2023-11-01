@@ -27,10 +27,12 @@ describe('Validator 클래스 테스트', () => {
     expect(() => Validator.validateCarNames(names)).toThrow();
   });
 
-  test('시도횟수에 음수가 입력되었을 때 validateLapCount, isSafeInteger 함수를 테스트한다.', () => {
-    const lapCount = '-1';
+  test('시도횟수에 0 이하의 숫자나 정수가 아닌 숫자가 입력되었을 때 validateLapCount, isSafeInteger 함수를 테스트한다.', () => {
+    const lapCounts = ['-1', '0.5', '0', '3.5'];
 
-    expect(() => Validator.validateLapCount(lapCount)).toThrow();
+    lapCounts.forEach((lapCount) => {
+      expect(() => Validator.validateLapCount(lapCount)).toThrow();
+    });
   });
 
   test('시도횟수에 숫자가 아닌 값이 입력되었을 때 validateLapCount, isSafeInteger 함수를 테스트한다.', () => {

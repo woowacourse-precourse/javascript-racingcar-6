@@ -1,6 +1,6 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import Race from '../src/RacingCarGame/Race/index.js';
-import Car from '../src/RacingCarGame/Car';
+import Car from '../src/RacingCarGame/Car/index.js';
 import { SYMBOLS } from '../src/RacingCarGame/constants/message.js';
 
 const mockRandoms = (numbers) => {

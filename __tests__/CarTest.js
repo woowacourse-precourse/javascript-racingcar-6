@@ -1,6 +1,6 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import Car from '../src/RacingCarGame/Car/index.js';
-import { SYMBOLS } from '../src/RacingCarGame/constants';
+import { SYMBOLS } from '../src/RacingCarGame/constants/index.js';
 
 const mockRandoms = (numbers) => {
   MissionUtils.Random.pickNumberInRange = jest.fn();
