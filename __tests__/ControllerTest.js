@@ -62,6 +62,7 @@ describe("경주 조건 입력: 자동차 이름", () => {
     }
   );
 
+  
 });
 
 describe("경주 조건 입력: 시도 횟수", () => {
@@ -75,8 +76,8 @@ describe("경주 조건 입력: 시도 횟수", () => {
     expect(controller.numOfTry).toEqual(3);
   });
 
-  test.each([0, -1, "%"])(
-    "시도횟수에 대한 예외 처리 - 양의 정수 아님",
+  test.each([[[0]], [[-1]], [["%"]]])(
+    "시도 횟수에 대한 예외 처리 - 양의 정수 아님",
     async (inputs) => {
       // given
       mockQuestions(inputs);
