@@ -55,4 +55,22 @@ describe('자동차 경주 게임', () => {
       await expect(app.play()).rejects.toThrow('[ERROR]');
     },
   );
+
+  test('결과 출력', async () => {
+    // given
+    const MOVING_FORWARD = 4;
+    const STOP = 3;
+    const inputs = ['pobi,woni', '1'];
+    const outputs = ['최종 우승자 :', 'pobi'];
+    const randoms = [MOVING_FORWARD, STOP];
+    const logSpy = getLogSpy();
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+    // when
+    const app = new App();
+    await app.play();
+    // then
+    const lastCall = logSpy.mock.calls[logSpy.mock.calls.length - 1]; // 마지막 호출을 가져옴
+    expect(lastCall[0]).toContain(outputs[1]);
+  });
 });
