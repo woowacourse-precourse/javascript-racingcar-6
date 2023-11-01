@@ -10,30 +10,32 @@ class App {
     this.winners = [];
   }
   async play() {
-    Console.print("hello");
     await this.initGame();
     this.startGame();
   }
 
   async initGame(){
     const players = await GameSetting.getCarsName();
-    Console.print(`players : ${players}`);/
+//    Console.print(`players : ${players}`);
     this.roundNumber = await GameSetting.getRound();
-    Console.print(`round : ${this.roundNumber}`);
+//    Console.print(`round : ${this.roundNumber}`);
     this.playersData = await GameSetting.getPlayersData(players);
-    Console.print(`playersData : ${this.playersData}`);
+//    Console.print(`playersData : ${this.playersData}`);
   }
 
   startGame() {
     Console.print(GAME_MESSAGE.ROUND_START);
     for (let round = 0; round < this.roundNumber; round++) {
       const findData = GameMainLogic.roundLogic(this.playersData);
-      Console.print(`이게 뭔지 알고 싶다. ${GameMainLogic.roundLogic(this.playersData)}`)
-      Console.print(`startGame round : ${round}`);
-      Console.print(`startGame playersData : ${this.playersData}`);
-      Console.print(`startGame findData : ${findData}`)
+//      Console.print(`이게 뭔지 알고 싶다. ${GameMainLogic.roundLogic(this.playersData)}`)
+//      Console.print(`startGame round : ${round}`);
+//      Console.print(`startGame playersData : ${this.playersData}`);
+//      Console.print(`startGame findData : ${findData}`)
       GameMainLogic.printRoundResult(this.playersData);
     }
+
+    this.winners = GameMainLogic.findWinner(this.playersData);
+    GameMainLogic.printWinner(this.winners);
   }
 }
 

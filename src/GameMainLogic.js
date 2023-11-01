@@ -7,7 +7,7 @@ class GameMainLogic{
     }
 
     static roundLogic(playersData){
-        Console.print(`roundLogic : ${playersData}`)
+        // Console.print(`roundLogic : ${playersData}`)
         return playersData.forEach(player => {
             if(this.isGoForward()){
                 const updatePosition = player.position++;
@@ -26,7 +26,15 @@ class GameMainLogic{
         Console.print(result);
     }
 
+    static findWinner(playersData){
+        const maxPosition = Math.max(...playersData.map(player => player.position));
+        return playersData.filter(player => player.position === maxPosition);
+    }
 
+    static printWinner(winners){
+        const winnerNames = winners.map(winner => winner.carName).join(',');
+        Console.print(`${GAME_MESSAGE.WINNER_MESSAGE} ${winnerNames}`);
+    }
 }
 
 export default GameMainLogic
