@@ -2,6 +2,7 @@ import { Random, Console } from "@woowacourse/mission-utils";
 
 class App {
   cars;
+  carResults = [];
   async getCarName() {
     const carInput = await Console.readLineAsync(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
@@ -15,6 +16,8 @@ class App {
       // 중복된 이름이 있는지 검사
       throw new Error("[ERROR] 중복된 이름이 있습니다.");
     }
+
+    this.carResults = new Array(this.cars.length).fill("");
   }
 
   async play() {}
