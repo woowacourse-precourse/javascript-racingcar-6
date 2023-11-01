@@ -62,3 +62,4 @@
     - Model의 상태 변경에 따라 View에게 정보를 전달
     - GameController
         - 함수: startGame(게임 시작), runByCount(라운드 별 게임 실행), determineWinner(우승자 전달)
+
