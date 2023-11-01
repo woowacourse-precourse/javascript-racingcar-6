@@ -46,9 +46,7 @@ class RacingCarController {
   }
 
   async countWinner(winnerIndexList) {
-    await winnerIndexList.forEach((winnerIndex) => {
-      this.winnerList[winnerIndex] += '-';
-    });
+    await winnerIndexList.forEach(winnerIndex => (this.winnerList[winnerIndex] += '-'));
     this.printEachResult();
   }
 
@@ -57,7 +55,7 @@ class RacingCarController {
   }
 
   getFinalWinnerName() {
-    let totalWinnerCount = this.winnerList.map((x) => x.length);
+    let totalWinnerCount = this.winnerList.map(x => x.length);
     let maxWinnerLength = Math.max(...totalWinnerCount);
     let winnerIndex = totalWinnerCount.indexOf(maxWinnerLength);
     let finalWinner = [];

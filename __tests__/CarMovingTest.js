@@ -6,7 +6,7 @@ describe('자동차 랜덤 이동값 테스트', () => {
   test('자동차 랜덤값이 4 미만일 경우 전진하지 않음', () => {
     const failRandomValue = [0, 1, 2, 3];
 
-    failRandomValue.forEach((number) => {
+    failRandomValue.forEach(number => {
       expect(() => carMoving.checkRandomNumber(number).toEqual(0));
     });
   });
@@ -14,7 +14,7 @@ describe('자동차 랜덤 이동값 테스트', () => {
   test('자동차 랜덤값이 4 이상일 때만 전진', () => {
     const succesRandomValue = [4, 5, 6, 7, 8, 9];
 
-    succesRandomValue.forEach((number) => {
+    succesRandomValue.forEach(number => {
       expect(() => carMoving.checkRandomNumber(number).toEqual(number));
     });
   });

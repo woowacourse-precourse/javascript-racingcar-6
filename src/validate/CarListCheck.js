@@ -14,7 +14,7 @@ class CarListCheck {
   checkCarList(carList, inputCarList) {
     this.checkSameName(carList);
     this.checkNoInput(inputCarList);
-    carList.forEach((carName) => this.checkNameLength(carName));
+    carList.forEach(carName => this.checkNameLength(carName));
   }
 
   checkNoInput(inputCarList) {

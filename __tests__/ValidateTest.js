@@ -49,7 +49,7 @@ describe('레이싱 횟수 입력 테스트', () => {
     const input = [-2, 0, '', 1.2, 5.23];
     const result = ERROR.tryNumberZero;
 
-    input.forEach((input) => {
+    input.forEach(input => {
       expect(() => racingNumberValidate.checkZero(input).toThrow(result));
     });
   });
@@ -58,7 +58,7 @@ describe('레이싱 횟수 입력 테스트', () => {
     const input = ['a', '!', ' ', '가'];
     const result = ERROR.tryNumberZero;
 
-    input.forEach((input) => {
+    input.forEach(input => {
       expect(() => racingNumberValidate.checkType(input).toThrow(result));
     });
   });
