@@ -39,7 +39,7 @@ describe('1. 자동차 이름을 입력 했을때', () => {
     const validateInput = 'dong,gyun,kim';
     const expectCarList = [new Car('dong'), new Car('gyun'), new Car('kim')];
 
-    // 1-2-1. CarList 확인
+    // CarList 확인
     mockQuestions(validateInput);
 
     const game = new Game();
@@ -65,5 +65,19 @@ describe('2. 시도할 횟수를 입력 했을때', () => {
     for (let i = 0; i < invalidInput.length; i++) {
       expect(() => validateMoveNum(invalidInput[i])).toThrow(errorMessage[i]);
     }
+  });
+
+  test('2-2. 입력이 제대로 되었을때', async () => {
+    const validateInput = '22';
+    const expectMoveNum = '22';
+
+    // 입력값과 moveNum 비교
+    mockQuestions(validateInput);
+
+    const game = new Game();
+    await game.moveQuestion();
+    const { moveNum } = game.getCarMoveNum();
+
+    expect(moveNum).toEqual(expectMoveNum);
   });
 });
