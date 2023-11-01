@@ -1,5 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
 import { isInvalidTryNumber, getRandomNumber, isMovable } from "./util";
+import { MESSAGE, ERROR_MESSAGE } from "./constants";
 
 const MAX_CAR_NAME_LENGTH = 5;
 const INITIAL_RACING_COUNT = 0;
@@ -11,13 +12,11 @@ class App {
   racingCounts = {};
 
   async getCarName() {
-    const receivedCarNames = await Console.readLineAsync(
-      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
-    );
+    const receivedCarNames = await Console.readLineAsync(MESSAGE.INPUT_NAME);
     this.carNames = receivedCarNames.split(",");
     this.carNames.forEach((carName) => {
       if (carName.length > MAX_CAR_NAME_LENGTH) {
-        throw new Error("[ERROR]: 자동차 이름은 5자 이하로 입력해주세요");
+        throw new Error(ERROR_MESSAGE.TOO_LONG_NAME);
       }
       this.racingCounts[carName] = INITIAL_RACING_COUNT;
     });
@@ -25,7 +24,7 @@ class App {
 
   async getTryNumber() {
     const receivedTryNumber = await Console.readLineAsync(
-      "시도할 횟수는 몇 회인가요?\n"
+      MESSAGE.INPUT_TRY_NUMBER
     );
     this.tryNumber = Number(receivedTryNumber);
     if (isInvalidTryNumber(this.tryNumber)) {
@@ -36,11 +35,11 @@ class App {
   async play() {
     await this.getCarName();
     await this.getTryNumber();
-    Console.print("실행 결과");
+    Console.print(MESSAGE.RACE_RESULT);
 
     this.doRace();
 
-    Console.print(`최종 우승자: ${this.getWinner()}`);
+    Console.print(`${MESSAGE.WINNER} : ${this.getWinner()}`);
   }
 
   doRace() {
