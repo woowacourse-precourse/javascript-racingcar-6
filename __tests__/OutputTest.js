@@ -44,4 +44,36 @@ describe('출력 테스트', () => {
     expect(logSpy).toHaveBeenCalledWith('car2 : -');
     expect(logSpy).toHaveBeenCalledWith('');
   });
+
+  test('단일 우승자 결과 출력', () => {
+    const car1 = new Car('car1');
+    const car2 = new Car('car2');
+
+    const cars = [car1, car2];
+
+    const logspy = getLogSpy();
+
+    car1.move(4);
+    car2.move(8);
+
+    GameConsole.printGameWinner(cars);
+
+    expect(logspy).toHaveBeenCalledWith('최종 우승자 : car2');
+  });
+
+  test('공동 우승자 결과 출력', () => {
+    const car1 = new Car('car1');
+    const car2 = new Car('car2');
+
+    const cars = [car1, car2];
+
+    const logspy = getLogSpy();
+
+    car1.move(4);
+    car2.move(4);
+
+    GameConsole.printGameWinner(cars);
+
+    expect(logspy).toHaveBeenCalledWith('최종 우승자 : car1, car2');
+  });
 });
