@@ -38,6 +38,12 @@ class App {
     });
     MissionUtils.Console.print('');
   }
+
+  printWinner(cars){
+    const maxMove = Math.max(cars.map((car) => car.moveCount));
+    const winners = cars.filter((car) => car.moveCount === maxMove).map((car) => car.name);
+    MissionUtils.Console.print(winners.length > 1 ? `최종 우승자 : ${winners.join(', ')}` : `최종 우승자 : ${winners[0]}`);
+  }
 }
 
 export default App;
