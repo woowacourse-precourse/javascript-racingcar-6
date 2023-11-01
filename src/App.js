@@ -1,5 +1,6 @@
 import { Random, Console } from '@woowacourse/mission-utils';
 import Validate from './validation.js';
+import Calculate from './calculate.js';
 import { GAME_MESSAGE } from './constant.js';
 
 class App {
@@ -22,14 +23,16 @@ class App {
     Console.print('');
   }
 
-  calculateMaxMove() {
-    return Math.max(...this.carsStatus.map((carStatus) => carStatus.move));
+  printWinner() {
+    Console.print(`최종 우승자 : ${Calculate.calculateWinner(this.carsStatus).join(', ')}`.trim());
   }
 
-  calculateWinner() {
-    return this.carsStatus
-      .filter((carStatus) => carStatus.move === this.calculateMaxMove())
-      .map((carStatus) => carStatus.name);
+  printRace() {
+    Console.print('\n실행 결과');
+    for (let i = 0; i < this.tryNumber; i += 1) {
+      this.moveCars();
+      this.printCars();
+    }
   }
 
   async inputCarsStatus() {
@@ -47,12 +50,8 @@ class App {
   async play() {
     await this.inputCarsStatus();
     await this.inputTryNumber();
-    Console.print('\n실행 결과');
-    for (let i = 0; i < this.tryNumber; i += 1) {
-      this.moveCars();
-      this.printCars();
-    }
-    Console.print(`최종 우승자 : ${this.calculateWinner().join(', ')}`.trim());
+    this.printRace();
+    this.printWinner();
   }
 }
 

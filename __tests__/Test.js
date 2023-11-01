@@ -59,25 +59,6 @@ describe('비정상 값 입력', () => {
 });
 
 describe('정상 값 입력', () => {
-  // test('전진-정지', async () => {
-  //   // given
-  //   const MOVING_FORWARD = 4;
-  //   const STOP = 3;
-  //   const inputs = ['pobi,woni', '1'];
-  //   const outputs = ['pobi : -'];
-  //   const randoms = [MOVING_FORWARD, STOP];
-  //   const logSpy = getLogSpy();
-  //   mockQuestions(inputs);
-  //   mockRandoms([...randoms]);
-  //   // when
-  //   const app = new App();
-  //   await app.play();
-  //   // then
-  //   outputs.forEach((output) => {
-  //     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
-  //   });
-  // });
-
   test('첫 자동차만 전진하고 나머지는 전진 0회인 경우', async () => {
     // given
     const inputs = ['a, b, c, d', '2'];
@@ -100,6 +81,24 @@ describe('정상 값 입력', () => {
     const inputs = ['a, b, c, d', '2'];
     const outputs = ['a : --', 'b : --', 'c : --', 'd : --', '최종 우승자 : a, b, c, d'];
     const randoms = [4, 4, 4, 4, 4, 4, 4, 4];
+    const logSpy = getLogSpy();
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+    // when
+    const app = new App();
+    await app.play();
+
+    // then
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
+
+  test('모든 자동차가 전진을 한 번도 못한 경우', async () => {
+    // given
+    const inputs = ['a, b, c, d', '2'];
+    const outputs = ['a :', 'b :', 'c :', 'd :', '최종 우승자 : a, b, c, d'];
+    const randoms = [0, 0, 0, 0, 0, 0, 0, 0];
     const logSpy = getLogSpy();
     mockQuestions(inputs);
     mockRandoms([...randoms]);
