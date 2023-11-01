@@ -8,6 +8,8 @@ class App {
   async play() {
     this.carName = await this.getCarName();
     this.attempts = await this.getAttempts();
+
+    Console.print(`\n실행 결과`);
   }
 
   async getCarName() {
