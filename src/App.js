@@ -1,10 +1,13 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import getInput from './components/getInput.js'
+import getNameInput from './components/getNameInput.js';
+import getCountInput from "./components/getCountInput.js";
 
 class App {
   async play() {
-    const inputNames = await getInput();
-    MissionUtils.Console.print(inputNames)
+    const inputNames = await getNameInput();
+    const inputCount = await getCountInput();
+    MissionUtils.Console.print(inputNames);
+    MissionUtils.Console.print(inputCount);
   }
 }
 
