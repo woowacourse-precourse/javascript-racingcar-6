@@ -4,14 +4,17 @@ import { validateTurnNumber } from '../validations/validateTurnNumber.js';
 
 class Race {
   constructor() {
-    this.turnNumber = 0;
+    this.turnNumber = this.setTurnNumber();
   }
 
   async setTurnNumber() {
     const turnNumber = await Console.readLineAsync(IN_GAME_MESSAGE.getInputTurnNumber);
     validateTurnNumber(turnNumber);
+    return turnNumber;
+  }
 
-    this.turnNumber = turnNumber;
+  startRaceTurn(car) {
+    // TODO: 턴 진행 코드 구현
   }
 }
 

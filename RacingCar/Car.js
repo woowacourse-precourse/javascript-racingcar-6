@@ -4,7 +4,7 @@ import { validateCarName } from '../validations/validateCarName.js';
 
 class Car {
   constructor() {
-    this.carList = {};
+    this.carList = this.createCarObject();
   }
 
   filterInputCarNameList(carName) {
@@ -27,8 +27,8 @@ class Car {
 
     validateCarName(carNameList);
 
-    this.carList = await this.carNameListToObject(carNameList);
-    return this.carList;
+    const carList = await this.carNameListToObject(carNameList);
+    return carList;
   }
 }
 
