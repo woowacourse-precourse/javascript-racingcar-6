@@ -10,20 +10,23 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 
 class App {
   constructor() {
-    this.status = {};
+    this.carNames = [];
+    this.gameResults = {};
+    this.gameCount = 0;
   }
 
   async play() {
     // 사용자가 입력한 차 이름 배열
-    const CAR_LIST = await this.getCarNames();
+    this.carNames = await this.getCarNames();
 
     // 시도할 횟수 입력
-    const GAME_COUNT = await this.getGameCount();
+    this.gameCount = await this.getGameCount();
 
-    this.initGame(CAR_LIST, GAME_COUNT);
+    this.initGame();
 
-    while (this.status.gameCount) {
-      if (this.status.gameCount > 0) this.status.gameCount--;
+    while (this.gameCount > 0) {
+      this.moveRacingCarRandomly();
+      this.gameCount--;
     }
   }
 
@@ -57,13 +60,8 @@ class App {
     return GAME_COUNT;
   }
 
-  initGame(CAR_LIST, GAME_COUNT) {
-    this.status = {
-      gameCount: GAME_COUNT,
-      gameResult: {},
-    };
-
-    CAR_LIST.forEach((e) => {
+  initGame() {
+    this.carNames.forEach((e) => {
       this.status.gameResult[e] = 0;
     });
   }
