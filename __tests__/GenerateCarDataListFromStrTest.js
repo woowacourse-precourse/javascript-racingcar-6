@@ -51,7 +51,7 @@ describe('GenerateCarDataListFromStr', () => {
 
     carNameStrList.forEach((carNameStr, i) => {
       expect(generateCarDataListFromStr(carNameStr)).toEqual(
-        correctDataList[i]
+        correctDataList[i],
       );
     });
   });

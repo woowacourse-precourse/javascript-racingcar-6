@@ -12,7 +12,7 @@ const announceRoundResult = (carDataList) => {
   carDataList.forEach((carDataObj) => {
     const nameDistanceRow = generateNameDistanceRow(
       carDataObj.name,
-      carDataObj.distance
+      carDataObj.distance,
     );
 
     Console.print(nameDistanceRow);

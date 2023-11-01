@@ -7,7 +7,7 @@ describe('GetTotalRoundNumber', () => {
 
     roundNumberStrList.forEach((roundNumberStr, i) => {
       expect(checkNumberValidity(roundNumberStr)).toBe(
-        correctBooleanValueList[i]
+        correctBooleanValueList[i],
       );
     });
   });

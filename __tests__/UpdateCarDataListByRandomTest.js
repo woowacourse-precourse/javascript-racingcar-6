@@ -1,5 +1,5 @@
 import {
-  checkIsCarMove,
+  checkWhetherCarMove,
   moveCarsByDistance,
 } from '../src/feature/UpdateCarDataListByRandom.js';
 
@@ -11,7 +11,7 @@ describe('UpdateCarDataListByRandom', () => {
     const correctBooleanList = [false, true, false];
 
     randomNumberList.forEach((randomNumber, i) => {
-      expect(checkIsCarMove(randomNumber)).toBe(correctBooleanList[i]);
+      expect(checkWhetherCarMove(randomNumber)).toBe(correctBooleanList[i]);
     });
   });
 
@@ -30,7 +30,7 @@ describe('UpdateCarDataListByRandom', () => {
     ];
 
     expect(moveCarsByDistance(carDataList, distanceList)).toEqual(
-      updatedCarDataList
+      updatedCarDataList,
     );
   });
 });

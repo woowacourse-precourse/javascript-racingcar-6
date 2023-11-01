@@ -9,7 +9,7 @@ describe('GetValidCarNameStr', () => {
 
     carNameStrList.forEach((carNameStr, i) => {
       expect(checkCarNameStrValidity(carNameStr.split(','))).toBe(
-        correctBooleanList[i]
+        correctBooleanList[i],
       );
     });
   });
