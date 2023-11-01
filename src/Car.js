@@ -1,5 +1,3 @@
-import NUMBER from "./constants/NUMBER.js";
-
 class Car {
   #carName;
   #distance;
