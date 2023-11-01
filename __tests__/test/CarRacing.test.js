@@ -1,13 +1,14 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import App from '../../src/App.js';
 
-function mockConsoleReadLineAsync(inputs) {
+const mockConsoleReadLineAsync = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
   MissionUtils.Console.readLineAsync.mockImplementation(() => {
     const input = inputs.shift();
+
     return Promise.resolve(input);
   });
-}
+};
 
 const mockRandoms = (numbers) => {
   MissionUtils.Random.pickNumberInRange = jest.fn();
@@ -24,14 +25,6 @@ const getLogSpy = () => {
 };
 
 describe('🔹 경주 할 자동차 이름 입력', () => {
-  // test('올바른 자동차 이름 입력 시 프로그램이 정상적으로 동작', async () => {
-  //   const correctInputs = ['AAA, BBB, CCC', 3];
-  //   mockConsoleReadLineAsync(correctInputs);
-
-  //   const app = new App();
-  //   await expect(app.play()).resolves.not.toThrow();
-  // });
-
   test('올바른 자동차 이름 입력 시 프로그램이 정상적으로 동작', async () => {
     const correctInputs = ['AAA, BBB, CCC', 3];
     mockConsoleReadLineAsync(correctInputs);
@@ -74,7 +67,6 @@ describe('🔹 경주 결과 출력', () => {
     const correctInputs = ['AAA, BBB', 2];
     const randoms = [MOVE, STOP, MOVE, STOP];
     const messages = ['AAA : -', 'BBB : ', 'AAA : --', 'BBB : '];
-
     const logSpy = getLogSpy();
 
     mockConsoleReadLineAsync(correctInputs);
@@ -83,8 +75,8 @@ describe('🔹 경주 결과 출력', () => {
     const app = new App();
     await app.play();
 
-    messages.forEach((output) => {
-      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    messages.forEach((message) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(message));
     });
   });
 });
@@ -105,8 +97,8 @@ describe('🔹 최종 우승자 출력', () => {
     const app = new App();
     await app.play();
 
-    messages.forEach((output) => {
-      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    messages.forEach((message) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(message));
     });
   });
 
@@ -125,8 +117,8 @@ describe('🔹 최종 우승자 출력', () => {
     const app = new App();
     await app.play();
 
-    messages.forEach((output) => {
-      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    messages.forEach((message) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(message));
     });
   });
 });
