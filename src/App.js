@@ -40,6 +40,17 @@ class App {
       return "";
     }
   }
+  async game() {
+    Console.print("게임 실행 결과");
+    for (let j = 0; j < this.trialNumber; j++) {
+      for (let i = 0; i < this.cars.length; i++) {
+        const result = this.getRandom();
+        this.carResults[i] += result;
+        Console.print(`${this.cars[i]} : ${this.carResults[i]}`);
+      }
+      console.log("");
+    }
+  }
   async play() {}
 }
 
