@@ -32,7 +32,7 @@ const playRound = (cars, roundCount, gameRound, printPromises) => {
   printPromises.push(printResults(cars, roundCount, gameRound));
 };
 
-const startGame = async () => {
+export const startGame = async () => {
   const [carNamesInput, gameRound] = await userInput();
   const cars = await initCars(carNamesInput);
   const printPromises = [];
