@@ -25,11 +25,11 @@ class Input {
         /^[\w\s]{1,5}$/.test(carNames)
       )
     ) {
-      throw new Error('유효하지 않은 입력');
+      throw new Error('[ERROR] 유효하지 않은 입력');
     }
     const carNumber = carNames.split(',').length;
     if (carNumber !== new Set(carNames.split(',')).size) {
-      throw new Error('중복된 유저 입력');
+      throw new Error('[ERROR] 중복된 유저 입력');
     }
     this.carSet = {
       carNames,
@@ -38,19 +38,18 @@ class Input {
   }
 
   async setTrial() {
-    const trials = parseInt(
-      await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n'),
-      10,
-    );
+    const trials = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    const intTrials = /\./g.test(trials) ? 0 : parseInt(trials, 10);
+
     if (
-      Number.isNaN(trials) ||
-      trials < 1 ||
-      trials > Number.MAX_SAFE_INTEGER
+      Number.isNaN(intTrials) ||
+      intTrials < 1 ||
+      intTrials > Number.MAX_SAFE_INTEGER
     ) {
       throw new Error('[ERROR] 유효하지 않은 횟수 입력입니다.');
     }
-    this.trials = trials;
-    return trials;
+    this.trials = intTrials;
+    return intTrials;
   }
 }
 

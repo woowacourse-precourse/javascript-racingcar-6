@@ -1,8 +1,6 @@
 import { Console, Random } from '@woowacourse/mission-utils';
 import Input from './Input';
 
-// 배열로서 carName, carValue 관리
-
 class App {
   constructor() {
     this.trial = 0;
@@ -71,5 +69,3 @@ class App {
 }
 
 export default App;
-
-// 굳이 랜덤만 받아올거면 Car 객체는 필요없을듯
