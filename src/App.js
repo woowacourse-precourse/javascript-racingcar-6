@@ -7,13 +7,11 @@ class App {
 
     Console.print('실행 결과');
 
-    this.executeGameRound(racingCars, tryCount);
+    const result = this.executeGameRound(racingCars, tryCount);
 
-    const finalWinner = this.getFinalWinner(racingCars);
+    const finalWinner = this.getFinalWinner(result);
 
     Console.print(`최종 우승자 : ${finalWinner}`);
-
-    return;
   }
 
   async getCarName() {
@@ -69,27 +67,38 @@ class App {
     return Random.pickNumberInRange(0, 9);
   }
 
-  moveForward(key, value, racingCars) {
+  moveForward(value) {
     const MINIMUM_FORWARD_VALUE = 4;
     const randomNumber = this.getRandomNumber();
 
+    console.log(randomNumber);
+
     if (randomNumber >= MINIMUM_FORWARD_VALUE) {
-      racingCars[key] = value += 1;
+      return value + 1;
     }
+    return value;
   }
 
   executeGameRound(racingCars, tryCount) {
     let round = 0;
+    let gameRounds = { ...racingCars };
 
     while (round < tryCount) {
-      Object.entries(racingCars).forEach(([key, value]) => {
-        this.moveForward(key, value, racingCars);
-      });
+      gameRounds = Object.entries(racingCars).reduce(
+        (acc, curr) => {
+          const value = acc[curr[0]] + curr[1];
+          acc[curr[0]] = this.moveForward(value);
+          return acc;
+        },
+        { ...gameRounds }
+      );
 
-      this.printGameRound(racingCars);
+      this.printGameRound(gameRounds);
 
       round += 1;
     }
+
+    return gameRounds;
   }
 
   printGameRound(gameRound) {
