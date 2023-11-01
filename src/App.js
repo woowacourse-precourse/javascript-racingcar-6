@@ -1,4 +1,5 @@
 import { Console, Random } from '@woowacourse/mission-utils';
+import Car from './Car.js';
 
 class App {
   async receiveCarNames() {
@@ -7,8 +8,17 @@ class App {
     return carNames;
   }
 
+  generateCars(carNames) {
+    this.cars = [];
+    carNames.forEach(carName => {
+      const car = new Car(carName, "");
+      this.cars.push(car)
+    });
+  }
+
   async play() {
-    this.receiveCarNames();
+    const carNames = await this.receiveCarNames();
+    this.generateCars(carNames);
   }
 }
 
