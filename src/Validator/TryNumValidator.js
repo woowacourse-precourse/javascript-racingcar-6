@@ -1,4 +1,4 @@
-class tryNumValidator {
+class TryNumValidator {
   /**
    *
    * @param {string} tryNum
@@ -20,3 +20,5 @@ class tryNumValidator {
     return NumtryNum;
   }
 }
+
+export default TryNumValidator;

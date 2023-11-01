@@ -53,3 +53,5 @@ class CarNameValidator {
     return arrCarNames;
   }
 }
+
+export default CarNameValidator;
