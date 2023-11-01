@@ -1,5 +1,5 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
-import message from "./Constants.js";
+import { MissionUtils } from '@woowacourse/mission-utils';
+import message from '../Constants.js';
 
 const InputView = {
   async requestCarNames() {
