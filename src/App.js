@@ -48,6 +48,7 @@ class App {
       this.displayMovement(cars);
     }
     const winners = this.determineWinners(cars);
+    this.printResult(winners);
   }
 
   moveCars(cars) {
@@ -72,6 +73,10 @@ class App {
     return winners;
   }
 
+  printResult(winners) {
+    const winnerNames = winners.map((car) => car.name).join(", ");
+    Console.print(`최종 우승자 : ${winnerNames}`);
+  }
 }
 
 export default App;
