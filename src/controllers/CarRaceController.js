@@ -31,7 +31,9 @@ class CarRaceController {
 
     Array.from({ length: this.#raceTryCount }).forEach(() => {
       this.#carRace.runQuarter();
-      this.#outputView.printQuarterResult(this.#carRace.getRaceCars());
+      const raceCars = this.#carRace.getRaceCars();
+      const raceCarInfos = raceCars.map((raceCar) => raceCar.getCarInfo());
+      this.#outputView.printQuarterResult(raceCarInfos);
     });
   }
 
