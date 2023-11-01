@@ -12,14 +12,26 @@ class RacingController {
   async startGame() {
     const racingVehicleName = await InputView.readRacingVehicleName(SYSTEM.car);
     const racingCount = await InputView.readRacingCount();
+
+    this.#race(racingVehicleName, racingCount);
+    OutputView.printFinalWinner(this.#racingModel.getFinalWinner());
+  }
+
+  #race(racingVehicleName, racingCount) {
+    this.#setRacing(racingVehicleName);
+    this.#raceAndPrintProgress(racingCount);
+  }
+
+  #setRacing(racingVehicleName) {
     this.#racingModel.saveNames(racingVehicleName);
+  }
+
+  #raceAndPrintProgress(racingCount) {
     OutputView.print('\n실행 결과');
     for (let count = 1; count <= racingCount; count += 1) {
-      this.#racingModel.racing();
+      this.#racingModel.race();
       OutputView.printRacingResult(this.#racingModel.getData());
-      OutputView.print('');
     }
-    OutputView.printFinalWinner(this.#racingModel.getFinalWinner());
   }
 }
 
