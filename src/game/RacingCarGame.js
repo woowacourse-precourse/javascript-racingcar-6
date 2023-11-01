@@ -39,7 +39,11 @@ class RacingCarGame {
     });
   }
 
-  
+  #isValidGameCount() {
+    isEmptyString(this.#gameCount, ERROR_MESSAGE.wrongGameCountInput);
+    isValidateNumber(this.#gameCount);
+    isNumberWithinBounds(parseInt(this.#gameCount, 10), 1, 70);
+  }
 
   async gameStart() {
     await this.#getNameString();
