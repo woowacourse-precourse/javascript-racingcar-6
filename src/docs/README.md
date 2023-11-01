@@ -30,45 +30,7 @@
 
 ## 🗃️ 클래스 다이어그램
 
-```mermaid
-classDiagram
-    GrandPrix <|-- InputView
-    GrandPrix --|> OutputView
-    GrandPrix <|-- RacingCarGrid
-    GrandPrix --|> RacingCarGrid
-    
-    namespace Controller {
-        class GrandPrix {
-            #racingCarGrid : RacingCarGrid
-            #lapNumber : number
-            initialize() void
-            #race() void
-            #podium() void
-        }
-    }
-
-    namespace Model {
-        class RacingCarGrid {
-            #racingCarList : Object
-            setRacingGrid() void
-            getRacingGrid() Object
-            getPodium() string
-        }
-    }
-    
-    namespace View {
-        class InputView {
-            readRacingCarNames() string
-            readLapNumber() string
-        }
-        
-        class OutputView {
-            printLapResult() void
-            printRacingGrid(racingGrid: Object) void
-            printRaceWinner(winner: string) void
-        }
-    }
-```
+![image](https://github.com/SWARVY/javascript-racingcar-6/assets/53262430/d451f72e-2d10-47d0-bbd8-019382252a99)
 
 ## 🌊 플로우차트
 
@@ -111,8 +73,9 @@ javascript-racingcar-6
 │  │  ├─ DefaultError.js
 │  │  └─ ValidationError.js
 │  ├─ index.js
+│  ├─ 📂 service
+│  │  └─ RacingCarService.js
 │  ├─ 📂 model
-│  │  ├─ RacingCarGrid.js
 │  │  └─ RandomNumberGenerator.js
 │  ├─ 📂 validator
 │  │  ├─ CommonValidator.js
@@ -127,8 +90,10 @@ javascript-racingcar-6
    ├─ ApplicationTest.js
    ├─ 📂 error
    │  └─ ValidationErrorTest.js
+   ├─ 📂 service
+   │  └─ RacingCarServiceTest.js
    ├─ 📂 model
-   │  └─ RacingCarGridTest.js
+   │  └─ RacingCarTest.js
    ├─ StringTest.js
    └─ 📂 validator
       ├─ CommonValidatorTest.js
