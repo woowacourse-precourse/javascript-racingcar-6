@@ -39,7 +39,7 @@ function carNameCheckEvent() {
     tryNumber.type='text';
     const startRaceBtn = document.createElement('button');
     startRaceBtn.innerHTML = "확인";
-    startRaceBtn.onclick = startRaveEvent;
+    startRaceBtn.onclick = startRaceEvent;
 
     body.appendChild(tryNumQuestion);
     body.appendChild(tryNumber);
@@ -47,7 +47,7 @@ function carNameCheckEvent() {
 
     // 경주 게임 시작 함수
     // 시도 횟수 관련 에러(숫자 아님) 예외 처리 먼저
-    function startRaveEvent() {
+    function startRaceEvent() {
       console.log(isNaN(tryNumber.value));
       if (isNaN(tryNumber.value) === true) {
         hasError = true;
@@ -61,7 +61,7 @@ function carNameCheckEvent() {
 
 // 경주 게임 시작 함수
 // 시도 횟수 관련 에러(숫자 아님) 예외 처리 먼저
-function startRaveEvent() {
+function startRaceEvent() {
   console.log(isNaN(tryNumber.value));
   if (isNaN(tryNumber.value) === true) {
     hasError = true;
