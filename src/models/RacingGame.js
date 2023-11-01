@@ -18,6 +18,7 @@ class RacingGame {
     this.#roundNumber = Number(inputRound);
     this.#carNames = Converter.removeSpace(inputCar);
     this.#carDistanceMap = Converter.stringToMap(this.#carNames);
+    this.randomNumberGanerator = RandomNumberGenerator;
   }
 
   race() {
@@ -37,7 +38,7 @@ class RacingGame {
 
   move() {
     this.#carDistanceMap.forEach((value, key) => {
-      const randomNumber = RandomNumberGenerator();
+      const randomNumber = this.randomNumberGanerator();
       if (randomNumber >= GAME_SETTING.fowardMinNumber) {
         const beforeDash = this.#carDistanceMap.get(key);
         this.#carDistanceMap.set(key, `${beforeDash}${SYMBOL_SETTING.dash}`);
