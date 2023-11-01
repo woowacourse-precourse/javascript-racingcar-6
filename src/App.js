@@ -1,4 +1,5 @@
 import { Console, MissionUtils } from "@woowacourse/mission-utils";
+
 class App {
   constructor() {
     this.name = "";
@@ -41,12 +42,6 @@ class App {
     }
   }
 
-  validateUserRacingCars(input) {
-    const length = input.length;
-    if (length > 5) {
-      throw new Error("[ERROR] 차의 이름은 5자 이하만 가능합니다.");
-    }
-  }
   get getRandomNumber() {
     return MissionUtils.Random.pickNumberInRange(0, 9);
   }
@@ -71,26 +66,7 @@ class App {
     }
   }
 
-  async play() {
-    await this.readUserRacingCars();
-    await this.readUserRacingTry();
-
-    this.splitRacingCarBy(",");
-    this.showRaceStartMessage();
-    this.race();
-    this.showCarsRacing();
-    this.race();
-    this.showCarsRacing();
-    this.race();
-    this.showCarsRacing();
-    this.race();
-    this.showCarsRacing();
-    this.race();
-    this.showCarsRacing();
-    this.race();
-    this.showCarsRacing();
-    this.showRaceWinnerMessage();
-  }
+  async play() {}
 }
 const app = new App();
 app.play();
