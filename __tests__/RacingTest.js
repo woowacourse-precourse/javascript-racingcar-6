@@ -45,15 +45,32 @@ describe('Racing 게임 테스트', () => {
   });
 
   test('calculateCumulativeResult 메서드 테스트', () => {
-    const result = { yj: '-', bibi: '', go: '-' };
-    const roundStatus = { yj: '', bibi: '-', go: '-' };
+    const result = { yj: '-', bibi: '', hihi: '-' };
+    const roundStatus = { yj: '', bibi: '-', hihi: '-' };
 
     app.calculateCumulativeResult(result, roundStatus);
 
     expect(roundStatus).toEqual({
       yj: '-',
       bibi: '-',
-      go: '--',
+      hihi: '--',
     });
+  });
+
+  test('printProgress 메서드 테스트', () => {
+    const result = {
+      yj: '-',
+      bibi: '',
+      hihi: '-',
+    };
+
+    const consolePrintSpy = jest.spyOn(Console, 'print');
+
+    app.printProgress(result);
+
+    expect(consolePrintSpy).toHaveBeenCalledTimes(3);
+    expect(consolePrintSpy).toHaveBeenNthCalledWith(1, 'yj : -');
+    expect(consolePrintSpy).toHaveBeenNthCalledWith(2, 'bibi : ');
+    expect(consolePrintSpy).toHaveBeenNthCalledWith(3, 'hihi : -');
   });
 });
