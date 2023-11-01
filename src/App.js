@@ -12,7 +12,6 @@ class App {
   async getPlayRound() {
     const input = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
     const gameRound = Number(input);
-    Console.print(typeof gameRound);
     return gameRound;
   }
   //trim()을 이용 입력값이 없는 경우와 스페이스바일 경우도 예외처리
@@ -33,7 +32,6 @@ class App {
     this.validateCarName(carNames);
 
     const gameRound = await this.getPlayRound();
-    Console.print(`디버깅: ${gameRound}`);
     this.validateGameRound(gameRound);
     const game = new Game(carNames);
     game.raceRound(gameRound);
