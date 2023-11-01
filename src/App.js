@@ -3,77 +3,78 @@ import { Console, Random } from "@woowacourse/mission-utils";
 class App {
   async play() {
     try {
-       const CARS = await this.participatingCar();
-       const NUMBEROFCARS = await this.numberOfMoves();
-       const result = this.startRacing(CARS, NUMBEROFCARS);
-       Console.print("최종 우승자 : "+result);
+       const PARTIPATING_RACING_CARS = await this.inputParticipatingCar();
+       const NUMBER_OF_ROUNDS = await this.inputNumberOfRounds();
+       const WINNERS = this.startRacing(PARTIPATING_RACING_CARS, NUMBER_OF_ROUNDS);
+
+       Console.print("최종 우승자 : "+WINNERS);
     } catch (err) {
       throw new Error(err);
     }
   }
 
-  async participatingCar() { 
-    let cars = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)'); 
-    cars = cars.split(',');
+  async inputParticipatingCar() { 
+    let participatingRacingCars = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)'); 
+    participatingRacingCars = participatingRacingCars.split(',');
   
-    cars.forEach((el) => { 
+    participatingRacingCars.forEach((el) => { 
       if(el.length > 5) {
         throw new Error('[ERROR] 자동차 이름은 5글자 이하로 입력해주세요');
       }
     });
 
-    return cars;
+    return participatingRacingCars;
   }
 
-  async numberOfMoves() { 
-    let NumberOfmoves = await Console.readLineAsync('시도할 횟수는 몇 회인가요?'); 
+  async inputNumberOfRounds() { 
+    let NumberOfRounds = await Console.readLineAsync('시도할 횟수는 몇 회인가요?'); 
 
-    if(isNaN(NumberOfmoves)) { 
+    if(isNaN(NumberOfRounds)) { 
       throw new Error('[ERROR] 숫자를 입력해주세요');
     }
 
-    return Number(NumberOfmoves); 
+    return Number(NumberOfRounds); 
   }
-
-  trackingCarsMove( 
-    moveOfCars, 
-    roundRandomNumber,
+ //현재 차량들의 이동상태
+  currentRacingCarsLocation( 
+    previousRacingCarsLocation, 
+    currentRoundRandomNumber,
   ) { 
-      roundRandomNumber.forEach((el,idx) => {
+      currentRoundRandomNumber.forEach((el,idx) => {
         if(el>=4) {
-          moveOfCars[idx] += '-';
+          previousRacingCarsLocation[idx] += '-';
         }
       })
 
-      return moveOfCars; 
+      return previousRacingCarsLocation; 
   }
 
-  createRoundRandomNumbers(participatingCarsNumber) {  
-    let arr = [];
+  createCurrentRoundRandomNumbers(participatingRacingCarsNumber) {  
+    let randomNumbers = [];
 
-    for(let i=0; i<participatingCarsNumber; i++){
-      arr.push(Random.pickNumberInRange(1,9));
+    for(let i=0; i<participatingRacingCarsNumber; i++){
+      randomNumbers.push(Random.pickNumberInRange(1,9));
     }
 
-    return arr;
+    return randomNumbers;
   }
 
-  winnerSelect( 
-    participatingCar,
-    moveOfCars
+  SelectWinner( 
+    participatingRacingCars,
+    finalRacingCarsLocation
   ) { 
       let mostMoves = 0;
       let winners = [];
 
-      moveOfCars.forEach((el) => {
+      finalRacingCarsLocation.forEach((el) => {
         if(el.length > mostMoves) {
           mostMoves = el.length;
         }
       })
 
-      moveOfCars.forEach((el,idx) => {
+      finalRacingCarsLocation.forEach((el,idx) => {
        if(el.length === mostMoves) {
-         winners.push(participatingCar[idx]);
+         winners.push(participatingRacingCars[idx]);
        }
       })
 
@@ -81,28 +82,28 @@ class App {
   }
 
   startRacing(
-    participatingCar, 
-    numberOfMoves
+    participatingRacingCars, 
+    numberOfRounds
   ) {
-      let moveOfCars = [];
+      let RacingCarsLocation = [];
       let roundRandomNumber = [];
 
-      for(let i=0; i<participatingCar.length; i++) {
-        moveOfCars.push('');
+      for(let i=0; i<participatingRacingCars.length; i++) {
+        RacingCarsLocation.push('');
       }
 
-      for(let i=0; i<numberOfMoves; i++) {  
-        roundRandomNumber = this.createRoundRandomNumbers(participatingCar.length);
-        moveOfCars = this.trackingCarsMove(moveOfCars, roundRandomNumber);
+      for(let i=0; i<numberOfRounds; i++) {  
+        roundRandomNumber = this.createCurrentRoundRandomNumbers(participatingRacingCars.length);
+        RacingCarsLocation = this.currentRacingCarsLocation(RacingCarsLocation, roundRandomNumber);
 
-        participatingCar.forEach((el,idx) => {
-          Console.print(el+" : "+moveOfCars[idx]);
+        participatingRacingCars.forEach((el,idx) => {
+          Console.print(el+" : "+RacingCarsLocation[idx]);
         })
       }
 
-      return this.winnerSelect(participatingCar, moveOfCars);
+      return this.SelectWinner(participatingRacingCars, RacingCarsLocation);
   }
-  
+
 }
 
 export default App;

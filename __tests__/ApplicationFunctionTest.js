@@ -23,7 +23,7 @@ describe("기능목록 테스트", () => {
       mockQuestions(input);
 
       const app = new App();
-      const result = await app.participatingCar();
+      const result = await app.inputParticipatingCar();
 
       expect(result).toEqual(['audi','benz','kia']);
     });
@@ -34,29 +34,29 @@ describe("기능목록 테스트", () => {
       mockQuestions(input);
 
       const app = new App();
-      const result = await app.numberOfMoves();
+      const result = await app.inputNumberOfRounds();
     
       expect(result).toEqual(3);
     });
   
     test("각 차량의 라운드별 이동거리 추적 함수 테스트", () => {
-      const testMoveOfCars = ['-','--','-','---'];
-      const testRoundRandomNumber = [1,3,5,2];
+      const testPreviousRacingCarsLocation = ['-','--','-','---'];
+      const testCurrentRoundRandomNumber = [1,3,5,2];
         
       const app = new App();
-      const result = app.trackingCarsMove(testMoveOfCars, testRoundRandomNumber);
+      const result = app.currentRacingCarsLocation(testPreviousRacingCarsLocation, testCurrentRoundRandomNumber);
 
       expect(result).toEqual(['-','--','--','---']);
     });
   
     test("각 차량마다 라운드별 랜덤번호 생성 테스트", () => {
-      const testParticipatingCarsNumber = 5;
+      const testParticipatingRacingCarsNumber = 5;
       const testRandomNumbers = [1,3,5,7,4];
 
       mockRandoms([...testRandomNumbers]);
       
       const app = new App();
-      const result = app.createRoundRandomNumbers(testParticipatingCarsNumber);
+      const result = app.createCurrentRoundRandomNumbers(testParticipatingRacingCarsNumber);
   
       expect(result).toEqual(testRandomNumbers);
     });
@@ -66,7 +66,7 @@ describe("기능목록 테스트", () => {
         const testMoveOfCars = ['-','--','---','---'];
         
         const app = new App();
-        const result = app.winnerSelect(testParticipatingCars,testMoveOfCars);
+        const result = app.SelectWinner(testParticipatingCars,testMoveOfCars);
 
         expect(result).toEqual('kia,honda');
     });
