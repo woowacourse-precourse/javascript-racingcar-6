@@ -8,7 +8,7 @@ const cars = new Cars(carInstances);
 const tryInput = 5;
 const race = new Race(cars, tryInput);
 
-test("자동차 경주 게임 시작",()=>{
+test("시도 횟수 동안 n 대의 자동차는 전진 또는 멈출 수 있다",()=>{
     const carsMove = jest.spyOn(cars, "move");
     race.start();
 

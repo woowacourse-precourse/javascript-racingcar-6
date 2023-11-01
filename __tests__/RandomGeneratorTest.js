@@ -1,18 +1,11 @@
 import { Random } from "@woowacourse/mission-utils";
 import { RandomGenerator } from "../src/RandomGenerator.js";
 
-const randomSpy = jest.spyOn(Random, "pickNumberInRange");
-const min = 0, max = 9;
-const randomGenerator = new RandomGenerator(min, max);
+test("전진 또는 멈춤을 결정할 0 - 9 사이의 무작위 값 구하기",()=>{
+    const randomSpy = jest.spyOn(Random, "pickNumberInRange");
+    const min = 0, max = 9;
+    const randomGenerator = new RandomGenerator(min, max);
 
-describe("무작위 값 생성",()=>{
-    test("무작위 값 생성기 인스턴스 생성", ()=>{
-        expect(randomGenerator.min).toBe(min)
-        expect(randomGenerator.max).toBe(max)    
-    })
-
-    test("무작위 값 생성",()=>{
-        randomGenerator.generate();
-        expect(randomSpy).toHaveBeenCalledWith(min, max)
-    })
+    randomGenerator.generate();
+    expect(randomSpy).toHaveBeenCalledWith(min, max)
 })

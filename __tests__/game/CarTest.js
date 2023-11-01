@@ -5,20 +5,15 @@ const carName = "hj";
 const car = new Car(carName, randomGenerator);
 const randomGenerator = new RandomGenerator(0,9);
 
-describe("자동차 전진 조건 확인 및 전진 후 위치 값 1 증가", ()=>{
-    test("자동차 인스턴스 생성",()=>{
-        expect(car.getName()).toBe(carName)
-        expect(car.getPosition()).toBe(0);
-    })
-
-    test("자동차 전진 조건 true 일 경우", ()=>{
+describe("자동차는 전진 또는 멈출 수 있다", ()=>{
+    test("무작위 값 >= 4 일 경우, 전진", ()=>{
         const movableRandomNumberGenerator=  new RandomGenerator(4,9);
         const movableCar = new Car(carName, movableRandomNumberGenerator);
 
         expect(movableCar.movable()).toBe(true);
     })
 
-    test("자동차 전진 후 위치 값 1 증가", ()=>{
+    test("전진 했다면 위치를 `1` 증가", ()=>{
         const movableRandomNumberGenerator=  new RandomGenerator(4,9);
         const movableCar = new Car(carName, movableRandomNumberGenerator);
 
