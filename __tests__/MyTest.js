@@ -84,4 +84,19 @@ describe("자동차 경주 게임", () => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
   });
+
+  //---에러 테스트-------------------------------------
+  test.each([[["a,b,c", ""]], [["a,b,c", " "]], [["a,b,c", "test"]]])(
+    "올바르지 않은 입력 횟수",
+    async (inputs) => {
+      // given
+      mockQuestions(inputs);
+
+      // when
+      const app = new App();
+
+      // then
+      await expect(app.play()).rejects.toThrow("[ERROR]");
+    }
+  );
 });
