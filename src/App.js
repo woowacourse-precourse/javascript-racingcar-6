@@ -21,14 +21,12 @@ export default class App {
     const cars = await Console.readLineAsync(
       '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n'
     );
-    const validCars = getValidCars(cars);
-    this.cars = validCars;
+    this.car = getValidCars(cars);
   }
 
   async getTotalRound() {
     const round = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
-    const validRound = getValidRound(round);
-    this.totalRound = validRound;
+    this.totalRound = getValidRound(round);
   }
 
   raceStart(cars, totalRound) {
@@ -37,6 +35,7 @@ export default class App {
       this.printRoundResult(cars);
     }
   }
+
   round(cars) {
     for (const car of cars) {
       if (isMove()) {
@@ -44,25 +43,31 @@ export default class App {
       }
     }
   }
+
   printRoundResult(cars) {
     Console.print('');
+
     for (const car of cars) {
       Console.print(`${car.name} : ${'-'.repeat(car.position)}`);
     }
   }
+
   findWinners(cars, winner) {
-    let max_position = 0;
+    let maxPosition = 0;
+
     for (const car of cars) {
-      if (car.position > max_position) {
-        max_position = car.position;
+      if (car.position > maxPosition) {
+        maxPosition = car.position;
       }
     }
+
     for (const car of cars) {
-      if (car.position === max_position) {
+      if (car.position === maxPosition) {
         winner.push(car.name);
       }
     }
   }
+
   printWinners(winners) {
     const winnerNames = winners.join(', ');
     Console.print(`\n최종 우승자 : ${winnerNames}`);
