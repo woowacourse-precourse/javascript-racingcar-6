@@ -8,4 +8,4 @@ export const CONSOLE_MESSAGE = Object.freeze({
   newLine : '\n',
 });
 
-export const racingCar_DISPLACEMENT = '-';
+export const RACINGCAR_DISPLACEMENT = '-';

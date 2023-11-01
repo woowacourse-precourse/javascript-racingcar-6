@@ -19,7 +19,7 @@ class RacingController {
   }
 
   async run() {
-    await this.#createRacingCars()
+    await this.#createRacingCars();
     await this.#setRetryCount();
     this.#outputView.outputRetryResult();
 
@@ -33,8 +33,8 @@ class RacingController {
 
   async #createRacingCars() {
     const racingCarNameArray = await this.#inputView.readRacingCarNames();
-    this.#racingCarValidator.isValidNameArray(racingCarNameArray);
 
+    this.#racingCarValidator.isValidNameArray(racingCarNameArray);
     racingCarNameArray.forEach(element => {
       this.#racingCarArray.push(new RacingCar(element));
     });
@@ -42,6 +42,7 @@ class RacingController {
 
   async #setRetryCount() {
     const retryCount = await this.#inputView.readRetryCount();
+
     this.#racingCarValidator.isValidCount(retryCount);
     this.#retryCount = retryCount;
   }
@@ -49,19 +50,21 @@ class RacingController {
   #advanceRacingCars() {
     this.#racingCarArray.forEach((car) => {
       car.advance();
-    })
+    });
   }
 
   #getDisplacements() {
     this.#racingCarArray.forEach((car) => {
       this.#outputView.printRacingCarState(car);
-    })
+    });
     this.#outputView.printNewLine();
   }
 
   async #getWinner() {
     const winnerArray = [];
-    const maxDisplacement = Math.max.apply(null, this.#racingCarArray.map(car => { return car.getDisplacement(); }));
+    const maxDisplacement = Math.max.apply(null, this.#racingCarArray.map(car => {
+      return car.getDisplacement();
+    }));
 
     this.#racingCarArray.forEach(car => {
       if (car.getDisplacement() === maxDisplacement) {

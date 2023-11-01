@@ -27,5 +27,5 @@ describe('RacingCar test', () => {
 
     const resultGetState = testCar.getState();
     expect(resultGetState).toMatch(/test : -/);
-  })
+  });
 });

@@ -26,4 +26,4 @@ describe('outputView test', () => {
 
     expect(spy).toHaveBeenCalledWith(expect.stringContaining(`${CONSOLE_MESSAGE.outputFinalResult} : ${input}`));
   });
-})
+});

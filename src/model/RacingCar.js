@@ -1,5 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import OutputView from "../view/OutputView.js";
+import { RACINGCAR_DISPLACEMENT } from "../constants/consoleMessages.js";
 
 class RacingCar {
   #name;
@@ -27,7 +27,7 @@ class RacingCar {
   }
 
   getState() {
-    let stringDisplacement = '-'.repeat(this.#displacement)
+    const stringDisplacement = RACINGCAR_DISPLACEMENT.repeat(this.#displacement);
     const state = `${this.#name} : ${stringDisplacement}`;
 
     return state

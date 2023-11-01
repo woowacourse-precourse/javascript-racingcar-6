@@ -95,7 +95,6 @@ describe('RacingController test', () => {
     [['kim,park', '다섯번']],
     [['kim,park', 'five']],
   ])('controller 시도 횟수 입력 오류', async (inputs) => {
-
     mockInputs(inputs);
 
     const controller = new RacingController();
