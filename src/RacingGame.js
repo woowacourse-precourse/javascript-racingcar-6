@@ -1,10 +1,10 @@
 import { Console } from "@woowacourse/mission-utils";
 
 class RacingGame {
-  static play(racingCars, movementCount) {
+  static play(racingCars, gameRoundCount) {
     Console.print("\n실행 결과");
 
-    Array.from({ length: movementCount }, () => {
+    Array.from({ length: gameRoundCount }, () => {
       racingCars.forEach((racingCar) => {
         racingCar.playRound();
       });

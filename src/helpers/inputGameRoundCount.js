@@ -6,7 +6,7 @@ export const ERROR_MESSAGES = Object.freeze({
   NOT_POSITIVE_INTEGER: "입력값은 1 이상의 숫자여야 합니다.",
 });
 
-const inputMovementCount = async () => {
+const inputGameRoundCount = async () => {
   const input = await Console.readLineAsync(INPUT_PROMPT);
 
   if (!isPositiveInteger(input)) {
@@ -20,4 +20,4 @@ const isPositiveInteger = (str) => {
   return /^[1-9]\d*$/.test(str);
 };
 
-export default inputMovementCount;
+export default inputGameRoundCount;
