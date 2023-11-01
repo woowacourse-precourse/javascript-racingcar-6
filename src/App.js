@@ -7,8 +7,7 @@ class Car {
     }
 
     move() {
-        const getScore = MissionUtils.Random.pickNumberInRange(0, 9);
-        if (getScore >= 4) {
+        if (MissionUtils.Random.pickNumberInRange(0, 9) >= 4) {
             this.position += 1;
         }
     }
@@ -20,17 +19,11 @@ class App {
 
         const cars = carNames.map((carName) => new Car(carName));
         for (let i = 0; i < tryCount; i++) {
-            Console.print("\n실행 결과");
-            cars.forEach((car) => car.move());
-            cars.forEach((car) => {
-                Console.print(`${car.name} : ${"-".repeat(car.position)}`);
-            });
-            Console.print("\n");
+            this.runRace(cars);
+            this.printRaceResult(cars);
         }
-        const maxPosition = Math.max(...cars.map((car) => car.position));
-        const winners = cars.filter((car) => car.position === maxPosition);
-        const winnerNames = winners.map((winner) => winner.name);
-        Console.print(`최종 우승자 : ${winnerNames.join(", ")}`);
+        const winners = this.getWinners(cars);
+        Console.print(`최종 우승자 : ${winners.join(", ")}`);
     }
 
     async getCarNames() {
@@ -55,6 +48,23 @@ class App {
             throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
         }
         return tryCount;
+    }
+
+    runRace(cars) {
+        cars.forEach((car) => car.move());
+    }
+
+    printRaceResult(cars) {
+        Console.print("\n실행 결과");
+        cars.forEach((car) => {
+            Console.print(`${car.name} : ${"-".repeat(car.position)}`);
+        });
+    }
+
+    getWinners(cars) {
+        const maxPosition = Math.max(...cars.map((car) => car.position));
+        const winners = cars.filter((car) => car.position === maxPosition);
+        return winners.map((winner) => winner.name);
     }
 }
 
