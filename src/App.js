@@ -1,5 +1,15 @@
+import CarRaceGameController from "./Controller/CarRaceGameController";
+
 class App {
-  async play() {}
+  #CarRaceGameController;
+
+  constructor() {
+    this.#CarRaceGameController = new CarRaceGameController();
+  }
+
+  async play() {
+    await this.#CarRaceGameController.InputRaceCarName();
+  }
 }
 
 export default App;
