@@ -98,4 +98,14 @@ describe("자동차 경주 게임", () => {
       Validation.validationDuplicateCarName(failInput).toThrow("[ERROR]")
     );
   });
+  test("이동 횟수 검증 (Validation.validationCount)테스트", () => {
+    const passInput = ["1", "123", "9999"];
+    const failInput = ["0", "-1", "hi", "1.234"];
+    passInput.forEach((input) => {
+      expect(() => Validation.validationCount(input).not.toThrow());
+    });
+    failInput.forEach((input) => {
+      expect(() => Validation.validationCount(input).toThrow("[ERROR]"));
+    });
+  });
 });
