@@ -1,5 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
 import Input from './Input.js';
+import Output from './Output.js';
 import Validation from './Validation.js';
 import Car from './Car.js';
 
@@ -37,6 +38,8 @@ class App {
     this.makeCars(this.carNames);
 
     this.setCarsMovements();
+
+    Output.printGameResult(this.cars, this.GameCount);
   }
 }
 
