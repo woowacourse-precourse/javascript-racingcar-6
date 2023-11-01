@@ -15,12 +15,6 @@ class GameController {
     this.gameModel = null;
   }
 
-  /**
-   * 게임 시작
-   * 1. 게임 초기화
-   * 2. 시도 횟수만큼 라운드 진행
-   * 3. 결과 출력
-   */
   async runGame() {
     await this.initGame();
 
@@ -28,21 +22,17 @@ class GameController {
     while (!this.gameModel.isGameOver()) {
       this.gameModel.playRound();
 
-      const carModels = await this.gameModel.getCarModelDTOs();
-      this.outputView.printAdvanceResult(carModels);
+      const carModelDTOs = await this.gameModel.getCarModelDTOs();
+      this.outputView.printAdvanceResult(carModelDTOs);
     }
 
     const winners = this.gameModel.getWinnersName();
     this.outputView.printWinner(winners);
   }
 
-  /**
-   * 게임 초기화 함수.
-   * GameModel 인스턴스를 생성하여 저장
-   */
   async initGame() {
-    const cars = await this.inputCars();
-    const attemptNum = await this.inputAttemptNum();
+    const cars = await this.getCarsFromInput();
+    const attemptNum = await this.getAttemptNumFromInput();
 
     this.gameModel = new GameModel(attemptNum, cars);
   }
@@ -51,7 +41,7 @@ class GameController {
    * 사용자에게 자동차 이름을 입력 받아 CarModel 배열을 생성하여 반환
    * @returns {CarModel[]} CarModel 배열
    */
-  async inputCars() {
+  async getCarsFromInput() {
     const carNames = await this.inputView.getCarNames();
     return carNames.map((name) => new CarModel(name));
   }
@@ -60,7 +50,7 @@ class GameController {
    * 사용자에게 시도 횟수를 입력 받아 반환
    * @returns {number} 시도 횟수(number)
    */
-  async inputAttemptNum() {
+  async getAttemptNumFromInput() {
     const attemptNum = await this.inputView.getAttemptNum();
     return attemptNum;
   }

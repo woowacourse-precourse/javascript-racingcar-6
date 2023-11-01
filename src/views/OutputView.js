@@ -1,6 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
 import { MESSAGES } from '../constants/messages.js';
-import CarModel from '../models/CarModel.js';
 
 /**
  * 사용자에게 결과를 출력할 때 View
