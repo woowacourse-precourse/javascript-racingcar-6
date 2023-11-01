@@ -1,4 +1,4 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
+import { MissionUtils } from '@woowacourse/mission-utils';
 import InputView from './InputView.js';
 import Car from './Car.js';
 import Validation from './Validator.js';
