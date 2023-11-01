@@ -4,7 +4,7 @@ export const ERROR = Object.freeze({
   EMPTY_INPUT: '입력은 비어있거나 쉼표만 포함해서는 안됩니다.',
   INVALID_INPUT_NUMBER: '숫자가 잘못된 형식입니다.',
   printError(message) {
-    console.error(`[ERROR] : ${message}`);
+    return `[ERROR] : ${message}`;
   },
 });
 
