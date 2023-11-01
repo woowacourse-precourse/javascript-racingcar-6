@@ -131,8 +131,8 @@ describe('유효성 검증 테스트', () => {
         ERROR_MESSAGE.INVALID_TRY_COUNT_TYPE,
       );
     });
-    test('시도 횟수가 1 이상의 자연수가 아닐 경우 - 0', async () => {
-      const tryCount = '0.0';
+    test('시도 횟수가 1 이상의 자연수가 아닐 경우 - 자연수가 아닌 정수', async () => {
+      const tryCount = '2.0';
       mockQuestions([tryCount]);
       await expect(() => validateTryCount(tryCount)).toThrow(
         ERROR_MESSAGE.INVALID_TRY_COUNT_TYPE ||
