@@ -1,17 +1,16 @@
 import { Console, Random } from '@woowacourse/mission-utils';
+import { MESSAGES } from './messages.js';
 
 class App {
   async play() {
-    await Console.readLineAsync(
-      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
-    ).then(async (cars) => {
+    await Console.readLineAsync(MESSAGES.CAR_NAME).then(async (cars) => {
       const carArr = cars.split(',');
 
       const map = new Map();
       carArr.forEach((car) => map.set(car, 0));
 
-      await Console.readLineAsync('시도할 횟수는 몇회인가요?\n').then((repeatNumber) => {
-        Console.print('\n실행 결과');
+      await Console.readLineAsync(MESSAGES.NUMBER_OF_ATTEMPTS).then((repeatNumber) => {
+        Console.print(MESSAGES.RESULT);
 
         [...Array(parseInt(repeatNumber))].forEach(() => {
           carArr.forEach((car) => {
@@ -35,7 +34,7 @@ class App {
           }
         });
 
-        Console.print(`최종 우승자 : ${winners.join(', ')}`);
+        Console.print(MESSAGES.WINNER.concat(winners.join(', ')));
       });
     });
   }
