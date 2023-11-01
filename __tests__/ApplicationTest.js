@@ -98,6 +98,7 @@ describe("자동차 경주 게임", () => {
       Validation.validationDuplicateCarName(failInput).toThrow("[ERROR]")
     );
   });
+
   test("이동 횟수 검증 (Validation.validationCount)테스트", () => {
     const passInput = ["1", "123", "9999"];
     const failInput = ["0", "-1", "hi", "1.234"];
@@ -107,5 +108,16 @@ describe("자동차 경주 게임", () => {
     failInput.forEach((input) => {
       expect(() => Validation.validationCount(input).toThrow("[ERROR]"));
     });
+  });
+
+  test("최종 우승자 (CarRacingGame.getWinner)테스트", () => {
+    const randoms = [9, 9, 9, 9, 0, 9, 9, 9, 9];
+    const cars = ["one", "two", "three"];
+    mockRandoms([...randoms]);
+
+    const carRacingGame = new CarRacingGame();
+    carRacingGame.setCars(cars.map((car) => new Car(car)));
+    carRacingGame.moveForward(3, () => {});
+    expect(carRacingGame.getWinner()).toEqual(["one", "three"]);
   });
 });
