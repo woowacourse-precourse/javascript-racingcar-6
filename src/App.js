@@ -2,10 +2,12 @@ import { Console } from "@woowacourse/mission-utils";
 import * as F from "./utility/utilityFunctions.js";
 import InputReader from "./console/InputReader.js";
 import Car from "./Car.js";
+import OutputPrinter from "./console/OutputPrinter.js";
 
 class App {
   constructor() {
     this.inputReader = new InputReader();
+    this.outputPrint = new OutputPrinter();
   }
 
   async play() {
@@ -14,7 +16,7 @@ class App {
     const carObjects = this.generateCarObjects(carNames);
     this.startRace(carObjects, roundCount);
     const winnerList = this.getWinners(carObjects);
-    this.printGameResults(winnerList);
+    this.outputPrint.printGameResults(winnerList);
   }
 
   async enterGameBaseSetting() {
@@ -41,16 +43,9 @@ class App {
       F.range(roundCount),
       F.map(() => {
         carObjects.forEach((car) => car.move());
-        this.printRaceStatus(carObjects);
+        this.outputPrint.printRaceStatus(carObjects);
       }),
     );
-  }
-
-  printRaceStatus(carObjects) {
-    Console.print("");
-    carObjects.forEach((car, index) => {
-      Console.print(`${car.name} : ${"-".repeat(car.position)}`);
-    });
   }
 
   getWinners(carObjects) {
@@ -67,16 +62,6 @@ class App {
     );
 
     return winnerList;
-  }
-
-  printGameResults(winnerList) {
-    if (winnerList.length === 1) {
-      Console.print("");
-      Console.print(`최종 우승자 : ${winnerList[0]}`);
-    } else {
-      Console.print("");
-      Console.print(`최종 우승자 : ${winnerList.join(", ")}`);
-    }
   }
 }
 
