@@ -30,23 +30,40 @@ describe('CarManager 클래스 테스트', () => {
 	});
 
 	test('최종 우승자의 출력값을 확인한다', () => {
-		const names = ['pobi','woni'];
-		const ATTEMPT_COUNT = 3;
+		const names = ['pobi', 'woni', 'jun'];
+		const ATTEMPT_COUNT = 5;
 		const MOVING = 4;
 		const STOP = 0;
-		const random = [MOVING, STOP, MOVING, STOP, MOVING, STOP]
+		const random = [
+				MOVING, STOP, MOVING, 
+				MOVING, MOVING, MOVING,		
+				MOVING, MOVING, MOVING,		
+				MOVING, MOVING, MOVING,		
+				MOVING, MOVING, MOVING,		
+			]
 		const outputs = [
 			'실행 결과',
-			'pobi : -', 
+			'pobi : -',
 			'woni : ',
-			'', 
-			'pobi : --', 
-			'woni : ', 
-			'', 
-			'pobi : ---' , 
-			'woni : ', 
+			'jun : -',
 			'',
-			'최종 우승자 : pobi',
+			'pobi : --',
+			'woni : -',
+			'jun : --',
+			'',
+			'pobi : ---',
+			'woni : --',
+			'jun : ---',
+			'',
+			'pobi : ----',
+			'woni : ---',
+			'jun : ----',
+			'',
+			'pobi : -----',
+			'woni : ----',
+			'jun : -----',
+			'',
+			'최종 우승자 : pobi, jun',
 		];
 		// const outputs = ['실행 결과', 'pobi : -', 'woni : '];
 		const logSpy = getLogSpy();
