@@ -21,7 +21,3 @@ export class Game {
     this.winners.selectPrintWinner(this.carProperty.carArray);
   }
 }
-
-const game = new Game();
-
-game.playGame();

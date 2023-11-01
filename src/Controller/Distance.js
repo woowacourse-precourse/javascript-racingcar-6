@@ -13,7 +13,7 @@ export default class Distance {
   async addDistancePrintArray(attempts, carArray) {
     GameOutput.printResult();
     for (let i = 0; i < attempts; i++) {
-      carArray?.map((carObject) => {
+      carArray.map((carObject) => {
         this.isGoStop(carObject);
         GameOutput.printDistance(carObject);
       });
