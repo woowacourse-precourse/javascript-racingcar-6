@@ -12,6 +12,7 @@ class App {
     ErrorHandler.checkMoveCount(moveCount);
     this.racing(cars, moveCount);
     this.printResult(cars, moveCount);
+    this.printWinner(this.findWinner(cars));
   }
 
   async inputCarName() {
@@ -37,6 +38,16 @@ class App {
       cars.forEach((car) => car.printState(i));
       Console.print(' ');
     }
+  }
+
+  findWinner(cars) {
+    const maxCount = Math.max(...cars.map((car) => car.count));
+    return cars.filter((car) => car.count === maxCount).map((car) => car.carName);
+  }
+
+  printWinner(winners) {
+    const winnersStr = winners.join(', ');
+    Console.print(`최종 우승자 : ${winnersStr}\n`);
   }
 }
 
