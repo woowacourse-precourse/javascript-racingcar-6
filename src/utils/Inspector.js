@@ -4,7 +4,6 @@ export default class Inspector {
     if (splited[splited.length-1] === ''){
       splited.pop();
     }
-    console.log(splited)
     if (splited.length < 2) {
       return false;
     }

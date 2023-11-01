@@ -26,7 +26,7 @@ class App {
     const race = new Race(players);
     await race.compete(moveNumber);
     const winner = await race.getWinner();
-    MissionUtils.Console.print('최종 우승자 : ', winner);
+    MissionUtils.Console.print(`최종 우승자 : ${winner}`);
   }
 }
 
