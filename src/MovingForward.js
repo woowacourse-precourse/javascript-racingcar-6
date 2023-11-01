@@ -4,7 +4,7 @@ import Car from "./Car.js";
 import TryCount from "./TryCount.js";
 import RandomNumber from "./RandomNumber.js";
 
-class Forward {
+class MovingForward {
   constructor(car, tryCount, randomNumber) {
     this.car = car;
     this.tryCount = tryCount;

@@ -3,7 +3,7 @@ import { GAME_HELP } from "../constants/GAME_HELP.js";
 import Car from "./Car.js";
 import TryCount from "./TryCount.js";
 import RandomNumber from "./RandomNumber.js";
-import Forward from "./Forward.js";
+import MovingMovingForward from "./MovingForward.js";
 import Winner from "./Winner.js";
 
 class App {
@@ -11,8 +11,12 @@ class App {
     this.car = new Car();
     this.tryCount = new TryCount();
     this.randomNumber = new RandomNumber();
-    this.forward = new Forward(this.car, this.tryCount, this.randomNumber);
-    this.winner = new Winner(this.car, this.forward);
+    this.movingForward = new MovingForward(
+      this.car,
+      this.tryCount,
+      this.randomNumber
+    );
+    this.winner = new Winner(this.car, this.movingForward);
   }
 
   async play() {
@@ -24,10 +28,10 @@ class App {
   async playRacing() {
     Console.print(GAME_HELP.GAME_RESULT);
 
-    await this.forward.createRacingArray();
+    await this.movingForward.createRacingArray();
 
     for (let i = 0; i < this.tryCount.tryNumber; i++) {
-      await this.forward.oneCycleRacing();
+      await this.movingForward.oneCycleRacing();
     }
 
     await this.winner.showWinner();

@@ -1,16 +1,16 @@
 import { Console } from "@woowacourse/mission-utils";
 import { GAME_HELP } from "../constants/GAME_HELP.js";
 import Car from "./Car.js";
-import Forward from "./Forward.js";
+import MovingForward from "./MovingForward.js";
 
 class Winner {
-  constructor(car, forward) {
+  constructor(car, movingForward) {
     this.car = car;
-    this.forward = forward;
+    this.movingForward = movingForward;
   }
 
   #getWinner() {
-    const racingScore = this.forward.racingArray.map((x) => x.length);
+    const racingScore = this.movingForward.racingArray.map((x) => x.length);
     const maxRacingScore = Math.max(...racingScore);
     const winnerRacers = [];
 
