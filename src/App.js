@@ -1,6 +1,17 @@
 import { Random, Console } from '@woowacourse/mission-utils';
 import { ERROR, MESSAGES } from './Constants.js';
-import { Car } from './Car.js';
+
+class Car {
+  constructor(name) {
+    this.name = name;
+    this.movement = '';
+  }
+
+  move() {
+    const randomNumber = Random.pickNumberInRange(0, 9);
+    this.movement += '-'.repeat(randomNumber >= 4 ? 1 : 0);
+  }
+}
 
 class App {
   constructor() {
@@ -66,6 +77,3 @@ class App {
 }
 
 export default App;
-
-const app = new App();
-app.play();
