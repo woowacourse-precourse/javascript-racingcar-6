@@ -17,7 +17,7 @@ export class Race {
     Output('');
     Output('실행 결과');
 
-    while (count < BigInt(this.#tryInput)) {
+    while (count < Number(this.#tryInput)) {
       count += 1;
       this.#cars.move();
       Output('');
