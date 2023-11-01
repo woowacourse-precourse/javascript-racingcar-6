@@ -34,6 +34,14 @@ class App {
         throw new Error("[ERROR] 5자리 이하의 이름만 가능합니다.");
       }
 
+      if (players.length > new Set(players)) {
+        throw new Error("[ERROR] 중복된 이름이 있습니다.");
+      }
+
+      if (player === "" || player === " ") {
+        throw new Error("[ERROR] 공백인 이름이 있습니다.");
+      }
+
       const car = new Car(player);
       cars.push(car);
     }
