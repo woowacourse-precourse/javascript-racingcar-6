@@ -126,7 +126,4 @@ describe('App 테스트', () => {
 			expect(logSpy).toHaveBeenCalledWith(expect.stringMatching(output));
 		});
 	});
-	test('', () => {});
-	test('', () => {});
-	test('', () => {});
 });
