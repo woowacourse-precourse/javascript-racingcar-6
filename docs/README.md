@@ -32,7 +32,7 @@
 - [x] 몇 번 이동할 것인지 입력할 수 있다. (CarMoveNumberValidateTest.js 1번 테스트)
     - [x] 입력한 이동 수는 양수여야 한다. (CarMoveNumberValidateTest.js 2~5번 테스트)
 
-- [x] n 개의 자동차가 이동하거나, 정지한다. 이를 출력한다.(ApplicationTest.js의 1번째 테스트)
+- [x] n 개의 자동차가 이동하거나, 정지한다. 이를 출력한다.(ApplicationTest.js의 1번째 테스트 & CarMoveTest.js 1,2 번 테스트)
     - [ ] 0~9의 숫자를 무작위로 생성해야 한다.
 
 - [x] 우승자를 출력한다. 한 명, 이상일 수 있다. 쉼표로 구분해야 한다. (WinnerTest.js의 1,2번 테스트)
