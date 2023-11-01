@@ -10,7 +10,7 @@ class Car {
   moveForward = () => {
     const randomNumber = Random.pickNumberInRange(0, 9);
     if (randomNumber >= 4) {
-      position += 1;
+      this.position += 1;
     }
   };
 }
@@ -57,7 +57,7 @@ class App {
 
   selectWinnerByRace = () => {
     const maxCarPosition = Math.max(...this.cars.map((car) => car.position));
-    const winnerCars = this.carsName.filter(
+    const winnerCars = this.cars.filter(
       (car) => car.position === maxCarPosition
     );
     return winnerCars.map((car) => car.name);

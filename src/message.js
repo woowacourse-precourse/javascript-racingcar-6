@@ -7,7 +7,6 @@ export const GAME = {
 };
 
 export const ERROR = {
-  CAR_NAME:
-    "[ERROR] 자동차 이름은 쉼표(,)로 구분되어야 하며 5자 이하로 입력 가능합니다.",
+  CAR_NAME: "[ERROR] 자동차 이름은 5자 이하로 입력 가능합니다.",
   ATTEMPT_COUNT: "[ERROR] 숫자만 입력 가능합니다.",
 };
