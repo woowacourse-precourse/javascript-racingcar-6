@@ -1,30 +1,40 @@
-describe("문자열 테스트", () => {
-  test("split 메서드로 주어진 값을 구분", () => {
-    const input = "1,2";
-    const result = input.split(",");
+import App from "../src/App.js";
+import { MissionUtils } from "@woowacourse/mission-utils";
 
-    expect(result).toContain("2", "1");
-    expect(result).toContainEqual("1", "2");
+describe("자동차 경주 게임", () => {
+  let app;
+
+  beforeEach(() => {
+    app = new App();
   });
 
-  test("split 메서드로 구분자가 포함되지 않은 경우 값을 그대로 반환", () => {
-    const input = "1";
-    const result = input.split(",");
+  test("getCarName 함수 테스트", async () => {
+    const inputs = ["pobi,woni"];
+    const spy = jest.spyOn(MissionUtils.Console, "readLineAsync");
+    spy.mockResolvedValueOnce(inputs[0]);
 
-    expect(result).toContain("1");
+    await app.getCarName();
+
+    expect(app.cars).toEqual(inputs[0].split(","));
   });
 
-  test("substring 메서드로 특정 구간 값을 반환", () => {
-    const input = "(1,2)";
-    const result = input.substring(1, 4);
+  test("getTrial 함수 테스트", async () => {
+    const input = 5;
+    const spy = jest.spyOn(MissionUtils.Console, "readLineAsync");
+    spy.mockResolvedValueOnce(input);
 
-    expect(result).toEqual("1,2");
+    await app.getTrial();
+
+    expect(app.trialNumber).toEqual(Number(input));
   });
 
-  test("at 메서드로 특정 위치의 문자 찾기", () => {
-    const input = "abc";
-    const result = input.at(0)
+  test("getRandom 함수 테스트", () => {
+    const spy = jest.spyOn(MissionUtils.Random, "pickNumberInRange");
+    spy.mockReturnValue(4);
 
-    expect(result).toEqual("a");
+    expect(app.getRandom()).toEqual("-");
+
+    spy.mockReturnValue(3);
+    expect(app.getRandom()).toEqual("");
   });
 });
