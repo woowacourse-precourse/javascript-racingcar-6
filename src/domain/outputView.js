@@ -32,5 +32,17 @@ export const racingProgress = async (carNameArray, tryNumber) => {
   }
 
   countArr = countArr.map((el) => (el = el.length));
-  await finalWinner(carNamesArray, countArr);
+  await finalWinner(carNameArray, countArr);
+};
+
+export const finalWinner = async (carNameArray, countArr) => {
+  let result = [];
+  finalWinnerResultSort(result, carNameArray, countArr);
+  if (result[0][1] !== result[1][1]) {
+    oneWinnerPrint(result);
+  } else if (result[0][1] === result[result.length - 1][1]) {
+    winnerIsAllPrint(result);
+  } else if (result[0][1] === result[1][1]) {
+    winnerIsManyPrint(result);
+  }
 };
