@@ -25,15 +25,9 @@ const isUnique = (stringArr) => {
   return isUniqueNames;
 };
 
-const isValidCarName = (stringArr) => {
-  const isValid = hasNotBlank(stringArr) && isValidLength(stringArr) && isUnique(stringArr);
-
-  return isValid;
-};
-
 const isValidCarNameString = (string) => {
   const splitArray = string.split(CHAR.SEPARATOR);
-  const isValid = isValidCarName(splitArray);
+  const isValid = hasNotBlank(splitArray) && isValidLength(splitArray) && isUnique(splitArray);
 
   return isValid;
 };
