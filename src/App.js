@@ -26,15 +26,23 @@ class App {
     this.scoreboard = makeScoreboardByNames(this.names);
 
     printResultTitle();
-    this.#loop();
+    this.#simulate();
     printWinners(this.judgeWinner());
   }
 
-  #loop() {
+  #simulate() {
     while (this.tryAmount--) {
       this.simulateOneTurn();
       printResultUsingScoreBoard(this.scoreboard);
     }
+  }
+
+  simulateOneTurn() {
+    if (!this.names) return;
+
+    this.names.forEach((name) => {
+      if (isFowardAllowed()) this.giveScoreTo(name);
+    });
   }
 
   /**
@@ -46,14 +54,6 @@ class App {
     if (!this.scoreboard.hasOwnProperty(name)) return;
 
     this.scoreboard[name] += 1;
-  }
-
-  simulateOneTurn() {
-    if (!this.names) return;
-
-    this.names.forEach((name) => {
-      if (isFowardAllowed()) this.giveScoreTo(name);
-    });
   }
 
   /**
