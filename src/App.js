@@ -16,10 +16,23 @@ class App {
     this.#gameRounds = Number(input);
   }
 
+  async gameLoop() {
+    Console.print('게임 결과\n');
+    for (let i = 0; i < this.#gameRounds; i++) {
+      this.#carList.map((car) => {
+        car.tryMoveForward();
+        car.printMoveCount();
+      });
+      Console.print('');
+    }
+
+
+  }
 
   async play() {
     await this.parseCarNamesInput();
     await this.parseGameRoundsInput();
+    await this.gameLoop();
   }
 }
 
