@@ -22,6 +22,12 @@
     - [ ] 경주 게임: raceGameController
         - [ ] 게임 시작: raceGame#run
         - [ ] 자동차 이름 유효성 검사: raceGameController#isValidCarName
+          1. 자동차 이름 길이는 1~5자리다
+          2. 자동차 이름은 공백을 포함하지 않는다
+          3. 자동차 이름은 중복되지 않는다
+        - [ ] 시도 횟수 유효성 검사: raceGameController#isValidTotalRound
+          1. 시도 횟수는 1 이상의 자연수이다
+          2. 시도 횟수는 공백을 포함하지 않는다
         - [ ] 무작위 값 선택: raceGameController#selectRandomNumber
         - [ ] 전진 가능 여부 확인: raceGameController#canCarAdvance
         - [ ] 전진 횟수 업데이트: raceGameController#updateNumberOfAdvance
@@ -31,9 +37,9 @@
 
 * constants
     - [ ] 입출력에 사용되는 메세지들: MESSAGES
-        > 자동차 이름 & 시도 횟수 입력/Error, 실행 결과, 전진 표시(-)
+        > 자동차 이름 & 시도 횟수 입력/Error, 실행 결과, 전진 표시(-), 최종 우승자
     - [ ] 입출력 형식에 대한 조건들: CONDITIONS
-        > 자동차 이름 & 시도 횟수 입력 형식, 단독 우승자, 공동 우승자, 무작위 최소값, 무작위 최대값, 전진 조건값, 전진 값
+        > 자동차 이름 & 시도 횟수 입력 형식, 자동차 이름 최소/최대 길이, 단독 우승자 조건, 무작위 최소값, 무작위 최대값, 전진 조건값, 전진 값
 
 
 <br/>
@@ -57,7 +63,9 @@
     - <details>
       <summary>eslint(airbnb style) 사용</summary>
 
-      `npm init @eslint/config` 로 eslint(airbnb style)를 설치한다.
+      `npm init @eslint/config` 로 eslint를 설치한다.
+
+      `npx install-peerdeps --dev eslint-config-airbnb` 로 airbnb eslint 설정 패키지를 설치한다.
 
       .eslintrc.cjs 파일을 생성하여 코드 스타일을 정의한다.
 
