@@ -17,15 +17,23 @@ class raceGameController {
   /** @type {object} */
   #race;
 
-  run() {
-    try {
-      const carNames = InputView.askCarNames().split(',')
-      this.isValidCarNames(carNames);
-    } catch {
-      throw new Error(MESSAGES.GENERAL_ERROR);
-    }
+  /**
+   * 경주 게임 생성
+   */
+  async run() {
+    const carNames = await InputView.askCarNames().split(',')
+    this.isValidCarNames(carNames);
+    const racingCars = carNames.map(carName => new Car(carName));
   }
 
+  /**
+   * 자동차 이름 유효성 검사
+   * 1. Length 에러: 1자 미만
+   * 2. Length 에러: 5자 초과
+   * 3. 공백 에러: 공백 포함 이름
+   * 4. 중복 에러: 중복 이름
+   * @param {object} carNames 
+   */
   static isValidCarNames(carNames) {
     if (carNames.length < CONDITIONS.MIN_CAR_NAME_LENGTH) {
       throw new Error(MESSAGES.CAR_NAME_INPUT_ERROR_LENGTH);
