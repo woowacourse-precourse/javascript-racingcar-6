@@ -8,9 +8,11 @@ describe('Validator 클래스 테스트', () => {
   });
 
   test('자동차 이름이 5글자 초과로 입력되었을 때 validateCarNames, isValidCarNameLength 함수를 테스트한다.', () => {
-    const names = 'alphaasdf,betaff,omegagg';
+    const nameArr = ['alphaasdf,betaff,omegagg', ', , , '];
 
-    expect(() => Validator.validateCarNames(names)).toThrow();
+    nameArr.forEach((names) => {
+      expect(() => Validator.validateCarNames(names)).toThrow();
+    });
   });
 
   test('자동차 이름에 빈 문자열이 입력되었을 때 validateCarNames, isValidCarNameLength 함수를 테스트한다.', () => {

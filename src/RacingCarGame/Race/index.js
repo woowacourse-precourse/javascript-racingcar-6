@@ -15,7 +15,7 @@ class Race {
     this.cars = names
       .replace(/\s/g, '')
       .split(SYMBOLS.nameDivider)
-      .filter((name) => name)
+      .filter(Boolean)
       .map((name) => new Car(name));
   }
 
