@@ -3,8 +3,8 @@ import GameWinner from '../model/game_winner.js';
 import PrintGameResult from '../view/print_game_result.js';
 import CarNameError from '../../utils/error/car_name_error.js';
 import RacingCntError from '../../utils/error/racing_cnt_error.js';
-import InputQuestion from '../../ui/input_question.js';
 import userInput from '../../utils/user_input.js';
+import InputQuestion from '../../ui/input_question.js';
 
 class GameManage {
   constructor() {
@@ -20,11 +20,13 @@ class GameManage {
 
   async checkCarName() {
     const ERROR = new CarNameError(this.RACING_CAR);
-    if (!ERROR.carNameNotExist()
-        && !ERROR.carNameNotString()
-        && !ERROR.carNameLenOverFive()
-        && !ERROR.carNameBlank()
-        && !ERROR.carNameDuplication()) {
+    if (
+      !ERROR.carNameNotExist() &&
+      !ERROR.carNameNotString() &&
+      !ERROR.carNameLenOverFive() &&
+      !ERROR.carNameBlank() &&
+      !ERROR.carNameDuplication()
+    ) {
       await this.inputRacingCnt();
     }
   }
@@ -36,9 +38,11 @@ class GameManage {
 
   checkRacingCnt() {
     const ERROR = new RacingCntError(this.RACING_CNT);
-    if (!ERROR.racingCntNotExist()
-        && !ERROR.racingCntNotNum()
-        && !ERROR.racingCntNotPositiveNum()) {
+    if (
+      !ERROR.racingCntNotExist() &&
+      !ERROR.racingCntNotNum() &&
+      !ERROR.racingCntNotPositiveNum()
+    ) {
       this.gameResult();
     }
   }
