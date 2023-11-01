@@ -1,4 +1,4 @@
-import { ERROR_MESSAGES, MESSAGES } from "../constants/Messages.js";
+import { ERROR_MESSAGES } from "../constants/Messages.js";
 import Race from "../models/Race.js";
 import RaceView from "../views/RaceView.js";
 import { Console } from "@woowacourse/mission-utils";
