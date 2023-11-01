@@ -8,6 +8,7 @@ class App {
   async startGame() {
     const carNames = await this.inputCarNames();
     const tries = await this.inputTries();
+    const cars = this.initializeCars(carNames);
   }
 
   async inputCarNames() {
@@ -34,6 +35,10 @@ class App {
       throw new Error("[ERROR] 시도 횟수는 양수여야 합니다.");
     }
     return tries;
+  }
+
+  initializeCars(names) {
+    return names.map((name) => ({ name, position: 0 }));
   }
 
 }
