@@ -1,5 +1,5 @@
 import ERROR_MESSAGE from '../src/constant/errorMessage';
-import AllCars from '../src/model/AllCars';
+import AllCars from '../src/models/AllCars';
 
 describe('차 이름 유효성 테스트', () => {
   test('정상 값 입력 시 통과', () => {
