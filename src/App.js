@@ -37,11 +37,43 @@ class App {
     }
   }
 
+  shouldUpdateDistanceOnAdvance() {
+    const randomNumber = Random.pickNumberInRange(0, 9);
+    if (randomNumber > 4) {
+      return true;
+    }
+    return false;
+  }
+
+  updateDistancePerRound() {
+    this.cars.forEach(car => {
+      if(this.shouldUpdateDistanceOnAdvance()){
+        car.distance += '-';
+      }
+    });
+  }
+
+  printRoundResults() {
+    this.cars.forEach(car => {
+      Console.print(car.getGameResult());
+    });
+    Console.print('\n');
+  }
+
+  displayGameResultsForRounds(gameCount) {
+    Console.print('\n실행 결과');
+    for (let i = 0; i < gameCount; i++) {
+      this.updateDistancePerRound();
+      this.printRoundResults();
+    }
+  }
+
   async play() {
     const carNames = await this.receiveCarNames();
     this.validateCarNames(carNames)
     this.generateCars(carNames);
     const gameCount = await this.receiveGameCount();
+    this.displayGameResultsForRounds(gameCount);
   }
 }
 

@@ -1,7 +1,19 @@
 class Car {
-    constructor(name, distance) {
-        this.name = name;
-        this.distance = distance;
+    constructor(name) {
+        this._name = name;
+        this._distance = '';
+    }
+
+    get distance() {
+        return this._distance;
+    }
+
+    set distance(distance) {
+        this._distance = distance;
+    }
+
+    getGameResult() {
+        return `${this._name} : ${this._distance}`;
     }
 }
 
