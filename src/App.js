@@ -6,6 +6,16 @@ import User, {
   validNumberOfAttempts,
 } from './User.js';
 
+function printOutput(output, movingPoint, idx) {
+  let forOutput = output;
+  let forIdx = idx;
+  while (movingPoint > forIdx) {
+    forOutput += '-';
+    forIdx += 1;
+  }
+  return forOutput;
+}
+
 class App {
   async play() {
     const inputUserList = await inputParticipantCarName();
@@ -13,9 +23,22 @@ class App {
     await validParticipantCarName(inputUserList);
     const userList = new User(inputUserList);
     console.log(userList); // TODO 디버깅용
-    const userInput = await inputNumberOfAttempts();
+    let userInput = await inputNumberOfAttempts();
     await validNumberOfAttempts(userInput);
     console.log(userInput); // TODO 디버깅용
+    MissionUtils.Console.print('실행 결과');
+    while (userInput > 0) {
+      await userList.setRandomValue();
+      console.log(userList.carsMovingPoint); // TODO 디버깅용
+      userList.carsMovingPoint.forEach((movingPoint, index) => {
+        let output = userList.nameList[index];
+        const idx = 0;
+        output += ' : ';
+        output = printOutput(output, movingPoint, idx);
+        MissionUtils.Console.print(`${output}`);
+      });
+      userInput -= 1;
+    }
   }
 }
 

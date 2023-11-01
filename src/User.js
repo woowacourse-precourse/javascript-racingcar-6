@@ -3,6 +3,20 @@ import { MissionUtils } from '@woowacourse/mission-utils';
 class User {
   constructor(nameList) {
     this.nameList = nameList;
+    this.carsMovingPoint = Array.from(
+      { length: this.nameList.length },
+      () => 0
+    );
+  }
+
+  async setRandomValue() {
+    this.nameList.forEach((name, index) => {
+      const randomValue = MissionUtils.Random.pickNumberInRange(0, 9);
+      console.log(randomValue); // TODO 디버깅용
+      if (randomValue >= 4) {
+        this.carsMovingPoint[index] += 1;
+      }
+    });
   }
 }
 
