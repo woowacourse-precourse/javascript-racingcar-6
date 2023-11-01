@@ -98,6 +98,15 @@ class raceGameController {
       racingCar.advance(raceGameController.canCarAdvance(randomNumber));
     });
   }
+
+  /**
+   * 우승자 목록 연산
+   * @param {object} racingCars - 경주에 참가한 자동차들
+   */
+  static calculateWinners(racingCars) {
+    const maxNumberOfAdvance = Math.max(...racingCars.map(racingCar => racingCar.getNumberOfAdvance()));
+    return racingCars.filter(racingCar => racingCar.getNumberOfAdvance() === maxNumberOfAdvance);
+  }
 }
 
 export default raceGameController;
