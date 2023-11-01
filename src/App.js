@@ -59,7 +59,7 @@ class App {
     );
 
     if (!Number.isInteger(COUNT_NUMBER) || COUNT_NUMBER <= 0) {
-      throw new Error("1 이상의 정수를 입력해주세요.");
+      throw new Error("[ERROR] 1 이상의 정수를 입력해주세요.");
     }
 
     return COUNT_NUMBER;
