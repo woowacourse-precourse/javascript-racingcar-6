@@ -54,9 +54,9 @@ describe('hasDuplicateCarName 함수 테스트', () => {
 
 describe('getCarNames 함수 테스트', () => {
   describe('문제 있을 때 예외 처리', () => {
-    const invaidlInputs = ['seung,seung,seug', 'seung,seungthae,kim,123456'];
+    const invalidlInputs = ['seung,seung,seug', 'seung,seungthae,kim,123456'];
 
-    invaidlInputs.forEach((input) => {
+    invalidlInputs.forEach((input) => {
       test(`테스트 케이스 ${input}`, async () => {
         mockQuestions(input);
         const racingGame = new RacingGame();
@@ -69,9 +69,9 @@ describe('getCarNames 함수 테스트', () => {
   });
 
   describe('문제 없을 때 정상 동작 확인', () => {
-    const vaildInputs = ['kin, seung, thae'];
+    const validInputs = ['kin, seung, thae'];
 
-    vaildInputs.forEach((input) => {
+    validInputs.forEach((input) => {
       test(`테스트 케이스 ${input}`, async () => {
         mockQuestions(input);
         const racingGame = new RacingGame();
