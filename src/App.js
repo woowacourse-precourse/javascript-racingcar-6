@@ -1,0 +1,25 @@
+import getCarName from "./functions/getCarName.js"
+import carNameToArray from "./functions/getCarNameToArray.js"
+import getAttemptsNumber from "./functions/getAttemptsNumber.js"
+import printSteps from "./functions/printSteps.js"
+import printWinner from "./functions/printWinner.js"
+import Cars from "./models/Cars.js"
+
+class App {
+  async play() {
+
+    const userInput = await getCarName();
+
+    const carNameArray = carNameToArray(userInput);
+
+    const cars = new Cars(carNameArray);
+
+    const attemptsNumber = await getAttemptsNumber();
+
+    printSteps(cars, attemptsNumber);
+
+    printWinner(cars);
+  }
+}
+
+export default App;
