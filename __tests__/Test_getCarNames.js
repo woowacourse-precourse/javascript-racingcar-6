@@ -1,7 +1,7 @@
 import App from "../src/App.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 
-const mockQuestions = (inputs) => {
+const mockQuestionss = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
   MissionUtils.Console.readLineAsync.mockImplementation(() => {
     const input = inputs.shift();
@@ -37,7 +37,7 @@ describe("getCarNames 메서드 테스트", () => {
     [["car1, carname2, car3"]],
     [["car1, car2, car3, carname4"]]
   ])("이름을 5자 이하로 입력하지 않은 경우(예외)", async (inputs) => {
-    mockQuestions(inputs);
+    mockQuestionss(inputs);
     const app = new App();
     await expect(app.getCarNames()).rejects.toThrow("이름은 5자 이하만 가능합니다.");
   });
