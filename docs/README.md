@@ -26,7 +26,7 @@
 - [x] `Node.js` `18.17.1` 버전에서 실행 가능
 - [x] `App.js`의 `play` 메서드에서 프로그램 실행
 - [ ] `ApplicationTest` 의 모든 테스트 성공
-- [ ] indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현
+- [x] indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현
 - [ ] Jest를 이용하여 내가 정리한 기능 목록이 정상 동작함을 테스트 코드로 확인
 - [x] `@woowacourse/mission-utils`에서 제공하는 `Random` 및 `Console` API를 사용하여 구현
 

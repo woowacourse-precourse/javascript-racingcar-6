@@ -1,17 +1,28 @@
 import { Random, Console } from "@woowacourse/mission-utils";
 import { GAME, ERROR } from "./message";
 
-class App {
-  constructor() {
-    this.carsName = this.getCarsName();
+class Car {
+  constructor(name) {
+    this.name = name;
     this.position = 0;
   }
-  validateCarName = (carsNameArray) => {
-    carsNameArray.forEach((carName) => {
-      if (carName.length > 5) {
-        throw new Error(ERROR.CAR_NAME);
-      }
-    });
+
+  moveForward = () => {
+    const randomNumber = Random.pickNumberInRange(0, 9);
+    if (randomNumber >= 4) {
+      position += 1;
+    }
+  };
+}
+
+class App {
+  constructor() {
+    this.cars = [];
+  }
+  validateCarName = (carName) => {
+    if (carName.length > 5) {
+      throw new Error(ERROR.CAR_NAME);
+    }
   };
 
   validateNumber = (attemptNumber) => {
@@ -23,9 +34,10 @@ class App {
   getCarsName = async () => {
     const carsName = await Console.readLineAsync(GAME.GET_CAR_NAME);
     const carsNameArray = carsName.split(",");
-    this.validateCarName(carsNameArray);
-
-    return carsNameArray;
+    carsNameArray.forEach((carName) => {
+      this.validateCarName(carName);
+      this.cars.push(new Car(carName));
+    });
   };
 
   getAttemptCount = async () => {
@@ -36,22 +48,11 @@ class App {
     return attemptNumber;
   };
 
-  generateRandomNumber = () => {
-    const randomNumber = Random.pickNumberInRange(0, 9);
-    return randomNumber;
-  };
-
-  moveForwardCondition = () => {
-    const randomNumber = this.generateRandomNumber();
-    if (randomNumber >= 4) {
-      position += 1;
-    }
-    return position;
-  };
-
-  moveForward = () => {
-    this.carsName.forEach((car) => car.carMove);
-    Console.print(`${car.carsName} : ${"-".repeat(car.position)}`);
+  moveAllCars = () => {
+    this.cars.forEach((car) => {
+      car.moveForward();
+      Console.print(`${car.name} : ${"-".repeat(car.position)}`);
+    });
   };
 
   selectWinnerByRace = () => {
@@ -59,13 +60,13 @@ class App {
     const winnerCars = this.carsName.filter(
       (car) => car.position === maxCarPosition
     );
-    return winnerCars.map((car) => car.carName);
+    return winnerCars.map((car) => car.name);
   };
 
   racingGame = () => {
     const attemptCount = this.getAttemptCount();
     while (attemptCount > 0) {
-      this.moveForward();
+      this.moveAllCars();
       attemptCount -= 1;
     }
     const winners = this.selectWinnerByRace();
