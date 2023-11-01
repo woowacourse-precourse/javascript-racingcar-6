@@ -2,6 +2,7 @@ import { MissionUtils } from '@woowacourse/mission-utils';
 import InputView from './InputView.js';
 import Car from './Car.js';
 import Validation from './Validator.js';
+import message from "./Constants.js";
 
 class App {
   tryCount = 0;
@@ -23,13 +24,13 @@ class App {
 
   // todo 함수 분리 필요
   moveCar() {
-    MissionUtils.Console.print('실행 결과');
+    MissionUtils.Console.print(message.RESULT_HEADER);
     for (let tryIndex = 0; tryIndex < this.tryCount; tryIndex++) {
       this.carList.forEach((car) => {
         car.move();
-        MissionUtils.Console.print(`${car.name} : ${'-'.repeat(car.position)}`);
+        MissionUtils.Console.print(`${car.name} : ${message.POSITION_UNIT.repeat(car.position)}`);
       });
-      MissionUtils.Console.print('');
+      MissionUtils.Console.print(message.EMPTY_LINE);
     }
   }
 
@@ -44,7 +45,7 @@ class App {
   }
 
   printWinners(winners) {
-    MissionUtils.Console.print(`최종 우승자 : ${winners.join(', ')}`);
+    MissionUtils.Console.print(`${message.WINNER_HEADER}${winners.join(message.WINNER_DELIMITER)}`);
   }
 
   async requestCarNames() {
@@ -58,7 +59,7 @@ class App {
     const tryCount = await InputView.requestTryCount();
     this.tryCount = tryCount;
     Validation.validateTryCount(tryCount);
-    MissionUtils.Console.print('');
+    MissionUtils.Console.print(message.EMPTY_LINE);
     return tryCount;
   }
 }
