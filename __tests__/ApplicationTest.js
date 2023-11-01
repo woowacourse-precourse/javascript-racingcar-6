@@ -46,9 +46,23 @@ describe("자동차 경주 게임", () => {
     });
   });
 
+  test("공동 우승 발생", async () => {
+    // given
+    const MOVING_FORWARD = 4;
+    const STOP = 3;
+    const inputs = ["pobi,woni,nike", "1"];
+    const outputs = ["최종 우승자 : pobi, nike"];
+    const randoms = [MOVING_FORWARD, STOP, MOVING_FORWARD];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+  });
   test.each([
     [["pobi,javaji"]],
-    [["pobi,eastjun"]]
+    [["pobi,eastjun"]],
+    [["pobi,,"]],
+    [["pobi,,,"]],
   ])("이름에 대한 예외 처리", async (inputs) => {
     // given
     mockQuestions(inputs);
