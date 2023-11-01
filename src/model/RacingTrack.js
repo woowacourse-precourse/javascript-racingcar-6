@@ -16,7 +16,6 @@ class RacingTrack {
 		driverNamesValidation(driverArr);
 
 		driverArr.forEach((name) => this.#drivers.push(new Car(name)));
-		console.log(this.#drivers);
 	}
 
 	allDriverMoves() {
