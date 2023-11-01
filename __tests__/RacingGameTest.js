@@ -197,3 +197,15 @@ test('printRaceProgress 함수 테스트', () => {
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
   });
 });
+
+test('printWinners 함수 테스트', () => {
+  const car1 = new Car('car1', 3);
+  const car2 = new Car('car2', 3);
+  const racingGame = new RacingGame([], 0, ['car1', 'car2']);
+  const output = '최종 우승자 : car1, car2';
+  const logSpy = getLogSpy();
+
+  racingGame.printWinners();
+
+  expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+});
