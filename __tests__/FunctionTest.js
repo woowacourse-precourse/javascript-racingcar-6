@@ -32,17 +32,19 @@ describe("기능 테스트", () => {
         await expect(await app.getNumberOfGames()).toEqual(result);
     });
 
-    test.each([``, `치이카와 우사기 하치와레`, `이름엄청길다,이름,이`,`치이카와,`])(
-        "잘못된 자동차 이름 에러 처리 테스트",
-        async (value) => {
-            const app = new App();
-            const valueArr = value.split(",");
+    test.each([
+        ``,
+        `치이카와 우사기 하치와레`,
+        `이름엄청길다,이름,이`,
+        `치이카와,`,
+    ])("잘못된 자동차 이름 에러 처리 테스트", async (value) => {
+        const app = new App();
+        const valueArr = value.split(",");
 
-            await expect(() => app.checkCarFormat(value, valueArr)).toThrow(
-                "[ERROR] 자동차 이름이 잘못된 형식입니다."
-            );
-        }
-    );
+        await expect(() => app.checkCarFormat(value, valueArr)).toThrow(
+            "[ERROR] 자동차 이름이 잘못된 형식입니다."
+        );
+    });
 
     test.each([``, `0`, `숫자`, `1,2`])(
         "잘못된 시도횟수 에러 처리 테스트",
@@ -82,13 +84,21 @@ describe("기능 테스트", () => {
     });
 
     test("게임 승자 인덱스 출력 테스트", async () => {
-        const carStates = ["", "-"];
-        const result = [1];
+        const carStates = ["-", "-", ""];
+        const result = [0, 1];
 
         const app = new App();
 
-        await expect(app.determineWinner(carStates)).toEqual(
-            result
-        );
+        await expect(app.determineWinnerIndex(carStates)).toEqual(result);
+    });
+
+    test("게임 승자 문구 출력 테스트", async () => {
+        const winnerIndexList = [2, 3];
+        const carNameArr = ["치이카와", "하치와레", "모몽가"];
+        const result = `최종 우승자 : ${carNameArr[2]}, ${carNameArr[3]}`;
+
+        const app = new App();
+
+        await expect(app.determineWinnerList(winnerIndexList)).toEqual(result);
     });
 });
