@@ -1,14 +1,14 @@
 import {Console, Random} from '@woowacourse/mission-utils';
 class App {
   async play() {
-    let userInput = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)
-    );
+
+    let userInput = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)');
 
     const CAR_NAME_ARRAY = userInput.split(',');
-    CAR_NAME.forEach(car => {
+    CAR_NAME_ARRAY.forEach(car => {
       if(car.length > 5)  throw new Error(`[ERROR] 자동차 이름(${car})이 5글자를 초과합니다.`)
     });
-    const CAR = CAR_NAME.map(name=>({name, distance: 0}));
+    const CAR = CAR_NAME_ARRAY.map(name=>({name, distance: 0}));
 
     userInput = await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
 
@@ -21,6 +21,8 @@ class App {
 
 
   }
+
+
 }
 
 export default App;
