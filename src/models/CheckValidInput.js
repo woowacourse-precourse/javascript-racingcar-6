@@ -29,19 +29,19 @@ export const checkValidInput = (inputName) => {
         if (n === '' || n === ' ') {
           throw new Error(NAME_ERROR.COMMA_ERROR);
         }
-      });
+
+        //7. 이름에 공백이나 특수문자가 포함된 경우
+        const regex = /^[a-zA-Z0-9]+$/;
+        if ( !regex.test(n) ) {
+            throw new Error(NAME_ERROR.ONLY_CHAR_ERROR);
+        }
+    });
       
         
     //6. 중복된 이름이 있을 경우
     let nameSet = new Set(name);
     if ( name.length !== nameSet.size ) {
         throw new Error(NAME_ERROR.SAME_NAME_ERROR);
-    }
-
-    //7. 이름에 공백이나 특수문자가 포함된 경우
-    const regex = /^[a-zA-Z0-9]+$/;
-    if ( !regex.test(carName) ) {
-        throw new Error(NAME_ERROR.ONLY_CHAR_ERROR);
     }
 
     return name;

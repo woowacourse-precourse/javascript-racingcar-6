@@ -33,11 +33,10 @@ describe('사용자의 입력값에 대한 유효성 테스트', () => {
     ['pobi,,eastjun'],
     ['pobi, ,eastjun'],
     ['pobi,pobi'],
+    ['pob!,pob i'],
   ])('유효하지 않은 자동차 이름을 입력하지 않으면 유효성 그에 해당하는 에러메시지를 출력한다.', async (inputs) => {
-    // given
     mockQuestions([inputs]);
 
-    // then
     const name = await getCarNames();
     expect(() => checkValidInput(name)).toThrow('[ERROR]');
   });
@@ -53,15 +52,13 @@ describe('사용자의 입력값에 대한 유효성 테스트', () => {
     const validatedCount = checkValidCount(count);
     expect(validatedCount).toEqual(RESULT);
   });
-  test.each(['', 'a'])(
+
+  test.each(['', 'a', 0])(
     '유효하지 않은 시도 횟수를 입력하면 그에 해당하는 에러메시지를 출력한다.',
     async (inputs) => {
-      // given
       mockQuestions([inputs]);
 
-      // then
       const count = await getAttemptCount();
       expect(() => checkValidCount(count)).toThrow('[ERROR]');
-    },
-  );
+    });
 });
