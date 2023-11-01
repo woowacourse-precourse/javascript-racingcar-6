@@ -1,21 +1,24 @@
 import { Console } from "@woowacourse/mission-utils";
 import * as F from "./utility/utilityFunctions.js";
 import InputReader from "./console/InputReader.js";
-import Car from "./Car.js";
+import Car from "./units/Car.js";
 import OutputPrinter from "./console/OutputPrinter.js";
+import Referee from "./units/Referee.js";
 
 class App {
   constructor() {
     this.inputReader = new InputReader();
     this.outputPrint = new OutputPrinter();
+    this.referee = new Referee();
   }
 
   async play() {
     const { carNames, roundCount } = await this.enterGameBaseSetting();
-
     const carObjects = this.generateCarObjects(carNames);
+
     this.startRace(carObjects, roundCount);
-    const winnerList = this.getWinners(carObjects);
+
+    const winnerList = this.referee.getWinners(carObjects);
     this.outputPrint.printGameResults(winnerList);
   }
 
@@ -46,22 +49,6 @@ class App {
         this.outputPrint.printRaceStatus(carObjects);
       }),
     );
-  }
-
-  getWinners(carObjects) {
-    let winnerList = [];
-
-    const maxPosition = Math.max(...carObjects.map((car) => car.position));
-
-    if (maxPosition === 0) throw new Error("[ERROR] 우승자가 없습니다.");
-
-    winnerList = F.go(
-      carObjects,
-      F.filter((car) => car.position === maxPosition),
-      F.map((car) => car.name),
-    );
-
-    return winnerList;
   }
 }
 
