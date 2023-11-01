@@ -12,12 +12,12 @@ class InputCars {
 
     const carNames = input.split(',');
 
-    this.#validateCarNames(carNames);
+    this.validateCarNames(carNames);
 
     return carNames.map(name => new Car(name));
   }
 
-  #validateCarNames(carNames) {
+  validateCarNames(carNames) {
     if (carNames.some(name => name.length === 0)) {
       throw new Error(ERROR_MESSAGES.car_name_empty);
     }
