@@ -26,7 +26,7 @@ class Car {
   }
 
   generateResultMessage() {
-    let resultMessage = this.name + " : ";
+    let resultMessage = `${this.name} : `;
     for (let i = 0; i < this.position; i++) {
       resultMessage += "-";
     }

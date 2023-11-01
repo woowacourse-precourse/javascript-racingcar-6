@@ -59,7 +59,7 @@ class Game {
   generateFinalResultMessage() {
     let finalResultMessage = "최종 우승자 : ";
     for (const finalWinner of this.finalWinnerList) {
-      finalResultMessage += finalWinner + ", ";
+      finalResultMessage += `${finalWinner}, `;
     }
     finalResultMessage = finalResultMessage.slice(0, -2);
     return finalResultMessage;
