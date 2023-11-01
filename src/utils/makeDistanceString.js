@@ -1,9 +1,3 @@
-const makeDistanceString = (distanceNumber) => {
-  let distanceString = '';
-  for (let index = 0; index < distanceNumber; index++) {
-    distanceString += '-';
-  }
-  return distanceString;
-};
+const makeDistanceString = (distanceNumber) => '-'.repeat(distanceNumber);
 
 export default makeDistanceString;

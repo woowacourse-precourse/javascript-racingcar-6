@@ -5,7 +5,9 @@ class Car {
   }
 
   move(randomNumber) {
-    if (randomNumber >= 4) this.distance += 1;
+    if (randomNumber >= 4) {
+      this.distance += 1;
+    }
   }
 
   getName() {

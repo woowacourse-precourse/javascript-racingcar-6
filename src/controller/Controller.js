@@ -16,10 +16,11 @@ class Controller {
   async getCarName() {
     const playerInput = await InputView.readCarName();
     checkValidation.nameInput(playerInput);
+
     playerInput.forEach((name) => {
-      const carModel = new Car(name);
-      this.#cars.push(carModel);
+      this.#cars.push(new Car(name));
     });
+
     await this.getAttemptNumber();
   }
 
@@ -27,6 +28,7 @@ class Controller {
     const playerInput = await InputView.readAttemptNumber();
     checkValidation.attemptInput(playerInput);
     this.#attempt = playerInput;
+
     this.startRace();
   }
 
@@ -68,6 +70,7 @@ class Controller {
         maxDistance = car.getDistance();
       }
     });
+
     return winners;
   }
 }
