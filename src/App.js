@@ -51,6 +51,27 @@ class App {
       console.log("");
     }
   }
+
+  ranking() {
+    let longestIndexes = [];
+    let longestLength = 0;
+
+    for (let i = 0; i < this.cars.length; i++) {
+      if (this.carResults[i].length > longestLength) {
+        longestIndexes = [i];
+        longestLength = this.carResults[i].length;
+      } else if (this.carResults[i].length === longestLength) {
+        longestIndexes.push(i);
+      }
+    }
+
+    if (longestIndexes.length === 1) {
+      Console.print(`최종 우승자: ${this.cars[longestIndexes[0]]}`);
+    } else {
+      const winners = longestIndexes.map((index) => this.cars[index]);
+      Console.print(`최종 우승자: ${winners.join(",")}`);
+    }
+  }
   async play() {}
 }
 
