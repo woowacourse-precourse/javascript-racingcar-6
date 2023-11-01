@@ -59,4 +59,16 @@ describe("자동차 경주 게임", () => {
     // then
     await expect(app.play()).rejects.toThrow("[ERROR]");
   });
+
+  test("게임 횟수에 숫자가 아닌 값이 입력되었을 때 예외 처리", async () => {
+    // given
+    const inputs = ["pobi,woni", "abc"]; // "abc"는 유효하지 않은 숫자입니다.
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow("[ERROR] 숫자 형식의 입력이 아닙니다.");
+  });
 });
