@@ -5,9 +5,11 @@ import { CAR_NAME_ROLE } from './contants/racingGame.js';
 
 export default class RacingGame {
   #carList = null;
+  #round = null;
 
   async run() {
-    this.#requireCarList();
+    await this.#requireCarList();
+    await this.#requireRound();
   }
 
   async #inputUser(message) {
@@ -27,6 +29,13 @@ export default class RacingGame {
     this.#carList = this.#validateCarList(carList);
   }
 
+  async #requireRound() {
+    const input = await this.#inputUser('시도할 횟수는 몇 회 인가요?\n');
+
+    const round = Number(input);
+    this.#round = this.#validateRound(round);
+  }
+
   #validateCarList(carList) {
     const { isValidCarName, isDuplicatedCarName } = validator;
 
@@ -44,5 +53,13 @@ export default class RacingGame {
       throw new Error(message);
     }
     return carList;
+  }
+
+  #validateRound(round) {
+    if (!validator.isValidRound(round)) {
+      const message = MESSAGE_FORMAT.error('시도할 횟수는 1이상의 숫자를 입력해 주세요.');
+      throw new Error(message);
+    }
+    return round;
   }
 }

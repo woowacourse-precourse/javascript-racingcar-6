@@ -1,4 +1,4 @@
-import { CAR_NAME_ROLE } from '../contants/racingGame.js';
+import { CAR_NAME_ROLE, ROUND_ROLE } from '../contants/racingGame.js';
 
 export const validator = Object.freeze({
   isEmptyString(input) {
@@ -10,5 +10,8 @@ export const validator = Object.freeze({
   isDuplicatedCarName(carList) {
     const carListSet = new Set(carList);
     return carList.length !== carListSet.size;
+  },
+  isValidRound(round) {
+    return Number.isInteger(round) && round >= ROUND_ROLE.minRound;
   },
 });
