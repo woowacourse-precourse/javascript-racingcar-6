@@ -27,6 +27,17 @@ class App {
         })
         return cars
     }
+
+    writeDrivenLine(cars) {
+        const { print } = MissionUtils.Console
+        cars.forEach((car) => {
+            let drivenLine = '-'.repeat(car.distanceDriven)
+            print(`${car.name} : ${drivenLine}`)
+        })
+        print('\n')
+    }
+
+
     async play() {
 
     }
