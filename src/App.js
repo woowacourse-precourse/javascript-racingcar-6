@@ -47,4 +47,8 @@ class App {
       }
     });
   }
+
+  drawDash(value) {
+    this.dashes = '-'.repeat(value);
+  }
 export default App;
