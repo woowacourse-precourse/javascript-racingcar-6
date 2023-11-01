@@ -14,7 +14,7 @@ export default class Exception {
     if (name.length > 5) return true;
   }
 
-  static attempNumbers(number) {
+  static attemptNumber(number) {
     if (this.isNumber(number) || number === "0") {
       throw new Error("[ERROR] 1이상의 숫자값을 입력해주세요.");
     }
