@@ -2,6 +2,14 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 import Car from './Car.js';
 
 class App {
+
+  printEachResult(carList) {
+    carList.forEach((car) => {
+      // console.log(car.name, car.moveCount);
+      MissionUtils.Console.print(`${car.name} : ${car.printMove()}`);
+    })
+  }
+
   async play() {
     // 자동차 이름 입력
     const carStr = await MissionUtils.Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n');
@@ -28,6 +36,9 @@ class App {
     while(tryCount--) {
       // 각 자동차 전진 여부 결정
       carList.map((car) => car.playGame());
+      console.log('----------------');
+      MissionUtils.Console.print('실행결과');
+      this.printEachResult(carList);
     }
   }
 }

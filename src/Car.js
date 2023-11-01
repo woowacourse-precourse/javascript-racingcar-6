@@ -13,6 +13,10 @@ class Car {
     // console.log(`${this.name}의 moveCount = ${this.moveCount}, 난수 = ${randomNum}`);
   }
 
+  printMove() {
+    return '-'.repeat(this.moveCount);
+  }
+
 }
 
 export default Car;
