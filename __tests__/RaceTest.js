@@ -1,4 +1,3 @@
-import Race from '../RacingCar/Race.js';
 import { validateTurnNumber } from '../validations/validateTurnNumber.js';
 import { IN_GAME_ERROR } from '../src/constants.js';
 
