@@ -2,7 +2,7 @@ import { printMessage } from '../common/utils.js';
 import { GAME_SETTING, LOG_MESSAGE, ERROR_MESSAGE } from '../common/constants.js';
 
 export const printResult = () => {
-  printMessage(LOG_MESSAGE.SHOW_RESULT);
+  printMessage(LOG_MESSAGE.OUTPUT_RESULT);
 }
 
 export const printCar = (name, position) => {
@@ -10,7 +10,7 @@ export const printCar = (name, position) => {
 }
 
 export const printWinner = (winner) => {
-  printMessage(`${LOG_MESSAGE.SHOW_WINNER}${winner.join(', ')}`);
+  printMessage(`${LOG_MESSAGE.OUTPUT_WINNER}${winner.join(', ')}`);
 }
 
 export const printError = () => {

@@ -1,20 +1,19 @@
 export const GAME_SETTING = Object.freeze ({
-  MOVE_FORWARD_REQUIREMENT: 4,
   MIN_LENGTH_CAR_NAME: 1,
   MAX_LENGTH_CAR_NAME: 5,
+  MIN_TRY_COUNT: 1,
   MIN_RANDOM_NUMBER: 0,
   MAX_RANDOM_NUMBER: 9,
+  MOVE_FORWARD_REQUIREMENT: 4,
   MOVE_FORWARD_POSITION: '-',
   BLANK_SPACE: '',
 });
 
 export const LOG_MESSAGE = Object.freeze ({
   INPUT_CAR_NAME: '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
-  INPUT_TRY_NUMBER: '시도할 횟수는 몇 회인가요?\n',
-  ZERO_TRY_NUMBER: '시도 횟수는 1 이상을 입력하면 경주가 시작됩니다.',
-  SHOW_RESULT: '\n실행 결과',
-  SHOW_WINNER: '\n최종 우승자 : ',
-  END_GAME: '게임 종료'
+  INPUT_TRY_COUNT: '시도할 횟수는 몇 회인가요?\n',
+  OUTPUT_RESULT: '\n실행 결과',
+  OUTPUT_WINNER: '\n최종 우승자 : ',
 });
 
 export const ERROR_MESSAGE = Object.freeze ({
