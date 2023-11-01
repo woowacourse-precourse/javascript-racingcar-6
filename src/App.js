@@ -1,5 +1,5 @@
 import { getCarName, getMoveNumber, getCarsMovedCount } from "./getUserInput";
-import { moveCars } from "./move";
+import { moveCars, printResult } from "./move";
 
 class App {
   async play() {
@@ -10,6 +10,7 @@ class App {
 
     while (moveNumber--) {
       moveCars(names, carsMovedCount);
+      printResult(names, carsMovedCount);
     }
   }
 }
