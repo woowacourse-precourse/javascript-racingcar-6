@@ -75,7 +75,7 @@ describe("자동차 경주 게임", () => {
     });
   });
 
-  test("자동차 이름 검증 (Validation.validatationCarName)테스트", () => {
+  test("자동차 이름 검증 (Validation.validationCarName)테스트", () => {
     const passInput = ["hi", "bye", "next"];
     const failInput = ["", "WelcomeToMyTest"];
 
@@ -85,5 +85,17 @@ describe("자동차 경주 게임", () => {
     failInput.forEach((input) => {
       expect(() => Validation.validationCarName(input)).toThrow("[ERROR]");
     });
+  });
+
+  test("경주 자동차 이름 중복 여부 검증(Validation.validationDuplicateCarName)테스트", () => {
+    const passInput = ["hi", "bye", "next"];
+    const failInput = ["hi", "hi", "bye"];
+
+    expect(() =>
+      Validation.validationDuplicateCarName(passInput).not.toThrow()
+    );
+    expect(() =>
+      Validation.validationDuplicateCarName(failInput).toThrow("[ERROR]")
+    );
   });
 });
