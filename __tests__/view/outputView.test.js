@@ -1,6 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import OutputView from "../../src/view/OutputView.js";
-import { CONSOLE_MESSAGE } from "../../src/constants/consoleMessages.js";
+import { CONSOLE_MESSAGE } from "../../src/constants/ConsoleMessages.js";
 import RacingCar from "../../src/model/RacingCar.js";
 
 const outputView = new OutputView();

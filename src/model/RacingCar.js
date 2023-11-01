@@ -1,5 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import { RACINGCAR_DISPLACEMENT } from "../constants/consoleMessages.js";
+import { RACINGCAR_DISPLACEMENT } from "../constants/ConsoleMessages.js";
+import { SETTINGS } from "../constants/Settings.js";
 
 class RacingCar {
   #name;
@@ -11,9 +12,12 @@ class RacingCar {
   }
 
   advance() {
-    const randomNumer = MissionUtils.Random.pickNumberInRange(0, 9);
+    const randomNumer = MissionUtils.Random.pickNumberInRange(
+      SETTINGS.randomRange.minimum,
+      SETTINGS.randomRange.maximum
+    );
 
-    if (randomNumer >= 4) {
+    if (randomNumer >= SETTINGS.minimumAdvance) {
       this.#displacement += 1;
     }
   }

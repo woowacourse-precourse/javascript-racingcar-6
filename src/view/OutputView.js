@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import { CONSOLE_MESSAGE } from '../constants/consoleMessages.js';
+import { CONSOLE_MESSAGE } from '../constants/ConsoleMessages.js';
 
 class OutputView {
   printQuery(query) {

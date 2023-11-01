@@ -1,6 +1,6 @@
 import RacingCarValidator from "../validate/RacingCarValidator.js";
 import RacingCar from "../model/RacingCar.js";
-import InputView from "../view/inputView.js";
+import InputView from "../view/InputView.js";
 import OutputView from "../view/OutputView.js";
 
 class RacingController {
@@ -61,7 +61,7 @@ class RacingController {
     this.#outputView.printNewLine();
   }
 
-  async #getWinner() {
+  #getWinner() {
     const winnerArray = [];
     const maxDisplacement = Math.max.apply(null, this.#racingCarArray.map(car => {
       return car.getDisplacement();

@@ -1,5 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import InputView from "../../src/view/inputView.js";
+import InputView from "../../src/view/InputView.js";
 
 const inputView = new InputView();
 const mockInput = (input) => {
