@@ -1,4 +1,10 @@
-import {hasDuplicateString, isOnlySpace, isShorterThan5Chars, isValidCarNamesString} from '../src/validation.js';
+import {
+  hasDuplicateString,
+  isNaturalNumber,
+  isOnlySpace,
+  isShorterThan5Chars,
+  isValidCarNamesString, isValidCountString
+} from '../src/validation.js';
 
 describe('유효성 검사 함수', () => {
   describe('isShorterThan5Chars', () => {
@@ -45,6 +51,36 @@ describe('유효성 검사 함수', () => {
 
     test('중복된 이름 없이 5자리 이하 자동차 이름만을 포함한 문자열을 입력하면 true를 반환한다.', () => {
       expect(isValidCarNamesString('foo,bar')).toBe(true);
+    })
+  })
+
+  describe('isNaturalNumber', () => {
+    test('음의 정수를 입력하면 false를 반환한다.', () => {
+      expect(isNaturalNumber(-1)).toBe(false);
+    })
+
+    test('문자열을 입력하면 false를 반환한다.', () => {
+      expect(isNaturalNumber('123')).toBe(false);
+    })
+
+    test('양의 소수를 입력하면 false를 반환한다.', () => {
+      expect(isNaturalNumber(1.2)).toBe(false);
+    })
+
+    test('자연수를 입력하면 true를 반환한다.', () => {
+      expect(isNaturalNumber(3)).toBe(true);
+    })
+  })
+
+  describe('isValidCountString', () => {
+    test('음의 정수 문자열을 입력하면 에러를 반환한다.', () => {
+      expect(() => isValidCountString('-1')).toThrowError();
+    })
+    test('양의 소수 문자열을 입력하면 에러를 반환한다.', () => {
+      expect(() => isValidCountString('1.23')).toThrowError();
+    })
+    test('자연수 문자열을 입력하면 true를 반환한다.', () => {
+      expect(isValidCountString('123')).toBe(true);
     })
   })
 })

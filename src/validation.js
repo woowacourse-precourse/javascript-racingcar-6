@@ -52,3 +52,29 @@ export const isValidCarNamesString = (carNamesString) => {
 
   return true;
 }
+
+
+/**
+ * 입력받은 숫자가 자연수인지 판단하는 함수
+ * @param nbr
+ * @returns {boolean}
+ */
+export const isNaturalNumber = (nbr) => {
+  if (Number.isInteger(nbr) && nbr > 0) {
+    return true;
+  }
+  return false;
+}
+
+/**
+ * 입력받은 문자열이 자연수인지 판단하는 함수
+ * @param count
+ * @returns {boolean}
+ */
+export const isValidCountString = (count) => {
+  if (!isNaturalNumber(Number(count))) {
+    throw new Error('[ERROR] 시도할 횟수는 자연수로 입력해야 합니다.')
+  }
+
+  return true;
+}
