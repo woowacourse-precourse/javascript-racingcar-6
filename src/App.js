@@ -6,6 +6,8 @@ import {
   FINAL_WINNER_MSG,
   RESULT_MSG,
   FORWARD_CONDITIONS,
+  MIN_RANDOM,
+  MAX_RANDOM
 } from './constant.js';
 
 class App {
@@ -28,21 +30,21 @@ class App {
     return { playerObject, objectKeyList };
   }
 
-  // 게임 시작 및 출력
+  playOneRound(player, playerObject) {
+    const goForward = Random.pickNumberInRange(MIN_RANDOM, MAX_RANDOM);
+    if (goForward >= FORWARD_CONDITIONS) {
+      playerObject[player] += 1;
+    }
+    Console.print(`${player} : ${'-'.repeat(playerObject[player])}`);
+  }
+
   gamePlay(playerObject, tryNum, objectKeyList) {
     for (let i = 0; i < tryNum; i += 1) {
-      objectKeyList.forEach(item => {
-        const goForward = Random.pickNumberInRange(0, 9);
-        if (goForward >= FORWARD_CONDITIONS) {
-          playerObject[item] += 1;
-        }
-        Console.print(`${item} : ${'-'.repeat(playerObject[item])}`);
-      });
+      objectKeyList.forEach((player) => this.playOneRound(player, playerObject));
       Console.print('');
     }
   }
 
-  // 우승자 찾기
   findWinner(playerObject, playersKeyList) {
     const scores = playersKeyList.map(player => playerObject[player]);
     const maxScore = Math.max(...scores);

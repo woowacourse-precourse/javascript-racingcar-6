@@ -4,6 +4,8 @@ export const PLAYER_NAME_ASK_MSG = '경주할 자동차 이름을 입력하세�
 export const ATTEMPT_NUM_ASK_MSG = '시도할 횟수는 몇 회인가요?\n';
 export const FINAL_WINNER_MSG = '최종 우승자';
 export const RESULT_MSG = '실행 결과';
+export const MIN_RANDOM = 0;
+export const MAX_RANDOM = 9;
 
 export const MIN_PLAYER_NUMBER = 2;
 export const FORWARD_CONDITIONS = 4;
