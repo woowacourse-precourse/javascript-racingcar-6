@@ -16,6 +16,17 @@ class App {
         }
         return carNames;
     }
+
+    async getTryCount() {
+        const inputTryCount = await Console.readLineAsync(
+            "시도할 횟수는 몇 회 인가요? \n"
+        );
+        const tryCount = Number(inputTryCount);
+        if (tryCount < 1 || tryCount > 50) {
+            throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
+        }
+        return tryCount;
+    }
 }
 
 export default App;
