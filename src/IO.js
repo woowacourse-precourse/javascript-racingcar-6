@@ -56,7 +56,7 @@ export const input = {
     if (!/^\d+$/.test(tryCount)) {
       throw MESSAGE.ERROR('시도 횟수는 숫자만 가능합니다.');
     }
-    if (tryCount < 1) {
+    if (Number(tryCount) < 1) {
       throw MESSAGE.ERROR('시도 횟수는 1 이상이어야 합니다.');
     }
   },
