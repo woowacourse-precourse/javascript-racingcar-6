@@ -17,6 +17,10 @@ class Car {
   setMovement(gameCount) {
     this.movement = Random.setMovement(gameCount);
   }
+
+  getMovementLength() {
+    return this.movement.length;
+  }
 }
 
 export default Car;
