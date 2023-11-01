@@ -38,7 +38,7 @@ const playRacingGame = (carNames, count) => {
     progress = playSingleRound(progress);
     printSingleRoundResult(carNames, progress);
   }
-  printMessage(`최종 우승자: ${getWinners(carNames, progress).join(', ')}\n`);
+  printMessage(`최종 우승자 : ${getWinners(carNames, progress).join(', ')}\n`);
 };
 
 export default playRacingGame;

@@ -47,7 +47,7 @@ describe('자동차 경주 게임 로직 유효성 검사', () => {
     // given
     const inputs = ['pobi, woni, jin', '4'];
     const randoms = [4, 0, 7, 0, 4, 0, 7, 0, 4, 0, 0, 0];
-    const outputs = ['최종 우승자: pobi, jin'];
+    const outputs = ['최종 우승자 : pobi, jin'];
     const logSpy = getLogSpy();
     mockRandoms([...randoms]);
     mockQuestions(inputs);
@@ -66,7 +66,7 @@ describe('자동차 경주 게임 로직 유효성 검사', () => {
     // given
     const inputs = ['pobi, woni, jin', '4'];
     const randoms = [4, 0, 7, 0, 4, 0, 7, 0, 4, 0, 7, 0];
-    const outputs = ['최종 우승자: pobi, woni, jin'];
+    const outputs = ['최종 우승자 : pobi, woni, jin'];
     const logSpy = getLogSpy();
     mockRandoms([...randoms]);
     mockQuestions(inputs);
@@ -85,7 +85,7 @@ describe('자동차 경주 게임 로직 유효성 검사', () => {
     // given
     const inputs = ['pobi, woni, jin', '4'];
     const randoms = [4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    const outputs = ['최종 우승자: pobi'];
+    const outputs = ['최종 우승자 : pobi'];
     const logSpy = getLogSpy();
     mockRandoms([...randoms]);
     mockQuestions(inputs);
@@ -116,7 +116,7 @@ describe('자동차 경주 게임 로직 유효성 검사', () => {
       'car1 : --',
       'car2 : --',
       'car3 : --',
-      '최종 우승자: car1, car2, car3',
+      '최종 우승자 : car1, car2, car3',
     ];
     const logSpy = getLogSpy();
     mockRandoms([...randoms]);
@@ -137,7 +137,7 @@ describe('자동차 경주 게임 로직 유효성 검사', () => {
     const inputCars = ['car1, car2'];
     const inputCount = '1';
     const randoms = [5, 3];
-    const result = ['실행 결과', 'car1 : -', 'car2 : ', '최종 우승자: car1'];
+    const result = ['실행 결과', 'car1 : -', 'car2 : ', '최종 우승자 : car1'];
     const logSpy = getLogSpy();
     mockRandoms([...randoms]);
     mockQuestions([...inputCars, inputCount]);
