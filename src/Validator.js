@@ -7,6 +7,11 @@ function isCharacterOnlyIncluded(name) {
   return regex.test(name);
 }
 
+function isOverlappedName(splitedNames) {
+  const namesSet = new Set(splitedNames);
+  return namesSet.size === splitedNames.length;
+}
+
 function isNotInteger(tryingCount) {
   return !Number.isInteger(tryingCount);
 }
@@ -14,6 +19,7 @@ function isNotInteger(tryingCount) {
 class Validator {
   static evaluateCarNames(carNames) {
     const splitedNames = carNames.split(',');
+    if(!isOverlappedName) throw String('OVRELAPPED_NAME');
     splitedNames.forEach((name) => {
       if (isIncludedValidRange(name)) throw String('WRONG_RANGE_NAME');
       if (!isCharacterOnlyIncluded(name)) throw String('SPECIAL_CHARATER');

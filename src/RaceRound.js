@@ -1,8 +1,13 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import Message from './Message.js';
+import Interface from './Interface.js';
 
 const MIN_MOVING_FORWARD_NUM = 4;
 
+function printRunResultMessage() {
+  Interface.printMessage('');
+  Interface.printMessage('실행 결과');
+}
 class RaceRound {
   #TOTAL_ROUND;
 
@@ -18,6 +23,7 @@ class RaceRound {
 
   proceedRound() {
     let totalRound = this.#TOTAL_ROUND;
+    printRunResultMessage();
     while (totalRound > 0) {
       this.namedCarsDecideGoStop(this.cars.names);
       Message.roundResults(this.cars.ascendingSortedInfo);
