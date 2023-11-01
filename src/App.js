@@ -12,12 +12,12 @@ class App {
   }
 
   async play() {
-    const carNameStr = getValidCarNameStr();
+    const carNameStr = await getValidCarNameStr();
 
     const initialCarDataList = generateCarDataListFromStr(carNameStr);
     this.updateCarDataList(initialCarDataList);
 
-    const totalRoundNumber = getValidTotalRoundNumber();
+    const totalRoundNumber = await getValidTotalRoundNumber();
 
     Console.print('실행 결과');
     for (let round = 0; round < totalRoundNumber; round += 1) {
@@ -33,6 +33,5 @@ class App {
     this.carDataList = newCarDataList;
   }
 }
-const app = new App();
-app.play();
+
 export default App;
