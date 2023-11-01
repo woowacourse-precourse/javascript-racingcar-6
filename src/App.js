@@ -30,10 +30,6 @@ class App {
     const tryCount = +input;
     const regex = /^[1-9]\d*$/;
 
-    if (Number.isNaN(tryCount) || tryCount <= 0) {
-      throw new Error('[ERROR] 올바른 횟수를 입력하세요.');
-    }
-
     if (!regex.test(tryCount)) {
       throw new Error('[ERROR] 입력값은 양의 정수여야 합니다.');
     }
