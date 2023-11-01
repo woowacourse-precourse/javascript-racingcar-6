@@ -17,4 +17,10 @@ class Car {
       this.Count++;
     }
   };
+
+  printScore = () => {
+    return `${this.name} : ${"-".repeat(this.Count)}`;
+  };
+}
+
 export default Car;

@@ -1,4 +1,5 @@
 import Car from "./Car";
+import { Console } from "@woowacourse/mission-utils";
 import checkGameCount from "./checkGameCount";
 import checkCarName from "./checkCarName";
 
@@ -14,10 +15,18 @@ class GameStart {
     });
   };
 
+  printRoundResults = () => {
+    this.cars.forEach((car) => {
+      Console.print(car.printScore());
+    });
+  };
+
   playGame = () => {
     Console.print("실행 결과");
     for (let i = 0; i < this.rounds; i++) {
       this.playRound();
+      this.printRoundResults();
+      Console.print("");
     }
   };
 
