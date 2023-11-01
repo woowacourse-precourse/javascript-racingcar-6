@@ -90,7 +90,9 @@ export async function inputNumberOfAttempts() {
 }
 
 export async function validNumberOfAttempts(userInput) {
-  if (userInput < CONSTANT.MIN_ATTEMPTS || userInput > CONSTANT.MAX_ATTEMPTS) {
+  if (Number.isNaN(Number(userInput))
+  || userInput < CONSTANT.MIN_ATTEMPTS
+  || userInput > CONSTANT.MAX_ATTEMPTS) {
     throw new Error(ERROR_MESSAGE.NUMBER_OF_ATTEMPTS_ERROR);
   }
 }

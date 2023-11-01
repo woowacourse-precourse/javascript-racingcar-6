@@ -1,5 +1,6 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import App from '../src/App.js';
+import { validNumberOfAttempts } from '../src/User.js';
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -14,7 +15,7 @@ const mockRandoms = (numbers) => {
   MissionUtils.Random.pickNumberInRange = jest.fn();
   numbers.reduce(
     (acc, number) => acc.mockReturnValueOnce(number),
-    MissionUtils.Random.pickNumberInRange
+    MissionUtils.Random.pickNumberInRange,
   );
 };
 
@@ -96,5 +97,15 @@ describe('자동차 경주 게임', () => {
 
     // then
     await expect(app.play()).rejects.toThrow('[ERROR]');
+  });
+  test.each([
+    [['*']],
+    [['0']],
+    [['']],
+    [['ㅁ']],
+    [['a']],
+    [['21']],
+  ])('시도횟수에 대한 예외처리', async (inputs) => {
+    await expect(validNumberOfAttempts(inputs)).rejects.toThrow('[ERROR]');
   });
 });
