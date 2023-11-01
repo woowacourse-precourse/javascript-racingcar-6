@@ -13,7 +13,6 @@ class App {
   async play() {
     await this.requestCarNames();
     await this.requestTryCount();
-    this.moveCar();
     OutputView.printResultHeader();
     this.getCarPositions(this.carList);
     OutputView.printCarPosition(this.carList, this.tryCount);
@@ -23,12 +22,6 @@ class App {
 
   makeCarList = (carName) => {
     this.carList.push(new Car(carName));
-  }
-
-  moveCar() {
-    this.carList.forEach((car) => {
-      car.move();
-    });
   }
 
   getWinners(carList) {
