@@ -22,12 +22,12 @@ async function getInput() {
     const chance = await Console.readLineAsync(MESSAGE.CHANCE);
 
     if (!/^[1-9]\d*$/.test(chance)) {
-      throw new Error(WRONG_INPUT);
+      throw new Error(ERRORS.WRONG_INPUT);
     }
 
     return { chance, carNameList };
   } catch (error) {
-    throw new Error(WRONG_INPUT);
+    throw new Error(ERRORS.WRONG_INPUT);
   }
 }
 

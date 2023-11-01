@@ -10,7 +10,7 @@
     "@babel/core": "^7.23.0",
     "@babel/preset-env": "^7.22.20",
     "babel-jest": "^29.7.0",
-    "jest": "29.6.0"
+    "jest": "^29.6.0"
   },
   "scripts": {
     "test": "jest --detectOpenHandles"
@@ -32,5 +32,9 @@
   "engines": {
     "npm": ">=9.6.7",
     "node": ">=18.17.1"
+  },
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
   }
 }
