@@ -8,6 +8,13 @@ const inputView = {
     );
     return carList;
   },
+
+  async moveCount() {
+    const moveCount = await MissionUtils.Console.readLineAsync(
+      INPUT_MESSAGE.MOVE_COUNT,
+    );
+    return moveCount;
+  },
 };
 
 export default inputView;
