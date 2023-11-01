@@ -1,4 +1,4 @@
-import RacingCarGame from './racing-car-game.js';
+import RacingCarGame from './App.js';
 import { CAR_NAME_ALERT_MESSAGE, COUNT_ALERT_MESSAGE } from './message.js';
 
 export default class EventHandler {
