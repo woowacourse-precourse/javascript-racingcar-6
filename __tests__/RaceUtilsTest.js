@@ -2,7 +2,7 @@ import { Console, Random } from "@woowacourse/mission-utils";
 import RaceUtils from "../src/RaceUtils";
 import { CONSTANTS } from "../src/Constants";
 
-jest.mock('@woowacourse/misiion-utils', () => ({
+jest.mock('@woowacourse/mission-utils', () => ({
     Random: {
         pickNumberInRange: jest.fn(),
     },

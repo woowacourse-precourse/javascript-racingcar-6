@@ -2,18 +2,18 @@ import { Console } from "@woowacourse/mission-utils";
 import GameSetup from "../src/GameSetup";
 import { CustomError } from "../src/Error";
 
-jest.mock('@woowacourse/misiion-utils', () => ({
+jest.mock('@woowacourse/mission-utils', () => ({
     Console: {
         readLineAsync: jest.fn(),
     },
-    CustomError: jesf.fn(),
+    CustomError: jest.fn(),
 }));
 
 describe('GameSetup', () => {
     afterEach(() => {
         jest.restoreAllMocks();
     });
-    
+
     describe('getPlayerCarsInput 테스트', () => {
         test('유효성 검사 성공 시 플레이어의 입력 반환', async () => {
             const carNames = 'pobi,juni,gabi';

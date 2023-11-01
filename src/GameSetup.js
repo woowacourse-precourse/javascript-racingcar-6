@@ -1,6 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
-import { PLAYER_INPUT } from "./Logs";
-import Validation from "./Validation";
+import GameSetup from '../src/GameSetup';
+import { CustomError } from "./Error";
 
 class GameSetup {
     static async getPlayerCarsInput() {
