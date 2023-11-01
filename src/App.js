@@ -1,5 +1,14 @@
+import CarRacingGameController from "./CarRacingGameController";
+
 class App {
-  async play() {}
+  constructor() {}
+
+  async play() {
+    this.gameController = new CarRacingGameController();
+    await this.gameController.prepareSettings();
+    this.gameController.executeForward();
+    this.gameController.outputFinalResult();
+  }
 }
 
 export default App;
