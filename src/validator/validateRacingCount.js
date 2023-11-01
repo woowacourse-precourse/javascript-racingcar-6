@@ -1,14 +1,15 @@
 import ErrorMessage from '../errors/ErrorMessage.js';
+import { ERROR_MESSAGES } from '../constants/constants.js';
 
-function checkIsNumber(userInput) {
+function checkNumber(userInput) {
   if (isNaN(userInput)) {
-    throw new ErrorMessage('경주 횟수는 숫자로 입력해야 합니다.')
+    throw new ErrorMessage(ERROR_MESSAGES.notNumber)
   }
 }
 
 function checkNaturalNumber(racingCount) {
   if (racingCount <= 0 || !(Number.isInteger(racingCount))) {
-    throw new ErrorMessage('경주 횟수는 자연수만 입력해야 합니다.');
+    throw new ErrorMessage(ERROR_MESSAGES.notNaturalNumber);
   }
 }
 
@@ -19,7 +20,7 @@ function checkNaturalNumber(racingCount) {
  * @throws 사용자가 잘못된 값을 입력했을 경우 throw Error
  */
 export default function validateRacingCount(racingCountInput) {
-  checkIsNumber(racingCountInput);
+  checkNumber(racingCountInput);
   checkNaturalNumber(Number(racingCountInput));
 }
 

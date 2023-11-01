@@ -1,16 +1,17 @@
 import ErrorMessage from '../errors/ErrorMessage.js';
-import { SETTING_NUMBERS } from '../constants/constants.js';
+import { SETTING_NUMBERS, ERROR_MESSAGES } from '../constants/constants.js';
+
 
 
 function checkBlankInput(carName) {
   if (carName === '') {
-    throw new ErrorMessage('자동차 이름에 공백을 입력했습니다.');
+    throw new ErrorMessage(ERROR_MESSAGES.blankInput);
   }
 }
 
 function checkOverLength(carName) {
   if (carName.length > SETTING_NUMBERS.maxCarNameLength) {
-    throw new ErrorMessage(`자동차 이름의 길이는 ${SETTING_NUMBERS.maxCarNameLength} 이하만 가능합니다.`);
+    throw new ErrorMessage(ERROR_MESSAGES.overLength);
   }
 }
 
@@ -18,7 +19,7 @@ function checkDuplication(carNames) {
   const carNamesSet = new Set(carNames);
 
   if (carNames.length !== carNamesSet.size) {
-    throw new ErrorMessage('자동차 이름이 중복되어서는 안 됩니다.');
+    throw new ErrorMessage(ERROR_MESSAGES.duplication);
   }
 }
 

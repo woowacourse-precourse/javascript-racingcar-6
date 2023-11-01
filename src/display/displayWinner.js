@@ -1,4 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
+import { GUIDE_MESSAGES } from "../constants/constants.js";
 
 /**
  * 모든 라운드를 마친 racingCars의 최종 승자를 출력한다.
@@ -26,5 +27,5 @@ export default function displayWinner(racingCars) {
   }) 
 
   const winnerResult = winners.map((winner) => winner).join(', ');
-  Console.print(`최종 우승자 : ${winnerResult}`);
+  Console.print(GUIDE_MESSAGES.winnerGuide + ` : ${winnerResult}`);
 }

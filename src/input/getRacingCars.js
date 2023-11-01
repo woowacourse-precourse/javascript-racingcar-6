@@ -1,6 +1,7 @@
 import { Console } from "@woowacourse/mission-utils";
 import validateCarNames from "../validator/validateCarNames.js";
 import RacingCar from "../classes/RacingCar.js";
+import { GUIDE_MESSAGES } from "../constants/constants.js";
 
 function makeCarsByNames(carNames) {
   const racingCars = [];
@@ -22,7 +23,7 @@ function makeCarsByNames(carNames) {
  */
 
 export default async function getRacingCars() {
-  const userInput = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n');
+  const userInput = await Console.readLineAsync(GUIDE_MESSAGES.carNamesGuide + '\n');
   const carNamesWithoutSpace = String(userInput).replace(/(\s*)/g, '');
   const carNames = carNamesWithoutSpace.split(",");
 
