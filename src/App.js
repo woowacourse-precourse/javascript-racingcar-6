@@ -1,12 +1,8 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
-// #### 2. 시도 횟수 입력 기능
+// #### 3. 랜덤 전진 기능
 
-// - 사용자로부터 시도 횟수를 입력받아 입력한 횟수만큼 자동차게임 진행
-
-// - 입력한 값은 0 이상의 정수 값이어야 함
-
-//   - 0 미만의 값이 입력된 경우 에러 메시지 출력 후 프로그램 종료
+// - 0에서 9 사이의 무작위 값을 생성, 4 이상일 경우 자동차가 전진
 
 class App {
   constructor() {
@@ -25,7 +21,10 @@ class App {
     this.initGame();
 
     while (this.gameCount > 0) {
-      this.moveRacingCarRandomly();
+      for (const name in this.gameResults) {
+        if (this.moveRandomly()) this.gameResults[name]++;
+      }
+
       this.gameCount--;
     }
   }
@@ -62,8 +61,14 @@ class App {
 
   initGame() {
     this.carNames.forEach((e) => {
-      this.status.gameResult[e] = 0;
+      this.gameResults[e] = 0;
     });
+  }
+
+  moveRandomly() {
+    const RANDOM_NUMBER = MissionUtils.Random.pickNumberInRange(1, 10);
+
+    return RANDOM_NUMBER > 3;
   }
 
   debug(...args) {
