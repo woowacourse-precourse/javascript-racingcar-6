@@ -13,7 +13,8 @@ class CarRacingGame {
 
   async start() {
     await this.getCarNames();
-    await this.getNumberOfAttempts();
+    const attempt = await this.getNumberOfAttempts();
+    this.attempts = parseInt(attempt, 10);
 
     while (this.raceResult.length < this.cars.length) {
       this.raceResult.push(0);
@@ -69,7 +70,8 @@ class CarRacingGame {
         throw new Error("[ERROR] 잘못된 시도 횟수 입력입니다.");
       }
 
-      this.attempts = parseInt(inputAttempts, 10);
+      return inputAttempts;
+      
 
     } catch (error) {
       throw error;
