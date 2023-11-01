@@ -1,19 +1,18 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import { carMoveStorage } from "./CarMoveStorage.js";
 import { carMoveOrStop } from "./CarMove.js";
+import { winner } from "./Winner.js";
 
 class App {
   async play() {
     const carNameSplit = await carCreater();
     const validatedTryNumber = await tryCounter();
     carMoveResult(carNameSplit, validatedTryNumber);
-    winner(carNameSplit);
+    winner(carNameSplit, carMoveStorage);
   }
 }
 
 export default App;
-
-let winnerarray = [];
 
 async function carCreater() {
   MissionUtils.Console.print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -85,33 +84,4 @@ function carMover(carnames) {
 function randomNumber() {
   const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
   return randomNumber;
-}
-
-function winner(carnames) {
-  var maxmoves = 0;
-  winnerarray = [];
-  for (let i = 0; i < carnames.length; i++) {
-    maxmoves = Math.max(carMoveStorage[carnames[i]].length,maxmoves);
-  }
-  for (let i = 0; i < carnames.length; i++) {
-    const move = carMoveStorage[carnames[i]].length
-    if (move === maxmoves) {
-      winnerarray.push(carnames[i]); 
-    }
-  }
-  printWinner();
-}
-
-function printWinner() {
-  if (winnerarray.length === 1) {
-    MissionUtils.Console.print(`최종 우승자 : ${winnerarray[0]}`);
-  } else {
-    printWinners()
-  }
-}
-
-function printWinners() {
-  const winners = winnerarray
-  const winnersPrint = winners.map((member) => member).join(', ');
-  MissionUtils.Console.print(`최종 우승자 : ${winnersPrint}`);
 }
