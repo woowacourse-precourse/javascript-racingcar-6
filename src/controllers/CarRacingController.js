@@ -38,8 +38,11 @@ class CarRacingController {
   }
 
   validateCount(count) {
-    if (Number.isNaN(Number(count)) || Number(count) <= 0) {
-      printErrorMessage('[ERROR] 1 이상의 숫자를 입력해주세요.');
+    if (
+      Number.isNaN(Number(count)) ||
+      !Number.isInteger(Number(count) || Number(count) <= 0)
+    ) {
+      printErrorMessage('[ERROR] 1 이상의 정수를 입력해주세요.');
     }
   }
 

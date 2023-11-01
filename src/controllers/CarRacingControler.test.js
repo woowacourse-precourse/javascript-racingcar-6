@@ -36,14 +36,21 @@ describe('CarRacingController', () => {
     test('라운드 횟수 입력 중 숫자가 아닐 때 에러 반환', () => {
       controller.validateCount('NaN');
       expect(printErrorMessage).toHaveBeenCalledWith(
-        '[ERROR] 1 이상의 숫자를 입력해주세요.',
+        '[ERROR] 1 이상의 정수를 입력해주세요.',
+      );
+    });
+
+    test('라운드 횟수 입력 중 정수가 아닐 때 에러 반환', () => {
+      controller.validateCount('1.1');
+      expect(printErrorMessage).toHaveBeenCalledWith(
+        '[ERROR] 1 이상의 정수를 입력해주세요.',
       );
     });
 
     test('라운드 횟수 입력 중 0 이하의 숫자일 때 에러', () => {
       controller.validateCount('0');
       expect(printErrorMessage).toHaveBeenCalledWith(
-        '[ERROR] 1 이상의 숫자를 입력해주세요.',
+        '[ERROR] 1 이상의 정수를 입력해주세요.',
       );
     });
   });
