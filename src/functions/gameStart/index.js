@@ -5,17 +5,17 @@ const invalidCarName = carNameList => {
   if (carNameList.length === 1 && carNameList[0] === '')
     throw Error(ERROR_MESSAGE.carName.noInput);
 
-  carNameList.forEach(car => {
-    if (car.length > 5) throw Error(ERROR_MESSAGE.carName.tooLong);
-    if (car === '') throw Error(ERROR_MESSAGE.carName.noname);
+  carNameList.forEach(carName => {
+    if (carName.length > 5) throw Error(ERROR_MESSAGE.carName.tooLong);
+    if (carName === '') throw Error(ERROR_MESSAGE.carName.noname);
   });
 
   if (carNameList.length > new Set(carNameList).size)
     throw Error(ERROR_MESSAGE.carName.duplicate);
 };
 
-const invalidPlayNum = (inputPlayNum, playCount) => {
-  if (inputPlayNum.length === 0) throw Error(ERROR_MESSAGE.playNum.noInput);
+const invalidPlayNum = (inputPlayCount, playCount) => {
+  if (inputPlayCount.length === 0) throw Error(ERROR_MESSAGE.playNum.noInput);
 
   if (Number.isNaN(playCount) || !Number.isInteger(playCount) || playCount < 0)
     throw Error(ERROR_MESSAGE.playNum.includeStr);
@@ -33,10 +33,10 @@ export const getCarName = async () => {
 };
 
 export const getPlayNum = async () => {
-  const inputPlayNum = await Console.readLineAsync(MESSAGE.getPlayNum);
-  const playCount = Number(inputPlayNum);
+  const inputPlayCount = await Console.readLineAsync(MESSAGE.getPlayNum);
+  const playCount = Number(inputPlayCount);
 
-  invalidPlayNum(inputPlayNum, playCount);
+  invalidPlayNum(inputPlayCount, playCount);
 
   return playCount;
 };
@@ -44,7 +44,7 @@ export const getPlayNum = async () => {
 export const setInitialDistance = carNameList => {
   const racingResult = [];
 
-  carNameList.forEach(car => racingResult.push({ carName: car, distance: '' }));
+  carNameList.forEach(carName => racingResult.push({ carName, distance: '' }));
 
   return racingResult;
 };
