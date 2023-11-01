@@ -10,6 +10,15 @@ describe("입력값 검증", () => {
       "[ERROR] 자동차 이름은 1글자 이상 5자 이하여하여 합니다."
     );
   });
+  test("자동차 이름 공백에 대한 예외처리", () => {
+    // given
+    const app = new App();
+    const carNames = ["pobi", "woni", ""];
+
+    expect(() => app.validateCarName(carNames)).toThrow(
+      "[ERROR] 자동차 이름은 1글자 이상 5자 이하여하여 합니다."
+    );
+  });
   test("라운드가 음수일 경우 예외처리", () => {
     // given
     const app = new App();
@@ -23,6 +32,15 @@ describe("입력값 검증", () => {
     // given
     const app = new App();
     const gameRound = "a";
+
+    expect(() => app.validateGameRound(gameRound)).toThrow(
+      "[ERROR] 1이상의 숫자만 입력 가능합니다"
+    );
+  });
+  test("라운드가 공백일 경우 예외처리", () => {
+    // given
+    const app = new App();
+    const gameRound = "";
 
     expect(() => app.validateGameRound(gameRound)).toThrow(
       "[ERROR] 1이상의 숫자만 입력 가능합니다"
