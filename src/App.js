@@ -1,3 +1,5 @@
+import { Console } from '@woowacourse/mission-utils';
+import announceRoundResult from './feature/AnnounceRoundResult';
 import generateCarDataListFromStr from './feature/GenerateCarDataListFromStr';
 import getValidCarNameStr from './feature/GetValidCarNameStr';
 import getValidTotalRoundNumber from './feature/GetValidTotalRoundNumber';
@@ -16,6 +18,7 @@ class App {
 
     const totalRoundNumber = getValidTotalRoundNumber();
 
+    Console.print('실행 결과');
     for (let round = 0; round < totalRoundNumber; round += 1) {
       const roundResult = moveCarRandomly(this.carDataList);
       announceRoundResult(roundResult);
