@@ -56,27 +56,27 @@ describe("자동차 게임 진행상태 출력", () => {
 
     // 각 출력상황을 정확히 비교
     expect(logSpy).toHaveBeenNthCalledWith(
-      1,
+      2,
       expect.stringContaining(outputs[0])
     );
     expect(logSpy).toHaveBeenNthCalledWith(
-      2,
+      3,
       expect.stringContaining(outputs[1])
     );
     expect(logSpy).toHaveBeenNthCalledWith(
-      3,
+      5,
       expect.stringContaining(outputs[2])
     );
     expect(logSpy).toHaveBeenNthCalledWith(
-      4,
+      6,
       expect.stringContaining(outputs[3])
     );
     expect(logSpy).toHaveBeenNthCalledWith(
-      5,
+      8,
       expect.stringContaining(outputs[4])
     );
     expect(logSpy).toHaveBeenNthCalledWith(
-      6,
+      9,
       expect.stringContaining(outputs[5])
     );
   });
