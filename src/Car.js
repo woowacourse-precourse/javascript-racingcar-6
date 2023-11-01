@@ -1,3 +1,5 @@
+import Random from './Random.js';
+
 class Car {
   name;
 
@@ -10,6 +12,10 @@ class Car {
 
   getMovement() {
     return this.movement;
+  }
+
+  setMovement(gameCount) {
+    this.movement = Random.setMovement(gameCount);
   }
 }
 
