@@ -13,6 +13,10 @@ class RacingCar {
       this.position += 1;
     }
   }
+
+  printPosition() {
+    MissionUtils.Console.print(`${this.name} : ${'-'.repeat(this.position)}`);
+  }
 }
 
 export default RacingCar;
