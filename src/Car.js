@@ -9,9 +9,9 @@ export default class Car {
     }
 
     getMoveCount() {
-        return this.#move_count;
+        return this.#moveCount;
     }
-
+    
     tryMoveForward() {
         const random_number = Random.pickNumberInRange(0, 9);
 
