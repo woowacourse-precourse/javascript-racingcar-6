@@ -1,8 +1,8 @@
 import { Console } from "@woowacourse/mission-utils";
-import { systemMessage } from "./global/message.js";
-import RacingGame from "./game/RacingGame.js";
-import InputCarsException from "./exceptions/InputCarsException.js";
-import InputTryCountException from "./exceptions/inputTryCountException.js";
+import { systemMessage } from "./message.js";
+import RacingGame from "./RacingGame.js";
+import InputCarsException from "./InputCarsException.js";
+import InputTryCountException from "./InputTryCountException.js";
 
 class App {
   async play() {

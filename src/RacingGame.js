@@ -1,4 +1,4 @@
-import { distanceNumber, driveNumber } from "../global/number.js";
+import { distanceNumber, driveNumber } from "./number.js";
 import { Random, Console } from "@woowacourse/mission-utils";
 
 class RacingGame {

@@ -1,4 +1,4 @@
-import { errorCarMessage } from "../global/message.js";
+import { errorCarMessage } from "./message.js";
 
 class InputCarsException {
   constructor(cars) {
