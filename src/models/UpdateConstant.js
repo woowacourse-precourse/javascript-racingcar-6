@@ -10,7 +10,7 @@ class UpdateConstants {
     
     constructor() {
         this.VALIDATE = new Validate();
-        this.#vehicleNameList =  [];
+        this.#vehicleNameList = [];
         this.#gamePlayTimes = 0;
         this.#moveProcedure = {};
     }
