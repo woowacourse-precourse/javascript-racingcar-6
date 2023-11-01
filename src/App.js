@@ -35,6 +35,20 @@ class RacingGame {
       car.move();
     }
   }
+  async printRaceResult() {
+    await MissionUtils.Console.print("실행 결과\n");
+    for (const car of this.cars) {
+      const positionText = "-".repeat(car.position);
+      MissionUtils.Console.print(`${car.name} : ${positionText}\n`);
+    }
+    await MissionUtils.Console.print("\n");
+  }
+
+  getWinners() {
+    const maxPosition = Math.max(...this.cars.map((car) => car.position));
+    const winners = this.cars.filter((car) => car.position === maxPosition);
+    return winners.map((winner) => winner.name).join(", ");
+  }
 }
 
 class App {
@@ -49,6 +63,7 @@ class App {
 
     const game = new RacingGame(carNames, parseInt(numberOfTries, 10));
     await game.playGame();
+    await MissionUtils.Console.print("최종 우승자: " + game.getWinners());
   }
 }
 
