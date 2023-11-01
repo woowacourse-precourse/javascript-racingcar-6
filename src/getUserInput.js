@@ -32,6 +32,13 @@ export async function getCarName() {
   return names;
 }
 
+export function getCarsObject(names) {
+  const cars = {};
+  names.forEach((name) => (cars[name] = 0));
+
+  return cars;
+}
+
 function isValidMoveNumber(number) {
   if (!Number.isInteger(number)) return false;
 
