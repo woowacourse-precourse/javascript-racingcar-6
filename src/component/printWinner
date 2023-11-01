@@ -1,0 +1,16 @@
+import { Console } from "@woowacourse/mission-utils";
+
+function printWinner(winners) {
+  if (winners.length === 1) {
+    Console.print(`최종 우승자: ${winners[0]}`);
+  } else {
+    printCoWinners(winners);
+  }
+}
+
+function printCoWinners(winners) {
+  const winnersList = winners.join(', ');
+  Console.print(`최종 우승자: ${winnersList}`);
+}
+
+export { printWinner, printCoWinners };
