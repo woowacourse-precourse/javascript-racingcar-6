@@ -1,4 +1,4 @@
-import App from "../src/App";
+import RacingManager from "../src/RacingManager";
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 const mockQuestions = (input) => {
@@ -22,8 +22,8 @@ describe("기능목록 테스트", () => {
       
       mockQuestions(input);
 
-      const app = new App();
-      const result = await app.inputParticipatingCar();
+      const racingManager = new RacingManager();
+      const result = await racingManager.inputParticipatingCar();
 
       expect(result).toEqual(['audi','benz','kia']);
     });
@@ -33,8 +33,8 @@ describe("기능목록 테스트", () => {
       
       mockQuestions(input);
 
-      const app = new App();
-      const result = await app.inputNumberOfRounds();
+      const racingManager = new RacingManager();
+      const result = await racingManager.inputNumberOfRounds();
     
       expect(result).toEqual(3);
     });
@@ -43,8 +43,8 @@ describe("기능목록 테스트", () => {
       const testPreviousRacingCarsLocation = ['-','--','-','---'];
       const testCurrentRoundRandomNumber = [1,3,5,2];
         
-      const app = new App();
-      const result = app.currentRacingCarsLocation(testPreviousRacingCarsLocation, testCurrentRoundRandomNumber);
+      const racingManager = new RacingManager();
+      const result = racingManager.currentCarsLocation(testPreviousRacingCarsLocation, testCurrentRoundRandomNumber);
 
       expect(result).toEqual(['-','--','--','---']);
     });
@@ -55,8 +55,8 @@ describe("기능목록 테스트", () => {
 
       mockRandoms([...testRandomNumbers]);
       
-      const app = new App();
-      const result = app.createCurrentRoundRandomNumbers(testParticipatingRacingCarsNumber);
+      const racingManager = new RacingManager();
+      const result = racingManager.createCurrentRoundRandomNumbers(testParticipatingRacingCarsNumber);
   
       expect(result).toEqual(testRandomNumbers);
     });
@@ -65,8 +65,8 @@ describe("기능목록 테스트", () => {
         const testParticipatingCars = ['audi','benz','kia','honda'];
         const testMoveOfCars = ['-','--','---','---'];
         
-        const app = new App();
-        const result = app.SelectWinner(testParticipatingCars,testMoveOfCars);
+        const racingManager = new RacingManager();
+        const result = racingManager.SelectWinner(testParticipatingCars,testMoveOfCars);
 
         expect(result).toEqual('kia,honda');
     });
@@ -78,8 +78,8 @@ describe("기능목록 테스트", () => {
 
         mockRandoms([...testRandomNumbers]);
 
-        const app = new App();
-        const result = app.startRacing(testParticipatingCars, testNumberOfMoves);
+        const racingManager = new RacingManager();
+        const result = racingManager.startRacing(testParticipatingCars, testNumberOfMoves);
 
         expect(result).toEqual('benz,kia');
     });
