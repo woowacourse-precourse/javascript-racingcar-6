@@ -1,6 +1,7 @@
 import OutputView from '../views/OutPutView.js';
 import Distance from './Distance.js';
 import { pickRandomNumber } from '../utils/PickRandomNumber.js';
+import { SETTINGS, SYMBOLS } from '../constants/index.js';
 
 class Race {
   #outputView = OutputView;
@@ -12,7 +13,7 @@ class Race {
   racing(distanceBoard, laps) {
     while (laps) {
       this.#drive(distanceBoard);
-      this.#outputView.print('\n');
+      this.#outputView.print(SYMBOLS.whiteSpace);
       laps--;
     }
 
@@ -33,8 +34,8 @@ class Race {
   }
 
   #getFuel(distance) {
-    if (this.#fuel >= 4) {
-      distance[1] += 1;
+    if (this.#fuel >= SETTINGS.refuelStandard) {
+      distance[1] += SETTINGS.progress;
     }
   }
 }

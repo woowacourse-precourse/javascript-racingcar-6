@@ -1,3 +1,4 @@
+import { GUIDE_MESSAGE, SETTINGS, SYMBOLS } from '../constants/index.js';
 import OutputView from '../views/OutPutView.js';
 
 class Distance {
@@ -8,12 +9,12 @@ class Distance {
    * @returns
    */
   static setGameBoard(carNames) {
-    return carNames.map((carName) => [carName, 0]);
+    return carNames.map((carName) => [carName, SETTINGS.defaultPoint]);
   }
 
   showBoard(distanceBoard) {
     distanceBoard.forEach(([name, distance]) => {
-      this.#outputView.print(`${name} : ${'-'.repeat(distance)}`);
+      this.#outputView.print(GUIDE_MESSAGE.lapScore(name, SYMBOLS.dash.repeat(distance)));
     });
   }
 

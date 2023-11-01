@@ -3,6 +3,7 @@ import OutputView from '../views/OutPutView.js';
 import Race from '../models/Race.js';
 import Award from '../models/Award.js';
 import Distance from '../models/Distance.js';
+import { GUIDE_MESSAGE } from '../constants/index.js';
 
 class GameController {
   #outputView = OutputView;
@@ -28,14 +29,14 @@ class GameController {
   }
 
   async #start() {
-    this.#outputView.print('실행결과');
+    this.#outputView.print(GUIDE_MESSAGE.result);
     this.distanceBoard = this.#race.racing(this.distanceBoard, this.laps);
     this.#end();
   }
 
   #end() {
     this.#winner = this.#award.getWinners(this.distanceBoard);
-    console.log(this.#winner);
+    this.#outputView.print(GUIDE_MESSAGE.finalWinner(this.#winner));
   }
 }
 

@@ -1,3 +1,5 @@
+import { SYMBOLS } from '../constants/index.js';
+
 class Award {
   #winningDistance;
 
@@ -23,7 +25,7 @@ class Award {
     this.#winners = distanceBoard
       .filter(([, distance]) => distance === this.#winningDistance)
       .map(([name]) => name)
-      .join(', ');
+      .join(SYMBOLS.commaSpace);
   }
 }
 

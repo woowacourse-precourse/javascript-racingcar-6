@@ -1,4 +1,4 @@
-import { ERROR_MESSAGE } from '../constants/index.js';
+import { ERROR_MESSAGE, SETTINGS } from '../constants/index.js';
 
 class InputValidator {
   static validateCarName(carNames) {
@@ -9,7 +9,7 @@ class InputValidator {
     const uniqueCarNames = new Set();
 
     carNames.forEach((carName) => {
-      if (carName.length > 5) {
+      if (carName.length > SETTINGS.maxNamingLength) {
         throw new Error(ERROR_MESSAGE.tooLongName);
       }
       if (!carName.length) {
