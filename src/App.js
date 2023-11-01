@@ -39,7 +39,14 @@ class App {
    * @throw 숫자가 아닌 경우 예외
    * @return {number} 이동 횟수 */
   async getMovingCount() {
+    const USER_INPUT = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    const RESULT = Number(USER_INPUT);
 
+    if (isNaN(RESULT)) {
+      throw new Error('[ERROR] 숫자가 잘못된 형식입니다.');
+    }
+
+    return RESULT;
   }
 
   /**
