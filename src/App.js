@@ -3,12 +3,18 @@ import { Random, Console } from "@woowacourse/mission-utils";
 class App {
   constructor() {
     this.carNames = [];
+    this.carMoveCounts = [];
     this.playCount;
   }
   
   async play() {
     await this.userInput();
 
+    this.initCarMoveCounts();
+
+    for (let i=0; i<this.playCount; i++) {
+      this.moveCars();
+    }
   }
 
   async userInput() {
@@ -19,9 +25,23 @@ class App {
 
   isCarMovable() {
     const randomNumber = Random.pickNumberInRange(0, 9);
-    
+
     if (randomNumber >= 4) { return true; }
     else { return false; }
+  }
+
+  initCarMoveCounts() {
+    this.carMoveCounts.length = carNames.length;
+    this.carMoveCounts.fill(0);
+  }
+
+  moveCars() {
+    const carNumber = carNames.length;
+    for (let i=0; i<carNumber; i++) {
+      if (this.isCarMovable()) {
+        this.carMoveCounts[i] += 1;
+      }
+    }
   }
 
 }
