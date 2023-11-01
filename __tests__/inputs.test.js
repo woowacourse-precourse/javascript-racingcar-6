@@ -1,4 +1,4 @@
-import { inputRacingCars, inputAttemps } from '../src/inputs';
+import { inputRacingCars, inputAttempts } from '../src/inputs';
 import { MissionUtils } from '@woowacourse/mission-utils';
 
 const mockQuestions = (input) => {
@@ -51,7 +51,7 @@ describe('시도 횟수 입력', () => {
     mockQuestions(input);
 
     //when
-    const result = inputAttemps();
+    const result = inputAttempts();
 
     //then
     await expect(result).resolves.toBe('1');
@@ -65,7 +65,7 @@ describe('시도 횟수 입력', () => {
     inputs.forEach(async (input) => {
       // when
       mockQuestions(input);
-      const result = inputAttemps();
+      const result = inputAttempts();
 
       // then
       await expect(result).rejects.toThrow(

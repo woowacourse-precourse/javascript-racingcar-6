@@ -39,35 +39,35 @@ function validateRacingCars(racingCars) {
   }
 }
 
-export async function inputAttemps() {
-  const attemps = await MissionUtils.Console.readLineAsync(
+export async function inputAttempts() {
+  const attempts = await MissionUtils.Console.readLineAsync(
     '시도할 횟수는 몇 회인가요?'
   );
 
-  validateAttemps(attemps);
+  validateAttempts(attempts);
 
-  return attemps;
+  return attempts;
 }
 
-function validateAttemps(attemps) {
-  if (attemps === '') {
+function validateAttempts(attempts) {
+  if (attempts === '') {
     throw new Error(
-      '[ERROR] Invalid number of attemps input: 시도할 횟수를 입력하지 않았습니다. 시도할 횟수를 입력하세요.'
+      '[ERROR] Invalid number of attempts input: 시도할 횟수를 입력하지 않았습니다. 시도할 횟수를 입력하세요.'
     );
   }
-  if (attemps === '0') {
+  if (attempts === '0') {
     throw new Error(
-      '[ERROR] Invalid number of attemps input: 시도할 횟수에 0을 입력하였습니다. 시도할 횟수는 1이상의 수를 입력하세요.'
+      '[ERROR] Invalid number of attempts input: 시도할 횟수에 0을 입력하였습니다. 시도할 횟수는 1이상의 수를 입력하세요.'
     );
   }
-  if (Number(attemps) < 0) {
+  if (Number(attempts) < 0) {
     throw new Error(
-      '[ERROR] Invalid number of attemps input: 시도할 횟수에 음수를 입력하였습니다. 시도할 횟수는 1이상의 수를 입력하세요.'
+      '[ERROR] Invalid number of attempts input: 시도할 횟수에 음수를 입력하였습니다. 시도할 횟수는 1이상의 수를 입력하세요.'
     );
   }
-  if (!Number.isInteger(Number(attemps))) {
+  if (!Number.isInteger(Number(attempts))) {
     throw new Error(
-      '[ERROR] Invalid number of attemps input: 시도할 횟수에 문자를 입력하였습니다. 시도할 횟수는 숫자만 입력하세요.'
+      '[ERROR] Invalid number of attempts input: 시도할 횟수에 문자를 입력하였습니다. 시도할 횟수는 숫자만 입력하세요.'
     );
   }
 }
