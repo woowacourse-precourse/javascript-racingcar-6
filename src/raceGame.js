@@ -26,6 +26,14 @@ async function startRace() {
                 Console.print(car.toString());
             }
         }
+
+        const maxPosition = Math.max(...cars.map(car => car.position));
+        const winners = cars.filter(car => car.position === maxPosition).map(car => car.name);
+        if (winners.length === 1) {
+            Console.print(`\n최종 우승자: ${winners[0]}`);
+        } else {
+            Console.print(`\n최종 우승자: ${winners.join(', ')}`);
+        }
 }
 
 module.exports = startRace;
