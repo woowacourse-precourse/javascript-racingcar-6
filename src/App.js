@@ -122,5 +122,11 @@ class App {
   }
 
 const app = new App();
+  ValidInput(input) {
+    this.ValidInputExist(input);
+    this.ValidNameLength(input);
+  }
+
+}
 
 export default App;
