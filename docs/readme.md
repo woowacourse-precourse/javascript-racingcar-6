@@ -56,13 +56,13 @@
         <td>실행 결과 출력</td>
     </tr>
     <tr>
-        <td><input type="checkBox" disabled></td>
+        <td><input type="checkBox" checked></td>
         <td>로직 컴포넌트</td>
         <td>예외 처리 기능</td>
     </tr>
     <tr>
-        <td><input type="checkBox" disabled></td>
-        <td>로직 컴포넌트</td>
+        <td><input type="checkBox" checked></td>
+        <td>데이터 컴포넌트</td>
         <td>자동차 정보 저장 기능</td>
     </tr>
     <tr>
@@ -110,7 +110,7 @@
         <th>테스트</th>
     </tr>
     <tr>
-        <td><input type="checkBox" disabled></td>
+        <td><input type="checkBox" checked></td>
         <td>잘못된 값을 입력할 경우 예외 처리</td>
     </tr>
     <tr>
