@@ -28,33 +28,33 @@ class RacingGame {
 
 		this.#tryCounter.initTryCount(tryCount);
 
-		this.#moves();
+		this.#roundTurn();
 	}
 
 	/**
 	 * 모든 차량이 한번 움직인다.
 	 */
-	#move() {
+	#allDriverMoves() {
 		this.#tryCounter.singleTry();
 
-		const currentLocations = this.#racingTrack.allMoves();
-		Io.printAllLocations(currentLocations);
+		const curTrack = this.#racingTrack.allDriverMoves();
+		Io.printAllLocations(curTrack);
 	}
 
 	/**
 	 * 주어진 시도 횟수만큼 움직인다.
 	 */
-	#moves() {
+	#roundTurn() {
 		Io.printResultHeader();
 
-		while (!this.#tryCounter.isEnd()) this.#move();
+		while (!this.#tryCounter.isEnd()) this.#allDriverMoves();
 
 		this.#printWinnerNames();
 	}
 
 	#printWinnerNames() {
-		const finalLocations = this.#racingTrack.getFinalLocations();
-		const winnerNames = this.#racingJudge.getWinnerNames(finalLocations);
+		const finalTrack = this.#racingTrack.getFinalTrack();
+		const winnerNames = this.#racingJudge.getWinnerNames(finalTrack);
 
 		Io.printWinnerNames(winnerNames);
 
