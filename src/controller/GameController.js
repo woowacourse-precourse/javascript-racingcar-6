@@ -7,7 +7,9 @@ import { printMessage, generateRandomNumber } from '../common/utils.js';
 
 class GameController {
 
-  cars = [];
+  constructor() {
+    this.cars = [];
+  }
 
   moveCarForwardOrStop() {
     this.cars.forEach((car) => {
