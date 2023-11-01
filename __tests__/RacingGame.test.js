@@ -1,3 +1,4 @@
+import { MissionUtils } from "@woowacourse/mission-utils";
 import NUMBER from "../constants/NUMBER";
 import Car from "../src/Car";
 import RacingGame from "../src/racingGame";
