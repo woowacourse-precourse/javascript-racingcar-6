@@ -50,9 +50,37 @@ class App {
   setTryCount(input) {
     this.tryCount = Number(input);
   }
+
+  moveCarByRandomNumber() {
+    for (const car in this.cars) {
+      const randomNumber = Random.pickNumberInRange(0, 9);
+
+      if (randomNumber >= 4) this.cars[car] += 1;
+    }
+  }
+
+  printMoveCarResult() {
+    let print = "";
+    Object.entries(this.cars).forEach(
+      ([key, value]) => (print += key + " : " + "-".repeat(value) + "\n")
+    );
+
+    Console.print(print);
+  }
+  async raceGame() {
+    Console.print("\n실행 결과");
+
+    for (let i = 0; i < this.tryCount; i++) {
+      this.moveCarByRandomNumber();
+      this.printMoveCarResult();
+    }
+  }
+
   async play() {
     await this.getCarNames();
     await this.getTryCount();
+
+    this.raceGame();
 }
 
 export default App;
