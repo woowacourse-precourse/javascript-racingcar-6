@@ -11,11 +11,12 @@
 
 * Views
     - [ ] 입력창 및 메세지 출력: InputView 
-        - [ ] 경주 자동차 입력: InputView#racingCars
-        - [ ] 시도 횟수 입력: InputView#totalRound
-    - [ ] 출력창 및 메세지 출력: OutputView 
-        - [ ] 경주 실행 결과 출력: OutputView#procedureOfRace
-        - [ ] 우승자 출력: OutputView#winners
+        - [ ] 경주 자동차 입력: InputView#askCarNames
+        - [ ] 시도 횟수 입력: InputView#askTotalRound
+    - [ ] 출력창 및 메세지 출력: OutputView
+        - [ ] 실행 결과 제목 출력: OutputView#printResultTitle
+        - [ ] 경주 실행 결과 출력: OutputView#printProcedureOfRace
+        - [ ] 우승자 출력: OutputView#printWinners
 
 
 * Controllers
