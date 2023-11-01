@@ -35,6 +35,8 @@ class App {
       throw new Error("[ERROR] 공백이 입력되었습니다.");
     } else if (raceCount < 1) {
       throw new Error("[ERROR] 1 이상 입력하세요.");
+    } else if (!Number.isInteger(Number(raceCount))) {
+      throw new Error("[ERROR] 정수를 입력하세요.");
     }
 
     MissionUtils.Console.print(PRINTOUT.RACE_RESULT);
