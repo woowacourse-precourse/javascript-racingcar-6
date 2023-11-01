@@ -46,8 +46,7 @@ function carNameCheckEvent() {
         hasError = true;
         alert("[ERROR] 숫자가 잘못된 형식입니다.");
         console.log("[ERROR] 숫자가 잘못된 형식입니다.");
-      }
-      // 에러 없으면
+      } 
         else {
           const gameStart = document.createElement('h3');
           gameStart.innerHTML = "실행 결과";
@@ -55,13 +54,12 @@ function carNameCheckEvent() {
 
           for (const carValue in carsObject) {
             const randomValue = MissionUtils.Random.pickNumberInRange(0, tryNumber); 
-            carsObject[carValue] = randomValue; // 랜덤값을 각 자동차의 값으로 설정
+            carsObject[carValue] = randomValue; 
           }
 
           let maxCarValue = -1;
           const winningCars = [];
 
-          // 객체를 웹 상에 출력
           for (const car in carsObject) {
             const carStatus = document.createElement('p');
             const dashes = '-'.repeat(carsObject[car]);
@@ -70,14 +68,13 @@ function carNameCheckEvent() {
 
             if (carsObject[car] > maxCarValue) {
               maxCarValue = carsObject[car];
-              winningCars.length = 0; // 우승자 배열 초기화
-              winningCars.push(car); // 새로운 최고 점수 우승자 추가
+              winningCars.length = 0; 
+              winningCars.push(car); 
             } else if (carsObject[car] === maxCarValue) {
-              winningCars.push(car); // 동점자 추가
+              winningCars.push(car); 
             }
           }
 
-          // 최종 우승자 출력
           const gameResult = document.createElement('h3');
           if (winningCars.length === 1) {
             gameResult.innerHTML = `최종 우승자: ${winningCars[0]}`;
