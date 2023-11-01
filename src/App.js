@@ -22,9 +22,17 @@ class App {
     return users;
   }
 
-  async get_random_number() {}
+  async get_random_number() {
+    return MissionUtils.Random.pickNumberInRange(0, 9);
+  }
 
-  async play_racing(users, cnt) {}
+  async is_forward() {
+    const NUM = await get_random_number();
+    return NUM >= 4 ? true : false;
+  }
+
+  async play_racing(users, cnt) {
+  }
 
   async get_winner() {}
 
