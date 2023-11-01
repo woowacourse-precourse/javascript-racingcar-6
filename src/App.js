@@ -1,20 +1,23 @@
 import { Console } from "@woowacourse/mission-utils";
-import { MESSAGE } from "./Constants.js";
+import { CONSOLE_MESSAGE } from "./Constants.js";
 import Car from "./Car.js";
+import { carNameCheck, tryNumCheck } from "./utils/validationCheck.js";
 
 class App {
 	async play() {
 		const { carList, tryNum } = await this.setInitialValue();
-
 		this.startRacing(carList, tryNum);
 		this.getWinner(carList);
 	}
 
 	async setInitialValue() {
 		let carList = [];
-		const carNames = await Console.readLineAsync(MESSAGE.inputCars);
-		const tryNum = await Console.readLineAsync(MESSAGE.tryNum);
+		const carNames = await Console.readLineAsync(CONSOLE_MESSAGE.inputCars);
 		const cars = carNames.split(",");
+		carNameCheck(cars);
+
+		const tryNum = await Console.readLineAsync(CONSOLE_MESSAGE.tryNum);
+		tryNumCheck(tryNum);
 
 		cars.forEach((car) => {
 			carList.push(new Car(car));
@@ -24,18 +27,18 @@ class App {
 	}
 
 	startRacing(carList, tryNum) {
-		Console.print(MESSAGE.result);
+		Console.print(CONSOLE_MESSAGE.result);
+
 		for (let i = 0; i < tryNum; i++) {
 			carList.forEach((car) => {
 				car.canMoveStep().printCarStpes;
 			});
-			Console.print(MESSAGE.newLine);
+			Console.print(CONSOLE_MESSAGE.newLine);
 		}
 	}
 
 	getWinner(carList) {
 		let carStepsList = [];
-
 		carList.forEach((car) => {
 			carStepsList.push(car.steps.length);
 		});
@@ -47,7 +50,7 @@ class App {
 			return arr;
 		}, []);
 
-		Console.print(`${MESSAGE.winner}${winnerList.join(", ")}`);
+		Console.print(`${CONSOLE_MESSAGE.winner}${winnerList.join(", ")}`);
 	}
 }
 
