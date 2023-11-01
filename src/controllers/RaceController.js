@@ -24,7 +24,7 @@ class RaceController {
   async startRace() {
     Console.print('');
 
-    Console.print('실행 결과');
+    Console.print(Messages.RACE_RESULTS);
 
     for (let i = 0; i < this.#round; i++) {
       await this.#race.moveCarsCheckCondition();
