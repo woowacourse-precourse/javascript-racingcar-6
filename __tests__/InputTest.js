@@ -45,25 +45,25 @@ describe("자동차 이름", () => {
 describe("시도할 횟수", () => {
     test("시도할 횟수는 1 이상의 정수", async () => {
         // given
-        const input = ["1"];
+        const inputs = ["1"];
         const output = 1;
 
-        mockQuestions(input); // 사용자가 입력한 것처럼 테스트
+        mockQuestions(inputs); // 사용자가 입력한 것처럼 테스트
 
         // when
         const tryNumber = await InputView.getTryNumber();
 
         // then
-        expect(tryNumber).toEqual(output);
+        expect(tryNumber).toBe(output);
     });
 
     test.each([
         [[""]],
         [["0"]],
         [["ok"]]
-    ])("시도할 횟수에 대한 예외 처리", async (input) => {
+    ])("시도할 횟수에 대한 예외 처리", async (inputs) => {
         // given
-        mockQuestions(input);
+        mockQuestions(inputs);
 
         // when & then
         await expect(InputView.getTryNumber()).rejects.toThrow("[ERROR] 시도할 횟수는 1 이상의 정수입니다.");

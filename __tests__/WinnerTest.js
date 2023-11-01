@@ -10,41 +10,39 @@ const getLogSpy = () => {
 
 // 기능 ➍ 최종 우승자 테스트
 describe("최종 우승자", () => {
-    test("단독 우승자", async () => {
+    test("단독 우승자", () => {
         // given
         const names = ["poby", "seoro"];
         const distances = [1, 2];
-        const outputs = ["최종 우승자 : seoro"];
+        const output = "최종 우승자 : seoro";
         const logSpy = getLogSpy();
 
         // when
         const cars = new Cars(names);
         cars.distances = distances;
+
         const winners = cars.getWinners()
         OutputView.printWinners(winners);
 
         // then
-        outputs.forEach((output) => {
-            expect(logSpy).toHaveBeenCalledWith(output);
-        });
+        expect(logSpy).toHaveBeenCalledWith(output);
     })
 
-    test("공동 우승자", async () => {
+    test("공동 우승자", () => {
         // given
         const names = ["poby", "seoro"];
         const distances = [2, 2];
-        const outputs = ["최종 우승자 : poby, seoro"];
+        const output = "최종 우승자 : poby, seoro";
         const logSpy = getLogSpy();
 
         // when
         const cars = new Cars(names);
         cars.distances = distances;
+
         const winners = cars.getWinners()
         OutputView.printWinners(winners);
 
         // then
-        outputs.forEach((output) => {
-            expect(logSpy).toHaveBeenCalledWith(output);
-        });
+        expect(logSpy).toHaveBeenCalledWith(output);
     })
 });
