@@ -1,5 +1,4 @@
 // @ts-check
-
 import { Console } from '@woowacourse/mission-utils';
 import { getUserName, getTrialFrequency } from './getValue';
 import playCarRace from './playCarRace';

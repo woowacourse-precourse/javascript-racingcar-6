@@ -1,5 +1,4 @@
-// @ts-check 
-
+//@ts-check 
 import { ERROR, REG_EXP } from './constants';
 import CustomError from './CustomError';
 
