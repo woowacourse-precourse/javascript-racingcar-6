@@ -1,8 +1,6 @@
 import { ERROR_MESSAGE, REGEXP } from '../constants/Constants';
 
 class ValidateCarName {
-  constructor() {}
-
   isValidLength = (cars) => {
     const LENGTH_REGEX = REGEXP.lengthRegex;
     return cars.every((name) => LENGTH_REGEX.test(name));
