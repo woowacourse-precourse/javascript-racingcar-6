@@ -1,9 +1,9 @@
-import CarName from "./CarName.js";
+import View from "./View.js";
 
 class App {
   async play() {
-    const carName = new CarName();
-    await carName.start();
+    const view = new View();
+    await view.start();
   }
 }
 

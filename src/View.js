@@ -4,7 +4,7 @@ import Play from "./Play.js";
 import CAR from "./constants/constant";
 import MESSAGE from "./constants/MESSAGE";
 
-class CarName {
+class View {
   checkNumberDigits(carNames) {
     const carNamesInArray = carNames.split(CAR.name.separator);
     const hasConsecutiveCommas = /,,/.test(carNames);
@@ -51,4 +51,4 @@ class CarName {
   }
 }
 
-export default CarName;
+export default View;
