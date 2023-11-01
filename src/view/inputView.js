@@ -53,7 +53,7 @@ class InputView {
   async inputAttemptCount() {
     const input = await Console.readLineAsync(MESSAGE.START_NUMBER_OF_ATTEMPT);
     // TODO 검증 보내기
-    // this.#inputValidator.validateAttemptCountInput(input);
+    this.#inputValidator.validateAttemptCountInput(input);
     //반환해서 리턴
     return this.#inputConverter.convertToAttemptCount(input);
   }
