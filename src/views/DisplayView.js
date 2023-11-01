@@ -5,7 +5,7 @@ const DisplayView = {
   printChampions(championCars) {
     const champions = championCars.map((car) => car.getCarName()).join(', ');
 
-    Console.print(Messages.FINAL_CHAMPIONS`${champions}`);
+    Console.print(`${Messages.FINAL_CHAMPIONS} ${champions}`);
   },
 
   printRaceState(cars) {
