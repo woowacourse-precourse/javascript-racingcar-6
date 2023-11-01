@@ -9,7 +9,8 @@ const ERROR_MESSAGES = Object.freeze({
   OVER_FIVE: "[ERROR] 자동차 이름은 5자 이하만 가능합니다.",
   SOLO_NAME: "[ERROR] 두개 이상의 자동차가 필요합니다.",
   EMPTY_NAME: "[ERROR] 올바른 이름을 입력해야합니다.",
-  NOT_NUMBER: "[ERROR] 1 이상의 숫자만 입력이 가능합니다."
+  NOT_NUMBER: "[ERROR] 숫자가 아닌 값을 입력하셨습니다. 숫자를 입력해야합니다.",
+  UNDER_ONE: "[ERROR] 1 이상의 숫자만 입력이 가능합니다."
 });
 
 export { GAME_MESSAGES, ERROR_MESSAGES };

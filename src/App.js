@@ -4,6 +4,7 @@ import { GAME_MESSAGES, ERROR_MESSAGES } from "./Message";
 class App {
   constructor() {
     this.carList = [];
+    this.attemptRound = 0;
   }
   
   // 경주할 자동차 이름 받기 & 유효성 검사
@@ -28,6 +29,21 @@ class App {
       }
   }
 
+  // 시도할 횟수 입력 받기 & 유효성 검사
+  async inputRound() {
+    const attemptRound = await Console.readLineAsync(GAME_MESSAGES.ATTEMPT);
+    this.isValidRound(attemptRound);
+  }
+
+  isValidRound(attemptRound) {
+    if (isNaN(+attemptRound)) {
+      throw new Error(ERROR_MESSAGES.NOT_NUMBER);
+    }
+    if (+attemptRound < 1) {
+      throw new Error(ERROR_MESSAGES.UNDER_ONE);
+    }
+    this.attemptRound = +attemptRound;
+  }
 
 }
 
