@@ -1,7 +1,11 @@
 import { Console } from '@woowacourse/mission-utils';
 import { handleInputName, handleInputRound } from './utils/HandleInput';
-import { pickRandomtoGo } from './utils/CalLogic';
-import { handleOutputRound, parseCarResult } from './utils/HandleOutput';
+import { findWinner, pickRandomtoGo } from './utils/CalLogic';
+import {
+  handleOutputGame,
+  handleOutputRound,
+  parseCarResult,
+} from './utils/HandleOutput';
 class App {
   async play() {
     Console.print('자동차 경주를 시작합니다.');
@@ -13,6 +17,8 @@ class App {
       const RESULT_ARRAY = this.Runround();
       handleOutputRound(RESULT_ARRAY);
     }
+    const GAME_RESULT = findWinner(this.CAR_LISTMAP);
+    handleOutputGame(GAME_RESULT);
   }
 
   constructor() {
