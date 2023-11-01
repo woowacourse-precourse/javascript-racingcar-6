@@ -3,6 +3,7 @@ import { Console } from "@woowacourse/mission-utils";
 import validateCarName from "./validation/validateCarName.js";
 import validateRoundCount from "./validation/validateRountCount.js";
 import Car from "./Car.js";
+import validateNameListLength from "./validation/validateNameListLength.js";
 
 class App {
   constructor() {}
@@ -36,6 +37,8 @@ class App {
         carNamesList,
         F.filter((carName) => validateCarName(carName, 5)),
       );
+
+      validateNameListLength(filteredCarNames, 2);
 
       return filteredCarNames;
     } catch (error) {
