@@ -14,6 +14,7 @@ class App {
     this.moveCar();
     this.getCarPositions(this.carList);
     const winners = this.getWinners(this.carList);
+    this.printWinners(winners);
   }
 
   makeCarList = (carName) => {
@@ -40,6 +41,10 @@ class App {
 
   getCarPositions(carList) {
     return carList.map((car) => this.carPositions.push(car.position));
+  }
+
+  printWinners(winners) {
+    MissionUtils.Console.print(`최종 우승자 : ${winners.join(', ')}`);
   }
 
   async requestCarNames() {
