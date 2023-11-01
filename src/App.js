@@ -13,6 +13,10 @@ class App {
       throw Error("[ERROR] 자동차 이름은 5자 이하여야합니다.");
   }
 
+  static attemptInputValidator(input) {
+    if (isNaN(Number(input))) throw Error("[ERROR] 숫자 형식이 아닙니다.");
+  }
+
   getData() {
     return this.data;
   }
@@ -62,6 +66,8 @@ class App {
     let attempt_input = await Console.readLineAsync(
       "시도할 횟수는 몇 회인가요?\n"
     );
+
+    App.attemptInputValidator(attempt_input);
 
     this.setAttempt(attempt_input);
     this.setData(this.car.length);
