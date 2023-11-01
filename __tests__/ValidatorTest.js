@@ -15,7 +15,7 @@ describe('Validator 클래스 테스트', () => {
     });
   });
 
-  test('자동차 이름에 빈 문자열이 입력되었을 때 validateCarNames, isValidCarNameLength 함수를 테스트한다.', () => {
+  test('자동차 이름이 빈 문자열과 함께 입력되었을 때 validateCarNames, isValidCarNameLength 함수를 테스트한다.', () => {
     const names = ', , abc';
 
     expect(() => Validator.validateCarNames(names)).not.toThrow();
