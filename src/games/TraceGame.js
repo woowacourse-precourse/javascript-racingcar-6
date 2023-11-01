@@ -1,8 +1,4 @@
-import {
-  print,
-  readLineAsync,
-  pickUniqueNumbersInRange,
-} from "../utils/missionUtils.js";
+import { print, pickUniqueNumbersInRange } from "../utils/missionUtils.js";
 
 import { CONSTANT } from "../constants/constant.js";
 import { GAME_MESSAGE } from "../constants/gameMessage.js";
@@ -15,7 +11,7 @@ const TraceGame = ({ cars, inputCount }) => {
     MoveCars(randomNumber, traceRoad);
     PrintResult(cars, traceRoad);
   }
-  FinalWinner(cars, traceRoad);
+  return traceRoad;
 };
 
 const MakeRandomNumber = (carCount) => {
@@ -40,32 +36,6 @@ const PrintResult = (cars, traceRoad) => {
     print(cars[i] + " : " + traceRoad[i]);
   }
   print("\n");
-};
-
-const FinalWinner = (cars, traceRoad) => {
-  const maxDistance = CheckMaxDistance(traceRoad);
-  const winner = FindWinner(cars, traceRoad, maxDistance);
-  print(GAME_MESSAGE.GAME_WINNER + winner.join(", "));
-};
-
-const CheckMaxDistance = (traceRoad) => {
-  let maxDistance = 0;
-  for (let i = 0; i < traceRoad.length; i++) {
-    if (traceRoad[i].length > maxDistance) {
-      maxDistance = traceRoad[i].length;
-    }
-  }
-  return maxDistance;
-};
-
-const FindWinner = (cars, traceRoad, maxDistance) => {
-  const winner = [];
-  for (let i = 0; i < traceRoad.length; i++) {
-    if (traceRoad[i].length === maxDistance) {
-      winner.push(cars[i]);
-    }
-  }
-  return winner;
 };
 
 export { TraceGame };
