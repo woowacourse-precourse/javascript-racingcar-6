@@ -62,7 +62,13 @@ class App {
    * @param {{name: string, position: number}[]} cars 자동차의 위치를 전진시킬 자동차 배열
    * @return {{name: string, position: number}[]} 전진시킨 자동차 배열 */
   moveCars(cars) {
+    return cars.map((car) => {
+      if (this.isMovingForward()) {
+        car.position++;
+      }
 
+      return car;
+    });
   }
 
   /**
