@@ -24,7 +24,7 @@ class RacingGame {
   }
   performRace(keyValue) {
     this.hyphenAdd.Add(keyValue);
-    gameInProgress(keyValue);
+    GameInProgress(keyValue);
   }
 }
 export default RacingGame;
