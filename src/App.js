@@ -89,12 +89,32 @@ class App {
     }
   };
 
+  getWinner = () => {
+    let max = 0;
+    let winners = [];
+
+    this.forward.forEach((advance) => {
+      if (advance.length > max) {
+        max = advance.length;
+      }
+    });
+
+    this.forward.forEach((advance, key) => {
+      if (max === advance.length) {
+        winners.push(key);
+      }
+    });
+
+    Console.print(`\n최종 우승자 : ${winners.join(', ')}`);
+  };
+
   async play() {
     const car = await this.getCarName();
     const moveCount = await this.getMoveCount();
     await this.getCarName();
     await this.getAttempts();
     this.getRaceResult();
+    this.getWinner();
   }
 }
 
