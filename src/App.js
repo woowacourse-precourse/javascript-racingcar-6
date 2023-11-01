@@ -44,6 +44,13 @@ class App {
     const winnerNames = winners.map((winner) => winner.name).join(", ");
     MissionUtils.Console.print(`최종 우승자 : ${winnerNames}`);
   }
+  limitCarNames(cars) {
+    cars.forEach((car) => {
+      if (car.name.length > 5) {
+        throw new Error("[ERROR] 이름은 5자 이하만 가능합니다.");
+      }
+    });
+  }
 }
 
 export default App;
