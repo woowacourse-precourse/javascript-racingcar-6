@@ -31,7 +31,7 @@ const Conditions = {
   },
 
   isNumber(value) {
-    return !Number.isNaN(value);
+    return !Number.isNaN(Number(value));
   },
 
   isNaturalNumber(value) {
