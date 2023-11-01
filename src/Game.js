@@ -26,7 +26,7 @@ export default class Game {
       throw new Error('[ERROR] 자동차 이름은 공백이 될 수 없습니다.');
     }
 
-    return (this.carNameList = carList);
+    this.carNameList = carList;
   }
 
   async enterGameRound() {
@@ -39,7 +39,7 @@ export default class Game {
       throw new Error('[ERROR] 횟수는 1회 이상 입력 가능합니다.');
     }
 
-    return (this.round = round);
+    this.round = round;
   }
 
   progressGame() {
