@@ -173,7 +173,7 @@ describe('story5. 최종 우승자 출력', () => {
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(answer));
   });
 
-  test("printResult 테스트, 우승자가 없다면 우승자 ", () => {
+  test("printResult 테스트, 우승자가 없다면 '최종 우승자 : 없음' 출력 ", () => {
     // given
     const input = ['산 : ----', '바 다 : ---', '  호랑이 : ----'];
     const answer = '최종 우승자 : 없음';
