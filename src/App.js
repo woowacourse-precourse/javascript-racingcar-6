@@ -1,4 +1,4 @@
-import { MissionUtils } from '@woowacourse/mission-utils';
+import { Console, Random } from '@woowacourse/mission-utils';
 
 const INPUT_CAR_NAMES_MSG =
   '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)';
@@ -8,8 +8,7 @@ const OUTPUT_WINNERS_MSG = '최종 우승자 : ';
 
 class App {
   async getCarNameArr() {
-    const carNames =
-      await MissionUtils.Console.readLineAsync(INPUT_CAR_NAMES_MSG);
+    const carNames = await Console.readLineAsync(INPUT_CAR_NAMES_MSG);
 
     const carNameArr = carNames.split(',');
 
@@ -22,7 +21,7 @@ class App {
 
   async getAttemptTimes() {
     const attemptTimes = Number(
-      await MissionUtils.Console.readLineAsync(INPUT_ATTEMPT_TIMES_MSG),
+      await Console.readLineAsync(INPUT_ATTEMPT_TIMES_MSG),
     );
     if (Number.isNaN(attemptTimes)) {
       throw new Error(INPUT_ERROR_MSG);
@@ -30,39 +29,57 @@ class App {
     return attemptTimes;
   }
 
-  async printShifts(carArr, attemptTimes) {
-    async function getShift(attemptTimes) {
-      let shift = 0;
+  async getShift(attemptTimes) {
+    let shift = 0;
 
-      for (let i = 0; i < attemptTimes; i++) {
-        if ((await MissionUtils.Random.pickNumberInRange(0, 9)) >= 4) shift++;
-      }
-      return shift;
+    for (let i = 0; i < attemptTimes; i++) {
+      if ((await Random.pickNumberInRange(0, 9)) >= 4) shift++;
     }
+    return shift;
+  }
 
-    let maxShift = -1;
-    let winner = [];
-
+  async calculateShifts(carArr, attemptTimes) {
+    const shifts = [];
     for (let i = 0; i < carArr.length; i++) {
-      const shift = await getShift(attemptTimes);
+      const shift = await this.getShift(attemptTimes);
+      shifts.push({ name: carArr[i], shift });
+    }
+    return shifts;
+  }
+
+  printShifts(shifts) {
+    for (const { name, shift } of shifts) {
+      Console.print(`${name} : ${'-'.repeat(shift)}`);
+    }
+  }
+
+  findWinners(shifts) {
+    let maxShift = -1;
+    let winners = [];
+
+    for (const { name, shift } of shifts) {
       if (shift > maxShift) {
         maxShift = shift;
-        winner = [carArr[i]];
-      } else if (shift === maxShift) winner.push(carArr[i]);
-
-      MissionUtils.Console.print(`${carArr[i]} : ${'-'.repeat(shift)}`);
+        winners = [name];
+      } else if (shift === maxShift) {
+        winners.push(name);
+      }
     }
 
-    return winner;
+    return winners;
+  }
+
+  async printWinner(winners) {
+    Console.print(`${OUTPUT_WINNERS_MSG}` + `${winners.join(', ')}`);
   }
 
   async play() {
     const carNameArr = await this.getCarNameArr();
     const attemptTimes = await this.getAttemptTimes();
-    const winners = await this.printShifts(carNameArr, attemptTimes);
-    MissionUtils.Console.print(
-      `${OUTPUT_WINNERS_MSG}` + `${winners.join(', ')}`,
-    );
+    const shifts = await this.calculateShifts(carNameArr, attemptTimes);
+    this.printShifts(shifts);
+    const winners = this.findWinners(shifts);
+    await this.printWinner(winners);
   }
 }
 
