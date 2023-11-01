@@ -7,26 +7,20 @@ import InputTryCountException from "./InputTryCountException.js";
 class App {
   async play() {
     try {
-      // 시스템 시작
-      Console.print(systemMessage.START);
-      let cars = await Console.readLineAsync("");
+      Console.print(systemMessage.GAME_START);
+      let playingCars = await Console.readLineAsync("");
 
-      // 입력받은 경주할 자동차들에 대한 예외처리
-      cars = new InputCarsException(cars).check();
+      playingCars = new InputCarsException(playingCars).check();
 
-      // 시도횟수 입력
-      Console.print(systemMessage.TRY_COUNT);
+      Console.print(systemMessage.INPUT_TRY_COUNT);
       let tryCount = await Console.readLineAsync("");
 
-      // 입력받은 시도횟수에 대한 예외처리
       tryCount = new InputTryCountException(tryCount).check();
       Console.print("");
 
-      // 레이싱게임 진행
-      let winner = new RacingGame(cars, tryCount).racing();
+      let winners = new RacingGame(playingCars, tryCount).racing();
 
-      // 최종 우승자 출력하기
-      Console.print(`최종 우승자 : ${winner.join(", ")}`);
+      Console.print(`최종 우승자 : ${winners.join(", ")}`);
     } catch (error) {
       throw error;
     }
