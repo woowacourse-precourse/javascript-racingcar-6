@@ -1,5 +1,5 @@
-import CONSTANTS from './Constants';
-import MESSAGES from './Messages';
+import CONSTANTS from './Constants.js';
+import MESSAGES from './Messages.js';
 
 const Validator = {
   validateCarNames(carNamesArray) {

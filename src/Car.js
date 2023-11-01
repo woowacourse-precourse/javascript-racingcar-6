@@ -1,6 +1,6 @@
 import {Random} from '@woowacourse/mission-utils';
-import CONSTANTS from '../utils/Constants';
-import MESSAGES from '../utils/Messages';
+import CONSTANTS from '../utils/Constants.js';
+import MESSAGES from '../utils/Messages.js';
 
 class Car {
   constructor(name) {

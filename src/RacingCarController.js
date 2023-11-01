@@ -1,8 +1,8 @@
-import InputView from './Views/InputView';
-import OutputView from './Views/OutputView';
-import Validator from '../utils/Validator';
-import CONSTANTS from '../utils/Constants';
-import RacingCar from './RacingCar';
+import InputView from './Views/InputView.js';
+import OutputView from './Views/OutputView.js';
+import Validator from '../utils/Validator.js';
+import CONSTANTS from '../utils/Constants.js';
+import RacingCar from './RacingCar.js';
 
 class RacingCarController {
   async play() {

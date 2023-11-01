@@ -1,5 +1,5 @@
-import Car from './Car';
-import CONSTANTS from '../utils/Constants';
+import Car from './Car.js';
+import CONSTANTS from '../utils/Constants.js';
 
 class RacingCar {
   constructor(carNamesArray) {
