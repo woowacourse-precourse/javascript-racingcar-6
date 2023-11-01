@@ -16,9 +16,16 @@ class App {
     });
   }
 
+  async receiveGameCount() {
+    const gameCountInput = await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
+    const gameCount = parseInt(gameCountInput, 10);
+    return gameCount;
+  }
+
   async play() {
     const carNames = await this.receiveCarNames();
     this.generateCars(carNames);
+    const gameCount = await this.receiveGameCount();
   }
 }
 
