@@ -1,6 +1,6 @@
 // @ts-check
 
-import { makeZeroValuedObjectFromKeys } from "../utils/parse";
+import { makeZeroValuedObjectFromKeys } from "../utils/parse.js";
 
 class ScoreBoard {
   /** @type {Record<string, number>} */

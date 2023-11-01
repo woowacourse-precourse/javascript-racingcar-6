@@ -1,4 +1,4 @@
-import ScoreBoard from "../src/core/scoreboard";
+import ScoreBoard from "../src/core/scoreboard.js";
 
 describe("점수 로직 테스트", () => {
   test("점수 시뮬레이션 테스트", () => {

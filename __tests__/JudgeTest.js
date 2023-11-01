@@ -1,4 +1,4 @@
-import { judgeWinner } from "../src/core/judge";
+import { judgeWinner } from "../src/core/judge.js";
 
 describe("결과 판단 로직 테스트", () => {
   test("스코어보드로 우승자 결과를 잘 출력하는가?", () => {
