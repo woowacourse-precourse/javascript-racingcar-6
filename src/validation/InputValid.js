@@ -1,4 +1,4 @@
-import { NAME_ERROR, ROUND_ERROR } from '../constants/ErrorMessage.js';
+import { NAME_ERROR, ROUND_ERROR } from '../constants/ErrorMessage';
 
 export const InputValid = (inputName) => {
   const name = inputName.split(',');

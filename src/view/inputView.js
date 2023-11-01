@@ -1,5 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import { INPUT_MESSAGE } from '../constants/ErrorMessage.js';
+import { INPUT_MESSAGE } from '../constants/ErrorMessage';
 
 export const getCarNames = async () => {
   const inputName = await MissionUtils.Console.readLineAsync(

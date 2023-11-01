@@ -2,7 +2,7 @@ import { MissionUtils } from '@woowacourse/mission-utils';
 
 export const racingOutput = (carObject) => {
   if (!carObject) {
-    return; // 빈 값을 무시하도록 수정
+    return;
   }
 
   if (typeof carObject === 'string') {
