@@ -1,5 +1,9 @@
+import CarName from './controller/carNameController.js';
+
 class App {
-  async play() {}
+   async play(){
+       await new CarName().start();
+   }
 }
 
 export default App;
