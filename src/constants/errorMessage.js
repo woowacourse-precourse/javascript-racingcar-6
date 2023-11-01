@@ -17,3 +17,5 @@ const ERROR_USER_INPUT_MESSAGE = {
     "시도할 횟수에 영어가 아닌 문자가 포함되어 있습니다.",
   INVALID_INPUT_USER_INPUT_ZERO_ERROR: "시도할 횟수는 0보다 커야 합니다.",
 };
+
+export { ERROR_CAR_MESSAGE, ERROR_USER_INPUT_MESSAGE };

@@ -5,3 +5,5 @@ const GAME_MESSAGE = {
   GAME_WINNER: "최종 우승자 : ",
   GAME_CAR_DISTANCE: "-",
 };
+
+export default { GAME_MESSAGE };
