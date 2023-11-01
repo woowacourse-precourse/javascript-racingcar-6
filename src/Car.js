@@ -43,6 +43,10 @@ class Car {
     const consoleMessage = `${this.#name} : ${curDistance}`;
     Console.print(consoleMessage);
   }
+
+  getCarName() {
+    return this.#name;
+  }
 }
 
 export default Car;
