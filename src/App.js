@@ -13,10 +13,11 @@ class App {
         const numberOfGames = await this.getNumberOfGames();
         console.log(numberOfGames);
 
+        const numberOfCars = carNameArr.length;
+
         let round = 1;
-        
         while (round <= numberOfGames) {
-            const carStates = this.calculateAndStoreScore(numberOfGames);
+            const carStates = this.calculateAndStoreScore(numberOfCars);
             const roundResult = this.createRoundResult(carNameArr, carStates);
             Console.print(roundResult);
             round++;
