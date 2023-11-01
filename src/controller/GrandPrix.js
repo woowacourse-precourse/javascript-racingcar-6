@@ -1,12 +1,12 @@
 import { InputView, OutputView } from '../view/index.js';
-import RacingCarGrid from '../model/RacingCarGrid.js';
+import RacingCarService from '../service/RacingCarService.js';
 
 export default class GrandPrix {
   /**
    * @private
-   * @type { RacingCarGrid }
+   * @type { RacingCarService }
    */
-  #racingCarGrid;
+  #racingCarService;
 
   /**
    * @private
@@ -22,7 +22,7 @@ export default class GrandPrix {
     const racingCarInput = await InputView.readRacingCarNames();
     const lapNumberInput = await InputView.readLapNumber();
 
-    this.#racingCarGrid = new RacingCarGrid(racingCarInput);
+    this.#racingCarService = new RacingCarService(racingCarInput);
     this.#lapNumber = Number(lapNumberInput);
     return this.#race();
   }
@@ -36,8 +36,8 @@ export default class GrandPrix {
 
     OutputView.printLapResult();
     while (lapCount < this.#lapNumber) {
-      this.#racingCarGrid.setRacingGrid();
-      OutputView.printRacingGrid(this.#racingCarGrid.getRacingGrid());
+      this.#racingCarService.setRacingGrid();
+      OutputView.printRacingGrid(this.#racingCarService.getRacingGrid());
       lapCount += 1;
     }
     return this.#podium();
@@ -48,7 +48,7 @@ export default class GrandPrix {
    * @returns {void}
    */
   #podium() {
-    const winner = this.#racingCarGrid.getPodium();
+    const winner = this.#racingCarService.getPodium();
     return OutputView.printRaceWinner(winner);
   }
 }
