@@ -42,7 +42,6 @@ describe('자동차 경주 게임', () => {
 
     // then
     outputs.forEach((output) => {
-      console.log(app.carPosition);
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
   });
