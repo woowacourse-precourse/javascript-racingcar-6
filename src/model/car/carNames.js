@@ -1,4 +1,4 @@
-class Names {
+class CarNames {
   #names = [];
 
   getNames() {
@@ -48,4 +48,4 @@ class Names {
   }
 }
 
-export default Names;
+export default CarNames;

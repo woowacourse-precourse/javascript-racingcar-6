@@ -1,11 +1,11 @@
 import RacingCar from "./racingCar.js";
-import Names from "./carNames.js";
+import CarNames from "./carNames.js";
 
 class RacingCars {
   #cars = [];
 
   constructor() {
-    this.carNames = new Names();
+    this.carNames = new CarNames();
   }
 
   getCars() {
