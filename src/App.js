@@ -1,8 +1,7 @@
-import { Console } from '@woowacourse/mission-utils';
-import Input from './Input.js';
-import Output from './Output.js';
-import Validation from './Validation.js';
-import Car from './Car.js';
+import Input from './Input';
+import Output from './Output';
+import Validation from './Validation';
+import Car from './Car';
 
 class App {
   carNames;

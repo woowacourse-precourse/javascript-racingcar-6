@@ -1,4 +1,4 @@
-import Random from './Random.js';
+import Random from './Random';
 
 class Car {
   name;
