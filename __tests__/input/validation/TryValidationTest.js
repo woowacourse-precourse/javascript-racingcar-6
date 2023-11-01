@@ -1,5 +1,5 @@
-import {  MESSAGE } from "../../src/constants.js";
-import { validate } from "../../src/input/validations.js";
+import {  MESSAGE } from "../../../src/constants.js";
+import { validate } from "../../../src/input/validations.js";
 
 const string = 'a';
 const minus = '-2';
