@@ -228,3 +228,59 @@ describe("전진 실행 및 결과 출력", () => {
     });
   });
 });
+
+describe("경주 완료 출력", () => {
+  test("우승자 선별, 출력", async () => {
+    const outputs = ["최종 우승자 : hee"];
+    const logSpy = getLogSpy();
+    
+    const controller = new RaceController();
+    controller.cars = [
+      {
+        name: "kim",
+        point: 1,
+      },
+      {
+        name: "hee",
+        point: 3,
+      },
+      {
+        name: "seo",
+        point: 2,
+      },
+    ];
+    controller.getWinners();
+
+    expect(controller.winners).toEqual(["hee"]);
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining([output]));
+    });
+  });
+
+  test("우승자 선별 - 공동", async () => {
+    const outputs = ["최종 우승자 : hee, seo"];
+    const logSpy = getLogSpy();
+
+    const controller = new RaceController();
+    controller.cars = [
+      {
+        name: "kim",
+        point: 1,
+      },
+      {
+        name: "hee",
+        point: 3,
+      },
+      {
+        name: "seo",
+        point: 3,
+      },
+    ];
+    controller.getWinners();
+
+    expect(controller.winners).toEqual(["hee", "seo"]);
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });  
+});
