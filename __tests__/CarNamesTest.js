@@ -4,20 +4,16 @@ describe("자동차 이름 테스트", () => {
   test("이름의 글자수 제한을 지키지 않은 경우", () => {
     const input = "interstella,suchan";
 
-    expect(() =>
-      Validation.carNames(input).toThrow(
-        "[ERROR] 이름은 최소 1자에서 최대 5자까지 가능합니다."
-      )
+    expect(() => Validation.carNames(input)).toThrow(
+      "[ERROR] 이름은 최소 1자에서 최대 5자까지 가능합니다."
     );
   });
 
   test("이름이 중복되는 경우", () => {
     const input = "sum,sum";
 
-    expect(() =>
-      Validation.carNames(input).toThrow(
-        "[ERROR] 이름이 중복되었습니다. 서로 다른 이름을 입력해주세요."
-      )
+    expect(() => Validation.carNames(input)).toThrow(
+      "[ERROR] 이름이 중복되었습니다. 서로 다른 이름을 입력해주세요."
     );
   });
 
@@ -34,8 +30,8 @@ describe("자동차 이름 테스트", () => {
   test("공백이 포함된 경우", () => {
     const input = "sum, chan";
 
-    expect(() =>
-      Validation.carNames(input).toThrow("[ERROR] 공백 없이 입력해주세요.")
+    expect(() => Validation.carNames(input)).toThrow(
+      "[ERROR] 공백 없이 입력해주세요."
     );
   });
 });
