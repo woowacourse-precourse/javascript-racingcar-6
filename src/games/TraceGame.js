@@ -5,14 +5,15 @@ import {
 } from "../utils/missionUtils.js";
 
 import { CONSTANT } from "../constants/constant.js";
+import { GAME_MESSAGE } from "../constants/gameMessage.js";
 
 const TraceGame = ({ cars, inputCount }) => {
-  print("실행 결과");
-  print(cars);
-  print(inputCount);
-  print(cars.length);
+  print(GAME_MESSAGE.GAME_RESULT);
+  const traceRoad = new Array(cars.length).fill("");
   for (let i = 0; i < inputCount; i++) {
-    MakeRandomNumber(cars.length);
+    const randomNumber = MakeRandomNumber(cars.length);
+    MoveCars(randomNumber, traceRoad);
+    PrintResult(cars, traceRoad);
   }
 };
 
@@ -22,11 +23,22 @@ const MakeRandomNumber = (carCount) => {
     CONSTANT.END_INCLUSIVE,
     carCount
   );
-  print(randomNumber);
+  return randomNumber;
 };
 
-const TraceRace = (cars) => {
-  print(result);
+const MoveCars = (randomNumber, traceRoad) => {
+  for (let i = 0; i < randomNumber.length; i++) {
+    if (randomNumber[i] >= 4) {
+      traceRoad[i] += "-";
+    }
+  }
+};
+
+const PrintResult = (cars, traceRoad) => {
+  for (let i = 0; i < cars.length; i++) {
+    print(cars[i] + " : " + traceRoad[i]);
+  }
+  print("\n");
 };
 
 export { TraceGame };
