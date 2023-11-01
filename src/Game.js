@@ -50,7 +50,7 @@ class Game {
     this.#cars.forEach((car) => {
       car.move();
       car.print();
-      if (this.#winningPosition < car.getPosition()) this.#winningPosition = car.getPosition();
+      this.#winningPosition = Math.max(this.#winningPosition, car.getPosition());
     });
     this.#winners = this.#cars.filter((car) => car.position === this.#winningPosition);
   }
