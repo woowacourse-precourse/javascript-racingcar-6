@@ -2,6 +2,7 @@ import { Console } from '@woowacourse/mission-utils';
 
 import Car from './Car.js';
 import Input from './Input.js';
+import Validator from './utils/Validator.js';
 
 class Game {
   #cars = [];
@@ -26,9 +27,12 @@ class Game {
 
   async setCars() {
     const input = new Input();
-    // TODO: 사용자 입력 검증 로직 주입해주기
+
     const value = await input.readLine(
-      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n'
+      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
+      {
+        validator: Validator.validCarList,
+      }
     );
     // TODO: 쉼표로 구분된 자동자 이름를 배열로 변환해주는 유틸함수 작성
     this.#cars = value.split(',').map((name) => new Car(name));
@@ -36,8 +40,10 @@ class Game {
 
   async setCount() {
     const input = new Input();
-    // TODO: 사용자 입력 검증 로직 주입해주기
-    const value = await input.readLine('시도할 횟수는 몇 회인가요?\n');
+
+    const value = await input.readLine('시도할 횟수는 몇 회인가요?\n', {
+      validator: Validator.rangeOverZero,
+    });
 
     this.#count = Number(value);
   }
