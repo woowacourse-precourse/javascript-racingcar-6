@@ -10,7 +10,7 @@ export const messageBeforeInput = Object.freeze({
   attempts: "시도할 횟수는 몇 회인가요?\n",
 });
 export const messagePrint = Object.freeze({
-  start: "\n실행 결과",
+  start: "실행 결과",
   winners: "최종 우승자 : ",
 });
 export const messageError = Object.freeze({
@@ -72,6 +72,7 @@ class App {
     let numberOfAttempts = parseInt(input);
     this.checkValidNumberOfAttempts(numberOfAttempts);
     this.numberOfAttempts = numberOfAttempts;
+    Console.print("");
   }
 
   moveCarForward(car) {
