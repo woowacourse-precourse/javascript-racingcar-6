@@ -7,7 +7,9 @@ import {isNaturalNumber } from './validation.js';
  */
 export const hasMovedForward = () => {
   const randomNumber = Random.pickNumberInRange(0, 9)
-  if (randomNumber >= 4) return true;
+  if (randomNumber >= 4) {
+    return true;
+  }
   return false;
 }
 
