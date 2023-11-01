@@ -27,6 +27,9 @@ class App {
     if (isNaN(trialNumber)) {
       throw new Error("[ERROR] 숫자만 입력 가능합니다");
     }
+    if (trialNumber < 0) {
+      throw new Error("[ERROR] 음수는 입력 불가합니다");
+    }
     this.trialNumber = trialNumber;
   }
 
