@@ -9,8 +9,6 @@ const mockQuestions = (input) => {
   });
 };
 
-
-
 describe("Input 클래스 테스트", () => {
   test("바르게 입력한 경우", async () => {
     // given
