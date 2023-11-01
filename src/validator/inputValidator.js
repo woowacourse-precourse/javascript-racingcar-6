@@ -2,38 +2,38 @@ import ERROR_MESSAGE from '../constants/errorMessage.js';
 import GAME_OPTION from '../constants/gameOption.js';
 
 class InputValidator {
-  static checkhasNoSpace(query) {
+  static checkHasNoSpace(query) {
     const isValid = query.replace(' ', '').length === query.length;
 
     return isValid || this.throwError(ERROR_MESSAGE.HAS_SPACE);
   }
 
-  static checkhasWrongName(query) {
+  static checkHasRightNameFormat(query) {
     const regex = /[^a-z]/g;
     const isValid = !regex.test(query);
 
     return isValid || this.throwError(ERROR_MESSAGE.HAS_WRONG_NAME_FORMAT);
   }
 
-  static checkIsInteger(query) {
+  static checkInteger(query) {
     const isValid = Number.isSafeInteger(Number(query));
 
-    return isValid || this.throwError(ERROR_MESSAGE.NAME_OUT_OF_RANGE);
+    return isValid || this.throwError(ERROR_MESSAGE.NOT_INTEGER);
   }
 
-  static checkIsPositiveInteger(query) {
+  static checkPositiveInteger(query) {
     const isValid = Number(query) > 0;
 
     return isValid || this.throwError(ERROR_MESSAGE.NEGATIVE_INTEGER);
   }
 
-  static checkhasDuplicateName(query) {
+  static checkUniqueName(query) {
     const isValid = new Set(query).size === query.length;
 
     return isValid || this.throwError(ERROR_MESSAGE.DUPLICATE_NAME);
   }
 
-  static checkIsInNameLengthRange(query) {
+  static checkNameInRange(query) {
     const isValid =
       query.length >= GAME_OPTION.MIN_CAR_NAME_LENGTH &&
       query.length <= GAME_OPTION.MAX_CAR_NAME_LENGTH;
@@ -49,19 +49,19 @@ class InputValidator {
     const carNames = query.split(GAME_OPTION.INPUT_SEPARATOR);
 
     carNames.forEach((carName) => {
-      this.checkhasNoSpace(carName);
-      this.checkIsInNameLengthRange(carName);
-      this.checkhasWrongName(carName);
+      this.checkHasNoSpace(carName);
+      this.checkNameInRange(carName);
+      this.checkHasRightNameFormat(carName);
     });
 
-    this.checkhasDuplicateName(carNames);
+    this.checkUniqueName(carNames);
 
     return query;
   }
 
   static validateRoundNumber(query) {
-    this.checkIsInteger(query);
-    this.checkIsPositiveInteger(query);
+    this.checkInteger(query);
+    this.checkPositiveInteger(query);
 
     return query;
   }
