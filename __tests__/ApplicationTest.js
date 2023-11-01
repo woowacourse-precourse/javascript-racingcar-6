@@ -113,4 +113,13 @@ describe("자동차 경주 게임", () => {
 
     await expect(app.play()).rejects.toThrow("[ERROR]");
   });
+
+  test("쉼표(,)에 자동차 이름 미입력 테스트", async () => {
+    const input = ["car1, car2,"];
+    mockQuestions(input);
+
+    const app = new App();
+
+    await expect(app.play()).rejects.toThrow("[ERROR]");
+  });
 });
