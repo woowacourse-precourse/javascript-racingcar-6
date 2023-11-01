@@ -13,7 +13,7 @@ class App {
       }
       this.printWinners(CAR_RESULT);
     } catch (error) {
-      MissionUtils.Console.print(error.message);
+      throw error;
     }
   }
 
@@ -26,9 +26,16 @@ class App {
     if (!CAR_NAMES_INPUT) {
       throw new Error("[ERROR] 자동차 이름을 입력해야 합니다.");
     }
-    if (CAR_NAMES.some((name) => name.length > 5 || name.trim() === "")) {
+    if (
+      CAR_NAMES.some(
+        (name) =>
+          name.length > 5 ||
+          name.trim() === "" ||
+          /[0-9!@#$%^&*(),.?":{}|<>]/.test(name)
+      )
+    ) {
       throw new Error(
-        "[ERROR] 자동차 이름은 1자에서 5자 사이이고, 공백이 없어야 합니다."
+        "[ERROR] 자동차 이름은 1자에서 5자 사이이고, 공백 및 특수 문자, 숫자를 포함해서는 안됩니다."
       );
     }
     return CAR_NAMES;
@@ -39,6 +46,13 @@ class App {
       "시도할 횟수는 몇 회인가요? "
     );
     const TRY_COUNT = parseInt(TRY_COUNT_INPUT);
+
+    if (!TRY_COUNT_INPUT) {
+      throw new Error("[ERROR] 시도 횟수를 입력해야 합니다.");
+    }
+    if (isNaN(TRY_COUNT) || TRY_COUNT <= 0) {
+      throw new Error("[ERROR] 올바른 시도 횟수를 입력해야 합니다.");
+    }
     return TRY_COUNT;
   }
 
