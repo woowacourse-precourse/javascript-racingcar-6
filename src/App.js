@@ -29,9 +29,17 @@ class App {
   playRacing() {
     Console.print('\n실행 결과');
 
+    // 입력받은 시도횟수만큼 반복문 실행
     while (this.tryNum > 0) {
+      /**
+       * 각 자동차들에 대해서
+       * 1. 전진여부 호출
+       * 2. 위 호출 후 상태(거리) 출력
+       */
       this.cars.forEach((car) => {
+        // 1.
         car.addDistance();
+        // 2.
         Output.printCarState(car.name, car.distance);
       });
 
