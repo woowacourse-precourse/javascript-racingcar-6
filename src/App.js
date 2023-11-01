@@ -4,9 +4,7 @@ class App {
     this.gameManager = new GameManager();
   }
   async play() {
-    await this.gameManager.initGame();
-    await this.gameManager.startRace();
-    await this.gameManager.finishGame();
+    await this.gameManager.playGame();
   }
 }
 
