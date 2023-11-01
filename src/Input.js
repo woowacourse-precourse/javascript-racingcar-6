@@ -3,12 +3,12 @@ import { MESSAGE } from './Constants.js';
 
 const Input = {
   async getCarNamesFromUser() {
-    const userInput = await Console.readLineAsync(MESSAGE.INPUT_CAR_NAME);
+    const userInput = await Console.readLineAsync(`${MESSAGE.INPUT_CAR_NAME}\n`);
     return userInput;
   },
 
   async getGameCountFromUser() {
-    const userInput = await Console.readLineAsync(MESSAGE.INPUT_GAME_COUNT);
+    const userInput = await Console.readLineAsync(`${MESSAGE.INPUT_GAME_COUNT}\n`);
     return userInput;
   },
 };
