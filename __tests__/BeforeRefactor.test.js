@@ -49,4 +49,26 @@ describe("App class", () => {
       expect(result).toEqual(["pobi", "woni", "jun"]);
     });
   });
+
+  describe("Error Handling in validateCarName", () => {
+    let app;
+    beforeEach(() => {
+      app = new App();
+    });
+
+    test("자동차 이름이 5자를 초과할 때", async () => {
+      mockInput("pobipobi,woni,jun");
+      await expect(app.getCarName()).rejects.toThrow("[ERROR] 자동차 이름은 5자를 초과할 수 없습니다.");
+    });
+
+    test("자동차 이름이 중복될 때", async () => {
+      mockInput("pobi,pobi,jun");
+      await expect(app.getCarName()).rejects.toThrow("[ERROR] 중복되는 자동차 이름이 있습니다.");
+    });
+
+    test("자동차 이름이 최소 2대 미만일 때", async () => {
+      mockInput("pobi");
+      await expect(app.getCarName()).rejects.toThrow("[ERROR] 최소 두 대 이상의 자동차 이름을 입력해주세요.");
+    });
+  });  
 });
