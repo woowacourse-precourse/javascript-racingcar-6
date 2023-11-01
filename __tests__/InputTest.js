@@ -1,4 +1,4 @@
-import App from "../src/App.js";
+import UserInput from "../src/Input/UserInput";
 import { MissionUtils } from "@woowacourse/mission-utils";
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -16,8 +16,9 @@ describe("사용자 입력 테스트", () => {
     mockQuestions(inputs);
 
     // when
-    const app = new App();
-    const carInput = await app.inputCarNames();
+    const userInput = new UserInput();
+    await userInput.inputCarNames();
+    const carInput = userInput.getCarName();
 
     // then
     expect(carInput).toEqual(["tayo", "jjayo"]);
@@ -28,8 +29,9 @@ describe("사용자 입력 테스트", () => {
     mockQuestions(inputs);
 
     // when
-    const app = new App();
-    const carInput = await app.inputCarNames();
+    const userInput = new UserInput();
+    await userInput.inputCarNames();
+    const carInput = userInput.getCarName();
 
     // then
     expect(carInput).toEqual(["tayo", "jjayo"]);
@@ -41,11 +43,10 @@ describe("사용자 입력 테스트", () => {
     mockQuestions(inputs);
 
     // when
-    const app = new App();
-    const carInput = app.inputCarNames();
+    const userInput = new UserInput();
 
     // then
-    await expect(carInput).rejects.toThrow("[ERROR]");
+    await expect(userInput.inputCarNames()).rejects.toThrow("[ERROR]");
   });
 
   test("자동차 이름이 중복되었는지", async () => {
@@ -54,11 +55,10 @@ describe("사용자 입력 테스트", () => {
     mockQuestions(inputs);
 
     // when
-    const app = new App();
-    const carInput = app.inputCarNames();
+    const userInput = new UserInput();
 
     // then
-    await expect(carInput).rejects.toThrow("[ERROR]");
+    await expect(userInput.inputCarNames()).rejects.toThrow("[ERROR]");
   });
   test("자동차 이름의 길이가 5자 이하인지", async () => {
     const inputs = ["tayobus,jjayo"];
@@ -66,11 +66,10 @@ describe("사용자 입력 테스트", () => {
     mockQuestions(inputs);
 
     // when
-    const app = new App();
-    const carInput = app.inputCarNames();
+    const userInput = new UserInput();
 
     // then
-    await expect(carInput).rejects.toThrow("[ERROR]");
+    await expect(userInput.inputCarNames()).rejects.toThrow("[ERROR]");
   });
   test("자동차 이름의 개수가 1~9 사이인지", async () => {
     const inputs = ["tayo,jjayo,loopy,crong,eddy,poby,harry,petty,poro,rong"];
@@ -78,11 +77,10 @@ describe("사용자 입력 테스트", () => {
     mockQuestions(inputs);
 
     // when
-    const app = new App();
-    const carInput = app.inputCarNames();
+    const userInput = new UserInput();
 
     // then
-    await expect(carInput).rejects.toThrow("[ERROR]");
+    await expect(userInput.inputCarNames()).rejects.toThrow("[ERROR]");
   });
   test("시도 횟수가 1~10 사이인지", async () => {
     const inputs = [-1, 11];
@@ -90,11 +88,10 @@ describe("사용자 입력 테스트", () => {
     mockQuestions(inputs);
 
     // when
-    const app = new App();
-    const numberInput = app.inputTryNumbers();
+    const userInput = new UserInput();
 
     // then
-    await expect(numberInput).rejects.toThrow("[ERROR]");
+    await expect(userInput.inputTryNumbers()).rejects.toThrow("[ERROR]");
   });
   test("시도 횟수가 숫자인지", async () => {
     const inputs = ["five"];
@@ -102,9 +99,9 @@ describe("사용자 입력 테스트", () => {
     mockQuestions(inputs);
 
     // when
-    const app = new App();
-    const numberInput = app.inputTryNumbers();
+    const userInput = new UserInput();
+
     // then
-    await expect(numberInput).rejects.toThrow("[ERROR]");
+    await expect(userInput.inputTryNumbers()).rejects.toThrow("[ERROR]");
   });
 });
