@@ -26,12 +26,12 @@ describe('Racing 단위 테스트', () => {
   test('게임이 진행됨에 따라 상태를 반환 하는지', () => {
     data.generateRandomNumbers.mockImplementation(() => 4);
     expect(manager.result()).toEqual([[1, 1, 1], [2, 2, 2]]);
-  })
+  });
 
   test('올바른 우승자를 형식에 맞게 반환하는지', () => {
     manager.state = [0, 1, 2];
     expect(manager.determineWinner()).toEqual(['jun']);
     manager.state = [2, 0, 2];
     expect(manager.determineWinner()).toEqual(['pobi','jun']);
-  })
+  });
 });

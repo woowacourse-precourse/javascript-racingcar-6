@@ -12,6 +12,7 @@ class Racing {
     const moving = this.data.generateRandomNumbers();
 
     if (moving >= RACING_GAME.forwardConditionNumber) return true;
+    return false;
   }
 
   advance() {
