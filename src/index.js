@@ -1,4 +1,11 @@
-import App from "./App.js";
+import App from './App.js';
 
 const app = new App();
-app.play();
+async function main() {
+  try {
+    await app.play();
+  } catch (error) {
+    console.log(`${error.message}`);
+  }
+}
+main();
