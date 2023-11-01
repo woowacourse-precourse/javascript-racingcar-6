@@ -15,12 +15,9 @@ const startGame = async function startGameWithCarNameAndTryCount(CAR_NAME, TRY_C
 
       if (RANDOM_NUMBER >= 4) {
         GO_COUNT[index] += 1;
+      }
 
-        return Console.print(`${element} : -`);
-      }
-      if (RANDOM_NUMBER < 4) {
-        return Console.print(`${element} : `);
-      }
+      Console.print(`${element} : ${'-'.repeat(GO_COUNT[index])}`);
     });
   }
 
