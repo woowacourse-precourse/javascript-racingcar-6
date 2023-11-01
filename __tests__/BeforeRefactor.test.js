@@ -288,7 +288,7 @@ describe("App class", () => {
   
     test("실행 결과 출력", () => {
       app.printResultHeader();
-      expect(Console.print).toHaveBeenCalledWith("실행 결과");
+      expect(Console.print).toHaveBeenCalledWith("\n실행 결과");
     });
   });
 
@@ -312,6 +312,30 @@ describe("App class", () => {
       expect(Console.print).toHaveBeenCalledWith("pobi : ---");
       expect(Console.print).toHaveBeenCalledWith("woni : --");
       expect(Console.print).toHaveBeenCalledWith("jun : -");
+    });
+  });
+  
+  describe("printWinner method", () => {
+    let app;
+    beforeEach(() => {
+      app = new App();
+    });
+  
+    test("최종 우승자 메세지 출력", () => {
+      app.car = [
+        { name: "pobi", distance: 5 },
+        { name: "woni", distance: 5 },
+        { name: "jun", distance: 3 }
+      ];
+  
+      const printSpy = jest.spyOn(Console, 'print');
+  
+      const winners = app.getWinner();
+      app.printWinner(winners);
+  
+      expect(printSpy).toHaveBeenCalledWith("최종 우승자 : pobi, woni");
+  
+      printSpy.mockRestore();
     });
   });  
 });
