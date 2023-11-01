@@ -1,8 +1,9 @@
+import Utils from './utils/Utils';
 import { Console } from '@woowacourse/mission-utils';
 import { PRINT_MESSAGE, READ_MESSAGE } from './constants/constants';
 import { validateIsNumber, validateLength } from './utils/validate';
 import { createRandomNumber } from './utils/createRandomNumber';
-import Utils from './utils/Utils';
+
 class App {
   async play() {
     const carName = await Console.readLineAsync(READ_MESSAGE.start);
@@ -27,9 +28,9 @@ class App {
       Console.print('\n');
     }
 
-    const winners = Utils.pickWinner(carData);
+    const winnerList = Utils.pickWinner(carData);
 
-    Console.print(`${PRINT_MESSAGE.winner}${winners.join(', ')}`);
+    Console.print(`${PRINT_MESSAGE.winner}${winnerList.join(', ')}`);
   }
 }
 

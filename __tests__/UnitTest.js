@@ -21,24 +21,26 @@ describe('유틸리티 함수', () => {
     const carData = [
       {
         name: 'pobi',
-        number: 0,
+        randomNumber: 0,
         result: '',
       },
       {
         name: 'woni',
-        number: 0,
+        randomNumber: 0,
         result: '',
       },
       {
         name: 'juru',
-        number: 0,
+        randomNumber: 0,
         result: '',
       },
     ];
+
     const newCarData = createRandomNumber(carData);
+
     newCarData.forEach((data) => {
-      expect(data.number).toBeGreaterThanOrEqual(0);
-      expect(data.number).toBeLessThan(10);
+      expect(data.randomNumber).toBeGreaterThanOrEqual(0);
+      expect(data.randomNumber).toBeLessThan(10);
     });
   });
 
@@ -46,17 +48,17 @@ describe('유틸리티 함수', () => {
     const carData = [
       {
         name: 'pobi',
-        number: 5,
+        randomNumber: 5,
         result: '',
       },
       {
         name: 'woni',
-        number: 4,
+        randomNumber: 4,
         result: '',
       },
       {
         name: 'juru',
-        number: 1,
+        randomNumber: 1,
         result: '',
       },
     ];
@@ -64,17 +66,17 @@ describe('유틸리티 함수', () => {
     expect(Utils.goStopCar(carData)).toEqual([
       {
         name: 'pobi',
-        number: 5,
+        randomNumber: 5,
         result: '-',
       },
       {
         name: 'woni',
-        number: 4,
+        randomNumber: 4,
         result: '-',
       },
       {
         name: 'juru',
-        number: 1,
+        randomNumber: 1,
         result: '',
       },
     ]);
@@ -84,17 +86,17 @@ describe('유틸리티 함수', () => {
     const carData = [
       {
         name: 'pobi',
-        number: 5,
+        randomNumber: 5,
         result: '----',
       },
       {
         name: 'woni',
-        number: 4,
+        randomNumber: 4,
         result: '--',
       },
       {
         name: 'juru',
-        number: 1,
+        randomNumber: 1,
         result: '----',
       },
     ];
@@ -109,17 +111,17 @@ describe('유틸리티 함수', () => {
     expect(Utils.createCarData(carNameList)).toEqual([
       {
         name: 'pobi',
-        number: 0,
+        randomNumber: 0,
         result: '',
       },
       {
         name: 'woni',
-        number: 0,
+        randomNumber: 0,
         result: '',
       },
       {
         name: 'juru',
-        number: 0,
+        randomNumber: 0,
         result: '',
       },
     ]);
