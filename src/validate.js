@@ -1,5 +1,3 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
-
 export async function roundValidate(round) {
   const numTest = round;
 

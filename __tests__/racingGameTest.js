@@ -1,5 +1,3 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
-
 jest.mock("../src/car", () => ({
   carGenerate: jest.fn().mockResolvedValue(["car1", "car2"]),
 }));
