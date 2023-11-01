@@ -9,15 +9,21 @@ describe('InputValidator 테스트', () => {
   });
 
   describe('validateCarNames 테스트', () => {
+    it('최소 차량 갯수 미달 시 반응 테스트', () => {
+      expect(() => {
+        validator.validateCarNames(['one']);
+      }).toThrow(CustomError);
+    });
+
     it('최대 길이 초과 시 반응 테스트', () => {
       expect(() => {
-        validator.validateCarNames(['verylongname']);
+        validator.validateCarNames(['verylongname', 'short']);
       }).toThrow(CustomError);
     });
 
     it('공백 입력 시 반응 테스트', () => {
       expect(() => {
-        validator.validateCarNames(['   ']);
+        validator.validateCarNames(['   ', '   ']);
       }).toThrow(CustomError);
     });
 
