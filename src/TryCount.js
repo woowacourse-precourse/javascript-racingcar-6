@@ -23,7 +23,7 @@ class TryCount {
   static validateTryCount(tryValue) {
     tryValue = Number(tryValue);
 
-    if (TryCount.#notZero(tryValue)) {
+    if (TryCount.#isZero(tryValue)) {
       throw new Error(TRY_COUNT_VALIDATION.NOT_ZERO);
     }
 
@@ -32,7 +32,7 @@ class TryCount {
     }
   }
 
-  static #notZero(tryValue) {
+  static #isZero(tryValue) {
     return tryValue < 1;
   }
 
