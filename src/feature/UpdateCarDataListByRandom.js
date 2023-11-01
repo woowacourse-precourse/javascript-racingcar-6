@@ -25,10 +25,12 @@ const calcDistance = (randomNumber) => {
   return STOP_DISTANCE;
 };
 
-const moveCarRandomly = (carDataList) => {
+const UpdateCarDataListByRandom = (carDataList) => {
   const randomNumberList = carDataList.map(generateRandomNumber);
+
   const distanceList = randomNumberList.map(calcDistance);
+
   const updatedCarDataList = moveCarsByDistance(carDataList, distanceList);
   return updatedCarDataList;
 };
-export default moveCarRandomly;
+export default UpdateCarDataListByRandom;

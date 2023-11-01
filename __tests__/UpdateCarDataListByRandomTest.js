@@ -1,9 +1,9 @@
 import {
   checkIsCarMove,
   moveCarsByDistance,
-} from '../src/feature/MoveCarRandomly';
+} from '../src/feature/UpdateCarDataListByRandom.js';
 
-describe('MoveCarRandomly', () => {
+describe('UpdateCarDataListByRandom', () => {
   test('determine to go', () => {
     // test given MOVE_CAR_STANDARD : 4
 

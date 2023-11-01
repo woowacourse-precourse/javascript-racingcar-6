@@ -2,7 +2,7 @@ import { Console } from '@woowacourse/mission-utils';
 import generateCarDataListFromStr from './feature/GenerateCarDataListFromStr.js';
 import getValidCarNameStr from './feature/GetValidCarNameStr.js';
 import getValidTotalRoundNumber from './feature/GetValidTotalRoundNumber.js';
-import moveCarRandomly from './feature/MoveCarRandomly.js';
+import UpdateCarDataListByRandom from './feature/UpdateCarDataListByRandom.js';
 import announceWinner from './feature/AnnounceWinner.js';
 import announceRoundResult from './feature/AnnounceRoundResult.js';
 import { GAME_RESULT } from './Constants.js';
@@ -15,22 +15,23 @@ class App {
   async play() {
     const carNameStr = await getValidCarNameStr();
 
-    const initialCarDataList = generateCarDataListFromStr(carNameStr);
-    this.updateCarDataList(initialCarDataList);
-
     const totalRoundNumber = await getValidTotalRoundNumber();
 
+    const initialCarDataList = generateCarDataListFromStr(carNameStr);
+    this.setCarDataList(initialCarDataList);
+
     Console.print(GAME_RESULT);
+
     for (let round = 0; round < totalRoundNumber; round += 1) {
-      const roundResult = moveCarRandomly(this.carDataList);
+      const roundResult = UpdateCarDataListByRandom(this.carDataList);
       announceRoundResult(roundResult);
-      this.updateCarDataList(roundResult);
+      this.setCarDataList(roundResult);
     }
 
     announceWinner(this.carDataList);
   }
 
-  updateCarDataList(newCarDataList) {
+  setCarDataList(newCarDataList) {
     this.carDataList = newCarDataList;
   }
 }
