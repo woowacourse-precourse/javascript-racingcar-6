@@ -13,14 +13,13 @@ class GameController {
 
   moveCarsAndPrintResults() {
     this.cars.forEach((car) => {
-      const randomNumber = generateRandomNumber(GAME_SETTING.MIN_RANDOM_NUMBER, GAME_SETTING.MAX_RANDOM_NUMBER);
-      if (randomNumber >= GAME_SETTING.MOVE_FORWARD_REQUIREMENT) {
+      if (generateRandomNumber(GAME_SETTING.MIN_RANDOM_NUMBER, GAME_SETTING.MAX_RANDOM_NUMBER) >= GAME_SETTING.MOVE_FORWARD_REQUIREMENT) {
         car.moveForward();
       }
       printCar(car.getName(), car.getPosition());
     });
     printMessage(GAME_SETTING.BLANK_SPACE);
-	}
+  }  
 
   raceCar(tryCount) {
     printResult();
@@ -56,8 +55,10 @@ class GameController {
 
   async play() {
     await this.setCars();
+
     const tryCount = await this.handleTryCount();
     this.raceCar(tryCount);
+    
     const winner = this.getWinner();
     printWinner(winner);
   }
