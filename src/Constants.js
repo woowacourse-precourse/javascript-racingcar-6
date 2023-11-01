@@ -5,14 +5,19 @@ const PLAY_GAME = {
   TRY_COUNT: '시도할 횟수는 몇 회인가요?',
   RESULT: '\n실행 결과',
   WINNER: '최종 우승자 : ',
+  MOVE_RESULT: '-',
 };
 
 const VALID_LENGTH = {
   NAME_MAX_LENGTH: 5,
+  CAR_MIN_LENGTH: 1,
+  CAR_MAX_LENGTH: 10,
+  CAR_NAME_EMPTY: 0,
 }
 
 const CONDITION_POINT = {
-  MOVE_MIN_POINT: 4
+  MOVE_MIN_POINT: 4,
+  NOT_TRY_COUNT: 0,
 }
 
 export { PLAY_GAME, VALID_LENGTH, CONDITION_POINT, ERROR_MESSAGE };
