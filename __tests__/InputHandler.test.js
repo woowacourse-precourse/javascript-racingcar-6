@@ -57,7 +57,7 @@ describe("사용자 입력 테스트", () => {
   ])("유효한 이동 시도 횟수 입력 - %s", async (input, expectedOutput) => {
     mockQuestions([input]);
 
-    const result = await InputHandler.getMoveAttemptCount();
+    const result = await InputHandler.getRoundCount();
 
     expect(result).toBe(expectedOutput);
   });
@@ -72,7 +72,7 @@ describe("사용자 입력 테스트", () => {
     mockQuestions([input]);
 
     expect(async () => {
-      await InputHandler.getMoveAttemptCount();
+      await InputHandler.getRoundCount();
     }).rejects.toThrow(expectedError);
   });
 });

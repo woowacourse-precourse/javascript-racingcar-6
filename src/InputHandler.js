@@ -34,7 +34,7 @@ class InputHandler {
     return array;
   }
 
-  static async getMoveAttemptCount() {
+  static async getRoundCount() {
     const inputStr = await Console.readLineAsync(
       MESSAGE.ENTER_MOVE_ATTEMPT_COUNT
     );
