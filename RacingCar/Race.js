@@ -17,7 +17,14 @@ class Race {
     return turnNumber;
   }
 
-  startRaceTurn(car) {}
+  proceedRace(car) {
+    Console.print(`\n${IN_GAME_MESSAGE.gameStartHeader}`);
+    for (let i = 0; i < this.turnNumber; i += 1) {
+      car.tryMovingCar();
+      car.printCarPosition();
+    }
+    return car.getCarListObject();
+  }
 }
 
 export default Race;

@@ -34,6 +34,33 @@ class Car {
     const carList = await this.carNameListToObject(carNameList);
     return carList;
   }
+
+  getCarListObject() {
+    return this.carList;
+  }
+
+  moveCarPosition(carName) {
+    this.carList[carName] += 1;
+  }
+
+  tryMovingCar() {
+    const carList = this.getCarListObject();
+    for (const carName in carList) {
+      const randomNumber = Random.pickNumberInRange(0, 9);
+      if (randomNumber >= IN_GAME_SETTING.moveCarForwardNumber) {
+        this.moveCarPosition(carName);
+      }
+    }
+  }
+
+  printCarPosition() {
+    const carList = this.getCarListObject();
+    for (const carName in carList) {
+      const carPosition = '-'.repeat(carList[carName]);
+      Console.print(`${carName} : ${carPosition}`);
+    }
+    Console.print('');
+  }
 }
 
 export default Car;

@@ -5,6 +5,7 @@ const IN_GAME_SETTING = {
   maxCarNameLength: 5,
   minTurnNumber: 1,
   maxTurnNumber: 9,
+  moveCarForwardNumber: 4,
 };
 
 const IN_GAME_MESSAGE = {

@@ -11,7 +11,12 @@ class RacingCar {
     const race = new Race();
     await race.initialize();
 
-    race.startRaceTurn(car);
+    const result = race.proceedRace(car);
+    this.endGame(result);
+  }
+
+  endGame(carList) {
+    // TODO: 우승자 안내 및 게임 종료 구현
   }
 }
 
