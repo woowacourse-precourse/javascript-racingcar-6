@@ -14,8 +14,8 @@ class Controller {
   }
 
   async readCarName() {
-    await InputView.readCarName((input) => {
-      this.setCarData(input.split(','));
+    await InputView.readCarName(async (input) => {
+      await this.setCarData(input.split(','));
     });
   }
 

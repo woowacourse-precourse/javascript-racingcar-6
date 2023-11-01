@@ -1,11 +1,14 @@
-import { Console } from '@woowacourse/mission-utils';
+import { MissionUtils } from '@woowacourse/mission-utils';
+// import { Console } from '@woowacourse/mission-utils';
 import { INPUT_MESSAGE, GAME_STRING } from '../constants/constants';
 import { validateAttemptNumber, validateCarNames } from '../utils/validation';
 
 const InputView = {
   async readCarName(callback) {
     try {
-      const input = await Console.readLineAsync(INPUT_MESSAGE.CAR_NAME);
+      const input = await MissionUtils.Console.readLineAsync(
+        INPUT_MESSAGE.CAR_NAME
+      );
       validateCarNames(input);
       callback(input);
     } catch (error) {
@@ -15,7 +18,9 @@ const InputView = {
 
   async readAttemptNumber(callback) {
     try {
-      const input = await Console.readLineAsync(INPUT_MESSAGE.ATTEMPT_NUMBER);
+      const input = await MissionUtils.Console.readLineAsync(
+        INPUT_MESSAGE.ATTEMPT_NUMBER
+      );
       validateAttemptNumber(input);
       callback(input);
     } catch (error) {

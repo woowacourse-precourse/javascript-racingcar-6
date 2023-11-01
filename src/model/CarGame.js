@@ -37,6 +37,7 @@ class CarGame {
   getWinner() {
     let maxDistance = 0;
     let winners = [];
+
     this.#carList.forEach((car) => {
       if (car.getDistance() === maxDistance) {
         winners.push(car.getName());

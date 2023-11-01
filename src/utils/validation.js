@@ -1,6 +1,7 @@
 import { ERROR_MESSAGE, GAME_INT } from '../constants/constants';
 
 const validateCarNames = (carNames) => {
+  if (carNames.length === 0) throw new Error(ERROR_MESSAGE.INPUT);
   let parsedName = carNames.split(',');
 
   parsedName.forEach((name) => {
@@ -16,6 +17,7 @@ const validateCarNames = (carNames) => {
 };
 
 const validateAttemptNumber = (attemptNumber) => {
+  if (attemptNumber.length === 0) throw new Error(ERROR_MESSAGE.INPUT);
   if (isNaN(Number(attemptNumber)) || Number(attemptNumber) < 1) {
     throw new Error(ERROR_MESSAGE.NATURAL_NUMBER);
   }
