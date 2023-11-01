@@ -2,9 +2,7 @@ import { RandomGenerator } from "../../src/RandomGenerator.js";
 import { Car } from "../../src/game/Car.js";
 import { Computer } from "../../src/game/Computer.js";
 
-
 const makeNewRandomGeneratorSpy = jest.spyOn(Computer.prototype, "makeNewRandomGenerator")
-
 const makeNewCarSpy = jest.spyOn(Computer.prototype, "makeNewCar")
 
 const computer = new Computer();

@@ -2,7 +2,6 @@ import { RandomGenerator } from "../../src/RandomGenerator.js";
 import { Car } from "../../src/game/Car.js";
 
 const carName = "hj";
-const car = new Car(carName, randomGenerator);
 const randomGenerator = new RandomGenerator(0,9);
 
 describe("자동차는 전진 또는 멈출 수 있다", ()=>{
