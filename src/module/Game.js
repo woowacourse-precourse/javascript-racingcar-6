@@ -4,7 +4,7 @@ import CarList from './CarList.js';
 import { INPUT_MESSAGE, OUTPUT_MESSAGE } from '../constant/message.js';
 class Game {
   #carListArr = [];
-  #tryMove = '';
+  #moveNum = '';
 
   #carList = new CarList();
 
@@ -13,7 +13,7 @@ class Game {
   }
 
   getCarMoveNum() {
-    return { moveNum: this.#tryMove };
+    return { moveNum: this.#moveNum };
   }
 
   getCarList() {
@@ -34,14 +34,14 @@ class Game {
   }
 
   async moveQuestion() {
-    this.#tryMove = await Console.readLineAsync(
+    this.#moveNum = await Console.readLineAsync(
       INPUT_MESSAGE.INPUT_MOVE_NUMBER,
     );
   }
 
   async process() {
     Console.print(OUTPUT_MESSAGE.OUTPUT_RESULT);
-    for (let i = 0; i < this.#tryMove; i++) {
+    for (let i = 0; i < this.#moveNum; i++) {
       this.#carList.race();
       this.#carList.printCarCurrnetState();
       Console.print('');
