@@ -21,7 +21,7 @@ describe("입력값 검증", () => {
       // then
     } catch (e) {
       expect(e).toBeInstanceOf(Error);
-      expect(e.message).toBe("[ERROR] 공백 없이 입력해야합니다.");
+      expect(e.message).toBe(ERROR.BLANK_ERROR);
     }
   });
 
@@ -66,7 +66,7 @@ describe("입력값 검증", () => {
       // then
     } catch (e) {
       expect(e).toBeInstanceOf(Error);
-      expect(e.message).toBe("[ERROR] 시도 횟수는 1 이상으로 입력하세요.");
+      expect(e.message).toBe(ERROR.NUMBER_RANGE_ERROR);
     }
   });
 });
