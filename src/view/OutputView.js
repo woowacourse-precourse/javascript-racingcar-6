@@ -19,7 +19,7 @@ export default class OutputView {
   }
 
   async printNumberAttempts() {
-    await this.#print(GAME_MESSAGE.NUMBER_ATTEMPTS);
+    this.#print(GAME_MESSAGE.NUMBER_ATTEMPTS);
 
     const rounds = await inputView.numberAttempts(); 
     this.#print(rounds);

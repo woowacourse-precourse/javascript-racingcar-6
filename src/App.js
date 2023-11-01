@@ -12,7 +12,7 @@ class App {
   async play() {
     this.outputView.printGameStartMessage();
     await this.outputView.printCarName();
-    this.outputView.printNumberAttempts();
+    await this.outputView.printNumberAttempts();
     this.outputView.printExecutionResult();
   }
 }
