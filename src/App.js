@@ -13,6 +13,7 @@ class App {
     await this.requestTryCount();
     this.moveCar();
     this.getCarPositions(this.carList);
+    const winners = this.getWinners(this.carList);
   }
 
   makeCarList = (carName) => {
@@ -29,6 +30,12 @@ class App {
       });
       MissionUtils.Console.print('');
     }
+  }
+
+  getWinners(carList) {
+    const maxPosition = Math.max(...carList.map((car) => car.position));
+    const winners = carList.filter((car) => car.position === maxPosition);
+    return winners.map((car) => car.name);
   }
 
   getCarPositions(carList) {
