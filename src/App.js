@@ -48,12 +48,24 @@ class App {
     }
   }
 
+  maxMove() {
+    return Math.max(...this.carsStatus.map((carStatus) => carStatus.move));
+  }
+
+  winner() {
+    const maxMove = this.maxMove();
+    return this.carsStatus
+      .filter((carStatus) => carStatus.move === maxMove)
+      .map((carStatus) => carStatus.name);
+  }
+
   async play() {
     Console.print("실행 결과");
     for (let i = 0; i < this.tryNum; i += 1) {
       this.move_cars();
       this.print_cars();
     }
+    Console.print(`최종 우승자 : ${this.winner().join(", ")}`.trim());
   }
 }
 
