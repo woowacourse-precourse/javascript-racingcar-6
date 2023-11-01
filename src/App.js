@@ -59,4 +59,13 @@ class App {
     });
     Console.print('');
   }
+
+  displayWinner() {
+    const maxMove = Math.max(...this.cars.values());
+    const winners = [...this.cars.keys()].filter(
+      carName => this.cars.get(carName) === maxMove,
+    );
+
+    Console.print(`최종 우승자 : ${winners.join(', ')}`);
+  }
 export default App;
