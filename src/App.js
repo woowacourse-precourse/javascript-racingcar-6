@@ -39,12 +39,16 @@ class App {
   async runRace(racingCars, racingRound) {
     MissionUtils.Console.print(MESSAGE.result);
     for (let i = 0; i < racingRound; i++) {
-      racingCars.map((car) => {
-        car.move();
-        car.print();
-      });
+      await this.runRound(racingCars);
       MissionUtils.Console.print("");
     }
+  }
+
+  async runRound(racingCars) {
+    racingCars.map((car) => {
+      car.move();
+      car.print();
+    });
   }
 
   async getWinner(racingCars) {
