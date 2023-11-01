@@ -1,5 +1,5 @@
 import getCarName from "./functions/getCarName.js"
-import carNameToArray from "./functions/getCarNameToArray.js"
+import carNameToArray from "./functions/carNameToArray.js"
 import getAttemptsNumber from "./functions/getAttemptsNumber.js"
 import printSteps from "./functions/printSteps.js"
 import printWinner from "./functions/printWinner.js"
