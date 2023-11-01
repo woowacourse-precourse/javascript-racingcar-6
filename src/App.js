@@ -8,6 +8,7 @@ class App {
       INCORRECT_FORMAT: "[ERROR] 이름을 쉼표(,)로 구분해주세요.",
       INCORRECT_TPYE: "[ERROR] 잘못된 형식입니다. 숫자를 입력해주세요.",
       EMPTY_INPUT: "[ERROR] 이름을 입력하지 않았습니다.",
+      DUPLICATION: "[ERROR] 중복된 이름을 입력하셨습니다.",
     };
   }
 
@@ -72,11 +73,15 @@ class App {
     const isCorrectName = await readyCarNames.every(
       (value) => value.length < 6
     );
+    const hasDuplication =
+      (await readyCarNames.length) !== new Set(readyCarNames).size;
 
     if (pattern.test(readyCarNames))
       this.printErrorMessage(this.ERROR.INCORRECT_FORMAT);
 
     if (!isCorrectName) this.printErrorMessage(this.ERROR.LENGTH);
+
+    if (hasDuplication) this.printErrorMessage(this.ERROR.DUPLICATION);
 
     return readyCarNames;
   }
