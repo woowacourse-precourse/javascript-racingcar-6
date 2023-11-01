@@ -16,12 +16,6 @@ describe("Cars 클래스 테스트", () => {
     expect(() => new Cars(carNames)).toThrow("[ERROR] 차 이름은 공백을 포함할 수 없습니다.");
   });
 
-  it("차 이름에 공백(탭)이 포함된 경우", () => {
-    const carNames = "pobi,crong, L";
-    expect(() => new Cars(carNames)).toThrow("[ERROR] 차 이름은 공백을 포함할 수 없습니다.");
-  });
-
-
   it("참가자의 수가 30을 초과하는 경우", () => {
     const carNames = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,aa,bb,cc,dd,ee,ff,gg,hh,ii";
     expect(() => new Cars(carNames)).toThrow("[ERROR] 참가자의 수가 너무 많습니다. 30명 이하로 입력하세요.");
