@@ -1,13 +1,11 @@
 import { Console } from "@woowacourse/mission-utils";
 import { GAME_HELP } from "../constants/GAME_HELP.js";
 import Car from "./Car.js";
-import TryCount from "./TryCount.js";
 import RandomNumber from "./RandomNumber.js";
 
 class MovingForward {
-  constructor(car, tryCount, randomNumber) {
+  constructor(car) {
     this.car = car;
-    this.tryCount = tryCount;
     this.racingArray = [];
   }
 
@@ -23,7 +21,7 @@ class MovingForward {
     return this.racingArray;
   }
 
-  #racingUpdate(carIndex) {
+  #updateRacing(carIndex) {
     return (this.racingArray[carIndex] += this.#forwardOrStop());
   }
 
@@ -36,7 +34,7 @@ class MovingForward {
   async oneCycleRacing() {
     const carCount = this.car.carNameList.length;
     for (let i = 0; i < carCount; i++) {
-      await this.#racingUpdate(i);
+      await this.#updateRacing(i);
       await this.#showCarAndRacing(i);
     }
     Console.print(" ");
