@@ -25,7 +25,7 @@ export const runRace = (cars) => {
   return cars;
 };
 
-const findWinner = (cars) => {
+export const findWinner = (cars) => {
   let maxDistance = -1;
   let winner = '';
 

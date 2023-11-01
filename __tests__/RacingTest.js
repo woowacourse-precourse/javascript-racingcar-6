@@ -12,7 +12,7 @@ const getLogSpy = () => {
     const logSpy = jest.spyOn(MissionUtils.Console, "print");
     logSpy.mockClear();
     return logSpy;
-  };
+};
 
 describe("게임 진행 테스트", () => {
     test("랜덤 수에 따른 진행 상태 확인 테스트, 입력한 시도 횟수와 상관 없이 한 라운드만 진행 테스트", () => {
