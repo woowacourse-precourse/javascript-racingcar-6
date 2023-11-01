@@ -11,12 +11,26 @@ class App {
   };
 
   getCarName = async () => {
-    const getCarName = await Console.readLineAsync(GAME.GET_CAR_NAME);
-    const carNamesArray = getCarName.split(",");
+    const carNames = await Console.readLineAsync(GAME.GET_CAR_NAME);
+    const carNamesArray = carNames.split(",");
     this.validateCarName(carNamesArray);
 
     return carNamesArray;
   };
+
+  validateNumber = (attemptCount) => {
+    if (isNaN(attemptCount)) {
+      throw new Error(ERROR.ATTEMPT_COUNT);
+    }
+  };
+
+  getAttemptCount = async () => {
+    const attemptCount = await Console.readLineAsync(GAME.GET_ATTEMPT_COUNT);
+    this.validateNumber(attemptCount);
+
+    return attemptCount;
+  };
+
   async play() {}
 }
 
