@@ -20,7 +20,7 @@ class CarRacingView {
   }
 
   static showWinners(winners) {
-    printMessage(`최종 우승자: ${winners.join(', ')}\n`);
+    printMessage(`최종 우승자 : ${winners.join(', ')}\n`);
   }
 }
 
