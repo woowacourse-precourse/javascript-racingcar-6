@@ -2,15 +2,15 @@ import {Console, Random} from '@woowacourse/mission-utils';
 class App {
   async play() {
 
-    let userInput = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)');
+    let userInput = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n');
 
     const CAR_NAME_ARRAY = userInput.split(',');
     CAR_NAME_ARRAY.forEach(car => {
-      if(car.length > 5)  throw new Error(`[ERROR] 자동차 이름(${car})이 5글자를 초과합니다.`)
+      if(car.length > 5 || car.length < 1)  throw new Error(`[ERROR] (${car})은 1~5글자 길이가 아닙니다.`)
     });
     const CAR = CAR_NAME_ARRAY.map(name=>({name, distance: 0}));
 
-    userInput = await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
+    userInput = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
 
     const COUNT = Number(userInput);
     if(isNaN(COUNT) || COUNT > 9 || COUNT < 0)  throw new Error('[ERROR] 잘못된 횟수를 입력했습니다. 0부터 9까지의 정수를 입력해 주세요.')
@@ -19,15 +19,21 @@ class App {
 
     carRace(CAR, COUNT);
 
-
   }
-
-
 }
 
 export default App;
 
-export const carRace = (CAR, COUNT) => {
+export const carRace = async (CAR, COUNT) => {
   console.log(CAR);
   console.log(COUNT);
+
+  for(let i = 0; i<COUNT; i++){
+    CAR.forEach((car)=>{
+      const RANDOM_NUMBER = Random.pickNumberInRange(0, 9)
+      car.distance = RANDOM_NUMBER > 3 ? car.distance + 1 : car.distance;
+      Console.print(`${car.name} : ${'-'.repeat(car.distance)}`)
+    })
+    Console.print('');
+  }
 }
