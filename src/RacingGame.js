@@ -16,7 +16,7 @@ class RacingGame {
   async getCarNames() {
     try {
       const input = await Console.readLineAsync(
-        CONSOLE_MESSAGE.ENTER_CAR_NAMES
+        CONSOLE_MESSAGE.ENTER_CAR_NAMES,
       );
       const separatedInput = input.match(REGEX.COMMA_SEPARATED) || [];
 
@@ -54,7 +54,7 @@ class RacingGame {
   async getMoveCount() {
     try {
       const count = await Console.readLineAsync(
-        CONSOLE_MESSAGE.ENTER_MOVE_COUNT
+        CONSOLE_MESSAGE.ENTER_MOVE_COUNT,
       );
 
       if (this.isValidMoveCount(count)) {
@@ -73,17 +73,21 @@ class RacingGame {
     return true;
   }
 
-  moveCars() {
+  simulateRace() {
     Console.print(CONSOLE_MESSAGE.PRINT_RESULT);
 
     for (let i = 0; i < this.#moveCount; i++) {
-      for (const car of this.#cars) {
-        car.move();
-      }
+      this.moveCars();
       this.printRaceProgress();
     }
 
     Console.print(CONSOLE_MESSAGE.PRINT_BLANK);
+  }
+
+  moveCars() {
+    for (const car of this.#cars) {
+      car.move();
+    }
   }
 
   printRaceProgress() {
@@ -111,7 +115,7 @@ class RacingGame {
   async runRaceGame() {
     await this.getCarNames();
     await this.getMoveCount();
-    this.moveCars();
+    this.simulateRace();
     this.findWinners();
   }
 }
