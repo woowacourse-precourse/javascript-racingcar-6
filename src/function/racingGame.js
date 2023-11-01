@@ -1,20 +1,20 @@
 import { Console } from "@woowacourse/mission-utils";
-import { carsName } from "./user/carsName.js";
-import { gaemProgress } from "./util/gameProgress.js";
-import { playCount } from "./user/playCount.js";
-import { randomCarsNumber } from "./randomCarsNumber.js";
+import { getInputCarsName } from "./user/getInputCarsName.js";
+import { progressGame } from "./util/progressGame.js";
+import { getRandomCarsNumber } from "./getRandomCarsNumber.js";
 import { calculatedResult } from "./util/calculatedResult.js";
+import { getInputPlayCount } from "./user/getInputPlayCount.js";
 
 export const racingGame = async () => {
-  const carsNameArray = await carsName();
-  const gamePlayCount = await playCount();
+  const carsNameArray = await getInputCarsName();
+  const playCount = await getInputPlayCount();
 
   Console.print(`실행 결과`);
 
-  for (let i = 1; i <= gamePlayCount; i++) {
-    const carsRandomArray = randomCarsNumber(carsNameArray.length);
+  for (let i = 1; i <= playCount; i++) {
+    const carsRandomArray = getRandomCarsNumber(carsNameArray.length);
 
-    gaemProgress(carsNameArray, carsRandomArray);
+    progressGame(carsNameArray, carsRandomArray);
 
     Console.print(" ");
   }

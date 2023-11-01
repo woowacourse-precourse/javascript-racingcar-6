@@ -1,6 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
-export const randomCarsNumber = (carsLength) => {
+export const getRandomCarsNumber = (carsLength) => {
   const result = [];
 
   for (let i = 1; i <= carsLength; i++) {
