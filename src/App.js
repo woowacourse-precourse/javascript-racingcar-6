@@ -42,6 +42,10 @@ class App {
     return this.numberOfAttempts;
   }
 
+  generateRacingState(cars) {
+    return cars.map(car => `${car.name} : ${car.position}`).join('\n');
+  }
+
   async play() {
     await this.racingCarGame();
   }
