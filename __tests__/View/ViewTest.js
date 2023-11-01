@@ -156,12 +156,28 @@ describe('View 테스트', () => {
     });
   });
 
-  describe('우승자를 출력한다.', () => {
+  describe('경주가 끝난 후 가장 많이 전진한 우승자를 출력한다.', () => {
     beforeEach(() => {
       jest.spyOn(OutputView, 'print');
     });
 
     const mockRaceResult = [
+      {
+        raceResult: [
+          [
+            { name: 'pobi', position: 0 },
+            { name: 'crong', position: 0 },
+            { name: 'honux', position: 1 },
+          ],
+          [
+            { name: 'pobi', position: 1 },
+            { name: 'crong', position: 1 },
+            { name: 'honux', position: 2 },
+          ],
+        ],
+        winner: ['pobi'],
+        expected: '최종 우승자 : honux',
+      },
       {
         raceResult: [
           [
