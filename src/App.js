@@ -1,9 +1,9 @@
 // @ts-check
 import { GameController } from "./controller/gameController";
-import { InputConverter } from "./view/inputConverter";
-import { InputValidator } from "./view/inputValidator";
-import InputView from "./view/inputView";
-import OutputView from "./view/outputView";
+import { InputConverter } from "./view/InputConverter";
+import { InputValidator } from "./view/InputValidator";
+import InputView from "./view/InputView";
+import OutputView from "./view/OutputView";
 class App {
   /**
    * @returns {Promise<void>}
