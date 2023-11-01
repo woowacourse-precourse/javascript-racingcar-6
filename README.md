@@ -172,3 +172,16 @@ MissionUtils.Random.pickNumberInRange(0, 9);
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
   - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+## 구현 기능 목록
+
+0. 클래스 변수 생각하기
+
+- constructor 안에 어떤 변수를 둘지(유지 입력 관련)
+
+1. 유저 입력 처리 (자동차 및 반복횟수)
+2. 자동차 전진 처리 (랜덤 수 4 이상 시 전진)
+3. 횟수 별 자동차 전진 현황 출력
+4. 우승자 출력 (가장 많이 전진한 자동차)
+5. 잘못된 입력 에러 처리
+6. 기능 별 테스트 코드 작성
