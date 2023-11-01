@@ -51,6 +51,6 @@ describe('최종 우승자', () => {
     Print.winnerFrom(winnerList);
 
     //then
-    expect(logSpy.mock.calls[0][0]).toBe(expectedValue);
+    expect(String(logSpy.mock.calls[0])).toBe(expectedValue);
   });
 });

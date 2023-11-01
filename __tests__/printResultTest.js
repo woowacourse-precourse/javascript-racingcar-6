@@ -41,7 +41,7 @@ describe('실행 결과', () => {
 
     //then
     logSpy.mock.calls.forEach((call, index) => {
-      expect(call[0]).toBe(outputs[index]);
+      expect(String(call[0])).toBe(outputs[index]);
     });
   });
 });
