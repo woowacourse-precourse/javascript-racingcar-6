@@ -4,9 +4,12 @@ import validateCarName from "./validation/validateCarName.js";
 import validateRoundCount from "./validation/validateRountCount.js";
 import Car from "./Car.js";
 import validateNameListLength from "./validation/validateNameListLength.js";
+import InputReader from "./console/InputReader.js";
 
 class App {
-  constructor() {}
+  constructor() {
+    this.inputReader = new InputReader();
+  }
 
   async play() {
     const { carNames, roundCount } = await this.enterGameBaseSetting();
@@ -18,8 +21,8 @@ class App {
   }
 
   async enterGameBaseSetting() {
-    const carNames = await this.enterCarNames();
-    const roundCount = await this.enterRoundCount();
+    const carNames = await this.inputReader.enterCarNames();
+    const roundCount = await this.inputReader.enterRoundCount();
 
     return {
       carNames,
