@@ -10,7 +10,7 @@ class Garage {
   }
 
   #registerCar(name) {
-
+    this.#carList.push(new Car(name));
   }
 }
 export default Garage;
