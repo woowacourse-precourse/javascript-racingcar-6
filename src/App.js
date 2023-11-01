@@ -73,24 +73,32 @@ class App {
     return result;
   }
 
-  async play() {
-    await this.inputName();
-    const rounds = await this.inputRound();
+  async printParticipantPosition() {
+    this.participants.forEach((eachParticipant, num) => {
+      const line = this.createLine(num);
+      Console.print(`${eachParticipant.name} : ${line}`);
+    });
+  }
 
+  async printResult(rounds) {
     Console.print("\n실행결과");
     for (let i = 0; i < rounds; i++) {
       await this.playRound();
-      this.participants.forEach((eachParticipant, num) => {
-        const line = this.createLine(num);
-        Console.print(`${eachParticipant.name} : ${line}`);
-      });
+      this.printParticipantPosition();
       Console.print(" ");
     }
+  }
+
+  async play() {
+    await this.inputName();
+    const rounds = await this.inputRound();
+    await this.printResult(rounds);
     const winners = this.findWinners();
     const winnerNames = winners.map((winner) => winner.name);
     Console.print(`최종 우승자: ${winnerNames.join(",")}`);
   }
 }
+
 const app = new App();
 app.play();
 
