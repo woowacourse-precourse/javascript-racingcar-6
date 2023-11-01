@@ -1,4 +1,5 @@
 import { mockQuestions } from './MainTest.js';
+// import { RacingGame } from '../src/racingGame/RacingGame.js';
 import validation from '../src/racingGame/validation.js';
 
 describe('자동차명 입력값 예외 처리', () => {
@@ -29,6 +30,12 @@ describe('자동차명 입력값 예외 처리', () => {
 
 		expect(() => validation.carsNameValid(cars)).toThrow('[ERROR]');
 	});
+
+	// test.each([[['     ']], [['aa,aa']], [['aaaaaa,gg']], [['!@#,!!!']], [['']]])('이름에 대한 예외 처리', async (inputs) => {
+	// 	mockQuestions(inputs);
+	// 	const game = new RacingGame();
+	// 	await expect(game.start()).rejects.toThrow('[ERROR]');
+	// });
 });
 
 describe('횟수 입력값 예외 처리', () => {
