@@ -5,13 +5,13 @@ class App {
   #cars = [];
 
   // 자동차 이름 입력에 대한 유효성 테스트
-  static #isValidCarName(input) {
+  static #checkValidCarName(input) {
     if (input.some((carName) => carName.length > 5 || carName.length < 1))
       throw new Error("[ERROR] 1자 이상, 5자 이하의 이름만 사용 가능합니다.");
   }
 
   // 시도 횟수 입력에 대한 유효성 테스트
-  static #isValidRoundNum(input) {
+  static #checkValidRoundNum(input) {
     if (isNaN(input) || input < 1)
       throw new Error("[ERROR] 시도 횟수는 1 이상의 숫자여야합니다.");
   }
@@ -22,7 +22,7 @@ class App {
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
     );
     const carNameArray = carNames.split(",");
-    App.#isValidCarName(carNameArray);
+    App.#checkValidCarName(carNameArray);
     return carNameArray;
   }
 
@@ -37,7 +37,7 @@ class App {
       "시도할 횟수는 몇 회인가요?"
     );
     const roundNum = parseInt(roundInputs);
-    App.#isValidRoundNum(roundNum);
+    App.#checkValidRoundNum(roundNum);
     return roundNum;
   }
 
