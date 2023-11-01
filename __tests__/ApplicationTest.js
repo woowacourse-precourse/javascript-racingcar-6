@@ -66,6 +66,18 @@ describe("자동차 경주 게임", () => {
     expect(result).toBe(false);
   });
 
+  test("inputAttemptCount 함수 테스트", async () => {
+    const app = new App();
+
+    const inputs = ["5"];
+    mockQuestions(inputs);
+
+    const result = await app.inputAttemptCount();
+
+    expect(result).toBe(5);
+    expect(MissionUtils.Console.readLineAsync).toHaveBeenCalledWith("");
+  });
+
   test("getLeadingCarNames 함수 테스트", async () => {
     const app = new App();
 
