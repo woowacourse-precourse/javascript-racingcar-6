@@ -1,9 +1,12 @@
 import { Random, Console } from '@woowacourse/mission-utils';
 
+import ErrorHandler from './ErrorHandler.js';
+
 class App {
   async play() {
     const car_names = await this.inputCarName();
-    Console.print(car_names.split(','));
+    ErrorHandler.checkCarNames(car_names);
+    // Console.print(car_names.split(','));
   }
 
   async inputCarName() {
