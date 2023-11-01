@@ -5,4 +5,4 @@ export const FINAL_WINNER = "최종 우승자 : ";
 export const RACING_RESULT = "\n실행 결과";
 
 export const ERROR_INVALID_NAME = "[ERROR] 이름이 잘못된 형식입니다.";
-export const ERROR_INVALID_MOVE_COUNT = "[ERROR] 숫자가 잘못된 형식입니다.";
+export const ERROR_INVALID_MOVE_COUNT = "[ERROR] 숫자를 입력해 주세요.";
