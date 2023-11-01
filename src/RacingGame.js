@@ -1,11 +1,10 @@
-import { Random } from '@woowacourse/mission-utils';
 import { RANDOM_NUMBER_RANGE } from './constants/numberRange.js';
 import { ERROR_MESSAGE } from './constants/errorMessage.js';
 import { paramType } from './utils/paramType.js';
-import Car from './Car.js';
 import Refree from './Refree.js';
 import RacingTrack from './RacingTrack.js';
 import RandomNumberGenerator from './utils/RandomNumberGenerator.js';
+import GamePlayingError from './errors/GamePlayingError.js';
 
 export default class RacingGame {
   #racingTrack;
@@ -28,7 +27,7 @@ export default class RacingGame {
 
   roundStart() {
     if (this.isFinish()) {
-      throw new Error(ERROR_MESSAGE.PLAY.MORE_ROUND_THAN_ALLOWED);
+      throw new GamePlayingError(ERROR_MESSAGE.PLAY.MORE_ROUND_THAN_ALLOWED);
     }
 
     const isMoveFowardList = this.#getIsMoveFowardList();
@@ -54,7 +53,8 @@ export default class RacingGame {
   }
 
   getWinners() {
-    if (!this.isFinish()) throw new Error(ERROR_MESSAGE.PLAY.LEFT_ROUND);
+    if (!this.isFinish())
+      throw new GamePlayingError(ERROR_MESSAGE.PLAY.LEFT_ROUND);
 
     const mostMoveFowardLength = this.#racingTrack.mostMoveFowardDistance();
     const winners = this.getRoundResult()
