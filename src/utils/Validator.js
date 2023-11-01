@@ -14,12 +14,12 @@ class Validator {
   static validateCarName(carNameList) {
     if (carNameList.length === CAR_NAME.NO_INPUT_LENGTH)
       throw new NoInputError(ERROR_MESSAGE.NO_INPUT);
-    if (carNameList.some((carName) => carName.length > CAR_NAME.MAX_LENGTH))
-      throw new LongNameError(ERROR_MESSAGE.LONG_NAME);
-    if (new Set(carNameList).size !== carNameList.length)
-      throw new DuplicatedNameError(ERROR_MESSAGE.DUPLICATED_NAME);
     if (carNameList.length === CAR_NAME.ONE_NAME)
       throw new OneNameError(ERROR_MESSAGE.ONE_NAME);
+    if (new Set(carNameList).size !== carNameList.length)
+      throw new DuplicatedNameError(ERROR_MESSAGE.DUPLICATED_NAME);
+    if (carNameList.some((carName) => carName.length > CAR_NAME.MAX_LENGTH))
+      throw new LongNameError(ERROR_MESSAGE.LONG_NAME);
   }
 
   static validateRaceCount(raceCount) {
