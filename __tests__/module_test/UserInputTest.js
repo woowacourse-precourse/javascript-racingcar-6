@@ -1,5 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import { getCarNames, getTryNumber } from '../../modules/userInput';
+import { getCarNames, getTryNumber } from '../../modules/userInput.js';
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();

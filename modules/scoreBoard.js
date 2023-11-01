@@ -1,6 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
-import { checkCanMove } from './utils/scoreUtils';
-import { MESSAGE } from './constant';
+import { checkCanMove } from './utils/scoreUtils.js';
+import { MESSAGE } from './constant.js';
 
 const createScoreBoard = (userInput) => {
   const scoreBoard = [];

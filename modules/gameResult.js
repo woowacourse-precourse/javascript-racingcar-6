@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import { MESSAGE } from './constant';
+import { MESSAGE } from './constant.js';
 
 const findWhoIsWinner = (calcuratedScoreBoard) => {
   const winner = [];

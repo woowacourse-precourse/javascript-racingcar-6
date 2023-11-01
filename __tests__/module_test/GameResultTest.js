@@ -1,4 +1,4 @@
-import { findWhoIsWinner, printGameResult } from '../../modules/gameResult';
+import { findWhoIsWinner, printGameResult } from '../../modules/gameResult.js';
 import { MissionUtils } from '@woowacourse/mission-utils';
 
 const getLogSpy = () => {

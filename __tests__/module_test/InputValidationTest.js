@@ -1,8 +1,7 @@
-import { MissionUtils } from '@woowacourse/mission-utils';
 import {
   checkCarNamesAreValid,
   checkTryNumberIsValid,
-} from '../../modules/inputValidation';
+} from '../../modules/inputValidation.js';
 
 describe('자동차 이름 유효성 검사.', () => {
   const carNamesOverFive = [['sejong,고세종'], ['고세종,sejong']];

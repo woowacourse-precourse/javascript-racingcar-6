@@ -1,5 +1,5 @@
 import { Random } from '@woowacourse/mission-utils';
-import { RANGE_NUMBER } from '../constant';
+import { RANGE_NUMBER } from '../constant.js';
 
 const createRandomNumber = () => {
   const randomNumber = Random.pickNumberInRange(

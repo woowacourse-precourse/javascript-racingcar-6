@@ -1,14 +1,14 @@
-import { getCarNames, getTryNumber } from '../modules/userInput';
-import { printGameResult } from '../modules/gameResult';
+import { getCarNames, getTryNumber } from '../modules/userInput.js';
+import { printGameResult } from '../modules/gameResult.js';
 import {
   createScoreBoard,
   calcurateScore,
   printScore,
-} from '../modules/scoreBoard';
+} from '../modules/scoreBoard.js';
 import {
   checkCarNamesAreValid,
   checkTryNumberIsValid,
-} from '../modules/inputValidation';
+} from '../modules/inputValidation.js';
 
 const playRacingGame = async () => {
   let carNames = await getCarNames();

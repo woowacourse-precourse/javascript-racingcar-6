@@ -1,5 +1,5 @@
-import { ERROR_MESSAGE } from './constant';
-import validationUtils from '../modules/utils/validationUtils';
+import { ERROR_MESSAGE } from './constant.js';
+import validationUtils from '../modules/utils/validationUtils.js';
 
 const checkCarNamesAreValid = (userInput) => {
   const input = userInput.split(',');

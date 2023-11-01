@@ -1,4 +1,4 @@
-import { RANGE_NUMBER } from '../constant';
+import { RANGE_NUMBER } from '../constant.js';
 
 const validationUtils = {
   checkCarNamesHaveBlank: (carNames) =>
