@@ -1,7 +1,7 @@
 import Input from "./Racingcar/views/InputView";
 import Car from "./Racingcar/car/index";
 import Race from "./Racingcar/race/index";
-import Output from "./Racingcar/views/OutputView";
+import Output from "./Racingcar/views/outputView";
 
 class App {
   async play() {
