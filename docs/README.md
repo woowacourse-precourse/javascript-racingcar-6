@@ -1,65 +1,103 @@
-# ✅ 구현 기능 목록
+## 🗒️ README 목차
 
-- map 말고 Array.from()쓸것
-- 리드미의 구현 기능 목록과 다르게 코드를 수정할 경우, 리드미 먼저 수정한 후 커밋하고, 코드 구현 후 커밋하자.
+- [🗒️ README 목차](#️-readme-목차)
+- [✅ 구현 기능 목록](#-구현-기능-목록)
+- [🎨 클래스 다이어그램](#-클래스-다이어그램)
+- [✨ 1주차 미션보다 개선된 점](#-1주차-미션보다-개선된-점)
 
-## Models
+</br>
+</br>
 
-### Car
+## ✅ 구현 기능 목록
 
-- Random 값 추출은 `Random.pickNumberInRange()`를 활용한다.
-- 멤버 변수 : Name, 총이동거리
+<h3>- Models</h3>
+<table>
+  <tr>
+    <th>클래스</th>
+    <th>기능 및 상태</th>
+  </tr>
+  <tr>
+    <td>Car</td>
+    <td>
+    </>
+      <li><code>Random.pickNumberInRange()</code>를 사용하여 무작위 값 추출.</li>
+      <li>속성: 이름(Name), 총 이동거리(Total Distance)</li>
+      <input type="checkbox" checked disabled> - 0에서 9 사이 무작위 값 추출 (이동거리로 사용).<br>
+      <input type="checkbox" checked disabled> 값이 4 이상일 경우 전진 (총 이동거리 + 이동거리).<br>
+      <input type="checkbox" checked disabled> 값이 3 이하일 경우 멈춤 (총 이동거리 + 0).<br>
+      <!-- <input type="checkbox" checked disabled> 자동차의 이름과 총 이동거리를 객체로 얻을 수 있음.
+      </br> -->
+    </td>
+  </tr>
+  <tr>
+    <td style="padding-left:20px">Name</td>
+    <td style="padding:10px;">
+      <input type="checkbox" checked disabled> 이름이 공백이 아니고 5자 이하인지 검증.<br>
+      <input type="checkbox" checked disabled> 이름 앞뒤에 공백이 있을 경우 공백 제거(trim).
+    </td>
+  </tr>
+  <tr>
+    <td style="padding-left:20px">RaceRound</td>
+    <td style="padding:10px;">
+      <input type="checkbox" checked disabled> 입력된 문자열이 숫자인지 검증하고 숫자로 변환.
+    </td>
+  </tr>
+</table>
+</br>
+<h3>- Controller</h3>
+<table>
+  <tr>
+    <th>클래스</th>
+    <th>기능 및 상태</th>
+  </tr>
+  <tr>
+    <td> RacingCarGame</br>
+     RacingInitializer</br>
+     RacingExecutor</br>
+     RacingResult</br>
+    </td>
+    <td>
+      <li> 속성: 시도 횟수, 자동차들(Cars - Car 인스턴스의 배열)</li>
+      <li> 경주할 자동차 이름 입력 받아 Car 인스턴스 생성.</li>
+      - 시도할 횟수도 함께 입력 받음.<br>
+      - 게임 시작 시 각 자동차가 자신의 이동거리 계산.<br>
+      - 각 라운드 결과를 OutputView에 전달하여 출력.<br>
+      - 위 과정을 시도 횟수만큼 반복.<br>
+      - 모든 자동차의 총 이동거리를 받아 가장 먼 거리의 자동차 이름 발표.<br>
+      - 동점일 경우 이름을 쉼표와 공백으로 구분하여 모두 출력.
+    </td>
+  </tr>
+</table>
+</br>
+<h3>- Views</h3>
+<table>
+  <tr>
+    <th>클래스</th>
+    <th>기능 및 상태</th>
+  </tr>
+  <tr>
+    <td>InputView</td>
+    <td>
+      <li><code>Console.readLineAsync</code> 사용하여 입력 받음.</li>
+      <input type="checkbox" checked disabled> 자동차 이름을 쉼표로 구분하여 입력 받음.<br>
+      <input type="checkbox" checked disabled> 경주 시도 횟수 입력 받음.
+    </td>
+  </tr>
+  <tr>
+    <td>OutputView</td>
+    <td>
+      <li><code>Console.print</code>를 사용하여 출력.</li>
+      <input type="checkbox" checked disabled> '실행 결과'를 출력.<br>
+      <input type="checkbox" checked disabled> 각 자동차의 이름과 라운드별 총 이동거리를 입력 받아 출력.<br>
+      <input type="checkbox" checked disabled> 최종 우승자(들)를 발표.
+    </td>
+  </tr>
+</table>
 
-* [x] 0에서 9 사이에서 무작위 값을 구한다.(이동거리)
-* [x] 값이 4 이상일 경우 Car는 **전진**한다. (총이동거리 + 이동거리)
-* [x] 값이 3 이하일 경우 Car는 **멈춘다** (+0)
-* [x] Car의 name과 총이동거리를 객체로 얻을 수 있다.
+</br>
 
-### Name
+## 🎨 클래스 다이어그램
 
-- [x] 이름이 공백이 아니고 5자리 이하인지 검증.
-- [x] 이름 앞뒤로 공백이 있을 경우 trim해준다.
+<!-- <img src="./classDiagram.png" width="800"> -->
 
-### RaceRound
-
-- [x] 받아온 문자열이 숫자인지 검증하고 number로 변환한다.
-
-## Controllers
-
-<!-- ### RacingCarGameBuild
-
-- [ ] -->
-
-### RacingCarGame
-
-- 멤버 변수: 시도 횟수
-- 멤버 변수 : Cars 인데 Car인스턴스들이 넣어진 Array?
-
-* [x] 1. 경주할 자동차 이름 값을 입력 받아서 각각 Car 인스턴스 생성하기.
-  - [x] 1-1. 시도할 횟수 받기
-* [x] 2. 게임이 시작하면 Car들이 각각 자신의 이동거리 값을 구하게 한다.
-* [x] 3. OutputView에게 각 값을 전달해 한 라운드 결과 출력.
-* [x] 4. 2,3 과정을 시도 횟수만큼 반복한다.
-* [x] 5. Car들의 총이동거리를 받아와 총이동거리가 제일 큰 Car의 Name을 출력한다.
-  - [x] 5-1. 동점자가 있을 경우 둘 다 , + 공백으로 구분하여 출력한다. (앞 뒤는 trim)
-
-## Views
-
-### - InputView
-
-- `Console.readLineAsync`를 사용한다.
-
-* [x] 자동차 이름을 ,로 구분지어 받는다.
-* [x] 시도할 횟수를 입력받는다.
-
-### - OutputView
-
-- `Console.print`를 사용한다.
-
-* ONE_STEP = '-'
-* 최종 우승자 : pobi
-* 최종 우승자 : pobi, jun
-
-- [x] '실행 결과'를 출력한다.
-- [x] Car Name들과 Car의 총이동거리 입력 받아 한 라운드 경기 출력(Arry.from(),한 줄 띄기)
-- [x] 최종 우승자를 출력한다.
+## ✨ 1주차 미션보다 개선된 점
