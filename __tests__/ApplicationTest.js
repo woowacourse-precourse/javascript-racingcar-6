@@ -103,7 +103,7 @@ describe("자동차 경주 게임", () => {
     await expect(app.play()).rejects.toThrow("[ERROR]");
   });
 
-  test.each([[["pobi,woni", "hi"]], [["pobi, woni", ""]]])(
+  test.each([[["pobi,woni", "hi"]], [["pobi, woni", ""]], [["pobi, woni", "0"]]])(
     "시도횟수 대한 예외 처리",
     async (inputs) => {
       // given
