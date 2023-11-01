@@ -3,7 +3,7 @@ import STRINGS from './constants/strings';
 
 export default async function getRoundNumber() {
   const inputRoundNumber = await Console.readLineAsync(STRINGS.INPUT_ROUNDS);
-  if (NaN(inputRoundNumber.length)) {
+  if (Number.isNaN(inputRoundNumber.length)) {
     throw Error(STRINGS.ERROR_NAN);
   }
 
