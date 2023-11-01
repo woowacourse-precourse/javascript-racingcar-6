@@ -2,8 +2,13 @@ import { Console } from "@woowacourse/mission-utils";
 
 class App {
 
+  constructor() {
+    this.car = [];
+  }
+
   async play() {
-    await this.getCarName();
+    const carName = await this.getCarName();
+    this.MakeCar(carName);
   }
 
   async getCarName() {
@@ -41,6 +46,10 @@ class App {
     }
   }
 
+  MakeCar(carName) {
+    this.car = carName.map(name => ({ name }));
+  }
+
   async getRoundNumber() {
     const inputRound = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
     return this.sanitizeRoundNumber(inputRound);
@@ -71,6 +80,8 @@ class App {
       throw new Error("[ERROR] 최대 10 이하의 횟수를 입력해주세요.");
     }
   }
+
+
 }
 
 const app = new App();
