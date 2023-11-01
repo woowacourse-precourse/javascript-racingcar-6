@@ -10,7 +10,7 @@ export default class GameProgress {
 
   proceed() {
     Object.keys(this.advance).forEach((carName) => {
-      this.canMoveForward() && this.advance[carName]++;
+      if (GameProgress.canMoveForward()) this.advance[carName] += 1;
     });
     this.printRoundResult();
   }
@@ -21,12 +21,12 @@ export default class GameProgress {
 
   printRoundResult() {
     Object.entries(this.advance).forEach(([carName, advance]) => {
-      Console.print(`${carName} : ` + "-".repeat(advance));
+      Console.print(`${carName} : ${"-".repeat(advance)}`);
     });
     Console.print("");
   }
 
-  canMoveForward() {
+  static canMoveForward() {
     return Random.pickNumberInRange(0, 9) >= 4;
   }
 }

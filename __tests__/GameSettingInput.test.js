@@ -11,7 +11,6 @@ describe("GameSettingInput", () => {
   let gameSettingInput;
 
   beforeEach(() => {
-    gameSettingInput = new GameSettingInput();
     Console.readLineAsync.mockClear();
   });
 
@@ -22,7 +21,7 @@ describe("GameSettingInput", () => {
       .mockResolvedValueOnce("3");
 
     // when
-    const result = await gameSettingInput.collect();
+    const result = await GameSettingInput.collect();
 
     // then
     expect(result).toEqual({ carNames: ["pobi", "woni"], trialCount: 3 });
@@ -34,8 +33,8 @@ describe("GameSettingInput", () => {
     const invalidCarNames = ["pobi", "woni", "anylongname"];
 
     // when & then
-    expect(() => gameSettingInput.validate(validCarNames)).not.toThrow();
-    expect(() => gameSettingInput.validate(invalidCarNames)).toThrow(
+    expect(() => GameSettingInput.validate(validCarNames)).not.toThrow();
+    expect(() => GameSettingInput.validate(invalidCarNames)).toThrow(
       "[ERROR] 자동차 이름은 5글자 이하여야 합니다."
     );
   });

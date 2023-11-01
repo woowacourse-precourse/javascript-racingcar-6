@@ -1,5 +1,5 @@
-import GameResult from "../src/GameResult";
 import { Console } from "@woowacourse/mission-utils";
+import GameResult from "../src/GameResult";
 
 describe("GameResult 클래스", () => {
   const advance = {

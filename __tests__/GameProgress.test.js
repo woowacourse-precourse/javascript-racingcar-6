@@ -1,5 +1,5 @@
-import GameProgress from "../src/GameProgress";
 import { MissionUtils } from "@woowacourse/mission-utils";
+import GameProgress from "../src/GameProgress";
 
 const mockRandoms = (numbers) => {
   MissionUtils.Random.pickNumberInRange = jest.fn();
