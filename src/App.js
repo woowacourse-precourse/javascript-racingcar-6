@@ -11,8 +11,10 @@ class App {
 
 async getNameOfCar(){
   const getCarName = await MissionUtils.Console.readLineAsync(MESSAGE.NAME);
+
   if (!getCarName.includes(",")){throw new Error(ERROR.COMMAS);}
   if (getCarName.includes(" ")){throw new Error(ERROR.SPACE);}
+
   const carName = getCarName.split(",");
   carName.forEach((elements) => {
     if(elements.length>5){throw new Error(ERROR.FIVE);}
@@ -22,6 +24,7 @@ async getNameOfCar(){
 async attemptNumber(){
   const getNumber = await MissionUtils.Console.readLineAsync(MESSAGE.NUMBER);
   const newNumber = parseInt(getNumber);
+
   if(isNaN(newNumber)){throw new Error(ERROR.NUMBER);}
   if(newNumber===0){throw new Error(ERROR.ZERO);}
   if(newNumber !== parseFloat(getNumber)){throw new Error(ERROR.INTEGER)}
@@ -36,6 +39,7 @@ gameReady(arrayCarName,tryNumber){
   arrayCarName.forEach((a) => {
     objectCarName[a] = 0;
   });
+
   for (let i = 0; i < tryNumber; i++){
    this.gameStart(objectCarName, arrayCarName, count, myProgress);  
   }
@@ -46,10 +50,12 @@ gameReady(arrayCarName,tryNumber){
 gameStart(objectCarName, arrayCarName, count, myProgress){
   for(let i = 0; i<arrayCarName.length; i++){
     objectCarName[arrayCarName[i]] = MissionUtils.Random.pickNumberInRange(0,9);
-   if(Object.values(objectCarName)[i]>=4){
+
+    if(Object.values(objectCarName)[i]>=4){
       count[i]++;
       myProgress[i] = myProgress[i]+'-'
     } 
+    
     MissionUtils.Console.print(`${arrayCarName[i]} : ${myProgress[i]}`)
   }
 }
@@ -57,11 +63,13 @@ gameStart(objectCarName, arrayCarName, count, myProgress){
 winner(arrayCarName, count){
   const maxNumber = Math.max(...count);
   const arrayWinner =[];
+
   arrayCarName.forEach((element,index) => {
     if(maxNumber === count[index]){
       arrayWinner.push(element);
     }
   });
+
   const textWinner = arrayWinner.join(", ");
   MissionUtils.Console.print(`최종우승자 : ${textWinner}`)
 }

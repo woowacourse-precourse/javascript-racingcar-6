@@ -25,22 +25,28 @@ const getLogSpy = () => {
 
 describe("시도해 보기",()=>{
   test("임의의 시도",async()=>{
-      const goArray = [1,4,3];
-      const logSpy = getLogSpy();
-      const inputs = ["pobi,woosu,drago","1"]
-      const outputs = ['pobi : ','woosu : -','drago : ']
-      
-      mockQuestions(inputs);
-      mockRandoms([...goArray]);
-      const app = new App();
-      await app.play();
-      outputs.forEach((output) => {
-      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output))
-      });  
+    // 입력
+    const goArray = [1,4,3];
+    const logSpy = getLogSpy();
+    const inputs = ["pobi,woosu,drago","1"]
+    const outputs = ['pobi : ','woosu : -','drago : ']
+    
+    // 처리
+    mockQuestions(inputs);
+    mockRandoms([...goArray]);
+    
+    const app = new App();
+    await app.play();
+    
+    // 출력
+    outputs.forEach((output) => {
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output))
+    });  
   });
 
   test("시도 횟수 5번", async () => {
-    // given
+    
+    // 주어진 값
     const inputs = ["pobi,woosu,drago", "5"];
     const outputs = [
       'pobi : ','woosu : -','drago : ',
@@ -61,18 +67,18 @@ describe("시도해 보기",()=>{
     mockQuestions(inputs);
     mockRandoms([...randoms]);
 
-    // when
+    // 실행될 때
     const app = new App();
     await app.play();
 
-    // then
+    // 그러면 어떻게 나오는지 확인
     outputs.forEach((output) => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
   });
 
   test("4명 6시도 우승자 2명", async () => {
-    // given
+    // 입력
     const inputs = ["jin,conan,ran,woosu", "6"];
     const outputs = [
       'jin : ','conan : ','ran : -','woosu : -',
@@ -88,18 +94,18 @@ describe("시도해 보기",()=>{
       4,9,4,7,
       1,8,4,6,
       7,3,1,5,
-      2,8,3,4
+      2,8,3,3
       ];
     const logSpy = getLogSpy();
 
     mockQuestions(inputs);
     mockRandoms([...randoms]);
 
-    // when
+    // 실행
     const app = new App();
     await app.play();
 
-    // then
+    // 결과
     outputs.forEach((output) => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
