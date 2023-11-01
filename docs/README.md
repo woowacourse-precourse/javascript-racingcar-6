@@ -40,6 +40,8 @@
 
 ## 클래스 정리
 
+![](https://velog.velcdn.com/images/qkrcksdnr98/post/78234336-d549-4758-8f4d-1b71a78ba0e3/image.jpg)
+
 ### RacingGame
 
 - 자동차 이름목록을 받아와 유효성을 검사한다.
@@ -89,3 +91,30 @@
 
 - 자동차 이름목록의 유효성을 검사한다.
 - 레이싱 시도횟수의 유효성을 검사한다.
+
+---
+
+## 📃테스트 코드 작성
+
+- <span style='background-color:red'>Controller</span> : RacingGame
+
+  - RacingGame은 ApplicationTest코드에 제공되었기 때문에 따로 테스트를 하지 않았습니다. App에서 play메서드를 호출하는 것이 곧 RacingGame에서 run을 호출하는 것과 일치하기 때문입니다.
+
+- <span style='background-color:blue'>Model</span> : CarModel
+
+  - ✅이름목록을 전달하면 자동차를 올바르게 생성하는지 테스트
+  - ✅매 레이싱 시도마다 자동차의 상태를 올바르게 업데이트하는지 테스트
+
+- <span style='background-color:blue'>Model</span> : ResultModel
+
+  - ✅매 회차마다 레이싱 결과를 올바르게 저장하는지 테스트
+  - ✅모든 레이싱 결과를 출력할 수 있는 템플릿을 만드는지 테스트
+
+- <span style='background-color:blue'>Model</span> : WinnerModel
+
+  - ✅우승자를 만들어내는지 테스트
+  - ✅중복우승자를 만들어내는지 테스트
+
+- <span style='background-color:green'>View</span> : Input, Output
+
+  - View와 관련된 클래스들도 단순히 콘솔에서 입력값을 받고 출력하는 것이기 때문에 테스트코드를 작성하지 않았습니다.
