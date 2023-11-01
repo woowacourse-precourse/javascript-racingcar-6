@@ -100,11 +100,11 @@ describe('라운드 입력 테스트', () => {
     });
 
     test('Number.MAX_SAFE_INTEGER보다 큰 수는 예외로 처리되어야 한다.', async () => {
-        const inputs = ['90071992547409922'];
+        const inputs = [(Number.MAX_SAFE_INTEGER + 1).toString()];
         mockQuestions(inputs);
 
         await expect(HandleInput.gameRounds()).rejects.toThrow(
-            ERROR_MESSAGE.NOT_AN_INT,
+            ERROR_MESSAGE.INVALID_GAME_ROUND,
         );
     });
 

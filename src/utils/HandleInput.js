@@ -47,4 +47,6 @@ const validateRound = (round) => {
     throw new Error(ERROR_MESSAGE.NOT_AN_INT);
   if (parseInt(round) < VALIDATION_RULE.MIN_GAME_ROUND_INCLUSIVE)
     throw new Error(ERROR_MESSAGE.INVALID_GAME_ROUND);
+  if (Number.MAX_SAFE_INTEGER < parseInt(round))
+    throw new Error(ERROR_MESSAGE.INVALID_GAME_ROUND);
 };
