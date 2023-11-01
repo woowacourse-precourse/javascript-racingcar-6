@@ -32,6 +32,13 @@ class RaceController {
       outputView.printNewline();
     }
   }
+
+  displayWinners() {
+    const winners = this.#CarModel.getWinners();
+    if (winners.length > 0) {
+      outputView.printWinner(winners);
+    }
+  }
 }
 
 export default RaceController;

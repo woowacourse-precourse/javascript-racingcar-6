@@ -5,6 +5,7 @@ export const INPUT_MESSAGE = {
 
 export const OUTPUT_MESSAGE = {
   RESULT: '\n실행 결과',
+  WINNERS: '최종 우승자 : ',
 };
 
 export const ERROR_MESSAGE = {
