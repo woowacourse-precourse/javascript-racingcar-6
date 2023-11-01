@@ -41,3 +41,28 @@ const nameValidation = (name) => {
 };
 
 // 2. 시도할 횟수
+const getMaxNum = async () => {
+  // 2-1. 시도할 횟수 입력 요구 문구 출력
+  Console.print("시도할 횟수는 몇 회인가요?");
+
+  // 2-2. 시도할 횟수 입력 받기
+  const tryNum = await Console.readLineAsync("");
+  const maxNum = numValidation(tryNum);
+
+  return maxNum;
+};
+
+// 2-3. 시도할 횟수 입력에 대한 예외 처리
+const numValidation = (num) => {
+  // 입력값이 숫자가 아닐 경우
+  if (isNaN(num)) {
+    throw new Error("[ERROR] 시도할 횟수는 숫자로 입력해 주세요.");
+  }
+  // 입력값이 1보다 작을 경우
+  if (num < 1) {
+    throw new Error("[ERROR] 시도할 횟수는 1 이상의 숫자로 입력해 주세요.");
+  }
+  return num;
+};
+
+// 게임 시작
