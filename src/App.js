@@ -35,7 +35,7 @@ class App {
 
     return Number(NumberOfRounds); 
   }
- //현재 차량들의 이동상태
+
   currentRacingCarsLocation( 
     previousRacingCarsLocation, 
     currentRoundRandomNumber,
