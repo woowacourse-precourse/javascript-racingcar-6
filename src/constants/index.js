@@ -8,4 +8,5 @@ export const MESSAGE = Object.freeze({
 export const ERROR = Object.freeze({
   carNameInputLong: `[ERROR] 자동차 이름은 5자 이하여야 합니다.`,
   roundInputNumber: `[ERROR] 시도할 횟수는 숫자여야 합니다.`,
+  roundInputPositive: `[ERROR] 시도할 횟수는 0보다 커야 합니다.`,
 });

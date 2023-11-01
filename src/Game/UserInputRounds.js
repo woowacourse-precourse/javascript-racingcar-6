@@ -9,6 +9,8 @@ export class UserInputRounds {
     const ROUNDS = parseInt(COUNTS, 10);
     if (isNaN(ROUNDS)) {
       throw new Error(ERROR.roundInputNumber);
+    } else if (ROUNDS <= 0) {
+      throw new Error(ERROR.roundInputPositive);
     }
     return ROUNDS;
   }
