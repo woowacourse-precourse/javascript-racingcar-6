@@ -20,9 +20,9 @@ class CarRacingView {
 
     if (winners.length === 1) {
       Console.print(CONSTANTS.RESULT.WINNER + winners[0]);
-    } else {
-      Console.print(CONSTANTS.RESULT.WINNER + winners.join(", "));
+      return;
     }
+    Console.print(CONSTANTS.RESULT.WINNER + winners.join(", "));
   }
 
   printResultMessage() {
