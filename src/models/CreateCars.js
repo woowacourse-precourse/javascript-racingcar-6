@@ -1,0 +1,11 @@
+//입력받은 자동차의 이름에 대한 객체 생성
+const createCars = (name, count) => {
+  const names = String(name).split(',');
+  const cars = {};
+
+  names.forEach((name) => {
+    cars[name] = '';
+  });
+};
+
+export default createCars;
