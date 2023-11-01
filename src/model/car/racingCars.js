@@ -27,19 +27,19 @@ class RacingCars {
   }
 
   checkNameBlank(carNames) {
-    for (let i = 0; i < carNames.length; i += 1) {
-      if (carNames[i] === "") {
+    carNames.forEach((carName) => {
+      if (carName === "") {
         throw new Error("[ERROR] 이름은 공백이 될 수 없습니다.");
       }
-    }
+    });
   }
 
   checkNameLength(carNames) {
-    for (let i = 0; i < carNames.length; i += 1) {
-      if (carNames[i].length > 5) {
+    carNames.forEach((carName) => {
+      if (carName.length > 5) {
         throw new Error("[ERROR] 5글자 이하의 이름을 입력해주세요.");
       }
-    }
+    });
   }
 
   carNamesValidation(inputNamesString) {
@@ -53,9 +53,9 @@ class RacingCars {
 
   createCars(inputNamesString) {
     const carNames = this.carNamesValidation(inputNamesString);
-    for (let i = 0; i < carNames.length; i += 1) {
-      this.createCar(carNames[i]);
-    }
+    carNames.forEach((car) => {
+      this.createCar(car);
+    });
   }
 
   createCar(carName) {
