@@ -29,7 +29,7 @@ class App {
     return attemptTimes;
   }
 
-  async getShift(attemptTimes) {
+  async judgeShift(attemptTimes) {
     let shift = 0;
 
     for (let i = 0; i < attemptTimes; i++) {
@@ -41,7 +41,7 @@ class App {
   async calculateShifts(carArr, attemptTimes) {
     const shifts = [];
     for (let i = 0; i < carArr.length; i++) {
-      const shift = await this.getShift(attemptTimes);
+      const shift = await this.judgeShift(attemptTimes);
       shifts.push({ name: carArr[i], shift });
     }
     return shifts;
