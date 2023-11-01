@@ -7,26 +7,22 @@ import { verifyRandomNumber } from "../verify";
 const { Random } = MissionUtils;
 const participantsDistance = {};
 
-const changeParticipantsData = async (participants) => {
+const changeDistance = async (participants) => {
   let index = 0;
+
   while (index < participants.length) {
-    await changeDistance(participants, index);
+    const randomNumber = Random.pickNumberInRange(NUMBER.MIN, NUMBER.MAX);
+    await verifyRandomNumber(randomNumber);
+  
+    const name = participants[index];
+    if (randomNumber >= NUMBER.STANDARD) {
+      participantsDistance[name] = participantsDistance[name] ? [participantsDistance[name][0] + '-', participantsDistance[name][1] + 1] : ['-', 1];
+    } else {
+      participantsDistance[name] = participantsDistance[name] ? [...participantsDistance[name]] : ['', 0];
+    }
     index++;
   }
 };
-
-const changeDistance = async (participants, index) => {
-  const randomNumber = Random.pickNumberInRange(NUMBER.MIN, NUMBER.MAX);
-  await verifyRandomNumber(randomNumber);
-
-  const name = participants[index];
-  if (randomNumber >= NUMBER.STANDARD) {
-    participantsDistance[name] = participantsDistance[name] ? [participantsDistance[name][0] + '-', participantsDistance[name][1] + 1] : ['-', 1];
-  } else {
-    participantsDistance[name] = participantsDistance[name] ? [...participantsDistance[name]] : ['', 0];
-  }
-};
-
 
 const printResult = async (participants) => {
   for (let i = 0; i < participants.length; i++) {
@@ -38,7 +34,7 @@ const printResult = async (participants) => {
 export const progressGame = async (attempt, participants) => {
   print(MESSAGE.RESULT);
   for (let i = 0; i < attempt; i++) {
-    await changeParticipantsData(participants); // 각 참가자들 진행 여부 판단
+    await changeDistance(participants); // 각 참가자들 진행 여부 판단
     await printResult(participants); // 출력
   }
 
