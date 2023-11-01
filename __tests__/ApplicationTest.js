@@ -117,7 +117,32 @@ describe("자동차 경주 게임", () => {
     expect(playerObject[player]).toBe(2);
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("kim : --"));
   });
+  
+  //gamePlay()
+  test("전체 게임 실행", async () => {
+    // given
+    const playerObject = { kim: 0, lee: 0, park: 0 };
+    const objectKeyList = ["kim", "lee", "park"];
+    const tryNum = 3;
+    const randoms = [
+      FORWARD_CONDITIONS - 1, FORWARD_CONDITIONS, FORWARD_CONDITIONS,
+      FORWARD_CONDITIONS, FORWARD_CONDITIONS-1, FORWARD_CONDITIONS,
+      FORWARD_CONDITIONS, FORWARD_CONDITIONS-1, FORWARD_CONDITIONS
+    ];
+    const logSpy = getLogSpy();
+    mockRandoms(randoms);
+    const app = new App();
 
+    // when
+    app.gamePlay(playerObject, tryNum, objectKeyList);
+    
+    // then
+    expect(playerObject).toEqual({ kim: 2, lee: 1, park: 3 });
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("kim : --"));
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("lee : -"));
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("park : ---"));
+  });
+    
   //findWinner()
   test("우승자 판단 및 출력", () => {
     // given
