@@ -1,17 +1,21 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import Car from "./Car.js";
+import RaceGame from "./RaceGame.js";
 
 class App {
   constructor() {
-    this.cars = [];
-    this.rounds = 0;
+    this.game = new RaceGame();
   }
 
   async play() {
     try {
-      await this.getInputData();
-      for (let i = 0; i < this.rounds; i++) {
-        this.playRound();
+      const carNames = await this.getCarNames();
+      this.game.setCars(carNames);
+
+      const rounds = await this.getRounds();
+      this.game.setRounds(rounds);
+
+      for (let i = 0; i < rounds; i++) {
+        this.game.playRound();
         await this.printCurrentState();
       }
       await this.printWinner();
@@ -24,18 +28,21 @@ class App {
     }
   }
 
-  async getInputData() {
-    const carNames = await MissionUtils.Console.readLineAsync(
+  async getCarNames() {
+    const carNamesInput = await MissionUtils.Console.readLineAsync(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
     );
-    this.validateCarNames(carNames.split(","));
-    this.cars = carNames.split(",").map((name) => new Car(name));
+    const carNames = carNamesInput.split(",");
+    this.validateCarNames(carNames);
+    return carNames;
+  }
 
+  async getRounds() {
     const rounds = await MissionUtils.Console.readLineAsync(
       "시도할 횟수는 몇 회인가요?"
     );
     this.validateRounds(rounds);
-    this.rounds = parseInt(rounds);
+    return parseInt(rounds);
   }
 
   validateCarNames(names) {
@@ -50,25 +57,18 @@ class App {
     }
   }
 
-  playRound() {
-    this.cars.forEach((car) => car.move());
-  }
-
   async printCurrentState() {
-    for (let car of this.cars) {
+    const currentState = this.game.getCurrentState();
+    for (let car of currentState) {
       await MissionUtils.Console.print(
-        `${car.getName()} : ${"-".repeat(car.getPosition())}`
+        `${car.name} : ${"-".repeat(car.position)}`
       );
     }
     await MissionUtils.Console.print("\n");
   }
 
   async printWinner() {
-    const maxPosition = Math.max(...this.cars.map((car) => car.getPosition()));
-    const winners = this.cars
-      .filter((car) => car.getPosition() === maxPosition)
-      .map((car) => car.getName());
-
+    const winners = this.game.getWinner();
     await MissionUtils.Console.print(`최종 우승자 : ${winners.join(", ")}`);
   }
 }
