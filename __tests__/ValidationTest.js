@@ -1,5 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import Game from '../src/Game.js';
+import App from '../src/App.js';
 
 const mockQuestion = (input) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -15,7 +15,7 @@ describe('사용자 입력값 검증 테스트', () => {
 
     mockQuestion(input);
 
-    const game = new Game();
+    const game = new App();
     await game.enterCarNames();
 
     expect(game.carNameList).toEqual(['m', 'mi', 'min', 'minj', 'minji']);
@@ -26,7 +26,7 @@ describe('사용자 입력값 검증 테스트', () => {
     async (inputs) => {
       mockQuestion(inputs);
 
-      const game = new Game();
+      const game = new App();
 
       await expect(game.enterCarNames()).rejects.toThrow('[ERROR]');
     }
@@ -37,7 +37,7 @@ describe('사용자 입력값 검증 테스트', () => {
 
     mockQuestion(input);
 
-    const game = new Game();
+    const game = new App();
     await game.enterGameRound();
 
     expect(game.round).toEqual(10);
@@ -48,7 +48,7 @@ describe('사용자 입력값 검증 테스트', () => {
     async (inputs) => {
       mockQuestion(inputs);
 
-      const game = new Game();
+      const game = new App();
 
       await expect(game.enterGameRound()).rejects.toThrow('[ERROR]');
     }

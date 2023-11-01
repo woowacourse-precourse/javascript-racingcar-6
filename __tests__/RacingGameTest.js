@@ -1,6 +1,6 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import Car from '../src/Car.js';
-import Game from '../src/Game.js';
+import App from '../src/App.js';
 
 const mockRandoms = (numbers) => {
   MissionUtils.Random.pickNumberInRange = jest.fn();
@@ -24,7 +24,7 @@ describe('게임 진행 및 중간 결과 테스트', () => {
 
     mockRandoms([...randoms]);
 
-    const game = new Game();
+    const game = new App();
     game.carNameList = carNames;
     game.round = 2;
 
@@ -45,7 +45,7 @@ describe('최종 우승자 출력 테스트', () => {
     cars[0].forwardCount = 3;
     cars[1].forwardCount = 1;
 
-    const game = new Game();
+    const game = new App();
     game.carInfoList = cars;
     game.printWinner();
 
@@ -63,7 +63,7 @@ describe('최종 우승자 출력 테스트', () => {
     cars[1].forwardCount = 1;
     cars[2].forwardCount = 3;
 
-    const game = new Game();
+    const game = new App();
     game.carInfoList = cars;
     game.printWinner();
 
