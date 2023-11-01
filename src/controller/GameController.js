@@ -1,10 +1,9 @@
 import Car from '../model/Car.js';
-import generateRandomNumber from '../common/generator.js';
 import { getUserInputCarName, getUserInputTryCount } from '../view/inputView.js'
 import { printResult, printCar, printWinner } from '../view/outputView.js';
 import { isValidCarName, isValidTryCount } from '../common/validator.js';
 import { GAME_SETTING } from '../common/constants.js';
-import { printMessage } from '../common/utils.js';
+import { printMessage, generateRandomNumber } from '../common/utils.js';
 
 class GameController {
 
@@ -12,7 +11,7 @@ class GameController {
 
   moveCarForwardOrStop() {
     this.cars.forEach((car) => {
-      const randomNumber = generateRandomNumber();
+      const randomNumber = generateRandomNumber(GAME_SETTING.MIN_RANDOM_NUMBER, GAME_SETTING.MAX_RANDOM_NUMBER);
       if (randomNumber >= GAME_SETTING.MOVE_FORWARD_REQUIREMENT) {
         car.moveForward();
       }
