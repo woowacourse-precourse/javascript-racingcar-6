@@ -10,6 +10,7 @@ class RacingCar {
 class RacingGame {
   constructor() {
     this.cars = [];
+    this.numberOfTries = 0;
   }
 
   async getCarNamesFromUser() {
