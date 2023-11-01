@@ -6,7 +6,7 @@ describe("사용자 입력 게임 횟수", () => {
     const invalidInput = "abc";
 
     expect(() => app.checkNumber(invalidInput)).toThrowError(
-      "[Error]: invalid number"
+      "[ERROR]: invalid number"
     );
   });
 
