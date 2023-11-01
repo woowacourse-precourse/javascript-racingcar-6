@@ -33,10 +33,10 @@ class App {
   }
 
   static async #inputRoundNumber() {
-    const roundInputs = await MissionUtils.Console.readLineAsync(
+    const roundInput = await MissionUtils.Console.readLineAsync(
       "시도할 횟수는 몇 회인가요?"
     );
-    const roundNumber = parseInt(roundInputs, 10);
+    const roundNumber = parseInt(roundInput, 10);
     App.#checkValidRoundNumber(roundNumber);
     return roundNumber;
   }
