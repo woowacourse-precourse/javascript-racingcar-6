@@ -1,14 +1,12 @@
-import CarModel from "./models/CarModel.js";
-import PlayerModel from "./models/PlayerModel.js";
-import RaceController from "./controllers/RaceController.js";
+import Player from "./Player.js";
+import Race from "./Race.js";
 class App {
   async play() {
-    const carModel = new CarModel();
-    const playerModel = new PlayerModel();
-    const raceController = new RaceController();
-    const carList = await carModel.startGame();
-    const inputChance = await playerModel.inputChance();
-    raceController.moveCar(inputChance, carList);
+    const player = new Player();
+    const race = new Race();
+    const carList = await player.startRace();
+    const inputChance = await player.inputChance();
+    race.moveCar(inputChance, carList);
   }
 }
 const app = new App();
