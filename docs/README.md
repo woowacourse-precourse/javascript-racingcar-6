@@ -87,10 +87,10 @@
 ## 2.3 구현 후에 확인 할 것
 - [x] 작동 확인 
 - [ ] 테스트 코드 작성
-  - [ ] Car.js
-    - [ ] isSuccess()
-    - [ ] getResultMessage(success)
-    - [ ] moveForwards()
+  - [x] Car.js
+    - [x] isSuccess()
+    - [x] getResultMessage(success)
+    - [x] moveForwards()
   - [x] Inspector.js
     - [x] isSplitable(string)
     - [x] isNumber(num)
