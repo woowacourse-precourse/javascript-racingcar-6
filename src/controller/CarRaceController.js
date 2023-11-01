@@ -5,7 +5,6 @@ import OutputView from "../views/OutputView.js";
 
 class CarRaceController {
   constructor() {
-    this.cars = [];
     this.race = null;
     this.totalRound = 0;
     this.inputView = new InputView();
@@ -13,15 +12,15 @@ class CarRaceController {
   }
 
   async setup() {
-    const carInput = await this.inputView.getCarNamesUserInput();
-    this.cars = carInput.split(",").map((carName) => new Car(carName));
+    const carNamesInput = await this.inputView.getCarNamesUserInput();
+    const cars = carNamesInput.split(",").map((carName) => new Car(carName));
+    this.race = new Race(cars);
 
     const totalRoundInput = await this.inputView.getTotalRoundUserInput();
     this.totalRound = totalRoundInput;
   }
 
   startRace() {
-    this.race = new Race(this.cars);
     this.outputView.printRoundResultInitMessage();
     for (let curRound = 0; curRound < this.totalRound; curRound++) {
       this.race.progressRound();
