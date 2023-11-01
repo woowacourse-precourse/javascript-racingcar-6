@@ -8,28 +8,25 @@ export class RacingCar {
     this.inputNameArray = inputNameArray;
     this.inputNumber = inputNumber;
   }
+
   output() {
     const nameArrayLength = this.inputNameArray.length;
-    const forwardCountsArray = new Array(nameArrayLength).fill(0);
-
+    const forwardCounts = new Array(nameArrayLength).fill(0);
+    // 실행 결과
     Console.print(Messages.OUTPUT);
     for (let i = 0; i < this.inputNumber; i++) {
       for (let j = 0; j < nameArrayLength; j++) {
-        forwardCountsArray[j] += this.isForward();
-        Console.print(`${this.inputNameArray[j]} : ${AppConstants.FORWARD.repeat(forwardCountsArray[j])}`);
+        forwardCounts[j] += this.isForward();
+        Console.print(`${this.inputNameArray[j]} : ${AppConstants.FORWARD.repeat(forwardCounts[j])}`);
       }
-      Console.print("\t");
+      Console.print("");
     }
-
-    const maxValue = Math.max(...forwardCountsArray);
-    const winnerArray = [];
-    for (let i = 0; i < nameArrayLength; i++) {
-      if (forwardCountsArray[i] == maxValue) {
-        winnerArray.push(this.inputNameArray[i]);
-      }
-    }
-    Console.print(winnerArray.map((winner) => winner).join(", "));
+    // 최종 우승자
+    const maxValue = Math.max(...forwardCounts);
+    const winners = this.inputNameArray.filter((_, i) => forwardCounts[i] === maxValue);
+    Console.print(winners.map((winner) => winner).join(", "));
   }
+
   isForward() {
     const randomNumber = new CreateNumber().randomNumber;
     return randomNumber >= AppConstants.FORWARD_CONDITION;
