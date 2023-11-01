@@ -20,7 +20,7 @@
 
 #### src
 
-- MVC 패턴에 따라 models, controllers, views로 분리
+- MVC 패턴에 따라 model, controller, view로 분리
 - 비즈니스 로직 외의 함수는 utils, 상수는 constants로 분리
 - 파일명은 함수는 `camelCase`, 클래스는 `PascalCase`로 작성
 
@@ -30,7 +30,7 @@
 - 코드 내 변수명과 클래스명은 영문만 사용
 - 상수는 `SNAKE_CASE`로 작성
 
-#### 커밋 메시지
+### 커밋 메시지
 
 - feat: 새로운 기능을 추가한 경우
 - fix: 트러블 슈팅, 로직 변경, 오타 등으로 인해 코드를 수정한 경우
@@ -39,3 +39,10 @@
 - refactor: 코드를 리팩토링한 경우
 - test: 테스트 코드를 추가한 경우
 - chore: 코드 수정이 아닌, 단순 폴더명 파일명 등을 수정한 경우
+
+<br/>
+
+## ↪️ 다른 문서 바로가기
+
+- [🏎️ 미션 개요](./README.md)
+- [📝 요구사항 문서](./requirement.md)
