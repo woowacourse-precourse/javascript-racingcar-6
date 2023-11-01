@@ -72,5 +72,15 @@ export default class RacingGame {
       });
       Console.print('');
     }
+
+    const maxPosition = Math.max(...this.#carList.map((car) => car.position));
+    const winners = [];
+    this.#carList.forEach((car) => {
+      if (car.position === maxPosition) {
+        winners.push(car.name);
+      }
+    });
+    const message = MESSAGE_FORMAT.winner(winners);
+    Console.print(message);
   }
 }
