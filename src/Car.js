@@ -6,9 +6,9 @@ export default class Car {
 
   #distance;
 
-  constructor(name) {
+  constructor(name = 'car', distance = GAME.DEFAULT_POSITION) {
     this.#name = name;
-    this.#distance = GAME.DEFAULT_POSITION;
+    this.#distance = distance;
   }
 
   get name() {
@@ -27,13 +27,10 @@ export default class Car {
   }
 
   move() {
-    const movement = Random.pickNumberInRange(
-      GAME.MIN_MOVEMENT,
-      GAME.MAX_MOVEMENT
-    );
+    const movement = Random.pickNumberInRange(GAME.MIN_RANDOM, GAME.MIN_RANDOM);
 
     if (movement >= GAME.MOVEMENT_THRESHOLD) {
-      this.#distance += movement;
+      this.#distance += 1;
     }
   }
 }
