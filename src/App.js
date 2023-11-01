@@ -2,6 +2,8 @@ import { isRandomNumberGreaterThanOrEqualFour } from './randomNumber.js';
 import { getGameCount } from './getGameCount.js';
 import { inputCarsNames } from './getCarNames.js';
 import { Console } from '@woowacourse/mission-utils';
+import { findWinner } from './findWinner.js';
+
 class App {
     play() {
         async function playGame() {
@@ -30,6 +32,8 @@ class App {
                 }
                 Console.print('');
             }
+            const winners = findWinner(roundResults);
+            Console.print('가장 많이 전진한 플레이어: ' + winners.join(', '));
         }
 
         playGame();
