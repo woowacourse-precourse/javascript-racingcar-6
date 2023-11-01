@@ -1,4 +1,4 @@
-import assessWinner from '../utils/assessWinner.js';
+import assessWinner from './utils/assessWinner.js';
 
 export default class Winner {
   #winners;

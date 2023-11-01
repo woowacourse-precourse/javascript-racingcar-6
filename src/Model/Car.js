@@ -1,4 +1,4 @@
-import movePosition from '../utils/movePosition.js';
+import movePosition from './utils/movePosition.js';
 import CONSTANT from '../Constant/CONSTANT.js';
 import { MOVESET } from '../Constant/SETTING.js';
 
