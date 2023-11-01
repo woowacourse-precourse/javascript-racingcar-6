@@ -15,14 +15,7 @@ class InputCarMoveCount {
       if (carNames.some(name => name.length > VALID_LENGTH.NAME_MAX_LENGTH)) {
         throw new Error(ERROR_MESSAGE);
       }
-      this.cars = carNames;
-    } catch (error) {
-      Console.print(ERROR_MESSAGE);
-    }
-  }
 
-  async countInput() {
-    try {
       Console.print(PLAY_GAME.TRY_COUNT);
       const inputCount = await Console.readLineAsync('');
       const tryCount = parseInt(inputCount);
@@ -30,7 +23,10 @@ class InputCarMoveCount {
       if (isNaN(tryCount) || tryCount <= 0) {
         throw new Error(ERROR_MESSAGE);
       }
-      return tryCount;
+
+      this.cars = carNames;
+      this.tryCount = tryCount;
+
     } catch (error) {
       Console.print(ERROR_MESSAGE);
       throw error;

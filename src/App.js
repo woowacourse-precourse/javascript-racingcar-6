@@ -8,10 +8,10 @@ class App {
     try {
       const inputCarMoveCount = new InputCarMoveCount();
       await inputCarMoveCount.userInput();
-      const tryCount = await inputCarMoveCount.countInput();
 
       const moveCar = new MoveCar(inputCarMoveCount.cars);
-      moveCar.startRacing(tryCount);
+      moveCar.startRacing(inputCarMoveCount.tryCount);
+
     } catch (error) {
       Console.print(ERROR_MESSAGE);
       throw error;
