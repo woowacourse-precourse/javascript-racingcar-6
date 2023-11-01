@@ -60,4 +60,35 @@ describe('자동차 경주 게임', () => {
       await expect(app.play()).rejects.toThrow('[ERROR]');
     },
   );
+
+  test.each([[['pobi']], [['']]])(
+    '참여자 수에 대한 예외 처리',
+    async inputs => {
+      // given
+      mockQuestions(inputs);
+
+      // when
+      const app = new App();
+
+      // then
+      await expect(app.play()).rejects.toThrow('[ERROR]');
+    },
+  );
+
+  test.each([
+    [['pobi,java'], [-1]],
+    [['pobi,mini'], [0]],
+    [['pobi,east'], [2.5]],
+    [['pobi,south'], ['']],
+    [['pobi,south'], ['a']],
+  ])('시도 횟수에 대한 예외처리', async inputs => {
+    // given
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow('[ERROR]');
+  });
 });
