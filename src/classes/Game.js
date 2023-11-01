@@ -10,6 +10,10 @@ export default class Game {
     this.#cars = cars.map((car) => new Car(car));
   }
 
+  getCars() {
+    return this.#cars;
+  }
+
   forward() {
     this.#cars.forEach((car) => {
       const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);

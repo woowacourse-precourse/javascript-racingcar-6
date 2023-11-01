@@ -8,5 +8,9 @@ const Output = {
     const forwardString = '-'.repeat(forward);
     MissionUtils.Console.print(`${name} : ${forwardString}`);
   },
+  printWinner(winners) {
+    const winnersString = winners.join(', ');
+    MissionUtils.Console.print(`${Output.WINNER} : ${winnersString}`);
+  },
 };
 export default Output;
