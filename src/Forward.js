@@ -8,12 +8,11 @@ class Forward {
   constructor(car, tryCount, randomNumber) {
     this.car = car;
     this.tryCount = tryCount;
-    this.randomNumber = randomNumber;
     this.racingArray = [];
   }
 
   #forwardOrStop() {
-    return this.randomNumber.getRandomNumber() > 3
+    return RandomNumber.getRandomNumber() > 3
       ? GAME_HELP.FORWARD
       : GAME_HELP.STOP;
   }
