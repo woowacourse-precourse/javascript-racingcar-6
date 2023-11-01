@@ -6,14 +6,6 @@ export const OUTPUT_MESSAGES = {
   winner_message: '최종 우승자 : ',
 };
 
-export const SEPARATORS = {
-  space: ' ',
-  list_separator: ', ',
-  no_separator: '',
-  step_symbol: '-',
-  car_name_separator: ',',
-};
-
 export const ERROR_MESSAGES = {
   not_a_number: '[ERROR] 숫자를 입력해주세요.',
   not_positive_integer: '[ERROR] 1이상의 숫자를 입력해주세요.',
