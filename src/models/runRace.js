@@ -27,14 +27,20 @@ export const runRace = (cars) => {
 
 export const findWinner = (cars) => {
   let maxDistance = -1;
-  let winner = '';
+  let winners = [];
 
-  Object.entries(cars).forEach(([carName, distance], index) => {
+  const carNames = Object.keys(cars);
+  const distances = Object.values(cars);
+
+  distances.forEach((distance, index) => {
     const dashCount = distance.length;
     if (dashCount > maxDistance) {
       maxDistance = dashCount;
-      winner = carName;
+      winners = [carNames[index]];
+    } else if (dashCount === maxDistance) {
+      winners.push(carNames[index]);
     }
   });
-  printWinner(winner);
+
+  printWinner(winners.join(', '));
 };
