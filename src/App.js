@@ -4,32 +4,12 @@ import Car from "./Car.js";
 class App {
   async play() {
     try {
-      const carNamesInput = await Console.readLineAsync(
-        "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분) \n"
-      );
-      this.validateCarNameSeparator(carNamesInput);
-
-      const carNames = carNamesInput.split(",");
-      carNames.forEach((carName) => this.validateCarName(carName));
-
-      const roundsInputs = await Console.readLineAsync(
-        "시도할 횟수는 몇 회인가요? \n"
-      );
-      this.validateTrialCount(roundsInputs);
-      const rounds = Number(roundsInputs);
+      const carNames = await this.getCarNames();
+      const rounds = await this.getRounds();
 
       const cars = carNames.map((name) => new Car(name));
 
-      Console.print("\n실행 결과");
-      for (let i = 0; i < rounds; i++) {
-        cars.forEach((car) => {
-          const randomNumber = Random.pickNumberInRange(0, 9);
-          car.moveForward(randomNumber);
-        });
-        cars.forEach((car) => Console.print(car.displayRaceResults()));
-        Console.print("\n");
-      }
-
+      this.startRace(cars, rounds);
       this.displayWinners(cars);
     } catch (error) {
       Console.print(error.message);
@@ -37,11 +17,51 @@ class App {
     }
   }
 
+  // 자동차 이름을 입력받는 함수
+  async getCarNames() {
+    const carNamesInput = await Console.readLineAsync(
+      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분) \n"
+    );
+    this.validateCarNameSeparator(carNamesInput);
+
+    const carNames = carNamesInput.split(",");
+    carNames.forEach((carName) => this.validateCarName(carName));
+
+    return carNames;
+  }
+
+  // 시도 횟수를 입력받는 함수
+  async getRounds() {
+    const roundsInputs = await Console.readLineAsync(
+      "시도할 횟수는 몇 회인가요? \n"
+    );
+    this.validateTrialCount(roundsInputs);
+
+    return Number(roundsInputs);
+  }
+
+  // 레이싱 경주 실행 함수
+  startRace(cars, rounds) {
+    Console.print("\n실행 결과");
+
+    for (let i = 0; i < rounds; i++) {
+      cars.forEach((car) => {
+        const randomNumber = Random.pickNumberInRange(0, 9);
+        car.moveForward(randomNumber);
+      });
+      cars.forEach((car) => Console.print(car.displayRaceResults()));
+
+      Console.print("\n");
+    }
+  }
+
+  // position에 따라 우승자를 출력하는 함수
   displayWinners(cars) {
     const maxPosition = Math.max(...cars.map((car) => car.position));
     const winners = cars
       .filter((car) => car.position === maxPosition)
       .map((car) => car.name);
+
     Console.print(`최종 우승자 : ${winners.join(", ")}`);
   }
 
