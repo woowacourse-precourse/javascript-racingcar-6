@@ -8,7 +8,7 @@ class App {
   
   async play() {
     await this.userInput();
-    
+
   }
 
   async userInput() {
@@ -17,6 +17,12 @@ class App {
     this.playCount = Number(this.playCount);
   }
 
+  isCarMovable() {
+    const randomNumber = Random.pickNumberInRange(0, 9);
+    
+    if (randomNumber >= 4) { return true; }
+    else { return false; }
+  }
 
 }
 
