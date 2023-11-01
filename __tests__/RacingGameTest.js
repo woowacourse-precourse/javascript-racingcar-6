@@ -10,6 +10,14 @@ const mockQuestions = (input) => {
   });
 };
 
+const mockRandoms = (numbers) => {
+  Random.pickNumberInRange = jest.fn();
+
+  numbers.reduce((acc, number) => {
+    return acc.mockReturnValueOnce(number);
+  }, Random.pickNumberInRange);
+};
+
 const getLogSpy = () => {
   const logSpy = jest.spyOn(Console, 'print');
   logSpy.mockClear();
@@ -157,6 +165,22 @@ describe('getMoveCount 함수 테스트', () => {
         await expect(result).resolves.not.toThrow();
       });
     });
+  });
+});
+
+test('moveCars 함수 테스트', () => {
+  const randoms = [4, 8];
+  mockRandoms(randoms);
+  const car1 = new Car('car1', 2);
+  const car2 = new Car('car2');
+  const racingGame = new RacingGame([car1, car2], 1);
+  const outputs = ['실행 결과', 'car1 : ---', 'car2 : -'];
+  const logSpy = getLogSpy();
+
+  racingGame.moveCars();
+
+  outputs.forEach((output) => {
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
   });
 });
 
