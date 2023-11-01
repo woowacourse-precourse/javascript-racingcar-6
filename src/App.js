@@ -89,7 +89,7 @@ class App {
   printCarsProgress(carsSet) {
     for (const car of carsSet) {
       Console.print(`${car.name} : ${this.generateCarProgress(car.count)}`);
-    }``
+    }
     Console.print('');
   }
 
@@ -106,7 +106,6 @@ class App {
     const WINNERS = CAR_RACE
     .filter((car) => car.count === MAX_COUNT)
     .map((car) => car.name);
-
     this.raceWinnerPrint(WINNERS)
   }
 
@@ -115,6 +114,5 @@ class App {
     Console.print(`최종 우승자 : ${WINNERS}`)
   }
 }
-
 
 export default App;
