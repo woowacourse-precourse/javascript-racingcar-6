@@ -33,10 +33,10 @@ describe('carService 테스트', () => {
     expect(carList).toEqual([{ carName: 'lys', forwardCount: 0 }]);
   });
 
-  test(`0에서 9 사이의 무작위 값이 ${GAME_OPTION.forwardConditionTo} 이상이면 자동차를 전진시킨다`, () => {
+  test(`0에서 9 사이의 무작위 값이 ${GAME_OPTION.FORWARD_CONDITION_TO} 이상이면 자동차를 전진시킨다`, () => {
     MissionUtils.Random.pickNumberInRange = jest
       .fn()
-      .mockReturnValue(GAME_OPTION.forwardConditionTo);
+      .mockReturnValue(GAME_OPTION.FORWARD_CONDITION_TO);
 
     const input = 'lys';
 
@@ -47,10 +47,10 @@ describe('carService 테스트', () => {
     expect(carList).toEqual([{ carName: 'lys', forwardCount: 1 }]);
   });
 
-  test(`0에서 9 사이의 무작위 값이 ${GAME_OPTION.forwardConditionTo} 미만이면 자동차를 멈춘다`, () => {
+  test(`0에서 9 사이의 무작위 값이 ${GAME_OPTION.FORWARD_CONDITION_TO} 미만이면 자동차를 멈춘다`, () => {
     MissionUtils.Random.pickNumberInRange = jest
       .fn()
-      .mockReturnValue(GAME_OPTION.forwardConditionTo - 1);
+      .mockReturnValue(GAME_OPTION.FORWARD_CONDITION_TO - 1);
 
     const input = 'lys';
 
@@ -64,7 +64,7 @@ describe('carService 테스트', () => {
   test('우승자는 한 명일 수 있다', () => {
     MissionUtils.Random.pickNumberInRange = jest
       .fn()
-      .mockReturnValue(GAME_OPTION.forwardConditionTo);
+      .mockReturnValue(GAME_OPTION.FORWARD_CONDITION_TO);
 
     const input = 'lys';
 
@@ -79,7 +79,7 @@ describe('carService 테스트', () => {
   test('우승자는 여러 명일 수 있다', () => {
     MissionUtils.Random.pickNumberInRange = jest
       .fn()
-      .mockReturnValue(GAME_OPTION.forwardConditionTo);
+      .mockReturnValue(GAME_OPTION.FORWARD_CONDITION_TO);
 
     const inputs = ['lys', 'lyss'];
 

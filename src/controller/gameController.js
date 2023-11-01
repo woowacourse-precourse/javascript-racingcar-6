@@ -28,7 +28,7 @@ class GameController {
     const carNames = InputValidator.validateCarNames(
       await this.#inputView.readCarNames(),
     );
-    carNames.split(GAME_OPTION.inputSeparator).forEach((carName) => {
+    carNames.split(GAME_OPTION.INPUT_SEPARATOR).forEach((carName) => {
       this.#carService.addCar(carName);
     });
   }
@@ -42,7 +42,7 @@ class GameController {
   }
 
   async race(roundNumber) {
-    this.#outputView.printRoundResultMessage();
+    this.#outputView.printRoundResultHeader();
     for (let i = 1; i <= roundNumber; i += 1) {
       this.#carService.race();
       const carList = this.#carService.getCarList();

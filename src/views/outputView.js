@@ -12,13 +12,13 @@ class OutputView {
     this.print('');
   }
 
-  printRoundResultMessage() {
-    this.print(GAME_MESSAGE.roundResult);
+  printRoundResultHeader() {
+    this.print(GAME_MESSAGE.ROUND_RESULT_HEADER);
   }
 
   printCarList(carList) {
     carList.forEach((car) => {
-      const forwardCountIndicator = GAME_OPTION.forwardIndicator.repeat(
+      const forwardCountIndicator = GAME_OPTION.FORWARD_INDICATOR.repeat(
         car.forwardCount,
       );
       this.print(`${car.carName} : ${forwardCountIndicator}`);
@@ -28,7 +28,7 @@ class OutputView {
 
   printWinner(winnerList) {
     const names = winnerList.join(', ');
-    this.print(`${GAME_MESSAGE.finalWinner} ${names}`);
+    this.print(`${GAME_MESSAGE.FINAL_WINNER} ${names}`);
   }
 }
 

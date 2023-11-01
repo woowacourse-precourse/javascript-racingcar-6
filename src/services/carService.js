@@ -26,7 +26,7 @@ class CarService {
 
   race() {
     this.#carList.forEach((car) => {
-      const isForward = getRandomDigit() >= GAME_OPTION.forwardConditionTo;
+      const isForward = getRandomDigit() >= GAME_OPTION.FORWARD_CONDITION_TO;
       if (isForward) {
         car.forward();
       }

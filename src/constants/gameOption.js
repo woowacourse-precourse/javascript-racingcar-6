@@ -1,10 +1,10 @@
 const GAME_OPTION = Object.freeze({
-  minCarNameLength: 1,
-  maxCarNameLength: 5,
-  forwardConditionFrom: 0,
-  forwardConditionTo: 4,
-  forwardIndicator: '-',
-  inputSeparator: ',',
+  MIN_CAR_NAME_LENGTH: 1,
+  MAX_CAR_NAME_LENGTH: 5,
+  FORWARD_CONDITION_FROM: 0,
+  FORWARD_CONDITION_TO: 4,
+  FORWARD_INDICATOR: '-',
+  INPUT_SEPARATOR: ',',
 });
 
 export default GAME_OPTION;

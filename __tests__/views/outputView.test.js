@@ -22,7 +22,7 @@ describe('OutputView 테스트', () => {
 
   test('우승자 리스트가 주어질 때 최종 우승자를 표시할 수 있다', () => {
     const input = ['lys', 'lyss'];
-    const output = `${GAME_MESSAGE.finalWinner} lys, lyss`;
+    const output = `${GAME_MESSAGE.FINAL_WINNER} lys, lyss`;
     const logSpy = getLogSpy();
     const outputView = new OutputView();
 

@@ -8,12 +8,12 @@ class InputView {
   }
 
   async readCarNames() {
-    const carNames = await this.read(GAME_MESSAGE.getCarNames);
+    const carNames = await this.read(GAME_MESSAGE.PROMPT_CAR_NAMES);
     return carNames;
   }
 
   async readRoundNumber() {
-    return this.read(GAME_MESSAGE.getRoundNumber);
+    return this.read(GAME_MESSAGE.PROMPT_ROUND_NUMBER);
   }
 }
 
