@@ -1,4 +1,5 @@
-import { ERROR_MESSAGE } from '../consts/errorMessage.js';
+import ERROR_MESSAGE from '../consts/errorMessage.js';
+
 const { CAR, MOVECOUNT } = ERROR_MESSAGE;
 const {
   NOT_A_NUMBER,
@@ -15,19 +16,15 @@ export function validateCountNumber(moveCount) {
   if (isNaN(inputValueNumber)) {
     throw new Error(NOT_A_NUMBER);
   }
-
   if (inputValueNumber % 1 !== 0) {
     throw new Error(NOT_AN_INTEGER);
   }
-
   if (inputValueNumber < 0) {
     throw new Error(NEGATIVE_NUMBER);
   }
-
   if (inputValueNumber === 0) {
     throw new Error(ZERO_NUMBER);
   }
-
   if (inputValueNumber === '') {
     throw new Error(EMPTY_COUNT);
   }
@@ -43,16 +40,16 @@ export function validateCarName(carName) {
   }
 }
 
+export function hasDuplicate(list) {
+  const set = new Set(list);
+  return set.size < list.length;
+}
+
 export function valiadateDuplicteName(list) {
   const isDuplicte = hasDuplicate(list);
   if (isDuplicte) {
     throw new Error(DUPLICATE_NAME);
   }
-}
-
-export function hasDuplicate(list) {
-  const set = new Set(list);
-  return set.size < list.length;
 }
 
 export function validateCarNames(list) {

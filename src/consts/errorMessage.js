@@ -1,4 +1,4 @@
-export const ERROR_MESSAGE = {
+const ERROR_MESSAGE = {
   CAR: {
     EMPTY_NAME: '[ERROR] car 이름은 비워 둘 수 없습니다.',
     NAME_TOO_LONG: '[ERROR] car 이름은 5자 이하만 가능합니다.',
@@ -12,3 +12,5 @@ export const ERROR_MESSAGE = {
     EMPTY_COUNT: '[ERROR] 횟수를 비워둘 수 없습니다.',
   },
 };
+
+export default ERROR_MESSAGE;

@@ -2,6 +2,7 @@ import { Random } from '@woowacourse/mission-utils';
 
 class Car {
   #MINIMUM_MOVE_VALUE = 4;
+
   #position;
 
   /**

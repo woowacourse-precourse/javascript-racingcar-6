@@ -1,8 +1,8 @@
 import Car from '../models/Car.js';
 import RaceManager from '../models/RaceManager.js';
 import CarRaceView from '../views/CarRaceView.js';
-import { repeatFunctionNTimes } from '../utils/repeatFunctionNTimes.js';
-import { createHyphenString } from '../utils/createHyphenString.js';
+import repeatFunctionNTimes from '../utils/repeatFunctionNTimes.js';
+import createHyphenString from '../utils/createHyphenString.js';
 import {
   validateCarNames,
   valiadateDuplicteName,
@@ -33,7 +33,7 @@ class CarRaceController {
 
   printCarProgress(carModel) {
     const { printProgress } = CarRaceView;
-    const carName = carModel.carName;
+    const { carName } = carModel;
     const position = carModel.getPosition();
     const progressStatus = createHyphenString(position);
     printProgress(carName, progressStatus);

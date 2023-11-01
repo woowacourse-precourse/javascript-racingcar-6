@@ -1,5 +1,5 @@
-import { repeatFunctionNTimes } from '../src/utils/repeatFunctionNTimes.js';
-import { createHyphenString } from '../src/utils/createHyphenString.js';
+import repeatFunctionNTimes from '../src/utils/repeatFunctionNTimes.js';
+import createHyphenString from '../src/utils/createHyphenString.js';
 import {
   valiadateDuplicteName,
   hasDuplicate,
@@ -9,7 +9,7 @@ import {
 import { MissionUtils } from '@woowacourse/mission-utils';
 import Car from '../src/models/Car.js';
 import RaceManager from '../src/models/RaceManager.js';
-import { ERROR_MESSAGE } from '../src/consts/errorMessage.js';
+import ERROR_MESSAGE from '../src/consts/errorMessage.js';
 
 const { CAR, MOVECOUNT } = ERROR_MESSAGE;
 const { NOT_A_NUMBER, NOT_AN_INTEGER, NEGATIVE_NUMBER, ZERO_NUMBER } =

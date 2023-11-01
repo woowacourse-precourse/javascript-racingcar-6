@@ -1,6 +1,8 @@
 class RaceManager {
   #gameWinner;
+
   #moveCount;
+
   /**
    * @constructor
    * @param {string[]} carModels - 차량 모델의 배열
