@@ -34,6 +34,7 @@ class Controller {
   }
 
   startRace() {
+    OutputView.printBlank();
     OutputView.printStart();
     Array.from({ length: this.#carGame.getAttemptNumber() }).forEach(() => {
       this.#carGame.moveCars();
