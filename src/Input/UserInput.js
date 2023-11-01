@@ -10,10 +10,10 @@ class UserInput {
   }
 
   getCarName = async () => {
-    const carName = await Console.readLineAsync(INPUT_MESSAGE.carNames);
+    const input = await Console.readLineAsync(INPUT_MESSAGE.carNames);
 
-    const carNames = carName.split(SYMBOL.comma).map((v) => v.trim());
-    this.validateCarName.isValid(carNames);
+    const carNames = input.split(SYMBOL.comma).map((carName) => carName.trim());
+    this.validateCarName.isValidCarNames(carNames);
 
     return carNames;
   };

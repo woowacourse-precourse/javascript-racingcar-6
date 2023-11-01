@@ -10,13 +10,13 @@ class RaceResult {
     this.winner = new Winner(this.forwardStatus);
   }
 
-  getRaceResult = (cars, input) => {
+  getRaceResult = (carNames, attempt) => {
     Console.print(OUTPUT_MESSAGE.outputMessage);
 
-    Array.from({ length: input }).forEach(() => {
-      cars.forEach((car) => {
-        this.moveCar.race(car);
-        Console.print(`${car} : ${this.forwardStatus.get(car)}`);
+    Array.from({ length: attempt }).forEach(() => {
+      carNames.forEach((carName) => {
+        this.moveCar.race(carName);
+        Console.print(`${carName} : ${this.forwardStatus.get(carName)}`);
       });
 
       Console.print(OUTPUT_MESSAGE.enter);

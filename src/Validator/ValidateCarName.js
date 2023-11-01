@@ -16,7 +16,7 @@ class ValidateCarName {
     return carSet.size === carNames.length;
   };
 
-  isValid = (carNames) => {
+  isValidCarNames = (carNames) => {
     if (!this.isValidLength(carNames)) {
       throw new Error(ERROR_MESSAGE.lengthError);
     }

@@ -6,26 +6,26 @@ class MoveCar {
     this.forwardStatus = forwardStatus;
   }
 
-  moveCar = (car) => {
-    if (!this.forwardStatus.has(car)) {
-      this.forwardStatus.set(car, SYMBOL.hyphen);
+  moveCar = (carName) => {
+    if (!this.forwardStatus.has(carName)) {
+      this.forwardStatus.set(carName, SYMBOL.hyphen);
       return;
     }
 
-    this.forwardStatus.set(car, this.forwardStatus.get(car) + SYMBOL.hyphen);
+    this.forwardStatus.set(carName, this.forwardStatus.get(carName) + SYMBOL.hyphen);
   };
 
-  stopCar = (car) => {
-    if (this.forwardStatus.get(car) === undefined) {
-      this.forwardStatus.set(car, SYMBOL.empty);
+  stopCar = (carName) => {
+    if (this.forwardStatus.get(carName) === undefined) {
+      this.forwardStatus.set(carName, SYMBOL.empty);
     }
   };
 
-  race = (car) => {
+  race = (carName) => {
     const randomNumber = Random.pickNumberInRange(MAGIC_NUMBER.randomStart, MAGIC_NUMBER.randomEnd);
 
-    if (randomNumber < MAGIC_NUMBER.moveNumber) this.stopCar(car);
-    if (randomNumber >= MAGIC_NUMBER.moveNumber) this.moveCar(car);
+    if (randomNumber < MAGIC_NUMBER.moveNumber) this.stopCar(carName);
+    if (randomNumber >= MAGIC_NUMBER.moveNumber) this.moveCar(carName);
   };
 }
 
