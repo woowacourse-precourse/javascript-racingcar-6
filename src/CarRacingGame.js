@@ -10,7 +10,6 @@ class CarRacingGame {
     this.raceWinner = [];
   }
 
-
   async start() {
     await this.getCarNames();
     const attempt = await this.getNumberOfAttempts();
@@ -30,7 +29,6 @@ class CarRacingGame {
     this.raceWinner = this.determineRaceWinner(this.raceResult);
     Console.print(`최종 우승자 : ${this.raceWinner.join(",")}`);
   }
-
 
   async getCarNames() {
     try {
@@ -56,11 +54,9 @@ class CarRacingGame {
     }
   }
 
-
   validateCarNames(carNamesArray) {
     return carNamesArray.some(carName => carName.length > 5 || carName.length === 0);
   }
-
 
   async getNumberOfAttempts() {
     try {
@@ -72,12 +68,10 @@ class CarRacingGame {
 
       return inputAttempts;
       
-
     } catch (error) {
       throw error;
     }
   }
-
 
   validateAttempts(attempts) {
     const parsedAttempts = Number(attempts);
@@ -103,7 +97,6 @@ class CarRacingGame {
 
     return raceWinner;
   }
-
 }
 
 export default CarRacingGame
