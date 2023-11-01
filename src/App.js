@@ -1,6 +1,6 @@
-import {Console} from '@woowacourse/mission-utils';
-import {validateCarNamesString, validateCountString} from './validation.js';
-import {getCarsMovementInfo, getWinners, printCarsMovementInfo, printWinners} from './game.js';
+import { Console } from '@woowacourse/mission-utils';
+import { validateCarNamesString, validateCountString } from './validation.js';
+import { getCarsMovementInfo, getWinners, printCarsMovementInfo, printWinners } from './game.js';
 
 class App {
   async play() {

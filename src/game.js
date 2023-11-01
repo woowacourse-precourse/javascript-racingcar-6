@@ -1,16 +1,14 @@
 import { Random, Console } from '@woowacourse/mission-utils';
-import {isNaturalNumber } from './validation.js';
+import { isNaturalNumber } from './validation.js';
 
 /**
  * 전진 여부 판단 함수
  * @returns {boolean}
  */
 export const hasMovedForward = () => {
-  const randomNumber = Random.pickNumberInRange(0, 9)
-  if (randomNumber >= 4) {
-    return true;
-  }
-  return false;
+  const randomNumber = Random.pickNumberInRange(0, 9);
+
+  return randomNumber >= 4;
 }
 
 
@@ -21,7 +19,7 @@ export const hasMovedForward = () => {
  */
 export const getMovingResult = (count) => {
   if (!isNaturalNumber(count)) {
-    throw new Error('[ERROR] 인자로 자연수를 입력해주세요. (getMovingResult) ')
+    throw new Error('[ERROR] 인자로 자연수를 입력해주세요. (getMovingResult)');
   }
   return Array.from({ length: count }).map(() => hasMovedForward());
 }
@@ -75,7 +73,7 @@ export const printCarsMovementInfo = (carsMovementInfo) => {
   const movingCount = carsMovementInfo[carNames[0]].length;
 
   const status = {};
-  carNames.forEach(carName => status[carName] = '')
+  carNames.forEach(carName => status[carName] = '');
 
   const result = [];
 
@@ -88,10 +86,10 @@ export const printCarsMovementInfo = (carsMovementInfo) => {
     Object.entries(status).forEach(([carName, currentStatus]) => {
       roundResult.push(`${carName} : ${currentStatus}`);
     })
-    result.push(roundResult.join('\n'))
+    result.push(roundResult.join('\n'));
   })
 
-  Console.print(result.join('\n\n'))
+  Console.print(result.join('\n\n'));
 }
 
 /**

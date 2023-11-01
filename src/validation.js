@@ -4,7 +4,7 @@
  * @returns {boolean}
  */
 export const isShorterThan5Chars = (str) => {
-  return str.length <= 5
+  return str.length <= 5;
 }
 
 /**
@@ -15,13 +15,13 @@ export const isShorterThan5Chars = (str) => {
 export const hasDuplicateString = (strings) => {
   const length = strings.length;
 
-  return new Set(strings).size !== length
+  return new Set(strings).size !== length;
 }
 
 /**
  * 공백만 있는 문자열인지 판단하는 함수
  *
- * @param {number} str
+ * @param {string} str
  * @returns {boolean}
  */
 export const isOnlySpace = (str) => {
@@ -39,15 +39,15 @@ export const validateCarNamesString = (carNamesString) => {
   const carNames = carNamesString.split(',');
   const isEveryCarNameShorterThan5Chars = carNames.every(isShorterThan5Chars);
   if (!isEveryCarNameShorterThan5Chars) {
-    throw new Error('[ERROR] 자동차 이름은 5자 이하여야 합니다.')
+    throw new Error('[ERROR] 자동차 이름은 5자 이하여야 합니다.');
   }
   const hasSpaceName = carNames.some(isOnlySpace);
   if (hasSpaceName) {
-    throw new Error('[ERROR] 공백만으로 이루어진 자동차 이름이 있습니다.')
+    throw new Error('[ERROR] 공백만으로 이루어진 자동차 이름이 있습니다.');
   }
   const hasDuplicateCarName = hasDuplicateString(carNames);
   if (hasDuplicateCarName) {
-    throw new Error('[ERROR] 중복된 자동차 이름이 있습니다.')
+    throw new Error('[ERROR] 중복된 자동차 이름이 있습니다.');
   }
 
   return true;
@@ -70,7 +70,7 @@ export const isNaturalNumber = (nbr) => {
  */
 export const validateCountString = (countAsString) => {
   if (!isNaturalNumber(Number(countAsString))) {
-    throw new Error('[ERROR] 시도할 횟수는 자연수로 입력해야 합니다.')
+    throw new Error('[ERROR] 시도할 횟수는 자연수로 입력해야 합니다.');
   }
 
   return true;
