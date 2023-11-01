@@ -86,6 +86,18 @@ describe("자동차 경주 게임", () => {
     });
   });
 
+  test("음수 입력에 대한 예외 처리", async () => {
+    const inputs = ["pobi,woni", "-1"]; // 음수 값 입력
+
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow("[ERROR]");
+  });
+
   test.each([
     [["pobi,javaji"]],
     [["pobi,eastjun"]]
