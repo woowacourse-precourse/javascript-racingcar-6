@@ -23,6 +23,7 @@ class App {
             Console.print(roundResult);
             round++;
         }
+        const winnerIndexList = this.determineWinnerIndex(carStates);
     }
 
     async createCarNameArr() {
@@ -79,22 +80,24 @@ class App {
         return roundResult;
     }
 
-    determineWinner(carStates) {
+    determineWinnerIndex(carStates) {
         if (carStates.length === 1) {
             return [0];
         }
-        let winnerList = [];
+        let winnerIndexList = [];
         let comparison = carStates[0].length;
         for (let i = 1; i < carStates.length; i++) {
             if (carStates[i].length > comparison) {
                 comparison = carStates[i].length;
-                winnerList = [];
-                winnerList.push(i);
+                winnerIndexList = [];
+                winnerIndexList.push(i);
             } else if (carStates[i].length === comparison) {
-                winnerList.push(i);
+                comparison === carStates[0].length
+                    ? winnerIndexList.push(0, i)
+                    : winnerIndexList.push(i);
             }
         }
-        return winnerList;
+        return winnerIndexList;
     }
 }
 
