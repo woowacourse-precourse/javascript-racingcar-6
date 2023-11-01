@@ -31,6 +31,23 @@ class CarRacingController {
       printErrorMessage('[ERROR] 0 이상의 숫자를 입력해주세요.');
     }
   }
+
+  playRacingGame(raceCount) {
+    printMessage('\n실행 결과');
+    for (let i = 0; i < raceCount; i += 1) {
+      this.cars.forEach(car => car.move());
+      CarRacingView.showRoundResult(this.cars);
+    }
+    const winners = this.getWinners();
+    CarRacingView.showWinners(winners);
+  }
+
+  getWinners() {
+    const maxPosition = Math.max(...this.cars.map(car => car.position));
+    return this.cars
+      .filter(car => car.position === maxPosition)
+      .map(car => car.name);
+  }
 }
 
 export default CarRacingController;
