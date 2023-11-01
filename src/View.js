@@ -27,12 +27,17 @@ class View {
   static writeResultMessage(results) {
     let message = `\n${View.#RESULT}\n`;
     results.forEach((result) => {
-      result.forEach((moveCount, name) => {
-        message += `${name} : ${View.#FORWARD_MARK.repeat(moveCount)}\n`;
-      });
-      message += '\n';
+      message += this.writeRoundResult(result);
     });
     return message;
+  }
+
+  static writeRoundResult(result) {
+    let message = '';
+    result.forEach((moveCount, name) => {
+      message += `${name} : ${View.#FORWARD_MARK.repeat(moveCount)}\n`;
+    });
+    return `${message}\n`;
   }
 
   static printResults(results) {
