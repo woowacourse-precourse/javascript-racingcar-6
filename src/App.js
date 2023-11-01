@@ -20,10 +20,7 @@ class App {
 
     this.cars = new Cars({ initialState: user.state.carList });
 
-    for (let i = 0; i < user.state.playNumber; i++) {
-      this.cars.race();
-      console.log(this.cars.state);
-    }
+    this.cars.race(user.state.playNumber);
   }
 }
 
