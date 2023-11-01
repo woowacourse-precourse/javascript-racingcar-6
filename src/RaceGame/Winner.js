@@ -1,4 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
+import { OUTPUT_MESSAGE, SYMBOL } from '../constants/Constants';
 
 class Winner {
   constructor(forward) {
@@ -18,7 +19,7 @@ class Winner {
       }
     });
 
-    Console.print(`\n최종 우승자 : ${winners.join(', ')}`);
+    Console.print(`${OUTPUT_MESSAGE.winner}${winners.join(`${SYMBOL.comma} `)}`);
   };
 }
 

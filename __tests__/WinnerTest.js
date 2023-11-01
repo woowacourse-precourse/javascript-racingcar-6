@@ -1,4 +1,4 @@
-import Winner from '../src/Winner';
+import Winner from '../src/RaceGame/Winner';
 import { MissionUtils } from '@woowacourse/mission-utils';
 
 const getLogSpy = () => {

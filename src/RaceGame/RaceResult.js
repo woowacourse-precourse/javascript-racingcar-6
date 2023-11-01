@@ -1,6 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
-import MoveCar from './MoveCar';
-import Winner from './Winner';
+import { OUTPUT_MESSAGE } from '../constants/Constants';
+import MoveCar from '../RaceGame/MoveCar';
+import Winner from '../RaceGame/Winner';
 
 class RaceResult {
   constructor() {
@@ -10,7 +11,7 @@ class RaceResult {
   }
 
   getRaceResult = (cars, input) => {
-    Console.print('\n실행 결과');
+    Console.print(OUTPUT_MESSAGE.outputMessage);
 
     Array.from({ length: input }).forEach(() => {
       cars.forEach((car) => {
@@ -18,7 +19,7 @@ class RaceResult {
         Console.print(`${car} : ${this.forward.get(car)}`);
       });
 
-      Console.print('\n');
+      Console.print(OUTPUT_MESSAGE.enter);
     });
 
     this.winner.getRaceWinner();

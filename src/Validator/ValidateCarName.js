@@ -1,13 +1,15 @@
+import { ERROR_MESSAGE, REGEXP } from '../constants/Constants';
+
 class ValidateCarName {
   constructor() {}
 
   isValidLength = (cars) => {
-    const LENGTH_REGEX = /^.{1,5}$/;
+    const LENGTH_REGEX = REGEXP.lengthRegex;
     return cars.every((name) => LENGTH_REGEX.test(name));
   };
 
   isValidString = (cars) => {
-    const NAME_REGEX = /^[A-Za-z]*$/;
+    const NAME_REGEX = REGEXP.nameRegex;
     return cars.every((name) => NAME_REGEX.test(name));
   };
 
@@ -18,15 +20,15 @@ class ValidateCarName {
 
   isValid = (cars) => {
     if (!this.isValidLength(cars)) {
-      throw new Error('[ERROR] 1글자에서 5글자 사이의 이름만 입력 가능합니다.');
+      throw new Error(ERROR_MESSAGE.lengthError);
     }
 
     if (!this.isValidString(cars)) {
-      throw new Error('[ERROR] 영문으로 이루어진 이름만 입력 가능합니다.');
+      throw new Error(ERROR_MESSAGE.stringError);
     }
 
     if (!this.isValidDuplication(cars)) {
-      throw new Error('[ERROR] 중복되는 이름은 입력할 수 없습니다.');
+      throw new Error(ERROR_MESSAGE.duplicationError);
     }
   };
 }

@@ -1,6 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
-import ValidateAttempt from './ValidateAttempt';
-import ValidateCarName from './ValidateCarName';
+import { INPUT_MESSAGE, SYMBOL } from '../constants/Constants';
+import ValidateAttempt from '../Validator/ValidateAttempt';
+import ValidateCarName from '../Validator/ValidateCarName';
 
 class UserInput {
   constructor() {
@@ -9,18 +10,16 @@ class UserInput {
   }
 
   getCarName = async () => {
-    const input = await Console.readLineAsync(
-      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n'
-    );
+    const input = await Console.readLineAsync(INPUT_MESSAGE.carsName);
 
-    const cars = input.split(',').map((v) => v.trim());
+    const cars = input.split(SYMBOL.comma).map((v) => v.trim());
     this.validateCarName.isValid(cars);
 
     return cars;
   };
 
   getAttempts = async () => {
-    const input = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    const input = await Console.readLineAsync(INPUT_MESSAGE.attempt);
     this.validateAttempt.isValidAttempt(input);
 
     return input;

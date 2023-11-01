@@ -1,4 +1,4 @@
-import ValidateAttempt from '../src/ValidateAttempt';
+import ValidateAttempt from '../src/Validator/ValidateAttempt';
 
 describe('시도 횟수 검증 테스트', () => {
   let validator;

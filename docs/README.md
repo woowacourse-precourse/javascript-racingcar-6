@@ -56,3 +56,31 @@
 
 - [x] 단독 우승자일 경우에 해당하는 테스트 코드를 추가한다.
 - [x] 공동 우승자가 존재할 경우에 해당하는 테스트 코드를 추가한다.
+
+## 📂 파일 구조
+
+```
+📦javascript-racingcar-6
+ ┣ 📂 __tests__
+ ┃┣ 📜ApplicationTest.js
+ ┃┣ 📜AttemptsTest.js
+ ┃┣ 📜CarNameTest.js
+ ┃┣ 📜RaceTest.js
+ ┃┣ 📜StringTest.js
+ ┃┗ 📜WinnerTest.js
+ ┣ 📂src
+ ┃ ┣ 📂Input
+ ┃ ┃ ┗ 📜UserInput.js
+ ┃ ┣ 📂RaceGame
+ ┃ ┃ ┣ 📜MoveCar.js
+ ┃ ┃ ┣ 📜RaceResult.js
+ ┃ ┃ ┗ 📜Winner.js
+ ┃ ┣ 📂Validator
+ ┃ ┃ ┣ 📜ValidateAttempt.js
+ ┃ ┃ ┗ 📜ValidateCarName.js
+ ┃ ┣ 📂constants
+ ┃ ┃ ┗ 📜Constants.js
+ ┃ ┣ 📜Constants.js
+ ┃ ┣ 📜App.js
+ ┃ ┗ 📜index.js
+```

@@ -1,5 +1,5 @@
-import MoveCar from '../src/MoveCar';
-import RaceResult from '../src/RaceResult';
+import MoveCar from '../src/RaceGame/MoveCar';
+import RaceResult from '../src/RaceGame/RaceResult';
 
 describe('자동차 이동 검증 테스트', () => {
   test('무작위 값이 4 이상인 경우 자동차 이동', () => {
