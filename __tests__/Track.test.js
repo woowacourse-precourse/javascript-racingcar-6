@@ -4,9 +4,10 @@ import Car from '../src/models/Car.js';
 
 const mockRandoms = (numbers) => {
   Random.pickNumberInRange = jest.fn();
-  numbers.reduce((acc, number) => {
-    return acc.mockReturnValueOnce(number);
-  }, Random.pickNumberInRange);
+  numbers.reduce(
+    (acc, number) => acc.mockReturnValueOnce(number),
+    Random.pickNumberInRange,
+  );
 };
 
 describe('Track method test', () => {
@@ -22,16 +23,19 @@ describe('Track method test', () => {
     expect(trueTest).toBeTruthy();
   });
 
-  test('챔피언을 반환한다.', async () => {
+  test('챔피언(우승자)을 잘 출력하는지 테스트.', async () => {
     // given
     const cars = ['pobi', 'woni', 'maria'].map((carName) => new Car(carName));
     const race = new Track(cars);
     mockRandoms([3, 6, 9]);
 
-    //when
+    // when
     await race.moveCarsCheckCondition();
 
-    //then
-    expect(race.getChampions().map((car) => car.getCarName())).toEqual(['woni', 'maria']);
+    // then
+    expect(race.getChampions().map((car) => car.getCarName())).toEqual([
+      'woni',
+      'maria',
+    ]);
   });
 });

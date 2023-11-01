@@ -4,6 +4,7 @@ import Track from '../models/Track.js';
 import DisplayView from '../views/DisplayView.js';
 import { Messages } from '../constants/Messages.js';
 import InputView from '../views/InputView.js';
+
 class RaceController {
   /** @type {Track} */
   #race;
@@ -23,7 +24,6 @@ class RaceController {
 
   async startRace() {
     Console.print('');
-
     Console.print(Messages.RACE_RESULTS);
 
     for (let i = 0; i < this.#round; i++) {

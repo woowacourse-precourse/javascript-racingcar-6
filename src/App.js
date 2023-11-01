@@ -1,7 +1,7 @@
 import RaceController from './controllers/RaceController.js';
 
 class App {
-  /** @type {RaceController}*/
+  /** @type {RaceController} */
   #controller;
 
   async play() {

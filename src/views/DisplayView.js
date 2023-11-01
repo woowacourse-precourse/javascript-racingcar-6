@@ -10,7 +10,6 @@ const DisplayView = {
     });
 
     roundResults.forEach((result) => Console.print(result));
-
     Console.print('');
   },
 
