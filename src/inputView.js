@@ -28,9 +28,9 @@ class Input {
     const playerInput = await Console.readLineAsync(
       GAME_MESSAGE.INPUT_NUMBER_OF_TIMES,
     );
-    const numberOfTimes = parseInt(playerInput, 10);
-    validation.isValidNumberOfTimesFormat(numberOfTimes);
-    return numberOfTimes;
+    this.times = parseInt(playerInput, 10);
+    validation.isValidNumberOfTimesFormat(this.times);
+    return this.times;
   }
 }
 export default Input;
