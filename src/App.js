@@ -13,6 +13,13 @@ class App {
         })
         return cars
     }
+
+    checkingError (name) {
+        let errorMessage = new Error("[ERROR] 잘못된 데이터를 입력했습니다.")
+        if(name.length > 5 || name.length <= 0){
+            throw errorMessage
+        }
+    }
     async play() {
 
     }
