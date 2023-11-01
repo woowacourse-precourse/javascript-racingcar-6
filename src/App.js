@@ -1,3 +1,4 @@
+import generateCarDataListFromStr from './feature/GenerateCarDataListFromStr';
 import getValidCarNameStr from './feature/GetValidCarNameStr';
 import getValidTotalRoundNumber from './feature/GetValidTotalRoundNumber';
 
