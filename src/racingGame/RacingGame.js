@@ -1,13 +1,14 @@
-import validation from './validation.js';
 import { Console, Random } from '@woowacourse/mission-utils';
-import { MESSAGE, RULE } from './constants/constants.js';
+import { MESSAGE, RULE } from '../constants/constants.js';
 import { SetRacingCar } from './RacingCar.js';
+import validation from './validation.js';
 
 export class RacingGame {
 	async getCars() {
 		const input = await Console.readLineAsync(MESSAGE.CAR_NAMES_INPUT);
 		const carsName = input.split(',');
 		validation.carsNameValid(carsName);
+
 		return carsName;
 	}
 
@@ -25,6 +26,7 @@ export class RacingGame {
 			const setCar = new SetRacingCar(car);
 			readyCars.push(setCar);
 		});
+
 		return readyCars;
 	}
 
@@ -41,19 +43,19 @@ export class RacingGame {
 		Console.print('');
 	}
 
+	finalResult(readyCars) {
+		const maxScore = Math.max(...readyCars.map((car) => car.score));
+		const win = readyCars.filter((car) => maxScore === car.score);
+
+		const winners = win.map((winner) => winner.car);
+		Console.print(`최종 우승자 : ${winners.toString()}`);
+	}
+
 	racingStart(tryNumber, readyCars) {
 		Console.print(MESSAGE.STARTING_TITLE);
 		for (let round = 0; round < tryNumber; round++) {
 			this.roundResult(readyCars);
 		}
-	}
-
-	finalResult(readyCars) {
-		const maxScore = Math.max(...readyCars.map((car) => car.score));
-		const win = readyCars.filter((car) => maxScore === car.score);
-
-		const winners = win.map((a) => a.car);
-		Console.print(`최종 우승자 : ${winners.toString()}`);
 	}
 
 	async start() {

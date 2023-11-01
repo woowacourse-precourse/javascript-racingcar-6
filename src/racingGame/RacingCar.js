@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import { RULE } from './constants/constants.js';
+import { RULE } from '../constants/constants.js';
 
 export class SetRacingCar {
 	constructor(car) {
