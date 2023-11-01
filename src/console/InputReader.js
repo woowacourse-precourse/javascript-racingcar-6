@@ -1,40 +1,41 @@
 import { Console } from "@woowacourse/mission-utils";
 import * as F from "../utility/utilityFunctions.js";
-import validateCarName from "../validation/validateCarName.js";
-import validateNameListLength from "../validation/validateNameListLength.js";
+import GAME_TEXT from "../constants/message/gmaeText.js";
 import validateRoundCount from "../validation/validateRountCount.js";
-import GAME_TEXT from "../constants/gmaeText.js";
+import {
+  validateCarNameFormat,
+  validateMinRegistrar,
+} from "../validation/validateInput.js";
 
 class InputReader {
   constructor() {}
 
   async enterCarNames() {
     try {
-      const userInput = await this.consoleRead(GAME_TEXT.REQUEST.CAR_NAMES);
+      const carNames = await this.consoleRead(GAME_TEXT.REQUEST.CAR_NAMES);
 
-      const carNamesList = userInput.split(",");
+      const carNamesList = carNames.split(",");
 
       const filteredCarNames = F.go(
         carNamesList,
-        F.filter((carName) => validateCarName(carName, 5)),
+        F.filter((carName) => validateCarNameFormat(carName)),
       );
 
-      // min 으로 이름 변경
-      validateNameListLength(filteredCarNames, 2);
+      validateMinRegistrar(filteredCarNames);
 
       return filteredCarNames;
     } catch (error) {
-      throw new Error(`[ERROR] ${error}`);
+      throw new Error(error);
     }
   }
 
   async enterRoundCount() {
     try {
-      const userInput = await this.consoleRead();
+      const roundCount = await this.consoleRead(GAME_TEXT.REQUEST.ROUND_COUNT);
 
       const filteredRoundCount = F.go(
-        [...userInput],
-        F.filter((countElement) => validateRoundCount(countElement)),
+        [...roundCount],
+        F.filter((numberElement) => validateRoundCount(numberElement)),
         F.join(""),
         Number,
       );
@@ -46,7 +47,7 @@ class InputReader {
   }
 
   async consoleRead(text) {
-    const response = await Console.readLineAsync(GAME_TEXT.REQUEST.ROUND_COUNT);
+    const response = await Console.readLineAsync(text);
 
     return response;
   }
