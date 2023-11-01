@@ -15,7 +15,7 @@ class App {
     })
 
     // 시도 횟수 입력
-    const tryCount = parseInt(await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?\n'));
+    let tryCount = parseInt(await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?\n'));
     if (!/^\d+$/.test(tryCount)) throw new Error("[ERROR] 시도 횟수는 숫자만 입력해야 합니다.");
     if (tryCount === 0) throw new Error("[ERROR] 시도 횟수는 0 이상이어야 합니다.");
 
@@ -23,6 +23,11 @@ class App {
     const carList = [];
     for (const car of carArr) {
       carList.push(new Car(car));
+    }
+
+    while(tryCount--) {
+      // 각 자동차 전진 여부 결정
+      carList.map((car) => car.playGame());
     }
   }
 }
