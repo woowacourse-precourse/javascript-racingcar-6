@@ -68,7 +68,7 @@ describe('입력 에러 처리', () => {
       // then
       expect(() => {
         app.checkNumInput();
-      }).toThrowError('[ERROR] 숫자가 잘못된 형식입니다.');
+      }).toThrowError('[ERROR] 1-9 사이의 숫자만 입력 가능합니다.');
     });
   });
 
