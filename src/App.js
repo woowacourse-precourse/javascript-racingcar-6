@@ -1,10 +1,14 @@
 import { GameData } from './GameData.js';
-import { gameStart } from './gameStart.js';
+import { askRaceInfo } from './askRaceInfo.js';
+import { displayWinner } from './displayWinner.js';
+import { runRace } from './runRace.js';
 
 class App {
   async play() {
     const gameData = new GameData();
-    await gameStart(gameData);
+    await askRaceInfo(gameData);
+    runRace(gameData);
+    displayWinner(gameData);
   }
 }
 
