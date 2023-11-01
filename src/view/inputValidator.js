@@ -28,7 +28,7 @@ export class InputValidator {
 
   validateAttemptCountInput(input) {
     if (isNaN(Number(input))) throw new Error(ERROR.NUMBER_ONLY_ERROR);
-    // if (input.length < 1) throw new Error(ERROR.NAME_RANGE_ERROR);
+    if (Number(input) < 0) throw new Error(ERROR.NAME_RANGE_ERROR);
     // if (!Number(input)) throw new Error(ERROR.NUMBER_ONLY_ERROR);
     // if (input <= 0) throw new Error(ERROR.NAME_RANGE_ERROR);
   }
