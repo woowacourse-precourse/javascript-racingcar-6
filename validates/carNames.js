@@ -5,7 +5,8 @@ export const validateUserInputEmpty = (userInput) => {
   if (
     trimmedInput.length === 0 ||
     trimmedInput.startsWith(',') ||
-    trimmedInput.endsWith(',')
+    trimmedInput.endsWith(',') ||
+    trimmedInput.includes(',,')
   ) {
     throw new Error(MESSAGES.ERROR_USER_INPUT_EMPTY_INPUT_WRONG);
   }
