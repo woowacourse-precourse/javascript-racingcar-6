@@ -17,12 +17,23 @@ export const checkCarNameStrValidity = (carNameList) => {
   return !isFalseInCondition;
 };
 
+const askUserCarNameStr = async () => {
+  const input = await Console.readLineAsync(ENTER_CAR_NAME_LIST);
+  return input;
+};
+
+const throwError = (msg) => {
+  throw new Error(msg);
+};
+
 const getValidCarNameStr = async () => {
-  const carNameStr = await Console.readLineAsync(ENTER_CAR_NAME_LIST);
+  const carNameStr = await askUserCarNameStr();
+
   const carNameList = carNameStr.split(CAR_NAME_SPLIT_MARK);
   const iscarNameStrValid = checkCarNameStrValidity(carNameList);
+
   if (!iscarNameStrValid) {
-    throw new Error(ERROR_WRONG_CAR_NAMES);
+    throwError(ERROR_WRONG_CAR_NAMES);
   }
 
   return carNameStr;

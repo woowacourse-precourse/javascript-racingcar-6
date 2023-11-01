@@ -6,12 +6,22 @@ export const checkNumberValidity = (str) => {
   return !!condition;
 };
 
+const askUserTotalRoundNumber = async () => {
+  const input = await Console.readLineAsync(ROUNDS_TO_PLAY);
+  return input;
+};
+
+const throwError = (msg) => {
+  throw new Error(msg);
+};
+
 const getValidTotalRoundNumber = async () => {
-  const totalRoundNumber = await Console.readLineAsync(ROUNDS_TO_PLAY);
+  const totalRoundNumber = await askUserTotalRoundNumber();
 
   const isNumberValid = checkNumberValidity(totalRoundNumber);
+
   if (!isNumberValid) {
-    throw new Error(ERROR_WRONG_NUMBER_FORM);
+    throwError(ERROR_WRONG_NUMBER_FORM);
   }
 
   return parseInt(totalRoundNumber, 10);

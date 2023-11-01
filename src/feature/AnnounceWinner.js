@@ -22,6 +22,7 @@ const announceWinner = (carDataList) => {
   const winnerArray = chooseWinnerInArray(carDataList);
 
   const winnerStr = winnerArray.join(WINNER_JOINING_MARK);
+
   Console.print(`${FINAL_WINNER} : ${winnerStr}`);
 };
 export default announceWinner;
