@@ -1,9 +1,7 @@
-const NUMBER_RANGE = /^[1-9]+$/;
-
 class Validation {
   validateInputCar(carNameArray) {
     carNameArray.forEach((carName) => {
-      if (carName === '' || carName.length > 5) {
+      if (carName === '' || carName.length > 5 || carName.trim() === '') {
         throw new Error(
           '[ERROR] 자동차 이름은 1자 이상 5자 이하만 가능합니다.',
         );
@@ -13,8 +11,7 @@ class Validation {
 
   validateInputNumber(inputValue) {
     if (
-      typeof Number(inputValue) !== 'number' ||
-      !NUMBER_RANGE.test(inputValue)
+      isNaN(inputValue) || inputValue.trim() === ''
     ) {
       throw new Error('[ERROR] 시도할 횟수는 숫자 형식만 가능합니다.');
     }
