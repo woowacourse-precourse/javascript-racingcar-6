@@ -26,7 +26,7 @@ const ERROR_MESSAGE = {
 const GAME_STRING = {
   NAME_SPLIT: ',',
   DISTANCE: '-',
-  WINNER_JOIN: ', ',
+  WINNER_JOIN: ',',
   NEW_LINE: '\n',
 };
 
