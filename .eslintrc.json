@@ -1,0 +1,18 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": ["airbnb", "plugin:prettier/recommended"],
+  "rules": {
+    "import/prefer-default-export": "off",
+    "import/extensions": "off",
+    "class-methods-use-this": "off",
+    "no-undef": "off",
+    "no-param-reassign": "off"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2022
+  }
+}
