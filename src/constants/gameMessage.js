@@ -6,4 +6,4 @@ const GAME_MESSAGE = {
   GAME_CAR_DISTANCE: "-",
 };
 
-export default { GAME_MESSAGE };
+export { GAME_MESSAGE };
