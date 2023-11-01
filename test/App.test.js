@@ -27,8 +27,14 @@ describe("gameIntro 파일 테스트", () => {
     expect(result).toContainEqual("hong", "sung", "soo");
   });
 
-  test("자동차 이름 예외처리", async () => {
+  test("자동차 이름 5글자 이상 예외처리", async () => {
     const inputs = ["Hongsungsoo"];
+    mockReadLineAsync(inputs);
+    await expect(carNameInput()).rejects.toThrow("[ERROR]");
+  });
+
+  test("자동차 이름 공백 예외처리", async () => {
+    const inputs = [""];
     mockReadLineAsync(inputs);
     await expect(carNameInput()).rejects.toThrow("[ERROR]");
   });
