@@ -42,7 +42,7 @@ d
 
 - [x] view(inputview) 에서 전달 받은 자동차 이름(들)을 `' , '` 단위로 나누어 각 문자열을 controller(validate) 로 전달한다.
 
-- [ ] model(car) 에서 전달받은 자동차 객체들의 `이름과 거리 값을 가공`하여 view(outputView) 로 전달한다.
+- [x] model(car) 에서 전달받은 자동차 객체들의 `이름과 거리 값을 가공`하여 view(outputView) 로 전달한다.
 
 - [ ] model(car) 에서 전달받은 자동차 객체들의 `거리 값을 비교하여 가장 큰 거리 값을 가진 자동차 객체`의 이름을 view(outputView) 로 전달한다.
 
