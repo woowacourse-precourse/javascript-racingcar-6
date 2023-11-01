@@ -2,7 +2,6 @@ import { isRandomNumberGreaterThanOrEqualFour } from './randomNumber.js';
 import { getGameCount } from './getGameCount.js';
 import { inputCarsNames } from './getCarNames.js';
 import { Console } from '@woowacourse/mission-utils';
-
 class App {
     play() {
         async function playGame() {
