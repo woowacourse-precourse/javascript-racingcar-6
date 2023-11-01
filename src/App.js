@@ -1,19 +1,25 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 class App {
-  play() {
-    const [carName, cnt] = userInput();
-    const carLength = carName.length;
-    let carForward = Array.from({ carLength }, () => 0);
-
-    MissionUtils.Console.print("\n실행 결과");
-    while(cnt -= 1) {
-      const randomNumber = generateRandomNumber(carLength);
-      carForward = carForward.map((value, idx) => (randomNumber[idx] >= 4 ? value + 1 : value));
-      printResult(carName, carForward);
+  async play() {
+    try {
+      let [carName, cnt] = await this.userInput();
+  
+      const carLength = carName.length;
+      let carForward = Array.from({ length: carLength }, () => 0);
+      MissionUtils.Console.print("\n실행 결과");
+      while(cnt) {
+        cnt -= 1
+        const randomNumber = this.generateRandomNumber(carLength);
+        carForward = carForward.map((value, idx) => ((randomNumber[idx] >= 4 ? value + 1 : value)));
+        this.printResult(carName, carForward);
+      }
+      
+      this.printTotalResult(carName, carForward);
+    } catch (error) {
+      MissionUtils.Console.print(error.message);
+      throw error;
     }
-
-    printTotalResult(carName, carForward);
   }
 
   async userInput() {
@@ -22,25 +28,25 @@ class App {
         "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
       );
       const carName = input.split(',');
+
       if (!this.areElementsFiveCharactersOrLess(carName)) {
-        throw new Error("[ERROR] 5자가 넘는 자동차 이름이 존재합니다.")
+        throw new Error("[ERROR] 1자 이상 5자 이하의 자동차 이름을 입력해주세요.")
       }
       if (!this.areCarNamesUnique(carName)) {
         throw new Error("[ERROR] 중복된 자동차 이름이 존재합니다.")
       }
+
       const cnt = await MissionUtils.Console.readLineAsync(
         "시도할 횟수는 몇 회인가요?\n"
       );
+      return [carName, +cnt];
     } catch(error) {
-      MissionUtils.Console.print(error.message);
-      return;
+      throw error;
     }
-
-    return carName, cnt;
   }
 
   areElementsFiveCharactersOrLess(carName) {
-    return carName.every(e => e.length <= 5);
+    return carName.every(e => e.length <= 5 && e.length >= 1);
   }
 
   areCarNamesUnique(carName) {
