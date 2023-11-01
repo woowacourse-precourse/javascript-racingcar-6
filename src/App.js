@@ -1,18 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-
-class Car {
-	constructor(name)
-	{
-		this.name = name;
-		this.pos = 0;
-	}
-	race()
-	{
-		if (MissionUtils.Random.pickNumberInRange(0, 9) > 3)
-            this.pos++;
-		MissionUtils.Console.print(this.name + ' : ' + '-'.repeat(this.pos));
-	}
-}
+import { Car } from "./car.js"
 
 class App {
 
@@ -56,17 +43,8 @@ class App {
     MissionUtils.Console.print("최종 우승자 : " + winners.map((winner) => winner.name).join(", "));
   }
 
-  async racingGame()
+  race(cars, round)
   {
-
-    let playerInput = await MissionUtils.Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
-    const playerArr = playerInput.split(",");
-    const cars = this.checkPlayerInput(playerArr);
-
-    let roundInput = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
-
-    const round = this.checkRoundInput(roundInput);
-
     MissionUtils.Console.print("\n실행 결과");
     for (let i = 0 ; i < round ; i++)
     {
@@ -74,6 +52,18 @@ class App {
         car.race();
       MissionUtils.Console.print("");
     }
+  }
+
+  async racingGame()
+  {
+
+    let playerInput = await MissionUtils.Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
+    const cars = this.checkPlayerInput(playerInput.split(","));
+
+    let roundInput = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+    const round = this.checkRoundInput(roundInput);
+
+    this.race(cars, round);
     this.printResult(cars);
   }
 
