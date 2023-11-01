@@ -18,10 +18,7 @@ export default class Race {
     }
   }
   async printResult () {
-    await this.cars.forEach(car => this.handleMoveForwards(car));
-  }
-  async handleMoveForwards (car) {
-    return await car.moveForwards();
+    await this.cars.forEach(async (car) => await car.moveForwards());
   }
 
   // 경기 종료

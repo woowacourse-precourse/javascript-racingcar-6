@@ -101,7 +101,6 @@
   - [ ] Race.js
     - [ ] compete()
     - [ ] printResult()
-    - [ ] handleMoveForwards(car)
     - [ ] getWinner()
 - [x] 디버깅용 console.log 삭제하기 
 - [x] EOL확인하기 (End of line) 
