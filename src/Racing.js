@@ -6,6 +6,7 @@ const MSG_GAME_START =
   '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n';
 const MSG_TRY_TIME = '시도할 횟수는 몇 회인가요?\n';
 const ERROR_MSG_INPUT = '[ERROR] 자동차 이름이 잘못된 형식입니다.';
+const ERROR_MSG_GAMECOUNT = '[ERROR] 시도 횟수 입력이 잘못되었습니다.';
 const MSG_EMPTY_LINE = '';
 const MSG_RESULT = '\n실행 결과';
 
@@ -34,7 +35,7 @@ class Racing {
   async decideGameCount() {
     const gameCount = await Screen.getUserInput(MSG_TRY_TIME);
     if (!Validation.isProperTryTime(gameCount)) {
-      throw new Error(ERROR_MSG_INPUT);
+      throw new Error(ERROR_MSG_GAMECOUNT);
     }
 
     this.numberOfGames = gameCount;
