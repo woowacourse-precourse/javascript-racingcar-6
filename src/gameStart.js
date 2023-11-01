@@ -23,18 +23,18 @@ const getCarName = async () => {
 const nameValidation = (name) => {
   // 쉼표로 구분하지 않은 경우
   if (!name.includes(",")) {
-    throw new Error("[Error] 자동차 이름은 쉼표(,)를 기준으로 구분해 주세요.");
+    throw new Error("[ERROR] 자동차 이름은 쉼표(,)를 기준으로 구분해 주세요.");
   }
   // 쉼표로 구분한 경우
   const names = name.split(",").map((name) => name.trim());
   names.map((name) => {
     // 이름이 1자 이하인 경우
     if (name.length < 1) {
-      throw new Error("[Error] 자동차 이름은 1자 이상으로 입력해 주세요.");
+      throw new Error("[ERROR] 자동차 이름은 1자 이상으로 입력해 주세요.");
     }
     // 이름이 5자 이상인 경우
     if (name.length > 5) {
-      throw new Error("[Error] 자동차 이름은 5자 이하로 입력해 주세요.");
+      throw new Error("[ERROR] 자동차 이름은 5자 이하로 입력해 주세요.");
     }
   });
   return names;
@@ -56,11 +56,11 @@ const getMaxNum = async () => {
 const numValidation = (num) => {
   // 입력값이 숫자가 아닐 경우
   if (isNaN(num)) {
-    throw new Error("[Error] 시도할 횟수는 숫자로 입력해 주세요.");
+    throw new Error("[ERROR] 시도할 횟수는 숫자로 입력해 주세요.");
   }
   // 입력값이 1보다 작을 경우
   if (num < 1) {
-    throw new Error("[Error] 시도할 횟수는 1 이상의 숫자로 입력해 주세요.");
+    throw new Error("[ERROR] 시도할 횟수는 1 이상의 숫자로 입력해 주세요.");
   }
   return num;
 };
