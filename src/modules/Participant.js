@@ -1,10 +1,12 @@
+import { GAME_ERROR } from "./Constant.js";
+
 class Participant {
   constructor(input) {
     this.input = input.split(",");
   }
 
   validate() {
-    if (this.errorCheck()) throw new Error("[ERROR]");
+    if (this.errorCheck()) throw new Error(GAME_ERROR.ERROR_NAME);
     return true;
   }
 
@@ -44,5 +46,4 @@ class Participant {
     return this.input.length !== [...new Set(this.input)].length;
   }
 }
-
 export default Participant;

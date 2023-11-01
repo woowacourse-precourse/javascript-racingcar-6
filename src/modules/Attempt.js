@@ -1,20 +1,20 @@
-import { Console } from "@woowacourse/mission-utils";
+import { GAME_ERROR } from "./Constant.js";
 
 class Attempt {
-  async userInputTry() {
-    const input = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
-
-    this.userInput = Number(input);
-
-    if (!this.validate()) throw new Error("[ERROR]");
-    return true;
+  constructor(input) {
+    this.userTryInput = input;
   }
 
   validate() {
+    if (!this.check()) throw new Error(GAME_ERROR.ERROR_NUMBER);
+    return true;
+  }
+
+  check() {
     return (
-      !isNaN(this.userInput) &&
-      this.userInput > 0 &&
-      Number.isInteger(this.userInput)
+      !isNaN(this.userTryInput) &&
+      this.userTryInput > 0 &&
+      Number.isInteger(this.userTryInput)
     );
   }
 }
