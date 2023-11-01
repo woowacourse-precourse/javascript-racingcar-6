@@ -23,7 +23,6 @@ class App {
       Console.print("");
 
       // 레이싱게임 진행
-      console.log(cars, tryCount);
       let winner = new RacingGame(cars, tryCount).racing();
 
       // 최종 우승자 출력하기
@@ -35,6 +34,3 @@ class App {
 }
 
 export default App;
-
-const app = new App();
-app.play();
