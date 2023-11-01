@@ -8,6 +8,14 @@ class App {
     return carNames;
   }
 
+  validateCarNames(carNames){
+    carNames.forEach(carName => {
+      if (carName.length > 5){
+        throw new Error("[ERROR] 자동차 이름의 길이가 너무 깁니다.");
+      }
+    });
+  }
+
   generateCars(carNames) {
     this.cars = [];
     carNames.forEach(carName => {
@@ -24,6 +32,7 @@ class App {
 
   async play() {
     const carNames = await this.receiveCarNames();
+    this.validateCarNames(carNames)
     this.generateCars(carNames);
     const gameCount = await this.receiveGameCount();
   }
