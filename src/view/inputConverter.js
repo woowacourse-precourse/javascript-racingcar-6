@@ -1,6 +1,6 @@
 // @ts-check
 
-import { Cars } from "../domain/cars";
+import { Cars } from "../domain/qqcars";
 
 export class InputConverter {
   /**

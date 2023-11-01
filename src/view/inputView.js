@@ -3,7 +3,7 @@ import { Random, Console } from "@woowacourse/mission-utils";
 import { MESSAGE } from "../constants/constants";
 import { InputValidator } from "./inputValidator";
 import { InputConverter } from "./inputConverter";
-import { Cars } from "../domain/cars";
+import { Cars } from "../domain/qqcars";
 class InputView {
   /**
    * @type {InputValidator}
