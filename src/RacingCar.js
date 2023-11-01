@@ -24,19 +24,6 @@ class RacingCar {
     this.#distance = distance;
   }
 
-  static playGame(racingCars, movementCount) {
-    Console.print("\n실행 결과");
-
-    Array.from({ length: movementCount }, () => {
-      racingCars.forEach((racingCar) => {
-        racingCar.playRound();
-      });
-      Console.print("");
-    });
-
-    this.printWinners(racingCars);
-  }
-
   playRound() {
     this.#moveOrStop();
     this.#printRoundResult();
@@ -58,18 +45,6 @@ class RacingCar {
 
   #printRoundResult() {
     Console.print(`${this.#name} : ${"-".repeat(this.#distance)}`);
-  }
-
-  static printWinners(racingCars) {
-    const maxDistance = Math.max(
-      ...racingCars.map((racingCar) => racingCar.distance)
-    );
-    
-    const winners = racingCars
-      .filter((racingCar) => racingCar.distance === maxDistance)
-      .map((racingCar) => racingCar.name);
-
-    Console.print(`최종 우승자 : ${winners.join(", ")}`);
   }
 
   static initializeCars(names) {

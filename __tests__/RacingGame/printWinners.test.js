@@ -1,4 +1,5 @@
 import RacingCar from "../../src/RacingCar";
+import RacingGame from "../../src/RacingGame";
 import { getLogSpy } from "../../test-utils";
 
 describe("우승자 출력 테스트", () => {
@@ -13,7 +14,7 @@ describe("우승자 출력 테스트", () => {
     const logSpy = getLogSpy();
 
     // when
-    RacingCar.printWinners([lucas, pobi]);
+    RacingGame.printWinners([lucas, pobi]);
 
     // then
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(lucas.name));
@@ -30,7 +31,7 @@ describe("우승자 출력 테스트", () => {
     const logSpy = getLogSpy();
 
     // when
-    RacingCar.printWinners([lucas, pobi]);
+    RacingGame.printWinners([lucas, pobi]);
 
     // then
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(lucas.name));

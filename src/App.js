@@ -1,4 +1,5 @@
 import RacingCar from "./RacingCar.js";
+import RacingGame from "./RacingGame.js";
 import { inputCarNames, inputMovementCount } from "./helpers/index.js";
 
 class App {
@@ -8,7 +9,7 @@ class App {
 
     const racingCars = RacingCar.initializeCars(carNamesInput.split(","));
 
-    RacingCar.playGame(racingCars, movementCountInput);
+    RacingGame.play(racingCars, movementCountInput);
   }
 }
 
