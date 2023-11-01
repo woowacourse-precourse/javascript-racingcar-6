@@ -1,5 +1,17 @@
 class App {
-  async play() {}
+  async play() {
+    const CARS = await this.getCarNames();
+    const MOVING_COUNT = await this.getMovingCount();
+
+    let CURRENT_CARS = CARS;
+    for (let i = 0; i < MOVING_COUNT; i++) {
+      CURRENT_CARS = this.moveCars(CURRENT_CARS);
+      this.printCurrentCarPosition(CURRENT_CARS);
+    }
+
+    const WINNERS = this.getWinners(CURRENT_CARS);
+    this.printWinners(WINNERS);
+  }
 
   /**
    * 쉼표(,)를 기준으로 구분하여, 자동차의 이름을 입력받습니다
