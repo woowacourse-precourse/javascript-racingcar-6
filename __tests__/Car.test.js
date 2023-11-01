@@ -1,4 +1,4 @@
-import Car from "../src/Car";
+import Car from "../src/Car.js";
 
 describe("Car 클래스 테스트", () => {
   test.each([
