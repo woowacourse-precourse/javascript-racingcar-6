@@ -1,10 +1,10 @@
-import GAME_MESSAGE from './constants/gameMessage';
-import TrialNum from './models/TrialNum';
-import messagePrinter from './utils/messagePrinter';
-import eachRaceStart from './utils/eachRaceStart';
-import printCurrentStatus from './utils/printCurrentStatus';
-import printWinners from './utils/printWinners';
-import AllCars from './models/Cars';
+import GAME_MESSAGE from './constants/gameMessage.js';
+import TrialNum from './models/TrialNum.js';
+import messagePrinter from './utils/messagePrinter.js';
+import eachRaceStart from './utils/eachRaceStart.js';
+import printCurrentStatus from './utils/printCurrentStatus.js';
+import printWinners from './utils/printWinners.js';
+import AllCars from './models/Cars.js';
 
 class App {
   #cars;

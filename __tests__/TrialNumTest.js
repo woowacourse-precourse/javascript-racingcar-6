@@ -1,5 +1,5 @@
-import ERROR_MESSAGE from '../src/constants/errorMessage';
-import TrialNum from '../src/models/TrialNum';
+import ERROR_MESSAGE from '../src/constants/errorMessage.js';
+import TrialNum from '../src/models/TrialNum.js';
 
 describe('시도 횟수 유효성 테스트', () => {
   test('정상 값 입력 시 통과', () => {

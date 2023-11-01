@@ -1,5 +1,5 @@
-import ERROR_MESSAGE from '../constants/errorMessage';
-import messagePrinter from '../utils/messagePrinter';
+import ERROR_MESSAGE from '../constants/errorMessage.js';
+import messagePrinter from '../utils/messagePrinter.js';
 
 class TrialNum {
   #trials;
