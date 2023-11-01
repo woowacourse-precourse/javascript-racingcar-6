@@ -42,13 +42,10 @@ class RacingGame {
   winner() {
     const winnerPosition = this.findWinnerPosition();
 
-    /** @type {string} 레이싱 승자 (,로 연결한 문자열) */
-    const win = this.racingCar
-      .filter((car) => car.carPosition == winnerPosition)
+    return this.racingCar
+      .filter((car) => car.carPosition === winnerPosition)
       .map((car) => car.carName)
       .join(', ');
-
-    return win;
   }
 }
 
