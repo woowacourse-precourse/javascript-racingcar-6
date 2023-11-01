@@ -1,8 +1,9 @@
-import getCarName from "./getCarName.js"
-import getAttemptsNumber from "./getAttemptsNumber.js"
-import printSteps from "./printSteps.js"
+import { getCarName,
+  getAttemptsNumber,
+  printSteps,
+  printWinner
+ } from "./functions"
 import Cars from "./Cars.js"
-import printWinner from "./printWinner.js"
 
 class App {
   async play() {
