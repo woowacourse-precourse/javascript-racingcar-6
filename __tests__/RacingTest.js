@@ -98,4 +98,12 @@ describe('Racing 게임 테스트', () => {
 
     expect(winners).toEqual(['hihi']);
   });
+
+  test('calculatePosition 메서드 테스트', () => {
+    const result = { yj: '--', hihi: '-' };
+
+    const position = app.calculatePosition('yj', result);
+
+    expect(position).toBe(2);
+  });
 });
