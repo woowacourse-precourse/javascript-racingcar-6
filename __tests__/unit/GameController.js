@@ -7,7 +7,7 @@ jest.mock('../../src/view/inputView.js', () => ({
   getUserInputTryCount: jest.fn(() => '5'),
 }));
 
-describe('GameController', () => {
+describe('게임 컨트롤러 테스트', () => {
   test('setCars 메서드 호출 시 객체 생성 및 저장 가능 여부', async () => {
     // Arrange
     const gameController = new GameController();
