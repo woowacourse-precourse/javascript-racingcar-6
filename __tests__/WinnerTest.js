@@ -1,6 +1,6 @@
 import ShowGameResult from "../src/utils/ShowGameResult";
 
-describe("ShowGameResult", () => {
+describe("게임 결과", () => {
   let showGameResult;
 
   beforeEach(() => {

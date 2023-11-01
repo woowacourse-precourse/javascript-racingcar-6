@@ -5,7 +5,7 @@ jest.mock("../src/utils/MovingForwardCase", () => ({
   movingForwardCase: jest.fn(),
 }));
 
-describe("ShowRoundLog", () => {
+describe("실행 결과", () => {
   let showRoundLog;
 
   beforeEach(() => {
