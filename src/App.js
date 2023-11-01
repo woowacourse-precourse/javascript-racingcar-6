@@ -61,10 +61,10 @@ class App {
     carArray.forEach((car) => {
       car.moveOrStay();
     });
-    this.printResult(carArray);
+    this.printRoundResult(carArray);
   }
 
-  printResult(carArray) {
+  printRoundResult(carArray) {
     carArray.forEach((car) => {
       Console.print(`${car.name} : ${'-'.repeat(car.moveCount)}`);
     });
