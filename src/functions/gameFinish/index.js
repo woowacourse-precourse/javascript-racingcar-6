@@ -1,3 +1,4 @@
+import { Console } from '@woowacourse/mission-utils';
 import { MESSAGE } from '../../constants/message';
 
 export const checkDistanceResult = carDistanceList => {
@@ -19,7 +20,7 @@ export const checkDistanceResult = carDistanceList => {
 };
 
 export const printWinner = winnerList => {
-  let winnerMessage = MESSAGE.printWinner;
+  let winnerMessage = `${MESSAGE.printWinner}`;
 
   winnerList.forEach((winner, index) => {
     if (index === 0) {
@@ -29,5 +30,5 @@ export const printWinner = winnerList => {
     }
   });
 
-  return winnerMessage;
+  Console.print(winnerMessage);
 };
