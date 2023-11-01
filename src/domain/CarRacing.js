@@ -17,6 +17,7 @@ class CarRacing {
   }
 
   race() {
+    // 인덱스가 0부터 시작하기 때문에 0라운드가 첫 번째 라운드
     for (let round = 0; round < this.#numberOfRounds; round += 1) {
       this.#cars.forEach((car) => {
         car.tryToMoveForward();

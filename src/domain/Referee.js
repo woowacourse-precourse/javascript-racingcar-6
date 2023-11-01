@@ -6,6 +6,7 @@ class Referee {
   }
 
   recordResult(name, moveCount, round) {
+    // 인덱스가 0부터 시작하기 때문에 0라운드가 첫 번째 라운드
     this.#results[round].set(name, moveCount);
   }
 
