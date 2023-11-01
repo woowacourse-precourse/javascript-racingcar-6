@@ -1,4 +1,5 @@
-import Car from './Car';
+import Car from './Car.js';
+import { MissionUtils } from '@woowacourse/mission-utils';
 
 class Race {
   constructor(cars) {
@@ -18,8 +19,9 @@ class Race {
 
   printStatus() {
     this.cars.forEach((car) => {
-      console.log(`${car.name} : ${car.getDistance()}`);
+      MissionUtils.Console.print(`${car.name} : ${car.getDistance()}`);
     });
+    MissionUtils.Console.print('\n');
   }
 }
 
