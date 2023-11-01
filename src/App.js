@@ -1,5 +1,11 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
+const INPUT_MESSAGES = {
+  INPUT_CAR_NAME:
+    "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n",
+  INPUT_ATTEMPT: "시도할 횟수는 몇 회인가요?\n",
+};
+
 const ERROR_MESSAGES = {
   CAR_NAME_OVER: "[ERROR] 차량 이름은 5자 이하로 입력해 주세요",
   CAR_NAME_ZERO: "[ERROR] 차량 이름은 공백을 사용할 수 없습니다.",
@@ -56,7 +62,7 @@ class App {
   //차량 이름에 대한 입력을 받고 배열의 형태로 반환하는 메서드
   async inputCarNames() {
     const CARS = await MissionUtils.Console.readLineAsync(
-      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
+      INPUT_MESSAGES.INPUT_CAR_NAME
     );
     const CAR_ARRAY = CARS.split(",");
     return CAR_ARRAY;
@@ -64,8 +70,9 @@ class App {
 
   //시도 횟수에 대한 입력을 받고 반환하는 메서드
   inputAttempt() {
-    const ATTEMPT_COUNT =
-      MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+    const ATTEMPT_COUNT = MissionUtils.Console.readLineAsync(
+      INPUT_MESSAGES.INPUT_ATTEMPT
+    );
     return ATTEMPT_COUNT;
   }
 
