@@ -13,6 +13,7 @@ class App {
 
     this.makeCar(carName);
     this.runRace(round);
+    this.printResultHeader();
   }
 
   async getCarName() {
@@ -112,7 +113,11 @@ class App {
   getWinner() {
     const maxDistance = Math.max(...this.car.map(car => car.distance));
     return this.car.filter(car => car.distance === maxDistance).map(car => car.name);
-  }  
+  }
+  
+  printResultHeader() {
+    Console.print("실행 결과");
+  }
 }
 
 const app = new App();
