@@ -1,4 +1,4 @@
-import { GAME_ERROR } from "./constant.js";
+import { GAME_ERROR } from "./Constant.js";
 
 class Participant {
   constructor(input) {

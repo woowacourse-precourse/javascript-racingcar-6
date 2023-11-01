@@ -3,7 +3,7 @@ import Participant from "./Participant.js";
 import Attempt from "./Attempt.js";
 import RacingGame from "./RacingGame.js";
 import OutputView from "./OutputView.js";
-import { GAME_MESSAGE } from "./constant.js";
+import { GAME_MESSAGE } from "./Constant.js";
 
 class GameMain {
   constructor() {
