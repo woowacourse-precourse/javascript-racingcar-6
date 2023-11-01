@@ -17,6 +17,7 @@
     "prettier/prettier": ["error"],
     "no-console": "error",
     "import/extentions": "off",
-    "class-methods-use-this": "off"
+    "class-methods-use-this": "off",
+    "import/no-cycle": "off"
   }
 }

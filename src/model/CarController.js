@@ -3,15 +3,20 @@ import { Console } from "@woowacourse/mission-utils";
 class CarController {
   #names;
 
+  #distance;
+
   constructor(names) {
     this.#names = this.parseAndValidateNames(names);
+    this.#distance = 0;
+  }
+
+  static create(name) {
+    return new CarController(name);
   }
 
   parseAndValidateNames(names) {
     const nameArray = this.parseNames(names);
-
     this.validateNameLength(nameArray);
-
     return nameArray;
   }
 
@@ -29,7 +34,7 @@ class CarController {
 
   static async setNames() {
     const inputNames = await Console.readLineAsync(
-      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)",
+      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n",
     );
 
     if (!inputNames) {
@@ -41,6 +46,14 @@ class CarController {
 
   getNames() {
     return this.#names;
+  }
+
+  getDistance() {
+    return this.#distance;
+  }
+
+  incrementDistance() {
+    this.#distance += 1;
   }
 }
 

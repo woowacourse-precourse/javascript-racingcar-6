@@ -9,7 +9,7 @@ class Player {
 
   static async setattemptIterations() {
     const attemptIterationsObject =
-      await Console.readLineAsync("시도할 횟수는 몇 회인가요?");
+      await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
     const attemptIterations = parseInt(attemptIterationsObject, 10);
 
     if (Number.isNaN(attemptIterations)) {

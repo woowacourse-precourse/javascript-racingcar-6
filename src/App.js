@@ -1,13 +1,14 @@
-import { Console } from "@woowacourse/mission-utils";
-import { CarController, Player } from "./model/index.js";
+import { CarController, Player, CarGame } from "./model/index.js";
 
 class App {
   async play() {
-    const names = await CarController.setNames();
-    const attemptIterations = await Player.setattemptIterations();
+    const names = (await CarController.setNames()).getNames();
+    const attemptIterations = (
+      await Player.setattemptIterations()
+    ).getattemptIteraions();
 
-    Console.print(names.getNames());
-    Console.print(attemptIterations.getattemptIteraions());
+    const carGame = CarGame.createCarGame(names, attemptIterations);
+    carGame.play();
   }
 }
 
