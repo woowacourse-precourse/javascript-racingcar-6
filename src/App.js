@@ -1,6 +1,5 @@
 import GameManager from "./GameManager.js";
 
-
 class App {
   async play() {
     const gameManager = new GameManager();
