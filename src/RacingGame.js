@@ -1,7 +1,8 @@
 import { Console } from '@woowacourse/mission-utils';
-import { validator } from './utils/validaotor.js';
-import { MESSAGE_FORMAT } from './contants/messageFormat.js';
+import { MESSAGE_FORMAT } from './utils/messageFormat.js';
 import { CAR_NAME_ROLE } from './contants/racingGame.js';
+import { validator } from './utils/validaotor.js';
+import Car from './Car.js';
 
 export default class RacingGame {
   #carList = null;
@@ -10,6 +11,7 @@ export default class RacingGame {
   async run() {
     await this.#requireCarList();
     await this.#requireRound();
+    this.#startRace();
   }
 
   async #inputUser(message) {
@@ -24,16 +26,16 @@ export default class RacingGame {
     const input = await this.#inputUser(
       '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
     );
-
     const carList = input.split(',');
-    this.#carList = this.#validateCarList(carList);
+    this.#validateCarList(carList);
+    this.#carList = carList.map((carName) => new Car(carName));
   }
 
   async #requireRound() {
     const input = await this.#inputUser('시도할 횟수는 몇 회 인가요?\n');
-
     const round = Number(input);
-    this.#round = this.#validateRound(round);
+    this.#validateRound(round);
+    this.#round = round;
   }
 
   #validateCarList(carList) {
@@ -52,7 +54,6 @@ export default class RacingGame {
       const message = MESSAGE_FORMAT.error('자동차 이름이 중복 되었습니다.');
       throw new Error(message);
     }
-    return carList;
   }
 
   #validateRound(round) {
@@ -60,6 +61,16 @@ export default class RacingGame {
       const message = MESSAGE_FORMAT.error('시도할 횟수는 1이상의 숫자를 입력해 주세요.');
       throw new Error(message);
     }
-    return round;
+  }
+
+  #startRace() {
+    Console.print('\n실행 결과');
+    for (let i = 0; i < this.#round; i++) {
+      this.#carList.forEach((car) => {
+        car.move();
+        car.printPosition();
+      });
+      Console.print('');
+    }
   }
 }
