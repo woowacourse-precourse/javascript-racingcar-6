@@ -13,14 +13,12 @@ class Game {
 
     Console.print('실행결과');
 
-    while (this.isFinished()) {
+    for (let i = 0; i < this.#count; i++) {
       this.#cars.forEach((car) => {
         car.move();
         Console.print(`${car.getName()} : ${car.getPath()}`);
       });
       Console.print('');
-
-      this.#count -= 1;
     }
 
     this.showWinner();
@@ -42,10 +40,6 @@ class Game {
     const value = await input.readLine('시도할 횟수는 몇 회인가요?\n');
 
     this.#count = Number(value);
-  }
-
-  isFinished() {
-    return this.#count !== 0;
   }
 
   showWinner() {
