@@ -10,6 +10,13 @@ const outputView = {
         MissionUtils.Console.print(ERROR);
     },
 
+    printProcess(carList){
+        Object.keys(carList).forEach((car)=>{
+            MissionUtils.Console.print(`${car} : ${"-".repeat(carList[car])}`);
+        })
+        MissionUtils.Console.print("");
+    },
+
     printResultTitle(){
         MissionUtils.Console.print(MESSAGE.RESULT_TITLE);
     },
