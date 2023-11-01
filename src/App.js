@@ -27,6 +27,8 @@ class App {
     const carNames = carNamesInput.split(",");
     carNames.forEach((carName) => this.validateCarName(carName));
 
+    this.validateNumberOfCars(carNames);
+
     return carNames;
   }
 
@@ -81,6 +83,13 @@ class App {
         throw new Error("[ERROR] 자동차 이름은 쉼표(,)로만 구분해야 합니다.");
       }
     });
+  }
+
+  // 자동차 이름을 2개 이상 입력했는지 검사하는 함수
+  validateNumberOfCars(carNames) {
+    if (carNames.length <= 1) {
+      throw new Error("[ERROR] 자동차 이름은 2개 이상이어야 합니다.");
+    }
   }
 
   // 시도 횟수에 숫자 외 다른 값을 입력했는지 검사하는 함수
