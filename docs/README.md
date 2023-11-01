@@ -18,16 +18,15 @@
   - `moveCarGame` 메서드에서 플레이어마다 누적되는 전진개수를 하이폰으로 출력.   
 - [x] 이동거리를 비교하는 메서드 (우승자 찾기)    
   - `resultGame` 메서드를 이용해 최대스코어를 가진 사람들을 찾고 출력.    
-- [ ] 기능목록마다 테스트를 진행하기.    
+- [x] 기능목록마다 테스트를 진행하기.     
+  - `InputTest.js`,`GameTest.js` 를 이용해 입력과 게임 진행에 대한 테스트를 진행.   
 
 > 기능 목록 외 생각할 사항 
 - [x] eslint와 prettier 사용하기.   
 - [x] EOL(end of line) 설정 확인하기.      
 - [x] indent의 depth가 3을 넘지 않게 작성하기. - eslint에 설정   
 - [x] 깃 커밋 메세지 의미있게 작성하기.      
-- [ ] .gitignore 이용해보기.      
-- [ ] 변수와 함수명 의미있게 작성하기.   
-- [ ] `App.js`와 `index.js` 의 기능 생각하며, 메서드 분리.      
+- [x] 변수와 함수명 의미있게 작성하기.   
 
 
 <br>
@@ -46,6 +45,11 @@
 
   ```
   root
+  |---__tests__
+          |--- ApplicationTest.js
+          |--- StringTest.js
+          |--- GameTest.js
+          |___ InputTest.js
   |---src
       |--- App.js
       |--- index.js
@@ -57,16 +61,21 @@
             |--- game-play.js
             |--- result-game.js
             |___ index.js
-      |___ utils
+      |--- utils
             |--- error.js
             |--- input-print.js
             |--- regexp.js
             |___ index.js
+      |___ test
+            |--- gmae-play-test.js
+            |--- result-game-test.js
+            |___ index.js
   ```   
 
-  - 각 디렉토리마다 `index.js`를 모두 넣은 이유는 가독성을 위해서이다.   
+  - 각 디렉토리마다 `index.js`를 모두 넣은 이유는 가독성을 위해서이다.    
   *filepath를 간소화하기 위함.*   
 
+  - /src/test/ 는 테스트를 위해 살짝 기존의 메서드를 변형시킨 메서드 모음이다.   
 
 
 <br><br>
