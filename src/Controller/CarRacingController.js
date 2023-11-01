@@ -4,8 +4,6 @@ import Validation from "../Validation/Validation.js";
 import CONSTANTS from "../Constants/Constants.js";
 import { Console } from "@woowacourse/mission-utils";
 
-const validation = new Validation();
-
 class CarRacingController {
   constructor() {
     this.carRacingModel = new CarRacingModel();
@@ -29,15 +27,15 @@ class CarRacingController {
   }
 
   async inputCarName() {
-    let carNameString = await Console.readLineAsync(CONSTANTS.INPUT.CARNAMES);
-    validation.isValidCarName(carNameString);
-    validation.isSameCarName(carNameString);
+    let carNameString = await Console.readLineAsync(CONSTANTS.INPUT.CAR_NAMES);
+    Validation.isValidCarName(carNameString);
+    Validation.isSameCarName(carNameString);
     this.carRacingModel.setCarData(carNameString);
   }
 
   async inputTrialNumber() {
-    let trialNumber = await Console.readLineAsync(CONSTANTS.INPUT.TRIALNUMBER);
-    validation.isValidTrialNumber(trialNumber);
+    let trialNumber = await Console.readLineAsync(CONSTANTS.INPUT.TRIAL_NUMBER);
+    Validation.isValidTrialNumber(trialNumber);
     this.carRacingModel.setTrialNumber(trialNumber);
   }
 }

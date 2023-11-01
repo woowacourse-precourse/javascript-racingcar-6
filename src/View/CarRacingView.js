@@ -26,7 +26,7 @@ class CarRacingView {
   }
 
   printResultMessage() {
-    Console.print(CONSTANTS.RESULT.RESULTMESSAGE);
+    Console.print(CONSTANTS.RESULT.RESULT_MESSAGE);
   }
 
   lineBreak() {
