@@ -1,4 +1,4 @@
-import { isIncludeSpace, isNumber } from "../utils/validationUtils.js";
+import { isIncludeSpace, isNumber } from "../utils/ValidationUtils.js";
 
 export const InputValidator = {
   isValidCarName(carName){

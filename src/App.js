@@ -1,7 +1,7 @@
 import {Console} from '@woowacourse/mission-utils'
 import { Car } from './models/CarModel.js';
-import { MESSAGES } from './constants/messages.js';
-import { ERRORS } from './constants/errors.js';
+import { MESSAGES } from './constants/Messages.js';
+import { ERRORS } from './constants/Errors.js';
 import { InputValidator } from './validation/InputValidator.js';
 class App {
   constructor(){
