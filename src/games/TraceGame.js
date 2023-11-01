@@ -26,7 +26,7 @@ const MakeRandomNumber = (carCount) => {
 const MoveCars = (randomNumber, traceRoad) => {
   for (let i = 0; i < randomNumber.length; i++) {
     if (randomNumber[i] >= 4) {
-      traceRoad[i] += "-";
+      traceRoad[i] += GAME_MESSAGE.GAME_CAR_DISTANCE;
     }
   }
 };
