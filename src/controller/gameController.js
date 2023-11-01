@@ -15,6 +15,7 @@ class GameController {
 
   async run() {
     await this.getCarNames();
+    await this.getRoundNumber();
   }
 
   async getCarNames() {
@@ -24,6 +25,14 @@ class GameController {
     carNames.split(GAME_OPTION.inputSeparator).forEach((carName) => {
       this.#carService.addCar(carName);
     });
+  }
+
+  async getRoundNumber() {
+    const roundNumber = InputValidator.validateRoundNumber(
+      await this.#inputView.readRoundNumber(),
+    );
+
+    return roundNumber;
   }
 }
 

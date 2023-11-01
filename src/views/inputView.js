@@ -11,6 +11,10 @@ class InputView {
     const carNames = await this.read(GAME_MESSAGE.getCarNames);
     return carNames;
   }
+
+  async readRoundNumber() {
+    return this.read(GAME_MESSAGE.getRoundNumber);
+  }
 }
 
 export default InputView;

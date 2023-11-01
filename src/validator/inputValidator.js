@@ -15,6 +15,12 @@ class InputValidator {
     return isValid || this.throwError(ERROR_MESSAGE.hasWrongName);
   }
 
+  static checkIsNumber(query) {
+    const isValid = Number.isSafeInteger(Number(query));
+
+    return isValid || this.throwError(ERROR_MESSAGE.isNotNumber);
+  }
+
   static checkhasDuplicateName(query) {
     const isValid = new Set(query).size === query.length;
 
@@ -43,6 +49,12 @@ class InputValidator {
     });
 
     this.checkhasDuplicateName(carNames);
+
+    return query;
+  }
+
+  static validateRoundNumber(query) {
+    this.checkIsNumber(query);
 
     return query;
   }
