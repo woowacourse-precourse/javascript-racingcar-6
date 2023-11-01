@@ -12,9 +12,11 @@ class App {
     const round = await this.getRoundNumber();
 
     this.makeCar(carName);
-    this.runRace(round);
     this.printResultHeader();
-    this.printRoundResult();
+    this.runRace(round);
+
+    const winner = this.getWinner();
+    this.printWinner(winner);
   }
 
   async getCarName() {
@@ -108,6 +110,8 @@ class App {
   runRace(totalRound) {
     for (let i = 0; i < totalRound; i++) {
       this.car.forEach(car => car.move());
+      this.printRoundResult();
+      Console.print("\n");
     }
   }
 
@@ -117,13 +121,17 @@ class App {
   }
   
   printResultHeader() {
-    Console.print("실행 결과");
+    Console.print("\n실행 결과");
   }
 
   printRoundResult() {
     this.car.forEach(car => {
         Console.print(`${car.name} : ${'-'.repeat(car.distance)}`);
     });
+  }
+
+  printWinner(winner) {
+    Console.print(`최종 우승자 : ${winner.join(", ")}`);
   }
 }
 
