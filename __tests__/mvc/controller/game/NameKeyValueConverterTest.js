@@ -1,5 +1,4 @@
 import NameToKeyValueConverter from "../../../../src/controller/game/NameToKeyValueConverter";
-import NUMBERS from "../../../../src/constants/numbers";
 import testName from "../../../../src/constants/testName";
 
 describe("정상 진행 테스트", () => {
