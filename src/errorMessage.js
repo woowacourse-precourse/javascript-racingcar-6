@@ -6,4 +6,8 @@ export class ErrorMessage {
   static getDuplicateNameMessage() {
     return '[ERROR] 자동차 이름은 중복이 없어야 합니다.';
   }
+
+  static getAlphabetOnlyMessage() {
+    return '[ERROR] 자동차 이름은 영문만 가능합니다.';
+  }
 }

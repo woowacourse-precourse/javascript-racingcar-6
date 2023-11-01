@@ -15,12 +15,25 @@ export class CarNameValidator {
     return carNames.length === uniqueCarNames.size;
   }
 
+  static isAlphabetOnly(string) {
+    const regex = /^[a-zA-Z]*$/;
+    const carNames = string.split(',');
+    const isAllTrue = carNames
+      .map((car) => regex.test(car))
+      .every((car) => car === true);
+
+    return isAllTrue;
+  }
+
   static validate(string) {
     if (!this.isValidLength(string)) {
       return ErrorMessage.getInvalidLengthMessage();
     }
     if (!this.isUnique(string)) {
       return ErrorMessage.getDuplicateNameMessage();
+    }
+    if (!this.isAlphabetOnly(string)) {
+      return ErrorMessage.getAlphabetOnlyMessage();
     }
     return null;
   }
