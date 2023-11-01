@@ -3,33 +3,33 @@ export const CARS = [];
 
 // 사용자가 값을 입력할 때 메시지
 export const INPUT_MESSAGE = {
-  INPUT_CAR_NAMES:
+  inputCarNames:
     '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
-  INPUT_ATTEMPT_COUNT: '시도할 횟수는 몇 회인가요?\n',
+  inputAttemptCount: '시도할 횟수는 몇 회인가요?\n',
 };
 
 // 출력 메시지
 export const OUTPUT_MESSAGE = {
-  INIT_MESSAGE_WELCOME: '\n****레이싱 게임에 오신 것을 환영합니다!****',
-  INIT_MESSAGE_GUIDE: '경주할 자동차들과 레이싱게임을 시도할 횟수를 입력해주시면 결과를 보여드립니다!\n',
-  RESULT_GUIDE_MESSAGE: '실행 결과\n',
-  WINNER(winner) {
+  initMessageWelcome: '\n****레이싱 게임에 오신 것을 환영합니다!****',
+  initMessageGuide: '경주할 자동차들과 레이싱게임을 시도할 횟수를 입력해주시면 결과를 보여드립니다!\n',
+  resultGuideMessage: '실행 결과\n',
+  winner(winner) {
     return `최종우승자 : ${winner}`;
   },
-  EACHRACE(CAR_NAME, CAR_FORWARD_NUMBER) {
-    const FORWARDED = `${'-'.repeat(CAR_FORWARD_NUMBER)}`;
-    return `${CAR_NAME} : ${FORWARDED}`;
+  eachRace(carName, carForwardNumber) {
+    const forwarded = `${'-'.repeat(carForwardNumber)}`;
+    return `${carName} : ${forwarded}`;
   },
 };
 
 // 에러 메시지
 export const ERROR_MESSAGE = {
-  NO_COMMA: '[ERROR] ,가 없거나 하나의 차만 입력하셨습니다.',
-  NO_INPUT: '[ERROR] 값을 입력하지 않으셨습니다.',
-  NO_INPUT_AFTER_COMMA: '[ERROR] 쉼표 뒤에 아무 것도 입력하지 않으셨습니다.',
-  EXCEED_FIVE_CHARACTORS:
+  noComma: '[ERROR] ,가 없거나 하나의 차만 입력하셨습니다.',
+  noInput: '[ERROR] 값을 입력하지 않으셨습니다.',
+  noInputAfterComma: '[ERROR] 쉼표 뒤에 아무 것도 입력하지 않으셨습니다.',
+  exceedFiveCharacters:
     '[ERROR] 차 이름은 5자를 초과해서 입력할 수 없습니다.',
-  DUPLICATE_CAR_NAME: '[ERROR] 차 이름이 중복되었습니다.',
-  NO_NUMBER: '[ERROR] 숫자를 입력하지 않으셨습니다.',
-  NOT_POSITIVE_INTEGER: '[ERROR] 1 이상의 양의 정수를 입력하세요.',
+  duplicateCarName: '[ERROR] 차 이름이 중복되었습니다.',
+  noNumber: '[ERROR] 숫자를 입력하지 않으셨습니다.',
+  notPositiveInteger: '[ERROR] 1 이상의 양의 정수를 입력하세요.',
 };

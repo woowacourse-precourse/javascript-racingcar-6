@@ -34,7 +34,7 @@ describe('차이름 입력값 테스트', () => {
 
       // then
       await expect(app.play()).rejects.toThrow(
-        ERROR_MESSAGE.NO_INPUT_AFTER_COMMA
+        ERROR_MESSAGE.noInputAfterComma
       );
     }
   );
@@ -49,7 +49,7 @@ describe('차이름 입력값 테스트', () => {
       const app = new App();
 
       // then
-      await expect(app.play()).rejects.toThrow(ERROR_MESSAGE.NO_COMMA);
+      await expect(app.play()).rejects.toThrow(ERROR_MESSAGE.noComma);
     }
   );
 
@@ -65,7 +65,7 @@ describe('차이름 입력값 테스트', () => {
 
     // then
     await expect(app.play()).rejects.toThrow(
-      ERROR_MESSAGE.EXCEED_FIVE_CHARACTORS
+      ERROR_MESSAGE.exceedFiveCharacters
     );
   });
 
@@ -80,7 +80,7 @@ describe('차이름 입력값 테스트', () => {
 
       // then
       await expect(app.play()).rejects.toThrow(
-        ERROR_MESSAGE.DUPLICATE_CAR_NAME
+        ERROR_MESSAGE.duplicateCarName
       );
     }
   );
@@ -101,7 +101,7 @@ describe('시도할 횟수 입력값 테스트', () => {
 
       // then
       await expect(inputView.askAttemptCount()).rejects.toThrow(
-        ERROR_MESSAGE.NO_NUMBER
+        ERROR_MESSAGE.noNumber
       );
     }
   );
@@ -116,7 +116,7 @@ describe('시도할 횟수 입력값 테스트', () => {
 
       // then
       await expect(inputView.askAttemptCount()).rejects.toThrow(
-        ERROR_MESSAGE.NOT_POSITIVE_INTEGER
+        ERROR_MESSAGE.notPositiveInteger
       );
     }
   );
