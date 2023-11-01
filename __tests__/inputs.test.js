@@ -45,7 +45,7 @@ describe('경주할 자동차 이름 입력', () => {
 });
 
 describe('시도 횟수 입력', () => {
-  test('inputAttemps 메서드에 1을 입력하고, 1을 반환', async () => {
+  test('inputAttempts 메서드에 1을 입력하고, 1을 반환', async () => {
     //given
     const input = '1';
     mockQuestions(input);
@@ -69,7 +69,7 @@ describe('시도 횟수 입력', () => {
 
       // then
       await expect(result).rejects.toThrow(
-        '[ERROR] Invalid number of attemps input'
+        '[ERROR] Invalid number of attempts input'
       );
     });
   });
