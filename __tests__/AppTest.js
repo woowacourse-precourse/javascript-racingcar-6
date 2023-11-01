@@ -1,4 +1,7 @@
 import App, { ERROR_MESSAGE } from "../src/App.js";
+import { MissionUtils } from "@woowacourse/mission-utils";
+
+const { Random, Console } = MissionUtils;
 
 describe("App", () => {
   let app;
@@ -41,16 +44,20 @@ describe("App", () => {
     if (
       ("숫자가 아닐 때",
       async () => {
-        const input = "notnumber";
-        await expect(app.getChances.bind(app, input)).rejects.toThrow(
+        const originalReadLineAsync = Console.readLineAsync;
+        Console.readLineAsync = jest.fn(() => Promise.resolve("notanumber"));
+        await expect(app.getChances.bind(app)).rejects.toThrow(
           ERROR_MESSAGE.NUMBER
         );
+        Console.readLineAsync = originalReadLineAsync;
       })
     );
 
     it("숫자를 제대로 입력했을 때", async () => {
-      const input = "5";
-      await app.getChances(input);
+      const originalReadLineAsync = Console.readLineAsync;
+      Console.readLineAsync = jest.fn(() => Promise.resolve("5"));
+      await app.getChances();
+      Console.readLineAsync = originalReadLineAsync;
       expect(app.chances).toBe(5);
     });
   });
