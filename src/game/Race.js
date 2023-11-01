@@ -1,6 +1,6 @@
 import { Cars } from './Cars.js';
-import { Result } from '../Result.js';
 import { getGreatestNumber } from '../utils.js';
+import { printResult } from '../output/result.js';
 
 export class Race {
   #tryInput;
@@ -18,8 +18,12 @@ export class Race {
       count += 1;
       this.#cars.move();
     }
+  }
 
+  end() {
     const winners = this.getWinners();
+
+    printResult.final(winners.map((winner) => winner.getName()));
   }
 
   getWinners() {
