@@ -32,7 +32,14 @@ class App {
     }
     this.trialNumber = trialNumber;
   }
-
+  getRandom() {
+    const random = Random.pickNumberInRange(0, 9);
+    if (random >= 4) {
+      return "-";
+    } else {
+      return "";
+    }
+  }
   async play() {}
 }
 
