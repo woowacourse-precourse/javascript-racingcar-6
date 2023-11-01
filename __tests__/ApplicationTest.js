@@ -1,7 +1,8 @@
 import App from "../src/App.js";
 import Car from "../src/Car.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
-import { ERROR_MESSAGE } from "../src/constants/index.js";
+import { ERROR_MESSAGE, GAME_MESSAGE } from "../src/constants/index.js";
+import RacingcarGame from "../src/RacingcarGame.js";
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -66,6 +67,20 @@ describe("자동차 경주 게임", () => {
       await expect(app.play()).rejects.toThrow("[ERROR]");
     }
   );
+
+  test("한 명의 우승자가 제대로 출력되는지 확인", () => {
+    // given
+    const logSpy = getLogSpy();
+
+    // when
+    const game = new RacingcarGame();
+    game.printWinner({ pobi: ["-", "-", "-"] });
+
+    // then
+    expect(logSpy).toHaveBeenCalledWith(
+      expect.stringContaining(`${GAME_MESSAGE.WINNER}pobi`)
+    );
+  });
 });
 
 describe("시도 횟수 테스트", () => {
