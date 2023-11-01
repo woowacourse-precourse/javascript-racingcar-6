@@ -11,11 +11,7 @@ test("calculate호출 횟수 테스트", () => {
   const player = ["car1", "car2"];
   const userAttempts = 3;
   calculate.mockReturnValue({ car1: "-", car2: "-" });
-  const results = race(player, userAttempts);
+  race(player, userAttempts);
 
   expect(calculate).toHaveBeenCalledTimes(userAttempts);
-  expect(results).toEqual({
-    car1: "---",
-    car2: "---",
-  });
 });

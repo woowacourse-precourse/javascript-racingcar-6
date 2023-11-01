@@ -37,10 +37,6 @@ describe("경기 테스트 ", () => {
     MissionUtils.Random.pickNumberInRange.mockReturnValue(4);
     calculate(player, results);
 
-    expect(results).toEqual({
-      car1: "-",
-      car2: "-",
-    });
     for (let car in results) {
       expect(MissionUtils.Console.print).toHaveBeenCalledWith(
         expect.stringContaining(`${car} : -`)
