@@ -2,6 +2,7 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 import getNameInput from './components/getNameInput.js';
 import getCountInput from "./components/getCountInput.js";
 import randomPlay from "./components/randomPlay.js"
+import calcFinalResult from "./components/calcFinalResult.js";
 
 class App {
   async play() {
@@ -17,6 +18,7 @@ class App {
       }
       MissionUtils.Console.print('');
     }
+    await calcFinalResult(inputCars);
   }
 }
 
