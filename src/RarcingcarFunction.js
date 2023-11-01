@@ -19,3 +19,27 @@ export const movingNumber = async () => {
     Console.print("[ERROR]");
   }
 };
+
+const randomNumber = () => {
+  return Random.pickNumberInRange(0, 9);
+};
+
+const checkOverFour = () => {
+  return number >= 4;
+};
+
+export const startRound = (score) => {
+  for (let i = 0; i < score.length; i++) {
+    let RANDOM_NUMBER = randomNumber();
+    if (checkOverFour(RANDOM_NUMBER)) {
+      score[i]++;
+    }
+  }
+};
+
+export const currentRoung = (score, name) => {
+  for (let i = 0; i < score.length; i++) {
+    Console.print(`${name[i]} : ${"-".repeat(score[i])}`);
+  }
+  Console.print("");
+};
