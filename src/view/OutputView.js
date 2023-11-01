@@ -7,11 +7,11 @@ const OutputView = {
   },
 
   printRaceScore(name, score) {
-    Console.print(MESSAGE.RACE_SCORE);
+    Console.print(`${name} : ${StaticChar.CAR_DISTANCE.repeat(score)}`);
   },
 
   printNewRound() {
-    Console.print("");
+    Console.print(StaticChar.CAR_NAME_BLANK);
   },
 
   printGameWinnerMessage(winners) {
