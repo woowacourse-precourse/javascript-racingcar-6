@@ -11,10 +11,10 @@ export const CarNameGenerator = async() => {
       carNames.split(",").map((name) => name.trim());
       result.push(carNames);
     }
-    Console.print(`${carNames}`);
+    return carNames;
+    
   }
   catch (error) {
     throw new Error("[ERROR] 자동차 이름은 5자 이하여야 합니다.")
   }
-  
 };
