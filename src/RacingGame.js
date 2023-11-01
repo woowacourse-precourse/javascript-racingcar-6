@@ -43,7 +43,7 @@ class RacingGame {
       accumulateDistance = this.addDistance(this.cars, accumulateDistance);
       Console.print("");
     }
-    // 누적 거리를 의미하는 변수이며, 숫자로 표현되는 배열이다.
+    // 누적 거리를 의미하는 변수이며, 숫자로 표현되는 배열이다. 그런데 이 과정을 굳이 한번 더 거칠 필요가 있을까?
     const carsDistance = accumulateDistance.map((distance) => distance.length);
     const maxDistance = Math.max(0, ...carsDistance);
 
