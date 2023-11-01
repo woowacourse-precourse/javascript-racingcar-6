@@ -12,11 +12,10 @@ class OutputView {
     this.#print(message);
   }
 
-  printQuarterResult(raceCarsList) {
-    raceCarsList.forEach((car) => {
-      const carName = car.getCarName();
-      const positionMark = GAME_MESSAGES.positionMark.repeat(car.getCarPosition());
-      this.#printMessage(`${carName} : ${positionMark}`);
+  printQuarterResult(raceCarInfos) {
+    raceCarInfos.forEach((carInfo) => {
+      const positionMark = GAME_MESSAGES.positionMark.repeat(carInfo.position);
+      this.#printMessage(`${carInfo.name} : ${positionMark}`);
     });
     this.#printMessage('');
   }
