@@ -26,6 +26,7 @@
 - 잘못된 입력값 예외처리 테스트
 
 ## :file_folder: 패키지 구조 및 파일명
+---
 - src
   - comm
   - - Validate.js
@@ -36,14 +37,30 @@
   - - Racing.js
   - view
   - - UserInput.js
-  
-- RacingcarController는 model과 view를 관리하며 전체적인 로직 구성을 담당하고있음
-- Comm.js는 메세지 출력이나 로직처리를 위한 class 및 객체를 담고있음
-- Racing.js는 자동차 경주에 필요한 함수를 담고있음
-- UserInpu.js는 화면이라고 가정을 하여 사용자의 입력에 관한 함수를 담고있음
+---
+- RacingcarController
+- == RacingcarController는 model과 view를 관리하며 전체적인 로직 구성을 담당하고있다.
+- Comm.js
+- == Comm.js는 메세지 출력에 필요한 객체, validation 체크를 하는 함수가 포함되어있다.
+- Racing.js
+- == Racing.js는 자동차 경주에 필요한 모든 함수를 담고 있다.
+- UserInOutput.js
+- == UserInOutput.js는 사용자에게 보여지는 화면이라고 가정을 하여 사용자의 입력과 출력에 관한 함수를 담고있다.
 
+## 커밋 메세지 컨벤션
+---
+- Allowed <type>
+- feat (feature)
+- fix (bug fix)
+- docs (documentation)
+- style (formatting, missing semi colons, …)
+- refactor
+- test (when adding missing tests)
+- chore (maintain)
+---
 
 ## :high_brightness: 기능 구조
+---
 - 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
 - 각 자동차에 이름을 부여할 수 있다. 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
 - 자동차 이름은 쉼표(,)를 기준으로 구분하며 이름은 5자 이하만 가능하다.
@@ -52,10 +69,13 @@
 - 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한 명 이상일 수 있다.
 - 우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분한다.
 - 사용자가 잘못된 값을 입력한 경우 throw문을 사용해 "[ERROR]"로 시작하는 메시지를 가지는 예외를 발생시킨 후, 애플리케이션은 종료되어야 한다.
+---
 
 ## :key: 추가된 요구 사항
+---
 - indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다.
   - 예를 들어 while문 안에 if문이 있으면 들여쓰기는 2이다.
   - 힌트: indent(인덴트, 들여쓰기) depth를 줄이는 좋은 방법은 함수(또는 메소드)를 분리하면 된다.
 - Jest를 이용하여 본인이 정리한 기능 목록이 정상 동작함을 테스트 코드로 확인한다.
   - 테스트 도구 사용법이 익숙하지 않다면 `__tests__/StringTest.js`를 참고하여 학습한 후 테스트를 구현한다.
+---
