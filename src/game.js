@@ -3,6 +3,10 @@ import { Random, Console } from "@woowacourse/mission-utils";
 const carObjects = [];
 
 function printRoundResult() {
+  carObjects.forEach((car) => {
+    Console.print(`${car.name} : ${car.line}`);
+  })
+  Console.print('');
 }
 
 function playRound() {
