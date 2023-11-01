@@ -1,33 +1,11 @@
 import { Console } from '@woowacourse/mission-utils';
-import InputView from '../view/InputView';
 import randomNumberGenerator from '../utils/randomNumberGenerator';
 // import OutputView from '../view/OutputView';
 
 export default class RaceController {
-  constructor() {
-    this.inputView = new InputView();
-    this.carList = [];
-    // this.outputView = new OutputView();
-  }
-
-  // 회차별 출력에 쓸 양식 만들기 { pobi : ----- }
-  // makeCarObj() {
-  //   const { userInputCarList } = this.inputView;
-  //   userInputCarList.forEach((userInputCar, index) => {
-  //     this.carList.userInputCarList[index] = { carName: userInputCar, score: 0 };
-  //   });
-  //   return this.carList.userInputCarList;
-  // }
-
-  startGame() {
-    let currentPlayNumber = 0;
-    while (this.playNumber > currentPlayNumber) {
-      this.countScore();
-      this.printResult();
-      currentPlayNumber += 1;
-    }
-    // Output.printWinner(); 해줄 예정
-    this.printWinner(); // 마찬가지로 확신 안 서지만 시도
+  constructor({ userInputCarList, userInputPlayNumber }) {
+    this.carList = userInputCarList;
+    this.playNumber = userInputPlayNumber;
   }
 
   countScore() {
@@ -37,6 +15,16 @@ export default class RaceController {
         this.carList[index].score += 1;
       }
     });
+  }
+
+  startGame() {
+    let currentPlayNumber = 0;
+    while (this.playNumber > currentPlayNumber) {
+      this.countScore();
+      this.printResult();
+      currentPlayNumber += 1;
+    }
+    this.printWinner();
   }
 
   printResult() {
