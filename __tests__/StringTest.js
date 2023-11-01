@@ -1,30 +1,74 @@
-describe("문자열 테스트", () => {
-  test("split 메서드로 주어진 값을 구분", () => {
-    const input = "1,2";
-    const result = input.split(",");
+import App from "../src/App.js";
+import { Console } from "@woowacourse/mission-utils";
 
-    expect(result).toContain("2", "1");
-    expect(result).toContainEqual("1", "2");
+describe("입력 유효성 검사", () => {
+  describe("자동차 이름 검사", () => {
+    test("이름이 5자 이하인 경우", async () => {
+      const mockReadLineAsync = jest.fn();
+      mockReadLineAsync
+        .mockResolvedValueOnce("pobi,woni,jun")
+        .mockResolvedValueOnce("5");
+
+      Console.readLineAsync = mockReadLineAsync;
+
+      const app = new App();
+
+      await expect(app.play()).resolves.not.toThrow();
+    });
+
+    test("이름이 5자 초과인 경우", async () => {
+      const mockReadLineAsync = jest.fn();
+      mockReadLineAsync
+        .mockResolvedValueOnce("pobi,eastjun")
+        .mockResolvedValueOnce("5");
+
+      Console.readLineAsync = mockReadLineAsync;
+
+      const app = new App();
+
+      await expect(app.play()).rejects.toThrow("[ERROR] 이름이 5자 초과입니다.");
+    });
   });
 
-  test("split 메서드로 구분자가 포함되지 않은 경우 값을 그대로 반환", () => {
-    const input = "1";
-    const result = input.split(",");
+  describe("시도 횟수 검사", () => {
+    test("시도 횟수가 유효한 경우", async () => {
+      const mockReadLineAsync = jest.fn();
+      mockReadLineAsync
+        .mockResolvedValueOnce("pobi,woni,jun")
+        .mockResolvedValueOnce("5");
 
-    expect(result).toContain("1");
-  });
+      Console.readLineAsync = mockReadLineAsync;
 
-  test("substring 메서드로 특정 구간 값을 반환", () => {
-    const input = "(1,2)";
-    const result = input.substring(1, 4);
+      const app = new App();
 
-    expect(result).toEqual("1,2");
-  });
+      await expect(app.play()).resolves.not.toThrow();
+    });
 
-  test("at 메서드로 특정 위치의 문자 찾기", () => {
-    const input = "abc";
-    const result = input.at(0)
+    test("시도 횟수가 유효하지 않은 경우 (0이하인 경우)", async () => {
+      const mockReadLineAsync = jest.fn();
+      mockReadLineAsync
+        .mockResolvedValueOnce("pobi,woni,jun")
+        .mockResolvedValueOnce("0");
 
-    expect(result).toEqual("a");
+      Console.readLineAsync = mockReadLineAsync;
+
+      const app = new App();
+
+      await expect(app.play()).rejects.toThrow("[ERROR] 올바른 숫자를 입력하세요.");
+    });
+
+    test("시도 횟수가 isNaN인 경우", async () => {
+      const mockReadLineAsync = jest.fn();
+      mockReadLineAsync
+        .mockResolvedValueOnce("pobi,woni,jun")
+        .mockResolvedValueOnce("abc");
+
+      Console.readLineAsync = mockReadLineAsync;
+
+      const app = new App();
+
+      await expect(app.play()).rejects.toThrow("[ERROR] 올바른 숫자를 입력하세요.");
+    });
+
   });
 });
