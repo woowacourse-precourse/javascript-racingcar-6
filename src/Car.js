@@ -1,4 +1,4 @@
-import constants from './constants';
+import constants from './constants/constants';
 import { Random } from '@woowacourse/mission-utils';
 
 class Car {
