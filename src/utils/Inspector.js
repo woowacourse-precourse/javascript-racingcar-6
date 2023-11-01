@@ -1,12 +1,13 @@
 export default class Inspector {
   async isSplitable(string){
-    const splited = await string.split(',');
+    const splited = await string.replace(/ /g, '').split(',');
+    if (splited[splited.length-1] === ''){
+      splited.pop();
+    }
+    console.log(splited)
     if (splited.length < 2) {
       return false;
     }
-    splited.forEach((v, i, arr) => {
-      arr[i] = v.trim();
-    })
     if (splited.filter(v => v.length > 5).length !== 0) {
       return false;
     }
