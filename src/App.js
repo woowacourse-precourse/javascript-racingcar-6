@@ -17,6 +17,19 @@ class App {
   makeCar(carName) {
     return carName.map((name) => ({ name, position: 0 }));
   }
+  racing(cars, tryCount) {
+    for (let i = 0; i < tryCount; i++) {
+      cars.forEach((car) => {
+        const random = MissionUtils.Random.pickNumberInRange(0, 9);
+        if (random >= 4) {
+          car.position++;
+        }
+      });
+      cars.forEach((car) => {
+        MissionUtils.Console.print(`${car.name}: ${"-".repeat(car.position)}`);
+      });
+    }
+  }
 }
 
 export default App;
