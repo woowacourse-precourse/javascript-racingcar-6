@@ -15,14 +15,14 @@ class RacingGame {
     return distance;
   }
 
-  isAboveMininum(distance) {
+  isNumberAboveMininum() {
+    let distance = this.generateRandomNum();
     if (distance >= driveNumber.MIN_DRIVE_LENGTH) return "-";
   }
 
   addDistance(cars, accumulateDistance) {
     for (let car = 0; car < cars.length; car++) {
-      let distance = this.generateRandomNum();
-      accumulateDistance[car] += this.isAboveMininum(distance);
+      accumulateDistance[car] += this.isNumberAboveMininum();
       Console.print(`${cars[car]} : ${accumulateDistance[car]}`);
     }
     return accumulateDistance;
