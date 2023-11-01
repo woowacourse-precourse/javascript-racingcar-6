@@ -19,7 +19,7 @@ class App {
 
     const totalRoundNumber = await getValidTotalRoundNumber();
 
-    Console.print('실행 결과');
+    Console.print('\n실행 결과');
     for (let round = 0; round < totalRoundNumber; round += 1) {
       const roundResult = moveCarRandomly(this.carDataList);
       announceRoundResult(roundResult);

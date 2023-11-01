@@ -15,6 +15,6 @@ const announceRoundResult = (carDataList) => {
     );
     Console.print(nameDistanceRow);
   });
-  Console.print('\n');
+  Console.print('');
 };
 export default announceRoundResult;

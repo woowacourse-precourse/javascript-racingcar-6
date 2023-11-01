@@ -1,4 +1,4 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Console } from '@woowacourse/mission-utils';
 
 export const checkNumberValidity = (str) => {
   const condition = /^[0-9]+$/.test(str);
@@ -7,12 +7,12 @@ export const checkNumberValidity = (str) => {
 
 const getValidTotalRoundNumber = async () => {
   const totalRoundNumber = await Console.readLineAsync(
-    "시도할 횟수는 몇 회인가요?"
+    '시도할 횟수는 몇 회인가요?\n'
   );
 
   const isNumberValid = checkNumberValidity(totalRoundNumber);
   if (!isNumberValid) {
-    throw new Error("[Error]");
+    throw new Error('[ERROR]');
   }
 
   return parseInt(totalRoundNumber, 10);
