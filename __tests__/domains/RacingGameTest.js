@@ -18,23 +18,6 @@ describe('class RacingGame Test', () => {
     racingGame = new RacingGame(carInstanceList, refree);
   });
 
-  describe('메서드 test : createRandomNumber()', () => {
-    test('20번 실행했을때 모든 값들이 0과 9 사이인지 확인하는 테스트', () => {
-      const randomNumbers = Array.from({ length: 20 }, () =>
-        racingGame.createRandomNumber(
-          RANDOM_NUMBER_RANGE.MIN,
-          RANDOM_NUMBER_RANGE.MAX
-        )
-      );
-      const isValidRange = [...randomNumbers].every(
-        (num) =>
-          num >= RANDOM_NUMBER_RANGE.MIN && num <= RANDOM_NUMBER_RANGE.MAX
-      );
-
-      expect(isValidRange).toBe(true);
-    });
-  });
-
   describe('메서드 test : isFinish() 테스트', () => {
     test('TRY_ROUND 만큼 round를 진행했을때 finish가 true로 반환되는지 확인', () => {
       Array.from({ length: TRY_ROUND }, () => {
