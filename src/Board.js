@@ -4,7 +4,7 @@ import Car from './Car.js';
 
 const MOVE_MIN_DIGIT = 4;
 const MAX_NAME_LENGTH = 5;
-const POSITIVE_INTEGER_REGEX = /^\d+$/;
+const POSITIVE_INTEGER_REGEX = /^[1-9]$/;
 
 class Board {
 
@@ -44,6 +44,7 @@ class Board {
   #validateName(name) {
     if (name.length > MAX_NAME_LENGTH) {
       throw new Error(Strings.ERROR_NAME_LENGTH);
+      process.exit(1);
     }
   }
 
@@ -63,6 +64,7 @@ class Board {
   #validateNumTurns(input) {
     if (!POSITIVE_INTEGER_REGEX.test(input)) {
       throw new Error(Strings.ERROR_NON_POSITIVE_INTEGER);
+      process.exit(1);
     }
   }
 
@@ -127,7 +129,7 @@ class Board {
     // TODO: 최종 결과 출력 포맷 작성
     const winnerNames = this.#getWinnerNames();
     const finalResult = [Strings.FINAL_WINNER, Strings.IS, winnerNames.join(', ')].join(' ');
-    console.log(finalResult);
+    Console.print(finalResult);
   }
 
   /**
@@ -140,6 +142,13 @@ class Board {
       winnerNames.push(car.getName());
     });
     return winnerNames;
+  }
+
+  /**
+   * TEST: 저장된 Car 객체들을 배열로 반환한다.
+   */
+  getCars() {
+    return this.#cars;
   }
 }
 
