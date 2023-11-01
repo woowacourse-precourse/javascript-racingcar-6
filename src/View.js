@@ -10,25 +10,25 @@ class View {
   static #WINNER = '최종 우승자';
 
   static async askCarNames() {
-    const answer = await Console.readLineAsync(this.#CAR_NAMES_QUERY);
+    const answer = await Console.readLineAsync(View.#CAR_NAMES_QUERY);
     const stringWithoutSpaces = answer.replace(/ /g, '');
-    const array = stringWithoutSpaces.split(this.#DELIMITER);
+    const array = stringWithoutSpaces.split(View.#DELIMITER);
     Validator.validateCarNames(array);
     return array;
   }
 
   static async askNumberOfRounds() {
-    const answer = await Console.readLineAsync(this.#NUMBER_OF_ROUNDS_QUERY);
+    const answer = await Console.readLineAsync(View.#NUMBER_OF_ROUNDS_QUERY);
     const number = Number(answer);
     Validator.validateNumberOfRound(number);
     return number;
   }
 
   static writeResultMessage(results) {
-    let message = `\n${this.#RESULT}\n`;
+    let message = `\n${View.#RESULT}\n`;
     results.forEach((result) => {
       result.forEach((moveCount, name) => {
-        message += `${name} : ${this.#FORWARD_MARK.repeat(moveCount)}\n`;
+        message += `${name} : ${View.#FORWARD_MARK.repeat(moveCount)}\n`;
       });
       message += '\n';
     });
@@ -36,16 +36,16 @@ class View {
   }
 
   static printResults(results) {
-    const message = this.writeResultMessage(results);
+    const message = View.writeResultMessage(results);
     Console.print(message);
   }
 
   static writeWinnerMessage(winners) {
-    return `${this.#WINNER} : ${winners.join(`${this.#DELIMITER} `)}`;
+    return `${View.#WINNER} : ${winners.join(`${View.#DELIMITER} `)}`;
   }
 
   static printWinners(winners) {
-    const message = this.writeWinnerMessage(winners);
+    const message = View.writeWinnerMessage(winners);
     Console.print(message);
   }
 }
