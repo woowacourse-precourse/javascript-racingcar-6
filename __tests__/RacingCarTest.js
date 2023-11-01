@@ -30,12 +30,11 @@ describe('게임 결과에 따른 우승자 판별 테스트', () => {
     const inputs = [soleWinner, multipleWinner, allWinner];
     const outputs = ['beta', 'alpha, beta, eta', 'alpha, beta, delta, eta'];
     const logSpy = getLogSpy();
-
     const raceResult = new RacingCar();
 
-    inputs.forEach((input, idx) => {
+    inputs.forEach((input, index) => {
       raceResult.endGame(input);
-      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(outputs[idx]));
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(outputs[index]));
     });
   });
 });
