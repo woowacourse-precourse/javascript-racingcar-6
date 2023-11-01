@@ -45,7 +45,7 @@ class RacingGame {
   getRaceCount = async () => {
     const raceCount = await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
     const raceCountToNumber = parseInt(raceCount);
-    if (!validateRaceCount(raceCountToNumber)) throw new Error('[ERROR] 카운트');
+    if (!validateRaceCount(raceCountToNumber)) throw new Error('[ERROR] 1 이상의 숫자를 입력해주세요');
 
     this.rounds = raceCountToNumber;
   };
@@ -55,7 +55,7 @@ class RacingGame {
       '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)',
     );
     const carNamesToArray = carNames.split(',');
-    if (!validateCarName(carNamesToArray)) throw new Error('[ERROR] 네임');
+    if (!validateCarName(carNamesToArray)) throw new Error('[ERROR] 1~5자 사이의 이름을 1개 이상 입력해주세요.');
 
     this.cars = carNamesToArray.map((name) => new Car(name));
   };
