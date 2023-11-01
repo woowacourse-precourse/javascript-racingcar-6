@@ -24,11 +24,32 @@ class App {
     );
   }
 
+  running() {
+    MissionUtils.Console.print('\n실행 결과');
+    for (let i = 0; i < this.#trialNum; i++) {
+      this.carList.forEach((car) => {
+        car.tryToMove();
+        car.print();
+      });
+      MissionUtils.Console.print('');
+    }
+  }
+
+  resulting() {
+    const movementNumsForEachCar = this.carList.map(
+      (car) => car.totalMovementDashArray.length,
+    );
+    const maxMovementNum = Math.max(...movementNumsForEachCar);
+
+    const winners = this.carList
+      .filter((car) => car.totalMovementDashArray.length === maxMovementNum)
+      .map((car) => car.name);
+    MissionUtils.Console.print(`최종 우승자 : ${winners}`);
+  }
   async play() {
     await this.init();
-
-    MissionUtils.Console.print('\n실행 결과');
-    for (let i = 0; i < this.#trialNum; i++) {}
+    this.running();
+    this.resulting();
   }
 }
 
