@@ -44,10 +44,10 @@ class RacingGame {
 
   getRaceCount = async () => {
     const raceCount = await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
-    const raceCountToNum = parseInt(raceCount);
-    if (!validateRaceCount(raceCountToNum)) throw new Error('[ERROR] 카운트');
+    const raceCountToNumber = parseInt(raceCount);
+    if (!validateRaceCount(raceCountToNumber)) throw new Error('[ERROR] 카운트');
 
-    this.rounds = raceCountToNum;
+    this.rounds = raceCountToNumber;
   };
 
   getCarNames = async () => {
