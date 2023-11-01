@@ -25,6 +25,22 @@ const getLogSpy = () => {
 };
 
 describe("RacingCar 테스트", () => {
+  let rule;
+  let game;
+  let logSpy;
+
+  beforeEach(() => {
+    rule = new NormalRacingRule();
+    game = RacingCarGame.createGame(rule);
+    logSpy = getLogSpy();
+  });
+
+  const setUpGameWithInputs = async (carNames, totalRounds) => {
+    mockQuestions([carNames, totalRounds]);
+    await game.promptCarNames();
+    await game.promptTotalRounds();
+  };
+
   test("create game 테스트", () => {
     const rule = new NormalRacingRule();
     const game = RacingCarGame.createGame(rule);
@@ -82,41 +98,46 @@ describe("RacingCar 테스트", () => {
     );
   });
 
-  test("startRacing 테스트", async () => {
+  describe("Racing 결과와 우승자 출력 테스트", () => {
     const MOVING_FORWARD = 4;
     const STOP = 3;
     const inputs = ["pobi,woni,ynnss", 3];
-    const outputs = [
+    const outputsForRacing = [
       "실행 결과",
       "pobi : -\nwoni : -\nynnss : ",
       "pobi : -\nwoni : -\nynnss : -",
       "pobi : --\nwoni : -\nynnss : --",
     ];
+    const outputForWinner = "최종 우승자 : pobi, ynnss";
     const randoms = [
       MOVING_FORWARD,
       MOVING_FORWARD,
-      STOP, // 1라운드
       STOP,
       STOP,
-      MOVING_FORWARD, // 2라운드
+      STOP,
+      MOVING_FORWARD,
       MOVING_FORWARD,
       STOP,
-      MOVING_FORWARD, // 3라운드
+      MOVING_FORWARD,
     ];
-    const logSpy = getLogSpy();
 
-    mockQuestions(inputs);
-    mockRandoms(randoms);
+    beforeEach(async () => {
+      mockRandoms(randoms);
+      await setUpGameWithInputs(...inputs);
+      game.startRacing();
+    });
 
-    const rule = new NormalRacingRule();
-    const game = RacingCarGame.createGame(rule);
+    test("startRacing 테스트", () => {
+      outputsForRacing.forEach((output) => {
+        expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+      });
+    });
 
-    await game.promptCarNames();
-    await game.promptTotalRounds();
-    game.startRacing();
-
-    outputs.forEach((output) => {
-      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    test("printWinnerNames 테스트", () => {
+      game.printWinnerNames();
+      expect(logSpy.mock.calls[logSpy.mock.calls.length - 1][0]).toContain(
+        outputForWinner
+      );
     });
   });
 });
