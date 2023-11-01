@@ -15,7 +15,7 @@ const userInput = async () => {
 
   const gameRound = await InputView(COUNT_REQUEST_MESSAGE);
   validatorGameRound(gameRound);
-  return [...carsNames, gameRound];
+  return [carsNames, gameRound];
 };
 
 export default userInput;
