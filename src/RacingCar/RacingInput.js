@@ -7,13 +7,13 @@ class RacingInput {
     );
     const racingArr = racingCars.split(",");
 
-    if (this.checkValidation(racingArr)) {
+    if (this.checkValidName(racingArr)) {
       const scoreArr = new Array(racingArr.length).fill(0);
       return { racingArr, scoreArr };
     }
   }
 
-  checkValidation(racingArr) {
+  checkValidName(racingArr) {
     for (let i = 0; i < racingArr.length; i++) {
       if (racingArr[i].length > 5)
         throw new Error("[ERROR] 잘못된 형식의 자동차 이름입니다.");
@@ -23,9 +23,16 @@ class RacingInput {
 
   async attemptNumInput() {
     const attemptNum = await Console.readLineAsync(
-      "시도할 횟수는 몇 회인가요?"
+      "시도할 횟수는 몇 회인가요? "
     );
+    this.checkValidNum(attemptNum);
     return Number(attemptNum);
+  }
+
+  checkValidNum(attemptNum) {
+    if (isNaN(attemptNum)) throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
+    else if (Number(attemptNum) < 1)
+      throw new Error("[ERROR] 1이상의 수를 입력해주세요.");
   }
 }
 
