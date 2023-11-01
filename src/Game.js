@@ -8,6 +8,10 @@ class Game {
   async play() {
     await this.setCars();
     await this.setCount();
+    while (this.isFinished()) {
+      // TODO: 자동차 이동 로직 추가
+      this.#count -= 1;
+    }
   }
 
   async setCars() {
@@ -26,6 +30,10 @@ class Game {
     const value = await input.readLine('시도할 횟수는 몇 회인가요?\n');
 
     this.#count = Number(value);
+  }
+
+  isFinished() {
+    return this.#count !== 0;
   }
 }
 
