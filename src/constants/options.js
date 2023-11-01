@@ -16,6 +16,12 @@ const OPTIONS = Object.freeze({
 
   // 최소 자동차 이름 개수
   minNameCount: 2,
+
+  // 최소 무작위 수
+  minRandomNumber: 0,
+
+  // 최대 무작위 수
+  maxRandomNumber: 9,
 });
 
 export default OPTIONS;
