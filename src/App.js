@@ -33,7 +33,7 @@ class App {
                 Console.print('');
             }
             const winners = findWinner(roundResults);
-            Console.print('가장 많이 전진한 플레이어: ' + winners.join(', '));
+            Console.print('최종 우승자 : ' + winners.join(', '));
         }
 
         playGame();

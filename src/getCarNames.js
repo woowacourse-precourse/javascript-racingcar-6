@@ -5,7 +5,7 @@ async function getUsername() {
 
     const carNames = username.split(',').map((name) => name.trim());
 
-    if (carNames.length === 0) {
+    if (carNames.some((name) => name.length === 0)) {
         throw new Error('[ERROR] 입력이 비어 있습니다.');
     }
 
@@ -24,6 +24,6 @@ export async function inputCarsNames() {
         console.log('입력된 자동차 이름:', carNames);
         return carNames;
     } catch (error) {
-        throw error; // 예외를 상위로 전달
+        throw error;
     }
 }
