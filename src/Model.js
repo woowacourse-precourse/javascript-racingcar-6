@@ -5,6 +5,9 @@ const ASK_FOR_GAMECNT_VIEW = '시도할 횟수는 몇 회인가요?';
 const ERROR_MESSAGE_WRONGTYPE = new Error('[ERROR] 잘못된 형식의 입력입니다.');
 const ERROR_MESSAGE_EMPTY_VALUE = new Error('[ERROR] 일부 입력값이 없습니다.');
 
+const NEW_LINE = '\n';
+const CAR_RACE_PIECE = '-';
+
 let gameStage = 0;
 const setGameStage = function AddOneForGameStage() {
   gameStage += 1;
@@ -32,7 +35,7 @@ const getCarNames = function getCarNamesArr() {
 };
 
 const setCarRace = (idx) => {
-  carRace[idx] += '-';
+  carRace[idx] = `${carRace[idx]}${CAR_RACE_PIECE}`;
 };
 const getCarRace = () => carRace;
 
@@ -40,13 +43,12 @@ const getCarNum = function getNumOfCars() {
   return numOfCars;
 };
 
-let gameResultView = '\n실행결과\n';
+let gameResultView = `${NEW_LINE}${'실행 결과'}${NEW_LINE}`;
 const addGameRoundView = (nextCar) => {
-  gameResultView += nextCar;
+  gameResultView = `${gameResultView}${nextCar}`;
 };
 const getGameResultView = () => gameResultView;
 
-const NEW_LINE = '\n';
 const addFinalGameResult = (winners) => {
   gameResultView = `${gameResultView}${NEW_LINE}${'최종 우승자 : '}${winners.join(', ')}`;
 };
