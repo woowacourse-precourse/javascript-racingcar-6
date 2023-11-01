@@ -12,7 +12,7 @@ class App {
 
   // 시도 횟수 입력에 대한 유효성 테스트
   static #checkValidRoundNumber(input) {
-    if (isNaN(input) || input < 1)
+    if (Number.isNaN(input) || input < 1)
       throw new Error("[ERROR] 시도 횟수는 1 이상의 숫자여야합니다.");
   }
 
@@ -36,7 +36,7 @@ class App {
     const roundInputs = await MissionUtils.Console.readLineAsync(
       "시도할 횟수는 몇 회인가요?"
     );
-    const roundNumber = parseInt(roundInputs);
+    const roundNumber = parseInt(roundInputs, 10);
     App.#checkValidRoundNumber(roundNumber);
     return roundNumber;
   }
