@@ -1,3 +1,6 @@
+import { Random } from '@woowacourse/mission-utils';
+import { NUMBER_FOR_MOVE } from './Constants.js';
+
 class Car {
   constructor(name) {
     this.name = name;
@@ -13,7 +16,9 @@ class Car {
   }
 
   move() {
-    this.moveCount += 1;
+    if (Random.pickNumberInRange(0, 9) >= NUMBER_FOR_MOVE) {
+      this.moveCount += 1;
+    }
   }
 }
 
