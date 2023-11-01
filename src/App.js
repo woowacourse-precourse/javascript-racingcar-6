@@ -1,4 +1,5 @@
 import * as MissionUtils from "@woowacourse/mission-utils";
+
 class Car {
   constructor(name) {
     this.name = name;
@@ -95,9 +96,9 @@ class App {
     }
 
     if (winner.length === 1) {
-      MissionUtils.Console.print(`최종 우승자 : ${winner[0]}`);
+      MissionUtils.Console.print("최종 우승자 : " + winner[0]);
     } else {
-      MissionUtils.Console.print(`최종 우승자 : ${winner.join(", ")}`);
+      MissionUtils.Console.print("최종 우승자 : " + winner.join(", "));
     }
   }
 
