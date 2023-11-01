@@ -10,7 +10,7 @@ class App {
       const cars = await MissionUtils.Console.readLineAsync(
         '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)'
       );
-      let cars = this.checkCarsValidation(cars);
+      let carList = this.checkCarsValidation(cars);
 
       const num = await MissionUtils.Console.readLineAsync(
         '시도할 횟수는 몇 회인가요?'
@@ -18,15 +18,15 @@ class App {
       this.checkNumValidation(num);
 
       MissionUtils.Console.print('실행 결과');
-      this.printScoreBoard(cars, num);
+      this.printScoreBoard(carList, num);
 
-      MissionUtils.Console.print(await this.printWinner(cars));
+      MissionUtils.Console.print(await this.printWinner(carList));
       this.gameStatus = false;
     }
   }
 
-  checkCarsValidation(cars) {
-    const cars = cars.split(',');
+  checkCarsValidation(carList) {
+    const cars = carList.split(',');
     for (let i = 0; i < cars.length; i++) {
       const carName = cars[i].trim();
       if (carName.length > 5) {
