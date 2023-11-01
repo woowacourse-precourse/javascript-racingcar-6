@@ -1,8 +1,6 @@
 import { typeValidator } from "../utils/validators.js";
 
 class CarNamesParser {
-  #carNames = [];
-
   static parse(value) {
     CarNamesParser.#validate(value);
     const names = CarNamesParser.#splitByComma(value);
