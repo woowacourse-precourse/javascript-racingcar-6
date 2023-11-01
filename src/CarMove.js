@@ -1,6 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-
-const carMoveStorage = {}
+import { carMoveStorage } from "./CarMoveStorage.js";
 
 export function carMoveOrStop(carname, determinatednumber) {
   carMoveStorage[carname] = "";

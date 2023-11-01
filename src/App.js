@@ -1,4 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
+import { carMoveStorage } from "./CarMoveStorage.js";
+import { carMoveOrStop } from "./CarMove.js";
 
 class App {
   async play() {
@@ -11,7 +13,6 @@ class App {
 
 export default App;
 
-const carMoveStorage = {}
 let winnerarray = [];
 
 async function carCreater() {
@@ -80,12 +81,6 @@ function carMover(carnames) {
   }
 }
 
-function carMoveOrStop(carname, determinatednumber) {
-  if (determinatednumber >= 4) {
-    carMoveStorage[carname] += "-";
-  }
-  MissionUtils.Console.print(`${carname} : ${carMoveStorage[carname]}`);
-}
 
 function randomNumber() {
   const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
