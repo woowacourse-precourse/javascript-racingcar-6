@@ -1,5 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import { carMoveOrStop } from "../src/CarMove.js";
+import { carMoveStorage } from "../src/CarMoveStorage.js";
 
 const getLogSpy = () => {
   const logSpy = jest.spyOn(MissionUtils.Console, "print");
@@ -16,6 +17,7 @@ describe("자동차 이동, 정지", () => {
     const logSpy = getLogSpy();
 
     // when
+    carMoveStorage.carNameSave(inputs)
     carMoveOrStop(inputs,DETERMIDATED_NUMBER)
 
     // then
@@ -32,6 +34,7 @@ describe("자동차 이동, 정지", () => {
     const logSpy = getLogSpy();
 
     // when
+    carMoveStorage.carNameSave(inputs)
     carMoveOrStop(inputs,DETERMIDATED_NUMBER)
 
     // then

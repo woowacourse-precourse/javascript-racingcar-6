@@ -2,7 +2,6 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 import { carMoveStorage } from "./CarMoveStorage.js";
 
 export function carMoveOrStop(carname, determinatednumber) {
-  carMoveStorage[carname] = "";
   if (determinatednumber >= 4) {
     carMoveStorage[carname] += "-";
   }

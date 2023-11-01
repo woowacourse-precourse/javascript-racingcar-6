@@ -20,7 +20,7 @@ async function carCreater() {
   const carName = await MissionUtils.Console.readLineAsync('');
   const carNameSplit = carName.split(',');
   validationName(carNameSplit);
-  carNameSave(carNameSplit);
+  carMoveStorage.carNameSave(carNameSplit);
   return carNameSplit;
 }
 
@@ -42,12 +42,6 @@ function validationNameDuplication(names) {
     if (names[i] === names[i+1]) {
       throw new Error("[ERROR] 자동차 이름이 중복되었습니다.")
     }
-  }
-}
-
-function carNameSave(carnames) {
-  for (let i = 0; i < carnames.length; i++) {
-    carMoveStorage[carnames[i]] = "";
   }
 }
 
