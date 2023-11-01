@@ -36,11 +36,13 @@ class Cars {
 
   static #validateIsCar(array) {
     const isCars = array.every((element) => element instanceof Car);
+
     if (!isCars) throw Error(ERROR_MESSAGE.notCars);
   }
 
   static #validateNoDuplicateName(cars) {
     const carNames = cars.map((car) => car.getName());
+
     if (carNames.length !== new Set(carNames).size) {
       throw Error(ERROR_MESSAGE.duplicateNames);
     }
