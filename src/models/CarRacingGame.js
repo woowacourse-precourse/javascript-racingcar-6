@@ -1,5 +1,5 @@
-import { getRandomNumberInRange } from "../utils/getRandomNumberInRange.js";
-import { RACING } from "../constants/carRacing.js";
+import { getRandomNumberInRange } from "../utils/getRandomNumberInRange";
+import { RACING } from "../constants/carRacing";
 
 class CarRacingGame {
   constructor() {}
