@@ -35,7 +35,7 @@ export async function updateDistance(car, randomNum) {
   return car;
 }
 
-export async function checkRandomNum(carList) {
+export async function updateCars(carList) {
   const responseCarList = await Promise.all(
     carList.map(async (car) => {
       const randomNum = await generateRandomNum();
@@ -51,7 +51,7 @@ export async function playRacing() {
   await resultAlert();
 
   for (let i = 0; i < round; i++) {
-    cars = await checkRandomNum(cars);
+    cars = await updateCars(cars);
     cars.forEach((car) => {
       MissionUtils.Console.print(`${car.carName} : ${car.carDistance}`);
     });
