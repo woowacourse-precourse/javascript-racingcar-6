@@ -1,4 +1,5 @@
 import {MissionUtils} from "@woowacourse/mission-utils";
+import * as consts from "./consts.js";
 /*
 ### 기능 목록
 
@@ -67,19 +68,18 @@ const initProgress = (progress, carNames) => {
 };
 
 const checkNameValidation = (name) => {
-  if (name.length > 5) throw Error("[ERROR]입려된 이름 중 5글자 이상이 있습니다.");
+  if (name.length > 5) throw Error(consts.NAME_LENGTH_ERROR_MESSAGE);
 };
 
 const checkDuplication = (cars) => {
   const carsLength = cars.length;
   const carsSet = new Set(cars);
   const carsSetLength = carsSet.size;
-  if (carsLength !== carsSetLength) throw Error("[ERROR] 입력된 이름 중 중복이 있습니다.");
+  if (carsLength !== carsSetLength) throw Error(consts.NAMES_DUPLICATION_ERROR_MESSAGE);
 };
 
 const checkInputCount = (inputCount) => {
-  if (!inputCount) throw Error("[ERROR]");
-  if (!typeof inputCount === "string" || isNaN(inputCount)) throw Error("[ERROR]입력된 타입이 잘못됐습니다.");
+  if (!typeof inputCount === consts.STRING_TYPE || isNaN(inputCount)) throw Error(consts.COUNT_TYPE_ERROR_MESSAGE);
 };
 
 const printProgress = (progress) => {
