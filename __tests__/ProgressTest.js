@@ -12,11 +12,14 @@ describe("무작위 수에 따른 전진 테스트", () => {
 
     jest.spyOn(MissionUtils.Random, "pickNumberInRange").mockReturnValue(4);
 
-    const CONSOLE_PRINT = jest.spyOn(console, "log").mockImplementation();
+    const PROGRESS_PRINT = console.log;
+    console.log = jest.fn();
 
     await app.play();
 
-    expect(CONSOLE_PRINT).toHaveBeenCalledWith("-");
+    expect(console.log).toHaveBeenCalledWith("sudol : -");
+
+    console.log = PROGRESS_PRINT;
   });
 
   test("무작위 수가 3 이하일 경우 정지", async () => {
@@ -29,10 +32,13 @@ describe("무작위 수에 따른 전진 테스트", () => {
 
     jest.spyOn(MissionUtils.Random, "pickNumberInRange").mockReturnValue(3);
 
-    const CONSOLE_PRINT = jest.spyOn(console, "log").mockImplementation();
+    const PROGRESS_PRINT = console.log;
+    console.log = jest.fn();
 
     await app.play();
 
-    expect(CONSOLE_PRINT).not.toHaveBeenCalledWith("-");
+    expect(console.log).not.toHaveBeenCalledWith("sudol : -");
+
+    console.log = PROGRESS_PRINT;
   });
 });
