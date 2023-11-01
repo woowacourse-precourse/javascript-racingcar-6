@@ -4,7 +4,7 @@ import PrintGameResult from '../view/print_game_result.js';
 import CarNameError from '../../utils/error/car_name_error.js';
 import RacingCntError from '../../utils/error/racing_cnt_error.js';
 import userInput from '../../utils/user_input.js';
-import InputQuestion from '../../ui/input_question.js';
+import InputQuestion from '../../user_interface/input_question.js';
 
 class GameManage {
   constructor() {
