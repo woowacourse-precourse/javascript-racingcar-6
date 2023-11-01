@@ -1,15 +1,15 @@
-import { getCarName, getMoveNumber, getCarsObject } from "./getUserInput";
+import { getCarName, getMoveNumber, getCarsMovedCount } from "./getUserInput";
 import { moveCars } from "./move";
 
 class App {
   async play() {
     const names = await getCarName();
-    const moveNumber = await getMoveNumber();
+    let moveNumber = await getMoveNumber();
 
-    const cars = getCarsObject(names);
+    const carsMovedCount = getCarsMovedCount(names);
 
     while (moveNumber--) {
-      moveCars(names, cars);
+      moveCars(names, carsMovedCount);
     }
   }
 }

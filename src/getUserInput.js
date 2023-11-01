@@ -32,11 +32,11 @@ export async function getCarName() {
   return names;
 }
 
-export function getCarsObject(names) {
-  const cars = {};
-  names.forEach((name) => (cars[name] = 0));
+export function getCarsMovedCount(names) {
+  const carsMovedCount = {};
+  names.forEach((name) => (carsMovedCount[name] = 0));
 
-  return cars;
+  return carsMovedCount;
 }
 
 function isValidMoveNumber(number) {
