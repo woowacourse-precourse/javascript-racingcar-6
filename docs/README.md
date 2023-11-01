@@ -51,7 +51,7 @@
 우승자를 출력하는 메서드.
 
 
-### RacingGame Class
+### Car Class
 #### Member
 ##### name
 자동차의 이름.
