@@ -1,6 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
 import { getCarNames } from "../../src/input/carNames"
-import { Input } from "../../src/interface/Input";
 
 
 test("자동차 이름 입력", async ()=>{

@@ -13,7 +13,7 @@ const race = new Race(cars);
 const printFinalResultSpy = jest.spyOn(printResult, "final");
 
 describe("우승 자동차 선별 및 최종 겲과 출력",()=>{
-    test("getWinners", ()=>{
+    test("우승 자동차 선별", ()=>{
         for(let i=0; i<greatestPosition; i++){
             winnerCar.move();
         }
@@ -23,7 +23,7 @@ describe("우승 자동차 선별 및 최종 겲과 출력",()=>{
         expect(winners).toEqual([winnerCarName]);
     })
 
-    test("end", ()=>{
+    test("게임 종료 후, 최종 결과(우승 자동차 선별) 출력", ()=>{
         race.end();
         
         expect(printFinalResultSpy).toHaveBeenCalledWith([winnerCarName]);

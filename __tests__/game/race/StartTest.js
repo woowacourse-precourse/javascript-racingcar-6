@@ -8,7 +8,7 @@ const cars = new Cars(carInstances);
 const tryInput = 5;
 const race = new Race(cars, tryInput);
 
-test("start",()=>{
+test("자동차 경주 게임 시작",()=>{
     const carsMove = jest.spyOn(cars, "move");
     race.start();
 
