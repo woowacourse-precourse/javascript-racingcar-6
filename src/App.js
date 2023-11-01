@@ -1,10 +1,11 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import { GAME_MESSAGE } from './constants/gameMessage';
+import User from './modules/User';
 
 class App {
   async play() {
-    const inputCarName = await MissionUtils.Console.readLineAsync(GAME_MESSAGE.inputCarNames);
-    const count = await MissionUtils.Console.readLineAsync(GAME_MESSAGE.inputGameCount);
+    const CarNames = await User.inputCarNames();
+    const count = await User.inputGameCount();
 
     // 자동차 이름 분리하기
     const carNames = inputCarName.split(',');
