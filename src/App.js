@@ -14,6 +14,7 @@ class App {
     this.startRace(trial_count, cars_arr);
   }
 
+  // 함수: 잘못된 차이름 입력값 에러 처리
   async getError(arr) {
     for (let i = 0; i < arr.length; i++) {
       if (arr[i].trim().length > 5) {
@@ -28,6 +29,7 @@ class App {
     }
   }
 
+  // 함수: 이긴 횟수에 맞춰 '-' 추가
   async getWinLine(arr) {
     let cars_win_count_num = new Array(arr.length).fill(0);
     let cars_win_count_line = new Array(arr.length).fill("");
@@ -38,16 +40,19 @@ class App {
 
       if (random >= 4) {
         cars_win_count_num[i]++;
-        win_line = "-".repeat(cars_win_count_num[i]);
-      }
-
-      for (let i = 0; i < arr.length; i++) {
-        MissionUtils.Console.print(`${arr[i]} : ${cars_win_count_line[i]}`);
+        win_line += "-";
       }
       cars_win_count_line[i] = win_line;
+      this.printWinLine(arr, cars_win_count_line[i]);
     }
   }
-  //Todo: isWinner함수 작성하기
+
+  // 함수: 결과값 출력
+  async printWinLine(arr, win_line) {
+    for (let i = 0; i < arr.length; i++) {
+      MissionUtils.Console.print(`${arr[i]} : ${win_line}`);
+    }
+  }
 }
 
 export default App;
