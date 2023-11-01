@@ -53,7 +53,7 @@ Jest 테스트 케이스를 작성하여 추가 검증한다.
 ## [ ] Convention
 [JavaScript 코드 컨벤션](https://github.com/ParkSB/javascript-style-guide#%EB%B3%80%EC%88%98-variables)을 지키면서 프로그래밍한다.
 
-## [ ] Indent depth 확인
+## [✅] Indent depth 확인
 indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다.
 
 ## **1차 과제 개선점**
