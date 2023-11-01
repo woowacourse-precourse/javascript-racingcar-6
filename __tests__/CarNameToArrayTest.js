@@ -1,6 +1,6 @@
 import carNameToArray from "../src/functions/carNameToArray.js";
 
-describe("문자열 배열로 분리하기 테스트", () => {
+describe("문자열 배열로 분리하고, 주어진 조건에 맞는지 확인하는 함수 테스트", () => {
   test("split 메서드로 주어진 값을 구분", () => {
     const input = "pobi,woni";
     const result = carNameToArray(input);
