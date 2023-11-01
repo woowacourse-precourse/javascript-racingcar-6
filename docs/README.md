@@ -83,7 +83,7 @@
 - 유틸리티 테스트
   - console ✔️
   - random ✔️
-  - string
+  - string ✔️
   - validation
 - 클래스 테스트
   - Car
