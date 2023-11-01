@@ -1,7 +1,7 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import { inputPrintConstants } from '../utils/input-print.js'
 
-export default class resultGame {
+export default class ResultGame {
   // 우승자 발표 메서드
   static rankAndResult(gameResult, carNameArr) {
     const max = Math.max(...gameResult); // 최대스코어 점수

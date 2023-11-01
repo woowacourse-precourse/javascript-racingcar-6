@@ -2,7 +2,7 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import { CarName, PlayNumber } from './input/index.js';
 import { inputPrintConstants } from './utils/index.js'
-import { gamePlay, resultGame }from './game/index.js'
+import { GamePlay, ResultGame }from './game/index.js'
 
 
 class App {
@@ -24,11 +24,11 @@ class App {
     // 게임 시작
     MissionUtils.Console.print(inputPrintConstants.PRINT_START_GAME);
     for (let idx = 0; idx < Number(playNumber); idx++){
-      gameBoard = gamePlay.moveCarGame(carNameArr, gameBoard);
+      gameBoard = GamePlay.moveCarGame(carNameArr, gameBoard);
     }
 
     // 우승자 확인 및 출력.
-    resultGame.rankAndResult(gameBoard, carNameArr);
+    ResultGame.rankAndResult(gameBoard, carNameArr);
   }
 
   // 진행과정을 저장할 객체 만드는 메서드.

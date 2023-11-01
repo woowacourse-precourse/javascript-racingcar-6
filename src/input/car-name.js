@@ -17,7 +17,6 @@ export default class CarName {
     const nameSplitArrLen = nameSplitArr.length;
     let beforeName = '';
     for (let idx = 0; idx < nameSplitArrLen; idx++){
-      if (!nameSplitArr[idx]) throw new Error(errorConstants.EMPTY_NAME_ERROR);
       if (!regExpConstants.regNameLen.test(nameSplitArr[idx])) throw new Error(errorConstants.NAME_LENGTH_ERROR);
       if (!regExpConstants.regLanguage.test(nameSplitArr[idx])) throw new Error(errorConstants.DIFFERENT_LANGUAGE_ERROR);
       if (beforeName === nameSplitArr[idx]) throw new Error(errorConstants.SAME_NAME_ERROR);

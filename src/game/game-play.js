@@ -1,6 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
-export default class gamePlay { 
+export default class GamePlay { 
   // 자동차 게임 진행 메서드
   static moveCarGame(carNameArr, gameBoard) {
     const gameLen = gameBoard.length;
