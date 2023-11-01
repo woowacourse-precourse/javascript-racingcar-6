@@ -28,8 +28,8 @@ class App {
     this.carNumber = this.carNames.length;
 
     for (let i=0; i<this.carNumber; i++) {
-      if (this.carNames[i].length > 5) {
-        throw new Error("[ERROR] 자동차 이름은 5자 이하만 가능합니다.")
+      if (this.carNames[i].length > 5 || this.carNames[i].length <=0) {
+        throw new Error("[ERROR] 잘못된 자동차 이름 형식입니다.")
       }
     }
     
