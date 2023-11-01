@@ -17,7 +17,7 @@ class App {
   }
 
   // 자동차의 이름들을 입력받는 메소드
-  static async #inputCarName() {
+  static async inputCarName() {
     const carNames = await Console.readLineAsync(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
     );
@@ -27,12 +27,12 @@ class App {
   }
 
   // 입력받은 자동차들을 참여시키는 메소드
-  async #inputCar() {
-    const carNameArray = await App.#inputCarName();
+  async inputCar() {
+    const carNameArray = await App.inputCarName();
     this.#cars = carNameArray.map((carName) => new Car(carName));
   }
 
-  static async #inputRoundNumber() {
+  static async inputRoundNumber() {
     const roundInput = await Console.readLineAsync(
       "시도할 횟수는 몇 회인가요?\n"
     );
@@ -63,8 +63,8 @@ class App {
   }
 
   async play() {
-    await this.#inputCar();
-    const roundNumber = await App.#inputRoundNumber();
+    await this.inputCar();
+    const roundNumber = await App.inputRoundNumber();
     Console.print("");
     Console.print("실행 결과");
     for (let i = 1; i <= roundNumber; i++) {

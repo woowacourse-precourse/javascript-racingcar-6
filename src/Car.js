@@ -13,7 +13,7 @@ class Car {
     this.name = carName;
   }
 
-  static #randomNumGenerate() {
+  static randomNumGenerate() {
     const randomNum = Random.pickNumberInRange(
       MIN_RANDOM_NUMBER,
       MAX_RANDOM_NUMBER
@@ -26,7 +26,7 @@ class Car {
   }
 
   move() {
-    const randomNum = Car.#randomNumGenerate();
+    const randomNum = Car.randomNumGenerate();
     if (randomNum >= FORWARD_THRESHOLD) this.position += 1;
     this.#printPosition();
   }

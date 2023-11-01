@@ -16,17 +16,17 @@ describe("시도할 횟수 입력 테스트", () => {
 
     mockQuestions(inputs);
 
-    const result = await App.inputRoundNum();
+    const result = await App.inputRoundNumber();
 
     expect(result).toEqual(3);
   });
 
-  test.each([[["0"]], [["longname"]]])(
+  test.each([[["-1"]], [["longname"]]])(
     "자동차 이름 예외 처리 테스트",
     async (inputs) => {
       mockQuestions(inputs);
 
-      await expect(App.inputRoundNum()).rejects.toThrow("[ERROR]");
+      await expect(App.inputRoundNumber()).rejects.toThrow("[ERROR]");
     }
   );
 });

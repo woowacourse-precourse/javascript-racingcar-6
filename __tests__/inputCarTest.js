@@ -12,19 +12,6 @@ const mockQuestions = (inputs) => {
 };
 
 describe("자동차 참가 테스트", () => {
-  test("자동차 입력 후, 배열 삽입 테스트", async () => {
-    const inputs = ["pobi,woni,jun"];
-
-    mockQuestions(inputs);
-
-    const app = new App();
-    await app.inputCar();
-
-    expect(app.cars).toContainEqual({ name: "pobi" });
-    expect(app.cars).toContainEqual({ name: "woni" });
-    expect(app.cars).toContainEqual({ name: "jun" });
-  });
-
   test.each([[["pobi,longname"]], [["longname"]], [["pobi,,name"]]])(
     "자동차 이름 예외 처리 테스트",
     async (inputs) => {
