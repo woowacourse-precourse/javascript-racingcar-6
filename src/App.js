@@ -14,6 +14,9 @@ class App {
 
     const tryCountInput = await Input.tryCount();
     Validation.tryCount(tryCountInput);
+
+    Output.resultInformation();
+    Progress.tryCount(tryCountInput, this.cars);
   }
 }
 
