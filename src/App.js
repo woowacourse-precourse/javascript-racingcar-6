@@ -80,7 +80,7 @@ function carNameCheckEvent() {
         for (const car in carsObject) {
           const carStatus = document.createElement('p');
           const dashes = '-'.repeat(carsObject[car]);
-          carStatus.innerHTML = `${car}: ${dashes}`;
+          carStatus.innerHTML = `${car} : ${dashes}`;
           body.appendChild(carStatus);
 
           if (carsObject[car] > maxCarValue) {
