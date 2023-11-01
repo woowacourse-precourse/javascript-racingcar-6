@@ -5,7 +5,7 @@ import printWinner from './printWinner';
 const startGame = async function startGameWithCarNameAndTryCount(CAR_NAME, TRY_COUNT) {
   Console.print('실행 결과');
 
-  const GO_COUNT = Array.from({ length: 5 }, () => 0);
+  const GO_COUNT = Array.from({ length: CAR_NAME.length }, () => 0);
 
   while (TRY_COUNT > 0) {
     TRY_COUNT -= 1;
