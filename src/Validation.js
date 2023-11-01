@@ -22,7 +22,7 @@ const isValidCarNameLength = (carName) => {
 };
 
 const isNotEmptyTryNum = (input) => {
-  return input.length !== 0;
+  return input !== undefined;
 };
 
 const isNumber = (input) => {
