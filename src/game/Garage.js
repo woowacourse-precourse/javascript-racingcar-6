@@ -19,7 +19,7 @@ class Garage {
       0,
     );
   }
-  
+
   findCarNamesWithMaxSteps() {
     const maxStepCount = this.#getMaxStepCount();
     const names = [];
@@ -30,6 +30,12 @@ class Garage {
     });
 
     return Array.from(names);
+  }
+
+  displayCarStateList() {
+    this.#carList.forEach((car) => {
+      car.printStepState();
+    });
   }
 }
 export default Garage;
