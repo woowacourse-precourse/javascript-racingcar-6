@@ -45,6 +45,40 @@ class App {
     this.attemptRound = +attemptRound;
   }
 
+  // 자동차별 진행 상황 계산 및 출력
+  async carRace() {
+    Console.print("실행 결과");
+    const init = new Array(this.carList.length).fill("");
+    this.racing = init;
+    this.startCarRace();
+  }
+
+  startCarRace() {
+    for (let i = 0; i < this.attemptRound; i++){
+      this.moveForward();
+      this.displayCarRace();
+    }
+  }
+
+  moveForward() {
+    for (let j = 0; j < this.carList.length; j++) {
+      const random = Random.pickNumberInRange(0, 9);
+      if (random >= 4) {
+        this.racing[j] += "-";
+      }
+    }
+  }
+
+  displayCarRace() {
+    for (let k = 0; k < this.carList.length; k++) {
+      Console.print(this.carList[k] + " : " + this.racing[k]);
+    }
+    Console.print("");
+  }
+  
+
+
+
 }
 
 export default App;
