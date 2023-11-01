@@ -34,6 +34,7 @@ class App {
   }
 
   printResult(cars, moveCount) {
+    Console.print('\n실행 결과');
     for (let i = 0; i < moveCount; i++) {
       cars.forEach((car) => car.printState(i));
       Console.print(' ');
