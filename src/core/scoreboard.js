@@ -1,5 +1,7 @@
 // @ts-check
 
+import { makeZeroValuedObjectFromKeys } from "../utils/parse";
+
 class ScoreBoard {
   /** @type {Record<string, number>} */
   board;
@@ -21,15 +23,8 @@ class ScoreBoard {
    * @returns {Record<string, number>}
    */
   makeScoreboardByNames(names) {
-    /** @type { Record<string, number> } */
-    let res = {};
-
-    for (const name of names) {
-      if (name.trim() === "") continue;
-      res[name] = 0;
-    }
-
-    return res;
+    const filteredNames = names.filter((name) => name.trim() !== "");
+    return makeZeroValuedObjectFromKeys(filteredNames);
   }
 
   /**
