@@ -8,6 +8,7 @@ import Winner from "../controller/game/Winner.js";
 
 class RacingGame {
   constructor() {
+    // this.nameToKeyValueConverter = new NameToKeyValueConverter();
     this.hyphenAdd = new HyphenAdd();
     this.winner = new Winner();
   }

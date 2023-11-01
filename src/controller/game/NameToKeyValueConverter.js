@@ -1,4 +1,4 @@
-import SYMBOLS from "../../Constants/symbols.js";
+import SYMBOLS from "../../constants/symbols.js";
 
 const nameToKeyValueConverter = (name) => {
   const nameKeyValues = [];
