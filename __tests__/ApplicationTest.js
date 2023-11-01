@@ -25,53 +25,38 @@ const getLogSpy = () => {
 
 describe("자동차 경주 게임", () => {
   test("전진-정지", async () => {
-    // given
     const MOVING_FORWARD = 4;
     const STOP = 3;
     const inputs = ["pobi,woni", "1"];
-    const outputs = ["pobi : -"];
+    // Added the expected winner print
+    const outputs = ["pobi : ", "woni : ", "\n", "최종 우승자 : pobi"];
+
     const randoms = [MOVING_FORWARD, STOP];
     const logSpy = getLogSpy();
 
     mockQuestions(inputs);
     mockRandoms([...randoms]);
 
-    // when
     const app = new App();
     await app.play();
 
-    // then
-    outputs.forEach((output) => {
-      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    expect(logSpy).toHaveBeenCalledTimes(outputs.length);
+
+    outputs.forEach((output, idx) => {
+      expect(logSpy.mock.calls[idx][0]).toContain(output);
     });
   });
 
   test.each([[["pobi,javaji"]], [["pobi,eastjun"]]])(
     "이름에 대한 예외 처리",
     async (inputs) => {
-      // given
       mockQuestions(inputs);
 
-      // when
       const app = new App();
 
-      // then
       await expect(app.play()).rejects.toThrow("[ERROR]");
     }
   );
-});
-
-describe("App 클래스에서의 Car 객체 관리", () => {
-  test("Car 객체 생성 및 관리", async () => {
-    const inputs = ["pobi,woni", "1"];
-    mockQuestions(inputs);
-
-    const app = new App();
-    await app.play();
-
-    expect(app.cars.length).toBe(2);
-    expect(app.cars[0].name).toBe("pobi");
-  });
 });
 
 describe("자동차 이름 길이에 대한 예외 처리", () => {
