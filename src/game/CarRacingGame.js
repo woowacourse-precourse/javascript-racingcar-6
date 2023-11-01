@@ -11,9 +11,8 @@ class CarRacingGame {
 
   async gameStart() {
     const carNames = await this.inputs.returnCarNames();
-    this.cars = carNames.map((name) => new Car(name));
-
     const tryCount = await this.inputs.getTryCount();
+    this.initializeCars(carNames);
 
     Console.print('\n실행 결과');
 
@@ -22,6 +21,10 @@ class CarRacingGame {
     }
 
     this.printWinners();
+  }
+
+  initializeCars(carNames) {
+    this.cars = carNames.map((name) => new Car(name));
   }
 
   runRaceRound() {
