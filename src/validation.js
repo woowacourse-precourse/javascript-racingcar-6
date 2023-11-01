@@ -9,11 +9,11 @@ const isValidCarName = (names) => {
   }
 };
 
-const isValidAtteptCounts = (count) => {
+const isValidAttemptCounts = (count) => {
   const attempts = Number(count);
   if (attempts < 1 || isNaN(attempts)) {
     throw new Error("[ERROR] 유효한 시도 횟수를 입력하세요.");
   }
 };
 
-export { isValidCarName, isValidAtteptCounts };
+export { isValidCarName, isValidAttemptCounts };

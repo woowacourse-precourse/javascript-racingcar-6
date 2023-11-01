@@ -1,7 +1,7 @@
 import { Console } from "@woowacourse/mission-utils";
 import carRacing from "./racing.js";
 import printRacingResult from "./racingResult.js";
-import { isValidCarName, isValidAtteptCounts } from "./validation.js";
+import { isValidCarName, isValidAttemptCounts } from "./validation.js";
 
 class App {
   async play() {
@@ -16,7 +16,7 @@ class App {
       const attempt = await Console.readLineAsync(
         "시도할 횟수는 몇 회인가요?\n"
       );
-      isValidAtteptCounts(attempt);
+      isValidAttemptCounts(attempt);
 
       Console.print("\n실행결과");
       const forwardNumber = carRacing(splittedCarNames, attempt);
