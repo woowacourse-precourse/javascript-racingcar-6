@@ -11,14 +11,16 @@ class App {
       }
 
       const carNameArray = carNamesString.split(',');
+
       const attemptForwardCount = await this.getUsetInputForwardCount();
-      Console.print(attemptForwardCount);
-      Console.print(carNameArray);
 
-      let carStatusArray = this.convertCarNamesToObject(carNameArray);
-      Console.print(carStatusArray);
+      const carStatusArray = this.convertCarNamesToObject(carNameArray);
 
-      this.race(carStatusArray, attemptForwardCount);
+      const raceResult = this.race(carStatusArray, attemptForwardCount);
+
+      const finalWinner = this.getWinners(raceResult);
+
+      this.printFinalWinner(finalWinner);
     } catch (error) {
       console.error(error);
     }
@@ -32,6 +34,11 @@ class App {
   async getUsetInputForwardCount() {
     return await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
   }
+  convertCarNamesToObject(array) {
+    return array.map((name) => {
+      return { name, status: '' };
+    });
+  }
   race(carArray, attemptCount) {
     let cars = [...carArray];
     for (let i = 0; i < parseInt(attemptCount); i++) {
@@ -43,6 +50,7 @@ class App {
       });
       this.printRaceProgress(cars);
     }
+    return cars;
   }
   printRaceProgress(carArray) {
     carArray.forEach((car) => {
@@ -50,17 +58,38 @@ class App {
     });
     Console.print('\n');
   }
-  convertCarNamesToObject(array) {
-    return array.map((name) => {
-      return { name, status: '' };
-    });
-  }
   attepmtMove(status) {
     const randomNumber = Random.pickNumberInRange(0, 9);
     if (randomNumber >= 4) {
       return status + '-';
     }
     return status;
+  }
+  getWinners(carArray) {
+    const finalCarStatus = this.getFinalCarStatus(carArray);
+    const maxForwardCount = Math.max(
+      ...finalCarStatus.map((car) => car.forwardCount)
+    );
+    const winnerStatus = finalCarStatus.filter(
+      (car) => car.forwardCount === maxForwardCount
+    );
+    const winner = this.getWinnerName(winnerStatus);
+
+    return winner;
+  }
+  getFinalCarStatus(carArray) {
+    return carArray.map((car) => {
+      return {
+        name: car.name,
+        forwardCount: car.status.length,
+      };
+    });
+  }
+  getWinnerName(winnerArray) {
+    return winnerArray.map((winner) => winner.name);
+  }
+  printFinalWinner(array) {
+    Console.print(`최종 우승자 : ${array.join(', ')}`);
   }
 }
 
