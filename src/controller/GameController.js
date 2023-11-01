@@ -5,9 +5,6 @@ import InputView from '../views/InputView.js';
 import { MESSAGES } from '../constants/messages.js';
 import OutputView from '../views/OutputView.js';
 
-/**
- * 게임을 진행하는 Controller
- */
 class GameController {
   constructor() {
     this.inputView = new InputView();
