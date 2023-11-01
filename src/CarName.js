@@ -5,8 +5,14 @@ import Play from './Play.js';
 class CarName {
   checkNumberDigits(carNames) {
     const carNamesInArray = carNames.split(',');
+    const deleteSameNameInArray = new Set(carNamesInArray);
+    const sameNameCheck = deleteSameNameInArray.size !== carNamesInArray.length;
     const hasConsecutiveCommas = /,,/.test(carNames);
     const startCommaOrEndComma = /^,|,$/.test(carNames);
+
+    if (sameNameCheck) {
+      throw new Error('[ERROR] 서로다른 이름을 입력하세요');
+    }
 
     if (startCommaOrEndComma) {
       throw new Error('[ERROR] 콤마로 시작하거나 콤마로 끝나면 안됩니다.');
