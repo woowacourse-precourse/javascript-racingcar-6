@@ -1,9 +1,10 @@
 import { Console } from '@woowacourse/mission-utils';
-import announceRoundResult from './feature/AnnounceRoundResult';
-import generateCarDataListFromStr from './feature/GenerateCarDataListFromStr';
-import getValidCarNameStr from './feature/GetValidCarNameStr';
-import getValidTotalRoundNumber from './feature/GetValidTotalRoundNumber';
-import moveCarRandomly from './feature/MoveCarRandomly';
+import generateCarDataListFromStr from './feature/GenerateCarDataListFromStr.js';
+import getValidCarNameStr from './feature/GetValidCarNameStr.js';
+import getValidTotalRoundNumber from './feature/GetValidTotalRoundNumber.js';
+import moveCarRandomly from './feature/MoveCarRandomly.js';
+import announceWinner from './feature/AnnounceWinner.js';
+import announceRoundResult from './feature/AnnounceRoundResult.js';
 
 class App {
   constructor() {
@@ -32,5 +33,6 @@ class App {
     this.carDataList = newCarDataList;
   }
 }
-
+const app = new App();
+app.play();
 export default App;
