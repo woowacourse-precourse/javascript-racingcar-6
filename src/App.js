@@ -1,5 +1,6 @@
 import { Console, Random } from "@woowacourse/mission-utils";
 import { ERROR, GUIDE_MESSAGE } from "./Constant/Constant";
+import InputView from "./View/InputView";
 
 class App {
   #usercars;
@@ -14,35 +15,6 @@ class App {
 
   async play() {
     await this.game();
-  }
-
-  async readUserCars() {
-    await Console.readLineAsync(GUIDE_MESSAGE.READ_CARS).then((input) => {
-      this.readCarsValidate(input);
-      this.setUserCars(input);
-    });
-  }
-  async readUserTrynum() {
-    await Console.readLineAsync(GUIDE_MESSAGE.READ_TRYNUM).then((input) => {
-      this.readTrynumValidate(input);
-      this.setTrynum(input);
-    });
-  }
-  readCarsValidate(input) {
-    let inputCars = input.split(",");
-    if (inputCars.some((item) => item.length > 5))
-      throw new Error(ERROR.CARS_LENGTH_ERROR);
-    let set = new Set(inputCars);
-    if (set.size !== inputCars.length)
-      throw new Error(ERROR.CARS_SAMEINPUT_ERROR);
-    if (inputCars.some((item) => item.includes(" "))) {
-      throw new Error(ERROR.CARS_SPACE_ERROR);
-    }
-    if (inputCars.length <= 1) throw new Error(ERROR.CARS_SIZE_ERROR);
-  }
-  readTrynumValidate(input) {
-    if (!input.match(/\d+/g)) throw new Error(ERROR.TRYNUM_TYPE_ERROR);
-    if (+input <= 0) throw new Error(ERROR.TRYNUM__SIZE_ERROR);
   }
 
   setTrynum(input) {
@@ -104,9 +76,9 @@ class App {
   }
 
   async game() {
-    await this.readUserCars();
+    await InputView.readUserCars((input) => this.setUserCars(input));
 
-    await this.readUserTrynum();
+    await InputView.readUserTrynum((input) => this.setTrynum(input));
 
     Console.print(GUIDE_MESSAGE.GAME_START);
     let trynum = this.#gametrynum;
