@@ -36,7 +36,6 @@ const validate ={
 			throw new Error('[ERROR] 입력값은 중복된 숫자가 올 수 없습니다.');
 		}
 	},
-
 }
 
 

@@ -17,7 +17,7 @@ class racingcarControll {
 		});
 		const count = await racingcarView.getUserInput('시도할 횟수는 몇 회인가요?\n');
 		validate.isNumber(count);
-		this._racingcar = new racingcarModel(nameArray);
+		this._racingcar = new racingcarModel(nameArray,count);
 	}
 
 }
