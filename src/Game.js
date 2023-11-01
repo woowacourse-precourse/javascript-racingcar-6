@@ -1,7 +1,9 @@
 import { Console, Random } from '@woowacourse/mission-utils';
-import Input from './Input';
+import Input from './Input.js';
 
-class App {
+// 배열로서 carName, carValue 관리
+
+class Game {
   constructor() {
     this.trial = 0;
     this.carList = [];
@@ -14,7 +16,6 @@ class App {
       this.setValue();
       this.printResult();
     }
-    this.printWinner();
   }
 
   async init() {
@@ -55,17 +56,8 @@ class App {
     });
     Console.print('\n');
   }
-
-  printWinner() {
-    const winner = [];
-    const maxNumber = Math.max(...this.totalResult);
-    this.totalResult.forEach((number, index) => {
-      if (maxNumber === number) {
-        winner.push(this.carList[index]);
-      }
-    });
-    Console.print(`최종 우승자 : ${winner.join(', ')}`);
-  }
 }
 
-export default App;
+export default Game;
+
+// 굳이 랜덤만 받아올거면 Car 객체는 필요없을듯
