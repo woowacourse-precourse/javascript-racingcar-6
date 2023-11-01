@@ -1,5 +1,3 @@
-import { SEPARATORS } from './utils/messages.js';
-
 class Car {
   #name;
   #position = [];
@@ -13,7 +11,7 @@ class Car {
   }
 
   printPosition() {
-    this.#position.push(SEPARATORS.step_symbol);
+    this.#position.push('-');
   }
 
   getName() {

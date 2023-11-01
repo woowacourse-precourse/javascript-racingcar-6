@@ -1,12 +1,8 @@
 import { Console, MissionUtils } from '@woowacourse/mission-utils';
-import Car from './Car.js';
-import InputCars from './InputCars.js';
-import InputMoveCount from './InputMoveCount.js';
-import {
-  OUTPUT_MESSAGES,
-  SEPARATORS,
-  MINIMUM_MOVE_NUMBER,
-} from './utils/messages.js';
+import Car from './Car';
+import InputCars from './Input/InputCars';
+import InputMoveCount from './Input/InputMoveCount';
+import { OUTPUT_MESSAGES, MINIMUM_MOVE_NUMBER } from './utils/messages';
 
 class App {
   #carNames = [];
@@ -48,11 +44,11 @@ class App {
       }
       this.showProgress(car.getName(), car.getPosition());
     });
-    Console.print(SEPARATORS.space);
+    Console.print(' ');
   }
 
   showProgress(name, position) {
-    Console.print(`${name} : ${position.join(SEPARATORS.no_separator)}`);
+    Console.print(`${name} : ${position.join('')}`);
   }
 
   printWinner() {
@@ -64,7 +60,7 @@ class App {
     );
     Console.print(
       OUTPUT_MESSAGES.winner_message +
-        winners.map(car => car.getName()).join(SEPARATORS.list_separator),
+        winners.map(car => car.getName()).join(', '),
     );
   }
 }
