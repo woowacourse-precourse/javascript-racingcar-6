@@ -1,2 +1,5 @@
 node_modules
 package-lock.json
+.vscode
+src/temp.js
+__tests__/temp.test.js
