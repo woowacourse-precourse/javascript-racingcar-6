@@ -14,6 +14,16 @@ class App {
     this.gameStart();
 
   }
+
+  setWinner() {
+    const maxPos = Math.max(...this.pos.map((pos) => pos.length));
+
+    for (const i =0;i<this.car.length;i++) {
+      if (this.pos[i].length === maxPos) {
+        this.winner.push(this.car[i]);
+      }
+    }
+  }
   
   setCar(car) {
     this.car = car;
@@ -73,7 +83,7 @@ class App {
     App.AttemptValidator(attempt);
 
     this.setAttempt(attempt);
-    this.setData(this.car.length);
+    this.setPos(this.car.length);
   }
 }
 
