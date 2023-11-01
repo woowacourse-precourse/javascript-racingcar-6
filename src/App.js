@@ -1,52 +1,27 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import Car from "./Car.js";
-import {
-  validateCarName,
-  validateCarNumber,
-  validateRoundNum,
-} from "./validator.js";
+import Car from "./models/Car.js";
+import { validateCarName, validateCarNumber, validateRoundNum } from "./validators/validator.js";
+import MESSEGE from "./constants/messeges.js";
+import { getRaceresult, getWinners } from './race.js';
+
+
 
 class App {
   async play() {
-    const carNames = await MissionUtils.Console.readLineAsync(
-      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
-    );
+    // 게임 시작
+    const carNames = await MissionUtils.Console.readLineAsync(MESSEGE.carNamesInput);
 
     let carArray = carNames.split(",").map((temp) => temp.trim());
-    MissionUtils.Console.print(carArray);
-
     validateCarNumber(carArray);
     validateCarName(carArray);
-
     carArray = carArray.map((carName) => new Car(carName));
 
-    const roundNum = await MissionUtils.Console.readLineAsync(
-      "시도할 횟수는 몇 회인가요?\n"
-    );
+    const roundNum = await MissionUtils.Console.readLineAsync(MESSEGE.roundNumInput);
     validateRoundNum(roundNum);
 
-    MissionUtils.Console.print(`\n실행 결과`);
-    for (let i = 0; i < roundNum; i += 1) {
-      carArray.forEach((car) => {
-        let randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
-        if (randomNumber >= 4) {
-          car.distance += 1;
-        }
-        const hyphen = "-".repeat(car.distance);
-        MissionUtils.Console.print(`${car.name} : ${hyphen}`);
-      });
-      MissionUtils.Console.print(``);
-    }
+    carArray = getRaceresult(roundNum, carArray);
 
-    let winners = [];
-    let maxDistance = -1;
-    carArray.forEach((car) => {
-      if (car.distance >= maxDistance) {
-        maxDistance = car.distance;
-      }
-    });
-    winners = carArray.filter((car) => car.distance === maxDistance);
-
+    const winners = getWinners(carArray);
     const WinnerResultText = winners.map((car) => car.name).join(", ");
 
     MissionUtils.Console.print(`최종 우승자 : ${WinnerResultText}`);
