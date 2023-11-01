@@ -1,7 +1,9 @@
-import App from "../src/App.js";
-import { MissionUtils } from "@woowacourse/mission-utils";
+/* eslint-disable */
+import App from '../src/App.js';
+import { MissionUtils } from '@woowacourse/mission-utils';
+import Racer from '../src/Racer.js';
 
-const mockQuestions = (inputs) => {
+const mockQuestions = inputs => {
   MissionUtils.Console.readLineAsync = jest.fn();
 
   MissionUtils.Console.readLineAsync.mockImplementation(() => {
@@ -10,7 +12,7 @@ const mockQuestions = (inputs) => {
   });
 };
 
-const mockRandoms = (numbers) => {
+const mockRandoms = numbers => {
   MissionUtils.Random.pickNumberInRange = jest.fn();
   numbers.reduce((acc, number) => {
     return acc.mockReturnValueOnce(number);
@@ -18,18 +20,18 @@ const mockRandoms = (numbers) => {
 };
 
 const getLogSpy = () => {
-  const logSpy = jest.spyOn(MissionUtils.Console, "print");
+  const logSpy = jest.spyOn(MissionUtils.Console, 'print');
   logSpy.mockClear();
   return logSpy;
 };
 
-describe("자동차 경주 게임", () => {
-  test("전진-정지", async () => {
+describe('자동차 경주 게임', () => {
+  test('전진-정지', async () => {
     // given
     const MOVING_FORWARD = 4;
     const STOP = 3;
-    const inputs = ["pobi,woni", "1"];
-    const outputs = ["pobi : -"];
+    const inputs = ['pobi,woni', '1'];
+    const outputs = ['pobi : -'];
     const randoms = [MOVING_FORWARD, STOP];
     const logSpy = getLogSpy();
 
@@ -41,22 +43,55 @@ describe("자동차 경주 게임", () => {
     await app.play();
 
     // then
-    outputs.forEach((output) => {
+    outputs.forEach(output => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
   });
 
-  test.each([
-    [["pobi,javaji"]],
-    [["pobi,eastjun"]]
-  ])("이름에 대한 예외 처리", async (inputs) => {
-    // given
-    mockQuestions(inputs);
+  test.each([[['pobi,javaji']], [['pobi,eastjun']]])(
+    '이름에 대한 예외 처리',
+    async inputs => {
+      // given
+      mockQuestions(inputs);
 
-    // when
-    const app = new App();
+      // when
+      const app = new App();
 
-    // then
-    await expect(app.play()).rejects.toThrow("[ERROR]");
+      // then
+      await expect(app.play()).rejects.toThrow('[ERROR]');
+    },
+  );
+
+  describe('입력', () => {
+    describe('자동차 이름 입력', () => {
+      describe('자동차 이름 길이', () => {
+        test.each([[['helloworld', '1']], [['pobi,helloworld', '1']]])(
+          '예외 처리',
+          async inputs => {
+            mockQuestions(inputs);
+
+            const app = new App();
+
+            await expect(app.play()).rejects.toThrow('[ERROR]');
+          },
+        );
+
+        test.each([[['pobi,woni', '1']], [['pobi,woni,hello', '1']]])(
+          '정상 동작',
+          async inputs => {
+            const logSpy = getLogSpy();
+
+            mockQuestions(inputs);
+
+            const app = new App();
+            await app.play();
+
+            expect(logSpy).toHaveBeenCalledWith(
+              expect.stringContaining('실행 결과'),
+            );
+          },
+        );
+      });
+    });
   });
 });
