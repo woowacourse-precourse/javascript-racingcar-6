@@ -9,6 +9,12 @@ export default class Race {
     this.#cars = participants.map((name) => new Car(name));
   }
 
+  printCurrentProcess() {
+    this.#cars.forEach((car) => {
+      Console.print(`${car.getDistanceBar()}`);
+    });
+  }
+
   async playRound() {
     this.#cars.forEach((car) => {
       car.move();

@@ -11,8 +11,11 @@ class App {
 
     this.#race = new Race(participants);
 
+    Console.print('실행 결과');
+
     Array.from({ length: tryCount }).forEach(() => {
       this.#race.playRound();
+      this.#race.printCurrentProcess();
     });
   }
 }

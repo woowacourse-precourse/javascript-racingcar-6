@@ -11,6 +11,13 @@ export default class Car {
     this.#distance = GAME.DEFAULT_POSITION;
   }
 
+  getDistanceBar() {
+    const bar = '-';
+    const distanceBar = bar.repeat(this.#distance);
+
+    return `${this.#name} : ${distanceBar}`;
+  }
+
   move() {
     const movement = Random.pickNumberInRange(
       GAME.MIN_MOVEMENT,
