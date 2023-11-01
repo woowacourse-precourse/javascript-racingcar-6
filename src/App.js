@@ -49,6 +49,29 @@ class App {
     this.showWinners(); // 우승자 출력
 
   }
+  
+  runGame() { // 게임 실행 메서드
+    for (let i = 0; i < this.rounds; i++) {
+      for (const car of this.cars) {
+        car.moveForward(); // 각 자동차 전진
+      }  
+      for (const car of this.cars) {
+        Console.print(`${this.name} : ${"-".repeat(this.position)}`); // 각 자동차 출력 형식으로 출력
+      }  
+      Console.print(""); 
+    } //헉 인덴트가 3개...!!!!!!!!!! NOOOOO
+  }
+
+  findWinners() { // 우승자 찾기 메서드
+    const maxPosition = Math.max(...this.cars.map((car) => car.position)); // 최대 위치 값 구하기
+    this.winners = this.cars.filter((car) => car.position === maxPosition); // 최대 위치와 같은 자동차들을 우승자 배열에 추가
+  }
+
+  showWinners() { // 우승자 출력 메서드
+    const winnerNames = this.winners.map((car) => car.name); // 우승자들의 이름 배열 찾기
+    Console.print(`최종 우승자 : ${winnerNames.join(", ")}`); // 우승자들의 이름을 쉼표로 구분하여 출력 //이게 맞나...?ㅜㅜ
+  }
+
 }
 
 export default App;

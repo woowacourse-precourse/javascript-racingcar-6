@@ -1,7 +1,5 @@
 <구현할 기능 목록>
 
-
-
 1. Car 클래스 정의
 class Car {
   constructor(name) {
@@ -19,7 +17,6 @@ class Car {
   moveForward() {
     if true면 자동차 위치 증가
   }
-
 } // car class 닫음
 
 4. App 클래스 정의
@@ -34,11 +31,11 @@ class App {
   async play() {
     자동차 이름, 시도할 횟수 입력받기, 이름 유효한지 체크하기
     실행결과 출력
-    게임 시작
+    게임 실행
     우승자 찾기, 우승자 출력
   }
 
-  6. 게임 실행 메서드
+  6. 게임 실행 메서드 #인덴트 3개 됨...
   runGame() {
     차 전진
     차 출력
