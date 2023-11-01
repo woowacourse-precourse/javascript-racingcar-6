@@ -1,7 +1,7 @@
 import { Console, MissionUtils } from "@woowacourse/mission-utils";
 
 // 2. 게임 진행
-export const gameProgress = async (players, maxNum) => {
+const gameProgress = async (players, maxNum) => {
   // 2-1. 실행 결과 문구 출력
   await Console.print("\n실행 결과");
   // 2-5. 실행 횟수만큼 출력
@@ -40,3 +40,5 @@ const printResult = async (moves) => {
   Console.print("\n");
   return moves;
 };
+
+export { gameProgress, getRandom, getMove, printResult };
