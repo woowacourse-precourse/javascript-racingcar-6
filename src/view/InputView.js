@@ -6,7 +6,7 @@ class InputView {
   async readRacingCarNames() {
     const inputName = await Console.readLineAsync(CONSOLE_MESSAGE.inputRacingCarName);
     const nameArray = inputName.split(',');
-  
+
     return nameArray;
   }
 

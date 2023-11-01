@@ -1,7 +1,7 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import OutputView from "../../src/view/OutputView";
-import { CONSOLE_MESSAGE } from "../../src/constants/consoleMessages";
-import RacingCar from "../../src/model/RacingCar";
+import { CONSOLE_MESSAGE } from "../../src/constants/consoleMessages.js";
+import RacingCar from "../../src/model/RacingCar.js";
 
 const outputView = new OutputView();
 const spy = jest.spyOn(MissionUtils.Console, 'print');

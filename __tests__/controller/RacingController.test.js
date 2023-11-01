@@ -1,6 +1,6 @@
 import RacingController from "../../src/controller/RacingController.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
-import { DuplicatedError, RacingCarNameError, RetryCountError } from "../../src/error/CustomErrors";
+import { DuplicatedError, RacingCarNameError, RetryCountError } from "../../src/error/CustomErrors.js";
 
 const mockInputs = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();

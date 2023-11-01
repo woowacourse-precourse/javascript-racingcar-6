@@ -1,4 +1,4 @@
-import { DuplicatedError, RacingCarNameError, RetryCountError } from "../../src/error/CustomErrors";
+import { DuplicatedError, RacingCarNameError, RetryCountError } from "../../src/error/CustomErrors.js";
 import RacingCarValidator from "../../src/validate/RacingCarValidator.js"
 
 const racingCarValidator = new RacingCarValidator();
