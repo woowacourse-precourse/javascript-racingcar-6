@@ -36,5 +36,12 @@
 ## 예외
 
 - 자동차 이름을 5자 초과하여 입력할 경우
-- 쉼표로 구분하여 입력하지 않은 경우
 - 시도할 횟수 숫자로 입력하지 않은 경우
+  - 0이하인 경우, NaN인 경우
+
+</br>
+
+## 테스트 코드
+
+- jest.fn()을 사용하여 Console.readLineAsync 함수를 모킹하고 원하는 값을 반환하도록 설정
+- Console.readLineAsync 함수를 mockReadLineAsync라는 가짜 함수로 대체
