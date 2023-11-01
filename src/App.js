@@ -23,7 +23,7 @@ class App {
     this.initGame(CAR_LIST, GAME_COUNT);
 
     while (this.status.gameCount) {
-      this.status.gameCount--;
+      if (this.status.gameCount > 0) this.status.gameCount--;
     }
   }
 
@@ -45,9 +45,15 @@ class App {
   }
 
   async getGameCount() {
+    // 게임 진행 횟수 입력 받음
     const COMMENT = "시도할 횟수는 몇 회인가요?\n";
     const GAME_COUNT = await MissionUtils.Console.readLineAsync(COMMENT);
 
+    // 정규표현식으로 0이상의 정수인지 판별 후 아니면 에러
+    const REGEX = /^(0|[1-9]\d*)$/;
+    if (!REGEX.test(GAME_COUNT)) this.throwError();
+
+    // 판별 통과시 입력된 게임 횟수 반환
     return GAME_COUNT;
   }
 
