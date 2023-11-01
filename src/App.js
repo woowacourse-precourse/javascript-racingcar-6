@@ -50,6 +50,11 @@ class App {
         return cars
     }
 
+    checkingWinner(cars) {
+        const distanceArr = cars.map(car => car.distanceDriven);
+        const checkingWinners = Math.max(...distanceArr);
+        return cars.filter(item => item.distanceDriven === checkingWinners)
+    }
 
     async play() {
         const racingCarList = await this.setRacingList()
