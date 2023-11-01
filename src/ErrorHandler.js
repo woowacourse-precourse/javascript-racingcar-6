@@ -1,12 +1,12 @@
 import { Random, Console } from '@woowacourse/mission-utils';
 
 const ErrorHandler = {
-  checkCarNames(car_names) {
-    if (!car_names) {
+  checkCarNames(carNames) {
+    if (!carNames) {
       throw new Error('입력이 없습니다. 경주할 자동차 이름을 입력하세요.');
     }
 
-    const cars = car_names.split(',');
+    const cars = carNames.split(',');
 
     if (cars.some((car) => car.length >= 5)) {
       throw new Error('차 이름은 5글자를 초과해서는 안됩니다.');

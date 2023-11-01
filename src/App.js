@@ -4,9 +4,8 @@ import ErrorHandler from './ErrorHandler.js';
 
 class App {
   async play() {
-    const car_names = await this.inputCarName();
-    ErrorHandler.checkCarNames(car_names);
-    // Console.print(car_names.split(','));
+    const carNames = await this.inputCarName();
+    ErrorHandler.checkCarNames(carNames);
   }
 
   async inputCarName() {
