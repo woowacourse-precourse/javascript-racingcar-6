@@ -87,6 +87,17 @@ class raceGameController {
   static canCarAdvance(randomNumber) {
     return randomNumber >= CONDITIONS.ADVANCE_CONDITION;
   }
+
+  /**
+   * 자동차 전진 횟수 업데이트
+   * @param {object} racingCars - 경주에 참가한 자동차들
+   */
+  static updateNumberOfAdvance(racingCars) {
+    racingCars.forEach(racingCar => {
+      const randomNumber = raceGameController.selectRandomNumber();
+      racingCar.advance(raceGameController.canCarAdvance(randomNumber));
+    });
+  }
 }
 
 export default raceGameController;
