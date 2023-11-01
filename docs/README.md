@@ -87,3 +87,11 @@ jun : -----
 - [x] 함수 당 추상화 수준은 하나로 만들기
 - [x] 의미를 전달할 수 있는 네이밍을 고려하여 함수 및 메서드 만들기
 - [x] 명령과 조회를 분리하여 함수와 메서드를 설계하기
+
+# 💻 Class Diagram
+
+![class diagram](classdiagram.png)
+
+# 📈 Flow Chart
+
+![flow chart](flowchart.png)
