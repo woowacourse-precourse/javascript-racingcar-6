@@ -28,25 +28,40 @@ const ERROR_MESSAGE_GENERATOR = Object.freeze({
   },
 });
 
-const ERROR_MESSAGE = Object.freeze({
+const DOMAIN_ERROR_PREFIX = Object.freeze({
   car: Object.freeze({
-    isNotNumberMoveArg: ERROR_MESSAGE_GENERATOR.isNotNumber('move의 인자'),
+    moveArg: 'Car의 move의 인자',
   }),
 
   user: Object.freeze({
-    isBlankName: ERROR_MESSAGE_GENERATOR.isBlank('User의 name'),
-    isNotStringName: ERROR_MESSAGE_GENERATOR.isNotString('User의 name'),
-    isOverMaxLengthName: ERROR_MESSAGE_GENERATOR.isOverMaxLength('User의 name', 5),
+    name: 'User의 name',
   }),
 
   track: Object.freeze({
-    isNotArrayUsers: ERROR_MESSAGE_GENERATOR.isNotArray('Track의 users'),
-    isExistNotUserInstance: 'Track의 users에 User 인스턴스가 아닌 값이 존재합니다!',
-    isDuplicatedUserName: 'Track의 users에 중복된 name을 가진 User가 존재합니다!',
+    user: 'Track의 name',
+    lap: 'Track의 lap',
+  }),
+});
 
-    isUnderMinLap: ERROR_MESSAGE_GENERATOR.isUnderMinNumber('Track의 lap', 1),
-    isNotNumberLap: ERROR_MESSAGE_GENERATOR.isNotNumber('Track의 lap'),
-    isNotIntegerLap: ERROR_MESSAGE_GENERATOR.isNotInteger('Track의 lap'),
+const ERROR_MESSAGE = Object.freeze({
+  car: Object.freeze({
+    isNotNumberMoveArg: ERROR_MESSAGE_GENERATOR.isNotNumber(DOMAIN_ERROR_PREFIX.car.moveArg),
+  }),
+
+  user: Object.freeze({
+    isBlankName: ERROR_MESSAGE_GENERATOR.isBlank(DOMAIN_ERROR_PREFIX.user.name),
+    isNotStringName: ERROR_MESSAGE_GENERATOR.isNotString(DOMAIN_ERROR_PREFIX.user.name),
+    isOverMaxLengthName: ERROR_MESSAGE_GENERATOR.isOverMaxLength(DOMAIN_ERROR_PREFIX.user.name, 5),
+  }),
+
+  track: Object.freeze({
+    isNotArrayUsers: ERROR_MESSAGE_GENERATOR.isNotArray(DOMAIN_ERROR_PREFIX.track.user),
+    isExistNotUserInstance: `${DOMAIN_ERROR_PREFIX.track.user}에 User 인스턴스가 아닌 값이 존재합니다!`,
+    isDuplicatedUserName: `${DOMAIN_ERROR_PREFIX.track.user}에 중복된 name을 가진 User가 존재합니다!`,
+
+    isUnderMinLap: ERROR_MESSAGE_GENERATOR.isUnderMinNumber(DOMAIN_ERROR_PREFIX.track.lap, 1),
+    isNotNumberLap: ERROR_MESSAGE_GENERATOR.isNotNumber(DOMAIN_ERROR_PREFIX.track.lap),
+    isNotIntegerLap: ERROR_MESSAGE_GENERATOR.isNotInteger(DOMAIN_ERROR_PREFIX.track.lap),
 
     isEndedTrack: '이미 종료된 트랙입니다!',
   }),
