@@ -277,5 +277,18 @@ describe("App class", () => {
       const winner = app.getWinner();
       expect(winner).toEqual(["pobi", "woni", "jun"]);
     });
+  });
+
+  describe("printResultHeader method", () => {
+    let app;
+    beforeEach(() => {
+      app = new App();
+      jest.spyOn(Console, 'print');
+    });
+  
+    test("실행 결과 출력", () => {
+      app.printResultHeader();
+      expect(Console.print).toHaveBeenCalledWith("실행 결과");
+    });
   });  
 });
