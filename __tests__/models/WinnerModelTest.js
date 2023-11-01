@@ -6,7 +6,7 @@ describe('MakeWinner Test', () => {
     winnerModel = new WinnerModel();
   });
 
-  test('우승자 생성기능 테스트', () => {
+  test('우승자를 만듭니다.', () => {
     const completedRaceCars = [
       {
         name: 'pobi',
@@ -23,7 +23,7 @@ describe('MakeWinner Test', () => {
     );
   });
 
-  test('중복 우승자 생성', () => {
+  test('중복 우승자를 만듭니다.', () => {
     const completedRaceCars = [
       {
         name: 'pobi',

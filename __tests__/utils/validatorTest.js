@@ -31,7 +31,7 @@ describe('Validator Test', () => {
     },
   );
 
-  test('시도횟수의 타입은 Number입니다.', () => {
+  test('시도횟수는 숫자입니다.', () => {
     expect(isValidateAttemps('1')).toBeTruthy();
   });
 });
