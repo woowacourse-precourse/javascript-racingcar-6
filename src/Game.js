@@ -10,6 +10,7 @@ export default class Game {
     this.NEXT_TRACK = '\n';
     this.MAX_MOVE = '';
     this.WINNERS = '';
+    this.WINNER_ARRAY = '';
   }
 
   async racing() {
@@ -37,7 +38,11 @@ export default class Game {
     this.WINNERS = carGroup
       .filter((player) => player.move === this.MAX_MOVE)
       .map((player) => player.name);
-    // Console.print(this.WINNERS);
-    // return this.winnerOutput(this.WINNERS);
+    return this.winnerOutput(this.WINNERS);
+  }
+
+  winnerOutput(winners) {
+    this.WINNER_ARRAY = new Array(winners).join(', ');
+    return Console.print(`최종 우승자 : ${this.WINNER_ARRAY}`);
   }
 }
