@@ -2,19 +2,20 @@ import { Random, Console } from "@woowacourse/mission-utils";
 class App {
     async play() {
         Console.print(
-            "경주할 자동차 이름을 입력하세요.(이름은 5자 이하로 쉼표(,)를 기준으로 구분해주세요.)"
+            "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
         );
 
         const carNameArr = await this.createCarNameArr();
-        console.log(carNameArr);
+        Console.print(carNameArr.join(","));
 
         Console.print("시도할 횟수는 몇 회인가요?");
 
         const numberOfGames = await this.getNumberOfGames();
-        console.log(numberOfGames);
+        Console.print(numberOfGames);
+        
+        Console.print("실행 결과")
 
         const numberOfCars = carNameArr.length;
-
         const carStates = Array(numberOfCars).fill("");
         let round = 1;
         while (round <= numberOfGames) {
@@ -24,6 +25,8 @@ class App {
             round++;
         }
         const winnerIndexList = this.determineWinnerIndex(carStates);
+        const winners = this.determineWinners(winnerIndexList, carNameArr);
+        Console.print(`최종 우승자 : ${winners}`);
     }
 
     async createCarNameArr() {
@@ -86,18 +89,22 @@ class App {
         }
         let winnerIndexList = [];
         let comparison = carStates[0].length;
-        for (let i = 1; i < carStates.length; i++) {
+        for (let i = 0; i < carStates.length; i++) {
             if (carStates[i].length > comparison) {
                 comparison = carStates[i].length;
                 winnerIndexList = [];
                 winnerIndexList.push(i);
             } else if (carStates[i].length === comparison) {
-                comparison === carStates[0].length
-                    ? winnerIndexList.push(0, i)
-                    : winnerIndexList.push(i);
+                winnerIndexList.push(i);
             }
         }
         return winnerIndexList;
+    }
+
+    determineWinners(winnerIndexList, carNameArr) {
+        const winnersArr = winnerIndexList.map((el) => carNameArr[el]);
+        const winners = winnersArr.join(", ");
+        return winners;
     }
 }
 
