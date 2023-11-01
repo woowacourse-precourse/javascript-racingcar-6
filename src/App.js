@@ -1,10 +1,6 @@
 import { Console, Random } from "@woowacourse/mission-utils";
 import { NUMBER, MESSAGE, ERRORS } from "./constants.js";
 class App {
-  constructor() {
-    this.cars = [];
-  }
-
   async play() {
     const { chance, carNameList } = await getInput();
     playGame(chance, carNameList);
