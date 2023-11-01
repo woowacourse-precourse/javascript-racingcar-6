@@ -15,7 +15,7 @@ class RacingInput {
 
   checkValidName(racingArr) {
     for (let i = 0; i < racingArr.length; i++) {
-      if (racingArr[i].length > 5)
+      if (racingArr[i].length > 5 || racingArr[i].length == 0)
         throw new Error("[ERROR] 잘못된 형식의 자동차 이름입니다.");
     }
     return true;
@@ -30,7 +30,8 @@ class RacingInput {
   }
 
   checkValidNum(attemptNum) {
-    if (isNaN(attemptNum)) throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
+    if (isNaN(attemptNum) || !Number.isInteger(Number(attemptNum)))
+      throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
     else if (Number(attemptNum) < 1)
       throw new Error("[ERROR] 1이상의 수를 입력해주세요.");
   }
