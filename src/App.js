@@ -80,7 +80,7 @@ class App {
     const winner = Object.entries(result)
       .filter(v => v[1] === maxScore)
       .map(v => v[0]);
-    Console.print(`최종 우승자 : ${winner}`);
+    Console.print(`${MESSAGES.FINAL_WINNER} : ${winner}`);
   }
 
   async play() {
