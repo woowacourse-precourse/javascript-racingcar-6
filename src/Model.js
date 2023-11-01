@@ -1,8 +1,9 @@
 const CUT_OFF_NUM = 4;
+const ASK_FOR_CARNAMES_VIEW = '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)';
+const ASK_FOR_GAMECNT_VIEW = '시도할 횟수는 몇 회인가요?';
 
-const askForCarNamesView = '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)';
-const askForGameCntView = '시도할 횟수는 몇 회인가요?';
-const errorMessage = new Error('[ERROR] 잘못된 입력입니다.');
+const ERROR_MESSAGE_WRONGTYPE = new Error('[ERROR] 잘못된 형식의 입력입니다.');
+const ERROR_MESSAGE_EMPTY_VALUE = new Error('[ERROR] 일부 입력값이 없습니다.');
 
 let gameStage = 0;
 const setGameStage = function AddOneForGameStage() {
@@ -51,10 +52,9 @@ const addFinalGameResult = (winners) => {
 };
 
 export {
-  CUT_OFF_NUM,
-  getGameStage, setGameStage, getCarNames, setCarNames,
+  getGameStage, setGameStage, ASK_FOR_CARNAMES_VIEW, ASK_FOR_GAMECNT_VIEW,
+  CUT_OFF_NUM, getCarNames, setCarNames,
   getGameCnt, setGameCnt, setCarRace, getCarRace, getCarNum,
   addGameRoundView, getGameResultView, addFinalGameResult,
-  askForCarNamesView, askForGameCntView,
-  errorMessage,
+  ERROR_MESSAGE_WRONGTYPE, ERROR_MESSAGE_EMPTY_VALUE,
 };

@@ -3,15 +3,20 @@ import {
   CUT_OFF_NUM,
   getGameStage, setGameStage, getCarNames, setCarNames,
   getGameCnt, setGameCnt, setCarRace, getCarRace, getCarNum,
-  askForCarNamesView, askForGameCntView, addGameRoundView, getGameResultView,
-  errorMessage, addFinalGameResult,
+  ASK_FOR_CARNAMES_VIEW, ASK_FOR_GAMECNT_VIEW, addGameRoundView, getGameResultView,
+  ERROR_MESSAGE_WRONGTYPE, ERROR_MESSAGE_EMPTY_VALUE, addFinalGameResult,
 } from './Model.js';
 
 const saveCarName = function splitAndSaveCarNames(carNames) {
   const carNamesArr = String(carNames).split(',');
+  for (let i = 0; i < carNamesArr.length; i += 1) {
+    if (carNamesArr[i] === '') {
+      throw ERROR_MESSAGE_EMPTY_VALUE;
+    }
+  }
   carNamesArr.forEach((element) => {
     if (element.length >= 6) {
-      throw errorMessage;
+      throw ERROR_MESSAGE_WRONGTYPE;
     }
   });
   setCarNames(carNamesArr);
@@ -20,7 +25,7 @@ const saveCarName = function splitAndSaveCarNames(carNames) {
 const saveGameCnt = (gameCnt) => {
   const gameCntInt = parseInt(gameCnt, 10);
   if (Number.isNaN(gameCntInt)) {
-    throw errorMessage;
+    throw ERROR_MESSAGE_WRONGTYPE;
   }
   setGameCnt(gameCntInt);
 };
@@ -88,9 +93,9 @@ const selectView = function selectTextForView() {
   let gameResult = '';
   switch (gameStage) {
     case 1:
-      return askForCarNamesView;
+      return ASK_FOR_CARNAMES_VIEW;
     case 2:
-      return askForGameCntView;
+      return ASK_FOR_GAMECNT_VIEW;
     default:
       gamePlay();
       gameResult = getGameResultView();
