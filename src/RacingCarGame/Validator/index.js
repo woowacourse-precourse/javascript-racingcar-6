@@ -2,28 +2,35 @@ import ValidationError from './ValidationError/index.js';
 import { NUMBER, SYMBOLS, ERROR } from '../constants/index.js';
 
 class Validator {
-  static isValidCarNameLength({ length }) {
-    if (length > NUMBER.maxNameLength) {
+  static validateNameLength(carNames) {
+    if (!carNames.length) {
       throw new ValidationError(ERROR.invalidNameLength);
     }
+
+    carNames.forEach(({ length }) => {
+      if (length > NUMBER.maxNameLength || !length) {
+        throw new ValidationError(ERROR.invalidNameLength);
+      }
+    });
   }
 
-  static isSafeInteger(number) {
+  static validateSafeInteger(number) {
     if (!Number.isSafeInteger(Number(number)) || number <= 0) {
       throw new ValidationError(ERROR.invalidLapCount);
     }
   }
 
   static validateCarNames(names) {
-    names
+    const carNames = names
       .replace(/\s/g, '')
       .split(SYMBOLS.nameDivider)
-      .filter((name) => name)
-      .forEach(this.isValidCarNameLength);
+      .filter(Boolean);
+
+    this.validateNameLength(carNames);
   }
 
   static validateLapCount(number) {
-    this.isSafeInteger(number);
+    this.validateSafeInteger(number);
   }
 }
 
