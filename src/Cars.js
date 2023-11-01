@@ -58,10 +58,18 @@ export default class Cars {
       throw new Error(ERROR_MESSAGE.ARRAY);
     }
 
+    const carNameSet = new Set();
+
     nextState.forEach((name) => {
       if (typeof name !== 'string' || name.length > 5 || name === '') {
         throw new Error(ERROR_MESSAGE.NAME);
       }
+
+      if (carNameSet.has(name)) {
+        throw new Error(ERROR_MESSAGE.DUPLICATE_NAME);
+      }
+
+      carNameSet.add(name);
     });
   }
 }

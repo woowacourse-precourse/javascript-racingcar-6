@@ -9,4 +9,5 @@ export const ERROR_MESSAGE = {
   ARRAY: '[ERROR] 차량 리스트는 배열이어야 합니다.',
   NUMBER: '[ERROR] 이동 횟수가 잘못된 형식입니다.',
   POSITION: '[ERROR] 위치 값이 잘못된 형식입니다.',
+  DUPLICATE_NAME: '[ERROR] 차량 이름은 중복되면 안됩니다.',
 };
