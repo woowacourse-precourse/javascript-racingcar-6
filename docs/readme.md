@@ -51,7 +51,7 @@
         <td>사용자 입력</td>
     </tr>
     <tr>
-        <td><input type="checkBox" disabled></td>
+        <td><input type="checkBox" checked></td>
         <td>인터페이스 컴포넌트</td>
         <td>실행 결과 출력</td>
     </tr>
@@ -71,7 +71,7 @@
         <td>자동차 이동 여부 판별</td>
     </tr>
     <tr>
-        <td><input type="checkBox" disabled></td>
+        <td><input type="checkBox" checked></td>
         <td>로직 컴포넌트</td>
         <td>우승자 정보 전달 기능</td>
     </tr>   
@@ -133,15 +133,29 @@
         <th>테스트</th>
     </tr>
     <tr>
-        <td><input type="checkBox" disabled></td>
+        <td><input type="checkBox" checked></td>
         <td>자동차 게임 완료 후 누가 우승했는지 출력</td>
     </tr>
     <tr>
-        <td><input type="checkBox" disabled></td>
+        <td><input type="checkBox" checked></td>
         <td>우승자는 한 명 이상일 수 있음</td>
     </tr>
     <tr>
-        <td><input type="checkBox" disabled></td>
+        <td><input type="checkBox" checked></td>
         <td>우승자가 여러 명일 경우 쉼표(,)로 구분</td>
     </tr>
 </table>
+
+### 전체 테스트
+
+<table>
+    <tr>
+        <th style = 'width : 100px'>완료 상태</th>
+        <th>테스트</th>
+    </tr>
+    <tr>
+        <td><input type="checkBox" disabled></td>
+        <td>전체 게임 테스트</td>
+    </tr>
+</table>
+
