@@ -11,4 +11,5 @@ export const REGEX = Object.freeze({
 
 export const CONSTANT = Object.freeze({
   MOVEMENT_THRESHOLD: 4,
+  PROGRESS_BAR: '-',
 });

@@ -1,4 +1,4 @@
-import { Random } from '@woowacourse/mission-utils';
+import { Random, Console } from '@woowacourse/mission-utils';
 import { ERROR, REGEX, CONSTANT } from './constants/constants';
 
 class Car {
@@ -34,6 +34,12 @@ class Car {
     if (this.canMove()) {
       this.#totalDistance += 1;
     }
+  }
+
+  printCurDistance() {
+    const curDistance = CONSTANT.PROGRESS_BAR.repeat(this.#totalDistance);
+    const consoleMessage = `${this.#name} : ${curDistance}`;
+    Console.print(consoleMessage);
   }
 }
 
