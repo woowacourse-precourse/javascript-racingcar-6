@@ -11,6 +11,7 @@ class App {
     const moveCount = await this.inputMoveCount();
     ErrorHandler.checkMoveCount(moveCount);
     this.racing(cars, moveCount);
+    this.printResult(cars, moveCount);
   }
 
   async inputCarName() {
@@ -26,10 +27,15 @@ class App {
   }
 
   racing(cars, moveCount) {
-    while (moveCount--) {
-      cars.forEach((car) => {
-        car.move();
-      });
+    for (let i = 0; i < moveCount; i++) {
+      cars.forEach((car) => car.move());
+    }
+  }
+
+  printResult(cars, moveCount) {
+    for (let i = 0; i < moveCount; i++) {
+      cars.forEach((car) => car.printState(i));
+      Console.print(' ');
     }
   }
 }

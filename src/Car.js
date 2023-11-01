@@ -14,6 +14,10 @@ class Car {
     }
     this.state.push('-'.repeat(this.count));
   }
+
+  printState(index) {
+    Console.print(this.carName + ' : ' + this.state[index]);
+  }
 }
 
 export default Car;
