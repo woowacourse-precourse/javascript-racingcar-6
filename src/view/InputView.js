@@ -8,7 +8,7 @@ const InputView = {
       callback(input);
     });
   },
-  async inputRacingTryingNumber(callback) {
+  async inputRacingAttempt(callback) {
     await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n").then(
       (input) => {
         callback(+input);

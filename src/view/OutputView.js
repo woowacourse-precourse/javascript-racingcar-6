@@ -1,12 +1,12 @@
 import { Console } from "@woowacourse/mission-utils";
 
 const OutputView = {
-  printRaceResultMessage() {
+  printRaceStartMessage() {
     Console.print("\n실행 결과");
   },
 
-  printRaceScore(car) {
-    Console.print(`${car} : ${this.cars[car]}`);
+  printRaceScore(name, score) {
+    Console.print(`${name} : ${"-".repeat(score)}`);
   },
 
   printGameWinnerMessage(winners) {
