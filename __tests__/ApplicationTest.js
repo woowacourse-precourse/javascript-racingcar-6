@@ -2,6 +2,7 @@
 import App from '../src/App.js';
 import { MissionUtils } from '@woowacourse/mission-utils';
 import Racer from '../src/Racer.js';
+import { input } from '../src/IO.js';
 
 const mockQuestions = inputs => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -154,5 +155,83 @@ describe('자동차 경주 게임', () => {
         );
       },
     );
+  });
+
+  describe('레이싱', () => {
+    const FORWARD = [4, 5, 6, 7, 8, 9];
+    const STOP = [0, 1, 2, 3];
+
+    test('사용자 입력한 자동차와 레이싱 자동차 비교', async () => {
+      mockQuestions(['pobi,woni', '1']);
+      const carNames = await input.carNames();
+      const tryCount = await input.tryCount();
+
+      const app = new App();
+      const racers = app.runRace(carNames, tryCount);
+
+      const expectedRacers = [new Racer('pobi'), new Racer('woni')];
+
+      expect(racers.length).toBe(2);
+      expect(racers).toEqual(expect.arrayContaining(expectedRacers));
+    });
+
+    describe('랜덤 값에 따른 전진-정지', () => {
+      test('0~3: 정지', async () => {
+        mockQuestions(['pobi', `${STOP.length}`]);
+        mockRandoms([...STOP]);
+
+        const carNames = await input.carNames();
+        const tryCount = await input.tryCount();
+
+        const app = new App();
+        const racers = app.runRace(carNames, tryCount);
+
+        expect(racers[0].move).toBe(0);
+      });
+
+      test('4~9: 전진', async () => {
+        mockQuestions(['pobi', `${FORWARD.length}`]);
+        mockRandoms([...FORWARD]);
+
+        const carNames = await input.carNames();
+        const tryCount = await input.tryCount();
+
+        const app = new App();
+        const racers = app.runRace(carNames, tryCount);
+
+        expect(racers[0].move).toBe(FORWARD.length);
+      });
+    });
+
+    describe('우승자', () => {
+      test('우승자가 한 명인 경우', async () => {
+        mockQuestions(['pobi,woni', '1']);
+        mockRandoms([FORWARD[0], STOP[0]]);
+
+        const carNames = await input.carNames();
+        const tryCount = await input.tryCount();
+
+        const app = new App();
+        const racers = app.runRace(carNames, tryCount);
+        const winners = app.getWinnerNames(racers);
+
+        expect(winners.length).toBe(1);
+        expect(winners).toEqual(expect.arrayContaining(['pobi']));
+      });
+      test('우승자가 여러 명인 경우', async () => {
+        mockQuestions(['pobi,woni', '1']);
+        mockRandoms([FORWARD[0], FORWARD[0]]);
+
+        const carNames = await input.carNames();
+        const tryCount = await input.tryCount();
+
+        const app = new App();
+        const racers = app.runRace(carNames, tryCount);
+        const winners = app.getWinnerNames(racers);
+
+        expect(winners.length).toBe(2);
+        expect(winners).toEqual(expect.arrayContaining(['pobi', 'woni']));
+      });
+    });
   });
 });
