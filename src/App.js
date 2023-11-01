@@ -32,7 +32,12 @@ class App {
     this.printWinner(cars);
   }
 
-  
+  printResult(cars){
+    cars.forEach((car) => {
+      MissionUtils.Console.print(`${car.name} : ${"-".repeat(car.moveCount)}`);
+    });
+    MissionUtils.Console.print('');
+  }
 }
 
 export default App;
