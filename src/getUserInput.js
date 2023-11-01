@@ -24,8 +24,10 @@ export async function getCarName() {
   );
 
   const names = rawInput.split(",");
-  if (!isValidCarNames(names))
+  if (!isValidCarNames(names)) {
+    // console.log("[names]", names.join("/"));
     throw Error("[ERROR] 이름이 올바른 형식이 아닙니다!");
+  }
 
   return names;
 }
@@ -42,8 +44,10 @@ export async function getMoveNumber() {
   const rawInput = await Console.readLineAsync("시도할 횟수는 몇 회인가요?");
 
   const number = Number(rawInput);
-  if (!isValidMoveNumber(number))
+  if (!isValidMoveNumber(number)) {
+    // console.log("[rawInput]", rawInput);
     throw Error("[ERROR] 시도 횟수가 올바른 형식이 아닙니다!");
+  }
 
   return number;
 }
