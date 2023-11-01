@@ -2,9 +2,12 @@ class Referee {
   #winners = [];
 
   determineWinners(racingCars) {
-    const cars = Object.values(racingCars);
-    const maxMoveCount = Math.max(...cars.map((car) => car.getMoveCount()));
-    this.#winners = cars.filter((car) => car.getMoveCount() === maxMoveCount);
+    const maxMoveCount = Math.max(
+      ...racingCars.map((car) => car.getMoveCount())
+    );
+    this.#winners = racingCars.filter(
+      (car) => car.getMoveCount() === maxMoveCount
+    );
 
     const winnerNames = this.#winners.map((car) => car.getName());
 
