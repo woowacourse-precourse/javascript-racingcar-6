@@ -8,6 +8,14 @@ function isValidCarNames(carNames) {
   if (carNames.some((name) => name === '')) {
     throw new Error('[ERROR] 올바른 이름을 입력하세요.');
   }
+  if (isDuplicate(carNames)) {
+    throw new Error('[ERROR] 자동차 이름은 중복될 수 없습니다.');
+  }
+}
+
+function isDuplicate(carNames) {
+  const onlyNames = new Set(carNames);
+  return onlyNames.size !== carNames.length;
 }
 
 function isValidAttempt(attempt) {

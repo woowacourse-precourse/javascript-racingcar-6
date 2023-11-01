@@ -18,6 +18,11 @@ describe('자동차 경주 게임 입력 검사', () => {
       const input = ['pobi', ''];
       expect(() => isValidCarNames(input)).toThrow('[ERROR] 올바른 이름을 입력하세요.');
     });
+
+    test('자동차 이름은 중복될 수 없습니다.', () => {
+      const input = ['pobi', 'pobi'];
+      expect(() => isValidCarNames(input)).toThrow('[ERROR] 자동차 이름은 중복될 수 없습니다.');
+    });
   });
 
   describe('시도 횟수 입력 예외 처리', () => {
