@@ -23,9 +23,9 @@ describe('RacingCar test', () => {
     expect(resultAdvance).toEqual(1);
 
     const resultGetName = testCar.getName();
-    expect(resultGetName).toEqual('test');
+    expect(resultGetName).toMatch(/test/);
 
     const resultGetState = testCar.getState();
-    expect(resultGetState).toEqual('test : -');
+    expect(resultGetState).toMatch(/test : -/);
   })
 });

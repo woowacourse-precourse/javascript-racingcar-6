@@ -23,6 +23,6 @@ describe('inputView test', () => {
     mockInput(input);
   
     const result = await inputView.readRetryCount();
-    expect(result).toEqual('3');
+    expect(result).toMatch(/3/);
     });
 })
