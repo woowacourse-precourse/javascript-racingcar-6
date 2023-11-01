@@ -1,8 +1,9 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
+import MESSAGE from '../constants/Message';
 
 const Output = {
   printExecution() {
-    MissionUtils.Console.print(Output.EXECUTION);
+    MissionUtils.Console.print(MESSAGE.EXECUTION);
   },
   printExecutionResult(name, forward) {
     const forwardString = '-'.repeat(forward);
@@ -10,7 +11,7 @@ const Output = {
   },
   printWinner(winners) {
     const winnersString = winners.join(', ');
-    MissionUtils.Console.print(`${Output.WINNER} : ${winnersString}`);
+    MissionUtils.Console.print(`${MESSAGE.WINNER} : ${winnersString}`);
   },
 };
 export default Output;
