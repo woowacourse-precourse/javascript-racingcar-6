@@ -36,6 +36,17 @@ class App {
     return Math.max(...movementLengthsArr);
   }
 
+  findFinalWinner(longestMovementLength) {
+    const winners = [];
+    this.cars.forEach((car) => {
+      if (car.getMovementLength() === longestMovementLength) {
+        winners.push(car.name);
+      }
+    });
+
+    return winners;
+  }
+
   async play() {
     const inputCarNames = await Input.getCarNamesFromUser();
     Validation.validateCarName(inputCarNames);
@@ -52,6 +63,7 @@ class App {
     Output.printGameResult(this.cars, this.GameCount);
 
     const longestMovementLength = this.findLongestMovementLength();
+    const finalWinners = this.findFinalWinner(longestMovementLength);
   }
 }
 
