@@ -16,6 +16,16 @@ class App {
     this.#gameRounds = Number(input);
   }
 
+  printWinnerNames() {
+    const maxMoveCount = Math.max(...(this.#carList).map(car => car.getMoveCount()));
+    const winners = this.#carList.filter((car) => car.getMoveCount() === maxMoveCount);
+
+    const winnerNames = [];
+    winners.map((winner) => winnerNames.push(winner.getName()));
+
+    Console.print(`최종 우승자 : ${winnerNames.join(', ')}`);
+  }
+
   async gameLoop() {
     Console.print('게임 결과\n');
     for (let i = 0; i < this.#gameRounds; i++) {
@@ -25,14 +35,13 @@ class App {
       });
       Console.print('');
     }
-
-
   }
 
   async play() {
     await this.parseCarNamesInput();
     await this.parseGameRoundsInput();
     await this.gameLoop();
+    const winners = this.printWinnerNames();
   }
 }
 

@@ -8,10 +8,14 @@ export default class Car {
         this.#name = name
     }
 
+    getName() {
+        return this.#name;
+    }
+    
     getMoveCount() {
         return this.#moveCount;
     }
-    
+
     tryMoveForward() {
         const random_number = Random.pickNumberInRange(0, 9);
 
