@@ -1,4 +1,4 @@
-import { MESSAGE, CAR_NAME_LIMIT } from '../constants.js';
+import { MESSAGE, CAR_NAME_LIMIT, TRY_MAX_VALUE } from '../constants.js';
 
 const conditions = {
   try: {
@@ -10,6 +10,9 @@ const conditions = {
     },
     isNotNumber(input) {
       return !Number.isSafeInteger(Number(input));
+    },
+    isOverMaxValue(input) {
+      return Number(input) > TRY_MAX_VALUE;
     },
   },
 
@@ -37,17 +40,16 @@ export const validate = {
    * @param {string} input
    */
   try(input) {
-    const { isNotInput, isNotNumber, isMinus } = conditions.try;
+    const { isNotInput, isNotNumber, isMinus, isOverMaxValue } = conditions.try;
     if (isNotInput(input)) {
       throw new Error(MESSAGE.COMMON.ERROR.IS_NOT_INPUT);
+    }
+    if (isOverMaxValue(input)) {
+      throw new Error(MESSAGE.TRY.ERROR.IS_OVER_MAX_VALUE);
     }
     if (isNotNumber(input)) throw new Error(MESSAGE.TRY.ERROR.IS_NOT_NUMBER);
 
     if (isMinus(input)) throw new Error(MESSAGE.TRY.ERROR.IS_MINUS);
-
-    if (Number(input) > 5000) {
-      throw new Error('[ERROR] 입력 값은 5000을 넘길 수 없습니다');
-    }
   },
 
   /**

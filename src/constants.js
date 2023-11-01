@@ -16,6 +16,7 @@ export const MESSAGE = Object.freeze({
     ERROR: {
       IS_MINUS: errorMessage('0 이상의 수를 입력해주세요.'),
       IS_NOT_NUMBER: errorMessage('숫자가 아닌 문자열을 입력했습니다. 0 이상의 수를 입력해주세요.'),
+      IS_OVER_MAX_VALUE: errorMessage('정수를 초과한 입력 값입니다.'),
     },
   },
   COMMON: {
@@ -32,3 +33,4 @@ export const RANDOM_NUMBER_RANGE = {
   MIN: 0,
   MAX: 9,
 };
+export const TRY_MAX_VALUE = Number.MAX_SAFE_INTEGER;
