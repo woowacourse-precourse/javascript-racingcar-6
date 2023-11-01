@@ -34,6 +34,7 @@ class App {
       cars.forEach((car) => {
         MissionUtils.Console.print(`${car.name}: ${"-".repeat(car.position)}`);
       });
+      MissionUtils.Console.print("\n");
     }
   }
   printResult(cars) {
