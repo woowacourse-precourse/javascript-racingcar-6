@@ -8,7 +8,6 @@ const isUniqueCarName = (input) => {
 
 export const isValidCarName = (input) => {
   const carNames = input.split(',').map(name => name.trim().toUpperCase());
-
   return (
     carNames.length >= GAME_SETTING.MIN_LENGTH_CAR_NAME &&
     carNames.every(name => name.length <= GAME_SETTING.MAX_LENGTH_CAR_NAME) &&
