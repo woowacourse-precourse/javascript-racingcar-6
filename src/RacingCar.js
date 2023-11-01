@@ -6,8 +6,10 @@ import Car from './Car.js';
 class RacingCar {
     constructor() {
         this.car = new Car();
-        this.carList = [];
+
         this.round = 0;
+        this.winner = [];
+        this.carList = [];
     }
 
     async checkInput() {
@@ -31,6 +33,15 @@ class RacingCar {
             for (const car of this.carList)
                 outputView.printCarResult(car.getCarName(), car.getCarMove());
         }
+
+        this.findWinner();
+        outputView.printWinner(this.winner);
+    }
+
+    findWinner() {
+        const maxMove = Math.max(...this.carList.map(car => car.getCarMove().length));
+        for (const car of this.carList)
+            if (car.getCarMove().length === maxMove) this.winner.push(car.getCarName());
     }
 }
 
