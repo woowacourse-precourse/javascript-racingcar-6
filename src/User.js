@@ -34,12 +34,6 @@ export default class User {
     if (!Array.isArray(carList)) {
       throw new Error(ERROR_MESSAGE.ARRAY);
     }
-
-    carList.forEach((name) => {
-      if (name.length > 5 || name === '') {
-        throw new Error(ERROR_MESSAGE.NAME);
-      }
-    });
   }
 
   validateCarList(carList) {

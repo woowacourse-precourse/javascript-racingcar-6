@@ -4,12 +4,14 @@ import { MESSAGE, ERROR_MESSAGE } from './constants/message.js';
 
 export default class Cars {
   constructor({ initialState }) {
+    this.validationState(initialState);
     this.state = initialState.map(
       (carName) => new Car({ initialState: { name: carName, position: 0 } }),
     );
   }
 
   setState(nextState) {
+    this.validationState(nextState);
     this.state = nextState;
   }
 
