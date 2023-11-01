@@ -33,7 +33,7 @@ export class Cars {
    */
 
   constructor(carNames) {
-    this.#validateDuplicateName;
+    this.#validateDuplicateName(carNames);
     // carNames를 돌면서 Car만들기
     // [new Car('a'), new Car('b'), ...]
     this.#carList = carNames.map((carName) => new Car(carName));
