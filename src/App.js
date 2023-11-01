@@ -2,6 +2,7 @@ import Validation from "./Validation";
 import CarRacingGame from "./CarRacingGame";
 import Car from "./Car";
 import { Console } from "@woowacourse/mission-utils";
+import { MESSAGE } from "./Constant";
 
 class App {
   /**@constructor */
@@ -14,9 +15,7 @@ class App {
   }
 
   async readCarNames() {
-    const answer = await Console.readLineAsync(
-      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
-    );
+    const answer = await Console.readLineAsync(MESSAGE.INPUT_CAR_NAME);
     const cars = answer.split(",");
     cars.forEach((car) => {
       Validation.validationCarName(car);
@@ -27,7 +26,7 @@ class App {
   }
 
   async readTryCount() {
-    const answer = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+    const answer = await Console.readLineAsync(MESSAGE.INPUT_TRY_COUNT);
     Validation.validationCount(answer);
     this.RacingResult(answer);
   }
@@ -37,7 +36,7 @@ class App {
    * @returns {void}
    */
   RacingResult(count) {
-    Console.print(`\n${"실행 결과"}`);
+    Console.print(`\n${MESSAGE.GAME_RESULT}`);
     this.carRacingGame.moveForward(count, (results) => {
       results.forEach(({ name, distance }) => {
         Console.print(`${name} : ${"-".repeat(distance)}`);
@@ -45,7 +44,7 @@ class App {
       Console.print(" ");
     });
     Console.print(
-      `${"최종 우승자"} : ${this.carRacingGame.getWinner().join(", ")}`
+      `${MESSAGE.WINNER} : ${this.carRacingGame.getWinner().join(", ")}`
     );
   }
 }

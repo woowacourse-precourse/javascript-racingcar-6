@@ -1,4 +1,5 @@
 import { Random } from "@woowacourse/mission-utils";
+import { CAR } from "./Constant";
 
 class Car {
   /** @type {string} */
@@ -20,7 +21,9 @@ class Car {
   }
   /**@returns {number} */
   moveForward() {
-    if (Random.pickNumberInRange(...[0, 9]) >= 4) {
+    if (
+      Random.pickNumberInRange(...CAR.FORWARD_RANGE) >= CAR.FORWARD_CONDITION
+    ) {
       this.#distance += 1;
     }
     return this.#distance;
