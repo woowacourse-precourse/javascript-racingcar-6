@@ -1,7 +1,7 @@
-import SYSTEM_MESSAGES from '../constants/SystemMessages.js';
-import Car from '../model/Car.js';
-import PrintConsole from '../view/PrintConsole.js';
-import UserInput from '../view/UserInput.js';
+import SYSTEM_MESSAGES from './constants/SystemMessages.js';
+import Car from './model/Car.js';
+import PrintConsole from './view/PrintConsole.js';
+import UserInput from './view/UserInput.js';
 
 class App {
 	#userInput;
