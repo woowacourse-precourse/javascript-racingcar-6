@@ -16,7 +16,7 @@ class RacingGame {
     this.#moveCount = await enterMoveCount();
   }
 
-  async setCars(carNames) {
+  setCars(carNames) {
     this.#carNames.forEach((carName) => {
       const car = new Car(carName);
       this.#cars.push(car);
@@ -67,8 +67,8 @@ class RacingGame {
           return { winners: [car.getName()], maxPosition: currentPosition };
         }
         if (currentPosition === acc.maxPosition) {
-          acc.push(car.getName());
-          return { winners: acc, maxPosition: acc.maxPosition };
+          acc.winners.push(car.getName());
+          return acc;
         }
         if (currentPosition < acc.maxPosition) {
           return acc;
@@ -87,7 +87,8 @@ class RacingGame {
   async play() {
     await this.setCarNames();
     await this.setMoveCount();
-    await this.setCars(this.#carNames);
+    this.setCars(this.#carNames);
+    Console.print(MESSAGE.gameStart);
     this.executeGameByMoveCount(this.#moveCount);
     this.printWinner(this.findWinner());
   }
