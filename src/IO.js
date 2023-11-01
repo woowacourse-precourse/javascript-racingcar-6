@@ -8,7 +8,7 @@ const MESSAGE = {
   },
   OUTPUT: {
     EXECUTION_RESULT: '\n실행 결과',
-    WINNER: winners => `${winners.join(', ')}가 최종 우승했습니다.\n`,
+    WINNER: winners => `최종 우승자 : ${winners.join(', ')}\n`,
     RACING_STATUS: racers =>
       racers
         .map(racer => `${racer.carName} : ${'-'.repeat(racer.move)}`)
