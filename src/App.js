@@ -30,9 +30,7 @@ class App {
 
     while (this.winners.length === 0) {
       this.cars.forEach(moveCar);
-
       this.printMoveResult();
-
       this.winners = this.cars.filter(getWinner);
     }
   }
