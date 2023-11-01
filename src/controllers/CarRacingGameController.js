@@ -1,6 +1,5 @@
 import CarRacingGames from "../models/carRacingGame.js";
 import Validator from "../models/validator.js";
-
 import InputView from "../views/InputView.js";
 import OutputView from "../views/OutputView.js";
 

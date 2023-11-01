@@ -4,12 +4,6 @@ import { ERROR_MESSAGE } from "../constants/messages.js";
 class Validator {
   constructor() {}
 
-  /**
-   * 사용자가 입력한 자동차 이름에 유효성을 검사한다.
-   * @params {string}
-   * @throw 유효성 검사에 실패한 경우
-   * @return {boolean}
-   */
   static validateInputCarNames(carListString) {
     const carListArr = carListString
       .split(",")
