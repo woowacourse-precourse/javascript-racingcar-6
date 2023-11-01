@@ -95,9 +95,8 @@ export class Cars {
   }
 
   #findWinners() {
-    const winnerDtoList = this.#carList
+    return this.#carList
       .filter((car) => car.distance === this.#getMaxDistance())
-      .map((car) => car.makeWinnerDto()); //car[] -> winner[]
-    return winnerDtoList;
+      .map((car) => car.makeWinnerDto());
   }
 }
