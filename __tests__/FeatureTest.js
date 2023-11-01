@@ -95,7 +95,7 @@ describe("story4. 차수별 진행상황 출력", () => {
     expect(result).toEqual(answer);
   });
 
-  test("goForward 메서드 테스트, 4이상이면 해당 자동차를 전진시킨다.", () => {
+  test("goForward 테스트, 4이상이면 해당 자동차를 전진시킨다.", () => {
     // given
     const randoms = [9, 3, 2, 8];
     const array = ['산 : ', '바다 : ', '강 : ', '하늘 : '];
@@ -111,7 +111,7 @@ describe("story4. 차수별 진행상황 출력", () => {
     expect(array).toEqual(answer);
   });
 
-  test("printStage 메서드 테스트, 요구사항에 맞춰 출력한다.", () => {
+  test("printStage 테스트, 요구사항에 맞춰 출력한다.", () => {
     // given
     const array = ['산 : ---', '바다 : -', '강 : -', '하늘 : --'];
     const answer = '산 : ---\n바다 : -\n강 : -\n하늘 : --\n';
@@ -160,10 +160,23 @@ describe('story5. 최종 우승자 출력', () => {
     expect(result).toEqual(answer);
   });
 
-  test("printResult 메서드 테스트, 우승자를 찾고 출력한다.", () => {
+  test("printResult 테스트, 우승자를 찾고 출력한다.", () => {
     // given
     const input = ['산 : -----', '바 다 : ---', '  호랑이 : ----'];
     const answer = '최종 우승자 : 산';
+    const logSpy = getLogSpy();
+
+    // when
+    printResult(input, 5);
+
+    // then
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(answer));
+  });
+
+  test("printResult 테스트, 우승자가 없다면 우승자 ", () => {
+    // given
+    const input = ['산 : ----', '바 다 : ---', '  호랑이 : ----'];
+    const answer = '최종 우승자 : 없음';
     const logSpy = getLogSpy();
 
     // when
