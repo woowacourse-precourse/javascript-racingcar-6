@@ -1,5 +1,5 @@
 import { Random } from '@woowacourse/mission-utils';
-import {getMovingResult, hasMovedForward} from '../src/game.js';
+import {getCarsMovementInfo, getMovingResult, hasMovedForward} from '../src/game.js';
 
 describe('게임 유틸', () => {
   describe('hasMovedForward', () => {
@@ -28,6 +28,28 @@ describe('게임 유틸', () => {
       const count = 5;
       const movingResult = getMovingResult(count);
       expect(movingResult.length).toBe(count);
+    })
+  })
+
+  describe('getCarsMovementInfo', () => {
+    test('올바른 carNames와 count를 입력하면, 해당 carNames 요소들을 객체 key로 갖고 전진 여부 배열을 value로 갖는 object가 반환되어야 한다.', () => {
+      const carNames = ['foo', 'bar'];
+      const count = 5;
+      const carsMovementInfo = getCarsMovementInfo(carNames, count);
+      const carsMovementInfoKeys = Object.keys(carsMovementInfo);
+      const carsMovementInfoValues = Object.values(carsMovementInfo);
+
+      carNames.forEach(carName => {
+        expect(carsMovementInfoKeys).toContain(carName);
+      })
+
+      carsMovementInfoValues.forEach(movingResult => {
+        expect(movingResult.length).toBe(count);
+
+        movingResult.forEach((result) => {
+          expect(result).toEqual(expect.any(Boolean));
+        })
+      })
     })
   })
 })

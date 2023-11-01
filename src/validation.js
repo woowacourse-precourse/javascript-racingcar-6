@@ -21,7 +21,7 @@ export const hasDuplicateString = (strings) => {
 /**
  * 공백만 있는 문자열인지 판단하는 함수
  *
- * @param str
+ * @param {number} str
  * @returns {boolean}
  */
 export const isOnlySpace = (str) => {
@@ -56,7 +56,7 @@ export const isValidCarNamesString = (carNamesString) => {
 
 /**
  * 입력받은 숫자가 자연수인지 판단하는 함수
- * @param nbr
+ * @param {number} nbr
  * @returns {boolean}
  */
 export const isNaturalNumber = (nbr) => {
@@ -68,11 +68,11 @@ export const isNaturalNumber = (nbr) => {
 
 /**
  * 입력받은 문자열이 자연수인지 판단하는 함수
- * @param count
+ * @param {string} count
  * @returns {boolean}
  */
-export const isValidCountString = (count) => {
-  if (!isNaturalNumber(Number(count))) {
+export const isValidCountString = (countAsString) => {
+  if (!isNaturalNumber(Number(countAsString))) {
     throw new Error('[ERROR] 시도할 횟수는 자연수로 입력해야 합니다.')
   }
 
