@@ -6,10 +6,9 @@ class Winner {
     const forwardCount = allForwardResult.map(
       result => result.split('-').length - 1,
     );
-
     const maxForwardCount = Math.max(...forwardCount);
-
     const finalWinnerCar = [];
+
     forwardCount.forEach((count, index) => {
       if (count === maxForwardCount) {
         finalWinnerCar.push(cars[index]);

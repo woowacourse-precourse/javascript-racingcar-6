@@ -11,7 +11,7 @@ class Validation {
     if (inputcars.includes(' ')) {
       throw new Error(ERROR_MESSAGE.spaceError);
     }
-    if (cars.length > 5) {
+    if (cars.some(car => car.length > 5)) {
       throw new Error(ERROR_MESSAGE.lengthError);
     }
     if (carSet.size !== cars.length) {
@@ -23,11 +23,14 @@ class Validation {
   }
 
   static inputTryCount(count) {
-    if (isNaN(count)) {
-      throw new Error(ERROR_MESSAGE.typeError);
+    if (count.includes(' ')) {
+      throw new Error(ERROR_MESSAGE.spaceError);
     }
     if (count.trim() === '') {
       throw new Error(ERROR_MESSAGE.inputError);
+    }
+    if (isNaN(count)) {
+      throw new Error(ERROR_MESSAGE.typeError);
     }
   }
 }

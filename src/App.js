@@ -1,5 +1,3 @@
-import { Console } from '@woowacourse/mission-utils';
-import { GAME_MESSAGE } from './Constants.js';
 import Car from './Car.js';
 
 class App {
