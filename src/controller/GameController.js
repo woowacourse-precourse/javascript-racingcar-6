@@ -58,7 +58,7 @@ export class GameController {
     cars.moveAll(); // cars가 도메인 객체라 비즈니스 로직 실행
     const carsDto = cars.makeCarsDto(); //CarsDto를 만들어서
     this.#outputView.printRoundResult(carsDto); //출력하기
-    this.#_race(cars, currentAttemptCount - 1); //조건 변수 3->2->1->0->종료
+    await this.#_race(cars, currentAttemptCount - 1); //조건 변수 3->2->1->0->종료
   }
 
   /**
