@@ -27,8 +27,9 @@ class App {
         return cars;
 
       case LOG.INPUT_ROUND:
-        if (isNaN(readLine)) throw new Error(ERROR.NOT_NUMBER);
-        return Number(readLine.trim());
+        const number = Number(readLine.trim());
+        this.validateRound(number);
+        return number;
 
       default:
         throw new Error(ERROR.NOT_CAR_OR_ROUND);
@@ -44,12 +45,23 @@ class App {
       if (
         value.length < DEFAULT.NAME_MIN_LENGTH &&
         value.length > DEFAULT.NAME_MAX_LENGTH
-      )
+      ) {
         throw new Error(ERROR.NOT_UNDER_LEN);
+      }
     });
 
     const set = new Set(cars);
     if (set.size !== cars.length) throw new Error(ERROR.NOT_UNIQUE);
+  }
+
+  validateRound(round) {
+    if (isNaN(round)) {
+      throw new Error(ERROR.NOT_NUMBER);
+    }
+
+    if (round < 0 && !Number.isInteger(round)) {
+      throw new Error(ERROR.NOT_INTEGER);
+    }
   }
 
   run() {

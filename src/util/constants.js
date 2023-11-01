@@ -15,9 +15,11 @@ export const LOG = {
 };
 
 export const ERROR = {
-  NOT_NUMBER: '[ERROR] 숫자만 입력해주세요.',
+  NOT_SPACE: '[ERROR] 공백 없이 입력해주세요.',
   NOT_PLURAL: '[ERROR] 2대 이상의 자동차를 입력해주세요.',
   NOT_UNDER_LEN: '[ERROR] 이름은 5자 이하로 입력해주세요.',
   NOT_UNIQUE: '[ERROR] 중복된 이름이 있습니다.',
+  NOT_NUMBER: '[ERROR] 숫자만 입력해주세요.',
+  NOT_INTEGER: '[ERROR] 0 이상의 정수만 입력해주세요.',
   NOT_CAR_OR_ROUND: '[ERROR] 자동차 이름과 시도 횟수만 입력 가능합니다.',
 };
