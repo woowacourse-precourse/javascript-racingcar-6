@@ -1,12 +1,16 @@
-import { MissionUtils } from '@woowacourse/mission-utils';
+import { Console } from "@woowacourse/mission-utils";
 
 // 이동 횟수를 입력받는 함수
 async function inputMoveCount() {
-  const moveCount = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 번인가요? ");
+  const moveCount = await Console.readLineAsync("시도할 횟수는 몇 번인가요? ");
   const moveCountAsInt = parseInt(moveCount);
 
+  if (isNaN(moveCountAsInt) || moveCountAsInt <= 0) {
+    Console.print("올바른 횟수를 입력하세요.");
+    return inputMoveCount(); // 재귀적으로 함수를 다시 호출하여 올바른 입력을 기다립니다.
+  }
+
   return moveCountAsInt;
-
-
-
 }
+
+export default inputMoveCount;

@@ -1,7 +1,7 @@
-import inputCarName from '../components/inputCarName.js';
-import inputMoveCount from '../components/inputMoveCount.js';
-import moveCar from '../components/carMoveControl.js';
-import printWinner from '../components/printWinner.js';
+import inputCarNames from '../component/inputCarName'; 
+import inputMoveCount from '../component/inputMoveCount'; 
+import raceCars from '../component/carMoveControl'; 
+import { printWinner } from '../component/printWinner'; 
 
 
-export { inputCarName, inputMoveCount, moveCar, printWinner };
+export { inputCarNames, inputMoveCount, raceCars, printWinner }; 

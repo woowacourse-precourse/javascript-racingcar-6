@@ -1,0 +1,44 @@
+import { Random, Console } from "@woowacourse/mission-utils";
+
+function moveCar() {
+  const randomNumber = Random.pickNumberInRange(0, 9);
+
+  if (randomNumber >= 4) {
+    return '-'; // 전진
+  } else {
+    return ' '; // 정지
+  }
+}
+
+function raceCars(carNames, moveCount) {
+  const carPositions = carNames.map(() => '');
+
+  Console.print('실행 결과');
+
+  for (let i = 0; i < moveCount; i++) {
+    for (let j = 0; j < carNames.length; j++) {
+      const movement = moveCar();
+
+      if (movement === '-') {
+        carPositions[j] += movement;
+      }
+    }
+  }
+
+  for (let i = 0; i < carNames.length; i++) {
+    Console.print(`${carNames[i]} : ${carPositions[i]}`);
+  }
+
+  let maxPosition = 0;
+  for (let i = 0; i < carPositions.length; i++) {
+    if (carPositions[i].length > maxPosition) {
+      maxPosition = carPositions[i].length;
+    }
+  }
+
+  const winners = carNames.filter((_, index) => carPositions[index].length === maxPosition);
+
+  return winners;
+}
+
+export default raceCars;
