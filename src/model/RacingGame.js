@@ -39,11 +39,12 @@ class RacingGame {
   }
 
   get raceScore() {
-    const score = [];
+    const result = {};
     Object.keys(this.#racingCars).forEach((car) => {
-      score.push([car, this.move(car)]);
+      const score = this.move(car);
+      result[car] = score;
     });
-    return score;
+    return result;
   }
 }
 

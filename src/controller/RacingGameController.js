@@ -1,8 +1,11 @@
 import InputView from "../view/InputView.js";
 import OutputView from "../view/OutputView.js";
 import RacingGame from "../model/RacingGame.js";
+import InputValidator from "../utils/Validator.js";
 class RacingGameController {
   #racingCars;
+  #attempt;
+  #result;
 
   constructor() {}
 
@@ -15,14 +18,14 @@ class RacingGameController {
   async readRacingCars() {
     await InputView.inputRacingCars((input) => {
       this.#racingCars = new RacingGame(input);
-      this.validateRacingCarName(this.#racingCars.getRacingCarsName);
+      InputValidator.validateRacingCarName(this.#racingCars.getRacingCarsName);
     });
   }
 
   async readRacingAttempt() {
     await InputView.inputRacingAttempt((input) => {
       this.#racingCars.setRacingAttempt(input);
-      this.validateRacingAttempt(input);
+      InputValidator.validateRacingAttempt(input);
     });
   }
 
@@ -31,36 +34,37 @@ class RacingGameController {
     this.race();
   }
 
-  validateRacingCarName(cars) {
-    cars.forEach((car) => {
-      if (car.length > 5) {
-        throw new Error("[ERROR] 차의 이름은 5자 이하만 가능합니다.");
-      }
-    });
+  get getRaceScore() {
+    return this.#racingCars.raceScore;
   }
 
-  validateRacingAttempt(attempt) {
-    if (attempt < 1) {
-      throw new Error("[ERROR] 시도 횟수는 1이상인 자연수여야 합니다.");
-    }
-    if (Number.isInteger(attempt) === false) {
-      throw new Error("[ERROR] 시도 횟수는 자연수여야 합니다.");
-    }
-  }
-
-  checkRaceScore() {
-    const score = this.#racingCars.raceScore;
-    score.forEach((item) => {
-      const [name, score] = item;
+  showRaceScore(score) {
+    Object.entries(score).forEach(([name, score]) => {
       OutputView.printRaceScore(name, score);
     });
   }
 
+  calculateWinner(score) {
+    const winnerScore = Math.max(...Object.values(score));
+    const winners = Object.entries(score)
+      .filter(([name, score]) => score === winnerScore)
+      .map(([name, score]) => name);
+    return winners;
+  }
+
+  showRaceWinner(score) {
+    const winners = this.calculateWinner(score);
+    OutputView.printGameWinnerMessage(winners);
+  }
+
   race() {
     for (let i = 0; i < this.#racingCars.getRacingAttempt; i++) {
-      this.checkRaceScore();
+      const raceScore = this.getRaceScore;
+      this.showRaceScore(raceScore);
       OutputView.printNewRound();
+      this.#result = raceScore;
     }
+    this.showRaceWinner(this.#result);
   }
 }
 
