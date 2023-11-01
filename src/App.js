@@ -1,17 +1,17 @@
-import { Console, Random } from "@woowacourse/mission-utils";
-import { getValidRound, getValidCars } from "./utils/getValidValue.js";
+import { Console, Random } from '@woowacourse/mission-utils';
+import { getValidRound, getValidCars } from './utils/getValidValue.js';
 
 export default class App {
   constructor() {
     this.cars = [];
-    this.totalRound = "";
+    this.totalRound = '';
     this.winner = [];
   }
 
   async play() {
     await this.getCarsName();
     await this.getTotalRound();
-    Console.print("실행 결과");
+    Console.print('실행 결과');
     this.raceStart(this.cars, this.totalRound);
     this.findWinners(this.cars, this.winner);
     this.printWinners(this.winner);
@@ -19,14 +19,14 @@ export default class App {
 
   async getCarsName() {
     const cars = await Console.readLineAsync(
-      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
+      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n'
     );
     const validCars = getValidCars(cars);
     this.cars = validCars;
   }
 
   async getTotalRound() {
-    const round = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+    const round = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
     const validRound = getValidRound(round);
     this.totalRound = validRound;
   }
@@ -45,9 +45,9 @@ export default class App {
     }
   }
   printRoundResult(cars) {
-    Console.print("");
+    Console.print('');
     for (const car of cars) {
-      Console.print(`${car.name} : ${"-".repeat(car.position)}`);
+      Console.print(`${car.name} : ${'-'.repeat(car.position)}`);
     }
   }
   findWinners(cars, winner) {
@@ -64,7 +64,7 @@ export default class App {
     }
   }
   printWinners(winners) {
-    const winnerNames = winners.join(", ");
+    const winnerNames = winners.join(', ');
     Console.print(`\n최종 우승자 : ${winnerNames}`);
   }
 }
