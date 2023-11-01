@@ -4,6 +4,7 @@ import InputView from "../View/InputView.js";
 import GameView from "../View/GameView.js";
 
 import Car from "../Model/Car.js";
+import { generateRandomNumber } from "../utils/index.js";
 
 class GameController {
   constructor() {
@@ -36,24 +37,13 @@ class GameController {
     
     // 3-1. 시도 횟수마다 자동차 대수만큼 무작위 값을 생성한다
     for (let i = 0; i < this.tryCount; i += 1) {
-      const randomNumbers = this.generateRandomNumber(cars.length);
+      const randomNumbers = generateRandomNumber(cars.length);
       const currnetCarStatus = this.car.move(randomNumbers);
 
       gameView.printEachResult(currnetCarStatus);
     }
 
     gameView.printFinalResult(cars);
-  }
-
-  generateRandomNumber(size) {
-    const randomNumbers = [];
-
-    while (randomNumbers.length < size) {
-      const randomNumber = Random.pickNumberInRange(0, 9);
-      randomNumbers.push(randomNumber);
-    }
-
-    return randomNumbers;
   }
 }
 
