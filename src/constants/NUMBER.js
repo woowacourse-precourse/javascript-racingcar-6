@@ -1,6 +1,7 @@
 const RANDOM = {
   MIN: 0,
   MAX: 9,
+
   THRESHOLD: 4,
 };
 

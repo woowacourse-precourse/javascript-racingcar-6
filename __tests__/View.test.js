@@ -23,6 +23,7 @@ describe("Input 테스트", () => {
     mockQuestions([emptyString]);
     expect(View.Input.inputCarNames()).rejects.toThrow("[ERROR]");
   });
+
   test("이름에 빈 문자열 입력", () => {
     const emptyString = "pobi,,woni";
     mockQuestions([emptyString]);

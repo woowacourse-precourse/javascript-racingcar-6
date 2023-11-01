@@ -30,7 +30,6 @@ class App {
 
     while (!this.racingGame.isGameEnd) {
       this.racingGame.moveAllCars();
-
       const result = this.racingGame.gameStatus;
       View.Output.printResult(result);
     }

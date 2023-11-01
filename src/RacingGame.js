@@ -21,6 +21,7 @@ class RacingGame {
   get count() {
     return this.#count;
   }
+
   set count(count) {
     this.#count = count;
   }

@@ -12,7 +12,6 @@ const mockRandoms = (numbers) => {
 
 describe("RacingGame 클래스 테스트", () => {
   const carNameList = ["pobi", "woni", "jun"];
-
   test("new RacingGame(%s) 테스트", () => {
     const racingGame = new RacingGame(carNameList, 5);
     const carList = [new Car("pobi"), new Car("woni"), new Car("jun")];

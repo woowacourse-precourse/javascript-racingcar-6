@@ -39,7 +39,6 @@ describe("자동차 경주 게임", () => {
     // when
     const app = new App();
     await app.play();
-
     // then
     outputs.forEach((output) => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));

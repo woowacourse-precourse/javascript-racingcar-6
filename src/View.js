@@ -18,7 +18,6 @@ const Input = {
       throw new Error(MESSAGE.ERROR.EMPTY_INPUT);
     if (!isValidateCarList(carNamesList))
       throw new Error(MESSAGE.ERROR.INVALID_CARS_INPUT);
-
     return carNamesList.map((carName) => carName.trim());
   },
 

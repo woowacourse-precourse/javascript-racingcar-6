@@ -10,6 +10,7 @@ class Car {
   get carName() {
     return this.#carName;
   }
+
   set carName(carName) {
     this.#carName = carName;
   }

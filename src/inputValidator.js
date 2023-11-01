@@ -3,7 +3,6 @@ import NUMBER from "./constants/NUMBER.js";
 export const isNumber = (input) => {
   return !isNaN(input);
 };
-
 export const isNotEmpty = (input) => {
   return input !== "";
 };
