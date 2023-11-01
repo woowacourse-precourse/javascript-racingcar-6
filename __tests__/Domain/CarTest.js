@@ -4,17 +4,7 @@ describe('Car 테스트', () => {
   const validName = ['pobi', 'crong', 'honux'];
   const invalidName = ['pengooseDev', 'thisIsTooLong'];
 
-  describe('자동차를 생성한다.', () => {
-    invalidName.forEach((name) => {
-      test(`이름은 5자 이하만 가능하다. (${name})`, () => {
-        // when
-        const createCar = () => new Car(name);
-
-        // then
-        expect(createCar).toThrow();
-      });
-    });
-
+  describe('자신의 이름(name)과 현재 위치(position)를 생성자에서 초기화한다.', () => {
     validName.forEach((name) => {
       test(`${name} : 오빠 차 뽑았다`, () => {
         // when
@@ -28,6 +18,16 @@ describe('Car 테스트', () => {
         const car = new Car('pobi');
 
         expect(car.getPosition()).toBe(0);
+      });
+    });
+
+    invalidName.forEach((name) => {
+      test(`자동차 이름이 5자를 초과하는 경우 예외 처리를 진행한다. (${name})`, () => {
+        // when
+        const createCar = () => new Car(name);
+
+        // then
+        expect(createCar).toThrow();
       });
     });
   });

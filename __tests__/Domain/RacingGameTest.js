@@ -26,7 +26,7 @@ describe('RacingGame 테스트', () => {
     });
   });
 
-  test('동일한 자동차 이름이 존재할 경우 예외처리한다.', () => {
+  test('자동차 이름이 중복되는 경우 예외 처리를 진행한다.', () => {
     const validName = 'pobi';
     const duplicatedCarName = [new Car(validName), new Car(validName)];
 
