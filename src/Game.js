@@ -1,5 +1,5 @@
-import Input from './Input';
-import Car from './Car';
+import Input from './Input.js';
+import Car from './Car.js';
 
 // 배열로서 carName, carValue 관리
 
@@ -7,33 +7,36 @@ class Game {
   constructor() {
     this.carList = [];
     this.randomValue = [];
-    this.recordMove = [];
+    this.totalResult = [];
   }
 
   async play() {
     const input = new Input();
     const { carNames } = await input.startInput();
     this.carList = carNames.split(',');
-    this.getValue();
-    this.checkMove();
+    this.setValue();
+    this.checkResult();
   }
 
-  getValue() {
+  setValue() {
     this.carList.forEach((item) => {
       const car = new Car(item);
       this.randomValue.push(car.getRandomNumber());
+      this.totalResult.push(0);
     });
   }
 
-  checkMove() {
-    this.randomValue.forEach((item) => {
+  checkResult() {
+    const totalResult = [];
+    this.randomValue.forEach((item, index) => {
       if (item > 3) {
-        this.recordMove.push(1);
+        totalResult.push(this.totalResult[index] + 1);
       }
       if (item < 4) {
-        this.recordMove.push(0);
+        totalResult.push(this.totalResult[index]);
       }
     });
+    this.totalResult = [...totalResult];
   }
 }
 
