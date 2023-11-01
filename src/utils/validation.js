@@ -8,6 +8,8 @@ export const validateCarNames = (carNames) => {
   if (names.some((name) => name.length === 0)) {
     throw new Error('[ERROR] 자동차 이름은 공백일 수 없습니다.');
   }
+
+  return names;
 };
 
 export const validateRounds = (rounds) => {
@@ -16,4 +18,6 @@ export const validateRounds = (rounds) => {
   if (isNaN(parsedRounds) || parsedRounds <= 0) {
     throw new Error('[ERROR] 시도 횟수는 1 이상의 정수로 입력해주세요.');
   }
+
+  return parsedRounds;
 };
