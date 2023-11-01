@@ -13,6 +13,7 @@ export default class RaceView {
   }
 
   static displayRaceResult(cars) {
+    Console.print("");
     if (!RaceView.isResultMessagePrinted) {
       Console.print(MESSAGES.RESULT);
       RaceView.isResultMessagePrinted = true;
@@ -29,7 +30,5 @@ export default class RaceView {
     Console.print(`${MESSAGES.WINNER}${winners.join(", ")}`);
   }
 
-  static displayError(error) {
-    Console.print(`${ERROR_MESSAGES[error]}`);
-  }
+  static displayError() {}
 }
