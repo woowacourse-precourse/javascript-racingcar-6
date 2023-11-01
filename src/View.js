@@ -6,7 +6,7 @@ import {
   isNumber,
   isValidateCarList,
   isValidateCount,
-} from "../utils/inputValidator.js";
+} from "./inputValidator.js";
 
 const Input = {
   async inputCarNames() {
