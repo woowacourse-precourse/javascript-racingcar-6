@@ -1,4 +1,4 @@
-import { MissionUtils } from "@woowacourse/mission-utils"
+import { Console, MissionUtils } from "@woowacourse/mission-utils"
 
 export const racingOutput = (data) => {
     if (typeof data === 'string') {
