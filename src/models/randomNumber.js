@@ -1,6 +1,6 @@
 import { Random } from '@woowacourse/mission-utils';
 
-export const random = (carsLength) => {
+export const getRandomNumbers = (carsLength) => {
   const randomNumber = [];
 
   while (randomNumber.length < carsLength) {

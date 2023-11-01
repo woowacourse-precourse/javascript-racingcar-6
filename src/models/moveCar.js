@@ -1,4 +1,4 @@
-import { random } from './randomNumber';
+import { getRandomNumbers } from './randomNumber';
 import { racingOutput, printWinningMessage } from '../view/outputView';
 import { OUTPUT_MESSAGE } from '../constants/ErrorMessage';
 
@@ -11,14 +11,14 @@ export const moveCount = (cars, round) => {
   });
 
   for (let roundIndex = 0; roundIndex < round; roundIndex++) {
-    const carObject = runRace(cars);
+    const carObject = handleRoundRace(cars);
     racingOutput(carObject);
   }
 };
 
-export const runRace = (cars) => {
+export const handleRoundRace = (cars) => {
   const carNames = Object.keys(cars);
-  const randomNumbers = random(carNames.length);
+  const randomNumbers = getRandomNumbers(carNames.length);
 
   carNames.forEach((carName, index) => {
     cars[carName] += randomNumbers[index] >= 4 ? '-' : '';
