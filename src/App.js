@@ -1,3 +1,5 @@
+import getValidTotalRoundNumber from "./feature/GetValidTotalRoundNumber";
+
 class App {
   constructor() {
     this.carDataList = []; // [{name:string, distance:number},]
@@ -10,7 +12,7 @@ class App {
 
     const totalRoundNumber = getValidTotalRoundNumber();
 
-    for (let round = 0; round < totalRoundNumber; round++) {
+    for (let round = 0; round < totalRoundNumber; round += 1) {
       const roundResult = moveCarRandomly(this.carDataList);
       announceRoundResult(roundResult);
       this.updateCarDataList(roundResult);
