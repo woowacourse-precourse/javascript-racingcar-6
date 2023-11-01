@@ -14,9 +14,8 @@ class Controller {
   }
 
   async readCarName() {
-    await InputView.readCarName(async (input) => {
-      await this.setCarData(input.split(','));
-    });
+    const carName = await InputView.readCarName();
+    await this.setCarData(carName.split(','));
   }
 
   async setCarData(list) {
@@ -25,9 +24,12 @@ class Controller {
   }
 
   async readAttemptNumber() {
-    await InputView.readAttemptNumber((input) => {
-      this.#carGame.setAttemptNumber(input);
-    });
+    const attemptNumber = await InputView.readAttemptNumber();
+    await this.setAttemptNumber(Number(attemptNumber));
+  }
+
+  async setAttemptNumber(number) {
+    this.#carGame.setAttemptNumber(number);
     this.startRace();
   }
 
