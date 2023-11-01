@@ -68,8 +68,9 @@ class App {
 
       if (randomNumber >= 4) {
         car.position += '-';
+      } else {
+        car.position += '';
       }
-      car.position += '';
     });
   }
 
