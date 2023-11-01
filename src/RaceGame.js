@@ -1,4 +1,5 @@
 import Car from "./Car.js";
+import { MissionUtils } from "@woowacourse/mission-utils";
 
 class RaceGame {
   constructor() {
