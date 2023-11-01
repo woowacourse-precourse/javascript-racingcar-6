@@ -1,0 +1,4 @@
+const CAR_NAME_STANDARD = ","
+const WINNER_STANDARD = ", "
+
+export {CAR_NAME_STANDARD, WINNER_STANDARD}
