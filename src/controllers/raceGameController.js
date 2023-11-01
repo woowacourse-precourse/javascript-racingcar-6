@@ -78,6 +78,15 @@ class raceGameController {
       throw new Error(MESSAGES.GENERAL_ERROR);
     }
   }
+
+  /**
+   * 자동차 전진 가능 여부 결정
+   * @param {number} randomNumber - 무작위 값
+   * @returns {boolean} - 자동차 전진 여부
+   */
+  static canCarAdvance(randomNumber) {
+    return randomNumber >= CONDITIONS.ADVANCE_CONDITION;
+  }
 }
 
 export default raceGameController;
