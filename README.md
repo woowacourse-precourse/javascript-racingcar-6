@@ -172,3 +172,11 @@ MissionUtils.Random.pickNumberInRange(0, 9);
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
   - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+## 구현기능 목록
+- 사용자 입력 처리
+  - 입력값이 유효한지 확인
+- 경주시작 (play 함수)
+- 자동차 경주 시뮬레이션 (raceCars 함수)
+- 무작위 이동 결정(calculateMovement 함수)
+- 최종 우승자 표시 (displayWinners 함수)
