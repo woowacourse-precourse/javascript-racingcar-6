@@ -10,7 +10,9 @@ class Winner {
   }
 
   #getWinner() {
-    const racingScore = this.movingForward.racingArray.map((x) => x.length);
+    const racingScore = this.movingForward.racingArray.map(
+      (hyphen) => hyphen.length
+    );
     const maxRacingScore = Math.max(...racingScore);
     const winnerRacers = [];
 
