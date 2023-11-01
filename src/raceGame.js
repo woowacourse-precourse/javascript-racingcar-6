@@ -10,10 +10,15 @@ async function startRace() {
             }
         }
 
-        const numMoves = parseInt(await Console.readLineAsync('시도할 횟수는 몇 회인가요? '));
-            if (numMoves <= 0) {
-                throw new Error("[ERROR] 횟수는 1 이상이어야 합니다.");
+        let numMoves;
+        while (true) {
+            numMoves = parseInt(await Console.readLineAsync('시도할 횟수는 몇 회인가요? '));
+            if (!isNaN(numMoves) && numMoves > 0) {
+                break;
+            } else {
+                Console.print("[ERROR] 유효한 횟수를 입력하세요.");
             }
+        }
 
         const cars = carNames.map(name => new Car(name.trim()));
 
