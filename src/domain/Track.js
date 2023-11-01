@@ -119,7 +119,7 @@ class Track {
   }
 
   /**
-   * 현재 랩의 User 마다 결과를 반환합니다.
+   * 현재 랩의 User들의 결과를 반환합니다.
    * @returns {{
    *  [key: string]: string
    * }}
