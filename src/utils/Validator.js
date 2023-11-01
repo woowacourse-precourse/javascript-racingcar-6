@@ -14,10 +14,19 @@ const Validator = {
     );
   },
 
-  isDuplicateCarName(carNames) {
+  validateDuplicatedCarName(carNames) {
     const carNameSet = new Set(carNames);
+
     if (carNames.length !== carNameSet.size)
-      throw new CustomError.RacingGame(ERROR.message.duplicateCarName);
+      throw CustomError.RacingGame(ERROR.message.duplicateCarName);
+  },
+
+  validateRound(round) {
+    this.validateInteger(round);
+
+    if (Number(round) < RACING_GAME.round.min) {
+      throw CustomError.RacingGame(ERROR.message.invalidRound);
+    }
   },
 
   validateUserInput(name) {
@@ -39,14 +48,6 @@ const Validator = {
 
     if (!isvalidLength) {
       throw CustomError.Car(ERROR.message.invalidCarNameLength);
-    }
-  },
-
-  validateRound(round) {
-    this.validateInteger(round);
-
-    if (Number(round) < RACING_GAME.round.min) {
-      throw CustomError.InputView(ERROR.message.invalidRound);
     }
   },
 };

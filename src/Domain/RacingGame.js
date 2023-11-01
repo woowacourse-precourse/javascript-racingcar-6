@@ -11,7 +11,7 @@ class RacingGame {
   #result = [];
 
   constructor({ cars = [], round = RACING_GAME.round.default }) {
-    Validator.isDuplicateCarName(cars.map((car) => car.getName()));
+    Validator.validateDuplicatedCarName(cars.map((car) => car.getName()));
     Validator.validateRound(round);
 
     this.#cars = cars;
