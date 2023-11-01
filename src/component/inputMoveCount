@@ -1,0 +1,12 @@
+import { MissionUtils } from '@woowacourse/mission-utils';
+
+// 이동 횟수를 입력받는 함수
+async function inputMoveCount() {
+  const moveCount = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 번인가요? ");
+  const moveCountAsInt = parseInt(moveCount);
+
+  return moveCountAsInt;
+
+
+
+}
