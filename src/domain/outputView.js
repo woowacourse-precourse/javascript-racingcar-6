@@ -21,14 +21,16 @@ export const racingProgress = async (carNameArray, tryNumber) => {
   for (let i = 0; i < carNameArray.length; i++) {
     RESULT.push(await makeRandomNumberTest(tryNumber));
   }
-};
-
-MissionUtils.Console.print(TEXT.ENTER);
-MissionUtils.Console.print(TEXT.RACING_RESULT);
-for (let i = 0; i < tryNumber; i++) {
-  for (let j = 0; j < RESULT.length; j++) {
-    resultJudge(RESULT, countArr, i, j);
-    racingProgressPrint(carNameArray, countArr, j);
+  MissionUtils.Console.print(TEXT.ENTER);
+  MissionUtils.Console.print(TEXT.RACING_RESULT);
+  for (let i = 0; i < tryNumber; i++) {
+    for (let j = 0; j < RESULT.length; j++) {
+      resultJudge(RESULT, countArr, i, j);
+      racingProgressPrint(carNameArray, countArr, j);
+    }
+    MissionUtils.Console.print("");
   }
-  MissionUtils.Console.print("");
-}
+
+  countArr = countArr.map((el) => (el = el.length));
+  await finalWinner(carNamesArray, countArr);
+};
