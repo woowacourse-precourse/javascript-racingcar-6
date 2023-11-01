@@ -1,7 +1,7 @@
-import CarRacingGame from "../models/carRacingGame";
-import Validator from "../models/validator";
-import InputView from "../views/InputView";
-import OutputView from "../views/OutputView";
+import CarRacingGame from "./models/carRacingGame";
+import Validator from "./models/validator";
+import InputView from "./views/InputView";
+import OutputView from "./views/OutputView";
 
 class CarRacingGameController {
   constructor() {

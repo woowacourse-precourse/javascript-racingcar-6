@@ -1,4 +1,4 @@
-import CarRacingGameController from "./controllers/CarRacingGameController";
+import CarRacingGameController from "./CarRacingGameController";
 
 class App {
   constructor() {}
