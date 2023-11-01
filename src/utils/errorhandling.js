@@ -4,19 +4,19 @@
  */
 export const isValidCarNames = (carNames) => {
     if (typeof carNames !== 'string') {
-        throw new Error('[ERROR] ');
+        throw new Error('[ERROR] 입력값이 string이 아닙니다.');
     }
 
     const cars = carNames.split(',');
 
     if (cars.some(c => c.length > 5)) {
-        throw new Error("[ERROR] 이름이 5글자 넘는게 있음");
+        throw new Error("[ERROR] 자동차 이름이 5글자를 초과합니다.");
     }
     if (cars.some(c => c.includes(" "))) {
-        throw new Error("[ERROR] 이름에 공백이 있음");
+        throw new Error("[ERROR] 자동차 이름에 공백이 있습니다.");
     }
     if (cars.length == 0) {
-        throw new Error("[ERROR] 입력된 차량이 없음");
+        throw new Error("[ERROR] 입력된 자동차가 없습니다.");
     }
 }
 
@@ -29,7 +29,7 @@ export const isValidAttempts = (attempts) => {
         throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
     }
     if (attempts < 0) {
-        throw new Error("[ERROR] 숫자가 0보다 작음");
+        throw new Error("[ERROR] 숫자가 0보다 작습니다.");
     }
 }
 
