@@ -70,7 +70,36 @@ class App {
     Console.print('');
   }
 
+  // 게임 결과 
+  gameResult(racingCars, tryCount) {
+    for (let round = 0; round < tryCount; round++) {
+      Object.entries(racingCars).forEach(([carName, score]) => {
+        this.moveRacing(carName, score, racingCars);
+      });
 
+      this.printMarkingRound(racingCars);
+    }
+  }
+ // 게임 우승 출력
+  getFinalWinners(racingCars) {
+    const maxScore = Math.max(...Object.values(racingCars));
+    const winners = Object.entries(racingCars)
+      .filter(([_, score]) => score === maxScore)
+      .map(([carName]) => carName);
+
+    return winners;
+}
+
+// 우승자 출력
+  async play() {
+    const carNames = await this.setCarNames();
+    const tryCount = await this.inputTryCount();
+    Console.print(promptMessages.gameResult);
+    this.gameResult(carNames, tryCount);
+
+    const winners = this.getFinalWinners(carNames);
+    Console.print(`${promptMessages.finalWinner} ${winners.join(', ')}`);
+  }
 
 
 }
