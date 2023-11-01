@@ -10,6 +10,12 @@ const mockQuestions = (input) => {
   });
 };
 
+const getLogSpy = () => {
+  const logSpy = jest.spyOn(Console, 'print');
+  logSpy.mockClear();
+  return logSpy;
+};
+
 describe('hasDuplicateCarName 함수 테스트', () => {
   test('중복될 때 예외 처리', () => {
     // given
@@ -151,5 +157,19 @@ describe('getMoveCount 함수 테스트', () => {
         await expect(result).resolves.not.toThrow();
       });
     });
+  });
+});
+
+test('printRaceProgress 함수 테스트', () => {
+  const car1 = new Car('car1', 2);
+  const car2 = new Car('car2');
+  const racingGame = new RacingGame([car1, car2]);
+  const outputs = ['car1 : --', 'car2 : '];
+  const logSpy = getLogSpy();
+
+  racingGame.printRaceProgress();
+
+  outputs.forEach((output) => {
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
   });
 });
