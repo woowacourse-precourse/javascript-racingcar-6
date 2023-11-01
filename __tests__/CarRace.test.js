@@ -52,7 +52,7 @@ describe('CarRace 생성자 확인', () => {
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
   });
 
-  test('printWinners 함수 동작 확인', () => {
+  test('printWinners 함수 동작 확인 - case1. ApplicationTest', () => {
     // given
     const MOVING_FORWARD = 4;
     const STOP = 3;
@@ -60,6 +60,43 @@ describe('CarRace 생성자 확인', () => {
     const attemptsInput = '1';
     const output = '최종 우승자 : pobi';
     const randoms = [MOVING_FORWARD, STOP];
+    const logSpy = getLogSpy();
+
+    mockRandoms(randoms);
+
+    // when
+    const carRace = new CarRace(racingCarInput, attemptsInput);
+    carRace.race();
+    carRace.printWinners();
+
+    // then
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+  });
+
+  test('printWinners 함수 동작 확인 - case2. README', () => {
+    // given
+    const MOVING_FORWARD = 4;
+    const STOP = 3;
+    const racingCarInput = 'pobi,woni,jun';
+    const attemptsInput = '5';
+    const output = '최종 우승자 : pobi, jun';
+    const randoms = [
+      MOVING_FORWARD,
+      STOP,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+    ];
     const logSpy = getLogSpy();
 
     mockRandoms(randoms);
