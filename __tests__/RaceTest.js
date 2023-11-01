@@ -3,12 +3,11 @@ import race from '../src/race';
 
 const mockRandoms = (numbers) => {
   MissionUtils.Random.pickNumberInRange = jest.fn();
-  numbers.reduce((acc, randomNumbers) => {
-    const pickRandomNumbers = randomNumbers.reduce((acc2, randomNumber) => {
-      return acc2.mockReturnValueOnce(randomNumber);
+  numbers.forEach((number) => {
+    number.reduce((acc, randomNumbers) => {
+      return acc.mockReturnValueOnce(randomNumbers);
     }, MissionUtils.Random.pickNumberInRange);
-    return pickRandomNumbers;
-  }, MissionUtils.Random.pickNumberInRange);
+  });
 };
 
 const getLogSpy = () => {
