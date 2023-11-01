@@ -53,12 +53,12 @@ export default class RacingGame {
   }
 
   getWinners() {
-    if (!this.isFinish())
+    if (!this.isFinish()) {
       throw new GamePlayingError(ERROR_MESSAGE.PLAY.LEFT_ROUND);
-
+    }
     const mostMoveFowardLength = this.#racingTrack.mostMoveFowardDistance();
     const winners = this.getRoundResult()
-      .filter((car) => car.position.length === mostMoveFowardLength)
+      .filter((car) => car.position === mostMoveFowardLength)
       .map((car) => car.name)
       .join(', ');
 
