@@ -1,4 +1,4 @@
-import { showResult, showWinner } from './print.js';
+import { showResult, showWinner } from './App.js';
 
 import MissionUtils from './MissionUtils';
 
