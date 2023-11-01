@@ -44,4 +44,3 @@ export default class RacingGame {
     View.print(`${MESSAGE.winner}${winnerNames}`);
   }
 }
-
