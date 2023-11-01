@@ -24,15 +24,16 @@ export default class InitGame {
   }
 
   #validateCarList(carList) {
-    carList = carList.split(",");
     const isLengthZero = carList.length === 0;
+    if (isLengthZero) {
+        throw new Error(ERROR_CAR_NAMES);
+      }
+  
+    carList = carList.split(",");
+
     const isLengthOverOrHasBlank = carList.some(
       (car) => car.length > 5 || car.includes(" ")
     );
-
-    if (isLengthZero) {
-      throw new Error(ERROR_CAR_NAMES);
-    }
 
     if (isLengthOverOrHasBlank) {
       throw new Error(ERROR_NAME_FORMAT);
@@ -41,6 +42,7 @@ export default class InitGame {
     return carList;
   }
   #validateGameCount(gameCount) {
+    gameCount = parseInt(gameCount)
     const IsCountNotNumber = isNaN(gameCount);
 
     if (IsCountNotNumber) {
