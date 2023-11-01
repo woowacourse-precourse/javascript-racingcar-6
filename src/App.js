@@ -5,7 +5,6 @@ class App {
 
   printEachResult(carList) {
     carList.forEach((car) => {
-      // console.log(car.name, car.moveCount);
       MissionUtils.Console.print(`${car.name} : ${car.printMove()}`);
     })
   }
@@ -36,10 +35,16 @@ class App {
     while(tryCount--) {
       // 각 자동차 전진 여부 결정
       carList.map((car) => car.playGame());
-      console.log('----------------');
-      MissionUtils.Console.print('실행결과');
+      MissionUtils.Console.print('\n실행결과');
       this.printEachResult(carList);
     }
+
+    // 최종 우승자 출력
+    const winners = [];
+    carList.forEach((car) => {
+      if (Car.getMaxMoveCount() === car.moveCount) winners.push(car.name);
+    })
+    MissionUtils.Console.print(`\n최종 우승자 : ${winners.join(', ')}`)
   }
 }
 
