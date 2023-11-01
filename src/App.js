@@ -74,9 +74,9 @@ class App {
     }
 
     if (winners.length === 1) {
-      console.log(`최종 우승자 : ${winners[0]}`);
+      Console.print(`최종 우승자 : ${winners[0]}`);
     } else {
-      console.log(`최종 우승자 : ${winners.join(', ')}`);
+      Console.print(`최종 우승자 : ${winners.join(', ')}`);
     }
   }
 }
