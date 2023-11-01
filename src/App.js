@@ -22,9 +22,16 @@ class App {
   }
 
   async enterTryCount() {
-    const inputTryCount = await Console.readLineAsync(
+    let inputTryCount = await Console.readLineAsync(
       "시도할 횟수는 몇 회인가요?\n"
     );
+    if (isNaN(inputTryCount)) {
+      throw new Error("입력 값은 숫자여야 합니다.");
+    }
+    inputTryCount = parseInt(inputTryCount);
+    if (inputTryCount <= 0) {
+      throw new Error("1 이상의 값을 입력해야 합니다.");
+    }
     return inputTryCount;
   }
 }
