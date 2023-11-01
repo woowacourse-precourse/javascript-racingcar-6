@@ -44,7 +44,7 @@ class App {
   }
 
   printWinner(cars) {
-    const maxMove = Math.max(cars.map((car) => car.moveCount));
+    const maxMove = Math.max(...cars.map((car) => car.moveCount));
     const winners = cars.filter((car) => car.moveCount === maxMove).map((car) => car.name);
     Console.print(winners.length > 1 ? `최종 우승자 : ${winners.join(', ')}` : `최종 우승자 : ${winners[0]}`);
   }
