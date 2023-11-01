@@ -2,16 +2,16 @@ import Garage from './Garage.js';
 import { print, readLineAsync } from '../utility/console.js';
 import { MESSAGE, ERROR_MESSAGE } from '../constant/message.js';
 import {
-    splitStringByComma,
-    joinArrayWithCommaAndBlank,
+  splitStringByComma,
+  joinArrayWithCommaAndBlank,
 } from '../utility/string.js';
 import {
-    isValidateNumber,
-    isNumberWithinBounds,
-    isLengthWithinBounds,
-    isDuplicateString,
-    isContainString,
-    isEmptyString,
+  isValidateNumber,
+  isNumberWithinBounds,
+  isLengthWithinBounds,
+  isDuplicateString,
+  isContainString,
+  isEmptyString,
 } from '../utility/validation.js';
 
 class RacingCarGame {
