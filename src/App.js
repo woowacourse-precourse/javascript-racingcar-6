@@ -2,9 +2,6 @@ import { Console, Random } from "@woowacourse/mission-utils";
 
 class Car {
   constructor(name) {
-    if (!name || name.length > 5 || typeof name !== "string") {
-      throw new Error("[ERROR] 자동차 이름은 5글자 이하로 해주세요");
-    }
     this.name = name;
     this.position = 0;
   }
@@ -64,11 +61,16 @@ class App {
         "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
       )
     ).split(",");
+    const cars = carNames.map((name) => {
+      if (!name || name.length > 5 || typeof name !== "string") {
+        throw new Error("[ERROR] 자동차 이름은 5글자 이하로 해주세요");
+      }
+      return new Car(name);
+    });
     const times = Number(
       await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n")
     );
     if (times <= 0) throw new Error("[ERROR] 1이상의 수를 입력해 주세요");
-    const cars = carNames.map((name) => new Car(name));
     const race = new Race(cars);
     Console.print("\n실행 결과");
     race.run(times);
