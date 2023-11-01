@@ -27,7 +27,7 @@ class RacingController {
   }
 
   #raceAndPrintProgress(racingCount) {
-    OutputView.print('\n실행 결과');
+    OutputView.printProgress();
     for (let count = 1; count <= racingCount; count += 1) {
       this.#racingModel.race();
       OutputView.printRacingResult(this.#racingModel.getData());
