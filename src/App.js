@@ -9,7 +9,9 @@ class App {
 
       for (let i = 0; i < TRY_COUNT; i++) {
         this.runRace(CAR_RESULT);
+        this.printResults(CAR_RESULT);
       }
+      this.printWinners(CAR_RESULT);
     } catch (error) {
       MissionUtils.Console.print(error.message);
     }
@@ -46,6 +48,28 @@ class App {
         car.progress += "-";
       }
     });
+  }
+
+  printResults(CAR_RESULT) {
+    MissionUtils.Console.print("\n실행 결과");
+    CAR_RESULT.forEach((car) => {
+      MissionUtils.Console.print(`${car.name} : ${car.progress}`);
+    });
+  }
+
+  printWinners(CAR_RESULT) {
+    const MAX_PROGRESS = Math.max(
+      ...CAR_RESULT.map((car) => car.progress.length)
+    );
+    const WINNER = CAR_RESULT.filter(
+      (car) => car.progress.length === MAX_PROGRESS
+    ).map((car) => car.name);
+
+    if (WINNER.length === 1) {
+      MissionUtils.Console.print(`최종 우승자: ${WINNER[0]}`);
+    } else {
+      MissionUtils.Console.print(`최종 우승자: ${WINNER.join(", ")}`);
+    }
   }
 }
 
