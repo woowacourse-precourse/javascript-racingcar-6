@@ -28,7 +28,7 @@ class App {
     console.log(userInput); // TODO 디버깅용
     MissionUtils.Console.print('실행 결과');
     while (userInput > 0) {
-      await userList.setRandomValue();
+      userList.setRandomValue();
       console.log(userList.carsMovingPoint); // TODO 디버깅용
       userList.carsMovingPoint.forEach((movingPoint, index) => {
         let output = userList.nameList[index];
@@ -39,6 +39,7 @@ class App {
       });
       userInput -= 1;
     }
+    await userList.printWinner();
   }
 }
 

@@ -18,6 +18,20 @@ class User {
       }
     });
   }
+
+  async printWinner() {
+    let winnerName = '최종 우승자 : ';
+    const maxMovingPointValue = Math.max.apply(null, this.carsMovingPoint);
+    console.log(maxMovingPointValue); // TODO 디버깅용
+    this.carsMovingPoint.forEach((movingPoint, index) => {
+      if (maxMovingPointValue === movingPoint) {
+        winnerName += this.nameList[index];
+        winnerName += ', ';
+      }
+    });
+    winnerName = winnerName.slice(0, winnerName.length - 2);
+    MissionUtils.Console.print(winnerName);
+  }
 }
 
 export async function inputParticipantCarName() {
