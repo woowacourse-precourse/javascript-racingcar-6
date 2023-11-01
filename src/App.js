@@ -70,17 +70,15 @@ class App {
     const readyCarNames = await carNames
       .split(",")
       .map((carName) => carName.trim());
-    const isCorrectName = await readyCarNames.every(
-      (value) => value.length < 6
-    );
+    const isOverLength = await readyCarNames.every((value) => value.length > 6);
     const hasDuplication =
       (await readyCarNames.length) !== new Set(readyCarNames).size;
 
+    if (carNames[carNames.length - 1] === ",")
+      this.printErrorMessage(this.ERROR.EMPTY_INPUT);
     if (pattern.test(readyCarNames))
       this.printErrorMessage(this.ERROR.INCORRECT_FORMAT);
-
-    if (!isCorrectName) this.printErrorMessage(this.ERROR.LENGTH);
-
+    if (isOverLength) this.printErrorMessage(this.ERROR.LENGTH);
     if (hasDuplication) this.printErrorMessage(this.ERROR.DUPLICATION);
 
     return readyCarNames;
