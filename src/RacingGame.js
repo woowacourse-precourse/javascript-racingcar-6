@@ -69,6 +69,19 @@ class RacingGame {
     return true;
   }
 
+  moveCars() {
+    Console.print(CONSOLE_MESSAGE.PRINT_RESULT);
+
+    for (let i = 0; i < this.#moveCount; i++) {
+      for (const car of this.#cars) {
+        car.move();
+      }
+      this.printRaceProgress();
+    }
+
+    Console.print(CONSOLE_MESSAGE.PRINT_BLANK);
+  }
+
   printRaceProgress() {
     for (const car of this.#cars) {
       car.printCurDistance();
