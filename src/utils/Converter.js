@@ -1,4 +1,4 @@
-const Convert = {
+const Converter = {
   stringToMap(inputValue) {
     const carDistanceMap = new Map();
     if (inputValue.includes(',')) {
@@ -27,4 +27,4 @@ const Convert = {
   },
 };
 
-export default Convert;
+export default Converter;

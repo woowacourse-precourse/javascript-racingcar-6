@@ -1,4 +1,4 @@
-const Validate = {
+const Validation = {
   inputCar(inputValue) {
     if (inputValue === '') throw new Error('[ERROR]');
 
@@ -27,4 +27,4 @@ const Validate = {
   },
 };
 
-export default Validate;
+export default Validation;

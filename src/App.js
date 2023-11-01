@@ -1,12 +1,12 @@
-import GameController from './controller/GameController.js';
+import Controller from './controller/Controller.js';
 
 class App {
   constructor() {
-    this.controller = new GameController();
+    this.controller = new Controller();
   }
 
   async play() {
-    await this.controller.progressGame();
+    await this.controller.progress();
   }
 }
 
