@@ -13,7 +13,6 @@ export const validateCarName = (carListArr) => {
 };
 
 export const validateMoveNum = (moveNum) => {
-  console.log(parseInt(moveNum));
   if (parseInt(moveNum).toString() !== moveNum)
     throw new Error(ERROR_MESSAGE.INVALID_INPUT_TYPE);
   else if (parseInt(moveNum) < 1)
