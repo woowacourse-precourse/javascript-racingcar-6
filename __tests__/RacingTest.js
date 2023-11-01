@@ -43,4 +43,17 @@ describe('Racing 게임 테스트', () => {
       bibi: '',
     });
   });
+
+  test('calculateCumulativeResult 메서드 테스트', () => {
+    const result = { yj: '-', bibi: '', go: '-' };
+    const roundStatus = { yj: '', bibi: '-', go: '-' };
+
+    app.calculateCumulativeResult(result, roundStatus);
+
+    expect(roundStatus).toEqual({
+      yj: '-',
+      bibi: '-',
+      go: '--',
+    });
+  });
 });
