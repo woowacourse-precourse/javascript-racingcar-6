@@ -66,7 +66,7 @@ function carsForEach(cars) {
 }
 
 function attemptCount(count) {
-  if (count < 2 || typeof count !== number) {
+  if (count <= 0) {
     throw new Error("[ERROR]");
   }
 }
