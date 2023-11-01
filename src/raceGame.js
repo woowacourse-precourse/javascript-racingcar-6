@@ -13,6 +13,8 @@ async function startRace() {
         if (numMoves <= 0) {
             throw new Error("[ERROR] 횟수는 1 이상이어야 합니다.");
         }
+
+        const cars = carNames.map(name => new Car(name.trim()));
 }
 
 module.exports = startRace;
