@@ -6,8 +6,10 @@ class Car {
   #totalDistance;
 
   constructor(name, totalDistance = 0) {
-    this.#name = name;
-    this.#totalDistance = totalDistance;
+    if (this.isValidCarName(name)) {
+      this.#name = name;
+      this.#totalDistance = totalDistance;
+    }
   }
 
   isValidCarName(name) {
