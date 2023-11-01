@@ -7,7 +7,6 @@ export const carsList = (carName, round) => {
 
   nameArray.forEach((car) => {
     cars[car] = '';
-    console.log(nameArray);
   });
 
   moveCount(cars, round);

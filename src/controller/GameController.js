@@ -1,14 +1,15 @@
 import { getCarNames, getRoundCount } from '../view/inputView.js';
-import { InputValid, RoundValid } from '../models/InputValid.js';
-import CarsList from '../models/CarList.js';
+import { InputValid, RoundValid } from '../validation/InputValid.js';
+import { carsList } from '../models/CarsList.js';
 
 const startGame = async () => {
-  let inputName = await getCarNames();
-  InputValid(inputName);
-  CarsList(inputName);
+  const inputName = await getCarNames();
+  const name = InputValid(inputName);
 
-  let round = await getRoundCount();
+  const round = await getRoundCount();
   RoundValid(round);
+
+  carsList(name, round);
 };
 
 export default startGame;
