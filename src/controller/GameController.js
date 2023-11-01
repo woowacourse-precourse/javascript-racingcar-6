@@ -3,8 +3,8 @@ import generateRandomNumber from '../common/generator.js';
 import { getUserInputCarName, getUserInputTryCount } from '../view/inputView.js'
 import { printResult, printCar, printWinner } from '../view/outputView.js';
 import { isValidCarName, isValidTryCount } from '../common/validator.js';
-import { GAME_SETTING, ERROR_MESSAGE } from '../common/constants.js';
-import { printMessage, throwError } from '../common/utils.js';
+import { GAME_SETTING } from '../common/constants.js';
+import { printMessage } from '../common/utils.js';
 
 class GameController {
 
@@ -45,7 +45,6 @@ class GameController {
   async handleTryCount() {
     const tryCount = await getUserInputTryCount();
     if (!isValidTryCount(tryCount)) {
-      throwError(ERROR_MESSAGE.INCORRECT_TRY_NUMBER);
       return this.handleTryCount();
     }
     return tryCount;
@@ -54,11 +53,9 @@ class GameController {
   async setCars() {
     const names = await getUserInputCarName();
     if (!isValidCarName(names)) {
-      throwError(ERROR_MESSAGE.INCORRECT_CAR_NAME);
       await this.setCars();
       return;
     }
-
     this.cars = names.split(',').map((name) => new Car(name));
   }
 
