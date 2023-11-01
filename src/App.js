@@ -1,12 +1,13 @@
 import { Console, Random} from "@woowacourse/mission-utils";
 import message from "./Message.js"
-import CONSTANT from "./Constant.js";
 
 class App {
   async play() {
     const userInput = await getUserInput(message.notifyStarting);
     const carNameArray = processInput(userInput);
-    const racingCars = carNameArray.map(element => new RacingCar(element, CONSTANT.condition));     
+
+    const CONDITION = { low: 0, high: 9, criteria: 4 }
+    const racingCars = carNameArray.map(element => new RacingCar(element, CONDITION));     
     
     let racingRounds = await getUserInput(message.askRounds);
     printMessage(message.progress);
@@ -81,7 +82,11 @@ class RacingCar {
   }
 
   tryMoveForward() {
-    const { low, high, criteria } = this.condition;
+    const rangeOfNumber = {
+    }
+    
+    const { low, high, criteria, range } = this.condition;
+
     (this.getRandomNumber(low, high) >= criteria) && (this.progress += 1);
   }
 
