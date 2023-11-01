@@ -1,26 +1,21 @@
 import { Random } from '@woowacourse/mission-utils';
 import { NUMBER_MAX, NUMBER_MIN, MOVE_FORWARD } from '../Utils/Define';
-import Car from './Car';
 import { userInput, eachResultOutput, finalResult } from '../view/View';
+import Car from './Car';
 
 const createRandomNumber = () => {
   const RandomNumber = Random.pickNumberInRange(NUMBER_MIN, NUMBER_MAX);
   return RandomNumber;
 };
 
-const canMoveForward = (randomNumber) => {
-  if (randomNumber >= MOVE_FORWARD) {
-    return true;
-  }
-  return false;
-};
+const canMoveForward = (randomNumber) => randomNumber >= MOVE_FORWARD;
 
-export const initCars = (carNames) => {
+const initCars = (carNames) => {
   const cars = carNames.map((name) => new Car(name, 0));
   return cars;
 };
 
-export const moveCars = (cars) => {
+const moveCars = (cars) => {
   cars.forEach((car) => {
     const randomNumber = createRandomNumber();
     if (canMoveForward(randomNumber)) {
@@ -29,22 +24,21 @@ export const moveCars = (cars) => {
   });
 };
 
-export const printResults = async (cars, roundCount, gameRound) => {
-  if (roundCount < gameRound) {
-    return eachResultOutput(cars);
-  }
-  return finalResult(cars);
+const printResults = async (cars, roundCount, gameRound) =>
+  roundCount < gameRound ? eachResultOutput(cars) : finalResult(cars);
+
+const playRound = (cars, roundCount, gameRound, printPromises) => {
+  moveCars(cars);
+  printPromises.push(printResults(cars, roundCount, gameRound));
 };
 
-export const startGame = async () => {
-  const [carsNames, gameRound] = await userInput();
-  const cars = await initCars(carsNames);
-
+const startGame = async () => {
+  const [carNamesInput, gameRound] = await userInput();
+  const cars = await initCars(carNamesInput);
   const printPromises = [];
 
   for (let roundCount = 0; roundCount <= gameRound; roundCount += 1) {
-    moveCars(cars);
-    printPromises.push(printResults(cars, roundCount, gameRound));
+    playRound(cars, roundCount, gameRound, printPromises);
   }
 
   await Promise.all(printPromises);

@@ -1,7 +1,7 @@
 class Car {
-  constructor(name, distance) {
+  constructor(name, currentPosition) {
     this.name = name;
-    this.distance = distance;
+    this.distance = currentPosition;
   }
 
   moveForward() {

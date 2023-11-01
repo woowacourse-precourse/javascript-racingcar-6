@@ -6,23 +6,15 @@ import {
   VALIDATE_GAME_ROUND_ERROR,
 } from '../Utils/Define';
 
-export const isEmpty = (input) => {
-  if (input.trim() === '' || input.trim() === ' ') {
-    return IS_EMPTY_ERROR;
-  }
-  return null;
-};
+const isEmpty = (input) =>
+  input.trim() === '' || input.trim() === ' ' ? IS_EMPTY_ERROR : null;
 
-export const validateCarName = (input) => {
-  if (input.length < NAME_MIN || input.length > NAME_MAX) {
-    return VALIDATE_CAR_NAME_ERROR;
-  }
-  return null;
-};
+const validateCarName = (input) =>
+  input.length < NAME_MIN || input.length > NAME_MAX
+    ? VALIDATE_CAR_NAME_ERROR
+    : null;
 
-export const validateGameRound = (input) => {
-  if (Number.isNaN(Number(input))) {
-    return VALIDATE_GAME_ROUND_ERROR;
-  }
-  return null;
-};
+const validateGameRound = (input) =>
+  Number.isNaN(Number(input)) ? VALIDATE_GAME_ROUND_ERROR : null;
+
+export default { isEmpty, validateCarName, validateGameRound };
