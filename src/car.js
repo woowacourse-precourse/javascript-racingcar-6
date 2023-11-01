@@ -10,15 +10,20 @@ class Car {
     const randomNumber = Random.pickNumberInRange(0, 9); 
     if (randomNumber >= 4) { 
       this.distance++;
+      if (this.distance > Car.maxDistance) {
+        Car.maxDistance = this.distance;
+      }
     }
   }
 
   getDistanceString() {
     return '-'.repeat(this.distance);
   }
+  
+  static maxDistance = 0;
 
   static async createCarsFromInput() {
-    const carNamesString = await Console.readLineAsync('경주할 자동차 이름을 입력하세요. (이름은 쉼표(,)로 구분): \n');
+    const carNamesString = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,)로 구분): \n');
 
     //console.log('입력받은 자동차 이름들:', carNamesString);
 
