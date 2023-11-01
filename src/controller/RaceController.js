@@ -1,7 +1,7 @@
 import InputView from '../view/InputView';
 import OutputView from '../view/OutputView';
 import CarRace from '../model/CarRace';
-import getData from '../utils/getData';
+import formatOutput from '../utils/formatOutput';
 
 class RaceController {
   constructor() {
@@ -26,7 +26,7 @@ class RaceController {
       OutputView.roundResult(cars);
     }
 
-    const winners = await getData.getMaxForwardData(cars);
+    const winners = await formatOutput.findWinningCars(cars);
     OutputView.printMessage();
     OutputView.winnerResult(winners);
   }

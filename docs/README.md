@@ -35,13 +35,13 @@
 
 **4. utils**
 
-- 4-1. constants : 사용되는 매직넘버, 에러메세지 등 상수 정의
-- 4-2. validateInput : 사용자 입력에 대한 유효성 검사
-- 4-3. getRandomNumber : 경주에 필요한 난수 생성
-- 4-4. getData : 형식에 맞게 출력하기 위해 결과 데이터 가공
-  - `getMaxForwardData` : 가장 많이 전진한 자동차 반환
-  - `getRoundData` : 경주 라운드 결과를 문자열 형태로 변환
-  - `getWinnerData` : 최종 우승자 이름 및 출력 메세지를 조합하여 결과 출력 문자열 반환
+- 4-1. `constants` : 사용되는 매직넘버, 에러메세지 등 상수 정의
+- 4-2. `validateInput` : 사용자 입력에 대한 유효성 검사
+- 4-3. `getRandomNumber` : 경주에 필요한 난수 생성
+- 4-4. `formatOutput` : 형식에 맞게 출력하기 위해 결과 데이터 가공
+  - `findWinningCars` : 가장 많이 전진한 자동차 반환
+  - `convertRoundResultToString` : 경주 라운드 결과를 문자열 형태로 변환
+  - `makeWinnerMessage` : 최종 우승자 이름 및 출력 메세지를 조합하여 결과 출력 문자열 반환
 
 **5. test**
 

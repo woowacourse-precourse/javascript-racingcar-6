@@ -1,6 +1,6 @@
 import { FORWARD, OUTPUT_MESSAGE } from './constants';
 
-const getMaxForwardData = cars => {
+const findWinningCars = cars => {
   const maxScore = Math.max(...cars.map(car => car.moveCount));
   const getWinnerCars = cars
     .filter(car => car.moveCount === maxScore)
@@ -8,7 +8,7 @@ const getMaxForwardData = cars => {
   return getWinnerCars;
 };
 
-const getRoundData = cars => {
+const convertRoundResultToString = cars => {
   const resultFormat = car =>
     `${car.name} : ${
       car.moveCount > 0 ? FORWARD.EXPRESSION.repeat(car.moveCount) : ''
@@ -17,8 +17,12 @@ const getRoundData = cars => {
   return result;
 };
 
-const getWinnerData = winners => {
+const makeWinnerMessage = winners => {
   return `${OUTPUT_MESSAGE.WINNERS} ${winners.join(', ')}`;
 };
 
-export default { getMaxForwardData, getRoundData, getWinnerData };
+export default {
+  findWinningCars,
+  convertRoundResultToString,
+  makeWinnerMessage,
+};
