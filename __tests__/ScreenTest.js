@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import Screen from '../src/Screen';
+import Screen from '../src/view/Screen';
 
 const mockQuestions = (inputs) => {
   Console.readLineAsync = jest.fn();

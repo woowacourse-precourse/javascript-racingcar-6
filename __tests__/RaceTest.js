@@ -1,5 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import App from '../src/App';
+import Race from '../src/controller/Race';
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -39,8 +39,7 @@ describe('경주 테스트', () => {
     mockRandoms([...randoms]);
 
     // when
-    const app = new App();
-    await app.play();
+    await Race.start();
 
     // then
     outputs.forEach((output) => {
@@ -59,8 +58,7 @@ describe('경주 테스트', () => {
     mockRandoms([...randoms]);
 
     // when
-    const app = new App();
-    await app.play();
+    await Race.start();
 
     // then
     outputs.forEach((output) => {

@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import { MESSAGES, STRINGS } from './Constants';
+import { MESSAGES, STRINGS } from '../Constants';
 
 class Screen {
   static async inputNames() {
