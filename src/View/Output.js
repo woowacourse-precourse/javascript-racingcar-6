@@ -1,8 +1,9 @@
 import { Console } from '@woowacourse/mission-utils';
+import Car from '../Model/Car.js';
+import Generator from '../Model/Generator.js';
 
 class Output {
   /**
-   *
    * @param {string} carName
    * @param {num} carDistance
    */
@@ -11,13 +12,14 @@ class Output {
   }
 
   /**
-   *
-   * @param {[string]} winners
+   * racing후 cars
+   * @param {[Car]} cars
    */
-  static printWinners(winners) {
-    const winnersString = winners.join(', ');
+  static printWinners(cars) {
+    const winners = Generator.winnerGenerator(cars);
+    const winnersToString = winners.map((winner) => winner.name).join(', ');
 
-    Console.print('최종 우승자 : ' + winnersString);
+    Console.print('최종 우승자 : ' + winnersToString);
   }
 }
 

@@ -26,11 +26,8 @@ class App {
     //* 경주를 실행하고 이에 대한 결과를 출력합니다.
     this.playRacing();
 
-    //* 우승자를 생성합니다.
-    const winners = this.winnerGenerator().map((winner) => winner.name);
-
     //* 우승자를 출력합니다.
-    Output.printWinners(winners);
+    Output.printWinners(this.cars);
   }
 
   playRacing() {
@@ -46,17 +43,6 @@ class App {
 
       this.tryNum -= 1;
     }
-  }
-
-  /**
-   * 우승한 자동차의 Car 배열 타입
-   * @returns {[Car]}
-   */
-  winnerGenerator() {
-    const maxDistance = Math.max(...this.cars.map((car) => car.distance));
-    const winners = this.cars.filter((car) => car.distance === maxDistance);
-
-    return winners;
   }
 }
 

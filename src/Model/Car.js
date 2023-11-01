@@ -1,4 +1,4 @@
-import { Random } from '@woowacourse/mission-utils';
+import Generator from './Generator.js';
 
 class Car {
   /**
@@ -11,8 +11,7 @@ class Car {
   }
 
   addDistance() {
-    const randomNum = Random.pickNumberInRange(0, 9);
-    const isAdd = randomNum >= 4 ? true : false;
+    const isAdd = Generator.isAddGenerator();
 
     if (isAdd) this.distance += 1;
   }
