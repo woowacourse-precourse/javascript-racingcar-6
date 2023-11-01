@@ -8,12 +8,12 @@ class InputMoveCount {
     );
     const moveCount = Number(input);
 
-    this.#validateMoveCount(moveCount);
+    this.validateMoveCount(moveCount);
 
     return moveCount;
   }
 
-  #validateMoveCount(input) {
+  validateMoveCount(input) {
     if (isNaN(input)) {
       throw new Error(ERROR_MESSAGES.not_a_number);
     }
