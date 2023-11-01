@@ -5,6 +5,8 @@ class App {
     const CARS = await this.getCarNames();
     const MOVING_COUNT = await this.getMovingCount();
 
+    Console.print('\n실행 결과');
+
     let CURRENT_CARS = CARS;
     for (let i = 0; i < MOVING_COUNT; i++) {
       CURRENT_CARS = this.moveCars(CURRENT_CARS);
