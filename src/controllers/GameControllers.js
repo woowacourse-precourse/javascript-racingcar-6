@@ -1,8 +1,8 @@
 import { getCarNames, getAttemptCount } from "../views/InputView";
 import { checkValidInput, checkValidCount } from "../models/CheckValidInput";
 import createCars from "../models/CreateCars";
-import { runRace } from "../models/RunRace";
-import { racingOutput } from "../views/OutputView";
+import { racingOutput, showWinner } from "../views/OutputView";
+import { runRace, findWinner } from "../models/RunRace";
 
 export const startGame = async () => {
     //자동차 이름 입력 받고 유효성 검사
@@ -24,4 +24,12 @@ export const runByCount = (cars, count) => {
       carObject = runRace(cars);
       racingOutput(carObject);
     }
+
+    determineWinner(carObject);
+};
+
+//우승자를 확인해서 view로 이동시키는 함수
+export const determineWinner = (carObject) => {
+    const winner = findWinner(carObject);
+    showWinner(winner);
 };
