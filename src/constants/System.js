@@ -10,6 +10,7 @@ export const SYSTEM = Object.freeze({
   randomNumberMin: 0,
   randomNumberMax: 9,
   canMoveNumber: 4,
+  move: '-',
 });
 
 export const LANGUAGE_OPTION = Object.freeze({
