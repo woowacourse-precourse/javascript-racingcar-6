@@ -72,4 +72,7 @@
 
 - [ ] : 3. 실행결과 출력
 
+  - [ ] : CarList.race() 호출 횟수와 moveNum의 값 비교
+  - [ ] : CarList.printCarCurrnetState() 호출 횟수와 moveNum의 값 비교
+
 - [ ] : 4. 우승자 출력
