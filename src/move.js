@@ -1,7 +1,15 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Console, Random } from "@woowacourse/mission-utils";
+
+const TARGET_NUMBER = 4;
+
+function canMove(number) {
+  if (number < TARGET_NUMBER) return false;
+  return true;
+}
 
 function moveCar(name, carsMovedCount) {
-  carsMovedCount[name]++;
+  const randomNumber = Random.pickNumberInRange(0, 9);
+  if (canMove(randomNumber)) carsMovedCount[name]++;
 }
 
 export function moveCars(names, carsMovedCount) {
