@@ -1,7 +1,6 @@
 import { Console, Random} from "@woowacourse/mission-utils";
-import message from "./util/Message.js"
-
-const CONDITION = { low:0, high:9, criteria:4};
+import message from "./Message.js"
+import CONDITION from "./Constant.js";
 
 class App {
   async play() {
