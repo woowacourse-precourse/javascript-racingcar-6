@@ -1,4 +1,4 @@
-import App from '../src/App';
+import App from '../src/App.js';
 import { Console, Random } from '@woowacourse/mission-utils';
 
 const mockQuestions = (inputs) => {

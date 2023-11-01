@@ -1,4 +1,4 @@
-import { ReferenceTypeError } from '../../src/errors/ParamTypeError';
+import { ReferenceTypeError } from '../../src/errors/ParamTypeError.js';
 import { paramType } from '../../src/utils/paramType.js';
 
 describe('function paramType Test', () => {

@@ -1,5 +1,5 @@
-import Car from '../../src/Car';
-import RacingGame from '../../src/RacingGame';
+import Car from '../../src/Car.js';
+import RacingGame from '../../src/RacingGame.js';
 
 describe('class RacingGame Test', () => {
   let carInstanceList;
