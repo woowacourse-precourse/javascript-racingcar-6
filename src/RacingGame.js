@@ -1,4 +1,5 @@
 import { Random } from '@woowacourse/mission-utils';
+import { RANDOM_NUMBER_RANGE } from './constants/numberRange';
 
 export default class RacingGame {
   #carList;
@@ -9,8 +10,14 @@ export default class RacingGame {
     this.#tryRound = tryRound;
   }
 
-  createRandomNumber() {
-    return Random.pickNumberInRange(0, 9);
+  createRandomNumber(
+    min = RANDOM_NUMBER_RANGE.MIN,
+    max = RANDOM_NUMBER_RANGE.MAX
+  ) {
+    return Random.pickNumberInRange(
+      RANDOM_NUMBER_RANGE.MIN,
+      RANDOM_NUMBER_RANGE.MAX
+    );
   }
 
   isFinish() {
@@ -48,7 +55,6 @@ export default class RacingGame {
 
   getWinners() {
     if (this.#tryRound !== 0) {
-      // this.#tryRound 가 0이 아니면 error를 던지고 0이면 테스트 결과 반환하는 테스트 만들어보기
       throw new Error(
         `[ERROR] 게임 round가 전부 실행되지 않았습니다. 잔여 라운드 : ${
           this.#tryRound
