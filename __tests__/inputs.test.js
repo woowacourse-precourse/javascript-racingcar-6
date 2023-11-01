@@ -3,7 +3,6 @@ import { MissionUtils } from '@woowacourse/mission-utils';
 
 const mockQuestions = (input) => {
   MissionUtils.Console.readLineAsync = jest.fn();
-
   MissionUtils.Console.readLineAsync.mockImplementation(() => {
     return Promise.resolve(input);
   });
@@ -35,10 +34,12 @@ describe('경주할 자동차 이름 입력', () => {
 
     // when & then
     inputs.forEach(async (input) => {
+      // when
       mockQuestions(input);
-      await expect(inputRacingCars()).rejects.toThrow(
-        '[ERROR] Invalid racing car input'
-      );
+      const result = inputRacingCars();
+
+      // then
+      await expect(result).rejects.toThrow('[ERROR] Invalid racing car input');
     });
   });
 });
@@ -59,12 +60,15 @@ describe('시도 횟수 입력', () => {
   test('시도 횟수 입력 예외 테스트', async () => {
     // given
     const inputs = ['0', '', '-1', 'one', '1a2'];
-    // mockQuestions(inputs);
 
     // when & then
     inputs.forEach(async (input) => {
+      // when
       mockQuestions(input);
-      await expect(inputAttemps()).rejects.toThrow(
+      const result = inputAttemps();
+
+      // then
+      await expect(result).rejects.toThrow(
         '[ERROR] Invalid number of attemps input'
       );
     });
