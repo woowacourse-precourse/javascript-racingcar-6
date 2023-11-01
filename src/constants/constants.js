@@ -11,9 +11,9 @@ const INPUT_MESSAGE = {
 };
 
 const OUTPUT_MESSAGE = {
-  PROGRESS_RESULT: '실행결과',
+  PROGRESS_RESULT: '실행 결과',
   PROGRESS: (name, distance) => `${name} : ${distance}`,
-  WINNER: (winner) => `최종우승자: ${winner}`,
+  WINNER: (winner) => `최종 우승자 : ${winner}`,
 };
 
 const ERROR_MESSAGE = {
