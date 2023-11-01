@@ -20,9 +20,10 @@ class App {
     MissionUtils.Console.print('\n실행 결과');
 
     for (let i = 0; i < rounds; i++) {
-      startRound(namesArray, scoreObject);
+      runRound(namesArray, scoreObject);
       const roundResult = getRoundResult(namesArray, scoreObject);
-      MissionUtils.Console.print(`${roundResult[i]}\n`);
+      roundResult.forEach(res => MissionUtils.Console.print(`${res}`));
+      MissionUtils.Console.print('');
     }
 
     const winnersArray = getWinners(namesArray, scoreObject);
