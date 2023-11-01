@@ -15,8 +15,8 @@ class App {
     carNamesArr.forEach((carName) => {
       const car = new Car(carName);
       this.cars.push(car);
+      return this.cars;
     });
-    return this.cars;
   }
 
   async play() {

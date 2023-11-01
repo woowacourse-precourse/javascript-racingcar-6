@@ -1,7 +1,13 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 
 const Random = {
-  setMovement() {},
+  setMovement(gameCount) {
+    const randomlySettedArr = this.setRandomNumbers(gameCount);
+    const ascendedArr = this.sortArrayAscending(randomlySettedArr);
+    const convertedToHyphenOrSpacedArr = this.convertToHyphenOrSpace(ascendedArr);
+
+    return convertedToHyphenOrSpacedArr;
+  },
 
   setRandomNumbers(gameCount) {
     const computer = [];
