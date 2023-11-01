@@ -418,3 +418,51 @@
 
   - App 클래스의 constructor는 this.car라는 빈 배열을 초기화하고 있다
   - 이는 App 클래스의 인스턴스가 생성될 때마다 this.car가 빈 배열로 초기화된다는 것을 의미한다
+
+<br>
+
+---
+
+## 4. 자동차 경주
+
+<br>
+
+### 4-1. 0 ~ 9 사이 무작위 값 생성
+
+- `pickNumberInRange(startInclusive, endInclusive)`
+  - 숫자 범위를 지정하면 시작 또는 끝 숫자를 포함하여 범위의 숫자를 반환한다
+  - 형식은 다음과 같다
+
+    ``` javascript
+    Random.pickNumberInRange(1, 10); // 1
+    Random.pickNumberInRange(1, 10); // 10
+    Random.pickNumberInRange(1, 10); // 4
+    Random.pickNumberInRange(1, 10); // 5parseInt(string, radix);
+    ```
+  
+- `pickNumberInList(array)`
+  - 목록에 있는 숫자 중 하나를 반환한다
+  - 형식은 다음과 같다
+
+    ``` javascript
+    Random.pickNumberInList([1, 3, 10]); // 1
+    Random.pickNumberInList([1, 3, 10]); // 10
+    Random.pickNumberInList([1, 3, 10]); // 3
+    ```
+  
+- `pickUniqueNumbersInRange(startInclusive, endInclusive, count)`
+  - 숫자 범위 내에서 지정된 개수만큼 겹치지 않는 숫자를 반환한다
+  - 형식은 다음과 같다
+
+    ``` javascript
+    Random.pickUniqueNumbersInRange(1, 10, 2); // [1, 2]
+    Random.pickUniqueNumbersInRange(1, 10, 5); // [1, 10, 7, 8, 5]
+    ```
+  
+- `shuffle(array)`
+  - 무작위로 섞인 새 목록을 반환한다
+  - 형식은 다음과 같다
+
+    ``` javascript
+    Random.shuffle([1, 2, 3, 4, 5]); // [2, 4, 1, 3, 5]
+    ```
