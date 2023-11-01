@@ -21,13 +21,20 @@ export class Race {
   }
 
   end() {
-    const winners = this.getWinners();
+    const greatestPosition = this.getGreatestPosition();
+    const winners = this.getWinners(greatestPosition);
 
-    printResult.final(winners.map((winner) => winner.getName()));
+    printResult.final(winners);
   }
 
-  getWinners() {
-    const greatestPosition = getGreatestNumber(this.#cars.getPositions());
-    return this.#cars.getList().filter((car) => car.getPosition() === greatestPosition);
+  getGreatestPosition() {
+    return getGreatestNumber(this.#cars.getPositions());
+  }
+
+  getWinners(greatestPosition) {
+    return this.#cars
+      .getList()
+      .filter((car) => car.getPosition() === greatestPosition)
+      .map((car) => car.getName());
   }
 }
