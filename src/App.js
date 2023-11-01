@@ -6,11 +6,13 @@ import Validation from './Validator.js';
 class App {
   tryCount = 0;
   carList = [];
+  carPositions = [];
 
   async play() {
     await this.requestCarNames();
     await this.requestTryCount();
     this.moveCar();
+    this.getCarPositions(this.carList);
   }
 
   makeCarList = (carName) => {
@@ -27,6 +29,10 @@ class App {
       });
       MissionUtils.Console.print('');
     }
+  }
+
+  getCarPositions(carList) {
+    return carList.map((car) => this.carPositions.push(car.position));
   }
 
   async requestCarNames() {
