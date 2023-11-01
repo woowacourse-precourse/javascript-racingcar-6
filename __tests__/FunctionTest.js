@@ -116,4 +116,32 @@ describe("기능 테스트", () => {
     game.decideFinalWinner();
     expect(game.getFinalWinnerList()).toEqual(finalWinnerList);
   });
+
+  // 최종 우승자 출력하기
+  test("최종 우승자 출력하기", async () => {
+    const game = new Game();
+    const input = "a,b,c";
+    const finalResultMessage = "최종 우승자 : b, c";
+    const compareResult = new Map([
+      ["a", [false, false]],
+      ["b", [true, false]],
+      ["c", [false, true]],
+    ]);
+    const spyFn = jest.spyOn(Console, "print");
+
+    Console.readLineAsync = jest.fn().mockResolvedValue(input);
+    await game.inputCarName();
+
+    for (const car of game.getCarList()) {
+      const name = car.getName();
+      const firstCompareResult = compareResult.get(name)[0];
+      const secondCompareResult = compareResult.get(name)[1];
+
+      car.isFasterThan = jest.fn().mockReturnValue(firstCompareResult);
+      car.isSameAs = jest.fn().mockReturnValue(secondCompareResult);
+    }
+    game.decideFinalWinner();
+    App.printFinalResultMessage(game);
+    expect(spyFn).toHaveBeenCalledWith(finalResultMessage);
+  });
 });
