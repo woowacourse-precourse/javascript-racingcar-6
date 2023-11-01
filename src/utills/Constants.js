@@ -11,3 +11,4 @@ export const RESULT_WINNER = "최종 우승자 : "
 export const ERROR_CAR_NAMES = "[ERROR] 자동차 이름은 쉼표(,)를 기준으로 구분하며 이름은 5자 이하만 가능합니다.";
 export const ERROR_NAME_FORMAT = "[ERROR] 이름은 공백없이 5자 이하만 가능합니다.";
 export const ERROR_GAME_COUNT_FORMAT = "[ERROR] 입력받은 숫자가 잘못된 형식입니다.";
+export const ERROR_GAME_COUNT_ZERO = "[ERROR] 입력받은 숫자횟수는 1이상이 되어야 합니다."

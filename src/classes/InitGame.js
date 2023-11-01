@@ -2,6 +2,7 @@ import { Console } from "@woowacourse/mission-utils";
 import {
   ERROR_CAR_NAMES,
   ERROR_GAME_COUNT_FORMAT,
+  ERROR_GAME_COUNT_ZERO,
   ERROR_NAME_FORMAT,
   PROMPT_CAR_NAMES,
   PROMPT_GAME_COUNT,
@@ -44,9 +45,13 @@ export default class InitGame {
   #validateGameCount(gameCount) {
     gameCount = parseInt(gameCount)
     const IsCountNotNumber = isNaN(gameCount);
-
+    const IsZero = gameCount === 0
     if (IsCountNotNumber) {
       throw new Error(ERROR_GAME_COUNT_FORMAT);
+    }
+
+    if (IsZero) {
+        throw new Error(ERROR_GAME_COUNT_ZERO)
     }
 
     return gameCount;
