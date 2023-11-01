@@ -1,7 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
-import InputValidator from './InputValidator.js';
 import Car from './Model/Car.js';
 import Output from './View/Output.js';
+import Input from './View/Input.js';
 
 class App {
   /**
@@ -15,11 +15,13 @@ class App {
 
   async play() {
     //* 자동차 이름들을 입력받습니다.
-    const carNames = await this.inputCarNames();
+    const carNames = await Input.inputCarNames();
+
+    //* 입력받은 자동차 이름으로 자동차를 생성합니다.
     this.cars = carNames.map((carName) => new Car(carName));
 
     //* 시도할 횟수를 입력받습니다.
-    this.tryNum = await this.inputTryNum();
+    this.tryNum = await Input.inputTryNum();
 
     //* 경주를 실행하고 이에 대한 결과를 출력합니다.
     this.playRacing();
@@ -29,31 +31,6 @@ class App {
 
     //* 우승자를 출력합니다.
     Output.printWinners(winners);
-  }
-
-  /**
-   * 입력받은 자동차 이름의 string 배열 타입
-   * @returns {[string]}
-   */
-  async inputCarNames() {
-    const carNamesInput = await Console.readLineAsync(
-      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n'
-    );
-    const validatedCarNames = CarNameValidator.carNameValidator(carNamesInput);
-
-    return validatedCarNames;
-  }
-
-  /**
-   * 시도 횟수의 number 타입
-   * @returns {number}
-   */
-  async inputTryNum() {
-    const tryNumInput = await Console.readLineAsync(
-      '시도할 횟수는 몇 회인가요?\n'
-    );
-    const validatedTryNum = tryNumValidator.tryNumValidator(tryNumInput);
-    return validatedTryNum;
   }
 
   playRacing() {
