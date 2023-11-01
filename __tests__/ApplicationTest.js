@@ -39,7 +39,7 @@ describe("자동차 경주 게임", () => {
     mockQuestions(inputs);
 
     const app = new App();
-    await app.enterCarnames();
+    await app.enterCarNames();
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
   });
 
