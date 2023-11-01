@@ -8,7 +8,7 @@
 
 **\- 공백제거** : trim()으로 입력한 공백 제거
 
-**\- 쉽표로 구분** : .split(',')로 구분
+**\- 쉼표로 구분** : .split(',')로 구분
 
 ```JavaScript
 const car = input.split(',').map((v) => v.trim());
