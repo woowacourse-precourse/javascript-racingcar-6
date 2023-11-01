@@ -22,6 +22,20 @@ class Game {
       });
       Console.print("");
     }
+    let maxPosition = -1;
+    const winners = [];
+
+    this.cars.forEach((car) => {
+      if (car.carPosition > maxPosition) {
+        maxPosition = car.carPosition;
+        winners.length = 0; // Clear previous winners
+        winners.push(car.name);
+      } else if (car.carPosition === maxPosition) {
+        winners.push(car.name); // Add another winner
+      }
+    });
+
+    Console.print(`최종우승자 : ${winners.join(", ")}`);
   }
 }
 
