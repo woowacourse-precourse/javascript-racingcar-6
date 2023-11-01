@@ -1,61 +1,6 @@
-import { Console, MissionUtils } from '@woowacourse/mission-utils';
-
-class Car {
-  constructor(name) {
-    this.name = name;
-    this.position = 0;
-  }
-
-  goForward() {
-    let randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
-    if (randomNumber >= 4) {
-      this.position++;
-    }
-  }
-
-  showPosition() {
-    let dashPosition = '-'.repeat(this.position);
-    Console.print(`${this.name} : ${dashPosition}`);
-  }
-}
-
-function createCarArray(carNameArr) {
-  let carArr = [];
-  carNameArr.forEach((element) => {
-    carArr.push(new Car(element));
-  });
-  return carArr;
-}
-
-function isCarNameValid(carNameArr) {
-  const carNameSet = new Set(carNameArr);
-  const carNameCount = carNameArr.length;
-
-  if (carNameArr.some((name) => name.length > 5)) {
-    throw new Error('[ERROR] 자동차 이름은 5자 이하여야 합니다.');
-  }
-  if (carNameArr.some((name) => name.length < 1)) {
-    throw new Error('[ERROR] 자동차 이름은 1자 이상이여야 합니다.');
-  }
-  if (carNameCount < 2) {
-    throw new Error('[ERROR] 자동차는 2대 이상이여야 합니다.');
-  }
-  if (carNameSet.size !== carNameCount) {
-    throw new Error('[ERROR] 자동차 이름은 중복되지 않아야 합니다.');
-  }
-}
-
-function isRoundCountValid(roundCount) {
-  if (isNaN(roundCount)) {
-    throw new Error('[ERROR] 시도횟수는 숫자만 입력하세요.');
-  }
-  if (roundCount < 0) {
-    throw new Error('[ERROR] 0 이상의 숫자를 입력하세요.');
-  }
-  if (roundCount % 1 !== 0) {
-    throw new Error('[ERROR] 정수를 입력하세요.');
-  }
-}
+import { Console } from '@woowacourse/mission-utils';
+import Car from './Car.js';
+import InputValidation from './InputValidation.js';
 
 function getWinner(carArr) {
   let winners = [];
@@ -73,18 +18,28 @@ function getWinner(carArr) {
 
 class App {
   async play() {
+    const inputValidation = new InputValidation();
+
     let carNameArr = await this.getCarName();
-    isCarNameValid(carNameArr);
+    inputValidation.isCarNameValid(carNameArr);
 
     let roundCount = await this.getRoundCount();
-    isRoundCountValid(roundCount);
+    inputValidation.isRoundCountValid(roundCount);
 
-    let carArr = createCarArray(carNameArr);
+    let carArr = this.createCarArray(carNameArr);
 
     Console.print('\n실행 결과');
     this.runRace(carArr, roundCount);
     let winners = getWinner(carArr);
     Console.print(`최종 우승자 : ${winners}`);
+  }
+
+  createCarArray(carNameArr) {
+    let carArr = [];
+    carNameArr.forEach((element) => {
+      carArr.push(new Car(element));
+    });
+    return carArr;
   }
 
   oneRound(carArr) {
