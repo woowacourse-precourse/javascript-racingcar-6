@@ -14,7 +14,7 @@ export default class CarRacingGame {
       .catch((error) => {
         throw error;
       });
-      Console.print('\n실행 결과');
+    Console.print('\n실행 결과');
     while (tryCount > 0) {
       this.tryAdvance();
       this.printEachResult();
