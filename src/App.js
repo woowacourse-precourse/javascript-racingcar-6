@@ -31,11 +31,11 @@ class App {
     carList.forEach((car) => this.racingResult.set(car, ''));
   }
 
-  randomShift(car) {
+  randomShift(car, distance) {
     const random = MissionUtils.Random.pickNumberInRange(0, 9);
 
     if (random >= 4) {
-      this.racingResult.set(car, `${this.racingResult.get(car)}-`);
+      this.racingResult.set(car, `${distance}-`);
     }
   }
 
@@ -79,7 +79,7 @@ class App {
 
     Console.print('\n실행 결과');
     for (let i = 0; i < count; i += 1) {
-      carList.forEach((car) => this.randomShift(car));
+      this.racingResult.forEach((value, key) => this.randomShift(key, value));
       this.printStepResult();
     }
     this.printFinalResult();
