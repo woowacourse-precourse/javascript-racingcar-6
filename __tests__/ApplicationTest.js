@@ -74,4 +74,16 @@ describe("자동차 경주 게임", () => {
       expect(car.getDistance().toBe(result));
     });
   });
+
+  test("자동차 이름 검증 (Validation.validatationCarName)테스트", () => {
+    const passInput = ["hi", "bye", "next"];
+    const failInput = ["", "WelcomeToMyTest"];
+
+    passInput.forEach((input) => {
+      expect(() => Validation.validationCarName(input)).not.toThrow();
+    });
+    failInput.forEach((input) => {
+      expect(() => Validation.validationCarName(input)).toThrow("[ERROR]");
+    });
+  });
 });
