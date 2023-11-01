@@ -44,7 +44,7 @@ class App {
       MissionUtils.Console.print(`${car} : ${this.carObj[car]}`)
     }
     MissionUtils.Console.print(``);
-    console.log("2222", this.carObj)
+    // console.log("2222", this.carObj)
   }
 
   oneTurnEachCar(car) {
@@ -57,12 +57,12 @@ class App {
   handleCarName(input) {
     try {
       const arr = input.split(",");
-      console.log("arr", arr)
+      // console.log("arr", arr)
       arr.forEach(e=>{
         if(e.length>5) throw new Error("[ERROR] 자동차 이름은 5자 이하여야 합니다.")
         this.carObj[e] = ""; //객체 초기화
       })
-      console.log("1111", this.carObj)
+      // console.log("1111", this.carObj)
     } catch(error) {
       console.error(error.message);
       throw error;      
@@ -71,11 +71,11 @@ class App {
 
   handleTryNumber(input) {
     const parsedInput = Number(input);
-    console.log(typeof(parsedInput)) //
+    // console.log(typeof(parsedInput)) 
     try {
-      if(typeof(parsedInput)==='number') {
-        return Number(input)
-      } else throw new Error("[ERROR] 횟수는 숫자여야 합니다. ")
+      if(isNaN(parsedInput) || input==="") {
+        throw new Error("[ERROR] 횟수는 숫자여야 합니다. ")
+      } else return Number(input)
     } catch(error) {
       console.error(error.message);
       throw error;      
