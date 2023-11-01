@@ -11,7 +11,7 @@ class App {
   validateCarNames(input) {
     const carNames = input.split(',');
 
-    if (carNames.some(name => name.length > 5 || name.length === 0)) {
+    if (carNames.some(carName => carName.length > 5 || carName.length === 0)) {
       throw new Error('[ERROR] 자동차 이름은 각각 1자 이상 5자 이하여야 합니다.');
     }
 
@@ -23,14 +23,25 @@ class App {
       throw new Error('[ERROR] 최소 2대 이상의 자동차 이름을 입력해야 합니다.');
     }
 
+    if (!carNames.every(carName => carName.trim())) {
+      throw new Error('[ERROR] 자동차 이름을 입력해야 합니다.');
+    }
+
     this.carNames = carNames;
   }
 
   validateRoundCount(input) {
     const tryCount = +input;
+    const regex = /^[1-9]\d*$/;
+
     if (Number.isNaN(tryCount) || tryCount <= 0) {
       throw new Error('[ERROR] 올바른 횟수를 입력하세요.');
     }
+
+    if (!regex.test(tryCount)) {
+      throw new Error('[ERROR] 입력값은 양의 정수여야 합니다.');
+    }
+
     this.tryCount = tryCount;
   }
 
@@ -38,7 +49,8 @@ class App {
     return Random.pickNumberInRange(0, 9);
   }
 
-  racing(carList, tryCount) {
+  runRaceAndRoundPrint(carList, tryCount) {
+    const DASH = '-';
     const roundResult = carList.reduce((a, c) => {
       a[c] = 0;
       return a;
@@ -46,12 +58,10 @@ class App {
 
     Console.print(MESSAGES.RESULT_VIEW);
     for (let round = 1; round <= tryCount; round++) {
-      for (let i = 0; i < carList.length; i++) {
-        if (this.getRandomNumber() >= 4) {
-          roundResult[carList[i]] += 1;
-        }
-        Console.print(`${carList[i]} : ${'-'.repeat(roundResult[carList[i]])}`);
-      }
+      carList.forEach(carName => {
+        this.getRandomNumber() >= 4 && (roundResult[carName] += 1);
+        Console.print(`${carName} : ${DASH.repeat(roundResult[carName])}`);
+      });
       Console.print('');
     }
     this.roundResult = roundResult;
@@ -74,7 +84,7 @@ class App {
     const userInputRoundCount = await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
     this.validateRoundCount(userInputRoundCount);
 
-    this.racing(this.carNames, this.tryCount);
+    this.runRaceAndRoundPrint(this.carNames, this.tryCount);
     this.getRaceResult(this.roundResult);
   }
 }
