@@ -12,6 +12,8 @@ export const ERROR = {
   NUMBER_ERROR: "[ERROR] 시도 횟수는 0 이상의 자연수로 입력해주세요.",
   BLANK_ERROR: "[ERROR] 공백 없이 입력해야합니다.",
   COMMA_START_ERROR: "[ERROR] 첫번째 자동차를 입력해주세요.",
+  NUMBER_ONLY_ERROR: "[ERROR] 시도 횟수는 숫자만 입력 가능합니다 ",
+  NUMBER_RANGE_ERROR: "[ERROR] 시도 횟수는 1 이상으로 입력하세요.",
 };
 
 export const SYMBOL = {

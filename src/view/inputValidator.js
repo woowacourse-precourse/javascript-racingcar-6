@@ -27,7 +27,7 @@ export class InputValidator {
    */
 
   validateAttemptCountInput(input) {
-    if (isNaN(Number(input))) throw new Error("숫자만 입력 가능합니다");
-    if (input.length < 1) throw new Error("시도 횟수는 1 이상으로 입력하세요.");
+    if (isNaN(Number(input))) throw new Error();
+    if (input.length < 1) throw new Error();
   }
 }
