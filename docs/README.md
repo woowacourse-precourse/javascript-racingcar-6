@@ -98,3 +98,9 @@ jun : -----
 ```
 최종 우승자 : pobi, jun
 ```
+
+# 개발 일지
+
+[[자동차 경주] AngularJS 커밋 컨벤션, github project 시작하기](https://www.notion.so/AngularJS-github-project-e3054e9bb2444ca3ba015134c6e3b46c?pvs=21)
+
+[[자동차 경주] ES6 문법](https://www.notion.so/ES6-9ae88c9e651546a1b07f74b33417e6a3?pvs=21)
