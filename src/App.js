@@ -29,6 +29,20 @@ async function inputTryNum() {
   return input_num;
 };
 
+// 전진 조건 설정
+function moveCar() {
+  this.carArray.forEach((car) => {
+    if (MissionUtils.Random.pickNumberInRange(0,9) >= 4) {
+      car.distance += 1;
+    }
+  });
+}
+
+
+
+function 
+
+
 
 class App {
 
