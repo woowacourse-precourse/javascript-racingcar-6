@@ -13,10 +13,10 @@ class CarModel {
   }
 
   /**
-   * 자동차의 정보를 객체로 변환하여 반환
-   * @returns {{name:string; position: number;}} 이름과 위치 정보를 담은 객체
+   * 자동차의 정보를 DTO로 반환
+   * @returns {{name:string; position: number;}} CarModel DTO
    */
-  getCarModel() {
+  getCarModelDTO() {
     return { name: this.name, position: this.position };
   }
 

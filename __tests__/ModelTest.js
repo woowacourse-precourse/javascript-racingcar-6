@@ -9,13 +9,13 @@ const mockRandoms = (numbers) => {
 };
 
 describe('CarModel 테스트', () => {
-  test('getCarModel() 테스트', () => {
+  test('getCarModelDTO() 테스트', () => {
     const name = 'pobi';
     const output = { name: 'pobi', position: 0 };
 
     const carModel = new CarModel(name);
 
-    expect(carModel.getCarModel()).toEqual(output);
+    expect(carModel.getCarModelDTO()).toEqual(output);
   });
 
   test('move() 테스트', () => {

@@ -28,8 +28,8 @@ class GameModel {
    * 자동차 모델 정보를 가져와 객체 배열로 반환
    * @returns {Array<{name: string, position: number}>} - 각 객체는 자동차 모델의 이름과 위치를 나타냄
    */
-  getCarModels() {
-    return this.cars.map((car) => car.getCarModel());
+  getCarModelDTOs() {
+    return this.cars.map((car) => car.getCarModelDTO());
   }
 
   /**
@@ -63,7 +63,7 @@ class GameModel {
    * @returns {number} position의 최대값
    */
   getMaxPosition() {
-    const carModels = this.getCarModels();
+    const carModels = this.getCarModelDTOs();
     const positions = carModels.map((carModel) => carModel.position);
 
     return Math.max(...positions);

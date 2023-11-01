@@ -28,7 +28,7 @@ class GameController {
     while (!this.gameModel.isGameOver()) {
       this.gameModel.playRound();
 
-      const carModels = await this.gameModel.getCarModels();
+      const carModels = await this.gameModel.getCarModelDTOs();
       this.outputView.printAdvanceResult(carModels);
     }
 
