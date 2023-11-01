@@ -483,3 +483,66 @@
   - 원래의 함수 대신 제공된 fn 함수를 호출하도록 설정한다
 - `.mockImplementationOnce(fn)`
   - 다음 호출에 대해서만 제공된 fn 함수를 호출하도록 설정한다
+
+<br>
+
+### T-4-3. 시도 횟수 만큼 경주 진행 테스트
+
+- `기본적인 컨텍스트`
+  - 함수는 기본적으로 전역 컨텍스트에서 실행된다
+  - 즉, 일반 함수에서 this를 참조하면 전역 객체 (브라우저에서는 window)를 가리키게 된다
+
+    ``` javascript
+    function checkThis() {
+        console.log(this);
+    }
+
+    checkThis(); // Window
+    ```
+
+- `메서드 호출에서의 컨텍스트`
+  - 객체의 메서드로 함수를 호출할 때, this는 해당 객체를 가리키게 된다
+
+    ``` javascript
+    const obj = {
+        checkThis: function() {
+            console.log(this);
+        }
+    }
+
+    obj.checkThis();
+    ```
+
+- `컨텍스트 손실`
+  - 하지만, 메서드 내부에서 다른 함수나 메서드를 호출하게 되면 this의 바인딩이 손실될 수 있다
+
+    ``` javascript
+    const obj = {
+        name: "Seojin",
+        sayHello: function() {
+            function innerFunc() {
+                console.log(this.name);
+            }
+            innerFunc();
+        }
+    }
+
+    obj.sayHello(); 
+    ```
+
+- `명시적 바인딩`
+  - 이러한 문제를 해결하기 위해, bind, call, apply와 같은 메서드를 사용하여 함수의 this 값을 명시적으로 설정한다
+
+    ``` javascript
+    const obj = {
+        name: "Seojin",
+        sayHello: function() {
+          const innerFunc = function() {
+            console.log(this.name);
+          }.bind(this);
+          innerFunc();
+        }
+    }
+
+    obj.sayHello(); 
+    ```
