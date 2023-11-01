@@ -6,7 +6,7 @@ describe("runOneCycle 메소드 테스트", () => {
     // given
     const participant = ["pobi", "woni"];
     const count = [0, 0];
-    const outputs = ["pobi : -"];
+    const outputs = ["pobi : -", "woni : "];
     const GO = 4;
     const STOP = 3;
     const logSpy = getLogSpy();
