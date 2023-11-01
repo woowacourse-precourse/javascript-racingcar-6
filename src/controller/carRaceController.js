@@ -11,28 +11,33 @@ class Play {
             if (RACE_TIMES > 3) {
                 car.move(); // 3초과 1칸 전진
             }
+            const MOVES = '-'.repeat(car.moves);
 
-            MissionUtils.Console.print(`${car.name} : ${'-'.repeat(car.position)}`);
+            MissionUtils.Console.print(`${car.name} : ${MOVES}`);
         });
     }
 
     raceStart(raceTimes, carList) {
-        if (!Number.isNaN(raceTimes)) {
+        // 숫자인지 확인
+        if (Number.isNaN(raceTimes)) {
+            throw new Error('[Error] 숫자를 입력하세요')
+        }else{
             // 실행결과 준비
             MissionUtils.Console.print('실행 결과');
             //입력된 횟수만큼 레이싱 경주 실행
-            for(let i = 0;  i < raceTimes; i++ ){
+            for (let i = 0; i < raceTimes; i++) {
                 this.racing(carList);
             }
         }
     }
 
 // 경주 횟수 입력 메서드
-    async inputRaceTimes(carList) {
+    inputRaceTimes(carList) {
         MissionUtils.Console.print('시도할 횟수는 몇 회인가요?');
-        const RACE_TIMES = await MissionUtils.Console.readLineAsync('');
+        const RACE_TIMES = MissionUtils.Console.readLineAsync('');
         this.raceStart(RACE_TIMES, carList);
-        new Result().FinalResult(carList);
+        const RESULT = new Result();
+        new RESULT.FinalResult(carList);
     }
     }
 
