@@ -26,15 +26,15 @@ const getLogSpy = () => {
 describe("자동차 경주 게임", () => {
   test("전진-정지", async () => {
     // given
-    const MOVING_FORWARD = 4;
-    const STOP = 3;
-    const inputs = ["pobi,woni", "1"];
+    const MOVING_FORWARD = 4; // 전진을 나타내는 숫자
+    const STOP = 3; // 정지를 나타내는 숫자
+    const inputs = ["pobi,woni", "1"]; // 포비는 4라서 전진, 워니는 3이라서 정지
     const outputs = ["pobi : -"];
     const randoms = [MOVING_FORWARD, STOP];
     const logSpy = getLogSpy();
 
-    mockQuestions(inputs);
-    mockRandoms([...randoms]);
+    mockQuestions(inputs); // 사용자가 입력한 것처럼 테스트
+    mockRandoms([...randoms]); // 랜덤으로 숫자가 생성된 것처럼 테스트
 
     // when
     const app = new App();
@@ -48,7 +48,7 @@ describe("자동차 경주 게임", () => {
 
   test.each([
     [["pobi,javaji"]],
-    [["pobi,eastjun"]]
+    [["pobi,eastjun"]],
   ])("이름에 대한 예외 처리", async (inputs) => {
     // given
     mockQuestions(inputs);
