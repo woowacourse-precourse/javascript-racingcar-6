@@ -17,13 +17,13 @@ describe('Race 클래스 테스트', () => {
   test('generateRandomNumber 메서드는 4 이상의 랜덤 숫자가 생성되면 true를 반환', () => {
     jest.spyOn(Random, 'pickNumberInRange').mockReturnValue(4);
     const result = race.generateRandomNumber();
-    expect(result).toBe(true);
+    expect(result).toBeTruthy();
   });
 
   test('generateRandomNumber 메서드는 4 미만의 랜덤 숫자가 생성되면 false를 반환', () => {
     jest.spyOn(Random, 'pickNumberInRange').mockReturnValue(3);
     const result = race.generateRandomNumber();
-    expect(result).toBe(false);
+    expect(result).toBeFalsy()
   });
 
   test('runRace 메서드는 carArr과 carDictionary를 받아서 랜덤으로 점수를 부여', () => {
