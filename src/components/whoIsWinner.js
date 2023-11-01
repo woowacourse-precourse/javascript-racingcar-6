@@ -6,7 +6,6 @@ export default function whoIsWinner(CARS) {
   const maxNumber = Math.max(...goValues);
 
   const winners = CARS.filter((car) => car.go === maxNumber);
-
   const winnerNames = winners.map((car) => car.name).join(", ");
 
   return winnerNames;

@@ -12,7 +12,7 @@ class App {
   async play() {
     const CARS = await inputRacingCar();
     let TRYS = await inputTryNumber();
-    MissionUtils.Console.print("실행 결과\n");
+    MissionUtils.Console.print(GAME.result);
     while (TRYS--) {
       CARS.forEach((car) => {
         if (isGo()) car.go++;
@@ -20,7 +20,7 @@ class App {
       printResult(CARS);
     }
     const winner = whoIsWinner(CARS);
-    MissionUtils.Console.print(GAME.END + winner);
+    MissionUtils.Console.print(GAME.end + winner);
   }
 }
 
