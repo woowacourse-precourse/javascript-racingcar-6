@@ -94,5 +94,16 @@ describe('User', () => {
         MESSAGES.ERROR_TRY_NUMBER_INPUT_WRONG,
       );
     });
+
+    test('[예외사항] 입력한 시도할 횟수가 1미만을 입력했을 경우 (음수)', async () => {
+      const mockReadLineAsync = jest.fn().mockResolvedValue('-9');
+      MissionUtils.Console.readLineAsync = mockReadLineAsync;
+
+      const user = new User();
+
+      await expect(user.getTryNumber()).rejects.toThrowError(
+        MESSAGES.ERROR_TRY_NUMBER_INPUT_LESS_THAN_ONE,
+      );
+    });
   });
 });
