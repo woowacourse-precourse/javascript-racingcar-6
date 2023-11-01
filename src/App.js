@@ -8,6 +8,10 @@ async function recieveUserInput() {
   return { names, totalRound };
 }
 
+/**
+ * @param {{ names: string[], totalRound: number}} userInput 
+ * @returns {RaceRound}
+ */
 function initializeRaceRound(userInput) {
   const carsInfo = new CarsInfo(userInput.names);
   return new RaceRound(carsInfo, userInput.totalRound);

@@ -12,11 +12,15 @@ function isOverlappedName(splitedNames) {
   return namesSet.size === splitedNames.length;
 }
 
-function isNotInteger(tryingCount) {
-  return !Number.isInteger(tryingCount);
+function isNotInteger(totalRound) {
+  return !Number.isInteger(totalRound);
 }
 
 class Validator {
+  /**
+   * @param {string} carNames 
+   * @returns {string[]}
+   */
   static evaluateCarNames(carNames) {
     const splitedNames = carNames.split(',');
     if(!isOverlappedName) throw String('OVRELAPPED_NAME');
@@ -28,6 +32,10 @@ class Validator {
     return splitedNames;
   }
 
+  /**
+   * @param {string} totalRound 
+   * @returns {number}
+   */
   static evaluateTotalRound(totalRound) {
     const numericTotalRound = parseInt(totalRound, 10);
     if (numericTotalRound < 0) throw String('UNDER_ZERO');

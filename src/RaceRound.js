@@ -1,6 +1,7 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import Message from './Message.js';
 import Interface from './Interface.js';
+import CarsInfo from './CarsInfo.js';
 
 const MIN_MOVING_FORWARD_NUM = 4;
 
@@ -11,6 +12,10 @@ function printRunResultMessage() {
 class RaceRound {
   #TOTAL_ROUND;
 
+  /**
+   * @param {CarsInfo} carsInfo 
+   * @param {number} totalRound 
+   */
   constructor(carsInfo, totalRound) {
     this.carsInfo = carsInfo;
     this.#TOTAL_ROUND = totalRound;
@@ -31,6 +36,9 @@ class RaceRound {
     }
   }
 
+  /**
+   * @param {string[]} names 
+   */
   namedCarsDecideGoStop(names) {
     names.forEach((name) => {
       const randomNum = RaceRound.createRandomNum();
