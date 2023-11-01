@@ -18,21 +18,22 @@ class CarRace {
     }
   }
 
-  #getWinners() {
-    const maxPosition = this.racingCars.reduce(
+  #getMaxPosition() {
+    return this.racingCars.reduce(
       (max, rc) => (max < rc.position ? rc.position : max),
       0
     );
+  }
 
+  #getWinners() {
     return this.racingCars
-      .filter((rc) => rc.position === maxPosition)
-      .map((rc) => rc.name);
+      .filter((rc) => rc.position === this.#getMaxPosition())
+      .map((rc) => rc.name)
+      .join(', ');
   }
 
   printWinners() {
-    MissionUtils.Console.print(
-      `최종 우승자 : ${this.#getWinners().join(', ')}`
-    );
+    MissionUtils.Console.print(`최종 우승자 : ${this.#getWinners()}`);
   }
 
   #initRacingCars(racingCarsInput) {
