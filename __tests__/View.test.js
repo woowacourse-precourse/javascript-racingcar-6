@@ -1,5 +1,19 @@
 import View from "../src/View";
-import { getLogSpy, mockQuestions } from "./ApplicationTest";
+
+const mockQuestions = (inputs) => {
+  MissionUtils.Console.readLineAsync = jest.fn();
+
+  MissionUtils.Console.readLineAsync.mockImplementation(() => {
+    const input = inputs.shift();
+    return Promise.resolve(input);
+  });
+};
+
+const getLogSpy = () => {
+  const logSpy = jest.spyOn(MissionUtils.Console, "print");
+  logSpy.mockClear();
+  return logSpy;
+};
 
 describe("Input 테스트", () => {
   // Car Names

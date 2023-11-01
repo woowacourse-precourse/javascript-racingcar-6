@@ -1,7 +1,13 @@
 import NUMBER from "../constants/NUMBER";
 import Car from "../src/Car";
 import RacingGame from "../src/racingGame";
-import { mockRandoms } from "./ApplicationTest";
+
+const mockRandoms = (numbers) => {
+  MissionUtils.Random.pickNumberInRange = jest.fn();
+  numbers.reduce((acc, number) => {
+    return acc.mockReturnValueOnce(number);
+  }, MissionUtils.Random.pickNumberInRange);
+};
 
 describe("RacingGame 클래스 테스트", () => {
   const carNameList = ["pobi", "woni", "jun"];
