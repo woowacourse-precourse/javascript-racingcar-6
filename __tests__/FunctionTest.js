@@ -30,7 +30,7 @@ describe("함수 기능 테스트", () => {
     expect(() => new Cars(CORRECT_INPUT)).not.toThrow("[ERROR]");
   });
 
-  test("CarNamesParser의 parse 메소드가 입력값을 ','를 기준으로 분리하는가", async () => {
+  test("CarNamesParser의 parse 메소드가 입력값을 ','를 기준으로 분리하는가", () => {
     const input = "자동차1, 자동차2, 자동차3, 자동차4";
 
     expect(CarNamesParser.parse(input)).toHaveLength(4);
