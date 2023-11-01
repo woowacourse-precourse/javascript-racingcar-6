@@ -46,7 +46,6 @@ class App {
       MissionUtilsConsole.print(`최종 우승자 : ${winnerNames.join(', ')}`);
     }
   }
-  
 }
 
 export default App;
