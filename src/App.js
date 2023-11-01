@@ -69,6 +69,9 @@ class App {
   async play() {
     try {
       const carNames = await readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n');
+      if (carNames.trim() === '') {
+        throw new Error('[ERROR] 빈 문자열은 입력할 수 없습니다.');
+      }
       const names = carNames.split(',');
 
       if (names.some(name => name.trim().length > 5)) {
