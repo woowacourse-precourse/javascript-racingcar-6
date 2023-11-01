@@ -24,7 +24,6 @@ class Computer {
     while (lap <= attempts) {
       Computer.runLap(cars);
       Computer.printCurrentStatus(cars);
-      Console.print("\n");
       lap += 1;
     }
   }

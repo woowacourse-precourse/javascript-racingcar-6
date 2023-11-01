@@ -15,17 +15,14 @@ class User {
   }
 
   static validateCarName(inputString) {
-    const inputList = inputString.split(",");
     if (!inputString) throw new Error("[ERROR] 입력 값이 없습니다.");
-
     if (!inputString.includes(",")) {
-      throw new Error("[ERROR] 최소 2개의 자동차 이름을 입력해주십시오,");
+      throw new Error("[ERROR] 최소 2개의 자동차 이름을 입력해주십시오.");
     }
-
     if (inputString.startsWith(",") || inputString.endsWith(",")) {
       throw new Error("[ERROR] 입력 값이 쉼표로 시작하거나 끝날 수 없습니다.");
     }
-
+    const inputList = inputString.split(",");
     inputList.forEach((item) => {
       if (item.length > LIMIT.CAR_NAME_LENGTH) {
         throw new Error(
