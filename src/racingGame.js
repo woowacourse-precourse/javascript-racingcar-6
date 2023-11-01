@@ -1,5 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import { carGenerate } from "./car.js";
+import { generateCar } from "./car.js";
 import { roundValidate } from "./validate.js";
 
 export async function resultAlert() {
@@ -14,8 +14,8 @@ export async function userInputRound() {
   return roundNum;
 }
 
-export async function generateCars() {
-  const carsList = await carGenerate();
+export async function constructCar() {
+  const carsList = await generateCar();
   const randomCarsList = carsList.map((car) => ({
     carName: car,
     carDistance: "",
@@ -36,7 +36,7 @@ export async function checkRandomNum(carList) {
 }
 
 export async function playRacing() {
-  let cars = await generateCars();
+  let cars = await constructCar();
   const round = await userInputRound();
   await resultAlert();
 
