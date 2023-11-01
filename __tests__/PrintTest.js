@@ -3,7 +3,7 @@ import Car from '../src/model/Car';
 import OutputView from '../src/view/OutputView';
 
 const getLogSpy = () => {
-  // Application.Test에서 제공하는 함수, 검증을 위해 사용
+  // ApplicationTest에서 제공하는 함수 - 제공된 코드를 변형하지 않고, 검증을 위해 그대로 사용
   const logSpy = jest.spyOn(MissionUtils.Console, 'print');
   logSpy.mockClear();
   return logSpy;

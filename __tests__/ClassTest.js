@@ -1,5 +1,14 @@
+import { MissionUtils } from '@woowacourse/mission-utils';
 import Car from '../src/model/Car';
 import CarRace from '../src/model/CarRace';
+
+const mockRandoms = numbers => {
+  // ApplicationTest에서 제공하는 함수 - 제공된 코드를 변형하지 않고, 검증을 위해 그대로 사용
+  MissionUtils.Random.pickNumberInRange = jest.fn();
+  numbers.reduce((acc, number) => {
+    return acc.mockReturnValueOnce(number);
+  }, MissionUtils.Random.pickNumberInRange);
+};
 
 describe('ClassTest', () => {
   describe('자동차 클래스(Car) 테스트', () => {
@@ -42,6 +51,32 @@ describe('ClassTest', () => {
       const carRace = new CarRace(carNames);
       carRace.cars.forEach((car, index) => {
         expect(car.name).toEqual(carNames[index]);
+      });
+    });
+    test('경기 한 턴 동안 모든 차량이 진행을 시도하는지 테스트 - 4이상의 값이 나왔을 때 전진 횟수가 1 증가하는지 확인', () => {
+      const randomNumbers = [
+        [5, 6, 7, 8, 9],
+        [5, 2, 3, 4, 4],
+        [1, 2, 3, 4, 5],
+        [9, 8, 7, 6, 5],
+        [5, 2, 4, 6, 7],
+      ].reduce((acc, cur) => acc.concat(cur));
+      const moveCounts = [
+        [1, 1, 1, 1, 1],
+        [2, 1, 1, 2, 2],
+        [2, 1, 1, 3, 3],
+        [3, 2, 2, 4, 4],
+        [4, 2, 3, 5, 5],
+      ];
+      mockRandoms(randomNumbers);
+      const carIndexes = Array.from({ length: 5 }, (_, i) => i);
+      const carRace = new CarRace(carIndexes);
+
+      carIndexes.forEach((_, round) => {
+        carRace.getRaceRound();
+        carRace.cars.forEach((car, index) => {
+          expect(car.moveCount).toBe(moveCounts[round][index]);
+        });
       });
     });
   });
