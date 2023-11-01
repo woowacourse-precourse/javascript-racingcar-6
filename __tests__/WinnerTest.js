@@ -1,4 +1,4 @@
-import Award from '../src/models/Award';
+import Award from '../src/models/Award.js';
 
 describe('우승자 검증 테스트', () => {
   let award;

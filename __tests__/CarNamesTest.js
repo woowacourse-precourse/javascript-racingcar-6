@@ -1,5 +1,5 @@
-import InputValidator from '../src/models/InputValidator';
-import { ERROR_MESSAGE } from '../src/constants';
+import InputValidator from '../src/models/InputValidator.js';
+import { ERROR_MESSAGE } from '../src/constants/index.js';
 
 describe('자동차 이름 유효성 테스트', () => {
   test('자동차 이름 5자 초과', () => {

@@ -1,5 +1,5 @@
-import InputValidator from '../src/models/InputValidator';
-import { ERROR_MESSAGE } from '../src/constants';
+import InputValidator from '../src/models/InputValidator.js';
+import { ERROR_MESSAGE } from '../src/constants/index.js';
 
 describe('시도 횟수 유효성 테스트', () => {
   test('시도 횟수가 0보다 작은 경우', () => {
