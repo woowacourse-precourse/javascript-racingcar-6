@@ -1,4 +1,4 @@
-import SYSTEM from '../../src/constants/System.js';
+import { SYSTEM } from '../../src/constants/System.js';
 import Converter from '../../src/utils/StringConvertor.js';
 
 describe('Converter test', () => {
