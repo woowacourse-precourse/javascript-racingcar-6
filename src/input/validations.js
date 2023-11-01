@@ -1,5 +1,4 @@
 import { MESSAGE, CAR_NAME_LIMIT } from '../constants.js';
-import { stringToArray } from '../utils.js';
 
 const conditions = {
   try: {
@@ -16,11 +15,11 @@ const conditions = {
 
   carNames: {
     isOverFive(inputs) {
-      return stringToArray(inputs).some((input) => input.length > CAR_NAME_LIMIT);
+      return inputs.some((input) => input.length > CAR_NAME_LIMIT);
     },
 
     isDuplicated(inputs) {
-      return stringToArray(inputs).length !== new Set(stringToArray(inputs)).size;
+      return inputs.length !== new Set(inputs).size;
     },
   },
 };
