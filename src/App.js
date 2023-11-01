@@ -8,24 +8,20 @@ class App {
   }
 
   getCarNamesArray(carNames) {
-    // test code 완료
     return carNames.split(',');
   }
 
   checkCarNames(element) {
-    // test code 완료
     if (element.length > CONSTANT.NAME_LENGTH_LIMIT)
       throw new Error(ERROR_MESSAGE.LENGTH);
   }
 
   checkRepeatNumber(repeatNumber) {
-    // test code 완료
     if (repeatNumber.includes(' ')) throw new Error(ERROR_MESSAGE.GAP);
     if (isNaN(repeatNumber)) throw new Error(ERROR_MESSAGE.NUMBER);
   }
 
   makeObject(carName) {
-    // test code 완료
     const carObject = {
       name: carName,
       result: '',
@@ -48,7 +44,6 @@ class App {
   }
 
   printResult(raceResult) {
-    // test code 완료
     raceResult.forEach((e) => {
       Console.print(GAME_MESSAGE.RESULT(e));
     });
@@ -56,7 +51,6 @@ class App {
   }
 
   findLength(raceResult) {
-    // test code 완료
     const lengthArray = [];
     raceResult.forEach((element) => {
       lengthArray.push(element.result.length);
@@ -73,7 +67,6 @@ class App {
   }
 
   makeWinnerIndexArray(raceResult, maxLength) {
-    // test code 완료
     let winnerIndex = [];
     raceResult.forEach((element, index) => {
       winnerIndex = this.getWinnerIndex(element, index, maxLength, winnerIndex);
@@ -82,12 +75,10 @@ class App {
   }
 
   findMaxLength(lengthArray) {
-    // test code 완료
     return Math.max(...lengthArray);
   }
 
   pushWinnerName(element, index, winnerIndexArray, winnerName) {
-    // test code 완료
     if (winnerIndexArray.includes(index)) {
       winnerName.push(element.name);
     }
@@ -95,7 +86,6 @@ class App {
   }
 
   makeWinnerArray(raceResult, winnerIndexArray) {
-    // test code 완료
     let winnerName = [];
     raceResult.forEach((element, index) => {
       winnerName = this.pushWinnerName(
@@ -118,7 +108,6 @@ class App {
   }
 
   printWinner(winnerName) {
-    // test code 완료
     const winnerNameString = winnerName.join(', ');
     Console.print(GAME_MESSAGE.WINNER(winnerNameString));
   }
