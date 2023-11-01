@@ -1,21 +1,19 @@
-import { Console } from "@woowacourse/mission-utils";
-import { GAME_MESSAGE, ERROR_MESSAGE } from "./Constants.js";
-import Validation from "./Validation.js";
-import { validate } from "uuid";
+import { Console } from '@woowacourse/mission-utils';
+import { GAME_MESSAGE, ERROR_MESSAGE } from './Constants.js';
+import Validation from './Validation.js';
 
 class Setting {
   constructor() {
-    this.INPUT_CAR = "";
-    this.CAR_NAME = "";
-    this.INPUT_NUM = "";
-    this.PLAY_NUM = "";
+    this.INPUT_CAR = '';
+    this.CAR_NAME = '';
+    this.INPUT_NUM = '';
+    this.PLAY_NUM = '';
   }
 
   async inputCarName() {
     try {
       this.INPUT_CAR = await Console.readLineAsync(GAME_MESSAGE.CAR_NAME_LIST);
-      this.CAR_NAME = this.INPUT_CAR.split(",");
-
+      this.CAR_NAME = this.INPUT_CAR.split(',');
       if (Validation.overFive(this.CAR_NAME)) {
         throw ERROR_MESSAGE.OVER_FIVE;
       }

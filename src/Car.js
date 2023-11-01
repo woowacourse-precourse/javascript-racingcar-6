@@ -1,4 +1,4 @@
-import { Random } from "@woowacourse/mission-utils"; 
+import { Random } from "@woowacourse/mission-utils";
 
 class Car {
   constructor(name) {
@@ -21,7 +21,7 @@ class Car {
 
   setMove() {
     this.CAR_MOVE = 4;
-    this.GET_RANDOM = this.generateRandomNum(0,9);
+    this.GET_RANDOM = this.generateRandomNum();
     if (this.GET_RANDOM >= this.CAR_MOVE) {
       this.move += 1;
     }

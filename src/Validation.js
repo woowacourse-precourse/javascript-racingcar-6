@@ -10,11 +10,12 @@ const Validation = {
   noInput(carList) {
     const isEmpty = (input) => {
       if (
-        input === "" ||
+        input === '' ||
         input.length === 0 ||
         input === null ||
-        input === "null" ||
-        typeof input === "undefined"  
+        input === 'null' ||
+        typeof input === 'undefined' ||
+        (typeof input === 'object' && !Object.keys(input).length)
       ) {
         return true;
       }
@@ -34,7 +35,7 @@ const Validation = {
   },
   // 공백체크
   isSpacing(carList) {
-    if (carList.some((space) => space.includes(" ") === true)) {
+    if (carList.some((space) => space.includes(' ') === true)) {
       return true;
     }
     return false;
