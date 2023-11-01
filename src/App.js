@@ -40,7 +40,7 @@ async function racingProcess(resolve, reject) {
 
     resolve();
   } catch (error) {
-    MissionUtils.Console.print(error + ` 레이싱 자동차 등록에 실패했습니다.`);
+    MissionUtils.Console.print(error);
     reject(new Error("[ERROR]"));
   }
 }
@@ -53,14 +53,14 @@ function splitCars(cars) {
 function carsNumberError(cars) {
   const CARSNUMBER_COUNT = cars.length;
   if (CARSNUMBER_COUNT < 1) {
-    throw new Error("[ERROR]");
+    throw new Error("[ERROR] 1대 이상의 자동차를 등록하지 않았습니다.");
   }
   return Error;
 }
 
 function carsNameError(car) {
   if (car.length < 1 || car.length > 5) {
-    throw new Error("[ERROR]");
+    throw new Error("[ERROR] 자동차의 이름을 5자 이하만 가능합니다.");
   }
   return Error;
 }
@@ -73,7 +73,7 @@ function carsForEach(cars) {
 
 function attemptCount(count) {
   if (count < 1) {
-    throw new Error("[ERROR]");
+    throw new Error("[ERROR] 시도할 횟수를 잘못 입력했습니다.");
   }
 }
 
