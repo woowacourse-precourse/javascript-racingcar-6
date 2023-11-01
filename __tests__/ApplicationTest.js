@@ -71,7 +71,7 @@ describe("자동차 경주 게임", () => {
     const car = new Car("test");
     results.forEach((result) => {
       car.moveForward();
-      expect(car.getDistance().toBe(result));
+      expect(car.getDistance()).toBe(result);
     });
   });
 
