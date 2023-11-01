@@ -1,8 +1,8 @@
 /* eslint-disable import/extensions */
-import { Console, Random } from '@woowacourse/mission-utils';
+import { Random } from '@woowacourse/mission-utils';
 
 export default class Car {
-  constructor(name, move) {
+  constructor(name) {
     this.name = name;
     this.move = 0;
   }

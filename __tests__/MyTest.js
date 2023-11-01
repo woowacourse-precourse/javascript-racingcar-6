@@ -32,7 +32,7 @@ test('myTest : split 메서드로 입력값이 구분되는지 테스트', async
 
   await app.play();
 
-  expect(app.game.SET_CARNAME).toEqual(['cat', 'dog']);
+  expect(app.SET_CARNAME).toEqual(['cat', 'dog']);
 });
 
 test('myTest : 값에 따른 자동차 전진 기능 테스트', async () => {
