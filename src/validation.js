@@ -21,6 +21,9 @@ export const validTryTimes = (tryTimes) => {
   if (tryTimes === "") {
     throw new Error(ERROR_MSG.NO_INPUT);
   }
+  if (tryTimes === "0") {
+    throw new Error(ERROR_MSG.TRY_TIMES_MORE_THAN_ZERO);
+  }
   if (isNaN(tryTimes)) {
     throw new Error(ERROR_MSG.TRY_TIMES_NUMBER);
   }

@@ -54,7 +54,7 @@ function sayHi(name) {
 > 시도할 횟수는 몇 회인가요?
 
 ```
-//[예외1] 횟수가 1미만일 경우
+[예외1] 횟수가 1미만일 경우 : 시도 횟수에 대한 조건은 없으나 '주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.'는 기능 요구 사항에 따라 전진-정지를 해야 우승자를 추려낼 수 있을 것으로 판단되어 예외 추가
 [예외2] 입력값이 숫자가 아닐 경우
 [예외3] 입력값이 아예 없는 경우
 ```
@@ -80,6 +80,13 @@ function sayHi(name) {
 - startGame(): 게임 시작 함수
 - getCarsName(): 경주할 자동차 이름 입력
 - getTryTimes(): 게임 시도 횟수 입력
-- printExecutionResult(): 게임 실행 결과 출력
-- printFinalWinner(): 최종 우승자 출력
+- printExecutionResult(): 게임 실행 결과 출력 함수
+  - getExecution(): 회차별 전진-정지에 대한 결과를 추가해주는 함수
+  - getRandomNumber(): 회차별 전진-정지를 위한 랜덤 숫자를 받기 위한 함수
+- printFinalWinner(): 우승자를 프린트해주는 함수
+  - getGameResultLength(): 가장 멀리 전진한 자동차를 구하기 위해, 자동차별 길이를 구해주는 함수
+  - getMaxOfResultLength(): 자동차별 길이 중 Max값을 찾아내어 해당 자동차를 출력해주는 함수
 - endGame(): 게임 종료 함수
+
+- validCarNames(): 자동차 이름에 대한 예외 시 오류를 출력해주는 함수
+- validTryTimes(): 시도 횟수에 대한 예외 시 오류를 출력해주는 함수

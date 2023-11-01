@@ -12,7 +12,7 @@ const ERROR_MSG = Object.freeze({
   CAR_NAME_OVER_LENGTH: "[ERROR] 자동차 이름은 5자 이하로 입력해주세요.",
   CAR_NAME_IS_DUPLICATION: "[ERROR] 중복된 자동차 이름이 있습니다.",
   // CAR_NAME_SPLIT_COMMA: "[ERROR] 자동차 이름은 쉼표로 구분해주세요.",
-  // TRY_TIMES_MORE_THAN_ZERO: "[ERROR] 시도 횟수는 1이상으로 입력해주세요.",
+  TRY_TIMES_MORE_THAN_ZERO: "[ERROR] 시도 횟수는 1이상으로 입력해주세요.",
   TRY_TIMES_NUMBER: "[ERROR] 시도횟수는 숫자로 입력해주세요.",
 });
 
