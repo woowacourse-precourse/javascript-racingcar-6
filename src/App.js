@@ -10,6 +10,12 @@ class App {
     });
   };
 
+  validateNumber = (attemptCount) => {
+    if (isNaN(attemptCount)) {
+      throw new Error(ERROR.ATTEMPT_COUNT);
+    }
+  };
+
   getCarName = async () => {
     const carNames = await Console.readLineAsync(GAME.GET_CAR_NAME);
     const carNamesArray = carNames.split(",");
@@ -18,17 +24,25 @@ class App {
     return carNamesArray;
   };
 
-  validateNumber = (attemptCount) => {
-    if (isNaN(attemptCount)) {
-      throw new Error(ERROR.ATTEMPT_COUNT);
-    }
-  };
-
   getAttemptCount = async () => {
     const attemptCount = await Console.readLineAsync(GAME.GET_ATTEMPT_COUNT);
     this.validateNumber(attemptCount);
 
     return attemptCount;
+  };
+
+  generateRandomNumber = () => {
+    const randomNumber = Random.pickNumberInRange(0, 9);
+    return randomNumber;
+  };
+
+  moveForwardCondition = () => {
+    const randomNumber = this.generateRandomNumber();
+    let position = 0;
+    if (randomNumber >= 4) {
+      position += 1;
+    }
+    return position;
   };
 
   async play() {}
