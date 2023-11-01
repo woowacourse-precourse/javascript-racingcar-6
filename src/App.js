@@ -6,7 +6,7 @@ import {
   validateRoundNum,
 } from './validators/validator.js';
 import MESSEGE from './constants/messeges.js';
-import { getRaceresult, getWinners } from './race.js';
+import { getRaceresult, getWinners } from './game/race.js';
 
 class App {
   async play() {
