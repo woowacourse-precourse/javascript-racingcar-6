@@ -1,21 +1,18 @@
-import Car from '../../src/Car.js';
 import RacingGame from '../../src/RacingGame.js';
+import RacingTrack from '../../src/RacingTrack.js';
 import Refree from '../../src/Refree.js';
-import { RANDOM_NUMBER_RANGE } from '../../src/constants/numberRange.js';
 
 describe('class RacingGame Test', () => {
-  let carInstanceList;
   let refree;
   let racingGame;
-  const MOVE_FOWARD = 5;
-  const STOP = 1;
+  let racingTrack;
   const TRY_ROUND = 3;
-  const carNames = ['준모', '정배', '서부장'];
+  const carNames = '준모,정배,서부장';
 
   beforeEach(() => {
-    carInstanceList = carNames.map((carName) => new Car(carName));
+    racingTrack = new RacingTrack(carNames);
     refree = new Refree(TRY_ROUND);
-    racingGame = new RacingGame(carInstanceList, refree);
+    racingGame = new RacingGame(racingTrack, refree);
   });
 
   describe('메서드 test : isFinish() 테스트', () => {
