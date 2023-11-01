@@ -81,7 +81,7 @@ const racingInfo=await ConvertInputTo.racingInfo()
 자동차의 순서와 게임 횟수는 0번째부터 시작
 
 ```jsx
-const racingInfo=Make.racingInfo();
+const racingInfo=ConvertInputTo.racingInfo();
 
 //carList의 1번째 자동차가 게임을 4번 시행했을 때의 위치
 racingInfo.carPositionMatrix[1][4];
@@ -190,7 +190,7 @@ Get.randomPositionList(5); // [0,1,1,2,3]
 
 ### `winnerNameList(racingInfo)`
 
-- `Make` 로 만들어지는 `racingInfo` 객체를 인자로 받아, 마지막에 가장 먼 곳에 있는 자동차들의 이름이 담긴 배열을 반환
+- `ConvertInputTo.racingInfo()` 로 만들어지는 `racingInfo` 객체를 인자로 받아, 마지막에 가장 먼 곳에 있는 자동차들의 이름이 담긴 배열을 반환
 - 반환 값은 길이가 최소 1 이상인 배열
 ```jsx
 const racingInfo = {
@@ -208,7 +208,7 @@ Get.winnerNameList(racingInfo); // ['two' , 'three' ]
 
 ### `winnerIndexList(racingInfo)`
 
-- `Make` 로 만들어지는 `racingInfo` 객체를 인자로 받아,마지막에 가장 먼 곳에 있는 `racingInfo.carList`에 있는 요소 번호들이 담긴 배열
+- `ConvertInputTo.racingInfo()` 로 만들어지는 `racingInfo` 객체를 인자로 받아,마지막에 가장 먼 곳에 있는 `racingInfo.carList`에 있는 요소 번호들이 담긴 배열
 - 반환 값은 길이가 최소 1 이상인 배열
 
 ```jsx
@@ -227,7 +227,7 @@ Get.winnerNameList(racingInfo); // [1,2]
 
 ### `lastPositionList(racingInfo)`
 
-- `Make` 로 만들어지는 `racingInfo` 객체를 인자로 받아, 마지막 게임 후 자동차들의 위치 정보가 담긴 배열
+- `ConvertInputTo.racingInfo()` 로 만들어지는 `racingInfo` 객체를 인자로 받아, 마지막 게임 후 자동차들의 위치 정보가 담긴 배열
 - 반환 값의 n번째 요소는 `carList` 의 n번째 자동차가 마지막 게임 후 위치 값
 
 ```jsx
@@ -284,7 +284,7 @@ Print.racingResultFrom(racingInfo);
 
 ***`racingInfo`***
 
-`Make.racingInfo` 에서 반환하는 형식의 객체
+`ConvertInputTo.racingInfo()` 에서 반환하는 형식의 객체
 
 ### `positionWhenGameCount(racingInfo, gameCount)`
 
@@ -313,7 +313,7 @@ Print.racingResultFrom(racingInfo,1);
 
 ***`racingInfo`***
 
-`Make.racingInfo()` 에서 반환하는 형식의 객체
+`ConvertInputTo.racingInfo()` 에서 반환하는 형식의 객체
 
 ***`gameCount`***
 
