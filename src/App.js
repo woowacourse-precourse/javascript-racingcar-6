@@ -1,8 +1,8 @@
-import CarName from "./controller/carNameController.js";
+import CarName from './controller/carNameController.js';
 
 class App {
-   play(){
-       new CarName().start();
+   async play(){
+       await new CarName().start();
    }
 }
 
