@@ -64,7 +64,7 @@ class App {
     Console.print(
       `${OUTPUT_MESSAGES.winner} : ${winners
         .map((winner) => winner.name)
-        .join()}`
+        .join(', ')}`
     );
   };
 

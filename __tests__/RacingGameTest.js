@@ -92,7 +92,7 @@ describe('최종 우승자 출력 기능 테스트', () => {
     const carB = new Car('evan');
     const carC = new Car('jack');
     const cars = [carA, carB, carC];
-    const output = '최종 우승자 : aria,jack';
+    const output = '최종 우승자 : aria, jack';
     const logSpy = getLogSpy();
 
     carA.step = 3;
