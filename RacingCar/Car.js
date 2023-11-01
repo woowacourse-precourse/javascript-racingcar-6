@@ -43,8 +43,7 @@ class Car {
     this.carList[carName] += 1;
   }
 
-  tryMovingCar() {
-    const carList = this.getCarListObject();
+  tryMovingCar(carList) {
     for (const carName in carList) {
       const randomNumber = Random.pickNumberInRange(0, 9);
       if (randomNumber >= IN_GAME_SETTING.moveCarForwardNumber) {
@@ -53,13 +52,14 @@ class Car {
     }
   }
 
-  printCarPosition() {
-    const carList = this.getCarListObject();
+  printCarPosition(carList) {
+    let carPositionString = '';
     for (const carName in carList) {
       const carPosition = '-'.repeat(carList[carName]);
-      Console.print(`${carName} : ${carPosition}`);
+      const carPositionLine = `${carName} : ${carPosition}\n`;
+      carPositionString += carPositionLine;
     }
-    Console.print('');
+    Console.print(`${carPositionString}\n`);
   }
 }
 

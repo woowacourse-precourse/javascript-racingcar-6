@@ -19,9 +19,11 @@ class Race {
 
   proceedRace(car) {
     Console.print(`\n${IN_GAME_MESSAGE.gameStartHeader}`);
+
+    const carList = car.getCarListObject();
     for (let i = 0; i < this.turnNumber; i += 1) {
-      car.tryMovingCar();
-      car.printCarPosition();
+      car.tryMovingCar(carList);
+      car.printCarPosition(carList);
     }
     return car.getCarListObject();
   }
