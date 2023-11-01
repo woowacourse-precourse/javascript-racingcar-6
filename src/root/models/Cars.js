@@ -47,7 +47,7 @@ class Cars {
         for (var i = 0; i < this.winner.length; i++){
             winnerString += this.winner[i];
             if(this.winner.length >= 2 && i  < this.winner.length - 1)
-            winnerString += `, `;
+                winnerString += `, `;
         }
         return winnerString
     }

@@ -1,14 +1,18 @@
-import { getCarName,
+import { 
+  getCarName,
   getAttemptsNumber,
   printSteps,
-  printWinner
+  printWinner,
+  carNameToArray,
  } from "./functions"
 import Cars from "./Cars.js"
 
 class App {
   async play() {
 
-    const carNameArray = await getCarName();
+    const userInput = await getCarName();
+
+    const carNameArray = carNameToArray(userInput);
 
     const cars = new Cars(carNameArray);
 
