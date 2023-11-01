@@ -46,17 +46,28 @@ describe("자동차 경주 게임", () => {
     });
   });
 
-  test.each([
-    [["pobi,javaji"]],
-    [["pobi,eastjun"]]
-  ])("이름에 대한 예외 처리", async (inputs) => {
-    // given
-    mockQuestions(inputs);
+  test.each([[["pobi,javaji"]], [["pobi,eastjun"]]])(
+    "이름에 대한 예외 처리",
+    async (inputs) => {
+      // given
+      mockQuestions(inputs);
 
-    // when
-    const app = new App();
+      // when
+      const app = new App();
 
-    // then
-    await expect(app.play()).rejects.toThrow("[ERROR]");
-  });
+      // then
+      await expect(app.play()).rejects.toThrow("[ERROR]");
+    }
+  );
+});
+
+describe("자동차 이름 길이에 대한 예외 처리", () => {
+  test.each([["pobiiii,woni"], ["a,b,c,d,e,f"]])(
+    "이름 길이 예외 처리",
+    async (inputs) => {
+      mockQuestions([inputs]);
+      const app = new App();
+      await expect(app.play()).rejects.toThrow("[ERROR]");
+    }
+  );
 });
