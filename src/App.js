@@ -46,6 +46,15 @@ class App {
     return cars.map(car => `${car.name} : ${car.position}`).join('\n');
   }
 
+  findRacingWinner(cars) {
+    const maxPosition = Math.max(...cars.map(car => car.position.length));
+    const winners = cars.filter(car => car.position.length === maxPosition);
+
+    const winnerNames = winners.map(winner => winner.name);
+
+    return winnerNames.join(', ');
+  }
+
   async play() {
     await this.racingCarGame();
   }
