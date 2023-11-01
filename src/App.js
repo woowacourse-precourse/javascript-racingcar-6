@@ -50,8 +50,20 @@ class App {
   }
 
   getWinners(carList) {
-    const maxPosition = Math.max(...carList.map((car) => car.position));
-    const winners = carList.filter((car) => car.position === maxPosition);
+    const maxPosition = this.getMaxPosition(carList);
+    const winners = this.findWinningCars(carList, maxPosition);
+    return this.extractWinnerNames(winners);
+  }
+
+  getMaxPosition(carList) {
+    return Math.max(...carList.map((car) => car.position));
+  }
+
+  findWinningCars(carList, maxPosition) {
+    return carList.filter((car) => car.position === maxPosition);
+  }
+
+  extractWinnerNames(winners) {
     return winners.map((car) => car.name);
   }
 
