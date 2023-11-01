@@ -19,6 +19,9 @@ class App {
 
       MissionUtils.Console.print('실행 결과');
       this.printScoreBoard(cars, num);
+
+      MissionUtils.Console.print(await this.printWinner(cars));
+      this.gameStatus = false;
     }
   }
 
@@ -65,6 +68,17 @@ class App {
         results.push(`${cars[nowCar]} : ${dashes}`);
       }
       await MissionUtils.Console.print(results.join('\n'));
+    }
+  }
+
+  async printWinner(cars) {
+    const maxDashes = Math.max(...cars.map((car) => car.length));
+    const winners = cars.filter((car) => car.length === maxDashes);
+
+    if (winners.length === 1) {
+      MissionUtils.Console.print(`최종 우승자 : ${winners[0]}`);
+    } else {
+      MissionUtils.Console.print(`최종 우승자 : ${winners.join(', ')}`);
     }
   }
 }
