@@ -17,9 +17,10 @@ export default class Cars {
     Console.print(MESSAGE.RACE_START);
     for (let i = 0; i < playNumber; i++) {
       this.forward();
-      this.viewState();
+      this.viewCurrentState();
       Console.print('');
     }
+    this.raceResult();
   }
 
   forward() {
@@ -37,5 +38,16 @@ export default class Cars {
       const { name, position } = state;
       Console.print(`${name} : ${'-'.repeat(position)}`);
     });
+  }
+
+  raceResult() {
+    const maxPosition = Math.max(
+      ...this.state.map(({ state }) => state.position),
+    );
+    const winners = this.state
+      .filter(({ state }) => state.position === maxPosition)
+      .map(({ state }) => state.name);
+
+    Console.print(`최종 우승자: ${winners.join(', ')}`);
   }
 }
