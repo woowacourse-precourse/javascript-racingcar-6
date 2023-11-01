@@ -5,14 +5,14 @@ import OutputHandler from "./OutputHandler.js";
 
 class App {
   #carNameArray;
-  #attemptCount;
+  #roundCount;
 
   async play() {
     await this.#getUserInput();
 
     const game = new RacingGame(
       this.#carNameArray.map((name) => new Car(name)),
-      this.#attemptCount
+      this.#roundCount
     );
     game.play();
 
@@ -25,7 +25,7 @@ class App {
 
   async #getUserInput() {
     this.#carNameArray = await InputHandler.getCarNameArray();
-    this.#attemptCount = await InputHandler.getMoveAttemptCount();
+    this.#roundCount = await InputHandler.getRoundCount();
   }
 }
 
