@@ -6,9 +6,11 @@ import Race from './Race.js';
 class RacingCar {
   async startGame() {
     const car = new Car();
-    const race = new Race();
+    await car.initialize();
 
-    Console.print(IN_GAME_MESSAGE.gameStartHeader);
+    const race = new Race();
+    await race.initialize();
+
     race.startRaceTurn(car);
   }
 }

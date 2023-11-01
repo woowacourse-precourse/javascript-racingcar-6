@@ -4,7 +4,11 @@ import { validateTurnNumber } from '../validations/validateTurnNumber.js';
 
 class Race {
   constructor() {
-    this.turnNumber = this.setTurnNumber();
+    this.turnNumber = 0;
+  }
+
+  async initialize() {
+    this.turnNumber = await this.setTurnNumber();
   }
 
   async setTurnNumber() {
@@ -13,9 +17,7 @@ class Race {
     return turnNumber;
   }
 
-  startRaceTurn(car) {
-    // TODO: 턴 진행 코드 구현
-  }
+  startRaceTurn(car) {}
 }
 
 export default Race;

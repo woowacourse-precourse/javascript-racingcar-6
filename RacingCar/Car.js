@@ -1,10 +1,14 @@
-import { Console } from '@woowacourse/mission-utils';
-import { IN_GAME_MESSAGE } from '../src/constants.js';
+import { Console, Random } from '@woowacourse/mission-utils';
+import { IN_GAME_MESSAGE, IN_GAME_SETTING } from '../src/constants.js';
 import { validateCarName } from '../validations/validateCarName.js';
 
 class Car {
   constructor() {
-    this.carList = this.createCarObject();
+    this.carList = {};
+  }
+
+  async initialize() {
+    this.carList = await this.createCarObject();
   }
 
   filterInputCarNameList(carName) {
