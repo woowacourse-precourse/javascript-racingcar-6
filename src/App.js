@@ -9,15 +9,17 @@ class App {
 
   #carNames;
 
+  #tryNum;
+
   async play() {
     this.#carNames = await this.#receiver.receiveCarNames();
 
     this.#validator.checkValidCarsName(Combiner.combineArray(this.#carNames));
+
+    this.#tryNum = await this.#receiver.receiveGameTryNum();
+
+    Validator.checkIsPostiveNum(this.#tryNum);
   }
 }
 
 export default App;
-
-const app = new App();
-
-app.play();
