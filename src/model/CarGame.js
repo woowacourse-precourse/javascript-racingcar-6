@@ -1,5 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
-import { CarController, NumberGenerator } from "./index.js";
+import { CarController, NumberGenerator } from "./index";
 
 class CarGame {
   #carControllers;

@@ -1,4 +1,4 @@
-export { default as CarController } from "./CarController.js";
-export { default as Player } from "./Player.js";
-export { default as NumberGenerator } from "./NumberGenerator.js";
-export { default as CarGame } from "./CarGame.js";
+export { default as CarController } from "./CarController";
+export { default as Player } from "./Player";
+export { default as NumberGenerator } from "./NumberGenerator";
+export { default as CarGame } from "./CarGame";

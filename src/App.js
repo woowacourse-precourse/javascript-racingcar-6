@@ -1,4 +1,4 @@
-import { CarController, Player, CarGame } from "./model/index.js";
+import { CarController, Player, CarGame } from "./model/index";
 
 class App {
   async play() {
