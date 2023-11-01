@@ -1,5 +1,7 @@
 import { pickNumberInRange } from '../utility/random.js';
 import { isWithinFourToNine } from '../utility/validation.js';
+import { getHyphens } from '../utility/string.js';
+import { print } from '../utility/console.js';
 
 class Car {
   #name = '';
@@ -18,6 +20,10 @@ class Car {
   tryToMove() {
     const randomNumber = pickNumberInRange(0, 9);
     if (isWithinFourToNine(randomNumber)) this.#moveOneStep();
+  }
+
+  printStepState() {
+    print(`${this.#name} : ${getHyphens(this.#stepCount)}`);
   }
 }
 
