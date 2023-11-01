@@ -1,11 +1,11 @@
+import GAME_TEXT from "../constants/message/gmaeText.js";
 import { Console } from "@woowacourse/mission-utils";
 import * as F from "../utility/utilityFunctions.js";
-import GAME_TEXT from "../constants/message/gmaeText.js";
-import validateRoundCount from "../validation/validateRountCount.js";
 import {
-  validateCarNameFormat,
   validateDuplicateRegistrar,
+  validateCarNameFormat,
   validateMinRegistrar,
+  validateRoundCount,
 } from "../validation/validateInput.js";
 
 class InputReader {
