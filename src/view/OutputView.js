@@ -1,22 +1,32 @@
 import { Console } from "@woowacourse/mission-utils";
 
-import InputCommand from "./InputView.js";
+import InputView from "./InputView.js";
 import { GAME_MESSAGE } from "../constants/gameMessage.js";
 
-
+const inputView = new InputView(); 
 export default class OutputView {
   printGameStartMessage() {
     this.#print(GAME_MESSAGE.START);
   }
 
   async printCarName() {
-    const inputCommand = new InputCommand(); 
     try {
-      const carNames = await inputCommand.carName(); 
+      const carNames = await inputView.carName(); 
       this.#print(carNames);
     } catch (error) {
       this.#print(error.message);
     }
+  }
+
+  async printNumberAttempts() {
+    await this.#print(GAME_MESSAGE.NUMBER_ATTEMPTS);
+
+    const rounds = await inputView.numberAttempts(); 
+    this.#print(rounds);
+  }
+  
+  async printExecutionResult() {
+    this.#print(GAME_MESSAGE.EXECUTION_RESULT);
   }
 
   #print(text) {

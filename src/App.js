@@ -1,8 +1,5 @@
-import { Console } from "@woowacourse/mission-utils";
-
 import InputView from "./view/InputView";
 import OutputView from "./view/OutputView";
-import { CarNameGenerator } from "./utils/CarNameGenerator";
 
 class App {
   outputView;
@@ -14,8 +11,9 @@ class App {
 
   async play() {
     this.outputView.printGameStartMessage();
-    this.outputView.printCarName();
-    
+    await this.outputView.printCarName();
+    this.outputView.printNumberAttempts();
+    this.outputView.printExecutionResult();
   }
 }
 
