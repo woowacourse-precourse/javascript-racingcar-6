@@ -52,8 +52,8 @@ class InputView {
   // 2. 시도 횟수 입력
   async inputAttemptCount() {
     const input = await Console.readLineAsync(MESSAGE.START_NUMBER_OF_ATTEMPT);
-    // 검증 보내기
-    this.#inputValidator.validateAttemptCountInput(input);
+    // TODO 검증 보내기
+    // this.#inputValidator.validateAttemptCountInput(input);
     //반환해서 리턴
     return this.#inputConverter.convertToAttemptCount(input);
   }
