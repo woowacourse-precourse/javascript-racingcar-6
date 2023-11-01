@@ -8,14 +8,18 @@ class RacingGame {
 
   static moveCar(racingCar) {
     racingCar.forEach((car) => {
-      const randomNum = this.getRandomNumber();
+      const randomNumber = this.getRandomNumber();
 
-      if (randomNum >= RACE_NUMBER.drive) {
+      if (this.judgeMove(randomNumber)) {
         const driveCar = car;
         driveCar.forward += 1;
       }
     });
     return racingCar;
+  }
+
+  static judgeMove(randomNumber) {
+    return randomNumber >= RACE_NUMBER.drive
   }
 }
 
