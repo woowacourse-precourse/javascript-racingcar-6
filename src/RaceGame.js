@@ -15,7 +15,11 @@ class RaceGame {
   }
 
   playRound() {
-    this.cars.forEach((car) => car.move());
+    const threshold = 4;
+    this.cars.forEach((car) => {
+      const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
+      car.move(randomNumber >= threshold);
+    });
   }
 
   getCurrentState() {
