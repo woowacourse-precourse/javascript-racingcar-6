@@ -1,5 +1,3 @@
-import { Console } from '@woowacourse/mission-utils';
-import Car from './Car.js';
 import RacingGame from './RacingGame.js';
 import InputReader from './View/InputReader.js';
 import OutputView from './View/OutputView.js';
@@ -34,8 +32,7 @@ export default class App {
     _0 = paramType(carNames, 'string'),
     _1 = paramType(tryRound, 'number')
   ) {
-    const carArray = carNames.split(',').map((name) => new Car(name));
-    const racingTrack = new RacingTrack(carArray);
+    const racingTrack = new RacingTrack(carNames);
     const refree = new Refree(tryRound);
     this.#racingGame = new RacingGame(racingTrack, refree);
 
