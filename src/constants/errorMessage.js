@@ -10,13 +10,14 @@ const ERROR_CAR_MESSAGE = {
 };
 
 const ERROR_USER_INPUT_MESSAGE = {
-  INVALID_INPUT_ERROR: "[ERROR]",
-  INVALID_INPUT_USER_INPUT_EMPTY_ERROR: "시도할 횟수를 입력하지 않았습니다.",
-  INVALID_INPUT_USER_INPUT_BLANK_ERROR:
-    "시도할 횟수에 공백이 포함되어 있습니다.",
-  INVALID_INPUT_USER_INPUT_ENG_ERROR:
-    "시도할 횟수에 영어가 아닌 문자가 포함되어 있습니다.",
-  INVALID_INPUT_USER_INPUT_ZERO_ERROR: "시도할 횟수는 0보다 커야 합니다.",
+  INVALID_INPUT_USER_INPUT_EMPTY_ERROR:
+    "[ERROR] 시도할 횟수를 입력하지 않았습니다.",
+  INVALID_INPUT_USER_INPUT_NUMBER_ERROR:
+    "[ERROR] 시도할 횟수는 자연수만 가능합니다.",
+  INVALID_INPUT_USER_INPUT_ZERO_ERROR:
+    "[ERROR] 시도할 횟수는 1이상이어야 합니다.",
+  INVALID_INPUT_USER_INPUT_EMPTY_ERROR:
+    "[ERROR] 시도할 횟수를 입력하지 않았습니다.",
 };
 
 export { ERROR_CAR_MESSAGE, ERROR_USER_INPUT_MESSAGE };
