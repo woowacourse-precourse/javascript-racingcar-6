@@ -13,7 +13,7 @@ class Move {
 class RacingGame {
     constructor() {
         this.move = new Move();
-        this.carList = []; // this.carList = {};
+        this.carList = {}; // this.carList = {};
         this.attempt = 0;
         this.winnerScore=0;
     }

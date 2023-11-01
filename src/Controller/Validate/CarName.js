@@ -9,9 +9,9 @@ class CarName {
   }
 
   // 에러메세지 전달
-  validate() {
+  async validate() {
     if (this.check()) {
-      outputView.printError(ERROR.CAR_NAME);
+      await outputView.printError(ERROR.CAR_NAME);
       return false;
     }
     return true;
@@ -59,6 +59,14 @@ class CarName {
     });
     return check;
   }
+
+  emptyName(){
+    let check = false;
+    if (this.carname === "" || this.carname.split(",").some((name) => name === "")) {
+      check = true;
+    }
+    return check;
+  }
 }
 
-module.exprots = CarName;
+module.exports = CarName;

@@ -12,9 +12,10 @@ const outputView = {
 
     printProcess(carList){
         Object.keys(carList).forEach((car)=>{
-            MissionUtils.Console.print(`${car} : ${"-".repeat(carList[car])}`);
-        })
-        MissionUtils.Console.print("");
+            const movement = "-".repeat(carList[car]);
+            MissionUtils.Console.print(`${car} : ${movement}`);
+        });
+        MissionUtils.Console.print(""); // 개행 추가
     },
 
     printResultTitle(){
