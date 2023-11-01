@@ -5,7 +5,6 @@ class App {
     this.carNameList = [];
     this.dashSymbol = [];
     this.randomNumArr = [];
-
     this.ERROR_MESSAGE = [
       "[ERROR] 자동차 이름은 5자 이하로 입력해주세요.",
       "[ERROR] 숫자가 잘못된 형식입니다.",
@@ -80,7 +79,7 @@ class App {
   }
 
   validateAttemptCount(count) {
-    if (isNaN(count)) {
+    if (isNaN(count) || count === 0) {
       throw new Error(this.ERROR_MESSAGE[1]);
     }
   }
