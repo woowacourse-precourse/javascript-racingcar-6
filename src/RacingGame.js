@@ -19,7 +19,7 @@ class RacingGame {
   }
 
   async setupInputCarNames() {
-    const carNames = await InputView.inputGetCarNames();
+    const carNames = await InputView.inputCommon(GAME_MESSAGES.START);
     if (validateCarNames(carNames)) {
       carNames.forEach((name) => this.addCar(name));
     }
@@ -28,7 +28,7 @@ class RacingGame {
   }
 
   async setupInputTryCount() {
-    const tryCount = await InputView.inputgetTryCount();
+    const tryCount = await InputView.inputCommon(GAME_MESSAGES.GET_TRIES);
     if (validateNumberInput(tryCount)) {
       this.#tryCount = tryCount;
     }
