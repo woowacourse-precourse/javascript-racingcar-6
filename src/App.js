@@ -1,85 +1,81 @@
+import Car from "./Car.js"; // Car 클래스를 가져옴
+import { Random } from "@woowacourse/mission-utils";
+
 class App {
   constructor() {
-    this.carNames = [];
-    this.tries = 0;
+    this.cars = []; //경주할 자동차들
+    this.tries = 0; //시도 횟수
   }
 
   async play() {
-    await this.getInputData();
-    await this.startRacing();
+    await this.getInputData(); //입력값 받기
+    await this.startRacing(); //경주 시작하기
+    this.displayWinners(); //우승자 출력하기
   }
 
+  //입력값 받기
   async getInputData() {
-    const names = await MissionUtils.Console.readLineAsync(
+    //자동차 이름 입력 받기
+    let names = await Console.readLineAsync(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분) "
     );
-    this.validateNames(names); //이름의 유효성 검사하기
-    this.cars = names.split(","); //쉼표 기준으로 나누기
+    this.validateNames(names);
+    this.cars = names.split(",").map((name) => new Car(name.trim()));
 
-    const tries = await MissionUtils.Console.readLineAsync(
-      "시도할 횟수는 몇회인가요? "
-    );
+    //시도 횟수 입력 받기
+    let tries = await Console.readLineAsync("시도할 횟수는 몇회인가요? ");
     this.validateTries(tries);
     this.tries = parseInt(tries, 10);
   }
 
-  //이름 유효성 검사하기
+  //이름 유효성 검사
   validateNames(names) {
-    const nameList = names.split(","); //쉼표로 구분하여 배열에 넣기
-
-    if (nameList.length < 1) {
-      throw new Error("[ERROR] 적어도 한 대의 자동차 이름을 입력해야 합니다.");
+    const nameList = names.split(",").map((name) => name.trim()); //쉼표로 구분하여 배열에 넣기
+    if (!nameList.every((name) => name && name.length <= 5)) {
+      throw new Error(
+        "[ERROR] 자동차 이름은 1글자 이상, 5글자 이하로 입력해야 합니다."
+      );
     }
-
-    if (nameList.some((name) => name.length > 5 || name.length < 1)) {
-      throw new Error("[ERROR] 자동차 이름은 5자 이하로 입력해야 합니다.");
-    }
-
     if (new Set(nameList).size !== nameList.length) {
       throw new Error("[ERROR] 중복된 자동차 이름이 있습니다.");
     }
   }
 
-  //횟수 유효성 검사하기
+  //시도 유효성 검사
   validateTries(tries) {
-    if (isNaN(tries)) {
-      throw new Error("[ERROR] 시도할 횟수는 숫자로 입력해야 합니다.");
-    }
-
-    if (parseInt(tries, 10) < 1) {
-      throw new Error("[ERROR] 시도할 횟수는 1회 이상이어야 합니다.");
+    if (isNaN(tries) || parseInt(tries, 10) < 1) {
+      throw new Error(
+        "[ERROR] 시도할 횟수는 숫자로 입력해야 하며, 1회 이상이어야 합니다."
+      );
     }
   }
 
-  //경주하기
+  //경주 시작하기
   async startRacing() {
-    MissionUtils.Console.print("\n실행 결과");
-    //횟수만큼 반복
+    Console.print("\n실행 결과");
+    //시도 횟수만큼 경주 결과 보여주기
     for (let i = 0; i < this.tries; i++) {
-      this.forwardCars();
+      this.cars.forEach((car) => car.move());
       this.displayCars();
     }
   }
 
-  //차 전진하기
-  forwardCars() {
-    const move = 0;
-    this.cars = this.cars.map((name) => {
-      const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
-      if (randomNumber >= 4) {
-        car.position++; // 4 이상이면 전진
-      }
-      return car;
-    });
-  }
-
-  //결과 출력
+  //경주 결과 출력하기
   displayCars() {
     this.cars.forEach((car) => {
-      const result = `${car.name} : ${"-".repeat(car.position)}`;
-      MissionUtils.Console.print(result);
+      const result = `${car.name} : ${"-".repeat(car.position)}`; //자동차별로 각 위치 표시하기
+      Console.print(result);
     });
-    MissionUtils.Console.print("");
+    Console.print("");
+  }
+
+  //경주 우승자 출력하기
+  displayWinners() {
+    const maxPosition = Math.max(...this.cars.map((car) => car.position)); //위치 값 최대 찾기
+    const winners = this.cars
+      .filter((car) => car.position === maxPosition)
+      .map((car) => car.name); //우승자 추리기
+    MissionUtils.Console.print(`최종 우승자 : ${winners.join(", ")}`); //쉼표로 우승자 연결
   }
 }
 
