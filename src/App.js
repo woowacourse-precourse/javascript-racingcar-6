@@ -2,7 +2,6 @@ import {Console, Random} from "@woowacourse/mission-utils";
 
 class App {
   async play() {
-
     Console.print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     const CAR_INPUT = await this.getCarInput();
     if (this.isValidCarInput(CAR_INPUT)) {
@@ -17,6 +16,7 @@ class App {
         Console.print(`${RESULT}\n`);
         CNT-=1
       }
+      await this.printWinner(CAR_DICT);
     }else {
       throw new Error("[ERROR] 이름은 5글자 이하로 작성해주세요")
     }
@@ -77,6 +77,9 @@ class App {
       .map(([key]) => key);
     return KEYS_WITH_MAX_VALUE;
   }
-
+  printWinner(dict) {
+    const maxPosition = this.findKeysOfMaxValue(dict);
+    Console.print(`최종 우승자 : ${maxPosition.join(', ')}`);
+  }
 }
 export default App;
