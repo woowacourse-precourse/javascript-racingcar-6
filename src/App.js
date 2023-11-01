@@ -5,7 +5,8 @@ class App {
 
   async play() {
     await this.getCarNames()
-    
+    await this.AskAttemptsCount();
+
   }
   
   async getCarNames() {
@@ -40,6 +41,18 @@ class App {
     
     this.cars = names;
   }
+
+  async AskAttemptsCount() {
+    await Console.print("시도할 횟수는 몇 회인가요?")
+    const ATTEMPTS_COUNT_INPUT = await Console.readLineAsync("")
+    this.validateCountInput(ATTEMPTS_COUNT_INPUT)
+  }
+
+  validateCountInput(number) {
+    if (isNaN(number) || typeof number !== 'number') {
+        throw new Error("[Error] 시도할 횟수에는 숫자를 입력해주세요.");
+    }
+}
 
 }
 
