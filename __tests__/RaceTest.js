@@ -28,5 +28,6 @@ describe("Race class의 decideWinners 메서드 테스트", () => {
     expect(winners).toContain("pobi");
     expect(winners).toContain("djun");
     expect(winners).not.toContain("woni");
+    expect(winners.join(", ")).toBe("pobi, djun")
   });
 });
