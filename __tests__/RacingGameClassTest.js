@@ -7,7 +7,7 @@ describe('RacingGame 클래스 테스트', () => {
     expect(racingGame.tryNum).toBe(0);
   });
 
-  test('generateCarObjects 메서드 테스트. 자동차 이름 리스트를 이용하여, 이름 하나 당 각각의 자동차 인스턴스를 생성한다.', async () => {
+  test('generateCarObjects 메서드 테스트. 자동차 이름 리스트를 이용하여, 이름 하나 당 각각의 자동차 인스턴스를 생성한다.', () => {
     const racingGame = new RacingGame();
     const carNameList = ['pobi', 'woni', 'jun'];
     racingGame.genearteCarObjects(carNameList);
@@ -18,7 +18,7 @@ describe('RacingGame 클래스 테스트', () => {
     ]);
   });
 
-  test('getWinners 메서드 테스트. 경주개암울 완료한 후 최종 우승자를 결정한다.', async () => {
+  test('getWinners 메서드 테스트. 경주개암울 완료한 후 최종 우승자를 결정한다.', () => {
     const racingGame = new RacingGame();
     const carNameList = ['pobi', 'woni', 'jun'];
     racingGame.genearteCarObjects(carNameList);
