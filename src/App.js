@@ -1,7 +1,7 @@
 import { Console, Random } from "@woowacourse/mission-utils";
 import Car from './Car.js';
 
-const headway = "-";
+const HEADWAY = "-";
 
 async function getInput(text) {  // 사용자로부터 입력받는 함수
   try {
@@ -12,7 +12,7 @@ async function getInput(text) {  // 사용자로부터 입력받는 함수
   }
 }
 
-function makeCarList(carName) {
+function makeCarList(carName) {  // 입력받은 자동차 이름들을 이용해 Car 객체 생성
   let carList = [];
 
   carName.forEach(element => {
@@ -44,23 +44,26 @@ function runCarRace(carList, moveCount) {  // 자동차 이름과 주어진 횟�
 
   for (var i = 0; i < moveCount; i++){
     for(var value of carList) {  // 자동차마다 경주 시작
-      getRandomHead(value);
-      Console.print(value.getCarName() + " : " + headway.repeat(value.getHeadCount()));
+      getRandomHead(value, Random.pickNumberInRange(0, 9));
+      Console.print(value.getCarName() + " : " + HEADWAY.repeat(value.getHeadCount()));
     }
     Console.print("");
   }
 }
 
-function getRandomHead(car) {
-  if (Random.pickNumberInRange(0, 9) >= 4){  // 랜덤값이 4 이상이면 전진 표시 ("-")
+function getRandomHead(car, randValue) {
+  if (randValue >= 4){  // 랜덤값이 4 이상이면 전진 표시 ("-")
     car.addHeadCount();
-    return;
+    return true;
   }
+  return false;
 }
 
 function printWinner(carList) {
   var winnerCount = 0;
   var winner = [];
+
+  Console.print(carList);
 
   for(var value of carList) {  // 가장 높은 headCount 찾기
     if(value.getHeadCount() >= winnerCount){
@@ -95,3 +98,4 @@ class App {
 }
 
 export default App;
+export { getRandomHead, printWinner }
