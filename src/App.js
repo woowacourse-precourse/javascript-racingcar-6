@@ -14,17 +14,21 @@ class App {
 		this.#racingCars = [];
 	}
 
-	async play() {
+	async #getCarName() {
 		const carNames = await this.#userInput.inputRacingCarName();
 		this.#racingCars = carNames.map((carName) => new Car(carName));
+	}
 
+	async #racingStart() {
 		const attempts = await this.#userInput.inputAttemptsNum();
 		this.#printConsole.showMessage(SYSTEM_MESSAGES.execution_result);
 		for (let i = 0; i < attempts; i++) {
 			this.#racingCars.forEach((racingCar) => racingCar.forward());
 			this.#printConsole.showMessage(''); // 출력시 각 시도마다 보기좋게 구분을 위한 한줄 공백 추가
 		}
+	}
 
+	#findWinner() {
 		const racingWinner = this.#racingCars.reduce(
 			(acc, cur) => {
 				if (acc.distance < cur.distance) {
@@ -39,6 +43,14 @@ class App {
 		);
 
 		this.#printConsole.showGameResult(racingWinner.name);
+	}
+
+	async play() {
+		await this.#getCarName();
+
+		await this.#racingStart();
+
+		this.#findWinner();
 	}
 }
 
