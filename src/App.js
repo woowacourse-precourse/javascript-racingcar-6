@@ -52,10 +52,7 @@ class App {
       MissionUtils.Console.print('\n실행 결과');
 
       for (let i = 0; i < numberOfAttempts; i++) {
-        racingCars.forEach(car => {
-          const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
-          car.position += randomNumber >= 4 ? '-' : '';
-        });
+        this.checkStopOrGo(racingCars);
 
         MissionUtils.Console.print(`${this.generateRacingState(racingCars)}\n`);
       }
@@ -65,14 +62,25 @@ class App {
     }
   }
 
+  checkStopOrGo(racingCars) {
+    racingCars.forEach(car => {
+      const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
+
+      if (randomNumber >= 4) {
+        car.position += '-';
+      }
+      car.position += '';
+    });
+  }
+
   generateRacingState(cars) {
     return cars.map(car => `${car.name} : ${car.position}`).join('\n');
   }
 
   findRacingWinner(cars) {
     const maxPosition = Math.max(...cars.map(car => car.position.length));
-    const winners = cars.filter(car => car.position.length === maxPosition);
 
+    const winners = cars.filter(car => car.position.length === maxPosition);
     const winnerNames = winners.map(winner => winner.name);
 
     return winnerNames.join(', ');
