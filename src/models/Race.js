@@ -4,7 +4,7 @@ import { pickRandomNumber } from '../utils/PickRandomNumber.js';
 import { SETTINGS, SYMBOLS } from '../constants/index.js';
 
 class Race {
-  #outputView = new OutputView();
+  #outputView = OutputView;
 
   #fuel;
 

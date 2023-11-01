@@ -2,7 +2,7 @@ import { GUIDE_MESSAGE, SETTINGS, SYMBOLS } from '../constants/index.js';
 import OutputView from '../views/OutPutView.js';
 
 class Distance {
-  #outputView = new OutputView();
+  #outputView = OutputView;
   /**
    *
    * @param {자동차 이름 배열} carNames
