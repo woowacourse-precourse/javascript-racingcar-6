@@ -1,5 +1,5 @@
 import { Random } from '@woowacourse/mission-utils';
-import { NUMBER_FOR_MOVE } from './Constants.js';
+import { NUMBER_FOR_MOVE } from '../Constants.js';
 
 class Car {
   constructor(name) {
