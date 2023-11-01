@@ -1,28 +1,27 @@
-import { describe } from 'node:test';
 import InputValidator from '../src/models/InputValidator';
 import { ERROR_MESSAGE } from '../src/constants';
 
 describe('자동차 이름 유효성 테스트', () => {
-  test('자동차 이름 5자 초과', () => {
+  test('자동차 이름 5자 초과', async () => {
     const carNames = ['KIA', 'Volvo', 'Ferrari'];
 
-    expect(() => {
+    await expect(() => {
       InputValidator.validateCarName(carNames);
     }).toThrow(ERROR_MESSAGE.tooLongName);
   });
 
-  test('자동차 이름을 입력하지 않음', () => {
+  test('자동차 이름을 입력하지 않음', async () => {
     const carNames = ['Tesla', ''];
 
-    expect(() => {
+    await expect(() => {
       InputValidator.validateCarName(carNames);
     }).toThrow(ERROR_MESSAGE.emptyName);
   });
 
-  test('자동차 이름을 아무것도 입력하지 않음', () => {
+  test('자동차 이름을 아무것도 입력하지 않음', async () => {
     const carNames = [''];
 
-    expect(() => {
+    await expect(() => {
       InputValidator.validateCarName(carNames);
     }).toThrow(ERROR_MESSAGE.emptyName);
   });

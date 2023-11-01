@@ -1,4 +1,3 @@
-import { describe } from 'node:test';
 import InputValidator from '../src/models/InputValidator';
 import { ERROR_MESSAGE } from '../src/constants';
 
