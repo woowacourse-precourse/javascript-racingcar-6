@@ -20,8 +20,7 @@ class Game {
     this.racingCommentary = [];
   }
 
-  // @TODO: 함수 이름 변경, 기능 분리
-  startRace() {
+  race() {
     do {
       this.#move();
       this.#getRacingCommentary();

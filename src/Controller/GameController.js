@@ -18,11 +18,9 @@ class GameController {
     const racingCars = await this.#getRacingCars();
     const attemptNumber = await this.#getAttemptNumber();
 
-    this.#game = new Game({ racingCars, attemptNumber });
-    const { result, winner } = this.#game.startRace();
+    const { result, winner } = this.#playGame(racingCars, attemptNumber);
 
-    this.#view.printResult(result);
-    this.#view.printWinner(winner);
+    this.#showResults(result, winner);
   }
 
   async #getRacingCars() {
@@ -37,6 +35,18 @@ class GameController {
     this.#validate.validateAttemptNumber(inputValue);
 
     return inputValue;
+  }
+
+  #playGame(racingCars, attemptNumber) {
+    this.#game = new Game({ racingCars, attemptNumber });
+    const { result, winner } = this.#game.race();
+
+    return { result, winner };
+  }
+
+  #showResults(result, winner) {
+    this.#view.printResult(result);
+    this.#view.printWinner(winner);
   }
 }
 
