@@ -17,6 +17,7 @@ export const isCarListValid = (
   if (carList.length > maxCarListLength || carList.length < minCarListLength) {
     return false;
   }
+
   return carList.every(
     car =>
       hasNoSpace(car)

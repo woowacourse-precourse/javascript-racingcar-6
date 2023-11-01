@@ -31,7 +31,8 @@ const startRacing = (attemptTimes, carList) => {
     count += 1;
   }
 
-  whoIsWinner(racingCars);
+  const winner = whoIsWinner(racingCars);
+  return winner;
 };
 
 export default startRacing;

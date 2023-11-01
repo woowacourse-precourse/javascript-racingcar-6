@@ -24,7 +24,9 @@ class App {
       );
       this.attemptTimes = attemptTimes;
       if (isRacingAttemptsValid(this.attemptTimes)) {
-        return startRacing(this.attemptTimes, this.carList);
+        const winner = startRacing(this.attemptTimes, this.carList);
+        Console.print(`${MESSAGES.WINNER} ${winner}`);
+        return;
       }
       throw new Error(MESSAGES.NOT_VALID_NUMBER);
     }

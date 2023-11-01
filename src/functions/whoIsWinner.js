@@ -17,7 +17,7 @@ const whoIsWinner = racingCars => {
     }
   });
 
-  Console.print(`${MESSAGES.WINNER} ${winner}`);
+  return winner;
 };
 
 export default whoIsWinner;
