@@ -1,6 +1,6 @@
 import { ERROR } from "../../src/constants/constants";
 import { Cars } from "../../src/domain/cars";
-import { CarsDto } from "../../src/domain/dto/carsDto";
+import { CarsDto } from "../../src/domain/dto/CarsDto";
 
 describe("Cars의 비즈니스 로직", () => {
   test("성공적으로 Cars를 생성할 수 있다", async () => {
