@@ -16,14 +16,14 @@ class Car {
     if (randomNumber >= CONSTANT.movable) {
       this.#moveCount += 1;
     }
-    return this.#makeMovingResultString();
+    return this.#makeMovingResultMessage();
   }
 
   #makeRandomNumber() {
     return Random.pickNumberInRange(RANDOM_NUMBER.minNum, RANDOM_NUMBER.maxNum);
   }
 
-  #makeMovingResultString() {
+  #makeMovingResultMessage() {
     const movingLog = SYMBOL.movement.repeat(this.#moveCount);
     return `${this.#name} : ${movingLog}`;
   }

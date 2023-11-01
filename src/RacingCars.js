@@ -17,7 +17,7 @@ class RacingCars {
     const maxMoveCount = this.#findMaxMoveCount();
     const winners = this.#findSameMoveCount(maxMoveCount);
 
-    return this.#makeWinnerString(winners);
+    return this.#makeWinnerMessage(winners);
   }
 
   #findMaxMoveCount() {
@@ -30,7 +30,7 @@ class RacingCars {
       .map((car) => car.getCarName());
   }
 
-  #makeWinnerString(winners) {
+  #makeWinnerMessage(winners) {
     return `${MESSAGE.finalWinner} ${winners.join(', ')}`;
   }
 }
