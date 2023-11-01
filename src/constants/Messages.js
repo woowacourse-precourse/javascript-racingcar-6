@@ -8,6 +8,12 @@ export const OUTPUT_MESSAGE = {
   count: '\n시도할 횟수는 몇 회인가요?\n',
 };
 
+export const OUTPUT_MESSAGE_FUNCTION = Object.freeze({
+  finalWinner(finalWinner) {
+    return `최종 우승자 : ${finalWinner.join(', ')}`;
+  },
+});
+
 export const ERROR_MESSAGE = Object.freeze({
   prefix: '[ERROR]',
   duplication: '중복되는 이름은 사용할 수 없습니다.',
