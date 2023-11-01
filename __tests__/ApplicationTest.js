@@ -81,6 +81,20 @@ describe("자동차 경주 게임", () => {
       expect.stringContaining(`${GAME_MESSAGE.WINNER}pobi`)
     );
   });
+
+  test("여러 명의 우승자가 제대로 출력되는지 확인", () => {
+    // given
+    const logSpy = getLogSpy();
+
+    // when
+    const game = new RacingcarGame();
+    game.printWinner({ pobi: ["-", "-", "-"], mijin: ["-", "-", "-"] });
+
+    // then
+    expect(logSpy).toHaveBeenCalledWith(
+      expect.stringContaining(`${GAME_MESSAGE.WINNER}pobi, mijin`)
+    );
+  });
 });
 
 describe("시도 횟수 테스트", () => {
