@@ -22,6 +22,10 @@ class RacingModel {
       vehicleData.set(vehicle, `${progress}${SYSTEM.move}`);
     });
   }
+
+  getData() {
+    return this.#vehicle.getData();
+  }
 }
 
 export default RacingModel;
