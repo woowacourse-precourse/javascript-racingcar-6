@@ -36,12 +36,12 @@ class Race {
   }
 
   splitWithoutSpace(str) {
-    return str.trim().split(",");
+    return str.split(",").map((item) => item.trim());
   }
 
   createCarArrayFrom(nameArr) {
     let cars = [];
-    nameArr.forEach((name) => cars.push(new Car(name)));
+    nameArr.map((name) => cars.push(new Car(name)));
 
     return cars;
   }
