@@ -5,7 +5,7 @@ class App {
     try {
       const carNames = await this.enterCarNames();
     } catch (e) {
-      throw new Error(`[Error] : ${e.message}`);
+      throw new Error(`[ERROR] : ${e.message}`);
     }
   }
 
@@ -20,8 +20,5 @@ class App {
     throw new Error("자동차 이름을 5자 이하로 입력해주세요");
   }
 }
-
-const app = new App();
-app.play();
 
 export default App;

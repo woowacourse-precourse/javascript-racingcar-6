@@ -43,6 +43,16 @@ describe("자동차 경주 게임", () => {
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
   });
 
+  test("자동차 이름 예외처리 : 5자이하 차 이름 입력", async () => {
+    const inputs = ["pobi,woniaaaaa"];
+    mockQuestions(inputs);
+
+    const app = new App();
+    await expect(app.play()).rejects.toThrow(
+      "[ERROR] : 자동차 이름을 5자 이하로 입력해주세요"
+    );
+  });
+
   test("전진-정지", async () => {
     // given
     const MOVING_FORWARD = 4;
