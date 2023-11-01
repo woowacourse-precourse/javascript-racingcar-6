@@ -13,12 +13,9 @@ class InputView {
    */
   async getCarNames() {
     const carsNameInput = await Console.readLineAsync(MESSAGES.getCarName);
-    const carNames = carsNameInput.split(',');
 
-    carNames.forEach((carName) => {
-      if (!InputValidator.isValidCarName(carName))
-        throwError(`유효하지 않은 입력입니다: ${carName}`);
-    });
+    const carNames = carsNameInput.split(',');
+    this.validateCarNames(carNames);
 
     return carNames;
   }
@@ -30,10 +27,29 @@ class InputView {
   async getAttemptNum() {
     const attemptNum = await Console.readLineAsync(MESSAGES.getAttemptNum);
 
-    if (!InputValidator.isValidAttemptNum(attemptNum))
-      throwError(`유효하지 않은 입력입니다: ${attemptNum}`);
+    this.validateAttemptNum(attemptNum);
 
     return Number(attemptNum);
+  }
+
+  /**
+   * 자동차 이름 입력에 대해 유효성 검사 실행
+   * @param {string[]} carNames
+   */
+  validateCarNames(carNames) {
+    carNames.forEach((carName) => {
+      if (!InputValidator.isValidCarName(carName))
+        throwError(`유효하지 않은 입력입니다: ${carName}`);
+    });
+  }
+
+  /**
+   * 시도 횟수 입력에 대해 유효성 검사 실행
+   * @param {string} attemptNum
+   */
+  validateAttemptNum(attemptNum) {
+    if (!InputValidator.isValidAttemptNum(attemptNum))
+      throwError(`유효하지 않은 입력입니다: ${attemptNum}`);
   }
 }
 
