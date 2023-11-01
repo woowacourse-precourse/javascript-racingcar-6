@@ -12,13 +12,36 @@ class App {
     await this.init();
     Console.print("실행 결과\n");
     this.gameStart();
-
+    this.printGame();
   }
 
+  gameStart() {
+    for (let i = 0; i < this.car.length; i += 1) {
+      const RANDOM_NUM = Random.pickNumberInRange(0, 9);
+        if (RANDOM_NUM >= 4) {
+          this.pos[i] += "-"; 
+        }
+      }
+    }
+
+  printGame() {
+    for (let i = 0;i<this.car.length; i += 1) {
+      Console.print(`${this.car[i]} : ${this.pos[i]}`);
+    }
+    Console.print("");
+
+    this.setWinner();
+    Console.print(`최종 우승자 : ${this.getWinner()}`);
+  }
+
+  getWinner() {
+    return this.winner;
+  }
+  
   setWinner() {
     const maxPos = Math.max(...this.pos.map((pos) => pos.length));
 
-    for (const i =0;i<this.car.length;i++) {
+    for (let i = 0; i < this.car.length; i += 1) {
       if (this.pos[i].length === maxPos) {
         this.winner.push(this.car[i]);
       }
@@ -47,7 +70,7 @@ class App {
   }
   
   static CarNameValidator(CarName) {
-    if (CarName.length > 5) {
+    if (CarName.filter((car) => car.length <= 5).length < CarName.length) {
       throw new Error("[ERROR] 이름은 5자 이하가 되어야 합니다.");
     }
   }
