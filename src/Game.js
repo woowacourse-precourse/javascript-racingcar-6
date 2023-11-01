@@ -1,6 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
 import Car from './Car.js';
 import Input from './utils/Input.js';
+import { MESSAGES } from './constants/index.js';
 
 class Game {
   /**
@@ -18,10 +19,6 @@ class Game {
    */
   #winners;
 
-  #gameResultMessage = '\n실행 결과';
-
-  #winnersMessage = '최종 우승자 : ';
-
   constructor() {
     this.#cars = [];
     this.#trialCount = 0;
@@ -37,7 +34,7 @@ class Game {
 
   async run() {
     await this.#init();
-    Console.print(this.#gameResultMessage);
+    Console.print(MESSAGES.GAME_RESULT_MESSAGE);
 
     for (let i = 0; i < this.#trialCount; i += 1) {
       this.#executeRound();
@@ -52,7 +49,7 @@ class Game {
   }
 
   #announceWinners() {
-    Console.print(`${this.#winnersMessage}${this.#winners.join(', ')}`);
+    Console.print(`${MESSAGES.WINNERS_MESSAGE}${this.#winners.join(', ')}`);
   }
 }
 

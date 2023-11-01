@@ -1,4 +1,4 @@
-import { ERROR_MESSAGE } from '../constants/index.js';
+import { ERROR_MESSAGE } from '../constants/messages.js';
 import UtilArray from './UtilArray.js';
 import UtilString from './UtilString.js';
 

@@ -1,6 +1,9 @@
+export const GAME_RESULT_MESSAGE = '\n실행 결과';
+export const WINNERS_MESSAGE = '최종 우승자 : ';
+
 export const ERROR_HEADER = '[ERROR]';
 
-const ERROR_MESSAGE = {
+export const ERROR_MESSAGE = {
   noInput: '자동차 이름을 입력해주세요.',
   tooLongCarName: '자동차 이름은 5자 이하만 가능합니다.',
   duplicateCarName: '중복된 자동차 이름이 존재합니다.',
@@ -9,4 +12,9 @@ const ERROR_MESSAGE = {
   notInteger: '입력값은 정수만 가능합니다.',
 };
 
-export default ERROR_MESSAGE;
+export default {
+  GAME_RESULT_MESSAGE,
+  WINNERS_MESSAGE,
+  ERROR_HEADER,
+  ERROR_MESSAGE,
+};
