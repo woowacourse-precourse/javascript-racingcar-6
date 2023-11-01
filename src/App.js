@@ -1,4 +1,5 @@
-import getValidTotalRoundNumber from "./feature/GetValidTotalRoundNumber";
+import getValidCarNameStr from './feature/GetValidCarNameStr';
+import getValidTotalRoundNumber from './feature/GetValidTotalRoundNumber';
 
 class App {
   constructor() {
@@ -7,6 +8,7 @@ class App {
 
   async play() {
     const carNameStr = getValidCarNameStr();
+
     const initialCarDataList = generateCarDataListFromStr(carNameStr);
     this.updateCarDataList(initialCarDataList); // 정확하게 업데이트되는지 테스트 필요
 
