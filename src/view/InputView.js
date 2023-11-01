@@ -1,8 +1,9 @@
 import { Console } from '@woowacourse/mission-utils';
 import { INPUT_MESSAGE } from '../utils/constants';
-import { validateNames, validateTryCount } from '../utils/validateInput';
+import { validateCarNames, validateTryCount } from '../utils/validateInput';
 
-const inputFormat = async (userInput, validate) => {
+const getInputWithValidate = async (userInput, validate) => {
+  // 유저 입력을 받아서 유효성 검사를 하는 함수 형태 정의
   const input = await userInput();
   validate(input);
   return input;
@@ -10,14 +11,14 @@ const inputFormat = async (userInput, validate) => {
 
 const InputView = {
   carNames: async () => {
-    const names = await inputFormat(
+    const names = await getInputWithValidate(
       async () => Console.readLineAsync(INPUT_MESSAGE.NAMES),
-      validateNames,
+      validateCarNames,
     );
     return names.split(',');
   },
   tryCount: async () => {
-    const tryCount = await inputFormat(
+    const tryCount = await getInputWithValidate(
       async () => Console.readLineAsync(INPUT_MESSAGE.TRY_COUNT),
       validateTryCount,
     );

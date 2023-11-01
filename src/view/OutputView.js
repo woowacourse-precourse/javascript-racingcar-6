@@ -7,7 +7,7 @@ const OutputView = {
     Console.print(OUTPUT_MESSAGE.RESULT);
   },
   roundResult: cars => {
-    const result = formatOutput.convertRoundResultToString(cars);
+    const result = formatOutput.makeRoundMessage(cars);
     Console.print(result);
   },
   winnerResult: winners => {

@@ -4,12 +4,12 @@ import getRandomNumber from '../src/utils/getRandomNumber';
 
 describe('유틸 함수 테스트', () => {
   describe('formatOutPut 테스트', () => {
-    test('converRoundResultToString 테스트 - 경주 라운드 결과를 문자열 형태로 반환', () => {
+    test('makeRoundMessage 테스트 - 경주 라운드 결과를 문자열 형태로 반환', () => {
       const cars = [new Car('a'), new Car('b'), new Car('c')];
       cars[0].forward();
       cars[0].forward();
       cars[1].forward();
-      const result = formatOutput.convertRoundResultToString(cars);
+      const result = formatOutput.makeRoundMessage(cars);
       expect(result).toBe('a : --\nb : -\nc : \n');
     });
 

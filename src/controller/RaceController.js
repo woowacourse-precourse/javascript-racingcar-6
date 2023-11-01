@@ -16,10 +16,10 @@ class RaceController {
     const carNames = await InputView.carNames();
     const tryCount = await InputView.tryCount();
     this.makeRace(carNames);
-    return this.printRace(this.carRace, tryCount);
+    return this.printResult(this.carRace, tryCount);
   }
 
-  async printRace(carRace, tryCount) {
+  async printResult(carRace, tryCount) {
     const { cars } = carRace;
     for (let i = 0; i < tryCount; i += 1) {
       carRace.getRaceRound();

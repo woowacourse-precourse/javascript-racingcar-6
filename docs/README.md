@@ -16,7 +16,7 @@
 **2. View**
 
 - 2-1. `InputView` : 레이싱에 필요한 인풋 데이터를 입력받는 함수
-  - 입력받는 함수 형태 정의 `inputFormat`
+  - 입력받아 유효성 검사 진행 함수 형태 정의 `getInputWithValidate`
   - 자동차 이름을 입력받아 유효성 검사 진행 `carNames`
   - 시도 횟수를 입력받아 유효성 검사 진행 `tryCount`
 
@@ -31,7 +31,7 @@
   - 생성자 : 레이스 한 턴에 대한 객체 생성 전 멤버 변수 초기화
   - 자동차 경주 시작, 레이스 한 턴 객체 생성 `makeRace`
   - 사용자로부터 입력을 받아 경주 시작, 경주 결과 출력 호출 `insertInput`
-  - 경주 결과, 최종 우승자 결과 출력 `printRace`
+  - 경주 결과, 최종 우승자 결과 출력 `printResult`
 
 **4. utils**
 
@@ -40,7 +40,7 @@
 - 4-3. `getRandomNumber` : 경주에 필요한 난수 생성
 - 4-4. `formatOutput` : 형식에 맞게 출력하기 위해 결과 데이터 가공
   - `findWinningCars` : 가장 많이 전진한 자동차 반환
-  - `convertRoundResultToString` : 경주 라운드 결과를 문자열 형태로 변환
+  - `makeRoundMessage` : 경주 라운드 결과 출력 메세지를 조합하여 문자열 형태로 변환
   - `makeWinnerMessage` : 최종 우승자 이름 및 출력 메세지를 조합하여 결과 출력 문자열 반환
 
 **5. test**

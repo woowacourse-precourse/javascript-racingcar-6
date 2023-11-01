@@ -1,6 +1,6 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import { ERROR_MESSAGE } from '../src/utils/constants';
-import { validateNames, validateTryCount } from '../src/utils/validateInput';
+import { validateCarNames, validateTryCount } from '../src/utils/validateInput';
 import InputView from '../src/view/InputView';
 
 const mockQuestions = inputs => {
@@ -17,19 +17,19 @@ describe('유효성 검증 테스트', () => {
     test('자동차 이름이 5자를 초과할 경우', async () => {
       const names = 'pobi,woni,javaji';
       mockQuestions([names]);
-      expect(() => validateNames(names)).toThrow(ERROR_MESSAGE.NAME_LENGTH);
+      expect(() => validateCarNames(names)).toThrow(ERROR_MESSAGE.NAME_LENGTH);
     });
 
     test('자동차 이름이 1자 미만일 경우', async () => {
       const names = 'pobi,woni,,javaji';
       mockQuestions([names]);
-      expect(() => validateNames(names)).toThrow(ERROR_MESSAGE.NAME_LENGTH);
+      expect(() => validateCarNames(names)).toThrow(ERROR_MESSAGE.NAME_LENGTH);
     });
 
     test('자동차 이름이 중복일 경우', async () => {
       const names = 'pobi,woni,pobi,javaji';
       mockQuestions([names]);
-      expect(() => validateNames(names)).toThrow(ERROR_MESSAGE.NAME_DUPLICATE);
+      expect(() => validateCarNames(names)).toThrow(ERROR_MESSAGE.NAME_DUPLICATE);
     });
 
     test('공백이 포함된 경우(5글자 이하라면 공백도 이름으로 인식하여 정상 반환) - 테스트 1', async () => {
@@ -51,7 +51,7 @@ describe('유효성 검증 테스트', () => {
     test('공백만 입력된 경우', async () => {
       const names = ' ';
       mockQuestions([names]);
-      expect(() => validateNames(names)).toThrow(
+      expect(() => validateCarNames(names)).toThrow(
         ERROR_MESSAGE.INVALID_CAR_LENGTH,
       );
     });
@@ -67,7 +67,7 @@ describe('유효성 검증 테스트', () => {
     test('경주에 참여하는 자동차가 1대일 경우', async () => {
       const names = 'pobi';
       mockQuestions([names]);
-      expect(() => validateNames(names)).toThrow(
+      expect(() => validateCarNames(names)).toThrow(
         ERROR_MESSAGE.INVALID_CAR_LENGTH,
       );
     });
