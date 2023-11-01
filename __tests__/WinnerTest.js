@@ -1,6 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import OutputView from "../src/view/OutputView.js";
-import Cars from "../src/app/Cars.js";
+import Cars from "../src/class/Cars.js";
 
 const getLogSpy = () => {
     const logSpy = jest.spyOn(MissionUtils.Console, "print");

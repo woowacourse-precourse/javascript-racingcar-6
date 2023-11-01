@@ -7,7 +7,7 @@ class Cars {
 		this.distances = new Array(names.length).fill(0);
 	}
 
-	moveCars() {
+	moveOrStop() {
 		for (var i = 0; i < this.number; i++) {
 			if (this.isMove())
 				this.distances[i]++;

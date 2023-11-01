@@ -1,6 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import OutputView from "../src/view/OutputView.js";
-import Cars from "../src/app/Cars.js";
+import Cars from "../src/class/Cars.js";
 
 const mockRandoms = (numbers) => {
     MissionUtils.Random.pickNumberInRange = jest.fn();
@@ -19,8 +19,8 @@ const getLogSpy = () => {
 describe("자동차 전진", () => {
     test("전진 혹은 정지", () => {
         // given
-        const carNames = ["poby", "seoro"];
-        const tryNumber = 2;
+        const names = ["poby", "seoro"];
+        const number = 2;
         const randoms = [3, 4, 5, 6];
         const outputs = ["poby : ", "seoro : -", "poby : -", "seoro : --"];
         const logSpy = getLogSpy();
@@ -28,10 +28,10 @@ describe("자동차 전진", () => {
         mockRandoms([...randoms]); // 랜덤으로 숫자가 생성된 것처럼 테스트
 
         // when
-        const cars = new Cars(carNames);
+        const cars = new Cars(names);
 
-        for (var i = 0; i < tryNumber; i++) {
-            cars.moveCars()
+        for (var i = 0; i < number; i++) {
+            cars.moveOrStop()
             OutputView.printCars(cars.names, cars.distances);
         }
 

@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import Cars from './app/Cars.js';
+import Cars from './class/Cars.js';
 import InputView from './view/InputView.js';
 import OutputView from './view/OutputView.js';
 
@@ -12,10 +12,10 @@ class App {
 
 		// 기능 ➌ 시도 횟수만큼 자동차를 전진시킨다.
 		const cars = new Cars(carNames);
-		
+
 		Console.print("\n실행 결과");
 		for (var i = 0; i < tryNumber; i++) {
-			cars.moveCars()
+			cars.moveOrStop()
 			OutputView.printCars(cars.names, cars.distances);
 		}
 
