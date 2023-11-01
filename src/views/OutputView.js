@@ -15,7 +15,7 @@ class OutputView {
   printQuarterResult(raceCarsList) {
     raceCarsList.forEach((car) => {
       const carName = car.getCarName();
-      const positionMark = '-'.repeat(car.getCarPosition());
+      const positionMark = GAME_MESSAGES.positionMark.repeat(car.getCarPosition());
       this.#printMessage(`${carName} : ${positionMark}`);
     });
     this.#printMessage('');
