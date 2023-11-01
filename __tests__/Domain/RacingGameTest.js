@@ -25,4 +25,14 @@ describe('RacingGame 테스트', () => {
       expect(raceResult.length).toBe(expectedRound);
     });
   });
+
+  test('동일한 자동차 이름이 존재할 경우 예외처리한다.', () => {
+    const validName = 'pobi';
+    const duplicatedCarName = [new Car(validName), new Car(validName)];
+
+    const createRacingGame = () =>
+      new RacingGame({ cars: duplicatedCarName, round: 1 });
+
+    expect(createRacingGame).toThrow();
+  });
 });
