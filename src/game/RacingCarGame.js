@@ -21,6 +21,12 @@ class RacingCarGame {
     this.#gameCount = await readLineAsync(MESSAGE.countInputGuide);
   }
 
+  #isMaxNameListLength() {
+    if (this.#nameList.length > 1000) {
+      throw new Error(ERROR_MESSAGE.wrongNameListLength);
+    }
+  }
+
   #isValidName() {
     const uniqueNameList = [];
 
@@ -32,6 +38,8 @@ class RacingCarGame {
       uniqueNameList.push(name);
     });
   }
+
+  
 
   async gameStart() {
     await this.#getNameString();
