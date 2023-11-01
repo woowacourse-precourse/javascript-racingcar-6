@@ -8,6 +8,12 @@ class App {
     );
     return carName.split(",");
   }
+  async getTryCount() {
+    const tryCount = await MissionUtils.Console.readLineSync(
+      "시도할 회수는 몇회인가요?\n"
+    );
+    return tryCount;
+  }
 }
 
 export default App;
