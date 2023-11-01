@@ -14,7 +14,7 @@ describe('outputView test', () => {
   });
 
   test('func printRacingCarState', () => {
-    const mockCar = new RacingCar('test')
+    const mockCar = new RacingCar('test');
     outputView.printRacingCarState(mockCar);
 
     expect(spy).toHaveBeenCalledWith(expect.stringContaining('test : '));

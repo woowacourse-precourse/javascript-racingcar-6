@@ -2,11 +2,11 @@ import { DuplicatedError, RacingCarNameError } from "../error/CustomErrors.js";
 import { RetryCountError } from "../error/CustomErrors.js";
 
 class RacingCarValidator {
-  #isValidName(str) {
+  #isValidName(input) {
 
     // RacingCar 이름의 타입에 대한 기능 요구사항이 없었지만, 영문 대소문자로 한정
     const regExp = /^[a-zA-Z]{1,5}$/;
-    return regExp.test(str);
+    return regExp.test(input);
   }
 
   isValidNameArray(nameArray) {
@@ -19,11 +19,11 @@ class RacingCarValidator {
     }
   }
 
-  isValidCount(str) {
+  isValidCount(input) {
     const regExp = /^[0-9]*$/;
     
-    if (!regExp.test(str) || str === '0') {
-      throw new RetryCountError(str);
+    if (!regExp.test(input) || input === '0') {
+      throw new RetryCountError(input);
     }
   }
 }

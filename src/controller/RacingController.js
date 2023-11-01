@@ -57,6 +57,7 @@ class RacingController {
     this.#racingCarArray.forEach((car) => {
       this.#outputView.printRacingCarState(car);
     });
+    
     this.#outputView.printNewLine();
   }
 
