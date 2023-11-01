@@ -19,6 +19,7 @@ export default class Race {
     await this.#requestCarName();
     await this.#requestRound();
     this.#checkResultByRound();
+    this.#announceWinner();
   }
 
   async #requestCarName() {
@@ -59,5 +60,11 @@ export default class Race {
 
   #getResultMessage(name, progress) {
     return `${name} : ${GameMessage.MovementSign.repeat(progress)}`;
+  }
+
+  #announceWinner() {
+    const message = `${GameMessage.FinalWinner}${this.#car.getWinners()}`;
+
+    Util.printConsole(message);
   }
 }

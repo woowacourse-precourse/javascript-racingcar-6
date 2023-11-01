@@ -69,4 +69,14 @@ export default class Car {
     const randomNumber = Util.RandomNumber(MoveForwardJudgment.MinNumber, MoveForwardJudgment.MaxNumber);
     return MoveForwardJudgment.Condition <= randomNumber;
   }
+
+  getWinners() {
+    const carState = Util.DeepCopy(this.#racingState.currentState.cars);
+    carState.sort((a, b) => b.progress - a.progress);
+
+    const maxProgress = carState[0].progress;
+    const winners = carState.filter(car => maxProgress === car.progress);
+
+    return winners.map(winner => winner.name).join(', ');
+  }
 }

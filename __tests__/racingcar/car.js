@@ -56,3 +56,51 @@ describe('경기 차수별 각 자동차를 전진 또는 멈춘다.', () => {
     expect(result).toBeFalsy();
   });
 });
+
+describe('경기가 끝나면 최종 우승자를 구한다.', () => {
+  test('가장 많이 전진한 자동차가 우승자이다.', () => {
+    // given
+    Util.DeepCopy = jest.fn(() => ([
+      {
+        name: 'car1',
+        progress: 3,
+      },
+      {
+        name: 'car2',
+        progress: 1,
+      },
+    ]));
+
+    // when
+    const car = new Car(new RacingStateService());
+    const result = car.getWinners();
+
+    // then
+    expect(result).toContain('car1');
+  });
+
+  test('우승자는 한 명 이상이다.', () => {
+    // given
+    Util.DeepCopy = jest.fn(() => ([
+      {
+        name: 'car1',
+        progress: 3,
+      },
+      {
+        name: 'car2',
+        progress: 1,
+      },
+      {
+        name: 'car3',
+        progress: 3,
+      },
+    ]));
+
+    // when
+    const car = new Car(new RacingStateService());
+    const result = car.getWinners();
+
+    // then
+    expect(result).toContain('car1', 'car3');
+  });
+});
