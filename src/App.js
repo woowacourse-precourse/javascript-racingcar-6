@@ -1,5 +1,9 @@
+import { getCarName } from "./getUserInput";
+
 class App {
-  async play() {}
+  async play() {
+    const names = getCarName();
+  }
 }
 
 export default App;
