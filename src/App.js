@@ -3,7 +3,9 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 class App {
   async play() {
     const carName = await this.getCarName();
+    this.limitCarNames(carName);
     const tryCount = await this.getTryCount();
+    this.invalidTryCount(tryCount);
     const cars = this.makeCar(carName);
     this.racing(cars, tryCount);
     this.printResult(cars);
@@ -44,9 +46,9 @@ class App {
     const winnerNames = winners.map((winner) => winner.name).join(", ");
     MissionUtils.Console.print(`최종 우승자 : ${winnerNames}`);
   }
-  limitCarNames(cars) {
-    cars.forEach((car) => {
-      if (car.name.length > 5) {
+  limitCarNames(carName) {
+    carName.forEach((name) => {
+      if (name.length > 5) {
         throw new Error("[ERROR] 이름은 5자 이하만 가능합니다.");
       }
     });
