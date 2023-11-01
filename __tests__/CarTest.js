@@ -76,7 +76,7 @@ describe('canMove 함수 테스트', () => {
     randoms.forEach((number) => {
       const car = new Car('car');
       const result = car.canMove();
-      expect(result).toBeFalsy;
+      expect(result).toBeFalsy();
     });
   });
 
