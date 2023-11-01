@@ -5,24 +5,33 @@ class Car {
   #distance;
 
   constructor(carName) {
-    this.#carName = carName;
-    this.#distance = 0;
+    this.carName = carName;
+    this.distance = 0;
   }
 
-  getCarName() {
+  get carName() {
     return this.#carName;
   }
-  getDistance() {
+  set carName(carName) {
+    this.#carName = carName;
+  }
+
+  get distance() {
     return this.#distance;
   }
-  getCarStatus() {
+  set distance(distance) {
+    this.#distance = distance;
+  }
+
+  get carStatus() {
     return {
-      carName: this.#carName,
-      distance: this.#distance,
+      carName: this.carName,
+      distance: this.distance,
     };
   }
+
   move(power) {
-    this.#distance += power;
+    this.distance = this.distance + power;
   }
 }
 

@@ -7,8 +7,8 @@ describe("Car 클래스 테스트", () => {
     ["jun", "jun", 0],
   ])("new Car(%s) 테스트", (carName, expectedCarName, expectedDistance) => {
     const car = new Car(carName);
-    expect(car.getCarName()).toBe(expectedCarName);
-    expect(car.getDistance()).toBe(expectedDistance);
+    expect(car.carName).toBe(expectedCarName);
+    expect(car.distance).toBe(expectedDistance);
   });
 
   test.each([
@@ -17,6 +17,6 @@ describe("Car 클래스 테스트", () => {
   ])("Car Move - %s 테스트", (power_string, power, expectedDistance) => {
     const car = new Car("pobi");
     car.move(power);
-    expect(car.getDistance()).toBe(expectedDistance);
+    expect(car.distance).toBe(expectedDistance);
   });
 });
