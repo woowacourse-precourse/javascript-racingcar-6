@@ -1,4 +1,0 @@
-// 최종 우승자 출력 함수
-function printWinner(winnerName) {
-  Console.print(`최종 우승자: ${winnerName}`);
-}
