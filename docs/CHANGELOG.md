@@ -1,3 +1,10 @@
+- Merge commit '9a4ca35a33e376065927d2e6764931556c440494' into whai2
+- test: 이름 중복에 대한 예외 처리 추가
+- test: 자동차 이동, 정지에 대한 출력 테스트
+- docs(carMoveOrStop): 자동차 이동, 정지 함수와 무작위 수 생성 함수 위치 표시
+- refactor: 랜덤 숫자 생성과 자동차 이동, 정지 분리
+- style: 들여쓰기 통일하기
+- docs: add changelog.md
 - test: add carmove number validate test about exponential and binary number
 - chore: revise winners print using javascript api
 - fix: winnerarray initialization by functional unit
