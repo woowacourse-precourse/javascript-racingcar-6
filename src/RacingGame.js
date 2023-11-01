@@ -55,7 +55,7 @@ class RacingGame {
       '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)',
     );
     const carNamesToArray = carNames.split(',');
-    if (!validateCarName(carNamesToArray)) throw new Error('[ERROR] 1~5자 사이의 이름을 1개 이상 입력해주세요.');
+    validateCarName(carNamesToArray);
 
     this.cars = carNamesToArray.map((name) => new Car(name));
   };
