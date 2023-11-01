@@ -26,15 +26,15 @@ class View {
 
   static writeTotalResultsMessage(totalResults) {
     let message = `\n${View.#TOTAL_RESULTS_HEAD}\n`;
-    totalResults.forEach((result) => {
-      message += this.writeRoundResult(result);
+    totalResults.forEach((map) => {
+      message += this.writeRoundResult(map);
     });
     return message;
   }
 
-  static writeRoundResult(result) {
+  static writeRoundResult(map) {
     let message = '';
-    result.forEach((moveCount, name) => {
+    map.forEach((moveCount, name) => {
       message += `${name} : ${View.#FORWARD_MARK.repeat(moveCount)}\n`;
     });
     return `${message}\n`;

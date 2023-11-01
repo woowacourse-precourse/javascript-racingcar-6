@@ -16,18 +16,18 @@ class Referee {
 
   findWinners() {
     const winners = [];
-    this.#finalResult.forEach((moveCount, name) => {
+    this.#finalResultMap.forEach((moveCount, name) => {
       if (this.#maxMoveCount === moveCount) winners.push(name);
     });
     return winners;
   }
 
-  get #finalResult() {
+  get #finalResultMap() {
     return this.#totalResults[this.#totalResults.length - 1];
   }
 
   get #maxMoveCount() {
-    return Math.max(...this.#finalResult.values());
+    return Math.max(...this.#finalResultMap.values());
   }
 }
 
