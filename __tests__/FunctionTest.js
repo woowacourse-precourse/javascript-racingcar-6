@@ -57,7 +57,7 @@ describe("기능 테스트", () => {
     );
 
     test("자동차 점수계산기 테스트", async () => {
-        const input = 4;
+        const input = Array(4).fill("");
         const result = ["-", "-", "-", "-"];
 
         jest.spyOn(Random, "pickNumberInRange").mockImplementation(() => 4);
@@ -77,6 +77,18 @@ describe("기능 테스트", () => {
         const app = new App();
 
         await expect(app.createRoundResult(carNameArr, carStates)).toEqual(
+            result
+        );
+    });
+
+    test("승자 구별 테스트", async () => {
+        const carNameArr = ["치이카와", "우사기", "하치와레"];
+        const carStates = ["", "-", "-"];
+        const result = ["우사기", "하치와레"];
+
+        const app = new App();
+
+        await expect(app.determineWinner(carNameArr, carStates)).toEqual(
             result
         );
     });
