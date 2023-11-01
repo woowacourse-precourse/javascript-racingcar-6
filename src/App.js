@@ -19,6 +19,16 @@ class App {
     const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
     return randomNumber >= 4 ? 1 : 0;
   }
+  async displayWinners(allMovements) {
+    const maxProgress = Math.max(...allMovements.map(movement => movement.movement));
+    const winners = allMovements
+      .filter(movement => movement.movement === maxProgress)
+      .map(winner => winner.name)
+      .join(', ');
+  
+    MissionUtils.Console.print(`최종 우승자: ${winners}\n`);
+  }
+
 
 }
 
