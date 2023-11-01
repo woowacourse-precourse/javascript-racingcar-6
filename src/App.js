@@ -1,7 +1,6 @@
 import { Random, Console } from "@woowacourse/mission-utils";
 
 class App {
-  async play() {}
   constructor() {
     this.cars = {};
     this.tryCount = 0;
@@ -67,6 +66,27 @@ class App {
 
     Console.print(print);
   }
+
+  getWinner() {
+    const max = this.calculWinnerMove();
+    this.printWinner(max);
+  }
+
+  calculWinnerMove() {
+    let max = 0;
+    Object.values(this.cars).forEach((e) => (max = Math.max(max, e)));
+
+    return max;
+  }
+
+  printWinner(max) {
+    const carsArr = Object.keys(this.cars).filter(
+      (car) => this.cars[car] === max
+    );
+
+    Console.print(`최종 우승자 : ${carsArr.join(", ")}`);
+  }
+
   async raceGame() {
     Console.print("\n실행 결과");
 
@@ -81,6 +101,9 @@ class App {
     await this.getTryCount();
 
     this.raceGame();
+
+    this.getWinner();
+  }
 }
 
 export default App;
