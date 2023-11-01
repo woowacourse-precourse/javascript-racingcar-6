@@ -1,30 +1,30 @@
-import MESSEGE from "../constants/messeges.js";
+import MESSEGE from '../constants/messeges.js';
 
-export const validateCarNumber = (carArray) => {
+export const validateCarNumber = carArray => {
   if (carArray.length < 2) {
     throw new Error(MESSEGE.errorCarNumber);
   }
   return true;
 };
 
-export const validateCarName = (carArray) => {
-  let carNameSet = new Set(carArray);
+export const validateCarName = carArray => {
+  const carNameSet = new Set(carArray);
   if (carArray.length !== carNameSet.size) {
     throw new Error(MESSEGE.errorDuplicatedCarName);
   }
-  if (carArray.find((carName) => carName.length >= 5)) {
+  if (carArray.find(carName => carName.length >= 5)) {
     throw new Error(MESSEGE.errorCarName);
   }
-  carArray.forEach((carName) => {
-    if (carName === "") {
+  carArray.forEach(carName => {
+    if (carName === '') {
       throw new Error(MESSEGE.errorCarName);
     }
   });
   return true;
 };
 
-export const validateRoundNum = (roundNum) => {
-  let round = Number(roundNum);
+export const validateRoundNum = roundNum => {
+  const round = Number(roundNum);
   if (isNaN(round)) {
     throw new Error(MESSEGE.errorRoundNumIsNumber);
   }
