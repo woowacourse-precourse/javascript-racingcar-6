@@ -22,6 +22,15 @@ class App {
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분): "
     );
     const CAR_NAMES = CAR_NAMES_INPUT.split(",");
+
+    if (!CAR_NAMES_INPUT) {
+      throw new Error("[ERROR] 자동차 이름을 입력해야 합니다.");
+    }
+    if (CAR_NAMES.some((name) => name.length > 5 || name.trim() === "")) {
+      throw new Error(
+        "[ERROR] 자동차 이름은 1자에서 5자 사이이고, 공백이 없어야 합니다."
+      );
+    }
     return CAR_NAMES;
   }
 
