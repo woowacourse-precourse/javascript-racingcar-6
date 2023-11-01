@@ -1,5 +1,5 @@
-import App from "../src/App.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
+import App from "../src/App";
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -12,9 +12,7 @@ const mockQuestions = (inputs) => {
 
 const mockRandoms = (numbers) => {
   MissionUtils.Random.pickNumberInRange = jest.fn();
-  numbers.reduce((acc, number) => {
-    return acc.mockReturnValueOnce(number);
-  }, MissionUtils.Random.pickNumberInRange);
+  numbers.reduce((acc, number) => acc.mockReturnValueOnce(number), MissionUtils.Random.pickNumberInRange);
 };
 
 const getLogSpy = () => {
@@ -58,5 +56,20 @@ describe("자동차 경주 게임", () => {
 
     // then
     await expect(app.play()).rejects.toThrow("[ERROR]");
+  });
+
+
+  test.each([[['aa, vvvvvvv']], [['a,abc,']], [['aaa,,ee']]])('자동차의 이름의 길이는 1~5', async (inputs) => {
+    mockQuestions(inputs);
+    const app = new App();
+
+    await expect(app.play()).rejects.toThrow('[ERROR]');
+  });
+
+  test.each(['-1', '0', 'a', '3.3', '4a', '0+4', '100000001', '1.1'])('시도할 횟수는 10000000 이하의 양의 정수', async (inputs) => {
+    mockQuestions(['pobi,abc', inputs]);
+    const app = new App();
+
+    await expect(app.play()).rejects.toThrow('[ERROR]');
   });
 });
