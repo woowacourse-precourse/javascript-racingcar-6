@@ -6,7 +6,7 @@ export default async function getCarName() {
   const parsedCarNames = inputCarNames.split(',');
   parsedCarNames.forEach(name => {
     if (name.length > 5) {
-      throw Error(STRINGS.ERROR_LENGTH);
+      throw Error(STRINGS.ERROR_NAME_LENGTH);
     }
   });
   return parsedCarNames;
