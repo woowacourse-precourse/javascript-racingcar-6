@@ -1,4 +1,4 @@
-import Car from "./Car.js";
+import RacingCar from "./RacingCar.js";
 import { inputCarNames, inputMovementCount } from "./helpers/index.js";
 
 class App {
@@ -6,9 +6,9 @@ class App {
     const carNamesInput = await inputCarNames();
     const movementCountInput = await inputMovementCount();
 
-    const cars = Car.initializeCars(carNamesInput.split(","));
+    const racingCars = RacingCar.initializeCars(carNamesInput.split(","));
 
-    Car.playGame(cars, movementCountInput);
+    RacingCar.playGame(racingCars, movementCountInput);
   }
 }
 

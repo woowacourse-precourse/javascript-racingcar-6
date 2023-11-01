@@ -1,6 +1,6 @@
 import { Console, Random } from "@woowacourse/mission-utils";
 
-class Car {
+class RacingCar {
   #name;
   #distance;
 
@@ -24,17 +24,17 @@ class Car {
     this.#distance = distance;
   }
 
-  static playGame(cars, movementCount) {
+  static playGame(racingCars, movementCount) {
     Console.print("\n실행 결과");
 
     Array.from({ length: movementCount }, () => {
-      cars.forEach((car) => {
-        car.playRound();
+      racingCars.forEach((racingCar) => {
+        racingCar.playRound();
       });
       Console.print("");
     });
 
-    this.printWinners(cars);
+    this.printWinners(racingCars);
   }
 
   playRound() {
@@ -60,18 +60,21 @@ class Car {
     Console.print(`${this.#name} : ${"-".repeat(this.#distance)}`);
   }
 
-  static printWinners(cars) {
-    const maxDistance = Math.max(...cars.map((car) => car.distance));
-    const winners = cars
-      .filter((car) => car.distance === maxDistance)
-      .map((car) => car.name);
+  static printWinners(racingCars) {
+    const maxDistance = Math.max(
+      ...racingCars.map((racingCar) => racingCar.distance)
+    );
+    
+    const winners = racingCars
+      .filter((racingCar) => racingCar.distance === maxDistance)
+      .map((racingCar) => racingCar.name);
 
     Console.print(`최종 우승자 : ${winners.join(", ")}`);
   }
 
   static initializeCars(names) {
-    return names.map((name) => new Car(name));
+    return names.map((name) => new RacingCar(name));
   }
 }
 
-export default Car;
+export default RacingCar;
