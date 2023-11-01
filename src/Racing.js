@@ -25,6 +25,7 @@ class Racing {
     if (!validation.isProperInput(participants)) {
       throw new Error(ERROR_MSG_INPUT);
     }
+
     participants.split(',').forEach((carName) => {
       this.addPlayer(carName);
     });
@@ -37,6 +38,7 @@ class Racing {
     if (!validation.isProperTryTime(gameCount)) {
       throw new Error(ERROR_MSG_INPUT);
     }
+
     this.numberOfGames = gameCount;
   }
 
@@ -58,11 +60,14 @@ class Racing {
       if (prev > current.getMovingCount()) {
         return prev;
       }
+
       return current.getMovingCount();
     }, 0);
+
     const winnerList = this.players.filter((car) => {
       return max === car.getMovingCount();
     });
+
     screen.printWinner(winnerList.map((car) => car.getCarName()));
   }
 }

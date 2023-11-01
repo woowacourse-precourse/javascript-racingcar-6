@@ -1,5 +1,4 @@
 import { Console } from '@woowacourse/mission-utils';
-
 class Screen {
   async getUserInput(message) {
     const userInput = await Console.readLineAsync(message);
@@ -27,6 +26,7 @@ class Screen {
     for (let i = 0; i < moveCount; i++) {
       str += '-';
     }
+
     return str;
   }
 }

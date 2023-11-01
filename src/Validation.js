@@ -6,6 +6,7 @@ class Validation {
     if (carList.length === 0) {
       return false;
     }
+
     return carList.every(this.hasProperCarName);
   }
 
