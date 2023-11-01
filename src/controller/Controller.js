@@ -12,13 +12,10 @@ class Controller {
 
   #winner;
 
-  constructor() {
-    this.racing = new Racing();
-  }
-
   async progress() {
     await this.settingCarList();
     await this.settingRound();
+    this.racing = new Racing(this.#carList, this.#roundNumber);
     this.roundResult();
     this.finalResult();
   }
@@ -38,7 +35,7 @@ class Controller {
   roundResult() {
     OutputView.printEmptystring();
     OutputView.printResultInfo();
-    this.#status = this.racing.generateStatus(this.#carList, this.#roundNumber);
+    this.#status = this.racing.race();
     OutputView.printRoundResult(this.#status);
   }
 

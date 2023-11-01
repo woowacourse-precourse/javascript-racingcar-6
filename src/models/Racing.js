@@ -1,5 +1,5 @@
-import { Random } from '@woowacourse/mission-utils';
 import Converter from '../utils/Converter.js';
+import RandomNumberGenerator from '../utils/RandomNumberGenerator.js';
 
 class Racing {
   #carDistanceMap;
@@ -10,15 +10,13 @@ class Racing {
 
   #winner;
 
-  generateStatus(carList, roundNumber) {
+  constructor(carList, roundNumber) {
     this.#roundNumber = roundNumber;
     this.#status = '';
     this.#carDistanceMap = Converter.stringToMap(carList);
-    this.round();
-    return this.#status;
   }
 
-  round() {
+  race() {
     let roundCount = 1;
     while (roundCount <= this.#roundNumber) {
       this.move(this.#carDistanceMap);
@@ -28,11 +26,12 @@ class Racing {
       roundCount += 1;
       if (roundCount <= this.#roundNumber) this.#status += '\n';
     }
+    return this.#status;
   }
 
   move() {
     this.#carDistanceMap.forEach((value, key) => {
-      const randomNumber = Random.pickNumberInRange(0, 9);
+      const randomNumber = RandomNumberGenerator();
       if (randomNumber >= 4) {
         const beforeDash = this.#carDistanceMap.get(key);
         this.#carDistanceMap.set(key, `${beforeDash}-`);
