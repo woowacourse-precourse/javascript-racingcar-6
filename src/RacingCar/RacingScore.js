@@ -9,7 +9,6 @@ class RacingScore {
     for (let i = 0; i < attemptNum; i++) {
       this.racingOutput.printScore(racingArr, scoreArr);
     }
-
     this.matchScoreCars(racingArr, scoreArr);
   }
 
@@ -22,7 +21,6 @@ class RacingScore {
       answer.push(racingArr[maxIndex]);
       maxIndex = scoreArr.indexOf(maxScore, maxIndex + 1);
     }
-
     this.racingOutput.printAnswer(answer);
   }
 }
