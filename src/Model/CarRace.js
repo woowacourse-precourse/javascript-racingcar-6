@@ -10,10 +10,10 @@ class CarRace {
   constructor(carNameList, raceCount) {
     this.#carNameList = carNameList;
     this.#raceCount = raceCount;
-    this.#createCar();
+    this.#createCars();
   }
 
-  #createCar() {
+  #createCars() {
     this.#carNameList.forEach((name) => this.#cars.push(new Car(name)));
   }
 
