@@ -27,13 +27,12 @@ class App {
   }
 
   findLongestMovementLength() {
-    const movementLengthsArr = [];
+    const movementLengthArr = [];
     this.cars.forEach((car) => {
       const movementLength = car.getMovementLength();
-      movementLengthsArr.push(movementLength);
+      movementLengthArr.push(movementLength);
     });
-
-    return Math.max(...movementLengthsArr);
+    return Math.max(...movementLengthArr);
   }
 
   findFinalWinner(longestMovementLength) {
@@ -43,8 +42,7 @@ class App {
         winners.push(car.name);
       }
     });
-
-    return winners;
+    return winners.join(', ');
   }
 
   async play() {
@@ -67,8 +65,5 @@ class App {
     Output.printFinalWinners(finalWinners);
   }
 }
-
-const app = new App();
-app.play();
 
 export default App;

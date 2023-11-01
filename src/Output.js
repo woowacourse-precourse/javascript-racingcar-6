@@ -18,8 +18,7 @@ const Output = {
   },
 
   printFinalWinners(finalWinners) {
-    Console.print(MESSAGE.OUTPUT_FINAL_WINNER);
-    Console.print(finalWinners);
+    Console.print(`${MESSAGE.OUTPUT_FINAL_WINNER} ${finalWinners}`);
   },
 };
 

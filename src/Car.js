@@ -19,7 +19,8 @@ class Car {
   }
 
   getMovementLength() {
-    return this.movement.length;
+    const hyphenCount = this.movement.reduce((count, move) => count + (move === '-' ? 1 : 0), 0);
+    return hyphenCount;
   }
 }
 
