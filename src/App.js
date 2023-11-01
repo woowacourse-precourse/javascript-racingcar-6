@@ -34,7 +34,7 @@ async function inputRoundNumber() {
   return await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
 }
 
-function checkNames(carNameList) {
+export function checkNames(carNameList) {
   for (let i = 0; i < carNameList.length; i++) {
     if (carNameList[i].length > 5) {
       throw new Error("[ERROR] 사용할 수 없는 이름입니다");
@@ -42,7 +42,7 @@ function checkNames(carNameList) {
   }
 }
 
-function checkNumber(roundNumber) {
+export function checkNumber(roundNumber) {
   if (isNaN(roundNumber)) {
     throw new Error("[ERROR] 숫자를 입력해주세요");
   }
