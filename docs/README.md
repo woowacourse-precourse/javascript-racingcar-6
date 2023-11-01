@@ -7,14 +7,14 @@
 - [ ] 시도 횟수(이동 횟수) 입력 - getGameCount()
 
   ### 자동차 이름 검증
-    - [ ] 이름 입력값 검증 - validateCarName()
+    - [x] 이름 입력값 검증 - validateCarName()
       - [x] [예외] 이름 중복 - validateDuplicateName()
       - [x] [예외] 이름을 하나만 입력 - validateNumberOfNames()
       - [x] [예외] 이름이 5자를 초과하거나 1자 미만일때 - validateNameLength()
       - [x] [예외] 이름에 특수문자가 포함 - validateTypeOfName()
 
   ### 시도 횟수 검증
-    - [ ] 시도 입력값 검증 - validateGameCount()
+    - [x] 시도 입력값 검증 - validateGameCount()
       - [x] [예외] 숫자가 아닌 값을 입력 - validateTypeOfCount()
       - [x] [예외] 0을 입력 - validateRangeOfCount()
 
