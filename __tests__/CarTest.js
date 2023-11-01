@@ -1,5 +1,5 @@
 import Car from '../src/Car';
-import { Random } from '@woowacourse/mission-utils';
+import { Random, Console } from '@woowacourse/mission-utils';
 
 const mockRandoms = (numbers) => {
   Random.pickNumberInRange = jest.fn();
@@ -7,6 +7,12 @@ const mockRandoms = (numbers) => {
   numbers.reduce((acc, number) => {
     return acc.mockReturnValueOnce(number);
   }, Random.pickNumberInRange);
+};
+
+const getLogSpy = () => {
+  const logSpy = jest.spyOn(Console, 'print');
+  logSpy.mockClear();
+  return logSpy;
 };
 
 describe('isValidCarName 함수 테스트', () => {
@@ -82,6 +88,29 @@ describe('canMove 함수 테스트', () => {
       const car = new Car('car');
       const result = car.canMove();
       expect(result).toBeTruthy();
+    });
+  });
+});
+
+describe('printCurDistance 함수 테스트', () => {
+  const inputs = [
+    ['seung', 1],
+    ['thae', 3],
+  ];
+  const outputs = ['seung : -', 'thae : ---'];
+
+  inputs.forEach((input, index) => {
+    test(`${input}에 대한 출력 테스트:`, () => {
+      // given
+      const car = new Car(input[0], input[1]);
+      const logSpy = getLogSpy();
+      const output = outputs[index];
+
+      // when
+      car.printCurDistance();
+
+      // then
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
   });
 });
