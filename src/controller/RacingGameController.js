@@ -15,7 +15,7 @@ class RacingGameController {
 
   async start() {
     await this.#setRacingGame()
-    this.#gameProgress()
+    await this.#gameProgress()
     this.#gameWinner()
   }
 
