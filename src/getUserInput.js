@@ -1,16 +1,23 @@
 import { Console } from '@woowacourse/mission-utils';
-import { printErrorMessage, printMessage } from './utils/messages.js';
+import { printErrorMessage } from './utils/messages.js';
+import ErrorMessages from './constants.js';
 
 const validateNameInput = input => {
   if (input.some(item => item.length > 5)) {
-    printErrorMessage('[ERROR] 자동차 이름은 5자 이하여야 합니다.');
+    printErrorMessage(ErrorMessages.INVALID_CAR_NAME_MAX_LENGTH);
+  }
+  if (input.some(item => item.length === 0)) {
+    printErrorMessage(ErrorMessages.INVALID_CAR_NAME_MIN_LENGTH);
+  }
+  if (new Set(input).size !== input.length) {
+    printErrorMessage(ErrorMessages.INVALID_CAR_NAME_DUPLICATE);
   }
   return input;
 };
 
 const validateCountInput = input => {
   if (Number.isNaN(Number(input)) || Number(input) <= 0) {
-    printErrorMessage('[ERROR] 이동 횟수는 0 이상의 숫자여야 합니다.');
+    printErrorMessage(ErrorMessages.INVALID_COUNT);
   }
   return input;
 };
