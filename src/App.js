@@ -1,14 +1,39 @@
 import { MissionUtils, Console } from "@woowacourse/mission-utils";
+
+class Car {
+    constructor(name) {
+        this.name = name;
+        this.position = 0;
+    }
+
+    move() {
+        const getScore = MissionUtils.Random.pickNumberInRange(0, 9);
+        if (getScore >= 4) {
+            this.position += 1;
+        }
+    }
+}
 class App {
     async play() {
-        this.getCarNames();
+        const carNames = await this.getCarNames();
+        const tryCount = await this.getTryCount();
+
+        const cars = carNames.map((carName) => new Car(carName));
+        for (let i = 0; i < tryCount; i++) {
+            Console.print("실행 결과");
+            cars.forEach((car) => car.move());
+            cars.forEach((car) => {
+                Console.print(`${car.name}: ${"-".repeat(car.position)}`);
+            });
+            Console.print("\n");
+        }
     }
 
     async getCarNames() {
         const inputCarNames = await Console.readLineAsync(
             "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분) \n"
         );
-        const carNames = inputString.split(",").map(String);
+        const carNames = inputCarNames.split(",").map(String);
         for (const carName of carNames) {
             if (carName.length < 1 || carName.length > 5) {
                 throw new Error("[ERROR] 이름이 잘못된 형식입니다.");
