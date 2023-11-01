@@ -1,5 +1,6 @@
 import { Console, Random } from '@woowacourse/mission-utils';
 import { startGame } from '../src/Domain/RacingGame';
+import userInput from '../src/view/View';
 
 const mockReadLineAsync = (inputs) => {
   const inputsCopy = [...inputs];
@@ -18,15 +19,17 @@ const mockRandoms = (numbers) => {
 };
 
 describe('게임 로직 테스트', () => {
-  test('startGame시 - 전진', async () => {
-    const testInputs = ['Car1', '3'];
+  test('startGame - 전진', async () => {
+    const testInputs = ['Car1,Car2', '2'];
     const MOVING_FORWARD = 4;
-    const randoms = [MOVING_FORWARD];
+    const STOP = 3;
+    const randoms = [MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD];
     mockReadLineAsync(testInputs);
     mockRandoms([...randoms]);
 
     const result = await startGame();
 
     expect(result[0].distance).toEqual(1);
+    expect(result[1].distance).toEqual(2);
   });
 });
