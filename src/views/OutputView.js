@@ -1,12 +1,14 @@
 import { Console } from '@woowacourse/mission-utils';
+import { GAME_MESSAGE } from '../constants/Message.js';
+import { SYMBOL_SETTING } from '../constants/Setting.js';
 
 const OutputView = {
   printResultInfo() {
-    Console.print('실행 결과');
+    Console.print(GAME_MESSAGE.processResult);
   },
 
   printEmptystring() {
-    Console.print('');
+    Console.print(SYMBOL_SETTING.emptyString);
   },
 
   printRoundResult(status) {
@@ -14,7 +16,7 @@ const OutputView = {
   },
 
   printFinalResult(winner) {
-    Console.print(`최종 우승자 : ${winner}`);
+    Console.print(`${GAME_MESSAGE.winner}${winner}`);
   },
 };
 

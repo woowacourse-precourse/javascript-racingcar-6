@@ -1,14 +1,18 @@
+import { SYMBOL_SETTING } from '../constants/Setting.js';
+
 const Converter = {
   stringToMap(inputValue) {
     const carDistanceMap = new Map();
-    if (inputValue.includes(',')) {
-      const nameArr = inputValue.split(',');
+    if (inputValue.includes(SYMBOL_SETTING.nameSeparator)) {
+      const nameArr = inputValue.split(SYMBOL_SETTING.nameSeparator);
       nameArr.forEach((name) => {
-        carDistanceMap.set(name, '');
+        carDistanceMap.set(name, SYMBOL_SETTING.emptyString);
       });
     }
 
-    if (!inputValue.includes(',')) carDistanceMap.set(inputValue, '');
+    if (!inputValue.includes(SYMBOL_SETTING.nameSeparator)) {
+      carDistanceMap.set(inputValue, SYMBOL_SETTING.emptyString);
+    }
     return carDistanceMap;
   },
 
