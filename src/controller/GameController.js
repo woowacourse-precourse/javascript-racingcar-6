@@ -6,13 +6,13 @@ class GameController {
 
     #inputView = InputView;
     
-    constructor(scoreBoard, laps) {
-        this.result = scoreBoard;
+    constructor(distanceBoard, laps) {
+        this.distanceBoard = distanceBoard;
         this.laps = laps;
     }
 
     async ready() {
-        this.result = Result.setBoard(await this.#inputView.setCarNames());
+        this.distanceBoard = Distance.setBoard(await this.#inputView.setCarNames());
         this.laps = await this.#inputView.setLaps();
 
         await this.#start();
@@ -20,7 +20,7 @@ class GameController {
 
     async #start() {
         this.#outputView.print('실행결과');
-        this.result = this.#race.racing(this.result, this.laps);
+        this.distanceBoard = this.#race.racing(this.distanceBoard, this.laps);
         this.#end();
     }
 }

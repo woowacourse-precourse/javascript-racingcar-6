@@ -1,4 +1,4 @@
-class Result {
+class Distance {
   /**
    *
    * @param {총 자동차의 갯수} carCount
@@ -9,4 +9,4 @@ class Result {
   }
 }
 
-export default Result;
+export default Distance;
