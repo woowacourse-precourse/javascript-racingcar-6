@@ -4,8 +4,9 @@ export const MESSAGE = {
   RACE_START: '\n실행 결과',
 };
 
-export const USER_ERROR_MESSAGE = {
+export const ERROR_MESSAGE = {
   NAME: '[ERROR] 이름이 잘못된 형식입니다.',
   ARRAY: '[ERROR] 차량 리스트는 배열이어야 합니다.',
   NUMBER: '[ERROR] 이동 횟수가 잘못된 형식입니다.',
+  POSITION: '[ERROR] 위치 값이 잘못된 형식입니다.',
 };
