@@ -11,6 +11,19 @@ class App {
 
     // 쉼표로 이름 분리
     let enterCars = inputCars.split(",");
+    MissionUtils.Console.print(enterCars);
+    // 이름 입력 에러 처리
+    for (let i = 0; i < enterCars.length; i++) {
+      if (enterCars[i].length > 6) {
+        throw new Error("[ERROR] 5자 이하 이름을 입력하세요.");
+      }
+      if (!enterCars[i]) {
+        throw new Error("[ERROR] 공백이 입력되었습니다.");
+      }
+    }
+    if (enterCars.some((car) => car.trim() === "")) {
+      throw new Error("[ERROR] 공백이 입력되었습니다.");
+    }
 
     // 시도 횟수 입력 받기
     const raceCount = await MissionUtils.Console.readLineAsync(
