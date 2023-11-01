@@ -2,7 +2,7 @@ import { checkDistanceResult, printWinner } from './functions/gameFinish';
 import { playRounds, printResultMessage } from './functions/gameProgress';
 import {
   getCarName,
-  getPlayNum,
+  getPlayCount,
   setInitialResult,
 } from './functions/gameStart';
 
@@ -14,7 +14,7 @@ class App {
 
   async start() {
     const carNameList = await getCarName();
-    this.playCount = await getPlayNum();
+    this.playCount = await getPlayCount();
     this.racingResult = setInitialResult(carNameList);
   }
 

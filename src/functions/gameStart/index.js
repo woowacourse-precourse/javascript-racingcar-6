@@ -14,7 +14,7 @@ const invalidCarName = carNameList => {
     throw Error(ERROR_MESSAGE.carName.duplicate);
 };
 
-const invalidPlayNum = (inputPlayCount, playCount) => {
+const invalidPlayCount = (inputPlayCount, playCount) => {
   if (inputPlayCount.length === 0) throw Error(ERROR_MESSAGE.playCount.noInput);
 
   if (Number.isNaN(playCount) || !Number.isInteger(playCount) || playCount < 0)
@@ -32,11 +32,11 @@ export const getCarName = async () => {
   return carNameList;
 };
 
-export const getPlayNum = async () => {
+export const getPlayCount = async () => {
   const inputPlayCount = await Console.readLineAsync(MESSAGE.getPlayCount);
   const playCount = Number(inputPlayCount);
 
-  invalidPlayNum(inputPlayCount, playCount);
+  invalidPlayCount(inputPlayCount, playCount);
 
   return playCount;
 };
