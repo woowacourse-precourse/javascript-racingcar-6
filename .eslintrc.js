@@ -26,5 +26,6 @@ export default {
     'max-depth': ['error', 2],
     'max-params': ['error', 3],
     'max-lines-per-function': ['error', { max: 10 }],
+    'import/extensions': 'off',
   },
 };
