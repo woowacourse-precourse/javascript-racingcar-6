@@ -36,7 +36,7 @@ class App {
       const car = new Car(player);
       cars.push(car);
     }
-    
+
     return cars;
   }
 
@@ -44,13 +44,14 @@ class App {
     let players = await MissionUtils.Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
     const cars = this.checkPlayersInput(players);
     let round = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
-    round = this.checkRoundInput(round);
+    const rounds = this.checkRoundInput(round);
     await MissionUtils.Console.print("\n실행 결과");
-    for (let i = 0; i < round; i++) {
+    for (let i = 0; i < rounds; i++) {
       for (let car of cars) {
         car.run();
         car.printRunResult();
       }
+
       await MissionUtils.Console.print("");
     }
 
