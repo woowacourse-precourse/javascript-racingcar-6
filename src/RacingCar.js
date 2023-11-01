@@ -1,4 +1,5 @@
 import inputView from './InputView.js';
+import outputView from './OutputView.js';
 import validation from './validation.js';
 import Car from './Car.js';
 
@@ -13,7 +14,8 @@ class RacingCar {
         const carName = await inputView.readCarInput();
         const carList = carName.split(',');
         validation.checkCarName(carList);
-        this.carList.push(new Car(carList));
+
+        carList.forEach((car) => this.carList.push(new Car(car)));
 
         const round = await inputView.readRoundInput();
         validation.checkRound(round);
@@ -22,8 +24,12 @@ class RacingCar {
 
     async startGame() {
         await this.checkInput();
+        
+        outputView.printResult();
         for (let i = 0; i < this.round; i++) {
             this.carList.forEach(car => car.moveCar());
+            for (const car of this.carList)
+                outputView.printCarResult(car.getCarName(), car.getCarMove());
         }
     }
 }
