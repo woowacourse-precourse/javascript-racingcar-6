@@ -1,3 +1,5 @@
+import NUMBER from '../constants/Number.js';
+
 class Car {
   #name;
 
@@ -5,7 +7,7 @@ class Car {
 
   constructor(name) {
     this.#name = name;
-    this.#position = 0;
+    this.#position = NUMBER.ZERO;
   }
 
   getCarName() {
@@ -17,7 +19,7 @@ class Car {
   }
 
   moveCar() {
-    this.#position += 1;
+    this.#position += NUMBER.ONE;
   }
 }
 

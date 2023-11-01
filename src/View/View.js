@@ -1,7 +1,10 @@
 import { Console } from '@woowacourse/mission-utils';
+
 import InputView from './InputView.js';
 import OutputView from './OutputView.js';
+
 import MESSAGE from '../constants/Message.js';
+import CHARACTER from '../constants/Character.js';
 
 class View {
   #outputView = OutputView;
@@ -20,9 +23,9 @@ class View {
     this.#outputView.printLine(MESSAGE.RESULT);
     result.forEach((round) => {
       round.forEach(({ name, position }) => {
-        Console.print(`${name} : ${'-'.repeat(position)}`);
+        Console.print(`${name} : ${CHARACTER.HYPHEN.repeat(position)}`);
       });
-      Console.print('');
+      Console.print(CHARACTER.EMPTY);
     });
   }
 

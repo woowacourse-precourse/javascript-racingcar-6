@@ -1,5 +1,9 @@
 import { Random } from '@woowacourse/mission-utils';
 
+import NUMBER from '../constants/Number.js';
+
+const { ZERO, ONE, MIN, MAX, LIMIT_NUMBER } = NUMBER;
+
 class Game {
   #racingCars;
 
@@ -7,12 +11,13 @@ class Game {
 
   #currentLab;
 
-  racingCommentary = [];
+  racingCommentary;
 
   constructor({ racingCars, attemptNumber }) {
     this.#racingCars = racingCars;
     this.#totalLab = attemptNumber;
-    this.#currentLab = 0;
+    this.#currentLab = ZERO;
+    this.racingCommentary = [];
   }
 
   // @TODO: 함수 이름 변경, 기능 분리
@@ -20,7 +25,7 @@ class Game {
     do {
       this.#move();
       this.#getRacingCommentary();
-      this.#currentLab += 1;
+      this.#currentLab += ONE;
     } while (this.#currentLab < this.#totalLab);
 
     const winner = this.#getWinner();
@@ -29,7 +34,7 @@ class Game {
 
   #move() {
     this.#racingCars.forEach((car) => {
-      if (Random.pickNumberInRange(1, 9) >= 4) car.moveCar();
+      if (Random.pickNumberInRange(MIN, MAX) >= LIMIT_NUMBER) car.moveCar();
     });
   }
 

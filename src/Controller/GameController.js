@@ -1,7 +1,11 @@
 import Game from '../Model/Game.js';
 import Car from '../Model/Car.js';
+
 import View from '../View/View.js';
+
 import Validator from '../utils/Validator.js';
+
+import CHARACTER from '../constants/Character.js';
 
 class GameController {
   #validate = Validator;
@@ -25,7 +29,7 @@ class GameController {
     const carNames = await this.#view.readCarNames();
     this.#validate.validateRacingCars(carNames);
 
-    return carNames.split(',').map((car) => new Car(car));
+    return carNames.split(CHARACTER.COMMA).map((car) => new Car(car));
   }
 
   async #getAttemptNumber() {

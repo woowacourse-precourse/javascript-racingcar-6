@@ -1,5 +1,6 @@
-import ERROR from '../constants/Error.js';
 import { throwError, Conditions } from './Util.js';
+import ERROR from '../constants/Error.js';
+import CHARACTER from '../constants/Character.js';
 
 const {
   ONLY_ONE,
@@ -22,7 +23,7 @@ const {
 
 export default class Validator {
   static validateRacingCars(input) {
-    const array = input.split(',');
+    const array = input.split(CHARACTER.COMMA);
 
     throwError(NON_EXIST, isPresent(input));
     throwError(ONLY_ONE, isMoreThanOne(input));

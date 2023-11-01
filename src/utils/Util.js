@@ -1,4 +1,6 @@
 import ERROR from '../constants/Error.js';
+import NUMBER from '../constants/Number.js';
+import CHARACTER from '../constants/Character.js';
 
 function throwError(message, condition) {
   if (condition) {
@@ -9,11 +11,11 @@ function throwError(message, condition) {
 
 const Conditions = {
   isPresent(value) {
-    return value !== '';
+    return value !== CHARACTER.EMPTY;
   },
 
   isMoreThanOne(value) {
-    return value.includes(',');
+    return value.includes(CHARACTER.COMMA);
   },
 
   isContainSpace(value) {
@@ -21,7 +23,7 @@ const Conditions = {
   },
 
   isCorrectLength(value) {
-    return value.length <= 5;
+    return value.length <= NUMBER.MAX_LENGTH;
   },
 
   isDuplicate(arr) {
@@ -33,7 +35,7 @@ const Conditions = {
   },
 
   isNaturalNumber(value) {
-    return Number.isInteger(Number(value)) && Number(value) > 0;
+    return Number.isInteger(Number(value)) && Number(value) > NUMBER.ZERO;
   },
 };
 
