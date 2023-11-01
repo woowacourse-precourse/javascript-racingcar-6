@@ -25,12 +25,78 @@
 
 5. 프로그램을 종료한다. 프로그램 동작 중 사용자가 잘못된 값을 입력한 경우 `[ERROR]` 문이 발생하며, 프로그램을 종료시킨다.
 
-### TEST
+### 예외처리
 
 - [x] 입력 받은 자동차가 2대 이상인지
 - [x] 입력 받은 자동차 이름 길이가 5자 이하인지, 공백은 없는지, ','로 끝난 경우
 - [x] 입력 받은 자동차의 이름이 중복되지 않았는지
 - [x] 입력 받은 시도할 횟수가 숫자가 아니거나 1 ~ 9 범위의 유효한 숫자가 아닌 경우
+
+### jest 파일 작성해보기
+
+- InputTest.js
+
+  - 자동차 입력값 테스트
+    - [x] 쉼표(,)후 빈 문자열 예외 처리
+    - [x] 중복된 자동차 이름 예외 처리
+  - 시도 횟수 입력값 테스트
+    - [x] 숫자가 아닌 것 확인
+    - [x] 1 ~ 9 범위의 유효한 숫자 확인
+
+- FunctionTest.js
+  - 기능 구현 함수 테스트
+    - [x] 최종 우승자 결과 확인
+    - [x] 랜덤값에 따른 올바른 distance 계산 확인
+
+### 폴더 구조
+
+```
+ root
+ |---src
+     |--- App.js
+     |--- index.js
+     |--- game
+           |--- race.js
+     |--- constants
+           |--- messeges.js
+     |--- models
+           |--- Car.js
+     |___ validators
+           |--- validator.js
+```
+
+### eslint 사용해보기
+
+```
+module.exports = {
+  extends: ['airbnb', 'plugin:prettier/recommended'],
+  rules: {
+    'prettier/prettier': ['error', { endOfLine: 'auto' }],
+    'operator-linebreak': ['error', 'before'],
+    'max-depth': ['error', 2],
+  },
+  'import/extensions': ['error', 'ignorePackages', {
+    js: 'never',
+  }],
+  },
+};
+```
+
+### prettier 사용해보기
+
+```
+module.exports = {
+  printWidth: 80,
+  tabWidth: 2,
+  useTabs: false,
+  semi: true,
+  singleQuote: true,
+  bracketSpacing: true,
+  arrowParens: 'avoid',
+  proseWrap: 'never',
+  endOfLine: 'auto',
+};
+```
 
 ### Todo
 
