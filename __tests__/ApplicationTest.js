@@ -59,4 +59,40 @@ describe("자동차 경주 게임", () => {
     // then
     await expect(app.play()).rejects.toThrow("[ERROR]");
   });
+
+
+  test.each([
+    [["pobi,woni", "-2"]],
+    [["pobi,woni", "string"]]
+  ])("경주 횟수에 대한 예외 처리", async (inputs) => {
+    // given
+    mockQuestions(inputs);
+    
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow("[ERROR]");
+  })
+
+  test("공동 우승자 출력 시 쉼표 포함 여부 확인", async () => {
+    // given
+    const MOVING_FORWARD = 4;
+    const inputs = ["pobi,woni", "1"];
+    const COMMA = ",";
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([MOVING_FORWARD, MOVING_FORWARD]);
+
+    // when
+    const app = new App();
+    await app.play();
+
+    // then
+    const logCalls = logSpy.mock.calls;
+    const lastLog = logCalls[logCalls.length-1][0];
+    
+    expect(lastLog).toContain(COMMA);
+  })
 });
