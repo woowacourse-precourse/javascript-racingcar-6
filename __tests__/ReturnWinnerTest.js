@@ -1,6 +1,6 @@
 import ReturnWinner from '../src/game/ReturnWinner';
 
-describe('최종 우승자 반환', () => {
+describe('ReturnWinner 최종 우승자 test 함수', () => {
   describe('findWinners', () => {
     test('가장 많이 전진한 자동차 하나일 경우 반환', () => {
       const cars = [
@@ -37,7 +37,7 @@ describe('최종 우승자 반환', () => {
     });
   });
 
-  describe('최종 우승자 출력', () => {
+  describe('printWinners', () => {
     test('우승자들 이름 출력', () => {
       const winners = [{ getName: () => 'Car1' }, { getName: () => 'Car2' }];
       const expectedOutput = '최종 우승자 : Car1, Car2';
