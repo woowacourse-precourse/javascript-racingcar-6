@@ -1,11 +1,18 @@
+import RacingModel from '../model/index.js';
 import InputView from '../view/InputView.js';
 import OutputView from '../view/OutputView.js';
 
 class RacingController {
+  /** @private */
   #racingModel;
 
+  /** @private */
   #vehicle;
 
+  /**
+   * @param {RacingModel} racingModel
+   * @param {string} vehicle
+   */
   constructor(racingModel, vehicle) {
     this.#racingModel = racingModel;
     this.#vehicle = vehicle;
@@ -19,15 +26,25 @@ class RacingController {
     OutputView.printFinalWinner(this.#racingModel.getFinalWinner());
   }
 
+  /**
+   * @param {string} racingVehicleName
+   * @param {number} racingCount
+   */
   #race(racingVehicleName, racingCount) {
     this.#setRacing(racingVehicleName);
     this.#raceAndPrintProgress(racingCount);
   }
 
+  /**
+   * @param {string} racingVehicleName
+   */
   #setRacing(racingVehicleName) {
     this.#racingModel.saveNames(racingVehicleName);
   }
 
+  /**
+   * @param {number} racingCount
+   */
   #raceAndPrintProgress(racingCount) {
     OutputView.printProgress();
     for (let count = 1; count <= racingCount; count += 1) {
