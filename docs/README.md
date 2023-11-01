@@ -36,3 +36,25 @@ jun : ---
 특이사항
 
 - 각 출력은 빈 줄로 구분해야 한다.
+
+## 구현 내용 설명
+
+APP
+
+- 자동차 경주 프로그램
+- 경주의 상태 관리는 Background를 활용
+- 사용자 인터랙션에 필요한 기능은 Controls를 활용
+
+Background
+
+- 게임의 상태 설정
+- 경주 수행
+- 최종 우승자 계산
+
+Controls
+
+- 입출력과 예외처리
+
+IO
+
+- `readreadLineAsync` 및 `print` API에 대한 wrapper
