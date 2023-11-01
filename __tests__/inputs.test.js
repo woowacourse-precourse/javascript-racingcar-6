@@ -15,10 +15,10 @@ describe('경주할 자동차 이름 입력', () => {
     mockQuestions(input);
 
     //when
-    const result = await inputRacingCars();
+    const result = inputRacingCars();
 
     //then
-    expect(result).toBe('pobi,woni');
+    await expect(result).resolves.toBe('pobi,woni');
   });
 
   test('경주할 자동차 이름 입력 예외 테스트', async () => {
@@ -51,10 +51,10 @@ describe('시도 횟수 입력', () => {
     mockQuestions(input);
 
     //when
-    const result = await inputAttemps();
+    const result = inputAttemps();
 
     //then
-    expect(result).toBe('1');
+    await expect(result).resolves.toBe('1');
   });
 
   test('시도 횟수 입력 예외 테스트', async () => {
