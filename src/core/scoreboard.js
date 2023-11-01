@@ -15,14 +15,14 @@ class ScoreBoard {
    */
   constructor(names) {
     this.names = names;
-    this.board = this.makeScoreboardByNames(names);
+    this.board = this.makeScoreBoardByNames(names);
   }
 
   /**
    * @param {string[]} names
    * @returns {Record<string, number>}
    */
-  makeScoreboardByNames(names) {
+  makeScoreBoardByNames(names) {
     const filteredNames = names.filter((name) => name.trim() !== "");
     return makeZeroValuedObjectFromKeys(filteredNames);
   }
