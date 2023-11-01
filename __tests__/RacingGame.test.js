@@ -1,7 +1,7 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import NUMBER from "../src/constants/NUMBER.js";
 import Car from "../src/Car.js";
-import RacingGame from "../src/racingGame.js";
+import RacingGame from "../src/RacingGame.js";
 
 const mockRandoms = (numbers) => {
   MissionUtils.Random.pickNumberInRange = jest.fn();

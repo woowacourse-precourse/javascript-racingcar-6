@@ -1,5 +1,5 @@
 import View from "./View.js";
-import RacingGame from "./racingGame.js";
+import RacingGame from "./RacingGame.js";
 
 class App {
   #racingGame;
