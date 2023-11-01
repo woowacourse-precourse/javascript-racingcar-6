@@ -66,6 +66,18 @@ class raceGameController {
       throw new Error(MESSAGES.TOTAL_ROUND_INPUT_ERROR_BLANK);
     }
   }
+
+  /**
+   * 0 이상 9 이하의 무작위 값 선택
+   * @returns {object} - 무작위 값
+   */
+  static selectRandomNumber() {
+    try {
+      return Random.pickNumberInRange(CONDITIONS.RANDOM_NUMBER_MIN, CONDITIONS.RANDOM_NUMBER_MAX);
+    } catch {
+      throw new Error(MESSAGES.GENERAL_ERROR);
+    }
+  }
 }
 
 export default raceGameController;
