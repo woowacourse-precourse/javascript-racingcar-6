@@ -5,10 +5,6 @@ const round = Object.freeze({
   radix: 10,
 });
 
-const result = Object.freeze({
-  default: [],
-});
-
-const RACING_GAME = Object.freeze({ round, result });
+const RACING_GAME = Object.freeze({ round });
 
 export default RACING_GAME;

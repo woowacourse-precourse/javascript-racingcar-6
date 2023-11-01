@@ -13,8 +13,10 @@ class Car {
     this.#position = CAR.position.default;
   }
 
-  move() {
-    this.#position += CAR.movement.unit;
+  move(number) {
+    if (number >= CAR.movement.threshold) {
+      this.#position += CAR.movement.unit;
+    }
   }
 
   getName() {

@@ -48,11 +48,12 @@ class RacingGame {
 
   #moveCars() {
     this.#cars.forEach((car) => {
-      const shouldMove =
-        Random.pickNumberInRange(CAR.movement.min, CAR.movement.max) >=
-        CAR.movement.threshold;
+      const randomNumber = Random.pickNumberInRange(
+        CAR.movement.min,
+        CAR.movement.max,
+      );
 
-      if (shouldMove) car.move();
+      car.move(randomNumber);
     });
   }
 
