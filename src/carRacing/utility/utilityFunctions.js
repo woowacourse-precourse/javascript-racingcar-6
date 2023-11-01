@@ -46,3 +46,16 @@ export const go = (...args) => {
 export const join = curry((separator = ",", iterable) => {
   return reduce((a, b) => `${a}${separator}${b}`, iterable);
 });
+
+// range(5) -> [0, 1, 2, 3, 4]
+// while문 대신 사용
+export const range = (length) => {
+  let i = -1;
+  let result = [];
+
+  while (++i < length) {
+    result.push(i);
+  }
+
+  return result;
+};

@@ -11,6 +11,8 @@ class App {
     const { carNames, roundCount } = await this.enterGameBaseSetting();
 
     const carObjects = this.generateCarObjects(carNames);
+    this.startRace(carObjects, roundCount);
+    Console.print(carObjects);
   }
 
   async enterGameBaseSetting() {
@@ -69,7 +71,16 @@ class App {
     return carObjects;
   }
 
-  printRaceStatus() {}
+  startRace(carObjects, roundCount) {
+    F.go(
+      F.range(roundCount),
+      F.map(() => {
+        carObjects.forEach((car) => car.move());
+      }),
+    );
+  }
+
+  printRaceStatus(carObjects) {}
 
   getWinners() {}
 
