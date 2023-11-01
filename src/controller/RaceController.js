@@ -11,13 +11,13 @@ export default class RaceController {
   }
 
   // 회차별 출력에 쓸 양식 만들기 { pobi : ----- }
-  makeCarObj() {
-    const { userInputCarList } = this.inputView;
-    userInputCarList.forEach((userInputCar, index) => {
-      this.carList.userInputCarList[index] = { carName: userInputCar, score: 0 };
-    });
-    return this.carList.userInputCarList;
-  }
+  // makeCarObj() {
+  //   const { userInputCarList } = this.inputView;
+  //   userInputCarList.forEach((userInputCar, index) => {
+  //     this.carList.userInputCarList[index] = { carName: userInputCar, score: 0 };
+  //   });
+  //   return this.carList.userInputCarList;
+  // }
 
   startGame() {
     let currentPlayNumber = 0;
