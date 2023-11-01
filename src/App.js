@@ -4,18 +4,18 @@ import { TEXT, ERROR } from "./text.js";
 
 class App {
   async play() {
-    const carNamesInput = await Console.readLineAsync(TEXT.CAR_NAMES);
-    const carNames = carNamesInput.split(',');
-    this.checkCarNames(carNames);
+    const pushcarName = await Console.readLineAsync(TEXT.CARSNAME);
+    const carsname = pushcarName.split(',');
+    this.checkcarsname(carsname);
 
-    const tryCountInput = await Console.readLineAsync(TEXT.ATTEMPTS_NUMBER);
-    const tryCount = parseInt(tryCountInput);
-    if (isNaN(tryCount)) { throw new Error(ERROR.MAX_LENGTH); }
+    const pushtrycount = await Console.readLineAsync(TEXT.NUMBER_ATTEMPT);
+    const tryCount = parseInt(pushtrycount);
+    if (isNaN(tryCount)) { throw new Error(ERROR.LENGTH_EXCEED); }
 
-    const cars = carNames.map((name) => new Car(name));
+    const cars = carsname.map((name) => new Car(name));
 
     Console.print("\n실행결과");
-    this.carMoves(tryCount, cars);
+    this.carmoving(tryCount, cars);
 
     const maxPosition = Math.max(...cars.map((car) => car.position));
     const winners = cars.filter((car) => car.position === maxPosition).map((car) => car.name);
@@ -23,13 +23,13 @@ class App {
     
   }
 
-  checkCarNames(carNames){// 자동차 이름 입력 검증
-    for (const carName of carNames){
+  checkcarsname(carsname){// 자동차의 이름 입력하기
+    for (const carName of carsname){
       if(carName.length > 5){ throw new Error(ERROR.NAN)}
     }
   }
 
-  carMoves(tryCount, cars){ // 레이싱 실행
+  carmoving(tryCount, cars){ // 레이스 시작!
     for (let i = 0; i < tryCount; i++) {
       for (const car of cars) {
         car.move();
@@ -38,7 +38,7 @@ class App {
     }
   } 
 
-  printCarPositions(cars) { // 게임 진행 상황 출력
+  printCarPositions(cars) { // 레이스 상황 출력
     for (const car of cars) {
       let carPositionString = '-'.repeat(car.position);
       Console.print(`${car.name} : ${carPositionString}`);
