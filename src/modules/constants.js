@@ -1,8 +1,4 @@
 export const REGEX = {
-  names: /^[\w]+(,[\w]+)*$/,
-
-  rounds: /^[0-9]+$/,
-
   // 영어로 된 이름인지 체크
   isEnglish: /^[a-zA-Z,0-9]+$/,
 
