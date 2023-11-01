@@ -30,6 +30,7 @@ class App {
     const progress = {};
     const cars = await Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)").then((names) => names.split(","));
     cars.forEach((name) => checkNameValidation(name));
+    checkDuplication(cars);
 
     initProgress(progress, cars);
 
@@ -64,15 +65,21 @@ const initProgress = (progress, carNames) => {
     progress[car] = 0;
   }
 };
-//TODO 중복 제거
+
 const checkNameValidation = (name) => {
-  if (!name) throw Error("[ERROR]");
-  if (name.length > 5) throw Error("[ERROR]");
+  if (name.length > 5) throw Error("[ERROR]입려된 이름 중 5글자 이상이 있습니다.");
+};
+
+const checkDuplication = (cars) => {
+  const carsLength = cars.length;
+  const carsSet = new Set(cars);
+  const carsSetLength = carsSet.size;
+  if (carsLength !== carsSetLength) throw Error("[ERROR] 입력된 이름 중 중복이 있습니다.");
 };
 
 const checkInputCount = (inputCount) => {
   if (!inputCount) throw Error("[ERROR]");
-  if (!typeof inputCount === "string" || isNaN(inputCount)) throw Error("[ERROR]");
+  if (!typeof inputCount === "string" || isNaN(inputCount)) throw Error("[ERROR]입력된 타입이 잘못됐습니다.");
 };
 
 const printProgress = (progress) => {
