@@ -49,6 +49,13 @@ class RacingCarGame {
     await this.#getNameString();
 
     await this.#getGameCount();
+
+    while (this.#gameCount) {
+        garage.tryAllCarsMove();
+        garage.displayCarStateList();
+        print('');
+        this.#gameCount -= 1;
+    }
   }
 }
 
