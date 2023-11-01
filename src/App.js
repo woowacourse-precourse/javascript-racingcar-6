@@ -70,7 +70,7 @@ class App {
       MissionUtils.Console.print(userStatus + scoreStatus);
     })
 
-    MissionUtils.Console.print('\n');
+    MissionUtils.Console.print('');
   }
   
   gameStarter = (userNames, gameRep)=> {
@@ -127,7 +127,7 @@ class App {
       const userInputGameRep = await this.getUserInput('');
       const gameRep = this.stringToNaturalNumber(userInputGameRep);
 
-      MissionUtils.Console.print('\n실행결과');
+      MissionUtils.Console.print('\n실행 결과');
 
       const gameResult = this.gameStarter(userNames, gameRep);
       const winners = this.getWinner(userNames, gameResult);
