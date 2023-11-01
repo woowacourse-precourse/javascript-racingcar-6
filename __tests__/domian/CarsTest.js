@@ -36,7 +36,14 @@ describe("Cars의 비즈니스 로직", () => {
 
   test("자동차 이름의 범위가 1~5자리가 아닐 때 예외처리", async () => {
     // given
+    const input = ["고양이귀여워"];
     // when
+    try {
+      new Cars(input);
+    } catch (e) {
+      expect(e).toBeInstanceOf(Error);
+      expect(e.message).toBe(ERROR.NAME_RANGE_ERROR);
+    }
     // then
   });
 });
