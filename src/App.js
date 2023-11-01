@@ -13,7 +13,7 @@ class App {
 
     users.forEach((user) => {
       if (user.trim() === "") {
-        throw new Error("[ERROR] 공백은 입력할 수 없습니다");
+        throw new Error("[ERROR] 유저 명은 공백일 수 없습니다.");
       }
       if (user.length > 5) {
         throw new Error("[ERROR] 5자 이하의 자동차 이름만 가능합니다.");
@@ -50,6 +50,15 @@ class App {
   }
 
   async get_winner(distance) {
+    let winner = [];
+    const MAX_NUM = Math.max(...distance);
+    distance.forEach((num, index) => {
+      if (num === MAX_NUM) {
+        winner.push(index);
+      }
+    });
+
+    return winner;
   }
 
   async play() {
@@ -61,6 +70,12 @@ class App {
 
     //play racing
     const DISTANCE = await this.play_racing(USERS, CNT);
+
+    //winner selection
+    const WINNER_INDEX = await this.get_winner(DISTANCE);
+    const WINNER = WINNER_INDEX.map((value) => USERS[value]);
+
+    MissionUtils.Console.print(`최종 우승자 : ${WINNER.join(", ")}`)
   }
 }
 
