@@ -27,8 +27,20 @@ class App {
       '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n'
     );
 
-    if (!REGEX.names.test(namesInput)) {
-      throw new Error('[ERROR] 잘못된 Names 입력입니다.');
+    if (!REGEX.isEnglish.test(namesInput)) {
+      throw new Error('[ERROR] 영어 이름을 입력해주세요.');
+    }
+
+    if (!REGEX.overTwoNames.test(namesInput)) {
+      throw new Error('[ERROR] 두 명 이상 입력해주세요.');
+    }
+
+    if (!REGEX.duplicated.test(namesInput)) {
+      throw new Error('[ERROR] 중복된 이름이 포함되어 있습니다.');
+    }
+
+    if (!REGEX.under5.test(namesInput)) {
+      throw new Error('[ERROR] 5자 이내의 이름을 입력해주세요.');
     }
 
     const namesArray = namesInput.split(',');
@@ -40,8 +52,12 @@ class App {
       '시도할 횟수는 몇 회인가요?\n'
     );
 
-    if (!REGEX.rounds.test(roundsInput)) {
-      throw new Error('[ERROR] 잘못된 Rounds 입력입니다.');
+    if (!REGEX.isNumber.test(roundsInput)) {
+      throw new Error('[ERROR] 숫자를 입력해주세요.');
+    }
+
+    if (!REGEX.notZero.test(parseInt(roundsInput))) {
+      throw new Error('[ERROR] 1 이상의 수를 입력해주세요.');
     }
 
     return parseInt(roundsInput);
