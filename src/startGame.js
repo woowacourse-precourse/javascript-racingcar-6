@@ -1,5 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
 import getRandomNumber from './getRandomNumber';
+import printWinner from './printWinner';
 
 const startGame = async function startGameWithCarNameAndTryCount(CAR_NAME, TRY_COUNT) {
   Console.print('실행 결과');
