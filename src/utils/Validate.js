@@ -10,24 +10,24 @@ class Validate {
         this.#PLAY_TIME_REGAX = /\s|[!@#$%^&*(),.?":{}|<>]/;
     }
 
-    vehicleNameValidate(vehicleName) {
+    vehicleName(vehicleName) {
         const NAME_DUPLICATION = new Set(vehicleName).size;
         if (vehicleName.length !== NAME_DUPLICATION) throw new Error(ERROR_MSG.NAME_DUPLICATION_ERROR);
         if (vehicleName.some(name => this.#NAME_REGAX.test(name))) throw new Error(ERROR_MSG.USER_NAME_REGAX_ERROR);
         if (vehicleName.some(name => name.length > CONSTANTS.maxVehicleName || name.trim().length === 0)) throw new Error(ERROR_MSG.USER_NAME_LENGTH_ERROR);
     }
 
-    playTimeRegaxValidate(playTime) {
+    playTimeRegax(playTime) {
         if (playTime.length === 0) throw new Error(ERROR_MSG.PLAY_TIME_NOT_NULL_ERROR);
         if (this.#PLAY_TIME_REGAX.test(playTime)) throw new Error(ERROR_MSG.PLAY_TIME_REGAX_ERROR);
     }
 
-    playTimeValidate(playTime) {
+    playTime(playTime) {
         if (Number(playTime) <= 0) throw new Error(ERROR_MSG.PLAY_TIME_NOT_ZERO_ERROR);
         if (!Number.isSafeInteger(playTime)) throw new Error(ERROR_MSG.PLAY_TIME_ERROR);
     }
 
-    moveNumberValidate(moveNumber) {
+    moveNumber(moveNumber) {
         return (moveNumber >= CONSTANTS.vehicleCanMove) ? true : false;
     }
 

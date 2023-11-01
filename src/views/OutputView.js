@@ -3,29 +3,29 @@ import { OUTPUT_MSG } from '../constants/OutputMsg';
 
 class OutputView {
 
-    printInputVehicleMsg () {
+    inputVehicleMsg () {
         Console.print(OUTPUT_MSG.INPUT_VEHICLE_NAME);
     }
 
-    printVehicleName(vehicleName) {
+    vehicleName(vehicleName) {
         Console.print(vehicleName.join(','));
     }
 
-    printInputPlayTimeMsg () {
+    inputPlayTimeMsg () {
         Console.print(OUTPUT_MSG.INPUT_PLAY_TIME);
     }
 
-    printGamePlayTime(playTime) {
+    gamePlayTime(playTime) {
         Console.print(playTime);
     }
 
-    printMoveProcedure(vehicleNameList,moveProcedure) {
+    moveProcedure(vehicleNameList,moveProcedure) {
         vehicleNameList.forEach((vehicleName) => {
             Console.print(`${vehicleName} : ${moveProcedure[vehicleName]}`);
         });
     }
 
-    printResult(champion) {
+    result(champion) {
         Console.print(`${OUTPUT_MSG.WINNER_IS} ${champion.join(', ')}`);
     }
 

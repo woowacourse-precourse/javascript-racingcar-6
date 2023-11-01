@@ -15,16 +15,16 @@ class GameStart {
     }
     
     async startGame() {
-        this.OUT_VIEW.printInputVehicleMsg();
+        this.OUT_VIEW.inputVehicleMsg();
         this.#VEHICLE_NAME = await this.CONTROL.inputVehicleName();
-        this.OUT_VIEW.printVehicleName(this.#VEHICLE_NAME);
+        this.OUT_VIEW.vehicleName(this.#VEHICLE_NAME);
         await this.#getPlayTimes();
     }
 
     async #getPlayTimes() {
-        this.OUT_VIEW.printInputPlayTimeMsg();
+        this.OUT_VIEW.inputPlayTimeMsg();
         this.#PLAY_TIME = await this.CONTROL.inputPlayTimes();
-        this.OUT_VIEW.printGamePlayTime(this.#PLAY_TIME);
+        this.OUT_VIEW.gamePlayTime(this.#PLAY_TIME);
         this.#moveVehicle();
     }
 
@@ -32,14 +32,14 @@ class GameStart {
         this.CONTROL.makeVehicleObject();
         for (let idx = 0; idx < this.#PLAY_TIME; idx++) {
             this.#MOVE_PROCEDURE = this.CONTROL.setVehicleObjectNumber();
-            this.OUT_VIEW.printMoveProcedure(this.#VEHICLE_NAME,this.#MOVE_PROCEDURE);
+            this.OUT_VIEW.moveProcedure(this.#VEHICLE_NAME,this.#MOVE_PROCEDURE);
         }
         this.#gameResult();
     }
 
     #gameResult() {
         this.#champion = this.CONTROL.findChampions(this.#MOVE_PROCEDURE,this.#champion);
-        this.OUT_VIEW.printResult(this.#champion);
+        this.OUT_VIEW.result(this.#champion);
     }
 }
 

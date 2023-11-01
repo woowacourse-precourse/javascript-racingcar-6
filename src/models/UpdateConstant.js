@@ -15,20 +15,20 @@ class UpdateConstants {
         this.#moveProcedure = {};
     }
 
-    updateVehicleNameList(vehicleName) {
+    vehicleNameList(vehicleName) {
         this.#vehicleNameList = vehicleName.split(',');
-        this.VALIDATE.vehicleNameValidate(this.#vehicleNameList);
+        this.VALIDATE.vehicleName(this.#vehicleNameList);
         return this.#vehicleNameList;
     }
 
-    updateGamePlayTimes(playTime) {
-        this.VALIDATE.playTimeRegaxValidate(playTime);
+    gamePlayTimes(playTime) {
+        this.VALIDATE.playTimeRegax(playTime);
         this.#gamePlayTimes = Number(playTime);
-        this.VALIDATE.playTimeValidate(this.#gamePlayTimes);
+        this.VALIDATE.playTime(this.#gamePlayTimes);
         return this.#gamePlayTimes;
     }
 
-    updateObjectKeyValues() {
+    objectKeyValues() {
         this.#vehicleNameList.forEach((vehicleName) => {
             this.#moveProcedure[vehicleName] = '';
         });
@@ -38,14 +38,14 @@ class UpdateConstants {
         return this.#gamePlayTimes;
     }
 
-    updateVehicleObjectValue() {
+    vehicleObjectValue() {
         this.#vehicleNameList.forEach((vehicleName) => this.#moveProcedure[vehicleName] += this.#getMoveNumber());
         return this.#moveProcedure;
     }
 
     #getMoveNumber() {
         const MOVE_NUMBER = Random.pickNumberInRange(MOVE_RANGE.from, MOVE_RANGE.to);
-        if (this.VALIDATE.moveNumberValidate(MOVE_NUMBER)) {
+        if (this.VALIDATE.moveNumber(MOVE_NUMBER)) {
             return VEHICLE_MOVE.move;
         }
         return VEHICLE_MOVE.stop;

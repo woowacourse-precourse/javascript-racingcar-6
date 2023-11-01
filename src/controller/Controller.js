@@ -10,7 +10,7 @@ class Controller {
     async inputVehicleName() {
         try {
             const VEHICLE_NAME = await Console.readLineAsync(OUTPUT_MSG.INPUT_VEHICLE_NAME);
-            return this.UPDATE_MODEL.updateVehicleNameList(VEHICLE_NAME);
+            return this.UPDATE_MODEL.vehicleNameList(VEHICLE_NAME);
         } catch (error) {
             throw error;
         }
@@ -19,14 +19,14 @@ class Controller {
     async inputPlayTimes() {
         try {
             const PLAY_TIME = await Console.readLineAsync(OUTPUT_MSG.INPUT_PLAY_TIME);
-            return this.UPDATE_MODEL.updateGamePlayTimes(PLAY_TIME);
+            return this.UPDATE_MODEL.gamePlayTimes(PLAY_TIME);
         } catch (error) {
             throw error;
         }
     }
 
     makeVehicleObject() {
-        this.UPDATE_MODEL.updateObjectKeyValues();
+        this.UPDATE_MODEL.objectKeyValues();
     }
 
     getPlayTimeNumber() {
@@ -34,7 +34,7 @@ class Controller {
     }
 
     setVehicleObjectNumber() {
-        return this.UPDATE_MODEL.updateVehicleObjectValue();
+        return this.UPDATE_MODEL.vehicleObjectValue();
     }
 
     findChampions(moveProcedure,champion) {
