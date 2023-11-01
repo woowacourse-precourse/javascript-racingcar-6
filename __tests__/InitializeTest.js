@@ -26,4 +26,19 @@ describe("초기화 단계", () => {
 
     expect(result).toEqual(output);
   });
+
+  test("시도횟수 설정", async () => {
+    // given
+    const inputs = ["pobi,woni", "5"];
+
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+    await app.initialize();
+
+    const result = app.getAttempt();
+
+    expect(result).toEqual(5);
+  });
 });
