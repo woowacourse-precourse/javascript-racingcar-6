@@ -18,3 +18,10 @@ export function validateNameLength(name) {
     throw new Error(ERROR.invalidNameLength);
   }
 }
+
+export function validateTypeOfName(name) {
+  const specialCharacterRegExp = /[^ㄱ-ㅎ가-힣a-zA-Z0-9]/;
+  if (specialCharacterRegExp.test(name)) {
+    throw new Error(ERROR.invalidNameType);
+  }
+}
