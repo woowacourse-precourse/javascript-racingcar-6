@@ -1,8 +1,10 @@
 import { RacingGame } from "./games/RacingGame.js";
+import { TraceGame } from "./games/TraceGame.js";
 
 class App {
   async play() {
-    RacingGame();
+    const result = await RacingGame();
+    TraceGame(result);
   }
 }
 
