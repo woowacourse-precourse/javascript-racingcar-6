@@ -21,7 +21,6 @@ class App {
       MissionUtils.Console.print(error);
       return;
     }
-    MissionUtils.Console.print(`자동차 이름은 : ${this.carName}`);
     callback();
   }
 
