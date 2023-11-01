@@ -32,6 +32,12 @@ class Garage {
     return Array.from(names);
   }
 
+  tryAllCarsMove() {
+    this.#carList.forEach((car) => {
+      car.tryToMove();
+    });
+  }
+
   displayCarStateList() {
     this.#carList.forEach((car) => {
       car.printStepState();
