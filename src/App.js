@@ -68,12 +68,34 @@ class App {
     }
   }
 
+  getFinalWinnerDistance() {
+    let maxDistance = '';
+    this.cars.forEach(car => {
+      if (maxDistance.length < car.distance.length){
+        maxDistance = car.distance;
+      }
+    });
+    return maxDistance
+  }
+
+  displayFinalWinner() {
+    let maxDistance = this.getFinalWinnerDistance();
+    this.winners = [];
+    this.cars.forEach(car => {
+      if (maxDistance === car.distance) {
+        this.winners.push(car.name);
+      }
+    });
+    Console.print(`최종 우승자 : ${this.winners.join(', ')}`);
+  }
+
   async play() {
     const carNames = await this.receiveCarNames();
     this.validateCarNames(carNames)
     this.generateCars(carNames);
     const gameCount = await this.receiveGameCount();
     this.displayGameResultsForRounds(gameCount);
+    this.displayFinalWinner();
   }
 }
 

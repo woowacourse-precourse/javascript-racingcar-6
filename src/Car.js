@@ -4,6 +4,10 @@ class Car {
         this._distance = '';
     }
 
+    get name() {
+        return this._name;
+    }
+
     get distance() {
         return this._distance;
     }
