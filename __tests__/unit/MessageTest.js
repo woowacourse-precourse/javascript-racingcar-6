@@ -1,6 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
 import RaceRound from '../../src/RaceRound';
-import Cars from '../../src/Cars';
+import CarsInfo from '../../src/CarsInfo';
 
 const getLogSpy = () => {
   const logSpy = jest.spyOn(Console, 'print');
@@ -17,9 +17,9 @@ describe('특정 상황에서 출력되어야 하는 문자에 대한 테스트'
   const MOVING_FORWARD = 4;
   const STOP = 0;
   const names = ['pobi', 'nori'];
-  const cars = new Cars(names);
+  const carsInfo = new CarsInfo(names);
   const randoms = [MOVING_FORWARD, STOP];
-  const raceRound = new RaceRound(cars, 1);
+  const raceRound = new RaceRound(carsInfo, 1);
   const logSpy = getLogSpy();
 
   beforeEach(() => {

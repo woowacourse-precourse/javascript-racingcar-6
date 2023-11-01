@@ -11,8 +11,8 @@ function printRunResultMessage() {
 class RaceRound {
   #TOTAL_ROUND;
 
-  constructor(cars, totalRound) {
-    this.cars = cars;
+  constructor(carsInfo, totalRound) {
+    this.carsInfo = carsInfo;
     this.#TOTAL_ROUND = totalRound;
   }
 
@@ -25,8 +25,8 @@ class RaceRound {
     let totalRound = this.#TOTAL_ROUND;
     printRunResultMessage();
     while (totalRound > 0) {
-      this.namedCarsDecideGoStop(this.cars.names);
-      Message.roundResults(this.cars.ascendingSortedInfo);
+      this.namedCarsDecideGoStop(this.carsInfo.names);
+      Message.roundResults(this.carsInfo.ascendingSortedInfo);
       totalRound -= 1;
     }
   }
@@ -35,7 +35,7 @@ class RaceRound {
     names.forEach((name) => {
       const randomNum = RaceRound.createRandomNum();
       if (randomNum >= MIN_MOVING_FORWARD_NUM) {
-        this.cars.movingForwardSpecificName(name);
+        this.carsInfo.movingForwardSpecificName(name);
       }
     });
   }
@@ -46,7 +46,7 @@ class RaceRound {
   }
 
   makeOutWinners() {
-    const carsInfo = this.cars.ascendingSortedInfo;
+    const carsInfo = this.carsInfo.ascendingSortedInfo;
 
     const [winners, max] = [[], carsInfo[0][1].distance.length];
     carsInfo.forEach(([name, { distance }]) => {

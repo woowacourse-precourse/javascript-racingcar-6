@@ -1,6 +1,6 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import RaceRound from '../../src/RaceRound';
-import Cars from '../../src/Cars.js';
+import CarsInfo from '../../src/CarsInfo';
 
 const mockRandoms = (numbers) => {
   RaceRound.createRandomNum = jest.fn();
@@ -28,8 +28,8 @@ describe('경기가 진행되는 라운드', () => {
   test('는 자동차의 이름 수 만큼 라운드가 진행되는가?', () => {
     // given
     const names = ['gori', 'tobi', 'nori'];
-    const cars = new Cars(names);
-    const raceRound = new RaceRound(cars, 3);
+    const carsInfo = new CarsInfo(names);
+    const raceRound = new RaceRound(carsInfo, 3);
     const randomSpy = getRandomSpy();
     const expectRound = 3 * names.length;
 
@@ -43,10 +43,10 @@ describe('경기가 진행되는 라운드', () => {
   test('모든 자동차에게 랜덤한 숫자를 제공하는가?', () => {
     // given
     const names = ['pobi'];
-    const cars = new Cars(names);
+    const carsInfo = new CarsInfo(names);
     const MOVING_FORWARD = 4;
-    const raceRound = new RaceRound(cars, 1);
-    const movingForwardSpy = jest.spyOn(cars, 'movingForwardSpecificName');
+    const raceRound = new RaceRound(carsInfo, 1);
+    const movingForwardSpy = jest.spyOn(carsInfo, 'movingForwardSpecificName');
 
     // when
     mockRandoms([MOVING_FORWARD]);
@@ -59,11 +59,11 @@ describe('경기가 진행되는 라운드', () => {
   test('종료 시 최종 우승자를 판별하는가?', () => {
     // given
     const names = ['pobi', 'nori'];
-    const cars = new Cars(names);
+    const carsInfo = new CarsInfo(names);
     const MOVING_FORWARD = 4;
     const STOP = 0;
     const randoms = [MOVING_FORWARD, STOP];
-    const raceRound = new RaceRound(cars, 2);
+    const raceRound = new RaceRound(carsInfo, 2);
 
     // when
     mockRandoms([...randoms]);

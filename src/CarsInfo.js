@@ -1,8 +1,8 @@
-class Cars {
+class CarsInfo {
   #INFO;
 
   constructor(names) {
-    this.#INFO = Cars.initializeCarNames(names);
+    this.#INFO = CarsInfo.initializeCarNames(names);
   }
 
   static initializeCarNames(names) {
@@ -29,4 +29,4 @@ class Cars {
   }
 }
 
-export default Cars;
+export default CarsInfo;
