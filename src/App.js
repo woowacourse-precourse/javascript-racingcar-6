@@ -28,7 +28,7 @@ class App {
   async play() {
     const carNames = await MessageProcessor.inputCarNames();
     if (Validator.racerEntry(carNames) && Validator.carNames(carNames)) {
-      this.cars = carNames.split(',').map(carName => new Car(carName.trim()));
+      this.cars = carNames.split(',').map(carName => new Car(carName));
     }
 
     const tryCount = await MessageProcessor.inputTryCount();
