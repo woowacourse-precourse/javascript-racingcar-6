@@ -1,13 +1,15 @@
-import InputView from './views/InputView.js';
-import Result from './models/Result.js';
+import GameController from './controller/GameController.js';
 
 class App {
-  #result;
+  #startGame;
+
+  constructor() {
+    this.#startGame = new GameController();
+  }
+
 
   async play() {
-    const carNames = await InputView.setCarNames();
-    const laps = await InputView.setLaps();
-    this.#result = Result.setGameBoard(carNames.length);
+    await this.#startGame.ready();
   }
 }
 
