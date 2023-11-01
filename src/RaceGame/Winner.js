@@ -2,19 +2,19 @@ import { Console } from '@woowacourse/mission-utils';
 import { OUTPUT_MESSAGE, SYMBOL } from '../constants/Constants';
 
 class Winner {
-  constructor(forward) {
-    this.forward = forward;
+  constructor(forwardStatus) {
+    this.forwardStatus = forwardStatus;
   }
 
   getRaceWinner = () => {
-    let max = 0;
+    let maxAdvance = 0;
     let winners = [];
 
-    this.forward.forEach((advance, key) => {
-      if (advance.length > max) {
-        max = advance.length;
+    this.forwardStatus.forEach((advance, key) => {
+      if (advance.length > maxAdvance) {
+        maxAdvance = advance.length;
         winners = [key];
-      } else if (advance.length === max) {
+      } else if (advance.length === maxAdvance) {
         winners.push(key);
       }
     });

@@ -10,19 +10,19 @@ class UserInput {
   }
 
   getCarName = async () => {
-    const input = await Console.readLineAsync(INPUT_MESSAGE.carsName);
+    const carName = await Console.readLineAsync(INPUT_MESSAGE.carNames);
 
-    const cars = input.split(SYMBOL.comma).map((v) => v.trim());
-    this.validateCarName.isValid(cars);
+    const carNames = carName.split(SYMBOL.comma).map((v) => v.trim());
+    this.validateCarName.isValid(carNames);
 
-    return cars;
+    return carNames;
   };
 
   getAttempts = async () => {
-    const input = await Console.readLineAsync(INPUT_MESSAGE.attempt);
-    this.validateAttempt.isValidAttempt(input);
+    const attempt = await Console.readLineAsync(INPUT_MESSAGE.attempt);
+    this.validateAttempt.isValidAttempt(attempt);
 
-    return input;
+    return attempt;
   };
 }
 

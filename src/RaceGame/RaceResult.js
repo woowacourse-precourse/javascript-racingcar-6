@@ -5,9 +5,9 @@ import Winner from '../RaceGame/Winner';
 
 class RaceResult {
   constructor() {
-    this.forward = new Map();
-    this.moveCar = new MoveCar(this.forward);
-    this.winner = new Winner(this.forward);
+    this.forwardStatus = new Map();
+    this.moveCar = new MoveCar(this.forwardStatus);
+    this.winner = new Winner(this.forwardStatus);
   }
 
   getRaceResult = (cars, input) => {
@@ -16,7 +16,7 @@ class RaceResult {
     Array.from({ length: input }).forEach(() => {
       cars.forEach((car) => {
         this.moveCar.race(car);
-        Console.print(`${car} : ${this.forward.get(car)}`);
+        Console.print(`${car} : ${this.forwardStatus.get(car)}`);
       });
 
       Console.print(OUTPUT_MESSAGE.enter);

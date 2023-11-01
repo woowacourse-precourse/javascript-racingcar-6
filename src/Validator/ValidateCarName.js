@@ -1,31 +1,31 @@
 import { ERROR_MESSAGE, REGEXP } from '../constants/Constants';
 
 class ValidateCarName {
-  isValidLength = (cars) => {
+  isValidLength = (carNames) => {
     const LENGTH_REGEX = REGEXP.lengthRegex;
-    return cars.every((name) => LENGTH_REGEX.test(name));
+    return carNames.every((name) => LENGTH_REGEX.test(name));
   };
 
-  isValidString = (cars) => {
+  isValidString = (carNames) => {
     const NAME_REGEX = REGEXP.nameRegex;
-    return cars.every((name) => NAME_REGEX.test(name));
+    return carNames.every((name) => NAME_REGEX.test(name));
   };
 
-  isValidDuplication = (cars) => {
-    const carSet = new Set(cars);
-    return carSet.size === cars.length;
+  isValidDuplication = (carNames) => {
+    const carSet = new Set(carNames);
+    return carSet.size === carNames.length;
   };
 
-  isValid = (cars) => {
-    if (!this.isValidLength(cars)) {
+  isValid = (carNames) => {
+    if (!this.isValidLength(carNames)) {
       throw new Error(ERROR_MESSAGE.lengthError);
     }
 
-    if (!this.isValidString(cars)) {
+    if (!this.isValidString(carNames)) {
       throw new Error(ERROR_MESSAGE.stringError);
     }
 
-    if (!this.isValidDuplication(cars)) {
+    if (!this.isValidDuplication(carNames)) {
       throw new Error(ERROR_MESSAGE.duplicationError);
     }
   };

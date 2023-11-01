@@ -1,13 +1,13 @@
 import { ERROR_MESSAGE, REGEXP } from '../constants/Constants';
 
 class ValidateAttempt {
-  isValidNumber = (input) => {
-    const ATTEMPT_REGEX = REGEXP.attemptRegex.test(input);
+  isValidNumber = (attempt) => {
+    const ATTEMPT_REGEX = REGEXP.attemptRegex.test(attempt);
     return ATTEMPT_REGEX;
   };
 
-  isValidAttempt = (input) => {
-    if (!this.isValidNumber(input)) throw new Error(ERROR_MESSAGE.numberError);
+  isValidAttempt = (attempt) => {
+    if (!this.isValidNumber(attempt)) throw new Error(ERROR_MESSAGE.numberError);
   };
 }
 

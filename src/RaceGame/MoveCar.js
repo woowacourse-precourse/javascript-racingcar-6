@@ -2,22 +2,22 @@ import { Random } from '@woowacourse/mission-utils';
 import { SYMBOL, MAGIC_NUMBER } from '../constants/Constants';
 
 class MoveCar {
-  constructor(forward) {
-    this.forward = forward;
+  constructor(forwardStatus) {
+    this.forwardStatus = forwardStatus;
   }
 
   moveCar = (car) => {
-    if (!this.forward.has(car)) {
-      this.forward.set(car, SYMBOL.hyphen);
+    if (!this.forwardStatus.has(car)) {
+      this.forwardStatus.set(car, SYMBOL.hyphen);
       return;
     }
 
-    this.forward.set(car, this.forward.get(car) + SYMBOL.hyphen);
+    this.forwardStatus.set(car, this.forwardStatus.get(car) + SYMBOL.hyphen);
   };
 
   stopCar = (car) => {
-    if (this.forward.get(car) === undefined) {
-      this.forward.set(car, SYMBOL.empty);
+    if (this.forwardStatus.get(car) === undefined) {
+      this.forwardStatus.set(car, SYMBOL.empty);
     }
   };
 

@@ -9,13 +9,13 @@ const getLogSpy = () => {
 
 describe('게임 우승자 출력 검증 테스트 ', () => {
   test('단독 우승자일 경우 안내 문구 출력', () => {
-    const forward = new Map([
+    const forwardStatus = new Map([
       ['pobi', '----'],
       ['woni', '--'],
       ['jun', '---'],
     ]);
 
-    const winner = new Winner(forward);
+    const winner = new Winner(forwardStatus);
     const logSpy = getLogSpy();
 
     winner.getRaceWinner();
@@ -24,13 +24,13 @@ describe('게임 우승자 출력 검증 테스트 ', () => {
   });
 
   test('공동 우승자가 존재할 경우 쉼표(,)를 이용하여 구분 후 안내 문구 출력', () => {
-    const forward = new Map([
+    const forwardStatus = new Map([
       ['pobi', '----'],
       ['woni', '--'],
       ['jun', '----'],
     ]);
 
-    const winner = new Winner(forward);
+    const winner = new Winner(forwardStatus);
     const logSpy = getLogSpy();
 
     winner.getRaceWinner();
