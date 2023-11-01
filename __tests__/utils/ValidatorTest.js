@@ -69,32 +69,51 @@ describe('Validator 테스트', () => {
     });
   });
 
-  describe('validate로 시작하는 메서드는 CustomError를 던진다.', () => {
+  describe('validate로 시작하는 메서드는 CustomError를 생성한다.', () => {
+    /**
+     *
+     * @param {() => void} validation 유효성 검증 함수입니다.
+     * @param {*} input 검증할 값을 입력합니다.
+     * @param {CustomError} error 생성되어야하는 에러입니다.
+     */
+    const shouldThrowError = (validation, input, error = CustomError) => {
+      // when
+      const validate = () => validation(input);
+
+      // then
+      expect(validate).toThrow(error);
+    };
+
+    /**
+     *
+     * @param {() => void} validation 유효성 검증 함수입니다.
+     * @param {*} input 검증할 값을 입력합니다.
+     */
+    const shouldNotThrowError = (validation, input) => {
+      // when
+      const validate = () => validation(input);
+
+      // then
+      expect(validate).not.toThrow();
+    };
+
     describe('validateDuplicatedCarName()', () => {
       test('중복된 자동차 이름이 있으면 예외를 던져야 한다.', () => {
         // given
         const duplicatedNames = ['car', 'car'];
 
-        // when
-        const validateDuplicatedCarName = () => {
-          Validator.validateDuplicatedCarName(duplicatedNames);
-        };
-
-        // then
-        expect(validateDuplicatedCarName).toThrow(CustomError);
+        shouldThrowError(
+          Validator.validateDuplicatedCarName,
+          duplicatedNames,
+          CustomError,
+        );
       });
 
       test('중복된 자동차 이름이 없으면 예외를 던지지 않아야 한다.', () => {
         // given
         const uniqueNames = ['pobi', 'crong'];
 
-        // when
-        const validateDuplicatedCarName = () => {
-          Validator.validateDuplicatedCarName(uniqueNames);
-        };
-
-        // then
-        expect(validateDuplicatedCarName).not.toThrow();
+        shouldNotThrowError(Validator.validateDuplicatedCarName, uniqueNames);
       });
     });
 
@@ -103,33 +122,32 @@ describe('Validator 테스트', () => {
         // given
         const invalidRound = 0;
 
-        // when
-        const validateRound = () => Validator.validateRound(invalidRound);
-
-        // then
-        expect(validateRound).toThrow(CustomError);
+        shouldThrowError(
+          (input) => Validator.validateRound(input),
+          invalidRound,
+          CustomError,
+        );
       });
 
       test('라운드가 정수가 아니면 예외를 던져야 한다.', () => {
         // given
         const invalidRound = 'not a number';
 
-        // when
-        const validateRound = () => Validator.validateRound(invalidRound);
-
-        // then
-        expect(validateRound).toThrow(CustomError);
+        shouldThrowError(
+          (input) => Validator.validateRound(input),
+          invalidRound,
+          CustomError,
+        );
       });
 
       test('라운드가 최소값 이상이면 예외를 던지지 않아야 한다.', () => {
         // given
         const validRound = RACING_GAME.round.min;
 
-        // when
-        const validateRound = () => Validator.validateRound(validRound);
-
-        // then
-        expect(validateRound).not.toThrow();
+        shouldNotThrowError(
+          (input) => Validator.validateRound(input),
+          validRound,
+        );
       });
     });
 
@@ -138,23 +156,21 @@ describe('Validator 테스트', () => {
         // given
         const emptyString = '';
 
-        // when
-        const validateUserInput = () =>
-          Validator.validateUserInput(emptyString);
-
-        // then
-        expect(validateUserInput).toThrow(CustomError);
+        shouldThrowError(
+          (input) => Validator.validateUserInput(input),
+          emptyString,
+          CustomError,
+        );
       });
 
       test('사용자 입력이 비어있지 않으면 예외를 던지지 않아야 한다.', () => {
         // given
         const validInput = 'pengoose';
 
-        // when
-        const validateUserInput = () => Validator.validateUserInput(validInput);
-
-        // then
-        expect(validateUserInput).not.toThrow();
+        shouldNotThrowError(
+          (input) => Validator.validateUserInput(input),
+          validInput,
+        );
       });
     });
 
@@ -163,22 +179,21 @@ describe('Validator 테스트', () => {
         // given
         const notInteger = '9.99';
 
-        // when
-        const validateInteger = () => Validator.validateInteger(notInteger);
-
-        // then
-        expect(validateInteger).toThrow(CustomError);
+        shouldThrowError(
+          (input) => Validator.validateInteger(input),
+          notInteger,
+          CustomError,
+        );
       });
 
       test('정수면 예외를 던지지 않아야 한다.', () => {
         // given
         const integer = 5;
 
-        // when
-        const validateInteger = () => Validator.validateInteger(integer);
-
-        // then
-        expect(validateInteger).not.toThrow();
+        shouldNotThrowError(
+          (input) => Validator.validateInteger(input),
+          integer,
+        );
       });
     });
 
@@ -187,22 +202,21 @@ describe('Validator 테스트', () => {
         // given
         const invalidCarName = 'invalid';
 
-        // when
-        const validateCarName = () => Validator.validateCarName(invalidCarName);
-
-        // then
-        expect(validateCarName).toThrow(CustomError);
+        shouldThrowError(
+          (input) => Validator.validateCarName(input),
+          invalidCarName,
+          CustomError,
+        );
       });
 
       test('자동차 이름 길이가 유효하면 예외를 던지지 않아야 한다.', () => {
         // given
         const validCarName = 'valid';
 
-        // when
-        const validateCarName = () => Validator.validateCarName(validCarName);
-
-        // then
-        expect(validateCarName).not.toThrow();
+        shouldNotThrowError(
+          (input) => Validator.validateCarName(input),
+          validCarName,
+        );
       });
     });
   });
