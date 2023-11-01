@@ -18,7 +18,7 @@ class Car {
     return this.#position;
   }
 
-  isForwardMovement(number) {
+  #isForwardMovement(number) {
     return number >= NUMBER.MIN_FORWARD;
   }
 
@@ -28,7 +28,7 @@ class Car {
       NUMBER.RANDOM_MAX
     );
 
-    if (this.isForwardMovement(randomNumber)) {
+    if (this.#isForwardMovement(randomNumber)) {
       ++this.#position;
     }
 
