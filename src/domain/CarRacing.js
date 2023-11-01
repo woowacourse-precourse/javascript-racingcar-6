@@ -9,9 +9,7 @@ class CarRacing {
 
   async prepare() {
     const carNames = await View.askCarNames();
-    carNames.forEach((name) => {
-      this.#cars.push(new RacingCar(name));
-    });
+    this.#cars = carNames.map((name) => new RacingCar(name));
     this.#numberOfRounds = await View.askNumberOfRounds();
     this.#referee.recordNumberOfRound(this.#numberOfRounds);
   }
