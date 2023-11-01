@@ -1,7 +1,8 @@
 # 📢 커밋 컨벤션 정의
 
 - 모든 커밋은 기능단위로 커밋 (필요한 기능 목록에 맞게)
-<img width="564" alt="image" src="https://github.com/won0104/javascript-racingcar-6/assets/98508955/287de4fc-2d1c-4f0a-b3de-217907bc97f1">
+  <img width="564" alt="image" src="https://github.com/won0104/javascript-racingcar-6/assets/98508955/287de4fc-2d1c-4f0a-b3de-217907bc97f1">
+- test : test코드 추가
 
 # ⚠️ 추가된 요구사항
 
@@ -34,8 +35,8 @@
 ### L Validator.js
 
 - 사용자 입력값의 유효성 검증
-  - [ ] 이름이 1자 이상 5자 이내 (쉼표로 구분)
-  - [ ] 시도 횟수 입력에 숫자 대신 다른 것 입력
+  - [x] 이름이 1자 이상 5자 이내 (쉼표로 구분)
+  - [x] 시도 횟수 입력에 숫자 대신 다른 것 입력
 
 ### L Define.js
 
