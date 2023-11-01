@@ -23,8 +23,15 @@ describe("문자열 테스트", () => {
 
   test("at 메서드로 특정 위치의 문자 찾기", () => {
     const input = "abc";
-    const result = input.at(0)
+    const result = input.at(0);
 
     expect(result).toEqual("a");
+  });
+
+  test("split, join 메서드로 문자열 공백 제거", () => {
+    const input = "ab c";
+    const result = input.split(" ").join("");
+
+    expect(result).toEqual("abc");
   });
 });
