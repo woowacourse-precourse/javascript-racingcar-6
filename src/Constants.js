@@ -5,3 +5,7 @@ export const MESSAGES = {
   WINNER: "최종 우승자 : ",
   ERROR_WRONG_NAME: "[ERROR] 이름이 잘못된 형식입니다.",
 };
+
+export const Validation = (name) => {
+  if (name.length > 5) throw new Error(MESSAGES.ERROR_WRONG_NAME);
+};
