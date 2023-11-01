@@ -24,14 +24,17 @@ class App {
   startRace(attemp) {
     const moveCar = (car) => car.move();
     const getWinner = (car) => car.getPosition() === Number(attemp);
+    let hasNotWinner = true;
 
     print();
     print(PROMPT.RACE_START);
 
-    while (this.winners.length === 0) {
+    while (hasNotWinner) {
       this.cars.forEach(moveCar);
       this.printMoveResult();
       this.winners = this.cars.filter(getWinner);
+
+      hasNotWinner = this.winners.length === 0;
     }
   }
 
