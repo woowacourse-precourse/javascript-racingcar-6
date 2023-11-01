@@ -1,6 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
-import { printErrorMessage } from './utils/messages.js';
-import ErrorMessages from './constants.js';
+import { printErrorMessage } from './utils/messages';
+import ErrorMessages from './constants';
 
 const validateNameInput = input => {
   if (input.length === 1) {
@@ -15,6 +15,7 @@ const validateNameInput = input => {
   if (new Set(input).size !== input.length) {
     printErrorMessage(ErrorMessages.INVALID_CAR_NAME_DUPLICATE);
   }
+
   return input;
 };
 
@@ -22,6 +23,11 @@ const validateCountInput = input => {
   if (Number.isNaN(Number(input)) || Number(input) <= 0) {
     printErrorMessage(ErrorMessages.INVALID_COUNT);
   }
+  // parseInt 로 정수형 판별
+  if (Number(input) !== parseInt(input, 10)) {
+    printErrorMessage(ErrorMessages.INVALID_COUNT_TYPE);
+  }
+
   return input;
 };
 
@@ -33,6 +39,7 @@ const getUserInput = async () => {
   const countInput =
     await Console.readLineAsync('시도할 횟수는 몇 회인가요? \n');
   const count = validateCountInput(countInput);
+
   return {
     carNames,
     count,

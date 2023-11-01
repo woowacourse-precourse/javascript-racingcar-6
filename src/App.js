@@ -1,11 +1,11 @@
-import getUserInput from './getUserInput.js';
-import playRacingGame from './playRacingGame.js';
+import getUserInput from './getUserInput';
+import playRacingGame from './playRacingGame';
 
 class App {
   async play() {
     const { carNames, count } = await getUserInput();
 
-    playRacingGame({ carNames, count });
+    playRacingGame(carNames, count);
   }
 }
 

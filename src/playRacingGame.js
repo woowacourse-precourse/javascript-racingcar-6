@@ -1,7 +1,7 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import { printMessage } from './utils/messages.js';
+import { printMessage } from './utils/messages';
 
-const playSingleRound = ({ progress }) => {
+const playSingleRound = progress => {
   let randomNumber = 0;
   const newProgress = progress.map(value => {
     randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
@@ -11,7 +11,7 @@ const playSingleRound = ({ progress }) => {
   return newProgress;
 };
 
-const printEachRoundResult = ({ carNames, progress }) => {
+const printSingleRoundResult = (carNames, progress) => {
   const results = progress.map((value, index) => {
     const carName = carNames[index];
     const dash = '-'.repeat(value);
@@ -21,7 +21,7 @@ const printEachRoundResult = ({ carNames, progress }) => {
   printMessage('');
 };
 
-const getWinners = ({ carNames, progress }) => {
+const getWinners = (carNames, progress) => {
   const maxProgress = Math.max(...progress);
   const winners = carNames.filter(
     (_, index) => progress[index] === maxProgress,
@@ -30,17 +30,15 @@ const getWinners = ({ carNames, progress }) => {
   return winners;
 };
 
-const playRacingGame = ({ carNames, count }) => {
+const playRacingGame = (carNames, count) => {
   let progress = Array(carNames.length).fill(0);
 
   printMessage('\n실행 결과');
   for (let i = 0; i < count; i += 1) {
-    progress = playSingleRound({ progress });
-    printEachRoundResult({ carNames, progress });
+    progress = playSingleRound(progress);
+    printSingleRoundResult(carNames, progress);
   }
-  printMessage(
-    `최종 우승자: ${getWinners({ carNames, progress }).join(', ')}\n`,
-  );
+  printMessage(`최종 우승자: ${getWinners(carNames, progress).join(', ')}\n`);
 };
 
 export default playRacingGame;
