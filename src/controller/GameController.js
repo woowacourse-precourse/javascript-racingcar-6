@@ -21,7 +21,7 @@ class GameController {
    * 2. 시도 횟수만큼 라운드 진행
    * 3. 결과 출력
    */
-  async startGame() {
+  async runGame() {
     await this.initGame();
 
     Console.print(MESSAGES.startRound);
