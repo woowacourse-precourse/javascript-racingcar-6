@@ -11,22 +11,29 @@ import CONDITIONS from "../constants/Conditions.js";
 
 /**
  * 경주 게임 컨트롤러
- * @property {object} race - 경주 관련 정보
  */
-class raceGameController {
-  /** @type {object} */
-  #race;
-
+class RaceGameController {
   /**
    * 경주 게임 생성
    */
-  async run() {
-    const carNames = await InputView.askCarNames().split(',')
-    this.isValidCarNames(carNames);
-    const racingCars = carNames.map(carName => new Car(carName));
+  static async run() {
+    const carNames = await InputView.askCarNames()
+    RaceGameController.isValidCarNames(carNames);
 
     const totalRound = await InputView.askTotalRound();
-    this.isValidTotalRound(totalRound);
+    RaceGameController.isValidTotalRound(totalRound);
+
+    const racingCars = carNames.split(',').map(carName => new Car(carName));
+    const race = new Race(racingCars, Number(totalRound));
+
+    OutputView.printResultTitle();
+    for (let i = 0; i < race.getTotalRound(); i += 1) {
+      RaceGameController.updateNumberOfAdvance(racingCars);
+      OutputView.printProcedureOfRace(racingCars);
+    }
+
+    const winners = RaceGameController.calculateWinners(racingCars);
+    OutputView.printWinners(winners);
   }
 
   /**
@@ -38,32 +45,33 @@ class raceGameController {
    * @param {object} carNames 
    */
   static isValidCarNames(carNames) {
-    if (carNames.length < CONDITIONS.MIN_CAR_NAME_LENGTH) {
+    const carNamesArray = carNames.split(',')
+    if (carNamesArray.some(carName => carName.length < CONDITIONS.MIN_CAR_NAME_LENGTH)) {
       throw new Error(MESSAGES.CAR_NAME_INPUT_ERROR_LENGTH);
     }
-    if (carNames.some(carName => carName.length > CONDITIONS.MAX_CAR_NAME_LENGTH)) {
+    if (carNamesArray.some(carName => carName.length > CONDITIONS.MAX_CAR_NAME_LENGTH)) {
       throw new Error(MESSAGES.CAR_NAME_INPUT_ERROR_LENGTH);
     }
-    if (carNames.some(carName => carName.includes(' '))) {
+    if (carNamesArray.some(carName => carName.includes(' '))) {
       throw new Error(MESSAGES.CAR_NAME_INPUT_ERROR_BLANK);
     }
-    if (carNames.some((carName, index) => carNames.indexOf(carName) !== index)) {
+    if (carNamesArray.some((carName, index) => carNamesArray.indexOf(carName) !== index)) {
       throw new Error(MESSAGES.CAR_NAME_INPUT_ERROR_DUPLICATION);
     }
   }
 
   /**
    * 시도 횟수 유효성 검사
-   * 1. 자연수 type 에러: 1이상의 자연수가 아닌 경우
-   * 2. 공백 에러: 공백 포함 시도 횟수
-   * @param {object} totalRound
+   * 1. 공백 에러: 공백 포함 시도 횟수
+   * 2. 자연수 type 에러: 1이상의 자연수가 아닌 경우
+   * @param {string} totalRound
    */
   static isValidTotalRound(totalRound) {
-    if (!CONDITIONS.TOTAL_ROUND_REGEX.test(totalRound)) {
-      throw new Error(MESSAGES.TOTAL_ROUND_INPUT_ERROR_NATURAL_NUMBER);
-    }
     if (totalRound.includes(' ')) {
       throw new Error(MESSAGES.TOTAL_ROUND_INPUT_ERROR_BLANK);
+    }
+    if (!CONDITIONS.TOTAL_ROUND_REGEX.test(totalRound)) {
+      throw new Error(MESSAGES.TOTAL_ROUND_INPUT_ERROR_NATURAL_NUMBER);
     }
   }
 
@@ -94,8 +102,8 @@ class raceGameController {
    */
   static updateNumberOfAdvance(racingCars) {
     racingCars.forEach(racingCar => {
-      const randomNumber = raceGameController.selectRandomNumber();
-      racingCar.advance(raceGameController.canCarAdvance(randomNumber));
+      const randomNumber = RaceGameController.selectRandomNumber();
+      racingCar.advance(RaceGameController.canCarAdvance(randomNumber));
     });
   }
 
@@ -109,4 +117,4 @@ class raceGameController {
   }
 }
 
-export default raceGameController;
+export default RaceGameController;
