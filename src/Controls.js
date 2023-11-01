@@ -1,4 +1,4 @@
-import { read, write } from './IO.js';
+import { read, write } from './IO';
 
 const TEXT = {
   ENTER_CAR: '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
@@ -30,7 +30,7 @@ class Controls {
   // user input validators
   static validateCarNames(query) {
     const carNames = query.split(',');
-    return carNames.every((name) => 1 <= name.length && name.length <= 5);
+    return carNames.every((name) => name.length >= 1 && name.length <= 5);
   }
 
   static validateMoves(query) {
@@ -41,10 +41,16 @@ class Controls {
 
   // display functions
   static printCars(cars) {
+    const names = Array.from(Object.keys(cars));
+
     write('');
-    for (const [name, position] of Object.entries(cars)) {
+    for (let i = 0; i < names.length; i += 1) {
+      const name = names[i];
+      const position = cars[name];
+
       const bar = new Array(position + 1).join('-');
       const car = `${name} : ${bar}`;
+
       write(car);
     }
   }

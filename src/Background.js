@@ -1,32 +1,16 @@
 import { Random } from '@woowacourse/mission-utils';
 
-/*
-raceState
-0 : race uninitialized
-1 : race's active
-2 : race's end
-*/
-
 class Background {
   constructor() {
-    this.raceState = 0;
-
-    // race info
     this.moves = 0;
     this.cars = {};
   }
 
   // getters & setters
-  getRaceState() {
-    return this.raceState;
-  }
-  setRaceState(raceState) {
-    this.raceState = raceState;
-  }
-
   getCars() {
     return this.cars;
   }
+
   setCars(cars) {
     this.cars = { ...cars };
   }
@@ -34,6 +18,7 @@ class Background {
   getMoves() {
     return this.moves;
   }
+
   setMoves(moves) {
     this.moves = moves;
   }
@@ -41,8 +26,10 @@ class Background {
   // queries
   move() {
     const cars = this.getCars();
+    const names = Array.from(Object.keys(cars));
 
-    for (const name of Object.keys(cars)) {
+    for (let i = 0; i < names.length; i += 1) {
+      const name = names[i];
       const number = Random.pickNumberInRange(0, 9);
       if (number >= 4) {
         cars[name] += 1;
@@ -51,6 +38,7 @@ class Background {
 
     this.setCars(cars);
   }
+
   champions() {
     const cars = this.getCars();
     const maxPos = Math.max(...Object.values(cars));
@@ -60,11 +48,13 @@ class Background {
   }
 
   // initializer
-  initRace(name, moves) {
+  initRace(names, moves) {
     const cars = {};
-    for (const i of name) {
-      cars[i] = 0;
+
+    for (let i = 0; i < names.length; i += 1) {
+      cars[names[i]] = 0;
     }
+
     this.setCars(cars);
     this.setMoves(moves);
   }

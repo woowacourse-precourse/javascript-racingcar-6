@@ -1,5 +1,5 @@
-import Background from './Background.js';
-import Controls from './Controls.js';
+import Background from './Background';
+import Controls from './Controls';
 
 class App {
   constructor() {
