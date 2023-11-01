@@ -5,17 +5,15 @@ import { validateAttemptNumber, validateCarNames } from '../utils/validation';
 
 const InputView = {
   async readCarName() {
-    const input = await MissionUtils.Console.readLineAsync(
-      INPUT_MESSAGE.CAR_NAME
-    );
+    MissionUtils.Console.print(INPUT_MESSAGE.CAR_NAME);
+    const input = await MissionUtils.Console.readLineAsync('');
     validateCarNames(input);
     return input;
   },
 
   async readAttemptNumber() {
-    const input = await MissionUtils.Console.readLineAsync(
-      INPUT_MESSAGE.ATTEMPT_NUMBER
-    );
+    MissionUtils.Console.print(INPUT_MESSAGE.ATTEMPT_NUMBER);
+    const input = await MissionUtils.Console.readLineAsync();
     validateAttemptNumber(input);
     return input;
   },
