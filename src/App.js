@@ -94,7 +94,8 @@ class App {
    * 우승한 자동차 이름을 출력합니다
    * @param {{name: string, position: number}[]} winners 우승한 자동차 배열 */
   printWinners(winners) {
-
+    const WINNER_NAMES = winners.map((winner) => winner.name).join(', ');
+    Console.print(`최종 우승자 : ${WINNER_NAMES}`);
   }
 }
 
