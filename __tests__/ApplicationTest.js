@@ -44,7 +44,35 @@ describe('자동차 경주 게임', () => {
     });
   });
 
-  test('전진-전진-정지', async () => {
+  test.each([
+    [['pobi,javaji']],
+    [['pobi,eastjun']],
+  ])('이름에 대한 예외 처리', async (inputs) => {
+    // given
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow('[ERROR]');
+  });
+
+  test.each([
+    [[',']],
+    [[',,']],
+  ])('이름 미입력에 대한 예외 처리', async (inputs) => {
+    // given
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow('[ERROR] 일부 입력값이 없습니다.');
+  });
+
+  test('여러 car가 우승했을 경우', async () => {
     // given
     const MOVING_FORWARD = 4;
     const STOP = 3;
@@ -64,19 +92,5 @@ describe('자동차 경주 게임', () => {
     outputs.forEach((output) => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
-  });
-
-  test.each([
-    [['pobi,javaji']],
-    [['pobi,eastjun']],
-  ])('이름에 대한 예외 처리', async (inputs) => {
-    // given
-    mockQuestions(inputs);
-
-    // when
-    const app = new App();
-
-    // then
-    await expect(app.play()).rejects.toThrow('[ERROR]');
   });
 });
