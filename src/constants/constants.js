@@ -8,3 +8,7 @@ export const ERROR = Object.freeze({
 export const REGEX = Object.freeze({
   VALID_CAR_NAME: /^[^\0,]{1,5}$/,
 });
+
+export const CONSTANT = Object.freeze({
+  MOVEMENT_THRESHOLD: 4,
+});
