@@ -10,7 +10,7 @@ const InputView = {
   async getAttemptsCount() {
     const count = await Console.readLineAsync(MESSAGE.countInput);
     return count;
-  }
-}
+  },
+};
 
 export default InputView;

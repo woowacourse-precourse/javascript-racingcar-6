@@ -16,15 +16,15 @@ class Racing {
   }
 
   advance() {
-    this.state.map((_, idx) => {
-      if(this.validAdvance()) this.state[idx] += 1;
-    })
+    this.state.forEach((_, idx) => {
+      if (this.validAdvance()) this.state[idx] += 1;
+    });
   }
 
   result() {
     const listState = [];
 
-    for (let i = 0; i < this.count; i++) {
+    for (let i = 0; i < this.count; i += 1) {
       this.advance();
       listState.push([...this.state]);
     }
@@ -36,9 +36,9 @@ class Racing {
     const winner = [];
     const maxAdvance = Math.max(...this.state);
 
-    this.state.map((totalAdvance, idx) => {
+    this.state.forEach((totalAdvance, idx) => {
       if (totalAdvance === maxAdvance) winner.push(this.carNames[idx]);
-    })
+    });
 
     return winner;
   }

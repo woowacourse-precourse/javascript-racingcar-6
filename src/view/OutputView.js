@@ -5,8 +5,8 @@ const OutputView = {
   printProgress(carNames, result) {
     Console.print(MESSAGE.result);
 
-    result.map((state) => {
-      carNames.map((carName, idx) => {
+    result.forEach((state) => {
+      carNames.forEach((carName, idx) => {
         Console.print(`${carName} : ${MESSAGE.advance.repeat(state[idx])}`);
       });
       Console.print(MESSAGE.advance.repeat('\n'));
@@ -15,7 +15,7 @@ const OutputView = {
 
   printWinner(winner) {
     Console.print(`${MESSAGE.winner}${winner.join(MESSAGE.winnerType)}`);
-  }
-}
+  },
+};
 
 export default OutputView;

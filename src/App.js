@@ -1,4 +1,4 @@
-import InputView from "./view/InputView.js";
+import InputView from './view/InputView.js';
 import OutputView from './view/OutputView.js';
 
 import Racing from './Racing.js';
@@ -15,14 +15,13 @@ class App {
     ErrorHandler.carNamesType(carNames);
     const count = await InputView.getAttemptsCount();
     ErrorHandler.countType(count);
-  
+
     const refinedCarNames = this.data.carNamesTypeConversion(carNames);
     const manager = new Racing(refinedCarNames, count, this.data);
-  
+
     OutputView.printProgress(refinedCarNames, manager.result());
     OutputView.printWinner(manager.determineWinner());
   }
-  
 }
 
 export default App;

@@ -30,4 +30,9 @@ const REGEXP = {
   IS_NOT_NUMBER: /[^0-9]/,
 };
 
-export { MESSAGE, RACING_GAME, ERROR, REGEXP };
+export {
+  MESSAGE,
+  RACING_GAME,
+  ERROR,
+  REGEXP,
+};
