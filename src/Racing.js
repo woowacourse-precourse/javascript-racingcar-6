@@ -19,9 +19,8 @@ class Racing {
   }
 
   async registration() {
-    const validation = new Validation();
     const participants = await Screen.getUserInput(MSG_GAME_START);
-    if (!validation.isProperInput(participants)) {
+    if (!Validation.isProperInput(participants)) {
       throw new Error(ERROR_MSG_INPUT);
     }
 
@@ -31,9 +30,8 @@ class Racing {
   }
 
   async decideGameCount() {
-    const validation = new Validation();
     const gameCount = await Screen.getUserInput(MSG_TRY_TIME);
-    if (!validation.isProperTryTime(gameCount)) {
+    if (!Validation.isProperTryTime(gameCount)) {
       throw new Error(ERROR_MSG_INPUT);
     }
 
