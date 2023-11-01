@@ -8,14 +8,14 @@ class Result {
         let maxPositionCars = [];
 
         carList.forEach((car) => {
-            if (car.moves > maxPosition) {
-                maxPosition = car.moves;
+            if (car.movesNum > maxPosition) {
+                maxPosition = car.movesNum;
                 maxPositionCars = [car.name];
-            } else if (car.moves === maxPosition) {
+            } else if (car.movesNum === maxPosition) {
                 maxPositionCars.push(car.name);
             }
         });
-        MissionUtils.Console.print(`최종 우승자 : ${maxPositionCars.join(', ')}`);
+        MissionUtils.Console.print(`최종 우승자 : ${maxPositionCars.join(',')}`);
     }
 }
 

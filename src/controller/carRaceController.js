@@ -11,7 +11,7 @@ class Play {
             if (RACE_TIMES >= 4) {
                 car.move(); // 4이상 1칸 전진
             }
-            const MOVES = '-'.repeat(car.moves);
+            const MOVES = '-'.repeat(car.movesNum);
 
             MissionUtils.Console.print(`${car.name} : ${MOVES}`);
         });

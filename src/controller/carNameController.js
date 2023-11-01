@@ -6,10 +6,11 @@ class CarName {
     // 자동차 이름 및 유효성 검사 메서드
     inputCarName(carNames) {
         // 쉼표로 자동차 이름 분리 및 빈 문자열 제거
-        const NAME_ARRAY = carNames.split(',').filter(name => name.trim() !== '');
-        // 이름 중복 체크
-        const NAME_CHECK = new Set(NAME_ARRAY).size !== NAME_ARRAY.length;
 
+        const NAME_ARRAY = carNames.split(',');
+        const NAME_CHECK= new Set(carNames).size !== NAME_ARRAY.length;
+
+        // 이름 중복 체크
         if (NAME_CHECK) {
             throw new Error('[ERROR] 각 자동차의 중복을 확인하세요.');
         }else if ( /^,|,$/.test(carNames)) {
