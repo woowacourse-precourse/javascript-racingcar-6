@@ -1,5 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import { checkCarNames, checkTryCount } from "./check.js";
+import { checkCarNames, checkTryCount } from "./check";
+import { MESSAGES } from "./Message";
 const { Console, Random } = MissionUtils;
 class App {
   carNames = [];
@@ -15,13 +16,12 @@ class App {
   }
 
   racing() {
-    Console.print("실행 결과");
+    Console.print(MESSAGES.RESULT);
     for (let i = 0; i < this.tryCount; i++) {
-      this.moveForwardOrStop();
+      this.moveForward();
       this.printRacingState();
-      // Console.print("");
     }
-    Console.print(`최종 우승자 : ${this.getFinalWinner()}`);
+    Console.print(`${MESSAGES.WINNER}${this.getFinalWinner()}`);
   }
 
   printRacingState() {
@@ -30,9 +30,10 @@ class App {
         `${this.carNames[i]} : ${"-".repeat(this.carNumberOfMove[i])}`
       );
     }
+    Console.print("");
   }
 
-  moveForwardOrStop() {
+  moveForward() {
     for (let i = 0; i < this.carNames.length; i++) {
       const number = Random.pickNumberInRange(0, 9);
       if (number >= 4) {
@@ -49,20 +50,18 @@ class App {
   }
 
   async inputCarNames() {
-    const names = await Console.readLineAsync(
-      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
-    );
+    const names = await Console.readLineAsync(MESSAGES.INPUT_CAR_NAMES);
     const carNames = checkCarNames(names);
     return carNames;
   }
-  async inputTryCount() {
-    const number = await Console.readLineAsync("시도할 회수는 몇회인가요?");
+  async inputTryNumbers() {
+    const number = await Console.readLineAsync(MESSAGES.INPUT_TRY_NUMBER);
     const tryCount = checkTryCount(number);
     return tryCount;
   }
   async input() {
     this.carNames = await this.inputCarNames();
-    this.tryCount = await this.inputTryCount();
+    this.tryCount = await this.inputTryNumbers();
   }
   async start() {
     await this.input();
