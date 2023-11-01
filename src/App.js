@@ -1,4 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
+import { MESSAGE_TABLE } from "./constants/index.js";
 import { makeRandomNumber } from "./utils/func.js";
 
 class App {
@@ -26,28 +27,22 @@ class App {
   }
 
   async receiveCarNameInput() {
-    const carNameInput = await Console.readLineAsync(
-      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
-    );
+    const carNameInput = await Console.readLineAsync(MESSAGE_TABLE.CAR_NAME);
     const carNameList = carNameInput.trim("").split(",");
     const isInvalidCarName = carNameList.some((carName) => carName.length > 5);
 
     if (isInvalidCarName) {
-      throw new Error(
-        "[ERROR] 자동차의 이름은 쉼표로 구분된 5자 이하 문자만 가능합니다. 프로그램을 종료합니다."
-      );
+      throw new Error(MESSAGE_TABLE.ERROR_INVALID_CAR_NAME);
     }
 
     this.initializeDistance(carNameList);
   }
 
   async receiveTryCountInput() {
-    const tryCount = await Console.readLineAsync("시도할 횟수는 몇 회인가요?");
+    const tryCount = await Console.readLineAsync(MESSAGE_TABLE.TRY_COUNT);
 
     if (this.validateTryCountInput(tryCount)) {
-      throw new Error(
-        "[ERROR] 입력값이 유효하지 않습니다. 프로그램을 종료합니다."
-      );
+      throw new Error(MESSAGE_TABLE.ERROR_INVALID_INPUT);
     }
 
     this.#tryCount = parseInt(tryCount);
@@ -74,7 +69,7 @@ class App {
       Console.print(`${key} : ${"-".repeat(this.#carDistanceTable[key])}`);
     }
 
-    Console.print("\n");
+    this.lineBreak();
   }
 
   chooseWinner() {
@@ -94,6 +89,10 @@ class App {
   printWinnerResult(winners) {
     const finalWinner = winners.join(", ");
     Console.print(`최종 우승자 : ${finalWinner}`);
+  }
+
+  lineBreak() {
+    Console.print("\n");
   }
 }
 
