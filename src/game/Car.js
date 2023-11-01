@@ -1,6 +1,12 @@
-import Car from './Car.js';
+class Car {
+  #name = '';
 
-class Garage {
-  
+  #stepCount = 0;
+
+  constructor(name) {
+    this.#name = name;
+    this.#stepCount = 0;
+  }
 }
-export default Garage;
+
+export default Car;
