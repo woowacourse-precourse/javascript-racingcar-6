@@ -14,7 +14,7 @@ describe('RacingCar test', () => {
   });
 
   test('자동차 이동 테스트', () => {
-    car.move();
+    car.moveForward();
     const result = car.getCarPosition();
 
     expect(result).toEqual(1);
