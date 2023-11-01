@@ -1,6 +1,6 @@
 import DataProcess from '../../src/view/DataProcess.js'
 import OutputView from '../../src/view/OutputView.js';
-import testConstant from './ViewConstant.js';
+import testConstant from '../../t_constant/ViewConstant.js';
 
 describe("DataProcess divideCarName", () => {
 	test("divideCarName은 Function type이다 ", () => {

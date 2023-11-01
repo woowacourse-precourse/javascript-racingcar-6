@@ -1,16 +1,9 @@
 import { Console } from '@woowacourse/mission-utils';
+import INPUTMESSAGE from '../constant/inputMessage.js';
 
-const InputView =  {
-	inputCarName: async () => {
-		let carNames = await Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-
-		return (carNames);
-	},
-	inputRepeatCount: async () => {
-		const repeatCount = await Console.readLineAsync("시도할 횟수는 몇 회인가요?");
-
-		return (repeatCount);
-	}
-}
+const InputView = {
+  inputCarName: () => Console.readLineAsync(INPUTMESSAGE.GAME_START_MESSAGE),
+  inputRepeatCount: () => Console.readLineAsync(INPUTMESSAGE.REPEAT_COUNT_MESSAGE),
+};
 
 export default InputView;

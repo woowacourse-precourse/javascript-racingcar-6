@@ -1,5 +1,5 @@
 import InputView from '../../src/view/InputView';
-import testConstant from './ViewConstant';
+import testConstant from '../../t_constant/ViewConstant';
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 const mockQuestions = (inputs) => {
@@ -21,7 +21,7 @@ describe("InputView inputCarName", () => {
 		expect(MissionUtils.Console.readLineAsync).toHaveBeenCalled();
 	})
 	test(`inputView inputCarName은 값을 정상적으로 리턴한다 `, () => {
-		testConstant.InOutputView.forEach (async ({input, expected}) => {
+		testConstant.InputView.forEach (async ({input, expected}) => {
 			const inputs = [input];
 			mockQuestions(inputs);
 			expect(await InputView.inputCarName()).toStrictEqual(expected);
@@ -39,7 +39,7 @@ describe("InputView inputRepeatCount" , () => {
 		expect(MissionUtils.Console.readLineAsync).toHaveBeenCalled();
 	})
 	test(`inputView inputRepeatCount는 값을 정상적으로 리턴한다'`, () => {
-		testConstant.InOutputView.forEach (async ({input, expected}) => {
+		testConstant.InputView.forEach (async ({input, expected}) => {
 			const inputs = [input];
 			mockQuestions(inputs);
 			expect(await InputView.inputRepeatCount()).toStrictEqual(expected);

@@ -32,16 +32,45 @@ const TransOutputFormWinner = [
     {input: ["a", "b", "c"], expected: "a, b, c"},
     {input: ["123", "", null], expected: "test1, test2, test3"},
 ]
+const CheckCarNameSuccess = [
+    {output: ["test1", "test2", "test3"]},
+    {output: ["test1", "test2"]},
+    {output: ["123"]},
+    {output: ["123", "최성락"]},
+]
 
+const CheckCarNameFail = [
+    {output: [""]},
+    {output: ["ttttttt"]},
+    {output: ["test1 "]},
+    {output: null},
+    {output: undefined},
+    {output: 1234},
+    {output: ["$$"]},
+]
 
-const InOutputView = [
-    { input: 3, distance: "---" },
-    { input: 0, distance: "" },
-	{ input: "1", distance: "1" },
-	{ input: "2", distance: "2" },
-	{ input: "abc", distance: "abc" },
-	{ input: undefined , distance: undefined },
-	{ input: "", distance: "" }
+const CheckRepeatCountSuccess = [
+    {output: "123"},
+    {output: "1"},
+]
+
+const CheckRepeatCountFail = [
+    {output: ""},
+    {output: "ttttttt"},
+    {output: "test1 "},
+    {output: null},
+    {output: undefined},
+    {output: 1234},
+    {output: "$$"},
+]
+
+const InputView = [
+    { input: "0", expected: "0" },
+	{ input: "1", expected: "1" },
+	{ input: "2", expected: "2" },
+	{ input: "abc", expected: "abc" },
+	{ input: undefined , expected: undefined },
+	{ input: "", expected: "" }
 ];
 
 
@@ -50,6 +79,10 @@ export default {
     TransDistanceToHyphen,
     TransOutputFormDistance,
     TransOutputFormWinner,
-    InOutputView,
+    CheckCarNameSuccess,
+    CheckCarNameFail,
+    CheckRepeatCountSuccess,
+    CheckRepeatCountFail,
+    InputView,
     GAME_END_MESSAGE,
 };
