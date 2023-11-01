@@ -35,7 +35,6 @@ export const checkInputTryNumValidation = (input) => {
   GMAEVALIDATION.check_only_number.lastIndex = 0;
   if (!GMAEVALIDATION.check_only_number.test(input))
     throw new Error(ERRORMSG.invalid_not_number);
-  console.log(GMAEVALIDATION.check_only_number.lastIndex);
   if (input <= 0) throw new Error(ERRORMSG.invalid_negative);
   if (input > GMAEVALIDATION.max_try)
     throw new Error(ERRORMSG.invalid_exceed_max_try);
