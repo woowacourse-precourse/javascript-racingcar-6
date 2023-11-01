@@ -1,5 +1,5 @@
-import { RULES } from '../constants/index.js';
-import RacingCarError from '../error/RacingCarError.js';
+import { RULES } from '../constants';
+import RacingCarError from '../error/RacingCarError';
 
 export const carNamingValidation = carNames => {
   Object.values(carNamingValidation.validation).forEach(

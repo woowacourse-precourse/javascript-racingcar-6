@@ -1,6 +1,5 @@
-import { RULES } from '../src/constants';
-import carNamingValidation from '../src/validator/carNamingValidation';
-import trialCountValidation from '../src/validator/trialCountValidation';
+import carNamingValidation from '../../src/validator/carNamingValidation';
+import { RULES } from '../../src/constants';
 
 describe('test in carNamingValidation', () => {
   test('빈 문자열 검사', () => {
@@ -50,16 +49,3 @@ describe('test in carNamingValidation', () => {
     expect(output).toBeTruthy();
   });
 });
-
-
-describe('test in trialCountValidation', () => {
-  test('시도 횟수 숫자타입 검사', () => {
-    // given
-    const input = '123';
-    // when
-    const output = trialCountValidation.validation.typeOfNumber.isInvalid(input);
-    // then
-    expect(output).toBeFalsy();
-  });
-});
-

@@ -1,4 +1,4 @@
-import RacingCarError from '../error/RacingCarError.js';
+import RacingCarError from '../error/RacingCarError';
 
 export const trialCountValidation = trialCount => {
   Object.values(trialCountValidation.validation).forEach(
@@ -6,7 +6,7 @@ export const trialCountValidation = trialCount => {
       if (isInvalid(trialCount)) throw new RacingCarError(errorMessage);
     },
   );
-}
+};
 trialCountValidation.validation = Object.freeze({
   typeOfNumber: Object.freeze({
     errorMessage: '숫자타입이 아닙니다.',
@@ -17,4 +17,4 @@ trialCountValidation.validation = Object.freeze({
   }),
 });
 
-export default trialCountValidation; 
+export default trialCountValidation;
