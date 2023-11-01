@@ -14,6 +14,14 @@ const mockQuestions = (inputs) => {
   });
 };
 
+const mockRandoms = (numbers) => {
+  MissionUtils.Random.pickNumberInRange = jest.fn();
+  numbers.reduce(
+    (acc, number) => acc.mockReturnValueOnce(number),
+    MissionUtils.Random.pickNumberInRange
+  );
+};
+
 describe('사용자 입력 테스트', () => {
   test('split 메서드로 주어진 값을 구분', async () => {
     const inputs = 'obi,hi';
@@ -37,7 +45,10 @@ describe('사용자 입력 테스트', () => {
     mockQuestions(inputs);
     const inputUserList = await inputParticipantCarName();
     const userList = new User(inputUserList);
-    await expect(userList).toEqual({ nameList: ['pobi', 'hi'] });
+    await expect(userList).toEqual({
+      nameList: ['pobi', 'hi'],
+      carsMovingPoint: [0, 0],
+    });
   });
 
   test('시도할 횟수 사용자 입력 테스트', async () => {
