@@ -1,4 +1,5 @@
-import { ERRORS } from "./Message";
+import { ERRORS } from "../Message";
+
 export function checkCarNames(names) {
   const name = names.split(",");
   const carNames = name.map((name) => name.trim());
