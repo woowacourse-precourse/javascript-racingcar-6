@@ -1,5 +1,6 @@
 import { Random } from '@woowacourse/mission-utils';
 import { GAME_RULL } from '../constants/gameRules.js';
+import generateRandomNumber from '../utils/generateRandomNumber.js';
 
 export default class Players {
   #tryCount = 0;
@@ -17,16 +18,9 @@ export default class Players {
     return this.#tryCount;
   }
 
-  generateRandomNumber() {
-    return Random.pickNumberInRange(
-      GAME_RULL.START_PICK_NUMBER,
-      GAME_RULL.END_PICK_NUMBER,
-    );
-  }
-
   setMoveCount() {
     this.#players.forEach((player) => {
-      const pickedNumber = this.generateRandomNumber();
+      const pickedNumber = generateRandomNumber();
       if (pickedNumber >= GAME_RULL.MOVE_CONDITION_COUNT) {
         player.increaseMoveCount();
       }
