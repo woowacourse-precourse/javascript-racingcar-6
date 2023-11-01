@@ -1,57 +1,47 @@
-import { Console, Random } from '@woowacourse/mission-utils';
+import { Random } from '@woowacourse/mission-utils';
 import SETTING from '../constant/Setting.js';
-import car from '../model/Car.js';
+import Car from '../model/Car.js';
+import { printResult } from '../view/InputOutput.js';
 
 const createRaceCars = userInput => {
   const names = userInput.split(',');
-  const cars = names.map(name => car(name));
+  const cars = names.map(name => new Car(name));
 
   return cars;
 };
 
+const getRandomNumber = () => {
+  return Random.pickNumberInRange(SETTING.MIN_RANGE, SETTING.MAX_RANGE);
+};
+
+const checkRandomNumber = randomNumber => {
+  return randomNumber >= SETTING.GO;
+};
+
 const playRace = (cars, playCount) => {
-  let count = 0;
+  let count = SETTING.ZERO_COUNT;
   while (count < playCount) {
     cars.forEach(car => {
-      const random = Random.pickNumberInRange(
-        SETTING.MIN_RANGE,
-        SETTING.MAX_RANGE,
-      );
-      car.result.push(random);
-      printTextResult(random, car);
+      const moveFoward = checkRandomNumber(getRandomNumber());
+      if (moveFoward) {
+        car.move();
+      }
+      printResult(car.name, car.textResult);
     });
     count++;
   }
 };
 
-const printTextResult = (random, car) => {
-  if (random > 3) car.textResult += '-';
-  Console.print(`${car.name} : ${car.textResult}`);
-};
-
 const winner = cars => {
-  let maxLength = 0;
-  let winner = [];
+  const max = Math.max(...cars.map(car => car.textResult.length));
+  const winner = cars.filter(car => car.textResult.length === max);
 
-  cars.forEach(car => {
-    if (car.textResult.length >= maxLength) {
-      maxLength = car.textResult.length;
-    }
-  });
-
-  cars.forEach(car => {
-    if (car.textResult.length === maxLength) {
-      winner.push(car.name);
-    }
-  });
-
-  return winner.join(',');
+  return winner.map(car => car.name).join(',');
 };
 
 const race = {
   createRaceCars,
   playRace,
-  printTextResult,
   winner,
 };
 
