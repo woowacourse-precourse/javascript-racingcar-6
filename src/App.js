@@ -40,7 +40,7 @@ class App {
     const ATTEMPTS = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n")
     if(isNaN(ATTEMPTS))
       throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
-    else if(ATTEMPTS < 0)
+    else if(ATTEMPTS <= 0)
       throw new Error("[ERROR] 0보다 큰 숫자를 입력해주세요.");
     return parseInt(ATTEMPTS);
   }
