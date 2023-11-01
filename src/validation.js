@@ -7,6 +7,11 @@ const isValidCarName = (names) => {
   if (names.length < 2) {
     throw new Error("[ERROR] 2대 이상의 자동차를 입력하세요.");
   }
+
+  const uniqueNames = new Set(names);
+  if (uniqueNames.size !== names.length) {
+    throw new Error("[ERROR] 서로 다른 이름의 이름을 입력하세요.");
+  }
 };
 
 const isValidAttemptCounts = (count) => {
