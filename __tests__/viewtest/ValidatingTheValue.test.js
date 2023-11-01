@@ -20,3 +20,19 @@ describe("ValidatingTheValue checkCarNames", () => {
 		});
 	});
 });
+
+describe("ValidatingTheValue checkRepeatCount", () => {
+	test("checkRepeatCount은 Function type이다 ", () => {
+		expect(typeof ValidatingTheValue.checkRepeatCount).toBe("function");
+	})
+	test('checkRepeatCount은 에러를 throw하지 않는다 ', () => {
+		testConstant.CheckRepeatCountSuccess.forEach (({output}) => {
+			expect(() => ValidatingTheValue.checkRepeatCount(output)).not.toThrow();
+		});
+	});
+	test('checkRepeatCount은 에러를 throw한다 ', () => {
+		testConstant.CheckRepeatCountFail.forEach (({output}) => {
+			expect(() => ValidatingTheValue.checkRepeatCount(output)).toThrow();
+		});
+	});
+});

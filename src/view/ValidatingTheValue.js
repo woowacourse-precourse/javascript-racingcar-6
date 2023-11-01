@@ -22,5 +22,17 @@ function checkCarNames(carNames) {
   }
   return (carNameList);
 }
+function checkRepeatCount(repeatCount) {
+  if (ValidatingTheValueUtils.checkIsNotNumber(repeatCount)) {
+    throw new Error(`${ERRORMESSAGE.ERROR}${repeatCount} ${ERRORMESSAGE.NOT_INT}`);
+  }
+  if (ValidatingTheValueUtils.checkNegativeOrZeroNum(repeatCount)) {
+    throw new Error(`${ERRORMESSAGE.ERROR}${repeatCount} ${ERRORMESSAGE.NOT_POSINT}`);
+  }
+  if (ValidatingTheValueUtils.checkTooLargeNum(repeatCount)) {
+    throw new Error(`${ERRORMESSAGE.ERROR}${repeatCount} ${ERRORMESSAGE.TOO_LARGE}`);
+  }
+  return (Number(repeatCount));
+}
 
-export default { checkCarNames };
+export default { checkCarNames, checkRepeatCount };
