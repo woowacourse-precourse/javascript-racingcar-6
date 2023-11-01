@@ -1,6 +1,7 @@
 import generateCarDataListFromStr from './feature/GenerateCarDataListFromStr';
 import getValidCarNameStr from './feature/GetValidCarNameStr';
 import getValidTotalRoundNumber from './feature/GetValidTotalRoundNumber';
+import moveCarRandomly from './feature/MoveCarRandomly';
 
 class App {
   constructor() {
@@ -11,7 +12,7 @@ class App {
     const carNameStr = getValidCarNameStr();
 
     const initialCarDataList = generateCarDataListFromStr(carNameStr);
-    this.updateCarDataList(initialCarDataList); // 정확하게 업데이트되는지 테스트 필요
+    this.updateCarDataList(initialCarDataList);
 
     const totalRoundNumber = getValidTotalRoundNumber();
 
