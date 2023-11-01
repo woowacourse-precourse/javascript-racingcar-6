@@ -29,13 +29,13 @@ class View {
     });
 
     const play = new Play();
-    play.enterNumberOfTimes(carList);
+    play.enterAttempt(carList);
   }
 
   checkComma(carNames) {
-    const hasEmty = carNames.includes(" ") || carNames.length === 0;
+    const isEmpty = carNames.includes(" ") || carNames.length === 0;
 
-    if (hasEmty) {
+    if (isEmpty) {
       throw new Error("[ERROR] " + MESSAGE.error.EMPTY_INPUT);
     }
 

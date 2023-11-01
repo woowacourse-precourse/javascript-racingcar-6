@@ -6,11 +6,11 @@ import MESSAGE from "./constants/MESSAGE";
 class Play {
   racing(carList) {
     carList.forEach((car) => {
-      const number = Random.pickNumberInRange(CAR.move.min, CAR.move.max);
+      const isMove =
+        Random.pickNumberInRange(CAR.move.min, CAR.move.max) >=
+        CAR.move.standard;
 
-      if (number >= CAR.move.standard) {
-        car.move();
-      }
+      if (isMove) car.move();
 
       Console.print(`${car.name} : ${"-".repeat(car.position)}`);
     });
@@ -21,7 +21,7 @@ class Play {
   raceStart(numberOfTimes, carList) {
     const inputNumber = !Number.isNaN(numberOfTimes);
     const inputString = isNaN(numberOfTimes);
-    const hasEmty = numberOfTimes.length == 0 || numberOfTimes.includes(" ");
+    const isEmpty = numberOfTimes.length == 0 || numberOfTimes.includes(" ");
     Console.print("\n실행 결과");
 
     if (inputNumber) {
@@ -34,12 +34,12 @@ class Play {
       throw new Error("[ERROR] " + MESSAGE.error.INVALID_TYPE);
     }
 
-    if (hasEmty) {
+    if (isEmpty) {
       throw new Error("[ERROR] " + MESSAGE.error.INVALID_TYPE);
     }
   }
 
-  async enterNumberOfTimes(carList) {
+  async enterAttempt(carList) {
     const numberOfTimes = await Console.readLineAsync(MESSAGE.read.ATTEMPT);
     this.raceStart(numberOfTimes, carList);
     const result = new Result();
