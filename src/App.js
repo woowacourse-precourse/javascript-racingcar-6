@@ -4,6 +4,7 @@ class App {
   async play() {
     const raceCarNames = await UserInput.getRaceCarNames();
     const raceRoundCount = await UserInput.getRaceRoundCount();
+    
     const racingGame = new RacingGame(raceCarNames, raceRoundCount);
 
     racingGame.start();
