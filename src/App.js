@@ -18,15 +18,28 @@ async function carCreater() {
   MissionUtils.Console.print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
   const carName = await MissionUtils.Console.readLineAsync('');
   const carNameSplit = carName.split(',');
-  validationNameLength(carNameSplit);
+  validationName(carNameSplit);
   carNameSave(carNameSplit);
   return carNameSplit;
+}
+
+function validationName(names) {
+  validationNameLength(names);
+  validationNameDuplication(names);
 }
 
 function validationNameLength(names) {
   for (let i = 0; i < names.length; i++) {
     if (names[i].length > 5) {
       throw new Error("[ERROR] 자동차 이름이 5자를 초과했습니다.")
+    }
+  }
+}
+
+function validationNameDuplication(names) {
+  for (let i = 0; i < names.length-1; i++) {
+    if (names[i] === names[i+1]) {
+      throw new Error("[ERROR] 자동차 이름이 중복되었습니다.")
     }
   }
 }

@@ -17,17 +17,19 @@
     - [x] 우승자는 한 명 이상 수 있다.
     - [x] 우승자가 여러 명인 경우, 쉼표로 구분한다.
 
-- [x] 입력을 잘못할 경우, throw ~ "[ERROR]"으로 앱을    종료시킨다.
+- [x] 입력을 잘못할 경우, throw ~ "[ERROR]"으로 앱을 종료시킨다.
     - [x] 이름은 5자 이하만 가능하다.
     - [x] 추가 사항: 이름은 반드시 문자열일 필요는 없다.
     - [x] 이동 횟수는 반드시 숫자여야 한다.
     - [x] 이동 횟수 0번은 입력을 제한한다.
+    - [x] 이름은 중복되어서는 안 된다.
 
 
 ## 기능별 테스트 목록: 커밋한 순서대로 진행
 - [x] 각 자동차의 이름을 받는다. (CarNameSplitTest.js)
     - [x] 자동차의 이름을 쉼표로 구분한다. (CarNameSplitTest.js)
     - [x] 이름은 5자 이하만 가능하다. (ApplicationTest.js의 2번째 테스트)
+    - [x] 이름은 중복되어서는 안 된다. (ApplicationTest.js의 2번째 테스트)
 
 - [x] 몇 번 이동할 것인지 입력할 수 있다. (CarMoveNumberValidateTest.js 1번 테스트)
     - [x] 입력한 이동 수는 양수여야 한다. (CarMoveNumberValidateTest.js 2~5번 테스트)
