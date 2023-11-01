@@ -108,25 +108,29 @@
   - [x] 단독 우승자인 경우
   - [x] 공동 우승자인 경우
 
-## 객체 구조
+## 클래스 구조
 
-- App: 프로그램 관장
-  - RacingcarGame: 자동차 게임 관장
-    - Car: 자동차
+- App (src/App.js): 애플리케이션
+  - RacingcarGame (src/RacingcarGame/index.js): 자동차 게임
+    - Car (src/RacingcarGame/Car.js): 자동차
 
-## 객체의 주요 메서드
+## 클래스의 주요 멤버, 메서드
 
 - App
   - `play()`: 앱 실행
 - RacingcarGame
-  - `gameStart()`: 레이싱 게임 시작 및 게임 관장
-  - `getNamesOfCars()`: 자동차 이름 입력
-  - `getNumberOfAttempts()`: 시도할 횟수 입력
-  - `raceStart()`: 레이스 시작 (이동 거리 연산 및 저장)
-  - `printResult()`: 실행 결과 출력
-  - `judgeWinners()`: 최종 우승자 판정
-  - `printWinners()`: 최종 우승자 출력
+  - cars: 자동차 객체를 담고있는 배열 (type: `Car[]`)
+  - numberOfAttempts: 레이싱 총 라운드 수 (자동차가 이동을 시도할 횟수) (type: `number`)
+  - `gameStart()`: 레이싱 게임 시작 및 게임 로직 관장
+    - `getNamesOfCars()`: 자동차 이름 입력받아 반환
+    - `getNumberOfAttempts()`: 시도할 횟수 입력받아 반환
+    - `raceStart()`: 레이스 시작 (라운드 별 모든 자동차 이동 명령)
+    - `printResult()`: 실행 결과 출력
+    - `judgeWinners()`: 최종 우승자 판정 결과 반환
+    - `printWinners()`: 최종 우승자 출력
 - Car
+  - name: 자동차 이름 (type: `string`)
+  - movingDistances: 라운드 별 이동 거리가 저장된 배열 (type: `number[]`)
   - `getName()`: 이름 반환
   - `getMovingDistance(round)`: 해당 라운드까지 이동한 거리 반환
-  - `move(round)`: 해당 라운드 이동
+  - `move(round)`: 해당 라운드 이동 수행
