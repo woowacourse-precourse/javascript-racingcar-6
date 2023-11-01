@@ -1,10 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
-import Car from './Car.js';
-import {
-  OUTPUT_MESSAGES,
-  SEPARATORS,
-  ERROR_MESSAGES,
-} from './utils/messages.js';
+import Car from '../Car';
+import { OUTPUT_MESSAGES, ERROR_MESSAGES } from '../utils/messages';
 
 const WITH_SPACE_REGEX = /\s/;
 
@@ -14,7 +10,7 @@ class InputCars {
       OUTPUT_MESSAGES.input_car_names_message,
     );
 
-    const carNames = input.split(SEPARATORS.car_name_separator);
+    const carNames = input.split(',');
 
     this.#validateCarNames(carNames);
 

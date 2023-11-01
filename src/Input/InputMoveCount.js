@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import { OUTPUT_MESSAGES, ERROR_MESSAGES } from './utils/messages.js';
+import { OUTPUT_MESSAGES, ERROR_MESSAGES } from '../utils/messages';
 
 class InputMoveCount {
   async getMoveCount() {
