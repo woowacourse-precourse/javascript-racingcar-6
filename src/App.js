@@ -1,10 +1,10 @@
-import { getCarName, getMoveNumber } from "./getUserInput";
+import { getCarName, getMoveNumber, getCarsObject } from "./getUserInput";
 import { moveCars } from "./move";
 
 class App {
   async play() {
-    const names = getCarName();
-    const moveNumber = getMoveNumber();
+    const names = await getCarName();
+    const moveNumber = await getMoveNumber();
 
     const cars = getCarsObject(names);
 
