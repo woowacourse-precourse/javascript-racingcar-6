@@ -30,10 +30,10 @@ describe('isValidCarName 함수 테스트', () => {
     invalidCarNames.forEach((name, index) => {
       test(`테스트 케이스 ${name} : ${index}번째`, () => {
         // given
-        const car = new Car(name);
+        const car = new Car('name');
 
         // when
-        const result = () => car.isValidCarName();
+        const result = () => car.isValidCarName(name);
 
         // then
         expect(result).toThrow();
@@ -56,10 +56,10 @@ describe('isValidCarName 함수 테스트', () => {
     validCarNames.forEach((name, index) => {
       test(`테스트 케이스 ${name} : ${index}번째`, () => {
         // given
-        const car = new Car(name);
+        const car = new Car('name');
 
         // when
-        const result = car.isValidCarName();
+        const result = car.isValidCarName(name);
 
         // then
         expect(result).toBeTruthy();
