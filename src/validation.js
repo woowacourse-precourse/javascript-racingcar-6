@@ -3,11 +3,16 @@ class Validate {
     if (cars === undefined) {
       throw new Error('[ERROR] 자동차 이름을 입력해주세요.');
     }
-    cars.split(',').forEach((car) => {
-      if (car.length > 5) {
-        throw new Error('[ERROR] 자동차 이름의 길이가 5 초과 입니다.');
-      }
-    });
+    cars
+      .split(',')
+      .map((car) => car.trim())
+      .forEach((car) => {
+        if (car.length > 5) {
+          throw new Error('[ERROR] 자동차 이름의 길이가 5 초과 입니다.');
+        } else if (car.includes(' ')) {
+          throw new Error('[ERROR] 자동차 이름에 빈 칸이 있습니다.');
+        }
+      });
     return cars;
   }
 

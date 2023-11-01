@@ -8,7 +8,7 @@ class App {
     this.tryNumber = 0;
   }
 
-  updateCars() {
+  moveCars() {
     this.carsStatus = this.carsStatus.map((carStatus) => ({
       ...carStatus,
       move: Random.pickNumberInRange(0, 9) >= 4 ? carStatus.move + 1 : carStatus.move,
@@ -17,7 +17,7 @@ class App {
 
   printCars() {
     this.carsStatus.forEach((carStatus) => {
-      Console.print(`${carStatus.name} : ${'-'.repeat(carStatus.move)}`);
+      Console.print(`${carStatus.name} : ${'-'.repeat(carStatus.move)}`.trim());
     });
     Console.print('');
   }
@@ -36,7 +36,7 @@ class App {
     const carsStatus = await Console.readLineAsync(GAME_MESSAGE.INPUT_CAR);
     this.carsStatus = Validate.carsValidate(carsStatus)
       .split(',')
-      .map((name) => ({ name, move: 0 }));
+      .map((name) => ({ name: name.trim(), move: 0 }));
   }
 
   async inputTryNumber() {
@@ -49,10 +49,10 @@ class App {
     await this.inputTryNumber();
     Console.print('\n실행 결과');
     for (let i = 0; i < this.tryNumber; i += 1) {
-      this.updateCars();
+      this.moveCars();
       this.printCars();
     }
-    Console.print(`최종 우승자 : ${this.calculateWinner().join(', ')}`);
+    Console.print(`최종 우승자 : ${this.calculateWinner().join(', ')}`.trim());
   }
 }
 
