@@ -37,16 +37,17 @@ function carNameCheckEvent() {
 
     const tryNumber = document.createElement('input');
     tryNumber.type='text';
-    const tryNumberCheckBtn = document.createElement('button');
-    tryNumberCheckBtn.innerHTML = "확인";
-    tryNumberCheckBtn.onclick = tryNumberCheckEvent;
+    const startRaceBtn = document.createElement('button');
+    startRaceBtn.innerHTML = "확인";
+    startRaceBtn.onclick = startRaveEvent;
 
     body.appendChild(tryNumQuestion);
     body.appendChild(tryNumber);
-    body.appendChild(tryNumberCheckBtn);
+    body.appendChild(startRaceBtn);
 
-    // tryNumberCheckEvent 시작
-    function tryNumberCheckEvent() {
+    // 경주 게임 시작 함수
+    // 시도 횟수 관련 에러(숫자 아님) 예외 처리 먼저
+    function startRaveEvent() {
       console.log(isNaN(tryNumber.value));
       if (isNaN(tryNumber.value) === true) {
         hasError = true;
@@ -55,6 +56,32 @@ function carNameCheckEvent() {
       }
     }
   }
+
 }
 
+// 경주 게임 시작 함수
+// 시도 횟수 관련 에러(숫자 아님) 예외 처리 먼저
+function startRaveEvent() {
+  console.log(isNaN(tryNumber.value));
+  if (isNaN(tryNumber.value) === true) {
+    hasError = true;
+    alert("[ERROR] 숫자가 잘못된 형식입니다.");
+    console.log("[ERROR] 숫자가 잘못된 형식입니다.");
+  }
+  // 에러 없으면
+  else {
+    const gameStart = document.querySelector('h3');
+    gameStart.innerHTML = "실행 결과";
+    const gameProcess = document.querySelector('div');
+    const gameResult = document.querySelector('h3');
+    gameResult.innerHTML =  `최종 우승자: ${}`
 
+    
+    body.appendChild(gameStart);
+    body.appendChild(gameProcess);
+    body.appendChild(gameResult);
+
+
+  }
+
+}
