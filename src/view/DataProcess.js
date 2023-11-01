@@ -6,6 +6,9 @@ const DataProcess = {
   transOutputFormDistance: (carName, distance) => {
     OutputView.outputDistanceCar(`${carName} : ${DataProcess.transDistanceToHyphen(distance)}`);
   },
+  transOutputFormWinner: (winners) => {
+    OutputView.outputWinnerName(winners.reduce((str, winner) => str + ', ' + winner));
+  }
 }
 
 export default DataProcess;

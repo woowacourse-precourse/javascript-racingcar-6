@@ -43,5 +43,19 @@ describe("DataProcess transOutputFormDistance", () => {
 			DataProcess.transOutputFormDistance(carName, 0);
 			expect(OutputView.outputDistanceCar).toHaveBeenCalledWith(`${carName} : ${distance}`);
 		});
+	});
+});
+
+describe("DataProcess transOutputFormWinner", () => {
+	
+	test("transOutputFormWinner은 Function type이다 ", () => {
+		expect(typeof DataProcess.transOutputFormWinner).toBe("function");
+	})
+	test('transOutputFormWinner은 정상적으로 OutputView.outputWinnerName 값을 전달한다 ', () => {
+		OutputView.outputWinnerName = jest.fn();
+		testConstant.TransOutputFormWinner.forEach (({input, expected}) => {
+			DataProcess.transOutputFormWinner(input);
+			expect(OutputView.outputWinnerName).toHaveBeenCalledWith(expected);
+		});
 	})
 }) 

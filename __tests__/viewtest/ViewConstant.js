@@ -27,6 +27,13 @@ const TransOutputFormDistance = [
     { carName: 'a', distance: "" },
 ]
 
+const TransOutputFormWinner = [
+    {input: ["test1", "test2", "test3"], expected: "test1, test2, test3"}, 
+    {input: ["a", "b", "c"], expected: "a, b, c"},
+    {input: ["123", "", null], expected: "test1, test2, test3"},
+]
+
+
 const InOutputView = [
     { input: 3, distance: "---" },
     { input: 0, distance: "" },
@@ -42,6 +49,7 @@ export default {
     DivideCarName,
     TransDistanceToHyphen,
     TransOutputFormDistance,
+    TransOutputFormWinner,
     InOutputView,
     GAME_END_MESSAGE,
 };
