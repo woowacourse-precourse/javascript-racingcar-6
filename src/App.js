@@ -1,27 +1,14 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import { MESSAGE, ERROR } from './constants/index.js';
 import { Race } from './Game/Race.js';
+import { UserInputCarNames } from './Game/UserInputCarNames.js';
 
 class App {
   async play() {
-    const CARS = await this.getCarNames();
+    const CARS = await UserInputCarNames.getCarNames();
     const ROUNDS = await this.getNumberOfRounds();
     const RACE = new Race(CARS, ROUNDS);
     RACE.runRace();
-  }
-
-  async getCarNames() {
-    const CARS = [];
-    const NAMES = await MissionUtils.Console.readLineAsync(
-      MESSAGE.carNameForStart,
-    );
-    NAMES.split(',').forEach((name) => {
-      if (name.length > 5) {
-        throw new Error(ERROR.carNameInputLong);
-      }
-      CARS.push([name, '']);
-    });
-    return CARS;
   }
 
   async getNumberOfRounds() {
