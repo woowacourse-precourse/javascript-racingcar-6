@@ -1,6 +1,7 @@
 import { Console } from "@woowacourse/mission-utils";
+
+import InputCommand from "./InputView.js";
 import { GAME_MESSAGE } from "../constants/gameMessage.js";
-import { CarNameGenerator } from "../utils/CarNameGenerator.js";
 
 
 export default class OutputView {
@@ -9,8 +10,13 @@ export default class OutputView {
   }
 
   async printCarName() {
-    const carNames = await CarNameGenerator();
-    this.#print(carNames);
+    const inputCommand = new InputCommand(); 
+    try {
+      const carNames = await inputCommand.carName(); 
+      this.#print(carNames);
+    } catch (error) {
+      this.#print(error.message);
+    }
   }
 
   #print(text) {
