@@ -21,6 +21,7 @@ class App {
     await this.setupGame();
     this.printGameStartMessage();
     this.runCarRaceGame();
+    this.selectWinner();
   }
 
   async setupGame() {
@@ -67,6 +68,17 @@ class App {
       Console.print(`${name} : ${racing}`);
     });
     Console.print('');
+  }
+
+  selectWinner() {
+    const maxRacingLength = Math.max(
+      ...this.cars.map((car) => car.getRacingLength())
+    );
+
+    const winners = this.cars
+      .filter((car) => car.getRacingLength() === maxRacingLength)
+      .map((user) => user.name)
+      .join(', ');
   }
 }
 
