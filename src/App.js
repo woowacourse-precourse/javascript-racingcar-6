@@ -1,4 +1,5 @@
 class App {
+  #test
   async play() {}
 }
 
