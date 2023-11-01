@@ -1,5 +1,5 @@
 import App from '../src/App.js';
-import { Console } from '@woowacourse/mission-utils';
+import { Console, Random } from '@woowacourse/mission-utils';
 
 describe('Racing 게임 테스트', () => {
   let app;
@@ -28,5 +28,19 @@ describe('Racing 게임 테스트', () => {
     await expect(app.userInputNumberOfMoves()).rejects.toThrow(
       '[ERROR] 숫자가 잘못된 형식입니다.',
     );
+  });
+
+  test('resultByRandomNumber 매서드 테스트', async () => {
+    const mockPickNumberInRange = jest.spyOn(Random, 'pickNumberInRange');
+    mockPickNumberInRange.mockReturnValueOnce(6).mockReturnValueOnce(1);
+
+    app.carNames = ['yj', 'bibi'];
+
+    const result = app.resultByRandomNumber();
+
+    expect(result).toEqual({
+      yj: '-',
+      bibi: '',
+    });
   });
 });
