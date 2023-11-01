@@ -12,8 +12,8 @@ class Car {
   }
 
   move() { // 차량의 위치를 - 로 표시하는 구문
-    const randomNumber = MissionUtils.Random.pickNumberInRange(1, 9);
-    if (randomNumber >= 4) {
+    const RANDOMNUMBER = MissionUtils.Random.pickNumberInRange(1, 9);
+    if (RANDOMNUMBER >= 4) {
       this.position += '-';
     }
   }

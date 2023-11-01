@@ -7,13 +7,13 @@ class RacingCarModel {
   }
 
   setCars(carNames) {
-    const carNameList = carNames.split(",");
+    const CARNAMELIST = carNames.split(",");
 
-    if (carNameList.length > 10) {
+    if (CARNAMELIST.length > 10) {
       throw new Error("[ERROR] 차량은 최대 10종입니다.");
     }
 
-    carNameList.forEach(name => {
+    CARNAMELIST.forEach(name => {
       const trimmedName = name.trim();
       if (trimmedName.length > 0 && trimmedName.length <= 5)
         this.cars.push(new Car(trimmedName));

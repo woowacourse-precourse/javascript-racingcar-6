@@ -8,11 +8,11 @@ class App {
   }
 
   async play() {
-    const carNames = await this.view.getCarNamesInput();
-    const roundsInput = await this.view.getRoundsInput();
+    const CARNAMES = await this.view.getCarNamesInput();
+    const ROUNDINPUT = await this.view.getRoundsInput();
 
-    this.model.setCars(carNames);
-    this.model.setRounds(roundsInput);
+    this.model.setCars(CARNAMES);
+    this.model.setRounds(ROUNDINPUT);
     this.model.validateCarNames();
 
     for (let i = 0; i < this.model.rounds; i++) {
@@ -28,5 +28,5 @@ class App {
 
 export default App;
 
-const racingCargame = new App();
-racingCargame.play();
+const racingCarGame = new App();
+racingCarGame.play();
