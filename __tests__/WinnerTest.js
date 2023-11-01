@@ -20,4 +20,18 @@ describe('게임 우승자 선정', () => {
 
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(RESULT));
   });
+  
+  test('공동우승 시 최종 우승자 두명이상 출력한다.', () => {
+    const CARS = {
+        car1: '---',
+        car2: '-',
+        car3: '---',
+    };
+
+    const RESULT = '최종 우승자 : car1, car3';
+    const logSpy = getLogSpy();
+    determineWinner(CARS);
+
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(RESULT));
+  });
 });
