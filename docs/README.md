@@ -2,7 +2,6 @@
 ## [요약](#요약)
 N대의 자동차 중 가장 멀리 이동한 자동차가 우승하는 게임
 
-d
 ## 입력
 - 자동차의 이름
 - 각 자동차마다 5자 이하로 한다.
@@ -50,11 +49,11 @@ d
 
 - `validata` - 값을 유효성을 검증하는 객체
 
-- [x] controller(dataProcess) 에서 전달 받은 자동차 이름의 유효성을 검증한다.<br>
+- [x] view(inputView) 에서 전달 받은 자동차 이름의 유효성을 검증한다.<br>
 1. 이름이 5자 이하인지를 체크한다. 빈 문자열이나 5자 초과는 실패로 간주한다.
 2. 유효한 문자인지 체크한다. 출력이 불가능한 문자는 실패로 간주한다.<br>
 
-    `성공 시` model(car) 로 데이터를 전달한다.
+    `성공 시` controller(ConductGame) 로 데이터를 전달한다.
 
     `실패 시` Error를 throw한다.<br>
 
@@ -62,7 +61,7 @@ d
 1. 숫자( int )인지를 체크한다. 숫자가 아닐 시 실패로 간주한다.
 2. 0에서 1000회 사이인지를 체크한다. 이외의 수는 실패로 간주한다.
 
-    `성공 시` model(car) 로 데이터를 전달한다.
+    `성공 시` controller(ConductGame) 로 데이터를 전달한다.
 
     `실패 시` Error를 throw한다.<br>
 
@@ -87,3 +86,11 @@ d
 - `4미만일 경우` - 함수를 종료한다.
 
 - [ ] 누적 거리 변수에 인자로 받은 수를 더해서 저장한다.
+
+## [constant](#constant)
+
+- `ErrorMessage` - ErrorMessage 상수 문자열<br>
+
+- `InputMessage` - InputMessage 상수 문자열<br>
+
+- `OutputMessage` - OutputMessage 상수 문자열 <br>
