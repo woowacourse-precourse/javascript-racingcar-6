@@ -91,7 +91,6 @@ class App {
       console.log('최종 우승자: ' + winners);
     } catch (error) {
       console.error(error.message);
-      process.exit(1);
     }
   }
 }
