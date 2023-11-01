@@ -1,7 +1,11 @@
 import { Console } from "@woowacourse/mission-utils";
-import { getCarName, getMoveNumber, getCarsMovedCount } from "./getUserInput";
-import { moveCars, printResult } from "./move";
-import { getWinner } from "./winner";
+import {
+  getCarName,
+  getMoveNumber,
+  getCarsMovedCount,
+} from "./functions/input";
+import { moveCars, printResult } from "./functions/move";
+import { getWinner } from "./functions/winner";
 
 class App {
   async play() {
