@@ -1,4 +1,4 @@
-import { ERROR_MESSAGE } from "../constants/ErrorMessages.js";
+import { ERROR_MESSAGE } from '../constants/ErrorMessages.js';
 
 const errorMessage = (message, input) => `[ERROR] ${message} 입력값 : ${input}`;
 

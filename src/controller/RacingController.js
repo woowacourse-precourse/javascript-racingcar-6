@@ -1,7 +1,7 @@
-import RacingCarValidator from "../validate/RacingCarValidator.js";
-import RacingCar from "../model/RacingCar.js";
-import InputView from "../view/InputView.js";
-import OutputView from "../view/OutputView.js";
+import RacingCarValidator from '../validate/RacingCarValidator.js';
+import RacingCar from '../model/RacingCar.js';
+import InputView from '../view/InputView.js';
+import OutputView from '../view/OutputView.js';
 
 class RacingController {
   #inputView;
@@ -57,7 +57,7 @@ class RacingController {
     this.#racingCarArray.forEach((car) => {
       this.#outputView.printRacingCarState(car);
     });
-    
+
     this.#outputView.printNewLine();
   }
 

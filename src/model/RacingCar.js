@@ -1,4 +1,4 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
+import { MissionUtils } from '@woowacourse/mission-utils';
 import { RACINGCAR_DISPLACEMENT } from "../constants/ConsoleMessages.js";
 import { SETTINGS } from "../constants/Settings.js";
 

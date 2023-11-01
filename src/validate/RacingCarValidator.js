@@ -1,4 +1,4 @@
-import { DuplicatedError, RacingCarNameError, RetryCountError } from "../error/CustomErrors.js";
+import { DuplicatedError, RacingCarNameError, RetryCountError } from '../error/CustomErrors.js';
 
 class RacingCarValidator {
   #isValidName(input) {
@@ -20,7 +20,7 @@ class RacingCarValidator {
 
   isValidCount(input) {
     const regExp = /^[0-9]*$/;
-    
+
     if (!regExp.test(input) || input === '0') {
       throw new RetryCountError(input);
     }
