@@ -1,12 +1,12 @@
 import { Console, Random} from "@woowacourse/mission-utils";
 import message from "./Message.js"
-import CONDITION from "./Constant.js";
+import CONSTANT from "./Constant.js";
 
 class App {
   async play() {
     const userInput = await getUserInput(message.notifyStarting);
     const carNameArray = processInput(userInput);
-    const racingCars = carNameArray.map(element => new RacingCar(element, CONDITION));     
+    const racingCars = carNameArray.map(element => new RacingCar(element, CONSTANT.CONDITION));     
     
     let racingRounds = await getUserInput(message.askRounds);
     printMessage(message.progress);
