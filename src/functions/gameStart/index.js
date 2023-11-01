@@ -16,7 +16,7 @@ const invalidCarName = carList => {
 
 const invalidPlayNum = (inputPlayNum, playNum) => {
   if (inputPlayNum.length === 0) throw Error(ERROR_MESSAGE.playNum.noInput);
-  if (Number.isNaN(playNum) || !Number.isInteger(playNum))
+  if (Number.isNaN(playNum) || !Number.isInteger(playNum) || playNum < 0)
     throw Error(ERROR_MESSAGE.playNum.includeStr);
   if (playNum === 0) throw Error(ERROR_MESSAGE.playNum.includeZero);
 };
