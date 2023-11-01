@@ -84,18 +84,18 @@ describe('자동차 경주 게임', () => {
 
   test('각 자동차별 Car 객체 생성 확인', () => {
     // given
-    const PLAYER_NAMES = ['pobi', 'woni', 'woowa'];
-    const NUMBER_OF_PLAYERS = PLAYER_NAMES.length;
+    const playerNames = ['pobi', 'woni', 'woowa'];
+    const numberOfPlayers = playerNames.length;
     const STARTING_MOVES = 0;
 
     // when
     const app = new App();
-    const players = app.createPlayers(PLAYER_NAMES);
+    const players = app.createPlayers(playerNames);
 
     // then
-    expect(players.length).toBe(NUMBER_OF_PLAYERS);
+    expect(players.length).toBe(numberOfPlayers);
     players.forEach((player, i) => {
-      expect(player.name).toBe(PLAYER_NAMES[i]);
+      expect(player.name).toBe(playerNames[i]);
       expect(player.moves).toBe(STARTING_MOVES);
     });
   });
