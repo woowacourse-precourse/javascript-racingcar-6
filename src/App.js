@@ -15,19 +15,19 @@ class App {
     const COUNT = Number(userInput);
     if(isNaN(COUNT) || COUNT > 9 || COUNT < 0)  throw new Error('[ERROR] 잘못된 횟수를 입력했습니다. 0부터 9까지의 정수를 입력해 주세요.')
 
-    Console.print('실행 결과');
+    Console.print('\n실행 결과');
 
-    carRace(CAR, COUNT);
+    const RACED_CAR = carRace(CAR, COUNT);
+    const WINNERS = findWinner(RACED_CAR);
+
+    Console.print(WINNERS);
 
   }
 }
 
 export default App;
 
-export const carRace = async (CAR, COUNT) => {
-  console.log(CAR);
-  console.log(COUNT);
-
+export const carRace = (CAR, COUNT) => {
   for(let i = 0; i<COUNT; i++){
     CAR.forEach((car)=>{
       const RANDOM_NUMBER = Random.pickNumberInRange(0, 9)
@@ -36,4 +36,13 @@ export const carRace = async (CAR, COUNT) => {
     })
     Console.print('');
   }
+  return CAR;
+}
+
+export const findWinner = (RACED_CAR) => {
+  const maxDistance = Math.max(...RACED_CAR.map(object=>object.distance));
+  const winnerObject = RACED_CAR.filter(object => object.distance === maxDistance);
+  const winnerArray = winnerObject.map(object=>object.name);
+
+  return winnerArray.join(', ');
 }
