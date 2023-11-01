@@ -43,7 +43,7 @@ class GameController {
 
   async race(roundNumber) {
     this.#outputView.printRoundResultMessage();
-    for (let i = 0; i <= roundNumber; i += 1) {
+    for (let i = 1; i <= roundNumber; i += 1) {
       this.#carService.race();
       const carList = this.#carService.getCarList();
       this.#outputView.printCarList(carList);

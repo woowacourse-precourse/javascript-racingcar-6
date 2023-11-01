@@ -21,6 +21,12 @@ class InputValidator {
     return isValid || this.throwError(ERROR_MESSAGE.isNotNumber);
   }
 
+  static checkIsNotZero(query) {
+    const isValid = Number(query) !== 0;
+
+    return isValid || this.throwError(ERROR_MESSAGE.isZero);
+  }
+
   static checkhasDuplicateName(query) {
     const isValid = new Set(query).size === query.length;
 
@@ -55,6 +61,7 @@ class InputValidator {
 
   static validateRoundNumber(query) {
     this.checkIsNumber(query);
+    this.checkIsZero(query);
 
     return query;
   }
