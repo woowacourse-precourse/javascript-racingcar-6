@@ -83,10 +83,41 @@ describe("App class", () => {
       const testInput = "5";
       mockInput(testInput);
       
-      const result = await app.getRound();
+      const result = await app.getRoundNumber();
 
       expect(Console.readLineAsync).toHaveBeenCalledWith("시도할 횟수는 몇 회인가요?\n");
       expect(result).toBe(5);
+    });
+  });
+
+  describe("sanitizeRoundNumber method", () => {
+    let app;
+    beforeEach(() => {
+      app = new App();
+    });
+
+    test("숫자에 공백이 없을 때", () => {
+      const input = "3";
+      const result = app.sanitizeRoundNumber(input);
+      expect(result).toEqual(3);
+    });
+
+    test("앞뒤에 공백이 있을 때", () => {
+      const input = " 3  ";
+      const result = app.sanitizeRoundNumber(input);
+      expect(result).toEqual(3);
+    });
+
+    test("공백만 있을 때", () => {
+      const input = "     ";
+      const result = app.sanitizeRoundNumber(input);
+      expect(result).toEqual(NaN);
+    });
+
+    test("숫자 사이에 공백이 있을 때", () => {
+      const input = "1 0";
+      const result = app.sanitizeRoundNumber(input);
+      expect(result).toEqual(10);
     });
   });
 });
