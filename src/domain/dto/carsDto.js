@@ -3,7 +3,7 @@ import { CarDto } from "./carDto";
 // @ts-check
 export class CarsDto {
   /**
-   * @type {CarsDto[]}
+   * @type {CarDto[]}
    */
   #cars;
 
