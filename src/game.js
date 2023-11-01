@@ -91,3 +91,11 @@ export const printCarsMovementInfo = (carsMovementInfo) => {
 
   Console.print(result.join('\n\n'))
 }
+
+/**
+ * 우승자를 출력하는 함수
+ * @param {string[]} winners
+ */
+export const printWinners = (winners) => {
+  Console.print(`최종 우승자 : ${winners.join(', ')}`);
+}

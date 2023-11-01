@@ -1,5 +1,12 @@
 import { Random, Console } from '@woowacourse/mission-utils';
-import {getCarsMovementInfo, getMovingResult, getWinners, hasMovedForward, printCarsMovementInfo} from '../src/game.js';
+import {
+  getCarsMovementInfo,
+  getMovingResult,
+  getWinners,
+  hasMovedForward,
+  printCarsMovementInfo,
+  printWinners
+} from '../src/game.js';
 
 describe('게임 유틸', () => {
   beforeEach(() => {
@@ -88,4 +95,25 @@ describe('게임 유틸', () => {
     })
   })
 
+  describe('printWinners', () => {
+    test('string 배열을 입력하면, "최종 우승자 : " 로 시작하는 문자열이 출력되어야 한다.', () => {
+      const winners = ['foo', 'bar'];
+      const printSpy = jest.spyOn(Console, 'print');
+
+      printWinners(winners);
+      const printOutput = printSpy.mock.calls.map((args) => args[0]).join('\n');
+
+      expect(printOutput.startsWith('최종 우승자 : ')).toBe(true);
+    })
+
+    test('string 배열을 입력했을 때 출력되는 값에는 해당 string 요소들이 ","를 구분자로 붙은 문자열이 포함되어야 한다.', () => {
+      const winners = ['foo', 'bar'];
+      const printSpy = jest.spyOn(Console, 'print');
+
+      printWinners(winners);
+      const printOutput = printSpy.mock.calls.map((args) => args[0]).join('\n');
+
+      expect(printOutput).toContain(winners.join(', '));
+    })
+  })
 })
