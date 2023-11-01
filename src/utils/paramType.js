@@ -48,7 +48,7 @@ export const paramType = (target, type) => {
 
     if (!(target instanceof type)) {
       throw new ReferenceTypeError(
-        `target : ${target.constructor.name}은 (${type}) 타입이 아닙니다 !`
+        `target : ${target.constructor.name}은 (${type.name}) 타입이 아닙니다 !`
       );
     }
   }
