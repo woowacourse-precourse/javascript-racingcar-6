@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="22150277-f343-40ec-9b36-b4c29b3ff153" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__tests__/ApplicationTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/ApplicationTest.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,6 +43,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/constants/message" />
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/carRacing" />
     </key>
   </component>
@@ -60,7 +64,7 @@
       <workItem from="1698665655212" duration="26478000" />
       <workItem from="1698754960381" duration="16631000" />
       <workItem from="1698813619159" duration="39000" />
-      <workItem from="1698813684774" duration="123000" />
+      <workItem from="1698813684774" duration="17786000" />
     </task>
     <servers />
   </component>
