@@ -1,5 +1,5 @@
 import { Console, Random } from '@woowacourse/mission-utils';
-import ErrorCheck from './errorCheck.js';
+import ErrorCheck from './ErrorCheck.js';
 import {
   PLAYER_NAME_ASK_MSG,
   ATTEMPT_NUM_ASK_MSG,

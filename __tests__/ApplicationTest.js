@@ -1,11 +1,12 @@
-import App from "../src/App.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
-import ErrorCheck from "../src/errorCheck.js";
+import App from "../src/App.js";
 import { 
   FORWARD_CONDITIONS,
   INPUT_NUMBER_ERR_MSG,
   PLAYER_NUMBER_ERR_MSG 
 } from "../src/constant.js";
+import ErrorCheck from "../src/ErrorCheck.js";
+
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -135,9 +136,10 @@ describe("자동차 경주 게임", () => {
   //numberCheck()
   test("입력이 number 타입이 아닐 때", () => {
     //when
-    expect(() => ErrorCheck.numberCheck(Number("hello"))).toThrow(INPUT_NUMBER_ERR_MSG);
-    expect(() => ErrorCheck.numberCheck(5)).not.toThrow(INPUT_NUMBER_ERR_MSG);
-  });
+    expect(() => ErrorCheck.numberCheck(Number("hello")))
+      .toThrow(INPUT_NUMBER_ERR_MSG);
+    expect(() => ErrorCheck.numberCheck(5))
+      .not.toThrow(INPUT_NUMBER_ERR_MSG);  });
 
   //playerNumberCheck()
   test("플레이어의 수가 2명 이하일 때", () => {
