@@ -1,6 +1,9 @@
+import gameStart from "./game.js";
+
 class App {
-  // eslint-disable-next-line class-methods-use-this
-  async play() { }
+  async play() {
+    await gameStart();
+  }
 }
 
 export default App;
