@@ -16,6 +16,7 @@ const findWhoIsWinner = (calcuratedScoreBoard) => {
       winner.push(car);
       return;
     }
+
     if (car.score.length === winnerLastIndex) {
       winner.push(car);
     }

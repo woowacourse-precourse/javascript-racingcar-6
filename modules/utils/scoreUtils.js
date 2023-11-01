@@ -12,4 +12,4 @@ const createRandomNumber = () => {
 
 const checkCanMove = () => createRandomNumber() >= RANGE_NUMBER.canMove;
 
-export { createRandomNumber, checkCanMove };
+export { checkCanMove };
