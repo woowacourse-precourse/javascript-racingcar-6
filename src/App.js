@@ -6,6 +6,7 @@ import { validateUniqueNames, validateName } from './utils/validation.js';
 class App {
   constructor() {
     this.cars = [];
+    this.trial = 0;
   }
 
   async play() {
@@ -22,6 +23,9 @@ class App {
       validateName(name);
       this.cars.push(new Car(name));
     });
+
+    const trialNumber = await Console.readLineAsync(MESSAGES.INPUT_TRIAL);
+    this.trial = Number(trialNumber);
   }
 }
 
