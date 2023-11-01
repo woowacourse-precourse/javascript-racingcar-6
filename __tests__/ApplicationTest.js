@@ -138,5 +138,21 @@ describe('자동차 경주 게임', () => {
         await expect(app.play()).rejects.toThrow('[ERROR]');
       });
     });
+
+    test.each([[['pobi,woni', '1']], [['pobi,woni,hello', '1']]])(
+      '정상 입력값',
+      async inputs => {
+        const logSpy = getLogSpy();
+
+        mockQuestions(inputs);
+
+        const app = new App();
+        await app.play();
+
+        expect(logSpy).toHaveBeenCalledWith(
+          expect.stringContaining('실행 결과'),
+        );
+      },
+    );
   });
 });
