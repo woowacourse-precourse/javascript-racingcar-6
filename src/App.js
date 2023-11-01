@@ -1,5 +1,5 @@
 import {MissionUtils} from "@woowacourse/mission-utils";
-import * as consts from "./consts.js";
+import * as constants from "./constants.js";
 /*
 ### 기능 목록
 
@@ -43,7 +43,8 @@ class App {
 
     startRace(cars, attemptCount, progress);
 
-    checkWinner(progress);
+    const winners = getWinners(progress);
+    Console.print("최종 우승자 : " + winners.join(", "));
   }
 }
 
@@ -67,19 +68,19 @@ const initProgress = (progress, carNames) => {
   }
 };
 
-const checkNameValidation = (name) => {
-  if (name.length > 5) throw Error(consts.NAME_LENGTH_ERROR_MESSAGE);
+export const checkNameValidation = (name) => {
+  if (name.length > 5) throw Error(constants.NAME_LENGTH_ERROR_MESSAGE);
 };
 
-const checkDuplication = (cars) => {
+export const checkDuplication = (cars) => {
   const carsLength = cars.length;
   const carsSet = new Set(cars);
   const carsSetLength = carsSet.size;
-  if (carsLength !== carsSetLength) throw Error(consts.NAMES_DUPLICATION_ERROR_MESSAGE);
+  if (carsLength !== carsSetLength) throw Error(constants.CARS_DUPLICATION_ERROR_MESSAGE);
 };
 
-const checkInputCount = (inputCount) => {
-  if (!typeof inputCount === consts.STRING_TYPE || isNaN(inputCount)) throw Error(consts.COUNT_TYPE_ERROR_MESSAGE);
+export const checkInputCount = (inputCount) => {
+  if (!typeof inputCount === constants.STRING_TYPE || isNaN(inputCount)) throw Error(constants.COUNT_TYPE_ERROR_MESSAGE);
 };
 
 const printProgress = (progress) => {
@@ -91,11 +92,11 @@ const printProgress = (progress) => {
   Console.print(total);
 };
 
-const checkWinner = (progress) => {
+const getWinners = (progress) => {
   const winners = [];
   const maxCount = Math.max(...Object.values(progress));
   for (let car in progress) {
     if (progress[car] === maxCount) winners.push(car);
   }
-  Console.print("최종 우승자 : " + winners.join(", "));
+  return winners;
 };
