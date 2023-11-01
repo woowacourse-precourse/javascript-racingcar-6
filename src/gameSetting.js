@@ -24,7 +24,7 @@ const checkRound = round => {
   const numberRound = Number(round);
   if (Number.isNaN(numberRound)) throw new Error(ERROR_MESSAGE.roundTypeError);
   if (round <= 0) throw new Error(ERROR_MESSAGE.roundRangeError);
-  if (numberRound !== parseInt(numberRound, 10))
+  if (!Number.isInteger(numberRound))
     throw new Error(ERROR_MESSAGE.roundIntegerError);
   return true;
 };
