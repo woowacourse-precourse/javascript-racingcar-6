@@ -88,9 +88,7 @@ class App {
       (car) => racingCarList.get(car) === longestDistance
     );
 
-    return racingCarWinner.length > 1
-      ? racingCarWinner.join(', ')
-      : racingCarWinner.join('');
+    return racingCarWinner.join(',');
   }
 
   isValidCarNamesInput(carNameList) {
