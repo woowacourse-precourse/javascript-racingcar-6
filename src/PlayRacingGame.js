@@ -11,16 +11,19 @@ class PlayRacingGame {
 
     if (checkSeparator(input)) {
       const names = input.split(",");
-
+      let flag = true;
       names.map((ele) => {
         try {
           checkLength(ele);
         } catch (e) {
+          flag = false;
           console.error(e);
         }
       });
-
-      this.racing(names);
+      if(flag){
+        this.racing(names);
+      }
+      
     } else {
       checkLength(input);
     }
@@ -28,8 +31,12 @@ class PlayRacingGame {
 
   async getNumber() {
     const num = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
-
-    checkIsNumber(num);
+    try{
+      checkIsNumber(num);
+    }catch(e){
+      console.error(e);
+    }
+    
 
     return Number(num);
   }
@@ -50,6 +57,8 @@ class PlayRacingGame {
       }
       this.printCnt(names, cnt);
     }
+
+    this.findWinner(names, cnt);
   }
 
   makeRandomNumber() {
@@ -62,6 +71,19 @@ class PlayRacingGame {
     }
 
     Console.print("\n");
+  }
+
+  findWinner(names, cnt){
+    const winCnt = Math.max(...cnt);
+    const winners = [];
+    
+    for(let i=0; i<names.length; i++){
+      if(cnt[i] === winCnt){
+        winners.push(names[i]);
+      }
+    }
+
+    Console.print(`최종 우승자는 : ${winners.join(", ")}`);
   }
 }
 
