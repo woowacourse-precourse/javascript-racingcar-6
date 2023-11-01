@@ -32,6 +32,7 @@ class InputCarsException {
   }
 
   check() {
+    // self-feedback: 예외가 있는지 체크하는 곳인데 여기서 문자열 가공을 하는 부분이 들어있다. 이를 다른 객체로 분리해야할 듯 하다.
     // 공백인지 확인해보기
     this.checkCarsNameIsEmptyException(this.cars);
     // 참가 자동차 분리

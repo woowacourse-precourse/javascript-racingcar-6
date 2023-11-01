@@ -21,6 +21,7 @@ class InputTryCountException {
   }
 
   check() {
+    // self-feedback: 예외가 있는지 확인하는 부분인데, 여기서 받은 인자를 체크하는 것이 맞을까?
     this.tryCount = Number(this.tryCount);
     this.checkTryCountIsNumberException(this.tryCount);
     this.checkTryCountMinimumException(this.tryCount);
