@@ -11,12 +11,9 @@ describe('Valdation Test', () => {
     [','],
     ['aaa,aaa'],
     ['pobi,pobi'],
-  ])('이름의 길이, 중복, NULL 입력값 테스트', inputs => {
-    expect(() => {
-      // when
-      new CarNameValidation(inputs);
-      // then
-    }).toThrow('[ERROR]');
+  ])('이름의 길이, 중복, NULL 입력값 테스트', (inputs) => {
+    // when & then
+    expect(() => new CarNameValidation(inputs)).toThrow('[ERROR]');
   });
 
   test.each([
@@ -29,11 +26,8 @@ describe('Valdation Test', () => {
     [','],
     [' '],
     ['\t'],
-  ])('Track 입력 자연수 여부 테스트', inputs => {
-    expect(() => {
-      // when
-      new TrackCntValidation(inputs);
-      // then
-    }).toThrow('[ERROR]');
+  ])('Track 입력 자연수 여부 테스트', (inputs) => {
+    // when & then
+    expect(() => new TrackCntValidation(inputs)).toThrow('[ERROR]');
   });
 });

@@ -19,6 +19,7 @@ describe('Car Model Test', () => {
     const car = new Car();
     car.setCarsPosition(carName);
     car.setCarsRelocation();
+
     // then
     await expect(car.getCarsPosition()).toEqual([
       { name: 'a', position: '' },
