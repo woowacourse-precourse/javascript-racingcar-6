@@ -19,5 +19,17 @@ class Garage {
       0,
     );
   }
+  
+  findCarNamesWithMaxSteps() {
+    const maxStepCount = this.#getMaxStepCount();
+    const names = [];
+
+    this.#carList.forEach((car) => {
+      const name = car.isStepCountEqualToMax(maxStepCount);
+      if (name) names.push(name);
+    });
+
+    return Array.from(names);
+  }
 }
 export default Garage;
