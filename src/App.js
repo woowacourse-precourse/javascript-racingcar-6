@@ -38,15 +38,16 @@ function moveCar() {
   });
 }
 
-
-
-function 
-
+// 전진 표현
+function distance() {
+  this.carArray.forEach((car) => {
+    const distanceText = '-'.repeat(car.distance);
+    MissionUtils.Console.print(`${car.name} : ${distanceText}`);
+  });
+}
 
 
 class App {
-
-
 
   async play() {}
 }
