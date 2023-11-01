@@ -11,7 +11,7 @@ class App {
   }
 
   // 시도 횟수 입력에 대한 유효성 테스트
-  static #checkValidRoundNum(input) {
+  static #checkValidRoundNumber(input) {
     if (isNaN(input) || input < 1)
       throw new Error("[ERROR] 시도 횟수는 1 이상의 숫자여야합니다.");
   }
@@ -32,13 +32,13 @@ class App {
     this.#cars = carNameArray.map((carName) => new Car(carName));
   }
 
-  static async #inputRoundNum() {
+  static async #inputRoundNumber() {
     const roundInputs = await MissionUtils.Console.readLineAsync(
       "시도할 횟수는 몇 회인가요?"
     );
-    const roundNum = parseInt(roundInputs);
-    App.#checkValidRoundNum(roundNum);
-    return roundNum;
+    const roundNumber = parseInt(roundInputs);
+    App.#checkValidRoundNumber(roundNumber);
+    return roundNumber;
   }
 
   #playRound() {
@@ -64,9 +64,9 @@ class App {
 
   async play() {
     await this.#inputCar();
-    const roundNum = await App.#inputRoundNum();
+    const roundNumber = await App.#inputRoundNumber();
     MissionUtils.Console.print("실행 결과");
-    for (let i = 1; i <= roundNum; i++) {
+    for (let i = 1; i <= roundNumber; i++) {
       this.#playRound();
     }
     this.#printFinalWinner();
