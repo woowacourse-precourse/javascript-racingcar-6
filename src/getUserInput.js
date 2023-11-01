@@ -1,11 +1,33 @@
 import { Console } from "@woowacourse/mission-utils";
 
+const VALID_CAR_NAME_LENGTH = 5;
+
+function isValidCarName(string) {
+  // 이름의 길이가 올바른지 체크하기
+  if (string.length === 0) return false;
+  if (string.length > VALID_CAR_NAME_LENGTH) return false;
+
+  return true;
+}
+
+function isValidCarNames(names) {
+  // 각각이 올바른 이름이 맞는지 체크하기
+  const validNameList = names.filter((name) => isValidCarName(name));
+  if (names.length != validNameList.length) return false;
+
+  return true;
+}
+
 export async function getCarName() {
   const rawInput = await Console.readLineAsync(
     "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
   );
 
-  return rawInput;
+  const names = rawInput.split(",");
+  if (!isValidCarNames(names))
+    throw Error("[ERROR] 이름이 올바른 형식이 아닙니다!");
+
+  return names;
 }
 
 export async function getMoveNumber() {
