@@ -8,8 +8,8 @@ const getCanMove = () => {
   return true;
 };
 
-const playOneRound = carDistanceList => {
-  carDistanceList.forEach(car => {
+const playOneRound = racingResult => {
+  racingResult.forEach(car => {
     if (getCanMove) {
       const updateCar = car;
       updateCar.distance += '-';
@@ -20,8 +20,8 @@ const playOneRound = carDistanceList => {
   });
 };
 
-const printRoundResult = carDistanceList => {
-  carDistanceList.forEach(car => {
+const printRoundResult = racingResult => {
+  racingResult.forEach(car => {
     Console.print(`${car.carName} : ${car.distance}`);
   });
 };
@@ -30,9 +30,9 @@ export const printResultMessage = () => {
   Console.print(MESSAGE.printResult);
 };
 
-export const playRounds = (carDistanceList, playNum) => {
+export const playRounds = (racingResult, playNum) => {
   for (let round = 0; round < playNum; round += 1) {
-    playOneRound(carDistanceList);
-    printRoundResult(carDistanceList);
+    playOneRound(racingResult);
+    printRoundResult(racingResult);
   }
 };

@@ -11,7 +11,7 @@ const getLogSpy = () => {
 describe('우승자 찾기 및 출력 테스트', () => {
   test('단독 우승자', () => {
     // given
-    const carDistanceList = [
+    const racingResult = [
       { carName: 'pobi', distance: '-' },
       { carName: 'woni', distance: '---' },
       { carName: 'jun', distance: '---' },
@@ -22,7 +22,7 @@ describe('우승자 찾기 및 출력 테스트', () => {
     const logSpy = getLogSpy();
 
     // when
-    printWinner(checkDistanceResult(carDistanceList));
+    printWinner(checkDistanceResult(racingResult));
 
     // then
     expect(logSpy).toHaveBeenCalledWith(expect.stringMatching(output));
@@ -30,7 +30,7 @@ describe('우승자 찾기 및 출력 테스트', () => {
 
   test('공동 우승자', async () => {
     // given
-    const carDistanceList = [
+    const racingResult = [
       { carName: 'pobi', distance: '-' },
       { carName: 'woni', distance: '---' },
       { carName: 'jun', distance: '----' },
@@ -41,7 +41,7 @@ describe('우승자 찾기 및 출력 테스트', () => {
     const logSpy = getLogSpy();
 
     // when
-    printWinner(checkDistanceResult(carDistanceList));
+    printWinner(checkDistanceResult(racingResult));
 
     // then
     expect(logSpy).toHaveBeenCalledWith(expect.stringMatching(output));

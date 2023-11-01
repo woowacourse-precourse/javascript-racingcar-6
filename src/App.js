@@ -8,23 +8,23 @@ import {
 
 class App {
   constructor() {
-    this.carDistanceList = [];
+    this.racingResult = [];
     this.playNum = 0;
   }
 
   async start() {
     const carList = await getCarName();
     this.playNum = await getPlayNum();
-    this.carDistanceList = setInitialDistance(carList);
+    this.racingResult = setInitialDistance(carList);
   }
 
   progress() {
     printResultMessage();
-    playRounds(this.carDistanceList, this.playNum);
+    playRounds(this.racingResult, this.playNum);
   }
 
   finish() {
-    const winnerList = checkDistanceResult(this.carDistanceList);
+    const winnerList = checkDistanceResult(this.racingResult);
     printWinner(winnerList);
   }
 

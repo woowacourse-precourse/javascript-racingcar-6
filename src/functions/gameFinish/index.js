@@ -1,10 +1,10 @@
 import { Console } from '@woowacourse/mission-utils';
 import { MESSAGE } from '../../constants/message';
 
-export const checkDistanceResult = carDistanceList => {
+export const checkDistanceResult = racingResult => {
   let winnerList = [];
 
-  carDistanceList.reduce((maxDistance, currentCar) => {
+  racingResult.reduce((maxDistance, currentCar) => {
     if (maxDistance < currentCar.distance.length) {
       winnerList = [currentCar.carName];
 

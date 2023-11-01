@@ -17,7 +17,7 @@ const getLogSpy = () => {
 describe('자동차 1회 경주 테스트', () => {
   test('랜덤 값이 3이하 시 정지', () => {
     // given
-    const carDistanceList = [
+    const racingResult = [
       { carName: 'pobi', distance: '' },
       { carName: 'woni', distance: '' },
       { carName: 'jun', distance: '' },
@@ -30,7 +30,7 @@ describe('자동차 1회 경주 테스트', () => {
     mockRandoms(randoms);
 
     // when
-    expect(playRounds(carDistanceList, playNum));
+    expect(playRounds(racingResult, playNum));
 
     // then
     outputs.forEach(output => {
@@ -40,7 +40,7 @@ describe('자동차 1회 경주 테스트', () => {
 
   test('랜덤 값이 4이상 시 전진', () => {
     // given
-    const carDistanceList = [
+    const racingResult = [
       { carName: 'pobi', distance: '' },
       { carName: 'woni', distance: '' },
     ];
@@ -52,7 +52,7 @@ describe('자동차 1회 경주 테스트', () => {
     mockRandoms(randoms);
 
     // when
-    expect(playRounds(carDistanceList, playNum));
+    expect(playRounds(racingResult, playNum));
 
     // then
     outputs.forEach(output => {
