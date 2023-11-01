@@ -14,7 +14,8 @@ class App {
   }
 
   static attemptInputValidator(input) {
-    if (isNaN(Number(input))) throw Error("[ERROR] 숫자 형식이 아닙니다.");
+    if (Number.isNaN(Number(input)))
+      throw Error("[ERROR] 숫자 형식이 아닙니다.");
   }
 
   getData() {
@@ -48,40 +49,40 @@ class App {
   setWinner() {
     const MAX = Math.max(...this.data.map((data) => data.length));
 
-    for (let i = 0; i < this.car.length; i++) {
-      if (this.data[i].length == MAX) this.winner.push(this.car[i]);
+    for (let i = 0; i < this.car.length; i += 1) {
+      if (this.data[i].length === MAX) this.winner.push(this.car[i]);
     }
   }
 
   async initialize() {
-    let car_input = (
+    const carInput = (
       await Console.readLineAsync(
-        "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
+        "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n",
       )
     ).split(",");
-    App.carInputValidator(car_input);
+    App.carInputValidator(carInput);
 
-    this.setCar(car_input);
+    this.setCar(carInput);
 
-    let attempt_input = await Console.readLineAsync(
-      "시도할 횟수는 몇 회인가요?\n"
+    const attemptInput = await Console.readLineAsync(
+      "시도할 횟수는 몇 회인가요?\n",
     );
 
-    App.attemptInputValidator(attempt_input);
+    App.attemptInputValidator(attemptInput);
 
-    this.setAttempt(attempt_input);
+    this.setAttempt(attemptInput);
     this.setData(this.car.length);
   }
 
   goOrStop() {
-    for (let i = 0; i < this.car.length; i++) {
+    for (let i = 0; i < this.car.length; i += 1) {
       const RANDOM_NUMBER = Random.pickNumberInRange(0, 9);
       if (RANDOM_NUMBER >= 4) this.data[i] += "-";
     }
   }
 
   print() {
-    for (let i = 0; i < this.car.length; i++) {
+    for (let i = 0; i < this.car.length; i += 1) {
       Console.print(`${this.car[i]} : ${this.data[i]}`);
     }
     Console.print("");
@@ -90,7 +91,7 @@ class App {
   async play() {
     await this.initialize();
     Console.print("실행 결과");
-    for (let i = 0; i < this.attepmt; i++) {
+    for (let i = 0; i < this.attepmt; i += 1) {
       this.goOrStop();
       this.print();
     }
