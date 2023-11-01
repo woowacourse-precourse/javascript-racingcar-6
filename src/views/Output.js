@@ -3,7 +3,7 @@ import MESSAGE from '../constants/Message';
 
 const Output = {
   printExecution() {
-    MissionUtils.Console.print(MESSAGE.EXECUTION);
+    MissionUtils.Console.print(MESSAGE.OUTPUT_EXECUTION);
   },
   printExecutionResult(name, forward) {
     const forwardString = '-'.repeat(forward);
@@ -11,7 +11,7 @@ const Output = {
   },
   printWinner(winners) {
     const winnersString = winners.join(', ');
-    MissionUtils.Console.print(`${MESSAGE.WINNER} : ${winnersString}`);
+    MissionUtils.Console.print(`${MESSAGE.OUTPUT_WINNER} : ${winnersString}`);
   },
 };
 export default Output;
