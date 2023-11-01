@@ -2,7 +2,7 @@ export default function assessWinner(cars) {
   let winnerScore = 0;
   let winner = [];
 
-  cars.forEach(car => {
+  cars.forEach((car) => {
     if (car.position.length === winnerScore) {
       winner.push(car.name);
     }

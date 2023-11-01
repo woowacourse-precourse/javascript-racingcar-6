@@ -9,7 +9,7 @@ const outputView = {
   },
 
   printTrack(cars) {
-    cars.forEach(car => {
+    cars.forEach((car) => {
       Console.print(`${car.name} : ${car.position}`);
     });
     Console.print(MESSAGE.newline);

@@ -10,11 +10,13 @@ export default class Car {
   #carsPosition;
 
   setCarsPosition(input) {
-    this.#carsPosition = input.split(CONSTANT.splitCode).map(name => ({ name, position: MOVESET.stay }));
+    this.#carsPosition = input
+      .split(CONSTANT.splitCode)
+      .map((name) => ({ name, position: MOVESET.stay }));
   }
 
   setCarsRelocation() {
-    this.#carsPosition.forEach(prePosition => {
+    this.#carsPosition.forEach((prePosition) => {
       prePosition.position += movePosition();
     });
   }

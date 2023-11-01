@@ -16,7 +16,7 @@ export default class CarNameValidation {
   }
 
   checkCarNameLength(splitInput) {
-    splitInput.forEach(input => {
+    splitInput.forEach((input) => {
       if (input.length < INPUTSET.minInputLen || input.length > INPUTSET.maxInputLen) {
         throw new Error(ERROR.nameInputLen);
       }
