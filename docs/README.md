@@ -60,7 +60,7 @@
 ---
 
 ## 테스트 결과
-!(https://github.com/ParkHanSeo/javascript-racingcar-6/blob/ParkJeeHoon/docs/자동차경주 결과.png)
+!(https://github.com/ParkHanSeo/javascript-racingcar-6/blob/ParkJeeHoon/docs/racing_result.png)
 
 ## :high_brightness: 기능 구조
 - 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
