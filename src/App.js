@@ -93,7 +93,7 @@ const Game = (cars, num) => {
   return allResult;
 }
 
-const printResult = (cars, resultGame) => {
+const printResult = (cars, numResult) => {
   const MAX_RESULT = Math.max.apply(null, numResult);
   let winner = Array();
 
