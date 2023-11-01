@@ -1,30 +1,40 @@
-describe("문자열 테스트", () => {
-  test("split 메서드로 주어진 값을 구분", () => {
-    const input = "1,2";
-    const result = input.split(",");
+describe("문자열 테스트", () => { // 테스트 스위트를 정의하는 블록
+  test("split 메서드로 주어진 값을 구분", () => { // 첫 번째 테스트 케이스를 정의하는 블록
+    const input = "1,2"; // 테스트에서 사용할 입력 문자열을 "1,2"로 정의함
+    const result = input.split(","); // 입력 문자열을 split 메서드를 사용하여 쉼표(,)를 구분자로 분할한 결과를 저장함
 
     expect(result).toContain("2", "1");
+    // expect 함수를 사용하여 result 배열에 "2"와 "1"이라는 두 요소를 포함하는지 확인함
+    // 이 경우에는 "2"와 "1"이라는 요소가 배열에 포함되어 있으므로 테스트를 통과함
     expect(result).toContainEqual("1", "2");
+    // expect 함수를 사용하여 result 배열에 "1"과 "2"라는 두 요소를 순서대로 포함하는지 확인함
+    // 이 경우에는 순서에 맞게 "1"과 "2"가 나타나므로 테스트를 통과함
   });
 
-  test("split 메서드로 구분자가 포함되지 않은 경우 값을 그대로 반환", () => {
-    const input = "1";
-    const result = input.split(",");
+  test("split 메서드로 구분자가 포함되지 않은 경우 값을 그대로 반환", () => { // 두 번째 테스트 케이스를 정의하는 블록
+    const input = "1"; // 테스트에서 사용할 입력 문자열을 "1"로 정의함
+    const result = input.split(","); // 입력 문자열을 split 메서드를 사용하여 쉼표(,)를 구분자로 분할한 결과를 저장함
 
     expect(result).toContain("1");
+    // expect 함수를 사용하여 result 배열이 "1"을 포함하는지 확인함
+    // 이 경우에는 구분자가 포함되지 않았으므로 원래 문자열 그대로 반환되어 테스트를 통과함
   });
 
-  test("substring 메서드로 특정 구간 값을 반환", () => {
-    const input = "(1,2)";
-    const result = input.substring(1, 4);
+  test("substring 메서드로 특정 구간 값을 반환", () => { // 세 번째 테스트 케이스를 정의하는 블록
+    const input = "(1,2)"; // 테스트에서 사용할 입력 문자열을 "(1,2)"로 정의함
+    const result = input.substring(1, 4); // 입력 문자열을 substring 메서드를 사용하여 인덱스 1부터 4 전까지(1부터 3까지)의 구간을 추출한 결과를 저장함
 
     expect(result).toEqual("1,2");
+    // expect 함수를 사용하여 result 문자열이 "1,2"와 일치하는지 확인함
+    // 이 경우에는 result에 "1,2"라는 부분 문자열이 저장되므로 테스트를 통과함
   });
 
-  test("at 메서드로 특정 위치의 문자 찾기", () => {
-    const input = "abc";
-    const result = input.at(0)
+  test("at 메서드로 특정 위치의 문자 찾기", () => { // 네 번째 테스트 케이스를 정의하는 블록
+    const input = "abc"; // 테스트에서 사용할 입력 문자열을 "abc"로 정의함
+    const result = input.at(0); // 입력 문자열에서 at 메서드를 사용하여 인덱스 0 위치의 문자를 추출한 결과를 저장함
 
     expect(result).toEqual("a");
+    // expect 함수를 사용하여 result 문자열이 "a"와 일치하는지 확인함
+    // 이 경우에는 result에 "a"가 저장되므로 테스트를 통과함
   });
 });
