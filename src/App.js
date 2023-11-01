@@ -19,6 +19,9 @@ class App {
     const round = await MissionUtils.Console.readLineAsync(
       "시도할 횟수는 몇 회인가요?\n"
     );
+    if (typeof round !== "int"){
+      throw new Error("[ERROR]: 숫자가 잘못된 형식입니다")
+    }
 
     // 결과 담을 딕셔너리 초기화
     let scoreboard = {};
