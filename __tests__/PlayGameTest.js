@@ -16,7 +16,7 @@ const mockRandoms = (numbers) => {
 };
 
 describe('자동자 경주 게임', () => {
-  test('[자동차 경주 게임] 정상 진행', async () => {
+  test('[자동차 경주 게임] 정상 진행', () => {
     // Arrange
     const logSpy = getLogSpy();
     const playNumber = 2;
