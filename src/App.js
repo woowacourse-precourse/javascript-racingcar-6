@@ -5,6 +5,11 @@ class App {
     try {
       const CAR_NAMES = await this.getCarNames();
       const TRY_COUNT = await this.getTryCount();
+      const CAR_RESULT = this.initializeCarResult(CAR_NAMES);
+
+      for (let i = 0; i < TRY_COUNT; i++) {
+        this.runRace(CAR_RESULT);
+      }
     } catch (error) {
       MissionUtils.Console.print(error.message);
     }
@@ -24,6 +29,23 @@ class App {
     );
     const TRY_COUNT = parseInt(TRY_COUNT_INPUT);
     return TRY_COUNT;
+  }
+
+  initializeCarResult(CAR_NAMES) {
+    return CAR_NAMES.map((carName) => ({
+      name: carName,
+      progress: "",
+    }));
+  }
+
+  runRace(CAR_RESULT) {
+    const getRandomNumber = () => MissionUtils.Random.pickNumberInRange(1, 9);
+    CAR_RESULT.forEach((car) => {
+      const RANDOM_NUMBER = getRandomNumber();
+      if (RANDOM_NUMBER >= 4) {
+        car.progress += "-";
+      }
+    });
   }
 }
 
