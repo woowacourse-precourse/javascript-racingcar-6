@@ -1,5 +1,10 @@
-class App {
-  async play() {}
-}
+import GrandPrix from './controller/GrandPrix.js';
 
-export default App;
+export default class App {
+  #grandPrix;
+
+  async play() {
+    this.#grandPrix = new GrandPrix();
+    await this.#grandPrix.initialize();
+  }
+}
