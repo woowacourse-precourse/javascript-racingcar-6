@@ -15,7 +15,7 @@ export const ErrorMessages = {
 
 export const RANDOM_NUMBER_THRESHOLD = 4;
 
-export const RACE_COUNT_MIN_NUM = 1;
-export const RACE_COUNT_MAX_NUM = 5;
+export const CAR_NAME_MIN_LEN= 1;
+export const CAR_NAME_MAX_LEN = 5;
 
 export const RACE_COUNT_CHECK_NEGATIVE = 0;

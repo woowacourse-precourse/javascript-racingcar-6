@@ -1,4 +1,4 @@
-import { ErrorMessages, RACE_COUNT_MIN_NUM, RACE_COUNT_MAX_NUM, RACE_COUNT_CHECK_NEGATIVE } from "./constants.js"
+import { ErrorMessages, CAR_NAME_MIN_LEN, CAR_NAME_MAX_LEN, RACE_COUNT_CHECK_NEGATIVE } from "./constants.js"
 
 class Validation {
   static validateArrayEmpty(input) {
@@ -16,7 +16,7 @@ class Validation {
 
   static validateInputLength(inputs) {
     inputs.forEach((input) => {
-      if (input.length < RACE_COUNT_MIN_NUM || input.length > RACE_COUNT_MAX_NUM) {
+      if (input.length < CAR_NAME_MIN_LEN || input.length > CAR_NAME_MAX_LEN) {
         throw new Error(ErrorMessages.CAR_NAME_LENGTH_EXCEEDED);
       }
     })
