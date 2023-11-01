@@ -1,5 +1,5 @@
-import { MESSAGES, ERROR_MESSAGES } from "../constants/Messages.js";
 import { Console } from "@woowacourse/mission-utils";
+import { MESSAGES } from "../constants/Messages.js";
 
 export default class RaceView {
   static isResultMessagePrinted = false;

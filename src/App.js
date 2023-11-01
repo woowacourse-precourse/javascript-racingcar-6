@@ -6,11 +6,7 @@ class App {
   }
 
   async play() {
-    try {
-      await this.raceController.initRace();
-    } catch (error) {
-      throw error;
-    }
+    await this.raceController.initRace();
   }
 }
 
