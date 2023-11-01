@@ -74,6 +74,10 @@ class RaceController {
       throwError('공백은 입력하실수 없습니다');
     } else if (checkString.checkListHasVoid(carList)) {
       throwError(`이름이 존재하지 않는 차가 있습니다`);
+    } else if (
+      !checkString.checkListLengthLongerThan(carList, CONFIG.MIN_CAR_COUNT - 1)
+    ) {
+      throwError(`자동차는 최소 ${CONFIG.MIN_CAR_COUNT}대이상 입력해주세요`);
     }
   }
 
