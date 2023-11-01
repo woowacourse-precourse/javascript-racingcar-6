@@ -50,12 +50,19 @@ class RacingCarGame {
 
     await this.#getGameCount();
 
+    const garage = new Garage(Array.from(this.#nameList));
+    
     while (this.#gameCount) {
         garage.tryAllCarsMove();
         garage.displayCarStateList();
         print('');
         this.#gameCount -= 1;
     }
+
+    print(
+        MESSAGE.winnerGuide +
+        joinArrayWithCommaAndBlank(garage.findCarNamesWithMaxSteps()),
+    );
   }
 }
 
