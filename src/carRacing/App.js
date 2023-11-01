@@ -12,7 +12,6 @@ class App {
 
     const carObjects = this.generateCarObjects(carNames);
     this.startRace(carObjects, roundCount);
-    Console.print(carObjects);
   }
 
   async enterGameBaseSetting() {
@@ -76,11 +75,17 @@ class App {
       F.range(roundCount),
       F.map(() => {
         carObjects.forEach((car) => car.move());
+        this.printRaceStatus(carObjects);
       }),
     );
   }
 
-  printRaceStatus(carObjects) {}
+  printRaceStatus(carObjects) {
+    Console.print("");
+    carObjects.forEach((car, index) => {
+      Console.print(`${car.name}: ${"-".repeat(car.position)}`);
+    });
+  }
 
   getWinners() {}
 
