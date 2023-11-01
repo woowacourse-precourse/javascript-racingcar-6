@@ -1,5 +1,9 @@
+import RacingStart from "../src/Race/RacingStart";
 class App {
-  async play() {}
+  RacingStart = new RacingStart();
+  async play() {
+    await this.RacingStart.start();
+  }
 }
 
 export default App;
