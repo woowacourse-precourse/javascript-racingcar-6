@@ -58,7 +58,6 @@ class App {
     for (let car of carArr) {
       this.cars.set(car, "");
     }
-    console.log(this.cars);
   }
 
   checkValidNumberOfAttempts(numberOfAttempts) {
