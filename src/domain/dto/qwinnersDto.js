@@ -1,4 +1,4 @@
-import { WinnerDto } from "./winnerDto";
+import { WinnerDto } from "./qwinnerDto";
 // @ts-check
 export class WinnersDto {
   /**

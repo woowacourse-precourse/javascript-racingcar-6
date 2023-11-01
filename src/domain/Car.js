@@ -2,8 +2,8 @@
 import { Random } from "@woowacourse/mission-utils";
 import { ERROR } from "../constants/constants";
 import InputView from "../view/InputView";
-import { CarDto } from "./dto/carDto";
-import { WinnerDto } from "./dto/winnerDto";
+import { CarDto } from "./dto/qcarDto";
+import { WinnerDto } from "./dto/qwinnerDto";
 
 /**
  * @description - 비즈니스 로직을 실행할 도메인 객체
