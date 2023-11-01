@@ -1,18 +1,29 @@
 import { Random } from '@woowacourse/mission-utils';
-import { RANDOM_NUMBER_RANGE } from './constants/numberRange';
+import { RANDOM_NUMBER_RANGE } from './constants/numberRange.js';
+import { ERROR_MESSAGE } from './constants/errorMessage.js';
+import { paramType } from './utils/paramType.js';
+import { MOVE_FOWARD, RACING_RULE } from './constants/racingRule.js';
+import Car from './Car.js';
 
 export default class RacingGame {
   #carList;
   #tryRound;
 
-  constructor(carList, tryRound) {
+  constructor(
+    carList,
+    tryRound,
+    _0 = paramType(carList, Array),
+    _1 = paramType(tryRound, 'number')
+  ) {
     this.#carList = carList;
     this.#tryRound = tryRound;
   }
 
   createRandomNumber(
     min = RANDOM_NUMBER_RANGE.MIN,
-    max = RANDOM_NUMBER_RANGE.MAX
+    max = RANDOM_NUMBER_RANGE.MAX,
+    _0 = paramType(min, 'number'),
+    _1 = paramType(max, 'number')
   ) {
     return Random.pickNumberInRange(
       RANDOM_NUMBER_RANGE.MIN,
@@ -21,31 +32,38 @@ export default class RacingGame {
   }
 
   isFinish() {
-    return this.#tryRound === 0;
+    return this.#tryRound === RACING_RULE.ALL_ROUND_DONE_AMOUNT;
   }
 
   _clearRound() {
-    this.#tryRound -= 1;
+    this.#tryRound -= RACING_RULE.DECREASE_ROUND;
   }
 
-  _isMovalbe(number) {
-    return number >= 4;
+  _isMovalbe(number, _ = paramType(number, 'number')) {
+    return number >= MOVE_FOWARD;
+  }
+
+  _moveCar(car, _ = paramType(car, Car)) {
+    const randomNumber = this.createRandomNumber(
+      RANDOM_NUMBER_RANGE.MIN,
+      RANDOM_NUMBER_RANGE.MAX
+    );
+
+    if (this._isMovalbe(randomNumber)) car.increasePosition();
+  }
+
+  _moveCars() {
+    this.#carList.forEach((car) => {
+      this._moveCar(car);
+    });
   }
 
   roundStart() {
     if (this.isFinish()) {
-      throw new Error(
-        '[ERROR] 입력받은 round 횟수만큼 게임을 진행했습니다. 결과를 확인해주세요'
-      );
+      throw new Error(ERROR_MESSAGE.PLAY.MORE_ROUND_THAN_ALLOWED);
     }
-    this.#carList.forEach((car) => {
-      const carPickNumber = this.createRandomNumber();
-      const isMovable = this._isMovalbe(carPickNumber);
 
-      if (isMovable) {
-        car.increasePosition();
-      }
-    });
+    this._moveCars();
     this._clearRound();
   }
 
@@ -54,12 +72,8 @@ export default class RacingGame {
   }
 
   getWinners() {
-    if (this.#tryRound !== 0) {
-      throw new Error(
-        `[ERROR] 게임 round가 전부 실행되지 않았습니다. 잔여 라운드 : ${
-          this.#tryRound
-        }회`
-      );
+    if (this.#tryRound !== RACING_RULE.ALL_ROUND_DONE_AMOUNT) {
+      throw new Error(ERROR_MESSAGE.PLAY.LEFT_ROUND);
     }
 
     const finalRoundResult = this.getRoundResult();
