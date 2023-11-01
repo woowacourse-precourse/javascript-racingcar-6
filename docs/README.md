@@ -4,6 +4,7 @@
 
 - Computer
 - RacingCar
+- User
 - Error
 
 ### 2. RacingCar
@@ -23,7 +24,10 @@
 
 - [ ] 최종 결과 print 메서드
 
-### 4. Error
+### 4. User
+- [x] 사용자로 부터 prompt 입력받기
+
+### 5. Error
 
 1. 첫 번째 prompt
    - [x] empty
