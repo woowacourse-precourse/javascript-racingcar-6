@@ -4,7 +4,7 @@ class App {
   async play() {
     Console.print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     const CAR_INPUT = await this.getCarInput();
-    if (this.isValidCarInput(CAR_INPUT)) {
+    if (!this.isValidCarInput(CAR_INPUT)) {
       const CAR_DICT = await this.setCarDict(CAR_INPUT);
       Console.print("시도할 횟수는 몇 회인가요?")
       let CNT = await this.getGameCnt();
@@ -17,8 +17,6 @@ class App {
         CNT-=1
       }
       await this.printWinner(CAR_DICT);
-    }else {
-      throw new Error("[ERROR] 이름은 5글자 이하로 작성해주세요")
     }
   }
   async getCarInput() {
@@ -26,11 +24,8 @@ class App {
   }
   isValidCarInput(CAR_INPUT) {
     for (let i=0; i<CAR_INPUT.length;i++) {
-      if (CAR_INPUT[i].length >= 6){
-        return false
-      }
-      else {
-        return true
+      if (CAR_INPUT[i].length > 5){
+        throw new Error("[ERROR] 이름은 5글자 이하로 작성해주세요")
       }
     }
   }
