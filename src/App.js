@@ -26,7 +26,7 @@ class App {
   async userInput() {
     this.carNames = (await Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")).split(",");
     this.carNumber = this.carNames.length;
-    
+
     for (let i=0; i<this.carNumber; i++) {
       if (this.carNames[i].length > 5) {
         throw new Error("[ERROR] 자동차 이름은 5자 이하만 가능합니다.")
@@ -67,7 +67,7 @@ class App {
 
   printProgress() {
     for (let i=0; i<this.carNumber; i++) {
-      const progressString = this.carNames[i] + " : ";
+      let progressString = this.carNames[i] + " : ";
 
       for (let j=0; j<this.carMoveCounts[i]; j++) {
         progressString += "-";
@@ -79,7 +79,7 @@ class App {
   }
 
   printWinner() {
-    const winnerString = "최종 우승자 : ";
+    let winnerString = "최종 우승자 : ";
     let winnerArray = [];
 
     for (let i=0; i<this.carNumber; i++) {
