@@ -13,3 +13,7 @@ export const racingOutput = (carObject) => {
     });
   }
 };
+
+export const printWinningMessage = (winner) => {
+  MissionUtils.Console.print('최종 우승자 : ' + winner);
+};
