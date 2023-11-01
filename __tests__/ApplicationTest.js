@@ -127,6 +127,18 @@ describe('입력 테스트', () => {
     await expect(app.getMovingCount()).rejects.toThrow('[ERROR]');
   });
 
+  test('이동 횟수 입력 예외 - 소수', async () => {
+    // given
+    const inputs = ['3.14'];
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.getMovingCount()).rejects.toThrow('[ERROR]');
+  });
+
   test('이동 횟수 입력 예외 - 문자', async () => {
     // given
     const inputs = ['abc'];
