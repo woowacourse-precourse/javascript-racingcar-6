@@ -1,12 +1,15 @@
 import { Console } from '@woowacourse/mission-utils';
 import { ERROR_MESSAGE, MESSAGE } from '../../constants/message';
 
+const MAX_NAME_LENGTH = 5;
+
 const invalidCarName = carNameList => {
   if (carNameList.length === 1 && carNameList[0] === '')
     throw Error(ERROR_MESSAGE.carName.noInput);
 
   carNameList.forEach(carName => {
-    if (carName.length > 5) throw Error(ERROR_MESSAGE.carName.tooLong);
+    if (carName.length > MAX_NAME_LENGTH)
+      throw Error(ERROR_MESSAGE.carName.tooLong);
     if (carName === '') throw Error(ERROR_MESSAGE.carName.noName);
   });
 
