@@ -7,6 +7,7 @@ class App {
 
   async startGame() {
     const carNames = await this.inputCarNames();
+    const tries = await this.inputTries();
   }
 
   async inputCarNames() {
@@ -22,6 +23,14 @@ class App {
 
   validateCarNames(names) {
     return names.every((name) => name.length <= 5);
+  }
+
+  async inputTries() {
+    const triesInput = await Console.readLineAsync(
+      "시도할 횟수는 몇 회인가요? \n"
+    );
+    const tries = parseInt(triesInput, 10);
+    return tries;
   }
 
 }
