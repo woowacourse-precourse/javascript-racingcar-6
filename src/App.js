@@ -12,8 +12,8 @@ class App {
 
         const numberOfGames = await this.getNumberOfGames();
         Console.print(numberOfGames);
-        
-        Console.print("실행 결과")
+
+        Console.print("실행 결과");
 
         const numberOfCars = carNameArr.length;
         const carStates = Array(numberOfCars).fill("");
@@ -84,20 +84,17 @@ class App {
     }
 
     determineWinnerIndex(carStates) {
-        if (carStates.length === 1) {
-            return [0];
-        }
-        let winnerIndexList = [];
-        let comparison = carStates[0].length;
-        for (let i = 0; i < carStates.length; i++) {
-            if (carStates[i].length > comparison) {
-                comparison = carStates[i].length;
-                winnerIndexList = [];
-                winnerIndexList.push(i);
-            } else if (carStates[i].length === comparison) {
-                winnerIndexList.push(i);
+        const winnerIndexList = [];
+
+        const maxValue = carStates.reduce((temporaryMaxValue, cur) =>
+            temporaryMaxValue.length > cur.length ? temporaryMaxValue : cur
+        );
+
+        carStates.forEach((el, idx) => {
+            if (el === maxValue) {
+                winnerIndexList.push(idx);
             }
-        }
+        });
         return winnerIndexList;
     }
 
