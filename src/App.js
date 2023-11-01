@@ -1,5 +1,13 @@
+import RacingCarGame from './RacingCarGame.js';
+
 class App {
-  async play() {}
+  constructor() {
+    this.game = new RacingCarGame();
+  }
+
+  async play() {
+    await this.game.start();
+  }
 }
 
 export default App;
