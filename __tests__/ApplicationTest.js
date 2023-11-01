@@ -60,7 +60,7 @@ describe('자동차 경주 게임', () => {
 
   test.each([
     [[',']],
-    [[',,']],
+    [[',,dada']],
   ])('이름 미입력에 대한 예외 처리', async (inputs) => {
     // given
     mockQuestions(inputs);
