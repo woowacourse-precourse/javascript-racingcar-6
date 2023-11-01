@@ -24,11 +24,20 @@ describe("입력값 테스트", () => {
     expect(() => checkNames(invalidCarNameList)).toThrow(Error);
   });
 
-  test("라운드 횟수 입력값이 숫자인지 테스트", () => {
-    const validNumber = 5;
+  test("라운드 횟수 입력값이 양수인 정수인지 테스트", () => {
+    const validNumber = "5";
     expect(() => checkNumber(validNumber)).not.toThrow();
 
     const invalidNumber = "a";
     expect(() => checkNumber(invalidNumber)).toThrow(Error);
+
+    const zeroNumber = "0";
+    expect(() => checkNumber(zeroNumber)).toThrow(Error);
+
+    const negativeNumber = "-3";
+    expect(() => checkNumber(negativeNumber)).toThrow(Error);
+
+    const floatNumber = "3.14";
+    expect(() => checkNumber(floatNumber)).toThrow(Error);
   });
 });
