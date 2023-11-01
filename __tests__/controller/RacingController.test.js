@@ -93,6 +93,8 @@ describe('RacingController test', () => {
   test.each([
     [['kim,park', '0']],
     [['kim,park', '다섯번']],
+    [['kim,park', '-1']],
+    [['kim,park', '3.1']],
     [['kim,park', 'five']],
   ])('controller 시도 횟수 입력 오류', async (inputs) => {
     mockInputs(inputs);

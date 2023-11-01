@@ -20,7 +20,9 @@ class RacingCarValidator {
   }
 
   isValidCount(str) {
-    if (isNaN(str) || str === '0') {
+    const regExp = /^[0-9]*$/;
+    
+    if (!regExp.test(str) || str === '0') {
       throw new RetryCountError(str);
     }
   }

@@ -34,6 +34,8 @@ describe('RacingCarValidator test', () => {
   test.each([
     'five',
     '다섯 번',
+    '-1',
+    '3.1',
     '0',
   ])('func isValidCount - 숫자가 아니거나, 0 입력 시 에러 확인', (inputs) => {
     const result = () => racingCarValidator.isValidCount(inputs);
