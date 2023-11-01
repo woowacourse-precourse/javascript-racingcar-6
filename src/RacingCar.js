@@ -1,6 +1,6 @@
 import { Random } from '@woowacourse/mission-utils';
 
-export class RacingCar {
+class RacingCar {
   constructor(name) {
     this.name = name;
     this.moveCount = 0;
@@ -13,3 +13,5 @@ export class RacingCar {
     }
   }
 }
+
+export default RacingCar;
