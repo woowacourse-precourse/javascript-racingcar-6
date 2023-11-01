@@ -3,12 +3,11 @@ import GAME_MESSAGE from "../constants/gameMessage.js";
 import SYMBOLS from "../constants/symbols.js";
 import NameToKeyValueConverter from "../controller/game/NameToKeyValueConverter.js";
 import HyphenAdd from "../controller/game/HyphenAdd.js";
-import gameInProgress from "../controller/game/GameInProgress.js";
+import GameInProgress from "../controller/game/GameInProgress.js";
 import Winner from "../controller/game/Winner.js";
 
 class RacingGame {
   constructor() {
-    // this.nameToKeyValueConverter = new NameToKeyValueConverter();
     this.hyphenAdd = new HyphenAdd();
     this.winner = new Winner();
   }
