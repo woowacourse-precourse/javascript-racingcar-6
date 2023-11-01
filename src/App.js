@@ -16,11 +16,12 @@ class App {
         throw new Error("[ERROR]: 이름은 5자 이하만 가능합니다");
       }
     }
-    const round = await MissionUtils.Console.readLineAsync(
+    const roundInput = await MissionUtils.Console.readLineAsync(
       "시도할 횟수는 몇 회인가요?\n"
     );
-    if (typeof round !== "int"){
-      throw new Error("[ERROR]: 숫자가 잘못된 형식입니다")
+    const round = parseInt(roundInput, 10);
+    if (isNaN(round) || round <= 0) {
+      throw new Error("[ERROR]: 숫자가 잘못된 형식입니다");
     }
 
     // 결과 담을 딕셔너리 초기화
