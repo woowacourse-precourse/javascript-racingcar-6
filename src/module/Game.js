@@ -2,6 +2,7 @@ import { Console } from '@woowacourse/mission-utils';
 import Car from './Car.js';
 import CarList from './CarList.js';
 import { INPUT_MESSAGE, OUTPUT_MESSAGE } from '../constant/message.js';
+
 class Game {
   #carListArr = [];
   #moveNum = '';
@@ -20,6 +21,9 @@ class Game {
     return { carList: this.#carList };
   }
 
+  /**
+   * 초기 자동차 이름을 입력 받기위한 함수
+   */
   async init() {
     const carListInput = await Console.readLineAsync(
       INPUT_MESSAGE.INPUT_CAR_NAME,
@@ -39,6 +43,9 @@ class Game {
     );
   }
 
+  /**
+   * 시도 횟수에 따른 게임 진행
+   */
   async process() {
     Console.print(OUTPUT_MESSAGE.OUTPUT_RESULT);
     for (let i = 0; i < this.#moveNum; i++) {
