@@ -45,10 +45,11 @@ describe("자동차 경주 게임", () => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
   });
-
   test.each([
     [["pobi,javaji"]],
-    [["pobi,eastjun"]]
+    [["pobi,eastjun"]],
+    [["hello", ""]],
+    [["world"]],
   ])("이름에 대한 예외 처리", async (inputs) => {
     // given
     mockQuestions(inputs);
