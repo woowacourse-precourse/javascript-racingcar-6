@@ -39,3 +39,10 @@ export const howManyFirstCars = (result, k) => {
     }
   }
 };
+
+export const finalWinnerResultSort = (result, carNameArray, countArr) => {
+  for (let i = 0; i < carNameArray.length; i++) {
+    result.push([carNameArray[i], countArr[i]]);
+  }
+  return (result = result.sort((a, b) => [b[1] - a[1]]));
+};

@@ -8,7 +8,7 @@ export const racingProgressPrint = (carNameArray, countArr, j) => {
   );
 };
 
-export const oneWinner = (result) => {
+export const oneWinnerPrint = (result) => {
   MissionUtils.Console.print(TEXT.FINAL_WINNER + result[0][0]);
   return;
 };
