@@ -4,7 +4,7 @@ import ValidationName from "../validation/ValidationName.js";
 import ValidationTry from "../validation/ValidatonTry.js";
 
 const User = {
-  async beReady() {
+  async readyToPlay() {
     const nameList = await this.enterNames();
     const tryCount = await this.enterTryCounts();
 
@@ -16,7 +16,7 @@ const User = {
       await Console.readLineAsync(IN_GAME_MESSAGE.getCarName)
     ).split(",");
 
-    ValidationName.isCorrectName(userInput);
+    ValidationName.checkName(userInput);
 
     return userInput;
   },
@@ -25,7 +25,7 @@ const User = {
     const tryCount = await Console.readLineAsync(IN_GAME_MESSAGE.getTryCount);
     Console.print(tryCount);
 
-    ValidationTry.isCorrectTryCount(tryCount);
+    ValidationTry.checkTryCount(tryCount);
 
     return tryCount;
   },

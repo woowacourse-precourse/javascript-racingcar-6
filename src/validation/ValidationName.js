@@ -1,19 +1,19 @@
-import { CHARACTER_LIMIT, NAME_INPUT_ERROR } from "../utils/Constants.js";
+import { CHARACTER_LIMIT, NAME_INPUT_ERROR } from "../modules/Constants.js";
 
 const ValidationName = {
-  isCorrectName(nameList) {
-    this.isNull(nameList);
-    this.isEmpty(nameList);
-    this.isLong(nameList);
+  checkName(nameList) {
+    this.checkNull(nameList);
+    this.checkEmpty(nameList);
+    this.checkLong(nameList);
   },
 
-  isNull(nameList) {
+  checkNull(nameList) {
     if (nameList.length === 1 && nameList[0] === "") {
       throw new Error(NAME_INPUT_ERROR.null);
     }
   },
 
-  isEmpty(nameList) {
+  checkEmpty(nameList) {
     nameList.forEach((name) => {
       if (name.length === 0) {
         throw new Error(NAME_INPUT_ERROR.empty);
@@ -21,7 +21,7 @@ const ValidationName = {
     });
   },
 
-  isLong(nameList) {
+  checkLong(nameList) {
     nameList.forEach((name) => {
       if (name.length > CHARACTER_LIMIT) {
         throw new Error(NAME_INPUT_ERROR.long);

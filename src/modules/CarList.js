@@ -33,11 +33,10 @@ class CarList {
   }
 
   move(numberList) {
-    this.positions = this.positions.map((position, index) => {
+    this.positions.forEach((position, index) => {
       if (numberList[index] >= FORWARD_CRITERIA) {
-        return position + 1;
+        this.positions[index] += 1;
       }
-      return position;
     });
   }
 }

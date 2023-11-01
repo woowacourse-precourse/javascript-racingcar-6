@@ -5,12 +5,12 @@ import User from "./User.js";
 
 const CarRacing = {
   async playGame() {
-    const [names, tryCount] = await User.beReady();
+    const [names, tryCount] = await User.readyToPlay();
 
-    const carList = new CarList(names);
-    carList.race(tryCount);
+    const cars = new CarList(names);
+    cars.race(tryCount);
 
-    this.showResult(names, carList.positions);
+    this.showResult(names, cars.positions);
   },
 
   showResult(nameList, moveList) {
@@ -20,16 +20,9 @@ const CarRacing = {
   },
 
   decideWinners(nameList, moveList) {
-    const winners = [];
-    const maxForward = Math.max(...moveList);
+    const maxPosition = Math.max(...moveList);
 
-    moveList.forEach((forward, index) => {
-      if (forward === maxForward) {
-        winners.push(nameList[index]);
-      }
-    });
-
-    return winners;
+    return nameList.filter((name, index) => moveList[index] === maxPosition);
   },
 
   printWinners(winnerList) {

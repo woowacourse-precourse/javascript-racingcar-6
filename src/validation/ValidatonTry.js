@@ -1,25 +1,25 @@
-import { TRY_INPUT_ERROR } from "../utils/Constants.js";
+import { TRY_INPUT_ERROR } from "../modules/Constants.js";
 
 const ValidationTry = {
-  isCorrectTryCount(tryCount) {
-    this.isNull(tryCount);
-    this.isBlank(tryCount);
-    this.isChar(tryCount);
+  checkTryCount(tryCount) {
+    this.checkNull(tryCount);
+    this.checkBlank(tryCount);
+    this.checkChar(tryCount);
   },
 
-  isNull(tryCount) {
+  checkNull(tryCount) {
     if (tryCount.length === 0) {
       throw new Error(TRY_INPUT_ERROR.null);
     }
   },
 
-  isBlank(tryCount) {
+  checkBlank(tryCount) {
     if (tryCount.replaceAll(" ", "").length !== tryCount.length) {
       throw new Error(TRY_INPUT_ERROR.blank);
     }
   },
 
-  isChar(tryCount) {
+  checkChar(tryCount) {
     if (Number.isNaN(Number(tryCount))) {
       throw new Error(TRY_INPUT_ERROR.char);
     }
