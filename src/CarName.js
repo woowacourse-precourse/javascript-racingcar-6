@@ -36,7 +36,7 @@ class CarName {
     play.enterNumberOfTimes(carList);
   }
 
-  checkComma(carNames) {
+  checkEmty(carNames) {
     const hasEmty = carNames.includes(' ') || carNames.length === 0;
 
     if (hasEmty) {
@@ -49,7 +49,7 @@ class CarName {
   async start() {
     MissionUtils.Console.print('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)');
     const carNames = await MissionUtils.Console.readLineAsync('');
-    this.checkComma(carNames);
+    this.checkEmty(carNames);
   }
 }
 
