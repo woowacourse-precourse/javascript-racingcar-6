@@ -32,9 +32,15 @@ async function racingProcess(resolve, reject) {
     attemptCountSentence();
     const ATTEMPT_COUNT = await MissionUtils.Console.readLineAsync("");
     attemptCount(ATTEMPT_COUNT);
+    MissionUtils.Console.print("");
+    MissionUtils.Console.print("실행 결과");
+    MissionUtils.Console.print("");
+
+    timesResult(SPLITECARS_NAME, ATTEMPT_COUNT);
+
     resolve();
   } catch (error) {
-    console.error(error + ` 레이싱 자동차 등록에 실패했습니다.`);
+    MissionUtils.Console.print(error + ` 레이싱 자동차 등록에 실패했습니다.`);
     reject(new Error("[ERROR]"));
   }
 }
@@ -53,7 +59,7 @@ function carsNumberError(cars) {
 }
 
 function carsNameError(car) {
-  if (car.length < 1 || car.length > 6) {
+  if (car.length < 1 || car.length > 5) {
     throw new Error("[ERROR]");
   }
   return Error;
@@ -76,6 +82,46 @@ function racingCondition() {
   if (CONDITION >= 4) {
     return "MOVING_FORWARD";
   } else return "STOP";
+}
+
+function aTimeConditonResult() {
+  const RECIVEDCONDTION = racingCondition();
+  if (RECIVEDCONDTION === "MOVING_FORWARD") {
+    return "-";
+  } else if (RECIVEDCONDTION === "STOP") {
+    return "";
+  }
+}
+
+function readyCars(cars) {
+  const racingCars = [...cars];
+  let startedCars = racingCars.map((car) => {
+    return `${car} : `;
+  });
+
+  return startedCars;
+}
+
+function updateDistances(cars, distances) {
+  cars.forEach((car, index) => {
+    distances[index] += aTimeConditonResult();
+  });
+}
+
+function printDistances(cars, distances) {
+  cars.forEach((car, index) => {
+    MissionUtils.Console.print(`${car}${distances[index]}`);
+  });
+  MissionUtils.Console.print("");
+}
+
+function timesResult(cars, attemptCount) {
+  let distances = Array(cars.length).fill("");
+
+  for (let i = 0; i < attemptCount; i++) {
+    updateDistances(readyCars(cars), distances);
+    printDistances(readyCars(cars), distances);
+  }
 }
 
 const app = new App();
