@@ -7,10 +7,10 @@
 import { ERROR } from "../constants/constants";
 import OutputView from "../view/OutputView";
 import Car from "./Car";
-import { CarDto } from "./dto/qcarDto";
-import { CarsDto } from "./dto/qcarsDto";
-import { WinnerDto } from "./dto/qwinnerDto";
-import { WinnersDto } from "./dto/qwinnersDto";
+import { CarDto } from "./dto/CarDto";
+import { CarsDto } from "./dto/CarsDto";
+import { WinnerDto } from "./dto/WinnerDto";
+import { WinnersDto } from "./dto/WinnersDto";
 
 // ADT(abstract data type, 추상 자료형(자료구조 공부)
 // 할 수 있는 일을 명확하게 제약을 두기

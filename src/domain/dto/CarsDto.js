@@ -1,4 +1,4 @@
-import { CarDto } from "./qcarDto";
+import { CarDto } from "./CarDto";
 
 // @ts-check
 export class CarsDto {
