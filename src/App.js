@@ -88,16 +88,13 @@ class RacingCar {
   checkIsMoveForward() {
     const { low, high, criteria, operator } = this.condition;
     const randomNumber = this.getRandomNumber(low, high)
-    switch (operator) {
-      case 'below': 
-        return randomNumber <= criteria;
-      case 'more': 
-        return randomNumber >= criteria
-      case 'over': 
-        return randomNumber > criteria
-      case 'under': 
-        return randomNumber < criteria
+    const operatorSelector = {
+      'below': (randomNumber, criteria) => randomNumber <= criteria,
+      'more': (randomNumber, criteria) => randomNumber >= criteria,
+      'over': (randomNumber, criteria) => randomNumber > criteria,
+      'under': (randomNumber, criteria) => randomNumber < criteria
     }
+    return operatorSelector[operator](randomNumber, criteria);
   }
 
   getRandomNumber(low, high) {
