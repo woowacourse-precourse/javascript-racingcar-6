@@ -91,9 +91,9 @@
     - [ ] isSuccess()
     - [ ] getResultMessage(success)
     - [ ] moveForwards()
-  - [ ] Inspector.js
-    - [ ] isSplitable(string)
-    - [ ] isNumber(num)
+  - [x] Inspector.js
+    - [x] isSplitable(string)
+    - [x] isNumber(num)
   - [x] NumberGenerator.js
     - [x] getRandomNumber()
   - [x] Prompter.js
