@@ -10,3 +10,17 @@ export const seperateCarNames = (carNameString) => {
   });
   return result;
 };
+export const processTrialInput = (inputString) => {
+  try {
+    const result = Number(inputString);
+    if (result < 0) {
+      throw Error('[ERROR] negative');
+    }
+    if (!Number.isInteger(result)) {
+      throw Error('[ERROR] float');
+    }
+    return result;
+  } catch (e) {
+    throw Error('[ERROR] Input a integer greater and equal than 0');
+  }
+};
