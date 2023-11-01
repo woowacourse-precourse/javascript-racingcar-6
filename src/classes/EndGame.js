@@ -7,12 +7,12 @@ export default class EndGame {
   }
 
   #decendCarList(carList) {
-    carList.sort((a, b) => b[1] - a[1]);
+    carList.sort((a, b) => b.count - a.count);
   }
 
   #makeWinnerList(carList) {
     const result = [];
-
+    
     carList.forEach((car) => {
       if (car.count != carList[0].count) return result;
       result.push(car.name);

@@ -14,7 +14,5 @@ class App {
     endGame.result(carList);
   }
 }
-const app = new App();
-app.play();
 
 export default App;
