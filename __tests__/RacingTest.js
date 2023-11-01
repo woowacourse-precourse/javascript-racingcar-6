@@ -85,4 +85,17 @@ describe('Racing 게임 테스트', () => {
       '최종 우승자 : yj, bibi, hihi',
     );
   });
+
+  test('calculateWinner 메서드 테스트', () => {
+    const results = [
+      { yj: '--', hihi: '-' },
+      { yj: '--', hihi: '--' },
+      { yj: '--', hihi: '--' },
+      { yj: '--', hihi: '---' },
+    ];
+
+    const winners = app.calculateWinner(results);
+
+    expect(winners).toEqual(['hihi']);
+  });
 });
