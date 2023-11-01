@@ -1,10 +1,16 @@
 import { Console } from "@woowacourse/mission-utils";
+import { Car } from "./Car";
 
 class App {
   async play() {
     try {
       const carNames = await this.enterCarNames();
       const tryCount = await this.enterTryCount();
+
+      const cars = {};
+      carNames.array.forEach((carName) => {
+        cars[carName] = new Car(carName);
+      });
     } catch (e) {
       throw new Error(`[ERROR] : ${e.message}`);
     }
