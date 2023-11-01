@@ -4,8 +4,10 @@ import Inputs from '../utils/Inputs.js';
 import ReturnWinner from './ReturnWinner.js';
 
 class CarRacingGame {
+  #cars;
+
   constructor() {
-    this.cars = [];
+    this.#cars = [];
     this.inputs = new Inputs();
   }
 
@@ -24,11 +26,11 @@ class CarRacingGame {
   }
 
   initializeCars(carNames) {
-    this.cars = carNames.map((name) => new Car(name));
+    this.#cars = carNames.map((name) => new Car(name));
   }
 
   runRaceRound() {
-    this.cars.forEach((car) => {
+    this.#cars.forEach((car) => {
       car.move();
       Console.print(`${car.getName()} : ${'-'.repeat(car.getPosition())}`);
     });
@@ -36,9 +38,8 @@ class CarRacingGame {
   }
 
   printWinners() {
-    const returnWinner = new ReturnWinner();
-    const winners = returnWinner.findWinners(this.cars);
-    returnWinner.printWinners(winners);
+    const winners = ReturnWinner.findWinners(this.#cars);
+    ReturnWinner.printWinners(winners);
   }
 }
 
