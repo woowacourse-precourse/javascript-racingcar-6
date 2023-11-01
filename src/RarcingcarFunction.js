@@ -2,7 +2,7 @@ import { Console, Random } from "@woowacourse/mission-utils";
 
 export const carName = async () => {
   try {
-    const CAR_NAME = Console.readLineAsync(
+    let CAR_NAME = Console.readLineAsync(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
     );
     return CAR_NAME;
@@ -13,7 +13,7 @@ export const carName = async () => {
 
 export const movingNumber = async () => {
   try {
-    const MOVING_NUMBER = Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+    let MOVING_NUMBER = Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
     return MOVING_NUMBER;
   } catch (e) {
     Console.print("[ERROR]");
@@ -24,7 +24,7 @@ const randomNumber = () => {
   return Random.pickNumberInRange(0, 9);
 };
 
-const checkOverFour = () => {
+const checkOverFour = (number) => {
   return number >= 4;
 };
 
@@ -37,7 +37,7 @@ export const startRound = (score) => {
   }
 };
 
-export const currentRoung = (score, name) => {
+export const currentRound = (score, name) => {
   for (let i = 0; i < score.length; i++) {
     Console.print(`${name[i]} : ${"-".repeat(score[i])}`);
   }
