@@ -1,8 +1,7 @@
-import OutputView from "../views/OutPutView.js";
+import OutputView from '../views/OutPutView.js';
 
 class Distance {
-
-  #outputView = OutputView
+  #outputView = OutputView;
   /**
    *
    * @param {자동차 이름 배열} carNames
@@ -14,8 +13,8 @@ class Distance {
 
   showBoard(distanceBoard) {
     distanceBoard.forEach(([name, distance]) => {
-      this.#outputView.print(`${name} : ${'-'.repeat(distance)}`)
-    })
+      this.#outputView.print(`${name} : ${'-'.repeat(distance)}`);
+    });
   }
 
   sortBoard(distanceBoard) {

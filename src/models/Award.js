@@ -1,23 +1,30 @@
 class Award {
+  #winningDistance;
 
-    #winningDistance;
+  #winners;
 
-    getWinners(distanceBoard) {
-        this.#getWinningDistance(distanceBoard);
-        this.#setWinner(distanceBoard);
-    }
+  constructor(winners) {
+    this.winners = winners;
+  }
 
-    #getWinningDistance(distanceBoard) {
-        const [[, winningPoint]] = distanceBoard;
-        this.#winningDistance = winningPoint;
-    }
+  getWinners(distanceBoard) {
+    this.#getWinningDistance(distanceBoard);
+    this.#setWinner(distanceBoard);
 
-    #setWinner(distanceBoard) {
-        distanceBoard
-            .filter(([, distance]) => distance === this.#winningDistance)
-            .map(([name]) => name)
-            .join(',')
-    }
+    return this.#winners;
+  }
+
+  #getWinningDistance(distanceBoard) {
+    const [[, winningPoint]] = distanceBoard;
+    this.#winningDistance = winningPoint;
+  }
+
+  #setWinner(distanceBoard) {
+    this.#winners = distanceBoard
+      .filter(([, distance]) => distance === this.#winningDistance)
+      .map(([name]) => name)
+      .join(', ');
+  }
 }
 
 export default Award;
