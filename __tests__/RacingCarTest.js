@@ -30,16 +30,16 @@ describe('RacingCar클래스 테스트', () => {
       CONSTANTS.progressValue,
       CONSTANTS.progressValue - 1,
     ];
-    const result1 = ['\n실행 결과\n', 'car1 : -\n', 'car2 : -\n\n'];
-    const result2 = ['car1 : --\n', 'car2 : -\n\n'];
-    const expectedResult = [...result1, ...result2];
+    const expectedResult = ['car1 : -', 'car2 : -', 'car1 : --', 'car2 : -'];
     const trialCount = 2;
     const logSpy = getLogSpy();
 
     mockRandoms([...randoms]);
 
-    racingCar.tryProgress(trialCount);
-    OutputView.printProgressStatus(racingCar);
+    for (let i = 1; i <= trialCount; i += 1) {
+      racingCar.tryProgress();
+      OutputView.printProgressStatus(racingCar);
+    }
 
     expectedResult.forEach((result) => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(result));
