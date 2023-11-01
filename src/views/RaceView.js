@@ -22,11 +22,10 @@ export default class RaceView {
     cars.forEach((car) => {
       Console.print(`${car.name} : ${"-".repeat(car.distance)}`);
     });
-
-    Console.print("");
   }
 
   static displayWinners(winners) {
+    Console.print("");
     Console.print(`${MESSAGES.WINNER}${winners.join(", ")}`);
   }
 
