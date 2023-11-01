@@ -10,6 +10,7 @@ const ERROR_MESSAGE = {
   BLANK_EXISTS: '[ERROR] 이름에 공백이 있습니다.',
   TOO_LONG: '[ERROR] 이름은 5 글자를 초과할 수 없습니다.',
   NOT_A_NUMBER: '[ERROR] 숫자가 아닙니다.',
+  NULL_STRING: '[ERROR] 빈 문자열이 있습니다.',
 };
 
 export { CONSOLE_MESSAGE, ERROR_MESSAGE };

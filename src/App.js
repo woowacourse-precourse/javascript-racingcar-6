@@ -37,6 +37,7 @@ class App {
   validateEachName(name) {
     if (name.replace(/\s/g, '').length !== name.length)
       throw new Error(ERROR_MESSAGE.BLANK_EXISTS);
+    if (name.length === 0) throw new Error(ERROR_MESSAGE.NULL_STRING);
     if (name.length > 5) throw new Error(ERROR_MESSAGE.TOO_LONG);
   }
 
