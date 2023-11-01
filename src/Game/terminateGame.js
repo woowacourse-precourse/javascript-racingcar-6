@@ -14,10 +14,6 @@ const checkWinner = async (participants, participantsDistance) => {
   const returnWinner = [];
   const max = sortedWinner[0][1];
 
-  if (max === 0) {
-    return [];
-  }
-
   for (let i = 0; i < sortedWinner.length; i++) {
     if (sortedWinner[i][1] < max) break;
     returnWinner.push(sortedWinner[i][0]);
@@ -28,9 +24,5 @@ const checkWinner = async (participants, participantsDistance) => {
 // 각 참가자들의 결과 비교 후 우승자를 출력
 export const terminateGame = async (participants, participantsDistance) => {
   const winner = await checkWinner(participants, participantsDistance);
-  if (winner.length === 0){
-    print(MESSAGE.NO_WINNER);
-  } else {
-    print(`${MESSAGE.END}${winner.join(", ")}`);
-  }
+  print(`${MESSAGE.END}${winner.join(", ")}`);
 };
