@@ -12,6 +12,9 @@ class App {
 
     Console.print(`\n실행 결과`);
     this.startRace();
+
+    const maxPosition = this.countMaxPosition();
+    const winner = this.findWinner(maxPosition);
   }
 
   async getCarName() {
@@ -59,6 +62,17 @@ class App {
       Console.print(`${this.carName[i]} : ${this.carPosition[i]}`);
     }
     Console.print('');
+  }
+
+  countMaxPosition() {
+    const result = this.carPosition.map((pos) => pos.length);
+    return Math.max(...result);
+  }
+
+  findWinner(maxPos) {
+    const idxOfMaxPosition = [];
+    this.carPosition.forEach((pos, idx) => pos.length === maxPos && idxOfMaxPosition.push(idx));
+    return idxOfMaxPosition.map((idx) => this.carName[idx]);
   }
 }
 
