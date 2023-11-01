@@ -41,7 +41,7 @@ class Car {
   }
 
   nameLength(car) {
-    if (car.some((carName) => carName.length > CAR_NAME_MAX_LENGTH)) {
+    if (car.some((carName) => carName.length > CAR_NAME_MAX_LENGTH + 1)) {
       throw new Error(CAR_VALIDATION.LENGTH);
     }
   }
