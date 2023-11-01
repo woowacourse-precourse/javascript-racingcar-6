@@ -10,8 +10,8 @@ class Car {
     this.#totalDistance = totalDistance;
   }
 
-  isValidCarName() {
-    const trimmedName = this.#name.trim();
+  isValidCarName(name) {
+    const trimmedName = name.trim();
 
     if (!REGEX.VALID_CAR_NAME.test(trimmedName)) {
       throw new Error(ERROR.printError(ERROR.INVALID_CAR_NAME));
