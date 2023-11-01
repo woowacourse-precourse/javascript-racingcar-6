@@ -38,7 +38,7 @@ class App {
 
   validateGameCount(gameCount) {
     if (!gameCount) throw new Error(VALIDATION_ERRORS_MESSAGE.EMPTY_INPUT);
-    if (Number.isNaN(gameCount))
+    if (!Number(gameCount))
       throw new Error(VALIDATION_ERRORS_MESSAGE.NOT_NUMBER);
   }
 
