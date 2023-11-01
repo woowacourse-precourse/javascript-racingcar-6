@@ -36,6 +36,14 @@ class App {
     this.data = new Array(length).fill("");
   }
 
+  setWinner() {
+    const MAX = Math.max(...this.data.map((data) => data.length));
+
+    for (let i = 0; i < this.car.length; i++) {
+      if (this.data[i].length == MAX) this.winner.push(this.car[i]);
+    }
+  }
+
   async initialize() {
     let car_input = (
       await Console.readLineAsync(
@@ -74,6 +82,9 @@ class App {
       this.goOrStop();
       this.print();
     }
+
+    this.setWinner();
+    Console.print(`최종우승자 : ${this.getWinner()}`);
   }
 }
 
