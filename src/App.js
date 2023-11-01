@@ -3,12 +3,12 @@ import { Console, Random } from '@woowacourse/mission-utils';
 class App {
   async play() {
     this.askCarNames();
-    const racingCarList = await this.inputCarNames();
+    const racingCarsMap = await this.inputCarNames();
 
     this.askGameCount();
     const gameCount = await this.inputGameCount();
 
-    this.startRacingCarGame(racingCarList, gameCount);
+    this.startRacingCarGame(racingCarsMap, gameCount);
   }
 
   askCarNames() {
@@ -25,12 +25,12 @@ class App {
       throw new Error('[ERROR] 잘못된 입력값입니다.');
     }
 
-    const racingCarList = new Map();
+    const racingCarsMap = new Map();
     carNameList.forEach((racingCar) => {
-      racingCarList.set(racingCar, '');
+      racingCarsMap.set(racingCar, '');
     });
 
-    return racingCarList;
+    return racingCarsMap;
   }
 
   askGameCount() {
@@ -48,44 +48,44 @@ class App {
     return parseInt(trimmedGameCount);
   }
 
-  async startRacingCarGame(racingCarList, gameCount) {
+  async startRacingCarGame(racingCarsMap, gameCount) {
     Console.print('\n실행 결과');
 
     for (let i = 0; i < gameCount; i++) {
-      await this.moveRacingCarRandomDistance(racingCarList);
-      await this.printRacingCarGameResult(racingCarList, gameCount);
+      await this.moveRacingCarRandomDistance(racingCarsMap);
+      await this.printRacingCarGameResult(racingCarsMap, gameCount);
     }
-    const racingCarWinner = this.getRacingCarWinner(racingCarList);
+    const racingCarWinner = this.getRacingCarWinner(racingCarsMap);
 
     Console.print(`최종 우승자 : ${racingCarWinner}`);
   }
 
-  async moveRacingCarRandomDistance(racingCarList) {
-    [...racingCarList.keys()].forEach((racingCar) => {
+  async moveRacingCarRandomDistance(racingCarsMap) {
+    [...racingCarsMap.keys()].forEach((racingCar) => {
       const randomDistance = Random.pickNumberInRange(0, 9);
       if (randomDistance >= 4) {
-        racingCarList.set(racingCar, racingCarList.get(racingCar) + '-');
+        racingCarsMap.set(racingCar, racingCarsMap.get(racingCar) + '-');
       }
     });
   }
 
-  async printRacingCarGameResult(racingCarList) {
-    for (const [racingCar, distance] of racingCarList.entries()) {
+  async printRacingCarGameResult(racingCarsMap) {
+    for (const [racingCar, distance] of racingCarsMap.entries()) {
       await Console.print(`${racingCar} : ${distance}`);
     }
     Console.print('');
   }
 
-  getRacingCarWinner(racingCarList) {
-    const longestDistance = [...racingCarList.values()].reduce(
+  getRacingCarWinner(racingCarsMap) {
+    const longestDistance = [...racingCarsMap.values()].reduce(
       (longestDistance, currentDistance) =>
         longestDistance.length > currentDistance.length
           ? longestDistance
           : currentDistance
     );
 
-    const racingCarWinner = [...racingCarList.keys()].filter(
-      (car) => racingCarList.get(car) === longestDistance
+    const racingCarWinner = [...racingCarsMap.keys()].filter(
+      (car) => racingCarsMap.get(car) === longestDistance
     );
 
     return racingCarWinner.join(',');
