@@ -24,8 +24,9 @@ describe('RacingCar클래스 테스트', () => {
   });
   test('각 Car 인스턴스의 이동 이력 출력 테스트', () => {
     const randoms = [4, 4, 4, 4, 4, 3, 3, 3];
-    const expectedResult =
-      '\n실행 결과\ncar1 : -\ncar2 : -\ncar3 : -\ncar4 : -\n\ncar1 : --\ncar2 : -\ncar3 : -\ncar4 : -\n';
+    const result1 = '\n실행 결과\ncar1 : -\ncar2 : -\ncar3 : -\ncar4 : -\n\n';
+    const result2 = 'car1 : --\ncar2 : -\ncar3 : -\ncar4 : -\n';
+    const expectedResult = [result1, result2];
     const logSpy = getLogSpy();
 
     mockRandoms([...randoms]);
@@ -33,7 +34,9 @@ describe('RacingCar클래스 테스트', () => {
     racingCar.tryProgress(2);
     OutputView.printProgressStatus(racingCar);
 
-    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(expectedResult));
+    expectedResult.forEach((result) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(result));
+    });
   });
 
   test('우승한 자동차를 출력하는 기능 테스트', () => {
