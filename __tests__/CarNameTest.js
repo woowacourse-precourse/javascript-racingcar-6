@@ -1,4 +1,5 @@
 import CarName from "../src/controller/carNameController.js";
+import Car from "../src/model/carModel.js";
 import {MissionUtils} from "@woowacourse/mission-utils";
 
 const mockQuestions = (inputs) => {

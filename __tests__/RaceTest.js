@@ -26,14 +26,16 @@ const getLogSpy = () => {
 };
 
 describe('레이스별 결과 ', () => {
+
     test('전진했을때 값이 1증가.', () => {
         const car = new Car('CAR1');
         car.move();
         expect(car.moves).toBe(1);
     });
+
     test('숫자가 3초과면 '-' 한칸 출력', async () => {
         mockRandoms([1, 2, 4]);
-        mockQuestions(['doh,dohy,doh1', '2']);
+        mockQuestions(['doh,doh2,doh1', '2']);
         const logSpy = getLogSpy();
         const app = new App();
         await app.play();
