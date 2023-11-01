@@ -1,0 +1,5 @@
+const MAX_CAR_NAME_LENGTH = 5;
+const MOVE_THRESHOLD = 4;
+const MAX_ROUNDS = 100;
+
+module.exports = { MAX_CAR_NAME_LENGTH, MOVE_THRESHOLD, MAX_ROUNDS };
