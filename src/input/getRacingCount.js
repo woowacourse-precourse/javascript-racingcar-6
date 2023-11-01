@@ -18,5 +18,3 @@ export default async function getRacingCount() {
 
   return Number(racingCount);
 }
-
-// getRacingCount();

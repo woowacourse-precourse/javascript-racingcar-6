@@ -32,12 +32,3 @@ export default class RacingCar {
     return this.movingDistance.length;
   }
 }
-
-// const newCar = new RacingCar("hello");
-// console.log(newCar.name);
-// newCar.tryRacing();
-// newCar.tryRacing();
-// newCar.tryRacing();
-// newCar.tryRacing();
-// console.log(newCar.movingDistance);
-// console.log(newCar.getTotalMileage());

@@ -23,8 +23,3 @@ export default function validateRacingCount(racingCountInput) {
   checkNumber(racingCountInput);
   checkNaturalNumber(Number(racingCountInput));
 }
-
-// console.log(validateRacingCount("0"));
-// console.log(validateRacingCount("0.1"));
-// console.log(validateRacingCount("heelo"));
-// console.log(validateRacingCount("1"));

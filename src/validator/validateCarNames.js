@@ -39,18 +39,4 @@ export default function validateCarNames(carNames) {
     checkOverLength(carName);
     checkBlankInput(carName);
   }
-
-
-  // console.log(carNamesWithoutSpace);
-  // console.log(carNames);
-  // console.log(checkEmptyCarName(carNames));
-  // console.log('\n');
 }
-
-// validateCarNames("hello,gaemm,solo");
-// validateCarNames("hello ,gaemm,solo");
-// validateCarNames("hello ,solo,solo");
-
-// validateCarNames("123456");
-// validateCarNames("hello,,gaemmsolo");
-// validateCarNames(" ");

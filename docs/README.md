@@ -49,8 +49,11 @@
 ## [ ] Test: 테스트 케이스 실행
 주어진 테스트 케이스를 통과한다.
 Jest 테스트 케이스를 작성하여 추가 검증한다.
+- ValidatorTest
+- ErrorTest
+- RacingTest
 
-## [ ] Convention
+## [✅] Convention
 [JavaScript 코드 컨벤션](https://github.com/ParkSB/javascript-style-guide#%EB%B3%80%EC%88%98-variables)을 지키면서 프로그래밍한다.
 
 ## [✅] Indent depth 확인

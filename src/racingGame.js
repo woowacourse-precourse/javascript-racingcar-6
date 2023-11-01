@@ -25,5 +25,3 @@ export default async function racingGame() {
 
   displayWinner(racingCars);
 }
-
-racingGame();

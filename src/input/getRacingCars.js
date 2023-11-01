@@ -33,5 +33,3 @@ export default async function getRacingCars() {
 
   return racingCars;
 }
-
-// console.log(await getCarNames());
