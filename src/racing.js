@@ -10,12 +10,11 @@ function carRacing(carName, attempt) {
       Console.print(`${carName[j]} : ${forwardNumber[j]}`);
       // console.log(`${carName[j]}`, car[j]);
     }
-    if (i < attempt - 1) {
-      Console.print("");
-    }
+
+    Console.print("");
   }
 
-  console.log(car);
+  // console.log(car);
   return car;
 }
 
