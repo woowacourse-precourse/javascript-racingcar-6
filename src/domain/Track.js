@@ -120,9 +120,7 @@ class Track {
 
   /**
    * 현재 랩의 User들의 결과를 반환합니다.
-   * @returns {{
-   *  [key: string]: string
-   * }}
+   * @returns {import('../service/RacingService.js').RacingRecord} 현재 랩의 결과
    */
   getCurrentLapResult() {
     const result = {};
