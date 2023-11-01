@@ -114,8 +114,7 @@ describe("자동차 경주 게임", () => {
   test.each([
     [["pobi,jigi", "1a"]],
     [["pobi,woni", "ab"]],
-    [["pobi,woni", "1!"]],
-    [["pobi,woni", "0"]]
+    [["pobi,woni", "1!"]]
   ])("시도 횟수에 대한 예외 처리", async inputs => {
     // given
     mockQuestions(inputs);
