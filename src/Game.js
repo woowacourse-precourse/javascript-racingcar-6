@@ -22,6 +22,8 @@ class Game {
 
       this.#count -= 1;
     }
+
+    this.showWinner();
   }
 
   async setCars() {
@@ -44,6 +46,23 @@ class Game {
 
   isFinished() {
     return this.#count !== 0;
+  }
+
+  showWinner() {
+    let maximumPathLength = 0;
+    this.#cars.forEach((car) => {
+      const path = car.getPath();
+      maximumPathLength = Math.max(maximumPathLength, path.length);
+    });
+
+    const winners = this.#cars
+      .filter((car) => {
+        const path = car.getPath();
+        return maximumPathLength === path.length;
+      })
+      .map((car) => car.getName());
+
+    Console.print(`최종 우승자 : ${winners.join(', ')}`);
   }
 }
 
