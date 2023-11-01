@@ -1,6 +1,7 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import { setCarData } from "../data/car_data.js";
+import { getCarData, setCarData } from "../data/car_data.js";
 import printCarData from "./print_car_data.js";
+import printWinner from "./print_winner.js";
 
 const printExecution = (attempsNumber) => {
     MissionUtils.Console.print("\n실행 결과");
@@ -9,6 +10,7 @@ const printExecution = (attempsNumber) => {
         setCarData();
         printCarData();
     }
+    printWinner(getCarData());
 };
 
 export default printExecution;
