@@ -7,9 +7,12 @@ import { FindWinners } from './FindWinners.js';
 class App {
   async play() {
     const cars = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)');
-    const counts = Number(await Console.readLineAsync('시도할 횟수는 몇 회인가요?'));
+    let counts = await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
     
-    if (typeof(cars) !== 'string' || typeof(counts) !== 'number') {
+    if (counts >= 0) {
+      counts = Number(counts)
+    }
+    if (typeof(cars) !== 'string' || typeof(counts) !== 'number' || cars === '') {
       throw new Error('[ERROR] 잘못된 형식입니다.')
     };
     
