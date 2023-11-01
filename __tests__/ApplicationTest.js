@@ -23,7 +23,26 @@ const getLogSpy = () => {
   return logSpy;
 };
 
+const getReadLineSpy = () => {
+  const logSpy = jest.spyOn(MissionUtils.Console, "readLineAsync");
+  logSpy.mockClear();
+  return logSpy;
+};
+
 describe("자동차 경주 게임", () => {
+  test("입력 문구 테스트", async () => {
+    const inputs = ["pobi,woni"];
+    const output =
+      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
+    const logSpy = getReadLineSpy();
+
+    mockQuestions(inputs);
+
+    const app = new App();
+    await app.enterCarnames();
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+  });
+
   test("전진-정지", async () => {
     // given
     const MOVING_FORWARD = 4;
@@ -46,17 +65,17 @@ describe("자동차 경주 게임", () => {
     });
   });
 
-  test.each([
-    [["pobi,javaji"]],
-    [["pobi,eastjun"]]
-  ])("이름에 대한 예외 처리", async (inputs) => {
-    // given
-    mockQuestions(inputs);
+  test.each([[["pobi,javaji"]], [["pobi,eastjun"]]])(
+    "이름에 대한 예외 처리",
+    async (inputs) => {
+      // given
+      mockQuestions(inputs);
 
-    // when
-    const app = new App();
+      // when
+      const app = new App();
 
-    // then
-    await expect(app.play()).rejects.toThrow("[ERROR]");
-  });
+      // then
+      await expect(app.play()).rejects.toThrow("[ERROR]");
+    }
+  );
 });
