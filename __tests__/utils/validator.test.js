@@ -1,4 +1,4 @@
-import { createValidator, validateAttempts, validateCarNames } from '../../src/utils/validator.js';
+import { validateAttempts, validateCarNames } from '../../src/utils/validator.js';
 
 import AppError from '../../src/errors/AppError.js';
 

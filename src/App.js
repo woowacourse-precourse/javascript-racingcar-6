@@ -1,7 +1,7 @@
+import { CONSTANTS } from './constants/index.js';
 import { Console } from '@woowacourse/mission-utils';
-import { OUTPUT_MESSAGES } from './constants/index.js';
+import InputProcessor from './utils/inputProcessor';
 import Race from './models/Race.js';
-import ReaderView from './helpers/ReaderView.js';
 
 class App {
   #raceCars;
@@ -17,8 +17,12 @@ class App {
   }
 
   async initRace() {
-    const carNameList = await ReaderView.readCarNames();
-    const numberOfAttempts = await ReaderView.readAttempts();
+    const carNames = await Console.readLineAsync(CONSTANTS.INPUT_MESSAGES.CAR_NAMES);
+    const carNameList = await InputProcessor.processCarNames(carNames);
+
+    const attempts = await Console.readLineAsync(CONSTANTS.INPUT_MESSAGES.ATTEMPTS);
+    const numberOfAttempts = await InputProcessor.processAttempts(attempts);
+
     this.#raceCars = new Race(carNameList, numberOfAttempts);
   }
 
@@ -28,7 +32,7 @@ class App {
 
   announceWinner() {
     const winnerNames = this.#raceCars?.findWinner();
-    Console.print(`${OUTPUT_MESSAGES.WINNER_PREFIX}${winnerNames}`);
+    Console.print(`${CONSTANTS.OUTPUT_MESSAGES.WINNER_PREFIX}${winnerNames}`);
   }
 }
 
