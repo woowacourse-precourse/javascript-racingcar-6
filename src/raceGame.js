@@ -15,6 +15,17 @@ async function startRace() {
         }
 
         const cars = carNames.map(name => new Car(name.trim()));
+
+        Console.print('\n실행 결과');
+        for (let i = 0; i < numMoves; i++) {
+            for (const car of cars) {
+                car.move();
+            }
+
+            for (const car of cars) {
+                Console.print(car.toString());
+            }
+        }
 }
 
 module.exports = startRace;
