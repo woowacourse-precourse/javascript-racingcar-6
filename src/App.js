@@ -27,7 +27,9 @@ class App {
     CARS_ARRAY.forEach((name) => {
       SET_CAR.add(name);
       if (name.length < 1 || name.length > 5) {
-        throw new Error("[ERROR] 자동차 이름은 5글자 이하로 입력해야 합니다.");
+        throw new Error(
+          "[ERROR] 자동차 이름은 1글자 이상 5글자 이하로 입력해야 합니다."
+        );
       }
     });
 
