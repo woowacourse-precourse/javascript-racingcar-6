@@ -1,6 +1,6 @@
 import ERROR_MESSAGE from '../constants/errorMessage.js';
 import messagePrinter from '../utils/messagePrinter.js';
-import Car from './Car';
+import Car from './Car.js';
 
 class AllCars {
   #cars;
