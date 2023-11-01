@@ -16,9 +16,7 @@ class Car {
   playGame() {
     const randomNum = MissionUtils.Random.pickNumberInRange(0, 9);
     if (randomNum >= 4) this.moveCount++;
-    // console.log(`${this.name}의 moveCount = ${this.moveCount}, 난수 = ${randomNum}`);
     if (Car.#maxMoveCount < this.moveCount) Car.#maxMoveCount = this.moveCount;
-    // console.log(`moveCount: ${this.moveCount}, maxmoveCount: ${Car.#maxMoveCount}`)
   }
 
   printMove() {
