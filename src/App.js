@@ -12,22 +12,13 @@ class App {
 
       const carNameArray = carNamesString.split(',');
       const attemptForwardCount = await this.getUsetInputForwardCount();
+      Console.print(attemptForwardCount);
+      Console.print(carNameArray);
 
       let carStatusArray = this.convertCarNamesToObject(carNameArray);
+      Console.print(carStatusArray);
 
-      for (let i = 0; i < parseInt(attemptForwardCount); i++) {
-        carStatusArray = carStatusArray.map((car) => {
-          return {
-            name: car.name,
-            status: this.attepmtMove(car.status),
-          };
-        });
-        Console.print(carStatusArray);
-        carStatusArray.forEach((car) => {
-          Console.print(`${car.name} : ${car.status}`);
-        });
-        Console.print('\n');
-      }
+      this.race(carStatusArray, attemptForwardCount);
     } catch (error) {
       console.error(error);
     }
@@ -40,6 +31,21 @@ class App {
   }
   async getUsetInputForwardCount() {
     return await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
+  }
+  race(carArray, attemptCount) {
+    let cars = [...carArray];
+    for (let i = 0; i < parseInt(attemptCount); i++) {
+      cars = cars.map((car) => {
+        return {
+          name: car.name,
+          status: this.attepmtMove(car.status),
+        };
+      });
+      cars.forEach((car) => {
+        Console.print(`${car.name} : ${car.status}`);
+      });
+      Console.print('\n');
+    }
   }
   convertCarNamesToObject(array) {
     return array.map((name) => {
