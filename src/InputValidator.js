@@ -34,17 +34,17 @@ class InputValidator {
     return racingCarMembers;
   }
 
-  async getValidRoundNumber(prompt) {
-    const roundNumber = Number(await Console.readLineAsync(prompt));
+  async getValidROUNDNUMBER(prompt) {
+    const ROUNDNUMBER = Number(await Console.readLineAsync(prompt));
 
-    if (roundNumber == "") {
+    if (ROUNDNUMBER == "") {
       throw new Error("[ERROR] 시도 횟수를 입력해주세요.");
-    } else if (!Number.isInteger(roundNumber)) {
+    } else if (!Number.isInteger(ROUNDNUMBER)) {
       throw new Error("[ERROR] 시도 횟수는 자연수여야 합니다.");
-    } else if (roundNumber < 1 || roundNumber > 20) {
+    } else if (ROUNDNUMBER < 1 || ROUNDNUMBER > 20) {
       throw new Error("[ERROR] 시도 횟수는 1 이상 20 미만이어야 합니다.");
     }
-    return roundNumber;
+    return ROUNDNUMBER;
   }
 }
 

@@ -1,9 +1,9 @@
 import { Console } from "@woowacourse/mission-utils";
 
 class ResultManager {
-  printTotalRoundsResults(roundNumber, racingCarMembers, racingResults) {
+  printTotalRoundsResults(ROUNDNUMBER, racingCarMembers, racingResults) {
     Console.print("\n실행 결과");
-    for (let i = 0; i < roundNumber; i++) {
+    for (let i = 0; i < ROUNDNUMBER; i++) {
       this.printOneRoundResults(i, racingCarMembers, racingResults);
       Console.print("\n");
     }
@@ -26,8 +26,8 @@ class ResultManager {
     return trueCount;
   }
 
-  printWinner(roundNumber, racingCarMembers, racingResults, winner) {
-    const finalRoundResults = this.selectFinalRound(roundNumber, racingCarMembers, racingResults);
+  printWinner(ROUNDNUMBER, racingCarMembers, racingResults, winner) {
+    const finalRoundResults = this.selectFinalRound(ROUNDNUMBER, racingCarMembers, racingResults);
 
     const maxCount = Math.max(...finalRoundResults);
 
@@ -39,10 +39,10 @@ class ResultManager {
     Console.print(`최종 우승자 : ${winner.join()}`);
   }
 
-  selectFinalRound(roundNumber, racingCarMembers, racingResults) {
+  selectFinalRound(ROUNDNUMBER, racingCarMembers, racingResults) {
     const finalRoundResults = [];
     for (let i = 0; i < racingCarMembers.length; i++) {
-      const result = this.countOneMemberResults(roundNumber, racingResults[i]);
+      const result = this.countOneMemberResults(ROUNDNUMBER, racingResults[i]);
       finalRoundResults.push(result);
     }
     return finalRoundResults;
