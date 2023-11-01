@@ -1,5 +1,5 @@
-import Constraints from '../constants/Constraints';
-import ErrorMessage from '../constants/ErrorMessage';
+import CONSTRAINTS from '../constants/Constraints';
+import ERROR_MESSAGE from '../constants/ErrorMessage';
 
 export default class Validation {
   #cars;
@@ -13,16 +13,16 @@ export default class Validation {
 
   isValid() {
     if (this.#isCheckDuplicate()) {
-      throw new Error(ErrorMessage.DUPLICATE);
+      throw new Error(ERROR_MESSAGE.DUPLICATE);
     }
     if (!this.#isCheckLength()) {
-      throw new Error(ErrorMessage.LENGTH);
+      throw new Error(ERROR_MESSAGE.LENGTH);
     }
     if (!this.#isCheckNumber()) {
-      throw new Error(ErrorMessage.NUMBER);
+      throw new Error(ERROR_MESSAGE.NUMBER);
     }
     if (!this.#isCheckNatural()) {
-      throw new Error(ErrorMessage.NATURAL);
+      throw new Error(ERROR_MESSAGE.NATURAL);
     }
     return true;
   }
@@ -33,7 +33,7 @@ export default class Validation {
   }
 
   #isCheckLength() {
-    return this.#cars.every((car) => car.length <= Constraints.MAX_LENGTH);
+    return this.#cars.every((car) => car.length <= CONSTRAINTS.MAX_LENGTH);
   }
 
   #isCheckNumber() {

@@ -1,7 +1,7 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import Car from './Car';
-import Constraints from '../constants/Constraints';
+import CONSTRAINTS from '../constants/Constraints';
 import Output from '../views/Output';
+import Car from './Car';
 
 export default class Game {
   #cars;
@@ -18,7 +18,7 @@ export default class Game {
     this.#cars.forEach((car) => {
       const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
       const forward = car.getForward();
-      if (randomNumber >= Constraints.MIN_FORWARD) {
+      if (randomNumber >= CONSTRAINTS.MIN_FORWARD) {
         car.setForward(forward + 1);
       }
       Output.printExecutionResult(car.getName(), car.getForward());
