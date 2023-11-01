@@ -25,7 +25,7 @@ describe("App 클래스의 경주 결과 출력 테스트", () => {
 
     for (let i = 0; i < printCallCount; i++) {
       const printedMessage = Console.print.mock.calls[i][0];
-      if (printedMessage.includes(':')) {  
+      if (printedMessage.includes(':') && !printedMessage.includes('최종 우승자')) {  
         expect(printedMessage).toMatch(/^[a-zA-Z0-9]+ : -+$/);
       }
     }
