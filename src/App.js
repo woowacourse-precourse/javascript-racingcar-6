@@ -7,7 +7,7 @@ import {
   printResultUsingScoreBoard,
   printWinners,
 } from "./core/io.js";
-import { makeScoreboardByNames } from "./utils/parse.js";
+import ScoreBoard from "./core/scoreboard.js";
 import { isFowardAllowed } from "./utils/prob.js";
 
 class App {
@@ -17,13 +17,13 @@ class App {
   /** @type { string[] } */
   names = [];
 
-  /** @type { Record<string, number> } */
-  scoreboard = {};
+  /** @type { ScoreBoard } */
+  scoreBoard;
 
   async play() {
     this.names = await askNames();
     this.tryAmount = await askTryAmount();
-    this.scoreboard = makeScoreboardByNames(this.names);
+    this.scoreBoard = new ScoreBoard(this.names);
 
     printResultTitle();
     this.#simulate();
@@ -33,7 +33,7 @@ class App {
   #simulate() {
     while (this.tryAmount--) {
       this.simulateOneTurn();
-      printResultUsingScoreBoard(this.scoreboard);
+      printResultUsingScoreBoard(this.scoreBoard.board);
     }
   }
 
@@ -41,19 +41,8 @@ class App {
     if (!this.names) return;
 
     this.names.forEach((name) => {
-      if (isFowardAllowed()) this.giveScoreTo(name);
+      if (isFowardAllowed()) this.scoreBoard.giveScoreTo(name);
     });
-  }
-
-  /**
-   *
-   * @param {string} name
-   */
-  giveScoreTo(name) {
-    if (!this.scoreboard) return;
-    if (!this.scoreboard.hasOwnProperty(name)) return;
-
-    this.scoreboard[name] += 1;
   }
 
   /**
@@ -61,10 +50,10 @@ class App {
    * @returns { string[] }
    */
   judgeWinner() {
-    const maxScore = Math.max(...Object.values(this.scoreboard));
+    const maxScore = Math.max(...Object.values(this.scoreBoard.board));
 
     const winners = [];
-    Object.entries(this.scoreboard).forEach(([name, score]) => {
+    Object.entries(this.scoreBoard.board).forEach(([name, score]) => {
       if (score === maxScore) winners.push(name);
     });
 
