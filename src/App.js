@@ -4,6 +4,10 @@ import { InputView, OutputView } from './view/index.js';
 import MESSAGES from './constants/message.js';
 import { SYSTEM_CONFIG } from './constants/system.js';
 
+/**
+ * @typedef {import('./service/RacingService.js').RacingRecord} RacingRecord
+ */
+
 class App {
   #view = {
     input: InputView,
@@ -51,9 +55,7 @@ class App {
 
   /**
    * @private
-   * @param {{
-   *  [key: string]: string
-   * }[]} records 트랙 경기 기록 목록
+   * @param {RacingRecord[]} records 트랙 경기 기록 목록
    */
   #printRecords(records) {
     records.forEach((record) => this.#printRecord(record));
@@ -61,9 +63,7 @@ class App {
 
   /**
    * @private
-   * @param {{
-   *  [key: string]: string
-   * }} record 트랙 경기 기록
+   * @param {RacingRecord} record 트랙 경기 기록
    */
   #printRecord(record) {
     this.#view.output.lineBreak();
