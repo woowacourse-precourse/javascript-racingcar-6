@@ -117,7 +117,7 @@ class App {
       }
     });
 
-    return finalWinner.join('');
+    return finalWinner.join(',');
   }
 }
 
