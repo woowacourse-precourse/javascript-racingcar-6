@@ -72,7 +72,7 @@ export default class CarRacingGame {
   }
 
   getCarNameArray() {
-    return this.#carNameArray;
+    return [...this.#carNameArray];
   }
 
   static async getCarNames() {
