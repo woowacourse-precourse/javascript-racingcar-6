@@ -23,6 +23,10 @@ const OutputView = {
   printFinalWinner(finalWinner) {
     this.print(OUTPUT_MESSAGE_FUNCTION.finalWinner(finalWinner));
   },
+
+  printProgress() {
+    this.print(OUTPUT_MESSAGE.progress);
+  },
 };
 
 export default OutputView;
