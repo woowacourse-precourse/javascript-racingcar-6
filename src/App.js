@@ -19,6 +19,12 @@ class App {
     });
   }
 
+  setCarsMovements() {
+    this.cars.forEach((car) => {
+      car.setMovement(this.GameCount);
+    });
+  }
+
   async play() {
     const inputCarNames = await Input.getCarNamesFromUser();
     Validation.validateCarName(inputCarNames);
@@ -29,7 +35,12 @@ class App {
     this.GameCount = inputGameCount;
 
     this.makeCars(this.carNames);
+
+    this.setCarsMovements();
   }
 }
+
+const app = new App();
+app.play();
 
 export default App;
