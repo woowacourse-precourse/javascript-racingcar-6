@@ -3,6 +3,7 @@ import { carMoveStorage } from "./CarMoveStorage.js";
 import { carMoveOrStop } from "./CarMove.js";
 import { winner } from "./Winner.js";
 import { carMoveNumberValidater } from "./CarMoveNumberValidater.js";
+import { carNameSpliter } from "./CarNameSpliter.js";
 
 class App {
   async play() {
@@ -16,9 +17,7 @@ class App {
 export default App;
 
 async function carCreater() {
-  MissionUtils.Console.print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-  const carName = await MissionUtils.Console.readLineAsync('');
-  const carNameSplit = carName.split(',');
+  const carNameSplit = await carNameSpliter();
   validationName(carNameSplit);
   carMoveStorage.carNameSave(carNameSplit);
   return carNameSplit;
