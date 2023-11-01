@@ -46,11 +46,11 @@
 </br>
 
 ## 체크포인트
-> - [ ] SOLID 원칙을 준수하였는가
-> - [ ] 기능을 최소단위로 분리하였는가
-> - [ ] 접근제한자를 적절히 적용하였는가 (`#`, `_`)
-> - [ ] indent의 depth가 2를 초과하지 않았는가
-> - [ ] 문자열 생성 시 template strings을 이용하였는가
+> - [-] SOLID 원칙을 준수하였는가
+> - [-] 기능을 최소단위로 분리하였는가
+> - [x] 접근제한자를 적절히 적용하였는가 (`#`, `_`)
+> - [x] indent의 depth가 2를 초과하지 않았는가
+> - [-] 문자열 생성 시 template strings을 이용하였는가
 
 </br>
 </br>
@@ -93,7 +93,7 @@
 > ### Const
 > - `MOVE_MIN_DIGIT = 4` : 이동하는 최솟값
 > - `MAX_NAME_LENGTH = 5` : 이름 길이 최댓값
-> - `POSITIVE_INTEGER_REGEX = /^\d+$/` : 양의 정수 패턴식
+> - `POSITIVE_INTEGER_REGEX = /^[1-9]$/` : 양의 정수 패턴식
 > ### Members
 > - `Number` `#numTurns` : 턴 수
 > - `Array<Car>` `#cars` : 레이싱카 리스트
