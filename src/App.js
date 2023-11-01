@@ -12,9 +12,9 @@ class App {
     this.playNum = 0;
   }
 
-  start() {
-    const carList = getCarName();
-    this.playNum = getPlayNum();
+  async start() {
+    const carList = await getCarName();
+    this.playNum = await getPlayNum();
     this.carDistanceList = setInitialDistance(carList);
   }
 
@@ -29,7 +29,7 @@ class App {
   }
 
   async play() {
-    this.start();
+    await this.start();
     this.progress();
     this.finish();
   }
