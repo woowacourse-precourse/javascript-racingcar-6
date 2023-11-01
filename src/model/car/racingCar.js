@@ -1,5 +1,6 @@
 /* eslint-disable import/extensions */
 import MovableNumber from "../movement/movableNumber.js";
+import { MOVE } from "../../utils/constants.js";
 
 class RacingCar {
   #name;
@@ -22,7 +23,7 @@ class RacingCar {
 
   move() {
     if (this.movableNumber.isMovable()) {
-      this.#moveCount += 1;
+      this.#moveCount += MOVE.FORWARD;
     }
   }
 }

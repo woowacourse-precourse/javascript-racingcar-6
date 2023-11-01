@@ -1,4 +1,5 @@
 import CarNames from "../src/model/car/carNames";
+import { ERROR } from "../src/utils/constants";
 
 const carNames = new CarNames();
 
@@ -11,28 +12,28 @@ describe("createValidNameList 테스트", () => {
   test("자동차 이름이 없을경우", () => {
     const input = "";
     expect(() => carNames.createValidNameList(input)).toThrow(
-      "[ERROR] 이름을 입력해 주세요."
+      ERROR.EMPTY_INPUT
     );
   });
 
   test("자동차 이름이 5글자를 초과하는 경우", () => {
     const input = "sdf,sdfsdf";
     expect(() => carNames.createValidNameList(input)).toThrow(
-      "[ERROR] 5글자 이하의 이름을 입력해주세요."
+      ERROR.INVALID_NAME_LENGTH
     );
   });
 
   test("중복된 자동차 이름이 있는 경우", () => {
     const input = "sdf,sdf,sd";
     expect(() => carNames.createValidNameList(input)).toThrow(
-      "[ERROR] 중복된 이름이 있습니다."
+      ERROR.INVALID_DUPLICATE_NAMES
     );
   });
 
   test("공백인 자동차 이름이 있는 경우", () => {
     const input = " ,sdf";
     expect(() => carNames.createValidNameList(input)).toThrow(
-      "[ERROR] 이름은 공백이 될 수 없습니다."
+      ERROR.INVALID_BLANK_NAME
     );
   });
 });

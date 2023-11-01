@@ -1,3 +1,5 @@
+import { GAME, ERROR } from "../../utils/constants.js";
+
 class NumberOfAttempt {
   constructor(inputNumber) {
     this.NumberOfAttempt = inputNumber;
@@ -6,22 +8,22 @@ class NumberOfAttempt {
 
   validateNumber() {
     if (!Number.isInteger(Number(this.NumberOfAttempt))) {
-      throw new Error("[ERROR] 정수를 입력해 주세요.");
+      throw new Error(ERROR.INVALID_INTEGER);
     }
     if (this.NumberOfAttempt <= 0) {
-      throw new Error("[ERROR] 0이상의 정수를 입력해 주세요.");
+      throw new Error(ERROR.INVALID_NEGATIVE_INTEGER);
     }
   }
 
   isFinished() {
-    if (this.NumberOfAttempt === 0) {
+    if (this.NumberOfAttempt === GAME.FINISH_THRESHOLD) {
       return true;
     }
     return false;
   }
 
   decrease() {
-    this.NumberOfAttempt -= 1;
+    this.NumberOfAttempt -= GAME.ATTEMPT_DECREASE_AMOUNT;
   }
 }
 export default NumberOfAttempt;

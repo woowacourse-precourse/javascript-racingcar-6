@@ -1,4 +1,5 @@
 import { Random } from "@woowacourse/mission-utils";
+import { MOVE } from "../../utils/constants.js";
 
 class MovableNumber {
   generateRandomNumber() {
@@ -8,7 +9,7 @@ class MovableNumber {
 
   isMovable() {
     const RandomNumber = this.generateRandomNumber();
-    if (RandomNumber >= 4) {
+    if (RandomNumber >= MOVE.MOVABLE_THRESHOLD) {
       return true;
     }
     return false;

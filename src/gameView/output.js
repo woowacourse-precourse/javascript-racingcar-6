@@ -1,19 +1,22 @@
 import { Console } from "@woowacourse/mission-utils";
+import { GAME, MOVE } from "../utils/constants.js";
 
 class Output {
   printGameResult() {
-    Console.print("실행결과");
+    Console.print(GAME.RUN_RESULT);
   }
 
   printCarStatusResult(cars) {
     cars.forEach((car) => {
-      Console.print(`${car.getName()} : ${"-".repeat(car.getMoveCount())}`);
+      Console.print(
+        `${car.getName()} : ${MOVE.DASH.repeat(car.getMoveCount())}`
+      );
     });
     Console.print("");
   }
 
   printWinners(winners) {
-    Console.print(`최종 우승자: ${winners.join(",")}`);
+    Console.print(`${GAME.WINNER} ${winners.join(",")}`);
   }
 }
 export default Output;

@@ -1,20 +1,21 @@
 import NumberOfAttempt from "../src/model/game/numberOfAttempt";
+import { ERROR } from "../src/utils/constants";
 
 describe("시도 횟수 클래스 테스트", () => {
-  test("숫자가 정수가 아닌 경우", () => {
+  test("정수가 아닌 경우", () => {
     expect(() => {
-      const numberOfAttempt1 = new NumberOfAttempt("1.5");
-    }).toThrow("[ERROR] 정수를 입력해 주세요.");
+      const numberOfAttempt = new NumberOfAttempt("1.5");
+    }).toThrow(ERROR.INVALID_NUMBER);
   });
 
   test("자연수가 아닌 경우", () => {
     expect(() => {
-      const numberOfAttempt2 = new NumberOfAttempt("0");
-    }).toThrow("[ERROR] 0이상의 정수를 입력해 주세요.");
+      const numberOfAttempt = new NumberOfAttempt("0");
+    }).toThrow(ERROR.INVALID_NEGATIVE_INTEGER);
 
     expect(() => {
-      const numberOfAttempt3 = new NumberOfAttempt("-1");
-    }).toThrow("[ERROR] 0이상의 정수를 입력해 주세요.");
+      const numberOfAttempt = new NumberOfAttempt("-1");
+    }).toThrow(ERROR.INVALID_NEGATIVE_INTEGER);
   });
 
   test("isFinished() 테스트 - 시도 횟수가 0이 된 경우", () => {

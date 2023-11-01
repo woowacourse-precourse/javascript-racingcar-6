@@ -1,3 +1,5 @@
+import { ERROR } from "../../utils/constants.js";
+
 class CarNames {
   #names = [];
 
@@ -15,7 +17,7 @@ class CarNames {
 
   checkInputNull(inputNamesString) {
     if (inputNamesString === "") {
-      throw new Error("[ERROR] 이름을 입력해 주세요.");
+      throw new Error(ERROR.EMPTY_INPUT);
     }
   }
 
@@ -27,14 +29,14 @@ class CarNames {
     const uniqueNames = new Set(this.#names);
 
     if (uniqueNames.size !== this.#names.length) {
-      throw new Error("[ERROR] 중복된 이름이 있습니다.");
+      throw new Error(ERROR.INVALID_DUPLICATE_NAMES);
     }
   }
 
   checkNameBlank() {
     for (let i = 0; i < this.#names.length; i += 1) {
       if (this.#names[i] === "") {
-        throw new Error("[ERROR] 이름은 공백이 될 수 없습니다.");
+        throw new Error(ERROR.INVALID_BLANK_NAME);
       }
     }
   }
@@ -42,7 +44,7 @@ class CarNames {
   checkNameLength() {
     for (let i = 0; i < this.#names.length; i += 1) {
       if (this.#names[i].length > 5) {
-        throw new Error("[ERROR] 5글자 이하의 이름을 입력해주세요.");
+        throw new Error(ERROR.INVALID_NAME_LENGTH);
       }
     }
   }
