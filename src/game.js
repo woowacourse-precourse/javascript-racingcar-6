@@ -1,7 +1,18 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Random, Console } from "@woowacourse/mission-utils";
 
 const carObjects = [];
 
+function printRoundResult() {
+}
+
+function playRound() {
+  carObjects.forEach((car) => {
+    const randomNumber = Random.pickNumberInRange(0, 9);
+    if (randomNumber >= 4) {
+      car.add();
+    }
+  })
+}
 function validateName(name) {
   if (name.length > 5)
     throw new Error('[ERROR] 자동차 이름은 5자 이하로 적어주세요')
@@ -37,7 +48,12 @@ export default async function gameStart() {
     }
     carObjects.push(car);
   })
-  const round = Number(await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n'));
+  let round = Number(await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n'));
   validateRoundNumber(round);
-  Console.print(carObjects);
+  Console.print('\n실행결과');
+  while (round) {
+    playRound();
+    printRoundResult();
+    round -= 1;
+  }
 }
