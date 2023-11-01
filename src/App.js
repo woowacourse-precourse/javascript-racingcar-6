@@ -5,17 +5,25 @@ import Messages from "./constants/Messages.js";
 
 class App {
   async play() {
-    const validator = new ValidateInput();
-
-    const inputName = await Console.readLineAsync(Messages.INPUT_NAME);
-    const inputNameArray = inputName.split(",");
-    validator.name(inputName, inputNameArray);
-
-    const inputNumber = Number(await Console.readLineAsync(Messages.INPUT_NUMBER));
-    validator.number(inputNumber);
+    const inputNameArray = await this.InputName();
+    const inputNumber = await this.InputNumber();
 
     const racingCar = new RacingCar(inputNameArray, inputNumber);
     racingCar.output();
+  }
+
+  async InputName() {
+    const inputName = await Console.readLineAsync(Messages.INPUT_NAME);
+    const inputNameArray = inputName.split(",");
+    new ValidateInput().name(inputName, inputNameArray);
+    console.log(inputNameArray);
+    return inputNameArray;
+  }
+
+  async InputNumber() {
+    const inputNumber = Number(await Console.readLineAsync(Messages.INPUT_NUMBER));
+    new ValidateInput().number(inputNumber);
+    return inputNumber;
   }
 }
 
