@@ -1,4 +1,4 @@
-import {Console} from '@woowacourse/mission-utils';
+import {MissionUtils, Console} from '@woowacourse/mission-utils';
 
 class App {
   async play() {
@@ -50,10 +50,11 @@ class App {
   }
 
   /**
-   * 전진 조건을 판별합니다. 0에서 9 사이에서 무작위 값을 구한 후 무작위 값이 4 이상일 경우 전진
+   * 자동차 전진 여부를 반환합니다. 0에서 9 사이에서 무작위 값을 구한 후 무작위 값이 4 이상일 경우 전진
    * @return {boolean} 전진 조건을 만족하면 true, 아니면 false */
   isMovingForward() {
-
+    const RANDOM_NUMBER = MissionUtils.Random.pickNumberInRange(0, 9);
+    return RANDOM_NUMBER >= 4;
   }
 
   /**
