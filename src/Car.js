@@ -29,6 +29,12 @@ class Car {
 
     return true;
   }
+
+  move() {
+    if (this.canMove()) {
+      this.#totalDistance += 1;
+    }
+  }
 }
 
 export default Car;
