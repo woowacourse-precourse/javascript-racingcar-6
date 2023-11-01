@@ -13,7 +13,9 @@ class App {
     await this.requestCarNames();
     await this.requestTryCount();
     this.moveCar();
+    this.printResultHeader();
     this.getCarPositions(this.carList);
+    this.printCarPosition();
     const winners = this.getWinners(this.carList);
     this.printWinners(winners);
   }
@@ -22,15 +24,28 @@ class App {
     this.carList.push(new Car(carName));
   }
 
-  // todo 함수 분리 필요
+  // todo print 함수 정리
   moveCar() {
+    this.carList.forEach((car) => {
+      car.move();
+    });
+  }
+
+  printResultHeader() {
     MissionUtils.Console.print(message.RESULT_HEADER);
+  }
+
+  printEmptyLine() {
+    MissionUtils.Console.print(message.EMPTY_LINE);
+  }
+
+  printCarPosition() {
     for (let tryIndex = 0; tryIndex < this.tryCount; tryIndex++) {
       this.carList.forEach((car) => {
         car.move();
         MissionUtils.Console.print(`${car.name} : ${message.POSITION_UNIT.repeat(car.position)}`);
       });
-      MissionUtils.Console.print(message.EMPTY_LINE);
+      this.printEmptyLine();
     }
   }
 
