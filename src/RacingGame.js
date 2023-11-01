@@ -27,15 +27,19 @@ class RacingGame {
       const carNames = [...separatedInput];
 
       for (const carName of carNames) {
-        if (!this.hasDuplicateCarName(carName)) {
-          const newCar = new Car(carName);
-          this.#cars.push(newCar);
-        }
+        this.insertCarName(carName);
       }
 
       return;
     } catch (e) {
       throw e;
+    }
+  }
+
+  insertCarName(carName) {
+    if (!this.hasDuplicateCarName(carName)) {
+      const newCar = new Car(carName);
+      this.#cars.push(newCar);
     }
   }
 
