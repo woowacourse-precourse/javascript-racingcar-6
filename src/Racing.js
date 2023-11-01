@@ -19,9 +19,8 @@ class Racing {
   }
 
   async registration() {
-    const screen = new Screen();
     const validation = new Validation();
-    const participants = await screen.getUserInput(MSG_GAME_START);
+    const participants = await Screen.getUserInput(MSG_GAME_START);
     if (!validation.isProperInput(participants)) {
       throw new Error(ERROR_MSG_INPUT);
     }
@@ -32,9 +31,8 @@ class Racing {
   }
 
   async decideGameCount() {
-    const screen = new Screen();
     const validation = new Validation();
-    const gameCount = await screen.getUserInput(MSG_TRY_TIME);
+    const gameCount = await Screen.getUserInput(MSG_TRY_TIME);
     if (!validation.isProperTryTime(gameCount)) {
       throw new Error(ERROR_MSG_INPUT);
     }
@@ -43,19 +41,17 @@ class Racing {
   }
 
   race() {
-    const screen = new Screen();
-    screen.printMessage('\n실행 결과');
+    Screen.printMessage('\n실행 결과');
     for (let i = 0; i < this.numberOfGames; i++) {
       this.players.forEach((car) => {
         car.move();
-        screen.printCarStatus(car.status());
+        Screen.printCarStatus(car.status());
       });
-      screen.printEmptyLine();
+      Screen.printEmptyLine();
     }
   }
 
   calculateWinner() {
-    const screen = new Screen();
     const max = this.players.reduce((prev, current) => {
       if (prev > current.getMovingCount()) {
         return prev;
@@ -68,7 +64,7 @@ class Racing {
       return max === car.getMovingCount();
     });
 
-    screen.printWinner(winnerList.map((car) => car.getCarName()));
+    Screen.printWinner(winnerList.map((car) => car.getCarName()));
   }
 }
 export default Racing;

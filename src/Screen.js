@@ -1,23 +1,23 @@
 import { Console } from '@woowacourse/mission-utils';
 class Screen {
-  async getUserInput(message) {
+  static async getUserInput(message) {
     const userInput = await Console.readLineAsync(message);
     return userInput;
   }
 
-  printCarStatus(carStatus) {
+  static printCarStatus(carStatus) {
     Console.print(carStatus);
   }
 
-  printWinner([...winnerList]) {
+  static printWinner([...winnerList]) {
     Console.print(`최종 우승자 : ${winnerList.join(', ')}`);
   }
 
-  printEmptyLine() {
+  static printEmptyLine() {
     Console.print('');
   }
 
-  printMessage(message) {
+  static printMessage(message) {
     Console.print(message);
   }
 
