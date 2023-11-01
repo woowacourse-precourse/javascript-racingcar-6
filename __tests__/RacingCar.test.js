@@ -1,6 +1,12 @@
 import RacingCar from '../src/RacingCar';
 import { MissionUtils } from '@woowacourse/mission-utils';
 
+const getLogSpy = () => {
+  const logSpy = jest.spyOn(MissionUtils.Console, 'print');
+  logSpy.mockClear();
+  return logSpy;
+};
+
 describe('RacingCar', () => {
   test('name, position 필드 확인', () => {
     // given
@@ -45,5 +51,21 @@ describe('RacingCar', () => {
     // then
     expect(pobiCar.position).toBe(0);
     expect(woniCar.position).toBe(2);
+  });
+
+  test('printPosition 함수 동작 확인', () => {
+    // given
+    const output = 'pobi : -';
+    const name1 = 'pobi';
+    const logSpy = getLogSpy();
+    MissionUtils.Random.pickNumberInRange = jest.fn().mockReturnValue(4);
+
+    // when
+    const pobiCar = new RacingCar(name1);
+    pobiCar.move();
+    pobiCar.printPosition();
+
+    // then
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
   });
 });
