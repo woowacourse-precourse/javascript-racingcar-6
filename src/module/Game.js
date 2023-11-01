@@ -1,7 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
 import Car from './Car.js';
 import CarList from './CarList.js';
-
+import { INPUT_MESSAGE, OUTPUT_MESSAGE } from '../constant/message.js';
 class Game {
   #carListArr = [];
   #tryMove = '';
@@ -22,7 +22,7 @@ class Game {
 
   async init() {
     const carListInput = await Console.readLineAsync(
-      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
+      INPUT_MESSAGE.INPUT_CAR_NAME,
     );
     this.#carListArr = carListInput.split(',');
   }
@@ -34,11 +34,13 @@ class Game {
   }
 
   async moveQuestion() {
-    this.#tryMove = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    this.#tryMove = await Console.readLineAsync(
+      INPUT_MESSAGE.INPUT_MOVE_NUMBER,
+    );
   }
 
   async process() {
-    Console.print('\n실행 결과');
+    Console.print(OUTPUT_MESSAGE.OUTPUT_RESULT);
     for (let i = 0; i < this.#tryMove; i++) {
       this.#carList.race();
       this.#carList.printCarCurrnetState();
@@ -48,7 +50,7 @@ class Game {
 
   async printWinner() {
     const winner = await this.#carList.setWinner();
-    Console.print(`최종 우승자 : ${winner}`);
+    Console.print(`${OUTPUT_MESSAGE.OUTPUT_WINNER}${winner}`);
   }
 }
 

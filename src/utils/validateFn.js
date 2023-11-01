@@ -1,19 +1,21 @@
+import { ERROR_MESSAGE } from '../constant/message';
+
 export const validateCarName = (carListArr) => {
   carListArr.forEach((carName) => {
     if (carName.length < 1 || carName.length > 5)
-      throw new Error('[ERROR] 자동차 이름은 1~5자 사이로 입력해주세요.');
+      throw new Error(ERROR_MESSAGE.INVALID_CAR_NAME_LENGTH);
     else if (carName.split('').find((element) => element === ' '))
-      throw new Error('[ERROR] 스페이스 입력은 불가능합니다.');
+      throw new Error(ERROR_MESSAGE.INVALID_CAR_NAME_CHAR);
   });
 
   if (carListArr.length !== new Set(carListArr).size)
-    throw new Error('[ERROR] 자동차 이름은 중복 되지않게 입력해주세요');
+    throw new Error(ERROR_MESSAGE.INVALID_CAR_NAME_UNIQUE);
 };
 
 export const validateMoveNum = (moveNum) => {
   console.log(parseInt(moveNum));
   if (parseInt(moveNum).toString() !== moveNum)
-    throw new Error('[ERROR] 숫자만 입력해주세요.');
+    throw new Error(ERROR_MESSAGE.INVALID_INPUT_TYPE);
   else if (parseInt(moveNum) < 1)
-    throw new Error('[ERROR] 1이상의 숫자를 입력해주세요.');
+    throw new Error(ERROR_MESSAGE.INVALID_NUMBER_RANGE);
 };
