@@ -1,11 +1,15 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import {
-  CUT_OFF_NUM,
+  CUT_OFF_NUM, resetData,
   getGameStage, setGameStage, getCarNames, setCarNames,
   getGameCnt, setGameCnt, setCarRace, getCarRace, getCarNum,
   ASK_FOR_CARNAMES_VIEW, ASK_FOR_GAMECNT_VIEW, addGameRoundView, getGameResultView,
   ERROR_MESSAGE_WRONGTYPE, ERROR_MESSAGE_EMPTY_VALUE, addFinalGameResult,
 } from './Model.js';
+
+const resetModel = () => {
+  resetData();
+};
 
 const saveCarName = function splitAndSaveCarNames(carNames) {
   const carNamesArr = String(carNames).split(',');
@@ -68,8 +72,11 @@ const checkGameResult = (size) => {
   let winners = [];
   let max = -1;
   for (let i = 0; i < size; i += 1) {
+    if (resultArr[i].length === max) {
+      winners = [...winners, carNames[i]];
+    }
     if (resultArr[i].length > max) {
-      max = resultArr[i];
+      max = resultArr[i].length;
       winners = [];
       winners.push(carNames[i]);
     }
@@ -104,5 +111,5 @@ const selectView = function selectTextForView() {
 };
 
 export {
-  selectView, saveCarName, saveGameCnt, gamePlay,
+  selectView, saveCarName, saveGameCnt, gamePlay, resetModel,
 };

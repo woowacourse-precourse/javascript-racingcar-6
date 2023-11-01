@@ -22,9 +22,9 @@ const setGameCnt = function setGameCnt(gameCntInput) {
 };
 const getGameCnt = () => gameCnt;
 
-let carNames = [];
-let carRace = [];
-let numOfCars = 0;
+let carNames;
+let carRace;
+let numOfCars;
 const setCarNames = function setCarNamesArr(carNamesInput) {
   carNames = carNamesInput;
   carRace = Array.from({ length: carNames.length }, () => '');
@@ -43,7 +43,7 @@ const getCarNum = function getNumOfCars() {
   return numOfCars;
 };
 
-let gameResultView = `${NEW_LINE}${'실행 결과'}${NEW_LINE}`;
+let gameResultView;
 const addGameRoundView = (nextCar) => {
   gameResultView = `${gameResultView}${nextCar}`;
 };
@@ -53,7 +53,16 @@ const addFinalGameResult = (winners) => {
   gameResultView = `${gameResultView}${NEW_LINE}${'최종 우승자 : '}${winners.join(', ')}`;
 };
 
+const resetData = () => {
+  carNames = [];
+  carRace = [];
+  numOfCars = 0;
+  gameStage = 0;
+  gameResultView = `${NEW_LINE}${'실행 결과'}${NEW_LINE}`;
+};
+
 export {
+  resetData,
   getGameStage, setGameStage, ASK_FOR_CARNAMES_VIEW, ASK_FOR_GAMECNT_VIEW,
   CUT_OFF_NUM, getCarNames, setCarNames,
   getGameCnt, setGameCnt, setCarRace, getCarRace, getCarNum,

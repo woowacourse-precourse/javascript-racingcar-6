@@ -1,5 +1,11 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import { selectView, saveCarName, saveGameCnt } from './ViewModel.js';
+import {
+  resetModel, selectView, saveCarName, saveGameCnt,
+} from './ViewModel.js';
+
+const ResetData = function ResetAllDataForNewGame() {
+  resetModel();
+};
 
 const CarNameView = async function InputCarNameView() {
   const textView = selectView();
@@ -18,15 +24,11 @@ const GameView = async function GamePlayView() {
   MissionUtils.Console.print(textView);
 };
 
-const ResultView = function GameResultView() {
-
-};
-
 const ViewDefault = async function AllViewControlModule() {
+  ResetData();
   await CarNameView();
   await GameCntView();
   await GameView();
-  await ResultView();
 };
 
 export default ViewDefault;
