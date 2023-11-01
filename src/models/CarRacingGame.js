@@ -24,8 +24,8 @@ class CarRacingGame {
   static decideWheterToMoveForward(carListArr) {
     carListArr.forEach((car) => {
       const randomNumber = getRandomNumberInRange(
-        RACING.MIN_NUMBER_OF_RANDOM_RANGE,
-        RACING.MAX_NUMBER_OF_ATTEMPTS,
+        RACING.RANDOM_RANGE_MIN_VALUE,
+        RACING.MAX_ATTEMPTS_NUMBER,
       );
       if (randomNumber >= RACING.MIN_NUMBER_TO_MOVE_FORWARD) {
         car.numberOfMovesForward += 1;

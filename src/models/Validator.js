@@ -1,4 +1,4 @@
-import { CAR_NAMES, CARS, RACING } from "../constants/carRacing.js";
+import { CARS, RACING } from "../constants/carRacing.js";
 import { ERROR_MESSAGE } from "../constants/messages.js";
 
 class Validator {
@@ -11,12 +11,12 @@ class Validator {
 
     carListArr.forEach((carNames) => {
       // 자동차 이름의 길이가 최소 길이보다 작은 경우 에러를 발생시킨다.
-      if (carNames.length < CAR_NAMES.MIN_LENGTH) {
+      if (carNames.length < CARS.MIN_CAR_NAME_LENGTH) {
         throw new Error(ERROR_MESSAGE.INPUT_CAR_NAMES_TOO_SHORT);
       }
 
       // 자동차 이름의 길이가 최대 길이보다 긴 경우 에러를 발생시킨다.
-      if (carNames.length > CAR_NAMES.MAX_LENGTH) {
+      if (carNames.length > CARS.MAX_CAR_NAME_LENGTH) {
         throw new Error(ERROR_MESSAGE.INPUT_CAR_NAMES_TOO_LONG);
       }
     });
@@ -27,7 +27,7 @@ class Validator {
     }
 
     // 자동차의 대수를 최소 대수 미만으로 입력한 경우
-    if (carListArr.length < CARS.MIN_NUMBER_OF_CARS) {
+    if (carListArr.length < CARS.MIN_COUNT_OF_CARS) {
       throw new Error(ERROR_MESSAGE.INPUT_CARS_LESS_THAN_TWO);
     }
 
@@ -45,11 +45,11 @@ class Validator {
       throw new Error(ERROR_MESSAGE.IS_INTEGER);
     }
 
-    if (numberOfMoves < RACING.MIN_NUMBER_OF_ATTEMPTS) {
+    if (numberOfMoves < RACING.MIN_ATTEMPTS_NUMBER) {
       throw new Error(ERROR_MESSAGE.LESS_THAN_MIN);
     }
 
-    if (numberOfMoves > RACING.MAX_NUMBER_OF_ATTEMPTS) {
+    if (numberOfMoves > RACING.MAX_ATTEMPTS_NUMBER) {
       throw new ERROR(ERROR_MESSAGE.MORE_THAN_MAX);
     }
 
