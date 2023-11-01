@@ -1,78 +1,49 @@
 import InputView from '../view/inputView';
-import { validateCarNames, validateAttemptNumber } from '../utils/validation';
-import Car from '../model/car';
-import makeRandomNumber from '../utils/makeRandomNumber';
 import OutputView from '../view/OutputView';
-import makeDistanceString from '../utils/makeDistanceString';
+import CarGame from '../model/CarGame';
 
 class Controller {
-  #cars = [];
-  #attempt;
+  #carGame;
+
+  constructor() {
+    this.#carGame = new CarGame();
+  }
 
   async start() {
-    await this.getCarName();
+    await this.readCarName();
   }
 
-  async getCarName() {
-    const carName = await InputView.readCarName();
-    validateCarNames(carName);
-
-    carName.forEach((name) => {
-      this.#cars.push(new Car(name));
+  async readCarName() {
+    await InputView.readCarName((input) => {
+      this.setCarData(input.split(','));
     });
-
-    await this.getAttemptNumber();
   }
 
-  async getAttemptNumber() {
-    const attemptNumber = await InputView.readAttemptNumber();
-    validateAttemptNumber(attemptNumber);
-    this.#attempt = attemptNumber;
+  async setCarData(list) {
+    this.#carGame.setCarList(list);
+    await this.readAttemptNumber();
+  }
 
+  async readAttemptNumber() {
+    await InputView.readAttemptNumber((input) => {
+      this.#carGame.setAttemptNumber(input);
+    });
     this.startRace();
   }
 
   startRace() {
     OutputView.printStart();
-    for (let count = 0; count < this.#attempt; count++) {
-      this.#cars.forEach((car) => {
-        const randomNumber = makeRandomNumber();
-        car.move(randomNumber);
-      });
-      this.printProgress();
-    }
+    Array.from({ length: this.#carGame.getAttemptNumber() }).forEach(() => {
+      this.#carGame.moveCars();
+      OutputView.printMove(this.#carGame.getCurrentDistance());
+      OutputView.printBlank();
+    });
     this.printResult();
   }
 
-  printProgress() {
-    this.#cars.forEach((car, index) => {
-      const distanceString = makeDistanceString(car.getDistance());
-      const isLast = index === this.#cars.length - 1 ? true : false;
-
-      OutputView.printMove(car.getName(), distanceString, isLast);
-    });
-  }
-
   printResult() {
-    const winner = this.findWinner();
+    const winner = this.#carGame.getWinner();
     OutputView.printWinner(winner);
-  }
-
-  findWinner() {
-    let winners = [];
-    let maxDistance = 0;
-
-    this.#cars.forEach((car) => {
-      if (car.getDistance() === maxDistance) {
-        winners.push(car.getName());
-      }
-      if (car.getDistance() > maxDistance) {
-        winners = [car.getName()];
-        maxDistance = car.getDistance();
-      }
-    });
-
-    return winners;
   }
 }
 

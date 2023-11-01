@@ -6,10 +6,8 @@ class Car {
     this.distance = 0;
   }
 
-  move(randomNumber) {
-    if (randomNumber >= GAME_INT.MOVE_NUMBER) {
-      this.distance += 1;
-    }
+  move() {
+    this.distance += 1;
   }
 
   getName() {
