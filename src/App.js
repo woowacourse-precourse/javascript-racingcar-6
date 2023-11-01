@@ -1,4 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
+import { Random } from "@woowacourse/mission-utils"
 
 class App {
 
@@ -8,7 +9,7 @@ class App {
 
   async play() {
     const carName = await this.getCarName();
-    this.MakeCar(carName);
+    this.makeCar(carName);
   }
 
   async getCarName() {
@@ -46,7 +47,7 @@ class App {
     }
   }
 
-  MakeCar(carName) {
+  makeCar(carName) {
     this.car = carName.map(name => ({ name }));
   }
 
@@ -81,7 +82,10 @@ class App {
     }
   }
 
-
+  randomNumber() {
+    const randomValue = Random.pickNumberInRange(0, 9);
+    return randomValue;
+  }
 }
 
 const app = new App();
