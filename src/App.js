@@ -48,9 +48,9 @@ class App {
     const cars = this.checkPlayersInput(players);
     let round =
       await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
-    round = this.checkRoundInput(round);
-    await MissionUtils.Console.print("실행 결과");
-    for (let i = 0; i < round; i++) {
+    const rounds = this.checkRoundInput(round);
+    await MissionUtils.Console.print("\n실행 결과");
+    for (let i = 0; i < rounds; i++) {
       for (let car of cars) {
         car.run();
         car.printRunResult();
