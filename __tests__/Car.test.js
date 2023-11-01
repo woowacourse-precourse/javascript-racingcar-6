@@ -19,4 +19,13 @@ describe("Car 클래스 테스트", () => {
     car.move(power);
     expect(car.distance).toBe(expectedDistance);
   });
+
+  test.each([
+    ["pobi", { carName: "pobi", distance: 5 }, 5],
+    ["woni", { carName: "woni", distance: 0 }, 0],
+  ])("Car Status - %s 테스트", (carStatus, expectedCarStatus, power) => {
+    const car = new Car(carStatus);
+    car.move(power);
+    expect(car.carStatus).toEqual(expectedCarStatus);
+  });
 });
