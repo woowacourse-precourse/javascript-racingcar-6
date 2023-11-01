@@ -23,6 +23,10 @@ export async function constructCar() {
   return randomCarsList;
 }
 
+export async function generateRandomNum() {
+  return MissionUtils.Random.pickNumberInRange(0, 9);
+}
+
 export async function checkRandomNum(carList) {
   return carList.map((car) => {
     const randomNum = MissionUtils.Random.pickNumberInRange(0, 9);
