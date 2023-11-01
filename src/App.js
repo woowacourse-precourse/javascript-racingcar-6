@@ -1,8 +1,9 @@
 import CarRacingController from './controllers/CarRacingController';
+import CarRacingView from './views/CarRacingView';
 
 class App {
   constructor() {
-    this.controller = new CarRacingController();
+    this.controller = new CarRacingController(CarRacingView);
   }
 
   async play() {

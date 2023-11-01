@@ -1,19 +1,19 @@
 import Car from '../models/Car';
-import CarRacingView from '../views/CarRacingView';
 import { printMessage, printErrorMessage } from '../utils/messages';
 
 class CarRacingController {
-  constructor() {
+  constructor(view) {
+    this.view = view;
     this.cars = [];
   }
 
   async getAndValidateInput() {
-    const carNames = (await CarRacingView.promptCarNames())
+    const carNames = (await this.view.promptCarNames())
       .split(',')
       .map(item => item.trim());
     this.validateNames(carNames);
 
-    const raceCount = await CarRacingView.promptRaceCount();
+    const raceCount = await this.view.promptRaceCount();
     this.validateCount(raceCount);
 
     this.cars = carNames.map(name => new Car(name));
@@ -36,10 +36,10 @@ class CarRacingController {
     printMessage('\n실행 결과');
     for (let i = 0; i < raceCount; i += 1) {
       this.cars.forEach(car => car.move());
-      CarRacingView.showRoundResult(this.cars);
+      this.view.showRoundResult(this.cars);
     }
     const winners = this.getWinners();
-    CarRacingView.showWinners(winners);
+    this.view.showWinners(winners);
   }
 
   getWinners() {
