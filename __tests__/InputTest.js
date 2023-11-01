@@ -16,7 +16,7 @@ describe("입력값 테스트", () => {
     expect(result).toContain("Ray");
   });
 
-  test("자동차 이름이 5자 이하인지 테스트", () => {
+  test("자동차 이름 입력값 테스트", () => {
     const carNameList = ["Kona", "Soul", "Ray"];
     expect(() => checkNames(carNameList)).not.toThrow();
 
