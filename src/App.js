@@ -4,11 +4,9 @@ import User from './modules/User';
 
 class App {
   async play() {
-    const CarNames = await User.inputCarNames();
+    const carNames = await User.inputCarNames();
     const count = await User.inputGameCount();
 
-    // 자동차 이름 분리하기
-    const carNames = inputCarName.split(',');
     const gameResults = [];
     let win = '';
 

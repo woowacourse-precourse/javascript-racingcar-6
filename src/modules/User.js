@@ -3,11 +3,16 @@ import { MissionUtils } from '@woowacourse/mission-utils';
 
 class User {
     async inputCarNames() {
-        return await MissionUtils.Console.readLineAsync(GAME_MESSAGE.inputCarNames);
+        const carNames = await MissionUtils.Console.readLineAsync(GAME_MESSAGE.inputCarNames);
+        return this.splitCarNames(carNames);
     }
 
     async inputGameCount() {
         return await MissionUtils.Console.readLineAsync(GAME_MESSAGE.inputGameCount);
+    }
+
+    splitCarNames(carNames) {
+        return carNames.split(',');
     }
 }
 
