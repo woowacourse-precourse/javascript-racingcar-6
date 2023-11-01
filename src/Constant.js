@@ -1,3 +1,8 @@
+export const MAX_CAR_NAME = 5;
+export const MIN_RANGE = 0;
+export const MAX_RANGE = 9;
+export const MARK_MOVE = '-';
+
 export const INPUT_CAR = '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n';
 export const INPUT_ROUND = '시도할 횟수는 몇 회인가요?\n';
 
