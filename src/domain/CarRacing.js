@@ -25,7 +25,7 @@ class CarRacing {
   }
 
   showTotalResults() {
-    View.printTotalResults(this.#referee.totalResults);
+    View.printTotalResults(this.#referee.getTotalResults());
   }
 
   showWinners() {

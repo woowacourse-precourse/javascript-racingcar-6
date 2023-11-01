@@ -65,7 +65,7 @@ describe('RefereeTest', () => {
           ['jun', 5],
         ]),
       ];
-      expect(referee.totalResults).toStrictEqual(answer);
+      expect(referee.getTotalResults()).toStrictEqual(answer);
     });
 
     test('우승자 찾기', () => {

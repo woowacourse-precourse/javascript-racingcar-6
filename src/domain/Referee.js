@@ -10,24 +10,24 @@ class Referee {
     this.#totalResults[round].set(name, moveCount);
   }
 
-  get totalResults() {
+  getTotalResults() {
     return this.#totalResults.slice();
   }
 
   findWinners() {
     const winners = [];
-    this.#finalResultMap.forEach((moveCount, name) => {
-      if (this.#maxMoveCount === moveCount) winners.push(name);
+    this.#getFinalResultMap().forEach((moveCount, name) => {
+      if (this.#getMaxMoveCount() === moveCount) winners.push(name);
     });
     return winners;
   }
 
-  get #finalResultMap() {
+  #getFinalResultMap() {
     return this.#totalResults[this.#totalResults.length - 1];
   }
 
-  get #maxMoveCount() {
-    return Math.max(...this.#finalResultMap.values());
+  #getMaxMoveCount() {
+    return Math.max(...this.#getFinalResultMap().values());
   }
 }
 
