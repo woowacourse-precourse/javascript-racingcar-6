@@ -1,4 +1,4 @@
-import ERROR_MESSAGE from '../constant/errorMessage';
+import ERROR_MESSAGE from '../constants/errorMessage';
 import messagePrinter from '../utils/messagePrinter';
 
 class Car {

@@ -1,5 +1,5 @@
 import messagePrinter from './messagePrinter';
-import GAME_MESSAGE from '../constant/gameMessage';
+import GAME_MESSAGE from '../constants/gameMessage';
 
 const printCurrentStatus = (carNameArr, curMoveForwardArr) => {
   for (let i = 0; i < carNameArr.length; i += 1) {

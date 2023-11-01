@@ -1,4 +1,4 @@
-import ERROR_MESSAGE from '../src/constant/errorMessage';
+import ERROR_MESSAGE from '../src/constants/errorMessage';
 import TrialNum from '../src/models/TrialNum';
 
 describe('시도 횟수 유효성 테스트', () => {

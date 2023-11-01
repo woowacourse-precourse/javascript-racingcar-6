@@ -1,10 +1,10 @@
-import GAME_MESSAGE from './constant/gameMessage';
-import AllCars from './models/AllCars';
+import GAME_MESSAGE from './constants/gameMessage';
 import TrialNum from './models/TrialNum';
 import messagePrinter from './utils/messagePrinter';
 import eachRaceStart from './utils/eachRaceStart';
 import printCurrentStatus from './utils/printCurrentStatus';
 import printWinners from './utils/printWinners';
+import AllCars from './models/Cars';
 
 class App {
   #cars;

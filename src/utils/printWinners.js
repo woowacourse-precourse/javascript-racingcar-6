@@ -1,5 +1,5 @@
 import messagePrinter from './messagePrinter';
-import GAME_MESSAGE from '../constant/gameMessage';
+import GAME_MESSAGE from '../constants/gameMessage';
 
 const printWinners = (carNameArr, curMoveForwardArr) => {
   const maxMove = Math.max(...curMoveForwardArr);
