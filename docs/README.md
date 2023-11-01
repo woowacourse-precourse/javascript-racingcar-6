@@ -12,7 +12,7 @@
 
 ---
 
-## Features
+## Class & Features
 
 ### App
 
