@@ -1,7 +1,11 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 class App {
-  async play() {}
+  async play() {
+    const carNamesList = await this.getCarNames();
+    const moveCount = await this.getNumber();
+    this.gameStart(carNamesList,moveCount);
+  }
 
   async getCarNames(){
     const carNamesList = [];
@@ -43,6 +47,17 @@ class App {
     const maxMove = Math.max(cars.map((car) => car.moveCount));
     const winners = cars.filter((car) => car.moveCount === maxMove).map((car) => car.name);
     MissionUtils.Console.print(winners.length > 1 ? `최종 우승자 : ${winners.join(', ')}` : `최종 우승자 : ${winners[0]}`);
+  }
+
+  gameStart(cars,number){
+    const carsList = [];
+    cars.forEach((elem) => {
+      let carObj = {};
+      carObj.name = elem;
+      carObj.moveCount = 0;
+      carsList.push(carObj);
+    });    
+    this.checkCarMove(carsList,number);
   }
 }
 
