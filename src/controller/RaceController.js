@@ -16,17 +16,24 @@ class RaceController {
     const carNames = await InputView.carNames();
     const tryCount = await InputView.tryCount();
     this.makeRace(carNames);
-    return this.printResult(this.carRace, tryCount);
+    return this.runRaceRounds(tryCount);
   }
 
-  async printResult(carRace, tryCount) {
-    const { cars } = carRace;
-    for (let i = 0; i < tryCount; i += 1) {
-      carRace.getRaceRound();
-      OutputView.roundResult(cars);
-    }
+  async runRaceRounds(tryCount) {
+    Array.from({ length: tryCount }).forEach(() => {
+      this.printRaceResult();
+    });
 
-    const winners = await formatOutput.findWinningCars(cars);
+    const winners = await formatOutput.findWinningCars(this.carRace.cars);
+    this.printFinalResult(winners);
+  }
+
+  async printRaceResult() {
+    this.carRace.getRaceRound();
+    OutputView.roundResult(this.carRace.cars);
+  }
+
+  printFinalResult(winners) {
     OutputView.printMessage();
     OutputView.winnerResult(winners);
   }

@@ -29,9 +29,11 @@
 
 - 3-1. `RaceController` : 전체 자동차 레이스 및 결과 데이터 처리 관리
   - 생성자 : 레이스 한 턴에 대한 객체 생성 전 멤버 변수 초기화
-  - 자동차 경주 시작, 레이스 한 턴 객체 생성 `makeRace`
-  - 사용자로부터 입력을 받아 경주 시작, 경주 결과 출력 호출 `insertInput`
-  - 경주 결과, 최종 우승자 결과 출력 `printResult`
+  - 자동차 레이스를 시작하고, 레이스 한 턴 객체를 생성 `makeRace`
+  - 사용자로부터 입력을 받아 경주 시작, 레이스 실행 호출 `insertInput`
+  - 입력 받은 횟수 만큼 레이스 실행, 결과 출력 호출 `runRaceRounds`
+  - 실행된 레이스 경기들을 출력 `printRaceResult`
+  - 레이스 결과, 최종 우승자 결과 출력 `printFinalResult`
 
 **4. utils**
 
