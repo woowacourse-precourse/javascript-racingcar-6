@@ -17,12 +17,12 @@ class InputCarsException {
   }
 
   checkCarsDuplicateException(cars) {
-    let checkDuplicate = [];
-    for (let i = 0; i < cars.length; i++) {
-      if (checkDuplicate.includes(cars[i])) {
+    let checkDuplicateSet = new Set();
+    for (const car of cars) {
+      if (checkDuplicateSet.has(car)) {
         throw new Error(errorCarMessage.INVALID_CAR_NAME_DUPLICATE);
       }
-      checkDuplicate.push(cars[i]);
+      checkDuplicateSet.add(car);
     }
   }
 
