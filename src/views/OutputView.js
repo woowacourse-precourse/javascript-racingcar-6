@@ -3,7 +3,7 @@ import MESSAGES from '../constants/Messages.js';
 
 class OutputView {
   static printResultTitle() {
-    Console.print(`\n${MESSAGES.RESULT_TITLE}\n`);
+    Console.print(`\n${MESSAGES.RESULT_TITLE}`);
   }
 
   /**
@@ -15,10 +15,10 @@ class OutputView {
       Console.print(
         `${racingCar.getName()} : ${MESSAGES.ADVANCE.repeat(
           racingCar.getNumberOfAdvance(),
-        )}\n`,
+        )}`,
       );
     });
-    Console.print('\n');
+    Console.print('');
   }
 
   /**
@@ -26,7 +26,8 @@ class OutputView {
    * @param {object} winners
    */
   static printWinners(winners) {
-    Console.print(`${MESSAGES.WINNER}${winners.join(', ')}`);
+    const winnerNames = winners.map(winner => winner.getName());
+    Console.print(`${MESSAGES.WINNER}${winnerNames.join(', ')}`);
   }
 }
 
