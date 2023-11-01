@@ -24,12 +24,31 @@ class RacingGame {
 
     return names.join(",");
   }
+
+  async getNumberOfTriesFromUser() {
+    const numberOfTries = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요? ");
+
+    if (!numberOfTries || isNaN(numberOfTries)) {
+      throw new Error("[ERROR] 올바른 횟수를 입력하세요.");
+    }
+    
+    return parseInt(numberOfTries, 10);
+  }
+
+  initialize(carNames, numberOfTries) {
+    // 게임 초기화: 자동차 이름과 시도 횟수 설정
+    this.cars = carNames.split(",").map((name) => new RacingCar(name));
+    this.numberOfTries = numberOfTries;
+  }
 }
 
 class App {
   async play() {
     const game = new RacingGame();
     const carNames = await game.getCarNamesFromUser();
+    const numberOfTries = await game.getNumberOfTriesFromUser();
+    
+    game.initialize(carNames, numberOfTries);
   }
 }
 
