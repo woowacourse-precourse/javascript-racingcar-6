@@ -40,10 +40,19 @@
     a. 문자가 입력되면 안된다.
 
     b. 0보다 커야 한다.
+
+    c. 정수가 입력되야 한다.
     ​
 
 3.  ✅ (0~9)랜덤 숫자를 생성하는 메서드 - getRandomNumber()
     ​
-4.  ✅ 시도 별 실행결과를 출력할 메서드
+4.  ✅ 시도 별 실행결과를 출력하는 메서드 - runRaceAndRoundPrint()
+
+    => 하나의 함수가 너무 많은 일을 하는거 같아서 분리
+
+    4-1. 객체에 담고 초기화 메서드 - initializeRoundResult(carList)
+    4-2. 라운드를 실행 => 조건에 맞게 현재 위치를 업데이트 메서드 - runSingleRound(carList, roundResult)
+    4-3. 라운드 결과를 출력하는 메서드 => 조건에 맞게 현재 위치를 업데이트 메서드 - printRoundResults(carList, roundResult)
     ​
-5.  ✅ 모든 시도가 끝난 후 우승자를 출력하는 메서드
+
+5.  ✅ 모든 시도가 끝난 후 우승자를 출력하는 메서드 - getRaceResult()
