@@ -1,6 +1,5 @@
 import { GAME_SETTING, SYMBOL_SETTING } from '../constants/Setting.js';
 import Converter from '../utils/Converter.js';
-import RandomNumberGenerator from '../utils/RandomNumberGenerator.js';
 
 class RacingGame {
   #carDistanceMap;
@@ -13,12 +12,12 @@ class RacingGame {
 
   #winner;
 
-  constructor(inputCar, inputRound) {
+  constructor(inputCar, inputRound, randomNumberGenerator) {
     this.#status = SYMBOL_SETTING.emptyString;
     this.#roundNumber = Number(inputRound);
     this.#carNames = Converter.removeSpace(inputCar);
     this.#carDistanceMap = Converter.stringToMap(this.#carNames);
-    this.randomNumberGanerator = RandomNumberGenerator;
+    this.randomNumberGenerator = randomNumberGenerator;
   }
 
   race() {
@@ -38,7 +37,7 @@ class RacingGame {
 
   move() {
     this.#carDistanceMap.forEach((value, key) => {
-      const randomNumber = this.randomNumberGanerator();
+      const randomNumber = this.randomNumberGenerator();
       if (randomNumber >= GAME_SETTING.fowardMinNumber) {
         const beforeDash = this.#carDistanceMap.get(key);
         this.#carDistanceMap.set(key, `${beforeDash}${SYMBOL_SETTING.dash}`);

@@ -1,5 +1,6 @@
 import RacingGame from '../models/RacingGame.js';
 import Validator from '../models/Validator.js';
+import RandomNumberGenerator from '../utils/RandomNumberGenerator.js';
 import InputView from '../views/InputView.js';
 import OutputView from '../views/OutputView.js';
 
@@ -15,7 +16,11 @@ class Controller {
   async progress() {
     await this.settingCarList();
     await this.settingRound();
-    this.racingGame = new RacingGame(this.#carList, this.#roundNumber);
+    this.racingGame = new RacingGame(
+      this.#carList,
+      this.#roundNumber,
+      RandomNumberGenerator,
+    );
     this.roundResult();
     this.finalResult();
   }
