@@ -4,14 +4,15 @@ class App {
         await MissionUtils.Console.print(
             "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)."
         );
-        this.CarNameArray();
+        this.CarNameArray;
         await MissionUtils.Console.print("시도할 횟수는 몇 회인가요?");
         this.NumOfTimes;
         await MissionUtils.Console.print("실행 결과");
         for (let i = 0; i < this.NumOfTimes; i++) {
             this.CarRacing;
-            ForwardStack();
+            this.ForwardStack;
         }
+        await MissionUtils.Console.print("최종 우승자 : ", this.Winner);
     }
     async CarNameArray() {
         const CarName = await MissionUtils.Console.readLineAsync();
@@ -35,7 +36,7 @@ class App {
             racingresult = await MissionUtils.Console.print(
                 this.CarNameArray[i],
                 " : ",
-                this.CarSpeed
+                this.ForwardStack[i]
             );
             return racingresult;
         }
@@ -67,6 +68,16 @@ class App {
             throw new Error("[ERROR] 잘못된 형식입니다.");
         }
         return NumOfTimes;
+    }
+    async Winner() {
+        const WinnerName = [];
+        const MaxNum = Math.max(...this.ForwardStack);
+        for (let i = 0; i < this.CarNameArray.length; i++) {
+            if (this.ForwardStack[i] === MaxNum) {
+                WinnerName.push(this.CarNameArray[i]);
+            }
+        }
+        return WinnerName.join(", ");
     }
 }
 
