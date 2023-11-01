@@ -44,6 +44,8 @@ class App {
       for (let j = 0; j < result.length; j++) {
         result[j] && (towardState[j] += 1);
       }
+      this.gameResult(cars, towardState);
+      Console.print("");
     }
   }
   toward(length) {
@@ -52,6 +54,11 @@ class App {
       result.push(Random.pickNumberInRange(0, 9) >= 4 ? true : false);
     }
     return result;
+  }
+  gameResult(cars, towardState) {
+    cars.forEach((car, i) => {
+      Console.print(`${car} : ${"-".repeat(towardState[i])}`);
+    });
   }
 }
 
