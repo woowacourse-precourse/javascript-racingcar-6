@@ -19,7 +19,7 @@ export default class RaceView {
     }
 
     cars.forEach((car) => {
-      Console.print(`${car.name}: ${"-".repeat(car.distance)}`);
+      Console.print(`${car.name} : ${"-".repeat(car.distance)}`);
     });
 
     Console.print("");
