@@ -47,4 +47,24 @@ describe('경주 테스트', () => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
   });
+
+  test('최종 우승자 판정 테스트', async () => {
+    // given
+    const inputs = ['foo,bar,oh', '2'];
+    const outputs = ['최종 우승자 : foo, bar'];
+    const randoms = [5, 6, 0, 7, 8, 0];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    // when
+    const app = new App();
+    await app.play();
+
+    // then
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
 });
