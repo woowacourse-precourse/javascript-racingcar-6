@@ -222,3 +222,183 @@ const Validators = {
 
 - Reference
   - [의존관계 주입 쉽게 이해하기](https://tecoble.techcourse.co.kr/post/2021-04-27-dependency-injection/)
+
+## 6. test.each 사용 (피드백 반영)
+
+이전에는 test함수 안에서 forEach를 통해서 반복적인 테스트를 하거나 여러번 test 함수를 사용하는 식으로 테스트를 하였습니다. 하지만 코드리뷰를 통해 `test.each()` 를 알려주셔서 해당 내용에 대해 공부한뒤 이번 미션에 적용해 보았습니다.
+
+> 이전의 테스트 코드는 아래와 같습니다.
+> 이렇게 테스트하면 input의 여러 값중 하나라도 실패하면 어떤 input 때문에 실패하였는지 알기가 어렵습니다.
+
+```js
+import isParticularNumber from './index.js';
+
+describe('isParticularNumber', () => {
+  test('특정 숫자가 포함되면 true  포함되지 않으면 false 리턴', () => {
+    // given
+    const inputNumbers = ['5', '3', '2', '7'];
+    const targetNumbers = [4, 3, 1, 7];
+    const results = [false, true, false, true];
+
+    // when
+    // given
+    inputNumbers.forEach((number, index) => {
+      expect(isParticularNumber(number, targetNumbers[index])).toBe(results[index]);
+    });
+  });
+});
+```
+
+> 그렇다고 아래처럼 하나 하나 test를 나누면 동일한 코드가 계속 반복되고 테스트 코드를 작성하는데도 시간이 더 오래 걸리고 유지보수도 어렵습니다.
+
+```js
+describe('compareUserWithComputerNumbers', () => {
+  test('일치하는게 하나도 없을 때', () => {
+    // given
+    const userNumber = '123';
+
+    // when
+    const score = BaseballModel.compareUserWithComputerNumbers(
+      userNumber,
+      BaseballModel.generateGameNumbers(),
+    );
+
+    // then
+    expect(score).toStrictEqual({ ball: 0, strike: 0 });
+  });
+
+  test('1개의 숫자가 위치는 다르지만 값은 일치할 때', () => {
+    // given
+    const userNumber = '623';
+
+    // when
+    const score = BaseballModel.compareUserWithComputerNumbers(
+      userNumber,
+      BaseballModel.generateGameNumbers(),
+    );
+
+    // then
+    expect(score).toStrictEqual({ ball: 1, strike: 0 });
+  });
+
+  test('1개의 숫자가 위치와 값이 모두 일치할 때', () => {
+    // given
+    const userNumber = '523';
+
+    // when
+    const score = BaseballModel.compareUserWithComputerNumbers(
+      userNumber,
+      BaseballModel.generateGameNumbers(),
+    );
+
+    // then
+    expect(score).toStrictEqual({ ball: 0, strike: 1 });
+  });
+
+  ...
+}
+```
+
+> test.each 사용
+> 이런식으로 test.each를 사용하면 가독성도 올라가고 유지보수도 훨씬 쉬워집니다.  
+> 그리고 특정 input에서 에러가 발생하였을 때 정확히 어느 부분인지 알 수 있습니다.
+
+```js
+import isValidQuantity from './index.js';
+
+describe('isValidQuantity', () => {
+  test.each([
+    [['도레', '미파솔', '도레미파솔라', '도레미파솔라시도', '미파', '파솔'], true],
+    [['도레', '미파'], true],
+  ])(' %s는 유효한 대수입니다.', (input, expected) => {
+    expect(isValidQuantity(input)).toBe(expected);
+  });
+
+  test.each([
+    [['도파'], false],
+    [['도레', '미파', '솔라', '시도', '레미', '파솔', '라시'], false],
+  ])('%s는 유효하지 않은 대수 입니다.', (input, expected) => {
+    expect(isValidQuantity(input)).toBe(expected);
+  });
+});
+```
+
+<br/>
+
+## 7. TDD의 효과
+
+2회차 구현부터는 TDD를 해보고 있습니다.  
+물론 처음이라 어려운점도 많고 시간도 오래걸리기는 합니다.
+그래도 직접 느껴본 장점 몇 가지가 있습니다.
+
+### 1. 유효성 검사 코드를 만들 때 정말 편리하다
+
+이전에는 유효성 검사 코드를 만들고 직접 코드에 적용하고 node를 통해서 여러가지 값을 넣어보면서 제대로 동작하나 테스트를 했는데 실패하는 테스트 코드를 먼저 만들고 그 테스트를 통과하도록 만드니 코드 기능 테스트도 바로 할 수 있어서 너무 편리했습니다.
+
+### 2. 예상치 못한 버그 잡기
+
+1차 구현할 때는 기능 먼저 구현하고 전체 테스트로 통과하는 거보고 잘 만들어졌구나 판단했는데 이번에 실패하는 테스트 코드 먼저 만들고 성공하도록 테스트를 만드는 과정에서 실수하는 부분을 발견할 수 있었습니다.
+즉 이전에 테스트 통과는 운으로 통과했던 것이었습니다.
+
+> 이전 코드 (기능 먼저 구현후 전체 테스트 통과로 정상 동작한다고 판단)
+> 첫 레이싱 자동차의 전진 길이가 제일 길때만 정상 동작함
+
+```js
+const FinalWinnerSelector = {
+  evaluate(data) {
+    const winners = [];
+    let winnerScore = 0;
+
+    data.forEach((progress, name) => {
+      winnerScore = Math.max(winnerScore, progress.length);
+      if (winnerScore === progress.length) {
+        winners.push(name);
+      }
+    });
+
+    return winners;
+  },
+};
+
+export default FinalWinnerSelector;
+```
+
+> 현재 코드 (TDD로 실패하는 테스트 코드 만들고 성공하도록 하나하나 만들어감, 오류 발견후 수정)
+
+```js
+const FinalWinnerSelector = {
+  /**
+   * @param {Map} data
+   * @returns {string[]}
+   */
+  evaluate(data) {
+    const winners = [];
+    const winnerScore = this.getWinnerScore(data);
+
+    data.forEach((progress, name) => {
+      if (winnerScore !== progress.length) return;
+      winners.push(name);
+    });
+
+    return winners;
+  },
+
+  /**
+   * @param {Map} data
+   * @returns {number}
+   */
+  getWinnerScore(data) {
+    let winnerScore = 0;
+
+    data.forEach((progress) => {
+      winnerScore = Math.max(winnerScore, progress.length);
+    });
+
+    return winnerScore;
+  },
+};
+
+export default FinalWinnerSelector;
+```
+
+TDD가 아직 익숙하지 않아 어렵고 시간이 정말 오래걸리고 잘못 설계하면 갈아 엎는데 엄청난 비용이 들어가지만 그만큼 장점도 존재해서 더 많이 연습을 해야할 것 같습니다.
