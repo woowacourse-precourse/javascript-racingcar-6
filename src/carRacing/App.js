@@ -13,6 +13,7 @@ class App {
 
     const carObjects = this.generateCarObjects(carNames);
     this.startRace(carObjects, roundCount);
+    const winner = this.getWinners(carObjects);
   }
 
   async enterGameBaseSetting() {
@@ -38,6 +39,7 @@ class App {
         F.filter((carName) => validateCarName(carName, 5)),
       );
 
+      // min 으로 이름 변경
       validateNameListLength(filteredCarNames, 2);
 
       return filteredCarNames;
@@ -90,7 +92,19 @@ class App {
     });
   }
 
-  getWinners() {}
+  getWinners(carObjects) {
+    let winner = [];
+
+    const maxPosition = Math.max(...carObjects.map((car) => car.position));
+
+    winner = F.go(
+      carObjects,
+      F.filter((car) => car.position === maxPosition),
+      F.map((car) => car.name),
+    );
+
+    return winner;
+  }
 
   printGameResults() {}
 }
