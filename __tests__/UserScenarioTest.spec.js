@@ -1,15 +1,22 @@
 import Game from '../src/module/Game';
 import Car from '../src/module/Car';
-import { Console } from '@woowacourse/mission-utils';
+import CarList from '../src/module/CarList';
+import { Console, Random } from '@woowacourse/mission-utils';
 import { validateCarName, validateMoveNum } from '../src/utils/validateFn';
 import { ERROR_MESSAGE } from '../src/constant/message';
 
 const mockQuestions = (inputs) => {
   Console.readLineAsync = jest.fn();
-
   Console.readLineAsync.mockImplementation(() => {
     return Promise.resolve(inputs);
   });
+};
+
+const mockRandoms = (numbers) => {
+  Random.pickNumberInRange = jest.fn();
+  numbers.reduce((acc, number) => {
+    return acc.mockReturnValueOnce(number);
+  }, Random.pickNumberInRange);
 };
 
 describe('1. 자동차 이름을 입력 했을때', () => {
@@ -105,5 +112,51 @@ describe('3. 실행결과 출력', () => {
 
     expect(raceSpy).toHaveBeenCalledTimes(moveNum);
     expect(printCarCurrnetStateSpy).toHaveBeenCalledTimes(moveNum);
+  });
+});
+
+describe('4. 우승자 출력', () => {
+  test('우승자가 두명 이상일때', async () => {
+    const carList = new CarList();
+    carList.add(new Car('dong'));
+    carList.add(new Car('gyun'));
+    carList.add(new Car('kim'));
+
+    mockRandoms([4, 4, 1, 1, 4, 4]);
+
+    carList.cars[0].move();
+    carList.cars[0].move();
+
+    carList.cars[1].move();
+    carList.cars[1].move();
+
+    carList.cars[2].move();
+    carList.cars[2].move();
+
+    const winners = await carList.setWinner();
+
+    expect(winners).toEqual(['dong', 'kim']);
+  });
+
+  test('우승자가 한명일때', async () => {
+    const carList = new CarList();
+    carList.add(new Car('dong'));
+    carList.add(new Car('gyun'));
+    carList.add(new Car('kim'));
+
+    mockRandoms([4, 4, 1, 1, 1, 1]);
+
+    carList.cars[0].move();
+    carList.cars[0].move();
+
+    carList.cars[1].move();
+    carList.cars[1].move();
+
+    carList.cars[2].move();
+    carList.cars[2].move();
+
+    const winners = await carList.setWinner();
+
+    expect(winners).toEqual(['dong']);
   });
 });
