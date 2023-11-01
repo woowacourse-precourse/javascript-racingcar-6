@@ -1,5 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import { OUTPUT_RESULT, OUTPUT_WINNER, MARK_MOVE } from './Constant.js';
+import { OUTPUT_RESULT, OUTPUT_WINNER } from './Constant.js';
 
 const outputView = {
   printResult() {
@@ -8,10 +8,6 @@ const outputView = {
 
   printCarResult(name, move) {
     MissionUtils.Console.print(`${name} : ${move}`);
-  },
-
-  raceResultNewLine() {
-    MissionUtils.Console.print('');
   },
 
   printWinner(winner) {
