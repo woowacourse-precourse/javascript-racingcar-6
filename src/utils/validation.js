@@ -1,4 +1,4 @@
-import { ERRORS, COUNT_REGEX } from '../Constants.js';
+import { ERRORS, COUNT_REGEX } from '../constants/Constants.js';
 
 export const validateInputEmpty = (input) => {
   if (input === null || input === undefined || input === '') {

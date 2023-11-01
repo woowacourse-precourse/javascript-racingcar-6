@@ -4,7 +4,7 @@ import {
   OUTPUT_MESSAGES,
   SPLIT_LETTER,
   RESULT_LETTER,
-} from './Constants.js';
+} from './constants/Constants.js';
 import {
   validateInputEmpty,
   validateCarNameUnique,

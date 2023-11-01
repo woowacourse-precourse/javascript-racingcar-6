@@ -11,7 +11,6 @@ export const OUTPUT_MESSAGES = Object.freeze({
 export const ERRORS = Object.freeze({
   null: '[ERROR] 입력된 값이 없습니다.',
   carName: {
-    black: '[ERROR] 입력에 공백이 포함되어 있습니다.',
     duplicate: '[ERROR] 입력에 중복된 값이 있습니다',
     length: '[ERROR] 입력이 5자 이하가 아닙니다.',
   },

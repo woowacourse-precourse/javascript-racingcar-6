@@ -1,6 +1,6 @@
 import App from '../src/App.js';
 import Car from '../src/Car.js';
-import { ERRORS } from '../src/Constants.js';
+import { ERRORS } from '../src/constants/Constants.js';
 import { MissionUtils } from '@woowacourse/mission-utils';
 
 const mockQuestions = (inputs) => {
