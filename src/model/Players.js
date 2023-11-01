@@ -1,4 +1,3 @@
-import { Random } from '@woowacourse/mission-utils';
 import { GAME_RULL } from '../constants/gameRules.js';
 import generateRandomNumber from '../utils/generateRandomNumber.js';
 
