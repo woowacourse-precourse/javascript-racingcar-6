@@ -6,9 +6,9 @@ import Distance from '../models/Distance.js';
 import { GUIDE_MESSAGE } from '../constants/index.js';
 
 class GameController {
-  #outputView = OutputView;
+  #outputView = new OutputView();
 
-  #inputView = InputView;
+  #inputView = new InputView();
 
   #race = new Race();
 
