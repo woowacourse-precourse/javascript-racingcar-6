@@ -30,8 +30,20 @@ export async function getCarName() {
   return names;
 }
 
+function isValidMoveNumber(number) {
+  if (!Number.isInteger(number)) return false;
+
+  if (number === 0) return false;
+
+  return true;
+}
+
 export async function getMoveNumber() {
   const rawInput = await Console.readLineAsync("시도할 횟수는 몇 회인가요?");
 
-  return rawInput;
+  const number = Number(rawInput);
+  if (!isValidMoveNumber(number))
+    throw Error("[ERROR] 시도 횟수가 올바른 형식이 아닙니다!");
+
+  return number;
 }
