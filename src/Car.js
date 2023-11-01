@@ -17,12 +17,7 @@ class Car {
 
   set carNameList(car) {
     car = car.map((carName) => carName.replace(/\s/g, ""));
-
-    this.duplicate(car);
-    this.nameLength(car);
-    this.blank(car);
-    this.special_symbol(car);
-
+    Car.validateCarNameList(car);
     this._carNameList = car;
   }
 
@@ -30,32 +25,40 @@ class Car {
     return this._carNameList;
   }
 
-  duplicate(car) {
-    const isDuplicate = car.some(function (x) {
-      return car.indexOf(x) !== car.lastIndexOf(x);
-    });
-
-    if (isDuplicate) {
+  static validateCarNameList(car) {
+    if (Car.isDuplicate(car)) {
       throw new Error(CAR_VALIDATION.DUPLICATE);
     }
-  }
 
-  nameLength(car) {
-    if (car.some((carName) => carName.length > CAR_NAME_MAX_LENGTH + 1)) {
+    if (Car.nameLength(car)) {
       throw new Error(CAR_VALIDATION.LENGTH);
     }
-  }
 
-  blank(car) {
-    if (car.some((x) => x === "")) {
+    if (Car.blank(car)) {
       throw new Error(CAR_VALIDATION.BLANK);
     }
-  }
 
-  special_symbol(car) {
-    if (car.some((x) => reg.test(x))) {
+    if (Car.special_symbol(car)) {
       throw new Error(CAR_VALIDATION.SPECIAL_SYMBOL);
     }
+  }
+
+  static isDuplicate(car) {
+    return car.some(
+      (carName) => car.indexOf(carName) !== car.lastIndexOf(carName)
+    );
+  }
+
+  static nameLength(car) {
+    return car.some((carName) => carName.length > CAR_NAME_MAX_LENGTH + 1);
+  }
+
+  static blank(car) {
+    return car.some((carName) => carName === "");
+  }
+
+  static special_symbol(car) {
+    return car.some((carName) => reg.test(carName));
   }
 }
 
