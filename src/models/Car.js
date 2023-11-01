@@ -1,5 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import { MAGIC_NUM } from "../utils/constants.js";
+import { MAGIC_NUM } from "../constants/Constants.js";
 
 export default class Car {
   constructor(name) {
