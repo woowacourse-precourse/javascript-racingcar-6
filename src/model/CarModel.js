@@ -15,6 +15,24 @@ class CarModel {
     });
     return this.#carList;
   }
+
+  getWinners() {
+    const winners = [];
+    let maxResultLength = 0;
+
+    this.#carList.forEach((car) => {
+      const resultLength = car.move.length;
+      if (resultLength > maxResultLength) {
+        maxResultLength = resultLength;
+        winners.length = 0;
+        winners.push(car.name);
+      } else if (resultLength === maxResultLength) {
+        winners.push(car.name);
+      }
+    });
+
+    return winners;
+  }
 }
 
 export default CarModel;
