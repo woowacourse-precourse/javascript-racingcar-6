@@ -34,8 +34,7 @@
 - [x] 우승자가 알맞게 선정되고 있는지 테스트
 
 ## 🗄️ Class Diagram
----
-### Model - Controller - View
+
 ``` mermaid
 
 classDiagram
