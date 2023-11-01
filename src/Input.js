@@ -10,6 +10,9 @@ const Input = {
 
     Validate.checkNameExist(names);
     Validate.checkIncludeComma(names);
+    names.split(',').forEach((name) => {
+      Validate.checkNameLength(name);
+    });
 
     return names;
   },

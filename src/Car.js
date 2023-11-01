@@ -1,5 +1,4 @@
 import { Console, Random } from '@woowacourse/mission-utils';
-import Validate from './Validate.js';
 
 class Car {
   #cars;
@@ -8,7 +7,6 @@ class Car {
     this.#cars = [];
 
     names.split(',').forEach((name) => {
-      Validate.checkNameLength(name);
       this.#cars.push({ name, count: 0 });
     });
   }
