@@ -14,6 +14,9 @@ const checkString = {
   checkListHasVoid(list) {
     return list.filter((value) => value === '').length > 0;
   },
+  checkListLengthLongerThan(list, minLength) {
+    return list.length > minLength;
+  },
 };
 
 export default checkString;
