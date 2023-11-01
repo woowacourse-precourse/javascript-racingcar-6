@@ -10,7 +10,7 @@ const Input = {
   },
   async tryCount() {
     const tryCount = await MissionUtils.Console.readLineAsync(
-      INFORMATION_MESSEAGE.COUNT_INPUT
+      INFORMATION_MESSEAGE.TRY_COUNT_INPUT
     );
     return tryCount;
   },
