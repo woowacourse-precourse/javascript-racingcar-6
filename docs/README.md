@@ -39,7 +39,7 @@
     - [ ] 입출력에 사용되는 메세지들: MESSAGES
         > 자동차 이름 & 시도 횟수 입력/Error, 실행 결과, 전진 표시(-), 최종 우승자
     - [ ] 입출력 형식에 대한 조건들: CONDITIONS
-        > 자동차 이름 & 시도 횟수 입력 형식, 자동차 이름 최소/최대 길이, 단독 우승자 조건, 무작위 최소값, 무작위 최대값, 전진 조건값, 전진 값
+        > 자동차 이름 & 시도 횟수 입력 형식, 자동차 이름 delimiter, 단독 우승자 조건, 무작위 최소값, 무작위 최대값, 전진 조건값, 전진 값
 
 
 <br/>
@@ -52,7 +52,7 @@
   - [ ] 특정 라운드의 결과 연산 테스트: checkCalculateProcedureOfRace
   - [ ] 우승자 연산 테스트: checkCalculateWinners
 - [ ] 출력 정확성 테스트: OutputViewTest
-  - [ ] 특정 라운드의 결과 연산 테스트: checkPrintProcedureOfRace
+  - [ ] 특정 라운드의 결과 출력 테스트: checkPrintProcedureOfRace
   - [ ] 우승자 출력 테스트: checkPrintWinners
 
 
