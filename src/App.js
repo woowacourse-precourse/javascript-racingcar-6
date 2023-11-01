@@ -9,18 +9,18 @@ import {
 class App {
   constructor() {
     this.racingResult = [];
-    this.playNum = 0;
+    this.playCount = 0;
   }
 
   async start() {
     const carList = await getCarName();
-    this.playNum = await getPlayNum();
+    this.playCount = await getPlayNum();
     this.racingResult = setInitialDistance(carList);
   }
 
   progress() {
     printResultMessage();
-    playRounds(this.racingResult, this.playNum);
+    playRounds(this.racingResult, this.playCount);
   }
 
   finish() {

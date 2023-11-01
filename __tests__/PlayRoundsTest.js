@@ -22,7 +22,7 @@ describe('자동차 1회 경주 테스트', () => {
       { carName: 'woni', distance: '' },
       { carName: 'jun', distance: '' },
     ];
-    const playNum = 1;
+    const playCount = 1;
     const outputs = ['pobi : ', 'woni : ', 'jun : '];
     const randoms = [0, 1, 3];
     const logSpy = getLogSpy();
@@ -30,7 +30,7 @@ describe('자동차 1회 경주 테스트', () => {
     mockRandoms(randoms);
 
     // when
-    expect(playRounds(racingResult, playNum));
+    expect(playRounds(racingResult, playCount));
 
     // then
     outputs.forEach(output => {
@@ -44,7 +44,7 @@ describe('자동차 1회 경주 테스트', () => {
       { carName: 'pobi', distance: '' },
       { carName: 'woni', distance: '' },
     ];
-    const playNum = 1;
+    const playCount = 1;
     const outputs = ['pobi : -', 'woni : -'];
     const randoms = [4, 9];
     const logSpy = getLogSpy();
@@ -52,7 +52,7 @@ describe('자동차 1회 경주 테스트', () => {
     mockRandoms(randoms);
 
     // when
-    expect(playRounds(racingResult, playNum));
+    expect(playRounds(racingResult, playCount));
 
     // then
     outputs.forEach(output => {

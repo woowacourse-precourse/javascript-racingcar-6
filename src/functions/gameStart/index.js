@@ -14,13 +14,13 @@ const invalidCarName = carList => {
     throw Error(ERROR_MESSAGE.carName.duplicate);
 };
 
-const invalidPlayNum = (inputPlayNum, playNum) => {
+const invalidPlayNum = (inputPlayNum, playCount) => {
   if (inputPlayNum.length === 0) throw Error(ERROR_MESSAGE.playNum.noInput);
 
-  if (Number.isNaN(playNum) || !Number.isInteger(playNum) || playNum < 0)
+  if (Number.isNaN(playCount) || !Number.isInteger(playCount) || playCount < 0)
     throw Error(ERROR_MESSAGE.playNum.includeStr);
 
-  if (playNum === 0) throw Error(ERROR_MESSAGE.playNum.includeZero);
+  if (playCount === 0) throw Error(ERROR_MESSAGE.playNum.includeZero);
 };
 
 export const getCarName = async () => {
@@ -34,11 +34,11 @@ export const getCarName = async () => {
 
 export const getPlayNum = async () => {
   const inputPlayNum = await Console.readLineAsync(MESSAGE.getPlayNum);
-  const playNum = Number(inputPlayNum);
+  const playCount = Number(inputPlayNum);
 
-  invalidPlayNum(inputPlayNum, playNum);
+  invalidPlayNum(inputPlayNum, playCount);
 
-  return playNum;
+  return playCount;
 };
 
 export const setInitialDistance = carList => {

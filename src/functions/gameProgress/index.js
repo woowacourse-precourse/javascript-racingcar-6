@@ -30,8 +30,8 @@ export const printResultMessage = () => {
   Console.print(MESSAGE.printResult);
 };
 
-export const playRounds = (racingResult, playNum) => {
-  for (let round = 0; round < playNum; round += 1) {
+export const playRounds = (racingResult, playCount) => {
+  for (let round = 0; round < playCount; round += 1) {
     playOneRound(racingResult);
     printRoundResult(racingResult);
   }
