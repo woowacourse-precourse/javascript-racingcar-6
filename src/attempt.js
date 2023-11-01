@@ -20,7 +20,6 @@ class Attempt {
         throw new Error('[ERROR] 정수로 입력하세요.');
       }
   
-
       return numberOfAttempts;
     }
   }

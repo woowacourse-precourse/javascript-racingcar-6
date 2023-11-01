@@ -25,8 +25,6 @@ class Car {
   static async createCarsFromInput() {
     const carNamesString = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,)로 구분): \n');
 
-    //console.log('입력받은 자동차 이름들:', carNamesString);
-
     const carNames = carNamesString.trim().split(',').map(name => name.trim());
 
     // 예외 처리: 자동차 이름이 6자 이상일 경우
