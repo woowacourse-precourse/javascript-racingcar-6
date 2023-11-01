@@ -12,3 +12,4 @@ export const ERRORS = {
 };
 
 export const RANDOM_NUMBER_RANGE = [0, 9];
+export const MINIMUM_MOVE_NUMBER = 4;

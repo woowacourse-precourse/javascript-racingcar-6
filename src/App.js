@@ -1,6 +1,10 @@
 import { Random, Console } from '@woowacourse/mission-utils';
 import Car from './Car.js';
-import { MESSAGES, RANDOM_NUMBER_RANGE } from './utils/constants.js';
+import {
+  MESSAGES,
+  RANDOM_NUMBER_RANGE,
+  MINIMUM_MOVE_NUMBER,
+} from './utils/constants.js';
 import {
   validateUniqueNames,
   validateName,
@@ -41,14 +45,19 @@ class App {
 
   runCarRaceGame() {
     Array.from({ length: this.trial }).forEach(() => {
-      this.cars.forEach(() => {
-        this.tryMoveCar();
+      this.cars.forEach((car) => {
+        this.tryMoveCar(car.name);
       });
     });
   }
 
-  tryMoveCar() {
+  tryMoveCar(carName) {
     const randomNumber = Random.pickNumberInRange(...RANDOM_NUMBER_RANGE);
+    const car = this.cars.find((car) => car.name === carName);
+
+    if (randomNumber >= MINIMUM_MOVE_NUMBER && car) {
+      car.updateRacingStatus();
+    }
   }
 }
 
