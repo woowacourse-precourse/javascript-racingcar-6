@@ -10,14 +10,22 @@ class App {
   carList = [];
   carPositions = [];
 
-  async play() {
+  async initGame() {
     await this.requestCarNames();
     await this.requestTryCount();
+  }
+
+  printGameResults() {
     OutputView.printResultHeader();
     this.getCarPositions(this.carList);
     OutputView.printCarPosition(this.carList, this.tryCount);
     const winners = this.getWinners(this.carList);
     OutputView.printWinners(winners);
+  }
+
+  async play() {
+    await this.initGame();
+    this.printGameResults();
   }
 
   makeCarList = (carName) => {
