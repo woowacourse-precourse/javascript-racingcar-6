@@ -18,7 +18,7 @@ const mockRandoms = (numbers) => {
 };
 
 describe('게임 로직 테스트', () => {
-  test('startGame - 전진', async () => {
+  test('startGame', async () => {
     const testInputs = ['Car1,Car2', '2'];
     const MOVING_FORWARD = 4;
     const STOP = 3;

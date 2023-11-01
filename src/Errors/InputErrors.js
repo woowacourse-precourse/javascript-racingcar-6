@@ -7,7 +7,7 @@ import {
 } from '../Utils/Define';
 
 export const isEmpty = (input) => {
-  if (input.trim() === '') {
+  if (input.trim() === '' || input.trim() === ' ') {
     return IS_EMPTY_ERROR;
   }
   return null;

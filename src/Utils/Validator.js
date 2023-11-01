@@ -18,7 +18,7 @@ const validatorCarName = (carName) => {
 };
 
 const validatorGameRound = (gameRound) => {
-  const GameRoundErrors = [validateGameRound, isEmpty,];
+  const GameRoundErrors = [validateGameRound, isEmpty];
   let error = null;
 
   GameRoundErrors.some((validator) => {
@@ -31,5 +31,3 @@ const validatorGameRound = (gameRound) => {
 };
 
 export { validatorCarName, validatorGameRound };
-
-
