@@ -1,32 +1,18 @@
 import { Console, Random } from '@woowacourse/mission-utils';
+import ErrorCheck from './errorCheck.js';
 import {
-  INPUT_NUMBER_ERR_MSG,
-  PLAYER_NUMBER_ERR_MSG,
   PLAYER_NAME_ASK_MSG,
   ATTEMPT_NUM_ASK_MSG,
   FINAL_WINNER_MSG,
   RESULT_MSG,
   FORWARD_CONDITIONS,
-  MIN_PLAYER_NUMBER,
 } from './constant.js';
 
 class App {
-  static numberCheck(input) {
-    if (isNaN(input)) {
-      throw new Error(INPUT_NUMBER_ERR_MSG);
-    }
-  }
-
-  static playerNumberCheck(array) {
-    if (array.length < MIN_PLAYER_NUMBER) {
-      throw new Error(PLAYER_NUMBER_ERR_MSG);
-    }
-  }
-
   async playerInfoInput() {
     const inputName = await Console.readLineAsync(PLAYER_NAME_ASK_MSG);
     const playerList = inputName.split(',').map(str => str.trim());
-    App.playerNumberCheck(playerList);
+    ErrorCheck.playerNumberCheck(playerList);
 
     return playerList;
   }
@@ -71,7 +57,7 @@ class App {
 
     // 시도 횟수 입력
     const numberOfAttempts = Number(await Console.readLineAsync(ATTEMPT_NUM_ASK_MSG));
-    App.numberCheck(numberOfAttempts);
+    ErrorCheck.numberCheck(numberOfAttempts);
 
     Console.print(`\n${RESULT_MSG}`);
 
