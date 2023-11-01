@@ -17,6 +17,8 @@ class App {
 
     Output.resultInformation();
     Progress.tryCount(tryCountInput, this.cars);
+
+    Output.winner(Progress.winner(this.cars));
   }
 }
 
