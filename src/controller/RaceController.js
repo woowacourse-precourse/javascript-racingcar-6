@@ -17,6 +17,8 @@ class RaceController {
 
   async setMoveCount() {
     const input = await inputView.moveCount();
+    validation.validateMoveCount(input);
+    this.#moveCount = parseInt(input, 10);
   }
 }
 

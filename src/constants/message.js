@@ -8,4 +8,7 @@ export const ERROR_MESSAGE = {
     '[ERROR] 자동차 이름은 공백을 제외한 한 글자 이상 다섯 자 이하로 입력해 주세요.',
   DUPLICATED_CAR_NAME:
     '[ERROR] 중복된 자동차 이름이 있습니다. 각 자동차 이름은 고유해야 합니다.',
+  INVALID_MOVE_COUNT: '[ERROR] 유효한 숫자(1 이상)를 입력해 주세요.',
+  TOO_LARGE_MOVE_COUNT:
+    '[ERROR] 1 이상 2147483647 이하의 숫자만 입력 가능합니다.',
 };

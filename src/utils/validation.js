@@ -23,6 +23,15 @@ const validation = {
     this.checkNameLength(splitInput);
     this.checkNameDuplication(splitInput);
   },
+
+  validateMoveCount(moveCount) {
+    if (Number.isNaN(moveCount) || moveCount <= 0) {
+      throw new Error(ERROR_MESSAGE.INVALID_MOVE_COUNT);
+    }
+    if (moveCount > 2147483647) {
+      throw new Error(ERROR_MESSAGE.TOO_LARGE_MOVE_COUNT);
+    }
+  },
 };
 
 export default validation;
