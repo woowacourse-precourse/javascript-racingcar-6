@@ -21,6 +21,11 @@ export default class Game {
     this.printExecutionResult();
   }
 
+  end() {
+    this.selectWinner();
+    this.printWinner();
+  }
+
   async createUserList() {
     const inputName = await MissionUtils.Console.readLineAsync(
       `경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n`
@@ -52,5 +57,18 @@ export default class Game {
       );
     }
     MissionUtils.Console.print('');
+  }
+
+  selectWinner() {
+    this.ranking = [...this.userList];
+    this.ranking.sort((a, b) => b.forwardNumber - a.forwardNumber);
+    this.winner = this.ranking
+      .filter((user) => user.forwardNumber === this.ranking[0].forwardNumber)
+      .map((user) => user.name)
+      .join(', ');
+  }
+
+  printWinner() {
+    MissionUtils.Console.print(`최종 우승자 : ${this.winner}`);
   }
 }

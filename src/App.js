@@ -9,6 +9,7 @@ class App {
       if (i === 0) MissionUtils.Console.print(`\n실행 결과`);
       game.execution();
     }
+    game.end();
   }
 }
 
