@@ -2,6 +2,17 @@ import { Random, Console } from "@woowacourse/mission-utils";
 
 const carObjects = [];
 
+function getWinner() {
+  const sortWinners = carObjects.sort((a, b) => {
+    if (a.currentLength < b.currentLength)
+      return 1;
+    if (a.currentLength > b.currentLength)
+      return -1;
+    return 0;
+  });
+  return sortWinners.filter((winner) => winner.currentLength === sortWinners[0].currentLength);
+}
+
 function printRoundResult() {
   carObjects.forEach((car) => {
     Console.print(`${car.name} : ${car.line}`);
@@ -60,4 +71,6 @@ export default async function gameStart() {
     printRoundResult();
     round -= 1;
   }
+  const winners = getWinner().map((value) => value.name).join(',');
+  Console.print(`최종우승자 : ${winners}`);
 }
