@@ -1,20 +1,20 @@
-import RandomNumberGenerator from './RandomNumberGenerator.js';
+import RandomNumberGenerator from '../model/RandomNumberGenerator.js';
 import { SYMBOLS } from '../constants/Symbols.js';
-import { GRANDPRIX_MOVE_OPTION } from '../constants/GrandPrixOption.js';
+import RacingCar from '../model/RacingCar.js';
 
-export default class RacingCarGrid {
+export default class RacingCarService {
   /**
    * @private
-   * @type {{ name: string, status: number }[]}
+   * @type {RacingCar[]}
    */
-  #racingCarList = [];
+  #racingCarList;
 
   /**
    * @constructor
    * @param {string} names InputView로부터 입력받은 레이싱카 이름
    */
   constructor(names) {
-    names.split(SYMBOLS.comma).forEach((name) => this.#racingCarList.push({ name, status: 0 }));
+    this.#racingCarList = names.split(SYMBOLS.comma).map((name) => new RacingCar(name));
   }
 
   /**
@@ -24,9 +24,7 @@ export default class RacingCarGrid {
     const randomMovementResults = RandomNumberGenerator.generate(this.#racingCarList.length);
 
     randomMovementResults.forEach((value, idx) => {
-      if (value >= GRANDPRIX_MOVE_OPTION.move) {
-        this.#racingCarList[idx].status += 1;
-      }
+      this.#racingCarList[idx].move(value);
     });
   }
 
@@ -35,7 +33,7 @@ export default class RacingCarGrid {
    * @returns {{name: string, status: number}[]} 레이싱카들의 현재 상태 반환
    */
   getRacingGrid() {
-    return this.#racingCarList;
+    return this.#racingCarList.map((racingCar) => racingCar.getRacingCarInfo());
   }
 
   /**
@@ -43,10 +41,11 @@ export default class RacingCarGrid {
    * @returns {string} 가장 멀리 간 레이싱카를 반환(여러개 일 시 쉼표로 구분하여 반환)
    */
   getPodium() {
-    const raceStatusList = this.#racingCarList.map(({ status }) => status);
-    const max = Math.max(...Object.values(raceStatusList));
+    const racingCarInfoList = this.#racingCarList.map((racingCar) => racingCar.getRacingCarInfo());
+    const racingCarStatusList = racingCarInfoList.map(({ status }) => status);
+    const max = Math.max(...racingCarStatusList);
 
-    return this.#racingCarList
+    return racingCarInfoList
       .filter(({ status }) => status === max)
       .map(({ name }) => name)
       .join(`${SYMBOLS.comma}${SYMBOLS.space}`);

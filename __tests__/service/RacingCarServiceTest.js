@@ -1,5 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import RacingCarGrid from '../../src/model/RacingCarGrid.js';
+import RacingCarGrid from '../../src/service/RacingCarService.js';
 
 const mockRandoms = (numbers) => {
   MissionUtils.Random.pickNumberInRange = jest.fn();
@@ -9,7 +9,7 @@ const mockRandoms = (numbers) => {
   );
 };
 
-describe('레이싱 카 그리드 클래스 테스트', () => {
+describe('레이싱 카 서비스 클래스 테스트', () => {
   test.each([
     { racingCarNameInput: 'alfa,bravo' },
     { racingCarNameInput: 'alfa,bravo,delta' },
