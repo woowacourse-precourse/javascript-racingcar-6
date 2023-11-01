@@ -3,7 +3,7 @@ import {
   MIN_RANDOM_NUMBER,
   MAX_RANDOM_NUMBER,
   FORWARD_THRESHOLD,
-} from "./constants/Racing";
+} from "./constants/racing.js";
 
 class Car {
   name = "";
