@@ -12,18 +12,18 @@ class App {
     const carName = car.split(",");
 
     //자동차 이름 예외사항
-    for (let i = 0; i < carName.length; i++) {
-      if (carName[i].length > 5)
-        throw new Error("[ERROR] 이름이 잘못된 형식입니다.");
-    }
+    // for (let i = 0; i < carName.length; i++) {
+    //   if (carName[i].length > 5)
+    //     throw new Error("[ERROR] 이름이 잘못된 형식입니다.");
+    // }
     this.getTryNum(carName);
   }
 
   //시도 횟수 받기
   async getTryNum(carName) {
     const tryNum = await Console.readLineAsync("시도할 횟수는 몇 회인가요?");
-    if (isNaN(tryNum) || tryNum < 0)
-      throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
+    // if (isNaN(tryNum) || tryNum < 0)
+    //   throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
 
     this.result(carName, tryNum);
   }
