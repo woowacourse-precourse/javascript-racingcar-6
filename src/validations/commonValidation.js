@@ -16,13 +16,12 @@ export const COMMON_VALIDATION_TYPES = Object.freeze({
 });
 
 /**
+ * @param {string} inputValue - 사용자의 입력 값
  * @throws {AppError} 유효성을 만족하지 않을 경우 에러 발생
  * @returns {void}
  */
 export const validateCommon = (inputValue) => {
-  Object.values(COMMON_VALIDATION_TYPES).forEach(
-    ({ errorMessage, isValid }) => {
-      if (!isValid(inputValue)) throw new AppError(errorMessage);
-    },
-  );
+  Object.values(COMMON_VALIDATION_TYPES).forEach(({ errorMessage, isValid }) => {
+    if (!isValid(inputValue)) throw new AppError(errorMessage);
+  });
 };

@@ -22,7 +22,7 @@ export const CAR_NAME_VALIDATION_TYPES = Object.freeze({
 });
 
 /**
- * @param carNames
+ * @param {string[]} carNames - 입력 받은 자동차 이름들
  * @throws {AppError} 유효성을 만족하지 않을 경우 에러 발생
  * @returns {void}
  */

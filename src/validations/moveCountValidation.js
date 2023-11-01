@@ -20,6 +20,7 @@ export const MOVE_COUNT_VALIDATION_TYPES = Object.freeze({
 });
 
 /**
+ * @param {number} moveCount - 이동 횟수
  * @throws {AppError} 유효성을 만족하지 않을 경우 에러 발생
  * @returns {void}
  */
