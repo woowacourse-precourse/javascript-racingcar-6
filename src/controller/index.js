@@ -1,16 +1,18 @@
-import { SYSTEM } from '../constants/System.js';
 import InputView from '../view/InputView.js';
 import OutputView from '../view/OutputView.js';
 
 class RacingController {
   #racingModel;
 
-  constructor(racingModel) {
+  #vehicle;
+
+  constructor(racingModel, vehicle) {
     this.#racingModel = racingModel;
+    this.#vehicle = vehicle;
   }
 
   async startGame() {
-    const racingVehicleName = await InputView.readRacingVehicleName(SYSTEM.car);
+    const racingVehicleName = await InputView.readRacingVehicleName(this.#vehicle);
     const racingCount = await InputView.readRacingCount();
 
     this.#race(racingVehicleName, racingCount);
