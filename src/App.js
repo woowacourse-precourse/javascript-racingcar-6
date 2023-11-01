@@ -66,7 +66,7 @@ class App {
     let maxMove = 0;
     let winnerArr = [];
 
-    Object.keys(gameProgress).forEach(([key, value]) => {
+    Object.entries(gameProgress).forEach(([key, value]) => {
       const currentMove = value.length;
 
       if (currentMove > maxMove) {
