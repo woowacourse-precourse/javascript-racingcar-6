@@ -41,11 +41,14 @@ class App {
           status: this.attepmtMove(car.status),
         };
       });
-      cars.forEach((car) => {
-        Console.print(`${car.name} : ${car.status}`);
-      });
-      Console.print('\n');
+      this.printRaceProgress(cars);
     }
+  }
+  printRaceProgress(carArray) {
+    carArray.forEach((car) => {
+      Console.print(`${car.name} : ${car.status}`);
+    });
+    Console.print('\n');
   }
   convertCarNamesToObject(array) {
     return array.map((name) => {
