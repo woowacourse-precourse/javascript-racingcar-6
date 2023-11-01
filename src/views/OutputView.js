@@ -1,6 +1,6 @@
 import { Console } from "@woowacourse/mission-utils"; 
-import { GUIDE_MESSAGE } from "../constants/messages.js";
-import { RACING } from "../constants/carRacing.js";
+import { GUIDE_MESSAGE } from "../constants/messages";
+import { RACING } from "../constants/carRacing";
 
 class OutputView {
   constructor() {}

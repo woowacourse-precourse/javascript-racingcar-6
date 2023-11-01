@@ -1,4 +1,4 @@
-import { CARS, RACING } from "./carRacing.js";
+import { CARS, RACING } from "./carRacing";
 
 export const GUIDE_MESSAGE = Object.freeze({
   INPUT_CAR_NAMES:
