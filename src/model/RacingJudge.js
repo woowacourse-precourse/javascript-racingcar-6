@@ -5,15 +5,17 @@ class RacingJudge {
 		const winnerNames = new Set(); // clear로 쉽게 비우기 위해 set사용함
 		let maxScore = -Infinity; //
 
-		Object.entries(drivers).forEach(([name, finalLocation]) => {
-			if (finalLocation > maxScore) {
-				winnerNames.clear();
-				winnerNames.add(name);
-				maxScore = finalLocation;
-			} else if (finalLocation === maxScore) winnerNames.add(name);
-		});
+		drivers.forEach((driver) => this.#updateWinnerNames(driver, winnerNames, maxScore));
 
-		return [...winnerNames];
+		return [...winnerNames.sort()];
+	}
+
+	#updateWinnerNames(driver, winnerNames, maxScore) {
+		if (driver.location > maxScore) {
+			winnerNames.clear();
+			winnerNames.add(driver.name);
+			maxScore = driver.location;
+		} else if (driver.location === maxScore) winnerNames.add(driver.name);
 	}
 }
 
