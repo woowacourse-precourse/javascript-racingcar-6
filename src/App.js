@@ -1,5 +1,6 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import InputView from './view/InputView.js';
+import OutputView from './view/OutputView.js';
 import Car from './Car.js';
 import Validation from './utils/Validator.js';
 import message from "./Constants.js";
@@ -13,40 +14,21 @@ class App {
     await this.requestCarNames();
     await this.requestTryCount();
     this.moveCar();
-    this.printResultHeader();
+    OutputView.printResultHeader();
     this.getCarPositions(this.carList);
-    this.printCarPosition();
+    OutputView.printCarPosition(this.carList, this.tryCount);
     const winners = this.getWinners(this.carList);
-    this.printWinners(winners);
+    OutputView.printWinners(winners);
   }
 
   makeCarList = (carName) => {
     this.carList.push(new Car(carName));
   }
 
-  // todo print 함수 정리
   moveCar() {
     this.carList.forEach((car) => {
       car.move();
     });
-  }
-
-  printResultHeader() {
-    MissionUtils.Console.print(message.RESULT_HEADER);
-  }
-
-  printEmptyLine() {
-    MissionUtils.Console.print(message.EMPTY_LINE);
-  }
-
-  printCarPosition() {
-    for (let tryIndex = 0; tryIndex < this.tryCount; tryIndex++) {
-      this.carList.forEach((car) => {
-        car.move();
-        MissionUtils.Console.print(`${car.name} : ${message.POSITION_UNIT.repeat(car.position)}`);
-      });
-      this.printEmptyLine();
-    }
   }
 
   getWinners(carList) {
@@ -69,10 +51,6 @@ class App {
 
   getCarPositions(carList) {
     return carList.map((car) => this.carPositions.push(car.position));
-  }
-
-  printWinners(winners) {
-    MissionUtils.Console.print(`${message.WINNER_HEADER}${winners.join(message.WINNER_DELIMITER)}`);
   }
 
   async requestCarNames() {
