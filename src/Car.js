@@ -6,9 +6,13 @@ class Car {
     this.position = 0;
   }
 
-  move() {
-    const FORWARD_CONDITION = Random.pickNumberInRange(0, 9) >= 4;
-    if (FORWARD_CONDITION) {
+  static getCondition() {
+    return Random.pickNumberInRange(0, 9);
+  }
+
+  move(carCondition) {
+    const FORWARD_CONDITION = 4;
+    if (carCondition >= FORWARD_CONDITION) {
       this.position += 1;
     }
   }

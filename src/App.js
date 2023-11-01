@@ -12,7 +12,8 @@ class App {
     MessageProcessor.result();
     for (let i = 0; i < this.tryCount; i += 1) {
       this.cars.forEach(car => {
-        car.move();
+        const carCondition = Car.getCondition();
+        car.move(carCondition);
       });
       MessageProcessor.progress(this.cars);
     }
