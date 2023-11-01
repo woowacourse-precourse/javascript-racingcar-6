@@ -47,10 +47,6 @@ class App {
     }
   }
 
-  makeCar(carName) {
-    this.car = carName.map(name => ({ name }));
-  }
-
   async getRoundNumber() {
     const inputRound = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
     return this.sanitizeRoundNumber(inputRound);
@@ -82,7 +78,24 @@ class App {
     }
   }
 
-  randomNumber() {
+  makeCar(carName) {
+    const getRandom = this.getRandomNumber;
+    this.car = carName.map(name =>({
+      name,
+      distance: 0,
+      move() {
+        if (this.shouldMove()) {
+          this.distance += 1;
+        }
+      },
+      shouldMove() {
+        const randomValue = getRandom();
+        return randomValue >= 4;
+      }
+    }));
+  }
+
+  getRandomNumber() {
     const randomValue = Random.pickNumberInRange(0, 9);
     return randomValue;
   }
