@@ -19,3 +19,5 @@ class Car {
     this.#movedForwardCount += 1;
   }
 }
+
+export default Car;
