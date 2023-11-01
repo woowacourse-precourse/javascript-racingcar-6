@@ -13,12 +13,18 @@ function validateName(name) {
   })
 }
 
+function validateRoundNumber(round) {
+  if (Number.isNaN(round))
+    throw new Error('[ERROR]숫자만 입력할 수 있습니다.')
+  if (round <= 0 || round > 10000000)
+    throw new Error('[ERROR] 1 이상 10000000이하의 숫자만 입력할 수 있습니다.')
+}
 
 export default async function gameStart() {
   const cars = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n');
   cars.replace(/ /g, '').split(',').forEach((value) => {
     validateName(value);
-    const obj = {
+    const car = {
       name: value,
       currentLength: 0,
       line: '',
@@ -27,7 +33,9 @@ export default async function gameStart() {
         this.line += '-';
       }
     }
-    carObjects.push(obj);
+    carObjects.push(car);
   })
+  const round = Number(await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n'));
+  validateRoundNumber(round);
   Console.print(carObjects);
 }
