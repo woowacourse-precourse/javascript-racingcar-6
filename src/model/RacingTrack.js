@@ -1,12 +1,13 @@
 import GAME from '../constants/Game.js';
 import randomNumberGenerator from '../utils/randomNumberGenerator.js';
 import driverNamesValidation from '../utils/validation/driverNamesValidation.js';
+import Car from './Car.js';
 
 class RacingTrack {
 	#drivers; // {name1: currentLocation, name2: ...}
 
 	constructor() {
-		this.#drivers = {};
+		this.#drivers = [];
 	}
 
 	initDrivers(drivers) {
@@ -14,24 +15,21 @@ class RacingTrack {
 
 		driverNamesValidation(driverArr);
 
-		driverArr.forEach((name) => (this.#drivers[name] = 0));
+		driverArr.forEach((name) => this.#drivers.push(new Car(name)));
+		console.log(this.#drivers);
 	}
 
-	#move() {
-		Object.entries(this.#drivers).forEach(([name, _]) => {
-			const moveProbability = randomNumberGenerator();
-
-			if (moveProbability >= GAME.moveThreshold) this.#drivers[name]++;
-		});
-	}
-
-	allMoves() {
-		this.#move();
+	allDriverMoves() {
+		this.#drivers.forEach((driver) => driver.move());
 
 		return this.#drivers;
 	}
 
-	getFinalLocations() {
+	/**
+	 * 게임 종료 후 트랙위의 차량 정보 리스트
+	 * @returns Car() []
+	 */
+	getFinalTrack() {
 		return this.#drivers;
 	}
 }
