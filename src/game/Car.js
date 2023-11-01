@@ -1,3 +1,6 @@
+import { pickNumberInRange } from '../utility/random.js';
+import { isWithinFourToNine } from '../utility/validation.js';
+
 class Car {
   #name = '';
 
@@ -10,6 +13,11 @@ class Car {
 
   #moveOneStep() {
     this.#stepCount += 1;
+  }
+
+  tryToMove() {
+    const randomNumber = pickNumberInRange(0, 9);
+    if (isWithinFourToNine(randomNumber)) this.#moveOneStep();
   }
 }
 
