@@ -1,16 +1,13 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import CONDITIONS from '../constants/Conditions.js';
-import PrintConsole from '../view/PrintConsole.js';
 
 class Car {
 	#name;
 	#distance;
-	#printConsole;
 
 	constructor(carName) {
 		this.#name = carName;
 		this.#distance = 0;
-		this.#printConsole = new PrintConsole();
 	}
 
 	get name() {
@@ -27,8 +24,6 @@ class Car {
 
 	forward() {
 		if (this.#checkFordwardCondition()) this.#distance += 1;
-
-		this.#printConsole.showRacingResult(this.#name, this.#distance);
 	}
 }
 
