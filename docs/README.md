@@ -84,7 +84,7 @@
   - console ✔️
   - random ✔️
   - string ✔️
-  - validation
+  - validation ✔️
 - 클래스 테스트
   - Car
   - Garage
