@@ -7,10 +7,6 @@ const mockQuestions = (inputs) => {
 };
 
 describe("getCarNames 메서드 테스트", () => {
-  // beforeAll(() => {
-  //   MissionUtils.Console.readLineAsync = jest.fn();
-  // });
-
   test("올바르게 입력한 경우", async () => {
     mockQuestions(["car1, car2, car3"]);
     const app = new App();

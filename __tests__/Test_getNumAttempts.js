@@ -10,7 +10,7 @@ describe("getNumAttempts 메서드 테스트", () => {
     MissionUtils.Console.readLineAsync.mockResolvedValue("1");
     const app = new App();
     const result = await app.getNumAttempts();
-    expect(result).toEqual(parseInt(result, 10));
+    expect(result).toBe(1);
   });
 
   test("시도 횟수를 입력하지 않은 경우(예외)", async () => {
