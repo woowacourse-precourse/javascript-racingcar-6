@@ -4,7 +4,7 @@ import { mockRandoms } from './ApplicationTest';
 
 const testCase = Array.from({ length: 10 }, (_, index) => [
   index,
-  index < GAME.MOVEMENT_THRESHOLD ? 0 : index,
+  index < GAME.MOVEMENT_THRESHOLD ? 0 : GAME.MOVEMENT,
 ]);
 
 describe('Car 클래스', () => {
