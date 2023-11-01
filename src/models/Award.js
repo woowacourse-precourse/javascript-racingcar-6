@@ -3,17 +3,11 @@ import { SYMBOLS } from '../constants/index.js';
 class Award {
   #winningDistance;
 
-  #winners;
-
-  constructor(winners) {
-    this.#winners = winners;
-  }
-
   getWinners(distanceBoard) {
     this.#getWinningDistance(distanceBoard);
     this.#setWinner(distanceBoard);
 
-    return this.#winners;
+    return this.winners;
   }
 
   #getWinningDistance(distanceBoard) {
@@ -22,7 +16,7 @@ class Award {
   }
 
   #setWinner(distanceBoard) {
-    this.#winners = distanceBoard
+    this.winners = distanceBoard
       .filter(([, distance]) => distance === this.#winningDistance)
       .map(([name]) => name)
       .join(SYMBOLS.commaSpace);
