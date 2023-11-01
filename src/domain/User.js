@@ -4,6 +4,13 @@ import { MissionUtils } from '@woowacourse/mission-utils';
 
 export default class User {
 
+    async inputForGame() {
+        const carNames = await this.inputCarNames();
+        const count = await this.inputGameCount();
+
+        return { carNames, count };
+    }
+
     async inputCarNames() {
         const carNames = await MissionUtils.Console.readLineAsync(GAME_MESSAGE.inputCarNames);
         

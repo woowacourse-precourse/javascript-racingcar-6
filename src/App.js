@@ -9,9 +9,7 @@ class App {
   }
 
   async play() {
-    const carNames = await this.user.inputCarNames();
-    const count = await this.user.inputGameCount();
-
+    const { carNames, count } = await this.user.inputForGame();
     this.game.run({ carNames, count });
   }
 }
