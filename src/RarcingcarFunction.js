@@ -43,3 +43,20 @@ export const currentRoung = (score, name) => {
   }
   Console.print("");
 };
+
+export const findWinner = (score, name) => {
+  const MAX_SCORE = Math.max.apply(null, score);
+  const WINNER = [];
+  for (let i = 0; i < score.length; i++) {
+    if (score[i] === MAX_SCORE) {
+      WINNER.push(name[i]);
+    }
+  }
+  return WINNER;
+};
+
+export const printWinner = (WINNER) => {
+  for (let i = 0; i < WINNER.length; i++) {
+    Console.print();
+  }
+};
