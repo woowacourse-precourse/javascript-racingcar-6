@@ -14,18 +14,12 @@ export async function getCarName() {
     }
   });
 
-  // for (const i of carNameArray) {
-  //   if (i.length > 5 || i.length < 1) {
-  //     throw new Error('[ERROR] 이름은 한자리 이상, 5자 이하만 가능합니다.');
-  //   }
-  // }
-
   return carNameArray;
 }
 
 export async function getRoundNum() {
   let competeRound = 0;
-  // try {
+
   competeRound = await MissionUtils.Console.readLineAsync(
     '시도할 횟수는 몇 회인가요?\n',
   );
@@ -33,11 +27,6 @@ export async function getRoundNum() {
   if (Number.isNaN(competeRound) === true) {
     throw new Error('[ERROR] 숫자가 잘못된 형식입니다.');
   }
-  // } catch (error) {
-  //   throw error;
-  // }
-
-  // try catch 가 필요 업슨 상황인지, 그리고 왜 캐치문에 스로우 또 던져야함
 
   return competeRound;
 }
