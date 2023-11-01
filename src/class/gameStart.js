@@ -15,6 +15,16 @@ class InputCarMoveCount {
       if (carNames.some(name => name.length > VALID_LENGTH.NAME_MAX_LENGTH)) {
         throw new Error(ERROR_MESSAGE);
       }
+      if (carNames.length === 1 || carNames.length > 10) {
+        throw new Error(ERROR_MESSAGE);
+      }
+      if (carNames.some(name => name.length === 0)) {
+        throw new Error(ERROR_MESSAGE);
+      }
+      const checkDuplicateCarNames = new Set(carNames);
+      if (checkDuplicateCarNames.size !== carNames.length) {
+        throw new Error(ERROR_MESSAGE);
+      }
 
       Console.print(PLAY_GAME.TRY_COUNT);
       const inputCount = await Console.readLineAsync('');
