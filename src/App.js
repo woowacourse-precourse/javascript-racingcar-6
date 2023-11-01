@@ -13,13 +13,13 @@ class App {
 
   sanitizeCarName(inputCar) {
     const sanitizedCar = inputCar.split(',').map(name => name.trim()).filter(name => name);
-    return this.validateCarName(sanitizedCar);
+    return this.#validateCarName(sanitizedCar);
   }
   
-  validateCarName(sanitizedCar) {
+  #validateCarName(sanitizedCar) {
     this.#checkMinimumCar(sanitizedCar);
-    this.#checkLength(sanitizedCar);
-    this.#checkDuplicate(sanitizedCar);
+    this.#checkCarLength(sanitizedCar);
+    this.#checkCarDuplicate(sanitizedCar);
     return sanitizedCar;
   }
 
@@ -29,13 +29,13 @@ class App {
     }
   }
 
-  #checkLength(sanitizedCar) {
+  #checkCarLength(sanitizedCar) {
     if (sanitizedCar.some(name => name.length > 5)) {
       throw new Error("[ERROR] 자동차 이름은 5자를 초과할 수 없습니다.");
     }
   }
 
-  #checkDuplicate(sanitizedCar) {
+  #checkCarDuplicate(sanitizedCar) {
     if (new Set(sanitizedCar).size !== sanitizedCar.length) {
       throw new Error("[ERROR] 중복되는 자동차 이름이 있습니다.");
     }
@@ -48,7 +48,28 @@ class App {
 
   sanitizeRoundNumber(inputRound) {
     const sanitizedRound = parseInt(inputRound.trim().replace(/\s+/g, ''), 10);
+    if (inputRound.includes('.') || !Number.isInteger(sanitizedRound)) {
+      throw new Error("[ERROR] 횟수는 자연수 형식이어야 합니다");
+    }  
+    return this.#validateRound(sanitizedRound);
+  }
+
+  #validateRound(sanitizedRound) {
+    this.#checkMinimumRound(sanitizedRound);
+    this.#checkMaximumRound(sanitizedRound);
     return sanitizedRound;
+  }
+
+  #checkMinimumRound(sanitizedRound) {
+    if (sanitizedRound < 1) {
+      throw new Error("[ERROR] 최소 1 이상의 횟수를 입력해주세요.");
+    }
+  }
+
+  #checkMaximumRound(sanitizedRound) {
+    if (sanitizedRound > 10) {
+      throw new Error("[ERROR] 최대 10 이하의 횟수를 입력해주세요.");
+    }
   }
 }
 
