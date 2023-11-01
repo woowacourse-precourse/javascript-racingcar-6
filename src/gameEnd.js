@@ -24,3 +24,15 @@ const getWinner = async (result) => {
   }
   return winner;
 };
+
+const printWinner = async (winner) => {
+  // 3-2. 우승자 안내 문구 출력
+  // 단독 우승인 경우
+  if (winner.length === 1) {
+    Console.print(`최종 우승자 : ${winner[0]}`);
+  }
+  // 공동 우승인 경우
+  else Console.print(`최종 우승자 : ${winner.join(", ")}`);
+};
+
+export { gameEnd, getWinner, printWinner };
