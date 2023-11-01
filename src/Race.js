@@ -26,6 +26,15 @@ class Race {
     }
   }
 
+  /** 경기 종료 후 결과를 집계하여 우승자 목록을 출력하는 함수 */
+  showResult() {
+    const maxValue = Math.max(...this.#forwards);
+    const winners = this.#cars.filter(
+      (_, idx) => this.#forwards[idx] === maxValue
+    );
+    Console.print(`${MESSEGE.WINNER} : ${winners.join(", ")}`);
+  }
+
   /** @param {string} message  */
   async getCarNamesInput(message) {
     const input = await Console.readLineAsync(message);
