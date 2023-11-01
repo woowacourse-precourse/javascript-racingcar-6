@@ -3,10 +3,10 @@ import Race from "../src/RacingCar/Race";
 const race = new Race();
 
 describe("자동차 이름 구분", () => {
-  test("공백 없이 쉼표(,)로 문자열 구분", () => {
-    const input = "pobi, woni, jun";
+  test("좌우 공백 없이 쉼표(,)로 문자열 구분", () => {
+    const input = "pobi, wonii, yy 24";
 
-    expect(race.splitWithoutSpace(input)).toContain("pobi", "woni", "jun");
+    expect(race.splitWithoutSpace(input)).toContain("pobi", "wonii", "yy 24");
   });
 
   test("쉼표(,)가 없는 문자열이면 값을 그대로 반환", () => {
