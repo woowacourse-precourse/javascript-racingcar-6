@@ -1,15 +1,17 @@
-import { Console, Random } from '@woowacourse/mission-utils';
+import { Console } from '@woowacourse/mission-utils';
 import { handleInputName, handleInputRound } from './utils/HandleInput';
 import { pickRandomtoGo } from './utils/CalLogic';
-
+import { handleOutputRound, parseCarResult } from './utils/HandleOutput';
 class App {
   async play() {
     Console.print('자동차 경주를 시작합니다.');
     const CAR_LIST = await handleInputName();
     this.inputCarName(CAR_LIST);
+
     const GAME_ROUND = await handleInputRound();
     for (let i = 0; i < GAME_ROUND; i++) {
-      this.Runround();
+      const RESULT_ARRAY = this.Runround();
+      handleOutputRound(RESULT_ARRAY);
     }
   }
 
@@ -32,11 +34,15 @@ class App {
   }
 
   Runround() {
-    for (const [key, value] of this.CAR_LISTMAP) {
+    const TEMP_RESULT = [];
+    for (const key of this.CAR_LISTMAP.keys()) {
       if (pickRandomtoGo()) {
         this.goForward(key);
       }
+      const PARSE_RESULT = parseCarResult(key, this.CAR_LISTMAP.get(key));
+      TEMP_RESULT.push(PARSE_RESULT);
     }
+    return TEMP_RESULT;
   }
 }
 
