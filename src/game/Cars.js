@@ -5,7 +5,7 @@ export class Cars {
   #list = [];
 
   constructor(carNames) {
-    this.initialize(carNames);
+    this.addNewCars(carNames);
   }
 
   getList() {
@@ -16,12 +16,16 @@ export class Cars {
     return this.#list.map((car) => car.getPosition());
   }
 
-  initialize(carNames) {
+  addNewCars(carNames) {
     carNames.forEach((name) => {
-      const randomGenerator = this.makeNewRandomGenerator();
-      const car = new Car(name, randomGenerator);
-      this.#list.push(car);
+      const newCar = this.makeNewCar(name);
+      this.#list.push(newCar);
     });
+  }
+
+  makeNewCar(name) {
+    const randomGenerator = this.makeNewRandomGenerator();
+    return new Car(name, randomGenerator);
   }
 
   makeNewRandomGenerator() {

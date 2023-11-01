@@ -20,7 +20,6 @@ const conditions = {
     },
 
     isDuplicated(inputs) {
-      console.log(stringToArray(inputs).length, new Set(stringToArray(inputs)).size);
       return stringToArray(inputs).length !== new Set(stringToArray(inputs)).size;
     },
   },
