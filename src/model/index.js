@@ -31,7 +31,7 @@ class RacingModel {
     this.#vehicle.saveNames(vehicleNames);
   }
 
-  racing() {
+  race() {
     const vehicleData = this.#vehicle.getData();
     vehicleData.forEach((progress, vehicle) => {
       if (!this.#canMove()) return;
