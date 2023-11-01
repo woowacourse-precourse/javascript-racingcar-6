@@ -11,6 +11,15 @@ export default async function getCarName() {
   }
 }
 
-function validationCarName(carArray) {
-  return carArray.every((car) => car.length <= 5 && car.length > 0);
+function validationCarName(carNameArray) {
+  const isNameLengthValid = carNameArray.every(
+    (name) => name.length <= 5 && name.length > 0
+  );
+
+  const isNotSpace = carNameArray.every((name) => !name.includes(" "));
+
+  const isNotDuplication =
+    carNameArray.length === [...new Set(carNameArray)].length;
+
+  return isNameLengthValid && isNotSpace && isNotDuplication;
 }
