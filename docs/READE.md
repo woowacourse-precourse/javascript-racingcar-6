@@ -101,3 +101,12 @@
 ~~~
 [ERROR] 게임을 시작하기 위해선 최소 1회 이상의 시도 횟수가 필요합니다.
 ~~~
+
+<br>
+<br>
+
+# Code Style
+
+- Airbnb JavaScript Style Guide
+
+- 우아한테크코스 네이밍 컨벤션

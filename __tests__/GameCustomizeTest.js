@@ -1,7 +1,7 @@
 import { getPlayersName, getAttemptNumber } from "../src/racing/GameCustomize.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 
-//값을 넣을때 [] 한겹 빼주기
+// 값을 넣을때 [] 한겹 빼주기
 const mockQuestions2 = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
 
@@ -10,7 +10,7 @@ const mockQuestions2 = (inputs) => {
     return Promise.resolve(inputs);
   });
 };
-//값을 넣을때 [] 필요
+// 값을 넣을때 [] 필요
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
 
