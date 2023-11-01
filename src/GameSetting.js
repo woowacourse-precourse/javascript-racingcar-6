@@ -1,12 +1,12 @@
 import {Console} from '@woowacourse/mission-utils'
-import { PLAYER_INPUT_MESSAGE } from './constatns/gameConstant'
-import {Validation} from './validation'
+import { PLAYER_INPUT_MESSAGE } from './constants/gameConstant.js';
+import Validation from './validation.js';
 
 class GameSetting {
     static async getCarsName() {
         const cars_name = await Console.readLineAsync(PLAYER_INPUT_MESSAGE.CAR_NAME_PROMPT);
         const car_name_array = cars_name.split(',');
-        if(Validation.isPlayerInputValidate(car_name_array)){
+        if(Validation.isCarNameValidate(car_name_array)){
             return [...car_name_array];
         }
     }
