@@ -1,8 +1,8 @@
 // @ts-check
 import { Random, Console } from "@woowacourse/mission-utils";
 import { MESSAGE } from "../constants/constants";
-import { InputValidator } from "./qinputValidator";
-import { InputConverter } from "./qinputConverter";
+import { InputValidator } from "./InputValidator";
+import { InputConverter } from "./InputConverter";
 import { Cars } from "../domain/Cars";
 class InputView {
   /**

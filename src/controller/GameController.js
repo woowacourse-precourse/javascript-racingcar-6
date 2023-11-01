@@ -1,6 +1,6 @@
-import { Cars } from "../domain/cars";
-import InputView from "../view/inputView";
-import OutputView from "../view/outputView";
+import { Cars } from "../domain/Cars";
+import InputView from "../view/InputView";
+import OutputView from "../view/OutputView";
 
 // @ts-check
 export class GameController {

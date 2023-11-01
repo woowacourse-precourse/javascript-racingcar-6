@@ -1,7 +1,7 @@
 // @ts-check
 import { Random } from "@woowacourse/mission-utils";
 import { ERROR } from "../constants/constants";
-import InputView from "../view/inputView";
+import InputView from "../view/InputView";
 import { CarDto } from "./dto/carDto";
 import { WinnerDto } from "./dto/winnerDto";
 
