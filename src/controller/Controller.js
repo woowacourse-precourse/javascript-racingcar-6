@@ -29,7 +29,7 @@ class Controller {
   async settingRound() {
     const inputRoundNumber = await InputView.readRoundNumber();
     Validator.roundNumber(inputRoundNumber);
-    this.#roundNumber = Number(inputRoundNumber);
+    this.#roundNumber = inputRoundNumber;
   }
 
   roundResult() {

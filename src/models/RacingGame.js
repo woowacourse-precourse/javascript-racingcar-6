@@ -5,16 +5,19 @@ import RandomNumberGenerator from '../utils/RandomNumberGenerator.js';
 class RacingGame {
   #carDistanceMap;
 
+  #carNames;
+
   #roundNumber;
 
   #status;
 
   #winner;
 
-  constructor(carList, roundNumber) {
-    this.#roundNumber = roundNumber;
+  constructor(inputCar, inputRound) {
     this.#status = SYMBOL_SETTING.emptyString;
-    this.#carDistanceMap = Converter.stringToMap(carList);
+    this.#roundNumber = Number(inputRound);
+    this.#carNames = Converter.removeSpace(inputCar);
+    this.#carDistanceMap = Converter.stringToMap(this.#carNames);
   }
 
   race() {

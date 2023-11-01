@@ -1,6 +1,10 @@
 import { SYMBOL_SETTING } from '../constants/Setting.js';
 
 const Converter = {
+  removeSpace(inputValue) {
+    return inputValue.replace(/\s/g, SYMBOL_SETTING.emptyString);
+  },
+
   stringToMap(inputValue) {
     const carDistanceMap = new Map();
     if (inputValue.includes(SYMBOL_SETTING.nameSeparator)) {
