@@ -11,7 +11,11 @@ const mockQuestions = (inputs) => {
 };
 
 describe('자동차 이름 테스트', () => {
-    test('자동차 이름 다섯글자 이하', async () => {
+    test('5자 이하 이름 정상테스트', () => {
+        const car = new Car('CAR123');
+        expect(car.name).toBe('CAR123');
+    });
+    test('자동차 이름 다섯글자 이하 예외처리', async () => {
         mockQuestions(['dohyun1,dohy']);
 
         const carName = new CarName();
