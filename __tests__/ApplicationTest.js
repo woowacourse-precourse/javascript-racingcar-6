@@ -1,5 +1,6 @@
 import App from '../src/App.js';
 import { MissionUtils } from '@woowacourse/mission-utils';
+import Car from '../src/Car.js';
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -44,6 +45,25 @@ describe('자동차 경주 게임', () => {
     outputs.forEach((output) => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
+  });
+
+  test('우승자가 여러 명', async () => {
+    // given
+    const MOVING_FORWARD = 4;
+    const inputs = ['pobi,woni', '1'];
+    const output = 'pobi, woni';
+    const randoms = [MOVING_FORWARD, MOVING_FORWARD];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    // when
+    const app = new App();
+    await app.play();
+
+    // then
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
   });
 
   test.each([[['pobi,javaji']], [['pobi,eastjun']]])('이름에 대한 예외 처리', async (inputs) => {
