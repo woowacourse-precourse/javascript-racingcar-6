@@ -15,6 +15,7 @@ class App {
 
     const maxPosition = this.countMaxPosition();
     const winner = this.findWinner(maxPosition);
+    Console.print(`최종 우승자 : ${winner.join(', ')}`);
   }
 
   async getCarName() {
