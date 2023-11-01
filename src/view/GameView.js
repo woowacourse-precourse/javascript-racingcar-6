@@ -1,5 +1,5 @@
 import { MESSAGE } from "../constants/messages.js";
-import { Console, Random } from "@woowacourse/mission-utils";
+import { Console } from "@woowacourse/mission-utils";
 
 export class GameView {
   printInitialMessages() {
