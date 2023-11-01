@@ -25,6 +25,10 @@ class Car {
   printStepState() {
     print(`${this.#name} : ${getHyphens(this.#stepCount)}`);
   }
+
+  compareAndUpdateMaxStepCount(maxStepCount) {
+    return Math.max(maxStepCount, this.#stepCount);
+  }
 }
 
 export default Car;
