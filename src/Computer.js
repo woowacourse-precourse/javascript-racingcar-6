@@ -1,7 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
 import User from './User.js';
 import RacingCar from './RacingCar.js';
-
 import MESSAGE from './Constant.js';
 
 export default class Computer {
@@ -43,9 +42,7 @@ export default class Computer {
 
   getFinalWinnersNameArray() {
     const maxDistance = this.getMaxDistance();
-    return this.racingCars
-      .filter((car) => car.distance === maxDistance)
-      .map((car) => car.name);
+    return this.racingCars.filter((car) => car.distance === maxDistance).map((car) => car.name);
   }
 
   getMaxDistance() {
