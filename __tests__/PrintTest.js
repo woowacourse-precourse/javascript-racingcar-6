@@ -71,7 +71,7 @@ describe("print 폴더에 있는 함수들에 대한 테스트", () => {
       input = [...announceCurrentRacingState(input)];
       expect(logSpy).toHaveBeenCalledWith(outputs[5 - count]);
       logSpy.mockClear();
-      count--;
+      count -= 1;
     }
   });
 });

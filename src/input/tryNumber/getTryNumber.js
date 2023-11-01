@@ -2,11 +2,11 @@ import { Console } from "@woowacourse/mission-utils";
 import validateTryNumber from "./validateTryNumber.js";
 
 const getTryNumber = async () => {
-  const try_number = Number(await Console.readLineAsync(""));
-  if (!validateTryNumber(try_number)) {
+  const tryNumber = Number(await Console.readLineAsync(""));
+  if (!validateTryNumber(tryNumber)) {
     throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
   }
-  return try_number;
+  return tryNumber;
 };
 
 export default getTryNumber;

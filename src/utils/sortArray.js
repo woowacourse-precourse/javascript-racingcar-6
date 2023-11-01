@@ -1,7 +1,7 @@
 const sortArray = (array) => {
-  const input_array = [...array];
-  input_array.sort((x, y) => y.currentState - x.currentState);
-  return input_array;
+  const inputArray = [...array];
+  inputArray.sort((x, y) => y.currentState - x.currentState);
+  return inputArray;
 };
 
 export default sortArray;

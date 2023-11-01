@@ -12,17 +12,18 @@ import announceWinner from "./print/announceWinner.js";
 class App {
   async play() {
     startGame();
-    let car_object_array = await getRacingCar();
+    let carObjectArray = await getRacingCar();
 
     askTryNumber();
-    let try_number = await getTryNumber();
+    let tryNumber = await getTryNumber();
 
     Console.print("");
-    while (try_number-- > 0) {
-      car_object_array = announceCurrentRacingState(car_object_array);
+    while (tryNumber > 0) {
+      carObjectArray = announceCurrentRacingState(carObjectArray);
       Console.print("");
+      tryNumber -= 1;
     }
-    announceWinner(findWinner(sortArray(car_object_array)));
+    announceWinner(findWinner(sortArray(carObjectArray)));
   }
 }
 

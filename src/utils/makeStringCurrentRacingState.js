@@ -1,7 +1,7 @@
 const makeStringCurrentRacingState = (object) => {
-  const input_object_car = object.car;
-  const input_object_currentState = "-".repeat(object.currentState);
-  return `${input_object_car} : ${input_object_currentState}`;
+  const inputObjectCar = object.car;
+  const inputObjectCurrentState = "-".repeat(object.currentState);
+  return `${inputObjectCar} : ${inputObjectCurrentState}`;
 };
 
 export default makeStringCurrentRacingState;

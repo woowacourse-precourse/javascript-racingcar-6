@@ -1,17 +1,17 @@
+import { Console } from "@woowacourse/mission-utils";
 import makeStringCurrentRacingState from "../utils/makeStringCurrentRacingState.js";
 import moveForward from "../utils/moveForward.js";
 import generateRandomNumber from "../utils/generateRandomNumber.js";
-import { Console } from "@woowacourse/mission-utils";
 
 const announceCurrentRacingState = (array) => {
-  const input_array = [...array];
-  input_array.forEach((array_item) => {
+  const inputArray = [...array];
+  inputArray.forEach((arrayItem) => {
     if (moveForward(generateRandomNumber())) {
-      array_item.currentState++;
+      arrayItem.currentState += 1;
     }
-    Console.print(makeStringCurrentRacingState(array_item));
+    Console.print(makeStringCurrentRacingState(arrayItem));
   });
-  return input_array;
+  return inputArray;
 };
 
 export default announceCurrentRacingState;

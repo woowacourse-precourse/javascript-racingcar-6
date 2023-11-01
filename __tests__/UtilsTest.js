@@ -63,12 +63,12 @@ describe("utils 폴더에 있는 함수들에 대한 테스트", () => {
   });
 
   test("moveForward 함수를 사용해서 전진 조건에 해당하는 수가 들어오면 true, 아닐경우 false를 반환하는 함수 작성", () => {
-    const input_return_true = 4;
-    const input_return_false = 0;
-    const result_true = moveForward(input_return_true);
-    const result_false = moveForward(input_return_false);
+    const inputReturnTrue = 4;
+    const inputReturnFalse = 0;
+    const resultTrue = moveForward(inputReturnTrue);
+    const resultFalse = moveForward(inputReturnFalse);
 
-    expect(result_true).toBe(true);
-    expect(result_false).toBe(false);
+    expect(resultTrue).toBe(true);
+    expect(resultFalse).toBe(false);
   });
 });

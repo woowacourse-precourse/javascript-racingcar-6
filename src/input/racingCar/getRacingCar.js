@@ -2,19 +2,19 @@ import { Console } from "@woowacourse/mission-utils";
 import validateRacingCar from "./validateRacingCar.js";
 
 const getRacingCar = async () => {
-  const input_string = await Console.readLineAsync("");
-  const input_array = input_string.split(",");
+  const inputString = await Console.readLineAsync("");
+  const inputArray = inputString.split(",");
 
-  if (!validateRacingCar(input_array)) {
+  if (!validateRacingCar(inputArray)) {
     throw new Error("[ERROR] 문자가 잘못된 형식입니다.");
   }
-  const input_object_array = input_array.map((item) => {
+  const inputObjectAarray = inputArray.map((item) => {
     return {
       car: item,
       currentState: 0,
     };
   });
-  return input_object_array;
+  return inputObjectAarray;
 };
 
 export default getRacingCar;

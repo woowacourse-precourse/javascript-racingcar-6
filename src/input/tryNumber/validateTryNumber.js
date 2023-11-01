@@ -1,11 +1,8 @@
 import CONDITIONS from "../../constants/Conditions.js";
 
 const validateTryNumber = (number) => {
-  const input_number = number;
-  return Number.isInteger(input_number) &&
-    input_number >= CONDITIONS.TRY_MINIMUM
-    ? true
-    : false;
+  const inputNumber = number;
+  return Number.isInteger(inputNumber) && inputNumber >= CONDITIONS.TRY_MINIMUM;
 };
 
 export default validateTryNumber;
