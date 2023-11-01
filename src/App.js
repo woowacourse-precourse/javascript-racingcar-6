@@ -6,6 +6,34 @@ class RacingCar {
       throw new Error("[ERROR] 자동차 이름은 5자 이하만 가능합니다.");
     }
     this.name = name;
+    this.position = 0;
+  }
+
+  move(){
+    const randomNum = MissionUtils.Random.pickNumberInRange(0, 9);
+    if (randomNum >= 4) {
+      this.position++;
+    }
+  }
+}
+
+class RacingGame {
+  constructor(carNames, numberOfTries) {
+    this.cars = carNames.split(",").map((name) => new RacingCar(name));
+    this.numberOfTries = numberOfTries;
+  }
+
+  async playGame() {
+    for (let i = 0; i < this.numberOfTries; i++) {
+      this.moveCars();
+      await this.printRaceResult();
+    }
+  }
+
+  moveCars() {
+    for (const car of this.cars) {
+      car.move();
+    }
   }
 }
 
@@ -19,7 +47,8 @@ class App {
       throw new Error("[ERROR] 올바른 횟수를 입력하세요.");
     }
 
-
+    const game = new RacingGame(carNames, parseInt(numberOfTries, 10));
+    await game.playGame();
   }
 }
 
