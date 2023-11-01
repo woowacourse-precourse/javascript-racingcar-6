@@ -31,8 +31,7 @@ class Lap {
   }
 
   static printStage(record) {
-    computer.tell(record.join('\n'));
-    computer.tell('');
+    computer.tell(`${record.join('\n')}\n`);
   }
 
   getRecord() {

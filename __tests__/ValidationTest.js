@@ -1,6 +1,6 @@
 import validate from '../src/game/validation.js';
 
-describe('유효성 검사 테스트', () => {
+describe('story3. 유효성 검사 테스트', () => {
   describe('이름 입력 테스트 확인', () => {
     test('입력으로 5자리 이상으로 들어오면 [ERROR]을 던진다', () => {
       const nameArray = ['To', '우테코 선생님들'];

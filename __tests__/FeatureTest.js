@@ -59,6 +59,8 @@ describe("story2. 실행횟수 입력", () => {
   });
 });
 
+// story3. 유효성 테스트는 ValidationTest로 확인합니다.
+
 describe("story4. 차수별 진행상황 출력", () => {
   test("자동차 이름을 가지고, 기록용 배열을 만든다.", () => {
     // given
@@ -107,6 +109,19 @@ describe("story4. 차수별 진행상황 출력", () => {
 
     // then
     expect(array).toEqual(answer);
+  });
+
+  test("printStage 메서드 테스트, 요구사항에 맞춰 출력한다.", () => {
+    // given
+    const array = ['산 : ---', '바다 : -', '강 : -', '하늘 : --'];
+    const answer = '산 : ---\n바다 : -\n강 : -\n하늘 : --\n';
+    const logSpy = getLogSpy();
+
+    // when
+    Lap.printStage(array);
+
+    // then
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(answer));
   });
 });
 
