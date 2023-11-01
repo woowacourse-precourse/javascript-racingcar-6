@@ -7,8 +7,8 @@ class Game {
   }
 
   // 자동차 이름을 초기 전진횟수와 함께 CARS에 저장
-  storeCars(CAR_NAMES_INPUT) {
-    const CAR_NAMES = this.gameUtil.splitInput(CAR_NAMES_INPUT);
+  storeCars(carNamesInput) {
+    const CAR_NAMES = this.gameUtil.splitInput(carNamesInput);
     CAR_NAMES.forEach((carName) => {
       CARS.push({carName, forwardNumber:0});
     });

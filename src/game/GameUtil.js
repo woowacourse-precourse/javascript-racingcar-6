@@ -39,7 +39,8 @@ class GameUtil {
 
   // 전진횟수로 차 찾기
   findCarsWithForwardNumber(forwardNumber) {
-    return CARS.filter((car) => car.forwardNumber === forwardNumber);
+    const CARS_WITH_FORWARD_NUMBER = CARS.filter((car) => car.forwardNumber === forwardNumber)
+    return CARS_WITH_FORWARD_NUMBER;
   }
 
   //공동우승시 ',' 출력하는 메소드
@@ -51,11 +52,11 @@ class GameUtil {
   }
 
   // 공동우승한 차의 이름들 반환
-  getSharedVictoryCarNames(WINNER_CARS) {
+  getSharedVictoryCarNames(winnerCars) {
     let winnerCarNames = '';
-    for (let index in WINNER_CARS) {
-      winnerCarNames += WINNER_CARS[index].carName;
-      winnerCarNames += this.commaGenerator(index, WINNER_CARS.length - 1);
+    for (let index in winnerCars) {
+      winnerCarNames += winnerCars[index].carName;
+      winnerCarNames += this.commaGenerator(index, winnerCars.length - 1);
     }
     return winnerCarNames;
   }
