@@ -41,6 +41,15 @@ class App {
     return names.map((name) => ({ name, position: 0 }));
   }
 
+  moveCars(cars) {
+    cars.forEach((car) => {
+      const randomNum = MissionUtils.Random.pickNumberInRange(0, 9);
+      if (randomNum >= 4) {
+        car.position++;
+      }
+    });
+  }
+
 }
 
 export default App;
