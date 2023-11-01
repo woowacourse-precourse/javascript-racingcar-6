@@ -1,4 +1,4 @@
-import { Random } from '@woowacourse/mission-utils';
+import { Random, Console } from '@woowacourse/mission-utils';
 
 class Car {
   constructor(name) {
@@ -13,7 +13,7 @@ class Car {
   }
 
   printPosition() {
-    console.log(`${this.name} : ${'-'.repeat(this.position)}`);
+    Console.print(`${this.name} : ${'-'.repeat(this.position)}`);
   }
 }
 
