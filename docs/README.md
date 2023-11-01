@@ -97,12 +97,12 @@ jun : -----
   app.play();
   ```
 - [x] package.json 변경 불가 & 순수 Vanila JS 구현
-- [ ] [JavaScript 코드 컨벤션](https://github.com/woowacourse/woowacourse-docs/tree/main/styleguide/javascript)을 지키면서 프로그래밍
+- [x] [JavaScript 코드 컨벤션](https://github.com/woowacourse/woowacourse-docs/tree/main/styleguide/javascript)을 지키면서 프로그래밍
 - [x] [커밋 메시지 컨벤션 가이드](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)를 참고하여 기능 목록 단위로 커밋
 - [x] 프로그램 종료 시 `process.exit()`를 호출하지 않음
 - [x] 프로그래밍 요구 사항에서 달리 명시하지 않는 한 파일, 패키지 이름 수정 및 이동 금지
-- [ ] indent depth를 2까지만 허용
-- [ ] Jest를 이용해서 기능이 정상 동작함을 테스트 코드로 확인
+- [x] indent depth를 2까지만 허용
+- [x] Jest를 이용해서 기능이 정상 동작함을 테스트 코드로 확인
   - `__tests__/StringTest.js` 를 참고하여 학습한 후 테스트 구현
 - [x] `@woowacourse/mission-utils`의 `Random` `Console` API를 사용해서 구현
   - 랜덤 값 추출을 위해 `Random.pickNumberInRange()` 활용
