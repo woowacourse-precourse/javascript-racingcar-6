@@ -10,6 +10,10 @@ class App {
     const tryCount = await InputManager.inputTryCount();
 
     this.#race = new Race(participants);
+
+    Array.from({ length: tryCount }).forEach(() => {
+      this.#race.playRound();
+    });
   }
 }
 

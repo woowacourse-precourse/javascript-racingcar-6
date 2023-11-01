@@ -1,3 +1,4 @@
+import { Random } from '@woowacourse/mission-utils';
 import { GAME } from './Constant.js';
 
 export default class Car {
@@ -8,5 +9,16 @@ export default class Car {
   constructor(name) {
     this.#name = name;
     this.#distance = GAME.DEFAULT_POSITION;
+  }
+
+  move() {
+    const movement = Random.pickNumberInRange(
+      GAME.MIN_MOVEMENT,
+      GAME.MAX_MOVEMENT
+    );
+
+    if (movement >= GAME.MOVEMENT_THRESHOLD) {
+      this.#distance += movement;
+    }
   }
 }

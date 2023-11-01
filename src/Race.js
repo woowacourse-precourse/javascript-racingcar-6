@@ -8,4 +8,10 @@ export default class Race {
   constructor(participants) {
     this.#cars = participants.map((name) => new Car(name));
   }
+
+  async playRound() {
+    this.#cars.forEach((car) => {
+      car.move();
+    });
+  }
 }
