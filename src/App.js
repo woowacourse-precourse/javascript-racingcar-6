@@ -2,10 +2,12 @@ import { Console, Random } from "@woowacourse/mission-utils";
 
 class App {
   cars = [];
+  ATTEMPTS_COUNT;
 
   async play() {
     await this.getCarNames()
     await this.AskAttemptsCount();
+    this.startRace()
   }
   
   async getCarNames() {
@@ -45,6 +47,7 @@ class App {
     await Console.print("시도할 횟수는 몇 회인가요?")
     const ATTEMPTS_COUNT_INPUT = await Console.readLineAsync("")
     this.validateCountInput(ATTEMPTS_COUNT_INPUT)
+    this.ATTEMPTS_COUNT = ATTEMPTS_COUNT_INPUT 
   }
 
   validateCountInput(input) {
@@ -54,7 +57,45 @@ class App {
     }
   }
 
+  startRace() {
+    const carsSet = new Set();
+    this.cars.forEach((name) => {
+      carsSet.add({ name, count: 0 });
+    });
 
+    for (let i = 0; i < this.ATTEMPTS_COUNT; i++) {
+      this.moveCars(carsSet);
+      this.printCarsProgress(carsSet);
+      Console.print('');
+    }
+  }
+
+  moveCars(carsSet) {
+    for (const car of carsSet) {
+      car.count = this.updateCarPosition(car.count);
+    }
+  }
+
+  updateCarPosition(count) {
+    const RANDOM_NUMBER = Random.pickNumberInRange(0, 9);
+    if (RANDOM_NUMBER >= 4) {
+      count++;
+    }
+    return count;
+  }
+
+  printCarsProgress(carsSet) {
+    for (const car of carsSet) {
+      Console.print(`${car.name} : ${this.generateCarProgress(car.count)}`);
+    }
+  }
+
+  generateCarProgress(count) {
+    if (count === 0) {
+      return "";
+    }
+    return "-".repeat(count);
+  }
 }
 
 
