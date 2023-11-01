@@ -64,6 +64,17 @@ describe('자동차 경주 게임', () => {
 
   describe('입력', () => {
     describe('자동차 이름', () => {
+      test.each([[['']], [['pobi,']], [['pobi,,woni']], [[',woni']]])(
+        '빈값 예외 처리',
+        async inputs => {
+          mockQuestions(inputs);
+
+          const app = new App();
+
+          await expect(app.play()).rejects.toThrow('[ERROR]');
+        },
+      );
+
       test.each([[['helloworld']], [['pobi,helloworld']]])(
         '길이 예외 처리',
         async inputs => {
@@ -85,24 +96,15 @@ describe('자동차 경주 게임', () => {
           await expect(app.play()).rejects.toThrow('[ERROR]');
         },
       );
-
-      test.each([[['']], [['pobi,']], [['pobi,,woni']], [[',woni']]])(
-        '빈값 예외 처리',
-        async inputs => {
-          mockQuestions(inputs);
-
-          const app = new App();
-
-          await expect(app.play()).rejects.toThrow('[ERROR]');
-        },
-      );
     });
 
     describe('시도 횟수', () => {
       const inputs = [];
+
       beforeEach(() => {
         inputs.push('pobi,woni');
       });
+
       test('값이 없는 경우', async () => {
         inputs.push('');
 
@@ -112,6 +114,7 @@ describe('자동차 경주 게임', () => {
 
         await expect(app.play()).rejects.toThrow('[ERROR]');
       });
+
       test.each([['a'], ['1a'], ['1 a'], ['-1']])(
         '숫자가 아닌 경우',
         async input => {
@@ -124,10 +127,12 @@ describe('자동차 경주 게임', () => {
           await expect(app.play()).rejects.toThrow('[ERROR]');
         },
       );
+
       test('1 미만인 경우', async () => {
         inputs.push('0');
 
         mockQuestions(inputs);
+
         const app = new App();
 
         await expect(app.play()).rejects.toThrow('[ERROR]');
