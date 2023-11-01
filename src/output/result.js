@@ -8,12 +8,15 @@ export const printResult = {
 
   final(winners) {
     let winnersString = '';
+    const divider = ', ';
 
-    winners.forEach((winner) => {
-      winnersString += `${winner}, `;
+    winners.forEach((winner, index) => {
+      winnersString += `${winner}`;
+      if (index !== winners.length - 1) {
+        winnersString += divider;
+      }
     });
 
-    winnersString.slice(0, -1);
     Output(`최종 우승자 : ${winnersString}`);
   },
 };
