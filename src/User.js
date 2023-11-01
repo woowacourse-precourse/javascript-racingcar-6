@@ -1,5 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
 import * as m from "./constants/message.js";
+import * as c from "./constants/const.js";
 
 export class User {
   async inputCarNames() {
@@ -28,7 +29,12 @@ export class User {
   }
 
   isValidCarNamesInput(names) {
-    if (names.some((name) => name.length < 1 || name.length > 5)) {
+    if (
+      names.some(
+        (name) =>
+          name.length < c.MIN_LENGTH_NAME || name.length > c.MAX_LENGTH_NAME
+      )
+    ) {
       return false;
     }
     if (new Set(names).size != names.length) {
@@ -38,7 +44,7 @@ export class User {
   }
 
   isValidNumberInput(userInput) {
-    if (isNaN(userInput) || Number(userInput) < 1) {
+    if (isNaN(userInput) || Number(userInput) < c.MIN_TRY_NUMBER) {
       return false;
     }
     return true;

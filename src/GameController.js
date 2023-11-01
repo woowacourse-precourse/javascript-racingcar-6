@@ -3,6 +3,7 @@ import { User } from "./User.js";
 import { Console } from "@woowacourse/mission-utils";
 import { Car } from "./Car.js";
 import * as m from "./constants/message.js";
+import * as c from "./constants/const.js";
 
 export class GameController {
   constructor() {
@@ -27,7 +28,7 @@ export class GameController {
   startRace() {
     this.carList.forEach((car) => {
       const randomNumber = RandomNumberGenerator.generateRandomNumber();
-      if (randomNumber >= 4) {
+      if (randomNumber >= c.MOVEMENT_CONDITION) {
         car.move();
       }
     });
@@ -37,7 +38,7 @@ export class GameController {
     this.carList.forEach((car) => {
       const distance = [];
       for (let i = 0; i < car.distance; i++) {
-        distance.push("-");
+        distance.push(c.MOVEMENT_MARK);
       }
       Console.print(`${car.name} : ${distance.join("")}`);
     });
