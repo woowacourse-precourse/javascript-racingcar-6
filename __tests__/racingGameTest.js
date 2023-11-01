@@ -1,24 +1,20 @@
-// RacingGame.test.js
-const RacingGame = require("../src/RacingGame");
+import RacingGame from '../src/RacingGame';
+import { Console } from '@woowacourse/mission-utils';
 
-describe("RacingGame 클래스 테스트", () => {
-  test("라운드 설정이 올바르게 이루어지는지 테스트", () => {
-    const racingGame = new RacingGame();
-    racingGame.setTotalAttempts(5);
-    expect(racingGame.getTotalAttempts()).toBe(5);
+
+describe('RacingGame 클래스 테스트', () => {
+  let racingGame;
+
+  beforeEach(() => {
+    racingGame = new RacingGame('Car1,Car2', 5);
+    Console.print = jest.fn();
   });
 
-  test("라운드 진행이 제대로 이루어지는지 테스트", () => {
-    const racingGame = new RacingGame();
-    racingGame.setTotalAttempts(3);
+  test('RacingGame 클래스 playGame 메서드 테스트', () => {
+    const printPositionsSpy = jest.spyOn(racingGame, 'printPositions');
+    const printWinnersSpy = jest.spyOn(racingGame, 'printWinners');
     racingGame.playGame();
-    expect(racingGame.getCurrentAttempt()).toBe(1);
-  });
-
-  test("라운드가 0인 경우에도 정상적으로 진행되는지 테스트", () => {
-    const racingGame = new RacingGame();
-    racingGame.setTotalAttempts(0);
-    racingGame.playGame();
-    expect(racingGame.getCurrentAttempt()).toBe(0);
+    expect(printPositionsSpy).toHaveBeenCalledTimes(5); // 5회 반복 확인
+    expect(printWinnersSpy).toHaveBeenCalled();
   });
 });

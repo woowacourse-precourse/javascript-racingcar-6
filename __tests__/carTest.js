@@ -1,18 +1,30 @@
-import Car from "../src/Car.js";
+import Car from "../src/Car";
+import { Random } from "@woowacourse/mission-utils";
+
+jest.mock("@woowacourse/mission-utils", () => {
+  return {
+    Random: {
+      pickNumberInRange: jest.fn(),
+    },
+  };
+});
 
 describe("Car 클래스 테스트", () => {
-    test("올바른 이름으로 Car 객체가 생성되는지 테스트", () => {
-      const car = new Car("example");
-      expect(car).toBeDefined();
-    });
-  
-    test("5자를 초과하는 이름으로 Car 객체가 생성되지 않는지 테스트", () => {
-      expect(() => new Car("richard123")).toThrow();
-    });
-  
-    test("임계값 이상의 값을 받았을 때 Car가 정상적으로 이동하는지 테스트", () => {
-      const car = new Car("test");
-      car.move(4);
-      expect(car.getPosition()).toBe(1);
-    });
+  beforeEach(() => {
+    Random.pickNumberInRange.mockClear();
   });
+
+  test("Car 클래스 move 메서드 테스트 - 전진", () => {
+    const car = new Car("Car1");
+    Random.pickNumberInRange.mockReturnValue(4);
+    car.move();
+    expect(car.getPosition()).toBe(1);
+  });
+
+  test("Car 클래스 move 메서드 테스트 - 정지", () => {
+    const car = new Car("Car1");
+    Random.pickNumberInRange.mockReturnValue(3);
+    car.move();
+    expect(car.getPosition()).toBe(0);
+  });
+});
