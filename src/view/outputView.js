@@ -18,22 +18,23 @@ class OutputView {
   printRoundResult(CarsDto) {
     this.#printStartMessageWhenFirstCall();
 
-    CarsDto.cars.forEach(({ name, distance }) => {
-      Console.print(`${name} : ${"-".repeat(distance)}`);
+    CarsDto.cars.forEach((carDto) => {
+      Console.print(`${carDto.name} : ${"-".repeat(carDto.distance)}`);
     });
     Console.print("");
   }
 
   /**
    *
-   * @param {WinnersDto[]} WinnersDto
+   * @param {WinnersDto} winnersDto
    * @returns {void}
    */
 
-  printWinners(WinnersDto) {
-    WinnersDto.winners.forEach(({ name }) => {
-      Console.print(`MESSAGE.GAME_RESULT : ${name}`);
-    });
+  printWinners(winnersDto) {
+    const winnerNamesString = winnersDto.winners
+      .map((winner) => winner.winner)
+      .join(", ");
+    Console.print(`${MESSAGE.GAME_RESULT}${winnerNamesString}`);
   }
 
   /**
@@ -42,7 +43,7 @@ class OutputView {
 
   #printStartMessageWhenFirstCall() {
     if (this.#isFirstCall) {
-      Console.print("\n실행결과");
+      Console.print("\n실행 결과");
       this.#isFirstCall = false;
     }
   }

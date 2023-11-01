@@ -3,6 +3,7 @@ import { Random } from "@woowacourse/mission-utils";
 import { ERROR, SYMBOL } from "../constants/constants";
 import InputView from "../view/inputView";
 import { CarDto } from "./dto/carDto";
+import { WinnerDto } from "./dto/winnerDto";
 
 /**
  * @description - 비즈니스 로직을 실행할 도메인 객체
@@ -40,10 +41,11 @@ class Car {
       throw new Error(ERROR.NAME_RANGE_ERROR);
     }
 
-    const carSet = new Set(carName);
-    if (carSet.size !== carName.length) {
-      throw new Error(ERROR.NAME_DUPLICATION_ERROR);
-    }
+    // 중복확인은 cars에서
+    // const carSet = new Set(carName);
+    // if (carSet.size !== carName.length) {
+    //   throw new Error(ERROR.NAME_DUPLICATION_ERROR);
+    // }
   }
 
   /**
@@ -55,7 +57,7 @@ class Car {
   // 자동차 한대
   move() {
     const randomNumber = Random.pickNumberInRange(1, 9);
-    if (randomNumber > 4) {
+    if (randomNumber >= 4) {
       this.#distance++;
     }
   }
@@ -75,9 +77,17 @@ class Car {
    *
    * @returns {CarDto}
    */
-  //📍 여기서 carDto를 만들어준다
   makeCarDto() {
     return new CarDto(this.#name, this.#distance);
+  }
+
+  /**
+   *
+   * @returns {WinnerDto}
+   */
+
+  makeWinnerDto() {
+    return new WinnerDto(this.#name, this.#distance);
   }
 }
 

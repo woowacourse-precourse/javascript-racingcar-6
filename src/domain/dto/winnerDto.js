@@ -3,7 +3,7 @@ export class WinnerDto {
   /**
    * @type {string}
    */
-  #winner;
+  #winnerName;
   /**
    * @type {number}
    */
@@ -11,15 +11,15 @@ export class WinnerDto {
 
   /**
    *
-   * @param {string} winner
+   * @param {string} winnerName
    * @param {number} distance
    */
-  constructor(winner, distance) {
-    this.#winner = winner;
+  constructor(winnerName, distance) {
+    this.#winnerName = winnerName;
     this.#distance = distance;
   }
   get winner() {
-    return this.#winner;
+    return this.#winnerName;
   }
 
   get distance() {

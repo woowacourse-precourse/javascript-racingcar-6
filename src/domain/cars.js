@@ -4,10 +4,12 @@
 // 동적 배열 - 크기 변경 가능(push 등), 자바스크립트는 기본적으로 동적 배열
 // List
 
+import { ERROR } from "../constants/constants";
 import OutputView from "../view/outputView";
 import Car from "./car";
 import { CarDto } from "./dto/carDto";
 import { CarsDto } from "./dto/carsDto";
+import { WinnerDto } from "./dto/winnerDto";
 import { WinnersDto } from "./dto/winnersDto";
 
 // ADT(abstract data type, 추상 자료형(자료구조 공부)
@@ -31,9 +33,22 @@ export class Cars {
    */
 
   constructor(carNames) {
+    this.#validateDuplicateName;
     // carNames를 돌면서 Car만들기
     // [new Car('a'), new Car('b'), ...]
     this.#carList = carNames.map((carName) => new Car(carName));
+  }
+  /**
+   *
+   * @param {string[]} carNames
+   * @returns {void}
+   */
+  #validateDuplicateName(carNames) {
+    // 중복확인은 cars에서
+    const carSet = new Set(carNames);
+    if (carSet.size !== carNames.length) {
+      throw new Error(ERROR.NAME_DUPLICATION_ERROR);
+    }
   }
 
   /**
@@ -66,12 +81,12 @@ export class Cars {
   //  */
 
   makeWinnersDto() {
-    const winners = this.findWinners();
-    return new WinnersDto(winners);
+    const winnerDtoList = this.#findWinners();
+    return new WinnersDto(winnerDtoList); //여기서 winnersDto로 하나로 모아줌
   }
 
   // 최대 이동거리 계산 후 우승자 반환
-  getMaxDistance() {
+  #getMaxDistance() {
     //돌면서 거리들 뽑기
     const distanceList = this.#carList.map((car) => car.distance);
     //거리들끼리 비교
@@ -79,14 +94,10 @@ export class Cars {
     return maxDistance;
   }
 
-  findWinners() {
-    const winners = this.#carList.map((car) => {
-      if (car.distance === this.getMaxDistance()) {
-        return car;
-      } else {
-        throw new Error("undefined일 경우");
-      }
-    });
-    return winners;
+  #findWinners() {
+    const winnerDtoList = this.#carList
+      .filter((car) => car.distance === this.#getMaxDistance())
+      .map((car) => car.makeWinnerDto()); //car[] -> winner[]
+    return winnerDtoList;
   }
 }
