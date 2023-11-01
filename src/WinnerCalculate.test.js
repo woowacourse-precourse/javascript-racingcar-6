@@ -1,4 +1,4 @@
-import winnerCalculate from '../../src/calulate/winner';
+import winnerCalculate from './calulate/winner';
 
 describe('우승자 계산기 테스트', () => {
   let consoleOutput;

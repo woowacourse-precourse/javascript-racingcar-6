@@ -1,4 +1,4 @@
-import validateCarName from '../../src/validates/carName';
+import validateCarName from './validates/carName';
 
 describe('자동차 이름 검사기 테스트', () => {
   test('정상적인 값 입력 시 이름을 담은 배열 반환', () => {
