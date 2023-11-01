@@ -30,15 +30,14 @@ describe("CarList 메소드 테스트", () => {
   });
 
   it("1번 시도했을 때 CarList 점수를 출력", async () => {
-    const inputs = ["park,gyu", "1"];
     const random = [4, 3];
     const output = ["park : -", "gyu : "];
     const logSpy = getLogSpy();
-    mockQuestions(inputs);
     mockRandoms([...random]);
 
-    const app = new App();
-    await app.play();
+    const carList = new CarList();
+    carList.setCarList("park,gyu");
+    carList.printCarListScore(1);
 
     output.forEach((element) => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(element));
