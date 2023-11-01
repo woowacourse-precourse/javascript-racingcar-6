@@ -18,7 +18,7 @@ const invalidPlayCount = (inputPlayCount, playCount) => {
   if (inputPlayCount.length === 0) throw Error(ERROR_MESSAGE.playCount.noInput);
 
   if (Number.isNaN(playCount) || !Number.isInteger(playCount) || playCount < 0)
-    throw Error(ERROR_MESSAGE.playCount.includeStr);
+    throw Error(ERROR_MESSAGE.playCount.includeString);
 
   if (playCount === 0) throw Error(ERROR_MESSAGE.playCount.includeZero);
 };
