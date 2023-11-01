@@ -26,6 +26,12 @@ class App {
     return Math.max(...this.carsStatus.map((carStatus) => carStatus.move));
   }
 
+  calculateWinner() {
+    return this.carsStatus
+      .filter((carStatus) => carStatus.move === this.calculateMaxMove())
+      .map((carStatus) => carStatus.name);
+  }
+
   async inputCarsStatus() {
     const carsStatus = await Console.readLineAsync(GAME_MESSAGE.INPUT_CAR);
     this.carsStatus = Validate.carsValidate(carsStatus)
@@ -46,6 +52,7 @@ class App {
       this.updateCars();
       this.printCars();
     }
+    Console.print(`최종 우승자 : ${this.calculateWinner().join(', ')}`);
   }
 }
 
