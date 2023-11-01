@@ -43,9 +43,8 @@ class Output {
     if(winnerCount >= 2) {
       let result = findIndex.findArrayIndex(this.moveCountArr,this.tryCount);
       this.printSeveralWinner(result);
-    }else {
-      this.printOneWinner();
     }
+    this.printOneWinner();
   }
 }
 
