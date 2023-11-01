@@ -4,6 +4,9 @@ function carNameValidation(userInput) {
     if (carName.length > 5) {
       throw new Error("[ERROR] 5글자 이내로 입력해주세요.");
     }
+    if(carName == "") {
+      throw new Error("[ERROR] 이름을 입력해주세요.");
+    }
   });
 }
 
