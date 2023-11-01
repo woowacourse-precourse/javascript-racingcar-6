@@ -110,10 +110,10 @@
         console.log(`${this.name} says mung!`);
       }
     }
-    
+
     //myDog : Dog 클래스를 바탕으로 실제 개를 생성
-    const myDog = new Dog("Bobby"); 
-  
+    const myDog = new Dog("Bobby");
+
     //객체를 생성했으므로 bark의 기능 수행 가능
     //출력 : Bobby says mung!
     myDog.bark();
@@ -143,3 +143,22 @@
   - 그 결과로 구성된 새로운 배열을 반환한다
   - 불변성 - 원본 배열을 수정하지 않고 새로운 배열을 반환한다
   - 순회 - 배열의 모든 요소에 대해 주어진 함수를 순서대로 실행한다
+
+<br>
+
+### T-1-2. 이름 입력 처리 테스트
+
+- `matcher`
+  - 테스팅 라이브러리에서 제공하는 함수나 메서드
+  - 실제 결과와 기대값을 비교하여 테스트의 성공 여부를 결정하는데 사용된다
+- `toBe`
+  - 기본 타입의 값이 일치하는지 확인한다
+- `not`
+  - matcher의 반대 결과를 반환한다
+  - 주로 두 값이 다른지 확인하고 싶을 때 사용한다
+- `toBeTruthy`
+  - 값이 boolean에서 true로 평가되는지 확인한다
+- `toBeFalsy`
+  - 값이 boolean에서 false로 평가되는지 확인한다
+- `toContain`
+  - 배열이나 문자열이 특정 항목 또는 문자열을 포함하는지 확인한다
