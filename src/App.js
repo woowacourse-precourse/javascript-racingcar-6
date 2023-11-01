@@ -1,6 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import Car from "./Car.js";
-import { validateNames } from "./Validator.js";
+import Car from "./Car";
+
 class App {
   constructor() {
     this.cars = [];
@@ -14,7 +14,7 @@ class App {
       )
     ).split(",");
 
-    validateNames(carNames);
+    Car.validateNames(carNames);
     this.cars = carNames.map((name) => new Car(name));
 
     this.totalRounds = Number(
