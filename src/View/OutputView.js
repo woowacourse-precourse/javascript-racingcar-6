@@ -10,9 +10,13 @@ class OutputView {
     Console.print(GUIDE_MESSAGE.GAME_START);
   }
 
-  static PrintMoveStat(cars, curstat) {
+  static PrintMoveStat(cars) {
     for (let i = 0; i < cars.length; ++i) {
-      Console.print(`${cars[i]} : ${this.printStatProgress(curstat[i])}\n`);
+      Console.print(
+        `${cars[i].getName()} : ${this.printStatProgress(
+          cars[i].getMoveStat()
+        )}\n`
+      );
     }
   }
 

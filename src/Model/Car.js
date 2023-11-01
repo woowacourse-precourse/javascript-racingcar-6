@@ -1,3 +1,5 @@
+import { Random } from "@woowacourse/mission-utils";
+
 class Car {
   #movestat;
   #name;
@@ -7,8 +9,10 @@ class Car {
     this.#movestat = 0;
   }
 
-  move(number) {
-    if (number >= 4) {
+  move() {
+    const randomnum = Random.pickNumberInRange(0, 9);
+
+    if (randomnum >= 4) {
       this.#movestat++;
     }
   }

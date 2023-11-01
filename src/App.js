@@ -2,8 +2,14 @@ import { Console, Random } from "@woowacourse/mission-utils";
 import { ERROR, GUIDE_MESSAGE } from "./Constant/Constant";
 import InputView from "./View/InputView";
 import OutputView from "./View/OutputView";
+import GameController from "./controller/GameController";
 
 class App {
+  #playgame;
+
+  constructor() {
+    this.#playgame = new GameController();
+  }
   // #usercars;
   // #gametrynum;
   // #carsgoorstop;
@@ -15,7 +21,7 @@ class App {
   // }
 
   async play() {
-    await this.game();
+    await this.#playgame.startgame();
   }
 
   // setTrynum(input) {
