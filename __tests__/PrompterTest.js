@@ -7,13 +7,13 @@ const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync.mockImplementation(() => {
     const input = inputs.shift();
     return Promise.resolve(input);
-  })
-}
+  });
+};
 
 describe('Prompter 객체 검사', () => { 
   test('입력값이 문자열로 변환되는지 확인', async () => {
-    const input = [123]
-    const output = '123'
+    const input = [123];
+    const output = '123';
     mockQuestions(input);
 
     // when
@@ -21,5 +21,5 @@ describe('Prompter 객체 검사', () => {
     const result = await prompter.getUserInput();
 
     expect(result).toEqual(output);
-  })
-})
+  });
+});

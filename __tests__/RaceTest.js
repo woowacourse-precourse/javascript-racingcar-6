@@ -18,7 +18,7 @@ const getPrintResultSpy = () => {
   const printResultSpy = jest.spyOn(Race.prototype, 'printResult');
   printResultSpy.mockClear();
   return printResultSpy;
-}
+};
 
 describe('Race 객체 검사', () => {
   let race;
@@ -57,7 +57,7 @@ describe('Race 객체 검사', () => {
     race.cars = cars;
     const winner = await race.getWinner();
 
-    expect(winner).toEqual('Car3')
+    expect(winner).toEqual('Car3');
   });
 
   test("getWinner(), 동점자가 있을 시 ,로 연결해서 반환하는지 확인", async () => {
@@ -70,6 +70,6 @@ describe('Race 객체 검사', () => {
     race.cars = cars;
     const winner = await race.getWinner();
 
-    expect(winner).toEqual('Car1, Car2')
+    expect(winner).toEqual('Car1, Car2');
   });
-})
+});

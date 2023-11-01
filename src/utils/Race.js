@@ -1,4 +1,4 @@
-import Car from './Car.js'
+import Car from './Car.js';
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 export default class Race {
@@ -13,7 +13,7 @@ export default class Race {
   async compete (moveNumber) {
     MissionUtils.Console.print('실행결과');
     for (let i = 0; i < moveNumber; i++) {
-      let tempResult = await this.printResult();
+      await this.printResult();
       await MissionUtils.Console.print('\n');
     }
   }
@@ -27,10 +27,10 @@ export default class Race {
       return b.distance - a.distance;
     })
 
-    const winner = this.cars[0]
+    const winner = this.cars[0];
     const commonWinner = this.cars.filter(car => {
       return winner.distance == car.distance;
-    })
+    });
 
     if (commonWinner.length==1) {
       return winner.name;

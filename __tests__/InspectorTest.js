@@ -10,9 +10,9 @@ describe("Inspector 객체 검사", () => {
 
     inputs.forEach(async (input) => {
       const result = await inspector.isSplitable(input);
-      expect(result).toEqual(output)
-    })
-  })
+      expect(result).toEqual(output);
+    });
+  });
 
   test("isNumber, 숫자가 아닌 값을 입력하지 않도록 검사", () => {
     const inputs = ['a', '#', '가'];
@@ -22,7 +22,7 @@ describe("Inspector 객체 검사", () => {
 
     inputs.forEach(async (input) => {
       const result = await inspector.isSplitable(input);
-      expect(result).toEqual(output)
-    })
-  })
-})
+      expect(result).toEqual(output);
+    });
+  });
+});

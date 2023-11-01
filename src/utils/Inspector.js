@@ -1,7 +1,7 @@
 export default class Inspector {
-  async isSplitable(string){
+  async isSplitable (string) {
     const splited = await string.replace(/ /g, '').split(',');
-    if (splited[splited.length-1] === ''){
+    if (splited[splited.length - 1] === '') {
       splited.pop();
     }
     if (splited.length < 2) {

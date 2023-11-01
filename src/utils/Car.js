@@ -1,6 +1,5 @@
-import NumberGenerator from './NumberGenerator.js'
+import NumberGenerator from './NumberGenerator.js';
 import { MissionUtils } from "@woowacourse/mission-utils";
-
 
 export default class Car {
   constructor (name) {
@@ -18,7 +17,7 @@ export default class Car {
     let result = '';
     if (success) {
       this.distance = this.distance + 1;
-    } 
+    }
     result = `${this.name} : ${'-'.repeat(this.distance)}`;
     return result;
   }
