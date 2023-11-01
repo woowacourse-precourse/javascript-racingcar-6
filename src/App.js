@@ -1,10 +1,11 @@
 import { Console } from '@woowacourse/mission-utils';
 import Car from './Car.js';
 import GameError from './GameError.js';
+import { NUMBERS_REGEX } from './Constants.js';
 
 class App {
-  #carList = [];
-  #gameRounds;
+  carList = [];
+  gameRounds;
 
   carNamesVaildCheck(carNames) {
     carNames.forEach(carName => {
@@ -14,21 +15,27 @@ class App {
     });
   }
 
+  gameRoundVaildCheck(input) {
+    if (!NUMBERS_REGEX.test(input))
+      throw new GameError('숫자만 입력해야합니다.');
+  }
+
   async parseCarNamesInput() {
     const input = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n');
     const carNames = input.split(',');
     this.carNamesVaildCheck(carNames);
-    carNames.map((carName) => this.#carList.push(new Car(carName)));
+    carNames.map((carName) => this.carList.push(new Car(carName)));
   }
-  
+
   async parseGameRoundsInput() {
     const input = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
-    this.#gameRounds = Number(input);
+    this.gameRoundVaildCheck(input);
+    this.gameRounds = Number(input);
   }
 
   printWinnerNames() {
-    const maxMoveCount = Math.max(...(this.#carList).map(car => car.getMoveCount()));
-    const winners = this.#carList.filter((car) => car.getMoveCount() === maxMoveCount);
+    const maxMoveCount = Math.max(...(this.carList).map(car => car.getMoveCount()));
+    const winners = this.carList.filter((car) => car.getMoveCount() === maxMoveCount);
 
     const winnerNames = [];
     winners.map((winner) => winnerNames.push(winner.getName()));
@@ -38,8 +45,8 @@ class App {
 
   async gameLoop() {
     Console.print('게임 결과\n');
-    for (let i = 0; i < this.#gameRounds; i++) {
-      this.#carList.map((car) => {
+    for (let i = 0; i < this.gameRounds; i++) {
+      this.carList.map((car) => {
         car.tryMoveForward();
         car.printMoveCount();
       });
@@ -51,7 +58,7 @@ class App {
     await this.parseCarNamesInput();
     await this.parseGameRoundsInput();
     await this.gameLoop();
-    const winners = this.printWinnerNames();
+    this.printWinnerNames();
   }
 }
 
