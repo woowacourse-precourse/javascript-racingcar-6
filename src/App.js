@@ -1,5 +1,10 @@
-import { MissionUtils } from '@woowacourse/mission-utils';
-import { seperateCarNames, processTrialInput } from '../utils/inputHandling.js';
+import {
+  printingGreetingResult,
+  printingNewLine,
+  printingFinalWinners,
+  carNamesRead,
+  trialNumRead,
+} from '../utils/view.js';
 import Car from '../classes/Car.js';
 
 class App {
@@ -13,25 +18,19 @@ class App {
   }
 
   async init() {
-    this.carNamesArray = seperateCarNames(
-      await MissionUtils.Console.readLineAsync(
-        '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
-      ),
-    );
+    this.carNamesArray = await carNamesRead();
     this.carList = this.carNamesArray.map((name) => new Car(name));
-    this.#trialNum = processTrialInput(
-      await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?\n'),
-    );
+    this.#trialNum = await trialNumRead();
   }
 
   running() {
-    MissionUtils.Console.print('\n실행 결과');
+    printingGreetingResult();
     for (let i = 0; i < this.#trialNum; i++) {
       this.carList.forEach((car) => {
         car.tryToMove();
         car.print();
       });
-      MissionUtils.Console.print('');
+      printingNewLine();
     }
   }
 
@@ -45,7 +44,8 @@ class App {
       .filter((car) => car.totalMovementDashArray.length === maxMovementNum)
       .map((car) => car.name)
       .join(', ');
-    MissionUtils.Console.print(`최종 우승자 : ${winners}`);
+
+    printingFinalWinners({ winners: winners });
   }
   async play() {
     await this.init();
