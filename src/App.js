@@ -8,6 +8,7 @@ class App {
     ErrorHandler.checkCarNames(carNames);
     const carNameArray = carNames.split(',');
     const cars = carNameArray.map((carName) => new Car(carName));
+    const moveCount = await this.inputMoveCount();
 
     Console.print(cars);
   }
@@ -17,6 +18,11 @@ class App {
       '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n'
     );
     return car_names;
+  }
+
+  async inputMoveCount() {
+    const moveCount = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    return moveCount;
   }
 }
 
