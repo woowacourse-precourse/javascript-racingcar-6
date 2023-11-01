@@ -47,6 +47,20 @@ class RacingGame {
     return false;
   }
 
+  async getMoveCount() {
+    try {
+      const count = await Console.readLineAsync(
+        CONSOLE_MESSAGE.ENTER_MOVE_COUNT
+      );
+
+      if (this.isValidMoveCount(count)) {
+        this.#moveCount = Number(count);
+      }
+    } catch (e) {
+      throw e;
+    }
+  }
+
   isValidMoveCount(count) {
     if (!REGEX.POSITIVE_INTEGER.test(count)) {
       throw new Error(ERROR.printError(ERROR.INVALID_INPUT_NUMBER));
