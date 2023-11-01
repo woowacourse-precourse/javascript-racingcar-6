@@ -30,15 +30,15 @@ class Car {
       throw new Error(CAR_VALIDATION.DUPLICATE);
     }
 
-    if (Car.#nameLength(car)) {
+    if (Car.#isNameLength(car)) {
       throw new Error(CAR_VALIDATION.LENGTH);
     }
 
-    if (Car.#blank(car)) {
+    if (Car.#isBlank(car)) {
       throw new Error(CAR_VALIDATION.BLANK);
     }
 
-    if (Car.#special_symbol(car)) {
+    if (Car.#isSpecialSymbol(car)) {
       throw new Error(CAR_VALIDATION.SPECIAL_SYMBOL);
     }
   }
@@ -49,15 +49,15 @@ class Car {
     );
   }
 
-  static #nameLength(car) {
+  static #isNameLength(car) {
     return car.some((carName) => carName.length > CAR_NAME_MAX_LENGTH + 1);
   }
 
-  static #blank(car) {
+  static #isBlank(car) {
     return car.some((carName) => carName === "");
   }
 
-  static #special_symbol(car) {
+  static #isSpecialSymbol(car) {
     return car.some((carName) => reg.test(carName));
   }
 }
