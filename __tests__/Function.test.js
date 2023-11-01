@@ -87,8 +87,6 @@ describe('getCarName', () => {
     MissionUtils.Random.pickNumberInRange.mockImplementation(() => 5);
 
     test('랜덤 숫자가 4 이상일 경우 객체에 값을 1씩 증가시킨다', () => {
-      // console.log('mock', mockRandoms([5]));
-
       const result = app.moveForward(2);
 
       expect(result).toBe(3);

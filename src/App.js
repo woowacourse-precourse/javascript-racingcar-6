@@ -71,8 +71,6 @@ class App {
     const MINIMUM_FORWARD_VALUE = 4;
     const randomNumber = this.getRandomNumber();
 
-    console.log(randomNumber);
-
     if (randomNumber >= MINIMUM_FORWARD_VALUE) {
       return value + 1;
     }
