@@ -11,27 +11,21 @@ class GameController {
     this.cars = [];
   }
 
-  moveCarForwardOrStop() {
+  moveCarsAndPrintResults() {
     this.cars.forEach((car) => {
       const randomNumber = generateRandomNumber(GAME_SETTING.MIN_RANDOM_NUMBER, GAME_SETTING.MAX_RANDOM_NUMBER);
       if (randomNumber >= GAME_SETTING.MOVE_FORWARD_REQUIREMENT) {
         car.moveForward();
       }
-    });
-  }
-
-  printForwardCarName() {
-    this.cars.forEach((car) => {
       printCar(car.getName(), car.getPosition());
     });
     printMessage(GAME_SETTING.BLANK_SPACE);
-  }
+	}
 
   raceCar(tryCount) {
     printResult();
     for (let i = 0; i < tryCount; i += 1) {
-      this.moveCarForwardOrStop();
-      this.printForwardCarName();
+      this.moveCarsAndPrintResults();
     }
   }
 
