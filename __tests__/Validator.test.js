@@ -29,3 +29,20 @@ describe('자동차 이름에 대한 예외처리', () => {
     }
   );
 });
+
+describe('시도 횟수에 대한 예외처리', () => {
+  test.each([[-1], [0]])('시도 횟수는 양의 정수 여야한다.', async (inputs) => {
+    expect(() => {
+      Validator.validateTryCount(inputs);
+    }).toThrow('[ERROR]');
+  });
+
+  test.each([['one'], [['😍']]])(
+    '시도 횟수는 숫자여야한다.',
+    async (inputs) => {
+      expect(() => {
+        Validator.validateTryCount(inputs);
+      }).toThrow('[ERROR]');
+    }
+  );
+});
