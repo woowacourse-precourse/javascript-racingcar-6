@@ -165,6 +165,15 @@
 
 - 콘솔에 메세지를 출력한다.
 
+# 🔍 클래스 다이어그램
+
+![image](https://github.com/cobocho/javascript-racingcar-6/assets/99083803/010e602c-0c5d-411d-8775-aa9845a7e330)
+
+# 🚦 순서도
+
+<img width="400" alt="image" src="https://github.com/cobocho/javascript-racingcar-6/assets/99083803/c85c9a68-7b1d-4de7-b46d-d7f1169a152d">
+
+
 # ⚙️ 기능 구현 목록
 
 ## 도메인 구현
