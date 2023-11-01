@@ -9,6 +9,7 @@ class App {
     const carNameArray = carNames.split(',');
     const cars = carNameArray.map((carName) => new Car(carName));
     const moveCount = await this.inputMoveCount();
+    ErrorHandler.checkMoveCount(moveCount);
 
     Console.print(cars);
   }

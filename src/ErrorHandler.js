@@ -16,6 +16,16 @@ const ErrorHandler = {
       throw new Error('중복된 차 이름이 있습니다.');
     }
   },
+
+  checkMoveCount(moveCount) {
+    if (isNaN(moveCount)) {
+      throw new Error('숫자만 입력하여 주십시요.');
+    }
+
+    if (moveCount < 1) {
+      throw new Error('1이상의 숫자를 입력하여 주십시요.');
+    }
+  },
 };
 
 export default ErrorHandler;
