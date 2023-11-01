@@ -51,6 +51,16 @@ class App {
       }
     });
   }
+  invalidTryCount(tryCount) {
+    try {
+      if (tryCount < 1) {
+        throw new Error("[ERROR] 시도 횟수는 1이상이어야 합니다.");
+      }
+      Number(tryCount);
+    } catch (e) {
+      throw new Error("[ERROR] 시도 횟수는 숫자여야 합니다.");
+    }
+  }
 }
 
 export default App;
