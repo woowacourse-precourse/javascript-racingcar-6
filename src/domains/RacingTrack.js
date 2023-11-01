@@ -1,5 +1,5 @@
 import Car from './Car.js';
-import { paramType } from './utils/paramType.js';
+import { paramType } from '../utils/paramType.js';
 
 export default class RacingTrack {
   #carList;

@@ -1,4 +1,4 @@
-import Refree from '../../src/Refree';
+import Refree from '../../src/domains/Refree';
 import { RANDOM_NUMBER_RANGE } from '../../src/constants/numberRange';
 
 describe('class Refree 테스트', () => {

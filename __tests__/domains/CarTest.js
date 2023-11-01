@@ -1,4 +1,4 @@
-import Car from '../../src/Car.js';
+import Car from '../../src/domains/Car.js';
 
 describe('class Car test', () => {
   let car;

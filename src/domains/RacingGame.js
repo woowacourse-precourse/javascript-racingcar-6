@@ -1,10 +1,10 @@
-import { RANDOM_NUMBER_RANGE } from './constants/numberRange.js';
-import { ERROR_MESSAGE } from './constants/errorMessage.js';
-import { paramType } from './utils/paramType.js';
+import { RANDOM_NUMBER_RANGE } from '../constants/numberRange.js';
+import { ERROR_MESSAGE } from '../constants/errorMessage.js';
+import { paramType } from '../utils/paramType.js';
 import Refree from './Refree.js';
 import RacingTrack from './RacingTrack.js';
-import RandomNumberGenerator from './utils/RandomNumberGenerator.js';
-import GamePlayingError from './errors/GamePlayingError.js';
+import RandomNumberGenerator from '../utils/RandomNumberGenerator.js';
+import GamePlayingError from '../errors/GamePlayingError.js';
 
 export default class RacingGame {
   #racingTrack;

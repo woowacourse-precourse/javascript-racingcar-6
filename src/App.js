@@ -1,10 +1,10 @@
-import RacingGame from './RacingGame.js';
 import InputReader from './View/InputReader.js';
 import OutputView from './View/OutputView.js';
 import { paramType } from './utils/paramType.js';
 import { validate } from './utils/validate.js';
-import Refree from './Refree.js';
-import RacingTrack from './RacingTrack.js';
+import RacingGame from './domains/RacingGame.js';
+import Refree from './domains/Refree.js';
+import RacingTrack from './domains/RacingTrack.js';
 import RandomNumberGenerator from './utils/RandomNumberGenerator.js';
 
 export default class App {

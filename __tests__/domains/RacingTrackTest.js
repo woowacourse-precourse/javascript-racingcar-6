@@ -1,4 +1,4 @@
-import RacingTrack from '../../src/RacingTrack';
+import RacingTrack from '../../src/domains/RacingTrack.js';
 
 describe('class RacingTrack test', () => {
   let racingTrack;

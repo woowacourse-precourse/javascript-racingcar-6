@@ -1,6 +1,6 @@
-import RacingGame from '../../src/RacingGame.js';
-import RacingTrack from '../../src/RacingTrack.js';
-import Refree from '../../src/Refree.js';
+import RacingGame from '../../src/domains/RacingGame.js';
+import RacingTrack from '../../src/domains/RacingTrack.js';
+import Refree from '../../src/domains/Refree.js';
 import RandomNumberGenerator from '../../src/utils/RandomNumberGenerator.js';
 
 describe('class RacingGame Test', () => {

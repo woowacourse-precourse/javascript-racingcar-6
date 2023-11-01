@@ -1,8 +1,8 @@
-import { ERROR_MESSAGE } from './constants/errorMessage.js';
-import { RANDOM_NUMBER_RANGE } from './constants/numberRange.js';
-import { MOVE_FOWARD, RACING_RULE } from './constants/racingRule.js';
-import GamePlayingError from './errors/GamePlayingError.js';
-import { paramType } from './utils/paramType.js';
+import { ERROR_MESSAGE } from '../constants/errorMessage.js';
+import { RANDOM_NUMBER_RANGE } from '../constants/numberRange.js';
+import { MOVE_FOWARD, RACING_RULE } from '../constants/racingRule.js';
+import GamePlayingError from '../errors/GamePlayingError.js';
+import { paramType } from '../utils/paramType.js';
 
 export default class Refree {
   #tryRound;
