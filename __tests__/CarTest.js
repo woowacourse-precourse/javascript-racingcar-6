@@ -22,12 +22,11 @@ describe('자동차 전진 테스트', () => {
 
     mockRandoms([2, 5]);
 
-    car.printForwardResult(allForwardResult, 0, cars);
+    cars.forEach((name, index) => {
+      car.printForwardResult(allForwardResult, index, cars);
+    });
 
     expect(logSpy).toHaveBeenCalledWith('car1 : ');
-
-    car.printForwardResult(allForwardResult, 1, cars);
-
     expect(logSpy).toHaveBeenCalledWith('car2 : -');
   });
 });
