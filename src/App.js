@@ -20,7 +20,7 @@ class App {
     const RACED_CAR = carRace(CAR, COUNT);
     const WINNERS = findWinner(RACED_CAR);
 
-    Console.print(WINNERS);
+    Console.print(`최종 우승자 : ${WINNERS}`);
 
   }
 }
