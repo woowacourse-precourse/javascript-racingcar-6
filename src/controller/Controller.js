@@ -1,5 +1,5 @@
 import InputView from '../view/inputView';
-import checkValidation from '../utils/validation';
+import { validateCarNames, validateAttemptNumber } from '../utils/validation';
 import Car from '../model/car';
 import makeRandomNumber from '../utils/makeRandomNumber';
 import OutputView from '../view/OutputView';
@@ -14,10 +14,10 @@ class Controller {
   }
 
   async getCarName() {
-    const playerInput = await InputView.readCarName();
-    checkValidation.nameInput(playerInput);
+    const carName = await InputView.readCarName();
+    validateCarNames(carName);
 
-    playerInput.forEach((name) => {
+    carName.forEach((name) => {
       this.#cars.push(new Car(name));
     });
 
@@ -25,9 +25,9 @@ class Controller {
   }
 
   async getAttemptNumber() {
-    const playerInput = await InputView.readAttemptNumber();
-    checkValidation.attemptInput(playerInput);
-    this.#attempt = playerInput;
+    const attemptNumber = await InputView.readAttemptNumber();
+    validateAttemptNumber(attemptNumber);
+    this.#attempt = attemptNumber;
 
     this.startRace();
   }
