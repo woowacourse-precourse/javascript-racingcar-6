@@ -18,7 +18,9 @@ async function getInput() {
     );
 
     const carNameList = carNames.split(",");
-    const isUnderFiveCharacter = carNameList.every((name) => name.trim().length <= 5);
+    const isUnderFiveCharacter = carNameList.every(
+      (name) => name.trim().length <= 5
+    );
     if (/[^a-zA-Z0-9,]/.test(carNames) || !isUnderFiveCharacter) {
       throw new Error("[ERROR] 입력 형식이 잘못되었습니다.");
     }
@@ -37,23 +39,35 @@ async function getInput() {
 
 function playGame(chance, carNameList) {
   let runningCars = new Array(carNameList.length).fill(0);
-  updateCars(runningCars);
-  printCars(runningCars, carNameList);
+  for (let i = 0; i < chance; i++) {
+    updateCars(runningCars);
+    printCars(runningCars, carNameList);
+  }
 }
 
 function updateCars(runningCars) {
   for (let i = 0; i < runningCars.length; i++) {
     let number = Random.pickNumberInRange(1, 9);
-    Console.print(number);
-    if(number >= 4) {
-      runningCars[i] += 1;   
+    if (number >= 4) {
+      runningCars[i] += 1;
     }
   }
 }
 
+// ### ⚡️ 자동차 배열 출력하기 `printCars`
+
+// 1. 현재 경주 중인 자동차들을 출력한다.
+// 2. 배열을 탐색하면서 해당 요소의 숫자만큼 '를 반복하여 출력한다.
+
 function printCars(runningCars, carNameList) {
-
+  for (let i = 0; i < runningCars.length; i++) {
+    let running = "";
+    for (let j = 0; j < runningCars[i]; j++) {
+      running += "-";
+    }
+    Console.print(`${carNameList[i]} : ${running}`);
+  }
+  Console.print(" ");
 }
-
 
 export default App;
