@@ -140,5 +140,23 @@ describe("App class", () => {
       mockInput("삼");
       await expect(app.getRoundNumber()).rejects.toThrow("[ERROR] 횟수는 자연수 형식이어야 합니다");
     });
-  });  
+  });
+  
+  describe("makeCar method", () => {
+    let app;
+    beforeEach(() => {
+      app = new App();
+    });
+
+    test("자동차 생성하기", () => {
+      const carName = ["pobi", "woni", "jun"];
+      app.MakeCar(carName);
+
+      expect(app.car).toEqual([
+        { name: "pobi" },
+        { name: "woni" },
+        { name: "jun" }
+      ]);
+    });
+  });
 });
