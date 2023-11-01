@@ -21,7 +21,7 @@ export function validateName(name) {
 }
 
 export function validateNoneZeroLengthInput(str) {
-  if (str.length < CONSTANTS.MIN_INPUT_LENGTH)
+  if (str.trim().length < CONSTANTS.MIN_INPUT_LENGTH)
     throw new Error(
       `[ERROR] 입력값은 ${CONSTANTS.MIN_INPUT_LENGTH}자 이상이어야 합니다.`
     );
