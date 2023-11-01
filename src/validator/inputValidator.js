@@ -36,7 +36,7 @@ class InputValidator {
   }
 
   static throwError(errorMessage) {
-    throw new Error(ERROR_MESSAGE.prefix + errorMessage);
+    throw new Error(`${ERROR_MESSAGE.prefix} ${errorMessage}`);
   }
 
   static validateCarNames(query) {
