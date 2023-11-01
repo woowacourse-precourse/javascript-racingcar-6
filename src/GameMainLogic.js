@@ -33,7 +33,7 @@ class GameMainLogic{
 
     static printWinner(winners){
         const winnerNames = winners.map(winner => winner.carName).join(',');
-        Console.print(`${GAME_MESSAGE.WINNER_MESSAGE} ${winnerNames}`);
+        Console.print(`${GAME_MESSAGE.WINNER_MESSAGE}${winnerNames}`);
     }
 }
 
