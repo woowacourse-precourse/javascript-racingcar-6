@@ -48,9 +48,7 @@ class App {
       MissionUtils.Console.print("\n");
       carList.forEach(car => {
         const move = MissionUtils.Random.pickNumberInRange(0, 9);
-        if (move >= 4) {
-          car.state += '-';
-        }
+        car.state += move >= 4 ? '-' : '';
         MissionUtils.Console.print(`${car.name} : ${car.state}\n`);
       });
     }
