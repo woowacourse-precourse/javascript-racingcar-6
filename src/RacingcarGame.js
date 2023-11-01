@@ -48,6 +48,7 @@ class RacingcarGame {
         `${carName} : ${Messages.RACE_MARK.repeat(this.participant[carName])}`
       );
     }
+
     Console.print(`\n`);
   }
 
@@ -59,6 +60,7 @@ class RacingcarGame {
   getWinner() {
     let max = 0;
     let winner = [];
+
     for (let carName in this.participant) {
       if (this.participant[carName] > max) {
         max = this.participant[carName];
@@ -67,6 +69,7 @@ class RacingcarGame {
         winner.push(carName);
       }
     }
+
     return winner;
   }
 }

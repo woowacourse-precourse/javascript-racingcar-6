@@ -9,9 +9,11 @@ class UserInput {
       const [isVaild, message, result] = this.isVaildCarName(
         carNames.split(",")
       );
+
       if (!isVaild) {
         throw new Error(message);
       }
+
       return result;
     } catch (error) {
       throw error;
@@ -22,9 +24,11 @@ class UserInput {
     try {
       const tryNumber = await Console.readLineAsync(Messages.GET_TRY_NUMBER);
       const [isVaild, message, result] = this.isVaildTryNumber(tryNumber);
+
       if (!isVaild) {
         throw new Error(message);
       }
+
       return result;
     } catch (error) {
       throw error;
@@ -38,7 +42,9 @@ class UserInput {
     if (names.length > Maximum.CAR_NAME_NUMBER) {
       return [false, Messages.ERROR.EXEED_CAR_NAME_NUMBER, null];
     }
-    let carNames = {};
+
+    const carNames = {};
+
     for (let name of names) {
       if (carNames[name] === 0) {
         return [false, Messages.ERROR.DUPLICATION_CAR_NAME, null];
