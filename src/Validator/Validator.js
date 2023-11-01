@@ -4,11 +4,11 @@ import CustomError from '../CustomError/CustomError.js';
 export default class Validator {
   static checkValidCarsName(carNames) {
     carNames.forEach((car) => {
-      this.checkStringLength(car);
-      this.checkEmpty(car);
+      Validator.checkStringLength(car);
+      Validator.checkEmpty(car);
     });
 
-    this.checkDuplicate(carNames);
+    Validator.checkDuplicate(carNames);
   }
 
   static checkEmpty(value) {
