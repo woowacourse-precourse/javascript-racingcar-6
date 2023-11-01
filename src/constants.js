@@ -10,4 +10,7 @@ export const ERROR_MESSAGES = {
   tooLongTextName: '[ERROR] 입력된 이름이 5자 이상입니다.',
   sameName: '[ERROR] 동일한 이름이 입력되었습니다.',
   notNumber: '[ERROR} 입력이 숫자가 아닙니다.',
+  twoOrMore: '쉼표로 구분되어 자동차명을 두대이상 작성해주세요.',
+  oneOrMore: '횟수는 1이상 이여야합니다.',
+  positiveInteger: '양의 정수여야합니다.',
 };
