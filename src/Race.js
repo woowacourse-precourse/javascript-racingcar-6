@@ -1,5 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
-import Car from "./Car";
+import Car from "./Car.js";
 class Race { 
     constructor(cars,number){
         cars.forEach(car => {
