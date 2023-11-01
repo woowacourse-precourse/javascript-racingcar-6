@@ -4,7 +4,7 @@ class App {
   constructor() {
     this.raceCount = "";
     this.carNames = [];
-    this.raceResults = "";
+    this.raceResults = [];
   }
 
   async play() {
@@ -24,8 +24,8 @@ class App {
     Console.print(raceCount);
 
     for (let i = 0; i < raceCount; i++) {
-      this.forwardOrStop();
-      this.raceRoundMessage();
+      await this.forwardOrStop();
+      await this.raceRoundMessage();
     }
   }
 
@@ -35,7 +35,7 @@ class App {
     });
   }
 
-  forwardOrStop() {
+  async forwardOrStop() {
     // 랜덤 값에 따라 전진 또는 정지
     this.carNames.map((carName, index) => {
       const random = Random.pickNumberInRange(0, 9);
@@ -46,7 +46,7 @@ class App {
     });
   }
 
-  raceRoundMessage() {
+  async raceRoundMessage() {
     this.carNames.forEach((carName, index) => {
       const forwardCount = this.raceResults[index];
       Console.print(`${carName} : ${"-".repeat(forwardCount)}\n`);
@@ -54,7 +54,17 @@ class App {
   }
 
   whoIsWinner() {
-    // 최종 우승자 : pobi, jun
+    // raceResults 의 최대값을 비교해서 우승자를 출력
+    const forwardCount = this.raceResults;
+    const maxForwardCount = Math.max(...forwardCount);
+    const winners = this.carNames.filter((carName, index) => {
+      return forwardCount[index] === maxForwardCount;
+    });
+    if (winners.length === 1) {
+      Console.print(`최종 우승자 : ${winners[0]}`);
+    } else {
+      Console.print(`최종 우승자 : ${winners.join(", ")}`);
+    }
   }
 }
 
