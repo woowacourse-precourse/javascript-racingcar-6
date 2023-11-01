@@ -1,4 +1,6 @@
-import { verifyRandomNumber, verifyAttempt, verifyParticipants } from "../src/verify";
+import { verifyRandomNumber } from "../src/Verify/verifyRandomNumber";
+import { verifyAttempt } from "../src/Verify/verifyAttempt";
+import { verifyParticipants } from "../src/Verify/verifyParticipants";
 
 // verifyAttempt
 describe("verifyRandomNumber 입력 값 검증", () => {

@@ -1,6 +1,6 @@
 import { MESSAGE } from '../Constant/MESSAGE';
 import { readLineAsync } from '../Utils/readLineAsync';
-import { verifyParticipants } from '../verify';
+import { verifyParticipants } from '../Verify/verifyParticipants';
 
 export const getParticipant = async () => {
   const participants = await readLineAsync(MESSAGE.START);

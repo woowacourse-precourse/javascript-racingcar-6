@@ -2,7 +2,7 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 import { NUMBER } from "../Constant/NUMBER";
 import { MESSAGE } from "../Constant/MESSAGE";
 import { print } from "../Utils/print";
-import { verifyRandomNumber } from "../verify";
+import { verifyRandomNumber } from "../Verify/verifyRandomNumber";
 
 const { Random } = MissionUtils;
 const participantsDistance = {};
