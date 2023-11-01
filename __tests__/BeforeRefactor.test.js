@@ -290,5 +290,28 @@ describe("App class", () => {
       app.printResultHeader();
       expect(Console.print).toHaveBeenCalledWith("실행 결과");
     });
+  });
+
+  describe("printRoundResult method", () => {
+    let app;
+    beforeEach(() => {
+    app = new App();
+    });
+    
+    test("차수별 실행 결과 출력", () => {
+      const carName = ["pobi", "woni", "jun"];
+      app.makeCar(carName);
+      jest.spyOn(Console, 'print').mockImplementation(() => {});
+    
+      app.car[0].distance = 3; // pobi
+      app.car[1].distance = 2; // woni
+      app.car[2].distance = 1; // jun
+    
+      app.printRoundResult();
+    
+      expect(Console.print).toHaveBeenCalledWith("pobi : ---");
+      expect(Console.print).toHaveBeenCalledWith("woni : --");
+      expect(Console.print).toHaveBeenCalledWith("jun : -");
+    });
   });  
 });
