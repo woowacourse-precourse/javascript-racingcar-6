@@ -23,7 +23,7 @@ class App {
     }
     
     const winners = pickWinner(racingCars);
-    printMessage(`최종 우승자 : ${winners}`)
+    printMessage(message.showWinner + winners)
   }
 }
 async function getUserInput(message) {
