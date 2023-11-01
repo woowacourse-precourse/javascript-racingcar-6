@@ -1,7 +1,8 @@
 import { Random } from '@woowacourse/mission-utils';
+import { GO_DISTANCE, MOVE_CAR_STANDARD, STOP_DISTANCE } from '../Constants.js';
 
 export const checkIsCarMove = (number) => {
-  const condition = number >= 4;
+  const condition = number >= MOVE_CAR_STANDARD;
   return condition;
 };
 
@@ -19,9 +20,9 @@ const generateRandomNumber = () => Random.pickNumberInRange(0, 9);
 const calcDistance = (randomNumber) => {
   const isCarMove = checkIsCarMove(randomNumber);
   if (isCarMove) {
-    return 1;
+    return GO_DISTANCE;
   }
-  return 0;
+  return STOP_DISTANCE;
 };
 
 const moveCarRandomly = (carDataList) => {

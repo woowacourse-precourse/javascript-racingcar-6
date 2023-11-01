@@ -5,6 +5,7 @@ import getValidTotalRoundNumber from './feature/GetValidTotalRoundNumber.js';
 import moveCarRandomly from './feature/MoveCarRandomly.js';
 import announceWinner from './feature/AnnounceWinner.js';
 import announceRoundResult from './feature/AnnounceRoundResult.js';
+import { GAME_RESULT } from './Constants.js';
 
 class App {
   constructor() {
@@ -19,7 +20,7 @@ class App {
 
     const totalRoundNumber = await getValidTotalRoundNumber();
 
-    Console.print('\n실행 결과');
+    Console.print(GAME_RESULT);
     for (let round = 0; round < totalRoundNumber; round += 1) {
       const roundResult = moveCarRandomly(this.carDataList);
       announceRoundResult(roundResult);

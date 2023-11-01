@@ -1,4 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
+import { FINAL_WINNER, WINNER_JOINING_MARK } from '../Constants.js';
 
 export const chooseWinnerInArray = (carDataList) => {
   let winnerArray = [];
@@ -20,7 +21,7 @@ export const chooseWinnerInArray = (carDataList) => {
 const announceWinner = (carDataList) => {
   const winnerArray = chooseWinnerInArray(carDataList);
 
-  const winnerStr = winnerArray.join(', ');
-  Console.print(`최종 우승자 : ${winnerStr}`);
+  const winnerStr = winnerArray.join(WINNER_JOINING_MARK);
+  Console.print(`${FINAL_WINNER} : ${winnerStr}`);
 };
 export default announceWinner;

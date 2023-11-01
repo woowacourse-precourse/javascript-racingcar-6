@@ -1,24 +1,28 @@
 import { Console } from '@woowacourse/mission-utils';
+import {
+  CAR_NAME_SPLIT_MARK,
+  ENTER_CAR_NAME_LIST,
+  ERROR_WRONG_CAR_NAMES,
+  MAX_CAR_NAME_LENGTH,
+} from '../Constants.js';
 
-export const checkLengthLessThanFive = (str) => {
-  const condition = str?.length <= 5;
+export const checkLengthLessThanGo = (str) => {
+  const condition = str?.length <= MAX_CAR_NAME_LENGTH;
   return !!condition;
 };
 
 export const checkCarNameStrValidity = (carNameList) => {
-  const conditionList = carNameList.map(checkLengthLessThanFive);
+  const conditionList = carNameList.map(checkLengthLessThanGo);
   const isFalseInCondition = conditionList.some((x) => !x);
   return !isFalseInCondition;
 };
 
 const getValidCarNameStr = async () => {
-  const carNameStr = await Console.readLineAsync(
-    '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n'
-  );
-  const carNameList = carNameStr.split(',');
+  const carNameStr = await Console.readLineAsync(ENTER_CAR_NAME_LIST);
+  const carNameList = carNameStr.split(CAR_NAME_SPLIT_MARK);
   const iscarNameStrValid = checkCarNameStrValidity(carNameList);
   if (!iscarNameStrValid) {
-    throw new Error('[ERROR]');
+    throw new Error(ERROR_WRONG_CAR_NAMES);
   }
 
   return carNameStr;

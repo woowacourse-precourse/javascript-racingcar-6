@@ -1,4 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
+import { ERROR_WRONG_NUMBER_FORM, ROUNDS_TO_PLAY } from '../Constants.js';
 
 export const checkNumberValidity = (str) => {
   const condition = /^[0-9]+$/.test(str);
@@ -6,13 +7,11 @@ export const checkNumberValidity = (str) => {
 };
 
 const getValidTotalRoundNumber = async () => {
-  const totalRoundNumber = await Console.readLineAsync(
-    '시도할 횟수는 몇 회인가요?\n'
-  );
+  const totalRoundNumber = await Console.readLineAsync(ROUNDS_TO_PLAY);
 
   const isNumberValid = checkNumberValidity(totalRoundNumber);
   if (!isNumberValid) {
-    throw new Error('[ERROR]');
+    throw new Error(ERROR_WRONG_NUMBER_FORM);
   }
 
   return parseInt(totalRoundNumber, 10);

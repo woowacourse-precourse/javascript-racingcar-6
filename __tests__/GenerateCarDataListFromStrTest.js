@@ -1,7 +1,8 @@
-import generateCarDataListFromStr from '../src/feature/GenerateCarDataListFromStr';
+import generateCarDataListFromStr from '../src/feature/GenerateCarDataListFromStr.js';
 
 describe('GenerateCarDataListFromStr', () => {
   test('Data Check', () => {
+    // test given CAR_NAME_SPLIT_MARK : ","
     const carNameStrList = ['a,b,b', 'a,,b', '032,12,---'];
     const correctDataList = [
       [

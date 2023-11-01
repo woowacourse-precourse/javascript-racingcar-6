@@ -5,6 +5,8 @@ import {
 
 describe('MoveCarRandomly', () => {
   test('determine to go', () => {
+    // test given MOVE_CAR_STANDARD : 4
+
     const randomNumberList = [3, 4, 0];
     const correctBooleanList = [false, true, false];
 
@@ -14,6 +16,7 @@ describe('MoveCarRandomly', () => {
   });
 
   test('move car correctly', () => {
+    // test given GO_DISTANCE : 1, STOP_DISTANCE : 0
     const carDataList = [
       { name: 'a', distance: 1 },
       { name: 'b', distance: 0 },

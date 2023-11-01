@@ -1,6 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
+import { DISTANCE_MARK } from '../Constants.js';
 
-const generateDashStrByDistance = (distance) => '-'.repeat(distance);
+const generateDashStrByDistance = (distance) => DISTANCE_MARK.repeat(distance);
 
 export const generateNameDistanceRow = (name, distance) => {
   const dashes = generateDashStrByDistance(distance);
