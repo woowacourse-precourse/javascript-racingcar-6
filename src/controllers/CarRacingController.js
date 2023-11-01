@@ -21,14 +21,25 @@ class CarRacingController {
   }
 
   validateNames(names) {
+    if (names.some(name => name === '')) {
+      printErrorMessage('[ERROR] 자동차 이름을 비워둘 수 없습니다.');
+      return;
+    }
+
     if (names.some(name => name.length > 5)) {
       printErrorMessage('[ERROR] 5글자 이하의 자동차 이름을 입력해주세요.');
+      return;
+    }
+
+    const uniqueNames = [...new Set(names)];
+    if (uniqueNames.length !== names.length) {
+      printErrorMessage('[ERROR] 중복된 자동차 이름을 입력할 수 없습니다.');
     }
   }
 
   validateCount(count) {
     if (Number.isNaN(Number(count)) || Number(count) <= 0) {
-      printErrorMessage('[ERROR] 0 이상의 숫자를 입력해주세요.');
+      printErrorMessage('[ERROR] 1 이상의 숫자를 입력해주세요.');
     }
   }
 
