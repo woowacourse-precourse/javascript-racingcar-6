@@ -239,9 +239,11 @@ describe('자동차 경주 게임', () => {
   describe('출력', function () {
     const FORWARD = 4;
     const STOP = 3;
+
     function makeOutput(carName, move) {
       return `${carName} : ${'-'.repeat(move)}`;
     }
+
     test.each([
       {
         carName: 'pobi',
