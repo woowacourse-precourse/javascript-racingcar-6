@@ -2,9 +2,9 @@ import { winner } from "../src/Winner.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 const getLogSpy = () => {
-    const logSpy = jest.spyOn(MissionUtils.Console, "print");
-    logSpy.mockClear();
-    return logSpy;
+  const logSpy = jest.spyOn(MissionUtils.Console, "print");
+  logSpy.mockClear();
+  return logSpy;
 };
 
 describe("우승자 테스트", () => {
