@@ -17,7 +17,7 @@ class CarRacingGame {
 
     Console.print('\n실행 결과');
 
-    for (let i = 0; i < tryCount; i += 1) {
+    for (let tryNumber = 0; tryNumber < tryCount; tryNumber += 1) {
       this.runRaceRound();
     }
 
