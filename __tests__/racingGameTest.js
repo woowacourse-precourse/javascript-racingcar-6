@@ -1,5 +1,5 @@
 jest.mock("../src/car", () => ({
-  generateCar: jest.fn().mockResolvedValue(["car1", "car2"]),
+  inputCars: jest.fn().mockResolvedValue(["car1", "car2"]),
 }));
 
 const mockReadLineAsync = jest.fn();
@@ -10,7 +10,7 @@ jest.mock("@woowacourse/mission-utils", () => ({
 }));
 
 const { constructCar } = require("../src/racingGame");
-const { generateCar } = require("../src/car");
+const { inputCars } = require("../src/car");
 
 describe("자동차 경주 게임", () => {
   test("자동차 생성시 이름, 거리 반환", async () => {
@@ -24,9 +24,9 @@ describe("자동차 경주 게임", () => {
   test("split 메서드로 주어진 값을 구분", async () => {
     const input = "pobi,woni";
     mockReadLineAsync.mockResolvedValue(input);
-    generateCar.mockResolvedValueOnce(["pobi", "woni"]);
+    inputCars.mockResolvedValueOnce(["pobi", "woni"]);
 
-    const result = await generateCar();
+    const result = await inputCars();
 
     expect(result).toContain("pobi", "woni");
     expect(result).toContainEqual("woni", "pobi");
@@ -35,9 +35,9 @@ describe("자동차 경주 게임", () => {
   test("split 메서드로 구분자가 포함되지 않은 경우 값을 그대로 반환", async () => {
     const input = "1";
     mockReadLineAsync.mockResolvedValue(input);
-    generateCar.mockResolvedValueOnce(["1"]);
+    inputCars.mockResolvedValueOnce(["1"]);
 
-    const result = await generateCar();
+    const result = await inputCars();
 
     expect(result).toContainEqual("1");
   });

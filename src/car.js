@@ -1,6 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
-export async function generateCar() {
+export async function inputCars() {
   const userInputCars = await MissionUtils.Console.readLineAsync("");
   const carsList = userInputCars.split(",");
 
