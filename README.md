@@ -172,3 +172,41 @@ MissionUtils.Random.pickNumberInRange(0, 9);
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
   - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+## 유사 의사코드
+
+1. 경주할 자동차 이름과 시도할 횟수를 입력받아 저장
+
+- 사용자로부터 자동차 이름을 입력받기 (쉼표로 구분하여 배열로 만들기)
+- 시도 횟수를 입력받아 저장함
+
+2. 각 자동차마다 0-9 숫자를 돌리고, true일 경우 해당 자동차의 count를 1씩 증가
+
+- 각 자동차에 대해 0에서 9 사이의 난수를 생성하고, 난수 값이 4이상의 조건을 만족할 경우 자동차가 전진한 것으로 간주하여 count를 증가시킴
+
+3. 자동차 이름과 각 자동차가 얼마나 전진했는지를 출력
+
+- 각 자동차의 이름 : 해당 자동차가 전진한 거리 \* '-'를 출력
+- 모든 자동차를 출력했다면 끝날때마다 줄 바꿈 문자('\n')를 사용
+
+4. 시도할 횟수만큼 반복문을 실행 (2 + 3 반복)
+
+- 시도할 횟수만큼 반복문을 사용하여 자동차들이 경주를 진행하도록 함
+- 각 시도에서 난수를 생성하고 전진 여부를 결정한 후, 그 결과를 출력함 (3번 반복)
+
+5. 경주가 종료된 후, 가장 count가 높은 자동차를 찾아서 최종 우승자를 출력
+
+- 경주가 끝난 후, 각 자동차의 이동 거리를 비교하여 가장 count가 높은 자동차의 이름들을 찾고, "최종 우승자: "와 함께 출력함 (공동우승자 존재함)
+
+## TODO
+
+1. @woowacourse/mission-utils API 사용
+   <!-- MissionUtils.Random.pickNumberInRange -->
+   <!-- MissionUtils.Console.readLineAsync -->
+   <!-- MissionUtils.Console.print -->
+
+2. indent depth < 3
+
+3. function length < 15
+
+4. make own TEST Code with jest
