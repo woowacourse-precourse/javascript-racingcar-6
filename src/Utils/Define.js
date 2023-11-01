@@ -3,6 +3,9 @@ export const CARNAME_REQUEST_MESSAGE =
 export const COUNT_REQUEST_MESSAGE = '시도할 횟수는 몇 회인가요?';
 export const NAME_MAX = 5;
 export const NAME_MIN = 1;
+export const NUMBER_MIN = 1;
+export const NUMBER_MAX = 9;
+export const MOVE_FORWARD = 4;
 
 export const IS_EMPTY_ERROR =
   '[ERROR] 입력이 잘못되었습니다. 입력값이 공백입니다.';
