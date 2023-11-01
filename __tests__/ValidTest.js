@@ -13,7 +13,7 @@ const mockQuestions = (inputs) => {
 
 describe('사용자의 입력값에 대한 유효성 테스트', () => {
   //자동차 이름 유효성 검사
-  test('올바른 자동차 이름을 넣은 경우', async () => {
+  test('유효한 자동차 이름을 입력하면 유효성 검사를 통과한다', async () => {
     const carInput = 'pobi,crong,woong';
     const result = carInput.split(',');
 
@@ -33,7 +33,7 @@ describe('사용자의 입력값에 대한 유효성 테스트', () => {
     ['pobi,,eastjun'],
     ['pobi, ,eastjun'],
     ['pobi,pobi'],
-  ])('유효하지 않은 자동차 이름에 대한 예외처리', async (inputs) => {
+  ])('유효하지 않은 자동차 이름을 입력하지 않으면 유효성 그에 해당하는 에러메시지를 출력한다.', async (inputs) => {
     // given
     mockQuestions([inputs]);
 
@@ -43,7 +43,7 @@ describe('사용자의 입력값에 대한 유효성 테스트', () => {
   });
 
   //시도횟수 유효성 검사
-  test('올바른 시도 횟수를 넣은 경우', async () => {
+  test('유효한 시도 횟수를 입력하면 테스트를 통과한다.', async () => {
     const tryInput = 2;
     const result = 2;
 
@@ -54,7 +54,7 @@ describe('사용자의 입력값에 대한 유효성 테스트', () => {
     expect(validatedCount).toEqual(result);
   });
   test.each(['', 'a'])(
-    '유효하지 않은 시도 횟수를 넣은 경우',
+    '유효하지 않은 시도 횟수를 입력하면 그에 해당하는 에러메시지를 출력한다.',
     async (inputs) => {
       // given
       mockQuestions([inputs]);

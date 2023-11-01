@@ -8,7 +8,7 @@ const getLogSpy = () => {
 };
 
 describe('게임 우승자 선정', () => {
-  test('게임 진행이후 주어진 객체에서 value 값이 가장 길이가 긴, 가장 많이 전진한 자동차를 우승자로 선정, 출력', () => {
+  test('게임 진행이후 주어진 객체에서 value 값이 가장 길이가 긴, 가장 많이 전진한 자동차를 우승자로 선정, 출력한다.', () => {
     const input = {
       car1: '---',
       car2: '-',
@@ -21,7 +21,7 @@ describe('게임 우승자 선정', () => {
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(result));
   });
 
-  test('공동우승 시 최종 우승자 출력', () => {
+  test('공동우승 시 최종 우승자 두명이상 출력한다.', () => {
     const input = {
         car1: '---',
         car2: '-',
