@@ -3,13 +3,17 @@ import { MissionUtils } from '@woowacourse/mission-utils';
 
 export default class Game {
 
+    #winStandard
+    #goStandard
+    #gameResults
+
     constructor() {
-        this.GO_STANDARD = 4;
-        this.gameResults = [];
+        this.#gameResults = [];
+        this.#goStandard = 4;
     }
 
     async run({ carNames, count }) {
-        const winStandard = this.countWinStandard(count);
+        this.#winStandard = this.countWinStandard(count);
         
         for (let i = 0; i < count; i++) {
             const randomNumbers = await this.createRandomNumsersForCar(carNames.length);
@@ -17,7 +21,7 @@ export default class Game {
             this.printGameResult(carNames);
         }
 
-        this.printGameWinner(winStandard, carNames);
+        this.printGameWinner(carNames);
     }
 
     countWinStandard(count) {
@@ -47,8 +51,8 @@ export default class Game {
     }
 
     calculateGameResult(randomNumber, index) {
-        if (randomNumber > this.GO_STANDARD) {
-            this.gameResults[index] = `${this.gameResults[index] ? this.gameResults[index] : ''}-`;
+        if (randomNumber > this.#goStandard) {
+            this.#gameResults[index] = `${this.#gameResults[index] ? this.#gameResults[index] : ''}-`;
         }
     }
 
@@ -56,28 +60,28 @@ export default class Game {
         MissionUtils.Console.print(GAME_MESSAGE.gameResult);
 
         for (let i = 0; i < carNames.length; i++) {
-            MissionUtils.Console.print(`${carNames[i]} : ${this.gameResults[i] ? this.gameResults[i] : ''}`);
+            MissionUtils.Console.print(`${carNames[i]} : ${this.#gameResults[i] ? this.#gameResults[i] : ''}`);
         }
         MissionUtils.Console.print('');
     }
 
-    printGameWinner(winStandard, carNames) {
+    printGameWinner(carNames) {
         MissionUtils.Console.print(GAME_MESSAGE.gameResult);
-        MissionUtils.Console.print(`최종 우승자 : ${this.getGameWinner(winStandard, carNames.length)}`);
+        MissionUtils.Console.print(`최종 우승자 : ${this.getGameWinner(carNames)}`);
     }
 
-    getGameWinner(winStandard, count) {
+    getGameWinner(carNames) {
         const winner = [];
 
-        for (let i = 0; i < count; i++) {
-            this.getWinnerList(winner, winStandard, i);
+        for (let i = 0; i < carNames.length; i++) {
+            this.getWinnerList(winner, i, carNames);
         }
 
         return winner;
     }
 
-    getWinnerList(winner, winStandard, index) {
-        if (this.gameResults[index] === winStandard) {
+    getWinnerList(winner, index, carNames) {
+        if (this.#gameResults[index] === this.#winStandard) {
             winner.push(carNames[index]);
         }
     }
