@@ -45,6 +45,12 @@ class App {
       cars_win_count_line[i] = win_line;
       this.printWinLine(arr, cars_win_count_line[i]);
     }
+    const winners = await this.printWinner(cars_win_count_num, arr);
+    if (winners.length === 1) {
+      MissionUtils.Console.print(`최종 우승자 : ${winners[0]}`);
+    } else {
+      MissionUtils.Console.print(`최종 우승자 : ${winners.join(", ")}`);
+    }
   }
 
   // 함수: 결과값 출력
@@ -52,6 +58,17 @@ class App {
     for (let i = 0; i < arr.length; i++) {
       MissionUtils.Console.print(`${arr[i]} : ${win_line}`);
     }
+  }
+
+  async printWinner(arr_count, arr_name) {
+    const maxNumber = Math.max(...arr_count);
+    const maxIndexes = [];
+    arr_count.forEach((number, index) => {
+      if (number === maxNumber) {
+        maxIndexes.push(arr_name[index]);
+      }
+    });
+    return maxIndexes;
   }
 }
 
