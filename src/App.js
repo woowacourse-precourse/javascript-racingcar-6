@@ -1,31 +1,13 @@
-import { Console, Random } from "@woowacourse/mission-utils";
-import { MESSAGE_TABLE } from "./constants";
+import { gameStart } from "./gameStart.js";
+import { gameProgress } from "./gameProgress.js";
+import { gameEnd } from "./gameEnd.js";
+
 class App {
-  async play() {}
-  async carNameInput() {
-    const userInput = await Console.readLineAsync(MESSAGE_TABLE.START_GAME);
-    return userInput.split(",");
-  }
-  async driveNumberInput() {
-    const userInput = await Console.readLineAsync(MESSAGE_TABLE.TRY_NUMBER);
-    return userInput;
-  }
-  pickRandomNumber() {
-    const number = Random.pickRandomNumber(0, 9);
-    return number;
-  }
-  moveForward(num) {
-    if (num >= 4) {
-      return true;
-    }
-    return false;
-  }
-  winnerOutput(obj) {
-    let max = 0;
-    for (let key in obj) {
-      let temp = obj[key].length;
-      max = Math.max(max, temp);
-    }
+  async play() {
+    const players = await gameStart.getCarName();
+    const maxNum = await gameStart.getMaxNum();
+    const result = await gameProgress(players, maxNum);
+    await gameEnd(result);
   }
 }
 
