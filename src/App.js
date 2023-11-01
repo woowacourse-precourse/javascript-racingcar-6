@@ -48,6 +48,7 @@ class App {
       this.cars.forEach((car) => {
         this.tryMoveCar(car.name);
       });
+      this.printCarStatus();
     });
   }
 
@@ -58,6 +59,14 @@ class App {
     if (randomNumber >= MINIMUM_MOVE_NUMBER && car) {
       car.updateRacingStatus();
     }
+  }
+
+  printCarStatus() {
+    this.cars.forEach((car) => {
+      const { name, racing } = car;
+      Console.print(`${name} : ${racing}`);
+    });
+    Console.print('');
   }
 }
 
