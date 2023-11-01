@@ -47,6 +47,10 @@ class Car {
   getCarName() {
     return this.#name;
   }
+
+  getTotalDistance() {
+    return this.#totalDistance;
+  }
 }
 
 export default Car;
