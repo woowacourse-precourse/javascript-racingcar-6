@@ -28,9 +28,9 @@ describe("자동차 경주 게임", () => {
     // given
     const MOVING_FORWARD = 4;
     const STOP = 3;
-    const inputs = ["pobi,woni", "1"];
-    const outputs = ["pobi : -"];
-    const randoms = [MOVING_FORWARD, STOP];
+    const inputs = ["pobi,woni", "3"];
+    const outputs = ["pobi : -","pobi : --", "pobi : ---", "woni :", "woni : -"];
+    const randoms = [MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, STOP];
     const logSpy = getLogSpy();
 
     mockQuestions(inputs);
@@ -51,8 +51,8 @@ describe("자동차 경주 게임", () => {
     const MOVING_FORWARD = 4;
     const STOP = 3;
     const inputs = ["pobi,woni,jun", "1"];
-    const outputs = ["최종 우승자 : pobi, jun"];
-    const randoms = [MOVING_FORWARD, STOP, MOVING_FORWARD];
+    const outputs = ["최종 우승자 : pobi"];
+    const randoms = [MOVING_FORWARD, STOP, STOP];
     const logSpy = getLogSpy();
 
     mockQuestions(inputs);
@@ -91,8 +91,13 @@ describe("자동차 경주 게임", () => {
   });
 
   test.each([
+    [[""]],
+    [["pobi,테코"]],
+    [["pobi"]],
+    [["pobi,pobi"]],
     [["pobi,javaji"]],
     [["pobi,eastjun"]],
+    [["pobi,sam!"]],
     [["pobi,,"]],
     [["pobi,,,"]]
   ])("이름에 대한 예외 처리", async inputs => {
@@ -109,7 +114,8 @@ describe("자동차 경주 게임", () => {
   test.each([
     [["pobi,jigi", "1a"]],
     [["pobi,woni", "ab"]],
-    [["pobi,woni", "1!"]]
+    [["pobi,woni", "1!"]],
+    [["pobi,woni", "0"]]
   ])("시도 횟수에 대한 예외 처리", async inputs => {
     // given
     mockQuestions(inputs);
