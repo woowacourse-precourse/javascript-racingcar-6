@@ -16,7 +16,16 @@ class Score {
   }
 
   /**
-   * 모든 레이싱 완료 후 스코어보드를 출력한다.
+   * 모든 레이스 완료 후 점수를 기준으로 스코어보드 내림차순 정렬
+   * @param {[string, number][]} scoreBoard
+   * @returns {[string, number][]}
+   */
+  static sortBoard(scoreBoard) {
+    return scoreBoard.sort((first, second) => second[1] - first[1]);
+  }
+
+  /**
+   * 최종 스코어보드를 출력한다.
    * @param {[string, number][]} scoreBoards
    * @private
    */
@@ -26,15 +35,6 @@ class Score {
         GUIDE_MESSAGES.lapScore(name, SYMBOLS.dash.repeat(score)),
       );
     });
-  }
-
-  /**
-   * 레이스 완료 후 점수를 기준으로 스코어보드 내림차순 정렬
-   * @param {[string, number][]} scoreBoard
-   * @returns {[string, number][]}
-   */
-  static sortBoard(scoreBoard) {
-    return scoreBoard.sort((first, second) => second[1] - first[1]);
   }
 }
 
