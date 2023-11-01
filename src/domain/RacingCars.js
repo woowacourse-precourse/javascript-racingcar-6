@@ -1,4 +1,4 @@
-import RacingCar from "./RacingCar.js";
+import Car from "./Car.js";
 import RandomNumberGenerator from "../utils/RandomNumberGenerator.js";
 import { STATIC_NUMBER } from "../static/Static.js";
 
@@ -8,7 +8,7 @@ class RacingCars {
   #winners = [];
 
   constructor(inputNames) {
-    this.#cars = inputNames.split(",").map((name) => new RacingCar(name));
+    this.#cars = inputNames.split(",").map((name) => new Car(name));
   }
 
   setMoveCondition() {

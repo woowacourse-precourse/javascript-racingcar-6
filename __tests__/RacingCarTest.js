@@ -1,10 +1,10 @@
-import RacingCar from "../src/domain/RacingCar.js";
+import Car from "../src/domain/Car.js";
 import { STATIC_NUMBER } from "../src/static/Static.js";
 
-describe("RacingCar 클래스 테스트", () => {
-  test("RacingCar 클래스의 인스턴스 생성 확인", () => {
+describe("Car 클래스 테스트", () => {
+  test("Car 클래스의 인스턴스 생성 확인", () => {
     const inputNames = ["pobi", "june", "wang"];
-    const cars = inputNames.map((name) => new RacingCar(name));
+    const cars = inputNames.map((name) => new Car(name));
 
     cars.forEach((car, index) => {
       expect(car.getName()).toEqual(inputNames[index]);
@@ -12,7 +12,7 @@ describe("RacingCar 클래스 테스트", () => {
   });
 
   test("RacingCar 클래스의 거리값을 잘 받아오는지 확인", () => {
-    const car = new RacingCar("pobi");
+    const car = new Car("pobi");
     const randomNumbers = [1, 0, 4, 0, 5, 3, 8];
     const expectDistance = [0, 0, 1, 1, 2, 2, 3];
 
