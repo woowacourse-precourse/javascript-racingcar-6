@@ -39,9 +39,10 @@ const Output = {
     gameStatus.forEach((car) => {
       Console.print(MESSAGE.OUTPUT.RESULT(car));
     });
-    Console.print("\n");
+    Console.print("");
   },
   printResultMessage() {
+    Console.print("");
     Console.print(MESSAGE.OUTPUT.RESULT_MESSAGE);
   },
   printWinner(winnerList) {
