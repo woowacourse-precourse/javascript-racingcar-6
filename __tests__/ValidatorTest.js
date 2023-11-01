@@ -42,6 +42,16 @@ describe('입력값 검증 테스트', () => {
     expect(() => Validator.checkIsNotNumber(input)).toThrow(ERROR.isNotNumber);
   });
 
+  test.each([[3.14], ['5.1']])('입력값이 정수가 아니면 오류가 발생해야 한다.', (input) => {
+    // then
+    expect(() => Validator.checkIsNotInteger(input)).toThrow(ERROR.isNotInteger);
+  });
+
+  test.each([[-1], ['-100']])('입력값이 음수이면 오류가 발생해야 한다.', (input) => {
+    // then
+    expect(() => Validator.checkIsNegative(input)).toThrow(ERROR.isNegative);
+  });
+
   test.each([['0'], [0]])('입력값이 0이면 오류가 발생해야 한다.', (input) => {
     // then
     expect(() => Validator.checkIsNotMoving(input)).toThrow(ERROR.notMoving);

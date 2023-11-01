@@ -302,6 +302,8 @@
   - `checkHasDuplicate` : 자동차의 이름 중 중복된 이름이 존재하면 오류가 발생되어야 한다.
   - `checkIsLongerThanMaxLen` : 자동차의 이름이 최대 길이보다 길면 오류가 발생해야 한다.
   - `checkIsNotNumber` : 입력값이 숫자가 아니면 오류가 발생해야 한다.
+  - `checkIsNotInteger` : 입력값이 정수가 아니면 오류가 발생해야 한다.
+  - `checkIsNegative` : 입력값이 음수면 오류가 발생해야 한다.
   - `checkIsNotMoving` : 입력값이 0이면 오류가 발생해야 한다.
 
 
