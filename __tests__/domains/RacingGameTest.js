@@ -1,9 +1,11 @@
 import Car from '../../src/Car.js';
 import RacingGame from '../../src/RacingGame.js';
+import Refree from '../../src/Refree.js';
 import { RANDOM_NUMBER_RANGE } from '../../src/constants/numberRange.js';
 
 describe('class RacingGame Test', () => {
   let carInstanceList;
+  let refree;
   let racingGame;
   const MOVE_FOWARD = 5;
   const STOP = 1;
@@ -11,11 +13,9 @@ describe('class RacingGame Test', () => {
   const carNames = ['준모', '정배', '서부장'];
 
   beforeEach(() => {
-    carInstanceList = Array.from(
-      { length: [...carNames].length },
-      (carName) => new Car(carName)
-    );
-    racingGame = new RacingGame(carInstanceList, TRY_ROUND);
+    carInstanceList = carNames.map((carName) => new Car(carName));
+    refree = new Refree(TRY_ROUND);
+    racingGame = new RacingGame(carInstanceList, refree);
   });
 
   describe('메서드 test : createRandomNumber()', () => {
@@ -40,7 +40,7 @@ describe('class RacingGame Test', () => {
       Array.from({ length: TRY_ROUND }, () => {
         racingGame.roundStart();
       });
-      const isFinish = racingGame.isFinish();
+      const isFinish = refree.isGameFinish();
 
       expect(isFinish).toBe(true);
     });
@@ -48,7 +48,7 @@ describe('class RacingGame Test', () => {
       Array.from({ length: TRY_ROUND - 1 }, () => {
         racingGame.roundStart();
       });
-      const isFinish = racingGame.isFinish();
+      const isFinish = refree.isGameFinish();
 
       expect(isFinish).toBe(false);
     });

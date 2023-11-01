@@ -2,21 +2,21 @@ import { Random } from '@woowacourse/mission-utils';
 import { RANDOM_NUMBER_RANGE } from './constants/numberRange.js';
 import { ERROR_MESSAGE } from './constants/errorMessage.js';
 import { paramType } from './utils/paramType.js';
-import { MOVE_FOWARD, RACING_RULE } from './constants/racingRule.js';
 import Car from './Car.js';
+import Refree from './Refree.js';
 
 export default class RacingGame {
   #carList;
-  #tryRound;
+  #refree;
 
   constructor(
     carList,
-    tryRound,
+    refree,
     _0 = paramType(carList, Array),
-    _1 = paramType(tryRound, 'number')
+    _1 = paramType(refree, Refree)
   ) {
     this.#carList = carList;
-    this.#tryRound = tryRound;
+    this.#refree = refree;
   }
 
   createRandomNumber(
@@ -32,15 +32,7 @@ export default class RacingGame {
   }
 
   isFinish() {
-    return this.#tryRound === RACING_RULE.ALL_ROUND_DONE_AMOUNT;
-  }
-
-  _clearRound() {
-    this.#tryRound -= RACING_RULE.DECREASE_ROUND;
-  }
-
-  _isMovalbe(number, _ = paramType(number, 'number')) {
-    return number >= MOVE_FOWARD;
+    return this.#refree.isGameFinish();
   }
 
   _moveCar(car, _ = paramType(car, Car)) {
@@ -49,7 +41,7 @@ export default class RacingGame {
       RANDOM_NUMBER_RANGE.MAX
     );
 
-    if (this._isMovalbe(randomNumber)) car.increasePosition();
+    if (this.#refree.isMovalbe(randomNumber)) car.increasePosition();
   }
 
   _moveCars() {
@@ -64,7 +56,7 @@ export default class RacingGame {
     }
 
     this._moveCars();
-    this._clearRound();
+    this.#refree.clearRound();
   }
 
   getRoundResult() {
@@ -72,9 +64,7 @@ export default class RacingGame {
   }
 
   getWinners() {
-    if (this.#tryRound !== RACING_RULE.ALL_ROUND_DONE_AMOUNT) {
-      throw new Error(ERROR_MESSAGE.PLAY.LEFT_ROUND);
-    }
+    if (!this.isFinish()) throw new Error(ERROR_MESSAGE.PLAY.LEFT_ROUND);
 
     const finalRoundResult = this.getRoundResult();
     const maxMoveAmount = finalRoundResult.reduce(

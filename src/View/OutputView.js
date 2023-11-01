@@ -1,8 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
 
 export default class OutputView {
-  constructor() {}
-
   printRoundResult(roundResult) {
     roundResult.forEach(({ name, position }) => {
       this.#onPrint(`${name} : ${position}`);
@@ -14,8 +12,13 @@ export default class OutputView {
     this.#onPrint(`최종 우승자 : ${winners}`);
   }
 
+  printGameStart() {
+    OutputView.printPadding();
+    this.#onPrint('실행 결과');
+  }
+
   static printPadding() {
-    Console.print('');
+    Console.print(' ');
   }
 
   #onPrint(text) {

@@ -5,6 +5,7 @@ import InputReader from './View/InputReader.js';
 import OutputView from './View/OutputView.js';
 import { paramType } from './utils/paramType.js';
 import { validate } from './utils/validate.js';
+import Refree from './Refree.js';
 
 export default class App {
   #inputReader;
@@ -20,9 +21,10 @@ export default class App {
   async play() {
     const carNames = await this.#inputReader.carNames();
     validate.carNames(carNames);
-    const tryRound = Number(await this.#inputReader.tryRount());
+    const tryRound = await this.#inputReader.tryRount();
+    validate.tryRound(tryRound);
 
-    await this.ready(carNames, tryRound);
+    await this.ready(carNames, Number(tryRound));
   }
 
   async ready(
@@ -32,19 +34,20 @@ export default class App {
     _1 = paramType(tryRound, 'number')
   ) {
     const carArray = carNames.split(',').map((name) => new Car(name));
-
-    this.#racingGame = new RacingGame(carArray, tryRound);
+    const refree = new Refree(tryRound);
+    this.#racingGame = new RacingGame(carArray, refree);
 
     this.racingStart();
   }
 
   racingStart() {
-    Console.print('실행 결과');
+    this.#outputView.printGameStart();
     while (!this.#racingGame.isFinish()) {
       this.#racingGame.roundStart();
       const roundResult = this.#racingGame.getRoundResult();
       this.#outputView.printRoundResult(roundResult);
     }
+
     this.checkWinner();
   }
 
