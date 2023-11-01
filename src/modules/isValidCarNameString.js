@@ -1,38 +1,39 @@
 import { NUMBER, CHAR } from '../constant/constants';
 
-const carNameSet = new Set();
+const hasNotBlank = (stringArr) => {
+  const noneBlank = stringArr.every((elem) => !elem.includes(CHAR.BLANK));
 
-const hasNotBlank = (string) => {
-  return !string.includes(CHAR.BLANK);
+  return noneBlank;
 };
 
-const isValidLength = (string) => {
-  const greaterThanZero = string.length > NUMBER.ZERO;
-  const maxLengthOrLess = string.length <= NUMBER.MAX_NAME_LENGTH;
-  const isValid = greaterThanZero && maxLengthOrLess;
+const isValidLength = (stringArr) => {
+  const isInOfRange = stringArr.every((elem) => {
+    const greaterThanZero = elem.length > NUMBER.ZERO;
+    const maxLengthOrLess = elem.length <= NUMBER.MAX_NAME_LENGTH;
+    const isValid = greaterThanZero && maxLengthOrLess;
 
-  return isValid;
+    return isValid;
+  });
+
+  return isInOfRange;
 };
 
-const isUnique = (string) => {
-  const hasSet = carNameSet.has(string);
+const isUnique = (stringArr) => {
+  const carNameSet = new Set(stringArr);
+  const isUniqueNames = carNameSet.size === stringArr.length;
 
-  if (hasSet) {
-    return false;
-  }
-
-  carNameSet.add(string);
-  return true;
+  return isUniqueNames;
 };
 
-const isValidCarName = (string) => {
-  const isValid = hasNotBlank(string) && isValidLength(string) && isUnique(string);
+const isValidCarName = (stringArr) => {
+  const isValid = hasNotBlank(stringArr) && isValidLength(stringArr) && isUnique(stringArr);
+
   return isValid;
 };
 
 const isValidCarNameString = (string) => {
   const splitArray = string.split(CHAR.SEPARATOR);
-  const isValid = splitArray.every(isValidCarName);
+  const isValid = isValidCarName(splitArray);
 
   return isValid;
 };
