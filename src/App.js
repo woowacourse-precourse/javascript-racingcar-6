@@ -23,6 +23,7 @@ class App {
       this.printFinalWinner(finalWinner);
     } catch (error) {
       console.error(error);
+      throw error;
     }
   }
 
