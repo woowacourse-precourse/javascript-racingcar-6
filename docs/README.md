@@ -18,21 +18,28 @@
 ### 이름을 통해 의도를 드러낸다.
 - 1주차 코드리뷰에서 이름에 대한 조언을 많이 받아서 변수,메서드 명을 짓는데 많은 시간을 들였다.
 - 값을 가져온다면 get, 데이터를 가지고 새로운 값을 만든다면 make, 검증할 때는 check 동사를 사용하는 등 이름만 보고 무슨 역할을 하는지 바로 알아볼 수 있게 하였다.
+  
   ```js
   this.#getCarNamesInput();
   this.#makeSplitCarNames(carNames);
   checkHasEmpty(userInput);
   ```
+  
 - 인스턴스명도 클래스와 연관있는 이름을 지어서 어떤 역할을 하는지 드러내주었다.
+  
   ```js
   this.#racingCars = new RacingCars(carNameList);
   ```
+  
 - 코드 작성시 많이 사용되고, 읽기 편한 단어를 사용해서 이름을 짓기 위해 노력하였다.
+  
   ```js
   const numsOfAttempts = 0 
   const attemptCount = 0 // number Of 보다 Count가 더 친숙
   ```
+  
 - 호출하면서 반복되는 단어들은 삭제하였다.
+  
   ```js
   this.racingCars.#getRacingCarsMovingLog() // 호출시 racingCars라는 단어가 중복됨
   this.racingCars.#getMovingLog() // 수정 
@@ -41,6 +48,7 @@
 ### 축약하지 않는다.
 - 이름을 통해 어떤일을 하는지 정확하게 드러나도록 작성하였다.
 - 중요한 단어들은 축약하거나 삭제하지 않고 코드 작성시 잘 사용되는 length -> len 같은 경우에만 축약해서 사용하였다.
+  
   ```
   static checkIsLongerThanMaxLen(userInput){...}
   ```
@@ -48,6 +56,7 @@
 ### 공백도 코딩 컨벤션이다 / 공백 라인을 의미있게 사용한다
 - return이 있는 메서드의 경우 return 윗줄에 공백을 추가해서 return 값이 무엇인지 확실히 보여주었다.
   - 두 줄인 메서드의 경우에는 공백을 추가하지 않았다. 코드가 한눈에 들어오기 때문에 공백 없이도 가독성이 좋다고 생각했기 때문이다.
+  
   ```js
    async #getCarNamesInput() {
     const carNames = await Console.readLineAsync(MESSAGE.enterCarNames);
@@ -57,6 +66,7 @@
     return splitCarNames;
   }
   ```
+  
   ```js
   async startGame() {
     const carNameList = await this.#getCarNamesInput();
@@ -65,10 +75,11 @@
     this.#racingCars = new RacingCars(carNameList);
     this.#repeatMovement(attemptCount);
 
-    Console.print(this.#makeFinalWinnerString());
+    Console.print(this.#racingCars.getWinners());
   }
   ```
 - test 코드에서 given, when, then 사이에도 공백을 넣어서 역할을 정확히 구분해주었다.
+  
   ```js
   test.each([
     { names: ['pobi'], random: [3], output: 'pobi : ' },
@@ -89,6 +100,7 @@
 ### space와 tab을 혼용하지 않는다.
 - space로 통일해서 사용하였다.
 - prettier를 통해 space로 작성될 수 있도록 규칙을 작성해주었다.
+  
   ```
   // .prettierrc
   {
@@ -103,6 +115,7 @@
 
 ### linter와 Code Formatter의 기능을 활용한다.
 - eslint를 설치해서 사용하였다. airbnb 자바스크립트 스타일 가이드를 기준으로 사용하였다. `npm init @eslint/config`
+  
   ```
   // .eslintrc.cjs
   
@@ -135,7 +148,9 @@
   },
   };
   ```
+  
 - prettier를 설치해서 사용하였다. `npm i prettier eslint-config-prettier`
+  
   ```
   // prettierrc
   
@@ -154,6 +169,7 @@
 
 ### EOL(End Of Line)
 - prettier에서 EOL를 auto로 설정해주었다.
+  
   ```
   {'endOfLine': 'auto'}
   ```
@@ -164,11 +180,13 @@
 
 ### JavaScript에서 제공하는 API를 적극 활용한다.
 - Array.from, join, repeat, includes, 템플릿 리터럴과 같은 자바스크립트 기능들을 적극 사용하였다. 덕분에 깔끔하고 간단하게 원하는 기능을 구현할 수 있었다.
+  
   ```js
   if (userInput.includes('')) {
       throw new ValidationError(ERROR.hasEmpty);
     }
   ```
+  
 </details>
 
 ---
@@ -193,14 +211,14 @@
 ## 🚀 목표 
 ### 함수를 분리하고, 함수별로 테스트 작성하기 
 
-- 함수 분리하기 
+- **함수 분리하기** 
   - max-depth가 3을 넘지 않게하라는 요구사항에서 기능이 많아지면 메서드들 나눠서 depth가 작아지게 함을 유도했다고 생각했다.
   - 그래서 (다른 메서드들을 호출해서 게임을 진행하는 메서드를 제외하고는) 모든 메서드가 하나의 일만 하도록 분리해서 작성하였다.
   - 기능 목록을 미리 작성하고 해당 기능에 해당하는 함수들을 하나하나 작성해가며 전체 코드를 완성해나갔다.
     - 기능 목록이 두루뭉실 해서 여러 기능이 필요하다면 요구사항을 더 자세히 나누는 작업을 수행하였다.
 
 
-- 함수별로 테스트 작성하기
+- **함수별로 테스트 작성하기**
   - 기능 목록에 작성한 기능들이 모두 제대로 작동하는지 확인하기 위해 테스트를 작성하였다.
     - 모든 메서드들에 대한 테스트를 작성하였다.
     - private 메서드들에 대해서는 테스트를 작성하지 않았다. 
@@ -309,6 +327,7 @@
 
 ---
 ## 🗂 파일 구조
+
 ```
 ┗ src
   ┣ constants
@@ -318,7 +337,7 @@
   ┃  ┗ Validator.js        // 해당 값이 올바른지 검증하는 메서드들로 구성된 유틸리티 클래스
   ┣ App.js                 // 게임 시작 역할 
   ┣ index.js            
-  ┣ RacingCarGame.js       // 자동차 경주 게임의 실행을 책임지는 클래스
-  ┣ RacingCars.js          // 자동차 경주 게임에 참여하는 자동차들 전체를 관리하는 클래스
-  ┗ Car.js                 // 각각의 자동차에 대한 클래스
-```
+  ┣ RacingCarGame.js       // 자동차 경주 게임의 실행을 책임지는 클래스. 입출력과 게임 진행을 관리
+  ┣ RacingCars.js          // 게임에 참여하는 자동차들 전체를 관리하는 클래스. 모든 차들과 우승자를 관리
+  ┗ Car.js                 // 각각의 자동차에 대한 클래스. 이름과 이동 횟수를 관리
+``` 
