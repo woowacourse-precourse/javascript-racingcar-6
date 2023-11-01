@@ -1,5 +1,5 @@
-import User from './modules/User.js';
-import Game from './modules/Game.js';
+import User from './domain/User.js';
+import Game from './domain/Game.js';
 
 class App {
 
