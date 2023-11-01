@@ -1,7 +1,11 @@
 import { Random } from '@woowacourse/mission-utils';
-import {getCarsMovementInfo, getMovingResult, hasMovedForward} from '../src/game.js';
+import {getCarsMovementInfo, getMovingResult, getWinners, hasMovedForward} from '../src/game.js';
 
 describe('게임 유틸', () => {
+  beforeEach(() => {
+    jest.restoreAllMocks();
+  })
+
   describe('hasMovedForward', () => {
     test('Random.pickNumberInRange 유틸이 4미만의 값을 반환한다면, false를 반환해야 한다', () => {
       jest.spyOn(Random, 'pickNumberInRange').mockReturnValue(3);
@@ -52,4 +56,14 @@ describe('게임 유틸', () => {
       })
     })
   })
+
+  describe('getWinners', () => {
+    test('올바른 carsMovementInfo를 입력하면, 1명 이상의 우승자 이름을 담고 있는 배열을 반환해야 한다.', () => {
+      const carNames = ['foo', 'bar'];
+      const count = 5;
+      const carsMovementInfo = getCarsMovementInfo(carNames, count);
+      expect(getWinners(carsMovementInfo).length).toBeGreaterThanOrEqual(1);
+    })
+  })
+
 })

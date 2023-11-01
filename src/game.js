@@ -40,3 +40,26 @@ export const getCarsMovementInfo = (carNames, count) => {
 
   return carsMovementInfo;
 }
+
+/**
+ * 각 자동차별 전진 여부 배열 정보를 가진 객체를 받아서, 우승한 자동차들의 이름 배열을 반환하는 함수
+ *
+ * @param {{[carName: string]: boolean[]}} carsMovementInfo
+ * @returns {string[]}
+ */
+export const getWinners = (carsMovementInfo) => {
+  let winners = [];
+  let maxMovingCount = -Infinity;
+
+  Object.entries(carsMovementInfo).forEach(([carName, movingResult]) => {
+    const movingCount = movingResult.reduce((acc, curr) => acc + Number(curr), 0);
+    if (movingCount > maxMovingCount) {
+      winners = [carName];
+      maxMovingCount = movingCount;
+    } else if (movingCount === maxMovingCount) {
+      winners.push(carName);
+    }
+  });
+
+  return winners;
+}
