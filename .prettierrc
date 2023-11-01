@@ -1,0 +1,15 @@
+{
+  "editor.formatOnSave": true,
+  "prettier.javascriptEnable" : ["javascript", "javascriptreact"],
+  "semi": true,
+  "arrowParens": "avoid",
+  "bracketSpacing": true,
+  "printWidth": 120,
+  "proseWrap": "preserve",
+  "quoteProps": "as-needed",
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "all",
+  "useTabs": false,
+  "endOfLine": "auto"
+}
