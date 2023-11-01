@@ -13,7 +13,7 @@ const IN_GAME_MESSAGE = {
     '경주할 자동차 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분하며 영문 대소문자 및 숫자만 허용)',
   getInputTurnNumber: '시도할 횟수는 몇 회인가요? (1~9 사이의 숫자로 입력)',
   gameStartHeader: '실행 결과',
-  gameResultHeader: '최종 우승자 : ',
+  gameResultHeader: '최종 우승자',
 };
 
 const IN_GAME_ERROR = {

@@ -17,10 +17,11 @@ class RacingCar {
 
   endGame(raceResult) {
     const maxCarPosition = Math.max(...Object.values(raceResult));
-    const winners = Object.keys(raceResult).filter(
-      (carName) => raceResult[carName] === maxCarPosition,
-    );
-    console.log(winners);
+    const winners = Object.keys(raceResult)
+      .filter((carName) => raceResult[carName] === maxCarPosition)
+      .join(', ');
+
+    Console.print(`${IN_GAME_MESSAGE.gameResultHeader} : ${winners}`);
   }
 }
 
