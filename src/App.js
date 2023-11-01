@@ -3,7 +3,7 @@ import { Console, MissionUtils } from '@woowacourse/mission-utils';
 class App {
   async getCarNames() {
     const names = await Console.readLineAsync(
-      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)',
+      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
     );
     if (names === null) {
       throw new Error('[ERROR] 올바른 값을 입력하세요');
@@ -34,7 +34,7 @@ class App {
 
   async tryCounts() {
     const counts = parseInt(
-      await Console.readLineAsync('시도할 횟수는 몇 회인가요?'),
+      await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n'),
     );
     if (isNaN(counts) || counts <= 0) {
       throw new Error('[ERROR] 올바른 값을 입력하세요');
@@ -60,6 +60,7 @@ class App {
     carNames.forEach((name) => {
       Console.print(`${name} : ${'-'.repeat(carPositions[name])}`);
     });
+    Console.print('');
   }
 
   findWinners(carPositions) {
