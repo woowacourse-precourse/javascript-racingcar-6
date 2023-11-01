@@ -11,6 +11,10 @@ class App {
       //cars배열안에 5글자가 넘는 이름이 있는지 검사
       throw new Error("[ERROR] 자동차의 이름은 5자 이하여야 합니다.");
     }
+    if (new Set(this.cars).size !== this.cars.length) {
+      // 중복된 이름이 있는지 검사
+      throw new Error("[ERROR] 중복된 이름이 있습니다.");
+    }
   }
 
   async play() {}
