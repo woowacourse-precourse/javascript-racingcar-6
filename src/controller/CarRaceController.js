@@ -1,5 +1,5 @@
 import Car from '../models/Car.js';
-import CarGame from '../models/CarRace.js';
+import CarRace from '../models/CarRace.js';
 import RaceProcess from '../models/RaceProcess.js';
 import RandomNumberGenerator from '../utils/RandomNumberGenerator.js';
 import InputView from '../views/InputView.js';
@@ -19,7 +19,7 @@ class CarRaceController {
   async playGameStage(startLine) {
     const attempts = await InputView.readAttempts();
     const randomGenerator = RandomNumberGenerator;
-    this.#race = new CarGame(randomGenerator);
+    this.#race = new CarRace(randomGenerator);
     const forwards = this.#race.checkPosition(startLine, attempts);
     this.checkProcessStage(forwards, Number(attempts));
   }
