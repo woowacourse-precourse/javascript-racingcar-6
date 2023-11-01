@@ -214,4 +214,25 @@ describe("App class", () => {
       expect(car.shouldMove()).toBeFalsy();
     });
   });
+
+  describe("runRace method", () => {
+    let app;
+    beforeEach(() => {
+        app = new App();
+    });
+
+    test("자동차는 총 횟수 만큼 움직여야 한다", async () => {
+      jest.spyOn(app, 'getCarName').mockResolvedValue(["pobi"]);
+      jest.spyOn(app, 'getRoundNumber').mockResolvedValue(3);
+      jest.spyOn(Console, 'readLineAsync').mockResolvedValue(""); 
+      
+      jest.spyOn(app, 'getRandomNumber').mockReturnValue(4);
+
+      await app.play();
+
+      const moveCount = app.car[0].distance;
+
+      expect(moveCount).toBe(3);
+    });
+  });
 });
