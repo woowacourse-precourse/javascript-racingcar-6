@@ -51,4 +51,12 @@ class App {
   drawDash(value) {
     this.dashes = '-'.repeat(value);
   }
+
+  displayResultSteps() {
+    this.cars.forEach((value, key) => {
+      this.drawDash(value);
+      Console.print(`${key} : ${this.dashes}`);
+    });
+    Console.print('');
+  }
 export default App;
