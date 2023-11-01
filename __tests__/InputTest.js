@@ -20,8 +20,17 @@ describe("입력값 테스트", () => {
     const carNameList = ["Kona", "Soul", "Ray"];
     expect(() => checkNames(carNameList)).not.toThrow();
 
-    const invalidCarNameList = ["Kona", "Soul", "Avante"];
-    expect(() => checkNames(invalidCarNameList)).toThrow(Error);
+    const invalidCarNameList_1 = ["Kona"];
+    expect(() => checkNames(invalidCarNameList_1)).toThrow(Error);
+
+    const invalidCarNameList_2 = ["Kona", "Soul", "Avante"];
+    expect(() => checkNames(invalidCarNameList_2)).toThrow(Error);
+
+    const invalidCarNameList_3 = ["Kona", "Soul", ""];
+    expect(() => checkNames(invalidCarNameList_3)).toThrow(Error);
+
+    const invalidCarNameList_4 = ["Kona", "Soul", "Kona"];
+    expect(() => checkNames(invalidCarNameList_4)).toThrow(Error);
   });
 
   test("라운드 횟수 입력값이 양수인 정수인지 테스트", () => {
