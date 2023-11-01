@@ -12,11 +12,7 @@ class TryCount {
   }
 
   set tryNumber(tryValue) {
-    tryValue = Number(tryValue);
-
-    this.notZero(tryValue);
-    this.isNumber(tryValue);
-
+    TryCount.validateTryCount(tryValue);
     this._tryNumber = tryValue;
   }
 
@@ -24,16 +20,24 @@ class TryCount {
     return this._tryNumber;
   }
 
-  notZero(tryValue) {
-    if (tryValue < 1) {
+  static validateTryCount(tryValue) {
+    tryValue = Number(tryValue);
+
+    if (TryCount.#notZero(tryValue)) {
       throw new Error(TRY_COUNT_VALIDATION.NOT_ZERO);
+    }
+
+    if (TryCount.#isNumber(tryValue)) {
+      throw new Error(TRY_COUNT_VALIDATION.IS_NAN);
     }
   }
 
-  isNumber(tryValue) {
-    if (isNaN(tryValue)) {
-      throw new Error(TRY_COUNT_VALIDATION.IS_NAN);
-    }
+  static #notZero(tryValue) {
+    return tryValue < 1;
+  }
+
+  static #isNumber(tryValue) {
+    return isNaN(tryValue);
   }
 }
 
