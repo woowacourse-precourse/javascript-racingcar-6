@@ -1,6 +1,7 @@
 import { Console } from "@woowacourse/mission-utils";
 import { getCarName, getMoveNumber, getCarsMovedCount } from "./getUserInput";
 import { moveCars, printResult } from "./move";
+import { getWinner } from "./winner";
 
 class App {
   async play() {
@@ -14,6 +15,8 @@ class App {
       moveCars(names, carsMovedCount);
       printResult(names, carsMovedCount);
     }
+
+    Console.print("최종 우승자 : " + getWinner(names, carsMovedCount));
   }
 }
 
