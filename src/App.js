@@ -6,6 +6,8 @@ import {
   validate,
 } from './validate.js';
 
+const CAR_ADVANCE_THRESHOLD = 4;
+
 class App {
   async play() {
     const cars = await this.getCars();
@@ -46,7 +48,7 @@ class App {
     const distances = Object.fromEntries(cars.map((k) => [k, 0]));
     for (let i = 0; i < retry; i += 1) {
       cars.forEach((car) => {
-        distances[car] += Random.pickNumberInRange(0, 9) >= 4;
+        distances[car] += Random.pickNumberInRange(0, 9) >= CAR_ADVANCE_THRESHOLD;
         Console.print(`${car} : ${'-'.repeat(distances[car])}`);
       });
       Console.print('');
