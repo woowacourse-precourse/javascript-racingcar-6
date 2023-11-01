@@ -19,7 +19,7 @@ class RacingGame {
   }
 
   static judgeMove(randomNumber) {
-    return randomNumber >= RACE_NUMBER.drive
+    return randomNumber >= RACE_NUMBER.drive;
   }
 }
 
