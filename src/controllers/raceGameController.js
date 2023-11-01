@@ -24,6 +24,9 @@ class raceGameController {
     const carNames = await InputView.askCarNames().split(',')
     this.isValidCarNames(carNames);
     const racingCars = carNames.map(carName => new Car(carName));
+
+    const totalRound = await InputView.askTotalRound();
+    this.isValidTotalRound(totalRound);
   }
 
   /**
@@ -46,6 +49,21 @@ class raceGameController {
     }
     if (carNames.some((carName, index) => carNames.indexOf(carName) !== index)) {
       throw new Error(MESSAGES.CAR_NAME_INPUT_ERROR_DUPLICATION);
+    }
+  }
+
+  /**
+   * 시도 횟수 유효성 검사
+   * 1. 자연수 type 에러: 1이상의 자연수가 아닌 경우
+   * 2. 공백 에러: 공백 포함 시도 횟수
+   * @param {object} totalRound
+   */
+  static isValidTotalRound(totalRound) {
+    if (!CONDITIONS.TOTAL_ROUND_REGEX.test(totalRound)) {
+      throw new Error(MESSAGES.TOTAL_ROUND_INPUT_ERROR_NATURAL_NUMBER);
+    }
+    if (totalRound.includes(' ')) {
+      throw new Error(MESSAGES.TOTAL_ROUND_INPUT_ERROR_BLANK);
     }
   }
 }
