@@ -11,6 +11,14 @@ export default class Car {
     this.#distance = GAME.DEFAULT_POSITION;
   }
 
+  get name() {
+    return this.#name;
+  }
+
+  get distance() {
+    return this.#distance;
+  }
+
   getDistanceBar() {
     const bar = '-';
     const distanceBar = bar.repeat(this.#distance);

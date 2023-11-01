@@ -17,6 +17,8 @@ class App {
       this.#race.playRound();
       this.#race.printCurrentProcess();
     });
+
+    this.#race.printResult();
   }
 }
 

@@ -15,6 +15,26 @@ export default class Race {
     });
   }
 
+  calculateWinner() {
+    const maxDistance = this.#cars.reduce(
+      (acc, { distance }) => (acc < distance ? distance : acc),
+      0
+    );
+
+    const winners = this.#cars
+      .filter(({ distance }) => distance === maxDistance)
+      .map((car) => car.name);
+
+    return winners;
+  }
+
+  printResult() {
+    const winners = this.calculateWinner();
+    const winnerString = winners.join(',');
+
+    Console.print(`최종 우승자 : ${winnerString}`);
+  }
+
   async playRound() {
     this.#cars.forEach((car) => {
       car.move();
