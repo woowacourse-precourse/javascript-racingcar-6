@@ -13,10 +13,13 @@ import CONDITIONS from "../constants/Conditions.js";
  * 경주 게임 컨트롤러
  */
 class RaceGameController {
+  /** @type {object} */
+  #race;
+
   /**
    * 경주 게임 생성
    */
-  static async run() {
+  async run() {
     const carNames = await InputView.askCarNames()
     RaceGameController.isValidCarNames(carNames);
 
@@ -24,10 +27,10 @@ class RaceGameController {
     RaceGameController.isValidTotalRound(totalRound);
 
     const racingCars = carNames.split(',').map(carName => new Car(carName));
-    const race = new Race(racingCars, Number(totalRound));
+    this.#race = new Race(racingCars, Number(totalRound));
 
     OutputView.printResultTitle();
-    for (let i = 0; i < race.getTotalRound(); i += 1) {
+    for (let i = 0; i < this.#race.getTotalRound(); i += 1) {
       RaceGameController.updateNumberOfAdvance(racingCars);
       OutputView.printProcedureOfRace(racingCars);
     }
