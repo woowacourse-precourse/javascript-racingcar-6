@@ -1,13 +1,19 @@
 import { Console, MissionUtils } from "@woowacourse/mission-utils";
-import { MESSAGE, NUMBER } from "./constants.js";
+import { ERROR_MESSAGE, MESSAGE, NUMBER } from "./constants.js";
 
 class App {
   async play() {
     const nameInput = await Console.readLineAsync(MESSAGE.CARNAME_INPUT);
+    this.validateNameInput(nameInput);
+
     const cars = nameInput.split(",").map((name) => ({ name, position: 0 }));
+
     const tryCount = await Console.readLineAsync(MESSAGE.TRYCOUNT_INPUT);
+    this.validateTryCount(tryCount);
+    const tryCountNumber = Number(tryCount);
+
     Console.print(MESSAGE.PRINT_RESULT);
-    for (let i = 0; i < tryCount; i++) {
+    for (let i = 0; i < tryCountNumber; i++) {
       this.randomMove(cars);
       this.printResult(cars);
       Console.print("");
@@ -18,7 +24,7 @@ class App {
   printResult(cars) {
     // 게임 결과를 출력하는 메서드
     cars.forEach((car) => {
-      Console.print(`${car.name}: ${"-".repeat(car.position)}`);
+      Console.print(`${car.name} : ${"-".repeat(car.position)}`);
     });
   }
   randomMove(cars) {
@@ -35,35 +41,28 @@ class App {
     return cars.filter((car) => car.position === maxPosition);
   }
   validateTryCount(tryCount) {
-    if (tryCount <= 0) {
-      // 시도 횟수가 0보다 큰지 확인
-      throw new Error(ERROR_MESSAGE.INVALID_TRYCOUNT);
-    }
     if (tryCount === "") {
-      // 시도 횟수에 빈 값이 있는지 확인
-      throw new Error(ERROR_MESSAGE.EMPTY_TRYCOUNT);
+      throw new Error(ERROR_MESSAGE.EMPTY_TRYCOUNT); // 시도 횟수에 빈 값이 있는지 확인
+    }
+    if (tryCount <= 0) {
+      throw new Error(ERROR_MESSAGE.INVALID_TRYCOUNT); // 시도 횟수가 0보다 큰지 확인
     }
     if (isNaN(tryCount)) {
-      // 시도 횟수가 숫자인지 확인
-      throw new Error(ERROR_MESSAGE.NOT_NUMBER_TRYCOUNT);
+      throw new Error(ERROR_MESSAGE.NOT_NUMBER_TRYCOUNT); // 시도 횟수가 숫자인지 확인
     }
   }
   validateNameInput(nameInput) {
-    if (nameInput === "") {
-      // 차 이름에 빈 값이 있는지 확인
-      throw new Error(ERROR_MESSAGE.EMPTY_NAME);
+    if (nameInput === "" || nameInput.split(",").some((name) => name === "")) {
+      throw new Error(ERROR_MESSAGE.EMPTY_NAME); // 차 이름에 빈 값이 있는지 확인
     }
     if (nameInput.split(",").length !== new Set(nameInput.split(",")).size) {
-      // 차 이름에 중복된 값이 있는지 확인
-      throw new Error(ERROR_MESSAGE.DUPLICATE_NAME);
+      throw new Error(ERROR_MESSAGE.DUPLICATE_NAME); // 차 이름에 중복된 값이 있는지 확인
     }
     if (nameInput.split(",").some((name) => name.length > 5)) {
-      // 차 이름이 5글자를 초과하는지 확인
-      throw new Error(ERROR_MESSAGE.OVER_LENGTH_NAME);
+      throw new Error(ERROR_MESSAGE.OVER_LENGTH_NAME); // 차 이름이 5글자를 초과하는지 확인
     }
-    if (nameInput.split(",").some((name) => name === "")) {
-      // 차 이름에 빈 값이 있는지 확인
-      throw new Error(ERROR_MESSAGE.EMPTY_NAME);
+    if (nameInput.includes(" ")) {
+      throw new Error(ERROR_MESSAGE.SPACE_NAME); // 입력할 때 공백이 있는지 확인
     }
   }
 }
