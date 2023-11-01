@@ -3,11 +3,18 @@ import { ERROR_MESSAGES, GAME_NUMBERS } from './constants.js';
 
 class InputValidator {
   validateCarNames(names) {
+    this.#validateMinimumCarCount(names);
     for (const name of names) {
       this.#validateNameLength(name);
       this.#validateBlankName(name);
     }
     this.#validateNoDuplicateNames(names);
+  }
+
+  #validateMinimumCarCount(names) {
+    if (names.length < GAME_NUMBERS.minCarCount) {
+      throw new CustomError(ERROR_MESSAGES.carName.notEnoughCars);
+    }
   }
 
   #validateNameLength(name) {

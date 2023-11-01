@@ -10,6 +10,7 @@ const GAME_NUMBERS = {
   rangeMax: 9,
   movementThreshold: 4,
   carNameMaxLength: 5,
+  minCarCount: 2,
   minRoundNumber: 1,
 };
 
@@ -23,6 +24,7 @@ const GAME_MESSAGES = {
 
 const ERROR_MESSAGES = {
   carName: {
+    notEnoughCars: `자동차 갯수는 최소 ${GAME_NUMBERS.minCarCount}개 이상이어야 합니다.`,
     invalidLength: `자동차 이름은 ${GAME_NUMBERS.carNameMaxLength} 이하만 가능합니다.`,
     duplicate: '자동차 이름은 중복될 수 없습니다.',
     blank: '자동차 이름이 공백입니다.',
