@@ -1,7 +1,5 @@
-import App from "../src/App.js";
-import ERROR_MESSAGE from "../src/constant/errorMessage.js";
-import AllCars from "../src/model/AllCars.js";
-import messagePrinter from "../src/utils/messagePrinter.js";
+import ERROR_MESSAGE from '../src/constant/errorMessage';
+import AllCars from '../src/model/AllCars';
 
 describe('차 이름 유효성 테스트', () => {
   test('정상 값 입력 시 통과', () => {
