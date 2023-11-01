@@ -1,10 +1,10 @@
 import { Console, Random } from "@woowacourse/mission-utils";
-import { ERROR_MSG, GAME_MSG } from "./message";
+import { GAME_MSG } from "./message";
+import { validCarNames, validTryTimes } from "./validation";
 
 const CAR_NAME = [];
 const CAR_NAME_LENGTH = [];
 
-// 게임 시작
 export const startGame = async () => {
   const carNames = await getCarsName();
   const tryTimes = await getTryTimes();
@@ -13,47 +13,29 @@ export const startGame = async () => {
   endGame();
 };
 
-// 자동차 이름 입력
 const getCarsName = async () => {
   const cars = await Console.readLineAsync(GAME_MSG.GET_CARS_NAME);
-  Console.print(`${GAME_MSG.GET_CARS_NAME}\n${cars}`);
-  if (cars === "") {
-    throw new Error(ERROR_MSG.NO_INPUT);
-  }
   const carNames = cars.split(",");
-  if (new Set(carNames).size !== carNames.length) {
-    throw new Error(ERROR_MSG.CAR_NAME_IS_DUPLICATION);
-  }
-  for (let i = 0; i < carNames.length; i++) {
-    if (carNames[i].length > 5) {
-      throw new Error(ERROR_MSG.CAR_NAME_OVER_LENGTH);
-    }
-    if (carNames[i] === "") {
-      throw new Error(ERROR_MSG.NO_CAR_NAME);
-    }
-  }
+
+  validCarNames(cars, carNames);
+
   for (let i = 0; i < carNames.length; i++) {
     CAR_NAME.push(carNames[i]);
     CAR_NAME_LENGTH[i] = carNames[i].length;
     carNames[i] = carNames[i] + " : ";
   }
+
   return carNames;
 };
 
-// 시도 횟수 입력
 const getTryTimes = async () => {
   const tryTimes = await Console.readLineAsync(GAME_MSG.GET_TRY_TIMES);
-  Console.print(`${GAME_MSG.GET_TRY_TIMES}\n${tryTimes}`);
-  if (tryTimes === "") {
-    throw new Error(ERROR_MSG.NO_INPUT);
-  }
-  if (isNaN(tryTimes)) {
-    throw new Error(ERROR_MSG.TRY_TIMES_NUMBER);
-  }
+
+  validTryTimes(tryTimes);
+
   return tryTimes;
 };
 
-// 실행 결과 출력
 const printExecutionResult = (carNames, tryTimes) => {
   Console.print(GAME_MSG.EXECUTION_RESULT);
   while (tryTimes > 0) {
@@ -72,20 +54,33 @@ const getExecution = (carNames) => {
 };
 // 전진-정지를 위한 랜덤 숫자 받기
 const getRandomNumber = () => {
-  const randomNumber = Random.pickNumberInRange(1, 9);
+  const randomNumber = Random.pickNumberInRange(0, 9);
   if (randomNumber > 3) {
     return true;
   }
   return false;
 };
 
-// 최종 우승자 출력
+/*
+  printFinalWinner(): 우승자를 프린트해주는 함수
+    getGameResultLength(): 가장 멀리 전진한 자동차를 구하기 위해, 자동차별 길이를 구해주는 함수
+    getMax(): 
+*/
 const printFinalWinner = (carNames) => {
+  const resultLength = getGameResultLength(carNames);
+  const maxCars = getMaxOfResultLength(resultLength);
+  const gameResult = maxCars.join(", ");
+  Console.print(`${GAME_MSG.GAME_WINNER}${gameResult}`);
+};
+const getGameResultLength = (carNames) => {
   const resultLength = [];
   carNames.forEach((car, idx) => {
     resultLength.push(car.length - CAR_NAME_LENGTH[idx]);
   });
-
+  return resultLength;
+};
+//
+const getMaxOfResultLength = (resultLength) => {
   let max = 0;
   const maxCars = [];
   resultLength.forEach((len) => {
@@ -94,10 +89,9 @@ const printFinalWinner = (carNames) => {
   resultLength.forEach((len, idx) => {
     max == len ? maxCars.push(CAR_NAME[idx]) : "";
   });
-
-  let gameResult = maxCars.join(", ");
-  Console.print(`${GAME_MSG.GAME_WINNER}${gameResult}`);
+  return maxCars;
 };
+
 //게임종료
 const endGame = () => {
   return;
