@@ -23,7 +23,6 @@ class App {
             Console.print(roundResult);
             round++;
         }
-        
     }
 
     async createCarNameArr() {
@@ -44,7 +43,7 @@ class App {
     }
 
     checkCarFormat(input, inputArr) {
-        if (!input || !input.includes(",")) {
+        if (!input || !input.includes(",") || inputArr.includes("")) {
             throw new Error("[ERROR] 자동차 이름이 잘못된 형식입니다.");
         }
 
@@ -78,6 +77,24 @@ class App {
         }
         const roundResult = roundResultArr.join("\n");
         return roundResult;
+    }
+
+    determineWinner(carStates) {
+        if (carStates.length === 1) {
+            return [0];
+        }
+        let winnerList = [];
+        let comparison = carStates[0].length;
+        for (let i = 1; i < carStates.length; i++) {
+            if (carStates[i].length > comparison) {
+                comparison = carStates[i].length;
+                winnerList = [];
+                winnerList.push(i);
+            } else if (carStates[i].length === comparison) {
+                winnerList.push(i);
+            }
+        }
+        return winnerList;
     }
 }
 
