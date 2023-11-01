@@ -25,7 +25,8 @@ class RacingCar {
     this.carName = name;
   }
 
-  move() {
+  /** 차량 이동 함수(1만큼 이동) */
+  moveForward() {
     this.carPosition++;
   }
 }

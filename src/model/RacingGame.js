@@ -21,7 +21,7 @@ class RacingGame {
   checkMove() {
     this.racingCar.forEach((car) => {
       const randomNumber = generateRandomNumber();
-      if (randomNumber >= RACING_CAR.MOVE_NUMBER) car.move();
+      if (randomNumber >= RACING_CAR.MOVE_NUMBER) car.moveForward();
     });
   }
 
