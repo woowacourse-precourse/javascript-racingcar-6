@@ -21,9 +21,10 @@ class CarSet {
       if (this.#maxPostion < this.#carSet[car])
         this.#maxPostion = this.#carSet[car];
 
-      const resultText = `${car} : ${'-'.repeat(this.#carSet[car])}\n`;
+      const resultText = `${car} : ${'-'.repeat(this.#carSet[car])}`;
       Console.print(resultText);
     }
+    Console.print('');
   }
 
   findWinners() {
@@ -34,7 +35,7 @@ class CarSet {
         winnerList.push(car);
       }
     }
-    return winnerList;
+    return winnerList.join(',');
   }
 }
 

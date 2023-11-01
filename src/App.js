@@ -9,7 +9,7 @@ class App {
   async play() {
     await this.InputUser();
     this.race();
-    this.printWinner();
+    this.printResult();
   }
 
   async InputUser() {
@@ -21,13 +21,13 @@ class App {
   race() {
     Console.print(MESSAGES.printResult);
     while (this.#round > 0) {
-      this.#round -= 1;
       this.#carSet.race();
+      this.#round -= 1;
     }
   }
 
-  printWinner() {
-    const winners = this.#carSet.findWinners().join(',');
+  printResult() {
+    const winners = this.#carSet.findWinners();
     Console.print(`${MESSAGES.printWinner}${winners}`);
   }
 }
