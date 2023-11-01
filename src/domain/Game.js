@@ -15,6 +15,8 @@ export default class Game {
     async run({ carNames, count }) {
         this.#winStandard = this.countWinStandard(count);
         
+        MissionUtils.Console.print(GAME_MESSAGE.gameResult);
+
         for (let i = 0; i < count; i++) {
             const randomNumbers = await this.createRandomNumsersForCar(carNames.length);
             this.getGameResult(randomNumbers);
@@ -57,8 +59,6 @@ export default class Game {
     }
 
     printGameResult(carNames) {
-        MissionUtils.Console.print(GAME_MESSAGE.gameResult);
-
         for (let i = 0; i < carNames.length; i++) {
             MissionUtils.Console.print(`${carNames[i]} : ${this.#gameResults[i] ? this.#gameResults[i] : ''}`);
         }
@@ -66,7 +66,6 @@ export default class Game {
     }
 
     printGameWinner(carNames) {
-        MissionUtils.Console.print(GAME_MESSAGE.gameResult);
         MissionUtils.Console.print(`최종 우승자 : ${this.getGameWinner(carNames)}`);
     }
 
