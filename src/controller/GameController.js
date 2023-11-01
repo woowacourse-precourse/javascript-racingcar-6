@@ -1,9 +1,9 @@
 import { GUIDE_MESSAGES } from '../constants/messages.js';
 import Score from '../models/Score.js';
 import Race from '../models/Race.js';
+import Awards from '../models/Awards.js';
 import InputView from '../views/InputView.js';
 import OutputView from '../views/OutputView.js';
-import Awards from '../models/Awards.js';
 
 class GameController {
   #outputView = OutputView;
@@ -51,7 +51,7 @@ class GameController {
    */
   #endRace() {
     this.#winners = this.#awards.getWinners(this.scoreBoard);
-    this.#outputView.print(GUIDE_MESSAGES.finalWinner(this.#winners));
+    this.#outputView.print(GUIDE_MESSAGES.finalWinners(this.#winners));
   }
 }
 

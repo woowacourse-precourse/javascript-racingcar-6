@@ -5,15 +5,11 @@ import OPTIONS from '../constants/options.js';
 import Score from './Score.js';
 
 class Race {
-  #fuel;
+  #fuel = 0;
 
-  #outputView;
+  #outputView = OutputView;
 
   #score = new Score();
-
-  constructor() {
-    this.#outputView = OutputView;
-  }
 
   /**
    * 주어진 조건에 따라 레이싱을 진행한다.
@@ -32,32 +28,32 @@ class Race {
   }
 
   /**
-   * 스코어보드 내 참가자들을 순회하며, 라운드를 진행한다.
+   * 스코어보드 내 요소를 순회하며, 라운드를 진행한다.
    * @param {[string, number][]} scoreBoard
    * @returns
    */
   #drive(scoreBoard) {
     scoreBoard.forEach(score => {
-      this.#gasStation();
-      this.#getBooster(score);
+      this.#getFuel();
+      this.#getPoint(score);
     });
 
     return this.#score.showBoard(scoreBoard);
   }
 
   /**
-   * 무작위 연료 값을 설정한다.
+   * `randomNumberGenerator()`를 통해 얻어낸 무작위 수를 할당한다.
    * @private
    */
-  #gasStation() {
+  #getFuel() {
     this.#fuel = randomNumberGenerator();
   }
 
   /**
-   * 연료가 일정 값 (OPTIONS.refuel = 4) 이상이면 부스터(전진 점수)를 얻는다.
+   * 연료가 일정 값 (OPTIONS.refuel = 4) 이상이면 전진하여 점수를 얻는다.
    * @private
    */
-  #getBooster(score) {
+  #getPoint(score) {
     if (this.#fuel >= OPTIONS.refuel) score[1] += OPTIONS.point;
   }
 }

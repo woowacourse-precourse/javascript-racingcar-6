@@ -4,11 +4,7 @@ import REGEXS from '../constants/regexs.js';
 import InputError from '../errors/InputError.js';
 
 class LapsValidator {
-  #laps;
-
-  constructor(laps) {
-    this.#laps = laps;
-  }
+  #laps = OPTIONS.defaultPoint;
 
   /**
    * 입력받은 시도 횟수(laps)가 1 미만인지 판별

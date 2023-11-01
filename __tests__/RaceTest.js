@@ -1,4 +1,4 @@
-import Race from '../src/models/Race';
+import Race from '../src/models/Race.js';
 
 describe('Race 실행 결과', () => {
   let race;

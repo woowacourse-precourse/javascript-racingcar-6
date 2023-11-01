@@ -1,4 +1,4 @@
-import CarNamesValidator from '../src/models/CarNamesValidator';
+import CarNamesValidator from '../src/models/CarNamesValidator.js';
 import { ERROR_MESSAGES } from '../src/constants/messages.js';
 
 describe('자동차 이름 유효성 테스트', () => {

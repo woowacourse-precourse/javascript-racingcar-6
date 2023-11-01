@@ -1,5 +1,5 @@
 class Awards {
-  #highestScore;
+  #highestScore = 0;
 
   constructor(winners) {
     this.winners = winners;

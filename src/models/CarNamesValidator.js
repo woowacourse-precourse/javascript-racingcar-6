@@ -5,6 +5,9 @@ import InputError from '../errors/InputError.js';
 class CarNamesValidator {
   #carNames;
 
+  /**
+   * @param {string[]} carNames
+   */
   constructor(carNames) {
     this.#carNames = carNames;
   }

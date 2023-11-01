@@ -3,7 +3,7 @@ const GUIDE_MESSAGES = Object.freeze({
   laps: '시도할 횟수는 몇 회인가요?\n',
   output: '\n실행 결과',
   lapScore: (carName, score) => `${carName} : ${score}`,
-  finalWinner: winners => `최중 우승자 : ${winners}`,
+  finalWinners: winners => `최중 우승자 : ${winners}`,
 });
 
 const ERROR_MESSAGES = Object.freeze({

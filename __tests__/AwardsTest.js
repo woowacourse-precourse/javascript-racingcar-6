@@ -1,4 +1,4 @@
-import Awards from '../src/models/Awards';
+import Awards from '../src/models/Awards.js';
 
 describe('Awards 실행 결과', () => {
   let awards;
