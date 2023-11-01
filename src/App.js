@@ -39,7 +39,7 @@ class App {
     this.#totalRounds = Number(totalRoundsString);
   }
 
-  async #playRaceGame() {
+  #playRaceGame() {
     OutputView.printResultTitleMessage();
 
     Array.from({ length: this.#totalRounds }).forEach(() => {
@@ -48,7 +48,7 @@ class App {
     });
   }
 
-  async #findWinner() {
+  #findWinner() {
     const winner = this.#refree.getWinner();
     OutputView.printWinner(winner);
   }
