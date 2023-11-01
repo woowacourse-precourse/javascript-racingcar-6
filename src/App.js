@@ -5,14 +5,15 @@ const GAME_INPUT_TRY_NUMBER = 2;
 
 class App {
   async play() {
-    const cars = await this.inputGameInfo(GAME_INPUT_CAR_NAME_NUMBER);
+    const carNames = await this.inputGameInfo(GAME_INPUT_CAR_NAME_NUMBER);
     const trial = await this.inputGameInfo(GAME_INPUT_TRY_NUMBER);
     Console.print('\n실행결과');
 
-    const scores = cars.map((car) => {
-      return { name: car, score: 0 };
+    const cars = carNames.map((name) => {
+      return { name: name, score: 0 };
     });
-    this.playRacing(scores, trial);
+    const result = this.playRacing(cars, trial);
+    Console.print('최종 우승자 : ' + result);
   }
 
   validNameConvention(string) {
@@ -51,14 +52,16 @@ class App {
     }
   }
 
-  playRacing(scores, trial) {
+  playRacing(cars, trial) {
     while (trial--) {
-      scores.forEach((car) => {
+      cars.forEach((car) => {
         if (this.getMovePoint()) car.score = car.score + 1;
         this.printEachScore(car);
       });
       Console.print('');
     }
+
+    return this.tallyUpScore(cars);
   }
 
   getMovePoint() {
@@ -73,6 +76,14 @@ class App {
 
     for (let i = 0; i < car.score; i++) score += '-';
     Console.print(name + score);
+  }
+
+  tallyUpScore(cars) {
+    const maxScore = Math.max(...cars.map((car) => car['score']));
+    return cars
+      .filter((car) => car['score'] === maxScore)
+      .map((winner) => winner.name)
+      .join(', ');
   }
 }
 
