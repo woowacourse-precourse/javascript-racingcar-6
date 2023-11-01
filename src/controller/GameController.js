@@ -64,9 +64,9 @@ export class GameController {
   /**
    *
    * @param {Cars} cars
-   * @returns {Promise<void>}
+   * @returns {void}
    */
-  async getGameWinners(cars) {
+  getGameWinners(cars) {
     const winnersDto = cars.makeWinnersDto(); //winners dto 생성
     this.#outputView.printWinners(winnersDto); //출력
 
