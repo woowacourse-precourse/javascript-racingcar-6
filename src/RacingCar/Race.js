@@ -40,10 +40,7 @@ class Race {
   }
 
   createCarArrayFrom(nameArr) {
-    let cars = [];
-    nameArr.map((name) => cars.push(new Car(name)));
-
-    return cars;
+    return nameArr.map((name) => new Car(name));
   }
 
   printResult() {
@@ -53,7 +50,7 @@ class Race {
     for (let i = 0; i < this._number; i++) {
       this.cars.forEach((car) => {
         car.race();
-        result += car.printDistance() + "\n";
+        result += car.print() + "\n";
       });
       result += "\n";
     }

@@ -37,7 +37,7 @@ class Car {
     this.distance += "-";
   }
 
-  printDistance() {
+  print() {
     return `${this._name} : ${this.distance}`;
   }
 }
