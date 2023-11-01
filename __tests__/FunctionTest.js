@@ -1,86 +1,76 @@
+import { Console, Random } from "@woowacourse/mission-utils";
+import App from "../src/App.js";
+
+const game = new App();
+
+const mockRandoms = (numbers) => {
+  Random.pickNumberInRange = jest.fn();
+  numbers.reduce((acc, number) => {
+    return acc.mockReturnValueOnce(number);
+  }, Random.pickNumberInRange);
+};
+
+const getLogSpy = () => {
+  const logSpy = jest.spyOn(Console, "print");
+  logSpy.mockClear();
+  return logSpy;
+};
+
 describe("기능 구현 테스트", () => {
-  test("경기 종료 전까지 전진", () => {
-    let count = 5;
-    const carList = [{ carName: "pobi", advance: 0 }];
-    const result = [{ carName: "pobi", advance: 5 }];
+  test("실행 결과 테스트", () => {
+    const outputs = ["pobi : -", "jun : -"];
+    const logSpy = getLogSpy();
+    const carNames = ["pobi", "jun"];
+    const random = [5, 3, 1, 6];
 
-    const getRandomValue = (car) => {
-      const number = 5;
+    mockRandoms([...random]);
 
-      number >= 4 &&
-        carList.filter((data) => data.carName === car.carName && car.advance++);
-    };
+    game.carData = carNames;
+    game.movementCount = 2;
 
-    while (count > 0) {
-      carList.map((advance) => getRandomValue(advance));
-      count--;
-    }
+    game.start();
 
-    expect(carList).toEqual(result);
-  });
+    game.carData.map((name) =>
+      game.advanceCount.push({ carName: name, advance: 0 })
+    );
 
-  test("전진 횟수만큼 '-' 출력", () => {
-    const carList = [{ carName: "pobi", advance: 5 }];
-    const result = "pobi : -----";
+    game.getResult();
 
-    let carString = "";
-    let output = "";
-
-    carList.map((car) => {
-      let dashString = "";
-
-      for (let i = 0; i < car.advance; i++) dashString += "-";
-
-      carString = car.carName + " : " + dashString;
-
-      output += carString;
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
-
-    expect(output).toEqual(result);
   });
 
-  test("자동차 전진 횟수 중 가장 높은 값 추출", () => {
+  test("우승자 한 명일 경우 테스트", () => {
+    const outputs = ["최종 우승자 : pobi"];
+    const logSpy = getLogSpy();
     const carList = [
-      { carName: "pobi", advance: 5 },
-      { carName: "woni", advance: 4 },
+      { carName: "pobi", advance: 3 },
+      { carName: "jun", advance: 2 },
     ];
-    const result = 5;
 
-    const highestScore = Math.max(...carList.map((data) => data.advance));
+    game.advanceCount = carList;
+    game.getWinner();
 
-    expect(highestScore).toEqual(result);
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
   });
 
-  test("우승자 한명일 경우", () => {
+  test("우승자 여러 명일 경우 테스트", () => {
+    const outputs = ["최종 우승자 : pobi, woni"];
+    const logSpy = getLogSpy();
     const carList = [
-      { carName: "pobi", advance: 5 },
-      { carName: "woni", advance: 4 },
+      { carName: "pobi", advance: 3 },
+      { carName: "woni", advance: 3 },
+      { carName: "jun", advance: 2 },
     ];
-    const highestScore = 5;
-    const result = "최종 우승자 : pobi";
 
-    const winnerList = carList.filter((data) => data.advance === highestScore);
+    game.advanceCount = carList;
+    game.getWinner();
 
-    const output =
-      "최종 우승자 :" + winnerList.map((winner) => " " + winner.carName);
-
-    expect(output).toEqual(result);
-  });
-
-  test("우승자 여러 명일 경우", () => {
-    const carList = [
-      { carName: "pobi", advance: 5 },
-      { carName: "woni", advance: 4 },
-      { carName: "jun", advance: 5 },
-    ];
-    const highestScore = 5;
-    const result = "최종 우승자 : pobi, jun";
-
-    const winnerList = carList.filter((data) => data.advance === highestScore);
-
-    const output =
-      "최종 우승자 :" + winnerList.map((winner) => " " + winner.carName);
-
-    expect(output).toEqual(result);
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
   });
 });

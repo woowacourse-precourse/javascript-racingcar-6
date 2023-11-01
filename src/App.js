@@ -59,6 +59,10 @@ class App {
     this.winnerList = this.advanceCount.filter(
       (data) => data.advance === highestScore
     );
+
+    Console.print(
+      "최종 우승자 :" + this.winnerList.map((winner) => " " + winner.carName)
+    );
   }
 
   async play() {
@@ -74,10 +78,6 @@ class App {
 
     this.getResult();
     this.getWinner();
-
-    Console.print(
-      "최종 우승자 :" + this.winnerList.map((winner) => " " + winner.carName)
-    );
   }
 }
 
