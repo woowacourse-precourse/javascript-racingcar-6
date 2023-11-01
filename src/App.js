@@ -19,7 +19,7 @@ class App {
     for (let i = 0; i < this.tryCount; i++) {
       this.moveForwardOrStop();
       this.printRacingState();
-      Console.print("");
+      // Console.print("");
     }
     Console.print(`최종 우승자 : ${this.getFinalWinner()}`);
   }
@@ -70,7 +70,7 @@ class App {
     this.racing();
   }
   async play() {
-    this.start();
+    await this.start();
   }
 }
 

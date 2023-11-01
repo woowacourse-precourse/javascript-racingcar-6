@@ -13,6 +13,7 @@ export function checkCarNames(names) {
     throw new Error("[ERROR] 중복된 이름이 있습니다.");
   }
   if (carNames.some((name) => name.length > 5)) {
+    console.log(carNames);
     throw new Error("[ERROR] 자동차 이름은 5자 이하만 가능합니다.");
   }
   return carNames;

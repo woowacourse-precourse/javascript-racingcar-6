@@ -29,11 +29,11 @@ describe("자동차 경주 게임", () => {
     const MOVING_FORWARD = 4;
     const STOP = 3;
     const inputs = ["pobi,woni", "1"];
-    const outputs = ["pobi : -", "최종 우승자 : pobi"];
+    const outputs = ["실행 결과", "pobi : -", "woni : ", "최종 우승자 : pobi"];
     const randoms = [MOVING_FORWARD, STOP];
     const logSpy = getLogSpy();
 
-    mockQuestions(inputs);
+    mockQuestions([...inputs]);
     mockRandoms([...randoms]);
 
     // when
