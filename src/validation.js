@@ -15,7 +15,7 @@ const isFiveOrLessLength = (carName) => {
  * @returns 차의 개수가 0인 지 여부
  */
 const isNoneOfCar = (carArr) => {
-  return carArr.length === 0;
+  return carArr.length === 1 && carArr[0] === '';
 };
 
 /**
