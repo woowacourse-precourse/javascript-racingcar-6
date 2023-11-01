@@ -40,6 +40,11 @@ class App {
       throw new Error("[ERROR] 중복되는 자동차 이름이 있습니다.");
     }
   }
+
+  async getRound() {
+    const round = parseInt(await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n"), 10);
+    return round;
+  }
 }
 
 const app = new App();
