@@ -25,7 +25,7 @@ class GameController {
     this.distanceBoard = Distance.setGameBoard(await this.#inputView.setCarNames());
     this.laps = await this.#inputView.setLaps();
 
-    await this.#start();
+    this.#start();
   }
 
   async #start() {

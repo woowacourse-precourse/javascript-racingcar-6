@@ -6,7 +6,7 @@ class Award {
   #winners;
 
   constructor(winners) {
-    this.winners = winners;
+    this.#winners = winners;
   }
 
   getWinners(distanceBoard) {
