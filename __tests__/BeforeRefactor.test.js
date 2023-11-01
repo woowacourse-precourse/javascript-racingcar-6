@@ -15,7 +15,8 @@ describe("App class", () => {
       const result = await app.getCarName();
 
       expect(Console.readLineAsync).toHaveBeenCalledTimes(1);
-      expect(result).toEqual(["pobi", "woni", "jun"]);  // 수정된 부분
+      expect(Console.readLineAsync).toHaveBeenCalledWith("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
+      expect(result).toEqual(["pobi", "woni", "jun"]); 
     });
   });
 
@@ -70,5 +71,22 @@ describe("App class", () => {
       mockInput("pobi");
       await expect(app.getCarName()).rejects.toThrow("[ERROR] 최소 두 대 이상의 자동차 이름을 입력해주세요.");
     });
-  });  
+  });
+
+  describe("getRound method", () => {
+    let app;
+    beforeEach(() => {
+      app = new App();
+    });
+
+    test("사용자로부터 시도할 횟수 입력 받기", async () => {
+      const testInput = "5";
+      mockInput(testInput);
+      
+      const result = await app.getRound();
+
+      expect(Console.readLineAsync).toHaveBeenCalledWith("시도할 횟수는 몇 회인가요?\n");
+      expect(result).toBe(5);
+    });
+  });
 });
