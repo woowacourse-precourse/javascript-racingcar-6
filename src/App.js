@@ -1,5 +1,4 @@
 import { Random, Console } from "@woowacourse/mission-utils";
-import { GAME_MESSAGE } from "./Constant.js";
 
 class App {
   constructor() {
@@ -59,8 +58,29 @@ class App {
       .map((carStatus) => carStatus.name);
   }
 
+  async carsStatus_check() {
+    const carsStatus = await Console.readLineAsync(
+      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
+    );
+    this.validate_carNames(carsStatus);
+
+    this.carsStatus = carsStatus
+      .split(",")
+      .map((name) => ({ name: name.trim(), move: 0 }));
+  }
+
+  async tryNum_check() {
+    const tryNum = await Console.readLineAsync("시도할 횟수는 몇 회인가요?");
+    this.validate_tryNumber(tryNum);
+
+    this.tryNum = tryNum;
+  }
+
   async play() {
+    await this.carsStatus_check();
+    await this.tryNum_check();
     Console.print("실행 결과");
+
     for (let i = 0; i < this.tryNum; i += 1) {
       this.move_cars();
       this.print_cars();
