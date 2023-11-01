@@ -6,7 +6,6 @@ class App {
 
   async play() {
     const { chance, carNameList } = await getInput();
-    Console.print(carNameList);
     playGame(chance, carNameList);
   }
 }
@@ -25,7 +24,7 @@ async function getInput() {
       throw new Error("[ERROR] 입력 형식이 잘못되었습니다.");
     }
 
-    const chance = await Console.readLineAsync("시도할 횟수는 몇 회인가요?");
+    const chance = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
 
     if (!/^[1-9]\d*$/.test(chance)) {
       throw new Error("[ERROR] 입력 형식이 잘못되었습니다.");
@@ -39,7 +38,7 @@ async function getInput() {
 
 function playGame(chance, carNameList) {
   let runningCars = new Array(carNameList.length).fill(0);
-  let winner = "";
+  Console.print("\n실행 결과");
   for (let i = 0; i < chance; i++) {
     updateCars(runningCars);
     printCars(runningCars, carNameList);
