@@ -13,6 +13,9 @@ import {
 import isValidMinMax from './utils/is-valid-min-max/index.js';
 
 const Validators = {
+  /**
+   * @param {string} input
+   */
   checkRacingVehicleName(input) {
     const { delimiter, nameLengthMin, nameLengthMax, quantityMin, quantityMax } = SYSTEM;
     const { delimiterError, nameLength, language, quantity } = ERROR_MESSAGE_FUNCTION;
@@ -30,6 +33,9 @@ const Validators = {
     if (isDuplication(namesArray)) throw new ValidationError(ERROR_MESSAGE.duplication);
   },
 
+  /**
+   * @param {number} input
+   */
   checkRacingCount(input) {
     if (!isValidCount(input)) {
       throw new ValidationError(
@@ -38,6 +44,11 @@ const Validators = {
     }
   },
 
+  /**
+   * @param {number} input
+   * @param {number} min
+   * @param {number} max
+   */
   checkRandomNumber(input, min, max) {
     if (!isValidMinMax(input, min, max)) {
       throw new ValidationError(ERROR_MESSAGE_FUNCTION.randomNumber(min, max));
