@@ -22,6 +22,10 @@ class InputCars {
       throw new Error(ERROR_MESSAGES.car_name_empty);
     }
 
+    if (carNames.some(name => name.length > 5)) {
+      throw new Error(ERROR_MESSAGES.car_name_too_long);
+    }
+
     if (new Set(carNames).size !== carNames.length) {
       throw new Error(ERROR_MESSAGES.car_name_duplicated);
     }

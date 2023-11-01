@@ -11,6 +11,7 @@ export const ERROR_MESSAGES = {
   not_positive_integer: '[ERROR] 1이상의 숫자를 입력해주세요.',
   not_an_integer: '[ERROR] 정수를 입력해주세요.',
   car_name_empty: '[ERROR] 자동차 이름은 공백일 수 없습니다.',
+  car_name_too_long: '[ERROR] 자동차 이름은 5자 이하여야합니다.',
   car_name_duplicated: '[ERROR] 자동차 이름이 중복되었습니다.',
   car_name_has_spaces: '[ERROR] 자동차 이름에 공백이 포함되어 있습니다.',
   car_name_has_trailing_spaces: '[ERROR] 자동차 이름 양 끝에 공백이 있습니다.',
