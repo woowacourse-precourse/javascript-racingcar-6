@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import { OUTPUT_MESSAGE_FUNCTION } from '../constants/Messages.js';
+import { OUTPUT_MESSAGE, OUTPUT_MESSAGE_FUNCTION } from '../constants/Messages.js';
 
 const OutputView = {
   /**
@@ -13,7 +13,8 @@ const OutputView = {
    * @param {Map} racingResult
    */
   printRacingResult(racingResult) {
-    racingResult.forEach((progress, vehicleName) => Console.print(`${vehicleName} : ${progress}`));
+    racingResult.forEach((progress, vehicleName) => this.print(`${vehicleName} : ${progress}`));
+    this.print(OUTPUT_MESSAGE.blink);
   },
 
   /**
