@@ -21,16 +21,26 @@ class App {
 
   startGame(carNames, numberOfRounds) {
     let cars = carNames.map((name) => ({ name, position: 0 }));
-
-    Console.print("실행결과");
+    let roundResults = [];
+  
     for (let round = 0; round < numberOfRounds; round++) {
       cars.forEach((car) => {
         if (Random.pickNumberInRange(1, 10) >= 4) {
           car.position += 1;
         }
       });
-      this.displayRoundResults(cars);
+      // 각 라운드의 결과를 roundResults 배열에 저장합니다.
+      roundResults.push(
+        cars.map((car) => `${car.name} : ${"-".repeat(car.position)}`).join("\n")
+      );
     }
+  
+    // 실행결과 헤더를 출력합니다.
+    Console.print("실행결과");
+  
+    // 모든 라운드의 결과를 한 번에 출력합니다.
+    // 각 라운드는 두 개의 개행 문자로 구분되어 있습니다.
+    Console.print(roundResults.join("\n\n"));
     return cars;
   }
 
@@ -45,7 +55,7 @@ class App {
     const winners = cars
       .filter((car) => car.position === maxPosition)
       .map((car) => car.name);
-    Console.print(`최종우승자: ${winners.join(",")}`);
+    Console.print(`\n최종우승자: ${winners.join(",")}`);
   }
 
   async promptCarNames() {
@@ -56,6 +66,7 @@ class App {
     this.validateCarNames(carNames);
     return carNames;
   }
+
   async promptNumberOfRounds() {
     const input = await Console.readLineAsync(
       "시도할 횟수는 몇 회인가요?(1~10회로 제한)"
