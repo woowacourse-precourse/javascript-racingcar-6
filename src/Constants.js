@@ -1,0 +1,1 @@
+export const NUMBERS_REGEX = /^\d+$/;
