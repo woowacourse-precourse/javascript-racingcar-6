@@ -2,8 +2,8 @@ import CarNameValidation from '../src/Validation/CarNameValidation.js';
 import TrackCntValidation from '../src/Validation/TrackCntValidation';
 
 describe('Valdation Test', () => {
-    // given
   test.each([
+    // given
     [''],
     ['a,javaji'],
     [',a'],
@@ -11,14 +11,16 @@ describe('Valdation Test', () => {
     [','],
     ['aaa,aaa'],
     ['pobi,pobi'],
-  ])('이름의 길이, 중복, NULL 입력값 테스트', (inputs) => {
-
-    // when & then
-    expect(() => {new CarNameValidation(inputs);
+  ])('이름의 길이, 중복, NULL 입력값 테스트', inputs => {
+    expect(() => {
+      // when
+      new CarNameValidation(inputs);
+      // then
     }).toThrow('[ERROR]');
   });
 
   test.each([
+    // given
     [''],
     ['a'],
     ['1.1'],
@@ -27,10 +29,11 @@ describe('Valdation Test', () => {
     [','],
     [' '],
     ['\t'],
-  ])('Track 입력 자연수 여부 테스트', (inputs) => {
-
-    // when & then
-    expect(() => {new TrackCntValidation(inputs);
+  ])('Track 입력 자연수 여부 테스트', inputs => {
+    expect(() => {
+      // when
+      new TrackCntValidation(inputs);
+      // then
     }).toThrow('[ERROR]');
   });
 });
