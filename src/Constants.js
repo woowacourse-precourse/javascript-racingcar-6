@@ -5,6 +5,7 @@ const RESULT_MESSAGE = '실행 결과';
 const FINAL_WINNER = '최종 우승자 : ';
 
 const MOVE = '-';
+const NUMBER_FOR_MOVE = 4;
 
 const ERROR_PREFIX = '[ERROR]';
 const ERROR = {
@@ -13,6 +14,7 @@ const ERROR = {
   nameDuplicated: `${ERROR_PREFIX} 자동차 이름은 중복될 수 없습니다.`,
   invalidCountType: `${ERROR_PREFIX} 숫자만 입력 가능합니다.`,
   invalidCountRange: `${ERROR_PREFIX} 1 이상의 숫자만 입력 가능합니다.`,
+  invalidNameType: `${ERROR_PREFIX} 자동차 이름에 특수문자가 포함될 수 없습니다.`,
 };
 
-export { INPUT_NAME, INPUT_COUNT, MOVE, RESULT_MESSAGE, FINAL_WINNER, ERROR };
+export { INPUT_NAME, INPUT_COUNT, MOVE, RESULT_MESSAGE, FINAL_WINNER, ERROR, NUMBER_FOR_MOVE };
