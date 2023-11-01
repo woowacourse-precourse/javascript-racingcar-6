@@ -39,7 +39,7 @@ class App {
 
   shouldUpdateDistanceOnAdvance() {
     const randomNumber = Random.pickNumberInRange(0, 9);
-    if (randomNumber > 4) {
+    if (randomNumber >= 4) {
       return true;
     }
     return false;
