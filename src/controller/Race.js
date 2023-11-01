@@ -45,6 +45,7 @@ class Race {
   }
 
   #startGame() {
+    OutputView.printBlankLine();
     OutputView.printShowResult();
     for (let i = 0; i < this.#roundNumber; i++) {
       this.#moveCarsAndAnnounceResult();
