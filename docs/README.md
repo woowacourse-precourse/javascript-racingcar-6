@@ -2,9 +2,9 @@
 
 ## 입력
 
-- [ ] 5자 이하의 자동차 이름(쉼표 기준)을 구분해 입력:  getCarNames()
+- [x] 5자 이하의 자동차 이름(쉼표 기준)을 구분해 입력:  getCarNames()
 
-- [ ] 시도 횟수(이동 횟수) 입력 - getGameCount()
+- [x] 시도 횟수(이동 횟수) 입력 - getGameCount()
 
   ### 자동차 이름 검증
     - [x] 이름 입력값 검증 - validateCarName()
