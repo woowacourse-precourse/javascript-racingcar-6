@@ -29,6 +29,8 @@
 - 우승자가 여러 명일 경우, 쉼표(,)를 이용하여 구분
 - Console.print() 활용
 
+<br/>
+
 # 10.28 코드 수정
 
 ## Car 클래스 생성
@@ -39,3 +41,22 @@
 
 ## getLength(), printCurrentRace() 함수 삭제
 - 해당 함수의 기능이 Car 클래스 내부에 추가되었으므로 해당 함수 삭제
+
+<br/>
+
+# 11.1 코드 수정
+
+## Race 클래스 생성
+- 자동차 경주를 의미하는 Race 클래스 생성
+- getRacers() : 경주에 참여하는 자동차 이름을 입력받는 함수
+- getTimes() : 경주에서 전진을 시도하는 횟수를 입력받는 함수
+- doRace() : 경주를 진행하고, 경주 결과를 출력하는 함수
+- doTry() : 전진을 1회 실행하고, 현재 결과를 출력하는 함수
+
+## getRacer(), doRace(), EndRace() 함수 삭제
+- 해당 함수의 기능이 Race 클래스 내에 포함되므로 App 클래스의 해당 함수 삭제
+
+## Car 클래스 함수 수정
+- tryMoveForward() 함수에 현재 위치 출력문 포함
+- printCurrentPosition() 함수 삭제
+
