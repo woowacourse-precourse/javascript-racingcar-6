@@ -150,13 +150,34 @@ describe("App class", () => {
 
     test("자동차 생성하기", () => {
       const carName = ["pobi", "woni", "jun"];
-      app.MakeCar(carName);
+      app.makeCar(carName);
 
       expect(app.car).toEqual([
         { name: "pobi" },
         { name: "woni" },
         { name: "jun" }
       ]);
+    });
+  });
+
+  describe("getRandomNumber method", () => {
+    let app;
+    beforeEach(() => {
+      app = new App();
+    });
+  
+    test("0 ~ 9 사이 무작위 값 생성 테스트", () => {
+      const results = new Set();
+  
+      for (let i = 0; i < 100; i++) {
+        const randomValue = app.getRandomNumber();
+        results.add(randomValue);
+        
+        expect(randomValue).toBeGreaterThanOrEqual(0);
+        expect(randomValue).toBeLessThanOrEqual(9);
+      }
+  
+      expect(results.size).toBe(10);
     });
   });
 });
