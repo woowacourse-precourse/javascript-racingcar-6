@@ -1,3 +1,4 @@
+// App.js
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 class App {
@@ -15,9 +16,11 @@ class App {
 
     for (const carName of this.carNames) {
       if (carName.length >= 6) {
-        throw new Error("[ERROR] 자동차 이름은 5글자 이하여야 합니다.");
+        return "[ERROR] 자동차 이름은 5글자 이하여야 합니다.";
       }
     }
+    // 모든 조건을 만족하면 null 반환
+    return null;
   }
 
   async try() {
@@ -26,10 +29,12 @@ class App {
     );
 
     if (!/^\d+$/.test(tryInput)) {
-      throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
+      return "[ERROR] 숫자가 잘못된 형식입니다.";
     }
 
     this.tryInput = parseInt(tryInput, 10);
+    // 모든 조건을 만족하면 null 반환
+    return null;
   }
 
   async process() {
@@ -52,14 +57,27 @@ class App {
   }
 
   async play() {
+    let error = null;
     try {
-      await this.carName();
-      await this.try();
+      error = await this.carName();
+      if (error) {
+        return error;
+      }
+
+      error = await this.try();
+      if (error) {
+        return error;
+      }
+
       await this.process();
-    } catch (error) {
-      console.error(error.message);
+    } catch (err) {
+      return err.message;
     }
+    return null;
   }
 }
 
 export default App;
+
+const app = new App();
+app.play();

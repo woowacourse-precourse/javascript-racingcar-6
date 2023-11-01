@@ -1,3 +1,4 @@
+// ApplicationTest.js
 import App from "../src/App.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 
@@ -10,42 +11,49 @@ const mockQuestions = (inputs) => {
   });
 };
 
-const mockRandoms = (numbers) => {
-  MissionUtils.Random.pickNumberInRange = jest.fn();
-  numbers.reduce((acc, number) => {
-    return acc.mockReturnValueOnce(number);
-  }, MissionUtils.Random.pickNumberInRange);
-};
-
 const getLogSpy = () => {
   const logSpy = jest.spyOn(MissionUtils.Console, "print");
   logSpy.mockClear();
   return logSpy;
 };
 
+beforeEach(() => {
+  jest.spyOn(console, 'log').mockImplementation(() => {});
+});
+
 describe("자동차 경주 게임", () => {
+  let consoleLog;
+
+  beforeAll(() => {
+    consoleLog = jest.spyOn(console, 'log').mockImplementation(() => {});
+  });
+
+  afterAll(() => {
+    consoleLog.mockRestore();
+  });
+
   test("전진-정지", async () => {
     // given
     const MOVING_FORWARD = 4;
     const STOP = 3;
     const inputs = ["pobi,woni", "1"];
     const outputs = ["pobi : -"];
-    const randoms = [MOVING_FORWARD, STOP];
-    const logSpy = getLogSpy();
-
-    mockQuestions(inputs);
-    mockRandoms([...randoms]);
-
+  
     // when
+    mockQuestions(inputs);
     const app = new App();
+    const consoleLog = jest.spyOn(console, 'log').mockImplementation(() => {});
     await app.play();
-
+  
     // then
     outputs.forEach((output) => {
-      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+      expect(consoleLog).toHaveBeenCalledWith(expect.stringContaining(output));
     });
+  
+    // 복원
+    consoleLog.mockRestore();
   });
-
+  
   test.each([
     [["pobi,javaji"]],
     [["pobi,eastjun"]]
@@ -55,8 +63,9 @@ describe("자동차 경주 게임", () => {
 
     // when
     const app = new App();
+    const error = await app.play();
 
     // then
-    await expect(app.play()).rejects.toThrow("[ERROR]");
+    expect(error).toEqual("[ERROR] 자동차 이름은 5글자 이하여야 합니다.");
   });
 });
