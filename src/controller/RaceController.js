@@ -41,9 +41,9 @@ export default class RaceController {
     this.carNames.forEach((name) => {
       if (name.length > 5) {
         throw new Error(ERROR_MESSAGES.NUM_OF_CHARACTER_EXCEED);
-      } else if (name.trim() === '') {
+      } else if (name.trim() === "") {
         throw new Error(ERROR_MESSAGES.BLANK_NAME);
-      } 
+      }
     });
     if (this.hasDuplicateNumber(this.carNames, this.carNames.length)) {
       throw new Error(ERROR_MESSAGES.DUPLICATE_NAME);
@@ -52,7 +52,7 @@ export default class RaceController {
 
   async getNumOfTry() {
     this.numOfTry = await this.inputView.readNumberOfTry();
-    
+
     this.checkNumOfTryError();
   }
 
@@ -72,19 +72,19 @@ export default class RaceController {
   }
 
   getPoints() {
-    let stepMessage = '';
+    let stepMessage = "";
     this.cars.forEach((car) => {
       if (MissionUtils.Random.pickNumberInRange(0, 9) >= 4) {
         car.point += 1;
       }
-      stepMessage += `${car.name} : ${'-'.repeat(car.point)}\n`
+      stepMessage += `${car.name} : ${"-".repeat(car.point)}\n`;
     });
     this.outputView.printMessage(`${stepMessage}`);
   }
 
   getWinners() {
     let maxPoint = 0;
-    
+
     this.cars.forEach((car) => {
       if (maxPoint === car.point) {
         this.winners.push(car.name);
@@ -94,6 +94,8 @@ export default class RaceController {
         maxPoint = car.point;
       }
     });
-    this.outputView.printWinners(this.winners.map((winner) => winner).join(', '));
+    this.outputView.printWinners(
+      this.winners.map((winner) => winner).join(", ")
+    );
   }
 }
