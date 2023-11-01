@@ -3,6 +3,7 @@ const CONFIG = {
   MINIMUM_CAN_MOVE_FOWARD: 4,
   MIN_RANDOM_COUNT: 0,
   MAX_RANDOM_COUNT: 9,
+  MIN_CAR_COUNT: 2,
 };
 
 export default CONFIG;
