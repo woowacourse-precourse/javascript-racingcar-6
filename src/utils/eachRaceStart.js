@@ -1,4 +1,4 @@
-import randomNumGenerator from './RandomNumGenerator.js';
+import randomNumGenerator from './randomNumGenerator.js';
 
 const eachRaceStart = (carNameArr) => {
   const carNum = carNameArr.length;
