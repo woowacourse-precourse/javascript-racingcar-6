@@ -79,6 +79,8 @@ class App {
       .filter((car) => car.getRacingLength() === maxRacingLength)
       .map((user) => user.name)
       .join(', ');
+
+    Console.print(`${MESSAGES.WINNER} : ${winners}`);
   }
 }
 
