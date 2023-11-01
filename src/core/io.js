@@ -25,7 +25,7 @@ export async function askNames() {
 
   const names = splitNamesFrom(nameString);
 
-  checkNamesAreValid(names);
+  assertNamesAreValid(names);
   assertUniqueNameIn(names);
 
   return names;
@@ -81,7 +81,7 @@ export function printWinners(winners) {
  *
  * @param {string[]} names
  */
-function checkNamesAreValid(names) {
+function assertNamesAreValid(names) {
   names.forEach((name) => {
     assertNameValid(name);
   });
