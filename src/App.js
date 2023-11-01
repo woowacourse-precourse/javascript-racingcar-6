@@ -15,6 +15,10 @@ class Car {
       this.position++; // 자동차 위치 증가
     }
   }
+  
+  toString() { // 출력 형식 메서드
+    return `${this.name} : ${"-".repeat(this.position)}`; // 자동차 이름, 위치 문자열로 반환
+   } // $이걸 쓰는게 맞나..?
 } //car class 닫음
 
 // App class 정의
@@ -24,6 +28,7 @@ class App {
     this.rounds = 0; // 시도할 횟수
     this.winners = []; // 우승자 배열
   }
+
   async play() { // 게임 시작 메서드
     /*자동차 이름, 시도할 횟수 입력받기, 이름 유효한지 체크하기
     실행결과 출력
@@ -50,18 +55,26 @@ class App {
     this.findWinners(); // 우승자 찾기
     this.showWinners(); // 우승자 출력
 
-  }
+  } //이제보니 이거도 인덴트가 3이었네...! 
   
   runGame() { // 게임 실행 메서드
     for (let i = 0; i < this.rounds; i++) {
-      for (const car of this.cars) {
-        car.moveForward(); // 각 자동차 전진
-      }  
-      for (const car of this.cars) {
-        Console.print(`${this.name} : ${"-".repeat(this.position)}`); // 각 자동차 출력 형식으로 출력
-      }  
+      this.moveCars(); // 자동차들 전진
+      this.showCars(); // 자동차들 출력
       Console.print(""); 
-    } //헉 인덴트가 3개...!!!!!!!!!! NOOOOO
+    }
+  }
+
+  moveCars() { // 자동차들 전진 메서드
+    for (const car of this.cars) {
+      car.moveForward(); // 각 자동차 전진
+    }
+  }
+
+  showCars() { // 자동차들 출력 메서드
+    for (const car of this.cars) {
+      Console.print(car.toString()); // 각 자동차 출력 형식으로 출력
+    }
   }
 
   findWinners() { // 우승자 찾기 메서드
@@ -74,7 +87,7 @@ class App {
     Console.print(`최종 우승자 : ${winnerNames.join(", ")}`); // 우승자들의 이름을 쉼표로 구분하여 출력 //이게 맞나...?ㅜㅜ
   }
 
-}
+} // App class 닫음
 
 export default App;
 
