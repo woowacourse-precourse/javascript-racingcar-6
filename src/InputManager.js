@@ -13,10 +13,11 @@ const InputManager = {
   },
   async inputTryCount() {
     const tryString = await Console.readLineAsync(`${MESSAGE.GET_TRY_COUNT}\n`);
+    const tryNumber = Number(tryString);
 
     Validator.validateTryCount(tryString);
 
-    return Number(tryString);
+    return tryNumber;
   },
 };
 

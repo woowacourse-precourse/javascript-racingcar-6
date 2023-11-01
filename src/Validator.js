@@ -32,11 +32,12 @@ const Validator = {
     return new Set(carNames).size !== carNames.length;
   },
 
-  validateTryCount(n) {
-    if (Number.isNaN(n)) {
-      throw new CustomError(ERROR.CAR_NAME_DUPLICATED);
+  validateTryCount(tryString) {
+    const tryNumber = Number(tryString);
+    if (Number.isNaN(tryNumber)) {
+      throw new CustomError(ERROR.TRY_COUNT_NOT_A_NUMBER);
     }
-    if (Number(n) <= 0) {
+    if (tryNumber <= 0) {
       throw new CustomError(ERROR.TRY_COUNT_NOT_POSITIVE);
     }
   },
