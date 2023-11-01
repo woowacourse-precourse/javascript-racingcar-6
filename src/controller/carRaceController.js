@@ -20,8 +20,10 @@ class Play {
     raceStart(raceTimes, carList) {
         // 숫자인지 확인
         if (Number.isNaN(raceTimes)) {
-            throw new Error('[Error] 숫자를 입력하세요')
-        }else{
+            throw new Error('[ERROR] 숫자를 입력하세요')
+        }else if(raceTimes <= 0){
+        throw new Error("[ERROR] 0 이상의 숫자를 입력하세요")
+        } else{
             // 실행결과 준비
             MissionUtils.Console.print('실행 결과');
             //입력된 횟수만큼 레이싱 경주 실행
