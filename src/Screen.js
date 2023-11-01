@@ -5,16 +5,8 @@ class Screen {
     return userInput;
   }
 
-  static printCarStatus(carStatus) {
-    Console.print(carStatus);
-  }
-
   static printWinner([...winnerList]) {
     Console.print(`최종 우승자 : ${winnerList.join(', ')}`);
-  }
-
-  static printEmptyLine() {
-    Console.print('');
   }
 
   static printMessage(message) {

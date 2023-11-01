@@ -6,6 +6,7 @@ const MSG_GAME_START =
   '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n';
 const MSG_TRY_TIME = '시도할 횟수는 몇 회인가요?\n';
 const ERROR_MSG_INPUT = '[ERROR] 자동차 이름이 잘못된 형식입니다.';
+const MSG_EMPTY_LINE = '';
 
 class Racing {
   constructor() {
@@ -43,9 +44,9 @@ class Racing {
     for (let i = 0; i < this.numberOfGames; i++) {
       this.players.forEach((car) => {
         car.move();
-        Screen.printCarStatus(car.status());
+        Screen.printMessage(car.status());
       });
-      Screen.printEmptyLine();
+      Screen.printMessage(MSG_EMPTY_LINE);
     }
   }
 
