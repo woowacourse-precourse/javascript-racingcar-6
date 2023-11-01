@@ -71,11 +71,13 @@ class Computer {
   }
 
   static makeWinnerString(winnerArray) {
+    // 공동 우승일 경우
     if (winnerArray.length > 1) {
       const winnerString = winnerArray.join(", ");
       return winnerString;
     }
 
+    // 단독 우승일 경우
     if (winnerArray.length === 1) {
       const winnerString = winnerArray[0];
       return winnerString;
