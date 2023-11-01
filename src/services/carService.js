@@ -37,6 +37,14 @@ class CarService {
       }
     });
   }
+
+  getWinnerList() {
+    const winnerList = this.getCarList()
+      .filter((car) => car.forwardCount === this.#highestForwardCount)
+      .map((winner) => winner.carName);
+
+    return winnerList;
+  }
 }
 
 export default CarService;

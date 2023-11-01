@@ -25,6 +25,11 @@ class OutputView {
     });
     this.printNewLine();
   }
+
+  printWinner(winnerList) {
+    const names = winnerList.join(', ');
+    this.print(`${GAME_MESSAGE.finalWinner} ${names}`);
+  }
 }
 
 export default OutputView;

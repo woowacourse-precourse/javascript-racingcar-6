@@ -21,6 +21,7 @@ class GameController {
     await this.getCarNames();
     const roundNumber = await this.getRoundNumber();
     await this.race(roundNumber);
+    await this.getWinner();
   }
 
   async getCarNames() {
@@ -47,6 +48,11 @@ class GameController {
       const carList = this.#carService.getCarList();
       this.#outputView.printCarList(carList);
     }
+  }
+
+  async getWinner() {
+    const winnerList = this.#carService.getWinnerList();
+    this.#outputView.printWinner(winnerList);
   }
 }
 
