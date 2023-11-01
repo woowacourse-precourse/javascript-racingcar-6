@@ -68,6 +68,12 @@ class RacingGame {
 
     return true;
   }
+
+  printRaceProgress() {
+    for (const car of this.#cars) {
+      car.printCurDistance();
+    }
+  }
 }
 
 export default RacingGame;
