@@ -98,10 +98,10 @@
     - [x] getRandomNumber()
   - [x] Prompter.js
     - [x] getUserInput()
-  - [ ] Race.js
-    - [ ] compete()
-    - [ ] printResult()
-    - [ ] getWinner()
+  - [x] Race.js
+    - [x] compete()
+    - [x] printResult()
+    - [x] getWinner()
 - [x] 디버깅용 console.log 삭제하기 
 - [x] EOL확인하기 (End of line) 
 - [x] 컨벤션 확인

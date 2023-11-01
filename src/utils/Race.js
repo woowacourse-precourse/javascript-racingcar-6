@@ -35,7 +35,7 @@ export default class Race {
     if (commonWinner.length==1) {
       return winner.name;
     } else {
-      return commonWinner.map(v => v.name). join(', ');
+      return commonWinner.map(v => v.name).join(', ');
     }
   }
 }
