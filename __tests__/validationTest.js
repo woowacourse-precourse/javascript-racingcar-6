@@ -40,7 +40,14 @@ describe("차이름 입력값 테스트", () => {
 });
 
 describe("시행 횟수 입력값 테스트", () => {
-	test("입력 받은 시행 횟수의 형식이 잘 못 되었을때", () => {
+	test("입력 받은 시행 횟수의 올바른 형식", () => {
+		const input = ["1", "2", "3"];
+		input.forEach((v) => {
+			expect(() => tryNumCheck(v)).not.toThrow("[ERROR]");
+		});
+	});
+
+	test("입력 받은 시행 횟수의 형식이 잘못 되었을때", () => {
 		const input = ["-2", "0", "4.5", "-3.2", "c", "true", "", " "];
 		input.forEach((v) => {
 			expect(() => tryNumCheck(v)).toThrow("[ERROR]");
