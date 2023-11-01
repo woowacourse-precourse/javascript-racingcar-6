@@ -114,8 +114,7 @@
 의존관계 : RacingGame
 
 - [x] DO : 자신의 이름(name)과 현재 위치(position)를 생성자에서 초기화한다.
-  - [x] DO NOT: 자동차의 이름은 5자를 넘어선 안된다.
-- [x] DO : getInformation은 자신의 현재 위치와 이름을 반환한다.
+  - [x] DO NOT: 자동차의 이름은 5자를 넘어선 안된다. 🧿
 - [x] DO : move 메서드는 전진시킨다.
 - [x] DO NOT : 외부에서 Car 객체의 상태에 직접 접근하거나 변경할 수 없다.
 
