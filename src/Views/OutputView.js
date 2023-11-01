@@ -2,17 +2,16 @@ import {Console} from '@woowacourse/mission-utils';
 import MESSAGES from '../../utils/Messages';
 
 const OutputView = {
-  printResult(racingCar) {
-    this.printProgressStatus(racingCar);
-    this.printWinner(racingCar);
+  printResultMessage() {
+    Console.print(MESSAGES.lineBreak);
+    Console.print(MESSAGES.result);
   },
+
   printProgressStatus(racingCar) {
-    const totalProgressStatus = racingCar
-      .getTotalProgressStatus()
-      .map((progressStatus) => progressStatus.join(MESSAGES.lineBreak) + MESSAGES.lineBreak)
-      .join(MESSAGES.lineBreak);
-    Console.print(MESSAGES.result + totalProgressStatus);
+    racingCar.getTotalProgressStatus().forEach((progressStatus) => Console.print(progressStatus));
+    Console.print(MESSAGES.lineBreak);
   },
+
   printWinner(racingCar) {
     Console.print(MESSAGES.finalWinner + racingCar.getWinner().join(MESSAGES.winnerDelimeter));
   },

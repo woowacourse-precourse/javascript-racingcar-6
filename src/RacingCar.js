@@ -7,11 +7,9 @@ class RacingCar {
     this.totalProgressStatus = [];
   }
 
-  tryProgress(trialCount) {
-    for (let i = 1; i <= trialCount; i += 1) {
-      this.progressCars();
-      this.pushEachProgressStatus();
-    }
+  tryProgress() {
+    this.progressCars();
+    this.pushEachProgressStatus();
   }
 
   progressCars() {
@@ -21,8 +19,7 @@ class RacingCar {
   }
 
   pushEachProgressStatus() {
-    const eachProgressStatus = this.cars.map((car) => car.getProgressStatus());
-    this.totalProgressStatus.push(eachProgressStatus);
+    this.totalProgressStatus = this.cars.map((car) => car.getProgressStatus());
   }
 
   getTotalProgressStatus() {
