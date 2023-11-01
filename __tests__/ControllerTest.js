@@ -61,6 +61,7 @@ describe("경주 조건 입력: 자동차 이름", () => {
       await expect(controller.getCarNames()).rejects.toThrow("[ERROR]");
     }
   );
+
 });
 
 describe("경주 조건 입력: 시도 횟수", () => {
@@ -253,11 +254,11 @@ describe("경주 완료 출력", () => {
 
     expect(controller.winners).toEqual(["hee"]);
     outputs.forEach((output) => {
-      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining([output]));
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
   });
 
-  test("우승자 선별 - 공동", async () => {
+  test("우승자 선별, 출력 - 공동", async () => {
     const outputs = ["최종 우승자 : hee, seo"];
     const logSpy = getLogSpy();
 
