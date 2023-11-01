@@ -122,4 +122,15 @@ describe("자동차 경주 게임", () => {
 
     await expect(app.play()).rejects.toThrow("[ERROR]");
   });
+
+  test("시도할 횟수 입력받는 테스트", async () => {
+    const input = ["37"];
+    const output = "37";
+    mockQuestions(input);
+
+    const app = new App();
+    const count = await app.getMoveCount();
+
+    expect(count).toEqual(output);
+  });
 });
