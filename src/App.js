@@ -8,6 +8,7 @@ class App {
 		const carList = await InputCarName();
 		const attemptNumber = await InputAttempt();
 		const forwardCount = [...carList].map((x) => 0);
+
 		Console.print('\n실행 결과');
 		for (let i = 0; i < attemptNumber; i++) {
 			racingResult(carList, forwardCount);
@@ -19,6 +20,7 @@ class App {
 	findWinner(carList, forwardCount) {
 		const winnerList = [];
 		const MAX_COUNT = Math.max(...forwardCount);
+
 		forwardCount.forEach((count, idx) => {
 			if (count === MAX_COUNT) {
 				const winnerCarName = carList[idx].substr(0, carList[idx].indexOf(' '));

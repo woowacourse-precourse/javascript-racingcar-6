@@ -6,6 +6,7 @@ export default async function InputCarName() {
 		const nameList = answer.split(',');
 		const REGEX = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|]+$/;
 		const filterName = nameList.filter((name) => name.length < 5 && REGEX.test(name));
+
 		if (nameList.length === 1) {
 			throw new Error('[ERROR] 이름은 2개 이상 작성해야 합니다.');
 		}
@@ -13,8 +14,6 @@ export default async function InputCarName() {
 			throw new Error('[ERROR] 공백없이 5글자 이하의 영어 및 한글만 입력해주세요.');
 		}
 		if (new Set(filterName).size !== filterName.length) {
-			console.log(new Set(filterName).length);
-			console.log(filterName.length);
 			throw new Error('[ERROR] 중복된 이름이 존재합니다.');
 		}
 		nameList.forEach((car, idx) => {
