@@ -5,8 +5,6 @@ import Car from './Car/Car.js';
 import Printer from './Printer/Printer.js';
 
 class App {
-  #receiver = new Receiver();
-
   #carNames;
 
   #tryNum;
@@ -18,19 +16,20 @@ class App {
   #winners;
 
   async play() {
-    this.#carNames = await this.#receiver.receiveCarNames();
+    this.#carNames = await Receiver.receiveCarNames();
 
     Validator.checkValidCarsName(Combiner.combineArray(this.#carNames));
 
     this.#carArray = Combiner.combineArray(this.#carNames);
 
-    this.#tryNum = await this.#receiver.receiveGameTryNum();
+    this.#tryNum = await Receiver.receiveGameTryNum();
 
     Validator.checkIsPostiveNum(this.#tryNum);
 
     this.#cars = this.#carArray.map((carName) => new Car(carName));
 
     Printer.printResult();
+
     for (let i = 0; i < this.#tryNum; i += 1) {
       Printer.printRound(i + 1);
 
