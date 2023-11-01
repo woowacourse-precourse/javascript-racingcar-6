@@ -1,33 +1,39 @@
-import {RacingGame} from "../model/carRaceModel.js";
-import {INPUT_CARNAMES,INPUT_RACECOUNT,DISPLAY_RACERESULT} from "../view/carRaceView.js";
-import {MissionUtils} from "@woowacourse/mission-utils";
+import { MissionUtils } from '@woowacourse/mission-utils';
+import Result from "../view/carRaceView.js";
 
-const PLAY = () => {
-    try {
-        // 1. 사용자로부터 자동차 이름을 입력받습니다.
-        const carNames = INPUT_CARNAMES();
+// Play 클래스 정의
+class Play {
+    // 자동차 경주 메서드
+    racing(carList) {
+        carList.forEach((car) => {
+            const RACE_TIMES = MissionUtils.Random.pickNumberInRange(0, 9);
 
-        // 2. 사용자로부터 레이스 횟수를 입력받습니다.
-        const raceCount = INPUT_RACECOUNT();
+            if (RACE_TIMES > 3) {
+                car.move(); // 3초과 1칸 전진
+            }
 
-        // 3. 레이스 객체를 생성합니다.
-        const race = new RacingGame();
-
-        // 4. 입력받은 자동차 이름을 레이스에 추가합니다.
-        carNames.forEach((name) => race.addCar(name));
-
-        // 5. 입력받은 횟수만큼 레이스를 실행합니다.
-        for (let i = 0; i < raceCount; i++) {
-            race.raceOneRound();
-        }
-
-        // 6. 레이스의 결과를 얻고 출력합니다.
-        const winners = race.getWinners();
-        DISPLAY_RACERESULT(winners);
-
-    } catch (error) {
-        // 7. 예외가 발생한 경우, 에러 메시지를 출력합니다.
-        MissionUtils.Console.print(error.message);
+            MissionUtils.Console.print(`${car.name} : ${'-'.repeat(car.position)}`);
+        });
     }
-};
-export {PLAY};
+
+    raceStart(raceTimes, carList) {
+        if (!Number.isNaN(raceTimes)) {
+            // 실행결과 준비
+            MissionUtils.Console.print('실행 결과');
+            //입력된 횟수만큼 레이싱 경주 실행
+            for(let i = 0;  i < raceTimes; i++ ){
+                this.racing(carList);
+            }
+        }
+    }
+
+// 경주 횟수 입력 메서드
+    async inputRaceTimes(carList) {
+        MissionUtils.Console.print('시도할 횟수는 몇 회인가요?');
+        const RACE_TIMES = await MissionUtils.Console.readLineAsync('');
+        this.raceStart(RACE_TIMES, carList);
+        new Result().FinalResult(carList);
+    }
+    }
+
+export default Play;

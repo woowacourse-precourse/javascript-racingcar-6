@@ -1,9 +1,9 @@
-import {PLAY} from "./controller/carRaceController.js";
+import CarName from "./controller/carNameController.js";
 
 class App {
-    PLAY(){
-        this.PLAY();
-    }
+   play(){
+       new CarName().start();
+   }
 }
 
 export default App;
