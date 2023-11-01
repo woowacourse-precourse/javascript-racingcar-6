@@ -20,22 +20,35 @@ export const initCars = (carNames) => {
   return cars;
 };
 
+export const moveCars = (cars) => {
+  cars.forEach((car) => {
+    const randomNumber = createRandomNumber();
+    if (canMoveForward(randomNumber)) {
+      car.moveForward();
+    }
+  });
+};
+
+export const printResults = async (cars, roundCount, gameRound) => {
+  if (roundCount < gameRound) {
+    return eachResultOutput(cars);
+  }
+  return finalResult(cars);
+};
+
 export const startGame = async () => {
   const [carsNames, gameRound] = await userInput();
   const cars = await initCars(carsNames);
 
-  let roundCount = 0;
-  while (roundCount < gameRound) {
-    cars.forEach((car) => {
-      const randomNumber = createRandomNumber();
-      if (canMoveForward(randomNumber)) {
-        car.moveForward();
-      }
-    });
-    eachResultOutput(cars);
-    roundCount += 1;
+  const printPromises = [];
+
+  for (let roundCount = 0; roundCount <= gameRound; roundCount += 1) {
+    moveCars(cars);
+    printPromises.push(printResults(cars, roundCount, gameRound));
   }
-  finalResult(cars);
+
+  await Promise.all(printPromises);
+
   return cars;
 };
 

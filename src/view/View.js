@@ -7,7 +7,6 @@ import {
 import InputView from './InputView';
 import { validatorCarName, validatorGameRound } from '../Utils/Validator';
 import OutputView from './OutputView';
-// import { validateGameRound } from '../Errors/InputErrors';
 
 const userInput = async () => {
   const carsName = await InputView(CARNAME_REQUEST_MESSAGE);
