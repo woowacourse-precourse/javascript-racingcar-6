@@ -66,7 +66,7 @@ describe("자동차 이름 입력 메소드 테스트", () => {
   });
 
   test.each([[["pobi,longname"]], [["longname"]], [["pobi,,name"]]])(
-    "자동차 이름 예외 처리 테스트",
+    "자동차 이름이 빈 값이거나 5자를 초과하면 예외를 반환한다.",
     async (inputs) => {
       mockQuestions(inputs);
 
