@@ -22,7 +22,7 @@ function winnerCar(carName, carMove, index, winnerLength) {
 }
 
 function resultText(winnerCarArray) {
-  const winnerCarNames = winnerCarArray.join(",");
+  const winnerCarNames = winnerCarArray.join(", ");
   Console.print("최종 우승자 : " + winnerCarNames);
 }
 
