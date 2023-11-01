@@ -6,8 +6,8 @@ export class Race {
   #tryInput;
   #cars;
 
-  constructor(carNames, tryInput) {
-    this.#cars = new Cars(carNames);
+  constructor(cars, tryInput) {
+    this.#cars = cars;
 
     this.#tryInput = tryInput;
   }
