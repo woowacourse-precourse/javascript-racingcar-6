@@ -1,5 +1,6 @@
 import OutputView from "../views/OutPutView.js";
 import Distance from "./Distance.js";
+import { pickRandomNumber } from "../utils/PickRandomNumber.js";
 
 class Race {
 
