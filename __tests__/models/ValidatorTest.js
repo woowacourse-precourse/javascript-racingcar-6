@@ -1,5 +1,5 @@
 import { ERROR_MESSAGE } from "../../src/constants/messages";
-import Validator from "../../src/models/validator";
+import Validator from "../../src/Validator";
 
 describe("자동차 이름 입력 유효성 테스트", () => {
   test("자동차 이름의 길이가 최소 길이보다 작은 경우 에러 발생", () => {

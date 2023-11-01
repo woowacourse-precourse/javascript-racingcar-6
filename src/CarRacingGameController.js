@@ -1,5 +1,5 @@
-import CarRacingGame from "./models/carRacingGame";
-import Validator from "./models/validator";
+import CarRacingGame from "./CarRacingGame";
+import Validator from "./Validator";
 import InputView from "./views/InputView";
 import OutputView from "./views/OutputView";
 

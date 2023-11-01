@@ -1,4 +1,4 @@
-import CarRacingGameController from "../../src/controllers/CarRacingGameController";
+import CarRacingGameController from "../../src/CarRacingGameController";
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 const mockQuestions = (inputs) => {

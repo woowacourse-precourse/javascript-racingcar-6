@@ -1,5 +1,5 @@
-import { CARS, RACING } from "../constants/carRacing";
-import { ERROR_MESSAGE } from "../constants/messages";
+import { CARS, RACING } from "./constants/carRacing";
+import { ERROR_MESSAGE } from "./constants/messages";
 
 class Validator {
   constructor() {}
