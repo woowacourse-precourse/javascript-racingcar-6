@@ -12,4 +12,6 @@ export const GAME_MESSAGES = Object.freeze({
   print_result_start: '실행 결과',
   game_result: (status, car) => `${car} : ${'-'.repeat(status || 0)}`,
   winner_result: (winner) => `최종 우승자 : ${winner.join(', ')}`,
+  random_start_num: 0,
+  random_end_num: 9,
 });
