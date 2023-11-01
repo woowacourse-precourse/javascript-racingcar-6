@@ -10,7 +10,7 @@ export const systemMessage = {
 export const errorCarMessage = {
   INVALID_CAR_NAME_EMPTY: `${ERROR_CONVENTION} 자동차 이름은 필수입니다.`,
   INVALID_CAR_NAME_LENGTH: `${ERROR_CONVENTION} 자동차 이름은 5자 이하만 가능합니다.`,
-  INVALID_CAR_NAME_DUPLICATE: `${ERROR_CONVENTION} 자동차 이름은 5자 이하만 가능합니다.`,
+  INVALID_CAR_NAME_DUPLICATE: `${ERROR_CONVENTION} 자동차 이름을 중복되지 않게 설정해주세요.`,
   INVALID_CAR_NAME_SPACED: `${ERROR_CONVENTION} 자동차 이름 사이에 공백이 올 수 없습니다.`,
 };
 
