@@ -12,6 +12,12 @@ class App {
     });
     return carNamesList;
   }
+
+  async getNumber(){
+    const number = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+    if(number === 0 || number === null || Number.isNaN(number)) throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
+    return number;
+  }
 }
 
 export default App;
