@@ -1,18 +1,23 @@
 import { Console, Random } from '@woowacourse/mission-utils';
 import { MESSAGES } from './messages.js';
+import { validateCarNamesInput, validateNumberOfAttemptsInput } from './validation.js';
 
 class App {
   async play() {
     await Console.readLineAsync(MESSAGES.CAR_NAME).then(async (cars) => {
       const carArr = cars.split(',');
 
+      validateCarNamesInput(carArr);
+
       const map = new Map();
       carArr.forEach((car) => map.set(car, 0));
 
-      await Console.readLineAsync(MESSAGES.NUMBER_OF_ATTEMPTS).then((repeatNumber) => {
+      await Console.readLineAsync(MESSAGES.NUMBER_OF_ATTEMPTS).then((attemptsNumber) => {
+        validateNumberOfAttemptsInput(attemptsNumber);
+
         Console.print(MESSAGES.RESULT);
 
-        [...Array(parseInt(repeatNumber))].forEach(() => {
+        [...Array(parseInt(attemptsNumber))].forEach(() => {
           carArr.forEach((car) => {
             const randomNum = Random.pickNumberInRange(0, 9);
             if (randomNum >= 4) {
