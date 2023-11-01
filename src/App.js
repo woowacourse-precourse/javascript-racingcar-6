@@ -34,10 +34,7 @@ async function racingProcess(resolve, reject) {
     attemptCount(ATTEMPT_COUNT);
     MissionUtils.Console.print("");
     MissionUtils.Console.print("실행 결과");
-    MissionUtils.Console.print("");
-
     timesResult(SPLITECARS_NAME, ATTEMPT_COUNT);
-
     resolve();
   } catch (error) {
     MissionUtils.Console.print(error);
@@ -79,6 +76,7 @@ function attemptCount(count) {
 
 function racingCondition() {
   const CONDITION = MissionUtils.Random.pickNumberInRange(0, 9);
+
   if (CONDITION >= 4) {
     return "MOVING_FORWARD";
   } else return "STOP";
@@ -86,20 +84,12 @@ function racingCondition() {
 
 function aTimeConditonResult() {
   const RECIVEDCONDTION = racingCondition();
+
   if (RECIVEDCONDTION === "MOVING_FORWARD") {
     return "-";
   } else if (RECIVEDCONDTION === "STOP") {
     return "";
   }
-}
-
-function readyCars(cars) {
-  const racingCars = [...cars];
-  let startedCars = racingCars.map((car) => {
-    return `${car} : `;
-  });
-
-  return startedCars;
 }
 
 function updateDistances(cars, distances) {
@@ -110,18 +100,44 @@ function updateDistances(cars, distances) {
 
 function printDistances(cars, distances) {
   cars.forEach((car, index) => {
-    MissionUtils.Console.print(`${car}${distances[index]}`);
+    MissionUtils.Console.print(`${car} : ${distances[index]}`);
   });
   MissionUtils.Console.print("");
+}
+
+function findMaxDashes(distances) {
+  let maxDashes = { value: 0 };
+  let maxIndices = [];
+
+  distances.forEach((distance, index) => {
+    updateMaxDashes(distance, index, maxDashes, maxIndices);
+  });
+
+  return maxIndices;
+}
+
+function updateMaxDashes(distance, index, maxDashes, maxIndices) {
+  const DASHES = (distance.match(/-/g) || []).length;
+  if (DASHES > maxDashes.value) {
+    maxDashes.value = DASHES;
+    maxIndices.splice(0, maxIndices.length, index);
+  } else if (DASHES === maxDashes.value) {
+    maxIndices.push(index);
+  }
 }
 
 function timesResult(cars, attemptCount) {
   let distances = Array(cars.length).fill("");
 
   for (let i = 0; i < attemptCount; i++) {
-    updateDistances(readyCars(cars), distances);
-    printDistances(readyCars(cars), distances);
+    updateDistances(cars, distances);
+    printDistances(cars, distances);
   }
+
+  const MAX_INDICES = findMaxDashes(distances);
+
+  const WINNER = MAX_INDICES.map((index) => cars[index]);
+  MissionUtils.Console.print(`최종 우승자: ${WINNER.join(", ")}`);
 }
 
 const app = new App();
