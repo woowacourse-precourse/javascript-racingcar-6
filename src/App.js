@@ -43,8 +43,10 @@ export function checkNames(carNameList) {
 }
 
 export function checkNumber(roundNumber) {
-  if (isNaN(roundNumber)) {
-    throw new Error("[ERROR] 숫자를 입력해주세요");
+  const number = parseFloat(roundNumber);
+
+  if (Number.isNaN(number) || number <= 0 || !Number.isInteger(number)) {
+    throw new Error("[ERROR] 양수인 정수를 입력해주세요");
   }
 }
 
