@@ -1,11 +1,10 @@
-// import  from '../src/Utils/Validator';
 import {
   IS_EMPTY_ERROR,
   VALIDATE_CAR_NAME_ERROR,
   VALIDATE_GAME_ROUND_ERROR,
 } from '../src/Utils/Define';
 import InputView from '../src/view/InputView';
-import userInput from '../src/view/View';
+import { userInput } from '../src/view/View';
 // eslint-disable-next-line import/order
 import { Console } from '@woowacourse/mission-utils';
 

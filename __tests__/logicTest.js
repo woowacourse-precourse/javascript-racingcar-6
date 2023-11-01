@@ -1,6 +1,5 @@
 import { Console, Random } from '@woowacourse/mission-utils';
 import { startGame } from '../src/Domain/RacingGame';
-import userInput from '../src/view/View';
 
 const mockReadLineAsync = (inputs) => {
   const inputsCopy = [...inputs];
