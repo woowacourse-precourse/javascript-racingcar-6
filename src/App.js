@@ -4,13 +4,14 @@ import { validateCarName, validateMoveNum } from './utils/validateFn.js';
 class App {
   async play() {
     const game = new Game();
-
-    const carListArr = await game.init();
-    validateCarName(carListArr);
+    await game.init();
+    const { myCars } = game.getCarGameInfo();
+    validateCarName(myCars);
 
     await game.createCars();
 
-    const moveNum = await game.moveQuestion();
+    await game.moveQuestion();
+    const { moveNum } = game.getCarMoveNum();
     validateMoveNum(moveNum);
 
     await game.process();
