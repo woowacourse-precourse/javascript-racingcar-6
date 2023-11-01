@@ -4,20 +4,11 @@ import { STATIC_NUMBER } from "../static/Static.js";
 
 class RacingCars {
   #cars;
-  #tries;
   #finalDistance = [];
   #winners = [];
 
   constructor(inputNames) {
     this.#cars = inputNames.split(",").map((name) => new RacingCar(name));
-  }
-
-  setTries(inputTries) {
-    this.#tries = Number(inputTries);
-  }
-
-  getTries() {
-    return this.#tries;
   }
 
   setMoveCondition() {

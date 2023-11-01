@@ -4,6 +4,7 @@ import OutputView from "../view/OutputView.js";
 
 class RacingCarController {
   #cars;
+  #tries;
   #winners;
 
   constructor() {}
@@ -20,7 +21,7 @@ class RacingCarController {
 
   async inputTries() {
     await InputView.readTries((input) => {
-      this.#cars.setTries(input);
+      this.#tries = Number(input);
     });
     this.raceStart();
   }
@@ -32,7 +33,7 @@ class RacingCarController {
 
   raceStart() {
     OutputView.printResultMessage();
-    Array.from({ length: this.#cars.getTries() }).forEach(() => {
+    Array.from({ length: this.#tries }).forEach(() => {
       this.#cars.setMoveCondition();
       OutputView.printMoveMarking(this.#cars.getCurrentPosition());
       OutputView.printSingleLine();
