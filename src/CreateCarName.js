@@ -1,26 +1,27 @@
 import { Console } from '@woowacourse/mission-utils';
 import Car from './Car.js';
 import strings from './constants.js';
+
 class CreateCarName {
   constructor() {
-    this.carNameArr = [];
-    this.carArr = [];
+    this.carNameArray = [];
+    this.carArray = [];
   }
 
   carName(inputName) {
-    const inputNameArr = inputName.split(',');
+    const inputNameArray = inputName.split(',');
 
-    inputNameArr.forEach((inputNameElement) => {
+    inputNameArray.forEach((inputNameElement) => {
       this.wrongName(inputNameElement);
     });
 
-    Console.print(this.carNameArr.join(','));
+    Console.print(this.carNameArray.join(','));
 
-    this.carNameArr.forEach((element) => {
-      this.carArr.push(new Car(element));
+    this.carNameArray.forEach((element) => {
+      this.carArray.push(new Car(element));
     });
 
-    return this.carArr;
+    return this.carArray;
   }
 
   wrongName(inputNameElement) {
@@ -36,7 +37,7 @@ class CreateCarName {
       throw new Error(strings.ERROR_MESSAGE_NAME_STRING);
     }
 
-    return this.carNameArr.push(inputNameElement);
+    return this.carNameArray.push(inputNameElement);
   }
 }
 export default CreateCarName;

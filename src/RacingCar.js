@@ -1,8 +1,9 @@
 import { Console, Random } from '@woowacourse/mission-utils';
 import strings from './constants.js';
 import Referee from './Referee.js';
+
 class RacingCar {
-  playRace(inputNumber, carArr) {
+  playRace(inputNumber, carArray) {
     let round = 0;
     const winner = new Referee();
     const attemptNumber = this.wrongNumber(inputNumber);
@@ -10,15 +11,17 @@ class RacingCar {
     Console.print('\n' + strings.RESULT);
 
     while (round < attemptNumber) {
-      carArr.forEach((element) => {
-        element.departureCount = this.startOrStop(element.departureCount);
-        Console.print(`${element.carName} : ${element.departureCount}`);
+      carArray.forEach((carElement) => {
+        carElement.departureCount = this.startOrStop(carElement.departureCount);
+        Console.print(`${carElement.carName} : ${carElement.departureCount}`);
       });
       Console.print('\n');
       round += 1;
     }
 
-    Console.print(`${strings.FINAL_WINNER} : ${winner.compareWinner(carArr)}`);
+    Console.print(
+      `${strings.FINAL_WINNER} : ${winner.compareWinner(carArray)}`,
+    );
   }
 
   wrongNumber(inputNumber) {

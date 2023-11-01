@@ -7,11 +7,11 @@ class App {
   async play() {
     const inputName = await Console.readLineAsync(strings.ASK_NAME);
     const namingCar = new CreateCarName();
-    const carArr = namingCar.carName(inputName);
+    const carArray = namingCar.carName(inputName);
 
     const inputNumber = await Console.readLineAsync(strings.ASK_NUMBER);
     const race = new RacingCar();
-    race.playRace(inputNumber, carArr);
+    race.playRace(inputNumber, carArray);
   }
 }
 export default App;
