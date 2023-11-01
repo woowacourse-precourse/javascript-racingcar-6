@@ -53,6 +53,7 @@ class App {
 
   //경주하기
   async startRacing() {
+    MissionUtils.Console.print("\n실행 결과");
     //횟수만큼 반복
     for (let i = 0; i < this.tries; i++) {
       this.forwardCars();
@@ -70,6 +71,15 @@ class App {
       }
       return car;
     });
+  }
+
+  //결과 출력
+  displayCars() {
+    this.cars.forEach((car) => {
+      const result = `${car.name} : ${"-".repeat(car.position)}`;
+      MissionUtils.Console.print(result);
+    });
+    MissionUtils.Console.print("");
   }
 }
 
