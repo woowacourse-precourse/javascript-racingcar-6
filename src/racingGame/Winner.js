@@ -1,10 +1,11 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import { NAME, DISTANCE } from "../constants/scoreStorage.js"
+import { MESSAGE } from "../constants/message.js";
 
 class Winner {
   async winnerPrint(scoreStorage) {
     const winners = this.#findWinnerName(scoreStorage, Math.max(...scoreStorage[DISTANCE]));
-    MissionUtils.Console.print(`최종 우승자 : ${winners.join(', ')}`);
+    MissionUtils.Console.print(`${MESSAGE.winner} : ${winners.join(', ')}`);
   }
 
   #findWinnerName(scoreStorage, maxDistance) {

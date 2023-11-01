@@ -1,10 +1,11 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import {NAME, DISTANCE} from "../constants/scoreStorage.js"
+import { MESSAGE } from "../constants/message.js";
 
 class Racing {
 
   async racingStart(carNameArray, racingNumber) {
-    await MissionUtils.Console.print('\n실행 결과');
+    await MissionUtils.Console.print(MESSAGE.result);
 
     const scoreStorage = this.#makeScoreStorage(carNameArray); // 이름별 누적거리 저장을 위한 2차원배열 생성
 
