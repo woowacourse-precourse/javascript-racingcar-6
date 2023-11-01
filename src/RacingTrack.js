@@ -4,8 +4,8 @@ import { paramType } from './utils/paramType.js';
 export default class RacingTrack {
   #carList;
 
-  constructor(carList, _ = paramType(carList, Array)) {
-    this.#carList = carList;
+  constructor(carNames, _ = paramType(carNames, 'string')) {
+    this.#carList = this.#assignCars(carNames);
   }
 
   moveEachCars(isMoveFowardList) {
@@ -36,5 +36,9 @@ export default class RacingTrack {
     _1 = paramType(isFoward, 'boolean')
   ) {
     if (isFoward) car.moveFoward();
+  }
+
+  #assignCars(carNames) {
+    return carNames.split(',').map((name) => new Car(name));
   }
 }
