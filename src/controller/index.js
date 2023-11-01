@@ -16,6 +16,8 @@ class RacingController {
     OutputView.print('\n실행 결과');
     for (let count = 1; count <= racingCount; count += 1) {
       this.#racingModel.racing();
+      OutputView.printRacingResult(this.#racingModel.getData());
+      OutputView.print('');
     }
   }
 }
