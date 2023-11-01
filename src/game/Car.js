@@ -29,6 +29,10 @@ class Car {
   compareAndUpdateMaxStepCount(maxStepCount) {
     return Math.max(maxStepCount, this.#stepCount);
   }
+
+  isStepCountEqualToMax(maxStepCount) {
+    if (this.#stepCount === maxStepCount) return this.#name;
+  }
 }
 
 export default Car;
