@@ -1,15 +1,17 @@
-import { getCarNames, getTryCount } from "../views/InputView";
-import { isValidInput, isValidCount } from "../models/IsValidInput";
-import { setCars } from "../models/setCar";
+import { getCarNames, getAttemptCount } from "../views/InputView";
+import { checkValidInput, checkValidCount } from "../models/CheckValidInput";
+import createCars from "../models/CreateCars";
 
 const startGame = async () => {
+    //자동차 이름 입력 받고 유효성 검사
     const inputName = await getCarNames();
-    const name = isValidInput(inputName);
+    const name = checkValidInput(inputName);
     
-    const count = await getTryCount();
-    isValidCount(count);
+    //시도 횟수 입력 받고 유효성 검사
+    const count = await getAttemptCount();
+    checkValidCount(count);
 
-    setCars(name, count);
+    createCars(name, count);
 };
 
 export default startGame;

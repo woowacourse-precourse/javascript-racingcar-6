@@ -5,7 +5,7 @@ export const getCarNames = async() => {
     return inputName;
 };
 
-export const getTryCount = async() => {
+export const getAttemptCount = async() => {
     const count = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?");
     return parseInt(count);
 };
