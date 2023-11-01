@@ -35,8 +35,8 @@ test('유저 전체 입력 확인 (userInput)', async () => {
   // when
   const result = await userInput();
   // then
-  expect(result).toContain('Car1');
-  expect(result).toContain('3');
+  expect(result[0]).toEqual(['Car1', 'Car2', 'Car3']);
+  expect(result[1]).toBe('3');
 });
 
 test('차 이름이 공백일때', async () => {
