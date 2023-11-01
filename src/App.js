@@ -66,7 +66,7 @@ class App {
    * }} record 트랙 경기 기록
    */
   #printRecord(record) {
-    this.#view.output.lineBrake();
+    this.#view.output.lineBreak();
     Object.entries(record).forEach(([name, skid]) => {
       this.#view.output.print(MESSAGES.record(name, skid));
     });

@@ -5,7 +5,7 @@ const OutputView = Object.freeze({
     Console.print(message);
   },
 
-  lineBrake() {
+  lineBreak() {
     OutputView.print('\n');
   },
 });
