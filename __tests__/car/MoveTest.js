@@ -1,5 +1,5 @@
 import { Random } from "@woowacourse/mission-utils";
-import { Car } from "../../src/Car.js"
+import { Car } from "../../src/game/Car.js"
 import { RandomGenerator } from "../../src/RandomGenerator.js";
 
 const randomApiSpy = jest.spyOn(Random, "pickNumberInRange");

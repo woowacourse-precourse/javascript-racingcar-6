@@ -1,4 +1,4 @@
-import { MOVE_CONDITION_MINIMUM_VALUE } from './constants.js';
+import { MOVE_CONDITION_MINIMUM_VALUE } from '../constants.js';
 
 export class Car {
   #position = 0;

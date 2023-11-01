@@ -1,5 +1,5 @@
 import { Car } from './Car.js';
-import { RandomGenerator } from './RandomGenerator.js';
+import { RandomGenerator } from '../RandomGenerator.js';
 
 export class Cars {
   #list = [];

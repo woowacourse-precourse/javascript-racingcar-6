@@ -1,6 +1,6 @@
 import { Cars } from './Cars.js';
-import { Result } from './Result.js';
-import { getGreatestNumber } from './utils.js';
+import { Result } from '../Result.js';
+import { getGreatestNumber } from '../utils.js';
 
 export class Race {
   #tryInput;
