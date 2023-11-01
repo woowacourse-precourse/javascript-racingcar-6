@@ -1,5 +1,8 @@
-import App from "../src/App.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
+import App from "../src/App.js";
+import Car from "../src/Car.js";
+import CarRacingGame from "../src/CarRacingGame.js";
+import Validation from "../src/Validation.js";
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -46,17 +49,29 @@ describe("자동차 경주 게임", () => {
     });
   });
 
-  test.each([
-    [["pobi,javaji"]],
-    [["pobi,eastjun"]]
-  ])("이름에 대한 예외 처리", async (inputs) => {
-    // given
-    mockQuestions(inputs);
+  test.each([[["pobi,javaji"]], [["pobi,eastjun"]]])(
+    "이름에 대한 예외 처리",
+    async (inputs) => {
+      // given
+      mockQuestions(inputs);
 
-    // when
-    const app = new App();
+      // when
+      const app = new App();
 
-    // then
-    await expect(app.play()).rejects.toThrow("[ERROR]");
+      // then
+      await expect(app.play()).rejects.toThrow("[ERROR]");
+    }
+  );
+
+  test("전진 시도(Car.moveForward)테스트", () => {
+    const randoms = [0, 4, 9, 3, 5];
+    const results = [0, 1, 2, 2, 3];
+    mockRandoms([...randoms]);
+
+    const car = new Car("test");
+    results.forEach((result) => {
+      car.moveForward();
+      expect(car.getDistance().toBe(result));
+    });
   });
 });
