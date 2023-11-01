@@ -1,5 +1,6 @@
 import { Console, Random } from "@woowacourse/mission-utils";
-
+import MESSAGE from "./constants/message.js";
+import ERROR from "./constants/error.js";
 class Game {
   carNameList = [];
   countAttempt = null;
@@ -36,7 +37,7 @@ class Game {
 
   printResult = () => {
     Console.print("");
-    Console.print("실행 결과");
+    Console.print(MESSAGE.RACE_RESULT_DISPLAY.INITIAL_MESSAGE);
 
     this.result.forEach((state) => {
       this.printState(state);
@@ -44,19 +45,20 @@ class Game {
   };
 
   printState = (state) => {
+    const progressUnit = MESSAGE.RACE_RESULT_DISPLAY.PROGRESS_UNIT;
     state.forEach((pos, index) => {
-      Console.print(`${this.carNameList.at(index)} : ${"-".repeat(pos)}`);
+      Console.print(
+        `${this.carNameList.at(index)} : ${progressUnit.repeat(pos)}`
+      );
     });
-    Console.print("");
+    Console.print(MESSAGE.RACE_RESULT_DISPLAY.ROUND_STATE_SEPERATOR);
   };
 
   getCarNameList = async () => {
-    const input = await Console.readLineAsync(
-      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
-    );
+    const input = await Console.readLineAsync(MESSAGE.PROMPT.CAR_NAME);
     const list = input.split(",").map((name) => name.trim());
     if (input.length == 0 || !this.isCarNameListValid(list)) {
-      throw new Error("잘못된 형식입니다.");
+      throw new Error(ERROR.MESSAGE.INVALID_INPUT);
     }
     this.carNameList = list;
   };
@@ -70,13 +72,13 @@ class Game {
   };
 
   getCountAttempt = async () => {
-    const input = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+    const input = await Console.readLineAsync(MESSAGE.PROMPT.COUNT_ATTEMPT);
     const count = Number(input);
     if (isNaN(count)) {
-      throw new Error("잘못된 형식입니다.");
+      throw new Error(ERROR.MESSAGE.INVALID_INPUT);
     }
     if (count === 0) {
-      throw new Error("시도 횟수는 1번 이상이여야 합니다.");
+      throw new Error(ERROR.MESSAGE.COUNT_ATTEMPT_INPUT_ZERO);
     }
     this.countAttempt = count;
   };
@@ -101,7 +103,11 @@ class Game {
   };
 
   printWinnerList = () => {
-    Console.print(`최종 우승자 : ${this.winnerList.join(", ")}`);
+    Console.print(
+      `${MESSAGE.RACE_RESULT_DISPLAY.FINAL_WINNER} : ${this.winnerList.join(
+        ", "
+      )}`
+    );
   };
 }
 
