@@ -4,7 +4,7 @@ class App {
   #RACING_CAR_LIST=[];
   #TRY_COUNT;
   async racingCarNameInput(){
-     await MissionUtils.Console.print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+      await MissionUtils.Console.print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
       const carNameInput = await MissionUtils.Console.readLineAsync("");
       const carNames = carNameInput.split(',');
      if(!this.checkCarNameValidation(carNames))
@@ -23,7 +23,7 @@ class App {
   }
   checkCarNameValidation(carNames)
   {
-    return carNames.every( (carName)=> carName.length < 6 && carName !=='')
+    return carNames.every( (carName)=> carName.length < 6 && carName.trim() !=="")
   }
   async racingTryInput(){
     await MissionUtils.Console.print("시도할 횟수는 몇 회인가요?");
