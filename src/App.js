@@ -83,12 +83,12 @@ function getWinner(name, result){
 
 class App {
   async play() {
-    const name = await getNameInput();
-    const count = await getNumberInput();
-    const result = startRace(name, count);
-    const winner = getWinner(name, result);
+    this.name = await getNameInput();
+    this.count = await getNumberInput();
+    this.result = startRace(this.name, this.count);
+    this.winner = getWinner(this.name, this.result);
     
-    MissionUtils.Console.print(`최종 우승자 : ${winner.map((member) => member).join(',')}`);
+    MissionUtils.Console.print(`최종 우승자 : ${this.winner.map((member) => member).join(',')}`);
   }
 }
 
