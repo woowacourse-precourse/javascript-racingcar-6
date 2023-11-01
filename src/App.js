@@ -1,6 +1,6 @@
 import { Console, Random } from "@woowacourse/mission-utils";
 
-const ERROR_HEADER = "[ERROR] ";
+export const ERROR_HEADER = "[ERROR] ";
 const numberCanMoveForward = 4;
 const validCarNameLength = 5;
 const newDistance = "-";
@@ -58,6 +58,7 @@ class App {
     for (let car of carArr) {
       this.cars.set(car, "");
     }
+    console.log(this.cars);
   }
 
   checkValidNumberOfAttempts(numberOfAttempts) {
