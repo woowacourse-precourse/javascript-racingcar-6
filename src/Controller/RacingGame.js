@@ -28,11 +28,6 @@ export default class RacingGame {
     }
   }
 
-  #printResult() {
-    Output.printTotalResult(this.#resultModel.makeConsoleOutputTemplete());
-    Output.printWinners(this.#winnerModel.makeWinner(this.#carModel.getCar()));
-  }
-
   async #makeCar() {
     const answer = await Input.readCarName();
     if (isValidateCarName(answer)) this.#carModel.makeCar(answer);
@@ -45,5 +40,10 @@ export default class RacingGame {
     this.#attemps -= RACING.minusCount;
 
     return this.#attemps === RACING.end ? this.#printResult() : this.#racing();
+  }
+
+  #printResult() {
+    Output.printTotalResult(this.#resultModel.makeConsoleOutputTemplete());
+    Output.printWinners(this.#winnerModel.makeWinner(this.#carModel.getCar()));
   }
 }
