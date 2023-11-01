@@ -1,4 +1,4 @@
-import CarRacingGamesControllers from "../../src/controllers/CarRacingGameController.js";
+import CarRacingGameController from "../../src/controllers/CarRacingGameController.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 const mockQuestions = (inputs) => {
@@ -31,7 +31,7 @@ describe("자동차 경주 게임", () => {
     mockQuestions(inputs);
 
     // when
-    const controller = new CarRacingGamesControllers();
+    const controller = new CarRacingGameController();
     await controller.prepareSettings();
 
     // then
@@ -52,7 +52,7 @@ describe("자동차 경주 게임", () => {
     mockRandoms([...randoms]);
 
     // when
-    const controller = new CarRacingGamesControllers();
+    const controller = new CarRacingGameController();
     await controller.prepareSettings();
     controller.executeForward();
 
@@ -75,7 +75,7 @@ describe("자동차 경주 게임", () => {
     mockRandoms([...randoms]);
 
     // when
-    const controller = new CarRacingGamesControllers();
+    const controller = new CarRacingGameController();
     await controller.prepareSettings();
     controller.executeForward();
     controller.outputFinalResult();

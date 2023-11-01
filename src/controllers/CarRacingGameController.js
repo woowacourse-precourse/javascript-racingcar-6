@@ -1,9 +1,9 @@
-import CarRacingGames from "../models/carRacingGame.js";
+import CarRacingGame from "../models/carRacingGame.js";
 import Validator from "../models/validator.js";
 import InputView from "../views/InputView.js";
 import OutputView from "../views/OutputView.js";
 
-class CarRacingGamesControllers {
+class CarRacingGameController {
   constructor() {
     this.carListArr;
     this.numberOfMoves;
@@ -16,7 +16,7 @@ class CarRacingGamesControllers {
 
     // 자동차 이름의 유효성을 검사한 후 { name: @string, numberOfMovesForward: @number }[]로 값 저장
     if (Validator.validateInputCarNames(carListString)) {
-      this.carListArr = CarRacingGames.setupCarList(carListString);
+      this.carListArr = CarRacingGame.setupCarList(carListString);
     }
 
     // 시도할 횟수를 입력받는다.
@@ -33,16 +33,16 @@ class CarRacingGamesControllers {
     OutputView.printNoticeOfExecutionResult();
 
     while (this.numberOfMoves > 0) {
-      CarRacingGames.decideWheterToMoveForward(this.carListArr);
+      CarRacingGame.decideWheterToMoveForward(this.carListArr);
       OutputView.printExecutionResult(this.carListArr);
       this.numberOfMoves -= 1;
     }
   }
 
   outputFinalResult() {
-    const winnerArr = CarRacingGames.getFinalWinner(this.carListArr);
+    const winnerArr = CarRacingGame.getFinalWinner(this.carListArr);
     OutputView.printFinalWinner(winnerArr);
   }
 }
 
-export default CarRacingGamesControllers;
+export default CarRacingGameController;

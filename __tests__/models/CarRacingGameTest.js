@@ -1,9 +1,9 @@
-import CarRacingGames from "../../src/models/carRacingGame.js"
+import CarRacingGame from "../../src/models/carRacingGame.js"
 
 describe("CarRacingGame 모델 기능 테스트", () => {
   test("입력 받은 자동차 이름 문자열을 배열의 형태로 반환", () => {
     const carListString = "pobi, jiwoo";
-    const result = CarRacingGames.setupCarList(carListString);
+    const result = CarRacingGame.setupCarList(carListString);
 
     expect(result[0].name).toBe("pobi");
     expect(result[1].name).toBe("jiwoo");
@@ -21,7 +21,7 @@ describe("CarRacingGame 모델 기능 테스트", () => {
       }
     ];
     while(true) {
-      CarRacingGames.decideWheterToMoveForward(carListArr);
+      CarRacingGame.decideWheterToMoveForward(carListArr);
       
       if (carListArr.findIndex((car) => car.numberOfMovesForward > 0) >= 0) {
         break;
@@ -40,7 +40,7 @@ describe("CarRacingGame 모델 기능 테스트", () => {
         numberOfMovesForward: 2,
       }
     ];
-    const result = CarRacingGames.getFinalWinner(carListArr);
+    const result = CarRacingGame.getFinalWinner(carListArr);
 
     expect(result[0].name).toBe("jiwoo");
   });
