@@ -10,9 +10,9 @@ const RACE_CONSOLE_VIEW = {
   },
   raceResult(raceResult) {
     let output = `${MESSAGES.RACE_RESULT}\n`;
+
     raceResult.forEach((round) => {
-      const roundOutput = round.join('\n');
-      output += `${roundOutput}\n\n`;
+      output += `${round.join('\n')}\n\n`;
     });
     Console.print(output);
   },
