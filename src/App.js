@@ -9,8 +9,14 @@ class App {
     return cars;
   };
 
+  getMoveCount = async () => {
+    const input = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    return input;
+  };
+
   async play() {
     const car = await this.getCarName();
+    const moveCount = await this.getMoveCount();
   }
 }
 
