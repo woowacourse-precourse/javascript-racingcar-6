@@ -6,3 +6,9 @@ export function validateDuplicateName(names) {
     throw new Error(ERROR.nameDuplicated);
   }
 }
+
+export function validateNumberOfNames(names) {
+  if (names.length < 2) {
+    throw new Error(ERROR.invalidNumberOfNames);
+  }
+}

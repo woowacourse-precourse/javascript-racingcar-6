@@ -9,7 +9,7 @@
   ### 자동차 이름 검증
     - [ ] 이름 입력값 검증 - validateCarName()
       - [x] [예외] 이름 중복 - validateDuplicateName()
-      - [ ] [예외] 이름을 하나만 입력 - validateNumberOfNames()
+      - [x] [예외] 이름을 하나만 입력 - validateNumberOfNames()
       - [ ] [예외] 이름이 5자를 초과하거나 1자 미만일때 - validateNameLength()
       - [ ] [예외] 이름에 특수문자가 포함 - validateTypeOfName()
 
