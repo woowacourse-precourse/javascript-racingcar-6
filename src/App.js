@@ -54,11 +54,6 @@ function updateCars(runningCars) {
   }
 }
 
-// ### ⚡️ 자동차 배열 출력하기 `printCars`
-
-// 1. 현재 경주 중인 자동차들을 출력한다.
-// 2. 배열을 탐색하면서 해당 요소의 숫자만큼 '를 반복하여 출력한다.
-
 function printCars(runningCars, carNameList) {
   for (let i = 0; i < runningCars.length; i++) {
     let running = "";
