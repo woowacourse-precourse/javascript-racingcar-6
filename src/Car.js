@@ -1,15 +1,22 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
+import { Random } from '@woowacourse/mission-utils';
 
 class Car {
   constructor(name) {
     this.name = name;
-    this.distance = 0;
+    this.moveCount = 0;
+  }
+
+  getName() {
+    return this.name;
+  }
+
+  getMoveCount() {
+    return this.moveCount;
   }
 
   move() {
-    const randomValue = MissionUtils.Random.pickNumberInRange(0, 9);
-    if (randomValue >= 4) {
-      this.distance += 1;
+    if (Random.pickNumberInRange(0, 9) >= 4) {
+      this.moveCount += 1;
     }
   }
 }
