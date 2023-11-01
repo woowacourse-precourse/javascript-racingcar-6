@@ -30,6 +30,9 @@ class App {
       "시도할 횟수는 몇 회인가요? \n"
     );
     const tries = parseInt(triesInput, 10);
+    if (isNaN(tries) || tries <= 0) {
+      throw new Error("[ERROR] 시도 횟수는 양수여야 합니다.");
+    }
     return tries;
   }
 
