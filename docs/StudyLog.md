@@ -299,3 +299,66 @@
     expect(mockFunc).toHaveNthReturnedWith(1, returnValue);  
     // mockFunc의 첫 번째 호출에서 returnValue를 반환했는지 확인
     ```
+
+<br>
+
+### 2-2. 시도 횟수 입력 처리
+
+- `trim`
+  - 문자열의 앞 뒤 공백을 제거하기 위해 trim() 메서드를 사용한다
+
+    ``` javascript
+    const result = "   example   ".trim(); 
+    ```
+
+- `parseInt`
+  - 문자열 내에 숫자와 문자가 함께 있을 때
+  - 숫자가 아닌 문자를 만나면 해당 문자까지만 파싱하고, 그 이후의 문자는 무시한다
+
+    ``` javascript
+    const number = parseInt("123abc", 10); 
+    // number : 123
+    ```
+
+  - 공백만 있는 문자열 일때
+  - 결과값은 NaN이다
+
+    ``` javascript
+    const input = "   ";
+    const result = parseInt(input.trim().replace(/\s+/g, ''), 10);
+    // result : NaN 
+    ```
+
+- `replace`
+  - 문자열의 일부를 다른 문자열로 대체하기 위해 사용한다
+  - 두 가지 인자를 받는다
+  - 검색 패턴 - 대체될 문자열 또는 정규 표현식
+  - 대체 문자열 - 대체될 새로운 문자열 또는 함수
+
+    ``` javascript
+    const str = "Hello, World!";
+    const newStr = str.replace("World", "Seojin");
+    console.log(newStr);  
+    // 출력: "Hello, Seojin!"
+
+    ```
+
+- `정규표현식`
+  - 문자열의 특정 패턴을 찾기 위한 도구이다
+  - /.../로 둘러싸여 있는 형식으로 표현된다
+  - \d: 모든 숫자(0-9와 동일)
+  - \s: 모든 공백 문자(스페이스, 탭, 줄바꿈 등)
+  - \w: 모든 단어 문자(a-z, A-Z, 0-9, _와 동일)
+  - g: 전역 검색, 문자열 내의 모든 일치 항목을 검색
+  - i: 대소문자를 구분하지 않는 검색
+
+    ``` javascript
+    const str = "Hello 123 World 456!";
+    const newStr = str.replace(/\d+/g, '');
+    console.log(newStr);  
+    // 출력: "Hello  World !"
+
+    ```
+  
+- 결론
+  - 문자열을 적절하게 정제한 후 숫자로 변환하는 것이 효율적이다
