@@ -1,4 +1,4 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
+import { Console } from "@woowacourse/mission-utils";
 import Car from "./Car";
 
 class App {
@@ -12,14 +12,14 @@ class App {
 
   // 시도 횟수 입력에 대한 유효성 테스트
   static #checkValidRoundNumber(input) {
-    if (Number.isNaN(input) || input < 1)
-      throw new Error("[ERROR] 시도 횟수는 1 이상의 숫자여야합니다.");
+    if (Number.isNaN(input) || input < 0)
+      throw new Error("[ERROR] 시도 횟수는 0 이상의 숫자여야 합니다.");
   }
 
   // 자동차의 이름들을 입력받는 메소드
   static async #inputCarName() {
-    const carNames = await MissionUtils.Console.readLineAsync(
-      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
+    const carNames = await Console.readLineAsync(
+      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
     );
     const carNameArray = carNames.split(",");
     App.#checkValidCarName(carNameArray);
@@ -33,8 +33,8 @@ class App {
   }
 
   static async #inputRoundNumber() {
-    const roundInput = await MissionUtils.Console.readLineAsync(
-      "시도할 횟수는 몇 회인가요?"
+    const roundInput = await Console.readLineAsync(
+      "시도할 횟수는 몇 회인가요?\n"
     );
     const roundNumber = parseInt(roundInput, 10);
     App.#checkValidRoundNumber(roundNumber);
@@ -45,7 +45,7 @@ class App {
     this.#cars.forEach((car) => {
       car.move();
     });
-    MissionUtils.Console.print("");
+    Console.print("");
   }
 
   #printFinalWinner() {
@@ -59,13 +59,14 @@ class App {
         winners.push(car.name);
       }
     });
-    MissionUtils.Console.print(`최종 우승자 : ${winners.join(", ")}`);
+    Console.print(`최종 우승자 : ${winners.join(", ")}`);
   }
 
   async play() {
     await this.#inputCar();
     const roundNumber = await App.#inputRoundNumber();
-    MissionUtils.Console.print("실행 결과");
+    Console.print("");
+    Console.print("실행 결과");
     for (let i = 1; i <= roundNumber; i++) {
       this.#playRound();
     }

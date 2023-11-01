@@ -1,4 +1,4 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
+import { Console, Random } from "@woowacourse/mission-utils";
 import {
   MIN_RANDOM_NUMBER,
   MAX_RANDOM_NUMBER,
@@ -14,7 +14,7 @@ class Car {
   }
 
   static #randomNumGenerate() {
-    const randomNum = MissionUtils.Random.pickNumberInRange(
+    const randomNum = Random.pickNumberInRange(
       MIN_RANDOM_NUMBER,
       MAX_RANDOM_NUMBER
     );
@@ -22,7 +22,7 @@ class Car {
   }
 
   #printPosition() {
-    MissionUtils.Console.print(`${this.name} : ${"-".repeat(this.position)}`);
+    Console.print(`${this.name} : ${"-".repeat(this.position)}`);
   }
 
   move() {
