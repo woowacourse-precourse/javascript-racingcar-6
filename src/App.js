@@ -31,6 +31,21 @@ class App {
       }
       MissionUtils.Console.print("")
     }
+
+    // 우승자 정하기
+    let winner = ''
+    let max = 0;
+    for (const [key,value] of Object.entries(result)){
+      if (value.length > max){
+        max = value.length
+        winner = key
+      }else if (value.length === max){
+        winner += ', '+ key
+      }
+    }
+    MissionUtils.Console.print(`최종 우승자 : ${winner}`)
+
+  }
 }
 
 export default App;
