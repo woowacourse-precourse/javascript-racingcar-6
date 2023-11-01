@@ -133,8 +133,8 @@ jun : -----
 **예시**
 
 ```javascript
-const app = new App();
-app.play();
+const app = new App()
+app.play()
 ```
 
 - `package.json`을 변경할 수 없고 외부 라이브러리(jQuery, Lodash 등)를 사용하지 않는다. 순수 Vanilla JS로만 구현한다.
@@ -162,7 +162,7 @@ app.play();
 - 0에서 9까지의 정수 중 한 개의 정수 반환
 
 ```javascript
-MissionUtils.Random.pickNumberInRange(0, 9);
+MissionUtils.Random.pickNumberInRange(0, 9)
 ```
 
 ## ✏️ 과제 진행 요구 사항
