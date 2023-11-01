@@ -26,12 +26,10 @@ class CarManager {
   }
 
   #maxDistanceAmongCarsEqualCarMoveCount() {
-    let ret = '';
-    this.#cars.forEach((car) => {
-      if (car.getMoveCount() >= this.#maxDistanceAmongCars) {
-        ret += car.getName();
-      }
-    });
+    const ret = this.#cars
+      .filter((car) => car.getMoveCount() >= this.#maxDistanceAmongCars)
+      .map((car) => car.getName())
+      .join(', ');
     return (ret);
   }
 
