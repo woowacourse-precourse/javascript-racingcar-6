@@ -6,13 +6,14 @@ import MESSAGE from './Constant.js';
 export default class Computer {
   constructor() {
     this.racingCars = [];
-    this.trialNumber = 0;
   }
 
   async playGame() {
     this.setRacingCarArray(await User.getCarNameArray());
-    this.setTrialNumber(await User.getTrialNumber());
-    this.tryToMoveCarsForTrialNumber();
+
+    const trialNum = await User.getTrialNumber();
+    this.moveCarsForTrialNumber(trialNum);
+
     this.printFinalWinnersName();
   }
 
@@ -20,12 +21,8 @@ export default class Computer {
     this.racingCars = carNameArray.map((carName) => new RacingCar(carName));
   }
 
-  setTrialNumber(trialNum) {
-    this.trialNumber = trialNum;
-  }
-
-  tryToMoveCarsForTrialNumber() {
-    for (let time = 0; time < this.trialNumber; time += 1) {
+  moveCarsForTrialNumber(trialNum) {
+    for (let time = 0; time < trialNum; time += 1) {
       this.racingCars.forEach((car) => {
         car.moveForward();
         car.printDistance();
