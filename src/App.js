@@ -10,18 +10,13 @@ class App {
 
   //자동차 이름 입력 받기
   async car_name(){
-    try{
-      const str= await Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-      names=str.split(',');
-      this.car_name_length();
-      if(err==1){
-        throw "ERROR";
-      }
-      this.try();
+    const str= await Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+    names=str.split(',');
+    this.car_name_length();
+    if(err==1){
+      throw new Error("ERROR");
     }
-    catch(error){
-      Console.print(error);
-    }
+    this.try();
   }
 
   //자동차 이름 6자 이상일 경우 에러
@@ -58,7 +53,6 @@ class App {
         go_arr[i]=go_arr[i]+1
       }
     }
-    Console.print(go_arr);  //테스트
     this.go_stop_print();
   }
 
