@@ -89,6 +89,31 @@ describe("경주 조건 입력: 시도 횟수", () => {
       await expect(controller.getNumOfTry()).rejects.toThrow("[ERROR]");
     }
   );
+
+  test("Car 객체 생성",
+    async () => {
+      const inputs = ["woowa,cou,rse"];
+      mockQuestions(inputs);
+
+      const controller = new RaceController();
+
+      await controller.getCarNames();
+      expect(controller.cars).toEqual([
+        {
+          name: "woowa",
+          point: 0,
+        },
+        {
+          name: "cou",
+          point: 0,
+        },
+        {
+          name: "rse",
+          point: 0,
+        },
+      ]);
+    }
+  );
 });
 
 describe("전진 실행 및 결과 출력", () => {
