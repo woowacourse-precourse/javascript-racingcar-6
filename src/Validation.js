@@ -10,6 +10,7 @@ export const isValidTryNum = (input) => {
   if (!isEmptyTryNum(input)) throw new Error(ERROR_MESSAGES.EMPTY_INPUT);
   if (isIncludeBlank(input)) throw new Error(ERROR_MESSAGES.INCLUDE_BLANK);
   if (!isNumber(input)) throw new Error(ERROR_MESSAGES.NOT_NUMBER);
+  if (isSmallerThanOne(input)) throw new Error(ERROR_MESSAGES.SMALLER_THAN_ONE);
 
   return true;
 };
@@ -33,4 +34,9 @@ const isIncludeBlank = (input) => {
 const isNumber = (input) => {
   const tryNum = Number(input);
   return !Number.isNaN(tryNum);
+};
+
+const isSmallerThanOne = (input) => {
+  const tryNum = Number(input);
+  return tryNum < 1;
 };
