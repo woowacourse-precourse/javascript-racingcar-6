@@ -81,7 +81,7 @@
 ### 테스트 작성
 
 - 유틸리티 테스트
-  - console
+  - console ✔️
   - random
   - string
   - validation
