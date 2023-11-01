@@ -1,9 +1,9 @@
-import { Console } from "@woowacourse/mission-utils"
+import { MissionUtils } from '@woowacourse/mission-utils';
 
 class OutputView {
-    static print(message) {
-        Console.print(message);
-    }
+  static print(message) {
+    MissionUtils.Console.print(message);
+  }
 }
 
 export default OutputView;

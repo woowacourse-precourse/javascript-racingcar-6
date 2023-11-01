@@ -28,7 +28,7 @@ class GameController {
     this.#start();
   }
 
-  async #start() {
+  #start() {
     this.#outputView.print(GUIDE_MESSAGE.result);
     this.distanceBoard = this.#race.racing(this.distanceBoard, this.laps);
     this.#end();
