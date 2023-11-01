@@ -12,7 +12,7 @@ export default class Game {
         this.#goStandard = 4;
     }
 
-    async run({ carNames, count }) {
+    async run(carNames, count) {
         this.#winStandard = this.countWinStandard(count);
         
         MissionUtils.Console.print(GAME_MESSAGE.gameResult);
