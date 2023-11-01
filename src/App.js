@@ -6,7 +6,8 @@ class App {
         const CARS = await this.getCarsName();
         const TRY_CNT = await this.getTryCNT();
 
-        const CARS_GO_CNT = this.printCarGo(CARS, CARS.length, TRY_CNT);
+        const CARS_GO_CNT = this.getPlayResult(CARS, CARS.length, TRY_CNT);
+
         this.printGameResult(CARS_GO_CNT, CARS);
 
     }
@@ -39,6 +40,8 @@ class App {
         } catch (e) {
             throw e;
         }
+
+        //정수로 반환
         return Number(tryCNTInput);
     }
 
@@ -48,14 +51,16 @@ class App {
         }
     }
 
-    printCarGo(CARS, CAR_CNT, TRY_CNT) {
-
+    getPlayResult(CARS, CAR_CNT, TRY_CNT) {
+        //게임 실행하는 메소드
         let carGoCNT = Array.from({length: CAR_CNT}, () => 0);
 
         Console.print("\n실행 결과");
 
         for (let i = 0; i < TRY_CNT; i++) {
+            //각 회당 자동차들의 랜덤값에 따라 직진-정지 값 구해서 다시 배열에 저장
             carGoCNT = this.carGoFromRandom(CAR_CNT, carGoCNT);
+            //play한 결과 출력
             this.printEachGameState(CARS, carGoCNT);
             Console.print("");
         }
@@ -97,7 +102,7 @@ class App {
 
         if (winners.length === 1) {
             winnerSentence = winnerSentence + CARS[winners[0]]
-        } else if (winners.length > 1) {
+        } else if (winners.length > 1) { //공동우승자가 생길 시
             winnerSentence = winnerSentence + winners.map((winner) => CARS[winner]).join(', ');
         }
 

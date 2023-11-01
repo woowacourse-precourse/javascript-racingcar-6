@@ -96,7 +96,7 @@ describe("자동차 경주 게임", () => {
         const carGoCNT = [4, 1, 4]
         const logSpy = getLogSpy();
         const app = new App();
-        app.printGameResult(carGoCNT, CARS)
+        app.printGameResult(carGoCNT, CARS);
 
         expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("최종 우승자 : pobi, jun"));
     });
