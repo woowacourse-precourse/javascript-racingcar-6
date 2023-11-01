@@ -66,3 +66,9 @@ const numValidation = (num) => {
 };
 
 // 게임 시작
+const gameStart = {
+  getCarName: getCarName,
+  getMaxNum: getMaxNum,
+};
+
+export { gameStart, getCarName, getMaxNum, nameValidation, numValidation };
