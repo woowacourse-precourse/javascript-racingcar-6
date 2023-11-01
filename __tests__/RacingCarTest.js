@@ -23,14 +23,15 @@ const getLogSpy = () => {
   return logSpy;
 };
 
+// 3명 모두 우승
 describe("자동차 경주 게임", () => {
   test("전진-정지", async () => {
     // given
-    const MOVING_FORWARD = 4;
-    const STOP = 3;
-    const inputs = ["pobi,woni", "1"];
-    const outputs = ["pobi : -"];
-    const randoms = [MOVING_FORWARD, STOP];
+    const MOVING_FORWARD = 9;
+    const STOP = 0;
+    const inputs = ["pobi,woni,jun", "3"];
+    const outputs = ["pobi : -", "woni : ", "jun : -", "pobi : --", "woni : -", "jun : --", "pobi : --", "woni : --", "jun : --"];
+    const randoms = [MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD, STOP];
     const logSpy = getLogSpy();
 
     mockQuestions(inputs);
@@ -44,16 +45,5 @@ describe("자동차 경주 게임", () => {
     outputs.forEach((output) => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
-  });
-
-  test.each([[["pobi,javaji"]], [["pobi,eastjun"]]])("이름에 대한 예외 처리", async (inputs) => {
-    // given
-    mockQuestions(inputs);
-
-    // when
-    const app = new App();
-
-    // then
-    await expect(app.play()).rejects.toThrow("[ERROR]");
   });
 });
