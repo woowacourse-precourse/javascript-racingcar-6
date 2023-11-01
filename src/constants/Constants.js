@@ -1,11 +1,14 @@
 export const ERROR_MSG = {
-  INVALID_CAR_NAME:
-    "[ERROR] 자동차 이름은 5자 이하만 가능하며, 쉼표(,)로 구분해야 합니다.",
-  INVALID_RACE_COUNT: "[ERROR] 시도할 횟수는 숫자여야 합니다.",
+  EMPTY_CAR_NAME: "[ERROR] 자동차 이름을 입력해 주세요.",
+  INVALID_CAR_NAME_LENGTH:
+    "[ERROR] 자동차 이름은 1자 이상, 5자 이하만 가능합니다.",
+  DUPLICATE_CAR_NAME: "[ERROR] 자동차 이름은 중복되지 않아야 합니다.",
+  EMPTY_RACE_COUNT: "[ERROR] 시도할 횟수를 입력해 주세요.",
+  INVALID_RACE_COUNT: "[ERROR] 시도할 횟수는 1 이상의 숫자여야 합니다.",
 };
 
 export const INPUT_MSG = {
-  CAR_NAME: "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)",
+  CAR_NAMES: "자동차 이름을 입력해주세요. (이름은 쉼표(,)로 구분)",
   RACE_COUNT: "시도할 횟수는 몇 회인가요?",
 };
 
