@@ -1,4 +1,4 @@
-import { ERROR } from '../constants/constants';
+import { ERROR } from '../constants/constants.js';
 
 const validation = {
 	carsNameValid(cars) {
