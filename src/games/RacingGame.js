@@ -1,5 +1,4 @@
-// 모든 코드는 airbnb의 style guide를 따른다.
-import { print, readLineAsync } from "../utils/missionUtils.js";
+import { readLineAsync } from "../utils/missionUtils.js";
 import { GAME_MESSAGE } from "../constants/gameMessage.js";
 import { carValidation } from "../validations/carValidation.js";
 import { numberValidation } from "../validations/numberValidation.js";
