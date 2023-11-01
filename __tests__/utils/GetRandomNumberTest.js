@@ -1,5 +1,5 @@
-import { RACING } from "../../src/constants/carRacing";
-import { getRandomNumberInRange } from "../../src/utils/getRandomNumberInRange";
+import { RACING } from "../../src/constants/carRacing.js";
+import { getRandomNumberInRange } from "../../src/utils/getRandomNumberInRange.js";
 
 describe("0~9 사이에서 무작위 값을 구하는 함수 확인", () => {
   test("0~9 사이의 숫자가 반환된다.", () => {

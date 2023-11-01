@@ -1,4 +1,4 @@
-import CarRacingGames from "../../src/models/carRacingGame"
+import CarRacingGames from "../../src/models/carRacingGame.js"
 
 describe("CarRacingGame 모델 기능 테스트", () => {
   test("입력 받은 자동차 이름 문자열을 배열의 형태로 반환", () => {
