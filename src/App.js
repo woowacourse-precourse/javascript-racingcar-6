@@ -6,6 +6,7 @@ import OutputView from './View/OutputView.js';
 import { paramType } from './utils/paramType.js';
 import { validate } from './utils/validate.js';
 import Refree from './Refree.js';
+import RacingTrack from './RacingTrack.js';
 
 export default class App {
   #inputReader;
@@ -34,8 +35,9 @@ export default class App {
     _1 = paramType(tryRound, 'number')
   ) {
     const carArray = carNames.split(',').map((name) => new Car(name));
+    const racingTrack = new RacingTrack(carArray);
     const refree = new Refree(tryRound);
-    this.#racingGame = new RacingGame(carArray, refree);
+    this.#racingGame = new RacingGame(racingTrack, refree);
 
     this.racingStart();
   }

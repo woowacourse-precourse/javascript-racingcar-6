@@ -4,50 +4,26 @@ import { ERROR_MESSAGE } from './constants/errorMessage.js';
 import { paramType } from './utils/paramType.js';
 import Car from './Car.js';
 import Refree from './Refree.js';
+import RacingTrack from './RacingTrack.js';
+import RandomNumberGenerator from './utils/RandomNumberGenerator.js';
 
 export default class RacingGame {
-  #carList;
+  #racingTrack;
   #refree;
 
   constructor(
-    carList,
+    racingTrack,
     refree,
-    _0 = paramType(carList, Array),
+    _0 = paramType(racingTrack, RacingTrack),
     _1 = paramType(refree, Refree)
   ) {
-    this.#carList = carList;
+    this.#racingTrack = racingTrack;
     this.#refree = refree;
-  }
-
-  createRandomNumber(
-    min = RANDOM_NUMBER_RANGE.MIN,
-    max = RANDOM_NUMBER_RANGE.MAX,
-    _0 = paramType(min, 'number'),
-    _1 = paramType(max, 'number')
-  ) {
-    return Random.pickNumberInRange(
-      RANDOM_NUMBER_RANGE.MIN,
-      RANDOM_NUMBER_RANGE.MAX
-    );
+    this.randomNumberGenerator = new RandomNumberGenerator();
   }
 
   isFinish() {
     return this.#refree.isGameFinish();
-  }
-
-  _moveCar(car, _ = paramType(car, Car)) {
-    const randomNumber = this.createRandomNumber(
-      RANDOM_NUMBER_RANGE.MIN,
-      RANDOM_NUMBER_RANGE.MAX
-    );
-
-    if (this.#refree.isMovable(randomNumber)) car.increasePosition();
-  }
-
-  _moveCars() {
-    this.#carList.forEach((car) => {
-      this._moveCar(car);
-    });
   }
 
   roundStart() {
@@ -55,30 +31,34 @@ export default class RacingGame {
       throw new Error(ERROR_MESSAGE.PLAY.MORE_ROUND_THAN_ALLOWED);
     }
 
-    this._moveCars();
+    const isMoveFowardList = this.#getIsMoveFowardList();
+
+    this.#racingTrack.moveEachCars(isMoveFowardList);
     this.#refree.clearRound();
   }
 
+  #getIsMoveFowardList() {
+    const isMoveFowardList = this.randomNumberGenerator
+      .createNumbers(
+        RANDOM_NUMBER_RANGE.MIN,
+        RANDOM_NUMBER_RANGE.MAX,
+        this.#racingTrack.totalCarAmount()
+      )
+      .map((number) => this.#refree.isMovable(number));
+
+    return isMoveFowardList;
+  }
+
   getRoundResult() {
-    return this.#carList.map((car) => car.getPositionResult());
+    return this.#racingTrack.getRoundResult();
   }
 
   getWinners() {
     if (!this.isFinish()) throw new Error(ERROR_MESSAGE.PLAY.LEFT_ROUND);
 
-    const finalRoundResult = this.getRoundResult();
-    const maxMoveAmount = finalRoundResult.reduce(
-      (maxMoveAmount, carResult) => {
-        return (maxMoveAmount = Math.max(
-          maxMoveAmount,
-          carResult['position'].length
-        ));
-      },
-      Number.MIN_SAFE_INTEGER
-    );
-
-    const winners = finalRoundResult
-      .filter((car) => car.position.length === maxMoveAmount)
+    const mostMoveFowardLength = this.#racingTrack.mostMoveFowardDistance();
+    const winners = this.getRoundResult()
+      .filter((car) => car.position.length === mostMoveFowardLength)
       .map((car) => car.name)
       .join(', ');
 
