@@ -4,7 +4,15 @@ import { MESSAGE, ERROR_MESSAGE } from '../constant/message.js';
 import {
     splitStringByComma,
     joinArrayWithCommaAndBlank,
-  } from '../utility/string.js';
+} from '../utility/string.js';
+import {
+    isValidateNumber,
+    isNumberWithinBounds,
+    isLengthWithinBounds,
+    isDuplicateString,
+    isContainString,
+    isEmptyString,
+} from '../utility/validation.js';
 
 class RacingCarGame {
   #gameCount = 0;
@@ -47,11 +55,21 @@ class RacingCarGame {
 
   async gameStart() {
     await this.#getNameString();
+    isEmptyString(this.#nameListString, ERROR_MESSAGE.wrongNameInput);
+    isContainString(this.#nameListString, ',');
+
+    this.#nameList = splitStringByComma(this.#nameListString);
+    this.#isMaxNameListLength();
+    this.#isValidName();
 
     await this.#getGameCount();
+    this.#isValidGameCount();
 
     const garage = new Garage(Array.from(this.#nameList));
-    
+
+    print('');
+    print(MESSAGE.resultGuide);
+
     while (this.#gameCount) {
         garage.tryAllCarsMove();
         garage.displayCarStateList();
