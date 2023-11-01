@@ -20,5 +20,5 @@ export const ERROR_MESSAGE = {
   TRIM_EMPTY_NAME: "이름 앞뒤에 공백이 포함되어 있습니다.",
   OVERLAP_NAME: "중복되는 차 이름이 존재합니다.",
   DOWN1_COUNT: "1이상 숫자를 입력해주세요.",
-  DEMICAL: "정수를 입력해주세요"
+  DEMICAL: "정수를 입력해주세요",
 };
