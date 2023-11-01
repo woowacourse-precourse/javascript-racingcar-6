@@ -1,4 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
+
 class App {
   async play() {
     const cars = await MissionUtils.Console.readLineAsync(
@@ -45,7 +46,7 @@ class App {
       cars_win_count_line[i] = win_line;
       this.printWinLine(arr, cars_win_count_line[i]);
     }
-    const winners = await this.printWinner(cars_win_count_num, arr);
+    const winners = await this.getWinnerName(cars_win_count_num, arr);
     if (winners.length === 1) {
       MissionUtils.Console.print(`최종 우승자 : ${winners[0]}`);
     } else {
@@ -60,7 +61,7 @@ class App {
     }
   }
 
-  async printWinner(arr_count, arr_name) {
+  async getWinnerName(arr_count, arr_name) {
     const maxNumber = Math.max(...arr_count);
     const maxIndexes = [];
     arr_count.forEach((number, index) => {
