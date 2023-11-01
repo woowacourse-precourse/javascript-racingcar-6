@@ -1,4 +1,4 @@
-import App from "./App.js";
+const App = require("./App");
 
 const app = new App();
 app.play();
