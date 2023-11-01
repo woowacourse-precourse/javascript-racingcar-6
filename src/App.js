@@ -1,8 +1,8 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
-// #### 3. 랜덤 전진 기능
+// #### 4. 경주 진행 기능
 
-// - 0에서 9 사이의 무작위 값을 생성, 4 이상일 경우 자동차가 전진
+// - 입력한 시도 횟수만큼 게임 진행, 각 단계의 우승횟수 저장
 
 class App {
   constructor() {
@@ -20,13 +20,19 @@ class App {
 
     this.initGame();
 
+    MissionUtils.Console.print("\n실행 결과");
+
     while (this.gameCount > 0) {
       for (const name in this.gameResults) {
         if (this.moveRandomly()) this.gameResults[name]++;
       }
 
+      this.showGameResult();
+
       this.gameCount--;
     }
+
+    this.showWinner();
   }
 
   async getCarNames() {
@@ -71,11 +77,30 @@ class App {
     return RANDOM_NUMBER > 3;
   }
 
+  showGameResult() {
+    for (const name in this.gameResults) {
+      const RESULT = "-".repeat(this.gameResults[name]);
+
+      MissionUtils.Console.print(`${name} : ${RESULT}`);
+    }
+
+    MissionUtils.Console.print("");
+  }
+
+  showWinner() {
+    const MAX = Math.max(...Object.values(this.gameResults));
+    const RESULT = Object.keys(this.gameResults).filter(
+      (key) => this.gameResults[key] === MAX
+    );
+
+    MissionUtils.Console.print(`최종 우승자 : ${RESULT.join(", ")}`);
+  }
+
   debug(...args) {
     console.log(...args);
   }
 
-  throwError(COMMENT) {
+  throwError(COMMENT = "") {
     throw new Error(`[ERROR] ${COMMENT}`);
   }
 }
