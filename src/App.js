@@ -1,5 +1,5 @@
 import Car from "./Car.js"; // Car 클래스를 가져옴
-import { Random } from "@woowacourse/mission-utils";
+import { Console } from "@woowacourse/mission-utils";
 
 class App {
   constructor() {
@@ -75,7 +75,7 @@ class App {
     const winners = this.cars
       .filter((car) => car.position === maxPosition)
       .map((car) => car.name); //우승자 추리기
-    MissionUtils.Console.print(`최종 우승자 : ${winners.join(", ")}`); //쉼표로 우승자 연결
+    Console.print(`최종 우승자 : ${winners.join(", ")}`); //쉼표로 우승자 연결
   }
 }
 

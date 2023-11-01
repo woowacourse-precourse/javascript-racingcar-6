@@ -9,7 +9,7 @@ class Car {
 
   //자동차 전진하기
   move() {
-    const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
+    const randomNumber = Random.pickNumberInRange(0, 9);
     if (randomNumber >= 4) {
       this.position++;
     }
