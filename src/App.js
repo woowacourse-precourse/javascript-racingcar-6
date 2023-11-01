@@ -24,6 +24,7 @@ class App {
     return carName.map((name) => ({ name, position: 0 }));
   }
   racing(cars, tryCount) {
+    MissionUtils.Console.print("\n실행 결과");
     for (let i = 0; i < tryCount; i++) {
       cars.forEach((car) => {
         const random = MissionUtils.Random.pickNumberInRange(0, 9);
@@ -34,7 +35,7 @@ class App {
       cars.forEach((car) => {
         MissionUtils.Console.print(`${car.name}: ${"-".repeat(car.position)}`);
       });
-      MissionUtils.Console.print("\n");
+      MissionUtils.Console.print("");
     }
   }
   printResult(cars) {
