@@ -66,9 +66,16 @@ function carsForEach(cars) {
 }
 
 function attemptCount(count) {
-  if (count <= 0) {
+  if (count < 1) {
     throw new Error("[ERROR]");
   }
+}
+
+function racingCondition() {
+  const CONDITION = MissionUtils.Random.pickNumberInRange(0, 9);
+  if (CONDITION >= 4) {
+    return "MOVING_FORWARD";
+  } else return "STOP";
 }
 
 const app = new App();
