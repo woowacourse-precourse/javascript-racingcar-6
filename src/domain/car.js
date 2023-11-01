@@ -37,7 +37,7 @@ class Car {
    *
    */
   #validateCarName(carName) {
-    if (carName.length > 5 || carName.length < 1) {
+    if (carName.length > 5 || carName.length < 0) {
       throw new Error(ERROR.NAME_RANGE_ERROR);
     }
 
