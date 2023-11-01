@@ -2,7 +2,8 @@ import { Random } from "@woowacourse/mission-utils";
 const InputError = require("../lib/utils/error.js");
 const Car = require("../models/car.js");
 import ConsoleView from "../views/consoleView.js";
-const { GAME_MESSAGE, WORD } = require("../lib/constants/message.js");
+const { GAME_MESSAGE } = require("../lib/constants/message.js");
+const { WORD } = require("../lib/constants/word.js");
 
 class AppController {
   constructor() {

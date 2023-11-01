@@ -16,12 +16,7 @@ export const ERROR_MESSAGE = {
   POSITIVE_NUMBER_ERROR: "[ERROR] 양수만 입력하세요.",
 };
 
-export const WORD = {
-  PROGRESS: "-",
-};
-
 module.exports = {
   GAME_MESSAGE,
   ERROR_MESSAGE,
-  WORD,
 };
