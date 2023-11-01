@@ -25,7 +25,7 @@ const getLogSpy = () => {
   
 describe("자동차 이동에 관한 테스트", () => {
     test("전진-정지1", async () => {
-
+        //given
         const MOVING_FORWARD = 4;
         const STOP = 3;
         const inputs = ["pobi,woni", "1"];
@@ -36,15 +36,17 @@ describe("자동차 이동에 관한 테스트", () => {
         mockQuestions(inputs);
         mockRandoms([...randoms]);
 
+        //when
         await gameInterface();
-
+        
+        //then
         outputs.forEach((output) => {
             expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
         });
     });
 
     test("전진-정지2", async () => {
-
+        //given
         const MOVING_FORWARD = 4;
         const STOP = 3;
         const inputs = ["pobi,woni", "3"];
@@ -55,15 +57,17 @@ describe("자동차 이동에 관한 테스트", () => {
         mockQuestions(inputs);
         mockRandoms([...randoms]);
 
+        //when
         await gameInterface();
 
+        //then
         outputs.forEach((output) => {
             expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
         });
     });
 
     test("전진-정지3", async () => {
-
+        //given
         const MOVING_FORWARD = 4;
         const STOP = 3;
         const inputs = ["pobi,woni,jun", "3"];
@@ -74,8 +78,10 @@ describe("자동차 이동에 관한 테스트", () => {
         mockQuestions(inputs);
         mockRandoms([...randoms]);
 
+        //when
         await gameInterface();
 
+        //then
         outputs.forEach((output) => {
             expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
         });
