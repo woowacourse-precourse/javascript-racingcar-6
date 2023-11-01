@@ -38,4 +38,15 @@ describe('자동차 이름 테스트', () => {
 
     await expect(app.play()).rejects.toThrow('[ERROR]');
   });
+
+  test('입력이 없는 경우', async () => {
+    const inputs = ['', '5'];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+
+    const app = new App();
+
+    await expect(app.play()).rejects.toThrow('[ERROR]');
+  });
 });
