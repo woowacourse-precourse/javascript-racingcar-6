@@ -24,8 +24,8 @@ class CarRacing {
     }
   }
 
-  showResults() {
-    View.printResults(this.#referee.results);
+  showTotalResults() {
+    View.printTotalResults(this.#referee.totalResults);
   }
 
   showWinners() {

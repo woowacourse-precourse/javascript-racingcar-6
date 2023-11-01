@@ -5,7 +5,7 @@ class View {
   static #DELIMITER = ',';
   static #CAR_NAMES_QUERY = `경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분) `;
   static #NUMBER_OF_ROUNDS_QUERY = '시도할 횟수는 몇 회인가요? ';
-  static #RESULT = '실행 결과';
+  static #TOTAL_RESULTS_HEAD = '실행 결과';
   static #FORWARD_MARK = '-';
   static #WINNER = '최종 우승자';
 
@@ -24,9 +24,9 @@ class View {
     return number;
   }
 
-  static writeResultMessage(results) {
-    let message = `\n${View.#RESULT}\n`;
-    results.forEach((result) => {
+  static writeTotalResultsMessage(totalResults) {
+    let message = `\n${View.#TOTAL_RESULTS_HEAD}\n`;
+    totalResults.forEach((result) => {
       message += this.writeRoundResult(result);
     });
     return message;
@@ -40,8 +40,8 @@ class View {
     return `${message}\n`;
   }
 
-  static printResults(results) {
-    const message = View.writeResultMessage(results);
+  static printTotalResults(totalResults) {
+    const message = View.writeTotalResultsMessage(totalResults);
     Console.print(message);
   }
 

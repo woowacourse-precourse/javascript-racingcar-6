@@ -15,8 +15,8 @@ jun : ---
     expect(View.writeRoundResult(result)).toBe(message);
   });
 
-  test('writeResultMessage', () => {
-    const results = [
+  test('writeTotalResultsMessage', () => {
+    const totalResults = [
       new Map([
         ['pobi', 1],
         ['woni', 0],
@@ -66,7 +66,7 @@ woni : ----
 jun : -----
 
 `;
-    expect(View.writeResultMessage(results)).toBe(message);
+    expect(View.writeTotalResultsMessage(totalResults)).toBe(message);
   });
 
   describe('writeWinnerMessage', () => {
