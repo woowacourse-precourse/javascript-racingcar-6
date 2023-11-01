@@ -13,16 +13,14 @@ export default class RacingGame {
   constructor(
     racingTrack,
     refree,
+    randomNumberGenerator,
     _0 = paramType(racingTrack, RacingTrack),
-    _1 = paramType(refree, Refree)
+    _1 = paramType(refree, Refree),
+    _2 = paramType(randomNumberGenerator, RandomNumberGenerator)
   ) {
     this.#racingTrack = racingTrack;
     this.#refree = refree;
-    this.randomNumberGenerator = new RandomNumberGenerator();
-  }
-
-  isFinish() {
-    return this.#refree.isGameFinish();
+    this.randomNumberGenerator = randomNumberGenerator;
   }
 
   roundStart() {
@@ -36,16 +34,8 @@ export default class RacingGame {
     this.#refree.clearRound();
   }
 
-  #getIsMoveFowardList() {
-    const isMoveFowardList = this.randomNumberGenerator
-      .createNumbers(
-        RANDOM_NUMBER_RANGE.MIN,
-        RANDOM_NUMBER_RANGE.MAX,
-        this.#racingTrack.totalCarAmount()
-      )
-      .map((number) => this.#refree.isMovable(number));
-
-    return isMoveFowardList;
+  isFinish() {
+    return this.#refree.isGameFinish();
   }
 
   getRoundResult() {
@@ -63,5 +53,17 @@ export default class RacingGame {
       .join(', ');
 
     return winners;
+  }
+
+  #getIsMoveFowardList() {
+    const isMoveFowardList = this.randomNumberGenerator
+      .createNumbers(
+        RANDOM_NUMBER_RANGE.MIN,
+        RANDOM_NUMBER_RANGE.MAX,
+        this.#racingTrack.totalCarAmount()
+      )
+      .map((number) => this.#refree.isMovable(number));
+
+    return isMoveFowardList;
   }
 }

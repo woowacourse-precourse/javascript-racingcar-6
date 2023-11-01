@@ -1,18 +1,20 @@
 import RacingGame from '../../src/RacingGame.js';
 import RacingTrack from '../../src/RacingTrack.js';
 import Refree from '../../src/Refree.js';
+import RandomNumberGenerator from '../../src/utils/RandomNumberGenerator.js';
 
 describe('class RacingGame Test', () => {
   let refree;
   let racingGame;
   let racingTrack;
+  const randomNumberGenerator = new RandomNumberGenerator();
   const TRY_ROUND = 3;
   const carNames = '준모,정배,서부장';
 
   beforeEach(() => {
     racingTrack = new RacingTrack(carNames);
     refree = new Refree(TRY_ROUND);
-    racingGame = new RacingGame(racingTrack, refree);
+    racingGame = new RacingGame(racingTrack, refree, randomNumberGenerator);
   });
 
   describe('메서드 test : isFinish() 테스트', () => {

@@ -5,6 +5,7 @@ import { paramType } from './utils/paramType.js';
 import { validate } from './utils/validate.js';
 import Refree from './Refree.js';
 import RacingTrack from './RacingTrack.js';
+import RandomNumberGenerator from './utils/RandomNumberGenerator.js';
 
 export default class App {
   #inputReader;
@@ -34,7 +35,12 @@ export default class App {
   ) {
     const racingTrack = new RacingTrack(carNames);
     const refree = new Refree(tryRound);
-    this.#racingGame = new RacingGame(racingTrack, refree);
+    const randomNumberGenerator = new RandomNumberGenerator();
+    this.#racingGame = new RacingGame(
+      racingTrack,
+      refree,
+      randomNumberGenerator
+    );
 
     this.racingStart();
   }
