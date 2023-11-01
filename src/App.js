@@ -52,7 +52,7 @@ function isRoundCountValid(roundCount) {
   if (roundCount < 0) {
     throw new Error('[ERROR] 0 이상의 숫자를 입력하세요.');
   }
-  if (!Number.isInteger(roundCount)) {
+  if (roundCount % 1 !== 0) {
     throw new Error('[ERROR] 정수를 입력하세요.');
   }
 }
@@ -77,7 +77,6 @@ class App {
     isCarNameValid(carNameArr);
 
     let roundCount = await this.getRoundCount();
-    console.log(roundCount);
     isRoundCountValid(roundCount);
 
     let carArr = createCarArray(carNameArr);
