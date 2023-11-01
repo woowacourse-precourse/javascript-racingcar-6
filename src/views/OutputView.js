@@ -1,7 +1,7 @@
 import { Console } from "@woowacourse/mission-utils"
 
 class OutputView {
-    print(message) {
+    static print(message) {
         Console.print(message);
     }
 }

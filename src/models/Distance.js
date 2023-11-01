@@ -1,4 +1,8 @@
+import OutputView from "../views/OutPutView.js";
+
 class Distance {
+
+  #outputView = OutputView
   /**
    *
    * @param {자동차 이름 배열} carNames

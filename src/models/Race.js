@@ -1,6 +1,9 @@
-import Distance from "./Distance";
+import OutputView from "../views/OutPutView.js";
+import Distance from "./Distance.js";
 
 class Race {
+
+    #outputView = OutputView
 
     #fuel;
 
