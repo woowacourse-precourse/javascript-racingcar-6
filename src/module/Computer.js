@@ -37,6 +37,7 @@ class Computer {
     });
   }
 
+  // 게임 시작시 멘트 소개 및 설정 :: init 역할
   async start() {
     const carNames = await MissionUtils.Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)');
     const gameRound = await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?');
@@ -71,6 +72,7 @@ class Computer {
     this.printResult();
   }
 
+  // Car 객체 순환하며, goingCount 비교 후, 가장 높은 객체들의 이름 출력
   judgeWinner() {
     const carAmount = this.#carList.length;
     const winnerList = [];
@@ -94,6 +96,7 @@ class Computer {
     MissionUtils.Console.print(`최종 우승자 : ${winnerList.join(', ')}`);
   }
 
+  // 실행 결과 출력 후 종료
   finish() {
     MissionUtils.Console.print('');
     MissionUtils.Console.print('실행 결과');
