@@ -7,7 +7,8 @@ describe('RacingCarValidator test', () => {
   test.each([
     [['kim', 'park', 'namgung']],
     [['kim', 'park', '___']],
-  ])('func isValidNameArray - 5자 이상 혹은, 영어 대소문자 입력 시 에러 확인', (inputs) => {
+    [['kim', 'park', 'k i m']],
+  ])('func isValidNameArray - 5자 이상 혹은, 영어 대소문자 외 입력 시 에러 확인', (inputs) => {
     const result = () => racingCarValidator.isValidNameArray(inputs);
 
     expect(result).toThrowError(RacingCarNameError);
@@ -25,6 +26,7 @@ describe('RacingCarValidator test', () => {
   test.each([
     [['kim', 'park']],
     [['kim', 'park', 'cho']],
+    [['KIM', 'PARK', 'CHO']],
   ])('func isValidNameArray - 정상 작동 확인', (inputs) => {
     const result = () => racingCarValidator.isValidNameArray(inputs);
 
@@ -47,6 +49,7 @@ describe('RacingCarValidator test', () => {
     '5',
     '35',
     '092',
+    '000001',
     '9999',
   ])('func isValidCount - 정상 작동 확인', (inputs) => {
     const result = () => racingCarValidator.isValidCount(inputs);
