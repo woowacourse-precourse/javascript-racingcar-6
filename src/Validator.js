@@ -1,4 +1,4 @@
-import ErrorMessage from './ErrorMessage.js';
+import ERROR_MESSAGE from './ErrorMessage.js';
 
 class Validator {
   static #MIN_LENGTH = 1;
@@ -8,15 +8,15 @@ class Validator {
   static #END_INCLUSIVE = 100;
 
   static validateCarNames(array) {
-    if (Validator.#isEmpty(array[0])) throw new Error(ErrorMessage.EMPTY);
+    if (Validator.#isEmpty(array[0])) throw new Error(ERROR_MESSAGE.empty);
     if (!array.every((string) => Validator.#isLength(string))) {
-      throw new Error(ErrorMessage.LENGTH);
+      throw new Error(ERROR_MESSAGE.length);
     }
   }
 
   static validateNumberOfRound(value) {
     if (!Validator.#isBetween(value)) {
-      throw new Error(ErrorMessage.ONE_TO_HUNDRED);
+      throw new Error(ERROR_MESSAGE.oneToHundred);
     }
   }
 
