@@ -45,7 +45,7 @@ class RacingManager {
     }
 
     for (let i = 0; i < this.randomNum.length; i++) {
-      Console.print(this.randomNum[i]);
+      // Console.print(this.randomNum[i]);
       if (this.randomNum[i] >= 4) {
         this.count[i] += 1;
       }
@@ -59,6 +59,27 @@ class RacingManager {
     }
 
     return degreeString;
+  }
+
+  whoWinner() {
+    let highestScore = -1;
+    const highestScoreIndices = [];
+
+    for (let i = 0; i < this.count.length; i++) {
+      const currentCount = this.count[i];
+
+      if (currentCount > highestScore) {
+        highestScore = currentCount;
+        highestScoreIndices.length = 0;
+        highestScoreIndices.push(i);
+      } else if (currentCount === highestScore) {
+        highestScoreIndices.push(i);
+      }
+    }
+
+    const winners = highestScoreIndices.map((index) => this.carArr[index]);
+
+    Console.print(`최종 우승자 : ${winners.join(", ")}`);
   }
 
   resetNum() {
