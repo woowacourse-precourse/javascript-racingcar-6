@@ -31,7 +31,8 @@ class App {
     if (Number.isNaN(howMove)) {
       throw new Error(`[ERROR] 유효하지 않은 숫자 형식입니다.`);
     }
-    if (howMove < 1) {
+     const MIN_SIZE = 1;
+    if (howMove < MIN_SIZE) {
 
       throw new Error(`[ERROR] 0보다 큰 값이어야 합니다.`);
     }
@@ -56,8 +57,10 @@ class App {
   }
 
   checkNamelength(carNameArry) {
+    const NAME_MIN_LENG = 1;
+    const NAME_MAX_LENG = 5;
     for (let i = 0; i < carNameArry.length; i++) {
-      if (carNameArry[i].length < 1 || carNameArry[i].length > 5) {
+      if (carNameArry[i].length < NAME_MIN_LENG || carNameArry[i].length > NAME_MAX_LENG) {
         return true;
       } 
     }
@@ -68,7 +71,9 @@ class App {
   forwordOrStop() {
     let randomnum = Number(MissionUtils.Random.pickNumberInRange(0, 9));
     let marker = '';
-    if (4 <= randomnum && randomnum <= 9) {
+    const FORWORD_MIN = 4;
+    const FORWORD_MAX = 9;
+    if (FORWORD_MIN <= randomnum && randomnum <= FORWORD_MAX) {
       marker = '-';
     } 
 
