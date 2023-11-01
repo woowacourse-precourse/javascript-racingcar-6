@@ -3,56 +3,56 @@ import Car from './Car.js';
 import Input from './utils/Input.js';
 
 class Game {
+  /**
+   * @type {Car[]}
+   */
   #cars;
 
+  /**
+   * @type {number}
+   */
   #trialCount;
 
-  #winningPosition;
-
+  /**
+   * @type {string[]}
+   */
   #winners;
 
-  #input;
+  #gameResultMessage = '\n실행 결과';
 
-  #gameResultQuery = '\n실행 결과';
-
-  #winnersQuery = '최종 우승자 : ';
+  #winnersMessage = '최종 우승자 : ';
 
   constructor() {
     this.#cars = [];
     this.#trialCount = 0;
-    this.#winningPosition = 0;
     this.#winners = [];
-    this.#input = new Input();
   }
 
   async #init() {
-    const names = await this.#input.getCarNames();
+    const names = await Input.getCarNames();
     this.#cars = names.map((name) => new Car(name));
 
-    this.#trialCount = await this.#input.getTrialCount();
+    this.#trialCount = await Input.getTrialCount();
   }
 
   async run() {
     await this.#init();
-    this.#printResult();
-  }
+    Console.print(this.#gameResultMessage);
 
-  #printResult() {
-    Console.print(this.#gameResultQuery);
     for (let i = 0; i < this.#trialCount; i += 1) {
       this.#executeRound();
-      Console.print('');
     }
-    Console.print(`${this.#winnersQuery}${this.#winners.join(', ')}`);
+
+    this.#announceWinners();
   }
 
   #executeRound() {
-    this.#cars.forEach((car) => {
-      car.move();
-      car.print();
-      this.#winningPosition = Math.max(this.#winningPosition, car.getPosition());
-    });
-    this.#winners = this.#cars.filter((car) => car.position === this.#winningPosition);
+    this.#winners = Car.race(this.#cars);
+    Console.print('');
+  }
+
+  #announceWinners() {
+    Console.print(`${this.#winnersMessage}${this.#winners.join(', ')}`);
   }
 }
 
