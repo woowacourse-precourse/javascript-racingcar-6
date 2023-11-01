@@ -9,6 +9,7 @@ class App {
     const carNames = await this.inputCarNames();
     const tries = await this.inputTries();
     const cars = this.initializeCars(carNames);
+    this.startRace(cars, tries);
   }
 
   async inputCarNames() {
@@ -41,6 +42,13 @@ class App {
     return names.map((name) => ({ name, position: 0 }));
   }
 
+  startRace(cars, tries) {
+    for (let i = 0; i < tries; i++) {
+      this.moveCars(cars);
+      this.displayMovement(cars);
+    }
+  }
+
   moveCars(cars) {
     cars.forEach((car) => {
       const randomNum = MissionUtils.Random.pickNumberInRange(0, 9);
@@ -50,6 +58,12 @@ class App {
     });
   }
 
+  displayMovement(cars) {
+    cars.forEach((car) => {
+      const repeat = "-".repeat(car.position);
+      Console.print(`${car.name}: ${repeat}`);
+    });
+  }
 }
 
 export default App;
