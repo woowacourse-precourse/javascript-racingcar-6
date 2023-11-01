@@ -7,6 +7,7 @@ const ERROR_CAR_MESSAGE = {
     "[ERROR] 자동차 이름을 입력하지 않았습니다.",
   INVALID_INPUT_CAR_NAME_ENG_ERROR:
     "[ERROR] 자동차 이름에 영어가 아닌 문자가 포함되어 있습니다.",
+  INVALID_INPUT_CAR_NAME_ERROR: "[ERROR] 자동차의 타입이 올바르지 않습니다.",
 };
 
 const ERROR_USER_INPUT_MESSAGE = {
