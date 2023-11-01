@@ -25,4 +25,8 @@ describe('inputValidator 테스트', () => {
     const input = 'a';
     expect(() => InputValidator.checkIsNumber(input)).toThrow('[ERROR]');
   });
+  test('시도할 횟수가 0이면 예외를 발생시킨다', async () => {
+    const input = '0';
+    expect(() => InputValidator.checkIsNotZero(input)).toThrow('[ERROR]');
+  });
 });

@@ -61,7 +61,7 @@ class InputValidator {
 
   static validateRoundNumber(query) {
     this.checkIsNumber(query);
-    this.checkIsZero(query);
+    this.checkIsNotZero(query);
 
     return query;
   }
