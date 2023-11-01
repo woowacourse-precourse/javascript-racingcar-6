@@ -1,5 +1,6 @@
-const { Console } = require('@woowacourse/mission-utils');
-const { default: InputView } = require('../src/views/InputView');
+import { Console } from '@woowacourse/mission-utils';
+import InputView from '../src/views/InputView.js';
+import App from '../src/App.js';
 
 describe('InputView 테스트', () => {
   const mockQuestion = (input) => {
@@ -27,5 +28,16 @@ describe('InputView 테스트', () => {
 
     // then
     expect(raceRounds).toEqual(5);
+  });
+
+  test('inputRaceRounds 음수 값을 넣었을 경우', async () => {
+    // given
+    mockQuestion('-1');
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow('[ERROR]');
   });
 });
