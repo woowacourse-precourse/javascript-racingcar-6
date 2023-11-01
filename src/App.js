@@ -1,16 +1,17 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
+import { GAME_MESSAGE } from './constants/gameMessage';
 
 class App {
   async play() {
-    const inputCarName = await MissionUtils.Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n');
-    const count = await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    const inputCarName = await MissionUtils.Console.readLineAsync(GAME_MESSAGE.inputCarNames);
+    const count = await MissionUtils.Console.readLineAsync(GAME_MESSAGE.inputGameCount);
 
     // 자동차 이름 분리하기
     const carNames = inputCarName.split(',');
     const gameResults = [];
     let win = '';
 
-    MissionUtils.Console.print('실행 결과');
+    MissionUtils.Console.print(GAME_MESSAGE.gameResult);
     for (let i = 0; i < count; i++) {
       win = `${win}-`;
       // 랜덤 숫자 생성
