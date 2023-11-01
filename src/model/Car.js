@@ -4,12 +4,11 @@ import Converter from '../utils/StringConvertor.js';
 class Car {
   #carData;
 
-  constructor(carNames) {
+  constructor() {
     this.#carData = new Map();
-    this.#saveCarNames(carNames);
   }
 
-  #saveCarNames(carNames) {
+  saveNames(carNames) {
     const carNamesArray = Converter.splitStringToArrayByDelimiter(carNames, SYSTEM.delimiter);
     carNamesArray.forEach((carName) => {
       this.#carData.set(carName, '');

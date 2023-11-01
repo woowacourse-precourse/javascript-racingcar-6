@@ -15,6 +15,10 @@ class RacingModel {
     return randomNumber >= SYSTEM.canMoveNumber;
   }
 
+  saveNames(vehicleNames) {
+    this.#vehicle.saveNames(vehicleNames);
+  }
+
   racing() {
     const vehicleData = this.#vehicle.getData();
     vehicleData.forEach((progress, vehicle) => {
