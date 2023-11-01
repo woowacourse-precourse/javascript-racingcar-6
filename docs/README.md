@@ -70,9 +70,9 @@
   - [v] : 2-2. 입력이 제대로 되었을때
     - [v] : 입력값과 moveNum 비교
 
-- [ ] : 3. 실행결과 출력
+- [v] : 3. 실행결과 출력
 
-  - [ ] : CarList.race() 호출 횟수와 moveNum의 값 비교
-  - [ ] : CarList.printCarCurrnetState() 호출 횟수와 moveNum의 값 비교
+  - [v] : CarList.race() 호출 횟수와 moveNum의 값 비교
+  - [v] : CarList.printCarCurrnetState() 호출 횟수와 moveNum의 값 비교
 
 - [ ] : 4. 우승자 출력

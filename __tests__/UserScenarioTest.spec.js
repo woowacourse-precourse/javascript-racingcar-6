@@ -81,3 +81,29 @@ describe('2. 시도할 횟수를 입력 했을때', () => {
     expect(moveNum).toEqual(expectMoveNum);
   });
 });
+
+describe('3. 실행결과 출력', () => {
+  test('CarList의 메소드 호출 횟수와 moveNum의 값 비교', async () => {
+    const userCarNameInput = 'dong,gyun,kim';
+    const userMoveNumInput = 5;
+
+    mockQuestions(userCarNameInput);
+
+    const game = new Game();
+    await game.init();
+    await game.createCars();
+    const { carList } = game.getCarList();
+
+    mockQuestions(userMoveNumInput);
+    await game.moveQuestion();
+    const { moveNum } = game.getCarMoveNum();
+
+    const raceSpy = jest.spyOn(carList, 'race');
+    const printCarCurrnetStateSpy = jest.spyOn(carList, 'printCarCurrnetState');
+
+    await game.process();
+
+    expect(raceSpy).toHaveBeenCalledTimes(moveNum);
+    expect(printCarCurrnetStateSpy).toHaveBeenCalledTimes(moveNum);
+  });
+});
