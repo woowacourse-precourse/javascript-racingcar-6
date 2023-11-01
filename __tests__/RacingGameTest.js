@@ -168,7 +168,7 @@ describe('getMoveCount 함수 테스트', () => {
   });
 });
 
-test('moveCars 함수 테스트', () => {
+test('simulateRace 함수 테스트', () => {
   const randoms = [4, 8];
   mockRandoms(randoms);
   const car1 = new Car('car1', 2);
@@ -177,7 +177,7 @@ test('moveCars 함수 테스트', () => {
   const outputs = ['실행 결과', 'car1 : ---', 'car2 : -'];
   const logSpy = getLogSpy();
 
-  racingGame.moveCars();
+  racingGame.simulateRace();
 
   outputs.forEach((output) => {
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
