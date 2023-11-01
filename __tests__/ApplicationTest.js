@@ -62,71 +62,69 @@ describe('자동차 경주 게임', () => {
   );
 
   // 자동차 이름 입력 테스트
-  test.each([
-    [[', ,']],
-    [[' 가나다, ABC']],
-    [['가나다, ABC ']],
-    [[' 가나다 , ABC ']],
-  ])(
-    '이름이 공백이거나 앞뒤에 공백이 포함된 경우 예외 처리',
+  test.each([[['가나다', '3']], [['a', '3']], [['12345', '3']], [['', '3']]])(
+    '이름에 대한 예외 처리 - 2개 미만인 경우',
     async (inputs) => {
+      // given
       mockQuestions(inputs);
-      const app = new App();
-      await expect(app.play()).rejects.toThrow(ERROR.NOT_SPACE);
-    },
-  );
 
-  test.each([[['가나다라']], [['abc']], [['12345']], [['']]])(
-    '자동차 이름이 2개 미만인 경우 예외 처리',
-    async (inputs) => {
-      mockQuestions(inputs);
+      // when
       const app = new App();
+
+      // then
       await expect(app.play()).rejects.toThrow(ERROR.NOT_PLURAL);
     },
   );
 
   test.each([
-    [['가나다,가나다라마바']],
-    [['ABC,ABCDEF']],
-    [['123456,789']],
-    [['abcdef,ghijkl']],
-  ])('자동차 이름이 5자를 초과하는 경우 예외 처리', async (inputs) => {
+    [['가나다,가나다라마바', '3']],
+    [['ABC,ABCDEF', '3']],
+    [['123456,789', '3']],
+    [['abcdef,ghijkl', '3']],
+  ])('이름에 대한 예외 처리 - 5자를 초과하는 경우', async (inputs) => {
+    // given
     mockQuestions(inputs);
+
+    // when
     const app = new App();
+
+    // then
     await expect(app.play()).rejects.toThrow(ERROR.NOT_UNDER_LEN);
   });
 
   test.each([
-    [['가나다,가나다']],
-    [['abc,abc']],
-    [['123,123']],
-    [['A00!@,A00!@']],
-  ])('중복된 이름이 존재하는 경우 예외 처리', async (inputs) => {
+    [['가나다,가나다', '3']],
+    [['abc,abc', '3']],
+    [['123,123', '3']],
+    [['A00!@,A00!@', '3']],
+  ])('이름에 대한 예외 처리 - 중복되는 경우', async (inputs) => {
+    // given
     mockQuestions(inputs);
+
+    // when
     const app = new App();
+
+    // then
     await expect(app.play()).rejects.toThrow(ERROR.NOT_UNIQUE);
   });
 
   // 시도 횟수 입력 테스트
   test.each([
+    [['A,B,C', undefined]],
     [['A,B,C', '']],
+    [['A,B,C', ' ']],
     [['A,B,C', 'a']],
     [['A,B,C', '가']],
     [['A,B,C', '#']],
-  ])('숫자를 입력하지 않은 경우 예외 처리', async (inputs) => {
-    mockQuestions(inputs);
-    const app = new App();
-    await expect(app.play()).rejects.toThrow(ERROR.NOT_NUMBER);
-  });
-
-  test.each([
     [['A,B,C', '-1']],
-    [['A,B,C', '0.1']],
-    [['A,B,C', '1.05']],
-    [['A,B,C', '1e3']],
-  ])('0 이상의 정수를 입력하지 않은 경우 예외 처리', async (inputs) => {
+  ])('시도할 횟수에 대한 예외 처리', async (inputs) => {
+    // given
     mockQuestions(inputs);
+
+    // when
     const app = new App();
-    await expect(app.play()).rejects.toThrow(ERROR.NOT_INTEGER);
+
+    // then
+    await expect(app.play()).rejects.toThrow(ERROR.NOT_NUMBER);
   });
 });

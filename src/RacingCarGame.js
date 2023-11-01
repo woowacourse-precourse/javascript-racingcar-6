@@ -1,16 +1,21 @@
 import { MissionUtils, Console } from '@woowacourse/mission-utils';
-import { DEFAULT, ERROR, LOG } from './constants/index.js';
+import { DEFAULT, LOG } from './constants/index.js';
 import Validation from './Validation.js';
 
 class RacingCarGame {
   car = [''];
-  round = 0;
   score = [''];
+  round = 0;
 
-  constructor() {
-    this.car = this.input(LOG.INPUT_CAR);
-    this.round = this.input(LOG.INPUT_ROUND);
+  async init() {
+    const validation = new Validation();
+
+    const inputCar = await Console.readLineAsync(LOG.INPUT_CAR);
+    this.car = validation.validateCar(inputCar);
     this.score = Array(this.car.length).fill('');
+
+    const inputRound = await Console.readLineAsync(LOG.INPUT_ROUND);
+    this.round = validation.validateRound(inputRound);
   }
 
   result() {
@@ -21,27 +26,6 @@ class RacingCarGame {
     }
 
     Console.print(LOG.WINNER + this.winner());
-  }
-
-  async input(log) {
-    const validation = new Validation();
-    const readLine = await Console.readLineAsync(log);
-
-    switch (log) {
-      case LOG.INPUT_CAR:
-        const inputCar =
-          typeof readLine === 'string' ? readLine.trim().split(',') : [''];
-        validation.validateCar(inputCar);
-        return inputCar;
-
-      case LOG.INPUT_ROUND:
-        const inputRound = typeof readLine === 'string' ? readLine.trim() : '';
-        validation.validateRound(inputRound);
-        return Number(inputRound);
-
-      default:
-        throw new Error(ERROR.NOT_CAR_OR_ROUND);
-    }
   }
 
   race() {
