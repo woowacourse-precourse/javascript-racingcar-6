@@ -14,11 +14,7 @@ class App {
 		this.#gameTrack = new RacingTrack();
 		this.#judge = new RacingJudge();
 		this.#tryCounter = new TryCounter();
-		this.#controller = new RacingGame(
-			this.#gameTrack,
-			this.#judge,
-			this.#tryCounter
-		);
+		this.#controller = new RacingGame(this.#gameTrack, this.#judge, this.#tryCounter);
 	}
 
 	async play() {
