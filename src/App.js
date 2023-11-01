@@ -26,11 +26,19 @@ class App {
     }
 
     checkCarName(CARS) {
+
+        //중복된 이름 예외처리하기
+        const SETCars= new Set(CARS);
+        if(CARS.length !==  SETCars.length){
+            throw new Error("[ERROR] 중복되는 자동차 이름이 존재합니다.");
+        }
+
         for (let i = 0; i < CARS.length; i++) {
             if (CARS[i].length > 5) {
                 throw new Error("[ERROR] 자동차 이름이 5글자 이상입니다.");
             }
         }
+
     }
 
     async getTryCNT() {
@@ -40,7 +48,6 @@ class App {
         } catch (e) {
             throw e;
         }
-
         //정수로 반환
         return Number(tryCNTInput);
     }
