@@ -21,4 +21,13 @@ class App {
       this.cars.set(carName, 0);
     });
   }
+
+  verifyAndSetTryOut(userInputTryOut) {
+    if (!parseInt(userInputTryOut, 10)) {
+      throw new Error('[ERROR] 시도 횟수는 숫자만 입력 가능합니다.');
+    } else if (parseInt(userInputTryOut, 10) < 1) {
+      throw new Error('[ERROR] 시도 횟수는 1 이상이어야 합니다.');
+    }
+    this.tryOut = parseInt(userInputTryOut, 10);
+  }
 export default App;
