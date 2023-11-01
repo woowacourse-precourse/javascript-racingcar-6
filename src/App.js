@@ -42,6 +42,29 @@ class App {
     return this.numberOfAttempts;
   }
 
+  async racingCarGame() {
+    try {
+      const userCarList = await this.getCarName();
+      const numberOfAttempts = await this.getNumberOfAttempts();
+
+      const racingCars = userCarList.map(name => ({ name, position: '' }));
+
+      MissionUtils.Console.print('실행 결과');
+
+      for (let i = 0; i < numberOfAttempts; i++) {
+        racingCars.forEach(car => {
+          const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
+          car.position += randomNumber >= 4 ? '-' : '';
+        });
+
+        MissionUtils.Console.print(`${this.generateRacingState(racingCars)}\n`);
+      }
+      MissionUtils.Console.print(`최종 우승자 : ${this.findRacingWinner(racingCars)}`);
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
+
   generateRacingState(cars) {
     return cars.map(car => `${car.name} : ${car.position}`).join('\n');
   }
