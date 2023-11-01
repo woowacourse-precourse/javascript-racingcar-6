@@ -1,0 +1,30 @@
+import { MissionUtils } from '@woowacourse/mission-utils';
+
+
+async function inputCarNames() {
+  try {
+    const inputNames = await MissionUtils.Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분):");
+
+    // 입력받은 자동차 이름을 쉼표로 구분하여 배열로 분리
+    const carNameArray = inputNames.split(',').map(name => name.trim());
+
+    carNameArray.forEach(name => {
+      if (name.length <= 5) {
+        // 처리된 자동차 이름 출력
+        MissionUtils.Console.print(`'${name}' 자동차가 추가되었습니다.`);
+      } else {
+        MissionUtils.Console.print(`'${name}'는 5자 이상이므로 추가되지 않았습니다. 5자 이하로 입력해주세요.`);
+      }
+    });
+
+    // 자동차 이름 목록 반환
+    return carNameArray;
+  } catch (error) {
+    // 오류 처리
+    MissionUtils.Console.print(`오류 발생: ${error}`);
+    return []; // 오류 발생 시 빈 배열 반환 또는 다른 오류 처리 방식을 선택할 수 있습니다.
+  }
+}
+
+// 사용자로부터 자동차 이름 입력받고 처리하는 프로세스 실행
+inputCarNames();
