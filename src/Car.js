@@ -1,9 +1,9 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 class Car {
-  constructor(name, resultString = "") {
+  constructor(name, runningResult = "") {
     this.name = name;
-    this.resultString = resultString;
+    this.runningResult = runningResult;
   }
 
   runOrNot(previousResult = "") {
@@ -16,6 +16,3 @@ class Car {
 }
 
 export default Car;
-
-let i = new Car("apple");
-console.log(i.runOrNot(i.resultString));
