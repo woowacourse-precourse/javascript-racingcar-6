@@ -7,6 +7,7 @@ import {
   printResultUsingScoreBoard,
   printWinners,
 } from "./core/io.js";
+import { judgeWinner } from "./core/judge.js";
 import ScoreBoard from "./core/scoreboard.js";
 import { isFowardAllowed } from "./utils/prob.js";
 
@@ -27,7 +28,7 @@ class App {
 
     printResultTitle();
     this.#simulate();
-    printWinners(this.judgeWinner());
+    printWinners(judgeWinner(this.scoreBoard.board));
   }
 
   #simulate() {
@@ -43,21 +44,6 @@ class App {
     this.names.forEach((name) => {
       if (isFowardAllowed()) this.scoreBoard.giveScoreTo(name);
     });
-  }
-
-  /**
-   *
-   * @returns { string[] }
-   */
-  judgeWinner() {
-    const maxScore = Math.max(...Object.values(this.scoreBoard.board));
-
-    const winners = [];
-    Object.entries(this.scoreBoard.board).forEach(([name, score]) => {
-      if (score === maxScore) winners.push(name);
-    });
-
-    return winners;
   }
 }
 
