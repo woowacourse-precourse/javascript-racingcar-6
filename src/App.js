@@ -1,6 +1,6 @@
-import { Console } from '@woowacourse/mission-utils';
+import { Random, Console } from '@woowacourse/mission-utils';
 import Car from './Car.js';
-import { MESSAGES } from './utils/constants.js';
+import { MESSAGES, RANDOM_NUMBER_RANGE } from './utils/constants.js';
 import {
   validateUniqueNames,
   validateName,
@@ -16,6 +16,7 @@ class App {
   async play() {
     await this.setupGame();
     this.printGameStartMessage();
+    this.runCarRaceGame();
   }
 
   async setupGame() {
@@ -36,6 +37,18 @@ class App {
 
   printGameStartMessage() {
     Console.print(MESSAGES.GAME_START);
+  }
+
+  runCarRaceGame() {
+    Array.from({ length: this.trial }).forEach(() => {
+      this.cars.forEach(() => {
+        this.tryMoveCar();
+      });
+    });
+  }
+
+  tryMoveCar() {
+    const randomNumber = Random.pickNumberInRange(...RANDOM_NUMBER_RANGE);
   }
 }
 

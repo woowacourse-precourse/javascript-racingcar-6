@@ -10,3 +10,5 @@ export const ERRORS = {
   DUPLICATE_NAME: '[ERROR] 중복된 이름은 허용되지 않습니다.',
   INVALID_TRIAL_NUMBER: '[ERROR] 시도 횟수는 1 이상의 숫자여야 합니다.',
 };
+
+export const RANDOM_NUMBER_RANGE = [0, 9];
