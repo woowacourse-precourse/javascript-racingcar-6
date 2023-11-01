@@ -5,7 +5,7 @@ async function getUsername() {
 
     const carNames = username.split(',').map((name) => name.trim());
 
-    if (carNames.some((name) => name.length === 0)) {
+    if (carNames.some((name) => name.trim().length === 0)) {
         throw new Error('[ERROR] 입력이 비어 있습니다.');
     }
 
