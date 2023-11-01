@@ -11,9 +11,9 @@ class App {
     const number = new RaceNumber(numberString)
 
     Console.print('\n');
-
-
-
+    
+    const race = new Race(cars.cars,number.number);
+    race.start();
   }
 }
 
