@@ -33,6 +33,9 @@ const conditions = {
 };
 
 export const validate = {
+  /**
+   * @param {string} input
+   */
   try(input) {
     const { isNotInput, isNotNumber, isMinus } = conditions.try;
     if (isNotInput(input)) {
@@ -43,6 +46,9 @@ export const validate = {
     if (isMinus(input)) throw new Error(MESSAGE.TRY.ERROR.IS_MINUS);
   },
 
+  /**
+   * @param {string[]} inputs
+   */
   carNames(inputs) {
     const { isOverFive, isDuplicated, isNotInput, isIncludeSpace } = conditions.carNames;
     if (isNotInput(inputs)) {
