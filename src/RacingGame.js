@@ -55,17 +55,14 @@ class RacingGame {
 
   getCarNames = async () => {
     const carNames = await Console.readLineAsync(
-      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)'
+      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)',
     );
-    // console.log(carNames, '자동차 네임');
     const carNamesToArray = carNames.split(',');
-    // console.log(carNames, 'carNames');
-    // console.log(carNamesToArray, 'carNamesToArray');
+
     if (!validation(carNamesToArray)) {
       throw new Error('[ERROR] 네임');
     }
     this.cars = carNamesToArray.map((name) => new Car(name));
-    // console.log(this.cars);
   };
 
   async start() {

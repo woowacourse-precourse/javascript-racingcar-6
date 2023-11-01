@@ -10,17 +10,17 @@ class Car {
   move = () => {
     const randomNumber = Random.pickNumberInRange(
       constants.NUMBER_RANGE_MIN,
-      constants.NUMBER_RANGE_MAX
+      constants.NUMBER_RANGE_MAX,
     );
 
     if (randomNumber >= constants.JUDGE_NUMBER) {
       this.moveCount++;
     }
-  }
+  };
 
   printScore = () => {
     return `${this.name} : ${'-'.repeat(this.moveCount)}`;
-  }
+  };
 }
 
 export default Car;
