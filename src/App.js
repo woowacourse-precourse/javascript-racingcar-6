@@ -1,7 +1,6 @@
 import { Console, Random } from '@woowacourse/mission-utils';
 
 class App {
-  async play() {
 
   constructor() {
     this.racingCar = new Map();
@@ -25,7 +24,7 @@ class App {
   async Usercar_input() {
 
     const User_input = await Console.readLineAsync('경주할 자동차 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분) \n');
-    this.ValidNameLength(User_input);
+    this.ValidInput(User_input);
     const Car = User_input.split(',');
 
     for (let i in Car) {
@@ -39,10 +38,10 @@ class App {
 
     const attempts = await Console.readLineAsync('시도할 횟수는 몇 회인가요? \n');
     this.ValidInputDataType(attempts);
+
     return Number(attempts);
   }
 
-  async CheckMove() {
   CheckMove() {
 
     const num = Random.pickNumberInRange(0, 9);
@@ -70,10 +69,8 @@ class App {
     for (let [key, value] of racingcar) {
       Console.print(key + " : " + value);
     }
-
   }
 
-  
   Find_Winner(racingcar) {
     
     let Max_Distance = 0;
@@ -122,7 +119,6 @@ class App {
     }
   }
 
-const app = new App();
   ValidInput(input) {
     this.ValidInputExist(input);
     this.ValidNameLength(input);
