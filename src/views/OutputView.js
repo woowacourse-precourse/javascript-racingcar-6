@@ -12,6 +12,7 @@ const OutputView = {
 
   /**
    * @public
+   * @param {import('../utils/jsDoc.js').RacingGameResult} racingGameResult - 자동차 경주 게임의 결과 객체
    * @returns {void}
    */
   printRacingGameResult({ racingResult, racingWinners }) {
