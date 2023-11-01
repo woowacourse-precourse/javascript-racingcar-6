@@ -66,7 +66,7 @@
         <td>자동차 정보 저장 기능</td>
     </tr>
     <tr>
-        <td><input type="checkBox" disabled></td>
+        <td><input type="checkBox" checked></td>
         <td>로직 컴포넌트</td>
         <td>자동차 이동 여부 판별</td>
     </tr>
@@ -114,11 +114,11 @@
         <td>잘못된 값을 입력할 경우 예외 처리</td>
     </tr>
     <tr>
-        <td><input type="checkBox" disabled></td>
+        <td><input type="checkBox" checked></td>
         <td>주어진 횟수 자동차 움직임 판별</td>
     </tr>
     <tr>
-        <td><input type="checkBox" disabled></td>
+        <td><input type="checkBox" checked></td>
         <td>랜덤 값 0-9 중 4 이상일 경우 이동 판별</td>
     </tr>
 </table>
