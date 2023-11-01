@@ -18,7 +18,7 @@ class GameMainLogic{
     }
 
     static printRoundResult(playersData){
-        Console.print(`print : ${playersData}`)
+        // Console.print(`print : ${playersData}`)
         let result = '';
         playersData.forEach(player => {
             result += `${player.carName} : ${GAME_MESSAGE.PROGRESS_ICON.repeat(player.position)}\n`;
@@ -32,7 +32,7 @@ class GameMainLogic{
     }
 
     static printWinner(winners){
-        const winnerNames = winners.map(winner => winner.carName).join(',');
+        const winnerNames = winners.map(winner => winner.carName).join(', ');
         Console.print(`${GAME_MESSAGE.WINNER_MESSAGE}${winnerNames}`);
     }
 }

@@ -11,6 +11,6 @@ export const PLAYER_INPUT_MESSAGE = {
 
 export const GAME_MESSAGE = {
     'PROGRESS_ICON' : '-',
-    'ROUND_START' : '실행 결과\n',
+    'ROUND_START' : '\n실행 결과',
     'WINNER_MESSAGE' : '최종 우승자 : ',
 }
