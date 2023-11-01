@@ -10,10 +10,23 @@ class App {
   async play() {
     await this.requestCarNames();
     await this.requestTryCount();
+    this.moveCar();
   }
 
   makeCarList = (carName) => {
     this.carList.push(new Car(carName));
+  }
+
+  // todo 함수 분리 필요
+  moveCar() {
+    MissionUtils.Console.print('실행 결과');
+    for (let tryIndex = 0; tryIndex < this.tryCount; tryIndex++) {
+      this.carList.forEach((car) => {
+        car.move();
+        MissionUtils.Console.print(`${car.name} : ${'-'.repeat(car.position)}`);
+      });
+      MissionUtils.Console.print('');
+    }
   }
 
   async requestCarNames() {
