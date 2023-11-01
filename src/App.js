@@ -7,7 +7,7 @@ class App {
 
     Console.print('실행 결과');
 
-    this.setGameResult(racingCars, tryCount);
+    this.executeGameRound(racingCars, tryCount);
 
     const finalWinner = this.getFinalWinner(racingCars);
 
@@ -78,7 +78,7 @@ class App {
     }
   }
 
-  setGameResult(racingCars, tryCount) {
+  executeGameRound(racingCars, tryCount) {
     let round = 0;
 
     while (round < tryCount) {
