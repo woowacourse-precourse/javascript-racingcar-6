@@ -1,4 +1,5 @@
 import App from "../src/App.js";
+import Car from "../src/Car.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 import { ERROR_MESSAGE } from "../src/constants/index.js";
 
@@ -25,6 +26,11 @@ const getLogSpy = () => {
 };
 
 describe("자동차 경주 게임", () => {
+  test("자동차 이름 테스트", () => {
+    const car = new Car("mijin");
+    expect(car.carName).toBe("mijin");
+  });
+
   test("전진-정지", async () => {
     // given
     const MOVING_FORWARD = 4;
