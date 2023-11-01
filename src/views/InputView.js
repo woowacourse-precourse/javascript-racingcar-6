@@ -3,11 +3,19 @@ import MESSAGES from '../constants/Messages.js';
 
 class InputView {
   static askCarNames() {
-    return Console.readLineAsync(`${MESSAGES.CAR_NAME_INPUT}\n`);
+    try {
+      return Console.readLineAsync(`${MESSAGES.CAR_NAME_INPUT}\n`);
+    } catch {
+      throw new Error(MESSAGES.GENERAL_ERROR);
+    }
   }
 
   static askTotalRound() {
-    return Console.readLineAsync(`${MESSAGES.TOTAL_ROUND_INPUT}\n`);
+    try {
+      return Console.readLineAsync(`${MESSAGES.TOTAL_ROUND_INPUT}\n`);
+    } catch {
+      throw new Error(MESSAGES.GENERAL_ERROR);
+    }
   }
 }
 
