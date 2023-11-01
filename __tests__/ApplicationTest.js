@@ -46,7 +46,7 @@ describe('자동차 경주 게임', () => {
     });
   });
 
-  test.each([[['pobi,javaji']], [['pobi,eastjun']]])(
+  test.each([[['pobi,javaji']], [['pobi,eastjun']], [[',bob']]])(
     '이름에 대한 예외 처리',
     async (inputs) => {
       // given
@@ -59,12 +59,8 @@ describe('자동차 경주 게임', () => {
       await expect(app.play()).rejects.toThrow('[ERROR]');
     },
   );
-});
 
-describe('자동차 경주 게임 엣지 케이스 테스트', () => {
   test.each([
-    [['aaaaaa,bob'], '자동차 이름이 최대 길이를 넘는 경우'],
-    [[',bob'], '자동차 이름이 없는 경우'],
     [['bob,jane'], '0', '플레이 횟수가 0인 경우'],
     [['bob,jane'], '-1', '플레이 횟수가 음수인 경우'],
   ])('%s', async (inputs, description) => {
@@ -76,5 +72,21 @@ describe('자동차 경주 게임 엣지 케이스 테스트', () => {
 
     // then
     await expect(app.play()).rejects.toThrow('[ERROR]');
+  });
+
+  test('우승자 테스트', async () => {
+    const MOVING_FORWARD = 4;
+    const inputs = ['pobi,woni', '1'];
+    const outputs = ['최종 우승자: pobi'];
+    const randoms = [MOVING_FORWARD, MOVING_FORWARD];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    const app = new App();
+    await app.play();
+
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(outputs[0]));
   });
 });
