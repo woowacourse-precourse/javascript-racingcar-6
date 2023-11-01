@@ -1,16 +1,17 @@
+import { MAXIMUM_CHARACTAR } from '../Constant/Constant.js';
 import CustomError from '../CustomError/CustomError.js';
 
 export default class Validator {
   // 추후분리
 
-  #MAXIMUM_CHARACTAR = 5;
-
-  checkValidCarsName(carNames) {
+  static checkValidCarsName(carNames) {
     carNames.forEach((car) => this.checkStringLength(car));
   }
 
-  checkStringLength(string) {
-    if (string.length > this.#MAXIMUM_CHARACTAR) {
+  // 비었을때, 이름 중복 체크
+
+  static checkStringLength(string) {
+    if (string.length > MAXIMUM_CHARACTAR) {
       throw new Error(CustomError.NOT_OVER_FIVE_CHARACTER);
     } else return true;
   }

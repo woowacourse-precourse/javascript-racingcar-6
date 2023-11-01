@@ -2,11 +2,10 @@ import Combiner from './Combiner/Combiner.js';
 import Receiver from './Receiver/Receiver.js';
 import Validator from './Validator/Validator.js';
 import Car from './Car/Car.js';
+import Printer from './Printer/Printer.js';
 
 class App {
   #receiver = new Receiver();
-
-  #validator = new Validator();
 
   #carNames;
 
@@ -16,12 +15,10 @@ class App {
 
   #cars;
 
-  #empty;
-
   async play() {
     this.#carNames = await this.#receiver.receiveCarNames();
 
-    this.#validator.checkValidCarsName(Combiner.combineArray(this.#carNames));
+    Validator.checkValidCarsName(Combiner.combineArray(this.#carNames));
 
     this.#carArray = Combiner.combineArray(this.#carNames);
 
@@ -31,7 +28,10 @@ class App {
 
     this.#cars = this.#carArray.map((carName) => new Car(carName));
 
+    Printer.printResult();
     for (let i = 0; i < this.#tryNum; i += 1) {
+      Printer.printRound(i + 1);
+
       this.#cars.forEach((car) => {
         car.moveCar();
         car.getCarInfomation();

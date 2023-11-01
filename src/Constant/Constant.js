@@ -1,3 +1,3 @@
-const PICTURE = '-';
+export const PICTURE = '-';
 
-export default PICTURE;
+export const MAXIMUM_CHARACTAR = 5;
