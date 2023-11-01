@@ -1,4 +1,4 @@
-import { RACING_GAME } from './Constant';
+import { RACING_GAME } from './Constant.js';
 
 class Racing {
   constructor(carNames, count, data) {

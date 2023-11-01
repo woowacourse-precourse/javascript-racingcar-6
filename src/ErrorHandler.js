@@ -1,9 +1,9 @@
 import Data from './Data.js';
-import { ERROR, REGEXP } from './Constant.js';
+import { RACING_GAME, ERROR, REGEXP } from './Constant.js';
 
 const ErrorHandler = {
   carNamesType(carNames) {
-    if (carNames.indexOf(',') === -1 || carNames.indexOf(',') === carNames.length - 1) {
+    if (carNames.indexOf(RACING_GAME.delimiter) === -1 || carNames.indexOf(RACING_GAME.delimiter) === carNames.length - 1) {
       throw new Error(ERROR.delimiterType);
     }
 
@@ -12,7 +12,7 @@ const ErrorHandler = {
     if (refinedCarNames.some((car) => car.trim() === "")) {
       throw new Error(ERROR.nameEmpty);
     }
-    if (refinedCarNames.some((car) => car.length >= 5)) {
+    if (refinedCarNames.some((car) => car.length > RACING_GAME.nameMaxLength)) {
       throw new Error(ERROR.nameLength);
     }
     if (new Set(refinedCarNames).size !== refinedCarNames.length) {
