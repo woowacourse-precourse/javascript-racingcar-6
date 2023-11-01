@@ -18,13 +18,19 @@ const mockRandoms = (numbers) => {
   }, MissionUtils.Random.pickNumberInRange);
 };
 
+const getSpy = () => {
 const spy = jest.spyOn(MissionUtils.Console, 'print');
+spy.mockClear();
+
+return spy;
+}
 
 describe('RacingController test', () => {
   test('controller 정상 동작 확인', async () => {
     const inputs = ['kim,park', '2'];
     const randoms = [1, 8, 3, 5];
     const outputs = ['park : --', '최종 우승자 : park'];
+    const spy = getSpy();
 
     mockInputs(inputs);
     mockRandoms(randoms);
@@ -41,6 +47,7 @@ describe('RacingController test', () => {
     const inputs = ['kim,park', '2'];
     const randoms = [4, 8, 5, 5];
     const outputs = ['kim : --', 'park : --', '최종 우승자 : kim, park'];
+    const spy = getSpy();
 
     mockInputs(inputs);
     mockRandoms(randoms);
@@ -57,6 +64,7 @@ describe('RacingController test', () => {
     const inputs = ['kim,park', '2'];
     const randoms = [1, 1, 2, 3];
     const outputs = ['kim : ', 'park : ', '최종 우승자 : kim, park'];
+    const spy = getSpy();
 
     mockInputs(inputs);
     mockRandoms(randoms);
