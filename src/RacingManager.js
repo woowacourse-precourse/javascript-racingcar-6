@@ -6,49 +6,52 @@ class RacingManager {
     this.trial = 0;
     this.randomNum = [];
     this.count = [];
+    this.check = true;
   }
 
   async gameStart() {
-    while (true) {
-      try {
-        const car = await Console.readLineAsync(
-          "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
-        );
-        this.carArr = car.split(",");
-        await this.checkName(this.carArr);
+    try {
+      const car = await Console.readLineAsync(
+        "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
+      );
+      this.carArr = car.split(",");
+      await this.checkName(this.carArr);
 
-        const tryNum = await Console.readLineAsync(
-          "시도할 횟수는 몇 회인가요?\n"
-        );
-        this.trial = parseInt(tryNum);
-        await this.checkNum(this.trial);
+      const tryNum = await Console.readLineAsync(
+        "시도할 횟수는 몇 회인가요?\n"
+      );
+      this.trial = parseInt(tryNum);
+      await this.checkNum(this.trial);
 
-        this.count = new Array(this.carArr.length).fill(0);
+      this.count = new Array(this.carArr.length).fill(0);
 
-        Console.print("");
-        break;
-      } catch (error) {
-        Console.print(error.message);
-      }
+      Console.print("");
+    } catch (error) {
+      Console.print(error.message);
+      throw new Error("[ERROR]");
     }
   }
 
   async checkName(carArr) {
     if (carArr.some((carName) => carName === "")) {
-      throw new Error("자동차 이름을 입력하세요.");
+      this.check = false;
+      throw new Error("자동차 이름을 공백으로 입력하였습니다.");
     }
 
     if (carArr.some((carName) => carName.length > 5)) {
+      this.check = false;
       throw new Error("자동차의 이름은 5자 이하만 가능합니다.");
     }
   }
 
   async checkNum(num) {
     if (isNaN(num)) {
+      this.check = false;
       throw new Error("정수를 입력해주세요");
     }
 
     if (num <= 0) {
+      this.check = false;
       throw new Error("0보다 큰 정수를 입력해주세요");
     }
   }
