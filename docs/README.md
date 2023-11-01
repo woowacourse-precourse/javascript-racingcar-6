@@ -1,60 +1,54 @@
 ## 기능 그룹 (MVC)
 
 * Models
-    - [ ] 경주 데이터: Race
-        - [ ] 참가 자동차 목록: Race#racingCars
-        - [ ] 시도 횟수: Race#totalRound
-    - [ ] 자동차 데이터: Car
-        - [ ] 이름: Car#name  
-        - [ ] 전진 횟수: Car#numberOfAdvance
+    - [x] 경주 데이터: Race
+        - [x] 참가 자동차 목록: Race#racingCars
+        - [x] 시도 횟수: Race#totalRound
+    - [x] 자동차 데이터: Car
+        - [x] 이름: Car#name  
+        - [x] 전진 횟수: Car#numberOfAdvance
 
 
 * Views
-    - [ ] 입력창 및 메세지 출력: InputView 
-        - [ ] 경주 자동차 입력: InputView#askCarNames
-        - [ ] 시도 횟수 입력: InputView#askTotalRound
-    - [ ] 출력창 및 메세지 출력: OutputView
-        - [ ] 실행 결과 제목 출력: OutputView#printResultTitle
-        - [ ] 경주 실행 결과 출력: OutputView#printProcedureOfRace
-        - [ ] 우승자 출력: OutputView#printWinners
+    - [x] 입력창 및 메세지 출력: InputView 
+        - [x] 경주 자동차 입력: InputView#askCarNames
+        - [x] 시도 횟수 입력: InputView#askTotalRound
+    - [x] 출력창 및 메세지 출력: OutputView
+        - [x] 실행 결과 제목 출력: OutputView#printResultTitle
+        - [x] 경주 실행 결과 출력: OutputView#printProcedureOfRace
+        - [x] 우승자 출력: OutputView#printWinners
 
 
 * Controllers
-    - [ ] 경주 게임: raceGameController
-        - [ ] 게임 생성: raceGame#run
-        - [ ] 자동차 이름 유효성 검사: raceGameController#isValidCarNames
+    - [x] 경주 게임: raceGameController
+        - [x] 게임 생성: raceGame#run
+        - [x] 자동차 이름 유효성 검사: raceGameController#isValidCarNames
           1. 자동차 이름 길이는 1~5자리다
           2. 자동차 이름은 공백을 포함하지 않는다
           3. 자동차 이름은 중복되지 않는다
-        - [ ] 시도 횟수 유효성 검사: raceGameController#isValidTotalRound
-          1. 시도 횟수는 1 이상의 자연수이다
-          2. 시도 횟수는 공백을 포함하지 않는다
-        - [ ] 무작위 값 선택: raceGameController#selectRandomNumber
-        - [ ] 전진 가능 여부 확인: raceGameController#canCarAdvance
-        - [ ] 전진 횟수 업데이트: raceGameController#updateNumberOfAdvance
-        - [ ] 라운드별 경주 결과 연산: raceGameController#calculateProcedureOfRace
-        - [ ] 우승자 연산: calculateWinners
+        - [x] 시도 횟수 유효성 검사: raceGameController#isValidTotalRound
+          1. 시도 횟수는 공백을 포함하지 않는다
+          2. 시도 횟수는 1 이상의 자연수이다
+        - [x] 무작위 값 선택: raceGameController#selectRandomNumber
+        - [x] 전진 가능 여부 확인: raceGameController#canCarAdvance
+        - [x] 전진 횟수 업데이트: raceGameController#updateNumberOfAdvance
+        - [x] 우승자 연산: calculateWinners
 
 
 * constants
-    - [ ] 입출력에 사용되는 메세지들: MESSAGES
+    - [x] 입출력에 사용되는 메세지들: MESSAGES
         > 자동차 이름 & 시도 횟수 입력/Error, 실행 결과, 전진 표시(-), 최종 우승자
-    - [ ] 입출력 형식에 대한 조건들: CONDITIONS
-        > 자동차 이름 & 시도 횟수 입력 형식, 자동차 이름 최소/최대 길이, 자동차 이름 delimiter, 단독 우승자 조건, 무작위 최소값, 무작위 최대값, 전진 조건값, 전진 값
+    - [x] 입출력 형식에 대한 조건들: CONDITIONS
+        > 자동차 이름 & 시도 횟수 입력 형식, 자동차 이름 최소/최대 길이,무작위 최소값, 무작위 최대값, 전진 조건값
 
 
 <br/>
 
 ## 테스트 목록
-- [ ] 입력창 유효성 테스트: InputViewTest
-  - [ ] 자동차 이름 입력 유효성 테스트: checkRacingCarNames
-  - [ ] 시도 횟수 입력 유효성 테스트: checkTotalRound
-- [ ] 연산 정확성 테스트: ControllerAccuracyTest
-  - [ ] 특정 라운드의 결과 연산 테스트: checkCalculateProcedureOfRace
-  - [ ] 우승자 연산 테스트: checkCalculateWinners
-- [ ] 출력 정확성 테스트: OutputViewTest
-  - [ ] 특정 라운드의 결과 출력 테스트: checkPrintProcedureOfRace
-  - [ ] 우승자 출력 테스트: checkPrintWinners
+- [x] 입력창 유효성 테스트: InputViewTest
+  - [x] 자동차 이름 입력 유효성 테스트
+- [x] 출력 정확성 테스트: OutputViewTest
+  - [x] 라운드의 결과 및 우승자 출력 테스트
 
 
 <br/>
