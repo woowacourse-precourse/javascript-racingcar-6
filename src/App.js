@@ -16,7 +16,6 @@ class App {
     const inputName = await Console.readLineAsync(Messages.INPUT_NAME);
     const inputNameArray = inputName.split(",");
     new ValidateInput().name(inputName, inputNameArray);
-    console.log(inputNameArray);
     return inputNameArray;
   }
 
