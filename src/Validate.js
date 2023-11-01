@@ -25,3 +25,16 @@ export function validateTypeOfName(name) {
     throw new Error(ERROR.invalidNameType);
   }
 }
+
+export function validateRangeOfCount(count) {
+  if (count < 1) {
+    throw new Error(ERROR.invalidCountRange);
+  }
+}
+
+export function validateTypeOfCount(count) {
+  const numberRegExp = /^[0-9]+$/;
+  if (!numberRegExp.test(count)) {
+    throw new Error(ERROR.invalidCountType);
+  }
+}

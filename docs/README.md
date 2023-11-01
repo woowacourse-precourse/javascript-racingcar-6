@@ -15,8 +15,8 @@
 
   ### 시도 횟수 검증
     - [ ] 시도 입력값 검증 - validateGameCount()
-      - [ ] [예외] 숫자가 아닌 값을 입력 - validateTypeOfCount()
-      - [ ] [예외] 0을 입력 - validateRangeOfCount()
+      - [x] [예외] 숫자가 아닌 값을 입력 - validateTypeOfCount()
+      - [x] [예외] 0을 입력 - validateRangeOfCount()
 
 ## 게임 운영
 
