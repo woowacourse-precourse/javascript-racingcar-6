@@ -6,7 +6,7 @@ describe('Car 객체에 대한 함수, 메서드 및 유효성 검증 테스트'
   const car = new Car();
 
   test('자동차 이름 입력값에 대한 공백 제거 및 배열화 처리', () => {
-    expect(car.#filterInputCarNameList(',,Drive,  ,,,   woW  ,  38Js,')).toEqual([
+    expect(car.filterInputCarNameList(',,Drive,  ,,,   woW  ,  38Js,')).toEqual([
       'Drive',
       'woW',
       '38Js',
