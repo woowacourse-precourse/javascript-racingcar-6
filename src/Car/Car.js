@@ -34,6 +34,6 @@ export default class Car {
     for (let i = 0; i < this.#distance; i += 1) {
       distancePicture += Painter.draw();
     }
-    MissionUtils.Console.print(`${this.#carName}: ${distancePicture}`);
+    MissionUtils.Console.print(`${this.#carName} : ${distancePicture}`);
   }
 }
