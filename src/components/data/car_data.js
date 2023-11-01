@@ -1,3 +1,5 @@
+import movingCondition from "../logic/moving_condition.js";
+
 let carData = {};
 
 const carDataInit = (carName) =>{
@@ -12,7 +14,9 @@ const getCarData = () => {
 };
 
 const setCarData = () => {
-    return
+    for (let car in carData) {
+        carData[car] = movingCondition(carData[car]);
+    }
 };
 
 export {carDataInit, getCarData, setCarData};
