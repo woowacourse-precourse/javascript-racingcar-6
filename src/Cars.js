@@ -1,3 +1,4 @@
+import { Random } from '@woowacourse/mission-utils';
 import Car from './Car.js';
 
 export default class Cars {
@@ -9,5 +10,15 @@ export default class Cars {
 
   setState(nextState) {
     this.state = nextState;
+  }
+
+  race() {
+    this.state.forEach((car) => {
+      const isForward = Random.pickNumberInRange(0, 9) >= 4;
+
+      if (isForward) {
+        car.forward();
+      }
+    });
   }
 }
