@@ -9,8 +9,8 @@ export default class Game {
   }
 
   async start() {
-    this.carNameList = await this.enterCarNames();
-    this.round = await this.enterGameRound();
+    await this.enterCarNames();
+    await this.enterGameRound();
   }
 
   async enterCarNames() {
@@ -20,11 +20,13 @@ export default class Game {
     const carNameStr = await MissionUtils.Console.readLineAsync('');
     const carList = carNameStr.split(',');
 
-    if (carList.filter((name) => name.length > 5 || name.length < 1).length) {
+    if (carList.some((name) => name.length > 5 || name.length < 1)) {
       throw new Error('[ERROR] 자동차 이름은 최소 1자, 최대 5자만 가능합니다.');
+    } else if (carList.some((name) => !name.trim().length)) {
+      throw new Error('[ERROR] 자동차 이름은 공백이 될 수 없습니다.');
     }
 
-    return carList;
+    return (this.carNameList = carList);
   }
 
   async enterGameRound() {
@@ -37,21 +39,17 @@ export default class Game {
       throw new Error('[ERROR] 횟수는 1회 이상 입력 가능합니다.');
     }
 
-    return round;
+    return (this.round = round);
   }
 
   progressGame() {
-    const car = new Car();
-
-    this.carInfoList = this.carNameList.map((carName) =>
-      car.setCarInfo(carName)
-    );
+    this.carInfoList = this.carNameList.map((carName) => new Car(carName));
 
     MissionUtils.Console.print('\n실행 결과');
 
     let currentRound = 0;
     while (currentRound < this.round) {
-      this.carNameList.map((carName) => car.moveCar(carName, this.carInfoList));
+      this.carInfoList.map((car) => car.moveCar());
       this.printResult();
       currentRound += 1;
     }
