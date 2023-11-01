@@ -42,4 +42,12 @@ describe('자동차 입력 예외 처리 테스트', () => {
 
     await expect(carName.start()).rejects.toThrow('[ERROR]');
   });
+
+  test('자동차 이름은 같은이름이 없이 작성한다.', async () => {
+    mockQuestions(['Lee,Lee,Park']);
+
+    const carName = new CarName();
+
+    await expect(carName.start()).rejects.toThrow('[ERROR]');
+  });
 });
