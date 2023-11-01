@@ -65,6 +65,12 @@ export default class RacingGame {
 
   #startRace() {
     Console.print('\n실행 결과');
+    this.#tryMove();
+    const winners = this.#findWinner();
+    this.#printWinner(winners);
+  }
+
+  #tryMove() {
     for (let i = 0; i < this.#round; i++) {
       this.#carList.forEach((car) => {
         car.move();
@@ -72,14 +78,14 @@ export default class RacingGame {
       });
       Console.print('');
     }
+  }
 
+  #findWinner() {
     const maxPosition = Math.max(...this.#carList.map((car) => car.position));
-    const winners = [];
-    this.#carList.forEach((car) => {
-      if (car.position === maxPosition) {
-        winners.push(car.name);
-      }
-    });
+    return this.#carList.filter((car) => car.position === maxPosition).map((car) => car.name);
+  }
+
+  #printWinner(winners) {
     const message = MESSAGE_FORMAT.winner(winners);
     Console.print(message);
   }
