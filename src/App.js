@@ -13,9 +13,8 @@ class App {
 
     //자동차 이름 예외사항
     for (let i = 0; i < carName.length; i++) {
-      if (carName[i].length > 5) {
+      if (carName[i].length > 5)
         throw new Error("[ERROR] 이름이 잘못된 형식입니다.");
-      }
     }
     this.getTryNum(carName);
   }
@@ -23,16 +22,16 @@ class App {
   //시도 횟수 받기
   async getTryNum(carName) {
     const tryNum = await Console.readLineAsync("시도할 횟수는 몇 회인가요?");
-    if (isNaN(tryNum) || tryNum < 0) {
+    if (isNaN(tryNum) || tryNum < 0)
       throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
-    }
+
     this.result(carName, tryNum);
   }
 
   //결과 받기
   result(carName, tryNum) {
     Console.print("실행 결과");
-    console.log("MissionUtils.Console.print is called with message: 실행 결과");
+
     //전진한 횟수 저장하는 변수
     var goCount = [];
     for (let i = 0; i < carName.length; i++) {
@@ -47,9 +46,6 @@ class App {
         }
         const message = `${carName[i]} : ${"-".repeat(goCount[i])}`;
         Console.print(message);
-        console.log(
-          `MissionUtils.Console.print is called with message: ${message}`
-        );
       }
       Console.print("");
     }
