@@ -14,6 +14,7 @@ class App {
     this.makeCar(carName);
     this.runRace(round);
     this.printResultHeader();
+    this.printRoundResult();
   }
 
   async getCarName() {
@@ -117,6 +118,12 @@ class App {
   
   printResultHeader() {
     Console.print("실행 결과");
+  }
+
+  printRoundResult() {
+    this.car.forEach(car => {
+        Console.print(`${car.name} : ${'-'.repeat(car.distance)}`);
+    });
   }
 }
 
