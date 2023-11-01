@@ -1,10 +1,11 @@
 class Car {
   #name;
-  
-  #status = [];
+
+  #status;
 
   constructor(name) {
     this.#name = name;
+    this.#status = [];
   }
 
   getName = () => this.#name;
