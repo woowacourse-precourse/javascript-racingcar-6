@@ -1,3 +1,4 @@
+import { checkDistanceResult, printWinner } from './functions/gameFinish';
 import { playRounds, printResultMessage } from './functions/gameProgress';
 import {
   getCarName,
@@ -9,6 +10,7 @@ class App {
   constructor() {
     this.carDistanceList = [];
     this.playNum = 0;
+    this.winnerList = [];
   }
 
   start() {
@@ -22,9 +24,15 @@ class App {
     playRounds(this.carDistanceList, this.playNum);
   }
 
+  finish() {
+    this.winnerList = checkDistanceResult(this.carDistanceList);
+    printWinner(this.winnerList);
+  }
+
   async play() {
     this.start();
     this.progress();
+    this.finish();
   }
 }
 
