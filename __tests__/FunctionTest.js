@@ -78,9 +78,10 @@ describe("기능 테스트", () => {
       ["a : ", "b : ", "c : -"],
       ["a : ", "b : -", "c : --"],
     ];
+    const spyFn = jest.spyOn(Console, "print");
+
     for (let i = 0; i < 2; i++) {
       for (let j = 0; j < 3; j++) {
-        const spyFn = jest.spyOn(Console, "print");
         const randomValue = randomValuesList[i][j];
         Car.generateRandomValue = jest.fn().mockReturnValue(randomValue);
         carList[j].calculatePosition();
@@ -88,5 +89,31 @@ describe("기능 테스트", () => {
         expect(spyFn).toHaveBeenCalledWith(resultMessage[i][j]);
       }
     }
+  });
+
+  // 최종 우승자 결정하기
+  test("최종 우승자 결정하기", async () => {
+    const game = new Game();
+    const input = "a,b,c";
+    const finalWinnerList = ["b", "c"];
+    const compareResult = new Map([
+      ["a", [false, false]],
+      ["b", [true, false]],
+      ["c", [false, true]],
+    ]);
+
+    Console.readLineAsync = jest.fn().mockResolvedValue(input);
+    await game.inputCarName();
+
+    for (const car of game.getCarList()) {
+      const name = car.getName();
+      const firstCompareResult = compareResult.get(name)[0];
+      const secondCompareResult = compareResult.get(name)[1];
+
+      car.isFasterThan = jest.fn().mockReturnValue(firstCompareResult);
+      car.isSameAs = jest.fn().mockReturnValue(secondCompareResult);
+    }
+    game.decideFinalWinner();
+    expect(game.getFinalWinnerList()).toEqual(finalWinnerList);
   });
 });
