@@ -13,6 +13,7 @@ const mockQuestions = input => {
 describe('시도할 횟수 테스트', () => {
   test('정상적으로 입력한 경우', async () => {
     const input = '5';
+
     mockQuestions(input);
 
     await expect(getPlayNum()).resolves.not.toThrow();
@@ -20,6 +21,7 @@ describe('시도할 횟수 테스트', () => {
 
   test('문자를 포함해 입력한 경우', async () => {
     const input = '-5';
+
     mockQuestions(input);
 
     await expect(getPlayNum()).rejects.toThrow(
@@ -29,6 +31,7 @@ describe('시도할 횟수 테스트', () => {
 
   test('0을 입력한 경우', async () => {
     const input = '0';
+
     mockQuestions(input);
 
     await expect(getPlayNum()).rejects.toThrow(
@@ -38,6 +41,7 @@ describe('시도할 횟수 테스트', () => {
 
   test('입력을 아예 안 한 경우', async () => {
     const input = '';
+
     mockQuestions(input);
 
     await expect(getPlayNum()).rejects.toThrow(ERROR_MESSAGE.playNum.noInput);

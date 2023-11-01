@@ -15,6 +15,7 @@ const playOneRound = carDistanceList => {
       updateCar.distance += '-';
       return updateCar;
     }
+
     return car;
   });
 };
