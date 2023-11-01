@@ -1,5 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import { findWinner } from '../src/models/RunRace';
+import { determineWinner } from '../src/controllers/GameController';
 
 const getLogSpy = () => {
   const logSpy = jest.spyOn(MissionUtils.Console, 'print');
@@ -16,7 +16,7 @@ describe('게임 우승자 선정', () => {
     };
     const RESULT = '최종 우승자 : car1';
     const logSpy = getLogSpy();
-    findWinner(CARS);
+    determineWinner(CARS);
 
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(RESULT));
   });
@@ -30,7 +30,7 @@ describe('게임 우승자 선정', () => {
 
     const RESULT = '최종 우승자 : car1, car3';
     const logSpy = getLogSpy();
-    findWinner(CARS);
+    determineWinner(CARS);
 
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(RESULT));
   });

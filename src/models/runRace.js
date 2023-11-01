@@ -1,16 +1,4 @@
 import { random } from "../util/RandomNum";
-import { printWinner, racingOutput } from "../views/OutputView";
-
-//입력받은 count에 따라 반복
-export const runByCount = (cars, count) => {
-  racingOutput("실행 결과");
-  let carObject = {};
-  for (let round = 0; round < count; round++) {
-    carObject = runRace(cars);
-    racingOutput(carObject);
-  }
-  findWinner(cars);
-};
 
 //랜덤수에 따른 전진 상태 결정
 export const runRace = (cars) => {
@@ -42,5 +30,5 @@ export const findWinner = (cars) => {
     }
   });
 
-  printWinner(winners.join(', '));
+  return winners.join(', ');
 };

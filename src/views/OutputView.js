@@ -1,4 +1,4 @@
-import { Console, MissionUtils } from "@woowacourse/mission-utils"
+import { MissionUtils } from "@woowacourse/mission-utils"
 
 export const racingOutput = (data) => {
     if (typeof data === 'string') {
@@ -10,6 +10,6 @@ export const racingOutput = (data) => {
     }
 };
 
-export const printWinner = (winner) => {
+export const showWinner = (winner) => {
     MissionUtils.Console.print(`최종 우승자 : ${winner}`);
 };

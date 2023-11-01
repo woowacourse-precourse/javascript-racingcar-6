@@ -38,7 +38,7 @@
     - 우승자 결정
 
     - Car
-        - 속성: name(자동차 이름), position(현재 위치)
+        - 속성: name(자동차 이름)
         - 함수: move(전진)
     - Race
         - 속성: cars(참가 자동차 배열), tryCount(시도 횟수)
@@ -47,9 +47,9 @@
 - V(Views): 사용자에게 정보를 보여주고, 사용자의 입력을 받는 부분을 관리
 
     - 사용자의 입력 받기 (InputView)
-        - 함수: getCarNames(자동차 이름 입력받기), getTryCount(시도 횟수 입력받기)
+        - 함수: getCarNames(자동차 이름 입력받기), getAttemptCount(시도 횟수 입력받기)
     - 사용자에게 메시지 출력 (OutputView)
-        - 함수: showCurrentPositions(현재 자동차 위치 출력), showWinners(우승자 출력)
+        - 함수: racingOutput(현재 자동차 위치 출력), showWinners(우승자 출력)
 
 - C(Controllers): Model과 View를 연결하여, 사용자의 입력에 따라 게임의 상태를 업데이트하고, View에게 정보를 전달
 

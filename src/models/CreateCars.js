@@ -1,4 +1,4 @@
-import { runByCount } from './RunRace';
+import { runByCount } from "../controllers/GameController";
 
 //입력받은 자동차의 이름에 대한 객체 생성
 const createCars = (name, count) => {
