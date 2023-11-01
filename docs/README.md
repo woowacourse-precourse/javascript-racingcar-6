@@ -96,8 +96,8 @@
     - [ ] isNumber(num)
   - [x] NumberGenerator.js
     - [x] getRandomNumber()
-  - [ ] Prompter.js
-    - [ ] getUserInput()
+  - [x] Prompter.js
+    - [x] getUserInput()
   - [ ] Race.js
     - [ ] compete()
     - [ ] printResult()
