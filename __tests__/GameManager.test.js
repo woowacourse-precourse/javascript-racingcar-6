@@ -77,11 +77,11 @@ describe('GameManager 클래스의 메소드들의 테스트', () => {
     CARS.push({ carName: 'cars3', forwardNumber: 4 });
     // when
     const logSpy = getLogSpy();
-    const output = '최종우승자 : cars1, cars2';
+    const OUTPUT = '최종우승자 : cars1, cars2';
     const gameManager = new GameManager();
     await gameManager.finishGame();
 
     // then
-    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(OUTPUT));
   });
 });

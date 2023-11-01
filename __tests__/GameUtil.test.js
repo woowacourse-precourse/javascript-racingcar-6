@@ -17,23 +17,23 @@ describe('GameUtil 클래스의 메소드들의 테스트', () => {
 
   test('splitInput메소드가 문자열을 ,를 기준으로 잘 나누는가', () => {
     // given
-    const input = 'cars1,cars2,cars3';
+    const INPUT = 'cars1,cars2,cars3';
     // when
     const gameUtil = new GameUtil();
     // then
-    expect(gameUtil.splitInput(input)).toEqual(['cars1', 'cars2', 'cars3']);
+    expect(gameUtil.splitInput(INPUT)).toEqual(['cars1', 'cars2', 'cars3']);
   });
 
   test('storeMovingForward가 받은 index값을 가진 차가 전진하였음을 잘 저장하는가', () => {
     // given
     CARS.push({ carName: 'car1', forwardNumber: 0 });
     CARS.push({ carName: 'car2', forwardNumber: 0 });
-    const index = 0;
+    const INDEX = 0;
     const FORWARD = '4';
     mockRandoms([FORWARD]);
     // when
     const gameUtil = new GameUtil();
-    gameUtil.storeMovingForward(index);
+    gameUtil.storeMovingForward(INDEX);
     // then
     expect(CARS[0]).toEqual({ carName: 'car1', forwardNumber: 1 });
   });

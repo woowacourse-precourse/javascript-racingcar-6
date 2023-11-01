@@ -1,6 +1,6 @@
-import InputView from "../view/InputView.js";
-import OutputView from "../view/OutputView.js";
-import Game from "../game/Game.js";
+import InputView from '../view/InputView.js';
+import OutputView from '../view/OutputView.js';
+import Game from '../game/Game.js';
 class GameManager {
   constructor() {
     this.game = new Game();
