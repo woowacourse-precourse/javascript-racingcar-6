@@ -38,6 +38,20 @@ class App {
     const cars = await this.cars();
     const tryCount = await this.tryCount();
     const towardState = new Array(cars.length).fill(0);
+
+    for (let i = 0; i < tryCount; i++) {
+      const result = this.toward(cars.length);
+      for (let j = 0; j < result.length; j++) {
+        result[j] && (towardState[j] += 1);
+      }
+    }
+  }
+  toward(length) {
+    const result = [];
+    for (let i = 0; i < length; i++) {
+      result.push(Random.pickNumberInRange(0, 9) >= 4 ? true : false);
+    }
+    return result;
   }
 }
 
