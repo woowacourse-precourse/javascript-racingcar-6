@@ -21,7 +21,7 @@ class Winner {
       }
     });
 
-    Console.print(`\n최종 우승자: ${winners.join(', ')}`);
+    Console.print(`\n최종 우승자 : ${winners.join(', ')}`);
   };
 }
 
