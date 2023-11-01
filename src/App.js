@@ -47,6 +47,32 @@ class App {
     return raceTryCount;
   }
 
+
+  // 0-9 사이의 숫자를 무작위로 선택
+  tryRandomNum() {
+    return Random.pickNumberInRange(0, 9);
+  }
+
+  // 4 이상일 경우 전진
+  moveRacing(carName, score, racingCars) {
+    const moveCount = 4;
+    if (this.tryRandomNum() >= moveCount) {
+      racingCars[carName] = score + 1;
+    }
+  }
+
+ // 게임 턴마다 '-' 표시
+  printMarkingRound(racingCars) {
+    for (const [carName, score] of Object.entries(racingCars)) {
+      const hyphens = '-'.repeat(score);
+      Console.print(`${carName} : ${hyphens}`);
+    }
+    Console.print('');
+  }
+
+
+
+
 }
 
 
