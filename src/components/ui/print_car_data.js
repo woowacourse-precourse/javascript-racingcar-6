@@ -1,8 +1,8 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import { carDataGet } from "../data/car_data.js";
+import { getCarData } from "../data/car_data.js";
 
 const printCarData = () => {
-    let carData = carDataGet();
+    let carData = getCarData();
     for (let car in carData) {
         MissionUtils.Console.print(car + ' : ' + '-'.repeat(carData[car]));
     }

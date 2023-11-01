@@ -7,10 +7,12 @@ const carDataInit = (carName) =>{
     return carData;
 };
 
-const carDataGet = () => {
+const getCarData = () => {
     return carData
 };
 
-const carDataSet = () => {}
+const setCarData = () => {
+    return
+};
 
-export {carDataInit, carDataGet, carDataSet};
+export {carDataInit, getCarData, setCarData};
