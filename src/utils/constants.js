@@ -10,6 +10,7 @@ const GAME_NUMBERS = {
   rangeMax: 9,
   movementThreshold: 4,
   carNameMaxLength: 5,
+  minRoundNumber: 1,
 };
 
 const GAME_MESSAGES = {
@@ -28,7 +29,10 @@ const ERROR_MESSAGES = {
   },
   roundsNumber: {
     negativeValue: '시도 횟수는 음수일 수 없습니다.',
-    notNumber: '시도 횟수는 숫자만 허용됩니다.',
+    isZero: '시도 횟수는 적어도 1회 이상이어야 합니다.',
+    notNumber: '시도 횟수는 숫자만 입력할 수 있습니다.',
+    notNaturalNumber: '시도 횟수는 자연수만 허용됩니다.',
+    notInRange: `시도 횟수는 최소 ${GAME_NUMBERS.minRoundNumber}회 이상이어야 합니다.`,
   },
 };
 

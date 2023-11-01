@@ -21,7 +21,7 @@ class InputView {
     const input = await Console.readLineAsync(
       GAME_MESSAGES.roundsNumberQuery + '\n'
     );
-    const roundsNumber = parseInt(input, 10);
+    const roundsNumber = Number(input);
     this.#inputValidator.validateRoundsNumber(roundsNumber);
     return roundsNumber;
   }

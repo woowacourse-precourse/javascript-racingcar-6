@@ -32,6 +32,8 @@ class InputValidator {
   validateRoundsNumber(roundsNumber) {
     this.#validateIsNumber(roundsNumber);
     this.#validateNonNegativeValue(roundsNumber);
+    this.#validateNaturalNumber(roundsNumber);
+    this.#validateNumberRange(roundsNumber);
   }
 
   #validateIsNumber(value) {
@@ -43,6 +45,18 @@ class InputValidator {
   #validateNonNegativeValue(value) {
     if (value < 0) {
       throw new CustomError(ERROR_MESSAGES.roundsNumber.negativeValue);
+    }
+  }
+
+  #validateNaturalNumber(value) {
+    if (!Number.isInteger(value)) {
+      throw new CustomError(ERROR_MESSAGES.roundsNumber.notNaturalNumber);
+    }
+  }
+
+  #validateNumberRange(value) {
+    if (value < GAME_NUMBERS.minRoundNumber) {
+      throw new CustomError(ERROR_MESSAGES.roundsNumber.notInRange);
     }
   }
 }
