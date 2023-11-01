@@ -3,7 +3,14 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 class App {
   async play() {
     const carNames = await MissionUtils.Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
+    carNames.split(",").forEach(element => {
+      if (element.length>5) throw new Error("[ERROR] 자동차 이름은 5자 이하여야 합니다.")
+    });
+    if (carNames.length==0) throw new Error("[ERROR] 값을 입력해주세요.")
+    
     const moves = await MissionUtils.Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+    if (moves.length == 0 || isNaN(moves)) throw new Error("[ERROR] 올바른 숫자를 입력해주세요.")
+    
     let moveResult = Object.fromEntries(carNames.split(",").map(name=>[name,""]))
 
     MissionUtils.Console.print("")
