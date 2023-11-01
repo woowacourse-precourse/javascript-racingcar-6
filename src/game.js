@@ -1,4 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
+import { THRESHOLD, MIN, MAX, PROGRESS_BAR } from './constant.js';
 import * as validate from './validate.js';
 
 export default class Game {
@@ -10,6 +11,14 @@ export default class Game {
   async start() {
     await this.createUserList();
     await this.enterNumberOfAttempt();
+  }
+
+  execution() {
+    for (const user of this.userList) {
+      const randomNum = this.pickRandomNumber();
+      if (randomNum >= THRESHOLD) user.forwardNumber++;
+    }
+    this.printExecutionResult();
   }
 
   async createUserList() {
@@ -30,5 +39,18 @@ export default class Game {
       `시도할 횟수는 몇 회인가요?\n`
     );
     if (validate.attemptNum(inputNum)) this.numberOfAttempt = Number(inputNum);
+  }
+
+  pickRandomNumber() {
+    return MissionUtils.Random.pickNumberInRange(MIN, MAX);
+  }
+
+  printExecutionResult() {
+    for (const user of this.userList) {
+      MissionUtils.Console.print(
+        `${user.name} : ${PROGRESS_BAR.repeat(user.forwardNumber)}`
+      );
+    }
+    MissionUtils.Console.print('');
   }
 }
