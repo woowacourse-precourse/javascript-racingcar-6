@@ -30,6 +30,7 @@ export class GameController {
   async start() {
     const cars = await this.#inputView.inputCars();
     await this.#race(cars);
+    this.#printGameWinners(cars);
   }
   /**
    *
@@ -52,7 +53,6 @@ export class GameController {
   async #_race(cars, currentAttemptCount) {
     //재귀함수는 종료 조건을 꼭 써주기
     if (currentAttemptCount === 0) {
-      this.getGameWinners(cars);
       return;
     }
     cars.moveAll(); // cars가 도메인 객체라 비즈니스 로직 실행
@@ -66,7 +66,7 @@ export class GameController {
    * @param {Cars} cars
    * @returns {void}
    */
-  getGameWinners(cars) {
+  #printGameWinners(cars) {
     const winnersDto = cars.makeWinnersDto(); //winners dto 생성
     this.#outputView.printWinners(winnersDto); //출력
 

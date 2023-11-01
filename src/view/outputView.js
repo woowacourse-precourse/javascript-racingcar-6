@@ -1,6 +1,6 @@
 // @ts-check
 import { Console } from "@woowacourse/mission-utils";
-import { SYMBOL, MESSAGE } from "../constants/constants";
+import { MESSAGE } from "../constants/constants";
 import { CarsDto } from "../domain/dto/carsDto";
 import { WinnersDto } from "../domain/dto/winnersDto";
 

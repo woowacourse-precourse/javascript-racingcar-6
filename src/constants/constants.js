@@ -14,7 +14,3 @@ export const ERROR = {
   NUMBER_RANGE_ERROR: "[ERROR] 시도 횟수는 1 이상의 자연수로 입력해주세요.",
   NUMBER_ONLY_ERROR: "[ERROR] 시도 횟수는 숫자만 입력 가능합니다.",
 };
-
-export const SYMBOL = {
-  MOVE: "-",
-};
