@@ -1,23 +1,18 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
-const readLineAsync = async (message) => {
+const readLineAsync = async (message) =>
   MissionUtils.Console.readLineAsync(message);
-};
 
-const print = (message) => {
-  MissionUtils.Console.print(message);
-};
+const print = (message) => MissionUtils.Console.print(message);
 
-const pickNumberInRange = (startInclusive, endInclusive) => {
+const pickNumberInRange = (startInclusive, endInclusive) =>
   MissionUtils.Random.pickNumberInRange(startInclusive, endInclusive);
-};
 
-const pickUniqueNumbersInRange = (startInclusive, endInclusive, count) => {
+const pickUniqueNumbersInRange = (startInclusive, endInclusive, count) =>
   MissionUtils.Random.pickUniqueNumbersInRange(
     startInclusive,
     endInclusive,
     count
   );
-};
 
 export { readLineAsync, print, pickNumberInRange, pickUniqueNumbersInRange };

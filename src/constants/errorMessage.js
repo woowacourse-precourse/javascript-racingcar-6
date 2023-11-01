@@ -1,11 +1,12 @@
 const ERROR_CAR_MESSAGE = {
-  INVALID_INPUT_ERROR: "[ERROR]",
-  INVALID_INPUT_CAR_NAME_OVER_ERRPR: "자동차 이름은 5자 이하만 가능합니다.",
-  INVALID_INPUT_CAR_NAME_DUPLICATION_ERROR: "자동차 이름은 중복될 수 없습니다.",
-  INVALID_INPUT_CAR_NAME_EMPTY_ERROR: "자동차 이름을 입력하지 않았습니다.",
-  INVALID_INPUT_CAR_NAME_BLANK_ERROR: "자동차 이름에 공백이 포함되어 있습니다.",
+  INVALID_INPUT_CAR_NAME_OVER_ERROR:
+    "[ERROR] 자동차 이름은 5자 이하만 가능합니다.",
+  INVALID_INPUT_CAR_NAME_DUPLICATION_ERROR:
+    "[ERROR] 자동차 이름은 중복될 수 없습니다.",
+  INVALID_INPUT_CAR_NAME_EMPTY_ERROR:
+    "[ERROR] 자동차 이름을 입력하지 않았습니다.",
   INVALID_INPUT_CAR_NAME_ENG_ERROR:
-    "자동차 이름에 영어가 아닌 문자가 포함되어 있습니다.",
+    "[ERROR] 자동차 이름에 영어가 아닌 문자가 포함되어 있습니다.",
 };
 
 const ERROR_USER_INPUT_MESSAGE = {
