@@ -16,7 +16,7 @@ class App {
       const game = new Game(carNames, count);
       game.playGame();
     } catch (error) {
-      throw new Error(error);
+      throw new Error(`[ERROR] ${error}`);
     }
   }
 }
