@@ -1,5 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
-import MESSAGE from "../constants/MESSAGE.js";
+import MESSAGE from "./constants/MESSAGE.js";
 import {
   isNotEmpty,
   isNotEmptyList,

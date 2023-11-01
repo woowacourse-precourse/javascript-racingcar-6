@@ -1,5 +1,5 @@
 import { Random } from "@woowacourse/mission-utils";
-import NUMBER from "../constants/NUMBER.js";
+import NUMBER from "./constants/NUMBER.js";
 import Car from "./Car.js";
 
 class RacingGame {

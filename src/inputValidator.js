@@ -1,4 +1,4 @@
-import NUMBER from "../constants/NUMBER.js";
+import NUMBER from "./constants/NUMBER.js";
 
 export const isNumber = (input) => {
   return !isNaN(input);
