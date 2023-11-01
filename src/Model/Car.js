@@ -1,4 +1,4 @@
-import { Random } from "@woowacourse/mission-utils";
+import { RandomGenerator } from "../utils/RandomGenerator";
 
 class Car {
   #movestat;
@@ -10,7 +10,7 @@ class Car {
   }
 
   move() {
-    const randomnum = Random.pickNumberInRange(0, 9);
+    const randomnum = RandomGenerator();
 
     if (randomnum >= 4) {
       this.#movestat++;
