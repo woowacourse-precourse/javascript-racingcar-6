@@ -4,6 +4,10 @@ import { CARS, OUTPUT_MESSAGE } from '../Constants.js';
 class OutputView {
     constructor() {}
 
+  printInitMessage() {
+    MissionUtils.Console.print(OUTPUT_MESSAGE.INIT_MESSAGE_WELCOME);
+    MissionUtils.Console.print(OUTPUT_MESSAGE.INIT_MESSAGE_GUIDE);
+  }
   
   // 레이스 게임 실행 결과 출력 안내 메시지 출력
   printResultMessage() {

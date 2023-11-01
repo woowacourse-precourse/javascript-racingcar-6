@@ -10,6 +10,7 @@ class GameManager {
 
   // 게임 초기 설정 (자동차 이름, 게임 시도횟수 설정)
   async initGame() {
+    this.outputView.printInitMessage();
     const CAR_NAMES_INPUT = await this.inputView.askCarName();
     this.game.storeCars(CAR_NAMES_INPUT);
   }
