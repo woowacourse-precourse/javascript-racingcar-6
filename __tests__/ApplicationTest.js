@@ -65,9 +65,9 @@ describe("자동차 경주 게임", () => {
   });
 
   test("시도 횟수에 공백 입력 예외 처리", async () => {
-    const input = ["hyeong,min", ""];
+    const inputs = ["hyeong,min", ""];
     // given
-    mockQuestions(input);
+    mockQuestions(inputs);
 
     // when
     const app = new App();
@@ -77,9 +77,9 @@ describe("자동차 경주 게임", () => {
   });
 
   test("시도 횟수에 음수 입력 예외 처리", async () => {
-    const input = ["hyeong,min", "-40"];
+    const inputs = ["hyeong,min", "-40"];
     // given
-    mockQuestions(input);
+    mockQuestions(inputs);
 
     // when
     const app = new App();
@@ -89,9 +89,9 @@ describe("자동차 경주 게임", () => {
   });
 
   test("시도 횟수에 소수점 입력 예외 처리", async () => {
-    const input = ["hyeong,min", "1.23"];
+    const inputs = ["hyeong,min", "1.23"];
     // given
-    mockQuestions(input);
+    mockQuestions(inputs);
 
     // when
     const app = new App();
