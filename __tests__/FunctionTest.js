@@ -67,7 +67,7 @@ describe("기능 테스트", () => {
         await expect(app.calculateAndStoreScore(input)).toEqual(result);
     });
 
-    test("자동차 점수 출력 테스트", async () => {
+    test("라운드별 결과 테스트", async () => {
         const carStates = ["-", "--", ""];
         const carNameArr = ["치이카와", "하치와레", "우사기"];
         const result = ["치이카와 : -", "하치와레 : --", "우사기 : "].join(
