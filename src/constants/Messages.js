@@ -7,6 +7,7 @@ export const INPUT_MESSAGE_FUNCTION = Object.freeze({
 export const OUTPUT_MESSAGE = {
   count: '\n시도할 횟수는 몇 회인가요?\n',
   blink: '',
+  progress: '\n실행 결과',
 };
 
 export const OUTPUT_MESSAGE_FUNCTION = Object.freeze({
