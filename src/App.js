@@ -13,7 +13,12 @@ class App {
       const carNames = (
         await Console.readLineAsync("경주할 자동차 이름을 입력하세요.")
       ).split(",");
-      carNames.forEach((name) => this.cars.push(new Car(name)));
+      carNames.forEach((name) => {
+        if (name.length > 5) {
+          throw new Error("[ERROR] 자동차 이름은 5자 이하만 가능합니다.");
+        }
+        this.cars.push(new Car(name));
+      });
       const rounds = Number(
         await Console.readLineAsync("시도할 횟수는 몇 회인가요?")
       );
@@ -24,6 +29,7 @@ class App {
       this.printWinner();
     } catch (error) {
       console.error(error.message);
+      throw error;
     }
   }
 
