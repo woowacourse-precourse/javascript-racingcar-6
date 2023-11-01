@@ -1,6 +1,7 @@
 import { Console } from "@woowacourse/mission-utils";
 import { GAME_HELP } from "../constants/GAME_HELP.js";
 import { TRY_COUNT_VALIDATION } from "../constants/VALIDATION.js";
+import { isZero, isNumber } from "../utils/validation.js";
 
 class TryCount {
   constructor() {
@@ -23,21 +24,13 @@ class TryCount {
   static validateTryCount(tryValue) {
     tryValue = Number(tryValue);
 
-    if (TryCount.#isZero(tryValue)) {
+    if (isZero(tryValue)) {
       throw new Error(TRY_COUNT_VALIDATION.NOT_ZERO);
     }
 
-    if (TryCount.#isNumber(tryValue)) {
+    if (isNumber(tryValue)) {
       throw new Error(TRY_COUNT_VALIDATION.IS_NAN);
     }
-  }
-
-  static #isZero(tryValue) {
-    return tryValue < 1;
-  }
-
-  static #isNumber(tryValue) {
-    return isNaN(tryValue);
   }
 }
 

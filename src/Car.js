@@ -1,9 +1,12 @@
 import { Console } from "@woowacourse/mission-utils";
 import { GAME_HELP } from "../constants/GAME_HELP.js";
 import { CAR_VALIDATION } from "../constants/VALIDATION.js";
-import { CAR_NAME_MAX_LENGTH } from "../constants/NUMBER.js";
-
-const reg = /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
+import {
+  isDuplicate,
+  isCorrectNameLength,
+  isBlank,
+  isSpecialSymbol,
+} from "../utils/validation.js";
 
 class Car {
   constructor() {
@@ -26,39 +29,21 @@ class Car {
   }
 
   static validateCarNameList(car) {
-    if (Car.#isDuplicate(car)) {
+    if (isDuplicate(car)) {
       throw new Error(CAR_VALIDATION.DUPLICATE);
     }
 
-    if (Car.#isNameLength(car)) {
+    if (isCorrectNameLength(car)) {
       throw new Error(CAR_VALIDATION.LENGTH);
     }
 
-    if (Car.#isBlank(car)) {
+    if (isBlank(car)) {
       throw new Error(CAR_VALIDATION.BLANK);
     }
 
-    if (Car.#isSpecialSymbol(car)) {
+    if (isSpecialSymbol(car)) {
       throw new Error(CAR_VALIDATION.SPECIAL_SYMBOL);
     }
-  }
-
-  static #isDuplicate(car) {
-    return car.some(
-      (carName) => car.indexOf(carName) !== car.lastIndexOf(carName)
-    );
-  }
-
-  static #isNameLength(car) {
-    return car.some((carName) => carName.length > CAR_NAME_MAX_LENGTH + 1);
-  }
-
-  static #isBlank(car) {
-    return car.some((carName) => carName === "");
-  }
-
-  static #isSpecialSymbol(car) {
-    return car.some((carName) => reg.test(carName));
   }
 }
 
