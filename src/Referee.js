@@ -4,6 +4,7 @@ class Referee {
     this.max = '';
     this.winnerArray = [];
   }
+
   compareWinner(carArray) {
     carArray.forEach((carElement) => {
       this.departureCountArray.push(carElement.departureCount.length);

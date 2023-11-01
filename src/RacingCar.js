@@ -3,28 +3,36 @@ import strings from './constants.js';
 import Referee from './Referee.js';
 
 class RacingCar {
+  constructor() {
+    this.round = 0;
+    this.carArray = [];
+  }
+
   playRace(inputNumber, carArray) {
-    let round = 0;
     const winner = new Referee();
-    const attemptNumber = this.wrongNumber(inputNumber);
+    const attemptNumber = RacingCar.wrongNumber(inputNumber);
+    this.carArray = carArray;
 
-    Console.print('\n' + strings.RESULT);
+    Console.print(`\n ${strings.RESULT}`);
 
-    while (round < attemptNumber) {
-      carArray.forEach((carElement) => {
-        carElement.departureCount = this.startOrStop(carElement.departureCount);
+    while (this.round < attemptNumber) {
+      this.carArray = this.playRound();
+
+      this.carArray.forEach((carElement) => {
         Console.print(`${carElement.carName} : ${carElement.departureCount}`);
       });
+
       Console.print('\n');
-      round += 1;
+
+      this.round += 1;
     }
 
     Console.print(
-      `${strings.FINAL_WINNER} : ${winner.compareWinner(carArray)}`,
+      `${strings.FINAL_WINNER} :${winner.compareWinner(this.carArray)}`,
     );
   }
 
-  wrongNumber(inputNumber) {
+  static wrongNumber(inputNumber) {
     if (inputNumber === '') {
       throw new Error(strings.ERROR_MESSAGE_NUMBER_NULL);
     }
@@ -42,14 +50,28 @@ class RacingCar {
     return Number(inputNumber);
   }
 
-  startOrStop(departureCount) {
+  static startOrStop(departureCount) {
     const randomNumber = Random.pickNumberInRange(0, 9);
+    let foword = departureCount;
 
     if (randomNumber >= strings.CONDITION_NUMBER) {
-      departureCount += strings.MOVE_FOWORD;
+      foword += strings.MOVE_FOWORD;
     }
 
-    return departureCount;
+    return foword;
+  }
+
+  playRound() {
+    const newCarArray = this.carArray.map((carElement) => {
+      const carElementCopy = { ...carElement };
+      carElementCopy.departureCount = RacingCar.startOrStop(
+        carElementCopy.departureCount,
+      );
+
+      return carElementCopy;
+    });
+
+    return newCarArray;
   }
 }
 export default RacingCar;

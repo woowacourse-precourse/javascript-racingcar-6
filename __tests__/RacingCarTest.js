@@ -1,4 +1,4 @@
-import { Console, Random } from '@woowacourse/mission-utils';
+import { Console } from '@woowacourse/mission-utils';
 import RacingCar from '../src/RacingCar';
 
 const getLogSpy = () => {
@@ -8,19 +8,13 @@ const getLogSpy = () => {
 };
 
 describe('RacingCar 클래스 테스트', () => {
-  let race;
-
-  beforeEach(() => {
-    race = new RacingCar();
-  });
-
   describe('횟수 입력 테스트', () => {
     test('입력한 횟수 값 출력 테스트', () => {
       const input = '2';
       const output = '2';
       const logSpy = getLogSpy();
 
-      race.wrongNumber(input);
+      RacingCar.wrongNumber(input);
 
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
@@ -41,7 +35,7 @@ describe('RacingCar 클래스 테스트', () => {
       const input = inputs[Math.floor(Math.random() * inputs.length)];
 
       expect(() => {
-        race.wrongNumber(input);
+        RacingCar.wrongNumber(input);
       }).toThrow('[ERROR]');
     });
   });

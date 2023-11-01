@@ -4,14 +4,18 @@ import CreateCarName from './CreateCarName.js';
 import RacingCar from './RacingCar.js';
 
 class App {
+  constructor() {
+    this.carArray = [];
+  }
+
   async play() {
     const inputName = await Console.readLineAsync(strings.ASK_NAME);
     const namingCar = new CreateCarName();
-    const carArray = namingCar.carName(inputName);
+    this.carArray = namingCar.carName(inputName);
 
     const inputNumber = await Console.readLineAsync(strings.ASK_NUMBER);
     const race = new RacingCar();
-    race.playRace(inputNumber, carArray);
+    race.playRace(inputNumber, this.carArray);
   }
 }
 export default App;
