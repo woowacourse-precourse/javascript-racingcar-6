@@ -14,11 +14,10 @@ class App {
   makeCars(carNamesString) {
     const carNamesArr = carNamesString.split(',');
     carNamesArr.forEach((carName) => {
-      this.cars.push(car);
       const car = new Car(carName);
-
-      return this.cars;
+      this.cars.push(car);
     });
+    return this.cars;
   }
 
   setCarsMovements() {
@@ -28,7 +27,6 @@ class App {
   }
 
   findLongestMovementLength() {
-    // forEach돌리며 cars 하나씩 빼오기
     const movementLengthsArr = [];
     this.cars.forEach((car) => {
       const movementLength = car.getMovementLength();
