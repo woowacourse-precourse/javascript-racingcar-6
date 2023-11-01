@@ -1,3 +1,5 @@
+import { Console } from '@woowacourse/mission-utils';
+
 import Car from './Car.js';
 import Input from './Input.js';
 
@@ -8,8 +10,16 @@ class Game {
   async play() {
     await this.setCars();
     await this.setCount();
+
+    Console.print('실행결과');
+
     while (this.isFinished()) {
-      // TODO: 자동차 이동 로직 추가
+      this.#cars.forEach((car) => {
+        car.move();
+        Console.print(`${car.getName()} : ${car.getPath()}`);
+      });
+      Console.print('');
+
       this.#count -= 1;
     }
   }

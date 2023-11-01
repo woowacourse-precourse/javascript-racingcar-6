@@ -1,12 +1,29 @@
+import { Random } from '@woowacourse/mission-utils';
+
 class Car {
   #name = '';
+  #path = '';
 
   constructor(name) {
     this.#name = name;
   }
-  /**
-   * TODO: 경주 자동차 이동 메서드 작성
-   */
+
+  move() {
+    const value = Random.pickNumberInRange(0, 9);
+    if (Number(value) < 4) {
+      return;
+    }
+
+    this.#path += '-';
+  }
+
+  getName() {
+    return this.#name;
+  }
+
+  getPath() {
+    return this.#path;
+  }
 }
 
 export default Car;
