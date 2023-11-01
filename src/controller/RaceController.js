@@ -94,6 +94,6 @@ export default class RaceController {
         maxPoint = car.point;
       }
     });
-    this.outputView.printWinners(this.winners.map((winner) => winner).join(','));
+    this.outputView.printWinners(this.winners.map((winner) => winner).join(', '));
   }
 }
