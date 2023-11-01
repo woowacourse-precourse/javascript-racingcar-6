@@ -1,5 +1,6 @@
 const NAME_MIN_LENGTH = 1;
 const NAME_MAX_LENGTH = 5;
+
 class Validation {
   static isProperInput(userInput) {
     const carList = userInput.split(',');

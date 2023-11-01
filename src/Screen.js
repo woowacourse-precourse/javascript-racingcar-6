@@ -1,4 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
+
 class Screen {
   static async getUserInput(message) {
     const userInput = await Console.readLineAsync(message);
