@@ -5,7 +5,6 @@
  * @returns {string[]}
  */
 export function splitNamesFrom(nameString) {
-  let names = nameString.split(",");
-  names = names.map((name) => name.trim());
-  return names;
+  const names = nameString.split(",");
+  return names.map((name) => name.trim());
 }
