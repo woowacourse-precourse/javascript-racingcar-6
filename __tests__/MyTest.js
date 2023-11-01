@@ -85,6 +85,26 @@ describe("자동차 경주 게임", () => {
     });
   });
 
+  test("동일한 이름이 들어올 때", async () => {
+    // given
+    const inputs = ["a,a", "1"];
+    const outputs = ["a : -", "a : ", "최종 우승자 : a"];
+    const randoms = [MOVING_FORWARD, STOP];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    // when
+    const app = new App();
+    await app.play();
+
+    // then
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
+
   //---에러 테스트-------------------------------------
   test.each([[["a,b,c", ""]], [["a,b,c", " "]], [["a,b,c", "test"]]])(
     "올바르지 않은 입력 횟수",
