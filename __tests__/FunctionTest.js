@@ -92,13 +92,13 @@ describe("기능 테스트", () => {
         await expect(app.determineWinnerIndex(carStates)).toEqual(result);
     });
 
-    test("게임 승자 문구 출력 테스트", async () => {
-        const winnerIndexList = [2, 3];
+    test("게임 승자 출력 테스트", async () => {
+        const winnerIndexList = [1, 2];
         const carNameArr = ["치이카와", "하치와레", "모몽가"];
-        const result = `최종 우승자 : ${carNameArr[2]}, ${carNameArr[3]}`;
+        const result = `하치와레, 모몽가`;
 
         const app = new App();
 
-        await expect(app.determineWinnerList(winnerIndexList)).toEqual(result);
+        await expect(app.determineWinners(winnerIndexList,carNameArr)).toEqual(result);
     });
 });
