@@ -12,38 +12,35 @@ import ScoreBoard from "./core/scoreboard.js";
 import { isFowardAllowed } from "./utils/prob.js";
 
 class App {
-  /** @type { number } */
-  tryAmount = 0;
-
-  /** @type { string[] } */
-  names = [];
-
   /** @type { ScoreBoard } */
   scoreBoard;
 
   async play() {
-    this.names = await askNames();
-    this.tryAmount = await askTryAmount();
-    this.scoreBoard = new ScoreBoard(this.names);
+    const names = await askNames();
+    const tryAmount = await askTryAmount();
+
+    this.scoreBoard = new ScoreBoard(names);
 
     printResultTitle();
-    this.#simulate();
+    this.#simulate(tryAmount);
     printWinners(judgeWinner(this.scoreBoard.board));
   }
 
-  #simulate() {
-    while (this.tryAmount--) {
+  /**
+   *
+   * @param {number} tryAmount
+   */
+  #simulate(tryAmount) {
+    while (tryAmount--) {
       this.simulateOneTurn();
       printResultUsingScoreBoard(this.scoreBoard.board);
     }
   }
 
   simulateOneTurn() {
-    if (!this.names) return;
-
-    this.names.forEach((name) => {
-      if (isFowardAllowed()) this.scoreBoard.giveScoreTo(name);
-    });
+    this.scoreBoard.names
+      .filter(() => isFowardAllowed())
+      .forEach((name) => this.scoreBoard.giveScoreTo(name));
   }
 }
 

@@ -4,11 +4,15 @@ class ScoreBoard {
   /** @type {Record<string, number>} */
   board;
 
+  /** @type {string[]} */
+  names;
+
   /**
    *
    * @param {string[]} names
    */
   constructor(names) {
+    this.names = names;
     this.board = this.makeScoreboardByNames(names);
   }
 
