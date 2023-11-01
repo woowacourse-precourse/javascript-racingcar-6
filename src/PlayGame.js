@@ -25,11 +25,22 @@ class PlayGame {
 
     async pickWinner(carNames, count) {
         const max = Object.keys(count).reduce(function (m, k) { return count[k] > m ? count[k] : m }, -Infinity);
-        let winner = new Array();
-        for (let i = 0; carNames.length; i++) {
+        // let winner = new Array();
+        let winner = "";
+        for (let i = 0; i < carNames.length; i++) {
             if (count[i] === max) {
-                winner.push(carNames[i]);
-            } else { break; }
+                // winner.push(carNames[i]);
+                winner = this.stringParser(winner, carNames[i]);
+            }
+        }
+        return winner;
+    }
+
+    stringParser(winner, carNames) {
+        if (winner === "") {
+            winner = carNames
+        } else {
+            winner = winner.concat(`, ${carNames}`);
         }
         return winner;
     }
