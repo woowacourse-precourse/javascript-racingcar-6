@@ -35,7 +35,7 @@ export const isOnlySpace = (str) => {
  * @param {string} carNamesString
  * @returns {boolean}
  */
-export const isValidCarNamesString = (carNamesString) => {
+export const validateCarNamesString = (carNamesString) => {
   const carNames = carNamesString.split(',');
   const isEveryCarNameShorterThan5Chars = carNames.every(isShorterThan5Chars);
   if (!isEveryCarNameShorterThan5Chars) {
@@ -71,7 +71,7 @@ export const isNaturalNumber = (nbr) => {
  * @param {string} count
  * @returns {boolean}
  */
-export const isValidCountString = (countAsString) => {
+export const validateCountString = (countAsString) => {
   if (!isNaturalNumber(Number(countAsString))) {
     throw new Error('[ERROR] 시도할 횟수는 자연수로 입력해야 합니다.')
   }

@@ -3,7 +3,7 @@ import {
   isNaturalNumber,
   isOnlySpace,
   isShorterThan5Chars,
-  isValidCarNamesString, isValidCountString
+  validateCarNamesString, validateCountString
 } from '../src/validation.js';
 
 describe('유효성 검사 함수', () => {
@@ -35,22 +35,22 @@ describe('유효성 검사 함수', () => {
     })
   })
 
-  describe('isValidCarNamesString', () => {
+  describe('validateCarNamesString', () => {
     test('5자리 이상의 자동차 이름을 포함한 문자열을 입력하면 에러를 반환한다.', () => {
-      expect(() => isValidCarNamesString('foo,bar,foobar')).toThrowError();
-      expect(() => isValidCarNamesString('foobar')).toThrowError();
+      expect(() => validateCarNamesString('foo,bar,foobar')).toThrowError();
+      expect(() => validateCarNamesString('foobar')).toThrowError();
     })
 
     test('공백만으로 이루어진 자통자 이름을 포함한 문자열을 입력하면 에러를 반환한다.', () => {
-      expect(() => isValidCarNamesString('foo, ,bar')).toThrowError();
+      expect(() => validateCarNamesString('foo, ,bar')).toThrowError();
     })
 
     test('중복된 자동차 이름을 포함한 문자열을 입력하면 에러를 반환한다.', () => {
-      expect(() => isValidCarNamesString('foo,foo')).toThrowError();
+      expect(() => validateCarNamesString('foo,foo')).toThrowError();
     })
 
     test('중복된 이름 없이 5자리 이하 자동차 이름만을 포함한 문자열을 입력하면 true를 반환한다.', () => {
-      expect(isValidCarNamesString('foo,bar')).toBe(true);
+      expect(validateCarNamesString('foo,bar')).toBe(true);
     })
   })
 
@@ -72,15 +72,15 @@ describe('유효성 검사 함수', () => {
     })
   })
 
-  describe('isValidCountString', () => {
+  describe('validateCountString', () => {
     test('음의 정수 문자열을 입력하면 에러를 반환한다.', () => {
-      expect(() => isValidCountString('-1')).toThrowError();
+      expect(() => validateCountString('-1')).toThrowError();
     })
     test('양의 소수 문자열을 입력하면 에러를 반환한다.', () => {
-      expect(() => isValidCountString('1.23')).toThrowError();
+      expect(() => validateCountString('1.23')).toThrowError();
     })
     test('자연수 문자열을 입력하면 true를 반환한다.', () => {
-      expect(isValidCountString('123')).toBe(true);
+      expect(validateCountString('123')).toBe(true);
     })
   })
 })
