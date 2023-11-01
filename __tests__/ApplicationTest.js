@@ -65,7 +65,7 @@ describe('자동차 경주 게임', () => {
   describe('입력', () => {
     describe('자동차 이름 입력', () => {
       describe('자동차 이름 길이', () => {
-        test.each([[['helloworld', '1']], [['pobi,helloworld', '1']]])(
+        test.each([[['helloworld']], [['pobi,helloworld']]])(
           '예외 처리',
           async inputs => {
             mockQuestions(inputs);
@@ -89,6 +89,31 @@ describe('자동차 경주 게임', () => {
             expect(logSpy).toHaveBeenCalledWith(
               expect.stringContaining('실행 결과'),
             );
+          },
+        );
+      });
+      describe('자동차 이름 중복', () => {
+        test.each([[['pobi,pobi']], [['pobi,woni,pobi']]])(
+          '중복된 이름 예외 처리',
+          async inputs => {
+            mockQuestions(inputs);
+
+            const app = new App();
+
+            await expect(app.play()).rejects.toThrow('[ERROR]');
+          },
+        );
+      });
+
+      describe('자동차 이름 빈값', () => {
+        test.each([[['']], [['pobi,']], [['pobi,,woni']], [[',woni']]])(
+          '빈값 예외 처리',
+          async inputs => {
+            mockQuestions(inputs);
+
+            const app = new App();
+
+            await expect(app.play()).rejects.toThrow('[ERROR]');
           },
         );
       });
