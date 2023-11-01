@@ -86,7 +86,8 @@ class App {
    * @param {{name: string, position: number}[]} cars 현재 자동차 배열
    * @return {{name: string, position: number}[]} 우승한 자동차 배열 */
   getWinners(cars) {
-
+    const MAX_POSITION = Math.max(...cars.map((car) => car.position));
+    return cars.filter((car) => car.position === MAX_POSITION);
   }
 
   /**
