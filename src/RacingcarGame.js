@@ -44,7 +44,7 @@ class RacingcarGame {
       }
     }
 
-    Console.print(`${GAME_MESSAGE.WINNER}${winner.map((key) => key)}`);
+    Console.print(`${GAME_MESSAGE.WINNER}${winner.join(" ").replace(" ",", ")}`);
   }
 }
 
