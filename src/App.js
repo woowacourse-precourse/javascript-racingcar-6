@@ -39,4 +39,12 @@ class App {
     this.getRandomNumber();
     return this.randomNumber >= 4;
   }
+
+  moveCars() {
+    this.cars.forEach((value, key) => {
+      if (this.isMoveCar()) {
+        this.cars.set(key, value + 1);
+      }
+    });
+  }
 export default App;
