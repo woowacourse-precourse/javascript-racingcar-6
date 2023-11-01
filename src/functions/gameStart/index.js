@@ -41,7 +41,7 @@ export const getPlayNum = async () => {
   return playCount;
 };
 
-export const setInitialDistance = carNameList => {
+export const setInitialResult = carNameList => {
   const racingResult = [];
 
   carNameList.forEach(carName => racingResult.push({ carName, distance: '' }));
