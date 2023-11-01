@@ -56,7 +56,7 @@ class Car {
   // 이동 여부 판단 후 이동 결과 반환
   // 자동차 한대
   move() {
-    const randomNumber = Random.pickNumberInRange(1, 9);
+    const randomNumber = Random.pickNumberInRange(0, 9);
     if (randomNumber >= 4) {
       this.#distance++;
     }
