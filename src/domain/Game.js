@@ -53,7 +53,7 @@ export default class Game {
     }
 
     calculateGameResult(randomNumber, index) {
-        if (randomNumber > this.#goStandard) {
+        if (randomNumber >= this.#goStandard) {
             this.#gameResults[index] = `${this.#gameResults[index] ? this.#gameResults[index] : ''}-`;
         }
     }
