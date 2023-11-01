@@ -18,6 +18,23 @@ class CarRace {
     }
   }
 
+  #getWinners() {
+    const maxPosition = this.racingCars.reduce(
+      (max, rc) => (max < rc.position ? rc.position : max),
+      0
+    );
+
+    return this.racingCars
+      .filter((rc) => rc.position === maxPosition)
+      .map((rc) => rc.name);
+  }
+
+  printWinners() {
+    MissionUtils.Console.print(
+      `최종 우승자 : ${this.#getWinners().join(', ')}`
+    );
+  }
+
   #initRacingCars(racingCarsInput) {
     return racingCarsInput
       .split(',')
