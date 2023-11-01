@@ -35,10 +35,24 @@ async function inputRoundNumber() {
 }
 
 export function checkNames(carNameList) {
+  if (carNameList.length === 1) {
+    throw new Error("[ERROR] 최소 2개의 자동차 이름을 입력해주세요");
+  }
+
+  const nameSet = new Set();
+
   for (let i = 0; i < carNameList.length; i++) {
-    if (carNameList[i].length > 5) {
+    const carName = carNameList[i];
+
+    if (carName.trim().length === 0 || carName.length > 5) {
       throw new Error("[ERROR] 사용할 수 없는 이름입니다");
     }
+
+    if (nameSet.has(carName)) {
+      throw new Error(`[ERROR] 중복된 자동차 이름을 입력했습니다.`);
+    }
+
+    nameSet.add(carName);
   }
 }
 
