@@ -1,4 +1,9 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
+import {
+  MIN_RANDOM_NUMBER,
+  MAX_RANDOM_NUMBER,
+  FORWARD_THRESHOLD,
+} from "./constants/Racing";
 
 class Car {
   name = "";
@@ -9,7 +14,10 @@ class Car {
   }
 
   static #randomNumGenerate() {
-    const randomNum = MissionUtils.Random.pickNumberInRange(0, 9);
+    const randomNum = MissionUtils.Random.pickNumberInRange(
+      MIN_RANDOM_NUMBER,
+      MAX_RANDOM_NUMBER
+    );
     return randomNum;
   }
 
@@ -19,7 +27,7 @@ class Car {
 
   move() {
     const randomNum = Car.#randomNumGenerate();
-    if (randomNum >= 4) this.position += 1;
+    if (randomNum >= FORWARD_THRESHOLD) this.position += 1;
     this.#printPosition();
   }
 }
