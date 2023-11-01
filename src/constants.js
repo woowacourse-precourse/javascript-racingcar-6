@@ -18,6 +18,6 @@ export const ERROR = Object.freeze({
 });
 
 export const REG_EXP = Object.freeze({
-	SPECIAL_CHARACTER: '/[!@#$%^&*()_+{}[]:;<>,.?~\\/-]/',
-	STRING_CHARACTER: '/[a-zA-Z가-힣]/'
+	SPECIAL_CHARACTER: '/[!@#$%^&*()_+{}[]:;<>,.?~\\/-]/g',
+	STRING_CHARACTER: '/[a-zA-Z가-힣]/g'
 });
