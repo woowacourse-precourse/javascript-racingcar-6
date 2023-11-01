@@ -1,5 +1,5 @@
 export const seperateCarNames = (carNameString) => {
-  const result = carNameString.split(',');
+  const result = carNameString.split(','); // 이름이 ''도 가능. 5자 이하면 되므로.
   result.forEach((carName) => {
     if (carName.length > 5) {
       throw Error(
