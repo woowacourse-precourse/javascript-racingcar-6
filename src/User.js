@@ -18,6 +18,11 @@ export default class User {
     this.setState({ ...this.state, carList });
   }
 
+  async promptPlayNumber() {
+    const playNumber = Number(await Console.readLineAsync(MESSAGE.PLAY_NUMBER));
+    this.setState({ ...this.state, playNumber });
+  }
+
   validationState(nextState) {
     const { playNumber, carList } = nextState;
 

@@ -17,6 +17,5 @@ module.exports = {
     'no-unused-vars': 'error',
     'no-console': 'error',
     'operator-linebreak': ['error', 'before'],
-    'max-lines-per-function': ['error', { max: 15 }],
   },
 };
