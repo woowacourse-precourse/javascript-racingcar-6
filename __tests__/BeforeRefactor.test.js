@@ -235,4 +235,47 @@ describe("App class", () => {
       expect(moveCount).toBe(3);
     });
   });
+
+  describe("getWinner method", () => {
+    let app;
+    beforeEach(() => {
+      app = new App();
+    });
+  
+    test("단독 우승자 결정하기", () => {
+      const carName = ["pobi", "woni", "jun"];
+      app.makeCar(carName);
+  
+      jest.spyOn(Random, 'pickNumberInRange').mockReturnValueOnce(4)
+        .mockReturnValueOnce(4)
+        .mockReturnValueOnce(4)
+        .mockReturnValueOnce(4)
+        .mockReturnValueOnce(3);
+         
+      app.runRace(3);
+  
+      const winner = app.getWinner();
+      expect(winner).toEqual(["pobi"]);
+    });
+  
+    test("다중 우승자 결정하기", () => {
+      const carName = ["pobi", "woni", "jun"];
+      app.makeCar(carName);
+  
+      jest.spyOn(Random, 'pickNumberInRange').mockReturnValueOnce(4)
+        .mockReturnValueOnce(4)
+        .mockReturnValueOnce(4)
+        .mockReturnValueOnce(4)
+        .mockReturnValueOnce(4)
+        .mockReturnValueOnce(4)
+        .mockReturnValueOnce(4)
+        .mockReturnValueOnce(4)
+        .mockReturnValueOnce(4);
+  
+      app.runRace(3);
+  
+      const winner = app.getWinner();
+      expect(winner).toEqual(["pobi", "woni", "jun"]);
+    });
+  });  
 });
