@@ -1,6 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
-import { MESSAGE } from "../src/constants";
-import { Input } from "../src/interface/Input";
+import { MESSAGE } from "../../src/constants";
+import { Input } from "../../src/interface/Input";
 
 test("입력", async ()=> {
     const placeHolder = MESSAGE.CAR_NAME.INPUT;
