@@ -8,7 +8,7 @@ class RacingGame {
 
   #round;
 
-  #result = RACING_GAME.result.default;
+  #result = [];
 
   constructor({ cars = [], round = RACING_GAME.round.default }) {
     Validator.isDuplicateCarName(cars.map((car) => car.getName()));
