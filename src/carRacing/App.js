@@ -13,7 +13,8 @@ class App {
 
     const carObjects = this.generateCarObjects(carNames);
     this.startRace(carObjects, roundCount);
-    const winner = this.getWinners(carObjects);
+    const winnerList = this.getWinners(carObjects);
+    this.printGameResults(winnerList);
   }
 
   async enterGameBaseSetting() {
@@ -88,25 +89,35 @@ class App {
   printRaceStatus(carObjects) {
     Console.print("");
     carObjects.forEach((car, index) => {
-      Console.print(`${car.name}: ${"-".repeat(car.position)}`);
+      Console.print(`${car.name} : ${"-".repeat(car.position)}`);
     });
   }
 
   getWinners(carObjects) {
-    let winner = [];
+    let winnerList = [];
 
     const maxPosition = Math.max(...carObjects.map((car) => car.position));
 
-    winner = F.go(
+    if (maxPosition === 0) throw new Error("[ERROR] 우승자가 없습니다.");
+
+    winnerList = F.go(
       carObjects,
       F.filter((car) => car.position === maxPosition),
       F.map((car) => car.name),
     );
 
-    return winner;
+    return winnerList;
   }
 
-  printGameResults() {}
+  printGameResults(winnerList) {
+    if (winnerList.length === 1) {
+      Console.print("");
+      Console.print(`최종 우승자 : ${winnerList[0]}`);
+    } else {
+      Console.print("");
+      Console.print(`최종 우승자 : ${winnerList.join(", ")}`);
+    }
+  }
 }
 
 export default App;
