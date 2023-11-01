@@ -8,8 +8,8 @@ class Play {
         carList.forEach((car) => {
             const RACE_TIMES = MissionUtils.Random.pickNumberInRange(0, 9);
 
-            if (RACE_TIMES > 3) {
-                car.move(); // 3초과 1칸 전진
+            if (RACE_TIMES >= 4) {
+                car.move(); // 4이상 1칸 전진
             }
             const MOVES = '-'.repeat(car.moves);
 
