@@ -1,6 +1,7 @@
 import { getCarNames, getAttemptCount } from "../views/InputView";
 import { checkValidInput, checkValidCount } from "../models/CheckValidInput";
 import createCars from "../models/CreateCars";
+import { runRace } from "../models/RunRace";
 
 export const startGame = async () => {
     //자동차 이름 입력 받고 유효성 검사
@@ -12,4 +13,12 @@ export const startGame = async () => {
     checkValidCount(count);
 
     createCars(name, count);
+};
+
+//입력받은 count에 따라 게임진행(반복)
+export const runByCount = (cars, count) => {
+    let carObject = {};
+    for (let round = 0; round < count; round++) {
+      carObject = runRace(cars);
+    }
 };
