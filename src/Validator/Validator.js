@@ -2,13 +2,23 @@ import { MAXIMUM_CHARACTAR } from '../Constant/Constant.js';
 import CustomError from '../CustomError/CustomError.js';
 
 export default class Validator {
-  // 추후분리
-
   static checkValidCarsName(carNames) {
-    carNames.forEach((car) => this.checkStringLength(car));
+    carNames.forEach((car) => {
+      this.checkStringLength(car);
+      this.checkEmpty(car);
+    });
+
+    this.checkDuplicate(carNames);
   }
 
-  // 비었을때, 이름 중복 체크
+  static checkEmpty(value) {
+    if (!value) throw new Error(CustomError.NOT_EMPTY);
+  }
+
+  static checkDuplicate(arr) {
+    const conditionArr = [...new Set(arr.filter((item, idx) => arr.indexOf(item) !== idx))];
+    if (conditionArr[0]) throw new Error(CustomError.NOT_DUPLICATE);
+  }
 
   static checkStringLength(string) {
     if (string.length > MAXIMUM_CHARACTAR) {
@@ -20,6 +30,7 @@ export default class Validator {
     Validator.hasIsNaN(number);
     Validator.hasDecimal(number);
     Validator.hasNegative(number);
+    Validator.checkEmpty(number);
 
     return true;
   }
