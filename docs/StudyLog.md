@@ -362,3 +362,30 @@
   
 - 결론
   - 문자열을 적절하게 정제한 후 숫자로 변환하는 것이 효율적이다
+
+<br>
+
+### 2-3. 시도 횟수 입력 예외 처리
+
+- `includes()`
+  - 문자열이 특정 부분 문자열을 포함하고 있는지 확인하기 위해 사용된다
+  - 지정된 부분 문자열을 포함하면 true, 그렇지 않으면 false 반환
+  - 정규 표현식 사용할 필요 없이 빠르게 확인할 수 있다
+
+    ``` javascript
+    string.includes(searchString, position)
+    ```
+  
+  - searchString - 메인 문자열에서 찾을 부분 문자열
+  - position - 선택 사항, 문자열 내에서 검색을 시작할 위치, 기본값 0
+
+- `Number.isInteger()`
+  - 전달된 값이 정수인지 여부를 결정한다
+  - 값이 정수면 true, 그렇지 않으면 false 반환
+  - 사용자 입력이나 데이터 타입이 다양할 수 있는 데이터를 검증할 때 유용하다
+
+    ``` javascript
+    Number.isInteger(value)
+    ```
+
+  - value - 확인할 값
