@@ -8,8 +8,8 @@ export const ERROR_MSG = {
 };
 
 export const INPUT_MSG = {
-  CAR_NAMES: "자동차 이름을 입력해주세요. (이름은 쉼표(,)로 구분)",
-  RACE_COUNT: "시도할 횟수는 몇 회인가요?",
+  CAR_NAMES: "자동차 이름을 입력해주세요. (이름은 쉼표(,)로 구분)\n",
+  RACE_COUNT: "시도할 횟수는 몇 회인가요?\n",
 };
 
 export const OUTPUT_MSG = {
