@@ -12,7 +12,7 @@ class App {
     Console.print("최종 우승자 : " + finerWiner.join(', '));
   }
 
-//---------------입력-------------------s
+//---------------입력-------------------
   async getCarName() {
     const carsName = await MissionUtils.Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n');
     let carNameArry = String(carsName).split(',');
@@ -63,7 +63,7 @@ class App {
     }
     return false;
   }
-//----------------------------------------------------
+//직진, 정지 판단 ----------------------------------------------------
  
   forwordOrStop() {
     let randomnum = Number(MissionUtils.Random.pickNumberInRange(0, 9));
@@ -90,10 +90,14 @@ class App {
   }
 
   driveOneCar(car, forwordArry) {
-    for (let i = 0; i < car.length ; i++) {
-      forwordArry[i] += this.forwordOrStop(); //foreach도 이렇게 넣으면 되는거 아닐까
-      Console.print(`${car[i]} : ${forwordArry[i]}`);
-    }
+    // for (let i = 0; i < car.length ; i++) {
+    //   forwordArry[i] += this.forwordOrStop(); //foreach도 이렇게 넣으면 되는거 아닐까
+    //   Console.print(`${car[i]} : ${forwordArry[i]}`);
+    // }
+    car.forEach((name, index) => {
+      forwordArry[index] += this.forwordOrStop();
+      Console.print(`${name} : ${forwordArry[index]}`);
+    })
 
     return forwordArry;
   }
