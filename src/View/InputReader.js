@@ -1,17 +1,20 @@
 import { Console } from '@woowacourse/mission-utils';
 import { GAME_MESSAGE } from '../constants/gameMessage.js';
 import OutputView from './OutputView.js';
+import { ERROR_MESSAGE } from '../constants/errorMessage.js';
 
 export default class InputReader {
   async carNames() {
     OutputView.printPadding();
     const userInput = this.#onRead(GAME_MESSAGE.REQUEST.CAR_NAME);
+
     return userInput;
   }
 
   async tryRount() {
     OutputView.printPadding();
     const userInput = this.#onRead(GAME_MESSAGE.REQUEST.TRY_ROUND);
+
     return userInput;
   }
 
@@ -19,14 +22,12 @@ export default class InputReader {
     try {
       const response = await Console.readLineAsync(message);
       if (!isOk(response)) {
-        throw new Error(
-          `[ERROR] 예기치 못한 입력이 들어왔습니다 input :${response}`
-        );
+        throw new Error(ERROR_MESSAGE.VIEW.UNEXPECTED_RESPONSE);
       }
 
       return response;
     } catch (error) {
-      alert(`\n${error.message} 라는 이유로 게임을 종료합니다 T_T`);
+      alert(ERROR_MESSAGE.VIEW.REASON(response, error.message));
       throw error;
     }
   }

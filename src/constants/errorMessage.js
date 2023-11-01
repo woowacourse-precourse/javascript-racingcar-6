@@ -1,3 +1,4 @@
+import { paramType } from '../utils/paramType.js';
 import {
   LIMIT,
   MINIMUM_NUMBER_OF_PEOPLE,
@@ -33,5 +34,10 @@ export const ERROR_MESSAGE = {
       INCLUDE_MATH_SIGN: '부호를 제외한 정수만 입력해주세요 !',
       INVALID_TRY_ROUND_RANGE: `${LIMIT.TRY_ROUND_RANGE.MIN}~${LIMIT.TRY_ROUND_RANGE.MAX} 사이의 숫자만 입력해주세요`,
     },
+  },
+  VIEW: {
+    UNEXPECTED_RESPONSE: '[ERROR] 예기치 못한 입력이 들어왔습니다',
+    REASON: (response, errorMessage) =>
+      `${response} 라는 값이 들어와 \n${errorMessage} 라는 이유로 게임을 종료합니다 T_T`,
   },
 };
