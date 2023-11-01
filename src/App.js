@@ -68,4 +68,26 @@ class App {
 
     Console.print(`최종 우승자 : ${winners.join(', ')}`);
   }
+
+  async play() {
+    const carNames = await Console.readLineAsync(
+      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
+    );
+    this.verifyAndInitCars(carNames);
+
+    const tryOut = await Console.readLineAsync('시도할 회수는 몇회인가요?\n');
+    this.verifyAndSetTryOut(tryOut);
+
+    let round = 0;
+    Console.print('\n실행 결과');
+
+    while (round < this.tryOut) {
+      this.moveCars();
+      this.displayResultSteps();
+      round += 1;
+    }
+
+    this.displayWinner();
+  }
+}
 export default App;
