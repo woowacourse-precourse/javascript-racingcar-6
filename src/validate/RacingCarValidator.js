@@ -1,5 +1,4 @@
-import { DuplicatedError, RacingCarNameError } from "../error/CustomErrors.js";
-import { RetryCountError } from "../error/CustomErrors.js";
+import { DuplicatedError, RacingCarNameError, RetryCountError } from "../error/CustomErrors.js";
 
 class RacingCarValidator {
   #isValidName(input) {

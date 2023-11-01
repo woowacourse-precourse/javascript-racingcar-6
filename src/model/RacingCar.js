@@ -30,7 +30,7 @@ class RacingCar {
     const stringDisplacement = RACINGCAR_DISPLACEMENT.repeat(this.#displacement);
     const state = `${this.#name} : ${stringDisplacement}`;
 
-    return state
+    return state;
   }
 }
 
