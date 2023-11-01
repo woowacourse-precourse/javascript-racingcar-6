@@ -1,6 +1,7 @@
 import { Cars } from './Cars.js';
 import { getGreatestNumber } from '../utils.js';
 import { printResult } from '../output/result.js';
+import { Output } from '../interface/Output.js';
 
 export class Race {
   #tryInput;
@@ -14,9 +15,13 @@ export class Race {
 
   start() {
     let count = 0;
+    Output('');
+    Output('실행 결과');
+
     while (count < this.#tryInput) {
       count += 1;
       this.#cars.move();
+      Output('');
     }
   }
 
