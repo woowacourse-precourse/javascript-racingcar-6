@@ -27,6 +27,7 @@ class App {
       await this.forwardOrStop();
       await this.raceRoundMessage();
     }
+    await this.whoIsWinner();
   }
 
   async validation(carNames) {
@@ -53,7 +54,7 @@ class App {
     });
   }
 
-  whoIsWinner() {
+  async whoIsWinner() {
     // raceResults 의 최대값을 비교해서 우승자를 출력
     const forwardCount = this.raceResults;
     const maxForwardCount = Math.max(...forwardCount);
