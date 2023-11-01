@@ -5,14 +5,11 @@ import CONDITION from "./Constant.js";
 class App {
   async play() {
     const userInput = await getUserInput(message.notifyStarting);
-
     const carNameArray = processInput(userInput);
-    const racingCars = carNameArray.map(element => new RacingCar(element, CONDITION));       
-
+    const racingCars = carNameArray.map(element => new RacingCar(element, CONDITION));     
+    
     let racingRounds = await getUserInput(message.askRounds);
-
     printMessage(message.progress);
-
     while (racingRounds--) {
       racingCars.forEach(racingCar => {
         racingCar.tryMoveForward();
@@ -20,7 +17,7 @@ class App {
       })
       printMessage("");
     }
-    
+
     const winners = pickWinner(racingCars);
     printMessage(message.showWinner + winners);
   }
@@ -28,6 +25,7 @@ class App {
 
 async function getUserInput(message) {
   const input = await Console.readLineAsync(message);
+
   return input
 }
 
@@ -35,6 +33,7 @@ function processInput(input) {
   const userInput = new UserInput(input)
     .splitStringToArrayBy(',')
     .checkIsAllElementsFitCondition(5);
+  
   return userInput.array
 }
 
@@ -46,11 +45,13 @@ class UserInput{
   
   splitStringToArrayBy(splitter) {
     this.array = this.input.split(splitter);
+
     return this
   }
 
   checkIsAllElementsFitCondition(condition) {
     this.array.map(element => this.checkStringLengthBelow(condition, element));
+    
     return this
   }
   
