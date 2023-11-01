@@ -47,6 +47,40 @@ describe('자동차 경주 게임', () => {
     });
   });
 
+  test('최중 우승자 출력 확인', async () => {
+    // given
+    const MOVING_FORWARD = 4;
+    const STOP = 3;
+    const inputs = ['pobi,woni,hi', '2'];
+    const outputs = [
+      'pobi : -',
+      'woni : -',
+      'hi : -',
+      'pobi : --',
+      'woni : --',
+      'hi : -',
+      'pobi, woni',
+    ];
+    const randoms = [
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      MOVING_FORWARD,
+      STOP,
+    ];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    const app = new App();
+    await app.play();
+
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
   test.each([
     [['pobi,javaji']],
     [['pobi,eastjun']],
