@@ -7,6 +7,7 @@ class App {
     const CAR_NAME = userInput.split(',');
     const CAR = CAR_NAME.map(name=>({name, distance: 0}));
     console.log(CAR);
+
   }
 }
 
