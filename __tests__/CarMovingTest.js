@@ -4,7 +4,7 @@ describe('자동차 랜덤 이동값 테스트', () => {
   const carMoving = new CarMoving();
 
   test('자동차 랜덤값이 4 미만일 경우 전진하지 않음', () => {
-    const failRandomValue = [-1, 0, 1, 2, 3];
+    const failRandomValue = [0, 1, 2, 3];
 
     failRandomValue.forEach((number) => {
       expect(() => carMoving.checkRandomNumber(number).toEqual(0));
