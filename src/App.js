@@ -14,6 +14,9 @@ class App {
     );
     return tryCount;
   }
+  makeCar(carName) {
+    return carName.map((name) => ({ name, position: 0 }));
+  }
 }
 
 export default App;
