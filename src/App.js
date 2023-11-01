@@ -49,28 +49,36 @@ class App {
     return Random.pickNumberInRange(0, 9);
   }
 
-  runRaceAndRoundPrint(carList, tryCount) {
-    const DASH = '-';
-    const roundResult = carList.reduce((a, c) => {
-      a[c] = 0;
-      return a;
-    }, {});
+  initializeRoundResult(carList) {
+    return Object.fromEntries(carList.map(carName => [carName, 0]));
+  }
 
-    Console.print(MESSAGES.RESULT_VIEW);
+  runSingleRound(carList, roundResult) {
+    for (const carName of carList) {
+      this.getRandomNumber() >= 4 && roundResult[carName]++;
+    }
+  }
+
+  printRoundResults(carList, roundResult) {
+    const DASH = '-';
+    const resultStrings = carList.map(carName => `${carName} : ${DASH.repeat(roundResult[carName])}`);
+    Console.print(resultStrings.join('\n'));
+    Console.print('');
+  }
+
+  runRaceAndRoundPrint(carList, tryCount) {
+    const roundResult = this.initializeRoundResult(carList);
     for (let round = 1; round <= tryCount; round++) {
-      carList.forEach(carName => {
-        this.getRandomNumber() >= 4 && (roundResult[carName] += 1);
-        Console.print(`${carName} : ${DASH.repeat(roundResult[carName])}`);
-      });
-      Console.print('');
+      this.runSingleRound(carList, roundResult);
+      this.printRoundResults(carList, roundResult);
     }
     this.roundResult = roundResult;
   }
 
   getRaceResult(result) {
-    const max = Math.max(...Object.values(result));
+    const maxScore = Math.max(...Object.values(result));
     const winner = Object.entries(result)
-      .filter(v => v[1] === max)
+      .filter(v => v[1] === maxScore)
       .map(v => v[0]);
     Console.print(`최종 우승자 : ${winner}`);
   }
@@ -84,6 +92,7 @@ class App {
     const userInputRoundCount = await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
     this.validateRoundCount(userInputRoundCount);
 
+    Console.print(MESSAGES.RESULT_VIEW);
     this.runRaceAndRoundPrint(this.carNames, this.tryCount);
     this.getRaceResult(this.roundResult);
   }
