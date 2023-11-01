@@ -10,8 +10,11 @@ export default class Car {
 
   #DISTANCE_CONDITION = 4;
 
+  static allCars = [];
+
   constructor(carName) {
     this.#carName = carName;
+    Car.allCars.push(this);
   }
 
   moveCar() {
@@ -35,5 +38,14 @@ export default class Car {
       distancePicture += Painter.draw();
     }
     MissionUtils.Console.print(`${this.#carName} : ${distancePicture}`);
+  }
+
+  getCarName() {
+    return this.#carName;
+  }
+
+  static versusCarDistance() {
+    const maxDistance = Math.max(...Car.allCars.map((car) => car.#distance));
+    return Car.allCars.filter((car) => car.#distance === maxDistance);
   }
 }

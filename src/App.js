@@ -15,6 +15,8 @@ class App {
 
   #cars;
 
+  #winners;
+
   async play() {
     this.#carNames = await this.#receiver.receiveCarNames();
 
@@ -37,6 +39,12 @@ class App {
         car.getCarInfomation();
       });
     }
+
+    this.#winners = Car.versusCarDistance().map((car) => car.getCarName());
+
+    Combiner.joinArray(this.#winners);
+
+    Printer.printWinner(this.#winners);
   }
 }
 
