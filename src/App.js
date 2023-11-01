@@ -15,8 +15,15 @@ class App {
     );
     this.validateNames(names); //이름의 유효성 검사하기
     this.carNames = names.split(","); //쉼표 기준으로 나누기
+
+    const tries = await MissionUtils.Console.readLineAsync(
+      "시도할 횟수는 몇회인가요? "
+    );
+    this.validateTries(tries);
+    this.tries = parseInt(tries, 10);
   }
 
+  //이름 유효성 검사하기
   validateNames(names) {
     const nameList = names.split(","); //쉼표로 구분하여 배열에 넣기
 
@@ -30,6 +37,17 @@ class App {
 
     if (new Set(nameList).size !== nameList.length) {
       throw new Error("[ERROR] 중복된 자동차 이름이 있습니다.");
+    }
+  }
+
+  //횟수 유효성 검사하기
+  validateTries(tries) {
+    if (isNaN(tries)) {
+      throw new Error("[ERROR] 시도할 횟수는 숫자로 입력해야 합니다.");
+    }
+
+    if (parseInt(tries, 10) < 1) {
+      throw new Error("[ERROR] 시도할 횟수는 1회 이상이어야 합니다.");
     }
   }
 }
