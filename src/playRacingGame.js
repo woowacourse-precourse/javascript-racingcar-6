@@ -12,15 +12,13 @@ const playSingleRound = ({ progress }) => {
 };
 
 const printEachRoundResult = ({ carNames, progress }) => {
-  const result = progress
-    .map((value, index) => {
-      const carName = carNames[index];
-      const dash = '-'.repeat(value);
-      return `${carName} : ${dash}`;
-    })
-    .join('\n');
-
-  printMessage(`${result}\n`);
+  const results = progress.map((value, index) => {
+    const carName = carNames[index];
+    const dash = '-'.repeat(value);
+    return `${carName} : ${dash}`;
+  });
+  results.forEach(result => printMessage(result, '\n'));
+  printMessage('');
 };
 
 const getWinners = ({ carNames, progress }) => {
