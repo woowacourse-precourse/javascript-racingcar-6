@@ -10,5 +10,6 @@ export const ERROR_MESSEAGE = Object.freeze({
   nameSingle : '[ERROR] 게임을 시작하기 위해선 2대 이상의 자동차가 필요합니다.',
   commaMisuse : '[ERROR] 쉼표(,)의 사용이 잘못되었습니다.',
   attempt : '[ERROR] 올바른 숫자 형식이 아닙니다.',
+  attemptZero : '[ERROR] 게임을 시작하기 위해선 최소 1회 이상의 시도 횟수가 필요합니다.',
   nameDuplication : '[ERROR] 중복된 자동차 이름이 포함되어 있습니다.',
 });

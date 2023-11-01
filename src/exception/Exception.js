@@ -10,8 +10,12 @@ class Exception extends SameName {
   }
 
   attemptNumber(number) {
-    if (isNaN(number)) {
+    if (isNaN(number) || Number(number) < 0) {
       throw new Error(ERROR_MESSEAGE.attempt);
+    }
+
+    if (Number(number) === 0) {
+      throw new Error(ERROR_MESSEAGE.attemptZero);
     }
   } 
 }
