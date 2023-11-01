@@ -21,18 +21,18 @@ export class Race {
   }
 
   end() {
-    const greatestPosition = this.getGreatestPosition();
-    const winners = this.getWinners(greatestPosition);
+    const greatestPosition = this.getGreatestPosition(this.#cars.getPositions());
+    const winners = this.getWinners(this.#cars, greatestPosition);
 
     printResult.final(winners);
   }
 
-  getGreatestPosition() {
-    return getGreatestNumber(this.#cars.getPositions());
+  getGreatestPosition(positions) {
+    return getGreatestNumber(positions);
   }
 
-  getWinners(greatestPosition) {
-    return this.#cars
+  getWinners(cars, greatestPosition) {
+    return cars
       .getList()
       .filter((car) => car.getPosition() === greatestPosition)
       .map((car) => car.getName());
