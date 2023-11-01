@@ -56,10 +56,16 @@ class App {
         return cars.filter(item => item.distanceDriven === checkingWinners)
     }
 
+    printWinners(winners) {
+        const { print } = MissionUtils.Console;
+        print(`최종우승자 : ${winners.map(winner => winner.name).join(',')}`);
+    }
+
     async play() {
         const racingCarList = await this.setRacingList()
         const result = await this.playRacingGame(racingCarList)
-
+        const winners = this.checkingWinner(result)
+        this.printWinners(winners)
 
     }
 }
