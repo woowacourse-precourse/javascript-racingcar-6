@@ -48,8 +48,48 @@ describe("자동차 경주 게임", () => {
 
   test.each([
     [["pobi,javaji"]],
-    [["pobi,eastjun"]]
+    [["pobi,eastjun"]],
+    [[""]],
+    [["pobi,,hyeong"]],
+    [["hyeong,"]],
+    [["hyeong, ,min"]],
   ])("이름에 대한 예외 처리", async (inputs) => {
+    // given
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow("[ERROR]");
+  });
+
+  test("시도 횟수에 공백 입력 예외 처리", async () => {
+    const inputs = ["hyeong,min", ""];
+    // given
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow("[ERROR]");
+  });
+
+  test("시도 횟수에 음수 입력 예외 처리", async () => {
+    const inputs = ["hyeong,min", "-40"];
+    // given
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow("[ERROR]");
+  });
+
+  test("시도 횟수에 소수점 입력 예외 처리", async () => {
+    const inputs = ["hyeong,min", "1.23"];
     // given
     mockQuestions(inputs);
 
