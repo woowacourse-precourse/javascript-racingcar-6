@@ -26,8 +26,15 @@ class App {
 
   async receiveGameCount() {
     const gameCountInput = await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
+    this.validateGameCountInput(gameCountInput)
     const gameCount = parseInt(gameCountInput, 10);
     return gameCount;
+  }
+
+  validateGameCountInput(gameCountInput) {
+    if (isNaN(gameCountInput)){
+      throw new Error("[ERROR] 숫자 형식의 입력이 아닙니다.");
+    }
   }
 
   async play() {
