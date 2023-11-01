@@ -44,13 +44,14 @@
 ## 📚상세 기능 구현
 
 1. 자동차 이름 ',' 기준으로 분리 저장
-    - ~~이름을 저장할 때 형식은 객체형태로 저장하여 key-value 형식을 가지도록 한다.~~ -> for-in 문을 써서 컨벤션에서 어긋남
+    -  for-in 문을 써서 컨벤션에서 어긋남
     - ','을 기준으로 분리한 이름으로 Car 객체를 생성한다.
 
 2. 자동차 이름 입력 값 유효성 검사
     - checkLessThanFive 함수: some 메서드를 통하여 입력으로 들어온 이름들의 길이가 하나라도 5보다 크다면 throw 에러처리
     - checkDuplicated 함수: set을 이용하여 중복된 값이 throw 에러처리
     - checkHasSpace 함수: 입력으로 받은 이름에 공백이 있으면 throw 에러처리
+    - checkNullName 함수: 입력으로 받은 이름이 공백이면 throw 에러처리
 
 3. 반복할 횟수 입력과 유효성 검사
     - checkValidNumber 함수: isNaN 메서드를 이용하여 숫자인지 확인 및 0보다 큰 숫자인지 확인
