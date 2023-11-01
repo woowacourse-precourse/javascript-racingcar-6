@@ -10,14 +10,21 @@ class App {
     );
     let carNameArray = carNameInput.split(",");
     let cars = carNameArray.map((name) => new Car(name));
+    let rank = {};
 
+    Console.print("\n실행 결과");
     for (let i = 0; i < tryNumberInput; i++) {
-      Console.print("\n실행 결과");
       cars.map((car) => {
         let count = car.drive();
         Console.print(`${car.name} : ${"-".repeat(count)}`);
+        rank[car.name] = count;
       });
+      Console.print("");
     }
+
+    let max = Math.max(...Object.values(rank));
+    let winners = Object.keys(rank).filter((key) => rank[key] === max);
+    Console.print(`최종 우승자 : ${winners.join(", ")}`);
   }
 }
 
