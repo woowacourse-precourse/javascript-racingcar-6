@@ -6,7 +6,7 @@ const validation = {
             if (carName.length > MAX_CAR_NAME || carName.length === 0)
               throw new Error(ERROR_CAR_NAME);
         });
-        if (new Set(inputArr).size !== inputArr.length)
+        if (new Set(input).size !== input.length)
             throw new Error(ERROR_CAR_NAME);
         return 0;
       },
