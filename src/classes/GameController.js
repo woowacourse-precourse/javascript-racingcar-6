@@ -5,7 +5,7 @@ import Validation from './Validation';
 
 export default class GameController {
   #game;
-  
+
   #tryNumber;
 
   async play() {
@@ -25,6 +25,7 @@ export default class GameController {
   async game() {
     Output.printExecution();
     while (this.#tryNumber) {
+      this.#game.forward();
       this.#tryNumber -= 1;
     }
   }

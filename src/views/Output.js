@@ -4,5 +4,9 @@ const Output = {
   printExecution() {
     MissionUtils.Console.print(Output.EXECUTION);
   },
+  printExecutionResult(name, forward) {
+    const forwardString = '-'.repeat(forward);
+    MissionUtils.Console.print(`${name} : ${forwardString}`);
+  },
 };
 export default Output;

@@ -1,17 +1,21 @@
 export default class Car {
   #name;
 
-  #forward=0;
+  #forward = 0;
 
   constructor(name) {
     this.#name = name;
   }
 
-  get getForward(){
+  getName() {
+    return this.#name;
+  }
+
+  getForward() {
     return this.#forward;
   }
 
-  set setForward(value){
+  setForward(value) {
     this.#forward = value;
   }
 }
