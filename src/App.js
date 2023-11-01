@@ -38,7 +38,7 @@ class App {
 
   /**
    * 이동 횟수를 입력받습니다
-   * @throw 숫자가 아닌 경우, 0 이하의 숫자 일 경우 예외
+   * @throw 입력된 문자가 양의 정수가 아닐 경우 예외
    * @return {number} 이동 횟수 */
   async getMovingCount() {
     const USER_INPUT = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
@@ -46,6 +46,10 @@ class App {
 
     if (isNaN(RESULT)) {
       throw new Error('[ERROR] 숫자가 잘못된 형식입니다.');
+    }
+
+    if (!Number.isInteger(RESULT)) {
+      throw new Error('[ERROR] 숫자는 정수만 입력해야 합니다.');
     }
 
     if (RESULT <= 0) {
