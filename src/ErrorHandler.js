@@ -8,6 +8,10 @@ const ErrorHandler = {
 
     const cars = carNames.split(',');
 
+    if (cars.some((car) => car.length == 0)) {
+      throw new Error('[ERROR] 차 이름은 1글자 이상이어야 합니다.');
+    }
+
     if (cars.some((car) => car.length > 5)) {
       throw new Error('[ERROR] 차 이름은 5글자를 초과해서는 안됩니다.');
     }
