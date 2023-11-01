@@ -41,7 +41,7 @@ export default class RacingGame {
       RANDOM_NUMBER_RANGE.MAX
     );
 
-    if (this.#refree.isMovalbe(randomNumber)) car.increasePosition();
+    if (this.#refree.isMovable(randomNumber)) car.increasePosition();
   }
 
   _moveCars() {
