@@ -8,10 +8,12 @@ class Car {
     this.#carData = new Map();
   }
 
+  static blank = '';
+
   saveNames(carNames) {
     const carNamesArray = Converter.splitStringToArrayByDelimiter(carNames, SYSTEM.delimiter);
     carNamesArray.forEach((carName) => {
-      this.#carData.set(carName, '');
+      this.#carData.set(carName, Car.blank);
     });
   }
 
