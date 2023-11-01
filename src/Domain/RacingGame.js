@@ -12,12 +12,16 @@ class RacingGame {
 
   constructor({ cars = [], round = RACING_GAME.round.default }) {
     Validator.isDuplicateCarName(cars.map((car) => car.getName()));
+    Validator.validateRound(round);
+
     this.#cars = cars;
     this.#round = {
       total: round,
       current: RACING_GAME.round.default,
     };
   }
+
+  // cars와 round를 validate
 
   startRace() {
     this.#race();

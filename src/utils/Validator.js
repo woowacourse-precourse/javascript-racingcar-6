@@ -17,7 +17,7 @@ const Validator = {
   isDuplicateCarName(carNames) {
     const carNameSet = new Set(carNames);
     if (carNames.length !== carNameSet.size)
-      throw CustomError.RacingGame(ERROR.message.duplicateCarName);
+      throw new CustomError.RacingGame(ERROR.message.duplicateCarName);
   },
 
   validateUserInput(name) {
@@ -43,10 +43,9 @@ const Validator = {
   },
 
   validateRound(round) {
-    const isPositiveInteger =
-      this.validateInteger(round) && round >= RACING_GAME.round.min;
+    this.validateInteger(round);
 
-    if (!isPositiveInteger) {
+    if (Number(round) < RACING_GAME.round.min) {
       throw CustomError.InputView(ERROR.message.invalidRound);
     }
   },
