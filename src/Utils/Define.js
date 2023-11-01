@@ -2,6 +2,7 @@ export const CARNAME_REQUEST_MESSAGE =
   '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)';
 export const COUNT_REQUEST_MESSAGE = '시도할 횟수는 몇 회인가요?';
 export const EACH_ROUND_RESULT = '실행결과';
+export const FINAL_RESULT = '최종 우승자: ';
 export const NAME_MAX = 5;
 export const NAME_MIN = 1;
 export const NUMBER_MIN = 1;

@@ -1,10 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
 
-const OutputView = (message, cars) => {
-  Console.print(message);
-  cars.forEach((car) => {
-    const distanceInDashes = '-'.repeat(car.distance);
-    Console.print(`${car.name} : ${distanceInDashes}`);
-  });
+const OutputView = async (message, result) => {
+  await Console.print(message);
+  await Console.print(result);
 };
 export default OutputView;

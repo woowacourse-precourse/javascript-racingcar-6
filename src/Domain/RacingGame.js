@@ -1,7 +1,7 @@
 import { Random } from '@woowacourse/mission-utils';
 import { NUMBER_MAX, NUMBER_MIN, MOVE_FORWARD } from '../Utils/Define';
 import Car from './Car';
-import { userInput, resultOutput } from '../view/View';
+import { userInput, eachResultOutput, finalResult } from '../view/View';
 
 const createRandomNumber = () => {
   const RandomNumber = Random.pickNumberInRange(NUMBER_MIN, NUMBER_MAX);
@@ -32,9 +32,10 @@ export const startGame = async () => {
         car.moveForward();
       }
     });
-    resultOutput(cars);
+    eachResultOutput(cars);
     roundCount += 1;
   }
+  finalResult(cars);
   return cars;
 };
 

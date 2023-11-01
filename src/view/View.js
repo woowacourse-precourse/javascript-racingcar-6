@@ -2,6 +2,7 @@ import {
   CARNAME_REQUEST_MESSAGE,
   COUNT_REQUEST_MESSAGE,
   EACH_ROUND_RESULT,
+  FINAL_RESULT,
 } from '../Utils/Define';
 import InputView from './InputView';
 import { validatorCarName, validatorGameRound } from '../Utils/Validator';
@@ -20,8 +21,29 @@ const userInput = async () => {
   return [carsNames, gameRound];
 };
 
-const resultOutput = async (cars) => {
-  await OutputView(EACH_ROUND_RESULT, cars);
+const eachResultOutput = async (cars) => {
+  let result = '';
+  cars.forEach((car) => {
+    const distanceInDashes = '-'.repeat(car.distance);
+    result += `${car.name} : ${distanceInDashes}\n`;
+  });
+  await OutputView(EACH_ROUND_RESULT, result);
 };
 
-export { userInput, resultOutput };
+const finalResult = async (cars) => {
+  let maxDistance = 0;
+  let winners = [];
+
+  cars.forEach((car) => {
+    if (car.distance > maxDistance) {
+      maxDistance = car.distance;
+      winners = [car.name];
+    } else if (car.distance === maxDistance) {
+      winners.push(car.name);
+    }
+  });
+  const winnersString = winners.join(', ');
+  await OutputView(FINAL_RESULT, winnersString);
+};
+
+export { userInput, eachResultOutput, finalResult };
