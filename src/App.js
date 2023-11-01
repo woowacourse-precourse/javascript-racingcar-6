@@ -5,6 +5,7 @@ class App {
     this.carNames = [];
     this.carMoveCounts = [];
     this.carNumber;
+    this.maxMoveCounts = 0;
     this.playCount;
   }
   
@@ -18,6 +19,8 @@ class App {
       this.moveCars();
       this.printProgress();
     }
+
+    this.printWinner();
   }
 
   async userInput() {
@@ -43,6 +46,10 @@ class App {
     for (let i=0; i<this.carNumber; i++) {
       if (this.isCarMovable()) {
         this.carMoveCounts[i] += 1;
+        
+        if (this.carMoveCounts[i] > this.maxMoveCounts) {
+          this.maxMoveCounts = this.carMoveCounts[i];
+        }
       }
     }
   }
@@ -58,6 +65,20 @@ class App {
       Console.print(progressString);
     }
     Console.print("");
+  }
+
+  printWinner() {
+    const winnerString = "최종 우승자 : ";
+    let winnerArray = [];
+
+    for (let i=0; i<this.carNumber; i++) {
+      if (this.carMoveCounts[i] == this.maxMoveCounts) {
+        winnerArray.push(this.carNames[i]);
+      }
+    }
+
+    winnerString += winnerArray.join(",");
+    Console.print(winnerString);
   }
 
 }
