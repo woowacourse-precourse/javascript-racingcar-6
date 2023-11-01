@@ -1,4 +1,4 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
+import { Console } from "@woowacourse/mission-utils";
 import Car from "./Car";
 import Play from "./Play.js";
 import CAR from "./constants/constant";
@@ -33,8 +33,7 @@ class View {
   }
 
   checkComma(carNames) {
-    const hasEmty =
-      carNames.includes(" ") || carNames.length === CAR.name.minLength;
+    const hasEmty = carNames.includes(" ") || carNames.length === 0;
 
     if (hasEmty) {
       throw new Error("[ERROR] " + MESSAGE.error.EMPTY_INPUT);
@@ -44,9 +43,7 @@ class View {
   }
 
   async start() {
-    const carNames = await MissionUtils.Console.readLineAsync(
-      MESSAGE.read.CAR_LIST
-    );
+    const carNames = await Console.readLineAsync(MESSAGE.read.CAR_LIST);
     this.checkComma(carNames);
   }
 }
