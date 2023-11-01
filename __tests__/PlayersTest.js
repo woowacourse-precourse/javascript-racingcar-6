@@ -35,4 +35,14 @@ describe('✨ [Players] 클래스 메서드 테스트', () => {
       expect(players.checkMoveCountNotZero(value)).toBeFalsy();
     });
   });
+
+  test('[makeTemplatePlayer] 플레이어 인스턴스를 인자로 받아 name과 count 키를 가진 객체로 반환한다.', () => {
+    const player = new Player('reason');
+    const templatePlayer = players.makeTemplatePlayer(player);
+
+    expect(templatePlayer).toEqual({
+      name: 'reason',
+      count: 0,
+    });
+  });
 });
