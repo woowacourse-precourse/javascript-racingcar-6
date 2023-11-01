@@ -23,7 +23,6 @@ const VALID_LEN = Object.freeze({
 });
 
 const ERROR_MESSAGE = Object.freeze({
-  INVALID_INPUT: `[ERROR] 잘못된 입력입니다.`,
   NAME_DUPLICATE: `[ERROR] 자동차 이름은 중복되지 않아야 합니다.`,
   NAME_LENGTH: `[ERROR] 이름은 1글자 이상, 5글자 이하만 가능합니다.`,
   INVALID_CAR_LENGTH: `[ERROR] 최소 2대 이상의 자동차 이름을 입력해야 합니다.`,
