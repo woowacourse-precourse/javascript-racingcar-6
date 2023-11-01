@@ -18,5 +18,3 @@ export default class TrackCntValidation {
     }
   }
 }
-// 소수에 대한 예외처리 : 1.1
-// -1, 0, ' '. '\t', ' 0',
