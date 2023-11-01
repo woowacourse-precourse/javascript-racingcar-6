@@ -2,14 +2,16 @@ import { Random, Console } from '@woowacourse/mission-utils';
 
 class App {
   constructor() {
-    this.carName = [];
     this.attempts = 0;
+    this.carName = [];
+    this.carPosition = [];
   }
   async play() {
     this.carName = await this.getCarName();
     this.attempts = await this.getAttempts();
 
     Console.print(`\n실행 결과`);
+    this.startRace();
   }
 
   async getCarName() {
@@ -39,6 +41,24 @@ class App {
 
   validateAttempts(num) {
     return !isNaN(num) && 0 < num;
+  }
+
+  startRace() {
+    this.carPosition = Array(this.carName.length).fill('');
+
+    for (let i = 0; i < this.attempts; i++) {
+      this.moveCar();
+    }
+  }
+
+  moveCar() {
+    for (let i = 0; i < this.carName.length; i++) {
+      if (Random.pickNumberInRange(0, 9) >= 4) {
+        this.carPosition[i] += '-';
+      }
+      Console.print(`${this.carName[i]} : ${this.carPosition[i]}`);
+    }
+    Console.print('');
   }
 }
 
