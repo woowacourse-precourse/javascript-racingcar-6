@@ -33,6 +33,7 @@ class Controller {
   }
 
   startRace() {
+    OutputView.printStart();
     for (let count = 0; count < this.#attempt; count++) {
       const randomNumber = makeRandomNumber();
       this.#cars.forEach((car) => {

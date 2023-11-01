@@ -1,3 +1,5 @@
+import { GAME_INT } from '../constants/constants';
+
 class Car {
   constructor(name) {
     this.name = name;
@@ -5,7 +7,7 @@ class Car {
   }
 
   move(randomNumber) {
-    if (randomNumber >= 4) {
+    if (randomNumber >= GAME_INT.MOVE_NUMBER) {
       this.distance += 1;
     }
   }

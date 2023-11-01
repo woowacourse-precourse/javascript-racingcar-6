@@ -1,19 +1,21 @@
+import { ERROR_MESSAGE, GAME_INT } from '../constants/constants';
+
 const validateCarNames = (carNames) => {
   carNames.forEach((name) => {
-    if (name.trim().length < 1 || name.trim().length > 5) {
-      throw new Error('[ERROR] 자동차 이름은 1자 이상 5자 이하여야 합니다.');
+    if (name.trim().length < 1 || name.trim().length > GAME_INT.MAX_LENGTH) {
+      throw new Error(ERROR_MESSAGE.NAME_LENGTH);
     }
   });
 
-  const uniqueCarNames = new Set(carNames);
-  if (uniqueCarNames.size !== carNames.length) {
-    throw new Error('[ERROR] 자동차 이름이 중복되었습니다.');
+  const set = new Set(carNames);
+  if (set.size !== carNames.length) {
+    throw new Error(ERROR_MESSAGE.DUPLICATION);
   }
 };
 
 const validateAttemptNumber = (attemptNumber) => {
-  if (!Number(attemptNumber) || attemptNumber < 1) {
-    throw new Error('[ERROR] 1 이상의 숫자를 입력해야 합니다.');
+  if (isNaN(attemptNumber) || attemptNumber < 1) {
+    throw new Error(ERROR_MESSAGE.NATURAL_NUMBER);
   }
 };
 

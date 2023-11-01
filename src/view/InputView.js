@@ -1,15 +1,15 @@
 import { Console } from '@woowacourse/mission-utils';
+import { INPUT_MESSAGE, GAME_STRING } from '../constants/constants';
 
 const InputView = {
   async readCarName() {
-    const carName = await Console.readLineAsync(
-      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)'
-    );
-    return carName.split(',');
+    const carName = await Console.readLineAsync(INPUT_MESSAGE.CAR_NAME);
+    return carName.split(GAME_STRING.NAME_SPLIT);
   },
+
   async readAttemptNumber() {
     const attemptNumber = await Console.readLineAsync(
-      '시도할 횟수는 몇 회인가요?'
+      INPUT_MESSAGE.ATTEMPT_NUMBER
     );
     return Number(attemptNumber);
   },
