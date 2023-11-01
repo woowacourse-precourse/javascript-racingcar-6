@@ -1,3 +1,5 @@
+import { ERROR } from "../constants/constants";
+
 // @ts-check
 export class InputValidator {
   /**
@@ -9,7 +11,10 @@ export class InputValidator {
    */
   validateCarNamesInput(input) {
     if (input == null || input.includes(" ")) {
-      throw new Error("자동차 이름은 공백 없이 입력해야합니다.");
+      throw new Error(ERROR.BLANK_ERROR);
+    }
+    if (input.charAt(0) === ",") {
+      throw new Error(ERROR.COMMA_START_ERROR);
     }
   }
 

@@ -1,6 +1,6 @@
 // @ts-check
 import { Random } from "@woowacourse/mission-utils";
-import { SYMBOL } from "../constants/constants";
+import { ERROR, SYMBOL } from "../constants/constants";
 import InputView from "../view/inputView";
 import { CarDto } from "./dto/carDto";
 
@@ -36,8 +36,14 @@ class Car {
    *
    */
   #validateCarName(carName) {
-    if (carName.length > 5 || carName.length < 1)
-      throw new Error("자동차 이름은 1~5자리로 입력하세요.");
+    if (carName.length > 5 || carName.length < 1) {
+      throw new Error(ERROR.NAME_RANGE_ERROR);
+    }
+
+    const carSet = new Set(carName);
+    if (carSet.size !== carName.length) {
+      throw new Error(ERROR.NAME_DUPLICATION_ERROR);
+    }
   }
 
   /**
