@@ -11,14 +11,8 @@ const mockInput = (inputs) => {
   });
 };
 
-let input;
-
 beforeAll(() => {
   Console.readLineAsync = jest.fn();
-});
-
-beforeEach(() => {
-  input = new Input();
 });
 
 afterEach(() => {
@@ -32,7 +26,7 @@ describe('값 입력 테스트', () => {
     Console.readLineAsync.mockResolvedValue('pobi,woni');
 
     // when
-    await input.getCarNames();
+    await Input.getCarNames();
 
     // then
     expect(Console.readLineAsync).toHaveBeenCalledWith(expectedMessage);
@@ -46,7 +40,7 @@ describe('값 입력 테스트', () => {
     mockInput(userInput);
 
     // then
-    await expect(input.getCarNames()).resolves.toEqual(['pobi', 'woni']);
+    await expect(Input.getCarNames()).resolves.toEqual(['pobi', 'woni']);
   });
 
   test('5자 초과인 경우에 대한 예외 처리', async () => {
@@ -57,7 +51,7 @@ describe('값 입력 테스트', () => {
     mockInput(userInput);
 
     // then
-    await expect(input.getCarNames()).rejects.toThrow('[ERROR]');
+    await expect(Input.getCarNames()).rejects.toThrow('[ERROR]');
   });
 
   test('이름이 중복되는 경우에 대한 예외 처리', async () => {
@@ -68,7 +62,7 @@ describe('값 입력 테스트', () => {
     mockInput(userInput);
 
     // then
-    await expect(input.getCarNames()).rejects.toThrow('[ERROR]');
+    await expect(Input.getCarNames()).rejects.toThrow('[ERROR]');
   });
 
   test('이름이 없는 경우에 대한 예외 처리', async () => {
@@ -79,7 +73,7 @@ describe('값 입력 테스트', () => {
     mockInput(userInput);
 
     // then
-    await expect(input.getCarNames()).rejects.toThrow('[ERROR]');
+    await expect(Input.getCarNames()).rejects.toThrow('[ERROR]');
   });
 
   test('공백 제거', async () => {
@@ -90,7 +84,7 @@ describe('값 입력 테스트', () => {
     mockInput(userInput);
 
     // then
-    await expect(input.getCarNames()).resolves.toEqual(['pobi', 'woni', 'jason', 'ryan']);
+    await expect(Input.getCarNames()).resolves.toEqual(['pobi', 'woni', 'jason', 'ryan']);
   });
 
   test('빈 자동차 이름이 있는 경우 예외 처리', async () => {
@@ -101,7 +95,7 @@ describe('값 입력 테스트', () => {
     mockInput(userInput);
 
     // then
-    await expect(input.getCarNames()).rejects.toThrow('[ERROR]');
+    await expect(Input.getCarNames()).rejects.toThrow('[ERROR]');
   });
 });
 
@@ -112,7 +106,7 @@ describe('시도 횟수 입력 테스트', () => {
     Console.readLineAsync.mockResolvedValue('5');
 
     // when
-    await input.getTrialCount();
+    await Input.getTrialCount();
 
     // then
     expect(Console.readLineAsync).toHaveBeenCalledWith(expectedMessage);
@@ -126,7 +120,7 @@ describe('시도 횟수 입력 테스트', () => {
     mockInput(userInput);
 
     // then
-    await expect(input.getTrialCount()).resolves.toEqual(5);
+    await expect(Input.getTrialCount()).resolves.toEqual(5);
   });
 
   test('시도 횟수가 숫자가 아닌 경우 예외 처리', async () => {
@@ -137,7 +131,7 @@ describe('시도 횟수 입력 테스트', () => {
     mockInput(userInput);
 
     // then
-    await expect(input.getTrialCount()).rejects.toThrow('[ERROR]');
+    await expect(Input.getTrialCount()).rejects.toThrow('[ERROR]');
   });
 
   test('시도 횟수가 음수인 경우 예외 처리', async () => {
@@ -148,7 +142,7 @@ describe('시도 횟수 입력 테스트', () => {
     mockInput(userInput);
 
     // then
-    await expect(input.getTrialCount()).rejects.toThrow('[ERROR]');
+    await expect(Input.getTrialCount()).rejects.toThrow('[ERROR]');
   });
 
   test('시도 횟수가 소수인 경우 예외 처리', async () => {
@@ -159,7 +153,7 @@ describe('시도 횟수 입력 테스트', () => {
     mockInput(userInput);
 
     // then
-    await expect(input.getTrialCount()).rejects.toThrow('[ERROR]');
+    await expect(Input.getTrialCount()).rejects.toThrow('[ERROR]');
   });
 
   test('시도 횟수가 없는 경우 예외 처리', async () => {
@@ -170,7 +164,7 @@ describe('시도 횟수 입력 테스트', () => {
     mockInput(userInput);
 
     // then
-    await expect(input.getTrialCount()).rejects.toThrow('[ERROR]');
+    await expect(Input.getTrialCount()).rejects.toThrow('[ERROR]');
   });
 
   test('시도 횟수가 0인 경우 예외 처리', async () => {
@@ -181,6 +175,6 @@ describe('시도 횟수 입력 테스트', () => {
     mockInput(userInput);
 
     // then
-    await expect(input.getTrialCount()).rejects.toThrow('[ERROR]');
+    await expect(Input.getTrialCount()).rejects.toThrow('[ERROR]');
   });
 });
