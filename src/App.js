@@ -37,8 +37,24 @@ class App {
         print('\n')
     }
 
+    async playRacingGame(cars) {
+        const { print, readLineAsync } = MissionUtils.Console
+        const playCount = await readLineAsync("시도할 횟수는 몇 회인가요?\n")
+
+        print("실행결과")
+        for(let i = 0; i < playCount; i++){
+            this.addDistanceDriven(cars)
+            //출력부분
+            this.writeDrivenLine(cars)
+        }
+        return cars
+    }
+
 
     async play() {
+        const racingCarList = await this.setRacingList()
+        const result = await this.playRacingGame(racingCarList)
+
 
     }
 }
