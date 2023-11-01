@@ -1,4 +1,4 @@
-import { printMessage } from "../utils/console/printMessage.js";
+import { Console } from "@woowacourse/mission-utils"; 
 import { GUIDE_MESSAGE } from "../constants/messages.js";
 import { RACING } from "../constants/carRacing.js";
 
@@ -7,7 +7,7 @@ class OutputView {
 
   // 게임 실행 결과를 출력하기 전 안내 문구 출력
   static printNoticeOfExecutionResult() {
-    printMessage(GUIDE_MESSAGE.NOTICE_OF_EXECUTION_RESULT);
+    Console.print(GUIDE_MESSAGE.NOTICE_OF_EXECUTION_RESULT);
   }
 
   // 게임 실행 결과를 출력
@@ -20,7 +20,7 @@ class OutputView {
       )}\n`;
     });
 
-    printMessage(result);
+    Console.print(result);
   }
 
   // 게임 최종 결과를 출력
@@ -30,7 +30,7 @@ class OutputView {
       GUIDE_MESSAGE.OUTPUT_FINAL_WINNER
     } ${winnerNameArr.join(", ")}`;
 
-    printMessage(finalResult);
+    Console.print(finalResult);
   }
 }
 
