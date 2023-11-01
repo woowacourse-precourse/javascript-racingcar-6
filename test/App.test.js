@@ -5,6 +5,11 @@ import {
   carMoveEmptyArray,
   carMoveQualification,
 } from "../src/gameMain.js";
+import {
+  winnerMovelength,
+  getWinnerCarArray,
+  resultText,
+} from "../src/gameEnd.js";
 
 const mockReadLineAsync = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
