@@ -28,6 +28,20 @@
 
 ## 2. 설치법
 
+- 아래 명령어로 로컬 경로에 폴더 복제
+
+```
+git clone https://github.com/Songhyunseop/javascript-baseball-6.git
+```
+
+<br><br>
+
+- IDE 에서 터미널을 열고 프로젝트 폴더 위치에서 아래 명령어로 패키지 설치
+
+```
+npm install
+```
+
 <br><br><br><br><br><br>
 
 ## 3. 기능 목록
@@ -49,3 +63,17 @@
 
 📗 시도 횟수만큼 반복실행 후 각 자동차의 카운트 수를 비교하여 가장 높은 카운트의 차량을 우승자로 출력
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📕 최고 카운트 차량이 2 이상 겹칠 경우 해당 차량들을 모두 우승자로 출력
+
+<br><br><br><br><br><br>
+
+## 4. 동작 예시
+
+- 게임을 진행할 자동차 입력 시<br>
+
+![자동차입력](https://github.com/woowacourse-precourse/javascript-racingcar-6/assets/124991681/edaba03e-9d87-49d7-ac7d-f6deda435621)
+
+<br><br><br><br>
+
+- 게임 진행 횟수 입력 및 결과 출력 시<br>
+
+![경주횟수 입력](https://github.com/woowacourse-precourse/javascript-racingcar-6/assets/124991681/b6d52ea3-5d3b-4606-80ca-33f1dc4c6ea0)

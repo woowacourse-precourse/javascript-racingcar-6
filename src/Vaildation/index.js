@@ -9,7 +9,6 @@ export const validateCarNameInput = (cars, i) => {
 };
 
 export const validateNoWhiteSpace = (input) => {
-  // 왜 옵셔널을 사용해야만 정상적으로 테스트가 되는 건지 ?
   if (input?.trim() === "") throw new Error(ERROR.WHITESPACE);
 
   return input;
@@ -26,6 +25,5 @@ export const validateNumberLength = (input) => {
 };
 
 export const validateDuplicate = (input) => {
-  // 왜 옵셔널을 사용해야만 정상적으로 테스트가 되는 건지 ?
   if (new Set(input).size !== input?.length) throw new Error(ERROR.DUPLICATE);
 };

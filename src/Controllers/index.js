@@ -41,19 +41,19 @@ class Controllers {
   }
 
   repeatCarRacing(init, cars, tryTime) {
-    let moveResult = init;
+    let movePoint = init;
 
     for (let i = 0; i < tryTime; i++) {
-      moveResult = this.Model.calculateCarMovePoint(moveResult);
+      movePoint = this.Model.calculateCarMovePoint(movePoint);
 
       cars?.forEach((el) => {
-        const moved = this.Model.repeatMessage("-", moveResult[el]);
+        const moved = this.Model.repeatMessage("-", movePoint[el]);
         this.Views.printRacingResult({ el, moved });
       });
       this.Views.printCustomMessage(""); // 각 레이싱 반복 마다 구간 구별을 위한 출력
     }
 
-    return moveResult;
+    return movePoint;
   }
 
   selectWinner(result) {
