@@ -3,11 +3,10 @@ import initGame from "./initGame.js";
 import { messages } from "../output/messages.js";
 import { Console, Random } from "@woowacourse/mission-utils";
 
-export default async function playGame(){
+export default async function playGame() {
   // 초기 설정
   const [carScores, totalRaceCount] = await initGame();
-
-    
+  
   // 게임 진행
   Console.print(messages.EACH_RACE_RESULT);
   for (let i = 0; i < totalRaceCount; i++) {
@@ -35,6 +34,6 @@ const playOneRace = (carScores) => {
 
   // 진행 사항 출력
   carScores.forEach((car) => {
-    Console.print(`${car.name} : ${messages.HYPHEN.repeat(car.score)}`);
+    Console.print(`${ car.name } : ${ messages.HYPHEN.repeat(car.score) }`);
   })
-}
+};

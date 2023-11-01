@@ -25,7 +25,7 @@ describe("함수 테스트", () => {
     const input1 = "poby"
     const input2 = 4
     const str = "-"
-    const result = `${input1} : ` + str.repeat(input2);
+    const result = `${ input1 } : ` + str.repeat(input2);
 
     expect(result).toEqual("poby : ----");
   });
@@ -34,7 +34,7 @@ describe("함수 테스트", () => {
     const input1 = "poby"
     const input2 = 4
     const str = "-"
-    const result = `${input1} : ${str.repeat(input2)}`;
+    const result = `${ input1 } : ${ str.repeat(input2) }`;
 
     expect(result).toEqual("poby : ----");
   });

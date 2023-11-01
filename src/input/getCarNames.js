@@ -8,6 +8,7 @@ export default async function getCarNames(){
   } catch (error) {
     throw new Error(messages.INPUT_ERROR);
   }    
+
   const carNames = userInput.split(",");
 
   if (isValidCarName(carNames)) {

@@ -1,6 +1,6 @@
 import { messages } from "../output/messages";
 
-export default async function composeResult(carScores){
+export default async function composeResult(carScores) {
   const topScore = findTopScore(carScores);
   const winners = findWinners(carScores, topScore);
 
@@ -9,7 +9,6 @@ export default async function composeResult(carScores){
 
 const findTopScore = (carScores) => {
   let topScore = -1;
-
   carScores.forEach((car) => {
     if (car.score > topScore) {
       topScore = car.score;
