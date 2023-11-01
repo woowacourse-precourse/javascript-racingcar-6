@@ -20,9 +20,16 @@ class App {
     for (const car of cars) {
       if (car.length > 5)
         throw new Error("[ERROR] 자동차 이름은 5자 이하만 가능합니다.");
-      if (this.cars.hasOwnProperty(car))
-        throw new Error("[ERROR] 자동차 이름은 중복 불가능합니다.");
     }
+
+    if (this.isDuplicateCar(cars))
+      throw new Error("[ERROR] 자동차 이름은 중복 불가능합니다.");
+  }
+
+  isDuplicateCar(cars) {
+    const set = new Set(cars);
+
+    if (set.size !== cars.length) return true;
   }
 
   setCarMove(cars) {
@@ -43,7 +50,7 @@ class App {
     if (!Number.isInteger(tryCount)) {
       throw new Error("[ERROR] 정수만 입력 가능합니다.");
     }
-    if (tryCount < 0) throw new Error("[ERROR] 양수만 입력 가능합니다.");
+    if (tryCount < 0) throw new Error("[ERROR] 자연수만 입력 가능합니다.");
   }
 
   setTryCount(input) {
