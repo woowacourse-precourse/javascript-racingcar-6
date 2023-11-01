@@ -17,7 +17,3 @@ export const ERROR = Object.freeze({
 	NO_ZERO: '1 이상을 입력해주세요.'
 });
 
-export const REG_EXP = Object.freeze({
-	SPECIAL_CHARACTER: '/[!@#$%^&*()_+{}[]:;<>,.?~\\/-]/g',
-	STRING_CHARACTER: '/[a-zA-Z가-힣]/g'
-});

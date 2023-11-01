@@ -1,5 +1,5 @@
 //@ts-check
-import { ERROR, REG_EXP } from './constants';
+import { ERROR } from './constants';
 import CustomError from './CustomError';
 
 /**
@@ -23,16 +23,16 @@ export function validateName(inputArr) {
 	return validNameArr;
 }
 
-function containsSpecialCharacter(str) {
-	const regex = new RegExp(REG_EXP.SPECIAL_CHARACTER);
-	//return regex.test(str);
-	return str.match(REG_EXP.SPECIAL_CHARACTER);
-}
-
-function containsCharacters(str) {
-	const regex = new RegExp(REG_EXP.STRING_CHARACTER);
-	//return regex.test(str);
-	return str.match(REG_EXP.STRING_CHARACTER);
+/**
+ * @param {string} str
+ * @return {boolean}}
+ * */
+function doesOtherThanDigitsExists(str) {
+	if (str.replace(/\d/g, '').length > 0) {
+		return true;
+	} else {
+		return false;
+	}
 }
 
 /**	@type {function(string):string} */
@@ -40,16 +40,11 @@ export function validateNumber(input) {
 	if (input === '') {
 		throw new CustomError(ERROR.NAME, ERROR.NO_INPUT);
 	}
-	if (containsSpecialCharacter(input)) {
-		console.log(containsSpecialCharacter(input))
-		throw new CustomError(ERROR.NAME, ERROR.ONLY_NUMBER);
-	}
-	if (containsCharacters(input)) {
-		console.log(containsCharacters(input))
-		throw new CustomError(ERROR.NAME, ERROR.ONLY_NUMBER);
-	}
 	if (input === '0') {
 		throw new CustomError(ERROR.NAME, ERROR.NO_ZERO);
+	}
+	if (doesOtherThanDigitsExists(input)) {
+		throw new CustomError(ERROR.NAME, ERROR.ONLY_NUMBER);
 	}
 	return input;
 }

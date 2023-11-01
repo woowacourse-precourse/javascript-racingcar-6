@@ -37,15 +37,15 @@ describe('숫자 입력값 유효성 테스트', () => {
 		}).toThrow();
 	});
 	test('입력값에 특수문자가 포함됐을 경우', () => {
-		const input = '3.';
+		const input = '..';
 		expect(() => {
 			validateNumber(input);
-		})
+		}).toThrow();
 	});
 	test('입력값에 string이 포함됐을 경우', () => {
-		const input = 'ja3a';
+		const input = 'jj';
 		expect(() => {
 			validateNumber(input);
-		})
+		}).toThrow();
 	});
 });
