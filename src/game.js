@@ -1,5 +1,6 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import { THRESHOLD, MIN, MAX, PROGRESS_BAR } from './constant.js';
+import { THRESHOLD, MIN, MAX } from './constant.js';
+import { INPUT, LINE_BREAK, ANNOUNCEMENT } from './message.js';
 import * as validate from './validate.js';
 
 export default class Game {
@@ -27,9 +28,7 @@ export default class Game {
   }
 
   async createUserList() {
-    const inputName = await MissionUtils.Console.readLineAsync(
-      `경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n`
-    );
+    const inputName = await MissionUtils.Console.readLineAsync(INPUT.USER_LIST);
     const users = inputName.split(',');
 
     if (validate.name(users)) {
@@ -41,7 +40,7 @@ export default class Game {
 
   async enterNumberOfAttempt() {
     const inputNum = await MissionUtils.Console.readLineAsync(
-      `시도할 횟수는 몇 회인가요?\n`
+      INPUT.NUMBER_OF_ATTEMPTS
     );
     if (validate.attemptNum(inputNum)) this.numberOfAttempt = Number(inputNum);
   }
@@ -53,10 +52,10 @@ export default class Game {
   printExecutionResult() {
     for (const user of this.userList) {
       MissionUtils.Console.print(
-        `${user.name} : ${PROGRESS_BAR.repeat(user.forwardNumber)}`
+        ANNOUNCEMENT.EXECUTION_RESULT(user.name, user.forwardNumber)
       );
     }
-    MissionUtils.Console.print('');
+    MissionUtils.Console.print(LINE_BREAK);
   }
 
   selectWinner() {
@@ -69,6 +68,6 @@ export default class Game {
   }
 
   printWinner() {
-    MissionUtils.Console.print(`최종 우승자 : ${this.winner}`);
+    MissionUtils.Console.print(ANNOUNCEMENT.WINNER(this.winner));
   }
 }
