@@ -7,16 +7,11 @@ export default class Car {
     this.#position = 0;
   }
 
-  increasePosition() {
+  moveFoward() {
     this.#position += 1;
   }
 
   getPositionResult() {
-    const positionString = Array.from(
-      { length: this.#position },
-      () => '-'
-    ).join('');
-
-    return { name: this.#name, position: positionString };
+    return { name: this.#name, position: this.#position };
   }
 }

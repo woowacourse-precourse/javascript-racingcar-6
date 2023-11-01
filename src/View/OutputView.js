@@ -3,7 +3,7 @@ import { Console } from '@woowacourse/mission-utils';
 export default class OutputView {
   printRoundResult(roundResult) {
     roundResult.forEach(({ name, position }) => {
-      this.#onPrint(`${name} : ${position}`);
+      this.#onPrint(`${name} : ${'-'.repeat(position)}`);
     });
     OutputView.printPadding();
   }
