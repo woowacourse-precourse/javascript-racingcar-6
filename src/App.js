@@ -15,13 +15,15 @@ class App {
 
         const numberOfCars = carNameArr.length;
 
+        const carStates = Array(numberOfCars).fill("");
         let round = 1;
         while (round <= numberOfGames) {
-            const carStates = this.calculateAndStoreScore(numberOfCars);
+            this.calculateAndStoreScore(carStates);
             const roundResult = this.createRoundResult(carNameArr, carStates);
             Console.print(roundResult);
             round++;
         }
+        
     }
 
     async createCarNameArr() {
@@ -58,8 +60,7 @@ class App {
         }
     }
 
-    calculateAndStoreScore(numberOfCars) {
-        const carStates = new Array(numberOfCars).fill("");
+    calculateAndStoreScore(carStates) {
         for (let i = 0; i < carStates.length; i++) {
             let randomNumber = Random.pickNumberInRange(0, 9);
             if (randomNumber >= 4) {
