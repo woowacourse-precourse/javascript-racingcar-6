@@ -1,11 +1,8 @@
 const findWinners = cars => {
-  const carsStatus = [];
-  const winners = [];
-
-  cars.map(car => carsStatus.push(car.getStatus().length));
-  cars.forEach(car => {
-    if (Math.max(...carsStatus) === car.getStatus().length) winners.push(car.getName());
-  });
+  const maxStatusLength = Math.max(...cars.map(car => car.getStatus().length));
+  const winners = cars
+    .filter(car => car.getStatus().length === maxStatusLength)
+    .map(car => car.getName());
 
   return winners;
 };
