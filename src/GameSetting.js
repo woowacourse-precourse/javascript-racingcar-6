@@ -10,4 +10,20 @@ class GameSetting {
             return [...car_name_array];
         }
     }
+
+    static async getRound() {
+        const round = await Console.readLineAsync(PLAYER_INPUT_MESSAGE.ROUND_PLAY_NUMBER_PROMPT);
+        if(Validation.isRoundValidate(round)){
+            return Number(round);
+        }
+    }
+
+    static async getPlayersData(players) {
+        const playersData = players.map(carName=>({
+            carName, position:0,
+        }))
+        return playersData;
+    }
 }
+
+export default GameSetting;
