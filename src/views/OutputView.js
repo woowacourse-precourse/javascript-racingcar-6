@@ -9,8 +9,8 @@ const OutputView = {
     Console.print('');
   },
 
-  printRoundResult(score) {
-    Console.print(score);
+  printRoundResult(status) {
+    Console.print(status);
   },
 
   printFinalResult(winner) {

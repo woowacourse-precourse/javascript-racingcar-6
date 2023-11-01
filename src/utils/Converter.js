@@ -11,6 +11,7 @@ const Converter = {
     if (!inputValue.includes(',')) carDistanceMap.set(inputValue, '');
     return carDistanceMap;
   },
+
   swapMap(carDistanceMap) {
     const distanceCarMap = new Map();
     carDistanceMap.forEach((value, key) => {

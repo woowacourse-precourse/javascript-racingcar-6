@@ -1,4 +1,4 @@
-import Racing from '../models/Racing.js';
+import RacingGame from '../models/RacingGame.js';
 import Validator from '../models/Validator.js';
 import InputView from '../views/InputView.js';
 import OutputView from '../views/OutputView.js';
@@ -15,7 +15,7 @@ class Controller {
   async progress() {
     await this.settingCarList();
     await this.settingRound();
-    this.racing = new Racing(this.#carList, this.#roundNumber);
+    this.racingGame = new RacingGame(this.#carList, this.#roundNumber);
     this.roundResult();
     this.finalResult();
   }
@@ -35,12 +35,12 @@ class Controller {
   roundResult() {
     OutputView.printEmptystring();
     OutputView.printResultInfo();
-    this.#status = this.racing.race();
+    this.#status = this.racingGame.race();
     OutputView.printRoundResult(this.#status);
   }
 
   finalResult() {
-    this.#winner = this.racing.findWinner();
+    this.#winner = this.racingGame.findWinner();
     OutputView.printFinalResult(this.#winner);
   }
 }

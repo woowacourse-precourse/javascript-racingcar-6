@@ -1,7 +1,7 @@
 import Converter from '../utils/Converter.js';
 import RandomNumberGenerator from '../utils/RandomNumberGenerator.js';
 
-class Racing {
+class RacingGame {
   #carDistanceMap;
 
   #roundNumber;
@@ -47,4 +47,4 @@ class Racing {
   }
 }
 
-export default Racing;
+export default RacingGame;
