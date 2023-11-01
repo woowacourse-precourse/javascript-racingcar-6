@@ -10,8 +10,8 @@ const startGame = async function startGameWithCarNameAndTryCount(CAR_NAME, TRY_C
   while (TRY_COUNT > 0) {
     TRY_COUNT -= 1;
 
-    CAR_NAME.forEach((element, index) => {
-      const RANDOM_NUMBER = getRandomNumber();
+    CAR_NAME.forEach(async (element, index) => {
+      const RANDOM_NUMBER = await getRandomNumber();
 
       if (RANDOM_NUMBER >= 4) {
         GO_COUNT[index] += 1;
@@ -21,7 +21,7 @@ const startGame = async function startGameWithCarNameAndTryCount(CAR_NAME, TRY_C
     });
   }
 
-  printWinner(CAR_NAME, GO_COUNT);
+  return GO_COUNT;
 }
 
 export default startGame;
