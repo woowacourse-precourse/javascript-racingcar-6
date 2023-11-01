@@ -25,9 +25,20 @@ class App {
 
   async userInput() {
     this.carNames = (await Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")).split(",");
-    this.playCount = (await Console.readLineAsync("시도할 횟수는 몇 회인가요?"));
-    this.playCount = Number(this.playCount);
     this.carNumber = this.carNames.length;
+    
+    for (let i=0; i<this.carNumber; i++) {
+      if (this.carNames[i].length > 5) {
+        throw new Error("[ERROR] 자동차 이름은 5자 이하만 가능합니다.")
+      }
+    }
+    
+    this.playCount = (await Console.readLineAsync("시도할 횟수는 몇 회인가요?"));
+    if (isNaN(this.playCount)) {
+      throw new Error("[ERROR] 숫자가 잘못된 형식입니다.")
+    }
+    
+    this.playCount = Number(this.playCount);
   }
 
   isCarMovable() {
