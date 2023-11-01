@@ -10,6 +10,11 @@ describe('전진-정지', () => {
     expect(car.name).toBe('pobi');
   });
 
+  test('공백 제거', () => {
+    const empty = new Car('a d d');
+    expect(empty.name).toBe('add');
+  });
+
   test.each([4, 9])('condition >= 4 / 전진', carCondition => {
     car.move(carCondition);
     expect(car.position).toBe(1);
