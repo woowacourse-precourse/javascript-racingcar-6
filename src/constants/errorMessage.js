@@ -7,8 +7,8 @@ import {
 export const ERROR_MESSAGE = {
   PLAY: {
     MORE_ROUND_THAN_ALLOWED:
-      '입력받은 round 횟수만큼 게임을 진행했습니다. 결과를 확인해주세요',
-    LEFT_ROUND: '게임 round가 전부 실행되지 않았습니다.',
+      '[ERROR] 입력받은 round 횟수만큼 게임을 진행했습니다. 결과를 확인해주세요',
+    LEFT_ROUND: '[ERROR] 게임 round가 전부 실행되지 않았습니다.',
   },
   USER_INPUT: {
     CAR_NAMES: {
@@ -35,7 +35,7 @@ export const ERROR_MESSAGE = {
     },
   },
   VIEW: {
-    UNEXPECTED_RESPONSE: '예기치 못한 입력이 들어왔습니다',
+    UNEXPECTED_RESPONSE: '[ERROR] 예기치 못한 입력이 들어왔습니다',
     REASON: (response, errorMessage) =>
       `${response} 라는 값이 들어와 \n${errorMessage} 라는 이유로 게임을 종료합니다 T_T`,
   },
