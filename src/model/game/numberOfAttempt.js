@@ -1,3 +1,4 @@
+import { Console } from "@woowacourse/mission-utils";
 import { GAME, ERROR } from "../../utils/constants.js";
 
 class NumberOfAttempt {
@@ -7,8 +8,9 @@ class NumberOfAttempt {
   }
 
   validateNumber() {
+    Console.print(this.NumberOfAttempt);
     if (!Number.isInteger(Number(this.NumberOfAttempt))) {
-      throw new Error(ERROR.INVALID_INTEGER);
+      throw new Error(ERROR.INVALID_NUMBER);
     }
     if (this.NumberOfAttempt <= 0) {
       throw new Error(ERROR.INVALID_NEGATIVE_INTEGER);
