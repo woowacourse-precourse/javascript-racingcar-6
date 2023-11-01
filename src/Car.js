@@ -1,4 +1,4 @@
-import generateRandomNumber from './generateRandomNumber.js';
+import randomNumberGenerator from './utils/randomNumberGenerator.js';
 
 class Car {
   constructor(name) {
@@ -7,7 +7,7 @@ class Car {
   }
 
   move() {
-    const couldMove = generateRandomNumber() >= 4;
+    const couldMove = randomNumberGenerator() >= 4;
     if (couldMove) {
       this.position++;
     }

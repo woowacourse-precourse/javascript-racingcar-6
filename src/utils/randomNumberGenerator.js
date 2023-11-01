@@ -1,7 +1,7 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
-const generateRandomNumber = () => {
+const randomNumberGenerator = () => {
   return MissionUtils.Random.pickNumberInRange(0, 9);
 }
 
-export default generateRandomNumber;
+export default randomNumberGenerator;

@@ -1,4 +1,4 @@
-import message from "./Constants.js";
+import message from "../Constants.js";
 
 const Validator = {
   validateCarNames(names) {

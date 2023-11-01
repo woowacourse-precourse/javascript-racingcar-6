@@ -1,7 +1,7 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import InputView from './InputView.js';
 import Car from './Car.js';
-import Validation from './Validator.js';
+import Validation from './utils/Validator.js';
 import message from "./Constants.js";
 
 class App {
