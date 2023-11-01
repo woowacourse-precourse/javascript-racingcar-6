@@ -52,6 +52,7 @@ class RacingCarGame {
 
   #validateAttemptInput(attempt) {
     Validator.checkIsNotNumber(attempt);
+    Validator.checkIsNotInteger(attempt);
     Validator.checkIsNegative(attempt);
     Validator.checkIsNotMoving(attempt);
   }

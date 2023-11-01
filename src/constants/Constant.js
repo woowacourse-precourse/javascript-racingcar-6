@@ -28,4 +28,5 @@ export const ERROR = Object.freeze({
   isNotNumber: '입력값이 숫자가 아닙니다.',
   isNegative: '입력값이 음수입니다. 실행 횟수는 0보다 큰 정수여야 합니다.',
   notMoving: '입력값이 0입니다. 실행 횟수는 0보다 큰 정수여야 합니다.',
+  isNotInteger: '입력값이 정수가 아닙니다. 실행 횟수는 0보다 큰 정수여야 합니다.',
 });

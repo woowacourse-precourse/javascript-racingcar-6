@@ -28,6 +28,12 @@ class Validator {
     }
   }
 
+  static checkIsNotInteger(userInput) {
+    if (!Number.isInteger(Number(userInput))) {
+      throw new ValidationError(ERROR.isNotInteger);
+    }
+  }
+
   static checkIsNegative(userInput) {
     if (Number(userInput) < 0) {
       throw new ValidationError(ERROR.isNegative);
