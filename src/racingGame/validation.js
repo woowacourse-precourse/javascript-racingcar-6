@@ -1,3 +1,5 @@
+import { ERROR } from '../constants/constants';
+
 const validation = {
 	carsNameValid(cars) {
 		const carLength = cars.length < 2;
@@ -7,7 +9,7 @@ const validation = {
 		const duplicate = deduplicateObj.size !== cars.length;
 
 		if (carLength || nameLength || gap || duplicate) {
-			throw new Error('[ERROR]');
+			throw new Error(ERROR.CAR_NAME);
 		}
 	},
 	tryNumberValid(number) {
@@ -15,7 +17,7 @@ const validation = {
 		const negative = number < 1;
 
 		if (notNumber || negative) {
-			throw new Error('[ERROR]');
+			throw new Error(ERROR.TRY_NUMBER);
 		}
 	},
 };

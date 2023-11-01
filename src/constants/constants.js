@@ -4,7 +4,10 @@ export const MESSAGE = {
 	STARTING_TITLE: '\n실행 결과',
 };
 
-export const ERROR = {};
+export const ERROR = {
+	CAR_NAME: '[ERROR] 5자 이내의 각각 다른 자동차 이름을 2대 이상, 영문, 한글 또는 숫자로 입력해주세요.',
+	TRY_NUMBER: '[ERROR] 1 이상의 숫자를 입력해주세요.',
+};
 
 export const RULE = {
 	WIN_SIGN: '-',
