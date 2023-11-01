@@ -1,4 +1,3 @@
-
 import App from '../src/App.js';
 import Initialize from '../src/Initialize.js'
 import { MissionUtils } from '@woowacourse/mission-utils';
