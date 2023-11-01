@@ -108,6 +108,11 @@ class App {
       this.car.forEach(car => car.move());
     }
   }
+
+  getWinner() {
+    const maxDistance = Math.max(...this.car.map(car => car.distance));
+    return this.car.filter(car => car.distance === maxDistance).map(car => car.name);
+  }  
 }
 
 const app = new App();
