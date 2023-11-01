@@ -85,6 +85,8 @@ describe('RacingCarGame 클래스 테스트', () => {
     { input: ['pobi', 'yuna'], output: ERROR.isNotNumber },
     { input: ['pobi', NaN], output: ERROR.isNotNumber },
     { input: ['pobi', ''], output: ERROR.isNotNumber },
+    { input: ['pobi', '3.2'], output: ERROR.isNotInteger },
+    { input: ['pobi', '-1'], output: ERROR.isNegative },
     { input: ['pobi', '0'], output: ERROR.notMoving },
   ])('시도 횟수 입력값에 대한 예외처리 테스트', async ({ input, output }) => {
     // given

@@ -51,11 +51,12 @@ describe('Car 클래스 테스트', () => {
     // given
     mockRandoms(inputs);
 
-    // when
     const car = new Car('mine');
     car.moveForward();
     const anotherCar = new Car('another');
     anotherCar.moveForward();
+
+    // when
     const result = car.compareWith(anotherCar);
 
     // then
@@ -70,11 +71,12 @@ describe('Car 클래스 테스트', () => {
     // given
     mockRandoms(inputs);
 
-    // when
     const car = new Car('mine');
     car.moveForward();
     const anotherCar = new Car('another');
     anotherCar.moveForward();
+
+    // when
     const result = car.compareIsSame(anotherCar);
 
     // then
