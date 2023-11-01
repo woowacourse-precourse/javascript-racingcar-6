@@ -1,0 +1,10 @@
+const CONDITIONS = Object.freeze({
+  TOTAL_ROUND_REGEX: /^[1-9]\d*$/,
+  MIN_CAR_NAME_LENGTH: 1,
+  MAX_CAR_NAME_LENGTH: 5,
+  RANDOM_NUMBER_MIN: 0,
+  RANDOM_NUMBER_MAX: 9,
+  ADVANCE_CONDITION: 4,
+});
+
+export default CONDITIONS;
