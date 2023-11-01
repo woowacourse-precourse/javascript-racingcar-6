@@ -1,5 +1,5 @@
 import { ERROR } from "../../src/constants/constants";
-import { Cars } from "../../src/domain/cars";
+import { Cars } from "../../src/domain/Cars";
 import { CarsDto } from "../../src/domain/dto/CarsDto";
 
 describe("Cars의 비즈니스 로직", () => {
