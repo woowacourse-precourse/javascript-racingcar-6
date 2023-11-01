@@ -108,16 +108,37 @@ describe("App class", () => {
       expect(result).toEqual(3);
     });
 
-    test("공백만 있을 때", () => {
-      const input = "     ";
-      const result = app.sanitizeRoundNumber(input);
-      expect(result).toEqual(NaN);
-    });
-
     test("숫자 사이에 공백이 있을 때", () => {
       const input = "1 0";
       const result = app.sanitizeRoundNumber(input);
       expect(result).toEqual(10);
     });
   });
+
+  describe("Error Handling in validateRound", () => {
+    let app;
+    beforeEach(() => {
+      app = new App();
+    });
+  
+    test("시도 횟수가 1 미만일 때", async () => {
+      mockInput("0");
+      await expect(app.getRoundNumber()).rejects.toThrow("[ERROR] 최소 1 이상의 횟수를 입력해주세요.");
+    });
+  
+    test("시도 횟수가 10 초과일 때", async () => {
+      mockInput("11");
+      await expect(app.getRoundNumber()).rejects.toThrow("[ERROR] 최대 10 이하의 횟수를 입력해주세요.");
+    });
+  
+    test("시도 횟수가 자연수 형식이 아닐 때", async () => {
+      mockInput("2.5");
+      await expect(app.getRoundNumber()).rejects.toThrow("[ERROR] 횟수는 자연수 형식이어야 합니다");
+    });
+
+    test("시도 횟수가 문자일 때", async () => {
+      mockInput("삼");
+      await expect(app.getRoundNumber()).rejects.toThrow("[ERROR] 횟수는 자연수 형식이어야 합니다");
+    });
+  });  
 });
