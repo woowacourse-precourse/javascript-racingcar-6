@@ -16,12 +16,6 @@ const mockRandoms = (numbers) => {
   }, MissionUtils.Random.pickNumberInRange);
 };
 
-const getLogSpy = () => {
-  const logSpy = jest.spyOn(MissionUtils.Console, "print");
-  logSpy.mockClear();
-  return logSpy;
-};
-
 describe("기능목록 테스트", () => {
     test("경주 할 n대의 자동차의 이름을 입력받는 함수 테스트", async () => {
       const input = 'audi,benz,kia';
