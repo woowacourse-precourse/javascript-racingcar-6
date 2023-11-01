@@ -7,10 +7,9 @@ describe("ProgressOutput 테스트", () => {
     const name = "hyuri";
     const hyphen = "-";
     Console.print = jest.fn(); // Console.print 함수를 모의 함수로 대체
-    const progressOutput = new ProgressOutput();
 
     // when
-    progressOutput.gameInProgressPrint(name, hyphen);
+    ProgressOutput.gameInProgressPrint(name, hyphen);
 
     // then
     expect(Console.print).toHaveBeenCalledWith(`${name} : ${hyphen}`);
