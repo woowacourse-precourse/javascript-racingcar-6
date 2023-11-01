@@ -47,5 +47,6 @@ export class Race {
         winner += `, ${car[0]}`;
       }
     });
+    return winner;
   }
 }
