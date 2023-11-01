@@ -48,8 +48,40 @@ describe("자동차 경주 게임", () => {
 
   test.each([
     [["pobi,javaji"]],
-    [["pobi,eastjun"]]
+    [["pobi,eastjun"]],
+    [["pobi,"]],
+    [[""]]
   ])("이름에 대한 예외 처리", async (inputs) => {
+    // given
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow("[ERROR]");
+  });
+
+  test("띄어쓰기에 대한 처리", async () => {
+    // given
+    const inputs = ["pobi , woni", "0"];
+    const output = "최종 우승자 : pobi, woni";
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+    await app.play();
+
+    // then
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+  })
+
+  test.each([
+    [["pobi,java", "-1"]],
+    [["pobi,east", ""]]
+  ])("시도 횟수에 대한 예외 처리", async (inputs) => {
     // given
     mockQuestions(inputs);
 
