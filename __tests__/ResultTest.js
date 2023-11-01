@@ -18,21 +18,22 @@ describe ('App class', () => {
         jest.resetAllMocks();
     });
 
-    test ('우승자가 한 명일 때', () => {
-        app.cars = [new Car('test')];
-        app.cars[0].position = 1;
+    const testCar = (names, positions) => {
+        app.cars = names.map((name, index) => {
+            const car = new Car(name);
+            car.position = positions[index];
+            return car;
+        })
+    }
 
-        MissionUtils.Console.print = jest.fn();
+    test ('우승자가 한 명일 때', () => {
+        testCar(['test'], [1]);
         app.printWinners();
         expect(MissionUtils.Console.print).toHaveBeenCalledWith('최종 우승자 : test');
     })
 
     test ('우승자가 한 명 이상일 때,', () => {
-        app.cars = [new Car('test'), new Car('test2')];
-        app.cars[0].position = 2;
-        app.cars[1].position = 2;
-
-        MissionUtils.Console.print = jest.fn();
+        testCar(['test', 'test2'], [2, 2]);
         app.printWinners();
         expect(MissionUtils.Console.print).toHaveBeenCalledWith('최종 우승자 : test, test2');
     })
