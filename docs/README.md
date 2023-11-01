@@ -86,7 +86,7 @@
   - string ✔️
   - validation ✔️
 - 클래스 테스트
-  - Car
+  - Car ✔️
   - Garage
   - RacingCarGame
 
