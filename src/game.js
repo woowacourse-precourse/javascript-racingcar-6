@@ -1,5 +1,5 @@
-import { Random } from '@woowacourse/mission-utils';
-import {isNaturalNumber, isShorterThan5Chars} from './validation.js';
+import { Random, Console } from '@woowacourse/mission-utils';
+import {isNaturalNumber } from './validation.js';
 
 /**
  * 전진 여부 판단 함수
@@ -62,4 +62,32 @@ export const getWinners = (carsMovementInfo) => {
   });
 
   return winners;
+}
+
+/**
+ * 각 자동차별 전진 여부 배열 정보를 가진 객체를 받아서, 출력 형식에 맞게 반복 출력하는 함수
+ * @param {{[carName: string]: boolean[]}} carsMovementInfo
+ */
+export const printCarsMovementInfo = (carsMovementInfo) => {
+  const carNames = Object.keys(carsMovementInfo);
+  const movingCount = carsMovementInfo[carNames[0]].length;
+
+  const status = {};
+  carNames.forEach(carName => status[carName] = '')
+
+  const result = [];
+
+  Array.from({ length: movingCount }, (_, i) => i).forEach(i => {
+    carNames.forEach(carName => {
+      status[carName] += carsMovementInfo[carName][i] ? '-' : '';
+    })
+
+    const roundResult = [];
+    Object.entries(status).forEach(([carName, currentStatus]) => {
+      roundResult.push(`${carName} : ${currentStatus}`);
+    })
+    result.push(roundResult.join('\n'))
+  })
+
+  Console.print(result.join('\n\n'))
 }

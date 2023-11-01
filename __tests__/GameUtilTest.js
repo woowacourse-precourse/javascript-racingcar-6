@@ -1,5 +1,5 @@
-import { Random } from '@woowacourse/mission-utils';
-import {getCarsMovementInfo, getMovingResult, getWinners, hasMovedForward} from '../src/game.js';
+import { Random, Console } from '@woowacourse/mission-utils';
+import {getCarsMovementInfo, getMovingResult, getWinners, hasMovedForward, printCarsMovementInfo} from '../src/game.js';
 
 describe('게임 유틸', () => {
   beforeEach(() => {
@@ -63,6 +63,28 @@ describe('게임 유틸', () => {
       const count = 5;
       const carsMovementInfo = getCarsMovementInfo(carNames, count);
       expect(getWinners(carsMovementInfo).length).toBeGreaterThanOrEqual(1);
+    })
+  })
+
+  describe('printCarsMovementInfo', () => {
+    function countOccurrences(inputString, search) {
+      // 문자열에서 검색 문자열의 모든 등장 횟수를 세는 함수
+      const regex = new RegExp(search, 'g');
+      const matches = inputString.match(regex);
+      return matches ? matches.length : 0;
+    }
+
+    test('올바른 carsMovementInfo 입력하면, 전진 횟수만큼 carName이 반복 노출되어야 한다', () => {
+      const carNames = ['foo', 'bar'];
+      const count = 5;
+      const carsMovementInfo = getCarsMovementInfo(carNames, count);
+      const printSpy = jest.spyOn(Console, 'print');
+
+      printCarsMovementInfo(carsMovementInfo);
+      const printOutput = printSpy.mock.calls.map((args) => args[0]).join('\n');
+      carNames.forEach(carName => {
+        expect(countOccurrences(printOutput, carName)).toBe(count);
+      })
     })
   })
 
