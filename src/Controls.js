@@ -29,7 +29,7 @@ class Controls {
 
   // user input validators
   static validateCarNames(query) {
-    const carNames = query.split(',');
+    const carNames = query.split(',').map((name) => name.trim());
     return carNames.every((name) => name.length >= 1 && name.length <= 5);
   }
 
