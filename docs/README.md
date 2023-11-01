@@ -87,7 +87,7 @@
   - validation ✔️
 - 클래스 테스트
   - Car ✔️
-  - Garage
+  - Garage ✔️
   - RacingCarGame
 
 ## 기능 세부 설명
