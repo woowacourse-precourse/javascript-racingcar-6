@@ -1,6 +1,7 @@
 import { Console, Random } from "@woowacourse/mission-utils";
 import { ERROR, GUIDE_MESSAGE } from "./Constant/Constant";
 import InputView from "./View/InputView";
+import OutputView from "./View/OutputView";
 
 class App {
   #usercars;
@@ -46,24 +47,6 @@ class App {
     this.#carsgoorstop = [];
   }
 
-  printCurrentStatus() {
-    for (let i = 0; i < this.#usercars.length; ++i) {
-      Console.print(
-        `${this.#usercars[i]} : ${this.printStatProgress(
-          this.#carscurstat[i]
-        )}\n`
-      );
-    }
-  }
-
-  printStatProgress(number) {
-    let progress = "";
-    for (let i = 0; i < number; ++i) {
-      progress += "-";
-    }
-    return progress;
-  }
-
   printWinner() {
     let maxscore = Math.max(...this.#carscurstat);
 
@@ -72,7 +55,7 @@ class App {
       if (score === maxscore) winner.push(this.#usercars[idx]);
     });
 
-    Console.print(`${GUIDE_MESSAGE.WINNER_RESULT} : ${winner.join(", ")}`);
+    OutputView.PrintWinner(winner);
   }
 
   async game() {
@@ -80,11 +63,11 @@ class App {
 
     await InputView.readUserTrynum((input) => this.setTrynum(input));
 
-    Console.print(GUIDE_MESSAGE.GAME_START);
+    OutputView.PrintGameStart();
     let trynum = this.#gametrynum;
     while (trynum--) {
       this.CarsRandomGenerator();
-      this.printCurrentStatus();
+      OutputView.PrintMoveStat(this.#usercars, this.#carscurstat);
       this.ResetCarsRandom();
     }
     this.printWinner();
