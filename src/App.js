@@ -1,14 +1,14 @@
-import Input from './Input';
-import Output from './Output';
-import Validation from './Validation';
-import Car from './Car';
+import Input from './Input.js';
+import Output from './Output.js';
+import Validation from './Validation.js';
+import Car from './Car.js';
 
 class App {
   carNames;
 
   cars = [];
 
-  GameCount;
+  gameCount;
 
   makeCars(carNamesString) {
     const carNamesArr = carNamesString.split(',');
@@ -21,7 +21,7 @@ class App {
 
   setCarsMovements() {
     this.cars.forEach((car) => {
-      car.setMovement(this.GameCount);
+      car.setMovement(this.gameCount);
     });
   }
 
@@ -51,18 +51,20 @@ class App {
 
     const inputGameCount = await Input.getGameCountFromUser();
     Validation.validateGameCountNaturalNumber(inputGameCount);
-    this.GameCount = inputGameCount;
+    this.gameCount = inputGameCount;
 
     this.makeCars(this.carNames);
 
     this.setCarsMovements();
 
-    Output.printGameResult(this.cars, this.GameCount);
+    Output.printGameResult(this.cars, this.gameCount);
 
     const longestMovementLength = this.findLongestMovementLength();
     const finalWinners = this.findFinalWinner(longestMovementLength);
     Output.printFinalWinners(finalWinners);
   }
 }
+const app = new App();
+app.play();
 
 export default App;

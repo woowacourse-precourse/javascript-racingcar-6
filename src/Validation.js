@@ -1,4 +1,4 @@
-import { ERROR } from './Constants';
+import { ERROR } from './Constants.js';
 
 const Validation = {
   validateCarName(userInput) {
@@ -31,7 +31,7 @@ const Validation = {
   },
 
   validateGameCountNaturalNumber(input) {
-    const naturalNumberRegex = /^[1-9]\d*$/; // 1 이상의 숫자만 허용
+    const naturalNumberRegex = /^[1-9]\d*$/;
 
     if (!naturalNumberRegex.test(input)) {
       throw new Error(ERROR.GAME_COUNT_TYPE);

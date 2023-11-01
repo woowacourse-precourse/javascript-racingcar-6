@@ -1,14 +1,14 @@
 import { Console } from '@woowacourse/mission-utils';
-import { MESSAGE } from './Constants';
+import { MESSAGE } from './Constants.js';
 
 const Input = {
   async getCarNamesFromUser() {
-    const userInput = await Console.readLineAsync(`${MESSAGE.INPUT_CAR_NAME}\n`);
+    const userInput = await Console.readLineAsync(MESSAGE.INPUT_CAR_NAME);
     return userInput;
   },
 
   async getGameCountFromUser() {
-    const userInput = await Console.readLineAsync(`${MESSAGE.INPUT_GAME_COUNT}\n`);
+    const userInput = await Console.readLineAsync(MESSAGE.INPUT_GAME_COUNT);
     return userInput;
   },
 };
