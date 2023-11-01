@@ -24,6 +24,7 @@ class App {
     }
   }
 
+  // 함수: 경주 시작
   async startRace(count, arr) {
     for (let k = 0; k < count.length; k++) {
       this.getWinLine(arr);
@@ -61,6 +62,7 @@ class App {
     }
   }
 
+  // 함수: 우승자 이름 가져오기
   async getWinnerName(arr_count, arr_name) {
     const maxNumber = Math.max(...arr_count);
     const maxIndexes = [];
