@@ -53,8 +53,27 @@ class App {
     this.setData(this.car.length);
   }
 
+  goOrStop() {
+    for (let i = 0; i < this.car.length; i++) {
+      const RANDOM_NUMBER = Random.pickNumberInRange(0, 9);
+      if (RANDOM_NUMBER >= 4) this.data[i] += "-";
+    }
+  }
+
+  print() {
+    for (let i = 0; i < this.car.length; i++) {
+      Console.print(`${this.car[i]} : ${this.data[i]}`);
+    }
+    Console.print("");
+  }
+
   async play() {
     await this.initialize();
+    Console.print("실행 결과");
+    for (let i = 0; i < this.attepmt; i++) {
+      this.goOrStop();
+      this.print();
+    }
   }
 }
 
