@@ -46,6 +46,47 @@ describe('자동차 경주 게임', () => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
   });
+  test('공동우승인 경우', async () => {
+    // given
+    const MOVING_FORWARD = 4;
+    const inputs = ['pobi,woni', '1'];
+    const outputs = ['pobi : -', 'woni : -'];
+    const randoms = [MOVING_FORWARD, MOVING_FORWARD];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    // when
+    const app = new App();
+    await app.play();
+
+    // then
+    outputs.forEach(output => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
+  test('단독 우승인 경우', async () => {
+    // given
+    const MOVING_FORWARD = 4;
+    const STOP = 3;
+    const inputs = ['pobi,woni', '1'];
+    const outputs = ['pobi : -'];
+    const randoms = [MOVING_FORWARD, STOP];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    // when
+    const app = new App();
+    await app.play();
+
+    // then
+    outputs.forEach(output => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
 
   test.each([[['pobi,javaji']], [['pobi,eastjun']]])(
     '이름에 대한 예외 처리',
