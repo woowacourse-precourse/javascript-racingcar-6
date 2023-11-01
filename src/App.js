@@ -58,7 +58,7 @@ class App {
   }
   startRace() {
     MissionUtils.Console.print(EXECUTION_ENDS);
-    for (let i = 0; i < this.attempts; i++) {
+    for (let i = 0; i < this.attempts; i += 1) {
       this.goOrStop();
       MissionUtils.Console.print(RACE_RESULT_GAP);
     }
@@ -68,7 +68,7 @@ class App {
     this.arrCarName.map((name, index) => {
       const result = MissionUtils.Random.pickNumberInRange(0, 9);
       if (result >= MIN_MOVE_NUMBER) {
-        this.race[index][1]++;
+        this.race[index][1] += 1;
       }
       MissionUtils.Console.print(
         `${name} : ${RACE_RESULT.repeat(this.race[index][1])}`
