@@ -8,9 +8,11 @@ class App {
     // 자동차 이름 분리하기
     const carNames = inputCarName.split(',');
     const gameResults = [];
+    let win = '';
 
     MissionUtils.Console.print('실행 결과');
     for (let i = 0; i < count; i++) {
+      win = `${win}-`;
       // 랜덤 숫자 생성
       const randomNumbers = [];
       for (let i = 0; i < carNames.length; i++) {
@@ -32,6 +34,15 @@ class App {
       }
       MissionUtils.Console.print('');
     }
+
+    const winner = [];
+    for (let i = 0; i < carNames.length; i++) {
+      if (gameResults[i] === win) {
+        winner.push(carNames[i]);
+      }
+    }
+
+    MissionUtils.Console.print(`최종 우승자 : ${winner}`);
   }
 }
 
