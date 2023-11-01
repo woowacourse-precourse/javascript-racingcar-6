@@ -33,8 +33,8 @@ export async function getCarName() {
 }
 
 export function getCarsMovedCount(names) {
-  const carsMovedCount = {};
-  names.forEach((name) => (carsMovedCount[name] = 0));
+  const carsMovedCount = [];
+  names.forEach((_, nameIndex) => (carsMovedCount[nameIndex] = 0));
 
   return carsMovedCount;
 }

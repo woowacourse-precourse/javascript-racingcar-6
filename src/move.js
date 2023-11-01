@@ -7,13 +7,13 @@ function canMove(number) {
   return true;
 }
 
-function moveCar(name, carsMovedCount) {
+function moveCar(nameIndex, carsMovedCount) {
   const randomNumber = Random.pickNumberInRange(0, 9);
-  if (canMove(randomNumber)) carsMovedCount[name]++;
+  if (canMove(randomNumber)) carsMovedCount[nameIndex]++;
 }
 
 export function moveCars(names, carsMovedCount) {
-  names.forEach((name) => moveCar(name, carsMovedCount));
+  names.forEach((_, nameIndex) => moveCar(nameIndex, carsMovedCount));
 }
 
 function getResultString(count) {
@@ -21,7 +21,7 @@ function getResultString(count) {
 }
 
 export function printResult(names, carsMovedCount) {
-  names.forEach((name) =>
-    Console.print(name + " : " + getResultString(carsMovedCount[name]))
+  names.forEach((name, nameIndex) =>
+    Console.print(name + " : " + getResultString(carsMovedCount[nameIndex]))
   );
 }
