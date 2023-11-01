@@ -45,7 +45,7 @@ export default class App {
     }
   }
   printRoundResult(cars) {
-    Console.print("\n");
+    Console.print("");
     for (const car of cars) {
       Console.print(`${car.name} : ${"-".repeat(car.position)}`);
     }
@@ -64,8 +64,8 @@ export default class App {
     }
   }
   printWinners(winners) {
-    const winnerNumbers = winners.map((_, index) => index + 1).join(", ");
-    Console.print(`\n최종 우승자 : ${winnerNumbers}`);
+    const winnerNames = winners.join(", ");
+    Console.print(`\n최종 우승자 : ${winnerNames}`);
   }
 }
 
