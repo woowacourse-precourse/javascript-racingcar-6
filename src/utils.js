@@ -16,3 +16,12 @@ export const getGreatestNumber = (array) => {
 
   return greatestNumber;
 };
+
+export const numberToHyphen = (number) => {
+  let string = '';
+  for (let i = 0; i < number; i++) {
+    string += '-';
+  }
+
+  return string;
+};
