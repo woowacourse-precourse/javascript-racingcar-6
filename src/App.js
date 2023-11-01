@@ -20,13 +20,17 @@ class App {
 
         const cars = carNames.map((carName) => new Car(carName));
         for (let i = 0; i < tryCount; i++) {
-            Console.print("실행 결과");
+            Console.print("\n실행 결과");
             cars.forEach((car) => car.move());
             cars.forEach((car) => {
-                Console.print(`${car.name}: ${"-".repeat(car.position)}`);
+                Console.print(`${car.name} : ${"-".repeat(car.position)}`);
             });
             Console.print("\n");
         }
+        const maxPosition = Math.max(...cars.map((car) => car.position));
+        const winners = cars.filter((car) => car.position === maxPosition);
+        const winnerNames = winners.map((winner) => winner.name);
+        Console.print(`최종 우승자 : ${winnerNames.join(", ")}`);
     }
 
     async getCarNames() {
