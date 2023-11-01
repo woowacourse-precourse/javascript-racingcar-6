@@ -39,10 +39,12 @@ async function getInput() {
 
 function playGame(chance, carNameList) {
   let runningCars = new Array(carNameList.length).fill(0);
+  let winner = "";
   for (let i = 0; i < chance; i++) {
     updateCars(runningCars);
     printCars(runningCars, carNameList);
   }
+  printWinner(runningCars, carNameList);
 }
 
 function updateCars(runningCars) {
@@ -63,6 +65,17 @@ function printCars(runningCars, carNameList) {
     Console.print(`${carNameList[i]} : ${running}`);
   }
   Console.print(" ");
+
+}
+
+function printWinner(runningCars, carNameList) {
+  const cars = runningCars.map((run, idx) => ({ name: carNameList[idx], run}));
+
+  const maxRunner = Math.max(...cars.map((car) => car.run));
+  const winners = cars.filter((car) => car.run === maxRunner);
+  const result = winners.map((car) => car.name).join(", ");
+  
+  Console.print(`최종 우승자 : ${result}`);
 }
 
 export default App;
