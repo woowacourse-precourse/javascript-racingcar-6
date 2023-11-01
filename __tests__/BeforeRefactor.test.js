@@ -1,5 +1,6 @@
 import App from "../src/App.js";
 import { Console } from "@woowacourse/mission-utils"
+import { Random } from "@woowacourse/mission-utils"
 
 const mockInput = (input) => {
   Console.readLineAsync = jest.fn(() => Promise.resolve(input));
@@ -153,9 +154,9 @@ describe("App class", () => {
       app.makeCar(carName);
 
       expect(app.car).toEqual([
-        { name: "pobi" },
-        { name: "woni" },
-        { name: "jun" }
+        { name: "pobi", distance: 0, move: expect.any(Function), shouldMove: expect.any(Function) },
+        { name: "woni", distance: 0, move: expect.any(Function), shouldMove: expect.any(Function) },
+        { name: "jun", distance: 0, move: expect.any(Function), shouldMove: expect.any(Function) }
       ]);
     });
   });
@@ -178,6 +179,39 @@ describe("App class", () => {
       }
   
       expect(results.size).toBe(10);
+    });
+  });
+  
+  describe("makeCar method movement test", () => {
+    let app;
+    let car;
+    beforeEach(() => {
+        app = new App();
+        const carName = ["testCar"];
+        app.makeCar(carName);
+        car = app.car[0];
+    });
+
+    test("랜덤 숫자가 4 이상이면 전진", () => {
+      jest.spyOn(Random, 'pickNumberInRange').mockReturnValue(4);
+      expect(car.shouldMove()).toBeTruthy();
+
+      jest.spyOn(Random, 'pickNumberInRange').mockReturnValue(5);
+      expect(car.shouldMove()).toBeTruthy();
+
+      jest.spyOn(Random, 'pickNumberInRange').mockReturnValue(9);
+      expect(car.shouldMove()).toBeTruthy(); 
+    });
+
+    test("랜덤 숫자가 4 미만이면 정지", () => {
+      jest.spyOn(Random, 'pickNumberInRange').mockReturnValue(1);
+      expect(car.shouldMove()).toBeFalsy();
+
+      jest.spyOn(Random, 'pickNumberInRange').mockReturnValue(2);
+      expect(car.shouldMove()).toBeFalsy();
+
+      jest.spyOn(Random, 'pickNumberInRange').mockReturnValue(3);
+      expect(car.shouldMove()).toBeFalsy();
     });
   });
 });
