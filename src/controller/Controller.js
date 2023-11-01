@@ -1,5 +1,5 @@
 import Racing from '../models/Racing.js';
-import Validation from '../models/Validation.js';
+import Validator from '../models/Validator.js';
 import InputView from '../views/InputView.js';
 import OutputView from '../views/OutputView.js';
 
@@ -13,7 +13,7 @@ class Controller {
   #winner;
 
   constructor() {
-    this.carRace = new Racing();
+    this.racing = new Racing();
   }
 
   async progress() {
@@ -24,29 +24,26 @@ class Controller {
   }
 
   async settingCarList() {
-    const nameInputValue = await InputView.carList();
-    Validation.inputCar(nameInputValue);
-    this.#carList = nameInputValue;
+    const inputCarNames = await InputView.readCarNames();
+    Validator.carNames(inputCarNames);
+    this.#carList = inputCarNames;
   }
 
   async settingRound() {
-    const roundInputValue = await InputView.round();
-    Validation.inputRound(roundInputValue);
-    this.#roundNumber = Number(roundInputValue);
+    const inputRoundNumber = await InputView.readRoundNumber();
+    Validator.roundNumber(inputRoundNumber);
+    this.#roundNumber = Number(inputRoundNumber);
   }
 
   roundResult() {
     OutputView.printEmptystring();
     OutputView.printResultInfo();
-    this.#status = this.carRace.generateStatus(
-      this.#carList,
-      this.#roundNumber,
-    );
+    this.#status = this.racing.generateStatus(this.#carList, this.#roundNumber);
     OutputView.printRoundResult(this.#status);
   }
 
   finalResult() {
-    this.#winner = this.carRace.findWinner();
+    this.#winner = this.racing.findWinner();
     OutputView.printFinalResult(this.#winner);
   }
 }

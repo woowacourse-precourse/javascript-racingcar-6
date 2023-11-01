@@ -1,5 +1,5 @@
-const Validation = {
-  inputCar(inputValue) {
+const Validator = {
+  carNames(inputValue) {
     if (inputValue === '') throw new Error('[ERROR]');
 
     if (!inputValue.includes(',') && inputValue.length > 5) {
@@ -19,7 +19,7 @@ const Validation = {
     }
   },
 
-  inputRound(inputValue) {
+  roundNumber(inputValue) {
     const stringToNumber = Number(inputValue);
     if (Number.isNaN(stringToNumber)) throw new Error('[ERROR]');
 
@@ -27,4 +27,4 @@ const Validation = {
   },
 };
 
-export default Validation;
+export default Validator;
