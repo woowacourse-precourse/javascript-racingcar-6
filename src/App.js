@@ -1,13 +1,9 @@
-import Car from './Car.js';
+import Game from './Game.js';
 
 class App {
-  #car;
-  constructor() {
-    this.#car = new Car();
-  }
-
   async play() {
-    return this.#car.inputRacers();
+    const game = new Game();
+    game.play();
   }
 }
 
