@@ -4,26 +4,26 @@ import { MESSAGES } from "../Message";
 const { Console } = MissionUtils;
 
 class UserInput {
-  #carNames = [];
-  #tryCount = 0;
+  carNames = [];
+  tryCount = 0;
 
   async inputCarNames() {
     const names = await Console.readLineAsync(MESSAGES.INPUT_CAR_NAMES);
-    this.#carNames = checkCarNames(names);
+    this.carNames = checkCarNames(names);
   }
   async inputTryNumbers() {
     const number = await Console.readLineAsync(MESSAGES.INPUT_TRY_NUMBER);
-    this.#tryCount = checkTryCount(number);
+    this.tryCount = checkTryCount(number);
   }
   async input() {
     await this.inputCarNames();
     await this.inputTryNumbers();
   }
   getCarName() {
-    return this.#carNames;
+    return this.carNames;
   }
   getTryCount() {
-    return this.#tryCount;
+    return this.tryCount;
   }
 }
 
