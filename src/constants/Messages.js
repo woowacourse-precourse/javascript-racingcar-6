@@ -11,16 +11,10 @@ const MESSAGES = Object.freeze({
     '[ERROR] 시도 횟수는 1이상의 자연수만 입력 가능합니다.',
   TOTAL_ROUND_INPUT_ERROR_BLANK:
     '[ERROR] 시도 횟수에 공백은 포함될 수 없습니다.',
-<<<<<<< HEAD
   GENERAL_ERROR: '[ERROR]',
   RESULT_TITLE: '실행 결과',
   ADVANCE: '-',
   WINNER: '최종 우승자 : ',
-=======
-  RESULT: '실행 결과',
-  ADVANCE: '-',
-  WINNER: '최종 우승자: ',
->>>>>>> cd7d214 (style(constants): 모든 줄의 indent size를 2로 수정, trailing comma 추가)
 });
 
 export default MESSAGES;
