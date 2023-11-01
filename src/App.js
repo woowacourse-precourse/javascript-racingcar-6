@@ -27,7 +27,7 @@ class App {
 
   async getMoveCount() {
     const moveCount = await Console.readLineAsync(`${message.GET_MOVE_COUNT}`);
-    if (!isNaN(moveCount)) {
+    if (!isNaN(moveCount) && moveCount > 0) {
       return moveCount;
     } else {
       throw new Error(`${message.ERROR_INVALID_MOVE_COUNT}`);
