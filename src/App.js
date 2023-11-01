@@ -1,19 +1,14 @@
 import { Console, Random } from '@woowacourse/mission-utils';
-
-const INPUT_CAR_NAMES_MSG =
-  '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)';
-const INPUT_ATTEMPT_TIMES_MSG = '시도할 횟수는 몇 회인가요?';
-const INPUT_ERROR_MSG = '[ERROR] 입력 받는 도중 에러가 발생했습니다.';
-const OUTPUT_WINNERS_MSG = '최종 우승자 : ';
+import message from './constants/message';
 
 class App {
   async getCarNameArr() {
-    const carNames = await Console.readLineAsync(INPUT_CAR_NAMES_MSG);
+    const carNames = await Console.readLineAsync(message.inputCarName);
 
     const carNameArr = carNames.split(',');
 
     carNameArr.forEach(carName => {
-      if (carName.length > 5) throw new Error(INPUT_ERROR_MSG);
+      if (carName.length > 5) throw new Error(message.nameError);
     });
 
     return carNameArr;
@@ -21,10 +16,10 @@ class App {
 
   async getAttemptTimes() {
     const attemptTimes = Number(
-      await Console.readLineAsync(INPUT_ATTEMPT_TIMES_MSG),
+      await Console.readLineAsync(message.inputAttemptTimes),
     );
     if (Number.isNaN(attemptTimes)) {
-      throw new Error(INPUT_ERROR_MSG);
+      throw new Error(message.AttemptTimesError);
     }
     return attemptTimes;
   }
@@ -70,7 +65,7 @@ class App {
   }
 
   async printWinner(winners) {
-    Console.print(`${OUTPUT_WINNERS_MSG}` + `${winners.join(', ')}`);
+    Console.print(`${message.winner}` + `${winners.join(', ')}`);
   }
 
   async play() {
