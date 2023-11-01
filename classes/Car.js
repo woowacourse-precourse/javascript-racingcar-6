@@ -1,4 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
+import { printIntermediateResult } from '../utils/view.js';
 
 const HURDLE = 4;
 export default class Car {
@@ -21,6 +22,6 @@ export default class Car {
       (acc, cur) => `${acc}${cur}`,
       '',
     );
-    MissionUtils.Console.print(`${this.name} : ${dashes}`);
+    printIntermediateResult({ name: this.name, dashes: dashes });
   }
 }
