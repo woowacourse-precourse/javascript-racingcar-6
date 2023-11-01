@@ -8,7 +8,7 @@ const MESSAGE = {
   },
   OUTPUT: {
     EXECUTION_RESULT: '\n실행 결과',
-    WINNER: winners => `최종 우승자 : ${winners.join(', ')}\n`,
+    WINNER: winnerNames => `최종 우승자: ${winnerNames.join(', ')}\n`,
     RACING_STATUS: racers =>
       racers
         .map(racer => `${racer.carName} : ${'-'.repeat(racer.move)}`)
@@ -60,10 +60,7 @@ export const output = {
   statesEveryIteration(racers) {
     Console.print(MESSAGE.OUTPUT.RACING_STATUS(racers));
   },
-  winners(racers) {
-    const maxMove = Math.max(...racers.map(racer => racer.move));
-    const winningRacers = racers.filter(racer => racer.move === maxMove);
-    const winnerNames = winningRacers.map(racer => racer.carName);
+  winners(winnerNames) {
     Console.print(MESSAGE.OUTPUT.WINNER(winnerNames));
   },
   executionResult() {
