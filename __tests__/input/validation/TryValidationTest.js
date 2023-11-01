@@ -18,6 +18,6 @@ describe("시도 횟수 입력 유효성 검증", ()=> {
 
     test("입력 값이 있는 지 검증", ()=> {
         const result = ()=> validate.try(empty);
-        expect(result).toThrow(MESSAGE.TRY.ERROR.IS_NOT_INPUT);
+        expect(result).toThrow(MESSAGE.COMMON.ERROR.IS_NOT_INPUT);
     })
 })

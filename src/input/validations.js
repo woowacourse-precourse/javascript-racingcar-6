@@ -14,12 +14,20 @@ const conditions = {
   },
 
   carNames: {
+    isNotInput(inputs) {
+      return Number(inputs[0]) === 0;
+    },
+
     isOverFive(inputs) {
       return inputs.some((input) => input.length > CAR_NAME_LIMIT);
     },
 
     isDuplicated(inputs) {
       return inputs.length !== new Set(inputs).size;
+    },
+
+    isIncludeSpace(inputs) {
+      return inputs.some((input) => Number(input) === 0);
     },
   },
 };
@@ -28,7 +36,7 @@ export const validate = {
   try(input) {
     const { isNotInput, isNotNumber, isMinus } = conditions.try;
     if (isNotInput(input)) {
-      throw new Error(MESSAGE.TRY.ERROR.IS_NOT_INPUT);
+      throw new Error(MESSAGE.COMMON.ERROR.IS_NOT_INPUT);
     }
     if (isNotNumber(input)) throw new Error(MESSAGE.TRY.ERROR.IS_NOT_NUMBER);
 
@@ -36,7 +44,13 @@ export const validate = {
   },
 
   carNames(inputs) {
-    const { isOverFive, isDuplicated } = conditions.carNames;
+    const { isOverFive, isDuplicated, isNotInput, isIncludeSpace } = conditions.carNames;
+    if (isNotInput(inputs)) {
+      throw new Error(MESSAGE.COMMON.ERROR.IS_NOT_INPUT);
+    }
+
+    if (isIncludeSpace(inputs)) throw new Error(MESSAGE.CAR_NAME.ERROR.IS_INCLUDE_SPACE);
+
     if (isOverFive(inputs)) {
       throw new Error(MESSAGE.CAR_NAME.ERROR.IS_OVER_FIVE);
     }
