@@ -69,6 +69,8 @@ class App {
       const scoreStatus = '-'.repeat(racingCars[index]);
       MissionUtils.Console.print(userStatus + scoreStatus);
     })
+
+    MissionUtils.Console.print('\n');
   }
   
   gameStarter = (userNames, gameRep)=> {
@@ -105,8 +107,8 @@ class App {
   }
   
   printWinner = (winners) => {
-    const winnerString = winners.join(', ');
-    const winnerText = `최종 우승자 : ${winnerString}`;
+    const winnerJoin = winners.join(', ');
+    const winnerText = `최종 우승자 : ${winnerJoin}`;
   
     MissionUtils.Console.print(winnerText);
   }
@@ -124,6 +126,8 @@ class App {
 
       const userInputGameRep = await this.getUserInput('');
       const gameRep = this.stringToNaturalNumber(userInputGameRep);
+
+      MissionUtils.Console.print('\n실행결과');
 
       const gameResult = this.gameStarter(userNames, gameRep);
       const winners = this.getWinner(userNames, gameResult);

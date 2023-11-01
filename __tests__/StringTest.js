@@ -18,15 +18,30 @@ describe("함수 테스트", () => {
     expect(result).toContain("1");
   });
 
-  test("1글자 미만 이름에 대한 예외처리", () => {
-    const userInputNames = "one,,three";
-    const userNames = app.splitUserInputByComma(userInputNames);
+  test("1글자 미만 이름에 대한 예외처리", async () => {
+    const inputs = ["one,,three", "", ",two,three"];
 
-    try {
-      app.checkNameLength(userNames);
-    } catch(err) {
-      expect(err.message).toContain("[ERROR]");
-    }
+    inputs.forEach((userInputNames) => {
+      const userNames = app.splitUserInputByComma(userInputNames);
+
+      try {
+        app.checkNameLength(userNames);
+      } catch(err) {
+        expect(err.message).toContain("[ERROR]");
+      }
+    })
+  })
+
+  test("자연수가 아닌 수에 대한 예외처리", () => {
+    const inputs = ["0.1", "-1", "0"];
+
+    inputs.forEach((userInputGameRep) => {
+      try {
+        app.stringToNaturalNumber(userInputGameRep);
+      } catch(err) {
+        expect(err.message).toContain('[ERROR]');
+      }
+    })
   })
 
   test("substring 메서드로 특정 구간 값을 반환", () => {
