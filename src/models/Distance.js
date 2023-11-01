@@ -1,11 +1,21 @@
 class Distance {
   /**
    *
-   * @param {총 자동차의 갯수} carCount
+   * @param {자동차 이름 배열} carNames
    * @returns
    */
-  static setGameBoard(carCount) {
-    return Array(carCount).fill(0);
+  static setGameBoard(carNames) {
+    return carNames.map((carName) => [carName, 0]);
+  }
+
+  showBoard(distanceBoard) {
+    distanceBoard.forEach(([name, distance]) => {
+      this.#outputView.print(`${name} : ${'-'.repeat(distance)}`)
+    })
+  }
+
+  sortBoard(distanceBoard) {
+    return distanceBoard.sort((first, second) => second[1] - first[1]);
   }
 }
 

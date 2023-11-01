@@ -12,6 +12,8 @@ class Race {
             this.#outputView.print('\n');
             laps --;
         }
+
+        return this.#distance.sortBoard(distanceBoard);
     }
 
     #drive(distanceBoard) {
@@ -20,7 +22,7 @@ class Race {
             this.#getFuel(distance);
         })
         
-        return this.#distance.sortBoard(distanceBoard);
+        return this.#distance.showBoard(distanceBoard);
     }
 
     #gasStation() {
