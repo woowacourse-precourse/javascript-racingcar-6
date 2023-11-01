@@ -1,16 +1,6 @@
 import { Random, Console } from '@woowacourse/mission-utils';
-
-class Car {
-  constructor(name) {
-    this.name = name;
-    this.movement = '';
-  }
-
-  move() {
-    const randomNumber = Random.pickNumberInRange(0, 9);
-    this.movement = '-'.repeat(randomNumber >= 4 ? randomNumber : 0);
-  }
-}
+import { ERROR, MESSAGES } from './Constants.js';
+import { Car } from './Car.js';
 
 class App {
   constructor() {
@@ -19,17 +9,17 @@ class App {
   }
 
   async #getInput() {
-    const carNames = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n');
+    const carNames = await Console.readLineAsync(MESSAGES.CARNAME);
     this.#validateCarNames(carNames);
 
-    const roundsInput = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    const roundsInput = await Console.readLineAsync(MESSAGES.TRIAL);
     this.#validateRounds(roundsInput);
   }
 
   #validateCarNames(input) {
     const carNames = input.split(',').map(name => name.trim());
     if (carNames.some(name => name.length > 5)) {
-      throw new Error('[ERROR] 자동차 이름은 5자 이하여야 합니다.');
+      throw new Error(ERROR.CAR_NAME);
     }
     this.cars = carNames.map(name => new Car(name));
   }
@@ -37,13 +27,14 @@ class App {
   #validateRounds(input) {
     const rounds = parseInt(input, 10);
     if (isNaN(rounds) || rounds <= 0) {
-      throw new Error('[ERROR] 잘못된 횟수입니다. 양수인 정수를 입력하세요.');
+      throw new Error(ERROR.NUMBER);
     }
     this.rounds = rounds;
   }
 
   #playRacingCar() {
-    Array.from({ length: this.rounds }).map((_, round) => {
+    Console.print(MESSAGES.RESULT)
+    Array.from({ length: this.rounds }).forEach((_, round) => {
       this.cars.forEach(car => car.move());
       this.#printResult(round + 1);
     });
@@ -63,8 +54,8 @@ class App {
   }
 
   #printWinners() {
-    const winners = this.getWinners();
-    Console.print(`\n최종 우승자: ${winners}`);
+    const winners = this.#getWinners();
+    Console.print(`${MESSAGES.WINNER} ${winners}`);
   }
 
   async play() {
@@ -75,3 +66,6 @@ class App {
 }
 
 export default App;
+
+const app = new App();
+app.play();
