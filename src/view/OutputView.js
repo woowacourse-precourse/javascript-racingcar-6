@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import OUTPUTMESSAGE from '../constant/OutPutMessage.js';
+import OUTPUTMESSAGE from '../constant/OutPutMessage';
 
 const OutputView = {
   outputWinnerName: (winnerName) => Console.print(`${OUTPUTMESSAGE.GAME_END_MESSAGE}${winnerName}`),

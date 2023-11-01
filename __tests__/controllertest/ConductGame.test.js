@@ -13,7 +13,7 @@ describe("ConductGame", () => {
         InputView.inputRepeatCount = jest.fn();
         ValidatingTheValue.checkCarNames.mockReturnValue(["123", "456"]);
         ValidatingTheValue.checkRepeatCount.mockReturnValue(2);
-		const test = ConductGame();
-        expect(typeof test).toBe("object");
+		const testConductGame = ConductGame();
+        expect(typeof testConductGame).toBe("object");
 	});
 });

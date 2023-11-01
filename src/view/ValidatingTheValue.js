@@ -1,6 +1,6 @@
-import DataProcess from './DataProcess.js';
-import ERRORMESSAGE from '../constant/ErrorMessage.js';
-import ValidatingTheValueUtils from './ValidatingTheValueUtils.js';
+import DataProcess from './DataProcess';
+import ERRORMESSAGE from '../constant/ErrorMessage';
+import ValidatingTheValueUtils from './ValidatingTheValueUtils';
 
 function checkCarName(carName) {
   if (ValidatingTheValueUtils.checkStrSizeOverFive(carName.length)) {

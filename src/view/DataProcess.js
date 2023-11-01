@@ -1,4 +1,4 @@
-import OutputView from './OutputView.js';
+import OutputView from './OutputView';
 
 const DataProcess = {
   divideCarName: (carNames) => (carNames.split(',')),
@@ -7,8 +7,9 @@ const DataProcess = {
     OutputView.outputDistanceCar(`${carName} : ${DataProcess.transDistanceToHyphen(distance)}`);
   },
   transOutputFormWinner: (winners) => {
-    OutputView.outputWinnerName(winners.reduce((str, winner) => str + ', ' + winner));
-  }
-}
+    OutputView.outputWinnerName(winners.reduce((str, winner) => `${str}, ${winner}`));
+  },
+  endLine: () => OutputView.outputDistanceCar(''),
+};
 
 export default DataProcess;

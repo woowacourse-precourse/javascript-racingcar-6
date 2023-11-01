@@ -23,9 +23,9 @@ N대의 자동차 중 가장 멀리 이동한 자동차가 우승하는 게임
    
 - [x] 내부변수로 자동차 객체를 저장하는 Cars(Set 자료형)와 반복횟수를 저장하는 repeatCount(Number)갖는다.
 
-- [ ] repeatCount만큼 차량들을 이동하면서 DataProcess로 데이터를 전달한다.
+- [x] repeatCount만큼 차량들을 이동하면서 DataProcess로 데이터를 전달한다.
 
-- [ ] 위의 기능을 수행 후 우승자 데이터를 DataProcess로 전달한다.
+- [x] 위의 기능을 수행 후 우승자 데이터를 DataProcess로 전달한다.
 
 ## [view](#view)
 - `inputView` : 사용자의 입력을 받는 객체
