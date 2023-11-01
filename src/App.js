@@ -18,7 +18,9 @@ class Car {
   
   toString() { // 출력 형식 메서드
     return `${this.name} : ${"-".repeat(this.position)}`; // 자동차 이름, 위치 문자열로 반환
-   } // $이걸 쓰는게 맞나..?
+   } /*템플릿 리터럴은 ES6(ES2015)에서 도입된 기능으로, 문자열을 보다 편리하게 다룰 수 있게 해줍니다.
+   템플릿 리터럴은 백틱(``)으로 감싸진 문자열입니다. 이 안에서 ${}를 사용하여 변수나 표현식을 문자열에 삽입할 수 있습니다.
+   예를 들어, ${this.name}은 this.name의 값을 문자열로 변환하고, ${"-".repeat(this.position)}은 - 문자를 this.position의 값만큼 반복한 문자열을 생성합니다. */
 } //car class 닫음
 
 // App class 정의
