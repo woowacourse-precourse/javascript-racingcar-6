@@ -7,6 +7,7 @@ const MSG_GAME_START =
 const MSG_TRY_TIME = '시도할 횟수는 몇 회인가요?\n';
 const ERROR_MSG_INPUT = '[ERROR] 자동차 이름이 잘못된 형식입니다.';
 const MSG_EMPTY_LINE = '';
+const MSG_RESULT = '\n실행 결과';
 
 class Racing {
   constructor() {
@@ -40,7 +41,7 @@ class Racing {
   }
 
   race() {
-    Screen.printMessage('\n실행 결과');
+    Screen.printMessage(MSG_RESULT);
     for (let i = 0; i < this.numberOfGames; i++) {
       this.players.forEach((car) => {
         car.move();
