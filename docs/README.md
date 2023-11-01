@@ -116,3 +116,47 @@
 - [x] DO : getInformation은 자신의 현재 위치와 이름을 반환한다.
 - [x] DO : move 메서드는 전진시킨다.
 - [x] DO NOT : 외부에서 Car 객체의 상태에 직접 접근하거나 변경할 수 없다.
+
+---
+
+## Refactor
+
+- [x] View는 공통 유효성 검증과 파싱, 메시지 렌더링을 담당하고 validation은 최소화한다.
+- [x] View에서 진행하던 유효성 검증을 각 사용처 내부로 이동한다.
+
+### 옮겨야 할 테스트
+
+```js
+test('자동차 이름이 5자를 초과하는 경우 예외 처리를 진행한다.', async () => {
+  // given
+  const invalidCarNames = 'pobipobi,crongcrong,honuxhonux';
+  mockQuestions([invalidCarNames]);
+
+  // then
+  await expect(view.readCarName()).rejects.toThrow(
+    `[ERROR] ${ERROR.message.invalidCarNameLength}`,
+  );
+});
+
+test('자동차 이름이 중복되는 경우 예외 처리를 진행한다.', async () => {
+  // given
+  const duplicateCarNames = 'pobi,pobi,cron';
+  mockQuestions([duplicateCarNames]);
+
+  // then
+  await expect(view.readCarName()).rejects.toThrow(
+    `[ERROR] ${ERROR.message.duplicateCarName}`,
+  );
+});
+
+test('라운드가 0인 경우 예외 처리를 진행한다.', async () => {
+  // given
+  const invalidRound = '0';
+  mockQuestions([invalidRound]);
+
+  // then
+  await expect(view.readRound()).rejects.toThrow(
+    `[ERROR] ${ERROR.message.invalidRound}`,
+  );
+});
+```

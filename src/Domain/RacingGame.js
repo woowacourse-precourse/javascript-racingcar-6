@@ -1,6 +1,7 @@
 import { Random } from '@woowacourse/mission-utils';
 import RACING_GAME from '../constants/racingGame.js';
 import CAR from '../constants/car.js';
+import Validator from '../utils/Validator.js';
 
 class RacingGame {
   #cars;
@@ -10,6 +11,7 @@ class RacingGame {
   #result = RACING_GAME.result.default;
 
   constructor({ cars = [], round = RACING_GAME.round.default }) {
+    Validator.isDuplicateCarName(cars.map((car) => car.getName()));
     this.#cars = cars;
     this.#round = {
       total: round,

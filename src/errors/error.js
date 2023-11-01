@@ -14,6 +14,10 @@ class CustomError extends Error {
   static Car(message) {
     return new CustomError(message, ERROR.name.car);
   }
+
+  static RacingGame(message) {
+    return new CustomError(message, ERROR.name.racingGame);
+  }
 }
 
 export default CustomError;

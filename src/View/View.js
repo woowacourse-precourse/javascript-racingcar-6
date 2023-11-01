@@ -1,6 +1,5 @@
 import InputView from './InputView.js';
 import OutputView from './OutputView.js';
-import Validator from '../utils/Validator.js';
 import MESSAGE from '../constants/message.js';
 import CAR from '../constants/car.js';
 import RACING_GAME from '../constants/racingGame.js';
@@ -11,22 +10,18 @@ class View {
 
   #outputView = OutputView;
 
-  #validator = Validator;
-
   async readCarName() {
     const userInput = await this.#inputView.readLineAsync(MESSAGE.read.carName);
     const carNames = userInput.split(CAR.name.separator);
-
-    this.#validator.isDuplicateCarName(carNames);
-    carNames.forEach(this.#validator.validateCarName.bind(this.#validator));
 
     return carNames;
   }
 
   async readRound() {
-    const userInput = await this.#inputView.readLineAsync(MESSAGE.read.round);
-
-    this.#validator.validateRound(userInput);
+    const userInput = await this.#inputView.readIntegerAsync(
+      MESSAGE.read.round,
+      RACING_GAME.round.radix,
+    );
 
     return parseInt(userInput, RACING_GAME.round.radix);
   }
@@ -38,6 +33,8 @@ class View {
     this.#outputView.print(resultMessage);
     this.#outputView.print(winnerMessage);
   }
+
+  asy;
 }
 
 export default View;

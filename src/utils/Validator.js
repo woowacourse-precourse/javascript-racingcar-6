@@ -17,12 +17,20 @@ const Validator = {
   isDuplicateCarName(carNames) {
     const carNameSet = new Set(carNames);
     if (carNames.length !== carNameSet.size)
-      throw CustomError.InputView(ERROR.message.duplicateCarName);
+      throw CustomError.RacingGame(ERROR.message.duplicateCarName);
   },
 
   validateUserInput(name) {
     if (this.isEmptyString(name)) {
       throw CustomError.InputView(ERROR.message.emptyString);
+    }
+  },
+
+  validateInteger(number) {
+    const isInteger = Number.isInteger(Number(number));
+
+    if (!isInteger) {
+      throw CustomError.InputView(ERROR.message.invalidInteger);
     }
   },
 
@@ -36,7 +44,7 @@ const Validator = {
 
   validateRound(round) {
     const isPositiveInteger =
-      Number.isInteger(Number(round)) && round >= RACING_GAME.round.min;
+      this.validateInteger(round) && round >= RACING_GAME.round.min;
 
     if (!isPositiveInteger) {
       throw CustomError.InputView(ERROR.message.invalidRound);

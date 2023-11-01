@@ -9,6 +9,14 @@ const InputView = {
 
     return userInput;
   },
+
+  async readIntegerAsync(message, radix) {
+    const userInput = await this.readLineAsync(message);
+
+    Validator.validateInteger(userInput);
+
+    return parseInt(userInput, radix);
+  },
 };
 
 export default InputView;
