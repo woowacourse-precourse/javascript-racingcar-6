@@ -1,5 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import App from "../src/App";
+import MESSEGE from '../src/constants/messeges';
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -17,9 +18,18 @@ describe("자동차 입력값 테스트", () => {
 
       mockQuestions(input);
 
-      await expect(app.play()).rejects.toThrow(
-        "[ERROR] 자동차의 이름은 쉼표(,)로 구분하며 5자 이하만 가능합니다."
-      );
+      await expect(app.play()).rejects.toThrow(MESSEGE.errorCarName);
+    }
+  );
+
+  test.each([[["jay, jay, qwe", 3]]])(
+    "중복된 자동차 이름 예외 처리",
+    async (input) => {
+      const app = new App();
+
+      mockQuestions(input);
+
+      await expect(app.play()).rejects.toThrow(MESSEGE.errorDuplicatedCarName);
     }
   );
 });
@@ -32,9 +42,7 @@ describe("시도 횟수 입력값 테스트", () => {
 
       mockQuestions(input);
 
-      await expect(app.play()).rejects.toThrow(
-        "[ERROR] 시도할 횟수는 숫자여야 합니다."
-      );
+      await expect(app.play()).rejects.toThrow(MESSEGE.errorRoundNumIsNumber);
     }
   );
 
@@ -45,9 +53,7 @@ describe("시도 횟수 입력값 테스트", () => {
 
       mockQuestions(input);
 
-      await expect(app.play()).rejects.toThrow(
-        "[ERROR] 시도할 횟수는 1~9 사이의 정수여야 합니다."
-      );
+      await expect(app.play()).rejects.toThrow(MESSEGE.errorRoundNumIsInteger);
     }
   );
 });
