@@ -51,4 +51,25 @@ describe('CarRace 생성자 확인', () => {
     // then
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
   });
+
+  test('printWinners 함수 동작 확인', () => {
+    // given
+    const MOVING_FORWARD = 4;
+    const STOP = 3;
+    const racingCarInput = 'pobi,woni';
+    const attemptsInput = '1';
+    const output = '최종 우승자 : pobi';
+    const randoms = [MOVING_FORWARD, STOP];
+    const logSpy = getLogSpy();
+
+    mockRandoms(randoms);
+
+    // when
+    const carRace = new CarRace(racingCarInput, attemptsInput);
+    carRace.race();
+    carRace.printWinners();
+
+    // then
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+  });
 });
