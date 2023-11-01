@@ -31,9 +31,7 @@ class App {
       Console.print('');
     }
 
-    const MAX_SCORE = Math.max(...race.map((car) => car.score));
-
-    const RESULT = this.calculateMaxScoreCarList(CAR_LIST, race, MAX_SCORE);
+    const RESULT = this.calculateMaxScoreCarList(CAR_LIST, race);
 
     Console.print(`최종 우승자 : ${RESULT.join(', ')}`);
   }
@@ -80,9 +78,13 @@ class App {
     }
   }
 
-  calculateMaxScoreCarList(carList, race, maxScore) {
-    const result = carList.filter((car, idx) => race[idx].score === maxScore);
-    return result;
+  calculateMaxScoreCarList(carList, race) {
+    const SCORES = race.map((car) => car.score);
+    const MAX_SCORES = Math.max(...SCORES);
+
+    const RESULT = carList.filter((car, idx) => race[idx].score === MAX_SCORES);
+
+    return RESULT;
   }
 }
 
