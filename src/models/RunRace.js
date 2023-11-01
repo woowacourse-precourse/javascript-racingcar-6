@@ -1,4 +1,4 @@
-import { random } from "../utils/RandomNum";
+import { random } from "../util/RandomNum";
 
 //랜덤수에 따른 전진 상태 결정
 export const runRace = (cars) => {
@@ -11,4 +11,24 @@ export const runRace = (cars) => {
   });
 
   return cars;
+};
+
+export const findWinner = (cars) => {
+  let maxDistance = -1;
+  let winners = [];
+
+  const carNames = Object.keys(cars);
+  const distances = Object.values(cars);
+
+  distances.forEach((distance, index) => {
+    const dashCount = distance.length;
+    if (dashCount > maxDistance) {
+      maxDistance = dashCount;
+      winners = [carNames[index]];
+    } else if (dashCount === maxDistance) {
+      winners.push(carNames[index]);
+    }
+  });
+
+  return winners.join(', ');
 };
