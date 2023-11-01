@@ -27,4 +27,4 @@ function carMoveQualification(randomNumber) {
   }
 }
 
-export { carMoveText, carMoveEmptyArray };
+export { carMoveText, carMoveEmptyArray, carMoveQualification };
