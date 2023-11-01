@@ -103,6 +103,13 @@ class RacingGame {
     const consoleMessage = `${CONSOLE_MESSAGE.PRINT_WINNER} : ${winners}`;
     Console.print(consoleMessage);
   }
+
+  async runRaceGame() {
+    await this.getCarNames();
+    await this.getMoveCount();
+    this.moveCars();
+    this.findWinners();
+  }
 }
 
 export default RacingGame;
