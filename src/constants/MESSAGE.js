@@ -10,7 +10,8 @@ const SIGNAL = {
 
 const OUTPUT = {
   RESULT_MESSAGE: "실행 결과",
-  WINNER: (winnerList) => "최종 우승자: " + winnerList.join(", "),
+  WINNER: (winnerList) =>
+    "최종 우승자: " + winnerList.join(SIGNAL.SEPARATOR + " "),
   DISTANCE_SIGNAL: "-",
   RESULT: (car) => `${car.carName} : ${SIGNAL.DISTANCE.repeat(car.distance)}`,
 };
