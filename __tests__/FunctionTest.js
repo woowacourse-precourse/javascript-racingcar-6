@@ -32,7 +32,7 @@ describe("기능 테스트", () => {
         await expect(await app.getNumberOfGames()).toEqual(result);
     });
 
-    test.each([``, `치이카와 우사기 하치와레`, `이름엄청길다,이름,이`])(
+    test.each([``, `치이카와 우사기 하치와레`, `이름엄청길다,이름,이`,`치이카와,`])(
         "잘못된 자동차 이름 에러 처리 테스트",
         async (value) => {
             const app = new App();
@@ -81,14 +81,13 @@ describe("기능 테스트", () => {
         );
     });
 
-    test("승자 구별 테스트", async () => {
-        const carNameArr = ["치이카와", "우사기", "하치와레"];
-        const carStates = ["", "-", "-"];
-        const result = ["우사기", "하치와레"];
+    test("게임 승자 인덱스 출력 테스트", async () => {
+        const carStates = ["", "-"];
+        const result = [1];
 
         const app = new App();
 
-        await expect(app.determineWinner(carNameArr, carStates)).toEqual(
+        await expect(app.determineWinner(carStates)).toEqual(
             result
         );
     });
