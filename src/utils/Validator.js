@@ -28,6 +28,12 @@ class Validator {
     }
   }
 
+  static checkIsNegative(userInput) {
+    if (Number(userInput) < 0) {
+      throw new ValidationError(ERROR.isNegative);
+    }
+  }
+
   static checkIsNotMoving(userInput) {
     if (Number(userInput) === CONSTANT.notMove) {
       throw new ValidationError(ERROR.notMoving);
