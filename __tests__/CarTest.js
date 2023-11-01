@@ -2,17 +2,12 @@ import Car from '../src/Car';
 
 let car;
 beforeEach(() => {
-  car = new Car(' pobi ');
+  car = new Car(' p o b i ');
 });
 
 describe('전진-정지', () => {
   test('공백 제거', () => {
     expect(car.name).toBe('pobi');
-  });
-
-  test('공백 제거', () => {
-    const empty = new Car('a d d');
-    expect(empty.name).toBe('add');
   });
 
   test.each([4, 9])('condition >= 4 / 전진', carCondition => {
