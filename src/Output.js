@@ -16,6 +16,11 @@ const Output = {
       Console.print('\n');
     }
   },
+
+  printFinalWinners(finalWinners) {
+    Console.print(MESSAGE.OUTPUT_FINAL_WINNER);
+    Console.print(finalWinners);
+  },
 };
 
 export default Output;

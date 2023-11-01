@@ -64,6 +64,7 @@ class App {
 
     const longestMovementLength = this.findLongestMovementLength();
     const finalWinners = this.findFinalWinner(longestMovementLength);
+    Output.printFinalWinners(finalWinners);
   }
 }
 
