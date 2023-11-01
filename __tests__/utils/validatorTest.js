@@ -22,6 +22,13 @@ describe('Validator Test', () => {
     }).toThrow(ERROR_MESSAGE.duplicatedCarName);
   });
 
+  test.each(['pobi', 'pobi,ukgi', 'pobi,ukgi,jun'])(
+    '자동차 이름이 5자 이하이고 중복되지 않으면 유효합니다.',
+    (input) => {
+      expect(() => isValidateCarName(input)).not.toThrow();
+    },
+  );
+
   test.each(['', ' ', '1f'])(
     '시도횟수가 숫자가 아니면 에러를 던집니다.',
     (input) => {
