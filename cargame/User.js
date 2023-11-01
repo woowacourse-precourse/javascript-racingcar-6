@@ -6,7 +6,10 @@ import {
   validateCarNameDuplication,
   validateCarNameCount,
 } from '../validates/carNames.js';
-import { validateTryNumber } from '../validates/tryNumber.js';
+import {
+  validateTryNumberRange,
+  validateTryNumberFormat,
+} from '../validates/tryNumber.js';
 
 class User {
   constructor() {
@@ -33,7 +36,10 @@ class User {
     const tryNumberInput = await MissionUtils.Console.readLineAsync(
       MESSAGES.TRY_NUMBER_INPUT,
     );
-    validateTryNumber(tryNumberInput);
+
+    validateTryNumberRange(tryNumberInput);
+    validateTryNumberFormat(tryNumberInput);
+
     this.tryNumber = parseInt(tryNumberInput);
   }
 }
