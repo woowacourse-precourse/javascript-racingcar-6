@@ -1,4 +1,4 @@
-import { Console, Random} from "@woowacourse/mission-utils";
+import { Console, Random } from "@woowacourse/mission-utils";
 
 class App {
   async play() {
