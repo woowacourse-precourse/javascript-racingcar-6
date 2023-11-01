@@ -9,12 +9,18 @@ class Validator {
   }
 
   static carNames(carNames) {
-    const INVALID_CAR_NAMES = carNames
+    const MAX_LENGTH_OVER = carNames
       .split(',')
-      .find(carName => carName.trim().length > 5);
+      .find(name => name.replace(/(\s*)/g, '').length > 5);
+    const IS_EMPTY = carNames
+      .split(',')
+      .find(name => !name.replace(/(\s*)/g, ''));
 
-    if (INVALID_CAR_NAMES) {
+    if (MAX_LENGTH_OVER) {
       throw new Error('[ERROR] 자동차 이름은 5자 이하여야 합니다.');
+    }
+    if (IS_EMPTY) {
+      throw new Error('[ERROR] 자동차 이름은 공백이 될 수 없습니다.');
     }
     return true;
   }
