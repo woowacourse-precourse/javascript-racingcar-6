@@ -36,3 +36,29 @@ describe('자동차 이름 입력값 테스트', () => {
     await expect(Input.getCarNames()).rejects.toThrow(ERROR.includeComma);
   });
 });
+
+describe('시도 횟수 입력값 테스트', () => {
+  test('입력이 숫자가 아닌 경우 에러 반환', async () => {
+    const input = ['one', '^'];
+
+    mockQuestions(input);
+
+    await expect(Input.getRepeatTimes).rejects.toThrow(ERROR.attemptNum);
+  });
+
+  test('입력이 자연수가 아닌 경우 에러 반환', async () => {
+    const input = ['0', '-1'];
+
+    mockQuestions(input);
+
+    await expect(Input.getRepeatTimes()).rejects.toThrow(ERROR.attemptNum);
+  });
+
+  test('빈 값인 경우 에러 반환', async () => {
+    const input = [''];
+
+    mockQuestions(input);
+
+    await expect(Input.getRepeatTimes()).rejects.toThrow(ERROR.attemptNum);
+  });
+});
