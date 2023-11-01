@@ -10,7 +10,6 @@ class App {
   constructor() {
     this.carDistanceList = [];
     this.playNum = 0;
-    this.winnerList = [];
   }
 
   start() {
@@ -25,8 +24,8 @@ class App {
   }
 
   finish() {
-    this.winnerList = checkDistanceResult(this.carDistanceList);
-    printWinner(this.winnerList);
+    const winnerList = checkDistanceResult(this.carDistanceList);
+    printWinner(winnerList);
   }
 
   async play() {
