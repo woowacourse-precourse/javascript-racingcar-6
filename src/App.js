@@ -1,15 +1,14 @@
 import { gameStart } from "./gameStart.js";
 import { gameProgress } from "./gameProgress.js";
+import { gameEnd } from "./gameEnd.js";
 
 class App {
   async play() {
     const players = await gameStart.getCarName();
     const maxNum = await gameStart.getMaxNum();
-    await gameProgress(players, maxNum);
+    const result = await gameProgress(players, maxNum);
+    await gameEnd(result);
   }
 }
-
-const app = new App();
-await app.play();
 
 export default App;

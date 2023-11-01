@@ -5,11 +5,13 @@ export const gameProgress = async (players, maxNum) => {
   // 2-1. 실행 결과 문구 출력
   await Console.print("\n실행 결과");
   // 2-5. 실행 횟수만큼 출력
+  let result = players;
   for (let i = 0; i < maxNum; i++) {
     const randoms = getRandom(players);
     const moves = await getMove(randoms);
-    await printResult(moves);
+    result = await printResult(moves);
   }
+  return result;
 };
 
 // 2-2. 자동차 별 랜덤 숫자 생성
