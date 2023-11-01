@@ -30,3 +30,34 @@ describe('validation 함수 기능 테스트', () => {
       '[ERROR] 자동차 이름을 한 글자 이상 입력해 주세요.'
     );
   });
+
+  test('시도할 횟수를 입력하지 않았을 경우 예외 처리', () => {
+    const INPUT = '';
+
+    const APP = new App();
+
+    expect(() => APP.validateCountNumber(INPUT)).toThrow(
+      '[ERROR] 시도할 횟수를 입력해 주세요'
+    );
+  });
+
+  test('시도할 횟수를 0회 입력 했을 경우 예외 처리', () => {
+    const INPUT = '0';
+
+    const APP = new App();
+
+    expect(() => APP.validateCountNumber(INPUT)).toThrow(
+      '[ERROR] 시도할 횟수를 1회 이상 입력해 주세요'
+    );
+  });
+
+  test('시도할 횟수를 숫자가 아닌 문자를 입력 했을 경우 예외 처리', () => {
+    const INPUT = '삼';
+
+    const APP = new App();
+
+    expect(() => APP.validateCountNumber(INPUT)).toThrow(
+      '[ERROR] 숫자만 입력 가능합니다.'
+    );
+  });
+});
