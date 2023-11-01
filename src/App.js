@@ -7,43 +7,48 @@ class App {
   }
 
   async getCarName() {
-    const inputName = await Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
-    return this.sanitizeCarName(inputName);
+    const inputCar = await Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
+    return this.sanitizeCarName(inputCar);
   }
 
-  sanitizeCarName(inputName) {
-    const sanitizedName = inputName.split(',').map(name => name.trim()).filter(name => name);
-    return this.validateCarName(sanitizedName);
+  sanitizeCarName(inputCar) {
+    const sanitizedCar = inputCar.split(',').map(name => name.trim()).filter(name => name);
+    return this.validateCarName(sanitizedCar);
   }
   
-  validateCarName(sanitizedName) {
-    this.#checkMinimumCar(sanitizedName);
-    this.#checkLength(sanitizedName);
-    this.#checkDuplicate(sanitizedName);
-    return sanitizedName;
+  validateCarName(sanitizedCar) {
+    this.#checkMinimumCar(sanitizedCar);
+    this.#checkLength(sanitizedCar);
+    this.#checkDuplicate(sanitizedCar);
+    return sanitizedCar;
   }
 
-  #checkMinimumCar(sanitizedName) {
-    if (sanitizedName.length < 2) {
+  #checkMinimumCar(sanitizedCar) {
+    if (sanitizedCar.length < 2) {
       throw new Error("[ERROR] 최소 두 대 이상의 자동차 이름을 입력해주세요.");
     }
   }
 
-  #checkLength(sanitizedName) {
-    if (sanitizedName.some(name => name.length > 5)) {
+  #checkLength(sanitizedCar) {
+    if (sanitizedCar.some(name => name.length > 5)) {
       throw new Error("[ERROR] 자동차 이름은 5자를 초과할 수 없습니다.");
     }
   }
 
-  #checkDuplicate(sanitizedName) {
-    if (new Set(sanitizedName).size !== sanitizedName.length) {
+  #checkDuplicate(sanitizedCar) {
+    if (new Set(sanitizedCar).size !== sanitizedCar.length) {
       throw new Error("[ERROR] 중복되는 자동차 이름이 있습니다.");
     }
   }
 
-  async getRound() {
-    const round = parseInt(await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n"), 10);
-    return round;
+  async getRoundNumber() {
+    const inputRound = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+    return this.sanitizeRoundNumber(inputRound);
+  }
+
+  sanitizeRoundNumber(inputRound) {
+    const sanitizedRound = parseInt(inputRound.trim().replace(/\s+/g, ''), 10);
+    return sanitizedRound;
   }
 }
 
