@@ -1,5 +1,12 @@
+import ConductGame from "./controller/ConductGame";
+
 class App {
-  async play() {}
+  #conductGame;
+  async play() {
+    this.#conductGame = await ConductGame();
+    this.#conductGame.repeatOrderGoToCar();
+    this.#conductGame.showWhoWinner();
+  }
 }
 
 export default App;
