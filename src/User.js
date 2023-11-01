@@ -73,7 +73,6 @@ export async function validParticipantCarName(carNameList) {
       name.length > CONSTANT.MAX_NAME_LENGTH
       || name.length < CONSTANT.MIN_NAME_LENGTH
     ) {
-      // throw new Error('[ERROR] 자동차 이름은 1자 ~ 5자 사이를 입력해주세요');
       throw new Error(ERROR_MESSAGE.PARTICIPANT_CAR_NAME_ERROR);
     }
   });
@@ -81,7 +80,6 @@ export async function validParticipantCarName(carNameList) {
     carNameList.length > CONSTANT.MAX_PARTICIPANT
     || carNameList < CONSTANT.MIN_PARTICIPANT
   ) {
-    // throw new Error('[ERROR] 참가자는 1팀 ~ 5팀이 있어야 진행이 가능합니다');
     throw new Error(ERROR_MESSAGE.TOTAL_PARTICIPANT_ERROR);
   }
 }
