@@ -46,10 +46,48 @@ describe('자동차 경주 게임', () => {
     });
   });
 
+  test('우승자가 여러명인 경우', async () => {
+    // given
+    const inputs = ['pobi,woni,jun', '5'];
+    const outputs = [
+      '실행 결과',
+      'pobi : -',
+      'woni :',
+      'jun : -',
+      'pobi : --',
+      'woni : -',
+      'jun : --',
+      'pobi : ---',
+      'woni : --',
+      'jun : ---',
+      'pobi : ----',
+      'woni : ---',
+      'jun : ----',
+      'pobi : -----',
+      'woni : ----',
+      'jun : -----',
+      '최종 우승자 : pobi, jun',
+    ];
+    const randoms = [5, 0, 7, 7, 9, 6, 8, 8, 7, 6, 8, 9, 9, 8, 7];
+    const logSpy = getLogSpy();
+
+    mockQuestions(inputs);
+    mockRandoms([...randoms]);
+
+    // when
+    const app = new App();
+    await app.play();
+
+    // then
+    outputs.forEach((output) => {
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    });
+  });
+
   test('자동차가 하나인 경우', async () => {
     // given
     const inputs = ['pobi', '1'];
-    const outputs = ['pobi : -'];
+    const outputs = ['pobi : -','최종 우승자 : pobi'];
     const randoms = [5];
     const logSpy = getLogSpy();
 
