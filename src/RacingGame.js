@@ -10,11 +10,11 @@ class RacingGame {
 
   play() {
     for (let i = 0; i < this.#attemptCount; i++) {
-      this.moveCars();
+      this.#moveCars();
     }
   }
 
-  moveCars() {
+  #moveCars() {
     this.#carArray.forEach((car) => car.moveRandomly());
     this.#resultArray.push(this.#carNamePositionArray);
   }

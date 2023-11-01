@@ -19,13 +19,13 @@ describe("경주 게임 테스트", () => {
     ["둘 다 전진", ["car", "bus"], [MOVE, MOVE], [1, 1]],
     ["셋 다 멈춤", ["car", "bus", "joo"], [STOP, STOP, STOP], [0, 0, 0]],
   ])(
-    "모든 자동차 전진 시도하기 - %s",
+    "1번의 시도에 모든 자동차 전진 시도하기 - %s",
     (testName, carNameArray, randomNumberArray, expectedPositionArray) => {
       mockRandoms([...randomNumberArray]);
       const carArray = carNameArray.map((name) => new Car(name));
 
-      const game = new RacingGame(carArray);
-      game.moveCars();
+      const game = new RacingGame(carArray, 1);
+      game.play();
       expect(carArray.map((car) => car.position)).toEqual(
         expectedPositionArray
       );
