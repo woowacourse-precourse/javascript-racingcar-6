@@ -72,6 +72,20 @@ describe('자동차 경주 게임', () => {
     await expect(app.play()).rejects.toThrow('[ERROR] 일부 입력값이 없습니다.');
   });
 
+  test.each([
+    [['ga,na'], ['*']],
+    [['ga,na'], ['1test']],
+  ])('숫자 오입력에 대한 예외처리', async (inputs) => {
+    // given
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow('[ERROR] 잘못된 형식의 입력입니다.');
+  });
+
   test('여러 car가 우승했을 경우', async () => {
     // given
     const MOVING_FORWARD = 4;
