@@ -28,16 +28,20 @@ describe('controller 전체 테스트', () => {
     const MOVING = 4;
     const STOP = 3;
     const controller = new Controller();
-    const movingNumber = [MOVING, MOVING, STOP];
-    const inputs = ['가나다,마바사,아자차', '1'];
-    const output = ['가나다 : -', '마바사 : -', '아자차 : ', '최종 우승자 : 가나다, 마바사'];
+    const movingNumber = [MOVING, MOVING, STOP, MOVING, MOVING, STOP, MOVING, MOVING, STOP];
+    const inputs = ['가나다,마바사,아자차', '3'];
+    const output = ['가나다 : ---', '마바사 : ---', '아자차 : ', '최종 우승자 : 가나다, 마바사'];
     mockQuestions(inputs);
     mockRandoms([...movingNumber]);
+    const move = jest.spyOn(controller, 'moveCarAndPrint');
     const logSpy = getLogSpy();
     await controller.play();
+
     output.forEach((output) => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
+    expect(move).nthCalledWith(3);
+    expect(controller.winners).toHaveLength(2);
   });
   test('우승자 테스트', async () => {
     const MOVING = 4;
@@ -46,6 +50,7 @@ describe('controller 전체 테스트', () => {
     const movingNumber = [MOVING, STOP, STOP];
     const inputs = ['가나다,마바사,아자차', '1'];
     const output = ['가나다 : -', '마바사 : ', '아자차 : ', '최종 우승자 : 가나다'];
+    const move = jest.spyOn(controller, 'moveCarAndPrint');
     mockQuestions(inputs);
     mockRandoms([...movingNumber]);
     const logSpy = getLogSpy();
@@ -53,5 +58,8 @@ describe('controller 전체 테스트', () => {
     output.forEach((output) => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
+
+    expect(move).nthCalledWith(1);
+    expect(controller.winners).toHaveLength(1);
   });
 });
