@@ -1,5 +1,13 @@
+import RaceController from './controller/RaceController';
+
 class App {
-  async play() {}
+  constructor() {
+    this.RaceController = new RaceController();
+  }
+
+  async play() {
+    await this.RaceController.insertInput();
+  }
 }
 
 export default App;
