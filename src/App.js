@@ -1,3 +1,4 @@
+import { Console } from "@woowacourse/mission-utils";
 import { getCarName, getMoveNumber, getCarsMovedCount } from "./getUserInput";
 import { moveCars, printResult } from "./move";
 
@@ -8,6 +9,7 @@ class App {
 
     const carsMovedCount = getCarsMovedCount(names);
 
+    Console.print("실행 결과");
     while (moveNumber--) {
       moveCars(names, carsMovedCount);
       printResult(names, carsMovedCount);
