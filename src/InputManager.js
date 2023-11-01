@@ -14,6 +14,8 @@ const InputManager = {
   async inputTryCount() {
     const tryString = await Console.readLineAsync(`${MESSAGE.GET_TRY_COUNT}\n`);
 
+    Validator.validateTryCount(tryString);
+
     return Number(tryString);
   },
 };

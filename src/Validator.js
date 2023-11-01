@@ -31,6 +31,15 @@ const Validator = {
   isDuplicated(carNames) {
     return new Set(carNames).size !== carNames.length;
   },
+
+  validateTryCount(n) {
+    if (Number.isNaN(n)) {
+      throw new CustomError(ERROR.CAR_NAME_DUPLICATED);
+    }
+    if (Number(n) <= 0) {
+      throw new CustomError(ERROR.TRY_COUNT_NOT_POSITIVE);
+    }
+  },
 };
 
 export default Validator;
