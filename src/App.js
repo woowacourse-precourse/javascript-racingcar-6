@@ -10,7 +10,11 @@ class App {
       Console.print(systemMessage.GAME_START);
       let playingCars = await Console.readLineAsync("");
 
-      playingCars = new InputCarsException(playingCars).check();
+      playingCars = playingCars.split(",");
+      for (let i = 0; i < playingCars.length; i++) {
+        playingCars[i] = playingCars[i].trim();
+      }
+      new InputCarsException(playingCars).check();
 
       Console.print(systemMessage.INPUT_TRY_COUNT);
       let tryCount = await Console.readLineAsync("");
