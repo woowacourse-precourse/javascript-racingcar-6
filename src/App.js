@@ -8,33 +8,42 @@ class App {
 
   async getCarName() {
     const carName = await MissionUtils.Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n');
-    this.carNameArr = carName.split(',');
+
+    if (carName === undefined || carName.trim() === '') {
+      throw new Error('[ERROR] 입력된 값이 없거나 공백입니다.');
+    } else {
+      this.carNameArr = carName.split(',');
+    }
 
     const nameSet = new Set();
 
     this.carNameArr.forEach(name => {
-      if (name.length >= 5) {
-        throw new Error('[ERROR] 숫자가 잘못된 형식입니다.');
-      }
-      if (nameSet.has(name)) {
+      if (name.length > 5) {
+        throw new Error('[ERROR] 자동차 이름은 5자 이하로 작성 가능합니다.');
+      } else if (nameSet.has(name)) {
         throw new Error('[ERROR] 중복된 이름이 있습니다.');
+      } else {
+        nameSet.add(name);
       }
-      nameSet.add(name);
     });
 
     return this.carNameArr;
   }
 
   async getNumberOfAttempts() {
+    const onlyNumberCheck = /^[0-9]+$/;
     const numberOfAttempts = await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
-    this.numberOfAttempts = numberOfAttempts;
 
-    return numberOfAttempts;
+    if (!onlyNumberCheck.test(numberOfAttempts)) {
+      throw new Error('[ERROR] 숫자가 잘못된 형식입니다.');
+    }
+
+    this.numberOfAttempts = numberOfAttempts;
+    return this.numberOfAttempts;
   }
 
   async play() {
-    await this.getCarName();
-    await this.getNumberOfAttempts();
+    await this.racingCarGame();
   }
 }
 
