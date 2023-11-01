@@ -30,4 +30,8 @@ class App {
     }
     this.tryOut = parseInt(userInputTryOut, 10);
   }
+
+  getRandomNumber() {
+    this.randomNumber = Random.pickNumberInRange(0, 9);
+  }
 export default App;
