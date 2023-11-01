@@ -1,6 +1,6 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
-import { INPUT_MESSAGE } from "../Constants.js";
-import Validation from "../validation/Validation.js";
+import { MissionUtils } from '@woowacourse/mission-utils';
+import { INPUT_MESSAGE } from '../Constants.js';
+import Validation from '../validation/Validation.js';
 
 class InputView {
   constructor() {}

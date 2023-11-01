@@ -1,5 +1,5 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
-import { CARS, OUTPUT_MESSAGE } from "../Constants.js";
+import { MissionUtils } from '@woowacourse/mission-utils';
+import { CARS, OUTPUT_MESSAGE } from '../Constants.js';
 
 class OutputView {
     constructor() {}
@@ -20,7 +20,7 @@ class OutputView {
         OUTPUT_MESSAGE.EACHRACE(CAR_NAME, CAR_FORWARD_NUMBER)
       );
     }
-    MissionUtils.Console.print("");
+    MissionUtils.Console.print('');
   }
 
   // 최종 우승자 출력

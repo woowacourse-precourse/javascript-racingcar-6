@@ -1,4 +1,4 @@
-import GameManager from "./controller/GameManager.js";
+import GameManager from './controller/GameManager.js';
 class App {
   constructor() {
     this.gameManager = new GameManager();

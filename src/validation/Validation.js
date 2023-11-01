@@ -1,4 +1,4 @@
-import { ERROR_MESSAGE } from "../Constants.js";
+import { ERROR_MESSAGE } from '../Constants.js';
 
 class Validation {
 
@@ -26,7 +26,7 @@ class Validation {
 
   // 입력값에 ','가 있는지 검증
   static isNoComma(input) {
-    if (!input.includes(",")) {
+    if (!input.includes(',')) {
       throw new Error(ERROR_MESSAGE.NO_COMMA);
     }
   }
@@ -40,7 +40,7 @@ class Validation {
 
   // 쉼표 뒤에 아무것도 입력하지 않았을 때 에러 발생
   static isNoInputafterComma(carName) {
-    if (carName === "") {
+    if (carName === '') {
       throw new Error(ERROR_MESSAGE.NO_INPUT_AFTER_COMMA);
     }
   }
