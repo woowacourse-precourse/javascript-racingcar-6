@@ -14,7 +14,7 @@ const checkRacer = racers => {
 const setRacer = async () => {
   const racers = await Console.readLineAsync(MESSAGE.inputNameMessage);
   const racerList = checkRacer(racers);
-  // 점수를 갖는 객체 배열로 반환하고 싶어
+
   const racerMap = new Map();
   racerList.forEach(racer => racerMap.set(racer, 0));
   return racerMap;
