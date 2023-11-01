@@ -8,6 +8,10 @@ export const validateCarNumber = (carArray) => {
 };
 
 export const validateCarName = (carArray) => {
+  let carNameSet = new Set(carArray);
+  if (carArray.length !== carNameSet.size) {
+    throw new Error(MESSEGE.errorDuplicatedCarName);
+  }
   if (carArray.find((carName) => carName.length >= 5)) {
     throw new Error(MESSEGE.errorCarName);
   }

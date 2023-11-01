@@ -1,5 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import MESSEGE from './constants/messeges';
+import MESSEGE from './constants/messeges.js';
 
 function getDistance(car) {
   let randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
