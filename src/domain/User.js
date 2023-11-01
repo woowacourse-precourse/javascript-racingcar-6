@@ -25,6 +25,10 @@ export default class User {
 
     checkInputCarNamesError(carNames) {
         carNames.forEach(name => {
+            if (name === '' || name === ' ') {
+                throw new Error(ERROR_MESSAGE.carNameNotEmptyException);
+            }
+            
             if (name.length > 5) {
                 throw new Error(ERROR_MESSAGE.carNameLengthOutOf5Exception);
             }
