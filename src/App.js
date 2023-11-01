@@ -65,6 +65,8 @@ class App {
       carsSet.add({ name, count: 0 });
     });
 
+    Console.print('')
+    Console.print('실행결과')
     for (let i = 0; i < this.ATTEMPTS_COUNT; i++) {
       this.moveCars(carsSet);
       this.printCarsProgress(carsSet);
@@ -87,6 +89,7 @@ class App {
     return count;
   }
 
+  
   printCarsProgress(carsSet) {
     for (const car of carsSet) {
       Console.print(`${car.name} : ${this.generateCarProgress(car.count)}`);
