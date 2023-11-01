@@ -18,7 +18,7 @@ class CarListCheck {
   }
 
   checkNoInput(inputCarList) {
-    if (inputCarList.length === 0) {
+    if (!inputCarList.length) {
       throw ERROR.noInputCarList;
     }
   }
