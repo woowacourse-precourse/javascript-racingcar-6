@@ -22,6 +22,7 @@ export const CAR_NAME_VALIDATION_TYPES = Object.freeze({
 });
 
 /**
+ * @param carNames
  * @throws {AppError} 유효성을 만족하지 않을 경우 에러 발생
  * @returns {void}
  */

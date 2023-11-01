@@ -27,6 +27,17 @@ class RacingWinnerCalculator {
   }
 
   /**
+   * @public
+   * @returns {string} 레이싱 우승자들의 이름
+   */
+  calculateRacingWinners() {
+    return this.#sortLastRacingStatusPositionByDescending()
+      .#filterTopPositionCars()
+      .#extractWinnerNames()
+      .join(`${SYMBOLS.comma} `);
+  }
+
+  /**
    * @private
    * @returns {RacingWinnerCalculator} lastRacingStatus가 position으로 내림차순 된 후의 RacingWinnerCalculator 인스턴스
    */
@@ -55,17 +66,6 @@ class RacingWinnerCalculator {
    */
   #extractWinnerNames() {
     return this.#lastRacingStatus.map(({ carName }) => carName);
-  }
-
-  /**
-   * @public
-   * @returns {string} 레이싱 우승자들의 이름
-   */
-  calculateRacingWinners() {
-    return this.#sortLastRacingStatusPositionByDescending()
-      .#filterTopPositionCars()
-      .#extractWinnerNames()
-      .join(`${SYMBOLS.comma} `);
   }
 }
 
