@@ -10,13 +10,6 @@ class CarRacingGamesControllers {
     this.numberOfMoves;
   }
 
-  // 자동차 경주 게임을 실행하는 메서드
-  async play() {
-    await this.prepareSettings();
-    this.executeForward();
-    this.outputFinalResult();
-  }
-
   // 자동차 경주를 준비하는 메서드
   async prepareSettings() {
     // 자동차 이름을 입력받는다.

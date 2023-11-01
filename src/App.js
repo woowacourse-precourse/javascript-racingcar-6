@@ -5,7 +5,9 @@ class App {
 
   async play() {
     this.gameController = new CarRacingGamesControllers();
-    await this.gameController.play();
+    await this.gameController.prepareSettings();
+    this.gameController.executeForward();
+    this.gameController.outputFinalResult();
   }
 }
 
