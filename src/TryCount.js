@@ -25,7 +25,7 @@ class TryCount {
   }
 
   notZero(tryValue) {
-    if (tryValue === 0) {
+    if (tryValue < 1) {
       throw new Error(TRY_COUNT_VALIDATION.NOT_ZERO);
     }
   }
