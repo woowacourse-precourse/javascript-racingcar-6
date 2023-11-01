@@ -17,7 +17,7 @@ describe("실행 결과", () => {
     const numbers = [1, 2, 3, 4];
 
     numbers.forEach(() => {
-      movingForwardCase.mockReturnValue(true); // 항상 true를 반환
+      movingForwardCase.mockReturnValue(true);
       showRoundLog.printForwardDash();
     });
 
@@ -29,9 +29,10 @@ describe("실행 결과", () => {
     const numbers = [2, 3, 4, 5, 6, 7];
 
     numbers.forEach((number) => {
-      movingForwardCase.mockImplementation(() => number >= 4); // 4이상일 경우 true를 반환
+      movingForwardCase.mockImplementation(() => number >= 4);
       showRoundLog.printForwardDash();
     });
+
     expect(showRoundLog.carPositions[carName]).toBe("----");
   });
 });
