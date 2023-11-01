@@ -1,5 +1,5 @@
 // @ts-check
-import { Random, Console } from "@woowacourse/mission-utils";
+import { Console } from "@woowacourse/mission-utils";
 import { MESSAGE } from "../constants/constants";
 import { InputValidator } from "./InputValidator";
 import { InputConverter } from "./InputConverter";
@@ -35,7 +35,6 @@ class InputView {
   async inputCars() {
     const input = await Console.readLineAsync(MESSAGE.START_CAR_NAME);
 
-    // TODO: 주석처리테스트
     // 검증 보내기
     this.#inputValidator.validateCarNamesInput(input);
 
@@ -52,9 +51,7 @@ class InputView {
   // 2. 시도 횟수 입력
   async inputAttemptCount() {
     const input = await Console.readLineAsync(MESSAGE.START_NUMBER_OF_ATTEMPT);
-    // TODO 검증 보내기
     this.#inputValidator.validateAttemptCountInput(input);
-    //반환해서 리턴
     return this.#inputConverter.convertToAttemptCount(input);
   }
 }

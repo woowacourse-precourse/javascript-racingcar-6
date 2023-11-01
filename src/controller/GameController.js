@@ -79,9 +79,5 @@ export class GameController {
   #printGameWinners(cars) {
     const winnersDto = cars.makeWinnersDto(); //winners dto 생성
     this.#outputView.printWinners(winnersDto); //출력
-
-    //[dto에러로 임시 구현]
-    // const winners = cars.findWinners();
-    // this.#outputView.printWinners(winners); //출력 보내기
   }
 }

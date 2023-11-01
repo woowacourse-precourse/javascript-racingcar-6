@@ -56,12 +56,6 @@ class Car {
     if (carName.length > 5 || carName.length < 0) {
       throw new Error(ERROR.NAME_RANGE_ERROR);
     }
-
-    // 중복확인은 cars에서
-    // const carSet = new Set(carName);
-    // if (carSet.size !== carName.length) {
-    //   throw new Error(ERROR.NAME_DUPLICATION_ERROR);
-    // }
   }
 
   /**

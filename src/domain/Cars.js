@@ -56,7 +56,6 @@ export class Cars {
    */
 
   // 모든 차를 움직이는 매서드
-  // 자기 객체의 데이터는 되도록 자기 안에서 쓰기
   moveAllBy(moveDecider) {
     this.#carList.forEach((car) => {
       car.moveBy(moveDecider);
@@ -77,17 +76,16 @@ export class Cars {
     return new CarsDto(carDtoList);
   }
 
-  // /**
-  //  *
-  //  * @returns {WinnersDto}
-  //  */
+  /**
+   *
+   * @returns {WinnersDto}
+   */
 
   makeWinnersDto() {
     const winnerDtoList = this.#findWinners();
     return new WinnersDto(winnerDtoList); //여기서 winnersDto로 하나로 모아줌
   }
 
-  // 최대 이동거리 계산 후 우승자 반환
   #getMaxDistance() {
     //돌면서 거리들 뽑기
     const distanceList = this.#carList.map((car) => car.distance);
