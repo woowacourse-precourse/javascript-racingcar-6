@@ -40,7 +40,7 @@ class App {
       throw new Error(ERROR.NOT_PLURAL);
     }
 
-    cars.map((value) => {
+    cars.forEach((value) => {
       if (
         value.length < DEFAULT.NAME_MIN_LENGTH &&
         value.length > DEFAULT.NAME_MAX_LENGTH
@@ -56,12 +56,14 @@ class App {
     MissionUtils.Console.print(LOG.RUN);
 
     for (let i = 0; i < this.round; i++) {
-      this.moveOrStop();
+      this.race();
     }
+
+    MissionUtils.Console.print(LOG.WINNER + this.winner());
   }
 
-  moveOrStop() {
-    this.car.map((value, index) => {
+  race() {
+    this.car.forEach((value, index) => {
       const number = MissionUtils.Random.pickNumberInRange(
         DEFAULT.MIN_RANGE,
         DEFAULT.MAX_RANGE,
@@ -71,14 +73,20 @@ class App {
         this.score[index] += '-';
       }
 
-      this.printPhase(value, index);
+      MissionUtils.Console.print(`${value} : ${this.score[index]}`);
     });
 
     MissionUtils.Console.print('\n');
   }
 
-  printPhase(car, index) {
-    MissionUtils.Console.print(`${car} : ${this.score[index]}`);
+  winner() {
+    const length = this.score.map((value) => value.length);
+    const maxLen = Math.max(...length);
+    const winners = length.map((value, index) => {
+      if (value === maxLen) return this.car[index];
+    });
+
+    return winners.filter((value) => value !== undefined).join(', ');
   }
 }
 
