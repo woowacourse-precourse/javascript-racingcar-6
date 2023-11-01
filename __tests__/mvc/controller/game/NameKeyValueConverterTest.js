@@ -1,4 +1,4 @@
-import NameToKeyValueConverter from "../../../../src/controller/game/NameToKeyValueConverter";
+import nameToKeyValueConverter from "../../../../src/controller/game/NameToKeyValueConverter";
 import NUMBERS from "../../../../src/constants/numbers";
 import testName from "../../../../src/constants/testName";
 
@@ -8,11 +8,8 @@ describe("정상 진행 테스트", () => {
     const name = [testName.carOne, testName.carTwo, testName.carThree];
     const number = NUMBERS.four;
 
-    // when
-    const nameToKeyValueConverter = new NameToKeyValueConverter();
-
-    // then
+    // when, then
     const expectedKeyValue = [{ [testName.carOne]: "" }, { [testName.carTwo]: "" }, { [testName.carThree]: "" }];
-    expect(nameToKeyValueConverter.converter(name, number)).toEqual(expectedKeyValue);
+    expect(nameToKeyValueConverter(name, number)).toEqual(expectedKeyValue);
   });
 });

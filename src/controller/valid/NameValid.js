@@ -2,7 +2,6 @@ import NAME_ERROR_MESSAGE from "../../constants/nameErrorMessage.js";
 import SYMBOLS from "../../constants/symbols.js";
 
 class NameValid {
-  // 이름 유효 검증
   nameIsValid(name) {
     const nameSplit = name.split(SYMBOLS.comma);
     const cleanedNames = nameSplit.map((value) => value.trim());

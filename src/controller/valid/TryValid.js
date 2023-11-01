@@ -2,7 +2,6 @@ import TRY_ERROR_MESSAGE from "../../constants/tryErrorMessage.js";
 import SYMBOLS from "../../constants/symbols.js";
 
 class TryValid {
-  // 시도 횟 수 유효값 검증
   tryIsValid(number) {
     if (Number.isNaN(Number(number))) {
       throw new Error(`${TRY_ERROR_MESSAGE.stringError}`);
