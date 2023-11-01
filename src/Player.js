@@ -30,6 +30,7 @@ class Player {
       Player.INPUT_CHANCE_MESSAGE,
     );
     Console.print("");
+    this.validate.checkInput(inputChance);
     return inputChance;
   }
 }

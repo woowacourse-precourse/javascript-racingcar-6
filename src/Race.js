@@ -7,6 +7,7 @@ class Race {
   static MOVE_LINE = "-";
   static RESULT_NOTIFICATION = "실행 결과";
   static FINAL_RESULT_NOTIFICATION = "최종 우승자";
+
   // 0에서 9사이의 랜덤숫자를 만들고, 자동차를 전진 시키는 함수
   createNumber = (carList) => {
     for (const car in carList) {
@@ -20,6 +21,7 @@ class Race {
     }
     this.printRaceResult(carList);
   };
+
   // 자동차의 전진현황을 전달하는 함수
   moveCar = (inputChance, carList) => {
     Console.print(Race.RESULT_NOTIFICATION);
@@ -28,6 +30,7 @@ class Race {
     }
     this.finalResult(carList);
   };
+
   // 자동차의 전진현황을 출력하는 함수
   printRaceResult(carList) {
     for (const car in carList) {
@@ -35,6 +38,7 @@ class Race {
     }
     Console.print("");
   }
+
   // 최종결과를 반환하는 함수
   finalResult = (carList) => {
     const maxScore = Math.max(...Object.values(carList));
