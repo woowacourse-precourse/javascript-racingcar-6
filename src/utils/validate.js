@@ -1,3 +1,5 @@
+import { ERROR_MESSAGE } from '../constants/errorMessage.js';
+import { LIMIT } from '../constants/racingRule.js';
 import { CarNamesError, TryRoundError } from '../errors/UserInputErrors.js';
 import { paramType } from './paramType.js';
 
@@ -12,38 +14,50 @@ export const validate = {
     );
 
     if (!userInput.includes(`${COMMA}`)) {
-      throw new CarNamesError('자동차 이름은 (,)로 구분해 입력해 주세요 !');
-    }
-    if (spaceRegExp.test(userInput)) {
-      throw new CarNamesError('자동차 이름에 공백을 넣지 말아주세요 !');
-    }
-    if (carNamesArray.length === 2 && userInput[userInput.length - 1] === ',') {
-      throw new CarNamesError('게임에 필요한 인원은 최소 2명 이상입니다 !');
-    }
-    if (!carNamesArray.every((carName) => carName.length > 0)) {
       throw new CarNamesError(
-        '각 유저의 이름은 최소한 1글자 이상으로 입력해 주세요 !'
+        ERROR_MESSAGE.USER_INPUT.CAR_NAMES.NOT_HAVE_COMMA
       );
     }
-    if (!carNamesArray.every((carName) => carName.length < 6)) {
+    if (spaceRegExp.test(userInput)) {
+      throw new CarNamesError(ERROR_MESSAGE.USER_INPUT.CAR_NAMES.HAVE_SPACING);
+    }
+    if (carNamesArray.length === 2 && userInput[userInput.length - 1] === ',') {
       throw new CarNamesError(
-        '각 이름의 길이가 5 이상인 이름이 있어요 ! 각각의 자동차 이름의 길이는 5이하로 입력해 주세요 !'
+        ERROR_MESSAGE.USER_INPUT.CAR_NAMES.NOT_ENOUGH_PEOPLE
+      );
+    }
+    if (
+      !carNamesArray.every((carName) => carName.length >= LIMIT.NAME_LENGTH.MIN)
+    ) {
+      throw new CarNamesError(
+        ERROR_MESSAGE.USER_INPUT.CAR_NAMES.NOT_ENOUGH_NAME_LENGTH
+      );
+    }
+    if (
+      !carNamesArray.every((carName) => carName.length <= LIMIT.NAME_LENGTH.MAX)
+    ) {
+      throw new CarNamesError(
+        ERROR_MESSAGE.USER_INPUT.CAR_NAMES.OVER_NAME_LENGTH
       );
     }
     if (invalidCarNameRegExp.test(userInput)) {
       throw new CarNamesError(
-        '자동차이름은 숫자, 영문, 한글만으로 만들어 주세요 !'
+        ERROR_MESSAGE.USER_INPUT.CAR_NAMES.INVALID_NAME_FORM
       );
     }
-    if (carNamesArray.length > 10) {
-      throw new CarNamesError('한 게임에 입장 가능 인원은 10명입니다 !');
+    if (carNamesArray.length > LIMIT.PERSONNEL) {
+      throw new CarNamesError(
+        ERROR_MESSAGE.USER_INPUT.CAR_NAMES.OVER_PERSONNEL
+      );
     }
     if (new Set(carNamesArray).size !== carNamesArray.length) {
-      throw new CarNamesError('중복된 자동차 이름은 허용하지 않습니다 !');
+      throw new CarNamesError(
+        ERROR_MESSAGE.USER_INPUT.CAR_NAMES.IS_DUPLICATE_NAME
+      );
     }
     if (new Set(upperCaseFlattenArray).size !== carNamesArray.length) {
       throw new CarNamesError(
-        '대소문자를 입력할 수는 있지만 같은 문자일 경우 동일한 이름으로 간주합니다 ! 중복을 피해주세요'
+        ERROR_MESSAGE.USER_INPUT.CAR_NAMES.IS_UPPER_AND_LOWERCASE_DUPLICATE
       );
     }
   },
@@ -53,24 +67,32 @@ export const validate = {
     const rangeExpReg = /^(100|[1-9][0-9]|[1-9])$/g;
 
     if (Number.isNaN(numberTryRound)) {
-      throw new TryRoundError('시도할 횟수는 숫자만 입력해 주세요 !');
-    }
-    if (spaceRegExp.test(tryRound)) {
       throw new TryRoundError(
-        '시도할 횟수에 공백이 들어있습니다. 숫자만 입력해 주세요 !'
+        ERROR_MESSAGE.USER_INPUT.TRY_ROUND.IS_NOT_NUMBER_TYPE
       );
     }
+    if (spaceRegExp.test(tryRound)) {
+      throw new TryRoundError(ERROR_MESSAGE.USER_INPUT.TRY_ROUND.HAVE_SPACING);
+    }
     if (numberTryRound === 0) {
-      throw new TryRoundError('시도할 횟수는 최소한 1이상이여야 합니다 !');
+      throw new TryRoundError(
+        ERROR_MESSAGE.USER_INPUT.TRY_ROUND.LACK_TRY_ROUND
+      );
     }
     if (tryRound.length > 1 && tryRound[0] === '0') {
-      throw new TryRoundError('앞자리의 불필요한 0 은 빼주세요 !');
+      throw new TryRoundError(
+        ERROR_MESSAGE.USER_INPUT.TRY_ROUND.INCLUDE_FIRST_INDEX_ZERO
+      );
     }
     if (tryRound[0] === '+' || tryRound[0] === '-') {
-      throw new TryRoundError('부호를 제외한 정수만 입력해주세요 !');
+      throw new TryRoundError(
+        ERROR_MESSAGE.USER_INPUT.TRY_ROUND.INCLUDE_MATH_SIGN
+      );
     }
     if (!rangeExpReg.test(tryRound)) {
-      throw new TryRoundError('1~100 사이의 숫자만 입력해주세요');
+      throw new TryRoundError(
+        ERROR_MESSAGE.USER_INPUT.TRY_ROUND.INVALID_TRY_ROUND_RANGE
+      );
     }
   },
 };
