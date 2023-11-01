@@ -3,9 +3,16 @@ import { Console, Random } from "@woowacourse/mission-utils";
 class App {
   constructor() {
     this.car = [];
-    this.data = [];
+    this.pos = [];
     this.winner = [];
     this.attempt = 0;
+  }
+
+  async play() {
+    await this.init();
+    Console.print("실행 결과\n");
+    this.gameStart();
+
   }
   
   setCar(car) {
@@ -16,22 +23,21 @@ class App {
     return this.attempt;
   }
 
-  setData(length) {
-    this.data = new Array(length).fill("");
+  setPos(length) {
+    this.pos = new Array(length).fill("");
   }
-
 
   async getCarName() {
     const carName = (
       await Console.readLineAsync(
-        "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n",
+        "자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n",
       )
     ).split(",");
     return carName;
   }
   
   static CarNameValidator(CarName) {
-    if (input.length > 5) {
+    if (CarName.length > 5) {
       throw new Error("[ERROR] 이름은 5자 이하가 되어야 합니다.");
     }
   }
@@ -68,13 +74,6 @@ class App {
 
     this.setAttempt(attempt);
     this.setData(this.car.length);
-  }
-  
-  
-  async play() {
-    await this.init();
-    Console.print("실행 결과\n");
-
   }
 }
 
