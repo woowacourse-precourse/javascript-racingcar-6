@@ -1,16 +1,27 @@
-import { Console } from "@woowacourse/mission-utils";
-import { Car } from "./Car";
+import { Console, Random } from "@woowacourse/mission-utils";
+import { Car } from "./Car.js";
 
 class App {
   async play() {
     try {
       const carNames = await this.enterCarNames();
-      const tryCount = await this.enterTryCount();
+      let tryCount = await this.enterTryCount();
 
       const cars = {};
-      carNames.array.forEach((carName) => {
+      carNames.forEach((carName) => {
         cars[carName] = new Car(carName);
       });
+
+      Console.print("실행 결과");
+      while (tryCount > 0) {
+        carNames.forEach((carName) => {
+          const car = cars[carName];
+          car.moveSimulate(Random.pickNumberInRange(0, 9));
+          Console.print(car.printResult());
+        });
+        Console.print("\n");
+        tryCount -= 1;
+      }
     } catch (e) {
       throw new Error(`[ERROR] : ${e.message}`);
     }
@@ -41,5 +52,8 @@ class App {
     return inputTryCount;
   }
 }
+
+const app = new App();
+app.play();
 
 export default App;
