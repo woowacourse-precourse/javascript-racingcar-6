@@ -60,12 +60,14 @@ class App {
     const NAME_MIN_LENG = 1;
     const NAME_MAX_LENG = 5;
     for (let i = 0; i < carNameArry.length; i++) {
-      if (carNameArry[i].length < NAME_MIN_LENG || carNameArry[i].length > NAME_MAX_LENG) {
+      if ((carNameArry[i].length < NAME_MIN_LENG) ||
+       (carNameArry[i].length > NAME_MAX_LENG)) {
         return true;
       } 
     }
     return false;
   }
+  
 //직진, 정지 판단 ----------------------------------------------------
  
   forwordOrStop() {
@@ -81,7 +83,7 @@ class App {
   }
 
 //----------------------------------------------------
-
+  //각 회차별 출력 함수
   printEachProcess(car, times) {
     let forwordArry = [...car];
     forwordArry.fill('');
@@ -94,11 +96,8 @@ class App {
     return forwordArry;
   }
 
+  //각 회차별 자동차 한 대당 랜덤 결과 출력 함수
   driveOneCar(car, forwordArry) {
-    // for (let i = 0; i < car.length ; i++) {
-    //   forwordArry[i] += this.forwordOrStop(); //foreach도 이렇게 넣으면 되는거 아닐까
-    //   Console.print(`${car[i]} : ${forwordArry[i]}`);
-    // }
     car.forEach((name, index) => {
       forwordArry[index] += this.forwordOrStop();
       Console.print(`${name} : ${forwordArry[index]}`);
@@ -107,8 +106,7 @@ class App {
     return forwordArry;
   }
 
-  resultOfWinner(car, forwordArry) { // printEachProcess(의 마지막)받음.
-   
+  resultOfWinner(car, forwordArry) {
     let winner = [];
     forwordArry.forEach(result => {
       winner.push(result.length);
