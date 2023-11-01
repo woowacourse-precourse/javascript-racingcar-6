@@ -22,8 +22,8 @@ class App {
     for (let i = 0; i < repeatNumber; i++) {
       for (const carObject of carObjects) {
         for (const carName in carObject) {
-          this.generateRandomNumber(carObject);
-          const ResultNumber = this.repeatDash(carObject, carName);
+          this.updateCarObjectBasedOnRandomNumber(carObject);
+          const ResultNumber = this.createDashString(carObject, carName);
           MissionUtils.Console.print(carName + " : " + ResultNumber);
         }
       }
@@ -47,7 +47,7 @@ class App {
     MissionUtils.Console.print(GAME_MESSAGE.GAME_WINNER + winCarArr);
   }
 
-  generateRandomNumber(carObject) {
+  updateCarObjectBasedOnRandomNumber(carObject) {
     const randomNumber = MissionUtils.Random.pickNumberInRange(1, 9);
     if (randomNumber > 3) {
       for (const carName in carObject) {
@@ -57,7 +57,7 @@ class App {
     return carObject;
   }
 
-  repeatDash(carObject, carName) {
+  createDashString(carObject, carName) {
     let ResultNumber = "";
     for (let i = 0; i < carObject[carName]; i++) {
       ResultNumber = ResultNumber.concat("-");
