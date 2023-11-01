@@ -1,7 +1,4 @@
-import { Console } from '@woowacourse/mission-utils';
-// import randomNumberGenerator from '../utils/randomNumberGenerator';
-import { Random } from '@woowacourse/mission-utils';
-// import OutputView from '../view/OutputView';
+import { Console, Random } from '@woowacourse/mission-utils';
 
 export default class RaceController {
   constructor({ userInputCarList, userInputPlayNumber }) {
@@ -10,6 +7,7 @@ export default class RaceController {
   }
 
   startGame() {
+    Console.print('\n', '실행 결과');
     let currentPlayNumber = 0;
     while (this.playNumber > currentPlayNumber) {
       this.countScore();
@@ -20,7 +18,6 @@ export default class RaceController {
   }
 
   countScore() {
-    // 전진 카운팅 함수
     this.carList.forEach((_, index) => {
       const randomNumber = Random.pickNumberInRange(0, 9);
       if (randomNumber >= 4) {
@@ -31,7 +28,6 @@ export default class RaceController {
 
   printResult() {
     const makeResultObject = (carName, score) => `${carName} : ${score}`;
-    // 회차별 각 차량 전진 횟수 프린트 함수
     this.carList.forEach(car => {
       const score = '-'.repeat(car.score);
       Console.print(makeResultObject(car.carName, score));
@@ -40,7 +36,6 @@ export default class RaceController {
   }
 
   printWinner() {
-    // 최종 전진 누적 횟수 프린트 함수
     let winner = [];
     let highestScore = 0;
     this.carList.forEach(car => {

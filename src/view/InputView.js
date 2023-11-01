@@ -19,9 +19,7 @@ export default class InputView {
       number: /[0-9]/g,
       special: /[!@#$%^&*()_+{}[\]<>.?~\\=]/g,
     };
-    // carName 입력 받기
     const carNameString = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)');
-    // ! string 값 유효성 검사를 생각하지 못해서 발생한 문제
     if (regExp.blank.test(carNameString)) {
       throw new Error('[ERROR] 자동차 이름에 공백을 사용할 수 없습니다.');
     }
@@ -31,9 +29,8 @@ export default class InputView {
     if (regExp.special.test(carNameString)) {
       throw new Error('[ERROR] 자동차 이름에 특수문자를 사용할 수 없습니다.');
     }
-    // !
+
     const carNameArray = carNameString.split(',');
-    // 예외 처리 후 this.userInputCarList에 재할당
     carNameArray.forEach(carName => {
       if (carNameArray.length > 5) {
         throw new Error('[ERROR] 자동차 이름은 5 글자를 초과할 수 없습니다.');
@@ -51,7 +48,6 @@ export default class InputView {
     return this.makeCarObject(carNameArray);
   }
 
-  // playNumber 입력받기
   async inputPlayNumber() {
     this.playNumber = await Console.readLineAsync('시도할 횟수를 입력하세요.');
 
@@ -61,11 +57,9 @@ export default class InputView {
     if (Number.isNaN(this.playNumber)) {
       throw new Error('[ERROR] 시도할 횟수에는 숫자만 입력할 수 있습니다.');
     }
-    // this.userInputPlayNumber에 재할당
     this.userInputPlayNumber = this.playNumber;
   }
 
-  // 회차별 출력에 쓸 양식 만들기 { pobi : ----- }
   makeCarObject(carNameArray) {
     carNameArray.forEach((userInputCar, index) => {
       this.userInputCarList[index] = { carName: userInputCar, score: 0 };
