@@ -27,17 +27,15 @@ export async function generateRandomNum() {
   return MissionUtils.Random.pickNumberInRange(0, 9);
 }
 
-export async function checkRandomNum(carList) {
-  return carList.map((car) => {
-    const randomNum = MissionUtils.Random.pickNumberInRange(0, 9);
+export async function updateDistance(car, randomNum) {
+  if (randomNum >= 4) {
+    return { ...car, carDistance: car.carDistance + "-" };
+  }
 
-    if (randomNum >= 4) {
-      return { ...car, carDistance: car.carDistance + "-" };
-    }
-
-    return car;
-  });
+  return car;
 }
+
+export async function checkRandomNum(carList) {}
 
 export async function playRacing() {
   let cars = await constructCar();
