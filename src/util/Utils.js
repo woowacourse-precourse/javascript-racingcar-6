@@ -27,8 +27,8 @@ export const printWinnerList = (winnerList) => {
   Console.print(PRINT_MESSAGES.winnerList(winnerList));
 };
 
-export const printProgressResult = () => {
-  Console.print(PRINT_MESSAGES.progressResult);
+export const printExecutionResult = () => {
+  Console.print(PRINT_MESSAGES.executionResult);
 };
 
 export const printEmptyLine = () => {

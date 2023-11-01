@@ -12,7 +12,7 @@ export const INPUT_MESSAGES = {
 };
 
 export const PRINT_MESSAGES = {
-  progressResult: '\n실행 결과',
+  executionResult: '\n실행 결과',
   winnerList: (winnerList) => `최종 우승자 : ${winnerList}`,
   progressProcess: (name, progress) => `${name} : ${progress}`,
   forward: '-',

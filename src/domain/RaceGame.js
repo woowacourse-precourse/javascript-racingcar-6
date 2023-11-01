@@ -2,7 +2,7 @@ import Car from './Car.js';
 import {
   printProgressProcess,
   printWinnerList,
-  printProgressResult,
+  printExecutionResult,
   printEmptyLine,
 } from '../util/Utils.js';
 
@@ -31,10 +31,11 @@ export default class RaceGame {
       .map((car) => car.name)
       .join(',');
     printWinnerList(winnerList);
+    return winnerList;
   }
 
-  async gameStart() {
-    printProgressResult();
+  gameStart() {
+    printExecutionResult();
     this.gameTry();
     this.checkWinner();
   }
