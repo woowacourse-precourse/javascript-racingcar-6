@@ -1,5 +1,9 @@
+import { winner } from "./racingGame.js";
+
 class App {
-  async play() {}
+  async play() {
+    await winner();
+  }
 }
 
 export default App;
