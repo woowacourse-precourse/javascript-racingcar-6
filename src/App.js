@@ -2,7 +2,7 @@ import { Console, Random } from '@woowacourse/mission-utils';
 import {
   CAR_INPUT_PATTERN,
   CAR_INPUT_DUPLICATE_PATTERN,
-  RETRY_INPUT_PATTERN,
+  CAR_MOVE_INPUT_PATTERN,
   validate,
 } from './validate.js';
 
@@ -11,9 +11,9 @@ const CAR_ADVANCE_THRESHOLD = 4;
 class App {
   async play() {
     const cars = await this.getCars();
-    const retry = await this.getRetry();
+    const moveTimes = await this.getMoveTimes();
 
-    const distances = this.startRace(cars, retry);
+    const distances = this.startRace(cars, moveTimes);
 
     const winners = this.getWinners(distances);
 
@@ -33,20 +33,20 @@ class App {
     return cars;
   }
 
-  async getRetry() {
+  async getMoveTimes() {
     Console.print('시도할 횟수는 몇 회인가요?');
     const input = (await Console.readLineAsync('')).trim();
-    if (!validate(input, RETRY_INPUT_PATTERN)) {
+    if (!validate(input, CAR_MOVE_INPUT_PATTERN)) {
       throw new Error('[ERROR] 입력이 잘못된 형식입니다.');
     }
-    const retry = Number(input);
-    return retry;
+    const moveTimes = Number(input);
+    return moveTimes;
   }
 
-  startRace(cars, retry) {
+  startRace(cars, moveTimes) {
     Console.print('실행 결과');
     const distances = Object.fromEntries(cars.map((k) => [k, 0]));
-    for (let i = 0; i < retry; i += 1) {
+    for (let i = 0; i < moveTimes; i += 1) {
       cars.forEach((car) => {
         distances[car] += Random.pickNumberInRange(0, 9) >= CAR_ADVANCE_THRESHOLD;
         Console.print(`${car} : ${'-'.repeat(distances[car])}`);
