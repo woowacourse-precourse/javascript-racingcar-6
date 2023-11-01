@@ -7,8 +7,8 @@ const getLogSpy = () => {
   return logSpy;
 };
 
-describe('우승자 반환', () => {
-  test('[우승자 반환] 단독 우승자 반환', () => {
+describe('우승자 출력', () => {
+  test('[우승자 출력] 단독 우승자 출력', () => {
     // Arrange
     const carName = new Map([
       ['pobi', '--'],
@@ -21,7 +21,7 @@ describe('우승자 반환', () => {
     const expectedResult = '최종 우승자 : pobi';
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(expectedResult));
   });
-  test('[우승자 반환] 공동 우승자 반환', () => {
+  test('[우승자 출력] 공동 우승자 출력', () => {
     // Arrange
     const carName = new Map([
       ['pobi', '--'],
