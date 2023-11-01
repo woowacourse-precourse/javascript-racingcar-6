@@ -3,7 +3,7 @@ import { GAME_HELP } from "../constants/GAME_HELP.js";
 import Car from "./Car.js";
 import TryCount from "./TryCount.js";
 import RandomNumber from "./RandomNumber.js";
-import MovingMovingForward from "./MovingForward.js";
+import MovingForward from "./MovingForward.js";
 import Winner from "./Winner.js";
 
 class App {

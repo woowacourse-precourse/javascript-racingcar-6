@@ -43,4 +43,4 @@ class MovingForward {
   }
 }
 
-export default Forward;
+export default MovingForward;
