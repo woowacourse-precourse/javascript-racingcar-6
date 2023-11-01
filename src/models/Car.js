@@ -1,13 +1,14 @@
-import { CONSTANTS } from '../constants/index.js';
-import { pickRandomNumbInRange } from '../utils/random.js';
+import { Random } from '@woowacourse/mission-utils';
 
 class Car {
   #position = 0;
 
-  static randomNumbRange = Object.freeze({
+  static randomNumberRange = Object.freeze({
     from: 0,
     to: 9,
   });
+
+  static FORWARD_THRESHOLD = 4;
 
   constructor(name) {
     this.name = name;
@@ -26,8 +27,8 @@ class Car {
   }
 
   static shouldCarMove() {
-    const { from, to } = Car.randomNumbRange;
-    return pickRandomNumbInRange(from, to) >= CONSTANTS.FORWARD_THRESHOLD;
+    const { from, to } = Car.randomNumberRange;
+    return Random.pickNumberInRange(from, to) >= Car.FORWARD_THRESHOLD;
   }
 }
 

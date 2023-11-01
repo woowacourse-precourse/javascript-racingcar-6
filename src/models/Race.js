@@ -1,5 +1,5 @@
 import Car from './Car.js';
-import PrinterView from '../helpers/PrinterView.js';
+import { Console } from '@woowacourse/mission-utils';
 
 class Race {
   constructor(carNames, attempts) {
@@ -12,7 +12,7 @@ class Race {
     while (currentAttempts < this.attempts) {
       this.moveCars();
       this.printRaceStatus();
-      PrinterView.printNewLine();
+      Console.print('\n');
       currentAttempts += 1;
     }
   }
@@ -29,7 +29,7 @@ class Race {
       const currentPosition = car.getPosition();
       const dash = '-'.repeat(currentPosition);
 
-      PrinterView.print(`${name} : ${dash}`);
+      Console.print(`${name} : ${dash}`);
     }
   }
 

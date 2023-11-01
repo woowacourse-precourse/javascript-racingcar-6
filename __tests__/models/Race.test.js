@@ -1,5 +1,5 @@
 import Car from '../../src/models/Car.js';
-import PrinterView from '../../src/helpers/PrinterView';
+import { Console } from '@woowacourse/mission-utils';
 import Race from '../../src/models/Race.js';
 
 describe('Race 클래스 테스트', () => {
@@ -24,8 +24,8 @@ describe('Race 클래스 테스트', () => {
     const moveCarsSpy = jest.spyOn(race, 'moveCars');
     const printRaceStatusSpy = jest.spyOn(race, 'printRaceStatus');
 
-    // PrinterView.print 메서드를 모킹하여 console.log 호출을 방지
-    jest.spyOn(PrinterView, 'print').mockImplementation(() => {});
+    // Console.print 메서드를 모킹하여 console.log 호출을 방지
+    jest.spyOn(Console, 'print').mockImplementation(() => {});
 
     race.startRace();
 
