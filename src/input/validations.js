@@ -18,6 +18,11 @@ const conditions = {
     isOverFive(inputs) {
       return stringToArray(inputs).some((input) => input.length > CAR_NAME_LIMIT);
     },
+
+    isDuplicated(inputs) {
+      console.log(stringToArray(inputs).length, new Set(stringToArray(inputs)).size);
+      return stringToArray(inputs).length !== new Set(stringToArray(inputs)).size;
+    },
   },
 };
 
@@ -33,9 +38,13 @@ export const validate = {
   },
 
   carNames(inputs) {
-    const { isOverFive } = conditions.carNames;
+    const { isOverFive, isDuplicated } = conditions.carNames;
     if (isOverFive(inputs)) {
       throw new Error(MESSAGE.CAR_NAME.ERROR.IS_OVER_FIVE);
+    }
+
+    if (isDuplicated(inputs)) {
+      throw new Error(MESSAGE.CAR_NAME.ERROR.IS_DUPLICATED);
     }
   },
 };
