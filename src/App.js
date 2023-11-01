@@ -15,7 +15,7 @@ class App {
     const NAMES = await MissionUtils.Console.readLineAsync(
       MESSAGE.carNameForStart,
     );
-    NAMES.split(',').forEach(name => {
+    NAMES.split(',').forEach((name) => {
       if (name.length > 5) {
         throw new Error(ERROR.carNameInputLong);
       }

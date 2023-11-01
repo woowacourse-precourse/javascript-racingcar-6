@@ -10,7 +10,7 @@ export class Race {
   runRace() {
     MissionUtils.Console.print(MESSAGE.roundResult);
     for (let i = 0; i < this.rounds; i++) {
-      this.cars.forEach(car => {
+      this.cars.forEach((car) => {
         const NAME = car[0];
         let steps = this.move(car[1]);
         MissionUtils.Console.print(`${NAME} : ${steps}`);
@@ -39,7 +39,7 @@ export class Race {
   decideWinner() {
     let winner = '';
     let maxSteps = 0;
-    this.cars.forEach(car => {
+    this.cars.forEach((car) => {
       if (car[1].length > maxSteps) {
         winner = car[0];
         maxSteps = car[1].length;
