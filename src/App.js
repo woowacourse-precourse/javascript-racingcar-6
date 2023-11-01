@@ -12,10 +12,22 @@ async function inputCars() {
     };
   });
 
-  return carArray
-}
+  return carArray;
+};
 
+// 이동할 횟수 입력
+async function inputTryNum() {
+  const input_num = await MissionUtils.Console.readLineAsync(
+    "시도할 횟수를 입력해주세요."
+  );
+  this.num = parseInt(input_num,10);
 
+  if (isNaN(this.num)) {
+    throw Error("[ERROR] 입력 형식이 잘못되었습니다.")
+  };
+
+  return input_num;
+};
 
 
 class App {
