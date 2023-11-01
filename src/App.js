@@ -1,14 +1,25 @@
 import { Console, Random } from '@woowacourse/mission-utils';
+import Errors from './message/Errors.js';
+import Messages from './message/Messages.js';
 
-function check_validate(player_arr) {
+function check_name_validate(player_arr) {
+  if (player_arr.length <= 1) throw new Error(Errors.SHORTAGE_ERROR);
+  const player_name_set = new Set();
+
   player_arr.forEach((player_name) => {
-    if (player_name.trim() === '') {
-      throw new Error('[ERROR] 제대로 된 플레이어 이름 양식에 맞지 않습니다.');
-    }
-    if (player_name.length > 5) {
-      throw new Error('[ERROR] 플레이어의 이름은 다섯 글자 이하만 가능합니다.');
-    }
+    const trimmed_name = player_name.trim();
+
+    if (trimmed_name === '') throw new Error(Errors.NAME_ERROR);
+    if (trimmed_name.length > 5) throw new Error(Errors.LENGTH_ERROR);
+    if (player_name_set.has(trimmed_name)) throw new Error(Errors.DUPLICATE_NAME_ERROR);
+
+    player_name_set.add(trimmed_name);
   });
+}
+function check_number_validate(play_number) {
+  if (!play_number.match(/^\d+$/)) {
+    throw new Error(Errors.NUMBER_ERROR);
+  }
 }
 
 class App {
@@ -18,13 +29,14 @@ class App {
 
   async play() {
     const players = [];
-    await this.Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)').then((result) => {
+    await this.Console.readLineAsync(Messages.GAME_START).then((result) => {
       const player_input = result.split(',');
-      check_validate(player_input);
+      check_name_validate(player_input);
       player_input.map((player_name) => players.push(player_name));
     });
 
-    const play_number = await this.Console.readLineAsync('시도할 횟수는 몇 회인가요?');
+    const play_number = await this.Console.readLineAsync(Messages.INSERT_COUNT);
+    check_number_validate(play_number);
     let play_now = 0;
     const players_object = players.reduce(
       (obj, player) => ({
@@ -41,26 +53,31 @@ class App {
         Console.print(`${player_name} : ${players_object[player_name].join('')}`);
       });
       play_now += 1;
-    } while (play_now === play_number);
-    const findLongestArray = (obj) => {
-      let longestArray = [];
-      let longestArrayKey = null;
+    } while (play_now < play_number);
 
-      Object.entries(obj).forEach(([key, value]) => {
-        if (Array.isArray(value) && value.length > longestArray.length) {
-          longestArray = value;
-          longestArrayKey = key;
+    const players_arr = Object.entries(players_object);
+
+    const winners = players_arr.reduce(
+      (acc, [player_name, player_result]) => {
+        if (player_result.length > acc.max) {
+          return {
+            max: player_result.length,
+            players: [player_name],
+          };
         }
-      });
+        if (player_result.length === acc.max) {
+          acc.players.push(player_name);
+        }
+        return acc;
+      },
+      { max: Number.MIN_SAFE_INTEGER, players: [] },
+    );
 
-      return longestArrayKey;
-    };
-    const winner = findLongestArray(players_object);
-    Console.print(`최종 우승자 : ${winner}`);
+    Console.print(`${Messages.FINAL_WINNER} ${winners.players.join(',')}`);
   }
 }
 
 export default App;
 
-const app = new App();
-app.play();
+// const app = new App();
+// app.play();
