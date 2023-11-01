@@ -6,7 +6,7 @@
 
 import { ERROR } from "../constants/constants";
 import OutputView from "../view/outputView";
-import Car from "./qqcar";
+import Car from "./Car";
 import { CarDto } from "./dto/carDto";
 import { CarsDto } from "./dto/carsDto";
 import { WinnerDto } from "./dto/winnerDto";

@@ -37,7 +37,7 @@ class InputView {
 
     // TODO: 주석처리테스트
     // 검증 보내기
-    // this.#inputValidator.validateCarNamesInput(input);
+    this.#inputValidator.validateCarNamesInput(input);
 
     //반환해서 리턴
     // Cars[]
