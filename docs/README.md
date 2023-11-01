@@ -19,10 +19,10 @@
 
 ### 3. Computer
 
-- [ ] 두 번째로 입력 받는 prompt에서 시도할 횟수만큼 loop를 돌린다.
-- [ ] 각 차수별 결과 print 메서드
+- [x] 두 번째로 입력 받는 prompt에서 시도할 횟수만큼 loop를 돌린다.
+- [x] 각 차수별 결과 print 메서드
 
-- [ ] 최종 결과 print 메서드
+- [x] 최종 결과 print 메서드
 
 ### 4. User
 - [x] 사용자로 부터 prompt 입력받기
