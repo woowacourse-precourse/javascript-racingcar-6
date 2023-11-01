@@ -1,7 +1,7 @@
 import App from '../src/App';
 
 describe('자동차 이름 테스트', () => {
-  test('5자를 초과하는 자동차 이름이 있을 때', async () => {
+  test('5자를 초과하는 자동차 이름이 있을 때', () => {
     const input = 'yujinCar,car';
 
     expect(() =>
@@ -11,7 +11,7 @@ describe('자동차 이름 테스트', () => {
     );
   });
 
-  test('1자 미만의 자동차 이름이 있을 때', async () => {
+  test('1자 미만의 자동차 이름이 있을 때', () => {
     const input = ',car';
 
     expect(() =>
@@ -21,7 +21,7 @@ describe('자동차 이름 테스트', () => {
     );
   });
 
-  test('중복된 자동차 이름이 있을 때', async () => {
+  test('중복된 자동차 이름이 있을 때', () => {
     const input = 'car,car';
 
     expect(() =>
@@ -31,7 +31,7 @@ describe('자동차 이름 테스트', () => {
     );
   });
 
-  test('자동차 이름이 1개일 때', async () => {
+  test('자동차 이름이 1개일 때', () => {
     const input = 'car';
 
     expect(() =>
