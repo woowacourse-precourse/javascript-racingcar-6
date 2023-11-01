@@ -15,6 +15,7 @@ class App {
 
   async play() {
     await this.setupGame();
+    this.printGameStartMessage();
   }
 
   async setupGame() {
@@ -31,6 +32,10 @@ class App {
     const trialNumber = await Console.readLineAsync(MESSAGES.INPUT_TRIAL);
     validateTrialNumber(trialNumber);
     this.trial = Number(trialNumber);
+  }
+
+  printGameStartMessage() {
+    Console.print(MESSAGES.GAME_START);
   }
 }
 
