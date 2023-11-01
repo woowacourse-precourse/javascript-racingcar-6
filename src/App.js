@@ -1,7 +1,7 @@
 import { Cars } from './game/Cars.js';
 import { Computer } from './game/Computer.js';
 import { Race } from './game/Race.js';
-import { getCarNames } from './input/CarNames.js';
+import { getCarNames } from './input/carNames.js';
 import { getTry } from './input/Try.js';
 
 class App {

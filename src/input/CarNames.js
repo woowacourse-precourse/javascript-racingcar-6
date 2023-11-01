@@ -9,8 +9,6 @@ export const getCarNames = async () => {
 
     return names.split(',');
   } catch (e) {
-    return new Promise((_, reject) => {
-      reject(e);
-    });
+    throw new Error(e);
   }
 };

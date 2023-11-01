@@ -9,8 +9,6 @@ export const getTry = async () => {
 
     return input;
   } catch (e) {
-    return new Promise((_, reject) => {
-      reject(e);
-    });
+    throw new Error(e);
   }
 };
