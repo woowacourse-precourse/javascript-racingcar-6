@@ -32,8 +32,6 @@ class App {
       this.racingCar.set(Car[i], "");
     }
 
-    Console.print(this.racingCar);
-
     return this.racingcar;
   }
   
@@ -67,6 +65,7 @@ class App {
   }
 
   Print_Distance(racingcar) {
+    Console.print('');
     
     for (let [key, value] of racingcar) {
       Console.print(key + " : " + value);
@@ -96,9 +95,11 @@ class App {
   }
 
   Print_Winner(member) {
-    
     const winner = member;
-    Console.print('최종 우승자 : ' + winner.map((winners) => winners).join(','));
+    Console.print('');
+    Console.print('최종 우승자 : ' + winner.map((winners) => winners).join(', '));
+  }
+  
   ValidInputExist(input) {
     if (!input) {
       throw new Error("[ERROR] 입력값이 없습니다.");
