@@ -11,12 +11,16 @@ class RacingCar {
     const race = new Race();
     await race.initialize();
 
-    const result = race.proceedRace(car);
-    this.endGame(result);
+    const raceResult = race.proceedRace(car);
+    this.endGame(raceResult);
   }
 
-  endGame(carList) {
-    // TODO: 우승자 안내 및 게임 종료 구현
+  endGame(raceResult) {
+    const maxCarPosition = Math.max(...Object.values(raceResult));
+    const winners = Object.keys(raceResult).filter(
+      (carName) => raceResult[carName] === maxCarPosition,
+    );
+    console.log(winners);
   }
 }
 
