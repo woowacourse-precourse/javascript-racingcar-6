@@ -5,16 +5,17 @@ import MESSAGES from '../utils/Messages';
 class Car {
   constructor(name) {
     this[CONSTANTS.nameKey] = name;
-    this[CONSTANTS.progressStatusKey] = '';
+    this[CONSTANTS.progressStatusKey] = CONSTANTS.initialStatus;
   }
 
   progressDependingOnValue() {
     const value = Random.pickNumberInRange(CONSTANTS.minimumValue, CONSTANTS.maximumValue);
-    if (value >= CONSTANTS.progressValue) this.progressStatus += MESSAGES.progressBar;
+    if (value >= CONSTANTS.progressValue) this.progressStatus += 1;
   }
 
   getProgressStatus() {
-    return this[CONSTANTS.nameKey] + MESSAGES.resultDelimeter + this[CONSTANTS.progressStatusKey];
+    const progressBar = MESSAGES.progressBar.repeat(this[CONSTANTS.progressStatusKey]);
+    return this[CONSTANTS.nameKey] + MESSAGES.resultDelimeter + progressBar;
   }
 }
 
