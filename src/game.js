@@ -1,5 +1,5 @@
 import { Console, Random } from '@woowacourse/mission-utils';
-import { MOVE_NUMBER } from '../constants/setting.js';
+import MOVE_NUMBER from '../constants/setting.js';
 import { MESSAGE } from '../constants/message.js';
 
 const isMove = () => {
