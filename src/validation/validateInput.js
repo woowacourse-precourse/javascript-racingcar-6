@@ -10,7 +10,7 @@ export const validateCarNameFormat = (carName) => {
     throw new Error(ERROR_TEXT.INPUT.CAR_NAME.NOT_ENTER);
   }
 
-  if (carName.length !== carName.trim()) {
+  if (carName.length !== carName.split(" ").join("").length) {
     throw new Error(ERROR_TEXT.INPUT.COMMON.BLANK_SPACE);
   }
 
