@@ -4,7 +4,6 @@ import RacingGame from "../model/RacingGame.js";
 import InputValidator from "../utils/Validator.js";
 class RacingGameController {
   #racingCars;
-  #attempt;
   #result;
 
   constructor() {}
@@ -47,8 +46,8 @@ class RacingGameController {
   calculateWinner(score) {
     const winnerScore = Math.max(...Object.values(score));
     const winners = Object.entries(score)
-      .filter(([name, score]) => score === winnerScore)
-      .map(([name, score]) => name);
+      .filter(([_, score]) => score === winnerScore)
+      .map(([name, _]) => name);
     return winners;
   }
 

@@ -1,18 +1,28 @@
+import {
+  MESSAGE,
+  StaticChar,
+  StaticNumber,
+  ERROR_MESSAGE,
+} from "../model/Constant.js";
+
 const InputValidator = {
   validateRacingCarName(input) {
     input.forEach((car) => {
-      if (car.length > 5) {
-        throw new Error("[ERROR] 차의 이름은 5자 이하만 가능합니다.");
+      if (car.length > StaticNumber.POSSIBLE_CAR_NAME_LENGTH) {
+        throw new Error(ERROR_MESSAGE.INPUT_LENGTH_ERROR);
+      }
+      if (car.trim() == StaticChar.CAR_NAME_BLANK) {
+        throw new Error(ERROR_MESSAGE.INPUT_BLANK_ERROR);
       }
     });
   },
 
   validateRacingAttempt(input) {
-    if (input < 1) {
-      throw new Error("[ERROR] 시도 횟수는 1이상인 자연수여야 합니다.");
+    if (input < StaticNumber.POSSIBLE_MIN_RACE_ATTEMPT) {
+      throw new Error(ERROR_MESSAGE.INPUT_NUMBER_NEGATIVE_ERROR);
     }
     if (Number.isInteger(input) === false) {
-      throw new Error("[ERROR] 시도 횟수는 자연수여야 합니다.");
+      throw new Error(ERROR_MESSAGE.INPUT_NUMBER_ERROR);
     }
   },
 };

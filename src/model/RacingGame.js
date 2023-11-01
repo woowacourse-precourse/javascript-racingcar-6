@@ -1,11 +1,13 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-
+import { StaticChar, StaticNumber } from "../model/Constant.js";
 class RacingGame {
   #racingCars = {};
   #attempt;
 
   constructor(cars) {
-    cars.split(",").forEach((key) => (this.#racingCars[key] = ""));
+    cars
+      .split(StaticChar.CAR_NAME_SPLIT)
+      .forEach((key) => (this.#racingCars[key] = StaticChar.CAR_NAME_BLANK));
   }
 
   setRacingAttempt(attempt) {
@@ -25,7 +27,7 @@ class RacingGame {
   }
 
   get isMove() {
-    if (this.getRandomNumber >= 4) {
+    if (this.getRandomNumber >= StaticNumber.CONDITION_MOVE) {
       return 1;
     }
     return 0;
@@ -33,7 +35,7 @@ class RacingGame {
 
   move(car) {
     if (this.isMove) {
-      this.#racingCars[car] += "-";
+      this.#racingCars[car] += StaticChar.CAR_DISTANCE;
     }
     return this.#racingCars[car].length;
   }

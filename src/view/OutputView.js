@@ -1,12 +1,13 @@
 import { Console } from "@woowacourse/mission-utils";
+import { MESSAGE, StaticChar } from "../model/Constant.js";
 
 const OutputView = {
   printRaceStartMessage() {
-    Console.print("\n실행 결과");
+    Console.print(MESSAGE.RACE_START);
   },
 
   printRaceScore(name, score) {
-    Console.print(`${name} : ${"-".repeat(score)}`);
+    Console.print(MESSAGE.RACE_SCORE);
   },
 
   printNewRound() {
@@ -14,7 +15,9 @@ const OutputView = {
   },
 
   printGameWinnerMessage(winners) {
-    Console.print(`최종 우승자 : ${winners.join(", ")}`);
+    Console.print(
+      `${MESSAGE.RACE_WINNER}${winners.join(StaticChar.CAR_NAME_JOIN)}`
+    );
   },
 };
 
