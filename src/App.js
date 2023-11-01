@@ -18,6 +18,21 @@ class App {
     if(number === 0 || number === null || Number.isNaN(number)) throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
     return number;
   }
+
+  checkCarMove(cars, number){
+    MissionUtils.Console.print("\n실행 결과");
+    while(number > 0){
+      cars.forEach((car) => {
+        const random = MissionUtils.Random.pickNumberInRange(0,9);
+        if(random >= 4) car.moveCount++;
+      });
+      this.printResult(cars);
+      number--;
+    }
+    this.printWinner(cars);
+  }
+
+  
 }
 
 export default App;
