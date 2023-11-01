@@ -7,6 +7,7 @@ class App {
 
   async play() {
     await this.racingManager.gameStart();
+
     this.racingManager.carStatus();
   }
 }
