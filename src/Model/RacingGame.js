@@ -6,8 +6,8 @@ class RacingGame {
   #cars;
   #roundnum;
 
-  constructor(carinputs, gametrynum) {
-    this.#cars = carinputs.split(",").map((item) => new Car(item)); // Car의 배열
+  constructor(cars, gametrynum) {
+    this.#cars = cars.map((item) => new Car(item));
     this.#roundnum = gametrynum;
   }
 
@@ -21,17 +21,21 @@ class RacingGame {
     this.end();
   }
 
-  end() {
-    let scorearr = this.#cars.map((item) => item.getMoveStat());
-    let maxscore = Math.max(...scorearr);
+  getWinner(stats) {
+    let maxscore = Math.max(...stats);
 
     let winner = [];
-
-    this.#cars.map((car, idx) => {
+    this.#cars.map((car) => {
       if (car.getMoveStat() === maxscore) winner.push(car.getName());
     });
 
-    OutputView.PrintWinner(winner);
+    return winner;
+  }
+
+  end() {
+    let movingStat = this.#cars.map((item) => item.getMoveStat());
+
+    OutputView.PrintWinner(this.getWinner(movingStat));
   }
 }
 

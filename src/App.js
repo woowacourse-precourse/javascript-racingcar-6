@@ -21,7 +21,7 @@ class App {
   // }
 
   async play() {
-    await this.#playgame.startgame();
+    await this.#playgame.readUserInput();
   }
 
   // setTrynum(input) {

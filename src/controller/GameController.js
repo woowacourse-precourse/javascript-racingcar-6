@@ -4,39 +4,33 @@ import OutputView from "../View/OutputView";
 import InputValidate from "../utils/InputValidate";
 
 class GameController {
-  #cars;
+  #participants;
   #rounds;
   #game;
-
-  setTrynum(input) {
-    this.#rounds = +input;
-  }
-  setParticipant(input) {
-    this.#cars = input;
-  }
 
   async readUserInput() {
     await InputView.readUserCars((input) => {
       InputValidate.readCarsValidate(input);
-      this.setParticipant(input);
+      this.#participants = input.split(",");
+      this.readUserTrynum();
     });
   }
 
   async readUserTrynum() {
     await InputView.readUserTrynum((input) => {
       InputValidate.readTrynumValidate(input);
-      this.setTrynum(input);
+      this.#rounds = +input;
+      this.gameready();
     });
   }
 
-  async startgame() {
-    await this.readUserInput();
-    await this.readUserTrynum();
-
+  gameready() {
     OutputView.PrintGameStart();
-    let participants = this.#cars.split(",");
-    this.#game = new RacingGame(participants, this.#rounds);
+    this.#game = new RacingGame(this.#participants, this.#rounds);
+    this.startgame();
+  }
 
+  startgame() {
     this.#game.start();
   }
 }
