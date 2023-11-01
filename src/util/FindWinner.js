@@ -1,9 +1,7 @@
 export const findWinner = (playersArray, scoreArray) => {
   const winnersScore = Math.max(...scoreArray);
 
-  const playerWithScoreArray = playersArray.map((player, index) => {
-    return [player, scoreArray[index]];
-  });
+  const playerWithScoreArray = playersArray.map((player, index) => [player, scoreArray[index]]);
 
   const racingBoard = Object.fromEntries(playerWithScoreArray);
 

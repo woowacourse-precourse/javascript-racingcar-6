@@ -4,4 +4,5 @@ export const GAME_RULE = Object.freeze({
   movingStandard : 4,
   maxNameLength : 5,
   roadTrace : '-',
+  colon : ' : ',
 });

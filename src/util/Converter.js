@@ -9,6 +9,7 @@ class Converter {
       return GAME_RULE.movingForward;
     }
   }
+
   //[3,7,9] -> [0,1,1]
   static scoreFilter(randomArray) {
     return randomArray.map((randomNumber) => this.scoreRule(randomNumber));

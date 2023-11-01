@@ -6,9 +6,7 @@ class OverName extends Commas {
   isOverName(players) {
     const carNameArray = players.split(',').filter((carName) => carName.length > GAME_RULE.maxNameLength);
     
-    if (carNameArray.length !== 0) {
-      return true;
-    }
+    if (carNameArray.length !== 0) return true; 
   }
   
   overNameArray(players) {

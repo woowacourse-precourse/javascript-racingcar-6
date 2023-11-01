@@ -10,11 +10,13 @@ class Exception extends SameName {
   }
 
   attemptNumber(number) {
-    if (isNaN(number) || Number(number) < 0) {
+    const attempt = Number(number);
+    
+    if (Number.isNaN(attempt) || attempt < 0) {
       throw new Error(ERROR_MESSEAGE.attempt);
     }
 
-    if (Number(number) === 0) {
+    if (attempt === 0) {
       throw new Error(ERROR_MESSEAGE.attemptZero);
     }
   } 

@@ -1,16 +1,20 @@
+import { Console } from "@woowacourse/mission-utils";
 import { scoreAccumulator, traceAccumulator } from "../util/Accumulator.js";
 import Converter from "../util/Converter.js";
 import { findWinner } from "../util/FindWinner.js";
 import { randomArrayGenerator } from "../util/RandomArrayGenerator.js";
-import { Console } from "@woowacourse/mission-utils";
 import { GAME_MESSEAGE } from "../constants/Messeage.js";
+import { GAME_RULE } from "../constants/Constants.js";
 
 class RacingController {  
   #playersArray;
+
   #attemptNumber;
   
   #scoreArray = [];
+
   #traceArray = [];
+
   #playTime = 0;
   
   constructor(playersArray, attemptNumber) {
@@ -28,7 +32,7 @@ class RacingController {
   }
 
   #traceMaker() {                                         
-    this.#traceArray.forEach((trace, index) => Console.print(this.#playersArray[index] + ' : ' + trace));   
+    this.#traceArray.forEach((trace, index) => Console.print(this.#playersArray[index] + GAME_RULE.colon + trace));   
     Console.print('');
 
     this.#playTime += 1;
