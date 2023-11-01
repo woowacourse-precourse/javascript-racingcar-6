@@ -22,6 +22,6 @@ function getResultString(count) {
 
 export function printResult(names, carsMovedCount) {
   names.forEach((name) =>
-    Console.print("pobi : " + getResultString(carsMovedCount[name]))
+    Console.print(name + " : " + getResultString(carsMovedCount[name]))
   );
 }
