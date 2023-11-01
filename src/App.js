@@ -12,16 +12,19 @@ class App {
   async getPlayRound() {
     const input = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
     const gameRound = Number(input);
+    Console.print(typeof gameRound);
     return gameRound;
   }
+  //trim()을 이용 입력값이 없는 경우와 스페이스바일 경우도 예외처리
   validateCarName(carNames) {
-    if (carNames.some((name) => name.length > 5)) {
-      throw Error("[ERROR] 자동차 이름은 5자 이하여하여 합니다.");
+    if (carNames.some((name) => name.trim().length === 0 || name.length > 5)) {
+      throw Error("[ERROR] 자동차 이름은 1글자 이상 5자 이하여하여 합니다.");
     }
   }
+
   validateGameRound(gameRound) {
-    if (isNaN(gameRound) || gameRound < 0) {
-      throw new Error("[ERROR] 0이상의 숫자만 입력 가능합니다");
+    if (isNaN(gameRound) || String(gameRound).trim() === "" || gameRound <= 0) {
+      throw new Error("[ERROR] 1이상의 숫자만 입력 가능합니다");
     }
   }
 
@@ -30,9 +33,10 @@ class App {
     this.validateCarName(carNames);
 
     const gameRound = await this.getPlayRound();
+    Console.print(`디버깅: ${gameRound}`);
     this.validateGameRound(gameRound);
     const game = new Game(carNames);
-    const roundResult = game.raceRound(gameRound);
+    game.raceRound(gameRound);
   }
 }
 
