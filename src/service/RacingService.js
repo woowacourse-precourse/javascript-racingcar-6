@@ -8,8 +8,8 @@ const RacingService = Object.freeze({
    * @returns {{
    *  records: {
    *    [key: string]: string
-   *  },
-   *  winners: User[]
+   *  }[],
+   *  winners: string[]
    * }} 랩별 결과와 우승자 정보를 포함한 객체
    */
   getResult(names, lap) {
