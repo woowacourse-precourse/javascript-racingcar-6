@@ -114,3 +114,50 @@ describe('printCurDistance 함수 테스트', () => {
     });
   });
 });
+
+describe('Car 클래스 생성자 테스트', () => {
+  describe('올바르지 않은 이름일 때', () => {
+    const invalidCarNames = [
+      '',
+      '\0',
+      ' ',
+      '    ',
+      'aa,a',
+      'abbbca',
+      ' 가 나 다 라 마 바 ',
+    ];
+
+    invalidCarNames.forEach((name) => {
+      test(`테스트 케이스 ${name}`, () => {
+        // when
+        const result = () => new Car(name);
+
+        // then
+        expect(result).toThrow();
+      });
+    });
+  });
+
+  describe('올바른 이름일 때', () => {
+    const validCarNames = [
+      'a',
+      'av',
+      'avcd',
+      'ase가',
+      'ㅁㅇ..ㅇ',
+      '간다 마바',
+      'q!2$',
+      '가나다라!',
+    ];
+
+    validCarNames.forEach((name) => {
+      test(`테스트 케이스 ${name}`, () => {
+        // when
+        const result = () => new Car(name);
+
+        // then
+        expect(result).not.toThrow();
+      });
+    });
+  });
+});
