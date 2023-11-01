@@ -19,7 +19,6 @@ const getLogSpy = () => {
 describe('이동 횟수 테스트', () => {
   test('숫자가 맞는지 확인', async () => {
     const inputs = ['min,gi', 'a'];
-    const logSpy = getLogSpy();
 
     mockQuestions(inputs);
 
@@ -30,7 +29,6 @@ describe('이동 횟수 테스트', () => {
 
   test('양수인지 확인', async () => {
     const inputs = ['mingi,gi', '0'];
-    const logSpy = getLogSpy();
 
     mockQuestions(inputs);
 
@@ -41,7 +39,6 @@ describe('이동 횟수 테스트', () => {
 
   test('입력이 없는 경우', async () => {
     const inputs = ['mingi,gi', ''];
-    const logSpy = getLogSpy();
 
     mockQuestions(inputs);
 

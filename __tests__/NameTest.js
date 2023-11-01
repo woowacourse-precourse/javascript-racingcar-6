@@ -19,7 +19,6 @@ const getLogSpy = () => {
 describe('자동차 이름 테스트', () => {
   test('이름 공백 테스트', async () => {
     const inputs = [',,,', '3'];
-    const logSpy = getLogSpy();
 
     mockQuestions(inputs);
 
@@ -30,7 +29,6 @@ describe('자동차 이름 테스트', () => {
 
   test('중복된 이름 테스트', async () => {
     const inputs = ['mingi,mingi', '3'];
-    const logSpy = getLogSpy();
 
     mockQuestions(inputs);
 
@@ -41,7 +39,6 @@ describe('자동차 이름 테스트', () => {
 
   test('입력이 없는 경우', async () => {
     const inputs = ['', '5'];
-    const logSpy = getLogSpy();
 
     mockQuestions(inputs);
 
