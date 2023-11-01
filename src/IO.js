@@ -23,7 +23,7 @@ export const input = {
     const carNamesInput = await Console.readLineAsync(MESSAGE.INPUT.CAR_NAMES);
     const carNames = carNamesInput.split(',').map(carName => carName.trim());
 
-    this.validateCarName(carNames);
+    this.validateCarNames(carNames);
 
     return carNames;
   },
@@ -35,19 +35,20 @@ export const input = {
 
     return Number(tryCountInput);
   },
-  validateCarName(carNames) {
+  validateCarNames(carNames) {
     const uniqueCarNames = [...new Set(carNames)];
     if (uniqueCarNames.length !== carNames.length) {
       throw MESSAGE.ERROR('중복된 이름이 존재합니다.');
     }
-    carNames.forEach(carName => {
-      if (carName.length === 0) {
-        throw MESSAGE.ERROR('자동차 이름을 입력해주세요');
-      }
-      if (carName.length > 5) {
-        throw MESSAGE.ERROR('자동차 이름은 5자 이하만 가능합니다.');
-      }
-    });
+    carNames.forEach(this.validateCarName);
+  },
+  validateCarName(carName) {
+    if (carName.length === 0) {
+      throw MESSAGE.ERROR('자동차 이름을 입력해주세요');
+    }
+    if (carName.length > 5) {
+      throw MESSAGE.ERROR('자동차 이름은 5자 이하만 가능합니다.');
+    }
   },
   validateTryCount(tryCount) {
     if (tryCount.length === 0) {
