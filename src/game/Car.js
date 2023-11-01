@@ -32,6 +32,8 @@ export class Car {
     if (this.movable()) {
       this.#increasePosition();
     }
+
+    printResult.each(this.#name, this.#position);
   }
 
   #increasePosition() {
