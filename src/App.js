@@ -25,13 +25,19 @@ function carNameCheckEvent() {
 
 
   let hasError = false;
-  // 유저가 입력한 자동차 이름이 다섯 자 이하가 아니라면?
+  // 유저가 입력한 자동차 이름이 다섯 자 이하가 아니면
   for (i=0; i<carNames.length; i++) {
     if (carNames[i].length > 5) {
       hasError = true;
       alert("[ERROR] 자동자의 이름이 너무 깁니다.");
       console.log("[ERROR] 자동자의 이름이 너무 깁니다.");
       break;
+    }
+    // 유저가 입력한 값이 없으면
+    else if (carNames[i].length === 0) {
+      alert("[ERROR] 경주에 참여한 자동차가 없습니다.");
+      console.log("[ERROR] 경주에 참여한 자동차가 없습니다.");
+      location.reload();
     }
   } 
 
