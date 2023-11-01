@@ -13,7 +13,7 @@ const inputView = {
   async readFinalTrackNum() {
     const input = await Console.readLineAsync(MESSAGE.finalTrackInput);
     new TrackCntValidation(input);
-    return Number(input);
+    return input;
   },
 };
 
