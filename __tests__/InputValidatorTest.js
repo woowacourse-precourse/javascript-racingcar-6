@@ -40,5 +40,17 @@ describe('InputValidator 테스트', () => {
         validator.validateRoundsNumber(-15);
       }).toThrow(CustomError);
     });
+
+    it('정수가 아닌 수 입력 시 반응 테스트', () => {
+      expect(() => {
+        validator.validateRoundsNumber(1.5);
+      }).toThrow(CustomError);
+    });
+
+    it('최소 시도 횟수 미만의 값 입력 테스트', () => {
+      expect(() => {
+        validator.validateRoundsNumber(0);
+      }).toThrow(CustomError);
+    });
   });
 });
