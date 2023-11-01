@@ -9,8 +9,8 @@ const OutputView = {
     Console.print('');
   },
 
-  printRoundResult(car, distance) {
-    Console.print(`${car} : ${distance}`);
+  printRoundResult(score) {
+    Console.print(score);
   },
 
   printFinalResult(winner) {
