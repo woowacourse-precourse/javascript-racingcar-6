@@ -6,6 +6,7 @@ import {
   handleOutputRound,
   parseCarResult,
 } from './utils/HandleOutput';
+
 class App {
   async play() {
     Console.print('자동차 경주를 시작합니다.');
