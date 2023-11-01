@@ -12,3 +12,9 @@ export function validateNumberOfNames(names) {
     throw new Error(ERROR.invalidNumberOfNames);
   }
 }
+
+export function validateNameLength(name) {
+  if (name.length < 1 || name.length > 5) {
+    throw new Error(ERROR.invalidNameLength);
+  }
+}
