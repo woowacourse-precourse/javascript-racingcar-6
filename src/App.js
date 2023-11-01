@@ -54,9 +54,9 @@ class App {
   }
 
   checkNumInput() {
-    const numRegex = /^[0-9]*$/;
+    const numRegex = /^[1-9]*$/;
     if (!numRegex.test(this.tryNum)) {
-      throw new Error('[ERROR] 숫자가 잘못된 형식입니다.');
+      throw new Error('[ERROR] 1-9 사이의 숫자만 입력 가능합니다.');
     }
   }
 
