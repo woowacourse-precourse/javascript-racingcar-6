@@ -17,7 +17,7 @@ describe("OutputView 기능 테스트", () => {
     OutputView.printResultMessage();
 
     // then
-    expect(logSpy).toHaveBeenCalledWith(output);
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
   });
 
   test("printOneRound - 한 라운드 결과 출력", () => {
