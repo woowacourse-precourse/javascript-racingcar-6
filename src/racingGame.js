@@ -35,7 +35,15 @@ export async function updateDistance(car, randomNum) {
   return car;
 }
 
-export async function checkRandomNum(carList) {}
+export async function checkRandomNum(carList) {
+  const responseCarList = await Promise.all(
+    carList.map(async (car) => {
+      const randomNum = await generateRandomNum();
+      return updateDistance(car, randomNum);
+    })
+  );
+  return responseCarList;
+}
 
 export async function playRacing() {
   let cars = await constructCar();
