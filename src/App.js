@@ -2,25 +2,34 @@ import { Console, Random } from "@woowacourse/mission-utils";
 
 class App {
   async play() {
-    gameStart();
+    const carNameInput = await Console.readLineAsync(
+      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
+    );
+    const carNameArray = carNameInput.split(",");
 
+    for (const name of carNameArray) {
+      if (name.length > 5) {
+        throw new Error("[ERROR] 이름이 5자 초과입니다.");
+      }
+    }
+
+    let playRound = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+    playRound = parseInt(playRound);
+
+    if (isNaN(playRound) || playRound <= 0) {
+      throw new Error("[ERROR] 올바른 숫자를 입력하세요.");
+    }
+    gameStart(playRound, carNameArray);
   }
+
 }
 
-async function gameStart() {
-  Console.print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-  const inputCarName = await Console.readLineAsync("");
-  const carName = inputCarName.split(',');
-  carNameValidation(carName);
-  Console.print("시도할 횟수는 몇 회인가요?");
-  const inputNumber = await Console.readLineAsync("");
-  tryValidation(inputNumber);
+function gameStart(inputNumber, carName) {
   const carDict = {};
   for (let i = 0; i < carName.length; i++) {
     const item = carName[i];
     carDict[i] = { name: item, score: 0 };
   }
-
   gamePlay(inputNumber, carDict);
 }
 
@@ -67,22 +76,5 @@ function gameResult(carDict) {
   }
 }
 
-function carNameValidation(carName) {
-  for (let i = 0; i < carName.length; i++) {
-    if (carName[i].length > 5 || !carName[i].trim()) {
-      throw new Error("[ERROR] 자동차의 이름은 5자리 이하여야 합니다.");
-    }
-  }
-}
-
-function tryValidation(number) {
-  if (isNaN(number)) {
-    throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
-  }
-}
-
-
 export default App;
 
-const app = new App();
-app.play();
