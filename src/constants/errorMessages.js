@@ -14,4 +14,5 @@ export const ERROR_MESSAGES = Object.freeze({
   out_of_range_of_attemps: '시도 횟수는 최소 1보다 커야해요!',
   invalid_characters: '자동차 이름은 한글, 영어, 숫자만 가능해요!',
   out_of_range_of_cars: '참가하는 자동차는 최소 2대 이상이어야해요!',
+  not_integer: '시도 횟수는 양의 정수여야해요!',
 });

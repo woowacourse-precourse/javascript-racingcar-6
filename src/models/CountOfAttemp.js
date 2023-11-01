@@ -26,6 +26,7 @@ class CountOfAttemp {
   validate() {
     this.validateOfType();
     this.validateOfRange();
+    this.validateOfInteger();
   }
 
   validateOfType() {
@@ -37,6 +38,12 @@ class CountOfAttemp {
   validateOfRange() {
     if (this.#numberOfAttemps < CountOfAttemp.MIN_NUM) {
       throw new AppError(ERROR_MESSAGES.out_of_range_of_attemps);
+    }
+  }
+
+  validateOfInteger() {
+    if (!Number.isInteger(this.#numberOfAttemps)) {
+      throw new AppError(ERROR_MESSAGES.not_integer);
     }
   }
 
