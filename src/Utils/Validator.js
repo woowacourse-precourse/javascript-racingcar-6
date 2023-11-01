@@ -5,15 +5,15 @@ class Validator {
 	static checkAllCarNameValidate(carNames) {
 		const carNameArray = carNames.split(',');
 
-		if (carNameArray.some((carName) => carName.length >= CONSTANTS.MAX_CAR_NAME_LENGTH)) {
-			throw new Error(ERROR_MESSAGE.CAR_NAME_LENGTH_OVER_FIVE);
+		if (carNameArray.some((carName) => carName.length >= CONSTANTS.maxCarNameLength)) {
+			throw new Error(ERROR_MESSAGE.nameLengthErrorMessage);
 		}
 	}
 
 	// 전달받은 인자가 유효한 숫자인지 확인
 	static isNumber(number) {
 		if (Number.isNaN(number) && number > 0) {
-			throw new Error(ERROR_MESSAGE.IS_NOT_NUMBER);
+			throw new Error(ERROR_MESSAGE.isNotNumberMessage);
 		}
 	}
 }

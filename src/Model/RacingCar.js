@@ -12,6 +12,6 @@ export default class RacingCar {
 	}
 
 	showCarPosition() {
-		Console.print(`${this.name} : ${CONSTANTS.DISTANCE_MARKER.repeat(this.distance)}`);
+		Console.print(`${this.name} : ${CONSTANTS.distanceMarker.repeat(this.distance)}`);
 	}
 }

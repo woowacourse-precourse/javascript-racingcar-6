@@ -24,7 +24,7 @@ class App {
 		this.carArray.forEach((car) => {
 			const randomNumber = Computer.getRandomNumber();
 
-			if (randomNumber >= CONSTANTS.FORWARD_STANDARD_VALUE) car.go();
+			if (randomNumber >= CONSTANTS.forwardStandardValue) car.go();
 
 			car.showCarPosition();
 		});
