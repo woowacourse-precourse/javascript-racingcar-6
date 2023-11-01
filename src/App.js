@@ -43,7 +43,9 @@ class App {
 		this.carArray.forEach((car) => {
 			if (winnerArray.length === 0 || winnerArray[0].distance === car.distance) {
 				winnerArray.push(car);
-			} else if (winnerArray[0].distance < car.distance) {
+			}
+
+			if (winnerArray[0].distance < car.distance) {
 				winnerArray = [car];
 			}
 		});
