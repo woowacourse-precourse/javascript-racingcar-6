@@ -88,6 +88,16 @@ class RacingGame {
     }
   }
 
+  findWinners() {
+    const totalDistances = this.#cars.map((car) => car.getTotalDistance());
+    const maxDistnace = Math.max(...totalDistances);
+    const winners = this.#cars
+      .filter((car) => car.getTotalDistance() == maxDistnace)
+      .map((car) => car.getCarName());
+    this.#winners = winners;
+    this.printWinners();
+  }
+
   printWinners() {
     const winners = this.#winners.join(', ');
     const consoleMessage = `${CONSOLE_MESSAGE.PRINT_WINNER} : ${winners}`;
