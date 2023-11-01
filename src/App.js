@@ -1,35 +1,10 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-class Car {
-  constructor(name) {
-    this.name = name;
-    this.distance = 0;
-  }
-
-  move(randomNumber) {
-    if (randomNumber >= 4) {
-      this.distance++;
-    }
-  }
-
-  getDistance() {
-    return "-".repeat(this.distance);
-  }
-}
-
+import Car from "./Car.js";
+import { validateNames } from "./Validator.js";
 class App {
   constructor() {
     this.cars = [];
     this.totalRounds = 0;
-  }
-
-  validateNames(names) {
-    for (let i = 0; i < names.length; i++) {
-      if (names[i].length === 0 || names[i].length > 5) {
-        throw new Error(
-          "[ERROR] 자동차 이름은 1자 이상 5자 이하만 가능합니다."
-        );
-      }
-    }
   }
 
   async play() {
@@ -38,7 +13,8 @@ class App {
         "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
       )
     ).split(",");
-    this.validateNames(carNames);
+
+    validateNames(carNames);
     this.cars = carNames.map((name) => new Car(name));
 
     this.totalRounds = Number(
@@ -56,6 +32,7 @@ class App {
 
     this.winner();
   }
+
   round() {
     for (let i = 0; i < this.cars.length; i++) {
       const randomDistance = MissionUtils.Random.pickNumberInRange(0, 9);
@@ -92,6 +69,11 @@ class App {
   winner() {
     const winners = this.getWinners();
     MissionUtils.Console.print(`최종 우승자 : ${winners.join(", ")}`);
+  }
+
+  reset() {
+    this.cars = [];
+    this.totalRounds = 0;
   }
 }
 

@@ -18,4 +18,4 @@
    printRoundResult : 각 라운드가 끝난 후 각 자동차의 이동결과 출력
 7. 우승자 계산 및 출력
    getWineers : 가장 멀리 이동한 자동차들을 찾아서 이름 반환
-   pringWinner: 최종 우승자들의 이름을 출력
+   printWinner: 최종 우승자들의 이름을 출력
