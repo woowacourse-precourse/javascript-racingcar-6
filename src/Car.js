@@ -11,7 +11,7 @@ export default class Car {
     getName() {
         return this.#name;
     }
-    
+
     getMoveCount() {
         return this.#moveCount;
     }
