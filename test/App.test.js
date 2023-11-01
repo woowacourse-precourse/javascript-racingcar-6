@@ -85,31 +85,34 @@ describe("게임 진행 상황 출력 테스트", () => {
   });
 });
 
-test("우승자 자동차 전진길이 구하는 테스트", () => {
-  const MoveArray = ["---", "----", "--", ""];
+describe("gameEnd 파일 테스트", () => {
+  test("우승자 자동차 전진길이 구하는 테스트", () => {
+    const moveArray = ["---", "----", "--", ""];
 
-  const app = new App();
-  app.carMoveArray = MoveArray;
-  const result = app.winnerMovelength();
+    const result = winnerMovelength(moveArray);
 
-  expect(result).toBe(4);
-});
+    expect(result).toBe(4);
+  });
 
-test("최종 우승자 선별 테스트", () => {
-  const NameArray = ["sung", "soo"];
-  const MoveArray = ["-", "--"];
-  const outPut = "최종 우승자 : soo";
-  const winnerLength = 2;
+  test("우승자 선별 테스트", () => {
+    const carName = ["sung", "soo"];
+    const carMove = ["-", "--"];
+    const winnerLength = 2;
 
-  const logSpy = jest.spyOn(MissionUtils.Console, "print");
-  logSpy.mockClear();
+    const result = getWinnerCarArray(carName, carMove, winnerLength);
 
-  const app = new App();
-  app.carName = NameArray;
-  app.carMoveArray = MoveArray;
-  app.winnerMovelength();
-  app.getWinnerArray();
-  app.resultText();
+    expect(result).toContainEqual("soo");
+  });
 
-  expect(logSpy).toHaveBeenCalledWith(outPut);
+  test("우승자 출력 테스트", () => {
+    const winnerCarArray = ["sung", "soo"];
+    const output = "최종 우승자 : sung, soo";
+    
+    const logSpy = jest.spyOn(MissionUtils.Console, "print");
+    logSpy.mockClear();
+
+    resultText(winnerCarArray);
+
+    expect(logSpy).toHaveBeenCalledWith(output);
+  })
 });
