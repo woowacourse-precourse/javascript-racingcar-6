@@ -82,10 +82,6 @@ class RacingCar {
   }
 
   tryMoveForward() {
-    this.checkIsMoveForward() && (this.progress ++)
-  }
-
-  checkIsMoveForward() {
     const { low, high, criteria, operator } = this.condition;
     const randomNumber = this.getRandomNumber(low, high)
     const operatorSelector = {
@@ -94,7 +90,8 @@ class RacingCar {
       'over': (randomNumber, criteria) => randomNumber > criteria,
       'under': (randomNumber, criteria) => randomNumber < criteria
     }
-    return operatorSelector[operator](randomNumber, criteria);
+    
+    operatorSelector[operator](randomNumber, criteria) && (this.progress ++)
   }
 
   getRandomNumber(low, high) {
