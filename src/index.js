@@ -1,4 +1,8 @@
 import App from "./App.js";
 
-const app = new App();
-app.play();
+try {
+  const app = new App();
+  app.play();
+} catch (error) {
+  console.error(error)
+}
