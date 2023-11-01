@@ -7,6 +7,23 @@ class App {
     this.tryNum = 0;
   }
 
+  move_cars() {
+    this.carsStatus = this.carsStatus.map((carStatus) => ({
+      ...carStatus,
+      move:
+        Random.pickNumberInRange(0, 9) >= 4
+          ? carStatus.move + 1
+          : carStatus.move,
+    }));
+  }
+
+  print_cars() {
+    this.carsStatus.forEach((carStatus) => {
+      Console.print(`${carStatus.name} : ${"-".padEnd(carStatus.move, "-")}`);
+    });
+    Console.print("");
+  }
+
   validate_carNames(carsStatus) {
     if (carsStatus === undefined) {
       throw new Error("[ERROR] 자동차 이름을 입력해주세요.");
@@ -31,7 +48,13 @@ class App {
     }
   }
 
-  async play() {}
+  async play() {
+    Console.print("실행 결과");
+    for (let i = 0; i < this.tryNum; i += 1) {
+      this.move_cars();
+      this.print_cars();
+    }
+  }
 }
 
 export default App;
