@@ -1,10 +1,13 @@
-import GameMain from "./modules/gameMain.js";
+import GameMain from "./modules/GameMain.js";
 
 class App {
   async play() {
     this.gameMain = new GameMain();
-    this.gameMain.userCarName();
+    return this.gameMain.userCarName();
   }
 }
+
+const app = new App();
+app.play();
 
 export default App;
