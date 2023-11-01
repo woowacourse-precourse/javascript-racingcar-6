@@ -20,6 +20,13 @@ class App {
             throw errorMessage
         }
     }
+
+    addDistanceDriven(cars) {
+        cars.forEach((car) => {
+            MissionUtils.Random.pickNumberInRange(0,9) >= 4 ? car.distanceDriven++ : car.distanceDriven
+        })
+        return cars
+    }
     async play() {
 
     }
