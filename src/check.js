@@ -24,7 +24,7 @@ export function checkTryCount(number) {
   if (!number) {
     throw new Error(ERRORS.TRY_COUNT_NOT_INPUTED);
   }
-  if (tryCount <= 0 && tryCount > 10) {
+  if (tryCount <= 0 || tryCount > 10) {
     throw new Error(ERRORS.TRY_COUNT_OUT_OF_RANGE);
   }
   if (Number.isNaN(tryCount)) {
