@@ -75,7 +75,10 @@ class App {
    * 자동차의 이름과 현재 위치를 출력합니다
    * @param {{name: string, position: number}[]} cars 현재 자동차 배열 */
   printCurrentCarPosition(cars) {
-
+    cars.forEach((car) => {
+      Console.print(`${car.name} : ${'-'.repeat(car.position)}`);
+    });
+    Console.print('');
   }
 
   /**
