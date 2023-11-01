@@ -34,19 +34,19 @@ class CarNames {
   }
 
   checkNameBlank() {
-    for (let i = 0; i < this.#names.length; i += 1) {
-      if (this.#names[i] === "") {
+    this.#names.forEach((name) => {
+      if (name === "") {
         throw new Error(ERROR.INVALID_BLANK_NAME);
       }
-    }
+    });
   }
 
   checkNameLength() {
-    for (let i = 0; i < this.#names.length; i += 1) {
-      if (this.#names[i].length > 5) {
+    this.#names.forEach((name) => {
+      if (name.length > 5) {
         throw new Error(ERROR.INVALID_NAME_LENGTH);
       }
-    }
+    });
   }
 }
 
