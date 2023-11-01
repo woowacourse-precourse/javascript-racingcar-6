@@ -1,5 +1,4 @@
 import Car from './Car';
-import MESSAGES from '../utils/Messages';
 import CONSTANTS from '../utils/Constants';
 
 class RacingCar {
