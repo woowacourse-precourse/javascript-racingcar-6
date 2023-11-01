@@ -10,8 +10,7 @@ class App {
     const cars = carNameArray.map((carName) => new Car(carName));
     const moveCount = await this.inputMoveCount();
     ErrorHandler.checkMoveCount(moveCount);
-
-    Console.print(cars);
+    this.racing(cars, moveCount);
   }
 
   async inputCarName() {
@@ -24,6 +23,14 @@ class App {
   async inputMoveCount() {
     const moveCount = await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
     return moveCount;
+  }
+
+  racing(cars, moveCount) {
+    while (moveCount--) {
+      cars.forEach((car) => {
+        car.move();
+      });
+    }
   }
 }
 
