@@ -1,4 +1,5 @@
 const ErrorMessages = Object.freeze({
+  INVALID_CAR_MIN_LENGTH: '[ERROR] 자동차는 1대 이상이어야 합니다.',
   INVALID_CAR_NAME_MAX_LENGTH: '[ERROR] 자동차 이름은 5자 이하여야 합니다.',
   INVALID_CAR_NAME_MIN_LENGTH: '[ERROR] 자동차 이름은 1자 이상이어야 합니다.',
   INVALID_CAR_NAME_DUPLICATE: '[ERROR] 자동차 이름은 중복되지 않아야 합니다.',

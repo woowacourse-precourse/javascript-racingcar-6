@@ -3,6 +3,9 @@ import { printErrorMessage } from './utils/messages.js';
 import ErrorMessages from './constants.js';
 
 const validateNameInput = input => {
+  if (input.length === 1) {
+    printErrorMessage(ErrorMessages.INVALID_CAR_MIN_LENGTH);
+  }
   if (input.some(item => item.length > 5)) {
     printErrorMessage(ErrorMessages.INVALID_CAR_NAME_MAX_LENGTH);
   }
