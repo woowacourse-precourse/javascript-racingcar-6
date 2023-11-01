@@ -1,4 +1,27 @@
+import { Console, Random } from "@woowacourse/mission-utils";
+
+// 자동차 객체를 배열에 추가
+async function inputCars() {
+  const input_name = await MissionUtils.Console.readLineAsync(
+    "경주할 자동차 이름을 입력해주세요.(쉼표(,) 기준으로 구분)"
+  );
+  const carArray = input_name.split(',');
+  carArray.forEach(element => {
+    if(element.length > 5) {
+      throw new Error("[ERROR] 이름의 형식이 잘못되었습니다.")
+    };
+  });
+
+  return carArray
+}
+
+
+
+
 class App {
+
+
+
   async play() {}
 }
 
