@@ -72,7 +72,12 @@ class App {
       Console.print(`최종 우승자: ${winners.join(",")}`);
     }
   }
-  async play() {}
+  async play() {
+    await this.getCarName();
+    await this.getTrial();
+    this.game();
+    this.ranking();
+  }
 }
 
 export default App;
