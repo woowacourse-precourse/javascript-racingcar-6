@@ -1,5 +1,5 @@
 import { Console, Random } from "@woowacourse/mission-utils";
-import { GAME_MESSAGES, ERROR_MESSAGES } from "./Message";
+import { GAME_MESSAGES, ERROR_MESSAGES } from "./Message.js";
 
 class App {
   constructor() {
@@ -77,8 +77,22 @@ class App {
   }
   
 
+  async carRaceWinner() {
+    const progressResult = this.racing.map((progress) => progress.length);
+    const maxProgress = Math.max(...progressResult);
+    const winners = this.carList.filter((_, index) => progressResult[index] === maxProgress);
 
+    const selectWinner =
+      winners.length === 1 ? "최종 우승자 : " + winners[0] : "최종 우승자 : " + winners.join(", ");
+    Console.print(selectWinner);
+  }
 
+  async play() {
+    await this.inputCarName();
+    await this.inputRound();
+    await this.carRace();
+    await this.carRaceWinner();
+  }
 }
 
 export default App;
