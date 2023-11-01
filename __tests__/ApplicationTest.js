@@ -31,6 +31,12 @@ describe("자동차 경주 게임", () => {
     const inputs = ["pobi,woni", "1"];
     const outputs = ["pobi : -"];
     const randoms = [MOVING_FORWARD, STOP];
+    // const inputs = ["pobi,woni,jun", "5"];
+    // const outputs = ["pobi : -----", "woni : ----", "jun : -----"];
+    // const randoms = [MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+    //                 MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+    //                 MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+    //                 MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD];
     const logSpy = getLogSpy();
 
     mockQuestions(inputs);
