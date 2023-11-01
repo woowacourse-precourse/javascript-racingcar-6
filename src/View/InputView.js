@@ -5,15 +5,23 @@ const INPUT_MESSAGE_ROUND_COUNTS = '시도할 횟수는 몇 회인가요?\n'
 
 const InputView = {
   async readCarNames() {
-    const names = await Console.readLineAsync(INPUT_MESSAGE_CAR_NAMES);
+    try {
+      const names = await Console.readLineAsync(INPUT_MESSAGE_CAR_NAMES);
 
-    return names;
+      return names;
+    } catch (error) {
+      throw new Error(error);
+    }
   },
 
   async readRoundCounts() {
-    const counts = await Console.readLineAsync(INPUT_MESSAGE_ROUND_COUNTS);
+    try {
+      const counts = await Console.readLineAsync(INPUT_MESSAGE_ROUND_COUNTS);
 
-    return counts;
+      return counts;
+    } catch (error) {
+      throw new Error(error);
+    }
   }
 }
 

@@ -31,7 +31,7 @@ export default class Controller {
 
   async initializeCars() {
     const carsInput = await InputView.readCarNames();
-    const carNames = carsInput.split(COMMA);
+    const carNames = this.splitByComma(carsInput);
     Controller.validate(carNames, Validator.validateNames);
 
     carNames.map((name) => {
@@ -65,5 +65,9 @@ export default class Controller {
       OutputView.print(`${car.name} : ${car.distance}`);
     });
     OutputView.printEndOfRound();
+  }
+
+  splitByComma(array) {
+    return array.split(COMMA);
   }
 }
