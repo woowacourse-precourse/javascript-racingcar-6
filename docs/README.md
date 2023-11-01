@@ -7,7 +7,6 @@
 ### 세팅
 
 - eslint, prettier, jest package 설정
-- git commit message 템플릿 설정
 
 ### 구현
 
