@@ -44,6 +44,13 @@ class App {
     ).split(",");
 
     this.setCar(car_input);
+
+    let attempt_input = await Console.readLineAsync(
+      "시도할 횟수는 몇 회인가요?\n"
+    );
+
+    this.setAttempt(attempt_input);
+    this.setData(this.car.length);
   }
 
   async play() {
