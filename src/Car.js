@@ -2,7 +2,7 @@ import { Random } from '@woowacourse/mission-utils';
 
 class Car {
   constructor(name) {
-    this.name = name.trim();
+    this.name = name.replace(/(\s*)/g, '');
     this.position = 0;
   }
 
