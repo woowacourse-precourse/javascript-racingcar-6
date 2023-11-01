@@ -41,4 +41,20 @@ describe("초기화 단계", () => {
 
     expect(result).toEqual(5);
   });
+
+  test("Data 설정", async () => {
+    // given
+    const inputs = ["pobi,woni", "5"];
+    const output = ["", ""];
+
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+    await app.initialize();
+
+    const result = app.getData();
+
+    expect(result).toEqual(output);
+  });
 });
