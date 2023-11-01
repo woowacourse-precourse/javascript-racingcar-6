@@ -9,25 +9,25 @@ describe('CustomError 테스트', () => {
     expect(error.message).toMatch(/^\[ERROR\]/);
   });
 
-  test('InputView Error는 에러 이름을 가진다', () => {
-    const testMessage = '입력 오류';
-    const error = CustomError.InputView(testMessage);
+  const errorCases = [
+    { type: 'InputView', name: ERROR.name.inputView },
+    { type: 'Car', name: ERROR.name.car },
+    { type: 'RacingGame', name: ERROR.name.racingGame },
+  ];
 
-    expect(error.name).toBe(ERROR.name.inputView);
-    expect(error.message).toBe(`[ERROR] ${testMessage}`);
-  });
+  errorCases.forEach(({ type, name }) => {
+    test(`${type} Error는 올바른 이름을 가진다.`, () => {
+      const testMessage = `${type} Error 테스트`;
+      const error = CustomError[type](testMessage);
 
-  test('Car Error는 에러 이름을 가진다', () => {
-    const testMessage = '자동차 오류';
-    const error = CustomError.Car(testMessage);
+      expect(error.name).toBe(name);
+    });
 
-    expect(error.name).toBe(ERROR.name.car);
-  });
+    test(`${type} Error는 올바른 형식으로 메시지를 출력한다.`, () => {
+      const testMessage = `${type} Error 테스트`;
+      const error = CustomError[type](testMessage);
 
-  test('RacingGame Error는 에러 이름을 가진다', () => {
-    const testMessage = '게임 오류';
-    const error = CustomError.RacingGame(testMessage);
-
-    expect(error.name).toBe(ERROR.name.racingGame);
+      expect(error.message).toBe(`[ERROR] ${testMessage}`);
+    });
   });
 });
