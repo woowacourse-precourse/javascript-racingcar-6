@@ -1,11 +1,12 @@
 import { Console } from "@woowacourse/mission-utils";
 import Car from "./Car.js";
+import getCarName from "./GetCarName.js";
 import * as message from "./Message.js";
 import startRacing from "./Racing.js";
 
 class App {
   async play() {
-    const carNames = await this.getCarName();
+    const carNames = await getCarName();
     const carObjects = carNames.map((carName) => new Car(carName));
     let moveCount = await this.getMoveCount();
 
@@ -22,20 +23,6 @@ class App {
       .map((car) => car.name);
 
     Console.print(message.FINAL_WINNER + winners.join(", "));
-  }
-
-  async getCarName() {
-    const carNames = await Console.readLineAsync(`${message.GET_CAR_NAME}`);
-    const carNameArray = carNames.split(",");
-    if (this.validationCarName(carNameArray)) {
-      return carNameArray;
-    } else {
-      throw Error(`${message.ERROR_INVALID_NAME}`);
-    }
-  }
-
-  validationCarName(carArray) {
-    return carArray.every((car) => car.length <= 5 && car.length > 0);
   }
 
   async getMoveCount() {
