@@ -15,8 +15,10 @@ const getLogSpy = () => {
     return logSpy;
 };
 
+// 기능 ➌ 자동차 전진 테스트
 describe("자동차 전진", () => {
-    test("전진-정지", async () => {
+    test("전진 혹은 정지", async () => {
+        // given
         const carNames = ["poby", "seoro"];
         const tryNumber = 2;
         const randoms = [3, 4, 5, 6];

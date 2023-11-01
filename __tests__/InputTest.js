@@ -1,7 +1,7 @@
 import InputView from "../src/view/InputView.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 
-const mockQuestions = (inputs) => { // ["pobi,woni", "1"]
+const mockQuestions = (inputs) => {
     MissionUtils.Console.readLineAsync = jest.fn();
 
     MissionUtils.Console.readLineAsync.mockImplementation(() => {
@@ -10,18 +10,20 @@ const mockQuestions = (inputs) => { // ["pobi,woni", "1"]
     });
 };
 
-// 사용자로부터 자동차 이름을 입력받는 기능 테스트
+// 기능 ➊ 자동차 이름 입력 테스트
 describe("자동차 이름", () => {
-    test("유효한 자동차 이름", async () => {
+    test("자동차 이름은 1~5글자", async () => {
         // given
-        const input = ["안녕, p0by,반가wo"];
-        const output = ["안녕", "p0by", "반가wo"];
+        const inputs = ["안녕, p0by,반가wo"];
+        const outputs = ["안녕", "p0by", "반가wo"];
 
-        mockQuestions(input); // 사용자가 입력한 것처럼 테스트
+        mockQuestions(inputs); // 사용자가 입력한 것처럼 테스트
 
+        // when
         const carNames = await InputView.getCarNames();
 
-        expect(carNames).toEqual(output);
+        // then
+        expect(carNames).toEqual(outputs);
     })
 
     test.each([
@@ -30,14 +32,16 @@ describe("자동차 이름", () => {
         [["poby"]], // 자동차 1개 불가
         [["p$by,poby"]], // 특수문자 불가
         [["pobi,poby,"]], // 마지막 문자 쉼표 불가
-    ])("자동차 이름에 대한 예외 처리", async (input) => {
-        mockQuestions(input);
+    ])("자동차 이름에 대한 예외 처리", async (inputs) => {
+        // given
+        mockQuestions(inputs);
 
+        // when & then
         await expect(InputView.getCarNames()).rejects.toThrow("[ERROR] 자동차 이름이 잘못된 형식입니다.");
     });
 });
 
-// 사용자로부터 시도할 횟수를 입력받는 기능 테스트
+// 기능 ➋ 시도할 횟수 입력 테스트
 describe("시도할 횟수", () => {
     test("시도할 횟수는 1 이상의 정수", async () => {
         // given
@@ -54,12 +58,14 @@ describe("시도할 횟수", () => {
     });
 
     test.each([
+        [[""]],
         [["0"]],
-        [["-1"]],
         [["ok"]]
     ])("시도할 횟수에 대한 예외 처리", async (input) => {
+        // given
         mockQuestions(input);
 
+        // when & then
         await expect(InputView.getTryNumber()).rejects.toThrow("[ERROR] 시도할 횟수는 1 이상의 정수입니다.");
     });
 });

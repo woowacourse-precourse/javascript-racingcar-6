@@ -8,8 +8,10 @@ const getLogSpy = () => {
     return logSpy;
 };
 
+// 기능 ➍ 최종 우승자 테스트
 describe("최종 우승자", () => {
     test("단독 우승자", async () => {
+        // given
         const names = ["poby", "seoro"];
         const distances = [1, 2];
         const outputs = ["최종 우승자 : seoro"];
@@ -19,7 +21,7 @@ describe("최종 우승자", () => {
         const cars = new Cars(names);
         cars.distances = distances;
         const winners = cars.getWinners()
-		OutputView.printWinners(winners);
+        OutputView.printWinners(winners);
 
         // then
         outputs.forEach((output) => {
@@ -28,6 +30,7 @@ describe("최종 우승자", () => {
     })
 
     test("공동 우승자", async () => {
+        // given
         const names = ["poby", "seoro"];
         const distances = [2, 2];
         const outputs = ["최종 우승자 : poby, seoro"];
@@ -37,7 +40,7 @@ describe("최종 우승자", () => {
         const cars = new Cars(names);
         cars.distances = distances;
         const winners = cars.getWinners()
-		OutputView.printWinners(winners);
+        OutputView.printWinners(winners);
 
         // then
         outputs.forEach((output) => {
