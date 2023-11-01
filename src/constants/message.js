@@ -3,6 +3,10 @@ export const INPUT_MESSAGE = {
   MOVE_COUNT: '시도할 횟수는 몇 회인가요?\n',
 };
 
+export const OUTPUT_MESSAGE = {
+  RESULT: '\n실행 결과',
+};
+
 export const ERROR_MESSAGE = {
   INVALID_CAR_NAME_LENGTH:
     '[ERROR] 자동차 이름은 공백을 제외한 한 글자 이상 다섯 자 이하로 입력해 주세요.',
