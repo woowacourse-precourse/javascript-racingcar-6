@@ -15,7 +15,8 @@ class App {
       Console.print(systemMessage.INPUT_TRY_COUNT);
       let tryCount = await Console.readLineAsync("");
 
-      tryCount = new InputTryCountException(tryCount).check();
+      tryCount = Number(tryCount);
+      new InputTryCountException(tryCount).check();
       Console.print("");
 
       let winners = new RacingGame(playingCars, tryCount).racing();
