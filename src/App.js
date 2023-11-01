@@ -1,7 +1,13 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Random, Console } from "@woowacourse/mission-utils";
 
 class App {
-  async play() {}
+  async play() {
+    try {
+      await this.game();
+    } catch (error) {
+      throw error;
+    }
+  }
   async cars() {
     const cars = await Console.readLineAsync(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)."
@@ -27,6 +33,11 @@ class App {
       throw new Error("[ERROR] 반복 횟수는 1 이상의 숫자여야 합니다.");
     }
     return Number(tryCount);
+  }
+  async game() {
+    const cars = await this.cars();
+    const tryCount = await this.tryCount();
+    const towardState = new Array(cars.length).fill(0);
   }
 }
 
