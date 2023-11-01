@@ -8,8 +8,10 @@ class App {
     ErrorHandler.checkCarNames(carNames);
     const carNameArray = carNames.split(',');
     const cars = carNameArray.map((carName) => new Car(carName));
+
     const moveCount = await this.inputMoveCount();
     ErrorHandler.checkMoveCount(moveCount);
+
     this.racing(cars, moveCount);
     this.printResult(cars, moveCount);
     this.printWinner(this.findWinner(cars));
