@@ -10,23 +10,23 @@ const mockQuestions = (inputs) => {
   });
 };
 
-describe("자동차 이름 값 예외 테스트 ", () => {
-  test("자동차 이름이 5자 이상인 경우 예외 처리", async () => {
-    const carNames = ["jihyun,woo,hi"];
+describe("게임 시도 횟수 값 예외 테스트 ", () => {
+  test("시도 횟수를 숫자가 아닌 값 입력했을 경우 예외 처리", async () => {
+    const carNames = ["둘"];
 
     mockQuestions(carNames);
 
     const init = new Init();
 
-    await expect(init.start()).rejects.toThrow("[ERROR]");
+    await expect(init.getNumberOfTries()).rejects.toThrow("[ERROR]");
   });
-  test("공백 사이 자동차 이름이 없을 경우 예외 처리", async () => {
-    const carNames = ["hi,woo,,"];
+  test("시도 횟수를 음수로 입력했을 경우 예외 처리", async () => {
+    const carNames = [-4];
 
     mockQuestions(carNames);
 
     const init = new Init();
 
-    await expect(init.start()).rejects.toThrow("[ERROR]");
+    await expect(init.getNumberOfTries()).rejects.toThrow("[ERROR]");
   });
 });
