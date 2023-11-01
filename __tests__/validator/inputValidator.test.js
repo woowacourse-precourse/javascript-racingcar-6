@@ -21,12 +21,14 @@ describe('inputValidator 테스트', () => {
       '[ERROR]',
     );
   });
-  test('시도할 횟수가 숫자가 아니면 예외를 발생시킨다', async () => {
+  test('시도할 횟수가 정수가 아니면 예외를 발생시킨다', async () => {
     const input = 'a';
-    expect(() => InputValidator.checkIsNumber(input)).toThrow('[ERROR]');
+    expect(() => InputValidator.checkIsInteger(input)).toThrow('[ERROR]');
   });
-  test('시도할 횟수가 0이면 예외를 발생시킨다', async () => {
+  test('시도할 횟수가 1 이상이 아니면 예외를 발생시킨다', async () => {
     const input = '0';
-    expect(() => InputValidator.checkIsNotZero(input)).toThrow('[ERROR]');
+    expect(() => InputValidator.checkIsPositiveInteger(input)).toThrow(
+      '[ERROR]',
+    );
   });
 });

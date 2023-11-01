@@ -15,16 +15,16 @@ class InputValidator {
     return isValid || this.throwError(ERROR_MESSAGE.hasWrongName);
   }
 
-  static checkIsNumber(query) {
+  static checkIsInteger(query) {
     const isValid = Number.isSafeInteger(Number(query));
 
-    return isValid || this.throwError(ERROR_MESSAGE.isNotNumber);
+    return isValid || this.throwError(ERROR_MESSAGE.isNotInteger);
   }
 
-  static checkIsNotZero(query) {
-    const isValid = Number(query) !== 0;
+  static checkIsPositiveInteger(query) {
+    const isValid = Number(query) > 0;
 
-    return isValid || this.throwError(ERROR_MESSAGE.isZero);
+    return isValid || this.throwError(ERROR_MESSAGE.isNegativeInteger);
   }
 
   static checkhasDuplicateName(query) {
@@ -60,8 +60,8 @@ class InputValidator {
   }
 
   static validateRoundNumber(query) {
-    this.checkIsNumber(query);
-    this.checkIsNotZero(query);
+    this.checkIsInteger(query);
+    this.checkIsPositiveInteger(query);
 
     return query;
   }
