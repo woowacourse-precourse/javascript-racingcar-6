@@ -47,6 +47,7 @@ class App {
       this.moveCars(cars);
       this.displayMovement(cars);
     }
+    const winners = this.determineWinners(cars);
   }
 
   moveCars(cars) {
@@ -61,12 +62,16 @@ class App {
   displayMovement(cars) {
     cars.forEach((car) => {
       const repeat = "-".repeat(car.position);
-      Console.print(`${car.name}: ${repeat}`);
+      Console.print(`${car.name} : ${repeat}`);
     });
   }
+
+  determineWinners(cars) {
+    const maxPosition = Math.max(...cars.map((car) => car.position));
+    const winners = cars.filter((car) => car.position === maxPosition);
+    return winners;
+  }
+
 }
 
 export default App;
-
-const app = new App();
-app.play();
