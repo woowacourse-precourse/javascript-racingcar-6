@@ -1,5 +1,4 @@
-import CAR from "./constants/constant";
-
+import CAR from "./constants/Constants";
 class Car {
   constructor(name) {
     this.name = name;

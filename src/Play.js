@@ -1,7 +1,7 @@
 import { Console, Random } from "@woowacourse/mission-utils";
 import Result from "./Result";
-import CAR from "./constants/constant";
-import MESSAGE from "./constants/MESSAGE";
+import CAR from "./constants/Constants";
+import MESSAGE from "./constants/Messages";
 
 class Play {
   racing(carList) {

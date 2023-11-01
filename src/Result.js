@@ -1,5 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
-import CAR from "./constants/constant";
+import CAR from "./constants/Constants";
 
 class Result {
   FinalResult(carList) {

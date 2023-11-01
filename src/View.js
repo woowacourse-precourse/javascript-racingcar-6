@@ -1,8 +1,8 @@
 import { Console } from "@woowacourse/mission-utils";
 import Car from "./Car";
 import Play from "./Play.js";
-import CAR from "./constants/constant";
-import MESSAGE from "./constants/MESSAGE";
+import CAR from "./constants/Constants";
+import MESSAGE from "./constants/Messages";
 
 class View {
   checkNumberDigits(carNames) {
