@@ -30,6 +30,12 @@ class App {
       PRINTOUT.ASK_COUNT
     );
     MissionUtils.Console.print(raceCount);
+    // 시도 횟수 입력 에러처리
+    if (!raceCount) {
+      throw new Error("[ERROR] 공백이 입력되었습니다.");
+    } else if (raceCount < 1) {
+      throw new Error("[ERROR] 1 이상 입력하세요.");
+    }
 
     MissionUtils.Console.print(PRINTOUT.RACE_RESULT);
     // 전진 구현
