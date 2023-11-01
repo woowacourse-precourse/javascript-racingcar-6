@@ -14,9 +14,11 @@ class App {
         console.log(numberOfGames);
 
         let round = 1;
+        
         while (round <= numberOfGames) {
             const carStates = this.calculateAndStoreScore(numberOfGames);
-            Console.print(carStates);
+            const roundResult = this.createRoundResult(carNameArr, carStates);
+            Console.print(roundResult);
             round++;
         }
     }
@@ -64,6 +66,16 @@ class App {
             }
         }
         return carStates;
+    }
+
+    createRoundResult(carNameArr, carStates) {
+        const roundResultArr = [];
+        for (let i = 0; i < carNameArr.length; i++) {
+            const result = `${carNameArr[i]} : ${carStates[i]}`;
+            roundResultArr.push(result);
+        }
+        const roundResult = roundResultArr.join("\n");
+        return roundResult;
     }
 }
 
