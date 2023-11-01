@@ -29,4 +29,14 @@ describe("함수 테스트", () => {
 
         expect(result).toEqual("poby : ----");
     });
+
+    test("정규식으로 위의 결과 만들기", () => {
+        const input1 = "poby"
+        const input2 = 4
+        const str = "-"
+        const result = `${input1} : ${str.repeat(input2)}`;
+
+        expect(result).toEqual("poby : ----");
+    });
 });
+
