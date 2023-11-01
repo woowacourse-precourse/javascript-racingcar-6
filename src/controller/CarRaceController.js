@@ -8,29 +8,29 @@ class CarRaceController {
     this.cars = [];
     this.race = null;
     this.totalRound = 0;
-    this.InputView = new InputView();
-    this.OutputView = new OutputView();
+    this.inputView = new InputView();
+    this.outputView = new OutputView();
   }
 
   async setup() {
-    const carInput = await this.InputView.getCarNamesUserInput();
+    const carInput = await this.inputView.getCarNamesUserInput();
     this.cars = carInput.split(",").map((carName) => new Car(carName));
 
-    const totalRoundInput = await this.InputView.getTotalRoundUserInput();
+    const totalRoundInput = await this.inputView.getTotalRoundUserInput();
     this.totalRound = totalRoundInput;
   }
 
   startRace() {
     this.race = new Race(this.cars);
-    this.OutputView.printRoundResultInitMessage();
+    this.outputView.printRoundResultInitMessage();
     for (let curRound = 0; curRound < this.totalRound; curRound++) {
       this.race.progressRound();
-      this.OutputView.printRoundStatus(this.race.getRoundResult());
+      this.outputView.printRoundStatus(this.race.getRoundResult());
     }
   }
 
   showResult() {
-    this.OutputView.printWinners(this.race.getWinners());
+    this.outputView.printWinners(this.race.getWinners());
   }
 }
 
