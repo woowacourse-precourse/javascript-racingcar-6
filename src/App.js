@@ -10,6 +10,8 @@ class App {
     const gameRound = await Console.readLineAsync(
       "게임을 시도할 횟수를 입력해 주세요.\n"
     );
+
+    const playArray = playerBeforeDivide.split(",");
   }
 
   async play() {}
