@@ -1,6 +1,4 @@
-// validation.test.js
-
-import { isValidCarName } from "../src/validation.js";
+import { isValidCarName, isValidAttemptCounts } from "../src/validation.js";
 
 describe("자동차 이름 유효성 테스트", () => {
   test("정상 값 입력 시 Pass", () => {
@@ -25,6 +23,24 @@ describe("자동차 이름 유효성 테스트", () => {
     const carNames = ["car1", "car1"];
     expect(() => isValidCarName(carNames)).toThrowError(
       "[ERROR] 서로 다른 이름의 이름을 입력하세요."
+    );
+  });
+});
+
+describe("시도 횟수 유효성 테스트", () => {
+  test("정상 값 입력 시 Pass", () => {
+    expect(() => isValidAttemptCounts("5").not.toThrow());
+  });
+
+  test("숫자 아닐 시 에러", () => {
+    expect(() => isValidAttemptCounts("abc")).toThrowError(
+      "[ERROR] 유효한 시도 횟수를 입력하세요."
+    );
+  });
+
+  test("1 미만 입력시 에러", () => {
+    expect(() => isValidAttemptCounts("0")).toThrowError(
+      "[ERROR] 유효한 시도 횟수를 입력하세요."
     );
   });
 });
