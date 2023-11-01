@@ -49,7 +49,7 @@ class App {
 
       const racingCars = userCarList.map(name => ({ name, position: '' }));
 
-      MissionUtils.Console.print('실행 결과');
+      MissionUtils.Console.print('\n실행 결과');
 
       for (let i = 0; i < numberOfAttempts; i++) {
         racingCars.forEach(car => {
