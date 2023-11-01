@@ -53,7 +53,7 @@ export const input = {
     if (tryCount.length === 0) {
       throw MESSAGE.ERROR('시도 횟수를 입력해주세요.');
     }
-    if (Number.isNaN(tryCount)) {
+    if (!/^\d+$/.test(tryCount)) {
       throw MESSAGE.ERROR('시도 횟수는 숫자만 가능합니다.');
     }
     if (tryCount < 1) {
