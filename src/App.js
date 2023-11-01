@@ -34,4 +34,9 @@ class App {
   getRandomNumber() {
     this.randomNumber = Random.pickNumberInRange(0, 9);
   }
+
+  isMoveCar() {
+    this.getRandomNumber();
+    return this.randomNumber >= 4;
+  }
 export default App;
