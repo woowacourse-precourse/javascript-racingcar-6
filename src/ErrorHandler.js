@@ -22,6 +22,10 @@ const ErrorHandler = {
   },
 
   checkMoveCount(moveCount) {
+    if (!moveCount) {
+      throw new Error('[ERROR] 입력이 없습니다. 시도할 횟수를 입력하세요.');
+    }
+
     if (isNaN(moveCount)) {
       throw new Error('[ERROR] 숫자만 입력하여 주십시요.');
     }
