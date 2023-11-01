@@ -121,4 +121,16 @@ describe('자동차 경주 게임 입력값 유효성 검사', () => {
     // then
     await expect(app.play()).rejects.toThrow('[ERROR]');
   });
+
+  test('시도 횟수가 정수가 아닌 경우', async () => {
+    // given
+    const inputs = ['car1,car2,car3', '2.45'];
+    mockQuestions(inputs);
+
+    // when
+    const app = new App();
+
+    // then
+    await expect(app.play()).rejects.toThrow('[ERROR]');
+  });
 });
