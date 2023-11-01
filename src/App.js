@@ -3,6 +3,7 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 class App {
   async play() {
     // 게임 준비
+
     const cars = await MissionUtils.Console.readLineAsync(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,)기준으로 구분\n"
     );
@@ -20,30 +21,35 @@ class App {
     );
 
     // 결과 담을 딕셔너리 초기화
-    const result = {};
+    let scoreboard = {};
     for (let car of carList) {
-      result[car] = "";
+      scoreboard[car] = "";
     }
     MissionUtils.Console.print("\n실행 결과");
 
-    // round 수만큼 게임 진행
-    for (let i = 0; i < round; i++) {
-      // 라운드 게임 진행
+    // round별 게임 진행하는 함수
+    function roundRace(carList, scoreboard) {
       for (let car of carList) {
         const randomNum = MissionUtils.Random.pickNumberInRange(0, 9);
         if (randomNum >= 4) {
-          result[car] += "-";
+          scoreboard[car] += "-";
         }
-        // 라운드별 결과 출력
-        MissionUtils.Console.print(`${car} : ${result[car]}`);
+        MissionUtils.Console.print(`${car} : ${scoreboard[car]}`);
       }
       MissionUtils.Console.print("");
+
+      return scoreboard;
+    }
+
+    // round 수만큼 게임 진행
+    for (let i = 0; i < round; i++) {
+      scoreboard = roundRace(carList, scoreboard);
     }
 
     // 우승자 정하기
     let winner = "";
     let max = 0;
-    for (const [key, value] of Object.entries(result)) {
+    for (const [key, value] of Object.entries(scoreboard)) {
       if (value.length > max) {
         max = value.length;
         winner = key;
