@@ -6,7 +6,13 @@ const GAME_INPUT_TRY_NUMBER = 2;
 class App {
   async play() {
     const cars = await this.inputGameInfo(GAME_INPUT_CAR_NAME_NUMBER);
-    const tries = await this.inputGameInfo(GAME_INPUT_TRY_NUMBER);
+    const trial = await this.inputGameInfo(GAME_INPUT_TRY_NUMBER);
+    Console.print('\n실행결과');
+
+    const scores = cars.map((car) => {
+      return { name: car, score: 0 };
+    });
+    this.playRacing(scores, trial);
   }
 
   validNameConvention(string) {
@@ -43,6 +49,30 @@ class App {
         if (!this.isNumber(input)) throw new Error('[ERROR] not a number.');
         return Number(input);
     }
+  }
+
+  playRacing(scores, trial) {
+    while (trial--) {
+      scores.forEach((car) => {
+        if (this.getMovePoint()) car.score = car.score + 1;
+        this.printEachScore(car);
+      });
+      Console.print('');
+    }
+  }
+
+  getMovePoint() {
+    const randomNumber = Random.pickNumberInRange(0, 9);
+    if (randomNumber >= 4) return true;
+    return false;
+  }
+
+  printEachScore(car) {
+    const name = car.name + ' : ';
+    let score = '';
+
+    for (let i = 0; i < car.score; i++) score += '-';
+    Console.print(name + score);
   }
 }
 
