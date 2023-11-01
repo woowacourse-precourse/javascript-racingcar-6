@@ -4,7 +4,8 @@
   "description": "우아한테크코스 프리코스 자동차 경주 미션",
   "type": "module",
   "dependencies": {
-    "@woowacourse/mission-utils": "2.1.1"
+    "@testing-library/jest-dom": "^6.1.4",
+    "@woowacourse/mission-utils": "^2.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.23.0",
