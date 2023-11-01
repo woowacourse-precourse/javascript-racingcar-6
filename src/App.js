@@ -1,8 +1,10 @@
-import { getCarNames } from './getCarNamesAndCount';
+import RacingGame from './RacingGame';
 
 class App {
+  
   async play() {
-    await getCarNames();
+    const racingGame = new RacingGame();
+    await racingGame.start();
   }
 }
 
