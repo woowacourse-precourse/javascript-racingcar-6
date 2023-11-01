@@ -88,7 +88,7 @@
 - 클래스 테스트
   - Car ✔️
   - Garage ✔️
-  - RacingCarGame
+  - RacingCarGame ✔️
 
 ## 기능 세부 설명
 
