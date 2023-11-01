@@ -1,4 +1,3 @@
-import App from "./App.js";
+const startRace = require('./raceGame');
 
-const app = new App();
-app.play();
+startRace();
