@@ -68,11 +68,15 @@ function carMover(carnames) {
 }
 
 function carMoveOrStop(carname) {
-  const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
-  if (randomNumber >= 4) {
+  if (randomNumber() >= 4) {
     carMoveStorage[carname] += "-";
   }
   MissionUtils.Console.print(`${carname} : ${carMoveStorage[carname]}`);
+}
+
+function randomNumber() {
+  const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
+  return randomNumber
 }
 
 function winner(carnames) {
