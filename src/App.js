@@ -1,4 +1,4 @@
-import { Console, MissionUtils } from "@woowacourse/mission-utils";
+import { Console, MissionUtils } from '@woowacourse/mission-utils';
 
 async function input(script) {
   const inputValue = await Console.readLineAsync(script);
@@ -7,33 +7,33 @@ async function input(script) {
 
 function checkCarName(value) {
   value.map((e) => {
-    if (e.length > 5) throw Error("[ERROR] 차 이름의 길이가 5 초과입니다.");
+    if (e.length > 5) throw Error('[ERROR] 차 이름의 길이가 5 초과입니다.');
   });
 }
 function checkCarNum(value) {
-  if (value.includes(",") == false)
-    throw Error("[ERROR] 2대 이상의 차를 입력해주세요");
+  if (value.includes(',') == false)
+    throw Error('[ERROR] 2대 이상의 차를 입력해주세요');
 }
 async function getCar() {
   // 경주 할 자동차 입력
   let value = await input(
-    "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
+    '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n'
   );
   checkCarNum(value);
-  value = value.split(",");
+  value = value.split(',');
   checkCarName(value);
   return value;
 }
 
 function checkTryNumNumber(value) {
-  if (isNaN(value) === true) throw Error("[ERROR] 숫자를 입력해 주십시오.");
+  if (isNaN(value) === true) throw Error('[ERROR] 숫자를 입력해 주십시오.');
 }
 function checkTryNumAmniotic(value) {
-  if (value <= 0) throw Error("[ERROR] 0보다 큰 숫자를 입력해 주십시오.");
+  if (value <= 0) throw Error('[ERROR] 0보다 큰 숫자를 입력해 주십시오.');
 }
 async function getTryNum() {
   // 시도횟수 입력
-  const value = await input("시도할 횟수는 몇 회인가요?\n");
+  const value = await input('시도할 횟수는 몇 회인가요?\n');
   checkTryNumNumber(value);
   checkTryNumAmniotic(value);
   return value;
@@ -60,16 +60,16 @@ function printGoProgress(carGoCount, car) {
       max = carGoCount[e];
       winner[0] = e;
     }
-    carGoCountForPrint[i] = "";
-    for (let j = 0; j < carGoCount[e]; j++) carGoCountForPrint[i] += "-";
+    carGoCountForPrint[i] = '';
+    for (let j = 0; j < carGoCount[e]; j++) carGoCountForPrint[i] += '-';
     Console.print(`${e} : ${carGoCountForPrint[i]}`);
   });
-  Console.print("");
+  Console.print('');
 
   return printWinner(car, carGoCount, winner, max);
 }
 function printWinner(car, carGoCount, winner, max) {
-  let winnerForPrint = "";
+  let winnerForPrint = '';
   let jointWinner = winner;
   car.map((e) => {
     if (max == carGoCount[e] && winner[0] != e) jointWinner.push(e);
@@ -81,14 +81,14 @@ function checkJointWinner(jointWinner, winnerForPrint) {
   let maxGoCar = winnerForPrint;
   jointWinner.map((e, i) => {
     //우승자가 여러명인 경우 쉼표로 구분하기
-    if (i != 0) maxGoCar += ", ";
+    if (i != 0) maxGoCar += ', ';
     maxGoCar += e;
   });
   return maxGoCar;
 }
 function playGame(tryNum, carGoCount, car) {
-  let Go = "";
-  let winner = "";
+  let Go = '';
+  let winner = '';
   for (let i = 0; i < tryNum; i++) {
     for (let j = 0; j < car.length; j++) {
       Go = getRandomNum();
@@ -106,7 +106,7 @@ class App {
     car.map((e) => {
       carGoCount[e] = 0;
     });
-    Console.print("\n실행 결과");
+    Console.print('\n실행 결과');
     playGame(tryNum, carGoCount, car);
   }
 }
