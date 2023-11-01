@@ -120,4 +120,22 @@ describe("자동차 경주 게임", () => {
     carRacingGame.moveForward(3, () => {});
     expect(carRacingGame.getWinner()).toEqual(["one", "three"]);
   });
+
+  test("전진 후 결과 콜백(CarRacingGame.moveForward)테스트", () => {
+    const randoms = [9, 9, 9, 9, 0, 9, 9, 9, 9];
+    const cars = ["one", "two", "three"];
+    const distance = [1, 1, 1, 2, 1, 2, 3, 2, 3];
+    mockRandoms([...randoms]);
+
+    const carRacingGame = new CarRacingGame();
+    carRacingGame.setCars(cars.map((car) => new Car(car)));
+    carRacingGame.moveForward(3, (res) =>
+      expect(res).toEqual(
+        cars.map((name) => ({
+          distance: distance.shift(),
+          name,
+        }))
+      )
+    );
+  });
 });
