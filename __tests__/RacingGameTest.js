@@ -54,9 +54,9 @@ describe('hasDuplicateCarName 함수 테스트', () => {
 
 describe('getCarNames 함수 테스트', () => {
   describe('문제 있을 때 예외 처리', () => {
-    const invailInputs = ['seung,seung,seug', 'seung,seungthae,kim,123456'];
+    const invaidlInputs = ['seung,seung,seug', 'seung,seungthae,kim,123456'];
 
-    invailInputs.forEach((input) => {
+    invaidlInputs.forEach((input) => {
       test(`테스트 케이스 ${input}`, async () => {
         mockQuestions(input);
         const racingGame = new RacingGame();
@@ -79,6 +79,44 @@ describe('getCarNames 함수 테스트', () => {
         const result = racingGame.getCarNames();
 
         await expect(result).resolves.not.toThrow();
+      });
+    });
+  });
+});
+
+describe('isValidMoveCount 함수 테스트', () => {
+  describe('적합한 숫자가 아닌 경우 예외 처리', () => {
+    const invaildInputs = [
+      '0',
+      '-1',
+      '10회',
+      'five time',
+      '30번',
+      '5.5',
+      '0.03',
+    ];
+
+    invaildInputs.forEach((input) => {
+      test(`테스트 케이스 ${input}`, () => {
+        const racingGame = new RacingGame();
+
+        const result = () => racingGame.isValidMoveCount(input);
+
+        expect(result).toThrow();
+      });
+    });
+  });
+
+  describe('적합한 숫자인 경우 정상 동작 확인', () => {
+    const vaildInputs = ['10', '959', '2014', '9999'];
+
+    vaildInputs.forEach((input) => {
+      test(`테스트 케이스 ${input}`, () => {
+        const racingGame = new RacingGame();
+
+        const result = racingGame.isValidMoveCount(input);
+
+        expect(result).toBeTruthy();
       });
     });
   });
