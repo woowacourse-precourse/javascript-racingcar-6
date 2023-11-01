@@ -27,4 +27,12 @@ describe('✨ [Players] 클래스 메서드 테스트', () => {
       expect(players.checkMoveCountNotZero(value)).toBeTruthy();
     });
   });
+
+  test('[checkMoveCountNotZero] 인자로 받은 값이 0이거나 0보다 작으면 false를 반환한다.', () => {
+    const valueList = [0, -1, -4];
+
+    valueList.forEach((value) => {
+      expect(players.checkMoveCountNotZero(value)).toBeFalsy();
+    });
+  });
 });
