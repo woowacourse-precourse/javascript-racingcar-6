@@ -1,4 +1,4 @@
-import validateRaceCount from '../src/validationRaceCount';
+import validateRaceCount from '../src/validation/validationRaceCount';
 
 describe('checkRaceCount', () => {
   test('숫자가 맞는지 확인, 아닐 경우 예외 처리', () => {

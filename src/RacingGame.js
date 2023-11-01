@@ -1,6 +1,6 @@
 import Car from './Car';
-import validation from './validationCarName';
-import validateRaceCount from './validationRaceCount';
+import validateCarName from './validation/validationCarName';
+import validateRaceCount from './validation/validationRaceCount';
 import { Console } from '@woowacourse/mission-utils';
 
 class RacingGame {
@@ -45,10 +45,7 @@ class RacingGame {
   getRaceCount = async () => {
     const raceCount = await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
     const raceCountToNum = parseInt(raceCount);
-    if (!validateRaceCount(raceCountToNum)) {
-      throw new Error('[ERROR] 카운트');
-      // console.log('[ERROR]')
-    }
+    if (!validateRaceCount(raceCountToNum)) throw new Error('[ERROR] 카운트');
 
     this.rounds = raceCountToNum;
   };
@@ -58,10 +55,8 @@ class RacingGame {
       '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)',
     );
     const carNamesToArray = carNames.split(',');
+    if (!validateCarName(carNamesToArray)) throw new Error('[ERROR] 네임');
 
-    if (!validation(carNamesToArray)) {
-      throw new Error('[ERROR] 네임');
-    }
     this.cars = carNamesToArray.map((name) => new Car(name));
   };
 
