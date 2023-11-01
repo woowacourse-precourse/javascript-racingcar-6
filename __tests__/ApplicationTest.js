@@ -65,7 +65,7 @@ describe('자동차 경주 게임', () => {
   describe('입력', () => {
     describe('자동차 이름', () => {
       test.each([[['helloworld']], [['pobi,helloworld']]])(
-        '예외 처리',
+        '길이 예외 처리',
         async inputs => {
           mockQuestions(inputs);
 
@@ -76,7 +76,7 @@ describe('자동차 경주 게임', () => {
       );
 
       test.each([[['pobi,pobi']], [['pobi,woni,pobi']]])(
-        '중복된 이름 예외 처리',
+        '중복 예외 처리',
         async inputs => {
           mockQuestions(inputs);
 
