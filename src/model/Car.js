@@ -1,5 +1,12 @@
-const car = name => {
-  return { name, result: [], textResult: '' };
-};
+class Car {
+  constructor(name) {
+    this.name = name;
+    this.textResult = '';
+  }
 
-export default car;
+  move() {
+    this.textResult += '-';
+  }
+}
+
+export default Car;

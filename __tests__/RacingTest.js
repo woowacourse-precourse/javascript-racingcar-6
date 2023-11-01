@@ -1,11 +1,12 @@
 import race from '../src/controller/Race';
 import { Random } from '@woowacourse/mission-utils';
+import Car from '../src/model/Car';
 describe('레이스 게임 테스트', () => {
   test('입력값에 따른 car 객체 생성', () => {
     const userInput = 'a,b';
     const equalObject = [
-      { name: 'a', result: [], textResult: '' },
-      { name: 'b', result: [], textResult: '' },
+      { name: 'a', textResult: '' },
+      { name: 'b', textResult: '' },
     ];
     expect(race.createRaceCars(userInput)).toEqual(equalObject);
   });
@@ -20,16 +21,12 @@ describe('레이스 게임 테스트', () => {
     Random.pickNumberInRange.mockReturnValueOnce(8);
     Random.pickNumberInRange.mockReturnValueOnce(7);
 
-    const cars = [
-      { name: 'a', result: [], textResult: '' },
-      { name: 'b', result: [], textResult: '' },
-    ];
+    const a = new Car('a');
+    const b = new Car('b');
+    const cars = [a, b];
     const inputPlayCount = 3;
 
     race.playRace(cars, inputPlayCount);
-
-    expect(cars[0].result).toEqual([1, 4, 8]);
-    expect(cars[1].result).toEqual([6, 2, 7]);
 
     expect(cars[0].textResult).toBe('--');
     expect(cars[1].textResult).toBe('--');
@@ -37,9 +34,9 @@ describe('레이스 게임 테스트', () => {
 
   test('우승자가 여러명일 경우 출력', () => {
     const cars = [
-      { name: 'a', result: [4, 5, 8], textResult: '---' },
-      { name: 'b', result: [3, 0, 4], textResult: '-' },
-      { name: 'c', result: [4, 9, 5], textResult: '---' },
+      { name: 'a', textResult: '---' },
+      { name: 'b', textResult: '-' },
+      { name: 'c', textResult: '---' },
     ];
 
     expect(race.winner(cars)).toEqual('a,c');
@@ -47,9 +44,9 @@ describe('레이스 게임 테스트', () => {
 
   test('우승자가 한 명일 경우 출력', () => {
     const cars = [
-      { name: 'a', result: [4, 5, 8], textResult: '---' },
-      { name: 'b', result: [3, 0, 4], textResult: '-' },
-      { name: 'c', result: [4, 9, 3], textResult: '--' },
+      { name: 'a', textResult: '---' },
+      { name: 'b', textResult: '-' },
+      { name: 'c', textResult: '--' },
     ];
 
     expect(race.winner(cars)).toEqual('a');
