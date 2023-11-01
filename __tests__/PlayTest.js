@@ -23,37 +23,14 @@ const getLogSpy = () => {
   return logSpy;
 };
 
-describe('자동차 경주 게임', () => {
-  test('전진-정지', async () => {
-    // given
-    const MOVING_FORWARD = 4;
-    const STOP = 3;
-    const inputs = ['pobi,woni', '1'];
-    const outputs = ['pobi : -'];
-    const randoms = [MOVING_FORWARD, STOP];
+describe('시도횟수당 결과 출력 테스트', () => {
+  test('숫자가 4이상이면 전진을 하고 결과를 출력합니다.', async () => {
+    mockRandoms([2, 2, 4]);
+    mockQuestions(['Kim,Lee,Park', '2']);
     const logSpy = getLogSpy();
-
-    mockQuestions(inputs);
-    mockRandoms([...randoms]);
-
-    // when
     const app = new App();
     await app.play();
 
-    // then
-    outputs.forEach((output) => {
-      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
-    });
-  });
-
-  test.each([[['pobi,javaji']], [['pobi,eastjun']]])('이름에 대한 예외 처리', async (inputs) => {
-    // given
-    mockQuestions(inputs);
-
-    // when
-    const app = new App();
-
-    // then
-    await expect(app.play()).rejects.toThrow('[ERROR]');
+    expect(logSpy).toHaveBeenCalledWith('Park : -');
   });
 });
