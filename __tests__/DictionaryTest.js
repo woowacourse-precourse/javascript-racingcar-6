@@ -9,4 +9,12 @@ describe("딕셔너리 확인", () => {
 
     expect(CAR_DICT).toBeTruthy();
   });
+  test("딕셔너리 타입 확인", async () => {
+    const CAR_INPUT = ["pobi,woni"];
+    const app = new App();
+
+    const CAR_DICT = await app.setCarDict(CAR_INPUT);
+
+    expect(typeof CAR_DICT).toEqual('object');
+  })
 });
