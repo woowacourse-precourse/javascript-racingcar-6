@@ -22,7 +22,7 @@ class App {
     this.checkAttemptCount(ATTEMPT_COUNT);
 
     const CAR_OBJECT_ARRAY = this.makeCarObject(CAR_ARRAY);
-    this.showRaceResults(CAR_OBJECT_ARRAY, ATTEMPT_COUNT);
+    this.showEachRaceResults(CAR_OBJECT_ARRAY, ATTEMPT_COUNT);
     this.showWinner(CAR_OBJECT_ARRAY);
   }
 
