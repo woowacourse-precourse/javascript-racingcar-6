@@ -44,6 +44,11 @@ class Race {
     return roundNumber;
   }
 
+  #setRoundNumber(number) {
+    Race.#validateRoundNumber(number);
+    this.#roundNumber = number;
+  }
+
   #startGame() {
     OutputView.printBlankLine();
     OutputView.printShowResult();
@@ -62,21 +67,6 @@ class Race {
     this.#racingCars = cars;
   }
 
-  static #validateCarCounts(number) {
-    if (number < Race.#MIN_CAR_COUNT) {
-      throw Error(ERROR_MESSAGE.lessThanMinCarCount(Race.#MIN_CAR_COUNT));
-    }
-
-    if (number > Race.#MAX_CAR_COUNT) {
-      throw Error(ERROR_MESSAGE.moreThenMaxCarCount(Race.#MAX_CAR_COUNT));
-    }
-  }
-
-  #setRoundNumber(number) {
-    Race.#validateRoundNumber(number);
-    this.#roundNumber = number;
-  }
-
   static #validateRoundNumber(number) {
     if (number < Race.#MIN_ROUND_NUMBER) {
       throw Error(ERROR_MESSAGE.lessThanMinRound(Race.#MIN_ROUND_NUMBER));
@@ -92,6 +82,7 @@ class Race {
 
     for (const carName in roundResult) {
       const isMoved = roundResult[carName];
+
       if (isMoved) this.#increaseCarDistance(carName);
     }
 
@@ -115,6 +106,16 @@ class Race {
     const carNames = racingCars.getCarNames();
     const winners = carNames.filter((name) => record[name] === maxCount);
     return winners;
+  }
+
+  static #validateCarCounts(number) {
+    if (number < Race.#MIN_CAR_COUNT) {
+      throw Error(ERROR_MESSAGE.lessThanMinCarCount(Race.#MIN_CAR_COUNT));
+    }
+
+    if (number > Race.#MAX_CAR_COUNT) {
+      throw Error(ERROR_MESSAGE.moreThenMaxCarCount(Race.#MAX_CAR_COUNT));
+    }
   }
 }
 
