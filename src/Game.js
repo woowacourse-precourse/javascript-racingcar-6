@@ -8,6 +8,18 @@ class Game {
     this.carList = [];
   }
 
+  getAttemptNumber() {
+    return this.attemptNumber;
+  }
+
+  getCarList() {
+    return this.carList;
+  }
+
+  getFinalWinnerList() {
+    return this.finalWinnerList;
+  }
+
   async inputCarName() {
     const carNameList = await Console.readLineAsync(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
@@ -34,14 +46,23 @@ class Game {
     let maxPosition = 0;
     let finalWinnerList = [];
     for (const car of this.carList) {
-      if (car.position > maxPosition) {
-        maxPosition = car.position;
-        finalWinnerList = [car.name];
-      } else if (car.position === maxPosition) {
-        finalWinnerList.push(car.name);
+      if (car.isFasterThan(maxPosition)) {
+        maxPosition = car.getPosition();
+        finalWinnerList = [car.getName()];
+      } else if (car.isSameAs(maxPosition)) {
+        finalWinnerList.push(car.getName());
       }
     }
     this.finalWinnerList = finalWinnerList;
+  }
+
+  generateFinalResultMessage() {
+    let finalResultMessage = "최종 우승자 : ";
+    for (const finalWinner of this.finalWinnerList) {
+      finalResultMessage += finalWinner + ", ";
+    }
+    finalResultMessage = finalResultMessage.slice(0, -2);
+    return finalResultMessage;
   }
 }
 
