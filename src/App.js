@@ -1,6 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
 import GameSetting from "./gameSetting.js";
-import { GAME_MESSAGE } from "./constants/gameConstant.js";
+import { GAME_MESSAGE } from "./constants/GameConstant.js";
 import GameMainLogic from "./GameMainLogic.js";
 
 class App {
@@ -39,7 +39,7 @@ class App {
   }
 }
 
-const app = new App();
-app.play();
+// const app = new App();
+// app.play();
 
 export default App;

@@ -1,5 +1,5 @@
 import {Random, Console} from '@woowacourse/mission-utils';
-import { CONSTANTS, GAME_MESSAGE } from './constants/gameConstant.js';
+import { CONSTANTS, GAME_MESSAGE } from './constants/GameConstant.js';
 class GameMainLogic{
     static isGoForward(){
         const randomNumber = Random.pickNumberInRange(CONSTANTS.MIN_VALUE, CONSTANTS.MAX_VALUE);

@@ -1,5 +1,5 @@
 import {Console} from '@woowacourse/mission-utils'
-import { PLAYER_INPUT_MESSAGE } from './constants/gameConstant.js';
+import { PLAYER_INPUT_MESSAGE } from './constants/GameConstant.js';
 import Validation from './validation.js';
 
 class GameSetting {
