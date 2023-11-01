@@ -35,4 +35,13 @@ describe('RacingGame 테스트', () => {
 
     expect(createRacingGame).toThrow();
   });
+
+  test('라운드가 0인 경우 예외 처리를 진행한다.', () => {
+    const zeroRound = 0;
+
+    const createRacingGame = () =>
+      new RacingGame({ cars: mockCars, zeroRound });
+
+    expect(createRacingGame).toThrow();
+  });
 });
