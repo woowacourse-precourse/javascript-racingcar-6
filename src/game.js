@@ -15,7 +15,9 @@ function validateName(name) {
 
 function validateRoundNumber(round) {
   if (Number.isNaN(round))
-    throw new Error('[ERROR]숫자만 입력할 수 있습니다.')
+    throw new Error('[ERROR] 숫자만 입력할 수 있습니다.')
+  if (!Number.isInteger(round))
+    throw new Error('[ERROR] 정수만 입력할 수 있습니다.')
   if (round <= 0 || round > 10000000)
     throw new Error('[ERROR] 1 이상 10000000이하의 숫자만 입력할 수 있습니다.')
 }
