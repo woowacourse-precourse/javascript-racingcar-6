@@ -14,6 +14,9 @@ class RacingController {
     const racingCount = await InputView.readRacingCount();
     this.#racingModel.saveNames(racingVehicleName);
     OutputView.print('\n실행 결과');
+    for (let count = 1; count <= racingCount; count += 1) {
+      this.#racingModel.racing();
+    }
   }
 }
 
