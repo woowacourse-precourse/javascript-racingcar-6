@@ -17,4 +17,8 @@ export const racingProgress = async (carNameArray, tryNumber) => {
   const RESULT = [];
   let countArr = [];
   makeEmptyArray(carNameArray, countArr);
+
+  for (let i = 0; i < carNameArray.length; i++) {
+    RESULT.push(await makeRandomNumberTest(tryNumber));
+  }
 };
