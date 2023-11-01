@@ -9,7 +9,6 @@ export class Race {
 
   constructor(cars, tryInput) {
     this.#cars = cars;
-
     this.#tryInput = tryInput;
   }
 
@@ -18,7 +17,7 @@ export class Race {
     Output('');
     Output('실행 결과');
 
-    while (count < this.#tryInput) {
+    while (count < Number(this.#tryInput)) {
       count += 1;
       this.#cars.move();
       Output('');
