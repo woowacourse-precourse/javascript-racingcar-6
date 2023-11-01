@@ -70,9 +70,7 @@ describe('기능 단위 테스트', () => {
 
     const car = new Car();
 
-    for(let i = 0; i < randoms.length; i++)
-      car.randomlyMove();
-
+    for (let i = 0; i < randoms.length; i++) car.randomlyMove();
     // then
     expect(car.carDistance).toEqual(outputs);
   });
