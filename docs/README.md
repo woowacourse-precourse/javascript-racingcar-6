@@ -25,21 +25,32 @@
 # 🏎️ 기능 요구 사항
 
 ## [domain]
-
-### 1. Car/Cars
-
 비즈니스 로직을 실행할 도메인 객체들
 
-1. 각 차량을 움직임
-2. CarDto/CarsDto 생성
+### 1. Car
 
-### 2. MoveDecider
+1. 하나의 차량을 움직이는 자동차 개별 클래스
+2. CarDto 생성
 
-자동차 움직임 여부 판단
+### 2. Cars
+
+1. Car를 멤버 변수로 갖는 일급 컬렉션 클래스
+2. CarsDto 생성
+
+
+### 3. MoveDecider
+
+자동차 움직임 여부를 판단하는 클래스
 
 ### 3. Dto
 
-CarDto, CarsDto, WinnerDto, WinnersDto
+#### 3-1. CarDto, CarsDto
+
+개별 자동차, 자동차들의 이름과 이동 거리를 리턴하는 DTO 레코드
+
+#### 3-2. WinnerDto, WinnersDto
+
+우승자, 우승자들의 이름과 이동 거리를 리턴하는 DTO 레코드
 
 ## [view]
 
@@ -53,14 +64,18 @@ CarDto, CarsDto, WinnerDto, WinnersDto
 
 ### 3. InputValidator
 
-입력값 검증
+사용자 입력값을 검증하는 클래스
 
 ### 4. InputConverter
 
-입력값 변환
+입력값을 변환하는 클래스
 
 ## [controller]
 
 ### 1. GameController
 
-게임의 전체적인 흐름 담당
+게임의 전체적인 흐름 담당하는 컨트롤러 클래스
+
+## constants
+
+사용자에게 보여줄 메세지, 에러들을 상수화
