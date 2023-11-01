@@ -38,7 +38,7 @@ class Race {
   async repeatNTimes() {
     const inputTimes = await this.userInput.inputAttemptCount();
     const attemptCount = validateAttemptCount(inputTimes);
-    print(MESSAGE.result);
+    print(`\n${MESSAGE.result}`);
 
     for (let i = 0; i < attemptCount; i += 1) {
       this.gameRound();

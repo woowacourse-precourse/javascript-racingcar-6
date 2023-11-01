@@ -3,12 +3,12 @@ import MESSAGE from '../common/message.js';
 
 class UserInput {
   async inputCarName() {
-    const carName = await readLineAsync(MESSAGE.inputCarName);
+    const carName = await readLineAsync(`${MESSAGE.inputCarName}\n`);
     return carName;
   }
 
   async inputAttemptCount() {
-    const attemptCount = await readLineAsync(MESSAGE.inputNumber);
+    const attemptCount = await readLineAsync(`${MESSAGE.inputNumber}\n`);
     return attemptCount;
   }
 }
