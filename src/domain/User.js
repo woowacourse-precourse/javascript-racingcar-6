@@ -13,6 +13,10 @@ export default class User {
 
     async inputCarNames() {
         const carNames = await MissionUtils.Console.readLineAsync(GAME_MESSAGE.inputCarNames);
+
+        if (!carNames) {
+            throw new Error(ERROR_MESSAGE.carNameNotUndefinedException);
+        }
         
         return this.splitCarNames(carNames);
     }

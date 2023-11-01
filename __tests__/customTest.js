@@ -46,6 +46,16 @@ describe('예외 처리 테스트', () => {
 
         const app = new App();
         
-        await expect(app.play()).rejects.toThrow("[ERROR]");
+        await expect(app.play()).rejects.toThrow('[ERROR]');
     });
+
+    test('이름을 입력하지 않은 경우 예외처리', async() => {
+        // given
+        const input = undefined;
+        mockQuestions([input]);
+
+        const app = new App();
+        
+        await expect(app.play()).rejects.toThrow('[ERROR]');
+    })
 });
