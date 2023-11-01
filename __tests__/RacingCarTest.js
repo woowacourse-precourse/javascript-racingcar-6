@@ -1,6 +1,5 @@
 import { Console, Random } from '@woowacourse/mission-utils';
 import RacingCar from '../src/RacingCar';
-import strings from '../src/constants';
 
 const getLogSpy = () => {
   const logSpy = jest.spyOn(Console, 'print');

@@ -23,15 +23,15 @@ class RacingCar {
 
   wrongNumber(inputNumber) {
     if (inputNumber === '') {
-      throw new Error('[ERROR] 시도할 횟수를 입력해주세요.');
+      throw new Error(strings.ERROR_MESSAGE_NUMBER_NULL);
     }
 
     if (Number(inputNumber) <= 0) {
-      throw new Error('[ERROR] 0보다 큰 값을 입력해주세요.');
+      throw new Error(strings.ERROR_MESSAGE_NUMBER_POSITIVE_NUMBER);
     }
 
     if (/[^0-9]/.test(inputNumber)) {
-      throw new Error('[ERROR] 숫자를 입력해주세요.');
+      throw new Error(strings.ERROR_MESSAGE_NUMBER_NUMBER);
     }
 
     Console.print(inputNumber);
@@ -43,7 +43,7 @@ class RacingCar {
     const randomNumber = Random.pickNumberInRange(0, 9);
 
     if (randomNumber >= strings.CONDITION_NUMBER) {
-      departureCount += '-';
+      departureCount += strings.MOVE_FOWORD;
     }
 
     return departureCount;
