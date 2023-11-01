@@ -4,7 +4,7 @@ import messagePrinter from './utils/messagePrinter.js';
 import eachRaceStart from './utils/eachRaceStart.js';
 import printCurrentStatus from './utils/printCurrentStatus.js';
 import printWinners from './utils/printWinners.js';
-import AllCars from './models/Cars.js';
+import AllCars from './models/AllCars.js';
 
 class App {
   #cars;
