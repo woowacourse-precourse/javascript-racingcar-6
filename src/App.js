@@ -5,10 +5,15 @@ class App {
     const [carName, cnt] = userInput();
     const carLength = carName.length;
     let carForward = Array.from({ carLength }, () => 0);
+
+    MissionUtils.Console.print("\n실행 결과");
     while(cnt -= 1) {
       const randomNumber = generateRandomNumber(carLength);
       carForward = carForward.map((value, idx) => (randomNumber[idx] >= 4 ? value + 1 : value));
+      printResult(carName, carForward);
     }
+
+    printTotalResult(carName, carForward);
   }
 
   async userInput() {
@@ -30,6 +35,7 @@ class App {
       MissionUtils.Console.print(error.message);
       return;
     }
+
     return carName, cnt;
   }
 
@@ -49,6 +55,19 @@ class App {
       random.push(number);
     }
     return random;
+  }
+
+  printResult(name, forward) {
+    name.map((n, idx) => {
+      MissionUtils.Console.print(`${n} : ${'-'.repeat(forward[idx])}`);
+    })
+    MissionUtils.Console.print(""); //개행 추가
+  }
+
+  printTotalResult(name, forward) {
+    const maxNumber = Math.max(...forward);
+    const winner = name.filter((n, idx) => forward[idx] == maxNumber);
+    MissionUtils.Console.print(`최종 우승자 : ${winner.join(", ")}`);
   }
 }
 
