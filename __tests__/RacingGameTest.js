@@ -121,3 +121,35 @@ describe('isValidMoveCount 함수 테스트', () => {
     });
   });
 });
+
+describe('getMoveCount 함수 테스트', () => {
+  describe('문제 있을 때 예외 처리', () => {
+    const invalidlInputs = ['-1', '10번', '2.5', '0', '3, 462'];
+
+    invalidlInputs.forEach((input) => {
+      test(`테스트 케이스 ${input}`, async () => {
+        mockQuestions(input);
+        const racingGame = new RacingGame();
+
+        const result = () => racingGame.getMoveCount();
+
+        await expect(result).rejects.toThrow();
+      });
+    });
+  });
+
+  const validInputs = ['1', '10'];
+
+  describe('문제 없을 때 정상 동작 확인', () => {
+    validInputs.forEach((input) => {
+      test(`테스트 케이스 ${input}`, async () => {
+        mockQuestions(input);
+        const racingGame = new RacingGame();
+
+        const result = racingGame.getMoveCount();
+
+        await expect(result).resolves.not.toThrow();
+      });
+    });
+  });
+});
