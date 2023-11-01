@@ -14,16 +14,16 @@ export default class InitGame {
   }
 
   async init() {
-    this.carList = this.validateCarList(
+    this.carList = this.#validateCarList(
       await Console.readLineAsync(PROMPT_CAR_NAMES)
     );
 
-    this.gameCount = this.validateGameCount(
+    this.gameCount = this.#validateGameCount(
       await Console.readLineAsync(PROMPT_GAME_COUNT)
     );
   }
 
-  validateCarList(carList) {
+  #validateCarList(carList) {
     carList = carList.split(",");
     const isLengthZero = carList.length === 0;
     const isLengthOverOrHasBlank = carList.some(
@@ -40,7 +40,7 @@ export default class InitGame {
 
     return carList;
   }
-  validateGameCount(gameCount) {
+  #validateGameCount(gameCount) {
     const IsCountNotNumber = isNaN(gameCount);
 
     if (IsCountNotNumber) {

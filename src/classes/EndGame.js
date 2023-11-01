@@ -2,15 +2,15 @@ import { Console } from "@woowacourse/mission-utils";
 import { RESULT_WINNER } from "../utills/Constants.js";
 export default class EndGame {
   result(carList) {
-    this.decendCarList(carList);
-    this.makeWinnerList(carList);
+    this.#decendCarList(carList);
+    this.#makeWinnerList(carList);
   }
 
-  decendCarList(carList) {
+  #decendCarList(carList) {
     carList.sort((a, b) => b[1] - a[1]);
   }
 
-  makeWinnerList(carList) {
+  #makeWinnerList(carList) {
     const result = [];
 
     carList.forEach((car) => {
@@ -18,10 +18,10 @@ export default class EndGame {
       result.push(car.name);
     });
 
-    this.printWinnerList(result)
+    this.#printWinnerList(result)
   }
-  
-  printWinnerList(winnerList) {
+
+  #printWinnerList(winnerList) {
     Console.print(RESULT_WINNER + winnerList.join(", "));
   }
 }
