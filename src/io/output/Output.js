@@ -7,20 +7,16 @@ const Output = (superClass) =>
 			Console.print(GAME_MESSAGE.resultHeader);
 		}
 
-		static printAllLocations(curLocations) {
-			const objArr = Object.entries(curLocations);
-
-			objArr.forEach(([name, curLocation]) => this.printLocation(name, curLocation));
+		static printAllLocations(drivers) {
+			drivers.forEach((driver) => this.printLocation(driver.name, driver.location));
 
 			Console.print(GAME_MESSAGE.newLine);
 		}
 
-		static printLocation(name, currentLocation) {
-			const locationVisualization = GAME_MESSAGE.moveMark.repeat(currentLocation);
+		static printLocation(name, location) {
+			const locationVisualization = GAME_MESSAGE.moveMark.repeat(location);
 
-			Console.print(
-				`${name} ${GAME_MESSAGE.resultDelimiter} ${locationVisualization}` // name : ---
-			);
+			Console.print(`${name} ${GAME_MESSAGE.resultDelimiter} ${locationVisualization}`);
 		}
 
 		static printWinnerNames(winnerNames) {
