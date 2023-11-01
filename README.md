@@ -174,7 +174,7 @@ MissionUtils.Random.pickNumberInRange(0, 9);
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
 
 ## 기능 목록
-- [ ] string을 입력받고 해당 string이 '경주할 자동차 이름 형식'에 알맞는지 판단하는 유효성 검사 함수 구현
+- [x] string을 입력받고 해당 string이 '경주할 자동차 이름 형식'에 알맞는지 판단하는 유효성 검사 함수 구현
 - [ ] 숫자를 입력받고, 해당 숫자가 '시도할 횟수' 형식에 알맞는지 판단하는 유효성 검사 함수 구현
 - [ ] 0~9 사이 무작위값을 받아서 전진 여부를 반환하는 함수 구현
 - [ ] 양의 정수 값을 받아서 해당 값에 해당하는 횟수만큼 전진 여부 판단 후, 그 결과를 배열로 반환하는 함수 구현
