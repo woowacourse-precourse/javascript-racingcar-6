@@ -1,10 +1,10 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Console } from '@woowacourse/mission-utils';
 
 // 예외사항 모듈
-import RaceStatus from "../exception/RaceStatus.js";
+import RaceStatus from '../exception/RaceStatus';
 
 // 상수 모듈
-import { COMMENT, NUMBER } from "../utils/Constants.js";
+import { COMMENT, NUMBER } from '../utils/Constants';
 
 class RaceOrganizer {
   static getCandidates(participant) {
@@ -31,7 +31,7 @@ class RaceOrganizer {
   }
 
   static talkToWinner(participant) {
-    const winner = RaceOrganizer.getCandidates(participant).join(", ");
+    const winner = RaceOrganizer.getCandidates(participant).join(', ');
 
     Console.print(`${COMMENT.FINAL_WINNER} : ${winner}`);
   }

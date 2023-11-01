@@ -1,18 +1,18 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Console } from '@woowacourse/mission-utils';
 
 // 랜덤 숫자 모듈
-import RandomNumber from "./utils/RandomNumber.js";
+import RandomNumber from './utils/RandomNumber';
 
 // 레이싱 경기 주최측 모듈
-import RaceOrganizer from "./view/RaceOrganizer.js";
+import RaceOrganizer from './view/RaceOrganizer';
 
 // 상수 모듈
-import { COMMENT, SPECIALCHARS, NUMBER } from "./utils/Constants.js";
+import { COMMENT, SPECIALCHARS, NUMBER } from './utils/Constants';
 
 class RacingCar {
   createEntry(names) {
     const list = new Map();
-    names.forEach((key) => list.set(`${key}`, ""));
+    names.forEach((key) => list.set(`${key}`, ''));
 
     return list;
   }

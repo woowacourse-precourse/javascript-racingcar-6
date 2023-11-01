@@ -1,7 +1,7 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
+import { MissionUtils } from '@woowacourse/mission-utils';
 
 // 상수 모듈
-import { NUMBER } from "./Constants.js";
+import { NUMBER } from './Constants';
 
 class RandomNumber {
   static isGreaterThanFour() {

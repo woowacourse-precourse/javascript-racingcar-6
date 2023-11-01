@@ -1,21 +1,22 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Console } from '@woowacourse/mission-utils';
 
 // 자동차 경기 모듈
-import RacingCar from "./RacingCar.js";
-import RaceOrganizer from "./view/RaceOrganizer.js";
+import RacingCar from './RacingCar';
+import RaceOrganizer from './view/RaceOrganizer';
 
 // 예외 사항 모듈
-import BaseExceptionHandler from "./exception/Errorcase.js";
-import CarNaming from "./exception/CarNaming.js";
-import Frequency from "./exception/Frequency.js";
+import BaseExceptionHandler from './exception/Errorcase';
+import CarNaming from './exception/CarNaming';
+import Frequency from './exception/Frequency';
 
 // 상수 모듈
-import { COMMENT } from "./utils/Constants.js";
-import { SPECIALCHARS } from "./utils/Constants.js";
+import { COMMENT, SPECIALCHARS } from './utils/Constants';
 
 class App {
   #racingCar;
+
   #exceptionHandler;
+
   constructor() {
     this.#racingCar = new RacingCar();
     this.#exceptionHandler = new BaseExceptionHandler();
@@ -39,9 +40,8 @@ class App {
   async enterCarName() {
     try {
       const name = await Console.readLineAsync(COMMENT.INPUT_NAME);
-      const carName = this.#convertToArray(name);
+      const carName = this.convertToArray(name);
       this.#exceptionHandler.checkAllException(new CarNaming(carName));
-
       return carName;
     } catch (error) {
       throw new Error(error.message);
@@ -59,7 +59,7 @@ class App {
     }
   }
 
-  #convertToArray(string) {
+  convertToArray(string) {
     return string.split(SPECIALCHARS.COMMA);
   }
 
