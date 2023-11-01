@@ -33,7 +33,9 @@
 - [X] throw문을 사용해 "[ERROR]"로 시작하는 메시지를 가지는 예외를 발생시킨다.
 - [ ] 예외를 발생시킨 후 애플리케이션을 종료시킨다.
 
-  const { Console, Random } = require('@woowacourse/mission-utils');
+  
+  
+const { Console, Random } = require('@woowacourse/mission-utils');
 
 class Car {
   constructor(name) {
