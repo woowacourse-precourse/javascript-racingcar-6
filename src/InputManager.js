@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import { GUIDE_MESSAGES } from './constants.js';
+import { GUIDE_MESSAGES } from './Constants.js';
 import { isValidCarNames, isValidTryNum } from './Validation.js';
 
 class InputManager {

@@ -1,7 +1,7 @@
 import InputManager from './InputManager.js';
 import Car from './Car.js';
 import { Console } from '@woowacourse/mission-utils';
-import { RACING_RESULT, WINNER_RESULT } from './constants.js';
+import { RACING_RESULT, WINNER_RESULT } from './Constants.js';
 class RacingGame {
   constructor() {
     this.cars = [];

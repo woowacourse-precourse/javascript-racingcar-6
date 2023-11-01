@@ -1,4 +1,4 @@
-import { ERROR_MESSAGES } from './constants.js';
+import { ERROR_MESSAGES } from './Constants.js';
 
 export const isValidCarNames = (carNames) => {
   if (!isNotEmptyCarNames(carNames)) throw new Error(ERROR_MESSAGES.EMPTY_INPUT);

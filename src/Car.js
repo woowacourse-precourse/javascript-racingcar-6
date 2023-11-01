@@ -1,5 +1,5 @@
 import { Random } from '@woowacourse/mission-utils';
-import { MOVE_FORWARD_CRITERIA } from './constants.js';
+import { MOVE_FORWARD_CRITERIA } from './Constants.js';
 class Car {
   constructor(name) {
     this.name = name;
