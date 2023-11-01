@@ -1,5 +1,4 @@
 import { 
-    Console,
     Random 
 } 
 from "@woowacourse/mission-utils";
@@ -21,12 +20,12 @@ class Car{
         }
     }
 
-    printDistance(){
+    returnDistanceString(){
         let distance = ``;
         for(var i = 0; i < this.distance; i++){
             distance += `-`;
         }
-        Console.print(`${this.name} : ` + distance);
+        return `${this.name} : ` + distance;
     }
 }
 

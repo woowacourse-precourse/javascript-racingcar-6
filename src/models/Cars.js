@@ -1,3 +1,6 @@
+import {
+    Console
+} from "@woowacourse/mission-utils";
 import Car from "./Car.js";
 
 class Cars {
@@ -18,7 +21,7 @@ class Cars {
 
     printEachStep(){
         for(var i = 0; i < this.getCarCount(); i++){
-            this.carList[i].printDistance();
+            Console.print(this.carList[i].returnDistanceString());
         }
     }
     moveAllCars(){
