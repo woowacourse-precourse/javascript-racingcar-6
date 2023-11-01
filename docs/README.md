@@ -35,3 +35,5 @@
 - `tryNumCheck(number)` : 실행 횟수의 유효성 검사를 한다.
 
 ### test
+
+- `validationTest` : util의 유효성 체크에 대한 테스트
