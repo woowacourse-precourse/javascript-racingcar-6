@@ -1,7 +1,11 @@
 import { Console } from '@woowacourse/mission-utils';
 import Car from './Car.js';
 import { MESSAGES } from './utils/constants.js';
-import { validateUniqueNames, validateName } from './utils/validation.js';
+import {
+  validateUniqueNames,
+  validateName,
+  validateTrialNumber,
+} from './utils/validation.js';
 
 class App {
   constructor() {
@@ -25,6 +29,7 @@ class App {
     });
 
     const trialNumber = await Console.readLineAsync(MESSAGES.INPUT_TRIAL);
+    validateTrialNumber(trialNumber);
     this.trial = Number(trialNumber);
   }
 }
