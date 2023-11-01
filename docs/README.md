@@ -31,7 +31,7 @@
 - 아래 명령어로 로컬 경로에 폴더 복제
 
 ```
-git clone https://github.com/Songhyunseop/javascript-baseball-6.git
+git clone https://github.com/Songhyunseop/javascript-racingcar-6.git
 ```
 
 <br><br>
