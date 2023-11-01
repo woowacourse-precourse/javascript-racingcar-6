@@ -6,11 +6,11 @@ export const isValidCarNames = (carNames) => {
   return true;
 };
 
-export const isValidTryNum = (input, tryNum) => {
+export const isValidTryNum = (input) => {
   if (!isEmptyTryNum(input)) throw new Error(ERROR_MESSAGES.EMPTY_INPUT);
-  if (isIncludeBlank(input)) throw new Error();
-  if (!isNumber(input)) throw new Error(ERROR_MESSAGES.INCLUDE_NON_NUMERIC_VALUES);
-  if (!isGreaterThanZero(input)) throw new Error(ERROR_MESSAGES.SMALLER_THAN_ONE);
+  if (isIncludeBlank(input)) throw new Error(ERROR_MESSAGES.INCLUDE_BLANK);
+  if (!isNumber(input)) throw new Error(ERROR_MESSAGES.NOT_NUMBER);
+
   return true;
 };
 
@@ -28,4 +28,9 @@ const isEmptyTryNum = (input) => {
 
 const isIncludeBlank = (input) => {
   return input.includes(' ');
+};
+
+const isNumber = (input) => {
+  const tryNum = Number(input);
+  return !Number.isNaN(tryNum);
 };
