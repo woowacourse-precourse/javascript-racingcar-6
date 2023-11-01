@@ -1,7 +1,7 @@
 import { Console } from "@woowacourse/mission-utils";
 import GAME_MESSAGE from "../constants/gameMessage.js";
 import SYMBOLS from "../constants/symbols.js";
-import nameToKeyValueConverter from "../controller/game/NameToKeyValueConverter.js";
+import NameToKeyValueConverter from "../controller/game/NameToKeyValueConverter.js";
 import HyphenAdd from "../controller/game/HyphenAdd.js";
 import gameInProgress from "../controller/game/GameInProgress.js";
 import Winner from "../controller/game/Winner.js";
@@ -14,7 +14,7 @@ class RacingGame {
 
   racing(nameSplit, number) {
     Console.print(`${SYMBOLS.emptyString}`);
-    const keyValue = nameToKeyValueConverter(nameSplit);
+    const keyValue = NameToKeyValueConverter(nameSplit);
     Console.print(`${GAME_MESSAGE.result}`);
     for (let i = 0; i < number; i++) {
       this.performRace(keyValue);
