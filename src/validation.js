@@ -60,15 +60,12 @@ export const validateCarNamesString = (carNamesString) => {
  * @returns {boolean}
  */
 export const isNaturalNumber = (nbr) => {
-  if (Number.isInteger(nbr) && nbr > 0) {
-    return true;
-  }
-  return false;
+  return Number.isInteger(nbr) && nbr > 0;
 }
 
 /**
  * 입력받은 문자열이 자연수인지 판단하는 함수
- * @param {string} count
+ * @param {string} countAsString
  * @returns {boolean}
  */
 export const validateCountString = (countAsString) => {
