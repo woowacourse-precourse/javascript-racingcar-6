@@ -1,5 +1,0 @@
-// 공동 우승자 출력 함수
-function printCoWinners(winnerNames) {
-  const winners = winnerNames.join(', ');
-  Console.print(`공동 우승자: ${winners}`);
-}
