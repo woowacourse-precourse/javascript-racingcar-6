@@ -1,7 +1,7 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 class App {
   async car_assign() {
-    let users = MissionUtils.Console.readLineAsync(
+    let users = await MissionUtils.Console.readLineAsync(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
     );
 
@@ -27,17 +27,40 @@ class App {
   }
 
   async is_forward() {
-    const NUM = await get_random_number();
+    const NUM = await this.get_random_number();
     return NUM >= 4 ? true : false;
   }
 
   async play_racing(users, cnt) {
+    let dist_number = new Array(users.length).fill(0);
+    MissionUtils.Console.print("\n실행 결과");
+
+    for (let i = 0; i < cnt; i++) {
+      for (let j = 0; j < users.length; j++) {
+        dist_number[j] += (await this.is_forward()) ? 1 : 0;
+      }
+      for (let j = 0; j < users.length; j++) {
+        MissionUtils.Console.print(
+          `${users[j]} : ${"-".repeat(dist_number[j])}`
+        );
+      }
+      MissionUtils.Console.print("\n");
+    }
+    return dist_number;
   }
 
-  async get_winner() {}
+  async get_winner(distance) {
+  }
 
   async play() {
-    const USERS = this.car_assign();
+    //user input
+    const USERS = await this.car_assign();
+    const CNT = await MissionUtils.Console.readLineAsync(
+      "시도할 회수는 몇회인가요?\n"
+    );
+
+    //play racing
+    const DISTANCE = await this.play_racing(USERS, CNT);
   }
 }
 
