@@ -218,6 +218,7 @@ describe('자동차 경주 게임', () => {
         expect(winners.length).toBe(1);
         expect(winners).toEqual(expect.arrayContaining(['pobi']));
       });
+
       test('우승자가 여러 명인 경우', async () => {
         mockQuestions(['pobi,woni', '1']);
         mockRandoms([FORWARD[0], FORWARD[0]]);
@@ -231,6 +232,56 @@ describe('자동차 경주 게임', () => {
 
         expect(winners.length).toBe(2);
         expect(winners).toEqual(expect.arrayContaining(['pobi', 'woni']));
+      });
+    });
+  });
+
+  describe('출력', function () {
+    const FORWARD = 4;
+    const STOP = 3;
+    function makeOutput(carName, move) {
+      return `${carName} : ${'-'.repeat(move)}`;
+    }
+    test.each([
+      {
+        carName: 'pobi',
+        count: '1',
+        randoms: [FORWARD],
+      },
+      {
+        carName: 'pobi',
+        count: '1',
+        randoms: [FORWARD, STOP],
+      },
+      {
+        carName: 'pobi',
+        count: '2',
+        randoms: [FORWARD, FORWARD],
+      },
+      {
+        carName: 'pobi',
+        count: '3',
+        randoms: [FORWARD, STOP, FORWARD],
+      },
+    ])('자동차 상태 출력', async ({ carName, count, randoms }) => {
+      const logSpy = getLogSpy();
+
+      mockQuestions([carName, count]);
+      mockRandoms(randoms);
+
+      const carNames = await input.carNames();
+      const tryCount = await input.tryCount();
+
+      const app = new App();
+      app.runRace(carNames, tryCount);
+
+      let moveCount = 0;
+
+      randoms.forEach(random => {
+        if (random >= FORWARD) moveCount += 1;
+        expect(logSpy).toHaveBeenCalledWith(
+          expect.stringContaining(makeOutput(carName, moveCount)),
+        );
       });
     });
   });
