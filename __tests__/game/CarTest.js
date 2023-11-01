@@ -6,7 +6,7 @@ jest.mock('../../src/utility/random', () => ({
   pickNumberInRange: jest.fn(),
 }));
 
-describe('Car 클래스 메소드 테스트', () => {
+describe('Car 클래스 테스트', () => {
   test('tryToMove 이동 테스트', () => {
     const car = new Car('Car1');
     const logSpy = jest.spyOn(Console, 'print');

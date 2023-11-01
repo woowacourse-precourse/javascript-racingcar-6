@@ -3,7 +3,7 @@ import Car from '../../src/game/Car';
 
 jest.mock('../../src/game/Car');
 
-describe('Garage class', () => {
+describe('Garage 클래스 테스트', () => {
   test('tryAllCarsMove 테스트', () => {
     const garage = new Garage(['Car1', 'Car2']);
     garage.tryAllCarsMove();
