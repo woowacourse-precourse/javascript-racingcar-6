@@ -13,7 +13,7 @@ const MESSAGES = Object.freeze({
     '[ERROR] 시도 횟수에 공백은 포함될 수 없습니다.',
   RESULT_TITLE: '실행 결과',
   ADVANCE: '-',
-  WINNER: '최종 우승자: ',
+  WINNER: '최종 우승자 : ',
 });
 
 export default MESSAGES;
