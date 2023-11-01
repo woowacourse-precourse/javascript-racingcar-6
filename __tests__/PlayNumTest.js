@@ -25,7 +25,7 @@ describe('시도할 횟수 테스트', () => {
     mockQuestions(input);
 
     await expect(getPlayNum()).rejects.toThrow(
-      ERROR_MESSAGE.playNum.includeStr,
+      ERROR_MESSAGE.playCount.includeString,
     );
   });
 
@@ -35,7 +35,7 @@ describe('시도할 횟수 테스트', () => {
     mockQuestions(input);
 
     await expect(getPlayNum()).rejects.toThrow(
-      ERROR_MESSAGE.playNum.includeZero,
+      ERROR_MESSAGE.playCount.includeZero,
     );
   });
 
@@ -44,6 +44,6 @@ describe('시도할 횟수 테스트', () => {
 
     mockQuestions(input);
 
-    await expect(getPlayNum()).rejects.toThrow(ERROR_MESSAGE.playNum.noInput);
+    await expect(getPlayNum()).rejects.toThrow(ERROR_MESSAGE.playCount.noInput);
   });
 });

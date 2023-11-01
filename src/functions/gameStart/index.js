@@ -7,7 +7,7 @@ const invalidCarName = carNameList => {
 
   carNameList.forEach(carName => {
     if (carName.length > 5) throw Error(ERROR_MESSAGE.carName.tooLong);
-    if (carName === '') throw Error(ERROR_MESSAGE.carName.noname);
+    if (carName === '') throw Error(ERROR_MESSAGE.carName.noName);
   });
 
   if (carNameList.length > new Set(carNameList).size)
@@ -15,12 +15,12 @@ const invalidCarName = carNameList => {
 };
 
 const invalidPlayNum = (inputPlayCount, playCount) => {
-  if (inputPlayCount.length === 0) throw Error(ERROR_MESSAGE.playNum.noInput);
+  if (inputPlayCount.length === 0) throw Error(ERROR_MESSAGE.playCount.noInput);
 
   if (Number.isNaN(playCount) || !Number.isInteger(playCount) || playCount < 0)
-    throw Error(ERROR_MESSAGE.playNum.includeStr);
+    throw Error(ERROR_MESSAGE.playCount.includeStr);
 
-  if (playCount === 0) throw Error(ERROR_MESSAGE.playNum.includeZero);
+  if (playCount === 0) throw Error(ERROR_MESSAGE.playCount.includeZero);
 };
 
 export const getCarName = async () => {
@@ -33,7 +33,7 @@ export const getCarName = async () => {
 };
 
 export const getPlayNum = async () => {
-  const inputPlayCount = await Console.readLineAsync(MESSAGE.getPlayNum);
+  const inputPlayCount = await Console.readLineAsync(MESSAGE.getPlayCount);
   const playCount = Number(inputPlayCount);
 
   invalidPlayNum(inputPlayCount, playCount);
