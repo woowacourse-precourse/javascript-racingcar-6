@@ -1,7 +1,7 @@
 import inputCarName from "../functions/InputCarName.js";
 import inputTryRacing from "../functions/InputTryRacing.js";
-import printCarAdvanceState from "../functions/PrintCarAdvanceState";
-import printWinner from "../functions/PrintWinner";
+import printCarAdvanceState from "../functions/PrintCarAdvanceState.js";
+import printWinner from "../functions/PrintWinner.js";
 
 describe('전진 횟수 입력 테스트', () => {
     test('전진 횟수 입력확인', async () => {
@@ -32,7 +32,7 @@ describe('자동차 이름 부여 테스트', () => {
 describe('경기 진행상황 출력 테스트', () => {
     test('경기 진행상황 출력 테스트', () => {
         const logSpy = jest.spyOn(global.console, 'log');
-        const carAdvanceState = [2,4,3];
+        const carAdvanceState = [2, 4, 3];
         const carName = ['car1','car2','car3'];
         printCarAdvanceState(carName, carAdvanceState);
 
@@ -45,7 +45,7 @@ describe('경기 진행상황 출력 테스트', () => {
 describe('우승자 출력 테스트', () => {
     test('우승자 출력 테스트', () => {
         const logSpy = jest.spyOn(global.console, 'log');
-        const carAdvanceState = [2,4,3];
+        const carAdvanceState = [2, 4, 3];
         const carName = ['car1','car2','car3'];
         printWinner(carName, carAdvanceState);
 
