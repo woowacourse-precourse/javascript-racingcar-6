@@ -35,6 +35,8 @@
 자동다 경주 게임을 실행하는 메서드.
 ##### getCarNames
 사용자에게 자동차 이름을 입력 받는 메서드.
+##### insertCarName
+사용자에게 입력받은 자동차를 하나씩 cars에 저장하는 메서드.
 ##### hasDuplicateCarName
 자동차 이름이 중복되는지 확인하는 메서드.
 ##### getMoveCount
