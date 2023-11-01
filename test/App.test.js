@@ -1,7 +1,10 @@
-import App from "../src/App.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 import { carNameInput, gameNumberInput } from "../src/gameIntro.js";
-import { carMoveText, carMoveEmptyArray, carMoveQualification } from "../src/gameMain.js";
+import {
+  carMoveText,
+  carMoveEmptyArray,
+  carMoveQualification,
+} from "../src/gameMain.js";
 
 const mockReadLineAsync = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -72,7 +75,7 @@ describe("게임 진행 상황 출력 테스트", () => {
     expect(result).toContainEqual("", "");
   });
 
-  test("자동차 전진 조건 테스트", () =>{
+  test("자동차 전진 조건 테스트", () => {
     const randomNumber = 4;
     const result = carMoveQualification(randomNumber);
     expect(result).toBe("-");
@@ -107,12 +110,12 @@ describe("gameEnd 파일 테스트", () => {
   test("우승자 출력 테스트", () => {
     const winnerCarArray = ["sung", "soo"];
     const output = "최종 우승자 : sung, soo";
-    
+
     const logSpy = jest.spyOn(MissionUtils.Console, "print");
     logSpy.mockClear();
 
     resultText(winnerCarArray);
 
     expect(logSpy).toHaveBeenCalledWith(output);
-  })
+  });
 });
