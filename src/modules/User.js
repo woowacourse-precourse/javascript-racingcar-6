@@ -1,7 +1,8 @@
-import { GAME_MESSAGE } from '../constants/gameMessage';
+import { GAME_MESSAGE } from '../constants/gameMessage.js';
 import { MissionUtils } from '@woowacourse/mission-utils';
 
-class User {
+export default class User {
+
     async inputCarNames() {
         const carNames = await MissionUtils.Console.readLineAsync(GAME_MESSAGE.inputCarNames);
         return this.splitCarNames(carNames);
@@ -15,5 +16,3 @@ class User {
         return carNames.split(',');
     }
 }
-
-export default new User();

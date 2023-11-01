@@ -1,8 +1,23 @@
+import { GAME_MESSAGE } from '../constants/gameMessage.js';
+import { MissionUtils } from '@woowacourse/mission-utils';
+
 export default class Game {
 
     constructor() {
         this.GO_STANDARD = 4;
         this.gameResults = [];
+    }
+
+    async run({ carNames, count }) {
+        const winStandard = this.countWinStandard(count);
+        
+        for (let i = 0; i < count; i++) {
+            const randomNumbers = await this.createRandomNumsersForCar(carNames.length);
+            this.calculateGameResult(carNames, this.gameResults, randomNumbers);
+            this.printGameResult(carNames, this.gameResults)
+        }
+
+        this.printGameWinner(winStandard, carNames);
     }
 
     countWinStandard(count) {
@@ -13,14 +28,6 @@ export default class Game {
         }
 
         return winStandard;
-    }
-
-    async run(carNames) {
-        for (let i = 0; i < count; i++) {
-            const randomNumbers = await this.createRandomNumsersForCar(carNames.length);
-            this.calculateGameResult(carNames, this.gameResults, randomNumbers);
-            this.printGameResult(carNames, gameResults)
-        }
     }
 
     async createRandomNumsersForCar(randomNumberCount) {
@@ -51,5 +58,19 @@ export default class Game {
             MissionUtils.Console.print(`${carNames[i]} : ${gameResults[i] ? gameResults[i] : ''}`);
         }
         MissionUtils.Console.print('');
+    }
+
+    printGameWinner(winStandard, carNames) {
+        MissionUtils.Console.print(GAME_MESSAGE.gameResult);
+
+        const winner = [];
+
+        for (let i = 0; i < carNames.length; i++) {
+          if (this.gameResults[i] === winStandard) {
+            winner.push(carNames[i]);
+          }
+        }
+    
+        MissionUtils.Console.print(`최종 우승자 : ${winner}`);
     }
 }
