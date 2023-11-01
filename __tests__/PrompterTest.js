@@ -10,12 +10,6 @@ const mockQuestions = (inputs) => {
   })
 }
 
-const getLogSpy = () => {
-  const logSpy = jest.spyOn(MissionUtils.Console, "print");
-  logSpy.mockImplemen;
-  return logSpy;
-}
-
 describe('Prompter 객체 검사', () => { 
   test('입력값이 문자열로 변환되는지 확인', async () => {
     const input = [123]
