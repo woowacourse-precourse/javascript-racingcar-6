@@ -1,5 +1,5 @@
-import { Random, Console } from '@woowacourse/mission-utils';
 import Car from './Car';
+import { Console } from '@woowacourse/mission-utils';
 import { ERROR, REGEX, CONSOLE_MESSAGE } from './constants/constants';
 
 class RacingGame {
