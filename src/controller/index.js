@@ -19,6 +19,7 @@ class RacingController {
       OutputView.printRacingResult(this.#racingModel.getData());
       OutputView.print('');
     }
+    OutputView.printFinalWinner(this.#racingModel.getFinalWinner());
   }
 }
 
