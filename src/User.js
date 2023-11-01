@@ -18,10 +18,10 @@ export default class User {
 
   static async getTrialNumber() {
     const input = await Console.readLineAsync(MESSAGE.COMMAND_INPUT_TRIAL_NUMBER);
+    const num = Number(input);
+    if (Number.isNaN(num)) throw new Error(MESSAGE.ERROR_WRONG_INPUT);
+    if (num <= 0) throw new Error(MESSAGE.ERROR_WRONG_INPUT);
 
-    if (Number.isNaN(Number(input))) throw new Error(MESSAGE.ERROR_WRONG_INPUT);
-    if (Number(input) <= 0) throw new Error(MESSAGE.ERROR_WRONG_INPUT);
-
-    return Number(input);
+    return num;
   }
 }

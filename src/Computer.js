@@ -9,7 +9,8 @@ export default class Computer {
   }
 
   async playGame() {
-    this.setRacingCarArray(await User.getCarNameArray());
+    const carNameArr = await User.getCarNameArray();
+    this.setRacingCarArray(carNameArr);
 
     const trialNum = await User.getTrialNumber();
     this.moveCarsForTrialNumber(trialNum);
