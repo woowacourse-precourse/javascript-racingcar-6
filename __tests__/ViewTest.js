@@ -1,6 +1,20 @@
 import View from '../src/View.js';
 
 describe('ViewTest', () => {
+  test('writeRoundResult', () => {
+    const result = new Map([
+      ['pobi', 2],
+      ['woni', 4],
+      ['jun', 3],
+    ]);
+    const message = `pobi : --
+woni : ----
+jun : ---
+
+`;
+    expect(View.writeRoundResult(result)).toBe(message);
+  });
+
   test('writeResultMessage', () => {
     const results = [
       new Map([
