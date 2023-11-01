@@ -11,11 +11,7 @@ class App {
     this.car = new Car();
     this.tryCount = new TryCount();
     this.randomNumber = new RandomNumber();
-    this.movingForward = new MovingForward(
-      this.car,
-      this.tryCount,
-      this.randomNumber
-    );
+    this.movingForward = new MovingForward(this.car);
     this.winner = new Winner(this.car, this.movingForward);
   }
 
@@ -31,7 +27,7 @@ class App {
     await this.movingForward.createRacingArray();
 
     for (let i = 0; i < this.tryCount.tryNumber; i++) {
-      await this.movingForward.oneCycleRacing();
+      await this.movingForward.doOneCycleRacing();
     }
 
     await this.winner.showWinner();

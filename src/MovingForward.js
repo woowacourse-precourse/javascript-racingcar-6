@@ -31,7 +31,7 @@ class MovingForward {
     );
   }
 
-  async oneCycleRacing() {
+  async doOneCycleRacing() {
     const carCount = this.car.carNameList.length;
     for (let i = 0; i < carCount; i++) {
       await this.#updateRacing(i);
