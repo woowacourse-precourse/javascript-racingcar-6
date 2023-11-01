@@ -26,15 +26,16 @@ class OutputView {
 
   /**
    *
-   * @param {WinnersDto} WinnersDto
+   * @param {WinnersDto[]} WinnersDto
    * @returns {void}
    */
 
-  printWinner(WinnersDto) {
+  printWinners(WinnersDto) {
     WinnersDto.winners.forEach(({ name }) => {
-      Console.print(MESSAGE.GAME_RESULT + name);
+      Console.print(`MESSAGE.GAME_RESULT : ${name}`);
     });
   }
+
   /**
    * @returns {void}
    */

@@ -4,8 +4,11 @@
 // 동적 배열 - 크기 변경 가능(push 등), 자바스크립트는 기본적으로 동적 배열
 // List
 
+import OutputView from "../view/outputView";
 import Car from "./car";
+import { CarDto } from "./dto/carDto";
 import { CarsDto } from "./dto/carsDto";
+import { WinnersDto } from "./dto/winnersDto";
 
 // ADT(abstract data type, 추상 자료형(자료구조 공부)
 // 할 수 있는 일을 명확하게 제약을 두기
@@ -49,12 +52,41 @@ export class Cars {
    * @returns {CarsDto}
    */
 
-  // 결과는 도메인 객체에서 dto로 만들기
+  // 결과는 도메인 객체에서 dto로 만들기 (보통 toCarsDto라고 명명한다)
   makeCarsDto() {
     // this.#carList는 [Car, Car, ..]
     // 그것을 [CarDto,CarDto,CarDto, ... ]로 만들어야 한다
     // Car에 돌려서 만든 carDtoList를 CarsDto로 보내준다.
     const carDtoList = this.#carList.map((car) => car.makeCarDto());
     return new CarsDto(carDtoList);
+  }
+  // /**
+  //  *
+  //  * @returns {WinnersDto}
+  //  */
+
+  makeWinnersDto() {
+    const winners = this.findWinners();
+    return new WinnersDto(winners);
+  }
+
+  // 최대 이동거리 계산 후 우승자 반환
+  getMaxDistance() {
+    //돌면서 거리들 뽑기
+    const distanceList = this.#carList.map((car) => car.distance);
+    //거리들끼리 비교
+    const maxDistance = Math.max(...distanceList);
+    return maxDistance;
+  }
+
+  findWinners() {
+    const winners = this.#carList.map((car) => {
+      if (car.distance === this.getMaxDistance()) {
+        return car;
+      } else {
+        throw new Error("undefined일 경우");
+      }
+    });
+    return winners;
   }
 }

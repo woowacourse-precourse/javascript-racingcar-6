@@ -1,5 +1,5 @@
 // @ts-check
-import { GameController } from "./controller/GameController";
+import { GameController } from "./controller/gameController";
 import { InputConverter } from "./view/inputConverter";
 import { InputValidator } from "./view/inputValidator";
 import InputView from "./view/inputView";

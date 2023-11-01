@@ -52,11 +52,26 @@ export class GameController {
   async #_race(cars, currentAttemptCount) {
     //재귀함수는 종료 조건을 꼭 써주기
     if (currentAttemptCount === 0) {
+      this.getGameWinners();
       return;
     }
     cars.moveAll(); // cars가 도메인 객체라 비즈니스 로직 실행
     const carsDto = cars.makeCarsDto(); //CarsDto를 만들어서
     this.#outputView.printRoundResult(carsDto); //출력하기
     this.#_race(cars, currentAttemptCount - 1); //조건 변수 3->2->1->0->종료
+  }
+
+  /**
+   *
+   * @param {Cars} cars
+   * @returns {Promise<void>}
+   */
+  async getGameWinners(cars) {
+    // const winnersDto = cars.makeWinnersDto(); //winners dto 생성
+    // this.#outputView.printWinner(winnersDto); //출력
+
+    //[dto에러로 임시 구현]
+    const winners = cars.findWinners();
+    this.#outputView.printWinners(winners); //출력 보내기
   }
 }
