@@ -7,7 +7,7 @@ class RacingJudge {
 
 		drivers.forEach((driver) => this.#updateWinnerNames(driver, winnerNames, maxScore));
 
-		return [...winnerNames.sort()];
+		return [...winnerNames].sort();
 	}
 
 	#updateWinnerNames(driver, winnerNames, maxScore) {
