@@ -9,7 +9,10 @@ class App {
 
   async play() {
     const carName = await this.getCarName();
+    const round = await this.getRoundNumber();
+
     this.makeCar(carName);
+    this.runRace(round);
   }
 
   async getCarName() {
@@ -79,7 +82,7 @@ class App {
   }
 
   makeCar(carName) {
-    const getRandom = this.getRandomNumber;
+    const getRandom = this.getRandomNumber.bind(this); 
     this.car = carName.map(name =>({
       name,
       distance: 0,
@@ -98,6 +101,12 @@ class App {
   getRandomNumber() {
     const randomValue = Random.pickNumberInRange(0, 9);
     return randomValue;
+  }
+
+  runRace(totalRound) {
+    for (let i = 0; i < totalRound; i++) {
+      this.car.forEach(car => car.move());
+    }
   }
 }
 
