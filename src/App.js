@@ -2,11 +2,12 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 import { carMoveStorage } from "./CarMoveStorage.js";
 import { carMoveOrStop } from "./CarMove.js";
 import { winner } from "./Winner.js";
+import { carMoveNumberValidater } from "./CarMoveNumberValidater.js";
 
 class App {
   async play() {
     const carNameSplit = await carCreater();
-    const validatedTryNumber = await tryCounter();
+    const validatedTryNumber = await carMoveNumberValidater();
     carMoveResult(carNameSplit, validatedTryNumber);
     winner(carNameSplit, carMoveStorage);
   }
@@ -50,21 +51,6 @@ function carNameSave(carnames) {
   }
 }
 
-async function tryCounter() {
-  MissionUtils.Console.print("시도할 횟수는 몇 회인가요?");
-  const tryNumber = await MissionUtils.Console.readLineAsync('');
-  const validatedTryNumber = validationTryNumber(tryNumber);
-  return validatedTryNumber;
-}
-
-function validationTryNumber(number) {
-  if (/^[+]?[1-9]\d*$/.test(number)) {
-    return Number(number);
-  } else {
-    throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
-  }
-}
-
 function carMoveResult(carnames, trynumber) {
   MissionUtils.Console.print("");
   MissionUtils.Console.print("실행 결과");
@@ -79,7 +65,6 @@ function carMover(carnames) {
     carMoveOrStop(carnames[i],randomNumber());
   }
 }
-
 
 function randomNumber() {
   const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
