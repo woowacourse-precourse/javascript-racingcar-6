@@ -7,6 +7,20 @@ class GameStart {
     this.cars = [];
     this.rounds = 0;
   }
+
+  playRound = () => {
+    this.cars.forEach((car) => {
+      car.move();
+    });
+  };
+
+  playGame = () => {
+    Console.print("실행 결과");
+    for (let i = 0; i < this.rounds; i++) {
+      this.playRound();
+    }
+  };
+
   getGameCount = async () => {
     const count = await Console.readLineAsync("시도할 횟수는 몇 회인가요?");
     const parseCount = parseInt(count);
@@ -31,6 +45,7 @@ class GameStart {
   async start() {
     await this.getCarNames();
     await this.getGameCount();
+    this.playGame();
   }
 }
 
