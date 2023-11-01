@@ -1,5 +1,3 @@
-import Car from './Car.js';
-
 class RacingJudge {
 	// 한번 순회할때 결정하는게 좋겠다.
 	// 오름차순으로 정렬해 주는게 좋겠다. 결과로 사용할 수 있으니
