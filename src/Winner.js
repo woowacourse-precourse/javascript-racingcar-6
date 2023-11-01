@@ -9,14 +9,11 @@ class Winner {
     let max = 0;
     let winners = [];
 
-    this.forward.forEach((advance) => {
+    this.forward.forEach((advance, key) => {
       if (advance.length > max) {
         max = advance.length;
-      }
-    });
-
-    this.forward.forEach((advance, key) => {
-      if (max === advance.length) {
+        winners = [key];
+      } else if (advance.length === max) {
         winners.push(key);
       }
     });

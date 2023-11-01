@@ -6,11 +6,12 @@ class MoveCar {
   }
 
   moveCar = (car) => {
-    if (this.forward.has(car)) {
-      this.forward.set(car, this.forward.get(car) + '-');
-    } else {
+    if (!this.forward.has(car)) {
       this.forward.set(car, '-');
+      return;
     }
+
+    this.forward.set(car, this.forward.get(car) + '-');
   };
 
   stopCar = (car) => {
@@ -21,11 +22,9 @@ class MoveCar {
 
   race = (car) => {
     const randomNumber = Random.pickNumberInRange(0, 9);
-    if (randomNumber >= 4) {
-      this.moveCar(car);
-    } else {
-      this.stopCar(car);
-    }
+
+    if (randomNumber < 4) this.stopCar(car);
+    if (randomNumber >= 4) this.moveCar(car);
   };
 }
 

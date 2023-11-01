@@ -12,13 +12,15 @@ class RaceResult {
   getRaceResult = (cars, input) => {
     Console.print('\n실행 결과');
 
-    for (let i = 0; i < input; i++) {
+    Array.from({ length: input }).forEach(() => {
       cars.forEach((car) => {
         this.moveCar.race(car);
         Console.print(`${car} : ${this.forward.get(car)}`);
       });
+
       Console.print('\n');
-    }
+    });
+
     this.winner.getRaceWinner();
   };
 }

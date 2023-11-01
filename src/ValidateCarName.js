@@ -12,18 +12,22 @@ class ValidateCarName {
   };
 
   isValidDuplication = (cars) => {
-    const DUPLICATION = new Set(cars);
-    return DUPLICATION.size === cars.length;
+    const carSet = new Set(cars);
+    return carSet.size === cars.length;
   };
 
   isValid = (cars) => {
-    if (!this.isValidLength(cars))
+    if (!this.isValidLength(cars)) {
       throw new Error('[ERROR] 1글자에서 5글자 사이의 이름만 입력 가능합니다.');
+    }
 
-    if (!this.isValidString(cars))
+    if (!this.isValidString(cars)) {
       throw new Error('[ERROR] 영문으로 이루어진 이름만 입력 가능합니다.');
-    if (!this.isValidDuplication(cars))
+    }
+
+    if (!this.isValidDuplication(cars)) {
       throw new Error('[ERROR] 중복되는 이름은 입력할 수 없습니다.');
+    }
   };
 }
 
