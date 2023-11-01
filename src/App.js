@@ -1,3 +1,5 @@
+import {Console} from '@woowacourse/mission-utils';
+
 class App {
   async play() {
     const CARS = await this.getCarNames();
@@ -18,7 +20,18 @@ class App {
    * @throw 5자 초과 or 중복 이름이 있으면 예외
    * @return {{name: string, position: number}[]} 자동차 초기 상태 배열 */
   async getCarNames() {
+    const USER_INPUT = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n');
+    const CAR_NAMES = USER_INPUT.split(',');
 
+    if (CAR_NAMES.some((carName) => carName.length > 5)) {
+      throw new Error('[ERROR] 자동차 이름은 5자 이하만 가능합니다.');
+    }
+
+    if (CAR_NAMES.some((carName, index) => CAR_NAMES.indexOf(carName) !== index)) {
+      throw new Error('[ERROR] 중복된 자동차 이름이 있습니다.');
+    }
+
+    return CAR_NAMES.map((carName) => ({name: carName, position: 0}));
   }
 
   /**
