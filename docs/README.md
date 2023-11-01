@@ -70,6 +70,16 @@
 
 ### 테스트 작성
 
+- 유틸리티 테스트
+  - console
+  - random
+  - string
+  - validation
+- 클래스 테스트
+  - Car
+  - Garage
+  - RacingCarGame
+
 ## 기능 세부 설명
 
 - 자동차 이름 입력받기
