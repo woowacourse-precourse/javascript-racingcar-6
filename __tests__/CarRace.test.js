@@ -1,3 +1,4 @@
+import RacingCar from '../src/RacingCar';
 import CarRace from '../src/CarRace';
 
 describe('CarRace 생성자 확인', () => {
