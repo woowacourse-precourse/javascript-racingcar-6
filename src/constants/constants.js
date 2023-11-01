@@ -25,4 +25,5 @@ export const CONSOLE_MESSAGE = Object.freeze({
   ENTER_MOVE_COUNT: '시도할 횟수는 몇 회인가요?',
   PRINT_RESULT: '실행 결과',
   PRINT_BLANK: ' ',
+  PRINT_WINNER: '최종 우승자',
 });

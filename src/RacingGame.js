@@ -87,6 +87,12 @@ class RacingGame {
       car.printCurDistance();
     }
   }
+
+  printWinners() {
+    const winners = this.#winners.join(', ');
+    const consoleMessage = `${CONSOLE_MESSAGE.PRINT_WINNER} : ${winners}`;
+    Console.print(consoleMessage);
+  }
 }
 
 export default RacingGame;
