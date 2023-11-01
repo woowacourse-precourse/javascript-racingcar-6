@@ -8,32 +8,27 @@ describe('class Car test', () => {
   });
 
   describe('method test : getPositionResult() ', () => {
-    test('3번 움직였을때 --- 반환 테스트', () => {
-      const isMovable = true;
+    test.each([1, 3, 5, 7, 9, 10])(
+      `n번 움직였을때 움직인 거리가 n 반환 테스트`,
+      (MOVE_FOWARD_AMOUNT) => {
+        Array.from({ length: MOVE_FOWARD_AMOUNT }, () => {
+          car.moveFoward();
+        });
+        const { position } = car.getPositionResult();
 
-      car.increasePosition(isMovable);
-      car.increasePosition(isMovable);
-      car.increasePosition(isMovable);
-
-      const result = car.getPositionResult();
-
-      expect(result).toEqual({ name: '이두리', position: '---' });
-    });
-
-    test.failing(
-      '2번 움직였는데 position이 변경되지 않았을때 fail 테스트',
-      () => {
-        const isMovable = true;
-        const stop = false;
-
-        car.increasePosition(stop);
-        car.increasePosition(isMovable);
-        car.increasePosition(isMovable);
-
-        const result = car.getPositionResult();
-
-        expect(result).toEqual({ name: '이두리', position: '' });
+        expect(position).toEqual(MOVE_FOWARD_AMOUNT);
       }
     );
+
+    test('2번 움직였는데 position이 변경되지 않았을때의 값과 비교했을때 fail 테스트', () => {
+      const INVALID_POSITION_DISTANCE = 0;
+
+      car.moveFoward();
+      car.moveFoward();
+
+      const { position } = car.getPositionResult();
+
+      expect(position).not.toBe(INVALID_POSITION_DISTANCE);
+    });
   });
 });
