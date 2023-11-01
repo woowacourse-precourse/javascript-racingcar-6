@@ -1,7 +1,6 @@
-import { Random, Console } from '@woowacourse/mission-utils';
+import { Console } from '@woowacourse/mission-utils';
 import { CONDITION_POINT, PLAY_GAME } from '../Constants.js'
 import CreateCarMoveCount from './randomNumber.js';
-
 class MoveCar {
   constructor(carNames) {
     this.carNames = carNames;
@@ -16,16 +15,15 @@ class MoveCar {
 
   startRacing(tryCount) {
     Console.print(PLAY_GAME.RESULT);
-    for (let i = 0; i < tryCount; i++) {
 
+    for (let i = 0; i < tryCount; i++) {
       const moveResults = this.carNames.map((carName, index) => {
         const isMoving = this.carMoveCompare();
         if (isMoving) {
           this.positions[index]++;
         }
-        return isMoving ? '-' : '';
+        return isMoving ? PLAY_GAME.MOVE_RESULT : '';
       });
-
       this.carNames.forEach((carName, index) => {
         Console.print(`${carName} : ${'-'.repeat(this.positions[index])}`);
       });
