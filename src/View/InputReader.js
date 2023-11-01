@@ -2,7 +2,6 @@ import { Console } from '@woowacourse/mission-utils';
 import { GAME_MESSAGE } from '../constants/gameMessage.js';
 import OutputView from './OutputView.js';
 import { ERROR_MESSAGE } from '../constants/errorMessage.js';
-import GamePlayingError from '../errors/GamePlayingError.js';
 
 export default class InputReader {
   async carNames() {
@@ -23,7 +22,7 @@ export default class InputReader {
     try {
       const response = await Console.readLineAsync(message);
       if (!isOk(response)) {
-        throw new GamePlayingError(ERROR_MESSAGE.VIEW.UNEXPECTED_RESPONSE);
+        throw new Error(ERROR_MESSAGE.VIEW.UNEXPECTED_RESPONSE);
       }
 
       return response;
