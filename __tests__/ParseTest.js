@@ -1,3 +1,4 @@
+import ScoreBoard from "../src/core/scoreboard.js";
 import { makeScoreboardByNames } from "../src/utils/parse.js";
 
 describe("형 변환 테스트", () => {
@@ -6,8 +7,8 @@ describe("형 변환 테스트", () => {
     const outputs = [{}, { a: 0, b: 0 }, { a: 0, b: 0, c: 0 }, {}, { a: 0 }];
 
     inputs.forEach((input, index) => {
-      const scoreboard = makeScoreboardByNames(input);
-      expect(scoreboard).toEqual(outputs[index]);
+      const scoreboard = new ScoreBoard(input);
+      expect(scoreboard.board).toEqual(outputs[index]);
     });
   });
 });
