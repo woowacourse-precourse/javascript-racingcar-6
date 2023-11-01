@@ -48,7 +48,8 @@ describe("자동차 경주 게임", () => {
 
   test.each([
     [["pobi,javaji"]],
-    [["pobi,eastjun"]]
+    [["pobi,eastjun"]],
+    [["pobi,pobi"]]
   ])("이름에 대한 예외 처리", async (inputs) => {
     // given
     mockQuestions(inputs);
