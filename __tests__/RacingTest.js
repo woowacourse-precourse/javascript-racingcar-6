@@ -73,4 +73,16 @@ describe('Racing 게임 테스트', () => {
     expect(consolePrintSpy).toHaveBeenNthCalledWith(2, 'bibi : ');
     expect(consolePrintSpy).toHaveBeenNthCalledWith(3, 'hihi : -');
   });
+
+  test('printWinner 메서드 테스트', () => {
+    const winners = ['yj', 'bibi', 'hihi'];
+    const consolePrintSpy = jest.spyOn(Console, 'print');
+
+    app.printWinner(winners);
+
+    expect(consolePrintSpy).toHaveBeenCalledTimes(1);
+    expect(consolePrintSpy).toHaveBeenCalledWith(
+      '최종 우승자 : yj, bibi, hihi',
+    );
+  });
 });
