@@ -46,6 +46,14 @@ class RacingGame {
 
     return false;
   }
+
+  isValidMoveCount(count) {
+    if (!REGEX.POSITIVE_INTEGER.test(count)) {
+      throw new Error(ERROR.printError(ERROR.INVALID_INPUT_NUMBER));
+    }
+
+    return true;
+  }
 }
 
 export default RacingGame;
