@@ -1,4 +1,4 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Console, Random } from "@woowacourse/mission-utils";
 
 class App {
   cars = [];
@@ -6,7 +6,6 @@ class App {
   async play() {
     await this.getCarNames()
     await this.AskAttemptsCount();
-
   }
   
   async getCarNames() {
@@ -48,11 +47,13 @@ class App {
     this.validateCountInput(ATTEMPTS_COUNT_INPUT)
   }
 
-  validateCountInput(number) {
-    if (isNaN(number) || typeof number !== 'number') {
+  validateCountInput(input) {
+    const NUMBER = Number(input);
+    if (isNaN(NUMBER) || typeof NUMBER !== 'number') {
         throw new Error("[Error] 시도할 횟수에는 숫자를 입력해주세요.");
     }
-}
+  }
+
 
 }
 
