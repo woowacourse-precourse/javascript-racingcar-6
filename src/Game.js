@@ -1,21 +1,21 @@
-import { Console } from '@woowacourse/mission-utils';
+import { Console, Random } from '@woowacourse/mission-utils';
 import Input from './Input.js';
-import Car from './Car.js';
 
 // 배열로서 carName, carValue 관리
 
 class Game {
   constructor() {
+    this.trial = 0;
     this.carList = [];
-    this.randomValue = [];
     this.totalResult = [];
   }
 
   async play() {
     await this.init();
-    this.setValue();
-    this.checkResult();
-    this.printResult();
+    for (let trial = 0; trial < this.trial; trial += 1) {
+      this.setValue();
+      this.printResult();
+    }
   }
 
   async init() {
@@ -24,19 +24,22 @@ class Game {
     this.carList = carNames.split(',');
     this.trial = await input.setTrial();
     Console.print('\n실행 결과');
-  }
-
-  setValue() {
-    this.carList.forEach((item) => {
-      const car = new Car(item);
-      this.randomValue.push(car.getRandomNumber());
+    this.carList.forEach(() => {
       this.totalResult.push(0);
     });
   }
 
-  checkResult() {
+  setValue() {
+    const randomValue = [];
+    this.carList.forEach(() => {
+      randomValue.push(Random.pickNumberInRange(0, 9));
+    });
+    this.checkResult(randomValue);
+  }
+
+  checkResult(randomValue) {
     const totalResult = [];
-    this.randomValue.forEach((item, index) => {
+    randomValue.forEach((item, index) => {
       if (item > 3) {
         totalResult.push(this.totalResult[index] + 1);
       }
@@ -51,6 +54,7 @@ class Game {
     this.carList.forEach((car, index) => {
       Console.print(`${car} : ${'-'.repeat(this.totalResult[index])}`);
     });
+    Console.print('\n');
   }
 }
 
