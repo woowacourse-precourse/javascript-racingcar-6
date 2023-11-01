@@ -11,6 +11,7 @@ const MESSAGES = Object.freeze({
     '[ERROR] 시도 횟수는 1이상의 자연수만 입력 가능합니다.',
   TOTAL_ROUND_INPUT_ERROR_BLANK:
     '[ERROR] 시도 횟수에 공백은 포함될 수 없습니다.',
+  GENERAL_ERROR: '[ERROR]',
   RESULT_TITLE: '실행 결과',
   ADVANCE: '-',
   WINNER: '최종 우승자 : ',
