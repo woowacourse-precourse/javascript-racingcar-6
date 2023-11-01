@@ -4,6 +4,7 @@ class App {
   async play() {
     const race = new Race();
     await race.ready();
+    race.start();
   }
 }
 

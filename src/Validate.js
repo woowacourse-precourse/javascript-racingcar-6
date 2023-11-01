@@ -17,6 +17,10 @@ class Validate {
     }
     return result;
   }
+  /** @param {number} randInt 입력 숫자가 4 이상일 때 true를 반환하는 메서드*/
+  static isForward(randInt) {
+    return randInt > 3;
+  }
 }
 
 export default Validate;
