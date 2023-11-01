@@ -1,4 +1,4 @@
-export const LIMIT = {
+const LIMIT = {
   NAME_LENGTH: {
     MIN: 1,
     MAX: 5,
@@ -7,3 +7,5 @@ export const LIMIT = {
     MIN: 2,
   },
 };
+
+export default LIMIT;

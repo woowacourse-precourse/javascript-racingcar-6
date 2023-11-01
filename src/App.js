@@ -1,9 +1,8 @@
-import { Console } from "@woowacourse/mission-utils";
+import OutputPrinter from "./console/OutputPrinter.js";
 import * as F from "./utility/utilityFunctions.js";
 import InputReader from "./console/InputReader.js";
-import Car from "./units/Car.js";
-import OutputPrinter from "./console/OutputPrinter.js";
 import Referee from "./units/Referee.js";
+import Car from "./units/Car.js";
 
 class App {
   constructor() {
@@ -42,10 +41,14 @@ class App {
   }
 
   startRace(carObjects, roundCount) {
+    const moveAllCars = () => {
+      carObjects.forEach((car) => car.move());
+    };
+
     F.go(
       F.range(roundCount),
       F.map(() => {
-        carObjects.forEach((car) => car.move());
+        moveAllCars();
         this.outputPrint.printRaceStatus(carObjects);
       }),
     );
