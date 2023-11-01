@@ -5,9 +5,10 @@ class App {
   ATTEMPTS_COUNT;
 
   async play() {
-    await this.getCarNames()
+    await this.getCarNames();
     await this.AskAttemptsCount();
-    this.startRace()
+    const race = this.startRace();
+    this.raceWinner(race);
   }
   
   async getCarNames() {
@@ -66,8 +67,9 @@ class App {
     for (let i = 0; i < this.ATTEMPTS_COUNT; i++) {
       this.moveCars(carsSet);
       this.printCarsProgress(carsSet);
-      Console.print('');
     }
+
+    return carsSet
   }
 
   moveCars(carsSet) {
@@ -87,7 +89,8 @@ class App {
   printCarsProgress(carsSet) {
     for (const car of carsSet) {
       Console.print(`${car.name} : ${this.generateCarProgress(car.count)}`);
-    }
+    }``
+    Console.print('');
   }
 
   generateCarProgress(count) {
@@ -95,6 +98,21 @@ class App {
       return "";
     }
     return "-".repeat(count);
+  }
+
+  raceWinner(race) {
+    const CAR_RACE = Array.from(race);
+    const MAX_COUNT = Math.max(...CAR_RACE.map(car => car.count)); 
+    const WINNERS = CAR_RACE
+    .filter((car) => car.count === MAX_COUNT)
+    .map((car) => car.name);
+
+    this.raceWinnerPrint(WINNERS)
+  }
+
+  raceWinnerPrint(winner) {
+    const WINNERS = winner.join(", ")
+    Console.print(`최종 우승자 : ${WINNERS}`)
   }
 }
 
