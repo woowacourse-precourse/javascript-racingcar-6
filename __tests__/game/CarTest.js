@@ -1,6 +1,6 @@
+import Car from '../../src/game/Car';
 import { Console } from '@woowacourse/mission-utils';
 import { pickNumberInRange } from '../../src/utility/random';
-import Car from '../../src/game/Car';
 
 jest.mock('../../src/utility/random', () => ({
   pickNumberInRange: jest.fn(),
