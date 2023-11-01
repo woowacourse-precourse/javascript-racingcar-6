@@ -4,13 +4,9 @@ import Output from './View/Output.js';
 import Input from './View/Input.js';
 
 class App {
-  /**
-   *
-   * @param {Car[]} cars
-   */
-  constructor(cars, tryNum) {
-    this.cars = cars;
-    this.tryNum = tryNum;
+  constructor() {
+    this.cars;
+    this.tryNum;
   }
 
   async play() {

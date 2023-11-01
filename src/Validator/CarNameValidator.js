@@ -1,7 +1,7 @@
 class CarNameValidator {
   /**
-   *
-   * @param {[string]} arrInput
+   * 입력받은 자동차 이름들
+   * @param {[string]} arrCarNames
    */
   static lengthValidate(arrCarNames) {
     arrCarNames.forEach((carName) => {
@@ -15,7 +15,7 @@ class CarNameValidator {
   }
 
   /**
-   *
+   * 입력받은 자동차 이름들
    * @param {[string]} arrCarNames
    */
   static duplicationValidate(arrCarNames) {
@@ -26,7 +26,7 @@ class CarNameValidator {
   }
 
   /**
-   *
+   * 입력받은 자동차 이름들
    * @param {[string]} arrCarNames
    */
   static spaceValidate(arrCarNames) {
@@ -39,8 +39,9 @@ class CarNameValidator {
   }
 
   /**
-   *
+   * 입력받은 자동차 이름들
    * @param {string} carNames
+   * 검증되었다면 string array로 반환
    * @returns {[string]}
    */
   static carNameValidator(carNames) {

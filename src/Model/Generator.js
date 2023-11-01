@@ -14,6 +14,7 @@ class Generator {
   }
 
   /**
+   * racing후 cars
    * @param {[Car]} cars
    * 우승한 자동차의 Car 배열 타입
    * @returns {[Car]}

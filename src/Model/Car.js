@@ -2,7 +2,7 @@ import Generator from './Generator.js';
 
 class Car {
   /**
-   *
+   * 자동차 이름
    * @param {string} name
    */
   constructor(name) {
