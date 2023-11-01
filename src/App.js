@@ -4,9 +4,9 @@ import showRace from './showRace';
 
 class App {
   async play() {
-    const carName = await getCarName();
-    const roundNumber = await getRoundNumber();
-    await showRace(carName, roundNumber);
+    const CAR_NAME = await getCarName();
+    const ROUND_NUMBER = await getRoundNumber();
+    await showRace(CAR_NAME, ROUND_NUMBER);
   }
 }
 

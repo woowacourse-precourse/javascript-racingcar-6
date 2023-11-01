@@ -2,10 +2,10 @@ import { Console } from '@woowacourse/mission-utils';
 import STRINGS from './constants/strings';
 
 export default async function getRoundNumber() {
-  const inputRoundNumber = await Console.readLineAsync(STRINGS.INPUT_ROUNDS);
-  if (Number.isNaN(inputRoundNumber.length)) {
+  const INPUT_ROUND_NUMBER = await Console.readLineAsync(STRINGS.INPUT_ROUNDS);
+  if (Number.isNaN(INPUT_ROUND_NUMBER.length)) {
     throw Error(STRINGS.ERROR_NAN);
   }
 
-  return inputRoundNumber;
+  return INPUT_ROUND_NUMBER;
 }
