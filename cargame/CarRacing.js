@@ -1,5 +1,7 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 
+const MIN_RANDOM_NUMBER = 0;
+const MAX_RANDOM_NUMBER = 9;
 const RANDOM_NUMBER_THRESHOLD = 4;
 
 export class CarRacing {
@@ -25,7 +27,7 @@ export class RaceSimulator {
   }
 
   moveCar(car) {
-    const randomNumber = CarRacing.pickNumberInRange(0, 9);
+    const randomNumber = CarRacing.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
     if (randomNumber >= RANDOM_NUMBER_THRESHOLD) {
       car.position += '-';
     }
