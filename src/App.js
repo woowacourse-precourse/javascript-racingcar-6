@@ -9,7 +9,7 @@ class App {
   }
 
   validateCarNames(input) {
-    const carNames = input.split(',');
+    const carNames = input.split(',').map(carName => carName.trim());
 
     if (carNames.some(carName => carName.length > 5 || carName.length === 0)) {
       throw new Error('[ERROR] 자동차 이름은 각각 1자 이상 5자 이하여야 합니다.');
@@ -21,10 +21,6 @@ class App {
 
     if (carNames.length < 2) {
       throw new Error('[ERROR] 최소 2대 이상의 자동차 이름을 입력해야 합니다.');
-    }
-
-    if (!carNames.every(carName => carName.trim())) {
-      throw new Error('[ERROR] 자동차 이름을 입력해야 합니다.');
     }
 
     this.carNames = carNames;
@@ -54,9 +50,9 @@ class App {
   }
 
   runSingleRound(carList, roundResult) {
-    for (const carName of carList) {
+    carList.forEach(carName => {
       this.getRandomNumber() >= 4 && roundResult[carName]++;
-    }
+    });
   }
 
   printRoundResults(carList, roundResult) {
