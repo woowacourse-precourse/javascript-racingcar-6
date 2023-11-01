@@ -28,26 +28,27 @@ class RacingGame {
     return accumulateDistance;
   }
 
-  chooseWinner(cars, accumulateDistance, maxDistance) {
-    let winner = [];
+  chooseWinner(cars, carsDistance, maxDistance) {
+    let winners = [];
     for (let i = 0; i < cars.length; i++) {
-      if (accumulateDistance[i].length === maxDistance) winner.push(cars[i]);
+      if (carsDistance[i].length === maxDistance) winners.push(cars[i]);
     }
-    return winner;
+    return winners;
   }
 
   racing() {
-    let accumulateDistance = Array(this.cars.length).fill("");
+    // 누적 거리를 의미하는 변수이며, "-"가 누적되는 문자열이다.
+    let accumulateDistance = Array.from({ length: this.cars.length }, () => "");
     for (let i = 0; i < this.tryCount; i++) {
       accumulateDistance = this.addDistance(this.cars, accumulateDistance);
       Console.print("");
     }
-    const maxDistance =
-      accumulateDistance.length > 0
-        ? Math.max(...accumulateDistance.map((str) => str.length))
-        : 0;
-    let winner = this.chooseWinner(this.cars, accumulateDistance, maxDistance);
-    return winner;
+    // 누적 거리를 의미하는 변수이며, 숫자로 표현되는 배열이다.
+    const carsDistance = accumulateDistance.map((distance) => distance.length);
+    const maxDistance = Math.max(0, ...carsDistance);
+
+    let winners = this.chooseWinner(this.cars, carsDistance, maxDistance);
+    return winners;
   }
 }
 
