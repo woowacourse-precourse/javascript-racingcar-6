@@ -30,6 +30,12 @@ class App {
       });
     }
   }
+  printResult(cars) {
+    const maxPosition = Math.max(...cars.map((car) => car.position));
+    const winners = cars.filter((car) => car.position === maxPosition);
+    const winnerNames = winners.map((winner) => winner.name).join(", ");
+    MissionUtils.Console.print(`최종 우승자 : ${winnerNames}`);
+  }
 }
 
 export default App;
