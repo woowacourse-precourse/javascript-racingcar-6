@@ -23,6 +23,16 @@ class App {
     }
   }
 
+  MoveStatus(race){
+    for (const key in race){
+      const hyphen = '-'.repeat(race[key])
+      Console.print(key+' : '+ hyphen)
+    }
+  }
+
+
+  
+
   async play() {
     const ins = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n')
     const names = ins.split(',')
@@ -45,8 +55,10 @@ class App {
     Console.print('실행결과')
     for (let i = 0 ; i < tries; i++){
       this.Move(race)
+      this.MoveStatus(race)
       Console.print('\n')
     }
+
 
   }
 }
