@@ -30,6 +30,11 @@ class App {
     }
   }
 
+  FindWinner(race){
+    const max = Math.max(...Object.values(race));
+    const keys = Object.keys(race).filter(key => race[key] === max);
+    return keys;
+  }
 
   
 
@@ -59,7 +64,8 @@ class App {
       Console.print('\n')
     }
 
-
+    const winners = this.FindWinner(race)
+    Console.print('최종 우승자 : ' + winners.join(', '))
   }
 }
 export default App;
