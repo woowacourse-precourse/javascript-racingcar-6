@@ -7,7 +7,7 @@ class App {
     if (names.length <= 0){
       return false
     }
-    if (names.every(name => name.length <= 5)){
+    if (names.every(name => name.length <= 5 && name.length > 0)){
       return true
     }
     else{
