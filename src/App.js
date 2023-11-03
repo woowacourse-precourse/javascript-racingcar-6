@@ -1,5 +1,9 @@
+import CarRaceController from './controller/CarRaceController.js';
+
 class App {
-  async play() {}
+  async play() {
+    return new CarRaceController().startRace();
+  }
 }
 
 export default App;
