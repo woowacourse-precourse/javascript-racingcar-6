@@ -29,11 +29,12 @@ class App {
 
   async getUserInputCarNames() {
     return await Console.readLineAsync(
-      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분'
+      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)'
     );
   }
   async getUsetInputForwardCount() {
-    return await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
+    const input = await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
+    return parseInt(input, 10);
   }
   convertCarNamesToObject(array) {
     return array.map((name) => {
@@ -46,7 +47,7 @@ class App {
       cars = cars.map((car) => {
         return {
           name: car.name,
-          status: this.attepmtMove(car.status),
+          status: this.attemptMove(car.status),
         };
       });
       this.printRaceProgress(cars);
@@ -59,7 +60,7 @@ class App {
     });
     Console.print('\n');
   }
-  attepmtMove(status) {
+  attemptMove(status) {
     const randomNumber = Random.pickNumberInRange(0, 9);
     if (randomNumber >= 4) {
       return status + '-';
