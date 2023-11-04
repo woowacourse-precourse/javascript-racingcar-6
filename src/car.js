@@ -1,6 +1,6 @@
 import { Console, Random } from '@woowacourse/mission-utils';
 
-class Car {
+export class Car {
   constructor(name) {
     this.name = name;
     this.status = '';

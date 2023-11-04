@@ -1,5 +1,6 @@
 import { Console, Random } from '@woowacourse/mission-utils';
 import { CarNameValidator } from './validator.js';
+import { Car } from './car.js';
 
 class App {
   async play() {
@@ -11,12 +12,11 @@ class App {
       }
 
       const carNameArray = carNamesString.split(',');
+      const cars = carNameArray.map((name) => new Car(name));
 
       const attemptForwardCount = await this.getUsetInputForwardCount();
 
-      const carStatusArray = this.convertCarNamesToObject(carNameArray);
-
-      const raceResult = this.race(carStatusArray, attemptForwardCount);
+      const raceResult = this.race(cars, attemptForwardCount);
 
       const finalWinner = this.getWinners(raceResult);
 
@@ -36,37 +36,20 @@ class App {
     const input = await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
     return parseInt(input, 10);
   }
-  convertCarNamesToObject(array) {
-    return array.map((name) => {
-      return { name, status: '' };
-    });
-  }
-  race(carArray, attemptCount) {
-    let cars = [...carArray];
-    for (let i = 0; i < parseInt(attemptCount); i++) {
-      cars = cars.map((car) => {
-        return {
-          name: car.name,
-          status: this.attemptMove(car.status),
-        };
-      });
+  race(cars, attemptCount) {
+    for (let i = 0; i < attemptCount; i++) {
+      cars.forEach((car) => car.move());
       this.printRaceProgress(cars);
     }
     return cars;
   }
   printRaceProgress(carArray) {
     carArray.forEach((car) => {
-      Console.print(`${car.name} : ${car.status}`);
+      Console.print(`${car.getCarName()} : ${car.getCarStatus()}`);
     });
     Console.print('\n');
   }
-  attemptMove(status) {
-    const randomNumber = Random.pickNumberInRange(0, 9);
-    if (randomNumber >= 4) {
-      return status + '-';
-    }
-    return status;
-  }
+
   getWinners(carArray) {
     const finalCarStatus = this.getFinalCarStatus(carArray);
     const maxForwardCount = Math.max(
