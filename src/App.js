@@ -3,11 +3,12 @@ import { CarNameValidator } from './validator.js';
 import { Car } from './car.js';
 import { Race } from './race.js';
 import { Winner } from './winner.js';
+import { InputHandler } from './inputHandler.js';
 
 class App {
   async play() {
     try {
-      const carNamesString = await this.getUserInputCarNames();
+      const carNamesString = await InputHandler.getUserInputCarNames();
       const validationErrorMessage = CarNameValidator.validate(carNamesString);
       if (validationErrorMessage) {
         throw new Error(validationErrorMessage);
@@ -15,8 +16,7 @@ class App {
 
       const carNameArray = carNamesString.split(',');
       const cars = carNameArray.map((name) => new Car(name));
-
-      const attemptForwardCount = await this.getUsetInputForwardCount();
+      const attemptForwardCount = await InputHandler.getUsetInputForwardCount();
 
       const race = new Race(cars, attemptForwardCount);
       const raceResult = race.start();
@@ -29,16 +29,6 @@ class App {
       console.error(error);
       throw error;
     }
-  }
-
-  async getUserInputCarNames() {
-    return await Console.readLineAsync(
-      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)'
-    );
-  }
-  async getUsetInputForwardCount() {
-    const input = await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
-    return parseInt(input, 10);
   }
 }
 
