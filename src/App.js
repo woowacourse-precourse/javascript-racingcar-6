@@ -65,13 +65,13 @@ class App {
   getFinalCarStatus(carArray) {
     return carArray.map((car) => {
       return {
-        name: car.name,
-        forwardCount: car.status.length,
+        name: car.getCarName(),
+        forwardCount: car.getCarStatus().length,
       };
     });
   }
   getWinnerName(winnerArray) {
-    return winnerArray.map((winner) => winner.name);
+    return winnerArray.map((winner) => winner.getCarName());
   }
   printFinalWinner(array) {
     Console.print(`최종 우승자 : ${array.join(', ')}`);
