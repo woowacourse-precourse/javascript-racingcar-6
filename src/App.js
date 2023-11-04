@@ -1,6 +1,7 @@
 import { Console, Random } from '@woowacourse/mission-utils';
 import { CarNameValidator } from './validator.js';
 import { Car } from './car.js';
+import { Race } from './race.js';
 
 class App {
   async play() {
@@ -16,7 +17,8 @@ class App {
 
       const attemptForwardCount = await this.getUsetInputForwardCount();
 
-      const raceResult = this.race(cars, attemptForwardCount);
+      const race = new Race(cars, attemptForwardCount);
+      const raceResult = race.start();
 
       const finalWinner = this.getWinners(raceResult);
 
@@ -36,20 +38,6 @@ class App {
     const input = await Console.readLineAsync('시도할 횟수는 몇 회인가요?');
     return parseInt(input, 10);
   }
-  race(cars, attemptCount) {
-    for (let i = 0; i < attemptCount; i++) {
-      cars.forEach((car) => car.move());
-      this.printRaceProgress(cars);
-    }
-    return cars;
-  }
-  printRaceProgress(carArray) {
-    carArray.forEach((car) => {
-      Console.print(`${car.getCarName()} : ${car.getCarStatus()}`);
-    });
-    Console.print('\n');
-  }
-
   getWinners(carArray) {
     const finalCarStatus = this.getFinalCarStatus(carArray);
     const maxForwardCount = Math.max(
@@ -58,6 +46,7 @@ class App {
     const winnerStatus = finalCarStatus.filter(
       (car) => car.forwardCount === maxForwardCount
     );
+    Console.print(winnerStatus);
     const winner = this.getWinnerName(winnerStatus);
 
     return winner;
@@ -71,7 +60,7 @@ class App {
     });
   }
   getWinnerName(winnerArray) {
-    return winnerArray.map((winner) => winner.getCarName());
+    return winnerArray.map((winner) => winner.name);
   }
   printFinalWinner(array) {
     Console.print(`최종 우승자 : ${array.join(', ')}`);

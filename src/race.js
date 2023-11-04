@@ -11,6 +11,7 @@ export class Race {
       this.cars.forEach((car) => car.move());
       this.printRaceProgress();
     }
+    return this.cars;
   }
 
   printRaceProgress() {
