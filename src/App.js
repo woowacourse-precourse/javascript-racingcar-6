@@ -24,9 +24,10 @@ class App {
 
     // 게임 시작
     const race = new Race(players);
-    await race.compete(moveNumber);
+    await race.repeat(moveNumber);
     const winner = await race.getWinner();
-    MissionUtils.Console.print(`최종 우승자 : ${winner}`);
+    const commonWinner = await race.getCommonWinner(winner);
+    MissionUtils.Console.print(`최종 우승자 : ${commonWinner}`);
   }
 }
 

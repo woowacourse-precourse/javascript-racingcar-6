@@ -1,4 +1,3 @@
-import NumberGenerator from './NumberGenerator.js';
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 export default class Car {
@@ -7,10 +6,9 @@ export default class Car {
     this.distance = 0;
   }
 
-  async isSuccess () {
-    const numberGenerator = new NumberGenerator();
-    const result = await numberGenerator.getRandomNumber();
-    return result >= 4 ? true : false ;
+  async isSuccess (randomNumber) {
+    const TARGET_NUMBER = 4;
+    return randomNumber > TARGET_NUMBER ? true : false ;
   }
 
   async getResultMessage (success) {
@@ -20,12 +18,5 @@ export default class Car {
     }
     result = `${this.name} : ${'-'.repeat(this.distance)}`;
     return result;
-  }
-
-  async moveForwards () {
-    const success = await this.isSuccess();
-    let result = await this.getResultMessage(success);
-    await MissionUtils.Console.print(result);
-    return this.distance;
   }
 }
