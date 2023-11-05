@@ -1,7 +1,9 @@
-import { Console, Random } from '@woowacourse/mission-utils';
+import { Random } from '@woowacourse/mission-utils';
+import { BaseCar } from './CarInterface.js';
 
-export class Car {
+export class Car extends BaseCar {
   constructor(name) {
+    super();
     this.name = name;
     this.status = '';
   }
