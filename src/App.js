@@ -16,7 +16,7 @@ class App {
 
       const carNameArray = carNamesString.split(',');
       const cars = carNameArray.map((name) => new Car(name));
-      const attemptForwardCount = await InputHandler.getUsetInputForwardCount();
+      const attemptForwardCount = await InputHandler.getUserInputForwardCount();
 
       const race = new Race(cars, attemptForwardCount);
       const raceResult = race.start();
