@@ -6,7 +6,6 @@ import * as validate from './validate.js';
 export default class Game {
   constructor() {
     this.userList = [];
-    this.numberOfAttempt = 0;
   }
 
   async start() {
@@ -15,10 +14,10 @@ export default class Game {
   }
 
   execution() {
-    for (const user of this.userList) {
+    this.userList.forEach((user) => {
       const randomNum = this.pickRandomNumber();
       if (randomNum >= THRESHOLD) user.forwardNumber++;
-    }
+    });
     this.printExecutionResult();
   }
 
@@ -32,9 +31,9 @@ export default class Game {
     const users = inputName.split(',');
 
     if (validate.name(users)) {
-      for (const user of users) {
+      users.forEach((user) => {
         this.userList.push({ name: `${user}`, forwardNumber: 0 });
-      }
+      });
     }
   }
 
@@ -50,11 +49,11 @@ export default class Game {
   }
 
   printExecutionResult() {
-    for (const user of this.userList) {
+    this.userList.forEach((user) => {
       MissionUtils.Console.print(
         ANNOUNCEMENT.EXECUTION_RESULT(user.name, user.forwardNumber)
       );
-    }
+    });
     MissionUtils.Console.print(LINE_BREAK);
   }
 
