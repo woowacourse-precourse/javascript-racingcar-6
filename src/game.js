@@ -58,10 +58,11 @@ export default class Game {
   }
 
   selectWinner() {
-    this.ranking = [...this.userList];
-    this.ranking.sort((a, b) => b.forwardNumber - a.forwardNumber);
-    this.winner = this.ranking
-      .filter((user) => user.forwardNumber === this.ranking[0].forwardNumber)
+    const topProgress = Math.max(
+      ...this.userList.map((user) => user.forwardNumber)
+    );
+    this.winner = this.userList
+      .filter((user) => user.forwardNumber === topProgress)
       .map((user) => user.name)
       .join(', ');
   }
