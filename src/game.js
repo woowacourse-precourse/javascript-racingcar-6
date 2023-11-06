@@ -15,34 +15,34 @@ export default class Game {
   }
 
   async start() {
-    await this.createUserList();
-    await this.enterNumberOfAttempt();
+    await this.#createUserList();
+    await this.#enterNumberOfAttempt();
   }
 
   execution() {
     this.userList.forEach((user) => {
-      const randomNum = this.pickRandomNumber();
+      const randomNum = this.#pickRandomNumber();
       if (randomNum >= THRESHOLD) user.forwardNumber++;
     });
-    this.printExecutionResult();
+    this.#printExecutionResult();
   }
 
   end() {
-    this.selectWinner();
-    this.printWinner();
+    this.#selectWinner();
+    this.#printWinner();
   }
 
-  async createUserList() {
+  async #createUserList() {
     const inputName = await MissionUtils.Console.readLineAsync(INPUT.USER_LIST);
     const users = inputName.split(',');
 
-    this.validateName(users);
+    this.#validateName(users);
     users.forEach((user) => {
       this.userList.push({ name: `${user}`, forwardNumber: 0 });
     });
   }
 
-  validateName(users) {
+  #validateName(users) {
     if (users.length < MINIMUM_NAME_NUMBER) {
       throw new Error(ERROR.SHORTAGE_NAME_NUMBER);
     } else if (users.length !== new Set(users).size) {
@@ -58,16 +58,16 @@ export default class Game {
     });
   }
 
-  async enterNumberOfAttempt() {
+  async #enterNumberOfAttempt() {
     const inputNum = await MissionUtils.Console.readLineAsync(
       INPUT.NUMBER_OF_ATTEMPTS
     );
 
-    this.validateAttemptNum(inputNum);
+    this.#validateAttemptNum(inputNum);
     this.numberOfAttempt = Number(inputNum);
   }
 
-  validateAttemptNum(inputNum) {
+  #validateAttemptNum(inputNum) {
     const checkNumTypeRegExp = new RegExp('^[1-9]\\d*$');
 
     if (!checkNumTypeRegExp.test(inputNum)) {
@@ -75,11 +75,11 @@ export default class Game {
     }
   }
 
-  pickRandomNumber() {
+  #pickRandomNumber() {
     return MissionUtils.Random.pickNumberInRange(MIN, MAX);
   }
 
-  printExecutionResult() {
+  #printExecutionResult() {
     this.userList.forEach((user) => {
       MissionUtils.Console.print(
         ANNOUNCEMENT.EXECUTION_RESULT(user.name, user.forwardNumber)
@@ -88,7 +88,7 @@ export default class Game {
     MissionUtils.Console.print(LINE_BREAK);
   }
 
-  selectWinner() {
+  #selectWinner() {
     const topProgress = Math.max(
       ...this.userList.map((user) => user.forwardNumber)
     );
@@ -98,7 +98,7 @@ export default class Game {
       .join(', ');
   }
 
-  printWinner() {
+  #printWinner() {
     MissionUtils.Console.print(ANNOUNCEMENT.WINNER(this.winner));
   }
 }
