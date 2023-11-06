@@ -1,7 +1,13 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import { THRESHOLD, MIN, MAX } from './constant.js';
-import { INPUT, LINE_BREAK, ANNOUNCEMENT } from './message.js';
-import * as validate from './validate.js';
+import {
+  THRESHOLD,
+  MIN,
+  MAX,
+  MINIMUM_NAME_NUMBER,
+  NULL,
+  NAME_LETTER_NUMBER_LIMIT,
+} from './constant.js';
+import { INPUT, LINE_BREAK, ANNOUNCEMENT, ERROR } from './message.js';
 
 export default class Game {
   constructor() {
@@ -30,18 +36,43 @@ export default class Game {
     const inputName = await MissionUtils.Console.readLineAsync(INPUT.USER_LIST);
     const users = inputName.split(',');
 
-    if (validate.name(users)) {
-      users.forEach((user) => {
-        this.userList.push({ name: `${user}`, forwardNumber: 0 });
-      });
+    this.validateName(users);
+    users.forEach((user) => {
+      this.userList.push({ name: `${user}`, forwardNumber: 0 });
+    });
+  }
+
+  validateName(users) {
+    if (users.length < MINIMUM_NAME_NUMBER) {
+      throw new Error(ERROR.SHORTAGE_NAME_NUMBER);
+    } else if (users.length !== new Set(users).size) {
+      throw new Error(ERROR.DUPLICATE_NAME);
     }
+
+    users.forEach((user) => {
+      if (!user || user.trim() === NULL) {
+        throw new Error(ERROR.SHORTAGE_NAME_LETTER_NUMBER);
+      } else if (user.length > NAME_LETTER_NUMBER_LIMIT) {
+        throw new Error(ERROR.EXCEEDING_NAME_LETTER_LIMIT);
+      }
+    });
   }
 
   async enterNumberOfAttempt() {
     const inputNum = await MissionUtils.Console.readLineAsync(
       INPUT.NUMBER_OF_ATTEMPTS
     );
-    if (validate.attemptNum(inputNum)) this.numberOfAttempt = Number(inputNum);
+
+    this.validateAttemptNum(inputNum);
+    this.numberOfAttempt = Number(inputNum);
+  }
+
+  validateAttemptNum(inputNum) {
+    const checkNumTypeRegExp = new RegExp('^[1-9]\\d*$');
+
+    if (!checkNumTypeRegExp.test(inputNum)) {
+      throw new Error(ERROR.INPUT_ATTEMPT);
+    }
   }
 
   pickRandomNumber() {
