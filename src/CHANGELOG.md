@@ -1,0 +1,24 @@
+- feat(validator): add validation for only alphabet car names
+- docs(README) : update feature specifications
+- fix(App) : add throw error in play method's catch block
+- feat(App) : add race result processing method
+- refactor(App) : extract printRaceProgress method
+- refactor(App) : extract race method from play method
+- feat(App) : add convertCarNamesToObject method
+- feat(App) : add progress display feature
+- refactor(App): Method restructure
+- refactor(App) : make generateCarStatusObject method
+- refactor: split generateRandomNumbersByAttempts into smaller methods
+- feat: add car status object generation feature
+- refactor: separate error messages to a new file
+- refactor: Combine car name validator to a CarNameValidator
+- feat(validator) : add class CarNameDuplicateValidator
+- docs(README) : update feature specifications
+- feat(CarNameLengthValidator): add empty string validation
+- docs(README) : update feature specifications
+- feat(App): add method get  ForwardCount  from user
+- refactor: separate carNameValidator to a new file
+- feat(App) : add validation for car names
+- docs(README) : 구현 기능 목록 추가
+- docs(README) : 구현 기능 목록 생성
+- feat: setup precourse racingcar project
