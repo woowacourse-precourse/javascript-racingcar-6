@@ -1,5 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import Game from './game.js';
+import Game from './Game.js';
 import { ANNOUNCEMENT } from './message.js';
 
 class App {
