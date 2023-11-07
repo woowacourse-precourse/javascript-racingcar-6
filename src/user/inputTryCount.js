@@ -1,5 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import { inputTryCountMessage } from "../constant/inputMessage";
+import { INPUT_TRY_COUNT_MESSAGE } from "../constant/inputMessage";
 import { isValidTryCount } from "./validation";
 
 /**
@@ -7,7 +7,7 @@ import { isValidTryCount } from "./validation";
  * @returns 게임 시도 횟수 숫자 반환
  */
 export default async function inputTryCount() {
-    const tryCount = await MissionUtils.Console.readLineAsync(inputTryCountMessage);
+    const tryCount = await MissionUtils.Console.readLineAsync(INPUT_TRY_COUNT_MESSAGE);
     isValidTryCount(tryCount);
 
     return tryCount;

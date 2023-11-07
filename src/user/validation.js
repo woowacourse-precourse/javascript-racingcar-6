@@ -1,4 +1,4 @@
-import { CheckNameLength, isNotNumber } from "../constant/errorMessage";
+import { CHECK_NAME_LENGTH, IS_NOT_NUMBER } from "../constant/errorMessage";
 
 /**
  * @param {string[]} names 자동차 이름이 들어가있는 String 배열
@@ -7,7 +7,7 @@ import { CheckNameLength, isNotNumber } from "../constant/errorMessage";
 export function isValidName(names) {
     for (const carName of names) {
         if (carName.length > 5) {
-            throw new Error(CheckNameLength);
+            throw new Error(CHECK_NAME_LENGTH);
         }
     }
 }
@@ -18,6 +18,6 @@ export function isValidName(names) {
  */
 export function isValidTryCount(count) {
     if (isNaN(Number(count))) { // 숫자가 아닐 경우
-        throw new Error(isNotNumber);
+        throw new Error(IS_NOT_NUMBER);
     }
 }

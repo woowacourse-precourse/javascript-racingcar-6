@@ -1,7 +1,8 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import { gameResult } from "./constant/printMessage";
+import { GAME_RESULT } from "./constant/printMessage";
 import inputCarNames from "./user/inputCarNames";
 import inputTryCount from "./user/inputTryCount";
+import { RANDOM_MAX, RANDOM_MIN } from "./constant/variable";
 
 class App {
   /**
@@ -22,7 +23,7 @@ class App {
     const tryCount = await inputTryCount();
     let gameProcess = new Array(carNames.length).fill("");
 
-    MissionUtils.Console.print(gameResult);
+    MissionUtils.Console.print(GAME_RESULT);
 
     const gameRound = this.runGame(carNames, gameProcess, tryCount);
     MissionUtils.Console.print(gameRound);
@@ -94,7 +95,7 @@ class App {
    * @returns 랜덤 숫자 반환
    */
   generateRandomNumber() {
-    return MissionUtils.Random.pickNumberInRange(0, 9);
+    return MissionUtils.Random.pickNumberInRange(RANDOM_MIN, RANDOM_MAX);
   }
 }
 
