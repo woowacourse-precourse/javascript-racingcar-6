@@ -1,5 +1,5 @@
 import App from '../src/App.js';
-import MESSAGE from '../src/Message.js';
+import { MESSAGE } from '../src/constant';
 import { MissionUtils } from '@woowacourse/mission-utils';
 
 const mockQuestions = (inputs) => {

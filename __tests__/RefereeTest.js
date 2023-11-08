@@ -1,7 +1,7 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 
-import MESSAGE from '../src/Message';
 import Referee from '../src/Referee';
+import { MESSAGE } from '../src/constant';
 
 const makeMovement = (length) =>
   Array.from({ length: length }, () => MESSAGE.movement);

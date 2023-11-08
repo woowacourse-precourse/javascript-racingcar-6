@@ -1,5 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import MESSAGE from './Message';
+import { RULE, MESSAGE } from './constant';
 
 class Input {
   nameArray = [];
@@ -11,7 +11,7 @@ class Input {
       const text = await MissionUtils.Console.readLineAsync(MESSAGE.inputName);
       if (!isRound) {
         // 자동차 이름에 대한 input
-        this.nameArray = text.split(',');
+        this.nameArray = text.split(RULE.delimiter);
         this.validateName();
       } else {
         // 게임 총 횟수에 대한 input
@@ -24,8 +24,9 @@ class Input {
 
   validateName() {
     this.nameArray.forEach((name) => {
-      const pass =
-        name.length <= 5 && name.split('').every((i) => /.*/.test(i));
+      const isCorrectLength =
+        RULE.name.min < name.length && name.length <= RULE.name.max;
+      const pass = isCorrectLength && name.split('').every((i) => /.*/.test(i));
       if (!pass) throw new Error(MESSAGE.nameError);
     });
   }

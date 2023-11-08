@@ -1,13 +1,9 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import MESSAGE from './Message';
+import { MESSAGE, RULE } from './constant';
 
 class Output {
-  printMessage;
-
-  constructor() {
-    this.printMessage = (message) => {
-      MissionUtils.Console.print(message);
-    };
+  printMessage(message) {
+    MissionUtils.Console.print(message);
   }
 
   printInputNameMessage() {
@@ -31,7 +27,7 @@ class Output {
   }
 
   printWinner(winnerArray) {
-    const winnerSentence = winnerArray.join(', ');
+    const winnerSentence = winnerArray.join(`${RULE.delimiter}${' '}`);
     this.printMessage(`${MESSAGE.winner}${winnerSentence}`);
   }
 }

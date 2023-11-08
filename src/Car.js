@@ -1,5 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import MESSAGE from './Message';
+import { RULE, MESSAGE } from './constant';
 
 class Car {
   name = '';
@@ -11,8 +11,10 @@ class Car {
   }
 
   handleMovement() {
-    const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
-    if (randomNumber >= 4) this.movement.push(MESSAGE.movement);
+    const { min, max } = RULE.randomNumber;
+    const randomNumber = MissionUtils.Random.pickNumberInRange(min, max);
+    if (randomNumber >= RULE.pointOfMovement)
+      this.movement.push(MESSAGE.movement);
   }
 }
 

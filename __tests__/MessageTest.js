@@ -1,6 +1,8 @@
 import App from '../src/App.js';
-import MESSAGE from '../src/Message.js';
+
 import { MissionUtils } from '@woowacourse/mission-utils';
+
+import { MESSAGE } from '../src/constant/';
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();

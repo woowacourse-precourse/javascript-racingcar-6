@@ -2,6 +2,7 @@ import Car from './Car';
 import Input from './Input';
 import Output from './Output';
 import Referee from './Referee';
+import { RULE } from './constant';
 
 class Game {
   totalRound = 0;
@@ -18,7 +19,7 @@ class Game {
 
   setCarArray(nameArray) {
     this.carArray = nameArray.map((n) => new Car(n));
-    this.output.printMessage(nameArray.join(','));
+    this.output.printMessage(nameArray.join(RULE.delimiter));
   }
 
   async setTotalRound() {
