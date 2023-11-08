@@ -1,5 +1,4 @@
-import { MissionUtils } from '@woowacourse/mission-utils';
-
+import { getLogSpy } from '../testUtils/index.js';
 import Referee from '../src/Referee';
 import { MESSAGE } from '../src/constant';
 
@@ -10,12 +9,6 @@ const makeCar = (name, length) => ({
   name: name,
   movement: makeMovement(length),
 });
-
-const getLogSpy = () => {
-  const logSpy = jest.spyOn(MissionUtils.Console, 'print');
-  logSpy.mockClear();
-  return logSpy;
-};
 
 describe('자동차 경주 : 심판 테스트', () => {
   let referee;

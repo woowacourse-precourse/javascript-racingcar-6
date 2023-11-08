@@ -1,34 +1,13 @@
-import { MissionUtils } from '@woowacourse/mission-utils';
-
+import { mockQuestions, mockRandoms, getLogSpy } from '../testUtils';
 import Car from '../src/Car';
 import Game from '../src/Game';
 
-const mockQuestions = (inputs) => {
-  MissionUtils.Console.readLineAsync = jest.fn();
-
-  MissionUtils.Console.readLineAsync.mockImplementation(() => {
-    const input = inputs.shift();
-    return Promise.resolve(input);
-  });
-};
-
-const mockRandoms = (numbers) => {
-  MissionUtils.Random.pickNumberInRange = jest.fn();
-  numbers.reduce((acc, number) => {
-    return acc.mockReturnValueOnce(number);
-  }, MissionUtils.Random.pickNumberInRange);
-};
-
-const getLogSpy = () => {
-  const logSpy = jest.spyOn(MissionUtils.Console, 'print');
-  logSpy.mockClear();
-  return logSpy;
-};
-
 describe('자동차 게임: 게임 테스트', () => {
+  let game;
+  beforeEach(() => {
+    game = new Game();
+  });
   test('게임 초기 설정', () => {
-    const game = new Game();
-
     expect(game.totalRound).toBe(0);
     expect(game.currentRound).toBe(0);
     expect(game.carArray).toEqual([]);
@@ -38,7 +17,6 @@ describe('자동차 게임: 게임 테스트', () => {
     const message = nameArray.join(',');
     const logSpy = getLogSpy();
 
-    const game = new Game();
     game.setCarArray(nameArray);
 
     game.carArray.forEach((v, i) => {
@@ -52,7 +30,6 @@ describe('자동차 게임: 게임 테스트', () => {
     const round = '1';
     mockQuestions([round]);
 
-    const game = new Game();
     await game.setTotalRound();
 
     expect(game.totalRound).toBe(Number(round));
@@ -64,7 +41,6 @@ describe('자동차 게임: 게임 테스트', () => {
 
     mockRandoms([...randoms]);
 
-    const game = new Game();
     game.setCarArray(nameArray);
     game.play();
 

@@ -1,29 +1,14 @@
 import App from '../src/App.js';
-import { MissionUtils } from '@woowacourse/mission-utils';
 
-const mockQuestions = (inputs) => {
-  MissionUtils.Console.readLineAsync = jest.fn();
-
-  MissionUtils.Console.readLineAsync.mockImplementation(() => {
-    const input = inputs.shift();
-    return Promise.resolve(input);
-  });
-};
-
-const mockRandoms = (numbers) => {
-  MissionUtils.Random.pickNumberInRange = jest.fn();
-  numbers.reduce((acc, number) => {
-    return acc.mockReturnValueOnce(number);
-  }, MissionUtils.Random.pickNumberInRange);
-};
-
-const getLogSpy = () => {
-  const logSpy = jest.spyOn(MissionUtils.Console, 'print');
-  logSpy.mockClear();
-  return logSpy;
-};
+import { mockQuestions, mockRandoms, getLogSpy } from '../testUtils/index.js';
 
 describe('자동차 경주 게임:우승자 테스트', () => {
+  let app;
+
+  beforeEach(() => {
+    app = new App();
+  });
+
   test('단일 우승자', async () => {
     const round = 2;
     const MOVING_FORWARD = 4;
@@ -46,7 +31,6 @@ describe('자동차 경주 게임:우승자 테스트', () => {
     mockQuestions(inputs);
     mockRandoms([...randoms]);
 
-    const app = new App();
     await app.play();
 
     outputs.forEach((output) => {
@@ -81,7 +65,6 @@ describe('자동차 경주 게임:우승자 테스트', () => {
     mockQuestions(inputs);
     mockRandoms([...randoms]);
 
-    const app = new App();
     await app.play();
 
     outputs.forEach((output) => {
