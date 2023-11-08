@@ -1,6 +1,6 @@
 const RULE = Object.freeze({
   name: {
-    min: 0,
+    min: 1,
     max: 5,
   },
   delimiter: ',',
