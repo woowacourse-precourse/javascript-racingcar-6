@@ -47,7 +47,7 @@ class Game {
   }
 
   decideWinner() {
-    this.referee.comparePoint(this.carArray);
+    this.referee.decideGameResult(this.carArray);
     this.referee.showWinner();
   }
 }
