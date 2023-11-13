@@ -14,7 +14,6 @@ class App {
       )
     ).split(",");
 
-    Car.validateNames(carNames);
     this.cars = carNames.map((name) => new Car(name));
 
     this.totalRounds = Number(
