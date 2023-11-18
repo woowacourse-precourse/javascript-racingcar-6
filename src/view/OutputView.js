@@ -1,35 +1,23 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import { MESSAGE, RULE } from './constant';
+import { MESSAGE, RULE } from '../constants/index.js';
 
-class Output {
+const OutputView = {
   printMessage(message) {
     MissionUtils.Console.print(message);
-  }
-
-  printInputNameMessage() {
-    this.printMessage(MESSAGE.inputName);
-  }
-
-  printInputRoundMessage() {
-    this.printMessage(MESSAGE.inputRound);
-  }
-
-  printTotalRound(round) {
-    this.printMessage(round.toString());
-  }
-
+  },
   printPlayMessage() {
     this.printMessage(MESSAGE.gameResult);
-  }
+    this.printMessage('');
+  },
 
   printPlayResult({ name, movement }) {
     this.printMessage(`${name} : ${movement.join('')}`);
-  }
+  },
 
   printWinner(winnerArray) {
     const winnerSentence = winnerArray.join(`${RULE.delimiter}${' '}`);
     this.printMessage(`${MESSAGE.winner}${winnerSentence}`);
-  }
-}
+  },
+};
 
-export default Output;
+export default OutputView;

@@ -1,21 +1,16 @@
-import Game from './Game';
-import Output from './Output';
+import { Referee, Game } from './controllers/index.js';
+import { OutputView } from './view/index.js';
 
 class App {
   game = new Game();
 
-  output = new Output();
-
   async play() {
     await this.game.start();
-    this.output.printPlayMessage();
-    while (
-      (this.game.totalRound === 0 && this.game.currentRound === 0) ||
-      this.game.currentRound < this.game.totalRound
-    ) {
-      this.game.play();
-    }
-    this.game.decideWinner();
+    OutputView.printPlayMessage();
+    this.game.play();
+    const carArray = this.game.getCarArray();
+    const winners = Referee.decideGameResult(carArray);
+    OutputView.printWinner(winners);
   }
 }
 
