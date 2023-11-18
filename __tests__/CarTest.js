@@ -1,5 +1,5 @@
 import { ERROR_MESSAGE } from '../src/constants/Message.js';
-import { Car, CarList } from '../src/models/index.js';
+import { Car, CarList } from '../src/data/index.js';
 import { mockRandoms } from '../testUtils/index.js';
 
 describe('자동차 게임:자동차 테스트', () => {

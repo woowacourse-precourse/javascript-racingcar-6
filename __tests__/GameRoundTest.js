@@ -1,6 +1,6 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import { ERROR_MESSAGE } from '../src/constants/Message.js';
-import { Round } from '../src/models/index.js';
+import { Round } from '../src/data/index.js';
 
 describe('자동차 경주 게임: 이동 횟수', () => {
   describe('입력한 이동 횟수의 유효성 검사', () => {

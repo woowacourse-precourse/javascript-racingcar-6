@@ -1,4 +1,4 @@
-import InputController from './InputController.js';
+import { InputController } from '../controllers/index.js';
 import { OutputView } from '../view/index.js';
 
 class Game {
@@ -40,6 +40,7 @@ class Game {
   #updatedCarArrayByMovement() {
     const updatedCarArray = this.#state.carArray.map((c) => {
       c.handleMovement();
+
       return c;
     });
     this.#setState('carArray', updatedCarArray);

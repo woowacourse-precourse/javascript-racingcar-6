@@ -9,11 +9,13 @@ const Referee = {
     const winners = carArray
       .filter((c) => c.movement.length === winnerPoint)
       .map((c) => c.name);
+
     return winners;
   },
   decideGameResult(carArray) {
     const comparedMovement = this.compareMovement(carArray);
     const winnerPoint = this.getWinnerPoint(comparedMovement);
+
     return this.selectWinners(carArray, winnerPoint);
   },
 };

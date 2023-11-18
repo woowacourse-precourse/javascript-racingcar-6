@@ -1,4 +1,4 @@
-import { Referee, Game } from './controllers/index.js';
+import { Referee, Game } from './domains/index.js';
 import { OutputView } from './view/index.js';
 
 class App {
