@@ -3,8 +3,7 @@ import { OutputView } from '../view/index.js';
 
 class Game {
   #state = {
-    totalRound: 0,
-    currentRound: 0,
+    round: undefined,
     carArray: [],
   };
   /**
@@ -20,18 +19,19 @@ class Game {
   }
   async #setCarArray() {
     const carArray = await InputController.getCarArray();
-    this.#setState('carArray', carArray);
+    this.#state.carArray = carArray;
   }
 
   async #setTotalRound() {
     const round = await InputController.getRound();
-    this.#setState('totalRound', round);
+    this.#state.round = round;
   }
 
   async start() {
     await this.#setCarArray();
     await this.#setTotalRound();
   }
+
   #printPlayResult() {
     this.#state.carArray.forEach((c) => OutputView.printPlayResult(c));
     OutputView.printMessage('');
@@ -47,15 +47,18 @@ class Game {
   }
 
   #updateCurrentRound() {
-    const newCurrentRound = this.#state.currentRound + 1;
-    this.#setState('currentRound', newCurrentRound);
+    this.#state.round.updateCurrentRound();
   }
 
   play() {
-    while (this.#state.currentRound < this.#state.totalRound) {
+    while (true) {
       this.#updateCurrentRound();
       this.#updatedCarArrayByMovement();
       this.#printPlayResult();
+
+      //현재 라운드와 이동 횟수 라운드가 같으면 게임 종료
+      const { total, current } = this.#state.round.getRound();
+      if (current === total) break;
     }
   }
   getCarArray() {

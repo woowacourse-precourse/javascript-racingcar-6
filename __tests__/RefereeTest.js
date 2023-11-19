@@ -1,4 +1,4 @@
-import { Referee } from '../src/domains/index.js';
+import { Referee } from '../src/models/index.js';
 import { MESSAGE } from '../src/constants/index.js';
 
 const makeMovement = (length) =>

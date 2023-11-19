@@ -1,5 +1,6 @@
-import { Referee, Game } from './domains/index.js';
 import { OutputView } from './view/index.js';
+import { Game } from './controllers/index.js';
+import { Referee } from './models/index.js';
 
 class App {
   game = new Game();

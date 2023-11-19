@@ -1,5 +1,5 @@
 import { MESSAGE } from '../constants/index.js';
-import { CarList, Round } from '../data/index.js';
+import { CarList, Round } from '../models/index.js';
 import { InputView } from '../view/index.js';
 
 const InputController = {
@@ -10,8 +10,7 @@ const InputController = {
   },
   async getRound() {
     const text = await InputView.readText(MESSAGE.inputRound);
-
-    return new Round(text).getNumber();
+    return new Round(text);
   },
 };
 
