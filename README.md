@@ -22,6 +22,10 @@ npm run test
 
 [기능구현 목록 보러가기](https://github.com/BadaHertz52/javascript-racingcar-6/blob/badahertz52/docs/README.md#%EC%9E%90%EB%8F%99%EC%B0%A8-%EA%B2%BD%EC%A3%BC)
 
+### 구현 모습
+
+<img  src="./readImages/racing_car.png" with="300px" alt="구현 모습"/>
+
 ### MVC 디자인 패턴 적용
 
 | mvc        | 폴더             | 역할                                                                                       |
