@@ -24,48 +24,57 @@ npm run test
 
 ### MVC 디자인 패턴 적용
 
-| mvc            | 폴더             | 역할                                                                             |
-| -------------- | ---------------- | -------------------------------------------------------------------------------- |
-| model - data   | data 폴더        | 게임에 참가하는 자동차, 이동 횟수에 대한 데이터 관리 및 유효성                   |
-| model - domain | domains 폴더     | controllers를 통해 입력값에 따른 데이터(자동차,이동횟수)생성 진행 및 우승자 판단 |
-| view           | view 폴더        | 입력과 출력 메세지 담당                                                          |
-| controller     | controllers 폴더 | 입력값을 데이터(자동차,이동횟수)로 넘겨줌                                        |
+| mvc        | 폴더             | 역할                                                                                       |
+| ---------- | ---------------- | ------------------------------------------------------------------------------------------ |
+| model      | models폴더       | 경주에 참여하는 자동차,이동횟수,우승자에 대한 데이터 관리                                  |
+| view       | view 폴더        | 입력과 출력 메세지 담당                                                                    |
+| controller | controllers 폴더 | 입력값을 데이터(자동차,이동횟수)로 넘겨주고, 게임 실행, 출력해야 할 데이터를 view에 넘겨줌 |
 
 <details>
-<summary>파일 구조 보기</summary>
+<summary> 🗂️ 파일 구조 보기</summary>
 <div markdown="1">
 
 ```
 📦src
  ┣ 📂constants
  ┃ ┣ 📜index.js
- ┃ ┣ 📜Message.js
- ┃ ┣ 📜Regex.js
- ┃ ┗ 📜Rule.js
+ ┃ ┣ 📜Message.js :입력,출력 메세지 관리
+ ┃ ┣ 📜Regex.js  : 정규표현식 관리
+ ┃ ┗ 📜Rule.js   : 게임 룰에 관한 변수 관리
  ┣ 📂controllers
+ ┃ ┣ 📜Game.js  : 게임에 대한 전반적인 것들을 관리 (입력값을 받아서 게임 실행 환경 설정, 게임 실행,결과 출력)
  ┃ ┣ 📜index.js
- ┃ ┗ 📜InputController.js
- ┣ 📂data
- ┃ ┣ 📜Car.js
- ┃ ┣ 📜CarList.js
+ ┃ ┗ 📜InputController.js : 자동차 이름, 이동 횟수에 대한 입력값을 받아서 모델에 전달
+ ┣ 📂models
+ ┃ ┣ 📜Car.js : 경주에 참여하는 자동차 이름,전진 횟수에 대한 데이터 관리
+ ┃ ┣ 📜CarList.js : 입력값을 받아서 유효성 검사를 진행 후 경주에 참여하는 자동차 배열을 생성
  ┃ ┣ 📜index.js
- ┃ ┗ 📜Round.js
- ┣ 📂domains
- ┃ ┣ 📜Game.js
- ┃ ┣ 📜index.js
- ┃ ┗ 📜Referee.js
+ ┃ ┣ 📜Referee.js : 경주 결과에 따라 우승자 판단
+ ┃ ┗ 📜Round.js : 입력값을 받아 유효성 검사를 진행 및 이동 횟수에 대한 데이터 관리
  ┣ 📂utils
- ┃ ┣ 📜Error.js
+ ┃ ┣ 📜Error.js : 오류를 출력하는 유틸 함수 관리
  ┃ ┗ 📜index.js
  ┣ 📂view
  ┃ ┣ 📜index.js
- ┃ ┣ 📜InputView.js
- ┃ ┗ 📜OutputView.js
+ ┃ ┣ 📜InputView.js : 입력창 담당
+ ┃ ┗ 📜OutputView.js :  메세지 출력 담당
  ┣ 📜App.js
  ┗ 📜index.js
 ```
 
 </div>
+</details>
+
+### 순서도
+
+<details>
+<summary>📜자동차 이름, 이동 횟수 입력 및 설정에 대한 순서도</summary>
+<img markdown='2' src="./readImages/자동차_이동횟수_순서도.png" alt="자동차 이름, 이동 횟수 입력 및 설정에 대한 순서도"/>
+</details>
+<br/>
+<details>
+<summary>📜 경주 실행 및 우승자 출력에 대한 순서도</summary>
+<img   markdown='3' src="./readImages/racing_win.png" alt="경주 실행 및 우승자 출력에 대한 순서도" />
 </details>
 
 ## 공부
@@ -164,3 +173,58 @@ Eslint와 Prettier 를 적용하기 위해 vscode의 setting.json 파일도 생�
 3. 2에서 만들 클래스를 인스턴스화한다.
 4. 해당 클래스가 역할애 맞는 인스턴스를 수행하게 한다.
 5. 각 결과를 합친다.
+
+### MVC 패턴
+
+#### MVC 패턴이란?
+
+MVC패턴은 소프트웨어 개발에서 사용되는 디자인 패턴으로 Model,View,Controller로 구성됩니다.
+
+Model은 비즈니스 로직과 데이터를 관리하는 역할로, 데이터 베이스와의 상호작용,알고리즘 구현,다른 모델과의 통신등의 작업을 수행합니다.
+
+View는 사용자의 인터페이스를 구성해 사용자의 입력을 받아 Model에 전달하거나 Model로 부터 받은 데이터를 사용자에게 보여주거나 다른 View와 통신하는 등의 작업을 수행합니다.
+
+Controller는 Model과 View를 연결하고 제어하는 역햘(사용자의 요청에 따라 Model과 View를 조정, 다른 Controller와의 통신등)을 수행합니다.
+
+#### MVC패턴 구현 시 유의해야 할 점
+
+MVC패턴으로 구현 시 유의해야 할 점은 아래와 같습니다.
+
+1.Model은 Controller와 View에 의존하지 않아야 한다.
+
+2. View는 Model에 의존해야하고, Controller에 의존하면 안된다.
+3. View가 Model로부터 데이터를 받을 때는 사용자마다 다르게 보여주어야 하는 데이터에 대해서만 받아야 한다.
+4. Controller는 Model과 View에 의존해도 된다.
+
+5. View가 Model로부터 데이터를 받을 때, 반드시 Controller에서 받아야 한다.
+
+여기서 a가 b에 의존한다는 것은 a의 내부에서 b의 코드를 사용한다는 것을 의미합니다.
+
+#### 5Layer
+
+코드 리뷰를 하다보면, MVC 패턴과 함께 domain 이라는 폴더로 관리하시는 분들이 있어서 찾아보니 5Layer 을 사용하신 것 같아고 이를 계기로 5Layer에 대해 공부했습니다.
+
+<img src="./readImages/5layer.jpg" width="300px">
+
+MVC패턴과의 차이라면, Model에 해당하는 부분이 보다 상세하가 나누어집니다.
+
+##### 비지니스 로직 계층
+
+- 핵심 업무 로직의 구현과 그와 관련된 데이터의 적합성 검증 미 다양한 부가적인 구현(트랜잭션 처리, 다른 계층들과의 통신을 위한 인터페이스 제공, 해당 계층의 객체들간의 관계 관리)를 진행 한다.
+
+#### 퍼시턴스 계층
+
+- 데이터 처리를 담당하는 계층으로 주로 데이터의 생성,수정,삭제,검색과 같은 CRUD 연산을 수행한다.
+
+#### 도메인 모델 계층
+
+- 각 계층 사이에 전달되는 실직적인 비즈니스 객체이다.
+
+개발 시에는 비즈니스 로직을 담당하는 파일들을 담는 service 폴더와 비즈니스 객체이 담긴 domain 폴더로 관리되는 것 같습니다.
+
+---
+
+#### 자료 출처
+
+[[10분 테코톡] 🧀 제리의 MVC 패턴](https://youtu.be/ogaXW6KPc8I?si=GMU4ZPVGRtPZhn0h)
+[5Layer](https://sac4686.tistory.com/15)
