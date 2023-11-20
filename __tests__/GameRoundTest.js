@@ -1,6 +1,8 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import { ERROR_MESSAGE } from '../src/constants/Message.js';
 import { Round } from '../src/models/index.js';
+import { getLogSpy, mockQuestions, mockRandoms } from '../testUtils/index.js';
+import App from '../src/App.js';
 
 describe('자동차 경주 게임: 이동 횟수', () => {
   describe('입력한 이동 횟수의 유효성 검사', () => {
@@ -13,43 +15,45 @@ describe('자동차 경주 게임: 이동 횟수', () => {
         expect(() => new Round(v)).toThrow(ERROR_MESSAGE.roundError);
       });
 
-      expect(new Round(correctRound.toString()).getNumber()).toBe(correctRound);
+      expect(new Round(correctRound.toString()).getRound().total).toBe(
+        correctRound
+      );
     });
   });
 
-  // describe('이동 횟수에 대한 게임 진행 테스트', () => {
-  //   test('입력한 이동 횟수만큼 게임 진행', async () => {
-  //     const round = '3';
-  //     const MOVING_FORWARD = 4;
-  //     const STOP = 3;
-  //     const inputs = ['pobi,woni', round];
-  //     const outputs = [
-  //       'pobi : -',
-  //       'woni : ',
-  //       'pobi : --',
-  //       'woni : ',
-  //       'pobi : ---',
-  //       'woni : -',
-  //     ];
-  //     const randoms = [
-  //       MOVING_FORWARD,
-  //       STOP,
-  //       MOVING_FORWARD,
-  //       STOP,
-  //       MOVING_FORWARD,
-  //       MOVING_FORWARD,
-  //     ];
-  //     const logSpy = getLogSpy(jest);
+  describe('이동 횟수에 대한 게임 진행 테스트', () => {
+    test('입력한 이동 횟수만큼 게임 진행', async () => {
+      const round = '3';
+      const MOVING_FORWARD = 4;
+      const STOP = 3;
+      const inputs = ['pobi,woni', round];
+      const outputs = [
+        'pobi : -',
+        'woni : ',
+        'pobi : --',
+        'woni : ',
+        'pobi : ---',
+        'woni : -',
+      ];
+      const randoms = [
+        MOVING_FORWARD,
+        STOP,
+        MOVING_FORWARD,
+        STOP,
+        MOVING_FORWARD,
+        MOVING_FORWARD,
+      ];
+      const logSpy = getLogSpy(jest);
 
-  //     mockQuestions(inputs);
-  //     mockRandoms([...randoms]);
+      mockQuestions(inputs);
+      mockRandoms([...randoms]);
 
-  //     const app = new App();
-  //     await app.play();
+      const app = new App();
+      await app.play();
 
-  //     outputs.forEach((output) => {
-  //       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
-  //     });
-  //   });
-  // });
+      outputs.forEach((output) => {
+        expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+      });
+    });
+  });
 });
