@@ -8,8 +8,10 @@ class App {
   async play() {
     await this.game.start();
     OutputView.printPlayMessage();
+
     this.game.play();
     const carArray = this.game.getCarArray();
+
     const winners = Referee.decideGameResult(carArray);
     OutputView.printWinner(winners);
   }

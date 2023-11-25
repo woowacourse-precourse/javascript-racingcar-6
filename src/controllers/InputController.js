@@ -10,6 +10,7 @@ const InputController = {
   },
   async getRound() {
     const text = await InputView.readText(MESSAGE.inputRound);
+
     return new Round(text);
   },
 };

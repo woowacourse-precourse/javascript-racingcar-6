@@ -2,13 +2,21 @@ import { ERROR_MESSAGE, ROUND_REGEXP } from '../constants/index.js';
 import { throwError } from '../utils/Error.js';
 
 class Round {
+  /**
+   * @type {{total:number, current:number}}
+   */
   #round = {
     total: 0,
     current: 0,
   };
+
+  /**
+   * @param {number} totalRound
+   */
   constructor(totalRound) {
     this.#setTotalRound(totalRound);
   }
+
   #validateRound(totalRound) {
     const pass = ROUND_REGEXP.test(totalRound);
     if (!pass) {
