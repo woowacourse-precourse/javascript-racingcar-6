@@ -24,7 +24,7 @@ class GameController {
 
   printWinner(result) {
     const winner = this.game.selectWinner(this.cars, result);
-    OutputView.print(`최종 우승자 : ${winner.join(", ")}`);
+    return OutputView.print(`최종 우승자 : ${winner.join(", ")}`);
   }
 }
 
