@@ -15,6 +15,7 @@ class Validate {
   static isCheckNumber(input) {
     try {
       Validate.isCheckProperRange(input);
+      Validate.isCheckProperForm(input);
     } catch (error) {
       throw new Error(error.message);
     }
@@ -42,6 +43,12 @@ class Validate {
 
   static isCheckProperRange(input) {
     if (Number(input) < 1 || Number(input) > 9) {
+      throw new Error(ERROR.RANGE);
+    }
+  }
+
+  static isCheckProperForm(input) {
+    if (isNaN(input)) {
       throw new Error(ERROR.NUMBER);
     }
   }
