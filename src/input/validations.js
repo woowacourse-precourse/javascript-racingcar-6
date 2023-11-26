@@ -18,7 +18,7 @@ const conditions = {
 
   carNames: {
     isNotInput(inputs) {
-      return Number(inputs[0]) === 0;
+      return Number(inputs[0]) === 0 && inputs.length === 1;
     },
 
     isOverFive(inputs) {
