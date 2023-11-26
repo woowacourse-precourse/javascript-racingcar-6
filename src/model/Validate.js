@@ -11,6 +11,14 @@ class Validate {
     }
   }
 
+  static isCheckNumber(input) {
+    try {
+      Validate.isCheckProperRange(input);
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+
   static isCheckProperLength(splited) {
     splited.forEach((car) => {
       if (car.length > 5) {
@@ -30,6 +38,12 @@ class Validate {
   static isCheckDuplicatedName(splited) {
     if (new Set(splited).size !== splited.length) {
       throw new Error("[ERROR] 중복된 자동차 이름을 작성하면 안됩니다.");
+    }
+  }
+
+  static isCheckProperRange(input) {
+    if (Number(input) < 1 || Number(input) > 9) {
+      throw new Error("[ERROR] 시도할 횟수는 1부터 9까지 입력이 가능합니다.");
     }
   }
 }

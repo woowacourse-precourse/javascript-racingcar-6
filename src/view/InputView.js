@@ -14,6 +14,7 @@ const InputView = {
 
   async requestNumber() {
     const input = await Console.readLineAsync(MESSAGE.NUMBER);
+    Validate.isCheckNumber(input);
 
     return input;
   },
