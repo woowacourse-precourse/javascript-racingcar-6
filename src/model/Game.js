@@ -17,24 +17,33 @@ class Game {
   }
 
   execute() {
-    const result = [...new Array(this.cars.length).fill("")];
+    const score = [...new Array(this.cars.length).fill("")];
     let round = 0;
     while (round < this.number) {
-      this.executeByRound(result);
+      this.executeByRound(score);
 
       round += 1;
     }
 
-    return result;
+    return score;
   }
 
-  executeByRound(result) {
+  executeByRound(score) {
     this.cars.forEach((_, idx) => {
       if (this.advanceCondition()) {
-        result[idx] += "-";
+        score[idx] += "-";
       }
-      OutputView.print(`${this.cars[idx]}: ${result[idx]}`);
+      OutputView.print(`${this.cars[idx]}: ${score[idx]}`);
     });
+  }
+
+  selectWinner(result) {
+    const maxScore = Math.max(...result.map((el) => el.length));
+    const winner = this.cars.filter(
+      (_, idx) => result[idx].length === maxScore
+    );
+
+    return winner;
   }
 }
 

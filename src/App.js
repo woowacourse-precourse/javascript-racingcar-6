@@ -1,5 +1,6 @@
 import Game from "./model/Game.js";
 import InputView from "./view/InputView.js";
+import OutputView from "./view/OutputView.js";
 
 class App {
   async play() {
@@ -8,7 +9,8 @@ class App {
     const game = new Game(cars, number);
 
     const result = game.execute();
-    console.log(result);
+    const winner = game.selectWinner(result);
+    OutputView.print(winner.join(", "));
   }
 }
 
