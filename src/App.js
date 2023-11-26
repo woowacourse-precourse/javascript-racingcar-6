@@ -1,11 +1,12 @@
+import Game from "./model/Game.js";
 import InputView from "./view/InputView.js";
 
 class App {
   async play() {
-    const input = await InputView.requestCars();
-    console.log(input);
+    const cars = await InputView.requestCars();
     const number = await InputView.requestNumber();
-    console.log(number);
+    const game = new Game(cars, number);
+    game.execute();
   }
 }
 

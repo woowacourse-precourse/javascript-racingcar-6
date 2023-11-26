@@ -16,7 +16,7 @@ const InputView = {
     const input = await Console.readLineAsync(MESSAGE.NUMBER);
     Validate.isCheckNumber(input);
 
-    return input;
+    return Number(input);
   },
 };
 
