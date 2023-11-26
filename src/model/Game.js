@@ -1,4 +1,5 @@
 import { Random } from "@woowacourse/mission-utils";
+import OutputView from "../view/OutputView.js";
 
 class Game {
   constructor(cars, number) {
@@ -16,12 +17,24 @@ class Game {
   }
 
   execute() {
-    const result = [...new Array(this.cars.length).fill(0)];
-    result.forEach((score) => {
-      this.advanceCondition() ? (score += 1) : score;
-    });
+    const result = [...new Array(this.cars.length).fill("")];
+    let round = 0;
+    while (round < this.number) {
+      this.executeByRound(result);
+
+      round += 1;
+    }
 
     return result;
+  }
+
+  executeByRound(result) {
+    this.cars.forEach((_, idx) => {
+      if (this.advanceCondition()) {
+        result[idx] += "-";
+      }
+      OutputView.print(`${this.cars[idx]}: ${result[idx]}`);
+    });
   }
 }
 

@@ -6,7 +6,9 @@ class App {
     const cars = await InputView.requestCars();
     const number = await InputView.requestNumber();
     const game = new Game(cars, number);
-    game.execute();
+
+    const result = game.execute();
+    console.log(result);
   }
 }
 
