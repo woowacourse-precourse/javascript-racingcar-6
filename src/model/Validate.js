@@ -1,13 +1,12 @@
 import { ERROR } from "../data/message.js";
 
 class Validate {
-  static isCheckCarName(splited) {
+  static isCheckCarName(input) {
+    const splited = input.split(",");
     try {
       Validate.isCheckCarCount(splited);
       Validate.isCheckDuplicatedName(splited);
       Validate.isCheckProperLength(splited);
-
-      return splited;
     } catch (error) {
       throw new Error(error.message);
     }

@@ -7,9 +7,9 @@ import { MESSAGE } from "../data/message.js";
 const InputView = {
   async requestCars() {
     const input = await Console.readLineAsync(MESSAGE.CARNAME);
-    const result = Validate.isCheckCarName(input.split(","));
+    Validate.isCheckCarName(input);
 
-    return result;
+    return input.split(",");
   },
 
   async requestNumber() {
