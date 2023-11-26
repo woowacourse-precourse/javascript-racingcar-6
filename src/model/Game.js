@@ -2,11 +2,6 @@ import { Random } from "@woowacourse/mission-utils";
 import OutputView from "../view/OutputView.js";
 
 class Game {
-  constructor(cars, number) {
-    this.cars = cars;
-    this.number = number;
-  }
-
   advanceCondition() {
     const random = Random.pickNumberInRange(0, 9);
     if (random >= 4) {
@@ -16,11 +11,11 @@ class Game {
     return false;
   }
 
-  execute() {
-    const score = [...new Array(this.cars.length).fill("")];
+  execute(cars, number) {
+    const score = [...new Array(cars.length).fill("")];
     let round = 0;
-    while (round < this.number) {
-      this.executeByRound(score);
+    while (round < number) {
+      this.executeByRound(cars, score);
 
       round += 1;
     }
@@ -28,20 +23,18 @@ class Game {
     return score;
   }
 
-  executeByRound(score) {
-    this.cars.forEach((_, idx) => {
+  executeByRound(cars, score) {
+    cars.forEach((_, idx) => {
       if (this.advanceCondition()) {
         score[idx] += "-";
       }
-      OutputView.print(`${this.cars[idx]}: ${score[idx]}`);
+      OutputView.print(`${cars[idx]} : ${score[idx]}`);
     });
   }
 
-  selectWinner(result) {
+  selectWinner(cars, result) {
     const maxScore = Math.max(...result.map((el) => el.length));
-    const winner = this.cars.filter(
-      (_, idx) => result[idx].length === maxScore
-    );
+    const winner = cars.filter((_, idx) => result[idx].length === maxScore);
 
     return winner;
   }
