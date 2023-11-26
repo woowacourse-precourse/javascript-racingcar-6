@@ -3,8 +3,8 @@ import OutputView from "../view/OutputView.js";
 
 class Game {
   advanceCondition() {
-    const random = Random.pickNumberInRange(0, 9);
-    if (random >= 4) {
+    const number = Random.pickNumberInRange(0, 9);
+    if (number >= 4) {
       return true;
     }
 
