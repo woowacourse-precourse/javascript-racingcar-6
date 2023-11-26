@@ -2,7 +2,7 @@ import { Console } from "@woowacourse/mission-utils";
 
 import Validate from "../model/validate.js";
 
-import MESSAGE from "../data/message.js";
+import { MESSAGE } from "../data/message.js";
 
 const InputView = {
   async requestCars() {
