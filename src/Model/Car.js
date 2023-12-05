@@ -7,10 +7,10 @@ class Car {
   constructor(name) {
     this.#name = name;
 
-    this.#validateName();
+    this.#validate();
   }
 
-  #validateName() {
+  #validate() {
     if (this.#name.length > CAR_NAME_MAX_LENGTH) {
       throw new Error(ERROR_MESSAGE.inValidCarName);
     }

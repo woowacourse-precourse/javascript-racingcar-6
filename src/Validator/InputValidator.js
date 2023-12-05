@@ -4,7 +4,7 @@ import {
   ERROR_MESSAGE,
 } from "../constant/constant.js";
 
-const InputValidator = {
+const InputValidator = Object.freeze({
   validateCarNames(carNames) {
     const carNameArray = carNames.split(DELIMITER);
     this.validateCarArray(carNameArray);
@@ -46,6 +46,6 @@ const InputValidator = {
       throw new Error(ERROR_MESSAGE.inValidNumber);
     }
   },
-};
+});
 
 export default InputValidator;
