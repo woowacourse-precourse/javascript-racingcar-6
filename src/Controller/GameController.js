@@ -58,11 +58,23 @@ class GameController {
       this.#tryCount -= 1;
       OutputView.printNewLine();
     }
+    this.printWinner();
   }
 
   // 3-3. 입력된 횟수에 대해 각 횟수마다 실행 결과를 출력한다
   printProcess(car) {
     OutputView.printCar(car);
+  }
+
+  // 3-4. 최종 우승자를 결정하고 출력한다
+  printWinner() {
+    const cars = this.#cars.map((car) => car.getCarInfo());
+    const maxPosition = Math.max(...cars.map((car) => car.position));
+    const winner = cars
+      .filter((car) => car.position === maxPosition)
+      .map((car) => car.name)
+      .join(", ");
+    OutputView.printWinner(winner);
   }
 }
 

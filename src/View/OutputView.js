@@ -12,6 +12,9 @@ const OutputView = {
     const { name, position } = car.getCarInfo();
     Console.print(`${name}: ${"-".repeat(position)}`);
   },
+  printWinner(winner) {
+    Console.print(`최종 우승자 : ${winner}`);
+  },
 };
 
 export default OutputView;
