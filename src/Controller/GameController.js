@@ -3,7 +3,7 @@ import OutputView from "../View/OutputView.js";
 import Car from "../Model/Car.js";
 
 import InputValidator from "../Validator/InputValidator.js";
-import { generateRandom } from "../util/generateRandom.js";
+import generateRandom from "../util/generateRandom.js";
 import { DELIMITER, MOVE_THRESHOLD } from "../constant/constant.js";
 
 class GameController {

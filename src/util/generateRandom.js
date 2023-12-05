@@ -1,5 +1,12 @@
 import { Random } from "@woowacourse/mission-utils";
 
-export const generateRandom = () => {
-  return Random.pickNumberInRange(0, 9);
+const RANDOM_NUMBER = Object.freeze({
+  start: 0,
+  end: 9,
+});
+
+const generateRandom = () => {
+  return Random.pickNumberInRange(RANDOM_NUMBER.start, RANDOM_NUMBER.end);
 };
+
+export default generateRandom;
