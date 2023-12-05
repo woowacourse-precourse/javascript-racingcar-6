@@ -23,3 +23,7 @@ export const OUTPUT_MESSAGE = {
   startGame: "실행 결과",
   winner: "최종 우승자",
 };
+
+Object.freeze(INPUT_MESSAGE);
+Object.freeze(ERROR_MESSAGE);
+Object.freeze(OUTPUT_MESSAGE);

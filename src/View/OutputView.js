@@ -1,7 +1,7 @@
 import { Console } from "@woowacourse/mission-utils";
 import { OUTPUT_MESSAGE, MOVE } from "../constant/constant.js";
 
-const OutputView = {
+const OutputView = Object.freeze({
   printNewLine() {
     Console.print(OUTPUT_MESSAGE.newLine);
   },
@@ -16,6 +16,6 @@ const OutputView = {
   printWinner(winner) {
     Console.print(`${OUTPUT_MESSAGE.winner} : ${winner}`);
   },
-};
+});
 
 export default OutputView;
