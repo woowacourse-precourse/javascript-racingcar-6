@@ -5,6 +5,11 @@ const InputValidator = {
     this.validateArray(carNameArray, this.validateCarNameLength);
     return carNames;
   },
+  validateTryCount(count) {
+    this.isNumber(count);
+    this.isBiggerThanZero(count);
+    return count;
+  },
   // 자동차는 1대라도 있어야 한다.
   validateCarArray(array) {
     if (!array || array.length === 0) {
@@ -22,6 +27,18 @@ const InputValidator = {
     array.forEach((element) => {
       callback(element);
     });
+  },
+  // 숫자인지 확인한다.
+  isNumber(count) {
+    if (isNaN(count)) {
+      throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
+    }
+  },
+  // 주어진 숫자는 0 이상의 정수여야 한다.
+  isBiggerThanZero(count) {
+    if (!Number.isInteger(Number(count)) || Number(count) < 0) {
+      throw new Error("[ERROR] 숫자가 잘못된 형식입니다.");
+    }
   },
 };
 

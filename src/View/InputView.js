@@ -8,6 +8,10 @@ const InputView = {
     );
     return carNames;
   },
+  async getTryCount() {
+    const tryCount = await Console.readLineAsync("시도할 회수는 몇회인가요?\n");
+    return tryCount;
+  },
 };
 
 export default InputView;
