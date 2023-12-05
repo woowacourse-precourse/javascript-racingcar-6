@@ -63,7 +63,7 @@ class GameController {
 
   // 3-3. 입력된 횟수에 대해 각 횟수마다 실행 결과를 출력한다
   printProcess(car) {
-    OutputView.printCar(car);
+    OutputView.printProcess(car);
   }
 
   // 3-4. 최종 우승자를 결정하고 출력한다

@@ -8,7 +8,7 @@ const OutputView = {
   printNewLine() {
     Console.print("");
   },
-  printCar(car) {
+  printProcess(car) {
     const { name, position } = car.getCarInfo();
     Console.print(`${name}: ${"-".repeat(position)}`);
   },
