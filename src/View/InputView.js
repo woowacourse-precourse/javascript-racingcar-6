@@ -1,16 +1,14 @@
 import { Console } from "@woowacourse/mission-utils";
+import { INPUT_MESSAGE } from "../constant/constant.js";
 
 // 1. 사용자의 입력을 받는다.
 const InputView = {
   async getCarNames() {
-    const carNames = await Console.readLineAsync(
-      "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n",
-    );
+    const carNames = await Console.readLineAsync(INPUT_MESSAGE.getCarNames);
     return carNames;
   },
   async getTryCount() {
-    const tryCount =
-      await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
+    const tryCount = await Console.readLineAsync(INPUT_MESSAGE.getTryCount);
     return tryCount;
   },
 };

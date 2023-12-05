@@ -4,6 +4,8 @@ import Car from "../Model/Car.js";
 import { generateRandom } from "../util/generateRandom.js";
 import OutputView from "../View/OutputView.js";
 
+import { DELIMITER, MOVE_THRESHOLD } from "../constant/constant.js";
+
 class GameController {
   #cars;
   #tryCount;
@@ -21,7 +23,7 @@ class GameController {
       const carNames = InputValidator.validateCarNames(
         await InputView.getCarNames(),
       );
-      return carNames.split(",");
+      return carNames.split(DELIMITER);
     } catch (e) {
       throw new Error(e);
     }
@@ -52,7 +54,7 @@ class GameController {
         // 3-1. 각 자동차마다 무작위 값을 구한다.
         const randomNumber = generateRandom();
         // 3-2. 무작위 값이 4 이상일 경우 해당 자동차를 전진시킨다.
-        if (randomNumber >= 4) car.move();
+        if (randomNumber >= MOVE_THRESHOLD) car.move();
         this.printProcess(car);
       });
       this.#tryCount -= 1;
@@ -73,7 +75,7 @@ class GameController {
     const winner = cars
       .filter((car) => car.position === maxPosition)
       .map((car) => car.name)
-      .join(", ");
+      .join(`${DELIMITER} `);
     OutputView.printWinner(winner);
   }
 }

@@ -1,3 +1,5 @@
+import { CAR_NAME_MAX_LENGTH, ERROR_MESSAGE } from "../constant/constant.js";
+
 class Car {
   #name;
   #position = 0;
@@ -9,8 +11,8 @@ class Car {
   }
 
   #validateName() {
-    if (this.#name.length > 5) {
-      throw new Error("[ERROR] 자동차 이름은 5자 이하만 가능합니다.");
+    if (this.#name.length > CAR_NAME_MAX_LENGTH) {
+      throw new Error(ERROR_MESSAGE.inValidCarName);
     }
   }
 
