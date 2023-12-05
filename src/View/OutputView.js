@@ -1,5 +1,12 @@
 import { Console } from "@woowacourse/mission-utils";
-import { OUTPUT_MESSAGE, MOVE } from "../constant/constant.js";
+
+const OUTPUT_MESSAGE = Object.freeze({
+  newLine: "",
+  startGame: "실행 결과",
+  winner: "최종 우승자",
+});
+
+const MOVE = "-";
 
 const OutputView = Object.freeze({
   printNewLine() {
