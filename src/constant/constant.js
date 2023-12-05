@@ -8,6 +8,4 @@ export const ERROR_MESSAGE = {
 
 export const DELIMITER = ",";
 
-export const MOVE_THRESHOLD = 4;
-
 Object.freeze(ERROR_MESSAGE);

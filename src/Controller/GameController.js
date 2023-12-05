@@ -4,7 +4,7 @@ import Car from "../Model/Car.js";
 
 import InputValidator from "../Validator/InputValidator.js";
 import generateRandom from "../util/generateRandom.js";
-import { DELIMITER, MOVE_THRESHOLD } from "../constant/constant.js";
+import { DELIMITER } from "../constant/constant.js";
 
 class GameController {
   #cars;
@@ -48,6 +48,7 @@ class GameController {
 
   // 3. 자동차 경주 게임을 진행한다.
   #startGame() {
+    const MOVE_THRESHOLD = 4;
     OutputView.startGame();
     while (this.#tryCount) {
       this.#cars.forEach((car) => {
