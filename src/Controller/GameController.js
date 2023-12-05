@@ -2,6 +2,7 @@ import InputView from "../View/InputView.js";
 import InputValidator from "../Validator/InputValidator.js";
 import Car from "../Model/Car.js";
 import { generateRandom } from "../util/generateRandom.js";
+import OutputView from "../View/OutputView.js";
 
 class GameController {
   #cars;
@@ -45,18 +46,23 @@ class GameController {
 
   // 3. 자동차 경주 게임을 진행한다.
   startGame() {
+    OutputView.startGame();
     while (this.#tryCount) {
-      // 3-1. 각 자동차마다 무작위 값을 구한다.
-      const randomNumbers = generateRandom(this.#cars.length);
-      this.#cars.forEach((car, index) => {
+      this.#cars.forEach((car) => {
+        // 3-1. 각 자동차마다 무작위 값을 구한다.
+        const randomNumber = generateRandom();
         // 3-2. 무작위 값이 4 이상일 경우 해당 자동차를 전진시킨다.
-        if (randomNumbers[index] >= 4) {
-          car.move();
-        }
+        if (randomNumber >= 4) car.move();
+        this.printProcess(car);
       });
-
       this.#tryCount -= 1;
+      OutputView.printNewLine();
     }
+  }
+
+  // 3-3. 입력된 횟수에 대해 각 횟수마다 실행 결과를 출력한다
+  printProcess(car) {
+    OutputView.printCar(car);
   }
 }
 

@@ -17,6 +17,13 @@ class Car {
   move() {
     this.#position += 1;
   }
+
+  getCarInfo() {
+    return {
+      name: this.#name,
+      position: this.#position,
+    };
+  }
 }
 
 export default Car;
