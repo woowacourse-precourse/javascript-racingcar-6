@@ -48,6 +48,14 @@ class GameController {
     while (this.#tryCount) {
       // 3-1. 각 자동차마다 무작위 값을 구한다.
       const randomNumbers = generateRandom(this.#cars.length);
+      this.#cars.forEach((car, index) => {
+        // 3-2. 무작위 값이 4 이상일 경우 해당 자동차를 전진시킨다.
+        if (randomNumbers[index] >= 4) {
+          car.move();
+        }
+      });
+
+      this.#tryCount -= 1;
     }
   }
 }
