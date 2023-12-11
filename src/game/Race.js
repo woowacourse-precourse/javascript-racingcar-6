@@ -5,7 +5,7 @@ import { Output } from '../interface/Output.js';
 
 export class Race {
   #tryInput;
-  #cars;
+  #cars = [];
 
   constructor(cars, tryInput) {
     this.#cars = cars;
@@ -25,20 +25,19 @@ export class Race {
   }
 
   end() {
-    const greatestPosition = this.getGreatestPosition(this.#cars.getPositions());
-    const winners = this.getWinners(this.#cars, greatestPosition);
+    const winners = this.getWinners();
 
     printResult.final(winners);
   }
 
-  getGreatestPosition(positions) {
-    return getGreatestNumber(positions);
+  getGreatestPosition() {
+    return getGreatestNumber(this.#cars.getPositions());
   }
 
-  getWinners(cars, greatestPosition) {
-    return cars
+  getWinners() {
+    return this.#cars
       .getList()
-      .filter((car) => car.getPosition() === greatestPosition)
+      .filter((car) => car.getPosition() === this.getGreatestPosition())
       .map((car) => car.getName());
   }
 }

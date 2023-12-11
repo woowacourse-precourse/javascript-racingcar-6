@@ -19,7 +19,7 @@ describe("모든 시도 가 끝난 후 최종 결과 출력",()=>{
             winnerCar.move();
         }
 
-        const winners = race.getWinners(cars, greatestPosition);
+        const winners = race.getWinners();    
 
         expect(winners).toEqual([winnerCarName]);
     })
