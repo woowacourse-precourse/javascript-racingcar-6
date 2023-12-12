@@ -1,6 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
 import { INPUT_MESSAGE } from '../Constants/MESSAGE.js';
-import { checkCarName } from '../Utils/Validation.js';
+import { checkCarName, checkTryNum } from '../Utils/Validation.js';
 
 export const InputView = {
   async readCarName() {
@@ -12,7 +12,7 @@ export const InputView = {
   },
   async readTryNum() {
     const tryNum = await Console.readLineAsync(INPUT_MESSAGE.TRY);
-
+    checkTryNum(tryNum);
     return tryNum;
   },
 };

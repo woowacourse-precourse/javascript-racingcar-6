@@ -5,3 +5,8 @@ export const checkCarName = (cars) => {
     if (e.length > 5) throw new Error(ERROR_MESSAGE.CAR_LENGH);
   });
 };
+
+export const checkTryNum = (tryNum) => {
+  console.log(tryNum);
+  if (isNaN(tryNum)) throw new Error(ERROR_MESSAGE.TRYNUM_NUMBER);
+};

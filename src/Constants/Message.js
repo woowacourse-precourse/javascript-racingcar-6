@@ -8,4 +8,5 @@ export const OUTPUT_MESSAGE = {
 };
 export const ERROR_MESSAGE = {
   CAR_LENGH: '[ERROR] 차 이름의 길이는 5이하 이어야 합니다.',
+  TRYNUM_NUMBER: '[ERROR] 시도 횟수는 숫자를 입력해야 합니다',
 };
