@@ -6,3 +6,6 @@ export const OUTPUT_MESSAGE = {
   RESULT: '실행 결과',
   GO: '-',
 };
+export const ERROR_MESSAGE = {
+  CAR_LENGTH: '[ERROR] 차 이름의 길이는 5이하 이어야 합니다.',
+};
