@@ -7,6 +7,5 @@ export const checkCarName = (cars) => {
 };
 
 export const checkTryNum = (tryNum) => {
-  console.log(tryNum);
   if (isNaN(tryNum)) throw new Error(ERROR_MESSAGE.TRYNUM_NUMBER);
 };

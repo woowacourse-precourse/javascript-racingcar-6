@@ -2,6 +2,7 @@ import { getRandomNum } from './Utils/getRandomNum.js';
 import { InputView } from './View/InputView.js';
 import { Console } from '@woowacourse/mission-utils';
 import { OutputView } from './View/OutputView.js';
+
 class Racing {
   #cars;
   #tryNum;
@@ -21,7 +22,7 @@ class Racing {
     let goNum = 0;
     for (let j = 0; j < this.#cars.length; j++) {
       goNum = getRandomNum();
-      if (goNum > 4) {
+      if (goNum >= 4) {
         this.#status[j] += '-';
         this.#statusNum[j] += 1;
       }
@@ -46,6 +47,8 @@ class Racing {
   }
 
   startRacing() {
+    OutputView.Reulst();
+
     for (let i = 0; i < this.#tryNum; i++) {
       this.isGo();
       this.printStatus();
