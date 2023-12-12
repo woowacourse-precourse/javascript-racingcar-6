@@ -1,9 +1,10 @@
 import Racing from './Racing.js';
 
 class App {
-  play() {
+  async play() {
     const racing = new Racing();
-    racing.getCars();
+    await racing.getCars();
+    await racing.getTryNum();
   }
 }
 

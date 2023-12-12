@@ -11,7 +11,8 @@ export const InputView = {
     return cars;
   },
   async readTryNum() {
-    const input = await Console.readLineAsync(INPUT_MESSAGE.TRY);
-    return input;
+    const tryNum = await Console.readLineAsync(INPUT_MESSAGE.TRY);
+
+    return tryNum;
   },
 };
