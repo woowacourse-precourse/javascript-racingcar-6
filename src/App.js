@@ -5,6 +5,7 @@ class App {
     const racing = new Racing();
     await racing.getCars();
     await racing.getTryNum();
+    racing.startRacing();
   }
 }
 
