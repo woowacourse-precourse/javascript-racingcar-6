@@ -1,11 +1,14 @@
 import { Console } from '@woowacourse/mission-utils';
 import { INPUT_MESSAGE } from '../Constants/MESSAGE.js';
+import { checkCarName } from '../Utils/Validation.js';
 
 export const InputView = {
   async readCarName() {
     let cars = await Console.readLineAsync(INPUT_MESSAGE.CAR);
-    cars = cars.slice(',');
-    return input;
+    cars = cars.split(',');
+
+    checkCarName(cars);
+    return cars;
   },
   async readTryNum() {
     const input = await Console.readLineAsync(INPUT_MESSAGE.TRY);
