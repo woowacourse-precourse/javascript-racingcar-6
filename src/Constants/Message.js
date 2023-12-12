@@ -1,5 +1,5 @@
 export const INPUT_MESSAGE = {
-  CAR: '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)',
+  CAR: '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
   TRY: '시도할 횟수는 몇 회인가요?',
 };
 export const OUTPUT_MESSAGE = {
@@ -7,5 +7,5 @@ export const OUTPUT_MESSAGE = {
   GO: '-',
 };
 export const ERROR_MESSAGE = {
-  CAR_LENGTH: '[ERROR] 차 이름의 길이는 5이하 이어야 합니다.',
+  CAR_LENGH: '[ERROR] 차 이름의 길이는 5이하 이어야 합니다.',
 };

@@ -1,10 +1,13 @@
-import { InputView } from './View/InputView';
+import { InputView } from './View/InputView.js';
 
 class Racing {
   #cars;
   constructor() {}
 
-  getCars() {
-    this.#cars = InputView.readCarName;
+  async getCars() {
+    this.#cars = await InputView.readCarName();
+    console.log(this.#cars);
   }
 }
+
+export default Racing;

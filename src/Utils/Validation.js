@@ -1,4 +1,4 @@
-import { ERROR_MESSAGE } from '../Constants/MESSAGE';
+import { INPUT_MESSAGE } from '../Constants/MESSAGE.js';
 
 export const checkCarName = (cars) => {
   console.log(cars);
