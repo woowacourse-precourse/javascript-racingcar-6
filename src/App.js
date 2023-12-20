@@ -13,6 +13,8 @@ class App {
     }, {});
   }
 
+  // test
+
   async play() {
     await this.receiveCarNameInput();
     await this.receiveTryCountInput();
