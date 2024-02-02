@@ -1,4 +1,4 @@
-import {Console} from '@woowacourse/mission-utils'
+import {Console , Random} from '@woowacourse/mission-utils'
 
 class Car {
     #carName='';
@@ -13,6 +13,14 @@ class Car {
         return this.#carName;
     }
 
+    tryAdvance() {
+        const randomNumber = Random.pickNumberInRange(0, 9);
+        if (randomNumber >= 4) this.#distance += "-"
+    }
+
+    getDistance() {
+        return this.#distance
+    }
 }
 
 export default Car;
