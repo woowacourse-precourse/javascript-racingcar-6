@@ -13,14 +13,15 @@ class Car {
         return this.#carName;
     }
 
+    getMovedDistance() {
+        return this.#distance
+    }
+
     tryAdvance() {
         const randomNumber = Random.pickNumberInRange(0, 9);
         if (randomNumber >= 4) this.#distance += "-"
     }
-
-    getDistance() {
-        return this.#distance
-    }
+    
 }
 
 export default Car;
