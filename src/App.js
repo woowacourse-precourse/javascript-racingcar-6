@@ -3,7 +3,7 @@ import Car from "./Car.js";
 import Validator from "./Validator.js";
 
 class App {
-  #carList = [];
+  #garage = [];
 
   constructor() {
     this.validator = new Validator();
@@ -14,16 +14,21 @@ class App {
   }
 
   async mainLogic(){
-    await this.getUserCarNames();
+    await this.getCarNames();
   }
 
-  async getUserCarNames(){
+  async getCarNames(){
     const userInput = await Console.readLineAsync("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-    const carNameList = userInput.split(",")
-    // console.log('userinput',userInput, typeof userInput)
+    const carNameList = userInput.split(",");
+    this.setCar(carNameList);
+  }
 
-    carNameList.forEach(item => {
-      if (this.validator.isValidCarName(item)) this.#carList.push(item)
+  setCar(carList){
+    carList.forEach(item => {
+      if (this.validator.isValidCarName(item)){
+        const car = new Car(item);
+        this.#garage.push(car);
+      }
     });
   }
 }

@@ -1,12 +1,12 @@
-import {Console , Random} from '@woowacourse/mission-utils'
+import { Random } from '@woowacourse/mission-utils'
 
 class Car {
     #carName='';
 
     #distance='';
 
-    setName(input){
-        this.#carName = input;
+    constructor(name) {
+        this.#carName = name;
     }
 
     getName(){
