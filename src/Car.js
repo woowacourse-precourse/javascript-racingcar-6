@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 import { Random } from '@woowacourse/mission-utils'
 
 class Car {
@@ -6,7 +7,7 @@ class Car {
     #distance='';
 
     constructor(name) {
-        this.#carName = name;
+        this.#carName = name
     }
 
     getName(){
