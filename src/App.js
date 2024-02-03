@@ -3,6 +3,7 @@ import {Console} from "@woowacourse/mission-utils";
 import Car from "./Car.js";
 import Validator from "./Validator.js";
 import InputOutput from "./InputOutput.js";
+import RaceSimulator from "./RaceSimulator.js";
 import { startComment, winnerCommnet, LINE_BREAK } from "./Constant.js";
 
 class App {
@@ -11,6 +12,7 @@ class App {
   constructor() {
     this.validator = new Validator();
     this.inputOutput = new InputOutput();
+    this.raceSimulator = new RaceSimulator();
   }
 
   async play() {
@@ -39,39 +41,14 @@ class App {
 
   async startRace(){
     // Console.print(startComment);
-    this.inputOutput.print(startComment)
+    this.inputOutput.print(startComment);
     const userInputCount = await this.inputOutput.getAttemptCount();
-    this.simulateRace(userInputCount);
-  }
-
-  simulateRace(count){
-    for (let i = 0; count > i; i++){
-      this.#garage.forEach(car => {
-        car.tryAdvance();
-        Console.print(`${car.getName()} : ${car.getMovedDistance()}`)
-      });
-      this.inputOutput.print(LINE_BREAK)
-    }
+    this.raceSimulator.simulateRace(this.#garage,userInputCount);
   }
 
   award(){
-    const countScoreList = this.countScore();
-    this.announceWinners(countScoreList);
-  }
-
-  countScore(){
-    const scoreBoard = []
-    this.#garage.forEach(car => {
-      scoreBoard.push(car.getMovedDistance().length);
-    })
-    return scoreBoard;
-  }
-
-  announceWinners(scoreList){
-    const winnerScore = Math.max(...scoreList);
-    const winner = this.#garage.filter(car => car.getMovedDistance().length === winnerScore).map(car => car.getName());
-    // Console.print(`${winnerCommnet} : ${winner}`)
-    this.inputOutput.print(`${winnerCommnet} : ${winner}`);
+    const countScoreList = this.raceSimulator.countScore(this.#garage);
+    this.raceSimulator.announceWinners(this.#garage,countScoreList);
   }
 }
 
