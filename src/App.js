@@ -43,10 +43,13 @@ class App {
   async startRace(){
     Console.print("실행 결과");
     const userInputCount = await this.getTryAdvanceCount();
-    this.#garage.forEach(car => {
-      car.tryAdvance();
-
-    })
+    for (let i = 0; userInputCount > i; i++){
+      this.#garage.forEach(car => {
+        car.tryAdvance();
+        Console.print(`${car.getName()} : ${car.getMovedDistance()}`)
+      })
+      Console.print('\n');
+    }
   }
 
   async getTryAdvanceCount(){
