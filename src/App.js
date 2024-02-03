@@ -38,7 +38,15 @@ class App {
     });
   }
 
-  
+  startRace(){
+    this.getTryAdvanceCount();
+  }
+
+  async getTryAdvanceCount(){
+    const userInput = await Console.readLineAsync("시도할 횟수는 몇 회인가요?");
+    if (this.validator.isNumber(userInput)) throw new Error("[ERROR] 올바르지 않은 형식의 입력입니다.");
+    return userInput
+  }
 }
 
 export default App;
