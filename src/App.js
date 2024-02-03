@@ -1,10 +1,9 @@
 /* eslint-disable no-plusplus */
-import {Console} from "@woowacourse/mission-utils";
 import Car from "./Car.js";
 import Validator from "./Validator.js";
 import InputOutput from "./InputOutput.js";
 import RaceSimulator from "./RaceSimulator.js";
-import { startComment, winnerCommnet, LINE_BREAK } from "./Constant.js";
+import { startComment } from "./Constant.js";
 
 class App {
   #garage = [];

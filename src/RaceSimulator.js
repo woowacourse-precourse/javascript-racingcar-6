@@ -1,6 +1,6 @@
 import {Console} from "@woowacourse/mission-utils";
 import InputOutput from "./InputOutput.js";
-import { startComment, winnerCommnet, LINE_BREAK } from "./Constant.js";
+import { winnerCommnet, LINE_BREAK } from "./Constant.js";
 class RaceSimulator {
 
     constructor(){
