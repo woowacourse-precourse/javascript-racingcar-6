@@ -1,7 +1,8 @@
+/* eslint-disable no-plusplus */
 import {Console} from "@woowacourse/mission-utils";
 import Car from "./Car.js";
 import Validator from "./Validator.js";
-import GameMessage from "./GameMessage.js";
+import { startComment, winnerCommnet, LINE_BREAK } from "./Constant.js";
 
 class App {
   #garage = [];
@@ -43,7 +44,7 @@ class App {
   }
 
   async startRace(){
-    Console.print(GameMessage.EXCUTION_RESULT);
+    startComment;
     const userInputCount = await this.getAttemptCount();
     this.simulateRace(userInputCount);
   }
@@ -59,8 +60,8 @@ class App {
       this.#garage.forEach(car => {
         car.tryAdvance();
         Console.print(`${car.getName()} : ${car.getMovedDistance()}`)
-      })
-      Console.print('\n');
+      });
+      LINE_BREAK;
     }
   }
 
@@ -80,7 +81,7 @@ class App {
   announceWinners(scoreList){
     const winnerScore = Math.max(...scoreList);
     const winner = this.#garage.filter(car => car.getMovedDistance().length === winnerScore).map(car => car.getName());
-    Console.print(`${GameMessage.FINAL_WIINER} : ${winner}`)
+    Console.print(`${winnerCommnet} : ${winner}`)
   }
 }
 
