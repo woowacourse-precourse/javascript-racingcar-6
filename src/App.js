@@ -1,6 +1,7 @@
 import {Console} from "@woowacourse/mission-utils";
 import Car from "./Car.js";
 import Validator from "./Validator.js";
+import GameMessage from "./GameMessage.js";
 
 class App {
   #garage = [];
@@ -42,9 +43,19 @@ class App {
   }
 
   async startRace(){
-    Console.print("실행 결과");
-    const userInputCount = await this.getTryAdvanceCount();
-    for (let i = 0; userInputCount > i; i++){
+    Console.print(GameMessage.EXCUTION_RESULT);
+    const userInputCount = await this.getAttemptCount();
+    this.simulateRace(userInputCount);
+  }
+
+  async getAttemptCount(){
+    const userInput = await Console.readLineAsync("시도할 횟수는 몇 회인가요?");
+    if (this.validator.isNumber(userInput)) throw new Error("[ERROR] 올바르지 않은 형식의 입력입니다.");
+    return userInput;
+  }
+
+  simulateRace(count){
+    for (let i = 0; count > i; i++){
       this.#garage.forEach(car => {
         car.tryAdvance();
         Console.print(`${car.getName()} : ${car.getMovedDistance()}`)
@@ -53,23 +64,23 @@ class App {
     }
   }
 
-  async getTryAdvanceCount(){
-    const userInput = await Console.readLineAsync("시도할 횟수는 몇 회인가요?");
-    if (this.validator.isNumber(userInput)) throw new Error("[ERROR] 올바르지 않은 형식의 입력입니다.");
-    return userInput;
+  award(){
+    const countScoreList = this.countScore();
+    this.announceWinners(countScoreList);
   }
 
-  award(){
-    let scoreBoard = []
+  countScore(){
+    const scoreBoard = []
     this.#garage.forEach(car => {
       scoreBoard.push(car.getMovedDistance().length);
     })
-    console.log(scoreBoard);
-    
-    const winnerScore = Math.max(...scoreBoard);
-    const winner = this.#garage.filter(car => car.getMovedDistance().length === winnerScore).map(car => car.getName());
+    return scoreBoard;
+  }
 
-    Console.print(`최종 우승자 : ${winner}`)
+  announceWinners(scoreList){
+    const winnerScore = Math.max(...scoreList);
+    const winner = this.#garage.filter(car => car.getMovedDistance().length === winnerScore).map(car => car.getName());
+    Console.print(`${GameMessage.FINAL_WIINER} : ${winner}`)
   }
 }
 
