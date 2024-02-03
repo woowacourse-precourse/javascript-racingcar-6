@@ -16,6 +16,7 @@ class App {
   async mainLogic(){
     await this.settingGarage();
     await this.startRace();
+    this.award();
   }
 
   async settingGarage(){
@@ -58,7 +59,18 @@ class App {
     return userInput;
   }
 
+  award(){
+    let scoreBoard = []
+    this.#garage.forEach(car => {
+      scoreBoard.push(car.getMovedDistance().length);
+    })
+    console.log(scoreBoard);
+    
+    const winnerScore = Math.max(...scoreBoard);
+    const winner = this.#garage.filter(car => car.getMovedDistance().length === winnerScore).map(car => car.getName());
 
+    Console.print(`최종 우승자 : ${winner}`)
+  }
 }
 
 export default App;
