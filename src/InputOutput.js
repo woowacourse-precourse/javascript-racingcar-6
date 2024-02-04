@@ -1,5 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
 import Validator from "./Validator.js";
+import GameMessage from "./GameMessage.js";
 
 class InputOutput {
   constructor() {
@@ -18,7 +19,7 @@ class InputOutput {
   async getAttemptCount() {
     const userInput = await Console.readLineAsync("시도할 횟수는 몇 회인가요?");
     if (this.validator.isNumber(userInput))
-      throw new Error("[ERROR] 올바르지 않은 형식의 입력입니다.");
+      throw new Error(GameMessage.INVALID_INPUT);
     return userInput;
   }
 
