@@ -1,28 +1,27 @@
 // eslint-disable-next-line import/no-unresolved
-import { Random } from '@woowacourse/mission-utils'
+import { Random } from "@woowacourse/mission-utils";
 
 class Car {
-    #carName='';
+  #carName = "";
 
-    #distance='';
+  #distance = "";
 
-    constructor(name) {
-        this.#carName = name
-    }
+  constructor(name) {
+    this.#carName = name;
+  }
 
-    getName(){
-        return this.#carName;
-    }
+  getName() {
+    return this.#carName;
+  }
 
-    getMovedDistance() {
-        return this.#distance
-    }
+  getMovedDistance() {
+    return this.#distance;
+  }
 
-    tryAdvance() {
-        const randomNumber = Random.pickNumberInRange(0, 9);
-        if (randomNumber >= 4) this.#distance += "-"
-    }
-    
+  tryAdvance() {
+    const randomNumber = Random.pickNumberInRange(0, 9);
+    if (randomNumber >= 4) this.#distance += "-";
+  }
 }
 
 export default Car;

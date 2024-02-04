@@ -18,36 +18,36 @@ class App {
     await this.mainLogic();
   }
 
-  async mainLogic(){
+  async mainLogic() {
     await this.settingGarage();
     await this.startRace();
     this.award();
   }
 
-  async settingGarage(){
+  async settingGarage() {
     const carNameList = await this.inputOutput.getCarNames();
     this.makingCar(carNameList);
   }
 
-  makingCar(carNameList){
-    carNameList.forEach(item => {
-      if (this.validator.isValidCarName(item)){
+  makingCar(carNameList) {
+    carNameList.forEach((item) => {
+      if (this.validator.isValidCarName(item)) {
         const car = new Car(item);
         this.#garage.push(car);
       }
     });
   }
 
-  async startRace(){
+  async startRace() {
     // Console.print(startComment);
     this.inputOutput.print(startComment);
     const userInputCount = await this.inputOutput.getAttemptCount();
-    this.raceSimulator.simulateRace(this.#garage,userInputCount);
+    this.raceSimulator.simulateRace(this.#garage, userInputCount);
   }
 
-  award(){
+  award() {
     const countScoreList = this.raceSimulator.countScore(this.#garage);
-    this.raceSimulator.announceWinners(this.#garage,countScoreList);
+    this.raceSimulator.announceWinners(this.#garage, countScoreList);
   }
 }
 
