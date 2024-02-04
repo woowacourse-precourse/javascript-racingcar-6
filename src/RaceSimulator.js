@@ -10,7 +10,6 @@ class RaceSimulator {
     for (let i = 0; count > i; i++) {
       garage.forEach((car) => {
         car.tryAdvance();
-        // Console.print(`${car.getName()} : ${car.getMovedDistance()}`);
         this.inputOutput.print(`${car.getName()} : ${car.getMovedDistance()}`);
       });
       this.inputOutput.print(GameMessage.LINE_BREAK);
