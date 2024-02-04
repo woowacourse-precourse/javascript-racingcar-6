@@ -1,7 +1,6 @@
-// eslint-disable-next-line import/no-unresolved
 import { Random } from "@woowacourse/mission-utils";
 
-class Car {
+export default class Car {
   #carName = "";
 
   #distance = "";
@@ -19,9 +18,8 @@ class Car {
   }
 
   tryAdvance() {
+    const minumumCriteria = 4;
     const randomNumber = Random.pickNumberInRange(0, 9);
-    if (randomNumber >= 4) this.#distance += "-";
+    if (randomNumber >= minumumCriteria) this.#distance += "-";
   }
 }
-
-export default Car;

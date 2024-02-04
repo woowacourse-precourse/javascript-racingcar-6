@@ -3,7 +3,7 @@ import Car from "./Car.js";
 import Validator from "./Validator.js";
 import InputOutput from "./InputOutput.js";
 import RaceSimulator from "./RaceSimulator.js";
-import { startComment } from "./Constant.js";
+import GameMessage from "./GameMessage.js";
 
 class App {
   #garage = [];
@@ -40,7 +40,7 @@ class App {
 
   async startRace() {
     // Console.print(startComment);
-    this.inputOutput.print(startComment);
+    this.inputOutput.print(GameMessage.EXCUTION_RESULT);
     const userInputCount = await this.inputOutput.getAttemptCount();
     this.raceSimulator.simulateRace(this.#garage, userInputCount);
   }

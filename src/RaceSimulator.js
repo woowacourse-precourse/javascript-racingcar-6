@@ -1,6 +1,7 @@
 import { Console } from "@woowacourse/mission-utils";
 import InputOutput from "./InputOutput.js";
-import { winnerCommnet, LINE_BREAK } from "./Constant.js";
+import GameMessage from "./GameMessage.js";
+
 class RaceSimulator {
   constructor() {
     this.inputOutput = new InputOutput();
@@ -12,7 +13,7 @@ class RaceSimulator {
         car.tryAdvance();
         Console.print(`${car.getName()} : ${car.getMovedDistance()}`);
       });
-      this.inputOutput.print(LINE_BREAK);
+      this.inputOutput.print(GameMessage.LINE_BREAK);
     }
   }
 
@@ -30,7 +31,7 @@ class RaceSimulator {
       .filter((car) => car.getMovedDistance().length === winnerScore)
       .map((car) => car.getName());
     // Console.print(`${winnerCommnet} : ${winner}`)
-    this.inputOutput.print(`${winnerCommnet} : ${winner}`);
+    this.inputOutput.print(`${GameMessage.FINAL_WINNER} : ${winner}`);
   }
 }
 

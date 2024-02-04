@@ -1,9 +1,10 @@
+import GameMessage from "./GameMessage.js";
+
 class Validator {
   isValidCarName(input) {
     if (!this.isValidNameLength(input))
-      throw new Error("[ERROR] 올바르지 않은 차 이름 길이입니다.");
-    if (!this.isNumber(input))
-      throw new Error("[ERROR] 올바르지 않은 차 이름입니다.");
+      throw new Error(GameMessage.INVALID_CAR_NAME);
+    if (!this.isNumber(input)) throw new Error(GameMessage.INVALID_CAR_NAME);
     return true;
   }
 
